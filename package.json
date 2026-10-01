@@ -1,6 +1,6 @@
 {
   "name": "lived-history-goryeo",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "private": true,
   "description": "눈떠보니 고려 — 선택과 시험 문제를 연결한 정적 역사 스토리 게임",
   "scripts": {

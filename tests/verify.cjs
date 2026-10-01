@@ -43,6 +43,16 @@ assert(STORIES.life_choice.choices[3].condition.stat==='knowledge','Wang Geon ro
 assert.deepEqual(STORIES.status.dialogues.map(x=>x.speakerType),['npc','player','npc','player','thought'],'status scene must alternate NPC/player and end with thought');
 assert.deepEqual(STORIES.status.dialogues.map(x=>x.expression),['neutral','embarrassed','surprised','embarrassed','worried'],'status scene expression changes must be data-driven');
 assert.equal(STORIES.life_choice.choices[2].resultDialogues[1].characterId,'doyun','life choice must support NPC reaction after player response');
+assert.equal(Object.values(ASSETS).filter(a=>a.status==='ASSET_REQUIRED').length,0,'all CH.01 scene illustrations must be production-ready');
+for(const[id,asset]of Object.entries(ASSETS))if(asset.src)assert(fs.existsSync('dist/'+asset.src),`${id}: missing generated scene file ${asset.src}`);
+const requiredPlayerExpressions=['neutral','smile','surprised','worried','thinking','serious','embarrassed','angry','sad'];
+for(const expression of requiredPlayerExpressions){const asset=PORTRAITS[`player_${expression}`];assert(asset?.status==='ready',`player_${expression}: generated portrait required`);assert(fs.existsSync('dist/'+asset.src),`player_${expression}: missing generated portrait file`);assert.equal(asset.outfit,'modern',`player_${expression}: CH.01 outfit must be modern`)}
+for(const expression of ['neutral','smile','surprised','suspicious','serious','worried']){const asset=PORTRAITS[`doyun_${expression}`];assert(asset?.status==='ready',`doyun_${expression}: generated portrait required`);assert(fs.existsSync('dist/'+asset.src),`doyun_${expression}: missing generated portrait file`)}
+assert.equal(CHARACTERS.player.outfit,'modern','player must start CH.01 in modern clothes');
+assert(CHARACTERS.player.portraits.modern.thinking==='player_thinking','player outfit map must support expression lookup');
+assert(Object.prototype.hasOwnProperty.call(CHARACTERS.player.portraits,'goryeo'),'future Goryeo outfit slot must exist');
+assert(!STORIES.doyun.dialogues.some(line=>line.dialogue.includes('궁예를 알아요?')),'player must not ask an ahistorical obvious question');
+assert(STORIES.doyun.dialogues.some(line=>line.dialogue.includes('왕건 장군을 왕으로 세운 지 얼마 되지도 않았소')),'Doyun must establish the 918 context in period-appropriate speech');
 
 let completePaths=0,storyTests=new Set(),routes=new Set(),jobs=new Set();
 function walk(id,state,stack=[]){

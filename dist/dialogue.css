@@ -1,7 +1,70 @@
-/* Mobile-first messenger + visual-novel dialogue layer */
-.conversation-game{padding-bottom:22px}.conversation-game .scene-title{padding-bottom:16px}.conversation-panel{width:100%;max-width:760px;margin:0 auto;color:var(--ink)}.dialogue-log{display:grid;gap:11px;min-height:92px}.dialogue-log>*{animation:bubble-in .24s ease both;transform-origin:bottom}.dialogue-log>:not(:last-child){opacity:.72}.message-row{display:flex;align-items:flex-end;gap:10px;width:100%}.message-row.player{justify-content:flex-end}.bubble-stack{display:grid;gap:6px;max-width:min(72%,520px)}.character-name{font-size:11px;font-weight:700;letter-spacing:.04em;color:#e8dfce}.message-row.player .character-name{text-align:right;color:#f0d59e}.speech-bubble{position:relative!important;margin:0!important;padding:12px 15px!important;border-radius:5px 14px 14px 14px!important;background:#f1ecdf!important;color:#26343a!important;font:16px/1.65 'Gowun Batang',serif!important;white-space:pre-line;box-shadow:0 8px 24px #07101642}.message-row.player .speech-bubble{border-radius:14px 5px 14px 14px!important;background:#243a46!important;color:#fff8e9!important;border:1px solid #dabc8052}.speech-bubble:before{content:'';position:absolute;top:0;width:9px;height:12px;background:inherit}.message-row.npc .speech-bubble:before{left:-5px;clip-path:polygon(100% 0,100% 100%,0 0)}.message-row.player .speech-bubble:before{right:-5px;clip-path:polygon(0 0,100% 0,0 100%)}
-.character-portrait{width:76px;height:96px;flex:0 0 76px;object-fit:cover;object-position:top center;border-radius:7px 7px 3px 3px;border:1px solid #f1d6a34a;box-shadow:0 8px 22px #07101666}.portrait-placeholder{position:relative;overflow:hidden;background:linear-gradient(160deg,var(--portrait-a),var(--portrait-b));display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding:5px;color:#fff;text-align:center}.portrait-placeholder:before{content:'';position:absolute;top:13px;width:31px;height:35px;border-radius:50% 50% 46% 46%;background:#e9d7b899;box-shadow:0 30px 0 12px #d4bc9290}.portrait-placeholder:after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,transparent 0 48%,#ffffff12 49% 51%,transparent 52%);pointer-events:none}.portrait-placeholder span,.portrait-placeholder b,.portrait-placeholder small{position:relative;z-index:1;text-shadow:0 1px 4px #000}.portrait-placeholder span{font-size:6px;letter-spacing:.1em;color:#f2d59a}.portrait-placeholder b{max-width:100%;font:600 7px/1.25 monospace;overflow-wrap:anywhere}.portrait-placeholder small{font-size:7px;color:#e9e1d3}.monologue{width:min(92%,640px);margin:2px auto;padding:13px 17px;border:1px solid #e2c9934a;border-radius:5px;background:#0c1822bf;backdrop-filter:blur(10px);text-align:center;box-shadow:0 8px 25px #0710164d}.monologue span{font-size:9px;letter-spacing:.22em;color:var(--gold);font-weight:700}.monologue p{margin:6px 0 0!important;color:#eee6d8!important;font:italic 15px/1.7 'Gowun Batang',serif!important}.narration-line{width:min(94%,660px);margin:2px auto;padding:9px 15px;border-left:2px solid #d7ba7e80;border-right:2px solid #d7ba7e80;background:#0a151d8f;text-align:center;backdrop-filter:blur(7px)}.narration-line p{margin:0!important;color:#e8e2d8!important;font:14px/1.7 'Gowun Batang',serif!important}.dialogue-step{min-height:39px;margin-top:8px;display:flex;align-items:center;justify-content:flex-end;gap:12px}.dialogue-step>span{font-size:9px;color:#f2dfba99;letter-spacing:.1em}.advance-dialogue{min-width:150px;padding:10px 15px;border:1px solid #efd59d52;border-radius:4px;background:#13232dcf;color:#f5e8ce;font-size:12px}.advance-dialogue b{margin-left:12px;color:var(--gold);font-size:16px}.conversation-sub{margin-top:10px;text-align:center;color:#d7dedb99;font-size:10px}.choice-dock{margin-top:8px;padding:15px;border-top:1px solid #e2c18459;border-radius:8px;background:#0b1822dc;backdrop-filter:blur(12px);box-shadow:0 -12px 30px #0610184d}.choice-dock>span{display:block;margin-bottom:10px;color:var(--gold);font-size:9px;letter-spacing:.18em;font-weight:700}.choice-dock .choices{margin-top:0}.choice-dock .choice{box-shadow:0 5px 14px #0610182e}.conversation-panel>.result-chips{margin-top:10px}.conversation-panel>.next{margin-top:10px}.conversation-panel .first-status{margin-top:10px}
-@keyframes bubble-in{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
-@media(max-width:760px){.conversation-game{min-height:calc(100dvh - 115px);padding:15px 14px max(18px,env(safe-area-inset-bottom))}.conversation-game .game-header{position:sticky;top:0;z-index:4}.conversation-game .game-stats{margin-top:11px}.conversation-game .scene-title{padding-bottom:11px}.conversation-game .scene-title h2{font-size:28px}.dialogue-log{gap:8px}.message-row{gap:7px}.character-portrait{width:60px;height:76px;flex-basis:60px}.portrait-placeholder:before{top:10px;width:25px;height:28px;box-shadow:0 24px 0 10px #d4bc9290}.bubble-stack{max-width:calc(100% - 67px);gap:4px}.character-name{font-size:10px}.speech-bubble{padding:10px 12px!important;font-size:14.5px!important;line-height:1.58!important}.monologue{width:96%;padding:11px 13px}.monologue p{font-size:14px!important}.narration-line{width:96%;padding:8px 11px}.narration-line p{font-size:13px!important}.dialogue-step{min-height:35px}.advance-dialogue{width:100%;padding:9px 12px}.choice-dock{padding:12px 10px}.choice-dock .choice{padding:11px 12px}.conversation-sub{font-size:9px}.first-status{grid-template-columns:repeat(3,1fr)}}
-@media(min-width:761px){.conversation-panel{padding:0 20px}.dialogue-log{padding:0 10px}.conversation-game .scene-title{padding-bottom:24px}}
-@media(prefers-reduced-motion:reduce){.dialogue-log>*{animation:none}}
+/* Mobile portrait messenger + visual-novel dialogue layer */
+.conversation-game{isolation:isolate;min-height:780px;padding:20px 22px 16px;background-position:center 35%;color:var(--ink)}
+.conversation-game:before{z-index:0;background:linear-gradient(180deg,#07131dc7 0,#07131d42 23%,transparent 46%,#07131d40 62%,#07131df2 100%)}
+.conversation-game>*{z-index:2}
+.scene-scrim{position:absolute!important;z-index:1!important;inset:0;background:linear-gradient(90deg,#07131d21,transparent 30% 70%,#07131d21),linear-gradient(0deg,#07131dbd 0,transparent 48%);pointer-events:none}
+.conversation-game .game-header,.conversation-game .game-stats{z-index:5}
+.conversation-game .glass{background:#0b1a25d9;border-color:#d8c49c4a;box-shadow:0 6px 18px #02080d40}
+.conversation-game .game-stats{margin-top:11px;text-shadow:0 2px 8px #000}
+.conversation-game .scene-title{z-index:4;margin:10px 0 0;padding:0 4px;text-shadow:0 2px 12px #000b}
+.conversation-game .scene-title small{font-size:9px;letter-spacing:.2em;color:#f0e4ccad}
+.conversation-game .scene-title h2{max-width:650px;margin-top:5px;font:700 22px/1.35 'Gowun Batang',serif;color:#fffaf0}
+.character-stage{position:absolute!important;z-index:2!important;inset:92px 0 128px;overflow:hidden;pointer-events:none}
+.stage-character{position:absolute;bottom:-3%;width:auto;height:min(68vh,610px);max-width:67%;object-fit:contain;object-position:bottom;opacity:.78;transform-origin:bottom center;transition:filter .24s ease,opacity .24s ease,transform .24s ease;filter:drop-shadow(0 12px 20px #02080d66) brightness(.62) saturate(.78)}
+.stage-character.active{z-index:2;opacity:1;filter:drop-shadow(0 16px 24px #02080d80) brightness(1.02) saturate(1);transform:scale(1.025)}
+.stage-character.listening{z-index:1;transform:scale(.98)}
+.stage-left{left:-7%}.stage-right{right:-7%}
+.conversation-panel{position:relative;z-index:4;width:100%;max-width:760px;margin:auto auto 0;color:var(--ink)}
+.dialogue-log{display:grid;gap:8px;min-height:82px;align-content:end}
+.dialogue-log>*{animation:bubble-in .24s ease both;transform-origin:bottom}
+.dialogue-log>:not(:last-child){opacity:.64}
+.message-row{display:flex;width:100%}.message-row.player{justify-content:flex-end}
+.bubble-stack{display:grid;gap:4px;max-width:min(72%,520px)}
+.character-name{justify-self:start;padding:3px 9px;border-radius:10px 10px 3px 3px;background:#0a151edb;color:#f4ead8;font-size:10px;font-weight:700;letter-spacing:.05em;box-shadow:0 5px 12px #02080d45}
+.message-row.player .character-name{justify-self:end;color:#f4d99f}
+.speech-bubble{position:relative!important;margin:0!important;padding:11px 14px!important;border:1px solid #6a58441c;border-radius:4px 15px 15px 15px!important;background:#f3eee2ee!important;color:#253238!important;font:15px/1.62 'Gowun Batang',serif!important;white-space:pre-line;box-shadow:0 9px 25px #02080d59;backdrop-filter:blur(8px)}
+.message-row.player .speech-bubble{border-color:#e3c68052;border-radius:15px 4px 15px 15px!important;background:#19303ddd!important;color:#fff8e9!important}
+.speech-bubble:before{content:'';position:absolute;top:-1px;width:10px;height:13px;background:inherit}
+.message-row.npc .speech-bubble:before{left:-6px;clip-path:polygon(100% 0,100% 100%,0 0)}
+.message-row.player .speech-bubble:before{right:-6px;clip-path:polygon(0 0,100% 0,0 100%)}
+.monologue{position:relative;width:min(94%,660px);margin:2px auto;padding:17px 20px 15px;overflow:hidden;border:1px solid #d9c08a42;border-radius:46% 42% 48% 38%/30% 38% 32% 42%;background:radial-gradient(ellipse at 10% 40%,#0c1821f2 0 42%,transparent 44%),radial-gradient(ellipse at 90% 60%,#0c1821ed 0 42%,transparent 44%),#0c1821e8;box-shadow:0 10px 28px #02080d70;text-align:center;backdrop-filter:blur(9px)}
+.monologue:before{content:'';position:absolute;inset:5px;border:1px solid #f0ddb620;border-radius:inherit;pointer-events:none}
+.monologue span{position:relative;color:var(--gold);font-size:9px;font-weight:700;letter-spacing:.24em}
+.monologue p{position:relative;margin:6px 0 0!important;color:#f0e8dc!important;font:italic 15px/1.72 'Gowun Batang',serif!important;text-shadow:0 2px 8px #000}
+.narration-line{width:min(94%,660px);margin:2px auto;padding:10px 16px;border-left:1px solid #d7ba7e99;border-right:1px solid #d7ba7e99;background:linear-gradient(90deg,transparent,#07131dc9 16% 84%,transparent);text-align:center;text-shadow:0 2px 8px #000}
+.narration-line p{margin:0!important;color:#eee7da!important;font:13px/1.68 'Gowun Batang',serif!important}
+.dialogue-step{min-height:38px;margin-top:7px;display:flex;align-items:center;justify-content:flex-end;gap:10px}
+.dialogue-step>span{font-size:9px;color:#f2dfba99;letter-spacing:.1em;text-shadow:0 1px 4px #000}
+.advance-dialogue{min-width:165px;padding:10px 15px;border:1px solid #efd59d65;border-radius:5px;background:#0d202ce8;color:#f7ead2;font-size:12px;box-shadow:0 8px 22px #02080d59;backdrop-filter:blur(10px)}
+.advance-dialogue b{margin-left:12px;color:var(--gold);font-size:16px}
+.conversation-sub{margin-top:8px;text-align:center;color:#d7dedb87;font-size:9px;text-shadow:0 1px 4px #000}
+.choice-dock{margin-top:7px;padding:13px;border:1px solid #d8b9713d;border-radius:8px;background:#071722e8;box-shadow:0 -12px 30px #02080d66;backdrop-filter:blur(14px)}
+.choice-dock>span{display:block;margin-bottom:9px;color:var(--gold);font-size:9px;font-weight:700;letter-spacing:.2em}
+.choice-dock .choices{margin-top:0;gap:7px}
+.choice-dock .choice{min-height:43px;padding:10px 12px;border-color:#d8b97170;background:#102530e8;color:#fff3df;box-shadow:0 5px 14px #02080d2e}
+.choice-dock .choice:hover{border-color:#f0d796;background:#193441}
+.conversation-panel>.result-chips,.conversation-panel>.next,.conversation-panel .first-status{margin-top:9px}
+.conversation-panel>.next{min-height:44px;padding:11px 20px}
+.conversation-panel .memory-note{color:#f2e7d4;background:#0c1a24d9;border-color:var(--gold);box-shadow:0 8px 20px #02080d4f}
+.conversation-panel .correct-memory{color:#e8f2eb;background:#183129df;border-color:#8fbea0}
+.chapter-progress{position:relative;z-index:5;margin-top:11px}
+@keyframes bubble-in{from{opacity:0;transform:translateY(9px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:760px){
+  body:has(.conversation-game) .main{padding:0 0 72px}
+  .conversation-game{min-height:calc(100dvh - 72px);height:auto;padding:max(12px,env(safe-area-inset-top)) 13px max(10px,env(safe-area-inset-bottom));border-radius:0;background-position:center 32%}
+  .conversation-game .game-header{gap:6px}.conversation-game .glass{padding:8px 9px;font-size:10px;white-space:nowrap}
+  .conversation-game .game-stats{gap:12px;margin-top:8px;font-size:11px}.conversation-game .scene-title{margin-top:7px}
+  .conversation-game .scene-title h2{font-size:17px;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .character-stage{inset:86px 0 116px}.stage-character{bottom:0;height:min(61vh,515px);max-width:72%}.stage-left{left:-15%}.stage-right{right:-15%}
+  .dialogue-log{gap:7px;min-height:74px}.bubble-stack{max-width:73%;gap:3px}.character-name{padding:2px 8px;font-size:9px}
+  .speech-bubble{padding:9px 12px!important;font-size:14px!important;line-height:1.56!important}
+  .monologue{width:97%;padding:14px 15px 13px}.monologue p{font-size:14px!important;line-height:1.62!important}
+  .narration-line{width:97%;padding:8px 11px}.narration-line p{font-size:12px!important}
+  .dialogue-step{min-height:34px;margin-top:5px}.advance-dialogue{min-width:0;width:100%;padding:8px 12px}
+  .choice-dock{padding:11px 9px}.choice-dock .choice{min-height:40px;padding:9px 11px;font-size:12px}.choice-dock .choice small{font-size:9px}
+  .conversation-sub{font-size:8px;margin-top:5px}.first-status{grid-template-columns:repeat(3,1fr)}
+  .chapter-progress{gap:3px;margin-top:8px}.chapter-progress i{min-width:4px;width:auto;flex:1}
+}
+@media(min-width:761px){.conversation-panel{padding:0 20px}.dialogue-log{padding:0 10px}.stage-left{left:7%}.stage-right{right:7%}}
+@media(max-width:380px){.conversation-game{padding-left:10px;padding-right:10px}.conversation-game .glass{padding-left:7px;padding-right:7px;font-size:9px}.stage-character{height:min(57vh,475px)}.bubble-stack{max-width:77%}.speech-bubble{font-size:13.5px!important}}
+@media(prefers-reduced-motion:reduce){.dialogue-log>*,.stage-character{animation:none;transition:none}}

@@ -6,6 +6,6 @@ for(const ref of ['style.css','v2.css','dialogue.css','data.js','app.js'])assert
 new vm.Script(fs.readFileSync('dist/data.js','utf8'),{filename:'dist/data.js'});
 new vm.Script(fs.readFileSync('dist/app.js','utf8'),{filename:'dist/app.js'});
 const context=vm.createContext({});
-vm.runInContext(fs.readFileSync('dist/data.js','utf8')+';this.readyAssets=Object.values(ASSETS).filter(a=>a.status==="ready"&&a.src).map(a=>a.src);',context);
+vm.runInContext(fs.readFileSync('dist/data.js','utf8')+';this.readyAssets=[...Object.values(ASSETS),...Object.values(PORTRAITS)].filter(a=>a.status==="ready"&&a.src).map(a=>a.src);',context);
 for(const file of context.readyAssets)assert(fs.existsSync(path.join('dist',file)),`missing ready illustration: ${file}`);
 console.log(`PASS: static build verified (${required.length} files, ${context.readyAssets.length} ready illustrations).`);

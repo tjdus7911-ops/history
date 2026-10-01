@@ -8,62 +8,66 @@ const HISTORY={
   relatedPeople:['왕건','궁예','견훤'],relatedQuestions:['ch01-test-01','ch01-test-02','ch01-test-03','ch01-test-04','ch01-test-05','ch01-boss']
 };
 
+const sceneArt=(id,label,palette,embeddedCharacters=false)=>({status:'ready',src:`assets/scenes/${id}.png`,label,palette,embeddedCharacters});
 const ASSETS={
   'home-goryeo':{status:'ready',src:'goryeo.png',label:'고려 시대 전경',palette:['#203944','#9a6c45']},
-  'prologue-study':{status:'ready',src:'seoul-night.png',label:'2026년 서울, 한국사 공부를 하는 밤',palette:['#17283d','#9b673c']},
-  'prologue-sleep':{status:'ASSET_REQUIRED',label:'책상에 엎드려 잠든 주인공',palette:['#172238','#704d39']},
-  'timeslip-voice':{status:'ASSET_REQUIRED',label:'검은 화면과 낯선 목소리',palette:['#080b10','#303b45']},
-  'goryeo-house':{status:'ASSET_REQUIRED',label:'918년 민가에서 눈을 뜬 주인공과 낯선 청년',palette:['#3c2c22','#927051']},
-  'goryeo-house-question':{status:'ASSET_REQUIRED',label:'낯선 집 안을 경계하며 살피는 주인공',palette:['#443126','#aa815d']},
-  'village-reveal':{status:'ASSET_REQUIRED',label:'초가집과 흙길이 있는 10세기 마을',palette:['#506348','#aa8b5d']},
-  'village-rumor':{status:'ASSET_REQUIRED',label:'왕건의 건국 소문에 모여든 주민들',palette:['#4f5a40','#9b744d']},
-  'memory-wanggeon':{status:'ASSET_REQUIRED',label:'현대 교재와 왕건의 기억이 겹치는 순간',palette:['#1d3242','#a9824f']},
-  'title-foundation':{status:'ASSET_REQUIRED',label:'918년 고려 건국 타이틀 장면',palette:['#111b24','#9b7640']},
-  'market-later-three-kingdoms':{status:'ASSET_REQUIRED',label:'후삼국의 소문이 오가는 918년 장터',palette:['#66513a','#b09063']},
-  'doyun-intro':{status:'ASSET_REQUIRED',label:'장터에서 처음 만난 젊은 상인 도윤',palette:['#503f32','#9e7452']},
-  'status-first':{status:'ASSET_REQUIRED',label:'무일푼인 현실을 깨닫는 주인공',palette:['#273840','#77614a']},
-  'life-choice':{status:'ASSET_REQUIRED',label:'갈림길에서 송악을 가리키는 도윤',palette:['#394d45','#99764e']},
-  'route-songak':{status:'ASSET_REQUIRED',label:'송악으로 향하는 산길과 상인 행렬',palette:['#40594c','#9d8156']},
-  'route-songak-carry':{status:'ASSET_REQUIRED',label:'짐을 들고 상단과 걷는 주인공',palette:['#3e5141','#8f6e45']},
-  'route-songak-talk':{status:'ASSET_REQUIRED',label:'길 위에서 송악 이야기를 나누는 주인공과 도윤',palette:['#4b5c4c','#9b7d54']},
-  'route-village':{status:'ASSET_REQUIRED',label:'사람들이 빠져나간 조용한 마을과 넘어진 수레',palette:['#5a5543','#9b815e']},
-  'route-village-help':{status:'ASSET_REQUIRED',label:'주민과 함께 수레를 세우는 주인공',palette:['#565e46','#a08158']},
-  'route-village-call':{status:'ASSET_REQUIRED',label:'도움을 청해 사람들이 모이는 장면',palette:['#4c5947','#967852']},
-  'route-village-leave':{status:'ASSET_REQUIRED',label:'곤란한 주민을 뒤로하고 떠나는 주인공',palette:['#4c4942','#75634d']},
-  'route-caravan':{status:'ASSET_REQUIRED',label:'수레에 짐을 싣는 상단 사람들',palette:['#584735','#9d7650']},
-  'route-caravan-work':{status:'ASSET_REQUIRED',label:'상단의 짐을 빠르게 나르는 주인공',palette:['#524334','#96704a']},
-  'route-caravan-negotiate':{status:'ASSET_REQUIRED',label:'상인과 품삯을 협상하는 주인공',palette:['#443b32','#8d6a48']},
-  'route-caravan-goods':{status:'ASSET_REQUIRED',label:'상단의 직물과 물품을 살피는 주인공',palette:['#5c4634','#a4774c']},
-  'route-royal':{status:'ASSET_REQUIRED',label:'왕건을 찾겠다는 말에 모두가 돌아보는 장면',palette:['#423a35','#8b664c']},
-  'route-context':{status:'ASSET_REQUIRED',label:'송악 주변에 모인 호족과 상인, 백성의 움직임',palette:['#3a4b48','#8b744f']},
-  'thief-start':{status:'ASSET_REQUIRED',label:'시장 물건을 훔쳐 달아나는 도둑',palette:['#51483a','#8f6844']},
-  'thief-chase':{status:'ASSET_REQUIRED',label:'골목으로 달아나는 도둑을 직접 쫓는 주인공',palette:['#374347','#76583f']},
-  'thief-block':{status:'ASSET_REQUIRED',label:'사람들이 골목길을 막아서는 장면',palette:['#41504a','#846b4d']},
-  'thief-alley':{status:'ASSET_REQUIRED',label:'지름길 골목에서 도둑을 가로막는 주인공',palette:['#293a3c','#73553e']},
-  'thief-ignore':{status:'ASSET_REQUIRED',label:'도둑이 사라지고 도윤이 주인공을 바라보는 장면',palette:['#383a39','#675844']},
-  'thief-aftermath':{status:'ASSET_REQUIRED',label:'소란이 가라앉은 918년 시장',palette:['#48514a','#8d7452']},
-  'first-night':{status:'ASSET_REQUIRED',label:'918년 밤, 멀리 불빛을 바라보는 주인공의 뒷모습',palette:['#121d2b','#6d583f']},
-  'future-flow':{status:'ASSET_REQUIRED',label:'918·935·936년의 흐름이 기억처럼 겹치는 장면',palette:['#172635','#8a7045']},
-  'chapter-complete':{status:'ASSET_REQUIRED',label:'새 나라의 새벽과 챕터 완료 장면',palette:['#192a32','#b08b53']},
-  'chapter-02-teaser':{status:'ASSET_REQUIRED',label:'광종의 명으로 노비 기록을 조사하는 관리들',palette:['#151b24','#765841']}
+  'prologue-study':{status:'ready',src:'seoul-night.png',label:'2026년 서울, 한국사 공부를 하는 밤',palette:['#17283d','#9b673c'],embeddedCharacters:true},
+  'prologue-sleep':sceneArt('prologue-sleep','책상에 엎드려 잠든 주인공',['#172238','#704d39'],true),
+  'timeslip-voice':sceneArt('timeslip-voice','검은 화면과 낯선 목소리',['#080b10','#303b45'],true),
+  'goryeo-house':sceneArt('goryeo-house','918년 민가에서 눈을 뜬 주인공과 낯선 청년',['#3c2c22','#927051'],true),
+  'goryeo-house-question':sceneArt('goryeo-house-question','낯선 집 안을 경계하며 살피는 주인공',['#443126','#aa815d'],true),
+  'village-reveal':sceneArt('village-reveal','초가집과 흙길이 있는 10세기 마을',['#506348','#aa8b5d'],true),
+  'village-rumor':sceneArt('village-rumor','왕건의 건국 소문에 모여든 주민들',['#4f5a40','#9b744d'],true),
+  'memory-wanggeon':sceneArt('memory-wanggeon','현대 교재와 왕건의 기억이 겹치는 순간',['#1d3242','#a9824f'],true),
+  'title-foundation':sceneArt('title-foundation','918년 고려 건국 타이틀 장면',['#111b24','#9b7640']),
+  'market-later-three-kingdoms':sceneArt('market-later-three-kingdoms','후삼국의 소문이 오가는 918년 장터',['#66513a','#b09063'],true),
+  'doyun-intro':sceneArt('doyun-intro','장터에서 처음 만난 젊은 상인 도윤',['#503f32','#9e7452']),
+  'status-first':sceneArt('status-first','무일푼인 현실을 깨닫는 주인공',['#273840','#77614a']),
+  'life-choice':sceneArt('life-choice','갈림길에서 송악을 가리키는 도윤',['#394d45','#99764e']),
+  'route-songak':sceneArt('route-songak','송악으로 향하는 산길과 상인 행렬',['#40594c','#9d8156']),
+  'route-songak-carry':sceneArt('route-songak-carry','짐을 들고 상단과 걷는 주인공',['#3e5141','#8f6e45'],true),
+  'route-songak-talk':sceneArt('route-songak-talk','길 위에서 송악 이야기를 나누는 주인공과 도윤',['#4b5c4c','#9b7d54'],true),
+  'route-village':sceneArt('route-village','사람들이 빠져나간 조용한 마을과 넘어진 수레',['#5a5543','#9b815e']),
+  'route-village-help':sceneArt('route-village-help','주민과 함께 수레를 세우는 주인공',['#565e46','#a08158'],true),
+  'route-village-call':sceneArt('route-village-call','도움을 청해 사람들이 모이는 장면',['#4c5947','#967852'],true),
+  'route-village-leave':sceneArt('route-village-leave','곤란한 주민을 뒤로하고 떠나는 주인공',['#4c4942','#75634d'],true),
+  'route-caravan':sceneArt('route-caravan','수레에 짐을 싣는 상단 사람들',['#584735','#9d7650']),
+  'route-caravan-work':sceneArt('route-caravan-work','상단의 짐을 빠르게 나르는 주인공',['#524334','#96704a'],true),
+  'route-caravan-negotiate':sceneArt('route-caravan-negotiate','상인과 품삯을 협상하는 주인공',['#443b32','#8d6a48'],true),
+  'route-caravan-goods':sceneArt('route-caravan-goods','상단의 직물과 물품을 살피는 주인공',['#5c4634','#a4774c'],true),
+  'route-royal':sceneArt('route-royal','왕건을 찾겠다는 말에 모두가 돌아보는 장면',['#423a35','#8b664c']),
+  'route-context':sceneArt('route-context','송악 주변에 모인 호족과 상인, 백성의 움직임',['#3a4b48','#8b744f']),
+  'thief-start':sceneArt('thief-start','시장 물건을 훔쳐 달아나는 도둑',['#51483a','#8f6844'],true),
+  'thief-chase':sceneArt('thief-chase','골목으로 달아나는 도둑을 직접 쫓는 주인공',['#374347','#76583f'],true),
+  'thief-block':sceneArt('thief-block','사람들이 골목길을 막아서는 장면',['#41504a','#846b4d'],true),
+  'thief-alley':sceneArt('thief-alley','지름길 골목에서 도둑을 가로막는 주인공',['#293a3c','#73553e'],true),
+  'thief-ignore':sceneArt('thief-ignore','도둑이 사라지고 도윤이 주인공을 바라보는 장면',['#383a39','#675844'],true),
+  'thief-aftermath':sceneArt('thief-aftermath','소란이 가라앉은 918년 시장',['#48514a','#8d7452']),
+  'first-night':sceneArt('first-night','918년 밤, 멀리 불빛을 바라보는 주인공의 뒷모습',['#121d2b','#6d583f'],true),
+  'future-flow':sceneArt('future-flow','918·935·936년의 흐름이 기억처럼 겹치는 장면',['#172635','#8a7045'],true),
+  'chapter-complete':sceneArt('chapter-complete','새 나라의 새벽과 챕터 완료 장면',['#192a32','#b08b53'],true),
+  'chapter-02-teaser':sceneArt('chapter-02-teaser','광종의 명으로 노비 기록을 조사하는 관리들',['#151b24','#765841'],true)
 };
 
-const EXPRESSIONS=['neutral','smile','surprised','worried','suspicious','serious','embarrassed','angry','sad'];
-const portrait=(characterId,expression,label,palette)=>({status:'ASSET_REQUIRED',characterId,expression,label,palette});
+const EXPRESSIONS=['neutral','smile','surprised','worried','thinking','suspicious','serious','embarrassed','angry','sad'];
+const portrait=(characterId,expression,label,palette,src=null,outfit=null)=>({status:src?'ready':'ASSET_REQUIRED',characterId,expression,label,palette,...(src?{src}:{}),...(outfit?{outfit}:{})});
 const PORTRAITS={
-  player_neutral:portrait('player','neutral','주인공 · 차분한 기본 표정',['#294151','#8e765b']),
-  player_surprised:portrait('player','surprised','주인공 · 눈을 크게 뜬 놀란 표정',['#294151','#a17d5c']),
-  player_worried:portrait('player','worried','주인공 · 불안하게 생각하는 표정',['#263946','#786956']),
-  player_suspicious:portrait('player','suspicious','주인공 · 주변을 경계하며 살피는 표정',['#263b48','#7d6b54']),
-  player_serious:portrait('player','serious','주인공 · 결심한 진지한 표정',['#263a47','#846b50']),
-  player_embarrassed:portrait('player','embarrassed','주인공 · 난처해 시선을 피하는 표정',['#334651','#a17d64']),
-  player_sad:portrait('player','sad','주인공 · 후회하거나 풀이 죽은 표정',['#263744','#6f655a']),
-  doyun_neutral:portrait('doyun','neutral','도윤 · 상대를 살피는 기본 표정',['#4a382b','#a77950']),
-  doyun_smile:portrait('doyun','smile','도윤 · 믿음직하게 미소 짓는 표정',['#4b3a2c','#b18155']),
-  doyun_surprised:portrait('doyun','surprised','도윤 · 눈썹을 들며 놀란 표정',['#4c382c','#ad7452']),
-  doyun_suspicious:portrait('doyun','suspicious','도윤 · 의심스레 눈을 가늘게 뜬 표정',['#3f332b','#87634c']),
-  doyun_serious:portrait('doyun','serious','도윤 · 현실적인 조언을 하는 진지한 표정',['#43352a','#916747']),
-  doyun_worried:portrait('doyun','worried','도윤 · 걱정스럽게 바라보는 표정',['#41352d','#80664f']),
+  player_neutral:portrait('player','neutral','주인공 · 차분한 기본 표정',['#294151','#8e765b'],'assets/characters/player_modern_neutral.png','modern'),
+  player_smile:portrait('player','smile','주인공 · 안도하는 작은 미소',['#294151','#a17d5c'],'assets/characters/player_modern_smile.png','modern'),
+  player_surprised:portrait('player','surprised','주인공 · 눈을 크게 뜬 놀란 표정',['#294151','#a17d5c'],'assets/characters/player_modern_surprised.png','modern'),
+  player_worried:portrait('player','worried','주인공 · 불안하게 생각하는 표정',['#263946','#786956'],'assets/characters/player_modern_worried.png','modern'),
+  player_thinking:portrait('player','thinking','주인공 · 상황을 분석하는 표정',['#263b48','#7d6b54'],'assets/characters/player_modern_thinking.png','modern'),
+  player_suspicious:portrait('player','suspicious','주인공 · 주변을 경계하며 살피는 표정',['#263b48','#7d6b54'],'assets/characters/player_modern_thinking.png','modern'),
+  player_serious:portrait('player','serious','주인공 · 결심한 진지한 표정',['#263a47','#846b50'],'assets/characters/player_modern_serious.png','modern'),
+  player_embarrassed:portrait('player','embarrassed','주인공 · 난처해 시선을 피하는 표정',['#334651','#a17d64'],'assets/characters/player_modern_embarrassed.png','modern'),
+  player_angry:portrait('player','angry','주인공 · 불의를 보고 화난 표정',['#3e3034','#925346'],'assets/characters/player_modern_angry.png','modern'),
+  player_sad:portrait('player','sad','주인공 · 후회하거나 풀이 죽은 표정',['#263744','#6f655a'],'assets/characters/player_modern_sad.png','modern'),
+  doyun_neutral:portrait('doyun','neutral','도윤 · 상대를 살피는 기본 표정',['#4a382b','#a77950'],'assets/characters/doyun_neutral.png'),
+  doyun_smile:portrait('doyun','smile','도윤 · 믿음직하게 미소 짓는 표정',['#4b3a2c','#b18155'],'assets/characters/doyun_smile.png'),
+  doyun_surprised:portrait('doyun','surprised','도윤 · 눈썹을 들며 놀란 표정',['#4c382c','#ad7452'],'assets/characters/doyun_surprised.png'),
+  doyun_suspicious:portrait('doyun','suspicious','도윤 · 의심스레 눈을 가늘게 뜬 표정',['#3f332b','#87634c'],'assets/characters/doyun_suspicious.png'),
+  doyun_serious:portrait('doyun','serious','도윤 · 현실적인 조언을 하는 진지한 표정',['#43352a','#916747'],'assets/characters/doyun_serious.png'),
+  doyun_worried:portrait('doyun','worried','도윤 · 걱정스럽게 바라보는 표정',['#41352d','#80664f'],'assets/characters/doyun_worried.png'),
   stranger_neutral:portrait('stranger','neutral','낯선 청년 · 조심스러운 기본 표정',['#45382e','#8c7057']),
   stranger_worried:portrait('stranger','worried','낯선 청년 · 쓰러진 이를 걱정하는 표정',['#40362f','#7f6d5c']),
   stranger_suspicious:portrait('stranger','suspicious','낯선 청년 · 낯선 말을 의심하는 표정',['#3d342e','#755d4a']),
@@ -78,8 +82,9 @@ const PORTRAITS={
   merchant_angry:portrait('merchant','angry','상인 · 도둑을 향해 외치는 분노한 표정',['#4b302a','#9c5843']),
   unknown_worried:portrait('unknown','worried','정체불명의 목소리 · 걱정스러운 실루엣',['#1d2630','#565b5f'])
 };
+const PLAYER_MODERN_PORTRAITS=Object.fromEntries(['neutral','smile','surprised','worried','thinking','suspicious','serious','embarrassed','angry','sad'].map(expression=>[expression,`player_${expression}`]));
 const CHARACTERS={
-  player:{characterId:'player',characterName:'나',speakerType:'player',portraitPrefix:'player'},
+  player:{characterId:'player',characterName:'나',speakerType:'player',side:'right',outfit:'modern',portraitPrefix:'player',portraits:{modern:PLAYER_MODERN_PORTRAITS,goryeo:{}}},
   doyun:{characterId:'doyun',characterName:'도윤',speakerType:'npc',portraitPrefix:'doyun'},
   stranger:{characterId:'stranger',characterName:'낯선 청년',speakerType:'npc',portraitPrefix:'stranger'},
   resident_a:{characterId:'resident_a',characterName:'주민 A',speakerType:'npc',portraitPrefix:'resident_a'},
@@ -93,7 +98,8 @@ const CHARACTERS={
 const dialogueLine=(characterId,expression,dialogue,speakerType=null)=>{
   const character=CHARACTERS[characterId]||CHARACTERS.narrator;
   const type=speakerType||character.speakerType;
-  const portraitId=(type==='player'||type==='npc')?`${character.portraitPrefix}_${expression}`:null;
+  const outfitPortrait=character.portraits?.[character.outfit]?.[expression];
+  const portraitId=(type==='player'||type==='npc'||type==='thought')?(outfitPortrait||`${character.portraitPrefix}_${expression}`):null;
   return {characterId:character.characterId,characterName:character.characterName,speakerType:type,portrait:portraitId,expression,dialogue,alignment:type==='player'?'right':type==='npc'?'left':'center'};
 };
 
@@ -135,7 +141,7 @@ const STORIES={
   rumor:scene({sceneId:'rumor',year:918,location:'마을 · 흙길',speaker:'주민',title:'왕건 장군이 새 나라를 세웠다',illustrationId:'village-rumor',timeOfDay:'morning',dialogue:'“들었나?”\n“무슨 일인데?”\n“왕건 장군께서 새 나라를 세우셨다네!”\n\n“……왕건?”',quizId:'ch01-test-01'}),
   foundation:scene({sceneId:'foundation',year:918,location:'기억과 현실의 경계',speaker:'나',title:'918년 · 고려 건국',illustrationId:'title-foundation',timeOfDay:'day',sceneEffect:'title-reveal',dialogue:'“나라 이름은 고려라고 한다더군.”\n\n……고려.\n\n918년. 고려 건국.\n눈떠보니 고려.',quizId:'ch01-test-02'}),
   market:scene({sceneId:'market',year:918,location:'마을 · 장터',speaker:'장터 사람들',title:'아직 통일된 게 아니야',illustrationId:'market-later-three-kingdoms',timeOfDay:'afternoon',ambientSound:'market',dialogue:'“견훤의 군대가 만만치 않다던데.”\n“신라는 힘이 예전 같지 않고.”\n“궁예가 물러났다고 세상이 바로 조용해지겠나.”\n\n견훤. 신라. 왕건.\n잠깐…… 아직 통일된 게 아니야.',nextStoryId:'doyun'}),
-  doyun:scene({sceneId:'doyun',year:918,location:'마을 · 장터',speaker:'도윤 · 젊은 상인',title:'궁예를 모르는 사람이 어디 있소',illustrationId:'doyun-intro',timeOfDay:'afternoon',characterExpression:'curious',dialogue:'“궁예가 그렇게 될 줄 누가 알았겠소.”\n\n“궁예를 알아요?”\n\n“모르는 사람이 어디 있소. 한때는 세상이 모두 그의 것이 될 것 같았지.”\n\n궁예 → 후고구려. 견훤 → 후백제. 왕건 → 고려.',quizId:'ch01-test-03'}),
+  doyun:scene({sceneId:'doyun',year:918,location:'마을 · 장터',speaker:'도윤 · 젊은 상인',title:'궁예가 쫓겨나고, 왕건이 왕이 됐다',illustrationId:'doyun-intro',timeOfDay:'afternoon',characterExpression:'serious',dialogue:'“궁예가 그렇게 쫓겨날 줄 누가 알았겠소.”\n\n“……쫓겨났다고요?”\n\n“자네 정말 아무것도 모르는군. 왕건 장군을 왕으로 세운 지 얼마 되지도 않았소.”\n\n잠깐. 궁예가 쫓겨나고 왕건이 왕이 됐다면…….',quizId:'ch01-test-03'}),
   status:scene({sceneId:'status',year:918,location:'마을 · 장터 어귀',speaker:'도윤',title:'그런데 자네, 갈 곳은 있소?',illustrationId:'status-first',timeOfDay:'afternoon',dialogue:'“갈 곳은 있소?”\n\n“……없는데요.”\n\n“돈은?”\n\n“…….”\n\n고려에 떨어진 것도 문제인데. 나 지금 무일푼이잖아.',nextStoryId:'life_choice'}),
   life_choice:scene({sceneId:'life_choice',year:918,location:'마을 밖 · 갈림길',speaker:'도윤',title:'첫 번째 큰 인생 선택',illustrationId:'life-choice',timeOfDay:'afternoon',dialogue:'“나는 송악으로 갈 생각이오. 새 나라가 들어섰으니 사람이 몰릴 테고, 사람이 몰리면 장사가 되겠지.”\n\n“자네는 어떻게 할 건가?”',choices:[
     choice('송악으로 간다','route_songak',{}, {doyun:5},'도윤과 함께 새로운 나라의 중심으로 향했다.',{route:'songak',flags:{songakRoute:1},playerResponse:'저도 송악으로 가겠습니다.',playerExpression:'serious',responseText:'좋소. 그럼 길에서 내 짐을 조금 나눠 듭시다.',responseCharacterId:'doyun',responseExpression:'smile',resultSceneId:'life-choice-songak',resultIllustrationId:'route-songak',hint:'송악 루트 +1 · 도윤 +5'}),
@@ -197,7 +203,7 @@ const DIALOGUES={
   village:[
     dialogueLine('narrator','neutral','초가집, 흙길, 말과 수레. 멀리 산이 보인다. 현대 물건은 하나도 없다.','narration'),
     dialogueLine('player','surprised','…….'),
-    dialogueLine('player','suspicious','촬영장이 아니야.','thought')
+    dialogueLine('player','thinking','촬영장이 아니야.','thought')
   ],
   rumor:[
     dialogueLine('resident_a','serious','들었나?'),
@@ -218,11 +224,11 @@ const DIALOGUES={
     dialogueLine('player','worried','견훤. 신라. 왕건. 잠깐…… 아직 통일된 게 아니야.','thought')
   ],
   doyun:[
-    dialogueLine('doyun','serious','궁예가 그렇게 될 줄 누가 알았겠소.'),
-    dialogueLine('player','surprised','궁예를 알아요?'),
-    dialogueLine('doyun','neutral','모르는 사람이 어디 있소.'),
-    dialogueLine('doyun','worried','한때는 세상이 모두 그의 것이 될 것 같았지.'),
-    dialogueLine('player','serious','궁예 → 후고구려. 견훤 → 후백제. 왕건 → 고려.','thought')
+    dialogueLine('doyun','serious','궁예가 그렇게 쫓겨날 줄 누가 알았겠소.'),
+    dialogueLine('player','surprised','……쫓겨났다고요?'),
+    dialogueLine('doyun','suspicious','자네 정말 아무것도 모르는군. 왕건 장군을 왕으로 세운 지 얼마 되지도 않았소.'),
+    dialogueLine('player','thinking','잠깐. 궁예가 쫓겨나고 왕건이 왕이 됐다면…….','thought'),
+    dialogueLine('narrator','neutral','궁예 → 후고구려 → 마진 → 태봉 · 왕건은 궁예의 휘하에서 성장 · 918년 왕건 즉위','narration')
   ],
   status:[
     dialogueLine('doyun','neutral','갈 곳은 있소?'),
