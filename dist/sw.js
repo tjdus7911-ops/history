@@ -1,5 +1,5 @@
 const CACHE_PREFIX='lived-history-shell-';
-const CACHE_VERSION='2026-10-01-ten-questions-per-chapter';
+const CACHE_VERSION='2026-10-01-ch01-918-943';
 const CACHE_NAME=CACHE_PREFIX+CACHE_VERSION;
 const APP_SHELL=[
   '/',
@@ -12,6 +12,7 @@ const APP_SHELL=[
   '/ch02-data.js',
   '/ch03-data.js',
   '/exam-data.js',
+  '/ch01-expansion.js',
   '/app.js',
   '/pwa.js',
   '/manifest.webmanifest',

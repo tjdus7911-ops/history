@@ -1,0 +1,52 @@
+/* Optional real-browser QA. Use an isolated profile, never the player's saved browser. */
+const fs=require('fs'),path=require('path'),http=require('http'),assert=require('assert');
+const {chromium}=require('playwright');
+const root=path.resolve(__dirname,'../dist');
+const server=http.createServer((req,res)=>{
+  const relative=decodeURIComponent(req.url.split('?')[0]);
+  const file=path.resolve(root,'.'+(relative==='/'?'/index.html':relative));
+  if(!file.startsWith(root+path.sep)){res.writeHead(403);return res.end()}
+  fs.readFile(file,(error,buffer)=>{if(error){res.writeHead(404);return res.end()}res.setHeader('Content-Type',({'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.png':'image/png','.svg':'image/svg+xml','.webmanifest':'application/manifest+json'})[path.extname(file)]||'application/octet-stream');res.end(buffer)});
+});
+let browser;
+async function main(){
+  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
+  const url=`http://127.0.0.1:${server.address().port}/`;
+  browser=await chromium.launch({headless:true,...(process.env.BROWSER_CHANNEL?{channel:process.env.BROWSER_CHANNEL}:{})});
+  const context=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,serviceWorkers:'block'});
+  const page=await context.newPage(),errors=[];page.on('pageerror',error=>errors.push(error.message));
+  await page.goto(url);
+  const read=()=>page.evaluate(()=>({screen,run:JSON.parse(JSON.stringify(run())),scene:STORIES[run().storyId],question:QUESTIONS.find(q=>q.questionId===run().activeQuestionId)}));
+  const tap=async selector=>{await page.locator(selector).first().click();await page.waitForTimeout(180)};
+  const fit=async()=>assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'mobile horizontal overflow');
+  const snapshot=async name=>{if(!process.env.TEST_ARTIFACT_DIR)return;fs.mkdirSync(process.env.TEST_ARTIFACT_DIR,{recursive:true});await page.screenshot({path:path.join(process.env.TEST_ARTIFACT_DIR,name+'.png'),fullPage:true})};
+  await tap('[data-action="play"]');
+  let guard=0,checkedOpening=false,checked943=false;
+  while(!(await read()).run.completed){
+    const current=await read();await fit();
+    if(current.run.storyId==='voice'&&!checkedOpening){
+      assert.equal(current.run.dialogueCursor,1);assert.equal(await page.locator('.cinematic-black').evaluate(el=>getComputedStyle(el).backgroundColor),'rgb(0, 0, 0)');
+      assert.equal(await page.locator('.stage-character').count(),0);await page.waitForTimeout(2200);assert.equal((await read()).run.dialogueCursor,1);
+      await snapshot('ch01-black-first');await tap('[data-action="advance-dialogue"]');assert.equal((await read()).run.dialogueCursor,2);await page.waitForTimeout(2200);assert.equal((await read()).run.dialogueCursor,2);await snapshot('ch01-black-second');
+      await tap('[data-action="next"]');await page.waitForSelector('.effect-wake-reveal');await page.waitForTimeout(500);
+      assert.equal(await page.locator('.stage-character').count(),2);assert.equal((await read()).run.storyId,'house');await snapshot('ch01-first-meeting');checkedOpening=true;continue;
+    }
+    if(current.scene?.year===943&&!checked943){assert.equal(current.run.characterStates.doyun.characterAge,49);await snapshot('ch01-943');checked943=true}
+    if(current.question){await tap(`[data-answer="${current.question.answer}"]`);await tap('[data-action="quiz-next"]')}
+    else if(await page.locator('[data-action="advance-dialogue"]').count())await tap('[data-action="advance-dialogue"]');
+    else if(current.run.pending)await tap('[data-action="result-next"]');
+    else if(current.scene.choices)await tap('[data-choice="0"]');
+    else await tap('[data-action="next"]');
+    if(++guard>500)throw new Error('mobile play did not complete');
+  }
+  assert(checkedOpening&&checked943);assert.equal(Object.keys((await read()).run.questionResults).length,10);await fit();await snapshot('ch01-complete');
+  await tap('[data-action="start-ch01-review"]');
+  for(let index=0;index<13;index++){
+    const answer=await page.evaluate(()=>QUESTIONS.find(q=>q.questionId===reviewQuestionId).answer);await tap(`[data-answer="${answer}"]`);await tap('[data-action="quiz-next"]');await fit();
+  }
+  assert.equal(await page.evaluate(()=>meta().ch01ReviewAttempts.at(-1).correct),13);
+  await page.reload();await tap('[data-action="play"]');await tap('[data-nav="teaser"]');await tap('[data-action="start-ch02"]');assert.equal((await read()).run.currentChapter,'ch02');
+  for(const width of [320,390,760]){await page.setViewportSize({width,height:844});await fit()}
+  assert.deepEqual(errors,[]);console.log('PASS: isolated 390px mobile CH.01 play, black-screen idle/taps, portraits, 943, all story questions, thirteen reviews, reload, CH.02 entry, 320/390/760px overflow.');
+}
+main().catch(error=>{console.error(error.stack||error);process.exitCode=1}).finally(async()=>{if(browser)await browser.close();server.close()});

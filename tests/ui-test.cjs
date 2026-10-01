@@ -1,6 +1,6 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
 let saved=null,html='',handlers={},context,timers=[],typingElement=null;
-const data=fs.readFileSync('dist/data.js','utf8')+'\n'+fs.readFileSync('dist/ch02-data.js','utf8')+'\n'+fs.readFileSync('dist/ch03-data.js','utf8')+'\n'+fs.readFileSync('dist/exam-data.js','utf8'),app=fs.readFileSync('dist/app.js','utf8'),css=fs.readFileSync('dist/dialogue.css','utf8');
+const data=fs.readFileSync('dist/data.js','utf8')+'\n'+fs.readFileSync('dist/ch02-data.js','utf8')+'\n'+fs.readFileSync('dist/ch03-data.js','utf8')+'\n'+fs.readFileSync('dist/exam-data.js','utf8')+'\n'+fs.readFileSync('dist/ch01-expansion.js','utf8'),app=fs.readFileSync('dist/app.js','utf8'),css=fs.readFileSync('dist/dialogue.css','utf8');
 function boot(){
   handlers={};timers=[];
   const root={set innerHTML(s){html=s},get innerHTML(){return html}};
@@ -36,7 +36,7 @@ assert.equal(story(),'rumor');next();assert.equal(current().run.activeQuestionId
 answer(1);assert(html.includes('기억이 흐릿하다'));assert(current().meta.wrongQuestionIds.includes('ch01-test-01'));action('quiz-next');drainSupplementalQuestions();
 assert.equal(story(),'foundation');revealDialogue();assert(html.includes('918년과 936년을 헷갈리고 있어요'));action('next');
 answerCurrent(2);assert.equal(story(),'market');next();assert.equal(story(),'doyun');
-assert(html.includes('궁예가 그렇게 쫓겨날 줄'));action('advance-dialogue');assert(html.includes('……쫓겨났다고요?'));revealDialogue();assert(html.includes('왕건 장군을 왕으로 세운 지 얼마 되지도 않았소'));action('next');answerCurrent(1);
+assert(html.includes('궁예가 그렇게 쫓겨날 줄'));action('advance-dialogue');assert(html.includes('……쫓겨났다고요?'));revealDialogue();assert(html.includes('왕건 장군을 왕으로 세운 지 얼마 되지도 않았소'));action('next');
 assert.equal(story(),'status');assert(html.includes('data-speaker-type="npc"'));assert(html.includes('data-expression="neutral"'));assert(html.includes('갈 곳은 있소?'));
 action('advance-dialogue');assert(html.includes('data-speaker-type="player"'));assert(html.includes('data-expression="embarrassed"'));assert(html.includes('……없는데요.'));
 action('advance-dialogue');assert(html.includes('data-expression="surprised"'));assert(html.includes('돈은?'));
@@ -45,10 +45,13 @@ assert(!html.includes('data-action="advance-dialogue"'));action('next');assert.e
 selectChoice(2);assert.equal(current().run.route,'merchant');assert(html.includes('data-speaker-type="player"'));assert(html.includes('data-expression="embarrassed"'));assert(html.includes('상단에서 일할 수 있을까요?'));assert(html.includes('route-caravan'));
 action('advance-dialogue');assert(html.includes('data-speaker-type="npc"'));assert(html.includes('data-expression="smile"'));assert(html.includes('일손은 언제나 필요하오'));resultNext();
 assert.equal(story(),'route_caravan');choice(0);assert.equal(current().run.stats.wealth,10);assert.equal(current().run.job,'상단 일꾼');assert(html.includes('route-caravan-work'));resultNext();
-assert.equal(story(),'route_context');next();answerCurrent(1);
+assert.equal(story(),'route_context');next();
 assert.equal(story(),'thief');choice(2);assert.equal(current().run.stats.fame,8);assert(html.includes('thief-alley'));resultNext();
-assert.equal(story(),'thief_aftermath');next();answerCurrent(3);
-assert.equal(story(),'night');next();assert.equal(story(),'future_flow');next();answerCurrent(3);
+assert.equal(story(),'thief_aftermath');next();
+assert.equal(story(),'night');next();assert.equal(story(),'ch01_trade_start');
+const years=new Set();let expansionGuard=0;
+while(!current().run.completed){years.add(vm.runInContext('STORIES[run().storyId]?.year',context));if(current().run.activeQuestionId)answerCurrent(currentAnswer());else if(current().run.pending)resultNext();else if(vm.runInContext('Boolean(STORIES[run().storyId]?.choices)',context))choice(0);else next();if(++expansionGuard>90)throw new Error('expanded story stalled')}
+assert([927,930,935,936,943].every(year=>years.has(year)));assert.equal(Object.keys(current().run.questionResults).length,10);assert.equal(current().run.characterStates.doyun.characterAge,49);assert.equal(current().run.doyunLegacy.plannedName,'도윤상단');
 assert(current().run.completed);assert.equal(current().run.storyId,'complete');assert(html.includes('CHAPTER 01 COMPLETE'));assert(html.includes('처음에 헷갈렸던 936년'));
 assert.equal(current().meta.completedRuns,1);assert(current().meta.cards.includes('goryeo-foundation-918'));assert(current().meta.people.includes('왕건'));
 

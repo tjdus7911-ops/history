@@ -95,3 +95,5 @@ body:has(.cinematic-black) .main{padding:0!important;background:#000}
 
 body:has(.cinematic-black) .main.fade{animation:none}
 body:has(.cinematic-black) .mobile-nav{display:none}
+
+.ch01-review-panel{margin:20px 0;padding:20px;border:1px solid #b897614a;border-radius:12px;background:#182a34;color:#f5ead8}.ch01-review-panel h2{margin:8px 0}.ch01-review-panel p{color:#ded5c5;line-height:1.6}.concept-retries{display:flex;flex-wrap:wrap;gap:8px}.ch01-years{flex-wrap:wrap;gap:8px}.ch01-years span{flex:1 1 120px}.ch01-answer-details{padding:12px 0;border-top:1px solid #bdab8640}.ch01-answer-details p{font-size:13px;line-height:1.7}.ch01-answer-details .correct-reason{font-weight:700}.ch01-card-shelf{margin-bottom:20px}.practice-progress{font-weight:700}@media(max-width:760px){.ch01-review-panel{padding:16px}.ch01-review-panel .primary{width:100%}.concept-retries button{max-width:100%;white-space:normal}.ch01-years span{flex-basis:40%}}
