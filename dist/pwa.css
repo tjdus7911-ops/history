@@ -1,0 +1,27 @@
+html{min-height:100%;background:#121e27}
+body{min-height:100dvh}
+
+@media(max-width:760px){
+  .sidebar{
+    height:calc(72px + env(safe-area-inset-bottom));
+    padding:0 10px env(safe-area-inset-bottom);
+  }
+  .main{
+    padding-top:calc(23px + env(safe-area-inset-top));
+    padding-bottom:calc(95px + env(safe-area-inset-bottom));
+  }
+  .toast{bottom:calc(85px + env(safe-area-inset-bottom))}
+  .modal-overlay{
+    padding-top:calc(20px + env(safe-area-inset-top));
+    padding-bottom:calc(20px + env(safe-area-inset-bottom));
+  }
+  .chapter-sheet-overlay{
+    padding-top:env(safe-area-inset-top);
+    padding-bottom:0;
+  }
+}
+
+@media(display-mode:standalone){
+  body{overscroll-behavior-y:none}
+  .shell{min-height:100dvh}
+}

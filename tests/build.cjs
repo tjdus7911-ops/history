@@ -1,12 +1,25 @@
 const fs=require('fs'),path=require('path'),vm=require('vm'),assert=require('assert');
-const required=['dist/index.html','dist/style.css','dist/v2.css','dist/dialogue.css','dist/data.js','dist/ch02-data.js','dist/app.js','dist/goryeo.png','dist/seoul-night.png'];
+const required=['dist/index.html','dist/style.css','dist/v2.css','dist/dialogue.css','dist/pwa.css','dist/data.js','dist/ch02-data.js','dist/app.js','dist/pwa.js','dist/sw.js','dist/manifest.webmanifest','dist/goryeo.png','dist/seoul-night.png','dist/icons/icon-192.png','dist/icons/icon-512.png','dist/icons/icon-maskable-512.png','dist/icons/apple-touch-icon.png','vercel.json'];
 for(const file of required)assert(fs.existsSync(file),`missing build asset: ${file}`);
 const html=fs.readFileSync('dist/index.html','utf8');
-for(const ref of ['style.css','v2.css','dialogue.css','data.js','ch02-data.js','app.js'])assert(html.includes(ref),`index.html does not reference ${ref}`);
+for(const ref of ['manifest.webmanifest','style.css','v2.css','dialogue.css','pwa.css','data.js','ch02-data.js','app.js','pwa.js','apple-touch-icon.png'])assert(html.includes(ref),`index.html does not reference ${ref}`);
+for(const meta of ['viewport-fit=cover','apple-mobile-web-app-capable','apple-mobile-web-app-status-bar-style','mobile-web-app-capable'])assert(html.includes(meta),`index.html is missing ${meta}`);
 new vm.Script(fs.readFileSync('dist/data.js','utf8'),{filename:'dist/data.js'});
 new vm.Script(fs.readFileSync('dist/ch02-data.js','utf8'),{filename:'dist/ch02-data.js'});
 new vm.Script(fs.readFileSync('dist/app.js','utf8'),{filename:'dist/app.js'});
+new vm.Script(fs.readFileSync('dist/pwa.js','utf8'),{filename:'dist/pwa.js'});
+new vm.Script(fs.readFileSync('dist/sw.js','utf8'),{filename:'dist/sw.js'});
+const manifest=JSON.parse(fs.readFileSync('dist/manifest.webmanifest','utf8'));
+assert.equal(manifest.name,'살아본 한국사');assert.equal(manifest.short_name,'살아본 한국사');assert.equal(manifest.start_url,'/');assert.equal(manifest.scope,'/');assert.equal(manifest.display,'standalone');assert.equal(manifest.orientation,'portrait');assert.equal(manifest.lang,'ko-KR');
+const iconBySize=new Map(manifest.icons.map(icon=>[icon.sizes,icon]));assert(iconBySize.has('192x192'));assert(iconBySize.has('512x512'));assert(manifest.icons.some(icon=>icon.purpose==='maskable'));
+function pngSize(file){const buffer=fs.readFileSync(file);assert.equal(buffer.subarray(1,4).toString(),'PNG',`${file} is not PNG`);return [buffer.readUInt32BE(16),buffer.readUInt32BE(20)]}
+assert.deepEqual(pngSize('dist/icons/icon-192.png'),[192,192]);assert.deepEqual(pngSize('dist/icons/icon-512.png'),[512,512]);assert.deepEqual(pngSize('dist/icons/icon-maskable-512.png'),[512,512]);assert.deepEqual(pngSize('dist/icons/apple-touch-icon.png'),[180,180]);
+const registration=fs.readFileSync('dist/pwa.js','utf8'),worker=fs.readFileSync('dist/sw.js','utf8'),safeArea=fs.readFileSync('dist/pwa.css','utf8');
+assert(registration.includes("register('/sw.js'"));assert(registration.includes("scope:'/'"));assert(registration.includes("updateViaCache:'none'"));assert(!registration.includes('beforeinstallprompt'));
+assert(worker.includes("cache:'no-store'"));assert(worker.includes('caches.delete'));assert(worker.includes('/pwa.css'));assert(!worker.includes('/assets/scenes/'));assert(!worker.includes('localStorage'));
+assert(safeArea.includes('env(safe-area-inset-top)'));assert(safeArea.includes('env(safe-area-inset-bottom)'));assert(safeArea.includes('@media(display-mode:standalone)'));
+const vercel=JSON.parse(fs.readFileSync('vercel.json','utf8'));assert.equal(vercel.outputDirectory,'dist');assert(vercel.headers.some(rule=>rule.source==='/sw.js'));assert(vercel.headers.some(rule=>rule.source==='/manifest.webmanifest'));
 const context=vm.createContext({});
 vm.runInContext(fs.readFileSync('dist/data.js','utf8')+'\n'+fs.readFileSync('dist/ch02-data.js','utf8')+';this.readyAssets=[...Object.values(ASSETS),...Object.values(PORTRAITS)].filter(a=>a.status==="ready"&&a.src).map(a=>a.src);',context);
 for(const file of context.readyAssets)assert(fs.existsSync(path.join('dist',file)),`missing ready illustration: ${file}`);
-console.log(`PASS: static build verified (${required.length} files, ${context.readyAssets.length} ready illustrations).`);
+console.log(`PASS: static PWA build verified (${required.length} files, ${context.readyAssets.length} ready illustrations, install manifest and service worker).`);

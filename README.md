@@ -16,6 +16,16 @@ npm test
 - `npm run build`: HTML, CSS, JavaScript 구문과 실제 에셋 참조 검증
 - `npm test`: CH.01·CH.02 전체 스토리 그래프, 324개 CH.02 조합 경로, 11개 문제, 독립 재플레이·CH.01~11 카드·v6 마이그레이션, UI 이벤트 플로우 검증
 
+## PWA 설치
+
+Vercel Production 배포는 `dist` 정적 결과물을 사용하며, 루트 scope의 `manifest.webmanifest`와 `sw.js`를 제공합니다. 게임 안에는 설치 버튼이나 설치 안내 UI를 두지 않습니다.
+
+- Android Chrome: 브라우저 메뉴에서 **앱 설치** 또는 **홈 화면에 추가**를 선택합니다.
+- iPhone Safari: 공유 메뉴에서 **홈 화면에 추가**를 선택합니다.
+- 설치 후 `display: standalone`, 세로 방향으로 실행됩니다.
+- service worker는 앱 shell만 저장하고 장면 일러스트 전체를 미리 캐시하지 않습니다.
+- HTML·JS·CSS는 network-first로 갱신하며 이전 shell cache만 정리합니다. `localStorage`의 게임 저장 데이터는 변경하거나 삭제하지 않습니다.
+
 ## 모바일 대화 시스템
 
 - NPC는 왼쪽, 플레이어는 오른쪽에 이름·개별 말풍선으로 표시되고, 인물은 배경 위 투명 상반신 레이어로 크게 등장합니다.
