@@ -1,4 +1,4 @@
-const SAVE_VERSION=6;
+const SAVE_VERSION=7;
 const ERAS=[['고려','918 — 1392'],['조선','1392 — 1897'],['대한제국','1897 — 1910'],['일제강점기','1910 — 1945'],['대한민국','1945 —']];
 
 const HISTORY={
@@ -8,44 +8,44 @@ const HISTORY={
   relatedPeople:['왕건','궁예','견훤'],relatedQuestions:['ch01-test-01','ch01-test-02','ch01-test-03','ch01-test-04','ch01-test-05','ch01-boss']
 };
 
-const sceneArt=(id,label,palette,embeddedCharacters=false)=>({status:'ready',src:`assets/scenes/${id}.png`,label,palette,embeddedCharacters});
+const sceneArt=(id,label,palette,embeddedCharacters=false,sourceId=id,embeddedCharacterIds=[])=>({status:'ready',src:`assets/scenes/${sourceId}.png`,label,palette,embeddedCharacters,embeddedCharacterIds});
 const ASSETS={
   'home-goryeo':{status:'ready',src:'goryeo.png',label:'고려 시대 전경',palette:['#203944','#9a6c45']},
   'prologue-study':{status:'ready',src:'seoul-night.png',label:'2026년 서울, 한국사 공부를 하는 밤',palette:['#17283d','#9b673c'],embeddedCharacters:true},
   'prologue-sleep':sceneArt('prologue-sleep','책상에 엎드려 잠든 주인공',['#172238','#704d39'],true),
   'timeslip-voice':sceneArt('timeslip-voice','검은 화면과 낯선 목소리',['#080b10','#303b45'],true),
-  'goryeo-house':sceneArt('goryeo-house','918년 민가에서 눈을 뜬 주인공과 낯선 청년',['#3c2c22','#927051'],true),
-  'goryeo-house-question':sceneArt('goryeo-house-question','낯선 집 안을 경계하며 살피는 주인공',['#443126','#aa815d'],true),
-  'village-reveal':sceneArt('village-reveal','초가집과 흙길이 있는 10세기 마을',['#506348','#aa8b5d'],true),
-  'village-rumor':sceneArt('village-rumor','왕건의 건국 소문에 모여든 주민들',['#4f5a40','#9b744d'],true),
-  'memory-wanggeon':sceneArt('memory-wanggeon','현대 교재와 왕건의 기억이 겹치는 순간',['#1d3242','#a9824f'],true),
+  'goryeo-house':sceneArt('goryeo-house','918년 민가에서 눈을 뜬 주인공과 낯선 청년',['#3c2c22','#927051'],false,'goryeo-house-empty'),
+  'goryeo-house-question':sceneArt('goryeo-house-question','낯선 집 안을 경계하며 살피는 주인공',['#443126','#aa815d'],false,'goryeo-house-empty'),
+  'village-reveal':sceneArt('village-reveal','초가집과 흙길이 있는 10세기 마을',['#506348','#aa8b5d'],false,'route-village'),
+  'village-rumor':sceneArt('village-rumor','왕건의 건국 소문에 모여든 주민들',['#4f5a40','#9b744d'],false,'status-first'),
+  'memory-wanggeon':sceneArt('memory-wanggeon','왕건의 건국을 떠올리는 순간',['#1d3242','#a9824f'],false,'title-foundation'),
   'title-foundation':sceneArt('title-foundation','918년 고려 건국 타이틀 장면',['#111b24','#9b7640']),
-  'market-later-three-kingdoms':sceneArt('market-later-three-kingdoms','후삼국의 소문이 오가는 918년 장터',['#66513a','#b09063'],true),
+  'market-later-three-kingdoms':sceneArt('market-later-three-kingdoms','후삼국의 소문이 오가는 918년 장터',['#66513a','#b09063'],false,'doyun-intro'),
   'doyun-intro':sceneArt('doyun-intro','장터에서 처음 만난 젊은 상인 도윤',['#503f32','#9e7452']),
   'status-first':sceneArt('status-first','무일푼인 현실을 깨닫는 주인공',['#273840','#77614a']),
   'life-choice':sceneArt('life-choice','갈림길에서 송악을 가리키는 도윤',['#394d45','#99764e']),
   'route-songak':sceneArt('route-songak','송악으로 향하는 산길과 상인 행렬',['#40594c','#9d8156']),
-  'route-songak-carry':sceneArt('route-songak-carry','짐을 들고 상단과 걷는 주인공',['#3e5141','#8f6e45'],true),
-  'route-songak-talk':sceneArt('route-songak-talk','길 위에서 송악 이야기를 나누는 주인공과 도윤',['#4b5c4c','#9b7d54'],true),
+  'route-songak-carry':sceneArt('route-songak-carry','짐을 들고 상단과 걷는 주인공',['#3e5141','#8f6e45'],false,'route-songak'),
+  'route-songak-talk':sceneArt('route-songak-talk','길 위에서 송악 이야기를 나누는 주인공과 도윤',['#4b5c4c','#9b7d54'],false,'route-songak'),
   'route-village':sceneArt('route-village','사람들이 빠져나간 조용한 마을과 넘어진 수레',['#5a5543','#9b815e']),
-  'route-village-help':sceneArt('route-village-help','주민과 함께 수레를 세우는 주인공',['#565e46','#a08158'],true),
-  'route-village-call':sceneArt('route-village-call','도움을 청해 사람들이 모이는 장면',['#4c5947','#967852'],true),
-  'route-village-leave':sceneArt('route-village-leave','곤란한 주민을 뒤로하고 떠나는 주인공',['#4c4942','#75634d'],true),
+  'route-village-help':sceneArt('route-village-help','주민과 함께 수레를 세우는 주인공',['#565e46','#a08158'],false,'route-village'),
+  'route-village-call':sceneArt('route-village-call','도움을 청해 사람들이 모이는 장면',['#4c5947','#967852'],false,'route-village'),
+  'route-village-leave':sceneArt('route-village-leave','곤란한 주민을 뒤로하고 떠나는 주인공',['#4c4942','#75634d'],false,'route-village'),
   'route-caravan':sceneArt('route-caravan','수레에 짐을 싣는 상단 사람들',['#584735','#9d7650']),
-  'route-caravan-work':sceneArt('route-caravan-work','상단의 짐을 빠르게 나르는 주인공',['#524334','#96704a'],true),
-  'route-caravan-negotiate':sceneArt('route-caravan-negotiate','상인과 품삯을 협상하는 주인공',['#443b32','#8d6a48'],true),
-  'route-caravan-goods':sceneArt('route-caravan-goods','상단의 직물과 물품을 살피는 주인공',['#5c4634','#a4774c'],true),
+  'route-caravan-work':sceneArt('route-caravan-work','상단의 짐을 빠르게 나르는 주인공',['#524334','#96704a'],false,'route-caravan'),
+  'route-caravan-negotiate':sceneArt('route-caravan-negotiate','상인과 품삯을 협상하는 주인공',['#443b32','#8d6a48'],false,'route-caravan'),
+  'route-caravan-goods':sceneArt('route-caravan-goods','상단의 직물과 물품을 살피는 주인공',['#5c4634','#a4774c'],false,'route-caravan'),
   'route-royal':sceneArt('route-royal','왕건을 찾겠다는 말에 모두가 돌아보는 장면',['#423a35','#8b664c']),
   'route-context':sceneArt('route-context','송악 주변에 모인 호족과 상인, 백성의 움직임',['#3a4b48','#8b744f']),
   'thief-start':sceneArt('thief-start','시장 물건을 훔쳐 달아나는 도둑',['#51483a','#8f6844'],true),
-  'thief-chase':sceneArt('thief-chase','골목으로 달아나는 도둑을 직접 쫓는 주인공',['#374347','#76583f'],true),
-  'thief-block':sceneArt('thief-block','사람들이 골목길을 막아서는 장면',['#41504a','#846b4d'],true),
-  'thief-alley':sceneArt('thief-alley','지름길 골목에서 도둑을 가로막는 주인공',['#293a3c','#73553e'],true),
-  'thief-ignore':sceneArt('thief-ignore','도둑이 사라지고 도윤이 주인공을 바라보는 장면',['#383a39','#675844'],true),
+  'thief-chase':sceneArt('thief-chase','골목으로 달아나는 도둑을 직접 쫓는 주인공',['#374347','#76583f'],false,'thief-start'),
+  'thief-block':sceneArt('thief-block','사람들이 골목길을 막아서는 장면',['#41504a','#846b4d'],false,'thief-start'),
+  'thief-alley':sceneArt('thief-alley','지름길 골목에서 도둑을 가로막는 주인공',['#293a3c','#73553e'],false,'thief-start'),
+  'thief-ignore':sceneArt('thief-ignore','도둑이 사라지고 도윤이 주인공을 바라보는 장면',['#383a39','#675844'],false,'thief-aftermath'),
   'thief-aftermath':sceneArt('thief-aftermath','소란이 가라앉은 918년 시장',['#48514a','#8d7452']),
-  'first-night':sceneArt('first-night','918년 밤, 멀리 불빛을 바라보는 주인공의 뒷모습',['#121d2b','#6d583f'],true),
-  'future-flow':sceneArt('future-flow','918·935·936년의 흐름이 기억처럼 겹치는 장면',['#172635','#8a7045'],true),
-  'chapter-complete':sceneArt('chapter-complete','새 나라의 새벽과 챕터 완료 장면',['#192a32','#b08b53'],true),
+  'first-night':sceneArt('first-night','918년 밤, 고려 평민복으로 불빛을 바라보는 주인공의 뒷모습',['#121d2b','#6d583f'],true,'first-night-goryeo',['player']),
+  'future-flow':sceneArt('future-flow','918·935·936년의 흐름이 기억처럼 겹치는 장면',['#172635','#8a7045'],false,'title-foundation'),
+  'chapter-complete':sceneArt('chapter-complete','새 나라의 새벽과 챕터 완료 장면',['#192a32','#b08b53'],false,'route-songak'),
   'chapter-02-teaser':sceneArt('chapter-02-teaser','광종의 명으로 노비 기록을 조사하는 관리들',['#151b24','#765841'],true)
 };
 
@@ -62,19 +62,19 @@ const PORTRAITS={
   player_embarrassed:portrait('player','embarrassed','주인공 · 난처해 시선을 피하는 표정',['#334651','#a17d64'],'assets/characters/player_modern_embarrassed.png','modern'),
   player_angry:portrait('player','angry','주인공 · 불의를 보고 화난 표정',['#3e3034','#925346'],'assets/characters/player_modern_angry.png','modern'),
   player_sad:portrait('player','sad','주인공 · 후회하거나 풀이 죽은 표정',['#263744','#6f655a'],'assets/characters/player_modern_sad.png','modern'),
-  player_goryeo_neutral:portrait('player','neutral','주인공 · 고려 평민복 기본 표정',['#2b3945','#80664f'],'assets/characters/player_goryeo_neutral.png','goryeo'),
-  player_goryeo_smile:portrait('player','smile','주인공 · 고려 평민복 작은 미소',['#2b3945','#9b7655'],'assets/characters/player_goryeo_smile.png','goryeo'),
-  player_goryeo_surprised:portrait('player','surprised','주인공 · 고려 평민복 놀란 표정',['#2b3945','#9b7655'],'assets/characters/player_goryeo_surprised.png','goryeo'),
-  player_goryeo_worried:portrait('player','worried','주인공 · 고려 평민복 걱정스러운 표정',['#293843','#776554'],'assets/characters/player_goryeo_worried.png','goryeo'),
-  player_goryeo_thinking:portrait('player','thinking','주인공 · 고려 평민복 생각하는 표정',['#293843','#776554'],'assets/characters/player_goryeo_thinking.png','goryeo'),
-  player_goryeo_serious:portrait('player','serious','주인공 · 고려 평민복 진지한 표정',['#293843','#80664f'],'assets/characters/player_goryeo_serious.png','goryeo'),
-  player_goryeo_embarrassed:portrait('player','embarrassed','주인공 · 고려 평민복 난처한 표정',['#30414b','#96735b'],'assets/characters/player_goryeo_embarrassed.png','goryeo'),
-  doyun_neutral:portrait('doyun','neutral','도윤 · 상대를 살피는 기본 표정',['#4a382b','#a77950'],'assets/characters/doyun_neutral.png'),
-  doyun_smile:portrait('doyun','smile','도윤 · 믿음직하게 미소 짓는 표정',['#4b3a2c','#b18155'],'assets/characters/doyun_smile.png'),
-  doyun_surprised:portrait('doyun','surprised','도윤 · 눈썹을 들며 놀란 표정',['#4c382c','#ad7452'],'assets/characters/doyun_surprised.png'),
-  doyun_suspicious:portrait('doyun','suspicious','도윤 · 의심스레 눈을 가늘게 뜬 표정',['#3f332b','#87634c'],'assets/characters/doyun_suspicious.png'),
-  doyun_serious:portrait('doyun','serious','도윤 · 현실적인 조언을 하는 진지한 표정',['#43352a','#916747'],'assets/characters/doyun_serious.png'),
-  doyun_worried:portrait('doyun','worried','도윤 · 걱정스럽게 바라보는 표정',['#41352d','#80664f'],'assets/characters/doyun_worried.png'),
+  player_goryeo_neutral:portrait('player','neutral','주인공 · 고려 평민복 기본 표정',['#2b3945','#80664f'],'assets/characters/player_goryeo_neutral.png','goryeo_commoner'),
+  player_goryeo_smile:portrait('player','smile','주인공 · 고려 평민복 작은 미소',['#2b3945','#9b7655'],'assets/characters/player_goryeo_smile.png','goryeo_commoner'),
+  player_goryeo_surprised:portrait('player','surprised','주인공 · 고려 평민복 놀란 표정',['#2b3945','#9b7655'],'assets/characters/player_goryeo_surprised.png','goryeo_commoner'),
+  player_goryeo_worried:portrait('player','worried','주인공 · 고려 평민복 걱정스러운 표정',['#293843','#776554'],'assets/characters/player_goryeo_worried.png','goryeo_commoner'),
+  player_goryeo_thinking:portrait('player','thinking','주인공 · 고려 평민복 생각하는 표정',['#293843','#776554'],'assets/characters/player_goryeo_thinking.png','goryeo_commoner'),
+  player_goryeo_serious:portrait('player','serious','주인공 · 고려 평민복 진지한 표정',['#293843','#80664f'],'assets/characters/player_goryeo_serious.png','goryeo_commoner'),
+  player_goryeo_embarrassed:portrait('player','embarrassed','주인공 · 고려 평민복 난처한 표정',['#30414b','#96735b'],'assets/characters/player_goryeo_embarrassed.png','goryeo_commoner'),
+  doyun_neutral:portrait('doyun','neutral','도윤 · 상대를 살피는 기본 표정',['#4a382b','#a77950'],'assets/characters/doyun_neutral.png','commoner'),
+  doyun_smile:portrait('doyun','smile','도윤 · 믿음직하게 미소 짓는 표정',['#4b3a2c','#b18155'],'assets/characters/doyun_smile.png','commoner'),
+  doyun_surprised:portrait('doyun','surprised','도윤 · 눈썹을 들며 놀란 표정',['#4c382c','#ad7452'],'assets/characters/doyun_surprised.png','commoner'),
+  doyun_suspicious:portrait('doyun','suspicious','도윤 · 의심스레 눈을 가늘게 뜬 표정',['#3f332b','#87634c'],'assets/characters/doyun_suspicious.png','commoner'),
+  doyun_serious:portrait('doyun','serious','도윤 · 현실적인 조언을 하는 진지한 표정',['#43352a','#916747'],'assets/characters/doyun_serious.png','commoner'),
+  doyun_worried:portrait('doyun','worried','도윤 · 걱정스럽게 바라보는 표정',['#41352d','#80664f'],'assets/characters/doyun_worried.png','commoner'),
   stranger_neutral:portrait('stranger','neutral','낯선 청년 · 조심스러운 기본 표정',['#45382e','#8c7057']),
   stranger_worried:portrait('stranger','worried','낯선 청년 · 쓰러진 이를 걱정하는 표정',['#40362f','#7f6d5c']),
   stranger_suspicious:portrait('stranger','suspicious','낯선 청년 · 낯선 말을 의심하는 표정',['#3d342e','#755d4a']),
@@ -91,9 +91,14 @@ const PORTRAITS={
 };
 const PLAYER_MODERN_PORTRAITS=Object.fromEntries(['neutral','smile','surprised','worried','thinking','suspicious','serious','embarrassed','angry','sad'].map(expression=>[expression,`player_${expression}`]));
 const PLAYER_GORYEO_PORTRAITS={neutral:'player_goryeo_neutral',smile:'player_goryeo_smile',surprised:'player_goryeo_surprised',worried:'player_goryeo_worried',thinking:'player_goryeo_thinking',suspicious:'player_goryeo_thinking',serious:'player_goryeo_serious',embarrassed:'player_goryeo_embarrassed',angry:'player_goryeo_serious',sad:'player_goryeo_worried'};
+const DOYUN_YOUNG_COMMONER_PORTRAITS=Object.fromEntries(['neutral','smile','surprised','suspicious','serious','worried'].map(expression=>[expression,`doyun_${expression}`]));
+const CHARACTER_ASSET_MAP={
+  player:{canonicalId:'PLAYER_CANONICAL',defaultOutfit:'modern',outfits:{modern:PLAYER_MODERN_PORTRAITS,goryeo_commoner:PLAYER_GORYEO_PORTRAITS}},
+  doyun:{canonicalId:'DOYUN_CANONICAL',defaultAge:'young',ages:{young:{defaultOutfit:'commoner',outfits:{commoner:DOYUN_YOUNG_COMMONER_PORTRAITS}}}}
+};
 const CHARACTERS={
-  player:{characterId:'player',characterName:'나',speakerType:'player',side:'right',outfit:'modern',portraitPrefix:'player',characterAge:23,characterEraVariant:'modern-arrival',portraits:{modern:PLAYER_MODERN_PORTRAITS,goryeo:PLAYER_GORYEO_PORTRAITS}},
-  doyun:{characterId:'doyun',characterName:'도윤',speakerType:'npc',portraitPrefix:'doyun',characterAge:24,characterEraVariant:'young-merchant',longTermGoal:'자기 상단 만들기'},
+  player:{characterId:'player',canonicalId:'PLAYER_CANONICAL',characterName:'나',speakerType:'player',side:'right',outfit:'modern',portraitPrefix:'player',characterAge:23,characterEraVariant:'modern-arrival',portraits:CHARACTER_ASSET_MAP.player.outfits},
+  doyun:{characterId:'doyun',canonicalId:'DOYUN_CANONICAL',characterName:'도윤',speakerType:'npc',portraitPrefix:'doyun',characterAge:24,characterEraVariant:'young-merchant',outfit:'commoner',ageVariant:'young',portraits:{commoner:DOYUN_YOUNG_COMMONER_PORTRAITS},longTermGoal:'자기 상단 만들기'},
   stranger:{characterId:'stranger',characterName:'낯선 청년',speakerType:'npc',portraitPrefix:'stranger'},
   resident_a:{characterId:'resident_a',characterName:'주민 A',speakerType:'npc',portraitPrefix:'resident_a'},
   resident_b:{characterId:'resident_b',characterName:'주민 B',speakerType:'npc',portraitPrefix:'resident_b'},
@@ -103,12 +108,12 @@ const CHARACTERS={
   unknown:{characterId:'unknown',characterName:'???',speakerType:'npc',portraitPrefix:'unknown'},
   narrator:{characterId:'narrator',characterName:'',speakerType:'narration',portraitPrefix:null}
 };
-const dialogueLine=(characterId,expression,dialogue,speakerType=null)=>{
+const dialogueLine=(characterId,expression,dialogue,speakerType=null,characterNameOverride=null)=>{
   const character=CHARACTERS[characterId]||CHARACTERS.narrator;
   const type=speakerType||character.speakerType;
   const outfitPortrait=character.portraits?.[character.outfit]?.[expression];
   const portraitId=(type==='player'||type==='npc'||type==='thought')?(outfitPortrait||`${character.portraitPrefix}_${expression}`):null;
-  return {characterId:character.characterId,characterName:character.characterName,speakerType:type,portrait:portraitId,expression,dialogue,alignment:type==='player'?'right':type==='npc'?'left':'center'};
+  return {characterId:character.characterId,characterName:characterNameOverride??character.characterName,speakerType:type,portrait:portraitId,expression,dialogue,alignment:type==='player'?'right':type==='npc'?'left':'center'};
 };
 
 const question=data=>({chapterId:'ch01',era:'고려',historicalEventId:'goryeo-foundation-918',image:null,userAnswer:null,isCorrect:null,isOfficial:false,examRound:null,examYear:null,questionNumber:null,examType:'한국사능력검정시험 유형 자체 제작',source:'국사편찬위원회 우리역사넷의 사실관계를 바탕으로 자체 제작',...data});
@@ -151,7 +156,7 @@ const STORIES={
     choice('설명하기 좀 복잡해요','outfit_gift',{}, {doyun:-1},'수상함은 조금 남았지만, 도윤은 더 캐묻지 않았다.',{flags:{clothesExplanation:'complicated'},playerResponse:'설명하기 좀 복잡해요.',playerExpression:'worried',responseText:'수상한 사람의 말은 으레 그런 법이오.',responseCharacterId:'doyun',responseExpression:'suspicious',resultSceneId:'outfit-complicated',resultIllustrationId:'goryeo-house-question'}),
     choice('그렇게 이상해요?','outfit_gift',{fame:1},{doyun:2},'서로 상대의 옷을 이상하다고 하다가 둘 다 웃음을 참았다.',{flags:{clothesExplanation:'banter'},playerResponse:'그렇게 이상해요? 내가 보기엔 당신 옷이 더 이상한데.',playerExpression:'embarrassed',responseText:'……내 옷이 이상하단 말이오?',responseCharacterId:'doyun',responseExpression:'surprised',resultSceneId:'outfit-banter',resultIllustrationId:'goryeo-house-question',hint:'첫 농담 · 도윤 +2'})
   ]}),
-  outfit_gift:scene({sceneId:'outfit_gift',year:918,location:'송악으로 가는 길목 · 민가',speaker:'도윤',title:'고려에서의 첫 옷',illustrationId:'goryeo-house',timeOfDay:'morning',enterFlags:{hasModernClothes:true,wearingModernClothes:false,receivedGoryeoClothesFromDoyun:true},inventoryActions:[{id:'modern-clothes',status:'stored'},{id:'goryeo-commoner-clothes',status:'equipped',source:'doyun'}],sharedEvent:'received_clothes_from_doyun',dialogue:'도윤에게 오래된 평민복을 빌렸다. 현대 복장은 버리지 않고 잘 접어 보관했다.',nextStoryId:'village'}),
+  outfit_gift:scene({sceneId:'outfit_gift',year:918,location:'송악으로 가는 길목 · 민가',speaker:'도윤',title:'고려에서의 첫 옷',illustrationId:'goryeo-house',timeOfDay:'morning',outfitChange:{dialogueIndex:7,to:'goryeo_commoner',source:'doyun'},dialogue:'도윤에게 오래된 평민복을 빌렸다. 현대 복장은 버리지 않고 잘 접어 보관했다.',nextStoryId:'village'}),
   village:scene({sceneId:'village',year:918,location:'송악으로 가는 길목 · 마을',speaker:'나',title:'촬영장이 아니야',illustrationId:'village-reveal',timeOfDay:'morning',ambientSound:'village',dialogue:'초가집, 흙길, 말과 수레. 멀리 산이 보인다.\n현대 물건은 하나도 없다.\n\n“…….”\n촬영장이 아니야.',nextStoryId:'rumor'}),
   rumor:scene({sceneId:'rumor',year:918,location:'마을 · 흙길',speaker:'주민',title:'왕건 장군이 새 나라를 세웠다',illustrationId:'village-rumor',timeOfDay:'morning',dialogue:'“들었나?”\n“무슨 일인데?”\n“왕건 장군께서 새 나라를 세우셨다네!”\n\n“……왕건?”',quizId:'ch01-test-01'}),
   foundation:scene({sceneId:'foundation',year:918,location:'기억과 현실의 경계',speaker:'나',title:'918년 · 고려 건국',illustrationId:'title-foundation',timeOfDay:'day',sceneEffect:'title-reveal',dialogue:'“나라 이름은 고려라고 한다더군.”\n\n……고려.\n\n918년. 고려 건국.\n눈떠보니 고려.',quizId:'ch01-test-02'}),
@@ -211,9 +216,9 @@ const DIALOGUES={
     dialogueLine('player','thinking','누구지?','thought')
   ],
   house:[
-    dialogueLine('stranger','worried','정신이 드시오?'),
+    dialogueLine('doyun','worried','정신이 드시오?',null,'낯선 청년'),
     dialogueLine('player','surprised','……네? 여기가 어디예요?'),
-    dialogueLine('stranger','neutral','송악으로 가는 길목이오.'),
+    dialogueLine('doyun','neutral','송악으로 가는 길목이오.',null,'낯선 청년'),
     dialogueLine('player','surprised','……송악?')
   ],
   outfit_question:[
@@ -323,14 +328,32 @@ Object.entries(DIALOGUES).forEach(([sceneId,dialogues])=>{STORIES[sceneId].dialo
 
 Object.values(STORIES).forEach(s=>{const asset=ASSETS[s.illustrationId]||ASSETS['home-goryeo'];s.backgroundImage=asset.src||null});
 
-const chapterSnapshot=run=>({status:run.status,stats:{...run.stats},relations:{...run.relations},trust:{...run.trust},job:run.job,route:run.route,lifePath:run.lifePath,flags:{...run.flags},inventory:(run.inventory||[]).map(item=>({...item})),sharedEvents:[...(run.sharedEvents||[])],importantChoices:{...run.importantChoices},characterStates:JSON.parse(JSON.stringify(run.characterStates||{})),peakWealth:run.peakWealth});
-const INITIAL_RUN=(chapterId='ch01',carry=null)=>{const base={status:'평민',stats:{health:100,knowledge:0,fame:0,wealth:0},relations:{doyun:0,village:0,merchant:0,royal:0,citizens:0,hyunwoo:0},trust:{doyun:0,hyunwoo:0},job:'없음',route:null,lifePath:null,flags:{hasModernClothes:true,wearingModernClothes:true,receivedGoryeoClothesFromDoyun:false},inventory:[{id:'modern-clothes',status:'equipped',source:'2026-seoul'}],sharedEvents:[],importantChoices:{},characterStates:{player:{characterAge:23,characterEraVariant:'unchanged'},doyun:{characterAge:24,characterEraVariant:'young-merchant'},hyunwoo:{characterAge:22,characterEraVariant:'student'}},peakWealth:0,...carry};return {mode:'main',replayChapterId:null,currentChapter:chapterId,storyId:chapterId==='ch02'?'ch02_transition':'prologue',started:false,completed:false,status:base.status,stats:{health:100,knowledge:0,fame:0,wealth:0,...base.stats},relations:{doyun:0,village:0,merchant:0,royal:0,citizens:0,hyunwoo:0,...base.relations},trust:{doyun:0,hyunwoo:0,...base.trust},job:base.job,route:base.route,lifePath:base.lifePath||base.route||null,visited:[],choices:[],flags:{hasModernClothes:true,wearingModernClothes:chapterId==='ch01',receivedGoryeoClothesFromDoyun:chapterId==='ch02',...base.flags},inventory:(base.inventory||[]).map(item=>({...item})),sharedEvents:[...(base.sharedEvents||[])],importantChoices:{...base.importantChoices},characterStates:JSON.parse(JSON.stringify(base.characterStates||{})),entryEffectsApplied:[],initialMemory:null,pending:null,activeQuestionId:null,questionAnswer:null,questionResults:{},dialogueSceneId:null,dialogueCursor:1,peakWealth:base.peakWealth||base.stats?.wealth||0,chapterStart:null};};
+const PLAYER_OUTFITS=new Set(['modern','goryeo_commoner']);
+function setPlayerOutfit(run,outfit,source='story'){
+  if(!run)return run;
+  const normalized=outfit==='goryeo'?'goryeo_commoner':PLAYER_OUTFITS.has(outfit)?outfit:'modern',isGoryeo=normalized==='goryeo_commoner';
+  run.playerOutfit=normalized;
+  run.flags={...(run.flags||{}),hasModernClothes:true,wearingModernClothes:!isGoryeo,receivedGoryeoClothesFromDoyun:isGoryeo||Boolean(run.flags?.receivedGoryeoClothesFromDoyun)};
+  run.characterStates={...(run.characterStates||{}),player:{...(run.characterStates?.player||{}),outfit:normalized}};
+  run.inventory=[...(run.inventory||[])].map(item=>({...item}));
+  const upsert=(id,status,itemSource)=>{const found=run.inventory.find(item=>item.id===id);if(found)Object.assign(found,{status,source:found.source||itemSource});else run.inventory.push({id,status,source:itemSource})};
+  upsert('modern-clothes',isGoryeo?'stored':'equipped','2026-seoul');
+  if(isGoryeo)upsert('goryeo-commoner-clothes','equipped',source);else{const goryeo=run.inventory.find(item=>item.id==='goryeo-commoner-clothes');if(goryeo)goryeo.status='stored'}
+  return run;
+}
+const chapterSnapshot=run=>({status:run.status,stats:{...run.stats},relations:{...run.relations},trust:{...run.trust},job:run.job,route:run.route,lifePath:run.lifePath,playerOutfit:run.playerOutfit,flags:{...run.flags},inventory:(run.inventory||[]).map(item=>({...item})),sharedEvents:[...(run.sharedEvents||[])],importantChoices:{...run.importantChoices},characterStates:JSON.parse(JSON.stringify(run.characterStates||{})),peakWealth:run.peakWealth});
+const INITIAL_RUN=(chapterId='ch01',carry=null)=>{
+  const initialOutfit=chapterId==='ch02'?'goryeo_commoner':'modern';
+  const base={status:'평민',stats:{health:100,knowledge:0,fame:0,wealth:0},relations:{doyun:0,village:0,merchant:0,royal:0,citizens:0,hyunwoo:0},trust:{doyun:0,hyunwoo:0},job:'없음',route:null,lifePath:null,playerOutfit:initialOutfit,flags:{hasModernClothes:true,wearingModernClothes:initialOutfit==='modern',receivedGoryeoClothesFromDoyun:initialOutfit==='goryeo_commoner'},inventory:[{id:'modern-clothes',status:initialOutfit==='modern'?'equipped':'stored',source:'2026-seoul'}],sharedEvents:[],importantChoices:{},characterStates:{player:{characterAge:23,characterEraVariant:'unchanged',outfit:initialOutfit},doyun:{characterAge:24,characterEraVariant:'young-merchant',ageVariant:'young',outfit:'commoner'},hyunwoo:{characterAge:22,characterEraVariant:'student'}},peakWealth:0,...carry};
+  const run={mode:'main',replayChapterId:null,currentChapter:chapterId,storyId:chapterId==='ch02'?'ch02_transition':'prologue',started:false,completed:false,status:base.status,stats:{health:100,knowledge:0,fame:0,wealth:0,...base.stats},relations:{doyun:0,village:0,merchant:0,royal:0,citizens:0,hyunwoo:0,...base.relations},trust:{doyun:0,hyunwoo:0,...base.trust},job:base.job,route:base.route,lifePath:base.lifePath||base.route||null,playerOutfit:base.playerOutfit||initialOutfit,visited:[],choices:[],flags:{hasModernClothes:true,wearingModernClothes:initialOutfit==='modern',receivedGoryeoClothesFromDoyun:initialOutfit==='goryeo_commoner',...base.flags},inventory:(base.inventory||[]).map(item=>({...item})),sharedEvents:[...(base.sharedEvents||[])],importantChoices:{...base.importantChoices},characterStates:JSON.parse(JSON.stringify(base.characterStates||{})),entryEffectsApplied:[],initialMemory:null,pending:null,activeQuestionId:null,questionAnswer:null,questionResults:{},dialogueSceneId:null,dialogueCursor:1,peakWealth:base.peakWealth||base.stats?.wealth||0,chapterStart:null};
+  return setPlayerOutfit(run,run.playerOutfit||initialOutfit,run.flags.receivedGoryeoClothesFromDoyun?'doyun':'story');
+};
 const INITIAL_META=()=>({questionRecords:{},wrongQuestionIds:[],reviewedQuestionIds:[],historicalEvents:[],cards:[],people:[],achievements:[],endings:[],playthroughs:[],completedRuns:0,totalChoices:0,completedChapters:[],chapterRecords:{},chapterRuns:{},knowledgeMemory:{},mysteries:[]});
 const INITIAL=()=>({version:SAVE_VERSION,run:INITIAL_RUN(),mainRun:null,meta:INITIAL_META()});
 
-function ensureGoryeoOutfit(run){run.flags={...run.flags,hasModernClothes:true,wearingModernClothes:false,receivedGoryeoClothesFromDoyun:true};run.inventory=[...(run.inventory||[])];for(const action of [{id:'modern-clothes',status:'stored',source:'2026-seoul'},{id:'goryeo-commoner-clothes',status:'equipped',source:'doyun'}]){const found=run.inventory.find(item=>item.id===action.id);if(found)Object.assign(found,action);else run.inventory.push({...action})}run.sharedEvents=[...(run.sharedEvents||[])];for(const event of ['met_doyun_ch01','received_clothes_from_doyun'])if(!run.sharedEvents.includes(event))run.sharedEvents.push(event);return run}
+function ensureGoryeoOutfit(run){setPlayerOutfit(run,'goryeo_commoner','doyun');run.sharedEvents=[...(run.sharedEvents||[])];for(const event of ['met_doyun_ch01','received_clothes_from_doyun'])if(!run.sharedEvents.includes(event))run.sharedEvents.push(event);return run}
 const cloneRun=run=>JSON.parse(JSON.stringify(run));
-function mergeSavedRun(saved){const chapterId=saved?.currentChapter||(String(saved?.storyId||'').startsWith('ch02_')?'ch02':'ch01'),base=INITIAL_RUN(chapterId);if(!saved)return base;return {...base,...saved,stats:{...base.stats,...saved.stats},relations:{...base.relations,...saved.relations},trust:{...base.trust,...saved.trust},flags:{...base.flags,...saved.flags},inventory:(saved.inventory||base.inventory).map(item=>({...item})),sharedEvents:[...(saved.sharedEvents||[])],importantChoices:{...base.importantChoices,...saved.importantChoices},characterStates:{...base.characterStates,...saved.characterStates},entryEffectsApplied:[...(saved.entryEffectsApplied||[])],questionResults:{...saved.questionResults}}}
+function mergeSavedRun(saved){const chapterId=saved?.currentChapter||(String(saved?.storyId||'').startsWith('ch02_')?'ch02':'ch01'),base=INITIAL_RUN(chapterId);if(!saved)return base;const merged={...base,...saved,stats:{...base.stats,...saved.stats},relations:{...base.relations,...saved.relations},trust:{...base.trust,...saved.trust},flags:{...base.flags,...saved.flags},inventory:(saved.inventory||base.inventory).map(item=>({...item})),sharedEvents:[...(saved.sharedEvents||[])],importantChoices:{...base.importantChoices,...saved.importantChoices},characterStates:{...base.characterStates,...saved.characterStates},entryEffectsApplied:[...(saved.entryEffectsApplied||[])],questionResults:{...saved.questionResults}};const outfit=saved.playerOutfit||(merged.flags.wearingModernClothes===false?'goryeo_commoner':'modern');return setPlayerOutfit(merged,outfit,merged.flags.receivedGoryeoClothesFromDoyun?'doyun':'story')}
 function questionScore(chapterId,results={}){const total=typeof CHAPTERS!=='undefined'?(CHAPTERS[chapterId]?.questionCount||0):Object.keys(results).length,correct=Object.values(results).filter(Boolean).length;return {correct,total,percent:total?Math.round(correct/total*100):0}}
 function sanitizeRemovedMystery(state,run){if(!run)return;run.sharedEvents=(run.sharedEvents||[]).filter(event=>event!=='noticed_unchanged_appearance');run.entryEffectsApplied=(run.entryEffectsApplied||[]).filter(id=>!['ch02_unchanged','ch02_reflection'].includes(id));if(['ch02_unchanged','ch02_reflection'].includes(run.storyId)){run.storyId='ch02_purge';run.pending=null;run.dialogueSceneId=null;run.dialogueCursor=1}state.meta.mysteries=(state.meta.mysteries||[]).filter(id=>id!=='unknown-aging');delete state.meta.knowledgeMemory['unknown-aging']}
 function makeRunRecord(run,runId){const chapterId=run.currentChapter,score=questionScore(chapterId,run.questionResults);return {runId,chapterId,mode:run.mode||'main',completed:true,choices:run.choices.map(choice=>({...choice})),questionResults:{...run.questionResults},questionScore:score,finalRun:chapterSnapshot(run),completedAt:new Date().toISOString()}}
@@ -338,19 +361,23 @@ function makeRunRecord(run,runId){const chapterId=run.currentChapter,score=quest
 function choiceAvailable(run,c){if(!c.condition)return true;if(c.condition.stat)return(run.stats[c.condition.stat]||0)>=c.condition.min;if(c.condition.flag)return Boolean(run.flags[c.condition.flag]);return true}
 function applyChoice(state,sceneId,index){const run=state.run||state,c=STORIES[sceneId].choices[index];if(!choiceAvailable(run,c))return run;for(const[k,v]of Object.entries(c.statChanges||{}))run.stats[k]=Math.max(0,run.stats[k]+v);for(const[k,v]of Object.entries(c.relationshipChanges||{}))run.relations[k]=Math.max(-100,Math.min(100,(run.relations[k]||0)+v));for(const[k,v]of Object.entries(c.trustChanges||{}))run.trust[k]=Math.max(-100,Math.min(100,(run.trust[k]||0)+v));if(c.route)run.route=c.route;if(c.lifePath)run.lifePath=c.lifePath;if(c.job!==undefined)run.job=c.job;if(c.initialMemory)run.initialMemory=c.initialMemory;if(c.flags)Object.assign(run.flags,c.flags);for(const event of c.sharedEvents||[])if(!run.sharedEvents.includes(event))run.sharedEvents.push(event);if(c.importantChoice)run.importantChoices[sceneId]=c.importantChoice;if(state.meta&&c.memoryKey)state.meta.knowledgeMemory[c.memoryKey]=c.memoryValue;run.peakWealth=Math.max(run.peakWealth,run.stats.wealth);run.choices.push({chapterId:STORIES[sceneId].chapterId,scene:sceneId,label:c.label,resultSceneId:c.resultSceneId,importantChoice:c.importantChoice||null});run.pending={...c,sourceSceneId:sceneId};run.storyId=c.nextStoryId;run.dialogueSceneId=`result:${sceneId}`;run.dialogueCursor=1;if(state.meta)state.meta.totalChoices+=1;return run}
 function applySceneEntry(state,sceneId){const run=state.run||state,s=STORIES[sceneId];if(!s||run.entryEffectsApplied?.includes(sceneId))return run;if(!run.entryEffectsApplied)run.entryEffectsApplied=[];if(s.enterFlags)Object.assign(run.flags,s.enterFlags);for(const action of s.inventoryActions||[]){const found=run.inventory.find(item=>item.id===action.id);if(found)Object.assign(found,action);else run.inventory.push({...action})}if(s.sharedEvent&&!run.sharedEvents.includes(s.sharedEvent))run.sharedEvents.push(s.sharedEvent);if(s.enterCharacterStates)for(const[id,value]of Object.entries(s.enterCharacterStates))run.characterStates[id]={...(run.characterStates[id]||{}),...value};if(state.meta&&s.mysteryKey){if(!state.meta.mysteries.includes(s.mysteryKey))state.meta.mysteries.push(s.mysteryKey);state.meta.knowledgeMemory[s.mysteryKey]={title:'???',label:'알 수 없는 기억',revealed:false}}run.entryEffectsApplied.push(sceneId);return run}
+function applyDialogueMilestone(state,sceneId,dialogueCursor){const run=state.run||state,s=STORIES[sceneId],change=s?.outfitChange;if(!change||dialogueCursor<change.dialogueIndex)return run;const effectId=`${sceneId}:outfit:${change.to}`;if(change.to==='goryeo_commoner')ensureGoryeoOutfit(run);else setPlayerOutfit(run,change.to,change.source||'story');run.entryEffectsApplied=[...(run.entryEffectsApplied||[])];if(!run.entryEffectsApplied.includes(effectId))run.entryEffectsApplied.push(effectId);return run}
 function migrateSave(raw){
   const fresh=INITIAL();
   if(!raw||typeof raw!=='object')return fresh;
   if(raw.run&&raw.meta){
+    const savedVersion=Number(raw.version||0);
     fresh.run=mergeSavedRun(raw.run);
     fresh.mainRun=raw.mainRun?mergeSavedRun(raw.mainRun):null;
     fresh.meta={...fresh.meta,...raw.meta,knowledgeMemory:{...fresh.meta.knowledgeMemory,...raw.meta.knowledgeMemory},chapterRecords:{...fresh.meta.chapterRecords,...raw.meta.chapterRecords},chapterRuns:{...fresh.meta.chapterRuns,...raw.meta.chapterRuns},completedChapters:[...(raw.meta.completedChapters||[])],mysteries:[...(raw.meta.mysteries||[])]};
-    if(raw.version<SAVE_VERSION&&fresh.run.pending?.sourceSceneId==='house'){fresh.run.pending={...fresh.run.pending,nextStoryId:'outfit_question'};fresh.run.storyId='outfit_question'}
-    const beforeOutfit=new Set(['prologue','sleep','voice','house','outfit_question','outfit_gift']);
-    if(raw.version<5&&fresh.run.currentChapter==='ch01'&&fresh.run.started&&!fresh.run.pending&&!beforeOutfit.has(fresh.run.storyId))ensureGoryeoOutfit(fresh.run);
+    if(savedVersion<SAVE_VERSION&&fresh.run.pending?.sourceSceneId==='house'){fresh.run.pending={...fresh.run.pending,nextStoryId:'outfit_question'};fresh.run.storyId='outfit_question'}
+    const beforeOutfit=new Set(['prologue','sleep','voice','house','outfit_question']);
+    const restorePreGiftOutfit=run=>{setPlayerOutfit(run,'modern','story');run.flags.receivedGoryeoClothesFromDoyun=false;run.inventory=run.inventory.filter(item=>item.id!=='goryeo-commoner-clothes');run.sharedEvents=(run.sharedEvents||[]).filter(event=>event!=='received_clothes_from_doyun')};
+    const repairOutfit=run=>{if(!run)return;const giftReached=run.storyId==='outfit_gift'&&!run.pending&&(run.dialogueCursor||1)>=STORIES.outfit_gift.outfitChange.dialogueIndex,afterGift=run.currentChapter==='ch02'||run.completed||(!beforeOutfit.has(run.storyId)&&run.storyId!=='outfit_gift');if(giftReached||afterGift)ensureGoryeoOutfit(run);else restorePreGiftOutfit(run)};
+    if(savedVersion<SAVE_VERSION){repairOutfit(fresh.run);repairOutfit(fresh.mainRun)}
     if(raw.run.completed&&!fresh.meta.completedChapters.includes(fresh.run.currentChapter))fresh.meta.completedChapters.push(fresh.run.currentChapter);
     if(raw.run.completed&&fresh.run.currentChapter==='ch01'&&!fresh.meta.chapterRecords.ch01)fresh.meta.chapterRecords.ch01={chapterId:'ch01',finalRun:chapterSnapshot(fresh.run),questionResults:{...fresh.run.questionResults},choices:fresh.run.choices.map(choice=>({...choice}))};
-    if(fresh.meta.completedChapters.includes('ch01')){ensureGoryeoOutfit(fresh.run);if(fresh.mainRun)ensureGoryeoOutfit(fresh.mainRun);if(fresh.meta.chapterRecords.ch01?.finalRun)ensureGoryeoOutfit(fresh.meta.chapterRecords.ch01.finalRun)}
+    if(fresh.meta.completedChapters.includes('ch01')){if(fresh.run.currentChapter!=='ch01'||fresh.run.completed)ensureGoryeoOutfit(fresh.run);if(fresh.mainRun&&(fresh.mainRun.currentChapter!=='ch01'||fresh.mainRun.completed))ensureGoryeoOutfit(fresh.mainRun);if(fresh.meta.chapterRecords.ch01?.finalRun)ensureGoryeoOutfit(fresh.meta.chapterRecords.ch01.finalRun)}
     for(const chapterId of fresh.meta.completedChapters){
       const record=fresh.meta.chapterRecords[chapterId];
       if(!record)continue;

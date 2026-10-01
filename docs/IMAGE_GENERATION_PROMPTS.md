@@ -30,9 +30,9 @@
 |---|---|
 | `prologue-sleep` | 2026년 서울의 밤, 따뜻한 스탠드 아래 한국사 교재에 엎드려 잠든 주인공, 창밖 푸른 야경. |
 | `timeslip-voice` | 거의 암전된 의식 속, 낯선 청년의 손과 초가 창의 아침빛만 흐릿하게 보이는 전환. |
-| `goryeo-house` | 10세기 민가의 짚자리에서 눈을 뜬 현대복 주인공, 걱정스럽게 내려다보는 소박한 고려 청년. |
-| `goryeo-house-question` | 현대 물건이 전혀 없는 민가를 경계하며 살피는 주인공과 의심스러운 청년. |
-| `village-reveal` | 초가·흙길·말·목제 수레가 펼쳐진 918년 마을, 말을 잃은 현대복 주인공. |
+| `goryeo-house` | 인물 없는 10세기 민가 내부 `goryeo-house-empty.png`. 동일 배경 위에 `DOYUN_CANONICAL`과 현대복 주인공 포트레이트를 합성. |
+| `goryeo-house-question` | `goryeo-house-empty.png` 재사용. 도윤의 의심 표정과 현대복 주인공을 캐릭터 레이어로 합성. |
+| `village-reveal` | 인물 의상 오류를 피하기 위해 인물 없는 `route-village.png` 배경과 고려 평민복 주인공 포트레이트를 합성. |
 | `village-rumor` | 왕건이 새 나라를 세웠다는 소식에 모여든 주민과 놀란 주인공. |
 | `memory-wanggeon` | 현대 교재와 918년 마을, 궁예·왕건의 기억이 이중 노출처럼 겹치는 학습 장면. |
 | `title-foundation` | 바람 부는 918년 마을과 깃발, 새 나라의 시작을 위한 중앙 여백. |
@@ -59,14 +59,21 @@
 | `thief-alley` | 아침에 본 지름길을 이용해 먼저 도착한 주인공이 도둑 앞을 막는 결과. |
 | `thief-ignore` | 도둑은 멀어지고, 시선을 피하는 주인공을 도윤이 실망스럽게 바라보는 결과. |
 | `thief-aftermath` | 소란 후 가판을 다시 세우는 일몰의 시장, 생활력과 불안이 공존하는 배경. |
-| `first-night` | 고려에서의 첫날 밤, 초가 불빛과 산 능선을 바라보는 주인공의 작은 뒷모습. |
+| `first-night` | `first-night-goryeo.png`. 고려 평민복을 입고 초가 불빛과 산 능선을 바라보는 주인공의 작은 뒷모습. 플레이어가 이미지에 포함된 예외 장면. |
 | `future-flow` | 918 건국, 935 신라 항복, 936 통일이 서로 다른 기억 조각으로 이어지는 몽타주. |
 | `chapter-complete` | 새 나라의 새벽, 길 위에서 밝아오는 산과 마을을 바라보는 주인공. |
 | `chapter-02-teaser` | 광종 대 관청 문서고, 등잔 아래 노비 기록을 재조사하는 관리 둘, 왕은 등장하지 않음. |
 
 ## 후속 의상 에셋
 
-CH.01 초반에는 `modern`, 도윤에게 평민복을 받은 뒤에는 `goryeo` 키를 사용합니다. `player_goryeo_neutral`, `player_goryeo_smile`, `player_goryeo_surprised`, `player_goryeo_worried`, `player_goryeo_thinking`, `player_goryeo_serious`, `player_goryeo_embarrassed`를 제작해 `CHARACTERS.player.portraits.goryeo`에 연결했습니다. 현대복 기준 얼굴·머리·체형은 고정하고 남회색 겉포·회갈색 속옷·천 허리띠만 교체했습니다. 유사한 부정 표정은 7개 에셋 안에서 재사용합니다.
+CH.01 초반에는 `modern`, `outfit_gift` 7번째 대사 이후에는 `goryeo_commoner` 키를 사용합니다. `player_goryeo_neutral`, `player_goryeo_smile`, `player_goryeo_surprised`, `player_goryeo_worried`, `player_goryeo_thinking`, `player_goryeo_serious`, `player_goryeo_embarrassed`를 제작해 `CHARACTER_ASSET_MAP.player.outfits.goryeo_commoner`에 연결했습니다. 현대복 기준 얼굴·머리·체형은 고정하고 남회색 겉포·회갈색 속옷·천 허리띠만 교체했습니다. 유사한 부정 표정은 7개 에셋 안에서 재사용합니다.
+
+## 2026-10-01 연속성 보정에 사용한 편집 프롬프트
+
+내장 이미지 편집 모드로 기존 프로젝트 일러스트를 참조해 아래 두 결과만 새로 만들었습니다.
+
+- `goryeo-house-empty.png`: “기존 `goryeo-house.png`의 세로 2:3 구도, 따뜻한 빛, 고려 전기 민가의 짚자리·목재 선반·문틀·흙바닥, 선명한 2D 웹툰/페인터리 셀 채색을 그대로 유지한다. 두 인물을 모두 완전히 제거하고 가려졌던 침구·바닥·선반·문간을 자연스럽게 복원한다. 새 인물, 현대 물건, 글자, 로고, 워터마크를 추가하지 않는다.”
+- `first-night-goryeo.png`: “기존 `first-night.png`의 달빛, 초가 마을, 산 능선, 카메라 구도, 뒤돌아선 동일 주인공의 얼굴·검은 머리·체형·포즈를 모두 유지한다. 현대의 검은 재킷·회색 후드·청바지·운동화만 `player_goryeo_neutral.png`와 동일한 남회색/청회색 고려 평민 겉포, 회갈색 속옷, 천 허리띠, 시대 바지와 신발로 교체한다. 가방·현대 봉제·지퍼를 제거하고 글자·로고·워터마크를 넣지 않는다.”
 
 ## CH.02 최종 생성 프롬프트 기준
 

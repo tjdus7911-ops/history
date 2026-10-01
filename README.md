@@ -109,7 +109,7 @@ choice.resultSceneId → choice.resultIllustrationId → ASSETS[resultIllustrati
 question.relatedIllustrationId → ASSETS[relatedIllustrationId]
 ```
 
-각 장면에는 `backgroundImage`, `characterImage`, `characterExpression`, `foregroundImage`, `sceneEffect`, `timeOfDay`, `music`, `ambientSound` 필드가 준비되어 있습니다. CH.01의 35개 장면·분기·퀴즈 연계 일러스트는 각각 별도 세로형 이미지로 연결되어 있으며 같은 배경을 무관한 장면에 반복하지 않습니다.
+각 장면에는 `backgroundImage`, `characterImage`, `characterExpression`, `foregroundImage`, `sceneEffect`, `timeOfDay`, `music`, `ambientSound` 필드가 준비되어 있습니다. CH.01 장면·분기·퀴즈의 `illustrationId`는 개별적으로 유지하되, 캐릭터 일관성이 필요한 장면은 검증된 시대 배경을 재사용하고 투명 캐릭터 레이어를 합성합니다. 캐릭터가 박힌 이전 장면 이미지 때문에 도윤의 얼굴이나 주인공 의상이 바뀌지 않도록 한 구조입니다.
 
 CH.01 제작 에셋은 [`docs/ASSET_REQUIRED.md`](docs/ASSET_REQUIRED.md), CH.02 신규·재사용 에셋은 [`docs/CH02_ASSETS.md`](docs/CH02_ASSETS.md)에 정리했습니다. 실제 생성에 사용한 웹툰 일러스트 공통 프롬프트는 [`docs/IMAGE_GENERATION_PROMPTS.md`](docs/IMAGE_GENERATION_PROMPTS.md)에 남겼습니다.
 
@@ -117,7 +117,7 @@ CH.01 제작 에셋은 [`docs/ASSET_REQUIRED.md`](docs/ASSET_REQUIRED.md), CH.02
 
 ## 파일 구조
 
-- `dist/data.js`: CH.01 데이터, v6 메인 진행·재플레이 회차·누적 학습 저장 모델
+- `dist/data.js`: CH.01 데이터, v7 메인 진행·재플레이 회차·누적 학습·`playerOutfit` 저장 모델
 - `dist/ch02-data.js`: CH.02 장면·대화·선택·문제·에셋 데이터
 - `dist/app.js`: 대화/선택 렌더링, 메타데이터 기반 챕터 카드·상세 Sheet·재플레이 결과
 - `dist/style.css`: 기존 반응형 디자인
@@ -132,6 +132,7 @@ CH.01 제작 에셋은 [`docs/ASSET_REQUIRED.md`](docs/ASSET_REQUIRED.md), CH.02
 - `docs/CH02_ASSETS.md`: CH.02 에셋 사용·재사용 명세
 - `docs/IMAGE_GENERATION_PROMPTS.md`: 최종 이미지 생성 프롬프트 기록
 - `docs/CHARACTER_VOICE_GUIDE.md`: 주인공·도윤·현우 말투와 노화 복선 속도 기준
+- `docs/CH01_CHARACTER_CONTINUITY.md`: 도윤 기준 디자인, 장면별 에셋 감사, 의상 전환·저장·마이그레이션 규칙
 - `tests/verify.cjs`: 데이터/분기/저장 정책 검증
 - `tests/ui-test.cjs`: 실제 클릭 이벤트 기반 전체 플레이 플로우 검증
 - `tests/ch02-ui-test.cjs`: CH.02 이어받기·대화·선택·문제·완료·재시작 UI 검증
