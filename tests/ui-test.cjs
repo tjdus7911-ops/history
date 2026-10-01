@@ -42,7 +42,7 @@ action('advance-dialogue');assert(html.includes('data-expression="surprised"'));
 action('advance-dialogue');assert(html.includes('data-expression="embarrassed"'));action('advance-dialogue');assert(html.includes('data-speaker-type="thought"'));assert(html.includes('나 지금 무일푼이잖아'));
 assert(!html.includes('data-action="advance-dialogue"'));action('next');assert.equal(story(),'life_choice');revealDialogue();assert(html.includes('choice-dock'));assert(html.includes('player_goryeo_thinking'));assert(html.includes('doyun_neutral'));assert(!html.includes('disabled=""'));
 selectChoice(2);assert.equal(current().run.route,'merchant');assert(html.includes('data-speaker-type="player"'));assert(html.includes('data-expression="embarrassed"'));assert(html.includes('상단에서 일할 수 있을까요?'));assert(html.includes('route-caravan'));
-action('advance-dialogue');assert(html.includes('data-speaker-type="npc"'));assert(html.includes('data-expression="smile"'));assert(html.includes('일손은 언제나 필요하지'));resultNext();
+action('advance-dialogue');assert(html.includes('data-speaker-type="npc"'));assert(html.includes('data-expression="smile"'));assert(html.includes('일손은 언제나 필요하오'));resultNext();
 assert.equal(story(),'route_caravan');choice(0);assert.equal(current().run.stats.wealth,10);assert.equal(current().run.job,'상단 일꾼');assert(html.includes('route-caravan-work'));resultNext();
 assert.equal(story(),'route_context');next();answerCurrent(1);
 assert.equal(story(),'thief');choice(2);assert.equal(current().run.stats.fame,8);assert(html.includes('thief-alley'));resultNext();
@@ -52,8 +52,8 @@ assert(current().run.completed);assert.equal(current().run.storyId,'complete');a
 assert.equal(current().meta.completedRuns,1);assert(current().meta.cards.includes('goryeo-foundation-918'));assert(current().meta.people.includes('왕건'));
 
 nav('home');assert(html.includes('챕터 결과 보기'));assert(html.includes('현재 챕터 다시하기'));assert(html.includes('CHAPTER 02'));
-const preserved=JSON.parse(JSON.stringify(current().meta));action('restart');assert(html.includes('CH.01을 다시 시작할까요?'));assert(html.includes('다른 선택으로 918년의 삶을 다시 시작할 수 있어요'));
-action('confirm-restart');assert.equal(story(),'prologue');assert(!current().run.completed);assert.equal(current().run.stats.wealth,0);assert.equal(current().run.choices.length,0);assert.deepEqual(current().meta,preserved);assert(html.includes('순서가 자꾸 헷갈린다'));
+const preserved=JSON.parse(JSON.stringify(current().meta));action('restart-current');assert(html.includes('CH.01을 처음부터 다시 시작할까요?'));assert(html.includes('현재 메인 이야기의 CH.01 진행을 처음으로 되돌립니다.'));
+action('confirm-restart-current');assert.equal(story(),'prologue');assert(!current().run.completed);assert.equal(current().run.stats.wealth,0);assert.equal(current().run.choices.length,0);assert.deepEqual(current().meta,preserved);assert(html.includes('순서가 자꾸 헷갈린다'));
 
 boot();nav('study');assert(html.includes('오답노트'));click({review:'ch01-test-01'});answer(0);assert(html.includes('기억이 선명해졌다'));action('quiz-next');assert(html.includes('복습 완료'));
 console.log('PASS: sequential NPC/player dialogue, expression portraits, thought styling, choice response/reaction, cursor reload, full story tests, branching, restart preservation, and wrong-answer review.');

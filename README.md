@@ -14,7 +14,7 @@ npm test
 
 - `npm start`: `http://127.0.0.1:4173`에서 `dist/` 실행
 - `npm run build`: HTML, CSS, JavaScript 구문과 실제 에셋 참조 검증
-- `npm test`: CH.01·CH.02 전체 스토리 그래프, 324개 CH.02 조합 경로, 11개 문제, 저장·챕터 재시작·v5 마이그레이션, UI 이벤트 플로우 검증
+- `npm test`: CH.01·CH.02 전체 스토리 그래프, 324개 CH.02 조합 경로, 11개 문제, 독립 재플레이·CH.01~11 카드·v6 마이그레이션, UI 이벤트 플로우 검증
 
 ## 모바일 대화 시스템
 
@@ -51,31 +51,43 @@ npm test
 4. 956년 노비안검법이 길상의 삶과 도윤의 거래처, 호족 기반과 왕권에 미친 영향
 5. 지방 출신 현우의 장기 목표, 도윤·현우·주인공의 첫 케미와 958년 과거 시험 응원 선택
 6. 쌍기·과거제, 광덕·준풍, 왕권 강화 `STORY TEST 01~04`
-7. 도윤이 주인공의 변하지 않은 얼굴을 지적하고 물에 비친 얼굴에서 `[알 수 없는 기억]` 획득
-8. 호족 숙청과 `STORY TEST 05`, 관계·신뢰·삶의 방향을 포함한 CH.02 결과
-9. 최승로·시무 28조·성종의 CH.03 「나라의 틀」 티저
+7. 호족 숙청과 `STORY TEST 05`, 관계·신뢰·삶의 방향을 포함한 CH.02 결과
+8. 최승로·시무 28조·성종의 CH.03 「나라의 틀」 티저
+
+CH.01~03에서는 노화 사실을 직접 인식하거나 `MYSTERY` UI를 표시하지 않습니다. 관련 복선은 충분한 시간이 흐르는 CH.04~05 이후 천천히 다룹니다. 캐릭터별 말투 기준은 [`docs/CHARACTER_VOICE_GUIDE.md`](docs/CHARACTER_VOICE_GUIDE.md)에 고정했습니다.
+
+## 챕터 선택과 재플레이
+
+- 홈의 챕터 카드 전체를 눌러 완료·현재·잠금 상태에 맞는 상세 Bottom Sheet를 엽니다.
+- 완료 챕터는 메인 진행을 건드리지 않는 독립 `replay` run으로 시작합니다.
+- 카드의 `결과 보기`는 상세 Sheet를 열지 않고 해당 챕터의 최신 결과로 바로 이동합니다.
+- 미래 챕터는 동일한 메타데이터 기반 카드로 렌더링하며, 아직 구현되지 않은 챕터는 실행하지 않습니다.
+- 재플레이 완료 후 결과 보기, 홈 복귀, 기존 메인 이야기 이어가기를 각각 선택할 수 있습니다.
 
 ## 저장 구조
 
-브라우저 저장 키는 기존과 동일한 `lived-history-v1`이며 내부 스키마 버전은 5입니다. 기존 v1·v2·v3·v4 저장 데이터는 첫 로드에서 자동으로 마이그레이션합니다.
+브라우저 저장 키는 기존과 동일한 `lived-history-v1`이며 내부 스키마 버전은 6입니다. 기존 v1~v5 저장 데이터는 첫 로드에서 자동으로 마이그레이션합니다.
 
 ```text
 state
-├─ run   현재 플레이 회차
+├─ run       현재 화면에서 플레이 중인 main 또는 replay 회차
 │  ├─ currentChapter, storyId, route, choices, flags
+│  ├─ mode, replayChapterId
 │  ├─ stats, wealth, job, relations, trust, lifePath
 │  ├─ inventory, sharedEvents, importantChoices, characterStates
 │  ├─ visited, pending, initialMemory
 │  ├─ dialogueSceneId, dialogueCursor
 │  └─ activeQuestionId, questionResults
+├─ mainRun   replay 동안 보존하는 원래 메인 진행 위치
 └─ meta  누적 학습·수집 기록
    ├─ questionRecords, wrongQuestionIds, reviewedQuestionIds
    ├─ historicalEvents, cards, people
-   ├─ achievements, endings, playthroughs, knowledgeMemory, mysteries
-   └─ completedRuns, completedChapters, chapterRecords
+   ├─ achievements, endings, playthroughs, knowledgeMemory
+   ├─ chapterRuns[chapterId] → 모든 회차와 문제 점수
+   └─ completedChapters, chapterRecords(firstRun, latestRun, bestQuestionScore)
 ```
 
-CH.02 다시하기는 CH.01 완료 기록과 이어받은 직업·스탯·관계를 보존한 채 CH.02의 선택·문제 진행만 초기화합니다. 문제 풀이 기록, 오답, 발견 사건·카드·인물, 업적과 완료 챕터는 `meta`에 남습니다.
+챕터 재플레이는 `mainRun`을 별도로 보존하고 `chapterRuns`에 새 회차를 추가합니다. 문제 풀이 시도, 오답, 발견 사건·카드·인물, 업적과 완료 챕터는 `meta`에 누적되며 최초 기록을 덮어쓰지 않습니다.
 
 ## 일러스트 데이터
 
@@ -95,9 +107,9 @@ CH.01 제작 에셋은 [`docs/ASSET_REQUIRED.md`](docs/ASSET_REQUIRED.md), CH.02
 
 ## 파일 구조
 
-- `dist/data.js`: CH.01 데이터, v5 다중 챕터·인벤토리·관계 기억 저장 모델과 변경 함수
+- `dist/data.js`: CH.01 데이터, v6 메인 진행·재플레이 회차·누적 학습 저장 모델
 - `dist/ch02-data.js`: CH.02 장면·대화·선택·문제·에셋 데이터
-- `dist/app.js`: 두 챕터 공용 순차 대화/선택 렌더링, 결과·누적 기록·챕터 재시작
+- `dist/app.js`: 대화/선택 렌더링, 메타데이터 기반 챕터 카드·상세 Sheet·재플레이 결과
 - `dist/style.css`: 기존 반응형 디자인
 - `dist/v2.css`: 다시하기, 분산 문제, 챕터 결과 UI
 - `dist/dialogue.css`: 모바일 메신저형 좌우 말풍선, 비주얼노벨 캐릭터 레이어, 독백, 선택지 UI
@@ -109,9 +121,11 @@ CH.01 제작 에셋은 [`docs/ASSET_REQUIRED.md`](docs/ASSET_REQUIRED.md), CH.02
 - `docs/CHARACTER_ASSET_REQUIRED.md`: 캐릭터·표정 에셋 현황과 확장 명세
 - `docs/CH02_ASSETS.md`: CH.02 에셋 사용·재사용 명세
 - `docs/IMAGE_GENERATION_PROMPTS.md`: 최종 이미지 생성 프롬프트 기록
+- `docs/CHARACTER_VOICE_GUIDE.md`: 주인공·도윤·현우 말투와 노화 복선 속도 기준
 - `tests/verify.cjs`: 데이터/분기/저장 정책 검증
 - `tests/ui-test.cjs`: 실제 클릭 이벤트 기반 전체 플레이 플로우 검증
 - `tests/ch02-ui-test.cjs`: CH.02 이어받기·대화·선택·문제·완료·재시작 UI 검증
+- `tests/replay-ui-test.cjs`: 챕터 카드·독립 재플레이·메인 복원·잠금·새로고침 검증
 - `tests/build.cjs`: 정적 빌드 산출물 검증
 
 현재 저장은 해당 브라우저와 주소에만 유지됩니다. 로컬 파일, localhost, 배포 주소의 세이브는 서로 별개입니다.

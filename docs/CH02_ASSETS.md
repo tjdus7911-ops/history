@@ -12,7 +12,6 @@ CH.02 신규 에셋은 CH.01의 `chapter-02-teaser`, `future-flow`, 도윤·주�
 | `ch02-exam-notice` | `ch02_exam_notice`, `ch02_three_way`, `ch02_ssanggi` | 958년 관청 거리 | 과거제 시행 소식, 현우 등장과 세 사람의 첫 케미 | 사용 |
 | `ch02-exam-yard` | `ch02_exam_day`와 응원 선택 결과 | 과거 시험장 | 자신의 꿈을 걸고 시험장으로 들어가는 현우 | 사용 |
 | `ch02-reign-titles` | `ch02_reign_titles`, `ch02_reign_followup` | 광덕·준풍 상징 | 독자적 연호와 왕의 권위 | 사용 |
-| `ch02-reflection` | `ch02_reflection` | 노화 미스터리 | 세월이 지나도 변하지 않은 얼굴을 물에 비춰 보는 장면 | 신규 사용 |
 | `ch02-purge-night` | `ch02_purge` | 960년 긴장된 밤 | 호족 숙청의 두려움을 비폭력적으로 표현 | 사용 |
 | `ch02-complete` | CH.02 결과/홈 썸네일 | 개경 새벽 | 정책과 왕권 강화의 흐름을 회수 | 사용 |
 | `ch03-teaser` | CH.03 티저 | 성종 대 궁궐 | 최승로가 시무 28조를 올리는 다음 이야기 | 사용 |
@@ -22,3 +21,5 @@ CH.02 신규 에셋은 CH.01의 `chapter-02-teaser`, `future-flow`, 도윤·주�
 | `player_goryeo_*` 7종 | 주인공 | 투명 포트레이트 | CH.01 평민복 획득 이후 동일 얼굴·머리와 고려 복식 유지 | 신규 사용 |
 
 단역 NPC의 독립 포트레이트는 아직 `ASSET_REQUIRED`이며, 현재 장면에서는 인물이 포함된 완성 일러스트로 표현합니다. 세부 목록은 `CHARACTER_ASSET_REQUIRED.md`에 기록했습니다.
+
+CH.02의 노화 미스터리 장면은 서사 진행 속도 조정에 따라 삭제했습니다. 주인공의 외형 변화에 관한 복선은 CH.04~05 이후 충분한 시간 경과가 생긴 뒤 별도 에셋 계획으로 다시 검토합니다.
