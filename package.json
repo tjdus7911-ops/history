@@ -6,6 +6,6 @@
   "scripts": {
     "start": "node serve.cjs",
     "build": "node tests/build.cjs",
-    "test": "node tests/verify.cjs && node tests/ui-test.cjs && node tests/ch02-ui-test.cjs && node tests/ch03-ui-test.cjs && node tests/replay-ui-test.cjs"
+    "test": "node tests/verify.cjs && node tests/exam-bank-test.cjs && node tests/ui-test.cjs && node tests/ch02-ui-test.cjs && node tests/ch03-ui-test.cjs && node tests/replay-ui-test.cjs"
   }
 }

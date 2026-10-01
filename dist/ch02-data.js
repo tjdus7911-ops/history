@@ -1,7 +1,7 @@
 /* CH.02 왕의 나라 — CH.01 데이터와 저장 구조를 확장하는 독립 모듈 */
 const CHAPTERS={
-  ch01:{chapterId:'ch01',episode:'goryeo',number:'01',title:'새로운 나라',subtitle:'918년, 고려 건국과 후삼국',thumbnail:'goryeo.png',startStoryId:'prologue',completeStoryId:'complete',questionCount:6,implemented:true},
-  ch02:{chapterId:'ch02',episode:'goryeo',number:'02',title:'왕의 나라',subtitle:'왕은 왜 자신의 사람들을 풀어주었을까',thumbnail:'assets/scenes/ch02-complete.png',startStoryId:'ch02_transition',completeStoryId:'ch02_complete',questionCount:5,implemented:true},
+  ch01:{chapterId:'ch01',episode:'goryeo',number:'01',title:'새로운 나라',subtitle:'918년, 고려 건국과 후삼국',thumbnail:'goryeo.png',startStoryId:'prologue',completeStoryId:'complete',questionCount:10,implemented:true},
+  ch02:{chapterId:'ch02',episode:'goryeo',number:'02',title:'왕의 나라',subtitle:'왕은 왜 자신의 사람들을 풀어주었을까',thumbnail:'assets/scenes/ch02-complete.png',startStoryId:'ch02_transition',completeStoryId:'ch02_complete',questionCount:10,implemented:true},
   ch03:{chapterId:'ch03',episode:'goryeo',number:'03',title:'나라의 틀',subtitle:'최승로의 시무 28조와 성종',thumbnail:'assets/scenes/ch03-teaser.png',questionCount:0,implemented:false},
   ch04:{chapterId:'ch04',episode:'goryeo',number:'04',title:'북쪽에서 온 적',subtitle:'거란의 침입과 고려의 대응',thumbnail:'goryeo.png',questionCount:0,implemented:false},
   ch05:{chapterId:'ch05',episode:'goryeo',number:'05',title:'귀족들의 나라',subtitle:'문벌 귀족 사회와 갈등',thumbnail:'goryeo.png',questionCount:0,implemented:false},

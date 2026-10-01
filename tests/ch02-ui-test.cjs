@@ -1,12 +1,13 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
 let saved=null,html='',handlers={},context,timers=[];
-const data=fs.readFileSync('dist/data.js','utf8')+'\n'+fs.readFileSync('dist/ch02-data.js','utf8')+'\n'+fs.readFileSync('dist/ch03-data.js','utf8'),app=fs.readFileSync('dist/app.js','utf8');
+const data=fs.readFileSync('dist/data.js','utf8')+'\n'+fs.readFileSync('dist/ch02-data.js','utf8')+'\n'+fs.readFileSync('dist/ch03-data.js','utf8')+'\n'+fs.readFileSync('dist/exam-data.js','utf8'),app=fs.readFileSync('dist/app.js','utf8');
 function boot(){handlers={};timers=[];const root={set innerHTML(s){html=s},get innerHTML(){return html}};const document={querySelector:s=>s==='#app'?root:null,querySelectorAll:()=>[],addEventListener:(e,f)=>handlers[e]=f,createElement:()=>({setAttribute(){},remove(){}}),body:{append(){}}};context=vm.createContext({document,localStorage:{getItem:()=>saved,setItem:(k,s)=>saved=s},window:{scrollTo(){}},navigator:{},setTimeout(fn){timers.push(fn);return timers.length},clearTimeout(){},Date});vm.runInContext(data+app,context)}
 const click=dataset=>{vm.runInContext('inputLockedUntil=0',context);handlers.click({target:{closest:()=>({dataset,disabled:false})}})},action=x=>click({action:x}),nav=x=>click({nav:x}),selectChoice=i=>click({choice:String(i)}),answer=i=>click({answer:String(i)});
 const current=()=>JSON.parse(saved),story=()=>current().run.storyId;
 function reveal(){let n=0;while(html.includes('data-action="advance-dialogue"')){action('advance-dialogue');if(++n>15)throw Error('dialogue guard')}}
 function next(){reveal();action('next')}function choose(i){reveal();selectChoice(i);reveal();action('result-next')}
-function answerAndContinue(i){answer(i);assert(html.includes(i===vm.runInContext(`QUESTIONS.find(q=>q.questionId===run().activeQuestionId).answer`,context)?'기억이 선명해졌다':'기억이 흐릿하다'));action('quiz-next')}
+function drainSupplementalQuestions(){let guard=0;while(vm.runInContext(`Boolean(STORIES[${JSON.stringify(story())}]?.supplementalExam)`,context)){next();const correct=vm.runInContext('QUESTIONS.find(q=>q.questionId===run().activeQuestionId).answer',context);answer(correct);assert(html.includes('기억이 선명해졌다'));action('quiz-next');if(++guard>8)throw new Error('supplemental quiz guard')}}
+function answerAndContinue(i){answer(i);assert(html.includes(i===vm.runInContext(`QUESTIONS.find(q=>q.questionId===run().activeQuestionId).answer`,context)?'기억이 선명해졌다':'기억이 흐릿하다'));action('quiz-next');drainSupplementalQuestions()}
 
 boot();
 vm.runInContext("state.run.started=true;state.run.stats={health:88,knowledge:11,fame:6,wealth:24};state.run.relations.doyun=19;state.run.job='상단 장부 보조';state.run.route='merchant';finishChapter(state);save();",context);
@@ -26,4 +27,4 @@ assert(current().run.completed);assert.equal(story(),'ch02_complete');assert(htm
 nav('teaser');assert(html.includes('CHAPTER 03 · UNLOCKED'));assert(html.includes('시무 28조'));assert(html.includes('CH.03 시작하기'));
 nav('complete');action('request-replay');assert(html.includes('CH.02을 다시 플레이할까요?'));assert(html.includes('이미 완료한 이후 챕터의 진행 기록은 유지됩니다.'));click({action:'confirm-replay',chapter:'ch02'});assert.equal(current().run.mode,'replay');assert.equal(current().run.currentChapter,'ch02');assert.equal(story(),'ch02_transition');assert.equal(current().run.stats.wealth,24);assert.equal(current().run.job,'상단 장부 보조');assert.equal(current().run.relations.doyun,19);assert.equal(current().run.choices.length,0);assert(current().meta.completedChapters.includes('ch01'));assert(current().meta.completedChapters.includes('ch02'));
 boot();action('play');assert.equal(current().run.currentChapter,'ch02');assert.equal(story(),'ch02_transition');
-console.log('PASS: CH.02 918→949→956→958 transitions, aged Doyun portraits, preserved choice arcs and five story tests, delayed mystery reveal, wrong-note save, completion, CH.03 teaser, reload, and replay start.');
+console.log('PASS: CH.02 918→949→956→958 transitions, aged Doyun portraits, preserved choice arcs and ten story tests, delayed mystery reveal, wrong-note save, completion, CH.03 teaser, reload, and replay start.');

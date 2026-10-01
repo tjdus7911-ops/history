@@ -1,6 +1,6 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
 let saved=null,html='',handlers={},context,timers=[];
-const data=fs.readFileSync('dist/data.js','utf8')+'\n'+fs.readFileSync('dist/ch02-data.js','utf8')+'\n'+fs.readFileSync('dist/ch03-data.js','utf8'),app=fs.readFileSync('dist/app.js','utf8'),css=fs.readFileSync('dist/dialogue.css','utf8');
+const data=fs.readFileSync('dist/data.js','utf8')+'\n'+fs.readFileSync('dist/ch02-data.js','utf8')+'\n'+fs.readFileSync('dist/ch03-data.js','utf8')+'\n'+fs.readFileSync('dist/exam-data.js','utf8'),app=fs.readFileSync('dist/app.js','utf8'),css=fs.readFileSync('dist/dialogue.css','utf8');
 function boot(){
   handlers={};timers=[];
   const root={set innerHTML(s){html=s},get innerHTML(){return html}};
@@ -15,8 +15,9 @@ function revealDialogue(){let guard=0;while(html.includes('data-action="advance-
 function next(){revealDialogue();action('next')}
 function choice(i){revealDialogue();selectChoice(i)}
 function resultNext(){revealDialogue();action('result-next')}
-function answerCurrent(index){answer(index);assert(html.includes(index===currentAnswer()?'기억이 선명해졌다':'기억이 흐릿하다'));action('quiz-next')}
 function currentAnswer(){const id=current().run.activeQuestionId;return vm.runInContext(`QUESTIONS.find(q=>q.questionId===${JSON.stringify(id)}).answer`,context)}
+function drainSupplementalQuestions(){let guard=0;while(vm.runInContext(`Boolean(STORIES[${JSON.stringify(story())}]?.supplementalExam)`,context)){next();answer(currentAnswer());assert(html.includes('기억이 선명해졌다'));action('quiz-next');if(++guard>8)throw new Error('supplemental quiz guard')}}
+function answerCurrent(index){answer(index);assert(html.includes(index===currentAnswer()?'기억이 선명해졌다':'기억이 흐릿하다'));action('quiz-next');drainSupplementalQuestions()}
 function flushCinematic(){let guard=0;while(story()==='voice'&&current().run.dialogueCursor<5){const fn=timers.shift();assert(fn,'cinematic timer missing');fn();if(++guard>6)throw new Error('cinematic did not finish')}}
 
 boot();
@@ -32,7 +33,7 @@ assert.equal(story(),'outfit_question');assert(html.includes('그 이상한 옷�
 assert.equal(story(),'outfit_gift');assert.equal(current().run.playerOutfit,'modern');while(current().run.dialogueCursor<6)action('advance-dialogue');assert.equal(current().run.playerOutfit,'modern');assert(html.includes('player_modern_'));action('advance-dialogue');assert.equal(current().run.playerOutfit,'goryeo_commoner');assert(current().run.flags.hasModernClothes);assert.equal(current().run.flags.wearingModernClothes,false);assert(current().run.flags.receivedGoryeoClothesFromDoyun);assert(current().run.inventory.some(item=>item.id==='modern-clothes'&&item.status==='stored'));assert(current().run.inventory.some(item=>item.id==='goryeo-commoner-clothes'&&item.status==='equipped'));assert(html.includes('player_goryeo_'));boot();action('play');assert.equal(story(),'outfit_gift');assert.equal(current().run.playerOutfit,'goryeo_commoner');assert(html.includes('player_goryeo_'));revealDialogue();assert(html.includes('현대 복장은 보관 중'));action('next');
 assert.equal(story(),'village');assert.equal(current().run.playerOutfit,'goryeo_commoner');assert(html.includes('data-illustration="village-reveal"'));assert(html.includes('assets/scenes/route-village.png'));next();
 assert.equal(story(),'rumor');next();assert.equal(current().run.activeQuestionId,'ch01-test-01');assert(html.includes('STORY TEST'));
-answer(1);assert(html.includes('기억이 흐릿하다'));assert(current().meta.wrongQuestionIds.includes('ch01-test-01'));action('quiz-next');
+answer(1);assert(html.includes('기억이 흐릿하다'));assert(current().meta.wrongQuestionIds.includes('ch01-test-01'));action('quiz-next');drainSupplementalQuestions();
 assert.equal(story(),'foundation');revealDialogue();assert(html.includes('918년과 936년을 헷갈리고 있어요'));action('next');
 answerCurrent(2);assert.equal(story(),'market');next();assert.equal(story(),'doyun');
 assert(html.includes('궁예가 그렇게 쫓겨날 줄'));action('advance-dialogue');assert(html.includes('……쫓겨났다고요?'));revealDialogue();assert(html.includes('왕건 장군을 왕으로 세운 지 얼마 되지도 않았소'));action('next');answerCurrent(1);

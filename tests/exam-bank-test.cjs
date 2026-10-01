@@ -1,0 +1,45 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const code=['data','ch02-data','ch03-data','exam-data'].map(file=>fs.readFileSync(`dist/${file}.js`,'utf8')).join('\n');
+const context=vm.createContext({});
+vm.runInContext(`${code};this.api={CHAPTERS,STORIES,QUESTIONS};`,context);
+const {CHAPTERS,STORIES,QUESTIONS}=context.api;
+
+for(const chapterId of ['ch01','ch02','ch03']){
+  const chapterQuestions=QUESTIONS.filter(question=>question.chapterId===chapterId);
+  assert.equal(CHAPTERS[chapterId].questionCount,10,`${chapterId}: metadata count`);
+  assert.equal(chapterQuestions.length,10,`${chapterId}: actual question count`);
+  assert.equal(new Set(chapterQuestions.map(question=>question.questionId)).size,10,`${chapterId}: duplicate id`);
+}
+
+const expectedOfficialAnswers={
+  'ch01-official-70-advanced-10':2,
+  'ch01-official-73-basic-10':2,
+  'ch01-official-74-advanced-10':3,
+  'ch01-official-76-advanced-10':1,
+  'ch02-official-69-advanced-10':4,
+  'ch02-official-74-advanced-11':1,
+  'ch02-official-76-advanced-50':4,
+  'ch02-official-77-advanced-14':4,
+  'ch02-official-78-advanced-11':3,
+  'ch03-official-75-basic-10':2,
+  'ch03-official-75-basic-12':2
+};
+const official=QUESTIONS.filter(question=>question.isOfficial);
+assert.equal(official.length,11);
+assert.deepEqual(Object.fromEntries(official.map(question=>[question.questionId,question.answer])),expectedOfficialAnswers);
+assert.deepEqual(Object.fromEntries(['ch01','ch02','ch03'].map(chapterId=>[chapterId,official.filter(question=>question.chapterId===chapterId).length])),{ch01:4,ch02:5,ch03:2});
+for(const question of official){
+  assert(['기본','심화'].includes(question.examLevel));
+  assert(question.sourceFile.endsWith('.pdf')&&!/[\\/]/.test(question.sourceFile));
+  assert(question.answerFile.endsWith('.pdf')&&!/[\\/]/.test(question.answerFile));
+  assert(STORIES[question.relatedSceneId]?.supplementalExam||question.questionId==='ch03-official-75-basic-10');
+}
+
+const addedPractice=QUESTIONS.filter(question=>/^ch03-practice-0[5-9]$/.test(question.questionId));
+assert.equal(addedPractice.length,5);
+assert(addedPractice.every(question=>!question.isOfficial&&question.examType==='실전 유형 연습 · 자체 제작'));
+assert.equal(QUESTIONS.find(question=>question.questionId==='ch01-boss').originalResumeStoryId,'complete');
+assert.equal(QUESTIONS.find(question=>question.questionId==='ch02-test-05').originalResumeStoryId,'ch02_complete');
+assert.equal(QUESTIONS.find(question=>question.questionId==='ch03-practice-04').originalResumeStoryId,'ch03_courtyard');
+
+console.log('PASS: CH.01~CH.03 each contain 10 distributed questions; 11 official answers and 5 new practice items are source-labeled and chained.');
