@@ -66,7 +66,7 @@
 
 ## 후속 의상 에셋
 
-현재 코드의 플레이어 의상 키는 `modern`이며 `player_modern_*` 파일을 사용합니다. 고려 생활에 적응한 뒤에는 같은 얼굴·머리를 유지한 `player_goryeo_neutral`, `player_goryeo_smile`, `player_goryeo_surprised`, `player_goryeo_worried`, `player_goryeo_thinking`, `player_goryeo_serious`, `player_goryeo_embarrassed`, `player_goryeo_angry`, `player_goryeo_sad`를 제작하고 `CHARACTERS.player.portraits.goryeo`에 연결합니다.
+CH.01 초반에는 `modern`, 도윤에게 평민복을 받은 뒤에는 `goryeo` 키를 사용합니다. `player_goryeo_neutral`, `player_goryeo_smile`, `player_goryeo_surprised`, `player_goryeo_worried`, `player_goryeo_thinking`, `player_goryeo_serious`, `player_goryeo_embarrassed`를 제작해 `CHARACTERS.player.portraits.goryeo`에 연결했습니다. 현대복 기준 얼굴·머리·체형은 고정하고 남회색 겉포·회갈색 속옷·천 허리띠만 교체했습니다. 유사한 부정 표정은 7개 에셋 안에서 재사용합니다.
 
 ## CH.02 최종 생성 프롬프트 기준
 
@@ -77,3 +77,5 @@
 ```
 
 장면별 프롬프트 핵심은 `CH02_ASSETS.md`의 설명과 동일합니다. 현우는 958년의 21세 과거 응시자이며, 연녹색 삼베 포·갈색 속깃·책 꾸러미·묶은 검은 머리를 모든 표정에서 고정하고 `neutral`, `worried`, `smile`만 변경했습니다.
+
+`ch02-reflection`은 승인된 고려 평민복 주인공을 정체성 기준으로, `ch02-reign-titles`를 선화·채색 기준으로 사용했습니다. 고요한 물가에 비친 동일한 얼굴을 보여 주되 마법 효과·포털·초자연적 설명은 넣지 않고, 하단 28%를 대화 UI용 어두운 여백으로 구성했습니다.
