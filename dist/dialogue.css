@@ -66,6 +66,7 @@
 .cinematic-wait{color:#e7dcc69e;font-size:11px;letter-spacing:.16em;animation:pulse-voice 1.15s ease-in-out infinite}
 .effect-wake-reveal:after{content:'';position:absolute;z-index:20;inset:0;background:#000;pointer-events:none;animation:wake-reveal 1.35s cubic-bezier(.22,.72,.28,1) forwards}
 .item-memory small{opacity:.78}
+.mystery-memory{display:grid;justify-items:center;gap:4px;border:1px solid #d9c89d45!important;border-left:1px solid #d9c89d45!important;background:linear-gradient(135deg,#111823e8,#05080de8)!important;text-align:center;letter-spacing:.12em}.mystery-memory small{color:#c6b78f;letter-spacing:.18em}.mystery-memory strong{font:700 25px 'Gowun Batang';color:#f2ead8;text-shadow:0 0 18px #d9c89d40}
 body:has(.cinematic-black){background:#000}
 body:has(.cinematic-black) .sidebar{opacity:0;pointer-events:none}
 body:has(.cinematic-black) .main{padding:0!important;background:#000}

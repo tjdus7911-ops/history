@@ -15,6 +15,11 @@ const CHAPTERS={
 
 Object.assign(ASSETS,{
   'ch02-gaegyeong-market':sceneArt('ch02-gaegyeong-market','949년, 전쟁이 끝난 뒤 성장한 개경 시장',['#536359','#b08352']),
+  'ch02-market-949':sceneArt('ch02-market-949','949년, 왕조와 함께 자라난 개경 시장',['#4e5b52','#b78a55']),
+  'ch02-doyun-shop-exterior-949':sceneArt('ch02-doyun-shop-exterior-949','949년, 도윤이 일군 작은 가게',['#5b5143','#b78451']),
+  'ch02-doyun-shop-interior-949':sceneArt('ch02-doyun-shop-interior-949','949년, 도윤의 가게 안쪽',['#29313a','#a9794e']),
+  'ch02-doyun-shop-956':sceneArt('ch02-doyun-shop-956','956년, 일곱 해 동안 조금 더 자란 도윤의 가게',['#554b3e','#b6814d']),
+  'ch02-water-reflection-958':sceneArt('ch02-water-reflection-958','958년, 개경 밖 달빛 어린 물가',['#0d1828','#5b6b83'],true,'ch02-water-reflection-958',['player']),
   'ch02-slave-dispute':sceneArt('ch02-slave-dispute','노비 신분을 둘러싸고 충돌하는 시장 사람들',['#55463b','#a87452'],true),
   'ch02-freed-citizen':sceneArt('ch02-freed-citizen','문서 조사 뒤 양인 신분을 되찾는 남자',['#443d35','#9a7655'],true),
   'ch02-nobles-night':sceneArt('ch02-nobles-night','도윤의 상점에서 왕의 정책에 분노하는 귀족들',['#171f29','#796047'],true),
@@ -27,6 +32,16 @@ Object.assign(ASSETS,{
 });
 
 Object.assign(PORTRAITS,{
+  doyun_949_neutral:portrait('doyun','neutral','도윤 · 949년, 가게를 일군 쉰일곱 살의 기본 표정',['#2e3540','#9a7658'],'assets/characters/doyun_949_neutral.png'),
+  doyun_949_smile:portrait('doyun','smile','도윤 · 949년, 오랜 친구를 놀리는 미소',['#323945','#aa805b'],'assets/characters/doyun_949_smile.png'),
+  doyun_949_surprised:portrait('doyun','surprised','도윤 · 949년, 뜻밖의 말에 놀란 표정',['#303743','#9e7557'],'assets/characters/doyun_949_surprised.png'),
+  doyun_949_serious:portrait('doyun','serious','도윤 · 949년, 장사와 세상을 헤아리는 굳은 표정',['#29313c','#84674f'],'assets/characters/doyun_949_serious.png'),
+  doyun_949_worried:portrait('doyun','worried','도윤 · 949년, 친구를 염려하는 표정',['#2b333e','#8a6b53'],'assets/characters/doyun_949_worried.png'),
+  doyun_956_neutral:portrait('doyun','neutral','도윤 · 956년 이후, 세월이 내려앉은 기본 표정',['#2d3440','#927155'],'assets/characters/doyun_956_neutral.png'),
+  doyun_956_smile:portrait('doyun','smile','도윤 · 956년 이후, 여전한 장난기 어린 미소',['#313945','#9f7958'],'assets/characters/doyun_956_smile.png'),
+  doyun_956_surprised:portrait('doyun','surprised','도윤 · 956년 이후, 눈을 크게 뜬 표정',['#303743','#977256'],'assets/characters/doyun_956_surprised.png'),
+  doyun_956_serious:portrait('doyun','serious','도윤 · 956년 이후, 노련하고 엄정한 표정',['#29313b','#80634e'],'assets/characters/doyun_956_serious.png'),
+  doyun_956_worried:portrait('doyun','worried','도윤 · 956년 이후, 세월 어린 걱정스러운 표정',['#2b333e','#866650'],'assets/characters/doyun_956_worried.png'),
   hyunwoo_neutral:portrait('hyunwoo','neutral','현우 · 온화하고 학구적인 기본 표정',['#42504a','#9a7957'],'assets/characters/hyunwoo_neutral.png'),
   hyunwoo_worried:portrait('hyunwoo','worried','현우 · 시험을 앞두고 긴장한 표정',['#3c4947','#816957'],'assets/characters/hyunwoo_worried.png'),
   hyunwoo_smile:portrait('hyunwoo','smile','현우 · 격려를 받고 안도하는 미소',['#46534b','#a47f59'],'assets/characters/hyunwoo_smile.png'),
@@ -62,18 +77,22 @@ QUESTIONS.push(
 
 const ch02Scene=data=>scene({chapterId:'ch02',historicalEventId:'gwangjong-reforms',year:949,...data});
 const CH02_STORIES={
-  ch02_transition:ch02Scene({sceneId:'ch02_transition',location:'시간의 흐름',title:'그리고 새로운 왕이 즉위했다',illustrationId:'ch02-gaegyeong-market',timeOfDay:'dawn',sceneEffect:'fade-in',enterCharacterStates:{player:{characterAge:23,characterEraVariant:'unchanged'},doyun:{characterAge:30,characterEraVariant:'established-young-merchant'}},dialogue:'고려가 후삼국을 통일한 뒤, 시간이 흘렀다.\n왕건이 세상을 떠나고 왕위는 몇 차례 바뀌었다.\n그리고 새로운 왕이 즉위했다.\n\n949년 · 개경\nCH.02 왕의 나라',nextStoryId:'ch02_market'}),
-  ch02_market:ch02Scene({sceneId:'ch02_market',location:'개경 · 시장',title:'몇 년을 함께 산 사이',illustrationId:'ch02-gaegyeong-market',timeOfDay:'afternoon',ambientSound:'market',dialogue:'개경에서 도윤과 부딪치며 살아온 세월이 쌓였다. 도윤은 이제 자기 상단을 꿈꾼다.',choices:[
+  ch02_transition:ch02Scene({sceneId:'ch02_transition',location:'시간의 흐름',title:'삼십일 년',illustrationId:'ch02-market-949',timeOfDay:'dawn',sceneEffect:'blackout',autoAdvanceDelays:[900,1100,1100,1200,1450],continueLabel:'949년의 개경으로',cinematicStatus:'세월이 흐르는 중…',cinematicSub:'계절과 왕이 바뀌어도, 삶은 계속되었다.',enterCharacterStates:{player:{characterAge:23,characterEraVariant:'unchanged'},doyun:{characterAge:57,characterEraVariant:'established-shop-owner',ageVariant:'middle_aged_949',outfit:'shop_owner'}},dialogue:'918년 — 고려 건국\n계절이 수십 번 바뀌었다.\n왕이 바뀌고, 거리의 지붕이 늘어났다.\n그리고 나는 아직 고려에 있다.\n949년 — 개경',nextStoryId:'ch02_shop_exterior_949'}),
+  ch02_shop_exterior_949:ch02Scene({sceneId:'ch02_shop_exterior_949',location:'949년 · 개경 시장',title:'도윤의 가게',illustrationId:'ch02-doyun-shop-exterior-949',timeOfDay:'afternoon',ambientSound:'market',dialogue:'시장의 한쪽에 도윤이 수십 년 동안 일군 가게가 자리를 잡았다.',nextStoryId:'ch02_reunion_949'}),
+  ch02_reunion_949:ch02Scene({sceneId:'ch02_reunion_949',location:'개경 · 도윤의 가게',title:'여전한 두 사람',illustrationId:'ch02-doyun-shop-interior-949',timeOfDay:'afternoon',ambientSound:'market',dialogue:'가게는 커졌고 도윤의 머리에는 희끗한 빛이 늘었다. 그래도 두 사람의 말다툼은 예전 그대로였다.',nextStoryId:'ch02_market'}),
+  ch02_market:ch02Scene({sceneId:'ch02_market',location:'개경 · 도윤의 가게',title:'왕이 바뀐 나라',illustrationId:'ch02-doyun-shop-interior-949',timeOfDay:'afternoon',ambientSound:'market',dialogue:'왕건이 세상을 떠난 뒤 왕위가 몇 차례 바뀌었다. 지금 고려를 다스리는 왕의 이름이 기억 끝에 걸렸다.',choices:[
     choice('광종','ch02_life_path',{knowledge:1},{},'맞아. 광종. 기억이 선명해졌다.',{flags:{ch02KingMemory:'gwangjong'},memoryKey:'ch02-king-after-taejo',memoryValue:{answer:'광종',correct:true},playerResponse:'광종.',playerExpression:'thinking',responseText:'그렇소. 지금 왕은 광종이오.',responseCharacterId:'doyun',responseExpression:'neutral',resultSceneId:'ch02-memory-gwangjong',resultIllustrationId:'ch02-gaegyeong-market',hint:'기억 +1'}),
     choice('성종','ch02_life_path',{}, {},'이름이 비슷하게 섞인다. 조금 더 지켜보자.',{flags:{ch02KingMemory:'seongjong'},memoryKey:'ch02-king-after-taejo',memoryValue:{answer:'성종',correct:false},playerResponse:'성종……?',playerExpression:'worried',responseText:'표정을 보니 확신은 없는 모양이오.',responseCharacterId:'doyun',responseExpression:'suspicious',resultSceneId:'ch02-memory-seongjong',resultIllustrationId:'ch02-gaegyeong-market'}),
     choice('공민왕','ch02_life_path',{}, {},'아직 훨씬 뒤의 왕이다. 조금 더 지켜보자.',{flags:{ch02KingMemory:'gongmin'},memoryKey:'ch02-king-after-taejo',memoryValue:{answer:'공민왕',correct:false},playerResponse:'공민왕……?',playerExpression:'worried',responseText:'처음 듣는 이름이오.',responseCharacterId:'doyun',responseExpression:'surprised',resultSceneId:'ch02-memory-gongmin',resultIllustrationId:'ch02-gaegyeong-market'}),
     choice('현종','ch02_life_path',{}, {},'순서가 조금 섞였다. 눈앞의 사건을 더 살펴보자.',{flags:{ch02KingMemory:'hyeonjong'},memoryKey:'ch02-king-after-taejo',memoryValue:{answer:'현종',correct:false},playerResponse:'현종……?',playerExpression:'worried',responseText:'그런 이름의 왕은 아직 없소.',responseCharacterId:'doyun',responseExpression:'surprised',resultSceneId:'ch02-memory-hyeonjong',resultIllustrationId:'ch02-gaegyeong-market'})
   ]}),
-  ch02_life_path:ch02Scene({sceneId:'ch02_life_path',location:'개경 · 도윤의 가게 앞',title:'고려에서 나의 자리',illustrationId:'ch02-gaegyeong-market',timeOfDay:'afternoon',dialogue:'도윤은 상단을 만들 준비를 시작했다. 주인공도 이 시대에서 어떤 기반을 만들지 정해야 한다.',choices:[
-    choice('도윤의 장사를 계속 돕는다','ch02_dispute',{wealth:4},{doyun:4},'함께 장부와 짐을 맡으며 도윤의 작은 가게를 키우기로 했다.',{lifePath:'doyun-merchant-partner',trustChanges:{doyun:3},sharedEvents:['helped_doyun_business'],importantChoice:'merchant-partner',playerResponse:'네 상단이 생길 때까지 같이 해볼게.',playerExpression:'smile',responseText:'나중에 말을 바꾸지는 마시오.',responseCharacterId:'doyun',responseExpression:'smile',resultSceneId:'ch02-life-merchant',resultIllustrationId:'ch02-gaegyeong-market',hint:'재산 +4 · 도윤 +4 · 신뢰 +3'}),
-    choice('독립해서 내 일을 찾는다','ch02_dispute',{wealth:2,fame:2},{doyun:1},'도윤의 곁을 떠나지는 않되, 스스로 품삯을 구하고 이름을 알리기로 했다.',{lifePath:'independent-worker',trustChanges:{doyun:1},importantChoice:'independent',playerResponse:'나도 내 힘으로 할 일을 찾아볼래.',playerExpression:'serious',responseText:'좋소. 대신 굶게 되면 바로 오시오.',responseCharacterId:'doyun',responseExpression:'neutral',resultSceneId:'ch02-life-independent',resultIllustrationId:'ch02-gaegyeong-market',hint:'재산 +2 · 명성 +2'}),
-    choice('글과 제도를 더 공부한다','ch02_dispute',{knowledge:2},{doyun:1},'장터 일 사이사이에 글을 배우며 관청과 제도를 이해하기 시작했다.',{lifePath:'learning',importantChoice:'learning',playerResponse:'나는 공부를 좀 더 해볼게.',playerExpression:'thinking',responseText:'그럼 장부도 더 잘 보겠구려.',responseCharacterId:'doyun',responseExpression:'smile',resultSceneId:'ch02-life-learning',resultIllustrationId:'ch02-gaegyeong-market',hint:'지식 +2'})
+  ch02_life_path:ch02Scene({sceneId:'ch02_life_path',location:'개경 · 도윤의 가게 앞',title:'고려에서 나의 자리',illustrationId:'ch02-doyun-shop-exterior-949',timeOfDay:'afternoon',dialogue:'도윤은 작은 가게를 일구었지만, 여러 지역을 잇는 자기 상단의 꿈은 아직 진행 중이다. 주인공도 이 시대에서 어떤 기반을 만들지 정해야 한다.',choices:[
+    choice('도윤의 장사를 계속 돕는다','ch02_jump_956',{wealth:4},{doyun:4},'함께 장부와 짐을 맡으며 도윤의 작은 가게를 키우기로 했다.',{lifePath:'doyun-merchant-partner',trustChanges:{doyun:3},sharedEvents:['helped_doyun_business'],importantChoice:'merchant-partner',playerResponse:'네 상단이 생길 때까지 같이 해볼게.',playerExpression:'smile',responseText:'나중에 말을 바꾸지는 마시오.',responseCharacterId:'doyun',responseExpression:'smile',resultSceneId:'ch02-life-merchant',resultIllustrationId:'ch02-gaegyeong-market',hint:'재산 +4 · 도윤 +4 · 신뢰 +3'}),
+    choice('독립해서 내 일을 찾는다','ch02_jump_956',{wealth:2,fame:2},{doyun:1},'도윤의 곁을 떠나지는 않되, 스스로 품삯을 구하고 이름을 알리기로 했다.',{lifePath:'independent-worker',trustChanges:{doyun:1},importantChoice:'independent',playerResponse:'나도 내 힘으로 할 일을 찾아볼래.',playerExpression:'serious',responseText:'좋소. 대신 굶게 되면 바로 오시오.',responseCharacterId:'doyun',responseExpression:'neutral',resultSceneId:'ch02-life-independent',resultIllustrationId:'ch02-gaegyeong-market',hint:'재산 +2 · 명성 +2'}),
+    choice('글과 제도를 더 공부한다','ch02_jump_956',{knowledge:2},{doyun:1},'장터 일 사이사이에 글을 배우며 관청과 제도를 이해하기 시작했다.',{lifePath:'learning',importantChoice:'learning',playerResponse:'나는 공부를 좀 더 해볼게.',playerExpression:'thinking',responseText:'그럼 장부도 더 잘 보겠구려.',responseCharacterId:'doyun',responseExpression:'smile',resultSceneId:'ch02-life-learning',resultIllustrationId:'ch02-gaegyeong-market',hint:'지식 +2'})
   ]}),
+  ch02_jump_956:ch02Scene({sceneId:'ch02_jump_956',year:956,location:'시간의 흐름',title:'일곱 해 뒤',illustrationId:'ch02-doyun-shop-956',timeOfDay:'dawn',sceneEffect:'blackout',autoAdvanceDelays:[900,1150,1350],continueLabel:'956년의 개경으로',cinematicStatus:'일곱 해가 흐르는 중…',cinematicSub:'가게와 사람, 나라의 질서가 조금씩 달라졌다.',enterCharacterStates:{doyun:{characterAge:64,characterEraVariant:'established-merchant',ageVariant:'elder_956',outfit:'established_merchant'}},dialogue:'도윤의 가게에서 다시 일곱 번의 겨울을 보냈다.\n가게는 조금 더 자랐고, 도윤의 머리는 더 희어졌다.\n956년 — 개경',nextStoryId:'ch02_shop_956'}),
+  ch02_shop_956:ch02Scene({sceneId:'ch02_shop_956',year:956,location:'개경 · 도윤의 가게',title:'조금 더 커진 가게',illustrationId:'ch02-doyun-shop-956',timeOfDay:'afternoon',ambientSound:'market',dialogue:'가게에는 일손과 물건이 늘었다. 그러나 도윤은 여전히 상단이라는 더 큰 꿈을 입에 올렸다.',nextStoryId:'ch02_dispute'}),
   ch02_dispute:ch02Scene({sceneId:'ch02_dispute',year:956,location:'개경 · 시장 한복판',title:'도윤이 아는 사람',illustrationId:'ch02-slave-dispute',timeOfDay:'afternoon',dialogue:'시장 한쪽에서 길상과 귀족 집안의 관리인이 거칠게 맞선다. 도윤은 아버지와 거래하던 집안 사람을 알아본다.',nextStoryId:'ch02_trust'}),
   ch02_trust:ch02Scene({sceneId:'ch02_trust',year:956,location:'개경 · 시장 한복판',title:'그냥 두고 갈 수는 없어',illustrationId:'ch02-slave-dispute',timeOfDay:'afternoon',dialogue:'도윤은 길상을 돕겠다고 한다. 선택은 역사적 결과가 아니라 두 사람의 관계와 위험을 바꾼다.',choices:[
     choice('알겠어. 같이 도와주자','ch02_inspection',{health:-5,fame:2},{doyun:7,citizens:3},'위험을 감수하고 증언자를 직접 찾아 나섰다.',{trustChanges:{doyun:6},sharedEvents:['helped_doyun_friend'],importantChoice:'helped-directly',flags:{nobiIncidentApproach:'direct'},resultDialogues:[dialogueLine('player','serious','알겠어. 같이 도와주자.'),dialogueLine('doyun','worried','고맙소. 허나 무작정 뛰어들지는 마시오.'),dialogueLine('player','surprised','도와주자며.'),dialogueLine('doyun','serious','죽으라고 한 적은 없소.'),dialogueLine('narrator','neutral','둘은 길상의 고향 사람을 찾아 증언을 모았다.','narration')],resultSceneId:'ch02-trust-help',resultIllustrationId:'ch02-slave-dispute',hint:'위험 감수 · 도윤 +7 · 신뢰 +6'}),
@@ -87,7 +106,8 @@ const CH02_STORIES={
     choice('왕의 힘이 약해진다','ch02_policy_memory',{}, {},'귀족은 반발하지만 정책의 방향은 왕권을 약화시키는 쪽이 아니었다.',{memoryKey:'ch02-nobi-purpose',memoryValue:{answer:'왕권 약화',correct:false},playerResponse:'왕의 힘이 약해지는 건가?',playerExpression:'worried',resultSceneId:'ch02-reason-wrong-king',resultIllustrationId:'ch02-freed-citizen'})
   ]}),
   ch02_policy_memory:ch02Scene({sceneId:'ch02_policy_memory',year:956,location:'역사 기억',title:'노비안검법',illustrationId:'ch02-freed-citizen',timeOfDay:'memory',dialogue:'억울하게 노비가 된 사람을 조사해 양인으로 회복시켰다.\n호족의 경제·군사 기반은 약해지고 세금·역 부담 대상인 양인은 늘었다.\n결과적으로 왕권 강화에 도움이 되었다.',quizId:'ch02-test-01'}),
-  ch02_noble_night:ch02Scene({sceneId:'ch02_noble_night',year:956,location:'개경 · 도윤의 상점',title:'귀족의 분노',illustrationId:'ch02-nobles-night',timeOfDay:'night',ambientSound:'night-market',dialogue:'밤이 되자 도윤의 상점 안쪽에서 낮은 목소리가 새어 나왔다.',nextStoryId:'ch02_exam_notice'}),
+  ch02_noble_night:ch02Scene({sceneId:'ch02_noble_night',year:956,location:'개경 · 도윤의 상점',title:'귀족의 분노',illustrationId:'ch02-nobles-night',timeOfDay:'night',ambientSound:'night-market',dialogue:'밤이 되자 도윤의 상점 안쪽에서 낮은 목소리가 새어 나왔다.',nextStoryId:'ch02_jump_958'}),
+  ch02_jump_958:ch02Scene({sceneId:'ch02_jump_958',year:958,location:'시간의 흐름',title:'두 해 뒤',illustrationId:'ch02-exam-notice',timeOfDay:'dawn',sceneEffect:'blackout',autoAdvanceDelays:[900,1150,1400],continueLabel:'958년의 개경으로',cinematicStatus:'두 해가 흐르는 중…',cinematicSub:'왕은 새로운 사람을 찾았고, 한 청년은 그 문을 기다렸다.',enterCharacterStates:{doyun:{characterAge:66,characterEraVariant:'established-merchant',ageVariant:'elder_956',outfit:'established_merchant'},hyunwoo:{characterAge:23,characterEraVariant:'exam-candidate'}},dialogue:'노비안검법이 시행된 뒤 두 해가 흘렀다.\n왕은 집안이 아닌 실력으로 사람을 뽑을 준비를 했다.\n958년 — 개경',nextStoryId:'ch02_exam_notice'}),
   ch02_exam_notice:ch02Scene({sceneId:'ch02_exam_notice',year:958,location:'개경 · 관청 앞 거리',title:'새로운 시험, 현우의 꿈',illustrationId:'ch02-exam-notice',timeOfDay:'morning',dialogue:'지방 출신 현우는 큰 가문 배경 없이 공부로 관리가 되려 한다.',nextStoryId:'ch02_three_way'}),
   ch02_three_way:ch02Scene({sceneId:'ch02_three_way',year:958,location:'개경 · 도윤의 가게',title:'세 사람이 처음 웃은 날',illustrationId:'ch02-exam-notice',timeOfDay:'afternoon',sharedEvent:'three_friends_met',dialogue:'현실적인 도윤과 원칙적인 현우가 첫 만남부터 부딪히지만 금세 말이 통한다.',nextStoryId:'ch02_ssanggi'}),
   ch02_ssanggi:ch02Scene({sceneId:'ch02_ssanggi',year:958,location:'개경 · 관청 앞 거리',title:'후주에서 온 사람, 쌍기',illustrationId:'ch02-exam-notice',timeOfDay:'morning',dialogue:'과거제를 건의한 사람이 후주에서 온 쌍기라는 소문이 퍼졌다.',quizId:'ch02-test-02'}),
@@ -100,34 +120,61 @@ const CH02_STORIES={
   ch02_reign_titles:ch02Scene({sceneId:'ch02_reign_titles',year:960,location:'개경 · 관청 거리',title:'왕의 이름',illustrationId:'ch02-reign-titles',timeOfDay:'afternoon',dialogue:'관청 앞 깃발과 새 문서에 준풍이라는 연호가 쓰이기 시작했다.',quizId:'ch02-test-03'}),
   ch02_reign_followup:ch02Scene({sceneId:'ch02_reign_followup',year:960,location:'역사 기억',title:'광덕에서 준풍으로',illustrationId:'ch02-reign-titles',timeOfDay:'memory',dialogue:'광종은 독자적인 연호인 광덕과 준풍을 사용했다.\n왕의 권위를 높이고 왕권 강화를 드러내는 대표적인 단서다.',quizId:'ch02-test-04'}),
   ch02_purge:ch02Scene({sceneId:'ch02_purge',year:960,location:'개경 · 어두운 골목',title:'왕이 두려워지기 시작했다',illustrationId:'ch02-purge-night',timeOfDay:'night',ambientSound:'heavy-knocking',sceneEffect:'shake',dialogue:'깊은 밤, 군사들이 귀족의 집 문을 두드린다.',quizId:'ch02-test-05'}),
-  ch02_complete:ch02Scene({sceneId:'ch02_complete',year:960,location:'CHAPTER 02 COMPLETE',title:'왕의 나라',illustrationId:'ch02-complete',timeOfDay:'dawn',dialogue:'두 번째 고려 생활을 마쳤습니다.'})
+  ch02_complete:ch02Scene({sceneId:'ch02_complete',year:960,location:'개경 · 도윤의 가게',title:'사십 년이 넘는 세월',illustrationId:'ch02-doyun-shop-956',timeOfDay:'sunset',dialogue:'왕의 개혁을 지나온 어느 저녁, 도윤이 처음 만난 날을 헤아렸다.',nextStoryId:'ch02_night_reflection'}),
+  ch02_night_reflection:ch02Scene({sceneId:'ch02_night_reflection',year:960,location:'개경 밖 · 물가',title:'물에 비친 얼굴',illustrationId:'ch02-water-reflection-958',timeOfDay:'night',ambientSound:'water',dialogue:'도윤과 헤어진 뒤, 주인공은 달빛이 고인 물가에 홀로 앉았다.',nextStoryId:'ch02_mystery'}),
+  ch02_mystery:ch02Scene({sceneId:'ch02_mystery',year:960,location:'알 수 없는 기억',title:'???',illustrationId:'ch02-water-reflection-958',timeOfDay:'night',sceneEffect:'blackout',continueLabel:'CHAPTER 결과 보기',cinematicStatus:'기억을 더듬는 중…',cinematicSub:'아직은 이름 붙일 수 없는 의문만 남았다.',mysteryKey:'unknown-aging',sharedEvent:'noticed_unchanged_appearance',completeChapter:true,dialogue:'사십 년이 넘었는데도, 내 얼굴은 그날과 같았다.\n이유는 떠오르지 않았다.\n다만 질문 하나가 남았다.\n나는 왜 변하지 않는 걸까.'})
 };
 Object.assign(STORIES,CH02_STORIES);
 
 const CH02_DIALOGUES={
   ch02_transition:[
-    dialogueLine('narrator','neutral','고려가 후삼국을 통일한 뒤, 시간이 흘렀다.','narration'),
-    dialogueLine('narrator','neutral','왕건이 세상을 떠나고 왕위는 몇 차례 바뀌었다.','narration'),
-    dialogueLine('narrator','neutral','그리고 새로운 왕이 즉위했다.','narration'),
-    dialogueLine('narrator','neutral','949년 · 개경\nCH.02 왕의 나라','narration')
+    dialogueLine('narrator','neutral','918년 — 고려 건국','narration'),
+    dialogueLine('narrator','neutral','계절이 수십 번 바뀌었다.','narration'),
+    dialogueLine('narrator','neutral','왕이 바뀌고, 거리의 지붕이 늘어났다.','narration'),
+    dialogueLine('player','thinking','그리고 나는 아직 고려에 있다.','thought'),
+    dialogueLine('narrator','neutral','949년 — 개경','narration')
   ],
-  ch02_market:[
-    dialogueLine('doyun','neutral','거기 멍하니 서 있지 말고 이것 좀 드시오.'),
+  ch02_shop_exterior_949:[
+    dialogueLine('narrator','neutral','전쟁의 흔적 위로 상점과 기와지붕이 빼곡하게 들어섰다.','narration'),
+    dialogueLine('narrator','neutral','장터 한쪽에는 도윤이 수십 년 동안 일군 가게가 자리를 잡고 있었다.','narration'),
+    dialogueLine('player','thinking','작은 좌판에서 시작했는데, 진짜 자기 가게를 만들었네.','thought')
+  ],
+  ch02_reunion_949:[
+    dialogueLine('doyun','neutral','거기 멍하니 서 있지 말고 이 자루부터 옮기시오.'),
     dialogueLine('player','embarrassed','내가 네 일꾼이냐?'),
-    dialogueLine('doyun','smile','내 집에서 밥을 얻어먹은 게 몇 년인데 그러시오?'),
-    dialogueLine('player','embarrassed','……그건 그렇지.'),
-    dialogueLine('doyun','smile','처음 보았을 때는 괴상한 옷을 입고 쓰러져 있더니.'),
+    dialogueLine('doyun','smile','내 가게에서 밥을 얻어먹은 세월이 얼마인데 새삼 그러시오?'),
+    dialogueLine('player','embarrassed','……내가 도와준 것도 많거든.'),
+    dialogueLine('doyun','smile','처음 보았을 때는 괴상한 옷을 입고 길바닥에 쓰러져 있던 사람이 말은 잘하는구려.'),
     dialogueLine('player','worried','진짜 그 얘기로 평생 놀릴 거야?'),
     dialogueLine('doyun','surprised','진짜?'),
     dialogueLine('player','embarrassed','아…… 정말로 그럴 거냐고.'),
     dialogueLine('doyun','smile','그럼 처음부터 정말이라고 하면 될 것을. 평생 놀릴 생각이오.'),
-    dialogueLine('doyun','serious','그래도 장난만 치며 살 수는 없소. 언젠가는 내 이름을 건 상단을 만들 것이오.'),
-    dialogueLine('player','smile','그래서 요즘 그렇게 돈을 모으는 거구나.'),
-    dialogueLine('player','thinking','후삼국이 통일되고 시간이 흘렀다. 그리고 지금 고려의 왕은…….','thought')
+    dialogueLine('player','thinking','도윤의 머리에는 희끗한 빛이 늘었다. 웃는 얼굴만은 오래전 그대로였다.','thought')
+  ],
+  ch02_market:[
+    dialogueLine('doyun','neutral','태조께서 돌아가신 뒤로 왕이 몇 번이나 바뀌었소.'),
+    dialogueLine('player','neutral','세월이 정말 많이 흘렀네.'),
+    dialogueLine('doyun','serious','이번 임금은 오래된 집안들을 그냥 두고 볼 분이 아닌 듯하오.'),
+    dialogueLine('player','thinking','태조 왕건 다음 시대, 지금 고려의 왕은…….','thought')
   ],
   ch02_life_path:[
-    dialogueLine('doyun','neutral','내 상단 이야기는 그렇다 치고, 자네는 어떻게 살고 싶소?'),
+    dialogueLine('doyun','serious','가게 하나를 얻었다고 다 이룬 것은 아니오. 송악과 서경, 더 먼 곳의 물길까지 잇는 내 상단을 만들 것이오.'),
+    dialogueLine('player','smile','여전히 꿈이 크네.'),
+    dialogueLine('doyun','smile','꿈이 작아서야 장부를 펼칠 맛이 나겠소?'),
+    dialogueLine('doyun','neutral','내 상단 이야기는 그렇다 치고, 자네는 앞으로 어떻게 살고 싶소?'),
     dialogueLine('player','thinking','나는 이제 이 시대의 구경꾼이 아니다. 고려에서 내 생활 기반을 만들어야 한다.','thought')
+  ],
+  ch02_jump_956:[
+    dialogueLine('narrator','neutral','도윤의 가게에서 다시 일곱 번의 겨울을 보냈다.','narration'),
+    dialogueLine('narrator','neutral','가게는 조금 더 자랐고, 도윤의 머리는 더 희어졌다.','narration'),
+    dialogueLine('narrator','neutral','956년 — 개경','narration')
+  ],
+  ch02_shop_956:[
+    dialogueLine('narrator','neutral','새로 들인 수레와 물건이 가게 앞을 채웠다.','narration'),
+    dialogueLine('doyun','neutral','이 정도로는 상단이라 부르기도 민망하오.'),
+    dialogueLine('player','smile','그 말, 칠 년 전에도 했어.'),
+    dialogueLine('doyun','smile','그러니 아직 이루지 못한 게 아니겠소?'),
+    dialogueLine('player','thinking','도윤은 나이를 먹었지만 꿈은 조금도 늙지 않았다.','thought')
   ],
   ch02_dispute:[
     dialogueLine('steward','angry','이 자는 우리 집 노비다!'),
@@ -174,6 +221,11 @@ const CH02_DIALOGUES={
     dialogueLine('doyun','serious','그러니 더 버텨야지 않겠소.'),
     dialogueLine('player','thinking','노비를 풀어주는 것만이 목적이 아니구나. 기존 호족의 힘을 줄이려는 거야.','thought')
   ],
+  ch02_jump_958:[
+    dialogueLine('narrator','neutral','노비안검법이 시행된 뒤 두 해가 흘렀다.','narration'),
+    dialogueLine('narrator','neutral','왕은 집안이 아닌 실력으로 사람을 뽑을 준비를 했다.','narration'),
+    dialogueLine('narrator','neutral','958년 — 개경','narration')
+  ],
   ch02_exam_notice:[
     dialogueLine('citizen','surprised','시험으로 관리를 뽑는다고?'),
     dialogueLine('citizen','surprised','집안이 아니라 시험으로?'),
@@ -190,7 +242,16 @@ const CH02_DIALOGUES={
     dialogueLine('doyun','smile','그럼 우리 같은 장사꾼 세금이나 좀 덜 걷게 해주시오.'),
     dialogueLine('hyunwoo','neutral','붙기도 전에 청탁입니까?'),
     dialogueLine('doyun','smile','미리 친해져 두자는 뜻이오.'),
-    dialogueLine('player','smile','둘이 벌써 친해졌네.')
+    dialogueLine('player','smile','둘이 벌써 친해졌네.'),
+    dialogueLine('hyunwoo','worried','친해졌다고요? 저는 방금 청탁을 거절한 것입니다.'),
+    dialogueLine('doyun','smile','거절하면서도 웃었으니 절반은 된 셈이오.'),
+    dialogueLine('player','smile','도윤아, 그 계산법으로 장사해도 괜찮은 거야?'),
+    dialogueLine('doyun','surprised','도윤아?'),
+    dialogueLine('player','embarrassed','친하면 그렇게 부르기도 해.'),
+    dialogueLine('hyunwoo','smile','두 분은 참 오래된 벗인 듯합니다.'),
+    dialogueLine('doyun','neutral','오래되기는 했소. 말버릇은 아직도 낯설지만.'),
+    dialogueLine('player','smile','앞으로 셋이 자주 보자. 시험 붙고 모른 척하기 없기.'),
+    dialogueLine('hyunwoo','smile','그 약속이라면 기꺼이 하겠습니다.')
   ],
   ch02_ssanggi:[
     dialogueLine('citizen','neutral','후주에서 온 쌍기라는 사람이 건의했다더군.'),
@@ -234,7 +295,28 @@ const CH02_DIALOGUES={
     dialogueLine('doyun','worried','……그 속을 누가 알겠소.'),
     dialogueLine('player','thinking','왕은 호족을 견제하고 권력을 강화했다. 하지만 그 과정이 항상 평온했던 것은 아니다.','thought')
   ],
-  ch02_complete:[dialogueLine('narrator','neutral','두 번째 고려 생활을 마쳤습니다.','narration')]
+  ch02_complete:[
+    dialogueLine('narrator','neutral','광종의 개혁이 나라를 흔든 어느 저녁, 장터가 드물게 조용했다.','narration'),
+    dialogueLine('doyun','neutral','자네와 처음 만난 지도 사십 년이 넘었소.'),
+    dialogueLine('player','surprised','벌써 그렇게 됐어?'),
+    dialogueLine('doyun','smile','내 머리는 이리 희어지고 주름도 늘었는데, 자네는 참 변하질 않는군.'),
+    dialogueLine('player','embarrassed','원래 좀 동안이야.'),
+    dialogueLine('doyun','surprised','동안?'),
+    dialogueLine('player','embarrassed','아무것도 아니야.'),
+    dialogueLine('doyun','worried','……농으로 넘길 말은 아닌 듯하오.'),
+    dialogueLine('player','thinking','도윤의 시선이 오래 내 얼굴에 머물렀다.','thought')
+  ],
+  ch02_night_reflection:[
+    dialogueLine('narrator','neutral','그날 밤, 나는 달빛이 고인 물가에 홀로 앉았다.','narration'),
+    dialogueLine('player','thinking','도윤은 늙었다. 시장의 아이들은 어른이 되었고, 왕도 여러 번 바뀌었다.','thought'),
+    dialogueLine('player','thinking','그런데 물에 비친 내 얼굴은 사십 년 전 그날과 같았다.','thought'),
+    dialogueLine('player','worried','……이게 말이 돼?','thought')
+  ],
+  ch02_mystery:[
+    dialogueLine('player','thinking','기억 속 어디에도 답은 없었다.','thought'),
+    dialogueLine('player','worried','나는 왜 변하지 않는 걸까.','thought'),
+    dialogueLine('narrator','neutral','아직은 이름 붙일 수 없는 의문만 남았다.','narration')
+  ]
 };
 Object.assign(DIALOGUES,CH02_DIALOGUES);
 Object.entries(CH02_DIALOGUES).forEach(([sceneId,dialogues])=>{STORIES[sceneId].dialogues=dialogues});

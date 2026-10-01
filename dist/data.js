@@ -1,4 +1,4 @@
-const SAVE_VERSION=7;
+const SAVE_VERSION=8;
 const ERAS=[['고려','918 — 1392'],['조선','1392 — 1897'],['대한제국','1897 — 1910'],['일제강점기','1910 — 1945'],['대한민국','1945 —']];
 
 const HISTORY={
@@ -92,9 +92,11 @@ const PORTRAITS={
 const PLAYER_MODERN_PORTRAITS=Object.fromEntries(['neutral','smile','surprised','worried','thinking','suspicious','serious','embarrassed','angry','sad'].map(expression=>[expression,`player_${expression}`]));
 const PLAYER_GORYEO_PORTRAITS={neutral:'player_goryeo_neutral',smile:'player_goryeo_smile',surprised:'player_goryeo_surprised',worried:'player_goryeo_worried',thinking:'player_goryeo_thinking',suspicious:'player_goryeo_thinking',serious:'player_goryeo_serious',embarrassed:'player_goryeo_embarrassed',angry:'player_goryeo_serious',sad:'player_goryeo_worried'};
 const DOYUN_YOUNG_COMMONER_PORTRAITS=Object.fromEntries(['neutral','smile','surprised','suspicious','serious','worried'].map(expression=>[expression,`doyun_${expression}`]));
+const DOYUN_949_PORTRAITS={neutral:'doyun_949_neutral',smile:'doyun_949_smile',surprised:'doyun_949_surprised',suspicious:'doyun_949_serious',serious:'doyun_949_serious',worried:'doyun_949_worried',angry:'doyun_949_serious'};
+const DOYUN_956_PORTRAITS={neutral:'doyun_956_neutral',smile:'doyun_956_smile',surprised:'doyun_956_surprised',suspicious:'doyun_956_serious',serious:'doyun_956_serious',worried:'doyun_956_worried',angry:'doyun_956_serious'};
 const CHARACTER_ASSET_MAP={
   player:{canonicalId:'PLAYER_CANONICAL',defaultOutfit:'modern',outfits:{modern:PLAYER_MODERN_PORTRAITS,goryeo_commoner:PLAYER_GORYEO_PORTRAITS}},
-  doyun:{canonicalId:'DOYUN_CANONICAL',defaultAge:'young',ages:{young:{defaultOutfit:'commoner',outfits:{commoner:DOYUN_YOUNG_COMMONER_PORTRAITS}}}}
+  doyun:{canonicalId:'DOYUN_CANONICAL',defaultAge:'young',ages:{young:{defaultOutfit:'commoner',outfits:{commoner:DOYUN_YOUNG_COMMONER_PORTRAITS}},middle_aged_949:{defaultOutfit:'shop_owner',outfits:{shop_owner:DOYUN_949_PORTRAITS}},elder_956:{defaultOutfit:'established_merchant',outfits:{established_merchant:DOYUN_956_PORTRAITS}}}}
 };
 const CHARACTERS={
   player:{characterId:'player',canonicalId:'PLAYER_CANONICAL',characterName:'나',speakerType:'player',side:'right',outfit:'modern',portraitPrefix:'player',characterAge:23,characterEraVariant:'modern-arrival',portraits:CHARACTER_ASSET_MAP.player.outfits},
@@ -352,10 +354,23 @@ const INITIAL_META=()=>({questionRecords:{},wrongQuestionIds:[],reviewedQuestion
 const INITIAL=()=>({version:SAVE_VERSION,run:INITIAL_RUN(),mainRun:null,meta:INITIAL_META()});
 
 function ensureGoryeoOutfit(run){setPlayerOutfit(run,'goryeo_commoner','doyun');run.sharedEvents=[...(run.sharedEvents||[])];for(const event of ['met_doyun_ch01','received_clothes_from_doyun'])if(!run.sharedEvents.includes(event))run.sharedEvents.push(event);return run}
+function setDoyunEra(run,era='middle_aged_949'){
+  if(!run)return run;
+  const elder=era==='elder_956';
+  run.characterStates={...(run.characterStates||{}),doyun:{...(run.characterStates?.doyun||{}),characterAge:elder?64:57,characterEraVariant:elder?'established-merchant':'established-shop-owner',ageVariant:era,outfit:elder?'established_merchant':'shop_owner'}};
+  return run
+}
+function prepareCh02Carry(run){if(!run)return run;ensureGoryeoOutfit(run);setDoyunEra(run,'middle_aged_949');run.characterStates.player={...(run.characterStates.player||{}),characterAge:23,characterEraVariant:'unchanged'};return run}
 const cloneRun=run=>JSON.parse(JSON.stringify(run));
 function mergeSavedRun(saved){const chapterId=saved?.currentChapter||(String(saved?.storyId||'').startsWith('ch02_')?'ch02':'ch01'),base=INITIAL_RUN(chapterId);if(!saved)return base;const merged={...base,...saved,stats:{...base.stats,...saved.stats},relations:{...base.relations,...saved.relations},trust:{...base.trust,...saved.trust},flags:{...base.flags,...saved.flags},inventory:(saved.inventory||base.inventory).map(item=>({...item})),sharedEvents:[...(saved.sharedEvents||[])],importantChoices:{...base.importantChoices,...saved.importantChoices},characterStates:{...base.characterStates,...saved.characterStates},entryEffectsApplied:[...(saved.entryEffectsApplied||[])],questionResults:{...saved.questionResults}};const outfit=saved.playerOutfit||(merged.flags.wearingModernClothes===false?'goryeo_commoner':'modern');return setPlayerOutfit(merged,outfit,merged.flags.receivedGoryeoClothesFromDoyun?'doyun':'story')}
 function questionScore(chapterId,results={}){const total=typeof CHAPTERS!=='undefined'?(CHAPTERS[chapterId]?.questionCount||0):Object.keys(results).length,correct=Object.values(results).filter(Boolean).length;return {correct,total,percent:total?Math.round(correct/total*100):0}}
 function sanitizeRemovedMystery(state,run){if(!run)return;run.sharedEvents=(run.sharedEvents||[]).filter(event=>event!=='noticed_unchanged_appearance');run.entryEffectsApplied=(run.entryEffectsApplied||[]).filter(id=>!['ch02_unchanged','ch02_reflection'].includes(id));if(['ch02_unchanged','ch02_reflection'].includes(run.storyId)){run.storyId='ch02_purge';run.pending=null;run.dialogueSceneId=null;run.dialogueCursor=1}state.meta.mysteries=(state.meta.mysteries||[]).filter(id=>id!=='unknown-aging');delete state.meta.knowledgeMemory['unknown-aging']}
+function repairCh02Era(run){
+  if(!run||run.currentChapter!=='ch02')return;
+  const elderScenes=new Set(['ch02_jump_956','ch02_shop_956','ch02_dispute','ch02_trust','ch02_inspection','ch02_policy_reason','ch02_policy_memory','ch02_noble_night','ch02_jump_958','ch02_exam_notice','ch02_three_way','ch02_ssanggi','ch02_exam_eve','ch02_exam_day','ch02_reign_titles','ch02_reign_followup','ch02_purge','ch02_complete','ch02_night_reflection','ch02_mystery']);
+  setDoyunEra(run,elderScenes.has(run.storyId)?'elder_956':'middle_aged_949');
+  if(run.chapterStart)setDoyunEra(run.chapterStart,'middle_aged_949')
+}
 function makeRunRecord(run,runId){const chapterId=run.currentChapter,score=questionScore(chapterId,run.questionResults);return {runId,chapterId,mode:run.mode||'main',completed:true,choices:run.choices.map(choice=>({...choice})),questionResults:{...run.questionResults},questionScore:score,finalRun:chapterSnapshot(run),completedAt:new Date().toISOString()}}
 
 function choiceAvailable(run,c){if(!c.condition)return true;if(c.condition.stat)return(run.stats[c.condition.stat]||0)>=c.condition.min;if(c.condition.flag)return Boolean(run.flags[c.condition.flag]);return true}
@@ -383,12 +398,13 @@ function migrateSave(raw){
       if(!record)continue;
       const runs=fresh.meta.chapterRuns[chapterId]||[];
       if(!runs.length){const legacyRun={runId:1,chapterId,mode:'main',completed:true,choices:(record.choices||[]).map(choice=>({...choice})),questionResults:{...record.questionResults},questionScore:questionScore(chapterId,record.questionResults),finalRun:{...record.finalRun},completedAt:record.completedAt||new Date(0).toISOString()};runs.push(legacyRun)}
-      for(const item of runs)sanitizeRemovedMystery(fresh,item.finalRun);
+      for(const item of runs){if(savedVersion<SAVE_VERSION)sanitizeRemovedMystery(fresh,item.finalRun);repairCh02Era(item.finalRun)}
       fresh.meta.chapterRuns[chapterId]=runs;
       const firstRun=record.firstRun||runs[0],latestRun=record.latestRun||runs.at(-1),bestQuestionScore=Math.max(record.bestQuestionScore||0,...runs.map(item=>item.questionScore?.correct||0));
       fresh.meta.chapterRecords[chapterId]={...record,firstRun,latestRun,bestQuestionScore,runsCount:runs.length};
     }
-    sanitizeRemovedMystery(fresh,fresh.run);sanitizeRemovedMystery(fresh,fresh.mainRun);
+    if(savedVersion<SAVE_VERSION){sanitizeRemovedMystery(fresh,fresh.run);sanitizeRemovedMystery(fresh,fresh.mainRun)}
+    repairCh02Era(fresh.run);repairCh02Era(fresh.mainRun);
     fresh.version=SAVE_VERSION;
     return fresh;
   }
@@ -400,9 +416,9 @@ function migrateSave(raw){
 }
 function resetRun(state,chapterId='ch01'){state.run=INITIAL_RUN(chapterId);return state}
 function recordQuestion(state,questionId,userAnswer){const q=QUESTIONS.find(item=>item.questionId===questionId);if(!q)return false;const right=userAnswer===q.answer,previous=state.meta.questionRecords[questionId]||{attempts:0,correctCount:0,everCorrect:false};state.meta.questionRecords[questionId]={attempts:previous.attempts+1,correctCount:previous.correctCount+(right?1:0),lastAnswer:userAnswer,lastCorrect:right,everCorrect:previous.everCorrect||right};state.run.questionResults[questionId]=right;if(right){if(!previous.everCorrect)state.run.stats.knowledge+=q.rewardKnowledge||2;if(state.meta.wrongQuestionIds.includes(questionId)&&!state.meta.reviewedQuestionIds.includes(questionId))state.meta.reviewedQuestionIds.push(questionId)}else{if(!state.meta.wrongQuestionIds.includes(questionId))state.meta.wrongQuestionIds.push(questionId);state.meta.reviewedQuestionIds=state.meta.reviewedQuestionIds.filter(id=>id!==questionId)}state.run.questionAnswer=userAnswer;return right}
-function startChapter(state,chapterId){if(chapterId==='ch02'&&!state.meta.completedChapters.includes('ch01'))return false;const carry=chapterId==='ch02'?(state.meta.chapterRecords.ch01?.finalRun||chapterSnapshot(state.run)):null;if(carry&&chapterId==='ch02'){ensureGoryeoOutfit(carry);carry.characterStates={...(carry.characterStates||{}),player:{...(carry.characterStates?.player||{}),characterAge:23,characterEraVariant:'unchanged'},doyun:{...(carry.characterStates?.doyun||{}),characterAge:30,characterEraVariant:'established-young-merchant'}}}state.run=INITIAL_RUN(chapterId,carry);state.run.started=true;state.run.chapterStart=chapterSnapshot(state.run);return true}
-function restartChapter(state){const previous=state.run,chapterId=previous.currentChapter||'ch01',mode=previous.mode||'main',replayChapterId=previous.replayChapterId||null;if(chapterId==='ch02'){const carry=previous.chapterStart||state.meta.chapterRecords.ch01?.finalRun||chapterSnapshot(previous);state.run=INITIAL_RUN('ch02',carry);state.run.chapterStart=chapterSnapshot(state.run)}else state.run=INITIAL_RUN('ch01');state.run.started=true;state.run.mode=mode;state.run.replayChapterId=replayChapterId;return state}
-function beginReplay(state,chapterId){const info=typeof CHAPTERS!=='undefined'?CHAPTERS[chapterId]:null;if(!info?.implemented||!state.meta.completedChapters.includes(chapterId))return false;if(!state.mainRun)state.mainRun=cloneRun(state.run);const carry=chapterId==='ch02'?(state.meta.chapterRecords.ch01?.latestRun?.finalRun||state.meta.chapterRecords.ch01?.finalRun||chapterSnapshot(state.mainRun)):null;if(carry&&chapterId==='ch02')ensureGoryeoOutfit(carry);state.run=INITIAL_RUN(chapterId,carry);state.run.started=true;state.run.mode='replay';state.run.replayChapterId=chapterId;state.run.chapterStart=chapterSnapshot(state.run);return true}
+function startChapter(state,chapterId){if(chapterId==='ch02'&&!state.meta.completedChapters.includes('ch01'))return false;const sourceCarry=chapterId==='ch02'?(state.meta.chapterRecords.ch01?.finalRun||chapterSnapshot(state.run)):null,carry=sourceCarry?cloneRun(sourceCarry):null;if(carry&&chapterId==='ch02')prepareCh02Carry(carry);state.run=INITIAL_RUN(chapterId,carry);if(chapterId==='ch02')prepareCh02Carry(state.run);state.run.started=true;state.run.chapterStart=chapterSnapshot(state.run);return true}
+function restartChapter(state){const previous=state.run,chapterId=previous.currentChapter||'ch01',mode=previous.mode||'main',replayChapterId=previous.replayChapterId||null;if(chapterId==='ch02'){const carry=cloneRun(previous.chapterStart||state.meta.chapterRecords.ch01?.finalRun||chapterSnapshot(previous));prepareCh02Carry(carry);state.run=INITIAL_RUN('ch02',carry);prepareCh02Carry(state.run);state.run.chapterStart=chapterSnapshot(state.run)}else state.run=INITIAL_RUN('ch01');state.run.started=true;state.run.mode=mode;state.run.replayChapterId=replayChapterId;return state}
+function beginReplay(state,chapterId){const info=typeof CHAPTERS!=='undefined'?CHAPTERS[chapterId]:null;if(!info?.implemented||!state.meta.completedChapters.includes(chapterId))return false;if(!state.mainRun)state.mainRun=cloneRun(state.run);const sourceCarry=chapterId==='ch02'?(state.meta.chapterRecords.ch01?.latestRun?.finalRun||state.meta.chapterRecords.ch01?.finalRun||chapterSnapshot(state.mainRun)):null,carry=sourceCarry?cloneRun(sourceCarry):null;if(carry&&chapterId==='ch02')prepareCh02Carry(carry);state.run=INITIAL_RUN(chapterId,carry);if(chapterId==='ch02')prepareCh02Carry(state.run);state.run.started=true;state.run.mode='replay';state.run.replayChapterId=chapterId;state.run.chapterStart=chapterSnapshot(state.run);return true}
 function restoreMainRun(state){if(!state.mainRun)return false;state.run=state.mainRun;state.mainRun=null;return true}
 function restartEpisodeMain(state){if(state.mainRun)restoreMainRun(state);state.run=INITIAL_RUN('ch01');state.run.started=true;return state}
 function finishChapter(state){
