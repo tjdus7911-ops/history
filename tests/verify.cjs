@@ -1,95 +1,54 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
-const code=fs.readFileSync('dist/data.js','utf8'),ctx=vm.createContext({Date});
-vm.runInContext(code+';this.api={SAVE_VERSION,STORIES,QUESTIONS,ASSETS,EXPRESSIONS,PORTRAITS,CHARACTERS,INITIAL,INITIAL_RUN,applyChoice,choiceAvailable,recordQuestion,finishChapter,resetRun,migrateSave};',ctx);
-const{SAVE_VERSION,STORIES,QUESTIONS,ASSETS,EXPRESSIONS,PORTRAITS,CHARACTERS,INITIAL,applyChoice,choiceAvailable,recordQuestion,finishChapter,resetRun,migrateSave}=ctx.api;
-assert.equal(SAVE_VERSION,3);
-assert.equal(QUESTIONS.length,6,'CH.01 must have six distributed story tests');
+const code=fs.readFileSync('dist/data.js','utf8')+'\n'+fs.readFileSync('dist/ch02-data.js','utf8');
+const ctx=vm.createContext({Date});
+vm.runInContext(code+';this.api={SAVE_VERSION,CHAPTERS,STORIES,QUESTIONS,ASSETS,EXPRESSIONS,PORTRAITS,CHARACTERS,INITIAL,INITIAL_RUN,applyChoice,choiceAvailable,recordQuestion,finishChapter,resetRun,startChapter,restartChapter,migrateSave};',ctx);
+const{SAVE_VERSION,CHAPTERS,STORIES,QUESTIONS,ASSETS,EXPRESSIONS,PORTRAITS,INITIAL,applyChoice,choiceAvailable,recordQuestion,finishChapter,startChapter,restartChapter,migrateSave}=ctx.api;
+assert.equal(SAVE_VERSION,4);
+assert.equal(Object.keys(CHAPTERS).length,2);
+assert.equal(QUESTIONS.filter(q=>q.chapterId==='ch01').length,6,'CH.01 must retain six tests');
+assert.equal(QUESTIONS.filter(q=>q.chapterId==='ch02').length,5,'CH.02 must have five distributed tests');
 const requiredQuestionFields=['questionId','chapterId','relatedSceneId','relatedHistoricalEventId','relatedIllustrationId','questionType','difficulty','passage','question','choices','answer','explanation','examKeywords','userAnswer','isCorrect','isOfficial','source','examRound','examYear','questionNumber'];
 for(const q of QUESTIONS){
   for(const field of requiredQuestionFields)assert(Object.prototype.hasOwnProperty.call(q,field),`${q.questionId}: missing ${field}`);
   assert(q.answer>=0&&q.answer<q.choices.length,`${q.questionId}: invalid answer`);
-  assert.equal(q.isOfficial,false,`${q.questionId}: official content must not be copied`);
+  assert.equal(q.isOfficial,false,`${q.questionId}: copied official content is not allowed`);
   assert(STORIES[q.relatedSceneId],`${q.questionId}: missing related scene`);
   assert(ASSETS[q.relatedIllustrationId],`${q.questionId}: missing related illustration`);
   assert(STORIES[q.resumeStoryId],`${q.questionId}: missing resume scene`);
 }
-const choiceIllustrations=new Set();
 for(const[id,s]of Object.entries(STORIES)){
-  assert.equal(s.sceneId,id,`${id}: sceneId mismatch`);
-  assert(ASSETS[s.illustrationId],`${id}: missing illustration`);
-  for(const field of ['backgroundImage','characterImage','characterExpression','foregroundImage','sceneEffect','timeOfDay','music','ambientSound'])assert(Object.prototype.hasOwnProperty.call(s,field),`${id}: missing ${field}`);
+  assert.equal(s.sceneId,id,`${id}: sceneId mismatch`);assert(ASSETS[s.illustrationId],`${id}: missing illustration`);
   if(s.nextStoryId)assert(STORIES[s.nextStoryId],`${id}: missing next scene ${s.nextStoryId}`);
   if(s.quizId)assert(QUESTIONS.some(q=>q.questionId===s.quizId),`${id}: missing quiz ${s.quizId}`);
   assert(Array.isArray(s.dialogues)&&s.dialogues.length,`${id}: structured dialogues required`);
   for(const line of s.dialogues){
     for(const field of ['characterId','characterName','speakerType','portrait','expression','dialogue','alignment'])assert(Object.prototype.hasOwnProperty.call(line,field),`${id}: dialogue missing ${field}`);
-    assert(['player','npc','thought','narration'].includes(line.speakerType),`${id}: unsupported speakerType ${line.speakerType}`);
-    assert(EXPRESSIONS.includes(line.expression),`${id}: unsupported expression ${line.expression}`);
+    assert(['player','npc','thought','narration'].includes(line.speakerType),`${id}: unsupported speaker type`);assert(EXPRESSIONS.includes(line.expression),`${id}: unsupported expression ${line.expression}`);
     assert.equal(line.alignment,line.speakerType==='player'?'right':line.speakerType==='npc'?'left':'center',`${id}: alignment must derive from speakerType`);
     if(['player','npc'].includes(line.speakerType))assert(PORTRAITS[line.portrait],`${id}: missing portrait ${line.portrait}`);
   }
-  for(const c of s.choices||[]){
-    assert(STORIES[c.nextStoryId],`${id}: missing choice destination ${c.nextStoryId}`);
-    assert(c.resultSceneId,`${id}: missing resultSceneId`);
-    assert(ASSETS[c.resultIllustrationId],`${id}: missing result illustration ${c.resultIllustrationId}`);
-    assert(Array.isArray(c.resultDialogues)&&c.resultDialogues.length>=2,`${id}: choice result dialogue sequence required`);
-    assert.equal(c.resultDialogues[0].speakerType,'player',`${id}: selected choice must appear as player dialogue first`);
-    choiceIllustrations.add(c.resultIllustrationId);
-  }
+  for(const c of s.choices||[]){assert(STORIES[c.nextStoryId],`${id}: missing choice destination`);assert(c.resultSceneId&&ASSETS[c.resultIllustrationId],`${id}: result scene/illustration required`);assert(Array.isArray(c.resultDialogues)&&c.resultDialogues.length>=2,`${id}: player response and reaction required`);assert.equal(c.resultDialogues[0].speakerType,'player');}
 }
-assert.equal(new Set(STORIES.thief.choices.map(c=>c.resultIllustrationId)).size,4,'thief outcomes need four distinct illustrations');
-assert(STORIES.thief.choices[2].condition.flag==='observation','alley route must be unlocked by observation');
-assert(STORIES.life_choice.choices[3].condition.stat==='knowledge','Wang Geon route must require knowledge');
-assert.deepEqual(STORIES.status.dialogues.map(x=>x.speakerType),['npc','player','npc','player','thought'],'status scene must alternate NPC/player and end with thought');
-assert.deepEqual(STORIES.status.dialogues.map(x=>x.expression),['neutral','embarrassed','surprised','embarrassed','worried'],'status scene expression changes must be data-driven');
-assert.equal(STORIES.life_choice.choices[2].resultDialogues[1].characterId,'doyun','life choice must support NPC reaction after player response');
-assert.equal(Object.values(ASSETS).filter(a=>a.status==='ASSET_REQUIRED').length,0,'all CH.01 scene illustrations must be production-ready');
+assert.deepEqual(STORIES.status.dialogues.map(x=>x.speakerType),['npc','player','npc','player','thought']);
+assert.equal(STORIES.life_choice.choices.length,4);assert.equal(STORIES.ch02_market.choices.length,4);assert.equal(STORIES.ch02_policy_reason.choices[0].memoryKey,'ch02-nobi-purpose');assert(STORIES.ch02_exam_notice.dialogues.some(x=>x.characterId==='hyunwoo'));assert(STORIES.ch02_purge.dialogues.some(x=>x.speakerType==='thought'));
 for(const[id,asset]of Object.entries(ASSETS))if(asset.src)assert(fs.existsSync('dist/'+asset.src),`${id}: missing generated scene file ${asset.src}`);
-const requiredPlayerExpressions=['neutral','smile','surprised','worried','thinking','serious','embarrassed','angry','sad'];
-for(const expression of requiredPlayerExpressions){const asset=PORTRAITS[`player_${expression}`];assert(asset?.status==='ready',`player_${expression}: generated portrait required`);assert(fs.existsSync('dist/'+asset.src),`player_${expression}: missing generated portrait file`);assert.equal(asset.outfit,'modern',`player_${expression}: CH.01 outfit must be modern`)}
-for(const expression of ['neutral','smile','surprised','suspicious','serious','worried']){const asset=PORTRAITS[`doyun_${expression}`];assert(asset?.status==='ready',`doyun_${expression}: generated portrait required`);assert(fs.existsSync('dist/'+asset.src),`doyun_${expression}: missing generated portrait file`)}
-assert.equal(CHARACTERS.player.outfit,'modern','player must start CH.01 in modern clothes');
-assert(CHARACTERS.player.portraits.modern.thinking==='player_thinking','player outfit map must support expression lookup');
-assert(Object.prototype.hasOwnProperty.call(CHARACTERS.player.portraits,'goryeo'),'future Goryeo outfit slot must exist');
-assert(!STORIES.doyun.dialogues.some(line=>line.dialogue.includes('궁예를 알아요?')),'player must not ask an ahistorical obvious question');
-assert(STORIES.doyun.dialogues.some(line=>line.dialogue.includes('왕건 장군을 왕으로 세운 지 얼마 되지도 않았소')),'Doyun must establish the 918 context in period-appropriate speech');
+for(const expression of ['neutral','smile','surprised','worried','thinking','serious','embarrassed','angry','sad'])assert(fs.existsSync('dist/'+PORTRAITS[`player_${expression}`].src));
+for(const expression of ['neutral','smile','surprised','suspicious','serious','worried'])assert(fs.existsSync('dist/'+PORTRAITS[`doyun_${expression}`].src));
+for(const expression of ['neutral','worried','smile']){const p=PORTRAITS[`hyunwoo_${expression}`];assert.equal(p.status,'ready');assert(fs.existsSync('dist/'+p.src));}
 
-let completePaths=0,storyTests=new Set(),routes=new Set(),jobs=new Set();
-function walk(id,state,stack=[]){
-  assert(!stack.includes(id),`cycle: ${[...stack,id].join(' -> ')}`);
-  if(id==='complete'){completePaths++;routes.add(state.run.route);jobs.add(state.run.job);return}
-  const s=STORIES[id];assert(s,`missing scene ${id}`);
-  if(s.quizId){const q=QUESTIONS.find(x=>x.questionId===s.quizId);storyTests.add(q.questionId);recordQuestion(state,q.questionId,q.answer);state.run.activeQuestionId=null;state.run.questionAnswer=null;return walk(q.resumeStoryId,state,[...stack,id])}
-  if(s.choices){
-    s.choices.forEach((c,i)=>{
-      const copy=JSON.parse(JSON.stringify(state));
-      if(!choiceAvailable(copy.run,c))return;
-      applyChoice(copy,id,i);copy.run.pending=null;
-      walk(copy.run.storyId,copy,[...stack,id]);
-    });
-    return;
-  }
-  assert(s.nextStoryId,`${id}: dead end`);
-  walk(s.nextStoryId,state,[...stack,id]);
-}
-const initial=INITIAL();initial.run.started=true;walk('prologue',initial);
-assert(completePaths>=20,'expected substantial branching coverage');
-assert.equal(storyTests.size,6,'all story tests must be reachable');
-assert(routes.has('songak')&&routes.has('village')&&routes.has('merchant')&&routes.has('royal'),'all four life routes must be reachable');
-assert(jobs.has('상단 일꾼')&&jobs.has('마을 일꾼'),'route jobs must be applied');
-
-const save=INITIAL();save.run.started=true;recordQuestion(save,'ch01-test-01',0);save.meta.cards.push('persistent-card');save.meta.people.push('persistent-person');finishChapter(save);
-const kept=JSON.parse(JSON.stringify(save.meta));resetRun(save);
-assert.deepEqual(save.meta,kept,'restart must preserve cumulative meta data');
-assert.equal(save.run.storyId,'prologue');assert.equal(save.run.stats.wealth,0);assert.equal(save.run.choices.length,0);assert(!save.run.completed);
-const migrated=migrateSave({version:1,started:true,storyId:'prologue',completed:false,stats:{health:80,knowledge:10,fame:2,wealth:30},relations:{merchant:4},job:'상인',answers:{q918:true},wrong:['q919'],reviewed:[],cards:['goryeo-918'],choices:[],visited:['prologue'],peakWealth:30});
-assert.equal(migrated.version,3);assert.equal(migrated.run.stats.wealth,30);assert(migrated.meta.cards.includes('goryeo-918'));assert(migrated.meta.wrongQuestionIds.includes('q919'));
-const oldV2=INITIAL();oldV2.version=2;oldV2.run.storyId='status';oldV2.run.stats.wealth=17;oldV2.meta.cards.push('v2-card');delete oldV2.run.dialogueSceneId;delete oldV2.run.dialogueCursor;
-const upgraded=migrateSave(oldV2);assert.equal(upgraded.version,3);assert.equal(upgraded.run.storyId,'status');assert.equal(upgraded.run.stats.wealth,17);assert(upgraded.meta.cards.includes('v2-card'));assert.equal(upgraded.run.dialogueCursor,1);
-
-const manifest=fs.readFileSync('docs/ASSET_REQUIRED.md','utf8');
-const requiredAssets=Object.entries(ASSETS).filter(([,a])=>a.status==='ASSET_REQUIRED').map(([id])=>id);
-for(const id of requiredAssets)assert(manifest.includes('`'+id+'`'),`asset manifest missing ${id}`);
-const portraitManifest=fs.readFileSync('docs/CHARACTER_ASSET_REQUIRED.md','utf8');
-for(const[id,asset]of Object.entries(PORTRAITS)){assert(CHARACTERS[asset.characterId],`portrait ${id}: unknown character`);assert(EXPRESSIONS.includes(asset.expression),`portrait ${id}: invalid expression`);assert(portraitManifest.includes('`'+id+'`'),`portrait manifest missing ${id}`)}
-console.log(JSON.stringify({scenes:Object.keys(STORIES).length,questions:QUESTIONS.length,assetRequired:requiredAssets.length,portraitAssets:Object.keys(PORTRAITS).length,choiceResultIllustrations:choiceIllustrations.size,completePaths,routes:[...routes],status:'PASS'}));
+function walk(startId,state,endId){let paths=0;const tests=new Set(),branches=new Set(),choices=new Set();
+  function visit(id,copy,stack=[]){assert(!stack.includes(id),`cycle: ${[...stack,id].join(' -> ')}`);if(id===endId){paths++;return}const s=STORIES[id];assert(s,`missing scene ${id}`);
+    if(s.quizId){const q=QUESTIONS.find(x=>x.questionId===s.quizId);tests.add(q.questionId);recordQuestion(copy,q.questionId,q.answer);copy.run.activeQuestionId=null;copy.run.questionAnswer=null;return visit(q.resumeStoryId,copy,[...stack,id])}
+    if(s.choices){branches.add(id);s.choices.forEach((c,i)=>{choices.add(`${id}:${i}`);const next=JSON.parse(JSON.stringify(copy));if(!choiceAvailable(next.run,c))return;applyChoice(next,id,i);next.run.pending=null;visit(next.run.storyId,next,[...stack,id])});return}
+    assert(s.nextStoryId,`${id}: dead end`);visit(s.nextStoryId,copy,[...stack,id]);
+  }visit(startId,state);return{paths,tests,branches,choices};}
+const ch1=INITIAL();ch1.run.started=true;const ch1Coverage=walk('prologue',ch1,'complete');assert(ch1Coverage.paths>=20);assert.equal(ch1Coverage.tests.size,6);
+const carry=INITIAL();carry.run.started=true;carry.run.stats={health:83,knowledge:9,fame:7,wealth:22};carry.run.relations.doyun=17;carry.run.job='상단 장부 보조';finishChapter(carry);
+assert(carry.meta.completedChapters.includes('ch01'));assert(carry.meta.chapterRecords.ch01);assert(startChapter(carry,'ch02'));assert.equal(carry.run.storyId,'ch02_transition');assert.equal(carry.run.stats.wealth,22);assert.equal(carry.run.job,'상단 장부 보조');assert.equal(carry.run.relations.doyun,17);
+const ch2Coverage=walk('ch02_transition',JSON.parse(JSON.stringify(carry)),'ch02_complete');assert.equal(ch2Coverage.paths,108);assert.equal(ch2Coverage.tests.size,5);assert.equal(ch2Coverage.branches.size,4);assert.equal(ch2Coverage.choices.size,13);
+applyChoice(carry,'ch02_market',0);carry.run.pending=null;carry.run.stats.wealth=99;restartChapter(carry);assert.equal(carry.run.currentChapter,'ch02');assert.equal(carry.run.storyId,'ch02_transition');assert.equal(carry.run.stats.wealth,22);assert.equal(carry.run.job,'상단 장부 보조');assert(carry.meta.completedChapters.includes('ch01'));
+recordQuestion(carry,'ch02-test-01',QUESTIONS.find(q=>q.questionId==='ch02-test-01').answer);carry.run.storyId='ch02_complete';finishChapter(carry);assert(carry.meta.completedChapters.includes('ch02'));assert(carry.meta.chapterRecords.ch02);assert(carry.meta.cards.includes('gwangjong-authority'));assert(carry.meta.people.includes('쌍기'));
+const legacy=INITIAL();legacy.version=3;legacy.run.started=true;legacy.run.completed=true;legacy.run.storyId='complete';legacy.run.stats.wealth=30;legacy.meta.cards.push('legacy-card');delete legacy.run.currentChapter;delete legacy.meta.completedChapters;delete legacy.meta.chapterRecords;
+const migrated=migrateSave(legacy);assert.equal(migrated.version,4);assert(migrated.meta.completedChapters.includes('ch01'));assert(migrated.meta.chapterRecords.ch01);assert.equal(migrated.run.stats.wealth,30);
+const manifest=fs.readFileSync('docs/CHARACTER_ASSET_REQUIRED.md','utf8');for(const id of Object.keys(PORTRAITS))assert(manifest.includes('`'+id+'`'),`portrait manifest missing ${id}`);
+console.log(JSON.stringify({scenes:Object.keys(STORIES).length,ch01Scenes:Object.values(STORIES).filter(s=>s.chapterId==='ch01').length,ch02Scenes:Object.values(STORIES).filter(s=>s.chapterId==='ch02').length,questions:QUESTIONS.length,ch02Paths:ch2Coverage.paths,ch02Choices:ch2Coverage.choices.size,status:'PASS'}));

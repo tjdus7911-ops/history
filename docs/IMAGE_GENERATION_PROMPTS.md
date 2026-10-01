@@ -67,3 +67,13 @@
 ## 후속 의상 에셋
 
 현재 코드의 플레이어 의상 키는 `modern`이며 `player_modern_*` 파일을 사용합니다. 고려 생활에 적응한 뒤에는 같은 얼굴·머리를 유지한 `player_goryeo_neutral`, `player_goryeo_smile`, `player_goryeo_surprised`, `player_goryeo_worried`, `player_goryeo_thinking`, `player_goryeo_serious`, `player_goryeo_embarrassed`, `player_goryeo_angry`, `player_goryeo_sad`를 제작하고 `CHARACTERS.player.portraits.goryeo`에 연결합니다.
+
+## CH.02 최종 생성 프롬프트 기준
+
+최초의 실사형 시안은 폐기하고 아래 공통 문구로 전면 재생성했습니다. 모든 장면은 `chapter-02-teaser`와 `future-flow`, 캐릭터는 `doyun_neutral`과 `player_modern_neutral`을 참조했습니다.
+
+```text
+첨부한 CH.01 게임 일러스트와 정확히 같은 시각 언어: 선명하고 우아한 선화, 표정이 읽히는 2D 한국 웹툰/애니메이션형 인물, 페인터리 셀 채색, 단순화된 형태와 섬세한 천 질감, 짙은 네이비·아이보리·따뜻한 금색 팔레트. 사진, 실사 영화 스틸, DSLR, 광택 있는 3D, 초현실 피부 질감은 금지. 2:3 세로형 모바일 비주얼노벨 화면이며 하단에 짙은 대화 UI 여백을 둔다. 고려 전기 고증을 따르고 조선 후기 갓·도포, 판타지 갑옷, 현대 물건을 금지한다. 이미지 안에 글자·로고·워터마크를 넣지 않는다.
+```
+
+장면별 프롬프트 핵심은 `CH02_ASSETS.md`의 설명과 동일합니다. 현우는 958년의 21세 과거 응시자이며, 연녹색 삼베 포·갈색 속깃·책 꾸러미·묶은 검은 머리를 모든 표정에서 고정하고 `neutral`, `worried`, `smile`만 변경했습니다.

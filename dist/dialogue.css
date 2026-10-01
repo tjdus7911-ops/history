@@ -1,5 +1,5 @@
 /* Mobile portrait messenger + visual-novel dialogue layer */
-.conversation-game{isolation:isolate;min-height:780px;padding:20px 22px 16px;background-position:center 35%;color:var(--ink)}
+.conversation-game{isolation:isolate;width:min(100%,430px);min-height:780px;margin-left:auto;margin-right:auto;padding:20px 22px 16px;background-position:center 35%;color:var(--ink)}
 .conversation-game:before{z-index:0;background:linear-gradient(180deg,#07131dc7 0,#07131d42 23%,transparent 46%,#07131d40 62%,#07131df2 100%)}
 .conversation-game>*{z-index:2}
 .scene-scrim{position:absolute!important;z-index:1!important;inset:0;background:linear-gradient(90deg,#07131d21,transparent 30% 70%,#07131d21),linear-gradient(0deg,#07131dbd 0,transparent 48%);pointer-events:none}
@@ -27,8 +27,8 @@
 .speech-bubble:before{content:'';position:absolute;top:-1px;width:10px;height:13px;background:inherit}
 .message-row.npc .speech-bubble:before{left:-6px;clip-path:polygon(100% 0,100% 100%,0 0)}
 .message-row.player .speech-bubble:before{right:-6px;clip-path:polygon(0 0,100% 0,0 100%)}
-.monologue{position:relative;width:min(94%,660px);margin:2px auto;padding:17px 20px 15px;overflow:hidden;border:1px solid #d9c08a42;border-radius:46% 42% 48% 38%/30% 38% 32% 42%;background:radial-gradient(ellipse at 10% 40%,#0c1821f2 0 42%,transparent 44%),radial-gradient(ellipse at 90% 60%,#0c1821ed 0 42%,transparent 44%),#0c1821e8;box-shadow:0 10px 28px #02080d70;text-align:center;backdrop-filter:blur(9px)}
-.monologue:before{content:'';position:absolute;inset:5px;border:1px solid #f0ddb620;border-radius:inherit;pointer-events:none}
+.monologue{position:relative;width:min(94%,660px);margin:2px auto;padding:15px 18px 14px;overflow:hidden;border:1px solid #d9c08a70;border-radius:15px;background:linear-gradient(135deg,#0c1821ef,#142733e8);box-shadow:0 10px 28px #02080d70;text-align:center;backdrop-filter:blur(9px)}
+.monologue:before{content:'';position:absolute;inset:5px;border:1px solid #f0ddb616;border-radius:10px;pointer-events:none}
 .monologue span{position:relative;color:var(--gold);font-size:9px;font-weight:700;letter-spacing:.24em}
 .monologue p{position:relative;margin:6px 0 0!important;color:#f0e8dc!important;font:italic 15px/1.72 'Gowun Batang',serif!important;text-shadow:0 2px 8px #000}
 .narration-line{width:min(94%,660px);margin:2px auto;padding:10px 16px;border-left:1px solid #d7ba7e99;border-right:1px solid #d7ba7e99;background:linear-gradient(90deg,transparent,#07131dc9 16% 84%,transparent);text-align:center;text-shadow:0 2px 8px #000}

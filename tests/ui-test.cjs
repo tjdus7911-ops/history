@@ -1,6 +1,6 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
 let saved=null,html='',handlers={},context;
-const data=fs.readFileSync('dist/data.js','utf8'),app=fs.readFileSync('dist/app.js','utf8');
+const data=fs.readFileSync('dist/data.js','utf8')+'\n'+fs.readFileSync('dist/ch02-data.js','utf8'),app=fs.readFileSync('dist/app.js','utf8');
 function boot(){
   handlers={};
   const root={set innerHTML(s){html=s},get innerHTML(){return html}};
@@ -46,8 +46,8 @@ assert.equal(story(),'night');next();assert.equal(story(),'future_flow');next();
 assert(current().run.completed);assert.equal(current().run.storyId,'complete');assert(html.includes('CHAPTER 01 COMPLETE'));assert(html.includes('처음에 헷갈렸던 936년'));
 assert.equal(current().meta.completedRuns,1);assert(current().meta.cards.includes('goryeo-foundation-918'));assert(current().meta.people.includes('왕건'));
 
-nav('home');assert(html.includes('이야기 이어하기'));assert(html.includes('처음부터 다시하기'));
-const preserved=JSON.parse(JSON.stringify(current().meta));action('restart');assert(html.includes('CH.01을 다시 시작할까요?'));assert(html.includes('현재 회차의 진행 상태는 초기화됩니다'));
+nav('home');assert(html.includes('챕터 결과 보기'));assert(html.includes('현재 챕터 다시하기'));assert(html.includes('CHAPTER 02'));
+const preserved=JSON.parse(JSON.stringify(current().meta));action('restart');assert(html.includes('CH.01을 다시 시작할까요?'));assert(html.includes('다른 선택으로 918년의 삶을 다시 시작할 수 있어요'));
 action('confirm-restart');assert.equal(story(),'prologue');assert(!current().run.completed);assert.equal(current().run.stats.wealth,0);assert.equal(current().run.choices.length,0);assert.deepEqual(current().meta,preserved);assert(html.includes('순서가 자꾸 헷갈린다'));
 
 boot();nav('study');assert(html.includes('오답노트'));click({review:'ch01-test-01'});answer(0);assert(html.includes('기억이 선명해졌다'));action('quiz-next');assert(html.includes('복습 완료'));
