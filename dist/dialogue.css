@@ -64,14 +64,14 @@
 .cinematic-black .next{width:min(100%,320px);margin:20px auto 0!important}
 .cinematic-black .conversation-sub{margin-top:14px;color:#b8b8b875}
 .cinematic-wait{color:#e7dcc69e;font-size:11px;letter-spacing:.16em;animation:pulse-voice 1.15s ease-in-out infinite}
-.effect-wake-reveal:after{content:'';position:absolute;z-index:20;inset:0;background:#000;pointer-events:none;animation:wake-reveal 1.35s cubic-bezier(.22,.72,.28,1) forwards}
+.effect-wake-reveal:after{content:'';position:absolute;z-index:20;inset:0;background:#000;pointer-events:none;animation:wake-reveal .4s cubic-bezier(.22,.72,.28,1) forwards}
 .item-memory small{opacity:.78}
 .mystery-memory{display:grid;justify-items:center;gap:4px;border:1px solid #d9c89d45!important;border-left:1px solid #d9c89d45!important;background:linear-gradient(135deg,#111823e8,#05080de8)!important;text-align:center;letter-spacing:.12em}.mystery-memory small{color:#c6b78f;letter-spacing:.18em}.mystery-memory strong{font:700 25px 'Gowun Batang';color:#f2ead8;text-shadow:0 0 18px #d9c89d40}
 body:has(.cinematic-black){background:#000}
 body:has(.cinematic-black) .sidebar{opacity:0;pointer-events:none}
 body:has(.cinematic-black) .main{padding:0!important;background:#000}
 @keyframes bubble-in{from{opacity:0;transform:translateY(9px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
-@keyframes wake-reveal{0%,18%{opacity:1}58%{opacity:.7;backdrop-filter:blur(12px)}100%{opacity:0;backdrop-filter:blur(0)}}
+@keyframes wake-reveal{0%{opacity:1}58%{opacity:.4;backdrop-filter:blur(12px)}100%{opacity:0;backdrop-filter:blur(0)}}
 @keyframes pulse-voice{50%{opacity:.42}}
 @media(max-width:760px){
   body:has(.conversation-game) .main{padding:0 0 72px}
@@ -92,3 +92,6 @@ body:has(.cinematic-black) .main{padding:0!important;background:#000}
 @media(min-width:761px){.conversation-panel{padding:0 20px}.dialogue-log{padding:0 10px}.stage-left{left:7%}.stage-right{right:7%}}
 @media(max-width:380px){.conversation-game{padding-left:10px;padding-right:10px}.conversation-game .glass{padding-left:7px;padding-right:7px;font-size:9px}.stage-character{height:min(57vh,475px)}.bubble-stack{max-width:77%}.speech-bubble{font-size:13.5px!important}}
 @media(prefers-reduced-motion:reduce){.dialogue-log>*,.stage-character{animation:none;transition:none}.effect-wake-reveal:after{animation-duration:.01ms}.cinematic-wait{animation:none}}
+
+body:has(.cinematic-black) .main.fade{animation:none}
+body:has(.cinematic-black) .mobile-nav{display:none}

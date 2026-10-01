@@ -146,7 +146,7 @@ const STORIES={
     choice('잘 모르겠다','sleep',{},{} ,'책장을 다시 바라봤지만 기억은 흐릿했다.',{initialMemory:'unknown',resultSceneId:'prologue-answer-unknown',resultIllustrationId:'prologue-study'})
   ]}),
   sleep:scene({sceneId:'sleep',year:2026,location:'서울 · 늦은 밤',speaker:'나',title:'책장 너머로',illustrationId:'prologue-sleep',timeOfDay:'night',sceneEffect:'fade-out',ambientSound:'clock',dialogue:'“진짜 직접 살아보면…….\n안 까먹을 텐데.”\n시계 초침이 멀어진다. 책의 마지막 페이지 제목만 희미하게 남는다.\n후삼국과 고려의 성립',nextStoryId:'voice'}),
-  voice:scene({sceneId:'voice',year:918,location:'',speaker:'목소리',title:'',illustrationId:'timeslip-voice',timeOfDay:'unknown',sceneEffect:'blackout',autoAdvanceDelays:[850,900,950,750],dialogue:'“이보시오….”\n“이보시오…….”\n“정신 좀 차려보시오.”\n“…….”\n“누구지?”',nextStoryId:'house'}),
+  voice:scene({sceneId:'voice',year:918,location:'',speaker:'목소리',title:'',illustrationId:'timeslip-voice',timeOfDay:'unknown',sceneEffect:'blackout',dialogue:'“이보시오……”\n“이보시오……!”',nextStoryId:'house'}),
   house:scene({sceneId:'house',year:918,location:'송악으로 가는 길목 · 민가',speaker:'낯선 청년',title:'처음 눈에 들어온 고려',illustrationId:'goryeo-house',timeOfDay:'morning',sceneEffect:'wake-reveal',ambientSound:'village-distant',dialogue:'“정신이 드시오?”\n\n“……네? 여기가 어디예요?”\n\n“송악으로 가는 길목이오.”\n\n“……송악?”',choices:[
     choice('“지금이 언제예요?”','outfit_question',{},{} ,'“무슨 말을 하는 거요?” 청년의 눈에 의심이 어렸다.',{flags:{npcSuspicion:1},resultSceneId:'house-result-time',resultIllustrationId:'goryeo-house-question'}),
     choice('“제 휴대폰 못 봤어요?”','outfit_question',{},{} ,'“휴…… 무엇?” 청년이 한 걸음 물러섰다.',{flags:{npcSuspicion:2},resultSceneId:'house-result-phone',resultIllustrationId:'goryeo-house-question'}),
@@ -211,13 +211,13 @@ const DIALOGUES={
     dialogueLine('narrator','neutral','후삼국과 고려의 성립','narration')
   ],
   voice:[
-    dialogueLine('unknown','worried','이보시오….'),
-    dialogueLine('unknown','worried','이보시오…….'),
-    dialogueLine('unknown','worried','정신 좀 차려보시오.'),
-    dialogueLine('player','worried','…….'),
-    dialogueLine('player','thinking','누구지?','thought')
+    dialogueLine('unknown','worried','이보시오……'),
+    dialogueLine('unknown','worried','이보시오……!')
   ],
   house:[
+    dialogueLine('doyun','worried','정신 좀 차려보시오.',null,'낯선 청년'),
+    dialogueLine('player','worried','…….'),
+    dialogueLine('player','thinking','누구지?','thought'),
     dialogueLine('doyun','worried','정신이 드시오?',null,'낯선 청년'),
     dialogueLine('player','surprised','……네? 여기가 어디예요?'),
     dialogueLine('doyun','neutral','송악으로 가는 길목이오.',null,'낯선 청년'),

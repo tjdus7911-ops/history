@@ -1,10 +1,10 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
-let saved=null,html='',handlers={},context,timers=[];
+let saved=null,html='',handlers={},context,timers=[],typingElement=null;
 const data=fs.readFileSync('dist/data.js','utf8')+'\n'+fs.readFileSync('dist/ch02-data.js','utf8')+'\n'+fs.readFileSync('dist/ch03-data.js','utf8')+'\n'+fs.readFileSync('dist/exam-data.js','utf8'),app=fs.readFileSync('dist/app.js','utf8'),css=fs.readFileSync('dist/dialogue.css','utf8');
 function boot(){
   handlers={};timers=[];
   const root={set innerHTML(s){html=s},get innerHTML(){return html}};
-  const document={querySelector:s=>s==='#app'?root:null,querySelectorAll:()=>[],addEventListener:(e,f)=>handlers[e]=f,createElement:()=>({setAttribute(){},remove(){}}),body:{append(){}}};
+  const document={querySelector:s=>s==='#app'?root:typingElement&&s.startsWith('[data-dialogue-index=')?typingElement:null,querySelectorAll:()=>[],addEventListener:(e,f)=>handlers[e]=f,createElement:()=>({setAttribute(){},remove(){}}),body:{append(){}}};
   context=vm.createContext({document,localStorage:{getItem:()=>saved,setItem:(k,s)=>saved=s},window:{scrollTo(){}},navigator:{},setTimeout(fn){timers.push(fn);return timers.length},clearTimeout(){},Date});
   vm.runInContext(data+app,context);
 }
@@ -18,7 +18,7 @@ function resultNext(){revealDialogue();action('result-next')}
 function currentAnswer(){const id=current().run.activeQuestionId;return vm.runInContext(`QUESTIONS.find(q=>q.questionId===${JSON.stringify(id)}).answer`,context)}
 function drainSupplementalQuestions(){let guard=0;while(vm.runInContext(`Boolean(STORIES[${JSON.stringify(story())}]?.supplementalExam)`,context)){next();answer(currentAnswer());assert(html.includes('기억이 선명해졌다'));action('quiz-next');if(++guard>8)throw new Error('supplemental quiz guard')}}
 function answerCurrent(index){answer(index);assert(html.includes(index===currentAnswer()?'기억이 선명해졌다':'기억이 흐릿하다'));action('quiz-next');drainSupplementalQuestions()}
-function flushCinematic(){let guard=0;while(story()==='voice'&&current().run.dialogueCursor<5){const fn=timers.shift();assert(fn,'cinematic timer missing');fn();if(++guard>6)throw new Error('cinematic did not finish')}}
+
 
 boot();
 assert(html.includes('이야기 시작하기'));assert(!html.includes('처음부터 다시하기'));
@@ -27,8 +27,8 @@ assert(html.includes('data-speaker-type="player"'));assert(html.includes('data-e
 action('advance-dialogue');assert.equal(current().run.dialogueCursor,2);boot();action('play');assert.equal(current().run.dialogueCursor,2);
 choice(1);assert.equal(current().run.initialMemory,'936');assert(html.includes('data-speaker-type="player"'));assert(html.includes('936년'));resultNext();
 assert.equal(story(),'sleep');assert(html.includes('has-art'));assert(!html.includes('ASSET_REQUIRED'));next();
-assert.equal(story(),'voice');assert(html.includes('cinematic-black'));assert(!html.includes('background-image'));assert(css.includes('.cinematic-black .game-header'));assert(css.includes('.cinematic-black .game-stats'));assert(html.includes('이보시오'));flushCinematic();assert(html.includes('누구지?'));action('next');
-assert.equal(story(),'house');assert(html.includes('effect-wake-reveal'));choice(2);assert(current().run.flags.observation);resultNext();
+assert.equal(story(),'voice');assert(html.includes('cinematic-black'));assert(!html.includes('background-image'));assert(css.includes('.cinematic-black .game-header'));assert(css.includes('.cinematic-black .game-stats'));assert(html.includes('이보시오'));assert.equal(timers.length,0);assert.equal(current().run.dialogueCursor,1);action('advance-dialogue');assert(html.includes('이보시오……!'));assert.equal(timers.length,0);boot();action('play');assert.equal(current().run.dialogueCursor,2);action('next');
+assert.equal(story(),'house');assert(html.includes('effect-wake-reveal'));assert(html.includes('stage-left active'));assert(html.includes('stage-right listening'));assert(html.includes('정신 좀 차려보시오.'));action('advance-dialogue');assert(!html.includes('effect-wake-reveal'));assert(html.includes('stage-right active'));action('advance-dialogue');assert(html.includes('누구지?'));choice(2);assert(current().run.flags.observation);resultNext();
 assert.equal(story(),'outfit_question');assert(html.includes('그 이상한 옷은 뭐요?'));choice(3);assert.equal(current().run.flags.clothesExplanation,'banter');resultNext();
 assert.equal(story(),'outfit_gift');assert.equal(current().run.playerOutfit,'modern');while(current().run.dialogueCursor<6)action('advance-dialogue');assert.equal(current().run.playerOutfit,'modern');assert(html.includes('player_modern_'));action('advance-dialogue');assert.equal(current().run.playerOutfit,'goryeo_commoner');assert(current().run.flags.hasModernClothes);assert.equal(current().run.flags.wearingModernClothes,false);assert(current().run.flags.receivedGoryeoClothesFromDoyun);assert(current().run.inventory.some(item=>item.id==='modern-clothes'&&item.status==='stored'));assert(current().run.inventory.some(item=>item.id==='goryeo-commoner-clothes'&&item.status==='equipped'));assert(html.includes('player_goryeo_'));boot();action('play');assert.equal(story(),'outfit_gift');assert.equal(current().run.playerOutfit,'goryeo_commoner');assert(html.includes('player_goryeo_'));revealDialogue();assert(html.includes('현대 복장은 보관 중'));action('next');
 assert.equal(story(),'village');assert.equal(current().run.playerOutfit,'goryeo_commoner');assert(html.includes('data-illustration="village-reveal"'));assert(html.includes('assets/scenes/route-village.png'));next();
@@ -58,3 +58,16 @@ action('confirm-restart-current');assert.equal(story(),'prologue');assert(!curre
 
 boot();nav('study');assert(html.includes('오답노트'));click({review:'ch01-test-01'});answer(0);assert(html.includes('기억이 선명해졌다'));action('quiz-next');assert(html.includes('복습 완료'));
 console.log('PASS: sequential NPC/player dialogue, expression portraits, thought styling, choice response/reaction, cursor reload, full story tests, branching, restart preservation, and wrong-answer review.');
+
+// Real typing state uses the shared dialogue element: tap completes, then advances.
+vm.runInContext("state.run.storyId='house';state.run.dialogueSceneId=null;state.run.pending=null;state.run.activeQuestionId=null;state.run.completed=false;screen='game';enterStory();save()",context);
+typingElement={textContent:''};boot();action('play');
+assert.equal(current().run.dialogueCursor,1);assert.equal(typingElement.textContent,'정');
+action('advance-dialogue');assert.equal(current().run.dialogueCursor,1);assert.equal(typingElement.textContent,'정신 좀 차려보시오.');
+action('advance-dialogue');assert.equal(current().run.dialogueCursor,2);assert.equal(typingElement.textContent,'…');
+action('advance-dialogue');assert.equal(current().run.dialogueCursor,2);assert.equal(typingElement.textContent,'…….');
+typingElement=null;
+// Old saves resume at the same dialogue after the opening lines move to house.
+let legacy=JSON.parse(saved);delete legacy.run.openingFlowVersion;legacy.run.storyId='house';legacy.run.dialogueSceneId='house';legacy.run.dialogueCursor=2;saved=JSON.stringify(legacy);boot();action('play');assert.equal(current().run.dialogueCursor,5);boot();action('play');assert.equal(current().run.dialogueCursor,5);
+legacy=JSON.parse(saved);delete legacy.run.openingFlowVersion;legacy.run.storyId='voice';legacy.run.dialogueSceneId='voice';legacy.run.dialogueCursor=4;saved=JSON.stringify(legacy);boot();action('play');assert.equal(story(),'house');assert.equal(current().run.dialogueCursor,2);
+console.log('PASS: opening tap flow, typing completion, both portraits, one-time fade and legacy save continuity.');
