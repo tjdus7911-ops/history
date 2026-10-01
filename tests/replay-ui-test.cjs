@@ -1,6 +1,6 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
 let saved=null,html='',handlers={},context,toastText='';
-const data=fs.readFileSync('dist/data.js','utf8')+'\n'+fs.readFileSync('dist/ch02-data.js','utf8'),app=fs.readFileSync('dist/app.js','utf8');
+const data=fs.readFileSync('dist/data.js','utf8')+'\n'+fs.readFileSync('dist/ch02-data.js','utf8')+'\n'+fs.readFileSync('dist/ch03-data.js','utf8'),app=fs.readFileSync('dist/app.js','utf8');
 function boot(){
   handlers={};toastText='';
   const root={set innerHTML(value){html=value},get innerHTML(){return html}};
@@ -49,6 +49,6 @@ vm.runInContext("screen='home';render()",context);click({chapterResult:'ch02'});
 vm.runInContext("screen='home';render()",context);const storyBefore=current().run.storyId;click({chapter:'ch04'});assert.equal(current().run.storyId,storyBefore);assert(toastText.includes('CH.03을 완료하면 열립니다.'));
 
 // CASE 8: all eleven metadata-driven cards use the same renderer.
-action('toggle-chapters');assert(html.includes('CHAPTER 11'));assert.equal((html.match(/class="chapter-line /g)||[]).length,11);click({chapter:'ch03'});assert(html.includes('다음 챕터 준비 중'));assert(!html.includes('CHAPTER 03 시작하기'));
+action('toggle-chapters');assert(html.includes('CHAPTER 11'));assert.equal((html.match(/class="chapter-line /g)||[]).length,11);click({chapter:'ch03'});assert(html.includes('현재 진행'));assert(html.includes('이어서 플레이'));assert(!html.includes('다음 챕터 준비 중'));
 
 console.log('PASS: chapter card details, completed replay, main progress restoration, result shortcut isolation, locked feedback, refresh persistence, attempt history, and CH.01~11 metadata rendering.');

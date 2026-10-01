@@ -1,6 +1,6 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
 let saved=null,html='',handlers={},context,timers=[];
-const data=fs.readFileSync('dist/data.js','utf8')+'\n'+fs.readFileSync('dist/ch02-data.js','utf8'),app=fs.readFileSync('dist/app.js','utf8'),css=fs.readFileSync('dist/dialogue.css','utf8');
+const data=fs.readFileSync('dist/data.js','utf8')+'\n'+fs.readFileSync('dist/ch02-data.js','utf8')+'\n'+fs.readFileSync('dist/ch03-data.js','utf8'),app=fs.readFileSync('dist/app.js','utf8'),css=fs.readFileSync('dist/dialogue.css','utf8');
 function boot(){
   handlers={};timers=[];
   const root={set innerHTML(s){html=s},get innerHTML(){return html}};

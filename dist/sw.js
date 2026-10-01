@@ -1,5 +1,5 @@
 const CACHE_PREFIX='lived-history-shell-';
-const CACHE_VERSION='2026-10-01-character-continuity-2';
+const CACHE_VERSION='2026-10-01-chapter-03';
 const CACHE_NAME=CACHE_PREFIX+CACHE_VERSION;
 const APP_SHELL=[
   '/',
@@ -10,6 +10,7 @@ const APP_SHELL=[
   '/pwa.css',
   '/data.js',
   '/ch02-data.js',
+  '/ch03-data.js',
   '/app.js',
   '/pwa.js',
   '/manifest.webmanifest',

@@ -93,3 +93,27 @@ CH.01 `outfit_gift`의 7번째 대사인 `아이템 획득 · 고려 평민복`�
 | `player_goryeo_thinking` | 제작 완료 | 동일 디자인, 역사적 단서와 상황을 연결하는 사색 자세. |
 | `player_goryeo_serious` | 제작 완료 | 동일 디자인, 위험을 감수하거나 원칙을 말하는 단호한 표정. |
 | `player_goryeo_embarrassed` | 제작 완료 | 동일 디자인, 도윤의 농담에 시선을 피하는 난처한 표정. |
+
+## CH.03 노년 도윤·중년 현우 에셋
+
+CH.03은 `DOYUN_CANONICAL`과 `HYUNWOO_CANONICAL`의 기준 포트레이트를 직접 참조해 노화시켰습니다. 도윤은 982년 약 90세의 상단주, 현우는 47세 전후의 관리가 되었지만 얼굴 골격·눈매·코·상투·의상 색 계보는 이전 장과 같습니다. 아래 별칭 포트레이트는 구조화 대사의 정적 유효성 검사에 사용되며, 실제 화면에서는 연령별 `CHARACTER_ASSET_MAP`이 같은 완성 에셋을 해석합니다.
+
+| assetId | 상태 | 일관성·표정 명세 |
+|---|---|---|
+| `doyun_old_neutral` | 제작 완료 | 거의 완전한 백발 상투와 백수염, 깊은 주름, 지팡이와 나이 든 손. CH.01의 각진 얼굴·호박빛 눈매는 그대로 유지. |
+| `doyun_old_smile` | 제작 완료 | 동일 얼굴·복식·지팡이. 오래된 친구를 놀리는 입 다문 작은 미소. |
+| `doyun_old_laugh` | 제작 완료 | 동일 디자인. 평생의 농담을 꺼내는 따뜻한 웃음. |
+| `doyun_old_serious` | 제작 완료 | 동일 디자인. 상단과 지방 거래 문제를 헤아리는 실무적인 표정. |
+| `doyun_old_tired` | 제작 완료 | 동일 디자인. 자극적인 병색 없이 노환의 피로만 낮게 드러냄. |
+| `doyun_old_sad` | 제작 완료 | 동일 디자인. 마지막 작별을 앞둔 절제된 슬픔. |
+| `doyun_old_weak_smile` | 제작 완료 | 동일 디자인. 쇠약한 순간에도 남은 희미하고 다정한 미소. |
+| `hyunwoo_middle_neutral` | 제작 완료 | 47세 전후 현우. 동일한 갈색 눈·곧은 코·학자 상투, 관료가 된 연녹색·갈색 복식과 책. |
+| `hyunwoo_middle_smile` | 제작 완료 | 동일 디자인. 오랜 친구를 다시 만난 절제된 미소. |
+| `hyunwoo_middle_serious` | 제작 완료 | 동일 디자인. 성종의 정책과 나라의 법을 설명하는 진지한 표정. |
+| `hyunwoo_middle_thinking` | 제작 완료 | 동일 디자인. 책을 든 채 정책을 숙고하는 자세. |
+| `doyun_laugh` | 제작 완료 별칭 | `doyun_old_laugh`의 구조화 대사 연결용 별칭. |
+| `doyun_tired` | 제작 완료 별칭 | `doyun_old_tired`의 구조화 대사 연결용 별칭. |
+| `doyun_sad` | 제작 완료 별칭 | `doyun_old_sad`의 구조화 대사 연결용 별칭. |
+| `doyun_weak_smile` | 제작 완료 별칭 | `doyun_old_weak_smile`의 구조화 대사 연결용 별칭. |
+| `hyunwoo_serious` | 제작 완료 별칭 | `hyunwoo_middle_serious`의 구조화 대사 연결용 별칭. |
+| `hyunwoo_thinking` | 제작 완료 별칭 | `hyunwoo_middle_thinking`의 구조화 대사 연결용 별칭. |
