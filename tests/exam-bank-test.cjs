@@ -1,14 +1,14 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
-const code=['data','ch02-data','ch03-data','exam-data','ch01-expansion'].map(file=>fs.readFileSync(`dist/${file}.js`,'utf8')).join('\n');
+const code=['data','ch02-data','ch03-data','exam-data','ch01-expansion','chapter-split'].map(file=>fs.readFileSync(`dist/${file}.js`,'utf8')).join('\n');
 const context=vm.createContext({});
 vm.runInContext(`${code};this.api={CHAPTERS,STORIES,QUESTIONS};`,context);
 const {CHAPTERS,STORIES,QUESTIONS}=context.api;
 
-for(const chapterId of ['ch01','ch02','ch03']){
+for(const chapterId of ['ch01','ch02','ch03','ch04']){
   const chapterQuestions=QUESTIONS.filter(question=>question.chapterId===chapterId&&!question.reviewOnly&&!question.retired);
-  assert.equal(CHAPTERS[chapterId].questionCount,10,`${chapterId}: metadata count`);
-  assert.equal(chapterQuestions.length,10,`${chapterId}: actual question count`);
-  assert.equal(new Set(chapterQuestions.map(question=>question.questionId)).size,10,`${chapterId}: duplicate id`);
+  assert.equal(CHAPTERS[chapterId].questionCount,chapterId==='ch01'?4:chapterId==='ch02'?6:10,`${chapterId}: metadata count`);
+  assert.equal(chapterQuestions.length,CHAPTERS[chapterId].questionCount,`${chapterId}: actual question count`);
+  assert.equal(new Set(chapterQuestions.map(question=>question.questionId)).size,CHAPTERS[chapterId].questionCount,`${chapterId}: duplicate id`);
 }
 
 const expectedOfficialAnswers={
@@ -27,7 +27,7 @@ const expectedOfficialAnswers={
 const official=QUESTIONS.filter(question=>question.isOfficial);
 assert.equal(official.length,7);
 assert.deepEqual(Object.fromEntries(official.map(question=>[question.questionId,question.answer])),Object.fromEntries(Object.entries(expectedOfficialAnswers).filter(([id])=>!id.startsWith('ch01-'))));
-assert.deepEqual(Object.fromEntries(['ch01','ch02','ch03'].map(chapterId=>[chapterId,official.filter(question=>question.chapterId===chapterId).length])),{ch01:0,ch02:5,ch03:2});
+assert.deepEqual(Object.fromEntries(['ch01','ch02','ch03','ch04'].map(chapterId=>[chapterId,official.filter(question=>question.chapterId===chapterId).length])),{ch01:0,ch02:0,ch03:5,ch04:2});
 for(const question of official){
   assert(['기본','심화'].includes(question.examLevel));
   assert(question.sourceFile.endsWith('.pdf')&&!/[\\/]/.test(question.sourceFile));
@@ -42,4 +42,4 @@ assert.equal(QUESTIONS.find(question=>question.questionId==='ch01-boss').origina
 assert.equal(QUESTIONS.find(question=>question.questionId==='ch02-test-05').originalResumeStoryId,'ch02_complete');
 assert.equal(QUESTIONS.find(question=>question.questionId==='ch03-practice-04').originalResumeStoryId,'ch03_courtyard');
 
-console.log('PASS: CH.01~CH.03 each contain 10 distributed questions; 7 preserved CH.02/CH.03 official answers and 5 new practice items are source-labeled and chained.');
+console.log('PASS: CH.01/02 contain 4/6 story questions; CH.03/04 each contain 10 distributed questions; 7 preserved CH.02/CH.03 official answers and 5 new practice items are source-labeled and chained.');

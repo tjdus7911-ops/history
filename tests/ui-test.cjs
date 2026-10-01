@@ -1,6 +1,6 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
 let saved=null,html='',handlers={},context,timers=[],typingElement=null;
-const data=fs.readFileSync('dist/data.js','utf8')+'\n'+fs.readFileSync('dist/ch02-data.js','utf8')+'\n'+fs.readFileSync('dist/ch03-data.js','utf8')+'\n'+fs.readFileSync('dist/exam-data.js','utf8')+'\n'+fs.readFileSync('dist/ch01-expansion.js','utf8'),app=fs.readFileSync('dist/app.js','utf8'),css=fs.readFileSync('dist/dialogue.css','utf8');
+const data=fs.readFileSync('dist/data.js','utf8')+'\n'+fs.readFileSync('dist/ch02-data.js','utf8')+'\n'+fs.readFileSync('dist/ch03-data.js','utf8')+'\n'+fs.readFileSync('dist/exam-data.js','utf8')+'\n'+fs.readFileSync('dist/ch01-expansion.js','utf8')+'\n'+fs.readFileSync('dist/chapter-split.js','utf8'),app=fs.readFileSync('dist/app.js','utf8'),css=fs.readFileSync('dist/dialogue.css','utf8');
 function boot(){
   handlers={};timers=[];
   const root={set innerHTML(s){html=s},get innerHTML(){return html}};
@@ -41,7 +41,7 @@ assert.equal(story(),'status');assert(html.includes('data-speaker-type="npc"'));
 action('advance-dialogue');assert(html.includes('data-speaker-type="player"'));assert(html.includes('data-expression="embarrassed"'));assert(html.includes('……없는데요.'));
 action('advance-dialogue');assert(html.includes('data-expression="surprised"'));assert(html.includes('돈은?'));
 action('advance-dialogue');assert(html.includes('data-expression="embarrassed"'));action('advance-dialogue');assert(html.includes('data-speaker-type="thought"'));assert(html.includes('나 지금 무일푼이잖아'));
-assert(!html.includes('data-action="advance-dialogue"'));action('next');assert.equal(story(),'life_choice');revealDialogue();assert(html.includes('choice-dock'));assert(html.includes('player_goryeo_thinking'));assert(html.includes('doyun_neutral'));assert(!html.includes('disabled=""'));
+assert(!html.includes('data-action="advance-dialogue"'));action('next');assert.equal(story(),'life_choice');revealDialogue();assert(html.includes('choice-dock'));assert(!html.includes('player_goryeo_thinking'));assert(html.includes('doyun_neutral'));assert(!html.includes('disabled=""'));
 selectChoice(2);assert.equal(current().run.route,'merchant');assert(html.includes('data-speaker-type="player"'));assert(html.includes('data-expression="embarrassed"'));assert(html.includes('상단에서 일할 수 있을까요?'));assert(html.includes('route-caravan'));
 action('advance-dialogue');assert(html.includes('data-speaker-type="npc"'));assert(html.includes('data-expression="smile"'));assert(html.includes('일손은 언제나 필요하오'));resultNext();
 assert.equal(story(),'route_caravan');choice(0);assert.equal(current().run.stats.wealth,10);assert.equal(current().run.job,'상단 일꾼');assert(html.includes('route-caravan-work'));resultNext();
@@ -51,8 +51,8 @@ assert.equal(story(),'thief_aftermath');next();
 assert.equal(story(),'night');next();assert.equal(story(),'ch01_trade_start');
 const years=new Set();let expansionGuard=0;
 while(!current().run.completed){years.add(vm.runInContext('STORIES[run().storyId]?.year',context));if(current().run.activeQuestionId)answerCurrent(currentAnswer());else if(current().run.pending)resultNext();else if(vm.runInContext('Boolean(STORIES[run().storyId]?.choices)',context))choice(0);else next();if(++expansionGuard>90)throw new Error('expanded story stalled')}
-assert([927,930,935,936,943].every(year=>years.has(year)));assert.equal(Object.keys(current().run.questionResults).length,10);assert.equal(current().run.characterStates.doyun.characterAge,49);assert.equal(current().run.doyunLegacy.plannedName,'도윤상단');
-assert(current().run.completed);assert.equal(current().run.storyId,'complete');assert(html.includes('CHAPTER 01 COMPLETE'));assert(html.includes('처음에 헷갈렸던 936년'));
+assert([927,930].every(year=>years.has(year)));assert.equal(Object.keys(current().run.questionResults).length,4);assert.equal(current().run.characterStates.doyun.characterAge,36);
+assert(current().run.completed);assert.equal(current().run.storyId,'ch01_clear_930');assert(html.includes('CHAPTER 01 CLEAR'));
 assert.equal(current().meta.completedRuns,1);assert(current().meta.cards.includes('goryeo-foundation-918'));assert(current().meta.people.includes('왕건'));
 
 nav('home');assert(html.includes('챕터 결과 보기'));assert(html.includes('현재 챕터 다시하기'));assert(html.includes('CHAPTER 02'));

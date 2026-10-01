@@ -22,6 +22,8 @@ async function main(){
   const snapshot=async name=>{if(!process.env.TEST_ARTIFACT_DIR)return;fs.mkdirSync(process.env.TEST_ARTIFACT_DIR,{recursive:true});await page.screenshot({path:path.join(process.env.TEST_ARTIFACT_DIR,name+'.png'),fullPage:true})};
   await tap('[data-action="play"]');
   let guard=0,checkedOpening=false,checked943=false;
+  for(const chapterId of ['ch01','ch02']){
+  if(chapterId==='ch02'){await tap('[data-nav="teaser"]');await tap('[data-chapter="ch02"]');assert.equal((await read()).run.storyId,'ch02_open_935')}
   while(!(await read()).run.completed){
     const current=await read();await fit();
     if(current.run.storyId==='voice'&&!checkedOpening){
@@ -32,6 +34,7 @@ async function main(){
       assert.equal(await page.locator('.stage-character').count(),2);assert.equal((await read()).run.storyId,'house');await snapshot('ch01-first-meeting');checkedOpening=true;continue;
     }
     if(current.scene?.year===943&&!checked943){assert.equal(current.run.characterStates.doyun.characterAge,49);await snapshot('ch01-943');checked943=true}
+    if(!['prologue','sleep','voice','house','outfit_question','outfit_gift'].includes(current.run.storyId)&&!current.question){const line=(current.run.pending?current.run.pending.resultDialogues:current.scene.dialogues)?.[(current.run.dialogueCursor||1)-1];if(['thought','narration'].includes(line?.speakerType))assert.equal(await page.locator('.stage-character').count(),0)}
     if(current.question){await tap(`[data-answer="${current.question.answer}"]`);await tap('[data-action="quiz-next"]')}
     else if(await page.locator('[data-action="advance-dialogue"]').count())await tap('[data-action="advance-dialogue"]');
     else if(current.run.pending)await tap('[data-action="result-next"]');
@@ -39,14 +42,17 @@ async function main(){
     else await tap('[data-action="next"]');
     if(++guard>500)throw new Error('mobile play did not complete');
   }
-  assert(checkedOpening&&checked943);assert.equal(Object.keys((await read()).run.questionResults).length,10);await fit();await snapshot('ch01-complete');
-  await tap('[data-action="start-ch01-review"]');
-  for(let index=0;index<13;index++){
-    const answer=await page.evaluate(()=>QUESTIONS.find(q=>q.questionId===reviewQuestionId).answer);await tap(`[data-answer="${answer}"]`);await tap('[data-action="quiz-next"]');await fit();
+  assert.equal((await read()).run.currentChapter,chapterId);assert.equal(Object.keys((await read()).run.questionResults).length,chapterId==='ch01'?4:6);await fit();await snapshot(chapterId+'-complete');
   }
-  assert.equal(await page.evaluate(()=>meta().ch01ReviewAttempts.at(-1).correct),13);
-  await page.reload();await tap('[data-action="play"]');await tap('[data-nav="teaser"]');await tap('[data-action="start-ch02"]');assert.equal((await read()).run.currentChapter,'ch02');
+  assert(checkedOpening&&checked943);
+  for(const chapterId of ['ch01','ch02']){
+    await tap('[data-review-chapter="'+chapterId+'"]');
+    const total=chapterId==='ch01'?5:8;
+    for(let index=0;index<total;index++){const answer=await page.evaluate(()=>QUESTIONS.find(q=>q.questionId===reviewQuestionId).answer);await tap('[data-answer="'+answer+'"]');await tap('[data-action="quiz-next"]');await fit()}
+    assert.equal(await page.evaluate(()=>meta().ch01ReviewAttempts.at(-1).correct),total);
+  }
+  await page.reload();await tap('[data-action="play"]');await tap('[data-nav="teaser"]');await tap('[data-chapter="ch03"]');assert.equal((await read()).run.currentChapter,'ch03');
   for(const width of [320,390,760]){await page.setViewportSize({width,height:844});await fit()}
-  assert.deepEqual(errors,[]);console.log('PASS: isolated 390px mobile CH.01 play, black-screen idle/taps, portraits, 943, all story questions, thirteen reviews, reload, CH.02 entry, 320/390/760px overflow.');
+  assert.deepEqual(errors,[]);console.log('PASS: isolated 390px mobile CH.01/02 play, black-screen idle/taps, portraits, background-only narration, restored market, 943, 4+6 story questions, 5+8 reviews, reload, CH.03 entry, 320/390/760px overflow.');
 }
 main().catch(error=>{console.error(error.stack||error);process.exitCode=1}).finally(async()=>{if(browser)await browser.close();server.close()});

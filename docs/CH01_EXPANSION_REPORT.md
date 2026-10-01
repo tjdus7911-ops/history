@@ -1,3 +1,5 @@
+> 보관 문서: 918–943 장편 CH.01 구현 당시 기록입니다. 현재 930/935 분리 구조는 CHAPTER_SPLIT_REPORT.md를 참조하세요.
+
 # CH.01 확장 완료 보고
 
 1. **수정 파일**: dist/ch01-expansion.js(신규 장면·문제·카드·노화·호환), dist/app.js(실전 복습·개념 재출제·카드·결과), dist/data.js(스토리 점수에서 복습 제외), dist/dialogue.css(모바일 복습 레이아웃), dist/index.html·dist/sw.js(확장 모듈과 shell 버전), package.json(테스트 명령), README.md, docs/EXAM_QUESTION_SOURCES.md, docs/CH01_EXPANSION_PLAN.md, docs/CH01_ASSET_INVENTORY.csv, 이 보고서, tests/*.cjs 및 tests/fixtures/ch01-protected.json. 이미지·CH.02/03 데이터 파일은 변경하지 않았다.

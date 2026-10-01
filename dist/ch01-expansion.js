@@ -230,7 +230,7 @@ migrateSave=function(raw){
 const recordBeforeCh01Expansion=recordQuestion;
 recordQuestion=function(state,id,answer){
   const right=recordBeforeCh01Expansion(state,id,answer),q=QUESTIONS.find(item=>item.questionId===id);
-  if(q?.chapterId!=='ch01'||q.retired)return right;
+  if(!['ch01','ch02'].includes(q?.chapterId)||q.retired)return right;
   const mistakes=state.meta.conceptMistakes||(state.meta.conceptMistakes={});
   if(!right)for(const concept of q.concepts||[]){const previous=mistakes[concept]||{count:0,questionIds:[]};mistakes[concept]={count:previous.count+1,questionIds:[...new Set([...previous.questionIds,id])],lastQuestionId:id,year:q.year}}
   state.meta.confusedConcepts=Object.keys(mistakes).filter(concept=>mistakes[concept].questionIds.some(questionId=>state.meta.wrongQuestionIds.includes(questionId)&&!state.meta.reviewedQuestionIds.includes(questionId)));
@@ -239,7 +239,7 @@ recordQuestion=function(state,id,answer){
 const enterBeforeCh01Expansion=applySceneEntry;
 applySceneEntry=function(state,id){
   const r=state.run||state,already=r.entryEffectsApplied?.includes(id),result=enterBeforeCh01Expansion(state,id),s=STORIES[id];
-  if(!already&&s?.chapterId==='ch01'){
+  if(!already&&['ch01','ch02'].includes(s?.chapterId)){
     for(const [stat,change] of Object.entries(s.enterStatChanges||{}))r.stats[stat]=Math.max(0,(r.stats[stat]||0)+change);
     for(const [person,change] of Object.entries(s.enterRelationChanges||{}))r.relations[person]=Math.max(-100,Math.min(100,(r.relations[person]||0)+change));
   }
