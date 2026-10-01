@@ -1,48 +1,82 @@
 # 살아본 한국사 — 눈떠보니 고려
 
-모바일 우선 스토리형 한국사 학습 게임의 CH.01 구현입니다. 별도 패키지 설치 없이 `dist/index.html`을 브라우저에서 열 수 있습니다. 로컬 서버에서는 더 일관되게 저장과 폰트가 동작합니다.
+선택한 삶을 2D 스토리 장면으로 경험하고, 방금 만난 역사적 의미를 한국사 시험형 문제로 확인하는 모바일 우선 게임입니다. CH.01 **새로운 나라**는 2026년 서울의 프롤로그에서 시작해 918년 고려 건국과 후삼국의 흐름을 다룹니다.
 
-## 실행
+## 실행과 검증
 
-Node.js가 있다면 이 폴더에서 `node serve.cjs`를 실행한 뒤 http://127.0.0.1:4173 에 접속합니다. 이미 미리보기 서버가 실행 중이면 해당 주소를 바로 사용하세요. 외부 웹폰트를 불러오지 못해도 기본 글꼴로 플레이할 수 있습니다.
+별도 패키지 설치가 필요 없는 정적 앱입니다.
 
-## 구현 범위
+```bash
+npm start
+npm run build
+npm test
+```
 
-- 홈·시대·공부·내 기록과 모바일 하단 내비게이션
-- 현대 프롤로그 → 고려 도착 → 송악·마을·상단 3갈래 진로
-- 전체 24개 스토리 노드, 96개 완결 선택 경로, 5가지 직업 결과
-- 체력·지식·명성·재산, 마을 주민·상단·왕건 세력 관계
-- 역사 기억 선택, 미래를 발설했을 때의 불이익
-- 고려 건국 카드 → 핵심 키워드 → 자체 제작 연습문제 3개 → 해설
-- 자동 오답 저장·다시 풀기·복습 완료, 연표와 잠금 도감
-- 챕터 결말·CH.02 예고, 브라우저 로컬 저장 및 이어하기
-- 새로운 인생 시작 시 학습 기록 유지
+- `npm start`: `http://127.0.0.1:4173`에서 `dist/` 실행
+- `npm run build`: HTML, CSS, JavaScript 구문과 실제 에셋 참조 검증
+- `npm test`: 전체 스토리 그래프, 4개 인생 루트, 선택 결과, 6개 문제, 저장·재시작·마이그레이션, UI 이벤트 플로우 검증
 
-다른 시대와 CH.02는 준비 중으로 표시됩니다. 계정 동기화, 실제 공식 기출문제, 음악, 결혼·가족 등의 확장 인생 시스템은 포함하지 않습니다. 플레이 시간은 독서 속도에 따라 달라지며 10–15분 목표의 실사용 시간 측정은 아직 하지 않았습니다.
+## CH.01 플레이 플로우
 
-## 구조
+1. 2026년 서울에서 918·936·900년 중 첫 기억 선택
+2. 잠이 들고 918년 송악 길목의 민가에서 깨어남
+3. 왕건의 건국 소문과 `STORY TEST 01`
+4. 918년 고려 건국 확인과 `STORY TEST 02`
+5. 장터에서 견훤·궁예·신라·왕건의 관계 경험과 `STORY TEST 03`
+6. 송악·마을·상단·왕건 특수 선택으로 갈라지는 첫 인생 선택
+7. 왕건과 호족의 관계를 다루는 `STORY TEST 04`
+8. 도둑 공통 사건과 선택별 결과 일러스트
+9. 후삼국 시대 상황을 구분하는 `STORY TEST 05`
+10. 918·935·936년을 연결하는 `BOSS QUESTION`
+11. 챕터 결과, 오답 요약, CH.02 광종 티저
 
-- `dist/data.js`: 시대·스토리·선택·역사·문제 데이터와 상태 변경 함수
-- `dist/app.js`: 렌더링, 화면 이동, 저장, 퀴즈와 복습
-- `dist/style.css`: 반응형 레이아웃, UI, 대화창, 상태창
-- `dist/goryeo.png`: 생성한 고려 배경. 
-- `dist/seoul-night.png`: 생성한 현대 프롤로그 배경
+문제는 공식 기출 문장이나 사료 이미지를 복제하지 않은 자체 제작형입니다. 사실관계는 [국사편찬위원회 우리역사넷의 후삼국 통일 자료](https://contents.history.go.kr/mobile/kc/view.do?code=kc_age_10&levelId=kc_i101800)를 기준으로 검토했습니다.
 
-문제에는 questionId, examType, examRound, examYear, questionNumber, era, chapterId, historicalEventId, question, choices, answer, explanation, source, isOfficial, image 필드가 있습니다. 실제 기출문제는 이용 조건을 확인한 뒤 별도로 추가할 수 있습니다.
+## 저장 구조
 
-선택의 능력치와 관계 변화는 데이터로 관리합니다. 창작 인물 연화·도윤과 개인 이야기는 실제 사건과 구분해 표시합니다. 재산의 ‘냥’은 게임용 추상 단위이며 918년의 화폐 제도를 재현하지 않습니다.
+브라우저 저장 키는 기존과 동일한 `lived-history-v1`이며 내부 스키마 버전은 2입니다. 기존 v1 저장 데이터는 첫 로드에서 자동으로 마이그레이션합니다.
 
-역사 내용 참고: [국사편찬위원회 우리역사넷](https://contents.history.go.kr/front/ta/view.do?levelId=ta_m41_0060_0010). 918년 건국, 919년 송악 천도, 936년 후삼국 통일을 구분했습니다.
+```text
+state
+├─ run   현재 플레이 회차
+│  ├─ storyId, route, choices, flags
+│  ├─ stats, wealth, job, relations
+│  ├─ visited, pending, initialMemory
+│  └─ activeQuestionId, questionResults
+└─ meta  누적 학습·수집 기록
+   ├─ questionRecords, wrongQuestionIds, reviewedQuestionIds
+   ├─ historicalEvents, cards, people
+   ├─ achievements, endings, playthroughs
+   └─ completedRuns, totalChoices
+```
 
-## 검증
+`처음부터 다시하기`와 `다른 선택으로 다시 살아보기`는 `run`만 초기화합니다. 문제 풀이 기록, 오답, 정답률, 발견 사건·카드·인물, 업적, 엔딩, 완료 회차는 `meta`에 남습니다.
 
-`node tests/verify.cjs`와 `node tests/ui-test.cjs`를 이 폴더에서 실행합니다. 전체 분기 그래프·상태 변화·직업 결과·문제 데이터, 프롤로그부터 결말까지 이벤트 흐름, 선택 결과와 답안의 재시작 복원, 오답 복습을 검사합니다. 브라우저에서 초기 실행 오류를 수정하고 화면 로딩과 390px 모바일 레이아웃을 확인했습니다. 브라우저 자동화 클릭 결과가 일관적이지 않아 전체 플레이 검증은 동일 이벤트 핸들러를 실행하는 테스트를 함께 사용했습니다.
+## 일러스트 데이터
 
-## 저장과 배포
+스토리 UI는 이미지 경로를 직접 하드코딩하지 않고 다음 연결을 사용합니다.
 
-현재 저장은 이 기기의 해당 브라우저·주소에만 유지됩니다. 저장 키는 `lived-history-v1`입니다. 로컬 파일, localhost, 배포 주소의 세이브는 서로 별개입니다.
+```text
+story.sceneId → story.illustrationId → ASSETS[illustrationId]
+choice.resultSceneId → choice.resultIllustrationId → ASSETS[resultIllustrationId]
+question.relatedIllustrationId → ASSETS[relatedIllustrationId]
+```
 
-소스 저장소: https://github.com/tjdus7911-ops/history . GitHub 소스 업로드와 웹사이트 배포는 별개입니다. 웹사이트 원격 게시는 아직 완료하지 않았습니다. `.openai/hosting.json`에는 기존 Sites 등록 ID를 보존했습니다.
+각 장면에는 `backgroundImage`, `characterImage`, `characterExpression`, `foregroundImage`, `sceneEffect`, `timeOfDay`, `music`, `ambientSound` 필드가 준비되어 있습니다. 실제 그림이 없는 장면은 관련 없는 기존 이미지를 반복하지 않고 장면별 색상과 설명이 다른 `ASSET_REQUIRED` 플레이스홀더를 표시합니다.
 
+실제 제작이 필요한 35개 에셋의 ID, 장면, 연도, 장소, 인물, 행동, 시간대, 배경, 비율, 상세 제작 설명은 [`docs/ASSET_REQUIRED.md`](docs/ASSET_REQUIRED.md)에 정리했습니다.
 
+## 파일 구조
 
+- `dist/data.js`: 시대·역사·에셋·스토리·선택·문제 데이터, v2 상태 모델과 변경 함수
+- `dist/app.js`: 화면 렌더링, 스토리/문제 복귀, 누적 기록, 재시작, v1 마이그레이션
+- `dist/style.css`: 기존 반응형 디자인
+- `dist/v2.css`: 다시하기, 장면 플레이스홀더, 분산 문제, 챕터 결과 UI
+- `dist/goryeo.png`: 홈/시대 선택용 고려 대표 이미지
+- `dist/seoul-night.png`: 2026년 프롤로그 공부 장면
+- `docs/ASSET_REQUIRED.md`: 실제 게임 일러스트 제작 명세
+- `tests/verify.cjs`: 데이터/분기/저장 정책 검증
+- `tests/ui-test.cjs`: 실제 클릭 이벤트 기반 전체 플레이 플로우 검증
+- `tests/build.cjs`: 정적 빌드 산출물 검증
+
+현재 저장은 해당 브라우저와 주소에만 유지됩니다. 로컬 파일, localhost, 배포 주소의 세이브는 서로 별개입니다.

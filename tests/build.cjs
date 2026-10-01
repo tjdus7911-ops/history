@@ -1,0 +1,11 @@
+const fs=require('fs'),path=require('path'),vm=require('vm'),assert=require('assert');
+const required=['dist/index.html','dist/style.css','dist/v2.css','dist/data.js','dist/app.js','dist/goryeo.png','dist/seoul-night.png'];
+for(const file of required)assert(fs.existsSync(file),`missing build asset: ${file}`);
+const html=fs.readFileSync('dist/index.html','utf8');
+for(const ref of ['style.css','v2.css','data.js','app.js'])assert(html.includes(ref),`index.html does not reference ${ref}`);
+new vm.Script(fs.readFileSync('dist/data.js','utf8'),{filename:'dist/data.js'});
+new vm.Script(fs.readFileSync('dist/app.js','utf8'),{filename:'dist/app.js'});
+const context=vm.createContext({});
+vm.runInContext(fs.readFileSync('dist/data.js','utf8')+';this.readyAssets=Object.values(ASSETS).filter(a=>a.status==="ready"&&a.src).map(a=>a.src);',context);
+for(const file of context.readyAssets)assert(fs.existsSync(path.join('dist',file)),`missing ready illustration: ${file}`);
+console.log(`PASS: static build verified (${required.length} files, ${context.readyAssets.length} ready illustrations).`);
