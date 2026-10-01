@@ -14,7 +14,16 @@ npm test
 
 - `npm start`: `http://127.0.0.1:4173`에서 `dist/` 실행
 - `npm run build`: HTML, CSS, JavaScript 구문과 실제 에셋 참조 검증
-- `npm test`: 전체 스토리 그래프, 4개 인생 루트, 선택 결과, 6개 문제, 저장·재시작·마이그레이션, UI 이벤트 플로우 검증
+- `npm test`: 전체 스토리 그래프, 순차 대화, 4개 인생 루트, 선택 결과, 6개 문제, 저장·재시작·마이그레이션, UI 이벤트 플로우 검증
+
+## 모바일 대화 시스템
+
+- NPC는 왼쪽, 플레이어는 오른쪽에 포트레이트·이름·개별 말풍선으로 표시됩니다.
+- `speakerType`(`npc`, `player`, `thought`, `narration`)이 정렬과 표현을 자동 결정합니다.
+- 장면 데이터의 `expression`으로 `neutral`, `smile`, `surprised`, `worried`, `suspicious`, `serious`, `embarrassed`, `angry`, `sad` 표정을 선택합니다.
+- 대사는 터치할 때 한 줄씩 나타나며 최근 2~3개만 남습니다. 독백과 서술은 별도 중앙 레이어로 표현됩니다.
+- 선택 장면은 `NPC 대사 → 선택지 → 플레이어 대사 → NPC 반응 → 결과` 순서로 진행됩니다.
+- 실제 포트레이트가 없는 동안에는 인물 사진을 대체 사용하지 않고 캐릭터별 `ASSET_REQUIRED` 플레이스홀더를 표시합니다.
 
 ## CH.01 플레이 플로우
 
@@ -34,7 +43,7 @@ npm test
 
 ## 저장 구조
 
-브라우저 저장 키는 기존과 동일한 `lived-history-v1`이며 내부 스키마 버전은 2입니다. 기존 v1 저장 데이터는 첫 로드에서 자동으로 마이그레이션합니다.
+브라우저 저장 키는 기존과 동일한 `lived-history-v1`이며 내부 스키마 버전은 3입니다. 기존 v1·v2 저장 데이터는 첫 로드에서 자동으로 마이그레이션합니다.
 
 ```text
 state
@@ -42,6 +51,7 @@ state
 │  ├─ storyId, route, choices, flags
 │  ├─ stats, wealth, job, relations
 │  ├─ visited, pending, initialMemory
+│  ├─ dialogueSceneId, dialogueCursor
 │  └─ activeQuestionId, questionResults
 └─ meta  누적 학습·수집 기록
    ├─ questionRecords, wrongQuestionIds, reviewedQuestionIds
@@ -66,15 +76,19 @@ question.relatedIllustrationId → ASSETS[relatedIllustrationId]
 
 실제 제작이 필요한 35개 에셋의 ID, 장면, 연도, 장소, 인물, 행동, 시간대, 배경, 비율, 상세 제작 설명은 [`docs/ASSET_REQUIRED.md`](docs/ASSET_REQUIRED.md)에 정리했습니다.
 
+대사는 `characterId`, `characterName`, `speakerType`, `portrait`, `expression`, `dialogue`, `alignment` 구조를 사용합니다. 실제 제작이 필요한 플레이어·도윤·주요 NPC의 26개 표정 포트레이트와 캐릭터 일관성 기준은 [`docs/CHARACTER_ASSET_REQUIRED.md`](docs/CHARACTER_ASSET_REQUIRED.md)에 정리했습니다.
+
 ## 파일 구조
 
-- `dist/data.js`: 시대·역사·에셋·스토리·선택·문제 데이터, v2 상태 모델과 변경 함수
-- `dist/app.js`: 화면 렌더링, 스토리/문제 복귀, 누적 기록, 재시작, v1 마이그레이션
+- `dist/data.js`: 시대·역사·에셋·대화·스토리·선택·문제 데이터, v3 상태 모델과 변경 함수
+- `dist/app.js`: 순차 대화/선택 렌더링, 스토리/문제 복귀, 누적 기록, 재시작, v1·v2 마이그레이션
 - `dist/style.css`: 기존 반응형 디자인
 - `dist/v2.css`: 다시하기, 장면 플레이스홀더, 분산 문제, 챕터 결과 UI
+- `dist/dialogue.css`: 모바일 메신저형 좌우 말풍선, 포트레이트, 독백, 선택지 UI
 - `dist/goryeo.png`: 홈/시대 선택용 고려 대표 이미지
 - `dist/seoul-night.png`: 2026년 프롤로그 공부 장면
 - `docs/ASSET_REQUIRED.md`: 실제 게임 일러스트 제작 명세
+- `docs/CHARACTER_ASSET_REQUIRED.md`: 캐릭터·표정 포트레이트 제작 명세
 - `tests/verify.cjs`: 데이터/분기/저장 정책 검증
 - `tests/ui-test.cjs`: 실제 클릭 이벤트 기반 전체 플레이 플로우 검증
 - `tests/build.cjs`: 정적 빌드 산출물 검증

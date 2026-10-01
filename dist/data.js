@@ -1,4 +1,4 @@
-const SAVE_VERSION=2;
+const SAVE_VERSION=3;
 const ERAS=[['고려','918 — 1392'],['조선','1392 — 1897'],['대한제국','1897 — 1910'],['일제강점기','1910 — 1945'],['대한민국','1945 —']];
 
 const HISTORY={
@@ -48,6 +48,55 @@ const ASSETS={
   'chapter-02-teaser':{status:'ASSET_REQUIRED',label:'광종의 명으로 노비 기록을 조사하는 관리들',palette:['#151b24','#765841']}
 };
 
+const EXPRESSIONS=['neutral','smile','surprised','worried','suspicious','serious','embarrassed','angry','sad'];
+const portrait=(characterId,expression,label,palette)=>({status:'ASSET_REQUIRED',characterId,expression,label,palette});
+const PORTRAITS={
+  player_neutral:portrait('player','neutral','주인공 · 차분한 기본 표정',['#294151','#8e765b']),
+  player_surprised:portrait('player','surprised','주인공 · 눈을 크게 뜬 놀란 표정',['#294151','#a17d5c']),
+  player_worried:portrait('player','worried','주인공 · 불안하게 생각하는 표정',['#263946','#786956']),
+  player_suspicious:portrait('player','suspicious','주인공 · 주변을 경계하며 살피는 표정',['#263b48','#7d6b54']),
+  player_serious:portrait('player','serious','주인공 · 결심한 진지한 표정',['#263a47','#846b50']),
+  player_embarrassed:portrait('player','embarrassed','주인공 · 난처해 시선을 피하는 표정',['#334651','#a17d64']),
+  player_sad:portrait('player','sad','주인공 · 후회하거나 풀이 죽은 표정',['#263744','#6f655a']),
+  doyun_neutral:portrait('doyun','neutral','도윤 · 상대를 살피는 기본 표정',['#4a382b','#a77950']),
+  doyun_smile:portrait('doyun','smile','도윤 · 믿음직하게 미소 짓는 표정',['#4b3a2c','#b18155']),
+  doyun_surprised:portrait('doyun','surprised','도윤 · 눈썹을 들며 놀란 표정',['#4c382c','#ad7452']),
+  doyun_suspicious:portrait('doyun','suspicious','도윤 · 의심스레 눈을 가늘게 뜬 표정',['#3f332b','#87634c']),
+  doyun_serious:portrait('doyun','serious','도윤 · 현실적인 조언을 하는 진지한 표정',['#43352a','#916747']),
+  doyun_worried:portrait('doyun','worried','도윤 · 걱정스럽게 바라보는 표정',['#41352d','#80664f']),
+  stranger_neutral:portrait('stranger','neutral','낯선 청년 · 조심스러운 기본 표정',['#45382e','#8c7057']),
+  stranger_worried:portrait('stranger','worried','낯선 청년 · 쓰러진 이를 걱정하는 표정',['#40362f','#7f6d5c']),
+  stranger_suspicious:portrait('stranger','suspicious','낯선 청년 · 낯선 말을 의심하는 표정',['#3d342e','#755d4a']),
+  resident_a_serious:portrait('resident_a','serious','주민 A · 급한 소식을 전하는 표정',['#4d4937','#8c774e']),
+  resident_b_surprised:portrait('resident_b','surprised','주민 B · 소식에 놀라는 표정',['#4c493b','#90775a']),
+  elder_neutral:portrait('elder','neutral','노인 · 세상일을 담담히 말하는 표정',['#49473e','#786c59']),
+  child_worried:portrait('child','worried','아이 · 도움을 간절히 구하는 표정',['#554839','#9b7855']),
+  child_smile:portrait('child','smile','아이 · 도움을 받고 안도하는 표정',['#584939','#ae8055']),
+  merchant_neutral:portrait('merchant','neutral','상인 · 거래 상대를 보는 기본 표정',['#4f3d30','#98704d']),
+  merchant_serious:portrait('merchant','serious','상인 · 일을 지시하는 엄격한 표정',['#48392f','#846348']),
+  merchant_surprised:portrait('merchant','surprised','상인 · 갑작스러운 상황에 놀란 표정',['#513b2f','#9d684a']),
+  merchant_angry:portrait('merchant','angry','상인 · 도둑을 향해 외치는 분노한 표정',['#4b302a','#9c5843']),
+  unknown_worried:portrait('unknown','worried','정체불명의 목소리 · 걱정스러운 실루엣',['#1d2630','#565b5f'])
+};
+const CHARACTERS={
+  player:{characterId:'player',characterName:'나',speakerType:'player',portraitPrefix:'player'},
+  doyun:{characterId:'doyun',characterName:'도윤',speakerType:'npc',portraitPrefix:'doyun'},
+  stranger:{characterId:'stranger',characterName:'낯선 청년',speakerType:'npc',portraitPrefix:'stranger'},
+  resident_a:{characterId:'resident_a',characterName:'주민 A',speakerType:'npc',portraitPrefix:'resident_a'},
+  resident_b:{characterId:'resident_b',characterName:'주민 B',speakerType:'npc',portraitPrefix:'resident_b'},
+  elder:{characterId:'elder',characterName:'노인',speakerType:'npc',portraitPrefix:'elder'},
+  child:{characterId:'child',characterName:'아이',speakerType:'npc',portraitPrefix:'child'},
+  merchant:{characterId:'merchant',characterName:'상인',speakerType:'npc',portraitPrefix:'merchant'},
+  unknown:{characterId:'unknown',characterName:'???',speakerType:'npc',portraitPrefix:'unknown'},
+  narrator:{characterId:'narrator',characterName:'',speakerType:'narration',portraitPrefix:null}
+};
+const dialogueLine=(characterId,expression,dialogue,speakerType=null)=>{
+  const character=CHARACTERS[characterId]||CHARACTERS.narrator;
+  const type=speakerType||character.speakerType;
+  const portraitId=(type==='player'||type==='npc')?`${character.portraitPrefix}_${expression}`:null;
+  return {characterId:character.characterId,characterName:character.characterName,speakerType:type,portrait:portraitId,expression,dialogue,alignment:type==='player'?'right':type==='npc'?'left':'center'};
+};
+
 const question=data=>({chapterId:'ch01',era:'고려',historicalEventId:'goryeo-foundation-918',image:null,userAnswer:null,isCorrect:null,isOfficial:false,examRound:null,examYear:null,questionNumber:null,examType:'한국사능력검정시험 유형 자체 제작',source:'국사편찬위원회 우리역사넷의 사실관계를 바탕으로 자체 제작',...data});
 const QUESTIONS=[
   question({questionId:'ch01-test-01',relatedSceneId:'rumor',relatedHistoricalEventId:'goryeo-foundation-918',relatedIllustrationId:'memory-wanggeon',questionType:'인물·자료 추론형',difficulty:'중',passage:'마을 사람들이 “왕건 장군께서 새 나라를 세우셨다”고 말한다. 현대에서 보았던 궁예·견훤·왕건의 관계를 떠올려 보자.',question:'왕건에 대한 기억으로 옳은 것은?',choices:['궁예의 휘하에서 성장한 뒤 고려를 세운 인물이다.','견훤을 몰아내고 후백제를 세운 인물이다.','신라 왕실의 추대를 받아 왕이 된 인물이다.','잘 기억나지 않는다.'],answer:0,explanation:'왕건은 궁예의 휘하에서 성장한 뒤 신하들의 추대를 받아 918년 고려를 세웠습니다. 견훤은 후백제를 세운 인물입니다.',examKeywords:['왕건','궁예','신하의 추대','고려 건국'],rewardKnowledge:2,resumeStoryId:'foundation'}),
@@ -58,7 +107,14 @@ const QUESTIONS=[
   question({questionId:'ch01-boss',relatedSceneId:'future_flow',relatedHistoricalEventId:'later-three-kingdoms-unification',relatedIllustrationId:'future-flow',questionType:'종합 자료 분석형',difficulty:'상',passage:'(가) 견훤이 완산주를 중심으로 나라를 세웠다.\n(나) 궁예의 신하들이 왕건을 추대하였다.\n(다) 신라의 경순왕이 고려에 항복하였다.\n(라) 고려가 후백제를 무너뜨리고 후삼국을 통일하였다.',question:'자료에 대한 분석으로 옳은 것을 모두 고른 것은?\nㄱ. (가)의 나라는 후백제이다.\nㄴ. (나)는 918년의 일이다.\nㄷ. (다)는 (라)보다 먼저 일어났다.\nㄹ. (라)는 고려 건국과 같은 해의 일이다.',choices:['ㄱ, ㄴ','ㄱ, ㄹ','ㄴ, ㄷ','ㄱ, ㄴ, ㄷ','ㄱ, ㄴ, ㄷ, ㄹ'],answer:3,explanation:'ㄱ·ㄴ·ㄷ이 옳습니다. 견훤은 후백제를 세웠고, 왕건은 918년 추대되어 고려를 건국했습니다. 신라는 935년에 항복했고 후삼국 통일은 936년이므로 ㄹ은 틀립니다.',examKeywords:['후백제','왕건 추대','918년','935년','936년'],rewardKnowledge:3,resumeStoryId:'complete'})
 ];
 
-const choice=(label,nextStoryId,statChanges={},relationshipChanges={},result='',extra={})=>({label,nextStoryId,statChanges,relationshipChanges,result,...extra});
+const choice=(label,nextStoryId,statChanges={},relationshipChanges={},result='',extra={})=>{
+  const resultDialogues=[
+    dialogueLine('player',extra.playerExpression||'serious',extra.playerResponse||label),
+    ...(extra.responseText?[dialogueLine(extra.responseCharacterId||'doyun',extra.responseExpression||'neutral',extra.responseText)]:[]),
+    ...(result?[dialogueLine('narrator','neutral',result,'narration')]:[])
+  ];
+  return {label,nextStoryId,statChanges,relationshipChanges,result,resultDialogues,...extra};
+};
 const scene=data=>({chapterId:'ch01',historicalEventId:'goryeo-foundation-918',backgroundImage:null,characterImage:null,characterExpression:'neutral',foregroundImage:null,sceneEffect:null,timeOfDay:'day',music:null,ambientSound:null,...data});
 
 const STORIES={
@@ -82,10 +138,10 @@ const STORIES={
   doyun:scene({sceneId:'doyun',year:918,location:'마을 · 장터',speaker:'도윤 · 젊은 상인',title:'궁예를 모르는 사람이 어디 있소',illustrationId:'doyun-intro',timeOfDay:'afternoon',characterExpression:'curious',dialogue:'“궁예가 그렇게 될 줄 누가 알았겠소.”\n\n“궁예를 알아요?”\n\n“모르는 사람이 어디 있소. 한때는 세상이 모두 그의 것이 될 것 같았지.”\n\n궁예 → 후고구려. 견훤 → 후백제. 왕건 → 고려.',quizId:'ch01-test-03'}),
   status:scene({sceneId:'status',year:918,location:'마을 · 장터 어귀',speaker:'도윤',title:'그런데 자네, 갈 곳은 있소?',illustrationId:'status-first',timeOfDay:'afternoon',dialogue:'“갈 곳은 있소?”\n\n“……없는데요.”\n\n“돈은?”\n\n“…….”\n\n고려에 떨어진 것도 문제인데. 나 지금 무일푼이잖아.',nextStoryId:'life_choice'}),
   life_choice:scene({sceneId:'life_choice',year:918,location:'마을 밖 · 갈림길',speaker:'도윤',title:'첫 번째 큰 인생 선택',illustrationId:'life-choice',timeOfDay:'afternoon',dialogue:'“나는 송악으로 갈 생각이오. 새 나라가 들어섰으니 사람이 몰릴 테고, 사람이 몰리면 장사가 되겠지.”\n\n“자네는 어떻게 할 건가?”',choices:[
-    choice('송악으로 간다','route_songak',{}, {doyun:5},'도윤과 함께 새로운 나라의 중심으로 향했다.',{route:'songak',flags:{songakRoute:1},resultSceneId:'life-choice-songak',resultIllustrationId:'route-songak',hint:'송악 루트 +1 · 도윤 +5'}),
-    choice('마을에 남는다','route_village',{}, {village:10},'사람들이 떠난 마을에 남아 살아갈 방법을 찾기로 했다.',{route:'village',flags:{lifeRoute:1},resultSceneId:'life-choice-village',resultIllustrationId:'route-village',hint:'생활 루트 +1 · 마을 +10'}),
-    choice('상단에 일을 부탁한다','route_caravan',{}, {merchant:10},'먹고살 돈부터 벌기 위해 상단의 수레로 향했다.',{route:'merchant',flags:{merchantRoute:1},resultSceneId:'life-choice-caravan',resultIllustrationId:'route-caravan',hint:'상인 루트 +1 · 상단 +10'}),
-    choice('왕건을 찾아간다','route_royal',{fame:-2},{royal:3},'“……왕을? 자네가?” 주변 사람들이 이상하다는 듯 돌아보았다.',{route:'royal',flags:{wanggeonSpecial:true},condition:{stat:'knowledge',min:4},resultSceneId:'life-choice-royal',resultIllustrationId:'route-royal',hint:'지식 4 필요 · 왕건 특수 플래그'})
+    choice('송악으로 간다','route_songak',{}, {doyun:5},'도윤과 함께 새로운 나라의 중심으로 향했다.',{route:'songak',flags:{songakRoute:1},playerResponse:'저도 송악으로 가겠습니다.',playerExpression:'serious',responseText:'좋소. 그럼 길에서 내 짐을 조금 나눠 듭시다.',responseCharacterId:'doyun',responseExpression:'smile',resultSceneId:'life-choice-songak',resultIllustrationId:'route-songak',hint:'송악 루트 +1 · 도윤 +5'}),
+    choice('마을에 남는다','route_village',{}, {village:10},'사람들이 떠난 마을에 남아 살아갈 방법을 찾기로 했다.',{route:'village',flags:{lifeRoute:1},playerResponse:'저는 이 마을에 남아 보겠습니다.',playerExpression:'serious',responseText:'그것도 한 길이지. 이곳 사람들에게 자네 손이 필요할 거요.',responseCharacterId:'doyun',responseExpression:'neutral',resultSceneId:'life-choice-village',resultIllustrationId:'route-village',hint:'생활 루트 +1 · 마을 +10'}),
+    choice('상단에 일을 부탁한다','route_caravan',{}, {merchant:10},'먹고살 돈부터 벌기 위해 상단의 수레로 향했다.',{route:'merchant',flags:{merchantRoute:1},playerResponse:'상단에서 일할 수 있을까요?',playerExpression:'embarrassed',responseText:'손이 빠른지부터 봐야겠지만, 일손은 언제나 필요하지.',responseCharacterId:'doyun',responseExpression:'smile',resultSceneId:'life-choice-caravan',resultIllustrationId:'route-caravan',hint:'상인 루트 +1 · 상단 +10'}),
+    choice('왕건을 찾아간다','route_royal',{fame:-2},{royal:3},'주변 사람들이 이상하다는 듯 돌아보았지만, 왕건과 관련된 특별한 뜻이 남았다.',{route:'royal',flags:{wanggeonSpecial:true},condition:{stat:'knowledge',min:4},playerResponse:'왕건을 찾아가겠습니다.',playerExpression:'serious',responseText:'……왕을? 자네가?',responseCharacterId:'doyun',responseExpression:'surprised',resultSceneId:'life-choice-royal',resultIllustrationId:'route-royal',hint:'지식 4 필요 · 왕건 특수 플래그'})
   ]}),
   route_songak:scene({sceneId:'route_songak',year:918,location:'송악으로 향하는 길',speaker:'도윤',title:'상인 행렬',illustrationId:'route-songak',timeOfDay:'afternoon',ambientSound:'cart',dialogue:'“공짜로 따라올 생각은 아니겠지?”\n수레와 사람들의 행렬이 산길을 따라 길게 이어진다.',choices:[
     choice('짐을 나른다','route_context',{health:-5,wealth:5},{doyun:5},'짐을 들고 상단과 걸었다. 팔은 저렸지만 첫 품삯이 손에 들어왔다.',{job:'상단 일꾼',resultSceneId:'songak-result-carry',resultIllustrationId:'route-songak-carry',hint:'체력 −5 · 재산 +5 · 도윤 +5'}),
@@ -115,15 +171,125 @@ const STORIES={
   complete:scene({sceneId:'complete',year:918,location:'CHAPTER 01 COMPLETE',speaker:'시스템',title:'새로운 나라',illustrationId:'chapter-complete',timeOfDay:'dawn',dialogue:'첫 번째 고려 생활을 마쳤습니다.'})
 };
 
+const DIALOGUES={
+  prologue:[
+    dialogueLine('player','worried','하…….'),
+    dialogueLine('player','worried','궁예, 견훤, 왕건. 이름은 아는데 자꾸 순서가 헷갈리네.'),
+    dialogueLine('player','neutral','왕건이 고려를 세운 게…….')
+  ],
+  sleep:[
+    dialogueLine('player','worried','진짜 직접 살아보면…… 안 까먹을 텐데.'),
+    dialogueLine('narrator','neutral','시계 초침이 멀어진다. 책의 마지막 페이지 제목만 희미하게 남는다.','narration'),
+    dialogueLine('narrator','neutral','후삼국과 고려의 성립','narration')
+  ],
+  voice:[
+    dialogueLine('unknown','worried','이보시오.'),
+    dialogueLine('unknown','worried','……정신이 드시오?'),
+    dialogueLine('player','worried','으…….'),
+    dialogueLine('unknown','worried','죽은 줄 알았네.')
+  ],
+  house:[
+    dialogueLine('stranger','worried','정신이 드시오?'),
+    dialogueLine('player','surprised','……네? 여기가 어디예요?'),
+    dialogueLine('stranger','neutral','송악으로 가는 길목이오.'),
+    dialogueLine('player','surprised','……송악?')
+  ],
+  village:[
+    dialogueLine('narrator','neutral','초가집, 흙길, 말과 수레. 멀리 산이 보인다. 현대 물건은 하나도 없다.','narration'),
+    dialogueLine('player','surprised','…….'),
+    dialogueLine('player','suspicious','촬영장이 아니야.','thought')
+  ],
+  rumor:[
+    dialogueLine('resident_a','serious','들었나?'),
+    dialogueLine('resident_b','surprised','무슨 일인데?'),
+    dialogueLine('resident_a','serious','왕건 장군께서 새 나라를 세우셨다네!'),
+    dialogueLine('player','surprised','……왕건?','thought')
+  ],
+  foundation:[
+    dialogueLine('resident_a','serious','나라 이름은 고려라고 한다더군.'),
+    dialogueLine('player','surprised','……고려.','thought'),
+    dialogueLine('narrator','neutral','918년 · 고려 건국','narration'),
+    dialogueLine('narrator','neutral','눈떠보니 고려','narration')
+  ],
+  market:[
+    dialogueLine('merchant','serious','견훤의 군대가 만만치 않다던데.'),
+    dialogueLine('resident_b','surprised','신라는 힘이 예전 같지 않고.'),
+    dialogueLine('elder','neutral','궁예가 물러났다고 세상이 바로 조용해지겠나.'),
+    dialogueLine('player','worried','견훤. 신라. 왕건. 잠깐…… 아직 통일된 게 아니야.','thought')
+  ],
+  doyun:[
+    dialogueLine('doyun','serious','궁예가 그렇게 될 줄 누가 알았겠소.'),
+    dialogueLine('player','surprised','궁예를 알아요?'),
+    dialogueLine('doyun','neutral','모르는 사람이 어디 있소.'),
+    dialogueLine('doyun','worried','한때는 세상이 모두 그의 것이 될 것 같았지.'),
+    dialogueLine('player','serious','궁예 → 후고구려. 견훤 → 후백제. 왕건 → 고려.','thought')
+  ],
+  status:[
+    dialogueLine('doyun','neutral','갈 곳은 있소?'),
+    dialogueLine('player','embarrassed','……없는데요.'),
+    dialogueLine('doyun','surprised','돈은?'),
+    dialogueLine('player','embarrassed','…….'),
+    dialogueLine('player','worried','고려에 떨어진 것도 문제인데, 나 지금 무일푼이잖아.','thought')
+  ],
+  life_choice:[
+    dialogueLine('doyun','neutral','나는 송악으로 갈 생각이오.'),
+    dialogueLine('doyun','serious','새 나라가 들어섰으니 사람이 몰릴 테고, 사람이 몰리면 장사가 되겠지.'),
+    dialogueLine('doyun','neutral','자네는 어떻게 할 건가?')
+  ],
+  route_songak:[
+    dialogueLine('narrator','neutral','수레와 사람들의 행렬이 산길을 따라 길게 이어진다.','narration'),
+    dialogueLine('doyun','smile','공짜로 따라올 생각은 아니겠지?')
+  ],
+  route_village:[
+    dialogueLine('narrator','neutral','조용한 마을 한가운데 수레가 넘어져 있다. 노인과 아이가 쏟아진 짐 앞에서 곤란해한다.','narration'),
+    dialogueLine('child','worried','도와주세요!')
+  ],
+  route_caravan:[
+    dialogueLine('narrator','neutral','상인들이 수레에 직물과 곡식 자루를 싣고 있다.','narration'),
+    dialogueLine('merchant','serious','일하려면 손이 빨라야 해.')
+  ],
+  route_royal:[
+    dialogueLine('doyun','surprised','새 왕이 막 즉위한 때요. 이름도 연고도 없는 자가 당장 만날 수 있을 리 없지.'),
+    dialogueLine('narrator','neutral','왕건을 직접 만날 수는 없었지만, 그 이름을 입에 올린 순간은 특별한 표식처럼 남았다.','narration')
+  ],
+  route_context:[
+    dialogueLine('narrator','neutral','길에는 상인과 백성뿐 아니라 각지의 유력자들이 보낸 사람들도 오갔다.','narration'),
+    dialogueLine('doyun','serious','새 임금도 혼자서 나라를 세울 수는 없소. 자기 고장을 지키는 세력들과 손을 잡아야지.'),
+    dialogueLine('player','serious','왕건과 호족. 새 나라의 기반은 한 사람만의 힘이 아니었다.','thought')
+  ],
+  thief:[
+    dialogueLine('narrator','neutral','한 사람이 상인의 물건을 낚아채 골목으로 달아난다.','narration'),
+    dialogueLine('merchant','angry','도둑이야!')
+  ],
+  thief_aftermath:[
+    dialogueLine('narrator','neutral','잠시 뒤 시장은 다시 움직이기 시작했다.','narration'),
+    dialogueLine('player','serious','나라의 이름이 바뀌어도 사람들은 물건을 지키고, 품삯을 벌고, 전쟁의 소문 속에서 하루를 살아간다.','thought'),
+    dialogueLine('player','neutral','나는 이제 후삼국 시대의 생활 한가운데 서 있다.','thought')
+  ],
+  night:[
+    dialogueLine('doyun','neutral','새 나라가 세워졌으니 세상도 달라지겠지.'),
+    dialogueLine('narrator','neutral','나는 멀리 보이는 불빛을 바라본다.','narration'),
+    dialogueLine('player','serious','나는 알고 있다. 이 나라가 결국 후삼국을 통일한다는 걸.','thought'),
+    dialogueLine('player','worried','하지만…… 내가 여기서 어떻게 살아야 하는지는 모른다.','thought')
+  ],
+  future_flow:[
+    dialogueLine('narrator','neutral','견훤 → 후백제 · 궁예 → 후고구려 · 왕건 → 궁예 세력에서 성장','narration'),
+    dialogueLine('narrator','neutral','918년 고려 건국 · 935년 신라의 항복 · 936년 고려의 후삼국 통일','narration'),
+    dialogueLine('player','serious','처음에 헷갈렸던 흐름이 하나로 이어진다.','thought')
+  ],
+  complete:[dialogueLine('narrator','neutral','첫 번째 고려 생활을 마쳤습니다.','narration')]
+};
+Object.entries(DIALOGUES).forEach(([sceneId,dialogues])=>{STORIES[sceneId].dialogues=dialogues});
+
 Object.values(STORIES).forEach(s=>{const asset=ASSETS[s.illustrationId]||ASSETS['home-goryeo'];s.backgroundImage=asset.src||null});
 
-const INITIAL_RUN=()=>({storyId:'prologue',started:false,completed:false,status:'평민',stats:{health:100,knowledge:0,fame:0,wealth:0},relations:{doyun:0,village:0,merchant:0,royal:0},job:'없음',route:null,visited:[],choices:[],flags:{},initialMemory:null,pending:null,activeQuestionId:null,questionAnswer:null,questionResults:{},peakWealth:0});
+const INITIAL_RUN=()=>({storyId:'prologue',started:false,completed:false,status:'평민',stats:{health:100,knowledge:0,fame:0,wealth:0},relations:{doyun:0,village:0,merchant:0,royal:0},job:'없음',route:null,visited:[],choices:[],flags:{},initialMemory:null,pending:null,activeQuestionId:null,questionAnswer:null,questionResults:{},dialogueSceneId:null,dialogueCursor:1,peakWealth:0});
 const INITIAL_META=()=>({questionRecords:{},wrongQuestionIds:[],reviewedQuestionIds:[],historicalEvents:[],cards:[],people:[],achievements:[],endings:[],playthroughs:[],completedRuns:0,totalChoices:0});
 const INITIAL=()=>({version:SAVE_VERSION,run:INITIAL_RUN(),meta:INITIAL_META()});
 
 function choiceAvailable(run,c){if(!c.condition)return true;if(c.condition.stat)return(run.stats[c.condition.stat]||0)>=c.condition.min;if(c.condition.flag)return Boolean(run.flags[c.condition.flag]);return true}
-function applyChoice(state,sceneId,index){const run=state.run||state,c=STORIES[sceneId].choices[index];if(!choiceAvailable(run,c))return run;for(const[k,v]of Object.entries(c.statChanges||{}))run.stats[k]=Math.max(0,run.stats[k]+v);for(const[k,v]of Object.entries(c.relationshipChanges||{}))run.relations[k]=Math.max(-100,Math.min(100,run.relations[k]+v));if(c.route)run.route=c.route;if(c.job!==undefined)run.job=c.job;if(c.initialMemory)run.initialMemory=c.initialMemory;if(c.flags)Object.assign(run.flags,c.flags);run.peakWealth=Math.max(run.peakWealth,run.stats.wealth);run.choices.push({scene:sceneId,label:c.label,resultSceneId:c.resultSceneId});run.pending={...c,sourceSceneId:sceneId};run.storyId=c.nextStoryId;if(state.meta)state.meta.totalChoices+=1;return run}
-function migrateSave(raw){if(raw&&raw.version===SAVE_VERSION&&raw.run&&raw.meta)return raw;const fresh=INITIAL();if(!raw||typeof raw!=='object')return fresh;if(raw.started){fresh.run.started=Boolean(raw.started);fresh.run.completed=Boolean(raw.completed);fresh.run.storyId=STORIES[raw.storyId]?raw.storyId:(raw.completed?'complete':'prologue');fresh.run.stats={...fresh.run.stats,...raw.stats};fresh.run.relations={...fresh.run.relations,doyun:raw.relations?.merchant||0,...raw.relations};fresh.run.job=raw.job||'없음';fresh.run.route=raw.route||null;fresh.run.visited=raw.visited||[];fresh.run.choices=raw.choices||[];fresh.run.peakWealth=raw.peakWealth||fresh.run.stats.wealth}for(const[id,correct]of Object.entries(raw.answers||{}))fresh.meta.questionRecords[id]={attempts:1,correctCount:correct?1:0,lastAnswer:null,lastCorrect:Boolean(correct),everCorrect:Boolean(correct)};fresh.meta.wrongQuestionIds=[...(raw.wrong||[])];fresh.meta.reviewedQuestionIds=[...(raw.reviewed||[])];fresh.meta.cards=[...(raw.cards||[])];if(raw.completed)fresh.meta.completedRuns=1;return fresh}
+function applyChoice(state,sceneId,index){const run=state.run||state,c=STORIES[sceneId].choices[index];if(!choiceAvailable(run,c))return run;for(const[k,v]of Object.entries(c.statChanges||{}))run.stats[k]=Math.max(0,run.stats[k]+v);for(const[k,v]of Object.entries(c.relationshipChanges||{}))run.relations[k]=Math.max(-100,Math.min(100,run.relations[k]+v));if(c.route)run.route=c.route;if(c.job!==undefined)run.job=c.job;if(c.initialMemory)run.initialMemory=c.initialMemory;if(c.flags)Object.assign(run.flags,c.flags);run.peakWealth=Math.max(run.peakWealth,run.stats.wealth);run.choices.push({scene:sceneId,label:c.label,resultSceneId:c.resultSceneId});run.pending={...c,sourceSceneId:sceneId};run.storyId=c.nextStoryId;run.dialogueSceneId=`result:${sceneId}`;run.dialogueCursor=1;if(state.meta)state.meta.totalChoices+=1;return run}
+function migrateSave(raw){if(raw&&raw.version===SAVE_VERSION&&raw.run&&raw.meta)return raw;const fresh=INITIAL();if(!raw||typeof raw!=='object')return fresh;if(raw.version===2&&raw.run&&raw.meta){fresh.run={...fresh.run,...raw.run,dialogueSceneId:null,dialogueCursor:1};fresh.meta={...fresh.meta,...raw.meta};return fresh}if(raw.started){fresh.run.started=Boolean(raw.started);fresh.run.completed=Boolean(raw.completed);fresh.run.storyId=STORIES[raw.storyId]?raw.storyId:(raw.completed?'complete':'prologue');fresh.run.stats={...fresh.run.stats,...raw.stats};fresh.run.relations={...fresh.run.relations,doyun:raw.relations?.merchant||0,...raw.relations};fresh.run.job=raw.job||'없음';fresh.run.route=raw.route||null;fresh.run.visited=raw.visited||[];fresh.run.choices=raw.choices||[];fresh.run.peakWealth=raw.peakWealth||fresh.run.stats.wealth}for(const[id,correct]of Object.entries(raw.answers||{}))fresh.meta.questionRecords[id]={attempts:1,correctCount:correct?1:0,lastAnswer:null,lastCorrect:Boolean(correct),everCorrect:Boolean(correct)};fresh.meta.wrongQuestionIds=[...(raw.wrong||[])];fresh.meta.reviewedQuestionIds=[...(raw.reviewed||[])];fresh.meta.cards=[...(raw.cards||[])];if(raw.completed)fresh.meta.completedRuns=1;return fresh}
 function resetRun(state){state.run=INITIAL_RUN();return state}
 function recordQuestion(state,questionId,userAnswer){const q=QUESTIONS.find(item=>item.questionId===questionId);if(!q)return false;const right=userAnswer===q.answer,previous=state.meta.questionRecords[questionId]||{attempts:0,correctCount:0,everCorrect:false};state.meta.questionRecords[questionId]={attempts:previous.attempts+1,correctCount:previous.correctCount+(right?1:0),lastAnswer:userAnswer,lastCorrect:right,everCorrect:previous.everCorrect||right};state.run.questionResults[questionId]=right;if(right){if(!previous.everCorrect)state.run.stats.knowledge+=q.rewardKnowledge||2;if(state.meta.wrongQuestionIds.includes(questionId)&&!state.meta.reviewedQuestionIds.includes(questionId))state.meta.reviewedQuestionIds.push(questionId)}else{if(!state.meta.wrongQuestionIds.includes(questionId))state.meta.wrongQuestionIds.push(questionId);state.meta.reviewedQuestionIds=state.meta.reviewedQuestionIds.filter(id=>id!==questionId)}state.run.questionAnswer=userAnswer;return right}
 function finishChapter(state){const run=state.run;run.completed=true;run.storyId='complete';run.activeQuestionId=null;run.questionAnswer=null;const add=(list,value)=>{if(!list.includes(value))list.push(value)};add(state.meta.historicalEvents,'goryeo-foundation-918');add(state.meta.cards,'goryeo-foundation-918');['왕건','궁예','견훤'].forEach(name=>add(state.meta.people,name));add(state.meta.achievements,'ch01-first-witness');add(state.meta.endings,`ch01-${run.route||'wanderer'}`);state.meta.completedRuns+=1;state.meta.playthroughs.push({chapterId:'ch01',route:run.route,job:run.job,stats:{...run.stats},choices:run.choices.length,completedAt:new Date().toISOString()});return state}
