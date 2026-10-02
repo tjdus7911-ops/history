@@ -36,7 +36,7 @@ async function main(){
     }
     if(now.screen==='teaser'){const next={ch01:'ch02',ch02:'ch03',ch03:'ch04'}[now.chapter];await tap(`[data-action="start-chapter"][data-chapter="${next}"]`);continue}
     assert.equal(now.screen,'game');seenScenes.add(now.storyId);
-    if(now.storyId==='ch01_gongsan'&&!checks.injured){while((await read()).cursor<7)await tap('[data-action="advance-dialogue"]');assert(await page.locator('[data-character-id="merchant_01"]').count());assert((await page.locator('[data-character-id="merchant_01"]').getAttribute('src')).includes('injured_merchant_01.png'));checks.injured=true;await shot('ch01-injured-merchant')}
+    if(now.storyId==='ch01_gongsan'&&!checks.injured){while((await read()).cursor<5)await tap('[data-action="advance-dialogue"]');assert(await page.locator('[data-character-id="merchant_01"]').count());assert((await page.locator('[data-character-id="merchant_01"]').getAttribute('src')).includes('injured_merchant_01.png'));checks.injured=true;await shot('ch01-injured-merchant')}
     if(now.storyId==='ch01_memory_943'&&!checks[943]){assert.equal(now.characterStates.doyun.ageState,'mature_943');checks[943]=true}
     if(now.storyId==='ch02_policy_reason')checks.gilsang=true;
     if(now.storyId==='ch02_exam_eve'&&!checks.examEve){const style=await page.locator('.game').getAttribute('style');assert(style.includes('ch02-nobles-night'));checks.examEve=true}

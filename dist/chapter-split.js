@@ -1233,3 +1233,64 @@ Object.assign(STORIES.ch03_farewell,{nextStoryId:'ch03_doyun_soliloquy'});
 for(const key of Object.keys(CONCEPT_QUESTION_INDEX))delete CONCEPT_QUESTION_INDEX[key];
 for(const q of QUESTIONS.filter(question=>!question.retired))for(const conceptId of q.conceptIds||[])(CONCEPT_QUESTION_INDEX[conceptId]||(CONCEPT_QUESTION_INDEX[conceptId]=[])).push(q.questionId);
 applyFinalEarlyPacing();
+
+/* Presentation and voice policy: keep original line/scene IDs and quiz routing.
+ * Internal thoughts stay modern and informal; spoken CH.01 replies are polite.
+ * CH.02 permits informal speech only after an explicit relationship beat. */
+const PLAYER_SPEECH_POLICY={thought:'modern-informal',ch01:'modern-polite',stranger:'modern-polite',doyunInformalFrom:'ch01_jump_935'};
+const CH01_POLITE_REPLIES={
+  '……송악?':'……송악이요?',
+  '이게 왜 이상해?':'이게 왜 이상한가요?',
+  '……없어.':'……없어요.',
+  '나 장사해본 적 없는데.':'저는 장사해 본 적 없는데요.',
+  '……궁예가 쫓겨났다고?':'……궁예가 쫓겨났다고요?',
+  '한 냥 반이면 오늘 다 팔 수 있는데?':'한 냥 반이면 오늘 다 팔 수 있지 않을까요?',
+  '왕까지……?':'왕까지 돌아가셨다고요……?',
+  '다시 하면 되잖아.':'다시 시작하면 되잖아요.',
+  '돈 좀 잃었다고 끝난 건 아니잖아.':'돈 좀 잃었다고 끝난 건 아니잖아요.',
+  '……잠깐 나갔다 올게.':'……잠깐 나갔다 올게요.',
+  '나도.':'저도요.',
+  '야.':'잠깐만요.',
+  '927년에 배웠네.':'927년에 배운 거잖아요.',
+  '운이 좋았네.':'운이 좋았어요.',
+  '우리가?':'우리가요?',
+  '그렇게 이상해요? 내가 보기엔 당신 옷이 더 이상한데.':'그렇게 이상해요? 제가 보기에는 그쪽 옷이 더 낯선데요.',
+  '정말 바로 시작하는 거야?':'정말 바로 시작하는 거예요?',
+  '후백제가 신라를 공격하고 고려가 개입한 거구나.':'후백제가 신라를 공격해서 고려가 개입한 거군요.'
+};
+for(const scene of Object.values(STORIES).filter(s=>s.chapterId==='ch01')){
+  scene.readingMode='narration-blocks';
+  scene.playerSpeechStyle=PLAYER_SPEECH_POLICY.ch01;
+  for(const line of [...scene.dialogues,...(scene.choices||[]).flatMap(c=>c.resultDialogues||[])]){
+    if(line.speakerType!=='player')continue;
+    if(CH01_POLITE_REPLIES[line.dialogue])line.dialogue=CH01_POLITE_REPLIES[line.dialogue];
+  }
+}
+// Preserve the opening's spoken timing and its saved cursor semantics.
+for(const id of ['prologue','voice','house','outfit_question','outfit_gift'])delete STORIES[id].readingMode;
+STORIES.ch01_clear_930.continueLabel='챕터 결과 보기';
+STORIES.ch01_clear_930.historyTimeline=[
+  {year:918,title:'고려 건국',detail:'왕건, 고려를 세우다'},
+  {year:927,title:'공산 전투',detail:'왕건 패배 · 신숭겸 전사'},
+  {year:930,title:'고창 전투',detail:'왕건 승리'}
+];
+const familiarScene=STORIES.ch01_jump_935;
+familiarScene.playerSpeechStyle='modern-informal-after-agreement';
+familiarScene.dialogues.splice(1,0,...ch01Lines([
+  ['player','neutral','같이 장사한 지도 오래됐네요. 이제는 조금 편하게 말해도 될까요?'],
+  ['doyun','smile','공산에서 잃은 장부도, 고창에서 다시 채운 수레도 함께 겪었잖소. 이제 편히 말하시오.'],
+  ['player','smile','그럼 나도 편하게 말할게. 그래도 장부는 같이 확인하자.']
+]));
+familiarScene.dialogues.find(l=>l.dialogue==='아직도 날 초보 취급하네.').dialogue='아직도 날 초보 취급하는 거야?';
+// A new acquaintance/refugee still receives modern polite speech in CH.02.
+STORIES.ch01_gyeonhwon.dialogues.find(l=>l.dialogue==='후백제를 세운 그 견훤?').dialogue='후백제를 세운 그 견훤이요?';
+STORIES.ch01_war_refugees.dialogues.find(l=>l.dialogue==='물부터 마셔. 찾는 사람이 있으면 이름도 적어줘.').dialogue='물부터 드세요. 찾는 분이 있으면 이름도 적어 주세요.';
+const migrateBeforeSpeechAgreement=migrateSave;
+migrateSave=function(raw){
+  const migrated=migrateBeforeSpeechAgreement(raw);
+  if(raw&&!raw.meta?.speechAgreementVersion)for(const r of [migrated.run,migrated.mainRun].filter(Boolean)){
+    if(r.storyId==='ch01_jump_935'&&r.dialogueSceneId==='ch01_jump_935'&&(r.dialogueCursor||1)>=2)r.dialogueCursor+=3;
+  }
+  migrated.meta.speechAgreementVersion=1;
+  return migrated;
+};

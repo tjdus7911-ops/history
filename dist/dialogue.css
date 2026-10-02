@@ -27,10 +27,6 @@
 .speech-bubble:before{content:'';position:absolute;top:-1px;width:10px;height:13px;background:inherit}
 .message-row.npc .speech-bubble:before{left:-6px;clip-path:polygon(100% 0,100% 100%,0 0)}
 .message-row.player .speech-bubble:before{right:-6px;clip-path:polygon(0 0,100% 0,0 100%)}
-.monologue{position:relative;width:min(94%,660px);margin:2px auto;padding:15px 18px 14px;overflow:hidden;border:1px solid #d9c08a70;border-radius:15px;background:linear-gradient(135deg,#0c1821ef,#142733e8);box-shadow:0 10px 28px #02080d70;text-align:center;backdrop-filter:blur(9px)}
-.monologue:before{content:'';position:absolute;inset:5px;border:1px solid #f0ddb616;border-radius:10px;pointer-events:none}
-.monologue span{position:relative;color:var(--gold);font-size:9px;font-weight:700;letter-spacing:.24em}
-.monologue p{position:relative;margin:6px 0 0!important;color:#f0e8dc!important;font:italic 15px/1.72 'Gowun Batang',serif!important;text-shadow:0 2px 8px #000}
 .narration-line{width:min(94%,660px);margin:2px auto;padding:10px 16px;border-left:1px solid #d7ba7e99;border-right:1px solid #d7ba7e99;background:linear-gradient(90deg,transparent,#07131dc9 16% 84%,transparent);text-align:center;text-shadow:0 2px 8px #000}
 .narration-line p{margin:0!important;color:#eee7da!important;font:13px/1.68 'Gowun Batang',serif!important}
 .dialogue-step{min-height:38px;margin-top:7px;display:flex;align-items:center;justify-content:flex-end;gap:10px}
@@ -56,8 +52,8 @@
 .cinematic-black .message-row{justify-content:center!important}
 .cinematic-black .bubble-stack{max-width:90%}
 .cinematic-black .character-name{display:none}
-.cinematic-black .speech-bubble,.cinematic-black .monologue{border:0!important;background:transparent!important;box-shadow:none!important;color:#f5f1e9!important;font-size:18px!important;letter-spacing:.04em;text-align:center;backdrop-filter:none}
-.cinematic-black .speech-bubble:before,.cinematic-black .monologue:before{display:none}
+.cinematic-black .speech-bubble{border:0!important;background:transparent!important;box-shadow:none!important;color:#f5f1e9!important;font-size:18px!important;letter-spacing:.04em;text-align:center;backdrop-filter:none}
+.cinematic-black .speech-bubble:before{display:none}
 .cinematic-black .dialogue-log>:not(:last-child){opacity:.28}
 .cinematic-black .dialogue-step{justify-content:center}
 .cinematic-black .dialogue-step>span{display:none}
@@ -82,7 +78,6 @@ body:has(.cinematic-black) .main{padding:0!important;background:#000}
   .character-stage{inset:86px 0 116px}.stage-character{bottom:0;height:min(61vh,515px);max-width:72%}.stage-left{left:-15%}.stage-right{right:-15%}
   .dialogue-log{gap:7px;min-height:74px}.bubble-stack{max-width:73%;gap:3px}.character-name{padding:2px 8px;font-size:9px}
   .speech-bubble{padding:9px 12px!important;font-size:14px!important;line-height:1.56!important}
-  .monologue{width:97%;padding:14px 15px 13px}.monologue p{font-size:14px!important;line-height:1.62!important}
   .narration-line{width:97%;padding:8px 11px}.narration-line p{font-size:12px!important}
   .dialogue-step{min-height:34px;margin-top:5px}.advance-dialogue{min-width:0;width:100%;padding:8px 12px}
   .choice-dock{padding:11px 9px}.choice-dock .choice{min-height:40px;padding:9px 11px;font-size:12px}.choice-dock .choice small{font-size:9px}
@@ -97,3 +92,11 @@ body:has(.cinematic-black) .main.fade{animation:none}
 body:has(.cinematic-black) .mobile-nav{display:none}
 
 .ch01-review-panel{margin:20px 0;padding:20px;border:1px solid #b897614a;border-radius:12px;background:#182a34;color:#f5ead8}.ch01-review-panel h2{margin:8px 0}.ch01-review-panel p{color:#ded5c5;line-height:1.6}.concept-retries{display:flex;flex-wrap:wrap;gap:8px}.ch01-years{flex-wrap:wrap;gap:8px}.ch01-years span{flex:1 1 120px}.ch01-answer-details{padding:12px 0;border-top:1px solid #bdab8640}.ch01-answer-details p{font-size:13px;line-height:1.7}.ch01-answer-details .correct-reason{font-weight:700}.ch01-card-shelf{margin-bottom:20px}.practice-progress{font-weight:700}@media(max-width:760px){.ch01-review-panel{padding:16px}.ch01-review-panel .primary{width:100%}.concept-retries button{max-width:100%;white-space:normal}.ch01-years span{flex-basis:40%}}
+
+/* All paragraphs in a reading moment remain equally readable. */
+.reading-blocks .dialogue-log>*{opacity:1}
+.reading-blocks .narration-line p+p{margin-top:9px!important}
+.history-timeline{list-style:none;margin:12px 0;padding:0 12px;border-left:2px solid #d7ba7e;color:#fff4df;text-align:left}
+.history-timeline li{display:grid;gap:4px;padding:8px 0}
+.history-timeline strong{font-size:14px}
+.history-timeline span{font-size:12px;line-height:1.6;color:#eee7da}
