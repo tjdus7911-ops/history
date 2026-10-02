@@ -6,7 +6,7 @@ const {CHAPTERS,STORIES,QUESTIONS}=context.api;
 
 for(const chapterId of ['ch01','ch02','ch03','ch04']){
   const chapterQuestions=QUESTIONS.filter(question=>question.chapterId===chapterId&&!question.reviewOnly&&!question.retired);
-  const expectedCounts={ch01:3,ch02:11,ch03:12,ch04:10};
+  const expectedCounts={ch01:2,ch02:5,ch03:12,ch04:9};
   assert.equal(CHAPTERS[chapterId].questionCount,expectedCounts[chapterId],`${chapterId}: metadata count`);
   assert.equal(chapterQuestions.length,CHAPTERS[chapterId].questionCount,`${chapterId}: actual question count`);
   assert.equal(new Set(chapterQuestions.map(question=>question.questionId)).size,CHAPTERS[chapterId].questionCount,`${chapterId}: duplicate id`);
@@ -30,7 +30,7 @@ const expectedOfficialAnswers={
 const official=QUESTIONS.filter(question=>question.isOfficial&&!question.retired);
 assert.equal(official.length,13);
 assert.deepEqual(Object.fromEntries(official.map(question=>[question.questionId,question.answer])),expectedOfficialAnswers);
-assert.deepEqual(Object.fromEntries(['ch01','ch02','ch03','ch04'].map(chapterId=>[chapterId,official.filter(question=>question.chapterId===chapterId).length])),{ch01:3,ch02:3,ch03:5,ch04:2});
+assert.deepEqual(Object.fromEntries(['ch01','ch02','ch03','ch04'].map(chapterId=>[chapterId,official.filter(question=>question.chapterId===chapterId).length])),{ch01:2,ch02:5,ch03:5,ch04:1});
 for(const question of official){
   assert(['기본','심화'].includes(question.examLevel));
   assert.equal(question.sourceVerified,true);
@@ -38,13 +38,17 @@ for(const question of official){
   assert(question.storyConnection&&question.storyConnection.length>20);
   assert(question.sourceFile.endsWith('.pdf')&&!/[\\/]/.test(question.sourceFile));
   assert(question.answerFile.endsWith('.pdf')&&!/[\\/]/.test(question.answerFile));
-  assert(STORIES[question.relatedSceneId]?.supplementalExam||question.chapterId==='ch01'||question.questionId==='ch03-official-75-basic-10');
+  assert(STORIES[question.relatedSceneId],`${question.questionId}: related story scene required`);
 }
 
 const ch01Active=QUESTIONS.filter(question=>question.chapterId==='ch01'&&!question.retired);
-assert.deepEqual(ch01Active.map(question=>question.questionId),['ch01-official-69-basic-10','ch01-official-79-advanced-09','ch01-official-70-advanced-10']);
+assert.deepEqual(ch01Active.map(question=>question.questionId),['ch01-official-69-basic-10','ch01-official-79-advanced-09']);
 assert(ch01Active.every(question=>question.isOfficial&&question.sourceVerified&&question.exactTranscription&&question.questionAuditStatus==='VERIFIED_OFFICIAL'));
 assert(QUESTIONS.filter(question=>question.chapterId==='ch01'&&!question.isOfficial).every(question=>question.retired&&question.questionAuditStatus==='SELF_AUTHORED'));
+const ch02Active=QUESTIONS.filter(question=>question.chapterId==='ch02'&&!question.retired);
+assert.deepEqual(ch02Active.map(question=>question.questionId).sort(),['ch01-official-70-advanced-10','ch01-official-73-basic-10','ch01-official-74-advanced-10','ch01-official-76-advanced-10','ch03-official-75-basic-12'].sort());
+assert(ch02Active.every(question=>question.isOfficial&&question.sourceVerified&&question.questionAuditStatus==='VERIFIED_OFFICIAL'));
+assert(QUESTIONS.filter(question=>question.chapterId==='ch02'&&!question.isOfficial).every(question=>question.retired&&question.questionAuditStatus==='SELF_AUTHORED'));
 
 const addedPractice=QUESTIONS.filter(question=>/^ch03-practice-0[5-9]$/.test(question.questionId));
 assert.equal(addedPractice.length,5);
@@ -55,4 +59,4 @@ assert.equal(QUESTIONS.find(question=>question.questionId==='ch03-practice-04').
 const newStoryQuestions=QUESTIONS.filter(question=>['ch01-story-war-context','ch01-story-gongsan-battle','ch01-story-gochang-name','ch02-story-geumsansa','ch02-story-sasimgwan','ch02-story-balhae-refugees'].includes(question.questionId));
 assert.equal(newStoryQuestions.length,6);assert(newStoryQuestions.every(question=>question.sourceType==='exam_style'&&!question.isOfficial&&question.gameMemory));
 
-console.log('PASS: CH.01 uses only 3 PDF-verified official questions, CH.02/03 retain 11/12 story questions, and all 13 active official answers remain source-labeled and story-linked.');
+console.log('PASS: CH.01 uses 2 PDF-verified official questions, CH.02 uses 5 official-only story questions, CH.03 retains 12 story questions, and all 13 active official answers remain source-labeled and story-linked.');

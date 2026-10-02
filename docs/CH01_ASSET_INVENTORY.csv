@@ -141,3 +141,8 @@
 "doyun_weak_smile","assets/characters/doyun_old_weak_smile.png","","","doyun","","weak_smile","guild_master"
 "hyunwoo_serious","assets/characters/hyunwoo_middle_serious.png","ch03_hyunwoo_return|ch03_seongjong_news|ch03_choe_reform|ch03_twelve_mok|ch03_gukjagam|ch03_history_reflection","982","hyunwoo","young","serious","official_scholar"
 "hyunwoo_thinking","assets/characters/hyunwoo_middle_thinking.png","ch03_choe_reform|ch03_gukjagam","982","hyunwoo","young","thinking","official_scholar"
+"merchant_01_neutral","assets/characters/merchant_01.png","ch01_trade_start","918","merchant_01","adult_918","neutral","plain_merchant"
+"merchant_01_injured_927","assets/characters/injured_merchant_01.png","ch01_gongsan","927","merchant_01","mature_927","worried","plain_merchant"
+"merchant_01_older_935","assets/characters/merchant_01_935.png","ch02_news_935|ch01_gyeonhwon","935","merchant_01","older_935","neutral","plain_merchant"
+"doyun_935","assets/characters/doyun_935.png","ch02_open_935|ch02_news_935|ch01_gyeonhwon|ch01_silla","935","doyun","adult_935","neutral","commoner"
+"doyun_943","assets/characters/doyun_943.png","ch01_jump_943|ch01_memory_943|ch01_taejo_death|ch01_hunyo|ch01_guild_seed|ch01_farewell","943","doyun","mature_943","neutral","commoner"

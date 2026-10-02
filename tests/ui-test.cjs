@@ -34,7 +34,7 @@ assert.equal(story(),'rumor');assert.equal(current().run.playerOutfit,'goryeo_co
 answer(0);assert(html.includes('기억이 섞였어'));assert(html.includes('역사 해설'));assert(html.includes('게임 속 기억'));assert(current().meta.wrongQuestionIds.includes('ch01-official-69-basic-10'));assert.equal(current().meta.wrongAnswers[0].examRound,69);assert.equal(current().meta.wrongAnswers[0].questionNumber,10);action('quiz-next');assert.equal(story(),'ch01_trade_start');assert.equal(current().run.job,'상단 일꾼');assert.equal(current().run.route,'merchant');
 const years=new Set();let expansionGuard=0;
 while(!current().run.completed){years.add(vm.runInContext('STORIES[run().storyId]?.year',context));if(current().run.activeQuestionId)answerCurrent(currentAnswer());else if(current().run.pending)resultNext();else if(vm.runInContext('Boolean(STORIES[run().storyId]?.choices)',context))choice(0);else next();if(++expansionGuard>90)throw new Error('expanded story stalled')}
-assert([927,930].every(year=>years.has(year)));assert.equal(Object.keys(current().run.questionResults).length,3);assert.equal(current().run.characterStates.doyun.characterAge,36);
+assert([927,930].every(year=>years.has(year)));assert.equal(Object.keys(current().run.questionResults).length,2);assert.equal(current().run.characterStates.doyun.characterAge,36);
 assert(current().run.completed);assert.equal(current().run.storyId,'ch01_clear_930');assert(html.includes('CHAPTER 01 CLEAR'));
 assert.equal(current().meta.completedRuns,1);assert(current().meta.cards.includes('goryeo-foundation-918'));assert(current().meta.people.includes('왕건'));
 

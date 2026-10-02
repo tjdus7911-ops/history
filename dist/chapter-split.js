@@ -418,3 +418,217 @@ migrateSave=function(raw){
   migrated.version=SAVE_VERSION;
   return migrated;
 };
+
+/* CH.02 935–943 re-edit: official-exam flow, age continuity, recurring merchant. */
+const CH02_REEDIT_VERSION=1;
+const HUMAN_AGING_RULES={
+  player:{agingMode:'nearly-static',baselineYear:918,baselineAge:23,mysteryKey:'unknown-aging'},
+  doyun:{agingMode:'calendar',birthYear:894,states:{918:'young',935:'adult_935',943:'mature_943',949:'middle_aged_949',956:'elder_956',982:'elder_982'}},
+  merchant_01:{agingMode:'calendar',birthYear:872,states:{918:'adult_918',927:'mature_927',935:'older_935'}},
+  hyunwoo:{agingMode:'calendar',birthYear:935,states:{958:'young',982:'middle_982'}},
+  freed_man:{agingMode:'calendar',note:'Create a new age state if this named NPC returns after a substantial time gap.'}
+};
+const ageState=(characterId,year,ageVariant,extra={})=>({characterAge:characterId==='player'?23:year-HUMAN_AGING_RULES[characterId].birthYear,ageState:ageVariant,ageVariant,variant:'normal',pose:'standing',...extra});
+const CH02_ALL_EXPRESSIONS=['neutral','smile','surprised','suspicious','serious','worried','angry','sad','thinking'];
+const onePortrait=id=>Object.fromEntries(CH02_ALL_EXPRESSIONS.map(expression=>[expression,id]));
+
+Object.assign(PORTRAITS,{
+  merchant_01_neutral:portrait('merchant_01','neutral','평범한 거래 상인 · 수다스러운 기본 표정',['#67513d','#ad8a63'],'assets/characters/merchant_01.png','plain_merchant'),
+  merchant_01_smile:portrait('merchant_01','smile','평범한 거래 상인 · 친근한 미소',['#67513d','#b38e65'],'assets/characters/merchant_01.png','plain_merchant'),
+  merchant_01_surprised:portrait('merchant_01','surprised','평범한 거래 상인 · 급한 소식',['#67513d','#ad805d'],'assets/characters/merchant_01.png','plain_merchant'),
+  merchant_01_serious:portrait('merchant_01','serious','평범한 거래 상인 · 장사 이야기를 하는 표정',['#5a4939','#997759'],'assets/characters/merchant_01.png','plain_merchant'),
+  merchant_01_worried:portrait('merchant_01','worried','평범한 거래 상인 · 걱정스러운 표정',['#54483c','#8a7059'],'assets/characters/merchant_01.png','plain_merchant'),
+  merchant_01_injured_927:portrait('merchant_01','worried','평범한 거래 상인 · 927년 부상 상태',['#514238','#866b55'],'assets/characters/injured_merchant_01.png','plain_merchant'),
+  merchant_01_older_935:portrait('merchant_01','neutral','평범한 거래 상인 · 935년 나이 든 모습',['#62503f','#a78361'],'assets/characters/merchant_01_935.png','plain_merchant'),
+  doyun_935:portrait('doyun','neutral','도윤 · 935년 41세 모습',['#3e352f','#80654f'],'assets/characters/doyun_935.png','commoner'),
+  doyun_943:portrait('doyun','neutral','도윤 · 943년 49세 모습',['#3b3430','#745f50'],'assets/characters/doyun_943.png','commoner')
+});
+const MERCHANT_918_PORTRAITS=onePortrait('merchant_01_neutral');
+MERCHANT_918_PORTRAITS.smile='merchant_01_smile';MERCHANT_918_PORTRAITS.surprised='merchant_01_surprised';MERCHANT_918_PORTRAITS.serious='merchant_01_serious';MERCHANT_918_PORTRAITS.worried='merchant_01_worried';
+const MERCHANT_927_PORTRAITS=onePortrait('merchant_01_injured_927');
+const MERCHANT_935_PORTRAITS=onePortrait('merchant_01_older_935');
+const DOYUN_935_PORTRAITS=onePortrait('doyun_935');
+const DOYUN_943_PORTRAITS=onePortrait('doyun_943');
+CHARACTER_ASSET_MAP.merchant_01={canonicalId:'MERCHANT_01_CANONICAL',defaultAge:'adult_918',ages:{
+  adult_918:{defaultVariant:'normal',variants:{normal:{defaultOutfit:'plain_merchant',outfits:{plain_merchant:MERCHANT_918_PORTRAITS}}}},
+  mature_927:{defaultVariant:'injured',variants:{injured:{defaultOutfit:'plain_merchant',outfits:{plain_merchant:MERCHANT_927_PORTRAITS}}}},
+  older_935:{defaultVariant:'normal',variants:{normal:{defaultOutfit:'plain_merchant',outfits:{plain_merchant:MERCHANT_935_PORTRAITS}}}}
+}};
+CHARACTER_ASSET_MAP.doyun.ages.adult_935={defaultOutfit:'commoner',outfits:{commoner:DOYUN_935_PORTRAITS}};
+CHARACTER_ASSET_MAP.doyun.ages.mature_943={defaultOutfit:'commoner',outfits:{commoner:DOYUN_943_PORTRAITS}};
+CHARACTERS.merchant_01={characterId:'merchant_01',canonicalId:'MERCHANT_01_CANONICAL',characterName:'상인',speakerType:'npc',position:'left',show:true,presentation:'standing',portraitPrefix:'merchant_01',characterAge:46,ageState:'adult_918',ageVariant:'adult_918',variant:'normal',pose:'standing',outfit:'plain_merchant'};
+Object.assign(CHARACTERS.injured_merchant,{show:false,presentation:'legacy',deprecated:true,replacedBy:'merchant_01'});
+
+ASSETS['ch02-trade-room-935']=sceneArt('ch02-trade-room-935','935–943년 도윤과 주인공이 빌려 쓰는 소박한 창고방',['#40342c','#897058'],false,'goryeo-house-empty');
+
+const ch02NamedLine=(who,expression,text,name=null,type=null)=>dialogueLine(who,expression,text,type,name);
+const refreshCh02Stage=sceneId=>{const s=STORIES[sceneId],spoken=(s.dialogues||[]).filter(line=>['npc','player'].includes(line.speakerType));s.visibleCharacters=[...new Set(spoken.map(line=>line.characterId).filter(id=>CHARACTERS[id]?.show!==false&&CHARACTERS[id]?.presentation!=='ambient'))];s.sceneType=spoken.length?'dialogue':s.dialogues?.some(line=>line.speakerType==='thought')?'thought':'narration';s.backgroundImage=ASSETS[s.illustrationId]?.src||null};
+const setCh02Questions=(sceneId,questionIds)=>{const s=STORIES[sceneId];delete s.quizId;delete s.linkedQuestionIds;delete s.questionSequenceMode;if(questionIds.length){s.linkedQuestionIds=[...questionIds];s.linkedOfficialQuestions=[...questionIds];s.questionSequenceMode='queue';s.quizId=questionIds[0];s.officialQuestionStatus='verified';s.officialQuestionSlot={conceptIds:[...(s.learningConceptIds||[])],linkedOfficialQuestions:[...questionIds],officialQuestionStatus:'verified'}}};
+
+// The normal 918 and injured 927 appearances use one identity and unchanged dialogue text.
+STORIES.ch01_trade_start.dialogues=STORIES.ch01_trade_start.dialogues.map((line,index)=>index===1?ch02NamedLine('merchant_01','serious',line.dialogue,'상인'):line);
+STORIES.ch01_trade_start.enterCharacterStates={...STORIES.ch01_trade_start.enterCharacterStates,merchant_01:ageState('merchant_01',918,'adult_918',{variant:'normal',outfit:'plain_merchant',pose:'relaxed'})};
+STORIES.ch01_gongsan.dialogues=STORIES.ch01_gongsan.dialogues.map(line=>line.characterId==='injured_merchant'?ch02NamedLine('merchant_01',line.expression,line.dialogue,'부상당한 상인'):line);
+STORIES.ch01_gongsan.enterCharacterStates={...STORIES.ch01_gongsan.enterCharacterStates,merchant_01:ageState('merchant_01',927,'mature_927',{variant:'injured',outfit:'plain_merchant',pose:'hunched'})};
+refreshCh02Stage('ch01_trade_start');refreshCh02Stage('ch01_gongsan');
+
+// Act 1 — Gyeon Hwon escapes Geumsansa and defects to Goryeo.
+Object.assign(STORIES.ch01_jump_935,{illustrationId:'ch02-trade-room-935',backgroundImage:ASSETS['ch02-trade-room-935'].src,nextStoryId:'ch02_news_935'});
+Object.assign(STORIES.ch02_news_935,{illustrationId:'ch02-trade-room-935',backgroundImage:ASSETS['ch02-trade-room-935'].src,nextStoryId:'ch01_gyeonhwon',enterCharacterStates:{...STORIES.ch02_news_935.enterCharacterStates,doyun:ch01Age(935),player:ageState('player',935,'unchanged',{outfit:'goryeo_commoner'}),merchant_01:ageState('merchant_01',935,'older_935',{variant:'normal',outfit:'plain_merchant',pose:'slightly-stooped'})},dialogues:[
+  ch02NamedLine('narrator','neutral','장부를 맞추던 중, 낯익은 상인이 숨을 몰아쉬며 뛰어들었다.',null,'narration'),
+  ch02NamedLine('merchant_01','surprised','견훤이 고려로 왔답니다!','상인'),
+  ch02NamedLine('doyun','surprised','……누가 왔다고?'),
+  ch02NamedLine('merchant_01','surprised','견훤 말입니다!','상인'),
+  ch02NamedLine('player','surprised','잠깐. 후백제를 세운 그 견훤?')
+]});
+Object.assign(STORIES.ch01_gyeonhwon,{illustrationId:'ch02-trade-room-935',backgroundImage:ASSETS['ch02-trade-room-935'].src,nextStoryId:'ch01_silla',enterCharacterStates:{...STORIES.ch01_gyeonhwon.enterCharacterStates,doyun:ch01Age(935),merchant_01:ageState('merchant_01',935,'older_935',{variant:'normal',outfit:'plain_merchant',pose:'slightly-stooped'})},dialogues:[
+  ch02NamedLine('merchant_01','serious','아들 신검에게 밀려 금산사에 갇혔다가 탈출했다 하오. 왕건 임금에게 귀순했답니다.','상인'),
+  ch02NamedLine('player','serious','자기가 만든 나라를 공격하게 생겼네.'),
+  ch02NamedLine('doyun','neutral','인생이라는 게 참 모르는 일이오.'),
+  ch02NamedLine('player','thinking','견훤은 고려로. 후백제에는 신검. 이제 둘을 같은 편으로 기억하면 안 돼.',null,'thought')
+]});
+
+// Act 2 — the last Silla king chooses surrender instead of another ruinous war.
+Object.assign(STORIES.ch01_silla,{illustrationId:'ch02-trade-room-935',backgroundImage:ASSETS['ch02-trade-room-935'].src,nextStoryId:'ch01_jump_936',dialogues:[
+  ch02NamedLine('narrator','neutral','그해 늦가을, 신라 출신 거래 상인이 찾아왔다.',null,'narration'),
+  ch02NamedLine('merchant','serious','……우리 왕께서 나라를 고려에 넘기기로 하셨소. 경순왕 김부께서 말이오.','신라 출신 상인'),
+  ch02NamedLine('player','surprised','싸워서 빼앗긴 게 아니라……?'),
+  ch02NamedLine('merchant','serious','더 싸우면 백성만 다친다 하셨소. 왕건 임금은 우리 왕을 우대하고 경주의 일을 맡긴다 하오.','신라 출신 상인'),
+  ch02NamedLine('merchant','serious','내일부터 나는 어느 나라 사람이 되는 것이오?','신라 출신 상인'),
+  ch02NamedLine('doyun','neutral','오늘 묵을 곳은 있소? 거래 이야기는 내일 합시다.'),
+  ch02NamedLine('player','thinking','사람을 죽이는 대신 자기편으로 만드는 선택. 신라의 마지막이 한 사람의 목소리로 남았다.',null,'thought')
+]});
+
+// Act 3 — brief personal choices, Illicheon, and the cumulative official question.
+Object.assign(STORIES.ch01_victory,{nextStoryId:'ch01_unity',dialogues:[
+  ch02NamedLine('merchant','surprised','일리천에서 왕건 임금이 신검의 군대를 이겼습니다! 후백제군이 무너졌습니다!','전령'),
+  ch02NamedLine('merchant','surprised','신검이 항복했습니다!','전령'),
+  ch02NamedLine('doyun','surprised','그러면…….'),
+  ch02NamedLine('player','neutral','끝난 거야.'),
+  ch02NamedLine('player','thinking','견훤이 고려에 오고, 신라가 나라를 넘기고, 마지막으로 신검의 후백제가 무너졌다.',null,'thought'),
+  ch02NamedLine('narrator','neutral','우리는 전쟁의 영웅이 아니었다. 서로의 이름을 부를 사람이 남아 있다는 것이 먼저 기뻤다.',null,'narration')
+]});
+Object.assign(STORIES.ch01_unity,{nextStoryId:'future_flow',dialogues:[ch02NamedLine('narrator','neutral','936년',null,'narration'),ch02NamedLine('narrator','neutral','후삼국 통일',null,'narration')],cinematicSub:'전쟁이 끝났다. 우리가 살아갈 날은 계속된다.',continueLabel:'살아온 순서를 떠올린다'});
+Object.assign(STORIES.future_flow,{chapterId:'ch02',year:936,title:'우리가 지나온 다섯 장면',illustrationId:'future-flow',backgroundImage:ASSETS['future-flow'].src,nextStoryId:'ch01_integration',dialogues:[
+  ch02NamedLine('narrator','neutral','927 · 공산에서 왕건이 패하고 신숭겸이 전사했다.',null,'narration'),
+  ch02NamedLine('narrator','neutral','930 · 고창에서 왕건이 승리했다.',null,'narration'),
+  ch02NamedLine('narrator','neutral','935 · 견훤이 귀순하고 신라가 고려에 들어왔다.',null,'narration'),
+  ch02NamedLine('narrator','neutral','936 · 일리천에서 신검이 패하고 후삼국이 하나가 되었다.',null,'narration'),
+  ch02NamedLine('player','thinking','외운 순서가 아니라, 우리가 지나온 길이다.',null,'thought')
+]});
+
+// Act 4 — three lived policy bundles, then 943 and the guild seed.
+Object.assign(STORIES.ch01_integration,{year:937,title:'나라가 하나 된 다음',illustrationId:'ch02-trade-room-935',backgroundImage:ASSETS['ch02-trade-room-935'].src,nextStoryId:'ch01_sasimgwan',dialogues:[
+  ch02NamedLine('player','smile','이제 전쟁도 끝났으니까 좀 조용해지겠네.'),
+  ch02NamedLine('doyun','serious','나라가 하나 됐다고 사람들의 힘까지 하나가 된 건 아니오.'),
+  ch02NamedLine('narrator','neutral','왕은 지방의 유력자들과 손을 잡되, 그 힘을 지켜볼 방법도 필요했다.',null,'narration')
+]});
+Object.assign(STORIES.ch01_sasimgwan,{year:937,title:'김부가 맡은 고장, 개경에 머문 아들',illustrationId:'ch02-trade-room-935',backgroundImage:ASSETS['ch02-trade-room-935'].src,nextStoryId:'ch01_refugee_family',dialogues:[
+  ch02NamedLine('merchant','neutral','신라 왕이던 김부 대감이 경주의 일을 살핀다 하오. 고장 사람들도 그의 말을 듣고요.','경주 상인'),
+  ch02NamedLine('doyun','neutral','출신 고장을 맡겨 따르게 하는군. 왕은 경주 사정을 듣고.'),
+  ch02NamedLine('merchant','serious','우리 고장 호족의 아들은 개경에 머물라는 명을 받았소. 자문이라지만 집안에서는 마음이 놓이지 않지요.','지방 상인'),
+  ch02NamedLine('player','thinking','김부가 자기 고장을 살피는 사심관. 호족의 자제를 수도에 두는 기인. 사람을 쓰면서 지방을 묶는 두 방법이구나.',null,'thought')
+],historyDiscovery:{people:['경순왕 김부'],cards:['ch01-sasimgwan','ch01-giin'],historicalEvents:['ch01-sasimgwan','ch01-giin']}});
+Object.assign(STORIES.ch01_giin,{storyActive:false,nextStoryId:'ch01_refugee_family'});delete STORIES.ch01_giin.quizId;delete STORIES.ch01_giin.linkedQuestionIds;delete STORIES.ch01_giin.questionSequenceMode;
+Object.assign(STORIES.ch01_refugee_family,{year:938,title:'북쪽에서 온 손님',illustrationId:'ch02-trade-room-935',backgroundImage:ASSETS['ch02-trade-room-935'].src,nextStoryId:'ch01_welfare',dialogues:[
+  ch02NamedLine('merchant','serious','발해에서 왔소. 나라가 거란에게 무너진 뒤 남은 가족을 데리고 내려왔소.','발해계 손님'),
+  ch02NamedLine('player','worried','머물 곳은 구했어요?'),
+  ch02NamedLine('merchant','neutral','왕께서 우리를 멀리하지 않고 같은 뿌리의 사람처럼 받아들였다 하오. 서경 쪽에도 자리가 있다더군.','발해계 손님'),
+  ch02NamedLine('doyun','neutral','서경으로 보낼 물건이 늘었소. 북쪽 길을 다시 살피는 사람도 많고.'),
+  ch02NamedLine('player','thinking','고구려를 이은 나라라는 말이 피난 온 사람을 받아들이고, 서경을 중시하며 북쪽으로 향하는 선택으로 이어졌다.',null,'thought')
+],historyDiscovery:{people:[],cards:['ch01-north'],historicalEvents:['ch01-north']}});
+Object.assign(STORIES.ch01_north,{storyActive:false,nextStoryId:'ch01_welfare'});delete STORIES.ch01_north.quizId;delete STORIES.ch01_north.linkedQuestionIds;delete STORIES.ch01_north.questionSequenceMode;
+Object.assign(STORIES.ch01_welfare,{year:941,title:'비어 가는 장바구니',nextStoryId:'ch01_jump_943',dialogues:[
+  ch02NamedLine('merchant','serious','거두어 가는 몫이 너무 크면 씨앗곡식까지 내놓아야 하오. 장에 팔 물건도 남지 않습니다.','장터 상인'),
+  ch02NamedLine('doyun','serious','백성이 다시 장사하고 농사지을 만큼은 남겨야 나라에도 다음해가 있지.'),
+  ch02NamedLine('player','thinking','백성에게 거둘 때 사정을 살핀다. 취민유도. 시장의 빈 바구니를 보면 뜻이 기억난다.',null,'thought')
+]});
+Object.assign(STORIES.ch01_hunyo,{illustrationId:'ch02-trade-room-935',backgroundImage:ASSETS['ch02-trade-room-935'].src,nextStoryId:'ch01_guild_seed',dialogues:[
+  ch02NamedLine('doyun','serious','태조께서 다음 왕들에게 지켜야 할 일을 열 가지로 남기셨다 하오.'),
+  ch02NamedLine('player','thinking','훈요 10조.',null,'thought'),
+  ch02NamedLine('doyun','neutral','불교와 나라의 의례를 소중히 하고, 서경을 중히 여기며, 백성을 함부로 다루지 말라는 당부라더군.'),
+  ch02NamedLine('player','thinking','제도를 새로 만드는 명령보다, 나라가 잊지 말아야 할 방향을 남긴 말이구나.',null,'thought')
+]});
+Object.assign(STORIES.ch01_guild_seed,{illustrationId:'ch02-trade-room-935',backgroundImage:ASSETS['ch02-trade-room-935'].src});
+Object.assign(STORIES.ch01_farewell,{dialogues:[
+  ch02NamedLine('narrator','neutral','CH.02 · 하나가 된 나라',null,'narration'),
+  ch02NamedLine('narrator','neutral','935 · 견훤 귀순 · 신라 항복',null,'narration'),
+  ch02NamedLine('narrator','neutral','936 · 일리천 승리 · 후삼국 통일',null,'narration'),
+  ch02NamedLine('narrator','neutral','통합 · 사심관과 기인 · 발해 유민과 북진 · 취민유도',null,'narration'),
+  ch02NamedLine('narrator','neutral','943 · 태조의 죽음 · 훈요 10조 · 도윤상단의 씨앗',null,'narration'),
+  ch02NamedLine('narrator','neutral','모두가 나이를 먹는 동안, 나는 여전히 같은 얼굴이었다.',null,'narration')
+]});
+
+for(const id of ['ch02_news_935','ch01_gyeonhwon','ch01_silla','ch01_victory','ch01_unity','future_flow','ch01_integration','ch01_sasimgwan','ch01_refugee_family','ch01_welfare','ch01_hunyo','ch01_guild_seed','ch01_farewell'])refreshCh02Stage(id);
+
+const ch02Q73=QUESTIONS.find(q=>q.questionId==='ch01-official-73-basic-10');
+const ch02Q74=QUESTIONS.find(q=>q.questionId==='ch01-official-74-advanced-10');
+const ch02Q76=QUESTIONS.find(q=>q.questionId==='ch01-official-76-advanced-10');
+const ch02Q75=QUESTIONS.find(q=>q.questionId==='ch03-official-75-basic-12');
+Object.assign(q70,{chapterId:'ch02',year:936,reviewOnly:false,relatedSceneId:'future_flow',relatedIllustrationId:'future-flow',resumeStoryId:'ch01_integration',gameMemory:'공산의 패배, 고창의 승리, 견훤의 귀순, 김부와 신라의 항복, 일리천 승리를 직접 지나왔습니다. 김부가 경주의 사심관이 된 장면이 들어갈 차례이므로 정답은 ③입니다.'});
+Object.assign(ch02Q73,{chapterId:'ch02',year:935,reviewOnly:false,relatedSceneId:'ch01_gyeonhwon',relatedIllustrationId:'ch02-trade-room-935',resumeStoryId:'ch01_silla',gameMemory:'918년 장터의 평범한 거래 상인이 나이 든 모습으로 다시 찾아와 “견훤이 금산사를 탈출해 고려로 왔다”고 전했습니다. 후백제를 세운 인물은 견훤이므로 정답은 ③입니다.'});
+Object.assign(ch02Q74,{chapterId:'ch02',year:935,reviewOnly:false,relatedSceneId:'ch01_silla',relatedIllustrationId:'ch02-trade-room-935',resumeStoryId:'ch01_jump_936',gameMemory:'신라 상인이 “내일부터 나는 어느 나라 사람이 되는가”라고 물었습니다. 경순왕 김부가 신라를 고려에 넘긴 뒤의 사건을 고르면 정답은 ④입니다.'});
+Object.assign(ch02Q76,{chapterId:'ch02',year:936,reviewOnly:false,relatedSceneId:'ch01_victory',relatedIllustrationId:'route-songak',resumeStoryId:'ch01_unity',gameMemory:'견훤은 고려 편에 섰고 후백제는 신검이 이끌었습니다. 일리천에서 왕건이 신검의 군대를 물리친 장면이므로 정답은 ②입니다.'});
+Object.assign(ch02Q75,{chapterId:'ch02',year:937,reviewOnly:false,relatedSceneId:'ch01_sasimgwan',relatedHistoricalEventId:'ch01-sasimgwan',historicalEvent:'태조의 지방 통치',relatedIllustrationId:'ch02-trade-room-935',resumeStoryId:'ch01_refugee_family',conceptIds:['taejo','sasimgwan','local-control'],gameMemory:'김부가 경주의 일을 살피고 지방 호족의 자제가 개경에 머무는 장면을 겪었습니다. 태조가 실시한 정책은 사심관 제도이므로 정답은 ③입니다.'});
+for(const q of [q70,ch02Q73,ch02Q74,ch02Q75,ch02Q76])Object.assign(q,{retired:false,isOfficial:true,sourceVerified:true,sourceType:'official_exam',questionAuditStatus:'VERIFIED_OFFICIAL',sourceStatus:'verified_from_attached_pdf'});
+for(const q of QUESTIONS.filter(question=>question.chapterId==='ch02'&&!question.isOfficial))Object.assign(q,{retired:true,reviewOnly:true,sourceStatus:'retired_self_authored_ch02_reedit',questionAuditStatus:'SELF_AUTHORED'});
+
+const ch04Q75Anchor=QUESTIONS.find(q=>q.questionId==='ch03-official-75-basic-10');
+if(ch04Q75Anchor)ch04Q75Anchor.resumeStoryId=ch04Q75Anchor.originalResumeStoryId||'ch03_policy_effect';
+Object.assign(STORIES.ch03_exam_75_12,{storyActive:false,nextStoryId:'ch03_policy_effect'});delete STORIES.ch03_exam_75_12.quizId;
+
+const CH02_OFFICIAL_STORY_IDS=[ch02Q73.questionId,ch02Q74.questionId,ch02Q76.questionId,q70.questionId,ch02Q75.questionId];
+SPLIT_STORY_QUESTION_IDS.ch01.splice(0,SPLIT_STORY_QUESTION_IDS.ch01.length,...SPLIT_STORY_QUESTION_IDS.ch01.filter(id=>id!==q70.questionId));
+SPLIT_REVIEW_IDS.ch01.splice(0,SPLIT_REVIEW_IDS.ch01.length,...SPLIT_REVIEW_IDS.ch01.filter(id=>id!==q70.questionId));
+SPLIT_STORY_QUESTION_IDS.ch02.splice(0,SPLIT_STORY_QUESTION_IDS.ch02.length,...CH02_OFFICIAL_STORY_IDS);
+SPLIT_REVIEW_IDS.ch02.splice(0,SPLIT_REVIEW_IDS.ch02.length,...CH02_OFFICIAL_STORY_IDS);
+Object.assign(CHAPTERS.ch01,{questionCount:SPLIT_STORY_QUESTION_IDS.ch01.length,reviewQuestionCount:SPLIT_REVIEW_IDS.ch01.length});
+Object.assign(CHAPTERS.ch02,{questionCount:CH02_OFFICIAL_STORY_IDS.length,reviewQuestionCount:CH02_OFFICIAL_STORY_IDS.length});
+CHAPTERS.ch04.questionCount=QUESTIONS.filter(q=>q.chapterId==='ch04'&&!q.reviewOnly&&!q.retired).length;
+HISTORY.relatedQuestions=[...SPLIT_STORY_QUESTION_IDS.ch01,...CH02_OFFICIAL_STORY_IDS];
+
+for(const id of ['ch01_gochang','ch01_gyeonhwon','ch01_silla','ch01_victory','ch01_unity','future_flow','ch01_sasimgwan','ch01_refugee_family','ch01_welfare','ch01_hunyo'])setCh02Questions(id,[]);
+setCh02Questions('ch01_gyeonhwon',[ch02Q73.questionId]);
+setCh02Questions('ch01_silla',[ch02Q74.questionId]);
+setCh02Questions('ch01_victory',[ch02Q76.questionId]);
+setCh02Questions('future_flow',[q70.questionId]);
+setCh02Questions('ch01_sasimgwan',[ch02Q75.questionId]);
+for(const id of ['ch01_integration','ch01_refugee_family','ch01_welfare','ch01_hunyo'])STORIES[id].officialQuestionSlot={conceptIds:[...(STORIES[id].learningConceptIds||[])],linkedOfficialQuestions:[],officialQuestionStatus:'source_required'};
+
+// Calendar ages remain internally consistent beyond CH.02; the player stays 23 by design.
+Object.assign(STORIES.ch02_transition.enterCharacterStates.doyun,{characterAge:55,ageState:'middle_aged_949'});
+Object.assign(STORIES.ch02_jump_956.enterCharacterStates.doyun,{characterAge:62,ageState:'elder_956'});
+Object.assign(STORIES.ch02_jump_958.enterCharacterStates.doyun,{characterAge:64,ageState:'elder_956'});
+Object.assign(STORIES.ch02_official_robes_walk.enterCharacterStates.doyun,{characterAge:66,ageState:'elder_956'});
+Object.assign(STORIES.ch03_transition.enterCharacterStates.doyun,{characterAge:88,ageState:'elder_982'});
+
+for(const key of Object.keys(CONCEPT_QUESTION_INDEX))delete CONCEPT_QUESTION_INDEX[key];
+for(const q of QUESTIONS.filter(question=>!question.retired))for(const conceptId of q.conceptIds||[])(CONCEPT_QUESTION_INDEX[conceptId]||(CONCEPT_QUESTION_INDEX[conceptId]=[])).push(q.questionId);
+
+const migrateBeforeCh02Reedit=migrateSave;
+migrateSave=function(raw){
+  const migrated=migrateBeforeCh02Reedit(raw),meta=migrated.meta||(migrated.meta=INITIAL_META());
+  if(meta.ch02ReeditVersion!==CH02_REEDIT_VERSION){
+    const retiredIds=new Set(QUESTIONS.filter(q=>q.chapterId==='ch02'&&q.retired).map(q=>q.questionId));
+    const skippedScenes={ch01_giin:'ch01_refugee_family',ch01_north:'ch01_welfare',ch03_exam_75_12:'ch03_policy_effect'};
+    const questionResume={
+      'ch01-story-gyeonhwon':'ch01_gyeonhwon','ch02-story-geumsansa':'ch01_gyeonhwon','ch01-story-silla':'ch01_silla','ch02-story-illyecheon':'ch01_victory','ch01-boss':'future_flow','ch02-story-sasimgwan':'ch01_sasimgwan','ch01-story-integration':'ch01_sasimgwan','ch02-story-balhae-refugees':'ch01_refugee_family','ch01-story-north':'ch01_refugee_family','ch02-story-welfare':'ch01_welfare','ch01-story-hunyo':'ch01_hunyo'
+    };
+    const repairRun=run=>{
+      if(!run)return;
+      if(skippedScenes[run.storyId]){run.storyId=skippedScenes[run.storyId];run.pending=null;run.dialogueSceneId=null;run.dialogueCursor=1}
+      if(retiredIds.has(run.activeQuestionId)){run.storyId=questionResume[run.activeQuestionId]||'ch02_open_935';run.activeQuestionId=null;run.questionAnswer=null;run.questionQueue=[];run.questionQueueIndex=0;run.questionQueueResumeStoryId=null;run.dialogueSceneId=null;run.dialogueCursor=1}
+      run.questionQueue=(run.questionQueue||[]).filter(id=>!retiredIds.has(id));
+      const year=Number(STORIES[run.storyId]?.year||0);
+      if(run.currentChapter==='ch02'&&year){run.characterStates={...(run.characterStates||{}),player:{...(run.characterStates?.player||{}),...ageState('player',year,'unchanged',{outfit:'goryeo_commoner'})},doyun:{...(run.characterStates?.doyun||{}),...ch01Age(year)}};if(['ch02_news_935','ch01_gyeonhwon'].includes(run.storyId))run.characterStates.merchant_01={...(run.characterStates.merchant_01||{}),...ageState('merchant_01',935,'older_935',{variant:'normal',outfit:'plain_merchant',pose:'slightly-stooped'})}}
+      run.ch02ReeditVersion=CH02_REEDIT_VERSION;
+    };
+    repairRun(migrated.run);repairRun(migrated.mainRun);
+    const normalizeSession=session=>{if(!session?.chapterId||!SPLIT_REVIEW_IDS[session.chapterId])return session;const ids=SPLIT_REVIEW_IDS[session.chapterId],answers=Object.fromEntries(Object.entries(session.answers||{}).filter(([id])=>ids.includes(id))),results=Object.fromEntries(Object.entries(session.results||{}).filter(([id])=>ids.includes(id))),cursor=Math.max(0,ids.findIndex(id=>answers[id]===undefined));return {...session,answers,results,cursor:cursor<0?ids.length:cursor,completed:ids.length>0&&ids.every(id=>answers[id]!==undefined)}};
+    if(meta.ch01ReviewSession)meta.ch01ReviewSession=normalizeSession(meta.ch01ReviewSession);
+    if(meta.chapterReviewSessions)for(const id of Object.keys(meta.chapterReviewSessions))meta.chapterReviewSessions[id]=normalizeSession(meta.chapterReviewSessions[id]);
+    meta.ch02ReeditVersion=CH02_REEDIT_VERSION;
+  }
+  migrated.version=SAVE_VERSION;
+  return migrated;
+};

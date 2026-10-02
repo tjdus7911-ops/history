@@ -45,9 +45,9 @@
 | ch01_unity | 936 | 후삼국 통일 |
 | ch01_integration | 937 | 나라가 하나 된 다음 |
 | ch01_sasimgwan | 937 | 김부와 경주를 잇는 이름 |
-| ch01_giin | 937 | 수도에 머무는 자제 |
+| ch01_giin | 937 | 사심관 장면에 병합 · 저장 호환용 비활성 |
 | ch01_refugee_family | 938 | 북쪽에서 온 손님 |
-| ch01_north | 940 | 서경으로 보내는 짐 |
+| ch01_north | 940 | 발해 유민 장면에 병합 · 저장 호환용 비활성 |
 | ch01_welfare | 941 | 다시 밥을 지을 사람들 |
 | ch01_jump_943 | 943 | 스물다섯 번째 해 |
 | ch01_memory_943 | 943 | 평생 기억할 옷 |
@@ -81,16 +81,16 @@
 | ch03-practice-04 | ch04 | 기존 장면 | 스토리 |
 | ch01-official-69-basic-10 | ch01 | 918 | 검증 기출 복습 |
 | ch01-official-79-advanced-09 | ch01 | 918 | 검증 기출 복습 |
-| ch01-official-70-advanced-10 | ch02 | 936 | 검증 기출 복습 |
-| ch01-official-73-basic-10 | ch02 | 936 | 검증 기출 복습 |
-| ch01-official-74-advanced-10 | ch02 | 936 | 검증 기출 복습 |
-| ch01-official-76-advanced-10 | ch02 | 936 | 검증 기출 복습 |
+| ch01-official-70-advanced-10 | ch02 | 936 | 검증 기출 스토리 · 누적 연표 |
+| ch01-official-73-basic-10 | ch02 | 935 | 검증 기출 스토리 · 견훤 귀순 |
+| ch01-official-74-advanced-10 | ch02 | 935 | 검증 기출 스토리 · 신라 항복 이후 |
+| ch01-official-76-advanced-10 | ch02 | 936 | 검증 기출 스토리 · 일리천 |
 | ch02-official-69-advanced-10 | ch03 | 기존 장면 | 스토리 |
 | ch02-official-74-advanced-11 | ch03 | 기존 장면 | 스토리 |
 | ch02-official-76-advanced-50 | ch03 | 기존 장면 | 스토리 |
 | ch02-official-77-advanced-14 | ch03 | 기존 장면 | 스토리 |
 | ch02-official-78-advanced-11 | ch03 | 기존 장면 | 스토리 |
-| ch03-official-75-basic-12 | ch04 | 기존 장면 | 스토리 |
+| ch03-official-75-basic-12 | ch02 | 937 | 검증 기출 스토리 · 사심관 |
 | ch03-practice-05 | ch04 | 기존 장면 | 스토리 |
 | ch03-practice-06 | ch04 | 기존 장면 | 스토리 |
 | ch03-practice-07 | ch04 | 기존 장면 | 스토리 |

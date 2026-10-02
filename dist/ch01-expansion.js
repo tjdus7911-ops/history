@@ -21,9 +21,9 @@ const CH01_HISTORY_CARDS=[
   {id:'ch01-welfare',year:'태조 재위',title:'민생 안정',body:'태조는 취민유도를 내세워 과도한 수취를 억제했다. 왕조의 기반에는 전쟁에서 살아남은 백성의 생업도 필요했다.',keywords:['취민유도','수취 억제','민생 안정'],source:CH01_SOURCES.policy},
   {id:'ch01-hunyo',year:943,title:'태조의 죽음과 훈요 10조',body:'태조는 943년에 사망했다. 후대 왕에게 남긴 훈요 10조에는 불교와 전통 의례, 서경 중시, 민생과 통치에 대한 당부가 담겼다.',keywords:['943','후대 왕의 지침','서경·연등회·팔관회'],source:CH01_SOURCES.hunyo}
 ];
-CHARACTER_ASSET_MAP.doyun.ages.mature_935={defaultOutfit:'commoner',outfits:{commoner:DOYUN_949_PORTRAITS}};
-CHARACTER_ASSET_MAP.doyun.ages.middle_943={defaultOutfit:'commoner',outfits:{commoner:DOYUN_949_PORTRAITS}};
-const ch01Age=year=>({characterAge:24+year-918,ageVariant:year>=943?'middle_943':year>=935?'mature_935':'young',characterEraVariant:year>=935?'middle-merchant':'young-merchant',outfit:'commoner',isAlive:true});
+CHARACTER_ASSET_MAP.doyun.ages.adult_935={defaultOutfit:'commoner',outfits:{commoner:DOYUN_949_PORTRAITS}};
+CHARACTER_ASSET_MAP.doyun.ages.mature_943={defaultOutfit:'commoner',outfits:{commoner:DOYUN_949_PORTRAITS}};
+const ch01Age=year=>{const ageVariant=year>=943?'mature_943':year>=935?'adult_935':'young';return {characterAge:24+year-918,ageState:ageVariant,ageVariant,characterEraVariant:year>=943?'seasoned-merchant':year>=935?'adult-merchant':'young-merchant',outfit:'commoner',pose:'standing',variant:'normal',isAlive:true}};
 const ch01Lines=rows=>rows.map(([who,expression,text,type])=>dialogueLine(who,expression,text,type));
 function ch01Scene(id,year,title,art,rows,extra={}){
   const card=CH01_HISTORY_CARDS.find(item=>item.id===extra.cardId);
