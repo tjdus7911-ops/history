@@ -1294,3 +1294,8 @@ migrateSave=function(raw){
   migrated.meta.speechAgreementVersion=1;
   return migrated;
 };
+
+// CH.03 uses the CH.01 opening's fixed player/right and partner/left stage.
+// Narration and cinematics retain their existing presentation. No story, asset,
+// choice, quiz or save IDs are changed; background artwork remains untouched.
+for(const scene of Object.values(STORIES).filter(s=>s.chapterId==='ch03'))scene.characterSlots='player-partner';
