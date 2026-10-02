@@ -29,7 +29,8 @@ for(const id of ['ch05-seohui-negotiation','ch06-gaegyeong-rebuild','ch07-gwiju-
 for(const id of ['seohui','yanggyu','ganggamchan','yoon_gwan','yi_jagyeom','myocheong','kim_busik','choe_chungheon','kim_yunhu','gongmin','sindon','choe_yeong','yi_seonggye','jeong_mongju'])assert.equal(api.CHARACTERS[id].renderTier,'MAIN',`${id} must be MAIN`);
 assert.equal(api.CHARACTERS.player.renderTier,'MAIN');assert.equal(api.CHARACTERS.doyun.renderTier,'MAIN');assert.equal(api.CHARACTERS.merchant.renderTier,'SUPPORTING');
 for(const id of ['yeon','seon','muyeong','harim','arin','junseo'])assert.equal(api.CHARACTERS[id].position,'left',`${id} must face the player from the NPC slot`);
-assert(api.CHARACTER_RENDER_PROFILES.portraits.doyun_935.scale>=1.75);assert(api.CHARACTER_RENDER_PROFILES.portraits.doyun_943.scale>=1.75);
+for(const id of ['doyun_935','doyun_935_neutral','doyun_935_smile','doyun_935_serious','doyun_935_worried']){assert.equal(api.CHARACTER_RENDER_PROFILES.portraits[id].scale,1.35);assert.equal(api.CHARACTER_RENDER_PROFILES.portraits[id].anchorY,32)}
+for(const id of ['doyun_943','doyun_943_neutral','doyun_943_smile','doyun_943_serious','doyun_943_worried']){assert.equal(api.CHARACTER_RENDER_PROFILES.portraits[id].scale,1.45);assert.equal(api.CHARACTER_RENDER_PROFILES.portraits[id].anchorY,36)}
 
 const coverage=['서희','강동 6주','양규','귀주대첩','별무반','이자겸','묘청','무신 정변','망이·망소이','팔만대장경','삼별초','공민왕','쌍성총관부','전민변정도감','위화도 회군','과전법','정몽주','1392년','의천','지눌','삼국사기','직지'];
 const corpus=lateIds.flatMap(id=>Object.values(api.STORIES).filter(scene=>scene.chapterId===id).flatMap(scene=>(scene.dialogues||[]).map(line=>line.dialogue))).join(' ');

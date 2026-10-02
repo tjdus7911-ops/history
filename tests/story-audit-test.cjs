@@ -6,14 +6,14 @@ const{SAVE_VERSION,CHAPTERS,STORIES,QUESTIONS,QUESTION_POOLS,QUESTION_SETS,SPLIT
 
 assert.equal(SAVE_VERSION,15);
 assert.equal(Object.keys(CHAPTERS).length,12);
-assert.deepEqual(Object.fromEntries(['ch01','ch02','ch03','ch04'].map(id=>[id,CHAPTERS[id].questionCount])),{ch01:2,ch02:6,ch03:3,ch04:3});
-assert.deepEqual(Object.fromEntries(['ch01','ch02','ch03','ch04'].map(id=>[id,CHAPTERS[id].reviewQuestionCount])),{ch01:2,ch02:10,ch03:5,ch04:3});
+assert.deepEqual(Object.fromEntries(['ch01','ch02','ch03','ch04'].map(id=>[id,CHAPTERS[id].questionCount])),{ch01:9,ch02:15,ch03:3,ch04:3});
+assert.deepEqual(Object.fromEntries(['ch01','ch02','ch03','ch04'].map(id=>[id,CHAPTERS[id].reviewQuestionCount])),{ch01:9,ch02:15,ch03:5,ch04:3});
 
 const official=QUESTIONS.filter(q=>q.isOfficial&&!q.retired),earlyOfficial=official.filter(q=>Number(q.chapterId.slice(2))<=4),lateOfficial=official.filter(q=>Number(q.chapterId.slice(2))>=5),main=QUESTIONS.filter(q=>!q.retired&&!q.reviewOnly&&['ch01','ch02','ch03','ch04'].includes(q.chapterId));
 assert.equal(earlyOfficial.length,20);assert.equal(lateOfficial.length,8);
-assert.equal(main.length,14);
-assert(main.every(q=>q.isOfficial&&q.sourceVerified&&q.sourceType==='official_exam'));
-assert.equal(QUESTIONS.filter(q=>!q.isOfficial&&!q.retired&&['ch01','ch02','ch03','ch04'].includes(q.chapterId)).length,0);
+assert.equal(main.length,30);
+assert(main.every(q=>q.isOfficial?q.sourceVerified&&q.sourceType==='official_exam':q.sourceType==='original_advanced_practice'&&q.examType==='[심화 연습] 한능검 심화 대비'));
+assert.equal(QUESTIONS.filter(q=>!q.isOfficial&&!q.retired&&['ch01','ch02','ch03','ch04'].includes(q.chapterId)).length,12);
 const latePractice=QUESTIONS.filter(q=>!q.isOfficial&&!q.retired&&Number(q.chapterId.slice(2))>=5);
 assert.equal(latePractice.length,103);assert(latePractice.every(q=>q.sourceType==='original_advanced_practice'&&q.examType.startsWith('[심화 연습]')));
 for(const q of official){
@@ -37,21 +37,22 @@ for(const[id,answer]of Object.entries(newAnswers))assert.equal(QUESTIONS.find(q=
 assert.equal(QUESTIONS.find(q=>q.questionId==='ch02-official-66-advanced-09').chapterId,'ch02','66회 9번은 궁예가 아니라 견훤 문제');
 
 const earlySets=Object.values(QUESTION_SETS).filter(set=>Number(set.chapterId.slice(2))<=4),ready=earlySets.filter(set=>set.status==='ready'),waiting=earlySets.filter(set=>set.status==='waiting_for_source');
-assert.deepEqual(ready.map(set=>set.questionSetId),['ch01-foundation','ch02-illyecheon','ch02-taejo-integration','ch03-gwangjong-synthesis','ch04-seongjong-system']);
-assert.equal(waiting.length,9);
+assert.deepEqual(ready.map(set=>set.questionSetId),['ch01-foundation','ch01-gongsan','ch01-gochang','ch02-gyeonhwon','ch02-illyecheon','ch02-taejo-integration','ch02-north-welfare','ch02-hunyo','ch03-gwangjong-synthesis','ch04-seongjong-system']);
+assert.equal(waiting.length,3);
 for(const set of earlySets){
-  const expectedRequired=set.questionSetId==='ch01-foundation'?2:3;
+  const expectedRequired=3,allIds=[...(set.officialQuestionIds||[]),...(set.practiceQuestionIds||[])];
   assert(QUESTION_POOLS[set.questionPoolId]);assert(STORIES[set.afterSceneId]);assert(STORIES[set.resumeStoryId]);assert.equal(set.requiredCount,expectedRequired);
-  assert.equal(set.verifiedCount,set.officialQuestionIds.length);assert.equal(set.missingQuestionCount,Math.max(0,expectedRequired-set.verifiedCount));
+  assert.equal(set.verifiedCount,set.officialQuestionIds.length);assert.equal(set.missingQuestionCount,set.status==='ready'?0:Math.max(0,expectedRequired-set.verifiedCount));
   assert(set.officialQuestionIds.every(id=>{const q=QUESTIONS.find(item=>item.questionId===id);return q?.isOfficial&&q.sourceVerified&&!q.retired}));
+  assert((set.practiceQuestionIds||[]).every(id=>{const q=QUESTIONS.find(item=>item.questionId===id);return q&&!q.isOfficial&&!q.retired&&q.sourceType==='original_advanced_practice'}));
   const scene=STORIES[set.afterSceneId];assert.equal(scene.questionSetId,set.questionSetId);assert.equal(scene.questionSetStatus,set.status);
-  if(set.status==='ready'){assert.equal(scene.linkedQuestionIds.length,expectedRequired);assert.equal(scene.questionSequenceMode,'queue')}
+  if(set.status==='ready'){assert.equal(allIds.length,expectedRequired);assert.equal(scene.linkedQuestionIds.length,expectedRequired);assert.equal(scene.questionSequenceMode,'queue')}
   else assert.equal(scene.linkedQuestionIds,undefined);
 }
 const lateSets=Object.values(QUESTION_SETS).filter(set=>Number(set.chapterId.slice(2))>=5);
 assert.equal(lateSets.length,37);for(const set of lateSets){assert.equal(set.status,'ready');assert.equal(set.officialQuestionIds.length+set.practiceQuestionIds.length,3);assert.equal(STORIES[set.afterSceneId].linkedQuestionIds.length,3)}
-assert.deepEqual(Array.from(SPLIT_STORY_QUESTION_IDS.ch01),['ch01-official-69-basic-10','ch01-official-79-advanced-09']);
-assert.deepEqual(Array.from(SPLIT_STORY_QUESTION_IDS.ch02),['ch01-official-76-advanced-10','ch01-official-74-advanced-10','ch01-official-70-advanced-10','ch02-official-67-basic-10','ch03-official-75-basic-12','ch02-official-65-advanced-10']);
+assert.deepEqual(Array.from(SPLIT_STORY_QUESTION_IDS.ch01),['ch01-official-69-basic-10','ch01-official-79-advanced-09','ch01-practice-foundation-sequence','ch01-practice-gongsan-source','ch01-practice-gongsan-result','ch01-practice-gongsan-after','ch01-practice-gochang-compare','ch01-practice-gochang-order','ch01-practice-gochang-context']);
+assert.deepEqual(Array.from(SPLIT_STORY_QUESTION_IDS.ch02),['ch01-official-73-basic-10','ch02-official-66-advanced-09','ch01-official-74-advanced-10','ch01-official-76-advanced-10','ch01-official-70-advanced-10','ch02-practice-illyecheon-situation','ch02-official-67-basic-10','ch03-official-75-basic-12','ch02-official-65-advanced-10','ch02-official-67-basic-11','ch02-practice-north-policy','ch02-practice-north-compare','ch02-official-69-advanced-10','ch02-practice-hunyo-source','ch02-practice-taejo-policy']);
 
 function walk(startId,state){let paths=0;const tests=new Set(),branches=new Set();
   function visit(id,copy,stack=[]){
@@ -66,7 +67,7 @@ function walk(startId,state){let paths=0;const tests=new Set(),branches=new Set(
   }
   visit(startId,state);return{paths,tests,branches};
 }
-const expected={ch01:{paths:4,tests:2},ch02:{paths:3,tests:6},ch03:{paths:324,tests:3},ch04:{paths:3,tests:3}};
+const expected={ch01:{paths:4,tests:9},ch02:{paths:3,tests:15},ch03:{paths:324,tests:3},ch04:{paths:3,tests:3}};
 for(const id of ['ch01','ch02','ch03','ch04']){
   const state=INITIAL();state.run.started=true;
   for(const previous of ['ch01','ch02','ch03']){if(previous===id)break;finishChapter(state);startChapter(state,CHAPTERS[previous].nextChapterId)}

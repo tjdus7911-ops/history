@@ -470,7 +470,7 @@ migrateSave=function(raw){
 };
 
 /* CH.01 re-edit: 2026 prologue -> 918 foundation -> 927 Gongsan -> 930 Gochang. */
-const CH01_REEDIT_VERSION=1;
+const CH01_REEDIT_VERSION=2;
 const CH01_VERIFIED_OFFICIAL_IDS=['ch01-official-69-basic-10','ch01-official-79-advanced-09','ch01-official-70-advanced-10'];
 const ch01Official=id=>QUESTIONS.find(question=>question.questionId===id);
 
@@ -664,6 +664,296 @@ HISTORY.relatedQuestions=[...CH01_VERIFIED_OFFICIAL_IDS];
 for(const key of Object.keys(CONCEPT_QUESTION_INDEX))delete CONCEPT_QUESTION_INDEX[key];
 for(const q of QUESTIONS.filter(question=>!question.retired))for(const conceptId of q.conceptIds||[])(CONCEPT_QUESTION_INDEX[conceptId]||(CONCEPT_QUESTION_INDEX[conceptId]=[])).push(q.questionId);
 
+/* These overrides run after every compatibility layer above. */
+function applyFinalEarlyPacing(){
+for(const [questionSetId,config] of Object.entries(EARLY_SET_CONFIG)){
+  const allIds=[...config.officialQuestionIds,...config.practiceQuestionIds],s=STORIES[config.afterSceneId];
+  for(const id of config.practiceQuestionIds){const q=QUESTIONS.find(item=>item.questionId===id);if(q)Object.assign(q,{chapterId:config.chapterId,resumeStoryId:config.resumeStoryId,retired:false,reviewOnly:false,sourceStatus:'self_authored_from_verified_history',questionAuditStatus:'SELF_AUTHORED_ADVANCED_PRACTICE'})}
+  Object.assign(s,{questionSetId,questionSetStatus:'ready',questionSetResumeStoryId:config.resumeStoryId,linkedQuestionIds:[...allIds],linkedOfficialQuestions:[...config.officialQuestionIds],linkedPracticeQuestionIds:[...config.practiceQuestionIds],questionSequenceMode:'queue'});
+}
+
+Object.assign(STORIES.ch01_trade_start,{dialogues:ch01Lines([
+  ['narrator','neutral','두 사람은 장터의 작은 짐부터 함께 옮겼다.','narration'],['doyun','serious','그 천은 두 냥 아래로 팔면 안 되오.'],['player','smile','한 냥 반이면 오늘 다 팔 수 있는데?'],
+  ['doyun','surprised','자네가 손님보다 더 무섭군.'],['narrator','neutral','실수하면 함께 장부를 고치고 같은 밥을 먹었다. 그렇게 아홉 해가 쌓였다.','narration']
+])});
+Object.assign(STORIES.ch01_gongsan,{dialogues:[
+  ch02NamedLine('doyun','worried','남쪽으로 간 사람들이 사흘째 돌아오지 않소.'),ch02NamedLine('narrator','neutral','잠시 뒤, 부상당한 상인이 빈 수레를 붙들고 돌아왔다.',null,'narration'),
+  ch02NamedLine('merchant_01','serious','남쪽으로 가지 마시오. 후백제군이 신라 왕경을 공격했고 경애왕도 죽었소.','부상당한 상인'),ch02NamedLine('player','surprised','왕까지……?'),
+  ch02NamedLine('merchant_01','serious','왕건 임금이 신라를 도우러 갔지만 공산에서 크게 패했소. 신숭겸 장군도 전사했소.','부상당한 상인'),ch02NamedLine('doyun','worried','우리와 함께 간 사람들은?'),
+  ch02NamedLine('merchant_01','worried','흩어졌소. 누가 돌아올지 모르오.','부상당한 상인'),ch02NamedLine('narrator','neutral','사람과 짐, 외상값이 한꺼번에 사라졌다.',null,'narration'),
+  ch02NamedLine('player','thinking','공산 전투와 신숭겸. 외운 이름이 여기서는 누군가의 죽음이었다.',null,'thought')
+]});
+Object.assign(STORIES.ch01_jump_930,{dialogues:ch01Lines([
+  ['narrator','neutral','공산의 손실 뒤, 둘은 돌아올 수 있는 짧은 길을 골라 수레를 다시 채웠다.','narration'],['doyun','serious','이번에는 물건을 한 수레에 전부 싣지 맙시다.'],
+  ['player','neutral','927년에 배웠네.'],['narrator','neutral','3년 뒤, 고창 쪽에서 다른 소식이 올라왔다.','narration']
+])});
+
+Object.assign(STORIES.ch01_jump_935,{nextStoryId:'ch01_gyeonhwon',dialogues:ch01Lines([
+  ['narrator','neutral','935년. 둘의 장사는 빌린 창고 한쪽을 채울 만큼 자랐다.','narration'],['player','smile','아직도 날 초보 취급하네.'],['doyun','smile','처음 섞은 자루를 기억하고 있으니 그렇지.']
+])});
+Object.assign(STORIES.ch02_news_935,{storyActive:false,nextStoryId:'ch01_gyeonhwon'});
+Object.assign(STORIES.ch01_gyeonhwon,{title:'적이 아군이 되다',nextStoryId:'ch01_jump_936',historyDiscovery:{people:['견훤','신검','경순왕 김부'],cards:['ch01-gyeonhwon','ch01-silla'],historicalEvents:['ch01-gyeonhwon','ch01-silla']},dialogues:[
+  ch02NamedLine('narrator','neutral','장부를 맞추던 중, 낯익은 상인이 숨을 몰아쉬며 뛰어들었다.',null,'narration'),
+  ch02NamedLine('merchant_01','surprised','견훤이 고려로 왔답니다!','상인'),ch02NamedLine('player','surprised','후백제를 세운 그 견훤?'),
+  ch02NamedLine('merchant_01','serious','아들 신검에게 밀려 금산사에 갇혔다가 탈출해 왕건 임금에게 귀순했답니다.','상인'),
+  ch02NamedLine('player','serious','자기가 만든 나라를 공격하게 생겼네.'),ch02NamedLine('doyun','neutral','인생이라는 게 참 모르는 일이오.'),ch02NamedLine('player','neutral','그건 인정.'),
+  ch02NamedLine('narrator','neutral','그해 늦가을에는 신라 출신 상인이 찾아왔다.',null,'narration'),
+  ch02NamedLine('merchant_01','serious','경순왕 김부께서 백성의 피해를 막으려 나라를 고려에 넘기기로 하셨소.','신라 출신 상인'),
+  ch02NamedLine('merchant_01','serious','내일부터 나는 어느 나라 사람이 되는 것이오?','신라 출신 상인'),ch02NamedLine('doyun','neutral','오늘 묵을 곳은 있소? 거래 이야기는 내일 합시다.'),
+  ch02NamedLine('player','thinking','935년, 견훤은 고려로 왔고 신라는 고려에 들어왔다.',null,'thought')
+]});
+Object.assign(STORIES.ch01_silla,{storyActive:false,nextStoryId:'ch01_jump_936'});
+Object.assign(STORIES.ch01_jump_936,{dialogues:ch01Lines([
+  ['narrator','neutral','936년, 후백제와의 마지막 전쟁이 다가왔다.','narration'],['doyun','serious','견훤은 고려 편이고, 후백제군은 신검이 이끌고 있소.'],['player','serious','이번에는 돌아올 사람까지 먼저 확인하자.']
+])});
+Object.assign(STORIES.ch01_war_supply,{dialogues:ch01Lines([
+  ['doyun','serious','한 수레에 전부 걸지 맙시다.'],['player','neutral','927년에 배운 거네.'],['player','serious','이번 장부에는 돌아올 사람도 적을게.']
+])});
+Object.assign(STORIES.ch01_war_news,{dialogues:ch01Lines([
+  ['merchant','serious','승리했다는 말도, 길이 막혔다는 말도 있소.'],['player','serious','직접 확인된 것부터 전하자.'],['player','thinking','도윤에게도 무사하다고 먼저 알려야지.','thought']
+])});
+Object.assign(STORIES.ch01_war_refugees,{dialogues:ch01Lines([
+  ['merchant','serious','집을 떠나오느라 짐도 놓고 왔소.'],['player','worried','물부터 마셔. 찾는 사람이 있으면 이름도 적어줘.'],['doyun','neutral','곡식 한 자루는 여기 두고 가겠소.'],['player','smile','오늘은 손님보다 사람이 먼저네.']
+])});
+Object.assign(STORIES.ch01_victory,{nextStoryId:'ch01_unity',dialogues:[
+  ch02NamedLine('merchant','surprised','일리천에서 왕건 임금이 신검의 군대를 이겼습니다!','전령'),ch02NamedLine('merchant','surprised','후백제가 무너지고 신검이 항복했습니다!','전령'),
+  ch02NamedLine('doyun','surprised','그러면…….'),ch02NamedLine('player','neutral','끝난 거야.')
+]});
+Object.assign(STORIES.ch01_unity,{nextStoryId:'ch01_sasimgwan',dialogues:[ch02NamedLine('narrator','neutral','936년 · 일리천 승리 · 후삼국 통일',null,'narration'),ch02NamedLine('player','thinking','전쟁은 끝났지만, 하나가 된 나라를 묶는 일은 이제 시작이었다.',null,'thought')]});
+Object.assign(STORIES.future_flow,{storyActive:false,nextStoryId:'ch01_sasimgwan'});
+Object.assign(STORIES.ch01_integration,{storyActive:false,nextStoryId:'ch01_sasimgwan'});
+Object.assign(STORIES.ch01_sasimgwan,{title:'호족을 묶는 두 방법',nextStoryId:'ch01_refugee_family',historyDiscovery:{people:['경순왕 김부'],cards:['ch01-integration','ch01-sasimgwan','ch01-giin'],historicalEvents:['ch01-integration','ch01-sasimgwan','ch01-giin']},dialogues:[
+  ch02NamedLine('player','smile','전쟁이 끝났으니 이제 좀 조용해지겠네.'),ch02NamedLine('doyun','serious','나라가 하나 됐다고 사람들의 힘까지 하나가 된 건 아니오.'),
+  ch02NamedLine('merchant','neutral','신라 왕이던 김부 대감이 경주의 일을 살핀다 하오.','경주 상인'),ch02NamedLine('merchant','serious','우리 고장 호족의 아들은 개경에 머물라는 명을 받았소.','지방 상인'),
+  ch02NamedLine('doyun','neutral','고장을 아는 사람은 쓰고, 호족의 움직임은 지켜보는군.'),ch02NamedLine('player','thinking','사심관은 연고지 감독, 기인은 호족 자제의 수도 체류. 두 방법으로 지방을 묶었다.',null,'thought')
+]});
+Object.assign(STORIES.ch01_refugee_family,{dialogues:[
+  ch02NamedLine('merchant','serious','발해에서 왔소. 나라가 거란에게 무너진 뒤 가족을 데리고 내려왔소.','발해계 손님'),ch02NamedLine('player','worried','머물 곳은 구했어요?'),
+  ch02NamedLine('doyun','neutral','나라 잃은 사람에게 어디 출신인지가 뭐 그리 중요하겠소.'),ch02NamedLine('merchant','neutral','왕께서 같은 뿌리의 사람처럼 받아들이셨소. 서경 쪽에도 자리가 있다더군.','발해계 손님'),
+  ch02NamedLine('doyun','neutral','서경으로 보낼 물건이 늘었소. 북쪽 길을 다시 살피는 사람도 많고.'),ch02NamedLine('player','thinking','발해 유민 수용, 고구려 계승, 서경과 북진이 한 방향으로 이어졌다.',null,'thought')
+]});
+Object.assign(STORIES.ch01_welfare,{dialogues:[
+  ch02NamedLine('merchant','serious','너무 거두면 씨앗곡식도 장에 팔 물건도 남지 않습니다.','장터 상인'),ch02NamedLine('doyun','serious','백성이 다시 농사짓고 장사할 만큼은 남겨야 나라에도 다음해가 있지.'),
+  ch02NamedLine('player','thinking','취민유도. 백성에게 거둘 때 형편을 살피는 원칙이었다.',null,'thought')
+]});
+Object.assign(STORIES.ch01_memory_943,{dialogues:ch01Lines([
+  ['doyun','smile','자네가 이상한 옷 입고 쓰러져 있던 곳, 기억나시오?'],['player','embarrassed','그걸 아직 기억해?'],['doyun','smile','평생 놀려먹을 거라 하지 않았소.'],
+  ['player','smile','스물다섯 해면 이제 그만할 때도 됐지.'],['doyun','neutral','나는 그만큼 늙었고.'],['player','smile','좀 많이.'],
+  ['narrator','neutral','웃던 도윤이 늙지 않은 내 얼굴을 잠시 바라보았다.','narration'],['doyun','worried','그런데 자네는…… 아니오.']
+])});
+Object.assign(STORIES.ch01_taejo_death,{dialogues:ch01Lines([
+  ['merchant','serious','태조 임금께서 돌아가셨소.'],['doyun','worried','우리가 장사를 시작할 때 나라를 여셨는데…….'],
+  ['player','thinking','918년부터 943년까지. 책의 한 줄이 여기서는 스물다섯 해였다.','thought'],['player','neutral','후대 왕들에게 남긴 가르침이 있대.']
+])});
+Object.assign(STORIES.ch01_hunyo,{nextStoryId:'ch01_guild_seed',dialogues:[
+  ch02NamedLine('doyun','serious','태조께서 다음 왕들에게 지켜야 할 일을 열 가지로 남기셨다 하오.'),ch02NamedLine('player','thinking','훈요 10조.',null,'thought'),
+  ch02NamedLine('doyun','neutral','나라의 의례와 서경을 중히 여기고, 백성을 함부로 다루지 말라는 당부라더군.'),ch02NamedLine('player','thinking','새 명령보다 나라가 잊지 말아야 할 방향을 남긴 말이구나.',null,'thought')
+]});
+Object.assign(STORIES.ch01_guild_seed,{dialogues:ch01Lines([
+  ['doyun','neutral','스물다섯 해 동안 참 많은 일이 있었군.'],['player','neutral','그러게.'],['doyun','serious','이제는 제대로 장사를 해보고 싶소.'],['player','surprised','가게를 차리게?'],
+  ['doyun','neutral','언젠가는.'],['player','smile','그럼 이름은 도윤상단.'],['doyun','surprised','상단은 무슨. 가게 하나도 없는데.'],['doyun','smile','촌스럽지만 기억은 해두겠소.']
+])});
+Object.assign(STORIES.ch01_farewell,{dialogues:[
+  ch02NamedLine('narrator','neutral','CH.02 · 하나가 된 나라',null,'narration'),ch02NamedLine('narrator','neutral','935 귀순과 항복 → 936 후삼국 통일',null,'narration'),
+  ch02NamedLine('narrator','neutral','호족 통합 · 발해 유민과 북진 · 훈요 10조',null,'narration'),ch02NamedLine('narrator','neutral','모두가 나이를 먹는 동안, 나는 여전히 같은 얼굴이었다.',null,'narration')
+]});
+for(const id of ['ch01_trade_start','ch01_gongsan','ch01_conflict','ch01_reconcile','ch01_jump_930','ch01_belonging','ch01_jump_935','ch01_gyeonhwon','ch01_jump_936','ch01_war_choice','ch01_war_supply','ch01_war_news','ch01_war_refugees','ch01_victory','ch01_sasimgwan','ch01_refugee_family','ch01_welfare','ch01_memory_943','ch01_taejo_death','ch01_hunyo','ch01_guild_seed'])refreshCh02Stage(id);
+for(const key of Object.keys(CONCEPT_QUESTION_INDEX))delete CONCEPT_QUESTION_INDEX[key];
+for(const q of QUESTIONS.filter(question=>!question.retired))for(const conceptId of q.conceptIds||[])(CONCEPT_QUESTION_INDEX[conceptId]||(CONCEPT_QUESTION_INDEX[conceptId]=[])).push(q.questionId);
+}
+
+function ch02NamedLine(who,expression,text,name=null,type=null){return dialogueLine(who,expression,text,type,name)}
+function refreshCh02Stage(sceneId){const s=STORIES[sceneId],spoken=(s.dialogues||[]).filter(line=>['npc','player'].includes(line.speakerType));s.visibleCharacters=[...new Set(spoken.map(line=>line.characterId).filter(id=>CHARACTERS[id]?.show!==false&&CHARACTERS[id]?.presentation!=='ambient'))];s.sceneType=spoken.length?'dialogue':s.dialogues?.some(line=>line.speakerType==='thought')?'thought':'narration';s.backgroundImage=ASSETS[s.illustrationId]?.src||null}
+/* CH.01–02 pacing pass: three advanced questions after each lived-history block. */
+const EARLY_PRACTICE_SOURCE='국사편찬위원회 우리역사넷의 사실관계를 바탕으로 새로 쓴 한능검 심화 연습 문항';
+const earlyPracticeQuestion=data=>question({
+  isOfficial:false,sourceType:'original_advanced_practice',sourceVerified:false,sourceStatus:'self_authored_from_verified_history',questionAuditStatus:'SELF_AUTHORED_ADVANCED_PRACTICE',
+  examType:'[심화 연습] 한능검 심화 대비',examName:'한능검 심화 대비',examRound:null,examYear:null,questionNumber:null,source:EARLY_PRACTICE_SOURCE,sourceReference:'https://contents.history.go.kr/',
+  requiresOriginalImage:false,assetStatus:'not_required_text_only',reviewOnly:false,retired:false,rewardKnowledge:3,wrongFeedback:'……아니다. 방금 지나온 장면을 다시 떠올려 보자.',...data
+});
+const EARLY_ADVANCED_PRACTICE_QUESTIONS=[
+  earlyPracticeQuestion({questionId:'ch01-practice-foundation-sequence',chapterId:'ch01',year:918,relatedSceneId:'foundation',relatedIllustrationId:'title-foundation',relatedHistoricalEventId:'goryeo-foundation-918',questionType:'사건 순서형',formatLabel:'후삼국 성립 순서',difficulty:'상',
+    passage:'(가) 견훤이 완산주를 도읍으로 후백제를 세웠다.\n(나) 궁예가 국호를 태봉으로 바꾸고 광평성을 두었다.\n(다) 신하들이 궁예를 몰아내고 왕건을 왕으로 추대하였다.',question:'(가)~(다)를 일어난 순서대로 바르게 나열한 것은?',choices:['(가) → (나) → (다)','(나) → (가) → (다)','(나) → (다) → (가)','(다) → (가) → (나)','(다) → (나) → (가)'],answer:0,
+    explanation:'후백제 건국(900) → 궁예의 태봉 국호 사용(911) → 왕건의 고려 건국(918) 순입니다.',choiceExplanations:['900 → 911 → 918의 순서입니다.','후백제 건국이 태봉 국호 사용보다 앞섭니다.','왕건의 추대는 두 사건보다 뒤입니다.','고려 건국이 가장 늦습니다.','고려 건국이 가장 늦습니다.'],examKeywords:['견훤','궁예','태봉','왕건','918 고려 건국'],conceptIds:['later-three-kingdoms-chronology','gungye','goryeo-foundation-918'],gameMemory:'장터에서 궁예가 물러나고 왕건이 새 왕이 되었다는 말을 들었습니다. 그 장면은 후백제와 태봉이 먼저 등장한 뒤인 918년입니다.'}),
+  earlyPracticeQuestion({questionId:'ch01-practice-gongsan-source',chapterId:'ch01',year:927,relatedSceneId:'ch01_gongsan',relatedIllustrationId:'thief-aftermath',relatedHistoricalEventId:'ch01-gongsan',questionType:'사료 해석형',formatLabel:'전투 식별',difficulty:'중상',
+    passage:'후백제군이 신라 왕경을 공격하자 고려의 왕이 구원군을 이끌고 나섰다. 고려군은 크게 패하였고, 왕을 구한 장수가 전사하였다.',question:'자료의 전투에 대한 설명으로 옳은 것은?',choices:['왕건이 신검의 항복을 받아냈다.','신숭겸이 전사하였다.','고려가 고창의 지역 세력과 함께 승리하였다.','경순왕 김부가 나라를 고려에 넘겼다.','강감찬이 거란군을 물리쳤다.'],answer:1,
+    explanation:'927년 공산 전투에서 왕건의 고려군이 패하고 신숭겸이 전사했습니다.',choiceExplanations:['936년 일리천 전투 뒤의 일입니다.','공산 전투의 결과입니다.','930년 고창 전투의 내용입니다.','935년 신라의 항복입니다.','1019년 귀주대첩의 내용입니다.'],examKeywords:['927','공산 전투','왕건 패배','신숭겸'],conceptIds:['gongsan-battle','shin-sung-gyeom'],gameMemory:'부상당한 상인이 빈 수레를 끌고 돌아와 공산의 패배와 신숭겸의 죽음을 전했습니다.'}),
+  earlyPracticeQuestion({questionId:'ch01-practice-gongsan-result',chapterId:'ch01',year:927,relatedSceneId:'ch01_gongsan',relatedIllustrationId:'thief-aftermath',relatedHistoricalEventId:'ch01-gongsan',questionType:'인물·사건 연결형',formatLabel:'인물과 사건 연결',difficulty:'상',
+    passage:'(가)는 신라를 돕기 위해 출전한 왕건을 구하고 전사하였다. 이 패전으로 고려와 후백제의 대립은 끝나지 않았다.',question:'(가)와 이후의 사실을 바르게 연결한 것은?',choices:['신숭겸 — 고려는 930년 고창에서 후백제군을 물리쳤다.','신검 — 고려는 927년 공산에서 승리하였다.','경순왕 김부 — 후백제가 곧바로 멸망하였다.','견훤 — 신라가 927년에 고려에 항복하였다.','궁예 — 왕건이 927년에 고려를 건국하였다.'],answer:0,
+    explanation:'공산에서 전사한 장수는 신숭겸이며, 고려는 3년 뒤 고창 전투에서 후백제군을 물리쳤습니다.',choiceExplanations:['인물과 전후 흐름이 모두 맞습니다.','신검은 후백제의 마지막 왕이며 공산에서는 고려가 패했습니다.','김부의 항복은 935년입니다.','신라의 항복은 935년입니다.','고려 건국은 918년입니다.'],examKeywords:['신숭겸','공산 패배','고창 승리'],conceptIds:['shin-sung-gyeom','gongsan-battle','gochang-battle'],gameMemory:'사람과 외상값을 잃은 927년 뒤에도 도윤과 다시 장부를 열었고, 다음 장면은 930년으로 이어졌습니다.'}),
+  earlyPracticeQuestion({questionId:'ch01-practice-gongsan-after',chapterId:'ch01',year:927,relatedSceneId:'ch01_gongsan',relatedIllustrationId:'route-caravan',relatedHistoricalEventId:'ch01-gongsan',questionType:'사건 이후형',formatLabel:'전후 관계',difficulty:'중상',
+    passage:'왕건이 신라를 돕다가 공산에서 후백제군에게 패하였다.',question:'이 사건 이후, 930년에 있었던 사실로 옳은 것은?',choices:['궁예가 후고구려를 세웠다.','견훤이 후백제를 세웠다.','왕건이 고려를 건국하였다.','왕건이 고창에서 후백제군을 물리쳤다.','신검이 일리천에서 항복하였다.'],answer:3,
+    explanation:'공산 전투는 927년, 왕건이 후백제군을 물리친 고창 전투는 930년입니다.',choiceExplanations:['901년의 일입니다.','900년의 일입니다.','918년의 일입니다.','공산 패전 3년 뒤의 일입니다.','936년의 일입니다.'],examKeywords:['927 공산','930 고창','사건 이후'],conceptIds:['gongsan-battle','gochang-battle','later-three-kingdoms-chronology'],gameMemory:'공산의 손실 뒤 두 사람은 수레를 다시 채웠고, 930년 고창에서 다른 소식을 기다렸습니다.'}),
+  earlyPracticeQuestion({questionId:'ch01-practice-gochang-compare',chapterId:'ch01',year:930,relatedSceneId:'ch01_gochang',relatedIllustrationId:'ch01-gochang-open-road',relatedHistoricalEventId:'ch01-gochang',questionType:'자료 비교형',formatLabel:'공산·고창 비교',difficulty:'상',
+    passage:'(가) 빈 수레를 끌고 돌아온 상인이 왕건의 패전과 신숭겸의 죽음을 전하였다.\n(나) 막혔던 남쪽 길로 수레가 돌아오고 왕건의 승전 소식이 퍼졌다.',question:'(가), (나)에 대한 설명으로 옳은 것은?',choices:['(가)는 고창, (나)는 공산 전투이다.','두 전투 모두 고려가 패하였다.','(가)는 927년, (나)는 930년에 일어났다.','(나) 뒤 곧바로 신라가 고려에 항복하였다.','두 전투 모두 신검이 후백제군을 지휘하였다.'],answer:2,
+    explanation:'(가)는 927년 공산 전투의 패전, (나)는 930년 고창 전투의 승전입니다.',choiceExplanations:['두 전투를 거꾸로 연결했습니다.','고창에서는 고려가 승리했습니다.','연도와 결과가 모두 맞습니다.','신라의 항복은 935년입니다.','두 전투를 모두 신검이 지휘했다고 볼 수 없습니다.'],examKeywords:['공산 패배','고창 승리','927','930'],conceptIds:['gongsan-battle','gochang-battle'],gameMemory:'같은 남쪽 길이 공산 뒤에는 빈 수레로, 고창 뒤에는 물건을 실은 수레로 보였습니다.'}),
+  earlyPracticeQuestion({questionId:'ch01-practice-gochang-order',chapterId:'ch01',year:930,relatedSceneId:'ch01_gochang',relatedIllustrationId:'ch01-gochang-open-road',relatedHistoricalEventId:'ch01-gochang',questionType:'연표 배열형',formatLabel:'초기 흐름 배열',difficulty:'중상',
+    passage:'ㄱ. 왕건이 고려를 건국하였다.\nㄴ. 왕건이 공산에서 패하였다.\nㄷ. 왕건이 고창에서 승리하였다.',question:'사건을 일어난 순서대로 바르게 나열한 것은?',choices:['ㄱ → ㄴ → ㄷ','ㄱ → ㄷ → ㄴ','ㄴ → ㄱ → ㄷ','ㄴ → ㄷ → ㄱ','ㄷ → ㄴ → ㄱ'],answer:0,
+    explanation:'고려 건국(918) → 공산 전투(927) → 고창 전투(930) 순입니다.',choiceExplanations:['918 → 927 → 930의 순서입니다.','공산 전투가 고창 전투보다 먼저입니다.','고려 건국이 공산 전투보다 먼저입니다.','고려 건국이 가장 먼저입니다.','고려 건국이 가장 먼저입니다.'],examKeywords:['918 고려 건국','927 공산','930 고창'],conceptIds:['goryeo-foundation-918','gongsan-battle','gochang-battle'],gameMemory:'도윤과 처음 만난 918년, 거래를 잃은 927년, 길이 다시 열린 930년을 차례로 살았습니다.'}),
+  earlyPracticeQuestion({questionId:'ch01-practice-gochang-context',chapterId:'ch01',year:930,relatedSceneId:'ch01_gochang',relatedIllustrationId:'ch01-gochang-open-road',relatedHistoricalEventId:'ch01-gochang',questionType:'시대 상황형',formatLabel:'같은 시기 상황',difficulty:'상',
+    passage:'930년 고창에서 왕건의 고려군이 후백제군을 물리치자 고려 쪽으로 돌아서는 지역 세력이 늘었다.',question:'이 시기의 상황으로 옳은 것은?',choices:['신라와 후백제가 모두 이미 멸망하였다.','고려·후백제·신라가 함께 존재하였다.','광종이 노비안검법을 시행하였다.','성종이 12목에 지방관을 파견하였다.','거란이 강동 6주를 요구하였다.'],answer:1,
+    explanation:'930년에는 고려, 후백제, 신라가 여전히 함께 존재했습니다. 신라는 935년, 후백제는 936년에 고려에 들어갑니다.',choiceExplanations:['두 나라의 멸망은 뒤의 일입니다.','후삼국의 대립이 이어지던 시기입니다.','956년의 정책입니다.','성종 때의 정책입니다.','거란과의 담판은 993년입니다.'],examKeywords:['930 고창','후삼국','고려·후백제·신라'],conceptIds:['gochang-battle','later-three-kingdoms-chronology'],gameMemory:'고창에서 이겼지만 도윤은 전쟁이 끝났다고 말하지 않았습니다. 아직 신라와 후백제가 남아 있었습니다.'}),
+  earlyPracticeQuestion({questionId:'ch02-practice-illyecheon-situation',chapterId:'ch02',year:936,relatedSceneId:'ch01_victory',relatedIllustrationId:'future-flow',relatedHistoricalEventId:'ch01-illyecheon',questionType:'상황 해석형',formatLabel:'전투 진영 판단',difficulty:'상',
+    passage:'한때 후백제를 세운 인물이 고려군과 함께했고, 후백제에서는 그의 아들이 군대를 이끌었다. 왕건은 이 군대를 물리쳐 전쟁을 끝냈다.',question:'자료의 상황에 대한 설명으로 옳은 것은?',choices:['견훤이 신검을 도와 고려와 싸웠다.','경순왕 김부가 후백제 왕이 되었다.','왕건이 일리천에서 신검의 군대를 물리쳤다.','궁예가 후백제를 멸망시켰다.','신숭겸이 이 전투에서 전사하였다.'],answer:2,
+    explanation:'936년 일리천 전투에서 왕건이 신검의 후백제군을 물리쳐 후삼국 통일을 완성했습니다.',choiceExplanations:['견훤은 고려 편에 섰습니다.','김부는 신라의 마지막 왕입니다.','전투와 결과가 모두 맞습니다.','궁예는 918년 이전에 축출되었습니다.','신숭겸은 927년 공산에서 전사했습니다.'],examKeywords:['견훤','신검','왕건','일리천','후삼국 통일'],conceptIds:['gyeon-hwon','singgeom','illyecheon'],gameMemory:'도윤과 물자를 준비한 뒤, 전령에게 왕건이 신검의 군대를 이겼다는 소식을 들었습니다.'}),
+  earlyPracticeQuestion({questionId:'ch02-practice-north-policy',chapterId:'ch02',year:938,relatedSceneId:'ch01_refugee_family',relatedIllustrationId:'ch02-trade-room-935',relatedHistoricalEventId:'ch01-north',questionType:'정책 종합형',formatLabel:'북방 정책 연결',difficulty:'상',
+    passage:'나라를 잃은 발해 사람들이 고려에 받아들여졌다. 고려는 옛 고구려의 중심지인 평양을 서경으로 삼아 중시하였다.',question:'자료에서 공통으로 드러나는 태조의 통치 방향은?',choices:['신라 계승 의식과 남진 정책','고구려 계승 의식과 북진 정책','호족 배제와 군현제 폐지','송과의 단교와 거란 우대','과거제를 통한 신진 관료 등용'],answer:1,
+    explanation:'발해 유민 수용, 고구려 계승 의식, 서경 중시는 태조의 북진 정책과 연결됩니다.',choiceExplanations:['태조는 고구려 계승을 내세웠습니다.','자료의 공통 방향입니다.','태조는 호족을 포섭하고 견제했습니다.','자료와 반대되는 설명입니다.','과거제는 광종 때 시행되었습니다.'],examKeywords:['발해 유민','고구려 계승','서경','북진 정책'],conceptIds:['balhae-refugees','northern-expansion','seogyeong'],gameMemory:'도윤은 발해계 손님을 받아들이고 서경으로 보낼 짐이 늘었다고 말했습니다.'}),
+  earlyPracticeQuestion({questionId:'ch02-practice-north-compare',chapterId:'ch02',year:938,relatedSceneId:'ch01_refugee_family',relatedIllustrationId:'ch02-trade-room-935',relatedHistoricalEventId:'ch01-north',questionType:'왕별 정책 비교형',formatLabel:'태조 정책 구별',difficulty:'상',
+    passage:'(가) 발해 유민을 받아들이고 서경을 중시하였다.\n(나) 억울하게 노비가 된 사람을 조사해 양인으로 풀어 주었다.\n(다) 12목에 지방관을 파견하였다.',question:'왕과 정책의 연결로 옳은 것은?',choices:['(가) 태조 — (나) 광종 — (다) 성종','(가) 광종 — (나) 태조 — (다) 성종','(가) 태조 — (나) 성종 — (다) 광종','(가) 성종 — (나) 광종 — (다) 태조','(가) 광종 — (나) 성종 — (다) 태조'],answer:0,
+    explanation:'북방 정책은 태조, 노비안검법은 광종, 12목 지방관 파견은 성종의 정책입니다.',choiceExplanations:['세 왕의 정책을 바르게 연결했습니다.','(가)와 (나)가 바뀌었습니다.','(나)와 (다)가 바뀌었습니다.','(가)와 (다)가 바뀌었습니다.','세 정책의 왕이 모두 다릅니다.'],examKeywords:['태조','광종','성종','발해 유민','노비안검법','12목'],conceptIds:['taejo','gwangjong','seongjong','northern-expansion'],gameMemory:'북쪽에서 온 가족과 서경 이야기는 태조의 장면입니다. 뒤에 이어질 광종·성종의 정책과 구분합니다.'}),
+  earlyPracticeQuestion({questionId:'ch02-practice-hunyo-source',chapterId:'ch02',year:943,relatedSceneId:'ch01_hunyo',relatedIllustrationId:'ch02-trade-room-935',relatedHistoricalEventId:'ch01-hunyo',questionType:'사료 해석형',formatLabel:'유훈 식별',difficulty:'상',
+    passage:'서경은 우리나라 지맥의 근본이니 중시하라. 연등회와 팔관회는 나라의 전통과 관계되니 함부로 줄이지 말라.',question:'자료에 대한 설명으로 옳은 것은?',choices:['최승로가 성종에게 올린 시무 28조이다.','태조가 후대 왕에게 남긴 훈요 10조이다.','광종이 과거제 시행을 명한 글이다.','묘청이 서경 천도를 주장한 격문이다.','공민왕이 반원 정책을 선포한 글이다.'],answer:1,
+    explanation:'서경 중시와 연등회·팔관회에 대한 당부는 태조가 남긴 훈요 10조의 핵심 단서입니다.',choiceExplanations:['시무 28조는 최승로의 건의입니다.','왕과 문서를 바르게 연결했습니다.','과거제는 쌍기의 건의로 시행되었습니다.','묘청의 주장은 12세기입니다.','공민왕은 고려 후기의 왕입니다.'],examKeywords:['태조','훈요 10조','서경','연등회','팔관회'],conceptIds:['taejo','hunyo-ten-injunctions'],gameMemory:'태조의 죽음 뒤 도윤에게 다음 왕들이 지켜야 할 열 가지 당부를 들었습니다.'}),
+  earlyPracticeQuestion({questionId:'ch02-practice-taejo-policy',chapterId:'ch02',year:943,relatedSceneId:'ch01_hunyo',relatedIllustrationId:'ch02-trade-room-935',relatedHistoricalEventId:'ch01-hunyo',questionType:'정책 종합형',formatLabel:'태조 정책 종합',difficulty:'상',
+    passage:'후삼국을 통일한 왕은 지방 세력을 포섭하고 견제했으며, 발해 유민을 받아들이고 후대 왕에게 통치 원칙을 남겼다.',question:'이 왕의 정책으로 옳지 않은 것은?',choices:['호족과 혼인 관계를 맺었다.','사심관과 기인 제도를 활용하였다.','서경을 중시하고 북진을 추진하였다.','훈요 10조를 남겼다.','쌍기의 건의를 받아 과거제를 시행하였다.'],answer:4,
+    explanation:'과거제는 광종이 쌍기의 건의를 받아 958년에 시행했습니다. 나머지는 태조의 정책과 유훈입니다.',choiceExplanations:['태조의 호족 포섭 정책입니다.','태조의 지방 세력 통제 방식입니다.','태조의 북방 정책입니다.','태조의 유훈입니다.','광종의 정책이므로 옳지 않습니다.'],examKeywords:['태조','혼인 정책','사심관·기인','북진','훈요 10조','과거제'],conceptIds:['taejo','hunyo-ten-injunctions','sasimgwan','northern-expansion'],gameMemory:'김부와 호족의 자제, 발해계 손님과 서경, 태조의 죽음과 훈요 10조를 한 흐름으로 겪었습니다.'})
+];
+QUESTIONS.push(...EARLY_ADVANCED_PRACTICE_QUESTIONS);
+
+const EARLY_SET_CONFIG={
+  'ch01-foundation':{chapterId:'ch01',afterSceneId:'foundation',resumeStoryId:'ch01_trade_start',questionPoolId:'pool-ch01-foundation',conceptIds:['gungye','wang-geon','goryeo-foundation-918'],officialQuestionIds:['ch01-official-69-basic-10','ch01-official-79-advanced-09'],practiceQuestionIds:['ch01-practice-foundation-sequence']},
+  'ch01-gongsan':{chapterId:'ch01',afterSceneId:'ch01_gongsan',resumeStoryId:'ch01_conflict',questionPoolId:'pool-ch01-gongsan',conceptIds:['gongsan-battle','shin-sung-gyeom'],officialQuestionIds:[],practiceQuestionIds:['ch01-practice-gongsan-source','ch01-practice-gongsan-result','ch01-practice-gongsan-after']},
+  'ch01-gochang':{chapterId:'ch01',afterSceneId:'ch01_gochang',resumeStoryId:'ch01_belonging',questionPoolId:'pool-ch01-gochang',conceptIds:['gochang-battle','gongsan-battle'],officialQuestionIds:[],practiceQuestionIds:['ch01-practice-gochang-compare','ch01-practice-gochang-order','ch01-practice-gochang-context']},
+  'ch02-gyeonhwon':{chapterId:'ch02',afterSceneId:'ch01_gyeonhwon',resumeStoryId:'ch01_jump_936',questionPoolId:'pool-ch02-gyeonhwon',conceptIds:['gyeon-hwon','geumsansa','singgeom','kim-bu','silla-surrender'],officialQuestionIds:['ch01-official-73-basic-10','ch02-official-66-advanced-09','ch01-official-74-advanced-10'],practiceQuestionIds:[]},
+  'ch02-illyecheon':{chapterId:'ch02',afterSceneId:'ch01_victory',resumeStoryId:'ch01_unity',questionPoolId:'pool-ch02-illyecheon',conceptIds:['illyecheon','singgeom','later-three-kingdoms-chronology'],officialQuestionIds:['ch01-official-76-advanced-10','ch01-official-70-advanced-10'],practiceQuestionIds:['ch02-practice-illyecheon-situation']},
+  'ch02-taejo-integration':{chapterId:'ch02',afterSceneId:'ch01_sasimgwan',resumeStoryId:'ch01_refugee_family',questionPoolId:'pool-ch02-integration',conceptIds:['hojok','sasimgwan','giin'],officialQuestionIds:['ch02-official-67-basic-10','ch03-official-75-basic-12','ch02-official-65-advanced-10'],practiceQuestionIds:[]},
+  'ch02-north-welfare':{chapterId:'ch02',afterSceneId:'ch01_refugee_family',resumeStoryId:'ch01_welfare',questionPoolId:'pool-ch02-north-welfare',conceptIds:['balhae-refugees','northern-expansion','seogyeong'],officialQuestionIds:['ch02-official-67-basic-11'],practiceQuestionIds:['ch02-practice-north-policy','ch02-practice-north-compare']},
+  'ch02-hunyo':{chapterId:'ch02',afterSceneId:'ch01_hunyo',resumeStoryId:'ch01_guild_seed',questionPoolId:'pool-ch02-hunyo',conceptIds:['hunyo-ten-injunctions','taejo'],officialQuestionIds:['ch02-official-69-advanced-10'],practiceQuestionIds:['ch02-practice-hunyo-source','ch02-practice-taejo-policy']}
+};
+const oldEarlySetIds=new Set([...Object.keys(EARLY_SET_CONFIG),'ch02-silla-surrender']);
+for(const s of Object.values(STORIES))if(oldEarlySetIds.has(s.questionSetId)){
+  delete s.questionSetId;delete s.questionSetStatus;delete s.questionSetResumeStoryId;delete s.linkedQuestionIds;delete s.linkedOfficialQuestions;delete s.linkedPracticeQuestionIds;delete s.questionSequenceMode;delete s.officialQuestionSlot;delete s.practiceQuestionSlot;
+}
+delete QUESTION_SETS['ch02-silla-surrender'];
+for(const [questionSetId,config] of Object.entries(EARLY_SET_CONFIG)){
+  const allIds=[...config.officialQuestionIds,...config.practiceQuestionIds],set=QUESTION_SETS[questionSetId]||(QUESTION_SETS[questionSetId]={});
+  for(const id of config.practiceQuestionIds){const q=QUESTIONS.find(item=>item.questionId===id);if(q)q.resumeStoryId=config.resumeStoryId}
+  Object.assign(set,{questionSetId,...config,requiredCount:3,verifiedCount:config.officialQuestionIds.length,practiceCount:config.practiceQuestionIds.length,missingQuestionCount:0,status:'ready',sourceType:config.practiceQuestionIds.length?(config.officialQuestionIds.length?'mixed_official_and_practice':'original_advanced_practice'):'official_exam'});
+  QUESTION_POOLS[config.questionPoolId]={...(QUESTION_POOLS[config.questionPoolId]||{}),questionPoolId:config.questionPoolId,chapterId:config.chapterId,conceptIds:[...config.conceptIds],questionIds:[...allIds]};
+  const s=STORIES[config.afterSceneId];
+  Object.assign(s,{questionSetId,questionSetStatus:'ready',questionSetResumeStoryId:config.resumeStoryId,linkedQuestionIds:[...allIds],linkedOfficialQuestions:[...config.officialQuestionIds],linkedPracticeQuestionIds:[...config.practiceQuestionIds],questionSequenceMode:'queue',officialQuestionSlot:{conceptIds:[...config.conceptIds],linkedOfficialQuestions:[...config.officialQuestionIds],requiredCount:config.officialQuestionIds.length,verifiedCount:config.officialQuestionIds.length,status:'ready'},practiceQuestionSlot:{conceptIds:[...config.conceptIds],linkedPracticeQuestions:[...config.practiceQuestionIds],requiredCount:config.practiceQuestionIds.length,practiceCount:config.practiceQuestionIds.length,status:'ready'}});
+}
+
+MAIN_QUESTION_IDS.ch01=Object.values(EARLY_SET_CONFIG).filter(set=>set.chapterId==='ch01').flatMap(set=>[...set.officialQuestionIds,...set.practiceQuestionIds]);
+MAIN_QUESTION_IDS.ch02=Object.values(EARLY_SET_CONFIG).filter(set=>set.chapterId==='ch02').flatMap(set=>[...set.officialQuestionIds,...set.practiceQuestionIds]);
+REVIEW_QUESTION_IDS.ch01=[...MAIN_QUESTION_IDS.ch01];
+REVIEW_QUESTION_IDS.ch02=[...MAIN_QUESTION_IDS.ch02];
+for(const chapterId of ['ch01','ch02']){
+  SPLIT_STORY_QUESTION_IDS[chapterId]=[...MAIN_QUESTION_IDS[chapterId]];
+  SPLIT_REVIEW_IDS[chapterId]=[...REVIEW_QUESTION_IDS[chapterId]];
+  Object.assign(CHAPTERS[chapterId],{questionCount:MAIN_QUESTION_IDS[chapterId].length,reviewQuestionCount:REVIEW_QUESTION_IDS[chapterId].length});
+  for(const id of MAIN_QUESTION_IDS[chapterId]){const q=QUESTIONS.find(item=>item.questionId===id);Object.assign(q,{chapterId,reviewOnly:false,retired:false})}
+}
+HISTORY.relatedQuestions=[...MAIN_QUESTION_IDS.ch01,...MAIN_QUESTION_IDS.ch02];
+
+Object.assign(STORIES.outfit_gift,{title:'갈 곳부터 정합시다',nextStoryId:'rumor',outfitChange:{dialogueIndex:7,to:'goryeo_commoner',source:'doyun'},dialogues:ch01Lines([
+  ['doyun','suspicious','그런데 그 이상한 옷은 대체 뭐요?'],['player','embarrassed','이게 왜 이상해?'],['doyun','surprised','왜 그런 눈으로 보시오?'],
+  ['doyun','neutral','갈 곳은 있소?'],['player','worried','……없어.'],['doyun','serious','그럼 이것부터 입으시오. 계속 그 꼴로 다니면 자네만 보일 거요.'],
+  ['narrator','neutral','도윤이 빌려준 낡은 평민복으로 갈아입고 현대 옷은 접어 품에 넣었다.','narration'],['doyun','neutral','갈 곳도 없다면서. 그럼 밥값이라도 하시오.'],
+  ['player','neutral','나 장사해본 적 없는데.'],['doyun','smile','나도 제대로 해본 적 없소.']
+])});
+Object.assign(STORIES.foundation,{dialogues:ch01Lines([
+  ['player','thinking','왕건. 고려. 잠깐, 918년.','thought'],['narrator','neutral','918년 · 왕건, 고려 건국','narration'],['player','thinking','방금 들은 장면부터 기억해 보자.','thought']
+])});
+Object.assign(STORIES.ch01_trade_start,{dialogues:ch01Lines([
+  ['narrator','neutral','두 사람은 장터의 작은 짐부터 함께 옮겼다.','narration'],['doyun','serious','그 천은 두 냥 아래로 팔면 안 되오.'],['player','smile','한 냥 반이면 오늘 다 팔 수 있는데?'],
+  ['doyun','surprised','자네가 손님보다 더 무섭군.'],['narrator','neutral','실수하면 함께 장부를 고치고 같은 밥을 먹었다. 그렇게 아홉 해가 쌓였다.','narration']
+])});
+Object.assign(STORIES.ch01_gongsan,{dialogues:ch01Lines([
+  ['doyun','worried','남쪽으로 간 사람들이 사흘째 돌아오지 않소.'],['narrator','neutral','잠시 뒤, 부상당한 상인이 빈 수레를 붙들고 돌아왔다.','narration'],
+  ['merchant_01','serious','남쪽으로 가지 마시오. 후백제군이 신라 왕경을 공격했고 경애왕도 죽었소.'],['player','surprised','왕까지……?'],
+  ['merchant_01','serious','왕건 임금이 신라를 도우러 갔지만 공산에서 크게 패했소. 신숭겸 장군도 전사했소.'],['doyun','worried','우리와 함께 간 사람들은?'],
+  ['merchant_01','worried','흩어졌소. 누가 돌아올지 모르오.'],['narrator','neutral','사람과 짐, 외상값이 한꺼번에 사라졌다.','narration'],
+  ['player','thinking','공산 전투와 신숭겸. 외운 이름이 여기서는 누군가의 죽음이었다.','thought']
+])});
+Object.assign(STORIES.ch01_jump_930,{dialogues:ch01Lines([
+  ['narrator','neutral','공산의 손실 뒤, 둘은 먼 길 하나보다 돌아올 수 있는 짧은 길을 골라 수레를 다시 채웠다.','narration'],['doyun','serious','이번에는 물건을 한 수레에 전부 싣지 맙시다.'],
+  ['player','neutral','927년에 배웠네.'],['narrator','neutral','3년 뒤, 고창 쪽에서 다른 소식이 올라왔다.','narration']
+])});
+Object.assign(STORIES.ch01_gochang,{dialogues:ch01Lines([
+  ['narrator','neutral','막혔던 남쪽 길로 수레가 돌아왔다.','narration'],['merchant','surprised','고창에서 왕건 임금의 군대가 후백제군을 크게 이겼소!'],
+  ['narrator','neutral','930년의 수레에는 물건과 안도한 얼굴이 함께 실려 있었다.','narration'],['player','thinking','927년 공산은 패배, 930년 고창은 승리.','thought']
+])});
+Object.assign(STORIES.ch01_clear_930,{dialogues:ch01Lines([
+  ['narrator','neutral','CH.01 · 새로운 나라','narration'],['narrator','neutral','918 고려 건국 → 927 공산 패배 → 930 고창 승리','narration'],
+  ['narrator','neutral','고려라는 나라가 태어났고, 우리도 이곳에서 살아가기 시작했다.','narration'],['narrator','neutral','CHAPTER CLEAR','narration']
+])});
+
+Object.assign(STORIES.ch01_jump_935,{nextStoryId:'ch01_gyeonhwon',dialogues:ch01Lines([
+  ['narrator','neutral','935년. 둘의 장사는 빌린 창고 한쪽을 채울 만큼 자랐다.','narration'],['player','smile','아직도 날 초보 취급하네.'],['doyun','smile','처음 섞은 자루를 기억하고 있으니 그렇지.']
+])});
+Object.assign(STORIES.ch02_news_935,{storyActive:false,nextStoryId:'ch01_gyeonhwon'});
+Object.assign(STORIES.ch01_gyeonhwon,{title:'적이 아군이 되다',nextStoryId:'ch01_jump_936',dialogues:[
+  ch02NamedLine('narrator','neutral','장부를 맞추던 중, 낯익은 상인이 숨을 몰아쉬며 뛰어들었다.',null,'narration'),
+  ch02NamedLine('merchant_01','surprised','견훤이 고려로 왔답니다!','상인'),ch02NamedLine('player','surprised','후백제를 세운 그 견훤?'),
+  ch02NamedLine('merchant_01','serious','아들 신검에게 밀려 금산사에 갇혔다가 탈출해 왕건 임금에게 귀순했답니다.','상인'),
+  ch02NamedLine('player','serious','자기가 만든 나라를 공격하게 생겼네.'),ch02NamedLine('doyun','neutral','인생이라는 게 참 모르는 일이오.'),ch02NamedLine('player','neutral','그건 인정.'),
+  ch02NamedLine('narrator','neutral','그해 늦가을에는 신라 출신 상인이 찾아왔다.',null,'narration'),
+  ch02NamedLine('merchant','serious','경순왕 김부께서 백성의 피해를 막으려 나라를 고려에 넘기기로 하셨소.','신라 출신 상인'),
+  ch02NamedLine('merchant','worried','내일부터 나는 어느 나라 사람이 되는 것이오?','신라 출신 상인'),ch02NamedLine('doyun','neutral','오늘 묵을 곳은 있소? 거래 이야기는 내일 합시다.'),
+  ch02NamedLine('player','thinking','935년, 견훤은 고려로 왔고 신라는 고려에 들어왔다.',null,'thought')
+]});
+Object.assign(STORIES.ch01_silla,{storyActive:false,nextStoryId:'ch01_jump_936'});
+Object.assign(STORIES.ch01_jump_936,{dialogues:ch01Lines([
+  ['narrator','neutral','936년, 후백제와의 마지막 전쟁이 다가왔다.','narration'],['doyun','serious','견훤은 고려 편이고, 후백제군은 신검이 이끌고 있소.'],['player','serious','이번에는 돌아올 사람까지 먼저 확인하자.']
+])});
+Object.assign(STORIES.ch01_war_supply,{dialogues:ch01Lines([
+  ['doyun','serious','한 수레에 전부 걸지 맙시다.'],['player','neutral','927년에 배운 거네.'],['player','serious','이번 장부에는 돌아올 사람도 적을게.']
+])});
+Object.assign(STORIES.ch01_war_news,{dialogues:ch01Lines([
+  ['merchant','serious','승리했다는 말도, 길이 막혔다는 말도 있소.'],['player','serious','직접 확인된 것부터 전하자.'],['player','thinking','도윤에게도 무사하다고 먼저 알려야지.','thought']
+])});
+Object.assign(STORIES.ch01_war_refugees,{dialogues:ch01Lines([
+  ['merchant','serious','집을 떠나오느라 짐도 놓고 왔소.'],['player','worried','물부터 마셔. 찾는 사람이 있으면 이름도 적어줘.'],['doyun','neutral','곡식 한 자루는 여기 두고 가겠소.'],['player','smile','오늘은 손님보다 사람이 먼저네.']
+])});
+Object.assign(STORIES.ch01_victory,{dialogues:[
+  ch02NamedLine('merchant','surprised','일리천에서 왕건 임금이 신검의 군대를 이겼습니다!','전령'),ch02NamedLine('merchant','surprised','후백제가 무너지고 신검이 항복했습니다!','전령'),
+  ch02NamedLine('doyun','surprised','그러면…….'),ch02NamedLine('player','neutral','끝난 거야.')
+]});
+Object.assign(STORIES.ch01_unity,{nextStoryId:'ch01_sasimgwan',dialogues:[ch02NamedLine('narrator','neutral','936년 · 일리천 승리 · 후삼국 통일',null,'narration'),ch02NamedLine('player','thinking','전쟁은 끝났지만, 하나가 된 나라를 묶는 일은 이제 시작이었다.',null,'thought')]});
+Object.assign(STORIES.future_flow,{storyActive:false,nextStoryId:'ch01_sasimgwan'});
+Object.assign(STORIES.ch01_integration,{storyActive:false,nextStoryId:'ch01_sasimgwan'});
+Object.assign(STORIES.ch01_sasimgwan,{title:'호족을 묶는 두 방법',nextStoryId:'ch01_refugee_family',dialogues:[
+  ch02NamedLine('player','smile','전쟁이 끝났으니 이제 좀 조용해지겠네.'),ch02NamedLine('doyun','serious','나라가 하나 됐다고 사람들의 힘까지 하나가 된 건 아니오.'),
+  ch02NamedLine('merchant','neutral','신라 왕이던 김부 대감이 경주의 일을 살핀다 하오.','경주 상인'),ch02NamedLine('merchant','serious','우리 고장 호족의 아들은 개경에 머물라는 명을 받았소.','지방 상인'),
+  ch02NamedLine('doyun','neutral','고장을 아는 사람은 쓰고, 호족의 움직임은 지켜보는군.'),ch02NamedLine('player','thinking','사심관은 연고지 감독, 기인은 호족 자제의 수도 체류. 두 방법으로 지방을 묶었다.',null,'thought')
+]});
+Object.assign(STORIES.ch01_refugee_family,{dialogues:[
+  ch02NamedLine('merchant','serious','발해에서 왔소. 나라가 거란에게 무너진 뒤 가족을 데리고 내려왔소.','발해계 손님'),ch02NamedLine('player','worried','머물 곳은 구했어요?'),
+  ch02NamedLine('doyun','neutral','나라 잃은 사람에게 어디 출신인지가 뭐 그리 중요하겠소.'),ch02NamedLine('merchant','neutral','왕께서 같은 뿌리의 사람처럼 받아들이셨소. 서경 쪽에도 자리가 있다더군.','발해계 손님'),
+  ch02NamedLine('doyun','neutral','서경으로 보낼 물건이 늘었소. 북쪽 길을 다시 살피는 사람도 많고.'),ch02NamedLine('player','thinking','발해 유민 수용, 고구려 계승, 서경과 북진이 한 방향으로 이어졌다.',null,'thought')
+]});
+Object.assign(STORIES.ch01_welfare,{dialogues:[
+  ch02NamedLine('merchant','serious','너무 거두면 씨앗곡식도 장에 팔 물건도 남지 않습니다.','장터 상인'),ch02NamedLine('doyun','serious','백성이 다시 농사짓고 장사할 만큼은 남겨야 나라에도 다음해가 있지.'),
+  ch02NamedLine('player','thinking','취민유도. 백성에게 거둘 때 형편을 살피는 원칙이었다.',null,'thought')
+]});
+Object.assign(STORIES.ch01_memory_943,{dialogues:ch01Lines([
+  ['doyun','smile','자네가 이상한 옷 입고 쓰러져 있던 곳, 기억나시오?'],['player','embarrassed','그걸 아직 기억해?'],['doyun','smile','평생 놀려먹을 거라 하지 않았소.'],
+  ['player','smile','스물다섯 해면 이제 그만할 때도 됐지.'],['doyun','neutral','나는 그만큼 늙었고.'],['player','smile','좀 많이.'],
+  ['narrator','neutral','웃던 도윤이 늙지 않은 내 얼굴을 잠시 바라보았다.','narration'],['doyun','worried','그런데 자네는…… 아니오.']
+])});
+Object.assign(STORIES.ch01_taejo_death,{dialogues:ch01Lines([
+  ['merchant','serious','태조 임금께서 돌아가셨소.'],['doyun','worried','우리가 장사를 시작할 때 나라를 여셨는데…….'],
+  ['player','thinking','918년부터 943년까지. 책의 한 줄이 여기서는 스물다섯 해였다.','thought'],['player','neutral','후대 왕들에게 남긴 가르침이 있대.']
+])});
+Object.assign(STORIES.ch01_hunyo,{dialogues:[
+  ch02NamedLine('doyun','serious','태조께서 다음 왕들에게 지켜야 할 일을 열 가지로 남기셨다 하오.'),ch02NamedLine('player','thinking','훈요 10조.',null,'thought'),
+  ch02NamedLine('doyun','neutral','나라의 의례와 서경을 중히 여기고, 백성을 함부로 다루지 말라는 당부라더군.'),ch02NamedLine('player','thinking','새 명령보다 나라가 잊지 말아야 할 방향을 남긴 말이구나.',null,'thought')
+]});
+Object.assign(STORIES.ch01_guild_seed,{dialogues:ch01Lines([
+  ['doyun','neutral','스물다섯 해 동안 참 많은 일이 있었군.'],['player','neutral','그러게.'],['doyun','serious','이제는 제대로 장사를 해보고 싶소.'],['player','surprised','가게를 차리게?'],
+  ['doyun','neutral','언젠가는.'],['player','smile','그럼 이름은 도윤상단.'],['doyun','surprised','상단은 무슨. 가게 하나도 없는데.'],['doyun','smile','촌스럽지만 기억은 해두겠소.']
+])});
+Object.assign(STORIES.ch01_farewell,{dialogues:[
+  ch02NamedLine('narrator','neutral','CH.02 · 하나가 된 나라',null,'narration'),ch02NamedLine('narrator','neutral','935 귀순과 항복 → 936 후삼국 통일',null,'narration'),
+  ch02NamedLine('narrator','neutral','호족 통합 · 발해 유민과 북진 · 훈요 10조',null,'narration'),ch02NamedLine('narrator','neutral','모두가 나이를 먹는 동안, 나는 여전히 같은 얼굴이었다.',null,'narration')
+]});
+
+for(const id of ['ch01_trade_start','ch01_gongsan','ch01_conflict','ch01_reconcile','ch01_jump_930','ch01_belonging','ch01_jump_935','ch01_gyeonhwon','ch01_jump_936','ch01_war_choice','ch01_war_supply','ch01_war_news','ch01_war_refugees','ch01_victory','ch01_sasimgwan','ch01_refugee_family','ch01_welfare','ch01_memory_943','ch01_taejo_death','ch01_hunyo','ch01_guild_seed'])refreshCh02Stage(id);
+for(const key of Object.keys(CONCEPT_QUESTION_INDEX))delete CONCEPT_QUESTION_INDEX[key];
+for(const q of QUESTIONS.filter(question=>!question.retired))for(const conceptId of q.conceptIds||[])(CONCEPT_QUESTION_INDEX[conceptId]||(CONCEPT_QUESTION_INDEX[conceptId]=[])).push(q.questionId);
+
 const migrateBeforeCh01Reedit=migrateSave;
 migrateSave=function(raw){
   const migrated=migrateBeforeCh01Reedit(raw),meta=migrated.meta||(migrated.meta=INITIAL_META());
@@ -693,7 +983,7 @@ migrateSave=function(raw){
 };
 
 /* CH.02 935–943 re-edit: official-exam flow, age continuity, recurring merchant. */
-const CH02_REEDIT_VERSION=1;
+const CH02_REEDIT_VERSION=2;
 const HUMAN_AGING_RULES={
   player:{agingMode:'nearly-static',baselineYear:918,baselineAge:23,mysteryKey:'unknown-aging'},
   doyun:{agingMode:'calendar',birthYear:894,states:{918:'young',935:'adult_935',943:'mature_943',949:'middle_aged_949',956:'elder_956',982:'elder_982'}},
@@ -734,8 +1024,6 @@ Object.assign(CHARACTERS.injured_merchant,{show:false,presentation:'legacy',depr
 
 ASSETS['ch02-trade-room-935']=sceneArt('ch02-trade-room-935','935–943년 도윤과 주인공이 빌려 쓰는 소박한 창고방',['#40342c','#897058'],false,'goryeo-house-empty');
 
-const ch02NamedLine=(who,expression,text,name=null,type=null)=>dialogueLine(who,expression,text,type,name);
-const refreshCh02Stage=sceneId=>{const s=STORIES[sceneId],spoken=(s.dialogues||[]).filter(line=>['npc','player'].includes(line.speakerType));s.visibleCharacters=[...new Set(spoken.map(line=>line.characterId).filter(id=>CHARACTERS[id]?.show!==false&&CHARACTERS[id]?.presentation!=='ambient'))];s.sceneType=spoken.length?'dialogue':s.dialogues?.some(line=>line.speakerType==='thought')?'thought':'narration';s.backgroundImage=ASSETS[s.illustrationId]?.src||null};
 const setCh02Questions=(sceneId,questionIds)=>{const s=STORIES[sceneId];delete s.quizId;delete s.linkedQuestionIds;delete s.questionSequenceMode;if(questionIds.length){s.linkedQuestionIds=[...questionIds];s.linkedOfficialQuestions=[...questionIds];s.questionSequenceMode='queue';s.quizId=questionIds[0];s.officialQuestionStatus='verified';s.officialQuestionSlot={conceptIds:[...(s.learningConceptIds||[])],linkedOfficialQuestions:[...questionIds],officialQuestionStatus:'verified'}}};
 
 // The normal 918 and injured 927 appearances use one identity and unchanged dialogue text.
@@ -883,13 +1171,15 @@ migrateSave=function(raw){
   const migrated=migrateBeforeCh02Reedit(raw),meta=migrated.meta||(migrated.meta=INITIAL_META());
   if(meta.ch02ReeditVersion!==CH02_REEDIT_VERSION){
     const retiredIds=new Set(QUESTIONS.filter(q=>q.chapterId==='ch02'&&q.retired).map(q=>q.questionId));
-    const skippedScenes={ch01_giin:'ch01_refugee_family',ch01_north:'ch01_welfare',ch03_exam_75_12:'ch03_policy_effect'};
+    const skippedScenes={ch02_news_935:'ch01_gyeonhwon',ch01_silla:'ch01_gyeonhwon',ch01_integration:'ch01_sasimgwan',future_flow:'ch01_sasimgwan',ch01_giin:'ch01_refugee_family',ch01_north:'ch01_welfare',ch03_exam_75_12:'ch03_policy_effect'};
     const questionResume={
       'ch01-story-gyeonhwon':'ch01_gyeonhwon','ch02-story-geumsansa':'ch01_gyeonhwon','ch01-story-silla':'ch01_silla','ch02-story-illyecheon':'ch01_victory','ch01-boss':'future_flow','ch02-story-sasimgwan':'ch01_sasimgwan','ch01-story-integration':'ch01_sasimgwan','ch02-story-balhae-refugees':'ch01_refugee_family','ch01-story-north':'ch01_refugee_family','ch02-story-welfare':'ch01_welfare','ch01-story-hunyo':'ch01_hunyo'
     };
     const repairRun=run=>{
       if(!run)return;
       if(skippedScenes[run.storyId]){run.storyId=skippedScenes[run.storyId];run.pending=null;run.dialogueSceneId=null;run.dialogueCursor=1}
+      if(run.activeQuestionSetId==='ch02-silla-surrender')run.activeQuestionSetId='ch02-gyeonhwon';
+      if(run.activeQuestionSetId&&QUESTION_SETS[run.activeQuestionSetId])run.questionQueueResumeStoryId=QUESTION_SETS[run.activeQuestionSetId].resumeStoryId;
       if(retiredIds.has(run.activeQuestionId)){run.storyId=questionResume[run.activeQuestionId]||'ch02_open_935';run.activeQuestionId=null;run.questionAnswer=null;run.questionQueue=[];run.questionQueueIndex=0;run.questionQueueResumeStoryId=null;run.dialogueSceneId=null;run.dialogueCursor=1}
       run.questionQueue=(run.questionQueue||[]).filter(id=>!retiredIds.has(id));
       const year=Number(STORIES[run.storyId]?.year||0);
@@ -942,3 +1232,4 @@ Object.assign(STORIES.ch03_history_reflection,{nextStoryId:'ch03_courtyard'});
 Object.assign(STORIES.ch03_farewell,{nextStoryId:'ch03_doyun_soliloquy'});
 for(const key of Object.keys(CONCEPT_QUESTION_INDEX))delete CONCEPT_QUESTION_INDEX[key];
 for(const q of QUESTIONS.filter(question=>!question.retired))for(const conceptId of q.conceptIds||[])(CONCEPT_QUESTION_INDEX[conceptId]||(CONCEPT_QUESTION_INDEX[conceptId]=[])).push(q.questionId);
+applyFinalEarlyPacing();

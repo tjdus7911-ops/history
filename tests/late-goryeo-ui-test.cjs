@@ -27,6 +27,6 @@ assert.deepEqual(completed,['ch05','ch06','ch07','ch08','ch09','ch10','ch11','ch
 vm.runInContext("screen='teaser';render()",context);assert(html.includes('고려의 끝, 조선의 시작'));
 vm.runInContext("beginReplay(state,'ch08');save();screen='game';enterStory();render()",context);assert.equal(current().run.mode,'replay');assert.equal(current().run.currentChapter,'ch08');assert(current().meta.completedChapters.includes('ch12'));
 vm.runInContext("const sample=STORIES.ch05_seohui.dialogues.find(line=>line.characterId==='seohui');this.samplePortrait=stagePortrait(sample,'left',true);this.doyunProfile=characterRenderProfile({characterId:'doyun'},'doyun_935');this.ch08Duo=characterStage(STORIES.ch08_revolt.dialogues,STORIES.ch08_revolt,false,null,'late-war');",context);
-assert(context.samplePortrait.includes('data-character-tier="MAIN"'));assert.equal(context.doyunProfile.scale,1.8);
+assert(context.samplePortrait.includes('data-character-tier="MAIN"'));assert.equal(context.doyunProfile.scale,1.35);assert.equal(context.doyunProfile.anchorY,32);
 assert(context.ch08Duo.includes('data-character-id="seon"')&&context.ch08Duo.includes('data-character-id="player"'));assert(context.ch08Duo.includes('data-position="left"')&&context.ch08Duo.includes('data-position="right"'));
 console.log('PASS: CH.05–12 UI full play, 3-question queues, explanation return, reload, unlock, ending teaser, replay preservation, and render-tier output.');

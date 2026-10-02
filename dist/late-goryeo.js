@@ -8,9 +8,9 @@ const CHARACTER_RENDER_PROFILES={
     merchant:{tier:'SUPPORTING'},merchant_01:{tier:'SUPPORTING'},injured_merchant:{tier:'SUPPORTING'}
   },
   portraits:{
-    doyun_935:{scale:1.8,anchorY:32},doyun_943:{scale:1.8,anchorY:32},
-    doyun_935_neutral:{scale:1.8,anchorY:32},doyun_935_smile:{scale:1.8,anchorY:32},doyun_935_serious:{scale:1.8,anchorY:32},doyun_935_worried:{scale:1.8,anchorY:32},
-    doyun_943_neutral:{scale:1.8,anchorY:32},doyun_943_smile:{scale:1.8,anchorY:32},doyun_943_serious:{scale:1.8,anchorY:32},doyun_943_worried:{scale:1.8,anchorY:32},
+    doyun_935:{scale:1.35,anchorY:32},doyun_943:{scale:1.45,anchorY:36},
+    doyun_935_neutral:{scale:1.35,anchorY:32},doyun_935_smile:{scale:1.35,anchorY:32},doyun_935_serious:{scale:1.35,anchorY:32},doyun_935_worried:{scale:1.35,anchorY:32},
+    doyun_943_neutral:{scale:1.45,anchorY:36},doyun_943_smile:{scale:1.45,anchorY:36},doyun_943_serious:{scale:1.45,anchorY:36},doyun_943_worried:{scale:1.45,anchorY:36},
     merchant_918_neutral:{scale:1.35,anchorY:13},merchant_918_serious:{scale:1.35,anchorY:13},merchant_927_injured:{scale:1.35,anchorY:13},merchant_935_neutral:{scale:1.35,anchorY:13}
   }
 };
