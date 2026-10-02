@@ -6,7 +6,7 @@ const {CHAPTERS,STORIES,QUESTIONS}=context.api;
 
 for(const chapterId of ['ch01','ch02','ch03','ch04']){
   const chapterQuestions=QUESTIONS.filter(question=>question.chapterId===chapterId&&!question.reviewOnly&&!question.retired);
-  const expectedCounts={ch01:6,ch02:8,ch03:12,ch04:10};
+  const expectedCounts={ch01:7,ch02:11,ch03:12,ch04:10};
   assert.equal(CHAPTERS[chapterId].questionCount,expectedCounts[chapterId],`${chapterId}: metadata count`);
   assert.equal(chapterQuestions.length,CHAPTERS[chapterId].questionCount,`${chapterId}: actual question count`);
   assert.equal(new Set(chapterQuestions.map(question=>question.questionId)).size,CHAPTERS[chapterId].questionCount,`${chapterId}: duplicate id`);
@@ -47,5 +47,7 @@ assert(addedPractice.every(question=>!question.isOfficial&&question.examType==='
 assert.equal(QUESTIONS.find(question=>question.questionId==='ch01-boss').originalResumeStoryId,'complete');
 assert.equal(QUESTIONS.find(question=>question.questionId==='ch02-test-05').originalResumeStoryId,'ch02_complete');
 assert.equal(QUESTIONS.find(question=>question.questionId==='ch03-practice-04').originalResumeStoryId,'ch03_courtyard');
+const newStoryQuestions=QUESTIONS.filter(question=>['ch01-story-war-context','ch01-story-gongsan-battle','ch01-story-gochang-name','ch02-story-geumsansa','ch02-story-sasimgwan','ch02-story-balhae-refugees'].includes(question.questionId));
+assert.equal(newStoryQuestions.length,6);assert(newStoryQuestions.every(question=>question.sourceType==='exam_style'&&!question.isOfficial&&question.gameMemory));
 
-console.log('PASS: CH.01/02 now use 6/8 story questions, CH.03 uses 12 story questions plus 5 review questions, and all 13 active official answers remain source-labeled and story-linked.');
+console.log('PASS: CH.01/02 now use 7/11 story questions, CH.03 uses 12 story questions plus 5 review questions, new items are non-official exam style, and all 13 active official answers remain source-labeled and story-linked.');

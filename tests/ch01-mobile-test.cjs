@@ -46,13 +46,13 @@ async function main(){
     else await tap('[data-action="next"]');
     if(++guard>500)throw new Error('mobile play did not complete');
   }
-  assert.equal((await read()).run.currentChapter,chapterId);assert.equal(Object.keys((await read()).run.questionResults).length,chapterId==='ch01'?6:8);await fit();await snapshot(chapterId+'-complete');
+  assert.equal((await read()).run.currentChapter,chapterId);assert.equal(Object.keys((await read()).run.questionResults).length,chapterId==='ch01'?7:11);await fit();await snapshot(chapterId+'-complete');
   }
   assert(checkedOpening&&checked943&&checkedVillagerVoice&&checkedMarketCrowd&&checkedMerchantVoice&&checkedGyeonhwonRumor);
   await tap('[data-nav="study"]');
   for(const chapterId of ['ch01','ch02']){
     await tap('[data-review-chapter="'+chapterId+'"]');
-    const total=chapterId==='ch01'?5:7;
+    const total=5;
     for(let index=0;index<total;index++){const answer=await page.evaluate(()=>QUESTIONS.find(q=>q.questionId===reviewQuestionId).answer);await tap('[data-answer="'+answer+'"]');await tap('[data-action="quiz-next"]');await fit()}
     assert.equal(await page.evaluate(()=>meta().ch01ReviewAttempts.at(-1).correct),total);
   }
@@ -78,6 +78,6 @@ async function main(){
   for(let index=0;index<5;index++){const answer=await page.evaluate(()=>QUESTIONS.find(q=>q.questionId===reviewQuestionId).answer);await tap('[data-answer="'+answer+'"]');await tap('[data-action="quiz-next"]');await fit()}
   assert.equal(await page.evaluate(()=>meta().ch01ReviewAttempts.at(-1).correct),5);
   for(const width of [320,390,760]){await page.setViewportSize({width,height:844});await fit()}
-  assert.deepEqual(errors,[]);console.log('PASS: isolated mobile CH.01~03 full play, ambient villager/merchant labels without standings, major-character portraits, Gwangdeok/Junpung market backgrounds, 6+8+12 story questions, 5+7+5 reviews, reload, and 320/390/760px overflow.');
+  assert.deepEqual(errors,[]);console.log('PASS: isolated mobile CH.01~03 full play, ambient villager/merchant labels without standings, major-character portraits, Gwangdeok/Junpung market backgrounds, 7+11+12 story questions, 5+5+5 reviews, reload, and 320/390/760px overflow.');
 }
 main().catch(error=>{console.error(error.stack||error);process.exitCode=1}).finally(async()=>{if(browser)await browser.close();server.close()});

@@ -72,8 +72,8 @@ const CH03_HISTORY_CARDS=[
 ];
 CH01_HISTORY_CARDS.push(...CH03_HISTORY_CARDS);
 const SCENE_LEARNING_CONCEPTS={
-  rumor:['궁예_왕건'],foundation:['918_936'],ch01_trade_start:['궁예_왕건','918_936'],ch01_gongsan:['공산전투_고창전투'],ch01_gochang:['공산전투_고창전투'],ch01_belonging:['후삼국_사건순서'],
-  ch01_gyeonhwon:['견훤_신검'],ch01_silla:['견훤귀순_경순왕귀순'],ch01_victory:['일리천_후삼국통일'],ch01_unity:['일리천_후삼국통일'],ch01_sasimgwan:['사심관_기인'],ch01_giin:['사심관_기인'],ch01_north:['서경_북진'],ch01_welfare:['취민유도'],ch01_hunyo:['훈요10조_시무28조']
+  rumor:['궁예_왕건','후고구려','고려건국','918_936'],foundation:['918_936'],ch01_missing_traders:['927_전쟁상황','후삼국_사건순서'],ch01_gongsan:['공산전투_고창전투','신숭겸'],ch01_gochang:['공산전투_고창전투','고창전투'],
+  ch01_gyeonhwon:['견훤_신검','금산사'],ch01_silla:['견훤귀순_경순왕귀순'],ch01_victory:['일리천_후삼국통일'],ch01_unity:['일리천_후삼국통일'],future_flow:['후삼국_사건순서'],ch01_sasimgwan:['사심관_기인','사심관'],ch01_giin:['사심관_기인'],ch01_refugee_family:['발해유민','서경_북진'],ch01_north:['서경_북진'],ch01_welfare:['취민유도'],ch01_hunyo:['훈요10조_시무28조']
 };
 for(const [sceneId,learningConceptIds] of Object.entries(SCENE_LEARNING_CONCEPTS))STORIES[sceneId].learningConceptIds=learningConceptIds;
 const SPLIT_STORY_QUESTION_IDS={
@@ -83,9 +83,46 @@ const SPLIT_STORY_QUESTION_IDS={
 };
 const SPLIT_REVIEW_IDS={
   ch01:CH01_REVIEW_IDS.filter(id=>QUESTIONS.find(q=>q.questionId===id).chapterId==='ch01'),
-  ch02:CH01_REVIEW_IDS.filter(id=>QUESTIONS.find(q=>q.questionId===id).chapterId==='ch02'&&id!=='ch01-test-03'),
+  ch02:['ch01-official-70-advanced-10','ch01-official-73-basic-10','ch01-official-74-advanced-10','ch01-official-76-advanced-10','ch01-review-10'],
   ch03:[...CH03_REVIEW_IDS]
 };
+// Story scenes link to concepts and an ordered question pool. Queue mode is used
+// where one historical experience now produces one or two immediate questions.
+const SCENE_QUESTION_LINKS={
+  rumor:['ch01-test-01','ch01-test-02'],
+  ch01_missing_traders:['ch01-story-war-context'],
+  ch01_gongsan:['ch01-story-gongsan','ch01-story-gongsan-battle'],
+  ch01_gochang:['ch01-story-gochang-name','ch01-story-gochang'],
+  ch01_gyeonhwon:['ch01-story-gyeonhwon','ch02-story-geumsansa'],
+  ch01_silla:['ch01-story-silla'],
+  ch01_unity:['ch02-story-illyecheon'],
+  future_flow:['ch01-boss'],
+  ch01_sasimgwan:['ch02-story-sasimgwan'],
+  ch01_giin:['ch01-story-integration'],
+  ch01_refugee_family:['ch02-story-balhae-refugees'],
+  ch01_north:['ch01-story-north'],
+  ch01_welfare:['ch02-story-welfare'],
+  ch01_hunyo:['ch01-story-hunyo']
+};
+for(const [sceneId,linkedQuestionIds] of Object.entries(SCENE_QUESTION_LINKS)){
+  const s=STORIES[sceneId];
+  if(!s)continue;
+  s.linkedQuestionIds=[...linkedQuestionIds];
+  s.questionSequenceMode='queue';
+  s.quizId=linkedQuestionIds[0];
+}
+const LEGACY_CHAIN_SCENE_QUESTION_LINKS={
+  ch02_policy_memory:['ch02-test-01','ch02-official-69-advanced-10'],
+  ch02_ssanggi:['ch02-test-02','ch02-official-74-advanced-11'],
+  ch02_hyunwoo_official:['ch02-test-robes'],
+  ch02_reign_titles:['ch02-test-03','ch02-official-76-advanced-50'],
+  ch02_reign_followup:['ch02-test-04','ch02-official-77-advanced-14'],
+  ch02_night_discussion:['ch02-test-05','ch02-official-78-advanced-11'],
+  ch02_memory_retrieval:['ch02-test-06']
+};
+for(const [sceneId,linkedQuestionIds] of Object.entries(LEGACY_CHAIN_SCENE_QUESTION_LINKS))if(STORIES[sceneId])STORIES[sceneId].linkedQuestionIds=[...linkedQuestionIds];
+const CONCEPT_QUESTION_INDEX={};
+for(const q of QUESTIONS.filter(item=>!item.retired))for(const conceptId of q.conceptIds||[])(CONCEPT_QUESTION_INDEX[conceptId]||(CONCEPT_QUESTION_INDEX[conceptId]=[])).push(q.questionId);
 for(const id of ['ch01','ch02','ch03'])Object.assign(CHAPTERS[id],{questionCount:SPLIT_STORY_QUESTION_IDS[id].length,reviewQuestionCount:SPLIT_REVIEW_IDS[id].length});
 Object.assign(CHAPTERS.ch03,{years:'949 — 960',completeStoryId:'ch02_chapter_clear'});
 const prepareBeforeChapterSplit=prepareChapterCarry;

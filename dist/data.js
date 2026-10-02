@@ -1,4 +1,4 @@
-const SAVE_VERSION=11;
+const SAVE_VERSION=12;
 const ERAS=[['고려','918 — 1392'],['조선','1392 — 1897'],['대한제국','1897 — 1910'],['일제강점기','1910 — 1945'],['대한민국','1945 —']];
 
 const HISTORY={
@@ -122,8 +122,8 @@ const dialogueLine=(characterId,expression,dialogue,speakerType=null,characterNa
 
 const question=data=>({chapterId:'ch01',era:'고려',historicalEventId:'goryeo-foundation-918',image:null,userAnswer:null,isCorrect:null,isOfficial:false,examRound:null,examYear:null,questionNumber:null,examType:'한국사능력검정시험 유형 자체 제작',source:'국사편찬위원회 우리역사넷의 사실관계를 바탕으로 자체 제작',...data});
 const QUESTIONS=[
-  question({questionId:'ch01-test-01',relatedSceneId:'rumor',relatedHistoricalEventId:'goryeo-foundation-918',relatedIllustrationId:'memory-wanggeon',questionType:'인물·자료 추론형',difficulty:'중',passage:'마을 사람들이 “왕건 장군께서 새 나라를 세우셨다”고 말한다. 현대에서 보았던 궁예·견훤·왕건의 관계를 떠올려 보자.',question:'왕건에 대한 기억으로 옳은 것은?',choices:['궁예의 휘하에서 성장한 뒤 고려를 세운 인물이다.','견훤을 몰아내고 후백제를 세운 인물이다.','신라 왕실의 추대를 받아 왕이 된 인물이다.','잘 기억나지 않는다.'],answer:0,explanation:'왕건은 궁예의 휘하에서 성장한 뒤 신하들의 추대를 받아 918년 고려를 세웠습니다. 견훤은 후백제를 세운 인물입니다.',examKeywords:['왕건','궁예','신하의 추대','고려 건국'],rewardKnowledge:2,resumeStoryId:'foundation'}),
-  question({questionId:'ch01-test-02',relatedSceneId:'foundation',relatedHistoricalEventId:'goryeo-foundation-918',relatedIllustrationId:'title-foundation',questionType:'시대 상황 판단형',difficulty:'중상',passage:'지금은 918년이다. 왕건이 국호를 고려라 하고 왕위에 올랐다는 소식이 퍼지고 있다.',question:'이 시기의 상황으로 가장 적절한 것은?',choices:['신라가 고려에 항복하여 후삼국이 통일되었다.','후백제가 이미 멸망하고 고려와 신라만 남았다.','고려·후백제·신라가 경쟁하는 후삼국의 구도가 이어졌다.','광종이 노비안검법을 시행하여 왕권을 강화했다.','거란의 침입을 강감찬이 귀주에서 물리쳤다.'],answer:2,explanation:'918년 고려가 건국된 뒤에도 신라와 후백제가 존재했습니다. 신라는 935년에 항복하고, 고려는 936년에 후삼국을 통일합니다.',examKeywords:['918년','후삼국','신라','후백제','고려'],rewardKnowledge:2,resumeStoryId:'market'}),
+  question({questionId:'ch01-test-01',relatedSceneId:'rumor',relatedHistoricalEventId:'goryeo-foundation-918',relatedIllustrationId:'village-rumor',questionType:'인물 식별형',difficulty:'하',passage:'거리 사람들은 궁예가 쫓겨난 뒤 신하들이 왕건을 왕으로 세웠다고 이야기하였다.',question:'왕건이 고려를 건국하기 이전 후고구려를 이끌었던 인물은?',choices:['견훤','궁예','신검','경순왕'],answer:1,explanation:'궁예가 후고구려를 세웠고, 이후 궁예를 몰아낸 신하들이 왕건을 추대하여 고려가 출범했습니다.',examKeywords:['궁예','후고구려','왕건 추대'],rewardKnowledge:2,resumeStoryId:'foundation'}),
+  question({questionId:'ch01-test-02',relatedSceneId:'rumor',relatedHistoricalEventId:'goryeo-foundation-918',relatedIllustrationId:'village-rumor',questionType:'연도 식별형',difficulty:'하',passage:'왕건이 신하들의 추대를 받아 왕위에 오르고 국호를 고려라 하였다.',question:'왕건이 고려를 건국한 해는?',choices:['900년','901년','918년','936년'],answer:2,explanation:'왕건은 918년에 고려를 건국했습니다. 936년은 고려가 후삼국을 통일한 해입니다.',examKeywords:['918년','고려 건국','왕건'],rewardKnowledge:2,resumeStoryId:'market'}),
   question({questionId:'ch01-test-03',relatedSceneId:'doyun',relatedHistoricalEventId:'later-three-kingdoms',relatedIllustrationId:'doyun-intro',questionType:'사건 순서형',difficulty:'중상',passage:'ㄱ. 궁예가 후고구려를 세웠다.\nㄴ. 왕건이 고려를 건국했다.\nㄷ. 견훤이 후백제를 세웠다.\nㄹ. 고려가 후삼국을 통일했다.',question:'사건을 일어난 순서대로 바르게 나열한 것은?',choices:['ㄱ → ㄷ → ㄴ → ㄹ','ㄷ → ㄱ → ㄴ → ㄹ','ㄷ → ㄴ → ㄱ → ㄹ','ㄴ → ㄷ → ㄱ → ㄹ','ㄱ → ㄴ → ㄷ → ㄹ'],answer:1,explanation:'견훤의 후백제 건국(900) → 궁예의 후고구려 건국(901) → 왕건의 고려 건국(918) → 후삼국 통일(936) 순입니다.',examKeywords:['900년 후백제','901년 후고구려','918년 고려','936년 통일'],rewardKnowledge:2,resumeStoryId:'status'}),
   question({questionId:'ch01-test-04',relatedSceneId:'route_context',relatedHistoricalEventId:'goryeo-foundation-918',relatedIllustrationId:'route-context',questionType:'자료 해석형',difficulty:'중상',passage:'“새 왕조가 막 출범하였다. 각지의 유력 세력은 자기 근거지와 군사력을 지니고 있고, 새 임금은 이들의 협조를 얻어야 한다.”',question:'자료의 상황에서 왕건이 추진한 통치 방식으로 가장 적절한 것은?',choices:['전국의 호족을 즉시 제거하고 중앙군만 남겼다.','호족과 혼인 관계를 맺고 포섭하여 기반을 넓혔다.','골품제를 강화하여 신라 귀족만 등용했다.','권문세족의 농장을 몰수하고 과전법을 실시했다.','무신을 배제하고 문벌 귀족만으로 관료제를 운영했다.'],answer:1,explanation:'고려 건국의 주체에는 지방 호족이 포함되어 있었습니다. 왕건은 혼인과 성씨 하사 등 포섭 정책으로 호족과의 결속을 강화했습니다.',examKeywords:['왕건','호족','혼인 정책','포섭'],rewardKnowledge:2,resumeStoryId:'thief'}),
   question({questionId:'ch01-test-05',relatedSceneId:'thief_aftermath',relatedHistoricalEventId:'later-three-kingdoms',relatedIllustrationId:'thief-aftermath',questionType:'시대 상황 판단형',difficulty:'상',passage:'왕건이 새 나라를 세운 직후, 장터 사람들은 신라의 쇠퇴와 견훤의 군대를 걱정하고 있다.',question:'이 시기를 배경으로 한 설명으로 옳지 않은 것은?',choices:['견훤의 후백제가 고려와 경쟁하고 있었다.','신라는 국력이 약해졌지만 아직 존재하고 있었다.','왕건은 궁예의 세력에서 성장한 경험이 있었다.','후삼국의 통일은 이미 끝나 전국이 안정되어 있었다.','지방의 호족 세력은 정치·군사적으로 중요한 존재였다.'],answer:3,explanation:'918년은 고려 건국의 해이지 후삼국 통일의 해가 아닙니다. 통일은 936년에 이루어졌습니다.',examKeywords:['고려 건국 초기','후삼국','918년과 936년 구분'],rewardKnowledge:2,resumeStoryId:'night'}),
@@ -217,9 +217,6 @@ const DIALOGUES={
     dialogueLine('unknown','worried','이보시오……!')
   ],
   house:[
-    dialogueLine('doyun','worried','정신 좀 차려보시오.',null,'낯선 청년'),
-    dialogueLine('player','worried','…….'),
-    dialogueLine('player','thinking','누구지?','thought'),
     dialogueLine('doyun','worried','정신이 드시오?',null,'낯선 청년'),
     dialogueLine('player','surprised','……네? 여기가 어디예요?'),
     dialogueLine('doyun','neutral','송악으로 가는 길목이오.',null,'낯선 청년'),
@@ -227,21 +224,21 @@ const DIALOGUES={
   ],
   outfit_question:[
     dialogueLine('doyun','neutral','그러고 보니, 내 이름은 도윤이오.'),
-    dialogueLine('doyun','suspicious','그런데…… 아까부터 궁금한 게 있소.'),
-    dialogueLine('player','surprised','왜요?'),
     dialogueLine('doyun','suspicious','지금 입고 있는 그 이상한 옷은 뭐요? 옷감도 처음 보는 것이고, 생김새도 이상하고.'),
-    dialogueLine('doyun','serious','어디 사람인데 그런 옷을 입고 다니는 거요?'),
-    dialogueLine('player','thinking','그러고 보니. 나 지금 이 옷 그대로잖아.','thought')
+    dialogueLine('player','thinking','그러고 보니. 나 지금 현대 옷 그대로잖아.','thought')
   ],
   outfit_gift:[
-    dialogueLine('doyun','serious','계속 그 차림으로 다니면 사람들이 자네만 쳐다볼 거요.'),
-    dialogueLine('player','worried','그럼 어떡해요?'),
-    dialogueLine('doyun','neutral','옷부터 어떻게 해야겠군. 우선 이것이라도 입으시오.'),
-    dialogueLine('player','surprised','당신 옷이에요?'),
-    dialogueLine('doyun','smile','싫으면 그 이상한 옷 입고 다니든가.'),
-    dialogueLine('player','embarrassed','……입을게요.'),
+    dialogueLine('doyun','neutral','갈 곳은 있소?'),
+    dialogueLine('player','embarrassed','……없어.'),
+    dialogueLine('doyun','serious','그럼 이것부터 입으시오. 계속 그 차림이면 온 동네 사람이 자네만 쳐다볼 거요.'),
+    dialogueLine('player','surprised','근데 왜 나한테 이렇게까지 해줘?'),
+    dialogueLine('doyun','neutral','나도 작은 장사를 시작하려던 참이오. 갈 곳도 없다면서. 그럼 밥값이라도 하시오.'),
+    dialogueLine('player','worried','나 장사해본 적 없는데.'),
     dialogueLine('narrator','neutral','아이템 획득 · 고려 평민복','narration'),
-    dialogueLine('player','thinking','현대 옷은 버리지 않았다. 내가 2026년에서 왔다는 몇 안 되는 증거니까.','thought')
+    dialogueLine('doyun','smile','나도 제대로 해본 적 없소.'),
+    dialogueLine('player','surprised','…….'),
+    dialogueLine('doyun','surprised','왜 그런 눈으로 보시오?'),
+    dialogueLine('player','thinking','현대 옷은 잘 접어 보관했다. 그리고 도윤과 거리로 나섰다.','thought')
   ],
   village:[
     dialogueLine('narrator','neutral','초가집, 흙길, 말과 수레. 멀리 산이 보인다. 현대 물건은 하나도 없다.','narration'),
@@ -249,10 +246,10 @@ const DIALOGUES={
     dialogueLine('player','thinking','촬영장이 아니야.','thought')
   ],
   rumor:[
-    dialogueLine('resident_a','serious','들었나?'),
-    dialogueLine('resident_b','surprised','무슨 일인데?'),
-    dialogueLine('resident_a','serious','왕건 장군께서 새 나라를 세우셨다네!'),
-    dialogueLine('player','surprised','……왕건?','thought')
+    dialogueLine('resident_a','serious','궁예가 그렇게 쫓겨날 줄 누가 알았겠소.'),
+    dialogueLine('resident_b','surprised','신하들이 왕건 장군을 왕으로 세웠다더군.'),
+    dialogueLine('resident_a','serious','새 나라 이름도 고려라 하지 않소.'),
+    dialogueLine('player','surprised','궁예, 왕건, 고려. 지금은 918년이야.','thought')
   ],
   foundation:[
     dialogueLine('resident_a','serious','나라 이름은 고려라고 한다더군.'),
@@ -261,10 +258,10 @@ const DIALOGUES={
     dialogueLine('narrator','neutral','눈떠보니 고려','narration')
   ],
   market:[
-    dialogueLine('merchant','serious','견훤의 군대가 만만치 않다던데.'),
-    dialogueLine('resident_b','surprised','신라는 힘이 예전 같지 않고.'),
-    dialogueLine('elder','neutral','궁예가 물러났다고 세상이 바로 조용해지겠나.'),
-    dialogueLine('player','worried','견훤. 신라. 왕건. 잠깐…… 아직 통일된 게 아니야.','thought')
+    dialogueLine('narrator','neutral','사람들이 오가는 장터에서 도윤이 작은 짐 꾸러미를 내밀었다.','narration'),
+    dialogueLine('doyun','neutral','우선 이 물건부터 함께 옮깁시다.'),
+    dialogueLine('player','surprised','정말 바로 시작하는 거야?'),
+    dialogueLine('doyun','smile','밥값은 미루면 더 비싸지는 법이오.')
   ],
   doyun:[
     dialogueLine('doyun','serious','궁예가 그렇게 쫓겨날 줄 누가 알았겠소.'),
@@ -351,7 +348,7 @@ const INITIAL_RUN=(chapterId='ch01',carry=null)=>{
   const initialOutfit=chapterId==='ch01'?'modern':'goryeo_commoner';
   const base={status:'평민',stats:{health:100,knowledge:0,fame:0,wealth:0},relations:{doyun:0,village:0,merchant:0,royal:0,citizens:0,hyunwoo:0},trust:{doyun:0,hyunwoo:0},job:'없음',route:null,lifePath:null,playerOutfit:initialOutfit,flags:{hasModernClothes:true,wearingModernClothes:initialOutfit==='modern',receivedGoryeoClothesFromDoyun:initialOutfit==='goryeo_commoner'},inventory:[{id:'modern-clothes',status:initialOutfit==='modern'?'equipped':'stored',source:'2026-seoul'}],sharedEvents:[],importantChoices:{},characterStates:{player:{characterAge:23,characterEraVariant:'unchanged',outfit:initialOutfit},doyun:{characterAge:24,characterEraVariant:'young-merchant',ageVariant:'young',outfit:'commoner',isAlive:true},hyunwoo:{characterAge:22,characterEraVariant:'student',ageVariant:'young',outfit:'scholar'}},doyunLegacy:{merchantGuild:false,name:null},peakWealth:0,...carry};
   const startStoryId=typeof CHAPTERS!=='undefined'?(CHAPTERS[chapterId]?.startStoryId||'prologue'):(chapterId==='ch03'?'ch02_transition':'prologue');
-  const run={mode:'main',replayChapterId:null,currentChapter:chapterId,storyId:startStoryId,started:false,completed:false,status:base.status,stats:{health:100,knowledge:0,fame:0,wealth:0,...base.stats},relations:{doyun:0,village:0,merchant:0,royal:0,citizens:0,hyunwoo:0,...base.relations},trust:{doyun:0,hyunwoo:0,...base.trust},job:base.job,route:base.route,lifePath:base.lifePath||base.route||null,playerOutfit:base.playerOutfit||initialOutfit,visited:[],choices:[],flags:{hasModernClothes:true,wearingModernClothes:initialOutfit==='modern',receivedGoryeoClothesFromDoyun:initialOutfit==='goryeo_commoner',...base.flags},inventory:(base.inventory||[]).map(item=>({...item})),sharedEvents:[...(base.sharedEvents||[])],importantChoices:{...base.importantChoices},characterStates:JSON.parse(JSON.stringify(base.characterStates||{})),doyunLegacy:{merchantGuild:false,name:null,...base.doyunLegacy},entryEffectsApplied:[],initialMemory:null,pending:null,activeQuestionId:null,questionAnswer:null,questionResults:{},dialogueSceneId:null,dialogueCursor:1,peakWealth:base.peakWealth||base.stats?.wealth||0,chapterStart:null};
+  const run={mode:'main',replayChapterId:null,currentChapter:chapterId,storyId:startStoryId,started:false,completed:false,status:base.status,stats:{health:100,knowledge:0,fame:0,wealth:0,...base.stats},relations:{doyun:0,village:0,merchant:0,royal:0,citizens:0,hyunwoo:0,...base.relations},trust:{doyun:0,hyunwoo:0,...base.trust},job:base.job,route:base.route,lifePath:base.lifePath||base.route||null,playerOutfit:base.playerOutfit||initialOutfit,visited:[],choices:[],flags:{hasModernClothes:true,wearingModernClothes:initialOutfit==='modern',receivedGoryeoClothesFromDoyun:initialOutfit==='goryeo_commoner',...base.flags},inventory:(base.inventory||[]).map(item=>({...item})),sharedEvents:[...(base.sharedEvents||[])],importantChoices:{...base.importantChoices},characterStates:JSON.parse(JSON.stringify(base.characterStates||{})),doyunLegacy:{merchantGuild:false,name:null,...base.doyunLegacy},entryEffectsApplied:[],initialMemory:null,pending:null,activeQuestionId:null,questionAnswer:null,questionResults:{},questionQueue:[],questionQueueIndex:0,questionQueueResumeStoryId:null,dialogueSceneId:null,dialogueCursor:1,peakWealth:base.peakWealth||base.stats?.wealth||0,chapterStart:null};
   return setPlayerOutfit(run,run.playerOutfit||initialOutfit,run.flags.receivedGoryeoClothesFromDoyun?'doyun':'story');
 };
 const INITIAL_META=()=>({questionRecords:{},wrongQuestionIds:[],reviewedQuestionIds:[],historicalEvents:[],cards:[],people:[],achievements:[],endings:[],playthroughs:[],completedRuns:0,totalChoices:0,completedChapters:[],chapterRecords:{},chapterRuns:{},knowledgeMemory:{},mysteries:[]});
@@ -384,7 +381,7 @@ function makeRunRecord(run,runId){const chapterId=run.currentChapter,score=quest
 
 function choiceAvailable(run,c){if(!c.condition)return true;if(c.condition.stat)return(run.stats[c.condition.stat]||0)>=c.condition.min;if(c.condition.flag)return Boolean(run.flags[c.condition.flag]);return true}
 function applyChoice(state,sceneId,index){const run=state.run||state,c=STORIES[sceneId].choices[index];if(!choiceAvailable(run,c))return run;for(const[k,v]of Object.entries(c.statChanges||{}))run.stats[k]=Math.max(0,run.stats[k]+v);for(const[k,v]of Object.entries(c.relationshipChanges||{}))run.relations[k]=Math.max(-100,Math.min(100,(run.relations[k]||0)+v));for(const[k,v]of Object.entries(c.trustChanges||{}))run.trust[k]=Math.max(-100,Math.min(100,(run.trust[k]||0)+v));if(c.route)run.route=c.route;if(c.lifePath)run.lifePath=c.lifePath;if(c.job!==undefined)run.job=c.job;if(c.initialMemory)run.initialMemory=c.initialMemory;if(c.flags)Object.assign(run.flags,c.flags);for(const event of c.sharedEvents||[])if(!run.sharedEvents.includes(event))run.sharedEvents.push(event);if(c.importantChoice)run.importantChoices[sceneId]=c.importantChoice;if(state.meta&&c.memoryKey)state.meta.knowledgeMemory[c.memoryKey]=c.memoryValue;run.peakWealth=Math.max(run.peakWealth,run.stats.wealth);run.choices.push({chapterId:STORIES[sceneId].chapterId,scene:sceneId,label:c.label,resultSceneId:c.resultSceneId,importantChoice:c.importantChoice||null});run.pending={...c,sourceSceneId:sceneId};run.storyId=c.nextStoryId;run.dialogueSceneId=`result:${sceneId}`;run.dialogueCursor=1;if(state.meta)state.meta.totalChoices+=1;return run}
-function applySceneEntry(state,sceneId){const run=state.run||state,s=STORIES[sceneId];if(!s||run.entryEffectsApplied?.includes(sceneId))return run;if(!run.entryEffectsApplied)run.entryEffectsApplied=[];if(s.enterFlags)Object.assign(run.flags,s.enterFlags);for(const action of s.inventoryActions||[]){const found=run.inventory.find(item=>item.id===action.id);if(found)Object.assign(found,action);else run.inventory.push({...action})}if(s.sharedEvent&&!run.sharedEvents.includes(s.sharedEvent))run.sharedEvents.push(s.sharedEvent);if(s.enterCharacterStates)for(const[id,value]of Object.entries(s.enterCharacterStates))run.characterStates[id]={...(run.characterStates[id]||{}),...value};if(s.doyunLegacy)run.doyunLegacy={merchantGuild:false,name:null,...run.doyunLegacy,...s.doyunLegacy};if(state.meta&&s.historyDiscovery){const add=(list,value)=>{if(!list.includes(value))list.push(value)};for(const name of s.historyDiscovery.people||[])add(state.meta.people,name);for(const id of s.historyDiscovery.cards||[])add(state.meta.cards,id);for(const id of s.historyDiscovery.historicalEvents||[])add(state.meta.historicalEvents,id)}if(state.meta&&s.mysteryKey){if(!state.meta.mysteries.includes(s.mysteryKey))state.meta.mysteries.push(s.mysteryKey);state.meta.knowledgeMemory[s.mysteryKey]={title:'???',label:'알 수 없는 기억',revealed:false}}run.entryEffectsApplied.push(sceneId);return run}
+function applySceneEntry(state,sceneId){const run=state.run||state,s=STORIES[sceneId];if(!s||run.entryEffectsApplied?.includes(sceneId))return run;if(!run.entryEffectsApplied)run.entryEffectsApplied=[];if(s.enterFlags)Object.assign(run.flags,s.enterFlags);if(s.enterJob!==undefined)run.job=s.enterJob;if(s.enterRoute!==undefined)run.route=s.enterRoute;if(s.enterLifePath!==undefined)run.lifePath=s.enterLifePath;for(const action of s.inventoryActions||[]){const found=run.inventory.find(item=>item.id===action.id);if(found)Object.assign(found,action);else run.inventory.push({...action})}if(s.sharedEvent&&!run.sharedEvents.includes(s.sharedEvent))run.sharedEvents.push(s.sharedEvent);if(s.enterCharacterStates)for(const[id,value]of Object.entries(s.enterCharacterStates))run.characterStates[id]={...(run.characterStates[id]||{}),...value};if(s.doyunLegacy)run.doyunLegacy={merchantGuild:false,name:null,...run.doyunLegacy,...s.doyunLegacy};if(state.meta&&s.historyDiscovery){const add=(list,value)=>{if(!list.includes(value))list.push(value)};for(const name of s.historyDiscovery.people||[])add(state.meta.people,name);for(const id of s.historyDiscovery.cards||[])add(state.meta.cards,id);for(const id of s.historyDiscovery.historicalEvents||[])add(state.meta.historicalEvents,id)}if(state.meta&&s.mysteryKey){if(!state.meta.mysteries.includes(s.mysteryKey))state.meta.mysteries.push(s.mysteryKey);state.meta.knowledgeMemory[s.mysteryKey]={title:'???',label:'알 수 없는 기억',revealed:false}}run.entryEffectsApplied.push(sceneId);return run}
 function applyDialogueMilestone(state,sceneId,dialogueCursor){const run=state.run||state,s=STORIES[sceneId],change=s?.outfitChange;if(!change||dialogueCursor<change.dialogueIndex)return run;const effectId=`${sceneId}:outfit:${change.to}`;if(change.to==='goryeo_commoner')ensureGoryeoOutfit(run);else setPlayerOutfit(run,change.to,change.source||'story');run.entryEffectsApplied=[...(run.entryEffectsApplied||[])];if(!run.entryEffectsApplied.includes(effectId))run.entryEffectsApplied.push(effectId);return run}
 function migrateSave(raw){
   const fresh=INITIAL();

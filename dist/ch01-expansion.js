@@ -36,14 +36,14 @@ function ch01Scene(id,year,title,art,rows,extra={}){
 }
 const CH01_NEW_SCENES=[
   ch01Scene('ch01_trade_start',918,'밥값부터 시작하는 장사','route-caravan',[
-    ['doyun','neutral','갈 곳도 없다면서.'],['player','worried','……응.'],['doyun','serious','그럼 밥값이라도 하시오.'],['player','surprised','뭘 하면 되는데?'],['doyun','neutral','짐 나르고, 물건 팔고. 지금 하는 일이 있으면 함께 하면 되오.'],['player','worried','나 장사해본 적 없는데.'],['doyun','smile','나도 제대로 해본 적 없소.'],['player','surprised','…….'],['doyun','surprised','왜 그런 눈으로 보시오?'],['player','smile','아니. 잘해보자고.'],['narrator','neutral','서툰 두 사람은 작은 짐부터 함께 옮기기 시작했다.','narration']
-  ],{location:'송악으로 가는 길목',nextStoryId:'ch01_jump_927',sharedEvent:'ch01_trade_partners'}),
+    ['narrator','neutral','장터 한쪽에서 두 사람은 작은 짐부터 함께 옮겼다.','narration'],['player','smile','일단 오늘 밥값부터?'],['doyun','smile','좋소. 나도 오늘 장사부터 배워야 하니 서로 빚진 셈 칩시다.'],['narrator','neutral','서툰 두 사람의 첫 거래가 그렇게 시작되었다.','narration']
+  ],{location:'송악 장터',nextStoryId:'ch01_jump_927',sharedEvent:'ch01_trade_partners',enterJob:'상단 일꾼',enterRoute:'merchant',enterLifePath:'merchant'}),
   ch01Scene('ch01_jump_927',927,'아홉 해가 흘렀다','route-songak',[
     ['narrator','neutral','927년 — 고려에 온 지 아홉 해','narration'],['narrator','neutral','수레와 장부를 함께 붙들던 시간이 쌓였다. 몇 군데 거래처는 생겼지만, 큰 손실 한 번이면 흔들릴 작은 장사였다.','narration'],['player','thinking','처음에는 하루만 버티려고 했는데. 이제는 내일 받을 짐을 걱정하고 있었다.','thought']
   ],{nextStoryId:'ch01_missing_traders'}),
   ch01Scene('ch01_missing_traders',927,'돌아오지 않는 사람','route-caravan',[
-    ['doyun','worried','늦네.'],['player','neutral','누가?'],['doyun','worried','남쪽으로 간 사람들이오. 약속한 날이 사흘이나 지났소.'],['player','worried','비 때문에 길이 막힌 거 아닐까?'],['doyun','serious','그랬으면 누구라도 소식을 보냈겠지.'],['narrator','neutral','도윤은 비워 둔 장부 칸을 덮지 못했다. 곡식값보다 사람들의 이름이 먼저 적힌 칸이었다.','narration']
-  ],{nextStoryId:'ch01_gongsan'}),
+    ['doyun','worried','남쪽으로 간 사람들이 약속한 날보다 사흘이나 늦었소.'],['merchant','serious','후백제군이 신라 왕경을 공격했고, 고려군도 신라를 도우러 움직였답니다. 남쪽 길이 모두 뒤엉켰소.'],['player','worried','후백제가 신라를 공격하고 고려가 개입한 거구나.'],['narrator','neutral','도윤은 곡식값보다 사람들의 이름이 먼저 적힌 장부 칸을 덮지 못했다.','narration']
+  ],{quizId:'ch01-story-war-context',nextStoryId:'ch01_gongsan'}),
   ch01Scene('ch01_gongsan',927,'공산에서 온 소식','thief-aftermath',[
     ['narrator','neutral','며칠 뒤, 다친 상인이 빈 수레를 끌고 돌아왔다.','narration'],['merchant','serious','후백제가 신라의 왕경까지 공격했소. 경애왕께서 돌아가셨다 하오.'],['player','surprised','왕까지……?'],['merchant','serious','왕건 임금이 신라를 도우러 나섰지만 공산에서 고려군이 크게 패했소. 신숭겸 장군도 전사했다더군.'],['doyun','worried','함께 갔던 사람들은?'],['merchant','serious','길에서 흩어졌소. 나는 돌아오지 못한 이들의 소식도 모르오.'],['player','thinking','신숭겸. 공산 전투. 분명 외웠던 이름인데. 여기서는 누군가의 죽음이었다.','thought'],['narrator','neutral','짐과 외상값은 사라졌고, 다음 거래 약속을 하던 목소리도 사라졌다.','narration']
   ],{cardId:'ch01-gongsan',quizId:'ch01-story-gongsan',enterStatChanges:{wealth:-7}}),
@@ -63,7 +63,7 @@ const CH01_NEW_SCENES=[
     ['merchant','surprised','고창에서 왕건 임금의 군대가 후백제군을 크게 이겼소!'],['doyun','surprised','짐을 보낼 길도 다시 열리겠군.'],['merchant','neutral','고창의 지역 세력도 고려군을 도왔다 하오. 고려로 돌아서는 고을이 늘고 있소.'],['player','thinking','927년 공산은 패배. 930년 고창은 승리. 비슷한 이름인데, 사람들의 표정은 정반대였다.','thought']
   ],{cardId:'ch01-gochang',quizId:'ch01-story-gochang'}),
   ch01Scene('ch01_belonging',930,'우리가 이겼다는 말','route-songak',[
-    ['doyun','smile','이번에는 우리가 이겼군.'],['player','surprised','우리가?'],['doyun','neutral','십 년 넘게 여기 살았으면 고려 사람 아니오?'],['player','neutral','…….'],['doyun','smile','수레 밀 때만 남의 나라 사람인 척하지 마시오.'],['player','smile','알았어. 내가 앞에서 끌게.'],['player','thinking','돌아갈 곳을 찾는 동안, 함께 살아갈 자리가 조금씩 생기고 있었다.','thought']
+    ['doyun','smile','이번에는 우리가 이겼군.'],['player','surprised','우리가?'],['doyun','neutral','십 년 가까이 여기 살았으면 고려 사람 아니오?'],['player','neutral','…….'],['doyun','smile','수레 밀 때만 남의 나라 사람인 척하지 마시오.'],['player','smile','알았어. 내가 앞에서 끌게.'],['player','thinking','돌아갈 곳을 찾는 동안, 함께 살아갈 자리가 조금씩 생기고 있었다.','thought']
   ],{nextStoryId:'ch01_jump_935'}),
   ch01Scene('ch01_jump_935',935,'익숙해진 장부','ch02-doyun-shop-interior-949',[
     ['narrator','neutral','935년 — 둘의 장사는 조금 안정되었다.','narration'],['narrator','neutral','도윤은 주름이 늘었고, 거래 장부의 내 글씨는 더 익숙해졌다. 빌린 창고 한쪽이 우리의 물건으로 채워졌다.','narration'],['doyun','serious','그 자루는 남쪽으로 보낼 것이오. 섞지 마시오.'],['player','smile','아직도 날 초보 취급하네.'],['doyun','smile','처음 섞은 걸 기억하고 있으니 그렇지.']
@@ -137,11 +137,14 @@ const CH01_NEW_SCENES=[
   ],{sceneEffect:'blackout',cinematicSub:'스물다섯 해의 이야기를 기록합니다.',continueLabel:'CHAPTER CLEAR',completeChapter:true})
 ];
 Object.assign(STORIES,Object.fromEntries(CH01_NEW_SCENES.map(item=>[item.sceneId,item])));
-// Keep all early dialogue, effects, illustrations and choices. Only quiz routing changes.
+// Legacy scene IDs remain loadable for old saves, while new players reach the history loop sooner.
 for(const id of ['doyun','route_context','thief_aftermath']){delete STORIES[id].quizId;STORIES[id].nextStoryId={doyun:'status',route_context:'thief',thief_aftermath:'night'}[id]}
 STORIES.night.nextStoryId='ch01_trade_start';
-STORIES.ch01_trade_start.quizId='ch01-story-gungye-transition';
-STORIES.ch01_belonging.quizId='ch01-story-early-chronology';
+STORIES.outfit_gift.nextStoryId='rumor';
+STORIES.market.nextStoryId='ch01_trade_start';
+delete STORIES.ch01_trade_start.quizId;
+delete STORIES.ch01_belonging.quizId;
+for(const id of ['village','doyun','status','life_choice','route_songak','route_village','route_caravan','route_royal','route_context','thief','thief_aftermath','night'])STORIES[id].storyActive=false;
 STORIES.ch01_unity.quizId='ch02-story-illyecheon';
 STORIES.ch01_welfare.quizId='ch02-story-welfare';
 Object.assign(STORIES.future_flow,{year:936,location:'살아온 시간의 연결',fictionNotice:'주인공과 도윤의 경험은 창작이며 연표의 사건은 역사적 사실입니다.',dialogues:ch01Lines([
@@ -152,7 +155,7 @@ Object.assign(STORIES.future_flow,{year:936,location:'살아온 시간의 연결
 STORIES.complete.year=943;
 Object.assign(CHAPTERS.ch01,{subtitle:'918–943, 함께 살아낸 새로운 나라',years:'918 — 943',questionCount:10,reviewQuestionCount:13});
 
-const CH01_STORY_QUESTION_IDS=['ch01-test-01','ch01-test-02','ch01-story-gungye-transition','ch01-story-gongsan','ch01-story-gochang','ch01-story-early-chronology','ch01-story-gyeonhwon','ch01-story-silla','ch02-story-illyecheon','ch01-boss','ch01-story-integration','ch01-story-north','ch02-story-welfare','ch01-story-hunyo'];
+const CH01_STORY_QUESTION_IDS=['ch01-test-01','ch01-test-02','ch01-story-war-context','ch01-story-gongsan','ch01-story-gongsan-battle','ch01-story-gochang-name','ch01-story-gochang','ch01-story-gyeonhwon','ch02-story-geumsansa','ch01-story-silla','ch02-story-illyecheon','ch01-boss','ch02-story-sasimgwan','ch01-story-integration','ch02-story-balhae-refugees','ch01-story-north','ch02-story-welfare','ch01-story-hunyo'];
 const ch01Question=data=>question({chapterId:'ch01',isOfficial:false,sourceType:'exam_style',sourceVerified:false,historicalSourceVerified:true,examName:'한국사능력검정시험',examType:'기출 유형 · 자체 제작',questionType:'exam_style',source:'국사편찬위원회 우리역사넷의 확인된 사실관계에 기반한 자체 제작',rewardKnowledge:2,...data});
 const CH01_STORY_QUESTIONS=[
   ch01Question({questionId:'ch01-story-gungye-transition',year:918,relatedSceneId:'ch01_trade_start',relatedIllustrationId:'route-caravan',relatedHistoricalEventId:'goryeo-foundation-918',formatLabel:'인물·건국 연결',difficulty:'하',
@@ -161,6 +164,15 @@ const CH01_STORY_QUESTIONS=[
   ch01Question({questionId:'ch01-story-gongsan',year:927,relatedSceneId:'ch01_gongsan',relatedIllustrationId:'thief-aftermath',relatedHistoricalEventId:'ch01-gongsan',formatLabel:'사건·결과 연결',difficulty:'중',
     passage:'신라를 공격한 후백제군과 맞선 고려군이 공산에서 크게 패했다. 왕건은 탈출했지만 가까운 장수를 잃었다.',question:'이 전투와 관련된 설명으로 옳은 것은?',choices:['신숭겸이 전사하였다.','신검이 항복하여 후삼국이 통일되었다.','경순왕 김부가 고려에 귀순하였다.','왕건이 고창에서 후백제군을 격파하였다.'],answer:0,
     explanation:'927년 공산 전투에서 왕건이 패하고 신숭겸이 전사했습니다. 고창 승리는 930년입니다.',choiceExplanations:['공산 전투의 인물과 결과입니다.','936년 일리천 전투 뒤의 일입니다.','935년 신라의 항복입니다.','930년 고창 전투입니다.'],examKeywords:['927 공산','왕건 패배','신숭겸'],concepts:['공산전투_고창전투'],resumeStoryId:'ch01_conflict',sourceUrls:[CH01_SOURCES.chronology]}),
+  ch01Question({questionId:'ch01-story-war-context',year:927,relatedSceneId:'ch01_missing_traders',relatedIllustrationId:'route-caravan',relatedHistoricalEventId:'ch01-gongsan',formatLabel:'시대 상황',difficulty:'하',
+    passage:'927년, 후백제군이 신라 왕경을 공격하자 고려군이 신라를 돕기 위해 움직였다.',question:'이 상황에서 서로 맞선 세력의 연결로 옳은 것은?',choices:['고려·후백제 연합 — 신라','후백제 — 신라를 돕는 고려','신라·후백제 연합 — 고려','고려 — 신라를 공격하는 발해'],answer:1,
+    explanation:'후백제가 신라를 공격하자 왕건의 고려군이 신라를 돕기 위해 개입했습니다. 이 과정에서 공산 전투가 벌어졌습니다.',choiceExplanations:['고려와 후백제는 맞선 세력입니다.','927년 전쟁 상황을 바르게 연결했습니다.','신라와 후백제가 연합한 것이 아닙니다.','발해는 이 전투의 교전 세력이 아닙니다.'],examKeywords:['927','후백제의 신라 공격','고려 개입'],concepts:['927_전쟁상황','후삼국_사건순서'],gameMemory:'돌아오지 않는 거래 일행을 기다리며 후백제의 신라 공격과 고려의 개입 소식을 들었습니다.',resumeStoryId:'ch01_gongsan',sourceUrls:[CH01_SOURCES.chronology]}),
+  ch01Question({questionId:'ch01-story-gongsan-battle',year:927,relatedSceneId:'ch01_gongsan',relatedIllustrationId:'thief-aftermath',relatedHistoricalEventId:'ch01-gongsan',formatLabel:'전투 식별',difficulty:'하',
+    passage:'왕건이 신라를 돕기 위해 출전했으나 후백제군에게 패하고 신숭겸을 잃었다.',question:'자료에 해당하는 전투는?',choices:['공산 전투','고창 전투','일리천 전투','귀주 대첩'],answer:0,
+    explanation:'왕건이 후백제군에게 패하고 신숭겸이 전사한 전투는 927년 공산 전투입니다.',choiceExplanations:['927년 왕건의 패전입니다.','930년 왕건이 승리한 전투입니다.','936년 후삼국 통일로 이어진 전투입니다.','1019년 거란을 물리친 전투입니다.'],examKeywords:['공산 전투','왕건 패배','신숭겸 전사'],concepts:['공산전투_고창전투','신숭겸'],gameMemory:'다친 상인이 빈 수레를 끌고 와 공산의 패전과 신숭겸의 죽음을 전했습니다.',resumeStoryId:'ch01_conflict',sourceUrls:[CH01_SOURCES.chronology]}),
+  ch01Question({questionId:'ch01-story-gochang-name',year:930,relatedSceneId:'ch01_gochang',relatedIllustrationId:'route-context',relatedHistoricalEventId:'ch01-gochang',formatLabel:'전투 식별',difficulty:'하',
+    passage:'930년, 왕건의 고려군이 지역 세력의 도움을 받아 후백제군을 크게 물리쳤다.',question:'자료에 해당하는 전투는?',choices:['공산 전투','고창 전투','일리천 전투','황산벌 전투'],answer:1,
+    explanation:'930년 왕건이 후백제군을 크게 물리쳐 전세를 바꾼 전투는 고창 전투입니다.',choiceExplanations:['927년 고려가 패한 전투입니다.','930년 고려가 승리한 전투입니다.','936년 후삼국 통일로 이어진 전투입니다.','백제 멸망 과정의 전투입니다.'],examKeywords:['930','고창 전투','왕건 승리'],concepts:['공산전투_고창전투','고창전투'],gameMemory:'도윤이 열린 거래길을 보며 “이번에는 우리가 이겼군.”이라고 말했습니다.',resumeStoryId:'ch01_belonging',sourceUrls:[CH01_SOURCES.chronology]}),
   ch01Question({questionId:'ch01-story-gochang',year:930,relatedSceneId:'ch01_gochang',relatedIllustrationId:'route-context',relatedHistoricalEventId:'ch01-gochang',formatLabel:'비교 자료',difficulty:'중',
     passage:'927년에는 돌아오지 않는 거래 일행을 기다렸다. 930년에는 후백제군을 격파했다는 소식을 듣고 거래길을 다시 열었다.',question:'두 전투의 결과를 바르게 연결한 것은?',choices:['공산 승리 — 고창 패배','공산 패배 — 고창 승리','공산 패배 — 고창 패배','공산 승리 — 고창 승리'],answer:1,
     explanation:'왕건은 공산(927)에서 패배하고 고창(930)에서 승리했습니다.',choiceExplanations:['두 결과를 모두 뒤바꿨습니다.','연도와 결과가 맞습니다.','고창에서는 고려가 승리했습니다.','공산에서는 고려가 패배했습니다.'],examKeywords:['927 공산 패배','930 고창 승리'],concepts:['공산전투_고창전투'],resumeStoryId:'ch01_belonging',sourceUrls:[CH01_SOURCES.chronology]}),
@@ -170,6 +182,9 @@ const CH01_STORY_QUESTIONS=[
   ch01Question({questionId:'ch01-story-gyeonhwon',year:935,relatedSceneId:'ch01_gyeonhwon',relatedIllustrationId:'ch02-doyun-shop-interior-949',relatedHistoricalEventId:'ch01-gyeonhwon',formatLabel:'인물 식별',difficulty:'중',
     passage:'아들 신검에게 왕위를 빼앗기고 금산사에 갇혔다. 탈출한 뒤 왕건의 고려에 귀순하였다.',question:'자료의 인물은?',choices:['궁예','경순왕 김부','견훤','신숭겸'],answer:2,
     explanation:'견훤은 후백제의 건국자입니다. 그를 밀어낸 신검은 후백제를 이끌었고, 견훤은 고려로 귀순했습니다.',choiceExplanations:['궁예는 후고구려를 세운 인물입니다.','김부는 신라의 마지막 왕입니다.','금산사 탈출과 고려 귀순의 인물입니다.','신숭겸은 927년 공산에서 전사했습니다.'],examKeywords:['935 견훤','금산사','신검'],concepts:['견훤_신검','견훤귀순_경순왕귀순'],resumeStoryId:'ch01_silla',sourceUrls:[CH01_SOURCES.unification]}),
+  ch01Question({questionId:'ch02-story-geumsansa',year:935,relatedSceneId:'ch01_gyeonhwon',relatedIllustrationId:'ch02-doyun-shop-interior-949',relatedHistoricalEventId:'ch01-gyeonhwon',formatLabel:'사건 원인·결과',difficulty:'중',
+    passage:'후백제를 세운 인물이 아들에게 왕위를 빼앗기고 금산사에 갇혔다가 탈출하였다.',question:'이 인물이 금산사를 탈출한 뒤 선택한 행동은?',choices:['신라에 항복하였다.','고려의 왕건에게 귀순하였다.','일리천에서 신검을 도왔다.','철원에서 태봉을 세웠다.'],answer:1,
+    explanation:'견훤은 금산사를 탈출한 뒤 고려의 왕건에게 귀순했습니다. 이후 후백제의 신검과 맞서는 고려 편에 섰습니다.',choiceExplanations:['신라에 항복한 것이 아닙니다.','견훤의 금산사 탈출 뒤 행적입니다.','견훤은 신검과 대립했습니다.','태봉을 세운 인물은 궁예입니다.'],examKeywords:['견훤','금산사 탈출','고려 귀순'],concepts:['견훤_신검','금산사'],gameMemory:'상인이 “견훤이 금산사를 탈출해 고려로 왔다”고 숨을 몰아쉬며 전했습니다.',resumeStoryId:'ch01_silla',sourceUrls:[CH01_SOURCES.unification]}),
   ch01Question({questionId:'ch01-story-silla',year:935,relatedSceneId:'ch01_silla',relatedIllustrationId:'ch02-doyun-shop-interior-949',relatedHistoricalEventId:'ch01-silla',formatLabel:'인물·사건 연결',difficulty:'중',
     passage:'신라의 마지막 왕이 백성의 피해를 우려하여 나라를 고려에 넘겼다. 왕건은 그를 우대하였다.',question:'이 인물과 이후 연결되는 제도로 옳은 것은?',choices:['견훤 — 노비안검법','신검 — 과거제','궁예 — 12목','경순왕 김부 — 경주의 사심관'],answer:3,
     explanation:'935년 신라의 귀순을 결정한 왕은 경순왕 김부입니다. 김부와 경주의 사심관을 연결해 기억합니다.',choiceExplanations:['견훤은 후백제 건국자이며 노비안검법은 광종 정책입니다.','신검은 후백제의 마지막 왕입니다.','12목은 성종 때의 제도입니다.','김부의 지역 연고를 활용한 사심관의 대표 사례입니다.'],examKeywords:['935 신라 항복','김부','사심관'],concepts:['견훤귀순_경순왕귀순','사심관_기인'],resumeStoryId:'ch01_jump_936',sourceUrls:[CH01_SOURCES.policy]}),
@@ -179,6 +194,12 @@ const CH01_STORY_QUESTIONS=[
   ch01Question({questionId:'ch01-story-integration',year:937,relatedSceneId:'ch01_giin',relatedIllustrationId:'route-songak',relatedHistoricalEventId:'ch01-giin',formatLabel:'정책 구별',difficulty:'중상',
     passage:'(가) 출신 지역의 연고를 가진 유력자에게 그 지역을 감독하게 했다.\n(나) 지방 호족의 자제를 수도에 머물게 했다.',question:'(가), (나)에 해당하는 제도를 바르게 연결한 것은?',choices:['기인 — 사심관','사심관 — 기인','과거제 — 노비안검법','12목 — 기인'],answer:1,
     explanation:'(가)는 사심관, (나)는 기인입니다. 태조는 호족을 포섭하면서 동시에 지방 세력을 견제했습니다.',choiceExplanations:['두 제도의 방식을 뒤바꿨습니다.','연고 지역 감독과 자제의 수도 체류를 구분했습니다.','두 정책은 광종의 왕권 강화 정책입니다.','12목 지방관 파견은 성종 때의 제도입니다.'],examKeywords:['사심관','기인','혼인·포섭·견제'],concepts:['사심관_기인','태조_광종'],resumeStoryId:'ch01_refugee_family',sourceUrls:[CH01_SOURCES.policy]}),
+  ch01Question({questionId:'ch02-story-sasimgwan',year:937,relatedSceneId:'ch01_sasimgwan',relatedIllustrationId:'route-context',relatedHistoricalEventId:'ch01-sasimgwan',formatLabel:'제도 식별',difficulty:'중',
+    passage:'태조는 출신 지역에 연고가 있는 유력자에게 그 지역을 감독하도록 하였다. 경순왕 김부가 경주의 대표 사례이다.',question:'자료에 해당하는 제도는?',choices:['기인','사심관','과거제','12목 지방관'],answer:1,
+    explanation:'사심관은 출신 지역에 연고가 있는 유력자에게 그 지역을 감독하게 한 태조의 지방 통제 제도입니다.',choiceExplanations:['기인은 호족 자제를 수도에 머물게 한 제도입니다.','김부와 경주의 연결이 대표 사례입니다.','과거제는 광종 때 시행되었습니다.','12목 지방관 파견은 성종 때입니다.'],examKeywords:['사심관','경순왕 김부','경주'],concepts:['사심관_기인','사심관'],gameMemory:'신라의 마지막 왕 김부가 경주의 사심관이 되었다는 거래 상인의 말을 들었습니다.',resumeStoryId:'ch01_giin',sourceUrls:[CH01_SOURCES.regional]}),
+  ch01Question({questionId:'ch02-story-balhae-refugees',year:938,relatedSceneId:'ch01_refugee_family',relatedIllustrationId:'ch02-doyun-shop-interior-949',relatedHistoricalEventId:'ch01-north',formatLabel:'정책 방향',difficulty:'중',
+    passage:'나라를 잃고 남쪽으로 내려온 발해 사람들이 고려에서 머물 곳과 일자리를 얻었다.',question:'태조가 이들을 받아들인 정책과 가장 가까운 설명은?',choices:['신라 골품제를 유지하려 하였다.','고구려 계승 의식을 바탕으로 북방 민족을 포용하였다.','후백제와 연합하여 신라를 공격하였다.','거란에 조공하여 북진을 포기하였다.'],answer:1,
+    explanation:'태조는 발해 유민을 포용하고 고구려 계승 의식을 내세웠습니다. 이는 서경 중시와 북진 정책으로도 이어집니다.',choiceExplanations:['고려가 골품제를 유지한 것은 아닙니다.','발해 유민 포용의 역사적 방향입니다.','발해 유민 수용과 관련 없는 설명입니다.','태조는 북진 정책을 추진했습니다.'],examKeywords:['발해 유민','고구려 계승','북진 정책'],concepts:['발해유민','서경_북진'],gameMemory:'도윤의 장터에서 발해에서 내려온 가족이 짐을 풀고 다음 날 함께 일하기로 했습니다.',resumeStoryId:'ch01_north',sourceUrls:[CH01_SOURCES.refugees]}),
   ch01Question({questionId:'ch01-story-north',year:940,relatedSceneId:'ch01_north',relatedIllustrationId:'route-caravan',relatedHistoricalEventId:'ch01-north',formatLabel:'왕의 정책',difficulty:'중',
     passage:'고려는 발해 유민을 받아들였고, 옛 고구려의 중심지인 평양을 서경으로 중시하였다.',question:'자료와 가장 밀접한 통치 방향은?',choices:['신라의 골품제 유지','광종의 과거제 시행','고구려 계승 의식과 북진 정책','조선의 한양 천도'],answer:2,
     explanation:'태조의 발해 유민 포용과 서경 중시는 고구려 계승 의식 및 북진 정책과 연결됩니다.',choiceExplanations:['고려가 신라 골품제를 유지한 것은 아닙니다.','광종은 이후 왕이며 자료의 북방 정책과 다릅니다.','유민 포용·서경·북진의 공통 방향입니다.','조선의 수도 정책으로 시대가 다릅니다.'],examKeywords:['발해 유민','고구려 계승','서경','북진'],concepts:['서경_북진','태조_광종'],resumeStoryId:'ch01_welfare',sourceUrls:[CH01_SOURCES.refugees,CH01_SOURCES.policy]}),
@@ -192,9 +213,15 @@ const CH01_STORY_QUESTIONS=[
 QUESTIONS.push(...CH01_STORY_QUESTIONS);
 const ch01ById=id=>QUESTIONS.find(q=>q.questionId===id);
 // The original early questions remain available, but only two are mandatory in 918.
-for(const id of ['ch01-test-01','ch01-test-02']){const q=ch01ById(id);q.resumeStoryId=q.originalResumeStoryId||q.resumeStoryId;Object.assign(q,{year:918,questionType:'exam_style',formatLabel:id.endsWith('01')?'인물·자료 추론':'시대 상황',examType:'기출 유형 · 자체 제작',sourceVerified:false,concepts:['918_936','궁예_왕건'],sourceUrls:[CH01_SOURCES.chronology]})}
+for(const id of ['ch01-test-01','ch01-test-02']){const q=ch01ById(id);q.resumeStoryId=id==='ch01-test-01'?'foundation':'market';Object.assign(q,{year:918,questionType:'exam_style',formatLabel:id.endsWith('01')?'인물 식별':'연도 식별',examType:'기출 유형 · 자체 제작',sourceVerified:false,concepts:id.endsWith('01')?['궁예_왕건','후고구려']:['918_936','고려건국'],conceptIds:id.endsWith('01')?['궁예_왕건','후고구려']:['918_936','고려건국'],gameMemory:id.endsWith('01')?'거리 사람들이 “궁예가 쫓겨났다”고 이야기하던 장면을 떠올리면 됩니다.':'918년은 주인공이 고려에서 처음 눈을 뜬 해입니다.',sourceUrls:[CH01_SOURCES.chronology]})}
 for(const id of ['ch01-test-03','ch01-test-04','ch01-test-05'])Object.assign(ch01ById(id),{reviewOnly:true,resumeStoryId:ch01ById(id).originalResumeStoryId||ch01ById(id).resumeStoryId,examType:'기출 유형 · 자체 제작',sourceVerified:false});
-Object.assign(ch01ById('ch01-boss'),{year:936,resumeStoryId:'ch01_integration',questionType:'exam_style',formatLabel:'복합 선택지',examType:'기출 유형 · 자체 제작',sourceVerified:false,concepts:['918_936','후삼국_사건순서'],sourceUrls:[CH01_SOURCES.unification]});
+for(const id of ['ch01-story-gungye-transition','ch01-story-early-chronology'])Object.assign(ch01ById(id),{retired:true,reviewOnly:true,sourceStatus:'superseded_by_scene_question_sequence'});
+Object.assign(ch01ById('ch01-boss'),{year:936,resumeStoryId:'ch01_integration',questionType:'exam_style',formatLabel:'누적 사건 순서',examType:'기출 유형 · 자체 제작',sourceVerified:false,
+  passage:'ㄱ. 견훤이 금산사를 탈출하여 고려에 귀순하였다.\nㄴ. 왕건이 공산 전투에서 패하였다.\nㄷ. 왕건이 일리천에서 신검의 군대를 물리쳤다.\nㄹ. 왕건이 고창 전투에서 승리하였다.',
+  question:'사건을 일어난 순서대로 바르게 나열한 것은?',choices:['ㄴ → ㄹ → ㄱ → ㄷ','ㄹ → ㄴ → ㄱ → ㄷ','ㄴ → ㄱ → ㄹ → ㄷ','ㄱ → ㄴ → ㄹ → ㄷ'],answer:0,
+  explanation:'공산 전투(927) → 고창 전투(930) → 견훤의 고려 귀순(935) → 일리천 전투(936) 순입니다.',
+  choiceExplanations:['927 → 930 → 935 → 936의 순서입니다.','공산 전투가 고창 전투보다 먼저입니다.','고창 전투가 견훤의 귀순보다 먼저입니다.','견훤의 귀순은 공산·고창 전투보다 뒤입니다.'],
+  examKeywords:['927 공산','930 고창','935 견훤 귀순','936 일리천'],concepts:['918_936','후삼국_사건순서'],conceptIds:['918_936','후삼국_사건순서'],gameMemory:'공산의 손실, 고창의 승리, 견훤이 고려로 왔다는 소문, 일리천의 통일 소식을 차례로 경험했습니다.',sourceUrls:[CH01_SOURCES.unification]});
 // The attached problem and answer PDFs verify these transcriptions. They replace
 // six self-made review slots without changing the chapter's story-test cadence.
 const VERIFIED_CH01_OFFICIAL_IDS=['ch01-official-69-basic-10','ch01-official-79-advanced-09','ch01-official-70-advanced-10','ch01-official-73-basic-10','ch01-official-74-advanced-10','ch01-official-76-advanced-10'];
@@ -221,12 +248,12 @@ HISTORY.relatedQuestions=[...CH01_STORY_QUESTION_IDS,...CH01_REVIEW_IDS];
 
 // Add diagnostics to legacy practice items without changing their wording or answer.
 const CH01_LEGACY_EXPLANATIONS={
-  'ch01-test-01':['궁예 휘하에서 성장한 왕건의 설명입니다.','후백제의 건국자는 견훤입니다.','왕건을 추대한 것은 궁예 휘하의 세력입니다.','기억 여부가 아니라 역사적 사실을 고르는 문제입니다.'],
-  'ch01-test-02':['신라 항복은 935년, 통일은 936년입니다.','후백제는 936년까지 존재합니다.','918년에는 세 나라가 함께 존재합니다.','노비안검법은 956년 광종의 정책입니다.','귀주 대첩은 1019년입니다.'],
+  'ch01-test-01':['견훤은 후백제를 세웠습니다.','궁예가 후고구려를 이끌었습니다.','신검은 후백제의 마지막 왕입니다.','경순왕은 신라의 마지막 왕입니다.'],
+  'ch01-test-02':['900년은 견훤의 후백제 건국입니다.','901년은 궁예의 후고구려 건국입니다.','918년은 왕건의 고려 건국입니다.','936년은 고려의 후삼국 통일입니다.'],
   'ch01-test-03':['후백제(900)가 후고구려(901)보다 먼저입니다.','900 → 901 → 918 → 936 순서입니다.','후고구려(901)가 고려(918)보다 먼저입니다.','고려(918)는 두 후삼국 국가보다 늦습니다.','후백제(900)가 먼저입니다.'],
   'ch01-test-04':['호족을 즉시 없애기보다 포섭과 견제를 병행했습니다.','혼인을 통한 호족 포섭은 태조의 정책입니다.','신라 골품제의 강화는 고려의 정책이 아닙니다.','과전법은 고려 말의 제도입니다.','태조의 건국 기반을 후대 문벌 귀족 중심으로만 설명할 수 없습니다.'],
   'ch01-test-05':['후백제의 경쟁은 사실이므로 부정형 문제의 답이 아닙니다.','918년에 신라가 존재했다는 것은 사실입니다.','왕건은 궁예 세력에서 성장했습니다.','918년에는 통일이 끝나지 않았으므로 이 설명이 틀렸습니다.','지방 호족의 중요성은 사실입니다.'],
-  'ch01-boss':['ㄷ도 옳으므로 빠뜨렸습니다.','ㄹ은 건국과 통일을 혼동한 설명입니다.','ㄱ도 옳으므로 빠뜨렸습니다.','ㄱ·ㄴ·ㄷ이 옳고 ㄹ이 틀립니다.','ㄹ은 918년과 936년을 같은 해로 보아 틀렸습니다.']
+  'ch01-boss':['927 → 930 → 935 → 936의 순서입니다.','공산 전투가 고창 전투보다 먼저입니다.','고창 전투가 견훤의 귀순보다 먼저입니다.','견훤의 귀순은 공산·고창 전투보다 뒤입니다.']
 };
 for(const q of QUESTIONS.filter(q=>q.chapterId==='ch01'&&!q.retired)){
   q.year??=918;q.relatedHistoricalEventId??='goryeo-foundation-918';
@@ -238,6 +265,7 @@ for(const q of QUESTIONS.filter(q=>!q.retired)){
   q.sourceType??=q.isOfficial?'official_exam':'exam_style';
   q.conceptIds??=[...(q.concepts||[])];
   q.storyConnection??=`‘${related?.title||q.historicalEvent||'이야기'}’ 장면에서 확인한 ${q.examKeywords?.[0]||'역사'} 단서를 떠올리면 정답은 ${answerMark}입니다.`;
+  q.gameMemory??=q.storyConnection;
 }
 const migrateBeforeCh01Expansion=migrateSave;
 migrateSave=function(raw){
