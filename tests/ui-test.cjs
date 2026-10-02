@@ -11,13 +11,13 @@ function boot(){
 const click=dataset=>{vm.runInContext('inputLockedUntil=0',context);handlers.click({target:{closest:()=>({dataset,disabled:false})}})};
 const action=x=>click({action:x}),nav=x=>click({nav:x}),selectChoice=i=>click({choice:String(i)}),answer=i=>click({answer:String(i)});
 const current=()=>JSON.parse(saved),story=()=>current().run.storyId;
-function revealDialogue(){let guard=0;while(html.includes('data-action="advance-dialogue"')){action('advance-dialogue');if(++guard>12)throw new Error('dialogue did not finish')}}
+function revealDialogue(){let guard=0;while(html.includes('data-action="advance-dialogue"')){action('advance-dialogue');if(++guard>30)throw new Error('dialogue did not finish')}}
 function next(){revealDialogue();action('next')}
 function choice(i){revealDialogue();selectChoice(i)}
 function resultNext(){revealDialogue();action('result-next')}
 function currentAnswer(){const id=current().run.activeQuestionId;return vm.runInContext(`QUESTIONS.find(q=>q.questionId===${JSON.stringify(id)}).answer`,context)}
 function drainSupplementalQuestions(){let guard=0;while(vm.runInContext(`Boolean(STORIES[${JSON.stringify(story())}]?.supplementalExam)`,context)){next();answer(currentAnswer());assert(html.includes('기억이 선명해졌다'));action('quiz-next');if(++guard>8)throw new Error('supplemental quiz guard')}}
-function answerCurrent(index){answer(index);assert(html.includes(index===currentAnswer()?'기억이 선명해졌다':'기억이 흐릿하다'));action('quiz-next');drainSupplementalQuestions()}
+function answerCurrent(index){answer(index);assert(html.includes(index===currentAnswer()?'기억이 선명해졌다':'기억이 섞였어'));action('quiz-next');drainSupplementalQuestions()}
 
 
 boot();
@@ -28,15 +28,13 @@ action('advance-dialogue');assert.equal(current().run.dialogueCursor,2);boot();a
 choice(1);assert.equal(current().run.initialMemory,'936');assert(html.includes('data-speaker-type="player"'));assert(html.includes('936년'));resultNext();
 assert.equal(story(),'sleep');assert(html.includes('has-art'));assert(!html.includes('ASSET_REQUIRED'));next();
 assert.equal(story(),'voice');assert(html.includes('cinematic-black'));assert(!html.includes('background-image'));assert(css.includes('.cinematic-black .game-header'));assert(css.includes('.cinematic-black .game-stats'));assert(html.includes('이보시오'));assert.equal(timers.length,0);assert.equal(current().run.dialogueCursor,1);action('advance-dialogue');assert(html.includes('이보시오……!'));assert.equal(timers.length,0);boot();action('play');assert.equal(current().run.dialogueCursor,2);action('next');
-assert.equal(story(),'house');assert(html.includes('effect-wake-reveal'));assert(html.includes('stage-left active'));assert(html.includes('data-character-id="doyun"'));assert(html.includes('data-position="left"'));assert(html.includes('stage-right listening'));assert(html.includes('정신이 드시오?'));action('advance-dialogue');assert(!html.includes('effect-wake-reveal'));assert(html.includes('stage-right active'));choice(2);assert(current().run.flags.observation);resultNext();
-assert.equal(story(),'outfit_question');assert(html.includes('그 이상한 옷은 뭐요?'));choice(3);assert.equal(current().run.flags.clothesExplanation,'banter');resultNext();
-assert.equal(story(),'outfit_gift');assert.equal(current().run.playerOutfit,'modern');while(current().run.dialogueCursor<6)action('advance-dialogue');assert.equal(current().run.playerOutfit,'modern');assert(html.includes('player_modern_'));action('advance-dialogue');assert.equal(current().run.playerOutfit,'goryeo_commoner');assert(current().run.flags.hasModernClothes);assert.equal(current().run.flags.wearingModernClothes,false);assert(current().run.flags.receivedGoryeoClothesFromDoyun);assert(current().run.inventory.some(item=>item.id==='modern-clothes'&&item.status==='stored'));assert(current().run.inventory.some(item=>item.id==='goryeo-commoner-clothes'&&item.status==='equipped'));assert(html.includes('player_goryeo_'));boot();action('play');assert.equal(story(),'outfit_gift');assert.equal(current().run.playerOutfit,'goryeo_commoner');assert(html.includes('player_goryeo_'));revealDialogue();assert(html.includes('현대 복장은 보관 중'));action('next');
-assert.equal(story(),'rumor');assert.equal(current().run.playerOutfit,'goryeo_commoner');assert(html.includes('village-residents-rumor-918.png'));assert(html.includes('주민 A'));assert(html.includes('궁예가 그렇게 쫓겨날 줄'));assert(!html.includes('character-stage'));assert(!html.includes('data-character-id="resident_a"'));next();assert.equal(current().run.activeQuestionId,'ch01-test-01');assert(html.includes('STORY TEST'));assert(html.includes('1/2'));
-answer(0);assert(html.includes('기억이 흐릿하다'));assert(html.includes('역사 해설'));assert(html.includes('게임 속 기억'));assert(current().meta.wrongQuestionIds.includes('ch01-test-01'));action('quiz-next');assert.equal(current().run.activeQuestionId,'ch01-test-02');assert(html.includes('2/2'));
-answerCurrent(2);assert.equal(story(),'market');assert(html.includes('market-rumors-918.png'));assert(!html.includes('character-stage'));next();assert.equal(story(),'ch01_trade_start');assert.equal(current().run.job,'상단 일꾼');assert.equal(current().run.route,'merchant');
+assert.equal(story(),'house');assert(html.includes('effect-wake-reveal'));assert(html.includes('stage-left active'));assert(html.includes('data-character-id="doyun"'));assert(html.includes('data-position="left"'));assert(html.includes('stage-right listening'));assert(html.includes('정신이 드시오?'));action('advance-dialogue');assert(!html.includes('effect-wake-reveal'));assert(html.includes('stage-right active'));next();
+assert.equal(story(),'outfit_gift');assert.equal(current().run.playerOutfit,'modern');while(current().run.dialogueCursor<7)action('advance-dialogue');assert.equal(current().run.playerOutfit,'modern');assert(html.includes('player_modern_'));action('advance-dialogue');assert.equal(current().run.playerOutfit,'goryeo_commoner');assert(current().run.flags.hasModernClothes);assert.equal(current().run.flags.wearingModernClothes,false);assert(current().run.flags.receivedGoryeoClothesFromDoyun);assert(current().run.inventory.some(item=>item.id==='modern-clothes'&&item.status==='stored'));assert(current().run.inventory.some(item=>item.id==='goryeo-commoner-clothes'&&item.status==='equipped'));boot();action('play');assert.equal(story(),'outfit_gift');assert.equal(current().run.playerOutfit,'goryeo_commoner');revealDialogue();assert(html.includes('현대 복장은 보관 중'));action('next');
+assert.equal(story(),'rumor');assert.equal(current().run.playerOutfit,'goryeo_commoner');assert(html.includes('village-residents-rumor-918.png'));assert(html.includes('주민 A'));assert(html.includes('궁예가 쫓겨났대'));assert(!html.includes('character-stage'));assert(!html.includes('data-character-id="resident_a"'));next();assert.equal(story(),'foundation');assert(html.includes('918년 · 고려 건국'));next();assert.equal(current().run.activeQuestionId,'ch01-official-69-basic-10');assert(html.includes('ACTUAL EXAM'));assert(html.includes('제69회 기본 10번'));
+answer(0);assert(html.includes('기억이 섞였어'));assert(html.includes('역사 해설'));assert(html.includes('게임 속 기억'));assert(current().meta.wrongQuestionIds.includes('ch01-official-69-basic-10'));assert.equal(current().meta.wrongAnswers[0].examRound,69);assert.equal(current().meta.wrongAnswers[0].questionNumber,10);action('quiz-next');assert.equal(story(),'ch01_trade_start');assert.equal(current().run.job,'상단 일꾼');assert.equal(current().run.route,'merchant');
 const years=new Set();let expansionGuard=0;
 while(!current().run.completed){years.add(vm.runInContext('STORIES[run().storyId]?.year',context));if(current().run.activeQuestionId)answerCurrent(currentAnswer());else if(current().run.pending)resultNext();else if(vm.runInContext('Boolean(STORIES[run().storyId]?.choices)',context))choice(0);else next();if(++expansionGuard>90)throw new Error('expanded story stalled')}
-assert([927,930].every(year=>years.has(year)));assert.equal(Object.keys(current().run.questionResults).length,7);assert.equal(current().run.characterStates.doyun.characterAge,36);
+assert([927,930].every(year=>years.has(year)));assert.equal(Object.keys(current().run.questionResults).length,3);assert.equal(current().run.characterStates.doyun.characterAge,36);
 assert(current().run.completed);assert.equal(current().run.storyId,'ch01_clear_930');assert(html.includes('CHAPTER 01 CLEAR'));
 assert.equal(current().meta.completedRuns,1);assert(current().meta.cards.includes('goryeo-foundation-918'));assert(current().meta.people.includes('왕건'));
 
@@ -44,7 +42,7 @@ nav('home');assert(html.includes('챕터 결과 보기'));assert(html.includes('
 const preserved=JSON.parse(JSON.stringify(current().meta));action('restart-current');assert(html.includes('CH.01을 처음부터 다시 시작할까요?'));assert(html.includes('현재 메인 이야기의 CH.01 진행을 처음으로 되돌립니다.'));
 action('confirm-restart-current');assert.equal(story(),'prologue');assert(!current().run.completed);assert.equal(current().run.stats.wealth,0);assert.equal(current().run.choices.length,0);assert.deepEqual(current().meta,preserved);assert(html.includes('순서가 자꾸 헷갈린다'));
 
-boot();nav('study');assert(html.includes('오답노트'));click({review:'ch01-test-01'});answer(1);assert(html.includes('기억이 선명해졌다'));action('quiz-next');assert(html.includes('복습 완료'));
+boot();nav('study');assert(html.includes('오답노트'));click({review:'ch01-official-69-basic-10'});answer(2);assert(html.includes('기억이 선명해졌다'));action('quiz-next');assert(html.includes('복습 완료'));
 console.log('PASS: sequential NPC/player dialogue, expression portraits, thought styling, choice response/reaction, cursor reload, full story tests, branching, restart preservation, and wrong-answer review.');
 
 // Real typing state uses the shared dialogue element: tap completes, then advances.
@@ -53,7 +51,7 @@ typingElement={textContent:''};boot();action('play');
 assert.equal(current().run.dialogueCursor,1);assert.equal(typingElement.textContent,'정');
 action('advance-dialogue');assert.equal(current().run.dialogueCursor,1);assert.equal(typingElement.textContent,'정신이 드시오?');
 action('advance-dialogue');assert.equal(current().run.dialogueCursor,2);assert.equal(typingElement.textContent,'…');
-action('advance-dialogue');assert.equal(current().run.dialogueCursor,2);assert.equal(typingElement.textContent,'……네? 여기가 어디예요?');
+action('advance-dialogue');assert.equal(current().run.dialogueCursor,2);assert.equal(typingElement.textContent,'……여기가 어디예요?');
 typingElement=null;
 // Version 2 saves resume at the same spoken moment after the first-meeting compression.
 let legacy=JSON.parse(saved);legacy.run.openingFlowVersion=2;legacy.run.storyId='house';legacy.run.dialogueSceneId='house';legacy.run.dialogueCursor=5;saved=JSON.stringify(legacy);boot();action('play');assert.equal(current().run.dialogueCursor,2);boot();action('play');assert.equal(current().run.dialogueCursor,2);

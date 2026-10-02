@@ -1,6 +1,6 @@
 # 캐릭터·단역 배경 에셋 현황과 확장 명세
 
-주인공·도윤·길상·현우처럼 얼굴과 관계를 계속 기억해야 하는 주요 인물만 **투명 배경 PNG 스탠딩**으로 실제 게임에 연결합니다. 주민·상인·행인·이름 없는 관리와 군사는 대사 이름표만 유지하고, 여러 명이 필요한 모습은 완성된 scene illustration 안에서 표현합니다. 과거에 제작한 단역 포트레이트 파일은 삭제하지 않고 레거시 자료로 보관하지만 현재 CH.01~CH.03의 스탠딩에는 연결하지 않습니다.
+주인공·도윤·길상·현우처럼 얼굴과 관계를 계속 기억해야 하는 주요 인물만 **투명 배경 PNG 스탠딩**으로 실제 게임에 연결합니다. 주민·상인·행인·이름 없는 관리와 군사는 대사 이름표만 유지하고, 여러 명이 필요한 모습은 완성된 scene illustration 안에서 표현합니다. 단, 927년 전쟁 피해를 한 사람의 몸으로 보여 주는 `injured_merchant`는 CH.01의 명시적 예외 스탠딩입니다. 과거에 제작한 단역 포트레이트 파일은 삭제하지 않고 레거시 자료로 보관합니다.
 
 ## 런타임 표시 규칙
 
@@ -50,6 +50,9 @@
 | `merchant_serious` | `merchant_neutral`과 동일 | 입을 굳게 다문 엄격한 표정 | 짐이나 수레를 손으로 가리켜 지시 | “손이 빨라야 해” 장면. |
 | `merchant_surprised` | 동일 | 갑작스러운 협상이나 소란에 놀람 | 장부를 들다 멈춘 자세 | 협상 결과와 사건 반응 확장용. |
 | `merchant_angry` | 동일 | 눈썹을 내리고 크게 외치는 분노 | 도망치는 방향을 손가락으로 가리킴 | “도둑이야!” 장면. 폭력적인 무기나 과도한 위협은 제외. |
+| `injured_merchant_neutral` | 927년 공산 전투 뒤 돌아온 상인, 찢기고 먼지 묻은 황토색 포와 머리 붕대 | 기진맥진한 기본 표정 | 한쪽 팔을 감싸고 겨우 선 자세 | 제작 완료 · `injured_merchant_01.png`. 투명 배경의 예외 스탠딩. |
+| `injured_merchant_serious` | `injured_merchant_neutral`과 동일 | 전장의 소식을 힘겹게 전하는 굳은 표정 | 붕대 감은 팔을 몸 가까이 붙임 | “남쪽으로 가지 마시오”, “사람들이 죽고 있소”에 사용. 비고어 표현. |
+| `injured_merchant_worried` | 동일 | 흩어진 거래 일행을 걱정하는 눈빛 | 조금 숙인 자세 | 돌아오지 못한 사람들의 소식을 모르는 대사에 사용. |
 | `unknown_worried` | 도윤의 정체를 드러내지 않는 암전용 음성 ID | 얼굴이 보이지 않는 실루엣 | 주인공 쪽으로 손을 내미는 상반신 | 타임슬립 직후 암전 장면. 독립 포트레이트 대신 장면 일러스트를 사용하며 다음 민가 장면에서 `doyun_worried`로 연결. |
 
 ## 일관성 제작 규칙
@@ -89,11 +92,11 @@
 | `citizen_neutral` | 제작 완료 · `villager_male_01.png` | 쌍기의 소문을 전하는 개경 주민 변형. |
 | `soldier_serious` | 제작 완료 · `soldier_01.png` | 광종 대 왕명을 집행하는 군사. |
 
-기존 `merchant_01`, `villager_male_01`, `villager_female_01`, `villager_old_01`, `villager_child_01`, `official_01`, `noble_01`, `soldier_01`, `steward_01` 파일은 레거시 자료로만 보관한다. `laborer_01`은 반복 등장해 관계를 형성하는 길상(`freed_man`)의 스탠딩으로 계속 사용한다.
+기존 `merchant_01`, `villager_male_01`, `villager_female_01`, `villager_old_01`, `villager_child_01`, `official_01`, `noble_01`, `soldier_01`, `steward_01` 파일은 레거시 자료로만 보관한다. `injured_merchant_01`은 927년 부상당한 상인에게만 사용하고, `laborer_01`은 반복 등장해 관계를 형성하는 길상(`freed_man`)의 스탠딩으로 계속 사용한다.
 
 ### 단역 NPC 연출 정책
 
-CH.01~CH.03에서 `stranger`, `merchant`, `resident_a`, `resident_b`, `elder`, `child`, `citizen`, `steward`, `official`, `noble`, `soldier`는 `presentation: "ambient"`인 배경 음성 역할이다. 이름표와 대사는 유지하지만 별도 스탠딩은 표시하지 않는다. 여러 단역이 대화할 때는 `visibleCharacters: []`와 군중이 포함된 scene illustration을 사용한다. 주인공·도윤·길상(`freed_man`)·현우처럼 얼굴과 관계를 기억해야 하는 고정 인물만 `presentation: "standing"`을 사용한다.
+CH.01~CH.03에서 `stranger`, `merchant`, `resident_a`, `resident_b`, `elder`, `child`, `citizen`, `steward`, `official`, `noble`, `soldier`는 `presentation: "ambient"`인 배경 음성 역할이다. 이름표와 대사는 유지하지만 별도 스탠딩은 표시하지 않는다. 여러 단역이 대화할 때는 `visibleCharacters: []`와 군중이 포함된 scene illustration을 사용한다. 주인공·도윤·길상(`freed_man`)·현우와 전쟁 피해를 시각화하는 단 한 번의 예외 `injured_merchant`만 `presentation: "standing"`을 사용한다.
 
 이번 원칙에 맞춘 대표 scene illustration은 다음과 같다.
 
@@ -104,7 +107,7 @@ CH.01~CH.03에서 `stranger`, `merchant`, `resident_a`, `resident_b`, `elder`, `
 
 ## 주인공 고려 평민복 에셋
 
-CH.01 `outfit_gift`의 7번째 대사인 `아이템 획득 · 고려 평민복`이 표시되는 순간부터 아래 포트레이트를 사용합니다. 그 전까지는 같은 장면 안에서도 현대복을 유지합니다. 모든 에셋은 `player_modern_neutral`의 얼굴·검은 헝클어진 머리·체형을 그대로 유지하고, 도윤에게 받은 남회색 겉포·회갈색 속옷·천 허리띠만 공통으로 적용했습니다. 저장 키는 `playerOutfit: "goryeo_commoner"`이며, 현대복은 `modern-clothes: stored`로 보존합니다. `angry`는 `player_goryeo_serious`, `sad`는 `player_goryeo_worried`, `suspicious`는 `player_goryeo_thinking`을 의도적으로 재사용해 불필요한 중복 생성을 피합니다.
+CH.01 `outfit_gift`의 8번째 대사에서 평민복으로 갈아입는 순간부터 아래 포트레이트를 사용합니다. 그 전까지는 같은 장면 안에서도 현대복을 유지합니다. 모든 에셋은 `player_modern_neutral`의 얼굴·검은 헝클어진 머리·체형을 그대로 유지하고, 도윤에게 받은 남회색 겉포·회갈색 속옷·천 허리띠만 공통으로 적용했습니다. 저장 키는 `playerOutfit: "goryeo_commoner"`이며, 현대복은 `modern-clothes: stored`로 보존합니다. `angry`는 `player_goryeo_serious`, `sad`는 `player_goryeo_worried`, `suspicious`는 `player_goryeo_thinking`을 의도적으로 재사용해 불필요한 중복 생성을 피합니다.
 
 | assetId | 상태 | 일관성·표정 명세 |
 |---|---|---|
