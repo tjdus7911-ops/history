@@ -10,7 +10,8 @@ function drainSupplementalQuestions(){let guard=0;while(vm.runInContext(`Boolean
 function answerAndContinue(i){answer(i);assert(html.includes(i===vm.runInContext(`QUESTIONS.find(q=>q.questionId===run().activeQuestionId).answer`,context)?'기억이 선명해졌다':'기억이 흐릿하다'));action('quiz-next');drainSupplementalQuestions()}
 
 
-const expected=['ch03-official-71-advanced-11','ch02-official-76-advanced-50','ch02-official-77-advanced-14','ch02-official-74-advanced-11','ch03-official-68-advanced-11','ch02-official-78-advanced-11'];
+const crypto=require('crypto'),fixture=JSON.parse(fs.readFileSync('tests/fixtures/ch03-original-question-hashes.json'));boot();for(const[id,digest]of Object.entries(fixture.hashes)){const value=vm.runInContext('QUESTIONS.find(q=>q.questionId==='+JSON.stringify(id)+')',context);assert.equal(crypto.createHash('sha256').update(JSON.stringify(value)).digest('hex'),digest,'original question unchanged: '+id)}
+const expected=["ch03-practice-nobi-basic","ch03-practice-nobi-power","ch03-practice-nobi-source","ch03-practice-gwageo-basic","ch03-practice-gwageo-purpose","ch03-official-71-advanced-11","ch03-practice-symbols-basic","ch02-official-76-advanced-50","ch02-official-77-advanced-14","ch02-official-74-advanced-11","ch03-official-68-advanced-11","ch02-official-78-advanced-11"];
 for(const wrong of [false,true]){
  saved=null;boot();vm.runInContext("state=INITIAL();finishChapter(state);startChapter(state,'ch02');finishChapter(state);startChapter(state,'ch03');play()",context);
  const seen=[];let guard=0;
@@ -18,7 +19,7 @@ for(const wrong of [false,true]){
   assert(++guard<500);
   if(vm.runInContext('screen',context)==='quiz'){
    const q=vm.runInContext('activeQuestion()',context);seen.push(q.questionId);
-   assert(html.includes(q.question));assert(html.includes('제'+q.examRound+'회'));assert(!html.includes('character-stage'));
+   assert(html.includes(q.question));assert(html.includes(q.isOfficial?'제'+q.examRound+'회':'한능검 대비 문제'));assert.equal(vm.runInContext('STORIES[run().storyId].quizOnly',context),true);assert.equal(current().run.questionQueue.length,3);assert.equal(current().run.storyId,vm.runInContext('QUESTION_SCENE_IDS[run().activeQuestionId]',context));assert(!html.includes('character-stage'));
    for(let i=0;i<q.choices.length;i++)assert(html.includes('data-answer="'+i+'"'));
    boot();action('play');assert.equal(current().run.activeQuestionId,q.questionId,'reload before answer');
    const before=current().run.stats.knowledge;answer(wrong?(q.answer+1)%q.choices.length:q.answer);
@@ -33,7 +34,7 @@ for(const wrong of [false,true]){
   else if(html.includes('data-choice='))selectChoice(0);
   else action('next');
  }
- assert.deepEqual(seen,expected);assert.equal(Object.keys(current().run.questionResults).length,6);
+ assert.deepEqual(seen,expected);assert.equal(Object.keys(current().run.questionResults).length,12);
  assert.equal(story(),'ch02_chapter_clear');assert(current().meta.completedChapters.includes('ch03'));
- console.log('PASS: CH.03 six sourced questions, '+(wrong?'all incorrect':'all correct')+', source labels, choices, explanation, rewards, reload, story return and chapter clear.');
+ console.log('PASS: CH.03 twelve questions in four 3-question blocks, '+(wrong?'all incorrect':'all correct')+', source labels, choices, explanation, rewards, reload, story return and chapter clear.');
 }

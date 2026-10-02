@@ -5,17 +5,17 @@ function boot(){context=vm.createContext({Date,navigator:{},window:{scrollTo(){}
 const evaluate=code=>vm.runInContext(code,context);
 const click=dataset=>{evaluate('inputLockedUntil=0');handler({target:{closest:()=>({dataset,disabled:false})}})};
 boot();
-const scenes=evaluate('Object.values(STORIES).filter(s=>s.chapterId==="ch03")'),fixture=JSON.parse(fs.readFileSync('tests/fixtures/ch03-stage-protected.json','utf8'));
+const scenes=evaluate('Object.values(STORIES).filter(s=>s.chapterId==="ch03"&&!s.quizOnly)'),fixture=JSON.parse(fs.readFileSync('tests/fixtures/ch03-stage-protected.json','utf8'));
 const hash=value=>crypto.createHash('sha256').update(JSON.stringify(value)).digest('hex');
-for(const scene of scenes){const content={...scene};delete content.characterSlots;delete content.characterPortraitIds;for(const[key,value]of Object.entries(fixture.learningLinkBaselines?.[scene.sceneId]||{})){if(value===null)delete content[key];else content[key]=value;}assert.equal(hash(content),fixture.scenes[scene.sceneId],`story/choice/quiz preservation: ${scene.sceneId}`)}
+for(const scene of scenes){const content=JSON.parse(JSON.stringify(scene));for(const key of fixture.ignoredPresentationAndLearningFields)delete content[key];for(const line of content.dialogues||[])delete line.presentation;assert.equal(hash(content),fixture.scenes[scene.sceneId],`story/choice/quiz preservation: ${scene.sceneId}`)}
 for(const[path,digest]of Object.entries(fixture.images))assert.equal(crypto.createHash('sha256').update(fs.readFileSync('dist/'+path)).digest('hex'),digest,`existing image unchanged: ${path}`);
 const portraits=()=>[...html.matchAll(/<img class="stage-character ([^"]+)"[^>]*data-character-id="([^"]+)"[^>]*data-position="([^"]+)"[^>]*src="([^"]+)"/g)].map(m=>({classes:m[1],id:m[2],position:m[3],src:m[4]}));
 let checked=0;const repaired=new Set();
-function check(line,expectedPartner,scene){const cast=portraits();if(['thought','narration'].includes(line.speakerType)||scene.sceneEffect==='blackout'||!expectedPartner){assert.equal(cast.length,0,scene.sceneId);return}
-  const allowedPartner=['doyun','hyunwoo'].includes(expectedPartner);assert.equal(cast.length,allowedPartner?2:1,`${scene.sceneId}: ${line.dialogue}`);
+function check(line,expectedPartner,scene){const cast=portraits();if((['thought','narration'].includes(line.speakerType)||['description','history','result'].includes(line.presentation)||scene.characterStageMode==='hidden')||scene.sceneEffect==='blackout'||!expectedPartner){assert.equal(cast.length,0,scene.sceneId);return}
+  const allowedPartner=true;assert.equal(cast.length,allowedPartner?2:1,`${scene.sceneId}: ${line.dialogue}`);
   const player=cast.find(c=>c.id==='player'),partner=cast.find(c=>c.id!=='player');assert(player);if(allowedPartner)assert(partner);else assert(!partner);
   assert.equal(player.position,'right');if(allowedPartner){assert.equal(partner.position,'left');assert.equal(partner.id,expectedPartner);}
-  assert.equal(cast.filter(c=>c.classes.split(' ').includes('active')).length,['player','doyun','hyunwoo'].includes(line.characterId)?1:0);
+  assert.equal(cast.filter(c=>c.classes.split(' ').includes('active')).length,1);
   if(cast.some(c=>c.id===line.characterId))assert(cast.find(c=>c.id===line.characterId).classes.split(' ').includes('active'));
   for(const listener of cast.filter(c=>c.id!==line.characterId))assert(listener.classes.split(' ').includes('listening'));
   for(const c of cast)assert(fs.existsSync('dist/'+c.src),c.src);
@@ -48,4 +48,11 @@ click({action:'advance-dialogue'});assert(html.includes('고맙소. 허나 무�
 evaluate("state=INITIAL();state.run.currentChapter='ch03';state.run.storyId='ch02_three_way';screen='game';enterStory();run().dialogueCursor=1;render()");assert.equal(portraits()[0].id,'hyunwoo');
 evaluate('run().dialogueCursor=2;render()');assert.equal(portraits()[0].id,'doyun');
 evaluate('run().dialogueCursor=3;render()');assert.equal(portraits()[0].id,'hyunwoo');
-console.log(`PASS: ${scenes.length} CH.03 scenes, ${checked} spoken frames/choice results, main-character slots, text-only supporting NPCs, active/listening emphasis, reload, unchanged content and ${Object.keys(fixture.images).length} images. Repaired dialogue scenes: ${[...repaired].join(', ')}`);
+// The official's ruling is a description, then a genuine reply restores slots.
+evaluate("state=INITIAL();state.run.currentChapter='ch03';state.run.started=true;state.run.storyId='ch02_policy_reason';screen='game';enterStory();render()");
+assert.equal(portraits().length,0);assert(html.includes('이 자는 본래 양인이었음이 확인되었다. 양인으로 돌아간다.'));assert(html.includes('narration-line'));
+click({action:'advance-dialogue'});assert.equal(portraits().length,2);assert.equal(portraits().find(c=>c.position==='left').id,'freed_man');assert(portraits().find(c=>c.id==='freed_man').classes.includes('active'));
+evaluate('run().dialogueCursor=6;render()');assert.equal(portraits().length,0);
+click({choice:'0'});assert.equal(portraits().length,2);click({action:'advance-dialogue'});assert.equal(portraits().length,0);click({action:'result-next'});assert.equal(portraits().length,0);
+click({action:'advance-dialogue'});click({action:'next'});assert.equal(evaluate('screen'),'quiz');assert.equal(portraits().length,0);
+console.log(`PASS: ${scenes.length} CH.03 scenes, ${checked} spoken frames/choice results, dialogue slots, hidden description/history layers, active/listening emphasis, reload, unchanged content and ${Object.keys(fixture.images).length} images. Repaired dialogue scenes: ${[...repaired].join(', ')}`);

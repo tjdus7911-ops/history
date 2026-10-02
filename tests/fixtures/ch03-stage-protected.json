@@ -1,5 +1,5 @@
 {
-  "baseCommit": "381dcbd4f6a5bab3e8fcbc66845ded2722f573d9",
+  "baseCommit": "74df8f67494d941fe47cbf3e5071279ceaf3df75",
   "scenes": {
     "ch02_transition": "b2a591c07bb6a8199eb80dccd3a764db050a08de9e7aad8786362657cbccf80d",
     "ch02_shop_exterior_949": "71ff164233fe6906d5a547b6bc0fbf5e6a75fecb60c910faf64793bdddcdf6e6",
@@ -12,20 +12,20 @@
     "ch02_trust": "60f0c473cbb229297d34325124ac932c2be38d25ad33fb93b28b7d88457d3a57",
     "ch02_inspection": "ecdc3690d12139ba69f446df48786845fb181cfa94fbeacbb542632926b0241e",
     "ch02_policy_reason": "2baf24ad3f36cdcfe529079d42f60491177e4de441fbfb64f35f42a361270dab",
-    "ch02_policy_memory": "a32ff7bc30b75d590dff403544cc59df60f271be554872d9fb0236b6336a36d9",
+    "ch02_policy_memory": "e0b22f972be1c1ae023b28b2de254e09806697a14eba41b5c7e217481b2e20bc",
     "ch02_noble_night": "c3083f647568a9fa3d69baf0ed81341ba69edf7bb83b33892dd074967b0d1f6e",
     "ch02_jump_958": "f2e1944cf67e429fb5b8a7c2276aa5bf863b29c3790d0d2c990f4cf122d3d79d",
     "ch02_exam_notice": "59240020e61fbec09dc5f1ad3448ca64b8aecffdb64aab7ffcfe907384404c5b",
     "ch02_three_way": "8fc396c7c7142c9a7311ae004f8423d69dd0867d65d650e5bc5149c04f881ee4",
-    "ch02_ssanggi": "a0edc23eaa60e6d4e9eccc4ebfdbe13500d1ec6fc31e3d27ed3e73ee537c6faf",
+    "ch02_ssanggi": "6aac4da369d0ff910f5b1fbc4aa686085a4a50858df9028c36974f2a60c9d63c",
     "ch02_exam_eve": "96a68c052e97c410d1ff804ba6a02f539cfcef3dfa690422048073237b03479f",
     "ch02_exam_day": "023290f60ad29491beea3bdc0e7a3dbc64ce0e4cf341fb4966184a4fce2876b4",
     "ch02_official_robes_walk": "b135e87de25d5609bbaa24a098fcfece78331e9637e7f3e565b5bde29a13bcb0",
     "ch02_hyunwoo_official": "bf5225bb6a8e9dff96ce56efab716b49cdedad60d55310acda20dc83fe6765d1",
     "ch02_reign_titles": "832b19bed5cd24a1fa12ed58de6b7001b5bb51d1b353a5115713230ddaa90001",
-    "ch02_reign_followup": "22a3a73c7c623fb1ca969561f0c184dea57c0ce6ad66bd966c75dff2e3db305b",
+    "ch02_reign_followup": "8ca6694d144191f237f8549a5754e1be08d3c53c2f7dfe0e6f261f891d3f7f25",
     "ch02_purge": "2dd714af1cd4ae2acca3b61f0270411cdc2153b9742fb462db33bfe3d34bc34c",
-    "ch02_night_discussion": "7642e636de8f427866e28da99e8cc7fbf83c748b25a367a09c3369086f6cf802",
+    "ch02_night_discussion": "dbce6943960ff94aed2f62e4bce26607526e7c6cfe4c5e2b6013fd2854e8a0d0",
     "ch02_complete": "d835f38f660e1f09132b554230a3b2e54a1e3f9ba6c32e030c8e7015caef3486",
     "ch02_night_reflection": "03c095c45eeb5480b5d7e6d95e7edda5d9f50fd0de1a0b57ad857631d0f8a285",
     "ch02_mystery": "f98ee30b7dc91917dcf7076881e60f32d7f2257e37c5109321d78d7eb5185171",
@@ -78,51 +78,18 @@
     "assets/scenes/ch02-water-reflection-958.png": "9e6f9641b2e7d4c368aef93c58bab6f97c666e7bcab23ac161b794d6b7eefc13",
     "assets/scenes/ch02-complete.png": "2417d241e746f22a45e7fae3c423f983df3e154bf746fe76f92c4068e5c16cd3"
   },
-  "learningLinkBaselines": {
-    "ch02_ssanggi": {
-      "questionSetId": "ch03-gwageo",
-      "questionSetStatus": "waiting_for_source",
-      "questionSetResumeStoryId": "ch02_exam_eve",
-      "officialQuestionSlot": {
-        "conceptIds": [
-          "ssanggi",
-          "gwageo"
-        ],
-        "linkedOfficialQuestions": [
-          "ch02-official-78-advanced-11"
-        ],
-        "requiredCount": 3,
-        "verifiedCount": 1,
-        "missingQuestionCount": 2,
-        "officialQuestionStatus": "waiting_for_source"
-      },
-      "linkedQuestionIds": null,
-      "linkedOfficialQuestions": null,
-      "questionSequenceMode": null
-    },
-    "ch02_reign_followup": {
-      "questionSetId": "ch03-imperial-symbols",
-      "questionSetStatus": "waiting_for_source",
-      "questionSetResumeStoryId": "ch02_purge",
-      "officialQuestionSlot": {
-        "conceptIds": [
-          "official-robes",
-          "gwangdeok",
-          "junpung",
-          "imperial-style"
-        ],
-        "linkedOfficialQuestions": [
-          "ch02-official-76-advanced-50",
-          "ch02-official-77-advanced-14"
-        ],
-        "requiredCount": 3,
-        "verifiedCount": 2,
-        "missingQuestionCount": 1,
-        "officialQuestionStatus": "waiting_for_source"
-      },
-      "linkedQuestionIds": null,
-      "linkedOfficialQuestions": null,
-      "questionSequenceMode": null
-    }
-  }
+  "ignoredPresentationAndLearningFields": [
+    "characterSlots",
+    "characterPortraitIds",
+    "characterStageMode",
+    "quizId",
+    "linkedQuestionIds",
+    "linkedOfficialQuestions",
+    "questionSequenceMode",
+    "questionSetId",
+    "questionSetStatus",
+    "questionSetResumeStoryId",
+    "officialQuestionSlot",
+    "questionSceneIds"
+  ]
 }

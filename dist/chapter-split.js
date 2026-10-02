@@ -1329,3 +1329,62 @@ REVIEW_QUESTION_IDS.ch03=[...REVIEW_QUESTION_IDS.ch03,q71a11.questionId];
 SPLIT_STORY_QUESTION_IDS.ch03=[...MAIN_QUESTION_IDS.ch03];SPLIT_REVIEW_IDS.ch03=[...REVIEW_QUESTION_IDS.ch03];
 Object.assign(CHAPTERS.ch03,{questionCount:MAIN_QUESTION_IDS.ch03.length,reviewQuestionCount:REVIEW_QUESTION_IDS.ch03.length});
 for(const conceptId of q71a11.conceptIds)(CONCEPT_QUESTION_INDEX[conceptId]||(CONCEPT_QUESTION_INDEX[conceptId]=[])).push(q71a11.questionId);
+
+/* Four CH.03 learning blocks. Keep every original scene, speech and branch;
+   add question-step records without replacing a story scene. */
+const CH03_PRACTICE_SOURCES={
+  nobi:'https://contents.history.go.kr/mobile/kc/view.do?code=kc_age_20&levelId=kc_i200500',
+  gwageo:'https://contents.history.go.kr/front/nh/print.do?levelId=nh_013_0050_0020&whereStr=',
+  symbols:'https://contents.history.go.kr/mobile/ta/view.do?levelId=ta_h71_0040_0020_0020_0020'
+};
+const ch03Practice=(key,data)=>earlyPracticeQuestion({chapterId:'ch03',era:'고려 초기',king:'광종',chapterCandidate:'ch03',historicalEventId:data.relatedHistoricalEventId,historicalEvent:{nobi:'노비안검법',gwageo:'과거제 시행',symbols:'공복과 독자적 연호'}[key],formatLabel:'한능검 대비 문제',examType:'[심화 연습] 한능검 대비 문제',passage:'',wrongFeedback:'기억이 흐릿하다.',sourceReference:CH03_PRACTICE_SOURCES[key],...data});
+const CH03_ADDED_PRACTICE=[
+  ch03Practice('nobi',{questionId:'ch03-practice-nobi-basic',year:956,relatedSceneId:'ch02_policy_memory',relatedIllustrationId:'ch02-freed-citizen',relatedHistoricalEventId:'gwangjong-956-nobi',historicalEventIds:['gwangjong-956-nobi'],conceptIds:['nobi-inspection'],difficulty:'하',questionType:'개념 확인형',
+    question:'광종이 실시한 노비안검법의 내용으로 옳은 것은?',choices:['억울하게 노비가 된 사람의 신분을 조사해 양인으로 회복시켰다.','모든 양인을 노비로 편입하였다.','호족에게 노비를 추가로 지급하였다.','상인에게 독점 무역권을 주었다.','전국의 군현을 폐지하였다.'],answer:0,
+    explanation:'노비안검법은 혼란기에 억울하게 노비가 된 사람을 조사하여 양인 신분으로 회복시키는 정책입니다.',choiceExplanations:['신분 조사와 양인 회복이 핵심입니다.','양인을 노비로 만드는 정책이 아닙니다.','호족의 노비 기반을 강화하는 정책이 아닙니다.','무역권을 부여하는 제도가 아닙니다.','군현을 폐지한 정책이 아닙니다.'],examKeywords:['광종','956','노비안검법','양인'],gameMemory:'길상이 본래 양인이었음을 확인받고 자유를 되찾은 장면을 떠올려 보세요.'}),
+  ch03Practice('nobi',{questionId:'ch03-practice-nobi-power',year:956,relatedSceneId:'ch02_policy_memory',relatedIllustrationId:'ch02-freed-citizen',relatedHistoricalEventId:'gwangjong-956-nobi',historicalEventIds:['gwangjong-956-nobi'],conceptIds:['nobi-inspection','authority'],difficulty:'중',questionType:'정책 목적형',
+    question:'노비안검법으로 호족이 반발한 이유를 가장 적절하게 설명한 것은?',choices:['왕이 호족에게 더 많은 사병을 주었기 때문이다.','호족이 지배하던 노동력과 사병 기반이 약해질 수 있었기 때문이다.','왕이 모든 백성의 세금을 영구히 없앴기 때문이다.','호족이 과거 시험의 출제권을 잃었기 때문이다.','지방의 모든 장터가 폐쇄되었기 때문이다.'],answer:1,
+    explanation:'노비가 양인으로 회복되면 호족이 거느리던 노동력과 사병의 기반이 줄어들 수 있어 호족 세력을 약화시키고 왕권을 강화하는 효과가 있었습니다.',choiceExplanations:['호족에게 사병을 늘려 주는 정책이 아닙니다.','호족의 경제·군사 기반 약화와 연결됩니다.','모든 세금을 영구히 폐지한 정책이 아닙니다.','과거 출제권 박탈이 노비안검법의 내용은 아닙니다.','장터를 폐쇄하는 정책이 아닙니다.'],examKeywords:['호족','경제 기반','사병','왕권 강화'],gameMemory:'노비를 잃게 된 집안의 관리인이 반발한 이유를 정책의 효과와 연결해 보세요.'}),
+  ch03Practice('nobi',{questionId:'ch03-practice-nobi-source',year:956,relatedSceneId:'ch02_policy_memory',relatedIllustrationId:'ch02-freed-citizen',relatedHistoricalEventId:'gwangjong-956-nobi',historicalEventIds:['gwangjong-956-nobi'],conceptIds:['nobi-inspection','authority'],difficulty:'상',questionType:'자료 적용형',
+    passage:'[학습용 자료] 전쟁과 혼란 속에서 강제로 노비가 되었다고 호소하는 사람들의 증언과 문서를 조사하였다. 본래 양인이었음이 확인된 사람은 신분을 회복하였다.',
+    question:'자료의 정책에 대한 해석으로 가장 적절한 것은?',choices:['호족의 소유권을 무조건 인정하여 왕의 개입을 막았다.','신분 회복과 호족 세력 견제를 함께 추진하였다.','시험 성적을 기준으로 관리를 선발하였다.','관리의 품계에 따라 옷의 색을 구분하였다.','왕의 연호를 새로 정하였다.'],answer:1,
+    explanation:'자료는 노비안검법을 설명합니다. 억울한 노비의 양인 회복과 호족의 지배 기반 약화를 함께 이해해야 합니다.',choiceExplanations:['호족의 주장을 무조건 인정하는 방향과 반대입니다.','신분 회복과 왕권 강화의 효과를 함께 설명합니다.','이는 과거제의 기능으로 자료의 신분 조사와 다릅니다.','이는 공복 제정으로 자료의 신분 조사와 다릅니다.','이는 연호 사용으로 자료의 신분 조사와 다릅니다.'],examKeywords:['노비안검법','자료 해석','양인 회복','호족 견제'],gameMemory:'증언과 문서를 통해 길상의 신분이 회복된 과정을 역사 정책으로 읽어 보세요.'}),
+  ch03Practice('gwageo',{questionId:'ch03-practice-gwageo-basic',year:958,relatedSceneId:'ch02_ssanggi',relatedIllustrationId:'ch02-exam-notice',relatedHistoricalEventId:'gwangjong-958-gwageo',historicalEventIds:['gwangjong-958-gwageo'],conceptIds:['ssanggi','gwageo'],difficulty:'하',questionType:'인물·제도 연결형',
+    question:'광종에게 과거제 시행을 건의한 인물과 제도의 연결로 옳은 것은?',choices:['쌍기 — 시험으로 관리를 선발하는 과거제','도윤 — 상인의 세습 관직 제도','왕건 — 노비 신분 조사 제도','현우 — 모든 관직의 세습 제도','지방 호족 — 왕을 선출하는 제도'],answer:0,
+    explanation:'후주 출신 쌍기의 건의로 광종은 958년 과거제를 시행했습니다. 과거는 시험을 통해 관리를 선발하는 제도입니다.',choiceExplanations:['쌍기의 건의와 시험을 통한 선발이 핵심입니다.','도윤은 허구의 상인 캐릭터이며 과거제 건의자가 아닙니다.','왕건은 광종의 과거제 건의자가 아닙니다.','현우는 허구의 인물이며 관직 세습이 과거제의 내용은 아닙니다.','과거는 왕을 선출하는 제도가 아닙니다.'],examKeywords:['광종','쌍기','958','과거제'],gameMemory:'현우가 준비하는 시험과 쌍기의 건의를 연결해 보세요.'}),
+  ch03Practice('gwageo',{questionId:'ch03-practice-gwageo-purpose',year:958,relatedSceneId:'ch02_ssanggi',relatedIllustrationId:'ch02-exam-notice',relatedHistoricalEventId:'gwangjong-958-gwageo',historicalEventIds:['gwangjong-958-gwageo'],conceptIds:['gwageo','authority'],difficulty:'중',questionType:'제도 효과형',
+    question:'광종이 과거제를 시행하여 기대한 정치적 효과로 가장 적절한 것은?',choices:['오래된 공신과 호족의 관직 독점을 강화한다.','관리를 선발하는 모든 기준을 없앤다.','학식과 능력을 갖춘 새로운 관료를 등용하여 왕권의 기반을 넓힌다.','상인이 왕의 자리를 세습하도록 한다.','왕이 관리 선발에 관여하지 못하도록 한다.'],answer:2,
+    explanation:'시험을 통한 새 관료 선발은 기존 공신·호족 중심의 정치 구조를 견제하고 왕권 강화의 기반을 마련하는 데 도움이 되었습니다.',choiceExplanations:['기존 세력의 독점을 견제하는 방향입니다.','시험이라는 선발 기준을 마련했습니다.','새 관료 등용과 왕권 강화의 관련성을 설명합니다.','상인의 왕위 세습 제도가 아닙니다.','왕권을 약화하려는 정책이 아닙니다.'],examKeywords:['과거제','새 관료','호족 견제','왕권 강화'],gameMemory:'집안이 아니라 시험으로 관리를 뽑는다는 소문이 가져올 변화를 생각해 보세요.'}),
+  ch03Practice('symbols',{questionId:'ch03-practice-symbols-basic',year:960,relatedSceneId:'ch02_reign_followup',relatedIllustrationId:'ch02-reign-titles',relatedHistoricalEventId:'gwangjong-reign-titles',historicalEventIds:['gwangjong-reign-titles'],conceptIds:['official-robes','gwangdeok','junpung'],difficulty:'하',questionType:'제도 구분형',
+    question:'광종의 공복 제정과 독자적 연호 사용에 대한 설명으로 옳은 것은?',choices:['공복은 관리의 품계 질서를 나타내고, 광덕·준풍은 왕의 권위를 드러내는 연호였다.','공복은 모든 관리의 품계를 없애는 제도였다.','광덕·준풍은 시험으로 관리를 뽑는 제도의 이름이었다.','공복은 억울한 노비의 신분을 조사하는 법이었다.','광덕·준풍은 상단의 장부 분류 이름이었다.'],answer:0,
+    explanation:'공복의 색을 품계에 따라 구분하여 관료 질서를 드러냈고, 광종은 광덕·준풍 같은 독자적 연호를 사용했습니다.',choiceExplanations:['공복과 연호의 기능을 올바르게 구분했습니다.','품계 질서를 드러내는 제도입니다.','시험 선발 제도는 과거제입니다.','신분 조사 정책은 노비안검법입니다.','광덕·준풍은 광종의 연호입니다.'],examKeywords:['공복','품계','광덕','준풍','왕권'],gameMemory:'현우의 관리 옷과 시장에서 들은 두 연호를 구분해 보세요.'})
+];
+QUESTIONS.push(...CH03_ADDED_PRACTICE);
+const CH03_LEARNING_BLOCKS=[
+  {setId:'ch03-nobi-inspection',practice:['ch03-practice-nobi-basic','ch03-practice-nobi-power','ch03-practice-nobi-source'],official:[]},
+  {setId:'ch03-gwageo',practice:['ch03-practice-gwageo-basic','ch03-practice-gwageo-purpose'],official:['ch03-official-71-advanced-11']},
+  {setId:'ch03-imperial-symbols',practice:['ch03-practice-symbols-basic'],official:['ch02-official-76-advanced-50','ch02-official-77-advanced-14']},
+  {setId:'ch03-gwangjong-synthesis',practice:[],official:['ch02-official-74-advanced-11','ch03-official-68-advanced-11','ch02-official-78-advanced-11']}
+];
+const QUESTION_SCENE_IDS={};
+for(const block of CH03_LEARNING_BLOCKS){
+  const set=QUESTION_SETS[block.setId],ids=[...block.practice,...block.official];
+  Object.assign(set,{officialQuestionIds:block.official,practiceQuestionIds:block.practice,requiredCount:3,verifiedCount:block.official.length,practiceCount:block.practice.length,missingQuestionCount:0,status:'ready',preserveQuestionOrder:true,sourceType:block.practice.length?'mixed_official_and_practice':'official_exam'});
+  attachQuestionSet(block.setId);const source=STORIES[set.afterSceneId];source.linkedQuestionIds=[...ids];
+  for(const id of block.practice)QUESTIONS.find(q=>q.questionId===id).resumeStoryId=set.resumeStoryId;
+  source.questionSceneIds=ids.map((id,index)=>{
+    const sceneId=block.setId+'-quiz-'+(index+1);QUESTION_SCENE_IDS[id]=sceneId;
+    STORIES[sceneId]=scene({sceneId,chapterId:'ch03',sceneType:'quiz',quizOnly:true,quizId:id,questionSetId:block.setId,year:source.year,historicalEventId:source.historicalEventId,title:'한능검 대비 · '+(index+1)+'/3',location:source.location,illustrationId:source.illustrationId,dialogues:[],nextStoryId:index===2?set.resumeStoryId:block.setId+'-quiz-'+(index+2),characterStageMode:'hidden'});return sceneId;
+  });
+}
+MAIN_QUESTION_IDS.ch03=CH03_LEARNING_BLOCKS.flatMap(b=>[...b.practice,...b.official]);REVIEW_QUESTION_IDS.ch03=[...MAIN_QUESTION_IDS.ch03];
+SPLIT_STORY_QUESTION_IDS.ch03=[...MAIN_QUESTION_IDS.ch03];SPLIT_REVIEW_IDS.ch03=[...REVIEW_QUESTION_IDS.ch03];
+Object.assign(CHAPTERS.ch03,{questionCount:12,reviewQuestionCount:12});
+for(const q of CH03_ADDED_PRACTICE)for(const conceptId of q.conceptIds)(CONCEPT_QUESTION_INDEX[conceptId]||(CONCEPT_QUESTION_INDEX[conceptId]=[])).push(q.questionId);
+
+// Presentation only: keep the original spoken text and character identity.
+for(const s of Object.values(STORIES).filter(s=>s.chapterId==='ch03'&&!s.quizOnly)){
+  delete s.characterPortraitIds;
+  if(['narration','description','history','result','ambient-rumor'].includes(s.sceneType)&&!s.stageCast)s.characterStageMode='hidden';
+  for(const line of s.dialogues||[])if(line.characterId==='official'&&/(確認|확인되었다|양인으로 돌아간다|억울하게 노비가 된 자가 있는지 조사한다)/.test(line.dialogue))line.presentation='description';
+}

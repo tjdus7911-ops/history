@@ -6,7 +6,7 @@ const {CHAPTERS,STORIES,QUESTIONS}=context.api;
 
 for(const chapterId of ['ch01','ch02','ch03','ch04']){
   const chapterQuestions=QUESTIONS.filter(question=>question.chapterId===chapterId&&!question.reviewOnly&&!question.retired);
-  const expectedCounts={ch01:9,ch02:15,ch03:6,ch04:3};
+  const expectedCounts={ch01:9,ch02:15,ch03:12,ch04:3};
   assert.equal(CHAPTERS[chapterId].questionCount,expectedCounts[chapterId],`${chapterId}: metadata count`);
   assert.equal(chapterQuestions.length,CHAPTERS[chapterId].questionCount,`${chapterId}: actual question count`);
   assert.equal(new Set(chapterQuestions.map(question=>question.questionId)).size,CHAPTERS[chapterId].questionCount,`${chapterId}: duplicate id`);
