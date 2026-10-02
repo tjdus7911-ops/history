@@ -34,7 +34,7 @@ async function main(){
       assert.equal(await page.locator('.stage-character').count(),2);assert.equal(await page.locator('[data-character-id="doyun"][data-position="left"]').count(),1);assert.equal(await page.locator('[data-character-id="player"][data-position="right"]').count(),1);assert.equal((await read()).run.storyId,'house');await snapshot('ch01-first-meeting');checkedOpening=true;continue;
     }
     if(current.run.storyId==='rumor'&&current.run.dialogueCursor===1&&!checkedVillagerVoice){assert((await page.locator('.game').getAttribute('style')).includes('village-residents-rumor-918.png'));assert.equal(await page.locator('.stage-character').count(),0);assert.equal(await page.locator('.character-name').filter({hasText:'주민 A'}).count(),1);await snapshot('ch01-villager-ambient-voice');checkedVillagerVoice=true}
-    if(current.run.storyId==='foundation'&&!checkedFoundationExam){assert.deepEqual(current.scene.linkedOfficialQuestions,['ch01-official-69-basic-10']);assert.equal(await page.locator('.stage-character').count(),0);await snapshot('ch01-foundation-before-exam');checkedFoundationExam=true}
+    if(current.run.storyId==='foundation'&&!checkedFoundationExam){assert.equal(current.scene.officialQuestionSlot.officialQuestionStatus,'waiting_for_source');assert.equal(current.scene.linkedQuestionIds,undefined);assert.equal(await page.locator('.stage-character').count(),0);await snapshot('ch01-foundation-waiting-source');checkedFoundationExam=true}
     if(current.run.storyId==='ch01_trade_start'&&current.run.dialogueCursor===2&&!checkedNormalMerchant){assert.equal(await page.locator('[data-character-id="merchant_01"][data-position="left"][data-portrait="merchant_01_serious"]').count(),1);assert.equal(await page.locator('.character-name').filter({hasText:'상인'}).count(),1);await snapshot('ch01-merchant-normal-918');checkedNormalMerchant=true}
     if(current.run.storyId==='ch01_gongsan'&&current.run.dialogueCursor===7&&!checkedInjuredMerchant){assert.equal(await page.locator('[data-character-id="merchant_01"][data-position="left"][data-portrait="merchant_01_injured_927"]').count(),1);assert.equal(await page.locator('.character-name').filter({hasText:'부상당한 상인'}).count(),1);await snapshot('ch01-injured-merchant-standing');checkedInjuredMerchant=true}
     if(current.run.storyId==='ch01_conflict'&&!checkedConflict){assert(current.scene.dialogues.some(line=>line.dialogue==='다시 하면 되잖아.'));assert(current.scene.dialogues.some(line=>line.dialogue==='자네는 잃을 것이 없으니 그런 말을 하는 것이오.'));await snapshot('ch01-conflict');checkedConflict=true}
@@ -50,7 +50,7 @@ async function main(){
     else await tap('[data-action="next"]');
     if(++guard>500)throw new Error('mobile play did not complete');
   }
-  assert.equal((await read()).run.currentChapter,chapterId);assert.equal(Object.keys((await read()).run.questionResults).length,chapterId==='ch01'?2:5);await fit();await snapshot(chapterId+'-complete');
+  assert.equal((await read()).run.currentChapter,chapterId);assert.equal(Object.keys((await read()).run.questionResults).length,chapterId==='ch01'?0:6);await fit();await snapshot(chapterId+'-complete');
   }
   assert(checkedOpening&&checkedNormalMerchant&&checked943&&checkedVillagerVoice&&checkedInjuredMerchant&&checkedGyeonhwonRumor&&checkedFoundationExam&&checkedConflict&&checkedGochang&&checkedBelonging);
   await tap('[data-nav="study"]');
@@ -78,11 +78,11 @@ async function main(){
     else await tap('[data-action="next"]');
     if(++guard>800)throw new Error('mobile CH.03 play did not complete');
   }
-  assert(checkedRobes&&checkedHyunwooOfficial&&checkedGwangdeok&&checkedJunpung&&checkedFreedMan&&checkedDoyun960);assert.equal(Object.keys((await read()).run.questionResults).length,12);assert(await page.locator('text=CHAPTER 03 CLEAR').count());await fit();await snapshot('ch03-complete');
+  assert(checkedRobes&&checkedHyunwooOfficial&&checkedGwangdeok&&checkedJunpung&&checkedFreedMan&&checkedDoyun960);assert.equal(Object.keys((await read()).run.questionResults).length,3);assert(await page.locator('text=CHAPTER 03 CLEAR').count());await fit();await snapshot('ch03-complete');
   await tap('[data-review-chapter="ch03"]');
   for(let index=0;index<5;index++){const answer=await page.evaluate(()=>QUESTIONS.find(q=>q.questionId===reviewQuestionId).answer);await tap('[data-answer="'+answer+'"]');await tap('[data-action="quiz-next"]');await fit()}
   assert.equal(await page.evaluate(()=>meta().ch01ReviewAttempts.at(-1).correct),5);
   for(const width of [320,390,760]){await page.setViewportSize({width,height:844});await fit()}
-  assert.deepEqual(errors,[]);console.log('PASS: isolated mobile CH.01~03 full play, CH.01 2-question and CH.02 5-question official-only pacing, one aging merchant identity, ambient residents, conflict/reconciliation/belonging beats, Gwangdeok/Junpung market backgrounds, dynamic reviews, reload, and 320/390/760px overflow.');
+  assert.deepEqual(errors,[]);console.log('PASS: isolated mobile CH.01~03 full play, source-gated CH.01 and 3-question-set pacing, one aging merchant identity, ambient residents, emotional beats, dynamic reviews, reload, and 320/390/760px overflow.');
 }
 main().catch(error=>{console.error(error.stack||error);process.exitCode=1}).finally(async()=>{if(browser)await browser.close();server.close()});

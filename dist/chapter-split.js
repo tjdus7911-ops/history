@@ -196,6 +196,279 @@ migrateSave=function(raw){
   return migrated;
 };
 
+/* CH.01–04 learning-block audit: verified official pools, three-question sets, and story pacing. */
+const STORY_AUDIT_VERSION=1;
+const verifiedStoryQuestion=data=>question({
+  isOfficial:true,sourceVerified:true,sourceType:'official_exam',sourceStatus:'verified_from_attached_pdf',
+  questionAuditStatus:'VERIFIED_OFFICIAL',exactTranscription:true,reviewOnly:false,retired:false,
+  examType:`제${data.examRound}회 한국사능력검정시험 ${data.examLevel} 실제 기출`,
+  source:`국사편찬위원회 한국사능력검정시험 제${data.examRound}회 ${data.examLevel} · 사용자 제공 문제지·정답표 기반 모바일 전사`,
+  rewardKnowledge:3,...data
+});
+
+const q65a10=verifiedStoryQuestion({
+  questionId:'ch02-official-65-advanced-10',chapterId:'ch02',year:937,era:'고려 초기',king:'태조',chapterCandidate:'ch02',
+  historicalEventIds:['taejo-integration','heukchang','yeokbunjeon'],conceptIds:['taejo','local-integration','heukchang','yeokbunjeon'],
+  relatedSceneId:'ch01_sasimgwan',relatedHistoricalEventId:'taejo-integration',historicalEvent:'태조의 안정과 통합 정책',relatedIllustrationId:'ch02-trade-room-935',
+  questionType:'왕의 업적 판단형',formatLabel:'실제 기출 · 태조 통합 정책',difficulty:'중',
+  passage:'<탐구 활동 보고서>\n1. 주제: (가), 안정과 통합을 꾀하다\n2. 방법: 『고려사』 사료 검색 및 분석\n3. 사료 내용과 분석\n○ 명주의 순식이 투항하자 왕씨 성을 내리다. — 지방 호족 포섭\n○ 「정계」와 「계백료서」를 지어 반포하다. — 관리의 규범 제시\n○ 흑창을 두어 가난한 백성에게 곡식을 빌려주다. — 민생 안정',
+  question:'(가) 왕의 재위 시기에 있었던 사실로 옳은 것은?',
+  choices:['개국 공신에게 역분전을 지급하였다.','외침에 대비하여 광군을 조직하였다.','광덕, 준풍 등의 독자적 연호를 사용하였다.','관학 진흥을 목적으로 양현고를 운영하였다.','주전도감을 설치하여 해동통보를 발행하였다.'],answer:0,
+  explanation:'자료의 왕은 고려 태조입니다. 태조는 후삼국 통일 뒤 개국 공신에게 역분전을 지급했습니다. 광군은 정종, 광덕·준풍은 광종, 양현고는 예종, 주전도감과 해동통보는 숙종 때의 사실입니다.',
+  choiceExplanations:['태조는 개국 공신에게 역분전을 지급했습니다.','광군은 정종 때 조직되었습니다.','광덕과 준풍은 광종의 연호입니다.','양현고는 예종 때 설치되었습니다.','주전도감과 해동통보는 숙종 때입니다.'],
+  examKeywords:['태조','호족 포섭','흑창','역분전','정계','계백료서'],
+  gameMemory:'김부를 경주의 사심관으로 삼고 호족의 자제를 기인으로 둔 장면처럼, 태조는 사람을 포섭해 나라를 묶었습니다. 같은 왕이 개국 공신에게 역분전을 지급했으므로 정답은 ①입니다.',storyConnection:'김부·사심관·기인과 태조의 통합 정책을 연결합니다.',
+  resumeStoryId:'ch01_refugee_family',examRound:65,examYear:2023,examLevel:'심화',questionNumber:10,sourcePage:3,
+  sourceFile:'제65회 한국사능력검정시험 심화 문제지.pdf',answerFile:'제65회 한국사능력검정시험 심화 정답표.pdf'
+});
+const q65a11=verifiedStoryQuestion({
+  questionId:'ch04-official-65-advanced-11',chapterId:'ch04',year:983,era:'고려 초기',king:'성종',chapterCandidate:'ch04',
+  historicalEventIds:['seongjong-twelve-mok'],conceptIds:['seongjong','twelve-mok','local-officials','chronology'],
+  relatedSceneId:'ch03_gukjagam',relatedHistoricalEventId:'seongjong-twelve-mok',historicalEvent:'성종의 12목 설치 시기',relatedIllustrationId:'ch03-returning-merchant',
+  questionType:'연표 시기 판단형',formatLabel:'실제 기출 · 12목 연표',difficulty:'상',
+  passage:'처음으로 12목을 설치하고 조서를 내려 말하기를, “부지런히 정사를 돌보면서 매번 신하들의 충고를 구하고 있다. 낮은 곳의 이야기를 듣고 멀리 보고자 어질고 현명한 이들의 힘을 빌리려고 한다. 이에 수령들의 공로에 의지해 백성들의 바람에 부합하고자 한다. 『우서』의 12목 제도를 본받아 시행하니, 주나라가 8백 년간 지속하였듯이 우리의 국운도 길이 이어질 것이다.”라고 하였다.\n연표: 918 고려 건국 — 945 왕규의 난 — 1009 강조의 정변 — 1196 최충헌 집권 — 1270 개경 환도 — 1351 공민왕 즉위',
+  question:'다음 상황이 나타난 시기를 연표에서 옳게 고른 것은?',choices:['(가)','(나)','(다)','(라)','(마)'],answer:1,
+  explanation:'성종이 12목을 설치하고 지방관을 파견한 것은 983년입니다. 945년 왕규의 난과 1009년 강조의 정변 사이인 (나)에 해당합니다.',
+  choiceExplanations:['918~945년 사이가 아닙니다.','983년은 945년과 1009년 사이입니다.','1009~1196년 사이가 아닙니다.','1196~1270년 사이가 아닙니다.','1270~1351년 사이가 아닙니다.'],
+  examKeywords:['성종','983년','12목','지방관','연표'],
+  gameMemory:'도윤상단의 교역로에 중앙에서 내려온 관리가 도착한다는 소식이 바로 12목 지방관 파견이었습니다. 성종 때인 983년을 연표에 놓으면 정답은 ②입니다.',storyConnection:'상단의 교역로와 12목 지방관 파견을 연결합니다.',
+  resumeStoryId:'ch03_policy_effect',examRound:65,examYear:2023,examLevel:'심화',questionNumber:11,sourcePage:3,
+  sourceFile:'제65회 한국사능력검정시험 심화 문제지.pdf',answerFile:'제65회 한국사능력검정시험 심화 정답표.pdf'
+});
+const q66a09=verifiedStoryQuestion({
+  questionId:'ch02-official-66-advanced-09',chapterId:'ch02',year:935,era:'후삼국',king:'견훤',chapterCandidate:'ch02',
+  historicalEventIds:['gyeon-hwon-geumsansa','later-three-kingdoms'],conceptIds:['gyeon-hwon','geumsansa','singgeom','later-three-kingdoms'],
+  relatedSceneId:'ch01_gyeonhwon',relatedHistoricalEventId:'gyeon-hwon-geumsansa',historicalEvent:'견훤의 금산사 탈출과 고려 귀순',relatedIllustrationId:'ch02-trade-room-935',
+  questionType:'인물 업적형',formatLabel:'실제 기출 · 견훤',difficulty:'중',
+  passage:'금산사는 삼국 시대에 창건된 유서 깊은 사찰입니다. 완산주를 도읍으로 국가를 세운 인물이 아들 신검 등에 의해 유폐되었다가 탈출한 곳으로 잘 알려져 있습니다. 이 사찰은 국보인 미륵전을 비롯하여 여러 점의 국가 지정 문화재를 보유하고 있습니다.',
+  question:"밑줄 그은 '인물'에 대한 설명으로 옳은 것은?",choices:['독서삼품과를 실시하였다.','동진으로부터 불교를 수용하였다.','후당과 오월에 사신을 파견하였다.','광평성 등의 정치 기구를 마련하였다.','화랑도를 국가적인 조직으로 개편하였다.'],answer:2,
+  explanation:'인물은 후백제를 세운 견훤입니다. 견훤은 중국의 후당과 오월에 사신을 파견했습니다. 독서삼품과와 화랑도 정비는 신라, 동진의 불교 수용은 백제 침류왕, 광평성은 궁예와 관련됩니다.',
+  choiceExplanations:['독서삼품과는 신라 원성왕 때입니다.','동진에서 불교를 수용한 것은 백제 침류왕 때입니다.','견훤은 후당과 오월에 사신을 파견했습니다.','광평성은 궁예가 마련했습니다.','화랑도를 국가 조직으로 정비한 것은 신라 진흥왕입니다.'],
+  examKeywords:['견훤','금산사','신검','완산주','후당','오월'],
+  gameMemory:'935년 나이 든 거래 상인이 “견훤이 신검에게 금산사에 갇혔다가 탈출해 고려로 왔다”고 전했습니다. 완산주에 후백제를 세운 견훤의 대외 활동은 후당·오월 사신 파견이므로 정답은 ③입니다.',storyConnection:'상인이 전한 견훤·금산사·신검 소식을 연결합니다.',
+  resumeStoryId:'ch01_silla',examRound:66,examYear:2023,examLevel:'심화',questionNumber:9,sourcePage:3,
+  sourceFile:'66회 한국사_문제지(심화).pdf',answerFile:'66회 한국사_정답표(심화).pdf'
+});
+const q67b10=verifiedStoryQuestion({
+  questionId:'ch02-official-67-basic-10',chapterId:'ch02',year:937,era:'고려 초기',king:'태조',chapterCandidate:'ch02',
+  historicalEventIds:['late-silla-hojok','taejo-integration'],conceptIds:['hojok','local-power','castle-lord','general'],
+  relatedSceneId:'ch01_sasimgwan',relatedHistoricalEventId:'taejo-integration',historicalEvent:'호족의 성장과 지방 지배',relatedIllustrationId:'ch02-trade-room-935',
+  questionType:'역사 용어 판단형',formatLabel:'실제 기출 · 호족',difficulty:'하',
+  passage:'<역사 학습 내용 정리>\n(가)\n1. 신라 말 지방에서 독자적인 세력을 형성하며 성장함\n2. 일정한 지역에서 정치·군사·경제적 지배권을 장악함\n3. 스스로 성주 또는 장군이라고 칭하기도 함',
+  question:'(가)에 들어갈 내용으로 적절한 것은?',choices:['성골','호족','권문세족','신진 사대부'],answer:1,
+  explanation:'신라 말 지방에서 독자적인 세력을 형성하고 성주 또는 장군이라 칭한 세력은 호족입니다.',
+  choiceExplanations:['성골은 신라의 최고 골품입니다.','호족은 신라 말 지방에서 성장한 세력입니다.','권문세족은 고려 후기의 지배 세력입니다.','신진 사대부는 고려 후기에 성장했습니다.'],
+  examKeywords:['호족','신라 말','지방 세력','성주','장군'],
+  gameMemory:'김부를 사심관으로 삼고 호족의 자제를 기인으로 둔 장면은 지방 호족의 힘을 포섭하고 견제하려는 태조의 선택이었습니다. 정답은 ② 호족입니다.',storyConnection:'김부·사심관·기인 장면과 호족을 연결합니다.',
+  resumeStoryId:'ch01_refugee_family',examRound:67,examYear:2023,examLevel:'기본',questionNumber:10,sourcePage:3,
+  sourceFile:'67회 한국사_문제지(기본).pdf',answerFile:'67회 한국사_정답표(기본).pdf'
+});
+const q67b11=verifiedStoryQuestion({
+  questionId:'ch02-official-67-basic-11',chapterId:'ch02',year:938,era:'고려 초기',king:'태조',chapterCandidate:'ch02',
+  historicalEventIds:['balhae-refugees','taejo-welfare'],conceptIds:['taejo','balhae-refugees','gyeon-hwon','heukchang'],
+  relatedSceneId:'ch01_refugee_family',relatedHistoricalEventId:'balhae-refugees',historicalEvent:'태조의 민족 통합과 흑창',relatedIllustrationId:'ch02-trade-room-935',
+  questionType:'왕의 업적 판단형',formatLabel:'실제 기출 · 태조',difficulty:'중',
+  passage:'○ 고려 (가)이/가 민족 통합을 위해 노력한 점에 대해 이야기 나눠볼까요?\n○ 발해 유민을 받아들였고, 조상의 제사를 지낼 수 있도록 배려해 주었죠.\n○ 오랜 기간 적대 관계였던 견훤까지 포용한 일도 빼놓을 수 없지요.',
+  question:'(가) 왕의 업적으로 옳은 것은?',choices:['흑창을 두었다.','강화도로 천도하였다.','과거제를 처음 실시하였다.','전민변정도감을 설치하였다.'],answer:0,
+  explanation:'발해 유민을 받아들이고 견훤을 포용한 왕은 태조입니다. 태조는 빈민 구제를 위해 흑창을 설치했습니다.',
+  choiceExplanations:['태조는 빈민 구제 기관인 흑창을 설치했습니다.','강화 천도는 고종 때입니다.','과거제는 광종 때 처음 실시했습니다.','전민변정도감은 공민왕 때 설치되었습니다.'],
+  examKeywords:['태조','발해 유민','견훤 포용','흑창'],
+  gameMemory:'도윤의 장사 공간에 발해계 가족이 찾아왔고, 전쟁 뒤 시장의 빈 바구니를 보며 백성의 삶을 살폈습니다. 발해 유민을 받아들인 태조가 둔 빈민 구제 기관은 흑창이므로 정답은 ①입니다.',storyConnection:'북쪽 손님과 전쟁 뒤 민생 장면을 흑창에 연결합니다.',
+  resumeStoryId:'ch01_welfare',examRound:67,examYear:2023,examLevel:'기본',questionNumber:11,sourcePage:3,
+  sourceFile:'67회 한국사_문제지(기본).pdf',answerFile:'67회 한국사_정답표(기본).pdf'
+});
+const q68a09=verifiedStoryQuestion({
+  questionId:'ch04-official-68-advanced-09',chapterId:'ch04',year:983,era:'고려 초기',king:'성종',chapterCandidate:'ch04',
+  historicalEventIds:['seongjong-twelve-mok','seongjong-gukjagam'],conceptIds:['seongjong','twelve-mok','gukjagam','sangpyeongchang'],
+  relatedSceneId:'ch03_gukjagam',relatedHistoricalEventId:'seongjong-state-system',historicalEvent:'성종의 제도 정비',relatedIllustrationId:'ch03-gukjagam',
+  questionType:'시대 상황 판단형',formatLabel:'실제 기출 · 성종',difficulty:'중상',
+  passage:'상평창을 양경(兩京)과 12목에 설치하고 교서를 내렸다. “『한서』 식화지에 그해가 풍년인지 흉년인지에 따라 곡식을 풀거나 거두어들이는 것을 행한다.”라고 하였다. …… 경시에 맡겨 곡식을 풀거나 거두어들이도록 하라.',
+  question:"밑줄 그은 '교서'를 내린 왕의 재위 기간에 볼 수 있는 모습으로 가장 적절한 것은?",choices:['서적포에서 책을 인쇄하는 관리','국자감 학생들을 가르치는 박사','양현고의 재정을 관리하는 관원','9재 학당에서 유교 경전을 읽는 학생','청연각의 소장 도서를 분류하는 학사'],answer:1,
+  explanation:'상평창을 양경과 12목에 설치한 왕은 성종입니다. 성종 때 국자감을 설치했으므로 국자감 박사의 모습을 볼 수 있습니다. 나머지는 주로 고려 중기 이후의 사실입니다.',
+  choiceExplanations:['서적포는 숙종 때 설치되었습니다.','성종은 국자감을 설치했습니다.','양현고는 예종 때 설치되었습니다.','9재 학당은 최충의 문헌공도입니다.','청연각은 예종 때 설치되었습니다.'],
+  examKeywords:['성종','상평창','12목','국자감'],
+  gameMemory:'현우가 주인공을 국자감으로 데려가 “사람을 뽑는 것만으로는 부족하고 가르칠 곳도 필요하다”고 했습니다. 성종 재위의 모습은 국자감 박사이므로 정답은 ②입니다.',storyConnection:'현우와 방문한 국자감 장면을 성종 시기 판단에 연결합니다.',
+  resumeStoryId:'ch03_policy_effect',examRound:68,examYear:2023,examLevel:'심화',questionNumber:9,sourcePage:2,
+  sourceFile:'68회 한국사_문제지(심화).pdf',answerFile:'68회 한국사_정답표(심화).pdf'
+});
+const q68a11=verifiedStoryQuestion({
+  questionId:'ch03-official-68-advanced-11',chapterId:'ch03',year:960,era:'고려 초기',king:'광종',chapterCandidate:'ch03',
+  historicalEventIds:['gwangjong-authority','gwangjong-naturalized-officials'],conceptIds:['gwangjong','nobi-inspection','naturalized-officials','gwangdeok','junpung'],
+  relatedSceneId:'ch02_night_discussion',relatedHistoricalEventId:'gwangjong-authority',historicalEvent:'광종의 왕권 강화 정책',relatedIllustrationId:'ch02-complete',
+  questionType:'왕의 업적 판단형',formatLabel:'실제 기출 · 광종',difficulty:'중',
+  passage:'○ 공은 대송(大宋) 강남 천주 출신이다. …… 예빈성 낭중에 임명하고 집 한 채를 내려주었다.\n○ 이것은 고려에 귀화한 채인범의 묘지명으로 현존하는 고려 시대 묘지명 중 가장 오래된 것입니다. 노비안검법을 실시한 (가)은/는 채인범, 쌍기 등의 귀화인들을 적극 등용하였습니다.',
+  question:'(가) 왕의 재위 시기에 있었던 사실로 옳은 것은?',choices:['최승로가 시무 28조를 건의하였다.','경기에 한하여 과전법이 실시되었다.','신돈이 전민변정도감의 판사가 되었다.','빈민 구제 기관인 흑창이 처음 설치되었다.','광덕, 준풍 등의 독자적 연호가 사용되었다.'],answer:4,
+  explanation:'노비안검법을 실시하고 쌍기를 등용한 왕은 광종입니다. 광종은 광덕과 준풍이라는 독자적 연호를 사용했습니다.',
+  choiceExplanations:['시무 28조는 성종 때입니다.','과전법은 고려 말 공양왕 때입니다.','신돈과 전민변정도감은 공민왕 때입니다.','흑창은 태조 때 설치되었습니다.','광덕과 준풍은 광종의 독자적 연호입니다.'],
+  examKeywords:['광종','노비안검법','쌍기','귀화인','광덕','준풍'],
+  gameMemory:'길상이 양인으로 돌아온 노비안검법, 현우의 과거를 건의한 쌍기, 시장에서 들은 광덕과 준풍이 모두 광종의 장면이었습니다. 정답은 ⑤입니다.',storyConnection:'길상·현우·시장 연호 장면을 하나의 광종 개혁으로 연결합니다.',
+  resumeStoryId:'ch02_complete',examRound:68,examYear:2023,examLevel:'심화',questionNumber:11,sourcePage:3,
+  sourceFile:'68회 한국사_문제지(심화).pdf',answerFile:'68회 한국사_정답표(심화).pdf'
+});
+QUESTIONS.push(q65a10,q65a11,q66a09,q67b10,q67b11,q68a09,q68a11);
+
+const OFFICIAL_CLASSIFICATION={
+  'ch01-official-69-basic-10':{era:'후삼국',king:'궁예',year:918,chapterCandidate:'ch01',historicalEventIds:['taebong','goryeo-foundation-918'],conceptIds:['gungye','taebong','goryeo-foundation-918']},
+  'ch01-official-79-advanced-09':{era:'후삼국',king:'궁예',year:918,chapterCandidate:'ch01',historicalEventIds:['taebong'],conceptIds:['gungye','taebong']},
+  'ch01-official-70-advanced-10':{era:'후삼국',king:'태조',year:936,chapterCandidate:'ch02',historicalEventIds:['gongsan-battle','gochang-battle','illyecheon'],conceptIds:['later-three-kingdoms-chronology','kim-bu','illyecheon']},
+  'ch01-official-73-basic-10':{era:'후삼국',king:'견훤',year:935,chapterCandidate:'ch02',historicalEventIds:['gyeon-hwon-geumsansa'],conceptIds:['gyeon-hwon','geumsansa','singgeom']},
+  'ch01-official-74-advanced-10':{era:'후삼국',king:'태조',year:936,chapterCandidate:'ch02',historicalEventIds:['silla-surrender','illyecheon'],conceptIds:['kim-bu','silla-surrender','illyecheon']},
+  'ch01-official-76-advanced-10':{era:'후삼국',king:'태조',year:936,chapterCandidate:'ch02',historicalEventIds:['illyecheon'],conceptIds:['gyeon-hwon','singgeom','illyecheon']},
+  'ch03-official-75-basic-12':{era:'고려 초기',king:'태조',year:937,chapterCandidate:'ch02',historicalEventIds:['taejo-integration'],conceptIds:['taejo','sasimgwan','local-control']},
+  'ch02-official-69-advanced-10':{era:'고려 초기',king:'태조',year:943,chapterCandidate:'ch02',historicalEventIds:['taejo-policy','hunyo-ten-injunctions'],conceptIds:['taejo','hunyo-ten-injunctions']},
+  'ch02-official-74-advanced-11':{era:'고려 초기',king:'광종',year:956,chapterCandidate:'ch03',historicalEventIds:['gwangjong-authority'],conceptIds:['gwangjong','nobi-inspection','gwangdeok','junpung']},
+  'ch02-official-76-advanced-50':{era:'고려 초기',king:'광종',year:960,chapterCandidate:'ch03',historicalEventIds:['gwangjong-reign-titles'],conceptIds:['gwangjong','nobi-inspection','gwangdeok']},
+  'ch02-official-77-advanced-14':{era:'고려 초기',king:'광종',year:960,chapterCandidate:'ch03',historicalEventIds:['gwangjong-reign-titles'],conceptIds:['gwangjong','junpung','imperial-style']},
+  'ch02-official-78-advanced-11':{era:'고려 초기',king:'광종',year:958,chapterCandidate:'ch03',historicalEventIds:['gwangjong-958-gwageo'],conceptIds:['gwangjong','ssanggi','gwageo']},
+  'ch03-official-75-basic-10':{era:'고려 초기',king:'성종',year:983,chapterCandidate:'ch04',historicalEventIds:['seongjong-state-system'],conceptIds:['seongjong','choe-seungro','simu-28','gukjagam','twelve-mok']}
+};
+for(const [id,data] of Object.entries(OFFICIAL_CLASSIFICATION)){const q=QUESTIONS.find(item=>item.questionId===id);if(q)Object.assign(q,data,{sourceType:'official_exam',sourceVerified:true,sourceStatus:'verified_from_attached_pdf',questionAuditStatus:'VERIFIED_OFFICIAL'})}
+
+const QUESTION_POOLS={
+  'pool-ch01-foundation':{questionPoolId:'pool-ch01-foundation',chapterId:'ch01',conceptIds:['gungye','wang-geon','goryeo-foundation-918'],questionIds:['ch01-official-69-basic-10','ch01-official-79-advanced-09']},
+  'pool-ch01-gongsan':{questionPoolId:'pool-ch01-gongsan',chapterId:'ch01',conceptIds:['gongsan-battle','shin-sung-gyeom','wang-geon','gyeon-hwon'],questionIds:[]},
+  'pool-ch01-gochang':{questionPoolId:'pool-ch01-gochang',chapterId:'ch01',conceptIds:['gochang-battle','gongsan-battle','chronology'],questionIds:[]},
+  'pool-ch02-gyeonhwon':{questionPoolId:'pool-ch02-gyeonhwon',chapterId:'ch02',conceptIds:['gyeon-hwon','geumsansa','singgeom'],questionIds:['ch01-official-73-basic-10','ch02-official-66-advanced-09']},
+  'pool-ch02-silla':{questionPoolId:'pool-ch02-silla',chapterId:'ch02',conceptIds:['kim-bu','silla-surrender','taejo-integration'],questionIds:[]},
+  'pool-ch02-illyecheon':{questionPoolId:'pool-ch02-illyecheon',chapterId:'ch02',conceptIds:['illyecheon','singgeom','later-three-kingdoms-chronology'],questionIds:['ch01-official-76-advanced-10','ch01-official-74-advanced-10','ch01-official-70-advanced-10']},
+  'pool-ch02-integration':{questionPoolId:'pool-ch02-integration',chapterId:'ch02',conceptIds:['hojok','sasimgwan','giin','taejo-integration'],questionIds:['ch02-official-67-basic-10','ch03-official-75-basic-12','ch02-official-65-advanced-10']},
+  'pool-ch02-north-welfare':{questionPoolId:'pool-ch02-north-welfare',chapterId:'ch02',conceptIds:['balhae-refugees','northern-expansion','seogyeong','heukchang'],questionIds:['ch02-official-67-basic-11']},
+  'pool-ch02-hunyo':{questionPoolId:'pool-ch02-hunyo',chapterId:'ch02',conceptIds:['hunyo-ten-injunctions','taejo'],questionIds:['ch02-official-69-advanced-10']},
+  'pool-ch03-nobi':{questionPoolId:'pool-ch03-nobi',chapterId:'ch03',conceptIds:['gwangjong','nobi-inspection','authority'],questionIds:['ch02-official-74-advanced-11','ch03-official-68-advanced-11']},
+  'pool-ch03-gwageo':{questionPoolId:'pool-ch03-gwageo',chapterId:'ch03',conceptIds:['gwangjong','ssanggi','gwageo'],questionIds:['ch02-official-78-advanced-11']},
+  'pool-ch03-synthesis':{questionPoolId:'pool-ch03-synthesis',chapterId:'ch03',conceptIds:['nobi-inspection','gwageo','ssanggi','gwangdeok','junpung','authority'],questionIds:['ch02-official-74-advanced-11','ch03-official-68-advanced-11','ch02-official-78-advanced-11']},
+  'pool-ch03-symbols':{questionPoolId:'pool-ch03-symbols',chapterId:'ch03',conceptIds:['official-robes','gwangdeok','junpung','imperial-style'],questionIds:['ch02-official-76-advanced-50','ch02-official-77-advanced-14']},
+  'pool-ch04-seongjong':{questionPoolId:'pool-ch04-seongjong',chapterId:'ch04',conceptIds:['seongjong','choe-seungro','simu-28','twelve-mok','gukjagam'],questionIds:['ch03-official-75-basic-10','ch04-official-68-advanced-09','ch04-official-65-advanced-11']}
+};
+const buildQuestionSet=data=>{const pool=QUESTION_POOLS[data.questionPoolId],officialQuestionIds=(pool?.questionIds||[]).filter(id=>{const q=QUESTIONS.find(item=>item.questionId===id);return q?.isOfficial&&q.sourceVerified&&!q.retired}),requiredCount=data.requiredCount||3,verifiedCount=officialQuestionIds.length;return{...data,requiredCount,officialQuestionIds,verifiedCount,missingQuestionCount:Math.max(0,requiredCount-verifiedCount),status:verifiedCount>=requiredCount?'ready':'waiting_for_source'}};
+const QUESTION_SETS=Object.fromEntries([
+  buildQuestionSet({questionSetId:'ch01-foundation',chapterId:'ch01',afterSceneId:'foundation',resumeStoryId:'ch01_trade_start',questionPoolId:'pool-ch01-foundation',conceptIds:['gungye','wang-geon','goryeo-foundation-918']}),
+  buildQuestionSet({questionSetId:'ch01-gongsan',chapterId:'ch01',afterSceneId:'ch01_gongsan',resumeStoryId:'ch01_conflict',questionPoolId:'pool-ch01-gongsan',conceptIds:['gongsan-battle','shin-sung-gyeom']}),
+  buildQuestionSet({questionSetId:'ch01-gochang',chapterId:'ch01',afterSceneId:'ch01_gochang',resumeStoryId:'ch01_belonging',questionPoolId:'pool-ch01-gochang',conceptIds:['gochang-battle','gongsan-battle']}),
+  buildQuestionSet({questionSetId:'ch02-gyeonhwon',chapterId:'ch02',afterSceneId:'ch01_gyeonhwon',resumeStoryId:'ch01_silla',questionPoolId:'pool-ch02-gyeonhwon',conceptIds:['gyeon-hwon','geumsansa','singgeom']}),
+  buildQuestionSet({questionSetId:'ch02-silla-surrender',chapterId:'ch02',afterSceneId:'ch01_silla',resumeStoryId:'ch01_jump_936',questionPoolId:'pool-ch02-silla',conceptIds:['kim-bu','silla-surrender']}),
+  buildQuestionSet({questionSetId:'ch02-illyecheon',chapterId:'ch02',afterSceneId:'future_flow',resumeStoryId:'ch01_integration',questionPoolId:'pool-ch02-illyecheon',conceptIds:['illyecheon','later-three-kingdoms-chronology']}),
+  buildQuestionSet({questionSetId:'ch02-taejo-integration',chapterId:'ch02',afterSceneId:'ch01_sasimgwan',resumeStoryId:'ch01_refugee_family',questionPoolId:'pool-ch02-integration',conceptIds:['hojok','sasimgwan','giin']}),
+  buildQuestionSet({questionSetId:'ch02-north-welfare',chapterId:'ch02',afterSceneId:'ch01_refugee_family',resumeStoryId:'ch01_welfare',questionPoolId:'pool-ch02-north-welfare',conceptIds:['balhae-refugees','northern-expansion','heukchang']}),
+  buildQuestionSet({questionSetId:'ch02-hunyo',chapterId:'ch02',afterSceneId:'ch01_hunyo',resumeStoryId:'ch01_guild_seed',questionPoolId:'pool-ch02-hunyo',conceptIds:['hunyo-ten-injunctions','taejo']}),
+  buildQuestionSet({questionSetId:'ch03-nobi-inspection',chapterId:'ch03',afterSceneId:'ch02_policy_memory',resumeStoryId:'ch02_noble_night',questionPoolId:'pool-ch03-nobi',conceptIds:['nobi-inspection','authority']}),
+  buildQuestionSet({questionSetId:'ch03-gwageo',chapterId:'ch03',afterSceneId:'ch02_ssanggi',resumeStoryId:'ch02_exam_eve',questionPoolId:'pool-ch03-gwageo',conceptIds:['ssanggi','gwageo']}),
+  buildQuestionSet({questionSetId:'ch03-gwangjong-synthesis',chapterId:'ch03',afterSceneId:'ch02_night_discussion',resumeStoryId:'ch02_complete',questionPoolId:'pool-ch03-synthesis',conceptIds:['nobi-inspection','gwageo','gwangdeok','junpung','authority']}),
+  buildQuestionSet({questionSetId:'ch03-imperial-symbols',chapterId:'ch03',afterSceneId:'ch02_reign_followup',resumeStoryId:'ch02_purge',questionPoolId:'pool-ch03-symbols',conceptIds:['official-robes','gwangdeok','junpung','imperial-style']}),
+  buildQuestionSet({questionSetId:'ch04-seongjong-system',chapterId:'ch04',afterSceneId:'ch03_gukjagam',resumeStoryId:'ch03_policy_effect',questionPoolId:'pool-ch04-seongjong',conceptIds:['seongjong','choe-seungro','simu-28','twelve-mok','gukjagam']})
+].map(set=>[set.questionSetId,set]));
+
+for(const q of QUESTIONS.filter(item=>['ch01','ch02','ch03','ch04'].includes(item.chapterId)&&!item.isOfficial))Object.assign(q,{retired:true,reviewOnly:true,sourceStatus:'retired_self_authored_main_story',questionAuditStatus:'SELF_AUTHORED'});
+const MAIN_QUESTION_IDS={
+  ch01:[],
+  ch02:['ch01-official-76-advanced-10','ch01-official-74-advanced-10','ch01-official-70-advanced-10','ch02-official-67-basic-10','ch03-official-75-basic-12','ch02-official-65-advanced-10'],
+  ch03:['ch02-official-74-advanced-11','ch03-official-68-advanced-11','ch02-official-78-advanced-11'],
+  ch04:['ch03-official-75-basic-10','ch04-official-68-advanced-09','ch04-official-65-advanced-11']
+};
+const REVIEW_QUESTION_IDS={
+  ch01:['ch01-official-69-basic-10','ch01-official-79-advanced-09'],
+  ch02:['ch01-official-73-basic-10','ch02-official-66-advanced-09','ch01-official-74-advanced-10','ch01-official-76-advanced-10','ch01-official-70-advanced-10','ch02-official-67-basic-10','ch03-official-75-basic-12','ch02-official-65-advanced-10','ch02-official-67-basic-11','ch02-official-69-advanced-10'],
+  ch03:['ch02-official-74-advanced-11','ch03-official-68-advanced-11','ch02-official-78-advanced-11','ch02-official-76-advanced-50','ch02-official-77-advanced-14'],
+  ch04:['ch03-official-75-basic-10','ch04-official-68-advanced-09','ch04-official-65-advanced-11']
+};
+for(const q of QUESTIONS.filter(item=>item.isOfficial&&!item.retired))q.reviewOnly=!MAIN_QUESTION_IDS[q.chapterId]?.includes(q.questionId);
+for(const chapterId of ['ch01','ch02','ch03','ch04']){
+  SPLIT_STORY_QUESTION_IDS[chapterId]=[...MAIN_QUESTION_IDS[chapterId]];
+  SPLIT_REVIEW_IDS[chapterId]=[...REVIEW_QUESTION_IDS[chapterId]];
+  Object.assign(CHAPTERS[chapterId],{questionCount:MAIN_QUESTION_IDS[chapterId].length,reviewQuestionCount:REVIEW_QUESTION_IDS[chapterId].length});
+}
+
+const auditedSceneIds=new Set(Object.values(QUESTION_SETS).map(set=>set.afterSceneId));
+for(const s of Object.values(STORIES).filter(scene=>['ch01','ch02','ch03','ch04'].includes(scene.chapterId))){
+  delete s.quizId;delete s.linkedQuestionIds;delete s.linkedOfficialQuestions;delete s.questionSequenceMode;delete s.questionSetId;delete s.questionSetStatus;delete s.officialQuestionSlot;
+}
+const attachQuestionSet=(setId)=>{const set=QUESTION_SETS[setId],s=STORIES[set.afterSceneId];s.questionSetId=setId;s.questionSetStatus=set.status;s.questionSetResumeStoryId=set.resumeStoryId;s.officialQuestionSlot={conceptIds:[...set.conceptIds],linkedOfficialQuestions:[...set.officialQuestionIds],requiredCount:set.requiredCount,verifiedCount:set.verifiedCount,missingQuestionCount:set.missingQuestionCount,officialQuestionStatus:set.status};if(set.status==='ready'){s.linkedQuestionIds=[...set.officialQuestionIds];s.linkedOfficialQuestions=[...set.officialQuestionIds];s.questionSequenceMode='queue'}};
+Object.keys(QUESTION_SETS).forEach(attachQuestionSet);
+
+// CH.01 keeps emotion and avoids spoilers; all three learning blocks wait for enough verified sources.
+Object.assign(STORIES.rumor,{sceneType:'ambient-rumor',visibleCharacters:[],dialogues:ch01Lines([
+  ['resident_a','serious','궁예가 그렇게 쫓겨날 줄 누가 알았겠소.','npc','주민 A'],
+  ['resident_b','surprised','왕건 장군이 새 왕이 되고, 나라 이름은 고려라 한다더군.','npc','주민 B'],
+  ['player','surprised','……궁예가 쫓겨났다고?'],
+  ['doyun','suspicious','자네 정말 아무것도 모르는군.']
+])});
+Object.assign(STORIES.ch01_jump_930,{dialogues:ch01Lines([
+  ['narrator','neutral','공산의 패배 뒤에도 우리는 장사를 다시 시작했다.','narration'],
+  ['doyun','serious','이번에는 물건을 한 수레에 전부 싣지 맙시다.'],
+  ['player','neutral','927년에 배웠네.'],
+  ['doyun','tired','비싼 수업료였소.'],
+  ['narrator','neutral','세 해 뒤, 막혔던 남쪽 길에서 다른 소식이 올라왔다.','narration']
+])});
+
+// CH.03 removes self-authored interruptions. The verified synthesis set runs after all lived reforms.
+Object.assign(STORIES.ch02_policy_memory,{nextStoryId:'ch02_noble_night'});
+Object.assign(STORIES.ch02_ssanggi,{nextStoryId:'ch02_exam_eve'});
+Object.assign(STORIES.ch02_hyunwoo_official,{nextStoryId:'ch02_reign_titles'});
+Object.assign(STORIES.ch02_reign_titles,{nextStoryId:'ch02_reign_followup'});
+Object.assign(STORIES.ch02_reign_followup,{nextStoryId:'ch02_purge'});
+Object.assign(STORIES.ch02_night_discussion,{nextStoryId:'ch02_complete'});
+Object.assign(STORIES.ch02_memory_retrieval,{nextStoryId:'ch02_chapter_clear',dialogues:[
+  dialogueLine('player','thinking','길상과 노비안검법, 현우와 과거제·쌍기, 관청 거리의 공복, 시장의 광덕과 준풍이 차례로 떠올랐다.','thought'),
+  dialogueLine('player','serious','법과 시험, 관리의 옷과 왕의 연호. 서로 다른 장면이 광종의 왕권 강화라는 한 방향으로 이어졌다.','thought')
+]});
+Object.assign(STORIES.ch02_realization,{storyActive:false,nextStoryId:'ch02_chapter_clear'});
+
+// CH.04 finishes all history questions before the friendship and farewell arc.
+const CH04_REMOVED_WRAPPERS={
+  ch03_exam_75:'ch03_policy_effect',ch03_trade_practice:'ch03_three_friends',ch03_exam_practice_05:'ch03_three_friends',
+  ch03_choe_practice:'ch03_history_reflection',ch03_exam_practice_06:'ch03_history_reflection',ch03_exam_practice_07:'ch03_history_reflection',
+  ch03_timeline_practice:'ch03_courtyard',ch03_exam_practice_08:'ch03_courtyard',ch03_exam_practice_09:'ch03_courtyard'
+};
+for(const [sceneId,nextStoryId] of Object.entries(CH04_REMOVED_WRAPPERS)){if(!STORIES[sceneId])continue;Object.assign(STORIES[sceneId],{storyActive:false,nextStoryId});delete STORIES[sceneId].quizId;delete STORIES[sceneId].linkedQuestionIds;delete STORIES[sceneId].questionSequenceMode;delete STORIES[sceneId].questionSetId}
+Object.assign(STORIES.ch03_gukjagam,{nextStoryId:'ch03_policy_effect'});
+Object.assign(STORIES.ch03_policy_effect,{nextStoryId:'ch03_three_friends'});
+Object.assign(STORIES.ch03_three_friends,{nextStoryId:'ch03_history_reflection'});
+Object.assign(STORIES.ch03_history_reflection,{nextStoryId:'ch03_courtyard'});
+STORIES.ch03_doyun_soliloquy=scene({
+  sceneId:'ch03_doyun_soliloquy',chapterId:'ch04',historicalEventId:'seongjong-state-system',year:982,
+  location:'도윤상단 · 안채',title:'나쁘지 않은 장사',illustrationId:'ch03-doyun-guild-interior',timeOfDay:'late-night',
+  enterCharacterStates:{doyun:{characterAge:88,ageState:'elder_982',ageVariant:'elder_982',outfit:'guild_master',healthState:'frail',isAlive:true}},
+  dialogues:[
+    dialogueLine('narrator','neutral','주인공이 잠시 밖으로 나가자, 도윤은 혼자 상단의 불빛을 바라보았다.','narration'),
+    dialogueLine('doyun','tired','가게 하나면 된다고 생각했는데.'),
+    dialogueLine('narrator','neutral','마당 너머로 장부를 덮고 짐을 정리하는 사람들의 소리가 희미하게 들렸다.','narration'),
+    dialogueLine('doyun','weak_smile','참 멀리도 왔군.'),
+    dialogueLine('doyun','weak_smile','……나쁘지 않은 장사였소.')
+  ],nextStoryId:'ch03_death'
+});
+Object.assign(STORIES.ch03_farewell,{nextStoryId:'ch03_doyun_soliloquy',dialogues:[
+  dialogueLine('doyun','tired','처음 봤을 때는 이상한 옷을 입고 쓰러져 있더니…….'),dialogueLine('player','worried','또 그 얘기야?'),
+  dialogueLine('doyun','weak_smile','이제는 마지막일지도 모르는데 들어주시오.'),dialogueLine('narrator','neutral','주인공은 아무 말도 하지 않았다.','narration'),
+  dialogueLine('doyun','sad','결국 내가 먼저 가는군.'),dialogueLine('player','sad','…….'),dialogueLine('doyun','serious','그 표정 하지 마시오. 나는 충분히 살았소.'),
+  dialogueLine('doyun','weak_smile','가게도 만들었고. 상단도 만들었고. 먹고 싶은 것도 많이 먹었고. 좋은 사람들도 만났고.'),
+  dialogueLine('player','sad','그게 마지막에 할 말이냐.'),dialogueLine('doyun','laugh','중요한 일이오.'),
+  dialogueLine('doyun','sad','그런데 자네는……. 얼마나 더 살아야 하는 거요?'),dialogueLine('player','worried','…….')
+]});
+
+for(const key of Object.keys(CONCEPT_QUESTION_INDEX))delete CONCEPT_QUESTION_INDEX[key];
+for(const q of QUESTIONS.filter(item=>!item.retired))for(const conceptId of q.conceptIds||[])(CONCEPT_QUESTION_INDEX[conceptId]||(CONCEPT_QUESTION_INDEX[conceptId]=[])).push(q.questionId);
+
+const migrateBeforeStoryAudit=migrateSave;
+migrateSave=function(raw){
+  const migrated=migrateBeforeStoryAudit(raw),meta=migrated.meta||(migrated.meta=INITIAL_META());
+  if(meta.storyAuditVersion!==STORY_AUDIT_VERSION){
+    const repairRun=run=>{
+      if(!run)return;
+      const redirect={...CH04_REMOVED_WRAPPERS,ch02_realization:'ch02_chapter_clear'};
+      if(redirect[run.storyId]){run.storyId=redirect[run.storyId];run.pending=null;run.dialogueSceneId=null;run.dialogueCursor=1}
+      if(run.pending?.nextStoryId&&redirect[run.pending.nextStoryId])run.pending.nextStoryId=redirect[run.pending.nextStoryId];
+      const active=QUESTIONS.find(q=>q.questionId===run.activeQuestionId);
+      if(active&&(active.retired||active.reviewOnly)){const resume=active.resumeStoryId||run.storyId;run.storyId=redirect[resume]||resume;run.activeQuestionId=null;run.questionAnswer=null;run.questionQueue=[];run.questionQueueIndex=0;run.questionQueueResumeStoryId=null;run.activeQuestionSetId=null;run.dialogueSceneId=null;run.dialogueCursor=1}
+      run.questionQueue=(run.questionQueue||[]).filter(id=>{const q=QUESTIONS.find(item=>item.questionId===id);return q&&!q.retired&&!q.reviewOnly});
+      if(run.activeQuestionSetId&&!QUESTION_SETS[run.activeQuestionSetId])run.activeQuestionSetId=null;
+      run.storyAuditVersion=STORY_AUDIT_VERSION;
+    };
+    repairRun(migrated.run);repairRun(migrated.mainRun);meta.storyAuditVersion=STORY_AUDIT_VERSION;
+  }
+  migrated.version=SAVE_VERSION;
+  return migrated;
+};
+
 /* CH.01 re-edit: 2026 prologue -> 918 foundation -> 927 Gongsan -> 930 Gochang. */
 const CH01_REEDIT_VERSION=1;
 const CH01_VERIFIED_OFFICIAL_IDS=['ch01-official-69-basic-10','ch01-official-79-advanced-09','ch01-official-70-advanced-10'];
@@ -632,3 +905,40 @@ migrateSave=function(raw){
   migrated.version=SAVE_VERSION;
   return migrated;
 };
+
+// Re-apply the audited runtime after the older CH.01/CH.02 compatibility overrides above.
+for(const [id,data] of Object.entries(OFFICIAL_CLASSIFICATION)){const q=QUESTIONS.find(item=>item.questionId===id);if(q)Object.assign(q,data,{sourceType:'official_exam',sourceVerified:true,sourceStatus:'verified_from_attached_pdf',questionAuditStatus:'VERIFIED_OFFICIAL'})}
+for(const q of QUESTIONS.filter(item=>['ch01','ch02','ch03','ch04'].includes(item.chapterId)&&!item.isOfficial))Object.assign(q,{retired:true,reviewOnly:true,sourceStatus:'retired_self_authored_main_story',questionAuditStatus:'SELF_AUTHORED'});
+for(const q of QUESTIONS.filter(item=>item.isOfficial&&!item.retired))q.reviewOnly=!MAIN_QUESTION_IDS[q.chapterId]?.includes(q.questionId);
+for(const chapterId of ['ch01','ch02','ch03','ch04']){
+  SPLIT_STORY_QUESTION_IDS[chapterId]=[...MAIN_QUESTION_IDS[chapterId]];
+  SPLIT_REVIEW_IDS[chapterId]=[...REVIEW_QUESTION_IDS[chapterId]];
+  Object.assign(CHAPTERS[chapterId],{questionCount:MAIN_QUESTION_IDS[chapterId].length,reviewQuestionCount:REVIEW_QUESTION_IDS[chapterId].length});
+}
+for(const s of Object.values(STORIES).filter(scene=>['ch01','ch02','ch03','ch04'].includes(scene.chapterId))){delete s.quizId;delete s.linkedQuestionIds;delete s.linkedOfficialQuestions;delete s.questionSequenceMode;delete s.questionSetId;delete s.questionSetStatus;delete s.officialQuestionSlot}
+Object.keys(QUESTION_SETS).forEach(attachQuestionSet);
+Object.assign(STORIES.rumor,{sceneType:'ambient-rumor',visibleCharacters:[],dialogues:ch01Lines([
+  ['resident_a','serious','궁예가 그렇게 쫓겨날 줄 누가 알았겠소.','npc','주민 A'],
+  ['resident_b','surprised','왕건 장군이 새 왕이 되고, 나라 이름은 고려라 한다더군.','npc','주민 B'],
+  ['player','surprised','……궁예가 쫓겨났다고?'],['doyun','suspicious','자네 정말 아무것도 모르는군.']
+])});
+Object.assign(STORIES.ch01_jump_930,{dialogues:ch01Lines([
+  ['narrator','neutral','공산의 패배 뒤에도 우리는 장사를 다시 시작했다.','narration'],['doyun','serious','이번에는 물건을 한 수레에 전부 싣지 맙시다.'],
+  ['player','neutral','927년에 배웠네.'],['doyun','tired','비싼 수업료였소.'],['narrator','neutral','세 해 뒤, 막혔던 남쪽 길에서 다른 소식이 올라왔다.','narration']
+])});
+Object.assign(STORIES.ch02_policy_memory,{nextStoryId:'ch02_noble_night'});
+Object.assign(STORIES.ch02_ssanggi,{nextStoryId:'ch02_exam_eve'});
+Object.assign(STORIES.ch02_hyunwoo_official,{nextStoryId:'ch02_reign_titles'});
+Object.assign(STORIES.ch02_reign_titles,{nextStoryId:'ch02_reign_followup'});
+Object.assign(STORIES.ch02_reign_followup,{nextStoryId:'ch02_purge'});
+Object.assign(STORIES.ch02_night_discussion,{nextStoryId:'ch02_complete'});
+Object.assign(STORIES.ch02_memory_retrieval,{nextStoryId:'ch02_chapter_clear',dialogues:[dialogueLine('player','thinking','길상과 노비안검법, 현우와 과거제·쌍기, 관청 거리의 공복, 시장의 광덕과 준풍이 차례로 떠올랐다.','thought'),dialogueLine('player','serious','법과 시험, 관리의 옷과 왕의 연호. 서로 다른 장면이 광종의 왕권 강화라는 한 방향으로 이어졌다.','thought')]});
+Object.assign(STORIES.ch02_realization,{storyActive:false,nextStoryId:'ch02_chapter_clear'});
+for(const [sceneId,nextStoryId] of Object.entries(CH04_REMOVED_WRAPPERS)){if(!STORIES[sceneId])continue;Object.assign(STORIES[sceneId],{storyActive:false,nextStoryId});delete STORIES[sceneId].quizId;delete STORIES[sceneId].linkedQuestionIds;delete STORIES[sceneId].questionSequenceMode;delete STORIES[sceneId].questionSetId}
+Object.assign(STORIES.ch03_gukjagam,{nextStoryId:'ch03_policy_effect'});
+Object.assign(STORIES.ch03_policy_effect,{nextStoryId:'ch03_three_friends'});
+Object.assign(STORIES.ch03_three_friends,{nextStoryId:'ch03_history_reflection'});
+Object.assign(STORIES.ch03_history_reflection,{nextStoryId:'ch03_courtyard'});
+Object.assign(STORIES.ch03_farewell,{nextStoryId:'ch03_doyun_soliloquy'});
+for(const key of Object.keys(CONCEPT_QUESTION_INDEX))delete CONCEPT_QUESTION_INDEX[key];
+for(const q of QUESTIONS.filter(question=>!question.retired))for(const conceptId of q.conceptIds||[])(CONCEPT_QUESTION_INDEX[conceptId]||(CONCEPT_QUESTION_INDEX[conceptId]=[])).push(q.questionId);
