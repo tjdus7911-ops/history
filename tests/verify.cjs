@@ -63,16 +63,18 @@ assert(STORIES.house.dialogues.filter(line=>line.speakerType==='npc').every(line
 assert(STORIES.house.dialogues.some(line=>line.characterName==='낯선 청년'));
 const expectedSceneSources={
   'goryeo-house':'assets/scenes/goryeo-house-empty.png','goryeo-house-question':'assets/scenes/goryeo-house-empty.png',
-  'village-reveal':'assets/scenes/route-village.png','village-rumor':'assets/scenes/status-first.png',
-  'memory-wanggeon':'assets/scenes/title-foundation.png','market-later-three-kingdoms':'assets/scenes/market-later-three-kingdoms.png',
+  'village-reveal':'assets/scenes/route-village.png','village-rumor':'assets/scenes/village-residents-rumor-918.png',
+  'memory-wanggeon':'assets/scenes/title-foundation.png','market-later-three-kingdoms':'assets/scenes/market-rumors-918.png',
   'route-songak-carry':'assets/scenes/route-songak.png','route-songak-talk':'assets/scenes/route-songak.png',
   'route-village-help':'assets/scenes/route-village.png','route-village-call':'assets/scenes/route-village.png','route-village-leave':'assets/scenes/route-village.png',
   'route-caravan-work':'assets/scenes/route-caravan.png','route-caravan-negotiate':'assets/scenes/route-caravan.png','route-caravan-goods':'assets/scenes/route-caravan.png',
   'thief-chase':'assets/scenes/thief-start.png','thief-block':'assets/scenes/thief-start.png','thief-alley':'assets/scenes/thief-start.png','thief-ignore':'assets/scenes/thief-aftermath.png',
-  'first-night':'assets/scenes/first-night-goryeo.png','future-flow':'assets/scenes/title-foundation.png','chapter-complete':'assets/scenes/route-songak.png'
+  'first-night':'assets/scenes/first-night-goryeo.png','future-flow':'assets/scenes/title-foundation.png','chapter-complete':'assets/scenes/route-songak.png',
+  'ch02-reign-titles':'assets/scenes/ch02-official-robes-street-960.png'
 };
 for(const[id,src]of Object.entries(expectedSceneSources))assert.equal(ASSETS[id].src,src,`${id}: audited source mismatch`);
-for(const id of Object.keys(expectedSceneSources).filter(id=>!['first-night','market-later-three-kingdoms'].includes(id)))assert.equal(ASSETS[id].embeddedCharacters,false,`${id}: sprites must own character continuity`);
+for(const id of Object.keys(expectedSceneSources).filter(id=>!['first-night','village-rumor','market-later-three-kingdoms','ch02-reign-titles'].includes(id)))assert.equal(ASSETS[id].embeddedCharacters,false,`${id}: sprites must own character continuity`);
+for(const id of ['village-rumor','market-later-three-kingdoms','ch02-reign-titles'])assert.equal(ASSETS[id].embeddedCharacters,true,`${id}: anonymous people must be embedded in the scene illustration`);
 assert.deepEqual(Array.from(ASSETS['first-night'].embeddedCharacterIds),['player']);
 
 const outfitMilestone=INITIAL();outfitMilestone.run.started=true;outfitMilestone.run.storyId='outfit_gift';applySceneEntry(outfitMilestone,'outfit_gift');

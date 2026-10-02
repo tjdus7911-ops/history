@@ -1,11 +1,11 @@
-# CH.01 캐릭터 에셋 현황과 확장 명세
+# 캐릭터·단역 배경 에셋 현황과 확장 명세
 
-주인공·도윤·현우의 연령/표정 에셋과 대화에 필요한 주민·상인·관리·군사 에셋은 **투명 배경 1024×1536 PNG 상반신 에셋**으로 제작되어 실제 게임에 연결되어 있습니다. 말풍선 옆 작은 프로필이 아니라 배경 위 비주얼노벨 캐릭터 레이어로 사용합니다. 전체 126개 scene의 표시 가능한 spoken line을 검사했으며, 의도적인 암전 음성 `unknown`을 제외하고 미연결 포트레이트는 없습니다.
+주인공·도윤·길상·현우처럼 얼굴과 관계를 계속 기억해야 하는 주요 인물만 **투명 배경 PNG 스탠딩**으로 실제 게임에 연결합니다. 주민·상인·행인·이름 없는 관리와 군사는 대사 이름표만 유지하고, 여러 명이 필요한 모습은 완성된 scene illustration 안에서 표현합니다. 과거에 제작한 단역 포트레이트 파일은 삭제하지 않고 레거시 자료로 보관하지만 현재 CH.01~CH.03의 스탠딩에는 연결하지 않습니다.
 
 ## 런타임 표시 규칙
 
-- `CHARACTERS`가 `characterId`, `portraitPrefix`, `position`, `show`를 한 번만 정의한다. scene은 이미지 경로를 반복하지 않고 `dialogueLine(characterId, expression, ...)`로 참조한다.
-- 주인공은 오른쪽, 도윤과 일반 NPC/상인은 왼쪽이 기본이다. 주민 B·현우·관리인 등 대화 상대가 두 명인 경우에만 캐릭터 정의의 고정 오른쪽 위치를 사용한다.
+- `CHARACTERS`가 `characterId`, `portraitPrefix`, `position`, `show`, `presentation`을 한 번만 정의한다. scene은 이미지 경로를 반복하지 않고 `dialogueLine(characterId, expression, ...)`로 참조한다.
+- 주인공은 오른쪽, 도윤·길상은 왼쪽, 현우는 오른쪽이 기본이다. 단역 NPC는 `presentation: "ambient"`, `show: false`이므로 위치값이 남아 있어도 스탠딩으로 렌더링되지 않는다.
 - 렌더러는 최근 대사 순서로 좌우를 뒤집지 않는다. 현재 화자를 우선 표시하고, 반대쪽 기본 위치의 최근 화자만 함께 표시한다.
 - `thought`와 `narration`은 인물을 숨긴다. `unknown`은 타임슬립 직후 검은 화면의 음성 전용이므로 `show:false`이며 포트레이트 누락이 아니다.
 - 모든 화면 캐릭터에 `data-character-id`, `data-position`, `data-portrait`를 출력해 모바일 회귀 테스트에서 배치와 에셋 연결을 검사한다.
@@ -56,8 +56,8 @@
 
 1. `player_neutral`과 `doyun_neutral`을 각각 `PLAYER_CANONICAL`, `DOYUN_CANONICAL` 기준 시트로 고정합니다. `stranger_*`는 도윤의 대체 에셋이 아닙니다.
 2. 동일 인물의 표정 변형은 기준 시트의 얼굴형, 눈·코·입 위치, 머리 길이, 의상 봉제선과 색을 고정하고 표정과 미세 포즈만 변경합니다.
-3. 모든 NPC는 왼쪽 배치를 전제로 화면 오른쪽을 바라보고, 주인공은 오른쪽 배치를 전제로 화면 왼쪽을 바라봅니다.
-4. 배경이 투과되는 반신 포트레이트로 제작하며, 말풍선에 닿는 바깥쪽 어깨가 잘리지 않도록 8% 이상의 투명 여백을 둡니다.
+3. 반복 등장하는 주요 인물만 좌우 스탠딩 배치를 설계합니다. 주민·상인·행인·군중·이름 없는 관리는 개별 포트레이트를 추가하지 않습니다.
+4. 단역 여러 명이 필요한 경우 2:3 세로 scene illustration 안에 당시의 감정과 행동을 함께 담고, 하단 대사 UI가 올라갈 여백을 확보합니다.
 
 ## CH.02 캐릭터 에셋
 
@@ -89,11 +89,18 @@
 | `citizen_neutral` | 제작 완료 · `villager_male_01.png` | 쌍기의 소문을 전하는 개경 주민 변형. |
 | `soldier_serious` | 제작 완료 · `soldier_01.png` | 광종 대 왕명을 집행하는 군사. |
 
-재사용 가능한 신규 NPC 파일은 `merchant_01`, `villager_male_01`, `villager_female_01`, `villager_old_01`, `villager_child_01`, `official_01`, `laborer_01`, `noble_01`, `soldier_01`, `steward_01`이다. 현재 구현된 CH.01~CH.04에는 추가 필수 캐릭터 에셋이 없다.
+기존 `merchant_01`, `villager_male_01`, `villager_female_01`, `villager_old_01`, `villager_child_01`, `official_01`, `noble_01`, `soldier_01`, `steward_01` 파일은 레거시 자료로만 보관한다. `laborer_01`은 반복 등장해 관계를 형성하는 길상(`freed_man`)의 스탠딩으로 계속 사용한다.
 
 ### 단역 NPC 연출 정책
 
-CH.01~CH.03에서 `merchant`, `resident_a`, `resident_b`, `elder`, `child`, `citizen`, `steward`, `official`, `noble`, `soldier`는 `presentation: "ambient"`인 배경 음성 역할이다. 이름표와 대사는 유지하지만 별도 스탠딩은 표시하지 않는다. 위 에셋 파일은 삭제하지 않고 보관하며 현재 스토리 스탠딩 연결에서는 사용하지 않는다. 주인공·도윤·길상(`freed_man`)·현우처럼 얼굴과 관계를 기억해야 하는 고정 인물만 `presentation: "standing"`을 사용한다.
+CH.01~CH.03에서 `stranger`, `merchant`, `resident_a`, `resident_b`, `elder`, `child`, `citizen`, `steward`, `official`, `noble`, `soldier`는 `presentation: "ambient"`인 배경 음성 역할이다. 이름표와 대사는 유지하지만 별도 스탠딩은 표시하지 않는다. 여러 단역이 대화할 때는 `visibleCharacters: []`와 군중이 포함된 scene illustration을 사용한다. 주인공·도윤·길상(`freed_man`)·현우처럼 얼굴과 관계를 기억해야 하는 고정 인물만 `presentation: "standing"`을 사용한다.
+
+이번 원칙에 맞춘 대표 scene illustration은 다음과 같다.
+
+- `village-residents-rumor-918.png`: 고려 건국 소문에 모여든 익명의 주민들
+- `market-rumors-918.png`: 후삼국 소문을 나누는 상인·주민·노인
+- `ch02-gaegyeong-market.png`: 광덕·준풍을 이야기하는 개경 시장 사람들
+- `ch02-official-robes-street-960.png`: 서로 다른 공복을 입고 지나가는 익명의 관리들
 
 ## 주인공 고려 평민복 에셋
 

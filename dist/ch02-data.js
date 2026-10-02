@@ -25,7 +25,7 @@ Object.assign(ASSETS,{
   'ch02-nobles-night':sceneArt('ch02-nobles-night','도윤의 상점에서 왕의 정책에 분노하는 귀족들',['#171f29','#796047'],true),
   'ch02-exam-notice':sceneArt('ch02-exam-notice','과거제 시행 소식이 퍼지는 개경 거리',['#536054','#aa8556']),
   'ch02-exam-yard':sceneArt('ch02-exam-yard','958년 개경의 과거 시험장',['#46554f','#a98458']),
-  'ch02-reign-titles':sceneArt('ch02-reign-titles','광덕과 준풍 연호가 적힌 관청 문서와 깃발',['#283843','#a27b49'],true),
+  'ch02-reign-titles':sceneArt('ch02-reign-titles','서로 다른 공복을 입은 관리들이 지나가는 960년 개경 거리',['#283843','#a27b49'],true,'ch02-official-robes-street-960'),
   'ch02-purge-night':sceneArt('ch02-purge-night','군사들이 귀족의 집으로 들어가는 긴장된 밤',['#111923','#684d3f'],true),
   'ch02-complete':sceneArt('ch02-complete','왕권이 강해진 고려의 수도 개경과 챕터 엔딩',['#172832','#b08b53'],true),
   'ch03-teaser':sceneArt('ch03-teaser','최승로가 성종에게 시무 28조를 올리는 궁궐 장면',['#171d26','#826344'],true)

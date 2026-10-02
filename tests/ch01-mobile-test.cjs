@@ -21,7 +21,7 @@ async function main(){
   const fit=async()=>assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'mobile horizontal overflow');
   const snapshot=async name=>{if(!process.env.TEST_ARTIFACT_DIR)return;fs.mkdirSync(process.env.TEST_ARTIFACT_DIR,{recursive:true});await page.screenshot({path:path.join(process.env.TEST_ARTIFACT_DIR,name+'.png'),fullPage:true})};
   await tap('[data-action="play"]');
-  let guard=0,checkedOpening=false,checked943=false,checkedVillagerVoice=false,checkedMerchantVoice=false,checkedGyeonhwonRumor=false;
+  let guard=0,checkedOpening=false,checked943=false,checkedVillagerVoice=false,checkedMarketCrowd=false,checkedMerchantVoice=false,checkedGyeonhwonRumor=false;
   for(const chapterId of ['ch01','ch02']){
   if(chapterId==='ch02'){await tap('[data-nav="teaser"]');await tap('[data-chapter="ch02"]');assert.equal((await read()).run.storyId,'ch02_open_935')}
   while(!(await read()).run.completed){
@@ -33,7 +33,8 @@ async function main(){
       await tap('[data-action="next"]');await page.waitForSelector('.effect-wake-reveal');await page.waitForTimeout(500);
       assert.equal(await page.locator('.stage-character').count(),2);assert.equal(await page.locator('[data-character-id="doyun"][data-position="left"]').count(),1);assert.equal(await page.locator('[data-character-id="player"][data-position="right"]').count(),1);assert.equal((await read()).run.storyId,'house');await snapshot('ch01-first-meeting');checkedOpening=true;continue;
     }
-    if(current.run.storyId==='rumor'&&current.run.dialogueCursor===1&&!checkedVillagerVoice){assert.equal(await page.locator('.stage-character').count(),0);assert.equal(await page.locator('.character-name').filter({hasText:'주민 A'}).count(),1);await snapshot('ch01-villager-ambient-voice');checkedVillagerVoice=true}
+    if(current.run.storyId==='rumor'&&current.run.dialogueCursor===1&&!checkedVillagerVoice){assert((await page.locator('.game').getAttribute('style')).includes('village-residents-rumor-918.png'));assert.equal(await page.locator('.stage-character').count(),0);assert.equal(await page.locator('.character-name').filter({hasText:'주민 A'}).count(),1);await snapshot('ch01-villager-ambient-voice');checkedVillagerVoice=true}
+    if(current.run.storyId==='market'&&!checkedMarketCrowd){assert((await page.locator('.game').getAttribute('style')).includes('market-rumors-918.png'));assert.equal(await page.locator('.stage-character').count(),0);await snapshot('ch01-market-ambient-crowd');checkedMarketCrowd=true}
     if(current.run.storyId==='ch01_gongsan'&&current.run.dialogueCursor===2&&!checkedMerchantVoice){assert.equal(await page.locator('.stage-character').count(),0);assert.equal(await page.locator('.character-name').filter({hasText:'부상당한 상인'}).count(),1);await snapshot('ch02-merchant-ambient-voice');checkedMerchantVoice=true}
     if(current.run.storyId==='ch01_gyeonhwon'&&current.run.dialogueCursor===3&&!checkedGyeonhwonRumor){assert.equal(await page.locator('.stage-character').count(),0);assert.equal(await page.locator('.dialogue-log > :last-child .character-name').textContent(),'상인');await snapshot('ch02-gyeonhwon-ambient-rumor');checkedGyeonhwonRumor=true}
     if(current.scene?.year===943&&!checked943){assert.equal(current.run.characterStates.doyun.characterAge,49);await snapshot('ch01-943');checked943=true}
@@ -47,7 +48,7 @@ async function main(){
   }
   assert.equal((await read()).run.currentChapter,chapterId);assert.equal(Object.keys((await read()).run.questionResults).length,chapterId==='ch01'?6:8);await fit();await snapshot(chapterId+'-complete');
   }
-  assert(checkedOpening&&checked943&&checkedVillagerVoice&&checkedMerchantVoice&&checkedGyeonhwonRumor);
+  assert(checkedOpening&&checked943&&checkedVillagerVoice&&checkedMarketCrowd&&checkedMerchantVoice&&checkedGyeonhwonRumor);
   await tap('[data-nav="study"]');
   for(const chapterId of ['ch01','ch02']){
     await tap('[data-review-chapter="'+chapterId+'"]');
@@ -59,7 +60,7 @@ async function main(){
   let checkedRobes=false,checkedHyunwooOfficial=false,checkedGwangdeok=false,checkedJunpung=false,checkedFreedMan=false,checkedDoyun960=false;
   while(!(await read()).run.completed){
     const current=await read();await fit();
-    if(current.run.storyId==='ch02_official_robes_walk'&&!checkedRobes){assert.equal(await page.locator('.stage-character').count(),0);await snapshot('ch03-official-robes-background');checkedRobes=true}
+    if(current.run.storyId==='ch02_official_robes_walk'&&!checkedRobes){assert((await page.locator('.game').getAttribute('style')).includes('ch02-official-robes-street-960.png'));assert.equal(await page.locator('.stage-character').count(),0);await snapshot('ch03-official-robes-background');checkedRobes=true}
     if(current.run.storyId==='ch02_hyunwoo_official'&&current.run.dialogueCursor===1&&!checkedHyunwooOfficial){assert.equal(await page.locator('[data-character-id="hyunwoo"][data-position="right"]').count(),1);await snapshot('ch03-hyunwoo-official');checkedHyunwooOfficial=true}
     if(current.run.storyId==='ch02_reign_titles'&&current.run.dialogueCursor===1&&!checkedGwangdeok){assert.equal(current.scene.illustrationId,'ch02-gaegyeong-market');assert.equal(await page.locator('.stage-character').count(),0);assert.equal(await page.locator('.character-name').filter({hasText:'상인 A'}).count(),1);await snapshot('ch03-gwangdeok-ambient-voices');checkedGwangdeok=true}
     if(current.run.storyId==='ch02_reign_followup'&&current.run.dialogueCursor===1&&!checkedJunpung){assert.equal(current.scene.illustrationId,'ch02-gaegyeong-market');assert.equal(await page.locator('.stage-character').count(),0);assert.equal(await page.locator('.character-name').filter({hasText:'상인 A'}).count(),1);await snapshot('ch03-junpung-ambient-voices');checkedJunpung=true}

@@ -35,8 +35,10 @@ STORIES.ch01_farewell.dialogues=ch01Lines([
 ]);
 STORIES.ch01_farewell.cinematicSub='하나가 된 나라의 이야기를 기록합니다.';
 
-// Restore the original market illustration added in a1d58d8; no new image.
-ASSETS['market-later-three-kingdoms'].src='assets/scenes/market-later-three-kingdoms.png';
+// Anonymous residents and merchants live inside complete scene illustrations, not standing layers.
+ASSETS['village-rumor'].src='assets/scenes/village-residents-rumor-918.png';
+ASSETS['village-rumor'].embeddedCharacters=true;
+ASSETS['market-later-three-kingdoms'].src='assets/scenes/market-rumors-918.png';
 ASSETS['market-later-three-kingdoms'].embeddedCharacters=true;
 STORIES.market.backgroundImage=ASSETS['market-later-three-kingdoms'].src;
 const PROTECTED_OPENING_SCENES=new Set(['prologue','sleep','voice','house','outfit_question','outfit_gift']);
