@@ -1,0 +1,33 @@
+const fs=require('fs'),path=require('path'),http=require('http'),assert=require('assert');
+const{chromium}=require('playwright');
+const root=path.resolve(__dirname,'../dist'),shots=path.resolve(__dirname,'../tmp/late-goryeo-mobile');
+const server=http.createServer((req,res)=>{const relative=decodeURIComponent(req.url.split('?')[0]),file=path.resolve(root,'.'+(relative==='/'?'/index.html':relative));if(!file.startsWith(root+path.sep)){res.writeHead(403);return res.end()}fs.readFile(file,(error,buffer)=>{if(error){res.writeHead(404);return res.end()}res.setHeader('Content-Type',({'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.png':'image/png','.webmanifest':'application/manifest+json'})[path.extname(file)]||'application/octet-stream');res.end(buffer)})});
+let browser;
+async function main(){
+  fs.mkdirSync(shots,{recursive:true});await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));browser=await chromium.launch({headless:true,...(process.env.BROWSER_CHANNEL?{channel:process.env.BROWSER_CHANNEL}:{})});
+  const profile=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,serviceWorkers:'block'}),page=await profile.newPage(),errors=[];page.on('pageerror',error=>errors.push(error.message));await page.goto(`http://127.0.0.1:${server.address().port}/`);
+  const fit=async()=>assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`horizontal overflow at ${await page.evaluate(()=>run().storyId)}`),tap=async selector=>{const locator=page.locator(selector).first();await locator.waitFor({state:'attached'});await locator.evaluate(element=>element.click());await page.evaluate(()=>{inputLockedUntil=0})};
+  await page.evaluate(()=>{state.meta.completedChapters=['ch01'];state.run=INITIAL_RUN('ch02');state.run.started=true;state.run.storyId='ch01_jump_935';state.run.characterStates.doyun={...state.run.characterStates.doyun,characterAge:41,ageState:'adult_935',ageVariant:'adult_935',outfit:'commoner'};enterStory();state.run.dialogueCursor=4;save();screen='game';render()});
+  assert.equal(await page.locator('.stage-character').count(),2);assert.equal(await page.locator('[data-character-id="doyun"]').getAttribute('data-character-tier'),'MAIN');assert((await page.locator('[data-character-id="doyun"]').getAttribute('style')).includes('--character-scale:1.8'));await fit();await page.screenshot({path:path.join(shots,'ch02-doyun-scale-390.png'),fullPage:true});
+  await page.evaluate(()=>{state.run=INITIAL_RUN('ch08');state.run.started=true;state.run.storyId='ch08_revolt';state.run.dialogueCursor=3;save();screen='game';render()});assert.equal(await page.locator('.stage-character').count(),2);assert.equal(await page.locator('[data-character-id="seon"]').getAttribute('data-position'),'left');assert.equal(await page.locator('[data-character-id="player"]').getAttribute('data-position'),'right');await fit();
+  await page.evaluate(()=>{state=INITIAL();state.meta.completedChapters=['ch01','ch02','ch03','ch04'];state.run=INITIAL_RUN('ch04');state.run.started=true;state.run.completed=true;state.run.characterStates.doyun.isAlive=false;save();screen='home';render();startAvailableChapter('ch05')});
+  const complete=[],seen=new Set();let guard=0,reloaded=false;
+  while(complete.length<8){
+    assert(++guard<2600,`mobile guard ${JSON.stringify(await page.evaluate(()=>({screen,storyId:run().storyId,chapter:run().currentChapter,question:run().activeQuestionId,cursor:run().dialogueCursor})))}`);const now=await page.evaluate(()=>({screen,storyId:run().storyId,chapter:run().currentChapter,pending:Boolean(run().pending),cursor:run().dialogueCursor,length:run().pending?conversationEntries(STORIES[run().pending.sourceSceneId],run().pending).length:STORIES[run().storyId]?.dialogues?.length||0,question:run().activeQuestionId,answer:run().questionAnswer,completed:run().completed}));if(!seen.has(`${now.screen}:${now.storyId}`)){seen.add(`${now.screen}:${now.storyId}`);await fit()}
+    if(now.screen==='game'){
+      if(now.storyId==='ch05_seohui'&&!seen.has('shot-ch05')){seen.add('shot-ch05');await page.screenshot({path:path.join(shots,'ch05-seohui-390.png'),fullPage:true})}
+      if(now.cursor<now.length){await tap('[data-action="advance-dialogue"]');continue}if(now.pending){await tap('[data-action="result-next"]');continue}if(await page.locator('[data-choice]').count()){await tap('[data-choice="0"]');continue}await tap('[data-action="next"]');continue;
+    }
+    if(now.screen==='quiz'){
+      if(now.answer===null){const correct=await page.evaluate(()=>QUESTIONS.find(q=>q.questionId===run().activeQuestionId).answer);await tap(`[data-answer="${correct}"]`);assert(await page.getByText('역사 해설',{exact:true}).count());continue}await tap('[data-action="quiz-next"]');if(!reloaded&&now.chapter==='ch06'){reloaded=true;await page.reload();await tap('[data-action="play"]')}continue;
+    }
+    if(now.screen==='complete'){
+      if(!complete.includes(now.chapter))complete.push(now.chapter);if(now.chapter==='ch12'){await page.screenshot({path:path.join(shots,'ch12-complete-390.png'),fullPage:true});break}await tap('[data-nav="teaser"]');await tap(`[data-action="start-chapter"]`);continue;
+    }
+    throw Error(`unexpected screen ${now.screen}`);
+  }
+  assert.deepEqual(complete,['ch05','ch06','ch07','ch08','ch09','ch10','ch11','ch12']);assert(reloaded);assert.equal(await page.evaluate(()=>run().characterStates.player.characterAge),23);assert.equal(await page.evaluate(()=>run().characterStates.doyun.isAlive),false);
+  await tap('[data-nav="teaser"]');assert(await page.getByText('고려의 끝, 조선의 시작',{exact:true}).count());for(const width of [375,390,430]){await page.setViewportSize({width,height:844});await fit()}await page.screenshot({path:path.join(shots,'joseon-teaser-430.png'),fullPage:true});
+  assert.deepEqual(errors,[]);console.log(`PASS: CH.05–12 mobile full play at 390x844, widths 375–430, reload, character scale, completion, and Joseon teaser. Screenshots: ${shots}`);
+}
+main().catch(error=>{console.error(error);process.exitCode=1}).finally(async()=>{if(browser)await browser.close();server.close()});
