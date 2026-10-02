@@ -75,23 +75,24 @@ const PORTRAITS={
   doyun_suspicious:portrait('doyun','suspicious','도윤 · 의심스레 눈을 가늘게 뜬 표정',['#3f332b','#87634c'],'assets/characters/doyun_suspicious.png','commoner'),
   doyun_serious:portrait('doyun','serious','도윤 · 현실적인 조언을 하는 진지한 표정',['#43352a','#916747'],'assets/characters/doyun_serious.png','commoner'),
   doyun_worried:portrait('doyun','worried','도윤 · 걱정스럽게 바라보는 표정',['#41352d','#80664f'],'assets/characters/doyun_worried.png','commoner'),
+  doyun_angry:portrait('doyun','angry','도윤 · 원칙을 지키려 단호하게 화난 표정',['#43352a','#916747'],'assets/characters/doyun_serious.png','commoner'),
   stranger_neutral:portrait('stranger','neutral','낯선 청년 · 조심스러운 기본 표정',['#45382e','#8c7057']),
   stranger_worried:portrait('stranger','worried','낯선 청년 · 쓰러진 이를 걱정하는 표정',['#40362f','#7f6d5c']),
   stranger_suspicious:portrait('stranger','suspicious','낯선 청년 · 낯선 말을 의심하는 표정',['#3d342e','#755d4a']),
-  resident_a_serious:portrait('resident_a','serious','주민 A · 급한 소식을 전하는 표정',['#4d4937','#8c774e']),
-  resident_b_surprised:portrait('resident_b','surprised','주민 B · 소식에 놀라는 표정',['#4c493b','#90775a']),
-  elder_neutral:portrait('elder','neutral','노인 · 세상일을 담담히 말하는 표정',['#49473e','#786c59']),
-  child_worried:portrait('child','worried','아이 · 도움을 간절히 구하는 표정',['#554839','#9b7855']),
-  child_smile:portrait('child','smile','아이 · 도움을 받고 안도하는 표정',['#584939','#ae8055']),
-  merchant_neutral:portrait('merchant','neutral','상인 · 거래 상대를 보는 기본 표정',['#4f3d30','#98704d']),
-  merchant_serious:portrait('merchant','serious','상인 · 일을 지시하는 엄격한 표정',['#48392f','#846348']),
-  merchant_surprised:portrait('merchant','surprised','상인 · 갑작스러운 상황에 놀란 표정',['#513b2f','#9d684a']),
-  merchant_angry:portrait('merchant','angry','상인 · 도둑을 향해 외치는 분노한 표정',['#4b302a','#9c5843']),
+  resident_a_serious:portrait('resident_a','serious','주민 A · 급한 소식을 전하는 표정',['#4d4937','#8c774e'],'assets/characters/villager_male_01.png'),
+  resident_b_surprised:portrait('resident_b','surprised','주민 B · 소식에 놀라는 표정',['#4c493b','#90775a'],'assets/characters/villager_female_01.png'),
+  elder_neutral:portrait('elder','neutral','노인 · 세상일을 담담히 말하는 표정',['#49473e','#786c59'],'assets/characters/villager_old_01.png'),
+  child_worried:portrait('child','worried','아이 · 도움을 간절히 구하는 표정',['#554839','#9b7855'],'assets/characters/villager_child_01.png'),
+  child_smile:portrait('child','smile','아이 · 도움을 받고 안도하는 표정',['#584939','#ae8055'],'assets/characters/villager_child_01.png'),
+  merchant_neutral:portrait('merchant','neutral','상인 · 거래 상대를 보는 기본 표정',['#4f3d30','#98704d'],'assets/characters/merchant_01.png'),
+  merchant_serious:portrait('merchant','serious','상인 · 일을 지시하는 엄격한 표정',['#48392f','#846348'],'assets/characters/merchant_01.png'),
+  merchant_surprised:portrait('merchant','surprised','상인 · 갑작스러운 상황에 놀란 표정',['#513b2f','#9d684a'],'assets/characters/merchant_01.png'),
+  merchant_angry:portrait('merchant','angry','상인 · 도둑을 향해 외치는 분노한 표정',['#4b302a','#9c5843'],'assets/characters/merchant_01.png'),
   unknown_worried:portrait('unknown','worried','정체불명의 목소리 · 걱정스러운 실루엣',['#1d2630','#565b5f'])
 };
 const PLAYER_MODERN_PORTRAITS=Object.fromEntries(['neutral','smile','surprised','worried','thinking','suspicious','serious','embarrassed','angry','sad'].map(expression=>[expression,`player_${expression}`]));
 const PLAYER_GORYEO_PORTRAITS={neutral:'player_goryeo_neutral',smile:'player_goryeo_smile',surprised:'player_goryeo_surprised',worried:'player_goryeo_worried',thinking:'player_goryeo_thinking',suspicious:'player_goryeo_thinking',serious:'player_goryeo_serious',embarrassed:'player_goryeo_embarrassed',angry:'player_goryeo_serious',sad:'player_goryeo_worried'};
-const DOYUN_YOUNG_COMMONER_PORTRAITS=Object.fromEntries(['neutral','smile','surprised','suspicious','serious','worried'].map(expression=>[expression,`doyun_${expression}`]));
+const DOYUN_YOUNG_COMMONER_PORTRAITS={...Object.fromEntries(['neutral','smile','surprised','suspicious','serious','worried'].map(expression=>[expression,`doyun_${expression}`])),angry:'doyun_angry'};
 const DOYUN_949_PORTRAITS={neutral:'doyun_949_neutral',smile:'doyun_949_smile',surprised:'doyun_949_surprised',suspicious:'doyun_949_serious',serious:'doyun_949_serious',worried:'doyun_949_worried',angry:'doyun_949_serious'};
 const DOYUN_956_PORTRAITS={neutral:'doyun_956_neutral',smile:'doyun_956_smile',surprised:'doyun_956_surprised',suspicious:'doyun_956_serious',serious:'doyun_956_serious',worried:'doyun_956_worried',angry:'doyun_956_serious'};
 const CHARACTER_ASSET_MAP={
@@ -99,16 +100,16 @@ const CHARACTER_ASSET_MAP={
   doyun:{canonicalId:'DOYUN_CANONICAL',defaultAge:'young',ages:{young:{defaultOutfit:'commoner',outfits:{commoner:DOYUN_YOUNG_COMMONER_PORTRAITS}},middle_aged_949:{defaultOutfit:'shop_owner',outfits:{shop_owner:DOYUN_949_PORTRAITS}},elder_956:{defaultOutfit:'established_merchant',outfits:{established_merchant:DOYUN_956_PORTRAITS}}}}
 };
 const CHARACTERS={
-  player:{characterId:'player',canonicalId:'PLAYER_CANONICAL',characterName:'나',speakerType:'player',side:'right',outfit:'modern',portraitPrefix:'player',characterAge:23,characterEraVariant:'modern-arrival',portraits:CHARACTER_ASSET_MAP.player.outfits},
-  doyun:{characterId:'doyun',canonicalId:'DOYUN_CANONICAL',characterName:'도윤',speakerType:'npc',portraitPrefix:'doyun',characterAge:24,characterEraVariant:'young-merchant',outfit:'commoner',ageVariant:'young',portraits:{commoner:DOYUN_YOUNG_COMMONER_PORTRAITS},longTermGoal:'자기 상단 만들기'},
-  stranger:{characterId:'stranger',characterName:'낯선 청년',speakerType:'npc',portraitPrefix:'stranger'},
-  resident_a:{characterId:'resident_a',characterName:'주민 A',speakerType:'npc',portraitPrefix:'resident_a'},
-  resident_b:{characterId:'resident_b',characterName:'주민 B',speakerType:'npc',portraitPrefix:'resident_b'},
-  elder:{characterId:'elder',characterName:'노인',speakerType:'npc',portraitPrefix:'elder'},
-  child:{characterId:'child',characterName:'아이',speakerType:'npc',portraitPrefix:'child'},
-  merchant:{characterId:'merchant',characterName:'상인',speakerType:'npc',portraitPrefix:'merchant'},
-  unknown:{characterId:'unknown',characterName:'???',speakerType:'npc',portraitPrefix:'unknown'},
-  narrator:{characterId:'narrator',characterName:'',speakerType:'narration',portraitPrefix:null}
+  player:{characterId:'player',canonicalId:'PLAYER_CANONICAL',characterName:'나',speakerType:'player',position:'right',show:true,outfit:'modern',portraitPrefix:'player',characterAge:23,characterEraVariant:'modern-arrival',portraits:CHARACTER_ASSET_MAP.player.outfits},
+  doyun:{characterId:'doyun',canonicalId:'DOYUN_CANONICAL',characterName:'도윤',speakerType:'npc',position:'left',show:true,portraitPrefix:'doyun',characterAge:24,characterEraVariant:'young-merchant',outfit:'commoner',ageVariant:'young',portraits:{commoner:DOYUN_YOUNG_COMMONER_PORTRAITS},longTermGoal:'자기 상단 만들기'},
+  stranger:{characterId:'stranger',characterName:'낯선 청년',speakerType:'npc',position:'left',show:true,portraitPrefix:'stranger'},
+  resident_a:{characterId:'resident_a',characterName:'주민 A',speakerType:'npc',position:'left',show:true,portraitPrefix:'resident_a'},
+  resident_b:{characterId:'resident_b',characterName:'주민 B',speakerType:'npc',position:'right',show:true,portraitPrefix:'resident_b'},
+  elder:{characterId:'elder',characterName:'노인',speakerType:'npc',position:'left',show:true,portraitPrefix:'elder'},
+  child:{characterId:'child',characterName:'아이',speakerType:'npc',position:'left',show:true,portraitPrefix:'child'},
+  merchant:{characterId:'merchant',characterName:'상인',speakerType:'npc',position:'left',show:true,portraitPrefix:'merchant'},
+  unknown:{characterId:'unknown',characterName:'???',speakerType:'npc',position:'left',show:false,portraitPrefix:'unknown'},
+  narrator:{characterId:'narrator',characterName:'',speakerType:'narration',position:'center',show:false,portraitPrefix:null}
 };
 const dialogueLine=(characterId,expression,dialogue,speakerType=null,characterNameOverride=null)=>{
   const character=CHARACTERS[characterId]||CHARACTERS.narrator;

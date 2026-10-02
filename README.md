@@ -20,7 +20,7 @@ npm run build
 
 npm start는 http://127.0.0.1:4173 에서 dist를 제공합니다. 기본 테스트는 프롤로그 보존, 두 분리 챕터 전체 진행·세 분기·문제·복습·카드·오답, 구 세이브 변환, 광종 324개 경로, 성종, 재플레이와 결과를 검사합니다.
 
-CH.01 스토리 4개·복습 5개, CH.02 스토리 6개·복습 8개로 기존 문제를 나눴습니다. 각 챕터 완료 후 결과/공부 화면에서 복습하며 메인 점수와 별도로 저장합니다. 실제 기출을 추측하거나 추가하지 않았습니다.
+CH.01 스토리 4개·복습 5개, CH.02 스토리 6개·복습 8개로 기존 흐름을 유지합니다. 첨부 문제지·정답표에서 확인한 실제 기출 13개를 활성화했고, 이 중 6개가 CH.01/02의 자작 복습 슬롯을 교체합니다. 각 챕터 완료 후 결과/공부 화면에서 복습하며 메인 점수와 별도로 저장합니다. 모든 활성 문제는 정답 해설 아래에서 관련 스토리 장면의 기억 단서를 다시 연결합니다.
 
 ## 저장과 콘텐츠 ID
 
@@ -30,7 +30,7 @@ SAVE_VERSION 10 / chapterSplitVersion 1에서 기존 chapterId를 한 번만 변
 
 ## 화면 연출
 
-프롤로그 현대 → 잠듦 → 검은 화면 두 목소리 → 첫 만남은 그대로 유지합니다. 일반 장면은 visibleCharacters와 현재 speakerType으로 인물을 표시합니다. thought/narration은 배경과 대사 UI만 사용하며 spoken 대화에서 필요한 standing 인물을 표시합니다. 기존 market-later-three-kingdoms.png를 market 장면에 복구했습니다.
+프롤로그 현대 → 잠듦 → 검은 화면 두 목소리 → 첫 만남은 그대로 유지합니다. 일반 장면은 `characterId`의 공통 `position`/`show` 규칙과 현재 화자를 함께 사용합니다. 도윤·일반 NPC는 왼쪽, 주인공은 오른쪽을 기본으로 하며 대사 순서가 바뀌어도 좌우가 뒤집히지 않습니다. `thought`/`narration`은 배경과 대사 UI만 사용합니다. 주민·상인·관리·군사 등 10개의 재사용 가능 NPC 에셋을 연결했습니다.
 
 ## 선택적 실제 모바일 검증
 
@@ -40,7 +40,7 @@ npx playwright install chromium
 npm run test:mobile
 ```
 
-390px에서 CH.01/02 전체 흐름과 복습, CH.03 진입, 320/390/760px overflow를 검사합니다. BROWSER_CHANNEL=msedge는 설치된 Edge를 사용합니다. 별도 프로필과 임시 서버를 사용하며 TEST_ARTIFACT_DIR 지정 시 PNG를 저장합니다. 이번 개발 환경에서는 Browser 초기화 오류와 spawn EPERM으로 실제 모바일 화면 검증을 완료하지 못했습니다.
+390px에서 CH.01/02 전체 흐름과 복습, CH.03 진입, 320/390/760px overflow를 검사합니다. BROWSER_CHANNEL=msedge는 설치된 Edge를 사용합니다. 별도 프로필과 임시 서버를 사용하며 TEST_ARTIFACT_DIR 지정 시 PNG를 저장합니다. 2026-10-02 수정본은 Edge headless에서 전체 모바일 회귀 검증을 통과했습니다.
 
 ## PWA
 

@@ -49,12 +49,12 @@ for(const s of Object.values(STORIES)){
   if(!s.visibleCharacters.length)BACKGROUND_ONLY_SCENE_IDS.push(s.sceneId);
 }
 for(const q of QUESTIONS.filter(q=>q.chapterId==='ch01')){
+  q.year??=STORIES[q.relatedSceneId]?.year;
   // Mixed-period legacy questions belong with the latest historical event they test.
   const late=['ch01-boss','ch01-test-03','ch01-test-04'].includes(q.questionId)||q.year>=935||STORIES[q.relatedSceneId]?.chapterId==='ch02';
   if(late)q.chapterId='ch02';
   if(q.questionId==='ch01-test-03')q.year=936;
   if(q.questionId==='ch01-test-04')q.year=937;
-  if(q.retired)q.year=STORIES[q.relatedSceneId]?.year||q.year;
   if(q.questionId==='ch01-official-76-advanced-10')q.resumeStoryId='ch01_integration';
   if(q.reviewOnly)q.resumeStoryId=CHAPTERS[q.chapterId].completeStoryId;
 }

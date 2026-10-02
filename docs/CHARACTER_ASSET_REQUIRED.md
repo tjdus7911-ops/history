@@ -1,6 +1,14 @@
 # CH.01 캐릭터 에셋 현황과 확장 명세
 
-주인공 현대복 10표정, 고려 평민복 7표정, 도윤 6표정은 **투명 배경 1024×1536 PNG 상반신 에셋**으로 제작되어 실제 게임에 연결되어 있습니다. 말풍선 옆 작은 프로필이 아니라 배경 위 비주얼노벨 캐릭터 레이어로 사용합니다. 그 밖의 단역 NPC는 인물이 포함된 장면 일러스트에서 먼저 표현하며, 독립 포트레이트가 필요한 확장 장면에서는 아래 명세의 `ASSET_REQUIRED` 항목을 제작합니다.
+주인공·도윤·현우의 연령/표정 에셋과 대화에 필요한 주민·상인·관리·군사 에셋은 **투명 배경 1024×1536 PNG 상반신 에셋**으로 제작되어 실제 게임에 연결되어 있습니다. 말풍선 옆 작은 프로필이 아니라 배경 위 비주얼노벨 캐릭터 레이어로 사용합니다. 전체 126개 scene의 표시 가능한 spoken line을 검사했으며, 의도적인 암전 음성 `unknown`을 제외하고 미연결 포트레이트는 없습니다.
+
+## 런타임 표시 규칙
+
+- `CHARACTERS`가 `characterId`, `portraitPrefix`, `position`, `show`를 한 번만 정의한다. scene은 이미지 경로를 반복하지 않고 `dialogueLine(characterId, expression, ...)`로 참조한다.
+- 주인공은 오른쪽, 도윤과 일반 NPC/상인은 왼쪽이 기본이다. 주민 B·현우·관리인 등 대화 상대가 두 명인 경우에만 캐릭터 정의의 고정 오른쪽 위치를 사용한다.
+- 렌더러는 최근 대사 순서로 좌우를 뒤집지 않는다. 현재 화자를 우선 표시하고, 반대쪽 기본 위치의 최근 화자만 함께 표시한다.
+- `thought`와 `narration`은 인물을 숨긴다. `unknown`은 타임슬립 직후 검은 화면의 음성 전용이므로 `show:false`이며 포트레이트 누락이 아니다.
+- 모든 화면 캐릭터에 `data-character-id`, `data-position`, `data-portrait`를 출력해 모바일 회귀 테스트에서 배치와 에셋 연결을 검사한다.
 
 ## 캐릭터 디자인 고정 기준
 
@@ -29,6 +37,7 @@
 | `doyun_suspicious` | 동일 | 눈을 가늘게 뜨고 입을 굳힘 | 팔을 가볍게 모으거나 고개를 갸웃 | 미래 지식을 섣불리 말한 주인공을 경계하는 확장 장면용. |
 | `doyun_serious` | 동일 | 미소 없이 집중한 눈빛 | 장부나 길을 가리키며 현실적으로 설명 | 호족, 송악, 생계와 같은 현실적 조언 장면. |
 | `doyun_worried` | 동일 | 미간이 좁아지고 먼 곳을 바라봄 | 수레 끈을 쥔 손에 힘이 들어감 | 궁예 이후의 혼란과 전쟁을 회상하는 장면. |
+| `doyun_angry` | `doyun_serious` 에셋 재사용 | 원칙을 지키려는 단호한 분노 | 굳은 자세 | 별도 얼굴이 없는 선택 결과에서도 포트레이트가 사라지지 않도록 명시한 별칭. 연령대별로 해당 시기의 `serious` 에셋을 사용. |
 | `stranger_neutral` | 레거시 확장용 별도 NPC | 조심스럽지만 평온 | 무릎을 굽힌 자세 | 현재 CH.01 미사용. 도윤 장면 연결 금지. |
 | `stranger_worried` | `stranger_neutral`과 동일 | 눈썹을 모은 걱정 | 손을 내미는 자세 | 현재 CH.01 미사용. “정신이 드시오?”는 `doyun_worried` 사용. |
 | `stranger_suspicious` | 동일 | 경계하는 표정 | 상체를 조금 뒤로 뺀 자세 | 현재 CH.01 미사용. 도윤 선택 결과는 `doyun_suspicious` 사용. |
@@ -69,16 +78,18 @@
 | `hyunwoo_neutral` | 제작 완료 | 958년 과거 응시를 준비하는 21세 학구적 청년. 연녹색 삼베 포와 갈색 속깃, 책 꾸러미, 차분한 기본 표정. |
 | `hyunwoo_worried` | 제작 완료 | `hyunwoo_neutral`과 동일한 얼굴·머리·의상. 시험 직전 눈썹과 입술에 긴장, 책을 조금 더 힘주어 안음. |
 | `hyunwoo_smile` | 제작 완료 | 동일 디자인. 격려를 듣고 어깨가 풀린 절제된 미소와 따뜻한 눈빛. |
-| `freed_man_worried` | `ASSET_REQUIRED` | 전쟁 중 억울하게 노비가 된 30대 남성. 해진 회갈색 삼베옷, 머리띠, 절박한 표정, 화면 오른쪽을 보는 상반신. |
-| `freed_man_smile` | `ASSET_REQUIRED` | 동일 남성. 양인 신분을 되찾고 눈물이 맺힌 안도 표정, 두 손을 모은 자세. |
-| `steward_angry` | `ASSET_REQUIRED` | 귀족 집안의 40대 관리인. 짙은 갈색 포, 정돈된 상투, 상대를 몰아붙이는 분노. |
-| `steward_serious` | `ASSET_REQUIRED` | 동일 관리인. 집안 문서를 내밀며 굳은 표정. |
-| `official_serious` | `ASSET_REQUIRED` | 광종 대 신분 조사 관리. 남색 공복과 초기 고려 관모, 기록을 든 엄정한 표정. |
-| `noble_angry` | `ASSET_REQUIRED` | 50대 호족 귀족. 절제된 고급 남색 포, 정책에 반발해 목소리를 낮춘 분노. |
-| `noble_suspicious` | `ASSET_REQUIRED` | 동일 귀족. 문 쪽을 살피며 왕의 의도를 경계하는 눈빛. |
-| `citizen_surprised` | `ASSET_REQUIRED` | 958년 개경 시민. 수수한 회갈색 복식, 과거제 소식에 눈을 크게 뜬 표정. |
-| `citizen_neutral` | `ASSET_REQUIRED` | 동일 시민. 쌍기의 소문을 전하는 담담한 표정과 설명하는 손짓. |
-| `soldier_serious` | `ASSET_REQUIRED` | 광종 대 군사. 짙은 남색의 절제된 찰갑과 창, 왕명을 집행하는 굳은 표정. |
+| `freed_man_worried` | 제작 완료 · `laborer_01.png` | 전쟁 중 억울하게 노비가 된 30대 남성. 해진 회갈색 삼베옷과 절박한 표정. |
+| `freed_man_smile` | 제작 완료 · `laborer_01.png` 재사용 | 같은 인물의 신분 회복 장면. 대사와 표정 의미는 유지하고 일관된 얼굴을 사용. |
+| `steward_angry` | 제작 완료 · `steward_01.png` | 귀족 집안 관리인. 짙은 갈색 포와 정돈된 상투. |
+| `steward_serious` | 제작 완료 · `steward_01.png` 재사용 | 같은 관리인의 문서 확인 장면. |
+| `official_serious` | 제작 완료 · `official_01.png` | 광종 대 신분 조사 관리. 남색 공복과 기록 문서. |
+| `noble_angry` | 제작 완료 · `noble_01.png` | 정책에 반발하는 호족 귀족. |
+| `noble_suspicious` | 제작 완료 · `noble_01.png` 재사용 | 같은 귀족의 경계 장면. |
+| `citizen_surprised` | 제작 완료 · `villager_female_01.png` | 과거제 소식을 전하는 개경 주민 변형. |
+| `citizen_neutral` | 제작 완료 · `villager_male_01.png` | 쌍기의 소문을 전하는 개경 주민 변형. |
+| `soldier_serious` | 제작 완료 · `soldier_01.png` | 광종 대 왕명을 집행하는 군사. |
+
+재사용 가능한 신규 NPC 파일은 `merchant_01`, `villager_male_01`, `villager_female_01`, `villager_old_01`, `villager_child_01`, `official_01`, `laborer_01`, `noble_01`, `soldier_01`, `steward_01`이다. 현재 구현된 CH.01~CH.04에는 추가 필수 캐릭터 에셋이 없다.
 
 ## 주인공 고려 평민복 에셋
 

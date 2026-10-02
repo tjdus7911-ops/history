@@ -179,9 +179,10 @@ const ch01ById=id=>QUESTIONS.find(q=>q.questionId===id);
 for(const id of ['ch01-test-01','ch01-test-02']){const q=ch01ById(id);q.resumeStoryId=q.originalResumeStoryId||q.resumeStoryId;Object.assign(q,{year:918,questionType:'exam_style',formatLabel:id.endsWith('01')?'인물·자료 추론':'시대 상황',examType:'기출 유형 · 자체 제작',sourceVerified:false,concepts:['918_936','궁예_왕건'],sourceUrls:[CH01_SOURCES.chronology]})}
 for(const id of ['ch01-test-03','ch01-test-04','ch01-test-05'])Object.assign(ch01ById(id),{reviewOnly:true,resumeStoryId:ch01ById(id).originalResumeStoryId||ch01ById(id).resumeStoryId,examType:'기출 유형 · 자체 제작',sourceVerified:false});
 Object.assign(ch01ById('ch01-boss'),{year:936,resumeStoryId:'ch01_integration',questionType:'exam_style',formatLabel:'복합 선택지',examType:'기출 유형 · 자체 제작',sourceVerified:false,concepts:['918_936','후삼국_사건순서'],sourceUrls:[CH01_SOURCES.unification]});
-// Unverified original exam transcriptions are kept only for saved record compatibility.
-for(const q of QUESTIONS.filter(q=>q.chapterId==='ch01'&&q.isOfficial))Object.assign(q,{retired:true,isOfficial:false,sourceVerified:false,sourceStatus:'original_pdf_missing',examType:'원본 미확인 · 이전 문항',source:'이전 버전 전사 기록 · 원본 시험지·답안지 재확인 필요'});
-ch01ById('ch01-official-76-advanced-10').resumeStoryId='ch01_trade_start';
+// The attached problem and answer PDFs verify these transcriptions. They replace
+// six self-made review slots without changing the chapter's story-test cadence.
+const VERIFIED_CH01_OFFICIAL_IDS=['ch01-official-69-basic-10','ch01-official-79-advanced-09','ch01-official-70-advanced-10','ch01-official-73-basic-10','ch01-official-74-advanced-10','ch01-official-76-advanced-10'];
+for(const id of VERIFIED_CH01_OFFICIAL_IDS){const q=ch01ById(id);Object.assign(q,{retired:false,reviewOnly:true,isOfficial:true,sourceVerified:true,sourceStatus:'verified_from_attached_pdf'})}
 
 const CH01_REVIEW_QUESTIONS=[
   ch01Question({questionId:'ch01-review-01',formatLabel:'사료 해석',year:918,relatedSceneId:'rumor',relatedIllustrationId:'memory-wanggeon',relatedHistoricalEventId:'goryeo-foundation-918',difficulty:'중',passage:'[역사 사실의 학습용 요약] 궁예를 몰아낸 신하들이 새 왕을 추대하였고, 새 왕은 국호를 고려로 정하였다.',question:'이 사건이 일어난 연도는?',choices:['900년','901년','918년','936년'],answer:2,explanation:'왕건의 고려 건국은 918년입니다.',choiceExplanations:['후백제 건국입니다.','궁예의 후고구려 건국입니다.','고려 건국의 해입니다.','후삼국 통일의 해입니다.'],examKeywords:['918','왕건 추대'],concepts:['918_936'],sourceUrls:[CH01_SOURCES.chronology]}),
@@ -197,7 +198,9 @@ const CH01_REVIEW_QUESTIONS=[
 ];
 for(const q of CH01_REVIEW_QUESTIONS){q.reviewOnly=true;q.resumeStoryId='complete'}
 QUESTIONS.push(...CH01_REVIEW_QUESTIONS);
-const CH01_REVIEW_IDS=[...CH01_REVIEW_QUESTIONS.map(q=>q.questionId),'ch01-test-03','ch01-test-04','ch01-test-05'];
+const REPLACED_SELF_MADE_REVIEW_IDS=['ch01-review-01','ch01-review-08','ch01-review-03','ch01-review-04','ch01-review-09','ch01-test-04'];
+for(const id of REPLACED_SELF_MADE_REVIEW_IDS)Object.assign(ch01ById(id),{retired:true,sourceStatus:'superseded_by_verified_exam'});
+const CH01_REVIEW_IDS=['ch01-official-69-basic-10','ch01-official-79-advanced-09','ch01-review-02','ch01-review-05','ch01-test-05','ch01-official-70-advanced-10','ch01-official-73-basic-10','ch01-official-74-advanced-10','ch01-official-76-advanced-10','ch01-review-06','ch01-review-07','ch01-review-10','ch01-test-03'];
 HISTORY.relatedQuestions=[...CH01_STORY_QUESTION_IDS,...CH01_REVIEW_IDS];
 
 // Add diagnostics to legacy practice items without changing their wording or answer.
@@ -213,6 +216,10 @@ for(const q of QUESTIONS.filter(q=>q.chapterId==='ch01'&&!q.retired)){
   q.year??=918;q.relatedHistoricalEventId??='goryeo-foundation-918';
   q.choiceExplanations??=CH01_LEGACY_EXPLANATIONS[q.questionId]||q.choices.map((_,index)=>index===q.answer?'이 선택지가 자료와 일치합니다.':q.explanation);
   q.concepts??=q.questionId==='ch01-test-04'?['태조_광종','호족_포섭']:q.questionId==='ch01-test-05'?['918_936']:['후삼국_사건순서'];
+}
+for(const q of QUESTIONS.filter(q=>!q.retired)){
+  const related=STORIES[q.relatedSceneId],answerMark=['①','②','③','④','⑤'][q.answer]||String(q.answer+1);
+  q.storyConnection??=`‘${related?.title||q.historicalEvent||'이야기'}’ 장면에서 확인한 ${q.examKeywords?.[0]||'역사'} 단서를 떠올리면 정답은 ${answerMark}입니다.`;
 }
 const migrateBeforeCh01Expansion=migrateSave;
 migrateSave=function(raw){

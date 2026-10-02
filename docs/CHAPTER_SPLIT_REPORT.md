@@ -67,7 +67,7 @@
 | ch01-test-01 | ch01 | 918 | 스토리 |
 | ch01-test-02 | ch01 | 918 | 스토리 |
 | ch01-test-03 | ch02 | 936 | 복습 |
-| ch01-test-04 | ch02 | 937 | 복습 |
+| ch01-test-04 | ch02 | 937 | 기출 교체로 보관 |
 | ch01-test-05 | ch01 | 918 | 복습 |
 | ch01-boss | ch02 | 936 | 스토리 |
 | ch02-test-01 | ch03 | 기존 장면 | 스토리 |
@@ -79,10 +79,12 @@
 | ch03-practice-02 | ch04 | 기존 장면 | 스토리 |
 | ch03-practice-03 | ch04 | 기존 장면 | 스토리 |
 | ch03-practice-04 | ch04 | 기존 장면 | 스토리 |
-| ch01-official-70-advanced-10 | ch02 | 936 | 보관 문항 |
-| ch01-official-73-basic-10 | ch02 | 936 | 보관 문항 |
-| ch01-official-74-advanced-10 | ch02 | 936 | 보관 문항 |
-| ch01-official-76-advanced-10 | ch02 | 936 | 보관 문항 |
+| ch01-official-69-basic-10 | ch01 | 918 | 검증 기출 복습 |
+| ch01-official-79-advanced-09 | ch01 | 918 | 검증 기출 복습 |
+| ch01-official-70-advanced-10 | ch02 | 936 | 검증 기출 복습 |
+| ch01-official-73-basic-10 | ch02 | 936 | 검증 기출 복습 |
+| ch01-official-74-advanced-10 | ch02 | 936 | 검증 기출 복습 |
+| ch01-official-76-advanced-10 | ch02 | 936 | 검증 기출 복습 |
 | ch02-official-69-advanced-10 | ch03 | 기존 장면 | 스토리 |
 | ch02-official-74-advanced-11 | ch03 | 기존 장면 | 스토리 |
 | ch02-official-76-advanced-50 | ch03 | 기존 장면 | 스토리 |

@@ -45,26 +45,26 @@ Object.assign(PORTRAITS,{
   hyunwoo_neutral:portrait('hyunwoo','neutral','현우 · 온화하고 학구적인 기본 표정',['#42504a','#9a7957'],'assets/characters/hyunwoo_neutral.png'),
   hyunwoo_worried:portrait('hyunwoo','worried','현우 · 시험을 앞두고 긴장한 표정',['#3c4947','#816957'],'assets/characters/hyunwoo_worried.png'),
   hyunwoo_smile:portrait('hyunwoo','smile','현우 · 격려를 받고 안도하는 미소',['#46534b','#a47f59'],'assets/characters/hyunwoo_smile.png'),
-  freed_man_worried:portrait('freed_man','worried','양인 출신 남자 · 억울함을 호소하는 표정',['#4e4338','#8b7057']),
-  freed_man_smile:portrait('freed_man','smile','양인 출신 남자 · 신분을 되찾고 안도하는 표정',['#51473b','#a17c58']),
-  steward_angry:portrait('steward','angry','귀족 집안 관리인 · 노비라고 주장하며 화난 표정',['#4c352f','#8e5848']),
-  steward_serious:portrait('steward','serious','귀족 집안 관리인 · 문서를 내미는 굳은 표정',['#443932','#7c624e']),
-  official_serious:portrait('official','serious','고려 관리 · 왕명을 집행하는 엄정한 표정',['#263b43','#92734d']),
-  noble_angry:portrait('noble','angry','고려 귀족 · 정책에 반발하는 권위적인 표정',['#49302f','#8d5949']),
-  noble_suspicious:portrait('noble','suspicious','고려 귀족 · 왕을 경계하며 낮게 말하는 표정',['#403231','#755447']),
-  citizen_surprised:portrait('citizen','surprised','개경 사람 · 새로운 시험 소식에 놀란 표정',['#4e493b','#937954']),
-  citizen_neutral:portrait('citizen','neutral','개경 사람 · 시장 소문을 전하는 표정',['#4b473b','#867157']),
-  soldier_serious:portrait('soldier','serious','고려 군사 · 왕명을 수행하는 굳은 표정',['#27343b','#6f5c4b'])
+  freed_man_worried:portrait('freed_man','worried','양인 출신 남자 · 억울함을 호소하는 표정',['#4e4338','#8b7057'],'assets/characters/laborer_01.png'),
+  freed_man_smile:portrait('freed_man','smile','양인 출신 남자 · 신분을 되찾고 안도하는 표정',['#51473b','#a17c58'],'assets/characters/laborer_01.png'),
+  steward_angry:portrait('steward','angry','귀족 집안 관리인 · 노비라고 주장하며 화난 표정',['#4c352f','#8e5848'],'assets/characters/steward_01.png'),
+  steward_serious:portrait('steward','serious','귀족 집안 관리인 · 문서를 내미는 굳은 표정',['#443932','#7c624e'],'assets/characters/steward_01.png'),
+  official_serious:portrait('official','serious','고려 관리 · 왕명을 집행하는 엄정한 표정',['#263b43','#92734d'],'assets/characters/official_01.png'),
+  noble_angry:portrait('noble','angry','고려 귀족 · 정책에 반발하는 권위적인 표정',['#49302f','#8d5949'],'assets/characters/noble_01.png'),
+  noble_suspicious:portrait('noble','suspicious','고려 귀족 · 왕을 경계하며 낮게 말하는 표정',['#403231','#755447'],'assets/characters/noble_01.png'),
+  citizen_surprised:portrait('citizen','surprised','개경 사람 · 새로운 시험 소식에 놀란 표정',['#4e493b','#937954'],'assets/characters/villager_female_01.png'),
+  citizen_neutral:portrait('citizen','neutral','개경 사람 · 시장 소문을 전하는 표정',['#4b473b','#867157'],'assets/characters/villager_male_01.png'),
+  soldier_serious:portrait('soldier','serious','고려 군사 · 왕명을 수행하는 굳은 표정',['#27343b','#6f5c4b'],'assets/characters/soldier_01.png')
 });
 
 Object.assign(CHARACTERS,{
-  hyunwoo:{characterId:'hyunwoo',characterName:'현우',speakerType:'npc',portraitPrefix:'hyunwoo',characterAge:23,characterEraVariant:'exam-candidate',longTermGoal:'과거에 급제해 원칙을 지키는 관리가 되기'},
-  freed_man:{characterId:'freed_man',characterName:'길상',speakerType:'npc',portraitPrefix:'freed_man'},
-  steward:{characterId:'steward',characterName:'귀족 집안 관리인',speakerType:'npc',portraitPrefix:'steward'},
-  official:{characterId:'official',characterName:'관리',speakerType:'npc',portraitPrefix:'official'},
-  noble:{characterId:'noble',characterName:'귀족',speakerType:'npc',portraitPrefix:'noble'},
-  citizen:{characterId:'citizen',characterName:'개경 사람',speakerType:'npc',portraitPrefix:'citizen'},
-  soldier:{characterId:'soldier',characterName:'군사',speakerType:'npc',portraitPrefix:'soldier'}
+  hyunwoo:{characterId:'hyunwoo',characterName:'현우',speakerType:'npc',position:'right',show:true,portraitPrefix:'hyunwoo',characterAge:23,characterEraVariant:'exam-candidate',longTermGoal:'과거에 급제해 원칙을 지키는 관리가 되기'},
+  freed_man:{characterId:'freed_man',characterName:'길상',speakerType:'npc',position:'left',show:true,portraitPrefix:'freed_man'},
+  steward:{characterId:'steward',characterName:'귀족 집안 관리인',speakerType:'npc',position:'right',show:true,portraitPrefix:'steward'},
+  official:{characterId:'official',characterName:'관리',speakerType:'npc',position:'right',show:true,portraitPrefix:'official'},
+  noble:{characterId:'noble',characterName:'귀족',speakerType:'npc',position:'right',show:true,portraitPrefix:'noble'},
+  citizen:{characterId:'citizen',characterName:'개경 사람',speakerType:'npc',position:'right',show:true,portraitPrefix:'citizen'},
+  soldier:{characterId:'soldier',characterName:'군사',speakerType:'npc',position:'right',show:true,portraitPrefix:'soldier'}
 });
 
 QUESTIONS.push(

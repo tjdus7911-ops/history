@@ -12,6 +12,8 @@ for(const chapterId of ['ch01','ch02','ch03','ch04']){
 }
 
 const expectedOfficialAnswers={
+  'ch01-official-69-basic-10':2,
+  'ch01-official-79-advanced-09':4,
   'ch01-official-70-advanced-10':2,
   'ch01-official-73-basic-10':2,
   'ch01-official-74-advanced-10':3,
@@ -24,12 +26,15 @@ const expectedOfficialAnswers={
   'ch03-official-75-basic-10':2,
   'ch03-official-75-basic-12':2
 };
-const official=QUESTIONS.filter(question=>question.isOfficial);
-assert.equal(official.length,7);
-assert.deepEqual(Object.fromEntries(official.map(question=>[question.questionId,question.answer])),Object.fromEntries(Object.entries(expectedOfficialAnswers).filter(([id])=>!id.startsWith('ch01-'))));
-assert.deepEqual(Object.fromEntries(['ch01','ch02','ch03','ch04'].map(chapterId=>[chapterId,official.filter(question=>question.chapterId===chapterId).length])),{ch01:0,ch02:0,ch03:5,ch04:2});
+const official=QUESTIONS.filter(question=>question.isOfficial&&!question.retired);
+assert.equal(official.length,13);
+assert.deepEqual(Object.fromEntries(official.map(question=>[question.questionId,question.answer])),expectedOfficialAnswers);
+assert.deepEqual(Object.fromEntries(['ch01','ch02','ch03','ch04'].map(chapterId=>[chapterId,official.filter(question=>question.chapterId===chapterId).length])),{ch01:2,ch02:4,ch03:5,ch04:2});
 for(const question of official){
   assert(['기본','심화'].includes(question.examLevel));
+  assert.equal(question.sourceVerified,true);
+  assert.equal(question.sourceStatus,'verified_from_attached_pdf');
+  assert(question.storyConnection&&question.storyConnection.length>20);
   assert(question.sourceFile.endsWith('.pdf')&&!/[\\/]/.test(question.sourceFile));
   assert(question.answerFile.endsWith('.pdf')&&!/[\\/]/.test(question.answerFile));
   assert(STORIES[question.relatedSceneId]?.supplementalExam||question.questionId==='ch03-official-75-basic-10');
@@ -42,4 +47,4 @@ assert.equal(QUESTIONS.find(question=>question.questionId==='ch01-boss').origina
 assert.equal(QUESTIONS.find(question=>question.questionId==='ch02-test-05').originalResumeStoryId,'ch02_complete');
 assert.equal(QUESTIONS.find(question=>question.questionId==='ch03-practice-04').originalResumeStoryId,'ch03_courtyard');
 
-console.log('PASS: CH.01/02 contain 4/6 story questions; CH.03/04 each contain 10 distributed questions; 7 preserved CH.02/CH.03 official answers and 5 new practice items are source-labeled and chained.');
+console.log('PASS: CH.01/02 keep 4/6 story questions; 6 review slots use verified attached exams; all 13 active official answers are source-labeled and story-linked.');

@@ -1,6 +1,8 @@
 /* 사용자 제공 한국사능력검정시험 문제지 연계 문항 — 기존 스토리/선택 데이터는 보존한다. */
 const officialExamQuestion=data=>question({
   isOfficial:true,
+  sourceVerified:true,
+  sourceStatus:'verified_from_attached_pdf',
   supplementalExam:true,
   examType:`제${data.examRound}회 한국사능력검정시험 ${data.examLevel} 실제 기출`,
   source:`국사편찬위원회 한국사능력검정시험 제${data.examRound}회 ${data.examLevel} · 사용자 제공 문제지·정답표 기반 모바일 전사`,
@@ -21,11 +23,32 @@ const supplementalExamScene=({sceneId,chapterId,title,illustrationId,quizId,dial
 
 const SUPPLEMENTAL_EXAM_QUESTIONS=[
   officialExamQuestion({
+    questionId:'ch01-official-69-basic-10',chapterId:'ch01',relatedSceneId:'ch01_exam_69_basic_10',relatedHistoricalEventId:'gungye-taebong',historicalEvent:'궁예의 태봉 통치',relatedIllustrationId:'memory-wanggeon',questionType:'인물·국가 판단형',difficulty:'중',reviewOnly:true,
+    passage:'(가)은/는 수도를 송악에서 철원으로 옮기고 광평성 등 여러 관서를 새로 설치하였다.',
+    question:'(가) 인물에 대한 설명으로 옳은 것은?',
+    choices:['우산국을 복속하였다.','백제 계승을 내세웠다.','국호를 태봉으로 바꾸었다.','중앙군으로 9서당을 설치하였다.'],answer:2,
+    explanation:'철원을 수도로 삼고 광평성을 둔 인물은 궁예입니다. 궁예는 국호를 후고구려에서 마진, 다시 태봉으로 바꾸었습니다.',
+    storyConnection:'건국 직전 장면에서 들은 ‘궁예가 철원에서 태봉을 다스렸다’는 소식이 정답 ③의 단서입니다.',
+    examKeywords:['궁예','철원','광평성','태봉'],rewardKnowledge:2,resumeStoryId:'ch01_clear_930',
+    examRound:69,examYear:2024,examLevel:'기본',questionNumber:10,sourcePage:3,sourceFile:'69회 한국사 문제지(기본).pdf',answerFile:'69회 한국사 정답표(기본).pdf'
+  }),
+  officialExamQuestion({
+    questionId:'ch01-official-79-advanced-09',chapterId:'ch01',relatedSceneId:'ch01_exam_79_09',relatedHistoricalEventId:'gungye-taebong',historicalEvent:'궁예와 태봉',relatedIllustrationId:'memory-wanggeon',questionType:'인물 업적형',difficulty:'중상',reviewOnly:true,
+    passage:'양길의 부하였던 (가)은/는 북원 동쪽의 여러 군현을 공략하였다. 신라가 쇠퇴하자 철원에 도읍하고 국호를 태봉이라 하였다.',
+    question:'(가) 인물에 대한 설명으로 옳은 것은?',
+    choices:['공산 전투에서 전사하였다.','경주의 사심관으로 임명되었다.','후당과 오월에 사신을 파견하였다.','일리천에서 신검의 군대를 물리쳤다.','광평성 등의 정치 기구를 설치하였다.'],answer:4,
+    explanation:'자료의 인물은 궁예입니다. 궁예는 철원을 도읍으로 태봉을 세우고 광평성 등 정치 기구를 설치했습니다.',
+    storyConnection:'왕건이 궁예 휘하에서 성장했다는 장면과 ‘철원·태봉’ 단서를 함께 떠올리면 정답은 ⑤입니다.',
+    examKeywords:['궁예','양길','철원','태봉','광평성'],rewardKnowledge:3,resumeStoryId:'ch01_clear_930',
+    examRound:79,examYear:2026,examLevel:'심화',questionNumber:9,sourcePage:2,sourceFile:'79회 한국사_문제지(심화).pdf',answerFile:'79회 한국사_답지(심화).pdf'
+  }),
+  officialExamQuestion({
     questionId:'ch01-official-70-advanced-10',chapterId:'ch01',relatedSceneId:'ch01_exam_70_10',relatedHistoricalEventId:'later-three-kingdoms',historicalEvent:'후삼국 통일 과정',relatedIllustrationId:'future-flow',questionType:'사건 순서형',difficulty:'상',
     passage:'[후삼국 통일 영화 장면]\n#1 신숭겸이 공산 전투에서 전사하다.\n#2 왕건이 고창 전투에서 승리하다.\n#3 견훤이 금산사를 탈출하여 고려에 귀부하다.\n#4 (가)\n#5 왕건이 일리천 전투에서 승리하다.',
     question:'(가)에 들어갈 내용으로 가장 적절한 것은?',
     choices:['장보고, 청해진을 설치하다.','원종과 애노, 사벌주에서 봉기하다.','경순왕 김부, 경주의 사심관이 되다.','궁예, 국호를 마진으로 바꾸다.','견훤, 완산주에 도읍을 정하다.'],answer:2,
     explanation:'신라 경순왕 김부는 935년 고려에 항복했고, 뒤에 경주의 사심관이 되었습니다. 이 사건은 936년 일리천 전투와 후삼국 통일보다 앞섭니다.',
+    storyConnection:'공산 패배 → 고창 승리 → 견훤·신라의 귀순 → 일리천 승리로 이어진 장면 순서가 정답 ③을 가리킵니다.',
     examKeywords:['공산 전투','고창 전투','경순왕 항복','일리천 전투'],rewardKnowledge:3,resumeStoryId:'foundation',
     examRound:70,examYear:2024,examLevel:'심화',questionNumber:10,sourcePage:3,sourceFile:'70회 한국사_문제지(심화).pdf',answerFile:'70회 한국사_정답지(심화).pdf'
   }),
@@ -35,6 +58,7 @@ const SUPPLEMENTAL_EXAM_QUESTIONS=[
     question:'(가) 인물에 대한 설명으로 옳은 것은?',
     choices:['신라를 침략하여 대야성을 함락하였다.','청해진을 중심으로 해상 무역을 전개하였다.','완산주에서 후백제를 세웠다.','서경 천도를 주장하며 난을 일으켰다.'],answer:2,
     explanation:'견훤은 완산주를 도읍으로 후백제를 세웠습니다. 뒤에 아들 신검에게 금산사에 갇혔다가 탈출해 왕건에게 귀순했습니다.',
+    storyConnection:'상인이 전한 ‘금산사를 탈출한 후백제의 건국자’라는 장면 속 단서가 정답 ③과 연결됩니다.',
     examKeywords:['견훤','완산주','후백제','금산사'],rewardKnowledge:2,resumeStoryId:'status',
     examRound:73,examYear:2025,examLevel:'기본',questionNumber:10,sourcePage:3,sourceFile:'73회 한국사_문제지(기본).pdf',answerFile:'73회 한국사_답지(기본).pdf'
   }),
@@ -44,6 +68,7 @@ const SUPPLEMENTAL_EXAM_QUESTIONS=[
     question:'이 대화 이후에 있었던 사실로 옳은 것은?',
     choices:['궁예가 왕건을 시켜 나주를 점령하였다.','견훤이 완산주에 도읍을 정하였다.','신숭겸이 공산 전투에서 전사하였다.','왕건이 일리천에서 신검의 군대를 물리쳤다.','신라군이 매소성에서 당군을 격파하였다.'],answer:3,
     explanation:'신라 경순왕이 고려에 항복한 것은 935년이고, 왕건이 일리천에서 신검의 군대를 물리쳐 후삼국을 통일한 것은 936년입니다.',
+    storyConnection:'신라 상인이 떠난 뒤에도 전쟁이 끝나지 않았고, 다음 해 일리천 소식이 왔던 장면 때문에 정답은 ④입니다.',
     examKeywords:['935년 신라 항복','936년 일리천','신검','후삼국 통일'],rewardKnowledge:3,resumeStoryId:'thief',
     examRound:74,examYear:2025,examLevel:'심화',questionNumber:10,sourcePage:3,sourceFile:'74회 한국사_문제지(심화).pdf',answerFile:'74회 심화 정답표.pdf'
   }),
@@ -53,6 +78,7 @@ const SUPPLEMENTAL_EXAM_QUESTIONS=[
     question:'자료에 나타난 사건 이후에 있었던 사실로 옳은 것은?',
     choices:['신라가 당과 연합군을 결성하였다.','신검의 군대가 일리천 전투에서 패배하였다.','장보고가 청해진을 설치하였다.','궁예가 국호를 태봉으로 바꾸었다.','견훤이 완산주에 후백제를 세웠다.'],answer:1,
     explanation:'견훤이 고려에 귀순한 뒤 왕건은 일리천 전투에서 신검의 후백제군을 물리치고 936년 후삼국 통일을 이루었습니다.',
+    storyConnection:'견훤이 고려에 온 장면 다음에 신검의 군대가 일리천에서 패했다는 소식을 경험했으므로 정답은 ②입니다.',
     examKeywords:['견훤 귀순','신검','일리천 전투','936년'],rewardKnowledge:3,resumeStoryId:'complete',
     examRound:76,examYear:2025,examLevel:'심화',questionNumber:10,sourcePage:3,sourceFile:'76회 한국사_문제지(심화).pdf',answerFile:'76회 한국사_답지(심화)).pdf'
   }),
@@ -145,6 +171,8 @@ const SUPPLEMENTAL_EXAM_QUESTIONS=[
 ];
 
 const SUPPLEMENTAL_EXAM_SCENES=[
+  supplementalExamScene({sceneId:'ch01_exam_69_basic_10',chapterId:'ch01',title:'철원에 세운 태봉',illustrationId:'memory-wanggeon',quizId:'ch01-official-69-basic-10',dialogue:'왕건이 몸담았던 궁예의 나라는 철원을 도읍으로 삼고 광평성을 두었으며, 국호를 태봉이라 바꾸었다.',historicalEventId:'gungye-taebong',year:918}),
+  supplementalExamScene({sceneId:'ch01_exam_79_09',chapterId:'ch01',title:'궁예를 가리키는 단서',illustrationId:'memory-wanggeon',quizId:'ch01-official-79-advanced-09',dialogue:'양길의 부하, 철원, 태봉, 광평성이라는 단서가 한 인물에게 모였다.',historicalEventId:'gungye-taebong',year:918}),
   supplementalExamScene({sceneId:'ch01_exam_70_10',chapterId:'ch01',title:'후삼국의 마지막 순서',illustrationId:'future-flow',quizId:'ch01-official-70-advanced-10',dialogue:'공산과 고창, 신라의 항복과 일리천. 후삼국의 마지막 장면들이 순서대로 이어졌다.',historicalEventId:'later-three-kingdoms',year:936}),
   supplementalExamScene({sceneId:'ch01_exam_73_10',chapterId:'ch01',title:'견훤의 선택',illustrationId:'market-later-three-kingdoms',quizId:'ch01-official-73-basic-10',dialogue:'후백제를 세운 견훤의 시작과, 금산사를 벗어나 왕건에게 향한 마지막 선택을 떠올렸다.',historicalEventId:'later-three-kingdoms',year:936}),
   supplementalExamScene({sceneId:'ch01_exam_74_10',chapterId:'ch01',title:'신라가 고려에 들어온 뒤',illustrationId:'future-flow',quizId:'ch01-official-74-advanced-10',dialogue:'935년 신라의 항복 뒤에도 후백제와의 마지막 전투가 남아 있었다.',historicalEventId:'later-three-kingdoms',year:936}),
@@ -164,6 +192,17 @@ const SUPPLEMENTAL_EXAM_SCENES=[
 
 Object.assign(STORIES,Object.fromEntries(SUPPLEMENTAL_EXAM_SCENES.map(item=>[item.sceneId,item])));
 QUESTIONS.push(...SUPPLEMENTAL_EXAM_QUESTIONS);
+for(const q of QUESTIONS.filter(item=>item.isOfficial))Object.assign(q,{sourceVerified:true,sourceStatus:'verified_from_attached_pdf'});
+const VERIFIED_EXAM_STORY_CONNECTIONS={
+  'ch02-official-69-advanced-10':'도윤과 함께 태조가 남긴 나라의 기틀과 훈요 10조를 확인했으므로 정답은 ⑤입니다.',
+  'ch02-official-74-advanced-11':'길상이 양인 신분을 되찾는 장면에서 노비안검법을 경험했고, 광덕·준풍도 광종의 정책이므로 정답은 ②입니다.',
+  'ch02-official-76-advanced-50':'상단의 물건에서 본 광덕 연호와 노비안검법의 연결을 떠올리면 ⑤의 대한국 국제가 잘못된 설명입니다.',
+  'ch02-official-77-advanced-14':'통천관을 쓴 왕건상과 준풍 연호를 함께 살핀 장면이 고려의 황제국 표방, 즉 정답 ⑤로 이어집니다.',
+  'ch02-official-78-advanced-11':'현우가 쌍기의 건의로 열린 과거를 준비한 장면과 길상의 노비안검법 경험을 합치면 정답은 ④입니다.',
+  'ch03-official-75-basic-10':'최승로의 건의가 실제로 12목 지방관 파견으로 이어진 장면을 경험했으므로 정답은 ③입니다.',
+  'ch03-official-75-basic-12':'태조의 사심관과 성종의 12목을 비교한 장면에서 태조의 정책을 고르면 정답은 ③입니다.'
+};
+for(const [id,storyConnection] of Object.entries(VERIFIED_EXAM_STORY_CONNECTIONS)){const q=QUESTIONS.find(item=>item.questionId===id);if(q)q.storyConnection=storyConnection}
 
 function chainSupplementalQuestions(anchorId,extraIds){
   const anchor=QUESTIONS.find(item=>item.questionId===anchorId);
