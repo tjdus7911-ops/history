@@ -6,7 +6,8 @@ const {CHAPTERS,STORIES,QUESTIONS}=context.api;
 
 for(const chapterId of ['ch01','ch02','ch03','ch04']){
   const chapterQuestions=QUESTIONS.filter(question=>question.chapterId===chapterId&&!question.reviewOnly&&!question.retired);
-  assert.equal(CHAPTERS[chapterId].questionCount,chapterId==='ch01'?4:chapterId==='ch02'?6:10,`${chapterId}: metadata count`);
+  const expectedCounts={ch01:6,ch02:8,ch03:12,ch04:10};
+  assert.equal(CHAPTERS[chapterId].questionCount,expectedCounts[chapterId],`${chapterId}: metadata count`);
   assert.equal(chapterQuestions.length,CHAPTERS[chapterId].questionCount,`${chapterId}: actual question count`);
   assert.equal(new Set(chapterQuestions.map(question=>question.questionId)).size,CHAPTERS[chapterId].questionCount,`${chapterId}: duplicate id`);
 }
@@ -47,4 +48,4 @@ assert.equal(QUESTIONS.find(question=>question.questionId==='ch01-boss').origina
 assert.equal(QUESTIONS.find(question=>question.questionId==='ch02-test-05').originalResumeStoryId,'ch02_complete');
 assert.equal(QUESTIONS.find(question=>question.questionId==='ch03-practice-04').originalResumeStoryId,'ch03_courtyard');
 
-console.log('PASS: CH.01/02 keep 4/6 story questions; 6 review slots use verified attached exams; all 13 active official answers are source-labeled and story-linked.');
+console.log('PASS: CH.01/02 now use 6/8 story questions, CH.03 uses 12 story questions plus 5 review questions, and all 13 active official answers remain source-labeled and story-linked.');

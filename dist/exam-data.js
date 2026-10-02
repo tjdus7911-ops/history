@@ -196,7 +196,7 @@ for(const q of QUESTIONS.filter(item=>item.isOfficial))Object.assign(q,{sourceVe
 const VERIFIED_EXAM_STORY_CONNECTIONS={
   'ch02-official-69-advanced-10':'도윤과 함께 태조가 남긴 나라의 기틀과 훈요 10조를 확인했으므로 정답은 ⑤입니다.',
   'ch02-official-74-advanced-11':'길상이 양인 신분을 되찾는 장면에서 노비안검법을 경험했고, 광덕·준풍도 광종의 정책이므로 정답은 ②입니다.',
-  'ch02-official-76-advanced-50':'상단의 물건에서 본 광덕 연호와 노비안검법의 연결을 떠올리면 ⑤의 대한국 국제가 잘못된 설명입니다.',
+  'ch02-official-76-advanced-50':'상인 거리의 오래된 장부에서 들은 광덕 연호와 길상의 노비안검법 장면을 함께 떠올리면 ⑤의 대한국 국제가 잘못된 설명입니다.',
   'ch02-official-77-advanced-14':'통천관을 쓴 왕건상과 준풍 연호를 함께 살핀 장면이 고려의 황제국 표방, 즉 정답 ⑤로 이어집니다.',
   'ch02-official-78-advanced-11':'현우가 쌍기의 건의로 열린 과거를 준비한 장면과 길상의 노비안검법 경험을 합치면 정답은 ④입니다.',
   'ch03-official-75-basic-10':'최승로의 건의가 실제로 12목 지방관 파견으로 이어진 장면을 경험했으므로 정답은 ③입니다.',

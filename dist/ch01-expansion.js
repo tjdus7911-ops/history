@@ -140,6 +140,10 @@ Object.assign(STORIES,Object.fromEntries(CH01_NEW_SCENES.map(item=>[item.sceneId
 // Keep all early dialogue, effects, illustrations and choices. Only quiz routing changes.
 for(const id of ['doyun','route_context','thief_aftermath']){delete STORIES[id].quizId;STORIES[id].nextStoryId={doyun:'status',route_context:'thief',thief_aftermath:'night'}[id]}
 STORIES.night.nextStoryId='ch01_trade_start';
+STORIES.ch01_trade_start.quizId='ch01-story-gungye-transition';
+STORIES.ch01_belonging.quizId='ch01-story-early-chronology';
+STORIES.ch01_unity.quizId='ch02-story-illyecheon';
+STORIES.ch01_welfare.quizId='ch02-story-welfare';
 Object.assign(STORIES.future_flow,{year:936,location:'살아온 시간의 연결',fictionNotice:'주인공과 도윤의 경험은 창작이며 연표의 사건은 역사적 사실입니다.',dialogues:ch01Lines([
   ['narrator','neutral','918 고려 건국 → 927 공산 패배 → 930 고창 승리','narration'],
   ['narrator','neutral','935 견훤 귀순 → 같은 해 신라 항복 → 936 일리천 승리·후삼국 통일','narration'],
@@ -148,27 +152,39 @@ Object.assign(STORIES.future_flow,{year:936,location:'살아온 시간의 연결
 STORIES.complete.year=943;
 Object.assign(CHAPTERS.ch01,{subtitle:'918–943, 함께 살아낸 새로운 나라',years:'918 — 943',questionCount:10,reviewQuestionCount:13});
 
-const CH01_STORY_QUESTION_IDS=['ch01-test-01','ch01-test-02','ch01-story-gongsan','ch01-story-gochang','ch01-story-gyeonhwon','ch01-story-silla','ch01-boss','ch01-story-integration','ch01-story-north','ch01-story-hunyo'];
-const ch01Question=data=>question({chapterId:'ch01',isOfficial:false,sourceVerified:false,historicalSourceVerified:true,examName:'한국사능력검정시험',examType:'기출 유형 · 자체 제작',questionType:'exam_style',source:'국사편찬위원회 우리역사넷의 확인된 사실관계에 기반한 자체 제작',rewardKnowledge:2,...data});
+const CH01_STORY_QUESTION_IDS=['ch01-test-01','ch01-test-02','ch01-story-gungye-transition','ch01-story-gongsan','ch01-story-gochang','ch01-story-early-chronology','ch01-story-gyeonhwon','ch01-story-silla','ch02-story-illyecheon','ch01-boss','ch01-story-integration','ch01-story-north','ch02-story-welfare','ch01-story-hunyo'];
+const ch01Question=data=>question({chapterId:'ch01',isOfficial:false,sourceType:'exam_style',sourceVerified:false,historicalSourceVerified:true,examName:'한국사능력검정시험',examType:'기출 유형 · 자체 제작',questionType:'exam_style',source:'국사편찬위원회 우리역사넷의 확인된 사실관계에 기반한 자체 제작',rewardKnowledge:2,...data});
 const CH01_STORY_QUESTIONS=[
+  ch01Question({questionId:'ch01-story-gungye-transition',year:918,relatedSceneId:'ch01_trade_start',relatedIllustrationId:'route-caravan',relatedHistoricalEventId:'goryeo-foundation-918',formatLabel:'인물·건국 연결',difficulty:'하',
+    passage:'궁예를 몰아낸 신하들이 왕건을 새 왕으로 추대하였다. 왕건은 국호를 고려로 정하였다.',question:'인물과 사건의 연결로 옳은 것은?',choices:['궁예 — 고려 건국','견훤 — 고려 건국','왕건 — 918년 고려 건국','신검 — 918년 고려 건국'],answer:2,
+    explanation:'궁예의 세력에서 성장한 왕건은 918년에 신하들의 추대를 받아 고려를 세웠습니다.',choiceExplanations:['궁예는 후고구려를 세웠습니다.','견훤은 후백제를 세웠습니다.','왕건과 918년 고려 건국의 연결입니다.','신검은 후백제의 마지막 왕입니다.'],examKeywords:['궁예 축출','왕건 추대','918 고려 건국'],concepts:['궁예_왕건','918_936'],conceptIds:['궁예_왕건','918_936'],resumeStoryId:'ch01_jump_927',sourceUrls:[CH01_SOURCES.chronology]}),
   ch01Question({questionId:'ch01-story-gongsan',year:927,relatedSceneId:'ch01_gongsan',relatedIllustrationId:'thief-aftermath',relatedHistoricalEventId:'ch01-gongsan',formatLabel:'사건·결과 연결',difficulty:'중',
     passage:'신라를 공격한 후백제군과 맞선 고려군이 공산에서 크게 패했다. 왕건은 탈출했지만 가까운 장수를 잃었다.',question:'이 전투와 관련된 설명으로 옳은 것은?',choices:['신숭겸이 전사하였다.','신검이 항복하여 후삼국이 통일되었다.','경순왕 김부가 고려에 귀순하였다.','왕건이 고창에서 후백제군을 격파하였다.'],answer:0,
     explanation:'927년 공산 전투에서 왕건이 패하고 신숭겸이 전사했습니다. 고창 승리는 930년입니다.',choiceExplanations:['공산 전투의 인물과 결과입니다.','936년 일리천 전투 뒤의 일입니다.','935년 신라의 항복입니다.','930년 고창 전투입니다.'],examKeywords:['927 공산','왕건 패배','신숭겸'],concepts:['공산전투_고창전투'],resumeStoryId:'ch01_conflict',sourceUrls:[CH01_SOURCES.chronology]}),
   ch01Question({questionId:'ch01-story-gochang',year:930,relatedSceneId:'ch01_gochang',relatedIllustrationId:'route-context',relatedHistoricalEventId:'ch01-gochang',formatLabel:'비교 자료',difficulty:'중',
     passage:'927년에는 돌아오지 않는 거래 일행을 기다렸다. 930년에는 후백제군을 격파했다는 소식을 듣고 거래길을 다시 열었다.',question:'두 전투의 결과를 바르게 연결한 것은?',choices:['공산 승리 — 고창 패배','공산 패배 — 고창 승리','공산 패배 — 고창 패배','공산 승리 — 고창 승리'],answer:1,
     explanation:'왕건은 공산(927)에서 패배하고 고창(930)에서 승리했습니다.',choiceExplanations:['두 결과를 모두 뒤바꿨습니다.','연도와 결과가 맞습니다.','고창에서는 고려가 승리했습니다.','공산에서는 고려가 패배했습니다.'],examKeywords:['927 공산 패배','930 고창 승리'],concepts:['공산전투_고창전투'],resumeStoryId:'ch01_belonging',sourceUrls:[CH01_SOURCES.chronology]}),
+  ch01Question({questionId:'ch01-story-early-chronology',year:930,relatedSceneId:'ch01_belonging',relatedIllustrationId:'route-songak',relatedHistoricalEventId:'ch01-gochang',formatLabel:'초기 흐름 배열',difficulty:'중',
+    passage:'도윤과 함께 왕건의 건국 소식을 듣고, 공산의 패전으로 거래처를 잃었으며, 고창의 승리 뒤 다시 길을 열었다.',question:'세 사건을 일어난 순서대로 바르게 나열한 것은?',choices:['공산 전투 → 고려 건국 → 고창 전투','고창 전투 → 고려 건국 → 공산 전투','고려 건국 → 공산 전투 → 고창 전투','고려 건국 → 고창 전투 → 공산 전투'],answer:2,
+    explanation:'고려 건국(918) → 공산 전투(927) → 고창 전투(930) 순서입니다.',choiceExplanations:['고려 건국이 공산 전투보다 먼저입니다.','고창 전투가 가장 늦습니다.','함께 경험한 시간의 순서와 일치합니다.','공산 전투가 고창 전투보다 먼저입니다.'],examKeywords:['918 건국','927 공산','930 고창'],concepts:['후삼국_사건순서','공산전투_고창전투'],conceptIds:['후삼국_사건순서','공산전투_고창전투'],resumeStoryId:'ch01_ending_930',sourceUrls:[CH01_SOURCES.chronology]}),
   ch01Question({questionId:'ch01-story-gyeonhwon',year:935,relatedSceneId:'ch01_gyeonhwon',relatedIllustrationId:'ch02-doyun-shop-interior-949',relatedHistoricalEventId:'ch01-gyeonhwon',formatLabel:'인물 식별',difficulty:'중',
     passage:'아들 신검에게 왕위를 빼앗기고 금산사에 갇혔다. 탈출한 뒤 왕건의 고려에 귀순하였다.',question:'자료의 인물은?',choices:['궁예','경순왕 김부','견훤','신숭겸'],answer:2,
     explanation:'견훤은 후백제의 건국자입니다. 그를 밀어낸 신검은 후백제를 이끌었고, 견훤은 고려로 귀순했습니다.',choiceExplanations:['궁예는 후고구려를 세운 인물입니다.','김부는 신라의 마지막 왕입니다.','금산사 탈출과 고려 귀순의 인물입니다.','신숭겸은 927년 공산에서 전사했습니다.'],examKeywords:['935 견훤','금산사','신검'],concepts:['견훤_신검','견훤귀순_경순왕귀순'],resumeStoryId:'ch01_silla',sourceUrls:[CH01_SOURCES.unification]}),
   ch01Question({questionId:'ch01-story-silla',year:935,relatedSceneId:'ch01_silla',relatedIllustrationId:'ch02-doyun-shop-interior-949',relatedHistoricalEventId:'ch01-silla',formatLabel:'인물·사건 연결',difficulty:'중',
     passage:'신라의 마지막 왕이 백성의 피해를 우려하여 나라를 고려에 넘겼다. 왕건은 그를 우대하였다.',question:'이 인물과 이후 연결되는 제도로 옳은 것은?',choices:['견훤 — 노비안검법','신검 — 과거제','궁예 — 12목','경순왕 김부 — 경주의 사심관'],answer:3,
     explanation:'935년 신라의 귀순을 결정한 왕은 경순왕 김부입니다. 김부와 경주의 사심관을 연결해 기억합니다.',choiceExplanations:['견훤은 후백제 건국자이며 노비안검법은 광종 정책입니다.','신검은 후백제의 마지막 왕입니다.','12목은 성종 때의 제도입니다.','김부의 지역 연고를 활용한 사심관의 대표 사례입니다.'],examKeywords:['935 신라 항복','김부','사심관'],concepts:['견훤귀순_경순왕귀순','사심관_기인'],resumeStoryId:'ch01_jump_936',sourceUrls:[CH01_SOURCES.policy]}),
+  ch01Question({questionId:'ch02-story-illyecheon',year:936,relatedSceneId:'ch01_unity',relatedIllustrationId:'future-flow',relatedHistoricalEventId:'ch01-illyecheon',formatLabel:'전투·결과 연결',difficulty:'하',
+    passage:'견훤이 고려 편에 선 가운데 왕건의 군대가 신검의 후백제군을 물리쳤다.',question:'이 사건의 결과로 옳은 것은?',choices:['고려가 건국되었다.','공산에서 고려가 패하였다.','신라가 후백제에 항복하였다.','후삼국 통일이 이루어졌다.'],answer:3,
+    explanation:'936년 일리천 전투에서 신검의 후백제군이 패하면서 고려의 후삼국 통일이 완성되었습니다.',choiceExplanations:['고려 건국은 918년입니다.','공산 패배는 927년입니다.','신라는 935년 고려에 항복했습니다.','일리천 승리의 결과입니다.'],examKeywords:['936 일리천','신검','후삼국 통일'],concepts:['일리천_후삼국통일','후삼국_사건순서'],conceptIds:['일리천_후삼국통일','후삼국_사건순서'],resumeStoryId:'future_flow',sourceUrls:[CH01_SOURCES.unification]}),
   ch01Question({questionId:'ch01-story-integration',year:937,relatedSceneId:'ch01_giin',relatedIllustrationId:'route-songak',relatedHistoricalEventId:'ch01-giin',formatLabel:'정책 구별',difficulty:'중상',
     passage:'(가) 출신 지역의 연고를 가진 유력자에게 그 지역을 감독하게 했다.\n(나) 지방 호족의 자제를 수도에 머물게 했다.',question:'(가), (나)에 해당하는 제도를 바르게 연결한 것은?',choices:['기인 — 사심관','사심관 — 기인','과거제 — 노비안검법','12목 — 기인'],answer:1,
     explanation:'(가)는 사심관, (나)는 기인입니다. 태조는 호족을 포섭하면서 동시에 지방 세력을 견제했습니다.',choiceExplanations:['두 제도의 방식을 뒤바꿨습니다.','연고 지역 감독과 자제의 수도 체류를 구분했습니다.','두 정책은 광종의 왕권 강화 정책입니다.','12목 지방관 파견은 성종 때의 제도입니다.'],examKeywords:['사심관','기인','혼인·포섭·견제'],concepts:['사심관_기인','태조_광종'],resumeStoryId:'ch01_refugee_family',sourceUrls:[CH01_SOURCES.policy]}),
   ch01Question({questionId:'ch01-story-north',year:940,relatedSceneId:'ch01_north',relatedIllustrationId:'route-caravan',relatedHistoricalEventId:'ch01-north',formatLabel:'왕의 정책',difficulty:'중',
     passage:'고려는 발해 유민을 받아들였고, 옛 고구려의 중심지인 평양을 서경으로 중시하였다.',question:'자료와 가장 밀접한 통치 방향은?',choices:['신라의 골품제 유지','광종의 과거제 시행','고구려 계승 의식과 북진 정책','조선의 한양 천도'],answer:2,
     explanation:'태조의 발해 유민 포용과 서경 중시는 고구려 계승 의식 및 북진 정책과 연결됩니다.',choiceExplanations:['고려가 신라 골품제를 유지한 것은 아닙니다.','광종은 이후 왕이며 자료의 북방 정책과 다릅니다.','유민 포용·서경·북진의 공통 방향입니다.','조선의 수도 정책으로 시대가 다릅니다.'],examKeywords:['발해 유민','고구려 계승','서경','북진'],concepts:['서경_북진','태조_광종'],resumeStoryId:'ch01_welfare',sourceUrls:[CH01_SOURCES.refugees,CH01_SOURCES.policy]}),
+  ch01Question({questionId:'ch02-story-welfare',year:941,relatedSceneId:'ch01_welfare',relatedIllustrationId:'route-village',relatedHistoricalEventId:'ch01-welfare',formatLabel:'정책 의미 파악',difficulty:'중',
+    passage:'“백성에게서 거두는 데에도 한도가 있어야 한다. 살아남은 사람들이 다시 농사짓고 장사할 수 있어야 나라가 유지된다.”',question:'태조의 통치 원칙과 가장 가까운 것은?',choices:['취민유도','노비안검법','과거제','12목 지방관 파견'],answer:0,
+    explanation:'취민유도는 백성에게 지나치게 거두지 말라는 태조의 민생 안정 원칙입니다.',choiceExplanations:['자료의 수취 억제 원칙입니다.','광종의 정책입니다.','광종이 958년에 시행했습니다.','성종의 지방 제도입니다.'],examKeywords:['태조','취민유도','민생 안정'],concepts:['취민유도','태조_광종'],conceptIds:['취민유도','태조_광종'],resumeStoryId:'ch01_jump_943',sourceUrls:[CH01_SOURCES.policy]}),
   ch01Question({questionId:'ch01-story-hunyo',year:943,relatedSceneId:'ch01_hunyo',relatedIllustrationId:'ch02-doyun-shop-interior-949',relatedHistoricalEventId:'ch01-hunyo',formatLabel:'사료 해석',difficulty:'중상',
     passage:'[유훈의 내용을 학습용으로 요약]\n서경을 중시하며 연등회와 팔관회를 행하고, 후대 왕들이 나라를 다스리는 데 마음을 다하도록 당부하였다.',question:'이 유훈을 남긴 왕과 문서의 연결로 옳은 것은?',choices:['광종 — 시무 28조','성종 — 훈요 10조','태조 — 훈요 10조','태조 — 경국대전'],answer:2,
     explanation:'943년에 사망한 태조 왕건은 후대 왕들에게 훈요 10조를 남겼습니다. 시무 28조는 최승로가 성종에게 올린 건의입니다.',choiceExplanations:['시무 28조는 최승로가 성종에게 올렸습니다.','훈요 10조를 남긴 왕은 태조입니다.','왕과 문서의 연결이 맞습니다.','경국대전은 조선의 법전입니다.'],examKeywords:['943 태조 사망','훈요 10조','서경','연등회·팔관회'],concepts:['훈요10조_시무28조','태조_광종'],resumeStoryId:'ch01_guild_seed',sourceUrls:[CH01_SOURCES.hunyo,CH01_SOURCES.chronology]})
@@ -219,6 +235,8 @@ for(const q of QUESTIONS.filter(q=>q.chapterId==='ch01'&&!q.retired)){
 }
 for(const q of QUESTIONS.filter(q=>!q.retired)){
   const related=STORIES[q.relatedSceneId],answerMark=['①','②','③','④','⑤'][q.answer]||String(q.answer+1);
+  q.sourceType??=q.isOfficial?'official_exam':'exam_style';
+  q.conceptIds??=[...(q.concepts||[])];
   q.storyConnection??=`‘${related?.title||q.historicalEvent||'이야기'}’ 장면에서 확인한 ${q.examKeywords?.[0]||'역사'} 단서를 떠올리면 정답은 ${answerMark}입니다.`;
 }
 const migrateBeforeCh01Expansion=migrateSave;
@@ -236,8 +254,10 @@ migrateSave=function(raw){
 };
 const recordBeforeCh01Expansion=recordQuestion;
 recordQuestion=function(state,id,answer){
-  const right=recordBeforeCh01Expansion(state,id,answer),q=QUESTIONS.find(item=>item.questionId===id);
-  if(!['ch01','ch02'].includes(q?.chapterId)||q.retired)return right;
+  const q=QUESTIONS.find(item=>item.questionId===id),session=state.meta.ch01ReviewSession,independentReview=Boolean(q?.reviewOnly&&session?.chapterId===q.chapterId&&!state.run.activeQuestionId),before=independentReview?{questionResults:{...state.run.questionResults},questionAnswer:state.run.questionAnswer,knowledge:state.run.stats.knowledge}:null;
+  const right=recordBeforeCh01Expansion(state,id,answer);
+  if(independentReview){session.answers[id]=answer;session.results[id]=right;state.run.questionResults=before.questionResults;state.run.questionAnswer=before.questionAnswer;state.run.stats.knowledge=before.knowledge}
+  if(!['ch01','ch02','ch03'].includes(q?.chapterId)||q.retired)return right;
   const mistakes=state.meta.conceptMistakes||(state.meta.conceptMistakes={});
   if(!right)for(const concept of q.concepts||[]){const previous=mistakes[concept]||{count:0,questionIds:[]};mistakes[concept]={count:previous.count+1,questionIds:[...new Set([...previous.questionIds,id])],lastQuestionId:id,year:q.year}}
   state.meta.confusedConcepts=Object.keys(mistakes).filter(concept=>mistakes[concept].questionIds.some(questionId=>state.meta.wrongQuestionIds.includes(questionId)&&!state.meta.reviewedQuestionIds.includes(questionId)));

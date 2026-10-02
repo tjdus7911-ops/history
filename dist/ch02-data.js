@@ -1,7 +1,7 @@
 /* CH.03 왕의 나라 — stable ch02_* scene/asset IDs */
 const CHAPTERS={
   ch01:{chapterId:'ch01',episode:'goryeo',number:'01',title:'새로운 나라',subtitle:'918년, 고려 건국과 후삼국',thumbnail:'goryeo.png',startStoryId:'prologue',completeStoryId:'complete',questionCount:10,implemented:true},
-  ch03:{chapterId:'ch03',episode:'goryeo',number:'03',title:'왕의 나라',subtitle:'왕은 왜 자신의 사람들을 풀어주었을까',thumbnail:'assets/scenes/ch02-complete.png',startStoryId:'ch02_transition',completeStoryId:'ch02_complete',questionCount:10,implemented:true},
+  ch03:{chapterId:'ch03',episode:'goryeo',number:'03',title:'왕의 나라',subtitle:'왕은 왜 자신의 사람들을 풀어주었을까',years:'949 — 960',thumbnail:'assets/scenes/ch02-complete.png',startStoryId:'ch02_transition',completeStoryId:'ch02_chapter_clear',questionCount:12,reviewQuestionCount:5,implemented:true},
   ch04:{chapterId:'ch04',episode:'goryeo',number:'04',title:'나라의 틀',subtitle:'최승로의 시무 28조와 성종',thumbnail:'assets/scenes/ch03-teaser.png',questionCount:0,implemented:false},
   ch05:{chapterId:'ch05',episode:'goryeo',number:'05',title:'북쪽에서 온 적',subtitle:'거란의 침입과 고려의 대응',thumbnail:'goryeo.png',questionCount:0,implemented:false},
   ch06:{chapterId:'ch06',episode:'goryeo',number:'06',title:'귀족들의 나라',subtitle:'문벌 귀족 사회와 갈등',thumbnail:'goryeo.png',questionCount:0,implemented:false},
@@ -75,6 +75,40 @@ QUESTIONS.push(
   question({questionId:'ch02-test-05',chapterId:'ch03',relatedSceneId:'ch02_purge',relatedHistoricalEventId:'goryeo-early-kings',historicalEvent:'태조·광종·성종 업적 비교',relatedIllustrationId:'ch02-purge-night',questionType:'왕별 정책 연결형',difficulty:'상',passage:'고려 초기에는 왕조의 기반 마련, 왕권 강화, 유교 정치 체제 정비가 차례로 추진되었다.',question:'태조 → 광종 → 성종의 정책을 바르게 연결한 것은?',choices:['사심관 → 노비안검법 → 12목 지방관 파견','노비안검법 → 사심관 → 시무 28조 수용','12목 지방관 파견 → 과거제 → 기인 제도','과거제 → 시무 28조 수용 → 사심관','기인 제도 → 12목 지방관 파견 → 광덕 연호 사용'],answer:0,explanation:'태조는 사심관·기인 제도를 실시했고, 광종은 노비안검법·과거제를 시행했으며, 성종은 최승로의 건의를 받아들이고 12목에 지방관을 파견했습니다.',examKeywords:['태조 사심관','광종 노비안검법','성종 12목','왕별 업적'],rewardKnowledge:3,resumeStoryId:'ch02_complete'})
 );
 
+const ch02QuestionById=id=>QUESTIONS.find(item=>item.questionId===id);
+Object.assign(ch02QuestionById('ch02-test-01'),{historicalEventId:'gwangjong-956-nobi',sourceType:'exam_style',concepts:['노비안검법','광종_왕권강화'],conceptIds:['노비안검법','광종_왕권강화']});
+Object.assign(ch02QuestionById('ch02-test-02'),{historicalEventId:'gwangjong-958-gwageo',sourceType:'exam_style',concepts:['쌍기_과거제','광종_왕권강화'],conceptIds:['쌍기_과거제','광종_왕권강화']});
+Object.assign(ch02QuestionById('ch02-test-03'),{
+  relatedSceneId:'ch02_reign_titles',relatedHistoricalEventId:'gwangjong-reign-titles',historicalEventId:'gwangjong-reign-titles',historicalEvent:'광덕 연호',relatedIllustrationId:'ch02-gaegyeong-market',questionType:'연호 의미 판단형',formatLabel:'기억 확인',difficulty:'하',
+  passage:'시장의 상인이 오래된 장부를 펼치며 “이것은 광덕 때 적은 기록”이라고 말했다.',question:'광덕에 대한 설명으로 옳은 것은?',choices:['광종이 사용한 독자적 연호이다.','태조가 남긴 유훈의 이름이다.','성종이 세운 교육 기관이다.','후백제의 수도 이름이다.'],answer:0,
+  explanation:'광덕은 광종이 사용한 독자적 연호입니다. 뒤이어 준풍도 사용했습니다.',choiceExplanations:['광종과 연결되는 연호입니다.','태조의 유훈은 훈요 10조입니다.','성종의 교육 기관은 국자감입니다.','후백제의 수도는 완산주였습니다.'],examKeywords:['광덕','광종','독자적 연호'],concepts:['광덕_준풍','광종_왕권강화'],conceptIds:['광덕_준풍','광종_왕권강화'],sourceType:'exam_style',resumeStoryId:'ch02_reign_followup'
+});
+Object.assign(ch02QuestionById('ch02-test-04'),{
+  relatedSceneId:'ch02_reign_followup',relatedHistoricalEventId:'gwangjong-reign-titles',historicalEventId:'gwangjong-reign-titles',historicalEvent:'광덕·준풍 연호',relatedIllustrationId:'ch02-gaegyeong-market',questionType:'연호 순서 판단형',formatLabel:'직접 확인',difficulty:'중',
+  passage:'광덕\n↓\n준풍',question:'위 두 연호를 차례로 사용한 왕은?',choices:['태조','광종','성종','공민왕'],answer:1,
+  explanation:'광종은 독자적 연호로 광덕을 사용한 뒤 준풍을 사용했습니다.',choiceExplanations:['태조의 연호가 아닙니다.','광덕과 준풍을 사용한 왕입니다.','성종은 유교 통치 체제를 정비했습니다.','공민왕은 고려 후기의 왕입니다.'],examKeywords:['광덕 → 준풍','광종','독자적 연호'],concepts:['광덕_준풍','광종_왕권강화'],conceptIds:['광덕_준풍','광종_왕권강화'],sourceType:'exam_style',resumeStoryId:'ch02_purge'
+});
+Object.assign(ch02QuestionById('ch02-test-05'),{
+  relatedSceneId:'ch02_night_discussion',relatedHistoricalEventId:'gwangjong-authority',historicalEventId:'gwangjong-authority',historicalEvent:'광종의 왕권 강화',relatedIllustrationId:'ch02-doyun-shop-956',questionType:'공통 방향 판단형',formatLabel:'핵심 방향',difficulty:'중',
+  passage:'길상은 신분을 되찾았고, 현우는 과거를 거쳐 관리가 되었다. 한편 오래된 유력 가문의 힘은 약해졌다.',question:'이 변화들이 공통으로 향한 정치적 방향은?',choices:['왕권 강화','호족 연합 정치 강화','무신 정권 성립','원 간섭 확대'],answer:0,
+  explanation:'노비안검법·과거제·공복·독자적 연호와 호족 견제는 모두 광종의 왕권 강화로 연결됩니다.',choiceExplanations:['새 인재와 제도를 왕 중심으로 묶는 방향입니다.','광종은 기존 호족의 힘을 줄였습니다.','무신 정권은 12세기의 일입니다.','원 간섭기는 훨씬 뒤입니다.'],examKeywords:['광종','호족 견제','왕권 강화'],concepts:['광종_왕권강화','호족_견제'],conceptIds:['광종_왕권강화','호족_견제'],sourceType:'exam_style',resumeStoryId:'ch02_complete'
+});
+
+QUESTIONS.push(
+  question({questionId:'ch02-test-robes',chapterId:'ch03',relatedSceneId:'ch02_hyunwoo_official',relatedHistoricalEventId:'gwangjong-official-robes',historicalEventId:'gwangjong-official-robes',historicalEvent:'공복 제정',relatedIllustrationId:'ch02-reign-titles',questionType:'정책·왕 연결형',formatLabel:'기억 확인',difficulty:'하',passage:'현우는 관리들의 옷 색깔이 품계에 따라 구분되는 공복 제도를 설명하였다.',question:'공복을 제정한 고려의 왕은?',choices:['태조','광종','성종','현종'],answer:1,explanation:'광종은 관리의 공복을 제정해 품계에 따른 질서를 드러냈습니다.',choiceExplanations:['태조는 고려를 세우고 통합 정책을 폈습니다.','공복 제정의 왕입니다.','성종은 12목에 지방관을 파견했습니다.','현종은 거란 침입 시기의 왕입니다.'],examKeywords:['광종','공복 제정','관리 등급'],concepts:['광종_공복','광종_왕권강화'],conceptIds:['광종_공복','광종_왕권강화'],sourceType:'exam_style',examType:'기출 유형 · 자체 제작',isOfficial:false,rewardKnowledge:2,resumeStoryId:'ch02_reign_titles'}),
+  question({questionId:'ch02-test-06',chapterId:'ch03',relatedSceneId:'ch02_memory_retrieval',relatedHistoricalEventId:'gwangjong-authority',historicalEventId:'gwangjong-authority',historicalEvent:'광종 개혁의 흐름',relatedIllustrationId:'ch02-complete',questionType:'정책 흐름 종합형',formatLabel:'챕터 기억 회수',difficulty:'중상',passage:'길상의 신분 회복 → 현우의 과거 급제 → 품계별 공복 → 광덕·준풍',question:'이 장면들을 하나의 흐름으로 가장 잘 정리한 것은?',choices:['태조가 호족과 혼인하여 나라의 기반을 마련하였다.','광종이 새 질서와 인재를 왕 중심으로 묶어 왕권을 강화하였다.','성종이 12목에 지방관을 파견하였다.','현종이 거란의 침입을 물리쳤다.'],answer:1,explanation:'노비안검법·과거제·공복 제정·광덕과 준풍은 광종의 왕권 강화 정책 흐름입니다.',choiceExplanations:['태조의 통합 정책과 구분합니다.','CH.03에서 경험한 네 장면을 모두 설명합니다.','성종의 지방 통치 정책입니다.','현종 시기의 대외 항쟁입니다.'],examKeywords:['노비안검법','과거제','공복','광덕·준풍','왕권 강화'],concepts:['광종_개혁종합','광종_왕권강화'],conceptIds:['광종_개혁종합','광종_왕권강화'],sourceType:'exam_style',examType:'기출 유형 · 자체 제작',isOfficial:false,rewardKnowledge:3,resumeStoryId:'ch02_realization'})
+);
+
+const CH03_REVIEW_IDS=['ch02-review-01','ch02-review-02','ch02-review-03','ch02-review-04','ch02-review-05'];
+const ch03ReviewQuestion=data=>question({chapterId:'ch03',reviewOnly:true,isOfficial:false,sourceType:'exam_style',sourceVerified:false,examType:'실전 유형 연습 · 자체 제작',source:'스토리에서 확인한 고려 광종의 정책과 검증된 역사 사실을 바탕으로 자체 제작',rewardKnowledge:2,resumeStoryId:'ch02_chapter_clear',...data});
+QUESTIONS.push(
+  ch03ReviewQuestion({questionId:'ch02-review-01',relatedSceneId:'ch02_policy_memory',relatedHistoricalEventId:'gwangjong-956-nobi',historicalEventId:'gwangjong-956-nobi',historicalEvent:'노비안검법',relatedIllustrationId:'ch02-freed-citizen',questionType:'정책 목적 판단형',difficulty:'중',passage:'본래 양인이었으나 억울하게 노비가 된 사람의 신분을 조사해 회복시켰다.',question:'이 정책의 효과로 가장 적절한 것은?',choices:['호족의 경제·군사 기반 약화와 왕권 강화','지방관 파견을 통한 직접 통치','무신의 정치 참여 확대','원의 내정 간섭 약화'],answer:0,explanation:'노비안검법은 호족의 노비를 줄이고 양인을 늘려 호족을 견제하고 왕권을 강화했습니다.',choiceExplanations:['정책의 핵심 효과입니다.','12목 지방관 파견과 관련됩니다.','무신 정권기의 변화입니다.','고려 후기의 상황입니다.'],examKeywords:['노비안검법','호족 견제','왕권 강화'],concepts:['노비안검법','광종_왕권강화'],conceptIds:['노비안검법','광종_왕권강화']}),
+  ch03ReviewQuestion({questionId:'ch02-review-02',relatedSceneId:'ch02_memory_retrieval',relatedHistoricalEventId:'gwangjong-authority',historicalEventId:'gwangjong-authority',historicalEvent:'광종의 정책',relatedIllustrationId:'ch02-complete',questionType:'옳지 않은 정책형',difficulty:'중',passage:'광종은 왕 중심의 새 질서를 만들기 위해 여러 정책을 추진하였다.',question:'광종의 정책으로 옳지 않은 것은?',choices:['노비안검법 시행','과거제 시행','공복 제정','광덕·준풍 사용','12목 지방관 파견'],answer:4,explanation:'12목에 지방관을 파견한 왕은 성종입니다.',choiceExplanations:['광종의 정책입니다.','광종이 쌍기의 건의를 받아 시행했습니다.','광종이 품계 질서를 드러내기 위해 제정했습니다.','광종의 독자적 연호입니다.','성종의 정책입니다.'],examKeywords:['광종 정책','12목','성종과 구분'],concepts:['광종_성종','광종_개혁종합'],conceptIds:['광종_성종','광종_개혁종합']}),
+  ch03ReviewQuestion({questionId:'ch02-review-03',relatedSceneId:'ch02_night_discussion',relatedHistoricalEventId:'goryeo-early-kings',historicalEventId:'goryeo-early-kings',historicalEvent:'태조·광종 정책 비교',relatedIllustrationId:'ch02-doyun-shop-956',questionType:'왕별 정책 비교형',difficulty:'중상',passage:'고려 초기에는 나라의 기반을 마련한 정책과 왕권을 강화한 정책이 이어졌다.',question:'왕과 정책의 연결로 옳은 것은?',choices:['태조 — 노비안검법','태조 — 광덕 연호','광종 — 사심관 제도','광종 — 과거제 시행'],answer:3,explanation:'과거제는 광종이 쌍기의 건의를 받아 958년에 시행했습니다. 사심관은 태조의 정책입니다.',choiceExplanations:['노비안검법은 광종의 정책입니다.','광덕은 광종의 연호입니다.','사심관은 태조의 지방 통제 정책입니다.','왕과 정책의 연결이 맞습니다.'],examKeywords:['태조','광종','과거제','사심관'],concepts:['태조_광종','쌍기_과거제'],conceptIds:['태조_광종','쌍기_과거제']}),
+  ch03ReviewQuestion({questionId:'ch02-review-04',relatedSceneId:'ch02_reign_followup',relatedHistoricalEventId:'goryeo-early-kings',historicalEventId:'goryeo-early-kings',historicalEvent:'광종·성종 정책 비교',relatedIllustrationId:'ch02-gaegyeong-market',questionType:'왕별 정책 비교형',difficulty:'중상',passage:'(가) 독자적 연호 광덕·준풍을 사용하였다. (나) 최승로의 건의를 받아 12목에 지방관을 파견하였다.',question:'(가), (나)에 해당하는 왕을 바르게 연결한 것은?',choices:['태조 — 광종','광종 — 성종','성종 — 현종','현종 — 공민왕'],answer:1,explanation:'광덕·준풍은 광종, 최승로·12목은 성종의 단서입니다.',choiceExplanations:['첫 왕은 광종입니다.','광종과 성종의 대표 단서를 구분했습니다.','두 왕 모두 맞지 않습니다.','고려 중·후기의 왕입니다.'],examKeywords:['광덕·준풍','최승로','12목','광종·성종'],concepts:['광종_성종','광덕_준풍'],conceptIds:['광종_성종','광덕_준풍']}),
+  ch03ReviewQuestion({questionId:'ch02-review-05',relatedSceneId:'ch02_memory_retrieval',relatedHistoricalEventId:'gwangjong-authority',historicalEventId:'gwangjong-authority',historicalEvent:'광종 개혁의 흐름',relatedIllustrationId:'ch02-complete',questionType:'사건 흐름 배열형',difficulty:'상',passage:'ㄱ. 쌍기의 건의로 과거제 시행\nㄴ. 노비안검법 시행\nㄷ. 품계에 따른 공복 제정\nㄹ. 준풍 연호 사용',question:'일어난 흐름을 바르게 나열한 것은?',choices:['ㄱ → ㄴ → ㄹ → ㄷ','ㄴ → ㄱ → ㄷ → ㄹ','ㄴ → ㄷ → ㄱ → ㄹ','ㄹ → ㄴ → ㄱ → ㄷ'],answer:1,explanation:'노비안검법(956) → 과거제(958) → 공복 제정(960)과 준풍 연호 사용의 흐름으로 기억합니다.',choiceExplanations:['노비안검법이 과거제보다 먼저입니다.','스토리와 연대의 흐름에 맞습니다.','공복 제정이 과거제보다 뒤입니다.','준풍은 뒤의 연호입니다.'],examKeywords:['956 노비안검법','958 과거제','960 공복','준풍'],concepts:['광종_정책순서','광종_개혁종합'],conceptIds:['광종_정책순서','광종_개혁종합']})
+);
+
 const ch02Scene=data=>scene({chapterId:'ch03',historicalEventId:'gwangjong-reforms',year:949,...data});
 const CH02_STORIES={
   ch02_transition:ch02Scene({sceneId:'ch02_transition',location:'시간의 흐름',title:'삼십일 년',illustrationId:'ch02-market-949',timeOfDay:'dawn',sceneEffect:'blackout',autoAdvanceDelays:[900,1100,1100,1200,1450],continueLabel:'949년의 개경으로',cinematicStatus:'세월이 흐르는 중…',cinematicSub:'계절과 왕이 바뀌어도, 삶은 계속되었다.',enterCharacterStates:{player:{characterAge:23,characterEraVariant:'unchanged'},doyun:{characterAge:57,characterEraVariant:'established-shop-owner',ageVariant:'middle_aged_949',outfit:'shop_owner'}},dialogue:'918년 — 고려 건국\n계절이 수십 번 바뀌었다.\n왕이 바뀌고, 거리의 지붕이 늘어났다.\n그리고 나는 아직 고려에 있다.\n949년 — 개경',nextStoryId:'ch02_shop_exterior_949'}),
@@ -116,15 +150,23 @@ const CH02_STORIES={
     choice('떨어져도 다시 보면 되잖아','ch02_exam_day',{fame:1},{hyunwoo:3},'한 번의 결과가 인생의 전부가 아니라는 말에 현우의 숨이 고르게 돌아왔다.',{trustChanges:{hyunwoo:3},sharedEvents:['supported_hyunwoo_exam'],importantChoice:'perspective',playerResponse:'떨어져도 다시 보면 되잖아.',playerExpression:'neutral',responseText:'위로인지 자극인지 모르겠지만…… 마음은 편해졌습니다.',responseCharacterId:'hyunwoo',responseExpression:'smile',resultSceneId:'ch02-exam-perspective',resultIllustrationId:'ch02-exam-yard',hint:'명성 +1 · 현우 +3'}),
     choice('시험 전에 문제 하나 풀어볼래?','ch02_exam_day',{knowledge:1},{hyunwoo:4},'짧은 문답을 주고받으며 현우는 마지막으로 생각을 정리했다.',{trustChanges:{hyunwoo:4},sharedEvents:['supported_hyunwoo_exam'],importantChoice:'practice',playerResponse:'시험 전에 문제 하나 풀어볼래?',playerExpression:'thinking',responseText:'좋습니다. 마지막으로 머리를 깨워 보죠.',responseCharacterId:'hyunwoo',responseExpression:'smile',resultSceneId:'ch02-exam-practice',resultIllustrationId:'ch02-exam-yard',hint:'지식 +1 · 현우 +4'})
   ]}),
-  ch02_exam_day:ch02Scene({sceneId:'ch02_exam_day',year:958,location:'개경 · 과거 시험장',title:'현우의 시험',illustrationId:'ch02-exam-yard',timeOfDay:'morning',dialogue:'수많은 응시자가 시험장으로 들어간다. 현우는 자신의 꿈을 걸고 문을 넘는다.',nextStoryId:'ch02_reign_titles'}),
-  ch02_reign_titles:ch02Scene({sceneId:'ch02_reign_titles',year:960,location:'개경 · 관청 거리',title:'왕의 이름',illustrationId:'ch02-reign-titles',timeOfDay:'afternoon',dialogue:'관청 앞 깃발과 새 문서에 준풍이라는 연호가 쓰이기 시작했다.',quizId:'ch02-test-03'}),
-  ch02_reign_followup:ch02Scene({sceneId:'ch02_reign_followup',year:960,location:'역사 기억',title:'광덕에서 준풍으로',illustrationId:'ch02-reign-titles',timeOfDay:'memory',dialogue:'광종은 독자적인 연호인 광덕과 준풍을 사용했다.\n왕의 권위를 높이고 왕권 강화를 드러내는 대표적인 단서다.',quizId:'ch02-test-04'}),
-  ch02_purge:ch02Scene({sceneId:'ch02_purge',year:960,location:'개경 · 어두운 골목',title:'왕이 두려워지기 시작했다',illustrationId:'ch02-purge-night',timeOfDay:'night',ambientSound:'heavy-knocking',sceneEffect:'shake',dialogue:'깊은 밤, 군사들이 귀족의 집 문을 두드린다.',quizId:'ch02-test-05'}),
+  ch02_exam_day:ch02Scene({sceneId:'ch02_exam_day',year:958,location:'개경 · 과거 시험장',title:'현우의 시험',illustrationId:'ch02-exam-yard',timeOfDay:'morning',dialogue:'수많은 응시자가 시험장으로 들어간다. 현우는 자신의 꿈을 걸고 문을 넘는다.',learningConceptIds:['쌍기_과거제','광종_왕권강화'],nextStoryId:'ch02_official_robes_walk'}),
+  ch02_official_robes_walk:ch02Scene({sceneId:'ch02_official_robes_walk',year:960,location:'개경 · 관청 거리',title:'서로 다른 빛깔의 옷',illustrationId:'ch02-reign-titles',timeOfDay:'afternoon',enterCharacterStates:{doyun:{characterAge:68,characterEraVariant:'established-merchant',ageVariant:'elder_956',outfit:'established_merchant'}},dialogue:'과거 시험 뒤 다시 찾은 관청 거리. 관리들이 서로 다른 색의 옷을 입고 지나갔다.',learningConceptIds:['광종_공복'],nextStoryId:'ch02_hyunwoo_official'}),
+  ch02_hyunwoo_official:ch02Scene({sceneId:'ch02_hyunwoo_official',year:960,location:'개경 · 관청 거리',title:'관리의 옷을 입은 현우',illustrationId:'ch02-gaegyeong-market',timeOfDay:'afternoon',enterCharacterStates:{hyunwoo:{characterAge:25,characterEraVariant:'young-official',ageVariant:'young',outfit:'young_official'}},historyDiscovery:{people:['현우'],cards:['gwangjong-official-robes'],historicalEvents:['gwangjong-official-robes']},historyCard:{title:'광종 — 공복 제정',body:'광종은 관리의 품계에 따라 공복의 색을 구분해 관료 질서를 드러냈다.'},dialogue:'관리의 옷을 입은 현우가 뒤에서 주인공을 불렀다.',learningConceptIds:['광종_공복','광종_왕권강화'],quizId:'ch02-test-robes'}),
+  ch02_reign_titles:ch02Scene({sceneId:'ch02_reign_titles',year:960,location:'개경 · 상인 거리',title:'오래된 장부의 두 글자',illustrationId:'ch02-gaegyeong-market',timeOfDay:'afternoon',historyDiscovery:{cards:['gwangjong-gwangdeok'],historicalEvents:['gwangjong-reign-titles']},historyCard:{title:'광종 — 광덕',body:'광덕은 광종이 사용한 독자적 연호이다. 이후 준풍을 사용했다.'},dialogue:'상인들의 목소리 사이에서 오래된 장부에 적힌 광덕이라는 두 글자가 들렸다.',learningConceptIds:['광덕_준풍','광종_왕권강화'],quizId:'ch02-test-03'}),
+  ch02_reign_followup:ch02Scene({sceneId:'ch02_reign_followup',year:960,location:'개경 · 같은 상인 거리',title:'광덕에서 준풍으로',illustrationId:'ch02-gaegyeong-market',timeOfDay:'afternoon',historyDiscovery:{cards:['gwangjong-reign-titles'],historicalEvents:['gwangjong-reign-titles']},historyCard:{title:'광덕 → 준풍',body:'광종은 광덕에 이어 준풍이라는 독자적 연호를 사용해 왕의 권위를 드러냈다.'},dialogue:'같은 거리의 새 문서에는 준풍이라는 연호가 쓰였다.',learningConceptIds:['광덕_준풍','광종_왕권강화'],quizId:'ch02-test-04'}),
+  ch02_purge:ch02Scene({sceneId:'ch02_purge',year:960,location:'개경 · 도윤의 가게',title:'사라진 큰손',illustrationId:'ch02-doyun-shop-956',timeOfDay:'evening',fictionNotice:'길상·도윤·현우와 거래처 인물은 창작입니다. 광종이 호족과 공신 세력을 억누른 역사적 흐름을 학습 장면으로 구성했습니다.',dialogue:'길상이 찾아온 저녁, 도윤은 오래 거래하던 큰손 하나가 붙잡혀 갔다는 소식을 전했다.',learningConceptIds:['호족_견제','광종_왕권강화'],nextStoryId:'ch02_night_discussion'}),
+  ch02_night_discussion:ch02Scene({sceneId:'ch02_night_discussion',year:960,location:'개경 · 도윤의 가게',title:'세 사람에게 일어난 변화',illustrationId:'ch02-doyun-shop-956',timeOfDay:'night',historyDiscovery:{cards:['gwangjong-authority'],historicalEvents:['gwangjong-authority']},historyCard:{title:'광종 — 왕권 강화',body:'노비안검법·과거제·공복·독자적 연호와 호족 견제는 왕권 강화라는 공통 방향으로 이어졌다.'},dialogue:'문을 닫은 뒤 길상과 현우, 도윤은 자신들의 삶이 어떻게 바뀌었는지 차례로 돌아보았다.',learningConceptIds:['광종_왕권강화','호족_견제'],quizId:'ch02-test-05'}),
   ch02_complete:ch02Scene({sceneId:'ch02_complete',year:960,location:'개경 · 도윤의 가게',title:'사십 년이 넘는 세월',illustrationId:'ch02-doyun-shop-956',timeOfDay:'sunset',dialogue:'왕의 개혁을 지나온 어느 저녁, 도윤이 처음 만난 날을 헤아렸다.',nextStoryId:'ch02_night_reflection'}),
   ch02_night_reflection:ch02Scene({sceneId:'ch02_night_reflection',year:960,location:'개경 밖 · 물가',title:'물에 비친 얼굴',illustrationId:'ch02-water-reflection-958',timeOfDay:'night',ambientSound:'water',dialogue:'도윤과 헤어진 뒤, 주인공은 달빛이 고인 물가에 홀로 앉았다.',nextStoryId:'ch02_mystery'}),
-  ch02_mystery:ch02Scene({sceneId:'ch02_mystery',year:960,location:'알 수 없는 기억',title:'???',illustrationId:'ch02-water-reflection-958',timeOfDay:'night',sceneEffect:'blackout',continueLabel:'CHAPTER 결과 보기',cinematicStatus:'기억을 더듬는 중…',cinematicSub:'아직은 이름 붙일 수 없는 의문만 남았다.',mysteryKey:'unknown-aging',sharedEvent:'noticed_unchanged_appearance',completeChapter:true,dialogue:'사십 년이 넘었는데도, 내 얼굴은 그날과 같았다.\n이유는 떠오르지 않았다.\n다만 질문 하나가 남았다.\n나는 왜 변하지 않는 걸까.'})
+  ch02_mystery:ch02Scene({sceneId:'ch02_mystery',year:960,location:'알 수 없는 기억',title:'???',illustrationId:'ch02-water-reflection-958',timeOfDay:'night',sceneEffect:'blackout',continueLabel:'지나온 장면을 떠올린다',cinematicStatus:'기억을 더듬는 중…',cinematicSub:'답을 찾을 수 없는 질문 뒤로, 살아낸 역사가 떠올랐다.',mysteryKey:'unknown-aging',sharedEvent:'noticed_unchanged_appearance',dialogue:'사십 년이 넘었는데도, 내 얼굴은 그날과 같았다.\n이유는 떠오르지 않았다.\n다만 질문 하나가 남았다.\n나는 왜 변하지 않는 걸까.',nextStoryId:'ch02_memory_retrieval'}),
+  ch02_memory_retrieval:ch02Scene({sceneId:'ch02_memory_retrieval',year:960,location:'살아온 기억',title:'각자의 삶을 바꾼 장면',illustrationId:'ch02-complete',timeOfDay:'memory',sceneEffect:'memory-overlay',dialogue:'길상과 노비안검법, 현우와 과거제·쌍기, 관청 거리의 공복, 시장의 광덕과 준풍이 차례로 떠올랐다.',learningConceptIds:['노비안검법','쌍기_과거제','광종_공복','광덕_준풍','광종_왕권강화'],quizId:'ch02-test-06'}),
+  ch02_realization:ch02Scene({sceneId:'ch02_realization',year:960,location:'살아온 기억',title:'한 방향으로 이어진 정책',illustrationId:'ch02-complete',timeOfDay:'memory',dialogue:'법과 시험, 관리의 옷과 왕의 연호. 서로 다른 장면이 광종의 왕권 강화라는 한 방향으로 이어졌다.',learningConceptIds:['광종_개혁종합','광종_왕권강화'],nextStoryId:'ch02_chapter_clear'}),
+  ch02_chapter_clear:ch02Scene({sceneId:'ch02_chapter_clear',year:960,location:'역사 기록',title:'왕의 나라',illustrationId:'ch02-complete',timeOfDay:'night',sceneEffect:'blackout',continueLabel:'CHAPTER CLEAR',cinematicStatus:'기억을 기록하는 중…',cinematicSub:'살아본 장면이 시험의 답으로 이어집니다.',completeChapter:true,dialogue:'CH.03 왕의 나라\n노비안검법 · 과거제 · 공복 · 광덕과 준풍\n광종 → 왕권 강화'})
 };
 Object.assign(STORIES,CH02_STORIES);
+Object.assign(STORIES.ch02_policy_memory,{learningConceptIds:['노비안검법','광종_왕권강화'],historyDiscovery:{cards:['nobi-inspection'],historicalEvents:['gwangjong-956-nobi']},historyCard:{title:'광종 — 노비안검법',body:'억울하게 노비가 된 사람을 조사해 양인으로 회복시키고, 호족의 기반을 줄여 왕권 강화에 도움을 준 정책.'}});
+Object.assign(STORIES.ch02_ssanggi,{learningConceptIds:['쌍기_과거제','광종_왕권강화'],historyDiscovery:{people:['쌍기'],cards:['gwageo-exam'],historicalEvents:['gwangjong-958-gwageo']},historyCard:{title:'광종 — 과거제',body:'광종은 쌍기의 건의를 받아 958년에 과거제를 시행해 새로운 관료를 선발했다.'}});
 
 const CH02_DIALOGUES={
   ch02_transition:[
@@ -275,25 +317,58 @@ const CH02_DIALOGUES={
     dialogueLine('player','thinking','호족 집안 출신이 아니어도 시험으로 관리가 될 수 있다. 왕은 자신에게 충성할 새로운 관료를 만들 수도 있겠구나.','thought'),
     dialogueLine('narrator','neutral','역사 기억 획득 · 958년 과거제 · 쌍기의 건의','narration')
   ],
+  ch02_official_robes_walk:[
+    dialogueLine('narrator','neutral','과거 시험이 끝난 뒤, 나는 혼자 개경 관청 거리를 걸었다.','narration'),
+    dialogueLine('narrator','neutral','앞을 지나는 관리들의 옷은 같은 모양이 아니었다.','narration'),
+    dialogueLine('player','thinking','색이 다르네. 장식도 조금씩 다르고.','thought'),
+    dialogueLine('narrator','neutral','푸른빛과 붉은빛이 섞인 관복 행렬이 계단 아래를 지나갔다.','narration')
+  ],
+  ch02_hyunwoo_official:[
+    dialogueLine('hyunwoo','smile','그렇게 빤히 보면 관리들이 부담스러워합니다.'),
+    dialogueLine('player','surprised','현우? 그 옷은…….'),
+    dialogueLine('hyunwoo','neutral','운이 좋았습니다. 과거를 거쳐 관직을 받았습니다.'),
+    dialogueLine('player','smile','정말 관리가 됐구나.'),
+    dialogueLine('hyunwoo','serious','그리고 저 옷의 색도 아무렇게나 정한 것이 아닙니다. 광종께서 품계에 따라 공복을 구분하셨습니다.'),
+    dialogueLine('player','thinking','시험으로 사람을 뽑고, 옷으로 관리의 등급을 드러냈다. 새 관료 질서를 눈에 보이게 만든 거구나.','thought'),
+    dialogueLine('narrator','neutral','[HISTORY DISCOVERED] 광종 — 공복 제정','narration')
+  ],
   ch02_reign_titles:[
-    dialogueLine('citizen','neutral','이번에는 준풍이라는 연호를 쓴다더군.'),
-    dialogueLine('player','surprised','준풍?'),
-    dialogueLine('doyun','neutral','그전에는 광덕이었소.'),
-    dialogueLine('player','thinking','광종 → 광덕 → 준풍. 왕권 강화를 보여 주는 단서야.','thought'),
-    dialogueLine('narrator','neutral','역사 기억 획득 · 광덕 · 준풍','narration')
+    dialogueLine('narrator','neutral','“이 장부는 광덕 때부터 쓰던 것이오.”','narration'),
+    dialogueLine('narrator','neutral','상인이 낡은 장부를 넘기며 맞은편 손님에게 말했다.','narration'),
+    dialogueLine('player','thinking','광덕? 사람 이름은 아닌 것 같은데.','thought'),
+    dialogueLine('narrator','neutral','“임금께서 정해 쓰신 연호 말이오. 광종 폐하의 광덕.”','narration'),
+    dialogueLine('player','thinking','왕이 자기 시대의 이름을 직접 세운 거구나.','thought'),
+    dialogueLine('narrator','neutral','[HISTORY DISCOVERED] 광종 — 광덕','narration')
   ],
   ch02_reign_followup:[
-    dialogueLine('narrator','neutral','광종은 독자적인 연호 광덕과 준풍을 사용했다.','narration'),
-    dialogueLine('player','serious','왕의 권위를 스스로 드러낸 것이구나.','thought')
+    dialogueLine('narrator','neutral','얼마 뒤, 같은 거리의 새 문서에는 다른 두 글자가 적혔다.','narration'),
+    dialogueLine('narrator','neutral','준풍.','narration'),
+    dialogueLine('player','thinking','광덕에서 준풍으로 바뀐 거구나.','thought'),
+    dialogueLine('narrator','neutral','광덕\n↓\n준풍','narration'),
+    dialogueLine('player','thinking','둘 다 광종이 사용한 독자적 연호. 왕의 권위를 스스로 드러낸 단서야.','thought'),
+    dialogueLine('narrator','neutral','[HISTORY DISCOVERED] 광덕 → 준풍','narration')
   ],
   ch02_purge:[
-    dialogueLine('soldier','serious','문을 열어라!'),
-    dialogueLine('doyun','worried','……보지 마시오.'),
-    dialogueLine('player','surprised','무슨 일이야?'),
-    dialogueLine('doyun','serious','왕에게 반역을 꾀했다는 사람들이 잡혀가고 있소.'),
-    dialogueLine('player','worried','저 사람들이 정말 반역을 했어?'),
-    dialogueLine('doyun','worried','……그 속을 누가 알겠소.'),
-    dialogueLine('player','thinking','왕은 호족을 견제하고 권력을 강화했다. 하지만 그 과정이 항상 평온했던 것은 아니다.','thought')
+    dialogueLine('narrator','neutral','가게 문을 닫을 무렵, 길상이 조심스럽게 안으로 들어왔다.','narration'),
+    dialogueLine('freed_man','worried','도윤 어른. 요즘 큰 집안 사람들이 붙잡혀 간다는 말이 사실입니까?'),
+    dialogueLine('doyun','serious','오래 거래하던 큰손 하나도 문을 닫았소. 왕의 군사들이 데려갔다더군.'),
+    dialogueLine('player','worried','정말 반역을 했대?'),
+    dialogueLine('doyun','worried','그 속을 누가 알겠소. 다만 선왕 때부터 힘을 쥔 집안들이 예전 같지 않은 것은 분명하오.'),
+    dialogueLine('hyunwoo','serious','길상, 당분간은 예전 주인집 근처에 가지 마십시오.'),
+    dialogueLine('freed_man','worried','제가 자유를 되찾은 일 때문에 그 집안이 더 미움을 받는 것은 아닐까요?'),
+    dialogueLine('hyunwoo','neutral','당신이 잘못한 것이 아닙니다. 억울하게 빼앗긴 신분을 되찾은 것이니까요.'),
+    dialogueLine('player','thinking','길상이 풀려난 일과 큰 집안이 약해지는 일이 같은 방향으로 이어지고 있었다.','thought')
+  ],
+  ch02_night_discussion:[
+    dialogueLine('doyun','neutral','가게 문은 잠갔소. 이제 천천히 이야기합시다.'),
+    dialogueLine('freed_man','smile','저는 노비안검법 덕분에 다시 제 이름으로 살게 되었습니다.'),
+    dialogueLine('hyunwoo','neutral','저는 과거 덕분에 집안이 아니라 시험을 거쳐 이 옷을 입었습니다.'),
+    dialogueLine('doyun','serious','그 사이 오래된 큰 집안들은 사람과 재산을 잃고 힘이 줄었소.'),
+    dialogueLine('player','thinking','길상의 자유, 현우의 관직, 약해진 호족. 따로 보였던 변화가 한곳을 향한다.','thought'),
+    dialogueLine('hyunwoo','serious','왕께서는 오래된 세력에 기대지 않는 나라를 만들고 계십니다.'),
+    dialogueLine('doyun','worried','힘이 한쪽으로 모이면 질서가 서기도 하지만, 두려워지는 사람도 생기지.'),
+    dialogueLine('freed_man','worried','그래도 저는 되찾은 이름으로 조심히 살아가겠습니다.'),
+    dialogueLine('narrator','neutral','[HISTORY DISCOVERED] 광종 — 왕권 강화','narration')
   ],
   ch02_complete:[
     dialogueLine('narrator','neutral','광종의 개혁이 나라를 흔든 어느 저녁, 장터가 드물게 조용했다.','narration'),
@@ -316,6 +391,24 @@ const CH02_DIALOGUES={
     dialogueLine('player','thinking','기억 속 어디에도 답은 없었다.','thought'),
     dialogueLine('player','worried','나는 왜 변하지 않는 걸까.','thought'),
     dialogueLine('narrator','neutral','아직은 이름 붙일 수 없는 의문만 남았다.','narration')
+  ],
+  ch02_memory_retrieval:[
+    dialogueLine('narrator','neutral','길상이 조사처에서 자기 이름을 되찾던 순간.','narration'),
+    dialogueLine('narrator','neutral','현우가 쌍기의 이름을 되뇌며 과거 시험장으로 들어가던 순간.','narration'),
+    dialogueLine('narrator','neutral','품계에 따라 달라진 관리의 공복.','narration'),
+    dialogueLine('narrator','neutral','상인 거리에서 들은 광덕과 준풍.','narration'),
+    dialogueLine('player','thinking','책에서 따로 외웠던 말들이 이제 사람의 얼굴과 장소로 돌아온다.','thought')
+  ],
+  ch02_realization:[
+    dialogueLine('player','thinking','노비를 풀어 호족의 기반을 줄였다.','thought'),
+    dialogueLine('player','thinking','과거로 새 관료를 뽑고, 공복으로 질서를 세웠다.','thought'),
+    dialogueLine('player','thinking','광덕과 준풍으로 왕의 권위를 드러냈다.','thought'),
+    dialogueLine('player','serious','광종 → 왕권 강화.','thought')
+  ],
+  ch02_chapter_clear:[
+    dialogueLine('narrator','neutral','CH.03 왕의 나라','narration'),
+    dialogueLine('narrator','neutral','노비안검법 · 과거제 · 공복 · 광덕과 준풍','narration'),
+    dialogueLine('narrator','neutral','광종 → 왕권 강화','narration')
   ]
 };
 Object.assign(DIALOGUES,CH02_DIALOGUES);

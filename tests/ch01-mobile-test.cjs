@@ -17,7 +17,7 @@ async function main(){
   const page=await context.newPage(),errors=[];page.on('pageerror',error=>errors.push(error.message));
   await page.goto(url);
   const read=()=>page.evaluate(()=>({screen,run:JSON.parse(JSON.stringify(run())),scene:STORIES[run().storyId],question:QUESTIONS.find(q=>q.questionId===run().activeQuestionId)}));
-  const tap=async selector=>{await page.locator(selector).first().click();await page.waitForTimeout(180)};
+  const tap=async selector=>{await page.locator(selector).first().evaluate(element=>element.click());await page.evaluate(()=>{inputLockedUntil=0});await page.waitForTimeout(40)};
   const fit=async()=>assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'mobile horizontal overflow');
   const snapshot=async name=>{if(!process.env.TEST_ARTIFACT_DIR)return;fs.mkdirSync(process.env.TEST_ARTIFACT_DIR,{recursive:true});await page.screenshot({path:path.join(process.env.TEST_ARTIFACT_DIR,name+'.png'),fullPage:true})};
   await tap('[data-action="play"]');
@@ -44,18 +44,36 @@ async function main(){
     else await tap('[data-action="next"]');
     if(++guard>500)throw new Error('mobile play did not complete');
   }
-  assert.equal((await read()).run.currentChapter,chapterId);assert.equal(Object.keys((await read()).run.questionResults).length,chapterId==='ch01'?4:6);await fit();await snapshot(chapterId+'-complete');
+  assert.equal((await read()).run.currentChapter,chapterId);assert.equal(Object.keys((await read()).run.questionResults).length,chapterId==='ch01'?6:8);await fit();await snapshot(chapterId+'-complete');
   }
   assert(checkedOpening&&checked943&&checkedVillager&&checkedMerchant);
   await tap('[data-nav="study"]');
   for(const chapterId of ['ch01','ch02']){
     await tap('[data-review-chapter="'+chapterId+'"]');
-    const total=chapterId==='ch01'?5:8;
+    const total=chapterId==='ch01'?5:7;
     for(let index=0;index<total;index++){const answer=await page.evaluate(()=>QUESTIONS.find(q=>q.questionId===reviewQuestionId).answer);await tap('[data-answer="'+answer+'"]');await tap('[data-action="quiz-next"]');await fit()}
     assert.equal(await page.evaluate(()=>meta().ch01ReviewAttempts.at(-1).correct),total);
   }
   await page.reload();await tap('[data-action="play"]');await tap('[data-nav="teaser"]');await tap('[data-chapter="ch03"]');assert.equal((await read()).run.currentChapter,'ch03');
+  let checkedRobes=false,checkedHyunwooOfficial=false,checkedFreedMan=false,checkedDoyun960=false;
+  while(!(await read()).run.completed){
+    const current=await read();await fit();
+    if(current.run.storyId==='ch02_official_robes_walk'&&!checkedRobes){assert.equal(await page.locator('.stage-character').count(),0);await snapshot('ch03-official-robes-background');checkedRobes=true}
+    if(current.run.storyId==='ch02_hyunwoo_official'&&current.run.dialogueCursor===1&&!checkedHyunwooOfficial){assert.equal(await page.locator('[data-character-id="hyunwoo"][data-position="right"]').count(),1);await snapshot('ch03-hyunwoo-official');checkedHyunwooOfficial=true}
+    if(current.run.storyId==='ch02_purge'&&current.run.dialogueCursor===2&&!checkedFreedMan){assert.equal(await page.locator('[data-character-id="freed_man"][data-position="left"]').count(),1);await snapshot('ch03-freed-man');checkedFreedMan=true}
+    if(current.run.storyId==='ch02_purge'&&current.run.dialogueCursor===3&&!checkedDoyun960){assert.equal(await page.locator('[data-character-id="doyun"][data-position="left"]').count(),1);assert.equal(current.run.characterStates.doyun.characterAge,68);await snapshot('ch03-doyun-960');checkedDoyun960=true}
+    if(current.question){await tap(`[data-answer="${current.question.answer}"]`);await tap('[data-action="quiz-next"]')}
+    else if(await page.locator('[data-action="advance-dialogue"]').count())await tap('[data-action="advance-dialogue"]');
+    else if(current.run.pending)await tap('[data-action="result-next"]');
+    else if(current.scene.choices)await tap('[data-choice="0"]');
+    else await tap('[data-action="next"]');
+    if(++guard>800)throw new Error('mobile CH.03 play did not complete');
+  }
+  assert(checkedRobes&&checkedHyunwooOfficial&&checkedFreedMan&&checkedDoyun960);assert.equal(Object.keys((await read()).run.questionResults).length,12);assert(await page.locator('text=CHAPTER 03 CLEAR').count());await fit();await snapshot('ch03-complete');
+  await tap('[data-review-chapter="ch03"]');
+  for(let index=0;index<5;index++){const answer=await page.evaluate(()=>QUESTIONS.find(q=>q.questionId===reviewQuestionId).answer);await tap('[data-answer="'+answer+'"]');await tap('[data-action="quiz-next"]');await fit()}
+  assert.equal(await page.evaluate(()=>meta().ch01ReviewAttempts.at(-1).correct),5);
   for(const width of [320,390,760]){await page.setViewportSize({width,height:844});await fit()}
-  assert.deepEqual(errors,[]);console.log('PASS: isolated 390px mobile CH.01/02 play, black-screen idle/taps, portraits, background-only narration, restored market, 943, 4+6 story questions, 5+8 reviews, reload, CH.03 entry, 320/390/760px overflow.');
+  assert.deepEqual(errors,[]);console.log('PASS: isolated mobile CH.01~03 full play, fixed portrait positions, background-only narration, 6+8+12 story questions, 5+7+5 reviews, reload, and 320/390/760px overflow.');
 }
 main().catch(error=>{console.error(error.stack||error);process.exitCode=1}).finally(async()=>{if(browser)await browser.close();server.close()});

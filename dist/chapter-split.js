@@ -59,9 +59,32 @@ for(const q of QUESTIONS.filter(q=>q.chapterId==='ch01')){
   if(q.reviewOnly)q.resumeStoryId=CHAPTERS[q.chapterId].completeStoryId;
 }
 for(const card of CH01_HISTORY_CARDS)card.chapterId=typeof card.year==='number'&&card.year<=930?'ch01':'ch02';
-const SPLIT_STORY_QUESTION_IDS={ch01:CH01_STORY_QUESTION_IDS.filter(id=>QUESTIONS.find(q=>q.questionId===id).chapterId==='ch01'),ch02:CH01_STORY_QUESTION_IDS.filter(id=>QUESTIONS.find(q=>q.questionId===id).chapterId==='ch02')};
-const SPLIT_REVIEW_IDS={ch01:CH01_REVIEW_IDS.filter(id=>QUESTIONS.find(q=>q.questionId===id).chapterId==='ch01'),ch02:CH01_REVIEW_IDS.filter(id=>QUESTIONS.find(q=>q.questionId===id).chapterId==='ch02')};
-for(const id of ['ch01','ch02'])Object.assign(CHAPTERS[id],{questionCount:SPLIT_STORY_QUESTION_IDS[id].length,reviewQuestionCount:SPLIT_REVIEW_IDS[id].length});
+const CH03_HISTORY_CARDS=[
+  {id:'nobi-inspection',chapterId:'ch03',year:956,title:'노비안검법',body:'광종은 억울하게 노비가 된 사람의 신분을 조사해 양인으로 회복시켰다. 호족의 기반을 줄이고 왕권을 강화하는 효과가 있었다.',keywords:['956','양인 회복','호족 견제'],source:CH01_SOURCES.policy},
+  {id:'gwageo-exam',chapterId:'ch03',year:958,title:'과거제와 쌍기',body:'광종은 후주 출신 쌍기의 건의를 받아 과거제를 시행해 새로운 관료를 선발했다.',keywords:['958','쌍기','과거제'],source:CH01_SOURCES.policy},
+  {id:'gwangjong-official-robes',chapterId:'ch03',year:960,title:'공복 제정',body:'광종은 관리의 품계에 따라 공복의 색을 구분해 관료 질서를 눈에 보이게 했다.',keywords:['광종','공복','품계'],source:CH01_SOURCES.policy},
+  {id:'gwangjong-gwangdeok',chapterId:'ch03',year:'광종 재위',title:'광덕',body:'광덕은 광종이 사용한 독자적 연호이다.',keywords:['광덕','광종','독자적 연호'],source:CH01_SOURCES.policy},
+  {id:'gwangjong-reign-titles',chapterId:'ch03',year:960,title:'광덕에서 준풍으로',body:'광종은 광덕에 이어 준풍이라는 연호를 사용해 왕의 권위를 드러냈다.',keywords:['광덕 → 준풍','광종','왕의 권위'],source:CH01_SOURCES.policy},
+  {id:'gwangjong-authority',chapterId:'ch03',year:'광종 재위',title:'광종의 왕권 강화',body:'노비안검법·과거제·공복·독자적 연호와 호족 견제는 왕권 강화라는 공통 방향으로 이어졌다.',keywords:['호족 견제','새 관료','왕권 강화'],source:CH01_SOURCES.policy}
+];
+CH01_HISTORY_CARDS.push(...CH03_HISTORY_CARDS);
+const SCENE_LEARNING_CONCEPTS={
+  rumor:['궁예_왕건'],foundation:['918_936'],ch01_trade_start:['궁예_왕건','918_936'],ch01_gongsan:['공산전투_고창전투'],ch01_gochang:['공산전투_고창전투'],ch01_belonging:['후삼국_사건순서'],
+  ch01_gyeonhwon:['견훤_신검'],ch01_silla:['견훤귀순_경순왕귀순'],ch01_victory:['일리천_후삼국통일'],ch01_unity:['일리천_후삼국통일'],ch01_sasimgwan:['사심관_기인'],ch01_giin:['사심관_기인'],ch01_north:['서경_북진'],ch01_welfare:['취민유도'],ch01_hunyo:['훈요10조_시무28조']
+};
+for(const [sceneId,learningConceptIds] of Object.entries(SCENE_LEARNING_CONCEPTS))STORIES[sceneId].learningConceptIds=learningConceptIds;
+const SPLIT_STORY_QUESTION_IDS={
+  ch01:CH01_STORY_QUESTION_IDS.filter(id=>QUESTIONS.find(q=>q.questionId===id).chapterId==='ch01'),
+  ch02:CH01_STORY_QUESTION_IDS.filter(id=>QUESTIONS.find(q=>q.questionId===id).chapterId==='ch02'),
+  ch03:['ch02-test-01','ch02-official-69-advanced-10','ch02-test-02','ch02-official-74-advanced-11','ch02-test-robes','ch02-test-03','ch02-official-76-advanced-50','ch02-test-04','ch02-official-77-advanced-14','ch02-test-05','ch02-official-78-advanced-11','ch02-test-06']
+};
+const SPLIT_REVIEW_IDS={
+  ch01:CH01_REVIEW_IDS.filter(id=>QUESTIONS.find(q=>q.questionId===id).chapterId==='ch01'),
+  ch02:CH01_REVIEW_IDS.filter(id=>QUESTIONS.find(q=>q.questionId===id).chapterId==='ch02'&&id!=='ch01-test-03'),
+  ch03:[...CH03_REVIEW_IDS]
+};
+for(const id of ['ch01','ch02','ch03'])Object.assign(CHAPTERS[id],{questionCount:SPLIT_STORY_QUESTION_IDS[id].length,reviewQuestionCount:SPLIT_REVIEW_IDS[id].length});
+Object.assign(CHAPTERS.ch03,{years:'949 — 960',completeStoryId:'ch02_chapter_clear'});
 const prepareBeforeChapterSplit=prepareChapterCarry;
 prepareChapterCarry=function(run,id){if(id==='ch02'){ensureGoryeoOutfit(run);run.characterStates={...run.characterStates,doyun:{...run.characterStates?.doyun,...ch01Age(935)},player:{...run.characterStates?.player,characterAge:23,characterEraVariant:'unchanged'}};return run}return prepareBeforeChapterSplit(run,id)};
 const finishBeforeChapterSplit=finishChapter;
@@ -110,8 +133,25 @@ migrateSave=function(raw){
   delete m.ch01ReviewSession;delete m.ch01ReviewAttempts;
   input.chapterSplitVersion=CHAPTER_SPLIT_VERSION;
   if(input.version===9)input.version=10;
-  const s=migrateBeforeChapterSplit(input);s.version=10;s.chapterSplitVersion=CHAPTER_SPLIT_VERSION;
+  const s=migrateBeforeChapterSplit(input);s.version=SAVE_VERSION;s.chapterSplitVersion=CHAPTER_SPLIT_VERSION;
   for(const key of ['currentMainProgress','currentProgress'])if(input[key])s[key]=cloneRun(input[key]);
   if(!raw.run&&s.run.completed&&s.run.currentChapter==='ch01')s.run.storyId='ch01_clear_930';
   return s;
+};
+
+const CH03_STORY_VERSION=2;
+const migrateBeforeCh03Completion=migrateSave;
+migrateSave=function(raw){
+  const migrated=migrateBeforeCh03Completion(raw),previousVersion=Number(raw?.version||0);
+  const legacyLateScenes=new Set(['ch02_reign_titles','ch02_reign_followup','ch02_purge','ch02_complete','ch02_night_reflection','ch02_mystery']);
+  const legacyLateQuestions=new Set(['ch02-test-03','ch02-test-04','ch02-test-05','ch02-official-76-advanced-50','ch02-official-77-advanced-14','ch02-official-78-advanced-11']);
+  const redirect=(run,source)=>{
+    if(!run||run.currentChapter!=='ch03'||run.completed||previousVersion>=11)return;
+    if(!legacyLateScenes.has(source?.storyId)&&!legacyLateQuestions.has(source?.activeQuestionId))return;
+    run.storyId='ch02_official_robes_walk';run.pending=null;run.activeQuestionId=null;run.questionAnswer=null;run.dialogueSceneId=null;run.dialogueCursor=1;
+    run.entryEffectsApplied=(run.entryEffectsApplied||[]).filter(id=>id!=='ch02_official_robes_walk');
+  };
+  redirect(migrated.run,raw?.run);redirect(migrated.mainRun,raw?.mainRun);
+  migrated.version=SAVE_VERSION;migrated.chapterSplitVersion=CHAPTER_SPLIT_VERSION;migrated.ch03StoryVersion=CH03_STORY_VERSION;
+  return migrated;
 };

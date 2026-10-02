@@ -48,7 +48,7 @@ const DOYUN_OLD_PORTRAITS={neutral:'doyun_old_neutral',smile:'doyun_old_smile',l
 const HYUNWOO_YOUNG_PORTRAITS={neutral:'hyunwoo_neutral',smile:'hyunwoo_smile',worried:'hyunwoo_worried',serious:'hyunwoo_neutral',thinking:'hyunwoo_neutral'};
 const HYUNWOO_MIDDLE_PORTRAITS={neutral:'hyunwoo_middle_neutral',smile:'hyunwoo_middle_smile',serious:'hyunwoo_middle_serious',thinking:'hyunwoo_middle_thinking',worried:'hyunwoo_middle_serious'};
 CHARACTER_ASSET_MAP.doyun.ages.elder_982={defaultOutfit:'guild_master',outfits:{guild_master:DOYUN_OLD_PORTRAITS}};
-CHARACTER_ASSET_MAP.hyunwoo={canonicalId:'HYUNWOO_CANONICAL',defaultAge:'young',ages:{young:{defaultOutfit:'scholar',outfits:{scholar:HYUNWOO_YOUNG_PORTRAITS}},middle_982:{defaultOutfit:'official_scholar',outfits:{official_scholar:HYUNWOO_MIDDLE_PORTRAITS}}}};
+CHARACTER_ASSET_MAP.hyunwoo={canonicalId:'HYUNWOO_CANONICAL',defaultAge:'young',ages:{young:{defaultOutfit:'scholar',outfits:{scholar:HYUNWOO_YOUNG_PORTRAITS,young_official:HYUNWOO_YOUNG_PORTRAITS}},middle_982:{defaultOutfit:'official_scholar',outfits:{official_scholar:HYUNWOO_MIDDLE_PORTRAITS}}}};
 Object.assign(CHARACTERS.hyunwoo,{canonicalId:'HYUNWOO_CANONICAL',ageVariant:'young',outfit:'scholar'});
 
 QUESTIONS.push(

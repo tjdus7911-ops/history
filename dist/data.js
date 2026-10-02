@@ -1,4 +1,4 @@
-const SAVE_VERSION=10;
+const SAVE_VERSION=11;
 const ERAS=[['고려','918 — 1392'],['조선','1392 — 1897'],['대한제국','1897 — 1910'],['일제강점기','1910 — 1945'],['대한민국','1945 —']];
 
 const HISTORY={
@@ -353,7 +353,7 @@ const INITIAL_RUN=(chapterId='ch01',carry=null)=>{
   return setPlayerOutfit(run,run.playerOutfit||initialOutfit,run.flags.receivedGoryeoClothesFromDoyun?'doyun':'story');
 };
 const INITIAL_META=()=>({questionRecords:{},wrongQuestionIds:[],reviewedQuestionIds:[],historicalEvents:[],cards:[],people:[],achievements:[],endings:[],playthroughs:[],completedRuns:0,totalChoices:0,completedChapters:[],chapterRecords:{},chapterRuns:{},knowledgeMemory:{},mysteries:[]});
-const INITIAL=()=>({version:SAVE_VERSION,chapterSplitVersion:1,run:INITIAL_RUN(),mainRun:null,meta:INITIAL_META()});
+const INITIAL=()=>({version:SAVE_VERSION,chapterSplitVersion:1,ch03StoryVersion:2,run:INITIAL_RUN(),mainRun:null,meta:INITIAL_META()});
 
 function ensureGoryeoOutfit(run){setPlayerOutfit(run,'goryeo_commoner','doyun');run.sharedEvents=[...(run.sharedEvents||[])];for(const event of ['met_doyun_ch01','received_clothes_from_doyun'])if(!run.sharedEvents.includes(event))run.sharedEvents.push(event);return run}
 function setDoyunEra(run,era='middle_aged_949'){
@@ -371,8 +371,11 @@ function questionScore(chapterId,results={}){const total=typeof CHAPTERS!=='unde
 function sanitizeRemovedMystery(state,run){if(!run)return;run.sharedEvents=(run.sharedEvents||[]).filter(event=>event!=='noticed_unchanged_appearance');run.entryEffectsApplied=(run.entryEffectsApplied||[]).filter(id=>!['ch02_unchanged','ch02_reflection'].includes(id));if(['ch02_unchanged','ch02_reflection'].includes(run.storyId)){run.storyId='ch02_purge';run.pending=null;run.dialogueSceneId=null;run.dialogueCursor=1}state.meta.mysteries=(state.meta.mysteries||[]).filter(id=>id!=='unknown-aging');delete state.meta.knowledgeMemory['unknown-aging']}
 function repairCh02Era(run){
   if(!run||run.currentChapter!=='ch03')return;
-  const elderScenes=new Set(['ch02_jump_956','ch02_shop_956','ch02_dispute','ch02_trust','ch02_inspection','ch02_policy_reason','ch02_policy_memory','ch02_noble_night','ch02_jump_958','ch02_exam_notice','ch02_three_way','ch02_ssanggi','ch02_exam_eve','ch02_exam_day','ch02_reign_titles','ch02_reign_followup','ch02_purge','ch02_complete','ch02_night_reflection','ch02_mystery']);
-  setDoyunEra(run,elderScenes.has(run.storyId)?'elder_956':'middle_aged_949');
+  const elderScenes=new Set(['ch02_jump_956','ch02_shop_956','ch02_dispute','ch02_trust','ch02_inspection','ch02_policy_reason','ch02_policy_memory','ch02_noble_night','ch02_jump_958','ch02_exam_notice','ch02_three_way','ch02_ssanggi','ch02_exam_eve','ch02_exam_day','ch02_official_robes_walk','ch02_hyunwoo_official','ch02_gwangdeok_street','ch02_junpung_street','ch02_reign_titles','ch02_reign_followup','ch02_purge','ch02_night_discussion','ch02_complete','ch02_night_reflection','ch02_mystery','ch02_memory_retrieval','ch02_realization','ch02_chapter_clear']);
+  const elder=elderScenes.has(run.storyId);
+  setDoyunEra(run,elder?'elder_956':'middle_aged_949');
+  const sceneYear=typeof STORIES!=='undefined'?Number(STORIES[run.storyId]?.year||0):0;
+  if(elder&&sceneYear>=956)run.characterStates.doyun.characterAge=sceneYear-892;
   if(run.chapterStart)setDoyunEra(run.chapterStart,'middle_aged_949')
 }
 function makeRunRecord(run,runId){const chapterId=run.currentChapter,score=questionScore(chapterId,run.questionResults);return {runId,chapterId,mode:run.mode||'main',completed:true,choices:run.choices.map(choice=>({...choice})),questionResults:{...run.questionResults},questionScore:score,finalRun:chapterSnapshot(run),completedAt:new Date().toISOString()}}
@@ -402,12 +405,12 @@ function migrateSave(raw){
       if(!record)continue;
       const runs=fresh.meta.chapterRuns[chapterId]||[];
       if(!runs.length){const legacyRun={runId:1,chapterId,mode:'main',completed:true,choices:(record.choices||[]).map(choice=>({...choice})),questionResults:{...record.questionResults},questionScore:questionScore(chapterId,record.questionResults),finalRun:{...record.finalRun},completedAt:record.completedAt||new Date(0).toISOString()};runs.push(legacyRun)}
-      for(const item of runs){if(savedVersion<SAVE_VERSION)sanitizeRemovedMystery(fresh,item.finalRun);repairCh02Era(item.finalRun)}
+      for(const item of runs){if(savedVersion<10)sanitizeRemovedMystery(fresh,item.finalRun);repairCh02Era(item.finalRun)}
       fresh.meta.chapterRuns[chapterId]=runs;
       const firstRun=record.firstRun||runs[0],latestRun=record.latestRun||runs.at(-1),bestQuestionScore=Math.max(record.bestQuestionScore||0,...runs.map(item=>item.questionScore?.correct||0));
       fresh.meta.chapterRecords[chapterId]={...record,firstRun,latestRun,bestQuestionScore,runsCount:runs.length};
     }
-    if(savedVersion<SAVE_VERSION){sanitizeRemovedMystery(fresh,fresh.run);sanitizeRemovedMystery(fresh,fresh.mainRun)}
+    if(savedVersion<10){sanitizeRemovedMystery(fresh,fresh.run);sanitizeRemovedMystery(fresh,fresh.mainRun)}
     repairCh02Era(fresh.run);repairCh02Era(fresh.mainRun);
     fresh.version=SAVE_VERSION;
     return fresh;

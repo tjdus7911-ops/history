@@ -43,7 +43,7 @@ assert.equal(current().meta.questionRecords['ch01-test-01'].attempts,attemptsBef
 action('current-main');assert.equal(current().run.currentChapter,'ch04');assert.equal(current().run.storyId,'ch03-progress-67');assert.equal(current().mainRun,null);
 
 // CASE 4: result shortcut does not open the chapter sheet.
-vm.runInContext("screen='home';render()",context);click({chapterResult:'ch03'});assert(html.includes('CHAPTER 03 COMPLETE'));assert(!html.includes('chapter-sheet'));
+vm.runInContext("screen='home';render()",context);click({chapterResult:'ch03'});assert(html.includes('CHAPTER 03 CLEAR'));assert(!html.includes('chapter-sheet'));
 
 // CASE 5: a locked chapter cannot enter story and gives a lock message.
 vm.runInContext("screen='home';render()",context);const storyBefore=current().run.storyId;click({chapter:'ch05'});assert.equal(current().run.storyId,storyBefore);assert(toastText.includes('CH.04을 완료하면 열립니다.'));
