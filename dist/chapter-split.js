@@ -44,8 +44,9 @@ const BACKGROUND_ONLY_SCENE_IDS=[];
 for(const s of Object.values(STORIES)){
   if(PROTECTED_OPENING_SCENES.has(s.sceneId))continue;
   const spoken=(s.dialogues||[]).filter(line=>['npc','player'].includes(line.speakerType));
-  s.visibleCharacters=[...new Set(spoken.map(line=>line.characterId).filter(Boolean))];
-  s.sceneType=spoken.length?'dialogue':s.dialogues?.some(line=>line.speakerType==='thought')?'thought':'narration';
+  const ambientScene=s.sceneType==='ambient-rumor';
+  s.visibleCharacters=ambientScene?[]:[...new Set(spoken.map(line=>line.characterId).filter(id=>id&&CHARACTERS[id]?.presentation!=='ambient'&&CHARACTERS[id]?.show!==false))];
+  s.sceneType=ambientScene?'ambient-rumor':spoken.length?'dialogue':s.dialogues?.some(line=>line.speakerType==='thought')?'thought':'narration';
   if(!s.visibleCharacters.length)BACKGROUND_ONLY_SCENE_IDS.push(s.sceneId);
 }
 for(const q of QUESTIONS.filter(q=>q.chapterId==='ch01')){

@@ -91,6 +91,10 @@
 
 재사용 가능한 신규 NPC 파일은 `merchant_01`, `villager_male_01`, `villager_female_01`, `villager_old_01`, `villager_child_01`, `official_01`, `laborer_01`, `noble_01`, `soldier_01`, `steward_01`이다. 현재 구현된 CH.01~CH.04에는 추가 필수 캐릭터 에셋이 없다.
 
+### 단역 NPC 연출 정책
+
+CH.01~CH.03에서 `merchant`, `resident_a`, `resident_b`, `elder`, `child`, `citizen`, `steward`, `official`, `noble`, `soldier`는 `presentation: "ambient"`인 배경 음성 역할이다. 이름표와 대사는 유지하지만 별도 스탠딩은 표시하지 않는다. 위 에셋 파일은 삭제하지 않고 보관하며 현재 스토리 스탠딩 연결에서는 사용하지 않는다. 주인공·도윤·길상(`freed_man`)·현우처럼 얼굴과 관계를 기억해야 하는 고정 인물만 `presentation: "standing"`을 사용한다.
+
 ## 주인공 고려 평민복 에셋
 
 CH.01 `outfit_gift`의 7번째 대사인 `아이템 획득 · 고려 평민복`이 표시되는 순간부터 아래 포트레이트를 사용합니다. 그 전까지는 같은 장면 안에서도 현대복을 유지합니다. 모든 에셋은 `player_modern_neutral`의 얼굴·검은 헝클어진 머리·체형을 그대로 유지하고, 도윤에게 받은 남회색 겉포·회갈색 속옷·천 허리띠만 공통으로 적용했습니다. 저장 키는 `playerOutfit: "goryeo_commoner"`이며, 현대복은 `modern-clothes: stored`로 보존합니다. `angry`는 `player_goryeo_serious`, `sad`는 `player_goryeo_worried`, `suspicious`는 `player_goryeo_thinking`을 의도적으로 재사용해 불필요한 중복 생성을 피합니다.

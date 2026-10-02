@@ -100,14 +100,15 @@ const CHARACTER_ASSET_MAP={
   doyun:{canonicalId:'DOYUN_CANONICAL',defaultAge:'young',ages:{young:{defaultOutfit:'commoner',outfits:{commoner:DOYUN_YOUNG_COMMONER_PORTRAITS}},middle_aged_949:{defaultOutfit:'shop_owner',outfits:{shop_owner:DOYUN_949_PORTRAITS}},elder_956:{defaultOutfit:'established_merchant',outfits:{established_merchant:DOYUN_956_PORTRAITS}}}}
 };
 const CHARACTERS={
-  player:{characterId:'player',canonicalId:'PLAYER_CANONICAL',characterName:'나',speakerType:'player',position:'right',show:true,outfit:'modern',portraitPrefix:'player',characterAge:23,characterEraVariant:'modern-arrival',portraits:CHARACTER_ASSET_MAP.player.outfits},
-  doyun:{characterId:'doyun',canonicalId:'DOYUN_CANONICAL',characterName:'도윤',speakerType:'npc',position:'left',show:true,portraitPrefix:'doyun',characterAge:24,characterEraVariant:'young-merchant',outfit:'commoner',ageVariant:'young',portraits:{commoner:DOYUN_YOUNG_COMMONER_PORTRAITS},longTermGoal:'자기 상단 만들기'},
-  stranger:{characterId:'stranger',characterName:'낯선 청년',speakerType:'npc',position:'left',show:true,portraitPrefix:'stranger'},
-  resident_a:{characterId:'resident_a',characterName:'주민 A',speakerType:'npc',position:'left',show:true,portraitPrefix:'resident_a'},
-  resident_b:{characterId:'resident_b',characterName:'주민 B',speakerType:'npc',position:'right',show:true,portraitPrefix:'resident_b'},
-  elder:{characterId:'elder',characterName:'노인',speakerType:'npc',position:'left',show:true,portraitPrefix:'elder'},
-  child:{characterId:'child',characterName:'아이',speakerType:'npc',position:'left',show:true,portraitPrefix:'child'},
-  merchant:{characterId:'merchant',characterName:'상인',speakerType:'npc',position:'left',show:true,portraitPrefix:'merchant'},
+  player:{characterId:'player',canonicalId:'PLAYER_CANONICAL',characterName:'나',speakerType:'player',position:'right',show:true,presentation:'standing',outfit:'modern',portraitPrefix:'player',characterAge:23,characterEraVariant:'modern-arrival',portraits:CHARACTER_ASSET_MAP.player.outfits},
+  doyun:{characterId:'doyun',canonicalId:'DOYUN_CANONICAL',characterName:'도윤',speakerType:'npc',position:'left',show:true,presentation:'standing',portraitPrefix:'doyun',characterAge:24,characterEraVariant:'young-merchant',outfit:'commoner',ageVariant:'young',portraits:{commoner:DOYUN_YOUNG_COMMONER_PORTRAITS},longTermGoal:'자기 상단 만들기'},
+  // Ambient roles keep their speaker label and dialogue, but never receive a layered standing portrait.
+  stranger:{characterId:'stranger',characterName:'낯선 청년',speakerType:'npc',position:'left',show:false,presentation:'ambient',portraitPrefix:'stranger'},
+  resident_a:{characterId:'resident_a',characterName:'주민 A',speakerType:'npc',position:'left',show:false,presentation:'ambient',portraitPrefix:'resident_a'},
+  resident_b:{characterId:'resident_b',characterName:'주민 B',speakerType:'npc',position:'right',show:false,presentation:'ambient',portraitPrefix:'resident_b'},
+  elder:{characterId:'elder',characterName:'노인',speakerType:'npc',position:'left',show:false,presentation:'ambient',portraitPrefix:'elder'},
+  child:{characterId:'child',characterName:'아이',speakerType:'npc',position:'left',show:false,presentation:'ambient',portraitPrefix:'child'},
+  merchant:{characterId:'merchant',characterName:'상인',speakerType:'npc',position:'left',show:false,presentation:'ambient',portraitPrefix:'merchant'},
   unknown:{characterId:'unknown',characterName:'???',speakerType:'npc',position:'left',show:false,portraitPrefix:'unknown'},
   narrator:{characterId:'narrator',characterName:'',speakerType:'narration',position:'center',show:false,portraitPrefix:null}
 };
@@ -328,6 +329,7 @@ const DIALOGUES={
   complete:[dialogueLine('narrator','neutral','첫 번째 고려 생활을 마쳤습니다.','narration')]
 };
 Object.entries(DIALOGUES).forEach(([sceneId,dialogues])=>{STORIES[sceneId].dialogues=dialogues});
+for(const sceneId of ['rumor','foundation','market'])Object.assign(STORIES[sceneId],{visibleCharacters:[],sceneType:'ambient-rumor'});
 
 Object.values(STORIES).forEach(s=>{const asset=ASSETS[s.illustrationId]||ASSETS['home-goryeo'];s.backgroundImage=asset.src||null});
 

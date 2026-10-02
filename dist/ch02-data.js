@@ -58,13 +58,13 @@ Object.assign(PORTRAITS,{
 });
 
 Object.assign(CHARACTERS,{
-  hyunwoo:{characterId:'hyunwoo',characterName:'현우',speakerType:'npc',position:'right',show:true,portraitPrefix:'hyunwoo',characterAge:23,characterEraVariant:'exam-candidate',longTermGoal:'과거에 급제해 원칙을 지키는 관리가 되기'},
-  freed_man:{characterId:'freed_man',characterName:'길상',speakerType:'npc',position:'left',show:true,portraitPrefix:'freed_man'},
-  steward:{characterId:'steward',characterName:'귀족 집안 관리인',speakerType:'npc',position:'right',show:true,portraitPrefix:'steward'},
-  official:{characterId:'official',characterName:'관리',speakerType:'npc',position:'right',show:true,portraitPrefix:'official'},
-  noble:{characterId:'noble',characterName:'귀족',speakerType:'npc',position:'right',show:true,portraitPrefix:'noble'},
-  citizen:{characterId:'citizen',characterName:'개경 사람',speakerType:'npc',position:'right',show:true,portraitPrefix:'citizen'},
-  soldier:{characterId:'soldier',characterName:'군사',speakerType:'npc',position:'right',show:true,portraitPrefix:'soldier'}
+  hyunwoo:{characterId:'hyunwoo',characterName:'현우',speakerType:'npc',position:'right',show:true,presentation:'standing',portraitPrefix:'hyunwoo',characterAge:23,characterEraVariant:'exam-candidate',longTermGoal:'과거에 급제해 원칙을 지키는 관리가 되기'},
+  freed_man:{characterId:'freed_man',characterName:'길상',speakerType:'npc',position:'left',show:true,presentation:'standing',portraitPrefix:'freed_man'},
+  steward:{characterId:'steward',characterName:'귀족 집안 관리인',speakerType:'npc',position:'right',show:false,presentation:'ambient',portraitPrefix:'steward'},
+  official:{characterId:'official',characterName:'관리',speakerType:'npc',position:'right',show:false,presentation:'ambient',portraitPrefix:'official'},
+  noble:{characterId:'noble',characterName:'귀족',speakerType:'npc',position:'right',show:false,presentation:'ambient',portraitPrefix:'noble'},
+  citizen:{characterId:'citizen',characterName:'개경 사람',speakerType:'npc',position:'right',show:false,presentation:'ambient',portraitPrefix:'citizen'},
+  soldier:{characterId:'soldier',characterName:'군사',speakerType:'npc',position:'right',show:false,presentation:'ambient',portraitPrefix:'soldier'}
 });
 
 QUESTIONS.push(
@@ -153,8 +153,8 @@ const CH02_STORIES={
   ch02_exam_day:ch02Scene({sceneId:'ch02_exam_day',year:958,location:'개경 · 과거 시험장',title:'현우의 시험',illustrationId:'ch02-exam-yard',timeOfDay:'morning',dialogue:'수많은 응시자가 시험장으로 들어간다. 현우는 자신의 꿈을 걸고 문을 넘는다.',learningConceptIds:['쌍기_과거제','광종_왕권강화'],nextStoryId:'ch02_official_robes_walk'}),
   ch02_official_robes_walk:ch02Scene({sceneId:'ch02_official_robes_walk',year:960,location:'개경 · 관청 거리',title:'서로 다른 빛깔의 옷',illustrationId:'ch02-reign-titles',timeOfDay:'afternoon',enterCharacterStates:{doyun:{characterAge:68,characterEraVariant:'established-merchant',ageVariant:'elder_956',outfit:'established_merchant'}},dialogue:'과거 시험 뒤 다시 찾은 관청 거리. 관리들이 서로 다른 색의 옷을 입고 지나갔다.',learningConceptIds:['광종_공복'],nextStoryId:'ch02_hyunwoo_official'}),
   ch02_hyunwoo_official:ch02Scene({sceneId:'ch02_hyunwoo_official',year:960,location:'개경 · 관청 거리',title:'관리의 옷을 입은 현우',illustrationId:'ch02-gaegyeong-market',timeOfDay:'afternoon',enterCharacterStates:{hyunwoo:{characterAge:25,characterEraVariant:'young-official',ageVariant:'young',outfit:'young_official'}},historyDiscovery:{people:['현우'],cards:['gwangjong-official-robes'],historicalEvents:['gwangjong-official-robes']},historyCard:{title:'광종 — 공복 제정',body:'광종은 관리의 품계에 따라 공복의 색을 구분해 관료 질서를 드러냈다.'},dialogue:'관리의 옷을 입은 현우가 뒤에서 주인공을 불렀다.',learningConceptIds:['광종_공복','광종_왕권강화'],quizId:'ch02-test-robes'}),
-  ch02_reign_titles:ch02Scene({sceneId:'ch02_reign_titles',year:960,location:'개경 · 상인 거리',title:'오래된 장부의 두 글자',illustrationId:'ch02-gaegyeong-market',timeOfDay:'afternoon',historyDiscovery:{cards:['gwangjong-gwangdeok'],historicalEvents:['gwangjong-reign-titles']},historyCard:{title:'광종 — 광덕',body:'광덕은 광종이 사용한 독자적 연호이다. 이후 준풍을 사용했다.'},dialogue:'상인들의 목소리 사이에서 오래된 장부에 적힌 광덕이라는 두 글자가 들렸다.',learningConceptIds:['광덕_준풍','광종_왕권강화'],quizId:'ch02-test-03'}),
-  ch02_reign_followup:ch02Scene({sceneId:'ch02_reign_followup',year:960,location:'개경 · 같은 상인 거리',title:'광덕에서 준풍으로',illustrationId:'ch02-gaegyeong-market',timeOfDay:'afternoon',historyDiscovery:{cards:['gwangjong-reign-titles'],historicalEvents:['gwangjong-reign-titles']},historyCard:{title:'광덕 → 준풍',body:'광종은 광덕에 이어 준풍이라는 독자적 연호를 사용해 왕의 권위를 드러냈다.'},dialogue:'같은 거리의 새 문서에는 준풍이라는 연호가 쓰였다.',learningConceptIds:['광덕_준풍','광종_왕권강화'],quizId:'ch02-test-04'}),
+  ch02_reign_titles:ch02Scene({sceneId:'ch02_reign_titles',year:960,location:'개경 · 상인 거리',title:'거리에서 들은 새 연호',illustrationId:'ch02-gaegyeong-market',timeOfDay:'afternoon',visibleCharacters:[],sceneType:'ambient-rumor',historyDiscovery:{cards:['gwangjong-gwangdeok'],historicalEvents:['gwangjong-reign-titles']},historyCard:{title:'광종 — 광덕',body:'광덕은 광종이 사용한 독자적 연호이다. 이후 준풍을 사용했다.'},dialogue:'개경의 상인들이 새 연호 광덕을 이야기한다.',learningConceptIds:['광덕_준풍','광종_왕권강화'],quizId:'ch02-test-03'}),
+  ch02_reign_followup:ch02Scene({sceneId:'ch02_reign_followup',year:960,location:'개경 · 같은 상인 거리',title:'광덕에서 준풍으로',illustrationId:'ch02-gaegyeong-market',timeOfDay:'afternoon',visibleCharacters:[],sceneType:'ambient-rumor',historyDiscovery:{cards:['gwangjong-reign-titles'],historicalEvents:['gwangjong-reign-titles']},historyCard:{title:'광덕 → 준풍',body:'광종은 광덕에 이어 준풍이라는 독자적 연호를 사용해 왕의 권위를 드러냈다.'},dialogue:'같은 거리에서 연호가 준풍으로 바뀌었다는 이야기를 듣는다.',learningConceptIds:['광덕_준풍','광종_왕권강화'],quizId:'ch02-test-04'}),
   ch02_purge:ch02Scene({sceneId:'ch02_purge',year:960,location:'개경 · 도윤의 가게',title:'사라진 큰손',illustrationId:'ch02-doyun-shop-956',timeOfDay:'evening',fictionNotice:'길상·도윤·현우와 거래처 인물은 창작입니다. 광종이 호족과 공신 세력을 억누른 역사적 흐름을 학습 장면으로 구성했습니다.',dialogue:'길상이 찾아온 저녁, 도윤은 오래 거래하던 큰손 하나가 붙잡혀 갔다는 소식을 전했다.',learningConceptIds:['호족_견제','광종_왕권강화'],nextStoryId:'ch02_night_discussion'}),
   ch02_night_discussion:ch02Scene({sceneId:'ch02_night_discussion',year:960,location:'개경 · 도윤의 가게',title:'세 사람에게 일어난 변화',illustrationId:'ch02-doyun-shop-956',timeOfDay:'night',historyDiscovery:{cards:['gwangjong-authority'],historicalEvents:['gwangjong-authority']},historyCard:{title:'광종 — 왕권 강화',body:'노비안검법·과거제·공복·독자적 연호와 호족 견제는 왕권 강화라는 공통 방향으로 이어졌다.'},dialogue:'문을 닫은 뒤 길상과 현우, 도윤은 자신들의 삶이 어떻게 바뀌었는지 차례로 돌아보았다.',learningConceptIds:['광종_왕권강화','호족_견제'],quizId:'ch02-test-05'}),
   ch02_complete:ch02Scene({sceneId:'ch02_complete',year:960,location:'개경 · 도윤의 가게',title:'사십 년이 넘는 세월',illustrationId:'ch02-doyun-shop-956',timeOfDay:'sunset',dialogue:'왕의 개혁을 지나온 어느 저녁, 도윤이 처음 만난 날을 헤아렸다.',nextStoryId:'ch02_night_reflection'}),
@@ -333,19 +333,20 @@ const CH02_DIALOGUES={
     dialogueLine('narrator','neutral','[HISTORY DISCOVERED] 광종 — 공복 제정','narration')
   ],
   ch02_reign_titles:[
-    dialogueLine('narrator','neutral','“이 장부는 광덕 때부터 쓰던 것이오.”','narration'),
-    dialogueLine('narrator','neutral','상인이 낡은 장부를 넘기며 맞은편 손님에게 말했다.','narration'),
-    dialogueLine('player','thinking','광덕? 사람 이름은 아닌 것 같은데.','thought'),
-    dialogueLine('narrator','neutral','“임금께서 정해 쓰신 연호 말이오. 광종 폐하의 광덕.”','narration'),
-    dialogueLine('player','thinking','왕이 자기 시대의 이름을 직접 세운 거구나.','thought'),
+    dialogueLine('merchant','neutral','들었소?','npc','상인 A'),
+    dialogueLine('merchant','neutral','무엇을 말이오?','npc','상인 B'),
+    dialogueLine('merchant','serious','새 연호 말이오.','npc','상인 A'),
+    dialogueLine('merchant','neutral','광덕이라던가?','npc','상인 B'),
+    dialogueLine('player','thinking','광덕.','thought'),
+    dialogueLine('player','thinking','광종…….','thought'),
     dialogueLine('narrator','neutral','[HISTORY DISCOVERED] 광종 — 광덕','narration')
   ],
   ch02_reign_followup:[
-    dialogueLine('narrator','neutral','얼마 뒤, 같은 거리의 새 문서에는 다른 두 글자가 적혔다.','narration'),
-    dialogueLine('narrator','neutral','준풍.','narration'),
-    dialogueLine('player','thinking','광덕에서 준풍으로 바뀐 거구나.','thought'),
-    dialogueLine('narrator','neutral','광덕\n↓\n준풍','narration'),
-    dialogueLine('player','thinking','둘 다 광종이 사용한 독자적 연호. 왕의 권위를 스스로 드러낸 단서야.','thought'),
+    dialogueLine('merchant','neutral','연호가 또 바뀌었다더군.','npc','상인 A'),
+    dialogueLine('merchant','neutral','이번에는 준풍이랍니다.','npc','상인 B'),
+    dialogueLine('player','thinking','준풍.','thought'),
+    dialogueLine('player','thinking','광덕…… 준풍.','thought'),
+    dialogueLine('player','thinking','둘 다 광종.','thought'),
     dialogueLine('narrator','neutral','[HISTORY DISCOVERED] 광덕 → 준풍','narration')
   ],
   ch02_purge:[
