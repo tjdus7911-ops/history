@@ -342,7 +342,7 @@ const QUESTION_POOLS={
 };
 const buildQuestionSet=data=>{const pool=QUESTION_POOLS[data.questionPoolId],officialQuestionIds=(pool?.questionIds||[]).filter(id=>{const q=QUESTIONS.find(item=>item.questionId===id);return q?.isOfficial&&q.sourceVerified&&!q.retired}),requiredCount=data.requiredCount||3,verifiedCount=officialQuestionIds.length;return{...data,requiredCount,officialQuestionIds,verifiedCount,missingQuestionCount:Math.max(0,requiredCount-verifiedCount),status:verifiedCount>=requiredCount?'ready':'waiting_for_source'}};
 const QUESTION_SETS=Object.fromEntries([
-  buildQuestionSet({questionSetId:'ch01-foundation',chapterId:'ch01',afterSceneId:'foundation',resumeStoryId:'ch01_trade_start',questionPoolId:'pool-ch01-foundation',conceptIds:['gungye','wang-geon','goryeo-foundation-918']}),
+  buildQuestionSet({questionSetId:'ch01-foundation',chapterId:'ch01',afterSceneId:'foundation',resumeStoryId:'ch01_trade_start',questionPoolId:'pool-ch01-foundation',conceptIds:['gungye','wang-geon','goryeo-foundation-918'],requiredCount:2}),
   buildQuestionSet({questionSetId:'ch01-gongsan',chapterId:'ch01',afterSceneId:'ch01_gongsan',resumeStoryId:'ch01_conflict',questionPoolId:'pool-ch01-gongsan',conceptIds:['gongsan-battle','shin-sung-gyeom']}),
   buildQuestionSet({questionSetId:'ch01-gochang',chapterId:'ch01',afterSceneId:'ch01_gochang',resumeStoryId:'ch01_belonging',questionPoolId:'pool-ch01-gochang',conceptIds:['gochang-battle','gongsan-battle']}),
   buildQuestionSet({questionSetId:'ch02-gyeonhwon',chapterId:'ch02',afterSceneId:'ch01_gyeonhwon',resumeStoryId:'ch01_silla',questionPoolId:'pool-ch02-gyeonhwon',conceptIds:['gyeon-hwon','geumsansa','singgeom']}),
@@ -360,7 +360,7 @@ const QUESTION_SETS=Object.fromEntries([
 
 for(const q of QUESTIONS.filter(item=>['ch01','ch02','ch03','ch04'].includes(item.chapterId)&&!item.isOfficial))Object.assign(q,{retired:true,reviewOnly:true,sourceStatus:'retired_self_authored_main_story',questionAuditStatus:'SELF_AUTHORED'});
 const MAIN_QUESTION_IDS={
-  ch01:[],
+  ch01:['ch01-official-69-basic-10','ch01-official-79-advanced-09'],
   ch02:['ch01-official-76-advanced-10','ch01-official-74-advanced-10','ch01-official-70-advanced-10','ch02-official-67-basic-10','ch03-official-75-basic-12','ch02-official-65-advanced-10'],
   ch03:['ch02-official-74-advanced-11','ch03-official-68-advanced-11','ch02-official-78-advanced-11'],
   ch04:['ch03-official-75-basic-10','ch04-official-68-advanced-09','ch04-official-65-advanced-11']

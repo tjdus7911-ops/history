@@ -13,16 +13,18 @@ async function main(){
   const fit=async()=>assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`horizontal overflow at ${(await read()).storyId}`);
   const shot=async name=>page.screenshot({path:path.join(shots,`${name}.png`),fullPage:true});
   await tap('[data-action="play"]');
-  const expectedQueues={ch02:[['ch01-official-76-advanced-10','ch01-official-74-advanced-10','ch01-official-70-advanced-10'],['ch02-official-67-basic-10','ch03-official-75-basic-12','ch02-official-65-advanced-10']],ch03:[['ch02-official-74-advanced-11','ch03-official-68-advanced-11','ch02-official-78-advanced-11']],ch04:[['ch03-official-75-basic-10','ch04-official-68-advanced-09','ch04-official-65-advanced-11']]};
+  const expectedQueues={ch01:[['ch01-official-69-basic-10','ch01-official-79-advanced-09']],ch02:[['ch01-official-76-advanced-10','ch01-official-74-advanced-10','ch01-official-70-advanced-10'],['ch02-official-67-basic-10','ch03-official-75-basic-12','ch02-official-65-advanced-10']],ch03:[['ch02-official-74-advanced-11','ch03-official-68-advanced-11','ch02-official-78-advanced-11']],ch04:[['ch03-official-75-basic-10','ch04-official-68-advanced-09','ch04-official-65-advanced-11']]};
   const seenQueues={ch01:[],ch02:[],ch03:[],ch04:[]},seenScenes=new Set(),completed=[],checks={injured:false,943:false,examEve:false,gilsang:false,hyunwoo:false,oldDoyun:false,soliloquy:false,death:false,legacy:false,reloaded:false,summary:false},questionOrder=[];
   let deliberatelyWrong=false,guard=0;
   while(completed.length<4){
     if(++guard>1800)throw Error(`mobile play guard at ${JSON.stringify(await read())}`);const now=await read();await fit();
     if(now.screen==='quiz'){
       if(now.answer===null){
-        if(now.queueIndex===0){if(!seenQueues[now.chapter].some(queue=>JSON.stringify(queue)===JSON.stringify(now.queue)))seenQueues[now.chapter].push(now.queue);assert.equal(now.queue.length,3);assert(await page.getByText('실제 기출 1 / 3').count())}
+        if(now.queueIndex===0){if(!seenQueues[now.chapter].some(queue=>JSON.stringify(queue)===JSON.stringify(now.queue)))seenQueues[now.chapter].push(now.queue);assert.equal(now.queue.length,now.chapter==='ch01'?2:3)}
+        const source=await page.evaluate(()=>{const question=activeQuestion();return {isOfficial:question.isOfficial,sourceVerified:question.sourceVerified,examRound:question.examRound,examLevel:question.examLevel,questionNumber:question.questionNumber}});
+        assert(source.isOfficial&&source.sourceVerified);assert.equal(await page.getByText(`기출 · 제${source.examRound}회 ${source.examLevel} ${source.questionNumber}번`,{exact:true}).count(),1);
         questionOrder.push(now.questionId);const correct=await page.evaluate(()=>activeQuestion().answer),choices=await page.locator('[data-answer]').count(),selected=!deliberatelyWrong?(correct+1)%choices:correct;deliberatelyWrong=true;await tap(`[data-answer="${selected}"]`);
-        const answered=await read();if(answered.queueIndex===2){assert(await page.getByText('이번 기억',{exact:false}).count());assert(await page.getByText('이야기 계속',{exact:true}).count());checks.summary=true;await shot(`${answered.chapter}-question-set-summary`)}
+        const answered=await read();if(answered.queueIndex===answered.queue.length-1){assert(await page.getByText('이번 기억',{exact:false}).count());assert(await page.getByText('이야기 계속',{exact:true}).count());checks.summary=true;await shot(`${answered.chapter}-question-set-summary`)}
       }else{
         if(!checks.reloaded&&now.chapter==='ch02'&&now.queueIndex===1){await page.reload();await tap('[data-action="play"]');assert.equal((await read()).queueIndex,1);assert.equal((await read()).screen,'quiz');checks.reloaded=true}
         await tap('[data-action="quiz-next"]');
@@ -50,7 +52,7 @@ async function main(){
   }
   assert.deepEqual(completed,['ch01','ch02','ch03','ch04']);
   for(const id of ['ch01_conflict','ch01_reconcile','ch01_belonging','ch01_memory_943','ch01_guild_seed','ch02_policy_reason','ch02_exam_day','ch03_courtyard','ch03_weakening','ch03_farewell','ch03_doyun_soliloquy','ch03_death','ch03_legacy'])assert(seenScenes.has(id),id);
-  assert.deepEqual(seenQueues.ch02,expectedQueues.ch02);assert.deepEqual(seenQueues.ch03,expectedQueues.ch03);assert.deepEqual(seenQueues.ch04,expectedQueues.ch04);assert.equal(seenQueues.ch01.length,0);
+  assert.deepEqual(seenQueues.ch01,expectedQueues.ch01);assert.deepEqual(seenQueues.ch02,expectedQueues.ch02);assert.deepEqual(seenQueues.ch03,expectedQueues.ch03);assert.deepEqual(seenQueues.ch04,expectedQueues.ch04);
   assert(Object.values(checks).every(Boolean),JSON.stringify(checks));const final=await read();assert.equal(final.characterStates.doyun.isAlive,false);assert(final.wrong.length>=1);assert(final.cards.includes('gukjagam'));assert.deepEqual(errors,[]);
   await tap('[data-action="request-replay"]');await tap('[data-action="confirm-replay"][data-chapter="ch04"]');const replay=await read();assert.equal(replay.chapter,'ch04');assert.equal(replay.storyId,'ch03_transition');assert.equal(replay.characterStates.doyun.ageState,'elder_982');
   console.log(`PASS: 390px CH.01–04 full play (${seenScenes.size} scenes, ${questionOrder.length} official answers), queues, reload, wrong note, history cards, aging portraits, Doyun finale, and replay.`);

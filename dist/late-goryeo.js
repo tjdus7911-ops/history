@@ -27,6 +27,15 @@ lateArt('late-study','ch03-doyun-guild-interior','문서와 책이 놓인 실내
 lateArt('late-temple','ch03-doyun-courtyard','산사와 고요한 뜰');
 lateArt('late-war','route-royal','전쟁을 앞둔 고려군의 길');
 lateArt('late-ending','chapter-complete','고려 왕조의 마지막 새벽');
+const lateDedicatedArt=(id,src,label)=>{ASSETS[id]={id,label,src,alt:label,status:'ready',embeddedCharacters:false,embeddedCharacterIds:[]};return id};
+lateDedicatedArt('ch05-seohui-negotiation','assets/scenes/ch05-seohui-negotiation.png','993년 서희의 담판이 열린 북방 군영');
+lateDedicatedArt('ch06-gaegyeong-rebuild','assets/scenes/ch06-gaegyeong-rebuild.png','거란군이 물러난 뒤 다시 일어서는 개경');
+lateDedicatedArt('ch07-gwiju-battlefield','assets/scenes/ch07-gwiju-battlefield.png','1019년 귀주대첩의 북방 전장');
+lateDedicatedArt('ch08-seogyeong-rebellion','assets/scenes/ch08-seogyeong-rebellion.png','1135년 묘청의 난이 벌어진 서경');
+lateDedicatedArt('ch09-choe-regime','assets/scenes/ch09-choe-regime.png','최씨 무신 정권의 교정도감 뜰');
+lateDedicatedArt('ch10-cheoin-fortress','assets/scenes/ch10-cheoin-fortress.png','1232년 주민들이 지킨 처인성');
+lateDedicatedArt('ch11-ssangseong-recovery','assets/scenes/ch11-ssangseong-recovery.png','1356년 수복된 쌍성총관부');
+lateDedicatedArt('ch12-wihwado-rain','assets/scenes/ch12-wihwado-rain.png','1388년 장마 속 위화도 진영');
 
 const latePortraitSources={
   yeon:'assets/characters/hyunwoo_neutral.png',seon:'assets/characters/villager_female_01.png',muyeong:'assets/characters/laborer_01.png',harim:'assets/characters/villager_male_01.png',arin:'assets/characters/villager_female_01.png',junseo:'assets/characters/hyunwoo_neutral.png',
@@ -173,6 +182,68 @@ const LATE_CHAPTER_BLUEPRINTS={
   ]}
 };
 
+// Major events use dedicated art; quieter travel, market, court, and study scenes keep reusable backgrounds.
+const LATE_DEDICATED_SCENES={
+  ch05_seohui:'ch05-seohui-negotiation',ch06_gaegyeong:'ch06-gaegyeong-rebuild',ch06_rebuild:'ch06-gaegyeong-rebuild',
+  ch07_gwiju:'ch07-gwiju-battlefield',ch08_revolt:'ch08-seogyeong-rebellion',ch09_bongsa:'ch09-choe-regime',
+  ch10_people:'ch10-cheoin-fortress',ch11_north:'ch11-ssangseong-recovery',ch12_wihwa:'ch12-wihwado-rain'
+};
+
+const LATE_INSERTS={
+  ch05:[
+    ['ch05_seohui',{id:'ch05_terms',year:993,location:'거란 진영 · 담판 직후',title:'말로 바꾼 조건',art:'ch05-seohui-negotiation',timeOfDay:'dawn',weather:'cold',lines:[nLine('서희는 고려가 고구려를 계승했다는 점과 여진이 길을 막았다는 현실을 한 논리로 묶었다.'),lLine('seohui','송과의 관계만 끊으라는 요구가 영토를 내주라는 뜻일 수는 없소. 길을 열 땅이 필요하오.','serious'),lLine('yeon','전쟁을 멈추는 말이 오히려 국경을 앞으로 밀어 냈군요.','surprised'),tLine('서희의 담판은 단순한 철군 약속이 아니라 강동 지역 확보의 근거가 되었다.')]},
+    ],
+    ['ch05_six',{id:'ch05_builders',year:994,location:'강동 6주 · 성벽 공사장',title:'지도 위의 선을 성으로',art:'late-border',timeOfDay:'afternoon',weather:'windy',lines:[nLine('군사와 백성은 새로 확보한 지역에 흙을 다지고 목책을 세웠다.'),lLine('yeon','담판에서 얻은 땅도 사람이 살고 길을 지켜야 우리 땅이 되는군요.','serious'),lLine('player','강동 6주는 서희의 말과 이 사람들의 노동이 함께 만든 결과야.','serious'),nLine('외교의 성과는 압록강 동쪽의 실제 방어 거점으로 굳어졌다.')]}]
+  ],
+  ch06:[
+    ['ch06_gaegyeong',{id:'ch06_burned_market',year:1011,location:'불탄 개경 장터',title:'왕이 떠난 뒤 남은 사람들',art:'ch06-gaegyeong-rebuild',timeOfDay:'dawn',weather:'smoke',lines:[nLine('무너진 지붕 사이에서 사람들은 물독을 나르고 가족의 이름을 불렀다.'),lLine('yeon','수도가 함락됐다는 한 줄 뒤에는 집을 다시 세워야 하는 사람이 이렇게 많습니다.','worried'),lLine('player','현종의 피난과 백성의 피해를 같은 장면으로 기억해야 해.','serious'),nLine('전쟁은 조정의 이동과 평범한 사람의 상실을 동시에 남겼다.')]},
+    ],
+    ['ch06_rebuild',{id:'ch06_woodblocks',year:1012,location:'개경 인근 사찰 작업장',title:'한 글자씩 다시 세우다',art:'ch06-gaegyeong-rebuild',timeOfDay:'morning',weather:'clear',lines:[nLine('장인은 고른 나무판에 경전의 글자를 거꾸로 새기기 시작했다.'),lLine('yeon','칼이 지나간 자리에 글자를 새기는군요.','neutral'),lLine('player','거란 침입 때의 초조대장경. 몽골 침입 때의 재조대장경과 구분하자.','thinking'),nLine('재건의 기억은 성벽뿐 아니라 대장경 조판에도 남았다.')]}]
+  ],
+  ch07:[
+    ['ch07_gwiju',{id:'ch07_retreat',year:1019,location:'귀주 · 거란군 퇴로',title:'승리 뒤에 열린 길',art:'ch07-gwiju-battlefield',timeOfDay:'afternoon',weather:'clearing',lines:[nLine('패한 거란군이 북쪽으로 물러나자 얼어붙었던 길에 고려의 깃발이 다시 섰다.'),lLine('yeon','이제야 수레가 북쪽으로 갈 수 있겠어요.','smile'),lLine('ganggamchan','싸움은 끝났지만 방비를 늦추면 오늘의 승리가 내일의 방심이 된다.','serious'),tLine('귀주대첩은 전투의 승리이자 고려·거란·송 사이 질서가 안정되는 계기였다.')]},
+    ],
+    ['ch07_special',{id:'ch07_nine_fortresses',year:1107,location:'동북면 · 새 성 아래',title:'동북 9성의 무게',art:'late-border',timeOfDay:'sunset',weather:'windy',lines:[nLine('별무반은 여진을 몰아내고 동북 9성을 쌓았지만, 먼 성을 지키는 부담도 커졌다.'),lLine('yoon_gwan','성을 얻는 일과 오래 지키는 일은 다르다.','serious'),lLine('player','결국 9성은 여진에게 돌려주지만, 별무반과 윤관의 정벌은 남아.','thinking'),nLine('영토의 확대와 유지 비용을 함께 보아야 사건의 끝이 보였다.')]}]
+  ],
+  ch08:[
+    ['ch08_rebellion',{id:'ch08_palace_ashes',year:1126,location:'개경 궁성 밖',title:'혼인이 불태운 궁궐',art:'late-night',timeOfDay:'night',weather:'smoke',lines:[nLine('궁궐에서 번진 불빛을 보며 백성들은 왕과 외척의 싸움이 언제 끝날지 몰랐다.'),lLine('seon','왕실과 혼인해 커진 권력이 왕실을 위협하고 있어요.','worried'),lLine('player','이자겸의 난은 문벌 귀족 사회의 모순이 폭발한 사건이야.','serious'),nLine('척준경이 돌아서며 난은 끝났지만 개경의 상처는 남았다.')]},
+    ],
+    ['ch08_revolt',{id:'ch08_divided_city',year:1135,location:'서경 · 닫힌 시장',title:'천도 논쟁이 전쟁이 되다',art:'ch08-seogyeong-rebellion',timeOfDay:'afternoon',weather:'overcast',lines:[nLine('대위국의 깃발 아래 시장 문이 닫히고 성 밖에는 김부식의 관군이 모였다.'),lLine('seon','개경과 서경 중 어디가 옳은지 다투던 일이 이제 사람들의 생사를 가릅니다.','worried'),lLine('player','묘청의 서경 천도 운동과 묘청의 난을 이어 보되, 같은 말로 뭉개지 말자.','thinking'),nLine('정치 노선의 충돌은 서경 백성이 견뎌야 할 포위전으로 바뀌었다.')]}]
+  ],
+  ch09:[
+    ['ch09_bongsa',{id:'ch09_documents',year:1196,location:'교정도감 뜰',title:'칼 옆의 인사 문서',art:'ch09-choe-regime',timeOfDay:'dusk',weather:'clear',lines:[nLine('교정도감의 문서와 사병의 창이 한 뜰에 놓였다.'),lLine('muyeong','왕의 관청이 있는데도 여기에서 나라의 일이 결정되는군요.','angry'),lLine('choe_chungheon','질서를 세우려면 권한이 한곳에 모여야 한다.','serious'),tLine('최씨 정권은 교정도감과 도방을 통해 정치와 군사를 장악했다.')]},
+    ],
+    ['ch09_people',{id:'ch09_whisper',year:1198,location:'개경 북산의 밤길',title:'노비들이 나눈 말',art:'late-night',timeOfDay:'night',weather:'clear',lines:[nLine('만적과 노비들은 신분의 굴레를 끊을 계획을 낮은 목소리로 나눴다.'),lLine('muyeong','왕후장상의 씨가 따로 있느냐는 말이 사람들 사이를 돕니다.','serious'),lLine('player','무신 집권은 지배층만 바꾼 일이 아니야. 아래에서 신분 해방 요구도 터져 나왔어.','thinking'),nLine('계획은 실패했지만 만적의 외침은 고려의 신분 질서가 흔들리고 있음을 보여 주었다.')]}]
+  ],
+  ch10:[
+    ['ch10_people',{id:'ch10_wall',year:1232,location:'처인성 성벽',title:'누가 성을 지켰는가',art:'ch10-cheoin-fortress',timeOfDay:'late-afternoon',weather:'dusty',lines:[nLine('군현의 정규군만이 아니라 농민과 천민까지 돌과 화살을 날랐다.'),lLine('harim','역사책의 승리 한 줄에 이 사람들의 신분은 잘 보이지 않겠지요.','worried'),lLine('kim_yunhu','오늘 성 위에서는 누구의 집안인지보다 누가 끝까지 서 있는지가 중요하다.','serious'),tLine('처인성 승리는 김윤후와 지역 주민의 공동 항전으로 기억해야 한다.')]},
+    ],
+    ['ch10_island',{id:'ch10_mainland',year:1235,location:'강화도 건너 육지 마을',title:'섬 밖에서 치른 값',art:'late-war',timeOfDay:'sunset',weather:'smoke',lines:[nLine('강화도 조정은 바다를 방패로 삼았지만 몽골군은 육지의 마을을 계속 짓밟았다.'),lLine('harim','조정이 버틴 시간만큼 육지 사람들의 피난도 길어집니다.','worried'),lLine('player','강화 천도를 항전의 전략으로만 외우면 이 피해를 놓쳐.','serious'),nLine('대몽 항쟁은 장기 저항의 성과와 백성의 희생을 함께 남겼다.')]}]
+  ],
+  ch11:[
+    ['ch11_yuan',{id:'ch11_customs',year:1280,location:'개경 큰길',title:'거리까지 내려온 원의 풍속',art:'late-city',timeOfDay:'afternoon',weather:'clear',lines:[nLine('관료와 귀족 사이에서 변발과 호복이 유행하고 몽골식 이름이 낯설지 않게 들렸다.'),lLine('arin','왕실의 혼인과 관제 격하가 거리의 옷차림까지 바꾸었어요.','worried'),lLine('player','원 간섭기는 정치 제도와 생활 풍속이 함께 변한 시기야.','thinking'),nLine('간섭은 궁궐 안 문서에만 머물지 않았다.')]},
+    ],
+    ['ch11_north',{id:'ch11_returning',year:1356,location:'수복된 동북면 성문',title:'돌아오는 수레',art:'ch11-ssangseong-recovery',timeOfDay:'morning',weather:'clear',lines:[nLine('원의 관리가 물러난 성문으로 피란했던 가족과 장터 수레가 조심스럽게 돌아왔다.'),lLine('arin','땅을 되찾았다는 말이 사람들에게는 집으로 돌아가는 길이군요.','smile'),lLine('player','쌍성총관부 수복은 반원 정책이면서 실제 영토 회복이었어.','serious'),nLine('이 과정에서 이자춘과 이성계 같은 동북면 세력도 고려 정치에 가까워졌다.')]}]
+  ],
+  ch12:[
+    ['ch12_wihwa',{id:'ch12_supplies',year:1388,location:'위화도 · 젖은 군량 창고',title:'진군할 수 없는 밤',art:'ch12-wihwado-rain',timeOfDay:'night',weather:'heavy-rain',lines:[nLine('장맛비에 군량은 젖고 병사들은 탈영 소식을 숨기지 못했다.'),lLine('junseo','요동보다 먼저 이 진영이 무너지겠습니다.','worried'),lLine('yi_seonggye','명분만으로 강을 건널 수는 없다. 군사와 백성을 모두 잃을 수 있다.','serious'),tLine('4불가론은 외교 명분뿐 아니라 계절·왜구·군사 현실을 함께 따진 판단이었다.')]},
+    ],
+    ['ch12_abdication',{id:'ch12_registry',year:1392,location:'개경 관청의 빈 서고',title:'고려라는 이름을 접다',art:'late-study',timeOfDay:'night',weather:'clear',lines:[nLine('관리들은 고려의 마지막 문서를 묶고 새 왕조의 장부를 펼쳤다.'),lLine('junseo','나라의 끝은 북소리보다 장부의 제목이 바뀌는 순간에 더 선명하군요.','worried'),lLine('player','918년에 시작한 이름이 1392년에 여기서 닫힌다.','serious'),nLine('왕조의 교체는 궁궐뿐 아니라 세금·토지·사람을 기록하는 모든 문서에 닿았다.')]}]
+  ]
+};
+
+for(const [chapterId,blueprint] of Object.entries(LATE_CHAPTER_BLUEPRINTS)){
+  for(const beat of blueprint.beats){
+    if(LATE_DEDICATED_SCENES[beat.id])beat.art=LATE_DEDICATED_SCENES[beat.id];
+    beat.timeOfDay=beat.timeOfDay||(/night|밤|불타/.test(`${beat.id} ${beat.location}`)?'night':/after|memory|기억/.test(`${beat.id} ${beat.location}`)?'dawn':'day');
+    beat.weather=beat.weather||(/water|island|wihwa/.test(`${beat.art} ${beat.id}`)?'river-mist':'clear');
+  }
+  for(const [afterId,newBeat] of LATE_INSERTS[chapterId]||[]){
+    const index=blueprint.beats.findIndex(beat=>beat.id===afterId);
+    if(index>=0)blueprint.beats.splice(index+1,0,newBeat);
+  }
+}
+
 // Identity and age are separate: changing ageState never changes MAIN/SUPPORTING scale.
 const lateExpressionMap=(prefix)=>Object.fromEntries(['neutral','smile','serious','worried','surprised','angry','thinking'].map(expression=>[expression,`${prefix}_${expression}`]));
 for(const expression of Object.keys(lateExpressionMap('yeon_middle')))PORTRAITS[`yeon_middle_${expression}`]=portrait('yeon',expression,`연 · 중년 ${expression}`,['#303b43','#8e7255'],`assets/characters/hyunwoo_middle_${['neutral','serious','smile','thinking'].includes(expression)?expression:'neutral'}.png`);
@@ -205,7 +276,7 @@ for(const [chapterId,blueprint] of Object.entries(LATE_CHAPTER_BLUEPRINTS)){
     const age=Math.max(blueprint.protagonistAge,blueprint.protagonistAge+Math.max(0,beat.year-startYear));
     const visibleCharacters=[...new Set((beat.lines||[]).filter(line=>['npc','player'].includes(line.speakerType)).map(line=>line.characterId).filter(id=>CHARACTERS[id]?.show!==false&&CHARACTERS[id]?.presentation!=='ambient'))];
     for(const id of visibleCharacters)if(lateCharacterNames[id])people.add(lateCharacterNames[id]);
-    const story=scene({sceneId:beat.id,chapterId,year:beat.year,location:beat.location,title:beat.title,illustrationId:beat.art,backgroundImage:ASSETS[beat.art].src,
+    const story=scene({sceneId:beat.id,chapterId,year:beat.year,location:beat.location,title:beat.title,illustrationId:beat.art,backgroundImage:ASSETS[beat.art].src,timeOfDay:beat.timeOfDay,weather:beat.weather,ambientSound:beat.ambientSound||null,
       historicalEventId:`${chapterId}-${beat.id.replace(`${chapterId}_`,'')}`,dialogues:beat.lines,nextStoryId:next,completeChapter:Boolean(beat.completeChapter),continueLabel:beat.continueLabel,
       visibleCharacters,sceneType:visibleCharacters.length?'dialogue':beat.lines?.some(line=>line.speakerType==='thought')?'thought':'narration',
       enterCharacterStates:{player:{characterAge:23,ageState:'unchanged',ageVariant:'unchanged',outfit:'goryeo_commoner'},[blueprint.protagonist]:{characterAge:age,ageState:lateAgeState(blueprint.protagonist,age,beat.year),ageVariant:lateAgeState(blueprint.protagonist,age,beat.year),variant:'normal',pose:'standing',outfit:blueprint.protagonist==='yeon'?'traveler':'commoner'}}

@@ -6,7 +6,7 @@ const {CHAPTERS,STORIES,QUESTIONS}=context.api;
 
 for(const chapterId of ['ch01','ch02','ch03','ch04']){
   const chapterQuestions=QUESTIONS.filter(question=>question.chapterId===chapterId&&!question.reviewOnly&&!question.retired);
-  const expectedCounts={ch01:0,ch02:6,ch03:3,ch04:3};
+  const expectedCounts={ch01:2,ch02:6,ch03:3,ch04:3};
   assert.equal(CHAPTERS[chapterId].questionCount,expectedCounts[chapterId],`${chapterId}: metadata count`);
   assert.equal(chapterQuestions.length,CHAPTERS[chapterId].questionCount,`${chapterId}: actual question count`);
   assert.equal(new Set(chapterQuestions.map(question=>question.questionId)).size,CHAPTERS[chapterId].questionCount,`${chapterId}: duplicate id`);
@@ -60,10 +60,11 @@ assert(QUESTIONS.filter(question=>question.chapterId==='ch02'&&!question.isOffic
 const addedPractice=QUESTIONS.filter(question=>/^ch03-practice-0[5-9]$/.test(question.questionId));
 assert.equal(addedPractice.length,5);
 assert(addedPractice.every(question=>!question.isOfficial&&question.examType==='실전 유형 연습 · 자체 제작'));
+assert(QUESTIONS.every(question=>question.id===question.questionId&&question.topic&&question.era&&question.source),'normalized question metadata');
 assert.equal(QUESTIONS.find(question=>question.questionId==='ch01-boss').originalResumeStoryId,'complete');
 assert.equal(QUESTIONS.find(question=>question.questionId==='ch02-test-05').originalResumeStoryId,'ch02_complete');
 assert.equal(QUESTIONS.find(question=>question.questionId==='ch03-practice-04').originalResumeStoryId,'ch03_courtyard');
 const newStoryQuestions=QUESTIONS.filter(question=>['ch01-story-war-context','ch01-story-gongsan-battle','ch01-story-gochang-name','ch02-story-geumsansa','ch02-story-sasimgwan','ch02-story-balhae-refugees'].includes(question.questionId));
 assert.equal(newStoryQuestions.length,6);assert(newStoryQuestions.every(question=>question.sourceType==='exam_style'&&!question.isOfficial&&question.gameMemory));
 
-console.log('PASS: CH.01 keeps 2 verified review questions, CH.02–04 use four 3-question official sets, and all 20 active official answers remain source-labeled and story-linked.');
+console.log('PASS: CH.01 plays 2 verified official questions, CH.02–04 use verified official sets, and all 20 official answers remain source-labeled and story-linked.');
