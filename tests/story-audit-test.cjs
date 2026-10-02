@@ -6,12 +6,12 @@ const{SAVE_VERSION,CHAPTERS,STORIES,QUESTIONS,QUESTION_POOLS,QUESTION_SETS,SPLIT
 
 assert.equal(SAVE_VERSION,15);
 assert.equal(Object.keys(CHAPTERS).length,12);
-assert.deepEqual(Object.fromEntries(['ch01','ch02','ch03','ch04'].map(id=>[id,CHAPTERS[id].questionCount])),{ch01:9,ch02:15,ch03:3,ch04:3});
-assert.deepEqual(Object.fromEntries(['ch01','ch02','ch03','ch04'].map(id=>[id,CHAPTERS[id].reviewQuestionCount])),{ch01:9,ch02:15,ch03:5,ch04:3});
+assert.deepEqual(Object.fromEntries(['ch01','ch02','ch03','ch04'].map(id=>[id,CHAPTERS[id].questionCount])),{ch01:9,ch02:15,ch03:6,ch04:3});
+assert.deepEqual(Object.fromEntries(['ch01','ch02','ch03','ch04'].map(id=>[id,CHAPTERS[id].reviewQuestionCount])),{ch01:9,ch02:15,ch03:6,ch04:3});
 
 const official=QUESTIONS.filter(q=>q.isOfficial&&!q.retired),earlyOfficial=official.filter(q=>Number(q.chapterId.slice(2))<=4),lateOfficial=official.filter(q=>Number(q.chapterId.slice(2))>=5),main=QUESTIONS.filter(q=>!q.retired&&!q.reviewOnly&&['ch01','ch02','ch03','ch04'].includes(q.chapterId));
-assert.equal(earlyOfficial.length,20);assert.equal(lateOfficial.length,8);
-assert.equal(main.length,30);
+assert.equal(earlyOfficial.length,21);assert.equal(lateOfficial.length,8);
+assert.equal(main.length,33);
 assert(main.every(q=>q.isOfficial?q.sourceVerified&&q.sourceType==='official_exam':q.sourceType==='original_advanced_practice'&&q.examType==='[심화 연습] 한능검 심화 대비'));
 assert.equal(QUESTIONS.filter(q=>!q.isOfficial&&!q.retired&&['ch01','ch02','ch03','ch04'].includes(q.chapterId)).length,12);
 const latePractice=QUESTIONS.filter(q=>!q.isOfficial&&!q.retired&&Number(q.chapterId.slice(2))>=5);
@@ -37,10 +37,10 @@ for(const[id,answer]of Object.entries(newAnswers))assert.equal(QUESTIONS.find(q=
 assert.equal(QUESTIONS.find(q=>q.questionId==='ch02-official-66-advanced-09').chapterId,'ch02','66회 9번은 궁예가 아니라 견훤 문제');
 
 const earlySets=Object.values(QUESTION_SETS).filter(set=>Number(set.chapterId.slice(2))<=4),ready=earlySets.filter(set=>set.status==='ready'),waiting=earlySets.filter(set=>set.status==='waiting_for_source');
-assert.deepEqual(ready.map(set=>set.questionSetId),['ch01-foundation','ch01-gongsan','ch01-gochang','ch02-gyeonhwon','ch02-illyecheon','ch02-taejo-integration','ch02-north-welfare','ch02-hunyo','ch03-gwangjong-synthesis','ch04-seongjong-system']);
-assert.equal(waiting.length,3);
+assert.deepEqual(ready.map(set=>set.questionSetId),['ch01-foundation','ch01-gongsan','ch01-gochang','ch02-gyeonhwon','ch02-illyecheon','ch02-taejo-integration','ch02-north-welfare','ch02-hunyo','ch03-gwageo','ch03-gwangjong-synthesis','ch03-imperial-symbols','ch04-seongjong-system']);
+assert.equal(waiting.length,1);
 for(const set of earlySets){
-  const expectedRequired=3,allIds=[...(set.officialQuestionIds||[]),...(set.practiceQuestionIds||[])];
+  const expectedRequired=({'ch03-gwageo':1,'ch03-imperial-symbols':2})[set.questionSetId]||3,allIds=[...(set.officialQuestionIds||[]),...(set.practiceQuestionIds||[])];
   assert(QUESTION_POOLS[set.questionPoolId]);assert(STORIES[set.afterSceneId]);assert(STORIES[set.resumeStoryId]);assert.equal(set.requiredCount,expectedRequired);
   assert.equal(set.verifiedCount,set.officialQuestionIds.length);assert.equal(set.missingQuestionCount,set.status==='ready'?0:Math.max(0,expectedRequired-set.verifiedCount));
   assert(set.officialQuestionIds.every(id=>{const q=QUESTIONS.find(item=>item.questionId===id);return q?.isOfficial&&q.sourceVerified&&!q.retired}));
@@ -67,7 +67,7 @@ function walk(startId,state){let paths=0;const tests=new Set(),branches=new Set(
   }
   visit(startId,state);return{paths,tests,branches};
 }
-const expected={ch01:{paths:4,tests:9},ch02:{paths:3,tests:15},ch03:{paths:324,tests:3},ch04:{paths:3,tests:3}};
+const expected={ch01:{paths:4,tests:9},ch02:{paths:3,tests:15},ch03:{paths:324,tests:6},ch04:{paths:3,tests:3}};
 for(const id of ['ch01','ch02','ch03','ch04']){
   const state=INITIAL();state.run.started=true;
   for(const previous of ['ch01','ch02','ch03']){if(previous===id)break;finishChapter(state);startChapter(state,CHAPTERS[previous].nextChapterId)}
@@ -101,4 +101,4 @@ for(const asset of [...Object.values(ASSETS),...Object.values(PORTRAITS)].filter
 const old=INITIAL();old.version=13;old.meta.storyAuditVersion=0;old.run.started=true;old.run.currentChapter='ch04';old.run.storyId='ch03_trade_practice';old.run.activeQuestionId='ch03-practice-02';old.run.questionAnswer=1;old.run.stats.wealth=77;old.meta.wrongQuestionIds.push('ch03-practice-02');
 const migrated=migrateSave(old);assert.equal(migrated.version,15);assert.equal(migrated.run.storyId,'ch03_three_friends');assert.equal(migrated.run.activeQuestionId,null);assert.equal(migrated.run.stats.wealth,77);assert(migrated.meta.wrongQuestionIds.includes('ch03-practice-02'));assert.equal(migrated.meta.storyAuditVersion,1);assert.deepEqual(migrateSave(migrated),migrated);
 
-console.log(`PASS: ${official.length} verified official questions, ${ready.length} ready 3-question sets, ${waiting.length} waiting sets, CH.01–04 reachable paths, aging assets, Doyun finale, and v15 save migration.`);
+console.log(`PASS: ${official.length} verified official questions, ${ready.length} ready question sets, ${waiting.length} waiting sets, CH.01–04 reachable paths, aging assets, Doyun finale, and v15 save migration.`);

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node serve.cjs",
     "build": "node tests/build.cjs",
-    "test": "node tests/verify.cjs && node tests/exam-bank-test.cjs && node tests/ui-test.cjs && node tests/ch02-ui-test.cjs && node tests/ch03-ui-test.cjs && node tests/ch03-character-slots-test.cjs && node tests/replay-ui-test.cjs && node tests/ch01-expansion-test.cjs && node tests/story-audit-test.cjs && node tests/ch01-reading-test.cjs && node tests/question-set-ui-test.cjs && node tests/late-goryeo-test.cjs && node tests/late-goryeo-ui-test.cjs && node tests/build.cjs",
+    "test": "node tests/verify.cjs && node tests/exam-bank-test.cjs && node tests/ui-test.cjs && node tests/ch02-ui-test.cjs && node tests/ch03-sourced-quiz-test.cjs && node tests/ch03-ui-test.cjs && node tests/ch03-character-slots-test.cjs && node tests/replay-ui-test.cjs && node tests/ch01-expansion-test.cjs && node tests/story-audit-test.cjs && node tests/ch01-reading-test.cjs && node tests/question-set-ui-test.cjs && node tests/late-goryeo-test.cjs && node tests/late-goryeo-ui-test.cjs && node tests/build.cjs",
     "test:mobile": "node tests/ch01-mobile-test.cjs && node tests/mobile-full-play-test.cjs && node tests/ch03-character-mobile-test.cjs && node tests/late-goryeo-mobile-test.cjs"
   }
 }

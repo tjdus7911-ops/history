@@ -1298,4 +1298,34 @@ migrateSave=function(raw){
 // CH.03 uses the CH.01 opening's fixed player/right and partner/left stage.
 // Narration and cinematics retain their existing presentation. No story, asset,
 // choice, quiz or save IDs are changed; background artwork remains untouched.
-for(const scene of Object.values(STORIES).filter(s=>s.chapterId==='ch03'))scene.characterSlots='player-partner';
+for(const scene of Object.values(STORIES).filter(s=>s.chapterId==='ch03'))Object.assign(scene,{characterSlots:'player-partner',characterPortraitIds:['player','doyun','hyunwoo']});
+
+/* User-provided PDFs: preserve the closing set and add source-verified learning
+   at the existing Gwageo and royal-symbol scenes. No story arrays are replaced. */
+const q71a11=verifiedStoryQuestion({
+  questionId:'ch03-official-71-advanced-11',chapterId:'ch03',year:958,era:'고려 초기',king:'광종',chapterCandidate:'ch03',
+  relatedSceneId:'ch02_ssanggi',relatedHistoricalEventId:'gwangjong-958-gwageo',historicalEvent:'쌍기의 건의와 과거제 시행',relatedIllustrationId:'ch02-exam-notice',
+  historicalEventIds:['gwangjong-958-gwageo'],conceptIds:['gwangjong','ssanggi','gwageo'],
+  questionType:'시기 판단형',formatLabel:'실제 기출 · 과거제 시행',difficulty:'상',wrongFeedback:'기억이 흐릿하다.',
+  passage:'(가) 처음으로 역분전을 정하였다. 통일할 때 조정의 관리들과 군사들에게 관계(官階)는 논하지 않고, 그 사람의 성품과 행동이 착하고 악함과 공로가 크고 작음을 참작하여 차등 있게 주었다.\n\n(나) 12월에 문무 양반 및 군인들의 전시과를 개정하였다. 제1과는 전지 100결, 시지 70결을 지급한다. …… 제18과는 전지 20결을 지급한다. 이 한(限)에 들지 못한 자에게는 모두 전지 17결을 주기로 하고 이것을 통상의 법식으로 한다.',
+  question:'(가), (나) 사이의 시기에 있었던 사실로 옳은 것은?',
+  choices:['경기에 한하여 과전법이 실시되었다.','쌍기의 건의로 과거제가 시행되었다.','신돈이 전민변정도감의 책임자가 되었다.','만적이 개경에서 노비를 모아 반란을 모의하였다.','최충헌이 봉사 10조를 올려 시정 개혁을 건의하였다.'],answer:1,
+  explanation:'(가)는 태조의 역분전(940), (나)는 문종의 경정 전시과(1076)입니다. 그 사이인 958년에 광종이 쌍기의 건의를 받아 과거제를 시행했습니다.',
+  choiceExplanations:['과전법은 공양왕 때인 1391년에 실시되었습니다.','광종은 958년에 쌍기의 건의로 과거제를 시행했습니다.','신돈의 전민변정도감 개혁은 공민왕 때입니다.','만적의 봉기 모의는 1198년입니다.','최충헌의 봉사 10조는 1196년입니다.'],
+  examKeywords:['쌍기','과거제','958','역분전','경정 전시과'],
+  gameMemory:'현우가 준비하는 시험은 광종이 쌍기의 건의로 시행한 과거제입니다. 시대의 순서와 연결하면 정답은 ②입니다.',storyConnection:'쌍기와 현우의 과거 준비 장면에서 과거제 시행 시기를 확인합니다.',
+  resumeStoryId:'ch02_exam_eve',examRound:71,examYear:2024,examLevel:'심화',questionNumber:11,sourcePage:3,
+  sourceFile:'71회 한국사_문제지(심화).pdf',answerFile:'제71회 심화 정답표.pdf'
+});
+QUESTIONS.push(q71a11);
+QUESTION_POOLS['pool-ch03-gwageo'].questionIds=[q71a11.questionId];
+for(const [setId,requiredCount] of [['ch03-gwageo',1],['ch03-imperial-symbols',2]]){
+  QUESTION_SETS[setId]=buildQuestionSet({...QUESTION_SETS[setId],requiredCount});
+  attachQuestionSet(setId);
+}
+for(const id of ['ch02-official-76-advanced-50','ch02-official-77-advanced-14'])QUESTIONS.find(q=>q.questionId===id).reviewOnly=false;
+MAIN_QUESTION_IDS.ch03=[q71a11.questionId,'ch02-official-76-advanced-50','ch02-official-77-advanced-14',...MAIN_QUESTION_IDS.ch03];
+REVIEW_QUESTION_IDS.ch03=[...REVIEW_QUESTION_IDS.ch03,q71a11.questionId];
+SPLIT_STORY_QUESTION_IDS.ch03=[...MAIN_QUESTION_IDS.ch03];SPLIT_REVIEW_IDS.ch03=[...REVIEW_QUESTION_IDS.ch03];
+Object.assign(CHAPTERS.ch03,{questionCount:MAIN_QUESTION_IDS.ch03.length,reviewQuestionCount:REVIEW_QUESTION_IDS.ch03.length});
+for(const conceptId of q71a11.conceptIds)(CONCEPT_QUESTION_INDEX[conceptId]||(CONCEPT_QUESTION_INDEX[conceptId]=[])).push(q71a11.questionId);

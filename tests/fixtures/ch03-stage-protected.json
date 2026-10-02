@@ -77,5 +77,52 @@
     "assets/characters/merchant_01.png": "14aecbe8908b76543c27bc3e3605edd565c0ea94fd3adf2964e2e6a1dea883a5",
     "assets/scenes/ch02-water-reflection-958.png": "9e6f9641b2e7d4c368aef93c58bab6f97c666e7bcab23ac161b794d6b7eefc13",
     "assets/scenes/ch02-complete.png": "2417d241e746f22a45e7fae3c423f983df3e154bf746fe76f92c4068e5c16cd3"
+  },
+  "learningLinkBaselines": {
+    "ch02_ssanggi": {
+      "questionSetId": "ch03-gwageo",
+      "questionSetStatus": "waiting_for_source",
+      "questionSetResumeStoryId": "ch02_exam_eve",
+      "officialQuestionSlot": {
+        "conceptIds": [
+          "ssanggi",
+          "gwageo"
+        ],
+        "linkedOfficialQuestions": [
+          "ch02-official-78-advanced-11"
+        ],
+        "requiredCount": 3,
+        "verifiedCount": 1,
+        "missingQuestionCount": 2,
+        "officialQuestionStatus": "waiting_for_source"
+      },
+      "linkedQuestionIds": null,
+      "linkedOfficialQuestions": null,
+      "questionSequenceMode": null
+    },
+    "ch02_reign_followup": {
+      "questionSetId": "ch03-imperial-symbols",
+      "questionSetStatus": "waiting_for_source",
+      "questionSetResumeStoryId": "ch02_purge",
+      "officialQuestionSlot": {
+        "conceptIds": [
+          "official-robes",
+          "gwangdeok",
+          "junpung",
+          "imperial-style"
+        ],
+        "linkedOfficialQuestions": [
+          "ch02-official-76-advanced-50",
+          "ch02-official-77-advanced-14"
+        ],
+        "requiredCount": 3,
+        "verifiedCount": 2,
+        "missingQuestionCount": 1,
+        "officialQuestionStatus": "waiting_for_source"
+      },
+      "linkedQuestionIds": null,
+      "linkedOfficialQuestions": null,
+      "questionSequenceMode": null
+    }
   }
 }

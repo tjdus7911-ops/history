@@ -16,22 +16,22 @@ async function main(){
     const partners=new Set();
     while(!(await page.evaluate(()=>run().completed))){
       if(++guard>500)throw Error('CH.03 mobile guard');
-      const current=await page.evaluate(()=>{const r=run(),source=STORIES[r.pending?.sourceSceneId||r.storyId],entries=conversationEntries(source,r.pending),prefix=entries.slice(0,r.dialogueCursor||1);return{screen,id:source.sceneId,line:prefix.at(-1),hasPartner:entries.some(l=>l.speakerType==='npc')||Boolean(r.pending&&source.dialogues.some(l=>l.speakerType==='npc')),cinematic:source.sceneEffect==='blackout',questionId:r.activeQuestionId,pending:Boolean(r.pending)}});
+      const current=await page.evaluate(()=>{const r=run(),source=STORIES[r.pending?.sourceSceneId||r.storyId],entries=conversationEntries(source,r.pending),prefix=entries.slice(0,r.dialogueCursor||1);return{screen,id:source.sceneId,line:prefix.at(-1),hasPartner:entries.some(l=>l.speakerType==='npc')||Boolean(r.pending&&source.dialogues.some(l=>l.speakerType==='npc')),cinematic:source.sceneEffect==='blackout',questionId:r.activeQuestionId,pending:Boolean(r.pending),cast:playerPartnerCast(prefix,source,r.pending).map(e=>e.characterId)}});
       assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`overflow: ${width}, ${current.id}`);
       if(current.screen==='quiz'){const answer=await page.evaluate(()=>activeQuestion().answer);await tap(`[data-answer="${answer}"]`);await tap('[data-action="quiz-next"]');continue}
       const stage=page.locator('.stage-character');
       if(!current.cinematic&&!['thought','narration'].includes(current.line?.speakerType)&&current.hasPartner){
-        assert.equal(await stage.count(),2,`${current.id}: exactly two slots`);
+        const hasPartner=current.cast.length===2,hasActive=current.cast.includes(current.line.characterId);assert.equal(await stage.count(),current.cast.length,`${current.id}: exactly two slots`);
         assert.equal(await page.locator('[data-character-id="player"][data-position="right"]').count(),1);
-        assert.equal(await page.locator('.stage-left:not([data-character-id="player"])').count(),1);
-        assert.equal(await page.locator('.stage-character.active').count(),1);
-        assert.equal(await page.locator(`.stage-character.active[data-character-id="${current.line.characterId}"]`).count(),1);
-        assert.equal(await page.locator('.stage-character.listening').count(),1);
+        assert.equal(await page.locator('.stage-left:not([data-character-id="player"])').count(),hasPartner?1:0);
+        assert.equal(await page.locator('.stage-character.active').count(),hasActive?1:0);
+        assert.equal(await page.locator(`.stage-character.active[data-character-id="${current.line.characterId}"]`).count(),hasActive?1:0);
+        assert.equal(await page.locator('.stage-character.listening').count(),current.cast.length-(hasActive?1:0));
         await stage.first().evaluate(()=>Promise.all([...document.querySelectorAll('.stage-character')].map(img=>img.decode())));
         assert(await stage.evaluateAll(images=>images.every(img=>img.naturalWidth>0&&img.naturalHeight>0)));
-        assert.equal(await page.locator('.stage-character.active').evaluate(el=>getComputedStyle(el).opacity),'1');
-        assert(Number(await page.locator('.stage-character.listening').evaluate(el=>getComputedStyle(el).opacity))<1);
-        partners.add(await page.locator('.stage-left').getAttribute('data-character-id'));spokenFrames++;
+        if(hasActive)assert.equal(await page.locator('.stage-character.active').evaluate(el=>getComputedStyle(el).opacity),'1');
+        if(await page.locator('.stage-character.listening').count())assert(Number(await page.locator('.stage-character.listening').first().evaluate(el=>getComputedStyle(el).opacity))<1);
+        if(hasPartner)partners.add(await page.locator('.stage-left').getAttribute('data-character-id'));assert.equal(await page.locator('.stage-character:not([data-character-id="player"]):not([data-character-id="doyun"]):not([data-character-id="hyunwoo"])').count(),0);spokenFrames++;
         if(process.env.TEST_ARTIFACT_DIR&&width===390&&['ch02_trust','ch02_three_way','ch02_dispute','ch02_exam_eve'].includes(current.id)){fs.mkdirSync(process.env.TEST_ARTIFACT_DIR,{recursive:true});await page.screenshot({path:path.join(process.env.TEST_ARTIFACT_DIR,`ch03-${current.id}-${spokenFrames}.png`),fullPage:true})}
       }else assert.equal(await stage.count(),0);
       if(await page.locator('[data-action="advance-dialogue"]').count())await tap('[data-action="advance-dialogue"]');
@@ -40,8 +40,8 @@ async function main(){
       else if(await page.locator('[data-choice]').count())await tap('[data-choice="0"]');
       else await tap('[data-action="next"]');
     }
-    assert(partners.has('doyun')&&partners.has('hyunwoo')&&partners.has('freed_man')&&partners.has('official')&&partners.has('steward'));
-    assert.equal(await page.evaluate(()=>Object.keys(run().questionResults).length),3);
+    assert(partners.has('doyun')&&partners.has('hyunwoo')&&partners.size===2);
+    assert.equal(await page.evaluate(()=>Object.keys(run().questionResults).length),6);
     await tap('[data-nav="teaser"]');assert(await page.getByText('CH.04 시작하기',{exact:true}).count());
     assert.deepEqual(errors,[]);console.log(`PASS: CH.03 ${width}px full play, ${spokenFrames} spoken frames, two slots, emphasis, image decode, no overflow and CH.04 unlock.`);await profile.close();
   }
