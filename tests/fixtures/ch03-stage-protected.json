@@ -90,6 +90,7 @@
     "questionSetStatus",
     "questionSetResumeStoryId",
     "officialQuestionSlot",
-    "questionSceneIds"
+    "questionSceneIds",
+    "afterChoiceQuestionSetId"
   ]
 }

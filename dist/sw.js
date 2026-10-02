@@ -1,5 +1,5 @@
 const CACHE_PREFIX='lived-history-shell-';
-const CACHE_VERSION='2026-10-03-ch03-learning-blocks-v17';
+const CACHE_VERSION='2026-10-03-ch03-quiz-pacing-v18';
 const CACHE_NAME=CACHE_PREFIX+CACHE_VERSION;
 const APP_SHELL=[
   '/',

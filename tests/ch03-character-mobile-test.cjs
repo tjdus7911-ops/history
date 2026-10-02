@@ -41,7 +41,7 @@ async function main(){
       else await tap('[data-action="next"]');
     }
     assert(partners.has('doyun')&&partners.has('hyunwoo')&&partners.has('freed_man')&&partners.has('official'));
-    assert.equal(await page.evaluate(()=>Object.keys(run().questionResults).length),12);
+    assert.equal(await page.evaluate(()=>Object.keys(run().questionResults).length),17);
     await tap('[data-nav="teaser"]');assert(await page.getByText('CH.04 시작하기',{exact:true}).count());
     assert.deepEqual(errors,[]);console.log(`PASS: CH.03 ${width}px full play, ${spokenFrames} spoken frames, two slots, emphasis, image decode, no overflow and CH.04 unlock.`);await profile.close();
   }

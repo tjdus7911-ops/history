@@ -1360,27 +1360,56 @@ const CH03_ADDED_PRACTICE=[
     explanation:'공복의 색을 품계에 따라 구분하여 관료 질서를 드러냈고, 광종은 광덕·준풍 같은 독자적 연호를 사용했습니다.',choiceExplanations:['공복과 연호의 기능을 올바르게 구분했습니다.','품계 질서를 드러내는 제도입니다.','시험 선발 제도는 과거제입니다.','신분 조사 정책은 노비안검법입니다.','광덕·준풍은 광종의 연호입니다.'],examKeywords:['공복','품계','광덕','준풍','왕권'],gameMemory:'현우의 관리 옷과 시장에서 들은 두 연호를 구분해 보세요.'})
 ];
 QUESTIONS.push(...CH03_ADDED_PRACTICE);
+for(const q of CH03_ADDED_PRACTICE)q.resumeStoryId=q.relatedSceneId==='ch02_policy_memory'?'ch02_noble_night':q.relatedSceneId==='ch02_ssanggi'?'ch02_exam_eve':'ch02_purge';
+// Only the warm-up/retrieval questions missing from the existing bank are new.
+const CH03_PACING_PRACTICE=[
+  ch03Practice('symbols',{questionId:'ch03-practice-king-949',historicalEvent:'949년 광종 즉위',year:949,relatedSceneId:'ch02_market',relatedHistoricalEventId:'gwangjong-authority',historicalEventIds:['gwangjong-authority'],conceptIds:['gwangjong'],difficulty:'하',questionType:'기억 확인',question:'949년 현재 고려를 다스리고 있는 왕은?',choices:['태조','광종','성종','현종'],answer:1,explanation:'장터에서 확인한 현재의 왕은 광종입니다. 이제 그의 시대를 직접 살아갑니다.',choiceExplanations:['고려를 세운 왕입니다.','949년에 즉위한 현재의 왕입니다.','광종보다 뒤의 왕입니다.','성종보다 뒤의 왕입니다.'],gameMemory:'장터에서 현재 왕이 광종이라는 말을 들었습니다.'}),
+  ch03Practice('symbols',{questionId:'ch03-practice-kings-flow',historicalEvent:'고려 초기 왕의 흐름',year:949,relatedSceneId:'ch02_market',relatedHistoricalEventId:'goryeo-early-kings',historicalEventIds:['goryeo-early-kings'],conceptIds:['gwangjong','taejo','chronology'],difficulty:'하',questionType:'왕의 흐름',passage:'고려를 세운 태조. 지금 만난 광종. 뒤에 등장할 성종. 이 세 왕의 앞뒤 관계를 떠올려 보자.',question:'위 세 왕의 순서를 바르게 정리한 것은?',choices:['태조 → 광종 → 성종','광종 → 태조 → 성종','성종 → 광종 → 태조','태조 → 성종 → 광종'],answer:0,explanation:'이 세 왕은 태조 → 광종 → 성종 순으로 이어집니다. 모든 왕의 전체 목록이 아니라 세 왕 사이의 앞뒤 관계입니다. 광종이 어떤 변화를 일으킬지 앞으로의 사건에서 확인합니다.',choiceExplanations:['세 왕의 앞뒤 관계가 맞습니다.','태조는 광종보다 앞섭니다.','태조가 가장 앞섭니다.','광종은 성종보다 앞섭니다.'],gameMemory:'태조가 세운 나라에서 이제 광종의 시대를 살아갑니다.'}),
+  ch03Practice('symbols',{questionId:'ch03-practice-king-956',historicalEvent:'956년 광종 시대',year:956,relatedSceneId:'ch02_jump_956',relatedHistoricalEventId:'gwangjong-authority',historicalEventIds:['gwangjong-authority'],conceptIds:['gwangjong'],difficulty:'하',questionType:'기억 꺼내기',question:'7년이 지나 956년이 되었다. 우리가 지금 살고 있는 고려의 왕은?',choices:['태조','광종','성종','공민왕'],answer:1,explanation:'949년에 즉위한 광종이 956년에도 왕입니다. 이제 도윤의 가게에서 그의 정책이 사람들의 삶을 바꾸는 모습을 만납니다.',choiceExplanations:['이미 지난 시대의 왕입니다.','956년에도 광종이 다스립니다.','광종보다 뒤의 왕입니다.','고려 후기의 왕입니다.'],gameMemory:'949년에서 956년으로 이동했지만 왕은 여전히 광종입니다.'}),
+  ch03Practice('gwageo',{questionId:'ch03-practice-gwageo-king',year:958,relatedSceneId:'ch02_ssanggi',relatedHistoricalEventId:'gwangjong-958-gwageo',historicalEventIds:['gwangjong-958-gwageo'],conceptIds:['gwangjong','gwageo'],difficulty:'하',questionType:'왕과 제도',question:'쌍기의 건의를 받아 고려에서 과거제를 처음 시행한 왕은?',choices:['태조','광종','성종','현종'],answer:1,explanation:'광종은 쌍기의 건의를 받아 958년에 과거제를 처음 시행했습니다. 현우가 준비하는 시험도 이 제도와 연결됩니다.',choiceExplanations:['고려를 세운 왕입니다.','958년 과거제를 시행했습니다.','광종보다 뒤의 왕입니다.','거란 침입 시기의 왕입니다.'],gameMemory:'후주에서 온 쌍기가 광종에게 과거제를 건의했습니다.'})
+];
+for(const q of CH03_PACING_PRACTICE)q.examKeywords=q.year===958?['광종','쌍기','과거제']:['고려 초기','광종',q.questionId==='ch03-practice-kings-flow'?'왕의 순서':q.year+'년'];
+QUESTIONS.push(...CH03_PACING_PRACTICE);
 const CH03_LEARNING_BLOCKS=[
-  {setId:'ch03-nobi-inspection',practice:['ch03-practice-nobi-basic','ch03-practice-nobi-power','ch03-practice-nobi-source'],official:[]},
-  {setId:'ch03-gwageo',practice:['ch03-practice-gwageo-basic','ch03-practice-gwageo-purpose'],official:['ch03-official-71-advanced-11']},
-  {setId:'ch03-imperial-symbols',practice:['ch03-practice-symbols-basic'],official:['ch02-official-76-advanced-50','ch02-official-77-advanced-14']},
-  {setId:'ch03-gwangjong-synthesis',practice:[],official:['ch02-official-74-advanced-11','ch03-official-68-advanced-11','ch02-official-78-advanced-11']}
+  {setId:'ch03-market-warmup',afterSceneId:'ch02_market',resumeStoryId:'ch02_life_path',afterChoice:true,practice:['ch03-practice-king-949','ch03-practice-kings-flow'],official:[],illustrationId:'ch02-gaegyeong-market'},
+  {setId:'ch03-time-retrieval',afterSceneId:'ch02_jump_956',resumeStoryId:'ch02_shop_956',practice:['ch03-practice-king-956'],official:[],illustrationId:'ch02-doyun-shop-956'},
+  {setId:'ch03-nobi-inspection',practice:['ch03-practice-nobi-basic','ch02-review-01','ch02-test-01'],official:[],illustrationId:'ch02-freed-citizen'},
+  {setId:'ch03-noble-reaction',afterSceneId:'ch02_noble_night',resumeStoryId:'ch02_jump_958',practice:['ch03-practice-nobi-power'],official:[],illustrationId:'ch02-nobles-night'},
+  {setId:'ch03-gwageo',practice:['ch02-test-02','ch03-practice-gwageo-king','ch03-practice-gwageo-purpose'],official:[],illustrationId:'ch02-exam-notice'},
+  {setId:'ch03-official-robes',afterSceneId:'ch02_hyunwoo_official',resumeStoryId:'ch02_reign_titles',practice:['ch02-test-robes'],official:[],illustrationId:'ch02-reign-titles'},
+  {setId:'ch03-imperial-symbols',practice:['ch02-test-03','ch02-test-04'],official:['ch02-official-77-advanced-14'],illustrationId:'ch02-reign-titles'},
+  {setId:'ch03-gwangjong-synthesis',practice:['ch02-test-05','ch02-test-06'],official:['ch03-official-68-advanced-11'],illustrationId:'ch02-complete'}
 ];
 const QUESTION_SCENE_IDS={};
 for(const block of CH03_LEARNING_BLOCKS){
-  const set=QUESTION_SETS[block.setId],ids=[...block.practice,...block.official];
-  Object.assign(set,{officialQuestionIds:block.official,practiceQuestionIds:block.practice,requiredCount:3,verifiedCount:block.official.length,practiceCount:block.practice.length,missingQuestionCount:0,status:'ready',preserveQuestionOrder:true,sourceType:block.practice.length?'mixed_official_and_practice':'official_exam'});
+  const ids=[...block.practice,...block.official];
+  if(!QUESTION_SETS[block.setId]){
+    const poolId='pool-'+block.setId;
+    QUESTION_POOLS[poolId]={questionPoolId:poolId,chapterId:'ch03',conceptIds:[],questionIds:[...ids]};
+    QUESTION_SETS[block.setId]=buildQuestionSet({questionSetId:block.setId,chapterId:'ch03',afterSceneId:block.afterSceneId,resumeStoryId:block.resumeStoryId,questionPoolId:poolId,conceptIds:[]});
+  }
+  const set=QUESTION_SETS[block.setId];
+  Object.assign(set,{officialQuestionIds:block.official,practiceQuestionIds:block.practice,requiredCount:ids.length,verifiedCount:block.official.length,practiceCount:block.practice.length,missingQuestionCount:0,status:'ready',preserveQuestionOrder:true,sourceType:block.official.length?'mixed_official_and_practice':'original_advanced_practice'});
   attachQuestionSet(block.setId);const source=STORIES[set.afterSceneId];source.linkedQuestionIds=[...ids];
-  for(const id of block.practice)QUESTIONS.find(q=>q.questionId===id).resumeStoryId=set.resumeStoryId;
+  if(block.afterChoice)source.afterChoiceQuestionSetId=block.setId;
+  for(const id of ids){
+    const q=QUESTIONS.find(q=>q.questionId===id);
+    if(!q.originalResumeStoryId)q.originalResumeStoryId=q.resumeStoryId;
+    Object.assign(q,{retired:false,reviewOnly:false,resumeStoryId:set.resumeStoryId,relatedSceneId:set.afterSceneId,relatedIllustrationId:block.illustrationId});
+    if(!q.isOfficial)Object.assign(q,{sourceType:'original_advanced_practice',sourceStatus:'self_authored_from_verified_history',questionAuditStatus:'SELF_AUTHORED_ADVANCED_PRACTICE',formatLabel:'한능검 대비 문제',examType:'[심화 연습] 한능검 대비 문제',examRound:null,examYear:null,questionNumber:null,wrongFeedback:'기억이 흐릿하다.'});
+  }
   source.questionSceneIds=ids.map((id,index)=>{
     const sceneId=block.setId+'-quiz-'+(index+1);QUESTION_SCENE_IDS[id]=sceneId;
-    STORIES[sceneId]=scene({sceneId,chapterId:'ch03',sceneType:'quiz',quizOnly:true,quizId:id,questionSetId:block.setId,year:source.year,historicalEventId:source.historicalEventId,title:'한능검 대비 · '+(index+1)+'/3',location:source.location,illustrationId:source.illustrationId,dialogues:[],nextStoryId:index===2?set.resumeStoryId:block.setId+'-quiz-'+(index+2),characterStageMode:'hidden'});return sceneId;
+    STORIES[sceneId]=scene({sceneId,chapterId:'ch03',sceneType:'quiz',quizOnly:true,quizId:id,questionSetId:block.setId,year:source.year,historicalEventId:source.historicalEventId,title:'한능검 대비 · '+(index+1)+'/'+ids.length,location:source.location,illustrationId:block.illustrationId,dialogues:[],nextStoryId:index===ids.length-1?set.resumeStoryId:block.setId+'-quiz-'+(index+2),characterStageMode:'hidden'});return sceneId;
   });
 }
-MAIN_QUESTION_IDS.ch03=CH03_LEARNING_BLOCKS.flatMap(b=>[...b.practice,...b.official]);REVIEW_QUESTION_IDS.ch03=[...MAIN_QUESTION_IDS.ch03];
+MAIN_QUESTION_IDS.ch03=CH03_LEARNING_BLOCKS.flatMap(b=>[...b.practice,...b.official]);
+// Keep all previously playable content accessible, including the harder cross-era exams.
+REVIEW_QUESTION_IDS.ch03=[...new Set([...MAIN_QUESTION_IDS.ch03,'ch03-practice-nobi-source','ch03-practice-gwageo-basic','ch03-practice-symbols-basic','ch03-official-71-advanced-11','ch02-official-74-advanced-11','ch02-official-76-advanced-50','ch02-official-78-advanced-11'])];
+for(const id of REVIEW_QUESTION_IDS.ch03){const q=QUESTIONS.find(q=>q.questionId===id);q.retired=false;q.reviewOnly=!MAIN_QUESTION_IDS.ch03.includes(id);}
 SPLIT_STORY_QUESTION_IDS.ch03=[...MAIN_QUESTION_IDS.ch03];SPLIT_REVIEW_IDS.ch03=[...REVIEW_QUESTION_IDS.ch03];
-Object.assign(CHAPTERS.ch03,{questionCount:12,reviewQuestionCount:12});
-for(const q of CH03_ADDED_PRACTICE)for(const conceptId of q.conceptIds)(CONCEPT_QUESTION_INDEX[conceptId]||(CONCEPT_QUESTION_INDEX[conceptId]=[])).push(q.questionId);
+Object.assign(CHAPTERS.ch03,{questionCount:MAIN_QUESTION_IDS.ch03.length,reviewQuestionCount:REVIEW_QUESTION_IDS.ch03.length});
+for(const q of [...CH03_ADDED_PRACTICE,...CH03_PACING_PRACTICE])for(const conceptId of q.conceptIds)(CONCEPT_QUESTION_INDEX[conceptId]||(CONCEPT_QUESTION_INDEX[conceptId]=[])).push(q.questionId);
 
 // Presentation only: keep the original spoken text and character identity.
 for(const s of Object.values(STORIES).filter(s=>s.chapterId==='ch03'&&!s.quizOnly)){
