@@ -1,6 +1,6 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
 let saved=null,html='',handlers={},context;
-const data=['data','ch02-data','ch03-data','exam-data','ch01-expansion','chapter-split','late-goryeo','official-late-exams'].map(file=>fs.readFileSync(`dist/${file}.js`,'utf8')).join('\n'),app=fs.readFileSync('dist/app.js','utf8');
+const data=['data','ch02-data','ch03-data','exam-data','ch01-expansion','chapter-split','late-goryeo','official-late-exams','official-exam-images','ch05-refinement'].map(file=>fs.readFileSync(`dist/${file}.js`,'utf8')).join('\n'),app=fs.readFileSync('dist/app.js','utf8');
 function boot(){handlers={};const root={set innerHTML(value){html=value},get innerHTML(){return html}};const document={querySelector:selector=>selector==='#app'?root:null,querySelectorAll:()=>[],addEventListener:(name,handler)=>handlers[name]=handler,createElement:()=>({setAttribute(){},remove(){}}),body:{append(){}}};context=vm.createContext({document,localStorage:{getItem:()=>saved,setItem:(key,value)=>saved=value},window:{scrollTo(){}},navigator:{},setTimeout:()=>0,clearTimeout(){},Date});vm.runInContext(data+app,context)}
 const click=dataset=>{vm.runInContext('inputLockedUntil=0',context);handlers.click({target:{closest:()=>({dataset,disabled:false})}})},action=value=>click({action:value}),answer=value=>click({answer:String(value)}),current=()=>JSON.parse(saved);
 boot();vm.runInContext("state.meta.completedChapters=['ch01','ch02','ch03','ch04'];state.run=INITIAL_RUN('ch04');state.run.started=true;state.run.completed=true;state.run.characterStates.doyun.isAlive=false;save();render();startAvailableChapter('ch05');",context);
@@ -14,7 +14,7 @@ while(completed.length<8){
     const hasChoices=vm.runInContext('Boolean(STORIES[run().storyId].choices?.length)',context);if(hasChoices){click({choice:'0'});continue}action('next');continue;
   }
   if(screen==='quiz'){
-    const q=vm.runInContext('QUESTIONS.find(q=>q.questionId===run().activeQuestionId)',context);if(q.isOfficial){assert(html.includes(`[실제 기출] 제${q.examRound}회 한국사능력검정시험 · ${q.examLevel} · ${q.questionNumber}번`));sawOfficial=true}else{assert(html.includes('[심화 연습] 자체 제작'));sawPractice=true}answer(q.answer);assert(html.includes('역사 해설'));action('quiz-next');
+    const q=vm.runInContext('QUESTIONS.find(q=>q.questionId===run().activeQuestionId)',context);if(q.isOfficial){assert(html.includes(`[실제 기출] 제${q.examRound}회 한국사능력검정시험 · ${q.examLevel} · ${q.questionNumber}번`));sawOfficial=true}else{assert(html.includes(q.chapterId==='ch05'?'[심화 연습] · 한능검 심화 대비':'[심화 연습] 자체 제작'));sawPractice=true}answer(q.answer);assert(html.includes('역사 해설'));action('quiz-next');
     if(!reloaded&&run.currentChapter==='ch06'){reloaded=true;boot();action('play')}
     continue;
   }
