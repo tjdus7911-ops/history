@@ -14,13 +14,55 @@ const CH05_BACKGROUND_MAP={
   ch05_after:['late-night','1009년 정변으로 어두운 개경']
 };
 for(const id of ['ch05-frontier-invasion','ch05-council-crisis','ch05-khitan-withdrawal','ch05-gangdong-fortifications'])lateDedicatedArt(id,'assets/scenes/'+id+'.webp',Object.values(CH05_BACKGROUND_MAP).find(pair=>pair[0]===id)[1]);
-for(const expression of ['neutral','smile','serious','worried','surprised','angry','thinking'])PORTRAITS['ch05_yeon_'+expression]=portrait('yeon',expression,'연 · CH.05 여행자',['#303b43','#8e7255'],'assets/characters/ch05-yeon-traveler.webp');
+// CH.05 portrait overrides never change Yeon's mapping in later chapters.
+for(const expression of ['neutral','smile','serious','worried','surprised','angry','thinking']){
+  const assetExpression=['angry','thinking'].includes(expression)?'serious':expression;
+  PORTRAITS['ch05_yeon_'+expression]=portrait('yeon',expression,'연 · CH.05 여행자',['#303b43','#8e7255'],'assets/characters/ch05-yeon-'+assetExpression+'-v2.webp');
+}
 for(const [sceneId,[illustrationId]] of Object.entries(CH05_BACKGROUND_MAP)){
   const s=STORIES[sceneId];s.illustrationId=illustrationId;s.backgroundImage=ASSETS[illustrationId].src;s.characterSlots='player-partner';
   for(const c of s.choices||[])c.resultIllustrationId=illustrationId;
   for(const q of QUESTIONS.filter(q=>q.chapterId==='ch05'&&q.relatedSceneId===sceneId))q.relatedIllustrationId=illustrationId;
 }
 CHAPTERS.ch05.thumbnail=ASSETS[STORIES.ch05_border.illustrationId].src;
+
+// Add an entry scene; legacy scene IDs and saved positions remain valid.
+lateDedicatedArt('ch05-empty-guild-dusk','assets/scenes/ch05-empty-guild-dusk.webp','도윤이 떠난 뒤, 해 질 무렵의 빈 상단 마당');
+STORIES.ch05_prologue=scene({sceneId:'ch05_prologue',chapterId:'ch05',year:993,location:'도윤상단 · 시간이 흐른 마당',title:'남겨진 시간',illustrationId:'ch05-empty-guild-dusk',backgroundImage:ASSETS['ch05-empty-guild-dusk'].src,timeOfDay:'sunset',weather:'clear',sceneType:'thought',readingMode:'narration-blocks',characterStageMode:'hidden',visibleCharacters:[],characterPortraitIds:[],dialogues:[
+  tLine('도윤이 떠난 뒤, 나는 더는 누구와도 인연을 쌓지 않기로 했다.'),
+  tLine('함께 웃던 자리에는 이제 빈 의자만 남아 있었다. 시간이 흘러도 도윤의 마지막 목소리는 잊히지 않았다.'),
+  tLine('이곳에서 나만 시간이 멈춘 사람처럼 살아가는 동안, 누군가를 만나고 가까워지면 결국 또 떠나보내야 한다는 걸 알게 됐으니까.'),
+  tLine('다시는 그런 이별을 겪고 싶지 않았다. 그래서 그저 이 시대를 지나가기만 하기로 했다.'),
+  tLine('그런데—'),
+  nLine('993년. 고려에 또다시 거대한 일이 벌어지기 시작했다.')
+],nextStoryId:'ch05_border',continueLabel:'993년 — 거란의 침입'});
+CHAPTERS.ch05.startStoryId='ch05_prologue';
+
+// Only interpersonal turns are adjusted; historical narration and all questions stay intact.
+STORIES.ch05_border.dialogues.push(
+  lLine('yeon','북쪽으로 가시는 길인가요? 저는 연이라고 합니다. 함께 가시겠어요?','neutral'),
+  lLine('player','아뇨. 혼자 가겠습니다.','serious'),
+  lLine('yeon','알겠습니다. 길이 막힌 곳만 알려 드릴게요. 조심해서 가세요.','smile'),
+  tLine('이름을 되묻지는 않았다. 다시 누군가와 가까워지고 싶지 않았다.')
+);
+for(const [i,c] of STORIES.ch05_border.choices.entries()){
+  c.resultDialogues[0]=lLine('player',i===0?'다친 사람이 있는지만 확인하고 가겠습니다.':'길이 막힌 곳은 적어 두겠습니다. 알려 주셔서 감사합니다.','serious');
+  c.resultDialogues[1]=lLine('yeon',i===0?'저도 사람들을 살피고 있었어요. 저쪽부터 확인해 볼게요.':'도움이 됐다니 다행이에요. 더 붙잡지는 않을게요.',i===0?'neutral':'smile');
+}
+STORIES.ch05_withdraw.dialogues.push(
+  lLine('yeon','성으로 옮길 짐이 아직 남았어요. 저는 조금 더 있다 가려고요.','worried'),
+  lLine('player','저쪽 수레는 제가 옮기겠습니다. 혼자 들기엔 무거워 보이네요.','serious'),
+  lLine('yeon','고맙습니다. 그럼 저는 앞에서 길을 볼게요.','smile'),
+  tLine('잠깐 돕는 것뿐이라고 생각했다. 그래도 이번에는 먼저 발길을 돌리지 않았다.')
+);
+STORIES.ch05_builders.dialogues.find(d=>d.characterId==='player').dialogue='강동 6주는 서희의 말과 이 사람들의 노동이 함께 만든 결과네요.';
+STORIES.ch05_people.dialogues.find(d=>d.characterId==='player').dialogue='땅의 이름만이 아니라, 그 땅을 지킨 선택도 기억해야겠네요.';
+STORIES.ch05_people.dialogues.push(
+  lLine('yeon','장터까지 가 보려고요. 혼자 걷고 싶으시면 먼저 가셔도 돼요.','neutral'),
+  lLine('player','오늘은 같이 가도 될까요?','neutral'),
+  lLine('yeon','물론이죠. 저는 길에 있는 가게도 좀 둘러보고 싶어요.','smile'),
+  tLine('도윤과 걷던 길을 잊은 건 아니었다. 그 기억을 품은 채, 이번에는 연의 걸음 옆에 내 걸음을 놓았다.')
+);
 
 const CH05_OFFICIAL_CONTENT=[
   {examRound:73,questionNumber:11,sceneId:'ch05_terms',question:'(가)에 해당하는 인물로 옳은 것은?',choices:['서희','윤관','최영','정도전'],answer:0,
@@ -123,4 +165,4 @@ for(const item of CH05_OFFICIAL_CONTENT){
   for(const concept of item.concepts)(CONCEPT_QUESTION_INDEX[concept]||(CONCEPT_QUESTION_INDEX[concept]=[])).push(id);
 }
 Object.assign(CHAPTERS.ch05,{questionCount:12,reviewQuestionCount:12,questionSetCount:6});
-Object.assign(LATE_GORYEO_REPORT.ch05,{questions:12,questionSets:6});
+Object.assign(LATE_GORYEO_REPORT.ch05,{scenes:13,questions:12,questionSets:6});
