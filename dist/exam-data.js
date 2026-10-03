@@ -1,5 +1,5 @@
 /* 사용자 제공 한국사능력검정시험 문제지 연계 문항 — 기존 스토리/선택 데이터는 보존한다. */
-const officialExamQuestion=data=>question({
+const officialExamQuestion=data=>{const q=question({
   isOfficial:true,
   sourceVerified:true,
   sourceStatus:'verified_from_attached_pdf',
@@ -7,7 +7,7 @@ const officialExamQuestion=data=>question({
   examType:`제${data.examRound}회 한국사능력검정시험 ${data.examLevel} 실제 기출`,
   source:`국사편찬위원회 한국사능력검정시험 제${data.examRound}회 ${data.examLevel} · 사용자 제공 문제지·정답표 기반 모바일 전사`,
   ...data
-});
+});return globalThis.officialExamImagesReady===true?connectOfficialQuestionImage(q):q;};
 const practiceExamQuestion=data=>question({
   isOfficial:false,
   supplementalExam:true,

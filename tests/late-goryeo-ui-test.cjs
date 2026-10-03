@@ -14,7 +14,7 @@ while(completed.length<8){
     const hasChoices=vm.runInContext('Boolean(STORIES[run().storyId].choices?.length)',context);if(hasChoices){click({choice:'0'});continue}action('next');continue;
   }
   if(screen==='quiz'){
-    const q=vm.runInContext('QUESTIONS.find(q=>q.questionId===run().activeQuestionId)',context);if(q.isOfficial){assert(html.includes(`기출 · 제${q.examRound}회 ${q.examLevel} ${q.questionNumber}번`));sawOfficial=true}else{assert(html.includes('한능검 대비 연습문제'));sawPractice=true}answer(q.answer);assert(html.includes('역사 해설'));action('quiz-next');
+    const q=vm.runInContext('QUESTIONS.find(q=>q.questionId===run().activeQuestionId)',context);if(q.isOfficial){assert(html.includes(`[실제 기출] 제${q.examRound}회 한국사능력검정시험 · ${q.examLevel} · ${q.questionNumber}번`));sawOfficial=true}else{assert(html.includes('[심화 연습] 자체 제작'));sawPractice=true}answer(q.answer);assert(html.includes('역사 해설'));action('quiz-next');
     if(!reloaded&&run.currentChapter==='ch06'){reloaded=true;boot();action('play')}
     continue;
   }

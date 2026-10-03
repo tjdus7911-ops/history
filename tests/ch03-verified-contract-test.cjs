@@ -27,7 +27,7 @@ for(const id of officialIds){const q=vm.runInContext('QUESTIONS.find(q=>q.questi
 // No combination of a claimed official flag and incomplete provenance earns an official label.
 for(const field of ['isOfficial','sourceVerified','examRound','examYear','examLevel','questionNumber','sourceFile','answerFile']){
  boot();vm.runInContext('state=INITIAL();state.run.currentChapter="ch03";const broken=QUESTIONS.find(q=>q.questionId==="ch02-official-74-advanced-11");delete broken['+JSON.stringify(field)+'];state.run.activeQuestionId=broken.questionId;screen="quiz";render()',context);
- assert(!html.includes('[실제 기출]'));assert(!html.includes('기출문제'));assert(html.includes('[심화 연습]'));
+ assert(!html.includes('[실제 기출]'));assert(!html.includes('기출문제'));assert(html.includes(field==='isOfficial'?'[심화 연습]':'원본 미확인'));
 }
 // Existing saved queue contents must finish at their stored resume, including the retained old step.
 boot();vm.runInContext('state=INITIAL();state.run.started=true;state.run.currentChapter="ch03";state.run.storyId="ch03-gwangjong-synthesis-quiz-3";state.run.activeQuestionId="ch03-official-68-advanced-11";state.run.questionQueue=["ch02-test-05","ch02-test-06","ch03-official-68-advanced-11"];state.run.questionQueueIndex=2;state.run.questionQueueResumeStoryId="ch02_complete";state.run.questionAnswer=null;state.meta.wrongQuestionIds.push("ch02-test-01");state.meta.reviewedQuestionIds.push("ch02-test-03");save()',context);boot();action('play');answer(vm.runInContext('activeQuestion().answer',context));action('quiz-next');assert.equal(story(),'ch02_complete');assert(current().meta.wrongQuestionIds.includes('ch02-test-01'));assert(current().meta.reviewedQuestionIds.includes('ch02-test-03'));
