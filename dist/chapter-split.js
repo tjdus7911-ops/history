@@ -1369,16 +1369,18 @@ const CH03_PACING_PRACTICE=[
   ch03Practice('gwageo',{questionId:'ch03-practice-gwageo-king',year:958,relatedSceneId:'ch02_ssanggi',relatedHistoricalEventId:'gwangjong-958-gwageo',historicalEventIds:['gwangjong-958-gwageo'],conceptIds:['gwangjong','gwageo'],difficulty:'하',questionType:'왕과 제도',question:'쌍기의 건의를 받아 고려에서 과거제를 처음 시행한 왕은?',choices:['태조','광종','성종','현종'],answer:1,explanation:'광종은 쌍기의 건의를 받아 958년에 과거제를 처음 시행했습니다. 현우가 준비하는 시험도 이 제도와 연결됩니다.',choiceExplanations:['고려를 세운 왕입니다.','958년 과거제를 시행했습니다.','광종보다 뒤의 왕입니다.','거란 침입 시기의 왕입니다.'],gameMemory:'후주에서 온 쌍기가 광종에게 과거제를 건의했습니다.'})
 ];
 for(const q of CH03_PACING_PRACTICE)q.examKeywords=q.year===958?['광종','쌍기','과거제']:['고려 초기','광종',q.questionId==='ch03-practice-kings-flow'?'왕의 순서':q.year+'년'];
+Object.assign(CH03_PACING_PRACTICE.find(q=>q.questionId==='ch03-practice-gwageo-king'),{relatedIllustrationId:'ch02-exam-notice',resumeStoryId:'ch02_exam_eve'});
 QUESTIONS.push(...CH03_PACING_PRACTICE);
 const CH03_LEARNING_BLOCKS=[
   {setId:'ch03-market-warmup',afterSceneId:'ch02_market',resumeStoryId:'ch02_life_path',afterChoice:true,practice:['ch03-practice-king-949','ch03-practice-kings-flow'],official:[],illustrationId:'ch02-gaegyeong-market'},
   {setId:'ch03-time-retrieval',afterSceneId:'ch02_jump_956',resumeStoryId:'ch02_shop_956',practice:['ch03-practice-king-956'],official:[],illustrationId:'ch02-doyun-shop-956'},
-  {setId:'ch03-nobi-inspection',practice:['ch03-practice-nobi-basic','ch02-review-01','ch02-test-01'],official:[],illustrationId:'ch02-freed-citizen'},
+  {setId:'ch03-nobi-inspection',practice:['ch03-practice-nobi-basic','ch02-review-01'],official:['ch02-official-74-advanced-11'],illustrationId:'ch02-freed-citizen'},
   {setId:'ch03-noble-reaction',afterSceneId:'ch02_noble_night',resumeStoryId:'ch02_jump_958',practice:['ch03-practice-nobi-power'],official:[],illustrationId:'ch02-nobles-night'},
-  {setId:'ch03-gwageo',practice:['ch02-test-02','ch03-practice-gwageo-king','ch03-practice-gwageo-purpose'],official:[],illustrationId:'ch02-exam-notice'},
+  {setId:'ch03-gwageo',practice:['ch02-test-02','ch03-practice-gwageo-purpose'],official:['ch02-official-78-advanced-11'],illustrationId:'ch02-exam-notice'},
+  {setId:'ch03-gwageo-exam-day',afterSceneId:'ch02_exam_day',resumeStoryId:'ch02_official_robes_walk',practice:[],official:['ch03-official-71-advanced-11'],illustrationId:'ch02-exam-yard'},
   {setId:'ch03-official-robes',afterSceneId:'ch02_hyunwoo_official',resumeStoryId:'ch02_reign_titles',practice:['ch02-test-robes'],official:[],illustrationId:'ch02-reign-titles'},
-  {setId:'ch03-imperial-symbols',practice:['ch02-test-03','ch02-test-04'],official:['ch02-official-77-advanced-14'],illustrationId:'ch02-reign-titles'},
-  {setId:'ch03-gwangjong-synthesis',practice:['ch02-test-05','ch02-test-06'],official:['ch03-official-68-advanced-11'],illustrationId:'ch02-complete'}
+  {setId:'ch03-imperial-symbols',practice:['ch02-test-04'],official:['ch02-official-76-advanced-50','ch02-official-77-advanced-14'],illustrationId:'ch02-reign-titles'},
+  {setId:'ch03-gwangjong-synthesis',practice:['ch02-test-06'],official:['ch03-official-68-advanced-11'],illustrationId:'ch02-complete'}
 ];
 const QUESTION_SCENE_IDS={};
 for(const block of CH03_LEARNING_BLOCKS){
@@ -1395,7 +1397,7 @@ for(const block of CH03_LEARNING_BLOCKS){
   for(const id of ids){
     const q=QUESTIONS.find(q=>q.questionId===id);
     if(!q.originalResumeStoryId)q.originalResumeStoryId=q.resumeStoryId;
-    Object.assign(q,{retired:false,reviewOnly:false,resumeStoryId:set.resumeStoryId,relatedSceneId:set.afterSceneId,relatedIllustrationId:block.illustrationId});
+    Object.assign(q,{retired:false,reviewOnly:false,resumeStoryId:set.resumeStoryId,relatedSceneId:set.afterSceneId,relatedIllustrationId:block.illustrationId,historicalEventId:q.relatedHistoricalEventId});
     if(!q.isOfficial)Object.assign(q,{sourceType:'original_advanced_practice',sourceStatus:'self_authored_from_verified_history',questionAuditStatus:'SELF_AUTHORED_ADVANCED_PRACTICE',formatLabel:'한능검 대비 문제',examType:'[심화 연습] 한능검 대비 문제',examRound:null,examYear:null,questionNumber:null,wrongFeedback:'기억이 흐릿하다.'});
   }
   source.questionSceneIds=ids.map((id,index)=>{
@@ -1404,8 +1406,8 @@ for(const block of CH03_LEARNING_BLOCKS){
   });
 }
 MAIN_QUESTION_IDS.ch03=CH03_LEARNING_BLOCKS.flatMap(b=>[...b.practice,...b.official]);
-// Keep all previously playable content accessible, including the harder cross-era exams.
-REVIEW_QUESTION_IDS.ch03=[...new Set([...MAIN_QUESTION_IDS.ch03,'ch03-practice-nobi-source','ch03-practice-gwageo-basic','ch03-practice-symbols-basic','ch03-official-71-advanced-11','ch02-official-74-advanced-11','ch02-official-76-advanced-50','ch02-official-78-advanced-11'])];
+// Preserve the prior bank and review order for saved review sessions.
+REVIEW_QUESTION_IDS.ch03=["ch03-practice-king-949","ch03-practice-kings-flow","ch03-practice-king-956","ch03-practice-nobi-basic","ch02-review-01","ch02-test-01","ch03-practice-nobi-power","ch02-test-02","ch03-practice-gwageo-king","ch03-practice-gwageo-purpose","ch02-test-robes","ch02-test-03","ch02-test-04","ch02-official-77-advanced-14","ch02-test-05","ch02-test-06","ch03-official-68-advanced-11","ch03-practice-nobi-source","ch03-practice-gwageo-basic","ch03-practice-symbols-basic","ch03-official-71-advanced-11","ch02-official-74-advanced-11","ch02-official-76-advanced-50","ch02-official-78-advanced-11"];
 for(const id of REVIEW_QUESTION_IDS.ch03){const q=QUESTIONS.find(q=>q.questionId===id);q.retired=false;q.reviewOnly=!MAIN_QUESTION_IDS.ch03.includes(id);}
 SPLIT_STORY_QUESTION_IDS.ch03=[...MAIN_QUESTION_IDS.ch03];SPLIT_REVIEW_IDS.ch03=[...REVIEW_QUESTION_IDS.ch03];
 Object.assign(CHAPTERS.ch03,{questionCount:MAIN_QUESTION_IDS.ch03.length,reviewQuestionCount:REVIEW_QUESTION_IDS.ch03.length});
@@ -1413,7 +1415,10 @@ for(const q of [...CH03_ADDED_PRACTICE,...CH03_PACING_PRACTICE])for(const concep
 
 // Presentation only: keep the original spoken text and character identity.
 for(const s of Object.values(STORIES).filter(s=>s.chapterId==='ch03'&&!s.quizOnly)){
-  delete s.characterPortraitIds;
+  s.characterPortraitIds=['player','doyun','hyunwoo'];
   if(['narration','description','history','result','ambient-rumor'].includes(s.sceneType)&&!s.stageCast)s.characterStageMode='hidden';
-  for(const line of s.dialogues||[])if(line.characterId==='official'&&/(確認|확인되었다|양인으로 돌아간다|억울하게 노비가 된 자가 있는지 조사한다)/.test(line.dialogue))line.presentation='description';
+  for(const line of s.dialogues||[])if(line.speakerType==='npc'&&!s.characterPortraitIds.includes(line.characterId))line.presentation='description';
 }
+
+// Keep an older saved question-step ID, but exclude it from new-play progress.
+STORIES['ch03-gwangjong-synthesis-quiz-3']=scene({"chapterId":"ch03","historicalEventId":"gwangjong-reforms","backgroundImage":null,"characterImage":null,"characterExpression":"neutral","foregroundImage":null,"sceneEffect":null,"timeOfDay":"day","music":null,"ambientSound":null,"sceneId":"ch03-gwangjong-synthesis-quiz-3","sceneType":"quiz","quizOnly":true,"quizId":"ch03-official-68-advanced-11","questionSetId":"ch03-gwangjong-synthesis","year":960,"title":"한능검 대비 · 3/3","location":"개경 · 도윤의 가게","illustrationId":"ch02-complete","dialogues":[],"nextStoryId":"ch02_complete","characterStageMode":"hidden","storyActive":false});

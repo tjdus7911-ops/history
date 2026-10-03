@@ -37,7 +37,7 @@ for(const[id,answer]of Object.entries(newAnswers))assert.equal(QUESTIONS.find(q=
 assert.equal(QUESTIONS.find(q=>q.questionId==='ch02-official-66-advanced-09').chapterId,'ch02','66회 9번은 궁예가 아니라 견훤 문제');
 
 const earlySets=Object.values(QUESTION_SETS).filter(set=>Number(set.chapterId.slice(2))<=4),ready=earlySets.filter(set=>set.status==='ready'),waiting=earlySets.filter(set=>set.status==='waiting_for_source');
-assert.deepEqual(ready.map(set=>set.questionSetId),['ch01-foundation','ch01-gongsan','ch01-gochang','ch02-gyeonhwon','ch02-illyecheon','ch02-taejo-integration','ch02-north-welfare','ch02-hunyo','ch03-nobi-inspection','ch03-gwageo','ch03-gwangjong-synthesis','ch03-imperial-symbols','ch04-seongjong-system','ch03-market-warmup','ch03-time-retrieval','ch03-noble-reaction','ch03-official-robes']);
+assert.deepEqual(ready.map(set=>set.questionSetId),['ch01-foundation','ch01-gongsan','ch01-gochang','ch02-gyeonhwon','ch02-illyecheon','ch02-taejo-integration','ch02-north-welfare','ch02-hunyo','ch03-nobi-inspection','ch03-gwageo','ch03-gwangjong-synthesis','ch03-imperial-symbols','ch04-seongjong-system','ch03-market-warmup','ch03-time-retrieval','ch03-noble-reaction','ch03-gwageo-exam-day','ch03-official-robes']);
 assert.equal(waiting.length,0);
 for(const set of earlySets){
   const expectedRequired=set.chapterId==='ch03'?set.practiceQuestionIds.length+set.officialQuestionIds.length:3,allIds=[...(set.officialQuestionIds||[]),...(set.practiceQuestionIds||[])];

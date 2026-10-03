@@ -22,7 +22,9 @@ async function main(){
       const stage=page.locator('.stage-character');
       if(!current.cinematic&&current.cast.length){
         const hasPartner=current.cast.length===2,hasActive=current.cast.includes(current.line.characterId);assert.equal(await stage.count(),current.cast.length,`${current.id}: exactly two slots`);
-        assert.equal(await page.locator('[data-character-id="player"][data-position="right"]').count(),1);
+        assert(current.cast.every(id=>['player','doyun','hyunwoo'].includes(id)));
+        if(current.cast.includes('player'))assert.equal(await page.locator('[data-character-id="player"][data-position="right"]').count(),1);
+        else{assert.equal(await page.locator('[data-character-id="doyun"][data-position="left"]').count(),1);assert.equal(await page.locator('[data-character-id="hyunwoo"][data-position="right"]').count(),1);}
         assert.equal(await page.locator('.stage-left:not([data-character-id="player"])').count(),hasPartner?1:0);
         assert.equal(await page.locator('.stage-character.active').count(),hasActive?1:0);
         assert.equal(await page.locator(`.stage-character.active[data-character-id="${current.line.characterId}"]`).count(),hasActive?1:0);
@@ -40,7 +42,7 @@ async function main(){
       else if(await page.locator('[data-choice]').count())await tap('[data-choice="0"]');
       else await tap('[data-action="next"]');
     }
-    assert(partners.has('doyun')&&partners.has('hyunwoo')&&partners.has('freed_man')&&partners.has('official'));
+    assert(partners.has('doyun')&&[...partners].every(id=>['doyun','hyunwoo'].includes(id)));
     assert.equal(await page.evaluate(()=>Object.keys(run().questionResults).length),17);
     await tap('[data-nav="teaser"]');assert(await page.getByText('CH.04 시작하기',{exact:true}).count());
     assert.deepEqual(errors,[]);console.log(`PASS: CH.03 ${width}px full play, ${spokenFrames} spoken frames, two slots, emphasis, image decode, no overflow and CH.04 unlock.`);await profile.close();

@@ -12,11 +12,15 @@ for(const[path,digest]of Object.entries(fixture.images))assert.equal(crypto.crea
 const portraits=()=>[...html.matchAll(/<img class="stage-character ([^"]+)"[^>]*data-character-id="([^"]+)"[^>]*data-position="([^"]+)"[^>]*src="([^"]+)"/g)].map(m=>({classes:m[1],id:m[2],position:m[3],src:m[4]}));
 let checked=0;const repaired=new Set();
 function check(line,expectedPartner,scene){const cast=portraits();if((['thought','narration'].includes(line.speakerType)||['description','history','result'].includes(line.presentation)||scene.characterStageMode==='hidden')||scene.sceneEffect==='blackout'||!expectedPartner){assert.equal(cast.length,0,scene.sceneId);return}
-  const allowedPartner=true;assert.equal(cast.length,allowedPartner?2:1,`${scene.sceneId}: ${line.dialogue}`);
-  const player=cast.find(c=>c.id==='player'),partner=cast.find(c=>c.id!=='player');assert(player);if(allowedPartner)assert(partner);else assert(!partner);
-  assert.equal(player.position,'right');if(allowedPartner){assert.equal(partner.position,'left');assert.equal(partner.id,expectedPartner);}
+  const allowed=new Set(['player','doyun','hyunwoo']);
+  assert(cast.every(c=>allowed.has(c.id)),scene.sceneId+': only the approved cast');
+  if(!allowed.has(expectedPartner)){assert.equal(cast.length,0);return}
+  assert.equal(cast.length,2,scene.sceneId);
+  const player=cast.find(c=>c.id==='player');
+  if(player){assert.equal(player.position,'right');const partner=cast.find(c=>c.id!=='player');assert.equal(partner.position,'left');assert.equal(partner.id,expectedPartner)}
+  else {assert.equal(cast.find(c=>c.id==='doyun').position,'left');assert.equal(cast.find(c=>c.id==='hyunwoo').position,'right')}
   assert.equal(cast.filter(c=>c.classes.split(' ').includes('active')).length,1);
-  if(cast.some(c=>c.id===line.characterId))assert(cast.find(c=>c.id===line.characterId).classes.split(' ').includes('active'));
+  assert(cast.find(c=>c.id===line.characterId).classes.split(' ').includes('active'));
   for(const listener of cast.filter(c=>c.id!==line.characterId))assert(listener.classes.split(' ').includes('listening'));
   for(const c of cast)assert(fs.existsSync('dist/'+c.src),c.src);
   repaired.add(scene.sceneId);checked++;
@@ -45,13 +49,13 @@ evaluate("state=INITIAL();state.run.currentChapter='ch03';state.run.started=true
 assert(html.includes('알겠어. 같이 도와주자.'));assert.equal(portraits().find(c=>c.id==='doyun').position,'left');
 click({action:'advance-dialogue'});assert(html.includes('고맙소. 허나 무작정 뛰어들지는 마시오.'));assert(portraits().find(c=>c.id==='doyun').classes.includes('active'));
 // Scene cast declarations may include several NPCs; slots must still be two.
-evaluate("state=INITIAL();state.run.currentChapter='ch03';state.run.storyId='ch02_three_way';screen='game';enterStory();run().dialogueCursor=1;render()");assert.equal(portraits()[0].id,'hyunwoo');
+evaluate("state=INITIAL();state.run.currentChapter='ch03';state.run.storyId='ch02_three_way';screen='game';enterStory();run().dialogueCursor=1;render()");assert.deepEqual(portraits().map(c=>c.id),['doyun','hyunwoo']);assert(portraits().find(c=>c.id==='hyunwoo').classes.includes('active'));
 evaluate('run().dialogueCursor=2;render()');assert.equal(portraits()[0].id,'doyun');
-evaluate('run().dialogueCursor=3;render()');assert.equal(portraits()[0].id,'hyunwoo');
+evaluate('run().dialogueCursor=3;render()');assert.deepEqual(portraits().map(c=>c.id),['doyun','hyunwoo']);assert(portraits().find(c=>c.id==='hyunwoo').classes.includes('active'));
 // The official's ruling is a description, then a genuine reply restores slots.
 evaluate("state=INITIAL();state.run.currentChapter='ch03';state.run.started=true;state.run.storyId='ch02_policy_reason';screen='game';enterStory();render()");
 assert.equal(portraits().length,0);assert(html.includes('이 자는 본래 양인이었음이 확인되었다. 양인으로 돌아간다.'));assert(html.includes('narration-line'));
-click({action:'advance-dialogue'});assert.equal(portraits().length,2);assert.equal(portraits().find(c=>c.position==='left').id,'freed_man');assert(portraits().find(c=>c.id==='freed_man').classes.includes('active'));
+click({action:'advance-dialogue'});assert.equal(portraits().length,0);assert(html.includes('narration-line'));
 evaluate('run().dialogueCursor=6;render()');assert.equal(portraits().length,0);
 click({choice:'0'});assert.equal(portraits().length,2);click({action:'advance-dialogue'});assert.equal(portraits().length,0);click({action:'result-next'});assert.equal(portraits().length,0);
 click({action:'advance-dialogue'});click({action:'next'});assert.equal(evaluate('screen'),'quiz');assert.equal(portraits().length,0);

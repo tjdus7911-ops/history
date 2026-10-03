@@ -1,0 +1,31 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+let saved=null,html='',handlers={},context,timers=[];
+const data=fs.readFileSync('dist/data.js','utf8')+'\n'+fs.readFileSync('dist/ch02-data.js','utf8')+'\n'+fs.readFileSync('dist/ch03-data.js','utf8')+'\n'+fs.readFileSync('dist/exam-data.js','utf8')+'\n'+fs.readFileSync('dist/ch01-expansion.js','utf8')+'\n'+fs.readFileSync('dist/chapter-split.js','utf8')+'\n'+fs.readFileSync('dist/late-goryeo.js','utf8')+'\n'+fs.readFileSync('dist/official-late-exams.js','utf8'),app=fs.readFileSync('dist/app.js','utf8');
+function boot(){handlers={};timers=[];const root={set innerHTML(s){html=s},get innerHTML(){return html}};const document={querySelector:s=>s==='#app'?root:null,querySelectorAll:()=>[],addEventListener:(e,f)=>handlers[e]=f,createElement:()=>({setAttribute(){},remove(){}}),body:{append(){}}};context=vm.createContext({document,localStorage:{getItem:()=>saved,setItem:(k,s)=>saved=s},window:{scrollTo(){}},navigator:{},setTimeout(fn){timers.push(fn);return timers.length},clearTimeout(){},Date});vm.runInContext(data+app,context)}
+const click=dataset=>{vm.runInContext('inputLockedUntil=0',context);handlers.click({target:{closest:()=>({dataset,disabled:false})}})},action=x=>click({action:x}),nav=x=>click({nav:x}),selectChoice=i=>click({choice:String(i)}),answer=i=>click({answer:String(i)});
+const current=()=>JSON.parse(saved),story=()=>current().run.storyId;
+function reveal(){let n=0;while(html.includes('data-action="advance-dialogue"')){action('advance-dialogue');if(++n>15)throw Error('dialogue guard')}}
+function next(){reveal();action('next')}function choose(i){reveal();selectChoice(i);reveal();action('result-next')}
+function drainSupplementalQuestions(){let guard=0;while(vm.runInContext(`Boolean(STORIES[${JSON.stringify(story())}]?.supplementalExam)`,context)){next();const correct=vm.runInContext('QUESTIONS.find(q=>q.questionId===run().activeQuestionId).answer',context);answer(correct);assert(html.includes('기억이 선명해졌다'));action('quiz-next');if(++guard>8)throw new Error('supplemental quiz guard')}}
+function answerAndContinue(i){answer(i);assert(html.includes(i===vm.runInContext(`QUESTIONS.find(q=>q.questionId===run().activeQuestionId).answer`,context)?'기억이 선명해졌다':'기억이 흐릿하다'));action('quiz-next');drainSupplementalQuestions()}
+
+
+
+const crypto=require('crypto'),fixture=JSON.parse(fs.readFileSync('tests/fixtures/ch03-verified-contract.json'));
+const hash=x=>crypto.createHash('sha256').update(JSON.stringify(x)).digest('hex');boot();
+assert.deepEqual(Array.from(vm.runInContext('QUESTIONS.map(q=>q.questionId)',context)),fixture.questionIds,'no new questions or changed IDs');
+for(const[id,digest]of Object.entries(fixture.official)){const q=vm.runInContext('QUESTIONS.find(q=>q.questionId==='+JSON.stringify(id)+')',context);assert.equal(hash(Object.fromEntries(fixture.fields.map(k=>[k,q[k]]))),digest,'official text and source immutable: '+id)}
+for(const[id,digest]of Object.entries(fixture.earlyStories))assert.equal(hash(vm.runInContext('STORIES['+JSON.stringify(id)+']',context)),digest,'CH01/02 scene unchanged: '+id);
+for(const[id,digest]of Object.entries(fixture.earlyQuestions))assert.equal(hash(vm.runInContext('QUESTIONS.find(q=>q.questionId==='+JSON.stringify(id)+')',context)),digest,'CH01/02 question unchanged: '+id);
+const officialIds=['ch02-official-74-advanced-11','ch02-official-78-advanced-11','ch03-official-71-advanced-11','ch02-official-76-advanced-50','ch02-official-77-advanced-14','ch03-official-68-advanced-11'];
+assert.deepEqual(Array.from(vm.runInContext('MAIN_QUESTION_IDS.ch03.filter(id=>QUESTIONS.find(q=>q.questionId===id).isOfficial)',context)),officialIds);
+assert.equal(vm.runInContext('MAIN_QUESTION_IDS.ch03.length',context),17);
+for(const id of officialIds){const q=vm.runInContext('QUESTIONS.find(q=>q.questionId==='+JSON.stringify(id)+')',context);assert.equal(vm.runInContext('isVerifiedOfficialQuestion(QUESTIONS.find(q=>q.questionId==='+JSON.stringify(id)+'))',context),true);assert.equal(vm.runInContext('questionSourceLabel(QUESTIONS.find(q=>q.questionId==='+JSON.stringify(id)+'))',context),'[실제 기출] 제'+q.examRound+'회 한국사능력검정시험 · '+q.examLevel+' · '+q.questionNumber+'번');assert.equal(vm.runInContext('STORIES[QUESTIONS.find(q=>q.questionId==='+JSON.stringify(id)+').relatedSceneId].chapterId',context),'ch03');assert.equal(vm.runInContext('STORIES[QUESTIONS.find(q=>q.questionId==='+JSON.stringify(id)+').resumeStoryId].chapterId',context),'ch03');assert.notEqual(q.historicalEventId,'goryeo-foundation-918');}
+// No combination of a claimed official flag and incomplete provenance earns an official label.
+for(const field of ['isOfficial','sourceVerified','examRound','examYear','examLevel','questionNumber','sourceFile','answerFile']){
+ boot();vm.runInContext('state=INITIAL();state.run.currentChapter="ch03";const broken=QUESTIONS.find(q=>q.questionId==="ch02-official-74-advanced-11");delete broken['+JSON.stringify(field)+'];state.run.activeQuestionId=broken.questionId;screen="quiz";render()',context);
+ assert(!html.includes('[실제 기출]'));assert(!html.includes('기출문제'));assert(html.includes('[심화 연습]'));
+}
+// Existing saved queue contents must finish at their stored resume, including the retained old step.
+boot();vm.runInContext('state=INITIAL();state.run.started=true;state.run.currentChapter="ch03";state.run.storyId="ch03-gwangjong-synthesis-quiz-3";state.run.activeQuestionId="ch03-official-68-advanced-11";state.run.questionQueue=["ch02-test-05","ch02-test-06","ch03-official-68-advanced-11"];state.run.questionQueueIndex=2;state.run.questionQueueResumeStoryId="ch02_complete";state.run.questionAnswer=null;state.meta.wrongQuestionIds.push("ch02-test-01");state.meta.reviewedQuestionIds.push("ch02-test-03");save()',context);boot();action('play');answer(vm.runInContext('activeQuestion().answer',context));action('quiz-next');assert.equal(story(),'ch02_complete');assert(current().meta.wrongQuestionIds.includes('ch02-test-01'));assert(current().meta.reviewedQuestionIds.includes('ch02-test-03'));
+console.log('PASS: six immutable verified official exams, zero new questions, complete provenance labels with eight negative cases, CH01/02 exact preservation, same-chapter resumes, and legacy queue/review/wrong-note continuity.');
