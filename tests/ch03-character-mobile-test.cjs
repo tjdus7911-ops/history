@@ -18,7 +18,8 @@ async function main(){
       if(++guard>500)throw Error('CH.03 mobile guard');
       const current=await page.evaluate(()=>{const r=run(),source=STORIES[r.pending?.sourceSceneId||r.storyId],entries=conversationEntries(source,r.pending),prefix=entries.slice(0,r.dialogueCursor||1);return{screen,id:source.sceneId,line:prefix.at(-1),hasPartner:entries.some(l=>l.speakerType==='npc')||Boolean(r.pending&&source.dialogues.some(l=>l.speakerType==='npc')),cinematic:source.sceneEffect==='blackout',questionId:r.activeQuestionId,pending:Boolean(r.pending),cast:playerPartnerCast(prefix,source,r.pending).map(e=>e.characterId)}});
       assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`overflow: ${width}, ${current.id}`);
-      if(current.screen==='quiz'){const answer=await page.evaluate(()=>activeQuestion().answer);await tap(`[data-answer="${answer}"]`);await tap('[data-action="quiz-next"]');continue}
+      if(current.screen==='quiz'){const image=page.locator('.official-source-question img');if(await image.count()){await image.evaluate(img=>img.decode());assert(await image.evaluate(img=>img.naturalWidth>0&&img.naturalHeight>0));}const answer=await page.evaluate(()=>activeQuestion().answer);await tap(`[data-answer="${answer}"]`);await tap('[data-action="quiz-next"]');continue}
+      if(current.line?.speakerType==='npc'){assert(await page.locator('.speech-bubble').count());assert(await page.getByText(current.line.characterName,{exact:true}).count());}
       const stage=page.locator('.stage-character');
       if(!current.cinematic&&current.cast.length){
         const hasPartner=current.cast.length===2,hasActive=current.cast.includes(current.line.characterId);assert.equal(await stage.count(),current.cast.length,`${current.id}: exactly two slots`);
@@ -43,7 +44,7 @@ async function main(){
       else await tap('[data-action="next"]');
     }
     assert(partners.has('doyun')&&[...partners].every(id=>['doyun','hyunwoo'].includes(id)));
-    assert.equal(await page.evaluate(()=>Object.keys(run().questionResults).length),17);
+    assert.equal(await page.evaluate(()=>Object.keys(run().questionResults).length),29);
     await tap('[data-nav="teaser"]');assert(await page.getByText('CH.04 시작하기',{exact:true}).count());
     assert.deepEqual(errors,[]);console.log(`PASS: CH.03 ${width}px full play, ${spokenFrames} spoken frames, two slots, emphasis, image decode, no overflow and CH.04 unlock.`);await profile.close();
   }

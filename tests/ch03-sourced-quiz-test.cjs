@@ -19,7 +19,7 @@ for(const wrong of [false,true]){
   assert(++guard<500);
   if(vm.runInContext('screen',context)==='quiz'){
    const q=vm.runInContext('activeQuestion()',context);seen.push(q.questionId);
-   assert(html.includes(q.question));assert(html.includes(q.isOfficial?'제'+q.examRound+'회':'[심화 연습]'));assert.equal(vm.runInContext('STORIES[run().storyId].quizOnly',context),true);assert.equal(current().run.questionQueue.length,vm.runInContext("QUESTION_SETS[run().activeQuestionSetId].requiredCount",context));assert.equal(current().run.storyId,vm.runInContext('QUESTION_SCENE_IDS[run().activeQuestionId]',context));assert(!html.includes('character-stage'));
+   assert(html.includes(q.question));if(q.isOfficial){assert(html.includes(q.sourceQuestionImage));assert.equal(fs.existsSync("dist/"+q.sourceQuestionImage),true)}assert(html.includes(q.isOfficial?'제'+q.examRound+'회':'[심화 연습]'));assert.equal(vm.runInContext('STORIES[run().storyId].quizOnly',context),true);assert.equal(current().run.questionQueue.length,vm.runInContext("QUESTION_SETS[run().activeQuestionSetId].requiredCount",context));assert.equal(current().run.storyId,vm.runInContext('QUESTION_SCENE_IDS[run().activeQuestionId]',context));assert(!html.includes('character-stage'));
    for(let i=0;i<q.choices.length;i++)assert(html.includes('data-answer="'+i+'"'));
    boot();action('play');assert.equal(current().run.activeQuestionId,q.questionId,'reload before answer');
    const before=current().run.stats.knowledge;answer(wrong?(q.answer+1)%q.choices.length:q.answer);
@@ -34,7 +34,7 @@ for(const wrong of [false,true]){
   else if(html.includes('data-choice='))selectChoice(0);
   else action('next');
  }
- assert.deepEqual(seen,expected);assert.equal(Object.keys(current().run.questionResults).length,17);
+ assert.deepEqual(seen,expected);assert.equal(Object.keys(current().run.questionResults).length,29);
  assert.equal(story(),'ch02_chapter_clear');assert(current().meta.completedChapters.includes('ch03'));
- console.log('PASS: CH.03 seventeen questions in nine 1–3-question blocks, '+(wrong?'all incorrect':'all correct')+', source labels, choices, explanation, rewards, reload, story return and chapter clear.');
+ console.log('PASS: CH.03 twenty-nine questions in fifteen 1–3-question blocks, '+(wrong?'all incorrect':'all correct')+', source labels, choices, explanation, rewards, reload, story return and chapter clear.');
 }

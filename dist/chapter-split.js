@@ -1371,16 +1371,174 @@ const CH03_PACING_PRACTICE=[
 for(const q of CH03_PACING_PRACTICE)q.examKeywords=q.year===958?['광종','쌍기','과거제']:['고려 초기','광종',q.questionId==='ch03-practice-kings-flow'?'왕의 순서':q.year+'년'];
 Object.assign(CH03_PACING_PRACTICE.find(q=>q.questionId==='ch03-practice-gwageo-king'),{relatedIllustrationId:'ch02-exam-notice',resumeStoryId:'ch02_exam_eve'});
 QUESTIONS.push(...CH03_PACING_PRACTICE);
+// Apply PDF corrections after legacy official IDs have been created; keep their IDs and save records.
+for(const original of CH03_PDF_OFFICIAL_RECORDS){const q=QUESTIONS.find(q=>q.questionId===original.questionId);if(!q)throw Error('Missing PDF question: '+original.questionId);Object.assign(q,original);}
 const CH03_LEARNING_BLOCKS=[
-  {setId:'ch03-market-warmup',afterSceneId:'ch02_market',resumeStoryId:'ch02_life_path',afterChoice:true,practice:['ch03-practice-king-949','ch03-practice-kings-flow'],official:[],illustrationId:'ch02-gaegyeong-market'},
-  {setId:'ch03-time-retrieval',afterSceneId:'ch02_jump_956',resumeStoryId:'ch02_shop_956',practice:['ch03-practice-king-956'],official:[],illustrationId:'ch02-doyun-shop-956'},
-  {setId:'ch03-nobi-inspection',practice:['ch03-practice-nobi-basic','ch02-review-01'],official:['ch02-official-74-advanced-11'],illustrationId:'ch02-freed-citizen'},
-  {setId:'ch03-noble-reaction',afterSceneId:'ch02_noble_night',resumeStoryId:'ch02_jump_958',practice:['ch03-practice-nobi-power'],official:[],illustrationId:'ch02-nobles-night'},
-  {setId:'ch03-gwageo',practice:['ch02-test-02','ch03-practice-gwageo-purpose'],official:['ch02-official-78-advanced-11'],illustrationId:'ch02-exam-notice'},
-  {setId:'ch03-gwageo-exam-day',afterSceneId:'ch02_exam_day',resumeStoryId:'ch02_official_robes_walk',practice:[],official:['ch03-official-71-advanced-11'],illustrationId:'ch02-exam-yard'},
-  {setId:'ch03-official-robes',afterSceneId:'ch02_hyunwoo_official',resumeStoryId:'ch02_reign_titles',practice:['ch02-test-robes'],official:[],illustrationId:'ch02-reign-titles'},
-  {setId:'ch03-imperial-symbols',practice:['ch02-test-04'],official:['ch02-official-76-advanced-50','ch02-official-77-advanced-14'],illustrationId:'ch02-reign-titles'},
-  {setId:'ch03-gwangjong-synthesis',practice:['ch02-test-06'],official:['ch03-official-68-advanced-11'],illustrationId:'ch02-complete'}
+  {
+    "setId": "ch03-early-kings",
+    "afterSceneId": "ch02_reunion_949",
+    "resumeStoryId": "ch02_market",
+    "practice": [],
+    "official": [
+      "ch03-pdf-69-advanced-10",
+      "ch03-pdf-75-basic-12"
+    ],
+    "illustrationId": "ch02-gaegyeong-market"
+  },
+  {
+    "setId": "ch03-market-warmup",
+    "afterSceneId": "ch02_market",
+    "resumeStoryId": "ch02_life_path",
+    "afterChoice": true,
+    "practice": [
+      "ch03-practice-king-949",
+      "ch03-practice-kings-flow"
+    ],
+    "official": [],
+    "illustrationId": "ch02-gaegyeong-market"
+  },
+  {
+    "setId": "ch03-time-retrieval",
+    "afterSceneId": "ch02_jump_956",
+    "resumeStoryId": "ch02_shop_956",
+    "practice": [
+      "ch03-practice-king-956"
+    ],
+    "official": [],
+    "illustrationId": "ch02-doyun-shop-956"
+  },
+  {
+    "setId": "ch03-policy-comparison",
+    "afterSceneId": "ch02_shop_956",
+    "resumeStoryId": "ch02_dispute",
+    "afterChoice": true,
+    "practice": [],
+    "official": [
+      "ch03-pdf-65-advanced-10"
+    ],
+    "illustrationId": "ch02-doyun-shop-956"
+  },
+  {
+    "setId": "ch03-centralization",
+    "afterSceneId": "ch02_policy_reason",
+    "resumeStoryId": "ch02_policy_memory",
+    "afterChoice": true,
+    "practice": [],
+    "official": [
+      "ch03-pdf-65-advanced-11"
+    ],
+    "illustrationId": "ch02-freed-citizen"
+  },
+  {
+    "setId": "ch03-nobi-inspection",
+    "practice": [
+      "ch03-practice-nobi-basic",
+      "ch02-review-01"
+    ],
+    "official": [
+      "ch02-official-74-advanced-11"
+    ],
+    "illustrationId": "ch02-freed-citizen"
+  },
+  {
+    "setId": "ch03-noble-reaction",
+    "afterSceneId": "ch02_noble_night",
+    "resumeStoryId": "ch02_jump_958",
+    "practice": [
+      "ch03-practice-nobi-power"
+    ],
+    "official": [
+      "ch03-pdf-73-advanced-11"
+    ],
+    "illustrationId": "ch02-nobles-night"
+  },
+  {
+    "setId": "ch03-official-education",
+    "afterSceneId": "ch02_exam_notice",
+    "resumeStoryId": "ch02_three_way",
+    "practice": [],
+    "official": [
+      "ch03-pdf-76-advanced-11"
+    ],
+    "illustrationId": "ch02-exam-notice"
+  },
+  {
+    "setId": "ch03-gwageo",
+    "practice": [
+      "ch02-test-02",
+      "ch03-practice-gwageo-purpose"
+    ],
+    "official": [
+      "ch02-official-78-advanced-11"
+    ],
+    "illustrationId": "ch02-exam-notice"
+  },
+  {
+    "setId": "ch03-gwageo-exam-day",
+    "afterSceneId": "ch02_exam_day",
+    "resumeStoryId": "ch02_official_robes_walk",
+    "practice": [],
+    "official": [
+      "ch03-official-71-advanced-11",
+      "ch03-pdf-75-basic-10"
+    ],
+    "illustrationId": "ch02-exam-yard"
+  },
+  {
+    "setId": "ch03-official-robes",
+    "afterSceneId": "ch02_hyunwoo_official",
+    "resumeStoryId": "ch02_reign_titles",
+    "practice": [
+      "ch02-test-robes"
+    ],
+    "official": [
+      "ch03-pdf-68-advanced-09",
+      "ch03-pdf-76-advanced-18"
+    ],
+    "illustrationId": "ch02-reign-titles"
+  },
+  {
+    "setId": "ch03-imperial-symbols",
+    "practice": [
+      "ch02-test-04"
+    ],
+    "official": [
+      "ch02-official-76-advanced-50",
+      "ch02-official-77-advanced-14"
+    ],
+    "illustrationId": "ch02-reign-titles"
+  },
+  {
+    "setId": "ch03-royal-policy-check",
+    "afterSceneId": "ch02_purge",
+    "resumeStoryId": "ch02_night_discussion",
+    "practice": [],
+    "official": [
+      "ch03-pdf-70-advanced-13",
+      "ch03-pdf-79-advanced-13"
+    ],
+    "illustrationId": "ch02-complete"
+  },
+  {
+    "setId": "ch03-gwangjong-synthesis",
+    "practice": [
+      "ch02-test-06"
+    ],
+    "official": [
+      "ch03-official-68-advanced-11"
+    ],
+    "illustrationId": "ch02-complete"
+  },
+  {
+    "setId": "ch03-kingdom-system-check",
+    "afterSceneId": "ch02_complete",
+    "resumeStoryId": "ch02_night_reflection",
+    "practice": [],
+    "official": [
+      "ch03-pdf-72-advanced-11"
+    ],
+    "illustrationId": "ch02-complete"
+  }
 ];
 const QUESTION_SCENE_IDS={};
 for(const block of CH03_LEARNING_BLOCKS){
@@ -1408,6 +1566,7 @@ for(const block of CH03_LEARNING_BLOCKS){
 MAIN_QUESTION_IDS.ch03=CH03_LEARNING_BLOCKS.flatMap(b=>[...b.practice,...b.official]);
 // Preserve the prior bank and review order for saved review sessions.
 REVIEW_QUESTION_IDS.ch03=["ch03-practice-king-949","ch03-practice-kings-flow","ch03-practice-king-956","ch03-practice-nobi-basic","ch02-review-01","ch02-test-01","ch03-practice-nobi-power","ch02-test-02","ch03-practice-gwageo-king","ch03-practice-gwageo-purpose","ch02-test-robes","ch02-test-03","ch02-test-04","ch02-official-77-advanced-14","ch02-test-05","ch02-test-06","ch03-official-68-advanced-11","ch03-practice-nobi-source","ch03-practice-gwageo-basic","ch03-practice-symbols-basic","ch03-official-71-advanced-11","ch02-official-74-advanced-11","ch02-official-76-advanced-50","ch02-official-78-advanced-11"];
+REVIEW_QUESTION_IDS.ch03.push(...CH03_PDF_OFFICIAL_RECORDS.filter(q=>!REVIEW_QUESTION_IDS.ch03.includes(q.questionId)).map(q=>q.questionId));
 for(const id of REVIEW_QUESTION_IDS.ch03){const q=QUESTIONS.find(q=>q.questionId===id);q.retired=false;q.reviewOnly=!MAIN_QUESTION_IDS.ch03.includes(id);}
 SPLIT_STORY_QUESTION_IDS.ch03=[...MAIN_QUESTION_IDS.ch03];SPLIT_REVIEW_IDS.ch03=[...REVIEW_QUESTION_IDS.ch03];
 Object.assign(CHAPTERS.ch03,{questionCount:MAIN_QUESTION_IDS.ch03.length,reviewQuestionCount:REVIEW_QUESTION_IDS.ch03.length});
@@ -1417,7 +1576,7 @@ for(const q of [...CH03_ADDED_PRACTICE,...CH03_PACING_PRACTICE])for(const concep
 for(const s of Object.values(STORIES).filter(s=>s.chapterId==='ch03'&&!s.quizOnly)){
   s.characterPortraitIds=['player','doyun','hyunwoo'];
   if(['narration','description','history','result','ambient-rumor'].includes(s.sceneType)&&!s.stageCast)s.characterStageMode='hidden';
-  for(const line of s.dialogues||[])if(line.speakerType==='npc'&&!s.characterPortraitIds.includes(line.characterId))line.presentation='description';
+  for(const line of s.dialogues||[])if(line.speakerType==='npc'){line.presentation='dialogue';line.portraitAllowed=s.characterPortraitIds.includes(line.characterId);}
 }
 
 // Keep an older saved question-step ID, but exclude it from new-play progress.

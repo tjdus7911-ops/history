@@ -100,3 +100,6 @@ body:has(.cinematic-black) .mobile-nav{display:none}
 .history-timeline li{display:grid;gap:4px;padding:8px 0}
 .history-timeline strong{font-size:14px}
 .history-timeline span{font-size:12px;line-height:1.6;color:#eee7da}
+
+/* Original exam figures stay separate from story portraits. */
+.official-source-question{margin:16px 0;padding:10px;background:#fff;border-radius:12px;overflow:hidden}.official-source-question img{display:block;width:100%;max-width:100%;height:auto}.official-source-question figcaption{margin-top:8px;color:#48515c;font-size:12px;overflow-wrap:anywhere}

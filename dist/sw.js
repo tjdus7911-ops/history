@@ -1,5 +1,5 @@
 const CACHE_PREFIX='lived-history-shell-';
-const CACHE_VERSION='2026-10-03-ch03-verified-cast-v19';
+const CACHE_VERSION='2026-10-04-ch03-pdf-dialogue-v20';
 const CACHE_NAME=CACHE_PREFIX+CACHE_VERSION;
 const APP_SHELL=[
   '/',

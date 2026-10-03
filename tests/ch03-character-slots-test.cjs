@@ -7,7 +7,7 @@ const click=dataset=>{evaluate('inputLockedUntil=0');handler({target:{closest:()
 boot();
 const scenes=evaluate('Object.values(STORIES).filter(s=>s.chapterId==="ch03"&&!s.quizOnly)'),fixture=JSON.parse(fs.readFileSync('tests/fixtures/ch03-stage-protected.json','utf8'));
 const hash=value=>crypto.createHash('sha256').update(JSON.stringify(value)).digest('hex');
-for(const scene of scenes){const content=JSON.parse(JSON.stringify(scene));for(const key of fixture.ignoredPresentationAndLearningFields)delete content[key];for(const line of content.dialogues||[])delete line.presentation;assert.equal(hash(content),fixture.scenes[scene.sceneId],`story/choice/quiz preservation: ${scene.sceneId}`)}
+for(const scene of scenes){const content=JSON.parse(JSON.stringify(scene));for(const key of fixture.ignoredPresentationAndLearningFields)delete content[key];for(const line of content.dialogues||[]){delete line.presentation;delete line.portraitAllowed;}assert.equal(hash(content),fixture.scenes[scene.sceneId],`story/choice/quiz preservation: ${scene.sceneId}`)}
 for(const[path,digest]of Object.entries(fixture.images))assert.equal(crypto.createHash('sha256').update(fs.readFileSync('dist/'+path)).digest('hex'),digest,`existing image unchanged: ${path}`);
 const portraits=()=>[...html.matchAll(/<img class="stage-character ([^"]+)"[^>]*data-character-id="([^"]+)"[^>]*data-position="([^"]+)"[^>]*src="([^"]+)"/g)].map(m=>({classes:m[1],id:m[2],position:m[3],src:m[4]}));
 let checked=0;const repaired=new Set();
@@ -29,7 +29,7 @@ for(const scene of scenes){
   evaluate(`state=INITIAL();state.run.currentChapter='ch03';state.run.started=true;state.run.storyId=${JSON.stringify(scene.sceneId)};screen='game';enterStory()`);
   let lastPartner=null;
   for(let i=0;i<scene.dialogues.length;i++){
-    const line=scene.dialogues[i];if(line.speakerType==='npc')lastPartner=line.characterId;
+    const line=scene.dialogues[i];if(line.speakerType==='npc'){assert.equal(line.presentation,'dialogue');assert.equal(line.portraitAllowed,['doyun','hyunwoo'].includes(line.characterId));}if(line.speakerType==='npc')lastPartner=line.characterId;
     const expected=lastPartner||scene.dialogues.find(l=>l.speakerType==='npc')?.characterId;
     evaluate(`run().dialogueCursor=${i+1};render()`);check(line,expected,scene);
   }
@@ -52,10 +52,10 @@ click({action:'advance-dialogue'});assert(html.includes('고맙소. 허나 무�
 evaluate("state=INITIAL();state.run.currentChapter='ch03';state.run.storyId='ch02_three_way';screen='game';enterStory();run().dialogueCursor=1;render()");assert.deepEqual(portraits().map(c=>c.id),['doyun','hyunwoo']);assert(portraits().find(c=>c.id==='hyunwoo').classes.includes('active'));
 evaluate('run().dialogueCursor=2;render()');assert.equal(portraits()[0].id,'doyun');
 evaluate('run().dialogueCursor=3;render()');assert.deepEqual(portraits().map(c=>c.id),['doyun','hyunwoo']);assert(portraits().find(c=>c.id==='hyunwoo').classes.includes('active'));
-// The official's ruling is a description, then a genuine reply restores slots.
+// Officials and freed people keep named dialogue bubbles without portraits.
 evaluate("state=INITIAL();state.run.currentChapter='ch03';state.run.started=true;state.run.storyId='ch02_policy_reason';screen='game';enterStory();render()");
-assert.equal(portraits().length,0);assert(html.includes('이 자는 본래 양인이었음이 확인되었다. 양인으로 돌아간다.'));assert(html.includes('narration-line'));
-click({action:'advance-dialogue'});assert.equal(portraits().length,0);assert(html.includes('narration-line'));
+assert.equal(portraits().length,0);assert(html.includes('이 자는 본래 양인이었음이 확인되었다. 양인으로 돌아간다.'));assert(html.includes('speech-bubble'));
+click({action:'advance-dialogue'});assert.equal(portraits().length,0);assert(html.includes('speech-bubble'));
 evaluate('run().dialogueCursor=6;render()');assert.equal(portraits().length,0);
 click({choice:'0'});assert.equal(portraits().length,2);click({action:'advance-dialogue'});assert.equal(portraits().length,0);click({action:'result-next'});assert.equal(portraits().length,0);
 click({action:'advance-dialogue'});click({action:'next'});assert.equal(evaluate('screen'),'quiz');assert.equal(portraits().length,0);

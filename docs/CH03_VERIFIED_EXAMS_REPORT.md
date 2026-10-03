@@ -1,3 +1,5 @@
+> 이전 작업의 기록입니다. 현재 문제 수와 NPC 대화 규칙은 [CH03_PDF_SURVEY.md](CH03_PDF_SURVEY.md)를 기준으로 확인하세요.
+
 # CH.03 공식 기출 및 캐릭터 검수 결과
 
 기준 main: 26d0a74b4fcb6e18a2039032a0f1a2d9d94c5ff8

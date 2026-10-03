@@ -6,12 +6,12 @@ const{SAVE_VERSION,CHAPTERS,STORIES,QUESTIONS,QUESTION_POOLS,QUESTION_SETS,SPLIT
 
 assert.equal(SAVE_VERSION,15);
 assert.equal(Object.keys(CHAPTERS).length,12);
-assert.deepEqual(Object.fromEntries(['ch01','ch02','ch03','ch04'].map(id=>[id,CHAPTERS[id].questionCount])),{ch01:9,ch02:15,ch03:17,ch04:3});
-assert.deepEqual(Object.fromEntries(['ch01','ch02','ch03','ch04'].map(id=>[id,CHAPTERS[id].reviewQuestionCount])),{ch01:9,ch02:15,ch03:24,ch04:3});
+assert.deepEqual(Object.fromEntries(['ch01','ch02','ch03','ch04'].map(id=>[id,CHAPTERS[id].questionCount])),{ch01:9,ch02:15,ch03:29,ch04:3});
+assert.deepEqual(Object.fromEntries(['ch01','ch02','ch03','ch04'].map(id=>[id,CHAPTERS[id].reviewQuestionCount])),{ch01:9,ch02:15,ch03:36,ch04:3});
 
 const official=QUESTIONS.filter(q=>q.isOfficial&&!q.retired),earlyOfficial=official.filter(q=>Number(q.chapterId.slice(2))<=4),lateOfficial=official.filter(q=>Number(q.chapterId.slice(2))>=5),main=QUESTIONS.filter(q=>!q.retired&&!q.reviewOnly&&['ch01','ch02','ch03','ch04'].includes(q.chapterId));
-assert.equal(earlyOfficial.length,21);assert.equal(lateOfficial.length,8);
-assert.equal(main.length,44);
+assert.equal(earlyOfficial.length,33);assert.equal(lateOfficial.length,8);
+assert.equal(main.length,56);
 assert(main.every(q=>q.isOfficial?q.sourceVerified&&q.sourceType==='official_exam':q.sourceType==='original_advanced_practice'&&q.examType.startsWith('[심화 연습]')));
 assert.equal(QUESTIONS.filter(q=>!q.isOfficial&&!q.retired&&['ch01','ch02','ch03','ch04'].includes(q.chapterId)).length,30);
 const latePractice=QUESTIONS.filter(q=>!q.isOfficial&&!q.retired&&Number(q.chapterId.slice(2))>=5);
@@ -37,7 +37,7 @@ for(const[id,answer]of Object.entries(newAnswers))assert.equal(QUESTIONS.find(q=
 assert.equal(QUESTIONS.find(q=>q.questionId==='ch02-official-66-advanced-09').chapterId,'ch02','66회 9번은 궁예가 아니라 견훤 문제');
 
 const earlySets=Object.values(QUESTION_SETS).filter(set=>Number(set.chapterId.slice(2))<=4),ready=earlySets.filter(set=>set.status==='ready'),waiting=earlySets.filter(set=>set.status==='waiting_for_source');
-assert.deepEqual(ready.map(set=>set.questionSetId),['ch01-foundation','ch01-gongsan','ch01-gochang','ch02-gyeonhwon','ch02-illyecheon','ch02-taejo-integration','ch02-north-welfare','ch02-hunyo','ch03-nobi-inspection','ch03-gwageo','ch03-gwangjong-synthesis','ch03-imperial-symbols','ch04-seongjong-system','ch03-market-warmup','ch03-time-retrieval','ch03-noble-reaction','ch03-gwageo-exam-day','ch03-official-robes']);
+assert.deepEqual(ready.map(set=>set.questionSetId),["ch01-foundation","ch01-gongsan","ch01-gochang","ch02-gyeonhwon","ch02-illyecheon","ch02-taejo-integration","ch02-north-welfare","ch02-hunyo","ch03-nobi-inspection","ch03-gwageo","ch03-gwangjong-synthesis","ch03-imperial-symbols","ch04-seongjong-system","ch03-early-kings","ch03-market-warmup","ch03-time-retrieval","ch03-policy-comparison","ch03-centralization","ch03-noble-reaction","ch03-official-education","ch03-gwageo-exam-day","ch03-official-robes","ch03-royal-policy-check","ch03-kingdom-system-check"]);
 assert.equal(waiting.length,0);
 for(const set of earlySets){
   const expectedRequired=set.chapterId==='ch03'?set.practiceQuestionIds.length+set.officialQuestionIds.length:3,allIds=[...(set.officialQuestionIds||[]),...(set.practiceQuestionIds||[])];
@@ -62,12 +62,12 @@ function walk(startId,state){let paths=0;const tests=new Set(),branches=new Set(
     if(s.completeChapter){paths++;return}
     const set=s.questionSetId&&QUESTION_SETS[s.questionSetId];
     if(!s.choices&&set?.status==='ready'){const ids=[...(set.officialQuestionIds||[]),...(set.practiceQuestionIds||[])];assert.equal(ids.length,set.requiredCount);for(const qid of ids){const q=QUESTIONS.find(item=>item.questionId===qid);tests.add(qid);recordQuestion(copy,qid,q.answer)}return visit(set.resumeStoryId,copy,[...stack,id])}
-    if(s.choices){branches.add(id);for(let index=0;index<s.choices.length;index++){const branch=JSON.parse(JSON.stringify(copy));applyChoice(branch,id,index);branch.run.pending=null;if(s.afterChoiceQuestionSetId){for(const qid of QUESTION_SETS[s.afterChoiceQuestionSetId].practiceQuestionIds){tests.add(qid);const q=QUESTIONS.find(q=>q.questionId===qid);recordQuestion(branch,qid,q.answer)}}visit(branch.run.storyId,branch,[...stack,id])}return}
+    if(s.choices){branches.add(id);for(let index=0;index<s.choices.length;index++){const branch=JSON.parse(JSON.stringify(copy));applyChoice(branch,id,index);branch.run.pending=null;if(s.afterChoiceQuestionSetId){for(const qid of [...QUESTION_SETS[s.afterChoiceQuestionSetId].practiceQuestionIds,...QUESTION_SETS[s.afterChoiceQuestionSetId].officialQuestionIds]){tests.add(qid);const q=QUESTIONS.find(q=>q.questionId===qid);recordQuestion(branch,qid,q.answer)}}visit(branch.run.storyId,branch,[...stack,id])}return}
     assert(s.nextStoryId,`${id}: dead end`);visit(s.nextStoryId,copy,[...stack,id]);
   }
   visit(startId,state);return{paths,tests,branches};
 }
-const expected={ch01:{paths:4,tests:9},ch02:{paths:3,tests:15},ch03:{paths:324,tests:17},ch04:{paths:3,tests:3}};
+const expected={ch01:{paths:4,tests:9},ch02:{paths:3,tests:15},ch03:{paths:324,tests:29},ch04:{paths:3,tests:3}};
 for(const id of ['ch01','ch02','ch03','ch04']){
   const state=INITIAL();state.run.started=true;
   for(const previous of ['ch01','ch02','ch03']){if(previous===id)break;finishChapter(state);startChapter(state,CHAPTERS[previous].nextChapterId)}

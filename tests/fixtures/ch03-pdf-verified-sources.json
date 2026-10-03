@@ -1,0 +1,906 @@
+{
+  "baseline": "933fecf96911ac193f57cd35bd9535a3908e3085",
+  "sources": [
+    {
+      "examRound": 65,
+      "questionNumber": 10,
+      "examLevel": "심화",
+      "examYear": 2023,
+      "sourcePage": 3,
+      "questionId": "ch03-pdf-65-advanced-10",
+      "concept": "태조·광종 정책 구분",
+      "question": "(가) 왕의 재위 시기에 있었던 사실로 옳은 것은?",
+      "choices": [
+        "개국 공신에게 역분전을 지급하였다.",
+        "외침에 대비하여 광군을 조직하였다.",
+        "광덕, 준풍 등의 독자적 연호를 사용하였다.",
+        "관학 진흥을 목적으로 양현고를 운영하였다.",
+        "주전도감을 설치하여 해동통보를 발행하였다."
+      ],
+      "answer": 0,
+      "explanation": "흑창을 설치하고 정계·계백료서를 지은 왕은 태조입니다. 역분전도 태조의 정책입니다. 광덕·준풍은 광종, 광군은 정종, 양현고는 예종, 주전도감은 숙종과 구분합니다.",
+      "bounds": [
+        0.07,
+        0.09,
+        0.495,
+        0.465
+      ],
+      "sourceFile": "제65회 한국사능력검정시험 심화 문제지.pdf",
+      "answerFile": "제65회 한국사능력검정시험 심화 정답표.pdf",
+      "sourcePdfHash": "a50a6611da47601837319ba912a756586a2568634e925f4807fd7f46d6e14753",
+      "answerPdfHash": "12d805fdc905a3777e12ba5559bec57bcaf2731ec6ac9b4d754df6e86d9629ce",
+      "sourceQuestionImage": "assets/exams/ch03/65-심화-10.jpg",
+      "sourceImageHash": "892282895bbef73f1022fd113c05baed9bd47a65a27ec8dd6703c29eba6dc6cf",
+      "sourceImageWidth": 477,
+      "sourceImageHeight": 615
+    },
+    {
+      "examRound": 65,
+      "questionNumber": 11,
+      "examLevel": "심화",
+      "examYear": 2023,
+      "sourcePage": 3,
+      "questionId": "ch03-pdf-65-advanced-11",
+      "concept": "고려 초기 왕권 강화·성종 시기",
+      "question": "다음 상황이 나타난 시기를 연표에서 옳게 고른 것은?",
+      "choices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "answer": 1,
+      "explanation": "12목을 설치한 왕은 성종입니다. 성종의 정책은 광종의 노비안검법·과거제보다 뒤이며, 왕규의 난(945)과 강조의 정변(1009) 사이입니다.",
+      "bounds": [
+        0.07,
+        0.65,
+        0.495,
+        0.92
+      ],
+      "sourceFile": "제65회 한국사능력검정시험 심화 문제지.pdf",
+      "answerFile": "제65회 한국사능력검정시험 심화 정답표.pdf",
+      "sourcePdfHash": "a50a6611da47601837319ba912a756586a2568634e925f4807fd7f46d6e14753",
+      "answerPdfHash": "12d805fdc905a3777e12ba5559bec57bcaf2731ec6ac9b4d754df6e86d9629ce",
+      "sourceQuestionImage": "assets/exams/ch03/65-심화-11.jpg",
+      "sourceImageHash": "74919c55f9438ebad7afd670106964964088c1df0e35de5d5dc984c79e097618",
+      "sourceImageWidth": 477,
+      "sourceImageHeight": 442
+    },
+    {
+      "examRound": 68,
+      "questionNumber": 9,
+      "examLevel": "심화",
+      "examYear": 2023,
+      "sourcePage": 2,
+      "questionId": "ch03-pdf-68-advanced-09",
+      "concept": "성종·관료 교육·왕별 정책",
+      "question": "밑줄 그은 ‘교서를 내린 왕’의 재위 기간에 볼 수 있는 모습으로 가장 적절한 것은?",
+      "choices": [
+        "서적포에서 책을 인쇄하는 관리",
+        "국자감 학생들을 가르치는 박사",
+        "흥원창의 재정을 관리하는 관원",
+        "9재 학당에서 유교 경전을 읽는 학생",
+        "청연각의 소장 도서를 분류하는 학사"
+      ],
+      "answer": 1,
+      "explanation": "상평창을 설치한 왕은 성종입니다. 성종은 국자감을 설치했습니다. 광종의 시험 선발과 이후 성종의 국가 교육 기관을 구분합니다.",
+      "bounds": [
+        0.51,
+        0.665,
+        0.94,
+        0.91
+      ],
+      "sourceFile": "68회 한국사_문제지(심화).pdf",
+      "answerFile": "68회 한국사_정답표(심화).pdf",
+      "sourcePdfHash": "a407b26f559eeeed787b1e2d2e99f96532c9e7673372efd82aa0bd8362864fa9",
+      "answerPdfHash": "37f0db72ac12ecf607fb8e954a08f9283b5dcb41ce5631edbebe996f02d07d75",
+      "sourceQuestionImage": "assets/exams/ch03/68-심화-09.jpg",
+      "sourceImageHash": "6820874cf33181179378566b8055867f577e911117dcc7349ac2fa91af1f7f30",
+      "sourceImageWidth": 483,
+      "sourceImageHeight": 402
+    },
+    {
+      "examRound": 68,
+      "questionNumber": 11,
+      "examLevel": "심화",
+      "examYear": 2023,
+      "sourcePage": 3,
+      "questionId": "ch03-official-68-advanced-11",
+      "concept": "광종·귀화인·독자적 연호",
+      "question": "(가) 왕의 재위 시기에 있었던 사실로 옳은 것은?",
+      "choices": [
+        "최승로가 시무 28조를 건의하였다.",
+        "경기에 한하여 과전법이 실시되었다.",
+        "신돈이 전민변정도감의 판사가 되었다.",
+        "빈민 구제 기관인 흑창이 처음 설치되었다.",
+        "광덕, 준풍 등의 독자적 연호가 사용되었다."
+      ],
+      "answer": 4,
+      "explanation": "노비안검법을 실시하고 귀화인 쌍기 등을 등용한 왕은 광종입니다. 광덕·준풍은 광종이 사용한 독자적 연호입니다.",
+      "bounds": [
+        0.07,
+        0.545,
+        0.495,
+        0.92
+      ],
+      "sourceFile": "68회 한국사_문제지(심화).pdf",
+      "answerFile": "68회 한국사_정답표(심화).pdf",
+      "sourcePdfHash": "a407b26f559eeeed787b1e2d2e99f96532c9e7673372efd82aa0bd8362864fa9",
+      "answerPdfHash": "37f0db72ac12ecf607fb8e954a08f9283b5dcb41ce5631edbebe996f02d07d75",
+      "sourceQuestionImage": "assets/exams/ch03/68-심화-11.jpg",
+      "sourceImageHash": "9af4e0e7cecb8c2f8f47071858f601804995a82163c5110e28aed8e94ec446e7",
+      "sourceImageWidth": 477,
+      "sourceImageHeight": 614
+    },
+    {
+      "examRound": 69,
+      "questionNumber": 10,
+      "examLevel": "심화",
+      "examYear": 2024,
+      "sourcePage": 3,
+      "questionId": "ch03-pdf-69-advanced-10",
+      "concept": "태조·광종·성종 정책 비교",
+      "question": "(가) 왕에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "관학 진흥을 위해 양현고를 설치하였다.",
+        "쌍기의 건의를 받아들여 과거제를 시행하였다.",
+        "전국에 12목을 설치하고 지방관을 파견하였다.",
+        "전시과 제도를 처음 마련하여 관리에게 토지를 지급하였다.",
+        "후대 왕들이 지켜야 할 정책 방향을 담은 훈요 10조를 남겼다."
+      ],
+      "answer": 4,
+      "explanation": "후삼국을 통일하고 개태사를 세운 왕은 태조입니다. 훈요 10조는 태조, 쌍기의 건의에 따른 과거제는 광종, 12목 지방관 파견은 성종입니다.",
+      "bounds": [
+        0.055,
+        0.6,
+        0.49,
+        0.925
+      ],
+      "sourceFile": "69회 한국사_문제지(심화).pdf",
+      "answerFile": "69회 한국사_정답표(심화).pdf",
+      "sourcePdfHash": "9656cfbd40c3ed2b9f13ebb96e9a347bad87db8511dfe8954857baf7ccc91a26",
+      "answerPdfHash": "8596e629436c89d05719cb063470cdef4217df5954e39c7f141311542d5f6183",
+      "sourceQuestionImage": "assets/exams/ch03/69-심화-10.jpg",
+      "sourceImageHash": "c39a1b98aa4b77782b73cd3f1516280c6abdd8edccab9c0479b2a794822d5be5",
+      "sourceImageWidth": 476,
+      "sourceImageHeight": 503
+    },
+    {
+      "examRound": 70,
+      "questionNumber": 13,
+      "examLevel": "심화",
+      "examYear": 2024,
+      "sourcePage": 3,
+      "questionId": "ch03-pdf-70-advanced-13",
+      "concept": "광종·성종·숙종 정책 구분",
+      "question": "(가) 왕에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "여진 정벌을 위해 별무반을 창설하였다.",
+        "전국에 12목을 설치하고 관리를 파견하였다.",
+        "광덕, 준풍 등의 독자적인 연호를 사용하였다.",
+        "거란의 침입에 대비하여 개경에 나성을 축조하였다.",
+        "정계와 계백료서를 지어 관리의 규범을 제시하였다."
+      ],
+      "answer": 0,
+      "explanation": "주전도감을 설치하고 해동통보를 발행한 왕은 숙종입니다. 숙종은 별무반을 창설했습니다. 광덕·준풍은 광종, 12목은 성종, 정계·계백료서는 태조의 정책입니다.",
+      "bounds": [
+        0.51,
+        0.54,
+        0.945,
+        0.925
+      ],
+      "sourceFile": "70회 한국사_문제지(심화).pdf",
+      "answerFile": "70회 한국사_정답지(심화).pdf",
+      "sourcePdfHash": "4e9195f278bfdb5223cef43d60ff3bb1d55f09e4db0af803476392b08acc978c",
+      "answerPdfHash": "06b1ae9f5e8a33b8b9cd5c3f5d3c4d0acd6049e31a4a4b45a38658c574a252c1",
+      "sourceQuestionImage": "assets/exams/ch03/70-심화-13.jpg",
+      "sourceImageHash": "da07266bcdafdd0f66d2a3cf94f2767e00be06dbbe8fd68dd42644d20e50d0b4",
+      "sourceImageWidth": 476,
+      "sourceImageHeight": 596
+    },
+    {
+      "examRound": 71,
+      "questionNumber": 11,
+      "examLevel": "심화",
+      "examYear": 2024,
+      "sourcePage": 3,
+      "questionId": "ch03-official-71-advanced-11",
+      "concept": "광종·과거제·시기 판단",
+      "question": "(가), (나) 사이의 시기에 있었던 사실로 옳은 것은?",
+      "choices": [
+        "경기에 한하여 과전법이 실시되었다.",
+        "쌍기의 건의로 과거제가 시행되었다.",
+        "신돈이 전민변정도감의 책임자가 되었다.",
+        "만적이 개경에서 노비를 모아 반란을 모의하였다.",
+        "최충헌이 봉사 10조를 올려 시정 개혁을 건의하였다."
+      ],
+      "answer": 1,
+      "explanation": "태조의 역분전(940)과 문종의 경정 전시과(1076) 사이인 958년에 광종이 쌍기의 건의로 과거제를 시행했습니다.",
+      "bounds": [
+        0.055,
+        0.64,
+        0.49,
+        0.925
+      ],
+      "sourceFile": "71회 한국사_문제지(심화).pdf",
+      "answerFile": "제71회 심화 정답표.pdf",
+      "sourcePdfHash": "4faa9016aa092da3684782b3c46f7ba04165c954649334ad5ba9956f4399c4a6",
+      "answerPdfHash": "d412bab448e17d15d0cfd71d6c98a524c109157362b854316d55b280ee6a2a4e",
+      "sourceQuestionImage": "assets/exams/ch03/71-심화-11.jpg",
+      "sourceImageHash": "0e78d64985c096c9ef83ea310e8fef8b73d2b5e3a5adea53b2ed5e8e364064c6",
+      "sourceImageWidth": 476,
+      "sourceImageHeight": 441
+    },
+    {
+      "examRound": 72,
+      "questionNumber": 11,
+      "examLevel": "심화",
+      "examYear": 2024,
+      "sourcePage": 3,
+      "questionId": "ch03-pdf-72-advanced-11",
+      "concept": "광종·태조·성종 정책 구분",
+      "question": "다음 검색창에 들어갈 왕의 재위 기간에 있었던 사실로 옳은 것은?",
+      "choices": [
+        "관학을 진흥하고자 양현고를 설치하였다.",
+        "광덕, 준풍 등의 독자적 연호를 사용하였다.",
+        "주전도감을 설치하여 해동통보를 발행하였다.",
+        "정계와 계백료서를 지어 관리의 규범을 제시하였다.",
+        "최승로의 시무 28조를 받아들여 통치 체제를 정비하였다."
+      ],
+      "answer": 4,
+      "explanation": "12목과 국자감을 설치하고 흑창을 의창으로 고친 왕은 성종입니다. 광종의 독자적 연호, 태조의 정계·계백료서와 구분합니다.",
+      "bounds": [
+        0.055,
+        0.575,
+        0.495,
+        0.93
+      ],
+      "sourceFile": "제72회 심화 문제지.pdf",
+      "answerFile": "제72회 심화 정답표.pdf",
+      "sourcePdfHash": "87307e726a2605000a087b3c97ec2bae8e4c079ca2a2ef2b567cc9a4a415b9b5",
+      "answerPdfHash": "9f71656a1dfa110393e5097d3712c708e498470b3355ce680543ea959a59bfc7",
+      "sourceQuestionImage": "assets/exams/ch03/72-심화-11.jpg",
+      "sourceImageHash": "871f92503a88ccb5be38bd7ce09a366955b4dd1e395e3e26890812f3f6aeac07",
+      "sourceImageWidth": 481,
+      "sourceImageHeight": 550
+    },
+    {
+      "examRound": 73,
+      "questionNumber": 11,
+      "examLevel": "심화",
+      "examYear": 2025,
+      "sourcePage": 3,
+      "questionId": "ch03-pdf-73-advanced-11",
+      "concept": "태조·광종 정책 구분",
+      "question": "(가) 왕에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "한양을 남경으로 승격시켰다.",
+        "주전도감을 설치하여 해동통보를 발행하였다.",
+        "쌍기의 건의를 받아들여 과거제를 실시하였다.",
+        "청연각과 보문각을 두어 학문 연구를 장려하였다.",
+        "정계와 계백료서를 지어 관리의 규범을 제시하였다."
+      ],
+      "answer": 4,
+      "explanation": "고창 전투에서 승리하고 안동이라는 지명을 내린 왕은 태조입니다. 정계·계백료서는 태조, 쌍기의 건의에 따른 과거제는 광종의 정책입니다.",
+      "bounds": [
+        0.51,
+        0.06,
+        0.945,
+        0.6
+      ],
+      "sourceFile": "73회 심화 문제지.pdf",
+      "answerFile": "73회 심화 정답표.pdf",
+      "sourcePdfHash": "d6ad706f1bd7ce3a0b18d7b7cdda9439d10b7b712121428b21af2c31268c4836",
+      "answerPdfHash": "0dfeee4af303493e95a3a30c7f7cd890377f067789bdb7c00a9cc90af15c6347",
+      "sourceQuestionImage": "assets/exams/ch03/73-심화-11.jpg",
+      "sourceImageHash": "804be7854d6ad79107b05e67669eaaf2cbdd54a935c73bcc5a5544d2b5f6e553",
+      "sourceImageWidth": 476,
+      "sourceImageHeight": 836
+    },
+    {
+      "examRound": 74,
+      "questionNumber": 11,
+      "examLevel": "심화",
+      "examYear": 2025,
+      "sourcePage": 3,
+      "questionId": "ch02-official-74-advanced-11",
+      "concept": "광종·노비안검법·왕권 강화",
+      "question": "밑줄 그은 ‘이 왕’이 추진한 정책으로 옳은 것은?",
+      "choices": [
+        "폐정 개혁을 목표로 정치도감을 설치하였다.",
+        "광덕, 준풍이라는 독자적 연호를 사용하였다.",
+        "예의상정소에서 상정고금예문을 편찬하였다.",
+        "전국에 12목을 설치하고 지방관을 파견하였다.",
+        "관리에게 등급에 따라 전지와 시지를 지급하였다."
+      ],
+      "answer": 1,
+      "explanation": "노비안검법을 실시하고 호족을 숙청한 왕은 광종입니다. 광종은 광덕·준풍이라는 독자적 연호를 사용했습니다.",
+      "bounds": [
+        0.51,
+        0.065,
+        0.945,
+        0.405
+      ],
+      "sourceFile": "74회 한국사_문제지(심화).pdf",
+      "answerFile": "74회 심화 정답표.pdf",
+      "sourcePdfHash": "7d7322d680119d7b7b89c7465edc1dd8d0f06e8180594aff69b7d34502a44c79",
+      "answerPdfHash": "db21586adfbe6df757b51a87eb0824cb414379cbe8f984c8fe1709e5b3643b46",
+      "sourceQuestionImage": "assets/exams/ch03/74-심화-11.jpg",
+      "sourceImageHash": "091f22b9b9920a7ee258b32932930f933b501daf300946e1c64c261027878bf3",
+      "sourceImageWidth": 476,
+      "sourceImageHeight": 526
+    },
+    {
+      "examRound": 75,
+      "questionNumber": 10,
+      "examLevel": "기본",
+      "examYear": 2025,
+      "sourcePage": 3,
+      "questionId": "ch03-pdf-75-basic-10",
+      "concept": "광종·성종 정책·중앙 집권",
+      "question": "밑줄 그은 ‘왕’의 업적으로 옳은 것은?",
+      "choices": [
+        "노비안검법을 실시하였다.",
+        "쌍성총관부를 공격하였다.",
+        "12목에 지방관을 파견하였다.",
+        "공산 전투를 승리로 이끌었다."
+      ],
+      "answer": 2,
+      "explanation": "최승로의 시무 28조를 받아들이고 국자감을 설치한 왕은 성종입니다. 성종의 12목 지방관 파견과 광종의 노비안검법을 구분합니다.",
+      "bounds": [
+        0.055,
+        0.408,
+        0.495,
+        0.645
+      ],
+      "sourceFile": "75회 한국사_문제지(기본).pdf",
+      "answerFile": "75회 한국사_답지(기본).pdf",
+      "sourcePdfHash": "4395752dc08c3b08ebcc7696e86a8fabfef9751e5a44114631cab34a4c31d378",
+      "answerPdfHash": "e7b8b56d1681fdded500c8ac5c0a054bfb33d0adabf9913a517dbd10012711c6",
+      "sourceQuestionImage": "assets/exams/ch03/75-기본-10.jpg",
+      "sourceImageHash": "fb6cb97c649877f06adb720989e79582fb5e54e2532ec35ec8f50d8191ca6b3c",
+      "sourceImageWidth": 481,
+      "sourceImageHeight": 366
+    },
+    {
+      "examRound": 75,
+      "questionNumber": 12,
+      "examLevel": "기본",
+      "examYear": 2025,
+      "sourcePage": 3,
+      "questionId": "ch03-pdf-75-basic-12",
+      "concept": "태조·광종 정책·지방 호족",
+      "question": "(가) 왕에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "과거제를 도입하였다.",
+        "농사직설을 편찬하였다.",
+        "사심관 제도를 시행하였다.",
+        "북한산에 순수비를 건립하였다."
+      ],
+      "answer": 2,
+      "explanation": "후삼국을 통일하고 개태사를 세운 태조는 사심관 제도를 시행했습니다. 과거제를 도입한 광종의 정책과 구분합니다.",
+      "bounds": [
+        0.51,
+        0.075,
+        0.945,
+        0.515
+      ],
+      "sourceFile": "75회 한국사_문제지(기본).pdf",
+      "answerFile": "75회 한국사_답지(기본).pdf",
+      "sourcePdfHash": "4395752dc08c3b08ebcc7696e86a8fabfef9751e5a44114631cab34a4c31d378",
+      "answerPdfHash": "e7b8b56d1681fdded500c8ac5c0a054bfb33d0adabf9913a517dbd10012711c6",
+      "sourceQuestionImage": "assets/exams/ch03/75-기본-12.jpg",
+      "sourceImageHash": "1174fa60c0e866ddb009b9ea5b8deb528309769c27e66976c66750c2ad5c5565",
+      "sourceImageWidth": 476,
+      "sourceImageHeight": 681
+    },
+    {
+      "examRound": 76,
+      "questionNumber": 11,
+      "examLevel": "심화",
+      "examYear": 2025,
+      "sourcePage": 3,
+      "questionId": "ch03-pdf-76-advanced-11",
+      "concept": "성종·예종 정책·관리 교육",
+      "question": "다음 장면에 등장하는 왕에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "국자감에 7재라는 전문 강좌를 개설하였다.",
+        "지방 12목에 경학 박사를 처음 파견하였다.",
+        "서적포를 설치하여 출판을 담당하게 하였다.",
+        "대도에 만권당을 세워 중국 학자와 교류하였다.",
+        "외국어 교육과 통역을 관장하는 동문선관을 설치하였다."
+      ],
+      "answer": 0,
+      "explanation": "양현고를 둔 왕은 예종입니다. 예종은 국자감에 7재를 개설했습니다. 12목에 경학 박사를 파견한 성종의 정책과 구분합니다.",
+      "bounds": [
+        0.055,
+        0.632,
+        0.495,
+        0.925
+      ],
+      "sourceFile": "76회 한국사_문제지(심화).pdf",
+      "answerFile": "76회 한국사_답지(심화)).pdf",
+      "sourcePdfHash": "b25c8617eb817711a54e69c09040298bf1b102f59fe29aebaad3558981e834f3",
+      "answerPdfHash": "9da8824061aa649e0c1246edc70bf86cb29273cbe24eabf11b636123d3c9e98b",
+      "sourceQuestionImage": "assets/exams/ch03/76-심화-11.jpg",
+      "sourceImageHash": "bbc7475cd6fec9b7c8baa1d2e053574fb4b64d47d0e669e6c7ca081122d1d2ad",
+      "sourceImageWidth": 481,
+      "sourceImageHeight": 454
+    },
+    {
+      "examRound": 76,
+      "questionNumber": 18,
+      "examLevel": "심화",
+      "examYear": 2025,
+      "sourcePage": 5,
+      "questionId": "ch03-pdf-76-advanced-18",
+      "concept": "광종·태조 정책·과거제와 구휼",
+      "question": "다음 가상 뉴스 이후에 있었던 사실로 옳은 것은?",
+      "choices": [
+        "쌍기의 건의로 과거제가 도입되었다.",
+        "빈민 구제를 위해 흑창이 설립되었다.",
+        "매를 기르고 훈련시키는 응방이 설치되었다.",
+        "의천이 국청사를 중심으로 천태종을 개창하였다.",
+        "망이·망소이가 가혹한 수탈에 저항하여 봉기하였다."
+      ],
+      "answer": 2,
+      "explanation": "원 황녀와 혼인한 왕은 충렬왕입니다. 이후 매를 관리하는 응방이 설치되었습니다. 쌍기의 건의에 따른 과거제는 광종, 흑창은 태조의 정책이므로 더 앞선 시기입니다.",
+      "bounds": [
+        0.055,
+        0.065,
+        0.495,
+        0.375
+      ],
+      "sourceFile": "76회 한국사_문제지(심화).pdf",
+      "answerFile": "76회 한국사_답지(심화)).pdf",
+      "sourcePdfHash": "b25c8617eb817711a54e69c09040298bf1b102f59fe29aebaad3558981e834f3",
+      "answerPdfHash": "9da8824061aa649e0c1246edc70bf86cb29273cbe24eabf11b636123d3c9e98b",
+      "sourceQuestionImage": "assets/exams/ch03/76-심화-18.jpg",
+      "sourceImageHash": "01695b6544dabfabfdd66a63e2bf165eb542d28b2a623620b518c2f879b54ce2",
+      "sourceImageWidth": 481,
+      "sourceImageHeight": 479
+    },
+    {
+      "examRound": 76,
+      "questionNumber": 50,
+      "examLevel": "심화",
+      "examYear": 2025,
+      "sourcePage": 12,
+      "questionId": "ch02-official-76-advanced-50",
+      "concept": "광종·독자적 연호·노비안검법",
+      "question": "(가)~(마)에 대한 설명으로 옳지 않은 것은?",
+      "choices": [
+        "(가) - 군대를 보내 신라에 침입한 왜를 격퇴하였다.",
+        "(나) - 금관가야를 복속하여 영토를 확장하였다.",
+        "(다) - 장문휴를 보내 당의 산둥반도를 공격하였다.",
+        "(라) - 노비안검법을 시행하여 호족 세력을 견제하였다.",
+        "(마) - 전제 군주제를 명문화한 대한국 국제를 반포하였다."
+      ],
+      "answer": 4,
+      "explanation": "광덕·준풍을 사용한 (라)는 광종으로 노비안검법을 실시했습니다. (마)는 건양·광무의 고종을 이은 순종이며 융희를 사용했습니다. 대한국 국제는 고종 때인 1899년에 반포되었습니다.",
+      "bounds": [
+        0.51,
+        0.495,
+        0.945,
+        0.92
+      ],
+      "sourceFile": "76회 한국사_문제지(심화).pdf",
+      "answerFile": "76회 한국사_답지(심화)).pdf",
+      "sourcePdfHash": "b25c8617eb817711a54e69c09040298bf1b102f59fe29aebaad3558981e834f3",
+      "answerPdfHash": "9da8824061aa649e0c1246edc70bf86cb29273cbe24eabf11b636123d3c9e98b",
+      "sourceQuestionImage": "assets/exams/ch03/76-심화-50.jpg",
+      "sourceImageHash": "5db84d69be495a5c231c641d1ba8bc3d20708bc56326dd6327dad9ebe9704c60",
+      "sourceImageWidth": 476,
+      "sourceImageHeight": 658
+    },
+    {
+      "examRound": 77,
+      "questionNumber": 14,
+      "examLevel": "심화",
+      "examYear": 2026,
+      "sourcePage": 4,
+      "questionId": "ch02-official-77-advanced-14",
+      "concept": "광종·준풍·황제국 표방",
+      "question": "(가)에 들어갈 내용으로 가장 적절한 것은?",
+      "choices": [
+        "신해통공의 단행 배경",
+        "명 멸망 이후 소중화주의 대두",
+        "골품제가 일상생활에 끼친 영향",
+        "울산항을 통한 아라비아 상인들과의 교류",
+        "황제국 표방 사례를 통해 본 외왕내제 의식"
+      ],
+      "answer": 4,
+      "explanation": "통천관을 쓴 태조 왕건상과 준풍 연호가 새겨진 철당간은 고려의 황제국 표방을 보여 줍니다. 대외적으로 왕, 내부적으로 황제를 표방하는 외왕내제 의식과 연결됩니다.",
+      "bounds": [
+        0.055,
+        0.065,
+        0.495,
+        0.465
+      ],
+      "sourceFile": "77회 한국사_문제지(심화).pdf",
+      "answerFile": "77회 한국사_답지(심화).pdf",
+      "sourcePdfHash": "c3ff51d9273f7812a2b84d7fac4e8e1cb9aa642e80a4f53ebfc2a8afc5503e88",
+      "answerPdfHash": "71b9b6ef633f0e70b6a9b3c4565ec2f02a1ba2ef5f805f34d77d41427913b304",
+      "sourceQuestionImage": "assets/exams/ch03/77-심화-14.jpg",
+      "sourceImageHash": "395d976e64ac21c761a663fe91ade23ced91e3f220ba52e8b2541f95d2b8ba8f",
+      "sourceImageWidth": 481,
+      "sourceImageHeight": 619
+    },
+    {
+      "examRound": 78,
+      "questionNumber": 11,
+      "examLevel": "심화",
+      "examYear": 2026,
+      "sourcePage": 3,
+      "questionId": "ch02-official-78-advanced-11",
+      "concept": "광종·쌍기·과거제·노비안검법",
+      "question": "(가) 왕에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "외침에 대비하여 광군사를 창설하였다.",
+        "12목을 설치하고 지방관을 파견하였다.",
+        "관학 진흥을 위해 양현고를 설치하였다.",
+        "노비안검법을 실시하여 호족 세력을 견제하였다.",
+        "정계와 계백료서를 지어 관리의 규범을 제시하였다."
+      ],
+      "answer": 3,
+      "explanation": "쌍기의 의견을 받아들여 과거제를 시행한 왕은 광종입니다. 광종은 노비안검법으로 호족의 세력을 견제했습니다.",
+      "bounds": [
+        0.51,
+        0.065,
+        0.945,
+        0.34
+      ],
+      "sourceFile": "78회 한국사_문제지(심화).pdf",
+      "answerFile": "78회 한국사_답지(심화).pdf",
+      "sourcePdfHash": "7d96d41c1686c5b3ea3c533d76fbb23235c44d8e55f53e81a320e31cf914fba0",
+      "answerPdfHash": "a8e8513c5d73ae81594460354a7b8a83ddaec9894001ff66cecae40f4d280638",
+      "sourceQuestionImage": "assets/exams/ch03/78-심화-11.jpg",
+      "sourceImageHash": "85f0eeb9d8aa90015470b0d08a1f1bd5ff1cbdc3a6cd6c2af06d1f0f0468b261",
+      "sourceImageWidth": 476,
+      "sourceImageHeight": 425
+    },
+    {
+      "examRound": 79,
+      "questionNumber": 13,
+      "examLevel": "심화",
+      "examYear": 2026,
+      "sourcePage": 3,
+      "questionId": "ch03-pdf-79-advanced-13",
+      "concept": "광종·성종·현종 정책 구분",
+      "question": "(가) 왕의 재위 기간에 있었던 사실로 옳은 것은?",
+      "choices": [
+        "초조대장경 조판이 시작되었다.",
+        "최승로가 시무 28조를 건의하였다.",
+        "윤관의 건의로 별무반이 조직되었다.",
+        "거란을 배척하여 만부교 사건이 일어났다.",
+        "광덕, 준풍 등의 독자적인 연호가 사용되었다."
+      ],
+      "answer": 0,
+      "explanation": "강조의 정변과 귀주 대첩이 제시된 왕은 현종입니다. 현종 때 초조대장경 조판이 시작되었습니다. 광덕·준풍은 광종, 시무 28조는 성종, 만부교 사건은 태조 때입니다.",
+      "bounds": [
+        0.51,
+        0.575,
+        0.945,
+        0.925
+      ],
+      "sourceFile": "79회 한국사_문제지(심화).pdf",
+      "answerFile": "79회 한국사_답지(심화).pdf",
+      "sourcePdfHash": "fa82e6c8977670c1b55778b061e33ee367c55cd3f8707806f63d70d8353453d7",
+      "answerPdfHash": "ea380c4a1f4f24ebd4c95ad171aa7ace3fc0654284fbe2d7be4d5b1f675ec393",
+      "sourceQuestionImage": "assets/exams/ch03/79-심화-13.jpg",
+      "sourceImageHash": "147b96096c4aa9676c98abcfbd8a12189e6f53ca50e8219ce37d45da2e2514aa",
+      "sourceImageWidth": 476,
+      "sourceImageHeight": 542
+    }
+  ],
+  "blocks": [
+    {
+      "setId": "ch03-early-kings",
+      "afterSceneId": "ch02_reunion_949",
+      "resumeStoryId": "ch02_market",
+      "practice": [],
+      "official": [
+        "ch03-pdf-69-advanced-10",
+        "ch03-pdf-75-basic-12"
+      ],
+      "illustrationId": "ch02-gaegyeong-market"
+    },
+    {
+      "setId": "ch03-market-warmup",
+      "afterSceneId": "ch02_market",
+      "resumeStoryId": "ch02_life_path",
+      "afterChoice": true,
+      "practice": [
+        "ch03-practice-king-949",
+        "ch03-practice-kings-flow"
+      ],
+      "official": [],
+      "illustrationId": "ch02-gaegyeong-market"
+    },
+    {
+      "setId": "ch03-time-retrieval",
+      "afterSceneId": "ch02_jump_956",
+      "resumeStoryId": "ch02_shop_956",
+      "practice": [
+        "ch03-practice-king-956"
+      ],
+      "official": [],
+      "illustrationId": "ch02-doyun-shop-956"
+    },
+    {
+      "setId": "ch03-policy-comparison",
+      "afterSceneId": "ch02_shop_956",
+      "resumeStoryId": "ch02_dispute",
+      "afterChoice": true,
+      "practice": [],
+      "official": [
+        "ch03-pdf-65-advanced-10"
+      ],
+      "illustrationId": "ch02-doyun-shop-956"
+    },
+    {
+      "setId": "ch03-centralization",
+      "afterSceneId": "ch02_policy_reason",
+      "resumeStoryId": "ch02_policy_memory",
+      "afterChoice": true,
+      "practice": [],
+      "official": [
+        "ch03-pdf-65-advanced-11"
+      ],
+      "illustrationId": "ch02-freed-citizen"
+    },
+    {
+      "setId": "ch03-nobi-inspection",
+      "practice": [
+        "ch03-practice-nobi-basic",
+        "ch02-review-01"
+      ],
+      "official": [
+        "ch02-official-74-advanced-11"
+      ],
+      "illustrationId": "ch02-freed-citizen"
+    },
+    {
+      "setId": "ch03-noble-reaction",
+      "afterSceneId": "ch02_noble_night",
+      "resumeStoryId": "ch02_jump_958",
+      "practice": [
+        "ch03-practice-nobi-power"
+      ],
+      "official": [
+        "ch03-pdf-73-advanced-11"
+      ],
+      "illustrationId": "ch02-nobles-night"
+    },
+    {
+      "setId": "ch03-official-education",
+      "afterSceneId": "ch02_exam_notice",
+      "resumeStoryId": "ch02_three_way",
+      "practice": [],
+      "official": [
+        "ch03-pdf-76-advanced-11"
+      ],
+      "illustrationId": "ch02-exam-notice"
+    },
+    {
+      "setId": "ch03-gwageo",
+      "practice": [
+        "ch02-test-02",
+        "ch03-practice-gwageo-purpose"
+      ],
+      "official": [
+        "ch02-official-78-advanced-11"
+      ],
+      "illustrationId": "ch02-exam-notice"
+    },
+    {
+      "setId": "ch03-gwageo-exam-day",
+      "afterSceneId": "ch02_exam_day",
+      "resumeStoryId": "ch02_official_robes_walk",
+      "practice": [],
+      "official": [
+        "ch03-official-71-advanced-11",
+        "ch03-pdf-75-basic-10"
+      ],
+      "illustrationId": "ch02-exam-yard"
+    },
+    {
+      "setId": "ch03-official-robes",
+      "afterSceneId": "ch02_hyunwoo_official",
+      "resumeStoryId": "ch02_reign_titles",
+      "practice": [
+        "ch02-test-robes"
+      ],
+      "official": [
+        "ch03-pdf-68-advanced-09",
+        "ch03-pdf-76-advanced-18"
+      ],
+      "illustrationId": "ch02-reign-titles"
+    },
+    {
+      "setId": "ch03-imperial-symbols",
+      "practice": [
+        "ch02-test-04"
+      ],
+      "official": [
+        "ch02-official-76-advanced-50",
+        "ch02-official-77-advanced-14"
+      ],
+      "illustrationId": "ch02-reign-titles"
+    },
+    {
+      "setId": "ch03-royal-policy-check",
+      "afterSceneId": "ch02_purge",
+      "resumeStoryId": "ch02_night_discussion",
+      "practice": [],
+      "official": [
+        "ch03-pdf-70-advanced-13",
+        "ch03-pdf-79-advanced-13"
+      ],
+      "illustrationId": "ch02-complete"
+    },
+    {
+      "setId": "ch03-gwangjong-synthesis",
+      "practice": [
+        "ch02-test-06"
+      ],
+      "official": [
+        "ch03-official-68-advanced-11"
+      ],
+      "illustrationId": "ch02-complete"
+    },
+    {
+      "setId": "ch03-kingdom-system-check",
+      "afterSceneId": "ch02_complete",
+      "resumeStoryId": "ch02_night_reflection",
+      "practice": [],
+      "official": [
+        "ch03-pdf-72-advanced-11"
+      ],
+      "illustrationId": "ch02-complete"
+    }
+  ],
+  "pdfs": [
+    {
+      "file": "66회 한국사_문제지(심화).pdf",
+      "sha256": "d00670a2b083d47b66d6e5ff1ad32c1765f493bd9d98230065c2edaefcaa8d18",
+      "pages": 12
+    },
+    {
+      "file": "66회 한국사_정답표(심화).pdf",
+      "sha256": "591619732675e6f2655bbea597e42e08280c500a74265b98acacaa882da5a839",
+      "pages": 1
+    },
+    {
+      "file": "68회 한국사_문제지(심화).pdf",
+      "sha256": "a407b26f559eeeed787b1e2d2e99f96532c9e7673372efd82aa0bd8362864fa9",
+      "pages": 12
+    },
+    {
+      "file": "68회 한국사_정답표(심화).pdf",
+      "sha256": "37f0db72ac12ecf607fb8e954a08f9283b5dcb41ce5631edbebe996f02d07d75",
+      "pages": 1
+    },
+    {
+      "file": "69회 한국사_문제지(심화).pdf",
+      "sha256": "9656cfbd40c3ed2b9f13ebb96e9a347bad87db8511dfe8954857baf7ccc91a26",
+      "pages": 12
+    },
+    {
+      "file": "69회 한국사_정답표(심화).pdf",
+      "sha256": "8596e629436c89d05719cb063470cdef4217df5954e39c7f141311542d5f6183",
+      "pages": 1
+    },
+    {
+      "file": "70회 한국사_문제지(심화).pdf",
+      "sha256": "4e9195f278bfdb5223cef43d60ff3bb1d55f09e4db0af803476392b08acc978c",
+      "pages": 12
+    },
+    {
+      "file": "70회 한국사_정답지(심화).pdf",
+      "sha256": "06b1ae9f5e8a33b8b9cd5c3f5d3c4d0acd6049e31a4a4b45a38658c574a252c1",
+      "pages": 1
+    },
+    {
+      "file": "71회 한국사_문제지(심화).pdf",
+      "sha256": "4faa9016aa092da3684782b3c46f7ba04165c954649334ad5ba9956f4399c4a6",
+      "pages": 12
+    },
+    {
+      "file": "73회 심화 문제지.pdf",
+      "sha256": "d6ad706f1bd7ce3a0b18d7b7cdda9439d10b7b712121428b21af2c31268c4836",
+      "pages": 12
+    },
+    {
+      "file": "73회 심화 정답표.pdf",
+      "sha256": "0dfeee4af303493e95a3a30c7f7cd890377f067789bdb7c00a9cc90af15c6347",
+      "pages": 1
+    },
+    {
+      "file": "74회 심화 정답표.pdf",
+      "sha256": "db21586adfbe6df757b51a87eb0824cb414379cbe8f984c8fe1709e5b3643b46",
+      "pages": 1
+    },
+    {
+      "file": "74회 한국사_문제지(심화).pdf",
+      "sha256": "7d7322d680119d7b7b89c7465edc1dd8d0f06e8180594aff69b7d34502a44c79",
+      "pages": 12
+    },
+    {
+      "file": "75회 한국사_답지(기본).pdf",
+      "sha256": "e7b8b56d1681fdded500c8ac5c0a054bfb33d0adabf9913a517dbd10012711c6",
+      "pages": 1
+    },
+    {
+      "file": "75회 한국사_문제지(기본).pdf",
+      "sha256": "4395752dc08c3b08ebcc7696e86a8fabfef9751e5a44114631cab34a4c31d378",
+      "pages": 12
+    },
+    {
+      "file": "76회 한국사_답지(심화)).pdf",
+      "sha256": "9da8824061aa649e0c1246edc70bf86cb29273cbe24eabf11b636123d3c9e98b",
+      "pages": 1
+    },
+    {
+      "file": "76회 한국사_문제지(심화).pdf",
+      "sha256": "b25c8617eb817711a54e69c09040298bf1b102f59fe29aebaad3558981e834f3",
+      "pages": 12
+    },
+    {
+      "file": "77회 한국사_답지(심화).pdf",
+      "sha256": "71b9b6ef633f0e70b6a9b3c4565ec2f02a1ba2ef5f805f34d77d41427913b304",
+      "pages": 1
+    },
+    {
+      "file": "77회 한국사_문제지(심화).pdf",
+      "sha256": "c3ff51d9273f7812a2b84d7fac4e8e1cb9aa642e80a4f53ebfc2a8afc5503e88",
+      "pages": 12
+    },
+    {
+      "file": "78회 한국사_답지(심화).pdf",
+      "sha256": "a8e8513c5d73ae81594460354a7b8a83ddaec9894001ff66cecae40f4d280638",
+      "pages": 1
+    },
+    {
+      "file": "78회 한국사_문제지(심화).pdf",
+      "sha256": "7d96d41c1686c5b3ea3c533d76fbb23235c44d8e55f53e81a320e31cf914fba0",
+      "pages": 12
+    },
+    {
+      "file": "79회 한국사_답지(심화).pdf",
+      "sha256": "ea380c4a1f4f24ebd4c95ad171aa7ace3fc0654284fbe2d7be4d5b1f675ec393",
+      "pages": 1
+    },
+    {
+      "file": "79회 한국사_문제지(심화).pdf",
+      "sha256": "fa82e6c8977670c1b55778b061e33ee367c55cd3f8707806f63d70d8353453d7",
+      "pages": 12
+    },
+    {
+      "file": "제65회 한국사능력검정시험 심화 문제지.pdf",
+      "sha256": "a50a6611da47601837319ba912a756586a2568634e925f4807fd7f46d6e14753",
+      "pages": 12
+    },
+    {
+      "file": "제65회 한국사능력검정시험 심화 정답표.pdf",
+      "sha256": "12d805fdc905a3777e12ba5559bec57bcaf2731ec6ac9b4d754df6e86d9629ce",
+      "pages": 1
+    },
+    {
+      "file": "제71회 심화 정답표.pdf",
+      "sha256": "d412bab448e17d15d0cfd71d6c98a524c109157362b854316d55b280ee6a2a4e",
+      "pages": 1
+    },
+    {
+      "file": "제72회 심화 문제지.pdf",
+      "sha256": "87307e726a2605000a087b3c97ec2bae8e4c079ca2a2ef2b567cc9a4a415b9b5",
+      "pages": 12
+    },
+    {
+      "file": "제72회 심화 정답표.pdf",
+      "sha256": "9f71656a1dfa110393e5097d3712c708e498470b3355ce680543ea959a59bfc7",
+      "pages": 1
+    }
+  ]
+}

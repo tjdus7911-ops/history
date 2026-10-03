@@ -47,10 +47,6 @@
     "ch01-official-74-advanced-10": "886f6043cbb2bcc9ec52841f9a0d9f067d7257d1c09283cf1da912f47f78e1df",
     "ch01-official-76-advanced-10": "91500997ea2139eae045cdad3731822b759bf785d093e52fbb1d8617b5028bab",
     "ch02-official-69-advanced-10": "0f981d59bbf6710eca2b545be1d8e7dac9d1cb314dd741b6a1a8145605b63a8c",
-    "ch02-official-74-advanced-11": "6a842a52b9d0edcaf7590aac4623961fbb4a8bc1df041586a472bc9afea65469",
-    "ch02-official-76-advanced-50": "e0dd84e3153bafe43543c9719a425311f87e5b5d9021ffae4962c0d6965dba5a",
-    "ch02-official-77-advanced-14": "cac1fe69efde4c9f22f3e64beae3ad245d3d3afa3b91bb13c67de48b8beeb0f7",
-    "ch02-official-78-advanced-11": "8abb401d1bfccdf557cd7534967d42e9806357cc1b72339d687bacfdd6727835",
     "ch03-official-75-basic-12": "a7a614270590ac709c99369cc939dd0bd52e9901cf3efba00a1f839ec4097f4d",
     "ch01-story-gungye-transition": "159a72aaadd07c76d17fca2f6ee52487f3c45f97c8f7215bcbb66cb3d04afc8f",
     "ch01-story-gongsan": "0d8f1e7c9c840d63b96db7460a0aae363c67f0e663f05904a6a02372b1890d0a",
@@ -83,7 +79,6 @@
     "ch02-official-66-advanced-09": "d9f0cf095864e9f55e7ee151cbd3832340a14f2e75550d4caec7468425954ab3",
     "ch02-official-67-basic-10": "7f733e5b9da807c0b99788fdee8aae3b852497d38c402030146b9c22a71ab79b",
     "ch02-official-67-basic-11": "d236352f42b7f55fd96c5cb2e39e6f47984ed05d7126102fb99299f89346bc19",
-    "ch03-official-68-advanced-11": "736b113290185dcca34a7bed96731dd61e3b0ba3cfafd2ee10b06b9983ad1d80",
     "ch01-practice-foundation-sequence": "1f21ebb235c906cbef86ab422e700e92fe10d23529d108f8eb9ec84df7b8fd6a",
     "ch01-practice-gongsan-source": "0ad2a5d84a72322e9d53d6cc7f565f0c7eef599c3ac13bbf9043c0d9a3ffcbaf",
     "ch01-practice-gongsan-result": "6b91caf3263b10261d4fd64e89945fefc85f5f40122fa1ca7da2fb161bd3e454",
@@ -96,7 +91,6 @@
     "ch02-practice-north-compare": "ee0fc75a55912122ab8452c253c059f87f13c34c80aab1509d6af0e5379186fe",
     "ch02-practice-hunyo-source": "ece6e3b86f66ad05ee94f1749fc05c2e808d0f4054e8d3f2fad0e1c5f87f485c",
     "ch02-practice-taejo-policy": "1da152997383d48f30a08a2c32d88642421d0ecd825c9e402bb78d2b0214a926",
-    "ch03-official-71-advanced-11": "a69924baf8ca6a10bc207e164b0aa2c604ed24a2c9a0e53cb7fe51ff692a7aee",
     "ch03-practice-nobi-basic": "11ea33afc4faa397ce9582168877dd76ceb32d3e992382bc9e3d9d9a7be05ca7",
     "ch03-practice-nobi-power": "9f54f8f8a1575dedbbda0418e1448433cd12bf80e1c34407660b5dea4466f0f3",
     "ch03-practice-nobi-source": "d67da879277020bedeb9898458fd0ecce46cda90f7e4907d60458df983d8caba",
@@ -107,5 +101,14 @@
     "ch03-practice-kings-flow": "97dd3b58d60c5f187f09259d5bff06df6ab31f160df1a9bff5236db3d4b94198",
     "ch03-practice-king-956": "84d6fb42e221fb8658e7c36a3ad3c2bafe10d4554498322da5b0a219421ea904",
     "ch03-practice-gwageo-king": "4c301ce5f755f25457b07bc2d05d9aaffaf4a3f8d0e41e9371fb1eae590b3c6f"
-  }
+  },
+  "authorizedPdfCorrections": [
+    "ch03-official-68-advanced-11",
+    "ch03-official-71-advanced-11",
+    "ch02-official-74-advanced-11",
+    "ch02-official-76-advanced-50",
+    "ch02-official-77-advanced-14",
+    "ch02-official-78-advanced-11"
+  ],
+  "correctionReason": "Replaced prior mobile summaries with original PDF question images and verbatim choices, cross-checked with original answer sheets."
 }
