@@ -1,0 +1,62 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "styleReferences": [
+    "dist/assets/characters/player_goryeo_neutral.png",
+    "dist/assets/scenes/ch06-gaegyeong-rebuild.png"
+  ],
+  "commonDirection": "One portrait 2:3 early-11th-century Goryeo historical-scene game background. Clearly drawn 2D illustration, clean gentle outlines, simplified shapes, soft restrained painterly cel shading, muted indigo/earth/ochre palette matching protagonist reference. No photorealistic textures/3D/glossy AI look, Joseon/Japanese/exaggerated Chinese motifs, foreground main characters, text/UI/borders. Quiet lower foreground for dialogue and standing-character overlays.",
+  "scenes": [
+    {
+      "asset": "dist/assets/scenes/ch06-palace-coup.webp",
+      "scenePrompt": "1009 Gaegyeong palace courtyard in daylight. Tense armed guards entering the modest early Goryeo timber palace, bare stone courtyard, closed doors, anxious atmosphere. No battle fire."
+    },
+    {
+      "asset": "dist/assets/scenes/ch06-khitan-crossing.webp",
+      "scenePrompt": "1010 winter Yalu frontier. Distant Khitan cavalry columns crossing a shallow river ford toward Korea, bleak northern mountains, winter bare trees, rough stone watchtower. War invasion unmistakable."
+    },
+    {
+      "asset": "dist/assets/scenes/ch06-tongju-defeat.webp",
+      "scenePrompt": "1010 Tongju battlefield after Goryeo defeat. Broken shields and fallen banners in muddy winter grass, disordered distant retreating soldiers, drifting smoke, cold daylight. No gore or prominent bodies."
+    },
+    {
+      "asset": "dist/assets/scenes/ch06-gaegyeong-fire.webp",
+      "scenePrompt": "1011 Gaegyeong being burned. Early Goryeo timber houses and palace roof silhouette ablaze, collapsed beams, thick smoke under daytime sky, deserted threatened street. Unmistakable active city destruction."
+    },
+    {
+      "asset": "dist/assets/scenes/ch06-burned-market.webp",
+      "scenePrompt": "1011 Gaegyeong market ruins at dawn after burning. Charred collapsed shops, ash, faint embers and smoke, small distant civilians carrying water jars and searching amid wreckage. No intact peaceful market, no cheerful stalls."
+    },
+    {
+      "asset": "dist/assets/scenes/ch06-naju-flight.webp",
+      "scenePrompt": "1011 royal flight toward Naju. Bleak winter mountain road descending south through bare trees and patches of snow, small distant weary escorted royal procession with packhorses and cloth-covered luggage, villagers watching. Pale misty daylight. No seated foreground protagonist, no leisure river scene."
+    },
+    {
+      "asset": "dist/assets/scenes/ch06-yanggyu-rescue.webp",
+      "scenePrompt": "1011 northern retreat route near Heunghwajin. Rough stone fortress in far distance, winter road through hills, Goryeo soldiers escort rescued civilians toward safety while distant enemy cavalry withdraws. Daylight, sober relief, no celebratory parade."
+    },
+    {
+      "asset": "dist/assets/scenes/ch06-aejeon-loss.webp",
+      "scenePrompt": "1011 Aejeon battlefield after fighting. Silent desolate winter valley in daylight, battered Goryeo shield and banner leaning near rocks, scattered arrows, thin smoke, no visible bodies. Somber respectful loss, no palace or night street."
+    },
+    {
+      "asset": "dist/assets/scenes/ch06-city-reconstruction.webp",
+      "scenePrompt": "1012 Gaegyeong rebuilding in daylight. Charred foundations beside new timber framing and bamboo/wood scaffolds, small background artisans carrying beams, repaired stone gate distant, incomplete rebuilding clearly visible. No finished bustling market."
+    },
+    {
+      "asset": "dist/assets/scenes/ch06-tripitaka-workshop.webp",
+      "scenePrompt": "1012 early Goryeo Buddhist temple woodblock workshop in morning window light. Wooden benches with carving chisels, ink brushes, paper sutra sheets with tiny non-readable vertical classical characters, partly carved woodblocks. Small background monk and artisan at work. FIRST Tripitaka production, not 13th century Haeinsa storage hall, no Hangul, no modern printing."
+    },
+    {
+      "asset": "dist/assets/scenes/ch06-restored-gate.webp",
+      "scenePrompt": "1012 partly restored Gaegyeong city gate at dawn. Modest early Goryeo timber gatehouse on rough stone wall, fresh repaired timber beside visible charred remnants and scaffolds, quiet citizens resuming life. Gentle dawn relief but wartime scars visible, not an intact festive market."
+    },
+    {
+      "asset": "dist/assets/scenes/ch06-northern-beacon.webp",
+      "scenePrompt": "1018 northern Goryeo beacon hill in daylight. Rough stone signal-fire platform with rising smoke, distant fortifications and marching Goryeo soldiers preparing renewed invasion, cold late-autumn hills, tense vigilance. No market or caravan bazaar."
+    },
+    {
+      "asset": "dist/assets/scenes/ch06-heunghwajin-dam.webp",
+      "scenePrompt": "1018 Heunghwajin river battlefield preparation at misty dawn. Rough stone frontier fortress overlooking narrow river, Goryeo engineers building a temporary low water barrier with timber stakes, logs, ropes and stretched hides; soldiers waiting concealed behind bank defenses. Tactical waterworks unmistakable, pre-battle not full battle, no modern concrete dam, no seated protagonist."
+    }
+  ]
+}

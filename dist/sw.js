@@ -1,5 +1,5 @@
 const CACHE_PREFIX='lived-history-shell-';
-const CACHE_VERSION='2026-10-04-ch05-pacing-v24';
+const CACHE_VERSION='2026-10-04-ch06-backgrounds-v25';
 const CACHE_NAME=CACHE_PREFIX+CACHE_VERSION;
 const APP_SHELL=[
   '/',
@@ -13,7 +13,7 @@ const APP_SHELL=[
   '/ch03-data.js',
   '/exam-data.js',
   '/ch01-expansion.js','/chapter-split.js','/late-goryeo.js','/official-late-exams.js',
-  '/official-exam-images.js','/ch05-refinement.js',
+  '/official-exam-images.js','/ch05-refinement.js','/ch06-backgrounds.js',
   '/app.js',
   '/pwa.js',
   '/manifest.webmanifest',
