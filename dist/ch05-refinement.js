@@ -1,4 +1,4 @@
-/* CH.05 only. Preserve every legacy story, practice ID, save and other chapter. */
+/* CH.05 content and CH.05/06 portrait participation. Preserve legacy IDs and other chapters. */
 const CH05_BACKGROUND_MAP={
   ch05_border:['route-caravan','993년 전쟁 소식으로 멈춘 북방 장터'],
   ch05_invasion:['ch05-frontier-invasion','청천강 이북, 남하하는 거란군과 고려 방어선'],
@@ -14,10 +14,10 @@ const CH05_BACKGROUND_MAP={
   ch05_after:['late-night','1009년 정변으로 어두운 개경']
 };
 for(const id of ['ch05-frontier-invasion','ch05-council-crisis','ch05-khitan-withdrawal','ch05-gangdong-fortifications'])lateDedicatedArt(id,'assets/scenes/'+id+'.webp',Object.values(CH05_BACKGROUND_MAP).find(pair=>pair[0]===id)[1]);
-// CH.05 portrait overrides never change Yeon's mapping in later chapters.
+// One shared Yeon identity for CH.05 and CH.06; no new character images.
 for(const expression of ['neutral','smile','serious','worried','surprised','angry','thinking']){
   const assetExpression=['angry','thinking'].includes(expression)?'serious':expression;
-  PORTRAITS['ch05_yeon_'+expression]=portrait('yeon',expression,'연 · CH.05 여행자',['#303b43','#8e7255'],'assets/characters/ch05-yeon-'+assetExpression+'-v2.webp');
+  PORTRAITS['ch05_yeon_'+expression]=portrait('yeon',expression,'연 · CH.05/06 공통 여행자',['#303b43','#8e7255'],'assets/characters/ch05-yeon-'+assetExpression+'-v2.webp');
 }
 for(const [sceneId,[illustrationId]] of Object.entries(CH05_BACKGROUND_MAP)){
   const s=STORIES[sceneId];s.illustrationId=illustrationId;s.backgroundImage=ASSETS[illustrationId].src;s.characterSlots='player-partner';
@@ -29,14 +29,11 @@ CHAPTERS.ch05.thumbnail=ASSETS[STORIES.ch05_border.illustrationId].src;
 // Add an entry scene; legacy scene IDs and saved positions remain valid.
 lateDedicatedArt('ch05-empty-guild-dusk','assets/scenes/ch05-empty-guild-dusk.webp','도윤이 떠난 뒤, 해 질 무렵의 빈 상단 마당');
 STORIES.ch05_prologue=scene({sceneId:'ch05_prologue',chapterId:'ch05',year:993,location:'도윤상단 · 시간이 흐른 마당',title:'남겨진 시간',illustrationId:'ch05-empty-guild-dusk',backgroundImage:ASSETS['ch05-empty-guild-dusk'].src,timeOfDay:'sunset',weather:'clear',sceneType:'thought',readingMode:'narration-blocks',characterStageMode:'hidden',visibleCharacters:[],characterPortraitIds:[],dialogues:[
-  tLine('도윤이 떠난 뒤, 나는 더는 누구와도 인연을 쌓지 않기로 했다.'),
-  tLine('함께 웃던 자리에는 이제 빈 의자만 남아 있었다. 시간이 흘러도 도윤의 마지막 목소리는 잊히지 않았다.'),
-  tLine('이곳에서 나만 시간이 멈춘 사람처럼 살아가는 동안, 누군가를 만나고 가까워지면 결국 또 떠나보내야 한다는 걸 알게 됐으니까.'),
-  tLine('다시는 그런 이별을 겪고 싶지 않았다. 그래서 그저 이 시대를 지나가기만 하기로 했다.'),
-  tLine('그런데—'),
-  nLine('993년. 고려에 또다시 거대한 일이 벌어지기 시작했다.')
+  tLine('도윤이 죽고 난 뒤,'),
+  tLine('나는 더 이상 누구와도 인연을 쌓지 않기로 했다.')
 ],nextStoryId:'ch05_border',continueLabel:'993년 — 거란의 침입'});
 CHAPTERS.ch05.startStoryId='ch05_prologue';
+for(const s of Object.values(STORIES).filter(s=>s.chapterId==='ch06'))s.characterSlots='player-partner';
 
 // Only interpersonal turns are adjusted; historical narration and all questions stay intact.
 STORIES.ch05_border.dialogues.push(
@@ -166,3 +163,174 @@ for(const item of CH05_OFFICIAL_CONTENT){
 }
 Object.assign(CHAPTERS.ch05,{questionCount:12,reviewQuestionCount:12,questionSetCount:6});
 Object.assign(LATE_GORYEO_REPORT.ch05,{scenes:13,questions:12,questionSets:6});
+
+const CH05_ADDED_PDF_SOURCES=[
+  {
+    "examRound": 63,
+    "examYear": 2023,
+    "examLevel": "심화",
+    "questionNumber": 14,
+    "sourcePage": 4,
+    "sourceFile": "63회 한국사_문제지(심화).pdf",
+    "answerFile": "63회 한국사_정답표(심화).pdf",
+    "sourceQuestionImage": "assets/exams/ch05/63-advanced-14.webp",
+    "sourceImageWidth": 656,
+    "sourceImageHeight": 679,
+    "sourceQuestionBounds": [
+      0.055,
+      0.09,
+      0.493,
+      0.401
+    ],
+    "sourceImageHash": "adf36c73e3fa9aeedfe7329ffa00a10fb51bfc43121ed105a9ebee81652cc955",
+    "sourcePdfHash": "42f3f331ce2fb5fb4ff267b18ab255bb4370f5f187f6464ca63f681c9ce38b14",
+    "answerPdfHash": "8fd315a7e3b1b371ccebaa491a98bea369bd3005c813c069352ba369609f3274",
+    "answer": 1,
+    "sourceAnswerPage": 1,
+    "sourceImageStatus": "verified",
+    "sourceImageVerified": true,
+    "sourceAnswerVerified": true,
+    "sourceCheckedAt": "2026-10-04"
+  },
+  {
+    "examRound": 64,
+    "examYear": 2023,
+    "examLevel": "심화",
+    "questionNumber": 11,
+    "sourcePage": 3,
+    "sourceFile": "64회 한국사_문제지(심화).pdf",
+    "answerFile": "64회 한국사_정답표(심화).pdf",
+    "sourceQuestionImage": "assets/exams/ch05/64-advanced-11.webp",
+    "sourceImageWidth": 653,
+    "sourceImageHeight": 784,
+    "sourceQuestionBounds": [
+      0.513,
+      0.092,
+      0.949,
+      0.451
+    ],
+    "sourceImageHash": "04931d53c5ec4cd49c3a8e0d2632c9bdf70525aa731d28b52e58434ac3ee1057",
+    "sourcePdfHash": "483dbf4e35c9888d6d36cbd0495db34c506ef06f2b1f64f31c3931b2f07332a0",
+    "answerPdfHash": "ea6742c2dec57e129b87ebba734a73e4527126390a84ed2923ed0a24d67d3280",
+    "answer": 0,
+    "sourceAnswerPage": 1,
+    "sourceImageStatus": "verified",
+    "sourceImageVerified": true,
+    "sourceAnswerVerified": true,
+    "sourceCheckedAt": "2026-10-04"
+  },
+  {
+    "examRound": 72,
+    "examYear": 2024,
+    "examLevel": "심화",
+    "questionNumber": 12,
+    "sourcePage": 3,
+    "sourceFile": "제72회 심화 문제지.pdf",
+    "answerFile": "제72회 심화 정답표.pdf",
+    "sourceQuestionImage": "assets/exams/ch05/72-advanced-12.webp",
+    "sourceImageWidth": 647,
+    "sourceImageHeight": 654,
+    "sourceQuestionBounds": [
+      0.51,
+      0.063,
+      0.954,
+      0.38
+    ],
+    "sourceImageHash": "86a5f9edf59f7595401bbd344f05606637aa8c1bd647e2585192ee3ff4207108",
+    "sourcePdfHash": "87307e726a2605000a087b3c97ec2bae8e4c079ca2a2ef2b567cc9a4a415b9b5",
+    "answerPdfHash": "9f71656a1dfa110393e5097d3712c708e498470b3355ce680543ea959a59bfc7",
+    "answer": 2,
+    "sourceAnswerPage": 1,
+    "sourceImageStatus": "verified",
+    "sourceImageVerified": true,
+    "sourceAnswerVerified": true,
+    "sourceCheckedAt": "2026-10-04"
+  },
+  {
+    "examRound": 74,
+    "examYear": 2025,
+    "examLevel": "심화",
+    "questionNumber": 12,
+    "sourcePage": 3,
+    "sourceFile": "74회 한국사_문제지(심화).pdf",
+    "answerFile": "74회 심화 정답표.pdf",
+    "sourceQuestionImage": "assets/exams/ch05/74-advanced-12.webp",
+    "sourceImageWidth": 643,
+    "sourceImageHeight": 838,
+    "sourceQuestionBounds": [
+      0.508,
+      0.53,
+      0.949,
+      0.936
+    ],
+    "sourceImageHash": "2285dcd9bea7d66cc78eec1dc5ed226b5b2cb38a5069557e621d3c73dc3bcc4d",
+    "sourcePdfHash": "7d7322d680119d7b7b89c7465edc1dd8d0f06e8180594aff69b7d34502a44c79",
+    "answerPdfHash": "db21586adfbe6df757b51a87eb0824cb414379cbe8f984c8fe1709e5b3643b46",
+    "answer": 2,
+    "sourceAnswerPage": 1,
+    "sourceImageStatus": "verified",
+    "sourceImageVerified": true,
+    "sourceAnswerVerified": true,
+    "sourceCheckedAt": "2026-10-04"
+  }
+];
+
+const CH05_ADDED_OFFICIAL_CONTENT=[
+  {examRound:72,questionNumber:12,sceneId:'ch05_border',question:'(가)에 대한 고려의 대응으로 옳은 것은?',
+    passage:'이 자료는 초조대장경의 일부입니다. (가)의 침입으로 현종이 피란을 가고 개경이 함락되자 부처의 힘으로 나라를 지키려는 마음을 담아 조판하기 시작하였습니다.',
+    choices:['윤관을 보내 동북 9성을 개척하였다.','화통도감을 두어 화포를 제작하였다.','광군을 조직하여 침입에 대비하였다.','박위를 파견하여 근거지를 토벌하였다.','철령위 설치에 반발해 요동 정벌을 추진하였다.'],
+    explanation:'자료의 (가)는 거란입니다. 고려는 정종 때 거란의 침입에 대비하여 광군을 조직했습니다. 자료에 보이는 초조대장경은 이후 현종 때 조판을 시작했지만, 문항은 거란에 대한 대응을 묻습니다.',concepts:['거란','광군','정종','고려의 대외 관계']},
+  {examRound:63,questionNumber:14,sceneId:'ch05_invasion',question:'(가) 국가에 대한 고려의 대응으로 옳은 것은?',
+    passage:'○ (가)의 임금이 개경으로 침입하여 궁궐을 불사르고 퇴각하였다. …… 양규는 (가)의 군대를 무로대에서 습격하여 2,000여 급을 베고, 포로가 되었던 남녀 3,000여 명을 되찾았다. 다시 이수에서 전투를 벌이고 추격하여 석령까지 가서 2,500여 급을 베고, 포로가 되었던 1,000여 명을 되찾았다.\n○ (가)의 병사들이 귀주를 지나가자 강감찬 등이 동쪽 교외에서 전투를 벌였다. …… 적병이 북쪽으로 달아나자 아군이 그 뒤를 쫓아가서 공격하였는데, 석천을 건너 반령에 이르기까지 시신이 들에 가득하였다.',
+    choices:['강화도로 도읍을 옮겨 항전하였다.','광군을 조직하여 침입에 대비하였다.','박위를 파견하여 근거지를 토벌하였다.','압록강 상류 지역을 개척하여 4군을 설치하였다.','신기군, 신보군, 항마군으로 구성된 별무반을 편성하였다.'],
+    explanation:'개경 침입, 양규의 포로 구출, 강감찬의 귀주 전투는 거란과 관련됩니다. 그 나라에 대비해 정종 때 조직한 군대는 광군입니다. 양규와 강감찬의 구체적인 전투는 다음 침입 이야기에서 이어집니다.',concepts:['거란','광군','고려의 대외 관계']},
+  {examRound:64,questionNumber:11,sceneId:'ch05_council',question:'(가), (나) 사이의 시기에 있었던 사실로 옳은 것은?',
+    passage:'(가) 거란에서 사신을 파견하며 낙타 50필을 보냈다. 왕은 거란이 일찍이 발해와 지속적으로 화목하다가 갑자기 의심하여 맹약을 어기고 멸망시켰으니, 이는 매우 무도하여 친선 관계를 맺어 이웃으로 삼을 수 없다고 생각하였다. 드디어 교빙을 끊고 사신 30인을 섬으로 유배 보냈으며, 낙타는 만부교 아래에 매어두니 모두 굶어 죽었다.\n(나) 양규가 흥화진으로부터 군사 7백여 명을 이끌고 통주까지 와서 군사 1천여 명을 수습하였다. 밤중에 곽주로 들어가서 지키고 있던 적들을 급습하여 모조리 죽인 후 성 안에 있던 남녀 7천여 명을 통주로 옮겼다.',
+    choices:['외침에 대비하여 광군이 조직되었다.','강감찬이 귀주에서 대승을 거두었다.','화통도감이 설치되어 화포를 제작하였다.','김윤후가 처인성에서 살리타를 사살하였다.','철령위 설치에 반발하여 요동 정벌이 추진되었다.'],
+    explanation:'(가)는 태조 때의 만부교 사건(942년), (나)는 거란 2차 침입 때 양규의 활약(1010~1011년)입니다. 정종 때 광군을 조직한 947년은 그 사이입니다. 귀주 대첩은 1019년으로 (나) 이후입니다.',concepts:['광군','만부교 사건','거란','사건 순서']},
+  {examRound:74,questionNumber:12,sceneId:'ch05_seohui',question:'(가), (나) 사이의 시기에 있었던 사실로 옳은 것은?',
+    passage:'(가) 거란에서 사신을 파견하며 낙타 50필을 보냈다. 왕은 거란이 일찍이 발해와 지속적으로 화목하다가 갑자기 의심을 일으켜 맹약을 어기고 멸망시켰으니, 이는 매우 무도하여 친선 관계를 맺을 이웃으로 삼을 수 없다고 생각하였다. 드디어 교빙을 끊고 사신 30인을 섬으로 유배 보냈으며, 낙타는 만부교 아래에 매어두니 모두 굶어 죽었다.\n(나) 왕이 나주로 들어갔는데, 밤에 척후병이 잘못 보고하기를, “거란 군사들이 이르렀습니다.”라고 하였다. 왕이 크게 놀라서 밖으로 달려 나오자 지채문이 아뢰어 이르기를, “주상께서 밤중에 행차하시면 백성들이 놀라 혼란하게 되니, 바라옵건대 행궁으로 돌아가십시오. 제가 염탐하여 알아보고 나서, 그 후에 움직이셔도 됩니다.”라고 하였다.',
+    choices:['묘청이 칭제 건원을 주장하였다.','강감찬이 흥화진 전투에서 승리하였다.','서희의 활약으로 강동 6주를 획득하였다.','최우가 강화도로 도읍을 옮겨 항전하였다.','윤관이 별무반을 이끌고 동북 9성을 개척하였다.'],
+    explanation:'태조의 만부교 사건은 942년, 현종의 나주 피란은 거란 2차 침입이 있었던 1010~1011년입니다. 방금 경험한 서희의 담판과 강동 6주 확보(993년)는 그 사이에 해당합니다.',concepts:['서희','강동 6주','993년','사건 순서']}
+];
+for(const item of CH05_ADDED_OFFICIAL_CONTENT){
+  const source=CH05_ADDED_PDF_SOURCES.find(q=>q.examRound===item.examRound),s=STORIES[item.sceneId],id='ch05-official-'+item.examRound+'-advanced-'+item.questionNumber;
+  const q=officialExamQuestion({...source,...item,questionId:id,chapterId:'ch05',year:993,difficulty:'중상',questionType:'실제 기출',relatedSceneId:s.sceneId,relatedIllustrationId:s.illustrationId,relatedHistoricalEventId:s.historicalEventId,resumeStoryId:s.nextStoryId,examKeywords:item.concepts,conceptIds:item.concepts,rewardKnowledge:3,gameMemory:item.examRound===74?'서희가 고려의 고구려 계승과 여진 문제를 함께 주장해 강동 6주 확보로 연결한 장면을 떠올립니다.':'거란의 침입 소식과, 정종 때 거란에 대비해 광군을 조직했다는 설명을 떠올립니다.'});
+  Object.assign(q,source,{sourceQuestionText:item.question,sourceChoices:[...item.choices]});delete q.sourceImageReason;
+  if(item.examRound===63||item.examRound===64)q.sourceUrl='https://www.historyexam.go.kr/pst/view.do?bbs=dat&pst_sno='+({63:'1000029944',64:'1000029951'}[item.examRound]);
+  QUESTIONS.push(q);SPLIT_STORY_QUESTION_IDS.ch05.push(id);SPLIT_REVIEW_IDS.ch05.push(id);lateQuestionIdsByChapter.ch05.push(id);
+  for(const concept of item.concepts)(CONCEPT_QUESTION_INDEX[concept]||(CONCEPT_QUESTION_INDEX[concept]=[])).push(id);
+}
+// Learn the past policy before it is tested. Later-invasion excerpts identify
+// the country; their later dates are supplied rather than silently pre-tested.
+STORIES.ch05_border.dialogues.splice(3,0,nLine('고려는 이미 정종 때 거란의 침입에 대비해 광군을 조직했다. 그 경계가 이어진 끝에, 993년 소손녕의 군대가 국경을 넘었다.'));
+STORIES.ch05_council.dialogues.push(nLine('태조의 만부교 사건은 942년이었다. 그 뒤 정종은 947년 광군을 조직했다. 지금의 993년 침입 다음에는 1010년 또 한 번의 거란 침입이 이어진다.'));
+STORIES.ch05_seohui.dialogues.push(nLine('993년 서희의 담판은 거란군 철수와 강동 6주 확보로 이어진다. 태조의 만부교 사건(942년) 뒤, 현종의 나주 피란(1010~1011년) 전의 일이다.'));
+STORIES.ch05_memory.dialogues.push(nLine('오늘은 서희의 담판이 있었던 993년. 거란과의 전쟁은 이후에도 이어져 1019년 강감찬의 귀주 대첩으로 연결된다.'));
+
+// Keep every existing practice/set ID for saves, but distribute its questions
+// across the actual story. A set's explicit order also survives replay history.
+const CH05_QUESTION_PACING={
+  ch05_border:['ch05-official-72-advanced-12'],
+  ch05_invasion:['ch05-official-63-advanced-14','ch05-practice-invasion-01'],
+  ch05_council:['ch05-official-64-advanced-11','ch05-practice-invasion-02','ch05-practice-invasion-03'],
+  ch05_seohui:['ch05-official-73-basic-11','ch05-official-74-advanced-12','ch05-official-67-basic-13'],
+  ch05_terms:['ch05-practice-seohui-01','ch05-practice-seohui-02'],
+  ch05_withdraw:['ch05-practice-seohui-03'],
+  ch05_six:['ch05-practice-six-01'],
+  ch05_builders:['ch05-practice-six-02'],
+  ch05_people:['ch05-practice-six-03'],
+  ch05_memory:['ch05-official-77-basic-12']
+};
+for(const [sceneId,ids]of Object.entries(CH05_QUESTION_PACING)){
+  const s=STORIES[sceneId],setId='ch05-paced-'+sceneId.replace('ch05_',''),poolId='pool-'+setId;
+  const official=ids.filter(id=>QUESTIONS.find(q=>q.questionId===id).isOfficial),practice=ids.filter(id=>!official.includes(id));
+  QUESTION_POOLS[poolId]={questionPoolId:poolId,chapterId:'ch05',conceptIds:[],questionIds:[...ids],sourceType:'mixed'};
+  QUESTION_SETS[setId]={questionSetId:setId,chapterId:'ch05',afterSceneId:sceneId,resumeStoryId:s.nextStoryId,questionPoolId:poolId,requiredCount:ids.length,officialQuestionIds:official,practiceQuestionIds:practice,verifiedCount:official.length,practiceCount:practice.length,missingQuestionCount:0,status:'ready',preserveQuestionOrder:true};
+  Object.assign(s,{questionSetId:setId,questionSetStatus:'ready',questionSetResumeStoryId:s.nextStoryId,linkedQuestionIds:[...ids],linkedPracticeQuestionIds:practice,questionSequenceMode:'queue'});
+  if(s.choices?.length)s.afterChoiceQuestionSetId=setId;
+  for(const id of ids){const q=QUESTIONS.find(q=>q.questionId===id);Object.assign(q,{relatedSceneId:sceneId,relatedIllustrationId:s.illustrationId,resumeStoryId:s.nextStoryId});}
+}
+lateQuestionSetsByChapter.ch05=Object.values(STORIES).filter(s=>s.chapterId==='ch05'&&s.questionSetId).map(s=>s.questionSetId);
+Object.assign(CHAPTERS.ch05,{questionCount:16,reviewQuestionCount:16,questionSetCount:10});
+Object.assign(LATE_GORYEO_REPORT.ch05,{scenes:13,questions:16,questionSets:10});
