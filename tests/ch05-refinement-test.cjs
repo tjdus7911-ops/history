@@ -1,5 +1,5 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert'),crypto=require('crypto');
-const files=[...fs.readFileSync('dist/index.html','utf8').matchAll(/<script src="([^"]+)"/g)].map(x=>x[1]).filter(x=>!['app.js','pwa.js'].includes(x));
+const files=[...fs.readFileSync('dist/index.html','utf8').matchAll(/<script src="([^"]+)"/g)].map(x=>x[1]).filter(x=>!['app.js','pwa.js','v2-app.js','v2-learning.js','v2-exam-restoration.js','v2-exam-additions.js','v2-art.js','v2-backgrounds.js'].includes(x));
 const baseline=files.filter(x=>x!=='ch05-refinement.js').map(x=>fs.readFileSync('dist/'+x,'utf8')).join('\n');
 const context=vm.createContext({Date});const run=s=>vm.runInContext(s,context);
 run(baseline+';this.before={stories:JSON.parse(JSON.stringify(STORIES)),questions:JSON.parse(JSON.stringify(QUESTIONS)),characters:JSON.stringify(CHARACTERS),maps:JSON.stringify(CHARACTER_ASSET_MAP),version:SAVE_VERSION};');

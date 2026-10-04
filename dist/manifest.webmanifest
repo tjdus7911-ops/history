@@ -1,16 +1,19 @@
 {
   "id": "/",
-  "name": "살아본 한국사",
-  "short_name": "살아본 한국사",
-  "description": "역사를 외우지 말고, 직접 살아보세요.",
+  "name": "눈떠보니 한국사",
+  "short_name": "눈떠보니 한국사",
+  "description": "역사를 경험하고 실제 한능검 기출로 기억하는 역사 어드벤처 학습 앱",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
   "lang": "ko-KR",
-  "theme_color": "#121e26",
-  "background_color": "#121e27",
-  "categories": ["education", "games"],
+  "theme_color": "#20333f",
+  "background_color": "#f4f5f7",
+  "categories": [
+    "education",
+    "games"
+  ],
   "prefer_related_applications": false,
   "icons": [
     {
