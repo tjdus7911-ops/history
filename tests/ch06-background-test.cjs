@@ -1,5 +1,5 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
-const files=[...fs.readFileSync('dist/index.html','utf8').matchAll(/<script src="([^"]+)"/g)].map(m=>m[1]).filter(f=>!['app.js','pwa.js','ch06-backgrounds.js'].includes(f));
+const files=[...fs.readFileSync('dist/index.html','utf8').matchAll(/<script src="([^"]+)"/g)].map(m=>m[1]).filter(f=>!['app.js','pwa.js','ch06-backgrounds.js','ch06-quiz-refinement.js'].includes(f));
 const c=vm.createContext({Date}),run=s=>vm.runInContext(s,c),copy=x=>JSON.parse(JSON.stringify(x));
 run(files.map(f=>fs.readFileSync('dist/'+f,'utf8')).join('\n'));
 const protectedNames=['QUESTIONS','QUESTION_SETS','QUESTION_POOLS','CHAPTERS','CHARACTERS','PORTRAITS','CHARACTER_ASSET_MAP','SAVE_VERSION'];
@@ -26,6 +26,7 @@ for(const [id,asset]of Object.entries(assets))assert.deepEqual(copy(run('ASSETS[
 for(const n of protectedNames)assert.equal(JSON.stringify(run(n)),protectedData[n],n+' preserved');
 let saved=null,html='',handlers={};
 Object.assign(c,{document:{querySelector:s=>s==='#app'?{set innerHTML(s){html=s}}:null,querySelectorAll:()=>[],addEventListener:(n,h)=>handlers[n]=h},localStorage:{getItem:()=>saved,setItem:(k,v)=>saved=v},window:{scrollTo(){}},navigator:{},setTimeout:()=>0,clearTimeout(){}});
+run(fs.readFileSync('dist/ch06-quiz-refinement.js','utf8'));
 run(fs.readFileSync('dist/app.js','utf8'));
 const click=dataset=>{run('inputLockedUntil=0');handlers.click({target:{closest:()=>({dataset,disabled:false})}})};
 for(const branch of [0,1]){
@@ -41,11 +42,11 @@ for(const branch of [0,1]){
   }else if(run('screen')==='quiz'){
    const q=run('activeQuestion()');questions.add(q.questionId);
    click({answer:String((q.answer+1)%q.choices.length)});assert(html.includes('오답'));assert(html.includes('역사 해설'));
-   run('run().questionAnswer=null;render()');click({answer:String(q.answer)});assert(html.includes('정답'));click({action:'quiz-next'});
+   run('run().questionAnswer=null;delete run().questionResults['+JSON.stringify(q.questionId)+'];render()');click({answer:String(q.answer)});assert(html.includes('정답'));click({action:'quiz-next'});
    if(!reloaded){assert.equal(run('migrateSave(JSON.parse('+JSON.stringify(saved)+')).run.currentChapter'),'ch06');reloaded=true;}
   }else throw Error(run('screen'));
  }
- assert.equal(seen.size,14);assert.equal(questions.size,15);assert(reloaded);
+ assert.equal(seen.size,14);assert.equal(questions.size,22);assert(reloaded);
  click({nav:'teaser'});assert(html.includes('CH.07 시작하기'));click({action:'start-chapter',chapter:'ch07'});assert.equal(run('run().currentChapter'),'ch07');
 }
-console.log('PASS: CH06 14 scenes/13 backgrounds, both choice branches, all 15 quizzes correct/wrong/explanation/return, save migration, CH07 transition; every other story/quiz/character/asset unchanged.');
+console.log('PASS: CH06 14 scenes/13 backgrounds, both choice branches, all 22 quizzes correct/wrong/explanation/return, save migration, CH07 transition; every other story/quiz/character/asset unchanged.');
