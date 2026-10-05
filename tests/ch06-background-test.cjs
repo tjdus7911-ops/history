@@ -1,5 +1,5 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
-const files=[...fs.readFileSync('dist/index.html','utf8').matchAll(/<script src="([^"]+)"/g)].map(m=>m[1]).filter(f=>!['app.js','pwa.js','v2-app.js','v2-learning.js','v2-exam-restoration.js','v2-exam-additions.js','v2-art.js','v2-backgrounds.js','ch06-backgrounds.js','ch06-quiz-refinement.js'].includes(f));
+const files=[...fs.readFileSync('dist/index.html','utf8').matchAll(/<script src="([^"]+)"/g)].map(m=>m[1]).filter(f=>!['editorial-ui.js','app.js','pwa.js','v2-app.js','v2-learning.js','v2-exam-restoration.js','v2-exam-additions.js','v2-art.js','v2-backgrounds.js','ch06-backgrounds.js','ch06-quiz-refinement.js'].includes(f));
 const c=vm.createContext({Date}),run=s=>vm.runInContext(s,c),copy=x=>JSON.parse(JSON.stringify(x));
 run(files.map(f=>fs.readFileSync('dist/'+f,'utf8')).join('\n'));
 const protectedNames=['QUESTIONS','QUESTION_SETS','QUESTION_POOLS','CHAPTERS','CHARACTERS','PORTRAITS','CHARACTER_ASSET_MAP','SAVE_VERSION'];

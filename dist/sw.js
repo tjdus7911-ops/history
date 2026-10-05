@@ -1,5 +1,5 @@
 const CACHE_PREFIX='lived-history-shell-';
-const CACHE_VERSION='2026-10-05-renewal-v29';
+const CACHE_VERSION='2026-10-05-editorial-eras-v31';
 const CACHE_NAME=CACHE_PREFIX+CACHE_VERSION;
 const APP_SHELL=[
   '/',
@@ -14,7 +14,9 @@ const APP_SHELL=[
   '/exam-data.js',
   '/ch01-expansion.js','/chapter-split.js','/late-goryeo.js','/official-late-exams.js',
   '/official-exam-images.js','/ch05-refinement.js','/ch06-backgrounds.js','/ch06-quiz-refinement.js',
-  '/v2-exam-restoration.js', '/v2-exam-additions.js', '/v2-art.js','/v2-backgrounds.js', '/renewal.css', '/v2-learning.js', '/v2-app.js',
+  '/v2-exam-restoration.js', '/v2-exam-additions.js', '/v2-art.js','/v2-backgrounds.js', '/renewal.css',
+  '/editorial.css',
+  '/editorial-ui.js', '/era-visuals.js', '/v2-learning.js', '/v2-app.js',
   '/app.js',
   '/pwa.js',
   '/manifest.webmanifest',
