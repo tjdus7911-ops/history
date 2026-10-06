@@ -20,22 +20,36 @@ const LEGACY_MISSING_PDF_IDS=typeof V2_RESTORED_EXAM_SOURCES!=='undefined'?V2_RE
 const officialKey=record=>[record.examRound,record.examLevel,record.questionNumber].join(':');
 const officialSlug=level=>level==='심화'?'advanced':'basic';
 const officialChoiceLabels=['①','②','③','④','⑤'];
+const OFFICIAL_EXPLANATION_BY_SOURCE_ID=new Map((globalThis.OFFICIAL_EXAM_EXPLANATION_RECORDS||[]).map(record=>[record.officialQuestionId,record]));
+const officialExplanationPlaceholder=value=>{const text=String(value||'').trim();return !text||/^공식 정답은 [①②③④⑤1-5]입니다[.]$/.test(text)||text==='공식 정답표의 정정 결과 모든 선택지가 정답으로 인정됩니다.'};
+const officialStoredExplanation=question=>{if(!question)return null;for(const field of ['explanation','solution','commentary','answerExplanation']){const value=question[field];if(typeof value==='string'&&!officialExplanationPlaceholder(value))return {field,value:value.trim()}}return null};
+const officialExplanationStats={total:0,preexisting:0,restoredMappings:0,supplemented:0,covered:0,missing:0};
 const OFFICIAL_EXAM_CATALOG=(globalThis.OFFICIAL_EXAM_SOURCE_RECORDS||[]).map(source=>{
  const key=officialKey(source),legacy=legacyExamEntries.get(key),canonicalQuestionId=legacy?.canonicalQuestionId||source.officialQuestionId;
- const aliases=[...new Set(legacy?.aliases||[canonicalQuestionId])];
+ const aliases=[...new Set([canonicalQuestionId,...(legacy?.aliases||[])])];
  let canonical=QUESTIONS.find(question=>question.questionId===canonicalQuestionId);
  if(!canonical){
   canonical={questionId:canonicalQuestionId,chapterId:'official-'+source.primaryEra,question:`${source.examRound}회 ${source.examLevel} ${source.questionNumber}번`,sourceQuestionText:'원문 이미지에서 문제와 선택지를 확인하세요.',choices:officialChoiceLabels.slice(0,source.examLevel==='기본'?4:5),explanation:source.answer===null?'공식 정답표의 정정 결과 모든 선택지가 정답으로 인정됩니다.':`공식 정답은 ${source.answerLabel}입니다.`,examKeywords:[officialEraInfo(source.primaryEra).name],conceptIds:[source.primaryEra],difficulty:source.examLevel==='심화'?'심화':'기본',rewardKnowledge:2};
   QUESTIONS.push(canonical);
  }
  const primaryEra=legacy?.primaryEra||source.primaryEra;
+ const candidates=[canonical,...aliases.map(aliasId=>QUESTIONS.find(item=>item.questionId===aliasId)).filter(Boolean)];
+ const canonicalStored=officialStoredExplanation(canonical),reusable=candidates.map(question=>({question,stored:officialStoredExplanation(question)})).find(item=>item.stored),generated=OFFICIAL_EXPLANATION_BY_SOURCE_ID.get(source.officialQuestionId);
+ const resolved=canonicalStored?.value||reusable?.stored?.value||generated?.explanation||'';
+ officialExplanationStats.total++;
+ if(canonicalStored)officialExplanationStats.preexisting++;
+ else if(reusable?.stored){officialExplanationStats.restoredMappings++}
+ else if(generated?.explanation){officialExplanationStats.supplemented++}
+ if(resolved)officialExplanationStats.covered++;else officialExplanationStats.missing++;
  for(const aliasId of aliases){
   const question=QUESTIONS.find(item=>item.questionId===aliasId);if(!question)continue;
+  if(officialExplanationPlaceholder(question.explanation))question.explanation=resolved;
   Object.assign(question,{officialQuestionId:canonicalQuestionId,examRound:source.examRound,examYear:source.examYear,examLevel:source.examLevel,questionNumber:source.questionNumber,answer:source.answer===null?0:source.answer,answerLabel:source.answerLabel,acceptedAnswers:source.acceptedAnswers?[...source.acceptedAnswers]:[source.answer],points:source.points,questionImage:source.questionImage,sourceQuestionImage:source.questionImage,sourceFile:source.sourcePdf,answerFile:source.answerPdf,sourcePdf:source.sourcePdf,answerPdf:source.answerPdf,sourcePage:source.sourcePage,primaryEra,concepts:[...(question.concepts||source.concepts||[])],isOfficial:true,sourceVerified:true,sourceStatus:'verified',sourceImageStatus:'verified',sourceImageReason:'',needsVerification:false,missingPdf:false,verificationNote:'첨부된 공식 문제지와 정답표 대조 완료'});
  }
  return {key,canonicalQuestionId,aliases,primaryEra,relatedEra:legacy?.relatedEra||[],needsVerification:false,verificationNote:'첨부된 공식 문제지와 정답표 대조 완료',libraryImage:source.questionImage,sourceRecord:source};
 });
 globalThis.OFFICIAL_EXAM_CATALOG=OFFICIAL_EXAM_CATALOG;
+globalThis.OFFICIAL_EXPLANATION_COVERAGE={...officialExplanationStats};
 globalThis.OFFICIAL_EXAM_IMPORT_STATS={canonicalQuestionCount:OFFICIAL_EXAM_CATALOG.length,existingMatchedQuestionCount:OFFICIAL_EXAM_CATALOG.filter(entry=>legacyExamEntries.has(entry.key)).length,newQuestionCount:OFFICIAL_EXAM_CATALOG.filter(entry=>!legacyExamEntries.has(entry.key)).length,mergedLegacyAliasCount:[...legacyExamEntries.values()].reduce((sum,entry)=>sum+Math.max(0,(entry.aliases||[]).length-1),0),imageConnectedCount:OFFICIAL_EXAM_CATALOG.filter(entry=>entry.libraryImage).length,answerConnectedCount:OFFICIAL_EXAM_CATALOG.filter(entry=>entry.sourceRecord.answer!==undefined).length,classifiedCount:OFFICIAL_EXAM_CATALOG.filter(entry=>entry.primaryEra).length};
 globalThis.OFFICIAL_EXAM_RECOVERY_REPORT={legacyMissingPdfIds:[...LEGACY_MISSING_PDF_IDS],recoveredMissingPdfIds:LEGACY_MISSING_PDF_IDS.filter(id=>OFFICIAL_EXAM_CATALOG.some(entry=>entry.aliases.includes(id))),round70Advanced13:OFFICIAL_EXAM_CATALOG.find(entry=>entry.key==='70:심화:13')?.sourceRecord||null};
 EXAM_LIBRARY_ENTRIES.splice(0,EXAM_LIBRARY_ENTRIES.length,...OFFICIAL_EXAM_CATALOG);
@@ -44,6 +58,8 @@ for(const entry of OFFICIAL_EXAM_CATALOG){OFFICIAL_ENTRY_BY_ID.set(entry.canonic
 const officialEntry=value=>typeof value==='string'?OFFICIAL_ENTRY_BY_ID.get(value):OFFICIAL_ENTRY_BY_ID.get(value?.officialQuestionId||value?.questionId);
 const officialQuestion=value=>{const entry=officialEntry(value);return entry&&QUESTIONS.find(question=>question.questionId===entry.canonicalQuestionId)};
 const officialAnswerAccepted=(question,answer)=>Array.isArray(question?.acceptedAnswers)?question.acceptedAnswers.includes(answer):question?.answer===answer;
+const officialAnswerLabel=question=>question?.answerLabel==='없음'?'모든 선택지':officialChoiceLabels[question?.answer]||String(question?.answerLabel||'');
+const officialExplanation=question=>{const stored=officialStoredExplanation(question);if(!stored)throw new Error(`Missing official explanation: ${question?.questionId||'unknown'}`);return stored.value};
 libraryStatus=()=> 'UNLOCKED';
 libraryEligible=entry=>Boolean(entry&&!entry.needsVerification&&officialQuestion(entry.canonicalQuestionId)?.sourceQuestionImage);
 libraryEntries=era=>OFFICIAL_EXAM_CATALOG.filter(entry=>entry.primaryEra===era&&libraryEligible(entry));
@@ -99,10 +115,14 @@ function recordOfficialAttempt(questionId,answer){
  try{right=recordQuestion(state,questionId,answer)}finally{state.run=savedRun;state.mainRun=savedMain}
  return right;
 }
+function officialFeedbackBlock(question,right,selectedAnswer){
+ const memories=memoryForQuestion(question),selected=selectedAnswer===undefined?'선택하지 않음':officialChoiceLabels[selectedAnswer]||String(selectedAnswer+1);
+ return `<div class="official-feedback ${right?'correct':'wrong'}" role="status"><h2>${right?'✓ 정답입니다.':'✕ 오답입니다.'}</h2><p class="official-selected-answer">내가 선택한 답 <b>${selected}</b></p><p class="official-answer-line"><b>정답 ${officialAnswerLabel(question)}</b></p><div class="official-explanation"><h3>[해설]</h3><p>${esc(officialExplanation(question))}</p>${memories.length?`<button class="text-btn" data-association-for="${memories[0].id}">연상기억법 보기 · ${esc(memories[0].title)} ›</button>`:''}</div></div>`;
+}
 function officialPracticePage(){
  const session=officialExamSession,entry=officialSessionQuestion();if(!session||!entry)return officialExamHome();
  const question=officialQuestion(entry.canonicalQuestionId),picked=session.answers[entry.canonicalQuestionId],feedback=session.feedback[entry.canonicalQuestionId],done=session.mode==='learn'&&feedback!==undefined,count=question.choices?.length||(question.examLevel==='기본'?4:5);
- return `<section class="official-practice"><header class="official-subhead"><button data-official-exit="true" aria-label="목록으로">‹</button><div><small>${session.mode==='learn'?'학습 모드':'시험 모드'} · ${examSourceLabel(entry)}</small><h1>${session.index+1} / ${session.entries.length}</h1></div></header><div class="quiz-progress"><div class="progress"><span style="width:${Math.round((session.index+1)/session.entries.length*100)}%"></span></div></div><figure class="official-paper"><img src="${esc(entry.libraryImage)}" alt="${examSourceLabel(entry)} 실제 문제"><figcaption>${esc(entry.sourceRecord.sourcePdf)} · ${entry.sourceRecord.sourcePage}쪽</figcaption></figure><div class="official-choice-grid" role="group" aria-label="정답 선택">${officialChoiceLabels.slice(0,count).map((label,index)=>`<button data-official-pick="${index}" class="${picked===index?'picked ':''}${done&&officialAnswerAccepted(question,index)?'correct':done&&picked===index?'wrong':''}" ${done?'disabled':''}>${label}</button>`).join('')}</div>${done?`<div class="official-feedback ${feedback?'correct':'wrong'}"><h2>${feedback?'정답입니다':'다시 확인해 보세요'}</h2><p>${esc(question.explanation||`공식 정답은 ${question.answerLabel||officialChoiceLabels[question.answer]}입니다.`)}</p></div>`:''}<div class="official-practice-actions">${session.mode==='learn'&&!done?`<button class="primary" data-official-submit="true" ${picked===undefined?'disabled':''}>정답 확인</button>`:session.mode==='exam'?`<button class="primary" data-official-next="true" ${picked===undefined?'disabled':''}>${session.index===session.entries.length-1?'채점하기':'다음 문제'}</button>`:`<button class="primary" data-official-next="true">${session.index===session.entries.length-1?'학습 결과 보기':'다음 문제'}</button>`}</div></section>`;
+ return `<section class="official-practice"><header class="official-subhead"><button data-official-exit="true" aria-label="목록으로">‹</button><div><small>${session.mode==='learn'?'학습 모드':'시험 모드'} · ${examSourceLabel(entry)}</small><h1>${session.index+1} / ${session.entries.length}</h1></div></header><div class="quiz-progress"><div class="progress"><span style="width:${Math.round((session.index+1)/session.entries.length*100)}%"></span></div></div><figure class="official-paper"><img src="${esc(entry.libraryImage)}" alt="${examSourceLabel(entry)} 실제 문제"><figcaption>${esc(entry.sourceRecord.sourcePdf)} · ${entry.sourceRecord.sourcePage}쪽</figcaption></figure><div class="official-choice-grid" role="group" aria-label="정답 선택">${officialChoiceLabels.slice(0,count).map((label,index)=>`<button data-official-pick="${index}" class="${picked===index?'picked ':''}${done&&officialAnswerAccepted(question,index)?'correct':done&&picked===index?'wrong':''}" ${done?'disabled':''}>${label}</button>`).join('')}</div>${done?officialFeedbackBlock(question,feedback,picked):''}<div class="official-practice-actions">${session.mode==='learn'&&!done?`<button class="primary" data-official-submit="true" ${picked===undefined?'disabled':''}>정답 확인</button>`:session.mode==='exam'?`<button class="primary" data-official-next="true" ${picked===undefined?'disabled':''}>${session.index===session.entries.length-1?'채점하기':'다음 문제'}</button>`:`<button class="primary" data-official-next="true">${session.index===session.entries.length-1?'학습 결과 보기':'다음 문제'}</button>`}</div></section>`;
 }
 function officialResultPage(){
  const session=officialExamSession;if(!session)return officialExamHome();const graded=session.graded||{};
@@ -110,9 +130,15 @@ function officialResultPage(){
  const eraStats=OFFICIAL_ERA_TAXONOMY.map(era=>{const rows=session.entries.filter(entry=>entry.primaryEra===era.id),count=rows.filter(entry=>graded[entry.canonicalQuestionId]).length;return {era,rows,count,accuracy:rows.length?Math.round(count/rows.length*100):null}}).filter(item=>item.rows.length);
  const eras=eraStats.map(item=>`<div><b>${item.era.name}</b><span>${item.count} / ${item.rows.length}</span><div class="progress"><span style="width:${item.accuracy}%"></span></div></div>`).join(''),weak=[...eraStats].sort((a,b)=>a.accuracy-b.accuracy||b.rows.length-a.rows.length)[0];
  const wrong=session.entries.filter(entry=>!graded[entry.canonicalQuestionId]);
- return `<section class="official-results"><p class="eyebrow">OFFICIAL EXAM RESULT</p><h1>${correct} / ${total}</h1><div class="official-result-summary">${[['총 문제',total],['정답',correct],['오답',total-correct],['점수',points+' / '+maxPoints],['정답률',(total?Math.round(correct/total*100):0)+'%']].map(([label,value])=>`<div><small>${label}</small><b>${value}</b></div>`).join('')}</div><p class="weak-era">취약 시대 · <b>${weak&&weak.accuracy<100?weak.era.name:'없음'}</b></p><div class="official-result-actions"><button class="primary" data-official-retry="true">틀린 문제 다시 학습</button><button class="secondary" data-official-back="list">목록으로</button></div><section><h2>시대별 정답률</h2><div class="official-era-results">${eras}</div></section><section><h2>틀린 문제 ${wrong.length}</h2>${wrong.length?wrong.map(entry=>`<button class="official-wrong-row" data-official-single="${entry.canonicalQuestionId}"><img src="${esc(entry.libraryImage)}" alt=""><span><b>${examSourceLabel(entry)}</b><small>${officialEraInfo(entry.primaryEra).name} · 정답 ${entry.sourceRecord.answerLabel}</small></span><span>›</span></button>`).join(''):'<div class="ed-empty">모든 문제를 맞혔습니다.</div>'}</section></section>`;
+ const reviewRows=session.entries.map(entry=>{const right=Boolean(graded[entry.canonicalQuestionId]);return `<button class="official-wrong-row ${right?'right':'wrong'}" data-official-review="${entry.canonicalQuestionId}"><img src="${esc(entry.libraryImage)}" alt=""><span><b>${examSourceLabel(entry)}</b><small>${right?'정답':'오답'} · 정답 ${officialAnswerLabel(officialQuestion(entry.canonicalQuestionId))} · 해설 보기</small></span><span>›</span></button>`}).join('');
+ return `<section class="official-results"><p class="eyebrow">OFFICIAL EXAM RESULT</p><h1>${correct} / ${total}</h1><div class="official-result-summary">${[['총 문제',total],['정답',correct],['오답',total-correct],['점수',points+' / '+maxPoints],['정답률',(total?Math.round(correct/total*100):0)+'%']].map(([label,value])=>`<div><small>${label}</small><b>${value}</b></div>`).join('')}</div><p class="weak-era">취약 시대 · <b>${weak&&weak.accuracy<100?weak.era.name:'없음'}</b></p><div class="official-result-actions"><button class="primary" data-official-retry="true">틀린 문제 다시 학습</button><button class="secondary" data-official-back="list">목록으로</button></div><section><h2>시대별 정답률</h2><div class="official-era-results">${eras}</div></section><section><h2>문제별 해설 · 오답 ${wrong.length}</h2>${reviewRows}</section></section>`;
 }
-function officialExamPage(){if(officialExamView==='list')return officialExamListPage();if(officialExamView==='practice')return officialPracticePage();if(officialExamView==='result')return officialResultPage();return officialExamHome()}
+function officialReviewPage(){
+ const session=officialExamSession,entry=session?.entries.find(item=>item.canonicalQuestionId===session.reviewQuestionId);if(!session||!entry)return officialResultPage();
+ const question=officialQuestion(entry.canonicalQuestionId),selected=session.answers[entry.canonicalQuestionId],right=Boolean(session.graded?.[entry.canonicalQuestionId]),index=session.entries.indexOf(entry),previous=session.entries[index-1],next=session.entries[index+1];
+ return `<section class="official-practice official-review"><header class="official-subhead"><button data-official-review-back="true" aria-label="시험 결과로">‹</button><div><small>채점 후 문제 다시 보기 · ${examSourceLabel(entry)}</small><h1>${index+1} / ${session.entries.length}</h1></div></header><figure class="official-paper"><img src="${esc(entry.libraryImage)}" alt="${examSourceLabel(entry)} 실제 문제"><figcaption>${esc(entry.sourceRecord.sourcePdf)} · ${entry.sourceRecord.sourcePage}쪽</figcaption></figure>${officialFeedbackBlock(question,right,selected)}<div class="official-review-actions"><button class="secondary" data-official-review="${previous?.canonicalQuestionId||''}" ${previous?'':'disabled'}>이전 문제</button><button class="secondary" data-official-review="${next?.canonicalQuestionId||''}" ${next?'':'disabled'}>다음 문제</button></div></section>`;
+}
+function officialExamPage(){if(officialExamView==='list')return officialExamListPage();if(officialExamView==='practice')return officialPracticePage();if(officialExamView==='result')return officialResultPage();if(officialExamView==='review')return officialReviewPage();return officialExamHome()}
 
 const ASSOCIATION_MEMORIES=[
  {id:'gong-go-sin-il',status:'published',era:'ancient',type:'전투 흐름',title:'공고신일',description:'후삼국 통일까지 네 장면을 한 줄로 잇습니다.',sequence:['공산 전투','고창 전투','신라 항복','일리천 전투'],searchTerms:['공산','고창','신라 항복','일리천']},
@@ -176,7 +202,7 @@ v2QuestionRow=function(question){
 
 function startOfficialSession(entries,mode){
  let selected=[...entries];if(mode==='exam'&&officialExamTab==='era')selected=selected.slice().sort((a,b)=>b.sourceRecord.examRound-a.sourceRecord.examRound||a.sourceRecord.questionNumber-b.sourceRecord.questionNumber).slice(0,20);
- officialExamSession={mode,entries:selected,index:0,answers:{},feedback:{},graded:null};officialExamView='practice';screen='exam-library';render();window.scrollTo(0,0);
+ officialExamSession={mode,entries:selected,index:0,answers:{},feedback:{},graded:null,reviewQuestionId:null};officialExamView='practice';screen='exam-library';render();window.scrollTo(0,0);
 }
 function gradeOfficialSession(){
  const session=officialExamSession,graded={};for(const entry of session.entries){const answer=session.answers[entry.canonicalQuestionId];if(answer===undefined)continue;graded[entry.canonicalQuestionId]=recordOfficialAttempt(entry.canonicalQuestionId,answer)}session.graded=graded;
@@ -191,6 +217,8 @@ document.addEventListener('click',event=>{
  if(data.officialLevel){event.stopImmediatePropagation();officialExamLevel=data.officialLevel;render();return}
  if(data.officialBack){event.stopImmediatePropagation();officialExamSession=null;officialExamView=data.officialBack==='home'?'home':'list';render();window.scrollTo(0,0);return}
  if(data.officialStart){event.stopImmediatePropagation();startOfficialSession(officialSelectionEntries(),data.officialStart);return}
+ if(data.officialReview){event.stopImmediatePropagation();if(!officialExamSession?.graded)return;officialExamSession.reviewQuestionId=data.officialReview;officialExamView='review';render();window.scrollTo(0,0);return}
+ if(data.officialReviewBack){event.stopImmediatePropagation();officialExamView='result';render();window.scrollTo(0,0);return}
  if(data.officialSingle){event.stopImmediatePropagation();const entry=officialEntry(data.officialSingle);if(entry)startOfficialSession([entry],'learn');return}
  if(data.officialPick!==undefined){event.stopImmediatePropagation();const entry=officialSessionQuestion();if(!entry)return;officialExamSession.answers[entry.canonicalQuestionId]=Number(data.officialPick);render();return}
  if(data.officialSubmit){event.stopImmediatePropagation();const entry=officialSessionQuestion(),answer=officialExamSession.answers[entry.canonicalQuestionId];if(answer===undefined)return;officialExamSession.feedback[entry.canonicalQuestionId]=recordOfficialAttempt(entry.canonicalQuestionId,answer);save();render();return}
