@@ -1,8 +1,8 @@
 const fs=require('fs'),path=require('path'),vm=require('vm'),assert=require('assert');
-const required=['dist/index.html','dist/editorial.css','dist/editorial-ui.js','dist/era-visuals.js','dist/style.css','dist/renewal.css','dist/v2-learning.js','dist/v2-app.js','dist/v2-exam-restoration.js','dist/v2-exam-additions.js','dist/v2-art.js','dist/v2-backgrounds.js','dist/v2.css','dist/dialogue.css','dist/pwa.css','dist/data.js','dist/ch02-data.js','dist/ch03-data.js','dist/exam-data.js','dist/ch01-expansion.js','dist/chapter-split.js','dist/late-goryeo.js','dist/official-late-exams.js','dist/official-exam-images.js','dist/ch05-refinement.js','dist/ch06-backgrounds.js','dist/ch06-quiz-refinement.js','dist/app.js','dist/pwa.js','dist/sw.js','dist/manifest.webmanifest','dist/goryeo.png','dist/seoul-night.png','dist/icons/icon-192.png','dist/icons/icon-512.png','dist/icons/icon-maskable-512.png','dist/icons/apple-touch-icon.png','vercel.json'];
+const required=['dist/index.html','dist/editorial.css','dist/editorial-ui.js','dist/era-visuals.js','dist/joseon-data.js','dist/joseon-ui.js','dist/style.css','dist/renewal.css','dist/v2-learning.js','dist/v2-app.js','dist/v2-exam-restoration.js','dist/v2-exam-additions.js','dist/v2-art.js','dist/v2-backgrounds.js','dist/v2.css','dist/dialogue.css','dist/pwa.css','dist/data.js','dist/ch02-data.js','dist/ch03-data.js','dist/exam-data.js','dist/ch01-expansion.js','dist/chapter-split.js','dist/late-goryeo.js','dist/official-late-exams.js','dist/official-exam-images.js','dist/ch05-refinement.js','dist/ch06-backgrounds.js','dist/ch06-quiz-refinement.js','dist/app.js','dist/pwa.js','dist/sw.js','dist/manifest.webmanifest','dist/goryeo.png','dist/seoul-night.png','dist/icons/icon-192.png','dist/icons/icon-512.png','dist/icons/icon-maskable-512.png','dist/icons/apple-touch-icon.png','vercel.json'];
 for(const file of required)assert(fs.existsSync(file),`missing build asset: ${file}`);
 const html=fs.readFileSync('dist/index.html','utf8');
-for(const ref of ['manifest.webmanifest','style.css','v2.css','dialogue.css','pwa.css','data.js','ch02-data.js','ch03-data.js','exam-data.js','ch01-expansion.js','chapter-split.js','late-goryeo.js','official-late-exams.js','official-exam-images.js','editorial-ui.js','app.js','pwa.js','apple-touch-icon.png'])assert(html.includes(ref),`index.html does not reference ${ref}`);
+for(const ref of ['manifest.webmanifest','style.css','v2.css','dialogue.css','pwa.css','data.js','ch02-data.js','ch03-data.js','exam-data.js','ch01-expansion.js','chapter-split.js','late-goryeo.js','official-late-exams.js','official-exam-images.js','joseon-data.js','editorial-ui.js','joseon-ui.js','app.js','pwa.js','apple-touch-icon.png'])assert(html.includes(ref),`index.html does not reference ${ref}`);
 for(const meta of ['viewport-fit=cover','apple-mobile-web-app-capable','apple-mobile-web-app-status-bar-style','mobile-web-app-capable'])assert(html.includes(meta),`index.html is missing ${meta}`);
 new vm.Script(fs.readFileSync('dist/data.js','utf8'),{filename:'dist/data.js'});
 new vm.Script(fs.readFileSync('dist/ch02-data.js','utf8'),{filename:'dist/ch02-data.js'});
@@ -12,6 +12,8 @@ new vm.Script(fs.readFileSync('dist/ch01-expansion.js','utf8')+'\n'+fs.readFileS
 new vm.Script(fs.readFileSync('dist/late-goryeo.js','utf8'),{filename:'dist/late-goryeo.js'});
 new vm.Script(fs.readFileSync('dist/official-exam-images.js','utf8'),{filename:'dist/official-exam-images.js'});
 new vm.Script(fs.readFileSync('dist/ch05-refinement.js','utf8'),{filename:'dist/ch05-refinement.js'});
+new vm.Script(fs.readFileSync('dist/joseon-data.js','utf8'),{filename:'dist/joseon-data.js'});
+new vm.Script(fs.readFileSync('dist/joseon-ui.js','utf8'),{filename:'dist/joseon-ui.js'});
 new vm.Script(fs.readFileSync('dist/app.js','utf8'),{filename:'dist/app.js'});
 new vm.Script(fs.readFileSync('dist/pwa.js','utf8'),{filename:'dist/pwa.js'});
 new vm.Script(fs.readFileSync('dist/sw.js','utf8'),{filename:'dist/sw.js'});
@@ -22,7 +24,7 @@ function pngSize(file){const buffer=fs.readFileSync(file);assert.equal(buffer.su
 assert.deepEqual(pngSize('dist/icons/icon-192.png'),[192,192]);assert.deepEqual(pngSize('dist/icons/icon-512.png'),[512,512]);assert.deepEqual(pngSize('dist/icons/icon-maskable-512.png'),[512,512]);assert.deepEqual(pngSize('dist/icons/apple-touch-icon.png'),[180,180]);
 const registration=fs.readFileSync('dist/pwa.js','utf8'),worker=fs.readFileSync('dist/sw.js','utf8'),safeArea=fs.readFileSync('dist/pwa.css','utf8');
 assert(registration.includes("register('/sw.js'"));assert(registration.includes("scope:'/'"));assert(registration.includes("updateViaCache:'none'"));assert(!registration.includes('beforeinstallprompt'));
-assert(worker.includes("cache:'no-store'"));assert(worker.includes('caches.delete'));assert(worker.includes('/pwa.css'));assert(!worker.includes('/assets/scenes/'));assert(!worker.includes('localStorage'));
+assert(worker.includes("cache:'no-store'"));assert(worker.includes('caches.delete'));assert(worker.includes('/pwa.css'));assert(worker.includes('/joseon-data.js'));assert(worker.includes('/joseon-ui.js'));assert(!worker.includes('/assets/scenes/'));assert(!worker.includes('localStorage'));
 assert(safeArea.includes('env(safe-area-inset-top)'));assert(safeArea.includes('env(safe-area-inset-bottom)'));assert(safeArea.includes('@media(display-mode:standalone)'));
 const vercel=JSON.parse(fs.readFileSync('vercel.json','utf8'));assert.equal(vercel.outputDirectory,'dist');assert(vercel.headers.some(rule=>rule.source==='/sw.js'));assert(vercel.headers.some(rule=>rule.source==='/manifest.webmanifest'));
 const context=vm.createContext({});

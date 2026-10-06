@@ -9,7 +9,7 @@ assert(html.includes('오늘의 학습')&&html.includes('최근 학습')&&html.i
 assert(!html.includes('ed-chapter-row'));assert.equal((html.match(/data-era-slide=/g)||[]).length,5);
 const heroes=copy('LEARNING_ERAS.map(e=>eraHero(e.id))');assert.equal(new Set(heroes).size,5);
 const hashes=new Set();for(const c of copy('Object.values(ERA_PROTAGONISTS)')){assert.equal(c.id,run(`eraProtagonist('${c.era}').id`));for(const file of Object.values(c.assetPaths)){assert(fs.existsSync('dist/'+file));hashes.add(crypto.createHash('sha256').update(fs.readFileSync('dist/'+file)).digest('hex'))}}
-assert.equal(hashes.size,10,'independent heroes and portrait files');
+assert.equal(hashes.size,24,'independent heroes and Joseon expression portrait files');
 assert.deepEqual(copy('Object.values(ERA_PROTAGONISTS).map(c=>c.gender)'),['male','female','male','female','male']);
 assert.equal(run("eraProtagonist('missing')"),null);assert.equal(run("eraSceneVisuals('joseon',{backgroundId:'goryeo-gaegyeong-cover',year:1398})"),null);
 for(const b of copy('Object.values(ERA_BACKGROUNDS)')){assert(b.era&&b.yearRange.length===2&&b.location&&b.event&&b.timeOfDay);assert(fs.existsSync('dist/'+b.src))}
@@ -23,7 +23,7 @@ assert.equal(run("periodLearning(meta(),'7','all',new Date('2026-10-05T12:00:00+
 const ready=copy('learningReadiness(meta())');assert.equal(ready.studied,1);assert.equal(ready.attempts,2);assert.equal(ready.score,Math.round(100*(.5*.55+1/ready.total*.25)));
 assert.equal(run('editorialWrongQuestions().length'),1);run("wrongEra='joseon'");assert.equal(run('editorialWrongQuestions().length'),0);run("wrongEra='all';wrongFilter='repeated'");assert.equal(run('editorialWrongQuestions().length'),1);
 run("state.meta.learningEvents=[];state.meta.wrongQuestionIds=[testId];wrongFilter='all';save()");
-const originalRun=run('JSON.stringify(state.run)');click({eraOpen:'joseon'});assert(html.includes('assets/editorial/heroes/joseon.webp'));assert(html.includes('이야기를 준비하고'));assert(!html.includes('ed-chapter-row'));assert(!html.includes('data-era-resume'));assert.equal(run('JSON.stringify(state.run)'),originalRun);
+const originalRun=run('JSON.stringify(state.run)');click({eraOpen:'joseon'});assert(html.includes('assets/editorial/heroes/joseon.webp'));assert.equal((html.match(/class="ed-chapter-row/g)||[]).length,23);assert(html.includes('data-era-resume="joseon"'));assert.equal(run('JSON.stringify(state.run)'),originalRun);
 click({eraOpen:'goryeo'});assert.equal((html.match(/class="ed-chapter-row/g)||[]).length,12);run("meta().eraProgress.joseon={lastScene:'future-test',progress:0};save()");boot();assert.equal(run('meta().eraProgress.joseon.lastScene'),'future-test');assert.equal(run('JSON.stringify(state.run)'),originalRun);
 click({practice:'ch06-official-79-advanced-13'});assert(html.includes('official-source-question'));assert(html.indexOf('quiz-recall')>html.indexOf('quiz-submit-row'));assert(html.includes('assets/scenes/ch06-tripitaka-workshop.webp'));
 const before=run('JSON.stringify(meta().questionRecords)');click({submitAnswer:'true'});assert.equal(run('JSON.stringify(meta().questionRecords)'),before);

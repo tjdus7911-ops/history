@@ -17,9 +17,9 @@ const ERA_PROTAGONISTS = {
     id:'protagonist_joseon',era:'joseon',gender:'female',
     baseAppearance:'타원형 얼굴, 따뜻하고 가는 눈매, 짙은 갈색의 긴 땋은 머리와 소박한 붉은 댕기',
     outfits:{earlyJoseon:'수수한 긴 소색 저고리와 적갈색 치마, 글과 종이를 담는 작은 보따리 가방'},
-    expressions:['neutral'],ageState:{kind:'concept',age:24},
-    assetPaths:{neutral:'assets/editorial/protagonists/joseon-neutral.webp',hero:'assets/editorial/heroes/joseon.webp'},
-    role:'글을 읽고 쓰는 평민 여성의 시선으로 역사를 경험하는 기록자',status:'preview'
+    expressions:['neutral','smile','laugh','surprised','shock','worried','fear','sad','crying','angry','determined','thinking','confused','relieved','tired'],ageState:{kind:'persistent',age:24,description:'CH.00부터 CH.22까지 같은 얼굴과 나이를 유지하는 시간 여행자'},
+    assetPaths:{neutral:'assets/editorial/protagonists/joseon-neutral.webp',smile:'assets/joseon/protagonist/smile.webp',laugh:'assets/joseon/protagonist/laugh.webp',surprised:'assets/joseon/protagonist/surprised.webp',shock:'assets/joseon/protagonist/shock.webp',worried:'assets/joseon/protagonist/worried.webp',fear:'assets/joseon/protagonist/fear.webp',sad:'assets/joseon/protagonist/sad.webp',crying:'assets/joseon/protagonist/crying.webp',angry:'assets/joseon/protagonist/angry.webp',determined:'assets/joseon/protagonist/determined.webp',thinking:'assets/joseon/protagonist/thinking.webp',confused:'assets/joseon/protagonist/confused.webp',relieved:'assets/joseon/protagonist/relieved.webp',tired:'assets/joseon/protagonist/tired.webp',hero:'assets/editorial/heroes/joseon.webp'},
+    role:'글을 읽고 쓰는 평민 여성의 시선으로 역사를 경험하는 기록자',status:'playable'
   },
   protagonist_korean_empire: {
     id:'protagonist_korean_empire',era:'empire',gender:'male',

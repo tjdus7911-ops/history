@@ -992,4 +992,5 @@ document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b||
  if(librarySession&&d.answer!==undefined){e.stopImmediatePropagation();submitLibraryAnswer(Number(d.answer));return}
  if(d.nav||d.review||d.practice){librarySession=null;}
 },true);
+globalThis.EDITORIAL_UI_READY=true;
 render();
