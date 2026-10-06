@@ -27,9 +27,11 @@ function click(dataset){
 boot();
 assert.equal(run("eraInfo('joseon').available"),true);
 assert.equal(run("eraChapters('joseon').length"),23);
-assert.equal(run("libraryStatus('joseon')"),'LOCKED');
-assert.equal(run("libraryEntries('joseon').length"),65);
-assert.equal(run('EXAM_LIBRARY_ENTRIES.length'),140);
+assert.equal(run("libraryStatus('joseon')"),'UNLOCKED');
+const joseonOfficialCount=run("OFFICIAL_EXAM_CATALOG.filter(entry=>entry.primaryEra==='joseon').length");
+assert(joseonOfficialCount>=260);
+assert.equal(run("libraryEntries('joseon').length"),joseonOfficialCount);
+assert.equal(run('EXAM_LIBRARY_ENTRIES.length'),1300);
 
 const originalRun=run('JSON.stringify(state.run)');
 click({eraOpen:'joseon'});
@@ -69,12 +71,12 @@ assert.equal(run(`meta().wrongAnswers.find(item=>item.questionId===${JSON.string
 assert(html.includes('오답노트 +1'));
 
 run("meta().completedChapters=eraChapters('joseon').slice(0,-1).map(ch=>ch.chapterId)");
-assert.equal(run("libraryStatus('joseon')"),'LOCKED');
+assert.equal(run("libraryStatus('joseon')"),'UNLOCKED');
 run("meta().completedChapters=eraChapters('joseon').map(ch=>ch.chapterId)");
 assert.equal(run("libraryStatus('joseon')"),'UNLOCKED');
 click({nav:'exam-library'});
-click({libraryEra:'joseon'});
-assert.equal((html.match(/class="library-question"/g)||[]).length,65);
+click({officialEra:'joseon'});
+assert.equal((html.match(/data-official-single=/g)||[]).length,joseonOfficialCount);
 assert(html.includes('73회')&&html.includes('79회'));
 
 run("state.run=INITIAL_RUN('joseon-ch22');state.run.started=true;state.run.storyId='joseon_ch22_complete';meta().completedChapters=eraChapters('joseon').slice(0,-1).map(ch=>ch.chapterId);finishChapter(state)");
@@ -82,4 +84,4 @@ assert.equal(run('meta().eraProgress.joseon.completed'),true);
 assert.equal(run('meta().eraProgress.joseon.progress'),100);
 assert.equal(run("libraryStatus('joseon')"),'UNLOCKED');
 
-console.log('PASS: Joseon chapter selection, independent save/resume, official wrong-note ID, era completion and 65-question library unlock');
+console.log('PASS: Joseon chapter selection, independent save/resume, official wrong-note ID, era completion and always-unlocked 1,300-question library');
