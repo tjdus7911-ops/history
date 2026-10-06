@@ -54,7 +54,7 @@ function learningReadiness(m,era='all'){
 }
 function editorialIcon(name){const paths={profile:'<circle cx="12" cy="8" r="3.3"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/>',book:'<path d="M3 4h6a3 3 0 0 1 3 3v14a4 4 0 0 0-4-2H3zM21 4h-6a3 3 0 0 0-3 3v14a4 4 0 0 1 4-2h5z"/>',note:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/>',target:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><path d="m12 12 8-8m-4 0h4v4"/>',fire:'<path d="M13 2c2 6-1 6 2 10 2-1 3-3 3-3 6 8 1 13-6 13S2 15 7 10c0 4 3 4 3 4-2-6 4-7 3-12Z"/>',cross:'<path d="m7 7 10 10M17 7 7 17"/>',home:'<path d="m3 11 9-8 9 8M6 9v12h5v-7h3v7h4V9"/>',records:'<path d="M5 21V10m5 11V4m5 17V7m5 14V1"/>'};return '<svg viewBox="0 0 24 24" class="ed-icon" aria-hidden="true">'+(paths[name]||paths.book)+'</svg>'}
 function editorialHeader(title,tagline=''){return '<header class="ed-header"><div>'+(tagline?'<p>'+esc(tagline)+'</p>':'')+'<h1>'+esc(title)+'</h1></div><button class="ed-profile" data-action="status" aria-label="내 상태 보기">'+editorialIcon('profile')+'</button></header>'}
-shell=function(content){const current=['game','quiz','complete','teaser','history'].includes(screen)?'era':screen;return '<div class="shell editorial-shell"><aside class="sidebar"><div class="brand">눈떠보니 한국사<small>역사를 살고, 기출로 기억하다</small></div><nav class="nav" aria-label="주 메뉴">'+[['home','홈','home'],['era','학습','book'],['study','오답노트','note'],['records','내 기록','records']].map(([id,label,image])=>'<button data-nav="'+id+'" '+(current===id?'aria-current="page"':'')+' class="'+(current===id?'active':'')+'">'+editorialIcon(image)+'<span>'+label+'</span></button>').join('')+'</nav></aside><main class="main ed-screen ed-'+screen+'">'+content+'</main></div>'+(modal?modalHTML():'')};
+shell=function(content){const current=screen.startsWith('exam-')||(screen==='quiz'&&typeof librarySession!=='undefined'&&librarySession)?'exam-library':['era','game','quiz','complete','teaser','history'].includes(screen)?'home':screen;return '<div class="shell editorial-shell"><aside class="sidebar"><div class="brand">눈떠보니 한국사<small>역사를 살고, 기출로 기억하다</small></div><nav class="nav" aria-label="주 메뉴">'+[['home','홈','home'],['exam-library','기출문제','book'],['study','오답노트','note'],['records','내 기록','records']].map(([id,label,image])=>'<button data-nav="'+id+'" '+(current===id?'aria-current="page"':'')+' class="'+(current===id?'active':'')+'">'+editorialIcon(image)+'<span>'+label+'</span></button>').join('')+'</nav></aside><main class="main ed-screen ed-'+screen+'">'+content+'</main></div>'+(modal?modalHTML():'')};
 function editorialMetrics(s){return '<div class="ed-metrics">'+[['fire',s.streak+'일','연속 학습'],['note',s.attempts,'푼 문제'],['target',percentText(s.accuracy),'정답률'],['cross',s.wrong,'오답']].map(([icon,value,label])=>'<div><span class="metric-icon '+icon+'">'+editorialIcon(icon)+'</span><strong>'+value+'</strong><small>'+label+'</small></div>').join('')+'</div>'}
 function sectionHeading(title,action=''){return '<div class="ed-section-heading"><h2>'+title+'</h2>'+action+'</div>'}
 function heroContent(e,detail=false){return '<img class="era-hero-art" data-protagonist-id="'+eraProtagonist(e.id).id+'" src="'+eraHero(e.id)+'" alt="'+esc(e.name)+'의 역사적 공간을 바라보는 주인공" '+(e.id!=='goryeo'?'loading="lazy"':'fetchpriority="high"')+'><div class="era-hero-shade"></div><div class="era-hero-copy"><h2><span>눈떠보니</span>'+e.name+'</h2><p class="era-years">'+e.years+'</p><p class="era-description">'+esc(e.description).replace(/\n/g,'<br>')+'</p>'+(detail?'':'<button class="era-study-cta" data-era-open="'+e.id+'">학습하기 <span>›</span></button>')+'</div>'}
@@ -106,4 +106,890 @@ document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b||
 function bindEraCarousel(){const track=document.querySelector('[data-era-carousel]');if(!track)return;const slides=[...track.querySelectorAll('[data-era-slide]')],dots=[...document.querySelectorAll('[data-era-dot]')];const update=()=>{let closest=0,distance=Infinity;slides.forEach((s,i)=>{const d=Math.abs(s.offsetLeft-track.offsetLeft-track.scrollLeft);if(d<distance){distance=d;closest=i}});homeEraIndex=closest;dots.forEach((d,i)=>d.setAttribute('aria-current',String(i===closest)))};track.addEventListener('scroll',update,{passive:true});track.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight'].includes(e.key))return;e.preventDefault();const i=Math.max(0,Math.min(slides.length-1,homeEraIndex+(e.key==='ArrowRight'?1:-1)));track.scrollTo({left:slides[i].offsetLeft-track.offsetLeft,behavior:'smooth'})});if(slides[homeEraIndex])track.scrollLeft=slides[homeEraIndex].offsetLeft-track.offsetLeft;update()}
 const renderBeforeEditorial=render;
 render=function(){renderBeforeEditorial();bindEraCarousel()};
+render();
+
+/* Standalone exam library. Metadata references existing question IDs; it never rewrites story questions. */
+const EXAM_LIBRARY_ENTRIES=[
+ {
+  "key": "75:기본:10",
+  "canonicalQuestionId": "ch03-official-75-basic-10",
+  "aliases": [
+   "ch03-official-75-basic-10",
+   "ch03-pdf-75-basic-10"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "69:기본:10",
+  "canonicalQuestionId": "ch01-official-69-basic-10",
+  "aliases": [
+   "ch01-official-69-basic-10"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "79:심화:9",
+  "canonicalQuestionId": "ch01-official-79-advanced-09",
+  "aliases": [
+   "ch01-official-79-advanced-09"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "70:심화:10",
+  "canonicalQuestionId": "ch01-official-70-advanced-10",
+  "aliases": [
+   "ch01-official-70-advanced-10"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "73:기본:10",
+  "canonicalQuestionId": "ch01-official-73-basic-10",
+  "aliases": [
+   "ch01-official-73-basic-10"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "74:심화:10",
+  "canonicalQuestionId": "ch01-official-74-advanced-10",
+  "aliases": [
+   "ch01-official-74-advanced-10"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "76:심화:10",
+  "canonicalQuestionId": "ch01-official-76-advanced-10",
+  "aliases": [
+   "ch01-official-76-advanced-10"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "69:심화:10",
+  "canonicalQuestionId": "ch02-official-69-advanced-10",
+  "aliases": [
+   "ch02-official-69-advanced-10",
+   "ch03-pdf-69-advanced-10"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "74:심화:11",
+  "canonicalQuestionId": "ch02-official-74-advanced-11",
+  "aliases": [
+   "ch02-official-74-advanced-11"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "76:심화:50",
+  "canonicalQuestionId": "ch02-official-76-advanced-50",
+  "aliases": [
+   "ch02-official-76-advanced-50"
+  ],
+  "primaryEra": "empire",
+  "relatedEra": [
+   "goryeo"
+  ],
+  "needsVerification": false,
+  "verificationNote": "",
+  "libraryImage": "assets/exams/library/76-advanced-50.webp",
+  "sourcePage": 12
+ },
+ {
+  "key": "77:심화:14",
+  "canonicalQuestionId": "ch02-official-77-advanced-14",
+  "aliases": [
+   "ch02-official-77-advanced-14"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "78:심화:11",
+  "canonicalQuestionId": "ch02-official-78-advanced-11",
+  "aliases": [
+   "ch02-official-78-advanced-11"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "75:기본:12",
+  "canonicalQuestionId": "ch03-official-75-basic-12",
+  "aliases": [
+   "ch03-official-75-basic-12",
+   "ch03-pdf-75-basic-12"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "65:심화:10",
+  "canonicalQuestionId": "ch02-official-65-advanced-10",
+  "aliases": [
+   "ch03-pdf-65-advanced-10",
+   "ch02-official-65-advanced-10"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "65:심화:11",
+  "canonicalQuestionId": "ch04-official-65-advanced-11",
+  "aliases": [
+   "ch03-pdf-65-advanced-11",
+   "ch04-official-65-advanced-11"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "68:심화:9",
+  "canonicalQuestionId": "ch04-official-68-advanced-09",
+  "aliases": [
+   "ch03-pdf-68-advanced-09",
+   "ch04-official-68-advanced-09"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "70:심화:13",
+  "canonicalQuestionId": "ch06-official-70-advanced-13",
+  "aliases": [
+   "ch03-pdf-70-advanced-13",
+   "ch06-official-70-advanced-13"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": true,
+  "verificationNote": "기존 ID 간 정답 충돌: 숙종 문항을 현종 문항으로 연결한 데이터가 있어 목록에서 제외."
+ },
+ {
+  "key": "72:심화:11",
+  "canonicalQuestionId": "ch03-pdf-72-advanced-11",
+  "aliases": [
+   "ch03-pdf-72-advanced-11"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "73:심화:11",
+  "canonicalQuestionId": "ch03-pdf-73-advanced-11",
+  "aliases": [
+   "ch03-pdf-73-advanced-11"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "76:심화:11",
+  "canonicalQuestionId": "ch03-pdf-76-advanced-11",
+  "aliases": [
+   "ch03-pdf-76-advanced-11"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "76:심화:18",
+  "canonicalQuestionId": "ch03-pdf-76-advanced-18",
+  "aliases": [
+   "ch03-pdf-76-advanced-18"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "79:심화:13",
+  "canonicalQuestionId": "ch06-official-79-advanced-13",
+  "aliases": [
+   "ch03-pdf-79-advanced-13",
+   "ch06-official-79-advanced-13"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "66:심화:9",
+  "canonicalQuestionId": "ch02-official-66-advanced-09",
+  "aliases": [
+   "ch02-official-66-advanced-09"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "67:기본:10",
+  "canonicalQuestionId": "ch02-official-67-basic-10",
+  "aliases": [
+   "ch02-official-67-basic-10"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "67:기본:11",
+  "canonicalQuestionId": "ch02-official-67-basic-11",
+  "aliases": [
+   "ch02-official-67-basic-11"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "68:심화:11",
+  "canonicalQuestionId": "ch03-official-68-advanced-11",
+  "aliases": [
+   "ch03-official-68-advanced-11"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "71:심화:11",
+  "canonicalQuestionId": "ch03-official-71-advanced-11",
+  "aliases": [
+   "ch03-official-71-advanced-11"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "77:심화:11",
+  "canonicalQuestionId": "ch06-official-77-advanced-11",
+  "aliases": [
+   "ch06-official-77-advanced-11"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "75:기본:17",
+  "canonicalQuestionId": "ch07-official-75-basic-17",
+  "aliases": [
+   "ch07-official-75-basic-17"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "77:심화:17",
+  "canonicalQuestionId": "ch08-official-77-advanced-17",
+  "aliases": [
+   "ch08-official-77-advanced-17"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "77:심화:16",
+  "canonicalQuestionId": "ch09-official-77-advanced-16",
+  "aliases": [
+   "ch09-official-77-advanced-16"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "75:기본:16",
+  "canonicalQuestionId": "ch10-official-75-basic-16",
+  "aliases": [
+   "ch10-official-75-basic-16"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "70:심화:15",
+  "canonicalQuestionId": "ch10-official-70-advanced-15",
+  "aliases": [
+   "ch10-official-70-advanced-15"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "70:심화:16",
+  "canonicalQuestionId": "ch11-official-70-advanced-16",
+  "aliases": [
+   "ch11-official-70-advanced-16"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "75:기본:14",
+  "canonicalQuestionId": "ch12-official-75-basic-14",
+  "aliases": [
+   "ch12-official-75-basic-14"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "73:기본:11",
+  "canonicalQuestionId": "ch05-official-73-basic-11",
+  "aliases": [
+   "ch05-official-73-basic-11"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "67:기본:13",
+  "canonicalQuestionId": "ch05-official-67-basic-13",
+  "aliases": [
+   "ch05-official-67-basic-13"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "77:기본:12",
+  "canonicalQuestionId": "ch05-official-77-basic-12",
+  "aliases": [
+   "ch05-official-77-basic-12"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "72:심화:12",
+  "canonicalQuestionId": "ch05-official-72-advanced-12",
+  "aliases": [
+   "ch05-official-72-advanced-12",
+   "ch06-official-72-advanced-12"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "63:심화:14",
+  "canonicalQuestionId": "ch05-official-63-advanced-14",
+  "aliases": [
+   "ch05-official-63-advanced-14"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "64:심화:11",
+  "canonicalQuestionId": "ch05-official-64-advanced-11",
+  "aliases": [
+   "ch05-official-64-advanced-11"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "74:심화:12",
+  "canonicalQuestionId": "ch05-official-74-advanced-12",
+  "aliases": [
+   "ch05-official-74-advanced-12",
+   "ch06-official-74-advanced-12"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "65:심화:12",
+  "canonicalQuestionId": "ch06-official-65-advanced-12",
+  "aliases": [
+   "ch06-official-65-advanced-12"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "66:심화:11",
+  "canonicalQuestionId": "ch06-official-66-advanced-11",
+  "aliases": [
+   "ch06-official-66-advanced-11"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "76:심화:14",
+  "canonicalQuestionId": "ch06-official-76-advanced-14",
+  "aliases": [
+   "ch06-official-76-advanced-14"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "65:심화:14",
+  "canonicalQuestionId": "ch08-official-65-advanced-14",
+  "aliases": [
+   "ch08-official-65-advanced-14"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "65:심화:15",
+  "canonicalQuestionId": "ch11-official-65-advanced-15",
+  "aliases": [
+   "ch11-official-65-advanced-15"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "65:심화:16",
+  "canonicalQuestionId": "ch09-official-65-advanced-16",
+  "aliases": [
+   "ch09-official-65-advanced-16"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "65:심화:17",
+  "canonicalQuestionId": "ch10-official-65-advanced-17",
+  "aliases": [
+   "ch10-official-65-advanced-17"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "65:심화:18",
+  "canonicalQuestionId": "ch12-official-65-advanced-18",
+  "aliases": [
+   "ch12-official-65-advanced-18"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "68:심화:15",
+  "canonicalQuestionId": "ch10-official-68-advanced-15",
+  "aliases": [
+   "ch10-official-68-advanced-15"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "68:심화:16",
+  "canonicalQuestionId": "ch11-official-68-advanced-16",
+  "aliases": [
+   "ch11-official-68-advanced-16"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "68:심화:17",
+  "canonicalQuestionId": "ch12-official-68-advanced-17",
+  "aliases": [
+   "ch12-official-68-advanced-17"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "72:심화:14",
+  "canonicalQuestionId": "ch10-official-72-advanced-14",
+  "aliases": [
+   "ch10-official-72-advanced-14"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "72:심화:15",
+  "canonicalQuestionId": "ch11-official-72-advanced-15",
+  "aliases": [
+   "ch11-official-72-advanced-15"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "72:심화:16",
+  "canonicalQuestionId": "ch09-official-72-advanced-16",
+  "aliases": [
+   "ch09-official-72-advanced-16"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "72:심화:17",
+  "canonicalQuestionId": "ch11-official-72-advanced-17",
+  "aliases": [
+   "ch11-official-72-advanced-17"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "74:심화:13",
+  "canonicalQuestionId": "ch10-official-74-advanced-13",
+  "aliases": [
+   "ch10-official-74-advanced-13"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "74:심화:14",
+  "canonicalQuestionId": "ch10-official-74-advanced-14",
+  "aliases": [
+   "ch10-official-74-advanced-14"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "74:심화:16",
+  "canonicalQuestionId": "ch09-official-74-advanced-16",
+  "aliases": [
+   "ch09-official-74-advanced-16"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "74:심화:17",
+  "canonicalQuestionId": "ch11-official-74-advanced-17",
+  "aliases": [
+   "ch11-official-74-advanced-17"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "66:심화:13",
+  "canonicalQuestionId": "ch10-official-66-advanced-13",
+  "aliases": [
+   "ch10-official-66-advanced-13"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "66:심화:14",
+  "canonicalQuestionId": "ch09-official-66-advanced-14",
+  "aliases": [
+   "ch09-official-66-advanced-14"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "66:심화:15",
+  "canonicalQuestionId": "ch11-official-66-advanced-15",
+  "aliases": [
+   "ch11-official-66-advanced-15"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "69:심화:13",
+  "canonicalQuestionId": "ch07-official-69-advanced-13",
+  "aliases": [
+   "ch07-official-69-advanced-13"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "69:심화:14",
+  "canonicalQuestionId": "ch09-official-69-advanced-14",
+  "aliases": [
+   "ch09-official-69-advanced-14"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "69:심화:15",
+  "canonicalQuestionId": "ch11-official-69-advanced-15",
+  "aliases": [
+   "ch11-official-69-advanced-15"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "69:심화:17",
+  "canonicalQuestionId": "ch10-official-69-advanced-17",
+  "aliases": [
+   "ch10-official-69-advanced-17"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "70:심화:14",
+  "canonicalQuestionId": "ch09-official-70-advanced-14",
+  "aliases": [
+   "ch09-official-70-advanced-14"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "71:심화:14",
+  "canonicalQuestionId": "ch09-official-71-advanced-14",
+  "aliases": [
+   "ch09-official-71-advanced-14"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "71:심화:15",
+  "canonicalQuestionId": "ch10-official-71-advanced-15",
+  "aliases": [
+   "ch10-official-71-advanced-15"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "71:심화:16",
+  "canonicalQuestionId": "ch10-official-71-advanced-16",
+  "aliases": [
+   "ch10-official-71-advanced-16"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "69:기본:11",
+  "canonicalQuestionId": "ch07-official-69-basic-11",
+  "aliases": [
+   "ch07-official-69-basic-11"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "69:기본:12",
+  "canonicalQuestionId": "ch09-official-69-basic-12",
+  "aliases": [
+   "ch09-official-69-basic-12"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ },
+ {
+  "key": "73:기본:13",
+  "canonicalQuestionId": "ch08-official-73-basic-13",
+  "aliases": [
+   "ch08-official-73-basic-13"
+  ],
+  "primaryEra": "goryeo",
+  "relatedEra": [],
+  "needsVerification": false,
+  "verificationNote": ""
+ }
+];
+var librarySession=null;
+let libraryEra='goryeo',libraryLevel='all';
+const saveBeforeLibrary=save;
+save=function(){if(librarySession&&screen==='quiz'){if(reviewAnswer!==null)delete meta().editorialAnswerDraft;saveBeforeEditorial()}else saveBeforeLibrary()};
+function libraryQuestion(entry){return QUESTIONS.find(q=>q.questionId===entry.canonicalQuestionId)}
+function libraryImage(entry){return entry.libraryImage||libraryQuestion(entry)?.sourceQuestionImage}
+function libraryEligible(entry){const q=libraryQuestion(entry);return !entry.needsVerification&&q?.isOfficial===true&&q.sourceVerified===true&&q.examRound&&q.examYear&&q.examLevel&&q.questionNumber&&q.sourceFile&&q.answerFile&&libraryImage(entry)}
+function libraryEntries(era){return EXAM_LIBRARY_ENTRIES.filter(e=>e.primaryEra===era&&libraryEligible(e))}
+function libraryStatus(era){const chapters=eraChapters(era);if(!eraInfo(era).available||!chapters.length||chapters.some(ch=>!ch.implemented))return 'COMING_SOON';return chapters.every(ch=>meta().completedChapters.includes(ch.chapterId))?'UNLOCKED':'LOCKED'}
+function libraryResult(entry){
+ const records=entry.aliases.map(id=>({id,record:meta().questionRecords[id]})).filter(x=>x.record?.attempts);
+ if(!records.length)return null;
+ const events=(meta().learningEvents||[]).filter(e=>entry.aliases.includes(e.questionId)&&e.answeredAt).sort((a,b)=>a.answeredAt.localeCompare(b.answeredAt));
+ const last=events[events.length-1];
+ // Legacy saves have no answer timestamp: retain their known last result without inventing chronology.
+ return last?{correct:last.correct,recent:true}:{correct:(records.find(x=>x.id===entry.canonicalQuestionId)||records[records.length-1]).record.lastCorrect,recent:false};
+}
+function librarySummary(era){const entries=libraryEntries(era),results=entries.map(libraryResult).filter(Boolean);return {total:entries.length,attempted:results.length,correct:results.filter(r=>r.correct).length,wrong:results.filter(r=>!r.correct).length}}
+function examLibraryHome(){return '<section class="exam-library"><h1>기출문제</h1><p class="library-subtitle">시대를 선택해 실제 한능검 기출을 풀어보세요.</p>'+LEARNING_ERAS.map(e=>{const status=libraryStatus(e.id);return '<button class="library-era" data-library-era="'+e.id+'" data-state="'+status+'"><div><h2>'+e.name+'</h2><p>'+e.years+'</p><small>'+(status==='UNLOCKED'?'실제 한능검 기출 '+libraryEntries(e.id).length+'문제':status==='LOCKED'?'🔒 '+e.name+'편 전체 챕터 완료 후 열림':'준비 중 · '+e.name+'편 이야기 공개 후 열림')+'</small></div><span aria-hidden="true">›</span></button>'}).join('')+'</section>'}
+function examLibraryList(){if(libraryStatus(libraryEra)!=='UNLOCKED')return examLibraryHome();const era=eraInfo(libraryEra),s=librarySummary(libraryEra),entries=libraryEntries(libraryEra).filter(e=>libraryLevel==='all'||libraryQuestion(e).examLevel===libraryLevel);return '<section class="exam-library"><header class="library-top"><button data-library-back="home" aria-label="시대 선택으로 돌아가기">‹</button><div><h1>'+era.name+' 기출문제</h1><p>'+era.years+'</p></div></header><div class="library-summary">'+[['전체 문제',s.total,''],['푼 문제',s.attempted,''],['정답',s.correct,'right'],['오답',s.wrong,'wrong']].map(([label,value,style])=>'<div class="'+style+'"><small>'+label+'</small><b>'+value+'</b></div>').join('')+'</div><div class="library-filters">'+[['all','전체'],['심화','심화'],['기본','기본']].map(([id,label])=>'<button data-library-level="'+id+'" aria-pressed="'+(libraryLevel===id)+'">'+label+'</button>').join('')+'</div>'+entries.map(entry=>{const q=libraryQuestion(entry),r=libraryResult(entry);return '<button class="library-question" data-library-question="'+q.questionId+'"><img loading="lazy" src="'+esc(libraryImage(entry))+'" alt="'+q.examRound+'회 '+q.examLevel+' '+q.questionNumber+'번 원본 문제"><span><small>'+q.examRound+'회 '+q.examLevel+' · '+q.questionNumber+'번</small><b>'+esc(q.sourceQuestionText||q.question)+'</b><em class="'+(r?r.correct?'right':'wrong':'')+'">'+(r?(r.recent?'최근 ':'')+(r.correct?'정답':'오답'):'미풀이')+'</em></span><span aria-hidden="true">›</span></button>'}).join('')+(!entries.length?'<p class="ed-empty">아직 등록된 기출문제가 없어요.</p>':'')+'</section>'}
+const renderContentBeforeLibrary=renderContent;
+renderContent=function(){if(screen==='exam-library')return examLibraryHome();if(screen==='exam-era')return examLibraryList();return renderContentBeforeLibrary()};
+const quizBeforeLibrary=quiz;
+quiz=function(){let html=quizBeforeLibrary();if(!librarySession)return html;html=html.replace('오답노트로 돌아가기','기출문제 목록으로 돌아가기').replace(/정답 · 지식 \+\d+/g,'정답 · 풀이 기록에 반영했습니다.').replace('오답노트 +1 · 이야기는 계속됩니다.','오답노트에 기록했습니다.');if(reviewAnswer!==null)html=html.replace('<div class="feedback"','<p class="library-selected-answer">선택한 답: '+(reviewAnswer+1)+'번</p><div class="feedback"');return html.replace('class="editorial-quiz"','class="editorial-quiz library-quiz"').replace(/<header class="quiz-top">[\s\S]*?<\/header>/,'<header class="quiz-top"><button data-library-back="list" aria-label="기출문제 목록으로 돌아가기">‹</button><span>기출문제 풀기</span></header>')};
+const figureBeforeLibrary=officialQuestionFigure;
+officialQuestionFigure=function(q,label){const html=figureBeforeLibrary(q,label),entry=librarySession&&EXAM_LIBRARY_ENTRIES.find(e=>e.canonicalQuestionId===q.questionId);return entry?.libraryImage?html.split(q.sourceQuestionImage).join(entry.libraryImage):html};
+const modalBeforeLibrary=modalHTML;
+modalHTML=function(){if(modal?.type==='library-lock'){const era=eraInfo(modal.era),status=libraryStatus(era.id);return '<div class="modal-overlay"><section class="modal" role="dialog" aria-modal="true" aria-label="기출문제 이용 안내"><header><h2>'+era.name+' 기출문제</h2><button data-action="close">닫기</button></header><p>'+(status==='COMING_SOON'?'이 시대의 이야기를 준비하고 있습니다. 이야기 공개 후 전체 챕터를 완료하면 기출문제가 열립니다.':era.name+'편의 모든 챕터를 완료하면 실제 기출을 자유롭게 풀 수 있습니다.')+'</p>'+(status==='LOCKED'?'<button class="primary" data-era-resume="'+era.id+'">'+era.name+'편 이어하기</button>':'')+'</section></div>'}const html=modalBeforeLibrary(),entry=librarySession&&EXAM_LIBRARY_ENTRIES.find(e=>e.canonicalQuestionId===reviewQuestionId);return entry?.libraryImage?html.split(libraryQuestion(entry).sourceQuestionImage).join(entry.libraryImage):html};
+function submitLibraryAnswer(answer){
+ const q=activeQuestion();if(!q||reviewAnswer!==null||libraryStatus(libraryEra)!=='UNLOCKED'||!Number.isInteger(answer)||answer<0||answer>=quizChoices(q).length)return;
+ const savedRun=JSON.parse(JSON.stringify(state.run)),savedMain=state.mainRun?JSON.parse(JSON.stringify(state.mainRun)):state.mainRun;
+ try{recordQuestion(state,q.questionId,answer)}finally{state.run=savedRun;state.mainRun=savedMain}
+ reviewAnswer=answer;save();render();
+}
+document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.disabled)return;const d=b.dataset;
+ if(d.libraryEra){e.stopImmediatePropagation();librarySession=null;libraryEra=eraInfo(d.libraryEra).id;libraryLevel='all';if(libraryStatus(libraryEra)==='UNLOCKED')navigate('exam-era');else{modal={type:'library-lock',era:libraryEra};render()}return}
+ if(d.libraryLevel){e.stopImmediatePropagation();libraryLevel=d.libraryLevel;render();return}
+ if(d.libraryQuestion){e.stopImmediatePropagation();const entry=EXAM_LIBRARY_ENTRIES.find(x=>x.canonicalQuestionId===d.libraryQuestion);if(!entry||!libraryEligible(entry)||entry.primaryEra!==libraryEra||libraryStatus(libraryEra)!=='UNLOCKED')return;librarySession={era:libraryEra};reviewQuestionId=entry.canonicalQuestionId;reviewAnswer=null;quizMode='review';delete meta().editorialAnswerDraft;navigate('quiz');return}
+ if(d.libraryBack||(librarySession&&d.action==='quiz-next')){e.stopImmediatePropagation();librarySession=null;delete meta().editorialAnswerDraft;navigate(d.libraryBack==='home'?'exam-library':'exam-era');return}
+ if(librarySession&&d.answer!==undefined){e.stopImmediatePropagation();submitLibraryAnswer(Number(d.answer));return}
+ if(d.nav||d.review||d.practice){librarySession=null;}
+},true);
 render();
