@@ -56,6 +56,15 @@ Object.assign(CHARACTERS,{
   joseon_woman:{characterId:'joseon_woman',characterName:'조선의 백성',speakerType:'npc',position:'left',show:true,presentation:'standing',portraitPrefix:'joseon_woman'}
 });
 
+/* Keep the shared Goryeo stage geometry and normalize only Joseon's visible body scale. */
+const JOSEON_CHARACTER_RENDER_PROFILES={
+  joseon_player:{tier:'MAIN',scale:.88},
+  minjun_j:{tier:'MAIN',scale:.9},minjun_elder_j:{tier:'MAIN',scale:.9},
+  joseon_scholar:{tier:'MAIN',scale:.9},joseon_soldier:{tier:'MAIN',scale:.9},
+  joseon_naval:{tier:'MAIN',scale:.9},joseon_woman:{tier:'MAIN',scale:.9}
+};
+Object.assign(CHARACTER_RENDER_PROFILES.characters,JOSEON_CHARACTER_RENDER_PROFILES);
+
 const jN=text=>dialogueLine('narrator','neutral',text,'narration');
 const jP=(text,expression='thinking')=>dialogueLine('joseon_player',expression,text,'player');
 const jT=(text,expression='thinking')=>dialogueLine('joseon_player',expression,text,'thought');

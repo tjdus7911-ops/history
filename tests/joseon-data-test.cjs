@@ -4,7 +4,7 @@ const html=fs.readFileSync('dist/index.html','utf8');
 const scripts=[...html.matchAll(/<script src="([^"]+)"/g)].map(match=>match[1]);
 const dataScripts=scripts.slice(0,scripts.indexOf('v2-learning.js'));
 const context=vm.createContext({console});
-vm.runInContext(dataScripts.map(file=>fs.readFileSync(path.join('dist',file),'utf8')).join('\n')+';this.snapshot={ASSETS,PORTRAITS,CHARACTERS,STORIES,QUESTIONS,QUESTION_SETS,CHAPTERS,JOSEON_BLUEPRINTS,JOSEON_OFFICIAL_QUESTION_IDS,JOSEON_QUESTION_SCOPE,ERA_PROTAGONISTS};',context);
+vm.runInContext(dataScripts.map(file=>fs.readFileSync(path.join('dist',file),'utf8')).join('\n')+';this.snapshot={ASSETS,PORTRAITS,CHARACTERS,STORIES,QUESTIONS,QUESTION_SETS,CHAPTERS,JOSEON_BLUEPRINTS,JOSEON_OFFICIAL_QUESTION_IDS,JOSEON_QUESTION_SCOPE,ERA_PROTAGONISTS,CHARACTER_RENDER_PROFILES,JOSEON_CHARACTER_RENDER_PROFILES};',context);
 const data=JSON.parse(vm.runInContext('JSON.stringify(snapshot)',context));
 
 const chapters=Object.values(data.CHAPTERS).filter(chapter=>chapter.eraId==='joseon').sort((a,b)=>Number(a.number)-Number(b.number));
@@ -88,6 +88,13 @@ assert.equal(heroine.expressions.length,15);
 assert.equal(heroine.ageState.kind,'persistent');
 for(const expression of heroine.expressions)assert(fs.existsSync(path.join('dist',heroine.assetPaths[expression])),`heroine ${expression}`);
 for(const id of ['minjun_j','minjun_elder_j','joseon_scholar','joseon_soldier','joseon_naval','joseon_woman'])assert(data.CHARACTERS[id]&&fs.existsSync(path.join('dist',data.PORTRAITS[`${id}_neutral`].src)),`NPC ${id}`);
+const joseonNpcIds=['minjun_j','minjun_elder_j','joseon_scholar','joseon_soldier','joseon_naval','joseon_woman'];
+assert.deepEqual(Object.keys(data.JOSEON_CHARACTER_RENDER_PROFILES).sort(),['joseon_player',...joseonNpcIds].sort());
+assert.equal(data.JOSEON_CHARACTER_RENDER_PROFILES.joseon_player.scale,.88);
+for(const id of joseonNpcIds){assert.equal(data.JOSEON_CHARACTER_RENDER_PROFILES[id].scale,.9,`${id} visual scale`);assert.equal(data.CHARACTERS[id].position,'left',`${id} stays left`)}
+assert.equal(data.CHARACTERS.joseon_player.position,'right');
+assert.equal(data.CHARACTER_RENDER_PROFILES.characters.player.scale??1,1,'Goryeo player scale preserved');
+assert.equal(data.CHARACTER_RENDER_PROFILES.characters.doyun.scale??1,1,'Goryeo Doyun scale preserved');
 assert.equal(Object.keys(data.ASSETS).filter(id=>id.startsWith('joseon-bg-')).length,16);
 assert(fs.existsSync('docs/JOSEON_OFFICIAL_QUESTION_MAPPING.md'));
 

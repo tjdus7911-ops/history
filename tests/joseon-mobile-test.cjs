@@ -15,6 +15,25 @@ async function main(){
   const fit=async label=>assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`horizontal overflow: ${label}`);
   const tap=async selector=>{const target=page.locator(selector).first();await target.waitFor({state:'attached'});await target.evaluate(element=>element.click());await page.evaluate(()=>{inputLockedUntil=0})};
 
+  const qaPage=await profile.newPage();await qaPage.goto(`http://127.0.0.1:${server.address().port}/`);
+  const showQaScene=async(chapter,story,cursor,file)=>{
+    await qaPage.evaluate(({chapter,story,cursor})=>{state.run=INITIAL_RUN(chapter);state.run.started=true;state.run.storyId=story;state.run.dialogueCursor=cursor;screen='game';render()},{chapter,story,cursor});
+    await qaPage.locator('.stage-character').first().waitFor({state:'visible'});await Promise.all((await qaPage.locator('.stage-character').all()).map(item=>item.evaluate(image=>image.decode())));
+    const result=await qaPage.locator('.stage-character').evaluateAll(images=>images.map(image=>{const rect=image.getBoundingClientRect(),style=getComputedStyle(image);return{id:image.dataset.characterId,position:image.dataset.position,active:image.classList.contains('active'),scale:style.getPropertyValue('--character-scale'),rect:{height:rect.height,bottom:rect.bottom},bottom:style.bottom,objectFit:style.objectFit,objectPosition:style.objectPosition,opacity:Number(style.opacity)}}));
+    await qaPage.screenshot({path:path.join(shots,file),fullPage:true});return result;
+  };
+  const goryeoCharacters=await showQaScene('ch08','ch08_revolt',3,'goryeo-character-reference-390.png');
+  const joseonCharacters=await showQaScene('joseon-ch00','joseon_ch00_s3',2,'joseon-character-normalized-390.png');
+  const goryeoActive=goryeoCharacters.find(character=>character.active),joseonPlayer=joseonCharacters.find(character=>character.id==='joseon_player'),minjun=joseonCharacters.find(character=>character.id==='minjun_j');
+  assert.equal(goryeoActive.scale,'1');assert.equal(joseonPlayer.scale,'0.88');assert.equal(minjun.scale,'0.9');
+  assert.equal(joseonPlayer.position,'right');assert.equal(minjun.position,'left');assert(joseonPlayer.active);assert(!minjun.active);assert(joseonPlayer.opacity>minjun.opacity);
+  assert.equal(joseonPlayer.bottom,'0px');assert.equal(minjun.bottom,'0px');assert(Math.abs(joseonPlayer.rect.bottom-minjun.rect.bottom)<.1);
+  assert.equal(joseonPlayer.objectFit,'contain');assert.equal(joseonPlayer.objectPosition,'50% 100%');
+  assert(joseonPlayer.rect.height/goryeoActive.rect.height<.91&&joseonPlayer.rect.height/goryeoActive.rect.height>.85,'Joseon heroine visible height normalized against Goryeo');
+  const profileScales=await qaPage.evaluate(()=>Object.fromEntries(Object.keys(JOSEON_CHARACTER_RENDER_PROFILES).map(id=>[id,characterRenderProfile({characterId:id},id==='joseon_player'?'joseon_player_neutral':`${id}_neutral`).scale])));
+  assert.equal(profileScales.joseon_player,.88);for(const id of ['minjun_j','minjun_elder_j','joseon_scholar','joseon_soldier','joseon_naval','joseon_woman'])assert.equal(profileScales[id],.9,`${id} mobile profile`);
+  await qaPage.close();
+
   await tap('[data-era-open="joseon"]');
   assert.equal(await page.locator('.ed-chapter-row').count(),23);
   await fit('Joseon chapter list');
