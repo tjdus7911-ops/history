@@ -144,19 +144,19 @@ function officialReviewPage(){
 function officialExamPage(){if(officialExamView==='list')return officialExamListPage();if(officialExamView==='practice')return officialPracticePage();if(officialExamView==='result')return officialResultPage();if(officialExamView==='review')return officialReviewPage();return officialExamHome()}
 
 const ASSOCIATION_MEMORIES=[
- {id:'gong-go-sin-il',status:'published',era:'ancient',type:'전투 흐름',title:'공고신일',description:'후삼국 통일까지 네 장면을 한 줄로 잇습니다.',steps:[
+ {id:'gong-go-sin-il',status:'published',era:'ancient',type:'전투 흐름',title:'후삼국 통일의 흐름',mnemonic:'공고신일',description:'후삼국 통일까지 네 장면을 한 줄로 잇습니다.',steps:[
   {title:'공산 전투',cue:'공',shortExplanation:'927년, 후백제 견훤과 고려 왕건이 맞붙은 전투입니다. 고려가 크게 패하고 신숭겸이 왕건을 대신해 전사했습니다.'},
   {title:'고창 전투',cue:'고',shortExplanation:'930년, 지금의 안동 일대에서 고려가 후백제군을 크게 물리친 전투입니다. 이 승리로 경상도 북부의 호족들이 고려에 호응했습니다.'},
   {title:'신라 항복',cue:'신',shortExplanation:'935년, 신라 경순왕이 고려 왕건에게 나라를 넘기며 항복했습니다. 신라는 큰 전쟁 없이 고려에 편입되었습니다.'},
   {title:'일리천 전투',cue:'일',shortExplanation:'936년, 고려군이 일리천에서 신검이 이끄는 후백제군을 격파했습니다. 후백제가 멸망하면서 후삼국 통일이 완성되었습니다.'}
  ],searchTerms:['공산','고창','신라 항복','일리천']},
- {id:'mu-gap-gi-eul',status:'published',era:'joseon',type:'사화',title:'무갑기을',description:'조선 전기 네 사화의 순서를 기억합니다.',steps:[
+ {id:'mu-gap-gi-eul',status:'published',era:'joseon',type:'사화',title:'조선 전기 네 사화',mnemonic:'무갑기을',description:'조선 전기 네 사화의 순서를 기억합니다.',steps:[
   {title:'무오사화',cue:'무',shortExplanation:'1498년, 김종직의 「조의제문」이 문제가 되어 김일손을 비롯한 사림이 피해를 입은 사화입니다.'},
   {title:'갑자사화',cue:'갑',shortExplanation:'1504년, 연산군이 생모 폐비 윤씨 사건을 계기로 관련 인물과 사림을 대대적으로 숙청했습니다.'},
   {title:'기묘사화',cue:'기',shortExplanation:'1519년, 중종 때 조광조의 개혁에 반발한 훈구 세력이 조광조를 비롯한 사림을 제거했습니다.'},
   {title:'을사사화',cue:'을',shortExplanation:'1545년, 명종 즉위 뒤 외척인 대윤과 소윤의 대립 과정에서 사림이 큰 피해를 입었습니다.'}
  ],searchTerms:['무오사화','갑자사화','기묘사화','을사사화']},
- {id:'byeong-je-byeong-o-sin-cheok',status:'published',era:'joseon',type:'개항 사건',title:'병제병오신척',description:'흥선 대원군 시기 통상 수교 거부의 흐름입니다.',steps:[
+ {id:'byeong-je-byeong-o-sin-cheok',status:'published',era:'joseon',type:'개항 사건',title:'흥선 대원군 시기 사건',mnemonic:'병제병오신척',description:'흥선 대원군 시기 통상 수교 거부의 흐름입니다.',steps:[
   {title:'병인박해',cue:'병',shortExplanation:'1866년, 흥선 대원군이 천주교를 탄압해 프랑스 선교사와 조선인 신자들을 처형했습니다. 이는 프랑스가 병인양요를 일으킨 구실이 되었습니다.'},
   {title:'제너럴셔먼호 사건',cue:'제',shortExplanation:'1866년, 미국 상선 제너럴셔먼호가 대동강을 거슬러 올라와 통상을 요구하며 충돌했습니다. 평양 군민은 배를 불태워 격퇴했습니다.'},
   {title:'병인양요',cue:'병',shortExplanation:'1866년, 프랑스군이 병인박해를 구실로 강화도를 침략했습니다. 양헌수가 정족산성에서 프랑스군을 물리쳤지만 외규장각 도서가 약탈되었습니다.'},
@@ -164,7 +164,7 @@ const ASSOCIATION_MEMORIES=[
   {title:'신미양요',cue:'신',shortExplanation:'1871년, 미국이 통상을 요구하며 강화도를 침략했습니다. 어재연이 광성보에서 항전했으나 미군에 점령되었습니다.'},
   {title:'척화비',cue:'척',shortExplanation:'1871년, 흥선 대원군은 신미양요 뒤 서양과의 통상을 거부한다는 뜻을 담은 척화비를 전국에 세웠습니다.'}
  ],searchTerms:['병인박해','제너럴셔먼호','병인양요','오페르트','신미양요','척화비']},
- {id:'joseon-kings',status:'published',era:'joseon',type:'왕 계보',title:'조선 왕 순서',description:'태조부터 순종까지 왕의 흐름을 네 묶음으로 외웁니다.',steps:[
+ {id:'joseon-kings',status:'published',era:'joseon',type:'왕 계보',title:'조선 왕 순서',mnemonic:'태정태세문단세 · 예성연중인명선 · 광인효현숙경영 · 정순헌철고순',description:'태조부터 순종까지 왕의 흐름을 네 묶음으로 외웁니다.',steps:[
   {title:'태조·정종·태종·세종·문종·단종·세조',cue:'태정태세문단세',recallTitle:'태정태세문단세',shortExplanation:'태조가 조선을 건국하고 태종이 왕권을 강화했으며, 세종은 훈민정음을 창제했습니다. 문종·단종을 거쳐 세조가 계유정난으로 집권했습니다.'},
   {title:'예종·성종·연산군·중종·인종·명종·선조',cue:'예성연중인명선',recallTitle:'예성연중인명선',shortExplanation:'성종 때 『경국대전』이 완성되었고 연산군의 폭정은 중종반정으로 끝났습니다. 인종·명종을 거쳐 선조 때 임진왜란이 일어났습니다.'},
   {title:'광해군·인조·효종·현종·숙종·경종·영조',cue:'광인효현숙경영',recallTitle:'광인효현숙경영',shortExplanation:'광해군의 중립 외교 뒤 인조 때 정묘호란과 병자호란을 겪었습니다. 효종의 북벌론 이후 현종 때 예송, 숙종 때 환국이 이어졌고 경종을 거쳐 영조가 탕평책을 폈습니다.'},
@@ -177,7 +177,7 @@ globalThis.ASSOCIATION_MEMORIES=ASSOCIATION_MEMORIES;
 for(const card of (globalThis.MNEMONIC_IMPORT_CARDS||[])){
  if(ASSOCIATION_MEMORIES.some(existing=>existing.id===card.id))continue;
  const steps=card.facts.map(f=>({title:f.title,cue:f.cue,shortExplanation:f.shortExplanation}));
- ASSOCIATION_MEMORIES.push({id:card.id,status:'published',era:card.era,type:card.topicTags.join(' · '),title:card.title,description:`${card.period} · ${card.mnemonic}`,steps,sequence:steps.map(step=>step.title),searchTerms:card.searchTerms||[card.title,...card.topicTags]});
+ ASSOCIATION_MEMORIES.push({id:card.id,status:'published',era:card.era,type:card.topicTags.join(' · '),title:card.title,mnemonic:card.mnemonic,description:card.period,steps,sequence:steps.map(step=>step.title),searchTerms:card.searchTerms||[card.title,...card.topicTags]});
 }
 const ASSOCIATION_MEMORY_CANDIDATES=[
  {id:'three-kingdom-kings',status:'candidate',topic:'삼국 왕 계보'},{id:'goryeo-kings',status:'candidate',topic:'고려 왕 계보'},{id:'land-systems',status:'candidate',topic:'전시과·과전법'},
@@ -200,7 +200,7 @@ for(const memory of ASSOCIATION_MEMORIES)memory.relatedOfficialQuestionIds=assoc
 const memoryForQuestion=question=>ASSOCIATION_MEMORIES.filter(memory=>memory.relatedOfficialQuestionIds.includes(question?.officialQuestionId||question?.questionId));
 function associationHome(){
  const types=[...new Set(ASSOCIATION_MEMORIES.map(memory=>memory.type))],visible=ASSOCIATION_MEMORIES.filter(memory=>memory.status==='published'&&(associationEra==='all'||memory.era===associationEra)&&(associationType==='all'||memory.type===associationType));
- return `<section class="association-memory">${editorialHeader('연상기억법','헷갈리는 한국사, 짧게 연결해서 기억하세요.')}<div class="association-filters"><label>시대별<select data-association-era><option value="all">전체</option>${OFFICIAL_ERA_TAXONOMY.map(era=>`<option value="${era.id}" ${associationEra===era.id?'selected':''}>${era.name}</option>`).join('')}</select></label><label>유형별<select data-association-type><option value="all">전체</option>${types.map(type=>`<option ${associationType===type?'selected':''}>${type}</option>`).join('')}</select></label></div><div class="association-grid">${visible.map(memory=>`<button data-association-open="${memory.id}"><span>${officialEraInfo(memory.era).name} · ${memory.type}</span><h2>${memory.title}</h2><p>${memory.description}</p><small>관련 실제 기출 ${memory.relatedOfficialQuestionIds.length}문제</small><b>${associationStatus(memory.id)} · 연상기억 시작</b></button>`).join('')}</div></section>`;
+ return `<section class="association-memory">${editorialHeader('암기법','개념이 아니라, 이상한 말과 첫소리로 기억하세요.')}<div class="association-filters"><label>시대별<select data-association-era><option value="all">전체</option>${OFFICIAL_ERA_TAXONOMY.map(era=>`<option value="${era.id}" ${associationEra===era.id?'selected':''}>${era.name}</option>`).join('')}</select></label><label>유형별<select data-association-type><option value="all">전체</option>${types.map(type=>`<option ${associationType===type?'selected':''}>${type}</option>`).join('')}</select></label></div><div class="association-grid">${visible.map(memory=>`<button data-association-open="${memory.id}"><span>${officialEraInfo(memory.era).name} · ${memory.type}</span><h2>${esc(memory.mnemonic||memory.title)}</h2><p>${esc(memory.title)} · ${esc(memory.description)}</p><small>관련 실제 기출 ${memory.relatedOfficialQuestionIds.length}문제</small><b>${associationStatus(memory.id)} · 암기 테스트 시작</b></button>`).join('')}</div></section>`;
 }
 function storyExperienced(question){if(!question?.relatedSceneId)return false;const visited=new Set([...(run().visited||[]),...(mainRun().visited||[])]);return visited.has(question.relatedSceneId)||meta().completedChapters.includes(question.chapterId)}
 const associationStepNumber=index=>['①','②','③','④','⑤','⑥','⑦','⑧','⑨','⑩'][index]||String(index+1);
@@ -211,7 +211,7 @@ function associationStepTitle(step){
 }
 function associationDetailPage(){
  const memory=ASSOCIATION_MEMORIES.find(item=>item.id===associationDetailId);if(!memory)return associationHome();const related=memory.relatedOfficialQuestionIds;
- return `<section class="association-detail"><header class="official-subhead"><button data-association-back="true" aria-label="연상암기 목록으로">‹</button><div><small>${officialEraInfo(memory.era).name} · ${memory.type}</small><h1>${memory.title}</h1></div></header><section class="association-meaning"><small>연상어</small><h2>${memory.title}</h2><small>뜻</small><p class="association-description">${memory.description}</p></section><h2>단계별 확장</h2><ol class="association-sequence">${memory.steps.map((step,index)=>{const key=`${memory.id}:${index}`,open=associationExpandedSteps.has(key),panelId=`association-step-${memory.id}-${index}`;return `<li class="association-step ${open?'open':''}"><button class="association-step-toggle" data-association-step="${index}" aria-expanded="${open}" aria-controls="${panelId}"><span class="association-step-number">${associationStepNumber(index)}</span><b>${associationStepTitle(step)}</b><span class="association-chevron" aria-hidden="true">⌄</span></button><div class="association-step-panel" id="${panelId}" aria-hidden="${!open}"><div><p>${esc(step.shortExplanation)}</p></div></div></li>`}).join('')}</ol><button class="primary association-recall-start" data-association-recall="${memory.id}">Recall Test 시작</button><section><h2>연결된 실제 기출</h2>${related.length?related.map(id=>{const entry=officialEntry(id),question=officialQuestion(id);return `<article class="association-question"><img src="${esc(entry.libraryImage)}" alt=""><span><small>${examSourceLabel(entry)}</small><b>${officialEraInfo(entry.primaryEra).name}</b></span><button data-official-single="${id}">문제 풀기</button>${storyExperienced(question)?`<button class="text-btn" data-story-memory="${id}">이 장면 기억하시나요?</button>`:''}</article>`}).join(''):'<div class="ed-empty">연결할 수 있는 등록 기출을 검토 중입니다.</div>'}</section></section>`;
+ return `<section class="association-detail"><header class="official-subhead"><button data-association-back="true" aria-label="암기법 목록으로">‹</button><div><small>${officialEraInfo(memory.era).name} · ${memory.type}</small><h1>${esc(memory.title)}</h1></div></header><section class="association-meaning"><small>암기 문구</small><h2 class="association-mnemonic">${esc(memory.mnemonic||memory.title)}</h2><small>외울 내용</small><p class="association-description">${esc(memory.description)}</p></section><h2>문구를 풀어 보기</h2><ol class="association-sequence">${memory.steps.map((step,index)=>{const key=`${memory.id}:${index}`,open=associationExpandedSteps.has(key),panelId=`association-step-${memory.id}-${index}`;return `<li class="association-step ${open?'open':''}"><button class="association-step-toggle" data-association-step="${index}" aria-expanded="${open}" aria-controls="${panelId}"><span class="association-step-number">${associationStepNumber(index)}</span><b>${associationStepTitle(step)}</b><span class="association-chevron" aria-hidden="true">⌄</span></button><div class="association-step-panel" id="${panelId}" aria-hidden="${!open}"><div><p>${esc(step.shortExplanation)}</p></div></div></li>`}).join('')}</ol><button class="primary association-recall-start" data-association-recall="${memory.id}">Recall Test 시작</button><section><h2>연결된 실제 기출</h2>${related.length?related.map(id=>{const entry=officialEntry(id),question=officialQuestion(id);return `<article class="association-question"><img src="${esc(entry.libraryImage)}" alt=""><span><small>${examSourceLabel(entry)}</small><b>${officialEraInfo(entry.primaryEra).name}</b></span><button data-official-single="${id}">문제 풀기</button>${storyExperienced(question)?`<button class="text-btn" data-story-memory="${id}">이 장면 기억하시나요?</button>`:''}</article>`}).join(''):'<div class="ed-empty">연결할 수 있는 등록 기출을 검토 중입니다.</div>'}</section></section>`;
 }
 const associationRecallItems=memory=>memory.steps.map(step=>step.title);
 function associationRecallOptions(memory,index){
