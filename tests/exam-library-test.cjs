@@ -49,12 +49,32 @@ for(const item of memories){
  click({associationStep:'0'});assert.equal((html.match(/aria-expanded="true"/g)||[]).length,1,item.id+' row closes independently');
  click({associationBack:'true'});
 }
-const memory=copy("globalThis.ASSOCIATION_MEMORIES.find(item=>item.id==='gong-go-sin-il')");assert.deepEqual(memory.sequence,['공산 전투','고창 전투','신라 항복','일리천 전투']);
-click({associationOpen:memory.id});assert(html.includes('<span class="association-cue">공</span>산 전투'));assert(html.includes('927년, 후백제 견훤과 고려 왕건이 맞붙은 전투'));assert.equal(run(`meta().associationMemoryStatus[${JSON.stringify(memory.id)}]`),'LEARNING');click({associationRecall:memory.id});for(const answer of memory.sequence.slice(1))click({associationAnswer:answer});assert.equal(run(`meta().associationMemoryStatus[${JSON.stringify(memory.id)}]`),'MEMORIZED');
+const recallQaIds=['gong-go-sin-il','mu-gap-gi-eul','byeong-je-byeong-o-sin-cheok','joseon-kings'],observedAnswerPositions=[];
+for(const memoryId of recallQaIds){
+ const item=memories.find(memory=>memory.id===memoryId),cueReview=item.steps.map(step=>step.cue).join(' · ');
+ click({associationOpen:item.id});click({associationRecall:item.id});
+ assert(html.includes('RECALL TEST · 1 /'),item.id+' progress missing');
+ assert(!html.includes(item.title),item.id+' mnemonic title leaked before answer');
+ assert(!html.includes(cueReview),item.id+' mnemonic cue line leaked before answer');
+ if(item.id==='joseon-kings')for(const step of item.steps)assert(!html.includes(step.cue),'king mnemonic leaked before answer: '+step.cue);
+ assert(html.includes(item.steps[0].title),item.id+' question context missing');
+ assert(!html.includes('association-recall-review'),item.id+' review leaked before answer');
+ const optionOrder=[...html.matchAll(/data-association-answer="([^"]+)"/g)].map(match=>match[1]);assert.equal(optionOrder.length,Math.min(4,item.steps.length),item.id+' choice count');assert(optionOrder.includes(item.steps[1].title),item.id+' correct choice missing');assert(optionOrder.every(option=>item.steps.some(step=>step.title===option)),item.id+' choices must use event titles');observedAnswerPositions.push(optionOrder.indexOf(item.steps[1].title));
+ run('render()');assert.deepEqual([...html.matchAll(/data-association-answer="([^"]+)"/g)].map(match=>match[1]),optionOrder,item.id+' choices moved during rerender');
+ click({associationAnswer:item.steps[1].title});
+ assert(html.includes('✓ 정답입니다.'),item.id+' correct feedback missing');
+ assert(html.includes(item.title),item.id+' mnemonic title not revealed after answer');
+ assert(html.includes(cueReview),item.id+' mnemonic cue line not revealed after answer');
+ for(const step of item.steps)assert(html.includes(step.title),item.id+' full order review missing '+step.title);
+ click({associationCancel:'true'});click({associationBack:'true'});
+}
+assert(new Set(observedAnswerPositions).size>1,'correct choice must not always use the same position');
+const wrongMemory=memories.find(item=>item.id==='mu-gap-gi-eul');click({associationOpen:wrongMemory.id});click({associationRecall:wrongMemory.id});const wrongChoice=[...html.matchAll(/data-association-answer="([^"]+)"/g)].map(match=>match[1]).find(option=>option!==wrongMemory.steps[1].title);click({associationAnswer:wrongChoice});assert(html.includes('✕ 아쉬워요.'));assert(html.includes('정답:'));assert(html.includes(wrongMemory.title));assert(html.includes(wrongMemory.steps[3].title));click({associationCancel:'true'});click({associationBack:'true'});
+const memory=memories.find(item=>item.id==='gong-go-sin-il');assert.deepEqual(memory.sequence,['공산 전투','고창 전투','신라 항복','일리천 전투']);click({associationOpen:memory.id});assert(html.includes('<span class="association-cue">공</span>산 전투'));assert(html.includes('927년, 후백제 견훤과 고려 왕건이 맞붙은 전투'));assert.equal(run(`meta().associationMemoryStatus[${JSON.stringify(memory.id)}]`),'LEARNING');click({associationRecall:memory.id});for(const answer of memory.steps.slice(1).map(step=>step.title)){click({associationAnswer:answer});assert(html.includes('✓ 정답입니다.'));click({associationNext:'true'})}assert.equal(run(`meta().associationMemoryStatus[${JSON.stringify(memory.id)}]`),'MEMORIZED');assert(!html.includes('RECALL TEST'));
 
-const associationCss=fs.readFileSync('dist/exam-memory.css','utf8');assert(associationCss.includes('min-height:58px'));assert(associationCss.includes('grid-template-rows .24s ease'));assert(associationCss.includes('.association-step.open .association-chevron'));
+const associationCss=fs.readFileSync('dist/exam-memory.css','utf8');assert(associationCss.includes('min-height:58px'));assert(associationCss.includes('grid-template-rows .24s ease'));assert(associationCss.includes('.association-step.open .association-chevron'));assert(associationCss.includes('.association-recall-question'));assert(associationCss.includes('.association-recall-review'));
 
 click({nav:'records'});assert(html.includes('시대별 기출 기록'));assert(html.includes('누적 풀이'));assert(run('Object.keys(meta().questionRecords).length')>=50);
 click({nav:'study'});assert(html.includes('오답노트'));
 assert.equal(run('globalThis.EXAM_MEMORY_UI_READY'),true);
-console.log('PASS: 1,800 canonical official questions, 36 editions, unlocked era/round UI, real images, official grading, canonical records, reusable mnemonic accordions, preserved recall and shared records.');
+console.log('PASS: 1,800 canonical official questions, 36 editions, reusable mnemonic accordions, hint-free stable Recall Test choices, post-answer mnemonic review, preserved official grading and shared records.');
