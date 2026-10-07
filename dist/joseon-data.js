@@ -56,17 +56,20 @@ Object.assign(CHARACTERS,{
   joseon_woman:{characterId:'joseon_woman',characterName:'조선의 백성',speakerType:'npc',position:'left',show:true,presentation:'standing',portraitPrefix:'joseon_woman'}
 });
 
-/* Goryeo is the visual source of truth: Joseon shares its MAIN scale and stage geometry. */
-const JOSEON_CHARACTER_SIZING={
-  baseScale:1,protagonistScale:1.14,npcScale:1.1,lockDialogueStateScale:true,
-  assetAdjustments:{minjun_j:1.16,minjun_elder_j:1.05,joseon_scholar:1.09,joseon_soldier:.96,joseon_naval:.92,joseon_woman:1.03}
+/* Goryeo remains the source of truth; Joseon uses a top-anchored waist-up camera crop. */
+const JOSEON_CHARACTER_FRAMING={
+  mode:'upper-body',lockDialogueStateScale:true,
+  joseon_player:{scale:1.5,translateY:-4},
+  minjun_j:{scale:1.55,translateY:-3},minjun_elder_j:{scale:1.48,translateY:-3},
+  joseon_scholar:{scale:1.52,translateY:-3},joseon_soldier:{scale:1.38,translateY:-2},
+  joseon_naval:{scale:1.32,translateY:-1},joseon_woman:{scale:1.45,translateY:-3}
 };
-const joseonRenderProfile=(characterId,role)=>{const scale=Number((JOSEON_CHARACTER_SIZING.baseScale*JOSEON_CHARACTER_SIZING[`${role}Scale`]*(JOSEON_CHARACTER_SIZING.assetAdjustments[characterId]||1)).toFixed(3));return{tier:'MAIN',scale,anchorY:Number(((scale-1)*100).toFixed(1)),lockStateScale:JOSEON_CHARACTER_SIZING.lockDialogueStateScale}};
+const joseonRenderProfile=characterId=>{const frame=JOSEON_CHARACTER_FRAMING[characterId];return{tier:'MAIN',scale:frame.scale,anchorY:frame.translateY,framing:JOSEON_CHARACTER_FRAMING.mode,lockStateScale:JOSEON_CHARACTER_FRAMING.lockDialogueStateScale}};
 const JOSEON_CHARACTER_RENDER_PROFILES={
-  joseon_player:joseonRenderProfile('joseon_player','protagonist'),
-  minjun_j:joseonRenderProfile('minjun_j','npc'),minjun_elder_j:joseonRenderProfile('minjun_elder_j','npc'),
-  joseon_scholar:joseonRenderProfile('joseon_scholar','npc'),joseon_soldier:joseonRenderProfile('joseon_soldier','npc'),
-  joseon_naval:joseonRenderProfile('joseon_naval','npc'),joseon_woman:joseonRenderProfile('joseon_woman','npc')
+  joseon_player:joseonRenderProfile('joseon_player'),
+  minjun_j:joseonRenderProfile('minjun_j'),minjun_elder_j:joseonRenderProfile('minjun_elder_j'),
+  joseon_scholar:joseonRenderProfile('joseon_scholar'),joseon_soldier:joseonRenderProfile('joseon_soldier'),
+  joseon_naval:joseonRenderProfile('joseon_naval'),joseon_woman:joseonRenderProfile('joseon_woman')
 };
 Object.assign(CHARACTER_RENDER_PROFILES.characters,JOSEON_CHARACTER_RENDER_PROFILES);
 
