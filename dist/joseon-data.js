@@ -59,10 +59,10 @@ Object.assign(CHARACTERS,{
 /* Goryeo remains untouched; Joseon portraits deliberately overflow the stage below the waist. */
 const JOSEON_CHARACTER_FRAMING={
   mode:'upper-body',lockDialogueStateScale:true,
-  joseon_player:{scale:1.8,translateX:6,translateY:20},
-  minjun_j:{scale:2,translateX:0,translateY:17},minjun_elder_j:{scale:1.9,translateX:0,translateY:17},
-  joseon_scholar:{scale:1.95,translateX:0,translateY:17},joseon_soldier:{scale:1.77,translateX:0,translateY:17},
-  joseon_naval:{scale:1.69,translateX:0,translateY:17},joseon_woman:{scale:1.86,translateX:0,translateY:17}
+  joseon_player:{scale:1.73,translateX:6,translateY:17},
+  minjun_j:{scale:1.92,translateX:0,translateY:14},minjun_elder_j:{scale:1.82,translateX:0,translateY:14},
+  joseon_scholar:{scale:1.87,translateX:0,translateY:14},joseon_soldier:{scale:1.7,translateX:0,translateY:14},
+  joseon_naval:{scale:1.62,translateX:0,translateY:14},joseon_woman:{scale:1.79,translateX:0,translateY:14}
 };
 const joseonRenderProfile=characterId=>{const frame=JOSEON_CHARACTER_FRAMING[characterId];return{tier:'MAIN',scale:frame.scale,anchorX:frame.translateX,anchorY:frame.translateY,framing:JOSEON_CHARACTER_FRAMING.mode,lockStateScale:JOSEON_CHARACTER_FRAMING.lockDialogueStateScale}};
 const JOSEON_CHARACTER_RENDER_PROFILES={
