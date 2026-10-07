@@ -33,9 +33,10 @@ for(const entry of round70)assert.equal(run(`meta().questionRecords[${JSON.strin
 
 const legacyEntry=entries.find(entry=>entry.aliases.length>1);if(legacyEntry){const alias=legacyEntry.aliases.find(id=>id!==legacyEntry.canonicalQuestionId);if(alias){run(`recordQuestion(state,${JSON.stringify(alias)},QUESTIONS.find(question=>question.questionId===${JSON.stringify(alias)}).acceptedAnswers[0])`);assert.equal(run(`meta().questionRecords[${JSON.stringify(legacyEntry.canonicalQuestionId)}].attempts`),1);assert.equal(run(`meta().questionRecords[${JSON.stringify(alias)}]`),undefined)}}
 
-click({nav:'association'});assert.equal((html.match(/data-association-open=/g)||[]).length,40);assert.equal(copy('globalThis.ASSOCIATION_MEMORY_CANDIDATES').length,15);assert(!html.includes('candidate')&&!html.includes('후보'));assert(html.includes('공고신일')&&html.includes('무갑기을')&&html.includes('병제병오신척')&&html.includes('태정태세문단세')&&html.includes('복덕(방) 경희(가) 운(다)'));
+click({nav:'association'});assert.equal((html.match(/data-association-open=/g)||[]).length,63);assert.equal(copy('globalThis.ASSOCIATION_MEMORY_CANDIDATES').length,15);assert(!html.includes('candidate')&&!html.includes('후보'));assert(html.includes('공고신일')&&html.includes('무갑기을')&&html.includes('병제병오신척')&&html.includes('태정태세문단세')&&html.includes('복덕(방) 경희(가) 운(다)')&&html.includes('오일팔(에) 난새'));
+assert(html.includes('data-association-search')&&html.includes('data-association-memory-type')&&html.includes('문장연상'),'mnemonic search/type filters missing');
 const memories=copy('globalThis.ASSOCIATION_MEMORIES'),genericMemory=/중요한 사건|핵심 개념을 기억|시험에 자주 출제|시대를 판단/;
-assert.equal(memories.filter(item=>item.status==='published').length,40);assert(memories.every(item=>item.mnemonic&&item.mnemonic.length>1),'published cards need an extracted mnemonic phrase');
+assert.equal(memories.filter(item=>item.status==='published').length,63);assert(memories.every(item=>item.mnemonic&&item.mnemonic.length>1),'published cards need an extracted mnemonic phrase');assert(memories.every(item=>item.memoryType&&item.category&&item.originalMnemonic&&item.publicMnemonic),'published cards need structured mnemonic metadata');
 for(const item of memories){
  assert(item.relatedOfficialQuestionIds.length>0,item.id+' needs canonical official links');
  assert.equal(item.steps.length,item.sequence.length,item.id+' step/recall mismatch');

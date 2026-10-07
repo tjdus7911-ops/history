@@ -2,8 +2,10 @@
 globalThis.MNEMONIC_IMPORT_CARDS=[];
 ((cards)=>{
  const fact=(cue,title,shortExplanation)=>({cue,title,shortExplanation});
- function card(id,era,period,title,mnemonic,tags,rows,sourceUnits,terms,chronological=false,priority='A'){
-  cards.push({id,era,period,title,mnemonic,memoryMethodTags:['두문자','문장형'],topicTags:tags,facts:rows,relatedOfficialQuestionIds:[],relatedSceneIds:[],status:'PUBLISHED',sourceReviewStatus:'SOURCE_EXTRACTED_REVIEWED',priority,sourceUnits,searchTerms:terms,recall:{type:chronological?'sequence':'multiple-choice',supportedTypes:['multiple-choice','blank','sequence','matching','cue'],chronological}});
+ function memoryType(words){if(/[0-9０-９]|숫자|개|조|군/.test(words))return 'NUMBER';if(/[!?]|\(|\)|[·,]/.test(words))return 'WORDPLAY';if(words.trim().split(/\s+/).length>=4)return 'SENTENCE';return 'ACROSTIC'}
+ function card(id,era,period,title,mnemonic,tags,rows,sourceUnits,terms,chronological=false,priority='A',type=memoryType(mnemonic),moderationStatus='CLEAR'){
+  if(chronological||tags.some(tag=>/순서|전개/.test(tag)))type='SEQUENCE';
+  cards.push({id,era,period,title,mnemonic,originalMnemonic:mnemonic,publicMnemonic:mnemonic,memoryType:type,category:tags[0]||'기타',memoryMethodTags:[type],topicTags:tags,facts:rows.map((row,index)=>({...row,order:index+1})),relatedOfficialQuestionIds:[],relatedSceneIds:[],status:'PUBLISHED',sourceReviewStatus:'SOURCE_EXTRACTED_REVIEWED',moderationStatus,priority,sourceUnits,searchTerms:terms,recall:{type:chronological?'sequence':'multiple-choice',supportedTypes:['multiple-choice','blank','sequence','matching','cue'],chronological}});
  }
  card('memory-palaces','joseon','조선','조선시대 궁궐','복덕(방) 경희(가) 운(다)',['문화'],[
   fact('복','경복궁','조선의 법궁으로 태조 때 창건되었다.'),fact('덕','창덕궁','태종 때 세워진 궁궐로 자연 지형을 살린 후원이 유명하다.'),fact('경','창경궁','성종 때 세 대비를 모시기 위해 지었다.'),fact('희','경희궁','광해군 때 세워진 서궐이다.'),fact('운','경운궁(덕수궁)','대한제국기에 황궁으로 사용되었다.')],['P6'],['궁궐','경복궁','창덕궁','창경궁','경희궁','경운궁']);
@@ -77,18 +79,64 @@ globalThis.MNEMONIC_IMPORT_CARDS=[];
   fact('신생아','신채호·조선상고사·아와 비아·조선사 연구회','신채호의 민족주의 역사학을 묶는다.'),fact('사청가','상고사·낭가사상','고대사와 민족 정신을 강조했다.'),fact('박혼식','박은식·혼백·한국독립운동지혈사·한국통사','박은식의 저서를 연결한다.')],['P104'],['신채호','조선상고사','박은식','한국통사']);
  card('memory-roh-import','republic','대한민국','노태우 정부의 남북 관계','칙칙한 고위급, 노태우는 유기농 핵',['정부','순서'],[
   fact('칙칙','7·7 특별 선언','북방 정책과 남북 교류를 제안했다.'),fact('고위급','고위급 회담','남북 고위급 회담을 열었다.'),fact('유','유엔 동시 가입','1991년 남북한이 함께 가입했다.'),fact('기본','남북 기본 합의서','화해·불가침·교류 협력을 합의했다.'),fact('농핵','비핵화 공동 선언','한반도 비핵화에 합의했다.')],['P117'],['노태우','남북 기본 합의서','유엔 가입'],true);
+ card('memory-world-records','ancient','문화유산','세계기록유산','오일팔(에) 난새(영웅) 조조(가) 승훈(이) 해직(에) 동의(하였다)',['문화'],[
+  fact('오','5·18 민주화운동 기록물','세계기록유산에 등재된 민주화 기록이다.'),fact('일','일성록','조선 왕실의 국정 기록이다.'),fact('팔','팔만대장경','고려의 불교 경전 목판이다.'),fact('난','난중일기','이순신이 기록한 전쟁 일기다.'),fact('새','새마을운동 기록물','새마을운동 관련 기록이다.'),fact('조조','조선왕조실록·조선왕조의궤','조선 왕실의 기록 유산이다.'),fact('승훈','승정원일기·훈민정음','왕명 기록과 문자 유산이다.'),fact('해직동의','해인사 장경판전·직지심체요절·동의보감','불교·인쇄·의학 기록을 묶는다.')],['P6'],['세계기록유산','팔만대장경','직지심체요절']);
+ card('memory-world-heritage','ancient','문화유산','세계문화유산','불경해석 참조남(이) 고종수 안경 백',['문화'],[
+  fact('불경해석','불국사·경주 역사 유적 지구·해인사 장경판전·석굴암','불교 문화유산을 떠올리는 문장이다.'),fact('참조남','창덕궁·조선왕릉·남한산성','조선의 궁궐·왕릉·성곽이다.'),fact('고종수','고인돌·종묘·수원 화성','선사와 조선의 유산을 묶는다.'),fact('안경백','안동 하회 마을·경주 양동 마을·백제 역사 유적 지구','마을과 백제 문화유산이다.')],['P6'],['세계문화유산','불국사','창덕궁']);
+ card('memory-paleolithic-middle','ancient','구석기 중기','구석기 중기 유적','굴역심 상승(중) 빌점',['유적','선사'],[
+  fact('굴','웅기 굴포리·서포항','구석기 중기 유적이다.'),fact('역','평양 역포·대현동','평양 지역 유적이다.'),fact('심','명주 심곡리','강원도 유적이다.'),fact('상승','양구 상무룡리·덕천 승리산','중기 유적을 연결한다.'),fact('빌점','제주 빌레못 동굴·제천 점말동굴','동굴 유적을 기억한다.')],['P7'],['구석기 중기','굴포리','점말동굴']);
+ card('memory-paleolithic-late','ancient','구석기 후기','구석기 후기 유적','(2개의) 흥수똥 달제양',['유적','선사'],[
+  fact('흥수','어린 흥수아이','구석기 후기 인골 자료다.'),fact('똥','동관진','종성 동관진 유적이다.'),fact('달','평양 만달리','구석기 후기 유적이다.'),fact('제양','제천 창내·남양주 호평','후기 유적을 연결한다.')],['P7'],['구석기 후기','흥수아이','만달리']);
+ card('memory-neolithic-millet','ancient','신석기','신석기 좁쌀','타고 남은 봉지',['농업','선사'],[
+  fact('타고','평양 남경','신석기 좁쌀 농경 자료다.'),fact('남은','봉산 지탑리','좁쌀이 확인된 유적이다.'),fact('봉지','남경·지탑리','두 유적을 한 문장으로 기억한다.')],['P8'],['신석기','좁쌀','남경','지탑리']);
+ card('memory-bronze-farming','ancient','청동기','청동기 벼농사','송흔(이) 화남',['농업','선사'],[
+  fact('송','부여 송국리','청동기 벼농사 유적이다.'),fact('흔','여주 흔암리','벼농사 유적이다.'),fact('화남','서천 화금리·평양 남경','벼농사 자료를 연결한다.')],['P8'],['청동기','송국리','흔암리']);
+ card('memory-bronze-pottery','ancient','청동기','청동기 토기','부여(로) 간 김송민',['문화','선사'],[
+  fact('부여','부여 송국리식 토기','청동기 대표 토기다.'),fact('간','붉은 간토기','붉은 간토기를 떠올린다.'),fact('김송민','덧띠새김무늬·미송리식·민무늬토기','청동기 토기 종류를 묶는다.')],['P8'],['청동기','송국리식토기','미송리식토기']);
+ card('memory-iron-pottery','ancient','철기','철기 토기','철민(이는) 검은 띠',['문화','선사'],[
+  fact('철','철기','철제 농기구와 무기를 사용한 시기다.'),fact('민','민무늬토기','철기 시대에도 이어진 토기다.'),fact('검은 띠','검은간토기·덧띠토기','철기 시대 토기다.')],['P8'],['철기','검은간토기','덧띠토기']);
+ card('memory-gunjosun-range','ancient','고조선','고조선 세력 범위','송파 거북(이)',['유적','선사'],[
+  fact('송','미송리식 토기','고조선 세력 범위를 보여주는 유물이다.'),fact('파','비파형 동검','청동기 문화의 대표 유물이다.'),fact('거북','거친무늬 거울·북방식 고인돌','고조선 문화권의 자료다.')],['P9'],['고조선','비파형동검','고인돌']);
+ card('memory-eight-laws','ancient','고조선','고조선 8조법','살사 상곡 절노',['법·제도'],[
+  fact('살사','살인죄·사형','사람을 죽이면 사형에 처했다.'),fact('상곡','상해죄·곡식 배상','상해에 대해 곡식으로 배상했다.'),fact('절노','절도죄·노비 50만 배상','절도 처벌과 배상 규정이다.')],['P9'],['8조법','고조선 법률']);
+ card('memory-silla-rebellions-import','ancient','통일 신라','신라 반란사','비염김(씨), 대구김(씨) 헌범(이가) 장원(할) 견적(이 나온다)',['사건순서'],[
+  fact('비염김','비담·염종의 난·김흠돌 모반','신라 귀족 반란을 묶는다.'),fact('대구김','대공·대렴의 난·96각간의 난·김지정의 난','중대 말 반란 흐름이다.'),fact('헌범','김헌창의 난·범문의 난','하대 지방 세력 반란이다.'),fact('장원견적','장보고·원종·애노·견훤·적고적의 난','후기 반란을 연결한다.')],['P18'],['신라 반란','김헌창','견훤']);
+ card('memory-sukjong','goryeo','고려','숙종의 정책','화난 숙종은 벌써 3회독',['왕·정책'],[
+  fact('화','화폐 발행','숙종은 주전도감을 설치하고 화폐를 발행했다.'),fact('난','남경 개창도감','남경 건설을 추진했다.'),fact('은','은병 활구','은병을 주조했다.'),fact('벌써','별무반','여진 정벌을 위해 별무반을 조직했다.'),fact('3회독','서적포·삼한통보·해동통보·동국통보','교육·화폐 정책을 함께 기억한다.')],['P23'],['숙종','별무반','은병']);
+ card('memory-yejong','goryeo','고려','예종의 정책','얘 7재야(양) 감(좋은) 보청기 구해도 애(예)',['왕·정책'],[
+  fact('7재','7재','국자감에 전문 강좌를 설치했다.'),fact('야양감','양현고·감무 파견','교육 진흥과 지방 행정 정책이다.'),fact('보청구해도','보문각·청연각·구제도감·혜민국·도관 건립','학문·구휼·의료·도교 정책을 묶는다.')],['P23'],['예종','7재','혜민국']);
+ card('memory-choongseon','goryeo','고려','충선왕의 정책','이제(부터) 소금만 사(자)',['왕·정책'],[
+  fact('이제','이제현','충선왕 때 활동한 인물이다.'),fact('소금','소금 전매제','소금의 전매를 실시했다.'),fact('사','만권당·사림원','원과 교류하며 학문 기관을 운영했다.')],['P24'],['충선왕','이제현','만권당']);
+ card('memory-gongmin','goryeo','고려','공민왕의 개혁','곧 몽정기 관쌍 홍복흥 전성요동치네',['왕·정책'],[
+  fact('곧','공민왕','공민왕의 개혁을 여는 말이다.'),fact('몽정기','몽골풍 일소·정동행성 이문소 폐지·기철 숙청','반원 자주 정책을 묶는다.'),fact('관쌍홍복흥','관제 복구·쌍성총관부 수복·홍건적 침입·복주 피난·흥왕사의 변','개혁과 전쟁을 연결한다.'),fact('전성요동','전민변정도감·성균관 정비·요동 정벌·동녕부 공격','토지·교육·대외 정책이다.')],['P24'],['공민왕','쌍성총관부','전민변정도감']);
+ card('memory-woowang','goryeo','고려','우왕의 전투','최홍(마)남 최진철(강) 이황',['전투','인물'],[
+  fact('최홍남','최영·홍산 대첩·남만주','최영의 전투를 기억한다.'),fact('최진철강','최무선·진포 대첩·철강 하구','화약 무기와 진포 전투다.'),fact('이황','이성계·황산 대첩','이성계의 전투다.')],['P24'],['우왕','진포대첩','황산대첩']);
+ card('memory-sejong-printing','joseon','조선','활자 인쇄술','(태종때는) 소자 (세종때는) 대자',['문화'],[
+  fact('소','주자소·계미자','태종 때 주자소를 설치하고 계미자를 주조했다.'),fact('대','갑인자','세종 때 밀랍 대신 식자판을 조립해 만든 활자다.')],['P68'],['계미자','갑인자','활자']);
+ card('memory-hongdaeyong','joseon','조선 후기','홍대용의 사상과 저서','홍대 중상학(부) 주담임(이)균전(을) 의지(가) 무한(하다)',['인물','저서'],[
+  fact('홍대','홍대용·중상학파','홍대용은 중상학파 실학자다.'),fact('주담임','주해수용·담헌서·임하경륜','홍대용의 저서다.'),fact('균전의지무한','균전론·의산문답·지전설·무한 우주론','경제와 과학 사상을 연결한다.')],['P71'],['홍대용','의산문답','지전설']);
+ card('memory-jo-gwangjo','joseon','조선','조광조의 개혁','소방소도 위헌 경향이 있다',['왕·정책'],[
+  fact('소방','소격서 폐지·방납 폐단 시정','개혁 정치의 내용이다.'),fact('소도','소학 보급·도학 정치','유교적 개혁을 추진했다.'),fact('위헌경향','위훈 삭제·현량과·경연 강화·향약 실시','사림 정치의 정책이다.')],['P30'],['조광조','현량과','향약']);
+ card('memory-opening-order','empire','개항기','개항 순서','미 명동 이너프',['국제관계','순서'],[
+  fact('미','미국','1882년 조미 수호 통상 조약을 맺었다.'),fact('명동','영국·독일','1883년 영국·독일과 수교했다.'),fact('이너프','이탈리아·러시아·프랑스','1884~1886년 수교 순서다.')],['P75'],['개항','조미수호통상조약','러시아']);
+ card('memory-gapshin-after','empire','개항기','갑신정변 이후 사건','갑한텐 거방 교동갑청',['사건순서'],[
+  fact('갑한텐','갑신정변·한성조약·톈진조약','정변 뒤 청·일 간 조약이다.'),fact('거방','거문도 사건·방곡령 사건','열강과 경제 갈등을 연결한다.'),fact('교동갑청','교조 신원 운동·동학 농민 운동·갑오개혁·청일 전쟁','개항기 개혁의 흐름이다.')],['P77'],['갑신정변','톈진조약','갑오개혁'],true);
+ card('memory-gapoh-reforms','empire','개항기','갑오개혁의 단계','은경이의 궁금증은 노비가 딱했다는 거야 · 홍재교 부부훈시 · 우친소 건진 단태종',['개혁','순서'],[
+  fact('은경궁금노비딱','은본위제·경무청·의정부·궁내부·금납화·노비법 혁파·탁지아문','1차 갑오개혁의 정책이다.'),fact('홍재교부부훈시','홍범 14조·재판소·교육 입국 조서·7부·23부·훈련대·시위대','2차 갑오개혁의 정책이다.'),fact('우친소건진단태종','우체사·친위대·소학교·건양 연호·진위대·단발령·태양력·종두법','3차 갑오개혁의 정책이다.')],['P79'],['갑오개혁','홍범14조','단발령'],true);
+ card('memory-gwangbok-parties','republic','대한민국','광복 직후 정당과 단체','한국독립(에) 조인(한) 국민(에게) 한민(관이) 조공(을) 독촉(한다)',['단체'],[
+  fact('한국독립','한국독립당','광복 직후 우익 정당이다.'),fact('조인국민','조선인민당·국민당','광복 직후 정당을 묶는다.'),fact('한민관','한국민주당·조선공산당','좌우 정당을 연결한다.'),fact('조공독촉','독립촉성중앙협의회','정당·단체의 흐름을 기억한다.')],['P106'],['광복 직후','한국독립당','한국민주당']);
 })(globalThis.MNEMONIC_IMPORT_CARDS);
 
 /* Extracted but withheld until a separate editorial/licensing review. */
 globalThis.MNEMONIC_IMPORT_CANDIDATES=[
- {id:'candidate-fourteen-articles',mnemonic:'순수한 근혜 환갑까지 지조 지키니 내시들이 호시탐탐 사귀자고 매달린다',sourceUnits:['P77'],reason:'원문 표현은 보존했으나 공개 문구의 적절성 검토가 필요하다.'},
- {id:'candidate-reform-twelve',mnemonic:'왜노무새끼가 과부의 토지 천평을 공사함',sourceUnits:['P78'],reason:'원문에 거친 표현이 있어 공개 전 검토가 필요하다.'},
- {id:'candidate-silla-rebellions',mnemonic:'비염김씨 대구김씨 헌범이가 장원할 견적이 나온다',sourceUnits:['P18'],reason:'다수 사건과 OCR 혼합 표현을 원문 대조 중이다.'},
- {id:'candidate-musin-rebellions',mnemonic:'중부 포위망 총싸 · 전관에서 빨리 승 · 효심에는 이의있삼',sourceUnits:['P52'],reason:'분절된 원문을 사건별로 재검수 중이다.'},
- {id:'candidate-education-1900',mnemonic:'흥화점에 보양식은 명문오댕',sourceUnits:['P88'],reason:'학교 목록과 구어 표현의 대응을 추가 확인 중이다.'},
- {id:'candidate-foreign-opening',mnemonic:'미명동 이너프',sourceUnits:['P75'],reason:'표현과 연도 표기를 원문 대조 중이다.'},
- {id:'candidate-imjin-flow',mnemonic:'충신선의 옥사당한 이순신 진주에서 양주를 피토하며 명량하게 마신다',sourceUnits:['P35'],reason:'긴 문장형 mnemonic의 사실 매핑을 추가 검수 중이다.'},
- {id:'candidate-architecture',mnemonic:'금미화각 법팔 논쌍 부개 안석',sourceUnits:['P73'],reason:'문화재 명칭과 위치를 원문 대조 중이다.'},
- {id:'candidate-balhae-tombs',mnemonic:'발해 사자에게 돈육 식빵',sourceUnits:['P58'],reason:'여러 무덤 양식을 한 표현에 합친 원문을 분리 검토 중이다.'},
- {id:'candidate-education-1880',mnemonic:'원산에서 동경까지 배 타고 26',sourceUnits:['P88'],reason:'교육기관 연도 매핑을 추가 검증 중이다.'}
+ {id:'candidate-fourteen-articles',mnemonic:'순수한 근혜 환갑까지 지조 지키니 내시들이 호시탐탐 사귀자고 매달린다',originalMnemonic:'순수한 근혜 환갑까지 지조 지키니 내시들이 호시탐탐 사귀자고 매달린다',memoryType:'SENTENCE',status:'REVIEW_REQUIRED',sourceReviewStatus:'REVIEW_REQUIRED',sourceUnits:['P77'],reason:'원문 표현은 보존했으나 공개 문구의 적절성 검토가 필요하다.'},
+ {id:'candidate-reform-twelve',mnemonic:'왜노무새끼가 과부의 토지 천평을 공사함',originalMnemonic:'왜노무새끼가 과부의 토지 천평을 공사함',memoryType:'WORDPLAY',status:'REVIEW_REQUIRED',sourceReviewStatus:'REVIEW_REQUIRED',sourceUnits:['P78'],reason:'원문에 거친 표현이 있어 공개 전 검토가 필요하다.'},
+ {id:'candidate-silla-rebellions',mnemonic:'비염김씨 대구김씨 헌범이가 장원할 견적이 나온다',originalMnemonic:'비염김씨 대구김씨 헌범이가 장원할 견적이 나온다',memoryType:'SENTENCE',status:'CANDIDATE',sourceReviewStatus:'CANDIDATE',sourceUnits:['P18'],reason:'다수 사건과 OCR 혼합 표현을 원문 대조 중이다.'},
+ {id:'candidate-musin-rebellions',mnemonic:'중부 포위망 총싸 · 전관에서 빨리 승 · 효심에는 이의있삼',originalMnemonic:'중부 포위망 총싸 · 전관에서 빨리 승 · 효심에는 이의있삼',memoryType:'SENTENCE',status:'CANDIDATE',sourceReviewStatus:'CANDIDATE',sourceUnits:['P52'],reason:'분절된 원문을 사건별로 재검수 중이다.'},
+ {id:'candidate-education-1900',mnemonic:'흥화점에 보양식은 명문오댕',originalMnemonic:'흥화점에 보양식은 명문오댕',memoryType:'WORDPLAY',status:'CANDIDATE',sourceReviewStatus:'CANDIDATE',sourceUnits:['P88'],reason:'학교 목록과 구어 표현의 대응을 추가 확인 중이다.'},
+ {id:'candidate-foreign-opening',mnemonic:'미명동 이너프',originalMnemonic:'미명동 이너프',memoryType:'ACROSTIC',status:'CANDIDATE',sourceReviewStatus:'CANDIDATE',sourceUnits:['P75'],reason:'표현과 연도 표기를 원문 대조 중이다.'},
+ {id:'candidate-imjin-flow',mnemonic:'충신선의 옥사당한 이순신 진주에서 양주를 피토하며 명량하게 마신다',originalMnemonic:'충신선의 옥사당한 이순신 진주에서 양주를 피토하며 명량하게 마신다',memoryType:'STORY',status:'CANDIDATE',sourceReviewStatus:'CANDIDATE',sourceUnits:['P35'],reason:'긴 문장형 mnemonic의 사실 매핑을 추가 검수 중이다.'},
+ {id:'candidate-architecture',mnemonic:'금미화각 법팔 논쌍 부개 안석',originalMnemonic:'금미화각 법팔 논쌍 부개 안석',memoryType:'ACROSTIC',status:'CANDIDATE',sourceReviewStatus:'CANDIDATE',sourceUnits:['P73'],reason:'문화재 명칭과 위치를 원문 대조 중이다.'},
+ {id:'candidate-balhae-tombs',mnemonic:'발해 사자에게 돈육 식빵',originalMnemonic:'발해 사자에게 돈육 식빵',memoryType:'STORY',status:'CANDIDATE',sourceReviewStatus:'CANDIDATE',sourceUnits:['P58'],reason:'여러 무덤 양식을 한 표현에 합친 원문을 분리 검토 중이다.'},
+ {id:'candidate-education-1880',mnemonic:'원산에서 동경까지 배 타고 26',originalMnemonic:'원산에서 동경까지 배 타고 26',memoryType:'NUMBER',status:'CANDIDATE',sourceReviewStatus:'CANDIDATE',sourceUnits:['P88'],reason:'교육기관 연도 매핑을 추가 검증 중이다.'}
 ];
