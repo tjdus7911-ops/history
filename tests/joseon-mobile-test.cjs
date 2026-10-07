@@ -15,23 +15,28 @@ async function main(){
   const fit=async label=>assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`horizontal overflow: ${label}`);
   const tap=async selector=>{const target=page.locator(selector).first();await target.waitFor({state:'attached'});await target.evaluate(element=>element.click());await page.evaluate(()=>{inputLockedUntil=0})};
 
-  const qaPage=await profile.newPage();await qaPage.goto(`http://127.0.0.1:${server.address().port}/`);
+  const qaPage=await profile.newPage();await qaPage.setViewportSize({width:390,height:910});await qaPage.goto(`http://127.0.0.1:${server.address().port}/`);
   const showQaScene=async(chapter,story,cursor,file)=>{
     await qaPage.evaluate(({chapter,story,cursor})=>{state.run=INITIAL_RUN(chapter);state.run.started=true;state.run.storyId=story;state.run.dialogueCursor=cursor;screen='game';render()},{chapter,story,cursor});
-    await qaPage.locator('.stage-character').first().waitFor({state:'visible'});await Promise.all((await qaPage.locator('.stage-character').all()).map(item=>item.evaluate(image=>image.decode())));
-    const result=await qaPage.locator('.stage-character').evaluateAll(images=>images.map(image=>{const rect=image.getBoundingClientRect(),style=getComputedStyle(image);return{id:image.dataset.characterId,position:image.dataset.position,active:image.classList.contains('active'),scale:style.getPropertyValue('--character-scale'),rect:{height:rect.height,bottom:rect.bottom},bottom:style.bottom,objectFit:style.objectFit,objectPosition:style.objectPosition,opacity:Number(style.opacity)}}));
-    await qaPage.screenshot({path:path.join(shots,file),fullPage:true});return result;
+    await qaPage.locator('.stage-character').first().waitFor({state:'visible',timeout:5000});await Promise.all((await qaPage.locator('.stage-character').all()).map(item=>item.evaluate(image=>image.decode())));
+    const result=await qaPage.locator('.stage-character').evaluateAll(images=>images.map(image=>{const rect=image.getBoundingClientRect(),style=getComputedStyle(image),canvas=document.createElement('canvas');canvas.width=image.naturalWidth;canvas.height=image.naturalHeight;const context=canvas.getContext('2d',{willReadFrequently:true});context.drawImage(image,0,0);const pixels=context.getImageData(0,0,canvas.width,canvas.height).data;let minX=canvas.width,minY=canvas.height,maxX=0,maxY=0;for(let y=0;y<canvas.height;y++)for(let x=0;x<canvas.width;x++)if(pixels[(y*canvas.width+x)*4+3]>16){minX=Math.min(minX,x);minY=Math.min(minY,y);maxX=Math.max(maxX,x);maxY=Math.max(maxY,y)}const visual={left:rect.left+minX/canvas.width*rect.width,top:rect.top+minY/canvas.height*rect.height,right:rect.left+(maxX+1)/canvas.width*rect.width,bottom:rect.top+(maxY+1)/canvas.height*rect.height};visual.width=visual.right-visual.left;visual.height=visual.bottom-visual.top;return{id:image.dataset.characterId,position:image.dataset.position,active:image.classList.contains('active'),scale:style.getPropertyValue('--character-scale'),activeScale:style.getPropertyValue('--character-scale-active'),listeningScale:style.getPropertyValue('--character-scale-listening'),rect:{left:rect.left,right:rect.right,top:rect.top,height:rect.height,bottom:rect.bottom},visual,bottom:style.bottom,objectFit:style.objectFit,objectPosition:style.objectPosition,opacity:Number(style.opacity)}}));
+    const panelTop=await qaPage.locator('.conversation-panel').evaluate(element=>element.getBoundingClientRect().top);await qaPage.screenshot({path:path.join(shots,file),fullPage:true});return{characters:result,panelTop};
   };
-  const goryeoCharacters=await showQaScene('ch08','ch08_revolt',3,'goryeo-character-reference-390.png');
-  const joseonCharacters=await showQaScene('joseon-ch00','joseon_ch00_s3',2,'joseon-character-normalized-390.png');
-  const goryeoActive=goryeoCharacters.find(character=>character.active),joseonPlayer=joseonCharacters.find(character=>character.id==='joseon_player'),minjun=joseonCharacters.find(character=>character.id==='minjun_j');
-  assert.equal(goryeoActive.scale,'1');assert.equal(joseonPlayer.scale,'0.88');assert.equal(minjun.scale,'0.9');
+  const goryeoQa=await showQaScene('ch01','house',1,'goryeo-character-reference-390.png');
+  const joseonQa=await showQaScene('joseon-ch00','joseon_ch00_s3',2,'joseon-character-normalized-390.png');
+  const goryeoDoyun=goryeoQa.characters.find(character=>character.id==='doyun'),goryeoPlayer=goryeoQa.characters.find(character=>character.id==='player'),joseonPlayer=joseonQa.characters.find(character=>character.id==='joseon_player'),minjun=joseonQa.characters.find(character=>character.id==='minjun_j');
+  assert.equal(goryeoDoyun.scale,'1');assert.equal(goryeoDoyun.activeScale,'1.025');assert.equal(goryeoDoyun.listeningScale,'0.98');
+  assert.equal(joseonPlayer.scale,'1.14');assert(Math.abs(Number(minjun.scale)-1.276)<1e-9);for(const character of joseonQa.characters){assert.equal(character.activeScale,character.scale);assert.equal(character.listeningScale,character.scale)}
   assert.equal(joseonPlayer.position,'right');assert.equal(minjun.position,'left');assert(joseonPlayer.active);assert(!minjun.active);assert(joseonPlayer.opacity>minjun.opacity);
-  assert.equal(joseonPlayer.bottom,'0px');assert.equal(minjun.bottom,'0px');assert(Math.abs(joseonPlayer.rect.bottom-minjun.rect.bottom)<.1);
+  assert.equal(joseonPlayer.bottom,'0px');assert.equal(minjun.bottom,'0px');
   assert.equal(joseonPlayer.objectFit,'contain');assert.equal(joseonPlayer.objectPosition,'50% 100%');
-  assert(joseonPlayer.rect.height/goryeoActive.rect.height<.91&&joseonPlayer.rect.height/goryeoActive.rect.height>.85,'Joseon heroine visible height normalized against Goryeo');
+  const heroineWidthRatio=joseonPlayer.visual.width/goryeoPlayer.visual.width,minjunWidthRatio=minjun.visual.width/goryeoDoyun.visual.width;
+  assert(heroineWidthRatio>.9&&heroineWidthRatio<1.05,`Joseon heroine/Goryeo player visible body width ${heroineWidthRatio}`);assert(minjunWidthRatio>.82&&minjunWidthRatio<.99,`Minjun/Goryeo NPC visible body width ${minjunWidthRatio}`);
+  assert(Math.abs(joseonPlayer.visual.top-goryeoPlayer.visual.top)<35,'heroine head line must track Goryeo player');assert(Math.abs(minjun.visual.top-goryeoDoyun.visual.top)<35,'Minjun head line must track Goryeo NPC');
+  for(const character of joseonQa.characters){assert(character.visual.top>=-1,`${character.id} head clipping`);assert(character.visual.bottom<=911,`${character.id} lower-body clipping`);assert(character.visual.top<joseonQa.panelTop-90,`${character.id} face must remain above dialogue panel`)}
   const profileScales=await qaPage.evaluate(()=>Object.fromEntries(Object.keys(JOSEON_CHARACTER_RENDER_PROFILES).map(id=>[id,characterRenderProfile({characterId:id},id==='joseon_player'?'joseon_player_neutral':`${id}_neutral`).scale])));
-  assert.equal(profileScales.joseon_player,.88);for(const id of ['minjun_j','minjun_elder_j','joseon_scholar','joseon_soldier','joseon_naval','joseon_woman'])assert.equal(profileScales[id],.9,`${id} mobile profile`);
+  assert.equal(profileScales.joseon_player,1.14);for(const id of ['minjun_j','minjun_elder_j','joseon_scholar','joseon_soldier','joseon_naval','joseon_woman'])assert(profileScales[id]>=1&&profileScales[id]<=1.276,`${id} mobile profile`);
+  const heroineExpressionProfiles=await qaPage.evaluate(()=>Object.fromEntries(ERA_PROTAGONISTS.protagonist_joseon.expressions.map(expression=>{const profile=characterRenderProfile({characterId:'joseon_player'},`joseon_player_${expression}`);return[expression,{scale:profile.scale,anchorY:profile.anchorY,lockStateScale:profile.lockStateScale}]})));for(const profile of Object.values(heroineExpressionProfiles))assert.deepEqual(profile,{scale:1.14,anchorY:14,lockStateScale:true});
   await qaPage.close();
 
   await tap('[data-era-open="joseon"]');
@@ -91,6 +96,6 @@ async function main(){
   assert.equal(await page.evaluate(id=>meta().wrongAnswers.find(item=>item.questionId===id)?.questionId,wrongId),wrongId);
   for(const width of [375,390,430]){await page.setViewportSize({width,height:844});await fit(`complete-${width}`)}
   assert.deepEqual(errors,[]);
-  console.log(`PASS: Joseon CH.00–22 mobile full play, 65 decoded official images, reload/resume, wrong-note linkage, unlock and widths 375–430. Screenshots: ${shots}`);
+  console.log(`PASS: Joseon CH.00–22 mobile full play, visible-width ratios heroine ${heroineWidthRatio.toFixed(3)} / Minjun ${minjunWidthRatio.toFixed(3)}, 15 expression scale locks, 65 decoded official images, reload/resume, wrong-note linkage, unlock and widths 375–430. Screenshots: ${shots}`);
 }
 main().catch(error=>{console.error(error);process.exitCode=1}).finally(async()=>{if(browser)await browser.close();server.close()});

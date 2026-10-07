@@ -56,12 +56,17 @@ Object.assign(CHARACTERS,{
   joseon_woman:{characterId:'joseon_woman',characterName:'조선의 백성',speakerType:'npc',position:'left',show:true,presentation:'standing',portraitPrefix:'joseon_woman'}
 });
 
-/* Keep the shared Goryeo stage geometry and normalize only Joseon's visible body scale. */
+/* Goryeo is the visual source of truth: Joseon shares its MAIN scale and stage geometry. */
+const JOSEON_CHARACTER_SIZING={
+  baseScale:1,protagonistScale:1.14,npcScale:1.1,lockDialogueStateScale:true,
+  assetAdjustments:{minjun_j:1.16,minjun_elder_j:1.05,joseon_scholar:1.09,joseon_soldier:.96,joseon_naval:.92,joseon_woman:1.03}
+};
+const joseonRenderProfile=(characterId,role)=>{const scale=Number((JOSEON_CHARACTER_SIZING.baseScale*JOSEON_CHARACTER_SIZING[`${role}Scale`]*(JOSEON_CHARACTER_SIZING.assetAdjustments[characterId]||1)).toFixed(3));return{tier:'MAIN',scale,anchorY:Number(((scale-1)*100).toFixed(1)),lockStateScale:JOSEON_CHARACTER_SIZING.lockDialogueStateScale}};
 const JOSEON_CHARACTER_RENDER_PROFILES={
-  joseon_player:{tier:'MAIN',scale:.88},
-  minjun_j:{tier:'MAIN',scale:.9},minjun_elder_j:{tier:'MAIN',scale:.9},
-  joseon_scholar:{tier:'MAIN',scale:.9},joseon_soldier:{tier:'MAIN',scale:.9},
-  joseon_naval:{tier:'MAIN',scale:.9},joseon_woman:{tier:'MAIN',scale:.9}
+  joseon_player:joseonRenderProfile('joseon_player','protagonist'),
+  minjun_j:joseonRenderProfile('minjun_j','npc'),minjun_elder_j:joseonRenderProfile('minjun_elder_j','npc'),
+  joseon_scholar:joseonRenderProfile('joseon_scholar','npc'),joseon_soldier:joseonRenderProfile('joseon_soldier','npc'),
+  joseon_naval:joseonRenderProfile('joseon_naval','npc'),joseon_woman:joseonRenderProfile('joseon_woman','npc')
 };
 Object.assign(CHARACTER_RENDER_PROFILES.characters,JOSEON_CHARACTER_RENDER_PROFILES);
 
