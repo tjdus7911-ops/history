@@ -34,11 +34,27 @@ for(const entry of round70)assert.equal(run(`meta().questionRecords[${JSON.strin
 const legacyEntry=entries.find(entry=>entry.aliases.length>1);if(legacyEntry){const alias=legacyEntry.aliases.find(id=>id!==legacyEntry.canonicalQuestionId);if(alias){run(`recordQuestion(state,${JSON.stringify(alias)},QUESTIONS.find(question=>question.questionId===${JSON.stringify(alias)}).acceptedAnswers[0])`);assert.equal(run(`meta().questionRecords[${JSON.stringify(legacyEntry.canonicalQuestionId)}].attempts`),1);assert.equal(run(`meta().questionRecords[${JSON.stringify(alias)}]`),undefined)}}
 
 click({nav:'association'});assert.equal((html.match(/data-association-open=/g)||[]).length,4);assert.equal(copy('globalThis.ASSOCIATION_MEMORY_CANDIDATES').length,15);assert(!html.includes('candidate')&&!html.includes('후보'));assert(html.includes('공고신일')&&html.includes('무갑기을')&&html.includes('병제병오신척')&&html.includes('조선 왕 순서'));
-for(const item of copy('globalThis.ASSOCIATION_MEMORIES')){assert(item.relatedOfficialQuestionIds.length>0,item.id+' needs canonical official links');click({associationOpen:item.id});assert((html.match(/class="association-question"/g)||[]).length>0,item.id+' must link real official questions');click({associationBack:'true'})}
+const memories=copy('globalThis.ASSOCIATION_MEMORIES'),genericMemory=/중요한 사건|핵심 개념을 기억|시험에 자주 출제|시대를 판단/;
+for(const item of memories){
+ assert(item.relatedOfficialQuestionIds.length>0,item.id+' needs canonical official links');
+ assert.equal(item.steps.length,item.sequence.length,item.id+' step/recall mismatch');
+ assert.deepEqual(item.sequence,item.steps.map(step=>step.recallTitle||step.title),item.id+' recall order changed');
+ for(const step of item.steps){assert(step.title&&step.shortExplanation&&step.cue,item.id+' incomplete step');assert(!genericMemory.test(step.shortExplanation),item.id+' generic step explanation');assert((step.shortExplanation.match(/[.!?](?:\s|$)/g)||[]).length>=1&&((step.shortExplanation.match(/[.!?](?:\s|$)/g)||[]).length<=2),item.id+' explanation must be 1-2 sentences')}
+ click({associationOpen:item.id});
+ assert((html.match(/class="association-question"/g)||[]).length>0,item.id+' must link real official questions');
+ assert.equal((html.match(/data-association-step=/g)||[]).length,item.steps.length,item.id+' accordion rows');
+ assert.equal((html.match(/aria-expanded="false"/g)||[]).length,item.steps.length,item.id+' defaults closed');
+ click({associationStep:'0'});assert.equal((html.match(/aria-expanded="true"/g)||[]).length,1,item.id+' first row opens');
+ click({associationStep:'1'});assert.equal((html.match(/aria-expanded="true"/g)||[]).length,2,item.id+' multiple rows open');
+ click({associationStep:'0'});assert.equal((html.match(/aria-expanded="true"/g)||[]).length,1,item.id+' row closes independently');
+ click({associationBack:'true'});
+}
 const memory=copy("globalThis.ASSOCIATION_MEMORIES.find(item=>item.id==='gong-go-sin-il')");assert.deepEqual(memory.sequence,['공산 전투','고창 전투','신라 항복','일리천 전투']);
-click({associationOpen:memory.id});assert.equal(run(`meta().associationMemoryStatus[${JSON.stringify(memory.id)}]`),'LEARNING');click({associationRecall:memory.id});for(const answer of memory.sequence.slice(1))click({associationAnswer:answer});assert.equal(run(`meta().associationMemoryStatus[${JSON.stringify(memory.id)}]`),'MEMORIZED');
+click({associationOpen:memory.id});assert(html.includes('<span class="association-cue">공</span>산 전투'));assert(html.includes('927년, 후백제 견훤과 고려 왕건이 맞붙은 전투'));assert.equal(run(`meta().associationMemoryStatus[${JSON.stringify(memory.id)}]`),'LEARNING');click({associationRecall:memory.id});for(const answer of memory.sequence.slice(1))click({associationAnswer:answer});assert.equal(run(`meta().associationMemoryStatus[${JSON.stringify(memory.id)}]`),'MEMORIZED');
+
+const associationCss=fs.readFileSync('dist/exam-memory.css','utf8');assert(associationCss.includes('min-height:58px'));assert(associationCss.includes('grid-template-rows .24s ease'));assert(associationCss.includes('.association-step.open .association-chevron'));
 
 click({nav:'records'});assert(html.includes('시대별 기출 기록'));assert(html.includes('누적 풀이'));assert(run('Object.keys(meta().questionRecords).length')>=50);
 click({nav:'study'});assert(html.includes('오답노트'));
 assert.equal(run('globalThis.EXAM_MEMORY_UI_READY'),true);
-console.log('PASS: 1,800 canonical official questions, 36 editions, unlocked era/round UI, real images, official grading, canonical records, 5-nav, association recall and shared records.');
+console.log('PASS: 1,800 canonical official questions, 36 editions, unlocked era/round UI, real images, official grading, canonical records, reusable mnemonic accordions, preserved recall and shared records.');
