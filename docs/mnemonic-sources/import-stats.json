@@ -1,0 +1,19 @@
+{
+  "baseline": 111,
+  "imported": 111,
+  "extra": 15,
+  "total": 126,
+  "statuses": {
+    "REVIEW_REQUIRED": 66,
+    "PUBLISHED": 3,
+    "CANDIDATE": 57
+  },
+  "facts": 823,
+  "duplicateRemoved": 0,
+  "removedConceptCandidates": 15,
+  "officialLinks": 505,
+  "uniqueOfficialQuestions": 401,
+  "sceneLinks": 33,
+  "uniqueScenes": 23,
+  "visibleLegacy": 4
+}

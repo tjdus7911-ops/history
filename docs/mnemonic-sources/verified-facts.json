@@ -1,0 +1,16 @@
+[
+ {"number":3,"source":"https://www.kh.or.kr/cms/content/view/521","facts":[
+ {"cue":"복","title":"경복궁","shortExplanation":"조선과 대한제국의 역사를 담고 있는 서울의 다섯 궁궐 중 하나입니다."},
+ {"cue":"덕","title":"창덕궁","shortExplanation":"서울의 다섯 궁궐 중 하나로, 궁중문화축전이 열리는 궁궐입니다."},
+ {"cue":"경","title":"창경궁","shortExplanation":"서울의 다섯 궁궐 중 하나로, 궁중문화축전이 열리는 궁궐입니다."},
+ {"cue":"희","title":"경희궁","shortExplanation":"서울의 다섯 궁궐 중 하나로, 궁중문화축전이 열리는 궁궐입니다."},
+ {"cue":"운","title":"경운궁","shortExplanation":"현재 덕수궁의 옛 이름입니다. 1907년 고종이 물러난 뒤 덕수궁으로 이름이 바뀌었습니다.","source":"https://royal.khs.go.kr/ROYAL/contents/R104010000.do"}
+ ]},
+ {"number":59,"source":"https://contents.history.go.kr/front/tg/view.do?levelId=tg_003_1510&treeId=0209","facts":[
+ {"cue":"훈","title":"훈련도감","shortExplanation":"임진왜란 중 설치되어 서울을 방어한 군영입니다."},
+ {"cue":"어","title":"어영청","shortExplanation":"1623년 설치되어 서울의 수비를 맡은 군영입니다."},
+ {"cue":"총","title":"총융청","shortExplanation":"1624년 설치되어 수도 외곽의 방어를 맡은 군영입니다."},
+ {"cue":"수","title":"수어청","shortExplanation":"1626년 설치되어 수도 외곽의 방어를 맡은 군영입니다."},
+ {"cue":"금","title":"금위영","shortExplanation":"1682년 설치되어 5군영 체제가 완성되었습니다."}
+ ]}
+]

@@ -1,0 +1,15 @@
+const fs=require('fs'),runtime=require('./mnemonic-runtime.cjs')(),data=JSON.parse(fs.readFileSync('dist/mnemonic-inventory.json','utf8'));
+data.cards=runtime.cards;
+fs.writeFileSync('dist/mnemonic-inventory.json',JSON.stringify(data,null,2)+'\n');
+fs.writeFileSync('dist/mnemonic-data.js','/* Generated from the user source inventory; rebuild then run mnemonic-review.cjs. */\n'+`globalThis.MNEMONIC_INVENTORY=${JSON.stringify(data.cards)};\nglobalThis.MNEMONIC_IMPORT_BASELINE=globalThis.MNEMONIC_INVENTORY.filter(c=>c.number!==null);\nglobalThis.MNEMONIC_IMPORT_CARDS=globalThis.MNEMONIC_INVENTORY;\nglobalThis.MNEMONIC_IMPORT_CANDIDATES=globalThis.MNEMONIC_INVENTORY.filter(c=>c.status!=='PUBLISHED');\n`);
+require('../tests/mnemonic-data-test.cjs')(data,runtime);
+const cards=runtime.cards,statuses=cards.reduce((s,c)=>(s[c.status]=(s[c.status]||0)+1,s),{});
+const stats={baseline:111,imported:111,extra:cards.length-111,total:cards.length,statuses,facts:cards.reduce((n,c)=>n+c.facts.length,0),duplicateRemoved:0,removedConceptCandidates:15,officialLinks:cards.reduce((n,c)=>n+c.relatedOfficialQuestionIds.length,0),uniqueOfficialQuestions:new Set(cards.flatMap(c=>c.relatedOfficialQuestionIds)).size,sceneLinks:cards.reduce((n,c)=>n+c.relatedSceneIds.length,0),uniqueScenes:new Set(cards.flatMap(c=>c.relatedSceneIds)).size,visibleLegacy:runtime.memories.length-cards.filter(c=>c.status==='PUBLISHED').length};
+const cell=x=>String(x??'').replace(/\|/g,'\\|').replace(/\r?\n/g,'<br>');
+let out='# 연상기억법 원문 대조 inventory\n\n기준 목록 01–111 전체를 원문 그대로 수입했습니다. sourceFacts는 RAW 전사이며 역사 사실의 자동 승인과 구별합니다. PUBLISHED만 앱에 노출합니다. canonical 텍스트에 항목명이 등장하는 것은 연결 근거이며, 후보 카드 전체의 역사 검수를 의미하지 않습니다.\n\n';
+out+='```json\n'+JSON.stringify(stats,null,2)+'\n```\n\n';
+out+='기존 정상 암기법 4개와 학습 저장 ID는 유지합니다. 원문 없는 개념 후보 15개는 제거했습니다. 중복 문자열은 없어서 중복 제거 0개입니다. 추가 원문 15개는 공개 검토 대기입니다. 외부 문구의 이용 허락을 확보했다고 주장하지 않습니다.\n\n';
+out+='## 근거와 재생성\n\n- `docs/mnemonic-sources/primary-reference.txt`: 사용자 확정 기준 목록\n- `docs/mnemonic-sources/raw-source.txt`: 사용자 RAW 전체\n- `docs/mnemonic-sources/cue-facts.txt`: 이미지 아래 검은 글씨 전사, 오타 포함\n- `docs/mnemonic-sources/verified-facts.json`: 별도 공식자료 검수\n- `dist/official-exam-explanations.json`: 기출 연결의 실제 텍스트 근거\n\n`node scripts/rebuild-mnemonics.cjs` 후 `node scripts/mnemonic-review.cjs`로 재생성합니다. `npm run build`는 111개 누락, 중복, 빈 cue, 잘못된 기출/장면 ID를 거부합니다.\n\n';
+out+='## 전체 목록\n\n|번호|시대|주제|원문 mnemonic|public mnemonic|memoryType|cue 개수|facts (cue→원문)|관련 officialQuestionIds|관련 sceneIds|상태|검토 사유|\n|---|---|---|---|---|---|---:|---|---|---|---|---|\n';
+for(const c of cards)out+='|'+[c.number??'추가',c.era,c.title,c.originalMnemonic,c.publicMnemonic,c.memoryType,c.cueCount,c.sourceFacts.map(f=>f.cue+'→'+f.title).join('; '),c.relatedOfficialQuestionIds.join(', '),c.relatedSceneIds.join(', '),c.status,c.reviewReason].map(cell).join('|')+'|\n';
+fs.writeFileSync('docs/MNEMONIC_IMPORT_REVIEW.md',out);fs.writeFileSync('docs/mnemonic-sources/import-stats.json',JSON.stringify(stats,null,2)+'\n');console.log(stats);
