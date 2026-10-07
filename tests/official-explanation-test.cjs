@@ -10,7 +10,7 @@ const otherAnswer=question=>[0,1,2,3,4].find(value=>!(question.acceptedAnswers||
 const answerDisplay=question=>question.answerLabel==='없음'?'모든 선택지':['①','②','③','④','⑤'][question.answer];
 
 const coverage=copy('globalThis.OFFICIAL_EXPLANATION_COVERAGE');
-assert.deepEqual(coverage,{total:1300,preexisting:122,restoredMappings:0,supplemented:1178,covered:1300,missing:0});
+assert.deepEqual(coverage,{total:1800,preexisting:0,restoredMappings:0,supplemented:1800,covered:1800,missing:0});
 const entries=copy('globalThis.OFFICIAL_EXAM_CATALOG');
 for(const entry of entries){
   const question=entryQuestion(entry.canonicalQuestionId);
@@ -56,4 +56,4 @@ run(`recordQuestion(state,${JSON.stringify(eraEntry.canonicalQuestionId)},${eraW
 assert(html.includes('wrong-answer-detail'));assert(html.includes('문제 · 정답 · 해설 보기'));assert(html.includes('내가 선택한 답'));assert(html.includes(eraQuestion.explanation));
 
 // TEST 9 is covered by the exhaustive canonical assertions above.
-console.log('PASS: all 1,300 official explanations covered; era/round correct+wrong feedback, exam spoiler gate+post-grade review, Story, wrong-note detail, and null safety.');
+console.log('PASS: all 1,800 official explanations covered; era/round correct+wrong feedback, exam spoiler gate+post-grade review, Story, wrong-note detail, and null safety.');

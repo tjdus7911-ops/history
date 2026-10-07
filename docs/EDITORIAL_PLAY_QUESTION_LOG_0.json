@@ -249,7 +249,7 @@
     "scene": "ch02_noble_night",
     "questionId": "ch03-pdf-73-advanced-11",
     "official": true,
-    "image": "assets/exams/ch03/73-심화-11.jpg"
+    "image": "assets/exams/catalog/73-advanced-11.webp"
   },
   {
     "chapter": "ch03",
@@ -284,7 +284,7 @@
     "scene": "ch02_exam_day",
     "questionId": "ch03-official-71-advanced-11",
     "official": true,
-    "image": "assets/exams/ch03/71-심화-11.jpg"
+    "image": "assets/exams/catalog/71-advanced-11.webp"
   },
   {
     "chapter": "ch03",
@@ -501,7 +501,7 @@
     "scene": "ch05_memory",
     "questionId": "ch05-official-77-basic-12",
     "official": true,
-    "image": "assets/exams/ch05/77-basic-12.webp"
+    "image": "assets/exams/catalog/77-basic-12.webp"
   },
   {
     "chapter": "ch06",
@@ -935,7 +935,7 @@
     "scene": "ch09_mangyi",
     "questionId": "ch09-official-71-advanced-14",
     "official": true,
-    "image": "assets/exams/v2/71-advanced-14.webp"
+    "image": "assets/exams/catalog/71-advanced-14.webp"
   },
   {
     "chapter": "ch09",
@@ -1040,7 +1040,7 @@
     "scene": "ch10_island",
     "questionId": "ch10-official-71-advanced-15",
     "official": true,
-    "image": "assets/exams/v2/71-advanced-15.webp"
+    "image": "assets/exams/catalog/71-advanced-15.webp"
   },
   {
     "chapter": "ch10",
@@ -1096,7 +1096,7 @@
     "scene": "ch10_celadon",
     "questionId": "ch10-official-71-advanced-16",
     "official": true,
-    "image": "assets/exams/v2/71-advanced-16.webp"
+    "image": "assets/exams/catalog/71-advanced-16.webp"
   },
   {
     "chapter": "ch10",

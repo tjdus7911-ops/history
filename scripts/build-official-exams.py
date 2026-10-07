@@ -32,24 +32,34 @@ EXAMS = [
     (59, 2022, "심화", "59회 한국사_문제지(심화).pdf", "제59회 심화 정답표(공개용).pdf"),
     (60, 2022, "심화", "60회 한국사_문제지(심화).pdf", "제60회 정답표(심화).pdf"),
     (61, 2022, "기본", "61회 한국사_문제지(기본).pdf", "제61회 한국사능력검정시험 정답표(기본).pdf"),
+    (61, 2022, "심화", "61회 한국사_문제지(심화).pdf", "제61회 한국사능력검정시험 정답표(심화).pdf"),
     (62, 2022, "심화", "62회 한국사능력검정시험 문제지(심화).pdf", "제62회 한국사능력검정시험(심화) 정답표.pdf"),
+    (63, 2023, "기본", "63회 한국사_문제지(기본).pdf", "63회 한국사능력검정시험 정답표(기본).pdf"),
     (63, 2023, "심화", "63회 한국사_문제지(심화).pdf", "제63회 한국사능력검정시험 심화 정답표(정정).pdf"),
+    (64, 2023, "기본", "64회 한국사_문제지(기본).pdf", "제64회 기본 정답표.pdf"),
     (64, 2023, "심화", "64회 한국사_문제지(심화).pdf", "제64회 심화 정답표.pdf"),
     (65, 2023, "심화", "제65회 한국사능력검정시험 심화 문제지.pdf", "제65회 한국사능력검정시험 심화 정답표.pdf"),
+    (66, 2023, "기본", "66회 한국사_문제지(기본).pdf", "66회 한국사_정답표(기본).pdf"),
     (66, 2023, "심화", "66회 한국사_문제지(심화).pdf", "66회 한국사_정답표(심화).pdf"),
     (67, 2023, "기본", "67회 한국사_문제지(기본).pdf", "67회 한국사_정답표(기본).pdf"),
+    (67, 2023, "심화", "67회 한국사_문제지(심화).pdf", "67회 한국사_정답표(심화).pdf"),
     (68, 2023, "심화", "68회 한국사_문제지(심화).pdf", "68회 한국사_정답표(심화).pdf"),
     (69, 2024, "기본", "69회 한국사 문제지(기본).pdf", "69회 한국사 정답표(기본).pdf"),
     (69, 2024, "심화", "69회 한국사_문제지(심화).pdf", "69회 한국사_정답표(심화).pdf"),
     (70, 2024, "심화", "70회 한국사_문제지(심화).pdf", "70회 한국사_정답지(심화).pdf"),
+    (71, 2024, "기본", "71회 한국사_문제지(기본).pdf", "71회 한국사_답지(기본).pdf"),
+    (71, 2024, "심화", "71회 한국사_문제지(심화).pdf", "제71회 심화 정답표.pdf"),
     (72, 2024, "심화", "제72회 심화 문제지.pdf", "제72회 심화 정답표.pdf"),
     (73, 2025, "기본", "73회 한국사_문제지(기본).pdf", "73회 한국사_답지(기본).pdf"),
+    (73, 2025, "심화", "73회 심화 문제지.pdf", "73회 심화 정답표.pdf"),
     (74, 2025, "심화", "74회 한국사_문제지(심화).pdf", "74회 심화 정답표.pdf"),
     (75, 2025, "기본", "75회 한국사_문제지(기본).pdf", "75회 한국사_답지(기본).pdf"),
     (75, 2025, "심화", "제75회 심화 문제지.pdf", "제75회 심화 정답표.pdf"),
     (76, 2025, "심화", "76회 한국사_문제지(심화).pdf", "76회 한국사_답지(심화)).pdf"),
+    (77, 2026, "기본", "77회 한국사_문제지(기본).pdf", "77회 한국사_답지(기본).pdf"),
     (77, 2026, "심화", "77회 한국사_문제지(심화).pdf", "77회 한국사_답지(심화).pdf"),
     (78, 2026, "심화", "78회 한국사_문제지(심화).pdf", "78회 한국사_답지(심화).pdf"),
+    (79, 2026, "기본", "79회 한국사_문제지(기본).pdf", "79회 한국사_답지(기본).pdf"),
     (79, 2026, "심화", "79회 한국사_문제지(심화).pdf", "79회 한국사_답지(심화).pdf"),
 ]
 
@@ -69,6 +79,18 @@ DEFERRED_FILES = [
         "reason": "이 대화에 제60회 기본 정답표가 명시적으로 첨부되지 않아 보류",
     }
 ]
+
+# These verified ranges share a source box printed before the first numbered
+# question. Every question gets that source: later questions are rendered as a
+# source/question composite so unrelated intervening questions are not shown.
+SHARED_STIMULUS_GROUPS = {
+    (57, "심화"): ((35, 36, 0.092348),),
+    (61, "심화"): ((29, 30, 0.093008),),
+    (62, "심화"): ((49, 50, 0.092348),),
+    (63, "심화"): ((47, 48, 0.093008),),
+    (66, "심화"): ((30, 31, 0.094327),),
+    (67, "심화"): ((47, 48, 0.093008),),
+}
 
 ANSWER_SYMBOLS = {"①": 0, "②": 1, "③": 2, "④": 3, "⑤": 4}
 ERA_LABELS = {
@@ -340,10 +362,18 @@ def text_question_headings(question_path: Path, pages: list[Image.Image]) -> lis
                     "bottom": round(word["bottom"] * scale_y),
                     "ink": 999,
                 })
-    by_number = {item["questionNumber"]: item for item in located}
-    if set(by_number) != set(range(1, 51)):
+    by_number: dict[int, list[dict]] = {}
+    for item in located:
+        by_number.setdefault(item["questionNumber"], []).append(item)
+    # A number such as "1." can also occur in a source quotation or choice.
+    # Text coordinates are safe only when every printed question number occurs
+    # exactly once and the resulting positions follow the paper's reading order.
+    if set(by_number) != set(range(1, 51)) or any(len(items) != 1 for items in by_number.values()):
         return []
-    return [by_number[number] for number in range(1, 51)]
+    ordered = [by_number[number][0] for number in range(1, 51)]
+    if any(location_key(ordered[index]) >= location_key(ordered[index + 1]) for index in range(49)):
+        return []
+    return ordered
 
 
 def location_key(item: dict) -> tuple:
@@ -412,6 +442,35 @@ def ocr_question_headings(pages: list[Image.Image], ocr_engine, visual_candidate
         ]
         needed = end - start + 1
         if len(possible) < needed:
+            # A faint printed number can evade the visual detector even when OCR
+            # identifies both neighbours. In the standard two-column paper,
+            # a single missing number between the last left-column question and
+            # the following right-column question must start that right column.
+            if (
+                needed == 1
+                and previous
+                and following
+                and previous["pageIndex"] == following["pageIndex"]
+                and previous["column"] == "left"
+                and following["column"] == "right"
+            ):
+                top_samples = [
+                    item["top"] for item in by_number.values()
+                    if item["column"] == "right" and item["top"] < 400
+                ]
+                inferred_top = round(sum(top_samples) / len(top_samples)) if top_samples else 170
+                by_number[start] = {
+                    "questionNumber": start,
+                    "pageIndex": following["pageIndex"],
+                    "page": following["page"],
+                    "column": "right",
+                    "top": inferred_top,
+                    "bottom": inferred_top + 24,
+                    "ink": 0,
+                    "inferred": True,
+                }
+                missing = sorted(set(range(1, 51)) - set(by_number))
+                continue
             neighbours = {number: (item["pageIndex"] + 1, item["column"], item["top"]) for number, item in sorted(by_number.items())}
             raise ValueError(f"OCR question-number verification missing {missing}; only {len(possible)} visual candidates; located={neighbours}")
         chosen = sorted(sorted(possible, key=lambda item: item.get("ink", 0), reverse=True)[:needed], key=location_key)
@@ -474,11 +533,42 @@ def build_exam(source_dir: Path, poppler_bin: Path, item: tuple, output_images: 
             else (int(width * 0.503), int(width * 0.945))
         )
         top = max(0, location["top"] - 10)
+        shared_group = next(
+            (
+                (start, end, top_ratio)
+                for start, end, top_ratio in SHARED_STIMULUS_GROUPS.get((round_no, level), ())
+                if start <= number <= end
+            ),
+            None,
+        )
+        first_shared_location = None
+        shared_source_top = None
+        if shared_group:
+            start, _, top_ratio = shared_group
+            first_shared_location = next(item for item in located if item["questionNumber"] == start)
+            if first_shared_location["pageIndex"] != location["pageIndex"]:
+                raise ValueError(f"shared source layout changed for {round_no} {level} {start}-{shared_group[1]}")
+            shared_source_top = max(0, int(height * top_ratio) - 10)
+            if number == start:
+                top = min(top, shared_source_top)
         limit = following["top"] - 12 if following else int(height * 0.925)
         bottom = trim_bottom(page, left, right, top, limit)
         relative_image = f"assets/exams/catalog/{round_no}-{slug}-{number:02d}.webp"
         if output_images:
             crop = page.crop((left, top, right, max(top + 80, bottom)))
+            if shared_group and number > shared_group[0]:
+                source_bottom = max(shared_source_top + 20, first_shared_location["top"] - 12)
+                source_left, source_right = (
+                    (int(width * 0.06), int(width * 0.497))
+                    if first_shared_location["column"] == "left"
+                    else (int(width * 0.503), int(width * 0.945))
+                )
+                source_crop = page.crop((source_left, shared_source_top, source_right, source_bottom))
+                combined_width = max(crop.width, source_crop.width)
+                combined = Image.new("RGB", (combined_width, source_crop.height + crop.height), "white")
+                combined.paste(source_crop, ((combined_width - source_crop.width) // 2, 0))
+                combined.paste(crop, ((combined_width - crop.width) // 2, source_crop.height))
+                crop = combined
             crop.save(DIST / relative_image, "WEBP", quality=76, method=6)
         answer = answers[number]
         era = source_era(number)
@@ -489,7 +579,7 @@ def build_exam(source_dir: Path, poppler_bin: Path, item: tuple, output_images: 
             "examLevel": level,
             "questionNumber": number,
             "answer": answer["answer"],
-            "answerLabel": answer["answerLabel"],
+            "answerLabel": "없음" if answer["answer"] is None else tuple(ANSWER_SYMBOLS)[answer["answer"]],
             "acceptedAnswers": answer["acceptedAnswers"],
             "points": answer["points"],
             "sourcePdf": question_name,
@@ -513,6 +603,10 @@ def build_exam(source_dir: Path, poppler_bin: Path, item: tuple, output_images: 
         "answerCount": len(answers),
         "allCorrectQuestions": [number for number, value in answers.items() if value["answer"] is None],
         "questionDetectionMethod": detection_method,
+        "sharedStimulusGroups": [
+            {"start": start, "end": end}
+            for start, end, _ in SHARED_STIMULUS_GROUPS.get((round_no, level), ())
+        ],
     }
     return records, inventory
 
@@ -524,6 +618,11 @@ def main() -> None:
     parser.add_argument("--ocr-runtime", type=Path)
     parser.add_argument("--only", help="Optional comma-separated round-level keys, e.g. 57-basic,70-advanced")
     parser.add_argument("--validate-only", action="store_true")
+    parser.add_argument(
+        "--merge-existing",
+        action="store_true",
+        help="Build only the selected attached editions and merge them into the existing canonical catalog",
+    )
     args = parser.parse_args()
 
     ocr_engine = None
@@ -554,19 +653,69 @@ def main() -> None:
         print(f"VALID {len(exams)} editions / {len(records)} questions", flush=True)
         return
 
+    imported_question_count = len(records)
+    replaced_question_count = 0
     if len(selected) != len(EXAMS):
-        raise ValueError("partial --only runs are validation-only")
+        if not args.merge_existing:
+            raise ValueError("partial --only runs must use --validate-only or --merge-existing")
+        catalog_path = DIST / "official-exam-catalog.json"
+        inventory_path = DIST / "official-exam-inventory.json"
+        if not catalog_path.exists() or not inventory_path.exists():
+            raise FileNotFoundError("--merge-existing requires the existing canonical catalog and inventory")
+        previous_records = json.loads(catalog_path.read_text(encoding="utf-8"))
+        previous_inventory = json.loads(inventory_path.read_text(encoding="utf-8"))
+        imported_keys = {
+            (item["examRound"], item["examLevel"], item["questionNumber"])
+            for item in records
+        }
+        replaced_question_count = sum(
+            (item["examRound"], item["examLevel"], item["questionNumber"]) in imported_keys
+            for item in previous_records
+        )
+        records = [
+            item for item in previous_records
+            if (item["examRound"], item["examLevel"], item["questionNumber"]) not in imported_keys
+        ] + records
+        selected_editions = {(item[0], item[2]) for item in selected}
+        exams = [
+            item for item in previous_inventory["exams"]
+            if (item["examRound"], item["examLevel"]) not in selected_editions
+        ] + exams
+
+    records.sort(key=lambda item: (item["examRound"], 0 if item["examLevel"] == "기본" else 1, item["questionNumber"]))
+    exams.sort(key=lambda item: (item["examRound"], 0 if item["examLevel"] == "기본" else 1))
+    canonical_keys = [(item["examRound"], item["examLevel"], item["questionNumber"]) for item in records]
+    if len(canonical_keys) != len(set(canonical_keys)):
+        raise ValueError("duplicate canonical exam keys after merge")
+
+    previous_inventory_path = DIST / "official-exam-inventory.json"
+    previous_inventory = (
+        json.loads(previous_inventory_path.read_text(encoding="utf-8"))
+        if previous_inventory_path.exists() else {}
+    )
+    last_import = {
+        "editionCount": len(selected),
+        "questionCount": imported_question_count,
+        "existingCanonicalMatchCount": replaced_question_count,
+        "duplicateCanonicalKeyCount": 0,
+    }
+    if previous_inventory.get("lastImport") and (
+        len(selected) == len(EXAMS)
+        or (args.merge_existing and replaced_question_count == imported_question_count)
+    ):
+        last_import = previous_inventory["lastImport"]
 
     inventory = {
         "schemaVersion": 1,
-        "attachedRelevantFileCount": len(EXAMS) * 2 + len(DUPLICATE_FILES) + len(DEFERRED_FILES),
-        "processedFileCount": len(EXAMS) * 2,
+        "attachedRelevantFileCount": len(exams) * 2 + len(DUPLICATE_FILES) + len(DEFERRED_FILES),
+        "processedFileCount": len(exams) * 2,
         "examEditionCount": len(exams),
         "advancedEditionCount": sum(item["examLevel"] == "심화" for item in exams),
         "basicEditionCount": sum(item["examLevel"] == "기본" for item in exams),
         "canonicalQuestionCount": len(records),
         "duplicateFiles": DUPLICATE_FILES,
         "deferredFiles": DEFERRED_FILES,
+        "lastImport": last_import,
         "exams": exams,
     }
     (DIST / "official-exam-inventory.json").write_text(
@@ -580,7 +729,12 @@ def main() -> None:
     js += json.dumps(records, ensure_ascii=False, separators=(",", ":"))
     js += ";\n"
     (DIST / "official-exam-catalog.js").write_text(js, encoding="utf-8")
-    print(f"WROTE {len(exams)} editions / {len(records)} questions / {len(list(IMAGE_ROOT.glob('*.webp')))} images", flush=True)
+    print(
+        f"WROTE {len(exams)} editions / {len(records)} questions / "
+        f"{len(list(IMAGE_ROOT.glob('*.webp')))} images; imported {imported_question_count}, "
+        f"matched {replaced_question_count}",
+        flush=True,
+    )
 
 
 if __name__ == "__main__":

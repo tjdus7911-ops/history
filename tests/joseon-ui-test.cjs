@@ -31,7 +31,7 @@ assert.equal(run("libraryStatus('joseon')"),'UNLOCKED');
 const joseonOfficialCount=run("OFFICIAL_EXAM_CATALOG.filter(entry=>entry.primaryEra==='joseon').length");
 assert(joseonOfficialCount>=260);
 assert.equal(run("libraryEntries('joseon').length"),joseonOfficialCount);
-assert.equal(run('EXAM_LIBRARY_ENTRIES.length'),1300);
+assert.equal(run('EXAM_LIBRARY_ENTRIES.length'),1800);
 
 const originalRun=run('JSON.stringify(state.run)');
 click({eraOpen:'joseon'});
@@ -84,4 +84,4 @@ assert.equal(run('meta().eraProgress.joseon.completed'),true);
 assert.equal(run('meta().eraProgress.joseon.progress'),100);
 assert.equal(run("libraryStatus('joseon')"),'UNLOCKED');
 
-console.log('PASS: Joseon chapter selection, independent save/resume, official wrong-note ID, era completion and always-unlocked 1,300-question library');
+console.log('PASS: Joseon chapter selection, independent save/resume, official wrong-note ID, era completion and always-unlocked 1,800-question library');

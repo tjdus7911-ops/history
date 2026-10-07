@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "attachedRelevantFileCount": 60,
-  "processedFileCount": 52,
-  "examEditionCount": 26,
-  "advancedEditionCount": 19,
-  "basicEditionCount": 7,
-  "canonicalQuestionCount": 1300,
+  "attachedRelevantFileCount": 80,
+  "processedFileCount": 72,
+  "examEditionCount": 36,
+  "advancedEditionCount": 23,
+  "basicEditionCount": 13,
+  "canonicalQuestionCount": 1800,
   "duplicateFiles": [
     "제57회_심화_정답표 (1).pdf",
     "제72회 심화 문제지 (1).pdf",
@@ -21,6 +21,12 @@
       "reason": "이 대화에 제60회 기본 정답표가 명시적으로 첨부되지 않아 보류"
     }
   ],
+  "lastImport": {
+    "editionCount": 10,
+    "questionCount": 500,
+    "existingCanonicalMatchCount": 0,
+    "duplicateCanonicalKeyCount": 0
+  },
   "exams": [
     {
       "examRound": 57,
@@ -48,7 +54,13 @@
       "pageCount": 12,
       "answerCount": 50,
       "allCorrectQuestions": [],
-      "questionDetectionMethod": "visual_ocr"
+      "questionDetectionMethod": "visual_ocr",
+      "sharedStimulusGroups": [
+        {
+          "start": 35,
+          "end": 36
+        }
+      ]
     },
     {
       "examRound": 58,
@@ -62,7 +74,7 @@
       "pageCount": 12,
       "answerCount": 50,
       "allCorrectQuestions": [],
-      "questionDetectionMethod": "pdf_text"
+      "questionDetectionMethod": "visual_ocr"
     },
     {
       "examRound": 58,
@@ -76,7 +88,7 @@
       "pageCount": 12,
       "answerCount": 50,
       "allCorrectQuestions": [],
-      "questionDetectionMethod": "pdf_text"
+      "questionDetectionMethod": "visual_ocr"
     },
     {
       "examRound": 59,
@@ -121,6 +133,26 @@
       "questionDetectionMethod": "visual_ocr"
     },
     {
+      "examRound": 61,
+      "examYear": 2022,
+      "examLevel": "심화",
+      "questionPdf": "61회 한국사_문제지(심화).pdf",
+      "answerPdf": "제61회 한국사능력검정시험 정답표(심화).pdf",
+      "questionPdfSha256": "80b4a83a1bd11208302d3f447cbb3025f6225d98953e98a57196dd29c4604f09",
+      "answerPdfSha256": "f8235a345606d3a775d924ca504449541ce34bd287c663c455a5371ec6341491",
+      "questionCount": 50,
+      "pageCount": 12,
+      "answerCount": 50,
+      "allCorrectQuestions": [],
+      "questionDetectionMethod": "visual_ocr",
+      "sharedStimulusGroups": [
+        {
+          "start": 29,
+          "end": 30
+        }
+      ]
+    },
+    {
       "examRound": 62,
       "examYear": 2022,
       "examLevel": "심화",
@@ -132,7 +164,27 @@
       "pageCount": 12,
       "answerCount": 50,
       "allCorrectQuestions": [],
-      "questionDetectionMethod": "pdf_text"
+      "questionDetectionMethod": "pdf_text",
+      "sharedStimulusGroups": [
+        {
+          "start": 49,
+          "end": 50
+        }
+      ]
+    },
+    {
+      "examRound": 63,
+      "examYear": 2023,
+      "examLevel": "기본",
+      "questionPdf": "63회 한국사_문제지(기본).pdf",
+      "answerPdf": "63회 한국사능력검정시험 정답표(기본).pdf",
+      "questionPdfSha256": "849b59a33440cdfd0a1648098fef15164fc0f8d570681e83274ab4fecbe69ad8",
+      "answerPdfSha256": "27441a5d1aab88dec2d59331aebd13e579600c6298601158bd9244d37d21f16d",
+      "questionCount": 50,
+      "pageCount": 12,
+      "answerCount": 50,
+      "allCorrectQuestions": [],
+      "questionDetectionMethod": "visual_ocr"
     },
     {
       "examRound": 63,
@@ -148,6 +200,26 @@
       "allCorrectQuestions": [
         42
       ],
+      "questionDetectionMethod": "visual_ocr",
+      "sharedStimulusGroups": [
+        {
+          "start": 47,
+          "end": 48
+        }
+      ]
+    },
+    {
+      "examRound": 64,
+      "examYear": 2023,
+      "examLevel": "기본",
+      "questionPdf": "64회 한국사_문제지(기본).pdf",
+      "answerPdf": "제64회 기본 정답표.pdf",
+      "questionPdfSha256": "8005db89f14801b7950a98b21264c0eaf67fb6824b1a4f1d9d513f19ae9415cc",
+      "answerPdfSha256": "5f9900b4dd232418fdde9be8d0bb7e96e0c31cc2c29f56966dec2e5bee794153",
+      "questionCount": 50,
+      "pageCount": 12,
+      "answerCount": 50,
+      "allCorrectQuestions": [],
       "questionDetectionMethod": "visual_ocr"
     },
     {
@@ -181,6 +253,20 @@
     {
       "examRound": 66,
       "examYear": 2023,
+      "examLevel": "기본",
+      "questionPdf": "66회 한국사_문제지(기본).pdf",
+      "answerPdf": "66회 한국사_정답표(기본).pdf",
+      "questionPdfSha256": "f2967d08be978858d992e320b17950f24bf99081ce4ee52c4096a6e0a8534273",
+      "answerPdfSha256": "7721b72feded01b258976a1cff49ae1906dae4e766b1d245c9c9fc4b191f5d81",
+      "questionCount": 50,
+      "pageCount": 12,
+      "answerCount": 50,
+      "allCorrectQuestions": [],
+      "questionDetectionMethod": "visual_ocr"
+    },
+    {
+      "examRound": 66,
+      "examYear": 2023,
       "examLevel": "심화",
       "questionPdf": "66회 한국사_문제지(심화).pdf",
       "answerPdf": "66회 한국사_정답표(심화).pdf",
@@ -190,7 +276,13 @@
       "pageCount": 12,
       "answerCount": 50,
       "allCorrectQuestions": [],
-      "questionDetectionMethod": "visual_ocr"
+      "questionDetectionMethod": "visual_ocr",
+      "sharedStimulusGroups": [
+        {
+          "start": 30,
+          "end": 31
+        }
+      ]
     },
     {
       "examRound": 67,
@@ -205,6 +297,26 @@
       "answerCount": 50,
       "allCorrectQuestions": [],
       "questionDetectionMethod": "visual_ocr"
+    },
+    {
+      "examRound": 67,
+      "examYear": 2023,
+      "examLevel": "심화",
+      "questionPdf": "67회 한국사_문제지(심화).pdf",
+      "answerPdf": "67회 한국사_정답표(심화).pdf",
+      "questionPdfSha256": "0b07c5ac8a53be69eb839afd48ac044170a3b77a037f4ba48bdb629f02df3e9e",
+      "answerPdfSha256": "f2dd107d03de8915f61a0d3dc75873661fb36e01fa77dedd1b87b81efe02d6b8",
+      "questionCount": 50,
+      "pageCount": 12,
+      "answerCount": 50,
+      "allCorrectQuestions": [],
+      "questionDetectionMethod": "visual_ocr",
+      "sharedStimulusGroups": [
+        {
+          "start": 47,
+          "end": 48
+        }
+      ]
     },
     {
       "examRound": 68,
@@ -260,7 +372,35 @@
       "pageCount": 12,
       "answerCount": 50,
       "allCorrectQuestions": [],
-      "questionDetectionMethod": "pdf_text"
+      "questionDetectionMethod": "visual_ocr"
+    },
+    {
+      "examRound": 71,
+      "examYear": 2024,
+      "examLevel": "기본",
+      "questionPdf": "71회 한국사_문제지(기본).pdf",
+      "answerPdf": "71회 한국사_답지(기본).pdf",
+      "questionPdfSha256": "a00d1114956abbcc936c3ea8d978696bca1cdf8658824fe25b9503b935c8d5dd",
+      "answerPdfSha256": "709f40a88e7a674ca3d2e911301bcd40cb99510f4887c7e7c2c443878232245a",
+      "questionCount": 50,
+      "pageCount": 12,
+      "answerCount": 50,
+      "allCorrectQuestions": [],
+      "questionDetectionMethod": "visual_ocr"
+    },
+    {
+      "examRound": 71,
+      "examYear": 2024,
+      "examLevel": "심화",
+      "questionPdf": "71회 한국사_문제지(심화).pdf",
+      "answerPdf": "제71회 심화 정답표.pdf",
+      "questionPdfSha256": "4faa9016aa092da3684782b3c46f7ba04165c954649334ad5ba9956f4399c4a6",
+      "answerPdfSha256": "d412bab448e17d15d0cfd71d6c98a524c109157362b854316d55b280ee6a2a4e",
+      "questionCount": 50,
+      "pageCount": 12,
+      "answerCount": 50,
+      "allCorrectQuestions": [],
+      "questionDetectionMethod": "visual_ocr"
     },
     {
       "examRound": 72,
@@ -274,7 +414,7 @@
       "pageCount": 12,
       "answerCount": 50,
       "allCorrectQuestions": [],
-      "questionDetectionMethod": "pdf_text"
+      "questionDetectionMethod": "visual_ocr"
     },
     {
       "examRound": 73,
@@ -284,6 +424,20 @@
       "answerPdf": "73회 한국사_답지(기본).pdf",
       "questionPdfSha256": "f7298700bf31c5a423de5de5d4fe433d68ff0a945c8b872097e9b6673f3f4e7d",
       "answerPdfSha256": "a70ecf88728e4423f6cb880f27f469caba38a3a61a8ce97082a4610aec40ec4f",
+      "questionCount": 50,
+      "pageCount": 12,
+      "answerCount": 50,
+      "allCorrectQuestions": [],
+      "questionDetectionMethod": "visual_ocr"
+    },
+    {
+      "examRound": 73,
+      "examYear": 2025,
+      "examLevel": "심화",
+      "questionPdf": "73회 심화 문제지.pdf",
+      "answerPdf": "73회 심화 정답표.pdf",
+      "questionPdfSha256": "d6ad706f1bd7ce3a0b18d7b7cdda9439d10b7b712121428b21af2c31268c4836",
+      "answerPdfSha256": "0dfeee4af303493e95a3a30c7f7cd890377f067789bdb7c00a9cc90af15c6347",
       "questionCount": 50,
       "pageCount": 12,
       "answerCount": 50,
@@ -330,7 +484,7 @@
       "pageCount": 12,
       "answerCount": 50,
       "allCorrectQuestions": [],
-      "questionDetectionMethod": "pdf_text"
+      "questionDetectionMethod": "visual_ocr"
     },
     {
       "examRound": 76,
@@ -340,6 +494,20 @@
       "answerPdf": "76회 한국사_답지(심화)).pdf",
       "questionPdfSha256": "b25c8617eb817711a54e69c09040298bf1b102f59fe29aebaad3558981e834f3",
       "answerPdfSha256": "9da8824061aa649e0c1246edc70bf86cb29273cbe24eabf11b636123d3c9e98b",
+      "questionCount": 50,
+      "pageCount": 12,
+      "answerCount": 50,
+      "allCorrectQuestions": [],
+      "questionDetectionMethod": "pdf_text"
+    },
+    {
+      "examRound": 77,
+      "examYear": 2026,
+      "examLevel": "기본",
+      "questionPdf": "77회 한국사_문제지(기본).pdf",
+      "answerPdf": "77회 한국사_답지(기본).pdf",
+      "questionPdfSha256": "6f1c581280de0369fd7a060cc8e9ef40648eaa630d7da3d5f838e88bfa755563",
+      "answerPdfSha256": "a5c299275098c3559bfb86075bad164ff6e57f3fab4bdbd59f8bddce6f7f9f75",
       "questionCount": 50,
       "pageCount": 12,
       "answerCount": 50,
@@ -377,6 +545,20 @@
     {
       "examRound": 79,
       "examYear": 2026,
+      "examLevel": "기본",
+      "questionPdf": "79회 한국사_문제지(기본).pdf",
+      "answerPdf": "79회 한국사_답지(기본).pdf",
+      "questionPdfSha256": "0513eb9538e7886d2ec32ae396f42cd3054b9de90beb6000149506c667537362",
+      "answerPdfSha256": "d157baeae04f8ed6a4414f1f038a49032d94cfe4f5070f90a6a1b9d5f94a7c21",
+      "questionCount": 50,
+      "pageCount": 12,
+      "answerCount": 50,
+      "allCorrectQuestions": [],
+      "questionDetectionMethod": "visual_ocr"
+    },
+    {
+      "examRound": 79,
+      "examYear": 2026,
       "examLevel": "심화",
       "questionPdf": "79회 한국사_문제지(심화).pdf",
       "answerPdf": "79회 한국사_답지(심화).pdf",
@@ -388,5 +570,18 @@
       "allCorrectQuestions": [],
       "questionDetectionMethod": "visual_ocr"
     }
-  ]
+  ],
+  "explanationQa": {
+    "rewrittenExistingCount": 1300,
+    "modifiedExistingCount": 1300,
+    "newExplanationCount": 500,
+    "genericExplanationRemovedCount": 1261,
+    "metadataMismatchFixedCount": 32,
+    "eraMetadataCorrectionCount": 67,
+    "knowledgeRuleCount": 1800,
+    "evidenceFallbackCount": 0,
+    "qaDeferredCount": 0,
+    "forbiddenGenericCount": 0,
+    "minimumSentenceCount": 3
+  }
 }

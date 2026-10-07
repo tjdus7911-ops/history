@@ -35,15 +35,15 @@ const OFFICIAL_EXAM_CATALOG=(globalThis.OFFICIAL_EXAM_SOURCE_RECORDS||[]).map(so
  const primaryEra=legacy?.primaryEra||source.primaryEra;
  const candidates=[canonical,...aliases.map(aliasId=>QUESTIONS.find(item=>item.questionId===aliasId)).filter(Boolean)];
  const canonicalStored=officialStoredExplanation(canonical),reusable=candidates.map(question=>({question,stored:officialStoredExplanation(question)})).find(item=>item.stored),generated=OFFICIAL_EXPLANATION_BY_SOURCE_ID.get(source.officialQuestionId);
- const resolved=canonicalStored?.value||reusable?.stored?.value||generated?.explanation||'';
+ const resolved=generated?.explanation||canonicalStored?.value||reusable?.stored?.value||'';
  officialExplanationStats.total++;
- if(canonicalStored)officialExplanationStats.preexisting++;
+ if(generated?.explanation)officialExplanationStats.supplemented++;
+ else if(canonicalStored)officialExplanationStats.preexisting++;
  else if(reusable?.stored){officialExplanationStats.restoredMappings++}
- else if(generated?.explanation){officialExplanationStats.supplemented++}
  if(resolved)officialExplanationStats.covered++;else officialExplanationStats.missing++;
  for(const aliasId of aliases){
   const question=QUESTIONS.find(item=>item.questionId===aliasId);if(!question)continue;
-  if(officialExplanationPlaceholder(question.explanation))question.explanation=resolved;
+  if(resolved)question.explanation=resolved;
   Object.assign(question,{officialQuestionId:canonicalQuestionId,examRound:source.examRound,examYear:source.examYear,examLevel:source.examLevel,questionNumber:source.questionNumber,answer:source.answer===null?0:source.answer,answerLabel:source.answerLabel,acceptedAnswers:source.acceptedAnswers?[...source.acceptedAnswers]:[source.answer],points:source.points,questionImage:source.questionImage,sourceQuestionImage:source.questionImage,sourceFile:source.sourcePdf,answerFile:source.answerPdf,sourcePdf:source.sourcePdf,answerPdf:source.answerPdf,sourcePage:source.sourcePage,primaryEra,concepts:[...(question.concepts||source.concepts||[])],isOfficial:true,sourceVerified:true,sourceStatus:'verified',sourceImageStatus:'verified',sourceImageReason:'',needsVerification:false,missingPdf:false,verificationNote:'첨부된 공식 문제지와 정답표 대조 완료'});
  }
  return {key,canonicalQuestionId,aliases,primaryEra,relatedEra:legacy?.relatedEra||[],needsVerification:false,verificationNote:'첨부된 공식 문제지와 정답표 대조 완료',libraryImage:source.questionImage,sourceRecord:source};
@@ -91,8 +91,11 @@ recordQuestion=function(currentState,questionId,userAnswer){
 };
 
 const officialProgress=entries=>{const attempted=entries.filter(entry=>(meta().questionRecords[entry.canonicalQuestionId]?.attempts||0)>0).length;return {attempted,total:entries.length,percent:entries.length?Math.round(attempted/entries.length*100):0}};
-const officialEntriesForEra=(era,level='all')=>OFFICIAL_EXAM_CATALOG.filter(entry=>entry.primaryEra===era&&(level==='all'||entry.sourceRecord.examLevel===level));
+const officialEntryOrder=(a,b)=>b.sourceRecord.examRound-a.sourceRecord.examRound||a.sourceRecord.questionNumber-b.sourceRecord.questionNumber||(a.sourceRecord.examLevel==='심화'?-1:1);
+const officialEntriesForEra=(era,level='all')=>OFFICIAL_EXAM_CATALOG.filter(entry=>entry.primaryEra===era&&(level==='all'||entry.sourceRecord.examLevel===level)).sort(officialEntryOrder);
 const officialEntriesForRound=(round,level='all')=>OFFICIAL_EXAM_CATALOG.filter(entry=>entry.sourceRecord.examRound===Number(round)&&(level==='all'||entry.sourceRecord.examLevel===level)).sort((a,b)=>a.sourceRecord.questionNumber-b.sourceRecord.questionNumber);
+globalThis.OFFICIAL_ENTRIES_FOR_ERA=officialEntriesForEra;
+globalThis.OFFICIAL_ENTRIES_FOR_ROUND=officialEntriesForRound;
 const officialRounds=()=>[...new Set(OFFICIAL_EXAM_CATALOG.map(entry=>entry.sourceRecord.examRound))].sort((a,b)=>b-a);
 const officialEditions=()=>{const groups=new Map();for(const entry of OFFICIAL_EXAM_CATALOG){const key=entry.sourceRecord.examRound+':'+entry.sourceRecord.examLevel;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(entry)}return [...groups.values()].sort((a,b)=>b[0].sourceRecord.examRound-a[0].sourceRecord.examRound||(a[0].sourceRecord.examLevel==='심화'?-1:1))};
 const examSourceLabel=entry=>`${entry.sourceRecord.examRound}회 ${entry.sourceRecord.examLevel} · ${entry.sourceRecord.questionNumber}번`;

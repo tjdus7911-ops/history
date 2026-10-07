@@ -7,13 +7,13 @@ run(scripts.map(name=>fs.readFileSync('dist/'+name,'utf8')).join('\n'));
 function click(dataset){run('inputLockedUntil=0');let stopped=false;const button={dataset,disabled:false};for(const item of (handlers.click||[]).slice().sort((a,b)=>Number(Boolean(b.capture))-Number(Boolean(a.capture)))){item.handler({target:{closest:()=>button},stopImmediatePropagation(){stopped=true}});if(stopped)break}}
 
 const inventory=JSON.parse(fs.readFileSync('dist/official-exam-inventory.json','utf8'));
-assert.equal(inventory.examEditionCount,26);assert.equal(inventory.advancedEditionCount,19);assert.equal(inventory.basicEditionCount,7);
-assert.equal(inventory.canonicalQuestionCount,1300);assert.equal(inventory.processedFileCount,52);assert.equal(inventory.duplicateFiles.length,7);assert.equal(inventory.deferredFiles.length,1);
-assert.equal(new Set(inventory.exams.map(exam=>exam.examRound+':'+exam.examLevel)).size,26);
+assert.equal(inventory.examEditionCount,36);assert.equal(inventory.advancedEditionCount,23);assert.equal(inventory.basicEditionCount,13);
+assert.equal(inventory.canonicalQuestionCount,1800);assert.equal(inventory.processedFileCount,72);assert.equal(inventory.duplicateFiles.length,7);assert.equal(inventory.deferredFiles.length,1);
+assert.equal(new Set(inventory.exams.map(exam=>exam.examRound+':'+exam.examLevel)).size,36);
 for(const exam of inventory.exams){assert.equal(exam.questionCount,50);assert.equal(exam.answerCount,50);assert(/^[a-f0-9]{64}$/.test(exam.questionPdfSha256));assert(/^[a-f0-9]{64}$/.test(exam.answerPdfSha256))}
 
 const entries=copy('globalThis.OFFICIAL_EXAM_CATALOG'),sources=copy('globalThis.OFFICIAL_EXAM_SOURCE_RECORDS');
-assert.equal(entries.length,1300);assert.equal(sources.length,1300);assert.equal(new Set(entries.map(entry=>entry.key)).size,1300);assert.equal(new Set(entries.map(entry=>entry.canonicalQuestionId)).size,1300);
+assert.equal(entries.length,1800);assert.equal(sources.length,1800);assert.equal(new Set(entries.map(entry=>entry.key)).size,1800);assert.equal(new Set(entries.map(entry=>entry.canonicalQuestionId)).size,1800);
 assert.equal(copy('globalThis.OFFICIAL_ERA_TAXONOMY').length,6);for(const era of ['ancient','goryeo','joseon','empire','occupation','republic'])assert.equal(run(`libraryStatus('${era}')`),'UNLOCKED');
 for(const entry of entries){const question=copy(`QUESTIONS.find(question=>question.questionId===${JSON.stringify(entry.canonicalQuestionId)})`);assert(question);assert.equal(question.officialQuestionId,entry.canonicalQuestionId);assert.equal(question.sourceStatus,'verified');assert.equal(question.needsVerification,false);assert(fs.existsSync(path.join('dist',entry.libraryImage)),entry.libraryImage)}
 const fixed=copy("QUESTIONS.find(question=>question.examRound===70&&question.examLevel==='심화'&&question.questionNumber===13)");assert.equal(fixed.answer,0);assert.equal(fixed.answerLabel,'①');assert.equal(fixed.needsVerification,false);assert(!/missing_pdf/i.test(JSON.stringify(fixed)));
@@ -22,7 +22,7 @@ const recovery=copy('globalThis.OFFICIAL_EXAM_RECOVERY_REPORT');assert.equal(rec
 
 assert.equal((html.match(/class="nav"/g)||[]).length,1);for(const nav of ['home','exam-library','association','study','records'])assert(html.includes(`data-nav="${nav}"`));
 click({nav:'exam-library'});assert.equal((html.match(/class="official-card"/g)||[]).length,6);assert(!html.includes('LOCK'));assert(html.includes('등록이 완료된 공식 기출은 모두 바로'));
-click({officialTab:'round'});assert.equal((html.match(/class="official-card round"/g)||[]).length,26);
+click({officialTab:'round'});assert.equal((html.match(/class="official-card round"/g)||[]).length,36);
 click({officialRound:'70',officialEditionLevel:'심화'});assert(html.includes('제70회 · 심화'));assert(html.includes('<b>50</b>'));
 const storySnapshot=run('JSON.stringify({run:state.run,mainRun:state.mainRun})');
 click({officialStart:'exam'});assert(html.includes('시험 모드'));
@@ -41,4 +41,4 @@ click({associationOpen:memory.id});assert.equal(run(`meta().associationMemorySta
 click({nav:'records'});assert(html.includes('시대별 기출 기록'));assert(html.includes('누적 풀이'));assert(run('Object.keys(meta().questionRecords).length')>=50);
 click({nav:'study'});assert(html.includes('오답노트'));
 assert.equal(run('globalThis.EXAM_MEMORY_UI_READY'),true);
-console.log('PASS: 1,300 canonical official questions, 26 editions, unlocked era/round UI, real images, official grading, canonical records, 5-nav, association recall and shared records.');
+console.log('PASS: 1,800 canonical official questions, 36 editions, unlocked era/round UI, real images, official grading, canonical records, 5-nav, association recall and shared records.');
