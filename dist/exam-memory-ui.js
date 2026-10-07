@@ -173,6 +173,12 @@ const ASSOCIATION_MEMORIES=[
 ];
 for(const memory of ASSOCIATION_MEMORIES)memory.sequence=memory.steps.map(step=>step.recallTitle||step.title);
 globalThis.ASSOCIATION_MEMORIES=ASSOCIATION_MEMORIES;
+/* Import reviewed mnemonic cards without replacing legacy cards or their saved IDs. */
+for(const card of (globalThis.MNEMONIC_IMPORT_CARDS||[])){
+ if(ASSOCIATION_MEMORIES.some(existing=>existing.id===card.id))continue;
+ const steps=card.facts.map(f=>({title:f.title,cue:f.cue,shortExplanation:f.shortExplanation}));
+ ASSOCIATION_MEMORIES.push({id:card.id,status:'published',era:card.era,type:card.topicTags.join(' · '),title:card.title,description:`${card.period} · ${card.mnemonic}`,steps,sequence:steps.map(step=>step.title),searchTerms:card.searchTerms||[card.title,...card.topicTags]});
+}
 const ASSOCIATION_MEMORY_CANDIDATES=[
  {id:'three-kingdom-kings',status:'candidate',topic:'삼국 왕 계보'},{id:'goryeo-kings',status:'candidate',topic:'고려 왕 계보'},{id:'land-systems',status:'candidate',topic:'전시과·과전법'},
  {id:'joseon-foreign-wars',status:'candidate',topic:'조선 왜란·호란 순서'},{id:'yesong-hwanguk',status:'candidate',topic:'예송과 환국'},{id:'tax-systems',status:'candidate',topic:'조선 수취 제도'},
@@ -186,7 +192,9 @@ const associationStatus=id=>meta().associationMemoryStatus?.[id]||'NEW';
 const setAssociationStatus=(id,status)=>{meta().associationMemoryStatus||(meta().associationMemoryStatus={});meta().associationMemoryStatus[id]=status};
 function associationRelated(memory){
  const normalized=value=>String(value||'').replace(/\s+/g,'');
- return OFFICIAL_EXAM_CATALOG.map(entry=>({entry,question:officialQuestion(entry.canonicalQuestionId)})).filter(({question})=>{const hay=normalized([question.question,question.sourceQuestionText,question.historicalEvent,...(question.examKeywords||[]),...(question.concepts||[])].join(' '));return memory.searchTerms.some(term=>hay.includes(normalized(term)))}).slice(0,12).map(item=>item.entry.canonicalQuestionId);
+ const matches=OFFICIAL_EXAM_CATALOG.map(entry=>({entry,question:officialQuestion(entry.canonicalQuestionId)})).filter(({question})=>{const hay=normalized([question.question,question.sourceQuestionText,question.historicalEvent,...(question.examKeywords||[]),...(question.concepts||[])].join(' '));return memory.searchTerms.some(term=>hay.includes(normalized(term)))});
+ const fallback=OFFICIAL_EXAM_CATALOG.filter(entry=>entry.primaryEra===memory.era).map(entry=>({entry}));
+ return (matches.length?matches:fallback).slice(0,12).map(item=>item.entry.canonicalQuestionId);
 }
 for(const memory of ASSOCIATION_MEMORIES)memory.relatedOfficialQuestionIds=associationRelated(memory);
 const memoryForQuestion=question=>ASSOCIATION_MEMORIES.filter(memory=>memory.relatedOfficialQuestionIds.includes(question?.officialQuestionId||question?.questionId));
@@ -233,7 +241,7 @@ function officialRecordsPage(){
 const shellBeforeExamMemory=shell;
 shell=function(content){
  const current=screen==='association'?'association':screen.startsWith('exam-')?'exam-library':['era','game','quiz','complete','teaser','history'].includes(screen)?'home':screen;
- return `<div class="shell editorial-shell five-nav"><aside class="sidebar"><div class="brand">눈떠보니 한국사<small>역사를 살고, 기출로 기억하다</small></div><nav class="nav" aria-label="주 메뉴">${[['home','홈','home'],['exam-library','기출문제','book'],['association','연상기억법','target'],['study','오답노트','note'],['records','내 기록','records']].map(([id,label,image])=>`<button data-nav="${id}" ${current===id?'aria-current="page"':''} class="${current===id?'active':''}">${editorialIcon(image)}<span>${label}</span></button>`).join('')}</nav></aside><main class="main ed-screen ed-${screen}">${content}</main></div>${modal?modalHTML():''}`;
+ return `<div class="shell editorial-shell five-nav"><aside class="sidebar"><div class="brand">눈떠보니 한국사<small>역사를 살고, 기출로 기억하다</small></div><nav class="nav" aria-label="주 메뉴">${[['home','홈','home'],['exam-library','기출문제','book'],['association','암기법','target'],['study','오답노트','note'],['records','내 기록','records']].map(([id,label,image])=>`<button data-nav="${id}" ${current===id?'aria-current="page"':''} class="${current===id?'active':''}">${editorialIcon(image)}<span>${label}</span></button>`).join('')}</nav></aside><main class="main ed-screen ed-${screen}">${content}</main></div>${modal?modalHTML():''}`;
 };
 const renderContentBeforeExamMemory=renderContent;
 renderContent=function(){if(screen==='exam-library')return officialExamPage();if(screen==='association')return associationPage();if(screen==='records')return officialRecordsPage();return renderContentBeforeExamMemory()};

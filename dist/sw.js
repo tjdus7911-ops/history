@@ -17,7 +17,7 @@ const APP_SHELL=[
   '/v2-exam-restoration.js', '/v2-exam-additions.js', '/v2-art.js','/v2-backgrounds.js', '/renewal.css',
   '/editorial.css', '/exam-library.css', '/exam-memory.css', '/exam-memory-results.css', '/exam-memory-nav.css',
   '/editorial-ui.js', '/era-visuals.js', '/joseon-data.js', '/official-exam-catalog.js', '/official-exam-explanations.js', '/v2-learning.js', '/v2-app.js',
-  '/joseon-ui.js', '/exam-memory-ui.js',
+  '/joseon-ui.js', '/mnemonic-data.js', '/exam-memory-ui.js',
   '/app.js',
   '/pwa.js',
   '/manifest.webmanifest',

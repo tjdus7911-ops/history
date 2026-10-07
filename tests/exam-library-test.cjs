@@ -33,7 +33,7 @@ for(const entry of round70)assert.equal(run(`meta().questionRecords[${JSON.strin
 
 const legacyEntry=entries.find(entry=>entry.aliases.length>1);if(legacyEntry){const alias=legacyEntry.aliases.find(id=>id!==legacyEntry.canonicalQuestionId);if(alias){run(`recordQuestion(state,${JSON.stringify(alias)},QUESTIONS.find(question=>question.questionId===${JSON.stringify(alias)}).acceptedAnswers[0])`);assert.equal(run(`meta().questionRecords[${JSON.stringify(legacyEntry.canonicalQuestionId)}].attempts`),1);assert.equal(run(`meta().questionRecords[${JSON.stringify(alias)}]`),undefined)}}
 
-click({nav:'association'});assert.equal((html.match(/data-association-open=/g)||[]).length,4);assert.equal(copy('globalThis.ASSOCIATION_MEMORY_CANDIDATES').length,15);assert(!html.includes('candidate')&&!html.includes('후보'));assert(html.includes('공고신일')&&html.includes('무갑기을')&&html.includes('병제병오신척')&&html.includes('조선 왕 순서'));
+click({nav:'association'});assert.equal((html.match(/data-association-open=/g)||[]).length,20);assert.equal(copy('globalThis.ASSOCIATION_MEMORY_CANDIDATES').length,15);assert(!html.includes('candidate')&&!html.includes('후보'));assert(html.includes('공고신일')&&html.includes('무갑기을')&&html.includes('병제병오신척')&&html.includes('조선 왕 순서')&&html.includes('광종의 왕권 강화'));
 const memories=copy('globalThis.ASSOCIATION_MEMORIES'),genericMemory=/중요한 사건|핵심 개념을 기억|시험에 자주 출제|시대를 판단/;
 for(const item of memories){
  assert(item.relatedOfficialQuestionIds.length>0,item.id+' needs canonical official links');
