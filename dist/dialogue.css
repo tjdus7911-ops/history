@@ -10,9 +10,9 @@
 .conversation-game .scene-title small{font-size:9px;letter-spacing:.2em;color:#f0e4ccad}
 .conversation-game .scene-title h2{max-width:650px;margin-top:5px;font:700 22px/1.35 'Gowun Batang',serif;color:#fffaf0}
 .character-stage{position:absolute!important;z-index:2!important;inset:92px 0 128px;overflow:hidden;pointer-events:none}
-.stage-character{position:absolute;bottom:-3%;width:auto;height:min(68vh,610px);max-width:67%;object-fit:contain;object-position:bottom;opacity:.78;z-index:var(--character-z,2);transform-origin:bottom center;transform:translateY(var(--character-anchor-y,0%)) scale(var(--character-scale,1));transition:filter .24s ease,opacity .24s ease,transform .24s ease;filter:drop-shadow(0 12px 20px #02080d66) brightness(.62) saturate(.78)}
-.stage-character.active{opacity:1;filter:drop-shadow(0 16px 24px #02080d80) brightness(1.02) saturate(1);transform:translateY(var(--character-anchor-y,0%)) scale(var(--character-scale-active,var(--character-scale,1)))}
-.stage-character.listening{transform:translateY(var(--character-anchor-y,0%)) scale(var(--character-scale-listening,var(--character-scale,1)))}
+.stage-character{position:absolute;bottom:-3%;width:auto;height:min(68vh,610px);max-width:67%;object-fit:contain;object-position:bottom;opacity:.78;z-index:var(--character-z,2);transform-origin:bottom center;transform:translate(var(--character-anchor-x,0%),var(--character-anchor-y,0%)) scale(var(--character-scale,1));transition:filter .24s ease,opacity .24s ease,transform .24s ease;filter:drop-shadow(0 12px 20px #02080d66) brightness(.62) saturate(.78)}
+.stage-character.active{opacity:1;filter:drop-shadow(0 16px 24px #02080d80) brightness(1.02) saturate(1);transform:translate(var(--character-anchor-x,0%),var(--character-anchor-y,0%)) scale(var(--character-scale-active,var(--character-scale,1)))}
+.stage-character.listening{transform:translate(var(--character-anchor-x,0%),var(--character-anchor-y,0%)) scale(var(--character-scale-listening,var(--character-scale,1)))}
 .stage-character[data-character-framing=upper-body]{bottom:0;transform-origin:top center;object-position:center top;will-change:transform}
 .stage-left{left:-7%}.stage-right{right:-7%}
 .conversation-panel{position:relative;z-index:4;width:100%;max-width:760px;margin:auto auto 0;color:var(--ink)}
