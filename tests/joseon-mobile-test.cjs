@@ -71,7 +71,7 @@ async function main(){
     const screenKey=`${now.screen}:${now.story}`;
     if(!seen.has(screenKey)){seen.add(screenKey);await fit(screenKey)}
     if(now.screen==='game'){
-      if(now.story==='joseon_ch00_s1'&&!seen.has('shot-opening')){seen.add('shot-opening');await page.screenshot({path:path.join(shots,'ch00-opening-390.png'),fullPage:true})}
+      if(now.story==='joseon_ch00_s1'&&!seen.has('shot-opening')){seen.add('shot-opening');const opening=page.locator('.conversation-game');assert.equal(await opening.getAttribute('data-illustration'),'joseon-modern-gyeongbokgung');assert((await opening.evaluate(element=>getComputedStyle(element).backgroundImage)).includes('modern-gyeongbokgung-rain.webp'));await page.screenshot({path:path.join(shots,'ch00-opening-390.png'),fullPage:true})}
       if(now.story==='joseon_ch20_s1'&&!seen.has('shot-invasion')){seen.add('shot-invasion');await page.screenshot({path:path.join(shots,'ch20-invasion-390.png'),fullPage:true})}
       if(now.cursor<now.length){await tap('[data-action="advance-dialogue"]');continue}
       if(now.pending){await tap('[data-action="result-next"]');continue}

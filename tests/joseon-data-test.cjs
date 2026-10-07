@@ -4,7 +4,7 @@ const html=fs.readFileSync('dist/index.html','utf8');
 const scripts=[...html.matchAll(/<script src="([^"]+)"/g)].map(match=>match[1]);
 const dataScripts=scripts.slice(0,scripts.indexOf('v2-learning.js'));
 const context=vm.createContext({console});
-vm.runInContext(dataScripts.map(file=>fs.readFileSync(path.join('dist',file),'utf8')).join('\n')+';this.snapshot={ASSETS,PORTRAITS,CHARACTERS,STORIES,QUESTIONS,QUESTION_SETS,CHAPTERS,JOSEON_BLUEPRINTS,JOSEON_OFFICIAL_QUESTION_IDS,JOSEON_QUESTION_SCOPE,ERA_PROTAGONISTS,CHARACTER_RENDER_PROFILES,JOSEON_CHARACTER_FRAMING,JOSEON_CHARACTER_RENDER_PROFILES};',context);
+vm.runInContext(dataScripts.map(file=>fs.readFileSync(path.join('dist',file),'utf8')).join('\n')+';this.snapshot={ASSETS,PORTRAITS,CHARACTERS,STORIES,QUESTIONS,QUESTION_SETS,CHAPTERS,JOSEON_BLUEPRINTS,JOSEON_EXPERIENCE_DETAILS,JOSEON_OFFICIAL_STORY_MAP,JOSEON_OFFICIAL_QUESTION_IDS,JOSEON_QUESTION_SCOPE,ERA_PROTAGONISTS,CHARACTER_RENDER_PROFILES,JOSEON_CHARACTER_FRAMING,JOSEON_CHARACTER_RENDER_PROFILES};',context);
 const data=JSON.parse(vm.runInContext('JSON.stringify(snapshot)',context));
 
 const chapters=Object.values(data.CHAPTERS).filter(chapter=>chapter.eraId==='joseon').sort((a,b)=>Number(a.number)-Number(b.number));
@@ -29,7 +29,10 @@ assert.equal(chapter00.questionCount,0);
 assert.equal(questions.filter(question=>question.chapterId===chapter00.chapterId).length,0);
 assert(!scenes.filter(story=>story.chapterId===chapter00.chapterId).some(story=>story.questionSetId));
 const prologueText=scenes.filter(story=>story.chapterId===chapter00.chapterId).flatMap(story=>story.dialogues||[]).map(line=>line.dialogue).join(' ');
-for(const phrase of ['경복궁','비가','번개','태조','1390년대','조선'])assert(prologueText.includes(phrase),`CH.00 missing ${phrase}`);
+for(const phrase of ['경복궁','비가','번개','휴대전화','안테나','촬영장','새 도성','태조','1390년대','조선'])assert(prologueText.includes(phrase),`CH.00 missing ${phrase}`);
+assert(!prologueText.includes('고려에서 왔'),`CH.00 must not explain the time slip through a Goryeo connection`);
+assert.equal(data.ASSETS['joseon-modern-gyeongbokgung'].src,'assets/joseon/backgrounds/modern-gyeongbokgung-rain.webp');
+assert(fs.existsSync(path.join('dist',data.ASSETS['joseon-modern-gyeongbokgung'].src)));
 
 for(const chapter of chapters){
   const ownScenes=scenes.filter(story=>story.chapterId===chapter.chapterId);
@@ -47,6 +50,7 @@ for(const chapter of chapters){
       assert.deepEqual([...set.officialQuestionIds,...set.practiceQuestionIds],story.linkedQuestionIds);
     }
   }
+  if(chapter.number!=='00')for(const story of ownScenes.filter(story=>!story.completeChapter))assert(story.dialogues.length>=6,`${story.sceneId} experiential dialogue density`);
 }
 
 const expectedByRound={73:12,74:8,75:8,76:10,77:9,78:9,79:9};
@@ -70,7 +74,13 @@ for(const question of official){
   assert(story&&story.chapterId===question.chapterId,`${question.questionId} related scene`);
   assert.equal(question.relatedIllustrationId,story.illustrationId);
   assert(story.linkedOfficialQuestionIds.includes(question.questionId));
+  assert(question.storyConnection?.includes(story.title),`${question.questionId} story connection`);
+  assert(!/실제 한능검 자료와 선택지로 구분|다시 확인합니다|핵심 개념/.test(question.explanation),`${question.questionId} generic explanation`);
+  assert(question.explanation.includes(['①','②','③','④','⑤'][question.answer]),`${question.questionId} answer label`);
 }
+assert.equal(Object.keys(data.JOSEON_OFFICIAL_STORY_MAP).length,65);
+assert(Object.keys(data.JOSEON_EXPERIENCE_DETAILS).length===22);
+assert(new Set(official.map(question=>question.questionType)).size>=4,'official question format variety');
 for(const question of practice){
   assert.equal(question.isOfficial,false);
   assert.equal(question.sourceType,'original_advanced_practice');
@@ -97,7 +107,12 @@ for(const id of joseonNpcIds)assert.equal(data.CHARACTERS[id].position,'left',`$
 assert.equal(data.CHARACTERS.joseon_player.position,'right');
 assert.equal(data.CHARACTER_RENDER_PROFILES.characters.player.scale??1,1,'Goryeo player scale preserved');
 assert.equal(data.CHARACTER_RENDER_PROFILES.characters.doyun.scale??1,1,'Goryeo Doyun scale preserved');
-assert.equal(Object.keys(data.ASSETS).filter(id=>id.startsWith('joseon-bg-')).length,16);
+assert.equal(Object.keys(data.ASSETS).filter(id=>id.startsWith('joseon-bg-')).length,22);
+for(const name of ['hunminjeongeum-workshop','hansando-sea','jinju-uprising','gyeongbokgung-reconstruction','jeongjoksanseong','gwangseongbo'])assert(fs.existsSync(path.join('dist',data.ASSETS[`joseon-bg-${name}`].src)),`historical background ${name}`);
 assert(fs.existsSync('docs/JOSEON_OFFICIAL_QUESTION_MAPPING.md'));
+assert(fs.existsSync('docs/JOSEON_STORY_LEARNING_MAPPING.md'));
+const minjunLateScenes=scenes.filter(story=>Number(story.chapterId.slice(-2))>3&&story.dialogues?.some(line=>line.characterId==='minjun_j'||line.characterId==='minjun_elder_j'));
+assert.equal(minjunLateScenes.length,0,'Minjun must age and leave instead of surviving across centuries');
+assert(scenes.some(story=>story.dialogues?.some(line=>/민준의 (증손|후손)/.test(line.characterName||''))),'Minjun descendants must carry time forward');
 
 console.log('PASS: Joseon CH.00–22 data, 65 official images, 6 labeled practice questions, scene mapping, assets, heroine, NPCs and fixed ending');
