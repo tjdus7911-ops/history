@@ -36,9 +36,25 @@ const npcFiles = [
 function assertWebp(file) {
   assert(fs.existsSync(file), `missing character asset: ${file}`);
   const buffer = fs.readFileSync(file);
-  assert(buffer.length > 20_000, `character asset is unexpectedly small: ${file}`);
+  assert(buffer.length > 250_000, `high-DPI character asset is unexpectedly small: ${file}`);
   assert.equal(buffer.subarray(0, 4).toString(), 'RIFF', `${file} is not a RIFF WebP`);
   assert.equal(buffer.subarray(8, 12).toString(), 'WEBP', `${file} is not WebP`);
+  let dimensions = null;
+  for (let offset = 12; offset + 8 <= buffer.length;) {
+    const chunk = buffer.subarray(offset, offset + 4).toString();
+    const size = buffer.readUInt32LE(offset + 4);
+    if (chunk === 'VP8X') {
+      dimensions = {
+        width: buffer.readUIntLE(offset + 12, 3) + 1,
+        height: buffer.readUIntLE(offset + 15, 3) + 1,
+        hasAlpha: Boolean(buffer[offset + 8] & 0x10)
+      };
+      break;
+    }
+    offset += 8 + size + (size % 2);
+  }
+  assert.deepEqual(dimensions, { width: 1280, height: 1920, hasAlpha: true }, `${file} must keep a transparent 1280x1920 high-DPI canvas`);
+  assert(buffer.length * 8 / (dimensions.width * dimensions.height) >= 0.8, `${file} WebP bitrate is too low for character line art`);
   return crypto.createHash('sha256').update(buffer).digest('hex');
 }
 
