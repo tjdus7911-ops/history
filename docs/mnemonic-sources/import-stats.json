@@ -1,5 +1,7 @@
 {
   "explicitInput": 118,
+  "registeredSourceRecords": 118,
+  "importedRecords": 118,
   "additionalSourceRecords": 0,
   "total": 118,
   "statuses": {
@@ -7,9 +9,19 @@
     "VERIFIED": 10,
     "CANDIDATE": 18
   },
-  "productionPublished": 10,
-  "excluded": 108,
-  "duplicate": 0,
+  "productionPublished": 49,
+  "publishedBySourceStatus": {
+    "VERIFIED": 10,
+    "CANDIDATE": 15,
+    "REVIEW_REQUIRED": 24
+  },
+  "excluded": 69,
+  "duplicateRemoved": 0,
+  "inventoryMissing": 0,
+  "uiVisibleCanonical": 49,
+  "uiVisibleLegacy": 2,
+  "uiVisibleTotal": 51,
+  "uiMissingPublished": 0,
   "facts": 810,
   "mnemonicTopicsLinked": 109,
   "officialLinks": 744,
@@ -23,5 +35,13 @@
     "parentheses": true,
     "numbers": true,
     "english": true
+  },
+  "listExposureAudit": {
+    "slice10": false,
+    "slice20": true,
+    "limit10": false,
+    "limit20": false,
+    "publicationGate": true,
+    "reviewStatusGate": false
   }
 }

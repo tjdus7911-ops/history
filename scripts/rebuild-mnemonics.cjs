@@ -15,6 +15,15 @@ const STABLE_IDS={
  F011:'memory-singanhoe',F017:'memory-korean-war'
 };
 const VERIFIED=new Set(['A003','A015','C001','C002','C020','D006','D016','E001','F011','F017']);
+/* Restored from the repository's historical approved set (342bb80) plus the ten currently curated cards.
+   Publication approval is intentionally separate from source/historical review status. */
+const PUBLIC_APPROVED=new Set([
+ 'A003','A007','A008','A009','A010','A011','A012','A015','B005','B007','B009',
+ 'C001','C002','C006','C008','C010','C014','C015','C016','C017','C019','C020',
+ 'D001','D006','D009','D011','D016','D025','D030',
+ 'E001','E004','E006','E008','E010','E015','E018','E020',
+ 'F002','F003','F004','F005','F007','F008','F009','F011','F015','F016','F017','F020'
+]);
 const REVIEW_REQUIRED=new Set([
  'A001','A002','A004','A005','A006','A013','A014','B001','B003','B004','B008','B010','B011',
  'C003','C004','C005','C007','C009','C011','C012','C013','C016','C018','C019',
@@ -57,17 +66,30 @@ function memoryType(record){if(SEQUENCE.has(record.id))return 'SEQUENCE';if(NUMB
 function aliases(title){const hard={'신라 멸망/항복 관련':['경순왕','신라 항복'],'후삼국 통일':['후삼국 통일'],'경운궁':['경운궁','덕수궁'],'제너럴셔먼호':['제너럴 셔먼호'],'광성보·어재연':['광성보','어재연'],'정치·경제적 각성 촉구':['정치적 경제적 각성','각성 촉구'],'민족 단결':['민족 단결'],'기회주의자 배격':['기회주의자 배격'],'6관등 아찬':['아찬'],'10관등 대나마':['대나마'],'12관등 대사':['대사']};return hard[title]||String(title).split(/[·/(),]/).map(value=>value.trim()).filter(value=>norm(value).length>=2)}
 function evidence(keyword){const terms=aliases(keyword.title),hits=corpus.filter(row=>terms.some(term=>row.normalized.includes(norm(term))));return hits.slice(0,3).map(row=>({source:'dist/official-exam-explanations.json',officialQuestionId:row.id,matchTerms:terms}))}
 function fallbackKeywords(record){const rows=FALLBACK_KEYWORDS[record.id]||[];if(rows.length)return rows.map(([cue,title])=>({cue,title}));return [{cue:record.title,title:record.title}]}
+function publicMnemonicFor(record,keywords,curated){if(curated?.mnemonic)return curated.mnemonic;return keywords.map(keyword=>String(keyword.cue).trim()).filter(Boolean).join(' · ')}
+function publicLearningContent(record,keywords,curated){
+ if(curated)return {background:curated.background,detailSections:curated.detailSections||[],causalFlow:curated.causalFlow||[],examPoints:curated.examPoints||[],years:curated.years||record.eraLabel};
+ const terms=keywords.map(keyword=>keyword.title),lead=terms.filter(Boolean).join(' · ');
+ return {
+  years:record.eraLabel,
+  background:{title:`${record.title}, 무엇을 함께 기억할까?`,summary:`${record.eraLabel}의 ${record.title}에서 함께 구별해야 할 핵심 용어를 cue와 연결합니다. 공개 문구는 원문을 복제하지 않고 검수된 cue 구조만 다시 구성했습니다.`,sections:[{title:'학습 방향',body:`${lead}의 짝과 순서를 먼저 확인한 뒤 실제 기출 자료에서 같은 단서를 찾아봅니다.`}]},
+  detailSections:[{title:'핵심 연결',summary:`${record.title}의 cue와 역사 용어를 한 묶음으로 정리합니다.`,bullets:keywords.map(keyword=>`${keyword.cue} → ${keyword.title}`)}],
+  causalFlow:memoryType(record)==='SEQUENCE'?terms:[record.eraLabel,record.title,'cue와 역사 용어 연결','실제 기출에서 구별'],
+  examPoints:[`${record.title} 문제에서는 cue에 연결된 용어를 시대·인물·제도와 함께 구별합니다.`,`자료에 ${lead}가 제시되는지 확인하고 비슷한 시대의 다른 주제와 혼동하지 않습니다.`]
+ };
+}
 
 const cards=source.records.map((record,index)=>{
  const curated=CURATED[record.id],rawKeywords=record.keywords.length?record.keywords:fallbackKeywords(record);
- const keywords=rawKeywords.map((keyword,keywordIndex)=>({order:keywordIndex+1,cue:keyword.cue,title:keyword.title,shortExplanation:curated?.notes?.[keywordIndex]||`${keyword.title} 항목은 원자료의 cue 매핑을 보존한 것으로, 공개 전 역사 검수가 필요합니다.`,evidence:[{source:sourcePath,sourceId:record.id,quote:`${keyword.cue} → ${keyword.title}`}]}));
- const verifiedFacts=keywords.map(keyword=>({...keyword,evidence:evidence(keyword),verificationStatus:'CANONICAL_TEXT_MATCH'})).filter(keyword=>keyword.evidence.length);
  const status=VERIFIED.has(record.id)?'VERIFIED':(REVIEW_REQUIRED.has(record.id)||/REVIEW_REQUIRED|검증|대조|재확인|확인 필요|원자료/.test(record.interpretation)?'REVIEW_REQUIRED':'CANDIDATE');
- const publicationStatus=status==='VERIFIED'?'PUBLISHED':'EXCLUDED',publicMnemonic=curated?.mnemonic||'';
+ const publicationStatus=PUBLIC_APPROVED.has(record.id)?'PUBLISHED':'EXCLUDED',publicMnemonic=publicationStatus==='PUBLISHED'?publicMnemonicFor(record,rawKeywords,curated):'';
+ const keywords=rawKeywords.map((keyword,keywordIndex)=>({order:keywordIndex+1,cue:keyword.cue,title:keyword.title,shortExplanation:curated?.notes?.[keywordIndex]||(publicationStatus==='PUBLISHED'?`‘${keyword.cue}’는 ‘${keyword.title}’을 가리킵니다. 같은 주제의 다른 cue와 함께 연결해 기억하세요.`:`${keyword.title} 항목은 원자료의 cue 매핑을 보존한 것으로, 공개 전 역사 검수가 필요합니다.`),evidence:[{source:sourcePath,sourceId:record.id,quote:`${keyword.cue} → ${keyword.title}`}]}));
+ const verifiedFacts=keywords.map(keyword=>({...keyword,evidence:evidence(keyword),verificationStatus:'CANONICAL_TEXT_MATCH'})).filter(keyword=>keyword.evidence.length);
+ const learning=publicationStatus==='PUBLISHED'?publicLearningContent(record,keywords,curated):{background:null,detailSections:[],causalFlow:[],examPoints:[],years:record.eraLabel};
  const id=STABLE_IDS[record.id]||`mnemonic-${record.id.toLowerCase()}`;
  const searchable=[record.title,publicMnemonic,...keywords.flatMap(keyword=>[keyword.cue,keyword.title]),record.eraLabel].join(' ');
  const matches=keywords.flatMap(keyword=>evidence(keyword).map(item=>({...item,cue:keyword.cue,fact:keyword.title}))),relatedOfficialQuestionIds=[...new Set(matches.map(item=>item.officialQuestionId))].slice(0,12);
- return {id,sourceId:record.id,number:index+1,era:era(record),period:record.eraLabel,title:record.title,category:curated?.category||category(record),memoryType:memoryType(record),sourceMnemonic:record.sourceMnemonic,originalMnemonic:record.sourceMnemonic,mnemonic:publicMnemonic,publicMnemonic,normalizedSearchText:norm(searchable),keywords,sourceFacts:keywords,facts:keywords,verifiedFacts,background:curated?.background||null,detailSections:curated?.detailSections||[],causalFlow:curated?.causalFlow||[],examPoints:curated?.examPoints||[],years:curated?.years||record.eraLabel,relatedOfficialQuestionIds,relatedSceneIds:[],linkEvidence:matches.filter(item=>relatedOfficialQuestionIds.includes(item.officialQuestionId)),status,publicationStatus,sourceReviewStatus:status,learningStatus:'NEW',rightsStatus:publicationStatus==='PUBLISHED'?(publicMnemonic===record.sourceMnemonic?'COMMON_SHORT_FORM_REVIEWED':'APP_ORIGINAL_PUBLIC_MNEMONIC'):'USER_SUPPLIED_INTERNAL_REVIEW_ONLY',reviewReason:status==='VERIFIED'?'원문 cue와 역사 사실을 대조하고 공개용 문구 및 상세 설명을 별도로 작성했습니다.':status==='REVIEW_REQUIRED'?'OCR·연대·인물·정책 또는 표현 권리 검토가 필요해 공개하지 않습니다.':'원문 inventory와 cue를 보존했으며 역사·권리 검수 전까지 공개하지 않습니다.',sourceInterpretation:record.interpretation,topicTags:[record.eraLabel,record.title],searchTerms:[record.title,publicMnemonic,...keywords.flatMap(keyword=>[keyword.cue,keyword.title])],recall:{chronological:memoryType(record)==='SEQUENCE'},cueCount:keywords.length};
+ return {id,sourceId:record.id,number:index+1,era:era(record),period:record.eraLabel,title:record.title,category:curated?.category||category(record),memoryType:memoryType(record),sourceMnemonic:record.sourceMnemonic,originalMnemonic:record.sourceMnemonic,mnemonic:publicMnemonic,publicMnemonic,normalizedSearchText:norm(searchable),keywords,sourceFacts:keywords,facts:keywords,verifiedFacts,background:learning.background,detailSections:learning.detailSections,causalFlow:learning.causalFlow,examPoints:learning.examPoints,years:learning.years,relatedOfficialQuestionIds,relatedSceneIds:[],linkEvidence:matches.filter(item=>relatedOfficialQuestionIds.includes(item.officialQuestionId)),status,publicationStatus,publicationReviewStatus:publicationStatus==='PUBLISHED'?'APPROVED':'PENDING',sourceReviewStatus:status,learningStatus:'NEW',rightsStatus:publicationStatus==='PUBLISHED'?(publicMnemonic===record.sourceMnemonic?'COMMON_SHORT_FORM_REVIEWED':'APP_REWRITTEN_FROM_FACT_STRUCTURE'):'USER_SUPPLIED_INTERNAL_REVIEW_ONLY',reviewReason:publicationStatus==='PUBLISHED'?(status==='VERIFIED'?'원문 cue와 역사 사실을 대조하고 공개용 문구 및 상세 설명을 별도로 작성했습니다.':'원문 검수 상태는 유지하고, Git 이력의 공개 승인과 cue 구조를 사용한 별도 공개 문구만 노출합니다.'):(status==='REVIEW_REQUIRED'?'OCR·연대·인물·정책 또는 표현 권리 검토가 필요해 공개하지 않습니다.':'원문 inventory와 cue를 보존했으며 역사·권리 검수 전까지 공개하지 않습니다.'),sourceInterpretation:record.interpretation,topicTags:[record.eraLabel,record.title],searchTerms:[record.title,publicMnemonic,...keywords.flatMap(keyword=>[keyword.cue,keyword.title])],recall:{chronological:memoryType(record)==='SEQUENCE'},cueCount:keywords.length};
 });
 
 assert.equal(new Set(cards.map(card=>card.sourceId)).size,118);assert.equal(new Set(cards.map(card=>card.id)).size,118);

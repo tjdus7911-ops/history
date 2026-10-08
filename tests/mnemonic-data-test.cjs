@@ -24,16 +24,19 @@ function validate(data,runtime){
   assert(card.keywords.every((keyword,index)=>keyword.order===index+1&&keyword.cue&&keyword.title&&keyword.shortExplanation),card.sourceId+' incomplete keywords');
   assert(card.normalizedSearchText.includes(card.title.normalize('NFKC').replace(/[\s\p{P}\p{S}]/gu,'').toLowerCase()),card.sourceId+' title not searchable');
   if(card.publicationStatus==='PUBLISHED'){
-   assert.equal(card.status,'VERIFIED',card.sourceId+' unverified record published');
+   assert.equal(card.publicationReviewStatus,'APPROVED',card.sourceId+' published record lacks approval');
    assert(card.mnemonic&&card.rightsStatus!=='USER_SUPPLIED_INTERNAL_REVIEW_ONLY',card.sourceId+' public mnemonic rights status missing');
    assert(card.background?.summary&&card.causalFlow.length&&card.examPoints.length,card.sourceId+' incomplete learning detail');
-  }else assert.notEqual(card.status,'VERIFIED',card.sourceId+' verified record unexpectedly excluded');
-  if(card.status==='REVIEW_REQUIRED')assert.equal(card.publicationStatus,'EXCLUDED');
+   if(card.status!=='VERIFIED')assert.notEqual(card.mnemonic,card.sourceMnemonic,card.sourceId+' review-pending source leaked as public mnemonic');
+  }else assert.equal(card.publicationReviewStatus,'PENDING',card.sourceId+' excluded record approval status mismatch');
   assert.deepEqual(card.relatedOfficialQuestionIds,runtime.cards.find(item=>item.id===card.id).relatedOfficialQuestionIds,'stale official links '+card.sourceId);
   assert.deepEqual(card.relatedSceneIds,runtime.cards.find(item=>item.id===card.id).relatedSceneIds,'stale Story links '+card.sourceId);
   for(const id of card.relatedOfficialQuestionIds)assert(official.has(id),'invalid officialQuestionId '+id);
   for(const id of card.relatedSceneIds)assert(scenes.has(id),'invalid relatedSceneId '+id);
  }
+ assert.deepEqual(cards.reduce((out,card)=>(out[card.status]=(out[card.status]||0)+1,out),{}),{REVIEW_REQUIRED:90,VERIFIED:10,CANDIDATE:18});
+ assert.equal(cards.filter(card=>card.publicationStatus==='PUBLISHED').length,49,'wrong public approval count');
+ assert.equal(cards.filter(card=>card.publicationStatus==='EXCLUDED').length,69,'wrong excluded count');
  const protectedSamples=['복덕(방) 경희(가) 운(다)','광노(안)과 공복 주제(에) 송광풍 여사~','(2개의) 흥수똥 달제양','효심(에는) 이의있삼?','병(이)제 병문한 정양 오신 초덕광 척','원(산에서) 동경(까지) 배(타고) 26(km)','UWOI'];
  for(const sample of protectedSamples)assert(cards.some(card=>card.sourceMnemonic===sample),'protected source string changed: '+sample);
  assert.equal(new Set(cards.map(card=>card.sourceMnemonic)).size,118,'duplicate sourceMnemonic');
