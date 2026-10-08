@@ -436,14 +436,15 @@ function finishChapter(state){
   const run=state.run,chapterId=run.currentChapter||'ch01',add=(list,value)=>{if(!list.includes(value))list.push(value)};
   run.completed=true;run.storyId=(typeof CHAPTERS!=='undefined'&&CHAPTERS[chapterId]?.completeStoryId)||(chapterId==='ch03'?'ch02_complete':'complete');run.activeQuestionId=null;run.questionAnswer=null;
   add(state.meta.completedChapters,chapterId);
-  if(typeof CHAPTERS!=='undefined'&&CHAPTERS[chapterId]?.eraId==='joseon'){
+  const completedEraId=typeof CHAPTERS!=='undefined'?CHAPTERS[chapterId]?.eraId:null;
+  if(completedEraId&&completedEraId!=='goryeo'){
     const chapterQuestions=typeof QUESTIONS==='undefined'?[]:QUESTIONS.filter(q=>q.chapterId===chapterId&&!q.retired);
     chapterQuestions.map(q=>q.relatedHistoricalEventId).filter(Boolean).forEach(id=>add(state.meta.historicalEvents,id));
-    chapterQuestions.flatMap(q=>q.examKeywords||[]).filter(Boolean).forEach(keyword=>add(state.meta.cards,`joseon:${keyword}`));
+    chapterQuestions.flatMap(q=>q.examKeywords||[]).filter(Boolean).forEach(keyword=>add(state.meta.cards,`${completedEraId}:${keyword}`));
     add(state.meta.achievements,`${chapterId}-witness`);add(state.meta.endings,`${chapterId}-complete`);
-    const joseonIds=Object.values(CHAPTERS).filter(chapter=>chapter.eraId==='joseon').map(chapter=>chapter.chapterId);
-    state.meta.eraProgress||={};const previousEra=state.meta.eraProgress.joseon||{},eraCompleted=joseonIds.length>0&&joseonIds.every(id=>state.meta.completedChapters.includes(id));
-    state.meta.eraProgress.joseon={...previousEra,completed:eraCompleted,progress:Math.round(joseonIds.filter(id=>state.meta.completedChapters.includes(id)).length/joseonIds.length*100),...(eraCompleted&&!previousEra.completedAt?{completedAt:new Date().toISOString()}:{})};
+    const eraIds=Object.values(CHAPTERS).filter(chapter=>chapter.eraId===completedEraId).map(chapter=>chapter.chapterId);
+    state.meta.eraProgress||={};const previousEra=state.meta.eraProgress[completedEraId]||{},eraCompleted=eraIds.length>0&&eraIds.every(id=>state.meta.completedChapters.includes(id));
+    state.meta.eraProgress[completedEraId]={...previousEra,completed:eraCompleted,progress:Math.round(eraIds.filter(id=>state.meta.completedChapters.includes(id)).length/eraIds.length*100),...(eraCompleted&&!previousEra.completedAt?{completedAt:new Date().toISOString()}:{})};
   }else if(chapterId==='ch04'){['seongjong-state-system','choe-seungro-simu-28','seongjong-twelve-mok','seongjong-gukjagam'].forEach(id=>add(state.meta.historicalEvents,id));['seongjong-government','choe-seungro','simu-28','twelve-mok-governors','gukjagam'].forEach(id=>add(state.meta.cards,id));['성종','최승로'].forEach(name=>add(state.meta.people,name));add(state.meta.achievements,'ch03-state-framework');add(state.meta.endings,'ch03-doyun-legacy');run.doyunLegacy={...run.doyunLegacy,merchantGuild:true,name:'도윤상단'};run.characterStates.doyun={...(run.characterStates.doyun||{}),isAlive:false,deathCause:'old_age'}}else if(chapterId==='ch03'){['gwangjong-956-nobi','gwangjong-958-gwageo','gwangjong-reign-titles'].forEach(id=>add(state.meta.historicalEvents,id));['nobi-inspection','gwageo-exam','gwangjong-authority'].forEach(id=>add(state.meta.cards,id));['광종','쌍기','현우'].forEach(name=>add(state.meta.people,name));add(state.meta.achievements,'ch02-kings-reform');add(state.meta.endings,'ch02-kings-realm')}else if(chapterId==='ch02'){add(state.meta.achievements,'ch02-unified-country');add(state.meta.endings,'ch02-unified-country')}else{add(state.meta.historicalEvents,'goryeo-foundation-918');add(state.meta.cards,'goryeo-foundation-918');['왕건','궁예','견훤'].forEach(name=>add(state.meta.people,name));add(state.meta.achievements,'ch01-first-witness');add(state.meta.endings,`ch01-${run.route||'wanderer'}`)}
   const runs=state.meta.chapterRuns[chapterId]||(state.meta.chapterRuns[chapterId]=[]),record=makeRunRecord(run,runs.length+1);runs.push(record);
   const previous=state.meta.chapterRecords[chapterId],firstRun=previous?.firstRun||runs[0],bestQuestionScore=Math.max(previous?.bestQuestionScore||0,record.questionScore.correct);

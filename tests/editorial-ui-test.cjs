@@ -7,10 +7,10 @@ function click(dataset){run('inputLockedUntil=0');let stopped=false;const b={dat
 boot();
 assert(html.includes('오늘의 학습')&&html.includes('최근 학습')&&html.includes('최근 오답'));
 assert(!html.includes('ed-chapter-row'));assert.equal((html.match(/data-era-slide=/g)||[]).length,7);
-const heroes=copy('LEARNING_ERAS.map(e=>eraHero(e.id))');assert.equal(heroes.filter(Boolean).length,5);assert.equal(new Set(heroes.filter(Boolean)).size,5);
+const heroes=copy('LEARNING_ERAS.map(e=>eraHero(e.id))');assert.equal(heroes.filter(Boolean).length,7);assert.equal(new Set(heroes.filter(Boolean)).size,7);
 const hashes=new Set();for(const c of copy('Object.values(ERA_PROTAGONISTS)')){assert.equal(c.id,run(`eraProtagonist('${c.era}').id`));for(const file of Object.values(c.assetPaths)){assert(fs.existsSync('dist/'+file));hashes.add(crypto.createHash('sha256').update(fs.readFileSync('dist/'+file)).digest('hex'))}for(const file of Object.values(c.conceptAssetPaths||{}))assert(fs.existsSync('dist/'+file))}
-assert.equal(hashes.size,18,'existing Goryeo/Joseon protagonist art remains independent and unchanged');
-assert.deepEqual(copy('Object.values(ERA_PROTAGONISTS).map(c=>c.gender)'),['UNSPECIFIED','UNSPECIFIED','male','female','UNSPECIFIED','UNSPECIFIED','UNSPECIFIED']);
+assert.equal(hashes.size,44,'all four playable season protagonist assets remain independent');
+assert.deepEqual(copy('Object.values(ERA_PROTAGONISTS).map(c=>c.gender)'),['male','female','male','female','UNSPECIFIED','UNSPECIFIED','UNSPECIFIED']);
 assert.equal(run("eraProtagonist('missing')"),null);assert.equal(run("eraSceneVisuals('joseon',{backgroundId:'goryeo-gaegyeong-cover',year:1398})"),null);
 for(const b of copy('Object.values(ERA_BACKGROUNDS)')){assert(b.era&&b.yearRange.length===2&&b.location&&b.event&&b.timeOfDay);assert(fs.existsSync('dist/'+b.src))}
 run("const fixtureBackground={id:'test-only',era:'joseon',yearRange:[1395,1398],location:'hanyang',event:'city',usage:'story',src:'test.webp'}; ERA_BACKGROUNDS['test-only']=fixtureBackground");
@@ -33,5 +33,5 @@ const after=run('JSON.stringify(meta().questionRecords)');click({submitAnswer:'t
 const runBeforeMemory=run('JSON.stringify(state.run)');click({storyMemory:q.questionId});assert(html.includes('관련 스토리 다시 보기'));assert.equal(run('JSON.stringify(state.run)'),runBeforeMemory);click({action:'close'});
 click({nav:'records'});assert(html.includes('예상 준비도'));assert(html.includes('학습 캘린더'));click({recordEra:'joseon'});assert(html.includes('학습 기록이 쌓이면'));assert(!html.includes('class="weak-row"'));
 // All latest UI source files and artwork are included in the build/cache contract.
-const worker=fs.readFileSync('dist/sw.js','utf8');for(const n of ['editorial-ui.js','editorial.css','era-visuals.js','season-data.js'])assert(worker.includes('/'+n));
+const worker=fs.readFileSync('dist/sw.js','utf8');for(const n of ['editorial-ui.js','editorial.css','era-visuals.js','ancient-data.js','season-data.js','ancient-ui.js'])assert(worker.includes('/'+n));
 console.log('PASS: seven-season editorial UI, distinct protagonist identities, strict scene lookup, independent resume, real date metrics/readiness, deduplicated wrong filters, explicit answer confirmation, preserved retry history, exact recall and calendar.');

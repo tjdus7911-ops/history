@@ -6437,7 +6437,13 @@
         "official-63-advanced-02",
         "official-64-basic-02"
       ],
-      "relatedSceneIds": [],
+      "relatedSceneIds": [
+        "proto_ch07_s2",
+        "proto_ch01_s2",
+        "three_ch06_s1",
+        "proto_ch02_s3",
+        "proto_ch04_s2"
+      ],
       "linkEvidence": [
         {
           "source": "dist/official-exam-explanations.json",
@@ -7081,7 +7087,9 @@
         "official-58-basic-15",
         "official-65-advanced-05"
       ],
-      "relatedSceneIds": [],
+      "relatedSceneIds": [
+        "three_ch01_s2"
+      ],
       "linkEvidence": [
         {
           "source": "dist/official-exam-explanations.json",
@@ -7516,7 +7524,9 @@
         "official-57-basic-05",
         "official-57-basic-09"
       ],
-      "relatedSceneIds": [],
+      "relatedSceneIds": [
+        "three_ch06_s1"
+      ],
       "linkEvidence": [
         {
           "source": "dist/official-exam-explanations.json",
@@ -8174,7 +8184,9 @@
         "official-64-advanced-27",
         "official-67-basic-28"
       ],
-      "relatedSceneIds": [],
+      "relatedSceneIds": [
+        "proto_ch07_s2"
+      ],
       "linkEvidence": [
         {
           "source": "dist/official-exam-explanations.json",
@@ -8942,7 +8954,10 @@
         "official-57-basic-38",
         "official-59-advanced-29"
       ],
-      "relatedSceneIds": [],
+      "relatedSceneIds": [
+        "three_ch11_s3",
+        "three_ch13_s1"
+      ],
       "linkEvidence": [
         {
           "source": "dist/official-exam-explanations.json",
@@ -9771,7 +9786,10 @@
         "official-64-basic-09",
         "official-73-basic-09"
       ],
-      "relatedSceneIds": [],
+      "relatedSceneIds": [
+        "three_ch06_s1",
+        "three_ch12_s1"
+      ],
       "linkEvidence": [
         {
           "source": "dist/official-exam-explanations.json",
@@ -10656,7 +10674,9 @@
         "official-58-advanced-08",
         "official-59-advanced-09"
       ],
-      "relatedSceneIds": [],
+      "relatedSceneIds": [
+        "three_ch11_s3"
+      ],
       "linkEvidence": [
         {
           "source": "dist/official-exam-explanations.json",
@@ -11841,7 +11861,10 @@
         "official-57-basic-09",
         "official-61-advanced-10"
       ],
-      "relatedSceneIds": [],
+      "relatedSceneIds": [
+        "three_ch11_s3",
+        "three_ch06_s1"
+      ],
       "linkEvidence": [
         {
           "source": "dist/official-exam-explanations.json",
@@ -31710,7 +31733,9 @@
         "official-57-basic-10",
         "official-57-basic-11"
       ],
-      "relatedSceneIds": [],
+      "relatedSceneIds": [
+        "three_ch06_s1"
+      ],
       "linkEvidence": [
         {
           "source": "dist/official-exam-explanations.json",
@@ -32176,7 +32201,9 @@
         "official-57-basic-09",
         "official-57-basic-06"
       ],
-      "relatedSceneIds": [],
+      "relatedSceneIds": [
+        "three_ch06_s1"
+      ],
       "linkEvidence": [
         {
           "source": "dist/official-exam-explanations.json",
@@ -33189,7 +33216,10 @@
         "official-58-basic-41",
         "official-58-advanced-12"
       ],
-      "relatedSceneIds": [],
+      "relatedSceneIds": [
+        "proto_ch07_s2",
+        "three_ch02_s2"
+      ],
       "linkEvidence": [
         {
           "source": "dist/official-exam-explanations.json",
@@ -36370,7 +36400,9 @@
         "official-57-basic-05",
         "official-57-basic-06"
       ],
-      "relatedSceneIds": [],
+      "relatedSceneIds": [
+        "three_ch06_s1"
+      ],
       "linkEvidence": [
         {
           "source": "dist/official-exam-explanations.json",
