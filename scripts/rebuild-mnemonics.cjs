@@ -1,85 +1,78 @@
-/* Source import: no text generation, no guessed cue meanings. */
-const fs=require('fs'),vm=require('vm'),assert=require('assert'),crypto=require('crypto');
-const root='docs/mnemonic-sources/';
-const primary=fs.readFileSync(root+'primary-reference.txt','utf8');
-const section=primary.slice(primary.indexOf('01. 세계기록유산'),primary.indexOf('C. 별도 구조'));
-const refs=[...section.matchAll(/^(\d{2,3})\. ([^\r\n]+)\r?\n([\s\S]*?)(?=^\d{2,3}\. |$(?![\s\S]))/gm)].map(m=>{
- const lines=m[3].split(/\r?\n/),words=[];
- for(const line of lines){if(!line.trim()&&words.length)break;if(line.startsWith('※'))break;if(line.trim())words.push(line.trim())}
- return {number:Number(m[1]),title:m[2],originalMnemonic:words.join('\n')};
+/* Build the canonical mnemonic inventory from the user's explicit A001-F020 dataset. */
+const fs=require('fs'),assert=require('assert'),crypto=require('crypto');
+const sourcePath='docs/mnemonic-sources/explicit-request.json';
+const source=JSON.parse(fs.readFileSync(sourcePath,'utf8'));
+assert.equal(source.explicitInputCount,118);
+assert.equal(source.records.length,118);
+
+const norm=value=>String(value||'').normalize('NFKC').replace(/[\s\p{P}\p{S}]/gu,'').toLowerCase();
+const official=JSON.parse(fs.readFileSync('dist/official-exam-explanations.json','utf8')).records;
+const corpus=official.map(record=>({id:record.officialQuestionId,normalized:norm([record.clue,record.correctChoice,record.explanation].join(' '))}));
+
+const STABLE_IDS={
+ A003:'memory-palaces',C001:'gong-go-sin-il',C002:'memory-gwangjong-mnemonic',C003:'memory-goryeo-seongjong',
+ C020:'memory-jinul',D006:'memory-five-armies-import',D016:'memory-bone-rank',E001:'byeong-je-byeong-o-sin-cheok',
+ F011:'memory-singanhoe',F017:'memory-korean-war'
+};
+const VERIFIED=new Set(['A003','A015','C001','C002','C020','D006','D016','E001','F011','F017']);
+const REVIEW_REQUIRED=new Set([
+ 'A001','A002','A004','A005','A006','A013','A014','B001','B003','B004','B008','B010','B011',
+ 'C003','C004','C005','C007','C009','C011','C012','C013','C016','C018','C019',
+ 'D001','D002','D003','D004','D005','D007','D008','D009','D010','D011','D012','D013','D014','D015',
+ 'D017','D018','D019','D020','D021','D022','D023','D024','D025','D026','D027','D028','D029','D030','D031','D032',
+ 'E002','E004','E005','E006','E007','E008','E009','E010','E011','E012','E013','E014','E015','E016','E017','E018','E019','E020',
+ 'F001','F002','F003','F004','F005','F006','F007','F008','F009','F010','F012','F013','F014','F015','F016','F018','F019','F020'
+]);
+const SEQUENCE=new Set(['B004','C001','C009','C013','C014','C015','C016','C017','C018','D007','D008','D032','E001','E002','E003','E004','E005','E006','E008','E009','E010','E013','E014','E016','E017','E018','E019','E020','F007','F008','F009','F010','F015','F018','F019','F020']);
+const NUMBER=new Set(['A014','C003','D016','E017','F019']);
+const WORDPLAY=new Set(['D023','F017']);
+const COMPARISON=new Set(['D024']);
+
+const FALLBACK_KEYWORDS={
+ B001:[['원통','고국원왕'],['광개토 아버지','고국양왕'],['학','태학'],['교','불교'],['령','율령'],['양','영양왕'],['양제','수 양제의 침입'],['신집','이문진의 『신집』 5권']],
+ C012:[['정도전','정도전'],['윤소종','윤소종'],['조준','조준']],
+ D016:[['6두품×1','6관등 아찬'],['5두품×2','10관등 대나마'],['4두품×3','12관등 대사']],
+ D020:[['복','경복사'],['열','열반종'],['뽀','보덕'],['계율','계율종'],['통','통도사'],['장','자장'],['상종','법상종'],['금','금산사']],
+ D021:[['일','범일'],['엄','이엄'],['미','수미산파'],['사','사굴산파'],['가','가지산파'],['도','도의'],['홍','홍척'],['산','실상산파'],['무','무염'],['주','성주산파']],
+ D023:[['굴식돌방무덤','고구려·백제·신라·발해에서 확인되는 무덤 양식'],['식방=식빵','굴식돌방무덤을 떠올리는 말장난']],
+ F017:[['남침','북한의 남침으로 전쟁 시작']]
+};
+
+const CURATED={
+ A003:{mnemonic:'경복·창덕·창경·경희·경운',years:'조선~대한제국 · 5대 궁궐',category:'궁궐 · 문화유산',background:{title:'왜 다섯 궁궐을 함께 구별할까?',summary:'서울의 조선 궁궐은 건립 시기와 쓰임이 서로 다릅니다. 이름만 외우기보다 정궁·이궁·경운궁의 관계를 함께 보면 문화유산 문제에서 구별하기 쉽습니다.',sections:[{title:'핵심 맥락',body:'경복궁은 조선의 법궁으로 출발했고, 창덕궁은 임진왜란 뒤 오랫동안 왕이 머문 궁궐이었습니다. 경운궁은 대한제국기 중심 궁궐이 되었고 뒤에 덕수궁으로 불렸습니다.'}]},causalFlow:['조선 건국과 법궁 경복궁','왕실 공간의 확대','임진왜란 뒤 창덕궁 중심 운영','대한제국기 경운궁 활용'],examPoints:['경운궁은 오늘날 덕수궁의 옛 이름입니다.','창덕궁은 자연 지형과 조화를 이룬 궁궐로 자주 제시됩니다.','궁궐 이름과 시대별 사건을 함께 연결해 구별합니다.'],notes:['조선 건국 뒤 한양에 세운 법궁입니다.','임진왜란 뒤 오랫동안 왕이 머문 궁궐로 활용되었습니다.','수강궁을 고쳐 세운 궁궐로 왕실 생활 공간의 성격이 강했습니다.','광해군 때 경덕궁으로 세워졌고 뒤에 경희궁으로 불렸습니다.','대한제국의 중심 궁궐로 쓰였으며 오늘날 덕수궁의 옛 이름입니다.']},
+ A015:{mnemonic:'부영 · 고동 · 동무',years:'초기 국가 · 제천 행사',category:'초기 국가 · 제천',background:{title:'왜 제천 행사를 열었을까?',summary:'초기 국가의 제천 행사는 수확을 감사하고 공동체를 결속하는 정치·종교 행사였습니다. 나라 이름과 행사 이름을 짝으로 기억하는 것이 핵심입니다.',sections:[{title:'구별 기준',body:'부여는 영고, 고구려는 동맹, 동예는 무천입니다. 계절과 사회 풍습이 함께 자료로 제시되므로 국가별 특징과 묶어 판단합니다.'}]},causalFlow:['농경과 수확','하늘에 제사','공동체 결속','국가별 제천 행사 정착'],examPoints:['부여-영고, 고구려-동맹, 동예-무천의 짝을 정확히 구별합니다.','제천 행사만 보지 말고 사출도·서옥제·책화 같은 국가별 특징을 함께 확인합니다.'],notes:['만주 지역의 연맹 왕국으로 12월에 영고를 열었습니다.','부여가 12월에 연 제천 행사입니다.','제가 회의와 서옥제 등의 특징이 있는 나라입니다.','고구려가 10월에 연 제천 행사입니다.','책화와 족외혼의 풍습이 있던 나라입니다.','동예가 10월에 연 제천 행사입니다.']},
+ C001:{mnemonic:'발해–공산–고창–신라–통일',years:'926–936 · 후삼국 통일',category:'전쟁 · 통일 · 순서',background:{title:'왜 전투의 순서가 중요할까?',summary:'후삼국의 주도권은 한 번에 고려로 넘어오지 않았습니다. 공산 전투의 패배 뒤 고창 전투에서 흐름을 뒤집고, 신라의 항복과 후백제 멸망으로 통일이 완성됩니다.',sections:[{title:'전세의 변화',body:'927년 공산 전투에서 고려는 크게 패했지만 930년 고창 전투에서 승리하며 동남부 호족의 지지를 얻었습니다. 935년 신라가 항복하고 936년 후백제를 무너뜨리며 후삼국을 통일했습니다.'}]},causalFlow:['발해 멸망과 유민 포용','공산 전투 패배','고창 전투 승리','신라 항복','후백제 멸망과 통일'],examPoints:['공산 전투에서는 신숭겸이 왕건을 구하고 전사했습니다.','고창 전투 승리는 고려가 주도권을 잡는 전환점입니다.','신라 항복은 935년, 후삼국 통일은 936년입니다.'],notes:['926년 발해가 멸망하자 고려는 유민을 받아들였습니다.','927년 고려가 후백제에 패하고 신숭겸이 전사한 전투입니다.','930년 고려가 승리해 후삼국 경쟁의 주도권을 잡은 전투입니다.','935년 경순왕이 고려에 항복해 신라가 평화적으로 편입되었습니다.','936년 후백제가 무너지며 고려가 후삼국을 통일했습니다.']},
+ C002:{mnemonic:'광종: 노비·과거·공복 / 광덕·준풍',years:'949–975 · 노비 · 과거 · 공복',category:'왕 · 정책 · 제도',background:{title:'왜 광종은 이런 정책을 실시했을까?',summary:'고려 초에는 통일에 기여한 호족의 군사력과 경제력이 강했습니다. 광종은 호족의 기반을 줄이고 왕이 직접 선택한 관료와 제도를 세워 왕권을 강화하려 했습니다.',sections:[{title:'출발점',body:'태조는 통일 과정에서 호족을 포섭했지만, 왕권이 안정된 뒤에는 강한 호족 세력이 왕을 위협할 수 있었습니다.'},{title:'정책의 방향',body:'노비안검법으로 호족의 인적·경제적 기반을 약화하고, 과거제로 새로운 관료를 선발하며, 공복을 정해 관료 질서를 정비했습니다.'}]},detailSections:[{title:'노비안검법',summary:'불법으로 노비가 된 사람을 조사해 양인 신분을 회복시켰습니다.',bullets:['호족의 노동력과 경제 기반 감소','국가의 조세 부담 인구 증가','호족 약화와 왕권 강화']},{title:'과거제',summary:'쌍기의 건의로 시험을 통해 관리를 선발했습니다.',bullets:['호족 가문 중심 인사 구조 완화','왕에게 충성하는 새 관료층 성장','유교적 관료 체제 강화']},{title:'공복 제정',summary:'관리의 등급에 따라 공복을 정해 관료 위계와 국가 질서를 분명히 했습니다.',bullets:['단순한 옷 색 구분이 아니라 관료 체계 정비','왕 중심의 국가 운영 질서 강화']}],causalFlow:['호족의 강한 기반','노비안검법으로 기반 약화','과거제로 새 관료 육성','공복으로 관료 질서 정비','왕권 강화'],examPoints:['노비안검법·과거제·공복·광덕·준풍이 함께 나오면 광종을 연결합니다.','노비안검법은 호족의 경제·인적 기반 약화라는 정치적 의미까지 봅니다.','광덕과 준풍은 광종이 사용한 독자적 연호입니다.'],notes:['정책의 주체인 고려 제4대 왕입니다.','불법 노비를 조사해 양인으로 돌려 호족의 기반을 약화했습니다.','쌍기의 건의로 시험을 통해 새 관료를 선발했습니다.','관리 등급에 따른 옷을 정해 관료 위계를 정비했습니다.','지방 인재를 중앙에 추천하게 한 제도입니다.','빈민 구제를 위해 설치한 기금입니다.','송과 외교 관계를 맺어 선진 문물을 받아들였습니다.','광종이 사용한 독자적 연호입니다.','광종이 광덕 다음에 사용한 연호입니다.','화엄종 승려로 광종의 왕권 강화에 사상적으로 협력했습니다.','광종이 창건한 사찰로 알려져 있습니다.']},
+ C020:{mnemonic:'지눌: 돈오점수 · 정혜쌍수',years:'고려 후기 · 불교 개혁',category:'불교 · 사상',background:{title:'왜 지눌은 불교 개혁을 추진했을까?',summary:'고려 후기 불교계의 세속화와 교종·선종의 대립을 비판하고, 수행 중심의 결사 운동으로 불교를 바로잡으려 했습니다.',sections:[{title:'수선사 결사',body:'지눌은 승려 본연의 수행을 강조하며 수선사 결사를 이끌었습니다. 선과 교가 서로 대립하기보다 함께 이해될 수 있다고 보았습니다.'}]},causalFlow:['불교계 세속화','수선사 결사','선교 일치 추구','돈오점수·정혜쌍수','조계종 발전'],examPoints:['수선사 결사와 송광사는 지눌을 찾는 핵심 단서입니다.','돈오점수는 깨달음 뒤에도 수행을 이어 간다는 뜻입니다.','정혜쌍수는 선정과 지혜를 함께 닦는 수행법입니다.'],notes:['먼저 깨달은 뒤에도 습기를 없애기 위해 점진적으로 수행해야 한다는 주장입니다.','선정과 지혜를 함께 닦아야 한다는 수행 원리입니다.']},
+ D006:{mnemonic:'훈어총수금',years:'조선 후기 · 수도 방어',category:'군사 · 제도',background:{title:'왜 5군영이 만들어졌을까?',summary:'임진왜란을 겪으며 기존 군사 체제의 한계가 드러났습니다. 조선은 훈련도감을 시작으로 수도와 수도 외곽을 지키는 군영을 차례로 설치했습니다.',sections:[{title:'체제 완성',body:'훈련도감은 임진왜란 중 설치되었고, 어영청·총융청·수어청을 거쳐 숙종 때 금위영이 설치되면서 5군영 체제가 완성되었습니다.'}]},causalFlow:['임진왜란과 군제 한계','훈련도감 설치','수도·외곽 방어 군영 확대','금위영 설치','5군영 완성'],examPoints:['훈련도감은 임진왜란 중 설치된 상비군입니다.','금위영 설치로 5군영 체제가 완성되었습니다.','5군영은 중앙군, 속오군은 지방군 체제와 연결합니다.'],notes:['임진왜란 중 설치된 상비군으로 포수·사수·살수의 삼수병을 두었습니다.','인조 때 설치되어 수도 방위를 맡았습니다.','수도 외곽과 북한산성 방어를 맡았습니다.','남한산성을 중심으로 수도 남부를 방어했습니다.','숙종 때 설치되어 5군영 체제를 완성했습니다.']},
+ D016:{mnemonic:'6×1 · 5×2 · 4×3',years:'신라 · 골품제',category:'신분 · 관등',background:{title:'왜 골품에 따라 승진 한계가 달랐을까?',summary:'신라의 골품제는 혈통에 따라 정치·사회적 지위를 정했습니다. 개인의 능력만으로는 넘기 어려운 관등 승진 상한이 있어 6두품의 불만과 개혁 요구로 이어졌습니다.',sections:[{title:'숫자 읽기',body:'6두품은 6관등 아찬, 5두품은 10관등 대나마, 4두품은 12관등 대사까지 오를 수 있었습니다.'}]},causalFlow:['혈통 중심 골품제','관등 승진 제한','6두품의 정치적 한계','유학과 개혁 요구 성장'],examPoints:['6두품은 아찬까지 승진할 수 있었습니다.','골품제의 한계는 신라 말 6두품의 반발과 연결됩니다.'],notes:['6두품은 6관등 아찬까지 승진할 수 있었습니다.','5두품은 10관등 대나마까지 승진할 수 있었습니다.','4두품은 12관등 대사까지 승진할 수 있었습니다.']},
+ E001:{mnemonic:'병제병문한정양 · 오신초덕광척',years:'1866–1871 · 통상 수교 거부',category:'개항기 · 사건 순서',background:{title:'왜 서양 세력과 충돌했을까?',summary:'서양 세력이 통상을 요구하는 가운데 천주교 박해와 무력 충돌이 이어졌습니다. 흥선 대원군은 두 차례 양요를 겪은 뒤 통상 수교 거부 정책을 강화했습니다.',sections:[{title:'두 전쟁의 구별',body:'병인양요는 프랑스, 신미양요는 미국의 침략입니다. 문수산성·정족산성은 병인양요, 초지진·덕진진·광성보는 신미양요의 전투 장소입니다.'}]},causalFlow:['병인박해','병인양요','오페르트 도굴 사건','신미양요','척화비 건립'],examPoints:['병인양요는 외규장각 도서 약탈, 신미양요는 어재연의 광성보 항전과 연결합니다.','오페르트 도굴 사건은 통상 수교 거부 여론을 강화했습니다.','척화비는 신미양요 뒤 전국에 세워졌습니다.'],notes:['1866년 천주교 신자와 프랑스 선교사를 처형한 사건입니다.','대동강을 거슬러 올라온 미국 상선과 평양 군민이 충돌한 사건입니다.','프랑스가 병인박해를 구실로 강화도를 침략했습니다.','병인양요 때 조선군이 항전한 장소입니다.','문수산성에서 항전한 조선의 장수입니다.','양헌수가 프랑스군을 물리친 병인양요의 전투 장소입니다.','정족산성에서 프랑스군을 물리친 장수입니다.','남연군 묘 도굴 시도로 서양 세력에 대한 반감이 커졌습니다.','미국이 통상을 요구하며 강화도를 침략했습니다.','신미양요 때 미군의 공격을 받은 강화도의 진입니다.','신미양요 때 미군의 공격을 받은 강화도의 진입니다.','어재연이 광성보에서 미군에 맞서 싸웠습니다.','신미양요 뒤 통상 수교 거부 의지를 밝히기 위해 세웠습니다.']},
+ F011:{mnemonic:'경단기',years:'1927 · 민족 유일당 운동',category:'일제강점기 · 민족운동',background:{title:'왜 신간회가 만들어졌을까?',summary:'민족주의 세력과 사회주의 세력이 갈라져서는 식민 통치에 효과적으로 맞서기 어렵다는 인식이 커졌습니다. 두 세력은 비타협적 민족 유일당 운동의 흐름 속에서 신간회를 창립했습니다.',sections:[{title:'활동 방향',body:'신간회는 전국에 지회를 두고 노동·농민 운동을 지원했으며, 광주 학생 항일 운동 진상 조사단을 파견하려 했습니다.'}]},causalFlow:['민족운동의 분열','정우회 선언','신간회 창립','전국 지회와 대중운동 지원','해소'],examPoints:['비타협적 민족주의와 사회주의의 연합 단체입니다.','광주 학생 항일 운동 진상 조사 활동과 연결됩니다.','정치·경제적 각성, 민족 단결, 기회주의 배격이 강령의 핵심입니다.'],notes:['민중에게 정치적·경제적 각성을 촉구한다는 내용입니다.','민족의 단결을 공고히 한다는 내용입니다.','타협적인 기회주의를 배격한다는 내용입니다.']},
+ F017:{mnemonic:'남침에서 시작된 6·25 전쟁',years:'1950–1953 · 한국 전쟁',category:'현대 · 전쟁',background:{title:'전쟁은 어떻게 시작되었을까?',summary:'1950년 6월 25일 북한군의 전면 남침으로 전쟁이 시작되었습니다. 이후 유엔군 참전, 인천 상륙 작전, 중국군 개입을 거쳐 전선이 교착되었고 1953년 정전 협정이 체결되었습니다.',sections:[{title:'시험에서 보는 흐름',body:'남침 → 낙동강 방어선 → 인천 상륙 작전 → 중국군 개입 → 1·4 후퇴 → 정전 협정의 큰 흐름을 구별합니다.'}]},causalFlow:['북한군 남침','유엔군 참전','인천 상륙 작전','중국군 개입','정전 협정'],examPoints:['전쟁은 북한의 남침으로 시작되었습니다.','정전 협정은 1953년 판문점에서 체결되었습니다.'],notes:['1950년 6월 25일 북한군의 전면 남침으로 전쟁이 시작되었습니다.']}
+};
+
+function era(record){const label=record.eraLabel;if(/고려/.test(label))return 'goryeo';if(/조선/.test(label))return 'joseon';if(/개항|대한제국|국권피탈/.test(label))return 'empire';if(/일제강점기/.test(label))return 'occupation';if(/현대/.test(label))return 'republic';return 'ancient'}
+function category(record){return ({A:'선사·초기 국가',B:'삼국·남북국',C:'고려',D:'제도·문화',E:'개항기·대한제국',F:/현대/.test(record.eraLabel)?'현대':'일제강점기'})[record.id[0]]}
+function memoryType(record){if(SEQUENCE.has(record.id))return 'SEQUENCE';if(NUMBER.has(record.id))return 'NUMBER';if(WORDPLAY.has(record.id))return 'WORDPLAY';if(COMPARISON.has(record.id))return 'COMPARISON';if(/[()?!~]/.test(record.sourceMnemonic)||record.sourceMnemonic.length>14)return 'SENTENCE_ASSOCIATION';return 'ACROSTIC'}
+function aliases(title){const hard={'신라 멸망/항복 관련':['경순왕','신라 항복'],'후삼국 통일':['후삼국 통일'],'경운궁':['경운궁','덕수궁'],'제너럴셔먼호':['제너럴 셔먼호'],'광성보·어재연':['광성보','어재연'],'정치·경제적 각성 촉구':['정치적 경제적 각성','각성 촉구'],'민족 단결':['민족 단결'],'기회주의자 배격':['기회주의자 배격'],'6관등 아찬':['아찬'],'10관등 대나마':['대나마'],'12관등 대사':['대사']};return hard[title]||String(title).split(/[·/(),]/).map(value=>value.trim()).filter(value=>norm(value).length>=2)}
+function evidence(keyword){const terms=aliases(keyword.title),hits=corpus.filter(row=>terms.some(term=>row.normalized.includes(norm(term))));return hits.slice(0,3).map(row=>({source:'dist/official-exam-explanations.json',officialQuestionId:row.id,matchTerms:terms}))}
+function fallbackKeywords(record){const rows=FALLBACK_KEYWORDS[record.id]||[];if(rows.length)return rows.map(([cue,title])=>({cue,title}));return [{cue:record.title,title:record.title}]}
+
+const cards=source.records.map((record,index)=>{
+ const curated=CURATED[record.id],rawKeywords=record.keywords.length?record.keywords:fallbackKeywords(record);
+ const keywords=rawKeywords.map((keyword,keywordIndex)=>({order:keywordIndex+1,cue:keyword.cue,title:keyword.title,shortExplanation:curated?.notes?.[keywordIndex]||`${keyword.title} 항목은 원자료의 cue 매핑을 보존한 것으로, 공개 전 역사 검수가 필요합니다.`,evidence:[{source:sourcePath,sourceId:record.id,quote:`${keyword.cue} → ${keyword.title}`}]}));
+ const verifiedFacts=keywords.map(keyword=>({...keyword,evidence:evidence(keyword),verificationStatus:'CANONICAL_TEXT_MATCH'})).filter(keyword=>keyword.evidence.length);
+ const status=VERIFIED.has(record.id)?'VERIFIED':(REVIEW_REQUIRED.has(record.id)||/REVIEW_REQUIRED|검증|대조|재확인|확인 필요|원자료/.test(record.interpretation)?'REVIEW_REQUIRED':'CANDIDATE');
+ const publicationStatus=status==='VERIFIED'?'PUBLISHED':'EXCLUDED',publicMnemonic=curated?.mnemonic||'';
+ const id=STABLE_IDS[record.id]||`mnemonic-${record.id.toLowerCase()}`;
+ const searchable=[record.title,publicMnemonic,...keywords.flatMap(keyword=>[keyword.cue,keyword.title]),record.eraLabel].join(' ');
+ const matches=keywords.flatMap(keyword=>evidence(keyword).map(item=>({...item,cue:keyword.cue,fact:keyword.title}))),relatedOfficialQuestionIds=[...new Set(matches.map(item=>item.officialQuestionId))].slice(0,12);
+ return {id,sourceId:record.id,number:index+1,era:era(record),period:record.eraLabel,title:record.title,category:curated?.category||category(record),memoryType:memoryType(record),sourceMnemonic:record.sourceMnemonic,originalMnemonic:record.sourceMnemonic,mnemonic:publicMnemonic,publicMnemonic,normalizedSearchText:norm(searchable),keywords,sourceFacts:keywords,facts:keywords,verifiedFacts,background:curated?.background||null,detailSections:curated?.detailSections||[],causalFlow:curated?.causalFlow||[],examPoints:curated?.examPoints||[],years:curated?.years||record.eraLabel,relatedOfficialQuestionIds,relatedSceneIds:[],linkEvidence:matches.filter(item=>relatedOfficialQuestionIds.includes(item.officialQuestionId)),status,publicationStatus,sourceReviewStatus:status,learningStatus:'NEW',rightsStatus:publicationStatus==='PUBLISHED'?(publicMnemonic===record.sourceMnemonic?'COMMON_SHORT_FORM_REVIEWED':'APP_ORIGINAL_PUBLIC_MNEMONIC'):'USER_SUPPLIED_INTERNAL_REVIEW_ONLY',reviewReason:status==='VERIFIED'?'원문 cue와 역사 사실을 대조하고 공개용 문구 및 상세 설명을 별도로 작성했습니다.':status==='REVIEW_REQUIRED'?'OCR·연대·인물·정책 또는 표현 권리 검토가 필요해 공개하지 않습니다.':'원문 inventory와 cue를 보존했으며 역사·권리 검수 전까지 공개하지 않습니다.',sourceInterpretation:record.interpretation,topicTags:[record.eraLabel,record.title],searchTerms:[record.title,publicMnemonic,...keywords.flatMap(keyword=>[keyword.cue,keyword.title])],recall:{chronological:memoryType(record)==='SEQUENCE'},cueCount:keywords.length};
 });
-assert.equal(refs.length,111);
-const sourceRows=new Map(fs.readFileSync(root+'cue-facts.txt','utf8').split(/\r?\n/).filter(x=>/^\d+\|/.test(x)).map(line=>{
- const [n,page,rows]=line.split('|');return [Number(n),{page:Number(page),facts:rows.split(';').map((row,i)=>{const at=row.indexOf('=');return {order:i+1,cue:row.slice(0,at),title:row.slice(at+1)}})}];
-}));
-const raw=fs.readFileSync(root+'raw-source.txt','utf8');
-const norm=s=>String(s||'').normalize('NFKC').replace(/[\s\p{P}\p{S}]/gu,'').toLowerCase();
-const canonical=JSON.parse(fs.readFileSync('dist/official-exam-explanations.json','utf8')).records;
-// Inspect only explanation/clue/answer text; never manufacture a link from era alone.
-const corpus=canonical.map(r=>({id:r.officialQuestionId,text:[r.clue,r.correctChoice,r.explanation].join(' '),normalized:norm([r.clue,r.correctChoice,r.explanation].join(' '))}));
-const ids={3:'memory-palaces',4:'memory-paleolithic-early',5:'memory-paleolithic-middle',6:'memory-paleolithic-late',7:'memory-neolithic-sites',8:'memory-neolithic-pottery',9:'memory-neolithic-millet',10:'memory-bronze-farming',11:'memory-bronze-pottery',12:'memory-iron-pottery',13:'memory-gunjosun-range',14:'memory-eight-laws',15:'memory-early-states',16:'memory-silla-soji',17:'memory-silla-jinheung',18:'memory-silla-rebellions-import',19:'memory-balhae-kings',24:'memory-nine-seodang',26:'memory-gong-go-sin-il-import',27:'memory-gwangjong-mnemonic',29:'memory-hyeonjong',30:'memory-sukjong',31:'memory-yejong',32:'memory-choongseon',33:'memory-gongmin',34:'memory-woowang',43:'memory-wonhyo-mnemonic',44:'memory-uisang',45:'memory-five-schools',47:'memory-calendars',49:'memory-sejong-printing',50:'memory-paintings-import',51:'memory-hongdaeyong',54:'memory-jeongdojeon-books',55:'memory-taejong-sejong',59:'memory-five-armies-import',61:'memory-four-purges',62:'memory-jeongjo-books',63:'memory-jeongjo-reforms',64:'memory-yeongjo-reforms',67:'memory-land-systems',71:'memory-jo-gwangjo',74:'memory-treaties',75:'memory-opening-order',76:'memory-gapshin-after',78:'memory-donghak-import',80:'memory-gapoh-reforms',92:'memory-sovereignty-import',93:'memory-secret-societies',94:'memory-manchuria-1910',99:'memory-cheongsanri',103:'memory-singan-import',104:'memory-historians-import',108:'memory-gwangbok-parties',109:'memory-roh-import',1:'memory-world-records',2:'memory-world-heritage'};
-const review={1:'해인사·승정원 등 기관명과 기록유산명이 혼재. 전체 목록의 등재 대상 검증 필요.',2:'PRIMARY 참과 RAW 창(창덕궁)의 cue 차이.',4:'PRIMARY (검)검(도종)과 RAW (점)검(도중)이 다름. 최초 인골의 시기 분류 검증 필요.',5:'PRIMARY 별점과 RAW 빌점의 cue 차이.',6:'PRIMARY 동과 RAW 똥의 표기 차이.',13:'PRIMARY 특과 RAW 북의 cue 차이.',14:'노비50만 배상 표기의 단위·의미 검증 필요.',16:'6촌→6부 정비의 왕별 귀속 검증 필요.',17:'PRIMARY 거와 RAW 개(개국)의 cue 차이.',18:'96각간 등 인물·사건 OCR 검증 필요.',20:'PRIMARY 고고천진동과 RAW 고천진동 차이.',22:'PRIMARY 살과 RAW 상(상경) 차이.',24:'PRIMARY 적백·백(관)백과 RAW 적벽·백(군)빽 차이.',25:'원문의 무대는 무태 여부 검증 필요. 연호 목록이며 일반 후삼국 사건 목록이 아님.',27:'PRIMARY 역사와 RAW 여사(균여·귀법사)의 cue 차이.',28:'PRIMARY 문종·경종/나비엔 남대문과 RAW 문종/경동 나비엔 남대문 차이.',29:'군·창 등의 법령명과 제도 귀속 검증 필요.',31:'PRIMARY 7자와 RAW 7재 차이.',33:'웅/몽·흥/홍·전신변정도감 등 원문 차이와 오타.',35:'홍/흥, 최이/최우와 흥녕부·진양부 대응 검증 필요.',36:'PRIMARY 윤소충과 RAW 윤소종 표기 차이.',37:'종부/중부/중정부와 사건별 연도 1174의 적용 범위 검증 필요.',42:'개원필경·해인사묘질 상탑비 등 서명 OCR 검증 필요.',43:'금강삼매경로·십문화쟁론의 서명 검증 필요.',44:'화엄승법계도의 정확한 서명 검증 필요.',45:'뿔/보덕·겨울/계율 등 PRIMARY와 RAW cue 차이.',46:'흑/홍·성산주파 등 승려와 산문 대응 OCR 검증 필요.',48:'PRIMARY 통과 RAW 봉(봉정사)이 충돌.',49:'PRIMARY 조자와 RAW 소자(주자소)가 충돌.',50:'PRIMARY 동과 RAW 몽, 몽유동원도·금강진도 등의 서명 검증 필요.',51:'담헌전 등 서명 OCR 검증 필요.',55:'PRIMARY 계창사의훈과 RAW 계창사양호 차이.',56:'PRIMARY 감·양과 RAW 갑·앙의 차이.',57:'육정상정소·경극대전 등 명칭 OCR 검증 필요.',58:'PRIMARY 둥과 RAW 동의 cue 차이.',60:'목록의 삼·을 누락과 조약·왜변의 시간 순서 확인 필요.',61:'원문의 신사환국-노론 및 갑술환국-소론 대응은 역사 검증 필요. 그대로 공개하지 않음.',63:'기/거, 검사관/검서관, 수령향역 등 OCR과 정책 귀속 검증 필요.',65:'박해 목록에 신해통공·기유박해가 혼재. 원문 보존 후 공개 보류.',66:'민정문서는 통일 신라로 분류. 1/10 징수 등 해석 검증 필요.',67:'구구려 오타 보존. 측량법 명칭 검증 필요.',68:'제목 역분전과 내용 전시과가 다름. PRIMARY 개국과 RAW 개목 차이.',70:'PRIMARY 돈대상과 RAW 동대상(동래·대일·내상) 차이.',71:'PRIMARY 위험 경험과 RAW 위헌 경향 차이.',72:'PRIMARY와 RAW 문장 차이가 큼. 당=포 등 잘린 풀이와 전투 인물·시점 검증 필요.',74:'조일수호조규속양·조일통상상정 등 조약명 OCR 검증 필요.',75:'PRIMARY 명독과 RAW 명동, 이탈리아 항목이 RAW에서 연도만 남음.',77:'기준 목록은 축약형. RAW 전체 문구는 rawMnemonic에 보존; 누락 조항과 표현 검토 필요.',79:'욕설 포함. 원문은 보존하고 publicMnemonic은 비워 공개 보류.',81:'시위대 설치의 시기 귀속 검증 필요.',83:'징병제 등 홍범14조 원문과 대조 필요.',84:'탁 cue의 원문 풀이가 누락; 황권전제·입헌군주제 혼재.',85:'광서·개국·건양·광무·융희를 모두 고종 연호로 볼 수 없는 문제 검증 필요.',86:'허위의 의병 시기와 유인석 지역 표기의 의미 검증 필요.',88:'PRIMARY 대마와 RAW 대만(만세보) 차이.',89:'원학사와 경신학교의 시기·명칭 검증 필요.',91:'1900 묶음에 1890년대 학교가 포함되어 연대 분류 검증 필요.',93:'자립관 등 단체명 검증 필요.',98:'PRIMARY 미소홍 공대한과 RAW 미스흥 공대의 cue 차이.',102:'혁명조선군 명칭 OCR 검증 필요.',103:'PRIMARY 정과 RAW 경의 cue 차이.',104:'조선사 연구회·모창극찬 등 원문 오류 검증 필요.',105:'혼식·혼백 cue와 박훈식/박혼식 차이; 저서명 교정 검토 필요.',106:'문신평/문심평과 일편단심, 호암·얼 등 대응 검증 필요.',109:'NO 핵을 비핵화 공동선언으로 해석할 근거 확인 필요.',110:'PRIMARY 금사정과 RAW 급사정, 2차 상봉의 귀속 검증 필요.'};
-const approved=new Set([3,7,8,9,10,11,12,15,19,21,23,26,30,32,34,38,39,40,41,47,52,53,54,59,62,64,69,73,76,78,80,82,87,90,92,94,95,96,97,99,100,101,107,108,111]);
-const era=n=>n===3?'joseon':n<=24?'ancient':n<=41?'goryeo':n<=46?'ancient':n===48||n===53||n===68||n===69?'goryeo':n===66||n===67?'ancient':n<=72?'joseon':n<=92?'empire':n<=106?'occupation':'republic';
-const sequence=new Set([17,18,19,26,37,38,39,40,41,60,61,65,68,73,74,75,76,78,80,81,82,85,87,88,89,90,91,92,99,107,111]);
-const numbers=new Set([14,24,25,37,38,39,40,41,89,110]);
-const aliases={ '경운궁':['경운궁','덕수궁'],'국민당':['국민당'],'공산전투':['공산 전투'],'고창전투':['고창 전투'],'신라멸망':['경순왕','신라 항복'],'발해멸망':['발해 멸망'],'통일':['후삼국 통일'], '굴식돌방무덤':['굴식 돌방무덤'],'정혜공주':['정혜 공주'], '돌사자상':['돌사자'], '팔만대장경':['팔만대장경'], 'UR협정체결':['우루과이 라운드','UR'], 'IMF 위기':['IMF'], '전로한족회 중앙총회':['전로 한족회 중앙 총회'], '흥녕부':['흥녕부'], '경정전시과':['경정 전시과'] };
-function evidence(f){
- const terms=aliases[f.title]||[f.title];
- const hits=corpus.filter(r=>terms.some(term=>norm(term).length>=2&&r.normalized.includes(norm(term))));
- return hits.slice(0,3).map(r=>({source:'dist/official-exam-explanations.json',officialQuestionId:r.id,matchTerms:terms}));
-}
-const cards=refs.map(r=>{
- const s=sourceRows.get(r.number);assert(s,`Missing source ${r.number}`);
- const sourceFacts=s.facts.map(f=>({...f,evidence:[{source:root+'raw-source.txt',page:s.page,cue:f.cue,quote:f.title}]}));
- const verifiedFacts=sourceFacts.map(f=>({...f,evidence:evidence(f),verificationStatus:'CANONICAL_TEXT_MATCH'})).filter(f=>f.evidence.length);
- const sourceMismatch=review[r.number];
- const allCovered=verifiedFacts.length===sourceFacts.length;
- const status=sourceMismatch?'REVIEW_REQUIRED':approved.has(r.number)&&allCovered?'PUBLISHED':'CANDIDATE';
- return {...r,id:ids[r.number]||`memory-baseline-${String(r.number).padStart(3,'0')}`,era:era(r.number),period:r.title,category:r.number<=12?'유적·문화':r.number<=41?'왕·정책':r.number<=72?'제도·문화':r.number<=92?'개항·개혁':r.number<=106?'독립운동':'현대사',mnemonic:r.originalMnemonic,publicMnemonic:r.number===79?'':r.originalMnemonic,memoryType:sequence.has(r.number)?'SEQUENCE':numbers.has(r.number)?'NUMBER':r.originalMnemonic.includes('(')?'SENTENCE':'ACROSTIC',sourceUnits:[`P${s.page}`],sourceFacts,verifiedFacts,facts:sourceFacts,status,sourceReviewStatus:sourceMismatch?'SOURCE_CONFLICT':'RAW_MAPPING_TRANSCRIBED',moderationStatus:r.number===79?'REVIEW_REQUIRED':'REVIEWED',rightsStatus:'USER_SUPPLIED_SOURCE_ATTRIBUTED_NO_LICENSE_CLAIM',reviewReason:sourceMismatch||(allCovered?'cue별 canonical 텍스트 대조 완료; 뜻을 새로 만들지 않음.':`canonical 근거 미확보 ${sourceFacts.length-verifiedFacts.length}/${sourceFacts.length}개. sourceFacts 전사 완료, 공개 보류.`),relatedOfficialQuestionIds:[],relatedSceneIds:[],linkEvidence:[],topicTags:[r.title],searchTerms:[r.title,...sourceFacts.map(f=>f.title)],recall:{chronological:sequence.has(r.number)},baselineNumber:r.number};
-});
-cards.find(c=>c.number===77).rawMnemonic='순(수한) 근혜 환(갑까지) 지조(지키니) 내시(들이) 호(시)탐(탐) (사)귀(자고) (매달린다)';
-const extras=[
- ['memory-tombs','ancient','정혜공주 무덤','식혜 6(개) 사자','NUMBER','58','식=굴식돌방무덤;혜=정혜공주;6=돈화현 육정산;사자=돌사자상'],
- ['memory-tomb-bread','ancient','굴식 돌방무덤 말장난','굴(식)돌(방)무덤 = 식방= 식빵','WORDPLAY','58','식방=굴식돌방무덤;식빵=굴식돌방무덤'],
- ['memory-tomb-goguryeo','ancient','고구려 후기 무덤','고구려는 후식으로 식빵 먹음','STORY','58','후식=고구려 후기;식빵=굴식돌방무덤'],
- ['memory-tomb-baekje','ancient','백제 사비 무덤','백제는 사비로 식빵 사먹음','STORY','58','사비=백제 사비 시대;식빵=굴식돌방무덤'],
- ['memory-tomb-silla','ancient','통일 신라 무덤','신라는 통후추 식빵 먹음','STORY','58','통후추=신라 통일 후;식빵=굴식돌방무덤'],
- ['memory-tomb-balhae','ancient','발해 무덤 이야기','발해 사자에게 돈육 식빵','STORY','58','사자=돌사자상;돈육=돈화현 육정산;식빵=굴식돌방무덤'],
- ['memory-tomb-stone-goguryeo','ancient','고구려 초기 무덤','고구려는 초무무','WORDPLAY','58','초=초기;무무=돌무지무덤'],
- ['memory-tomb-stone-baekje','ancient','백제 한성 무덤','백제는 한계무무','WORDPLAY','58','한=한성시대;계=계단식;무무=돌무지무덤'],
- ['memory-goryeo-seongjong','goryeo','고려 성종','2612(원) 의상비 수건향 분유향 노문국','NUMBER','22','2=2성;6=6부;12=12목 지방관파견;의=의창;상=상평창;비=비서성(도서관);수=수서원(도서관);건=건원중보;향=향리제도;분=분사제도정비;유=유교정치;향=향교설치;노=노비환천법;문=문신월과법;국=국자감'],
- ['memory-bone-rank','ancient','신라 골품 관등','6두품*1=6관등\n5두품*2=10관등\n4두품*3=12관등','NUMBER','50','6두품*1=6관등;5두품*2=10관등;4두품*3=12관등'],
- ['memory-goguryeo-kings','ancient','고국원왕','원통하게 활맞아 죽은 고국원왕','WORDPLAY','12','원통=고국원왕'],
- ['memory-goguryeo-yang','ancient','고국양왕','광개토 아버지 고국양왕','SENTENCE','12','광개토 아버지=고국양왕'],
- ['memory-sosurim','ancient','소수림왕','학(태학)교(불교)령(율령)','ACROSTIC','12','학=태학;교=불교;령=율령'],
- ['memory-yeongyang','ancient','영양왕','양(영양왕)양(양제침입)신집(이문진 신집 5권)','ACROSTIC','12','양=영양왕;양=양제침입;신집=이문진 신집 5권'],
- ['memory-korean-war','republic','6·25 전쟁','똥침->남침 북한이 남한한테 똥침가격을 하였다.','WORDPLAY','110','남침=북한이 남한한테 똥침가격을 하였다.']
-];
-for(const [id,e,title,mnemonic,memoryType,page,rows] of extras){
- const sourceFacts=rows.split(';').map((row,i)=>{const at=row.indexOf('=');return {order:i+1,cue:row.slice(0,at),title:row.slice(at+1),evidence:[{source:root+'raw-source.txt',page:Number(page),quote:row.slice(at+1)}]}});
- cards.push({id,number:null,title,era:e,period:title,category:'추가 원문',mnemonic,originalMnemonic:mnemonic,publicMnemonic:mnemonic,memoryType,sourceUnits:[`P${page}`],sourceFacts,facts:sourceFacts,verifiedFacts:sourceFacts.map(f=>({...f,evidence:evidence(f),verificationStatus:'CANONICAL_TEXT_MATCH'})).filter(f=>f.evidence.length),status:'CANDIDATE',sourceReviewStatus:'RAW_MAPPING_TRANSCRIBED',moderationStatus:'REVIEWED',rightsStatus:'USER_SUPPLIED_SOURCE_ATTRIBUTED_NO_LICENSE_CLAIM',reviewReason:'기준 목록 외 원문 기억 장치. cue 매핑은 보존; 사실·표현 공개 검토 대기.',relatedOfficialQuestionIds:[],relatedSceneIds:[],linkEvidence:[],topicTags:['문화'],searchTerms:[title,...sourceFacts.map(f=>f.title)],recall:{chronological:false}});
-}
-for(const card of cards){
- for(const f of card.facts)f.shortExplanation=`${f.title}.`;
- card.cueCount=card.sourceFacts.length;
- // Canonical matches are auditable candidates for a connection, not fabricated era fallbacks.
- const matches=card.verifiedFacts.flatMap(f=>f.evidence.filter(e=>norm(f.title).length>=3).map(e=>({...e,cue:f.cue,fact:f.title})));
- card.linkEvidence=matches;
- card.relatedOfficialQuestionIds=[...new Set(matches.map(e=>e.officialQuestionId))];
-}
-// Explicitly reviewed facts. Original cue mappings and mnemonic text remain intact.
-const curated=JSON.parse(fs.readFileSync(root+'verified-facts.json','utf8'));
-for(const entry of curated){
- const card=cards.find(c=>c.number===entry.number);assert(card);
- assert.deepEqual(entry.facts.map(f=>[f.cue,f.title]),card.sourceFacts.map(f=>[f.cue,f.title]));
- card.verifiedFacts=entry.facts.map((f,i)=>({...f,order:i+1,evidence:[{source:f.source||entry.source}],verificationStatus:'PRIMARY_SOURCE_REVIEWED'}));
- card.facts=card.verifiedFacts;
- card.status='PUBLISHED';card.sourceReviewStatus='REVIEWED';card.reviewReason='원문 cue 대응과 공식 역사 자료 대조 완료. 암기 문구는 원문 유지.';
-}
-const jinul=cards.find(c=>c.number===53);
-if(jinul.status==='PUBLISHED')jinul.facts.forEach((f,i)=>f.shortExplanation=i===0?'깨달음을 얻은 뒤에도 점진적으로 수행해야 한다는 지눌의 수행론입니다.':'선정과 지혜를 함께 닦아야 한다는 지눌의 수행론입니다.');
-const data={schemaVersion:3,baselineCount:111,sourceHashes:Object.fromEntries(['primary-reference.txt','raw-source.txt','cue-facts.txt'].map(file=>[file,crypto.createHash('sha256').update(fs.readFileSync(root+file,'utf8').replace(/\r\n/g,'\n')).digest('hex')])),cards};
+
+assert.equal(new Set(cards.map(card=>card.sourceId)).size,118);assert.equal(new Set(cards.map(card=>card.id)).size,118);
+for(const card of cards){assert(card.sourceMnemonic,'empty sourceMnemonic '+card.sourceId);assert(card.keywords.length,'empty keywords '+card.sourceId);if(card.publicationStatus==='PUBLISHED'){assert(card.mnemonic&&card.background&&card.causalFlow.length&&card.examPoints.length,'incomplete published content '+card.sourceId);assert.equal(card.facts.length,card.keywords.length)}}
+const data={schemaVersion:4,explicitInputCount:118,additionalSourceRecords:0,totalInventory:cards.length,sourceHashes:{'explicit-request.json':crypto.createHash('sha256').update(fs.readFileSync(sourcePath,'utf8').replace(/\r\n/g,'\n')).digest('hex')},cards};
 fs.writeFileSync('dist/mnemonic-inventory.json',JSON.stringify(data,null,2)+'\n');
-fs.writeFileSync('dist/mnemonic-data.js','/* Generated by scripts/rebuild-mnemonics.cjs; edit the source inventory instead. */\n'+`globalThis.MNEMONIC_INVENTORY=${JSON.stringify(cards)};\nglobalThis.MNEMONIC_IMPORT_BASELINE=globalThis.MNEMONIC_INVENTORY.filter(c=>c.number!==null);\nglobalThis.MNEMONIC_IMPORT_CARDS=globalThis.MNEMONIC_INVENTORY;\nglobalThis.MNEMONIC_IMPORT_CANDIDATES=globalThis.MNEMONIC_INVENTORY.filter(c=>c.status!=='PUBLISHED');\n`);
-console.log(JSON.stringify({baseline:refs.length,total:cards.length,statuses:cards.reduce((s,c)=>(s[c.status]=(s[c.status]||0)+1,s),{}),facts:cards.reduce((n,c)=>n+c.facts.length,0)}));
+fs.writeFileSync('dist/mnemonic-data.js','/* Generated from docs/mnemonic-sources/explicit-request.json. */\n'+`globalThis.MNEMONIC_INVENTORY=${JSON.stringify(cards)};\nglobalThis.MNEMONIC_IMPORT_BASELINE=globalThis.MNEMONIC_INVENTORY;\nglobalThis.MNEMONIC_IMPORT_CARDS=globalThis.MNEMONIC_INVENTORY;\nglobalThis.MNEMONIC_IMPORT_CANDIDATES=globalThis.MNEMONIC_INVENTORY.filter(card=>card.publicationStatus!=='PUBLISHED');\n`);
+console.log(JSON.stringify({explicit:118,total:cards.length,statuses:cards.reduce((out,card)=>(out[card.status]=(out[card.status]||0)+1,out),{}),published:cards.filter(card=>card.publicationStatus==='PUBLISHED').length,facts:cards.reduce((sum,card)=>sum+card.facts.length,0)}));

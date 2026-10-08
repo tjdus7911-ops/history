@@ -1,19 +1,27 @@
 {
-  "baseline": 111,
-  "imported": 111,
-  "extra": 15,
-  "total": 126,
+  "explicitInput": 118,
+  "additionalSourceRecords": 0,
+  "total": 118,
   "statuses": {
-    "REVIEW_REQUIRED": 66,
-    "PUBLISHED": 3,
-    "CANDIDATE": 57
+    "REVIEW_REQUIRED": 90,
+    "VERIFIED": 10,
+    "CANDIDATE": 18
   },
-  "facts": 823,
-  "duplicateRemoved": 0,
-  "removedConceptCandidates": 15,
-  "officialLinks": 505,
-  "uniqueOfficialQuestions": 401,
-  "sceneLinks": 33,
-  "uniqueScenes": 23,
-  "visibleLegacy": 4
+  "productionPublished": 10,
+  "excluded": 108,
+  "duplicate": 0,
+  "facts": 810,
+  "mnemonicTopicsLinked": 109,
+  "officialLinks": 744,
+  "uniqueOfficialQuestions": 533,
+  "unlinkedTopics": 9,
+  "sceneLinks": 40,
+  "uniqueScenes": 29,
+  "sourcePreservation": {
+    "exact": true,
+    "protectedSamples": true,
+    "parentheses": true,
+    "numbers": true,
+    "english": true
+  }
 }

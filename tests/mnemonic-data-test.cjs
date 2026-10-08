@@ -1,36 +1,49 @@
 const fs=require('fs'),assert=require('assert'),crypto=require('crypto');
 function validate(data,runtime){
- const cards=data.cards,baseline=cards.filter(c=>c.number!==null);
- assert.equal(baseline.length,111,'missing baseline mnemonic');
- assert.deepEqual(baseline.map(c=>c.number).sort((a,b)=>a-b),Array.from({length:111},(_,i)=>i+1));
- for(const [file,hash] of Object.entries(data.sourceHashes))assert.equal(crypto.createHash('sha256').update(fs.readFileSync('docs/mnemonic-sources/'+file,'utf8').replace(/\r\n/g,'\n')).digest('hex'),hash,'stale source '+file);
- const primary=fs.readFileSync('docs/mnemonic-sources/primary-reference.txt','utf8');
- const normalize=s=>s.normalize('NFKC').replace(/[\s\p{P}\p{S}]/gu,'');
- const raw=normalize(fs.readFileSync('docs/mnemonic-sources/raw-source.txt','utf8'));
- const official=new Set(runtime.official),scenes=new Set(runtime.scenes),ids=new Set(),phrases=new Set();
- const eras=new Set(['ancient','goryeo','joseon','empire','occupation','republic']),types=new Set(['ACROSTIC','SENTENCE','WORDPLAY','SEQUENCE','NUMBER','STORY','RHYTHM','COMPARE']);
- for(const c of cards){
-  assert(c.id&&!ids.has(c.id),'duplicate/empty id '+c.id);ids.add(c.id);
-  const phrase=c.originalMnemonic.replace(/\s+/g,'');assert(phrase&&!phrases.has(phrase),'duplicate/empty mnemonic '+c.id);phrases.add(phrase);
-  assert.notEqual(phrase,c.title.replace(/\s+/g,''));assert(eras.has(c.era));assert(types.has(c.memoryType));
-  if(c.number!==null)assert(primary.replace(/\r/g,'').includes(c.originalMnemonic),'changed primary text '+c.number);
-  assert(c.sourceFacts.length&&c.facts.length&&c.cueCount===c.sourceFacts.length);
-  for(const f of c.sourceFacts){assert(f.cue&&f.title&&f.evidence.length,'empty source fact '+c.id);assert(raw.includes(normalize(f.title)),'fact absent from RAW '+c.id+': '+f.title);}
-  assert(['PUBLISHED','CANDIDATE','REVIEW_REQUIRED'].includes(c.status));
-  if(c.status==='PUBLISHED'){assert(c.publicMnemonic);assert.equal(c.verifiedFacts.length,c.sourceFacts.length);assert(c.verifiedFacts.every(f=>f.evidence.length));}
-  const live=runtime.cards.find(x=>x.id===c.id);assert(live);
-  assert.deepEqual(c.relatedOfficialQuestionIds,live.relatedOfficialQuestionIds,'stale canonical links '+c.id);
-  assert.deepEqual(c.relatedSceneIds,live.relatedSceneIds,'stale scene links '+c.id);
-  for(const id of live.relatedOfficialQuestionIds)assert(official.has(id),'invalid official id '+id);
-  for(const id of live.relatedSceneIds)assert(scenes.has(id),'invalid scene id '+id);
+ const cards=data.cards,source=JSON.parse(fs.readFileSync('docs/mnemonic-sources/explicit-request.json','utf8'));
+ assert.equal(data.explicitInputCount,118,'wrong explicit input count');
+ assert.equal(cards.length,118,'missing explicit mnemonic record');
+ assert.equal(source.records.length,118,'source dataset must contain 118 records');
+ assert.deepEqual(cards.reduce((out,card)=>(out[card.sourceId[0]]=(out[card.sourceId[0]]||0)+1,out),{}),{A:15,B:11,C:20,D:32,E:20,F:20});
+ assert.deepEqual(cards.map(card=>card.sourceId),source.records.map(record=>record.id),'source order changed');
+ const expectedIds=[...Array(15)].map((_,index)=>`A${String(index+1).padStart(3,'0')}`).concat(...['B','C','D','E','F'].map((group,groupIndex)=>[...Array([11,20,32,20,20][groupIndex])].map((_,index)=>`${group}${String(index+1).padStart(3,'0')}`)));
+ assert.deepEqual(cards.map(card=>card.sourceId),expectedIds);
+ const sourceHash=crypto.createHash('sha256').update(fs.readFileSync('docs/mnemonic-sources/explicit-request.json','utf8').replace(/\r\n/g,'\n')).digest('hex');
+ assert.equal(data.sourceHashes['explicit-request.json'],sourceHash,'stale explicit source hash');
+ const official=new Set(runtime.official),scenes=new Set(runtime.scenes),ids=new Set();
+ const eras=new Set(['ancient','goryeo','joseon','empire','occupation','republic']);
+ const types=new Set(['ACROSTIC','SENTENCE_ASSOCIATION','WORDPLAY','SEQUENCE','RHYTHM','NUMBER','COMPARISON']);
+ const statuses=new Set(['VERIFIED','REVIEW_REQUIRED','CANDIDATE']);
+ const sourceById=new Map(source.records.map(record=>[record.id,record]));
+ for(const card of cards){
+  assert(card.id&&!ids.has(card.id),'duplicate/empty app id '+card.id);ids.add(card.id);
+  assert.equal(card.sourceMnemonic,sourceById.get(card.sourceId).sourceMnemonic,'changed sourceMnemonic '+card.sourceId);
+  assert(card.title&&card.era&&eras.has(card.era));assert(types.has(card.memoryType),card.sourceId+' invalid memoryType');
+  assert(statuses.has(card.status),card.sourceId+' invalid review status');
+  assert(Array.isArray(card.keywords)&&card.keywords.length&&card.cueCount===card.keywords.length,card.sourceId+' missing keywords');
+  assert(card.keywords.every((keyword,index)=>keyword.order===index+1&&keyword.cue&&keyword.title&&keyword.shortExplanation),card.sourceId+' incomplete keywords');
+  assert(card.normalizedSearchText.includes(card.title.normalize('NFKC').replace(/[\s\p{P}\p{S}]/gu,'').toLowerCase()),card.sourceId+' title not searchable');
+  if(card.publicationStatus==='PUBLISHED'){
+   assert.equal(card.status,'VERIFIED',card.sourceId+' unverified record published');
+   assert(card.mnemonic&&card.rightsStatus!=='USER_SUPPLIED_INTERNAL_REVIEW_ONLY',card.sourceId+' public mnemonic rights status missing');
+   assert(card.background?.summary&&card.causalFlow.length&&card.examPoints.length,card.sourceId+' incomplete learning detail');
+  }else assert.notEqual(card.status,'VERIFIED',card.sourceId+' verified record unexpectedly excluded');
+  if(card.status==='REVIEW_REQUIRED')assert.equal(card.publicationStatus,'EXCLUDED');
+  assert.deepEqual(card.relatedOfficialQuestionIds,runtime.cards.find(item=>item.id===card.id).relatedOfficialQuestionIds,'stale official links '+card.sourceId);
+  assert.deepEqual(card.relatedSceneIds,runtime.cards.find(item=>item.id===card.id).relatedSceneIds,'stale Story links '+card.sourceId);
+  for(const id of card.relatedOfficialQuestionIds)assert(official.has(id),'invalid officialQuestionId '+id);
+  for(const id of card.relatedSceneIds)assert(scenes.has(id),'invalid relatedSceneId '+id);
  }
- assert.deepEqual(runtime.cards.map(c=>c.id),cards.map(c=>c.id),'stale generated JS');
+ const protectedSamples=['복덕(방) 경희(가) 운(다)','광노(안)과 공복 주제(에) 송광풍 여사~','(2개의) 흥수똥 달제양','효심(에는) 이의있삼?','병(이)제 병문한 정양 오신 초덕광 척','원(산에서) 동경(까지) 배(타고) 26(km)','UWOI'];
+ for(const sample of protectedSamples)assert(cards.some(card=>card.sourceMnemonic===sample),'protected source string changed: '+sample);
+ assert.equal(new Set(cards.map(card=>card.sourceMnemonic)).size,118,'duplicate sourceMnemonic');
+ assert.deepEqual(runtime.cards.map(card=>card.sourceId),cards.map(card=>card.sourceId),'stale generated JS');
  return cards.length;
 }
 module.exports=validate;
 if(require.main===module){
  const data=JSON.parse(fs.readFileSync('dist/mnemonic-inventory.json','utf8')),runtime=require('../scripts/mnemonic-runtime.cjs')();
  const count=validate(data,runtime);
- assert.throws(()=>validate({...data,cards:data.cards.filter(c=>c.number!==111)},runtime),/missing baseline/,'missing baseline must fail the build gate');
- console.log(`PASS: ${count} source mnemonics, all 111 baseline entries, unique IDs/text, fact cues and canonical/Story link validation; missing-entry fixture rejected.`);
+ assert.throws(()=>validate({...data,cards:data.cards.filter(card=>card.sourceId!=='F020')},runtime),/missing explicit mnemonic record/,'missing explicit record must fail the build gate');
+ console.log(`PASS: ${count} explicit mnemonic records, exact source strings, review gates, structured detail, canonical question IDs and Story IDs.`);
 }

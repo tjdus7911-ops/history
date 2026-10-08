@@ -1,168 +1,413 @@
-# 연상기억법 원문 대조 inventory
+# MNEMONIC IMPORT REVIEW
 
-기준 목록 01–111 전체를 원문 그대로 수입했습니다. sourceFacts는 RAW 전사이며 역사 사실의 자동 승인과 구별합니다. PUBLISHED만 앱에 노출합니다. canonical 텍스트에 항목명이 등장하는 것은 연결 근거이며, 후보 카드 전체의 역사 검수를 의미하지 않습니다.
+## Summary
 
-```json
-{
-  "baseline": 111,
-  "imported": 111,
-  "extra": 15,
-  "total": 126,
-  "statuses": {
-    "REVIEW_REQUIRED": 66,
-    "PUBLISHED": 3,
-    "CANDIDATE": 57
-  },
-  "facts": 823,
-  "duplicateRemoved": 0,
-  "removedConceptCandidates": 15,
-  "officialLinks": 505,
-  "uniqueOfficialQuestions": 401,
-  "sceneLinks": 33,
-  "uniqueScenes": 23,
-  "visibleLegacy": 4
-}
-```
+- Explicit input records: **118**
+- Additional records discovered: **0**
+- Total inventory: **118**
+- VERIFIED: **10**
+- REVIEW_REQUIRED: **90**
+- CANDIDATE: **18**
+- Production published: **10**
+- Excluded: **108**
+- Duplicate: **0**
 
-기존 정상 암기법 4개와 학습 저장 ID는 유지합니다. 원문 없는 개념 후보 15개는 제거했습니다. 중복 문자열은 없어서 중복 제거 0개입니다. 추가 원문 15개는 공개 검토 대기입니다. 외부 문구의 이용 허락을 확보했다고 주장하지 않습니다.
+`sourceMnemonic`은 사용자 입력을 그대로 보존합니다. 공개 화면은 별도로 작성한 `mnemonic`이 있고 역사 검수가 끝난 `VERIFIED + PUBLISHED` 레코드만 사용합니다.
 
-## 근거와 재생성
+## Era counts
 
-- `docs/mnemonic-sources/primary-reference.txt`: 사용자 확정 기준 목록
-- `docs/mnemonic-sources/raw-source.txt`: 사용자 RAW 전체
-- `docs/mnemonic-sources/cue-facts.txt`: 이미지 아래 검은 글씨 전사, 오타 포함
-- `docs/mnemonic-sources/verified-facts.json`: 별도 공식자료 검수
-- `dist/official-exam-explanations.json`: 기출 연결의 실제 텍스트 근거
+|분류|개수|
+|---|---:|
+|통합/선사|36|
+|삼국/남북국|11|
+|고려|20|
+|조선|22|
+|개항기/대한제국|20|
+|일제강점기|14|
+|현대|6|
 
-`node scripts/rebuild-mnemonics.cjs` 후 `node scripts/mnemonic-review.cjs`로 재생성합니다. `npm run build`는 111개 누락, 중복, 빈 cue, 잘못된 기출/장면 ID를 거부합니다.
+## Source preservation
 
-## 전체 목록
+|검사|결과|
+|---|---|
+|Exact source strings|PASS|
+|Parentheses / punctuation|PASS|
+|Numbers|PASS|
+|English mnemonic (`UWOI`)|PASS|
 
-|번호|시대|주제|원문 mnemonic|public mnemonic|memoryType|cue 개수|facts (cue→원문)|관련 officialQuestionIds|관련 sceneIds|상태|검토 사유|
-|---|---|---|---|---|---|---:|---|---|---|---|---|
-|1|ancient|세계기록유산|오일팔(에) 난새(영웅) 조조(가) 승훈(이) 해직(에) 동의(하였다)|오일팔(에) 난새(영웅) 조조(가) 승훈(이) 해직(에) 동의(하였다)|SENTENCE|12|오→5.18; 일→일성록; 팔→팔만대장경; 난→난중일기; 새→새마을운동; 조→조선왕조실록; 조→조선왕조의궤; 승→승정원; 훈→훈민정음; 해→해인사; 직→직지심체요절; 동→동의보감|official-57-basic-46, official-61-basic-45, official-66-basic-47, official-57-basic-26, official-57-advanced-26, official-73-advanced-19, official-57-basic-15, official-61-basic-15, official-64-basic-13, official-57-basic-49, official-57-advanced-49, official-58-basic-44, official-59-advanced-18, official-61-advanced-30, official-62-advanced-48, official-61-advanced-21, official-77-basic-22, joseon-official-79-advanced-24, official-62-advanced-21, official-70-advanced-18, official-70-advanced-19, official-57-advanced-06, official-75-advanced-17, official-78-advanced-14|joseon_ch03_s2|REVIEW_REQUIRED|해인사·승정원 등 기관명과 기록유산명이 혼재. 전체 목록의 등재 대상 검증 필요.|
-|2|ancient|세계문화유산|불경해석 참조남(이) 고종수 안경 백|불경해석 참조남(이) 고종수 안경 백|SENTENCE|13|불→불국사; 경→경주역사지구; 해→해인사 장경판전; 석→석굴암; 창→창덕궁; 조→조선왕릉; 남→남한산성; 고→고인돌; 종→종묘; 수→수원산성; 안→안동하회마을; 경→경주양동마을; 백→백제역사지구|official-61-basic-08, official-67-basic-09, official-59-advanced-24, joseon-official-73-advanced-22, official-74-advanced-19, official-57-advanced-21, official-58-basic-23, official-63-basic-24, official-57-advanced-01, official-60-advanced-01, official-61-basic-01|joseon_ch12_s2|REVIEW_REQUIRED|PRIMARY 참과 RAW 창(창덕궁)의 cue 차이.|
-|3|joseon|조선시대 궁궐|복덕(방) 경희(가) 운(다)|복덕(방) 경희(가) 운(다)|SENTENCE|5|복→경복궁; 덕→창덕궁; 경→창경궁; 희→경희궁; 운→경운궁|official-57-basic-34, official-59-advanced-26, official-61-basic-19, official-59-advanced-24, joseon-official-73-advanced-22, official-74-advanced-19, official-60-advanced-32, official-61-basic-35, official-72-advanced-35|joseon_ch12_s2|PUBLISHED|원문 cue 대응과 공식 역사 자료 대조 완료. 암기 문구는 원문 유지.|
-|4|ancient|구석기 유적지 전기|금연석 (검)검(도종) 최초 그늘|금연석 (검)검(도종) 최초 그늘|SENTENCE|6|금→단양 도담리 금굴유적지; 연→경기도 연천 전곡리; 석→공주 석장리; 검→평남 상원 검은모루동굴; 최초→남한최초인골; 그늘→단양 상시리 바위그늘|official-66-advanced-01||REVIEW_REQUIRED|PRIMARY (검)검(도종)과 RAW (점)검(도중)이 다름. 최초 인골의 시기 분류 검증 필요.|
-|5|ancient|구석기 중기|굴역심 상승(충) 별점|굴역심 상승(충) 별점|SENTENCE|7|굴→웅기 굴포리 서포항; 역→평양 역포 대현동; 심→강원도 명주 심곡리; 상→강원도 양구 상무룡리; 승→덕천 승리산; 빌→제주 빌레못 동굴; 점→제천 점말동굴|||REVIEW_REQUIRED|PRIMARY 별점과 RAW 빌점의 cue 차이.|
-|6|ancient|구석기 후기|(2개의) 흥수동 달제양|(2개의) 흥수동 달제양|SENTENCE|6|흥→어린흥수아이; 수→단양 수양개; 똥→종성 동관진; 달→평양 만달리; 제→제천창내; 양→남양주호평|||REVIEW_REQUIRED|PRIMARY 동과 RAW 똥의 표기 차이.|
-|7|ancient|신석기 유적지|고수(는) 암오동(가서) 미궁(에 빠졌다)|고수(는) 암오동(가서) 미궁(에 빠졌다)|SENTENCE|7|고→제주도 한경 고산리; 수→김해 수가리; 암→서울 암사동; 오→강원도 양양 오산리; 동→부산 동삼동; 미→경기하남 미사리; 궁→평남 온천 궁산리|official-74-advanced-01, official-58-advanced-01||CANDIDATE|canonical 근거 미확보 5/7개. sourceFacts 전사 완료, 공개 보류.|
-|8|ancient|신석기 토기|이른 덧(니를) 눌러(서) 빗(자)|이른 덧(니를) 눌러(서) 빗(자)|SENTENCE|4|이른→이른민무늬토기; 덧→덧무늬토기; 눌러→눌러찍기무늬토기; 빗→빗살무늬토기|official-61-advanced-01, official-58-advanced-01, official-63-basic-01||CANDIDATE|canonical 근거 미확보 2/4개. sourceFacts 전사 완료, 공개 보류.|
-|9|ancient|신석기 좁쌀|타고 남은 봉지|타고 남은 봉지|ACROSTIC|2|남→평양 남경; 봉지→봉산 지탑리|||CANDIDATE|canonical 근거 미확보 2/2개. sourceFacts 전사 완료, 공개 보류.|
-|10|ancient|청동기 벼농사|송흔(이) 화남|송흔(이) 화남|SENTENCE|4|송→부여 송국리; 흔→여주 흔암리; 화→서천 화금리; 남→평양 남경유적|official-61-basic-01, official-65-advanced-01, official-72-advanced-01, official-77-advanced-01||CANDIDATE|canonical 근거 미확보 2/4개. sourceFacts 전사 완료, 공개 보류.|
-|11|ancient|청동기 토기|부여(로) 간 김송민|부여(로) 간 김송민|SENTENCE|5|부여→부여 송국리식토기; 간→붉은 간토기; 김→덧띠새김무늬토기; 송→미송리식토기; 민→민무늬토기|official-61-basic-01, official-62-advanced-01, official-73-advanced-01||CANDIDATE|canonical 근거 미확보 4/5개. sourceFacts 전사 완료, 공개 보류.|
-|12|ancient|철기 토기|철민(이는) 검은 띠|철민(이는) 검은 띠|SENTENCE|4|철→철기; 민→민무늬토기; 검은→검은간토기; 띠→덧띠토기|official-61-basic-01, official-62-advanced-01, official-73-advanced-01||CANDIDATE|canonical 근거 미확보 2/4개. sourceFacts 전사 완료, 공개 보류.|
-|13|ancient|고조선 세력범위|송파 거특(이)|송파 거특(이)|SENTENCE|4|송→미송리식 토기; 파→비파형 동검; 거→거친무늬 거울; 북→북방식 고인돌|official-58-basic-01, official-62-advanced-01, official-64-basic-01||REVIEW_REQUIRED|PRIMARY 특과 RAW 북의 cue 차이.|
-|14|ancient|8조법|살사상곡 절노|살사상곡 절노|NUMBER|6|살→살인죄; 사→사형; 상→상해죄; 곡→곡식배상; 절→절도죄; 노→노비50만 배상|||REVIEW_REQUIRED|노비50만 배상 표기의 단위·의미 검증 필요.|
-|15|ancient|초기 여러 나라|부영(이와) 고동(이는) 동무(다)|부영(이와) 고동(이는) 동무(다)|SENTENCE|6|부→부여; 영→영고(12월); 고→고구려; 동→동맹(10월); 동→동예; 무→무천(10월)|official-57-basic-04, official-57-basic-05, official-57-basic-06||CANDIDATE|canonical 근거 미확보 3/6개. sourceFacts 전사 완료, 공개 보류.|
-|16|ancient|신라 발전|소(시) 우시 결백행|소(시) 우시 결백행|SENTENCE|6|소→소지왕; 우→우역설치; 시→시장설치; 결→결혼동맹; 백→백제; 행→행정구역6촌->6부 정비|||REVIEW_REQUIRED|6촌→6부 정비의 왕별 귀속 검증 필요.|
-|17|ancient|신라 왕·업적|진(짜) 거대홍 단 나성북창 대황마|진(짜) 거대홍 단 나성북창 대황마|SEQUENCE|12|진→진흥왕; 개→개국; 대→대창; 홍→홍제; 단→단양적성비; 나→나.제 동맹결렬; 성→성왕전사; 북→북한산비; 창→창녕비; 대→대가야멸망; 황→황초령비; 마→마운령비|official-58-basic-04, official-63-advanced-07, official-63-advanced-27, official-64-advanced-27, official-67-basic-28||REVIEW_REQUIRED|PRIMARY 거와 RAW 개(개국)의 cue 차이.|
-|18|ancient|신라 반란사|비염김(씨), 대구김(씨) 헌범(이 가) 장원(할) 견적(이 나온다)|비염김(씨), 대구김(씨) 헌범(이 가) 장원(할) 견적(이 나온다)|SEQUENCE|11|비염→비담,염종의 난; 김→김흠돌 모반 사건; 대→대공대렴의 난; 구→96각간의 난; 김→김지정의 난; 헌→김헌창의 난; 범→범문의 난; 장→장보고의 난; 원→원종,애노의 난; 견→견훤의 난; 적→적고적의 난|||REVIEW_REQUIRED|96각간 등 인물·사건 OCR 검증 필요.|
-|19|ancient|발해사|건대인천|건대인천|SEQUENCE|4|건→건흥; 대→대흥; 인→인안; 천→천통|||CANDIDATE|canonical 근거 미확보 1/4개. sourceFacts 전사 완료, 공개 보류.|
-|20|ancient|고천지도|고고천진동|고고천진동|ACROSTIC|4|고→고왕; 천→천통; 진→진국; 동→동모산|official-58-basic-08, official-64-basic-09, official-73-basic-09||REVIEW_REQUIRED|PRIMARY 고고천진동과 RAW 고천진동 차이.|
-|21|ancient|발해 무왕|무인당장요(기)서|무인당장요(기)서|SENTENCE|5|무→무왕; 인→인안; 당→당과대결; 장→장문휴 산둥공격; 요→요서 당과 격돌|||CANDIDATE|canonical 근거 미확보 3/5개. sourceFacts 전사 완료, 공개 보류.|
-|22|ancient|발해 문왕|문대중살신주자|문대중살신주자|ACROSTIC|6|문→문왕; 대→대흥보력; 중→중앙조직 3성6부; 상→상경천도; 신→신라도 개설; 주자→주자감|official-57-advanced-09, official-58-advanced-08, official-59-advanced-09||REVIEW_REQUIRED|PRIMARY 살과 RAW 상(상경) 차이.|
-|23|ancient|발해 선왕|선건해북남서지방|선건해북남서지방|ACROSTIC|7|선→선왕; 건→건흥; 해→해동성국; 북→북-말갈족 복속; 남→남-신라와 국경; 서→서-요동진출; 지방→지방조직 5경16부62주|official-57-basic-07, official-57-advanced-09, official-59-advanced-09||CANDIDATE|canonical 근거 미확보 4/7개. sourceFacts 전사 완료, 공개 보류.|
-|24|ancient|남북국 통치체제|9고황 적백 청(군)백(관)백 흑(수)말(이다)|9고황 적백 청(군)백(관)백 흑(수)말(이다)|NUMBER|10|9→9서당; 고→고구려; 황→황금; 적→적금; 벽→벽금; 청→청금; 백→백금; 빽→백제; 흑→흑금; 말→말갈|official-57-advanced-08, official-58-basic-09, official-58-advanced-07, official-57-basic-04, official-57-basic-05, official-57-basic-06||REVIEW_REQUIRED|PRIMARY 적백·백(관)백과 RAW 적벽·백(군)빽 차이.|
-|25|goryeo|후삼국 성립|무성수정|무성수정|NUMBER|4|무→무대; 성→성책; 수→수덕만세; 정→정개|official-63-basic-11, official-75-basic-11, official-77-basic-31||REVIEW_REQUIRED|원문의 무대는 무태 여부 검증 필요. 연호 목록이며 일반 후삼국 사건 목록이 아님.|
-|26|goryeo|고려 건국·민족 재통일|발해 공고(애들이) 신통(하다)|발해 공고(애들이) 신통(하다)|SEQUENCE|5|발해→발해멸망; 공→공산전투; 고→고창전투; 신→신라멸망; 통→통일|official-57-advanced-10, official-58-advanced-49, official-61-basic-50, official-58-basic-11, official-64-advanced-50, official-71-advanced-18, official-58-advanced-09, ch01-official-70-advanced-10|ch01_victory|CANDIDATE|canonical 근거 미확보 1/5개. sourceFacts 전사 완료, 공개 보류.|
-|27|goryeo|광종|광노(안)과 공복 주제(에) 송광풍 역사~|광노(안)과 공복 주제(에) 송광풍 역사~|SENTENCE|11|광→광종; 노→노비안검법; 과→과거제도; 공복→백관의 공복(자.단.비.녹); 주→주현공부법; 제→제위보; 송→송과외교; 광→광덕; 풍→준풍; 여→균여; 사→귀법사|official-57-advanced-12, official-58-basic-12, official-64-basic-10, official-71-basic-11, official-58-advanced-12, joseon-official-73-advanced-30, official-78-advanced-15, official-63-advanced-09|joseon_ch20_s3|REVIEW_REQUIRED|PRIMARY 역사와 RAW 여사(균여·귀법사)의 cue 차이.|
-|28|goryeo|문종·경종|나비엔 남대문 기사|나비엔 남대문 기사|ACROSTIC|8|경→경정전시과; 동→동서대비원; 나→흥왕사; 비→국청사; 남→남경; 문→문종; 기→기인선사제(기인제도완화); 사→사학12도|official-58-advanced-12, joseon-official-73-advanced-30, official-74-advanced-15, official-63-advanced-18, official-65-advanced-13, official-77-advanced-37, official-63-basic-13|joseon_ch20_s3|REVIEW_REQUIRED|PRIMARY 문종·경종/나비엔 남대문과 RAW 문종/경동 나비엔 남대문 차이.|
-|29|goryeo|현종|오~ 현창군 거칠(게) 대화(하고) 공정(하게) 관등(하자)|오~ 현창군 거칠(게) 대화(하고) 공정(하게) 관등(하자)|SENTENCE|12|오→오도양계(5도양계4도호부8목); 현→주현공거법; 창→주창수령법; 군→면군금고법; 거→거란2,3차 침입; 칠→칠대실록; 대→초조대장경; 화→현화사; 공→향리 공복제; 정→향리 정원제; 관→팔관회; 등→연등회|ch06-official-65-advanced-12, official-67-advanced-12, official-71-basic-13, ch06-official-77-advanced-11, official-71-basic-17, official-77-basic-18|ch06_flight, ch06_woodblocks|REVIEW_REQUIRED|군·창 등의 법령명과 제도 귀속 검증 필요.|
-|30|goryeo|숙종|화난 숙종은 벌써 3회독|화난 숙종은 벌써 3회독|ACROSTIC|8|화→화폐발행; 난→(남)경개창도감; 은→은병활구; 벌→별무반; 써→서적포; 삼→삼한통보; 회→해동통보, 중보; 독→동국통보, 중보|official-57-basic-28, official-58-basic-17, official-59-advanced-11, official-64-basic-50, official-71-advanced-13, official-60-advanced-28, official-62-advanced-12||CANDIDATE|canonical 근거 미확보 5/8개. sourceFacts 전사 완료, 공개 보류.|
-|31|goryeo|예종|애 7자야(양) 감(좋은) 보청기 구해도 애(예)|애 7자야(양) 감(좋은) 보청기 구해도 애(예)|SENTENCE|8|7재→관학진흥책 7재; 야(양)→양현고; 감→감무파견; 보→보문각; 청→청연각; 구→구제도감; 해(혜)→혜민국; 도→도관건립|official-57-basic-50, official-57-advanced-16, official-63-advanced-13, ch03-pdf-76-advanced-11, official-70-advanced-48, official-58-advanced-12, joseon-official-73-advanced-30, official-74-advanced-15|ch02_exam_notice, joseon_ch20_s3|REVIEW_REQUIRED|PRIMARY 7자와 RAW 7재 차이.|
-|32|goryeo|충선왕|이제(부터) 소금만 사(자)|이제(부터) 소금만 사(자)|SENTENCE|4|이제→이제현; 소금→소금전매제; 만→만권당; 사→사림원|official-58-basic-16, official-71-advanced-17, official-74-advanced-09||CANDIDATE|canonical 근거 미확보 2/4개. sourceFacts 전사 완료, 공개 보류.|
-|33|goryeo|공민왕|곧 웅정기 관쌍 흥복흥 전(효)성요동(지네) 곧(공)|곧 웅정기 관쌍 흥복흥 전(효)성요동(지네) 곧(공)|SENTENCE|13|공→공민왕; 몽→몽골풍 일소; 정→정동행성 이문소 폐지; 기→기철숙청; 관→관제복구; 쌍→쌍성총관부 수복; 홍→홍건적 침입; 복→복주 피난; 흥→흥왕사의 변; 전→전신변정도감; 성→성균관정비; 요→요동정벌; 동→동녕부 공격|official-57-advanced-15, official-58-advanced-38, official-59-advanced-13, official-61-basic-18, official-63-advanced-17, official-64-basic-17||REVIEW_REQUIRED|웅/몽·흥/홍·전신변정도감 등 원문 차이와 오타.|
-|34|goryeo|우왕|최홍(마)남 최진철(강) 이황|최홍(마)남 최진철(강) 이황|SENTENCE|8|최→최영; 홍→홍산대첩; 남→충남부여; 최→최무선; 진→진포대첩; 철(강)→금강하구; 이→이성계; 황→황산대첩|official-68-advanced-48, official-57-basic-19, official-61-advanced-19, official-67-basic-17, official-58-basic-19, official-61-basic-18, official-63-advanced-17||CANDIDATE|canonical 근거 미확보 3/8개. sourceFacts 전사 완료, 공개 보류.|
-|35|goryeo|무신정권|최충홍 최이진|최충홍 최이진|ACROSTIC|4|최충→최충헌; 흥→흥녕부; 최→최우; 진→진양부|official-61-basic-10, official-61-advanced-13, ch09-official-66-advanced-14|ch09_choe|REVIEW_REQUIRED|홍/흥, 최이/최우와 흥녕부·진양부 대응 검증 필요.|
-|36|goryeo|급진개혁파|정도전(이) 윤소충 종(으로) (고려를) 조준!|정도전(이) 윤소충 종(으로) (고려를) 조준!|SENTENCE|3|정도전→정도전; 윤소종→윤소종; 조준→조준|official-57-basic-22, official-57-advanced-35, official-67-basic-31||REVIEW_REQUIRED|PRIMARY 윤소충과 RAW 윤소종 표기 차이.|
-|37|goryeo|무신반란|종부 포위망 총쏴|종부 포위망 총쏴|SEQUENCE|5|중→중정부; 포(보)→김보당의 난; 위→조위총의 난; 망→망이.망소이의 난; 총싸→1174|official-61-basic-48, official-66-advanced-47, official-69-basic-45, official-61-basic-16, official-71-basic-15, ch09-official-71-advanced-14|ch09_mangyi|REVIEW_REQUIRED|종부/중부/중정부와 사건별 연도 1174의 적용 범위 검증 필요.|
-|38|goryeo|전관|전관(에서) (변호사) 빨리 승|전관(에서) (변호사) 빨리 승|SEQUENCE|4|전→전주; 관→관노의 난; 빨리→1182; 승→경대승|ch09-official-66-advanced-14|ch09_choe|CANDIDATE|canonical 근거 미확보 2/4개. sourceFacts 전사 완료, 공개 보류.|
-|39|goryeo|효심|효심(에는) 이의있삼?|효심(에는) 이의있삼?|SEQUENCE|3|효심→효심의 난; 이의→이의민; 있삼→1193|ch09-official-66-advanced-14, ch10-official-72-advanced-14, ch10-official-74-advanced-14|ch09_choe, ch10_return|CANDIDATE|canonical 근거 미확보 2/3개. sourceFacts 전사 완료, 공개 보류.|
-|40|goryeo|최충헌|(돌끼)충만 광수구이|(돌끼)충만 광수구이|SEQUENCE|4|충→최충헌; 만→만적의 난; 광수→최광수의 난; 구이→1198, 1217|official-61-basic-10, official-61-advanced-13, ch09-official-66-advanced-14, official-64-basic-14|ch09_choe|CANDIDATE|canonical 근거 미확보 2/4개. sourceFacts 전사 완료, 공개 보류.|
-|41|goryeo|나란히|나란히 (태어난) 연년생의 우(정)|나란히 (태어난) 연년생의 우(정)|SEQUENCE|3|나란히→1237; 연년생→이연년형제의 난; 우→최우|||CANDIDATE|canonical 근거 미확보 2/3개. sourceFacts 전사 완료, 공개 보류.|
-|42|ancient|최치원|난 제사(라면), 개토해|난 제사(라면), 개토해|SENTENCE|6|난→난랑비문; 제→제왕연대력; 사→사산비문; 개→개원필경; 토→토황소격문; 해→해인사묘질 상탑비|||REVIEW_REQUIRED|개원필경·해인사묘질 상탑비 등 서명 OCR 검증 필요.|
-|43|ancient|원효|원 아(마타) 일심 금화십대|원 아(마타) 일심 금화십대|SENTENCE|7|원→원효; 아→아미타; 일심→일심사상; 금→금강삼매경로; 화→화엄경소; 십→십문화쟁론; 대→대승기신론소|official-61-advanced-05, official-64-basic-49, official-69-basic-07||REVIEW_REQUIRED|금강삼매경로·십문화쟁론의 서명 검증 필요.|
-|44|ancient|의상|(그녀의) 의상 관음 화 엄(청 낸다)|(그녀의) 의상 관음 화 엄(청 낸다)|SENTENCE|4|의상→의상; 관음→관음신앙; 화→화엄사상; 엄→화엄승법계도|official-61-advanced-15, official-67-advanced-06, official-57-advanced-34, official-60-advanced-07, official-63-basic-22||REVIEW_REQUIRED|화엄승법계도의 정확한 서명 검증 필요.|
-|45|ancient|5교|복사열(받아) 뿔(도득) 겨울 통(닭 시장 상종(해서 안되네)금|복사열(받아) 뿔(도득) 겨울 통(닭 시장 상종(해서 안되네)금|SENTENCE|8|복사→경복사; 열→열반종; 뽀(보)→보덕; 계율→계율종; 통→통도사; 장→자장; 상종→법상종; 금→금산사|official-64-basic-08, ch02-official-66-advanced-09, official-67-advanced-10|ch01_gyeonhwon|REVIEW_REQUIRED|뿔/보덕·겨울/계율 등 PRIMARY와 RAW cue 차이.|
-|46|ancient|9산|일(용)엄(니)는 미사(를 찍으러 거기)가도<br>(조폭)흑산파, 무주파(가 있어서 못찍었다)|일(용)엄(니)는 미사(를 찍으러 거기)가도<br>(조폭)흑산파, 무주파(가 있어서 못찍었다)|SENTENCE|10|일→범일; 이→이엄; 미→수미산파; 사→사굴산파; 가→가지산파; 도→도의; 홍→홍척; 산파→실상산파; 무→무염; 주파→성산주파|||REVIEW_REQUIRED|흑/홍·성산주파 등 승려와 산문 대응 OCR 검증 필요.|
-|47|joseon|역법|당선(되고) 원수(됐다) (이)명(박) 대(통령)|당선(되고) 원수(됐다) (이)명(박) 대(통령)|SENTENCE|6|당→당나라; 선→선명력; 원→원나라; 수→수시력; 명→명나라; 대→대통력|official-73-advanced-02, joseon-official-76-advanced-22, official-64-advanced-25|joseon_ch08_s2|CANDIDATE|canonical 근거 미확보 4/6개. sourceFacts 전사 완료, 공개 보류.|
-|48|goryeo|불교|(안동가서) 통(사하며) 극락(가고) 예수(된다)|(안동가서) 통(사하며) 극락(가고) 예수(된다)|SENTENCE|4|봉→봉정사; 극락→극락전; 예→예산; 수→수덕사 대웅전|official-57-advanced-15, official-73-basic-12, official-58-basic-10, official-59-advanced-15, official-63-basic-16||REVIEW_REQUIRED|PRIMARY 통과 RAW 봉(봉정사)이 충돌.|
-|49|joseon|활자인쇄술|(태종때는) 조자 (세종때는) 대자|(태종때는) 조자 (세종때는) 대자|SENTENCE|4|소→주자소; 자→계미자; 대→밀랍 대신 식자판조립; 자→갑인자|official-60-advanced-46, official-65-advanced-28, official-72-advanced-18, joseon-official-74-advanced-26, official-64-advanced-17|joseon_ch20_s5|REVIEW_REQUIRED|PRIMARY 조자와 RAW 소자(주자소)가 충돌.|
-|50|joseon|그림|동고임금|동고임금|ACROSTIC|4|몽→몽유동원도; 고→고사관수도; 임(인)→인왕제색도; 금→금강진도|official-58-advanced-08, official-62-advanced-07, official-63-advanced-03, official-59-advanced-25, joseon-official-73-advanced-26|joseon_ch19_s1|REVIEW_REQUIRED|PRIMARY 동과 RAW 몽, 몽유동원도·금강진도 등의 서명 검증 필요.|
-|51|joseon|홍대용|홍대 중상학(부) (수학과) 주담임<br>(이)균전(을) 의지(가) 무한(하다)|홍대 중상학(부) (수학과) 주담임<br>(이)균전(을) 의지(가) 무한(하다)|SENTENCE|9|홍대→홍대용; 중상학→중상학파; 주→주해수용; 담→담헌전; 임→임하경륜; 균전→균전론; 의→의산문답; 지→지전설; 무한→무한우주론|joseon-official-79-advanced-25, official-63-basic-27|joseon_ch19_s1|REVIEW_REQUIRED|담헌전 등 서명 OCR 검증 필요.|
-|52|joseon|건축|금미 화각 법팔 논쌍 부개 안석|금미 화각 법팔 논쌍 부개 안석|ACROSTIC|12|금→금산사; 미→미륵전; 화→화엄사; 각→각황전; 법→법주사; 팔→팔상전; 논→논산; 쌍→쌍계사; 부→부안; 개→개암사; 안→안성; 석→석남사|official-64-basic-08, ch02-official-66-advanced-09, official-67-advanced-10, official-57-advanced-34, official-60-advanced-07, official-63-basic-22, official-57-basic-27, official-70-advanced-22|ch01_gyeonhwon|CANDIDATE|canonical 근거 미확보 5/12개. sourceFacts 전사 완료, 공개 보류.|
-|53|goryeo|지눌|돈오(가) 점수(를 잘 받아서 여자친구),<br>정혜(가) 쌍수(를 들고 환영한다)|돈오(가) 점수(를 잘 받아서 여자친구),<br>정혜(가) 쌍수(를 들고 환영한다)|SENTENCE|2|돈오·점수→돈오점수; 정혜·쌍수→정혜쌍수|official-63-advanced-16, ch09-official-74-advanced-16, official-70-advanced-12, official-77-basic-17|ch09_jinul|PUBLISHED|cue별 canonical 텍스트 대조 완료; 뜻을 새로 만들지 않음.|
-|54|joseon|정도전 저서|삼진경고불조심|삼진경고불조심|ACROSTIC|7|삼→삼봉집; 진→진법서; 경→경제문감; 고→고려국사; 불→불씨잡변; 조→조선경국전; 심→심기리편(불가 도가 비판)|joseon-official-73-advanced-20, official-57-basic-22, official-67-basic-31, official-68-advanced-18|joseon_ch01_s3|CANDIDATE|canonical 근거 미확보 5/7개. sourceFacts 전사 완료, 공개 보류.|
-|55|joseon|태종|6조 신사의 계창사의훈|6조 신사의 계창사의훈|ACROSTIC|9|6조→6조 직계제; 신→신문고 설치; 사→사간원설립; 의→의금부 설치; 계→계미자; 창→창덕궁건립; 사→사섬서(저화발행); 양→양전사업; 호→호패법|official-57-basic-23, official-57-advanced-17, official-57-advanced-20, official-65-advanced-28, official-72-advanced-18, joseon-official-74-advanced-26, official-57-basic-34, official-59-advanced-37, official-61-basic-35, official-58-basic-19, official-59-advanced-19|joseon_ch20_s5|REVIEW_REQUIRED|PRIMARY 계창사의훈과 RAW 계창사양호 차이.|
-|56|joseon|세종|조공왕 감칠(이는) 내집(에서)<br>혼자 농삼향의 총여정양측(했다)|조공왕 감칠(이는) 내집(에서)<br>혼자 농삼향의 총여정양측(했다)|SENTENCE|18|조→조선통보; 공→공법; 왕→왕도정치; 갑→갑인자; 칠→칠정산; 내→내불당(왕실안 절); 집→집현전; 혼→혼천의 간의; 자→자격루; 농→농사직설; 삼→삼강행실도; 향→향약집성방; 의→의방유취; 총→총통등록(무기제작 사용법); 여→여민락; 정→정간보(악보); 앙→앙부일구(해시계); 측→측우기|official-64-advanced-17, official-58-basic-20, official-64-basic-18, official-66-basic-22, official-60-advanced-20, official-62-advanced-21, official-63-basic-18, official-69-basic-18, official-66-advanced-19, official-68-advanced-22, official-58-advanced-19, official-62-advanced-22, official-69-basic-25||REVIEW_REQUIRED|PRIMARY 감·양과 RAW 갑·앙의 차이.|
-|57|joseon|세조|보육원 간 유경이 집세 진(짜) 오직 6(원)?|보육원 간 유경이 집세 진(짜) 오직 6(원)?|SENTENCE|13|보→보법(정군1 보인2); 육→육정상정소 설치; 원→원각사지10층 석탑; 간→간경도감 설치(불교경전); 유→유향소폐지; 경→경극대전; 이→이시애의 난; 집→집현전, 경연폐지; 세→세조; 진→진관체제; 오→오가작통법; 직→직전법; 6→6조 직계제|official-66-basic-20, official-57-basic-23, official-57-advanced-20, official-61-basic-20, official-57-advanced-17||REVIEW_REQUIRED|육정상정소·경극대전 등 명칭 OCR 검증 필요.|
-|58|joseon|성종|홍경사(가) 관사(에서) 국악(을) 둥둥둥|홍경사(가) 관사(에서) 국악(을) 둥둥둥|SENTENCE|10|홍→홍문관; 경→경국대전; 사→사림파등용; 관→관수관급제; 사→사창제폐지; 국→국조오례의; 악→악학궤범; 동→동국여지승람; 동→동문선; 동→동국통감|official-60-advanced-20, official-61-basic-22, official-63-basic-19, official-57-advanced-24, official-58-advanced-24, official-64-advanced-22, official-70-advanced-19, official-67-basic-18, official-61-advanced-20, official-73-advanced-03, official-61-advanced-29||REVIEW_REQUIRED|PRIMARY 둥과 RAW 동의 cue 차이.|
-|59|joseon|5군영|훈어총수금|훈어총수금|ACROSTIC|5|훈→훈련도감; 어→어영청; 총→총융청; 수→수어청; 금→금위영|official-58-advanced-21, official-61-basic-21, official-63-basic-25, official-63-advanced-24, official-67-advanced-26, official-69-basic-06, official-69-advanced-47, joseon-official-77-advanced-24|joseon_ch17_s3|PUBLISHED|원문 cue 대응과 공식 역사 자료 대조 완료. 암기 문구는 원문 유지.|
-|60|joseon|왜 전·후 관계|왜! 쓰삼계삼 사정을(해서) 임신(했다)|왜! 쓰삼계삼 사정을(해서) 임신(했다)|SEQUENCE|8|왜→왜란; 쓰→쓰시마정벌; 삼→삼포개항; 계→계해약조 50-200; 사→사량진왜변; 정→정미약조 25; 을→을묘왜변; 임신→임신약조 25-100|official-59-advanced-26||REVIEW_REQUIRED|목록의 삼·을 누락과 조약·왜변의 시간 순서 확인 필요.|
-|61|joseon|환국|경기갑신 서남소노|경기갑신 서남소노|SEQUENCE|4|경-서→경신환국-서인; 기-남→기사환국-남인; 갑-소→갑술환국-소론; 신-노→신사환국-노론|||REVIEW_REQUIRED|원문의 신사환국-노론 및 갑술환국-소론 대응은 역사 검증 필요. 그대로 공개하지 않음.|
-|62|joseon|정조|정일홍대동무고추탁|정일홍대동무고추탁|ACROSTIC|9|정→정조; 일→일성록; 홍→홍재전서; 대→대전통편; 동→동문휘고; 무→무예도보통지; 고→고금도서집성; 추→추관지; 탁→탁지지|official-57-basic-26, official-57-advanced-26, official-73-advanced-19, official-64-advanced-26, official-72-advanced-28, joseon-official-77-advanced-26|joseon_ch19_s3|CANDIDATE|canonical 근거 미확보 5/9개. sourceFacts 전사 완료, 공개 보류.|
-|63|joseon|정조 탕평정치|서초구 기상 윤건 화장대 만행 수공!|서초구 기상 윤건 화장대 만행 수공!|ACROSTIC|14|서→서얼출신 검사관 등용; 초→초계문신제; 구(규)→규장각설치; 거→거중기; 상→상언.격쟁 기회; 윤(융)→융릉; 건→건릉; 화→화성축조; 장→장용영육성; 대→대유둔전; 만→만석거, 만년제; 행→행궁건설; 수→수령향역 주관; 공→공장안페지|official-57-basic-17, official-59-advanced-27, official-62-advanced-27, official-63-basic-28, official-64-advanced-27, official-66-basic-29||REVIEW_REQUIRED|기/거, 검사관/검서관, 수령향역 등 OCR과 정책 귀속 검증 필요.|
-|64|joseon|영조 탕평정치|동서 청계산 노모탕 사랑균 신속(하)군|동서 청계산 노모탕 사랑균 신속(하)군|SENTENCE|13|동→동국문헌비고; 서→서원정비; 청→청계천정비; 산→산림부정; 노→노비; 모→종모법; 탕→탕평책; 사→사형삼심제; 랑→이조전랑; 균→균역법; 신→신문고부활; 속→속대전; 군→군영정리|official-69-basic-27, official-58-basic-25, official-66-basic-26, official-68-advanced-24, official-58-advanced-24, official-63-advanced-19, official-66-advanced-23||CANDIDATE|canonical 근거 미확보 9/13개. sourceFacts 전사 완료, 공개 보류.|
-|65|joseon|천주교 박해|(박)신(해)는 시기(해)오(지랖도)병(인가)?|(박)신(해)는 시기(해)오(지랖도)병(인가)?|SEQUENCE|5|신→신해통공; 신→신유박해; 기→기유박해; 오→병오박해; 병→병인박해|official-65-advanced-24, official-71-advanced-23, joseon-official-77-advanced-29, official-79-advanced-28|joseon_ch22_s2|REVIEW_REQUIRED|박해 목록에 신해통공·기유박해가 혼재. 원문 보존 후 공개 보류.|
-|66|ancient|민정문서|민정(이) 삼촌(이) 내연관(계인)<br>서원경(씨에게) 십일조(라니) 사람이 호구(네)|민정(이) 삼촌(이) 내연관(계인)<br>서원경(씨에게) 십일조(라니) 사람이 호구(네)|SENTENCE|11|민정→민정문서; 삼→삼년마다; 촌→촌장이 작성; 내→내시령답; 연→연수유답; 관→관모답; 서원경→청주서원경 주변; 십일조→1/10의 징수; 사람→사람기준으로; 호→호는; 구→구등법(9등법)|official-63-basic-08||REVIEW_REQUIRED|민정문서는 통일 신라로 분류. 1/10 징수 등 해석 검증 필요.|
-|67|ancient|토지측량단위|백두 고경 신결|백두 고경 신결|ACROSTIC|6|백→백제; 두→두락제; 고→구구려; 경→경무법; 신→신라; 결→결부법|||REVIEW_REQUIRED|구구려 오타 보존. 측량법 명칭 검증 필요.|
-|68|goryeo|역분전|(성)시경 개국(걸이) (김)경문껀데...|(성)시경 개국(걸이) (김)경문껀데...|SEQUENCE|6|시→시정전시과; 경→경종; 개→개정전시과; 목→목종; 경→경정전시과; 문→문종|official-72-advanced-47||REVIEW_REQUIRED|제목 역분전과 내용 전시과가 다름. PRIMARY 개국과 RAW 개목 차이.|
-|69|goryeo|세습전|신음장인(이)여|신음장인(이)여|SENTENCE|5|신→공신전; 음→공음전; 장→내장전; 인→한인전; 여(역)→외역전|official-66-advanced-10, official-67-advanced-18||CANDIDATE|canonical 근거 미확보 4/5개. sourceFacts 전사 완료, 공개 보류.|
-|70|joseon|조선 상업사|지방 한선경(이) 대만주(를 먹고)<br>개인방송(을 해서) 돈대상(됐다)|지방 한선경(이) 대만주(를 먹고)<br>개인방송(을 해서) 돈대상(됐다)|SENTENCE|14|지방→지방대상인; 한→한강; 선→선상; 경→경강상인; 대→대청; 만→만상; 주→의주; 개→개성; 인→인삼재배; 방→송방; 송→송상; 동→동래; 대→대일; 상→내상|||REVIEW_REQUIRED|PRIMARY 돈대상과 RAW 동대상(동래·대일·내상) 차이.|
-|71|joseon|조광조 업적|소방소도 위험 경험이있다|소방소도 위험 경험이있다|ACROSTIC|8|소→소격서 폐지; 방→방납폐단 시정주장; 소→소학 보급 및 강조; 도→도학정치(도덕.의리); 위→위훈 삭제; 헌→현량과 실시; 경→경연강화,언론 활동; 향→향약 실시|official-57-basic-21, official-61-basic-32, official-64-advanced-23, official-66-basic-24||REVIEW_REQUIRED|PRIMARY 위험 경험과 RAW 위헌 경향 차이.|
-|72|joseon|충신·이순신|충신성은 울산당하 이순신 진중에서<br>양주를 피토하며 명량하게 마신다|충신성은 울산당하 이순신 진중에서<br>양주를 피토하며 명량하게 마신다|ACROSTIC|14|충→충주 전투; 신→신립; 선→선조; 의→의주피난; 옥→옥포해전; 사→사천포; 당→포; 한→한산도; 주→진주대첩 김시민 전사; 양→평양성전투; 주→행주대첩 권율; 피→진주혈전 폐배; 명→명량; 노→노량|official-57-basic-25, official-62-advanced-04||REVIEW_REQUIRED|PRIMARY와 RAW 문장 차이가 큼. 당=포 등 잘린 풀이와 전투 인물·시점 검증 필요.|
-|73|empire|통상수교거부|병(이)제 병문한 정양 오신 초덕광 척|병(이)제 병문한 정양 오신 초덕광 척|SEQUENCE|13|병→병인박해; 제→제네럴셔먼호; 병→병인양요; 문→문수산성; 한→한성근; 정→정족산성; 양→양헌수; 오→오페르트도굴사건; 신→신미양요; 초→초지진; 덕→덕진진; 광→광성보,어재연; 척→척화비건립|joseon-official-77-advanced-29, official-79-advanced-28, official-67-basic-32, official-69-advanced-29, joseon-official-76-advanced-29, official-60-advanced-31, official-61-basic-28, official-61-advanced-31, official-64-advanced-28, official-66-basic-30|joseon_ch22_s2, joseon_ch18_s2|CANDIDATE|canonical 근거 미확보 6/13개. sourceFacts 전사 완료, 공개 보류.|
-|74|empire|강화도조약|수일(이는) 미수(다) 이 규약(은) 무역 통일(이다)|수일(이는) 미수(다) 이 규약(은) 무역 통일(이다)|SEQUENCE|6|수일→조일수호조규, 강화도조약; 미수→조미수호통상조약; 이(임)→임오군란; 규약→조일수호조규속양, 제물포조약; 무역→조청상민수륙무역장정; 통일→조일통상상정|official-62-advanced-33, official-63-basic-31, official-64-advanced-49, official-61-basic-29, official-71-basic-27, official-76-advanced-30, official-61-advanced-25, official-67-advanced-30, official-71-advanced-29||REVIEW_REQUIRED|조일수호조규속양·조일통상상정 등 조약명 OCR 검증 필요.|
-|75|empire|개항순서|미 명독 이너프|미 명독 이너프|SEQUENCE|6|미→미국(82); 명(영)→영국(82~83); 동(둑)→독일(83); 이→84; 너(러)→러시아(84); 프→프랑스(86)|||REVIEW_REQUIRED|PRIMARY 명독과 RAW 명동, 이탈리아 항목이 RAW에서 연도만 남음.|
-|76|empire|갑신정변 이후|갑한텐 거방 교동갑청|갑한텐 거방 교동갑청|SEQUENCE|9|갑→갑신정변; 한→한성조약; 톈→톈진조약; 거→거문도사건; 방→방곡령사건; 교→교조신원운동; 동→동학농민운동; 갑→갑오개혁; 청→청일전쟁|official-59-advanced-32, official-64-advanced-30, official-66-basic-33, official-57-advanced-27, official-63-advanced-30, official-66-advanced-29, official-63-basic-38, official-62-advanced-32, official-79-basic-31, official-63-basic-33, official-63-advanced-32||CANDIDATE|canonical 근거 미확보 4/9개. sourceFacts 전사 완료, 공개 보류.|
-|77|empire|14개조|순근혜환지내호탐귀 계열|순근혜환지내호탐귀 계열|ACROSTIC|9|순→순사제도; 근→근위대설치; 혜→혜상공국폐지; 환→환곡제폐지; 지조→지조법개정; 내시→내시부폐지; 호→호조일원화; 탐→탐관오리처벌; 귀(규)→규장각폐지|||REVIEW_REQUIRED|기준 목록은 축약형. RAW 전체 문구는 rawMnemonic에 보존; 누락 조항과 표현 검토 필요.|
-|78|empire|동학농민운동|고백(을) 장황(하게) (하기)전<br>고집(있는) 공주(인지) (확인해라)|고백(을) 장황(하게) (하기)전<br>고집(있는) 공주(인지) (확인해라)|SEQUENCE|8|고→고부민란; 백→백산봉기; 장→장성군황룡촌; 황→황토현; 전→전주화약; 고(교)→교정청; 집→집강소; 공주→공주우금치|official-79-basic-31, official-57-basic-33, official-61-basic-31, official-62-advanced-32||CANDIDATE|canonical 근거 미확보 5/8개. sourceFacts 전사 완료, 공개 보류.|
-|79|empire|개혁안 12조|왜노무(새끼가) 과부(의) 토지 전평(을) (공)사(함)||SENTENCE|9|왜→왜와 통하는 자 엄징; 노→노비문서 소각; 무→무명잡세 폐지; 과→과부의 재가허용; 부→부호를 엄징; 토지→토지를 평균 분각; 천→천인차별 개선; 평→평량갓을 폐지; 사→사채공무효|||REVIEW_REQUIRED|욕설 포함. 원문은 보존하고 publicMnemonic은 비워 공개 보류.|
-|80|empire|갑오개혁 1차|은경(이)의 궁금(증은) 노비(가) 딱(했다는거야)|은경(이)의 궁금(증은) 노비(가) 딱(했다는거야)|SEQUENCE|7|은→은본위제; 경→경무청; 의→의정부; 궁→궁내부; 금→금납화; 노비→노비법혁파; 딱(탁)→탁지아문|official-63-advanced-32, official-58-basic-24, official-59-advanced-19, official-63-advanced-26, official-57-advanced-27, official-63-basic-33, official-64-advanced-31||CANDIDATE|canonical 근거 미확보 4/7개. sourceFacts 전사 완료, 공개 보류.|
-|81|empire|갑오개혁 2차|홍재교 부부훈시|홍재교 부부훈시|SEQUENCE|7|홍→홍범14조; 재→재판소설치; 교→교육입국조서 반포; 부→7부; 부→23부; 훈→훈련대 설치; 시→시위대 설치|official-64-advanced-43||REVIEW_REQUIRED|시위대 설치의 시기 귀속 검증 필요.|
-|82|empire|갑오개혁 3차|우친소 건진 단태종|우친소 건진 단태종|SEQUENCE|8|우→우체사; 친→친위대 설치; 소→소학교 설치; 건→건양연호; 진→진위대 설치; 단→단발령; 태→태양력; 종→종두법|official-72-advanced-32, official-77-advanced-30, official-79-advanced-33, official-58-advanced-32||CANDIDATE|canonical 근거 미확보 6/8개. sourceFacts 전사 완료, 공개 보류.|
-|83|empire|홍범14조|홍병일(은) 자아(가) 분리 유인|홍병일(은) 자아(가) 분리 유인|SENTENCE|8|홍→홍범14조; 병→징병제; 일→1차 개혁 재확인; 자→자주독립; 아→탁지아문관활; 분리→궁내부-의정부 분리; 유→유학생파견; 인→인재등용|official-79-basic-38, official-63-basic-34, official-75-advanced-38, official-77-basic-33||REVIEW_REQUIRED|징병제 등 홍범14조 원문과 대조 필요.|
-|84|empire|헌의6조|환자중의 입(을) 탁(치자) 피(가) 척|환자중의 입(을) 탁(치자) 피(가) 척|SENTENCE|7|환(황)→황권전제; 자→자주국권; 중→중추원; 의→의회; 입→입헌군주제; 피→피고인권존중; 척(칙)→칙임관 임명|official-57-advanced-31, official-58-basic-32, official-61-basic-33, official-62-advanced-36, official-65-advanced-36, official-67-advanced-34||REVIEW_REQUIRED|탁 cue의 원문 풀이가 누락; 황권전제·입헌군주제 혼재.|
-|85|empire|고종연호|강국양광희|강국양광희|SEQUENCE|5|강(광)→광서; 국→개국; 양→건양; 광→광무; 희→융희|||REVIEW_REQUIRED|광서·개국·건양·광무·융희를 모두 고종 연호로 볼 수 없는 문제 검증 필요.|
-|86|empire|을미의병|허기(진)유이|허기(진)유이|SENTENCE|4|허→경상도 허위; 기→전라도 기우만; 유→충청도 유인석; 이→강원도 이소응|||REVIEW_REQUIRED|허위의 의병 시기와 유인석 지역 표기의 의미 검증 필요.|
-|87|empire|보안회·헌정연구회 등|보안(된) 헌정(이는) 한자협회 신민(이다)|보안(된) 헌정(이는) 한자협회 신민(이다)|SEQUENCE|5|보안→보안회; 헌정→헌정연구회; 한자→대한자강회; 협회→대한협회; 신민→신민회|official-57-advanced-40, official-65-advanced-35, official-66-advanced-33, official-59-advanced-33, official-61-basic-27, official-61-advanced-36||CANDIDATE|canonical 근거 미확보 3/5개. sourceFacts 전사 완료, 공개 보류.|
-|88|empire|신문|한(국의) 독(한) 황제(는) 대마(를) 경매(했다)|한(국의) 독(한) 황제(는) 대마(를) 경매(했다)|SEQUENCE|8|한→한성순보; 독→독립신문; 황→황성신문; 제→제국신문; 대→대한매일신보; 만→만세보; 경→경향신문; 매→매일신문|official-61-advanced-34, official-72-advanced-29, official-57-basic-37, official-61-basic-33, official-73-basic-34, official-60-advanced-36, official-61-advanced-35, official-62-advanced-34, official-59-advanced-39||REVIEW_REQUIRED|PRIMARY 대마와 RAW 대만(만세보) 차이.|
-|89|empire|근대교육 1880|원(산에서) 동경(까지) 배(타고) 26(km)|원(산에서) 동경(까지) 배(타고) 26(km)|SEQUENCE|6|원→원학사; 동→동문학; 경→경신학교; 배→배재학당; 2→이화학당; 6→육영공원|official-60-advanced-32, official-61-advanced-42, official-65-advanced-39, official-67-advanced-33, official-61-basic-27, official-60-advanced-27, official-62-advanced-35, official-63-basic-32||REVIEW_REQUIRED|원학사와 경신학교의 시기·명칭 검증 필요.|
-|90|empire|근대교육 1890|교육(받는) 소사(범은) 외국어 중(급)|교육(받는) 소사(범은) 외국어 중(급)|SEQUENCE|5|교육→교육입국조서; 소→소학교; 사→사범학교; 외국어→외국어 학교; 중→중학교|official-60-advanced-27, official-72-advanced-32, official-64-advanced-33, official-65-advanced-40, official-76-advanced-37, official-59-advanced-33||CANDIDATE|canonical 근거 미확보 1/5개. sourceFacts 전사 완료, 공개 보류.|
-|91|empire|근대교육 1900|흥화점(에) 보양(식은) 명문오댕|흥화점(에) 보양(식은) 명문오댕|SEQUENCE|8|흥화→흥화학교; 점→점진학교; 보→보성학교; 양→양정학교; 명→숙명여학교; 문→휘문의숙; 오→오산학교; 댕(대)→대성학교|official-61-advanced-36, official-63-basic-36, official-64-advanced-33, official-59-advanced-33, official-61-basic-27||REVIEW_REQUIRED|1900 묶음에 1890년대 학교가 포함되어 연대 분류 검증 필요.|
-|92|empire|국권피탈|의정(부) 12(사단에는) 해신 기간병(였다)|의정(부) 12(사단에는) 해신 기간병(였다)|SEQUENCE|8|의정→한일 의정서; 1→제1차 한일협약; 2→제2차 한일협약; 해(헤)→헤이그특사; 신→한일신협약; 기→기유각서; 간→간도협약; 병→한일병합조약|official-65-advanced-32, official-58-advanced-31, official-60-advanced-34, official-65-advanced-33, official-64-advanced-35, official-69-advanced-34||CANDIDATE|canonical 근거 미확보 5/8개. sourceFacts 전사 완료, 공개 보류.|
-|93|occupation|비밀결사|독(서)광 여자 송(종)기|독(서)광 여자 송(종)기|SENTENCE|6|독→독립의 군부; 광→광복회; 여(려)→조선산직장려계; 자→자립관; 송→송죽회; 기→기성단|official-63-advanced-35, official-69-basic-32, official-75-basic-39||REVIEW_REQUIRED|자립관 등 단체명 검증 필요.|
-|94|occupation|1910 남만주|남삼경(처) 부흥(한건) 서로(의 덕)|남삼경(처) 부흥(한건) 서로(의 덕)|SENTENCE|6|남→남만주; 산(삼)→삼원보; 경→경학사; 부→부민단; 흥→신흥무관학교; 서로→서로군정서|official-70-advanced-34, official-73-advanced-36, official-76-advanced-41, official-62-advanced-39||CANDIDATE|canonical 근거 미확보 4/6개. sourceFacts 전사 완료, 공개 보류.|
-|95|occupation|1910 중국본토|하이(네) 동(네) 새로운 음식(맛있어)<br>귀여(운) 청년(들은) 상해(도 먹는다)|하이(네) 동(네) 새로운 음식(맛있어)<br>귀여(운) 청년(들은) 상해(도 먹는다)|SENTENCE|8|하이→상하이; 동→동제사; 새로운(new->신)→신규식; 음식(은식)→박은식; 귀(규)→김규식; 여→여운형; 청년→신한청년당; 상해→상해임시정부|official-57-basic-37, official-58-basic-34, official-60-advanced-40, official-63-advanced-10, official-57-advanced-35, official-57-basic-44, official-58-basic-41, official-58-advanced-39, official-60-advanced-41, official-64-basic-42, official-67-advanced-44||CANDIDATE|canonical 근거 미확보 2/8개. sourceFacts 전사 완료, 공개 보류.|
-|96|occupation|1910 북간도|북한 서명(하면) 종북|북한 서명(하면) 종북|SENTENCE|6|북→북간도; 한(간)→간민회; 서→서전서숙; 명→명동학교; 종(중)→중광단; 북→북로군정서|official-57-advanced-44, official-67-basic-35, official-68-advanced-40, official-70-advanced-37, official-72-advanced-37, official-61-basic-37, official-61-advanced-44, official-64-basic-35||CANDIDATE|canonical 근거 미확보 2/6개. sourceFacts 전사 완료, 공개 보류.|
-|97|occupation|1910 연해주|신한(은행) 의성업(은)<br>전한(길) 정부(로부터 시작되었다)|신한(은행) 의성업(은)<br>전한(길) 정부(로부터 시작되었다)|SENTENCE|7|신한→신한촌; 의→13도 의군; 성→성명회; 업→권업회; 전→전로한족회 중앙총회; 한→대한국민의회; 정부→대한광복군정부|official-72-advanced-38, official-75-basic-40||CANDIDATE|canonical 근거 미확보 6/7개. sourceFacts 전사 완료, 공개 보류.|
-|98|occupation|1910 미국|미소홍 공대한 국민|미소홍 공대한 국민|ACROSTIC|6|미스→미국 센프란시스코; 흥→흥사단; 공→공립협회; 대→대한인 국민회; 의(이)→하와이; 국민→조선국민군단|official-77-basic-34, official-78-advanced-35, official-75-basic-34, official-58-advanced-33, official-62-advanced-38, official-74-advanced-33||REVIEW_REQUIRED|PRIMARY 미소홍 공대한과 RAW 미스흥 공대의 cue 차이.|
-|99|occupation|1920 만주|삼봉 춘천 경유시 3미 운동|삼봉 춘천 경유시 3미 운동|SEQUENCE|9|삼→삼둔자; 봉→봉오동전투; 춘→훈춘사건; 천(청)→청산리대첩; 경→경신참변; 유시→자유시참변; 3→3부성립; 미→미쓰야협정; 운동→민족유일당 운동|official-58-basic-36, official-59-advanced-36, official-64-basic-35, official-57-advanced-42, official-58-basic-39||CANDIDATE|canonical 근거 미확보 7/9개. sourceFacts 전사 완료, 공개 보류.|
-|100|occupation|청산리|청산리 고(등)어 천 백(원)|청산리 고(등)어 천 백(원)|SENTENCE|5|청산리→청산리대첩; 고→고동하; 어→어랑촌; 천→천수평; 백→백운평|official-61-basic-37, official-64-basic-35||CANDIDATE|canonical 근거 미확보 2/5개. sourceFacts 전사 완료, 공개 보류.|
-|101|occupation|1930|대전(에) 쌍사(자) 동(물원은) 북(이) 독립|대전(에) 쌍사(자) 동(물원은) 북(이) 독립|SENTENCE|6|대전→대전자령; 쌍→쌍성보 전투; 사→사도하자; 동→동경성 전투; 북→북만주; 독립→한국독립군|official-57-basic-41, official-62-advanced-39, official-63-basic-41, official-63-advanced-36, official-75-basic-43, official-67-advanced-39, official-74-advanced-42||CANDIDATE|canonical 근거 미확보 1/6개. sourceFacts 전사 완료, 공개 보류.|
-|102|occupation|1930 국민부|국민 남(편) (양세봉) 영흥(에서) 혁명(하다 죽었다)|국민 남(편) (양세봉) 영흥(에서) 혁명(하다 죽었다)|SENTENCE|5|국민→국민부; 남→남만주; 영→영릉가 전투; 흥→흥경성 전투; 혁명→혁명조선군|official-63-advanced-36, official-77-advanced-41, official-63-basic-41, official-75-basic-43||REVIEW_REQUIRED|혁명조선군 명칭 OCR 검증 필요.|
-|103|occupation|신간회 강령|정단기|정단기|ACROSTIC|3|경→정치 경제적 각성촉구; 단→민족 단결; 기→기회주의자 배격|||REVIEW_REQUIRED|PRIMARY 정과 RAW 경의 cue 차이.|
-|104|occupation|계몽사학 1|신생아 사청가|신생아 사청가|ACROSTIC|6|신→신채호; 생(상)→조선상고사; 아→아 , 비아; 사→조선사 연구회; 청(창)→모창극찬; 가→낭가사상|official-66-advanced-30, official-67-advanced-42, official-72-advanced-42, official-60-advanced-35||REVIEW_REQUIRED|조선사 연구회·모창극찬 등 원문 오류 검증 필요.|
-|105|occupation|계몽사학 2|박훈식 지혈(이) 통(안돼)|박훈식 지혈(이) 통(안돼)|SENTENCE|5|박→박은식; 혼→혼백; 식→혼식; 지혈→한국독립운동 지혈사; 통→한국통사|official-57-advanced-35||REVIEW_REQUIRED|혼식·혼백 cue와 박훈식/박혼식 차이; 저서명 교정 검토 필요.|
-|106|occupation|계몽사학 3|문신평 정얼보 감홍시|문신평 정얼보 감홍시|ACROSTIC|6|문→문일평; 심→일편단심; 정→정인보; 얼→조선의 얼; 감→조선상고사감; 홍→안재홍|official-67-advanced-42||REVIEW_REQUIRED|문신평/문심평과 일편단심, 호암·얼 등 대응 검증 필요.|
-|107|republic|국제회의|카얄포 광 건모|카얄포 광 건모|SEQUENCE|6|카→카이로회담; 얄→얄타회담; 포→포츠담선언; 광→8.15 광복; 건→건국준비위원회; 모→모스크바 3국 외상회의|official-58-basic-41, official-63-basic-43, official-69-basic-36, official-61-basic-44, official-69-basic-41||CANDIDATE|canonical 근거 미확보 4/6개. sourceFacts 전사 완료, 공개 보류.|
-|108|republic|광복 직후 정당·단체|한국독립(에) 조인(한) 국민(에게)<br>한민(관이) 조공(을) 독촉(한다)|한국독립(에) 조인(한) 국민(에게)<br>한민(관이) 조공(을) 독촉(한다)|SENTENCE|6|한국독립→한국독립당; 조인→조선인민당; 국민→국민당; 한민→한국민주당; 조공→조선공산당; 독촉→독립촉성중앙협의회|official-64-advanced-42, official-67-advanced-39, official-70-advanced-41, official-65-advanced-43, official-69-advanced-41||CANDIDATE|canonical 근거 미확보 4/6개. sourceFacts 전사 완료, 공개 보류.|
-|109|republic|노태우|칙칙(한) 고위급 (노태우는) 유기농 핵|칙칙(한) 고위급 (노태우는) 유기농 핵|SENTENCE|5|칙칙→7.7 특별선언; 고위급→고위급회담; 유→유엔가입; 기→기본합의서; 농핵→NO 핵|official-70-advanced-43, official-61-basic-46, official-67-basic-45, official-73-basic-50||REVIEW_REQUIRED|NO 핵을 비핵화 공동선언으로 해석할 근거 확인 필요.|
-|110|republic|김대중|햇병아리 중딩 금사정(하여)<br>(소금) 62개(받아오다)|햇병아리 중딩 금사정(하여)<br>(소금) 62개(받아오다)|NUMBER|7|햇→햇볕정책; 중딩→중학교의무교육; 급(금)→금강산 해로 관광 시작; 사정→노사정위원회; 6→6.15공동선언; 2→2차 이산가족상봉; 개→개성공단|official-69-basic-45, official-74-advanced-49, official-78-advanced-49, official-74-advanced-48, official-73-advanced-50, official-57-basic-48, official-59-advanced-50, official-62-advanced-47||REVIEW_REQUIRED|PRIMARY 금사정과 RAW 급사정, 2차 상봉의 귀속 검증 필요.|
-|111|republic|김영삼|UWOI|UWOI|SEQUENCE|4|U→UR협정체결; W→WTO; O→OECD; I→IMF 위기|official-61-basic-48, official-74-advanced-48||CANDIDATE|canonical 근거 미확보 3/4개. sourceFacts 전사 완료, 공개 보류.|
-|추가|ancient|정혜공주 무덤|식혜 6(개) 사자|식혜 6(개) 사자|NUMBER|4|식→굴식돌방무덤; 혜→정혜공주; 6→돈화현 육정산; 사자→돌사자상|official-66-advanced-03, official-72-advanced-07, official-64-basic-09, official-71-basic-09||CANDIDATE|기준 목록 외 원문 기억 장치. cue 매핑은 보존; 사실·표현 공개 검토 대기.|
-|추가|ancient|굴식 돌방무덤 말장난|굴(식)돌(방)무덤 = 식방= 식빵|굴(식)돌(방)무덤 = 식방= 식빵|WORDPLAY|2|식방→굴식돌방무덤; 식빵→굴식돌방무덤|official-66-advanced-03, official-72-advanced-07||CANDIDATE|기준 목록 외 원문 기억 장치. cue 매핑은 보존; 사실·표현 공개 검토 대기.|
-|추가|ancient|고구려 후기 무덤|고구려는 후식으로 식빵 먹음|고구려는 후식으로 식빵 먹음|STORY|2|후식→고구려 후기; 식빵→굴식돌방무덤|official-66-advanced-03, official-72-advanced-07||CANDIDATE|기준 목록 외 원문 기억 장치. cue 매핑은 보존; 사실·표현 공개 검토 대기.|
-|추가|ancient|백제 사비 무덤|백제는 사비로 식빵 사먹음|백제는 사비로 식빵 사먹음|STORY|2|사비→백제 사비 시대; 식빵→굴식돌방무덤|official-66-advanced-03, official-72-advanced-07||CANDIDATE|기준 목록 외 원문 기억 장치. cue 매핑은 보존; 사실·표현 공개 검토 대기.|
-|추가|ancient|통일 신라 무덤|신라는 통후추 식빵 먹음|신라는 통후추 식빵 먹음|STORY|2|통후추→신라 통일 후; 식빵→굴식돌방무덤|official-66-advanced-03, official-72-advanced-07||CANDIDATE|기준 목록 외 원문 기억 장치. cue 매핑은 보존; 사실·표현 공개 검토 대기.|
-|추가|ancient|발해 무덤 이야기|발해 사자에게 돈육 식빵|발해 사자에게 돈육 식빵|STORY|3|사자→돌사자상; 돈육→돈화현 육정산; 식빵→굴식돌방무덤|official-66-advanced-03, official-72-advanced-07||CANDIDATE|기준 목록 외 원문 기억 장치. cue 매핑은 보존; 사실·표현 공개 검토 대기.|
-|추가|ancient|고구려 초기 무덤|고구려는 초무무|고구려는 초무무|WORDPLAY|2|초→초기; 무무→돌무지무덤|||CANDIDATE|기준 목록 외 원문 기억 장치. cue 매핑은 보존; 사실·표현 공개 검토 대기.|
-|추가|ancient|백제 한성 무덤|백제는 한계무무|백제는 한계무무|WORDPLAY|3|한→한성시대; 계→계단식; 무무→돌무지무덤|||CANDIDATE|기준 목록 외 원문 기억 장치. cue 매핑은 보존; 사실·표현 공개 검토 대기.|
-|추가|goryeo|고려 성종|2612(원) 의상비 수건향 분유향 노문국|2612(원) 의상비 수건향 분유향 노문국|NUMBER|15|2→2성; 6→6부; 12→12목 지방관파견; 의→의창; 상→상평창; 비→비서성(도서관); 수→수서원(도서관); 건→건원중보; 향→향리제도; 분→분사제도정비; 유→유교정치; 향→향교설치; 노→노비환천법; 문→문신월과법; 국→국자감|official-58-basic-18, official-64-basic-25, ch04-official-68-advanced-09, official-66-basic-13, ch09-official-69-basic-12, official-72-advanced-27, official-58-advanced-11, official-60-advanced-17, official-61-basic-12, official-57-basic-12, official-57-basic-50, official-57-advanced-16|ch03_gukjagam, ch02_hyunwoo_official, ch09_economy|CANDIDATE|기준 목록 외 원문 기억 장치. cue 매핑은 보존; 사실·표현 공개 검토 대기.|
-|추가|ancient|신라 골품 관등|6두품*1=6관등<br>5두품*2=10관등<br>4두품*3=12관등|6두품*1=6관등<br>5두품*2=10관등<br>4두품*3=12관등|NUMBER|3|6두품*1→6관등; 5두품*2→10관등; 4두품*3→12관등|||CANDIDATE|기준 목록 외 원문 기억 장치. cue 매핑은 보존; 사실·표현 공개 검토 대기.|
-|추가|ancient|고국원왕|원통하게 활맞아 죽은 고국원왕|원통하게 활맞아 죽은 고국원왕|WORDPLAY|1|원통→고국원왕|official-61-advanced-06, official-62-advanced-04, official-68-advanced-08||CANDIDATE|기준 목록 외 원문 기억 장치. cue 매핑은 보존; 사실·표현 공개 검토 대기.|
-|추가|ancient|고국양왕|광개토 아버지 고국양왕|광개토 아버지 고국양왕|SENTENCE|1|광개토 아버지→고국양왕|||CANDIDATE|기준 목록 외 원문 기억 장치. cue 매핑은 보존; 사실·표현 공개 검토 대기.|
-|추가|ancient|소수림왕|학(태학)교(불교)령(율령)|학(태학)교(불교)령(율령)|ACROSTIC|3|학→태학; 교→불교; 령→율령|||CANDIDATE|기준 목록 외 원문 기억 장치. cue 매핑은 보존; 사실·표현 공개 검토 대기.|
-|추가|ancient|영양왕|양(영양왕)양(양제침입)신집(이문진 신집 5권)|양(영양왕)양(양제침입)신집(이문진 신집 5권)|ACROSTIC|3|양→영양왕; 양→양제침입; 신집→이문진 신집 5권|||CANDIDATE|기준 목록 외 원문 기억 장치. cue 매핑은 보존; 사실·표현 공개 검토 대기.|
-|추가|republic|6·25 전쟁|똥침->남침 북한이 남한한테 똥침가격을 하였다.|똥침->남침 북한이 남한한테 똥침가격을 하였다.|WORDPLAY|1|남침→북한이 남한한테 똥침가격을 하였다.|||CANDIDATE|기준 목록 외 원문 기억 장치. cue 매핑은 보존; 사실·표현 공개 검토 대기.|
+## Source Review
+
+|ID|title|sourceMnemonic|historical verification|copyright/publication status|appMnemonic status|
+|---|---|---|---|---|---|
+|A001|세계기록유산|오일팔(에) 난새 (영웅) 조조(가) 승훈(이) 해직(에) 동의(하였다)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|A002|세계문화유산|불경해석 창조남(이) 고종수 안경 백|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|A003|조선시대 궁궐|복덕(방) 경희(가) 운(다)|VERIFIED|APP_ORIGINAL_PUBLIC_MNEMONIC|경복·창덕·창경·경희·경운|
+|A004|전기 유적지|금연석 (점)검(도중) 최초 그늘|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|A005|중기 유적지|굴역심 상승(중) 빌점|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|A006|후기 유적지|(2개의) 흥수똥 달제양|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|A007|유적지|고수(는) 암오동(가서) 미궁(에 빠졌다)|CANDIDATE|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|A008|토기|이른 덧(니를) 눌러(서) 빗(자)|CANDIDATE|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|A009|좁쌀|타고 남은 봉지|CANDIDATE|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|A010|벼농사|송흔(이) 화남|CANDIDATE|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|A011|토기|부여(로) 간~ 김송민|CANDIDATE|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|A012|토기|철민(이는) 검은 띠|CANDIDATE|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|A013|세력 범위|송파 거북(이)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|A014|8조법|살사 상곡 절노|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|A015|제천행사|부영(이와) 고동(어는) 동무(다)|VERIFIED|APP_ORIGINAL_PUBLIC_MNEMONIC|부영 · 고동 · 동무|
+|B001|왕과 업적|원통하게 활맞아 죽은 고국원왕 광개토 아버지 고국양왕 학(태학)교(불교)령(율령) 소수림왕 양(영양왕)양(양제침입)신집(이문진 신집 5권)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|B002|소지왕|소(시) 우시 결백행|CANDIDATE|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|B003|진흥왕|진(짜) 개대홍 단! 나성북창 대황마|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|B004|반란사|비염김(씨), 대구김(씨) 헌범(이가) 장원(할) 견적(이 나온다)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|B005|연호|건대인천|CANDIDATE|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|B006|고왕|고천진동|CANDIDATE|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|B007|무왕|무인당장 요(기)서|CANDIDATE|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|B008|문왕|문대 중살 신주자|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|B009|선왕|선건 해북남서 지방|CANDIDATE|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|B010|9서당|9고황 적벽 청(군)백(군)빽 흑(수)말(이다)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|B011|후삼국 성립|무성수정|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|C001|고려 건국과 민족 재통일|발해 공고(애들이) 신통(하다)|VERIFIED|APP_ORIGINAL_PUBLIC_MNEMONIC|발해–공산–고창–신라–통일|
+|C002|광종의 왕권 강화|광노(안)과 공복 주제(에) 송광풍 여사~|VERIFIED|APP_ORIGINAL_PUBLIC_MNEMONIC|광종: 노비·과거·공복 / 광덕·준풍|
+|C003|성종|2612(원) 의상비 수건향 분유향 노문국|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|C004|문종|경동 나비엔 남대문 기사|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|C005|현종|오~ 현창군 거칠(게) 대화(하고) 공정(하게) 관등(하자)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|C006|숙종|화난 숙종은 벌써 3회독|CANDIDATE|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|C007|예종|얘 7재야(양) 감(좋은) 보청기 구해도 얘(예)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|C008|충선왕|이제(부터) 소금만 사(자)|CANDIDATE|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|C009|공민왕|곧 몽정기 관쌍 홍복흥 전(효)성요동(치네) 곧(공)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|C010|우왕|최홍(만)남 최진철(강) 이황|CANDIDATE|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|C011|무신정권|최충흥 최이진|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|C012|급진개혁파|정도전(이) 윤소총-종(으로) (고려를) 조준!|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|C013|무신 반란|중부 포위망 총싸|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|C014|무신 반란|전관(에서) (변호사) 빨리 승|CANDIDATE|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|C015|무신 반란|효심(에는) 이의있삼?|CANDIDATE|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|C016|최충헌 시기|(똘끼)충만 광수구이|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|C017|최우 시기|나란히 (태어난) 연년생의 우(정)|CANDIDATE|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|C018|전시과의 변화|(성)시경 개목(걸이) (김)경문껀데...|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|C019|세습전|신음장인(이)여|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|C020|지눌|돈오(가) 점수(를 잘 받아서 여자친구), 정혜(가)쌍수(를 들고 환영한다)|VERIFIED|APP_ORIGINAL_PUBLIC_MNEMONIC|지눌: 돈오점수 · 정혜쌍수|
+|D001|정도전 저서|삼진경고불조심|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D002|태종|6조 신사의계 창사 양호|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D003|세종|조공왕 갑칠(이는) 내집(에서) 혼자 농삼향의 총여정(을) 앙측(했다)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D004|세조|보육원 간 유경이 집세 진(짜) 오직 6(원)?|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D005|성종|홍경사(가) 관사(에서) 국악(을) 동동동|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D006|5군영|훈어총수금|VERIFIED|COMMON_SHORT_FORM_REVIEWED|훈어총수금|
+|D007|왜란 전후|왜! 쓰삼계삼 사정을(해서) 임신(했다)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D008|환국|경기갑신 서남소노|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D009|정조 편찬사업|정일 홍대 동무 고추탁|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D010|정조의 정책|서초구 거상 윤건 화장대 만행 수공!|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D011|영조의 정책|동서! 청계산 노모탕 사랑균 신속(하)군|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D012|천주교 박해|(박)신(혜는)신기(해)오(지랖도)병(인가)?|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D013|민정문서|민정(이)삼촌(이) 내연관(계인) 서원경(씨에게) 십일조(라니) 사람(이) 호구(네)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D014|토지측량 단위|백두 고경 신결|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D015|상업사|지방 한선경(이) 대만주(를 먹고) 개인방송(을 해서) 동대상(탔다)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D016|골품과 관등 제한|6두품*1=6관등 / 5두품*2=10관등 / 4두품*3=12관등|VERIFIED|APP_ORIGINAL_PUBLIC_MNEMONIC|6×1 · 5×2 · 4×3|
+|D017|최치원|난 제사(라면), 개토해|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D018|원효|원 아(바타) 일심 금화십대|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D019|의상|(그녀의) 의상 관음 화 엄(청 낸다)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D020|5교|복사 열(받아) 뽀(드득) 계율 통(닭 사)장 상종(해선 안되네)금|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D021|9산|일(용)엄(니는) 미사(를 찍으러 거기)가도 (조폭)홍산파, 무주파(가 있어서 못찍었다)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D022|정혜공주묘|식혜 6(개) 사자|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D023|무덤 양식|굴(식)돌(방)무덤 = 식방= 식빵|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D024|돌무지무덤|고구려 초무무 / 백제 한계무무|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D025|역법|당선(되고) 원수(됬다) (이)명(박) 대(통령)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D026|목조건축|(안동가서) 봉(사하면) 극락(가고) 예수(된다)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D027|활자인쇄술|(태종때는) 소자 (세종때는) 대자|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D028|그림|몽고임금|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D029|홍대용|홍대 중상학(부) (수학과) 주담임 (이)균전(을) 의지(가) 무한(하다)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D030|건축|금미 화각 법팔 논쌍 부개 안석|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D031|조광조|소방소도 위헌 경향이있다|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|D032|임진왜란 전개|충신선의 옥사당한 이순신 진주에서 양주를 피토하며 명량하게 마신다|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|E001|통상수교거부|병(이)제 병문한 정양 오신 초덕광 척|VERIFIED|APP_ORIGINAL_PUBLIC_MNEMONIC|병제병문한정양 · 오신초덕광척|
+|E002|강화도조약 이후|수일(이는) 미수(다) 이 규약(은) 무역 통일(이다)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|E003|개항 순서|미 명동 이너프|CANDIDATE|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|E004|갑신정변 이후|갑한톈 거방 교동갑청|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|E005|갑신정변 14개조|순(수한) 근혜 환(갑까지) 지조(지키니) 내시(들이) 호(시)탐(탐) (사)귀(자고) (매달린다)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|E006|동학농민운동|고백(을) 장황(하게) (하기)전 고집(있는) 공주(인지) (확인해라)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|E007|폐정개혁안|왜노무(새끼가) 과부(의) 토지 천평(을) (공)사(함)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|E008|갑오개혁 1차|은경(이)의 궁금(증은) 노비(가) 딱(했냐는거야)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|E009|갑오개혁 2차|홍재교 부부훈시|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|E010|갑오개혁 3차|우친소 건진 단태종|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|E011|홍범14조|홍병일(은) 자아(가) 분리 유인|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|E012|헌의6조|환자중의 입(을) 탁(치자) 피(가) 척|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|E013|고종 연호|강국양광희|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|E014|을미의병|허기(진)유이|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|E015|애국계몽단체|보안(팀) 헌정(이는) 한자협회 신민(아다)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|E016|신문|한(국의) 독(한) 황제(는) 대만(을) 경매(했다)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|E017|근대교육 1880년대|원(산에서) 동경(까지) 배(타고) 26(km)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|E018|근대교육 1890년대|교육(받는) 소사(범은) 외국어 중(급)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|E019|근대교육 1900년대|흥화점(에) 보양(식은) 명문오댕|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|E020|국권피탈 과정|의정(부) 12(사단에는) 해신 기간병(있다)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|F001|비밀결사|독(서)광 여자 송(중)기|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|F002|1910년대 남만주|남산경(치) 부흥(한건) 서로(의 덕)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|F003|중국 본토|하이(네) 동(네) 새로운 음식(맛있어) 귀여(운) 청년(들은) 상해(도 먹는다)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|F004|북간도|북한 서명(하면) 종북|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|F005|연해주|신한(은행) 의성업(은) 전한(길) 정부(로부터 시작되었다)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|F006|미국|미스흥 공대의 국민|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|F007|1920년대 만주|삼봉 춘천 경유시 3미 운동|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|F008|청산리대첩|청산리 고(등)어 천 백(원)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|F009|1930년대|대전(에) 쌍사(자) 동(물원은) 북(이) 독립|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|F010|국민부·조선혁명군|국민 남(편) (양세봉) 영흥(에서) 혁명(하다 죽었다)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|F011|신간회 강령|경 단 기|VERIFIED|APP_ORIGINAL_PUBLIC_MNEMONIC|경단기|
+|F012|신채호|신생아 사청가|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|F013|박은식|박혼식 지혈(이) 통(안돼)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|F014|문일평·정인보·안재홍|문심평 정얼보 감홍시|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|F015|국제회의와 광복|카얄포 광 건모|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|F016|광복 직후 정당·단체|한국독립(에) 조인(한) 국민(에게) 한민(관이) 조공(을) 독촉(한다.)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|F017|6·25 전쟁|똥침 → 남침|VERIFIED|APP_ORIGINAL_PUBLIC_MNEMONIC|남침에서 시작된 6·25 전쟁|
+|F018|노태우 정부|칙칙(한) 고위급 (노태우는) 유기농 핵|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|F019|김대중 정부|햇병아리 중딩 급사정(하여) (소금) 62개(받아오다)|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+|F020|김영삼 정부|UWOI|REVIEW_REQUIRED|USER_SUPPLIED_INTERNAL_REVIEW_ONLY|EXCLUDED|
+
+## Official Questions
+
+|topic|relatedOfficialQuestionIds|question count|
+|---|---|---:|
+|A001 세계기록유산|official-57-basic-46, official-57-advanced-27, official-57-advanced-39, official-57-basic-26, official-57-advanced-26, official-73-advanced-19, official-57-basic-15, official-61-basic-15, official-64-basic-13, official-57-basic-49, official-57-advanced-49, official-58-basic-44|12|
+|A002 세계문화유산|official-61-basic-08, official-67-basic-09, official-59-advanced-24, joseon-official-73-advanced-22, official-74-advanced-19, official-57-advanced-21, official-58-basic-23, official-63-basic-24, official-57-advanced-01, official-60-advanced-01, official-61-basic-01|11|
+|A003 조선시대 궁궐|official-57-basic-34, official-59-advanced-26, official-61-basic-19, official-59-advanced-24, joseon-official-73-advanced-22, official-74-advanced-19, official-60-advanced-32, official-61-basic-35, official-72-advanced-35|9|
+|A004 전기 유적지|official-75-basic-01, official-76-advanced-01, official-66-advanced-01|3|
+|A005 중기 유적지||0|
+|A006 후기 유적지||0|
+|A007 유적지|official-74-advanced-01, official-61-advanced-01, official-58-advanced-01, official-67-basic-49, official-69-advanced-01|5|
+|A008 토기|official-61-advanced-01, official-58-advanced-01, official-63-basic-01|3|
+|A009 좁쌀||0|
+|A010 벼농사|official-61-basic-01, official-65-advanced-01, official-73-advanced-01, official-72-advanced-01, official-77-advanced-01|5|
+|A011 토기|official-61-basic-01, official-62-advanced-01, official-73-advanced-01|3|
+|A012 토기|official-61-basic-01, official-62-advanced-01, official-73-advanced-01|3|
+|A013 세력 범위|official-58-basic-01, official-62-advanced-01, official-64-basic-01|3|
+|A014 8조법|official-59-advanced-45, official-69-advanced-45, official-71-advanced-19|3|
+|A015 제천행사|official-57-basic-09, official-57-advanced-46, official-58-basic-04, official-58-advanced-06, official-60-advanced-02, official-57-basic-04, official-57-basic-05, official-57-basic-06, official-57-advanced-03, official-57-basic-02, official-63-advanced-02, official-64-basic-02|12|
+|B001 왕과 업적|official-61-advanced-06, official-62-advanced-04, official-68-advanced-08, official-63-advanced-03, official-65-advanced-07, official-67-advanced-17, official-57-advanced-04, official-57-advanced-36, official-58-basic-15, official-65-advanced-05|10|
+|B002 소지왕|official-57-basic-04, official-57-basic-05, official-57-basic-09|3|
+|B003 진흥왕|official-58-basic-04, official-63-advanced-07, official-63-advanced-27, official-57-basic-22, official-60-advanced-30, official-64-advanced-30, official-64-advanced-27, official-67-basic-28|8|
+|B004 반란사|official-57-advanced-08, official-58-basic-09, official-58-advanced-07, official-67-advanced-08, official-79-advanced-10, official-73-advanced-07, official-75-advanced-06, official-58-basic-16, official-59-advanced-08, official-62-advanced-09, official-57-basic-38, official-59-advanced-29|12|
+|B005 연호|official-64-basic-09, official-78-advanced-09, official-65-advanced-07, official-79-advanced-07, official-75-advanced-08|5|
+|B006 고왕|official-57-basic-05, official-57-advanced-12, official-57-advanced-14, official-57-basic-29, official-61-basic-47, official-75-advanced-18, official-58-basic-08, official-64-basic-09, official-73-basic-09|9|
+|B007 무왕|official-57-basic-08, official-61-advanced-10, official-63-basic-06, official-65-advanced-07, official-75-advanced-08, official-79-advanced-07|6|
+|B008 문왕|official-57-advanced-08, official-58-basic-09, official-58-advanced-07, official-65-advanced-07, official-71-basic-09, official-78-advanced-09, official-57-advanced-09, official-58-advanced-08, official-59-advanced-09|9|
+|B009 선왕|official-57-basic-07, official-57-basic-26, official-57-advanced-09, official-64-basic-09, official-78-advanced-09, official-59-advanced-09|6|
+|B010 9서당|official-57-advanced-08, official-58-basic-09, official-58-advanced-07, official-57-basic-04, official-57-basic-05, official-57-basic-06, official-57-basic-09, official-61-advanced-10|8|
+|B011 후삼국 성립|official-60-advanced-43, official-72-advanced-32, official-75-basic-31, official-63-basic-11, official-75-basic-11, official-77-basic-31, official-57-advanced-10, official-67-basic-29|8|
+|C001 고려 건국과 민족 재통일|official-57-advanced-10, official-58-advanced-49, official-61-basic-50, official-58-basic-11, official-64-advanced-50, official-71-advanced-18, official-58-advanced-09, ch01-official-70-advanced-10, official-78-advanced-10|9|
+|C002 광종의 왕권 강화|official-57-advanced-12, official-58-basic-12, official-62-advanced-49, official-64-basic-10, official-71-basic-11, official-58-advanced-12, joseon-official-73-advanced-30, official-78-advanced-15, official-63-advanced-12, ch03-official-68-advanced-11, official-63-advanced-09|11|
+|C003 성종|official-61-advanced-07, official-77-basic-21, official-57-basic-07, official-57-advanced-09, official-61-basic-09, ch04-official-65-advanced-11, official-66-basic-13, ch04-official-68-advanced-09, official-61-basic-49, official-62-advanced-41, official-71-basic-07, official-58-basic-18|12|
+|C004 문종|official-58-advanced-12, joseon-official-73-advanced-30, official-74-advanced-15, official-63-advanced-18, official-65-advanced-13, official-77-advanced-37, official-68-advanced-12, ch06-official-70-advanced-13, official-58-basic-13, official-59-advanced-10, official-64-advanced-12, official-63-basic-13|12|
+|C005 현종|official-64-advanced-43, official-58-advanced-43, official-60-advanced-14, official-63-basic-21, ch06-official-65-advanced-12, official-67-advanced-12, official-71-basic-13, ch06-official-77-advanced-11, official-71-basic-17, official-77-basic-18|10|
+|C006 숙종|official-57-basic-28, official-58-basic-17, official-59-advanced-11, official-64-basic-50, official-71-advanced-13, official-60-advanced-28, official-62-advanced-12, official-66-basic-13, ch09-official-69-basic-12, official-72-advanced-27|10|
+|C007 예종|official-57-basic-12, official-57-basic-50, official-57-advanced-16, official-60-advanced-27, official-64-basic-50, official-63-advanced-13, ch03-pdf-76-advanced-11, official-70-advanced-48, official-58-advanced-12, joseon-official-73-advanced-30, official-74-advanced-15|11|
+|C008 충선왕|official-58-basic-16, official-71-advanced-17, official-74-advanced-09|3|
+|C009 공민왕|official-57-advanced-15, official-58-advanced-38, official-59-advanced-13, official-64-advanced-50, ch12-official-75-basic-14, official-75-advanced-15, official-64-advanced-15, official-57-basic-12, official-60-advanced-27, official-62-advanced-18, official-61-basic-18, official-63-advanced-17|12|
+|C010 우왕|official-61-basic-18, official-63-advanced-17, official-64-basic-17, official-68-advanced-48, official-57-basic-19, official-61-advanced-19, official-67-basic-17, official-58-basic-19|8|
+|C011 무신정권|official-61-basic-10, official-61-advanced-13, ch09-official-66-advanced-14, official-60-advanced-15, official-61-advanced-17, official-62-advanced-17|6|
+|C012 급진개혁파|official-57-basic-22, official-57-advanced-35, official-67-basic-31, official-58-advanced-17, official-71-advanced-19, official-75-advanced-19|6|
+|C013 무신 반란|official-61-basic-48, official-66-advanced-47, official-69-basic-45, official-61-basic-16, official-67-basic-49, official-71-basic-15, official-57-advanced-43|7|
+|C014 무신 반란|official-57-basic-33, official-57-advanced-39, official-58-advanced-29, ch09-official-66-advanced-14|4|
+|C015 무신 반란|ch09-official-66-advanced-14, ch10-official-72-advanced-14, ch10-official-74-advanced-14|3|
+|C016 최충헌 시기|official-61-basic-10, official-61-advanced-13, ch09-official-66-advanced-14, official-64-basic-14|4|
+|C017 최우 시기|official-60-advanced-15, official-61-advanced-17, official-62-advanced-17|3|
+|C018 전시과의 변화|official-72-advanced-47, official-58-basic-13, official-59-advanced-10, official-64-advanced-12|4|
+|C019 세습전|official-66-advanced-10, official-67-advanced-18|2|
+|C020 지눌|official-63-advanced-16, ch09-official-74-advanced-16, official-70-advanced-12, official-77-basic-17|4|
+|D001 정도전 저서|joseon-official-73-advanced-20, official-57-basic-22, official-67-basic-31, official-68-advanced-18|4|
+|D002 태종|official-57-basic-23, official-57-advanced-17, official-57-advanced-20, official-68-advanced-24, official-59-advanced-19, official-61-basic-22, official-64-basic-19, official-66-basic-19, official-67-advanced-28, official-65-advanced-28, official-72-advanced-18, joseon-official-74-advanced-26|12|
+|D003 세종|official-68-advanced-22, official-75-basic-29, official-64-advanced-17, official-58-basic-20, official-64-basic-18, official-66-basic-22, official-60-advanced-20, official-62-advanced-21, official-57-advanced-09, official-62-advanced-26, official-66-advanced-10, official-63-basic-18|12|
+|D004 세조|official-57-basic-23, official-57-advanced-20, official-63-advanced-21, official-57-advanced-24, official-58-advanced-24, official-60-advanced-20, official-62-advanced-21, official-64-advanced-17, official-57-advanced-18, official-66-basic-20, official-61-basic-20, official-57-advanced-17|12|
+|D005 성종|official-60-advanced-20, official-61-basic-22, official-63-basic-19, official-57-advanced-24, official-58-advanced-24, official-64-advanced-22, official-70-advanced-19, official-67-basic-18, official-61-advanced-20, official-73-advanced-03, official-61-advanced-29|11|
+|D006 5군영|official-58-advanced-21, official-61-basic-21, official-63-basic-25, official-63-advanced-24, official-67-advanced-26, official-69-basic-06, official-69-advanced-47, joseon-official-77-advanced-24|8|
+|D007 왜란 전후|joseon-official-77-advanced-23, official-59-advanced-26|2|
+|D008 환국|official-57-advanced-35, official-61-basic-23, official-61-basic-40, official-61-advanced-23, official-72-advanced-26, joseon-official-74-advanced-22|6|
+|D009 정조 편찬사업|official-57-basic-17, official-57-advanced-24, official-59-advanced-24, official-57-basic-26, official-57-advanced-26, official-73-advanced-19, official-64-advanced-26, official-72-advanced-28, joseon-official-77-advanced-26|9|
+|D010 정조의 정책|official-57-basic-17, official-59-advanced-27, official-62-advanced-27, official-63-basic-28, official-64-advanced-27, official-66-basic-29, official-57-advanced-24, official-59-advanced-24, official-65-advanced-24|9|
+|D011 영조의 정책|joseon-official-79-advanced-23, official-57-advanced-12, official-58-basic-12, official-61-basic-10, official-69-basic-27, official-58-basic-25, official-66-basic-26, official-68-advanced-24, official-58-advanced-24, official-63-advanced-19, official-66-advanced-23|11|
+|D012 천주교 박해|joseon-official-77-advanced-29, official-79-advanced-28|2|
+|D013 민정문서|official-63-basic-08, official-60-advanced-16, official-61-basic-30, official-63-basic-50, official-57-basic-05, official-57-basic-10, official-57-basic-11|7|
+|D014 토지측량 단위|official-57-basic-04, official-57-basic-05, official-57-basic-09, official-57-basic-06|4|
+|D015 상업사|official-58-basic-04, official-58-advanced-03, official-61-basic-02, official-60-advanced-35, official-67-advanced-30, official-68-advanced-32, official-78-advanced-14, official-58-advanced-23, official-70-advanced-25, official-58-basic-32, official-58-basic-41, official-58-advanced-12|12|
+|D016 골품과 관등 제한|official-57-advanced-08, official-64-advanced-43, official-69-advanced-02, official-61-basic-11, official-61-basic-17, official-61-advanced-22|6|
+|D017 최치원|official-64-advanced-09, official-69-basic-48, official-76-advanced-08|3|
+|D018 원효|official-61-advanced-05, official-64-basic-49, official-71-basic-08, official-69-basic-07|4|
+|D019 의상|official-57-basic-47, official-57-advanced-34, official-58-basic-18, official-61-advanced-15, official-67-advanced-06, official-60-advanced-07, official-63-basic-22|7|
+|D020 5교|official-60-advanced-04, official-71-advanced-08, official-77-basic-39, official-64-basic-08, ch02-official-66-advanced-09, official-67-advanced-10|6|
+|D021 9산|official-57-advanced-13, official-57-advanced-25, official-58-basic-48|3|
+|D022 정혜공주묘|official-66-advanced-03, official-72-advanced-07, official-64-basic-09, official-71-basic-09|4|
+|D023 무덤 양식|official-57-basic-04, official-57-basic-05, official-57-basic-06|3|
+|D024 돌무지무덤||0|
+|D025 역법|official-73-advanced-02, joseon-official-76-advanced-22, official-64-advanced-25|3|
+|D026 목조건축|official-57-advanced-15, official-73-basic-12, ch10-official-65-advanced-17, official-75-advanced-37, official-58-basic-10, official-59-advanced-15, official-63-basic-16|7|
+|D027 활자인쇄술|official-60-advanced-46, official-65-advanced-28, official-72-advanced-18, joseon-official-74-advanced-26, official-64-advanced-17|5|
+|D028 그림|official-65-advanced-22, official-58-advanced-08, official-62-advanced-07, official-63-advanced-03, official-59-advanced-25, joseon-official-73-advanced-26|6|
+|D029 홍대용|joseon-official-79-advanced-25, official-63-basic-27|2|
+|D030 건축|official-64-basic-08, ch02-official-66-advanced-09, official-67-advanced-10, official-57-advanced-34, official-60-advanced-07, official-63-basic-22, official-57-basic-27, official-70-advanced-22, official-58-advanced-29, official-67-advanced-16, official-67-advanced-32, official-57-basic-33|12|
+|D031 조광조|official-57-basic-21, official-61-basic-32, official-64-advanced-23, official-64-advanced-33, official-65-advanced-40, official-76-advanced-37, official-58-basic-50, official-58-advanced-28, official-63-basic-20|9|
+|D032 임진왜란 전개|official-59-advanced-48, official-60-advanced-25, official-57-advanced-09, official-58-basic-50, official-58-advanced-28, official-57-basic-25, official-58-basic-03, official-62-advanced-04, official-64-basic-03, official-71-basic-23|10|
+|E001 통상수교거부|joseon-official-77-advanced-29, official-79-advanced-28, official-67-basic-32, official-69-advanced-29, joseon-official-76-advanced-29, official-60-advanced-31, official-61-basic-28, official-61-advanced-31, official-64-advanced-28, official-66-basic-30, official-62-advanced-30, official-63-basic-29|12|
+|E002 강화도조약 이후|official-62-advanced-33, official-63-basic-31, official-64-advanced-49, official-61-basic-29, official-71-basic-27, official-76-advanced-30, official-61-advanced-25, official-67-advanced-30, official-71-advanced-29, official-57-advanced-34|10|
+|E003 개항 순서|official-57-basic-32, official-57-basic-37, official-57-advanced-46, official-58-advanced-50, official-65-advanced-32, official-66-basic-34, official-65-advanced-29, official-72-advanced-43, official-57-basic-34, official-59-advanced-30, official-61-basic-28, official-63-advanced-28|12|
+|E004 갑신정변 이후|official-59-advanced-32, official-64-advanced-30, official-66-basic-33, official-57-advanced-27, official-63-advanced-30, official-66-advanced-29, official-66-basic-34, official-69-advanced-38, official-63-basic-38, official-62-advanced-32, official-79-basic-31, official-63-basic-33|12|
+|E005 갑신정변 14개조||0|
+|E006 동학농민운동|official-79-basic-31, official-57-basic-33, official-61-basic-31, official-62-advanced-32, official-66-basic-37, official-73-basic-32|6|
+|E007 폐정개혁안||0|
+|E008 갑오개혁 1차|official-63-advanced-32, official-58-basic-24, official-59-advanced-19, official-63-advanced-26, official-57-advanced-27, official-63-basic-33, official-64-advanced-31|7|
+|E009 갑오개혁 2차|official-59-advanced-49, official-60-advanced-27, official-72-advanced-32, official-64-advanced-43, official-60-advanced-34, official-68-advanced-35, official-74-advanced-32|7|
+|E010 갑오개혁 3차|official-71-advanced-31, official-77-advanced-30, official-64-advanced-33, official-65-advanced-40, official-76-advanced-37, official-58-advanced-32, official-73-basic-37, official-72-advanced-32, official-79-advanced-33|9|
+|E011 홍범14조|official-63-basic-34, official-75-advanced-38, official-77-basic-33, official-58-basic-24, official-59-advanced-19, official-63-advanced-26, official-66-advanced-39, official-67-advanced-43, official-77-basic-36|9|
+|E012 헌의6조|official-57-advanced-31, official-58-basic-32, official-61-basic-33, official-62-advanced-36, official-65-advanced-36, official-67-advanced-34, official-60-advanced-37, official-60-advanced-47|8|
+|E013 고종 연호|official-57-basic-22, official-60-advanced-30, official-64-advanced-30, official-58-advanced-32, official-71-advanced-31, official-57-basic-34, official-59-advanced-37, official-61-basic-35|8|
+|E014 을미의병|official-65-advanced-33, official-78-advanced-33, official-61-basic-16|3|
+|E015 애국계몽단체|official-57-advanced-40, official-65-advanced-35, official-66-advanced-33, official-59-advanced-33, official-61-basic-27, official-61-advanced-36|6|
+|E016 신문|official-61-advanced-34, official-72-advanced-29, official-57-basic-37, official-61-basic-33, official-73-basic-34, official-60-advanced-36, official-61-advanced-35, official-62-advanced-34, official-59-advanced-39|9|
+|E017 근대교육 1880년대|official-67-advanced-33, official-78-advanced-30, official-60-advanced-32, official-61-advanced-42, official-65-advanced-39, official-61-basic-27, official-60-advanced-27, official-62-advanced-35, official-63-basic-32|9|
+|E018 근대교육 1890년대|official-60-advanced-27, official-72-advanced-32, official-64-advanced-33, official-65-advanced-40, official-76-advanced-37, official-59-advanced-33|6|
+|E019 근대교육 1900년대|official-61-advanced-36, official-63-basic-36, official-64-advanced-33, official-59-advanced-33, official-61-basic-27|5|
+|E020 국권피탈 과정|official-65-advanced-32, official-58-advanced-31, official-60-advanced-34, official-65-advanced-33, official-64-advanced-35, official-69-advanced-34|6|
+|F001 비밀결사|official-63-advanced-35, official-69-basic-32, official-75-basic-39|3|
+|F002 1910년대 남만주|official-70-advanced-34, official-73-advanced-36, official-76-advanced-41, official-62-advanced-39|4|
+|F003 중국 본토|official-57-basic-37, official-58-basic-34, official-60-advanced-40, official-63-advanced-10, official-57-advanced-35, official-57-basic-44, official-58-basic-41, official-58-advanced-39, official-60-advanced-41, official-64-basic-42, official-67-advanced-44|11|
+|F004 북간도|official-57-advanced-44, official-67-basic-35, official-68-advanced-40, official-70-advanced-37, official-72-advanced-37, official-61-basic-37, official-61-advanced-44, official-64-basic-35|8|
+|F005 연해주|official-72-advanced-38, official-75-basic-40|2|
+|F006 미국|official-57-basic-32, official-57-basic-37, official-57-advanced-46, official-79-basic-43, official-77-basic-34, official-78-advanced-35, official-75-basic-34, official-58-advanced-33, official-62-advanced-38, official-74-advanced-33|10|
+|F007 1920년대 만주|official-58-basic-36, official-59-advanced-36, official-64-basic-35, official-61-basic-37, official-69-advanced-36, official-61-basic-03, official-64-advanced-43, official-67-basic-14, official-57-advanced-42, official-58-basic-39|10|
+|F008 청산리대첩|official-61-basic-37, official-64-basic-35|2|
+|F009 1930년대|official-57-basic-41, official-62-advanced-39, official-63-basic-41, official-63-advanced-36, official-75-basic-43, official-67-advanced-39, official-74-advanced-42|7|
+|F010 국민부·조선혁명군|official-63-advanced-36, official-77-advanced-41, official-69-basic-34, official-75-basic-43, official-63-basic-41, official-62-advanced-39|6|
+|F011 신간회 강령||0|
+|F012 신채호|official-66-advanced-30, official-67-advanced-42, official-72-advanced-42, official-60-advanced-35|4|
+|F013 박은식|official-57-advanced-35|1|
+|F014 문일평·정인보·안재홍|official-67-advanced-42|1|
+|F015 국제회의와 광복|official-58-basic-41, official-63-basic-43, official-69-basic-36, official-61-basic-44, official-69-basic-41|5|
+|F016 광복 직후 정당·단체|official-64-advanced-42, official-67-advanced-39, official-70-advanced-41, official-65-advanced-43, official-69-advanced-41|5|
+|F017 6·25 전쟁||0|
+|F018 노태우 정부|official-70-advanced-43, official-61-basic-46, official-67-basic-45, official-73-basic-50|4|
+|F019 김대중 정부|official-69-basic-45, official-74-advanced-49, official-78-advanced-49, official-61-advanced-50, official-74-advanced-48, official-73-advanced-50, official-57-basic-48, official-59-advanced-50, official-62-advanced-47|9|
+|F020 김영삼 정부||0|
+
+## Story Mapping
+
+|topic|relatedSceneIds|
+|---|---|
+|A001 세계기록유산||
+|A002 세계문화유산|joseon_ch12_s2|
+|A003 조선시대 궁궐|joseon_ch12_s2|
+|A004 전기 유적지||
+|A005 중기 유적지||
+|A006 후기 유적지||
+|A007 유적지||
+|A008 토기||
+|A009 좁쌀||
+|A010 벼농사||
+|A011 토기||
+|A012 토기||
+|A013 세력 범위||
+|A014 8조법||
+|A015 제천행사||
+|B001 왕과 업적||
+|B002 소지왕||
+|B003 진흥왕||
+|B004 반란사||
+|B005 연호||
+|B006 고왕||
+|B007 무왕||
+|B008 문왕||
+|B009 선왕||
+|B010 9서당||
+|B011 후삼국 성립||
+|C001 고려 건국과 민족 재통일|ch01_victory|
+|C002 광종의 왕권 강화|joseon_ch20_s3, ch02_night_discussion|
+|C003 성종|ch03_gukjagam, ch02_policy_reason, ch02_hyunwoo_official|
+|C004 문종|joseon_ch20_s3, ch06_burned_market, ch02_purge|
+|C005 현종|ch06_flight, ch06_woodblocks|
+|C006 숙종|ch09_economy|
+|C007 예종|ch02_exam_notice, joseon_ch20_s3|
+|C008 충선왕||
+|C009 공민왕|ch12_wihwa|
+|C010 우왕||
+|C011 무신정권|ch09_choe|
+|C012 급진개혁파||
+|C013 무신 반란||
+|C014 무신 반란|ch09_choe|
+|C015 무신 반란|ch09_choe, ch10_return|
+|C016 최충헌 시기|ch09_choe|
+|C017 최우 시기||
+|C018 전시과의 변화||
+|C019 세습전||
+|C020 지눌|ch09_jinul|
+|D001 정도전 저서|joseon_ch01_s3|
+|D002 태종|joseon_ch20_s5|
+|D003 세종||
+|D004 세조||
+|D005 성종||
+|D006 5군영|joseon_ch17_s3|
+|D007 왜란 전후|joseon_ch20_s5|
+|D008 환국|joseon_ch17_s2|
+|D009 정조 편찬사업|joseon_ch19_s3|
+|D010 정조의 정책||
+|D011 영조의 정책|joseon_ch18_s1|
+|D012 천주교 박해|joseon_ch22_s2|
+|D013 민정문서||
+|D014 토지측량 단위||
+|D015 상업사||
+|D016 골품과 관등 제한||
+|D017 최치원||
+|D018 원효||
+|D019 의상||
+|D020 5교|ch01_gyeonhwon|
+|D021 9산||
+|D022 정혜공주묘||
+|D023 무덤 양식||
+|D024 돌무지무덤||
+|D025 역법|joseon_ch08_s2|
+|D026 목조건축|ch10_celadon|
+|D027 활자인쇄술|joseon_ch20_s5|
+|D028 그림|joseon_ch19_s1|
+|D029 홍대용|joseon_ch19_s1|
+|D030 건축|ch01_gyeonhwon|
+|D031 조광조||
+|D032 임진왜란 전개||
+|E001 통상수교거부|joseon_ch22_s2, joseon_ch18_s2|
+|E002 강화도조약 이후||
+|E003 개항 순서||
+|E004 갑신정변 이후||
+|E005 갑신정변 14개조||
+|E006 동학농민운동||
+|E007 폐정개혁안||
+|E008 갑오개혁 1차||
+|E009 갑오개혁 2차||
+|E010 갑오개혁 3차||
+|E011 홍범14조||
+|E012 헌의6조||
+|E013 고종 연호||
+|E014 을미의병||
+|E015 애국계몽단체||
+|E016 신문||
+|E017 근대교육 1880년대||
+|E018 근대교육 1890년대||
+|E019 근대교육 1900년대||
+|E020 국권피탈 과정||
+|F001 비밀결사||
+|F002 1910년대 남만주||
+|F003 중국 본토||
+|F004 북간도||
+|F005 연해주||
+|F006 미국||
+|F007 1920년대 만주||
+|F008 청산리대첩||
+|F009 1930년대||
+|F010 국민부·조선혁명군||
+|F011 신간회 강령||
+|F012 신채호||
+|F013 박은식||
+|F014 문일평·정인보·안재홍||
+|F015 국제회의와 광복||
+|F016 광복 직후 정당·단체||
+|F017 6·25 전쟁||
+|F018 노태우 정부||
+|F019 김대중 정부||
+|F020 김영삼 정부||
+
+## Problems
+
+- OCR suspected / historical verification needed: A001, A002, A004, A005, A006, A013, A014, B001, B003, B004, B008, B010, B011, C003, C004, C005, C007, C009, C011, C012, C013, C016, C018, C019, D001, D002, D003, D004, D005, D007, D008, D009, D010, D011, D012, D013, D014, D015, D017, D018, D019, D020, D021, D022, D023, D024, D025, D026, D027, D028, D029, D030, D031, D032, E002, E004, E005, E006, E007, E008, E009, E010, E011, E012, E013, E014, E015, E016, E017, E018, E019, E020, F001, F002, F003, F004, F005, F006, F007, F008, F009, F010, F012, F013, F014, F015, F016, F018, F019, F020
+- Candidate review: A007, A008, A009, A010, A011, A012, B002, B005, B006, B007, B009, C006, C008, C010, C014, C015, C017, E003
+- Duplicate: 0
+- Copyright review: 108
+- Missing official questions: 9
