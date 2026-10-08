@@ -3,13 +3,25 @@
  * a hero is a cover illustration, never a default background for every scene.
  */
 const ERA_PROTAGONISTS = {
+  protagonist_proto_kingdoms: {
+    id:'protagonist_proto_kingdoms',era:'proto-kingdoms',gender:'UNSPECIFIED',
+    baseAppearance:null,outfits:{},expressions:[],assetPaths:{},
+    displayName:null,defaultTitle:'원삼국편 주인공',basePose:null,dialogueStyle:null,relationshipIds:[],
+    role:null,status:'asset-pending',appearanceLocked:false
+  },
+  protagonist_three_kingdoms: {
+    id:'protagonist_three_kingdoms',era:'three-kingdoms',gender:'UNSPECIFIED',
+    baseAppearance:null,outfits:{},expressions:[],assetPaths:{},
+    displayName:null,defaultTitle:'삼국편 주인공',basePose:null,dialogueStyle:null,relationshipIds:[],
+    role:null,status:'asset-pending',appearanceLocked:false
+  },
   protagonist_goryeo: {
     id:'protagonist_goryeo', era:'goryeo', gender:'male', legacyCharacterId:'player',
     baseAppearance:'기존 고려편 남성 주인공: 검은 헝클어진 머리, 기존 얼굴과 여행자 복식 유지',
     outfits:{goryeo:'기존 고려편 여행자 복식', modern:'기존 프롤로그 현대 복식'},
     expressions:['neutral'],
     legacyExpressionPortraits:Object.keys(PORTRAITS).filter(id=>id.startsWith('player_goryeo_')),
-    ageState:{kind:'existing-story',description:'기존 불로 설정과 저장 상태 유지'},
+    ageState:{kind:'existing-story',description:'기존 불로 설정과 저장 상태 유지'},displayName:'나',defaultTitle:'고려편 주인공',basePose:'standing',dialogueStyle:'기존 고려편 대사 유지',relationshipIds:['doyun','village','merchant','royal','citizens','hyunwoo'],
     assetPaths:{neutral:PORTRAITS.player_goryeo_neutral.src, hero:'assets/editorial/heroes/goryeo.webp'},
     status:'playable'
   },
@@ -17,33 +29,27 @@ const ERA_PROTAGONISTS = {
     id:'protagonist_joseon',era:'joseon',gender:'female',
     baseAppearance:'타원형 얼굴, 따뜻하고 가는 눈매, 짙은 갈색의 긴 땋은 머리와 소박한 붉은 댕기',
     outfits:{earlyJoseon:'수수한 긴 소색 저고리와 적갈색 치마, 글과 종이를 담는 작은 보따리 가방'},
-    expressions:['neutral','smile','laugh','surprised','shock','worried','fear','sad','crying','angry','determined','thinking','confused','relieved','tired'],ageState:{kind:'persistent',age:24,description:'CH.00부터 CH.22까지 같은 얼굴과 나이를 유지하는 시간 여행자'},
+    expressions:['neutral','smile','laugh','surprised','shock','worried','fear','sad','crying','angry','determined','thinking','confused','relieved','tired'],ageState:{kind:'persistent',age:24,description:'CH.00부터 CH.22까지 같은 얼굴과 나이를 유지하는 시간 여행자'},displayName:'나',defaultTitle:'조선편 주인공',basePose:'standing',dialogueStyle:'기존 조선편 대사 유지',relationshipIds:[],
     assetPaths:{neutral:'assets/editorial/protagonists/joseon-neutral.webp',smile:'assets/joseon/protagonist/smile.webp',laugh:'assets/joseon/protagonist/laugh.webp',surprised:'assets/joseon/protagonist/surprised.webp',shock:'assets/joseon/protagonist/shock.webp',worried:'assets/joseon/protagonist/worried.webp',fear:'assets/joseon/protagonist/fear.webp',sad:'assets/joseon/protagonist/sad.webp',crying:'assets/joseon/protagonist/crying.webp',angry:'assets/joseon/protagonist/angry.webp',determined:'assets/joseon/protagonist/determined.webp',thinking:'assets/joseon/protagonist/thinking.webp',confused:'assets/joseon/protagonist/confused.webp',relieved:'assets/joseon/protagonist/relieved.webp',tired:'assets/joseon/protagonist/tired.webp',hero:'assets/editorial/heroes/joseon.webp'},
     role:'글을 읽고 쓰는 평민 여성의 시선으로 역사를 경험하는 기록자',status:'playable'
   },
   protagonist_korean_empire: {
-    id:'protagonist_korean_empire',era:'empire',gender:'male',
-    baseAppearance:'긴 각진 얼굴, 곧은 콧날, 깔끔한 가르마의 짧은 검은 머리',
-    outfits:{jeongdong1905:'남색 근대식 양복과 높은 흰 옷깃, 차분한 넥타이, 가죽 서류 가방'},
-    expressions:['neutral'],ageState:{kind:'concept',age:27},
-    assetPaths:{neutral:'assets/editorial/protagonists/empire-neutral.webp',hero:'assets/editorial/heroes/empire.webp'},
-    role:'근대화와 외세 사이의 변화를 기록하는 청년',status:'preview'
+    id:'protagonist_korean_empire',era:'empire',gender:'UNSPECIFIED',
+    baseAppearance:null,outfits:{},expressions:[],ageState:{kind:'undecided'},displayName:null,defaultTitle:'대한제국편 주인공',basePose:null,dialogueStyle:null,relationshipIds:[],
+    assetPaths:{},conceptAssetPaths:{neutral:'assets/editorial/protagonists/empire-neutral.webp'},
+    role:null,status:'concept-pending',appearanceLocked:false
   },
   protagonist_occupation: {
-    id:'protagonist_occupation',era:'occupation',gender:'female',
-    baseAppearance:'부드러운 사각형 얼굴과 곧은 눈썹, 귀 뒤로 넘긴 턱 길이의 단발',
-    outfits:{gyeongseong1930:'크림색 블라우스, 차분한 회청색 긴 치마, 책가방과 수첩'},
-    expressions:['neutral'],ageState:{kind:'concept',age:25},
-    assetPaths:{neutral:'assets/editorial/protagonists/occupation-neutral.webp',hero:'assets/editorial/heroes/occupation.webp'},
-    role:'일상의 억압 속에서도 삶과 시대를 기록하는 여성',status:'preview'
+    id:'protagonist_occupation',era:'occupation',gender:'UNSPECIFIED',
+    baseAppearance:null,outfits:{},expressions:[],ageState:{kind:'undecided'},displayName:null,defaultTitle:'일제강점기편 주인공',basePose:null,dialogueStyle:null,relationshipIds:[],
+    assetPaths:{},conceptAssetPaths:{neutral:'assets/editorial/protagonists/occupation-neutral.webp'},
+    role:null,status:'concept-pending',appearanceLocked:false
   },
   protagonist_republic: {
-    id:'protagonist_republic',era:'republic',gender:'male',
-    baseAppearance:'넓은 얼굴, 무쌍 눈매, 옆머리가 짧게 정돈된 짧은 검은 머리',
-    outfits:{seoul2020:'회청색 현대 재킷, 회색 티셔츠, 검은 현대식 배낭'},
-    expressions:['neutral'],ageState:{kind:'concept',age:22},
-    assetPaths:{neutral:'assets/editorial/protagonists/republic-neutral.webp',hero:'assets/editorial/heroes/republic.webp'},
-    role:'변화하는 대한민국의 일상과 역사를 만나는 청년',status:'preview'
+    id:'protagonist_republic',era:'republic',gender:'UNSPECIFIED',
+    baseAppearance:null,outfits:{},expressions:[],ageState:{kind:'undecided'},displayName:null,defaultTitle:'대한민국편 주인공',basePose:null,dialogueStyle:null,relationshipIds:[],
+    assetPaths:{},conceptAssetPaths:{neutral:'assets/editorial/protagonists/republic-neutral.webp'},
+    role:null,status:'concept-pending',appearanceLocked:false
   }
 };
 const ERA_BACKGROUNDS = {
@@ -54,6 +60,8 @@ const ERA_BACKGROUNDS = {
   'republic-seoul-2020':{id:'republic-seoul-2020',era:'republic',yearRange:[2020,2026],location:'seoul-han-river',event:'contemporary-daily-life',timeOfDay:'blue-hour',src:'assets/editorial/backgrounds/republic-seoul-2020.webp',usage:'concept',includesProtagonist:false}
 };
 const ERA_VISUALS = {
+  'proto-kingdoms':{protagonistId:'protagonist_proto_kingdoms',backgroundId:null},
+  'three-kingdoms':{protagonistId:'protagonist_three_kingdoms',backgroundId:null},
   goryeo:{protagonistId:'protagonist_goryeo',backgroundId:'goryeo-gaegyeong-cover'},
   joseon:{protagonistId:'protagonist_joseon',backgroundId:'joseon-hanyang-1398'},
   empire:{protagonistId:'protagonist_korean_empire',backgroundId:'empire-jeongdong-1905'},
