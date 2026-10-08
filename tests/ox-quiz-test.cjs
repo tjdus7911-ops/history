@@ -122,7 +122,7 @@ assert(html.includes('data-ox-review')&&html.includes('data-ox-analysis'),'revie
 
 /* A small public API lets the tests verify behavior instead of private rendering details. */
 assert.equal(run('typeof globalThis.OX_QUIZ_API'),'object','OX_QUIZ_API must be exposed');
-for(const method of ['stats','eraStats','weaknessRows','choose','startSession','snapshot'])assert.equal(run(`typeof OX_QUIZ_API.${method}`),'function',`OX_QUIZ_API.${method} missing`);
+for(const method of ['stats','eraStats','weaknessRows','wrongDistribution','choose','startSession','snapshot'])assert.equal(run(`typeof OX_QUIZ_API.${method}`),'function',`OX_QUIZ_API.${method} missing`);
 const chosen=copy(`OX_QUIZ_API.choose(20,{eraId:'goryeo',seed:'qa-first'})`);
 assert.equal(chosen.length,20,'era selection must return exactly 20 questions');
 assert.equal(new Set(chosen).size,20,'one session must not repeat a question');
@@ -229,11 +229,19 @@ assert.equal(ranked[0].eraId,'goryeo','eligible weakest era must be ranked first
 assert.equal(weakness.find(item=>item.eraId==='prehistoric')?.eligible,false,'fewer than ten attempts must be marked 데이터 부족');
 assert(copy(`OX_QUIZ_API.topicStats('goryeo')`).length,'topic stats must expose concept weakness data');
 assert(row('goryeo').topics.length,'era rows must include their top concept statistics');
+const distribution=copy('OX_QUIZ_API.wrongDistribution()'),distributionRow=id=>distribution.rows.find(item=>item.eraId===id);
+assert.equal(distribution.total,17,'donut denominator must be the sum of all seven eras cumulative wrong counts');
+assert.equal(distribution.rows.length,7);assert.equal(distributionRow('prehistoric').wrong,9);assert.equal(distributionRow('goryeo').wrong,5);assert.equal(distributionRow('joseon').wrong,3);
+assert.equal(distributionRow('prehistoric').percentage,'52.9');assert.equal(distributionRow('goryeo').percentage,'29.4');assert.equal(distributionRow('joseon').percentage,'17.6');
 
 click({nav:'ox'});click({oxAnalysis:'true'});
 assert(html.includes('시대별 취약점 분석')&&html.includes('가장 취약한 시대'));
 assert(html.includes('데이터 부족'),'analysis screen must identify insufficient samples');
-assert((html.match(/ox-weakness-meter/g)||[]).length>=7,'analysis must render horizontal accuracy bars');
+assert.equal((html.match(/class="ox-weakness-donut"/g)||[]).length,1,'analysis must render one all-era wrong-answer donut');
+assert.equal((html.match(/data-era="(?:prehistoric|kingdoms|goryeo|joseon|empire|occupation|republic)" data-wrong=/g)||[]).length,7,'donut must include a labeled row for every era');
+assert(!html.includes('ox-weakness-meter'),'the replaced horizontal weakness bars must not remain');
+assert(html.includes('role="img"')&&html.includes('누적 오답 총 17문제'),'donut needs an accessible data summary');
+assert(html.includes('data-era="goryeo" data-wrong="5" data-share="29.4"'),'legend must expose the actual count and calculated share');
 assert(html.includes('data-ox-review-era="goryeo"'),'weak era must link to targeted review');
 
 /* Repeating one question cannot satisfy the ten-unique-question ranking threshold. */
@@ -249,6 +257,16 @@ run(`(()=>{const ids=${JSON.stringify(conceptPair.map(question=>question.id))},o
 const groupedTopics=copy(`OX_QUIZ_API.topicStats(${JSON.stringify(conceptEra)})`),grouped=groupedTopics.find(item=>item.learned===2&&item.wrong===2);
 assert(grouped,'two questions sharing era/concept tags must collapse into one topic weakness row');
 run(`meta().oxQuiz=${analyticsSnapshot}`);
+
+/* Donut safely handles no wrong answers and a single-era 100% share. */
+const donutSnapshot=run('JSON.stringify(meta().oxQuiz)'),singleWrong=questions.find(question=>question.eraId==='occupation');
+run(`(()=>{const ox=meta().oxQuiz;ox.records={};ox.history=[];ox.wrongIds=[];render();})()`);
+let emptyDistribution=copy('OX_QUIZ_API.wrongDistribution()');assert.equal(emptyDistribution.total,0);assert(emptyDistribution.rows.every(item=>item.percentage==='0'));
+assert(html.includes('아직 누적 오답이 없습니다.')&&!html.includes('conic-gradient()'),'zero data must render a neutral, valid empty state');
+run(`(()=>{const q=OX_QUESTIONS.find(item=>item.id===${JSON.stringify(singleWrong.id)}),ox=meta().oxQuiz;ox.records={[q.id]:{attempts:2,correctCount:0,wrongCount:2,lastCorrect:false,lastAnsweredAt:'2026-10-08T00:00:00.000Z'}};ox.history=[];ox.wrongIds=[q.id];render();})()`);
+const singleDistribution=copy('OX_QUIZ_API.wrongDistribution()');assert.equal(singleDistribution.total,2);assert.equal(singleDistribution.rows.find(item=>item.eraId==='occupation').percentage,'100');
+assert(html.includes('data-era="occupation" data-wrong="2" data-share="100"'),'one-era data must fill the donut at an exact 100% share');
+run(`meta().oxQuiz=${donutSnapshot}`);
 
 /* OX work remains isolated from Story, official exams, and their wrong-note records. */
 assert.equal(run('JSON.stringify({run:state.run,mainRun:state.mainRun,officialResults:meta().officialExamResults||[],questionRecords:meta().questionRecords,wrongQuestionIds:meta().wrongQuestionIds,wrongAnswers:meta().wrongAnswers})'),protectedBefore,'OX must not alter Story or official exam records');

@@ -49,7 +49,14 @@ const server=http.createServer((req,res)=>{
   await page.locator('[data-ox-back]').click();await page.locator('[data-ox-analysis]').click();
   assert(await page.locator('text=시대별 취약점 분석').first().isVisible());assert(await page.locator('text=데이터 부족').first().isVisible());
   assert((await page.locator('.ox-analysis-row.ox-weakness-row').count())>=7,'seven era analysis rows required '+width);
-  assert((await page.locator('.ox-analysis-bar.ox-weakness-meter').count())>=7,'seven horizontal accuracy bars required '+width);
+  assert.equal(await page.locator('.ox-weakness-donut').count(),1,'one all-era donut required '+width);
+  assert.equal(await page.locator('.ox-donut-legend li').count(),7,'seven labeled donut legend rows required '+width);
+  assert.equal(await page.locator('.ox-weakness-meter').count(),0,'replaced horizontal weakness bars remain '+width);
+  const donut=await page.locator('.ox-weakness-donut').evaluate(element=>{const box=element.getBoundingClientRect(),style=getComputedStyle(element);return {width:box.width,height:box.height,background:style.backgroundImage,label:element.getAttribute('aria-label')}});
+  assert(Math.abs(donut.width-donut.height)<=1&&donut.width>=150&&donut.width<=200,`donut size invalid at ${width}px: ${JSON.stringify(donut)}`);
+  assert(donut.background.includes('conic-gradient')&&donut.label.includes('누적 오답 총 1문제'),`donut data/paint missing at ${width}px: ${JSON.stringify(donut)}`);
+  const goryeoShare=await page.locator('.ox-donut-legend [data-era="goryeo"]').evaluate(element=>({wrong:element.dataset.wrong,share:element.dataset.share,text:element.innerText}));
+  assert.equal(goryeoShare.wrong,'1');assert.equal(goryeoShare.share,'100');assert(goryeoShare.text.includes('1문제')&&goryeoShare.text.includes('100%'),'single-era share must be exact '+width);
   const sortHeights=await page.locator('[data-ox-analysis-sort]').evaluateAll(items=>items.map(item=>item.getBoundingClientRect().height));assert(sortHeights.every(height=>height>=44),'analysis sort touch target '+width);
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'analysis horizontal overflow '+width);
   await page.screenshot({path:`tmp/ox-mobile/analysis-${width}.png`,fullPage:true});
@@ -59,7 +66,18 @@ const server=http.createServer((req,res)=>{
   assert((await page.locator('[data-ox-review-one]').first().boundingBox()).height>=44,'wrong-review button touch target '+width);
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'review horizontal overflow '+width);
 
+  for(const route of ['home','exam-library','ox','study','records']){
+   await page.waitForTimeout(260);
+   await page.locator(`[data-nav="${route}"]`).click();
+   assert.equal(await page.evaluate(()=>screen),route,`navigation did not enter ${route} at ${width}px`);
+   assert.equal(new URL(page.url()).hash,`#${route}`,`URL did not synchronize ${route} at ${width}px`);
+   await page.reload();
+   assert.equal(await page.evaluate(()=>screen),route,`refresh did not preserve ${route} at ${width}px`);
+   assert(await page.locator(`[data-nav="${route}"][aria-current="page"]`).isVisible(),`active tab did not restore ${route} at ${width}px`);
+   if(route==='ox'){assert(await page.locator('[data-ox-resume]').isVisible(),`OX main must offer resume at ${width}px`);assert.equal(await page.locator('.ox-play').count(),0,`OX main refresh auto-entered quiz at ${width}px`)}
+  }
+
   assert.deepEqual(errors,[]);await context.close();
  }
- console.log('PASS: era-first OX home, 20-question play/feedback/reload, weakness analysis, compact touch UI, and no horizontal overflow at 360/390/412px.');
+ console.log('PASS: URL-preserving refresh, era-first OX resume, donut weakness analysis, compact touch UI, and no horizontal overflow at 360/390/412px.');
 }finally{if(browser)await browser.close();server.close()}})().catch(error=>{console.error(error);process.exitCode=1});
