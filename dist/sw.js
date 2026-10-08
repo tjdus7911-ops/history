@@ -1,5 +1,5 @@
 const CACHE_PREFIX='lived-history-shell-';
-const CACHE_VERSION='2026-10-08-ox-analysis-detail-v49';
+const CACHE_VERSION='2026-10-08-proto-story-v50';
 const CACHE_NAME=CACHE_PREFIX+CACHE_VERSION;
 const APP_SHELL=[
   '/',
@@ -16,7 +16,7 @@ const APP_SHELL=[
   '/official-exam-images.js','/ch05-refinement.js','/ch06-backgrounds.js','/ch06-quiz-refinement.js',
   '/v2-exam-restoration.js', '/v2-exam-additions.js', '/v2-art.js','/v2-backgrounds.js', '/renewal.css',
   '/editorial.css', '/exam-library.css', '/exam-memory.css', '/exam-memory-results.css', '/exam-memory-nav.css', '/ox-quiz.css',
-  '/editorial-ui.js', '/era-visuals.js', '/joseon-data.js', '/ancient-data.js', '/season-data.js', '/official-exam-catalog.js', '/official-exam-explanations.js', '/ox-quiz-data.js', '/v2-learning.js', '/v2-app.js',
+  '/editorial-ui.js', '/era-visuals.js', '/joseon-data.js', '/ancient-data.js', '/proto-story-script.js', '/proto-story-data.js', '/proto-story-ui.js', '/season-data.js', '/official-exam-catalog.js', '/official-exam-explanations.js', '/ox-quiz-data.js', '/v2-learning.js', '/v2-app.js',
   '/joseon-ui.js', '/ancient-ui.js', '/mnemonic-data.js', '/exam-memory-ui.js', '/ox-quiz-ui.js',
   '/app.js',
   '/pwa.js',

@@ -10,7 +10,7 @@ function playSeason(eraId,expectedCount){
  while(completed.length<expectedCount){
   assert(++guard<900,JSON.stringify(copy('({screen,chapter:run().currentChapter,story:run().storyId,question:run().activeQuestionId,answer:run().questionAnswer})')));
   const state=copy('({screen,chapter:run().currentChapter,answer:run().questionAnswer})');
-  if(state.screen==='game'){run("(()=>{const source=STORIES[run().storyId];run().dialogueCursor=conversationEntries(source,run().pending).length;nextStory()})()");continue;}
+  if(state.screen==='game'){run("(()=>{const source=run().pending?STORIES[run().pending.sourceSceneId]:STORIES[run().storyId];if(run().pending){run().pending=null;if(!source.afterChoiceQuestionSetId||!startQuestionSequence(source)){enterStory();render();}}else if(source.choices){applyChoice(state,source.sceneId,0);save();render();}else{run().dialogueCursor=conversationEntries(source,null).length;nextStory();}})()");continue;}
   if(state.screen==='quiz'){
    const q=copy('activeQuestion()');if(state.answer===null)run(`recordQuestion(state,${JSON.stringify(q.questionId)},${q.answer});save();render()`);else run('continueStoryQuestion()');continue;
   }
@@ -26,6 +26,6 @@ function playSeason(eraId,expectedCount){
 }
 assert.deepEqual(playSeason('proto-kingdoms',8),Array.from({length:8},(_,index)=>`proto-ch${String(index).padStart(2,'0')}`));
 assert.deepEqual(playSeason('three-kingdoms',14),Array.from({length:14},(_,index)=>`three-ch${String(index).padStart(2,'0')}`));
-assert.equal(run("Object.keys(meta().questionRecords).filter(id=>ANCIENT_OFFICIAL_QUESTION_IDS.includes(id)).length"),20);assert.equal(run("meta().wrongQuestionIds.filter(id=>ANCIENT_OFFICIAL_QUESTION_IDS.includes(id)).length"),0);
+assert.equal(run("Object.keys(meta().questionRecords).filter(id=>([...PROTO_STUDY_QUESTION_IDS,...ANCIENT_OFFICIAL_MAP.filter(row=>row[0]==='three').map(row=>row[3])]).includes(id)).length"),36);assert.equal(run("meta().wrongQuestionIds.filter(id=>ANCIENT_OFFICIAL_QUESTION_IDS.includes(id)).length"),0);
 assert.equal(run("meta().eraProgress['proto-kingdoms'].progress"),100);assert.equal(run("meta().eraProgress['three-kingdoms'].progress"),100);assert(run("meta().completedChapters.includes('three-ch13')"));
-console.log('PASS: complete 원삼국 CH.00–07 and 삼국 CH.00–13 playthrough, 20 official questions, 100% independent season completion and no dead-end transition.');
+console.log('PASS: complete 원삼국 CH.00–07 and 삼국 CH.00–13 playthrough, 36 official story questions, 100% independent season completion and no dead-end transition.');

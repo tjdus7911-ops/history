@@ -15,7 +15,7 @@ const mainChapter=()=>CHAPTERS[mainRun().currentChapter||'ch01']||CHAPTERS.ch01;
 const chapterOrder=(era=null)=>Object.values(CHAPTERS).filter(chapter=>era===null||chapterEraId(chapter)===era).sort((a,b)=>Number(a.number)-Number(b.number));
 const chapterEraId=chapter=>chapter?.eraId||chapter?.episode||'goryeo';
 const chapterScenes=id=>Object.values(STORIES).filter(s=>(s.chapterId||'ch01')===id&&s.storyActive!==false);
-const chapterQuestions=id=>QUESTIONS.filter(q=>q.chapterId===id&&!q.reviewOnly&&!q.retired);
+const chapterQuestions=id=>QUESTIONS.filter(q=>q.chapterId===id&&!q.reviewOnly&&!q.retired&&(typeof globalThis.protoActiveStoryQuestion!=='function'||globalThis.protoActiveStoryQuestion(q)));
 let selectedHistoryCardId='goryeo-foundation-918';
 const progressFor=r=>{const scenes=chapterScenes(r.currentChapter);return r.completed?100:scenes.length?Math.min(96,Math.round((r.visited||[]).filter(id=>(STORIES[id]?.chapterId||'ch01')===r.currentChapter&&STORIES[id]?.storyActive!==false).length/scenes.length*100)):0};
 const progress=()=>progressFor(run());

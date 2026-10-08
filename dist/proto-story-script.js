@@ -1,0 +1,3665 @@
+/* 확정 대사 원문 + 검증된 추가 학습/분기 대사. */
+const PROTO_STORY_SCRIPT=[
+  {
+    "number": 0,
+    "title": "낯선 숲에서",
+    "scenes": [
+      {
+        "number": 1,
+        "title": "눈을 뜨다",
+        "type": "STORY",
+        "background": "어두운 숲",
+        "dialogues": [
+          {
+            "speaker": "나레이션",
+            "text": "차가운 바람이 뺨을 스쳤다. 눈을 뜨자 처음 보는 숲이 펼쳐져 있었다."
+          },
+          {
+            "speaker": "주인공",
+            "text": "뭐야… 여기가 어디야?"
+          },
+          {
+            "speaker": "주인공",
+            "text": "핸드폰은? 아, 진짜 미치겠네."
+          }
+        ],
+        "choices": [],
+        "directions": [
+          "주인공은 현대복을 입고 있으며 주변을 살핀다."
+        ]
+      },
+      {
+        "number": 2,
+        "title": "낯선 남자",
+        "type": "CHOICE",
+        "background": "숲속 길",
+        "dialogues": [
+          {
+            "speaker": "단(???)",
+            "text": "거기 누구냐!"
+          },
+          {
+            "speaker": "주인공",
+            "text": "으악! 깜짝이야!"
+          },
+          {
+            "speaker": "단",
+            "text": "이상한 옷을 입었군. 도적이냐?"
+          },
+          {
+            "speaker": "주인공",
+            "text": "아니거든요?! 저도 지금 상황 파악이 안 된다고요!"
+          },
+          {
+            "speaker": "단",
+            "text": "말투도 이상하군."
+          },
+          {
+            "speaker": "주인공",
+            "text": "그건 그쪽도 마찬가지거든요?"
+          }
+        ],
+        "choices": [
+          {
+            "label": "도적 아니라고!",
+            "result": "단: \"그렇게 소리치는 걸 보니 더 수상하군.\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "그렇게 소리치는 걸 보니 더 수상하군."
+              }
+            ]
+          },
+          {
+            "label": "여기가 어디인지부터 알려줘.",
+            "result": "단: \"북쪽 교역로 근처다.\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "북쪽 교역로 근처다."
+              }
+            ]
+          },
+          {
+            "label": "혹시 드라마 촬영 중이야?",
+            "result": "단: \"드라마? 어느 나라 말이냐?\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "드라마? 어느 나라 말이냐?"
+              }
+            ]
+          }
+        ],
+        "directions": [
+          "세 분기 모두 단이 주인공을 경계하지만 공격하지 않는 결말로 합류한다."
+        ]
+      },
+      {
+        "number": 3,
+        "title": "모닥불 앞에서",
+        "type": "STORY",
+        "background": "모닥불",
+        "dialogues": [
+          {
+            "speaker": "단",
+            "text": "이름이 무엇이냐?"
+          },
+          {
+            "speaker": "주인공",
+            "text": "그냥… 나라고 불러."
+          },
+          {
+            "speaker": "단",
+            "text": "이름이 나라고?"
+          },
+          {
+            "speaker": "주인공",
+            "text": "아, 아니. 그냥 그렇게 부르라고!"
+          },
+          {
+            "speaker": "단",
+            "text": "허허. 참으로 이상한 사람이군."
+          },
+          {
+            "speaker": "주인공",
+            "text": "근데 여기가 어디야?"
+          },
+          {
+            "speaker": "단",
+            "text": "북쪽 교역로 근처다. 나는 사람을 찾고 있지."
+          },
+          {
+            "speaker": "주인공",
+            "text": "누군데?"
+          },
+          {
+            "speaker": "단",
+            "text": "내 동생이다. 반년 전 교역단과 함께 떠난 뒤 돌아오지 않았다."
+          }
+        ],
+        "choices": [],
+        "directions": []
+      },
+      {
+        "number": 4,
+        "title": "동행 제안",
+        "type": "CHOICE",
+        "background": "모닥불",
+        "dialogues": [
+          {
+            "speaker": "단",
+            "text": "갈 곳이 없다면 함께 가겠느냐?"
+          }
+        ],
+        "choices": [
+          {
+            "label": "좋아. 대신 먹을 건 챙겨줘.",
+            "result": "단: \"먹을 것부터 찾다니. 마음에 드는군.\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "먹을 것부터 찾다니. 마음에 드는군."
+              }
+            ]
+          },
+          {
+            "label": "수상하지만 혼자 있는 것보단 낫겠지.",
+            "result": "단: \"나 역시 자네가 수상하네. 서로 감시하면 되겠군.\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "나 역시 자네가 수상하네. 서로 감시하면 되겠군."
+              }
+            ]
+          },
+          {
+            "label": "난 혼자 돌아갈 방법을 찾아볼래.",
+            "result": "단: \"이 숲은 위험하다. 적어도 큰길까지는 함께 가지.\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "이 숲은 위험하다. 적어도 큰길까지는 함께 가지."
+              }
+            ]
+          }
+        ],
+        "directions": [
+          "모든 선택지는 동행으로 합류한다."
+        ]
+      },
+      {
+        "number": 5,
+        "title": "첫날의 끝",
+        "type": "CINEMATIC",
+        "background": "꺼져가는 모닥불",
+        "dialogues": [
+          {
+            "speaker": "나레이션",
+            "text": "모닥불이 서서히 꺼져갔다."
+          },
+          {
+            "speaker": "주인공(속마음)",
+            "text": "진짜 과거라면… 나 집에 돌아갈 수 있는 거야?"
+          },
+          {
+            "speaker": "단",
+            "text": "잠들지 못하겠느냐?"
+          },
+          {
+            "speaker": "주인공",
+            "text": "응. 생각할 게 많아서."
+          },
+          {
+            "speaker": "단",
+            "text": "그렇다면 내일 생각하거라. 오늘 밤은 살아남았으니."
+          },
+          {
+            "speaker": "나레이션",
+            "text": "그 말이 이상하게 위로가 되었다."
+          }
+        ],
+        "choices": [],
+        "directions": [
+          "CH.00에는 기출문제를 배치하지 않는다."
+        ]
+      }
+    ]
+  },
+  {
+    "number": 1,
+    "title": "사라진 교역단",
+    "scenes": [
+      {
+        "number": 1,
+        "title": "부서진 수레",
+        "type": "STORY",
+        "background": "숲속 교역로",
+        "dialogues": [
+          {
+            "speaker": "나레이션",
+            "text": "며칠째 길을 걷던 두 사람은 숲길에서 부서진 수레를 발견했다."
+          },
+          {
+            "speaker": "주인공",
+            "text": "단! 저거 봐!"
+          },
+          {
+            "speaker": "단",
+            "text": "……이건."
+          },
+          {
+            "speaker": "주인공",
+            "text": "아는 수레야?"
+          },
+          {
+            "speaker": "단",
+            "text": "동생이 타고 떠났던 교역단의 표식이다."
+          },
+          {
+            "speaker": "주인공",
+            "text": "그럼 여기서 무슨 일이 있었던 거야?"
+          }
+        ],
+        "choices": [
+          {
+            "label": "수레 안을 조사한다",
+            "result": "깨진 항아리와 비어 있는 상자를 발견한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "깨진 항아리와 비어 있는 상자를 발견한다."
+              }
+            ]
+          },
+          {
+            "label": "바퀴를 조사한다",
+            "result": "수레가 갑자기 멈춘 흔적을 발견한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "수레가 갑자기 멈춘 흔적을 발견한다."
+              }
+            ]
+          },
+          {
+            "label": "주변을 살핀다",
+            "result": "여러 방향으로 이어지는 발자국을 발견한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "여러 방향으로 이어지는 발자국을 발견한다."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 2,
+        "title": "남겨진 물건",
+        "type": "STORY",
+        "background": "수레 내부",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "값나가는 물건은 그대로인데?"
+          },
+          {
+            "speaker": "단",
+            "text": "그래서 이상하다는 거다."
+          },
+          {
+            "speaker": "주인공",
+            "text": "도적이 아니라면 누가 뒤진 거지?"
+          },
+          {
+            "speaker": "단",
+            "text": "무언가를 찾고 있었을지도 모르지."
+          }
+        ],
+        "choices": [
+          {
+            "label": "사람을 찾았던 걸까?",
+            "result": "단은 라온을 떠올리고 침묵한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "단은 라온을 떠올리고 침묵한다."
+              }
+            ]
+          },
+          {
+            "label": "문서를 찾았던 걸까?",
+            "result": "단은 흩어진 종이를 확인한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "단은 흩어진 종이를 확인한다."
+              }
+            ]
+          },
+          {
+            "label": "그냥 사고였을 수도 있잖아.",
+            "result": "단: \"그렇기를 바라네.\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "그렇기를 바라네."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 3,
+        "title": "동생의 매듭",
+        "type": "STORY",
+        "background": "수레 옆",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "어? 여기 천 조각이 있어."
+          },
+          {
+            "speaker": "단",
+            "text": "……!"
+          },
+          {
+            "speaker": "주인공",
+            "text": "왜 그래?"
+          },
+          {
+            "speaker": "단",
+            "text": "동생의 것이다."
+          },
+          {
+            "speaker": "주인공",
+            "text": "확실해?"
+          },
+          {
+            "speaker": "단",
+            "text": "내가 직접 만들어 준 매듭이야."
+          },
+          {
+            "speaker": "주인공",
+            "text": "그럼 살아 있을 가능성이 있겠네."
+          },
+          {
+            "speaker": "단",
+            "text": "……그랬으면 좋겠군."
+          }
+        ],
+        "choices": [
+          {
+            "label": "분명 살아 있을 거야.",
+            "result": "단: \"자네는 참 쉽게 희망을 말하는군.\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "자네는 참 쉽게 희망을 말하는군."
+              }
+            ]
+          },
+          {
+            "label": "더 찾아보자.",
+            "result": "단: \"그래. 아직 끝난 게 아니야.\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "그래. 아직 끝난 게 아니야."
+              }
+            ]
+          },
+          {
+            "label": "라온은 어떤 사람이었어?",
+            "result": "단: \"손으로 무언가 만드는 걸 좋아했지.\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "손으로 무언가 만드는 걸 좋아했지."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 4,
+        "title": "갈라진 길",
+        "type": "STORY",
+        "background": "세 갈래 길",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "어느 쪽으로 가야 해?"
+          },
+          {
+            "speaker": "단",
+            "text": "흔적이 여기서 갈라진다."
+          }
+        ],
+        "choices": [
+          {
+            "label": "북쪽 길",
+            "result": "상인의 짐을 발견한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "상인의 짐을 발견한다."
+              }
+            ]
+          },
+          {
+            "label": "동쪽 길",
+            "result": "버려진 야영 흔적을 발견한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "버려진 야영 흔적을 발견한다."
+              }
+            ]
+          },
+          {
+            "label": "주변 마을",
+            "result": "교역단을 목격한 주민을 만난다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "교역단을 목격한 주민을 만난다."
+              }
+            ]
+          }
+        ],
+        "directions": [
+          "모든 선택지의 결과가 북쪽 교역단으로 이어지도록 한다."
+        ]
+      },
+      {
+        "number": 5,
+        "title": "북쪽에서 온 상인",
+        "type": "STORY",
+        "background": "작은 교역 마을",
+        "dialogues": [
+          {
+            "speaker": "상인",
+            "text": "부여로 가는 길을 찾는다고?"
+          },
+          {
+            "speaker": "단",
+            "text": "그렇소. 혹시 교역단을 보셨소?"
+          },
+          {
+            "speaker": "상인",
+            "text": "비슷한 무리를 보기는 했지."
+          },
+          {
+            "speaker": "주인공",
+            "text": "부여면 왕이 다스리는 나라 아니야?"
+          },
+          {
+            "speaker": "상인",
+            "text": "왕이 있지. 하지만 지역을 다스리는 유력자들의 힘도 크다네."
+          }
+        ],
+        "choices": [
+          {
+            "label": "부여의 왕을 묻는다",
+            "result": "왕과 여러 유력자의 관계를 설명한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "왕과 여러 유력자의 관계를 설명한다."
+              }
+            ]
+          },
+          {
+            "label": "다른 나라들을 묻는다",
+            "result": "고구려·옥저·동예·삼한의 위치를 간단히 소개한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "고구려·옥저·동예·삼한의 위치를 간단히 소개한다."
+              }
+            ]
+          },
+          {
+            "label": "교역단을 묻는다",
+            "result": "북쪽으로 향했다는 정보를 얻는다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "북쪽으로 향했다는 정보를 얻는다."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 6,
+        "title": "여러 나라의 지도",
+        "type": "LEARNING",
+        "background": "교역로 지도",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "그러니까 이 시대에 나라가 하나만 있는 게 아니네?"
+          },
+          {
+            "speaker": "단",
+            "text": "그렇지. 저마다 다른 풍습과 질서를 가지고 있네."
+          },
+          {
+            "speaker": "주인공",
+            "text": "이름부터 헷갈리는데?"
+          },
+          {
+            "speaker": "단",
+            "text": "여행하면서 하나씩 알게 되겠지."
+          },
+          {
+            "speaker": "단",
+            "text": "부여는 송화강 유역의 평야, 고구려는 압록강 중류의 산지, 옥저와 동예는 동해안, 삼한은 한반도 남쪽에 자리했지. 동예의 책화는 경계를 지키는 풍습이고, 무천은 10월의 제천 행사라고 들었네."
+          }
+        ],
+        "choices": [],
+        "directions": [
+          "지도에서 부여·고구려·옥저·동예·삼한의 대략적인 위치를 보여준다."
+        ],
+        "checkpoint": {
+          "number": 1,
+          "topic": "초기 여러 나라 비교"
+        }
+      },
+      {
+        "number": 7,
+        "title": "비어 있는 야영지",
+        "type": "STORY",
+        "background": "옛 야영지",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "여기서 누가 불을 피웠던 것 같아."
+          },
+          {
+            "speaker": "단",
+            "text": "교역단이 쉬어 갔을 수도 있지."
+          },
+          {
+            "speaker": "주인공",
+            "text": "라온도 여기 있었을까?"
+          },
+          {
+            "speaker": "단",
+            "text": "그랬을지도."
+          }
+        ],
+        "choices": [
+          {
+            "label": "잿더미 조사",
+            "result": "철을 가공한 흔적을 발견한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "철을 가공한 흔적을 발견한다."
+              }
+            ]
+          },
+          {
+            "label": "나무에 남은 표식 조사",
+            "result": "교역단 표식과 일치한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "교역단 표식과 일치한다."
+              }
+            ]
+          },
+          {
+            "label": "단에게 휴식을 권한다",
+            "result": "단과 친밀도 대사가 발생한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "단과 친밀도 대사가 발생한다."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 8,
+        "title": "철에 관심을 가진 아이",
+        "type": "STORY",
+        "background": "야영지",
+        "dialogues": [
+          {
+            "speaker": "단",
+            "text": "라온은 어려서부터 쇠붙이를 만지작거렸어."
+          },
+          {
+            "speaker": "주인공",
+            "text": "철을 만드는 사람이 되고 싶었던 거야?"
+          },
+          {
+            "speaker": "단",
+            "text": "그런 말은 했지."
+          },
+          {
+            "speaker": "주인공",
+            "text": "그런데 왜 표정이 그래?"
+          },
+          {
+            "speaker": "단",
+            "text": "……아무것도 아니다."
+          }
+        ],
+        "choices": [
+          {
+            "label": "넌 반대했구나?",
+            "result": "단: \"그때는 그게 옳다고 생각했어.\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "그때는 그게 옳다고 생각했어."
+              }
+            ]
+          },
+          {
+            "label": "라온은 재능이 있었나 봐.",
+            "result": "단: \"그래. 손재주가 좋았지.\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "그래. 손재주가 좋았지."
+              }
+            ]
+          },
+          {
+            "label": "더 묻지 않는다",
+            "result": "단이 고맙다는 눈빛을 보낸다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "단이 고맙다는 눈빛을 보낸다."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 9,
+        "title": "교역의 의미",
+        "type": "LEARNING",
+        "background": "교역로",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "이렇게 먼 곳까지 물건을 옮기는 이유가 뭐야?"
+          },
+          {
+            "speaker": "단",
+            "text": "어떤 곳에는 소금이 귀하고, 어떤 곳에는 철이 귀하니까."
+          },
+          {
+            "speaker": "주인공",
+            "text": "서로 필요한 걸 바꾸는 거구나."
+          },
+          {
+            "speaker": "단",
+            "text": "그래. 길은 물건뿐 아니라 소식도 옮기지."
+          },
+          {
+            "speaker": "단",
+            "text": "변한의 철은 낙랑과 왜로도 나갔지. 동예에서는 단궁·과하마·반어피가 알려져 있고, 삼한에서는 벼농사도 발달했다네."
+          }
+        ],
+        "choices": [],
+        "directions": [],
+        "checkpoint": {
+          "number": 2,
+          "topic": "초기 국가와 교역"
+        }
+      },
+      {
+        "number": 10,
+        "title": "북쪽으로",
+        "type": "CINEMATIC",
+        "background": "북쪽 길",
+        "dialogues": [
+          {
+            "speaker": "단",
+            "text": "부여로 가자. 거기에 동생의 흔적이 있을지도 몰라."
+          },
+          {
+            "speaker": "주인공",
+            "text": "그래. 같이 찾아보자."
+          },
+          {
+            "speaker": "나레이션",
+            "text": "두 사람은 북쪽으로 향했다. 하지만 단은 주머니 속에 감춰 둔 낡은 편지를 꺼내지 않았다."
+          }
+        ],
+        "choices": [],
+        "directions": []
+      }
+    ]
+  },
+  {
+    "number": 2,
+    "title": "겨울의 제사",
+    "scenes": [
+      {
+        "number": 1,
+        "title": "부여에 도착하다",
+        "type": "STORY",
+        "background": "부여 마을",
+        "dialogues": [
+          {
+            "speaker": "나레이션",
+            "text": "숙영과 교역 마을을 거치며 여러 주를 걸었다. 북쪽 평야에 닿자 겨울의 첫 바람이 불었다."
+          },
+          {
+            "speaker": "주인공",
+            "text": "와, 여긴 진짜 넓다."
+          },
+          {
+            "speaker": "단",
+            "text": "부여는 넓은 평야를 바탕으로 성장한 나라다."
+          },
+          {
+            "speaker": "아린",
+            "text": "처음 보는 사람들이네?"
+          },
+          {
+            "speaker": "주인공",
+            "text": "우리는 사람을 찾고 있어."
+          }
+        ],
+        "choices": [
+          {
+            "label": "아린에게 길을 묻는다",
+            "result": "마을 중심부로 안내한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "마을 중심부로 안내한다."
+              }
+            ]
+          },
+          {
+            "label": "시장을 살핀다",
+            "result": "교역단 이야기를 듣는다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "교역단 이야기를 듣는다."
+              }
+            ]
+          },
+          {
+            "label": "제사 준비를 묻는다",
+            "result": "영고 이야기를 처음 듣는다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "영고 이야기를 처음 듣는다."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 2,
+        "title": "왕과 유력자",
+        "type": "LEARNING",
+        "background": "부여 중심 취락",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "부여는 왕이 모든 걸 결정해?"
+          },
+          {
+            "speaker": "아린",
+            "text": "왕이 있지만 각 지역의 유력자들도 큰 힘을 가지고 있어."
+          },
+          {
+            "speaker": "단",
+            "text": "마가·우가·저가·구가 같은 이들이지."
+          },
+          {
+            "speaker": "주인공",
+            "text": "이름이 다 동물이네?"
+          }
+        ],
+        "choices": [
+          {
+            "label": "사출도를 묻는다",
+            "result": "여러 지역의 지배 구조를 설명한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "여러 지역의 지배 구조를 설명한다."
+              }
+            ]
+          },
+          {
+            "label": "왕의 권한을 묻는다",
+            "result": "왕권이 강하지 않았던 특징을 설명한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "왕권이 강하지 않았던 특징을 설명한다."
+              }
+            ]
+          },
+          {
+            "label": "유력자들의 역할을 묻는다",
+            "result": "지역 통치와 군사력을 설명한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "지역 통치와 군사력을 설명한다."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 3,
+        "title": "사출도의 길",
+        "type": "STORY",
+        "background": "마을 밖 네 갈래 길",
+        "dialogues": [
+          {
+            "speaker": "아린",
+            "text": "이 길은 여러 지역으로 이어져."
+          },
+          {
+            "speaker": "주인공",
+            "text": "그럼 교역단도 이 길을 지났겠네."
+          },
+          {
+            "speaker": "단",
+            "text": "그랬을 가능성이 높지."
+          },
+          {
+            "speaker": "단",
+            "text": "이 네 갈래 길이 사출도의 실제 모습을 그대로 옮긴 지도는 아니야. 사출도는 여러 가가 왕의 직할지 밖을 나누어 다스렸다는 지배 구조를 설명하는 말이지."
+          }
+        ],
+        "choices": [
+          {
+            "label": "북쪽 길의 목격자를 찾는다",
+            "result": "단서를 얻는다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "단서를 얻는다."
+              }
+            ]
+          },
+          {
+            "label": "시장 기록을 확인한다",
+            "result": "교역 물품 정보를 얻는다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "교역 물품 정보를 얻는다."
+              }
+            ]
+          },
+          {
+            "label": "아린과 동행한다",
+            "result": "영고 준비를 돕는다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "영고 준비를 돕는다."
+              }
+            ]
+          }
+        ],
+        "directions": [],
+        "checkpoint": {
+          "number": 3,
+          "topic": "부여의 정치 구조"
+        }
+      },
+      {
+        "number": 4,
+        "title": "영고를 준비하는 사람들",
+        "type": "STORY",
+        "background": "제사 준비 광장",
+        "dialogues": [
+          {
+            "speaker": "아린",
+            "text": "곧 영고가 열리거든."
+          },
+          {
+            "speaker": "주인공",
+            "text": "영고?"
+          },
+          {
+            "speaker": "아린",
+            "text": "겨울 열두 번째 달에 열리는 제천 행사야."
+          },
+          {
+            "speaker": "단",
+            "text": "많은 사람이 함께 모이는 날이지."
+          },
+          {
+            "speaker": "주인공",
+            "text": "그럼 오늘은 축제 분위기네?"
+          }
+        ],
+        "choices": [
+          {
+            "label": "준비를 돕는다",
+            "result": "아린의 신뢰를 얻는다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "아린의 신뢰를 얻는다."
+              }
+            ]
+          },
+          {
+            "label": "행사 의미를 묻는다",
+            "result": "제천 행사의 사회적 의미를 배운다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "제천 행사의 사회적 의미를 배운다."
+              }
+            ]
+          },
+          {
+            "label": "다른 나라의 행사와 비교한다",
+            "result": "동맹·무천의 이름을 듣는다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "동맹·무천의 이름을 듣는다."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 5,
+        "title": "제천 행사의 의미",
+        "type": "LEARNING",
+        "background": "제사 광장",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "하늘에 제사를 지내는 게 왜 그렇게 중요해?"
+          },
+          {
+            "speaker": "아린",
+            "text": "사람들이 함께 모여 한 해를 돌아보는 날이기도 하니까."
+          },
+          {
+            "speaker": "단",
+            "text": "사람들을 하나로 묶는 역할도 하겠지."
+          },
+          {
+            "speaker": "주인공",
+            "text": "그냥 외울 때랑 느낌이 다르네."
+          }
+        ],
+        "choices": [],
+        "directions": []
+      },
+      {
+        "number": 6,
+        "title": "풍습을 묻다",
+        "type": "LEARNING",
+        "background": "주민의 집",
+        "dialogues": [
+          {
+            "speaker": "아린",
+            "text": "부여에는 오래전부터 전해지는 여러 풍습이 있어."
+          },
+          {
+            "speaker": "주인공",
+            "text": "예를 들면?"
+          },
+          {
+            "speaker": "아린",
+            "text": "혼인과 장례에 관한 풍습도 있지."
+          },
+          {
+            "speaker": "단",
+            "text": "형사취수제와 순장 같은 풍습을 말하는군."
+          }
+        ],
+        "choices": [
+          {
+            "label": "형사취수제 설명 듣기",
+            "result": "",
+            "dialogues": [
+              {
+                "speaker": "아린",
+                "text": "형사취수제는 형이 죽으면 동생이 형수를 아내로 맞는 풍습이라고 전해져. 가족을 유지하는 당시 관습으로 살펴보자."
+              }
+            ]
+          },
+          {
+            "label": "순장 설명 듣기",
+            "result": "",
+            "dialogues": [
+              {
+                "speaker": "아린",
+                "text": "순장은 죽은 지배층과 함께 사람을 묻던 풍습이야. 지배층의 권력과 당시 장례 질서를 보여 주지."
+              }
+            ]
+          },
+          {
+            "label": "점복 풍습 알아보기",
+            "result": "",
+            "dialogues": [
+              {
+                "speaker": "아린",
+                "text": "소를 잡아 굽이 갈라지는지 보고 길흉을 점쳤다는 기록이 있어. 이를 우제점법이라 부르지."
+              }
+            ]
+          }
+        ],
+        "directions": [
+          "선택한 주제의 역사 설명을 별도 대사로 제공한다."
+        ],
+        "checkpoint": {
+          "number": 4,
+          "topic": "부여의 제천 행사와 사회 풍습"
+        }
+      },
+      {
+        "number": 7,
+        "title": "익숙한 매듭",
+        "type": "STORY",
+        "background": "아린의 집 앞",
+        "dialogues": [
+          {
+            "speaker": "단",
+            "text": "아린, 혹시 이 매듭을 본 적 있느냐?"
+          },
+          {
+            "speaker": "아린",
+            "text": "……이건 어디서 났어?"
+          },
+          {
+            "speaker": "단",
+            "text": "동생의 물건이다."
+          },
+          {
+            "speaker": "아린",
+            "text": "……그렇구나."
+          }
+        ],
+        "choices": [
+          {
+            "label": "알고 있는 게 있지?",
+            "result": "아린이 머뭇거린다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "아린이 머뭇거린다."
+              }
+            ]
+          },
+          {
+            "label": "천천히 이야기해 줘.",
+            "result": "아린이 마음을 연다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "아린이 마음을 연다."
+              }
+            ]
+          },
+          {
+            "label": "단에게 기다리자고 한다",
+            "result": "단이 초조해한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "단이 초조해한다."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 8,
+        "title": "사라진 손님",
+        "type": "STORY",
+        "background": "아린의 집",
+        "dialogues": [
+          {
+            "speaker": "아린",
+            "text": "몇 달 전 같은 매듭을 가진 젊은이가 이곳에 왔어."
+          },
+          {
+            "speaker": "단",
+            "text": "정말이냐?!"
+          },
+          {
+            "speaker": "아린",
+            "text": "하지만 오래 머물지는 않았어. 남쪽으로 떠났거든."
+          },
+          {
+            "speaker": "주인공",
+            "text": "혼자 떠났어?"
+          },
+          {
+            "speaker": "아린",
+            "text": "아니. 누군가와 함께였어."
+          }
+        ],
+        "choices": [],
+        "directions": []
+      },
+      {
+        "number": 9,
+        "title": "말하지 말라는 부탁",
+        "type": "STORY",
+        "background": "아린의 집",
+        "dialogues": [
+          {
+            "speaker": "단",
+            "text": "그 아이가 무슨 말을 남겼느냐?"
+          },
+          {
+            "speaker": "아린",
+            "text": "형이 찾아와도 내가 어디로 갔는지 말하지 말라고 했어."
+          },
+          {
+            "speaker": "단",
+            "text": "……."
+          },
+          {
+            "speaker": "주인공",
+            "text": "잠깐, 그게 무슨 뜻이야?"
+          }
+        ],
+        "choices": [
+          {
+            "label": "동생이 널 피하는 이유가 있는 거 아냐?",
+            "result": "단: \"나도 그게 두렵다.\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "나도 그게 두렵다."
+              }
+            ]
+          },
+          {
+            "label": "분명 이유가 있을 거야.",
+            "result": "단: \"그래… 이유가 있겠지.\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "그래… 이유가 있겠지."
+              }
+            ]
+          },
+          {
+            "label": "아무 말 없이 곁에 있는다",
+            "result": "단이 어깨를 가볍게 두드린다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "단이 어깨를 가볍게 두드린다."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 10,
+        "title": "영고의 밤",
+        "type": "CINEMATIC",
+        "background": "제사 광장 야경",
+        "dialogues": [
+          {
+            "speaker": "아린",
+            "text": "오늘만큼은 다툼을 잠시 내려놓아."
+          },
+          {
+            "speaker": "주인공",
+            "text": "사람들이 다 모였네."
+          },
+          {
+            "speaker": "단",
+            "text": "나라를 하나로 묶는 데 이런 행사도 중요한 것이겠지."
+          },
+          {
+            "speaker": "주인공",
+            "text": "근데 너 아까부터 표정이 안 좋아."
+          },
+          {
+            "speaker": "단",
+            "text": "……동생이 날 피하고 있다면, 내가 찾는 게 옳은 일일까?"
+          }
+        ],
+        "choices": [],
+        "directions": []
+      },
+      {
+        "number": 11,
+        "title": "부여에서 배운 것",
+        "type": "LEARNING",
+        "background": "광장",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "사출도, 영고, 형사취수제… 기억할 게 많네."
+          },
+          {
+            "speaker": "아린",
+            "text": "그래도 이곳에서 직접 보고 들었잖아."
+          },
+          {
+            "speaker": "단",
+            "text": "그게 오래 기억에 남는 법이지."
+          }
+        ],
+        "choices": [],
+        "directions": [],
+        "checkpoint": {
+          "number": 5,
+          "topic": "부여 종합"
+        }
+      },
+      {
+        "number": 12,
+        "title": "남겨진 그림",
+        "type": "CINEMATIC",
+        "background": "부여 마을 출구",
+        "dialogues": [
+          {
+            "speaker": "아린",
+            "text": "그 아이가 남긴 천 조각이 있어."
+          },
+          {
+            "speaker": "단",
+            "text": "이건……."
+          },
+          {
+            "speaker": "주인공",
+            "text": "길을 그려 놓은 것 같은데?"
+          },
+          {
+            "speaker": "아린",
+            "text": "고구려로 향하는 교역로야."
+          },
+          {
+            "speaker": "나레이션",
+            "text": "단은 천 조각을 접어 품에 넣었다."
+          },
+          {
+            "speaker": "주인공",
+            "text": "그건 만나서 물어봐야 알 수 있지 않을까?"
+          }
+        ],
+        "choices": [],
+        "directions": []
+      }
+    ]
+  },
+  {
+    "number": 3,
+    "title": "알에서 태어난 왕",
+    "scenes": [
+      {
+        "number": 1,
+        "title": "고구려로 가는 길",
+        "type": "STORY",
+        "background": "산길",
+        "dialogues": [
+          {
+            "speaker": "나레이션",
+            "text": "영고가 끝난 뒤 남쪽 교역로를 따라 몇 주를 이동했다. 산길에서는 상인들의 숙영지를 번갈아 이용했다."
+          },
+          {
+            "speaker": "주인공",
+            "text": "산이 진짜 많네."
+          },
+          {
+            "speaker": "단",
+            "text": "이곳은 산과 계곡이 많은 지역이지."
+          },
+          {
+            "speaker": "주인공",
+            "text": "부여랑 분위기가 완전히 다르다."
+          },
+          {
+            "speaker": "단",
+            "text": "나라가 달라지면 살아가는 모습도 달라지는 법이야."
+          }
+        ],
+        "choices": [
+          {
+            "label": "지형을 살핀다",
+            "result": "산성의 필요성을 이해한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "산성의 필요성을 이해한다."
+              }
+            ]
+          },
+          {
+            "label": "교역로를 확인한다",
+            "result": "고구려와 주변 나라의 관계를 듣는다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "고구려와 주변 나라의 관계를 듣는다."
+              }
+            ]
+          },
+          {
+            "label": "단에게 말을 건다",
+            "result": "라온 이야기를 피하는 단을 발견한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "라온 이야기를 피하는 단을 발견한다."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 2,
+        "title": "산성에 도착하다",
+        "type": "STORY",
+        "background": "고구려 산성",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "와, 저 성벽 봐."
+          },
+          {
+            "speaker": "단",
+            "text": "험한 지형을 이용해 방어하기 좋은 곳이지."
+          },
+          {
+            "speaker": "주인공",
+            "text": "이런 곳을 어떻게 지은 거야?"
+          },
+          {
+            "speaker": "단",
+            "text": "많은 사람의 힘이 들어갔겠지."
+          }
+        ],
+        "choices": [],
+        "directions": []
+      },
+      {
+        "number": 3,
+        "title": "불가의 이야기꾼",
+        "type": "STORY",
+        "background": "산성 밖 모닥불",
+        "dialogues": [
+          {
+            "speaker": "이야기꾼",
+            "text": "오늘은 우리 나라를 세운 분의 이야기를 들려주마."
+          },
+          {
+            "speaker": "주인공",
+            "text": "누군데?"
+          },
+          {
+            "speaker": "이야기꾼",
+            "text": "주몽이라 불린 분이지."
+          },
+          {
+            "speaker": "주인공",
+            "text": "주몽?!"
+          }
+        ],
+        "choices": [
+          {
+            "label": "어떻게 태어났어?",
+            "result": "",
+            "dialogues": [
+              {
+                "speaker": "이야기꾼",
+                "text": "유화와 알에서 태어난 아이에 관한 전승부터 들려주마."
+              }
+            ]
+          },
+          {
+            "label": "왜 왕이 됐어?",
+            "result": "",
+            "dialogues": [
+              {
+                "speaker": "이야기꾼",
+                "text": "낯선 땅을 찾아 졸본에 나라를 세웠다는 이야기부터 짚어 보자."
+              }
+            ]
+          },
+          {
+            "label": "주몽은 어느 나라 사람이었어?",
+            "result": "",
+            "dialogues": [
+              {
+                "speaker": "이야기꾼",
+                "text": "부여에서 자라 남쪽으로 떠났다는 전승을 먼저 이야기해 주마."
+              }
+            ]
+          }
+        ],
+        "directions": [
+          "각 선택지에 따라 설명 순서를 달리한다."
+        ]
+      },
+      {
+        "number": 4,
+        "title": "알에서 태어난 아이",
+        "type": "LEARNING",
+        "background": "주몽 탄생 신화 회상",
+        "dialogues": [
+          {
+            "speaker": "이야기꾼",
+            "text": "전승에 따르면 하백의 딸 유화가 알을 낳았다고 하지."
+          },
+          {
+            "speaker": "주인공",
+            "text": "알이라고?!"
+          },
+          {
+            "speaker": "이야기꾼",
+            "text": "그 알에서 태어난 아이가 주몽이야."
+          },
+          {
+            "speaker": "단",
+            "text": "나라의 시작을 설명하는 건국 신화로 전해지는 이야기지."
+          },
+          {
+            "speaker": "주인공",
+            "text": "아, 실제 기록과 신화는 구분해야 하는구나."
+          }
+        ],
+        "choices": [
+          {
+            "label": "유화에 관해 묻는다",
+            "result": "신화의 등장인물을 설명한다.",
+            "dialogues": [
+              {
+                "speaker": "이야기꾼",
+                "text": "유화는 하백의 딸로 전해져. 이는 신화의 계보이지 현대의 가족 기록과 같지는 않단다."
+              }
+            ]
+          },
+          {
+            "label": "주몽의 이름을 묻는다",
+            "result": "활쏘기와 관련된 전승을 설명한다.",
+            "dialogues": [
+              {
+                "speaker": "이야기꾼",
+                "text": "부여에서 활을 잘 쏘는 사람을 주몽이라 불렀다는 전승이 있단다."
+              }
+            ]
+          },
+          {
+            "label": "건국 신화의 의미를 묻는다",
+            "result": "왕권의 정당성과 연결해 설명한다.",
+            "dialogues": [
+              {
+                "speaker": "이야기꾼",
+                "text": "하늘과 강의 신에 연결된 계보는 시조와 왕권의 정당성을 설명하는 신화적 표현이란다."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 5,
+        "title": "부여를 떠난 주몽",
+        "type": "LEARNING",
+        "background": "주몽의 이동 회상",
+        "dialogues": [
+          {
+            "speaker": "이야기꾼",
+            "text": "주몽은 부여를 떠나 새로운 땅을 찾아갔다."
+          },
+          {
+            "speaker": "주인공",
+            "text": "왜 떠났는데?"
+          },
+          {
+            "speaker": "이야기꾼",
+            "text": "전승에는 그를 시기하고 위협한 이들이 있었다고 해."
+          },
+          {
+            "speaker": "단",
+            "text": "익숙한 곳을 떠나는 건 쉬운 일이 아니었겠군."
+          },
+          {
+            "speaker": "주인공",
+            "text": "라온도 그런 마음이었을까?"
+          },
+          {
+            "speaker": "나레이션",
+            "text": "단은 대답하지 않았다."
+          }
+        ],
+        "choices": [],
+        "directions": [
+          "단은 대답하지 않는다."
+        ]
+      },
+      {
+        "number": 6,
+        "title": "졸본의 새로운 나라",
+        "type": "LEARNING",
+        "background": "졸본 건국 회상",
+        "dialogues": [
+          {
+            "speaker": "이야기꾼",
+            "text": "주몽은 기원전 37년 졸본 지역에 고구려를 세웠다고 전해지지."
+          },
+          {
+            "speaker": "주인공",
+            "text": "고구려를 세운 왕이 주몽이구나."
+          },
+          {
+            "speaker": "단",
+            "text": "동명성왕이라고도 하지."
+          },
+          {
+            "speaker": "주인공",
+            "text": "이제 이름이 연결된다."
+          },
+          {
+            "speaker": "이야기꾼",
+            "text": "졸본은 오늘날 중국 환인 일대로 추정하지만, 정확한 도읍의 지점을 단정하기는 어렵다. 건국 뒤 국내성으로 중심을 옮기며 나라가 성장한 과정은 또 다른 시대의 이야기란다."
+          }
+        ],
+        "choices": [],
+        "directions": [
+          "주몽 직접 관련 문제를 우선하고, 부족하면 고구려 건국과 초기 성장에 관한 문제를 사용한다."
+        ],
+        "checkpoint": {
+          "number": 6,
+          "topic": "주몽·고구려 건국"
+        }
+      },
+      {
+        "number": 7,
+        "title": "성문 앞의 검문",
+        "type": "STORY",
+        "background": "고구려 성문",
+        "dialogues": [
+          {
+            "speaker": "무진",
+            "text": "멈춰라! 어디서 온 자들이냐?"
+          },
+          {
+            "speaker": "단",
+            "text": "부여에서 온 상인입니다."
+          },
+          {
+            "speaker": "무진",
+            "text": "짐을 열어라."
+          },
+          {
+            "speaker": "주인공",
+            "text": "왜 이렇게까지 검사해?"
+          },
+          {
+            "speaker": "무진",
+            "text": "수상한 자들이 성 안으로 들어오는 걸 막기 위해서다."
+          }
+        ],
+        "choices": [
+          {
+            "label": "얌전히 검문받는다",
+            "result": "무진의 의심이 줄어든다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "무진의 의심이 줄어든다."
+              }
+            ]
+          },
+          {
+            "label": "이유를 따진다",
+            "result": "무진이 더 엄격해진다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "무진이 더 엄격해진다."
+              }
+            ]
+          },
+          {
+            "label": "단에게 맡긴다",
+            "result": "단이 침착하게 대응한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "단이 침착하게 대응한다."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 8,
+        "title": "단의 거짓말",
+        "type": "STORY",
+        "background": "검문소",
+        "dialogues": [
+          {
+            "speaker": "무진",
+            "text": "이 물건은 무엇이냐?"
+          },
+          {
+            "speaker": "주인공",
+            "text": "단의 동생이 남긴 물건인데요?"
+          },
+          {
+            "speaker": "무진",
+            "text": "동생?"
+          },
+          {
+            "speaker": "단",
+            "text": "……그런 사람은 없습니다."
+          },
+          {
+            "speaker": "주인공",
+            "text": "뭐?"
+          },
+          {
+            "speaker": "무진",
+            "text": "방금은 동생이라고 하지 않았느냐?"
+          },
+          {
+            "speaker": "단",
+            "text": "착각하신 겁니다."
+          }
+        ],
+        "choices": [
+          {
+            "label": "단의 말을 믿고 가만히 있는다",
+            "result": "단이 안도하지만 눈을 피한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "단이 안도하지만 눈을 피한다."
+              }
+            ]
+          },
+          {
+            "label": "사실대로 말하라고 요구한다",
+            "result": "단: \"나중에 전부 말하겠다.\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "나중에 전부 말하겠다."
+              }
+            ]
+          },
+          {
+            "label": "다른 화제로 관심을 돌린다",
+            "result": "무진이 물건을 다시 확인한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "무진이 물건을 다시 확인한다."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 9,
+        "title": "성 안의 질서",
+        "type": "LEARNING",
+        "background": "고구려 마을",
+        "dialogues": [
+          {
+            "speaker": "무진",
+            "text": "왕과 여러 대가들이 중요한 일을 함께 의논한다."
+          },
+          {
+            "speaker": "주인공",
+            "text": "그게 제가 회의라는 거구나."
+          },
+          {
+            "speaker": "무진",
+            "text": "그 말을 어디서 배웠느냐?"
+          },
+          {
+            "speaker": "주인공",
+            "text": "아…… 그냥 들었어."
+          },
+          {
+            "speaker": "단",
+            "text": "수상한 녀석이군."
+          },
+          {
+            "speaker": "주인공",
+            "text": "야! 너까지?!"
+          }
+        ],
+        "choices": [
+          {
+            "label": "제가 회의 설명 듣기",
+            "result": "",
+            "dialogues": [
+              {
+                "speaker": "무진",
+                "text": "제가 회의에서는 왕과 대가들이 나라의 중대한 일을 의논했다고 전해진다."
+              }
+            ]
+          },
+          {
+            "label": "왕의 권한 알아보기",
+            "result": "",
+            "dialogues": [
+              {
+                "speaker": "무진",
+                "text": "초기에는 여러 대가의 세력도 강했다. 뒤에 왕권이 강화되는 과정과 구분해야 하지."
+              }
+            ]
+          },
+          {
+            "label": "부여와 정치 구조 비교하기",
+            "result": "",
+            "dialogues": [
+              {
+                "speaker": "무진",
+                "text": "부여는 여러 가의 사출도, 고구려는 대가들의 제가 회의로 비교해 보자."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 10,
+        "title": "고구려의 혼인 풍습",
+        "type": "LEARNING",
+        "background": "마을 주택",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "저 집은 왜 따로 작은 건물이 있어?"
+          },
+          {
+            "speaker": "무진",
+            "text": "혼인과 관련된 풍습이 있지."
+          },
+          {
+            "speaker": "단",
+            "text": "서옥제를 말하는군."
+          },
+          {
+            "speaker": "주인공",
+            "text": "서옥제?"
+          },
+          {
+            "speaker": "무진",
+            "text": "혼인을 약속하면 신부 집 뒤에 서옥이라는 작은 집을 짓는다. 신랑은 그곳에서 살다가 자녀가 자라면 아내와 함께 자기 집으로 돌아간다고 전해지지."
+          }
+        ],
+        "choices": [],
+        "directions": [
+          "무진이 서옥제의 내용을 설명한다."
+        ]
+      },
+      {
+        "number": 11,
+        "title": "동맹의 이야기",
+        "type": "LEARNING",
+        "background": "마을 광장",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "부여에는 영고가 있었는데 여기는?"
+          },
+          {
+            "speaker": "무진",
+            "text": "동맹이라는 제천 행사가 있지."
+          },
+          {
+            "speaker": "주인공",
+            "text": "시기는 언제야?"
+          },
+          {
+            "speaker": "무진",
+            "text": "열 번째 달에 열리는 행사야."
+          },
+          {
+            "speaker": "단",
+            "text": "나라마다 이름과 시기가 다르군."
+          }
+        ],
+        "choices": [],
+        "directions": [],
+        "checkpoint": {
+          "number": 7,
+          "topic": "고구려 정치·사회·제천 행사"
+        }
+      },
+      {
+        "number": 12,
+        "title": "사라진 교역단의 기록",
+        "type": "STORY",
+        "background": "성 안 교역소",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "이 표식, 우리 수레에서 본 거랑 같아."
+          },
+          {
+            "speaker": "단",
+            "text": "맞아. 라온이 지나간 게 분명해."
+          },
+          {
+            "speaker": "교역상",
+            "text": "그 젊은이는 남쪽 바다 쪽으로 떠났소."
+          }
+        ],
+        "choices": [
+          {
+            "label": "교역상을 더 조사한다",
+            "result": "라온이 철을 찾았다는 사실을 확인한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "라온이 철을 찾았다는 사실을 확인한다."
+              }
+            ]
+          },
+          {
+            "label": "라온의 물건을 확인한다",
+            "result": "매듭의 소유자를 확인한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "매듭의 소유자를 확인한다."
+              }
+            ]
+          },
+          {
+            "label": "단에게 편지를 묻는다",
+            "result": "단이 편지를 숨긴다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "단이 편지를 숨긴다."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 13,
+        "title": "산성에서의 밤",
+        "type": "CINEMATIC",
+        "background": "산성 야경",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "너 아까 왜 동생이 없다고 했어?"
+          },
+          {
+            "speaker": "단",
+            "text": "……그 아이가 누군가에게 쫓기고 있을지도 모르기 때문이야."
+          },
+          {
+            "speaker": "주인공",
+            "text": "누구한테?"
+          },
+          {
+            "speaker": "단",
+            "text": "그걸 알기 위해 여기까지 온 거다."
+          },
+          {
+            "speaker": "주인공",
+            "text": "나한테도 숨기는 게 있어?"
+          },
+          {
+            "speaker": "단",
+            "text": "……미안하다."
+          },
+          {
+            "speaker": "주인공",
+            "text": "같이 여행하는 사이잖아."
+          },
+          {
+            "speaker": "단",
+            "text": "알고 있다. 그래서 더 미안하군."
+          }
+        ],
+        "choices": [],
+        "directions": [
+          "단의 거짓말은 무진에게 특정 정보를 노출하지 않으려는 행동이었다는 복선을 유지하되, 실제 위험의 정체는 이후 밝혀지도록 한다."
+        ]
+      },
+      {
+        "number": 14,
+        "title": "고구려를 떠나며",
+        "type": "LEARNING",
+        "background": "산성 출구",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "주몽 이야기부터 여기 사람들의 풍습까지, 정말 많이 배웠네."
+          },
+          {
+            "speaker": "단",
+            "text": "그만큼 이 나라도 오랜 시간을 지나왔겠지."
+          },
+          {
+            "speaker": "주인공",
+            "text": "다음에는 어디로 가?"
+          },
+          {
+            "speaker": "단",
+            "text": "옥저로 가자."
+          }
+        ],
+        "choices": [],
+        "directions": [],
+        "checkpoint": {
+          "number": 8,
+          "topic": "초기 고구려 종합"
+        }
+      }
+    ]
+  },
+  {
+    "number": 4,
+    "title": "바다에 남겨진 사람",
+    "scenes": [
+      {
+        "number": 1,
+        "title": "바다가 보이는 길",
+        "type": "STORY",
+        "background": "옥저 해안",
+        "dialogues": [
+          {
+            "speaker": "나레이션",
+            "text": "고구려의 산길에서 동쪽 교역로로 내려와 여러 숙영지를 지났다. 겨울 바다에 닿기까지는 다시 수주가 걸렸다."
+          },
+          {
+            "speaker": "주인공",
+            "text": "와, 바다다!"
+          },
+          {
+            "speaker": "단",
+            "text": "이곳이 옥저다."
+          },
+          {
+            "speaker": "주인공",
+            "text": "부여나 고구려랑 완전히 다르네."
+          }
+        ],
+        "choices": [
+          {
+            "label": "해안을 살핀다",
+            "result": "어업과 해안 생활을 배운다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "어업과 해안 생활을 배운다."
+              }
+            ]
+          },
+          {
+            "label": "마을로 간다",
+            "result": "소하를 만난다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "소하를 만난다."
+              }
+            ]
+          },
+          {
+            "label": "단에게 말을 건다",
+            "result": "단이 아직 침울해한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "단이 아직 침울해한다."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 2,
+        "title": "소하와의 만남",
+        "type": "STORY",
+        "background": "해안 마을",
+        "dialogues": [
+          {
+            "speaker": "소하",
+            "text": "처음 보는 사람들이네."
+          },
+          {
+            "speaker": "단",
+            "text": "사람을 찾고 있습니다."
+          },
+          {
+            "speaker": "소하",
+            "text": "혹시 철을 다루던 젊은이?"
+          },
+          {
+            "speaker": "단",
+            "text": "……그를 아십니까?"
+          }
+        ],
+        "choices": [
+          {
+            "label": "라온의 외모를 설명한다",
+            "result": "소하가 기억을 확인한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "소하가 기억을 확인한다."
+              }
+            ]
+          },
+          {
+            "label": "매듭을 보여준다",
+            "result": "소하가 알아본다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "소하가 알아본다."
+              }
+            ]
+          },
+          {
+            "label": "행방부터 묻는다",
+            "result": "소하가 서두르지 말라고 한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "소하가 서두르지 말라고 한다."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 3,
+        "title": "바닷가 사람들의 삶",
+        "type": "LEARNING",
+        "background": "해안 작업장",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "여기 사람들은 주로 뭘 하면서 살아?"
+          },
+          {
+            "speaker": "소하",
+            "text": "농사도 짓고 바다에서 물고기도 잡지."
+          },
+          {
+            "speaker": "단",
+            "text": "바다에서 나는 물건도 교역에 쓰이겠군."
+          },
+          {
+            "speaker": "소하",
+            "text": "그렇지."
+          }
+        ],
+        "choices": [],
+        "directions": []
+      },
+      {
+        "number": 4,
+        "title": "어린 신부의 이야기",
+        "type": "LEARNING",
+        "background": "마을",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "이곳의 혼인 풍습은 다른 곳과 달라?"
+          },
+          {
+            "speaker": "소하",
+            "text": "어린 여자아이를 미리 데려와 기르는 풍습이 전해져."
+          },
+          {
+            "speaker": "주인공",
+            "text": "그게 민며느리제구나."
+          },
+          {
+            "speaker": "단",
+            "text": "시대에 따라 다른 관습이 있었던 것이지."
+          }
+        ],
+        "choices": [
+          {
+            "label": "풍습의 내용을 더 알아본다",
+            "result": "",
+            "dialogues": [
+              {
+                "speaker": "비류",
+                "text": "어릴 때 신랑 집에서 자란 뒤 성인이 되면 친정으로 돌아가고, 혼인 때 신랑이 예물을 치르는 민며느리제라고 전해져."
+              }
+            ]
+          },
+          {
+            "label": "고구려의 서옥제와 비교한다",
+            "result": "",
+            "dialogues": [
+              {
+                "speaker": "비류",
+                "text": "옥저의 민며느리제는 어린 신부가 신랑 집에서 자랐고, 고구려 서옥제는 신랑이 신부 집 뒤 서옥에서 살았다는 점을 비교해 봐."
+              }
+            ]
+          },
+          {
+            "label": "오늘날의 관점에서 생각해 본다",
+            "result": "",
+            "dialogues": [
+              {
+                "speaker": "주인공",
+                "text": "나는 어린아이의 선택을 생각하면 마음이 불편해. 그 감정과 당시 사료에 기록된 관습은 구분해서 이해해야겠어."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 5,
+        "title": "가족의 무덤",
+        "type": "LEARNING",
+        "background": "공동 무덤",
+        "dialogues": [
+          {
+            "speaker": "소하",
+            "text": "우리 마을에서는 가족의 뼈를 한곳에 모아 두기도 해."
+          },
+          {
+            "speaker": "주인공",
+            "text": "가족 공동 무덤이라는 거네."
+          },
+          {
+            "speaker": "소하",
+            "text": "가족을 기억하는 방식이지."
+          },
+          {
+            "speaker": "단",
+            "text": "……가족이라는 말이 오늘따라 무겁군."
+          },
+          {
+            "speaker": "소하",
+            "text": "기록에는 사람이 죽으면 임시로 묻었다가 뼈를 추려 가족의 나무 곽에 함께 모았다고 해. 옥저에는 강한 왕이 없이 읍군·삼로 같은 군장이 있었지."
+          },
+          {
+            "speaker": "단",
+            "text": "남쪽 삼한에는 신지·읍차 같은 지배자와 제사를 맡는 천군, 신성 지역인 소도가 있다고 들었네. 옥저와 비교하면 제사와 정치의 모습도 다르군."
+          }
+        ],
+        "choices": [],
+        "directions": [
+          "옥저 직접 관련 후보는 2문항뿐이므로, 원문 검증 후 옥저 2문항과 혼인·장례 풍습 비교 1문항을 우선 검토한다. 확보하지 못하면 2문항만 제공하고 부족 사실을 보고한다."
+        ],
+        "checkpoint": {
+          "number": 9,
+          "topic": "옥저와 주변 나라 비교"
+        }
+      },
+      {
+        "number": 6,
+        "title": "기다리던 청년",
+        "type": "STORY",
+        "background": "소하의 집",
+        "dialogues": [
+          {
+            "speaker": "소하",
+            "text": "그 젊은이는 누군가를 기다리고 있었어."
+          },
+          {
+            "speaker": "단",
+            "text": "누구를?"
+          },
+          {
+            "speaker": "소하",
+            "text": "자기 형이라고 했지."
+          },
+          {
+            "speaker": "주인공",
+            "text": "형을 피한다더니 기다렸다고?"
+          }
+        ],
+        "choices": [],
+        "directions": []
+      },
+      {
+        "number": 7,
+        "title": "라온이 남긴 말",
+        "type": "STORY",
+        "background": "소하의 집",
+        "dialogues": [
+          {
+            "speaker": "소하",
+            "text": "다시 만나면 꼭 할 말이 있다고 했어."
+          },
+          {
+            "speaker": "단",
+            "text": "……."
+          },
+          {
+            "speaker": "주인공",
+            "text": "무슨 말을 하려던 걸까?"
+          },
+          {
+            "speaker": "소하",
+            "text": "그건 본인에게 직접 들어야겠지."
+          }
+        ],
+        "choices": [
+          {
+            "label": "단을 위로한다",
+            "result": "단이 고개를 끄덕인다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "단이 고개를 끄덕인다."
+              }
+            ]
+          },
+          {
+            "label": "더 많은 단서를 찾는다",
+            "result": "남쪽으로 향한 교역 기록을 얻는다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "남쪽으로 향한 교역 기록을 얻는다."
+              }
+            ]
+          },
+          {
+            "label": "단의 과거를 묻는다",
+            "result": "단이 갈등의 일부를 털어놓는다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "단이 갈등의 일부를 털어놓는다."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 8,
+        "title": "형의 기억",
+        "type": "CINEMATIC",
+        "background": "단의 과거 회상",
+        "dialogues": [
+          {
+            "speaker": "어린 라온",
+            "text": "형, 나 철을 다루는 일을 배우고 싶어."
+          },
+          {
+            "speaker": "과거의 단",
+            "text": "그런 위험한 일은 안 된다."
+          },
+          {
+            "speaker": "어린 라온",
+            "text": "왜 내 말은 안 들어?"
+          },
+          {
+            "speaker": "과거의 단",
+            "text": "가족을 위해서야."
+          },
+          {
+            "speaker": "현재 단",
+            "text": "그때 나는 그 아이의 말을 끝까지 듣지 않았어."
+          }
+        ],
+        "choices": [],
+        "directions": []
+      },
+      {
+        "number": 9,
+        "title": "처음 털어놓는 후회",
+        "type": "STORY",
+        "background": "해안 절벽",
+        "dialogues": [
+          {
+            "speaker": "단",
+            "text": "사실 동생은 내 뜻을 거스르고 떠났어."
+          },
+          {
+            "speaker": "주인공",
+            "text": "무슨 뜻?"
+          },
+          {
+            "speaker": "단",
+            "text": "그 아이는 자기 삶을 살고 싶어 했지. 나는 그걸 인정하지 못했어."
+          }
+        ],
+        "choices": [
+          {
+            "label": "라온의 마음도 이해해 봐.",
+            "result": "단: \"그래야겠지.\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "그래야겠지."
+              }
+            ]
+          },
+          {
+            "label": "너도 걱정했으니까 그런 거잖아.",
+            "result": "단: \"걱정이 전부를 정당화하진 않겠지.\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "걱정이 전부를 정당화하진 않겠지."
+              }
+            ]
+          },
+          {
+            "label": "직접 만나서 사과해.",
+            "result": "단: \"……그럴 수 있다면.\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "……그럴 수 있다면."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 10,
+        "title": "남쪽을 향해",
+        "type": "CINEMATIC",
+        "background": "해안길",
+        "dialogues": [
+          {
+            "speaker": "소하",
+            "text": "그 젊은이는 더 남쪽으로 갔어."
+          },
+          {
+            "speaker": "단",
+            "text": "고맙습니다."
+          },
+          {
+            "speaker": "주인공",
+            "text": "이번에는 꼭 만나자."
+          },
+          {
+            "speaker": "단",
+            "text": "그래. 이번에는 도망치지 않을 거야."
+          }
+        ],
+        "choices": [],
+        "directions": []
+      }
+    ]
+  },
+  {
+    "number": 5,
+    "title": "넘지 말아야 할 경계",
+    "scenes": [
+      {
+        "number": 1,
+        "title": "낯선 경계",
+        "type": "STORY",
+        "background": "동예의 숲길",
+        "dialogues": [
+          {
+            "speaker": "나레이션",
+            "text": "동해안을 따라 남쪽으로 걸었다. 해빙을 기다리며 쉬어 간 끝에 봄의 동예 읍락에 닿았다."
+          },
+          {
+            "speaker": "주인공",
+            "text": "이 길로 가면 빠르다며?"
+          },
+          {
+            "speaker": "단",
+            "text": "그럴 텐데…."
+          },
+          {
+            "speaker": "해루",
+            "text": "멈춰라!"
+          },
+          {
+            "speaker": "주인공",
+            "text": "또 왜?!"
+          }
+        ],
+        "choices": [],
+        "directions": []
+      },
+      {
+        "number": 2,
+        "title": "책화",
+        "type": "LEARNING",
+        "background": "읍락 경계",
+        "dialogues": [
+          {
+            "speaker": "해루",
+            "text": "다른 읍락의 경계를 함부로 넘었군!"
+          },
+          {
+            "speaker": "주인공",
+            "text": "길인데 지나가면 안 돼?"
+          },
+          {
+            "speaker": "해루",
+            "text": "배상해야 한다!"
+          },
+          {
+            "speaker": "단",
+            "text": "……책화로군."
+          },
+          {
+            "speaker": "주인공",
+            "text": "책화?"
+          },
+          {
+            "speaker": "단",
+            "text": "동예에서는 다른 읍락의 경계를 침범하면 배상을 요구하는 풍습이 있다."
+          }
+        ],
+        "choices": [
+          {
+            "label": "사과한다",
+            "result": "해루가 배상 방법을 설명한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "해루가 배상 방법을 설명한다."
+              }
+            ]
+          },
+          {
+            "label": "항의한다",
+            "result": "해루가 관습을 강조한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "해루가 관습을 강조한다."
+              }
+            ]
+          },
+          {
+            "label": "단에게 묻는다",
+            "result": "단이 책화의 의미를 설명한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "단이 책화의 의미를 설명한다."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 3,
+        "title": "책임을 지다",
+        "type": "STORY",
+        "background": "경계 초소",
+        "dialogues": [
+          {
+            "speaker": "해루",
+            "text": "누가 먼저 경계를 넘었느냐?"
+          },
+          {
+            "speaker": "단",
+            "text": "내가 길을 잘못 안내했다. 책임은 내게 있다."
+          },
+          {
+            "speaker": "주인공",
+            "text": "잠깐, 같이 온 거잖아."
+          }
+        ],
+        "choices": [
+          {
+            "label": "내가 먼저 들어갔어.",
+            "result": "단: \"왜 자네가 나서는가?\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "왜 자네가 나서는가?"
+              }
+            ]
+          },
+          {
+            "label": "둘 다 책임질게.",
+            "result": "해루: \"그렇다면 배상에 관해 이야기하자.\"",
+            "dialogues": [
+              {
+                "speaker": "해루",
+                "text": "그렇다면 배상에 관해 이야기하자."
+              }
+            ]
+          },
+          {
+            "label": "배상 방법부터 알려줘.",
+            "result": "해루가 배상 물품을 설명한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "해루가 배상 물품을 설명한다."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 4,
+        "title": "마을의 규칙",
+        "type": "LEARNING",
+        "background": "동예 마을",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "마을마다 경계를 그렇게 중요하게 생각해?"
+          },
+          {
+            "speaker": "해루",
+            "text": "서로의 영역을 존중해야 분쟁을 막을 수 있으니까."
+          },
+          {
+            "speaker": "단",
+            "text": "규칙에는 나름의 이유가 있는 법이지."
+          }
+        ],
+        "choices": [],
+        "directions": []
+      },
+      {
+        "number": 5,
+        "title": "혼인 풍습",
+        "type": "LEARNING",
+        "background": "마을",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "여기는 혼인 풍습도 달라?"
+          },
+          {
+            "speaker": "해루",
+            "text": "같은 씨족 안에서는 혼인하지 않는 풍습이 있지."
+          },
+          {
+            "speaker": "주인공",
+            "text": "족외혼이네."
+          },
+          {
+            "speaker": "단",
+            "text": "나라별 특징을 구분해 두면 좋겠군."
+          },
+          {
+            "speaker": "해루",
+            "text": "10월에는 무천을 열어. 단궁·과하마·반어피도 우리 고장의 물산이지. 천군과 소도를 둔 삼한과는 다르다네."
+          }
+        ],
+        "choices": [],
+        "directions": [],
+        "checkpoint": {
+          "number": 10,
+          "topic": "동예의 사회 풍습"
+        }
+      },
+      {
+        "number": 6,
+        "title": "무천의 이야기",
+        "type": "LEARNING",
+        "background": "마을 광장",
+        "dialogues": [
+          {
+            "speaker": "해루",
+            "text": "우리에게는 무천이라는 제천 행사가 있다."
+          },
+          {
+            "speaker": "주인공",
+            "text": "부여는 영고였는데 여긴 무천이네."
+          },
+          {
+            "speaker": "해루",
+            "text": "열 번째 달에 하늘에 제사를 지내지."
+          },
+          {
+            "speaker": "단",
+            "text": "서로 다른 풍습이 있지만 모두 자신의 삶을 이어가는 사람들이지."
+          }
+        ],
+        "choices": [],
+        "directions": [
+          "행사에 직접 참여하는 시점이 아니라면 주민의 설명으로 처리한다."
+        ]
+      },
+      {
+        "number": 7,
+        "title": "동예의 특산물",
+        "type": "LEARNING",
+        "background": "교역장",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "저 물건들은 뭐야?"
+          },
+          {
+            "speaker": "해루",
+            "text": "우리 지역에서 나는 귀한 물건들이지."
+          },
+          {
+            "speaker": "단",
+            "text": "단궁, 과하마, 반어피 같은 것이 알려져 있네."
+          },
+          {
+            "speaker": "주인공",
+            "text": "이름이 특이해서 오히려 기억나겠다."
+          }
+        ],
+        "choices": [],
+        "directions": []
+      },
+      {
+        "number": 8,
+        "title": "떠나는 사람의 마음",
+        "type": "STORY",
+        "background": "숲길",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "단, 라온도 자기만의 경계를 지키고 싶었던 걸까?"
+          },
+          {
+            "speaker": "단",
+            "text": "……그럴지도."
+          },
+          {
+            "speaker": "주인공",
+            "text": "네가 그 경계를 넘은 거고?"
+          },
+          {
+            "speaker": "단",
+            "text": "듣기 아프지만 틀린 말은 아니군."
+          }
+        ],
+        "choices": [
+          {
+            "label": "너무 자책하지는 마.",
+            "result": "단: \"고맙다.\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "고맙다."
+              }
+            ]
+          },
+          {
+            "label": "이제라도 존중하면 되잖아.",
+            "result": "단: \"그럴 수 있기를.\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "그럴 수 있기를."
+              }
+            ]
+          },
+          {
+            "label": "라온에게 직접 물어봐.",
+            "result": "단: \"그래. 이번에는 꼭.\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "그래. 이번에는 꼭."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 9,
+        "title": "다시 길 위에서",
+        "type": "STORY",
+        "background": "남쪽 교역로",
+        "dialogues": [
+          {
+            "speaker": "해루",
+            "text": "남쪽으로 가면 여러 교역상이 모이는 곳이 있어."
+          },
+          {
+            "speaker": "단",
+            "text": "그곳에 철을 다루는 사람도 있겠습니까?"
+          },
+          {
+            "speaker": "해루",
+            "text": "그럴 가능성이 높지."
+          }
+        ],
+        "choices": [],
+        "directions": []
+      },
+      {
+        "number": 10,
+        "title": "인정",
+        "type": "CINEMATIC",
+        "background": "저녁 숲길",
+        "dialogues": [
+          {
+            "speaker": "단",
+            "text": "나는 동생을 지킨다고 생각했어."
+          },
+          {
+            "speaker": "주인공",
+            "text": "……."
+          },
+          {
+            "speaker": "단",
+            "text": "하지만 어쩌면 그 아이의 길을 막고 있었던 건지도 모르지."
+          },
+          {
+            "speaker": "주인공",
+            "text": "그걸 이제라도 알았으면 된 거 아닐까?"
+          },
+          {
+            "speaker": "단",
+            "text": "……너는 참 쉽게 말하는군."
+          },
+          {
+            "speaker": "주인공",
+            "text": "나도 쉬운 건 아니거든."
+          },
+          {
+            "speaker": "단",
+            "text": "하하. 그래. 이제는 나도 달라져야겠지."
+          }
+        ],
+        "choices": [],
+        "directions": []
+      }
+    ]
+  },
+  {
+    "number": 6,
+    "title": "철을 가진 사람들",
+    "scenes": [
+      {
+        "number": 1,
+        "title": "남쪽의 교역장",
+        "type": "STORY",
+        "background": "삼한 교역장",
+        "dialogues": [
+          {
+            "speaker": "나레이션",
+            "text": "산길과 해안길을 오가며 몇 주 더 이동했다. 남쪽의 여러 소국을 잇는 교역장에서 철을 두드리는 소리가 들렸다."
+          },
+          {
+            "speaker": "주인공",
+            "text": "여긴 사람들이 엄청 많네."
+          },
+          {
+            "speaker": "단",
+            "text": "삼한의 여러 소국이 교역하는 곳이다."
+          },
+          {
+            "speaker": "비류",
+            "text": "철을 구하러 왔나?"
+          },
+          {
+            "speaker": "단",
+            "text": "아니. 사람을 찾고 있소."
+          }
+        ],
+        "choices": [
+          {
+            "label": "시장 조사",
+            "result": "철 교역 정보를 얻는다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "철 교역 정보를 얻는다."
+              }
+            ]
+          },
+          {
+            "label": "비류에게 묻기",
+            "result": "라온의 매듭을 보여준다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "라온의 매듭을 보여준다."
+              }
+            ]
+          },
+          {
+            "label": "작업장 조사",
+            "result": "철을 두드리는 소리를 따라간다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "철을 두드리는 소리를 따라간다."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 2,
+        "title": "삼한의 여러 소국",
+        "type": "LEARNING",
+        "background": "교역 지도",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "삼한이면 세 나라야?"
+          },
+          {
+            "speaker": "비류",
+            "text": "마한·진한·변한이라고 부르지만, 각각 여러 소국으로 이루어져 있지."
+          },
+          {
+            "speaker": "단",
+            "text": "지역마다 유력자가 있겠군."
+          },
+          {
+            "speaker": "주인공",
+            "text": "그냥 세 왕국이라고 생각하면 안 되겠네."
+          }
+        ],
+        "choices": [],
+        "directions": []
+      },
+      {
+        "number": 3,
+        "title": "소국의 지배자",
+        "type": "LEARNING",
+        "background": "취락",
+        "dialogues": [
+          {
+            "speaker": "비류",
+            "text": "소국마다 신지나 읍차 같은 지배자가 있지."
+          },
+          {
+            "speaker": "주인공",
+            "text": "이름이 낯설다."
+          },
+          {
+            "speaker": "단",
+            "text": "여러 나라를 다니다 보니 통치 방식도 다양하군."
+          }
+        ],
+        "choices": [],
+        "directions": []
+      },
+      {
+        "number": 4,
+        "title": "철을 만드는 사람들",
+        "type": "LEARNING",
+        "background": "제철 작업장",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "와, 저걸 직접 만드는 거야?"
+          },
+          {
+            "speaker": "비류",
+            "text": "철을 다루는 기술이 있어야 농기구와 무기도 만들 수 있지."
+          },
+          {
+            "speaker": "단",
+            "text": "라온이 배우고 싶어 하던 일이군."
+          },
+          {
+            "speaker": "주인공",
+            "text": "그럼 정말 여기 있을지도 몰라."
+          },
+          {
+            "speaker": "비류",
+            "text": "변한에서는 철을 생산해 낙랑과 왜에 수출하며 교환에도 썼다고 하지. 삼한의 소국에는 신지·읍차 같은 정치 지도자가 있고, 천군은 신성 지역 소도에서 제사를 맡는다네."
+          }
+        ],
+        "choices": [],
+        "directions": [],
+        "checkpoint": {
+          "number": 11,
+          "topic": "삼한의 정치·경제"
+        }
+      },
+      {
+        "number": 5,
+        "title": "철의 가치",
+        "type": "STORY",
+        "background": "교역장",
+        "dialogues": [
+          {
+            "speaker": "비류",
+            "text": "철은 먼 지역으로도 나가네."
+          },
+          {
+            "speaker": "주인공",
+            "text": "바다 건너까지?"
+          },
+          {
+            "speaker": "비류",
+            "text": "그렇지."
+          },
+          {
+            "speaker": "단",
+            "text": "이런 기술이 있으면 많은 사람이 찾아오겠군."
+          }
+        ],
+        "choices": [
+          {
+            "label": "철 교역 경로 확인",
+            "result": "",
+            "dialogues": [
+              {
+                "speaker": "비류",
+                "text": "변한에서 생산한 철은 낙랑과 왜로 나갔다고 전해져. 덩이쇠를 교환 수단으로도 썼지."
+              }
+            ]
+          },
+          {
+            "label": "농기구의 쓰임 확인",
+            "result": "",
+            "dialogues": [
+              {
+                "speaker": "비류",
+                "text": "철제 농기구는 땅을 갈고 작물을 거두는 일을 도왔네. 농업 생산에도 중요한 기술이지."
+              }
+            ]
+          },
+          {
+            "label": "무기 제작 과정 확인",
+            "result": "",
+            "dialogues": [
+              {
+                "speaker": "비류",
+                "text": "뜨겁게 달군 철을 두드려 모양을 잡네. 자네는 위험하니 화덕에서 물러서 있게."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 6,
+        "title": "천군과 소도",
+        "type": "LEARNING",
+        "background": "신성 구역",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "저곳은 왜 분위기가 달라?"
+          },
+          {
+            "speaker": "비류",
+            "text": "소도라는 신성한 장소이지."
+          },
+          {
+            "speaker": "주인공",
+            "text": "천군이 제사를 주관한다는 곳?"
+          },
+          {
+            "speaker": "비류",
+            "text": "그렇지."
+          },
+          {
+            "speaker": "단",
+            "text": "정치와 제사의 역할이 구분되는 모습이군."
+          }
+        ],
+        "choices": [],
+        "directions": []
+      },
+      {
+        "number": 7,
+        "title": "제사의 의미",
+        "type": "STORY",
+        "background": "소도 주변",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "이곳에서는 왜 천군이 중요한 거야?"
+          },
+          {
+            "speaker": "비류",
+            "text": "제사를 주관하는 사람이기 때문이지."
+          },
+          {
+            "speaker": "단",
+            "text": "우리가 부여와 동예에서 들은 행사와도 비교할 수 있겠군."
+          }
+        ],
+        "choices": [],
+        "directions": [],
+        "checkpoint": {
+          "number": 12,
+          "topic": "천군·소도·삼한의 특징"
+        }
+      },
+      {
+        "number": 8,
+        "title": "익숙한 매듭",
+        "type": "STORY",
+        "background": "철 작업장 앞",
+        "dialogues": [
+          {
+            "speaker": "단",
+            "text": "이 매듭을 가진 젊은이를 본 적 있소?"
+          },
+          {
+            "speaker": "비류",
+            "text": "……아, 그 사람."
+          },
+          {
+            "speaker": "단",
+            "text": "알고 있소?!"
+          },
+          {
+            "speaker": "비류",
+            "text": "그 사람이라면 이곳에서 철을 다루는 일을 배웠지."
+          },
+          {
+            "speaker": "주인공",
+            "text": "지금 어디 있어?"
+          },
+          {
+            "speaker": "비류",
+            "text": "그건 본인에게 직접 물어보는 게 좋겠군."
+          }
+        ],
+        "choices": [],
+        "directions": []
+      },
+      {
+        "number": 9,
+        "title": "문 앞에서",
+        "type": "CINEMATIC",
+        "background": "작업장 문",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "단, 왜 안 들어가?"
+          },
+          {
+            "speaker": "단",
+            "text": "……겁이 나는군."
+          },
+          {
+            "speaker": "주인공",
+            "text": "동생이 없을까 봐?"
+          },
+          {
+            "speaker": "단",
+            "text": "아니. 만나면 무슨 말을 해야 할지 모르겠어."
+          }
+        ],
+        "choices": [
+          {
+            "label": "그냥 보고 싶었다고 해.",
+            "result": "단: \"그 말부터 해야겠군.\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "그 말부터 해야겠군."
+              }
+            ]
+          },
+          {
+            "label": "먼저 사과해.",
+            "result": "단: \"그래. 그래야겠지.\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "그래. 그래야겠지."
+              }
+            ]
+          },
+          {
+            "label": "내가 먼저 들어갈까?",
+            "result": "단: \"아니. 내가 가겠다.\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "아니. 내가 가겠다."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 10,
+        "title": "마침내 만나다",
+        "type": "CINEMATIC",
+        "background": "철 작업장",
+        "dialogues": [
+          {
+            "speaker": "나레이션",
+            "text": "작업장 안쪽에서 한 청년이 걸어 나왔다."
+          },
+          {
+            "speaker": "단",
+            "text": "……라온?"
+          },
+          {
+            "speaker": "라온",
+            "text": "형."
+          },
+          {
+            "speaker": "단",
+            "text": "살아 있었구나."
+          },
+          {
+            "speaker": "라온",
+            "text": "……응."
+          },
+          {
+            "speaker": "단",
+            "text": "왜 돌아오지 않았어?"
+          },
+          {
+            "speaker": "라온",
+            "text": "돌아가면 형은 또 내게 상단 일을 하라고 할 거잖아."
+          }
+        ],
+        "choices": [],
+        "directions": []
+      },
+      {
+        "number": 11,
+        "title": "형제의 갈등",
+        "type": "STORY",
+        "background": "작업장",
+        "dialogues": [
+          {
+            "speaker": "단",
+            "text": "나는 네가 걱정돼서……."
+          },
+          {
+            "speaker": "라온",
+            "text": "형은 한 번도 내가 무엇을 하고 싶은지 묻지 않았어."
+          },
+          {
+            "speaker": "단",
+            "text": "……."
+          },
+          {
+            "speaker": "라온",
+            "text": "나는 내 삶을 살고 싶었어."
+          }
+        ],
+        "choices": [
+          {
+            "label": "단에게 라온의 이야기를 들어보라고 한다",
+            "result": "단: \"그래. 이번에는 네가 먼저 말해 보아라.\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "그래. 이번에는 네가 먼저 말해 보아라."
+              }
+            ]
+          },
+          {
+            "label": "라온에게 단의 걱정을 설명한다",
+            "result": "라온: \"알아. 하지만 내 선택도 존중받고 싶어.\"",
+            "dialogues": [
+              {
+                "speaker": "라온",
+                "text": "알아. 하지만 내 선택도 존중받고 싶어."
+              }
+            ]
+          },
+          {
+            "label": "자리를 비켜준다",
+            "result": "두 형제가 단둘이 대화를 시작한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "두 형제가 단둘이 대화를 시작한다."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 12,
+        "title": "라온이 떠난 이유",
+        "type": "CINEMATIC",
+        "background": "작업장",
+        "dialogues": [
+          {
+            "speaker": "라온",
+            "text": "부여에서는 형을 만나기가 두려웠어."
+          },
+          {
+            "speaker": "단",
+            "text": "그래서 아린에게 말하지 말라고 했구나."
+          },
+          {
+            "speaker": "라온",
+            "text": "그런데 옥저에 갔을 때는 마음이 달라졌어."
+          },
+          {
+            "speaker": "단",
+            "text": "……."
+          },
+          {
+            "speaker": "라온",
+            "text": "형이 내 말을 들어줄지도 모른다고 생각했거든."
+          },
+          {
+            "speaker": "단",
+            "text": "수레 곁에서 찾은 이 편지에는 상단 사람이 너를 데려오겠다는 말이 있었어. 내가 너를 돌아오게 하라고 보냈던 사람이지. 그래서 성문에서 네 이름을 숨겼다."
+          },
+          {
+            "speaker": "라온",
+            "text": "교역단이 흩어진 뒤 다른 상인과 함께 남쪽으로 왔어. 도적에게 잡힌 건 아니야. 형을 만나면 다시 내 뜻을 꺾을까 봐 두려웠어."
+          },
+          {
+            "speaker": "단",
+            "text": "내가 만든 두려움을 남의 위협이라고만 생각했구나. 미안하다. 이제 네 말을 끝까지 듣겠다."
+          }
+        ],
+        "choices": [],
+        "directions": [
+          "이 대사로 CH.02의 '형을 피했다'와 CH.04의 '형을 기다렸다'는 증언을 자연스럽게 연결한다."
+        ]
+      },
+      {
+        "number": 13,
+        "title": "각자의 삶",
+        "type": "STORY",
+        "background": "작업장 앞",
+        "dialogues": [
+          {
+            "speaker": "단",
+            "text": "라온, 네가 이곳에서 살고 싶다면 그렇게 해라."
+          },
+          {
+            "speaker": "라온",
+            "text": "……정말?"
+          },
+          {
+            "speaker": "단",
+            "text": "대신 가끔 소식은 전해다오."
+          },
+          {
+            "speaker": "라온",
+            "text": "응. 약속할게."
+          },
+          {
+            "speaker": "주인공",
+            "text": "이제 좀 형제 같네."
+          },
+          {
+            "speaker": "라온",
+            "text": "형은 원래 이렇게 고집이 셌어."
+          },
+          {
+            "speaker": "단",
+            "text": "네가 할 말은 아니지."
+          },
+          {
+            "speaker": "주인공",
+            "text": "ㅋㅋ 둘이 똑같네."
+          }
+        ],
+        "choices": [],
+        "directions": []
+      },
+      {
+        "number": 14,
+        "title": "철을 가진 사람들",
+        "type": "LEARNING",
+        "background": "교역장 석양",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "철이 사람의 삶을 바꾼다는 말, 이제 알 것 같아."
+          },
+          {
+            "speaker": "단",
+            "text": "라온에게는 새로운 삶을 선택하게 해 준 기술이었겠지."
+          },
+          {
+            "speaker": "비류",
+            "text": "이곳에서 많은 사람이 각자의 일을 배워 가네."
+          }
+        ],
+        "choices": [],
+        "directions": [],
+        "checkpoint": {
+          "number": 13,
+          "topic": "삼한 종합"
+        }
+      }
+    ]
+  },
+  {
+    "number": 7,
+    "title": "마지막 갈림길",
+    "scenes": [
+      {
+        "number": 1,
+        "title": "여행의 끝",
+        "type": "STORY",
+        "background": "교역로",
+        "dialogues": [
+          {
+            "speaker": "단",
+            "text": "우리는 참 많은 곳을 다녔군."
+          },
+          {
+            "speaker": "주인공",
+            "text": "부여도 가고, 고구려도 가고, 바다도 보고."
+          },
+          {
+            "speaker": "단",
+            "text": "그때마다 자네는 이상한 질문을 했지."
+          },
+          {
+            "speaker": "주인공",
+            "text": "야! 배우는 중이었다고."
+          },
+          {
+            "speaker": "단",
+            "text": "하하. 알고 있다."
+          }
+        ],
+        "choices": [],
+        "directions": []
+      },
+      {
+        "number": 2,
+        "title": "부여와 고구려의 기억",
+        "type": "LEARNING",
+        "background": "회상",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "영고는 부여, 동맹은 고구려."
+          },
+          {
+            "speaker": "단",
+            "text": "그리고 고구려를 세운 왕은?"
+          },
+          {
+            "speaker": "주인공",
+            "text": "주몽! 동명성왕!"
+          },
+          {
+            "speaker": "단",
+            "text": "이제 제법 아는군."
+          },
+          {
+            "speaker": "주인공",
+            "text": "처음부터 잘 알았거든?"
+          },
+          {
+            "speaker": "단",
+            "text": "동예의 무천도 10월이지. 삼한은 씨뿌리기를 마친 5월과 추수를 마친 10월에 제사를 지낸다고 전해진다네. 우리는 겨울 영고를 보았지만, 동맹과 무천은 주민의 설명으로 들었지."
+          }
+        ],
+        "choices": [],
+        "directions": [],
+        "checkpoint": {
+          "number": 14,
+          "topic": "부여·고구려 종합"
+        }
+      },
+      {
+        "number": 3,
+        "title": "바다와 경계의 기억",
+        "type": "STORY",
+        "background": "회상",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "옥저에서는 가족 공동 무덤도 봤지."
+          },
+          {
+            "speaker": "단",
+            "text": "동예에서는 책화 때문에 곤란한 일을 겪었고."
+          },
+          {
+            "speaker": "주인공",
+            "text": "그때 네가 책임지겠다고 했잖아."
+          },
+          {
+            "speaker": "단",
+            "text": "그 여행에서 배운 것이 많았지."
+          }
+        ],
+        "choices": [],
+        "directions": []
+      },
+      {
+        "number": 4,
+        "title": "마지막 역사 시험",
+        "type": "LEARNING",
+        "background": "교역 지도",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "이제 원삼국 시대는 꽤 잘 알 것 같아."
+          },
+          {
+            "speaker": "단",
+            "text": "그렇다면 마지막으로 기억을 정리해 보겠나?"
+          },
+          {
+            "speaker": "주인공",
+            "text": "뭐야, 갑자기 시험 보는 기분인데?"
+          },
+          {
+            "speaker": "단",
+            "text": "부여의 사출도·영고, 고구려의 제가 회의·서옥제·동맹, 옥저의 민며느리제·가족 공동 무덤, 동예의 책화·족외혼·무천·특산물, 삼한의 천군·소도·철 교역을 떠올려 보게."
+          }
+        ],
+        "choices": [],
+        "directions": [],
+        "checkpoint": {
+          "number": 15,
+          "topic": "원삼국 전체 종합"
+        }
+      },
+      {
+        "number": 5,
+        "title": "돌아갈 길",
+        "type": "STORY",
+        "background": "갈림길",
+        "dialogues": [
+          {
+            "speaker": "단",
+            "text": "이제 어디로 갈 생각이냐?"
+          },
+          {
+            "speaker": "주인공",
+            "text": "글쎄. 나도 내가 어디로 가야 하는지 모르겠어."
+          },
+          {
+            "speaker": "단",
+            "text": "처음 만났을 때와 똑같군."
+          },
+          {
+            "speaker": "주인공",
+            "text": "야, 그건 좀 너무한 거 아니야?"
+          },
+          {
+            "speaker": "단",
+            "text": "하하. 농담이다."
+          }
+        ],
+        "choices": [],
+        "directions": []
+      },
+      {
+        "number": 6,
+        "title": "마지막 부탁",
+        "type": "STORY",
+        "background": "갈림길",
+        "dialogues": [
+          {
+            "speaker": "단",
+            "text": "너와 함께한 여행은 참 이상했어."
+          },
+          {
+            "speaker": "주인공",
+            "text": "왜?"
+          },
+          {
+            "speaker": "단",
+            "text": "처음에는 아무것도 모르는 사람인 줄 알았는데, 가끔은 모든 것을 아는 사람처럼 굴더군."
+          },
+          {
+            "speaker": "주인공",
+            "text": "……."
+          },
+          {
+            "speaker": "단",
+            "text": "하지만 가장 중요한 건 자네에게 배웠어."
+          },
+          {
+            "speaker": "주인공",
+            "text": "뭔데?"
+          },
+          {
+            "speaker": "단",
+            "text": "사람은 각자 다른 길을 갈 수 있다는 것."
+          },
+          {
+            "speaker": "주인공",
+            "text": "……그런 걸 내가 알려줬나?"
+          },
+          {
+            "speaker": "단",
+            "text": "그렇지. 자네는 기억하지 못하는 모양이지만."
+          }
+        ],
+        "choices": [],
+        "directions": []
+      },
+      {
+        "number": 7,
+        "title": "마지막 선택",
+        "type": "CHOICE",
+        "background": "갈림길",
+        "dialogues": [
+          {
+            "speaker": "나레이션",
+            "text": "갈림길 앞에서 단과 마지막 인사를 나눈다."
+          }
+        ],
+        "choices": [
+          {
+            "label": "언젠가 다시 만나자.",
+            "result": "",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "그래. 다음에는 내가 자네를 찾아가도록 하지."
+              },
+              {
+                "speaker": "주인공",
+                "text": "약속이다?"
+              }
+            ]
+          },
+          {
+            "label": "그동안 고마웠어. 잘 살아.",
+            "result": "",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "고마운 것은 나다. 자네가 없었다면 아직도 동생을 찾아 헤매고 있었을 테니."
+              },
+              {
+                "speaker": "주인공",
+                "text": "……잘 가, 단."
+              }
+            ]
+          },
+          {
+            "label": "나도 내 길을 찾아볼게.",
+            "result": "",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "그래. 누구의 길도 아닌, 자네만의 길을 찾아라."
+              },
+              {
+                "speaker": "주인공",
+                "text": "너도."
+              }
+            ]
+          }
+        ],
+        "directions": [
+          "선택에 따라 마지막 표정과 작별 대사가 달라진다."
+        ]
+      },
+      {
+        "number": 8,
+        "title": "에필로그",
+        "type": "CINEMATIC",
+        "background": "해 질 무렵의 길",
+        "dialogues": [
+          {
+            "speaker": "나레이션",
+            "text": "두 사람은 서로 다른 방향으로 걸어갔다."
+          },
+          {
+            "speaker": "나레이션",
+            "text": "뒤돌아보았을 때 단은 아직 그 자리에 서 있었다."
+          },
+          {
+            "speaker": "주인공(속마음)",
+            "text": "이상하다. 처음에는 집에 돌아갈 생각뿐이었는데."
+          },
+          {
+            "speaker": "주인공(속마음)",
+            "text": "이제는 이곳에서 만난 사람들이 자꾸 생각난다."
+          }
+        ],
+        "choices": [],
+        "directions": [
+          "단이 멀어지는 장면으로 마무리한다.",
+          "단의 사망, 노년화, 강제 재회 장면을 추가하지 않는다."
+        ]
+      }
+    ]
+  }
+];
+const PROTO_EXAM_ASSIGNMENTS=[[1,6,["64-basic-02"]],[1,9,["70-advanced-02"]],[2,3,["60-advanced-02","62-advanced-02"]],[2,6,["64-advanced-02","66-basic-02"]],[2,11,["61-basic-03","68-advanced-03","73-basic-02"]],[3,6,[]],[3,11,["57-advanced-03"]],[3,14,["76-advanced-02"]],[4,5,["66-advanced-02","67-basic-02","73-advanced-04"]],[5,5,["69-advanced-03","77-advanced-03"]],[6,4,["61-advanced-02","77-basic-02"]],[6,7,["78-advanced-03"]],[6,14,[]],[7,2,["67-advanced-02"]],[7,4,["57-basic-02","63-advanced-02","79-advanced-02"]]];
