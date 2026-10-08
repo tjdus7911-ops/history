@@ -34,7 +34,7 @@ click({officialPick:String(wrong)});click({officialSubmit:'true'});assert(html.i
 click({officialExit:'true'});click({officialStart:'learn'});current=copy('officialSessionQuestion()');question=entryQuestion(current.canonicalQuestionId);click({officialPick:String(question.answer)});click({officialSubmit:'true'});assert(html.includes('✓ 정답입니다.')&&html.includes('[해설]')&&html.includes(question.explanation));
 
 // TEST 5/6: exam mode hides explanations while solving and exposes direct review only after grading.
-click({officialExit:'true'});click({officialStart:'exam'});
+click({officialExit:'true'});click({officialStart:'exam'});click({officialTimerStart:'true'});
 const examEntries=entries.filter(entry=>entry.sourceRecord.examRound===70&&entry.sourceRecord.examLevel==='심화').sort((a,b)=>a.sourceRecord.questionNumber-b.sourceRecord.questionNumber);let firstWrongId=null;
 for(let index=0;index<examEntries.length;index++){
   const entry=examEntries[index],examQuestion=entryQuestion(entry.canonicalQuestionId),answer=index===0?otherAnswer(examQuestion):examQuestion.answer;

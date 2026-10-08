@@ -26,7 +26,7 @@ click({officialTab:'round'});assert.equal((html.match(/data-official-round-level
 click({officialRoundLevel:'심화'});assert.equal((html.match(/class="official-card round"/g)||[]).length,23);assert(html.includes('제70회 · 심화'));
 click({officialRound:'70',officialEditionLevel:'심화'});assert(html.includes('제70회 · 심화'));assert(html.includes('<b>50</b>'));
 const storySnapshot=run('JSON.stringify({run:state.run,mainRun:state.mainRun})');
-click({officialStart:'exam'});assert(html.includes('시험 모드'));assert(html.includes('남은 시간')&&html.includes('01:20:00'));assert.equal(run('meta().officialExamActiveSession.durationMs'),80*60*1000);
+click({officialStart:'exam'});assert(html.includes('시험 모드'));assert(html.includes('남은 시간')&&html.includes('01:20:00')&&html.includes('시작 전'));assert.equal(run('meta().officialExamActiveSession.durationMs'),80*60*1000);click({officialTimerStart:'true'});
 const round70=entries.filter(entry=>entry.sourceRecord.examRound===70&&entry.sourceRecord.examLevel==='심화').sort((a,b)=>a.sourceRecord.questionNumber-b.sourceRecord.questionNumber);
 for(const entry of round70){const answer=(entry.sourceRecord.acceptedAnswers||[entry.sourceRecord.answer])[0];click({officialPick:String(answer)});click({officialNext:'true'})}
 assert(html.includes('시험을 제출하시겠어요?')&&html.includes('계속 풀기')&&html.includes('제출하기'));assert(!html.includes('OFFICIAL EXAM RESULT'));click({officialSubmitCancel:'true'});assert(html.includes('시험 모드')&&!html.includes('시험을 제출하시겠어요?'));click({officialNext:'true'});click({officialSubmitConfirm:'true'});
