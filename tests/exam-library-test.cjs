@@ -20,7 +20,7 @@ const fixed=copy("QUESTIONS.find(question=>question.examRound===70&&question.exa
 const corrected=copy("QUESTIONS.find(question=>question.examRound===63&&question.examLevel==='심화'&&question.questionNumber===42)");assert.deepEqual(corrected.acceptedAnswers,[0,1,2,3,4]);
 const recovery=copy('globalThis.OFFICIAL_EXAM_RECOVERY_REPORT');assert.equal(recovery.legacyMissingPdfIds.length,4);assert.equal(recovery.recoveredMissingPdfIds.length,4);assert.equal(recovery.round70Advanced13.answer,0);
 
-assert.equal((html.match(/class="nav"/g)||[]).length,1);for(const nav of ['home','exam-library','association','study','records'])assert(html.includes(`data-nav="${nav}"`));
+assert.equal((html.match(/class="nav"/g)||[]).length,1);for(const nav of ['home','exam-library','ox','study','records'])assert(html.includes(`data-nav="${nav}"`));assert(!html.includes('data-nav="association"'));
 click({nav:'exam-library'});assert.equal((html.match(/class="official-card"/g)||[]).length,6);assert(!html.includes('LOCK'));assert(html.includes('등록이 완료된 공식 기출은 모두 바로'));
 click({officialTab:'round'});assert.equal((html.match(/data-official-round-level=/g)||[]).length,2);assert.equal((html.match(/class="official-card round"/g)||[]).length,13);assert(html.includes('기본')&&html.includes('시험 미응시'));assert(!html.includes('제70회 · 심화'));
 click({officialRoundLevel:'심화'});assert.equal((html.match(/class="official-card round"/g)||[]).length,23);assert(html.includes('제70회 · 심화'));
