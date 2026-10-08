@@ -16,8 +16,8 @@ const OX_ERA_DESCRIPTIONS={
 const OX_ERA_COLORS={
  prehistoric:'#9a684f',kingdoms:'#c08b4e',goryeo:'#d0ad67',joseon:'#64877f',empire:'#5c7890',occupation:'#786b91',republic:'#a36b79'
 };
-const APP_ROUTES=new Set(['home','exam-library','ox','ox/quiz','study','records']);
-let oxView='home',oxAnalysisSort='weakest',oxHomeReviewEra='all',oxWrongReviewEra='all',oxMetaCache=null;
+const APP_ROUTES=new Set(['home','exam-library','ox','ox/quiz','ox/analysis','study','records']);
+let oxView='home',oxAnalysisSort='weakest',oxAnalysisReviewEra=null,oxHomeReviewEra='all',oxWrongReviewEra='all',oxMetaCache=null;
 let oxLastAppliedUrl='';
 
 const oxInteger=value=>Math.max(0,Number.isFinite(Number(value))?Math.floor(Number(value)):0);
@@ -79,36 +79,40 @@ function oxRecord(id){
 }
 function oxStats(eraId=null){
  const questions=OX_QUESTIONS.filter(question=>!eraId||question.eraId===eraId),records=questions.map(question=>({question,record:oxRecord(question.id)})).filter(item=>item.record&&item.record.attempts>0);
- const attempts=records.reduce((sum,item)=>sum+item.record.attempts,0),correct=records.reduce((sum,item)=>sum+item.record.correctCount,0),wrong=records.reduce((sum,item)=>sum+item.record.wrongCount,0),latestCorrect=records.filter(item=>item.record.lastCorrect===true).length,currentWrong=records.filter(item=>item.record.lastCorrect===false).length,completedReview=records.filter(item=>item.record.wrongCount>0&&item.record.lastCorrect===true).length;
- return {eraId,total:questions.length,attempts,correct,wrong,accuracy:attempts?oxAccuracy(correct,attempts):null,learned:records.length,latestCorrect,currentWrong,reviewNeeded:currentWrong,completedReview,latestAccuracy:records.length?oxAccuracy(latestCorrect,records.length):null};
+ const attempts=records.reduce((sum,item)=>sum+item.record.attempts,0),correct=records.reduce((sum,item)=>sum+item.record.correctCount,0),wrong=records.reduce((sum,item)=>sum+item.record.wrongCount,0),uniqueWrong=records.filter(item=>item.record.wrongCount>0).length,latestCorrect=records.filter(item=>item.record.lastCorrect===true).length,currentWrong=records.filter(item=>item.record.lastCorrect===false).length,completedReview=records.filter(item=>item.record.wrongCount>0&&item.record.lastCorrect===true).length;
+ return {eraId,total:questions.length,attempts,correct,wrong,uniqueWrong,accuracy:attempts?oxAccuracy(correct,attempts):null,learned:records.length,latestCorrect,currentWrong,reviewNeeded:currentWrong,completedReview,latestAccuracy:records.length?oxAccuracy(latestCorrect,records.length):null};
 }
 function oxEraStats(){return OX_ERAS.map((era,index)=>{const row=oxStats(era.id),eligible=row.learned>=10;return {...row,id:era.id,name:era.name,shortName:era.shortName,index,eligible,dataStatus:eligible?'ranked':'insufficient',topics:oxTopicStats(era.id).slice(0,3)};});}
 function oxWrongDistribution(){
- const source=OX_ERAS.map((era,index)=>{const stats=oxStats(era.id);return {eraId:era.id,name:era.name,shortName:era.shortName,index,wrong:stats.wrong,color:OX_ERA_COLORS[era.id]||'#899498'};}),total=source.reduce((sum,row)=>sum+row.wrong,0);
+ const source=OX_ERAS.map((era,index)=>{const stats=oxStats(era.id);return {eraId:era.id,name:era.name,shortName:era.shortName,index,wrong:stats.uniqueWrong,currentWrong:stats.currentWrong,color:OX_ERA_COLORS[era.id]||'#899498'};}),total=source.reduce((sum,row)=>sum+row.wrong,0);
  let cursor=0;
  const rows=source.map(row=>{const share=total?row.wrong/total*100:0,start=cursor;cursor+=share;const displayed=Math.round(share*10)/10;return {...row,share,start,end:cursor,percentage:Number.isInteger(displayed)?String(displayed):displayed.toFixed(1)};});
- return {total,rows};
+ const leader=rows.filter(row=>row.wrong>0).sort((a,b)=>b.wrong-a.wrong||b.currentWrong-a.currentWrong||a.index-b.index)[0]||null;
+ return {total,rows,leader};
 }
 function oxWeaknessRows(sort='weakest'){
  const rows=oxEraStats();
  if(sort==='era')return rows;
  if(sort==='attempts')return rows.slice().sort((a,b)=>b.attempts-a.attempts||a.index-b.index);
- return rows.slice().sort((a,b)=>Number(b.eligible)-Number(a.eligible)||(a.eligible&&b.eligible?a.latestAccuracy-b.latestAccuracy||b.currentWrong-a.currentWrong||a.accuracy-b.accuracy:a.index-b.index));
+ return rows.slice().sort((a,b)=>Number(b.eligible)-Number(a.eligible)||(a.eligible&&b.eligible?a.accuracy-b.accuracy||b.uniqueWrong-a.uniqueWrong||b.currentWrong-a.currentWrong:a.index-b.index));
 }
 function oxTopicStats(eraId=null){
  const topics=new Map();
  for(const question of OX_QUESTIONS){
   if(eraId&&question.eraId!==eraId)continue;
   const record=oxRecord(question.id);if(!record?.attempts)continue;
-  const id=oxTopicId(question),key=`${question.eraId}\u0000${id}`,current=topics.get(key)||{topicId:id,label:oxTopicLabel(question),eraId:question.eraId,attempts:0,correct:0,wrong:0,learned:0,currentWrong:0};
-  current.attempts+=record.attempts;current.correct+=record.correctCount;current.wrong+=record.wrongCount;current.learned++;if(record.lastCorrect===false)current.currentWrong++;topics.set(key,current);
+  const id=oxTopicId(question),key=`${question.eraId}\u0000${id}`,current=topics.get(key)||{topicId:id,label:oxTopicLabel(question),eraId:question.eraId,attempts:0,correct:0,wrong:0,uniqueWrong:0,learned:0,currentWrong:0};
+  current.attempts+=record.attempts;current.correct+=record.correctCount;current.wrong+=record.wrongCount;current.learned++;if(record.wrongCount>0)current.uniqueWrong++;if(record.lastCorrect===false)current.currentWrong++;topics.set(key,current);
  }
- return [...topics.values()].map(item=>({...item,accuracy:oxAccuracy(item.correct,item.attempts)})).sort((a,b)=>b.wrong-a.wrong||b.currentWrong-a.currentWrong||a.accuracy-b.accuracy||a.label.localeCompare(b.label,'ko'));
+ return [...topics.values()].map(item=>({...item,accuracy:oxAccuracy(item.correct,item.attempts)})).sort((a,b)=>b.uniqueWrong-a.uniqueWrong||b.wrong-a.wrong||b.currentWrong-a.currentWrong||a.accuracy-b.accuracy||a.label.localeCompare(b.label,'ko'));
 }
 function oxCurrentWrongIds(eraId='all'){
  const topicWrong=new Map();
  for(const topic of oxTopicStats())topicWrong.set(`${topic.eraId}:${topic.topicId}`,topic.wrong);
  return [...new Set(oxMeta().wrongIds)].filter(id=>{const question=OX_BY_ID.get(id);return question&&(eraId==='all'||question.eraId===eraId)&&oxRecord(id)?.lastCorrect!==true;}).sort((a,b)=>{const qa=OX_BY_ID.get(a),qb=OX_BY_ID.get(b),ra=oxRecord(a),rb=oxRecord(b);return (topicWrong.get(`${qb.eraId}:${oxTopicId(qb)}`)||0)-(topicWrong.get(`${qa.eraId}:${oxTopicId(qa)}`)||0)||(rb?.wrongCount||0)-(ra?.wrongCount||0)||String(ra?.lastAnsweredAt||'').localeCompare(String(rb?.lastAnsweredAt||''));});
+}
+function oxHistoricalWrongIds(eraId='all'){
+ return OX_QUESTIONS.filter(question=>(eraId==='all'||question.eraId===eraId)&&oxRecord(question.id)?.wrongCount>0).sort((a,b)=>{const ra=oxRecord(a.id),rb=oxRecord(b.id);return (rb?.wrongCount||0)-(ra?.wrongCount||0)||String(rb?.lastAnsweredAt||'').localeCompare(String(ra?.lastAnsweredAt||''));}).map(question=>question.id);
 }
 function oxCompletedReviewIds(eraId='all'){
  return OX_QUESTIONS.filter(question=>(eraId==='all'||question.eraId===eraId)&&oxRecord(question.id)?.wrongCount>0&&oxRecord(question.id)?.lastCorrect===true).sort((a,b)=>{const ra=oxRecord(a.id),rb=oxRecord(b.id);return (rb?.wrongCount||0)-(ra?.wrongCount||0)||String(rb?.lastAnsweredAt||'').localeCompare(String(ra?.lastAnsweredAt||''));}).map(question=>question.id);
@@ -180,7 +184,8 @@ function oxWriteRoute(route,replace=false){
 function oxApplyRoute(route=oxReadRoute()){
  if(route===null){render();return screen;}
  let normalized=oxNormalizeRoute(route);modal=null;
- if(normalized==='ox/quiz'){
+ if(normalized==='ox/analysis'){screen='ox';oxView='analysis';}
+ else if(normalized==='ox/quiz'){
   screen='ox';
   if(activeOXSession())oxView='quiz';else{normalized='ox';oxView='home';oxWriteRoute('ox',true);}
  }else if(normalized==='ox'){screen='ox';oxView='home';}
@@ -188,17 +193,36 @@ function oxApplyRoute(route=oxReadRoute()){
  oxLastAppliedUrl=oxRouteLocation()?.href||`#${normalized}`;render();if(typeof window?.scrollTo==='function')window.scrollTo(0,0);return normalized;
 }
 function oxHandleRouteChange(event){const location=oxRouteLocation(),url=location?.href||'';if(event?.type!=='popstate'&&url&&url===oxLastAppliedUrl)return;oxApplyRoute(oxReadRoute());}
+function oxLeaveAnalysis(){
+ const historyObject=typeof globalThis.history==='object'?globalThis.history:typeof window==='object'?window.history:null;
+ if(oxReadRoute()==='ox/analysis'&&historyObject?.state?.appRoute==='ox/analysis'&&historyObject.length>1&&typeof historyObject.back==='function'){historyObject.back();return;}
+ oxView='home';screen='ox';oxWriteRoute('ox',true);render();if(typeof window?.scrollTo==='function')window.scrollTo(0,0);
+}
 function oxDuration(milliseconds){const total=Math.max(0,Math.round(milliseconds/1000)),minutes=Math.floor(total/60),seconds=total%60;return `${minutes}분 ${String(seconds).padStart(2,'0')}초`;}
 function oxHeader(title,subtitle,back='home'){return `<header class="ox-top"><button data-ox-back="${back}" aria-label="OX 퀴즈 뒤로가기">‹</button><div><small>한능검 심화 핵심 개념</small><h1>${esc(title)}</h1>${subtitle?`<p>${esc(subtitle)}</p>`:''}</div></header>`;}
 function oxReviewOptions(selected,includeAll=true){return `${includeAll?`<option value="all" ${selected==='all'?'selected':''}>전체 시대</option>`:''}${OX_ERAS.map(era=>`<option value="${era.id}" ${selected===era.id?'selected':''}>${esc(era.name)} (${oxCurrentWrongIds(era.id).length})</option>`).join('')}`;}
+function oxAnalysisReviewOptions(selected){return OX_ERAS.map(era=>`<option value="${era.id}" ${selected===era.id?'selected':''}>${esc(era.name)} (${oxHistoricalWrongIds(era.id).length})</option>`).join('');}
+function oxDistributionFill(distribution){const segments=distribution.rows.filter(row=>row.wrong>0).map(row=>`${row.color} ${row.start.toFixed(4)}% ${row.end.toFixed(4)}%`);return distribution.total?`conic-gradient(${segments.join(',')})`:'#e7eae8';}
+function oxDistributionLabel(distribution){return distribution.total?`고유 오답 총 ${distribution.total}문제. ${distribution.rows.map(row=>`${row.shortName} ${row.wrong}문제 ${row.percentage}%`).join(', ')}`:'고유 오답이 없습니다.';}
+function oxAnalysisEmpty(stats){return stats.attempts?'<div class="ox-analysis-empty"><b>현재 복습이 필요한 오답이 없어요.</b></div>':'<div class="ox-analysis-empty"><b>아직 분석할 학습 기록이 없어요.</b><p>OX 퀴즈를 풀면 시대별 취약점을 확인할 수 있어요.</p></div>';}
+function oxDonutGraphic(distribution,compact=false){return `<div class="ox-donut-figure"><div class="ox-weakness-donut ${compact?'compact':''}" role="img" aria-label="${esc(oxDistributionLabel(distribution))}" style="--ox-donut-fill:${oxDistributionFill(distribution)}"><div class="ox-donut-center"><span>고유 오답</span><strong>${distribution.total}</strong><small>문제</small></div></div></div>`;}
+function oxHomeAnalysis(stats,distribution){
+ const leader=distribution.leader;
+ return `<section class="ox-main-section ox-home-analysis" data-ox-home-analysis><div class="ox-main-heading ox-analysis-heading"><div><small>WEAKNESS ANALYSIS</small><h2>시대별 취약점 분석</h2></div><button data-ox-analysis="true">상세보기 <span aria-hidden="true">›</span></button></div>${!stats.attempts||!distribution.total?oxAnalysisEmpty(stats):`<div class="ox-home-analysis-body">${oxDonutGraphic(distribution,true)}<div class="ox-home-analysis-copy"><dl><div><dt>누적 고유 오답</dt><dd>${distribution.total}문제</dd></div><div><dt>가장 취약한 시대</dt><dd>${esc(leader.shortName)}</dd></div><div><dt>${esc(leader.shortName)} 오답 비중</dt><dd>${leader.percentage}%</dd></div></dl><p>한 번 이상 틀린 서로 다른 문제 기준이에요.</p><ul class="ox-home-donut-legend">${distribution.rows.filter(row=>row.wrong>0).map(row=>`<li class="${row.eraId===leader.eraId?'leading':''}" data-era="${row.eraId}" data-wrong="${row.wrong}" data-share="${row.percentage}"><i aria-hidden="true" style="background:${row.color}"></i><span>${esc(row.shortName)}</span><b>${row.percentage}%</b></li>`).join('')}</ul></div></div>`}</section>`;
+}
+function oxDetailDonut(stats,distribution){
+ if(!stats.attempts||!distribution.total)return `<section class="ox-detail-donut"><div class="ox-section-title"><div><span>WRONG ANSWER SHARE</span><h2>시대별 오답 비중</h2></div></div>${oxAnalysisEmpty(stats)}</section>`;
+ const leader=distribution.leader;
+ return `<section class="ox-detail-donut"><div class="ox-section-title"><div><span>WRONG ANSWER SHARE</span><h2>시대별 오답 비중</h2></div></div><div class="ox-weakness-overview">${oxDonutGraphic(distribution)}<div class="ox-donut-copy"><p>한 번 이상 틀린 고유 문제를 시대별로 나눈 비율이며, 반복 오답은 한 문제로 집계해요.</p><ul class="ox-donut-legend">${distribution.rows.map(row=>`<li class="${row.eraId===leader.eraId?'leading':''}" data-era="${row.eraId}" data-wrong="${row.wrong}" data-share="${row.percentage}"><i aria-hidden="true" style="background:${row.color}"></i><span>${esc(row.shortName)}</span><b>${row.wrong}문제</b><em>${row.percentage}%</em></li>`).join('')}</ul></div></div></section>`;
+}
 
 function oxHome(){
- const stats=oxStats(),resume=oxMeta().activeSession,wrongCount=oxCurrentWrongIds(oxHomeReviewEra).length;
+ const stats=oxStats(),distribution=oxWrongDistribution(),resume=oxMeta().activeSession,wrongCount=oxCurrentWrongIds(oxHomeReviewEra).length;
  return `<section class="ox-page ox-home">${editorialHeader('OX 퀴즈','한능검 심화 핵심 개념을 빠르게 확인해요.')}
- <section class="ox-learning-summary" aria-label="나의 OX 학습 요약"><div><span>누적 풀이 수</span><strong>${stats.attempts}</strong></div><div><span>전체 정답률</span><strong>${stats.accuracy===null?'—':stats.accuracy+'%'}</strong></div><div><span>누적 오답 수</span><strong>${stats.wrong}</strong></div></section>
+ ${oxHomeAnalysis(stats,distribution)}
  ${resume?`<button class="ox-resume" data-ox-resume="true"><span><b>진행 중인 퀴즈 이어하기</b><small>${resume.index+1} / ${resume.questionIds.length}문제</small></span><strong>이어하기 ›</strong></button>`:''}
  <section class="ox-main-section"><div class="ox-main-heading"><div><small>ERA QUIZ</small><h2>시대별 OX 퀴즈</h2></div><span>한 세션 20문제</span></div><div class="ox-era-list">${OX_ERAS.map(era=>{const row=oxStats(era.id);return `<button class="ox-era-card" data-ox-era="${era.id}"><span class="ox-era-copy"><b>${esc(era.name)}</b><small>${esc(OX_ERA_DESCRIPTIONS[era.id]||'핵심 개념을 확인해요.')}</small><span class="ox-era-metrics"><em>전체 ${row.total}</em><em>학습 ${row.learned}</em><em>${row.learned?`정답률 ${row.accuracy}%`:'아직 학습 전'}</em></span></span><i aria-hidden="true">›</i></button>`;}).join('')}</div></section>
- <section class="ox-main-section"><div class="ox-main-heading"><div><small>REVIEW & ANALYSIS</small><h2>복습과 분석</h2></div></div><div class="ox-tool-list"><article class="ox-tool-card"><div><h3>틀린 OX 다시 풀기</h3><p>현재 복습이 필요한 문제를 시대별로 골라 풀어요.</p></div><label>시대 선택<select data-ox-home-review-era>${oxReviewOptions(oxHomeReviewEra)}</select></label><button class="primary" data-ox-review="true" ${wrongCount?'':'disabled'}>${wrongCount?`${wrongCount}문제 중 복습 시작`:'복습할 문제가 없어요'}</button></article><button class="ox-tool-link" data-ox-analysis="true"><span><b>시대별 취약점 분석</b><small>누적 시도와 최신 정답 상태를 나누어 확인해요.</small></span><i>›</i></button></div></section></section>`;
+ <section class="ox-main-section"><div class="ox-main-heading"><div><small>REVIEW</small><h2>틀린 OX 다시 풀기</h2></div></div><div class="ox-tool-list"><article class="ox-tool-card"><div><p>현재 복습이 필요한 문제를 시대별로 골라 풀어요.</p></div><label>시대 선택<select data-ox-home-review-era>${oxReviewOptions(oxHomeReviewEra)}</select></label><button class="primary" data-ox-review="true" ${wrongCount?'':'disabled'}>${wrongCount?`${wrongCount}문제 중 복습 시작`:'복습할 문제가 없어요'}</button></article></div></section></section>`;
 }
 function oxQuiz(){
  const session=activeOXSession(),question=activeOXQuestion();if(!session||!question){oxView='home';return oxHome();}
@@ -219,11 +243,9 @@ function oxResult(){
  return `<section class="ox-page ox-result">${oxHeader('학습 결과','한 문제씩 쌓인 오늘의 기록','home')}<section class="ox-result-score"><span>${summary.total}문제 중</span><strong>${summary.correct}문제 정답</strong><div>${summary.accuracy}%</div><p>오답 ${summary.wrong}개 · 소요 시간 ${oxDuration(summary.durationMs)}</p></section>${oxResultBreakdown(session,wrongIds)}${wrongIds.length?`<section class="ox-section"><div class="ox-section-title"><div><span>REVIEW</span><h2>틀린 문제 다시 보기</h2></div></div><div class="ox-result-wrongs">${wrongIds.map(id=>{const question=OX_BY_ID.get(id);return question?`<details><summary><span>${esc(oxEra(question.eraId).shortName)}</span>${esc(question.statement)}</summary><p><b>정답 ${question.answer?'O':'X'}</b><br>${esc(question.explanation)}</p></details>`:'';}).join('')}</div><button class="secondary ox-full" data-ox-retry-wrong="true">틀린 문제 다시 풀기</button></section>`:'<section class="ox-perfect"><b>모든 문제를 맞혔어요!</b><p>심화 핵심 개념을 정확히 기억하고 있습니다.</p></section>'}<div class="ox-result-actions"><button class="secondary" data-ox-retry="true">다시 풀기</button><button class="primary" data-ox-home="true">OX 퀴즈 메인</button></div></section>`;
 }
 function oxAnalysis(){
- const stats=oxStats(),rankedRows=oxWeaknessRows('weakest').filter(row=>row.eligible),rows=oxWeaknessRows(oxAnalysisSort),weakest=rankedRows[0],distribution=oxWrongDistribution();
- const segments=distribution.rows.filter(row=>row.wrong>0).map(row=>`${row.color} ${row.start.toFixed(4)}% ${row.end.toFixed(4)}%`),fill=distribution.total?`conic-gradient(${segments.join(',')})`:'#e7eae8';
- const chartLabel=distribution.total?`누적 오답 총 ${distribution.total}문제. ${distribution.rows.map(row=>`${row.shortName} ${row.wrong}문제 ${row.percentage}%`).join(', ')}`:'누적 오답이 아직 없습니다.';
- const donut=`<section class="ox-weakness-overview" aria-labelledby="ox-wrong-share-title"><div class="ox-donut-figure"><div class="ox-weakness-donut" role="img" aria-label="${esc(chartLabel)}" style="--ox-donut-fill:${fill}"><div class="ox-donut-center"><span>누적 오답</span><strong>${distribution.total}</strong><small>문제</small></div></div></div><div class="ox-donut-copy"><h2 id="ox-wrong-share-title">시대별 오답 비중</h2><p>해당 시대의 누적 오답 수를 전체 시대 누적 오답 수로 나눈 비율이에요.</p>${distribution.total?'':'<p class="ox-donut-empty">아직 누적 오답이 없습니다. OX 문제를 풀면 시대별 비중이 표시됩니다.</p>'}<ul class="ox-donut-legend">${distribution.rows.map(row=>`<li data-era="${row.eraId}" data-wrong="${row.wrong}" data-share="${row.percentage}"><i aria-hidden="true" style="background:${row.color}"></i><span>${esc(row.shortName)}</span><b>${row.wrong}문제</b><em>${row.percentage}%</em></li>`).join('')}</ul></div></section>`;
- return `<section class="ox-page ox-analysis">${oxHeader('시대별 취약점 분석','서로 다른 문제를 10개 이상 학습한 시대부터 비교해요.','home')}<section class="ox-analysis-summary"><div><span>총 풀이 수</span><b>${stats.attempts}</b></div><div><span>전체 정답률</span><b>${stats.accuracy===null?'—':stats.accuracy+'%'}</b></div><div><span>가장 취약한 시대</span><b>${weakest?esc(weakest.shortName):'데이터 부족'}</b></div></section>${donut}<div class="ox-analysis-toolbar"><div><h2>시대별 분석</h2><p>취약 순위는 문제별 최신 정답률 기준이며, 누적 시도도 함께 보여줘요.</p></div><div class="ox-sort-buttons" role="group" aria-label="분석 정렬"><button data-ox-analysis-sort="weakest" aria-pressed="${oxAnalysisSort==='weakest'}">취약 순</button><button data-ox-analysis-sort="era" aria-pressed="${oxAnalysisSort==='era'}">시대 순</button></div></div><div class="ox-weakness-list">${rows.map(row=>{const topics=oxTopicStats(row.id).filter(topic=>topic.wrong>0).slice(0,3),reviewCount=oxCurrentWrongIds(row.id).length,rank=rankedRows.findIndex(item=>item.id===row.id)+1;return `<article class="ox-weakness-card ox-analysis-row ox-weakness-row ${row.eligible?'':'insufficient'}"><header><div><small>${row.eligible?`취약 순위 ${rank}`:'데이터 부족 · 고유 문제 10개 필요'}</small><h3>${esc(row.name)}</h3></div><strong>${row.accuracy===null?'—':row.accuracy+'%'}</strong></header><div class="ox-attempt-metrics"><span>풀이 <b>${row.attempts}</b></span><span>정답 <b>${row.correct}</b></span><span>오답 <b>${row.wrong}</b></span></div><p class="ox-latest-state"><b>문제별 최신 상태</b> ${row.learned?`정답률 ${row.latestAccuracy}% · ${row.latestCorrect}/${row.learned}개 정답 · 복습 필요 ${row.currentWrong}`:'아직 학습 전'}</p><div class="ox-weak-topics"><b>취약 세부 개념</b>${topics.length?`<ul>${topics.map(topic=>`<li><span>${esc(topic.label)}</span><em>누적 오답 ${topic.wrong}</em></li>`).join('')}</ul>`:'<p>아직 확인된 취약 개념이 없어요.</p>'}</div><button class="secondary" data-ox-review-era="${row.id}" ${reviewCount?'':'disabled'}>${reviewCount?`${reviewCount}문제 복습하기`:'복습할 오답 없음'}</button></article>`;}).join('')}</div></section>`;
+ const stats=oxStats(),rankedRows=oxWeaknessRows('weakest').filter(row=>row.eligible),rows=oxWeaknessRows(oxAnalysisSort),distribution=oxWrongDistribution(),weakest=distribution.leader;
+ const requestedEra=OX_ERAS.some(era=>era.id===oxAnalysisReviewEra)?oxAnalysisReviewEra:null,focusEra=requestedEra||weakest?.eraId||OX_ERAS[0].id,focusReviewCount=oxHistoricalWrongIds(focusEra).length;
+ return `<section class="ox-page ox-analysis">${oxHeader('시대별 취약점 분석','고유 오답 문제와 누적 학습 기록을 나누어 확인해요.','home')}<section class="ox-analysis-summary" data-ox-analysis-summary><div><span>누적 풀이 수</span><b>${stats.attempts}</b></div><div><span>전체 정답률</span><b>${stats.accuracy===null?'—':stats.accuracy+'%'}</b></div><div><span>고유 오답 문제 수</span><b>${distribution.total}</b></div><div><span>가장 취약한 시대</span><b>${weakest?esc(weakest.shortName):stats.attempts?'없음':'데이터 없음'}</b></div></section>${oxDetailDonut(stats,distribution)}<div class="ox-analysis-toolbar"><div><h2>시대별 학습 분석</h2><p>정답률은 누적 풀이 기준, 오답 수는 한 번 이상 틀린 고유 문제 기준이에요.</p></div><div class="ox-sort-buttons" role="group" aria-label="분석 정렬"><button data-ox-analysis-sort="weakest" aria-pressed="${oxAnalysisSort==='weakest'}">취약 순</button><button data-ox-analysis-sort="era" aria-pressed="${oxAnalysisSort==='era'}">시대 순</button></div></div><div class="ox-weakness-list">${rows.map(row=>{const topics=oxTopicStats(row.id).filter(topic=>topic.uniqueWrong>0).slice(0,3),rank=rankedRows.findIndex(item=>item.id===row.id)+1;return `<article class="ox-weakness-card ox-analysis-row ox-weakness-row ${row.eligible?'':'insufficient'}"><header><div><small>${row.eligible?`누적 정답률 취약 순위 ${rank}`:'데이터 부족 · 고유 문제 10개 필요'}</small><h3>${esc(row.name)}</h3></div><span class="ox-era-accuracy"><small>누적 정답률</small><strong>${row.accuracy===null?'—':row.accuracy+'%'}</strong></span></header><div class="ox-attempt-metrics"><span>학습한 문제 <b>${row.learned}</b></span><span>누적 풀이 <b>${row.attempts}</b></span><span>고유 오답 <b>${row.uniqueWrong}</b></span></div><p class="ox-latest-state"><b>현재 복습 상태</b> ${row.learned?`복습 필요 ${row.currentWrong}문제 · 복습 완료 ${row.completedReview}문제`:'아직 학습 전'}</p><div class="ox-weak-topics"><b>취약한 세부 개념</b>${topics.length?`<ul>${topics.map(topic=>`<li><span>${esc(topic.label)}</span><em>고유 오답 ${topic.uniqueWrong}문제</em></li>`).join('')}</ul>`:'<p>아직 확인된 취약 개념이 없어요.</p>'}</div></article>`;}).join('')}</div><section class="ox-focus-review"><div><span>FOCUSED REVIEW</span><h2>취약 시대 집중 복습</h2><p>시대를 선택하면 한 번 이상 틀린 고유 OX 문제를 다시 풀 수 있어요.</p></div><label>시대 선택<select data-ox-analysis-review-era>${oxAnalysisReviewOptions(focusEra)}</select></label><button class="primary" data-ox-analysis-review-start="${focusEra}" ${focusReviewCount?'':'disabled'}>${focusReviewCount?focusReviewCount>20?`${focusReviewCount}문제 중 20문제 복습`:`${focusReviewCount}문제 복습하기`:'복습할 고유 오답 없음'}</button></section></section>`;
 }
 function oxPage(){return oxView==='quiz'?oxQuiz():oxView==='result'?oxResult():oxView==='analysis'?oxAnalysis():oxHome();}
 
@@ -271,14 +293,15 @@ document.addEventListener('click',event=>{
  if(data.nav==='ox'){event.stopImmediatePropagation();screen='ox';modal=null;oxView='home';oxWriteRoute('ox');render();window.scrollTo(0,0);return;}
  if(data.oxEra){event.stopImmediatePropagation();newOXSession('era',20,data.oxEra);return;}
  if(data.oxReview){event.stopImmediatePropagation();newOXSession('review',20,oxHomeReviewEra==='all'?null:oxHomeReviewEra);return;}
+ if(data.oxAnalysisReviewStart){event.stopImmediatePropagation();const eraId=data.oxAnalysisReviewStart,historyIds=oxHistoricalWrongIds(eraId);newOXSession('review',20,eraId,historyIds);return;}
  if(data.oxReviewEra){event.stopImmediatePropagation();const eraId=data.oxReviewEra==='all'?null:data.oxReviewEra;newOXSession('review',20,eraId);return;}
- if(data.oxAnalysis){event.stopImmediatePropagation();oxView='analysis';screen='ox';render();window.scrollTo(0,0);return;}
+ if(data.oxAnalysis){event.stopImmediatePropagation();oxView='analysis';screen='ox';oxWriteRoute('ox/analysis');render();window.scrollTo(0,0);return;}
  if(data.oxAnalysisSort){event.stopImmediatePropagation();oxAnalysisSort=data.oxAnalysisSort;render();return;}
  if(data.oxStart){event.stopImmediatePropagation();newOXSession(data.oxStart,Number(data.count)||20);return;}
  if(data.oxResume){event.stopImmediatePropagation();oxView='quiz';screen='ox';oxWriteRoute('ox/quiz');render();window.scrollTo(0,0);return;}
  if(data.oxAnswer!==undefined){event.stopImmediatePropagation();answerOX(data.oxAnswer==='true');return;}
  if(data.oxNext){event.stopImmediatePropagation();nextOXQuestion();return;}
- if(data.oxBack){event.stopImmediatePropagation();oxView=data.oxBack==='analysis'?'analysis':'home';screen='ox';if(oxView==='home')oxWriteRoute('ox');render();window.scrollTo(0,0);return;}
+ if(data.oxBack){event.stopImmediatePropagation();if(oxView==='analysis'){oxLeaveAnalysis();return;}oxView=data.oxBack==='analysis'?'analysis':'home';screen='ox';if(oxView==='home')oxWriteRoute('ox');render();window.scrollTo(0,0);return;}
  if(data.oxHome){event.stopImmediatePropagation();oxView='home';screen='ox';oxWriteRoute('ox');render();window.scrollTo(0,0);return;}
  if(data.oxRetry){event.stopImmediatePropagation();const last=oxMeta().lastSession;newOXSession(last.mode,last.questionIds.length,last.eraId,last.questionIds);return;}
  if(data.oxRetryWrong){event.stopImmediatePropagation();const last=oxMeta().lastSession,ids=last.questionIds.filter(id=>last.results[id]===false);newOXSession('review',ids.length,last.eraId,ids);return;}
@@ -286,6 +309,7 @@ document.addEventListener('click',event=>{
 },true);
 document.addEventListener('change',event=>{
  if(event.target.matches('[data-ox-home-review-era]')){oxHomeReviewEra=event.target.value;render();return;}
+ if(event.target.matches('[data-ox-analysis-review-era]')){oxAnalysisReviewEra=event.target.value;render();return;}
  if(event.target.matches('[data-ox-review-filter]')){oxWrongReviewEra=event.target.value;render();}
 });
 
@@ -300,7 +324,7 @@ globalThis.OX_QUIZ_API=Object.freeze({
  topicStats:eraId=>oxClone(oxTopicStats(eraId||null)),
  choose:(count,options={})=>chooseOXQuestions(count,options).map(question=>question.id),
  startSession:(mode='era',eraId=null,filter={})=>newOXSession(mode,oxInteger(filter?.count)||20,eraId==='all'?null:eraId,Array.isArray(filter?.questionIds)?filter.questionIds:null),
- snapshot:()=>oxClone({view:oxView,homeReviewEra:oxHomeReviewEra,wrongReviewEra:oxWrongReviewEra,meta:oxMeta()})
+ snapshot:()=>oxClone({view:oxView,analysisReviewEra:oxAnalysisReviewEra,homeReviewEra:oxHomeReviewEra,wrongReviewEra:oxWrongReviewEra,meta:oxMeta()})
 });
 globalThis.APP_ROUTE=Object.freeze({
  current:()=>oxReadRoute(),

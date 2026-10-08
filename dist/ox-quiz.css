@@ -4,11 +4,22 @@
 .ox-page button,.ox-page select{font-family:inherit}
 
 /* Home */
-.ox-learning-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:12px 0 24px;border:1px solid var(--ed-line,#e9e7e2);border-radius:15px;background:#fff;overflow:hidden}
-.ox-learning-summary div{display:flex;min-width:0;padding:15px 8px;flex-direction:column;align-items:center;gap:5px;border-right:1px solid #eeece7;text-align:center}
-.ox-learning-summary div:last-child{border-right:0}
-.ox-learning-summary span{color:#77838a;font-size:10px;line-height:1.4}
-.ox-learning-summary strong{color:#253a44;font-size:19px;font-variant-numeric:tabular-nums}
+.ox-home-analysis{margin-top:12px}
+.ox-analysis-heading{align-items:center}
+.ox-analysis-heading>button{min-height:44px;padding:0 4px 0 12px;background:none;color:#7a6044;font-size:11px;font-weight:750;white-space:nowrap}
+.ox-analysis-heading>button span{display:inline-block;margin-left:3px;font-size:18px;line-height:1;vertical-align:-1px}
+.ox-home-analysis-body{display:grid;grid-template-columns:minmax(112px,132px) minmax(0,1fr);align-items:center;gap:16px;padding:17px;border:1px solid #e1e4e2;border-radius:16px;background:#fff}
+.ox-home-analysis-copy{min-width:0}
+.ox-home-analysis-copy dl{display:grid;gap:7px;margin:0}
+.ox-home-analysis-copy dl>div{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.ox-home-analysis-copy dt{color:#5f7077;font-size:10px;line-height:1.35}
+.ox-home-analysis-copy dd{margin:0;color:#293e48;font-size:12px;font-weight:800;font-variant-numeric:tabular-nums;text-align:right}
+.ox-home-analysis-copy>p{margin:9px 0 0;color:#5f7077;font-size:10px;line-height:1.45}
+.ox-home-donut-legend{display:flex;gap:5px 10px;margin:12px 0 0;padding:10px 0 0;border-top:1px solid #ecece8;flex-wrap:wrap;list-style:none}
+.ox-home-donut-legend li{display:flex;align-items:center;gap:4px;color:#596a72;font-size:10px;white-space:nowrap}
+.ox-home-donut-legend li i{width:7px;height:7px;border-radius:50%}
+.ox-home-donut-legend li b{font-size:10px;font-variant-numeric:tabular-nums}
+.ox-home-donut-legend li.leading{color:#293e48;font-weight:800}
 .ox-resume{display:flex;width:100%;margin:0 0 24px;padding:14px 16px;align-items:center;justify-content:space-between;border:1px solid #d9e0e1;border-radius:14px;background:#fff;color:#263944;text-align:left}
 .ox-resume>span{display:flex;min-width:0;flex-direction:column;gap:4px}
 .ox-resume small{color:#75838a}
@@ -105,16 +116,24 @@
 .ox-analysis-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:18px 0 25px;border:1px solid #e1e4e2;border-radius:15px;background:#fff;overflow:hidden}
 .ox-analysis-summary div{display:flex;min-width:0;min-height:78px;padding:13px 8px;flex-direction:column;align-items:center;justify-content:center;gap:6px;border-right:1px solid #eceae6;text-align:center}
 .ox-analysis-summary div:last-child{border:0}
-.ox-analysis-summary span{color:#7b878c;font-size:9px}
+.ox-analysis-summary span{color:#617179;font-size:10px}
 .ox-analysis-summary b{max-width:100%;color:#293e48;font-size:16px;line-height:1.35;overflow-wrap:anywhere}
+.ox-analysis-summary[data-ox-analysis-summary]{grid-template-columns:repeat(4,minmax(0,1fr))}
+.ox-detail-donut{margin:0 0 25px}
+.ox-analysis-empty{display:flex;min-height:96px;padding:20px;flex-direction:column;align-items:center;justify-content:center;gap:6px;border:1px dashed #d9dfdd;border-radius:15px;background:#fafbf9;color:#53666e;text-align:center}
+.ox-analysis-empty b{font-size:13px;line-height:1.5}
+.ox-analysis-empty p{margin:0;color:#7c898e;font-size:10px;line-height:1.55}
 .ox-weakness-overview{display:grid;grid-template-columns:minmax(180px,.8fr) minmax(0,1.45fr);align-items:center;gap:22px;margin:0 0 24px;padding:20px;border:1px solid #e1e4e2;border-radius:17px;background:#fff}
 .ox-donut-figure{display:grid;place-items:center;min-width:0}
 .ox-weakness-donut{position:relative;display:grid;width:clamp(158px,23vw,190px);aspect-ratio:1;place-items:center;border-radius:50%;background:var(--ox-donut-fill,#e7eae8);box-shadow:inset 0 0 0 1px #2639440d}
 .ox-weakness-donut::after{position:absolute;inset:23%;border:1px solid #e6e7e3;border-radius:50%;background:#fff;box-shadow:0 5px 18px #26394412;content:""}
 .ox-donut-center{position:relative;z-index:1;display:flex;align-items:center;flex-direction:column;color:#64747b;line-height:1.15;text-align:center}
-.ox-donut-center span{font-size:9px;font-weight:700}
+.ox-donut-center span{font-size:10px;font-weight:700}
 .ox-donut-center strong{margin:4px 0 1px;color:#293e48;font-size:28px;font-variant-numeric:tabular-nums}
-.ox-donut-center small{font-size:9px}
+.ox-donut-center small{font-size:10px}
+.ox-weakness-donut.compact{width:clamp(112px,17vw,132px)}
+.ox-weakness-donut.compact::after{inset:25%}
+.ox-weakness-donut.compact .ox-donut-center strong{font-size:22px}
 .ox-donut-copy{min-width:0}
 .ox-donut-copy h2{margin:0;color:#293e48;font-size:17px}
 .ox-donut-copy>p{margin:5px 0 13px;color:#758288;font-size:10px;line-height:1.55}
@@ -125,6 +144,7 @@
 .ox-donut-legend li>span{min-width:0;line-height:1.35;overflow-wrap:anywhere}
 .ox-donut-legend li>b{color:#3a4e57;font-size:10px;font-variant-numeric:tabular-nums;white-space:nowrap}
 .ox-donut-legend li>em{color:#7c878c;font-size:10px;font-style:normal;font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.ox-donut-legend li.leading{padding:4px 5px;border-radius:7px;background:#f5f1e9;color:#293e48;font-weight:750}
 .ox-analysis-toolbar{display:flex;margin-bottom:12px;align-items:flex-end;justify-content:space-between;gap:12px}
 .ox-analysis-toolbar h2{margin:0;font-size:18px}
 .ox-analysis-toolbar p{margin:4px 0 0;color:#7a858b;font-size:10px}
@@ -134,11 +154,13 @@
 .ox-weakness-list{display:grid;gap:11px}
 .ox-weakness-card{padding:17px;border:1px solid #e1e4e2;border-radius:15px;background:#fff}
 .ox-weakness-card>header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
-.ox-weakness-card>header small{color:#9c6541;font-size:9px;font-weight:750}
-.ox-weakness-card.insufficient>header small{color:#899297}
+.ox-weakness-card>header small{color:#86593d;font-size:10px;font-weight:750}
+.ox-weakness-card.insufficient>header small{color:#62737a}
 .ox-weakness-card h3{margin:4px 0 0;font-size:15px}
-.ox-weakness-card>header>strong{font-size:21px;font-variant-numeric:tabular-nums}
-.ox-attempt-metrics{display:flex;gap:14px;margin-top:12px;color:#718087;font-size:10px}
+.ox-era-accuracy{display:flex;flex:none;align-items:flex-end;flex-direction:column;gap:2px}
+.ox-era-accuracy small{color:#617179!important;font-size:10px!important}
+.ox-era-accuracy strong{font-size:21px;font-variant-numeric:tabular-nums}
+.ox-attempt-metrics{display:flex;gap:14px;margin-top:12px;color:#718087;font-size:10px;flex-wrap:wrap}
 .ox-attempt-metrics b{color:#354a53;font-variant-numeric:tabular-nums}
 .ox-latest-state{margin:12px 0;padding:10px 11px;border-radius:9px;background:#f5f5f2;color:#657279;font-size:10px;line-height:1.55}
 .ox-latest-state b{color:#344850}
@@ -149,6 +171,13 @@
 .ox-weak-topics li em{flex:none;color:#a05d43;font-style:normal}
 .ox-weak-topics p{margin:0;color:#899398;font-size:10px}
 .ox-weakness-card>button{width:100%;min-height:44px;margin-top:13px;border-radius:9px;font-size:11px}
+.ox-focus-review{display:grid;grid-template-columns:minmax(0,1fr) minmax(150px,190px) auto;align-items:end;gap:14px;margin-top:22px;padding:18px;border:1px solid #e1e4e2;border-radius:16px;background:#fff}
+.ox-focus-review>div>span{display:block;margin-bottom:4px;color:#94652d;font-size:9px;font-weight:800;letter-spacing:.12em}
+.ox-focus-review h2{margin:0;font-size:18px}
+.ox-focus-review p{margin:5px 0 0;color:#77858b;font-size:10px;line-height:1.5}
+.ox-focus-review label{color:#78848a;font-size:10px}
+.ox-focus-review select{display:block;width:100%;min-height:44px;margin-top:5px;padding:0 36px 0 11px;border:1px solid #dfe3e1;border-radius:10px;background:#fbfcfb;color:#344850;font-size:12px}
+.ox-focus-review>button{min-height:44px;padding-inline:16px;border-radius:10px;font-size:11px;white-space:nowrap}
 
 /* Wrong-answer notebook and records */
 .ox-review-heading{display:flex;margin-bottom:12px;align-items:flex-end;justify-content:space-between;gap:12px}
@@ -187,8 +216,14 @@
  .ox-answer b{font-size:44px}
  .ox-records{margin:14px 0}
  .ox-records .official-record-overview{grid-template-columns:repeat(2,1fr)}
+ .ox-analysis-summary[data-ox-analysis-summary]{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .ox-analysis-summary[data-ox-analysis-summary] div:nth-child(2n){border-right:0}
+ .ox-analysis-summary[data-ox-analysis-summary] div:nth-child(-n+2){border-bottom:1px solid #eceae6}
  .ox-weakness-overview{grid-template-columns:1fr;gap:18px}
  .ox-weakness-donut{width:clamp(158px,45vw,190px)}
+ .ox-weakness-donut.compact{width:clamp(112px,31vw,132px)}
+ .ox-focus-review{grid-template-columns:1fr}
+ .ox-focus-review>button{width:100%}
  .editorial-shell.five-nav .nav{grid-template-columns:repeat(5,minmax(0,1fr))}
  .editorial-shell.five-nav .nav button{min-width:0;padding-inline:2px}
 }
@@ -203,10 +238,11 @@
  .ox-sort-buttons button{flex:1}
  .ox-review-heading{align-items:flex-start;flex-direction:column}
  .ox-review-heading label{width:100%}
+ .ox-home-analysis-body{grid-template-columns:minmax(104px,120px) minmax(0,1fr);gap:12px;padding:14px}
+ .ox-home-analysis-copy dl>div{align-items:flex-start;flex-direction:column;gap:1px}
+ .ox-home-analysis-copy dd{text-align:left}
 }
 @media(max-width:380px){
- .ox-learning-summary span{font-size:9px}
- .ox-learning-summary strong{font-size:17px}
  .ox-question-card{padding:19px 16px}
  .ox-question-card>h2{min-height:104px;font-size:18px}
  .ox-answer-grid{gap:9px}
