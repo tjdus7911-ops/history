@@ -22,14 +22,17 @@ const recovery=copy('globalThis.OFFICIAL_EXAM_RECOVERY_REPORT');assert.equal(rec
 
 assert.equal((html.match(/class="nav"/g)||[]).length,1);for(const nav of ['home','exam-library','association','study','records'])assert(html.includes(`data-nav="${nav}"`));
 click({nav:'exam-library'});assert.equal((html.match(/class="official-card"/g)||[]).length,6);assert(!html.includes('LOCK'));assert(html.includes('등록이 완료된 공식 기출은 모두 바로'));
-click({officialTab:'round'});assert.equal((html.match(/class="official-card round"/g)||[]).length,36);
+click({officialTab:'round'});assert.equal((html.match(/data-official-round-level=/g)||[]).length,2);assert.equal((html.match(/class="official-card round"/g)||[]).length,13);assert(html.includes('기본')&&html.includes('시험 미응시'));assert(!html.includes('제70회 · 심화'));
+click({officialRoundLevel:'심화'});assert.equal((html.match(/class="official-card round"/g)||[]).length,23);assert(html.includes('제70회 · 심화'));
 click({officialRound:'70',officialEditionLevel:'심화'});assert(html.includes('제70회 · 심화'));assert(html.includes('<b>50</b>'));
 const storySnapshot=run('JSON.stringify({run:state.run,mainRun:state.mainRun})');
-click({officialStart:'exam'});assert(html.includes('시험 모드'));
+click({officialStart:'exam'});assert(html.includes('시험 모드'));assert(html.includes('남은 시간')&&html.includes('01:20:00'));assert.equal(run('meta().officialExamActiveSession.durationMs'),80*60*1000);
 const round70=entries.filter(entry=>entry.sourceRecord.examRound===70&&entry.sourceRecord.examLevel==='심화').sort((a,b)=>a.sourceRecord.questionNumber-b.sourceRecord.questionNumber);
 for(const entry of round70){const answer=(entry.sourceRecord.acceptedAnswers||[entry.sourceRecord.answer])[0];click({officialPick:String(answer)});click({officialNext:'true'})}
+assert(html.includes('시험을 제출하시겠어요?')&&html.includes('계속 풀기')&&html.includes('제출하기'));assert(!html.includes('OFFICIAL EXAM RESULT'));click({officialSubmitCancel:'true'});assert(html.includes('시험 모드')&&!html.includes('시험을 제출하시겠어요?'));click({officialNext:'true'});click({officialSubmitConfirm:'true'});
 assert(html.includes('OFFICIAL EXAM RESULT'));assert(html.includes('50 / 50'));assert(html.includes('100 / 100'));for(const label of ['총 문제','정답','오답','점수','정답률','시대별 정답률','취약 시대'])assert(html.includes(label));assert.equal(run('JSON.stringify({run:state.run,mainRun:state.mainRun})'),storySnapshot,'exam grading must not alter story progress');
 for(const entry of round70)assert.equal(run(`meta().questionRecords[${JSON.stringify(entry.canonicalQuestionId)}].attempts`),1);
+assert.equal(run('meta().officialExamActiveSession'),undefined);const completedExam=copy('meta().officialExamResults.at(-1)');assert.equal(completedExam.examRound,70);assert.equal(completedExam.examLevel,'심화');assert.equal(completedExam.submissionReason,'MANUAL');assert.equal(completedExam.timed,true);
 
 const legacyEntry=entries.find(entry=>entry.aliases.length>1);if(legacyEntry){const alias=legacyEntry.aliases.find(id=>id!==legacyEntry.canonicalQuestionId);if(alias){run(`recordQuestion(state,${JSON.stringify(alias)},QUESTIONS.find(question=>question.questionId===${JSON.stringify(alias)}).acceptedAnswers[0])`);assert.equal(run(`meta().questionRecords[${JSON.stringify(legacyEntry.canonicalQuestionId)}].attempts`),1);assert.equal(run(`meta().questionRecords[${JSON.stringify(alias)}]`),undefined)}}
 

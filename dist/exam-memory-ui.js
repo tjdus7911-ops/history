@@ -97,14 +97,48 @@ const officialEntriesForRound=(round,level='all')=>OFFICIAL_EXAM_CATALOG.filter(
 globalThis.OFFICIAL_ENTRIES_FOR_ERA=officialEntriesForEra;
 globalThis.OFFICIAL_ENTRIES_FOR_ROUND=officialEntriesForRound;
 const officialRounds=()=>[...new Set(OFFICIAL_EXAM_CATALOG.map(entry=>entry.sourceRecord.examRound))].sort((a,b)=>b-a);
-const officialEditions=()=>{const groups=new Map();for(const entry of OFFICIAL_EXAM_CATALOG){const key=entry.sourceRecord.examRound+':'+entry.sourceRecord.examLevel;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(entry)}return [...groups.values()].sort((a,b)=>b[0].sourceRecord.examRound-a[0].sourceRecord.examRound||(a[0].sourceRecord.examLevel==='심화'?-1:1))};
+const OFFICIAL_ROUND_LEVELS=['기본','심화'].filter(level=>OFFICIAL_EXAM_CATALOG.some(entry=>entry.sourceRecord.examLevel===level));
+const officialEditions=(level='all')=>{const groups=new Map();for(const entry of OFFICIAL_EXAM_CATALOG){if(level!=='all'&&entry.sourceRecord.examLevel!==level)continue;const key=entry.sourceRecord.examRound+':'+entry.sourceRecord.examLevel;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(entry)}return [...groups.values()].sort((a,b)=>b[0].sourceRecord.examRound-a[0].sourceRecord.examRound||(a[0].sourceRecord.examLevel==='심화'?-1:1))};
 const examSourceLabel=entry=>`${entry.sourceRecord.examRound}회 ${entry.sourceRecord.examLevel} · ${entry.sourceRecord.questionNumber}번`;
 
 let officialExamTab='era',officialExamView='home',officialExamEra='ancient',officialExamRound=officialRounds()[0]||79,officialExamLevel='all',officialExamSession=null;
+const OFFICIAL_EXAM_DURATION_MS=80*60*1000;
+let officialTimerInterval=null,officialSubmitting=false;
+globalThis.OFFICIAL_EXAM_DURATION_MS=OFFICIAL_EXAM_DURATION_MS;
+const officialTimedSession=(session=officialExamSession)=>Boolean(session?.timed&&session.mode==='exam');
+const officialRemainingMs=(session=officialExamSession,now=Date.now())=>officialTimedSession(session)?Math.max(0,Number(session.endTimeMs)-now):0;
+const officialFormatDuration=milliseconds=>{const seconds=Math.max(0,Math.ceil(milliseconds/1000)),hours=Math.floor(seconds/3600),minutes=Math.floor(seconds%3600/60),rest=seconds%60;return [hours,minutes,rest].map(value=>String(value).padStart(2,'0')).join(':')};
+const officialTimerTone=milliseconds=>milliseconds<=5*60*1000?'critical':milliseconds<=10*60*1000?'warning':'normal';
+function officialResultEdition(result){
+ if(result?.examRound&&result?.examLevel)return {examRound:Number(result.examRound),examLevel:result.examLevel};
+ const entries=(result?.questionIds||[]).map(id=>officialEntry(id)).filter(Boolean),rounds=new Set(entries.map(entry=>entry.sourceRecord.examRound)),levels=new Set(entries.map(entry=>entry.sourceRecord.examLevel));
+ return entries.length&&rounds.size===1&&levels.size===1?{examRound:entries[0].sourceRecord.examRound,examLevel:entries[0].sourceRecord.examLevel}:null;
+}
+function officialEditionExamState(entries){
+ const source=entries[0]?.sourceRecord;if(!source)return '미응시';
+ const active=meta().officialExamActiveSession;if(active?.examRound===source.examRound&&active?.examLevel===source.examLevel)return '응시 중';
+ return (meta().officialExamResults||[]).some(result=>{const edition=officialResultEdition(result);return result.mode==='exam'&&edition?.examRound===source.examRound&&edition?.examLevel===source.examLevel})?'응시 완료':'미응시';
+}
+function officialTimerMarkup(session){if(!officialTimedSession(session))return '';const remaining=officialRemainingMs(session);return `<div class="official-exam-timer ${officialTimerTone(remaining)}" data-official-timer role="timer"><span>남은 시간</span><b data-official-timer-value>${officialFormatDuration(remaining)}</b></div>`}
+function stopOfficialTimer(){if(officialTimerInterval!==null&&typeof clearInterval==='function')clearInterval(officialTimerInterval);officialTimerInterval=null}
+function serializedOfficialSession(session){return {version:1,mode:session.mode,timed:true,examRound:session.examRound,examLevel:session.examLevel,questionIds:session.entries.map(entry=>entry.canonicalQuestionId),index:session.index,answers:{...session.answers},startedAtMs:session.startedAtMs,endTimeMs:session.endTimeMs,durationMs:session.durationMs}}
+globalThis.OFFICIAL_EXAM_TIMER={durationMs:OFFICIAL_EXAM_DURATION_MS,remainingMs:()=>officialRemainingMs(),tick:()=>officialTimerTick(),snapshot:()=>officialExamSession?{...serializedOfficialSession(officialExamSession),graded:officialExamSession.graded?{...officialExamSession.graded}:null,submissionReason:officialExamSession.submissionReason,running:officialTimerInterval!==null}:null,editionState:(round,level)=>officialEditionExamState(officialEntriesForRound(round,level))};
+function persistOfficialSession(){if(!officialTimedSession()||officialExamSession.graded)return;meta().officialExamActiveSession=serializedOfficialSession(officialExamSession);save()}
+function clearOfficialStoredSession(){delete meta().officialExamActiveSession}
+function officialTimerTick(){
+ if(!officialTimedSession()||officialExamSession.graded){stopOfficialTimer();return}
+ const remaining=officialRemainingMs(),timer=document.querySelector('[data-official-timer]'),value=timer?.querySelector?.('[data-official-timer-value]');
+ if(value)value.textContent=officialFormatDuration(remaining);
+ if(timer?.classList){timer.classList.remove('normal','warning','critical');timer.classList.add(officialTimerTone(remaining))}
+ if(remaining<=0)gradeOfficialSession('TIME_EXPIRED');
+}
+function startOfficialTimer(){stopOfficialTimer();if(!officialTimedSession())return;if(typeof setInterval==='function')officialTimerInterval=setInterval(officialTimerTick,1000);officialTimerTick()}
+function officialSessionTimeAvailable(){if(!officialTimedSession()||officialRemainingMs()>0)return true;gradeOfficialSession('TIME_EXPIRED');return false}
 function officialExamHome(){
  const tab='<div class="official-tabs" role="tablist">'+[['era','시대별'],['round','회차별']].map(([id,label])=>`<button data-official-tab="${id}" aria-selected="${officialExamTab===id}">${label}</button>`).join('')+'</div>';
- const cards=officialExamTab==='era'?OFFICIAL_ERA_TAXONOMY.map(era=>{const entries=officialEntriesForEra(era.id),progress=officialProgress(entries);return `<button class="official-card" data-official-era="${era.id}"><span class="open-pill">OPEN</span><h2>${era.name}</h2><p>${era.years}</p><small>실제 기출 ${entries.length}문항</small><div class="official-card-progress"><i style="width:${progress.percent}%"></i></div><b>${progress.attempted} / ${progress.total} · ${progress.percent}%</b></button>`}).join(''):officialEditions().map(entries=>{const source=entries[0].sourceRecord,progress=officialProgress(entries);return `<button class="official-card round" data-official-round="${source.examRound}" data-official-edition-level="${source.examLevel}"><span class="open-pill">OPEN</span><h2>제${source.examRound}회 · ${source.examLevel}</h2><p>${source.examYear}</p><small>실제 기출 ${entries.length}문항</small><div class="official-card-progress"><i style="width:${progress.percent}%"></i></div><b>진행 ${progress.attempted} / ${progress.total} · ${progress.percent}%</b></button>`}).join('');
- return `<section class="official-exams">${editorialHeader('기출문제','공식 문제지 그대로, 잠금 없이 학습')} ${tab}<div class="official-notice">등록이 완료된 공식 기출은 모두 바로 풀 수 있습니다. 스토리 진행도와 기출 이용 여부는 분리되어 있습니다.</div><div class="official-grid">${cards}</div></section>`;
+ const roundLevels=officialExamTab==='round'?`<div class="official-round-levels" role="tablist" aria-label="회차별 시험 유형">${OFFICIAL_ROUND_LEVELS.map(level=>`<button data-official-round-level="${level}" aria-selected="${officialExamLevel===level}">${level}</button>`).join('')}</div>`:'';
+ const cards=officialExamTab==='era'?OFFICIAL_ERA_TAXONOMY.map(era=>{const entries=officialEntriesForEra(era.id),progress=officialProgress(entries);return `<button class="official-card" data-official-era="${era.id}"><span class="open-pill">OPEN</span><h2>${era.name}</h2><p>${era.years}</p><small>실제 기출 ${entries.length}문항</small><div class="official-card-progress"><i style="width:${progress.percent}%"></i></div><b>${progress.attempted} / ${progress.total} · ${progress.percent}%</b></button>`}).join(''):officialEditions(officialExamLevel).map(entries=>{const source=entries[0].sourceRecord,progress=officialProgress(entries),examState=officialEditionExamState(entries);return `<button class="official-card round" data-official-round="${source.examRound}" data-official-edition-level="${source.examLevel}"><span class="open-pill">OPEN</span><h2>제${source.examRound}회 · ${source.examLevel}</h2><p>${source.examYear}</p><small>실제 기출 ${entries.length}문항</small><div class="official-card-progress"><i style="width:${progress.percent}%"></i></div><b>진행 ${progress.attempted} / ${progress.total} · ${progress.percent}% · 시험 ${examState}</b></button>`}).join('');
+ return `<section class="official-exams">${editorialHeader('기출문제','공식 문제지 그대로, 잠금 없이 학습')} ${tab}${roundLevels}<div class="official-notice">등록이 완료된 공식 기출은 모두 바로 풀 수 있습니다. 스토리 진행도와 기출 이용 여부는 분리되어 있습니다.</div><div class="official-grid">${cards}</div></section>`;
 }
 function officialSelectionEntries(){return officialExamTab==='era'?officialEntriesForEra(officialExamEra,officialExamLevel):officialEntriesForRound(officialExamRound,officialExamLevel)}
 function officialExamListPage(){
@@ -119,13 +153,13 @@ function recordOfficialAttempt(questionId,answer){
  return right;
 }
 function officialFeedbackBlock(question,right,selectedAnswer){
- const memories=memoryForQuestion(question),selected=selectedAnswer===undefined?'선택하지 않음':officialChoiceLabels[selectedAnswer]||String(selectedAnswer+1);
+ const memories=memoryForQuestion(question),selected=Number.isInteger(selectedAnswer)?officialChoiceLabels[selectedAnswer]||String(selectedAnswer+1):'선택하지 않음';
  return `<div class="official-feedback ${right?'correct':'wrong'}" role="status"><h2>${right?'✓ 정답입니다.':'✕ 오답입니다.'}</h2><p class="official-selected-answer">내가 선택한 답 <b>${selected}</b></p><p class="official-answer-line"><b>정답 ${officialAnswerLabel(question)}</b></p><div class="official-explanation"><h3>[해설]</h3><p>${esc(officialExplanation(question))}</p>${memories.length?`<button class="text-btn" data-association-for="${memories[0].id}">암기법 보기 · ${esc(memories[0].title)} ›</button>`:''}</div></div>`;
 }
 function officialPracticePage(){
  const session=officialExamSession,entry=officialSessionQuestion();if(!session||!entry)return officialExamHome();
  const question=officialQuestion(entry.canonicalQuestionId),picked=session.answers[entry.canonicalQuestionId],feedback=session.feedback[entry.canonicalQuestionId],done=session.mode==='learn'&&feedback!==undefined,count=question.choices?.length||(question.examLevel==='기본'?4:5);
- return `<section class="official-practice"><header class="official-subhead"><button data-official-exit="true" aria-label="목록으로">‹</button><div><small>${session.mode==='learn'?'학습 모드':'시험 모드'} · ${examSourceLabel(entry)}</small><h1>${session.index+1} / ${session.entries.length}</h1></div></header><div class="quiz-progress"><div class="progress"><span style="width:${Math.round((session.index+1)/session.entries.length*100)}%"></span></div></div><figure class="official-paper"><img src="${esc(entry.libraryImage)}" alt="${examSourceLabel(entry)} 실제 문제"><figcaption>${esc(entry.sourceRecord.sourcePdf)} · ${entry.sourceRecord.sourcePage}쪽</figcaption></figure><div class="official-choice-grid" role="group" aria-label="정답 선택">${officialChoiceLabels.slice(0,count).map((label,index)=>`<button data-official-pick="${index}" class="${picked===index?'picked ':''}${done&&officialAnswerAccepted(question,index)?'correct':done&&picked===index?'wrong':''}" ${done?'disabled':''}>${label}</button>`).join('')}</div>${done?officialFeedbackBlock(question,feedback,picked):''}<div class="official-practice-actions">${session.mode==='learn'&&!done?`<button class="primary" data-official-submit="true" ${picked===undefined?'disabled':''}>정답 확인</button>`:session.mode==='exam'?`<button class="primary" data-official-next="true" ${picked===undefined?'disabled':''}>${session.index===session.entries.length-1?'채점하기':'다음 문제'}</button>`:`<button class="primary" data-official-next="true">${session.index===session.entries.length-1?'학습 결과 보기':'다음 문제'}</button>`}</div></section>`;
+ return `<section class="official-practice"><header class="official-subhead"><button data-official-exit="true" aria-label="목록으로">‹</button><div><small>${session.mode==='learn'?'학습 모드':'시험 모드'} · ${examSourceLabel(entry)}</small><h1>${session.index+1} / ${session.entries.length}</h1></div></header>${officialTimerMarkup(session)}<div class="quiz-progress"><div class="progress"><span style="width:${Math.round((session.index+1)/session.entries.length*100)}%"></span></div></div><figure class="official-paper"><img src="${esc(entry.libraryImage)}" alt="${examSourceLabel(entry)} 실제 문제"><figcaption>${esc(entry.sourceRecord.sourcePdf)} · ${entry.sourceRecord.sourcePage}쪽</figcaption></figure><div class="official-choice-grid" role="group" aria-label="정답 선택">${officialChoiceLabels.slice(0,count).map((label,index)=>`<button data-official-pick="${index}" class="${picked===index?'picked ':''}${done&&officialAnswerAccepted(question,index)?'correct':done&&picked===index?'wrong':''}" ${done?'disabled':''}>${label}</button>`).join('')}</div>${done?officialFeedbackBlock(question,feedback,picked):''}<div class="official-practice-actions">${session.mode==='learn'&&!done?`<button class="primary" data-official-submit="true" ${picked===undefined?'disabled':''}>정답 확인</button>`:session.mode==='exam'?`<button class="primary" data-official-next="true" ${picked===undefined?'disabled':''}>${session.index===session.entries.length-1?'시험 제출':'다음 문제'}</button>`:`<button class="primary" data-official-next="true">${session.index===session.entries.length-1?'학습 결과 보기':'다음 문제'}</button>`}</div></section>`;
 }
 function officialResultPage(){
  const session=officialExamSession;if(!session)return officialExamHome();const graded=session.graded||{};
@@ -134,7 +168,7 @@ function officialResultPage(){
  const eras=eraStats.map(item=>`<div><b>${item.era.name}</b><span>${item.count} / ${item.rows.length}</span><div class="progress"><span style="width:${item.accuracy}%"></span></div></div>`).join(''),weak=[...eraStats].sort((a,b)=>a.accuracy-b.accuracy||b.rows.length-a.rows.length)[0];
  const wrong=session.entries.filter(entry=>!graded[entry.canonicalQuestionId]);
  const reviewRows=session.entries.map(entry=>{const right=Boolean(graded[entry.canonicalQuestionId]);return `<button class="official-wrong-row ${right?'right':'wrong'}" data-official-review="${entry.canonicalQuestionId}"><img src="${esc(entry.libraryImage)}" alt=""><span><b>${examSourceLabel(entry)}</b><small>${right?'정답':'오답'} · 정답 ${officialAnswerLabel(officialQuestion(entry.canonicalQuestionId))} · 해설 보기</small></span><span>›</span></button>`}).join('');
- return `<section class="official-results"><p class="eyebrow">OFFICIAL EXAM RESULT</p><h1>${correct} / ${total}</h1><div class="official-result-summary">${[['총 문제',total],['정답',correct],['오답',total-correct],['점수',points+' / '+maxPoints],['정답률',(total?Math.round(correct/total*100):0)+'%']].map(([label,value])=>`<div><small>${label}</small><b>${value}</b></div>`).join('')}</div><p class="weak-era">취약 시대 · <b>${weak&&weak.accuracy<100?weak.era.name:'없음'}</b></p><div class="official-result-actions"><button class="primary" data-official-retry="true">틀린 문제 다시 학습</button><button class="secondary" data-official-back="list">목록으로</button></div><section><h2>시대별 정답률</h2><div class="official-era-results">${eras}</div></section><section><h2>문제별 해설 · 오답 ${wrong.length}</h2>${reviewRows}</section></section>`;
+ return `<section class="official-results"><p class="eyebrow">OFFICIAL EXAM RESULT</p>${session.submissionReason==='TIME_EXPIRED'?'<p class="official-timeout-notice" role="status">시간 종료로 자동 제출</p>':''}<h1>${correct} / ${total}</h1><div class="official-result-summary">${[['총 문제',total],['정답',correct],['오답',total-correct],['점수',points+' / '+maxPoints],['정답률',(total?Math.round(correct/total*100):0)+'%']].map(([label,value])=>`<div><small>${label}</small><b>${value}</b></div>`).join('')}</div><p class="weak-era">취약 시대 · <b>${weak&&weak.accuracy<100?weak.era.name:'없음'}</b></p><div class="official-result-actions"><button class="primary" data-official-retry="true">틀린 문제 다시 학습</button><button class="secondary" data-official-back="list">목록으로</button></div><section><h2>시대별 정답률</h2><div class="official-era-results">${eras}</div></section><section><h2>문제별 해설 · 오답 ${wrong.length}</h2>${reviewRows}</section></section>`;
 }
 function officialReviewPage(){
  const session=officialExamSession,entry=session?.entries.find(item=>item.canonicalQuestionId===session.reviewQuestionId);if(!session||!entry)return officialResultPage();
@@ -273,30 +307,50 @@ v2QuestionRow=function(question){
  const memories=memoryForQuestion(question);if(memories.length)html=html.replace('</div></article>',`<button class="text-btn" data-association-for="${memories[0].id}">암기법 보기 · ${esc(memories[0].title)} ›</button></div></article>`);return html;
 };
 
+const modalHTMLBeforeOfficialSubmit=modalHTML;
+modalHTML=function(){
+ if(modal?.type==='official-submit-confirm')return '<div class="modal-overlay"><section class="modal official-submit-modal" role="dialog" aria-modal="true" aria-labelledby="official-submit-title"><h2 id="official-submit-title">시험을 제출하시겠어요?</h2><p>제출 후에는 답안을 수정할 수 없으며, 채점 결과를 확인할 수 있습니다.</p><div><button class="secondary" data-official-submit-cancel="true">계속 풀기</button><button class="primary" data-official-submit-confirm="true">제출하기</button></div></section></div>';
+ return modalHTMLBeforeOfficialSubmit();
+};
 function startOfficialSession(entries,mode){
  let selected=[...entries];if(mode==='exam'&&officialExamTab==='era')selected=selected.slice().sort((a,b)=>b.sourceRecord.examRound-a.sourceRecord.examRound||a.sourceRecord.questionNumber-b.sourceRecord.questionNumber).slice(0,20);
- officialExamSession={mode,entries:selected,index:0,answers:{},feedback:{},graded:null,reviewQuestionId:null};officialExamView='practice';screen='exam-library';render();window.scrollTo(0,0);
+ stopOfficialTimer();clearOfficialStoredSession();officialSubmitting=false;
+ const timed=mode==='exam'&&officialExamTab==='round',startedAtMs=Date.now();
+ officialExamSession={mode,entries:selected,index:0,answers:{},feedback:{},graded:null,reviewQuestionId:null,timed,examRound:timed?officialExamRound:null,examLevel:timed?officialExamLevel:null,startedAtMs,endTimeMs:timed?startedAtMs+OFFICIAL_EXAM_DURATION_MS:null,durationMs:timed?OFFICIAL_EXAM_DURATION_MS:null,submissionReason:null};officialExamView='practice';screen='exam-library';modal=null;
+ if(timed){persistOfficialSession();startOfficialTimer()}render();window.scrollTo(0,0);
 }
-function gradeOfficialSession(){
- const session=officialExamSession,graded={};for(const entry of session.entries){const answer=session.answers[entry.canonicalQuestionId];if(answer===undefined)continue;graded[entry.canonicalQuestionId]=recordOfficialAttempt(entry.canonicalQuestionId,answer)}session.graded=graded;
- meta().officialExamResults||(meta().officialExamResults=[]);meta().officialExamResults.push({mode:session.mode,questionIds:session.entries.map(entry=>entry.canonicalQuestionId),answers:{...session.answers},graded:{...graded},completedAt:new Date().toISOString()});save();officialExamView='result';render();window.scrollTo(0,0);
+function gradeOfficialSession(submissionReason='MANUAL'){
+ const session=officialExamSession;if(!session||session.graded||officialSubmitting)return;officialSubmitting=true;stopOfficialTimer();modal=null;
+ const graded={};for(const entry of session.entries){const id=entry.canonicalQuestionId,answer=session.answers[id];if(answer===undefined&&submissionReason!=='TIME_EXPIRED')continue;const submittedAnswer=Number.isInteger(answer)?answer:null;if(answer===undefined)session.answers[id]=null;graded[id]=recordOfficialAttempt(id,submittedAnswer)}session.graded=graded;session.submissionReason=submissionReason;session.completedAtMs=Date.now();
+ clearOfficialStoredSession();meta().officialExamResults||(meta().officialExamResults=[]);meta().officialExamResults.push({mode:session.mode,timed:Boolean(session.timed),examRound:session.examRound,examLevel:session.examLevel,questionIds:session.entries.map(entry=>entry.canonicalQuestionId),answers:{...session.answers},graded:{...graded},startedAt:session.startedAtMs?new Date(session.startedAtMs).toISOString():null,completedAt:new Date(session.completedAtMs).toISOString(),elapsedMs:session.startedAtMs?Math.max(0,session.completedAtMs-session.startedAtMs):null,submissionReason});save();officialExamView='result';screen='exam-library';officialSubmitting=false;render();window.scrollTo(0,0);
+}
+function abandonOfficialSession(){stopOfficialTimer();if(officialTimedSession())clearOfficialStoredSession();officialExamSession=null;officialSubmitting=false;save()}
+function restoreOfficialSession(){
+ const stored=meta().officialExamActiveSession;if(!stored)return false;
+ const entries=(stored.questionIds||[]).map(id=>officialEntry(id)).filter(Boolean),valid=stored.mode==='exam'&&stored.timed===true&&entries.length===stored.questionIds?.length&&entries.length>0&&Number.isFinite(Number(stored.startedAtMs))&&Number.isFinite(Number(stored.endTimeMs))&&OFFICIAL_ROUND_LEVELS.includes(stored.examLevel)&&entries.every(entry=>entry.sourceRecord.examRound===Number(stored.examRound)&&entry.sourceRecord.examLevel===stored.examLevel);
+ if(!valid){clearOfficialStoredSession();save();return false}
+ officialExamTab='round';officialExamRound=Number(stored.examRound);officialExamLevel=stored.examLevel;officialExamSession={mode:'exam',entries,index:Math.max(0,Math.min(entries.length-1,Number(stored.index)||0)),answers:{...(stored.answers||{})},feedback:{},graded:null,reviewQuestionId:null,timed:true,examRound:Number(stored.examRound),examLevel:stored.examLevel,startedAtMs:Number(stored.startedAtMs),endTimeMs:Number(stored.endTimeMs),durationMs:Number(stored.durationMs)||OFFICIAL_EXAM_DURATION_MS,submissionReason:null};officialExamView='practice';screen='exam-library';
+ if(officialRemainingMs()<=0)gradeOfficialSession('TIME_EXPIRED');else startOfficialTimer();return true;
 }
 document.addEventListener('click',event=>{
  const button=event.target.closest('button');if(!button||button.disabled)return;const data=button.dataset;
- if(data.nav==='exam-library'||data.nav==='association'){event.stopImmediatePropagation();librarySession=null;if(data.nav==='exam-library'){officialExamView='home';officialExamSession=null}else{associationDetailId=null;associationRecall=null;associationExpandedSteps=new Set()}screen=data.nav;modal=null;render();window.scrollTo(0,0);return}
- if(data.officialTab){event.stopImmediatePropagation();officialExamTab=data.officialTab;officialExamView='home';officialExamLevel='all';render();return}
+ if(data.nav==='exam-library'||data.nav==='association'){event.stopImmediatePropagation();librarySession=null;if(data.nav==='exam-library'){if(officialTimedSession()&&!officialExamSession.graded)officialExamView='practice';else{officialExamView='home';officialExamSession=null}}else{associationDetailId=null;associationRecall=null;associationExpandedSteps=new Set()}screen=data.nav;modal=null;render();window.scrollTo(0,0);return}
+ if(data.officialTab){event.stopImmediatePropagation();officialExamTab=data.officialTab;officialExamView='home';officialExamLevel=data.officialTab==='round'?(OFFICIAL_ROUND_LEVELS[0]||'all'):'all';render();return}
+ if(data.officialRoundLevel){event.stopImmediatePropagation();if(!OFFICIAL_ROUND_LEVELS.includes(data.officialRoundLevel))return;officialExamLevel=data.officialRoundLevel;render();return}
  if(data.officialEra){event.stopImmediatePropagation();officialExamTab='era';officialExamEra=data.officialEra;officialExamLevel='all';officialExamView='list';render();window.scrollTo(0,0);return}
  if(data.officialRound){event.stopImmediatePropagation();officialExamTab='round';officialExamRound=Number(data.officialRound);officialExamLevel=data.officialEditionLevel||'all';officialExamView='list';render();window.scrollTo(0,0);return}
  if(data.officialLevel){event.stopImmediatePropagation();officialExamLevel=data.officialLevel;render();return}
  if(data.officialBack){event.stopImmediatePropagation();officialExamSession=null;officialExamView=data.officialBack==='home'?'home':'list';render();window.scrollTo(0,0);return}
  if(data.officialStart){event.stopImmediatePropagation();startOfficialSession(officialSelectionEntries(),data.officialStart);return}
+ if(data.officialSubmitCancel){event.stopImmediatePropagation();modal=null;render();return}
+ if(data.officialSubmitConfirm){event.stopImmediatePropagation();if(!officialSessionTimeAvailable())return;gradeOfficialSession('MANUAL');return}
  if(data.officialReview){event.stopImmediatePropagation();if(!officialExamSession?.graded)return;officialExamSession.reviewQuestionId=data.officialReview;officialExamView='review';render();window.scrollTo(0,0);return}
  if(data.officialReviewBack){event.stopImmediatePropagation();officialExamView='result';render();window.scrollTo(0,0);return}
  if(data.officialSingle){event.stopImmediatePropagation();const entry=officialEntry(data.officialSingle);if(entry)startOfficialSession([entry],'learn');return}
- if(data.officialPick!==undefined){event.stopImmediatePropagation();const entry=officialSessionQuestion();if(!entry)return;officialExamSession.answers[entry.canonicalQuestionId]=Number(data.officialPick);render();return}
+ if(data.officialPick!==undefined){event.stopImmediatePropagation();if(!officialSessionTimeAvailable())return;const entry=officialSessionQuestion();if(!entry)return;officialExamSession.answers[entry.canonicalQuestionId]=Number(data.officialPick);if(officialTimedSession())persistOfficialSession();render();return}
  if(data.officialSubmit){event.stopImmediatePropagation();const entry=officialSessionQuestion(),answer=officialExamSession.answers[entry.canonicalQuestionId];if(answer===undefined)return;officialExamSession.feedback[entry.canonicalQuestionId]=recordOfficialAttempt(entry.canonicalQuestionId,answer);save();render();return}
- if(data.officialNext){event.stopImmediatePropagation();if(officialExamSession.mode==='exam'&&officialExamSession.index===officialExamSession.entries.length-1){gradeOfficialSession();return}if(officialExamSession.mode==='learn'&&officialExamSession.index===officialExamSession.entries.length-1){officialExamSession.graded={...officialExamSession.feedback};officialExamView='result';render();window.scrollTo(0,0);return}officialExamSession.index++;render();window.scrollTo(0,0);return}
- if(data.officialExit){event.stopImmediatePropagation();officialExamSession=null;officialExamView='list';render();window.scrollTo(0,0);return}
+ if(data.officialNext){event.stopImmediatePropagation();if(!officialSessionTimeAvailable())return;if(officialExamSession.mode==='exam'&&officialExamSession.index===officialExamSession.entries.length-1){if(officialTimedSession()){modal={type:'official-submit-confirm'};render()}else gradeOfficialSession('MANUAL');return}if(officialExamSession.mode==='learn'&&officialExamSession.index===officialExamSession.entries.length-1){officialExamSession.graded={...officialExamSession.feedback};officialExamView='result';render();window.scrollTo(0,0);return}officialExamSession.index++;if(officialTimedSession())persistOfficialSession();render();window.scrollTo(0,0);return}
+ if(data.officialExit){event.stopImmediatePropagation();abandonOfficialSession();officialExamView='list';render();window.scrollTo(0,0);return}
  if(data.officialRetry){event.stopImmediatePropagation();const wrong=officialExamSession.entries.filter(entry=>!officialExamSession.graded?.[entry.canonicalQuestionId]);startOfficialSession(wrong.length?wrong:officialExamSession.entries,'learn');return}
  if(data.associationEra){event.stopImmediatePropagation();associationEra=data.associationEra;render();return}
  if(data.associationOpen||data.associationFor){event.stopImmediatePropagation();associationDetailId=data.associationOpen||data.associationFor;associationRecall=null;associationExpandedSteps=new Set();screen='association';render();window.scrollTo(0,0);return}
@@ -307,6 +361,7 @@ document.addEventListener('click',event=>{
  if(data.associationNext){event.stopImmediatePropagation();const memory=ASSOCIATION_MEMORIES.find(item=>item.id===associationRecall?.memoryId);if(!memory||!associationRecall.answered)return;if(associationRecall.index>=associationRecallItems(memory).length-1){setAssociationStatus(memory.id,associationRecall.allCorrect?'MEMORIZED':'LEARNING');const completed=associationRecall.allCorrect;associationRecall=null;save();toast(completed?'암기 완료로 기록했습니다.':'복습 후 다시 도전해 보세요.');render()}else{associationRecall=newAssociationRecall(memory,associationRecall.index+1,associationRecall.allCorrect);render();window.scrollTo(0,0)}return}
  if(data.associationCancel){event.stopImmediatePropagation();associationRecall=null;render();return}
 },true);
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')officialTimerTick()});
 document.addEventListener('change',event=>{if(event.target.matches('[data-association-era]')){associationEra=event.target.value;render()}if(event.target.matches('[data-association-type]')){associationType=event.target.value;render()}if(event.target.matches('[data-association-memory-type]')){associationMemoryType=event.target.value;render()}});
 function applyAssociationSearch(event){
  if(!event.target.matches('[data-association-search]')||event.isComposing)return;
@@ -320,5 +375,6 @@ document.addEventListener('input',applyAssociationSearch);
 document.addEventListener('compositionend',applyAssociationSearch);
 
 globalThis.EXAM_MEMORY_UI_READY=true;
+restoreOfficialSession();
 render();
 }
