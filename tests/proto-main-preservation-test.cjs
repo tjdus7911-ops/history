@@ -1,5 +1,6 @@
 const fs=require('fs'),assert=require('assert'),crypto=require('crypto');
-const {load}=require('./proto-harness.cjs'),h=load(),{run,copy}=h;
+// The visual-only overlay is covered against this same baseline by proto-art-test.
+const {load}=require('./proto-harness.cjs'),h=load({'proto-art.js':''}),{run,copy}=h;
 const digest=v=>crypto.createHash('sha256').update(typeof v==='string'?v.replace(/\r\n/g,'\n'):JSON.stringify(v)).digest('hex');
 const baseline=require('./fixtures/proto-runtime-preservation.json');
 for(const [id,hash] of Object.entries(baseline.sceneHashes))assert.equal(digest(copy(`STORIES[${JSON.stringify(id)}]`)),hash,'protected runtime scene '+id);

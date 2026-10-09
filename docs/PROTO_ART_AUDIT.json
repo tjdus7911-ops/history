@@ -1,0 +1,756 @@
+{
+  "status": "incomplete",
+  "actualPCVerified": false,
+  "actualMobileVerified": false,
+  "frames": 731,
+  "portraits": 1205,
+  "scenes": [
+    {
+      "sceneId": "proto_ch00_s1",
+      "chapterId": "proto-ch00",
+      "title": "눈을 뜨다",
+      "location": "어두운 숲",
+      "background": "assets/ancient/backgrounds/proto-forest-road.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch00_s2",
+      "chapterId": "proto-ch00",
+      "title": "낯선 남자",
+      "location": "숲속 길",
+      "background": "assets/ancient/backgrounds/proto-forest-road.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch00_s3",
+      "chapterId": "proto-ch00",
+      "title": "모닥불 앞에서",
+      "location": "모닥불",
+      "background": "assets/ancient/story/camp.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch01_s1",
+      "chapterId": "proto-ch01",
+      "title": "부서진 수레",
+      "location": "숲속 교역로",
+      "background": "assets/ancient/story/wagon.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch01_s2",
+      "chapterId": "proto-ch01",
+      "title": "남겨진 물건",
+      "location": "수레 내부",
+      "background": "assets/ancient/story/wagon.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch01_s3",
+      "chapterId": "proto-ch01",
+      "title": "동생의 매듭",
+      "location": "수레 옆",
+      "background": "assets/ancient/story/wagon.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch02_s1",
+      "chapterId": "proto-ch02",
+      "title": "부여에 도착하다",
+      "location": "부여 마을",
+      "background": "assets/ancient/backgrounds/proto-buyeo-village.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch02_s2",
+      "chapterId": "proto-ch02",
+      "title": "왕과 유력자",
+      "location": "부여 중심 취락",
+      "background": "assets/ancient/backgrounds/proto-buyeo-village.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch02_s3",
+      "chapterId": "proto-ch02",
+      "title": "사출도의 길",
+      "location": "마을 밖 네 갈래 길",
+      "background": "assets/ancient/backgrounds/proto-buyeo-village.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch03_s1",
+      "chapterId": "proto-ch03",
+      "title": "고구려로 가는 길",
+      "location": "산길",
+      "background": "assets/ancient/backgrounds/proto-goguryeo-fortress.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch03_s2",
+      "chapterId": "proto-ch03",
+      "title": "산성에 도착하다",
+      "location": "고구려 산성",
+      "background": "assets/ancient/backgrounds/proto-goguryeo-fortress.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch03_s3",
+      "chapterId": "proto-ch03",
+      "title": "불가의 이야기꾼",
+      "location": "산성 밖 모닥불",
+      "background": "assets/ancient/story/camp.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch04_s1",
+      "chapterId": "proto-ch04",
+      "title": "바다가 보이는 길",
+      "location": "옥저 해안",
+      "background": "assets/ancient/backgrounds/proto-okjeo-coast.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch04_s2",
+      "chapterId": "proto-ch04",
+      "title": "소하와의 만남",
+      "location": "해안 마을",
+      "background": "assets/ancient/story/village.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch04_s3",
+      "chapterId": "proto-ch04",
+      "title": "바닷가 사람들의 삶",
+      "location": "해안 작업장",
+      "background": "assets/ancient/story/village.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch05_s1",
+      "chapterId": "proto-ch05",
+      "title": "낯선 경계",
+      "location": "동예의 숲길",
+      "background": "assets/ancient/backgrounds/proto-dongye-boundary.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch05_s2",
+      "chapterId": "proto-ch05",
+      "title": "책화",
+      "location": "읍락 경계",
+      "background": "assets/ancient/backgrounds/proto-dongye-boundary.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch05_s3",
+      "chapterId": "proto-ch05",
+      "title": "책임을 지다",
+      "location": "경계 초소",
+      "background": "assets/ancient/backgrounds/proto-dongye-boundary.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch06_s1",
+      "chapterId": "proto-ch06",
+      "title": "남쪽의 교역장",
+      "location": "삼한 교역장",
+      "background": "assets/ancient/backgrounds/proto-samhan-market.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch06_s2",
+      "chapterId": "proto-ch06",
+      "title": "삼한의 여러 소국",
+      "location": "교역 지도",
+      "background": "assets/ancient/story/map.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch06_s3",
+      "chapterId": "proto-ch06",
+      "title": "소국의 지배자",
+      "location": "취락",
+      "background": "assets/ancient/backgrounds/proto-samhan-market.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch07_s1",
+      "chapterId": "proto-ch07",
+      "title": "여행의 끝",
+      "location": "교역로",
+      "background": "assets/ancient/backgrounds/proto-forest-road.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch07_s2",
+      "chapterId": "proto-ch07",
+      "title": "부여와 고구려의 기억",
+      "location": "회상",
+      "background": "assets/ancient/backgrounds/proto-forest-road.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch07_s3",
+      "chapterId": "proto-ch07",
+      "title": "바다와 경계의 기억",
+      "location": "회상",
+      "background": "assets/ancient/backgrounds/proto-forest-road.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch00_s4",
+      "chapterId": "proto-ch00",
+      "title": "동행 제안",
+      "location": "모닥불",
+      "background": "assets/ancient/story/camp.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch00_s5",
+      "chapterId": "proto-ch00",
+      "title": "첫날의 끝",
+      "location": "꺼져가는 모닥불",
+      "background": "assets/ancient/story/camp.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch01_s4",
+      "chapterId": "proto-ch01",
+      "title": "갈라진 길",
+      "location": "세 갈래 길",
+      "background": "assets/ancient/story/crossroads.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch01_s5",
+      "chapterId": "proto-ch01",
+      "title": "북쪽에서 온 상인",
+      "location": "작은 교역 마을",
+      "background": "assets/ancient/backgrounds/proto-forest-road.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch01_s6",
+      "chapterId": "proto-ch01",
+      "title": "여러 나라의 지도",
+      "location": "교역로 지도",
+      "background": "assets/ancient/story/map.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch01_s7",
+      "chapterId": "proto-ch01",
+      "title": "비어 있는 야영지",
+      "location": "옛 야영지",
+      "background": "assets/ancient/story/camp.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch01_s8",
+      "chapterId": "proto-ch01",
+      "title": "철에 관심을 가진 아이",
+      "location": "야영지",
+      "background": "assets/ancient/story/camp.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch01_s9",
+      "chapterId": "proto-ch01",
+      "title": "교역의 의미",
+      "location": "교역로",
+      "background": "assets/ancient/backgrounds/proto-forest-road.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch01_s10",
+      "chapterId": "proto-ch01",
+      "title": "북쪽으로",
+      "location": "북쪽 길",
+      "background": "assets/ancient/backgrounds/proto-forest-road.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch02_s4",
+      "chapterId": "proto-ch02",
+      "title": "영고를 준비하는 사람들",
+      "location": "제사 준비 광장",
+      "background": "assets/ancient/story/ritual.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch02_s5",
+      "chapterId": "proto-ch02",
+      "title": "제천 행사의 의미",
+      "location": "제사 광장",
+      "background": "assets/ancient/story/ritual.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch02_s6",
+      "chapterId": "proto-ch02",
+      "title": "풍습을 묻다",
+      "location": "주민의 집",
+      "background": "assets/ancient/backgrounds/proto-buyeo-village.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch02_s7",
+      "chapterId": "proto-ch02",
+      "title": "익숙한 매듭",
+      "location": "아린의 집 앞",
+      "background": "assets/ancient/backgrounds/proto-buyeo-village.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch02_s8",
+      "chapterId": "proto-ch02",
+      "title": "사라진 손님",
+      "location": "아린의 집",
+      "background": "assets/ancient/backgrounds/proto-buyeo-village.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch02_s9",
+      "chapterId": "proto-ch02",
+      "title": "말하지 말라는 부탁",
+      "location": "아린의 집",
+      "background": "assets/ancient/backgrounds/proto-buyeo-village.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch02_s10",
+      "chapterId": "proto-ch02",
+      "title": "영고의 밤",
+      "location": "제사 광장 야경",
+      "background": "assets/ancient/story/ritual.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch02_s11",
+      "chapterId": "proto-ch02",
+      "title": "부여에서 배운 것",
+      "location": "광장",
+      "background": "assets/ancient/story/ritual.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch02_s12",
+      "chapterId": "proto-ch02",
+      "title": "남겨진 그림",
+      "location": "부여 마을 출구",
+      "background": "assets/ancient/backgrounds/proto-buyeo-village.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch03_s4",
+      "chapterId": "proto-ch03",
+      "title": "알에서 태어난 아이",
+      "location": "주몽 탄생 신화 회상",
+      "background": "assets/ancient/story/jumong-birth.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch03_s5",
+      "chapterId": "proto-ch03",
+      "title": "부여를 떠난 주몽",
+      "location": "주몽의 이동 회상",
+      "background": "assets/ancient/story/jolbon.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch03_s6",
+      "chapterId": "proto-ch03",
+      "title": "졸본의 새로운 나라",
+      "location": "졸본 건국 회상",
+      "background": "assets/ancient/story/jolbon.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch03_s7",
+      "chapterId": "proto-ch03",
+      "title": "성문 앞의 검문",
+      "location": "고구려 성문",
+      "background": "assets/ancient/backgrounds/proto-goguryeo-fortress.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch03_s8",
+      "chapterId": "proto-ch03",
+      "title": "단의 거짓말",
+      "location": "검문소",
+      "background": "assets/ancient/backgrounds/proto-goguryeo-fortress.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch03_s9",
+      "chapterId": "proto-ch03",
+      "title": "성 안의 질서",
+      "location": "고구려 마을",
+      "background": "assets/ancient/backgrounds/proto-goguryeo-fortress.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch03_s10",
+      "chapterId": "proto-ch03",
+      "title": "고구려의 혼인 풍습",
+      "location": "마을 주택",
+      "background": "assets/ancient/backgrounds/proto-goguryeo-fortress.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch03_s11",
+      "chapterId": "proto-ch03",
+      "title": "동맹의 이야기",
+      "location": "마을 광장",
+      "background": "assets/ancient/backgrounds/proto-goguryeo-fortress.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch03_s12",
+      "chapterId": "proto-ch03",
+      "title": "사라진 교역단의 기록",
+      "location": "성 안 교역소",
+      "background": "assets/ancient/backgrounds/proto-goguryeo-fortress.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch03_s13",
+      "chapterId": "proto-ch03",
+      "title": "산성에서의 밤",
+      "location": "산성 야경",
+      "background": "assets/ancient/backgrounds/proto-goguryeo-fortress.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch03_s14",
+      "chapterId": "proto-ch03",
+      "title": "고구려를 떠나며",
+      "location": "산성 출구",
+      "background": "assets/ancient/backgrounds/proto-goguryeo-fortress.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch04_s4",
+      "chapterId": "proto-ch04",
+      "title": "어린 신부의 이야기",
+      "location": "마을",
+      "background": "assets/ancient/story/village.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch04_s5",
+      "chapterId": "proto-ch04",
+      "title": "가족의 무덤",
+      "location": "공동 무덤",
+      "background": "assets/ancient/story/grave.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch04_s6",
+      "chapterId": "proto-ch04",
+      "title": "기다리던 청년",
+      "location": "소하의 집",
+      "background": "assets/ancient/story/village.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch04_s7",
+      "chapterId": "proto-ch04",
+      "title": "라온이 남긴 말",
+      "location": "소하의 집",
+      "background": "assets/ancient/story/village.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch04_s8",
+      "chapterId": "proto-ch04",
+      "title": "형의 기억",
+      "location": "단의 과거 회상",
+      "background": "assets/ancient/story/workshop.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch04_s9",
+      "chapterId": "proto-ch04",
+      "title": "처음 털어놓는 후회",
+      "location": "해안 절벽",
+      "background": "assets/ancient/backgrounds/proto-okjeo-coast.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch04_s10",
+      "chapterId": "proto-ch04",
+      "title": "남쪽을 향해",
+      "location": "해안길",
+      "background": "assets/ancient/backgrounds/proto-okjeo-coast.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch05_s4",
+      "chapterId": "proto-ch05",
+      "title": "마을의 규칙",
+      "location": "동예 마을",
+      "background": "assets/ancient/backgrounds/proto-dongye-boundary.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch05_s5",
+      "chapterId": "proto-ch05",
+      "title": "혼인 풍습",
+      "location": "마을",
+      "background": "assets/ancient/backgrounds/proto-dongye-boundary.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch05_s6",
+      "chapterId": "proto-ch05",
+      "title": "무천의 이야기",
+      "location": "마을 광장",
+      "background": "assets/ancient/backgrounds/proto-dongye-boundary.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch05_s7",
+      "chapterId": "proto-ch05",
+      "title": "동예의 특산물",
+      "location": "교역장",
+      "background": "assets/ancient/backgrounds/proto-dongye-boundary.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch05_s8",
+      "chapterId": "proto-ch05",
+      "title": "떠나는 사람의 마음",
+      "location": "숲길",
+      "background": "assets/ancient/backgrounds/proto-dongye-boundary.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch05_s9",
+      "chapterId": "proto-ch05",
+      "title": "다시 길 위에서",
+      "location": "남쪽 교역로",
+      "background": "assets/ancient/backgrounds/proto-dongye-boundary.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch05_s10",
+      "chapterId": "proto-ch05",
+      "title": "인정",
+      "location": "저녁 숲길",
+      "background": "assets/ancient/backgrounds/proto-dongye-boundary.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch06_s4",
+      "chapterId": "proto-ch06",
+      "title": "철을 만드는 사람들",
+      "location": "제철 작업장",
+      "background": "assets/ancient/story/workshop.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch06_s5",
+      "chapterId": "proto-ch06",
+      "title": "철의 가치",
+      "location": "교역장",
+      "background": "assets/ancient/backgrounds/proto-samhan-market.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch06_s6",
+      "chapterId": "proto-ch06",
+      "title": "천군과 소도",
+      "location": "신성 구역",
+      "background": "assets/ancient/story/sodo.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch06_s7",
+      "chapterId": "proto-ch06",
+      "title": "제사의 의미",
+      "location": "소도 주변",
+      "background": "assets/ancient/story/sodo.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch06_s8",
+      "chapterId": "proto-ch06",
+      "title": "익숙한 매듭",
+      "location": "철 작업장 앞",
+      "background": "assets/ancient/story/workshop.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch06_s9",
+      "chapterId": "proto-ch06",
+      "title": "문 앞에서",
+      "location": "작업장 문",
+      "background": "assets/ancient/story/workshop.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch06_s10",
+      "chapterId": "proto-ch06",
+      "title": "마침내 만나다",
+      "location": "철 작업장",
+      "background": "assets/ancient/story/workshop.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch06_s11",
+      "chapterId": "proto-ch06",
+      "title": "형제의 갈등",
+      "location": "작업장",
+      "background": "assets/ancient/story/workshop.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch06_s12",
+      "chapterId": "proto-ch06",
+      "title": "라온이 떠난 이유",
+      "location": "작업장",
+      "background": "assets/ancient/story/workshop.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch06_s13",
+      "chapterId": "proto-ch06",
+      "title": "각자의 삶",
+      "location": "작업장 앞",
+      "background": "assets/ancient/story/workshop.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch06_s14",
+      "chapterId": "proto-ch06",
+      "title": "철을 가진 사람들",
+      "location": "교역장 석양",
+      "background": "assets/ancient/backgrounds/proto-samhan-market.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch07_s4",
+      "chapterId": "proto-ch07",
+      "title": "마지막 역사 시험",
+      "location": "교역 지도",
+      "background": "assets/ancient/story/map.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch07_s5",
+      "chapterId": "proto-ch07",
+      "title": "돌아갈 길",
+      "location": "갈림길",
+      "background": "assets/ancient/story/crossroads.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch07_s6",
+      "chapterId": "proto-ch07",
+      "title": "마지막 부탁",
+      "location": "갈림길",
+      "background": "assets/ancient/story/crossroads.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch07_s7",
+      "chapterId": "proto-ch07",
+      "title": "마지막 선택",
+      "location": "갈림길",
+      "background": "assets/ancient/story/crossroads.svg",
+      "symbolic": true,
+      "actualBrowserVerified": false
+    },
+    {
+      "sceneId": "proto_ch07_s8",
+      "chapterId": "proto-ch07",
+      "title": "에필로그",
+      "location": "해 질 무렵의 길",
+      "background": "assets/ancient/backgrounds/proto-forest-road.jpg",
+      "symbolic": false,
+      "actualBrowserVerified": false
+    }
+  ]
+}
