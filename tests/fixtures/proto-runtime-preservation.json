@@ -1,0 +1,46 @@
+{
+  "baselineCommit": "7fa6285e6ae0dbbed3cf09e29756dbb96c074865",
+  "sceneHashes": {
+    "proto_ch00_s1": "f6519502c65aced916fc562db033d3fc6886e6a2399d4f64ccc2a662ff532bcd",
+    "proto_ch00_s2": "e500876a2f5be354846ec87ce05a833879dbc2c2a6f3e4e47850307c7b78b962",
+    "proto_ch00_s3": "e2cb77ecd4bf98f91f9c0f13167cdcb4c0aa4878d24d0450662b947553464d68",
+    "proto_ch00_complete": "710fe6dd30614d911644f2d9a3b1ca5fa1c80cc9ce2065c1c4b21c6591c7bb44",
+    "proto_ch06_complete": "e128c02f1f8b976d5cbb5e9b993fef17a7a769cb4a250dc1e16b5237feef64a2",
+    "proto_ch07_s1": "ea46293379d84384519b8cae63ec363f9fd5fbdf19e6f284d9657ffd1f2ba3bb",
+    "proto_ch07_s2": "2183000c28f75296dde6e603bec4a3d1096280c2883d1dce1a070a5fa4a8de7b",
+    "proto_ch07_s3": "6e4b300afc5601df0887b73105c1b11ab9ba16f0f8fb9cb9f03eb466b7dc30a1",
+    "proto_ch07_complete": "d22d103dfe7025f505ce703471b8783087a4dccb8099d9a1751e95bbe7458a09",
+    "proto_ch00_s4": "5d853c86487d13ac0d03135cc0031d29f520b3ad719d3fe13cf7b114f0ac82b5",
+    "proto_ch00_s5": "94b681a5460ac03be571508cb92f347414995a2470efe2dc5820a9ec8ec6f29e",
+    "proto_ch06_s9": "1cab552ee17f2f6bcc239b10e75a72fab848cbfe80fe28eb9a274a46e7cf7c75",
+    "proto_ch06_s10": "5d20accbcf8f8510571c90bffdeca1eca2e3480ee934d3797fdce278a0f1240a",
+    "proto_ch06_s11": "2954d3ea36e36b425feff2cd41713ec3d1061ef2511b5c13295c5cffb4346367",
+    "proto_ch06_s12": "439f9c919530c6b91f61518af33ae9aa4d8eb37b2180fc4cbcb59f05f947358c",
+    "proto_ch06_s13": "818282bcdd9f02212e807d5b39f96b26a49d3c78c142919e02f9c446cf65588b",
+    "proto_ch06_s14": "222a525e852ebe206682dfd912b27accb00b057d3a96cd76b8350249054c3c6b",
+    "proto_ch07_s4": "144f49ae1ef025802f34e674eb1ca6591d87af56a279c5d2061cd0a44d95f825",
+    "proto_ch07_s5": "e6a2dce75ffa9c6b5b4c4d0630348d5845db5300bcb9e526a5c6cd64805046ec",
+    "proto_ch07_s6": "41e3c33b4b8a6ff949d591192eb778f99a67949d48e02abc40b274900e3f26b3",
+    "proto_ch07_s7": "2c67e5a5b39e2b8df9a28e2534e1aa07fb1e5db51fd1871a31def422060e6d86",
+    "proto_ch07_s8": "7c15bbfeb9ee2c629926abf2cf3455ff632bd1807dc966b54472c87f29fcdad0"
+  },
+  "chapterHashes": {
+    "proto-ch00": "1b0f0ac8faba0c01577ba285a2c9e8dfcfdb33af0b34b07f8c19ad46c90d3dcf",
+    "proto-ch07": "6d7449046fdcf85b60e2b0d9fbd80cefbc470ffbdd4c4a2e0d079ba13499837f"
+  },
+  "runtimeHashes": {
+    "CHARACTERS": "ed1ce21e40bbbc47a94a904fb88122bfe447845495363929f5884266cf4a4951",
+    "PORTRAITS": "dfe7e3bc5bd28f733a08fe7e08550fa521175c73961a7c0ece7934f0c8b135ab",
+    "ASSETS": "6b515263c27efa374c0e123707211d229949e84805e25280db4aed9fc7e5db93",
+    "QUESTIONS": "8962ca71006b050fc5cdece9e0741c6a4a8d9cb1811b9a533db47d1a5c0b1da9"
+  },
+  "fileHashes": {
+    "dist/proto-story-ui.js": "443978cc5b28a9505494df6908bce78df79c6372a9f887279fb229ab21d951b5",
+    "dist/ancient-ui.js": "825682142f37979c31a15aa8c81268339df54292effae42097ca00a9b69f911e",
+    "dist/app.js": "7f336b53969e5e3b6dd6d9988f1ee7c91bc2848f981b4118876184c59fe5dfb7",
+    "dist/editorial-ui.js": "894542d64cdf8db53d401e081a10b3adef9adc61b87666289325d4c30111e757",
+    "dist/dialogue.css": "edb00021a09c62a8621f529c3730b833a418a83d338ac27f1cd8afc44296fb6d",
+    "dist/ancient-data.js": "aea9cce6fff5e6d16b58a31a0eab4080426b0833ae81ad1ee7610497a7ea6e39",
+    "dist/season-data.js": "718deebededad56844e200bf2012e6e7816302cff37bf4bc2921ba082b62f07b"
+  }
+}

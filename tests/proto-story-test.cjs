@@ -5,8 +5,10 @@ const h=harness(),{run,copy,click}=h;
 const scenes=copy("Object.values(STORIES).filter(s=>s.eraId==='proto-kingdoms'&&s.storyActive!==false)");
 assert.equal(scenes.length,83);assert.deepEqual(Array.from({length:8},(_,i)=>scenes.filter(s=>s.chapterId===`proto-ch0${i}`).length),[5,10,12,14,10,10,14,8]);
 assert.equal(copy('PROTO_STORY_SCOPE').choices,108);
-const confirmed=require('../docs/PROTO_CONFIRMED_LINES.json').confirmedQuotedLines,rendered=copy('PROTO_STORY_SCRIPT').flatMap(c=>c.scenes.flatMap(s=>[...s.dialogues.map(d=>d.text),...s.choices.flatMap(v=>[v.label,...v.dialogues.map(d=>d.text)])]));for(const text of confirmed)assert(rendered.includes(text),'confirmed source line omitted: '+text);
-for(const {chapter,scene,text} of require('../docs/PROTO_CONFIRMED_LINES.json').byScene){const s=copy(`PROTO_STORY_SCRIPT[${chapter}].scenes[${scene-1}]`);assert([...s.dialogues.map(d=>d.text),...s.choices.flatMap(v=>[v.label,...v.dialogues.map(d=>d.text)])].includes(text),'wrong scene for confirmed source line: '+text);}
+// The current request authorizes main-story edits; the opening and reunion/ending stay exact.
+const protectedScenes=require('./fixtures/proto-opening-ending.json');
+for(const {chapter,scene,data} of protectedScenes)assert.deepEqual(copy(`PROTO_STORY_SCRIPT[${chapter}].scenes[${scene-1}]`),data,'protected scene changed '+chapter+':'+scene);
+assert.deepEqual(copy('PROTO_STORY_SCRIPT'),JSON.parse(fs.readFileSync('dist/proto-story-script.json','utf8')),'script/JSON drift');
 for(const s of scenes){assert(s.dialogues.length,s.sceneId);assert(s.completeChapter||STORIES_NOT_USED(s.nextStoryId));for(const d of s.dialogues){assert(d.dialogue);if(d.speakerType!=='narration'){assert(d.characterId.startsWith('proto_'));assert(fs.existsSync('dist/'+run(`PORTRAITS[${JSON.stringify(d.portrait)}].src`)));}}if(s.choices){assert.equal(s.choices.length,3);assert.equal(new Set(s.choices.map(c=>JSON.stringify(c.resultDialogues))).size,3,s.sceneId);for(const c of s.choices)assert(c.resultDialogues.length>=2);}assert(fs.existsSync('dist/'+run(`ASSETS[${JSON.stringify(s.illustrationId)}].src`)));}
 function STORIES_NOT_USED(id){return run(`Boolean(STORIES[${JSON.stringify(id)}])`)}
 const checkpoints=copy('PROTO_CHECKPOINTS'),qids=copy('PROTO_STUDY_QUESTION_IDS');assert.equal(checkpoints.length,15);assert.equal(qids.length,23);assert.equal(new Set(checkpoints.flatMap(cp=>cp.questionIds)).size,23);assert.equal(checkpoints.reduce((s,c)=>s+c.missingQuestionCount,0),22);assert.equal(checkpoints[5].verified,false);

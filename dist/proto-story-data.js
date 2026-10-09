@@ -93,3 +93,46 @@ globalThis.PROTO_STORY_SCOPE={storyScenes:83,checkpointCount:15,officialQuestion
 Object.assign(globalThis.ANCIENT_STORY_SCOPE,{protoScenes:83});
 // Old official objects remain in the bank for saved scores, but are no longer story anchors.
 globalThis.protoActiveStoryQuestion=q=>!q.chapterId?.startsWith('proto-')||q.protoStoryVersion===PROTO_STORY_VERSION;
+
+// Q01-Q18 describe learning links, not duplicate question objects. Several concepts
+// share an existing review checkpoint so the search/reunion keeps its original rhythm.
+const PROTO_MAIN_SLOT_DEFINITIONS=[
+ ['Q01',2,2,'부여','5부족 연맹·사출도','68-advanced-03'],
+ ['Q02',2,3,'부여','마가·우가·저가·구가·사출도','68-advanced-03'],
+ ['Q03',2,5,'부여','부여·고구려의 1책 12법',null],
+ ['Q04',2,10,'부여','영고·12월 제천 행사','64-advanced-02'],
+ ['Q05',2,6,'부여','순장·영고·사출도 종합','68-advanced-03'],
+ ['Q06',3,9,'고구려','5부·제가회의·제가의 지배','76-advanced-02'],
+ ['Q07',3,10,'고구려','서옥제','76-advanced-02'],
+ ['Q08',3,11,'고구려','동맹·10월·영고 비교','76-advanced-02'],
+ ['Q09',4,4,'옥저','민며느리제·서옥제 비교','66-advanced-02'],
+ ['Q10',4,5,'옥저','가족 공동 무덤','66-advanced-02'],
+ ['Q11',4,3,'옥저','소금·어물 공납·고구려 지배','73-advanced-04'],
+ ['Q12',5,2,'동예','책화','77-advanced-03'],
+ ['Q13',5,5,'동예','족외혼',null],
+ ['Q14',5,7,'동예','무천·단궁·과하마·반어피','77-advanced-03'],
+ ['Q15',6,2,'삼한','마한·진한·변한·소국·신지·읍차','77-basic-02'],
+ ['Q16',6,6,'삼한','소도·천군·제정 분리','78-advanced-03'],
+ ['Q17',6,7,'삼한','공동 노동·두레·5월과 10월 제천 행사',null],
+ ['Q18',6,5,'삼한','변한의 철 생산·낙랑과 왜 교역','70-advanced-02']
+];
+globalThis.PROTO_QUESTION_SLOTS=PROTO_MAIN_SLOT_DEFINITIONS.map(([questionSlotId,c,s,country,learningConcept,sourceId])=>{
+ const q=sourceId?QUESTIONS.find(q=>q.questionId===`proto-study-official-${sourceId}`):null;
+ const reviewCheckpoint=q?PROTO_CHECKPOINTS.find(cp=>cp.questionIds.includes(q.officialQuestionId)):null;
+ const slot={questionSlotId,chapterId:ancientChapterId('proto',c),sceneId:protoSceneId(c,s),country,learningConcept,
+  examRound:q?.examRound??null,examLevel:q?.examLevel??null,examQuestionNumber:q?.questionNumber??null,
+  correctAnswer:q?q.answer+1:null,answerIndex:q?.answer??null,explanation:q?.explanation??null,
+  sourceVerificationStatus:q?'official_original_and_answer_checked':'기출 검증 대기',
+  questionId:q?.questionId??null,officialQuestionId:q?.officialQuestionId??null,
+  reviewSceneId:reviewCheckpoint?.sceneId??null,placement:'existing_checkpoint',
+  sourceVerificationDate:q?'2026-10-09':null,
+  verificationNote:questionSlotId==='Q03'?'71회 심화 2번의 공식 문제지·정답은 확인했으나 기존 잘린 이미지의 완전성 검증 및 연결은 대기':questionSlotId==='Q13'?'족외혼을 직접 다루는 원본 문항 미확보':questionSlotId==='Q17'?'두레를 직접 다루는 원본 문항 미확보':null};
+ // Attach metadata only to editable main-story scenes. No opening/ending/UI mutations.
+ (STORIES[slot.sceneId].questionSlotIds??=[]).push(questionSlotId);
+ return slot;
+});
+globalThis.PROTO_LEARNING_LINKS=PROTO_QUESTION_SLOTS.map(slot=>({
+ conceptId:`proto-main-${slot.questionSlotId.toLowerCase()}`,country:slot.country,
+ learningConcept:slot.learningConcept,sceneIds:[slot.sceneId],questionSlotIds:[slot.questionSlotId],
+ questionIds:slot.questionId?[slot.questionId]:[],reviewSceneId:slot.reviewSceneId
+}));

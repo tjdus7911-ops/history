@@ -1,0 +1,850 @@
+[
+  {
+    "chapter": 0,
+    "scene": 1,
+    "data": {
+      "number": 1,
+      "title": "눈을 뜨다",
+      "type": "STORY",
+      "background": "어두운 숲",
+      "dialogues": [
+        {
+          "speaker": "나레이션",
+          "text": "차가운 바람이 뺨을 스쳤다. 눈을 뜨자 처음 보는 숲이 펼쳐져 있었다."
+        },
+        {
+          "speaker": "주인공",
+          "text": "뭐야… 여기가 어디야?"
+        },
+        {
+          "speaker": "주인공",
+          "text": "핸드폰은? 아, 진짜 미치겠네."
+        }
+      ],
+      "choices": [],
+      "directions": [
+        "주인공은 현대복을 입고 있으며 주변을 살핀다."
+      ]
+    }
+  },
+  {
+    "chapter": 0,
+    "scene": 2,
+    "data": {
+      "number": 2,
+      "title": "낯선 남자",
+      "type": "CHOICE",
+      "background": "숲속 길",
+      "dialogues": [
+        {
+          "speaker": "단(???)",
+          "text": "거기 누구냐!"
+        },
+        {
+          "speaker": "주인공",
+          "text": "으악! 깜짝이야!"
+        },
+        {
+          "speaker": "단",
+          "text": "이상한 옷을 입었군. 도적이냐?"
+        },
+        {
+          "speaker": "주인공",
+          "text": "아니거든요?! 저도 지금 상황 파악이 안 된다고요!"
+        },
+        {
+          "speaker": "단",
+          "text": "말투도 이상하군."
+        },
+        {
+          "speaker": "주인공",
+          "text": "그건 그쪽도 마찬가지거든요?"
+        }
+      ],
+      "choices": [
+        {
+          "label": "도적 아니라고!",
+          "result": "단: \"그렇게 소리치는 걸 보니 더 수상하군.\"",
+          "dialogues": [
+            {
+              "speaker": "단",
+              "text": "그렇게 소리치는 걸 보니 더 수상하군."
+            }
+          ]
+        },
+        {
+          "label": "여기가 어디인지부터 알려줘.",
+          "result": "단: \"북쪽 교역로 근처다.\"",
+          "dialogues": [
+            {
+              "speaker": "단",
+              "text": "북쪽 교역로 근처다."
+            }
+          ]
+        },
+        {
+          "label": "혹시 드라마 촬영 중이야?",
+          "result": "단: \"드라마? 어느 나라 말이냐?\"",
+          "dialogues": [
+            {
+              "speaker": "단",
+              "text": "드라마? 어느 나라 말이냐?"
+            }
+          ]
+        }
+      ],
+      "directions": [
+        "세 분기 모두 단이 주인공을 경계하지만 공격하지 않는 결말로 합류한다."
+      ]
+    }
+  },
+  {
+    "chapter": 0,
+    "scene": 3,
+    "data": {
+      "number": 3,
+      "title": "모닥불 앞에서",
+      "type": "STORY",
+      "background": "모닥불",
+      "dialogues": [
+        {
+          "speaker": "단",
+          "text": "이름이 무엇이냐?"
+        },
+        {
+          "speaker": "주인공",
+          "text": "그냥… 나라고 불러."
+        },
+        {
+          "speaker": "단",
+          "text": "이름이 나라고?"
+        },
+        {
+          "speaker": "주인공",
+          "text": "아, 아니. 그냥 그렇게 부르라고!"
+        },
+        {
+          "speaker": "단",
+          "text": "허허. 참으로 이상한 사람이군."
+        },
+        {
+          "speaker": "주인공",
+          "text": "근데 여기가 어디야?"
+        },
+        {
+          "speaker": "단",
+          "text": "북쪽 교역로 근처다. 나는 사람을 찾고 있지."
+        },
+        {
+          "speaker": "주인공",
+          "text": "누군데?"
+        },
+        {
+          "speaker": "단",
+          "text": "내 동생이다. 반년 전 교역단과 함께 떠난 뒤 돌아오지 않았다."
+        }
+      ],
+      "choices": [],
+      "directions": []
+    }
+  },
+  {
+    "chapter": 0,
+    "scene": 4,
+    "data": {
+      "number": 4,
+      "title": "동행 제안",
+      "type": "CHOICE",
+      "background": "모닥불",
+      "dialogues": [
+        {
+          "speaker": "단",
+          "text": "갈 곳이 없다면 함께 가겠느냐?"
+        }
+      ],
+      "choices": [
+        {
+          "label": "좋아. 대신 먹을 건 챙겨줘.",
+          "result": "단: \"먹을 것부터 찾다니. 마음에 드는군.\"",
+          "dialogues": [
+            {
+              "speaker": "단",
+              "text": "먹을 것부터 찾다니. 마음에 드는군."
+            }
+          ]
+        },
+        {
+          "label": "수상하지만 혼자 있는 것보단 낫겠지.",
+          "result": "단: \"나 역시 자네가 수상하네. 서로 감시하면 되겠군.\"",
+          "dialogues": [
+            {
+              "speaker": "단",
+              "text": "나 역시 자네가 수상하네. 서로 감시하면 되겠군."
+            }
+          ]
+        },
+        {
+          "label": "난 혼자 돌아갈 방법을 찾아볼래.",
+          "result": "단: \"이 숲은 위험하다. 적어도 큰길까지는 함께 가지.\"",
+          "dialogues": [
+            {
+              "speaker": "단",
+              "text": "이 숲은 위험하다. 적어도 큰길까지는 함께 가지."
+            }
+          ]
+        }
+      ],
+      "directions": [
+        "모든 선택지는 동행으로 합류한다."
+      ]
+    }
+  },
+  {
+    "chapter": 0,
+    "scene": 5,
+    "data": {
+      "number": 5,
+      "title": "첫날의 끝",
+      "type": "CINEMATIC",
+      "background": "꺼져가는 모닥불",
+      "dialogues": [
+        {
+          "speaker": "나레이션",
+          "text": "모닥불이 서서히 꺼져갔다."
+        },
+        {
+          "speaker": "주인공(속마음)",
+          "text": "진짜 과거라면… 나 집에 돌아갈 수 있는 거야?"
+        },
+        {
+          "speaker": "단",
+          "text": "잠들지 못하겠느냐?"
+        },
+        {
+          "speaker": "주인공",
+          "text": "응. 생각할 게 많아서."
+        },
+        {
+          "speaker": "단",
+          "text": "그렇다면 내일 생각하거라. 오늘 밤은 살아남았으니."
+        },
+        {
+          "speaker": "나레이션",
+          "text": "그 말이 이상하게 위로가 되었다."
+        }
+      ],
+      "choices": [],
+      "directions": [
+        "CH.00에는 기출문제를 배치하지 않는다."
+      ]
+    }
+  },
+  {
+    "chapter": 6,
+    "scene": 9,
+    "data": {
+      "number": 9,
+      "title": "문 앞에서",
+      "type": "CINEMATIC",
+      "background": "작업장 문",
+      "dialogues": [
+        {
+          "speaker": "주인공",
+          "text": "단, 왜 안 들어가?"
+        },
+        {
+          "speaker": "단",
+          "text": "……겁이 나는군."
+        },
+        {
+          "speaker": "주인공",
+          "text": "동생이 없을까 봐?"
+        },
+        {
+          "speaker": "단",
+          "text": "아니. 만나면 무슨 말을 해야 할지 모르겠어."
+        }
+      ],
+      "choices": [
+        {
+          "label": "그냥 보고 싶었다고 해.",
+          "result": "단: \"그 말부터 해야겠군.\"",
+          "dialogues": [
+            {
+              "speaker": "단",
+              "text": "그 말부터 해야겠군."
+            }
+          ]
+        },
+        {
+          "label": "먼저 사과해.",
+          "result": "단: \"그래. 그래야겠지.\"",
+          "dialogues": [
+            {
+              "speaker": "단",
+              "text": "그래. 그래야겠지."
+            }
+          ]
+        },
+        {
+          "label": "내가 먼저 들어갈까?",
+          "result": "단: \"아니. 내가 가겠다.\"",
+          "dialogues": [
+            {
+              "speaker": "단",
+              "text": "아니. 내가 가겠다."
+            }
+          ]
+        }
+      ],
+      "directions": []
+    }
+  },
+  {
+    "chapter": 6,
+    "scene": 10,
+    "data": {
+      "number": 10,
+      "title": "마침내 만나다",
+      "type": "CINEMATIC",
+      "background": "철 작업장",
+      "dialogues": [
+        {
+          "speaker": "나레이션",
+          "text": "작업장 안쪽에서 한 청년이 걸어 나왔다."
+        },
+        {
+          "speaker": "단",
+          "text": "……라온?"
+        },
+        {
+          "speaker": "라온",
+          "text": "형."
+        },
+        {
+          "speaker": "단",
+          "text": "살아 있었구나."
+        },
+        {
+          "speaker": "라온",
+          "text": "……응."
+        },
+        {
+          "speaker": "단",
+          "text": "왜 돌아오지 않았어?"
+        },
+        {
+          "speaker": "라온",
+          "text": "돌아가면 형은 또 내게 상단 일을 하라고 할 거잖아."
+        }
+      ],
+      "choices": [],
+      "directions": []
+    }
+  },
+  {
+    "chapter": 6,
+    "scene": 11,
+    "data": {
+      "number": 11,
+      "title": "형제의 갈등",
+      "type": "STORY",
+      "background": "작업장",
+      "dialogues": [
+        {
+          "speaker": "단",
+          "text": "나는 네가 걱정돼서……."
+        },
+        {
+          "speaker": "라온",
+          "text": "형은 한 번도 내가 무엇을 하고 싶은지 묻지 않았어."
+        },
+        {
+          "speaker": "단",
+          "text": "……."
+        },
+        {
+          "speaker": "라온",
+          "text": "나는 내 삶을 살고 싶었어."
+        }
+      ],
+      "choices": [
+        {
+          "label": "단에게 라온의 이야기를 들어보라고 한다",
+          "result": "단: \"그래. 이번에는 네가 먼저 말해 보아라.\"",
+          "dialogues": [
+            {
+              "speaker": "단",
+              "text": "그래. 이번에는 네가 먼저 말해 보아라."
+            }
+          ]
+        },
+        {
+          "label": "라온에게 단의 걱정을 설명한다",
+          "result": "라온: \"알아. 하지만 내 선택도 존중받고 싶어.\"",
+          "dialogues": [
+            {
+              "speaker": "라온",
+              "text": "알아. 하지만 내 선택도 존중받고 싶어."
+            }
+          ]
+        },
+        {
+          "label": "자리를 비켜준다",
+          "result": "두 형제가 단둘이 대화를 시작한다.",
+          "dialogues": [
+            {
+              "speaker": "나레이션",
+              "text": "두 형제가 단둘이 대화를 시작한다."
+            }
+          ]
+        }
+      ],
+      "directions": []
+    }
+  },
+  {
+    "chapter": 6,
+    "scene": 12,
+    "data": {
+      "number": 12,
+      "title": "라온이 떠난 이유",
+      "type": "CINEMATIC",
+      "background": "작업장",
+      "dialogues": [
+        {
+          "speaker": "라온",
+          "text": "부여에서는 형을 만나기가 두려웠어."
+        },
+        {
+          "speaker": "단",
+          "text": "그래서 아린에게 말하지 말라고 했구나."
+        },
+        {
+          "speaker": "라온",
+          "text": "그런데 옥저에 갔을 때는 마음이 달라졌어."
+        },
+        {
+          "speaker": "단",
+          "text": "……."
+        },
+        {
+          "speaker": "라온",
+          "text": "형이 내 말을 들어줄지도 모른다고 생각했거든."
+        },
+        {
+          "speaker": "단",
+          "text": "수레 곁에서 찾은 이 편지에는 상단 사람이 너를 데려오겠다는 말이 있었어. 내가 너를 돌아오게 하라고 보냈던 사람이지. 그래서 성문에서 네 이름을 숨겼다."
+        },
+        {
+          "speaker": "라온",
+          "text": "교역단이 흩어진 뒤 다른 상인과 함께 남쪽으로 왔어. 도적에게 잡힌 건 아니야. 형을 만나면 다시 내 뜻을 꺾을까 봐 두려웠어."
+        },
+        {
+          "speaker": "단",
+          "text": "내가 만든 두려움을 남의 위협이라고만 생각했구나. 미안하다. 이제 네 말을 끝까지 듣겠다."
+        }
+      ],
+      "choices": [],
+      "directions": [
+        "이 대사로 CH.02의 '형을 피했다'와 CH.04의 '형을 기다렸다'는 증언을 자연스럽게 연결한다."
+      ]
+    }
+  },
+  {
+    "chapter": 6,
+    "scene": 13,
+    "data": {
+      "number": 13,
+      "title": "각자의 삶",
+      "type": "STORY",
+      "background": "작업장 앞",
+      "dialogues": [
+        {
+          "speaker": "단",
+          "text": "라온, 네가 이곳에서 살고 싶다면 그렇게 해라."
+        },
+        {
+          "speaker": "라온",
+          "text": "……정말?"
+        },
+        {
+          "speaker": "단",
+          "text": "대신 가끔 소식은 전해다오."
+        },
+        {
+          "speaker": "라온",
+          "text": "응. 약속할게."
+        },
+        {
+          "speaker": "주인공",
+          "text": "이제 좀 형제 같네."
+        },
+        {
+          "speaker": "라온",
+          "text": "형은 원래 이렇게 고집이 셌어."
+        },
+        {
+          "speaker": "단",
+          "text": "네가 할 말은 아니지."
+        },
+        {
+          "speaker": "주인공",
+          "text": "ㅋㅋ 둘이 똑같네."
+        }
+      ],
+      "choices": [],
+      "directions": []
+    }
+  },
+  {
+    "chapter": 6,
+    "scene": 14,
+    "data": {
+      "number": 14,
+      "title": "철을 가진 사람들",
+      "type": "LEARNING",
+      "background": "교역장 석양",
+      "dialogues": [
+        {
+          "speaker": "주인공",
+          "text": "철이 사람의 삶을 바꾼다는 말, 이제 알 것 같아."
+        },
+        {
+          "speaker": "단",
+          "text": "라온에게는 새로운 삶을 선택하게 해 준 기술이었겠지."
+        },
+        {
+          "speaker": "비류",
+          "text": "이곳에서 많은 사람이 각자의 일을 배워 가네."
+        }
+      ],
+      "choices": [],
+      "directions": [],
+      "checkpoint": {
+        "number": 13,
+        "topic": "삼한 종합"
+      }
+    }
+  },
+  {
+    "chapter": 7,
+    "scene": 1,
+    "data": {
+      "number": 1,
+      "title": "여행의 끝",
+      "type": "STORY",
+      "background": "교역로",
+      "dialogues": [
+        {
+          "speaker": "단",
+          "text": "우리는 참 많은 곳을 다녔군."
+        },
+        {
+          "speaker": "주인공",
+          "text": "부여도 가고, 고구려도 가고, 바다도 보고."
+        },
+        {
+          "speaker": "단",
+          "text": "그때마다 자네는 이상한 질문을 했지."
+        },
+        {
+          "speaker": "주인공",
+          "text": "야! 배우는 중이었다고."
+        },
+        {
+          "speaker": "단",
+          "text": "하하. 알고 있다."
+        }
+      ],
+      "choices": [],
+      "directions": []
+    }
+  },
+  {
+    "chapter": 7,
+    "scene": 2,
+    "data": {
+      "number": 2,
+      "title": "부여와 고구려의 기억",
+      "type": "LEARNING",
+      "background": "회상",
+      "dialogues": [
+        {
+          "speaker": "주인공",
+          "text": "영고는 부여, 동맹은 고구려."
+        },
+        {
+          "speaker": "단",
+          "text": "그리고 고구려를 세운 왕은?"
+        },
+        {
+          "speaker": "주인공",
+          "text": "주몽! 동명성왕!"
+        },
+        {
+          "speaker": "단",
+          "text": "이제 제법 아는군."
+        },
+        {
+          "speaker": "주인공",
+          "text": "처음부터 잘 알았거든?"
+        },
+        {
+          "speaker": "단",
+          "text": "동예의 무천도 10월이지. 삼한은 씨뿌리기를 마친 5월과 추수를 마친 10월에 제사를 지낸다고 전해진다네. 우리는 겨울 영고를 보았지만, 동맹과 무천은 주민의 설명으로 들었지."
+        }
+      ],
+      "choices": [],
+      "directions": [],
+      "checkpoint": {
+        "number": 14,
+        "topic": "부여·고구려 종합"
+      }
+    }
+  },
+  {
+    "chapter": 7,
+    "scene": 3,
+    "data": {
+      "number": 3,
+      "title": "바다와 경계의 기억",
+      "type": "STORY",
+      "background": "회상",
+      "dialogues": [
+        {
+          "speaker": "주인공",
+          "text": "옥저에서는 가족 공동 무덤도 봤지."
+        },
+        {
+          "speaker": "단",
+          "text": "동예에서는 책화 때문에 곤란한 일을 겪었고."
+        },
+        {
+          "speaker": "주인공",
+          "text": "그때 네가 책임지겠다고 했잖아."
+        },
+        {
+          "speaker": "단",
+          "text": "그 여행에서 배운 것이 많았지."
+        }
+      ],
+      "choices": [],
+      "directions": []
+    }
+  },
+  {
+    "chapter": 7,
+    "scene": 4,
+    "data": {
+      "number": 4,
+      "title": "마지막 역사 시험",
+      "type": "LEARNING",
+      "background": "교역 지도",
+      "dialogues": [
+        {
+          "speaker": "주인공",
+          "text": "이제 원삼국 시대는 꽤 잘 알 것 같아."
+        },
+        {
+          "speaker": "단",
+          "text": "그렇다면 마지막으로 기억을 정리해 보겠나?"
+        },
+        {
+          "speaker": "주인공",
+          "text": "뭐야, 갑자기 시험 보는 기분인데?"
+        },
+        {
+          "speaker": "단",
+          "text": "부여의 사출도·영고, 고구려의 제가 회의·서옥제·동맹, 옥저의 민며느리제·가족 공동 무덤, 동예의 책화·족외혼·무천·특산물, 삼한의 천군·소도·철 교역을 떠올려 보게."
+        }
+      ],
+      "choices": [],
+      "directions": [],
+      "checkpoint": {
+        "number": 15,
+        "topic": "원삼국 전체 종합"
+      }
+    }
+  },
+  {
+    "chapter": 7,
+    "scene": 5,
+    "data": {
+      "number": 5,
+      "title": "돌아갈 길",
+      "type": "STORY",
+      "background": "갈림길",
+      "dialogues": [
+        {
+          "speaker": "단",
+          "text": "이제 어디로 갈 생각이냐?"
+        },
+        {
+          "speaker": "주인공",
+          "text": "글쎄. 나도 내가 어디로 가야 하는지 모르겠어."
+        },
+        {
+          "speaker": "단",
+          "text": "처음 만났을 때와 똑같군."
+        },
+        {
+          "speaker": "주인공",
+          "text": "야, 그건 좀 너무한 거 아니야?"
+        },
+        {
+          "speaker": "단",
+          "text": "하하. 농담이다."
+        }
+      ],
+      "choices": [],
+      "directions": []
+    }
+  },
+  {
+    "chapter": 7,
+    "scene": 6,
+    "data": {
+      "number": 6,
+      "title": "마지막 부탁",
+      "type": "STORY",
+      "background": "갈림길",
+      "dialogues": [
+        {
+          "speaker": "단",
+          "text": "너와 함께한 여행은 참 이상했어."
+        },
+        {
+          "speaker": "주인공",
+          "text": "왜?"
+        },
+        {
+          "speaker": "단",
+          "text": "처음에는 아무것도 모르는 사람인 줄 알았는데, 가끔은 모든 것을 아는 사람처럼 굴더군."
+        },
+        {
+          "speaker": "주인공",
+          "text": "……."
+        },
+        {
+          "speaker": "단",
+          "text": "하지만 가장 중요한 건 자네에게 배웠어."
+        },
+        {
+          "speaker": "주인공",
+          "text": "뭔데?"
+        },
+        {
+          "speaker": "단",
+          "text": "사람은 각자 다른 길을 갈 수 있다는 것."
+        },
+        {
+          "speaker": "주인공",
+          "text": "……그런 걸 내가 알려줬나?"
+        },
+        {
+          "speaker": "단",
+          "text": "그렇지. 자네는 기억하지 못하는 모양이지만."
+        }
+      ],
+      "choices": [],
+      "directions": []
+    }
+  },
+  {
+    "chapter": 7,
+    "scene": 7,
+    "data": {
+      "number": 7,
+      "title": "마지막 선택",
+      "type": "CHOICE",
+      "background": "갈림길",
+      "dialogues": [
+        {
+          "speaker": "나레이션",
+          "text": "갈림길 앞에서 단과 마지막 인사를 나눈다."
+        }
+      ],
+      "choices": [
+        {
+          "label": "언젠가 다시 만나자.",
+          "result": "",
+          "dialogues": [
+            {
+              "speaker": "단",
+              "text": "그래. 다음에는 내가 자네를 찾아가도록 하지."
+            },
+            {
+              "speaker": "주인공",
+              "text": "약속이다?"
+            }
+          ]
+        },
+        {
+          "label": "그동안 고마웠어. 잘 살아.",
+          "result": "",
+          "dialogues": [
+            {
+              "speaker": "단",
+              "text": "고마운 것은 나다. 자네가 없었다면 아직도 동생을 찾아 헤매고 있었을 테니."
+            },
+            {
+              "speaker": "주인공",
+              "text": "……잘 가, 단."
+            }
+          ]
+        },
+        {
+          "label": "나도 내 길을 찾아볼게.",
+          "result": "",
+          "dialogues": [
+            {
+              "speaker": "단",
+              "text": "그래. 누구의 길도 아닌, 자네만의 길을 찾아라."
+            },
+            {
+              "speaker": "주인공",
+              "text": "너도."
+            }
+          ]
+        }
+      ],
+      "directions": [
+        "선택에 따라 마지막 표정과 작별 대사가 달라진다."
+      ]
+    }
+  },
+  {
+    "chapter": 7,
+    "scene": 8,
+    "data": {
+      "number": 8,
+      "title": "에필로그",
+      "type": "CINEMATIC",
+      "background": "해 질 무렵의 길",
+      "dialogues": [
+        {
+          "speaker": "나레이션",
+          "text": "두 사람은 서로 다른 방향으로 걸어갔다."
+        },
+        {
+          "speaker": "나레이션",
+          "text": "뒤돌아보았을 때 단은 아직 그 자리에 서 있었다."
+        },
+        {
+          "speaker": "주인공(속마음)",
+          "text": "이상하다. 처음에는 집에 돌아갈 생각뿐이었는데."
+        },
+        {
+          "speaker": "주인공(속마음)",
+          "text": "이제는 이곳에서 만난 사람들이 자꾸 생각난다."
+        }
+      ],
+      "choices": [],
+      "directions": [
+        "단이 멀어지는 장면으로 마무리한다.",
+        "단의 사망, 노년화, 강제 재회 장면을 추가하지 않는다."
+      ]
+    }
+  }
+]
