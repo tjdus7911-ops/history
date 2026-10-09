@@ -1,0 +1,3309 @@
+{
+  "schemaVersion": 1,
+  "status": "draft_not_connected",
+  "sourceInstructionSha256": "47399c439fa2a737de73216e4e9935623a20d25324e1f3f61c951a032600ff7f",
+  "minimumDistinctVerifiedQuestions": 54,
+  "chapters": [
+    {
+      "number": 1,
+      "title": "부여 — 첫 번째 흔적",
+      "scenes": [
+        {
+          "sceneId": "proto_v3_ch01_s01",
+          "number": 1,
+          "title": "사라진 아이의 목격자",
+          "background": "부여 시장",
+          "dialogues": [
+            {
+              "speaker": "주인공",
+              "text": "여기가 부여야? 생각보다 사람들이 엄청 많네."
+            },
+            {
+              "speaker": "단",
+              "text": "상인들이 모이는 곳이니까 동생을 본 사람이 있을지도 몰라."
+            },
+            {
+              "speaker": "주인공",
+              "text": "동생이랑 헤어진 지 얼마나 됐어?"
+            },
+            {
+              "speaker": "단",
+              "text": "며칠 됐어. 사람들이 몰려드는 바람에 손을 놓쳤거든."
+            },
+            {
+              "speaker": "주인공",
+              "text": "그 뒤로 계속 찾고 있었구나."
+            },
+            {
+              "speaker": "단",
+              "text": "응. 내가 조금만 더 조심했더라면..."
+            },
+            {
+              "speaker": "주인공",
+              "text": "그건 나중에 생각하고, 지금은 찾는 데 집중하자."
+            },
+            {
+              "speaker": "상인",
+              "text": "어린아이를 찾는다고 했소?"
+            },
+            {
+              "speaker": "단",
+              "text": "혹시 보셨습니까?"
+            },
+            {
+              "speaker": "상인",
+              "text": "며칠 전 낯선 아이가 이곳에 왔소."
+            },
+            {
+              "speaker": "단",
+              "text": "어디로 갔습니까?"
+            },
+            {
+              "speaker": "상인",
+              "text": "사출도를 다스리는 가들이 모이는 회의장 쪽으로 갔지."
+            },
+            {
+              "speaker": "주인공",
+              "text": "사출도? 그게 뭐예요?"
+            },
+            {
+              "speaker": "상인",
+              "text": "왕이 다스리는 중심 지역 외에 여러 가들이 관할하는 지역이오."
+            }
+          ],
+          "choices": [
+            {
+              "key": "A",
+              "label": "그 아이가 혼자 있었나요?",
+              "dialogues": [
+                {
+                  "speaker": "상인",
+                  "text": "아니오. 어떤 상인과 이야기를 나누고 있었소."
+                },
+                {
+                  "speaker": "단",
+                  "text": "그럼 누군가 도움을 주고 있었을지도 몰라."
+                }
+              ]
+            },
+            {
+              "key": "B",
+              "label": "그 아이가 다친 곳은 없었나요?",
+              "dialogues": [
+                {
+                  "speaker": "상인",
+                  "text": "멀쩡해 보였소."
+                },
+                {
+                  "speaker": "단",
+                  "text": "정말 다행이다..."
+                }
+              ]
+            }
+          ],
+          "commonDialogues": [
+            {
+              "speaker": "주인공",
+              "text": "회의장으로 가보자."
+            },
+            {
+              "speaker": "단",
+              "text": "그래. 이번엔 놓치지 않을 거야."
+            }
+          ],
+          "questionSlots": [
+            {
+              "questionSlotId": "Q01-A",
+              "topic": "부여의 사출도와 5부족 연맹",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch01",
+              "sceneId": "proto_v3_ch01_s01",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q01-B",
+              "topic": "마가·우가·저가·구가의 지배",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch01",
+              "sceneId": "proto_v3_ch01_s01",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q01-C",
+              "topic": "부여와 다른 초기 국가의 정치 구조 비교",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch01",
+              "sceneId": "proto_v3_ch01_s01",
+              "placement": "after_scene_dialogue"
+            }
+          ],
+          "actualBrowserVerified": false
+        },
+        {
+          "sceneId": "proto_v3_ch01_s02",
+          "number": 2,
+          "title": "네 방향의 지배자",
+          "background": "부족장 회의장",
+          "dialogues": [
+            {
+              "speaker": "관리",
+              "text": "마가와 우가, 저가와 구가의 대표들이 도착하셨습니다!"
+            },
+            {
+              "speaker": "주인공",
+              "text": "마가? 우가? 이름이 특이하네."
+            },
+            {
+              "speaker": "단",
+              "text": "부여의 지배층이 사용하는 칭호야."
+            },
+            {
+              "speaker": "주인공",
+              "text": "왜 가축 이름을 사용한 거야?"
+            },
+            {
+              "speaker": "단",
+              "text": "그렇게 불렸다는 사실은 알려져 있지만, 그 이유를 단정하기는 어려워."
+            },
+            {
+              "speaker": "관리",
+              "text": "회의장에 무슨 일로 왔소?"
+            },
+            {
+              "speaker": "단",
+              "text": "제 동생을 찾고 있습니다."
+            },
+            {
+              "speaker": "관리",
+              "text": "어린아이 한 명이 이곳에 왔었지."
+            },
+            {
+              "speaker": "단",
+              "text": "정말입니까?"
+            },
+            {
+              "speaker": "관리",
+              "text": "재판장에서 억울한 사람을 도와주겠다고 하더군."
+            },
+            {
+              "speaker": "주인공",
+              "text": "동생이 꽤 용감하네."
+            },
+            {
+              "speaker": "단",
+              "text": "어릴 때부터 남이 곤란한 걸 못 참았어."
+            }
+          ],
+          "choices": [
+            {
+              "key": "A",
+              "label": "재판장은 어디에 있나요?",
+              "dialogues": [
+                {
+                  "speaker": "관리",
+                  "text": "시장 안쪽으로 가시오."
+                }
+              ]
+            },
+            {
+              "key": "B",
+              "label": "그 아이가 무슨 말을 했나요?",
+              "dialogues": [
+                {
+                  "speaker": "관리",
+                  "text": "누군가 억울한 벌을 받고 있다고 했소."
+                }
+              ]
+            }
+          ],
+          "commonDialogues": [
+            {
+              "speaker": "단",
+              "text": "동생이라면 그랬을 거야."
+            },
+            {
+              "speaker": "주인공",
+              "text": "가보자."
+            }
+          ],
+          "questionSlots": [
+            {
+              "questionSlotId": "Q02-A",
+              "topic": "부여의 사출도",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch01",
+              "sceneId": "proto_v3_ch01_s02",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q02-B",
+              "topic": "부여의 지배층",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch01",
+              "sceneId": "proto_v3_ch01_s02",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q02-C",
+              "topic": "연맹 왕국의 특징",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch01",
+              "sceneId": "proto_v3_ch01_s02",
+              "placement": "after_scene_dialogue"
+            }
+          ],
+          "actualBrowserVerified": false
+        },
+        {
+          "sceneId": "proto_v3_ch01_s03",
+          "number": 3,
+          "title": "열두 배의 대가",
+          "background": "부여 재판장",
+          "dialogues": [
+            {
+              "speaker": "상인",
+              "text": "내 물건을 훔친 자를 잡았소!"
+            },
+            {
+              "speaker": "관리",
+              "text": "도둑질한 물건의 열두 배를 배상하게 하라!"
+            },
+            {
+              "speaker": "주인공",
+              "text": "열두 배나?"
+            },
+            {
+              "speaker": "단",
+              "text": "부여의 1책 12법이야."
+            },
+            {
+              "speaker": "주인공",
+              "text": "굉장히 엄격하네."
+            },
+            {
+              "speaker": "단",
+              "text": "고구려에도 비슷한 법이 있었어."
+            },
+            {
+              "speaker": "관리",
+              "text": "그런데 그 어린아이가 억울한 사람이 없는지 확인해 달라고 했소."
+            },
+            {
+              "speaker": "단",
+              "text": "동생이 분명해."
+            },
+            {
+              "speaker": "주인공",
+              "text": "그 뒤에는 어디로 갔대?"
+            },
+            {
+              "speaker": "관리",
+              "text": "영고 행사 준비를 돕겠다고 했소."
+            }
+          ],
+          "choices": [
+            {
+              "key": "A",
+              "label": "그 아이가 어떤 물건을 가지고 있었나요?",
+              "dialogues": [
+                {
+                  "speaker": "관리",
+                  "text": "작은 장식 하나를 쥐고 있었소."
+                },
+                {
+                  "speaker": "단",
+                  "text": "내가 만들어 준 장식일지도 몰라."
+                }
+              ]
+            },
+            {
+              "key": "B",
+              "label": "그 아이가 무서워하지는 않았나요?",
+              "dialogues": [
+                {
+                  "speaker": "관리",
+                  "text": "당차게 자기 생각을 말하더군."
+                },
+                {
+                  "speaker": "단",
+                  "text": "정말 동생답네."
+                }
+              ]
+            }
+          ],
+          "commonDialogues": [
+            {
+              "speaker": "주인공",
+              "text": "영고 행사에서 다시 찾아보자."
+            }
+          ],
+          "questionSlots": [
+            {
+              "questionSlotId": "Q03-A",
+              "topic": "1책 12법",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch01",
+              "sceneId": "proto_v3_ch01_s03",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q03-B",
+              "topic": "부여의 우제점법",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch01",
+              "sceneId": "proto_v3_ch01_s03",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q03-C",
+              "topic": "부여의 형사취수제 및 사회 풍습",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch01",
+              "sceneId": "proto_v3_ch01_s03",
+              "placement": "after_scene_dialogue"
+            }
+          ],
+          "actualBrowserVerified": false
+        },
+        {
+          "sceneId": "proto_v3_ch01_s04",
+          "number": 4,
+          "title": "영고의 밤",
+          "background": "12월 영고 축제",
+          "dialogues": [
+            {
+              "speaker": "주인공",
+              "text": "사람들이 모두 모여 노래하고 춤을 추네."
+            },
+            {
+              "speaker": "단",
+              "text": "부여의 영고야. 12월에 열리는 제천 행사이지."
+            },
+            {
+              "speaker": "주인공",
+              "text": "이렇게 사람이 많으면 동생을 찾기 어렵겠는데."
+            },
+            {
+              "speaker": "단",
+              "text": "그래도 찾아야 해."
+            },
+            {
+              "speaker": "축제 참가자",
+              "text": "혹시 어린아이를 찾는 거요?"
+            },
+            {
+              "speaker": "단",
+              "text": "네!"
+            },
+            {
+              "speaker": "축제 참가자",
+              "text": "이 장식을 아시오?"
+            },
+            {
+              "speaker": "단",
+              "text": "그건..."
+            },
+            {
+              "speaker": "주인공",
+              "text": "단?"
+            },
+            {
+              "speaker": "단",
+              "text": "내가 동생에게 만들어 준 거야."
+            },
+            {
+              "speaker": "주인공",
+              "text": "그럼 여기까지 왔던 게 확실하네!"
+            },
+            {
+              "speaker": "단",
+              "text": "그런데 왜 이걸 놓고 갔을까..."
+            }
+          ],
+          "choices": [
+            {
+              "key": "A",
+              "label": "일부러 흔적을 남긴 걸 수도 있어.",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "그렇다면 동생도 내가 찾고 있다는 걸 알았을까?"
+                }
+              ]
+            },
+            {
+              "key": "B",
+              "label": "떨어뜨렸더라도 누군가 주워 보관해 준 거잖아.",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "응. 정말 고마운 일이야."
+                }
+              ]
+            }
+          ],
+          "commonDialogues": [
+            {
+              "speaker": "축제 참가자",
+              "text": "그 아이는 고구려로 가는 상인들을 따라갔소."
+            },
+            {
+              "speaker": "단",
+              "text": "고구려..."
+            }
+          ],
+          "questionSlots": [
+            {
+              "questionSlotId": "Q04-A",
+              "topic": "영고",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch01",
+              "sceneId": "proto_v3_ch01_s04",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q04-B",
+              "topic": "영고·동맹·무천 비교",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch01",
+              "sceneId": "proto_v3_ch01_s04",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q04-C",
+              "topic": "부여의 정치·사회 종합",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch01",
+              "sceneId": "proto_v3_ch01_s04",
+              "placement": "after_scene_dialogue"
+            }
+          ],
+          "actualBrowserVerified": false
+        },
+        {
+          "sceneId": "proto_v3_ch01_s05",
+          "number": 5,
+          "title": "돌아오지 못한 사람들",
+          "background": "부여 장례 공간",
+          "dialogues": [
+            {
+              "speaker": "주인공",
+              "text": "저곳에서는 무슨 일이 벌어지고 있는 거야?"
+            },
+            {
+              "speaker": "단",
+              "text": "장례를 준비하고 있어."
+            },
+            {
+              "speaker": "주인공",
+              "text": "그런데 왜 사람들이 저렇게 두려워하지?"
+            },
+            {
+              "speaker": "단",
+              "text": "부여에는 지배자가 죽었을 때 사람을 함께 묻는 순장 풍습이 있었어."
+            },
+            {
+              "speaker": "주인공",
+              "text": "살아 있는 사람을 함께 묻는다고?"
+            },
+            {
+              "speaker": "단",
+              "text": "응. 지금 생각하면 정말 잔혹한 일이야."
+            },
+            {
+              "speaker": "주인공",
+              "text": "누군가를 잃는다는 건 정말 무서운 일이겠네."
+            },
+            {
+              "speaker": "단",
+              "text": "..."
+            },
+            {
+              "speaker": "주인공",
+              "text": "미안. 괜한 말을 했어."
+            },
+            {
+              "speaker": "단",
+              "text": "아니야. 나도 계속 그 생각을 하고 있었어."
+            }
+          ],
+          "choices": [
+            {
+              "key": "A",
+              "label": "동생이 살아 있다는 흔적을 찾았잖아.",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "그래. 아직 희망은 있어."
+                }
+              ]
+            },
+            {
+              "key": "B",
+              "label": "이제 고구려로 가서 직접 확인하자.",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "응. 멈출 수 없어."
+                }
+              ]
+            }
+          ],
+          "commonDialogues": [
+            {
+              "speaker": "단",
+              "text": "동생아, 조금만 기다려."
+            }
+          ],
+          "questionSlots": [
+            {
+              "questionSlotId": "Q05-A",
+              "topic": "순장",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch01",
+              "sceneId": "proto_v3_ch01_s05",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q05-B",
+              "topic": "형사취수제",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch01",
+              "sceneId": "proto_v3_ch01_s05",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q05-C",
+              "topic": "부여의 사회 풍습 종합",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch01",
+              "sceneId": "proto_v3_ch01_s05",
+              "placement": "after_scene_dialogue"
+            }
+          ],
+          "actualBrowserVerified": false
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "고구려 — 엇갈린 발걸음",
+      "scenes": [
+        {
+          "sceneId": "proto_v3_ch02_s01",
+          "number": 1,
+          "title": "제가들의 회의",
+          "background": "고구려 회의장",
+          "dialogues": [
+            {
+              "speaker": "주인공",
+              "text": "드디어 고구려야."
+            },
+            {
+              "speaker": "단",
+              "text": "여기서도 동생을 찾지 못하면..."
+            },
+            {
+              "speaker": "주인공",
+              "text": "그런 생각은 나중에 해."
+            },
+            {
+              "speaker": "관리",
+              "text": "각 부의 제가들이 회의에 참석하셨습니다."
+            },
+            {
+              "speaker": "주인공",
+              "text": "제가들이 뭐야?"
+            },
+            {
+              "speaker": "단",
+              "text": "고구려의 여러 지배층을 말해. 초기에는 5부를 중심으로 나라가 운영되었어."
+            },
+            {
+              "speaker": "주인공",
+              "text": "저 사람들이 모여 중요한 일을 결정하는 거야?"
+            },
+            {
+              "speaker": "단",
+              "text": "응. 제가회의가 있었지."
+            },
+            {
+              "speaker": "관리",
+              "text": "어린아이를 찾는다고 했소?"
+            },
+            {
+              "speaker": "단",
+              "text": "네!"
+            },
+            {
+              "speaker": "관리",
+              "text": "혼인 잔치가 열리는 마을에서 봤다는 사람이 있소."
+            }
+          ],
+          "choices": [
+            {
+              "key": "A",
+              "label": "그 마을까지 얼마나 걸리나요?",
+              "dialogues": [
+                {
+                  "speaker": "관리",
+                  "text": "서둘러 가면 오늘 안에 도착할 수 있소."
+                }
+              ]
+            },
+            {
+              "key": "B",
+              "label": "아이가 혼자 있었나요?",
+              "dialogues": [
+                {
+                  "speaker": "관리",
+                  "text": "상인들과 함께였다고 들었소."
+                }
+              ]
+            }
+          ],
+          "commonDialogues": [
+            {
+              "speaker": "단",
+              "text": "어서 가자."
+            }
+          ],
+          "questionSlots": [
+            {
+              "questionSlotId": "Q06-A",
+              "topic": "고구려의 5부",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch02",
+              "sceneId": "proto_v3_ch02_s01",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q06-B",
+              "topic": "제가회의",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch02",
+              "sceneId": "proto_v3_ch02_s01",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q06-C",
+              "topic": "고구려의 초기 정치 체제",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch02",
+              "sceneId": "proto_v3_ch02_s01",
+              "placement": "after_scene_dialogue"
+            }
+          ],
+          "actualBrowserVerified": false
+        },
+        {
+          "sceneId": "proto_v3_ch02_s02",
+          "number": 2,
+          "title": "신랑의 작은 집",
+          "background": "고구려 서옥과 혼인 잔치",
+          "dialogues": [
+            {
+              "speaker": "주인공",
+              "text": "신랑이 신부 집에 살고 있다고?"
+            },
+            {
+              "speaker": "단",
+              "text": "고구려의 서옥제야."
+            },
+            {
+              "speaker": "주인공",
+              "text": "혼인하고 바로 자기 집으로 가지 않는 거네?"
+            },
+            {
+              "speaker": "단",
+              "text": "자녀가 성장할 때까지 여자 집에 머무는 풍습이 있었지."
+            },
+            {
+              "speaker": "주민",
+              "text": "어린아이를 찾는다고?"
+            },
+            {
+              "speaker": "단",
+              "text": "혹시 보셨습니까?"
+            },
+            {
+              "speaker": "주민",
+              "text": "그 아이가 여기서 음식을 먹고 쉬었다오."
+            },
+            {
+              "speaker": "단",
+              "text": "지금은 어디에 있습니까?"
+            },
+            {
+              "speaker": "주민",
+              "text": "상인들과 함께 떠났소."
+            },
+            {
+              "speaker": "단",
+              "text": "또 늦었어..."
+            }
+          ],
+          "choices": [
+            {
+              "key": "A",
+              "label": "그래도 동생이 무사하다는 걸 확인했잖아.",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "그래. 그게 가장 중요하지."
+                }
+              ]
+            },
+            {
+              "key": "B",
+              "label": "이번에는 상인들이 가는 길부터 확인하자.",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "좋아. 더 이상 엇갈리지 말자."
+                }
+              ]
+            }
+          ],
+          "commonDialogues": [
+            {
+              "speaker": "주민",
+              "text": "그 상인들은 동맹 행사에 모일 거요."
+            }
+          ],
+          "questionSlots": [
+            {
+              "questionSlotId": "Q07-A",
+              "topic": "서옥제",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch02",
+              "sceneId": "proto_v3_ch02_s02",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q07-B",
+              "topic": "서옥제와 민며느리제 비교",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch02",
+              "sceneId": "proto_v3_ch02_s02",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q07-C",
+              "topic": "고구려의 사회 풍습",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch02",
+              "sceneId": "proto_v3_ch02_s02",
+              "placement": "after_scene_dialogue"
+            }
+          ],
+          "actualBrowserVerified": false
+        },
+        {
+          "sceneId": "proto_v3_ch02_s03",
+          "number": 3,
+          "title": "동맹의 밤",
+          "background": "10월 동맹 행사",
+          "dialogues": [
+            {
+              "speaker": "주인공",
+              "text": "또 축제네."
+            },
+            {
+              "speaker": "단",
+              "text": "고구려의 동맹이야. 10월에 열리지."
+            },
+            {
+              "speaker": "상인",
+              "text": "어린아이를 찾고 있소?"
+            },
+            {
+              "speaker": "단",
+              "text": "혹시 보셨습니까?"
+            },
+            {
+              "speaker": "상인",
+              "text": "그 아이가 형을 찾고 있다고 하더군."
+            },
+            {
+              "speaker": "단",
+              "text": "뭐라고요?"
+            },
+            {
+              "speaker": "상인",
+              "text": "옥저로 가는 일행을 따라갔소."
+            },
+            {
+              "speaker": "주인공",
+              "text": "단, 동생도 널 찾고 있었어."
+            },
+            {
+              "speaker": "단",
+              "text": "그 아이도... 나를 찾고 있었구나."
+            }
+          ],
+          "choices": [
+            {
+              "key": "A",
+              "label": "이제 서로 같은 방향으로 가면 만날 수 있을 거야.",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "응. 그렇게 믿고 싶어."
+                }
+              ]
+            },
+            {
+              "key": "B",
+              "label": "동생이 널 얼마나 보고 싶어 하는지 알겠지?",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "나도 너무 보고 싶어."
+                }
+              ]
+            }
+          ],
+          "commonDialogues": [
+            {
+              "speaker": "단",
+              "text": "옥저로 가자."
+            }
+          ],
+          "questionSlots": [
+            {
+              "questionSlotId": "Q08-A",
+              "topic": "동맹",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch02",
+              "sceneId": "proto_v3_ch02_s03",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q08-B",
+              "topic": "제천 행사 비교",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch02",
+              "sceneId": "proto_v3_ch02_s03",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q08-C",
+              "topic": "고구려의 법률과 사회 풍습",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch02",
+              "sceneId": "proto_v3_ch02_s03",
+              "placement": "after_scene_dialogue"
+            }
+          ],
+          "actualBrowserVerified": false
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "옥저 — 살아 있다는 증거",
+      "scenes": [
+        {
+          "sceneId": "proto_v3_ch03_s01",
+          "number": 1,
+          "title": "어린 신부의 집",
+          "background": "옥저 민가",
+          "dialogues": [
+            {
+              "speaker": "주인공",
+              "text": "저 어린아이는 왜 다른 가족이랑 살고 있어?"
+            },
+            {
+              "speaker": "단",
+              "text": "옥저의 민며느리제라는 풍습이야."
+            },
+            {
+              "speaker": "주인공",
+              "text": "고구려의 서옥제랑 다른 거야?"
+            },
+            {
+              "speaker": "단",
+              "text": "응. 어린 여자아이가 장차 혼인할 남자의 집에서 자라는 풍습이야."
+            },
+            {
+              "speaker": "주민",
+              "text": "혹시 어린아이를 찾고 있소?"
+            },
+            {
+              "speaker": "단",
+              "text": "네!"
+            },
+            {
+              "speaker": "주민",
+              "text": "그 아이가 몸이 지쳐 이곳에서 쉬었소."
+            },
+            {
+              "speaker": "단",
+              "text": "많이 아팠습니까?"
+            },
+            {
+              "speaker": "주민",
+              "text": "다행히 큰 병은 아니었소."
+            }
+          ],
+          "choices": [
+            {
+              "key": "A",
+              "label": "지금은 괜찮아졌나요?",
+              "dialogues": [
+                {
+                  "speaker": "주민",
+                  "text": "쉬고 나서 건강하게 떠났소."
+                },
+                {
+                  "speaker": "단",
+                  "text": "다행이다..."
+                }
+              ]
+            },
+            {
+              "key": "B",
+              "label": "그 아이가 어디로 떠났나요?",
+              "dialogues": [
+                {
+                  "speaker": "주민",
+                  "text": "바닷가 쪽으로 갔소."
+                },
+                {
+                  "speaker": "단",
+                  "text": "바닷가..."
+                }
+              ]
+            }
+          ],
+          "commonDialogues": [
+            {
+              "speaker": "주인공",
+              "text": "가보자."
+            }
+          ],
+          "questionSlots": [
+            {
+              "questionSlotId": "Q09-A",
+              "topic": "민며느리제",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch03",
+              "sceneId": "proto_v3_ch03_s01",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q09-B",
+              "topic": "읍군·삼로",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch03",
+              "sceneId": "proto_v3_ch03_s01",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q09-C",
+              "topic": "옥저와 고구려의 혼인 풍습 비교",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch03",
+              "sceneId": "proto_v3_ch03_s01",
+              "placement": "after_scene_dialogue"
+            }
+          ],
+          "actualBrowserVerified": false
+        },
+        {
+          "sceneId": "proto_v3_ch03_s02",
+          "number": 2,
+          "title": "가족이 함께 잠드는 곳",
+          "background": "옥저 가족 공동 무덤",
+          "dialogues": [
+            {
+              "speaker": "주인공",
+              "text": "저 무덤은 왜 이렇게 큰 거야?"
+            },
+            {
+              "speaker": "단",
+              "text": "옥저에는 가족 공동 무덤이라는 풍습이 있었어."
+            },
+            {
+              "speaker": "주인공",
+              "text": "가족을 함께 묻는 거야?"
+            },
+            {
+              "speaker": "단",
+              "text": "시신을 임시로 묻었다가 나중에 뼈를 추려 가족의 무덤에 함께 안치했지."
+            },
+            {
+              "speaker": "주인공",
+              "text": "가족을 정말 중요하게 생각했나 봐."
+            },
+            {
+              "speaker": "단",
+              "text": "나한테도 동생이 가장 소중한 가족이야."
+            },
+            {
+              "speaker": "주인공",
+              "text": "동생도 그렇게 생각할 거야."
+            },
+            {
+              "speaker": "단",
+              "text": "그렇겠지?"
+            }
+          ],
+          "choices": [
+            {
+              "key": "A",
+              "label": "당연하지. 동생도 널 찾고 있잖아.",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "응. 그 사실을 잊지 않을게."
+                }
+              ]
+            },
+            {
+              "key": "B",
+              "label": "다시 만나면 하고 싶은 말이 많겠다.",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "너무 많아서 어디부터 말해야 할지 모르겠어."
+                }
+              ]
+            }
+          ],
+          "commonDialogues": [
+            {
+              "speaker": "주인공",
+              "text": "그 말들을 직접 전하자."
+            }
+          ],
+          "questionSlots": [
+            {
+              "questionSlotId": "Q10-A",
+              "topic": "가족 공동 무덤",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch03",
+              "sceneId": "proto_v3_ch03_s02",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q10-B",
+              "topic": "옥저의 장례 풍습",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch03",
+              "sceneId": "proto_v3_ch03_s02",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q10-C",
+              "topic": "옥저와 다른 국가의 사회 풍습 비교",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch03",
+              "sceneId": "proto_v3_ch03_s02",
+              "placement": "after_scene_dialogue"
+            }
+          ],
+          "actualBrowserVerified": false
+        },
+        {
+          "sceneId": "proto_v3_ch03_s03",
+          "number": 3,
+          "title": "바다에서 온 공물",
+          "background": "옥저 해안 공납 장소",
+          "dialogues": [
+            {
+              "speaker": "주인공",
+              "text": "소금이랑 생선을 엄청 많이 옮기고 있어."
+            },
+            {
+              "speaker": "단",
+              "text": "옥저는 고구려에 소금과 어물을 공납했어."
+            },
+            {
+              "speaker": "운송인",
+              "text": "혹시 이 물건을 아시오?"
+            },
+            {
+              "speaker": "단",
+              "text": "그건 동생의 물건입니다!"
+            },
+            {
+              "speaker": "운송인",
+              "text": "형이 찾아오면 전해 달라고 했소."
+            },
+            {
+              "speaker": "단",
+              "text": "뭐라고 했습니까?"
+            },
+            {
+              "speaker": "운송인",
+              "text": "자기는 괜찮으니 걱정하지 말라고 했소."
+            },
+            {
+              "speaker": "단",
+              "text": "살아 있었어..."
+            },
+            {
+              "speaker": "주인공",
+              "text": "단, 정말 다행이야."
+            },
+            {
+              "speaker": "단",
+              "text": "응. 이제 조금 안심할 수 있겠어."
+            }
+          ],
+          "choices": [
+            {
+              "key": "A",
+              "label": "동생이 너한테 직접 남긴 말이잖아.",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "응. 정말 고마워."
+                }
+              ]
+            },
+            {
+              "key": "B",
+              "label": "이제 동생이 어디로 갔는지만 알아내면 돼.",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "그래. 거의 다 왔어."
+                }
+              ]
+            }
+          ],
+          "commonDialogues": [
+            {
+              "speaker": "운송인",
+              "text": "그 아이는 동예로 떠났소."
+            }
+          ],
+          "questionSlots": [
+            {
+              "questionSlotId": "Q11-A",
+              "topic": "옥저의 소금·어물 공납",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch03",
+              "sceneId": "proto_v3_ch03_s03",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q11-B",
+              "topic": "고구려와 옥저의 관계",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch03",
+              "sceneId": "proto_v3_ch03_s03",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q11-C",
+              "topic": "옥저의 정치·사회·경제 종합",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch03",
+              "sceneId": "proto_v3_ch03_s03",
+              "placement": "after_scene_dialogue"
+            }
+          ],
+          "actualBrowserVerified": false
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "동예 — 남겨진 약속",
+      "scenes": [
+        {
+          "sceneId": "proto_v3_ch04_s01",
+          "number": 1,
+          "title": "넘지 말아야 할 경계",
+          "background": "동예 씨족 경계",
+          "dialogues": [
+            {
+              "speaker": "주민",
+              "text": "멈추시오! 이곳은 우리 씨족의 영역이오!"
+            },
+            {
+              "speaker": "주인공",
+              "text": "그냥 길을 따라왔는데요?"
+            },
+            {
+              "speaker": "주민",
+              "text": "함부로 침범하면 배상해야 하오!"
+            },
+            {
+              "speaker": "단",
+              "text": "동예의 책화라는 풍습이야."
+            },
+            {
+              "speaker": "주인공",
+              "text": "다른 씨족의 영역을 침범하면 배상해야 한다는 거야?"
+            },
+            {
+              "speaker": "단",
+              "text": "맞아."
+            },
+            {
+              "speaker": "주민",
+              "text": "어린아이를 찾는 사람들이오?"
+            },
+            {
+              "speaker": "단",
+              "text": "혹시 보셨습니까?"
+            },
+            {
+              "speaker": "주민",
+              "text": "혼인 잔치가 열리는 집으로 갔소."
+            }
+          ],
+          "choices": [
+            {
+              "key": "A",
+              "label": "그 아이가 문제를 일으키지는 않았나요?",
+              "dialogues": [
+                {
+                  "speaker": "주민",
+                  "text": "아니오. 예의 바른 아이였소."
+                },
+                {
+                  "speaker": "단",
+                  "text": "그렇다면 동생이 맞을 거야."
+                }
+              ]
+            },
+            {
+              "key": "B",
+              "label": "혼인 잔치는 어디서 열리나요?",
+              "dialogues": [
+                {
+                  "speaker": "주민",
+                  "text": "마을 안쪽이오."
+                },
+                {
+                  "speaker": "단",
+                  "text": "감사합니다."
+                }
+              ]
+            }
+          ],
+          "commonDialogues": [
+            {
+              "speaker": "주인공",
+              "text": "가보자."
+            }
+          ],
+          "questionSlots": [
+            {
+              "questionSlotId": "Q12-A",
+              "topic": "책화",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch04",
+              "sceneId": "proto_v3_ch04_s01",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q12-B",
+              "topic": "읍군·삼로",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch04",
+              "sceneId": "proto_v3_ch04_s01",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q12-C",
+              "topic": "동예의 씨족 사회",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch04",
+              "sceneId": "proto_v3_ch04_s01",
+              "placement": "after_scene_dialogue"
+            }
+          ],
+          "actualBrowserVerified": false
+        },
+        {
+          "sceneId": "proto_v3_ch04_s02",
+          "number": 2,
+          "title": "서로 다른 씨족의 혼인",
+          "background": "동예 혼인 잔치",
+          "dialogues": [
+            {
+              "speaker": "주인공",
+              "text": "혼인 잔치가 한창이네."
+            },
+            {
+              "speaker": "단",
+              "text": "동예에는 족외혼 풍습이 있었어."
+            },
+            {
+              "speaker": "주인공",
+              "text": "같은 씨족끼리는 혼인하지 않는 거지?"
+            },
+            {
+              "speaker": "단",
+              "text": "맞아."
+            },
+            {
+              "speaker": "주민",
+              "text": "어린아이를 찾는다고 했지요?"
+            },
+            {
+              "speaker": "단",
+              "text": "네!"
+            },
+            {
+              "speaker": "주민",
+              "text": "그 아이가 이 편지를 맡겼어요."
+            },
+            {
+              "speaker": "단",
+              "text": "편지요?"
+            },
+            {
+              "speaker": "나레이션",
+              "text": "편지: 형, 나 괜찮아. 형이 날 찾고 있다는 이야기를 들었어. 나도 형을 찾고 있어. 꼭 다시 만나자."
+            },
+            {
+              "speaker": "단",
+              "text": "동생 글씨야..."
+            },
+            {
+              "speaker": "주인공",
+              "text": "단..."
+            },
+            {
+              "speaker": "단",
+              "text": "정말 보고 싶어."
+            }
+          ],
+          "choices": [
+            {
+              "key": "A",
+              "label": "이제 얼마 남지 않았어.",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "응. 조금만 더 힘내볼게."
+                }
+              ]
+            },
+            {
+              "key": "B",
+              "label": "동생도 너를 기다리고 있잖아.",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "그래. 반드시 만나야 해."
+                }
+              ]
+            }
+          ],
+          "commonDialogues": [
+            {
+              "speaker": "주민",
+              "text": "그 아이는 삼한으로 가는 상인들과 떠났어요."
+            }
+          ],
+          "questionSlots": [
+            {
+              "questionSlotId": "Q13-A",
+              "topic": "족외혼",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch04",
+              "sceneId": "proto_v3_ch04_s02",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q13-B",
+              "topic": "책화와 족외혼 비교",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch04",
+              "sceneId": "proto_v3_ch04_s02",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q13-C",
+              "topic": "동예와 옥저의 풍습 비교",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch04",
+              "sceneId": "proto_v3_ch04_s02",
+              "placement": "after_scene_dialogue"
+            }
+          ],
+          "actualBrowserVerified": false
+        },
+        {
+          "sceneId": "proto_v3_ch04_s03",
+          "number": 3,
+          "title": "무천과 세 가지 보물",
+          "background": "동예 무천 행사와 특산물 시장",
+          "dialogues": [
+            {
+              "speaker": "주인공",
+              "text": "또 큰 축제가 열리고 있어."
+            },
+            {
+              "speaker": "단",
+              "text": "동예의 무천이야. 10월에 열리지."
+            },
+            {
+              "speaker": "상인",
+              "text": "단궁과 과하마, 반어피를 구경해 보시오!"
+            },
+            {
+              "speaker": "주인공",
+              "text": "저 작은 활이 단궁이고 저 말이 과하마야?"
+            },
+            {
+              "speaker": "단",
+              "text": "그래. 반어피도 동예의 특산물이야."
+            },
+            {
+              "speaker": "상인",
+              "text": "삼한으로 가는 상인들이 조금 전에 떠났소!"
+            },
+            {
+              "speaker": "단",
+              "text": "조금 전이라고요?"
+            },
+            {
+              "speaker": "상인",
+              "text": "서두르면 따라잡을 수 있을 거요."
+            }
+          ],
+          "choices": [
+            {
+              "key": "A",
+              "label": "지금 바로 출발하자!",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "그래. 이번엔 놓치지 않을 거야."
+                }
+              ]
+            },
+            {
+              "key": "B",
+              "label": "단, 정말 마지막일지도 몰라.",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "응. 이제 끝까지 가볼게."
+                }
+              ]
+            }
+          ],
+          "commonDialogues": [
+            {
+              "speaker": "주인공",
+              "text": "삼한으로 가자!"
+            }
+          ],
+          "questionSlots": [
+            {
+              "questionSlotId": "Q14-A",
+              "topic": "무천",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch04",
+              "sceneId": "proto_v3_ch04_s03",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q14-B",
+              "topic": "단궁·과하마·반어피",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch04",
+              "sceneId": "proto_v3_ch04_s03",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q14-C",
+              "topic": "영고·동맹·무천 비교",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch04",
+              "sceneId": "proto_v3_ch04_s03",
+              "placement": "after_scene_dialogue"
+            }
+          ],
+          "actualBrowserVerified": false
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "삼한 — 다시 만나는 날",
+      "scenes": [
+        {
+          "sceneId": "proto_v3_ch05_s01",
+          "number": 1,
+          "title": "세 개의 한",
+          "background": "삼한 교역 마을",
+          "dialogues": [
+            {
+              "speaker": "주인공",
+              "text": "드디어 삼한에 도착했어."
+            },
+            {
+              "speaker": "단",
+              "text": "이제 정말 동생을 만날 수 있을까?"
+            },
+            {
+              "speaker": "주인공",
+              "text": "여기까지 왔잖아."
+            },
+            {
+              "speaker": "상인",
+              "text": "여기는 마한의 소국 중 하나요."
+            },
+            {
+              "speaker": "주인공",
+              "text": "마한?"
+            },
+            {
+              "speaker": "단",
+              "text": "삼한은 마한·진한·변한으로 이루어져 있어."
+            },
+            {
+              "speaker": "상인",
+              "text": "우리 마을에는 신지라는 지배자가 있소."
+            },
+            {
+              "speaker": "주인공",
+              "text": "신지?"
+            },
+            {
+              "speaker": "단",
+              "text": "삼한에서는 신지나 읍차 같은 칭호를 사용했어."
+            },
+            {
+              "speaker": "상인",
+              "text": "어린아이라면 소도에서 쉬었다는 이야기를 들었소."
+            }
+          ],
+          "choices": [
+            {
+              "key": "A",
+              "label": "소도는 어디에 있나요?",
+              "dialogues": [
+                {
+                  "speaker": "상인",
+                  "text": "마을 밖 신성한 지역이오."
+                }
+              ]
+            },
+            {
+              "key": "B",
+              "label": "그 아이는 건강했나요?",
+              "dialogues": [
+                {
+                  "speaker": "상인",
+                  "text": "멀쩡한 모습이었다고 들었소."
+                }
+              ]
+            }
+          ],
+          "commonDialogues": [
+            {
+              "speaker": "단",
+              "text": "소도로 가자."
+            }
+          ],
+          "questionSlots": [
+            {
+              "questionSlotId": "Q15-A",
+              "topic": "마한·진한·변한",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch05",
+              "sceneId": "proto_v3_ch05_s01",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q15-B",
+              "topic": "신지·읍차",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch05",
+              "sceneId": "proto_v3_ch05_s01",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q15-C",
+              "topic": "삼한의 소국 구조",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch05",
+              "sceneId": "proto_v3_ch05_s01",
+              "placement": "after_scene_dialogue"
+            }
+          ],
+          "actualBrowserVerified": false
+        },
+        {
+          "sceneId": "proto_v3_ch05_s02",
+          "number": 2,
+          "title": "신성한 소도",
+          "background": "소도와 솟대",
+          "dialogues": [
+            {
+              "speaker": "주인공",
+              "text": "여긴 다른 마을과 분위기가 다르네."
+            },
+            {
+              "speaker": "단",
+              "text": "소도라는 신성한 지역이야."
+            },
+            {
+              "speaker": "주인공",
+              "text": "저 사람은 누구야?"
+            },
+            {
+              "speaker": "단",
+              "text": "제사를 담당하는 천군이야."
+            },
+            {
+              "speaker": "주인공",
+              "text": "정치 지도자랑은 다른 거구나?"
+            },
+            {
+              "speaker": "단",
+              "text": "응. 삼한에서는 정치와 제사의 역할이 구분되었어."
+            },
+            {
+              "speaker": "천군",
+              "text": "어린아이를 찾고 있느냐?"
+            },
+            {
+              "speaker": "단",
+              "text": "네!"
+            },
+            {
+              "speaker": "천군",
+              "text": "그 아이가 형을 만나면 꼭 안아주고 싶다고 하더구나."
+            },
+            {
+              "speaker": "단",
+              "text": "..."
+            },
+            {
+              "speaker": "주인공",
+              "text": "단, 괜찮아?"
+            },
+            {
+              "speaker": "단",
+              "text": "응. 조금만 더 가면 만날 수 있을 것 같아."
+            }
+          ],
+          "choices": [
+            {
+              "key": "A",
+              "label": "동생도 널 많이 보고 싶어 해.",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "나도 그래."
+                }
+              ]
+            },
+            {
+              "key": "B",
+              "label": "이번엔 꼭 만날 거야.",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "응. 꼭."
+                }
+              ]
+            }
+          ],
+          "commonDialogues": [
+            {
+              "speaker": "천군",
+              "text": "농경 마을로 가보아라."
+            }
+          ],
+          "questionSlots": [
+            {
+              "questionSlotId": "Q16-A",
+              "topic": "천군",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch05",
+              "sceneId": "proto_v3_ch05_s02",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q16-B",
+              "topic": "소도",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch05",
+              "sceneId": "proto_v3_ch05_s02",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q16-C",
+              "topic": "제정 분리",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch05",
+              "sceneId": "proto_v3_ch05_s02",
+              "placement": "after_scene_dialogue"
+            }
+          ],
+          "actualBrowserVerified": false
+        },
+        {
+          "sceneId": "proto_v3_ch05_s03",
+          "number": 3,
+          "title": "함께 일하는 사람들",
+          "background": "삼한 농경 마을",
+          "dialogues": [
+            {
+              "speaker": "주인공",
+              "text": "사람들이 함께 농사를 짓고 있어."
+            },
+            {
+              "speaker": "단",
+              "text": "두레라는 공동 노동 조직이야."
+            },
+            {
+              "speaker": "주인공",
+              "text": "농사를 지을 때 서로 도와주는 거네."
+            },
+            {
+              "speaker": "단",
+              "text": "응. 삼한에서는 5월과 10월에 제천 행사도 열었어."
+            },
+            {
+              "speaker": "농민",
+              "text": "어린아이를 찾는다고?"
+            },
+            {
+              "speaker": "단",
+              "text": "네!"
+            },
+            {
+              "speaker": "농민",
+              "text": "변한의 철 시장으로 갔소."
+            },
+            {
+              "speaker": "단",
+              "text": "정말입니까?"
+            },
+            {
+              "speaker": "농민",
+              "text": "상인들과 함께 떠났소."
+            }
+          ],
+          "choices": [
+            {
+              "key": "A",
+              "label": "철 시장이라면 사람들이 많이 모이겠네.",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "그래. 찾을 수 있을 거야."
+                }
+              ]
+            },
+            {
+              "key": "B",
+              "label": "이번엔 먼저 도착해 기다리자.",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "좋아. 서두르자."
+                }
+              ]
+            }
+          ],
+          "commonDialogues": [
+            {
+              "speaker": "주인공",
+              "text": "마지막 목적지는 변한이야."
+            }
+          ],
+          "questionSlots": [
+            {
+              "questionSlotId": "Q17-A",
+              "topic": "두레",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch05",
+              "sceneId": "proto_v3_ch05_s03",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q17-B",
+              "topic": "삼한의 농경 생활",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch05",
+              "sceneId": "proto_v3_ch05_s03",
+              "placement": "after_scene_dialogue"
+            },
+            {
+              "questionSlotId": "Q17-C",
+              "topic": "삼한의 제천 행사",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch05",
+              "sceneId": "proto_v3_ch05_s03",
+              "placement": "after_scene_dialogue"
+            }
+          ],
+          "actualBrowserVerified": false
+        },
+        {
+          "sceneId": "proto_v3_ch05_s04",
+          "number": 4,
+          "title": "철의 시장",
+          "background": "변한 제철 작업장과 교역 시장",
+          "dialogues": [
+            {
+              "speaker": "주인공",
+              "text": "여기는 철을 만드는 사람들이 정말 많네."
+            },
+            {
+              "speaker": "단",
+              "text": "변한은 철 생산이 활발했어."
+            },
+            {
+              "speaker": "상인",
+              "text": "낙랑과 왜에서도 철을 구하러 오지."
+            },
+            {
+              "speaker": "주인공",
+              "text": "철이 중요한 교역품이었구나."
+            },
+            {
+              "speaker": "단",
+              "text": "응."
+            }
+          ],
+          "choices": [
+            {
+              "key": "A",
+              "label": "철을 구하러 낙랑과 왜에서도 오는 거네.",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "그래. 변한의 철이 먼 곳까지 이어 주는 교역품인 거야."
+                }
+              ]
+            },
+            {
+              "key": "B",
+              "label": "철을 만드는 곳과 파는 곳이 함께 있어서 활기차네.",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "철 생산과 교역이 이곳 사람들의 생활을 이어 주고 있어."
+                }
+              ]
+            }
+          ],
+          "commonDialogues": [
+            {
+              "speaker": "주인공",
+              "text": "그런데 동생은 어디 있지?"
+            },
+            {
+              "speaker": "단",
+              "text": "잠깐..."
+            },
+            {
+              "speaker": "주인공",
+              "text": "왜 그래?"
+            },
+            {
+              "speaker": "단",
+              "text": "저기..."
+            },
+            {
+              "speaker": "주인공",
+              "text": "단, 저 아이..."
+            },
+            {
+              "speaker": "단",
+              "text": "동생아..."
+            }
+          ],
+          "questionSlots": [
+            {
+              "questionSlotId": "Q18-A",
+              "topic": "변한의 철 생산",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch05",
+              "sceneId": "proto_v3_ch05_s04",
+              "placement": "before_reunion_discovery"
+            },
+            {
+              "questionSlotId": "Q18-B",
+              "topic": "낙랑·왜와의 철 교역",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch05",
+              "sceneId": "proto_v3_ch05_s04",
+              "placement": "before_reunion_discovery"
+            },
+            {
+              "questionSlotId": "Q18-C",
+              "topic": "삼한의 경제 활동 비교",
+              "questionId": null,
+              "verificationStatus": "pending",
+              "officialSourceUrl": null,
+              "questionImagePath": null,
+              "questionText": null,
+              "options": null,
+              "correctAnswer": null,
+              "evidence": null,
+              "historicalExplanation": null,
+              "wrongAnswerExplanations": null,
+              "memoryPoint": null,
+              "chapterId": "proto-v3-ch05",
+              "sceneId": "proto_v3_ch05_s04",
+              "placement": "before_reunion_discovery"
+            }
+          ],
+          "actualBrowserVerified": false
+        }
+      ]
+    }
+  ],
+  "preservation": {
+    "sourceCommit": "917e4804c4b7bb3cd70e4e5230582fd06efda775",
+    "opening": {
+      "number": 0,
+      "title": "낯선 숲에서",
+      "scenes": [
+        {
+          "number": 1,
+          "title": "눈을 뜨다",
+          "type": "STORY",
+          "background": "어두운 숲",
+          "dialogues": [
+            {
+              "speaker": "나레이션",
+              "text": "차가운 바람이 뺨을 스쳤다. 눈을 뜨자 처음 보는 숲이 펼쳐져 있었다."
+            },
+            {
+              "speaker": "주인공",
+              "text": "뭐야… 여기가 어디야?"
+            },
+            {
+              "speaker": "주인공",
+              "text": "핸드폰은? 아, 진짜 미치겠네."
+            }
+          ],
+          "choices": [],
+          "directions": [
+            "주인공은 현대복을 입고 있으며 주변을 살핀다."
+          ]
+        },
+        {
+          "number": 2,
+          "title": "낯선 남자",
+          "type": "CHOICE",
+          "background": "숲속 길",
+          "dialogues": [
+            {
+              "speaker": "단(???)",
+              "text": "거기 누구냐!"
+            },
+            {
+              "speaker": "주인공",
+              "text": "으악! 깜짝이야!"
+            },
+            {
+              "speaker": "단",
+              "text": "이상한 옷을 입었군. 도적이냐?"
+            },
+            {
+              "speaker": "주인공",
+              "text": "아니거든요?! 저도 지금 상황 파악이 안 된다고요!"
+            },
+            {
+              "speaker": "단",
+              "text": "말투도 이상하군."
+            },
+            {
+              "speaker": "주인공",
+              "text": "그건 그쪽도 마찬가지거든요?"
+            }
+          ],
+          "choices": [
+            {
+              "label": "도적 아니라고!",
+              "result": "단: \"그렇게 소리치는 걸 보니 더 수상하군.\"",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "그렇게 소리치는 걸 보니 더 수상하군."
+                }
+              ]
+            },
+            {
+              "label": "여기가 어디인지부터 알려줘.",
+              "result": "단: \"북쪽 교역로 근처다.\"",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "북쪽 교역로 근처다."
+                }
+              ]
+            },
+            {
+              "label": "혹시 드라마 촬영 중이야?",
+              "result": "단: \"드라마? 어느 나라 말이냐?\"",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "드라마? 어느 나라 말이냐?"
+                }
+              ]
+            }
+          ],
+          "directions": [
+            "세 분기 모두 단이 주인공을 경계하지만 공격하지 않는 결말로 합류한다."
+          ]
+        },
+        {
+          "number": 3,
+          "title": "모닥불 앞에서",
+          "type": "STORY",
+          "background": "모닥불",
+          "dialogues": [
+            {
+              "speaker": "단",
+              "text": "이름이 무엇이냐?"
+            },
+            {
+              "speaker": "주인공",
+              "text": "그냥… 나라고 불러."
+            },
+            {
+              "speaker": "단",
+              "text": "이름이 나라고?"
+            },
+            {
+              "speaker": "주인공",
+              "text": "아, 아니. 그냥 그렇게 부르라고!"
+            },
+            {
+              "speaker": "단",
+              "text": "허허. 참으로 이상한 사람이군."
+            },
+            {
+              "speaker": "주인공",
+              "text": "근데 여기가 어디야?"
+            },
+            {
+              "speaker": "단",
+              "text": "북쪽 교역로 근처다. 나는 사람을 찾고 있지."
+            },
+            {
+              "speaker": "주인공",
+              "text": "누군데?"
+            },
+            {
+              "speaker": "단",
+              "text": "내 동생이다. 반년 전 교역단과 함께 떠난 뒤 돌아오지 않았다."
+            }
+          ],
+          "choices": [],
+          "directions": []
+        },
+        {
+          "number": 4,
+          "title": "동행 제안",
+          "type": "CHOICE",
+          "background": "모닥불",
+          "dialogues": [
+            {
+              "speaker": "단",
+              "text": "갈 곳이 없다면 함께 가겠느냐?"
+            }
+          ],
+          "choices": [
+            {
+              "label": "좋아. 대신 먹을 건 챙겨줘.",
+              "result": "단: \"먹을 것부터 찾다니. 마음에 드는군.\"",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "먹을 것부터 찾다니. 마음에 드는군."
+                }
+              ]
+            },
+            {
+              "label": "수상하지만 혼자 있는 것보단 낫겠지.",
+              "result": "단: \"나 역시 자네가 수상하네. 서로 감시하면 되겠군.\"",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "나 역시 자네가 수상하네. 서로 감시하면 되겠군."
+                }
+              ]
+            },
+            {
+              "label": "난 혼자 돌아갈 방법을 찾아볼래.",
+              "result": "단: \"이 숲은 위험하다. 적어도 큰길까지는 함께 가지.\"",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "이 숲은 위험하다. 적어도 큰길까지는 함께 가지."
+                }
+              ]
+            }
+          ],
+          "directions": [
+            "모든 선택지는 동행으로 합류한다."
+          ]
+        },
+        {
+          "number": 5,
+          "title": "첫날의 끝",
+          "type": "CINEMATIC",
+          "background": "꺼져가는 모닥불",
+          "dialogues": [
+            {
+              "speaker": "나레이션",
+              "text": "모닥불이 서서히 꺼져갔다."
+            },
+            {
+              "speaker": "주인공(속마음)",
+              "text": "진짜 과거라면… 나 집에 돌아갈 수 있는 거야?"
+            },
+            {
+              "speaker": "단",
+              "text": "잠들지 못하겠느냐?"
+            },
+            {
+              "speaker": "주인공",
+              "text": "응. 생각할 게 많아서."
+            },
+            {
+              "speaker": "단",
+              "text": "그렇다면 내일 생각하거라. 오늘 밤은 살아남았으니."
+            },
+            {
+              "speaker": "나레이션",
+              "text": "그 말이 이상하게 위로가 되었다."
+            }
+          ],
+          "choices": [],
+          "directions": [
+            "CH.00에는 기출문제를 배치하지 않는다."
+          ]
+        }
+      ]
+    },
+    "reunion": [
+      {
+        "number": 9,
+        "title": "문 앞에서",
+        "type": "CINEMATIC",
+        "background": "작업장 문",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "단, 왜 안 들어가?"
+          },
+          {
+            "speaker": "단",
+            "text": "……겁이 나는군."
+          },
+          {
+            "speaker": "주인공",
+            "text": "동생이 없을까 봐?"
+          },
+          {
+            "speaker": "단",
+            "text": "아니. 만나면 무슨 말을 해야 할지 모르겠어."
+          }
+        ],
+        "choices": [
+          {
+            "label": "그냥 보고 싶었다고 해.",
+            "result": "단: \"그 말부터 해야겠군.\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "그 말부터 해야겠군."
+              }
+            ]
+          },
+          {
+            "label": "먼저 사과해.",
+            "result": "단: \"그래. 그래야겠지.\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "그래. 그래야겠지."
+              }
+            ]
+          },
+          {
+            "label": "내가 먼저 들어갈까?",
+            "result": "단: \"아니. 내가 가겠다.\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "아니. 내가 가겠다."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 10,
+        "title": "마침내 만나다",
+        "type": "CINEMATIC",
+        "background": "철 작업장",
+        "dialogues": [
+          {
+            "speaker": "나레이션",
+            "text": "작업장 안쪽에서 한 청년이 걸어 나왔다."
+          },
+          {
+            "speaker": "단",
+            "text": "……라온?"
+          },
+          {
+            "speaker": "라온",
+            "text": "형."
+          },
+          {
+            "speaker": "단",
+            "text": "살아 있었구나."
+          },
+          {
+            "speaker": "라온",
+            "text": "……응."
+          },
+          {
+            "speaker": "단",
+            "text": "왜 돌아오지 않았어?"
+          },
+          {
+            "speaker": "라온",
+            "text": "돌아가면 형은 또 내게 상단 일을 하라고 할 거잖아."
+          }
+        ],
+        "choices": [],
+        "directions": []
+      },
+      {
+        "number": 11,
+        "title": "형제의 갈등",
+        "type": "STORY",
+        "background": "작업장",
+        "dialogues": [
+          {
+            "speaker": "단",
+            "text": "나는 네가 걱정돼서……."
+          },
+          {
+            "speaker": "라온",
+            "text": "형은 한 번도 내가 무엇을 하고 싶은지 묻지 않았어."
+          },
+          {
+            "speaker": "단",
+            "text": "……."
+          },
+          {
+            "speaker": "라온",
+            "text": "나는 내 삶을 살고 싶었어."
+          }
+        ],
+        "choices": [
+          {
+            "label": "단에게 라온의 이야기를 들어보라고 한다",
+            "result": "단: \"그래. 이번에는 네가 먼저 말해 보아라.\"",
+            "dialogues": [
+              {
+                "speaker": "단",
+                "text": "그래. 이번에는 네가 먼저 말해 보아라."
+              }
+            ]
+          },
+          {
+            "label": "라온에게 단의 걱정을 설명한다",
+            "result": "라온: \"알아. 하지만 내 선택도 존중받고 싶어.\"",
+            "dialogues": [
+              {
+                "speaker": "라온",
+                "text": "알아. 하지만 내 선택도 존중받고 싶어."
+              }
+            ]
+          },
+          {
+            "label": "자리를 비켜준다",
+            "result": "두 형제가 단둘이 대화를 시작한다.",
+            "dialogues": [
+              {
+                "speaker": "나레이션",
+                "text": "두 형제가 단둘이 대화를 시작한다."
+              }
+            ]
+          }
+        ],
+        "directions": []
+      },
+      {
+        "number": 12,
+        "title": "라온이 떠난 이유",
+        "type": "CINEMATIC",
+        "background": "작업장",
+        "dialogues": [
+          {
+            "speaker": "라온",
+            "text": "부여에서는 형을 만나기가 두려웠어."
+          },
+          {
+            "speaker": "단",
+            "text": "그래서 아린에게 말하지 말라고 했구나."
+          },
+          {
+            "speaker": "라온",
+            "text": "그런데 옥저에 갔을 때는 마음이 달라졌어."
+          },
+          {
+            "speaker": "단",
+            "text": "……."
+          },
+          {
+            "speaker": "라온",
+            "text": "형이 내 말을 들어줄지도 모른다고 생각했거든."
+          },
+          {
+            "speaker": "단",
+            "text": "수레 곁에서 찾은 이 편지에는 상단 사람이 너를 데려오겠다는 말이 있었어. 내가 너를 돌아오게 하라고 보냈던 사람이지. 그래서 성문에서 네 이름을 숨겼다."
+          },
+          {
+            "speaker": "라온",
+            "text": "교역단이 흩어진 뒤 다른 상인과 함께 남쪽으로 왔어. 도적에게 잡힌 건 아니야. 형을 만나면 다시 내 뜻을 꺾을까 봐 두려웠어."
+          },
+          {
+            "speaker": "단",
+            "text": "내가 만든 두려움을 남의 위협이라고만 생각했구나. 미안하다. 이제 네 말을 끝까지 듣겠다."
+          }
+        ],
+        "choices": [],
+        "directions": [
+          "이 대사로 CH.02의 '형을 피했다'와 CH.04의 '형을 기다렸다'는 증언을 자연스럽게 연결한다."
+        ]
+      },
+      {
+        "number": 13,
+        "title": "각자의 삶",
+        "type": "STORY",
+        "background": "작업장 앞",
+        "dialogues": [
+          {
+            "speaker": "단",
+            "text": "라온, 네가 이곳에서 살고 싶다면 그렇게 해라."
+          },
+          {
+            "speaker": "라온",
+            "text": "……정말?"
+          },
+          {
+            "speaker": "단",
+            "text": "대신 가끔 소식은 전해다오."
+          },
+          {
+            "speaker": "라온",
+            "text": "응. 약속할게."
+          },
+          {
+            "speaker": "주인공",
+            "text": "이제 좀 형제 같네."
+          },
+          {
+            "speaker": "라온",
+            "text": "형은 원래 이렇게 고집이 셌어."
+          },
+          {
+            "speaker": "단",
+            "text": "네가 할 말은 아니지."
+          },
+          {
+            "speaker": "주인공",
+            "text": "ㅋㅋ 둘이 똑같네."
+          }
+        ],
+        "choices": [],
+        "directions": []
+      },
+      {
+        "number": 14,
+        "title": "철을 가진 사람들",
+        "type": "LEARNING",
+        "background": "교역장 석양",
+        "dialogues": [
+          {
+            "speaker": "주인공",
+            "text": "철이 사람의 삶을 바꾼다는 말, 이제 알 것 같아."
+          },
+          {
+            "speaker": "단",
+            "text": "라온에게는 새로운 삶을 선택하게 해 준 기술이었겠지."
+          },
+          {
+            "speaker": "비류",
+            "text": "이곳에서 많은 사람이 각자의 일을 배워 가네."
+          }
+        ],
+        "choices": [],
+        "directions": [],
+        "checkpoint": {
+          "number": 13,
+          "topic": "삼한 종합"
+        }
+      }
+    ],
+    "ending": {
+      "number": 7,
+      "title": "마지막 갈림길",
+      "scenes": [
+        {
+          "number": 1,
+          "title": "여행의 끝",
+          "type": "STORY",
+          "background": "교역로",
+          "dialogues": [
+            {
+              "speaker": "단",
+              "text": "우리는 참 많은 곳을 다녔군."
+            },
+            {
+              "speaker": "주인공",
+              "text": "부여도 가고, 고구려도 가고, 바다도 보고."
+            },
+            {
+              "speaker": "단",
+              "text": "그때마다 자네는 이상한 질문을 했지."
+            },
+            {
+              "speaker": "주인공",
+              "text": "야! 배우는 중이었다고."
+            },
+            {
+              "speaker": "단",
+              "text": "하하. 알고 있다."
+            }
+          ],
+          "choices": [],
+          "directions": []
+        },
+        {
+          "number": 2,
+          "title": "부여와 고구려의 기억",
+          "type": "LEARNING",
+          "background": "회상",
+          "dialogues": [
+            {
+              "speaker": "주인공",
+              "text": "영고는 부여, 동맹은 고구려."
+            },
+            {
+              "speaker": "단",
+              "text": "그리고 고구려를 세운 왕은?"
+            },
+            {
+              "speaker": "주인공",
+              "text": "주몽! 동명성왕!"
+            },
+            {
+              "speaker": "단",
+              "text": "이제 제법 아는군."
+            },
+            {
+              "speaker": "주인공",
+              "text": "처음부터 잘 알았거든?"
+            },
+            {
+              "speaker": "단",
+              "text": "동예의 무천도 10월이지. 삼한은 씨뿌리기를 마친 5월과 추수를 마친 10월에 제사를 지낸다고 전해진다네. 우리는 겨울 영고를 보았지만, 동맹과 무천은 주민의 설명으로 들었지."
+            }
+          ],
+          "choices": [],
+          "directions": [],
+          "checkpoint": {
+            "number": 14,
+            "topic": "부여·고구려 종합"
+          }
+        },
+        {
+          "number": 3,
+          "title": "바다와 경계의 기억",
+          "type": "STORY",
+          "background": "회상",
+          "dialogues": [
+            {
+              "speaker": "주인공",
+              "text": "옥저에서는 가족 공동 무덤도 봤지."
+            },
+            {
+              "speaker": "단",
+              "text": "동예에서는 책화 때문에 곤란한 일을 겪었고."
+            },
+            {
+              "speaker": "주인공",
+              "text": "그때 네가 책임지겠다고 했잖아."
+            },
+            {
+              "speaker": "단",
+              "text": "그 여행에서 배운 것이 많았지."
+            }
+          ],
+          "choices": [],
+          "directions": []
+        },
+        {
+          "number": 4,
+          "title": "마지막 역사 시험",
+          "type": "LEARNING",
+          "background": "교역 지도",
+          "dialogues": [
+            {
+              "speaker": "주인공",
+              "text": "이제 원삼국 시대는 꽤 잘 알 것 같아."
+            },
+            {
+              "speaker": "단",
+              "text": "그렇다면 마지막으로 기억을 정리해 보겠나?"
+            },
+            {
+              "speaker": "주인공",
+              "text": "뭐야, 갑자기 시험 보는 기분인데?"
+            },
+            {
+              "speaker": "단",
+              "text": "부여의 사출도·영고, 고구려의 제가 회의·서옥제·동맹, 옥저의 민며느리제·가족 공동 무덤, 동예의 책화·족외혼·무천·특산물, 삼한의 천군·소도·철 교역을 떠올려 보게."
+            }
+          ],
+          "choices": [],
+          "directions": [],
+          "checkpoint": {
+            "number": 15,
+            "topic": "원삼국 전체 종합"
+          }
+        },
+        {
+          "number": 5,
+          "title": "돌아갈 길",
+          "type": "STORY",
+          "background": "갈림길",
+          "dialogues": [
+            {
+              "speaker": "단",
+              "text": "이제 어디로 갈 생각이냐?"
+            },
+            {
+              "speaker": "주인공",
+              "text": "글쎄. 나도 내가 어디로 가야 하는지 모르겠어."
+            },
+            {
+              "speaker": "단",
+              "text": "처음 만났을 때와 똑같군."
+            },
+            {
+              "speaker": "주인공",
+              "text": "야, 그건 좀 너무한 거 아니야?"
+            },
+            {
+              "speaker": "단",
+              "text": "하하. 농담이다."
+            }
+          ],
+          "choices": [],
+          "directions": []
+        },
+        {
+          "number": 6,
+          "title": "마지막 부탁",
+          "type": "STORY",
+          "background": "갈림길",
+          "dialogues": [
+            {
+              "speaker": "단",
+              "text": "너와 함께한 여행은 참 이상했어."
+            },
+            {
+              "speaker": "주인공",
+              "text": "왜?"
+            },
+            {
+              "speaker": "단",
+              "text": "처음에는 아무것도 모르는 사람인 줄 알았는데, 가끔은 모든 것을 아는 사람처럼 굴더군."
+            },
+            {
+              "speaker": "주인공",
+              "text": "……."
+            },
+            {
+              "speaker": "단",
+              "text": "하지만 가장 중요한 건 자네에게 배웠어."
+            },
+            {
+              "speaker": "주인공",
+              "text": "뭔데?"
+            },
+            {
+              "speaker": "단",
+              "text": "사람은 각자 다른 길을 갈 수 있다는 것."
+            },
+            {
+              "speaker": "주인공",
+              "text": "……그런 걸 내가 알려줬나?"
+            },
+            {
+              "speaker": "단",
+              "text": "그렇지. 자네는 기억하지 못하는 모양이지만."
+            }
+          ],
+          "choices": [],
+          "directions": []
+        },
+        {
+          "number": 7,
+          "title": "마지막 선택",
+          "type": "CHOICE",
+          "background": "갈림길",
+          "dialogues": [
+            {
+              "speaker": "나레이션",
+              "text": "갈림길 앞에서 단과 마지막 인사를 나눈다."
+            }
+          ],
+          "choices": [
+            {
+              "label": "언젠가 다시 만나자.",
+              "result": "",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "그래. 다음에는 내가 자네를 찾아가도록 하지."
+                },
+                {
+                  "speaker": "주인공",
+                  "text": "약속이다?"
+                }
+              ]
+            },
+            {
+              "label": "그동안 고마웠어. 잘 살아.",
+              "result": "",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "고마운 것은 나다. 자네가 없었다면 아직도 동생을 찾아 헤매고 있었을 테니."
+                },
+                {
+                  "speaker": "주인공",
+                  "text": "……잘 가, 단."
+                }
+              ]
+            },
+            {
+              "label": "나도 내 길을 찾아볼게.",
+              "result": "",
+              "dialogues": [
+                {
+                  "speaker": "단",
+                  "text": "그래. 누구의 길도 아닌, 자네만의 길을 찾아라."
+                },
+                {
+                  "speaker": "주인공",
+                  "text": "너도."
+                }
+              ]
+            }
+          ],
+          "directions": [
+            "선택에 따라 마지막 표정과 작별 대사가 달라진다."
+          ]
+        },
+        {
+          "number": 8,
+          "title": "에필로그",
+          "type": "CINEMATIC",
+          "background": "해 질 무렵의 길",
+          "dialogues": [
+            {
+              "speaker": "나레이션",
+              "text": "두 사람은 서로 다른 방향으로 걸어갔다."
+            },
+            {
+              "speaker": "나레이션",
+              "text": "뒤돌아보았을 때 단은 아직 그 자리에 서 있었다."
+            },
+            {
+              "speaker": "주인공(속마음)",
+              "text": "이상하다. 처음에는 집에 돌아갈 생각뿐이었는데."
+            },
+            {
+              "speaker": "주인공(속마음)",
+              "text": "이제는 이곳에서 만난 사람들이 자꾸 생각난다."
+            }
+          ],
+          "choices": [],
+          "directions": [
+            "단이 멀어지는 장면으로 마무리한다.",
+            "단의 사망, 노년화, 강제 재회 장면을 추가하지 않는다."
+          ]
+        }
+      ]
+    }
+  },
+  "conflicts": [
+    {
+      "id": "ending-backgrounds",
+      "status": "resolved_by_user",
+      "detail": "대사·선택지·연출은 보존하고 배경 에셋 연결만 일러스트로 교체",
+      "resolvedOn": "2026-10-10"
+    },
+    {
+      "id": "sibling-identity",
+      "status": "adapt_new_story",
+      "detail": "Original reunion identifies Raon as 19 and voluntarily choosing iron work; new text calling him a lost child and hand separation must be adapted."
+    },
+    {
+      "id": "festival-calendar",
+      "status": "adapt_new_story",
+      "detail": "Buyeo December to Goguryeo October requires explicit following-year time transition."
+    }
+  ],
+  "originalGenealogyImageAvailable": false,
+  "publicationAuthorization": {
+    "userReply": "공개해도 됩니다",
+    "receivedOn": "2026-10-10",
+    "officialSourceVerificationStillRequired": true
+  }
+}

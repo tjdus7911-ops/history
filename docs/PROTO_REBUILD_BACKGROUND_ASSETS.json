@@ -1,0 +1,154 @@
+{
+  "status": "draft_incomplete",
+  "generatedAssets": [
+    {
+      "path": "assets/ancient/backgrounds/rebuild-buyeo-council.webp",
+      "sha256": "d459dddf66d562b450860cf4428406de0e96ceccaa1c6edf8738f67ea61c6e9d",
+      "bytes": 676356,
+      "origin": "image_gen",
+      "actualBrowserVerified": false
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-buyeo-court.webp",
+      "sha256": "9e37ec62cfdd9e73d7b3f176f2b6ee8873c4b1a8ae9f3ffdf8bdc810caf7fac0",
+      "bytes": 752648,
+      "origin": "image_gen",
+      "actualBrowserVerified": false
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-buyeo-funeral.webp",
+      "sha256": "a7aa91b1dc8e3f19a44f14205e6caa56dc9d1fedb1962a905da9df22e83aaaae",
+      "bytes": 688024,
+      "origin": "image_gen",
+      "actualBrowserVerified": false
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-buyeo-market.webp",
+      "sha256": "af4cdaef2d97453de6889d0673367617b3273ed7ca9a9e246aa7f421e787e7b4",
+      "bytes": 719676,
+      "origin": "image_gen",
+      "actualBrowserVerified": false
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-buyeo-yeonggo.webp",
+      "sha256": "ef04ddeb6133ed7bf640c5cb6803bf869e7a6a155000c007a904df57c7c2fbdd",
+      "bytes": 599346,
+      "origin": "image_gen",
+      "actualBrowserVerified": false
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-byeonhan-workshop.webp",
+      "sha256": "b13cf9701f81627a144dd813f5699f12f46774ebc6620b678a2588699d5555fa",
+      "bytes": 705594,
+      "origin": "image_gen",
+      "actualBrowserVerified": false
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-dongye-mucheon-market.webp",
+      "sha256": "e021d31c2c2be9350aec6b4eb5dc33cd58501aa2d07f67747ac91e5b1c9a10ef",
+      "bytes": 678558,
+      "origin": "image_gen",
+      "actualBrowserVerified": false
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-dongye-wedding.webp",
+      "sha256": "c1084af7e91ef063fd083d26a2d2fb5cd3f7d3a24069aa923c4dda0fb0eca8cb",
+      "bytes": 696140,
+      "origin": "image_gen",
+      "actualBrowserVerified": false
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-forest-camp.webp",
+      "sha256": "8bd62d8b17de9cf47b696fa02ce0918544b45db19732f9bd411bd27336b019af",
+      "bytes": 661294,
+      "origin": "image_gen",
+      "actualBrowserVerified": false
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-forest-crossroads.webp",
+      "sha256": "75501f09584fda73237b97dd401bcd2258f35d6e71c22a4dcd18e97631fad18a",
+      "bytes": 765892,
+      "origin": "image_gen",
+      "actualBrowserVerified": false
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-goguryeo-council.webp",
+      "sha256": "27b3d7d8da6b093b46f2c1a0a0f374426d8253a3705ef2a383ead3eb6a157eeb",
+      "bytes": 644476,
+      "origin": "image_gen",
+      "actualBrowserVerified": false
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-goguryeo-dongmaeng.webp",
+      "sha256": "1e7dafceff70416031c21bdefd23f03f5ee18296c5703741bc139a34c7d98e42",
+      "bytes": 644142,
+      "origin": "image_gen",
+      "actualBrowserVerified": false
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-goguryeo-seook.webp",
+      "sha256": "626c5800fd6cf2d696960be56b0366294e3f699666fd0b15f3016c084a4e19cb",
+      "bytes": 659804,
+      "origin": "image_gen",
+      "actualBrowserVerified": false
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-jolbon.webp",
+      "sha256": "ea903a6cdb7ddd71120909b78a7ddf789f7c95a521722161378afd09c56822e1",
+      "bytes": 682154,
+      "origin": "image_gen",
+      "actualBrowserVerified": false
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-jumong-birth.webp",
+      "sha256": "87a4ccbf8368f76e49a51e4fbfabf6cb93b940a1035c390e077367d70a5b99c3",
+      "bytes": 443398,
+      "origin": "image_gen",
+      "actualBrowserVerified": false
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-okjeo-family-tomb.webp",
+      "sha256": "67bf2f1cf401de6827386b318243a75d4e9c33943e012bb10c743bfac90cd410",
+      "bytes": 698232,
+      "origin": "image_gen",
+      "actualBrowserVerified": false
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-okjeo-house.webp",
+      "sha256": "f9265d6230cc2cc8d226b47fb80fe8c4194585bfdb7385f0a67097c2bdba9dd3",
+      "bytes": 695708,
+      "origin": "image_gen",
+      "actualBrowserVerified": false
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-samhan-farm.webp",
+      "sha256": "2de8e0e12b06fcaff0dcdcf163b6e668b8c5475ccc225595d080eabf7e7fcb4b",
+      "bytes": 740240,
+      "origin": "image_gen",
+      "actualBrowserVerified": false
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-samhan-sodo.webp",
+      "sha256": "8fa165338293bfb77f51fca199c1e8086768acb8f97f7b1266dd0475a0d9c70b",
+      "bytes": 724172,
+      "origin": "image_gen",
+      "actualBrowserVerified": false
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-trade-map.webp",
+      "sha256": "5b7d60dc9584a50250645a97df59562c46ca68bfa10ec313fd4a2e7f3fba5ad7",
+      "bytes": 595936,
+      "origin": "image_gen",
+      "actualBrowserVerified": false
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-wagon.webp",
+      "sha256": "a153be0273a24d660b19d34ef5a2d0728ac817f60f007c3fcde11e85bf188f66",
+      "bytes": 768836,
+      "origin": "image_gen",
+      "actualBrowserVerified": false
+    }
+  ],
+  "actualPCVerified": false,
+  "actualMobileVerified": false
+}
