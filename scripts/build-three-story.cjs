@@ -76,20 +76,16 @@ fs.copyFileSync(path.join(root,'dist',coverSource),path.join(root,'dist',coverTa
 artManifest.protagonist={characterId:'three_v2_seoa',sourceKind:'existing-three-heroine-reused-in-independent-directory',files:reusedProtagonistFiles,cover:{source:coverSource,src:coverTarget},desktopRenderReview:false,mobileRenderReview:false};
 fs.writeFileSync(path.join(root,'dist/three-art-manifest.json'),JSON.stringify(artManifest,null,2)+'\n');
 fs.writeFileSync(path.join(root,'dist/three-art-manifest.js'),'globalThis.THREE_ART_MANIFEST='+JSON.stringify(artManifest)+';\n');
-// A separate preview has its own storage key and no service worker. The published entry is untouched.
+// The official entry owns the module order; the optional preview only changes its save key.
 let html = fs.readFileSync(path.join(root,'dist/index.html'),'utf8')
-  .replace('<script src="season-data.js"></script>', '<script>globalThis.THREE_ENABLE_DEVELOPMENT_PREVIEW=true;</script>\n  <script src="three-story-script.js"></script>\n  <script src="three-art-manifest.js"></script>\n  <script src="three-story-data.js"></script>\n  <script src="season-data.js"></script>\n  <script src="three-season-data.js"></script>')
+  .replace('<script src="three-content-config.js"></script>', '<script>globalThis.THREE_ENABLE_DEVELOPMENT_PREVIEW=true;</script>\n  <script src="three-content-config.js"></script>')
   .replace('<script src="app.js"></script>', '<script src="three-preview-app.js"></script>')
-  .replace('<script src="mnemonic-data.js"></script>', '<script src="three-save-data.js"></script>\n  <script src="mnemonic-data.js"></script>')
   .replace('<script src="editorial-ui.js"></script>', '<script src="three-preview-editorial-ui.js"></script>')
-  .replace('<script src="pwa.js"></script>','<script src="three-official-review.js"></script>\n  <script src="three-story-ui.js"></script>\n  <script src="three-era-isolation.js"></script>');
+  .replace('<script src="pwa.js"></script>','');
 fs.writeFileSync(path.join(root,'dist/three-preview.html'), html);
 const app = fs.readFileSync(path.join(root,'dist/app.js'),'utf8');
 if(!app.includes("KEY='lived-history-v1'"))throw Error('Preview storage-key contract changed');
 fs.writeFileSync(path.join(root,'dist/three-preview-app.js'),app.replace("KEY='lived-history-v1'","KEY='lived-history-three-development-v2'"));
 const editorial=fs.readFileSync(path.join(root,'dist/editorial-ui.js'),'utf8');
-const query="const eraQuestions=id=>QUESTIONS.filter(q=>chapterEra(q.chapterId)===id&&!q.retired&&!q.reviewOnly);";
-if(!editorial.includes(query))throw Error('Preview era-question query contract changed');
-fs.writeFileSync(path.join(root,'dist/three-preview-editorial-ui.js'),editorial.replace(query,
-  "const eraQuestions=id=>QUESTIONS.filter(q=>chapterEra(q.chapterId)===id&&!q.retired&&!q.reviewOnly&&(id!=='three-kingdoms'||q.threeStoryVersion===2));"));
+fs.writeFileSync(path.join(root,'dist/three-preview-editorial-ui.js'),editorial);
 console.log('Built development manuscript: 30 chapters, 90 authored events, 270 distinct actions and outcomes.');

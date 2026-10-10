@@ -1,5 +1,5 @@
 /* Three-only phase controller. Intro -> mid quiz -> choice -> result -> common -> end quiz. */
-if(globalThis.THREE_PREVIEW_RUNTIME){
+if(globalThis.CORE_APP_READY===true&&globalThis.THREE_PREVIEW_RUNTIME){
   const runtime=globalThis.THREE_PREVIEW_RUNTIME;
   runtime.installQuestionBank(globalThis.THREE_VERIFIED_REVIEW_RECORDS||[]);
   const isThree=source=>source?.threeStoryVersion===2;

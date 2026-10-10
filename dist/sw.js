@@ -1,5 +1,5 @@
 const CACHE_PREFIX='lived-history-shell-';
-const CACHE_VERSION='2026-10-10-proto-background-draft-v52';
+const CACHE_VERSION='2026-10-10-three-service-incomplete-v53';
 const CACHE_NAME=CACHE_PREFIX+CACHE_VERSION;
 const APP_SHELL=[
   '/',
@@ -19,6 +19,9 @@ const APP_SHELL=[
   '/editorial-ui.js', '/era-visuals.js', '/joseon-data.js', '/ancient-data.js', '/proto-story-script.js', '/proto-story-data.js', '/proto-art.js', '/proto-background-art.js', '/proto-story-ui.js', '/season-data.js', '/official-exam-catalog.js', '/official-exam-explanations.js', '/ox-quiz-data.js', '/v2-learning.js', '/v2-app.js',
   '/joseon-ui.js', '/ancient-ui.js', '/mnemonic-data.js', '/exam-memory-ui.js', '/ox-quiz-ui.js',
   '/app.js',
+  '/three-content-config.js','/three-story-script.js','/three-art-manifest.js','/three-story-data.js',
+  '/three-season-data.js','/three-save-data.js','/three-official-review.js','/three-story-ui.js',
+  '/three-era-isolation.js','/three-service-ui.js','/three-service.css',
   '/pwa.js',
   '/manifest.webmanifest',
   '/goryeo.png',

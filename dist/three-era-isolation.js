@@ -1,5 +1,5 @@
-/* Opt-in content boundary. Never read or write the published legacy save key. */
-if(globalThis.THREE_PREVIEW_RUNTIME){
+/* Content boundary. Keep other eras intact while sharing the official app shell. */
+if(globalThis.CORE_APP_READY===true&&globalThis.THREE_PREVIEW_RUNTIME){
   const eraId='three-kingdoms',progressKey='three-kingdoms-v2',storageKey='lived-history-three-kingdoms-v2';
   const copy=value=>JSON.parse(JSON.stringify(value));
   const ownsChapter=id=>CHAPTERS[id]?.threeStoryVersion===2;
@@ -79,11 +79,28 @@ if(globalThis.THREE_PREVIEW_RUNTIME){
     meta().wrongAnswers=[...(meta().wrongAnswers||[]),...copy(recovered.filter(item=>!known.has(item.questionId)))];
   }
   const beforeResume=resumeEra;
+  const isLegacyThree=value=>chapterEra(value?.currentChapter)===eraId&&!ownsChapter(value?.currentChapter);
+  function archiveLegacyThree(){
+    const value=mainRun();if(!isLegacyThree(value))return;
+    meta().eraProgress||={};
+    meta().eraProgress[eraId]={...meta().eraProgress[eraId],lastChapter:value.currentChapter,lastScene:value.storyId,
+      resume:{run:copy(run()),mainRun:state.mainRun?copy(state.mainRun):null}};
+    if(!validResume(meta().eraProgress[progressKey]?.resume))delete meta().eraProgress[progressKey];
+  }
+  archiveLegacyThree();
+  const beforeRemember=rememberEraProgress;
+  rememberEraProgress=function(){if(isLegacyThree(mainRun()))return archiveLegacyThree();return beforeRemember();};
   resumeEra=function(id){
     if(id!==eraId)return beforeResume(id);
     recoverIndependentResume();
     const saved=meta().eraProgress?.[progressKey]?.resume;
     if(saved&&!validResume(saved))delete meta().eraProgress[progressKey];
+    if(isLegacyThree(mainRun())){
+      archiveLegacyThree();state.mainRun=null;
+      const restored=meta().eraProgress?.[progressKey]?.resume;
+      if(validResume(restored)){state.run=copy(restored.run);state.mainRun=restored.mainRun?copy(restored.mainRun):null;}
+      else if(!startChapter(state,eraChapters(eraId)[0].chapterId))return;
+    }
     return beforeResume(id);
   };
   globalThis.THREE_ERA_ISOLATION={eraId,progressKey,storageKey,validResume,recoverIndependentResume};

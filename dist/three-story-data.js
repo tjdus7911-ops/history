@@ -1,5 +1,5 @@
-/* Development installer. The published index does not load unfinished content. */
-if (globalThis.THREE_ENABLE_DEVELOPMENT_PREVIEW === true) {
+/* Independent Three Kingdoms installer shared by the service and development preview. */
+if (globalThis.THREE_ENABLE_CONTENT === true || globalThis.THREE_ENABLE_DEVELOPMENT_PREVIEW === true) {
   const script = globalThis.THREE_STORY_SCRIPT;
   if (!script || script.chapterCount !== 30 || script.sceneCount !== 90) throw Error('삼국 30챕터·90씬 대본 누락');
   const eraId = 'three-kingdoms';
@@ -20,7 +20,7 @@ if (globalThis.THREE_ENABLE_DEVELOPMENT_PREVIEW === true) {
     CHAPTERS[first.chapterId] = {chapterId:first.chapterId, eraId, episode:'three', number:String(chapter.number).padStart(2,'0'),
       title:chapter.title, subtitle:`서아의 기록책 · ${chapter.country}`, years:[...new Set(chapter.scenes.map(source=>source.dateLabel))].join(' · '),
       startStoryId:first.sceneId, completeStoryId:last.sceneId, questionCount:0, reviewQuestionCount:0, questionSetCount:0,
-      implemented:true, threeStoryVersion:2, developmentPreview:true};
+      implemented:true, threeStoryVersion:2, contentStatus:'in-development',developmentPreview:globalThis.THREE_ENABLE_DEVELOPMENT_PREVIEW===true};
     for (let index=0;index<chapter.scenes.length;index++) {
       const source=chapter.scenes[index], artId=`${source.sceneId}_background`;
       ASSETS[artId] = {id:artId, label:`제작·검증 대기: ${source.country} ${source.title}`, status:'ASSET_REQUIRED', imageKind:'story-background',embeddedCharacters:false};
@@ -42,7 +42,7 @@ if (globalThis.THREE_ENABLE_DEVELOPMENT_PREVIEW === true) {
         year:parseInt(source.dateLabel,10),threeDateLabel:source.dateLabel,location:`${source.country} · ${source.title}`,
         title:source.title,sceneNumber:source.number,illustrationId:artId,dialogues:source.dialogues.map(convert),
         threeCommon:source.common.map(convert),nextStoryId:next,completeChapter:!next,storyActive:true,threeStoryVersion:2,
-        fictionNotice:script.fictionNotice,threeCheckpoint:source.learningCheckpoint,
+        fictionNotice:script.fictionNotice,threeCheckpoint:source.learningCheckpoint,threeProduction:source.production,
         choices:source.choices.map((branch,choiceIndex)=>choice(branch.label,next||source.sceneId,{}, {},'',{
           resultIllustrationId:artId,resultDialogues:branch.dialogues.map(convert),flags:branch.flags,importantChoice:`three-v2-${choiceIndex}`,
           threeChoiceIndex:choiceIndex}))});
@@ -78,4 +78,5 @@ if (globalThis.THREE_ENABLE_DEVELOPMENT_PREVIEW === true) {
       chapter.questionCount=ids.length;chapter.reviewQuestionCount=ids.length;SPLIT_REVIEW_IDS[chapter.chapterId]=ids;
     }
   }};
+  globalThis.THREE_STORY_RUNTIME=globalThis.THREE_PREVIEW_RUNTIME;
 }

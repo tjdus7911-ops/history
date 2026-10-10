@@ -1,5 +1,7 @@
 {
-  "status": "INCOMPLETE_DO_NOT_PUBLISH",
+  "status": "SERVICE_CONNECTED_CONTENT_INCOMPLETE",
+  "completedSceneCount": 0,
+  "incompleteSceneCount": 90,
   "chapterDraftCount": 30,
   "sceneDraftCount": 90,
   "choiceDraftCount": 270,
@@ -15,11 +17,16 @@
   "reusedProtagonistAssetFileCount": 12,
   "missingAssetFiles": [],
   "changedProtectedFiles": [],
+  "changedShellFiles": [
+    "editorial-ui.js",
+    "index.html",
+    "sw.js"
+  ],
   "genealogyImageCoverage": null,
   "genealogyImageStatus": "Three source images unavailable; coverage cannot be measured",
   "desktopVisualQA": "BLOCKED: computer-use kernel assets path initialization failure",
   "mobileVisualQA": "BLOCKED: computer-use kernel assets path initialization failure",
-  "publicationEntryChanged": false,
+  "publicationEntryChanged": true,
   "scenes": [
     {
       "sceneId": "three_v2_ch01_s1",

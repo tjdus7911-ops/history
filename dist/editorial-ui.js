@@ -1,47 +1,4 @@
-/* Latest editorial UI. Story, scoring and chapter transitions remain in app.js. */
-const LEARNING_ERAS=HISTORY_SEASONS.map(season=>({...season,available:season.status===HISTORY_SEASON_STATUS.AVAILABLE}));
-const eraInfo=id=>LEARNING_ERAS.find(e=>e.id===id)||LEARNING_ERAS.find(e=>e.id==='goryeo');
-const chapterEra=id=>CHAPTERS[id]?.eraId||'goryeo';
-const eraHero=id=>historySeasonInfo(id).bannerAsset||'';
-ensureHistorySeasonProgress(meta());
-let selectedEra=eraInfo(meta().selectedLearningEra||'goryeo').id,eraTab='chapters',homeEraIndex=Math.max(0,LEARNING_ERAS.findIndex(era=>era.id===eraInfo(meta().selectedLearningEra||'goryeo').id)),recordEra='all',recordPeriod='today',wrongEra='all';
-const eraChapters=id=>chapterOrder().filter(ch=>chapterEra(ch.chapterId)===id);
-const eraQuestions=id=>QUESTIONS.filter(q=>chapterEra(q.chapterId)===id&&!q.retired&&!q.reviewOnly);
-function editorialChapterYears(ch){if(ch.years)return ch.years;const years=Object.values(STORIES).filter(s=>s.chapterId===ch.chapterId&&Number.isFinite(s.year)).map(s=>s.year);if(!years.length)return '';const start=Math.min(...years),end=Math.max(...years);return start===end?String(start):start+' — '+end}
-function eraProgress(id){const chapters=eraChapters(id),key=historySeasonProgressKey(id);return chapters.length?Math.round(chapters.reduce((n,ch)=>n+chapterProgress(ch.chapterId),0)/chapters.length):(meta().eraProgress?.[key]?.progress||0)}
-function rememberEraProgress(){
- const id=chapterEra(mainRun().currentChapter),key=historySeasonProgressKey(id),previous=meta().eraProgress?.[key];
- meta().eraProgress||={};
- meta().eraProgress[key]={...previous,lastChapter:mainRun().currentChapter,lastScene:mainRun().storyId,progress:eraProgress(id),resume:{run:JSON.parse(JSON.stringify(run())),mainRun:state.mainRun?JSON.parse(JSON.stringify(state.mainRun)):null},updatedAt:previous?.updatedAt||null};
- if(['game','quiz','complete'].includes(screen)&&mainRun().started){meta().eraProgress[key].updatedAt=new Date().toISOString();meta().lastLearningEra=id;}
-}
-const saveBeforeEditorial=save;
-save=function(){const draft=meta().editorialAnswerDraft;if(draft&&draft.questionId===activeQuestion()?.questionId&&(quizMode==='story'?run().questionAnswer:reviewAnswer)!==null)delete meta().editorialAnswerDraft;rememberEraProgress();saveBeforeEditorial()};
-rememberEraProgress();
-function resumeEra(id){
- const era=eraInfo(id);if(!era.available)return;
- const current=chapterEra(mainRun().currentChapter);
- if(current!==id){rememberEraProgress();const resume=meta().eraProgress[historySeasonProgressKey(id)]?.resume;if(!resume)return;state.run=JSON.parse(JSON.stringify(resume.run));state.mainRun=resume.mainRun?JSON.parse(JSON.stringify(resume.mainRun)):null;}
- selectedEra=id;meta().selectedLearningEra=id;return playMain();
-}
-function periodLearning(m,period='today',era='all',now=new Date()){
- const matches=id=>era==='all'||chapterEra(QUESTIONS.find(q=>q.questionId===id)?.chapterId)===era;
- const boundary=new Date(now);boundary.setHours(0,0,0,0);boundary.setDate(boundary.getDate()-(period==='7'?6:period==='30'?29:0));
- const events=(m.learningEvents||[]).filter(e=>learningDay(e.answeredAt)&&new Date(e.answeredAt)<=now&&matches(e.questionId));
- let attempts=0,correct=0;
- if(period==='all'){for(const [id,r]of Object.entries(m.questionRecords||{}))if(matches(id)){attempts+=r.attempts||0;correct+=r.correctCount||0}}
- else{const selected=events.filter(e=>new Date(e.answeredAt)>=boundary);attempts=selected.length;correct=selected.filter(e=>e.correct).length;}
- const days=new Set(events.map(e=>learningDay(e.answeredAt))),cursor=new Date(now);let streak=0;if(!days.has(learningDay(now)))cursor.setDate(cursor.getDate()-1);while(days.has(learningDay(cursor))){streak++;cursor.setDate(cursor.getDate()-1)}
- return {attempts,correct,wrong:Math.max(0,attempts-correct),accuracy:attempts?Math.round(correct/attempts*100):null,streak};
-}
-/* A study index for the currently available curriculum, never a probability of passing. */
-const READINESS_WEIGHTS={accuracy:.55,coverage:.25,chapters:.20,recentAnswers:30};
-function learningReadiness(m,era='all'){
- const eligible=QUESTIONS.filter(q=>!q.retired&&!q.reviewOnly&&isVerifiedOfficialQuestion(q)&&q.examLevel==='심화'&&(era==='all'||chapterEra(q.chapterId)===era));
- const keys=new Set(),questions=eligible.filter(q=>{const key=[q.examRound,q.examLevel,q.questionNumber].join(':');if(keys.has(key))return false;keys.add(key);return true});
- const ids=new Set(eligible.map(q=>q.questionId)),records=eligible.map(q=>m.questionRecords?.[q.questionId]).filter(Boolean);
- const recent=(m.learningEvents||[]).filter(e=>ids.has(e.questionId)&&learningDay(e.answeredAt)&&new Date(e.answeredAt)<=new Date()).sort((a,b)=>a.answeredAt.localeCompare(b.answeredAt)).slice(-READINESS_WEIGHTS.recentAnswers);
- const attempts=recent.length||records.reduce((n,r)=>n+(r.attempts||0),0),correct=recent.length?recent.filter(e=>e.correct).length:records.reduce((n,r)=>n+(r.correctCount||0),0);
+t.length?recent.filter(e=>e.correct).length:records.reduce((n,r)=>n+(r.correctCount||0),0);
  const studied=new Set(eligible.filter(q=>m.questionRecords?.[q.questionId]?.attempts).map(q=>[q.examRound,q.examLevel,q.questionNumber].join(':'))).size;
  const chapters=chapterOrder().filter(ch=>ch.implemented&&(era==='all'||chapterEra(ch.chapterId)===era)),completed=chapters.filter(ch=>m.completedChapters.includes(ch.chapterId)).length;
  const accuracy=attempts?correct/attempts:0,coverage=questions.length?studied/questions.length:0,completion=chapters.length?completed/chapters.length:0;

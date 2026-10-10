@@ -14,24 +14,35 @@ for(const file of art.protagonist.files){
   const hash=path=>crypto.createHash('sha256').update(fs.readFileSync('dist/'+path)).digest('hex');
   assert.equal(hash(file.src),hash(file.source),'Independent heroine copy must preserve the approved source artwork');
 }
-const sourceHtml=fs.readFileSync('dist/index.html','utf8'),previewHtml=fs.readFileSync('dist/three-preview.html','utf8');
+const sourceHtml=fs.readFileSync('tests/fixtures/pre-three-service-index.html','utf8'),previewHtml=fs.readFileSync('dist/three-preview.html','utf8'),serviceHtml=fs.readFileSync('dist/index.html','utf8');
 assert(!sourceHtml.includes('three-story-data.js'));assert(!previewHtml.includes('src="pwa.js"'));
 assert(fs.readFileSync('dist/three-preview-app.js','utf8').includes("KEY='lived-history-three-development-v2'"));
-function load(preview,saved=null){
+function load(mode,saved=null){
+  const preview=mode===true,service=mode==='service';
   let html='';const handlers=[];
   const primaryKey=preview?'lived-history-three-development-v2':'lived-history-v1';
   const storage=new Map(typeof saved==='string'?[[primaryKey,saved]]:Object.entries(saved||{}));
   const context=vm.createContext({Date,console,document:{querySelector:s=>s==='#app'?{set innerHTML(value){html=value}}:null,querySelectorAll:()=>[],
     addEventListener:(type,handler,capture)=>{if(type==='click')handlers.push({handler,capture})},createElement:()=>({setAttribute(){},remove(){}}),body:{append(){}}},
     localStorage:{getItem:key=>storage.get(key)||null,setItem:(key,value)=>storage.set(key,value)},window:{scrollTo(){}},navigator:{},setTimeout:()=>0,clearTimeout(){},setInterval:()=>1,clearInterval(){}});
-  const htmlSource=preview?previewHtml:sourceHtml;
+  const htmlSource=service?serviceHtml:preview?previewHtml:sourceHtml;
   if(preview)vm.runInContext('globalThis.THREE_ENABLE_DEVELOPMENT_PREVIEW=true',context);
   const files=[...htmlSource.matchAll(/<script src="([^"]+)"/g)].map(match=>match[1]).filter(file=>file!=='pwa.js');
   vm.runInContext(files.map(file=>fs.readFileSync('dist/'+file,'utf8')).join('\n'),context);
   const run=source=>vm.runInContext(source,context),copy=source=>JSON.parse(run('JSON.stringify('+source+')'));
   return{run,copy,handlers,saved:()=>storage.get(primaryKey),storage:()=>Object.fromEntries(storage),html:()=>html};
 }
-const baseline=load(false),preview=load(true);
+assert(serviceHtml.includes('three-content-config.js')&&serviceHtml.includes('three-service-ui.js')&&serviceHtml.includes('src="app.js"'));
+assert(!serviceHtml.includes('three-preview-app.js'));
+const baseline=load(false),preview=load('service');
+assert.equal(preview.run('THREE_SERVICE_ENTRY_READY'),true);
+assert.equal(preview.run('THREE_CONTENT_STATUS.all().length'),90);
+assert.equal(preview.run('THREE_CONTENT_STATUS.all().filter(s=>s.complete).length'),0);
+assert.equal(preview.run('THREE_CONTENT_STATUS.all().filter(s=>s.expanded).length'),6);
+preview.run("selectedEra='three-kingdoms';screen='eras';render()");
+assert(preview.html().includes('제작 중'));
+assert(preview.html().includes('완성 0'));
+
 for(const collection of ['CHAPTERS','STORIES','QUESTIONS']){
   const filter=collection==='QUESTIONS'?"q=>!q.chapterId?.startsWith('three-')":"q=>q.eraId!=='three-kingdoms'";
   assert.deepEqual(preview.copy(`Object.values(${collection}).filter(${filter})`),baseline.copy(`Object.values(${collection}).filter(${filter})`),`Protected ${collection}`);
@@ -56,7 +67,7 @@ for(const name of ['CHARACTERS','PORTRAITS','ASSETS']){
   }
 }
 // Visit each era through the real era resume function, then return in reverse order.
-const boundary=load(true),expected=new Map();
+const boundary=load('service'),expected=new Map();
 const eraIds=['goryeo','proto-kingdoms','joseon','three-kingdoms'];
 assert(boundary.run('home()').includes('data-era-slide="proto-kingdoms"'));
 assert(boundary.run('home()').includes('data-era-slide="three-kingdoms"'));
@@ -80,9 +91,9 @@ const protectedSaved=Object.fromEntries(eraIds.filter(id=>id!=='three-kingdoms')
 const separate=JSON.parse(boundary.storage()['lived-history-three-kingdoms-v2']);
 assert.equal(separate.eraId,'three-kingdoms');assert(separate.progress.resume.run.currentChapter.startsWith('three-v2-'));
 assert(Object.keys(separate.meta.questionRecords).every(id=>id.startsWith('three_v2_')));
-assert(!Object.hasOwn(boundary.storage(),'lived-history-v1'),'Preview must not write the published legacy save');
+assert(Object.hasOwn(boundary.storage(),'lived-history-v1'),'Official entry must save through the main shell');assert(!Object.hasOwn(boundary.storage(),'lived-history-three-development-v2'));
 boundary.run("resumeEra('three-kingdoms');meta().eraProgress['three-kingdoms']={legacySentinel:'keep-old-three-record'};meta().completedChapters.push('ch01');save()");
-const namespaceReload=load(true,boundary.storage());
+const namespaceReload=load('service',boundary.storage());
 assert.equal(namespaceReload.run('run().playerOutfit'),'three_traveler','A completed Goryeo chapter must not change the Three heroine outfit on reload');
 assert(!namespaceReload.run("run().inventory.some(item=>item.id==='goryeo-commoner-clothes')"));
 assert(!namespaceReload.run("run().sharedEvents.includes('met_doyun_ch01')"));
@@ -99,7 +110,7 @@ for(const [id,record] of Object.entries(protectedSaved)){
   assert.deepEqual(actual,record,`${id} record preserved during three-only recovery`);
 }
 // Recover Three independently even when the aggregate preview save is unavailable.
-const recovered=load(true,{'lived-history-three-kingdoms-v2':JSON.stringify(separate)});
+const recovered=load('service',{'lived-history-three-kingdoms-v2':JSON.stringify(separate)});
 recovered.run("resumeEra('three-kingdoms')");
 assert.equal(recovered.run('run().flags.isolationProbe'),'three-kingdoms');
 assert.equal(recovered.run('run().stats.wealth'),103);
@@ -117,13 +128,13 @@ preview.run("state.run=INITIAL_RUN('three-v2-ch01');screen='game';enterStory();r
 assert(preview.html().includes('goguryeo-hungry-village-spring.webp'));assert(preview.html().includes('gogukcheon-neutral.webp'));
 // A common passage must resume at the saved line rather than the intro or next scene.
 preview.run("THREE_PREVIEW_ACTIONS.switchPhase(STORIES[run().storyId],'common');run().dialogueCursor=3;save()");
-const commonReload=load(true,preview.saved());
+const commonReload=load('service',preview.saved());
 commonReload.run("screen='game';enterStory();render()");
 assert.equal(commonReload.run('run().dialogueCursor'),3);
 assert.equal(commonReload.run("THREE_PREVIEW_ACTIONS.phaseState(STORIES[run().storyId]).phase"),'common');
 assert(commonReload.html().includes(script.chapters[0].scenes[0].common[2].text));
 // Exercise the capture handler that guards real choice clicks.
-const clicks=load(true);clicks.run("state.run=INITIAL_RUN('three-v2-ch01');screen='game';enterStory()");
+const clicks=load('service');clicks.run("state.run=INITIAL_RUN('three-v2-ch01');screen='game';enterStory()");
 const guard=clicks.handlers.filter(item=>item.capture).at(-1).handler;
 let stopped=false;
 const event={target:{closest:()=>({disabled:false,dataset:{choice:'1'}})},stopImmediatePropagation(){stopped=true},preventDefault(){}};
@@ -133,7 +144,7 @@ stopped=false;guard(event);assert(!stopped);
 assert.equal(clicks.run("THREE_PREVIEW_ACTIONS.phaseState(STORIES[run().storyId]).phase"),'result');
 assert.equal(clicks.run("THREE_PREVIEW_ACTIONS.phaseState(STORIES[run().storyId]).choiceIndex"),1);
 // Test-only queue fixtures exercise both checkpoints without adding unreviewed topic assignments.
-const queues=load(true);
+const queues=load('service');
 queues.run(`state.run=INITIAL_RUN('three-v2-ch01');screen='game';enterStory();
   QUESTIONS.push(...QUESTIONS.filter(q=>q.threeStoryVersion===2).slice(0,2).map((q,i)=>({...q,questionId:'test-only-checkpoint-'+i,chapterId:'three-v2-ch01',relatedSceneId:'three_v2_ch01_s1'})));
   THREE_PREVIEW_ACTIONS.checkpoint(STORIES[run().storyId],'mid')`);
@@ -147,7 +158,7 @@ assert.equal(queues.run('activeQuestion().questionId'),'test-only-checkpoint-1')
 queues.run('recordQuestion(state,activeQuestion().questionId,(activeQuestion().answer+1)%5);continueStoryQuestion()');
 assert.equal(queues.run('run().storyId'),'three_v2_ch01_s2');
 for(const selected of [0,1,2]){
-  const game=load(true);let totalScenes=0,totalQuestions=0;
+  const game=load('service');let totalScenes=0,totalQuestions=0;
   for(let chapterNumber=1;chapterNumber<=30;chapterNumber++){
     const chapterId=`three-v2-ch${String(chapterNumber).padStart(2,'0')}`;
     game.run(`state.run=INITIAL_RUN(${JSON.stringify(chapterId)});screen='game';enterStory()`);
@@ -162,7 +173,7 @@ for(const selected of [0,1,2]){
       assert.equal(game.run(`run().flags.threeChoice_${chapterNumber}_${sceneNumber}`),selected);
       assert(game.html().includes(reaction));
       // Reload a pending branch exactly as a browser would after save.
-      if(chapterNumber===1&&sceneNumber===1){const restored=load(true,game.saved());assert.deepEqual(restored.copy('run().pending'),game.copy('run().pending'));}
+      if(chapterNumber===1&&sceneNumber===1){const restored=load('service',game.saved());assert.deepEqual(restored.copy('run().pending'),game.copy('run().pending'));}
       game.run(`(()=>{const s=STORIES[run().pending.sourceSceneId];run().pending=null;THREE_PREVIEW_ACTIONS.switchPhase(s,'common')})()`);
       assert.equal(game.run('run().storyId'),sourceId,'Common dialogue must stay in the chosen scene before end quiz');
       assert.equal(game.run('conversationEntries(STORIES[run().storyId],null).length'),script.chapters[chapterNumber-1].scenes[sceneNumber-1].common.length);
@@ -172,7 +183,7 @@ for(const selected of [0,1,2]){
         const q=game.copy('activeQuestion()');
         const answer=selected===1?(q.answer+1)%5:q.answer;
         game.run(`recordQuestion(state,${JSON.stringify(q.questionId)},${answer});save()`);
-        if(totalQuestions===1){const savedQuiz=load(true,game.saved());assert.deepEqual(savedQuiz.copy('run().threeCheckpoint'),game.copy('run().threeCheckpoint'));assert.equal(savedQuiz.run('run().questionAnswer'),answer);}
+        if(totalQuestions===1){const savedQuiz=load('service',game.saved());assert.deepEqual(savedQuiz.copy('run().threeCheckpoint'),game.copy('run().threeCheckpoint'));assert.equal(savedQuiz.run('run().questionAnswer'),answer);}
         game.run('continueStoryQuestion()');
       }
       if(sceneNumber<3)assert.equal(game.run('screen'),'game');
@@ -181,4 +192,4 @@ for(const selected of [0,1,2]){
   }
   assert.equal(totalScenes,90);assert.equal(totalQuestions,13);
 }
-console.log('PASS development only: 30 chapters / 90 scene transitions / 270 distinct branches; four-era switching and independent save recovery; pending-branch/common-dialogue/quiz save round trips; 13 verified-question placements; original characters, portraits, assets and protected eras unchanged. Artwork, full exam coverage and browser QA remain pending.');
+console.log('PASS official service entry (content incomplete): 30 chapters / 90 scene transitions / 270 distinct branches; four-era switching and independent save recovery; pending-branch/common-dialogue/quiz save round trips; 13 verified-question placements; original characters, portraits, assets and protected eras unchanged. Artwork, full exam coverage and browser QA remain pending.');

@@ -8,7 +8,9 @@ const verified=new Set(reviews.filter(record=>record.visualQuestionReview&&recor
 const files=[...Object.values(art.backgrounds).map(item=>item.src),...Object.values(art.characters).map(item=>item.neutral)];
 const missingAssetFiles=files.filter(file=>!fs.existsSync(path.join(root,'dist',file)));
 const baseline=JSON.parse(fs.readFileSync(process.argv[2],'utf8'));
-const changedProtectedFiles=baseline.protectedFiles.filter(item=>crypto.createHash('sha256').update(fs.readFileSync(path.join(root,'dist',item.path))).digest('hex')!==item.sha256).map(item=>item.path);
+const changedFiles=baseline.protectedFiles.filter(item=>crypto.createHash('sha256').update(fs.readFileSync(path.join(root,'dist',item.path))).digest('hex')!==item.sha256).map(item=>item.path);
+const shellAllowlist=new Set(['index.html','editorial-ui.js','sw.js']);
+const changedProtectedFiles=changedFiles.filter(file=>!shellAllowlist.has(file));
 const rows=scenes.map(scene=>({sceneId:scene.sceneId,chapterId:scene.chapterId,title:scene.title,
   expandedDialogue:scene.production.dialogue==='expanded-needs-editorial-review',
   backgroundFileReviewed:!!art.backgrounds[scene.sceneId]?.visualFileReview,
@@ -16,7 +18,7 @@ const rows=scenes.map(scene=>({sceneId:scene.sceneId,chapterId:scene.chapterId,t
   verifiedQuestionPlacements:scene.learningCheckpoint.verifiedQuestionIds.filter(id=>verified.has(id)).length,
   unverifiedQuestionPlacements:scene.learningCheckpoint.verifiedQuestionIds.filter(id=>!verified.has(id)),
   desktopQA:false,mobileQA:false}));
-const report={status:'INCOMPLETE_DO_NOT_PUBLISH',chapterDraftCount:story.chapters.length,sceneDraftCount:scenes.length,
+const report={status:'SERVICE_CONNECTED_CONTENT_INCOMPLETE',completedSceneCount:0,incompleteSceneCount:scenes.length,chapterDraftCount:story.chapters.length,sceneDraftCount:scenes.length,
   choiceDraftCount:scenes.reduce((sum,scene)=>sum+scene.choices.length,0),
   expandedDialogueSceneCount:rows.filter(row=>row.expandedDialogue).length,
   uniqueVerifiedOfficialQuestionCount:verified.size,
@@ -27,7 +29,7 @@ const report={status:'INCOMPLETE_DO_NOT_PUBLISH',chapterDraftCount:story.chapter
   backgroundSceneCount:rows.filter(row=>row.backgroundFileReviewed).length,
   npcSceneCount:rows.filter(row=>row.npcFileReviewed).length,newAssetFileCount:new Set(files).size,
   reusedProtagonistAssetFileCount:(art.protagonist?.files?.length||0)+(art.protagonist?.cover?1:0),
-  missingAssetFiles,changedProtectedFiles,
+  missingAssetFiles,changedProtectedFiles,changedShellFiles:changedFiles.filter(file=>shellAllowlist.has(file)),
   genealogyImageCoverage:null,genealogyImageStatus:'Three source images unavailable; coverage cannot be measured',
   desktopVisualQA:'BLOCKED: computer-use kernel assets path initialization failure',
   mobileVisualQA:'BLOCKED: computer-use kernel assets path initialization failure',

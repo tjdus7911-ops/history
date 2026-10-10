@@ -5,8 +5,20 @@ const digest=v=>crypto.createHash('sha256').update(typeof v==='string'?v.replace
 const baseline=require('./fixtures/proto-runtime-preservation.json');
 for(const [id,hash] of Object.entries(baseline.sceneHashes))assert.equal(digest(copy(`STORIES[${JSON.stringify(id)}]`)),hash,'protected runtime scene '+id);
 for(const [id,hash] of Object.entries(baseline.chapterHashes))assert.equal(digest(copy(`CHAPTERS[${JSON.stringify(id)}]`)),hash,'protected chapter '+id);
-for(const [name,hash] of Object.entries(baseline.runtimeHashes))assert.equal(digest(copy(name)),hash,'unchanged runtime '+name);
-for(const [file,hash] of Object.entries(baseline.fileHashes))assert.equal(digest(fs.readFileSync(file,'utf8')),hash,'unchanged renderer/assets '+file);
+for(const [name,hash] of Object.entries(baseline.runtimeHashes)){
+ const value=copy(name);
+ const original=name==='QUESTIONS'?value.filter(q=>q.threeStoryVersion!==2):Object.fromEntries(Object.entries(value).filter(([id])=>!id.startsWith('three_v2')));
+ assert.equal(digest(original),hash,'unchanged original runtime '+name);
+}
+for(const [file,hash] of Object.entries(baseline.fileHashes)){
+ let source=fs.readFileSync(file,'utf8');
+ if(file==='dist/editorial-ui.js'){
+  const addition="&&(!globalThis.THREE_STORY_RUNTIME||id!=='three-kingdoms'||q.threeStoryVersion===2)";
+  assert.equal(source.split(addition).length,2,'only intended era query change');
+  source=source.replace(addition,'');
+ }
+ assert.equal(digest(source),hash,'unchanged renderer/assets '+file);
+}
 assert.deepEqual(copy('PROTO_QUESTION_SLOTS'),require('../docs/PROTO_QUESTION_SLOTS.json'));
 const evidence=new Map(require('../docs/PROTO_MAIN_OFFICIAL_SOURCES.json').map(s=>[s.officialQuestionId,s]));
 const slots=copy('PROTO_QUESTION_SLOTS');assert.equal(slots.length,18);assert.equal(new Set(slots.map(s=>s.questionSlotId)).size,18);

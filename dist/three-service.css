@@ -1,0 +1,10 @@
+.three-scene-notice,.three-content-report{margin:12px 16px;padding:12px 16px;border:1px solid #8f7549;border-radius:12px;background:#faf4e8;color:#493d2c;font-size:13px;line-height:1.6}
+.three-scene-notice strong,.three-scene-notice span,.three-scene-notice small{display:block}
+.three-scene-notice small{opacity:.8}
+.three-content-report summary{cursor:pointer;font-weight:700}
+.three-content-report ul{list-style:none;padding:0;margin:12px 0 0;max-height:420px;overflow:auto}
+.three-content-report li{padding:8px 0;border-top:1px solid #d9ccb5}
+.three-content-report li b,.three-content-report li span{display:block}
+.three-content-state{color:#8c6225!important}
+.three-card-art-pending{display:grid;place-items:center;min-width:64px;max-width:80px;min-height:64px;background:#efe7d9;border-radius:8px;color:#66573f;font-size:11px;text-align:center}
+@media(max-width:480px){.three-scene-notice,.three-content-report{margin:8px;padding:10px 12px;font-size:12px}.three-scene-notice small{font-size:11px}}

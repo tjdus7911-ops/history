@@ -6,7 +6,7 @@ const eraHero=id=>historySeasonInfo(id).bannerAsset||'';
 ensureHistorySeasonProgress(meta());
 let selectedEra=eraInfo(meta().selectedLearningEra||'goryeo').id,eraTab='chapters',homeEraIndex=Math.max(0,LEARNING_ERAS.findIndex(era=>era.id===eraInfo(meta().selectedLearningEra||'goryeo').id)),recordEra='all',recordPeriod='today',wrongEra='all';
 const eraChapters=id=>chapterOrder().filter(ch=>chapterEra(ch.chapterId)===id);
-const eraQuestions=id=>QUESTIONS.filter(q=>chapterEra(q.chapterId)===id&&!q.retired&&!q.reviewOnly&&(id!=='three-kingdoms'||q.threeStoryVersion===2));
+const eraQuestions=id=>QUESTIONS.filter(q=>chapterEra(q.chapterId)===id&&!q.retired&&!q.reviewOnly&&(!globalThis.THREE_STORY_RUNTIME||id!=='three-kingdoms'||q.threeStoryVersion===2));
 function editorialChapterYears(ch){if(ch.years)return ch.years;const years=Object.values(STORIES).filter(s=>s.chapterId===ch.chapterId&&Number.isFinite(s.year)).map(s=>s.year);if(!years.length)return '';const start=Math.min(...years),end=Math.max(...years);return start===end?String(start):start+' — '+end}
 function eraProgress(id){const chapters=eraChapters(id),key=historySeasonProgressKey(id);return chapters.length?Math.round(chapters.reduce((n,ch)=>n+chapterProgress(ch.chapterId),0)/chapters.length):(meta().eraProgress?.[key]?.progress||0)}
 function rememberEraProgress(){
