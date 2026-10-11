@@ -46,4 +46,17 @@ for(const name of [...dataScripts,'v2-app.js','editorial-ui.js'])new vm.Script(f
 for(const file of context.readyAssets)assert(fs.existsSync(path.join('dist',file)),`missing ready illustration: ${file}`);
 vm.runInContext('this.eraAssets=[...Object.values(ERA_PROTAGONISTS).flatMap(c=>Object.values(c.assetPaths)),...Object.values(ERA_BACKGROUNDS).map(b=>b.src)]',context);
 for(const file of context.eraAssets)assert(fs.existsSync(path.join('dist',file)),`missing era visual: ${file}`);
+// Only preview builds expose the responsive review harness. It uses the same
+// game scripts and styles, with an isolated storage prefix for test fixtures.
+const reviewFiles=['ui-review.html','ui-review-game.html','ui-review-storage.js','ui-review-fixtures.js'];
+for(const name of ['storage.js','fixtures.js'])new vm.Script(fs.readFileSync('tests/browser-review/'+name,'utf8'),{filename:name});
+if(process.env.VERCEL_ENV==='preview'||process.env.HISTORY_UI_REVIEW==='1'){
+  fs.copyFileSync('tests/browser-review/review.html','dist/ui-review.html');
+  fs.copyFileSync('tests/browser-review/storage.js','dist/ui-review-storage.js');
+  fs.copyFileSync('tests/browser-review/fixtures.js','dist/ui-review-fixtures.js');
+  const reviewGame=html.replace('<script src="data.js">','<script src="ui-review-storage.js"></script>\n  <script src="data.js">').replace(/\s*<script src="pwa\.js"><\/script>/,'').replace('</body>','  <script src="ui-review-fixtures.js"></script>\n</body>');
+  fs.writeFileSync('dist/ui-review-game.html',reviewGame);
+}else{
+  for(const name of reviewFiles)if(fs.existsSync('dist/'+name))fs.unlinkSync('dist/'+name);
+}
 console.log(`PASS: static PWA build verified (${required.length} files, ${context.readyAssets.length} ready illustrations, install manifest and service worker).`);

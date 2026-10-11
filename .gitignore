@@ -6,3 +6,9 @@ node_modules/
 .DS_Store
 Thumbs.db
 
+# Generated only for Vercel preview UI verification.
+dist/ui-review.html
+dist/ui-review-game.html
+dist/ui-review-storage.js
+dist/ui-review-fixtures.js
+
