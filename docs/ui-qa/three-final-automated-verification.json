@@ -1,0 +1,1219 @@
+{
+  "schemaVersion": 1,
+  "status": "all-four-authorized-tests-passed-on-final-pr9-candidate",
+  "scope": "Automated code/content verification only. Deployment and actual browser geometry are separately recorded in THREE_UI_VERIFICATION.md.",
+  "repository": {
+    "path": "/workspace/scratch/fea3030a5c98/history-playable",
+    "baseCommit": "98c2462f969b0b6648e16613e460853fc0db7655",
+    "candidate": "PR9 working tree after 90 face-anchor and staging compilation; no Git mutation by this test run"
+  },
+  "verificationWindow": {
+    "beforeInputsCapturedAtUtc": "2026-10-11T10:53:02.761422+00:00",
+    "afterInputsCapturedAtUtc": "2026-10-11T10:54:44.682690+00:00"
+  },
+  "testExecution": {
+    "runsPerCommand": 1,
+    "parallelIndependentReadOnlyCommands": true,
+    "commands": [
+      {
+        "command": "node tests/three-ui-preservation-test.cjs",
+        "exitCode": 0,
+        "combinedOutput": "PASS Three UI preservation: exact content/image hashes; 23 chapters, 218 scenes, 2,777 line IDs, 142 spoken choices, 91 official questions; 2481 original assets and 7 approved shared UI files unchanged.\n"
+      },
+      {
+        "command": "node tests/three-approved-ui-test.cjs",
+        "exitCode": 0,
+        "combinedOutput": "PASS approved Three messenger VM: 218 scenes, 3841 rendered frames, 2777 exact line IDs, 142 spoken choices, 637 single-tap transitions, 308 narrative/record frames, correct actor sides, immediate text and full-line reload. Browser screenshots remain separate.\n"
+      },
+      {
+        "command": "node tests/three-staging-test.cjs",
+        "exitCode": 0,
+        "combinedOutput": "PASS: Three staging — 218 scenes, 2919 immutable presentation frames, exact branch continuity, no automatic work.\n"
+      },
+      {
+        "command": "node tests/three-staging-integration-test.cjs",
+        "exitCode": 0,
+        "combinedOutput": "PASS Three staging integration: 74 actual HTML frames, 22 fresh-VM restores; prologue book/original-photo poses and support pair/background handoff, record-to-choice actor return, branch props/backgrounds, hand and hammer continuity, past-choice evidence, unchanged complete dialogue and cursors.\n"
+      }
+    ]
+  },
+  "exactCounts": {
+    "contentPreservation": {
+      "mainChapters": 23,
+      "scenes": 218,
+      "authoredUtteranceIds": 2777,
+      "spokenChoices": 142,
+      "officialQuestions": 91,
+      "officialImageHashes": 91,
+      "preservedExistingAssetGitBlobs": 2481,
+      "preservedSharedUiSha256Files": 7
+    },
+    "approvedUi": {
+      "scenes": 218,
+      "renderedFrames": 3841,
+      "authoredUtteranceIds": 2777,
+      "spokenChoices": 142,
+      "singleTapTransitions": 637,
+      "narrativeOrRecordFrames": 308
+    },
+    "stagingApi": {
+      "scenes": 218,
+      "immutablePresentationFrames": 2919
+    },
+    "stagingHtml": {
+      "actualHtmlFrames": 74,
+      "freshVmRestores": 22
+    },
+    "protoCanonicalContent": {
+      "sections": 8,
+      "scenes": 83,
+      "choiceScenes": 36,
+      "spokenChoices": 108,
+      "allBranchUtterances": 1369,
+      "learningEntries": 31,
+      "officialQuestions": 23,
+      "officialQueues": 11,
+      "verificationInThisBundle": "The full canonical input SHA-256 is rechecked here. The complete route/save tests were previously completed and are referenced in docs/proto-revision/VERIFICATION.md; they were not rerun in this four-command bundle."
+    },
+    "compiledStagingFromAudit": {
+      "schemaVersion": 1,
+      "status": "runtime-linked-cues-source-validated-browser-review-pending",
+      "sourceManuscriptSha256": "09e17274a506391305b36efee52b1cd60c4c504cc6619e68fe70cd9909e9674e",
+      "sceneCount": 218,
+      "authoredUtteranceCount": 2777,
+      "explicitCueCount": 270,
+      "scenesWithExplicitCues": 146,
+      "propImageCount": 27,
+      "handActionImageCount": 2,
+      "actorVariantImageCount": 7,
+      "backgroundStateImageCount": 10,
+      "preciseSettingSurfaceCount": 3,
+      "originalGenealogyPhotoCount": 3,
+      "sourcePixelsEdited": false,
+      "saveMutations": false,
+      "cursorMutations": false,
+      "autoAdvance": false,
+      "runtimeVisualReviewComplete": false,
+      "allAuthoredStagingVerified": false,
+      "completionLedger": "docs/three-content/staging-completion-ledger.json",
+      "sceneAudit": {
+        "type": "list",
+        "count": 218
+      },
+      "limitations": {
+        "type": "list",
+        "count": 3
+      }
+    },
+    "compiledFaceApplicationFromAudit": {
+      "fullbodyAppearanceCount": 90,
+      "manualBodyFaceInputs": 90,
+      "bodyFaceCoordinatesChanged": 90,
+      "sourcePngCount": 15,
+      "sourcePngHashesUnchanged": 15,
+      "sourceRectAndClipAndAlphaAndUpperBodyBoundsUnchanged": 90,
+      "runtimeBodyFaceBoundsMatch": 90,
+      "otherCharacterEntriesUnchanged": 154,
+      "approvedProtagonistAndSourcePhotosUnchanged": true,
+      "actingVariantCount": 7,
+      "actingSourceRectAndAlphaBoundsUnchanged": 7,
+      "sourcePixelsEdited": false,
+      "sourceDialogueOrExamsChanged": false,
+      "runtimeVisualReviewComplete": false
+    }
+  },
+  "canonicalContent": {
+    "dist/three-story-script.json": {
+      "expectedSha256": "a2b0454b84dd7b2543ea41f8cb3c518e4a10d1f7db29f855b9324d5ab57fa6f0",
+      "bytes": 1620184,
+      "sha256": "a2b0454b84dd7b2543ea41f8cb3c518e4a10d1f7db29f855b9324d5ab57fa6f0"
+    },
+    "dist/three-exam-data.json": {
+      "expectedSha256": "323e167f88250cc72b8ecc5787c2746552402cd1d068048e81d043eb881621ea",
+      "bytes": 814244,
+      "sha256": "323e167f88250cc72b8ecc5787c2746552402cd1d068048e81d043eb881621ea"
+    },
+    "dist/proto-story-script.json": {
+      "expectedSha256": "d9e183fedd783fee7f7792dcb19c71a5a09d6c8188e266ea932b7361d1f0bed2",
+      "bytes": 1048353,
+      "sha256": "d9e183fedd783fee7f7792dcb19c71a5a09d6c8188e266ea932b7361d1f0bed2"
+    }
+  },
+  "snapshot": {
+    "fileCount": 260,
+    "beforeAggregateSha256": "5e553c61a2cd8cc3cc2143ec3a147c3921f7170c7c04edf2f86e706a5ee97e7e",
+    "afterAggregateSha256": "5e553c61a2cd8cc3cc2143ec3a147c3921f7170c7c04edf2f86e706a5ee97e7e",
+    "unchanged": true,
+    "changedFiles": [],
+    "algorithm": "SHA-256 of each file, then SHA-256 of Python json.dumps(entries,sort_keys=True,separators=(',',':')). UTF-8 input, entries map contains bytes and sha256. Covers dist top-level runtime/content/style, CJS tests and fixtures, staged/portrait image and SVG references, and setting-surface metadata.",
+    "files": {
+      "dist/ancient-data.js": {
+        "bytes": 41267,
+        "sha256": "aea9cce6fff5e6d16b58a31a0eab4080426b0833ae81ad1ee7610497a7ea6e39"
+      },
+      "dist/ancient-exam-analysis.json": {
+        "bytes": 139784,
+        "sha256": "9f7d7e95a9a854121d9cf6dedf24a79e7afc3594280b8e438cf1ec7b912c411a"
+      },
+      "dist/ancient-ui.js": {
+        "bytes": 7529,
+        "sha256": "825682142f37979c31a15aa8c81268339df54292effae42097ca00a9b69f911e"
+      },
+      "dist/app.js": {
+        "bytes": 86509,
+        "sha256": "4e83ebc28023f4bf9a9307cf003cb44e313a9c9c256b74dcd42f9c93fcf621b0"
+      },
+      "dist/assets/ancient/backgrounds/ancient-modern-museum.jpg": {
+        "bytes": 237883,
+        "sha256": "460e19343e75b98613a545751b322be05da4f683daf097cb30095bf46a344a0e"
+      },
+      "dist/assets/ancient/backgrounds/proto-forest-road.jpg": {
+        "bytes": 505064,
+        "sha256": "fc18956635426761ef79686972b23d27a1d12a1ff885e44244b914194c9fdf52"
+      },
+      "dist/assets/ancient/backgrounds/rebuild-byeonhan-workshop.webp": {
+        "bytes": 705594,
+        "sha256": "b13cf9701f81627a144dd813f5699f12f46774ebc6620b678a2588699d5555fa"
+      },
+      "dist/assets/ancient/backgrounds/rebuild-forest-camp.webp": {
+        "bytes": 661294,
+        "sha256": "8bd62d8b17de9cf47b696fa02ce0918544b45db19732f9bd411bd27336b019af"
+      },
+      "dist/assets/ancient/backgrounds/rebuild-goguryeo-council.webp": {
+        "bytes": 644476,
+        "sha256": "27b3d7d8da6b093b46f2c1a0a0f374426d8253a3705ef2a383ead3eb6a157eeb"
+      },
+      "dist/assets/ancient/backgrounds/rebuild-jumong-birth.webp": {
+        "bytes": 443398,
+        "sha256": "87a4ccbf8368f76e49a51e4fbfabf6cb93b940a1035c390e077367d70a5b99c3"
+      },
+      "dist/assets/ancient/backgrounds/rebuild-wagon.webp": {
+        "bytes": 768836,
+        "sha256": "a153be0273a24d660b19d34ef5a2d0728ac817f60f007c3fcde11e85bf188f66"
+      },
+      "dist/assets/ancient/backgrounds/three-balhae-harbor.jpg": {
+        "bytes": 535782,
+        "sha256": "b8f0e6458abd553667e297dbeb2e9d0efd4f9923c4bfffdcd63264549a5f4403"
+      },
+      "dist/assets/ancient/backgrounds/three-border-market.jpg": {
+        "bytes": 470437,
+        "sha256": "8b67f1669e953f5f10c08218f7cd2bb6bed2ff45c448cc55dddcb24bfc7325a7"
+      },
+      "dist/assets/ancient/backgrounds/three-gaya-workshop.jpg": {
+        "bytes": 474644,
+        "sha256": "d6e2bbbe502111c9f42f84996f8347288c2d0c97d6745c7417b5b4121cddcd87"
+      },
+      "dist/assets/ancient/backgrounds/three-han-river.jpg": {
+        "bytes": 528327,
+        "sha256": "2a09f8d750237e92f24aa29edfb5d15a11dab56a08b40aaeab513e282df20bdc"
+      },
+      "dist/assets/ancient/backgrounds/three-pyongyang-fortress.jpg": {
+        "bytes": 453543,
+        "sha256": "4eefd4f74d391fbc569dcc5436d160a26e384fbf3dd26aa8b5cd070e2d6a60fd"
+      },
+      "dist/assets/ancient/backgrounds/three-sabi-fortress.jpg": {
+        "bytes": 411267,
+        "sha256": "45cd99cbb08246cd80f5b6959b7183c38e1f2a6f4c0c84858b7575dae53ece74"
+      },
+      "dist/assets/ancient/backgrounds/three-unified-capitals.jpg": {
+        "bytes": 436924,
+        "sha256": "7a0991a8e5803ad86681c624a06d2deda43863c81fc697e3ab39902f5b284b57"
+      },
+      "dist/assets/ancient/characters/three-player-modern.png": {
+        "bytes": 1629642,
+        "sha256": "6784b5153b8fd39d4a2ac8b25dc33a8d3b109690a116457a9ae18534c5e391fb"
+      },
+      "dist/assets/ancient/three-complete/backgrounds/baekje-letter-relay-post.png": {
+        "bytes": 3421360,
+        "sha256": "488811d65a31a7561497f4478d4af7fef53002f7017963964e6ab00a6cb66e91"
+      },
+      "dist/assets/ancient/three-complete/backgrounds/balhae-office-readable-labels-v3.png": {
+        "bytes": 2302367,
+        "sha256": "482f923720c9616fdbfdbb3ded71cab1535ade7dfb42beb72ddd8adadba9a37b"
+      },
+      "dist/assets/ancient/three-complete/backgrounds/balhae-office-readable-shelf-v2.png": {
+        "bytes": 2475703,
+        "sha256": "88b581d9adab455b30888433624dc30424586c2314b67843cd358aa8e921dc8c"
+      },
+      "dist/assets/ancient/three-complete/backgrounds/bulguksa-distinct-pagodas-v1.png": {
+        "bytes": 3444023,
+        "sha256": "4d16472a297d35fb41c2dbf5b857c0c59b56fab3daf5b89bd099d27ebac1a751"
+      },
+      "dist/assets/ancient/three-complete/backgrounds/cheonghaejin-warehouse-v1.png": {
+        "bytes": 3046754,
+        "sha256": "05b22f910e1809a2ba9faccd23d8a16c35bd27110f37d95638587382c3f66672"
+      },
+      "dist/assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-after-collapse.png": {
+        "bytes": 2931966,
+        "sha256": "bd5fc0e5d0b82a91f4b14ae32509d09dc9f1cd3b602c0d7b8cfc3d7d28c04037"
+      },
+      "dist/assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-before-collapse.png": {
+        "bytes": 3031815,
+        "sha256": "5060baac0f62d176e28d20ec2ee5567dc90cbe6843b29b7ab515092578c96ff9"
+      },
+      "dist/assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-mother-in-pair-v1.png": {
+        "bytes": 2917357,
+        "sha256": "2461423f56a394cd0e658c847f8ebb216839d1b2bb601e4237ea080d6e1df9c0"
+      },
+      "dist/assets/ancient/three-complete/backgrounds/hwangnyongsa-construction-v1.png": {
+        "bytes": 3246307,
+        "sha256": "ba82824025af2ccc4d13ebac92fad04f954a43c585efb57a785f09c9e53c0ca5"
+      },
+      "dist/assets/ancient/three-complete/backgrounds/seokguram-assembly-v1.png": {
+        "bytes": 3617184,
+        "sha256": "715ff96e49288b8e712e677890da2d0a611af5dbbb1388264d0791c190b99bd8"
+      },
+      "dist/assets/ancient/three-complete/backgrounds/silla-ox-field-readable-v3.png": {
+        "bytes": 3541663,
+        "sha256": "fd6cd6555e330778717f2767203db34ff994edec12c9dd6d9a0afbf23d6b304f"
+      },
+      "dist/assets/ancient/three-complete/backgrounds/silla-ox-field-rest-portrait-v2.png": {
+        "bytes": 3790881,
+        "sha256": "8bac82cfede67dbb676889e2bbb6ee154e7b953d0f080b31c77a6a16c6257cbb"
+      },
+      "dist/assets/ancient/three-complete/backgrounds/silla-tomb-worksite-v1.png": {
+        "bytes": 3703246,
+        "sha256": "e2f3611b01c3a45a9a129d9140bb79ecac65d0b52a63d5058efc2b26ef910624"
+      },
+      "dist/assets/ancient/three-complete/characters/haein-later-fullbody-v1.png": {
+        "bytes": 1704511,
+        "sha256": "9f2d7ab37073683de671dd95f3ff412bf8d4cd16c93b163413a4edae3e475131"
+      },
+      "dist/assets/ancient/three-complete/characters/haemyeong-acting-v1.png": {
+        "bytes": 1852924,
+        "sha256": "2b39eea68c0dff098f8efd33fcce32b1dda8454c403e4b46421b687684fe388c"
+      },
+      "dist/assets/ancient/three-complete/characters/principal-fullbody-atlas-01.png": {
+        "bytes": 2596444,
+        "sha256": "ce8f8d70ba45f75ce808c5f86ee85e90b50dd6f99d0a3eac946604c851b90f5f"
+      },
+      "dist/assets/ancient/three-complete/characters/principal-fullbody-atlas-02.png": {
+        "bytes": 2564380,
+        "sha256": "c17852623084e7fafbd576c7c06934ba3acc283f47c1f6d964a433d37e0cfd41"
+      },
+      "dist/assets/ancient/three-complete/characters/principal-fullbody-atlas-03-spaced.png": {
+        "bytes": 2619388,
+        "sha256": "497fdcad92dd51da6a8f88aca24cfead2d14bb2bb57161b64d83da6d21319e3d"
+      },
+      "dist/assets/ancient/three-complete/characters/principal-fullbody-atlas-04-spaced.png": {
+        "bytes": 2406307,
+        "sha256": "2ebe270f9f299ddb2ec4eb52c99a36c5db830934401e02124d9ed270b30d4c07"
+      },
+      "dist/assets/ancient/three-complete/characters/principal-fullbody-atlas-05.png": {
+        "bytes": 2492936,
+        "sha256": "16bc8143d3239f82eb368d250eff9b7be8b3c3142d4c56556b6736e903d12dc2"
+      },
+      "dist/assets/ancient/three-complete/characters/principal-fullbody-atlas-06.png": {
+        "bytes": 2619540,
+        "sha256": "50d889e5cef9004e8632c83fea1471e170ec3ff7dea526df80f3725b1486e774"
+      },
+      "dist/assets/ancient/three-complete/characters/principal-fullbody-atlas-07.png": {
+        "bytes": 2353900,
+        "sha256": "bffdce0fd79996b099a760feb53b3df63234ddc23f2e4972d759b579ec0cffd4"
+      },
+      "dist/assets/ancient/three-complete/characters/principal-fullbody-garam-haram-v1.png": {
+        "bytes": 1968343,
+        "sha256": "6c8b4ff0fad6b16a43176884ab9400fb38b5511b1076e00ff4eeb031531ae5a5"
+      },
+      "dist/assets/ancient/three-complete/characters/recurring-civilians-atlas-01.png": {
+        "bytes": 1814048,
+        "sha256": "814b1be2c0464ed26e98adf2383f12a931e96754a34aee39a654c63371a27cb8"
+      },
+      "dist/assets/ancient/three-complete/characters/recurring-civilians-atlas-02.png": {
+        "bytes": 1780479,
+        "sha256": "28db2d60ec3b2c8f5bc92659a753ef7efae51b938b2068b6d355432902e84e8f"
+      },
+      "dist/assets/ancient/three-complete/characters/recurring-fullbody-atlas-01.png": {
+        "bytes": 2040294,
+        "sha256": "e8a074bb36b83fa87d07039ca1e3838aece08ae77a5dafee02fa92a5ed079426"
+      },
+      "dist/assets/ancient/three-complete/characters/recurring-fullbody-atlas-02.png": {
+        "bytes": 2167985,
+        "sha256": "3f6ce19a1ce02017ad47dc329fcadb5bda293a9e3e56570d8333e86be2803169"
+      },
+      "dist/assets/ancient/three-complete/characters/recurring-fullbody-atlas-03-spaced.png": {
+        "bytes": 1299250,
+        "sha256": "1a1ffb525c5eef2cd1b9c1581b0b8c9567420e9c179daca98fef9937324f1677"
+      },
+      "dist/assets/ancient/three-complete/characters/recurring-fullbody-atlas-04-spaced.png": {
+        "bytes": 1114633,
+        "sha256": "837b8e23145eacb587daa9b5a3de2a64b18073eaa4e0d9b2d2f5b409c113e320"
+      },
+      "dist/assets/ancient/three-complete/characters/recurring-fullbody-atlas-05.png": {
+        "bytes": 2030592,
+        "sha256": "4d0f06e84084bcd7784a7db84d7f47c9fd6fdcec39154ce59193aef01517ce49"
+      },
+      "dist/assets/ancient/three-complete/characters/seoa-book-actions-v1.png": {
+        "bytes": 1394098,
+        "sha256": "1c01e99616daf6564e7526e519edf816f6dd2489cd50aa1b52945fd9298e8efa"
+      },
+      "dist/assets/ancient/three-complete/characters/yeonwoo-fullbody-v1.png": {
+        "bytes": 1703241,
+        "sha256": "e1dadcd9f40b89935297864d775b79c2626d56e07d81f6a453b11598772af01d"
+      },
+      "dist/assets/ancient/three-complete/characters/yeonwoo-mother-support-pair-v1.png": {
+        "bytes": 2376646,
+        "sha256": "022edd8a2242455c6616d33ca27b50d2fe2e62fb73326a034a14fe83a918ccfa"
+      },
+      "dist/assets/ancient/three-complete/characters/yeonwoo-support-v1.png": {
+        "bytes": 1803835,
+        "sha256": "aff6bb8bce45739fc73f5a74b733a1038bfc4e23d2b609f877db591efe4ce770"
+      },
+      "dist/assets/ancient/three-complete/characters/yeoul-c15-empty-hands-v1.png": {
+        "bytes": 1817245,
+        "sha256": "55e0d3d76b655c0efc489d8ae1f4c1fd021cc1565ba30624dab1d90b0437da0d"
+      },
+      "dist/assets/ancient/three-complete/overlays/balhae-department-ink-v1.svg": {
+        "bytes": 2600,
+        "sha256": "9b0948389a9c79163439651aa8b562f67da4a5559b42b408968cd851b8261b68"
+      },
+      "dist/assets/ancient/three-complete/overlays/tomb-section-ink-v1.svg": {
+        "bytes": 10921,
+        "sha256": "e864e43c718c1ec5f2f08dca82154cca234432319480d388b61da86eca6acc48"
+      },
+      "dist/assets/ancient/three-complete/overlays/warehouse-map-and-tags-v1.svg": {
+        "bytes": 5179,
+        "sha256": "04f060f203e7aabe867c4860937095ce6c3ef5d17122b049fbe064658239ff42"
+      },
+      "dist/assets/ancient/three-complete/props/seoa-desk-hands-v1.png": {
+        "bytes": 708474,
+        "sha256": "45a756453db65ff451ad1fad84e4d418b157708b703a1c96af215270d05df035"
+      },
+      "dist/assets/ancient/three-complete/props/staging-props-continuity-v1.png": {
+        "bytes": 1923418,
+        "sha256": "c55b8faaa7e3b8e6503ce10a0c91e093e0a5edeb66d05005fd0a1fcb447fe3c8"
+      },
+      "dist/assets/ancient/three-complete/props/staging-props-daily-v1.png": {
+        "bytes": 1742412,
+        "sha256": "09d84da61dd09f1b5a2dabc215bb261f66cf2cee75c595dc9750174e8426cd70"
+      },
+      "dist/assets/ancient/three-complete/props/staging-props-records-v1.png": {
+        "bytes": 1652299,
+        "sha256": "eb9620b77671866ad34db9898a267e93995aa997b9651fe56c98026f713abc0a"
+      },
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png": {
+        "bytes": 5825347,
+        "sha256": "253197b6865dffb946148596f94a6056a140d4fe463b87ea16a7c271845d6581"
+      },
+      "dist/assets/ancient/three-complete/source-photos/genealogy-02.png": {
+        "bytes": 5468198,
+        "sha256": "319c953e356edce398d30babbb3fadf69cbeec2aa7304a4726b8c911d6f3b7dc"
+      },
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png": {
+        "bytes": 5838036,
+        "sha256": "ca47052f52778c68bfcbbe821c6fc3040abcf701fa9556ac390fa376ecb119db"
+      },
+      "dist/assets/ancient/three-v2/backgrounds/goguryeo-grain-return-autumn.webp": {
+        "bytes": 510608,
+        "sha256": "8acc82a41c508f9a5a2a73328919e86b54a98c55a69a4a7f7df4392ec90efe28"
+      },
+      "dist/assets/ancient/three-v2/backgrounds/goguryeo-granary-office.webp": {
+        "bytes": 384424,
+        "sha256": "05d9901bca84a6c81032bd9c1f1d136c240d57e39c76966b03751118b6607d46"
+      },
+      "dist/assets/ancient/three-v2/backgrounds/goguryeo-hungry-village-spring.webp": {
+        "bytes": 519146,
+        "sha256": "661cb949bfa5df90579b5fffc10e76e4c7f3cbb5d96c0d7502503366b437d4ca"
+      },
+      "dist/assets/ancient/three-v2/characters/eulpaso-neutral.webp": {
+        "bytes": 636808,
+        "sha256": "a890e70596c9e57356ddec9924eddc626ff7034c8b6880e83d0733ce54c8ab2b"
+      },
+      "dist/assets/ancient/three-v2/characters/gogukcheon-neutral.webp": {
+        "bytes": 620252,
+        "sha256": "9c5d4e5a6c7407ed3b1a437fe610a8886afbe889c8c0f0dbdb3b67acc6b6c2bf"
+      },
+      "dist/assets/ancient/three-v2/characters/seoa-angry.png": {
+        "bytes": 1647993,
+        "sha256": "2f8403595eb987b97956a8876cb7ab141fb641d75f57291ab142cf18b9eca4f2"
+      },
+      "dist/assets/ancient/three-v2/characters/seoa-determined.png": {
+        "bytes": 1659934,
+        "sha256": "edae2cb5022e3dd94c83b97edc46fa49a97b4c20b86c4626cb107a35e2ced9c5"
+      },
+      "dist/assets/ancient/three-v2/characters/seoa-embarrassed.png": {
+        "bytes": 1652712,
+        "sha256": "26b853f17f9770903134d60a4cee3aa01d4e949420c9aee0797e65c325bd8dad"
+      },
+      "dist/assets/ancient/three-v2/characters/seoa-fear.png": {
+        "bytes": 1594121,
+        "sha256": "d1a231440dac64916f042cdb5559cab0cae20c81733cdfb51231cd300849290d"
+      },
+      "dist/assets/ancient/three-v2/characters/seoa-neutral.png": {
+        "bytes": 1680537,
+        "sha256": "7a7c0b1904b84bcf7e95ea22410c937c4bba85c82a743cedd2ed4afb1bc72d73"
+      },
+      "dist/assets/ancient/three-v2/characters/seoa-relieved.png": {
+        "bytes": 1605540,
+        "sha256": "4043349cc61bfd5abf47dc8c5b5df3bb26414786c300cd8685c5e7a08b051db6"
+      },
+      "dist/assets/ancient/three-v2/characters/seoa-sad.png": {
+        "bytes": 1609621,
+        "sha256": "1eea6b27b3c8f78f45da19210becedbebc9717f2709bab772a2a308a456592d6"
+      },
+      "dist/assets/ancient/three-v2/characters/seoa-smile.png": {
+        "bytes": 1654866,
+        "sha256": "252dcd2aefd7b1a0798f9ec6bd6eebff6ed9ced2ea6850160417336db72a33da"
+      },
+      "dist/assets/ancient/three-v2/characters/seoa-surprised.png": {
+        "bytes": 1658069,
+        "sha256": "c32cde3c83c04c3df987d9f352aa1196faa59eda3cec2f37a1baf3d221a71109"
+      },
+      "dist/assets/ancient/three-v2/characters/seoa-suspicious.png": {
+        "bytes": 1622760,
+        "sha256": "8fa80e76ba01111559a606c75da2dd65aecc9b87f525bcdd6a96b38278c59461"
+      },
+      "dist/assets/ancient/three-v2/characters/seoa-worried.png": {
+        "bytes": 1598348,
+        "sha256": "5174d7af85495ed03079810eb592f399ac1b80445b00aeada4f15275e5344127"
+      },
+      "dist/assets/ancient/three-v2/heroes/seoa-cover.jpg": {
+        "bytes": 308944,
+        "sha256": "0c52c31da90199d36045d18147f4681144f19e0346af5f5e47c4dc12516403fd"
+      },
+      "dist/assets/v2/backgrounds/early-songak-market.webp": {
+        "bytes": 250700,
+        "sha256": "dfd15b7e16186aa7761f61c021111b6f90a44588afa66b7dd6907bd1e08dd780"
+      },
+      "dist/assets/v2/backgrounds/late-history-books.webp": {
+        "bytes": 227914,
+        "sha256": "8486c0802cf3478a59a249febdf1031800749253e01ef8f3dc45fd8d4290942e"
+      },
+      "dist/assets/v2/backgrounds/modern-study-night.webp": {
+        "bytes": 134868,
+        "sha256": "d05cfe4a6033595dc923a8f8de769d55d7842b7b8b38a36d25e7fdda073f021a"
+      },
+      "dist/assets/v2/backgrounds/songak-village-918.webp": {
+        "bytes": 252128,
+        "sha256": "36b52e9a8f2976ed059f41c226d475d92aaa284f8f03a732dd7034b4076762f0"
+      },
+      "dist/ch01-expansion.js": {
+        "bytes": 69112,
+        "sha256": "a3b2e104cdfc3116054b292cd4438f7c1bd98107fbee850d03c1dc3940a3a41d"
+      },
+      "dist/ch02-data.js": {
+        "bytes": 71236,
+        "sha256": "910891293d6b33afbce264a05c6f939544308e543cc4848edcd47564b8d55e1d"
+      },
+      "dist/ch03-data.js": {
+        "bytes": 34181,
+        "sha256": "292f4e8e2cdacc5a8043fb18339205916a3e48adfb15a00ab652d511d2903f73"
+      },
+      "dist/ch05-refinement.js": {
+        "bytes": 27505,
+        "sha256": "eb19bf959c10af577e28a992dd1fd5fd180f3da4cd4e542eda3322f60f888f47"
+      },
+      "dist/ch06-backgrounds.js": {
+        "bytes": 1941,
+        "sha256": "3f894bc996b023a53626a4f886eb4f67e5e819f238dc1c6542a5b3b30399f1dc"
+      },
+      "dist/ch06-quiz-refinement.js": {
+        "bytes": 21107,
+        "sha256": "ec9cb8b4d97945324a3cc781c85d603e84e4d887bad577d0b21cd8b069ca6330"
+      },
+      "dist/chapter-split.js": {
+        "bytes": 192527,
+        "sha256": "e902e4cbd1d8e5f43bdfc92ce4c5c8f72df566b3f8bbd8201c8c64723b344dd8"
+      },
+      "dist/data.js": {
+        "bytes": 78759,
+        "sha256": "84882d00cd497bbb62735bedbed6ca600acb76166a19ce481361cc21ed5e15ab"
+      },
+      "dist/dialogue.css": {
+        "bytes": 13012,
+        "sha256": "edb00021a09c62a8621f529c3730b833a418a83d338ac27f1cd8afc44296fb6d"
+      },
+      "dist/editorial-ui.js": {
+        "bytes": 60090,
+        "sha256": "31127b7d7300d31d06ede8b8984aff04980cccd1cb1abdaf5e69c313a41bf1d7"
+      },
+      "dist/editorial.css": {
+        "bytes": 20754,
+        "sha256": "f10cf7d04c6318dbe091df70526f495cbb990d4cd23fd0ff1011ece806d1c77b"
+      },
+      "dist/era-visuals.js": {
+        "bytes": 13140,
+        "sha256": "4f0bf420a9d94f814a3974cfc9d1c87a58a54478073d7f0f2b76f5f55fc8cc0d"
+      },
+      "dist/exam-data.js": {
+        "bytes": 99974,
+        "sha256": "6add96016beb9632eda8d3cd0a7ce953d8a93dc665370921288ea9e8cab7a2b6"
+      },
+      "dist/exam-library.css": {
+        "bytes": 3432,
+        "sha256": "6cde71eb007bee9bf20e121967f46cd9be3f6c21dc778fa68cadd22ad4f33d33"
+      },
+      "dist/exam-memory-nav.css": {
+        "bytes": 127,
+        "sha256": "7c5675f812756219d944ee2f511a892e4d76a55188ce6003b670118c56ded170"
+      },
+      "dist/exam-memory-results.css": {
+        "bytes": 1569,
+        "sha256": "63b7d20267490e81bf54c3e961292fa41ddc783d36a2cf7db13abce9b01b8088"
+      },
+      "dist/exam-memory-ui.js": {
+        "bytes": 79198,
+        "sha256": "d4d83090b5631d07b051aa5bc950a5866ac650ebd10c75551c65b043cd18a64d"
+      },
+      "dist/exam-memory.css": {
+        "bytes": 23277,
+        "sha256": "c569bfc42fbbe660106c3c720b69c3b491452d6c36b7f60fb596f4ced6fc5a21"
+      },
+      "dist/index.html": {
+        "bytes": 3974,
+        "sha256": "b5f4b6fcec32224cff008b5fb729a41e070ed37c26d448282b7337d72e6213ca"
+      },
+      "dist/joseon-data.js": {
+        "bytes": 97755,
+        "sha256": "2c9d3dced09efe66caa09a128eab073189315529187a267c6752fbfb3372290b"
+      },
+      "dist/joseon-ui.js": {
+        "bytes": 8216,
+        "sha256": "252d5a218dc948a5fb5c6dac6546cd7479f91edf6d0e26351f2b3fbc440a2f04"
+      },
+      "dist/late-goryeo.js": {
+        "bytes": 103612,
+        "sha256": "5c2ca7f58b71a6dd61ea2290e6942b59358436e7fde946e3cf4061c0dd0b10e0"
+      },
+      "dist/mnemonic-data.js": {
+        "bytes": 1352761,
+        "sha256": "c543fb1011793768a9ea63c6b6a8f9fc32a1509c81035cc83f391d81ae3eab6a"
+      },
+      "dist/mnemonic-inventory.json": {
+        "bytes": 2073080,
+        "sha256": "6e9d7cb26797fb5199825f458b76e88c7c4408fcc2d6e28dad35923690bcb199"
+      },
+      "dist/official-exam-catalog.js": {
+        "bytes": 744482,
+        "sha256": "44e375790b119be823e3f8e2c4059c0cfa1b5b8e524f5fe4cd0cd8f983992ab7"
+      },
+      "dist/official-exam-catalog.json": {
+        "bytes": 938809,
+        "sha256": "be2dc831561fb9e3b03e27489485c44566189d5ac14481bbd744e6faee2d9e6f"
+      },
+      "dist/official-exam-explanations.js": {
+        "bytes": 1475832,
+        "sha256": "ca0f0447567779026290fd32eb4fbda1c7c2f6e5a9f4a6fb7b70a83fce50704a"
+      },
+      "dist/official-exam-explanations.json": {
+        "bytes": 1595020,
+        "sha256": "06b074f8c6caaf9924f1f631ef9ad630742c79884b53ff6faab8845b091551fb"
+      },
+      "dist/official-exam-images.js": {
+        "bytes": 37926,
+        "sha256": "c42f1a349913ff5ebbe823e48bb3b504d391d6dd2c20711a14a17ff4b68ff8fe"
+      },
+      "dist/official-exam-inventory.json": {
+        "bytes": 21856,
+        "sha256": "3aa227b4119f9c0aa086569713fa1a85bafcbb876bbc9729b9ce46fd1a79ebc9"
+      },
+      "dist/official-late-exams.js": {
+        "bytes": 15945,
+        "sha256": "447c29836457099dc50a8e3737dbfbb52b88931cd1f2d6cf3156decd1c99f568"
+      },
+      "dist/ox-quiz-data.js": {
+        "bytes": 149324,
+        "sha256": "3932d395b6d2a13253bfaad8da8eb885401621d39901e640b0b1b4575c18c26f"
+      },
+      "dist/ox-quiz-ui.js": {
+        "bytes": 43890,
+        "sha256": "799e888f39d80c1d5d5d4ad4906ebebe45f9703ebfd10b694cab16d8dec9c582"
+      },
+      "dist/ox-quiz.css": {
+        "bytes": 19530,
+        "sha256": "f90f2385f37ba684302479b08e460d977f104167e8477caf8c7ff8a735ce3de5"
+      },
+      "dist/proto-art.js": {
+        "bytes": 1152,
+        "sha256": "23ec8c60d72a0e49730edbe1ac85a15727ae43acc5875bf690e52669e0b4eb6a"
+      },
+      "dist/proto-background-art.js": {
+        "bytes": 1784,
+        "sha256": "8d2884e9a3c19fb833f89a6e22477eb4bc5a01238b01cf6007724f5f0c81c823"
+      },
+      "dist/proto-revision.css": {
+        "bytes": 2980,
+        "sha256": "913c775d98e78f9f4e1213185f053400f575f88e847315e376bdec1e704b92b6"
+      },
+      "dist/proto-save-data.js": {
+        "bytes": 16617,
+        "sha256": "2bf887a2569c44e42b41ad4613b1fb8e39b03c5d3ac659a70a88728e73462347"
+      },
+      "dist/proto-story-data.js": {
+        "bytes": 12898,
+        "sha256": "356674bf225429187139a7113903bab3641d9e9a0946a220fb602617f505d002"
+      },
+      "dist/proto-story-script.js": {
+        "bytes": 1118270,
+        "sha256": "27cacb28d89448e7ded53364681b74164a38ebad8461f95e5aa026248b113b71"
+      },
+      "dist/proto-story-script.json": {
+        "bytes": 1048353,
+        "sha256": "d9e183fedd783fee7f7792dcb19c71a5a09d6c8188e266ea932b7361d1f0bed2"
+      },
+      "dist/proto-story-ui.js": {
+        "bytes": 36055,
+        "sha256": "783b7983e0d1f997af16320fbfa8d711cc70b09011b226262d106a86588c60c7"
+      },
+      "dist/pwa.css": {
+        "bytes": 728,
+        "sha256": "09665bca1ecd6a06fd30bc3ffd956c4cfa5d8feb3151f2f9eeee1b5e55783c16"
+      },
+      "dist/pwa.js": {
+        "bytes": 401,
+        "sha256": "1944b1ec597bf92756b3febb29631f03c9f86e04a1eb86eefb0dd23340c2f2f1"
+      },
+      "dist/renewal.css": {
+        "bytes": 10076,
+        "sha256": "2b2f6ab20596d9c8573310bcddc9d4953ade92ebaa9ad17fa438740bb23473db"
+      },
+      "dist/season-data.js": {
+        "bytes": 6346,
+        "sha256": "718deebededad56844e200bf2012e6e7816302cff37bf4bc2921ba082b62f07b"
+      },
+      "dist/style.css": {
+        "bytes": 13924,
+        "sha256": "65af173298141642d81368103b42e6b381261542675c297c111ebeadff6c411a"
+      },
+      "dist/sw.js": {
+        "bytes": 3129,
+        "sha256": "b360bbbc052ff7ba70b3fdd09cf91ef9b6cbdbc03f332a44497e42f166141fb7"
+      },
+      "dist/three-art-manifest.js": {
+        "bytes": 4259,
+        "sha256": "23b7f972bf887301be19ab25694aa1b0b4c44b71de5f8b7c12c1e44f83d04dfe"
+      },
+      "dist/three-art-manifest.json": {
+        "bytes": 5262,
+        "sha256": "e41f6e930f95c14273d6ea644309b84cd80788528d2770cf17a59eaac4b42d26"
+      },
+      "dist/three-complete-art.js": {
+        "bytes": 2925114,
+        "sha256": "161346951e632860c51a7139108c4f21e88c69c67cad8c34d6f1a21fe1a2ca4b"
+      },
+      "dist/three-complete-art.json": {
+        "bytes": 2925083,
+        "sha256": "19a4a1c86c2179145ebf5bd671796172e6325f5848cf1528a3b911d600de927a"
+      },
+      "dist/three-content-config.js": {
+        "bytes": 124,
+        "sha256": "a8d3c15748349c535ba0e1522a63cb9266d535de755ec649aae9d526d9eba1a1"
+      },
+      "dist/three-era-isolation.js": {
+        "bytes": 14095,
+        "sha256": "4a2e3c5cf828ccbb0de0fa8ba188bd6916b52553b55f29c5651807450770690f"
+      },
+      "dist/three-exam-data.js": {
+        "bytes": 814367,
+        "sha256": "25b110f5dd455d23eecd0154e8cf70323ad31f0418713da52205989bd58fc12f"
+      },
+      "dist/three-exam-data.json": {
+        "bytes": 814244,
+        "sha256": "323e167f88250cc72b8ecc5787c2746552402cd1d068048e81d043eb881621ea"
+      },
+      "dist/three-learning-boundary.js": {
+        "bytes": 4358,
+        "sha256": "df79d6c62faf7ce17e3d04f607718502f69b1b9cee826d6d76313baf8d82125c"
+      },
+      "dist/three-official-review.js": {
+        "bytes": 10784,
+        "sha256": "152b82eb10ef1666736605ed4271a4919db50647be30235262a6f60979094ae6"
+      },
+      "dist/three-preview-app.js": {
+        "bytes": 86660,
+        "sha256": "00d3f55e183706bafcd1fd0bc50c9e5e6e2f70a96ccd4ac0275fda8646f84563"
+      },
+      "dist/three-preview-editorial-ui.js": {
+        "bytes": 61046,
+        "sha256": "7d3cd2b2103158e5f4526262013f2d3711880c9760148c6fc1874afcc990f252"
+      },
+      "dist/three-preview.html": {
+        "bytes": 3821,
+        "sha256": "cdc91bf03317a6ec405347972b7a9f6078859ad7200b48293db15d92c8c55f2f"
+      },
+      "dist/three-save-data.js": {
+        "bytes": 14012,
+        "sha256": "d4f00d7305a9f9cdffd463922a610c8d78f59755593df861243c9a5a2b826c1c"
+      },
+      "dist/three-season-data.js": {
+        "bytes": 2139,
+        "sha256": "a688f8c4b5f848e9f09f523c226c44b5d22973bb24fb1eaf2d8dce9934f1f166"
+      },
+      "dist/three-service-ui.js": {
+        "bytes": 9277,
+        "sha256": "c0a2d041b6146f3babf1887539e3cb305b923a37728a88a4705844c6d97ed9db"
+      },
+      "dist/three-service.css": {
+        "bytes": 9821,
+        "sha256": "fb576b15b1460f2f257437237c12961d9dce58bb37cfd6eebd045743c70b959d"
+      },
+      "dist/three-staging.css": {
+        "bytes": 4069,
+        "sha256": "50750103886adb2f27406d51dac7c232faa6dbc5e4d53096a19c1a1ea44f78e7"
+      },
+      "dist/three-staging.js": {
+        "bytes": 459373,
+        "sha256": "f00d1e5f69c4c94530f8bd250b32f155ee3bff88dfe8520a8268ec225999d526"
+      },
+      "dist/three-story-data.js": {
+        "bytes": 11231,
+        "sha256": "fe21044518569c18cb64795eabe5c8b480442f3605551650bcd2b3d84994234f"
+      },
+      "dist/three-story-script.js": {
+        "bytes": 1620215,
+        "sha256": "4912fa0ace4c380698495b5ef1e0a1e8cdc27359f2a5acb15381efcc88bdcde6"
+      },
+      "dist/three-story-script.json": {
+        "bytes": 1620184,
+        "sha256": "a2b0454b84dd7b2543ea41f8cb3c518e4a10d1f7db29f855b9324d5ab57fa6f0"
+      },
+      "dist/three-story-ui.js": {
+        "bytes": 32279,
+        "sha256": "cedf15b60fe45e5c9c9c33d66cf556e73341dd3b49bc7509dfb86f9d65796dc1"
+      },
+      "dist/ui-review-fixtures.js": {
+        "bytes": 9012,
+        "sha256": "9c3e08791969c86ca5236ffe73e3dd7aedade760e83625fd5da496f94f3f4f13"
+      },
+      "dist/ui-review-game.html": {
+        "bytes": 4036,
+        "sha256": "2ea7e71ced4b224b15b3f74a77b38ffa3062b8736e44fabd29abf89a29c3af91"
+      },
+      "dist/ui-review-storage.js": {
+        "bytes": 801,
+        "sha256": "64c4e2c271e18732d3417b6420024cd89c8f1699e5e31066eabee21b2d06717e"
+      },
+      "dist/ui-review.html": {
+        "bytes": 7367,
+        "sha256": "bae36f81154ae8e76637fd2bd26aa2e41dc82d4403c33cdfab546f6079910ea0"
+      },
+      "dist/v2-app.js": {
+        "bytes": 16611,
+        "sha256": "eb7df4e7ec7733bdd7b962131378e2a51cbfec60c0a89c84ef4b7599dacd6c33"
+      },
+      "dist/v2-art.js": {
+        "bytes": 8204,
+        "sha256": "afeed3e2413b1323e17caacc571fca5deee612ecd4ed4856bf5e1442b543ef77"
+      },
+      "dist/v2-backgrounds.js": {
+        "bytes": 147062,
+        "sha256": "2ba54c6af90269ffa72691f65d58c98a16ec59e4580a08fb20795b30de693823"
+      },
+      "dist/v2-exam-additions.js": {
+        "bytes": 62333,
+        "sha256": "d1215be84a0493c9572cd36ad971194d41cf7f8ff02a58bc449829e331ec7703"
+      },
+      "dist/v2-exam-restoration.js": {
+        "bytes": 5040,
+        "sha256": "9b1afeec6c3bf6a30d1c4ee896a87132e70f5f9edaacba24038948b8a8ff306e"
+      },
+      "dist/v2-learning.js": {
+        "bytes": 4247,
+        "sha256": "5b94a80fdef7dc13e824df84f6c2fd95aa5b3181b61a1ef7981c9c50de9f953a"
+      },
+      "dist/v2.css": {
+        "bytes": 9463,
+        "sha256": "df649f50e0e83f3205a8993740a8cdc79780ad33d59b89f2113bcba914a0d483"
+      },
+      "docs/three-content/staging-setting-surface-generation.json": {
+        "bytes": 6231,
+        "sha256": "8b27dbf4c6e1aef738f36783a7431598125ff32b4e992d232e0329e0a81184a4"
+      },
+      "tests/ancient-exam-analysis-test.cjs": {
+        "bytes": 1686,
+        "sha256": "4e329197d1762a45e98bcd7e6b1b236b874df8df3d62b74c0136cf73d5c46be6"
+      },
+      "tests/ancient-full-play-test.cjs": {
+        "bytes": 1790,
+        "sha256": "5c49ff68dc096041577f50cb0cbce6cb79806793691917d036b8f6b331a09114"
+      },
+      "tests/ancient-mobile-test.cjs": {
+        "bytes": 4981,
+        "sha256": "e72a6510db5906cba443b606f89887634d454cdde1df40027e141460cf2cd30e"
+      },
+      "tests/ancient-story-test.cjs": {
+        "bytes": 5339,
+        "sha256": "445974659657c683e8555197f5f4721bc40cfc00b382c7536b5ef8c56a0db5e6"
+      },
+      "tests/browser-review/fixtures.js": {
+        "bytes": 9012,
+        "sha256": "9c3e08791969c86ca5236ffe73e3dd7aedade760e83625fd5da496f94f3f4f13"
+      },
+      "tests/browser-review/storage.js": {
+        "bytes": 801,
+        "sha256": "64c4e2c271e18732d3417b6420024cd89c8f1699e5e31066eabee21b2d06717e"
+      },
+      "tests/browser-review-fixtures-test.cjs": {
+        "bytes": 3138,
+        "sha256": "9621453e4820e41f4d4c5f4e3a79632a9602c4de99012b4c3cb2b160c0c4f5b8"
+      },
+      "tests/build.cjs": {
+        "bytes": 10424,
+        "sha256": "98625300e0cd95b2c871138a8fbd52fa34a6f252f3c0b7ee921aa582f18acd62"
+      },
+      "tests/ch01-expansion-test.cjs": {
+        "bytes": 15087,
+        "sha256": "2fbcf68de454e58678354de1c45ff983c19e000a477a966a314961ccd0419170"
+      },
+      "tests/ch01-mobile-test.cjs": {
+        "bytes": 14844,
+        "sha256": "23e5ac95c1216c46f0139591e833cde99f660392c9df820b312c6776117bb6ae"
+      },
+      "tests/ch01-reading-test.cjs": {
+        "bytes": 5148,
+        "sha256": "82777d2413c2ec3906be26574afaa6ab451bea3a16be6a5622c2f7b5506cfaa9"
+      },
+      "tests/ch02-ui-test.cjs": {
+        "bytes": 13901,
+        "sha256": "4b9f93adc30af94af836b8f250ae00f0c29793c19281e31e24a599e8591c41d3"
+      },
+      "tests/ch03-character-mobile-test.cjs": {
+        "bytes": 6580,
+        "sha256": "245a02d409aa7c191cba259893676bffb98ff76b31ba43e08f455af492d61817"
+      },
+      "tests/ch03-character-slots-test.cjs": {
+        "bytes": 7507,
+        "sha256": "d885f652f7a5c235f08a3819092e62009679a38f500bc20ef88bd701c41a5a3b"
+      },
+      "tests/ch03-sourced-quiz-test.cjs": {
+        "bytes": 5384,
+        "sha256": "a3f788ac5655b9c51638566afae317443d60943d0d4bb987c629d2a6e92445bd"
+      },
+      "tests/ch03-ui-test.cjs": {
+        "bytes": 7847,
+        "sha256": "09028ae9b443dd3ab44da2b0256084b6129e788fdd49ab129ba76a1d29dde119"
+      },
+      "tests/ch03-verified-contract-test.cjs": {
+        "bytes": 7899,
+        "sha256": "29e149582b9a19b49d101b7aabacba699d5e9e57986478d3ca90481758aa8f45"
+      },
+      "tests/ch05-refinement-test.cjs": {
+        "bytes": 9410,
+        "sha256": "7365fcdde59ad30b8cf224dafa8d1a4fa722e66a38e03b99c749ced3edd6acac"
+      },
+      "tests/ch06-background-test.cjs": {
+        "bytes": 4799,
+        "sha256": "d611d059ab4903e858774536b59177d514ce549bac137c5071c22fb1c19b0fdb"
+      },
+      "tests/ch06-quiz-test.cjs": {
+        "bytes": 9975,
+        "sha256": "4c300669f7e0173f84bf00797fcd8328e696c98b210964eb0efc0320bf8fef56"
+      },
+      "tests/character-art-style-test.cjs": {
+        "bytes": 4529,
+        "sha256": "0b9866a843020db254f486c6606069027d83ce612709cd3b5b12cd50a7fa328d"
+      },
+      "tests/editorial-ui-test.cjs": {
+        "bytes": 7438,
+        "sha256": "485e254626f69ce270372d22999c35a952ec8096c0e86a486de4b7a18b1c07c7"
+      },
+      "tests/exam-bank-test.cjs": {
+        "bytes": 5812,
+        "sha256": "c96c4e48864b587c686fc61892f49ea083fd2645d02077ca0b8d048786862d0a"
+      },
+      "tests/exam-library-preview.cjs": {
+        "bytes": 1171,
+        "sha256": "9b7473f4c91a4ae8f8cbc2d020ea26067f8765c94790ef457ab623a6c463203c"
+      },
+      "tests/exam-library-test.cjs": {
+        "bytes": 16642,
+        "sha256": "291e1b28c6b5e5f9715c78d820607abb2cf3da650926e0def61c44c42542f5ea"
+      },
+      "tests/fixtures/ch01-protected.json": {
+        "bytes": 2878,
+        "sha256": "87e8fe1482274e94230764f563a74bb0cc9f20d9a0293fb3f1e5413896372806"
+      },
+      "tests/fixtures/ch03-original-question-hashes.json": {
+        "bytes": 8554,
+        "sha256": "8680aae6f71d4e0bae3d7d8cdf2d00c7d7dc52c79248b3798cc7c3e19aa72449"
+      },
+      "tests/fixtures/ch03-pdf-verified-sources.json": {
+        "bytes": 36292,
+        "sha256": "33f6b7bc13b2f2a3ef00f7211f77446db9f6352ce87c50559fdff78f3de29739"
+      },
+      "tests/fixtures/ch03-stage-protected.json": {
+        "bytes": 8110,
+        "sha256": "3b0317ac837f8d4e5440f61ac0d4c52c3463005f8e78124b6c473587b67b4f4f"
+      },
+      "tests/fixtures/ch03-verified-contract.json": {
+        "bytes": 18996,
+        "sha256": "140d4d16368a3e35240575ba4c00b8a139e2e00c476e44c3be1938bd5ac304c3"
+      },
+      "tests/fixtures/ch05-added-official-sources.json": {
+        "bytes": 3798,
+        "sha256": "4c6abfb4667d70ca3d5319d1bf3c7576998613ccf24a24892d8a787d40925bdf"
+      },
+      "tests/fixtures/ch06-official-exam-sources.json": {
+        "bytes": 15022,
+        "sha256": "4bf9829fd2d64b833d4cc74229aa84041e4d02166d73602264685d9855603f05"
+      },
+      "tests/fixtures/chapter-split-protected.json": {
+        "bytes": 17020,
+        "sha256": "c4ddfa57fc38ea58547b6b9dc4cb26c83eceac9837bc32b0541ab3afab693f87"
+      },
+      "tests/fixtures/official-exam-image-sources.json": {
+        "bytes": 38883,
+        "sha256": "f7b6a315c8097fd4694fd8daa4e1b0c6f0bb808a95e0533136e54a22bdc6d07d"
+      },
+      "tests/fixtures/proto-opening-ending.json": {
+        "bytes": 22670,
+        "sha256": "e1c6f0c1f031d51f985cff1a505dfdbdeebc52c9751a0a2040a0e85ba3c70709"
+      },
+      "tests/fixtures/proto-rebuild-preserved.json": {
+        "bytes": 22996,
+        "sha256": "47baa2d6f11a027648a0cc3b58712565af63aca64828077c7f3bfe629e4a9fda"
+      },
+      "tests/fixtures/proto-runtime-preservation.json": {
+        "bytes": 3312,
+        "sha256": "37c22840cb69f546674b3b4b1076bf6fbd186695f3df6215f09c4fe1edceb171"
+      },
+      "tests/fixtures/three-ui-preservation.json": {
+        "bytes": 331899,
+        "sha256": "2c9130eeb29d8bcb5ebf03fb1f4cf58c25828db7a6dd0d14930bf432cf07dfd0"
+      },
+      "tests/fixtures/v2-content-preservation.json": {
+        "bytes": 43891,
+        "sha256": "7092331c4d3218efed8a4b3f1acf6d26c57758468db1f77e8a0b4a6138591f9d"
+      },
+      "tests/fixtures/v2-new-exam-sources.json": {
+        "bytes": 60247,
+        "sha256": "18bbf82c274e2b97e387b97ab4711a159f5c102a9da3afde661951423e992425"
+      },
+      "tests/fixtures/v2-restored-exam-sources.json": {
+        "bytes": 4788,
+        "sha256": "f784ed8cd4ccf2ff78e26bbcc86298ab28c0ce4e03525c89276e0252f297bf21"
+      },
+      "tests/joseon-character-state-test.cjs": {
+        "bytes": 6098,
+        "sha256": "1e7dbb569404eac8d3dbe0db77428987057260e7a32251c3d41942c874f8e4cf"
+      },
+      "tests/joseon-data-test.cjs": {
+        "bytes": 10114,
+        "sha256": "c35f857fb23224fdfa5dd456d07da840f498e86100f4bb5d142f30d9675b46d7"
+      },
+      "tests/joseon-full-play-test.cjs": {
+        "bytes": 3369,
+        "sha256": "2a278b6473c8eb4de3a5999820fd8e5aa6a3ce422f4ac9c621cb9834239a4e06"
+      },
+      "tests/joseon-heroine-style-mobile-test.cjs": {
+        "bytes": 4286,
+        "sha256": "276770358f8df9bc49adc5648f294bb3f58511dc0c85628606be8226f4d33192"
+      },
+      "tests/joseon-learning-qa-test.cjs": {
+        "bytes": 4933,
+        "sha256": "90641fbe0b3610002042eac92ce0934af4914fbbb1c9934109a88e71423a1107"
+      },
+      "tests/joseon-mobile-test.cjs": {
+        "bytes": 18667,
+        "sha256": "46431045fbbf3f14aab71931f93ad25717ea6e64046555a14cdcb579b87fd90c"
+      },
+      "tests/joseon-ui-test.cjs": {
+        "bytes": 5183,
+        "sha256": "2d6c89edc914e77a80bb676371cf71b4991011977f1e58bddc01efe7bc0f475a"
+      },
+      "tests/late-goryeo-mobile-test.cjs": {
+        "bytes": 7231,
+        "sha256": "e261408d27a62764cd576fb69692666f6334a57eebff20c62ace85f620e71e7f"
+      },
+      "tests/late-goryeo-test.cjs": {
+        "bytes": 7526,
+        "sha256": "8228cd396c6fb0a6604ba189fcf08dce54a1172a551d2e7b6d7119b67ee3c248"
+      },
+      "tests/late-goryeo-ui-test.cjs": {
+        "bytes": 4754,
+        "sha256": "154e6e3edacc53239e35cbbc30e6ec636992bea1139adaeda60b28ff58e95a39"
+      },
+      "tests/mnemonic-data-test.cjs": {
+        "bytes": 5365,
+        "sha256": "1dd07ad1d3df4bfb23b44c5615d2556f7b5d568d898c56ea3cbee0892ba63b79"
+      },
+      "tests/mnemonic-mobile-test.cjs": {
+        "bytes": 2205,
+        "sha256": "c2eb6d69cfbf769ab2f3ddb342ff2e5a3a4a3b075b4e30585d7b9ae93c08e4fb"
+      },
+      "tests/mobile-full-play-test.cjs": {
+        "bytes": 11367,
+        "sha256": "84e486bacaf6c1fcc626f450c9cfc61a9574606e5ae9ecae00ba1459950f45c4"
+      },
+      "tests/official-canonical-qa-test.cjs": {
+        "bytes": 8657,
+        "sha256": "24aff5526eb9d7f7fab53d3fd2c15eff203ebf03a7c3f55fee2520286fb7fbec"
+      },
+      "tests/official-exam-pass-test.cjs": {
+        "bytes": 6322,
+        "sha256": "20b545ca05bf70c962e34baae0bffe725dbacbffe81267511def53fac2301640"
+      },
+      "tests/official-exam-timer-mobile-test.cjs": {
+        "bytes": 5409,
+        "sha256": "d3a5e3e2ab85eb350e7677756d11f5f3de3c627b9e735389a59a045080022d55"
+      },
+      "tests/official-exam-timer-test.cjs": {
+        "bytes": 9531,
+        "sha256": "47f30565c8acf36c53930ae046061ec94b847ea2b7cff51183cf16a579acfdc6"
+      },
+      "tests/official-explanation-test.cjs": {
+        "bytes": 6736,
+        "sha256": "8de906922319068db885dc6d4db293bb78cc525b1958ac6b9a7fd7aa45f2dd5d"
+      },
+      "tests/official-image-mobile-test.cjs": {
+        "bytes": 3796,
+        "sha256": "11cdcff71a1b6b9a02a39390efb365d102db472f0e9c20caf889073603f2e77c"
+      },
+      "tests/official-image-ui-test.cjs": {
+        "bytes": 5037,
+        "sha256": "28fe9f218a46757e315be8982eefcbe3d2f20912c437d978baf66fbd098486f1"
+      },
+      "tests/ox-quiz-mobile-test.cjs": {
+        "bytes": 16283,
+        "sha256": "44828ef74d23125f69c1357a1d61352b57e4f32af792ffd9439b68f0e3c15b28"
+      },
+      "tests/ox-quiz-test.cjs": {
+        "bytes": 38612,
+        "sha256": "4c245f9b97b16c62a1edb831c9aeb761d0f4a86a8a7848fe76b8636fb17c1c3d"
+      },
+      "tests/ox-route-test.cjs": {
+        "bytes": 12058,
+        "sha256": "60923eb26ee934ee16f22c144e5d0d68ea6c98b419f9b0ae4c7cfbad75539e21"
+      },
+      "tests/proto-art-test.cjs": {
+        "bytes": 2980,
+        "sha256": "261aeae65343272f2e2942a1e98f03f2f70976efe7485a1fa173e722ea3d2af5"
+      },
+      "tests/proto-background-art-test.cjs": {
+        "bytes": 3435,
+        "sha256": "3e05d1168bf281012aa0a819f6c4a92a79b0ee61a889398ad3bb27106b41b92e"
+      },
+      "tests/proto-harness.cjs": {
+        "bytes": 964,
+        "sha256": "e2dc3f371ea2f6799485b4209d6028bd1cef832ff5def9b5f97a17f3d52b5ca9"
+      },
+      "tests/proto-main-preservation-test.cjs": {
+        "bytes": 3143,
+        "sha256": "d9fea0479e71ea2e15cada7cecb13498e20bbe51b198372adecc1f079e4d0be3"
+      },
+      "tests/proto-mobile-test.cjs": {
+        "bytes": 7792,
+        "sha256": "80fd9e93dea47d06feb8393011e1c8ccdc4592b8c2303ca65b2048bd3a22a795"
+      },
+      "tests/proto-revision-harness.cjs": {
+        "bytes": 3351,
+        "sha256": "bf796206f228896862c3cbec2af07871ace5a33b085c5266608e9b1c3de08d5b"
+      },
+      "tests/proto-revision-test.cjs": {
+        "bytes": 9234,
+        "sha256": "f92a312cfd670e8905acf5ae38fe66b35aac963c06eff7e8b50a93f6b3aa1aa7"
+      },
+      "tests/proto-save-v3-test.cjs": {
+        "bytes": 10608,
+        "sha256": "c1bf011279c4092b8d945769f7c0f7bc80c016bbc1faa03c47e0193ad32e5596"
+      },
+      "tests/proto-story-test.cjs": {
+        "bytes": 3595,
+        "sha256": "0549de2faca348c2e7f5d17000e7039e6b40e68b45ed9a4ac24f1428fbb59218"
+      },
+      "tests/question-set-ui-test.cjs": {
+        "bytes": 3923,
+        "sha256": "b5ce629698bd4dd8b3946112fc303f4042e8ddf1d06390b08010e798cdab0384"
+      },
+      "tests/replay-ui-test.cjs": {
+        "bytes": 5183,
+        "sha256": "749c9ec6f35b1210877688139acd8584a50fa268e826358f82d40e9046e1be69"
+      },
+      "tests/season-framework-test.cjs": {
+        "bytes": 7377,
+        "sha256": "48bc3afbd4892517d9a7a41ef12d19deb69a04b3d1c8c7c0496c1fe5c21c45d0"
+      },
+      "tests/season-mobile-test.cjs": {
+        "bytes": 4693,
+        "sha256": "c2639b504643e4f9d8bb809a5f53ec1bbcc99a8ff3a09e4a70937208a7cf375d"
+      },
+      "tests/story-audit-test.cjs": {
+        "bytes": 12169,
+        "sha256": "d2451012b687d94131fe23d816175b22f4f8e5afcb509c4c7e2e43ed51f10a25"
+      },
+      "tests/three-approved-ui-test.cjs": {
+        "bytes": 7143,
+        "sha256": "de3c0e4f0bbac1c39907096f1896ba72e74b3a3a583a636f1d401c6223e7bd8b"
+      },
+      "tests/three-complete-test.cjs": {
+        "bytes": 12155,
+        "sha256": "d42b0b4c1b540837a8c484ceced632a7823b634cab873bf5f923cbce57222d83"
+      },
+      "tests/three-complete-ui-test.cjs": {
+        "bytes": 8189,
+        "sha256": "96f847b50427697990934b1f01a570cec0157c8dab7cfb24ebc1bd9db75aeaa0"
+      },
+      "tests/three-development-test.cjs": {
+        "bytes": 215,
+        "sha256": "159acf2d90faf686d1b7deec4bb0c94b753bd95698c019a6df809c97597f1aa7"
+      },
+      "tests/three-learning-boundary-test.cjs": {
+        "bytes": 8125,
+        "sha256": "b7bf4b24cc023bb5aef88f688ce381213058ac741b4ae3453c70244e6ff87578"
+      },
+      "tests/three-save-v3-test.cjs": {
+        "bytes": 18170,
+        "sha256": "9803ff12498e2f33be356f787cb92c007d3487c4848b44094732576457f16249"
+      },
+      "tests/three-staging-integration-test.cjs": {
+        "bytes": 18315,
+        "sha256": "f152a52f03c9b6be488b877340909e876dcb39130e6093db75dca1833c637b59"
+      },
+      "tests/three-staging-test.cjs": {
+        "bytes": 17933,
+        "sha256": "e238db56c92e027ab1431dd220926db3a52608497c02d157e499716be9d84469"
+      },
+      "tests/three-ui-preservation-test.cjs": {
+        "bytes": 2174,
+        "sha256": "dc9946949847af3d2a41a4ef4b215025aa6db2fc58acbc3c4c35b5fc71f86931"
+      },
+      "tests/ui-test.cjs": {
+        "bytes": 10024,
+        "sha256": "5459f9ae7053cedfd7a2ba3f65e6e9ca962ebf88db70a975b6949837950935e0"
+      },
+      "tests/v2-full-play-test.cjs": {
+        "bytes": 6292,
+        "sha256": "4e8feda324686904475c8fc30452966c3520347b30a0ea8eb04f44e8abb44d18"
+      },
+      "tests/v2-preservation-test.cjs": {
+        "bytes": 3145,
+        "sha256": "f58f8e0a5537c1c339c571a30b2873241c84dd2d341ca98c2054fa7ee0a17d80"
+      },
+      "tests/v2-renewal-test.cjs": {
+        "bytes": 3583,
+        "sha256": "2389133b7e7b2a31b5ba2715ed7be7be91eb9f5d13a5ae2ea1701961dd645994"
+      },
+      "tests/verify.cjs": {
+        "bytes": 34051,
+        "sha256": "0da7def5e8e03d70d2dfbda6a810d5fceb09ddf132d245282fefd6f17399ac4f"
+      }
+    }
+  },
+  "supportingDocumentation": {
+    "faceApplicationAudit": {
+      "path": "docs/three-content/portrait-face-application-audit.json",
+      "bytes": 115286,
+      "sha256": "f8111e4fbe478608f925ac6dd4257161c0f6fe051db169d89578fc64e535e58f",
+      "note": "Final descriptive audit was completed after the tests; its compiled runtime hashes equal the frozen input snapshot."
+    },
+    "artStagingCheckpoint": {
+      "path": "docs/three-content/pr9-art-staging-checkpoint.json",
+      "bytes": 10951,
+      "sha256": "88b66a972f0aa3b9c536ec89d853edbf46bcdf4cbba920a6391755bf13b46ce3"
+    },
+    "principal61Audit": {
+      "path": "docs/three-content/principal-face-anchor-audit.json",
+      "sha256": "55c39a0a3bfd2d6af0a2a29a8b8e10ad66ff2610ce044d42167e522bfc891538"
+    },
+    "recurring15Audit": {
+      "path": "docs/three-content/recurring-face-skin-review-b.json",
+      "sha256": "42e9dd2f6d9be0970068ef0eee7e9f455e0c304bf203444c9bdcb7a4b2d488c4"
+    }
+  },
+  "limits": [
+    "VM assertions verify authored text, state, actor identity, staged HTML and cursor/save restoration. They do not establish visual contact, image crop composition or touch geometry in a rendered browser.",
+    "The 90 full-body appearances and 7 acting variants have applied metadata and source-preservation checks; this is not a claim that all portraits were visually inspected in the production UI.",
+    "Authored staging cues/backgrounds/surfaces counts describe compiled coverage, not completion of every authored dramatic gesture, construction detail or sound.",
+    "The source PNGs were not edited by these face-anchor audits; the canonical authored dialogues and official questions remain unchanged."
+  ]
+}
