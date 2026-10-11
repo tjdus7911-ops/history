@@ -18,8 +18,8 @@ def polygon(labels,cid,sr):
     selected=labels[y:y+h,x:x+w]==cid
     region=np.zeros((h,w),dtype=bool)
     left,right=[],[]
-    for top in range(0,h,4):
-        bottom=min(h,top+4)
+    for top in range(0,h):
+        bottom=top+1
         ys,xs=np.where(selected[top:bottom])
         if not len(xs):continue
         bottom=top+int(ys.max())+1
@@ -35,7 +35,12 @@ def polygon(labels,cid,sr):
     big=[int(i) for i in np.unique(labels[y:y+h,x:x+w][foreign]) if sizes[i]>1000]
     assert not big,('Neighbor enters CSS clip',cid,sr,big)
     assert np.all(region[selected]),'Clip removes alpha>32 subject pixels'
-    pts=left+right[::-1]
+    pts=[]
+    for point in left+right[::-1]:
+        if pts and point==pts[-1]:continue
+        while len(pts)>1 and (pts[-1][0]-pts[-2][0])*(point[1]-pts[-1][1]) == (pts[-1][1]-pts[-2][1])*(point[0]-pts[-1][0]):
+            pts.pop()
+        pts.append(point)
     return 'polygon('+','.join(f'{px/w*100:.4f}% {py/h*100:.4f}%' for px,py in pts)+')',len(pts)
 def main():
     spec=json.loads((ROOT/SOURCE).read_text())

@@ -208,5 +208,56 @@
     "generator": "built-in-image_gen",
     "transparentBackground": true,
     "sha256": "9f2d7ab37073683de671dd95f3ff412bf8d4cd16c93b163413a4edae3e475131"
+  },
+  {
+    "key": "principal-fullbody-03-spaced",
+    "type": "alpha-gutter-layout-edit",
+    "sourceGeneratedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-95f73b7d-d99e-46e8-8de4-71a6b34ead30.png",
+    "repoSrc": "assets/ancient/three-complete/characters/principal-fullbody-atlas-03-spaced.png",
+    "prompt": "Use case: identity-preserve. TECHNICAL ATLAS GUTTER CLEANUP ONLY. This supplied image is a9person3×3sprite atlas. Keep the EXACT9 faces, ages, expressions, hairstyles, outfits, props, facing, pose and cell order. Do not redesign, swap or invent people.\nProblem: each row nearly touches the next, causing silhouettes to connect. Reflow the9existing figures into a mathematically UNIFORM3column×3row tall2:3 atlas with LARGE EMPTY TRANSPARENT GUTTERS.\nMANDATORY: a continuous transparent horizontal band 5% of TOTAL canvas height centered at exactly33.333% and66.667% of the canvasheight. Every pixel in these horizontal bands must be alpha0, running edge-to-edge. Also continuous transparent vertical bands3%ofTOTALwidth centered at33.333% and66.667%ofcanvaswidth. Outer margin2%transparent. Every person must fit ENTIRELY inside their own resulting cell interior: no head, hair, shoulder, knee or foot may touch or cross a band. Do not draw the bands as colored strips; they are true empty alpha. These precise positions matter.\nEach sprite shows completehead through at least knees with natural proportions. If necessary show headtoknees instead of tiny fullfeet so faces stay detailed, but NEVER crop at chest/waist. Preserve the same exact faces and anatomy, no vertical stretching. Set true RGBA transparent background everywhere outside people, no background fill/glow/scene/ground/shadow, no labels, text or gridlines. Nine independent isolated sameidentity characters.\nThis is the existing principal sheet03; retain its existing order strictly.",
+    "generator": "built-in-image_gen",
+    "transparentBackground": true,
+    "sha256": "497fdcad92dd51da6a8f88aca24cfead2d14bb2bb57161b64d83da6d21319e3d"
+  },
+  {
+    "key": "principal-fullbody-04-spaced",
+    "type": "alpha-gutter-layout-edit",
+    "sourceGeneratedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-cfd61f0a-f7bc-4ea4-a3d4-e550c59ec00b.png",
+    "repoSrc": "assets/ancient/three-complete/characters/principal-fullbody-atlas-04-spaced.png",
+    "prompt": "Use case: identity-preserve. TECHNICAL ATLAS GUTTER CLEANUP ONLY. This supplied image is a9person3×3sprite atlas. Keep the EXACT9 faces, ages, expressions, hairstyles, outfits, props, facing, pose and cell order. Do not redesign, swap or invent people.\nProblem: each row nearly touches the next, causing silhouettes to connect. Reflow the9existing figures into a mathematically UNIFORM3column×3row tall2:3 atlas with LARGE EMPTY TRANSPARENT GUTTERS.\nMANDATORY: a continuous transparent horizontal band 5% of TOTAL canvas height centered at exactly33.333% and66.667% of the canvasheight. Every pixel in these horizontal bands must be alpha0, running edge-to-edge. Also continuous transparent vertical bands3%ofTOTALwidth centered at33.333% and66.667%ofcanvaswidth. Outer margin2%transparent. Every person must fit ENTIRELY inside their own resulting cell interior: no head, hair, shoulder, knee or foot may touch or cross a band. Do not draw the bands as colored strips; they are true empty alpha. These precise positions matter.\nEach sprite shows completehead through at least knees with natural proportions. If necessary show headtoknees instead of tiny fullfeet so faces stay detailed, but NEVER crop at chest/waist. Preserve the same exact faces and anatomy, no vertical stretching. Set true RGBA transparent background everywhere outside people, no background fill/glow/scene/ground/shadow, no labels, text or gridlines. Nine independent isolated sameidentity characters.\nThis is the existing principal sheet04; retain its existing order strictly.",
+    "generator": "built-in-image_gen",
+    "transparentBackground": true,
+    "sha256": "2ebe270f9f299ddb2ec4eb52c99a36c5db830934401e02124d9ed270b30d4c07"
+  },
+  {
+    "key": "principal-fullbody-06-spaced",
+    "type": "alpha-gutter-layout-edit",
+    "sourceGeneratedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-2d3d4627-5125-48ea-8f90-938f5d59713b.png",
+    "repoSrc": "assets/ancient/three-complete/characters/principal-fullbody-atlas-06-spaced.png",
+    "prompt": "Use case: identity-preserve. TECHNICAL ATLAS GUTTER CLEANUP ONLY. This supplied image is a9person3×3sprite atlas. Keep the EXACT9 faces, ages, expressions, hairstyles, outfits, props, facing, pose and cell order. Do not redesign, swap or invent people.\nProblem: each row nearly touches the next, causing silhouettes to connect. Reflow the9existing figures into a mathematically UNIFORM3column×3row tall2:3 atlas with LARGE EMPTY TRANSPARENT GUTTERS.\nMANDATORY: a continuous transparent horizontal band 5% of TOTAL canvas height centered at exactly33.333% and66.667% of the canvasheight. Every pixel in these horizontal bands must be alpha0, running edge-to-edge. Also continuous transparent vertical bands3%ofTOTALwidth centered at33.333% and66.667%ofcanvaswidth. Outer margin2%transparent. Every person must fit ENTIRELY inside their own resulting cell interior: no head, hair, shoulder, knee or foot may touch or cross a band. Do not draw the bands as colored strips; they are true empty alpha. These precise positions matter.\nEach sprite shows completehead through at least knees with natural proportions. If necessary show headtoknees instead of tiny fullfeet so faces stay detailed, but NEVER crop at chest/waist. Preserve the same exact faces and anatomy, no vertical stretching. Set true RGBA transparent background everywhere outside people, no background fill/glow/scene/ground/shadow, no labels, text or gridlines. Nine independent isolated sameidentity characters.\nThis is the existing principal sheet06; retain its existing order strictly.",
+    "generator": "built-in-image_gen",
+    "transparentBackground": true,
+    "sha256": "3c75bdd3efb78a76fae48e22c4a8b9a867e6195e91fba71c0b472207055d74df"
+  },
+  {
+    "resultKey": "threeArtPrincipalPairResult",
+    "prompt": "Use case: identity-preserve / outpainting. Select ONLY2people from supplied3×3atlas, preserve their EXACT approved face, hairstyle, age, expression, costume and prop. Output ONE transparentRGBA atlas with TWO tall sprites SIDE-BY-SIDE in 2columns1row, squarecanvas1536x1536. Leave8%canvaswidth emptytransparency between figures and5%outermargin; eachcompleteheadtoknees, no shoulders/waistcutoff. Same2Dpaintedcelstyle, no scene/background/glow/ground/shadow/text/frame. No redesignedface, no newobjects.\nLEFT sprite: Garam / 가람, SOURCE row1column2, youngsixthheadrankscholar, bluegrayrobe, creamcollar, smallblackhighhatpin, blackhair, largebookheldtothechest, concernedattentiveface. Keep exactface/costume.\nRIGHT sprite: Haram / 하람, SOURCE row2column2, youngSillasoldier, grayblueheadband, tiedblackhair, lamellararmorovermutedredrobe, holdingrolledreport. Keep exactdifferentfaceandidentity.\nNo otherpeople. Fullheadwithcleartopmargin, completeknees, truealphatransparentoutsidesilhouettes. Twoindividualframesofsameheight, noneoverlap.",
+    "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-f3045e66-ae5c-48da-ae60-6c37a7a969e7.png",
+    "repoSrc": "assets/ancient/three-complete/characters/principal-fullbody-garam-haram-v1.png",
+    "sha256": "6c8b4ff0fad6b16a43176884ab9400fb38b5511b1076e00ff4eeb031531ae5a5"
+  },
+  {
+    "resultKey": "threeArtRecurringCleanResult3",
+    "prompt": "Use case: identity-preserve. Technical atlas reflow of the supplied approved7personimage. KEEP ONLY FIRST SIX people (top2rows), remove the seventhpartialperson bottomleft because that exact person has a separate approvedfullbody file. Preserve every remaining exactface, age, hairstyle, outfit, expression and RIGHTfacing. Reflow these6into ONE SQUARE transparentRGBA atlas with3columns2rows. Order: top Nara young,Nara mid40s,Jaein young; bottom Jaein mid50s,Jiu,Haeru young. This is not a redesign.\nEvery spritecompleteheadtoknees, clear generous alphagutters. MANDATORY continuously emptyalpha horizontalband5%totalheight centered at50%canvasheight; verticalbands3%totalwidthcenteredat33.333%and66.667%width; outermargin3%. No portraitpixel in gutters. Keep normalbodyproportions and crispfaces, handsEMPTY, nonewhandprops. No scene/background/glow/ground/shadow/text/frame/labels. Each independentfigure fitswithinequalcell. Do not draw bottomseventhperson.",
+    "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-fdae9fed-d6fd-4cc6-a5b6-ccd1465b5675.png",
+    "repoSrc": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-03-spaced.png",
+    "sha256": "1a1ffb525c5eef2cd1b9c1581b0b8c9567420e9c179daca98fef9937324f1677"
+  },
+  {
+    "resultKey": "threeArtRecurringCleanResult4",
+    "prompt": "Use case: identity-preserve. Technical atlasreflow. From suppliedimage KEEP ONLY5people: entireTOPROW(Nuri,Eunseo mid30s,Eunseoearly40s) and first2oftheSECONDROW(Eunseo'syoungchilddaughterand samegirl8yearslaterasmodestadolescent). EXCLUDE bothmenin greenrobes (secondrowcol3andbottomleft); theywereincorrectvariantsandmustnotappear.\nOutput ONE SQUARE transparentRGBA atlas with3columns2rows: top3unchangedidentitywomen; bottomleftyoungchild, bottommiddleadolescent, bottomrightEMPTY. Preserve exactfaces, ages, resemblance, hair, modestoutfits, positions/facing. Reflowcompleteheadtoknees/fullbodytofitcellwithclearalphagutters. Girlclearlychild, teenageappropriate, adultsrealisticcommoner. HandsEMPTYandrelaxed; norecordsheet/needlebox/branchoutcomeprop.\nMANDATORY continuouslyemptytransparenthorizontalband5%totalheightcenteredat50%; verticalbands3%totalwidthat33.333%and66.667%; outermargin3%. Nocharacterpixelsmaytouchbands. No scene/background/glow/ground/shadow/text/labels. No newpeople or faces.",
+    "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-d2b41899-b106-4fec-b112-75363b3e8235.png",
+    "repoSrc": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-04-spaced.png",
+    "sha256": "837b8e23145eacb587daa9b5a3de2a64b18073eaa4e0d9b2d2f5b409c113e320"
   }
 ]

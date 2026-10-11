@@ -60,9 +60,20 @@ if (globalThis.CORE_APP_READY === true && globalThis.EDITORIAL_UI_READY === true
       if (value) archive(meta(),'legacy-content','eraProgress.' + key,value);
     }
   }
+  function pendingAnswerDraft(value, resume) {
+    const active = resume?.run;
+    if (!value || typeof value !== 'object' || Array.isArray(value) ||
+        value.questionId !== active?.activeQuestionId || active?.questionAnswer !== null ||
+        !ownsQuestion(value.questionId) || !Number.isInteger(value.answer)) return null;
+    const question = QUESTIONS.find(item => item.questionId === value.questionId);
+    if (!question || value.answer < 0 || value.answer >= question.choices.length) return null;
+    return {questionId:value.questionId,answer:value.answer};
+  }
   function scopedMeta() {
     const m = meta(), select = (value, predicate) => Object.fromEntries(Object.entries(value || {}).filter(([id]) => predicate(id)));
+    const draft = pendingAnswerDraft(m.threeAnswerDraft,m.eraProgress?.[progressKey]?.resume);
     return {
+      ...(draft?{threeAnswerDraft:draft}:{}),
       completedChapters:(m.completedChapters || []).filter(ownsChapter),
       chapterRecords:select(m.chapterRecords,ownsChapter),chapterRuns:select(m.chapterRuns,ownsChapter),
       questionRecords:select(m.questionRecords,ownsQuestion),
@@ -83,7 +94,11 @@ if (globalThis.CORE_APP_READY === true && globalThis.EDITORIAL_UI_READY === true
       contentRevision:contentVersion,progress,meta:scopedMeta()});
   }
   function mergeRecoveryMeta(stored) {
-    const m = meta();
+    const m = meta(), resume = m.eraProgress?.[progressKey]?.resume;
+    const draft = pendingAnswerDraft(stored.threeAnswerDraft,resume);
+    // A valid current selection is newer than a fallback copy; unrelated meta
+    // and malformed source fields are left intact in the shared save.
+    if (draft && !pendingAnswerDraft(m.threeAnswerDraft,resume)) m.threeAnswerDraft = draft;
     for (const name of ['completedChapters','wrongQuestionIds','reviewedQuestionIds']) {
       const predicate = name === 'completedChapters' ? ownsChapter : ownsQuestion;
       m[name] = [...new Set([...(m[name] || []),...(stored[name] || []).filter(predicate)])];

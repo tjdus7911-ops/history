@@ -105,7 +105,7 @@
     {
       "sceneId": "proto_ch04_s3",
       "title": "바닷가 사람들의 삶",
-      "background": "assets/ancient/backgrounds/rebuild-okjeo-house.webp",
+      "background": "assets/ancient/backgrounds/proto-okjeo-coast.jpg",
       "symbolic": false,
       "actualBrowserVerified": false
     },
@@ -140,7 +140,7 @@
     {
       "sceneId": "proto_ch06_s2",
       "title": "삼한의 여러 소국",
-      "background": "assets/ancient/backgrounds/rebuild-trade-map.webp",
+      "background": "assets/ancient/backgrounds/proto-samhan-market.jpg",
       "symbolic": false,
       "actualBrowserVerified": false
     },
@@ -308,7 +308,7 @@
     {
       "sceneId": "proto_ch03_s5",
       "title": "부여를 떠난 주몽",
-      "background": "assets/ancient/backgrounds/rebuild-jolbon.webp",
+      "background": "assets/ancient/backgrounds/rebuild-forest-camp.webp",
       "symbolic": false,
       "actualBrowserVerified": false
     },
@@ -497,7 +497,7 @@
     {
       "sceneId": "proto_ch06_s7",
       "title": "제사의 의미",
-      "background": "assets/ancient/backgrounds/rebuild-samhan-sodo.webp",
+      "background": "assets/ancient/backgrounds/proto-samhan-market.jpg",
       "symbolic": false,
       "actualBrowserVerified": false
     },
@@ -525,14 +525,14 @@
     {
       "sceneId": "proto_ch06_s11",
       "title": "형제의 갈등",
-      "background": "assets/ancient/backgrounds/rebuild-byeonhan-workshop.webp",
+      "background": "assets/ancient/backgrounds/proto-samhan-market.jpg",
       "symbolic": false,
       "actualBrowserVerified": false
     },
     {
       "sceneId": "proto_ch06_s12",
       "title": "라온이 떠난 이유",
-      "background": "assets/ancient/backgrounds/rebuild-byeonhan-workshop.webp",
+      "background": "assets/ancient/backgrounds/proto-samhan-market.jpg",
       "symbolic": false,
       "actualBrowserVerified": false
     },
@@ -546,21 +546,21 @@
     {
       "sceneId": "proto_ch06_s14",
       "title": "철을 가진 사람들",
-      "background": "assets/ancient/backgrounds/proto-samhan-market.jpg",
+      "background": "assets/ancient/backgrounds/rebuild-byeonhan-workshop.webp",
       "symbolic": false,
       "actualBrowserVerified": false
     },
     {
       "sceneId": "proto_ch07_s4",
       "title": "마지막 역사 시험",
-      "background": "assets/ancient/backgrounds/rebuild-trade-map.webp",
+      "background": "assets/ancient/backgrounds/rebuild-forest-crossroads.webp",
       "symbolic": false,
       "actualBrowserVerified": false
     },
     {
       "sceneId": "proto_ch07_s5",
       "title": "돌아갈 길",
-      "background": "assets/ancient/backgrounds/rebuild-forest-crossroads.webp",
+      "background": "assets/ancient/backgrounds/proto-forest-road.jpg",
       "symbolic": false,
       "actualBrowserVerified": false
     },

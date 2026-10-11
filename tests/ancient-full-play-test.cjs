@@ -1,34 +1,21 @@
-const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert');
-const scripts=[...fs.readFileSync('dist/index.html','utf8').matchAll(/<script src="([^"]+)"/g)].map(match=>match[1]).filter(file=>file!=='pwa.js');
-let html='',saved=null;
-const context=vm.createContext({Date,console,document:{querySelector:selector=>selector==='#app'?{set innerHTML(value){html=value}}:null,querySelectorAll:()=>[],addEventListener(){},createElement:()=>({setAttribute(){},remove(){}}),body:{append(){}}},localStorage:{getItem:()=>saved,setItem:(key,value)=>{saved=value}},window:{scrollTo(){}},navigator:{},setTimeout:()=>0,clearTimeout(){},setInterval:()=>1,clearInterval(){}});
-const run=source=>vm.runInContext(source,context),copy=source=>JSON.parse(run('JSON.stringify('+source+')'));
-run(scripts.map(file=>fs.readFileSync('dist/'+file,'utf8')).join('\n'));
-
-function playSeason(eraId,expectedCount){
- run(`resumeEra(${JSON.stringify(eraId)})`);const completed=[];let guard=0;
- while(completed.length<expectedCount){
-  assert(++guard<900,JSON.stringify(copy('({screen,chapter:run().currentChapter,story:run().storyId,question:run().activeQuestionId,answer:run().questionAnswer})')));
-  const state=copy('({screen,chapter:run().currentChapter,answer:run().questionAnswer})');
-  if(state.screen==='game'){run("(()=>{const source=run().pending?STORIES[run().pending.sourceSceneId]:STORIES[run().storyId];if(run().pending){run().pending=null;if(!source.afterChoiceQuestionSetId||!startQuestionSequence(source)){enterStory();render();}}else if(source.choices){applyChoice(state,source.sceneId,0);save();render();}else{run().dialogueCursor=conversationEntries(source,null).length;nextStory();}})()");continue;}
-  if(state.screen==='quiz'){
-   const q=copy('activeQuestion()');if(state.answer===null)run(`recordQuestion(state,${JSON.stringify(q.questionId)},${q.answer});save();render()`);else run('continueStoryQuestion()');continue;
-  }
-  if(state.screen==='complete'){
-   if(!completed.includes(state.chapter))completed.push(state.chapter);if(completed.length===expectedCount)break;
-   const next=run(`eraChapters(${JSON.stringify(eraId)})[eraChapters(${JSON.stringify(eraId)}).findIndex(ch=>ch.chapterId===${JSON.stringify(state.chapter)})+1].chapterId`);run(`startAvailableChapter(${JSON.stringify(next)})`);continue;
-  }
-  throw Error(`unexpected screen ${state.screen}`);
- }
- assert.equal(run(`meta().completedChapters.filter(id=>chapterEra(id)===${JSON.stringify(eraId)}).length`),expectedCount);
- assert.equal(run(`meta().eraProgress[${JSON.stringify(eraId)}].completed`),true);assert.equal(run(`meta().eraProgress[${JSON.stringify(eraId)}].progress`),100);
- return completed;
+const assert=require('node:assert/strict');
+const {load,step}=require('./proto-revision-harness.cjs'),h=load();
+const legacy=h.copy("meta().eraProgress['proto-kingdoms']||null"),questions=new Set(),chapters=new Set();
+h.run("resumeEra('proto-kingdoms')");
+let guard=0;
+while(h.run("meta().completedChapters.filter(id=>id.startsWith('proto-')).length")<8){
+ assert(++guard<1700,'Proto route dead end');
+ if(h.run('screen')==='quiz')questions.add(h.run('activeQuestion().officialQuestionId'));
+ if(h.run('screen')==='complete')chapters.add(h.run('run().currentChapter'));
+ step(h,0,false);
 }
-assert.deepEqual(playSeason('proto-kingdoms',8),Array.from({length:8},(_,index)=>`proto-ch${String(index).padStart(2,'0')}`));
-// The legacy Three season is archived. Complete v3 A/B paths are tested in three-complete-test.cjs.
-assert.equal(run("eraChapters('three-kingdoms').length"),23);
-assert.equal(run("Object.values(STORIES).filter(s=>s.eraId==='three-kingdoms'&&!s.threeStoryVersion&&s.storyActive!==false).length"),0);
-assert.equal(run("meta().eraProgress['proto-kingdoms'].progress"),100);
-assert.equal(run("meta().completedChapters.filter(id=>id.startsWith('THR-C')).length"),0);
-assert.equal(run("meta().wrongQuestionIds.filter(id=>ANCIENT_OFFICIAL_QUESTION_IDS.includes(id)).length"),0);
-console.log('PASS: complete 원삼국 CH.00–07 in the current entry, independent completion, original Three draft excluded from the active route.');
+chapters.add(h.run('run().currentChapter'));
+assert.deepEqual([...chapters],Array.from({length:8},(_,i)=>'proto-ch0'+i));assert.equal(questions.size,23);
+assert.equal(h.run('PROTO_REVISION_ACTIONS.book().readSceneIds.length'),83);assert.equal(h.run('PROTO_REVISION_ACTIONS.book().answeredQuestionIds.length'),23);
+assert.equal(h.run("meta().eraProgress['proto-kingdoms-v3'].progress"),100);assert.equal(h.run("meta().eraProgress['proto-kingdoms-v3'].completed"),true);
+assert.deepEqual(h.copy("meta().eraProgress['proto-kingdoms']||null"),legacy,'old namespace preserved');
+assert.equal(h.run("Object.values(CHAPTERS).filter(ch=>ch.eraId==='three-kingdoms'&&ch.threeStoryVersion===3).length"),23);
+assert.equal(h.run("Object.values(STORIES).filter(s=>s.eraId==='three-kingdoms'&&!s.threeStoryVersion&&s.storyActive!==false).length"),0);
+assert.equal(h.run("meta().completedChapters.some(id=>id.startsWith('THR-C'))"),false);
+assert.equal(h.run("meta().wrongQuestionIds.some(id=>id.startsWith('ancient-'))"),false);
+console.log('PASS: 8 Proto chapters / 83 scenes / 23 real question answers through actual UI clicks, independent v3 completion, preserved legacy progress and unchanged Three season.');

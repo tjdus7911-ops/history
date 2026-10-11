@@ -2,19 +2,21 @@
    in three-complete-test.cjs. No browser or legacy storage is overwritten. */
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
 let files=[...fs.readFileSync('dist/index.html','utf8').matchAll(/<script src="([^"]+)"/g)].map(m=>m[1]);
+const uiFiles=files.filter(file=>file!=='pwa.js');
 files=files.filter(f=>!['pwa.js','three-story-ui.js','three-service-ui.js'].includes(f));
 // This standalone importer/save test can run while the entry point is being
 // wired. Once installed, the same authoritative script is read from index.html.
 if(!files.includes('three-exam-data.js'))files.splice(files.indexOf('three-story-data.js'),0,'three-exam-data.js');
-function load(saved={}){
-  const storage=new Map(Object.entries(saved));let html='';
+function load(saved={},options={}){
+  const storage=new Map(Object.entries(saved)),handlers=[];let html='';
   const context=vm.createContext({Date,console,document:{querySelector:s=>s==='#app'?{set innerHTML(v){html=v}}:null,
-    querySelectorAll:()=>[],addEventListener(){},createElement:()=>({setAttribute(){},remove(){}}),body:{append(){}}},
+    querySelectorAll:()=>[],addEventListener(type,handler,capture){if(type==='click')handlers.push({handler,capture});},createElement:()=>({setAttribute(){},remove(){}}),body:{append(){}}},
     localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},
     window:{scrollTo(){}},navigator:{},setTimeout:()=>0,clearTimeout(){},setInterval:()=>1,clearInterval(){}});
-  vm.runInContext(files.map(f=>fs.readFileSync('dist/'+f,'utf8')).join('\n'),context);
+  vm.runInContext((options.storyUI?uiFiles:files).map(f=>fs.readFileSync('dist/'+f,'utf8')).join('\n'),context);
   const run=code=>vm.runInContext(code,context),copy=code=>JSON.parse(run('JSON.stringify('+code+')'));
-  return {run,copy,storage:()=>Object.fromEntries(storage),html:()=>html};
+  function click(dataset){run('inputLockedUntil=0');let stopped=false;const button={dataset,disabled:false};const event={target:{closest:selector=>selector==='button'?button:null},preventDefault(){},stopPropagation(){},stopImmediatePropagation(){stopped=true;}};for(const item of handlers.slice().sort((a,b)=>Number(Boolean(b.capture))-Number(Boolean(a.capture)))){item.handler(event);if(stopped)break;}}
+  return {run,copy,click,storage:()=>Object.fromEntries(storage),html:()=>html};
 }
 const current=load();
 assert.equal(current.run("historySeasonProgressKey('three-kingdoms')"),'three-kingdoms-v3');
@@ -133,11 +135,57 @@ assert.equal(reloaded.run('run().threeTypedLineId'),undefined);
 // Round-trip all four eras through their actual resume handlers and storage.
 const boundary=load(),expected=new Map();
 for(const [index,id] of ['goryeo','proto-kingdoms','joseon','three-kingdoms'].entries()){
-  boundary.run('resumeEra('+JSON.stringify(id)+');run().flags.saveProbe='+JSON.stringify(id)+';run().stats.wealth='+(30+index)+';run().dialogueCursor=2;save()');
+  boundary.run('resumeEra('+JSON.stringify(id)+');run().flags.saveProbe='+JSON.stringify(id)+';run().stats.wealth='+(30+index)+';save()');
+  // Proto v3 requires the first common line to be read, not an artificial cursor jump.
+  if(id==='proto-kingdoms')boundary.click({action:'advance-dialogue'});else boundary.run('run().dialogueCursor=2;save()');
   expected.set(id,boundary.copy('({chapter:run().currentChapter,story:run().storyId,flags:run().flags,wealth:run().stats.wealth,cursor:run().dialogueCursor})'));
 }
 for(const id of ['joseon','proto-kingdoms','goryeo','three-kingdoms']){
   boundary.run('resumeEra('+JSON.stringify(id)+');save()');
   assert.deepEqual(boundary.copy('({chapter:run().currentChapter,story:run().storyId,flags:run().flags,wealth:run().stats.wealth,cursor:run().dialogueCursor})'),expected.get(id),id+' progress boundary');
 }
-console.log('PASS three v3 saves: exact branch/hint/queue/typewriter/book round trips; independent recovery; legacy and unknown-schema archives; no inherited completion; restart retains learning; four-era isolation.');
+// A real answer-number click survives independent-key-only recovery before
+// submission. No question attempt is created merely by restoring the choice.
+const draftClick=load({}, {storyUI:true});draftClick.run("resumeEra('three-kingdoms')");
+for(let guard=0;draftClick.run('screen')!=='quiz';guard++){
+  assert(guard<500,'first Three question was not reached');
+  if(draftClick.run("THREE_COMPLETE_ACTIONS.phaseState(THREE_COMPLETE_ACTIONS.currentSource()).phase")==='choice')draftClick.click({choice:'0'});
+  else draftClick.click({action:'advance-dialogue'});
+}
+const draftQuestion=draftClick.copy('activeQuestion()');draftClick.click({threeAnswer:'0'});draftClick.run('save()');
+const expectedDraft={questionId:draftQuestion.questionId,answer:0};
+assert.deepEqual(draftClick.copy('meta().threeAnswerDraft'),expectedDraft);
+assert.equal(draftClick.run('run().questionAnswer'),null);
+assert.equal(draftClick.run('meta().questionRecords[run().activeQuestionId]'),undefined);
+const draftKey='lived-history-three-kingdoms-v3',draftPayload=JSON.parse(draftClick.storage()[draftKey]);
+assert.deepEqual(draftPayload.meta.threeAnswerDraft,expectedDraft,'scoped independent draft');
+const draftRecovered=load({[draftKey]:JSON.stringify(draftPayload),unrelated:'retain'}, {storyUI:true});
+draftRecovered.run("resumeEra('three-kingdoms')");
+assert.deepEqual(draftRecovered.copy('meta().threeAnswerDraft'),expectedDraft);
+assert.equal(draftRecovered.run('run().activeQuestionId'),draftQuestion.questionId);
+assert.equal(draftRecovered.run('run().questionAnswer'),null);
+assert.equal(draftRecovered.run('meta().questionRecords[run().activeQuestionId]'),undefined);
+assert(draftRecovered.html().includes('data-three-answer="0" aria-pressed="true"'),'restored selection is visible');
+assert.equal(draftRecovered.storage().unrelated,'retain');
+const otherQuestion=draftClick.run("[...THREE_STORY_RUNTIME.questionByOfficialId.values()].find(q=>q.questionId!==run().activeQuestionId).questionId");
+for(const invalid of [
+  {questionId:otherQuestion,answer:0},
+  {questionId:draftQuestion.questionId,answer:-1},
+  {questionId:draftQuestion.questionId,answer:draftQuestion.choices.length},
+  {questionId:draftQuestion.questionId,answer:'0'},
+  {questionId:draftQuestion.questionId,answer:0.5},
+  ['malformed']
+]){
+  const malformed=JSON.parse(JSON.stringify(draftPayload));malformed.meta.threeAnswerDraft=invalid;
+  const ignored=load({[draftKey]:JSON.stringify(malformed)}, {storyUI:true});ignored.run("resumeEra('three-kingdoms')");
+  assert.equal(ignored.run('meta().threeAnswerDraft'),undefined,'ignore mismatched or malformed draft');
+  assert.equal(ignored.run('run().activeQuestionId'),draftQuestion.questionId,'queue survives invalid draft');
+  assert.equal(ignored.run('run().questionAnswer'),null);assert.deepEqual(ignored.copy('meta().threeCompleteBook'),draftPayload.meta.threeCompleteBook);
+}
+// Invalid transient input never leaks into the independent record, and its
+// validation does not remove unrelated or original shared metadata.
+draftClick.run('meta().threeAnswerDraft='+JSON.stringify({questionId:otherQuestion,answer:0})+';meta().draftPreservationProbe={otherEra:"unchanged"};save()');
+assert.equal(JSON.parse(draftClick.storage()[draftKey]).meta.threeAnswerDraft,undefined);
+assert.deepEqual(draftClick.copy('meta().threeAnswerDraft'),{questionId:otherQuestion,answer:0});
+assert.deepEqual(draftClick.copy('meta().draftPreservationProbe'),{otherEra:'unchanged'});
+console.log('PASS three v3 saves: exact branch/hint/queue/typewriter/book round trips; independent recovery; legacy and unknown-schema archives; no inherited completion; restart retains learning; four-era isolation; submitted-vs-draft independent recovery and stale/malformed draft rejection.');

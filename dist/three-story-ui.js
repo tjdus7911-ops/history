@@ -255,11 +255,22 @@ if (globalThis.CORE_APP_READY === true && globalThis.THREE_STORY_RUNTIME?.versio
     if(!active||['narration','thought'].includes(active.speakerType)||context==='record') return '';
     const history=[...(current.phase==='branch'||current.phase==='join'?source.dialogues:[]),
       ...(current.phase==='join'&&current.choiceIndex!==null?source.choices[current.choiceIndex]?.resultDialogues||[]:[]),...entries.slice(0,index+1)];
-    let npc=[...history].reverse().find(line=>line.speakerType==='npc'&&line.presentationContext!=='record');
-    if(!npc&&active.speakerType==='player'&&!source.isPrologue&&context!=='record') npc=source.dialogues.find(line=>line.speakerType==='npc'&&line.presentationContext!=='record');
-    let player=[...history].reverse().find(line=>line.speakerType==='player');
-    if(!player&&(authored.cast||[]).includes('서아')) player=runtime.convert(authored,{speaker:'서아',text:'',kind:'dialogue',expression:'neutral'});
-    const cast=[...(npc?[{...npc,position:'left'}]:[]),...(player?[{...player,position:'right'}]:[])];
+    const spoken=line=>['player','thought','npc'].includes(line?.speakerType)&&line.presentationContext!=='record';
+    const nearby=[];
+    for(let distance=1;distance<entries.length;distance++){
+      if(index-distance>=0&&spoken(entries[index-distance]))nearby.push(entries[index-distance]);
+      if(index+distance<entries.length&&spoken(entries[index+distance]))nearby.push(entries[index+distance]);
+    }
+    const standing=(line,position)=>({...line,position});
+    let cast;
+    if(active.speakerType==='npc'){
+      const peer=nearby[0];
+      cast=[standing(active,'left'),...(peer&&['player','thought'].includes(peer.speakerType)?[standing(peer,'right')]:[])];
+    }else{
+      const peer=nearby.find(line=>line.speakerType==='npc')
+        ||((current.phase==='branch'||current.phase==='join')?[...history].reverse().find(line=>line.speakerType==='npc'&&line.presentationContext!=='record'):null);
+      cast=[...(peer?[standing(peer,'left')]:[]),standing(active,'right')];
+    }
     return '<div class="character-stage" data-slot-mode="three-conversation" data-presentation-context="'+esc(context)+'" aria-hidden="true">'+cast.map(line=>threePortrait(line,line.characterId===active.characterId)).join('')+'</div>';
   };
   // Use the approved messenger renderer verbatim; add only stable scene metadata.
@@ -295,7 +306,9 @@ if (globalThis.CORE_APP_READY === true && globalThis.THREE_STORY_RUNTIME?.versio
     const notice=source.isPrologue&&source.sceneId==='THR-PRO-S01'?'화면을 누르면 서아의 이야기가 이어집니다.':context==='record'?'서아가 기록책에서 확인하는 내용입니다.':'최근 대화만 남겨 장면에 집중할 수 있어요.';
     const stage=characterStage(visible,source,cursor>=entries.length,r.pending,source.illustrationId,entries,cursor);
     const choiceMarkup=choices?choiceButtons(source,r).replace('class="choices"','class="choices three-dialogue-choices" role="group" aria-label="서아가 할 말"'):'';
-    return '<section class="game conversation-game three-complete-game has-art layered-art '+(first?'three-wake ':'')+(cut?'three-prologue-cut ':'')+(first&&cursor>=5?'three-queue-focus ':'')+(context==='record'?'three-record-context':'')+'" data-three-scene="'+esc(source.sceneId)+'" data-three-phase="'+current.phase+'" data-three-ui="approved-messenger-v1" style="'+assetStyle(source.illustrationId)+'"><div class="scene-scrim"></div>'+prologueBook(source,cursor)+'<div class="game-header"><button class="glass" data-nav="era">‹ &nbsp; 이야기 나가기</button><span class="glass">'+chapterLabel+'</span><button class="glass" data-action="three-recordbook">기록책</button></div><div class="game-stats"><span>♡ &nbsp; 체력 '+r.stats.health+'</span><span>◇ &nbsp; 지식 '+r.stats.knowledge+'</span><span>◉ &nbsp; '+r.stats.wealth+'냥</span></div><div class="scene-title"><small>'+(raw.showDateAndLocation===false?'':esc(source.location))+'</small><h2>'+esc(source.title)+'</h2>'+(!source.isPrologue&&date!==headerDate?'<p class="three-date">'+esc(date)+'</p>':'')+'</div>'+stage+'<section class="conversation-panel" aria-label="대화">'+(contextLabel?'<div class="three-context-label">'+esc(contextLabel)+'</div>':'')+'<div class="dialogue-log">'+visible.map((line,index)=>bubble(line,visibleStart+index)).join('')+'</div><div class="dialogue-step"><span>'+cursor+' / '+entries.length+'</span>'+(!choices?'<button class="advance-dialogue" data-action="'+action+'">'+label+' <b>›</b></button>':'')+'</div>'+choiceMarkup+'<div class="conversation-sub">'+notice+'</div></section><div class="chapter-progress" aria-label="읽은 장면 '+readCount+' / '+count+'">'+Array.from({length:count},(_,i)=>'<i class="'+(i<readCount?'on':'')+'"></i>').join('')+'</div></section>';
+    const advancing=!choices&&cursor<entries.length?'<button class="advance-dialogue" data-action="'+action+'">'+label+' <b>›</b></button>':'';
+    const continuing=!choices&&cursor>=entries.length?'<button class="primary next" data-action="'+action+'">'+label+'</button>':'';
+    return '<section class="game conversation-game three-complete-game has-art layered-art '+(first?'three-wake ':'')+(cut?'three-prologue-cut ':'')+(first&&cursor>=5?'three-queue-focus ':'')+(context==='record'?'three-record-context':'')+'" data-three-scene="'+esc(source.sceneId)+'" data-three-phase="'+current.phase+'" data-three-ui="approved-messenger-v1" style="'+assetStyle(source.illustrationId)+'"><div class="scene-scrim"></div>'+prologueBook(source,cursor)+'<div class="game-header"><button class="glass" data-nav="era">‹ &nbsp; 이야기 나가기</button><span class="glass">'+chapterLabel+'</span><button class="glass" data-action="three-recordbook">기록책</button></div><div class="game-stats"><span>♡ &nbsp; 체력 '+r.stats.health+'</span><span>◇ &nbsp; 지식 '+r.stats.knowledge+'</span><span>◉ &nbsp; '+r.stats.wealth+'냥</span></div><div class="scene-title"><small>'+(raw.showDateAndLocation===false?'':esc(source.location))+'</small><h2>'+esc(source.title)+'</h2>'+(!source.isPrologue&&date!==headerDate?'<p class="three-date">'+esc(date)+'</p>':'')+'</div>'+stage+'<section class="conversation-panel" aria-label="대화">'+(contextLabel?'<div class="three-context-label">'+esc(contextLabel)+'</div>':'')+'<div class="dialogue-log">'+visible.map((line,index)=>bubble(line,visibleStart+index)).join('')+'</div><div class="dialogue-step"><span>'+cursor+' / '+entries.length+'</span>'+advancing+'</div>'+continuing+choiceMarkup+'<div class="conversation-sub">'+notice+'</div></section><div class="chapter-progress" aria-label="읽은 장면 '+readCount+' / '+count+'">'+Array.from({length:count},(_,i)=>'<i class="'+(i<readCount?'on':'')+'"></i>').join('')+'</div></section>';
   };
   // Three lines are complete when rendered. Older saves may retain their
   // threeTypedLineId field, but it never gates input or schedules characters.
