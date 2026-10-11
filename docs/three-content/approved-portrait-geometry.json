@@ -1,0 +1,441 @@
+{
+  "schemaVersion": 1,
+  "files": {
+    "assets/ancient/three-v2/characters/seoa-angry.png": {
+      "src": "assets/ancient/three-v2/characters/seoa-angry.png",
+      "sha256": "2f8403595eb987b97956a8876cb7ab141fb641d75f57291ab142cf18b9eca4f2",
+      "portraitGeometry": {
+        "coordinateSpace": "sheet-pixels",
+        "alphaThreshold": 32,
+        "sheetWidth": 1024,
+        "sheetHeight": 1536,
+        "faceBounds": {
+          "x": 416,
+          "y": 86,
+          "width": 140,
+          "height": 143
+        },
+        "alphaBounds": {
+          "x": 239,
+          "y": 10,
+          "width": 678,
+          "height": 1512
+        },
+        "upperBodyBounds": {
+          "x": 277,
+          "y": 220,
+          "width": 491,
+          "height": 620
+        },
+        "faceAnchorMethod": "visual region excluding hair/headgear; fixed across matching Seoa expression poses",
+        "framing": "full-body"
+      },
+      "pixelEditingPerformed": false
+    },
+    "assets/ancient/three-v2/characters/seoa-determined.png": {
+      "src": "assets/ancient/three-v2/characters/seoa-determined.png",
+      "sha256": "edae2cb5022e3dd94c83b97edc46fa49a97b4c20b86c4626cb107a35e2ced9c5",
+      "portraitGeometry": {
+        "coordinateSpace": "sheet-pixels",
+        "alphaThreshold": 32,
+        "sheetWidth": 1024,
+        "sheetHeight": 1536,
+        "faceBounds": {
+          "x": 416,
+          "y": 86,
+          "width": 140,
+          "height": 143
+        },
+        "alphaBounds": {
+          "x": 238,
+          "y": 9,
+          "width": 681,
+          "height": 1513
+        },
+        "upperBodyBounds": {
+          "x": 276,
+          "y": 220,
+          "width": 493,
+          "height": 620
+        },
+        "faceAnchorMethod": "visual region excluding hair/headgear; fixed across matching Seoa expression poses",
+        "framing": "full-body"
+      },
+      "pixelEditingPerformed": false
+    },
+    "assets/ancient/three-v2/characters/seoa-embarrassed.png": {
+      "src": "assets/ancient/three-v2/characters/seoa-embarrassed.png",
+      "sha256": "26b853f17f9770903134d60a4cee3aa01d4e949420c9aee0797e65c325bd8dad",
+      "portraitGeometry": {
+        "coordinateSpace": "sheet-pixels",
+        "alphaThreshold": 32,
+        "sheetWidth": 1024,
+        "sheetHeight": 1536,
+        "faceBounds": {
+          "x": 416,
+          "y": 86,
+          "width": 140,
+          "height": 143
+        },
+        "alphaBounds": {
+          "x": 240,
+          "y": 10,
+          "width": 676,
+          "height": 1511
+        },
+        "upperBodyBounds": {
+          "x": 277,
+          "y": 220,
+          "width": 491,
+          "height": 620
+        },
+        "faceAnchorMethod": "visual region excluding hair/headgear; fixed across matching Seoa expression poses",
+        "framing": "full-body"
+      },
+      "pixelEditingPerformed": false
+    },
+    "assets/ancient/three-v2/characters/seoa-fear.png": {
+      "src": "assets/ancient/three-v2/characters/seoa-fear.png",
+      "sha256": "d1a231440dac64916f042cdb5559cab0cae20c81733cdfb51231cd300849290d",
+      "portraitGeometry": {
+        "coordinateSpace": "sheet-pixels",
+        "alphaThreshold": 32,
+        "sheetWidth": 1024,
+        "sheetHeight": 1536,
+        "faceBounds": {
+          "x": 423,
+          "y": 85,
+          "width": 142,
+          "height": 144
+        },
+        "alphaBounds": {
+          "x": 232,
+          "y": 12,
+          "width": 685,
+          "height": 1477
+        },
+        "upperBodyBounds": {
+          "x": 291,
+          "y": 220,
+          "width": 536,
+          "height": 620
+        },
+        "faceAnchorMethod": "visual region excluding hair/headgear; fixed across matching Seoa expression poses",
+        "framing": "full-body"
+      },
+      "pixelEditingPerformed": false
+    },
+    "assets/ancient/three-v2/characters/seoa-neutral.png": {
+      "src": "assets/ancient/three-v2/characters/seoa-neutral.png",
+      "sha256": "7a7c0b1904b84bcf7e95ea22410c937c4bba85c82a743cedd2ed4afb1bc72d73",
+      "portraitGeometry": {
+        "coordinateSpace": "sheet-pixels",
+        "alphaThreshold": 32,
+        "sheetWidth": 1024,
+        "sheetHeight": 1536,
+        "faceBounds": {
+          "x": 416,
+          "y": 86,
+          "width": 140,
+          "height": 143
+        },
+        "alphaBounds": {
+          "x": 240,
+          "y": 11,
+          "width": 675,
+          "height": 1510
+        },
+        "upperBodyBounds": {
+          "x": 277,
+          "y": 220,
+          "width": 490,
+          "height": 620
+        },
+        "faceAnchorMethod": "visual region excluding hair/headgear; fixed across matching Seoa expression poses",
+        "framing": "full-body"
+      },
+      "pixelEditingPerformed": false
+    },
+    "assets/ancient/three-v2/characters/seoa-relieved.png": {
+      "src": "assets/ancient/three-v2/characters/seoa-relieved.png",
+      "sha256": "4043349cc61bfd5abf47dc8c5b5df3bb26414786c300cd8685c5e7a08b051db6",
+      "portraitGeometry": {
+        "coordinateSpace": "sheet-pixels",
+        "alphaThreshold": 32,
+        "sheetWidth": 1024,
+        "sheetHeight": 1536,
+        "faceBounds": {
+          "x": 416,
+          "y": 86,
+          "width": 140,
+          "height": 143
+        },
+        "alphaBounds": {
+          "x": 240,
+          "y": 10,
+          "width": 677,
+          "height": 1512
+        },
+        "upperBodyBounds": {
+          "x": 279,
+          "y": 220,
+          "width": 490,
+          "height": 620
+        },
+        "faceAnchorMethod": "visual region excluding hair/headgear; fixed across matching Seoa expression poses",
+        "framing": "full-body"
+      },
+      "pixelEditingPerformed": false
+    },
+    "assets/ancient/three-v2/characters/seoa-sad.png": {
+      "src": "assets/ancient/three-v2/characters/seoa-sad.png",
+      "sha256": "1eea6b27b3c8f78f45da19210becedbebc9717f2709bab772a2a308a456592d6",
+      "portraitGeometry": {
+        "coordinateSpace": "sheet-pixels",
+        "alphaThreshold": 32,
+        "sheetWidth": 1024,
+        "sheetHeight": 1536,
+        "faceBounds": {
+          "x": 407,
+          "y": 102,
+          "width": 140,
+          "height": 139
+        },
+        "alphaBounds": {
+          "x": 240,
+          "y": 6,
+          "width": 675,
+          "height": 1516
+        },
+        "upperBodyBounds": {
+          "x": 299,
+          "y": 220,
+          "width": 458,
+          "height": 620
+        },
+        "faceAnchorMethod": "visual region excluding hair/headgear; fixed across matching Seoa expression poses",
+        "framing": "full-body"
+      },
+      "pixelEditingPerformed": false
+    },
+    "assets/ancient/three-v2/characters/seoa-smile.png": {
+      "src": "assets/ancient/three-v2/characters/seoa-smile.png",
+      "sha256": "252dcd2aefd7b1a0798f9ec6bd6eebff6ed9ced2ea6850160417336db72a33da",
+      "portraitGeometry": {
+        "coordinateSpace": "sheet-pixels",
+        "alphaThreshold": 32,
+        "sheetWidth": 1024,
+        "sheetHeight": 1536,
+        "faceBounds": {
+          "x": 416,
+          "y": 86,
+          "width": 140,
+          "height": 143
+        },
+        "alphaBounds": {
+          "x": 240,
+          "y": 10,
+          "width": 676,
+          "height": 1511
+        },
+        "upperBodyBounds": {
+          "x": 277,
+          "y": 220,
+          "width": 491,
+          "height": 620
+        },
+        "faceAnchorMethod": "visual region excluding hair/headgear; fixed across matching Seoa expression poses",
+        "framing": "full-body"
+      },
+      "pixelEditingPerformed": false
+    },
+    "assets/ancient/three-v2/characters/seoa-surprised.png": {
+      "src": "assets/ancient/three-v2/characters/seoa-surprised.png",
+      "sha256": "c32cde3c83c04c3df987d9f352aa1196faa59eda3cec2f37a1baf3d221a71109",
+      "portraitGeometry": {
+        "coordinateSpace": "sheet-pixels",
+        "alphaThreshold": 32,
+        "sheetWidth": 1024,
+        "sheetHeight": 1536,
+        "faceBounds": {
+          "x": 416,
+          "y": 86,
+          "width": 140,
+          "height": 143
+        },
+        "alphaBounds": {
+          "x": 240,
+          "y": 11,
+          "width": 676,
+          "height": 1510
+        },
+        "upperBodyBounds": {
+          "x": 277,
+          "y": 220,
+          "width": 491,
+          "height": 620
+        },
+        "faceAnchorMethod": "visual region excluding hair/headgear; fixed across matching Seoa expression poses",
+        "framing": "full-body"
+      },
+      "pixelEditingPerformed": false
+    },
+    "assets/ancient/three-v2/characters/seoa-suspicious.png": {
+      "src": "assets/ancient/three-v2/characters/seoa-suspicious.png",
+      "sha256": "8fa80e76ba01111559a606c75da2dd65aecc9b87f525bcdd6a96b38278c59461",
+      "portraitGeometry": {
+        "coordinateSpace": "sheet-pixels",
+        "alphaThreshold": 32,
+        "sheetWidth": 1024,
+        "sheetHeight": 1536,
+        "faceBounds": {
+          "x": 416,
+          "y": 86,
+          "width": 140,
+          "height": 143
+        },
+        "alphaBounds": {
+          "x": 240,
+          "y": 10,
+          "width": 676,
+          "height": 1512
+        },
+        "upperBodyBounds": {
+          "x": 277,
+          "y": 220,
+          "width": 491,
+          "height": 620
+        },
+        "faceAnchorMethod": "visual region excluding hair/headgear; fixed across matching Seoa expression poses",
+        "framing": "full-body"
+      },
+      "pixelEditingPerformed": false
+    },
+    "assets/ancient/three-v2/characters/seoa-worried.png": {
+      "src": "assets/ancient/three-v2/characters/seoa-worried.png",
+      "sha256": "5174d7af85495ed03079810eb592f399ac1b80445b00aeada4f15275e5344127",
+      "portraitGeometry": {
+        "coordinateSpace": "sheet-pixels",
+        "alphaThreshold": 32,
+        "sheetWidth": 1024,
+        "sheetHeight": 1536,
+        "faceBounds": {
+          "x": 416,
+          "y": 86,
+          "width": 140,
+          "height": 143
+        },
+        "alphaBounds": {
+          "x": 240,
+          "y": 9,
+          "width": 678,
+          "height": 1512
+        },
+        "upperBodyBounds": {
+          "x": 307,
+          "y": 220,
+          "width": 421,
+          "height": 620
+        },
+        "faceAnchorMethod": "visual region excluding hair/headgear; fixed across matching Seoa expression poses",
+        "framing": "full-body"
+      },
+      "pixelEditingPerformed": false
+    },
+    "assets/ancient/characters/three-player-modern.png": {
+      "src": "assets/ancient/characters/three-player-modern.png",
+      "sha256": "6784b5153b8fd39d4a2ac8b25dc33a8d3b109690a116457a9ae18534c5e391fb",
+      "portraitGeometry": {
+        "coordinateSpace": "sheet-pixels",
+        "alphaThreshold": 32,
+        "sheetWidth": 1024,
+        "sheetHeight": 1536,
+        "faceBounds": {
+          "x": 416,
+          "y": 86,
+          "width": 140,
+          "height": 143
+        },
+        "alphaBounds": {
+          "x": 273,
+          "y": 10,
+          "width": 495,
+          "height": 1502
+        },
+        "upperBodyBounds": {
+          "x": 277,
+          "y": 220,
+          "width": 491,
+          "height": 620
+        },
+        "faceAnchorMethod": "visual region excluding hair/headgear; fixed across matching Seoa expression poses",
+        "framing": "full-body"
+      },
+      "pixelEditingPerformed": false
+    },
+    "assets/ancient/three-v2/characters/gogukcheon-neutral.webp": {
+      "src": "assets/ancient/three-v2/characters/gogukcheon-neutral.webp",
+      "sha256": "9c5d4e5a6c7407ed3b1a437fe610a8886afbe889c8c0f0dbdb3b67acc6b6c2bf",
+      "portraitGeometry": {
+        "coordinateSpace": "sheet-pixels",
+        "alphaThreshold": 32,
+        "sheetWidth": 1024,
+        "sheetHeight": 1536,
+        "faceBounds": {
+          "x": 438,
+          "y": 74,
+          "width": 134,
+          "height": 145
+        },
+        "alphaBounds": {
+          "x": 209,
+          "y": 2,
+          "width": 632,
+          "height": 1528
+        },
+        "upperBodyBounds": {
+          "x": 229,
+          "y": 220,
+          "width": 534,
+          "height": 620
+        },
+        "faceAnchorMethod": "visual region excluding hair/headgear; fixed across matching Seoa expression poses",
+        "framing": "full-body"
+      },
+      "pixelEditingPerformed": false
+    },
+    "assets/ancient/three-v2/characters/eulpaso-neutral.webp": {
+      "src": "assets/ancient/three-v2/characters/eulpaso-neutral.webp",
+      "sha256": "a890e70596c9e57356ddec9924eddc626ff7034c8b6880e83d0733ce54c8ab2b",
+      "portraitGeometry": {
+        "coordinateSpace": "sheet-pixels",
+        "alphaThreshold": 32,
+        "sheetWidth": 1024,
+        "sheetHeight": 1536,
+        "faceBounds": {
+          "x": 450,
+          "y": 75,
+          "width": 134,
+          "height": 145
+        },
+        "alphaBounds": {
+          "x": 216,
+          "y": 2,
+          "width": 602,
+          "height": 1524
+        },
+        "upperBodyBounds": {
+          "x": 216,
+          "y": 220,
+          "width": 546,
+          "height": 620
+        },
+        "faceAnchorMethod": "visual region excluding hair/headgear; fixed across matching Seoa expression poses",
+        "framing": "full-body"
+      },
+      "pixelEditingPerformed": false
+    }
+  },
+  "sourceOriginalsPreserved": true,
+  "coordinateSpace": "absolute-pixels-in-source-file"
+}

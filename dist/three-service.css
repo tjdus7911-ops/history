@@ -1,37 +1,16 @@
-/* Scoped Three presentation; the other eras keep their original layouts. */
-.three-complete-game {isolation:isolate;width:min(100%,850px);min-height:min(850px,calc(100dvh - 28px));margin:0 auto;background-position:center;background-size:cover;overflow:visible;padding:20px 24px 16px;display:flex;flex-direction:column;border-radius:22px;color:#fff}
-.three-complete-game .scene-scrim {border-radius:inherit;background:linear-gradient(180deg,rgba(21,29,31,.54),rgba(21,29,31,0) 32%,rgba(21,29,31,.30) 65%,rgba(21,29,31,.72));pointer-events:none}
-.three-complete-game .game-header {position:relative;z-index:8;gap:8px;display:flex;justify-content:space-between;align-items:center}
-.three-complete-game .glass {white-space:normal;min-height:44px;padding:8px 12px;color:#fff;background:rgba(25,32,32,.6);border:1px solid #ffffff40;border-radius:12px}
-.three-complete-game .scene-title {position:relative;z-index:4;margin:22px 0 12px;text-shadow:0 1px 8px #172226}
-.three-complete-game .scene-title h2 {white-space:normal;overflow:visible;text-overflow:clip;font-size:clamp(22px,3.2vw,32px);line-height:1.25;margin:5px 0}
-.three-complete-game .scene-title small,.three-complete-game .three-date {font-size:13px;margin:6px 0;line-height:1.5}
-.three-complete-game .character-stage {position:absolute;inset:126px 0 140px;overflow:hidden;pointer-events:none;z-index:2}
-.three-complete-game .stage-character {height:min(64vh,580px);max-width:68%;bottom:0;object-fit:contain;object-position:bottom;filter:drop-shadow(0 8px 12px #182a2430)}
-.three-complete-game .stage-left {left:-3%}.three-complete-game .stage-right {right:-3%}
-.three-complete-game .stage-character.listening {filter:brightness(.87) saturate(.9) drop-shadow(0 8px 12px #182a2430);opacity:1}
-.three-complete-game .conversation-panel {position:relative;z-index:5;width:100%;max-width:700px;margin:auto auto 0;padding-top:175px;align-self:stretch}
-.three-complete-game .dialogue-log {display:block;min-height:0;margin:0}
-.three-complete-game .three-bubble {display:block;width:100%;max-width:100%;margin:0;background:rgba(255,253,246,.97);color:#28342e;border:1px solid #e7e3d4;border-radius:17px;padding:16px 20px;box-shadow:0 4px 20px #15262130;overflow:visible;text-align:left}
-.three-complete-game .three-bubble p {margin:6px 0 0;white-space:pre-wrap;overflow-wrap:anywhere;word-break:keep-all;font-size:18px;line-height:1.75;max-height:none;display:block;-webkit-line-clamp:unset}
-.three-complete-game .three-speaker {display:block;position:static;color:#5c6855;font-size:13px;font-weight:800;text-align:left;letter-spacing:.03em}
-.three-complete-game .three-bubble.right .three-speaker {color:#8b594c;text-align:right}
-.three-complete-game .three-record-line {background:rgba(253,247,227,.98);border-left:4px solid #a8864c}
-.three-complete-game .three-record-line .three-speaker {color:#846631}
-.three-complete-game .three-narration {background:rgba(37,44,43,.94);color:#fff;border-color:#ffffff38}
-.three-complete-game .three-narration .three-speaker {color:#d2d7c4}
-.three-context-label {display:inline-block;margin:0 0 8px;padding:6px 11px;border-radius:8px;background:#403b2ded;color:#fff0ca;font-size:13px;line-height:1.4;max-width:100%;overflow-wrap:anywhere}
-.three-context-label[hidden] {display:none}
-.three-record-context::after {content:"";position:absolute;inset:0;border-radius:inherit;background:rgba(45,36,22,.24);z-index:1;pointer-events:none}
-.three-complete-game .dialogue-step {margin:8px 3px;font-size:12px;color:#f5f0de;min-height:17px}
-.three-complete-game .next {display:flex;align-items:center;justify-content:space-between;min-height:48px;width:100%;white-space:normal;line-height:1.5;word-break:keep-all;padding:12px 18px;margin-top:8px;background:#efe3c7;color:#2f3c32;border:1px solid #fff3d9;border-radius:12px;cursor:pointer;font-size:15px}
-.three-complete-game .three-dialogue-choices {display:grid;gap:9px}
-.three-complete-game .three-dialogue-choices .choice {display:block;margin:0;width:100%;min-height:52px;padding:13px 17px;line-height:1.65;white-space:normal;text-align:left;background:rgba(252,249,239,.98);border:1px solid #e1d0af;border-radius:12px;color:#243b31;cursor:pointer}
-.three-complete-game .choice span {white-space:pre-wrap;overflow:visible;overflow-wrap:anywhere;word-break:keep-all;text-overflow:clip;display:block;-webkit-line-clamp:unset}
-.three-complete-game .conversation-sub {min-height:0;font-size:11px;margin:8px 0 0;color:#f0ebdb;line-height:1.4}
-.three-complete-game .conversation-sub:empty {display:none}
-.three-complete-game .chapter-progress {position:relative;display:flex;gap:4px;width:100%;margin-top:14px;z-index:4;inset:auto;height:3px}
-.three-complete-game .chapter-progress i {flex:1;height:3px;background:#ffffff42}.three-complete-game .chapter-progress i.on {background:#e5c890}
+/* Three uses the existing dialogue.css / editorial.css messenger UI.
+   Only authored text wrapping, record context, staging and portrait geometry
+   are scoped here; shared colors, tails, typography and controls stay shared. */
+.three-complete-game .conversation-panel {flex-shrink:0;}
+.three-complete-game .speech-bubble,
+.three-complete-game .narration-line p,
+.three-complete-game .choice span {white-space:pre-wrap;overflow-wrap:anywhere;word-break:keep-all;}
+.three-complete-game .choice {height:auto;white-space:normal;}
+.three-complete-game .scene-title h2 {white-space:normal;overflow:visible;text-overflow:clip;}
+.three-complete-game .three-date {margin:4px 0 0;font-size:9px;line-height:1.5;color:#f0e4ccad;}
+.three-complete-game .game-header>span {min-width:0;white-space:normal;text-align:center;}
+.three-context-label {margin:0 0 8px;font-size:10px;line-height:1.5;color:#f4dfb0;text-align:center;overflow-wrap:anywhere;}
+.three-record-context::after {content:"";position:absolute;inset:0;border-radius:inherit;background:rgba(45,36,22,.24);z-index:1;pointer-events:none;}
 .three-prologue-book {position:absolute;z-index:1;left:9%;top:31%;width:46%;height:26%;transform:rotate(-8deg);filter:drop-shadow(0 12px 16px #09151470);pointer-events:none}
 .three-book-leaf {position:absolute;top:0;width:50%;height:100%;background:#e9dbba;border:2px solid #c5b389;border-bottom:10px solid #665740;border-radius:6px}
 .left-leaf {left:0;transform:perspective(400px) rotateY(5deg)}.right-leaf {right:0;transform:perspective(400px) rotateY(-5deg)}
@@ -86,15 +65,6 @@
 .three-photo-pan {overflow:auto;max-height:80dvh;overscroll-behavior:contain}.three-photo-pan img {display:block;width:auto;max-width:none;min-width:100%;height:auto}
 .three-save-notice {margin:15px 0;padding:20px;background:#f2ecdc;border-radius:14px;border:1px solid #ddd0aa}.three-save-notice h2 {font-size:18px}.three-save-notice p {font-size:14px;line-height:1.65}
 @media(max-width:760px) {
- .three-complete-game {width:100%;min-height:calc(100dvh - 70px);padding:12px 13px 14px;border-radius:0}
- .three-complete-game .game-header .glass {font-size:11px;padding:7px 9px;min-height:42px}
- .three-complete-game .scene-title {margin:15px 0 8px}.three-complete-game .scene-title h2 {font-size:23px}.three-complete-game .scene-title small {font-size:12px}
- .three-complete-game .character-stage {inset:116px 0 170px}.three-complete-game .stage-character {height:min(58vh,480px);max-width:78%}
- .three-complete-game .stage-left {left:-16%}.three-complete-game .stage-right {right:-16%}
- .three-complete-game .conversation-panel {padding-top:155px}
- .three-complete-game .three-bubble {padding:13px 15px;border-radius:14px}.three-complete-game .three-bubble p {font-size:16px;line-height:1.7}
- .three-complete-game .three-dialogue-choices .choice {font-size:14px;line-height:1.65;padding:11px 14px}
- .three-complete-game .three-speaker {font-size:12px}.three-complete-game .next {font-size:14px}
  .three-prologue-book {top:29%;width:56%;height:22%;left:5%}.three-prologue-book.closeup {top:25%;width:75%;height:26%;left:3%}
  .three-complete-quiz {padding:14px 14px 28px}.three-complete-quiz .quiz-question-title {font-size:21px}
  .three-number-options {gap:6px}.three-number-options .choice {min-height:69px;font-size:12px;padding:7px 3px}
@@ -102,9 +72,15 @@
  .three-book-question {gap:8px}.three-book-question button {padding:7px 10px}.three-photo-modal header {flex-wrap:wrap}
 }
 
-/* Atlas crops retain each generated face without modifying the source PNG. */
-.three-complete-game .three-atlas-character {display:block;width:44%;height:auto;max-width:420px;top:16%;bottom:auto;transform:none;transform-origin:center;overflow:hidden;object-fit:unset}
-.three-complete-game .three-atlas-character.stage-left {left:1%;right:auto}
-.three-complete-game .three-atlas-character.active,.three-complete-game .three-atlas-character.listening {transform:none}
-.three-complete-game .three-atlas-image {display:block;position:absolute;inset:0;background-repeat:no-repeat;transform-origin:center}
-@media(max-width:760px) {.three-complete-game .three-atlas-character {width:58%;max-width:62%;top:17%}.three-complete-game .three-atlas-character.stage-left {left:-3%}}
+/* Every image uses the same face anchor and uniform scale, including atlases.
+   Source pixels are never stretched. Any lower crop occurs at the common stage
+   floor, behind the dialogue area, rather than at a floating portrait edge. */
+.three-complete-game .character-stage {container-type:inline-size;}
+.three-complete-game .three-scaled-character {
+  --three-face-height:68px;
+  display:block;position:absolute;max-width:none;max-height:none;min-width:0;
+  bottom:auto;right:auto;transform:none!important;transform-origin:center;
+  overflow:visible;object-fit:unset;transition:filter .24s ease,opacity .24s ease;
+}
+@supports(width:1cqw){.three-complete-game .three-scaled-character {--three-face-height:clamp(56px,17cqw,72px);}}
+.three-complete-game .three-portrait-image {display:block;position:absolute;inset:0;background-repeat:no-repeat;transform-origin:center;}

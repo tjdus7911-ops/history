@@ -2,8 +2,8 @@
   "status": "incomplete",
   "actualPCVerified": false,
   "actualMobileVerified": false,
-  "frames": 731,
-  "portraits": 1205,
+  "frames": 1264,
+  "portraits": 1998,
   "scenes": [
     {
       "sceneId": "proto_ch00_s1",
@@ -90,7 +90,7 @@
       "sceneId": "proto_ch03_s1",
       "chapterId": "proto-ch03",
       "title": "고구려로 가는 길",
-      "location": "산길",
+      "location": "압록강 중류로 이어지는 산길",
       "background": "assets/ancient/backgrounds/proto-goguryeo-fortress.jpg",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -99,7 +99,7 @@
       "sceneId": "proto_ch03_s2",
       "chapterId": "proto-ch03",
       "title": "산성에 도착하다",
-      "location": "고구려 산성",
+      "location": "고구려 산성 아래",
       "background": "assets/ancient/backgrounds/proto-goguryeo-fortress.jpg",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -117,7 +117,7 @@
       "sceneId": "proto_ch04_s1",
       "chapterId": "proto-ch04",
       "title": "바다가 보이는 길",
-      "location": "옥저 해안",
+      "location": "옥저로 내려가는 해안길",
       "background": "assets/ancient/backgrounds/proto-okjeo-coast.jpg",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -126,7 +126,7 @@
       "sceneId": "proto_ch04_s2",
       "chapterId": "proto-ch04",
       "title": "소하와의 만남",
-      "location": "해안 마을",
+      "location": "소하의 집 앞",
       "background": "assets/ancient/backgrounds/rebuild-okjeo-house.webp",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -135,8 +135,8 @@
       "sceneId": "proto_ch04_s3",
       "chapterId": "proto-ch04",
       "title": "바닷가 사람들의 삶",
-      "location": "해안 작업장",
-      "background": "assets/ancient/backgrounds/rebuild-okjeo-house.webp",
+      "location": "소금과 어물을 정리하는 바닷가",
+      "background": "assets/ancient/backgrounds/proto-okjeo-coast.jpg",
       "symbolic": false,
       "actualBrowserVerified": false
     },
@@ -171,7 +171,7 @@
       "sceneId": "proto_ch06_s1",
       "chapterId": "proto-ch06",
       "title": "남쪽의 교역장",
-      "location": "삼한 교역장",
+      "location": "변한 지역의 교역장 입구",
       "background": "assets/ancient/backgrounds/proto-samhan-market.jpg",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -180,8 +180,8 @@
       "sceneId": "proto_ch06_s2",
       "chapterId": "proto-ch06",
       "title": "삼한의 여러 소국",
-      "location": "교역 지도",
-      "background": "assets/ancient/backgrounds/rebuild-trade-map.webp",
+      "location": "교역장의 여러 소국 상인들이 모인 길",
+      "background": "assets/ancient/backgrounds/proto-samhan-market.jpg",
       "symbolic": false,
       "actualBrowserVerified": false
     },
@@ -189,7 +189,7 @@
       "sceneId": "proto_ch06_s3",
       "chapterId": "proto-ch06",
       "title": "소국의 지배자",
-      "location": "취락",
+      "location": "장터 가까운 소국 지배자의 처소 앞",
       "background": "assets/ancient/backgrounds/proto-samhan-market.jpg",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -198,7 +198,7 @@
       "sceneId": "proto_ch07_s1",
       "chapterId": "proto-ch07",
       "title": "여행의 끝",
-      "location": "교역로",
+      "location": "작업장이 멀어지는 교역로",
       "background": "assets/ancient/backgrounds/proto-forest-road.jpg",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -207,7 +207,7 @@
       "sceneId": "proto_ch07_s2",
       "chapterId": "proto-ch07",
       "title": "부여와 고구려의 기억",
-      "location": "회상",
+      "location": "부여와 고구려 쪽 길을 되짚는 쉼터",
       "background": "assets/ancient/backgrounds/proto-forest-road.jpg",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -216,7 +216,7 @@
       "sceneId": "proto_ch07_s3",
       "chapterId": "proto-ch07",
       "title": "바다와 경계의 기억",
-      "location": "회상",
+      "location": "해안과 동예의 경계를 떠올리는 길",
       "background": "assets/ancient/backgrounds/proto-forest-road.jpg",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -387,7 +387,7 @@
       "sceneId": "proto_ch03_s4",
       "chapterId": "proto-ch03",
       "title": "알에서 태어난 아이",
-      "location": "주몽 탄생 신화 회상",
+      "location": "모닥불 곁·주몽 탄생 전승 삽화",
       "background": "assets/ancient/backgrounds/rebuild-jumong-birth.webp",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -396,8 +396,8 @@
       "sceneId": "proto_ch03_s5",
       "chapterId": "proto-ch03",
       "title": "부여를 떠난 주몽",
-      "location": "주몽의 이동 회상",
-      "background": "assets/ancient/backgrounds/rebuild-jolbon.webp",
+      "location": "모닥불 곁·부여를 떠나는 전승 삽화",
+      "background": "assets/ancient/backgrounds/rebuild-forest-camp.webp",
       "symbolic": false,
       "actualBrowserVerified": false
     },
@@ -405,7 +405,7 @@
       "sceneId": "proto_ch03_s6",
       "chapterId": "proto-ch03",
       "title": "졸본의 새로운 나라",
-      "location": "졸본 건국 회상",
+      "location": "모닥불 곁·졸본 건국 전승 삽화",
       "background": "assets/ancient/backgrounds/rebuild-jolbon.webp",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -423,7 +423,7 @@
       "sceneId": "proto_ch03_s8",
       "chapterId": "proto-ch03",
       "title": "단의 거짓말",
-      "location": "검문소",
+      "location": "성문 검문 자리",
       "background": "assets/ancient/backgrounds/proto-goguryeo-fortress.jpg",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -432,7 +432,7 @@
       "sceneId": "proto_ch03_s9",
       "chapterId": "proto-ch03",
       "title": "성 안의 질서",
-      "location": "고구려 마을",
+      "location": "고구려 성 안의 길",
       "background": "assets/ancient/backgrounds/proto-goguryeo-fortress.jpg",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -441,7 +441,7 @@
       "sceneId": "proto_ch03_s10",
       "chapterId": "proto-ch03",
       "title": "고구려의 혼인 풍습",
-      "location": "마을 주택",
+      "location": "마을 주택 뒤편",
       "background": "assets/ancient/backgrounds/rebuild-goguryeo-seook.webp",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -450,7 +450,7 @@
       "sceneId": "proto_ch03_s11",
       "chapterId": "proto-ch03",
       "title": "동맹의 이야기",
-      "location": "마을 광장",
+      "location": "고구려 마을 광장",
       "background": "assets/ancient/backgrounds/rebuild-goguryeo-dongmaeng.webp",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -459,7 +459,7 @@
       "sceneId": "proto_ch03_s12",
       "chapterId": "proto-ch03",
       "title": "사라진 교역단의 기록",
-      "location": "성 안 교역소",
+      "location": "교역상의 짐 보관처",
       "background": "assets/ancient/backgrounds/proto-goguryeo-fortress.jpg",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -468,7 +468,7 @@
       "sceneId": "proto_ch03_s13",
       "chapterId": "proto-ch03",
       "title": "산성에서의 밤",
-      "location": "산성 야경",
+      "location": "산성 숙영지의 밤",
       "background": "assets/ancient/backgrounds/proto-goguryeo-fortress.jpg",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -477,7 +477,7 @@
       "sceneId": "proto_ch03_s14",
       "chapterId": "proto-ch03",
       "title": "고구려를 떠나며",
-      "location": "산성 출구",
+      "location": "산성을 떠나는 동쪽 길",
       "background": "assets/ancient/backgrounds/proto-goguryeo-fortress.jpg",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -486,7 +486,7 @@
       "sceneId": "proto_ch04_s4",
       "chapterId": "proto-ch04",
       "title": "어린 신부의 이야기",
-      "location": "마을",
+      "location": "소하의 집 안",
       "background": "assets/ancient/backgrounds/rebuild-okjeo-house.webp",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -495,7 +495,7 @@
       "sceneId": "proto_ch04_s5",
       "chapterId": "proto-ch04",
       "title": "가족의 무덤",
-      "location": "공동 무덤",
+      "location": "가족 무덤이 보이는 마을 바깥길",
       "background": "assets/ancient/backgrounds/rebuild-okjeo-family-tomb.webp",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -504,7 +504,7 @@
       "sceneId": "proto_ch04_s6",
       "chapterId": "proto-ch04",
       "title": "기다리던 청년",
-      "location": "소하의 집",
+      "location": "소하의 집 앞 바다를 보는 자리",
       "background": "assets/ancient/backgrounds/rebuild-okjeo-house.webp",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -513,7 +513,7 @@
       "sceneId": "proto_ch04_s7",
       "chapterId": "proto-ch04",
       "title": "라온이 남긴 말",
-      "location": "소하의 집",
+      "location": "소하의 집 앞",
       "background": "assets/ancient/backgrounds/rebuild-okjeo-house.webp",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -522,7 +522,7 @@
       "sceneId": "proto_ch04_s8",
       "chapterId": "proto-ch04",
       "title": "형의 기억",
-      "location": "단의 과거 회상",
+      "location": "라온이 떠나기 전 형제의 대화 회상",
       "background": "assets/ancient/backgrounds/rebuild-byeonhan-workshop.webp",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -531,7 +531,7 @@
       "sceneId": "proto_ch04_s9",
       "chapterId": "proto-ch04",
       "title": "처음 털어놓는 후회",
-      "location": "해안 절벽",
+      "location": "바다가 내려다보이는 낮은 절벽길",
       "background": "assets/ancient/backgrounds/proto-okjeo-coast.jpg",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -540,7 +540,7 @@
       "sceneId": "proto_ch04_s10",
       "chapterId": "proto-ch04",
       "title": "남쪽을 향해",
-      "location": "해안길",
+      "location": "옥저에서 남쪽으로 이어지는 해안길",
       "background": "assets/ancient/backgrounds/proto-okjeo-coast.jpg",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -612,7 +612,7 @@
       "sceneId": "proto_ch06_s4",
       "chapterId": "proto-ch06",
       "title": "철을 만드는 사람들",
-      "location": "제철 작업장",
+      "location": "교역장 안쪽 철 작업장 바깥",
       "background": "assets/ancient/backgrounds/rebuild-byeonhan-workshop.webp",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -621,7 +621,7 @@
       "sceneId": "proto_ch06_s5",
       "chapterId": "proto-ch06",
       "title": "철의 가치",
-      "location": "교역장",
+      "location": "철 교역품이 쌓인 장터",
       "background": "assets/ancient/backgrounds/proto-samhan-market.jpg",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -630,7 +630,7 @@
       "sceneId": "proto_ch06_s6",
       "chapterId": "proto-ch06",
       "title": "천군과 소도",
-      "location": "신성 구역",
+      "location": "소도 가까운 길과 큰 나무가 보이는 곳",
       "background": "assets/ancient/backgrounds/rebuild-samhan-sodo.webp",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -639,8 +639,8 @@
       "sceneId": "proto_ch06_s7",
       "chapterId": "proto-ch06",
       "title": "제사의 의미",
-      "location": "소도 주변",
-      "background": "assets/ancient/backgrounds/rebuild-samhan-sodo.webp",
+      "location": "함께 일하는 논과 제사를 준비하는 마을 가까이",
+      "background": "assets/ancient/backgrounds/proto-samhan-market.jpg",
       "symbolic": false,
       "actualBrowserVerified": false
     },
@@ -648,7 +648,7 @@
       "sceneId": "proto_ch06_s8",
       "chapterId": "proto-ch06",
       "title": "익숙한 매듭",
-      "location": "철 작업장 앞",
+      "location": "철 작업장으로 돌아가는 길",
       "background": "assets/ancient/backgrounds/rebuild-byeonhan-workshop.webp",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -657,7 +657,7 @@
       "sceneId": "proto_ch06_s9",
       "chapterId": "proto-ch06",
       "title": "문 앞에서",
-      "location": "작업장 문",
+      "location": "철 작업장 문 앞",
       "background": "assets/ancient/backgrounds/rebuild-byeonhan-workshop.webp",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -666,7 +666,7 @@
       "sceneId": "proto_ch06_s10",
       "chapterId": "proto-ch06",
       "title": "마침내 만나다",
-      "location": "철 작업장",
+      "location": "철 작업장 안",
       "background": "assets/ancient/backgrounds/rebuild-byeonhan-workshop.webp",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -675,8 +675,8 @@
       "sceneId": "proto_ch06_s11",
       "chapterId": "proto-ch06",
       "title": "형제의 갈등",
-      "location": "작업장",
-      "background": "assets/ancient/backgrounds/rebuild-byeonhan-workshop.webp",
+      "location": "작업대 곁",
+      "background": "assets/ancient/backgrounds/proto-samhan-market.jpg",
       "symbolic": false,
       "actualBrowserVerified": false
     },
@@ -684,8 +684,8 @@
       "sceneId": "proto_ch06_s12",
       "chapterId": "proto-ch06",
       "title": "라온이 떠난 이유",
-      "location": "작업장",
-      "background": "assets/ancient/backgrounds/rebuild-byeonhan-workshop.webp",
+      "location": "편지가 펼쳐진 작업대",
+      "background": "assets/ancient/backgrounds/proto-samhan-market.jpg",
       "symbolic": false,
       "actualBrowserVerified": false
     },
@@ -693,7 +693,7 @@
       "sceneId": "proto_ch06_s13",
       "chapterId": "proto-ch06",
       "title": "각자의 삶",
-      "location": "작업장 앞",
+      "location": "작업장 앞의 그늘",
       "background": "assets/ancient/backgrounds/rebuild-byeonhan-workshop.webp",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -702,8 +702,8 @@
       "sceneId": "proto_ch06_s14",
       "chapterId": "proto-ch06",
       "title": "철을 가진 사람들",
-      "location": "교역장 석양",
-      "background": "assets/ancient/backgrounds/proto-samhan-market.jpg",
+      "location": "석양의 교역장과 작업장 앞",
+      "background": "assets/ancient/backgrounds/rebuild-byeonhan-workshop.webp",
       "symbolic": false,
       "actualBrowserVerified": false
     },
@@ -711,8 +711,8 @@
       "sceneId": "proto_ch07_s4",
       "chapterId": "proto-ch07",
       "title": "마지막 역사 시험",
-      "location": "교역 지도",
-      "background": "assets/ancient/backgrounds/rebuild-trade-map.webp",
+      "location": "갈림길 직전의 평평한 바위",
+      "background": "assets/ancient/backgrounds/rebuild-forest-crossroads.webp",
       "symbolic": false,
       "actualBrowserVerified": false
     },
@@ -720,8 +720,8 @@
       "sceneId": "proto_ch07_s5",
       "chapterId": "proto-ch07",
       "title": "돌아갈 길",
-      "location": "갈림길",
-      "background": "assets/ancient/backgrounds/rebuild-forest-crossroads.webp",
+      "location": "서로 다른 길이 갈라지는 곳",
+      "background": "assets/ancient/backgrounds/proto-forest-road.jpg",
       "symbolic": false,
       "actualBrowserVerified": false
     },
@@ -729,7 +729,7 @@
       "sceneId": "proto_ch07_s6",
       "chapterId": "proto-ch07",
       "title": "마지막 부탁",
-      "location": "갈림길",
+      "location": "갈림길의 그늘",
       "background": "assets/ancient/backgrounds/rebuild-forest-crossroads.webp",
       "symbolic": false,
       "actualBrowserVerified": false
@@ -738,7 +738,7 @@
       "sceneId": "proto_ch07_s7",
       "chapterId": "proto-ch07",
       "title": "마지막 선택",
-      "location": "갈림길",
+      "location": "마지막 갈림길",
       "background": "assets/ancient/backgrounds/rebuild-forest-crossroads.webp",
       "symbolic": false,
       "actualBrowserVerified": false

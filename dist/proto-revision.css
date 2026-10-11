@@ -1,0 +1,37 @@
+/* Keep the approved common messenger layout, bubble styles and portraits.
+   The revision adds only wrapping and intrinsic height for complete text. */
+.proto-revision-game .conversation-panel {flex-shrink:0;}
+.proto-revision-game .speech-bubble,
+.proto-revision-game .narration-line p,
+.proto-revision-game .choice span {white-space:pre-wrap;overflow-wrap:anywhere;word-break:keep-all;}
+.proto-revision-game .choice {height:auto;white-space:normal;}
+.proto-revision-game .scene-title h2 {white-space:normal;overflow:visible;text-overflow:clip;}
+.proto-revision-quiz .proto-original-question img {height:auto;max-height:none;object-fit:contain;}
+.proto-revision-quiz .feedback p {white-space:pre-wrap;overflow-wrap:anywhere;word-break:keep-all;}
+.proto-answer-instruction,.proto-source {font-size:12px;line-height:1.7;color:#6b7884;}
+.proto-revision-quiz .confirm-answer {min-height:49px;width:100%;border-radius:9px;}
+.modal.proto-recordbook {width:min(850px,94vw);max-height:88dvh;overflow-y:auto;padding:28px;}
+.proto-recordbook header {display:flex;align-items:flex-start;justify-content:space-between;gap:18px;}
+.proto-recordbook header h2 {margin:4px 0 16px;font-size:23px;line-height:1.5;}
+.proto-recordbook header small {font-size:12px;color:#647488;}
+.proto-recordbook p,.proto-recordbook blockquote {white-space:pre-wrap;overflow-wrap:anywhere;word-break:keep-all;line-height:1.8;}
+.proto-book-counts {display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 20px;font-size:12px;color:#566879;}
+.proto-book-counts span {padding:7px 10px;background:#f1f5f8;border-radius:6px;}
+.proto-book-tabs {display:flex;gap:6px;position:sticky;top:-28px;z-index:2;background:#fff;padding:10px 0 12px;margin-bottom:12px;}
+.proto-book-tabs button {flex:1;border:1px solid #dce3e9;border-radius:8px;background:#f7f9fb;min-height:43px;padding:8px;color:#526477;}
+.proto-book-tabs button[aria-current="true"] {background:#203951;color:#fff;border-color:#203951;}
+.proto-topic {border-bottom:1px solid #e3e8ed;padding:15px 0;}
+.proto-topic summary {cursor:pointer;font-weight:700;line-height:1.65;}
+.proto-topic p {margin:12px 0;color:#374d60;}
+.proto-choice-memory {padding:20px 0;border-bottom:1px solid #e3e8ed;}
+.proto-choice-memory h3 {font-size:17px;line-height:1.6;}
+.proto-choice-memory blockquote {margin:12px 0;padding:12px 16px;border-left:3px solid #425f7b;background:#f2f6f9;}
+.proto-book-bubble {margin:10px 0;padding:12px 16px;border-radius:9px;background:#f2f5f8;}
+.proto-book-bubble strong {font-size:12px;color:#536679;}
+.proto-book-bubble p {margin:5px 0 0;}
+.proto-book-bubble.player {background:#e9eff5;}
+.proto-book-bubble.narration {background:#faf9f5;}
+.proto-archive-note {margin-top:24px;padding-top:18px;border-top:1px solid #e4e8ed;font-size:12px;color:#748190;}
+.proto-independent-notice {padding:13px;background:#f3f5f8;border-radius:8px;}
+.proto-book-link {margin:20px 0;}
+@media(max-width:600px){.modal.proto-recordbook{padding:19px;}.proto-book-tabs{top:-19px;}}
