@@ -1,0 +1,3508 @@
+{
+  "schemaVersion": 1,
+  "auditId": "principal-visible-face-landmarks-v1",
+  "dateUTC": "2026-10-11",
+  "status": "manual-source-measurements-complete-runtime-application-and-visual-review-pending",
+  "scope": "61 active principal portraits: atlas 01, 02, 03-spaced, 04-spaced, 05, 06-safe, 07 and the separate Garam/Haram source. Standalone Yeonwoo/Haein and recurring/acting portraits are audited by other owners.",
+  "coordinateSpace": "absolute original-source pixels",
+  "boxConvention": "x/y are the first included source pixel; width/height are counts; right/bottom are exclusive.",
+  "measurementMethod": {
+    "method": "Manual visual landmark measurement on enlarged nearest-neighbor source-pixel grids, then a second source overlay review of each proposed box. Original RGBA pixels were read without editing.",
+    "verticalReference": "Visible forehead/hairline to the anatomical chin; ears included in the horizontal extent. Hair, headgear, and neck below the chin do not determine the face-height anchor.",
+    "occlusions": "Where a beard hides the chin, use the anatomical jaw estimate and exclude beard tips below it. Where the head is shaved, the forehead reference is estimated without using the top of the scalp. These records are explicitly marked and carry wider uncertainty.",
+    "boundingBoxCaveat": "An axis-aligned landmark box may contain fringe, beard or neck corners because of the pose; it is an anchor rectangle, not a pixel-exact skin segmentation mask.",
+    "excludedMethods": [
+      "No body-height fraction used for the new measurements",
+      "No skin-color threshold used to replace visual landmarks",
+      "No image generation, stretching, repainting or source/crop editing"
+    ],
+    "uncertainty": "Manual source-pixel boundary estimates: ordinarily ±2 px, partially occluded or inferred boundaries ±3–4 px. The figures are not automatic landmark detections.",
+    "directGridReviewedPortraits": 61,
+    "secondOverlayReviewedPortraits": 61
+  },
+  "reference": {
+    "src": "assets/ancient/three-v2/characters/seoa-neutral.png",
+    "sha256": "7a7c0b1904b84bcf7e95ea22410c937c4bba85c82a743cedd2ed4afb1bc72d73",
+    "faceBounds": {
+      "x": 416,
+      "y": 86,
+      "width": 140,
+      "height": 143
+    },
+    "modified": false,
+    "note": "Approved Seoa neutral source was opened and compared. Its fixed 143 px forehead-to-chin reference remains unchanged."
+  },
+  "baseline": {
+    "priorGenerationMetadata": "docs/three-content/fullbody-portrait-generation.json",
+    "priorGenerationSha256": "70a716b0bdaa460495196bd68073bed0b58790c51c5faab1c16b2d0b137de724",
+    "codeBaseline": "PR8 main 98c2462f969b0b6648e16613e460853fc0db7655, with concurrent work explicitly excluded from this audit's changes.",
+    "sourceSheets": [
+      {
+        "sheetId": "principal-fullbody-01",
+        "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-01.png",
+        "sha256": "ce8f8d70ba45f75ce808c5f86ee85e90b50dd6f99d0a3eac946604c851b90f5f",
+        "bytes": 2596444,
+        "width": 1024,
+        "height": 1536,
+        "count": 9
+      },
+      {
+        "sheetId": "principal-fullbody-02",
+        "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-02.png",
+        "sha256": "c17852623084e7fafbd576c7c06934ba3acc283f47c1f6d964a433d37e0cfd41",
+        "bytes": 2564380,
+        "width": 1024,
+        "height": 1536,
+        "count": 9
+      },
+      {
+        "sheetId": "principal-fullbody-03-spaced",
+        "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-03-spaced.png",
+        "sha256": "497fdcad92dd51da6a8f88aca24cfead2d14bb2bb57161b64d83da6d21319e3d",
+        "bytes": 2619388,
+        "width": 1024,
+        "height": 1536,
+        "count": 9
+      },
+      {
+        "sheetId": "principal-fullbody-04-spaced",
+        "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-04-spaced.png",
+        "sha256": "2ebe270f9f299ddb2ec4eb52c99a36c5db830934401e02124d9ed270b30d4c07",
+        "bytes": 2406307,
+        "width": 1024,
+        "height": 1536,
+        "count": 9
+      },
+      {
+        "sheetId": "principal-fullbody-05",
+        "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-05.png",
+        "sha256": "16bc8143d3239f82eb368d250eff9b7be8b3c3142d4c56556b6736e903d12dc2",
+        "bytes": 2492936,
+        "width": 1024,
+        "height": 1536,
+        "count": 9
+      },
+      {
+        "sheetId": "principal-fullbody-07",
+        "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-07.png",
+        "sha256": "bffdce0fd79996b099a760feb53b3df63234ddc23f2e4972d759b579ec0cffd4",
+        "bytes": 2353900,
+        "width": 1024,
+        "height": 1536,
+        "count": 7
+      },
+      {
+        "sheetId": "principal-fullbody-06-safe",
+        "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-06.png",
+        "sha256": "50d889e5cef9004e8632c83fea1471e170ec3ff7dea526df80f3725b1486e774",
+        "bytes": 2619540,
+        "width": 1024,
+        "height": 1536,
+        "count": 7
+      },
+      {
+        "sheetId": "principal-fullbody-garam-haram-v1",
+        "src": "assets/ancient/three-complete/characters/principal-fullbody-garam-haram-v1.png",
+        "sha256": "6c8b4ff0fad6b16a43176884ab9400fb38b5511b1076e00ff4eeb031531ae5a5",
+        "bytes": 1968343,
+        "width": 1254,
+        "height": 1254,
+        "count": 2
+      }
+    ],
+    "verifiedCanonicalContentAndMeasurementCodeHashes": {
+      "dist/three-story-script.json": "a2b0454b84dd7b2543ea41f8cb3c518e4a10d1f7db29f855b9324d5ab57fa6f0",
+      "dist/three-exam-data.json": "323e167f88250cc72b8ecc5787c2746552402cd1d068048e81d043eb881621ea",
+      "dist/proto-story-script.json": "d9e183fedd783fee7f7792dcb19c71a5a09d6c8188e266ea932b7361d1f0bed2",
+      "scripts/measure-three-fullbody-art.py": "8bd53b7fc48d05c90bc892c106c77c0f0e114075c73ba5cbb62c5065c45e0907"
+    }
+  },
+  "heuristicAudit": {
+    "activeMeasurementPath": "scripts/measure-three-fullbody-art.py reads faceBounds directly from each layout entry via rect(*entry['faceBounds']); full-body portrait compilation copies those values.",
+    "bodyHeightTimes017FoundInActiveTrackedMeasurementCode": false,
+    "conclusion": "The current tracked measurement path does not calculate face height as 0.17 of body height. The origin of the old hardcoded coordinates is not established by that code, so a previous heuristic cannot be proved or excluded from numeric coincidence alone.",
+    "oldFaceHeightToBodyAlphaHeightRange": [
+      0.131274,
+      0.223005
+    ],
+    "hangyeolOldFaceToBodyAlphaHeight": 0.168651
+  },
+  "renderingImpact": {
+    "existingFormula": "uniformScale = CSS target face height / source faceBounds.height × existing age/faceScale; this audit changes only the source face anchor proposal.",
+    "expectedUniformScaleMultiplierRange": [
+      1.005988,
+      1.574074
+    ],
+    "hangyeolExample": {
+      "characterId": "civilian-c08-654ff58ca5--initial",
+      "oldFaceBounds": {
+        "x": 486,
+        "y": 556,
+        "width": 83,
+        "height": 85
+      },
+      "newFaceBounds": {
+        "x": 493,
+        "y": 566,
+        "width": 70,
+        "height": 54
+      },
+      "faceHeightScaleMultiplier": 1.574074,
+      "ifObservedOldUniformScaleIs075Then": 1.180556,
+      "explanation": "Ten source pixels of headband/hair above the forehead and 21 pixels of neck below the chin cease to determine the face-height anchor. The unchanged sourceRect is 398/523/240/508."
+    }
+  },
+  "preservation": {
+    "imageFilesReadAndHashMatched": 8,
+    "sourceImagesModifiedByThisAudit": false,
+    "runtimeFilesModifiedByThisAudit": false,
+    "sourceRectAlphaSilhouetteClipPathsModifiedByThisAudit": false,
+    "canonicalManuscriptQuestionsAndIdentityModifiedByThisAudit": false,
+    "changeProposal": "Only entries[].newFaceBounds is proposed for coordinated metadata application. Old anchors and unchanged source/crop signatures are retained for comparison.",
+    "applyOwner": "Root / art owner",
+    "runtimeVisualReview": "Pending after coordinated application; source landmark review alone does not prove layout, actor overlap, face balance at all viewport widths or all original body proportions."
+  },
+  "summary": {
+    "portraitCount": 61,
+    "sourceSheetCount": 8,
+    "changedFaceBoundsCount": 61,
+    "visibleLandmarkCount": 33,
+    "occludedOrInferredBoundaryCount": 28
+  },
+  "entries": [
+    {
+      "characterId": "history-sundo--initial",
+      "name": "순도",
+      "chapter": 3,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-01",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-01.png",
+      "sourceImageSha256": "ce8f8d70ba45f75ce808c5f86ee85e90b50dd6f99d0a3eac946604c851b90f5f",
+      "row": 0,
+      "column": 0,
+      "oldFaceBounds": {
+        "x": 195,
+        "y": 42,
+        "width": 62,
+        "height": 66
+      },
+      "newFaceBounds": {
+        "x": 194,
+        "y": 30,
+        "width": 62,
+        "height": 63
+      },
+      "landmarks": {
+        "foreheadTopY": 30,
+        "chinBottomY": 92,
+        "faceLeftX": 194,
+        "faceRightX": 255
+      },
+      "manualBoundaryUncertaintyPx": 4,
+      "boundaryAssessment": "manual-landmarks-with-occluded-or-inferred-boundary",
+      "occlusionOrInference": "shaved-head forehead reference",
+      "note": "삭발 인물. 두피 꼭대기 대신 눈썹 위 이마의 해부학적 상단을 잡고 귀·턱을 포함. 목 제외.",
+      "expectedUniformScaleMultiplier": 1.047619,
+      "metadataDelta": {
+        "x": -1,
+        "y": -12,
+        "width": 0,
+        "height": -3
+      },
+      "unchangedSourceRect": {
+        "x": 85,
+        "y": 17,
+        "width": 241,
+        "height": 501
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 87,
+        "y": 19,
+        "width": 237,
+        "height": 497
+      },
+      "unchangedClipPathSha256": "2bd7009c77be45d973c59ac9aea680e851d4e9ee5b2bed242f870d7d17a010da",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "history-gwanggaeto--initial",
+      "name": "광개토대왕",
+      "chapter": 3,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-01",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-01.png",
+      "sourceImageSha256": "ce8f8d70ba45f75ce808c5f86ee85e90b50dd6f99d0a3eac946604c851b90f5f",
+      "row": 0,
+      "column": 1,
+      "oldFaceBounds": {
+        "x": 501,
+        "y": 54,
+        "width": 66,
+        "height": 68
+      },
+      "newFaceBounds": {
+        "x": 498,
+        "y": 54,
+        "width": 66,
+        "height": 47
+      },
+      "landmarks": {
+        "foreheadTopY": 54,
+        "chinBottomY": 100,
+        "faceLeftX": 498,
+        "faceRightX": 563
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "관 아래 이마부터 명확한 턱 끝까지. 기존 하단 목 영역 제외.",
+      "expectedUniformScaleMultiplier": 1.446809,
+      "metadataDelta": {
+        "x": -3,
+        "y": 0,
+        "width": 0,
+        "height": -21
+      },
+      "unchangedSourceRect": {
+        "x": 370,
+        "y": 6,
+        "width": 271,
+        "height": 520
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 372,
+        "y": 8,
+        "width": 267,
+        "height": 516
+      },
+      "unchangedClipPathSha256": "47f5fde732c1fb00670600c63110ecbe8f6972e029ea6c1a84e6a447789e6e1f",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "history-jangsu--initial",
+      "name": "장수왕",
+      "chapter": 4,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-01",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-01.png",
+      "sourceImageSha256": "ce8f8d70ba45f75ce808c5f86ee85e90b50dd6f99d0a3eac946604c851b90f5f",
+      "row": 0,
+      "column": 2,
+      "oldFaceBounds": {
+        "x": 791,
+        "y": 52,
+        "width": 65,
+        "height": 68
+      },
+      "newFaceBounds": {
+        "x": 791,
+        "y": 54,
+        "width": 63,
+        "height": 50
+      },
+      "landmarks": {
+        "foreheadTopY": 54,
+        "chinBottomY": 103,
+        "faceLeftX": 791,
+        "faceRightX": 853
+      },
+      "manualBoundaryUncertaintyPx": 3,
+      "boundaryAssessment": "manual-landmarks-with-occluded-or-inferred-boundary",
+      "occlusionOrInference": "short beard covers chin edge",
+      "note": "관 아래 이마와 수염에 가려진 짧은 턱 외곽. 목 제외.",
+      "expectedUniformScaleMultiplier": 1.36,
+      "metadataDelta": {
+        "x": 0,
+        "y": 2,
+        "width": -2,
+        "height": -18
+      },
+      "unchangedSourceRect": {
+        "x": 687,
+        "y": 6,
+        "width": 265,
+        "height": 522
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 689,
+        "y": 8,
+        "width": 261,
+        "height": 518
+      },
+      "unchangedClipPathSha256": "7e3279375b8b691f325f75513f9836841dfab737b31390915931817b26e28616",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "history-euljimundeok--initial",
+      "name": "을지문덕",
+      "chapter": 5,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-01",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-01.png",
+      "sourceImageSha256": "ce8f8d70ba45f75ce808c5f86ee85e90b50dd6f99d0a3eac946604c851b90f5f",
+      "row": 1,
+      "column": 0,
+      "oldFaceBounds": {
+        "x": 176,
+        "y": 573,
+        "width": 73,
+        "height": 72
+      },
+      "newFaceBounds": {
+        "x": 182,
+        "y": 558,
+        "width": 68,
+        "height": 57
+      },
+      "landmarks": {
+        "foreheadTopY": 558,
+        "chinBottomY": 614,
+        "faceLeftX": 182,
+        "faceRightX": 249
+      },
+      "manualBoundaryUncertaintyPx": 4,
+      "boundaryAssessment": "manual-landmarks-with-occluded-or-inferred-boundary",
+      "occlusionOrInference": "beard chin inferred; beard tip excluded",
+      "note": "기존 box 위의 노출된 이마 15px를 복원. 긴 수염의 뾰족한 끝과 목은 제외하고 턱 위치 추정.",
+      "expectedUniformScaleMultiplier": 1.263158,
+      "metadataDelta": {
+        "x": 6,
+        "y": -15,
+        "width": -5,
+        "height": -15
+      },
+      "unchangedSourceRect": {
+        "x": 44,
+        "y": 516,
+        "width": 291,
+        "height": 513
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 46,
+        "y": 518,
+        "width": 287,
+        "height": 509
+      },
+      "unchangedClipPathSha256": "bdbd8674f4d31235d82176c04fea18ed0421af9e9915fe5db67d8124ed2353a6",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "history-marananta--initial",
+      "name": "마라난타",
+      "chapter": 6,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-01",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-01.png",
+      "sourceImageSha256": "ce8f8d70ba45f75ce808c5f86ee85e90b50dd6f99d0a3eac946604c851b90f5f",
+      "row": 1,
+      "column": 1,
+      "oldFaceBounds": {
+        "x": 493,
+        "y": 554,
+        "width": 74,
+        "height": 75
+      },
+      "newFaceBounds": {
+        "x": 498,
+        "y": 535,
+        "width": 69,
+        "height": 65
+      },
+      "landmarks": {
+        "foreheadTopY": 535,
+        "chinBottomY": 599,
+        "faceLeftX": 498,
+        "faceRightX": 566
+      },
+      "manualBoundaryUncertaintyPx": 4,
+      "boundaryAssessment": "manual-landmarks-with-occluded-or-inferred-boundary",
+      "occlusionOrInference": "shaved-head forehead reference",
+      "note": "삭발 두피 상단은 제외한 이마 기준. 귀와 실제 턱, 목 제외.",
+      "expectedUniformScaleMultiplier": 1.153846,
+      "metadataDelta": {
+        "x": 5,
+        "y": -19,
+        "width": -5,
+        "height": -10
+      },
+      "unchangedSourceRect": {
+        "x": 390,
+        "y": 522,
+        "width": 260,
+        "height": 508
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 392,
+        "y": 524,
+        "width": 256,
+        "height": 504
+      },
+      "unchangedClipPathSha256": "6aa02395418d71cda6f6e2c0637755d41c7786e6dc9f53db0f5c0f00a70ab195",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "history-munju--initial",
+      "name": "문주왕",
+      "chapter": 7,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-01",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-01.png",
+      "sourceImageSha256": "ce8f8d70ba45f75ce808c5f86ee85e90b50dd6f99d0a3eac946604c851b90f5f",
+      "row": 1,
+      "column": 2,
+      "oldFaceBounds": {
+        "x": 808,
+        "y": 564,
+        "width": 72,
+        "height": 70
+      },
+      "newFaceBounds": {
+        "x": 810,
+        "y": 562,
+        "width": 70,
+        "height": 54
+      },
+      "landmarks": {
+        "foreheadTopY": 562,
+        "chinBottomY": 615,
+        "faceLeftX": 810,
+        "faceRightX": 879
+      },
+      "manualBoundaryUncertaintyPx": 3,
+      "boundaryAssessment": "manual-landmarks-with-occluded-or-inferred-boundary",
+      "occlusionOrInference": "short beard covers chin edge",
+      "note": "관 아래 이마부터 수염으로 덮인 턱 외곽. 목 제외.",
+      "expectedUniformScaleMultiplier": 1.296296,
+      "metadataDelta": {
+        "x": 2,
+        "y": -2,
+        "width": -2,
+        "height": -16
+      },
+      "unchangedSourceRect": {
+        "x": 709,
+        "y": 517,
+        "width": 255,
+        "height": 522
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 711,
+        "y": 519,
+        "width": 251,
+        "height": 518
+      },
+      "unchangedClipPathSha256": "c348b8fb637c78e7bf28ebd902a9da7c52890a68dd1284b105229d56da5c4421",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "history-muryeong--initial",
+      "name": "무령왕",
+      "chapter": 8,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-01",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-01.png",
+      "sourceImageSha256": "ce8f8d70ba45f75ce808c5f86ee85e90b50dd6f99d0a3eac946604c851b90f5f",
+      "row": 2,
+      "column": 0,
+      "oldFaceBounds": {
+        "x": 177,
+        "y": 1070,
+        "width": 73,
+        "height": 75
+      },
+      "newFaceBounds": {
+        "x": 181,
+        "y": 1068,
+        "width": 68,
+        "height": 55
+      },
+      "landmarks": {
+        "foreheadTopY": 1068,
+        "chinBottomY": 1122,
+        "faceLeftX": 181,
+        "faceRightX": 248
+      },
+      "manualBoundaryUncertaintyPx": 3,
+      "boundaryAssessment": "manual-landmarks-with-occluded-or-inferred-boundary",
+      "occlusionOrInference": "short beard covers chin edge",
+      "note": "관 아래 이마와 턱의 짧은 수염 외곽. 기존 목 영역 제외.",
+      "expectedUniformScaleMultiplier": 1.363636,
+      "metadataDelta": {
+        "x": 4,
+        "y": -2,
+        "width": -5,
+        "height": -20
+      },
+      "unchangedSourceRect": {
+        "x": 60,
+        "y": 1021,
+        "width": 268,
+        "height": 515
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 62,
+        "y": 1023,
+        "width": 264,
+        "height": 513
+      },
+      "unchangedClipPathSha256": "0c8d5ba16a241324c14b9cc0b8a040ff1fbd86cb0c3e8a63f45dbbb40e33ea07",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "history-seong--initial",
+      "name": "성왕",
+      "chapter": 8,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-01",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-01.png",
+      "sourceImageSha256": "ce8f8d70ba45f75ce808c5f86ee85e90b50dd6f99d0a3eac946604c851b90f5f",
+      "row": 2,
+      "column": 1,
+      "oldFaceBounds": {
+        "x": 487,
+        "y": 1081,
+        "width": 73,
+        "height": 74
+      },
+      "newFaceBounds": {
+        "x": 491,
+        "y": 1060,
+        "width": 65,
+        "height": 63
+      },
+      "landmarks": {
+        "foreheadTopY": 1060,
+        "chinBottomY": 1122,
+        "faceLeftX": 491,
+        "faceRightX": 555
+      },
+      "manualBoundaryUncertaintyPx": 3,
+      "boundaryAssessment": "manual-landmarks-with-occluded-or-inferred-boundary",
+      "occlusionOrInference": "short beard covers chin edge",
+      "note": "기존 box가 놓친 이마 상단을 복원. 턱 아래 목과 수염 돌출부 제외.",
+      "expectedUniformScaleMultiplier": 1.174603,
+      "metadataDelta": {
+        "x": 4,
+        "y": -21,
+        "width": -8,
+        "height": -11
+      },
+      "unchangedSourceRect": {
+        "x": 368,
+        "y": 1021,
+        "width": 291,
+        "height": 515
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 370,
+        "y": 1023,
+        "width": 287,
+        "height": 513
+      },
+      "unchangedClipPathSha256": "3f9051651e1f1c42f55171c8850f25379125f5be9b5de2371b632b36fadf9a31",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "history-beopheung--initial",
+      "name": "법흥왕",
+      "chapter": 11,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-01",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-01.png",
+      "sourceImageSha256": "ce8f8d70ba45f75ce808c5f86ee85e90b50dd6f99d0a3eac946604c851b90f5f",
+      "row": 2,
+      "column": 2,
+      "oldFaceBounds": {
+        "x": 817,
+        "y": 1080,
+        "width": 71,
+        "height": 74
+      },
+      "newFaceBounds": {
+        "x": 821,
+        "y": 1070,
+        "width": 71,
+        "height": 59
+      },
+      "landmarks": {
+        "foreheadTopY": 1070,
+        "chinBottomY": 1128,
+        "faceLeftX": 821,
+        "faceRightX": 891
+      },
+      "manualBoundaryUncertaintyPx": 4,
+      "boundaryAssessment": "manual-landmarks-with-occluded-or-inferred-boundary",
+      "occlusionOrInference": "beard chin inferred; beard tip excluded",
+      "note": "관 아래 실제 이마를 포함. 긴 수염의 아래 돌출 끝과 목 제외.",
+      "expectedUniformScaleMultiplier": 1.254237,
+      "metadataDelta": {
+        "x": 4,
+        "y": -10,
+        "width": 0,
+        "height": -15
+      },
+      "unchangedSourceRect": {
+        "x": 709,
+        "y": 1025,
+        "width": 269,
+        "height": 511
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 711,
+        "y": 1027,
+        "width": 265,
+        "height": 509
+      },
+      "unchangedClipPathSha256": "3fb9dbbc66fcb0898fb09ce359f307eb3d00712eafb41ad0496ed3eaa51a85e5",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "history-jajang--initial",
+      "name": "자장",
+      "chapter": 13,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-02",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-02.png",
+      "sourceImageSha256": "c17852623084e7fafbd576c7c06934ba3acc283f47c1f6d964a433d37e0cfd41",
+      "row": 0,
+      "column": 0,
+      "oldFaceBounds": {
+        "x": 171,
+        "y": 33,
+        "width": 75,
+        "height": 78
+      },
+      "newFaceBounds": {
+        "x": 171,
+        "y": 23,
+        "width": 74,
+        "height": 70
+      },
+      "landmarks": {
+        "foreheadTopY": 23,
+        "chinBottomY": 92,
+        "faceLeftX": 171,
+        "faceRightX": 244
+      },
+      "manualBoundaryUncertaintyPx": 4,
+      "boundaryAssessment": "manual-landmarks-with-occluded-or-inferred-boundary",
+      "occlusionOrInference": "shaved-head forehead reference",
+      "note": "삭발 두피의 꼭대기 대신 이마 상단을 기준으로 귀와 턱 포함. 목 제외.",
+      "expectedUniformScaleMultiplier": 1.114286,
+      "metadataDelta": {
+        "x": 0,
+        "y": -10,
+        "width": -1,
+        "height": -8
+      },
+      "unchangedSourceRect": {
+        "x": 62,
+        "y": 5,
+        "width": 262,
+        "height": 525
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 64,
+        "y": 7,
+        "width": 258,
+        "height": 521
+      },
+      "unchangedClipPathSha256": "7eebd1fecf59267c4f9fc49cdf77e641c2c7a5549d6c071d39672cdd9606795c",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "history-kimchunchu--initial",
+      "name": "김춘추",
+      "chapter": 13,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-02",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-02.png",
+      "sourceImageSha256": "c17852623084e7fafbd576c7c06934ba3acc283f47c1f6d964a433d37e0cfd41",
+      "row": 0,
+      "column": 1,
+      "oldFaceBounds": {
+        "x": 493,
+        "y": 49,
+        "width": 78,
+        "height": 76
+      },
+      "newFaceBounds": {
+        "x": 497,
+        "y": 44,
+        "width": 73,
+        "height": 56
+      },
+      "landmarks": {
+        "foreheadTopY": 44,
+        "chinBottomY": 99,
+        "faceLeftX": 497,
+        "faceRightX": 569
+      },
+      "manualBoundaryUncertaintyPx": 3,
+      "boundaryAssessment": "manual-landmarks-with-occluded-or-inferred-boundary",
+      "occlusionOrInference": "short beard covers chin edge",
+      "note": "관 아래 피부 이마가 기존 y49보다 위에 있음. 짧은 수염의 턱 경계까지 포함, 목 제외.",
+      "expectedUniformScaleMultiplier": 1.357143,
+      "metadataDelta": {
+        "x": 4,
+        "y": -5,
+        "width": -5,
+        "height": -20
+      },
+      "unchangedSourceRect": {
+        "x": 385,
+        "y": 0,
+        "width": 269,
+        "height": 531
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 387,
+        "y": 0,
+        "width": 265,
+        "height": 527
+      },
+      "unchangedClipPathSha256": "538ace3daad62d213d1720e7d7382ae7b5f9e38853b09ec7b8a17437484baf07",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "history-kimyusin--older",
+      "name": "김유신",
+      "chapter": 13,
+      "ageVariant": "older",
+      "sheetId": "principal-fullbody-02",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-02.png",
+      "sourceImageSha256": "c17852623084e7fafbd576c7c06934ba3acc283f47c1f6d964a433d37e0cfd41",
+      "row": 0,
+      "column": 2,
+      "oldFaceBounds": {
+        "x": 806,
+        "y": 39,
+        "width": 87,
+        "height": 86
+      },
+      "newFaceBounds": {
+        "x": 816,
+        "y": 37,
+        "width": 71,
+        "height": 69
+      },
+      "landmarks": {
+        "foreheadTopY": 37,
+        "chinBottomY": 105,
+        "faceLeftX": 816,
+        "faceRightX": 886
+      },
+      "manualBoundaryUncertaintyPx": 4,
+      "boundaryAssessment": "manual-landmarks-with-occluded-or-inferred-boundary",
+      "occlusionOrInference": "beard chin inferred; beard tip excluded",
+      "note": "회색 머리카락과 긴 수염 끝을 제외. 이마·귀·추정 턱까지.",
+      "expectedUniformScaleMultiplier": 1.246377,
+      "metadataDelta": {
+        "x": 10,
+        "y": -2,
+        "width": -16,
+        "height": -17
+      },
+      "unchangedSourceRect": {
+        "x": 715,
+        "y": 0,
+        "width": 258,
+        "height": 531
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 717,
+        "y": 2,
+        "width": 254,
+        "height": 527
+      },
+      "unchangedClipPathSha256": "42343a88430149664ad3d99964ec8da5b01759d4bc75662eb57406ffbd9b23c6",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "history-ureuk--initial",
+      "name": "우륵",
+      "chapter": 15,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-02",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-02.png",
+      "sourceImageSha256": "c17852623084e7fafbd576c7c06934ba3acc283f47c1f6d964a433d37e0cfd41",
+      "row": 1,
+      "column": 0,
+      "oldFaceBounds": {
+        "x": 168,
+        "y": 556,
+        "width": 74,
+        "height": 80
+      },
+      "newFaceBounds": {
+        "x": 170,
+        "y": 539,
+        "width": 70,
+        "height": 68
+      },
+      "landmarks": {
+        "foreheadTopY": 539,
+        "chinBottomY": 606,
+        "faceLeftX": 170,
+        "faceRightX": 239
+      },
+      "manualBoundaryUncertaintyPx": 3,
+      "boundaryAssessment": "manual-landmarks-with-occluded-or-inferred-boundary",
+      "occlusionOrInference": "sparse beard at chin",
+      "note": "기존 상단이 노출된 이마를 놓침. 귀와 이마를 포함하고 턱 아래 목을 제외. 제안 오버레이 재검토에서 왼쪽 귀 외곽 x170으로 보완.",
+      "expectedUniformScaleMultiplier": 1.176471,
+      "metadataDelta": {
+        "x": 2,
+        "y": -17,
+        "width": -4,
+        "height": -12
+      },
+      "unchangedSourceRect": {
+        "x": 51,
+        "y": 514,
+        "width": 275,
+        "height": 533
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 53,
+        "y": 516,
+        "width": 271,
+        "height": 529
+      },
+      "unchangedClipPathSha256": "b7ae204dda08c208170e35696dfd376a938fa1255212ab562493b8b712947a94",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "history-sinmun--initial",
+      "name": "신문왕",
+      "chapter": 16,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-02",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-02.png",
+      "sourceImageSha256": "c17852623084e7fafbd576c7c06934ba3acc283f47c1f6d964a433d37e0cfd41",
+      "row": 1,
+      "column": 1,
+      "oldFaceBounds": {
+        "x": 500,
+        "y": 557,
+        "width": 77,
+        "height": 79
+      },
+      "newFaceBounds": {
+        "x": 502,
+        "y": 548,
+        "width": 73,
+        "height": 64
+      },
+      "landmarks": {
+        "foreheadTopY": 548,
+        "chinBottomY": 611,
+        "faceLeftX": 502,
+        "faceRightX": 574
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "이마의 피부 시작점과 실제 턱 외곽. 기존 box 위 이마와 아래 목을 교정.",
+      "expectedUniformScaleMultiplier": 1.234375,
+      "metadataDelta": {
+        "x": 2,
+        "y": -9,
+        "width": -4,
+        "height": -15
+      },
+      "unchangedSourceRect": {
+        "x": 384,
+        "y": 514,
+        "width": 279,
+        "height": 533
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 386,
+        "y": 516,
+        "width": 275,
+        "height": 529
+      },
+      "unchangedClipPathSha256": "6d0f7205dd2f01f32797979377c0d273a340494aa50af98e9c1dfac418aaa368",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "history-wonhyo--initial",
+      "name": "원효",
+      "chapter": 17,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-02",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-02.png",
+      "sourceImageSha256": "c17852623084e7fafbd576c7c06934ba3acc283f47c1f6d964a433d37e0cfd41",
+      "row": 1,
+      "column": 2,
+      "oldFaceBounds": {
+        "x": 822,
+        "y": 560,
+        "width": 77,
+        "height": 82
+      },
+      "newFaceBounds": {
+        "x": 827,
+        "y": 535,
+        "width": 75,
+        "height": 69
+      },
+      "landmarks": {
+        "foreheadTopY": 535,
+        "chinBottomY": 603,
+        "faceLeftX": 827,
+        "faceRightX": 901
+      },
+      "manualBoundaryUncertaintyPx": 4,
+      "boundaryAssessment": "manual-landmarks-with-occluded-or-inferred-boundary",
+      "occlusionOrInference": "shaved-head forehead reference",
+      "note": "삭발 두피 상단을 제외한 이마 기준, 귀·미소 짓는 턱까지. 목 제외.",
+      "expectedUniformScaleMultiplier": 1.188406,
+      "metadataDelta": {
+        "x": 5,
+        "y": -25,
+        "width": -2,
+        "height": -13
+      },
+      "unchangedSourceRect": {
+        "x": 719,
+        "y": 520,
+        "width": 266,
+        "height": 527
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 721,
+        "y": 522,
+        "width": 262,
+        "height": 523
+      },
+      "unchangedClipPathSha256": "63995c5da248db369792ba80673f52178ea86ad1e54c06e3c5115a073166c27b",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "history-uisang--initial",
+      "name": "의상",
+      "chapter": 17,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-02",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-02.png",
+      "sourceImageSha256": "c17852623084e7fafbd576c7c06934ba3acc283f47c1f6d964a433d37e0cfd41",
+      "row": 2,
+      "column": 0,
+      "oldFaceBounds": {
+        "x": 159,
+        "y": 1065,
+        "width": 71,
+        "height": 78
+      },
+      "newFaceBounds": {
+        "x": 162,
+        "y": 1049,
+        "width": 66,
+        "height": 62
+      },
+      "landmarks": {
+        "foreheadTopY": 1049,
+        "chinBottomY": 1110,
+        "faceLeftX": 162,
+        "faceRightX": 227
+      },
+      "manualBoundaryUncertaintyPx": 4,
+      "boundaryAssessment": "manual-landmarks-with-occluded-or-inferred-boundary",
+      "occlusionOrInference": "shaved-head forehead reference",
+      "note": "삭발 이마와 귀·턱의 경계. 기존 긴 목 구간 제외.",
+      "expectedUniformScaleMultiplier": 1.258065,
+      "metadataDelta": {
+        "x": 3,
+        "y": -16,
+        "width": -5,
+        "height": -16
+      },
+      "unchangedSourceRect": {
+        "x": 59,
+        "y": 1033,
+        "width": 252,
+        "height": 503
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 61,
+        "y": 1035,
+        "width": 248,
+        "height": 500
+      },
+      "unchangedClipPathSha256": "704cd9bfacf196acff73d50b652142bc257ffd76d9607f116c02916c3c06a2f3",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "history-jangbogo--initial",
+      "name": "장보고",
+      "chapter": 18,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-02",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-02.png",
+      "sourceImageSha256": "c17852623084e7fafbd576c7c06934ba3acc283f47c1f6d964a433d37e0cfd41",
+      "row": 2,
+      "column": 1,
+      "oldFaceBounds": {
+        "x": 509,
+        "y": 1065,
+        "width": 74,
+        "height": 79
+      },
+      "newFaceBounds": {
+        "x": 510,
+        "y": 1066,
+        "width": 69,
+        "height": 54
+      },
+      "landmarks": {
+        "foreheadTopY": 1066,
+        "chinBottomY": 1119,
+        "faceLeftX": 510,
+        "faceRightX": 578
+      },
+      "manualBoundaryUncertaintyPx": 3,
+      "boundaryAssessment": "manual-landmarks-with-occluded-or-inferred-boundary",
+      "occlusionOrInference": "short beard covers chin edge",
+      "note": "머리띠 하단의 이마와 짧은 턱 수염까지. 긴 목 제외.",
+      "expectedUniformScaleMultiplier": 1.462963,
+      "metadataDelta": {
+        "x": 1,
+        "y": 1,
+        "width": -5,
+        "height": -25
+      },
+      "unchangedSourceRect": {
+        "x": 398,
+        "y": 1030,
+        "width": 260,
+        "height": 506
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 400,
+        "y": 1032,
+        "width": 256,
+        "height": 504
+      },
+      "unchangedClipPathSha256": "601cef74a34e75e01db26f5658d52c13a81b65bb0229de3c8d124d2bfe1806c1",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "history-choechiwon--initial",
+      "name": "최치원",
+      "chapter": 19,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-02",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-02.png",
+      "sourceImageSha256": "c17852623084e7fafbd576c7c06934ba3acc283f47c1f6d964a433d37e0cfd41",
+      "row": 2,
+      "column": 2,
+      "oldFaceBounds": {
+        "x": 837,
+        "y": 1078,
+        "width": 77,
+        "height": 75
+      },
+      "newFaceBounds": {
+        "x": 843,
+        "y": 1078,
+        "width": 68,
+        "height": 50
+      },
+      "landmarks": {
+        "foreheadTopY": 1078,
+        "chinBottomY": 1127,
+        "faceLeftX": 843,
+        "faceRightX": 910
+      },
+      "manualBoundaryUncertaintyPx": 3,
+      "boundaryAssessment": "manual-landmarks-with-occluded-or-inferred-boundary",
+      "occlusionOrInference": "short beard covers chin edge",
+      "note": "관 아래 이마·귀·짧은 턱 외곽. 목 제외.",
+      "expectedUniformScaleMultiplier": 1.5,
+      "metadataDelta": {
+        "x": 6,
+        "y": 0,
+        "width": -9,
+        "height": -25
+      },
+      "unchangedSourceRect": {
+        "x": 739,
+        "y": 1033,
+        "width": 247,
+        "height": 503
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 741,
+        "y": 1035,
+        "width": 243,
+        "height": 501
+      },
+      "unchangedClipPathSha256": "3c7c98398b5ffd16c25906f0f9395e0011e6327b23950cc3bec7139aca66ff61",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "history-daejoyeong--initial",
+      "name": "대조영",
+      "chapter": 20,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-03-spaced",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-03-spaced.png",
+      "sourceImageSha256": "497fdcad92dd51da6a8f88aca24cfead2d14bb2bb57161b64d83da6d21319e3d",
+      "row": 0,
+      "column": 0,
+      "oldFaceBounds": {
+        "x": 191,
+        "y": 43,
+        "width": 73,
+        "height": 82
+      },
+      "newFaceBounds": {
+        "x": 189,
+        "y": 36,
+        "width": 72,
+        "height": 67
+      },
+      "landmarks": {
+        "foreheadTopY": 36,
+        "chinBottomY": 102,
+        "faceLeftX": 189,
+        "faceRightX": 260
+      },
+      "manualBoundaryUncertaintyPx": 4,
+      "boundaryAssessment": "manual-landmarks-with-occluded-or-inferred-boundary",
+      "occlusionOrInference": "beard chin inferred; beard tip excluded",
+      "note": "spaced 교체본 사용. 실제 이마와 귀부터 수염이 덮은 턱까지, 긴 수염 끝과 목 제외.",
+      "expectedUniformScaleMultiplier": 1.223881,
+      "metadataDelta": {
+        "x": -2,
+        "y": -7,
+        "width": -1,
+        "height": -15
+      },
+      "unchangedSourceRect": {
+        "x": 36,
+        "y": 2,
+        "width": 316,
+        "height": 546
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 38,
+        "y": 4,
+        "width": 312,
+        "height": 542
+      },
+      "unchangedClipPathSha256": "ee9711781ce4f849496d1d94d2e6b53362ca3fa3fb88f292fd78d9583bbecd10",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "history-wanggeon--initial",
+      "name": "왕건",
+      "chapter": 23,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-03-spaced",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-03-spaced.png",
+      "sourceImageSha256": "497fdcad92dd51da6a8f88aca24cfead2d14bb2bb57161b64d83da6d21319e3d",
+      "row": 0,
+      "column": 1,
+      "oldFaceBounds": {
+        "x": 489,
+        "y": 48,
+        "width": 82,
+        "height": 91
+      },
+      "newFaceBounds": {
+        "x": 491,
+        "y": 47,
+        "width": 74,
+        "height": 63
+      },
+      "landmarks": {
+        "foreheadTopY": 47,
+        "chinBottomY": 109,
+        "faceLeftX": 491,
+        "faceRightX": 564
+      },
+      "manualBoundaryUncertaintyPx": 4,
+      "boundaryAssessment": "manual-landmarks-with-occluded-or-inferred-boundary",
+      "occlusionOrInference": "beard chin inferred; beard tip excluded",
+      "note": "관·머리카락을 제외한 이마와 귀, 추정 턱. 긴 수염의 하단 끝 제외.",
+      "expectedUniformScaleMultiplier": 1.444444,
+      "metadataDelta": {
+        "x": 2,
+        "y": -1,
+        "width": -8,
+        "height": -28
+      },
+      "unchangedSourceRect": {
+        "x": 370,
+        "y": 2,
+        "width": 295,
+        "height": 546
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 372,
+        "y": 4,
+        "width": 291,
+        "height": 542
+      },
+      "unchangedClipPathSha256": "62175d8639eca431f5262185c26c07c626af3b1438bbfec5b215db92f3fcd2b6",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c01-e46c301472--initial",
+      "name": "해솔",
+      "chapter": 1,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-03-spaced",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-03-spaced.png",
+      "sourceImageSha256": "497fdcad92dd51da6a8f88aca24cfead2d14bb2bb57161b64d83da6d21319e3d",
+      "row": 0,
+      "column": 2,
+      "oldFaceBounds": {
+        "x": 810,
+        "y": 51,
+        "width": 73,
+        "height": 79
+      },
+      "newFaceBounds": {
+        "x": 810,
+        "y": 55,
+        "width": 69,
+        "height": 64
+      },
+      "landmarks": {
+        "foreheadTopY": 55,
+        "chinBottomY": 118,
+        "faceLeftX": 810,
+        "faceRightX": 878
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "앞머리 사이 이마와 귀·턱 포함. 기존 하단 목 제외.",
+      "expectedUniformScaleMultiplier": 1.234375,
+      "metadataDelta": {
+        "x": 0,
+        "y": 4,
+        "width": -4,
+        "height": -15
+      },
+      "unchangedSourceRect": {
+        "x": 700,
+        "y": 21,
+        "width": 292,
+        "height": 524
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 702,
+        "y": 23,
+        "width": 288,
+        "height": 520
+      },
+      "unchangedClipPathSha256": "da4e91fbbfbce512a3605dee529bf6e28c9bf103defe925ae483794c757908f8",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c02-4d5f80821a--initial",
+      "name": "하준",
+      "chapter": 2,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-03-spaced",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-03-spaced.png",
+      "sourceImageSha256": "497fdcad92dd51da6a8f88aca24cfead2d14bb2bb57161b64d83da6d21319e3d",
+      "row": 1,
+      "column": 0,
+      "oldFaceBounds": {
+        "x": 173,
+        "y": 568,
+        "width": 78,
+        "height": 83
+      },
+      "newFaceBounds": {
+        "x": 179,
+        "y": 567,
+        "width": 69,
+        "height": 65
+      },
+      "landmarks": {
+        "foreheadTopY": 567,
+        "chinBottomY": 631,
+        "faceLeftX": 179,
+        "faceRightX": 247
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "귀부터 이마·턱의 피부 외곽. 기존 하단 목 제외.",
+      "expectedUniformScaleMultiplier": 1.276923,
+      "metadataDelta": {
+        "x": 6,
+        "y": -1,
+        "width": -9,
+        "height": -18
+      },
+      "unchangedSourceRect": {
+        "x": 46,
+        "y": 532,
+        "width": 287,
+        "height": 518
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 48,
+        "y": 534,
+        "width": 283,
+        "height": 514
+      },
+      "unchangedClipPathSha256": "17acc35e1109ee0471ac0a1b0fa51302a7a97e64d73bb204b157def6c4717432",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c02-9b1f1302f8--initial",
+      "name": "기록관 소정",
+      "chapter": 2,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-03-spaced",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-03-spaced.png",
+      "sourceImageSha256": "497fdcad92dd51da6a8f88aca24cfead2d14bb2bb57161b64d83da6d21319e3d",
+      "row": 1,
+      "column": 1,
+      "oldFaceBounds": {
+        "x": 488,
+        "y": 573,
+        "width": 76,
+        "height": 79
+      },
+      "newFaceBounds": {
+        "x": 484,
+        "y": 568,
+        "width": 72,
+        "height": 66
+      },
+      "landmarks": {
+        "foreheadTopY": 568,
+        "chinBottomY": 633,
+        "faceLeftX": 484,
+        "faceRightX": 555
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "기존 box 왼쪽 귀와 위쪽 이마 누락을 복원. 목 제외.",
+      "expectedUniformScaleMultiplier": 1.19697,
+      "metadataDelta": {
+        "x": -4,
+        "y": -5,
+        "width": -4,
+        "height": -13
+      },
+      "unchangedSourceRect": {
+        "x": 354,
+        "y": 545,
+        "width": 322,
+        "height": 506
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 356,
+        "y": 547,
+        "width": 318,
+        "height": 502
+      },
+      "unchangedClipPathSha256": "ce9c2310098bb84f0d3d600b2d415d062b050ba94922a4ad5d80c09d8a2e1f32",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c02-cb385fcd2e--initial",
+      "name": "전령 태수",
+      "chapter": 2,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-03-spaced",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-03-spaced.png",
+      "sourceImageSha256": "497fdcad92dd51da6a8f88aca24cfead2d14bb2bb57161b64d83da6d21319e3d",
+      "row": 1,
+      "column": 2,
+      "oldFaceBounds": {
+        "x": 831,
+        "y": 577,
+        "width": 74,
+        "height": 81
+      },
+      "newFaceBounds": {
+        "x": 831,
+        "y": 586,
+        "width": 72,
+        "height": 52
+      },
+      "landmarks": {
+        "foreheadTopY": 586,
+        "chinBottomY": 637,
+        "faceLeftX": 831,
+        "faceRightX": 902
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "머리띠 아래 이마를 사용. 머리띠·목 제외.",
+      "expectedUniformScaleMultiplier": 1.557692,
+      "metadataDelta": {
+        "x": 0,
+        "y": 9,
+        "width": -2,
+        "height": -29
+      },
+      "unchangedSourceRect": {
+        "x": 695,
+        "y": 540,
+        "width": 298,
+        "height": 512
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 697,
+        "y": 542,
+        "width": 294,
+        "height": 508
+      },
+      "unchangedClipPathSha256": "ecfebfa8101073129710a3a88327e1f28633a0280216e5ed3719a4e7a1a8b6ab",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c02-55738cfbf1--initial",
+      "name": "기록관 연진",
+      "chapter": 2,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-03-spaced",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-03-spaced.png",
+      "sourceImageSha256": "497fdcad92dd51da6a8f88aca24cfead2d14bb2bb57161b64d83da6d21319e3d",
+      "row": 2,
+      "column": 0,
+      "oldFaceBounds": {
+        "x": 180,
+        "y": 1064,
+        "width": 72,
+        "height": 82
+      },
+      "newFaceBounds": {
+        "x": 175,
+        "y": 1065,
+        "width": 73,
+        "height": 69
+      },
+      "landmarks": {
+        "foreheadTopY": 1065,
+        "chinBottomY": 1133,
+        "faceLeftX": 175,
+        "faceRightX": 247
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "왼쪽 귀가 기존 x180 바깥에 있어 포함. 실제 턱 아래 목 제외.",
+      "expectedUniformScaleMultiplier": 1.188406,
+      "metadataDelta": {
+        "x": -5,
+        "y": 1,
+        "width": 1,
+        "height": -13
+      },
+      "unchangedSourceRect": {
+        "x": 47,
+        "y": 1024,
+        "width": 302,
+        "height": 512
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 49,
+        "y": 1026,
+        "width": 298,
+        "height": 508
+      },
+      "unchangedClipPathSha256": "3214fbc52ff9545c5d1f3f4f170ae73422c6b03599c4e70cb4ffa5a1a7b1a1aa",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c03-c4d6a1921b--initial",
+      "name": "규림",
+      "chapter": 3,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-03-spaced",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-03-spaced.png",
+      "sourceImageSha256": "497fdcad92dd51da6a8f88aca24cfead2d14bb2bb57161b64d83da6d21319e3d",
+      "row": 2,
+      "column": 1,
+      "oldFaceBounds": {
+        "x": 498,
+        "y": 1085,
+        "width": 76,
+        "height": 78
+      },
+      "newFaceBounds": {
+        "x": 498,
+        "y": 1087,
+        "width": 74,
+        "height": 62
+      },
+      "landmarks": {
+        "foreheadTopY": 1087,
+        "chinBottomY": 1148,
+        "faceLeftX": 498,
+        "faceRightX": 571
+      },
+      "manualBoundaryUncertaintyPx": 3,
+      "boundaryAssessment": "manual-landmarks-with-occluded-or-inferred-boundary",
+      "occlusionOrInference": "fringe partially covers forehead",
+      "note": "앞머리 사이 노출 이마와 귀·턱. 머리카락 높이를 얼굴 높이로 세지 않음.",
+      "expectedUniformScaleMultiplier": 1.258065,
+      "metadataDelta": {
+        "x": 0,
+        "y": 2,
+        "width": -2,
+        "height": -16
+      },
+      "unchangedSourceRect": {
+        "x": 399,
+        "y": 1042,
+        "width": 233,
+        "height": 494
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 401,
+        "y": 1044,
+        "width": 229,
+        "height": 491
+      },
+      "unchangedClipPathSha256": "333c3ead2515822da7cf2f0fc09642331bae8780d1ad7d1dc1c667c1b1efbbf7",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c03-df0b7cedbc--initial",
+      "name": "기록관 가현",
+      "chapter": 3,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-03-spaced",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-03-spaced.png",
+      "sourceImageSha256": "497fdcad92dd51da6a8f88aca24cfead2d14bb2bb57161b64d83da6d21319e3d",
+      "row": 2,
+      "column": 2,
+      "oldFaceBounds": {
+        "x": 835,
+        "y": 1080,
+        "width": 76,
+        "height": 77
+      },
+      "newFaceBounds": {
+        "x": 832,
+        "y": 1076,
+        "width": 70,
+        "height": 64
+      },
+      "landmarks": {
+        "foreheadTopY": 1076,
+        "chinBottomY": 1139,
+        "faceLeftX": 832,
+        "faceRightX": 901
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "spaced 교체본의 실제 귀와 이마·턱을 포함. 목 제외.",
+      "expectedUniformScaleMultiplier": 1.203125,
+      "metadataDelta": {
+        "x": -3,
+        "y": -4,
+        "width": -6,
+        "height": -13
+      },
+      "unchangedSourceRect": {
+        "x": 707,
+        "y": 1038,
+        "width": 270,
+        "height": 498
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 709,
+        "y": 1040,
+        "width": 266,
+        "height": 495
+      },
+      "unchangedClipPathSha256": "a35b390206a7f793b541fbc09c188ed2bed040085ef6c763cce33f031d24849d",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c04-af5657ebbb--initial",
+      "name": "설모",
+      "chapter": 4,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-04-spaced",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-04-spaced.png",
+      "sourceImageSha256": "2ebe270f9f299ddb2ec4eb52c99a36c5db830934401e02124d9ed270b30d4c07",
+      "row": 0,
+      "column": 0,
+      "oldFaceBounds": {
+        "x": 174,
+        "y": 55,
+        "width": 91,
+        "height": 94
+      },
+      "newFaceBounds": {
+        "x": 168,
+        "y": 54,
+        "width": 93,
+        "height": 86
+      },
+      "landmarks": {
+        "foreheadTopY": 54,
+        "chinBottomY": 139,
+        "faceLeftX": 168,
+        "faceRightX": 260
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "spaced 교체본. 기존 box 바깥 왼쪽 귀를 포함, 노출 이마부터 실제 턱까지. 목 제외.",
+      "expectedUniformScaleMultiplier": 1.093023,
+      "metadataDelta": {
+        "x": -6,
+        "y": -1,
+        "width": 2,
+        "height": -8
+      },
+      "unchangedSourceRect": {
+        "x": 48,
+        "y": 12,
+        "width": 285,
+        "height": 521
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 50,
+        "y": 14,
+        "width": 281,
+        "height": 517
+      },
+      "unchangedClipPathSha256": "0516fb4c012c067b817df4143649353b146f85858554575e47f247d2d43f80ee",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c04-2b4a55cdca--initial",
+      "name": "은호",
+      "chapter": 4,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-04-spaced",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-04-spaced.png",
+      "sourceImageSha256": "2ebe270f9f299ddb2ec4eb52c99a36c5db830934401e02124d9ed270b30d4c07",
+      "row": 0,
+      "column": 1,
+      "oldFaceBounds": {
+        "x": 495,
+        "y": 55,
+        "width": 86,
+        "height": 95
+      },
+      "newFaceBounds": {
+        "x": 495,
+        "y": 60,
+        "width": 86,
+        "height": 75
+      },
+      "landmarks": {
+        "foreheadTopY": 60,
+        "chinBottomY": 134,
+        "faceLeftX": 495,
+        "faceRightX": 580
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "검은 관 아래 피부 이마부터 턱까지. 관과 목 제외.",
+      "expectedUniformScaleMultiplier": 1.266667,
+      "metadataDelta": {
+        "x": 0,
+        "y": 5,
+        "width": 0,
+        "height": -20
+      },
+      "unchangedSourceRect": {
+        "x": 379,
+        "y": 2,
+        "width": 272,
+        "height": 531
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 381,
+        "y": 4,
+        "width": 268,
+        "height": 527
+      },
+      "unchangedClipPathSha256": "9d9f8d2d4558dcde075b44f9be12c440e008b6ceb67dd2d473ed46323d4de9a4",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c04-9342a878fe--initial",
+      "name": "우진",
+      "chapter": 4,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-04-spaced",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-04-spaced.png",
+      "sourceImageSha256": "2ebe270f9f299ddb2ec4eb52c99a36c5db830934401e02124d9ed270b30d4c07",
+      "row": 0,
+      "column": 2,
+      "oldFaceBounds": {
+        "x": 812,
+        "y": 53,
+        "width": 91,
+        "height": 103
+      },
+      "newFaceBounds": {
+        "x": 821,
+        "y": 63,
+        "width": 81,
+        "height": 68
+      },
+      "landmarks": {
+        "foreheadTopY": 63,
+        "chinBottomY": 130,
+        "faceLeftX": 821,
+        "faceRightX": 901
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "파란 머리띠 아래 피부와 귀 포함. 머리띠·목 제외.",
+      "expectedUniformScaleMultiplier": 1.514706,
+      "metadataDelta": {
+        "x": 9,
+        "y": 10,
+        "width": -10,
+        "height": -35
+      },
+      "unchangedSourceRect": {
+        "x": 703,
+        "y": 5,
+        "width": 290,
+        "height": 528
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 705,
+        "y": 7,
+        "width": 286,
+        "height": 524
+      },
+      "unchangedClipPathSha256": "6a414c0e794e47bf3b3c821ad48b32e5d3dd175343acc04157c7fba977ad50ed",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c04-d13cec79f6--initial",
+      "name": "소리",
+      "chapter": 4,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-04-spaced",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-04-spaced.png",
+      "sourceImageSha256": "2ebe270f9f299ddb2ec4eb52c99a36c5db830934401e02124d9ed270b30d4c07",
+      "row": 1,
+      "column": 0,
+      "oldFaceBounds": {
+        "x": 163,
+        "y": 580,
+        "width": 85,
+        "height": 93
+      },
+      "newFaceBounds": {
+        "x": 154,
+        "y": 572,
+        "width": 90,
+        "height": 90
+      },
+      "landmarks": {
+        "foreheadTopY": 572,
+        "chinBottomY": 661,
+        "faceLeftX": 154,
+        "faceRightX": 243
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "기존 box 바깥 이마·귀를 포함. 열린 입 아래의 실제 턱과 목 경계를 사용.",
+      "expectedUniformScaleMultiplier": 1.033333,
+      "metadataDelta": {
+        "x": -9,
+        "y": -8,
+        "width": 5,
+        "height": -3
+      },
+      "unchangedSourceRect": {
+        "x": 51,
+        "y": 542,
+        "width": 274,
+        "height": 493
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 53,
+        "y": 544,
+        "width": 270,
+        "height": 489
+      },
+      "unchangedClipPathSha256": "9e5e35589f93589a35646856352227f4ee0559205b7d36bb31a95c6391cd4702",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c05-5d55907078--initial",
+      "name": "온달수",
+      "chapter": 5,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-04-spaced",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-04-spaced.png",
+      "sourceImageSha256": "2ebe270f9f299ddb2ec4eb52c99a36c5db830934401e02124d9ed270b30d4c07",
+      "row": 1,
+      "column": 1,
+      "oldFaceBounds": {
+        "x": 484,
+        "y": 589,
+        "width": 91,
+        "height": 88
+      },
+      "newFaceBounds": {
+        "x": 489,
+        "y": 591,
+        "width": 91,
+        "height": 75
+      },
+      "landmarks": {
+        "foreheadTopY": 591,
+        "chinBottomY": 665,
+        "faceLeftX": 489,
+        "faceRightX": 579
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "갈색 머리띠 아래 이마와 귀·턱을 포함. 목 제외.",
+      "expectedUniformScaleMultiplier": 1.173333,
+      "metadataDelta": {
+        "x": 5,
+        "y": 2,
+        "width": 0,
+        "height": -13
+      },
+      "unchangedSourceRect": {
+        "x": 369,
+        "y": 540,
+        "width": 306,
+        "height": 495
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 371,
+        "y": 542,
+        "width": 302,
+        "height": 491
+      },
+      "unchangedClipPathSha256": "42f97db12a8e274c79d42974ac964294c486dcf7ff96eb86b70c144357b652ee",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c05-af3a370523--initial",
+      "name": "민서",
+      "chapter": 5,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-04-spaced",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-04-spaced.png",
+      "sourceImageSha256": "2ebe270f9f299ddb2ec4eb52c99a36c5db830934401e02124d9ed270b30d4c07",
+      "row": 1,
+      "column": 2,
+      "oldFaceBounds": {
+        "x": 816,
+        "y": 582,
+        "width": 86,
+        "height": 93
+      },
+      "newFaceBounds": {
+        "x": 819,
+        "y": 585,
+        "width": 83,
+        "height": 81
+      },
+      "landmarks": {
+        "foreheadTopY": 585,
+        "chinBottomY": 665,
+        "faceLeftX": 819,
+        "faceRightX": 901
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "흰 머리수건 아래 피부 이마·귀·턱을 사용. 수건과 목 제외.",
+      "expectedUniformScaleMultiplier": 1.148148,
+      "metadataDelta": {
+        "x": 3,
+        "y": 3,
+        "width": -3,
+        "height": -12
+      },
+      "unchangedSourceRect": {
+        "x": 704,
+        "y": 540,
+        "width": 285,
+        "height": 496
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 706,
+        "y": 542,
+        "width": 281,
+        "height": 492
+      },
+      "unchangedClipPathSha256": "c6d041591d073ecdce51d453976f50fe88ef38bec2bff5a4723cf14ab7688b6c",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c05-6154d33563--initial",
+      "name": "길원",
+      "chapter": 5,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-04-spaced",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-04-spaced.png",
+      "sourceImageSha256": "2ebe270f9f299ddb2ec4eb52c99a36c5db830934401e02124d9ed270b30d4c07",
+      "row": 2,
+      "column": 0,
+      "oldFaceBounds": {
+        "x": 162,
+        "y": 1084,
+        "width": 97,
+        "height": 97
+      },
+      "newFaceBounds": {
+        "x": 158,
+        "y": 1088,
+        "width": 94,
+        "height": 75
+      },
+      "landmarks": {
+        "foreheadTopY": 1088,
+        "chinBottomY": 1162,
+        "faceLeftX": 158,
+        "faceRightX": 251
+      },
+      "manualBoundaryUncertaintyPx": 3,
+      "boundaryAssessment": "manual-landmarks-with-occluded-or-inferred-boundary",
+      "occlusionOrInference": "stubble at chin",
+      "note": "머리수건 하단부터 짧은 턱 수염의 외곽까지. 귀 포함, 목 제외.",
+      "expectedUniformScaleMultiplier": 1.293333,
+      "metadataDelta": {
+        "x": -4,
+        "y": 4,
+        "width": -3,
+        "height": -22
+      },
+      "unchangedSourceRect": {
+        "x": 30,
+        "y": 1035,
+        "width": 318,
+        "height": 494
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 32,
+        "y": 1037,
+        "width": 314,
+        "height": 490
+      },
+      "unchangedClipPathSha256": "427b42430caf8f595bb381f19df184331684535d8866fd9065882abe0d7b7998",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c05-e5f0e82b54--initial",
+      "name": "진하",
+      "chapter": 5,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-04-spaced",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-04-spaced.png",
+      "sourceImageSha256": "2ebe270f9f299ddb2ec4eb52c99a36c5db830934401e02124d9ed270b30d4c07",
+      "row": 2,
+      "column": 1,
+      "oldFaceBounds": {
+        "x": 496,
+        "y": 1100,
+        "width": 84,
+        "height": 93
+      },
+      "newFaceBounds": {
+        "x": 495,
+        "y": 1091,
+        "width": 88,
+        "height": 74
+      },
+      "landmarks": {
+        "foreheadTopY": 1091,
+        "chinBottomY": 1164,
+        "faceLeftX": 495,
+        "faceRightX": 582
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "관 아래 이마가 기존 y1100보다 위에 있음. 귀 포함, 목 제외.",
+      "expectedUniformScaleMultiplier": 1.256757,
+      "metadataDelta": {
+        "x": -1,
+        "y": -9,
+        "width": 4,
+        "height": -19
+      },
+      "unchangedSourceRect": {
+        "x": 373,
+        "y": 1039,
+        "width": 291,
+        "height": 490
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 375,
+        "y": 1041,
+        "width": 287,
+        "height": 486
+      },
+      "unchangedClipPathSha256": "cb3c2fb59442d838c96bd5d54ce409f588930bcce386739dcf3b67b7322fa9d3",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c05-3c6833fdb6--initial",
+      "name": "지오",
+      "chapter": 5,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-04-spaced",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-04-spaced.png",
+      "sourceImageSha256": "2ebe270f9f299ddb2ec4eb52c99a36c5db830934401e02124d9ed270b30d4c07",
+      "row": 2,
+      "column": 2,
+      "oldFaceBounds": {
+        "x": 815,
+        "y": 1090,
+        "width": 93,
+        "height": 92
+      },
+      "newFaceBounds": {
+        "x": 827,
+        "y": 1094,
+        "width": 83,
+        "height": 73
+      },
+      "landmarks": {
+        "foreheadTopY": 1094,
+        "chinBottomY": 1166,
+        "faceLeftX": 827,
+        "faceRightX": 909
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "파란 머리띠 아래 이마와 실제 귀·턱. 기존 왼쪽 머리카락과 목 제외.",
+      "expectedUniformScaleMultiplier": 1.260274,
+      "metadataDelta": {
+        "x": 12,
+        "y": 4,
+        "width": -10,
+        "height": -19
+      },
+      "unchangedSourceRect": {
+        "x": 700,
+        "y": 1040,
+        "width": 294,
+        "height": 489
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 702,
+        "y": 1042,
+        "width": 290,
+        "height": 485
+      },
+      "unchangedClipPathSha256": "8e6ad7e7430e9994cb1e55a23c3c5bbe47c2e689003f4f71531d13c7f511c36a",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c05-f39ddef04b--initial",
+      "name": "초연",
+      "chapter": 5,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-05",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-05.png",
+      "sourceImageSha256": "16bc8143d3239f82eb368d250eff9b7be8b3c3142d4c56556b6736e903d12dc2",
+      "row": 0,
+      "column": 0,
+      "oldFaceBounds": {
+        "x": 166,
+        "y": 42,
+        "width": 73,
+        "height": 79
+      },
+      "newFaceBounds": {
+        "x": 171,
+        "y": 45,
+        "width": 72,
+        "height": 68
+      },
+      "landmarks": {
+        "foreheadTopY": 45,
+        "chinBottomY": 112,
+        "faceLeftX": 171,
+        "faceRightX": 242,
+        "earLeftX": 227,
+        "earRightX": 242
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "왼쪽을 보는 얼굴. 앞머리 위쪽과 턱 아래 목을 제외하고 오른쪽 귀를 포함.",
+      "expectedUniformScaleMultiplier": 1.161765,
+      "metadataDelta": {
+        "x": 5,
+        "y": 3,
+        "width": -1,
+        "height": -11
+      },
+      "unchangedSourceRect": {
+        "x": 72,
+        "y": 4,
+        "width": 255,
+        "height": 533
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 74,
+        "y": 6,
+        "width": 251,
+        "height": 529
+      },
+      "unchangedClipPathSha256": "1d856e85594ad9713d6b682221509a712bae6820eec8b4a6e39a72031b80cfd3",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c06-06c13888f0--initial",
+      "name": "솔아",
+      "chapter": 6,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-05",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-05.png",
+      "sourceImageSha256": "16bc8143d3239f82eb368d250eff9b7be8b3c3142d4c56556b6736e903d12dc2",
+      "row": 0,
+      "column": 1,
+      "oldFaceBounds": {
+        "x": 481,
+        "y": 43,
+        "width": 80,
+        "height": 80
+      },
+      "newFaceBounds": {
+        "x": 483,
+        "y": 41,
+        "width": 78,
+        "height": 70
+      },
+      "landmarks": {
+        "foreheadTopY": 41,
+        "chinBottomY": 110,
+        "faceLeftX": 483,
+        "faceRightX": 560,
+        "earLeftX": 483
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "귀부터 코 오른쪽 외곽까지 포함. y111 아래 목을 제외.",
+      "expectedUniformScaleMultiplier": 1.142857,
+      "metadataDelta": {
+        "x": 2,
+        "y": -2,
+        "width": -2,
+        "height": -10
+      },
+      "unchangedSourceRect": {
+        "x": 399,
+        "y": 15,
+        "width": 240,
+        "height": 517
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 401,
+        "y": 17,
+        "width": 236,
+        "height": 513
+      },
+      "unchangedClipPathSha256": "dc52ee10d4e8dc5964e89488ae18d325c0f76e21785017e3839e1b812f6b01af",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c06-a57fc4150e--initial",
+      "name": "유솔",
+      "chapter": 6,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-05",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-05.png",
+      "sourceImageSha256": "16bc8143d3239f82eb368d250eff9b7be8b3c3142d4c56556b6736e903d12dc2",
+      "row": 0,
+      "column": 2,
+      "oldFaceBounds": {
+        "x": 787,
+        "y": 51,
+        "width": 83,
+        "height": 82
+      },
+      "newFaceBounds": {
+        "x": 793,
+        "y": 54,
+        "width": 71,
+        "height": 57
+      },
+      "landmarks": {
+        "foreheadTopY": 54,
+        "chinBottomY": 110,
+        "faceLeftX": 793,
+        "faceRightX": 863,
+        "earLeftX": 793
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "머리띠 아래 드러난 이마와 짧은 턱 경계. 머리띠와 목 제외.",
+      "expectedUniformScaleMultiplier": 1.438596,
+      "metadataDelta": {
+        "x": 6,
+        "y": 3,
+        "width": -12,
+        "height": -25
+      },
+      "unchangedSourceRect": {
+        "x": 705,
+        "y": 6,
+        "width": 236,
+        "height": 530
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 707,
+        "y": 8,
+        "width": 232,
+        "height": 526
+      },
+      "unchangedClipPathSha256": "750694bbcc1d494d3430a19e1acad099bec83cdc90de30cddb8e6b586eea8f3a",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c07-e5bc0b19d9--initial",
+      "name": "다솔",
+      "chapter": 7,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-05",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-05.png",
+      "sourceImageSha256": "16bc8143d3239f82eb368d250eff9b7be8b3c3142d4c56556b6736e903d12dc2",
+      "row": 1,
+      "column": 0,
+      "oldFaceBounds": {
+        "x": 161,
+        "y": 556,
+        "width": 78,
+        "height": 78
+      },
+      "newFaceBounds": {
+        "x": 168,
+        "y": 550,
+        "width": 71,
+        "height": 67
+      },
+      "landmarks": {
+        "foreheadTopY": 550,
+        "chinBottomY": 616,
+        "faceLeftX": 168,
+        "faceRightX": 238,
+        "earLeftX": 168
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "기존 상자는 이마 윗부분을 6px 누락하고 목을 포함. 노출된 이마까지 올리고 목 제외.",
+      "expectedUniformScaleMultiplier": 1.164179,
+      "metadataDelta": {
+        "x": 7,
+        "y": -6,
+        "width": -7,
+        "height": -11
+      },
+      "unchangedSourceRect": {
+        "x": 78,
+        "y": 522,
+        "width": 244,
+        "height": 507
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 80,
+        "y": 524,
+        "width": 240,
+        "height": 503
+      },
+      "unchangedClipPathSha256": "6b1245b9343ee86d565001c7f3085f82ab2c6178f104158dd989bb54557d0e75",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c08-654ff58ca5--initial",
+      "name": "한결",
+      "chapter": 8,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-05",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-05.png",
+      "sourceImageSha256": "16bc8143d3239f82eb368d250eff9b7be8b3c3142d4c56556b6736e903d12dc2",
+      "row": 1,
+      "column": 1,
+      "oldFaceBounds": {
+        "x": 486,
+        "y": 556,
+        "width": 83,
+        "height": 85
+      },
+      "newFaceBounds": {
+        "x": 493,
+        "y": 566,
+        "width": 70,
+        "height": 54
+      },
+      "landmarks": {
+        "foreheadTopY": 566,
+        "chinBottomY": 619,
+        "faceLeftX": 493,
+        "faceRightX": 562,
+        "earLeftX": 493
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "5px 원본 격자로 재확인. 기존 상자 위 10px 머리띠/머리와 아래 21px 목을 제외.",
+      "expectedUniformScaleMultiplier": 1.574074,
+      "metadataDelta": {
+        "x": 7,
+        "y": 10,
+        "width": -13,
+        "height": -31
+      },
+      "unchangedSourceRect": {
+        "x": 398,
+        "y": 523,
+        "width": 240,
+        "height": 508
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 400,
+        "y": 525,
+        "width": 236,
+        "height": 504
+      },
+      "unchangedClipPathSha256": "360c1f8ea17002a92944c7363be1eea7ca3ec527bcfc82d483d6926c6e08f027",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c09-a249e6df49--initial",
+      "name": "도연",
+      "chapter": 9,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-05",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-05.png",
+      "sourceImageSha256": "16bc8143d3239f82eb368d250eff9b7be8b3c3142d4c56556b6736e903d12dc2",
+      "row": 1,
+      "column": 2,
+      "oldFaceBounds": {
+        "x": 801,
+        "y": 561,
+        "width": 83,
+        "height": 83
+      },
+      "newFaceBounds": {
+        "x": 805,
+        "y": 561,
+        "width": 74,
+        "height": 62
+      },
+      "landmarks": {
+        "foreheadTopY": 561,
+        "chinBottomY": 622,
+        "faceLeftX": 805,
+        "faceRightX": 878,
+        "earLeftX": 805
+      },
+      "manualBoundaryUncertaintyPx": 3,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "짧은 수염으로 턱 피부 경계가 가려져 턱의 해부학적 외곽을 사용. 목과 수염 아래 돌출부 제외.",
+      "expectedUniformScaleMultiplier": 1.33871,
+      "metadataDelta": {
+        "x": 4,
+        "y": 0,
+        "width": -9,
+        "height": -21
+      },
+      "unchangedSourceRect": {
+        "x": 708,
+        "y": 521,
+        "width": 248,
+        "height": 509
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 710,
+        "y": 523,
+        "width": 244,
+        "height": 505
+      },
+      "unchangedClipPathSha256": "b0167e5b8f163b651e24fcf3858a5b5e35e8a02df6f29185adcedc79fae1e72e",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c09-030d6d22c0--initial",
+      "name": "다은",
+      "chapter": 9,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-05",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-05.png",
+      "sourceImageSha256": "16bc8143d3239f82eb368d250eff9b7be8b3c3142d4c56556b6736e903d12dc2",
+      "row": 2,
+      "column": 0,
+      "oldFaceBounds": {
+        "x": 163,
+        "y": 1049,
+        "width": 84,
+        "height": 92
+      },
+      "newFaceBounds": {
+        "x": 164,
+        "y": 1047,
+        "width": 79,
+        "height": 71
+      },
+      "landmarks": {
+        "foreheadTopY": 1047,
+        "chinBottomY": 1117,
+        "faceLeftX": 164,
+        "faceRightX": 242,
+        "earLeftX": 164
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "기존 이마 상단 누락 보완. 긴 목을 제외하며 왼쪽 귀 포함.",
+      "expectedUniformScaleMultiplier": 1.295775,
+      "metadataDelta": {
+        "x": 1,
+        "y": -2,
+        "width": -5,
+        "height": -21
+      },
+      "unchangedSourceRect": {
+        "x": 77,
+        "y": 1018,
+        "width": 230,
+        "height": 512
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 79,
+        "y": 1020,
+        "width": 226,
+        "height": 508
+      },
+      "unchangedClipPathSha256": "c6728a6331e6ca3db1bbb6fc5e34122d66ada92eb7c00809c0ccbbfcf9f13d89",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c09-10ee4060ed--initial",
+      "name": "설",
+      "chapter": 9,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-05",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-05.png",
+      "sourceImageSha256": "16bc8143d3239f82eb368d250eff9b7be8b3c3142d4c56556b6736e903d12dc2",
+      "row": 2,
+      "column": 1,
+      "oldFaceBounds": {
+        "x": 484,
+        "y": 1044,
+        "width": 83,
+        "height": 92
+      },
+      "newFaceBounds": {
+        "x": 482,
+        "y": 1041,
+        "width": 77,
+        "height": 76
+      },
+      "landmarks": {
+        "foreheadTopY": 1041,
+        "chinBottomY": 1116,
+        "faceLeftX": 482,
+        "faceRightX": 558,
+        "earLeftX": 482
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "얼굴 옆 귀와 이마부터 실제 턱까지 포함하고 목 제외.",
+      "expectedUniformScaleMultiplier": 1.210526,
+      "metadataDelta": {
+        "x": -2,
+        "y": -3,
+        "width": -6,
+        "height": -16
+      },
+      "unchangedSourceRect": {
+        "x": 394,
+        "y": 1018,
+        "width": 250,
+        "height": 512
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 396,
+        "y": 1020,
+        "width": 246,
+        "height": 508
+      },
+      "unchangedClipPathSha256": "79d3cad42424ef6e5386553e6ab0e769bf487c5d46552da9cc8791d16cab01f2",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c10-0eeeeba617--initial",
+      "name": "미솔",
+      "chapter": 10,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-05",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-05.png",
+      "sourceImageSha256": "16bc8143d3239f82eb368d250eff9b7be8b3c3142d4c56556b6736e903d12dc2",
+      "row": 2,
+      "column": 2,
+      "oldFaceBounds": {
+        "x": 810,
+        "y": 1056,
+        "width": 83,
+        "height": 83
+      },
+      "newFaceBounds": {
+        "x": 811,
+        "y": 1054,
+        "width": 74,
+        "height": 66
+      },
+      "landmarks": {
+        "foreheadTopY": 1054,
+        "chinBottomY": 1119,
+        "faceLeftX": 811,
+        "faceRightX": 884,
+        "earLeftX": 811
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "앞머리·머리띠와 목을 제외하고 귀와 턱 포함.",
+      "expectedUniformScaleMultiplier": 1.257576,
+      "metadataDelta": {
+        "x": 1,
+        "y": -2,
+        "width": -9,
+        "height": -17
+      },
+      "unchangedSourceRect": {
+        "x": 726,
+        "y": 1013,
+        "width": 230,
+        "height": 518
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 728,
+        "y": 1015,
+        "width": 226,
+        "height": 514
+      },
+      "unchangedClipPathSha256": "96af0650c4f21c6e80da0f57fa6f33a30718831111b543dea80a10f269a1723e",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c16-7e8edf17f5--initial",
+      "name": "온유",
+      "chapter": 16,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-07",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-07.png",
+      "sourceImageSha256": "bffdce0fd79996b099a760feb53b3df63234ddc23f2e4972d759b579ec0cffd4",
+      "row": 0,
+      "column": 0,
+      "oldFaceBounds": {
+        "x": 163,
+        "y": 43,
+        "width": 88,
+        "height": 99
+      },
+      "newFaceBounds": {
+        "x": 157,
+        "y": 47,
+        "width": 88,
+        "height": 85
+      },
+      "landmarks": {
+        "foreheadTopY": 47,
+        "chinBottomY": 131,
+        "faceLeftX": 157,
+        "faceRightX": 244
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "기존 왼쪽 바깥 귀를 포함. 노출된 이마와 턱, 목 제외.",
+      "expectedUniformScaleMultiplier": 1.164706,
+      "metadataDelta": {
+        "x": -6,
+        "y": 4,
+        "width": 0,
+        "height": -14
+      },
+      "unchangedSourceRect": {
+        "x": 41,
+        "y": 16,
+        "width": 265,
+        "height": 556
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 43,
+        "y": 18,
+        "width": 261,
+        "height": 552
+      },
+      "unchangedClipPathSha256": "56cd2e23def4a243c16ff9123f8ac5dee232b026bccef336ecc0dab1d7cef5b5",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c16-f15519bc0e--initial",
+      "name": "도겸",
+      "chapter": 16,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-07",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-07.png",
+      "sourceImageSha256": "bffdce0fd79996b099a760feb53b3df63234ddc23f2e4972d759b579ec0cffd4",
+      "row": 0,
+      "column": 1,
+      "oldFaceBounds": {
+        "x": 466,
+        "y": 38,
+        "width": 94,
+        "height": 107
+      },
+      "newFaceBounds": {
+        "x": 468,
+        "y": 39,
+        "width": 88,
+        "height": 88
+      },
+      "landmarks": {
+        "foreheadTopY": 39,
+        "chinBottomY": 126,
+        "faceLeftX": 468,
+        "faceRightX": 555
+      },
+      "manualBoundaryUncertaintyPx": 3,
+      "boundaryAssessment": "manual-landmarks-with-occluded-or-inferred-boundary",
+      "occlusionOrInference": "stubble at chin",
+      "note": "이마와 귀부터 짧은 턱 수염 외곽까지. 기존 긴 목 제외.",
+      "expectedUniformScaleMultiplier": 1.215909,
+      "metadataDelta": {
+        "x": 2,
+        "y": 1,
+        "width": -6,
+        "height": -19
+      },
+      "unchangedSourceRect": {
+        "x": 354,
+        "y": 4,
+        "width": 292,
+        "height": 569
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 356,
+        "y": 6,
+        "width": 288,
+        "height": 565
+      },
+      "unchangedClipPathSha256": "1fefbd9c7a06212f4286e99665dee467be9fb26322b365fbe07045f7b53e399b",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c16-3234e73f8f--initial",
+      "name": "소담",
+      "chapter": 16,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-07",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-07.png",
+      "sourceImageSha256": "bffdce0fd79996b099a760feb53b3df63234ddc23f2e4972d759b579ec0cffd4",
+      "row": 0,
+      "column": 2,
+      "oldFaceBounds": {
+        "x": 813,
+        "y": 43,
+        "width": 103,
+        "height": 107
+      },
+      "newFaceBounds": {
+        "x": 822,
+        "y": 49,
+        "width": 86,
+        "height": 83
+      },
+      "landmarks": {
+        "foreheadTopY": 49,
+        "chinBottomY": 131,
+        "faceLeftX": 822,
+        "faceRightX": 907
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "회색 머리카락이 아닌 피부 이마·귀·턱 범위. 목 제외.",
+      "expectedUniformScaleMultiplier": 1.289157,
+      "metadataDelta": {
+        "x": 9,
+        "y": 6,
+        "width": -17,
+        "height": -24
+      },
+      "unchangedSourceRect": {
+        "x": 730,
+        "y": 19,
+        "width": 263,
+        "height": 554
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 732,
+        "y": 21,
+        "width": 259,
+        "height": 550
+      },
+      "unchangedClipPathSha256": "c84a342b866c6dd6a460a1bd22b83b526c3f5ac33c287c6c54eb2f7616b982a9",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c17-81195904d9--initial",
+      "name": "가온",
+      "chapter": 17,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-07",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-07.png",
+      "sourceImageSha256": "bffdce0fd79996b099a760feb53b3df63234ddc23f2e4972d759b579ec0cffd4",
+      "row": 1,
+      "column": 0,
+      "oldFaceBounds": {
+        "x": 167,
+        "y": 604,
+        "width": 91,
+        "height": 110
+      },
+      "newFaceBounds": {
+        "x": 164,
+        "y": 616,
+        "width": 92,
+        "height": 84
+      },
+      "landmarks": {
+        "foreheadTopY": 616,
+        "chinBottomY": 699,
+        "faceLeftX": 164,
+        "faceRightX": 255
+      },
+      "manualBoundaryUncertaintyPx": 3,
+      "boundaryAssessment": "manual-landmarks-with-occluded-or-inferred-boundary",
+      "occlusionOrInference": "fringe partially covers forehead",
+      "note": "앞머리 사이 이마의 피부 시작점 사용. 머리카락 높이와 목 제외.",
+      "expectedUniformScaleMultiplier": 1.309524,
+      "metadataDelta": {
+        "x": -3,
+        "y": 12,
+        "width": 1,
+        "height": -26
+      },
+      "unchangedSourceRect": {
+        "x": 32,
+        "y": 568,
+        "width": 296,
+        "height": 541
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 34,
+        "y": 570,
+        "width": 292,
+        "height": 537
+      },
+      "unchangedClipPathSha256": "ff34c2a10dfa8338a3695c090a8f9aae8bd80a98f7ceef0411615e61cb8e303d",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c21-981196efe9--middle-aged",
+      "name": "다온",
+      "chapter": 21,
+      "ageVariant": "middle-aged",
+      "sheetId": "principal-fullbody-07",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-07.png",
+      "sourceImageSha256": "bffdce0fd79996b099a760feb53b3df63234ddc23f2e4972d759b579ec0cffd4",
+      "row": 1,
+      "column": 1,
+      "oldFaceBounds": {
+        "x": 493,
+        "y": 606,
+        "width": 96,
+        "height": 107
+      },
+      "newFaceBounds": {
+        "x": 496,
+        "y": 610,
+        "width": 92,
+        "height": 80
+      },
+      "landmarks": {
+        "foreheadTopY": 610,
+        "chinBottomY": 689,
+        "faceLeftX": 496,
+        "faceRightX": 587
+      },
+      "manualBoundaryUncertaintyPx": 3,
+      "boundaryAssessment": "manual-landmarks-with-occluded-or-inferred-boundary",
+      "occlusionOrInference": "stubble at chin",
+      "note": "middle-aged 원문 변형 유지. 파란 머리띠 아래 피부부터 턱까지, 목 제외.",
+      "expectedUniformScaleMultiplier": 1.3375,
+      "metadataDelta": {
+        "x": 3,
+        "y": 4,
+        "width": -4,
+        "height": -27
+      },
+      "unchangedSourceRect": {
+        "x": 364,
+        "y": 569,
+        "width": 308,
+        "height": 569
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 366,
+        "y": 571,
+        "width": 304,
+        "height": 565
+      },
+      "unchangedClipPathSha256": "e9e131fad9d7c300b3c3858469be12742e64768b4b66130835485340f788b5f7",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c21-8cd85480b5--elderly",
+      "name": "다솜",
+      "chapter": 21,
+      "ageVariant": "elderly",
+      "sheetId": "principal-fullbody-07",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-07.png",
+      "sourceImageSha256": "bffdce0fd79996b099a760feb53b3df63234ddc23f2e4972d759b579ec0cffd4",
+      "row": 1,
+      "column": 2,
+      "oldFaceBounds": {
+        "x": 828,
+        "y": 596,
+        "width": 98,
+        "height": 118
+      },
+      "newFaceBounds": {
+        "x": 831,
+        "y": 599,
+        "width": 92,
+        "height": 96
+      },
+      "landmarks": {
+        "foreheadTopY": 599,
+        "chinBottomY": 694,
+        "faceLeftX": 831,
+        "faceRightX": 922
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "elderly 원문 변형 유지. 실제 이마와 귀·턱 외곽, 회색 머리와 목 제외.",
+      "expectedUniformScaleMultiplier": 1.229167,
+      "metadataDelta": {
+        "x": 3,
+        "y": 3,
+        "width": -6,
+        "height": -22
+      },
+      "unchangedSourceRect": {
+        "x": 720,
+        "y": 576,
+        "width": 283,
+        "height": 563
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 722,
+        "y": 578,
+        "width": 279,
+        "height": 559
+      },
+      "unchangedClipPathSha256": "0d233dcc748fb8fc29193dcfe4c3fcef927c8c54d1604257cb1b1d6fc045921c",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c23-5c3916ce0b--initial",
+      "name": "도하",
+      "chapter": 23,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-07",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-07.png",
+      "sourceImageSha256": "bffdce0fd79996b099a760feb53b3df63234ddc23f2e4972d759b579ec0cffd4",
+      "row": 2,
+      "column": 0,
+      "oldFaceBounds": {
+        "x": 165,
+        "y": 1147,
+        "width": 92,
+        "height": 95
+      },
+      "newFaceBounds": {
+        "x": 165,
+        "y": 1156,
+        "width": 89,
+        "height": 73
+      },
+      "landmarks": {
+        "foreheadTopY": 1156,
+        "chinBottomY": 1228,
+        "faceLeftX": 165,
+        "faceRightX": 253
+      },
+      "manualBoundaryUncertaintyPx": 3,
+      "boundaryAssessment": "manual-landmarks-with-occluded-or-inferred-boundary",
+      "occlusionOrInference": "stubble at chin",
+      "note": "머리띠 아래 이마와 짧은 턱 수염까지. 목 제외.",
+      "expectedUniformScaleMultiplier": 1.30137,
+      "metadataDelta": {
+        "x": 0,
+        "y": 9,
+        "width": -3,
+        "height": -22
+      },
+      "unchangedSourceRect": {
+        "x": 38,
+        "y": 1108,
+        "width": 306,
+        "height": 428
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 40,
+        "y": 1110,
+        "width": 302,
+        "height": 426
+      },
+      "unchangedClipPathSha256": "f2f04eb55a5443499cffce30223879147af4731157f9a0b224b51af76861ea1a",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c10-7b3c1b6146--initial",
+      "name": "다함",
+      "chapter": 10,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-06-safe",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-06.png",
+      "sourceImageSha256": "50d889e5cef9004e8632c83fea1471e170ec3ff7dea526df80f3725b1486e774",
+      "row": 0,
+      "column": 0,
+      "oldFaceBounds": {
+        "x": 182,
+        "y": 65,
+        "width": 98,
+        "height": 96
+      },
+      "newFaceBounds": {
+        "x": 187,
+        "y": 66,
+        "width": 94,
+        "height": 78
+      },
+      "landmarks": {
+        "foreheadTopY": 66,
+        "chinBottomY": 143,
+        "faceLeftX": 187,
+        "faceRightX": 280
+      },
+      "manualBoundaryUncertaintyPx": 3,
+      "boundaryAssessment": "manual-landmarks-with-occluded-or-inferred-boundary",
+      "occlusionOrInference": "stubble at chin",
+      "note": "실제 사용 component0. 머리수건 하단의 피부 이마와 짧은 턱 수염까지, 목 제외.",
+      "expectedUniformScaleMultiplier": 1.230769,
+      "metadataDelta": {
+        "x": 5,
+        "y": 1,
+        "width": -4,
+        "height": -18
+      },
+      "unchangedSourceRect": {
+        "x": 62,
+        "y": 8,
+        "width": 290,
+        "height": 510
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 64,
+        "y": 10,
+        "width": 286,
+        "height": 506
+      },
+      "unchangedClipPathSha256": "1cb78d5dc6465b4a1ff7f49bd635e6a1af2ee1f2775006556f43afbddda9dda0",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c11-6c2b4824cf--initial",
+      "name": "보리",
+      "chapter": 11,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-06-safe",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-06.png",
+      "sourceImageSha256": "50d889e5cef9004e8632c83fea1471e170ec3ff7dea526df80f3725b1486e774",
+      "row": 0,
+      "column": 2,
+      "oldFaceBounds": {
+        "x": 796,
+        "y": 74,
+        "width": 92,
+        "height": 96
+      },
+      "newFaceBounds": {
+        "x": 795,
+        "y": 74,
+        "width": 90,
+        "height": 82
+      },
+      "landmarks": {
+        "foreheadTopY": 74,
+        "chinBottomY": 155,
+        "faceLeftX": 795,
+        "faceRightX": 884
+      },
+      "manualBoundaryUncertaintyPx": 3,
+      "boundaryAssessment": "manual-landmarks-with-occluded-or-inferred-boundary",
+      "occlusionOrInference": "fringe partially covers forehead",
+      "note": "실제 사용 component2. 앞머리 사이 이마와 귀·턱을 포함. 목 제외.",
+      "expectedUniformScaleMultiplier": 1.170732,
+      "metadataDelta": {
+        "x": -1,
+        "y": 0,
+        "width": -2,
+        "height": -14
+      },
+      "unchangedSourceRect": {
+        "x": 695,
+        "y": 34,
+        "width": 266,
+        "height": 486
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 697,
+        "y": 36,
+        "width": 262,
+        "height": 482
+      },
+      "unchangedClipPathSha256": "e923b615f804bdff119c6202c7f2471d23c97f78bd007ffb76250918bb227ca8",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c11-a432ade2f8--initial",
+      "name": "아라",
+      "chapter": 11,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-06-safe",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-06.png",
+      "sourceImageSha256": "50d889e5cef9004e8632c83fea1471e170ec3ff7dea526df80f3725b1486e774",
+      "row": 1,
+      "column": 0,
+      "oldFaceBounds": {
+        "x": 176,
+        "y": 552,
+        "width": 85,
+        "height": 96
+      },
+      "newFaceBounds": {
+        "x": 172,
+        "y": 556,
+        "width": 89,
+        "height": 87
+      },
+      "landmarks": {
+        "foreheadTopY": 556,
+        "chinBottomY": 642,
+        "faceLeftX": 172,
+        "faceRightX": 260
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "CH11 실제 사용 component3. 피부 이마·귀·턱 포함, 머리카락과 목 제외.",
+      "expectedUniformScaleMultiplier": 1.103448,
+      "metadataDelta": {
+        "x": -4,
+        "y": 4,
+        "width": 4,
+        "height": -9
+      },
+      "unchangedSourceRect": {
+        "x": 55,
+        "y": 520,
+        "width": 297,
+        "height": 501
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 57,
+        "y": 522,
+        "width": 293,
+        "height": 497
+      },
+      "unchangedClipPathSha256": "e430eab65ca0952cec9845f10db681d5fb8aea738f4e4947afef3887463c8d43",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c14-af5024ce09--initial",
+      "name": "나루",
+      "chapter": 14,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-06-safe",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-06.png",
+      "sourceImageSha256": "50d889e5cef9004e8632c83fea1471e170ec3ff7dea526df80f3725b1486e774",
+      "row": 1,
+      "column": 2,
+      "oldFaceBounds": {
+        "x": 806,
+        "y": 567,
+        "width": 88,
+        "height": 96
+      },
+      "newFaceBounds": {
+        "x": 803,
+        "y": 572,
+        "width": 91,
+        "height": 78
+      },
+      "landmarks": {
+        "foreheadTopY": 572,
+        "chinBottomY": 649,
+        "faceLeftX": 803,
+        "faceRightX": 893
+      },
+      "manualBoundaryUncertaintyPx": 3,
+      "boundaryAssessment": "manual-landmarks-with-occluded-or-inferred-boundary",
+      "occlusionOrInference": "stubble at chin",
+      "note": "실제 사용 component4. 머리띠 하단의 피부와 턱 수염 외곽. 목 제외.",
+      "expectedUniformScaleMultiplier": 1.230769,
+      "metadataDelta": {
+        "x": -3,
+        "y": 5,
+        "width": 3,
+        "height": -18
+      },
+      "unchangedSourceRect": {
+        "x": 682,
+        "y": 520,
+        "width": 296,
+        "height": 506
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 684,
+        "y": 522,
+        "width": 292,
+        "height": 502
+      },
+      "unchangedClipPathSha256": "65f77ad2ec5a6e40630817624307f9333c57142e4ca4fdce66091c196bc20259",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c15-a432ade2f8--initial",
+      "name": "아라",
+      "chapter": 15,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-06-safe",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-06.png",
+      "sourceImageSha256": "50d889e5cef9004e8632c83fea1471e170ec3ff7dea526df80f3725b1486e774",
+      "row": 2,
+      "column": 0,
+      "oldFaceBounds": {
+        "x": 172,
+        "y": 1065,
+        "width": 87,
+        "height": 96
+      },
+      "newFaceBounds": {
+        "x": 173,
+        "y": 1065,
+        "width": 94,
+        "height": 86
+      },
+      "landmarks": {
+        "foreheadTopY": 1065,
+        "chinBottomY": 1150,
+        "faceLeftX": 173,
+        "faceRightX": 266
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "CH15 실제 사용 component5. 기존 box 오른쪽을 넘는 실제 코·볼 포함, 목 제외.",
+      "expectedUniformScaleMultiplier": 1.116279,
+      "metadataDelta": {
+        "x": 1,
+        "y": 0,
+        "width": 7,
+        "height": -10
+      },
+      "unchangedSourceRect": {
+        "x": 51,
+        "y": 1020,
+        "width": 306,
+        "height": 512
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 53,
+        "y": 1022,
+        "width": 302,
+        "height": 508
+      },
+      "unchangedClipPathSha256": "5c68817c9f14f606748be1afe03f54bc456574c3234dedacb16fb607f10a2448",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c15-dadbb6670e--initial",
+      "name": "여울",
+      "chapter": 15,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-06-safe",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-06.png",
+      "sourceImageSha256": "50d889e5cef9004e8632c83fea1471e170ec3ff7dea526df80f3725b1486e774",
+      "row": 2,
+      "column": 1,
+      "oldFaceBounds": {
+        "x": 498,
+        "y": 1063,
+        "width": 91,
+        "height": 98
+      },
+      "newFaceBounds": {
+        "x": 493,
+        "y": 1059,
+        "width": 95,
+        "height": 91
+      },
+      "landmarks": {
+        "foreheadTopY": 1059,
+        "chinBottomY": 1149,
+        "faceLeftX": 493,
+        "faceRightX": 587
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "CH15 실제 사용 component6. 기존 box 바깥 귀·이마를 포함하며 목 제외.",
+      "expectedUniformScaleMultiplier": 1.076923,
+      "metadataDelta": {
+        "x": -5,
+        "y": -4,
+        "width": 4,
+        "height": -7
+      },
+      "unchangedSourceRect": {
+        "x": 393,
+        "y": 1028,
+        "width": 279,
+        "height": 505
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 395,
+        "y": 1030,
+        "width": 275,
+        "height": 501
+      },
+      "unchangedClipPathSha256": "4c0a990e6b27c37f119ef81e73e9b92e02bd3d9b142316aba00bafce79aa50d9",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c16-c0f5430502--initial",
+      "name": "수인",
+      "chapter": 16,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-06-safe",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-06.png",
+      "sourceImageSha256": "50d889e5cef9004e8632c83fea1471e170ec3ff7dea526df80f3725b1486e774",
+      "row": 2,
+      "column": 2,
+      "oldFaceBounds": {
+        "x": 813,
+        "y": 1068,
+        "width": 87,
+        "height": 99
+      },
+      "newFaceBounds": {
+        "x": 811,
+        "y": 1076,
+        "width": 90,
+        "height": 86
+      },
+      "landmarks": {
+        "foreheadTopY": 1076,
+        "chinBottomY": 1161,
+        "faceLeftX": 811,
+        "faceRightX": 900
+      },
+      "manualBoundaryUncertaintyPx": 3,
+      "boundaryAssessment": "manual-landmarks-with-occluded-or-inferred-boundary",
+      "occlusionOrInference": "fringe partially covers forehead",
+      "note": "실제 사용 component7. 앞머리 사이의 노출 이마와 귀·턱 경계를 사용.",
+      "expectedUniformScaleMultiplier": 1.151163,
+      "metadataDelta": {
+        "x": -2,
+        "y": 8,
+        "width": 3,
+        "height": -13
+      },
+      "unchangedSourceRect": {
+        "x": 712,
+        "y": 1023,
+        "width": 268,
+        "height": 510
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 714,
+        "y": 1025,
+        "width": 264,
+        "height": 506
+      },
+      "unchangedClipPathSha256": "b065753e5d3abd0b565d0f5f07781a6f76047e280cd3dee2c82862ca0bc8056a",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c10-55716739a3--initial",
+      "name": "가람",
+      "chapter": 10,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-garam-haram-v1",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-garam-haram-v1.png",
+      "sourceImageSha256": "6c8b4ff0fad6b16a43176884ab9400fb38b5511b1076e00ff4eeb031531ae5a5",
+      "row": 0,
+      "column": 0,
+      "oldFaceBounds": {
+        "x": 291,
+        "y": 134,
+        "width": 148,
+        "height": 168
+      },
+      "newFaceBounds": {
+        "x": 260,
+        "y": 130,
+        "width": 176,
+        "height": 167
+      },
+      "landmarks": {
+        "foreheadTopY": 130,
+        "chinBottomY": 296,
+        "faceLeftX": 260,
+        "faceRightX": 435,
+        "earLeftX": 260
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "1254px 별도 2인 원본에서 10px 격자로 확인. 기존 x291이 누락한 왼쪽 귀를 포함. 이마·턱 경계와 목 분리.",
+      "expectedUniformScaleMultiplier": 1.005988,
+      "metadataDelta": {
+        "x": -31,
+        "y": -4,
+        "width": 28,
+        "height": -1
+      },
+      "unchangedSourceRect": {
+        "x": 43,
+        "y": 23,
+        "width": 575,
+        "height": 1219
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 45,
+        "y": 25,
+        "width": 571,
+        "height": 1215
+      },
+      "unchangedClipPathSha256": "3034f30a5f2c5be228e761465ca7c84b984a4bcf993c597af8f17973056e9f49",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c12-2d4773df99--initial",
+      "name": "하람",
+      "chapter": 12,
+      "ageVariant": "initial",
+      "sheetId": "principal-fullbody-garam-haram-v1",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-garam-haram-v1.png",
+      "sourceImageSha256": "6c8b4ff0fad6b16a43176884ab9400fb38b5511b1076e00ff4eeb031531ae5a5",
+      "row": 0,
+      "column": 1,
+      "oldFaceBounds": {
+        "x": 891,
+        "y": 153,
+        "width": 150,
+        "height": 166
+      },
+      "newFaceBounds": {
+        "x": 842,
+        "y": 162,
+        "width": 182,
+        "height": 140
+      },
+      "landmarks": {
+        "foreheadTopY": 162,
+        "chinBottomY": 301,
+        "faceLeftX": 842,
+        "faceRightX": 1023,
+        "earLeftX": 842
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "manual-visible-landmarks",
+      "note": "1254px 별도 2인 원본에서 10px 격자로 확인. 기존 x891이 누락한 귀 49px를 포함, 머리띠와 목 제외.",
+      "expectedUniformScaleMultiplier": 1.185714,
+      "metadataDelta": {
+        "x": -49,
+        "y": 9,
+        "width": 32,
+        "height": -26
+      },
+      "unchangedSourceRect": {
+        "x": 628,
+        "y": 48,
+        "width": 598,
+        "height": 1194
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 630,
+        "y": 50,
+        "width": 594,
+        "height": 1190
+      },
+      "unchangedClipPathSha256": "5bb09480bccf4aa461bc4c1d06f1d68d95756cf5345fae2ff7b9710ab49a8412",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    }
+  ]
+}

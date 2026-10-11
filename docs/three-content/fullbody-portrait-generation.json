@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "status": "all-90-body-extensions-connected-source-crops-reviewed-runtime-composite-pending",
+  "status": "all-90-fullbody-crops-and-manual-skin-face-anchors-linked-runtime-composition-review-pending",
   "coordinateSpace": "absolute-pixels-in-sheet",
   "alphaThreshold": 32,
   "pixelEditingPerformed": false,
@@ -24,10 +24,10 @@
           "chapter": 3,
           "ageVariant": "initial",
           "faceBounds": {
-            "x": 195,
-            "y": 42,
+            "x": 194,
+            "y": 30,
             "width": 62,
-            "height": 66
+            "height": 63
           },
           "characterId": "history-sundo--initial",
           "row": 0,
@@ -75,7 +75,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -84,10 +84,10 @@
           "chapter": 3,
           "ageVariant": "initial",
           "faceBounds": {
-            "x": 501,
+            "x": 498,
             "y": 54,
             "width": 66,
-            "height": 68
+            "height": 47
           },
           "characterId": "history-gwanggaeto--initial",
           "row": 0,
@@ -135,7 +135,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -145,9 +145,9 @@
           "ageVariant": "initial",
           "faceBounds": {
             "x": 791,
-            "y": 52,
-            "width": 65,
-            "height": 68
+            "y": 54,
+            "width": 63,
+            "height": 50
           },
           "characterId": "history-jangsu--initial",
           "row": 0,
@@ -195,7 +195,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -204,10 +204,10 @@
           "chapter": 5,
           "ageVariant": "initial",
           "faceBounds": {
-            "x": 176,
-            "y": 573,
-            "width": 73,
-            "height": 72
+            "x": 182,
+            "y": 558,
+            "width": 68,
+            "height": 57
           },
           "characterId": "history-euljimundeok--initial",
           "row": 1,
@@ -255,7 +255,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -264,10 +264,10 @@
           "chapter": 6,
           "ageVariant": "initial",
           "faceBounds": {
-            "x": 493,
-            "y": 554,
-            "width": 74,
-            "height": 75
+            "x": 498,
+            "y": 535,
+            "width": 69,
+            "height": 65
           },
           "characterId": "history-marananta--initial",
           "row": 1,
@@ -315,7 +315,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -324,10 +324,10 @@
           "chapter": 7,
           "ageVariant": "initial",
           "faceBounds": {
-            "x": 808,
-            "y": 564,
-            "width": 72,
-            "height": 70
+            "x": 810,
+            "y": 562,
+            "width": 70,
+            "height": 54
           },
           "characterId": "history-munju--initial",
           "row": 1,
@@ -375,7 +375,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -384,10 +384,10 @@
           "chapter": 8,
           "ageVariant": "initial",
           "faceBounds": {
-            "x": 177,
-            "y": 1070,
-            "width": 73,
-            "height": 75
+            "x": 181,
+            "y": 1068,
+            "width": 68,
+            "height": 55
           },
           "characterId": "history-muryeong--initial",
           "row": 2,
@@ -435,7 +435,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -444,10 +444,10 @@
           "chapter": 8,
           "ageVariant": "initial",
           "faceBounds": {
-            "x": 487,
-            "y": 1081,
-            "width": 73,
-            "height": 74
+            "x": 491,
+            "y": 1060,
+            "width": 65,
+            "height": 63
           },
           "characterId": "history-seong--initial",
           "row": 2,
@@ -495,7 +495,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -504,10 +504,10 @@
           "chapter": 11,
           "ageVariant": "initial",
           "faceBounds": {
-            "x": 817,
-            "y": 1080,
+            "x": 821,
+            "y": 1070,
             "width": 71,
-            "height": 74
+            "height": 59
           },
           "characterId": "history-beopheung--initial",
           "row": 2,
@@ -555,7 +555,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         }
@@ -580,9 +580,9 @@
           "ageVariant": "initial",
           "faceBounds": {
             "x": 171,
-            "y": 33,
-            "width": 75,
-            "height": 78
+            "y": 23,
+            "width": 74,
+            "height": 70
           },
           "characterId": "history-jajang--initial",
           "row": 0,
@@ -630,7 +630,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -639,10 +639,10 @@
           "chapter": 13,
           "ageVariant": "initial",
           "faceBounds": {
-            "x": 493,
-            "y": 49,
-            "width": 78,
-            "height": 76
+            "x": 497,
+            "y": 44,
+            "width": 73,
+            "height": 56
           },
           "characterId": "history-kimchunchu--initial",
           "row": 0,
@@ -690,7 +690,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -699,10 +699,10 @@
           "chapter": 13,
           "ageVariant": "older",
           "faceBounds": {
-            "x": 806,
-            "y": 39,
-            "width": 87,
-            "height": 86
+            "x": 816,
+            "y": 37,
+            "width": 71,
+            "height": 69
           },
           "characterId": "history-kimyusin--older",
           "row": 0,
@@ -750,7 +750,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -759,10 +759,10 @@
           "chapter": 15,
           "ageVariant": "initial",
           "faceBounds": {
-            "x": 168,
-            "y": 556,
-            "width": 74,
-            "height": 80
+            "x": 170,
+            "y": 539,
+            "width": 70,
+            "height": 68
           },
           "characterId": "history-ureuk--initial",
           "row": 1,
@@ -810,7 +810,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -819,10 +819,10 @@
           "chapter": 16,
           "ageVariant": "initial",
           "faceBounds": {
-            "x": 500,
-            "y": 557,
-            "width": 77,
-            "height": 79
+            "x": 502,
+            "y": 548,
+            "width": 73,
+            "height": 64
           },
           "characterId": "history-sinmun--initial",
           "row": 1,
@@ -870,7 +870,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -879,10 +879,10 @@
           "chapter": 17,
           "ageVariant": "initial",
           "faceBounds": {
-            "x": 822,
-            "y": 560,
-            "width": 77,
-            "height": 82
+            "x": 827,
+            "y": 535,
+            "width": 75,
+            "height": 69
           },
           "characterId": "history-wonhyo--initial",
           "row": 1,
@@ -930,7 +930,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -939,10 +939,10 @@
           "chapter": 17,
           "ageVariant": "initial",
           "faceBounds": {
-            "x": 159,
-            "y": 1065,
-            "width": 71,
-            "height": 78
+            "x": 162,
+            "y": 1049,
+            "width": 66,
+            "height": 62
           },
           "characterId": "history-uisang--initial",
           "row": 2,
@@ -990,7 +990,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -999,10 +999,10 @@
           "chapter": 18,
           "ageVariant": "initial",
           "faceBounds": {
-            "x": 509,
-            "y": 1065,
-            "width": 74,
-            "height": 79
+            "x": 510,
+            "y": 1066,
+            "width": 69,
+            "height": 54
           },
           "characterId": "history-jangbogo--initial",
           "row": 2,
@@ -1050,7 +1050,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -1059,10 +1059,10 @@
           "chapter": 19,
           "ageVariant": "initial",
           "faceBounds": {
-            "x": 837,
+            "x": 843,
             "y": 1078,
-            "width": 77,
-            "height": 75
+            "width": 68,
+            "height": 50
           },
           "characterId": "history-choechiwon--initial",
           "row": 2,
@@ -1110,7 +1110,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         }
@@ -1133,10 +1133,10 @@
           "name": "연우",
           "chapter": 1,
           "faceBounds": {
-            "x": 405,
+            "x": 410,
             "y": 77,
-            "width": 166,
-            "height": 151
+            "width": 147,
+            "height": 142
           },
           "sourceRect": {
             "x": 238,
@@ -1185,7 +1185,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {
@@ -1218,10 +1218,10 @@
           "name": "대조영",
           "chapter": 20,
           "faceBounds": {
-            "x": 191,
-            "y": 43,
-            "width": 73,
-            "height": 82
+            "x": 189,
+            "y": 36,
+            "width": 72,
+            "height": 67
           },
           "characterId": "history-daejoyeong--initial",
           "ageVariant": "initial",
@@ -1270,7 +1270,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -1278,10 +1278,10 @@
           "name": "왕건",
           "chapter": 23,
           "faceBounds": {
-            "x": 489,
-            "y": 48,
-            "width": 82,
-            "height": 91
+            "x": 491,
+            "y": 47,
+            "width": 74,
+            "height": 63
           },
           "characterId": "history-wanggeon--initial",
           "ageVariant": "initial",
@@ -1330,7 +1330,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -1339,9 +1339,9 @@
           "chapter": 1,
           "faceBounds": {
             "x": 810,
-            "y": 51,
-            "width": 73,
-            "height": 79
+            "y": 55,
+            "width": 69,
+            "height": 64
           },
           "characterId": "civilian-c01-e46c301472--initial",
           "ageVariant": "initial",
@@ -1390,7 +1390,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -1398,10 +1398,10 @@
           "name": "하준",
           "chapter": 2,
           "faceBounds": {
-            "x": 173,
-            "y": 568,
-            "width": 78,
-            "height": 83
+            "x": 179,
+            "y": 567,
+            "width": 69,
+            "height": 65
           },
           "characterId": "civilian-c02-4d5f80821a--initial",
           "ageVariant": "initial",
@@ -1450,7 +1450,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -1458,10 +1458,10 @@
           "name": "기록관 소정",
           "chapter": 2,
           "faceBounds": {
-            "x": 488,
-            "y": 573,
-            "width": 76,
-            "height": 79
+            "x": 484,
+            "y": 568,
+            "width": 72,
+            "height": 66
           },
           "characterId": "civilian-c02-9b1f1302f8--initial",
           "ageVariant": "initial",
@@ -1510,7 +1510,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -1519,9 +1519,9 @@
           "chapter": 2,
           "faceBounds": {
             "x": 831,
-            "y": 577,
-            "width": 74,
-            "height": 81
+            "y": 586,
+            "width": 72,
+            "height": 52
           },
           "characterId": "civilian-c02-cb385fcd2e--initial",
           "ageVariant": "initial",
@@ -1570,7 +1570,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -1578,10 +1578,10 @@
           "name": "기록관 연진",
           "chapter": 2,
           "faceBounds": {
-            "x": 180,
-            "y": 1064,
-            "width": 72,
-            "height": 82
+            "x": 175,
+            "y": 1065,
+            "width": 73,
+            "height": 69
           },
           "characterId": "civilian-c02-55738cfbf1--initial",
           "ageVariant": "initial",
@@ -1630,7 +1630,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -1639,9 +1639,9 @@
           "chapter": 3,
           "faceBounds": {
             "x": 498,
-            "y": 1085,
-            "width": 76,
-            "height": 78
+            "y": 1087,
+            "width": 74,
+            "height": 62
           },
           "characterId": "civilian-c03-c4d6a1921b--initial",
           "ageVariant": "initial",
@@ -1690,7 +1690,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -1698,10 +1698,10 @@
           "name": "기록관 가현",
           "chapter": 3,
           "faceBounds": {
-            "x": 835,
-            "y": 1080,
-            "width": 76,
-            "height": 77
+            "x": 832,
+            "y": 1076,
+            "width": 70,
+            "height": 64
           },
           "characterId": "civilian-c03-df0b7cedbc--initial",
           "ageVariant": "initial",
@@ -1750,7 +1750,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         }
@@ -1773,10 +1773,10 @@
           "name": "설모",
           "chapter": 4,
           "faceBounds": {
-            "x": 174,
-            "y": 55,
-            "width": 91,
-            "height": 94
+            "x": 168,
+            "y": 54,
+            "width": 93,
+            "height": 86
           },
           "characterId": "civilian-c04-af5657ebbb--initial",
           "ageVariant": "initial",
@@ -1825,7 +1825,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -1834,9 +1834,9 @@
           "chapter": 4,
           "faceBounds": {
             "x": 495,
-            "y": 55,
+            "y": 60,
             "width": 86,
-            "height": 95
+            "height": 75
           },
           "characterId": "civilian-c04-2b4a55cdca--initial",
           "ageVariant": "initial",
@@ -1885,7 +1885,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -1893,10 +1893,10 @@
           "name": "우진",
           "chapter": 4,
           "faceBounds": {
-            "x": 812,
-            "y": 53,
-            "width": 91,
-            "height": 103
+            "x": 821,
+            "y": 63,
+            "width": 81,
+            "height": 68
           },
           "characterId": "civilian-c04-9342a878fe--initial",
           "ageVariant": "initial",
@@ -1945,7 +1945,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -1953,10 +1953,10 @@
           "name": "소리",
           "chapter": 4,
           "faceBounds": {
-            "x": 163,
-            "y": 580,
-            "width": 85,
-            "height": 93
+            "x": 154,
+            "y": 572,
+            "width": 90,
+            "height": 90
           },
           "characterId": "civilian-c04-d13cec79f6--initial",
           "ageVariant": "initial",
@@ -2005,7 +2005,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -2013,10 +2013,10 @@
           "name": "온달수",
           "chapter": 5,
           "faceBounds": {
-            "x": 484,
-            "y": 589,
+            "x": 489,
+            "y": 591,
             "width": 91,
-            "height": 88
+            "height": 75
           },
           "characterId": "civilian-c05-5d55907078--initial",
           "ageVariant": "initial",
@@ -2065,7 +2065,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -2073,10 +2073,10 @@
           "name": "민서",
           "chapter": 5,
           "faceBounds": {
-            "x": 816,
-            "y": 582,
-            "width": 86,
-            "height": 93
+            "x": 819,
+            "y": 585,
+            "width": 83,
+            "height": 81
           },
           "characterId": "civilian-c05-af3a370523--initial",
           "ageVariant": "initial",
@@ -2125,7 +2125,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -2133,10 +2133,10 @@
           "name": "길원",
           "chapter": 5,
           "faceBounds": {
-            "x": 162,
-            "y": 1084,
-            "width": 97,
-            "height": 97
+            "x": 158,
+            "y": 1088,
+            "width": 94,
+            "height": 75
           },
           "characterId": "civilian-c05-6154d33563--initial",
           "ageVariant": "initial",
@@ -2185,7 +2185,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -2193,10 +2193,10 @@
           "name": "진하",
           "chapter": 5,
           "faceBounds": {
-            "x": 496,
-            "y": 1100,
-            "width": 84,
-            "height": 93
+            "x": 495,
+            "y": 1091,
+            "width": 88,
+            "height": 74
           },
           "characterId": "civilian-c05-e5f0e82b54--initial",
           "ageVariant": "initial",
@@ -2245,7 +2245,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -2253,10 +2253,10 @@
           "name": "지오",
           "chapter": 5,
           "faceBounds": {
-            "x": 815,
-            "y": 1090,
-            "width": 93,
-            "height": 92
+            "x": 827,
+            "y": 1094,
+            "width": 83,
+            "height": 73
           },
           "characterId": "civilian-c05-3c6833fdb6--initial",
           "ageVariant": "initial",
@@ -2305,7 +2305,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         }
@@ -2328,10 +2328,10 @@
           "name": "초연",
           "chapter": 5,
           "faceBounds": {
-            "x": 166,
-            "y": 42,
-            "width": 73,
-            "height": 79
+            "x": 171,
+            "y": 45,
+            "width": 72,
+            "height": 68
           },
           "nativeFacing": "left",
           "characterId": "civilian-c05-f39ddef04b--initial",
@@ -2380,7 +2380,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -2388,10 +2388,10 @@
           "name": "솔아",
           "chapter": 6,
           "faceBounds": {
-            "x": 481,
-            "y": 43,
-            "width": 80,
-            "height": 80
+            "x": 483,
+            "y": 41,
+            "width": 78,
+            "height": 70
           },
           "characterId": "civilian-c06-06c13888f0--initial",
           "ageVariant": "initial",
@@ -2440,7 +2440,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -2448,10 +2448,10 @@
           "name": "유솔",
           "chapter": 6,
           "faceBounds": {
-            "x": 787,
-            "y": 51,
-            "width": 83,
-            "height": 82
+            "x": 793,
+            "y": 54,
+            "width": 71,
+            "height": 57
           },
           "characterId": "civilian-c06-a57fc4150e--initial",
           "ageVariant": "initial",
@@ -2500,7 +2500,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -2508,10 +2508,10 @@
           "name": "다솔",
           "chapter": 7,
           "faceBounds": {
-            "x": 161,
-            "y": 556,
-            "width": 78,
-            "height": 78
+            "x": 168,
+            "y": 550,
+            "width": 71,
+            "height": 67
           },
           "characterId": "civilian-c07-e5bc0b19d9--initial",
           "ageVariant": "initial",
@@ -2560,7 +2560,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -2568,10 +2568,10 @@
           "name": "한결",
           "chapter": 8,
           "faceBounds": {
-            "x": 486,
-            "y": 556,
-            "width": 83,
-            "height": 85
+            "x": 493,
+            "y": 566,
+            "width": 70,
+            "height": 54
           },
           "genderEvidence": "male",
           "characterId": "civilian-c08-654ff58ca5--initial",
@@ -2620,7 +2620,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -2628,10 +2628,10 @@
           "name": "도연",
           "chapter": 9,
           "faceBounds": {
-            "x": 801,
+            "x": 805,
             "y": 561,
-            "width": 83,
-            "height": 83
+            "width": 74,
+            "height": 62
           },
           "genderEvidence": "male",
           "characterId": "civilian-c09-a249e6df49--initial",
@@ -2680,7 +2680,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -2688,10 +2688,10 @@
           "name": "다은",
           "chapter": 9,
           "faceBounds": {
-            "x": 163,
-            "y": 1049,
-            "width": 84,
-            "height": 92
+            "x": 164,
+            "y": 1047,
+            "width": 79,
+            "height": 71
           },
           "characterId": "civilian-c09-030d6d22c0--initial",
           "ageVariant": "initial",
@@ -2740,7 +2740,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -2748,10 +2748,10 @@
           "name": "설",
           "chapter": 9,
           "faceBounds": {
-            "x": 484,
-            "y": 1044,
-            "width": 83,
-            "height": 92
+            "x": 482,
+            "y": 1041,
+            "width": 77,
+            "height": 76
           },
           "genderEvidence": "female",
           "characterId": "civilian-c09-10ee4060ed--initial",
@@ -2800,7 +2800,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -2808,10 +2808,10 @@
           "name": "미솔",
           "chapter": 10,
           "faceBounds": {
-            "x": 810,
-            "y": 1056,
-            "width": 83,
-            "height": 83
+            "x": 811,
+            "y": 1054,
+            "width": 74,
+            "height": 66
           },
           "characterId": "civilian-c10-0eeeeba617--initial",
           "ageVariant": "initial",
@@ -2860,7 +2860,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         }
@@ -2892,10 +2892,10 @@
           "name": "온유",
           "chapter": 16,
           "faceBounds": {
-            "x": 163,
-            "y": 43,
+            "x": 157,
+            "y": 47,
             "width": 88,
-            "height": 99
+            "height": 85
           },
           "genderEvidence": "female",
           "characterId": "civilian-c16-7e8edf17f5--initial",
@@ -2944,7 +2944,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -2952,10 +2952,10 @@
           "name": "도겸",
           "chapter": 16,
           "faceBounds": {
-            "x": 466,
-            "y": 38,
-            "width": 94,
-            "height": 107
+            "x": 468,
+            "y": 39,
+            "width": 88,
+            "height": 88
           },
           "genderEvidence": "male",
           "characterId": "civilian-c16-f15519bc0e--initial",
@@ -3004,7 +3004,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -3012,10 +3012,10 @@
           "name": "소담",
           "chapter": 16,
           "faceBounds": {
-            "x": 813,
-            "y": 43,
-            "width": 103,
-            "height": 107
+            "x": 822,
+            "y": 49,
+            "width": 86,
+            "height": 83
           },
           "genderEvidence": "female",
           "characterId": "civilian-c16-3234e73f8f--initial",
@@ -3064,7 +3064,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -3072,10 +3072,10 @@
           "name": "가온",
           "chapter": 17,
           "faceBounds": {
-            "x": 167,
-            "y": 604,
-            "width": 91,
-            "height": 110
+            "x": 164,
+            "y": 616,
+            "width": 92,
+            "height": 84
           },
           "characterId": "civilian-c17-81195904d9--initial",
           "ageVariant": "initial",
@@ -3124,7 +3124,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -3132,10 +3132,10 @@
           "name": "다온",
           "chapter": 21,
           "faceBounds": {
-            "x": 493,
-            "y": 606,
-            "width": 96,
-            "height": 107
+            "x": 496,
+            "y": 610,
+            "width": 92,
+            "height": 80
           },
           "ageVariant": "middle-aged",
           "genderEvidence": "male",
@@ -3184,7 +3184,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -3192,10 +3192,10 @@
           "name": "다솜",
           "chapter": 21,
           "faceBounds": {
-            "x": 828,
-            "y": 596,
-            "width": 98,
-            "height": 118
+            "x": 831,
+            "y": 599,
+            "width": 92,
+            "height": 96
           },
           "ageVariant": "elderly",
           "genderEvidence": "female",
@@ -3244,7 +3244,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -3253,9 +3253,9 @@
           "chapter": 23,
           "faceBounds": {
             "x": 165,
-            "y": 1147,
-            "width": 92,
-            "height": 95
+            "y": 1156,
+            "width": 89,
+            "height": 73
           },
           "characterId": "civilian-c23-5c3916ce0b--initial",
           "ageVariant": "initial",
@@ -3304,7 +3304,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         }
@@ -3336,10 +3336,10 @@
           "name": "모진",
           "chapter": 1,
           "faceBounds": {
-            "x": 187,
-            "y": 43,
-            "width": 67,
-            "height": 73
+            "x": 183,
+            "y": 48,
+            "width": 70,
+            "height": 55
           },
           "characterId": "civilian-c01-de48dcbf5b--initial",
           "ageVariant": "initial",
@@ -3388,7 +3388,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {
@@ -3407,9 +3407,9 @@
           "chapter": 2,
           "faceBounds": {
             "x": 466,
-            "y": 44,
-            "width": 76,
-            "height": 74
+            "y": 41,
+            "width": 66,
+            "height": 60
           },
           "characterId": "civilian-c02-dc712ed4d6--initial",
           "ageVariant": "initial",
@@ -3458,7 +3458,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {
@@ -3476,10 +3476,10 @@
           "name": "소운",
           "chapter": 2,
           "faceBounds": {
-            "x": 789,
-            "y": 41,
-            "width": 74,
-            "height": 75
+            "x": 784,
+            "y": 39,
+            "width": 68,
+            "height": 63
           },
           "characterId": "civilian-c02-f88710b136--initial",
           "ageVariant": "initial",
@@ -3528,7 +3528,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {
@@ -3546,10 +3546,10 @@
           "name": "다은",
           "chapter": 4,
           "faceBounds": {
-            "x": 171,
-            "y": 606,
-            "width": 74,
-            "height": 78
+            "x": 169,
+            "y": 595,
+            "width": 71,
+            "height": 63
           },
           "characterId": "civilian-c04-030d6d22c0--initial",
           "ageVariant": "initial",
@@ -3598,7 +3598,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {
@@ -3616,10 +3616,10 @@
           "name": "윤서",
           "chapter": 5,
           "faceBounds": {
-            "x": 478,
-            "y": 607,
-            "width": 73,
-            "height": 79
+            "x": 470,
+            "y": 606,
+            "width": 71,
+            "height": 54
           },
           "characterId": "civilian-c05-f0f456bbbe--initial",
           "ageVariant": "initial",
@@ -3668,7 +3668,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {
@@ -3686,10 +3686,10 @@
           "name": "태문",
           "chapter": 5,
           "faceBounds": {
-            "x": 782,
-            "y": 607,
-            "width": 73,
-            "height": 80
+            "x": 777,
+            "y": 599,
+            "width": 69,
+            "height": 65
           },
           "characterId": "civilian-c05-0b1fbc16b0--initial",
           "ageVariant": "initial",
@@ -3738,7 +3738,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {
@@ -3757,9 +3757,9 @@
           "chapter": 7,
           "faceBounds": {
             "x": 183,
-            "y": 1119,
-            "width": 72,
-            "height": 79
+            "y": 1118,
+            "width": 68,
+            "height": 64
           },
           "characterId": "civilian-c07-cf158c9e21--initial",
           "ageVariant": "initial",
@@ -3808,7 +3808,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {
@@ -3859,10 +3859,10 @@
           "chapter": 8,
           "ageVariant": "initial",
           "faceBounds": {
-            "x": 466,
-            "y": 49,
-            "width": 79,
-            "height": 83
+            "x": 468,
+            "y": 48,
+            "width": 77,
+            "height": 72
           },
           "componentIndex": 1,
           "characterId": "civilian-c08-dadbb6670e--initial",
@@ -3911,7 +3911,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {
@@ -3930,10 +3930,10 @@
           "chapter": 8,
           "ageVariant": "later",
           "faceBounds": {
-            "x": 786,
-            "y": 47,
-            "width": 80,
-            "height": 88
+            "x": 789,
+            "y": 46,
+            "width": 74,
+            "height": 74
           },
           "componentIndex": 2,
           "characterId": "civilian-c08-dadbb6670e--later",
@@ -3982,7 +3982,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {
@@ -4001,10 +4001,10 @@
           "chapter": 14,
           "ageVariant": "initial",
           "faceBounds": {
-            "x": 156,
+            "x": 152,
             "y": 628,
-            "width": 83,
-            "height": 88
+            "width": 78,
+            "height": 74
           },
           "componentIndex": 3,
           "characterId": "civilian-c14-a432ade2f8--initial",
@@ -4053,7 +4053,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {
@@ -4072,10 +4072,10 @@
           "chapter": 14,
           "ageVariant": "initial",
           "faceBounds": {
-            "x": 474,
-            "y": 638,
-            "width": 86,
-            "height": 90
+            "x": 472,
+            "y": 646,
+            "width": 82,
+            "height": 62
           },
           "componentIndex": 4,
           "characterId": "civilian-c14-0dd939f957--initial",
@@ -4124,7 +4124,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {
@@ -4143,10 +4143,10 @@
           "chapter": 17,
           "ageVariant": "initial",
           "faceBounds": {
-            "x": 784,
-            "y": 641,
-            "width": 85,
-            "height": 86
+            "x": 787,
+            "y": 639,
+            "width": 75,
+            "height": 73
           },
           "componentIndex": 5,
           "characterId": "civilian-c17-96b6ef53a4--initial",
@@ -4195,7 +4195,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {
@@ -4229,10 +4229,10 @@
           "chapter": 17,
           "ageVariant": "initial",
           "faceBounds": {
-            "x": 269,
-            "y": 67,
-            "width": 89,
-            "height": 91
+            "x": 270,
+            "y": 63,
+            "width": 86,
+            "height": 81
           },
           "nativeFacing": "left",
           "characterId": "civilian-c17-439b052a1f--initial",
@@ -4280,7 +4280,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {
@@ -4299,10 +4299,10 @@
           "chapter": 20,
           "ageVariant": "later",
           "faceBounds": {
-            "x": 695,
-            "y": 58,
-            "width": 92,
-            "height": 100
+            "x": 694,
+            "y": 60,
+            "width": 85,
+            "height": 83
           },
           "nativeFacing": "right",
           "characterId": "civilian-c20-4d6a648490--later",
@@ -4350,7 +4350,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {
@@ -4369,10 +4369,10 @@
           "chapter": 23,
           "ageVariant": "initial",
           "faceBounds": {
-            "x": 294,
-            "y": 850,
-            "width": 91,
-            "height": 99
+            "x": 287,
+            "y": 845,
+            "width": 93,
+            "height": 92
           },
           "nativeFacing": "right",
           "characterId": "civilian-c23-3943a3c0de--initial",
@@ -4420,7 +4420,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {
@@ -4439,10 +4439,10 @@
           "chapter": 23,
           "ageVariant": "later",
           "faceBounds": {
-            "x": 696,
+            "x": 691,
             "y": 847,
-            "width": 96,
-            "height": 104
+            "width": 92,
+            "height": 90
           },
           "nativeFacing": "right",
           "characterId": "civilian-c23-3943a3c0de--later",
@@ -4490,7 +4490,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {
@@ -4525,9 +4525,9 @@
           "ageVariant": "later",
           "faceBounds": {
             "x": 354,
-            "y": 73,
-            "width": 150,
-            "height": 138
+            "y": 70,
+            "width": 147,
+            "height": 134
           },
           "characterId": "civilian-c07-cf158c9e21--later",
           "row": 0,
@@ -4575,7 +4575,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {
@@ -4617,10 +4617,10 @@
           "name": "다함",
           "chapter": 10,
           "faceBounds": {
-            "x": 182,
-            "y": 65,
-            "width": 98,
-            "height": 96
+            "x": 187,
+            "y": 66,
+            "width": 94,
+            "height": 78
           },
           "componentIndex": 0,
           "row": 0,
@@ -4670,7 +4670,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -4678,10 +4678,10 @@
           "name": "보리",
           "chapter": 11,
           "faceBounds": {
-            "x": 796,
+            "x": 795,
             "y": 74,
-            "width": 92,
-            "height": 96
+            "width": 90,
+            "height": 82
           },
           "componentIndex": 2,
           "row": 0,
@@ -4731,7 +4731,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -4739,10 +4739,10 @@
           "name": "아라",
           "chapter": 11,
           "faceBounds": {
-            "x": 176,
-            "y": 552,
-            "width": 85,
-            "height": 96
+            "x": 172,
+            "y": 556,
+            "width": 89,
+            "height": 87
           },
           "componentIndex": 3,
           "row": 1,
@@ -4792,7 +4792,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -4800,10 +4800,10 @@
           "name": "나루",
           "chapter": 14,
           "faceBounds": {
-            "x": 806,
-            "y": 567,
-            "width": 88,
-            "height": 96
+            "x": 803,
+            "y": 572,
+            "width": 91,
+            "height": 78
           },
           "componentIndex": 4,
           "row": 1,
@@ -4853,7 +4853,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -4861,10 +4861,10 @@
           "name": "아라",
           "chapter": 15,
           "faceBounds": {
-            "x": 172,
+            "x": 173,
             "y": 1065,
-            "width": 87,
-            "height": 96
+            "width": 94,
+            "height": 86
           },
           "componentIndex": 5,
           "row": 2,
@@ -4914,7 +4914,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -4922,10 +4922,10 @@
           "name": "여울",
           "chapter": 15,
           "faceBounds": {
-            "x": 498,
-            "y": 1063,
-            "width": 91,
-            "height": 98
+            "x": 493,
+            "y": 1059,
+            "width": 95,
+            "height": 91
           },
           "componentIndex": 6,
           "row": 2,
@@ -4975,7 +4975,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -4983,10 +4983,10 @@
           "name": "수인",
           "chapter": 16,
           "faceBounds": {
-            "x": 813,
-            "y": 1068,
-            "width": 87,
-            "height": 99
+            "x": 811,
+            "y": 1076,
+            "width": 90,
+            "height": 86
           },
           "componentIndex": 7,
           "row": 2,
@@ -5036,7 +5036,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         }
@@ -5059,10 +5059,10 @@
           "name": "가람",
           "chapter": 10,
           "faceBounds": {
-            "x": 291,
-            "y": 134,
-            "width": 148,
-            "height": 168
+            "x": 260,
+            "y": 130,
+            "width": 176,
+            "height": 167
           },
           "characterId": "civilian-c10-55716739a3--initial",
           "ageVariant": "initial",
@@ -5111,7 +5111,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         },
@@ -5119,10 +5119,10 @@
           "name": "하람",
           "chapter": 12,
           "faceBounds": {
-            "x": 891,
-            "y": 153,
-            "width": 150,
-            "height": 166
+            "x": 842,
+            "y": 162,
+            "width": 182,
+            "height": 140
           },
           "characterId": "civilian-c12-2d4773df99--initial",
           "ageVariant": "initial",
@@ -5171,7 +5171,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           }
         }
@@ -5194,10 +5194,10 @@
           "name": "나래",
           "chapter": 18,
           "faceBounds": {
-            "x": 220,
-            "y": 64,
-            "width": 70,
-            "height": 76
+            "x": 210,
+            "y": 63,
+            "width": 86,
+            "height": 82
           },
           "characterId": "civilian-c18-3b7989e4fe--initial",
           "ageVariant": "initial",
@@ -5246,7 +5246,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {
@@ -5264,10 +5264,10 @@
           "name": "나래",
           "chapter": 18,
           "faceBounds": {
-            "x": 612,
+            "x": 597,
             "y": 64,
-            "width": 70,
-            "height": 76
+            "width": 88,
+            "height": 81
           },
           "ageVariant": "later",
           "characterId": "civilian-c18-3b7989e4fe--later",
@@ -5316,7 +5316,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {
@@ -5334,10 +5334,10 @@
           "name": "재인",
           "chapter": 19,
           "faceBounds": {
-            "x": 993,
-            "y": 58,
-            "width": 73,
-            "height": 86
+            "x": 979,
+            "y": 66,
+            "width": 85,
+            "height": 78
           },
           "characterId": "civilian-c19-b25411c7fa--initial",
           "ageVariant": "initial",
@@ -5386,7 +5386,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {
@@ -5404,10 +5404,10 @@
           "name": "재인",
           "chapter": 19,
           "faceBounds": {
-            "x": 214,
-            "y": 687,
-            "width": 74,
-            "height": 78
+            "x": 207,
+            "y": 678,
+            "width": 88,
+            "height": 80
           },
           "ageVariant": "later",
           "characterId": "civilian-c19-b25411c7fa--later",
@@ -5456,7 +5456,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {
@@ -5474,10 +5474,10 @@
           "name": "지우",
           "chapter": 19,
           "faceBounds": {
-            "x": 602,
-            "y": 691,
-            "width": 72,
-            "height": 77
+            "x": 590,
+            "y": 682,
+            "width": 92,
+            "height": 75
           },
           "characterId": "civilian-c19-c8f92f89ce--initial",
           "ageVariant": "initial",
@@ -5526,7 +5526,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {
@@ -5544,10 +5544,10 @@
           "name": "해루",
           "chapter": 20,
           "faceBounds": {
-            "x": 1007,
-            "y": 687,
-            "width": 72,
-            "height": 80
+            "x": 994,
+            "y": 679,
+            "width": 86,
+            "height": 77
           },
           "characterId": "civilian-c20-4d6a648490--initial",
           "ageVariant": "initial",
@@ -5596,7 +5596,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {
@@ -5634,10 +5634,10 @@
           "name": "누리",
           "chapter": 20,
           "faceBounds": {
-            "x": 201,
-            "y": 56,
-            "width": 76,
-            "height": 83
+            "x": 184,
+            "y": 49,
+            "width": 91,
+            "height": 84
           },
           "characterId": "civilian-c20-5dd3802c4d--initial",
           "ageVariant": "initial",
@@ -5686,7 +5686,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {
@@ -5704,10 +5704,10 @@
           "name": "은서",
           "chapter": 22,
           "faceBounds": {
-            "x": 606,
-            "y": 50,
-            "width": 76,
-            "height": 90
+            "x": 590,
+            "y": 47,
+            "width": 90,
+            "height": 86
           },
           "characterId": "civilian-c22-c9e48fc48e--initial",
           "ageVariant": "initial",
@@ -5756,7 +5756,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {
@@ -5774,10 +5774,10 @@
           "name": "은서",
           "chapter": 22,
           "faceBounds": {
-            "x": 1013,
-            "y": 50,
-            "width": 76,
-            "height": 90
+            "x": 994,
+            "y": 48,
+            "width": 91,
+            "height": 86
           },
           "ageVariant": "later",
           "characterId": "civilian-c22-c9e48fc48e--later",
@@ -5826,7 +5826,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {
@@ -5844,10 +5844,10 @@
           "name": "은서의 딸",
           "chapter": 22,
           "faceBounds": {
-            "x": 199,
-            "y": 734,
-            "width": 73,
-            "height": 79
+            "x": 184,
+            "y": 711,
+            "width": 90,
+            "height": 83
           },
           "characterId": "civilian-c22-c56eca783f--initial",
           "ageVariant": "initial",
@@ -5896,7 +5896,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {
@@ -5914,10 +5914,10 @@
           "name": "은서의 딸",
           "chapter": 22,
           "faceBounds": {
-            "x": 602,
-            "y": 708,
-            "width": 74,
-            "height": 82
+            "x": 585,
+            "y": 685,
+            "width": 91,
+            "height": 89
           },
           "ageVariant": "later",
           "characterId": "civilian-c22-c56eca783f--later",
@@ -5966,7 +5966,7 @@
             "omittedOpaquePixelCount": 0,
             "sourceRectContainsWholeComponent": true,
             "pixelEditingPerformed": false,
-            "faceAnchorMethod": "manual visual region excluding headgear",
+            "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
             "runtimeComposite": "pending"
           },
           "preservedSource": {

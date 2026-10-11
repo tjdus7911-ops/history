@@ -1,0 +1,345 @@
+{
+  "schemaVersion": 1,
+  "auditId": "recurring01-manual-skin-face-anchors",
+  "dateUTC": "2026-10-11",
+  "status": "seven-manual-source-landmarks-reviewed-and-layout-applied-runtime-generation-pending",
+  "coordinateSpace": "absolute source PNG pixels; inclusive skin landmarks, x/y/width/height rectangles",
+  "measurementMethod": "View original immutable full sheet, inspect 5px coordinate grid, then review proposed rectangles on a separate 2px-grid diagnostic plot. Visible forehead to chin; ears included in width; hair, headgear and neck excluded. This is geometry metadata only.",
+  "sourceManuscriptSha256": "09e17274a506391305b36efee52b1cd60c4c504cc6619e68fe70cd9909e9674e",
+  "baselineGenerationSha256": "70a716b0bdaa460495196bd68073bed0b58790c51c5faab1c16b2d0b137de724",
+  "sourcePixelsChanged": false,
+  "sourceRectOrAlphaOrClipChanged": false,
+  "runtimeVisualReviewComplete": false,
+  "diagnosticFigure": "/workspace/scratch/fea3030a5c98/three-art-recovery/face-review/recurring01-skin-proposed.png",
+  "entries": [
+    {
+      "characterId": "civilian-c01-de48dcbf5b--initial",
+      "name": "모진",
+      "chapter": 1,
+      "ageVariant": "initial",
+      "sheetId": "recurring-fullbody-01",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-01.png",
+      "sourceImageSha256": "e8a074bb36b83fa87d07039ca1e3838aece08ae77a5dafee02fa92a5ed079426",
+      "row": 0,
+      "column": 0,
+      "oldFaceBounds": {
+        "x": 187,
+        "y": 43,
+        "width": 67,
+        "height": 73
+      },
+      "newFaceBounds": {
+        "x": 183,
+        "y": 48,
+        "width": 70,
+        "height": 55
+      },
+      "landmarks": {
+        "foreheadTopY": 48,
+        "chinBottomY": 102,
+        "faceLeftX": 183,
+        "faceRightX": 252
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "note": "머리띠 아래의 보이는 이마와 턱선. 이전 영역에 포함된 목을 제외하고 왼쪽 얼굴·귀의 바깥선 포함.",
+      "expectedUniformScaleMultiplier": 1.327273,
+      "unchangedSourceRect": {
+        "x": 94,
+        "y": 2,
+        "width": 251,
+        "height": 572
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 96,
+        "y": 4,
+        "width": 247,
+        "height": 568
+      },
+      "unchangedClipPathSha256": "aae9264125c67625d637908155d52fe8c4cef8aae1adb776155de24cc3876c49",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c02-dc712ed4d6--initial",
+      "name": "도림",
+      "chapter": 2,
+      "ageVariant": "initial",
+      "sheetId": "recurring-fullbody-01",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-01.png",
+      "sourceImageSha256": "e8a074bb36b83fa87d07039ca1e3838aece08ae77a5dafee02fa92a5ed079426",
+      "row": 0,
+      "column": 1,
+      "oldFaceBounds": {
+        "x": 466,
+        "y": 44,
+        "width": 76,
+        "height": 74
+      },
+      "newFaceBounds": {
+        "x": 466,
+        "y": 41,
+        "width": 66,
+        "height": 60
+      },
+      "landmarks": {
+        "foreheadTopY": 41,
+        "chinBottomY": 100,
+        "faceLeftX": 466,
+        "faceRightX": 531
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "note": "머리카락 아래 이마부터 턱선. 이전 사각형 아래쪽의 긴 목을 제외.",
+      "expectedUniformScaleMultiplier": 1.233333,
+      "unchangedSourceRect": {
+        "x": 380,
+        "y": 4,
+        "width": 258,
+        "height": 570
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 382,
+        "y": 6,
+        "width": 254,
+        "height": 566
+      },
+      "unchangedClipPathSha256": "e90488bb6e013a8689796697b97f5365ec3f693ca1aede68bad51b460209d18a",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c02-f88710b136--initial",
+      "name": "소운",
+      "chapter": 2,
+      "ageVariant": "initial",
+      "sheetId": "recurring-fullbody-01",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-01.png",
+      "sourceImageSha256": "e8a074bb36b83fa87d07039ca1e3838aece08ae77a5dafee02fa92a5ed079426",
+      "row": 0,
+      "column": 2,
+      "oldFaceBounds": {
+        "x": 789,
+        "y": 41,
+        "width": 74,
+        "height": 75
+      },
+      "newFaceBounds": {
+        "x": 784,
+        "y": 39,
+        "width": 68,
+        "height": 63
+      },
+      "landmarks": {
+        "foreheadTopY": 39,
+        "chinBottomY": 101,
+        "faceLeftX": 784,
+        "faceRightX": 851
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "note": "앞머리 아래 이마와 턱선, 보이는 귀 포함. 이전 왼쪽 코 경계 누락과 목 포함을 교정.",
+      "expectedUniformScaleMultiplier": 1.190476,
+      "unchangedSourceRect": {
+        "x": 705,
+        "y": 3,
+        "width": 238,
+        "height": 572
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 707,
+        "y": 5,
+        "width": 234,
+        "height": 568
+      },
+      "unchangedClipPathSha256": "b214c5d967aabef695e30c0e3df0c94ff9cb12b0393bd77f754df33e236b7a07",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c04-030d6d22c0--initial",
+      "name": "다은",
+      "chapter": 4,
+      "ageVariant": "initial",
+      "sheetId": "recurring-fullbody-01",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-01.png",
+      "sourceImageSha256": "e8a074bb36b83fa87d07039ca1e3838aece08ae77a5dafee02fa92a5ed079426",
+      "row": 1,
+      "column": 0,
+      "oldFaceBounds": {
+        "x": 171,
+        "y": 606,
+        "width": 74,
+        "height": 78
+      },
+      "newFaceBounds": {
+        "x": 169,
+        "y": 595,
+        "width": 71,
+        "height": 63
+      },
+      "landmarks": {
+        "foreheadTopY": 595,
+        "chinBottomY": 657,
+        "faceLeftX": 169,
+        "faceRightX": 239
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "note": "가르마 아래 이마가 기존 y606보다 위에서 시작함. 턱 아래 목과 오른쪽 머리카락은 제외.",
+      "expectedUniformScaleMultiplier": 1.238095,
+      "unchangedSourceRect": {
+        "x": 75,
+        "y": 568,
+        "width": 264,
+        "height": 534
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 77,
+        "y": 570,
+        "width": 260,
+        "height": 530
+      },
+      "unchangedClipPathSha256": "e523b5bedd8c4f6b148b6c80094b059c5d40b6f1c62ed8908bfed4b13f4ea5d3",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c05-f0f456bbbe--initial",
+      "name": "윤서",
+      "chapter": 5,
+      "ageVariant": "initial",
+      "sheetId": "recurring-fullbody-01",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-01.png",
+      "sourceImageSha256": "e8a074bb36b83fa87d07039ca1e3838aece08ae77a5dafee02fa92a5ed079426",
+      "row": 1,
+      "column": 1,
+      "oldFaceBounds": {
+        "x": 478,
+        "y": 607,
+        "width": 73,
+        "height": 79
+      },
+      "newFaceBounds": {
+        "x": 470,
+        "y": 606,
+        "width": 71,
+        "height": 54
+      },
+      "landmarks": {
+        "foreheadTopY": 606,
+        "chinBottomY": 659,
+        "faceLeftX": 470,
+        "faceRightX": 540
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "note": "머리띠 바로 아래 보이는 이마부터 턱까지. 이전 영역의 목 아래 약26px 제거.",
+      "expectedUniformScaleMultiplier": 1.462963,
+      "unchangedSourceRect": {
+        "x": 391,
+        "y": 563,
+        "width": 258,
+        "height": 547
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 393,
+        "y": 565,
+        "width": 254,
+        "height": 543
+      },
+      "unchangedClipPathSha256": "43f6ceff6df725117448df09d74f93651771e5f0feda9f8afdca6309c9973786",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c05-0b1fbc16b0--initial",
+      "name": "태문",
+      "chapter": 5,
+      "ageVariant": "initial",
+      "sheetId": "recurring-fullbody-01",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-01.png",
+      "sourceImageSha256": "e8a074bb36b83fa87d07039ca1e3838aece08ae77a5dafee02fa92a5ed079426",
+      "row": 1,
+      "column": 2,
+      "oldFaceBounds": {
+        "x": 782,
+        "y": 607,
+        "width": 73,
+        "height": 80
+      },
+      "newFaceBounds": {
+        "x": 777,
+        "y": 599,
+        "width": 69,
+        "height": 65
+      },
+      "landmarks": {
+        "foreheadTopY": 599,
+        "chinBottomY": 663,
+        "faceLeftX": 777,
+        "faceRightX": 845
+      },
+      "manualBoundaryUncertaintyPx": 3,
+      "note": "앞머리 아래 이마부터 짧은 턱수염이 가리는 턱선까지. 턱수염 경계는 약3px 수동 불확실성. 목은 제외.",
+      "expectedUniformScaleMultiplier": 1.230769,
+      "unchangedSourceRect": {
+        "x": 699,
+        "y": 562,
+        "width": 252,
+        "height": 549
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 701,
+        "y": 564,
+        "width": 248,
+        "height": 545
+      },
+      "unchangedClipPathSha256": "dea7c771078f4a636e8dd4104f19563d2f0045e85770aa3fd2a6f91d99872bdf",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c07-cf158c9e21--initial",
+      "name": "해인",
+      "chapter": 7,
+      "ageVariant": "initial",
+      "sheetId": "recurring-fullbody-01",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-01.png",
+      "sourceImageSha256": "e8a074bb36b83fa87d07039ca1e3838aece08ae77a5dafee02fa92a5ed079426",
+      "row": 2,
+      "column": 0,
+      "oldFaceBounds": {
+        "x": 183,
+        "y": 1119,
+        "width": 72,
+        "height": 79
+      },
+      "newFaceBounds": {
+        "x": 183,
+        "y": 1118,
+        "width": 68,
+        "height": 64
+      },
+      "landmarks": {
+        "foreheadTopY": 1118,
+        "chinBottomY": 1181,
+        "faceLeftX": 183,
+        "faceRightX": 250
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "note": "초기 해인의 가르마 아래 이마와 턱선. 귀를 포함하고 목과 뒤쪽 묶은 머리 제외.",
+      "expectedUniformScaleMultiplier": 1.234375,
+      "unchangedSourceRect": {
+        "x": 92,
+        "y": 1085,
+        "width": 249,
+        "height": 449
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 94,
+        "y": 1087,
+        "width": 245,
+        "height": 445
+      },
+      "unchangedClipPathSha256": "5191c5a14382f85c58a369a6130c04a7ef249dc21959712694741c06eefa3bb8",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    }
+  ]
+}

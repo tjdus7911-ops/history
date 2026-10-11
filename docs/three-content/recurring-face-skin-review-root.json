@@ -1,0 +1,271 @@
+{
+  "schemaVersion": 1,
+  "status": "five-recurring-source-skin-face-boxes-visually-reviewed-awaiting-runtime-application",
+  "coordinateSpace": "absolute-pixels-in-source-file",
+  "sourcePixelsEdited": false,
+  "sourceRectOrClipEdited": false,
+  "entryCount": 5,
+  "method": "Original RGBA sheet inspected, then five enlarged coordinate-grid diagnostic panels inspected with proposed bounding rectangles. Facial skin from exposed forehead to chin includes ears; hair/headgear and neck do not determine display scale.",
+  "entries": [
+    {
+      "characterId": "civilian-c20-5dd3802c4d--initial",
+      "name": "누리",
+      "ageVariant": "initial",
+      "sheetId": "recurring-fullbody-04-spaced",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-04-spaced.png",
+      "sourceImageSha256": "837b8e23145eacb587daa9b5a3de2a64b18073eaa4e0d9b2d2f5b409c113e320",
+      "oldFaceBounds": {
+        "x": 201,
+        "y": 56,
+        "width": 76,
+        "height": 83
+      },
+      "newFaceBounds": {
+        "x": 184,
+        "y": 49,
+        "width": 91,
+        "height": 84
+      },
+      "landmarks": {
+        "foreheadTopY": 49,
+        "chinBottomY": 132,
+        "faceLeftX": 184,
+        "faceRightX": 274
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "visible-skin-forehead-ear-jaw-chin-landmarks",
+      "occlusionOrInference": "A diagonal fringe partially covers the forehead; the exposed upper hairline and jaw are visible. No scalp, neck or braid is used as face height.",
+      "note": "이마의 노출된 윗 경계부터 턱 윤곽까지, 왼쪽 귀를 포함한 실제 얼굴 범위를 원본 좌표 격자에서 확인. 머리카락·목·옷깃은 얼굴 기준에서 제외.",
+      "expectedUniformScaleMultiplier": 0.988095,
+      "metadataDelta": {
+        "x": -17,
+        "y": -7,
+        "width": 15,
+        "height": 1
+      },
+      "unchangedSourceRect": {
+        "x": 92,
+        "y": 19,
+        "width": 255,
+        "height": 621
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 94,
+        "y": 21,
+        "width": 251,
+        "height": 617
+      },
+      "unchangedClipPathSha256": "a3e8e0ffa490d03537338feb73dd20fb364d38c5858148eb542397fb54aacd2b",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c22-c9e48fc48e--initial",
+      "name": "은서",
+      "ageVariant": "initial",
+      "sheetId": "recurring-fullbody-04-spaced",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-04-spaced.png",
+      "sourceImageSha256": "837b8e23145eacb587daa9b5a3de2a64b18073eaa4e0d9b2d2f5b409c113e320",
+      "oldFaceBounds": {
+        "x": 606,
+        "y": 50,
+        "width": 76,
+        "height": 90
+      },
+      "newFaceBounds": {
+        "x": 590,
+        "y": 47,
+        "width": 90,
+        "height": 86
+      },
+      "landmarks": {
+        "foreheadTopY": 47,
+        "chinBottomY": 132,
+        "faceLeftX": 590,
+        "faceRightX": 679
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "visible-skin-forehead-ear-jaw-chin-landmarks",
+      "occlusionOrInference": "A diagonal fringe partially covers the forehead; the exposed upper hairline and jaw are visible. No scalp, neck or braid is used as face height.",
+      "note": "이마의 노출된 윗 경계부터 턱 윤곽까지, 왼쪽 귀를 포함한 실제 얼굴 범위를 원본 좌표 격자에서 확인. 머리카락·목·옷깃은 얼굴 기준에서 제외.",
+      "expectedUniformScaleMultiplier": 1.046512,
+      "metadataDelta": {
+        "x": -16,
+        "y": -3,
+        "width": 14,
+        "height": -4
+      },
+      "unchangedSourceRect": {
+        "x": 492,
+        "y": 18,
+        "width": 273,
+        "height": 622
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 494,
+        "y": 20,
+        "width": 269,
+        "height": 618
+      },
+      "unchangedClipPathSha256": "fd2df3b9fd5d7167281de08f05e5faddff66b643678527a8ac949c5e944de254",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c22-c9e48fc48e--later",
+      "name": "은서",
+      "ageVariant": "later",
+      "sheetId": "recurring-fullbody-04-spaced",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-04-spaced.png",
+      "sourceImageSha256": "837b8e23145eacb587daa9b5a3de2a64b18073eaa4e0d9b2d2f5b409c113e320",
+      "oldFaceBounds": {
+        "x": 1013,
+        "y": 50,
+        "width": 76,
+        "height": 90
+      },
+      "newFaceBounds": {
+        "x": 994,
+        "y": 48,
+        "width": 91,
+        "height": 86
+      },
+      "landmarks": {
+        "foreheadTopY": 48,
+        "chinBottomY": 133,
+        "faceLeftX": 994,
+        "faceRightX": 1084
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "visible-skin-forehead-ear-jaw-chin-landmarks",
+      "occlusionOrInference": "A diagonal fringe partially covers the forehead; the exposed upper hairline and jaw are visible. No scalp, neck or braid is used as face height.",
+      "note": "이마의 노출된 윗 경계부터 턱 윤곽까지, 왼쪽 귀를 포함한 실제 얼굴 범위를 원본 좌표 격자에서 확인. 머리카락·목·옷깃은 얼굴 기준에서 제외.",
+      "expectedUniformScaleMultiplier": 1.046512,
+      "metadataDelta": {
+        "x": -19,
+        "y": -2,
+        "width": 15,
+        "height": -4
+      },
+      "unchangedSourceRect": {
+        "x": 902,
+        "y": 18,
+        "width": 270,
+        "height": 622
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 904,
+        "y": 20,
+        "width": 266,
+        "height": 618
+      },
+      "unchangedClipPathSha256": "b7839d24b9cf978c26f7727e7d741ced5892ee1e7fb597ad38407ffc6cf5400b",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c22-c56eca783f--initial",
+      "name": "은서의 딸",
+      "ageVariant": "initial",
+      "sheetId": "recurring-fullbody-04-spaced",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-04-spaced.png",
+      "sourceImageSha256": "837b8e23145eacb587daa9b5a3de2a64b18073eaa4e0d9b2d2f5b409c113e320",
+      "oldFaceBounds": {
+        "x": 199,
+        "y": 734,
+        "width": 73,
+        "height": 79
+      },
+      "newFaceBounds": {
+        "x": 184,
+        "y": 711,
+        "width": 90,
+        "height": 83
+      },
+      "landmarks": {
+        "foreheadTopY": 711,
+        "chinBottomY": 793,
+        "faceLeftX": 184,
+        "faceRightX": 273
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "visible-skin-forehead-ear-jaw-chin-landmarks",
+      "occlusionOrInference": "A diagonal fringe partially covers the forehead; the exposed upper hairline and jaw are visible. No scalp, neck or braid is used as face height.",
+      "note": "이마의 노출된 윗 경계부터 턱 윤곽까지, 왼쪽 귀를 포함한 실제 얼굴 범위를 원본 좌표 격자에서 확인. 머리카락·목·옷깃은 얼굴 기준에서 제외.",
+      "expectedUniformScaleMultiplier": 0.951807,
+      "metadataDelta": {
+        "x": -15,
+        "y": -23,
+        "width": 17,
+        "height": 4
+      },
+      "unchangedSourceRect": {
+        "x": 105,
+        "y": 680,
+        "width": 232,
+        "height": 528
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 107,
+        "y": 682,
+        "width": 228,
+        "height": 524
+      },
+      "unchangedClipPathSha256": "f508875047d725804b352f767352b31d47a55609ebe4c46f78106638dd8c4868",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    },
+    {
+      "characterId": "civilian-c22-c56eca783f--later",
+      "name": "은서의 딸",
+      "ageVariant": "later",
+      "sheetId": "recurring-fullbody-04-spaced",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-04-spaced.png",
+      "sourceImageSha256": "837b8e23145eacb587daa9b5a3de2a64b18073eaa4e0d9b2d2f5b409c113e320",
+      "oldFaceBounds": {
+        "x": 602,
+        "y": 708,
+        "width": 74,
+        "height": 82
+      },
+      "newFaceBounds": {
+        "x": 585,
+        "y": 685,
+        "width": 91,
+        "height": 89
+      },
+      "landmarks": {
+        "foreheadTopY": 685,
+        "chinBottomY": 773,
+        "faceLeftX": 585,
+        "faceRightX": 675
+      },
+      "manualBoundaryUncertaintyPx": 2,
+      "boundaryAssessment": "visible-skin-forehead-ear-jaw-chin-landmarks",
+      "occlusionOrInference": "A diagonal fringe partially covers the forehead; the exposed upper hairline and jaw are visible. No scalp, neck or braid is used as face height.",
+      "note": "이마의 노출된 윗 경계부터 턱 윤곽까지, 왼쪽 귀를 포함한 실제 얼굴 범위를 원본 좌표 격자에서 확인. 머리카락·목·옷깃은 얼굴 기준에서 제외.",
+      "expectedUniformScaleMultiplier": 0.921348,
+      "metadataDelta": {
+        "x": -17,
+        "y": -23,
+        "width": 17,
+        "height": 7
+      },
+      "unchangedSourceRect": {
+        "x": 490,
+        "y": 656,
+        "width": 268,
+        "height": 583
+      },
+      "unchangedOriginalAlphaBounds": {
+        "x": 492,
+        "y": 658,
+        "width": 264,
+        "height": 579
+      },
+      "unchangedClipPathSha256": "4ef2dd30fa9d61382988e799aa1009d71c21ce3ca1f18b2a1600f0efbb912f18",
+      "sourceOverlayReviewed": true,
+      "runtimeVisualReviewPending": true
+    }
+  ]
+}

@@ -4,12 +4,13 @@
   "sourceManuscriptSha256": "09e17274a506391305b36efee52b1cd60c4c504cc6619e68fe70cd9909e9674e",
   "sceneCount": 218,
   "authoredUtteranceCount": 2777,
-  "explicitCueCount": 256,
-  "scenesWithExplicitCues": 145,
+  "explicitCueCount": 270,
+  "scenesWithExplicitCues": 146,
   "propImageCount": 27,
   "handActionImageCount": 2,
-  "actorVariantImageCount": 6,
-  "backgroundStateImageCount": 4,
+  "actorVariantImageCount": 7,
+  "backgroundStateImageCount": 10,
+  "preciseSettingSurfaceCount": 3,
   "originalGenealogyPhotoCount": 3,
   "sourcePixelsEdited": false,
   "saveMutations": false,
@@ -65,7 +66,8 @@
         "bookActions": 3,
         "portraits": 3,
         "actorPresence": 1,
-        "motions": 1
+        "motions": 1,
+        "backgrounds": 1
       },
       "runtimeCueIds": [
         "THR-PRO-S03:bookActions:1",
@@ -75,7 +77,8 @@
         "THR-PRO-S03:portraits:2",
         "THR-PRO-S03:portraits:3",
         "THR-PRO-S03:actorPresence:1",
-        "THR-PRO-S03:motions:1"
+        "THR-PRO-S03:motions:1",
+        "THR-PRO-S03:backgrounds:1"
       ],
       "recordLineIds": [],
       "status": "implemented-presentation-cues-awaiting-browser-review",
@@ -1545,14 +1548,18 @@
       "authoredStaging": "5세기 후반 축조터. 직전 공방과 같은 시대지만 다른 현장 인물이다. 돌무지덧널무덤은 나무 덧널·돌무지·봉토 단면을 정확히 그린다. 일반 돌무지무덤과 구별한다.",
       "runtimeCueCounts": {
         "props": 1,
-        "captions": 0,
+        "captions": 1,
         "visibility": 0,
         "motions": 0,
         "portraits": 0,
-        "backgrounds": 0
+        "backgrounds": 1,
+        "settingSurfaces": 1
       },
       "runtimeCueIds": [
-        "THR-C10-S03:props:1"
+        "THR-C10-S03:props:1",
+        "THR-C10-S03:captions:1",
+        "THR-C10-S03:backgrounds:1",
+        "THR-C10-S03:settingSurfaces:1"
       ],
       "recordLineIds": [],
       "status": "implemented-presentation-cues-awaiting-browser-review",
@@ -2586,7 +2593,8 @@
         "visibility": 0,
         "motions": 0,
         "portraits": 3,
-        "backgrounds": 0
+        "backgrounds": 0,
+        "actorPresence": 1
       },
       "runtimeCueIds": [
         "THR-C17-S04:props:1",
@@ -2595,7 +2603,8 @@
         "THR-C17-S04:captions:1",
         "THR-C17-S04:portraits:1",
         "THR-C17-S04:portraits:2",
-        "THR-C17-S04:portraits:3"
+        "THR-C17-S04:portraits:3",
+        "THR-C17-S04:actorPresence:1"
       ],
       "recordLineIds": [],
       "status": "implemented-presentation-cues-awaiting-browser-review",
@@ -2610,11 +2619,12 @@
         "visibility": 0,
         "motions": 0,
         "portraits": 1,
-        "backgrounds": 0
+        "backgrounds": 1
       },
       "runtimeCueIds": [
         "THR-C17-S05:props:1",
-        "THR-C17-S05:portraits:1"
+        "THR-C17-S05:portraits:1",
+        "THR-C17-S05:backgrounds:1"
       ],
       "recordLineIds": [
         "THR-C17-S05-J01",
@@ -2626,10 +2636,14 @@
     {
       "sceneId": "THR-C17-S06",
       "authoredStaging": "8세기 석굴암 조성 현장. 석재를 짜 맞춘 인공 석굴의 공정 일부를 보여 준다. 본존불과 둘레 조각은 제작 중인 상태이며 현대 보호 시설을 창건 당시 배경에 넣지 않는다.",
-      "runtimeCueCounts": {},
-      "runtimeCueIds": [],
+      "runtimeCueCounts": {
+        "backgrounds": 1
+      },
+      "runtimeCueIds": [
+        "THR-C17-S06:backgrounds:1"
+      ],
       "recordLineIds": [],
-      "status": "existing-cast-background-and-dialogue-presentation",
+      "status": "implemented-presentation-cues-awaiting-browser-review",
       "customIllustrationCompletion": "not-inferred-from-cue-count"
     },
     {
@@ -2732,15 +2746,20 @@
       "sceneId": "THR-C18-S03",
       "authoredStaging": "830년대 청해진 창고. 당·신라·일본 화물 표지가 서로 다른 서체로 붙어 있다. 벽 지도에 법화원과 신라방·신라소·신라원·신라촌을 표시하되 각각의 기능과 존재 시기를 구분한다.",
       "runtimeCueCounts": {
-        "props": 1,
-        "captions": 0,
+        "props": 0,
+        "captions": 3,
         "visibility": 0,
         "motions": 0,
         "portraits": 0,
-        "backgrounds": 0
+        "backgrounds": 1,
+        "settingSurfaces": 1
       },
       "runtimeCueIds": [
-        "THR-C18-S03:props:1"
+        "THR-C18-S03:captions:1",
+        "THR-C18-S03:captions:2",
+        "THR-C18-S03:captions:3",
+        "THR-C18-S03:backgrounds:1",
+        "THR-C18-S03:settingSurfaces:1"
       ],
       "recordLineIds": [],
       "status": "implemented-presentation-cues-awaiting-browser-review",
@@ -3210,15 +3229,19 @@
       "sceneId": "THR-C21-S04",
       "authoredStaging": "문왕대 제도 정비를 살피는 8세기 정당성 관청. 부서별 문서 전달이 어긋나 한 가족의 요청이 되돌아온다. 3성·6부 명칭은 표지가 있는 소품과 실제 대화에 함께 노출된다.",
       "runtimeCueCounts": {
-        "props": 1,
-        "captions": 0,
+        "props": 0,
+        "captions": 2,
         "visibility": 0,
         "motions": 0,
         "portraits": 0,
-        "backgrounds": 0
+        "backgrounds": 1,
+        "settingSurfaces": 1
       },
       "runtimeCueIds": [
-        "THR-C21-S04:props:1"
+        "THR-C21-S04:captions:1",
+        "THR-C21-S04:captions:2",
+        "THR-C21-S04:backgrounds:1",
+        "THR-C21-S04:settingSurfaces:1"
       ],
       "recordLineIds": [],
       "status": "implemented-presentation-cues-awaiting-browser-review",

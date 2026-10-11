@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 1,
+  "status": "frozen-for-pr9-source-and-pure-validation-passed-actual-browser-review-pending",
+  "sourceBaseCommit": "98c2462f969b0b6648e16613e460853fc0db7655",
+  "sourceManuscriptSha256": "09e17274a506391305b36efee52b1cd60c4c504cc6619e68fe70cd9909e9674e",
+  "canonicalFilesUnchangedFromHead": {
+    "dist/three-story-script.json": "a2b0454b84dd7b2543ea41f8cb3c518e4a10d1f7db29f855b9324d5ab57fa6f0",
+    "dist/three-exam-data.json": "323e167f88250cc72b8ecc5787c2746552402cd1d068048e81d043eb881621ea"
+  },
+  "scope": [
+    "90 manually measured skin-face anchors with original fullbody PNG/crop/clip preservation",
+    "7 separately reviewed acting faces including connected Yeonwoo/mother pair",
+    "exact C17-S04-B1-R03 recipient presence",
+    "5 authored detailed settings, C11/C21 readable portrait compositions and 3 exact SVG surfaces"
+  ],
+  "verification": {
+    "fullbodySourceSheets": 15,
+    "fullbodyAppearances": 90,
+    "fullbodyFaceBoundsMatchInputs": 90,
+    "unchangedPngHashes": 15,
+    "unchangedFullSourceRectAndClip": 90,
+    "actingFaceBoundsAndSourcePreservation": 7,
+    "stagingGeneratorCheck": "PASS 218 scenes /2777 utterances /270 cues /27 props /2 hands /7 stored variants /10 background states /3 precise surfaces",
+    "settingSurfaceGeneratorCheck": "PASS 3 precise surfaces",
+    "pureStagingTest": "PASS 218 scenes /2919 immutable frames before final body-only face compile; final unchanged staging runtime retested by integration owner",
+    "runtimeVisualReviewComplete": false,
+    "allAuthoredStagingVerified": false
+  },
+  "fileCountExcludingThisManifest": 47,
+  "files": {
+    "dist/assets/ancient/three-complete/backgrounds/balhae-jeongdangseong-office-v1.png": {
+      "sha256": "9ad757222e8c9c9c849785986073bbab829649716df1ad12925250548d951c3b",
+      "bytes": 2600468
+    },
+    "dist/assets/ancient/three-complete/backgrounds/balhae-office-readable-labels-v3.png": {
+      "sha256": "482f923720c9616fdbfdbb3ded71cab1535ade7dfb42beb72ddd8adadba9a37b",
+      "bytes": 2302367
+    },
+    "dist/assets/ancient/three-complete/backgrounds/balhae-office-readable-shelf-v2.png": {
+      "sha256": "88b581d9adab455b30888433624dc30424586c2314b67843cd358aa8e921dc8c",
+      "bytes": 2475703
+    },
+    "dist/assets/ancient/three-complete/backgrounds/bulguksa-distinct-pagodas-v1.png": {
+      "sha256": "4d16472a297d35fb41c2dbf5b857c0c59b56fab3daf5b89bd099d27ebac1a751",
+      "bytes": 3444023
+    },
+    "dist/assets/ancient/three-complete/backgrounds/cheonghaejin-warehouse-v1.png": {
+      "sha256": "05b22f910e1809a2ba9faccd23d8a16c35bd27110f37d95638587382c3f66672",
+      "bytes": 3046754
+    },
+    "dist/assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-mother-in-pair-v1.png": {
+      "sha256": "2461423f56a394cd0e658c847f8ebb216839d1b2bb601e4237ea080d6e1df9c0",
+      "bytes": 2917357
+    },
+    "dist/assets/ancient/three-complete/backgrounds/seokguram-assembly-v1.png": {
+      "sha256": "715ff96e49288b8e712e677890da2d0a611af5dbbb1388264d0791c190b99bd8",
+      "bytes": 3617184
+    },
+    "dist/assets/ancient/three-complete/backgrounds/silla-ox-field-readable-v3.png": {
+      "sha256": "fd6cd6555e330778717f2767203db34ff994edec12c9dd6d9a0afbf23d6b304f",
+      "bytes": 3541663
+    },
+    "dist/assets/ancient/three-complete/backgrounds/silla-ox-field-rest-portrait-v2.png": {
+      "sha256": "8bac82cfede67dbb676889e2bbb6ee154e7b953d0f080b31c77a6a16c6257cbb",
+      "bytes": 3790881
+    },
+    "dist/assets/ancient/three-complete/backgrounds/silla-tomb-worksite-v1.png": {
+      "sha256": "e2f3611b01c3a45a9a129d9140bb79ecac65d0b52a63d5058efc2b26ef910624",
+      "bytes": 3703246
+    },
+    "dist/assets/ancient/three-complete/characters/yeonwoo-mother-support-pair-v1.png": {
+      "sha256": "022edd8a2242455c6616d33ca27b50d2fe2e62fb73326a034a14fe83a918ccfa",
+      "bytes": 2376646
+    },
+    "dist/assets/ancient/three-complete/overlays/balhae-department-ink-v1.svg": {
+      "sha256": "9b0948389a9c79163439651aa8b562f67da4a5559b42b408968cd851b8261b68",
+      "bytes": 2600
+    },
+    "dist/assets/ancient/three-complete/overlays/tomb-section-ink-v1.svg": {
+      "sha256": "e864e43c718c1ec5f2f08dca82154cca234432319480d388b61da86eca6acc48",
+      "bytes": 10921
+    },
+    "dist/assets/ancient/three-complete/overlays/warehouse-map-and-tags-v1.svg": {
+      "sha256": "04f060f203e7aabe867c4860937095ce6c3ef5d17122b049fbe064658239ff42",
+      "bytes": 5179
+    },
+    "dist/three-complete-art.js": {
+      "sha256": "161346951e632860c51a7139108c4f21e88c69c67cad8c34d6f1a21fe1a2ca4b",
+      "bytes": 2925114
+    },
+    "dist/three-complete-art.json": {
+      "sha256": "19a4a1c86c2179145ebf5bd671796172e6325f5848cf1528a3b911d600de927a",
+      "bytes": 2925083
+    },
+    "dist/three-staging.css": {
+      "sha256": "50750103886adb2f27406d51dac7c232faa6dbc5e4d53096a19c1a1ea44f78e7",
+      "bytes": 4069
+    },
+    "dist/three-staging.js": {
+      "sha256": "f00d1e5f69c4c94530f8bd250b32f155ee3bff88dfe8520a8268ec225999d526",
+      "bytes": 459373
+    },
+    "docs/three-content/STAGING_IMPLEMENTATION.md": {
+      "sha256": "7d6bf40063cd809f8dcbeb887dc12e32ec788ee4613db66dbe27a1968a7efd78",
+      "bytes": 15628
+    },
+    "docs/three-content/art-import-audit.json": {
+      "sha256": "6d7b4d6040959100662c4131d50581f879957ac501e25633dcbfb35255cc6d99",
+      "bytes": 86059
+    },
+    "docs/three-content/balhae-office-shelf-generation-input.json": {
+      "sha256": "29601f7c9014bdf13260680bd7d292e8698afcafd36ee0f3ef2823c1144d49ed",
+      "bytes": 2929
+    },
+    "docs/three-content/fullbody-portrait-generation.json": {
+      "sha256": "d9d6b84d60f534483f8c538c0e00f3e6323956bb1eabc9a00cd9438430a9ee9a",
+      "bytes": 2461221
+    },
+    "docs/three-content/fullbody-portrait-layout.json": {
+      "sha256": "f390c1bdf364e870c8895d963e607ce95d70de4c8640bc2aa402a7b5da660049",
+      "bytes": 23153
+    },
+    "docs/three-content/ox-field-portrait-generation-input.json": {
+      "sha256": "00c43d9806b88d083d5db344b5e4f90380c46a9f2d74f846a0978b2f13967b7e",
+      "bytes": 2887
+    },
+    "docs/three-content/portrait-face-application-audit.json": {
+      "sha256": "f8111e4fbe478608f925ac6dd4257161c0f6fe051db169d89578fc64e535e58f",
+      "bytes": 115286
+    },
+    "docs/three-content/principal-face-anchor-audit.json": {
+      "sha256": "55c39a0a3bfd2d6af0a2a29a8b8e10ad66ff2610ce044d42167e522bfc891538",
+      "bytes": 106562
+    },
+    "docs/three-content/prologue-support-pair-checkpoint.json": {
+      "sha256": "4c65c53fcb27b4fbd17fda0f837df05e3d10a0206a82d1297833bbffe32a63eb",
+      "bytes": 2620
+    },
+    "docs/three-content/prologue-support-pair-generation.json": {
+      "sha256": "4f3106ab07ef62b4f005fef47e441738f24241059395e79f37fe2b64372bfd5d",
+      "bytes": 6210
+    },
+    "docs/three-content/recurring-face-review-input.json": {
+      "sha256": "a88be4132532f19a2156c63d04e431796bf7dfac7c2abd39c988a9f5fe1b0c13",
+      "bytes": 8031
+    },
+    "docs/three-content/recurring-face-skin-review-b.json": {
+      "sha256": "42e9dd2f6d9be0970068ef0eee7e9f455e0c304bf203444c9bdcb7a4b2d488c4",
+      "bytes": 28965
+    },
+    "docs/three-content/recurring-face-skin-review-root.json": {
+      "sha256": "93cfce0c0a5ea62cd25907274b54d22bf70279a182159461a64988912f4b0737",
+      "bytes": 9645
+    },
+    "docs/three-content/recurring01-face-anchor-audit.json": {
+      "sha256": "8233377f64d31e2423c7a69484f94a2e2a7186ad8621d77385fb7b2fe86cc6e4",
+      "bytes": 10947
+    },
+    "docs/three-content/staging-acting-generation.json": {
+      "sha256": "0570ca4d1faeb4e5beef3026d20ce109b779a5e98e3d7f53337ac6dc00882fe8",
+      "bytes": 93239
+    },
+    "docs/three-content/staging-completion-ledger.json": {
+      "sha256": "58cf4a44adfbdb6e7647fc41f115ade8bc6f93b5e24633e4954c8c19df2b737d",
+      "bytes": 6513
+    },
+    "docs/three-content/staging-cues.json": {
+      "sha256": "3ac38267d820ec1f1d178dff69dd6628fb0687321727252e630b28ea1724d3d8",
+      "bytes": 80040
+    },
+    "docs/three-content/staging-detailed-setting-inputs.json": {
+      "sha256": "e257d93274de1623cf93a7c6289b14257d5307d7f16bb7e00c141054285c04e6",
+      "bytes": 19994
+    },
+    "docs/three-content/staging-runtime-audit.json": {
+      "sha256": "6a6ecbf591763cb14f9d75fcdc6f9e9d3943097b37d3e7002ed19cd9831b9d8a",
+      "bytes": 159432
+    },
+    "docs/three-content/staging-setting-composition-retries.json": {
+      "sha256": "800ce9dd994d6be2a442dafd8b8ee2cf20e16d710e4e49c7f052b60afcfd9690",
+      "bytes": 4691
+    },
+    "docs/three-content/staging-setting-surface-generation.json": {
+      "sha256": "8b27dbf4c6e1aef738f36783a7431598125ff32b4e992d232e0329e0a81184a4",
+      "bytes": 6231
+    },
+    "docs/three-content/staging-setting-surface-inputs.json": {
+      "sha256": "9e7dec9cfd548e6c8ccab1cc84d49972e38427483908559ecbf77cea344c5f49",
+      "bytes": 7256
+    },
+    "docs/three-content/standalone-face-skin-review.json": {
+      "sha256": "6cb45a80b37e931983fb9bc20e7a8598b24d394a8467a260d8ff15fd723f1c52",
+      "bytes": 13183
+    },
+    "scripts/build-three-complete-art.py": {
+      "sha256": "77d2fa718535a928434ab76c18088597d614c77a23720186f9ef1ee5814c3850",
+      "bytes": 38103
+    },
+    "scripts/build-three-setting-surfaces.py": {
+      "sha256": "36b8acc06be37e968e5329945953eb1318b715e1063f0225fa673c72f580e635",
+      "bytes": 7878
+    },
+    "scripts/build-three-staging.py": {
+      "sha256": "666aa71ea86cb8bd8f499033b351878615533ef4a25cb28590bf5c53c8f262ba",
+      "bytes": 12350
+    },
+    "scripts/measure-three-fullbody-art.py": {
+      "sha256": "07b255b170b2b74e1c35c2021ff72aca1bf69e6e773ddd36d2d3ed1d57817f60",
+      "bytes": 9308
+    },
+    "scripts/three-staging-runtime.js": {
+      "sha256": "9642bb2f9357989de2ab262a703e02a08cbca945696bbfd4d48b0071c4d0c342",
+      "bytes": 12029
+    },
+    "tests/three-staging-test.cjs": {
+      "sha256": "e238db56c92e027ab1431dd220926db3a52608497c02d157e499716be9d84469",
+      "bytes": 17933
+    }
+  },
+  "frozenRuntimeFiles": [
+    "dist/three-complete-art.json",
+    "dist/three-complete-art.js",
+    "dist/three-staging.js",
+    "dist/three-staging.css",
+    "docs/three-content/fullbody-portrait-generation.json"
+  ],
+  "otherIntegrationWorkOwnedByRoot": [
+    "dist/sw.js",
+    "tests/browser-review/fixtures.js",
+    "tests/browser-review/review.html",
+    "tests/three-staging-integration-test.cjs",
+    "docs/ui-qa/THREE_UI_VERIFICATION.md"
+  ],
+  "remainingVerificationAndWork": [
+    "Actual mobile and PC composition after skin-face scale correction, pair contact and detailed setting/ink placement",
+    "The seven detail review statuses in the staging ledger await root actual QA",
+    "Authored paper/wind/drum sounds and additional precise hand exchanges remain follow-up; no automatic dialogue or unapproved voice was added"
+  ],
+  "priorPairSnapshot": "docs/three-content/prologue-support-pair-checkpoint.json (historical hashes preserved, superseded by this manifest)"
+}

@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "status": "generated-source-files-reviewed-runtime-pair-composition-pending",
+  "lineId": "THR-PRO-S03-L06",
+  "generation": [
+    {
+      "key": "yeonwoo-mother-support-pair",
+      "repoSrc": "assets/ancient/three-complete/characters/yeonwoo-mother-support-pair-v1.png",
+      "transparent": true,
+      "prompt": "Create a NEW TRUE TRANSPARENT full-body two-person interaction sprite in the same approved hand-drawn 2D Korean historical game style. Reference 1 is the exact identity of Yeonwoo: retain his exact young-adult male face, dark tied-back hair, muted green long outer robe, ivory inner sleeves, gray-brown sash, loose trousers and boots, no age or costume changes. Reference 2 supplies the exact identity of the elderly mother: she is the LARGE FOREGROUND gray-haired woman immediately beside the little girl, NOT the smaller woman farther back in the queue. Preserve her deeply lined tired face, silver hair in a small high bun, worn beige-gray patched jacket, rough brown apron/overskirt, long dark gray-brown skirt and simple cloth-and-straw footwear. Isolate ONLY YEONWOO AND THIS MOTHER together, no little girl and no other figures, no background. This is ONE PHYSICALLY CONNECTED GROUP, not two separate atlas cells. Yeonwoo is on the LEFT, looking down to his RIGHT, and the mother is close on his RIGHT/front. Her knees have just weakened; she is still on her feet with both knees bent and upper body leaning toward him, weary but alive with eyes partly open, not already lying down or rescued/treated. Yeonwoo gently supports her at her near upper arm just above the elbow with one hand, while his other arm supports her other forearm in a natural stable hold. DRAW THE HANDS IN VISIBLE CONTACT WITH THE MOTHER'S CLOTHED ARM/FOREARM: fingers wrap around cloth, no gap of air, no hand aimed at an absent third person, no floating grip, no impossible arm entanglement. Mother is not embracing him and this is not romantic. Both complete heads, bodies, sleeves, hands and shoes must be present at natural proportions. Composition is compact: Yeonwoo's face is near the upper left, mother's face lower and just about 1.5 adult-face heights to his RIGHT and 1.5 face heights LOWER, so she fits between him and a separate game protagonist on the far right. They overlap naturally through the support action instead of standing far apart. The mother's head is comparable adult scale, not a child or miniature. Yeonwoo's head size/proportions remain the same as reference 1. Both lean/move only slightly; do not make an acrobatic rescue. No water, food, medicines, injury, blood, completed recovery, bags, labels, shadows on background, ground plane, haze, Seoa, scene or invented props. Transparent alpha-zero backdrop, generous padding around the full silhouette, tall or near-square canvas as needed. Keep identities and the natural actual contact unmistakable.",
+      "references": [
+        "assets/ancient/three-complete/characters/yeonwoo-fullbody-v1.png",
+        "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-before-collapse.png"
+      ],
+      "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-e719528a-9594-405c-9404-32df5920e715.png",
+      "sourceFileVisualReview": true,
+      "runtimeVisualReviewComplete": false,
+      "pixelEditingPerformed": false,
+      "sha256": "022edd8a2242455c6616d33ca27b50d2fe2e62fb73326a034a14fe83a918ccfa",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "sourceReferences": [
+        {
+          "src": "assets/ancient/three-complete/characters/yeonwoo-fullbody-v1.png",
+          "sha256": "e1dadcd9f40b89935297864d775b79c2626d56e07d81f6a453b11598772af01d"
+        },
+        {
+          "src": "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-before-collapse.png",
+          "sha256": "5060baac0f62d176e28d20ec2ee5567dc90cbe6843b29b7ab515092578c96ff9"
+        }
+      ]
+    },
+    {
+      "key": "queue-mother-in-pair",
+      "repoSrc": "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-mother-in-pair-v1.png",
+      "transparent": false,
+      "prompt": "Edit the attached approved historical game background with the smallest possible continuity change. Preserve the exact 16:9 camera, every thatched house, mountain, cloudy sky, spring tree, stone wall, empty sack, dry soil, queue of waiting villagers, and especially the little girl in front at the right with her original face, hair and beige-and-brown clothes. REMOVE ONLY the LARGE GRAY-HAIRED ELDERLY WOMAN at the very front of the queue, beside that little girl, who is leaning on her knees. Do not remove the smaller older woman farther back. Fill the former foreground mother's area with a seamless continuation of the existing dry path, queue view and stone wall as appropriate, preserving all other people and objects. The removed mother is being supplied in a separate foreground sprite held by Yeonwoo, so do not draw any replacement elderly woman, ghost, silhouette, foreground man, rescue, food, water or extra actor anywhere. The girl's pose and gaze remain toward where her mother was. No improvement to the village, no new details, no altered weather or lighting, no changed identities. Keep the exact original warm hand-painted 2D style, proportions, colors and crop. Opaque full scene background; this is a new derived frame only for one line, not an edit to the original file.",
+      "references": [
+        "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-before-collapse.png"
+      ],
+      "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-89f44fdf-8791-477e-879d-9c4a8d76c8bc.png",
+      "sourceFileVisualReview": true,
+      "runtimeVisualReviewComplete": false,
+      "pixelEditingPerformed": false,
+      "sha256": "2461423f56a394cd0e658c847f8ebb216839d1b2bb601e4237ea080d6e1df9c0",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "sourceReferences": [
+        {
+          "src": "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-before-collapse.png",
+          "sha256": "5060baac0f62d176e28d20ec2ee5567dc90cbe6843b29b7ab515092578c96ff9"
+        }
+      ]
+    }
+  ]
+}

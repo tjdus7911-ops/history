@@ -120,7 +120,7 @@ def main():
                 'foreignPortraitComponents':0,'completeSolidSilhouetteInsideClip':True,'clipPolygonPointCount':points,
                 'originalOpaquePixelCount':full_count,'includedOpaquePixelCount':full_count,'omittedOpaquePixelCount':0,
                 'sourceRectContainsWholeComponent':True,
-                'pixelEditingPerformed':False,'faceAnchorMethod':'manual visual region excluding headgear','runtimeComposite':'pending'}}
+                'pixelEditingPerformed':False,'faceAnchorMethod':'manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded','runtimeComposite':'pending'}}
             if old:cell['preservedSource']={'src':old['originalSrc'],'sha256':old['originalSha256'],'sourceRect':old['sourceRect']}
             cells.append(cell)
         occupied={(c['row'],c['column']) for c in cells}

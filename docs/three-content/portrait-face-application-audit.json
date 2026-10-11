@@ -1,0 +1,3500 @@
+{
+  "schemaVersion": 1,
+  "status": "all-90-manual-skin-face-bounds-applied-and-preservation-validated-runtime-composition-pending",
+  "sourceManuscriptSha256": "09e17274a506391305b36efee52b1cd60c4c504cc6619e68fe70cd9909e9674e",
+  "sourceScriptFileSha256": "a2b0454b84dd7b2543ea41f8cb3c518e4a10d1f7db29f855b9324d5ab57fa6f0",
+  "baselineGenerationSha256": "70a716b0bdaa460495196bd68073bed0b58790c51c5faab1c16b2d0b137de724",
+  "baselineArtSha256": "4216ee3a36afce9d34d0af8036f6987ab342e89d6cdc0c521ca4d71e3f1c6fbc",
+  "generatedFiles": {
+    "docs/three-content/fullbody-portrait-generation.json": {
+      "sha256": "d9d6b84d60f534483f8c538c0e00f3e6323956bb1eabc9a00cd9438430a9ee9a",
+      "bytes": 2461221
+    },
+    "dist/three-complete-art.json": {
+      "sha256": "19a4a1c86c2179145ebf5bd671796172e6325f5848cf1528a3b911d600de927a",
+      "bytes": 2925083
+    },
+    "dist/three-complete-art.js": {
+      "sha256": "161346951e632860c51a7139108c4f21e88c69c67cad8c34d6f1a21fe1a2ca4b",
+      "bytes": 2925114
+    }
+  },
+  "inputs": [
+    {
+      "path": "docs/three-content/principal-face-anchor-audit.json",
+      "sha256": "55c39a0a3bfd2d6af0a2a29a8b8e10ad66ff2610ce044d42167e522bfc891538",
+      "entries": 61
+    },
+    {
+      "path": "docs/three-content/recurring01-face-anchor-audit.json",
+      "sha256": "8233377f64d31e2423c7a69484f94a2e2a7186ad8621d77385fb7b2fe86cc6e4",
+      "entries": 7
+    },
+    {
+      "path": "docs/three-content/recurring-face-skin-review-b.json",
+      "sha256": "42e9dd2f6d9be0970068ef0eee7e9f455e0c304bf203444c9bdcb7a4b2d488c4",
+      "entries": 15
+    },
+    {
+      "path": "docs/three-content/recurring-face-skin-review-root.json",
+      "sha256": "93cfce0c0a5ea62cd25907274b54d22bf70279a182159461a64988912f4b0737",
+      "entries": 5
+    },
+    {
+      "path": "docs/three-content/standalone-face-skin-review.json",
+      "sha256": "6cb45a80b37e931983fb9bc20e7a8598b24d394a8467a260d8ff15fd723f1c52",
+      "bodyEntries": 2,
+      "actingEntries": 7
+    }
+  ],
+  "summary": {
+    "fullbodyAppearanceCount": 90,
+    "manualBodyFaceInputs": 90,
+    "bodyFaceCoordinatesChanged": 90,
+    "sourcePngCount": 15,
+    "sourcePngHashesUnchanged": 15,
+    "sourceRectAndClipAndAlphaAndUpperBodyBoundsUnchanged": 90,
+    "runtimeBodyFaceBoundsMatch": 90,
+    "otherCharacterEntriesUnchanged": 154,
+    "approvedProtagonistAndSourcePhotosUnchanged": true,
+    "actingVariantCount": 7,
+    "actingSourceRectAndAlphaBoundsUnchanged": 7,
+    "sourcePixelsEdited": false,
+    "sourceDialogueOrExamsChanged": false,
+    "runtimeVisualReviewComplete": false
+  },
+  "appearances": [
+    {
+      "characterId": "history-sundo--initial",
+      "name": "순도",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-01.png",
+      "sourceImageSha256": "ce8f8d70ba45f75ce808c5f86ee85e90b50dd6f99d0a3eac946604c851b90f5f",
+      "newFaceBounds": {
+        "x": 194,
+        "y": 30,
+        "width": 62,
+        "height": 63
+      },
+      "oldFaceBounds": {
+        "x": 195,
+        "y": 42,
+        "width": 62,
+        "height": 66
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 4,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 85,
+        "y": 17,
+        "width": 241,
+        "height": 501
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "2bd7009c77be45d973c59ac9aea680e851d4e9ee5b2bed242f870d7d17a010da",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "history-gwanggaeto--initial",
+      "name": "광개토대왕",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-01.png",
+      "sourceImageSha256": "ce8f8d70ba45f75ce808c5f86ee85e90b50dd6f99d0a3eac946604c851b90f5f",
+      "newFaceBounds": {
+        "x": 498,
+        "y": 54,
+        "width": 66,
+        "height": 47
+      },
+      "oldFaceBounds": {
+        "x": 501,
+        "y": 54,
+        "width": 66,
+        "height": 68
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 370,
+        "y": 6,
+        "width": 271,
+        "height": 520
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "47f5fde732c1fb00670600c63110ecbe8f6972e029ea6c1a84e6a447789e6e1f",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "history-jangsu--initial",
+      "name": "장수왕",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-01.png",
+      "sourceImageSha256": "ce8f8d70ba45f75ce808c5f86ee85e90b50dd6f99d0a3eac946604c851b90f5f",
+      "newFaceBounds": {
+        "x": 791,
+        "y": 54,
+        "width": 63,
+        "height": 50
+      },
+      "oldFaceBounds": {
+        "x": 791,
+        "y": 52,
+        "width": 65,
+        "height": 68
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 3,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 687,
+        "y": 6,
+        "width": 265,
+        "height": 522
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "7e3279375b8b691f325f75513f9836841dfab737b31390915931817b26e28616",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "history-euljimundeok--initial",
+      "name": "을지문덕",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-01.png",
+      "sourceImageSha256": "ce8f8d70ba45f75ce808c5f86ee85e90b50dd6f99d0a3eac946604c851b90f5f",
+      "newFaceBounds": {
+        "x": 182,
+        "y": 558,
+        "width": 68,
+        "height": 57
+      },
+      "oldFaceBounds": {
+        "x": 176,
+        "y": 573,
+        "width": 73,
+        "height": 72
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 4,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 44,
+        "y": 516,
+        "width": 291,
+        "height": 513
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "bdbd8674f4d31235d82176c04fea18ed0421af9e9915fe5db67d8124ed2353a6",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "history-marananta--initial",
+      "name": "마라난타",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-01.png",
+      "sourceImageSha256": "ce8f8d70ba45f75ce808c5f86ee85e90b50dd6f99d0a3eac946604c851b90f5f",
+      "newFaceBounds": {
+        "x": 498,
+        "y": 535,
+        "width": 69,
+        "height": 65
+      },
+      "oldFaceBounds": {
+        "x": 493,
+        "y": 554,
+        "width": 74,
+        "height": 75
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 4,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 390,
+        "y": 522,
+        "width": 260,
+        "height": 508
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "6aa02395418d71cda6f6e2c0637755d41c7786e6dc9f53db0f5c0f00a70ab195",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "history-munju--initial",
+      "name": "문주왕",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-01.png",
+      "sourceImageSha256": "ce8f8d70ba45f75ce808c5f86ee85e90b50dd6f99d0a3eac946604c851b90f5f",
+      "newFaceBounds": {
+        "x": 810,
+        "y": 562,
+        "width": 70,
+        "height": 54
+      },
+      "oldFaceBounds": {
+        "x": 808,
+        "y": 564,
+        "width": 72,
+        "height": 70
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 3,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 709,
+        "y": 517,
+        "width": 255,
+        "height": 522
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "c348b8fb637c78e7bf28ebd902a9da7c52890a68dd1284b105229d56da5c4421",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "history-muryeong--initial",
+      "name": "무령왕",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-01.png",
+      "sourceImageSha256": "ce8f8d70ba45f75ce808c5f86ee85e90b50dd6f99d0a3eac946604c851b90f5f",
+      "newFaceBounds": {
+        "x": 181,
+        "y": 1068,
+        "width": 68,
+        "height": 55
+      },
+      "oldFaceBounds": {
+        "x": 177,
+        "y": 1070,
+        "width": 73,
+        "height": 75
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 3,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 60,
+        "y": 1021,
+        "width": 268,
+        "height": 515
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "0c8d5ba16a241324c14b9cc0b8a040ff1fbd86cb0c3e8a63f45dbbb40e33ea07",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "history-seong--initial",
+      "name": "성왕",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-01.png",
+      "sourceImageSha256": "ce8f8d70ba45f75ce808c5f86ee85e90b50dd6f99d0a3eac946604c851b90f5f",
+      "newFaceBounds": {
+        "x": 491,
+        "y": 1060,
+        "width": 65,
+        "height": 63
+      },
+      "oldFaceBounds": {
+        "x": 487,
+        "y": 1081,
+        "width": 73,
+        "height": 74
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 3,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 368,
+        "y": 1021,
+        "width": 291,
+        "height": 515
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "3f9051651e1f1c42f55171c8850f25379125f5be9b5de2371b632b36fadf9a31",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "history-beopheung--initial",
+      "name": "법흥왕",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-01.png",
+      "sourceImageSha256": "ce8f8d70ba45f75ce808c5f86ee85e90b50dd6f99d0a3eac946604c851b90f5f",
+      "newFaceBounds": {
+        "x": 821,
+        "y": 1070,
+        "width": 71,
+        "height": 59
+      },
+      "oldFaceBounds": {
+        "x": 817,
+        "y": 1080,
+        "width": 71,
+        "height": 74
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 4,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 709,
+        "y": 1025,
+        "width": 269,
+        "height": 511
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "3fb9dbbc66fcb0898fb09ce359f307eb3d00712eafb41ad0496ed3eaa51a85e5",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "history-jajang--initial",
+      "name": "자장",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-02.png",
+      "sourceImageSha256": "c17852623084e7fafbd576c7c06934ba3acc283f47c1f6d964a433d37e0cfd41",
+      "newFaceBounds": {
+        "x": 171,
+        "y": 23,
+        "width": 74,
+        "height": 70
+      },
+      "oldFaceBounds": {
+        "x": 171,
+        "y": 33,
+        "width": 75,
+        "height": 78
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 4,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 62,
+        "y": 5,
+        "width": 262,
+        "height": 525
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "7eebd1fecf59267c4f9fc49cdf77e641c2c7a5549d6c071d39672cdd9606795c",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "history-kimchunchu--initial",
+      "name": "김춘추",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-02.png",
+      "sourceImageSha256": "c17852623084e7fafbd576c7c06934ba3acc283f47c1f6d964a433d37e0cfd41",
+      "newFaceBounds": {
+        "x": 497,
+        "y": 44,
+        "width": 73,
+        "height": 56
+      },
+      "oldFaceBounds": {
+        "x": 493,
+        "y": 49,
+        "width": 78,
+        "height": 76
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 3,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 385,
+        "y": 0,
+        "width": 269,
+        "height": 531
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "538ace3daad62d213d1720e7d7382ae7b5f9e38853b09ec7b8a17437484baf07",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "history-kimyusin--older",
+      "name": "김유신",
+      "ageVariant": "older",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-02.png",
+      "sourceImageSha256": "c17852623084e7fafbd576c7c06934ba3acc283f47c1f6d964a433d37e0cfd41",
+      "newFaceBounds": {
+        "x": 816,
+        "y": 37,
+        "width": 71,
+        "height": 69
+      },
+      "oldFaceBounds": {
+        "x": 806,
+        "y": 39,
+        "width": 87,
+        "height": 86
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 4,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 715,
+        "y": 0,
+        "width": 258,
+        "height": 531
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "42343a88430149664ad3d99964ec8da5b01759d4bc75662eb57406ffbd9b23c6",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "history-ureuk--initial",
+      "name": "우륵",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-02.png",
+      "sourceImageSha256": "c17852623084e7fafbd576c7c06934ba3acc283f47c1f6d964a433d37e0cfd41",
+      "newFaceBounds": {
+        "x": 170,
+        "y": 539,
+        "width": 70,
+        "height": 68
+      },
+      "oldFaceBounds": {
+        "x": 168,
+        "y": 556,
+        "width": 74,
+        "height": 80
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 3,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 51,
+        "y": 514,
+        "width": 275,
+        "height": 533
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "b7ae204dda08c208170e35696dfd376a938fa1255212ab562493b8b712947a94",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "history-sinmun--initial",
+      "name": "신문왕",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-02.png",
+      "sourceImageSha256": "c17852623084e7fafbd576c7c06934ba3acc283f47c1f6d964a433d37e0cfd41",
+      "newFaceBounds": {
+        "x": 502,
+        "y": 548,
+        "width": 73,
+        "height": 64
+      },
+      "oldFaceBounds": {
+        "x": 500,
+        "y": 557,
+        "width": 77,
+        "height": 79
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 384,
+        "y": 514,
+        "width": 279,
+        "height": 533
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "6d0f7205dd2f01f32797979377c0d273a340494aa50af98e9c1dfac418aaa368",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "history-wonhyo--initial",
+      "name": "원효",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-02.png",
+      "sourceImageSha256": "c17852623084e7fafbd576c7c06934ba3acc283f47c1f6d964a433d37e0cfd41",
+      "newFaceBounds": {
+        "x": 827,
+        "y": 535,
+        "width": 75,
+        "height": 69
+      },
+      "oldFaceBounds": {
+        "x": 822,
+        "y": 560,
+        "width": 77,
+        "height": 82
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 4,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 719,
+        "y": 520,
+        "width": 266,
+        "height": 527
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "63995c5da248db369792ba80673f52178ea86ad1e54c06e3c5115a073166c27b",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "history-uisang--initial",
+      "name": "의상",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-02.png",
+      "sourceImageSha256": "c17852623084e7fafbd576c7c06934ba3acc283f47c1f6d964a433d37e0cfd41",
+      "newFaceBounds": {
+        "x": 162,
+        "y": 1049,
+        "width": 66,
+        "height": 62
+      },
+      "oldFaceBounds": {
+        "x": 159,
+        "y": 1065,
+        "width": 71,
+        "height": 78
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 4,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 59,
+        "y": 1033,
+        "width": 252,
+        "height": 503
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "704cd9bfacf196acff73d50b652142bc257ffd76d9607f116c02916c3c06a2f3",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "history-jangbogo--initial",
+      "name": "장보고",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-02.png",
+      "sourceImageSha256": "c17852623084e7fafbd576c7c06934ba3acc283f47c1f6d964a433d37e0cfd41",
+      "newFaceBounds": {
+        "x": 510,
+        "y": 1066,
+        "width": 69,
+        "height": 54
+      },
+      "oldFaceBounds": {
+        "x": 509,
+        "y": 1065,
+        "width": 74,
+        "height": 79
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 3,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 398,
+        "y": 1030,
+        "width": 260,
+        "height": 506
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "601cef74a34e75e01db26f5658d52c13a81b65bb0229de3c8d124d2bfe1806c1",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "history-choechiwon--initial",
+      "name": "최치원",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-02.png",
+      "sourceImageSha256": "c17852623084e7fafbd576c7c06934ba3acc283f47c1f6d964a433d37e0cfd41",
+      "newFaceBounds": {
+        "x": 843,
+        "y": 1078,
+        "width": 68,
+        "height": 50
+      },
+      "oldFaceBounds": {
+        "x": 837,
+        "y": 1078,
+        "width": 77,
+        "height": 75
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 3,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 739,
+        "y": 1033,
+        "width": 247,
+        "height": 503
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "3c7c98398b5ffd16c25906f0f9395e0011e6327b23950cc3bec7139aca66ff61",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c01-0e375c4533--initial",
+      "name": "연우",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/yeonwoo-fullbody-v1.png",
+      "sourceImageSha256": "e1dadcd9f40b89935297864d775b79c2626d56e07d81f6a453b11598772af01d",
+      "newFaceBounds": {
+        "x": 410,
+        "y": 77,
+        "width": 147,
+        "height": 142
+      },
+      "oldFaceBounds": {
+        "x": 405,
+        "y": 77,
+        "width": 166,
+        "height": 151
+      },
+      "auditSource": "docs/three-content/standalone-face-skin-review.json",
+      "manualBoundaryUncertaintyPx": null,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 238,
+        "y": 15,
+        "width": 648,
+        "height": 1510
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "d636e01fdaa24fddbfae0b935e3f5d57da771d0ad3a964c9b0743d40323660ed",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "history-daejoyeong--initial",
+      "name": "대조영",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-03-spaced.png",
+      "sourceImageSha256": "497fdcad92dd51da6a8f88aca24cfead2d14bb2bb57161b64d83da6d21319e3d",
+      "newFaceBounds": {
+        "x": 189,
+        "y": 36,
+        "width": 72,
+        "height": 67
+      },
+      "oldFaceBounds": {
+        "x": 191,
+        "y": 43,
+        "width": 73,
+        "height": 82
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 4,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 36,
+        "y": 2,
+        "width": 316,
+        "height": 546
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "ee9711781ce4f849496d1d94d2e6b53362ca3fa3fb88f292fd78d9583bbecd10",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "history-wanggeon--initial",
+      "name": "왕건",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-03-spaced.png",
+      "sourceImageSha256": "497fdcad92dd51da6a8f88aca24cfead2d14bb2bb57161b64d83da6d21319e3d",
+      "newFaceBounds": {
+        "x": 491,
+        "y": 47,
+        "width": 74,
+        "height": 63
+      },
+      "oldFaceBounds": {
+        "x": 489,
+        "y": 48,
+        "width": 82,
+        "height": 91
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 4,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 370,
+        "y": 2,
+        "width": 295,
+        "height": 546
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "62175d8639eca431f5262185c26c07c626af3b1438bbfec5b215db92f3fcd2b6",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c01-e46c301472--initial",
+      "name": "해솔",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-03-spaced.png",
+      "sourceImageSha256": "497fdcad92dd51da6a8f88aca24cfead2d14bb2bb57161b64d83da6d21319e3d",
+      "newFaceBounds": {
+        "x": 810,
+        "y": 55,
+        "width": 69,
+        "height": 64
+      },
+      "oldFaceBounds": {
+        "x": 810,
+        "y": 51,
+        "width": 73,
+        "height": 79
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 700,
+        "y": 21,
+        "width": 292,
+        "height": 524
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "da4e91fbbfbce512a3605dee529bf6e28c9bf103defe925ae483794c757908f8",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c02-4d5f80821a--initial",
+      "name": "하준",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-03-spaced.png",
+      "sourceImageSha256": "497fdcad92dd51da6a8f88aca24cfead2d14bb2bb57161b64d83da6d21319e3d",
+      "newFaceBounds": {
+        "x": 179,
+        "y": 567,
+        "width": 69,
+        "height": 65
+      },
+      "oldFaceBounds": {
+        "x": 173,
+        "y": 568,
+        "width": 78,
+        "height": 83
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 46,
+        "y": 532,
+        "width": 287,
+        "height": 518
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "17acc35e1109ee0471ac0a1b0fa51302a7a97e64d73bb204b157def6c4717432",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c02-9b1f1302f8--initial",
+      "name": "기록관 소정",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-03-spaced.png",
+      "sourceImageSha256": "497fdcad92dd51da6a8f88aca24cfead2d14bb2bb57161b64d83da6d21319e3d",
+      "newFaceBounds": {
+        "x": 484,
+        "y": 568,
+        "width": 72,
+        "height": 66
+      },
+      "oldFaceBounds": {
+        "x": 488,
+        "y": 573,
+        "width": 76,
+        "height": 79
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 354,
+        "y": 545,
+        "width": 322,
+        "height": 506
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "ce9c2310098bb84f0d3d600b2d415d062b050ba94922a4ad5d80c09d8a2e1f32",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c02-cb385fcd2e--initial",
+      "name": "전령 태수",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-03-spaced.png",
+      "sourceImageSha256": "497fdcad92dd51da6a8f88aca24cfead2d14bb2bb57161b64d83da6d21319e3d",
+      "newFaceBounds": {
+        "x": 831,
+        "y": 586,
+        "width": 72,
+        "height": 52
+      },
+      "oldFaceBounds": {
+        "x": 831,
+        "y": 577,
+        "width": 74,
+        "height": 81
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 695,
+        "y": 540,
+        "width": 298,
+        "height": 512
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "ecfebfa8101073129710a3a88327e1f28633a0280216e5ed3719a4e7a1a8b6ab",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c02-55738cfbf1--initial",
+      "name": "기록관 연진",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-03-spaced.png",
+      "sourceImageSha256": "497fdcad92dd51da6a8f88aca24cfead2d14bb2bb57161b64d83da6d21319e3d",
+      "newFaceBounds": {
+        "x": 175,
+        "y": 1065,
+        "width": 73,
+        "height": 69
+      },
+      "oldFaceBounds": {
+        "x": 180,
+        "y": 1064,
+        "width": 72,
+        "height": 82
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 47,
+        "y": 1024,
+        "width": 302,
+        "height": 512
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "3214fbc52ff9545c5d1f3f4f170ae73422c6b03599c4e70cb4ffa5a1a7b1a1aa",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c03-c4d6a1921b--initial",
+      "name": "규림",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-03-spaced.png",
+      "sourceImageSha256": "497fdcad92dd51da6a8f88aca24cfead2d14bb2bb57161b64d83da6d21319e3d",
+      "newFaceBounds": {
+        "x": 498,
+        "y": 1087,
+        "width": 74,
+        "height": 62
+      },
+      "oldFaceBounds": {
+        "x": 498,
+        "y": 1085,
+        "width": 76,
+        "height": 78
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 3,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 399,
+        "y": 1042,
+        "width": 233,
+        "height": 494
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "333c3ead2515822da7cf2f0fc09642331bae8780d1ad7d1dc1c667c1b1efbbf7",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c03-df0b7cedbc--initial",
+      "name": "기록관 가현",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-03-spaced.png",
+      "sourceImageSha256": "497fdcad92dd51da6a8f88aca24cfead2d14bb2bb57161b64d83da6d21319e3d",
+      "newFaceBounds": {
+        "x": 832,
+        "y": 1076,
+        "width": 70,
+        "height": 64
+      },
+      "oldFaceBounds": {
+        "x": 835,
+        "y": 1080,
+        "width": 76,
+        "height": 77
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 707,
+        "y": 1038,
+        "width": 270,
+        "height": 498
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "a35b390206a7f793b541fbc09c188ed2bed040085ef6c763cce33f031d24849d",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c04-af5657ebbb--initial",
+      "name": "설모",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-04-spaced.png",
+      "sourceImageSha256": "2ebe270f9f299ddb2ec4eb52c99a36c5db830934401e02124d9ed270b30d4c07",
+      "newFaceBounds": {
+        "x": 168,
+        "y": 54,
+        "width": 93,
+        "height": 86
+      },
+      "oldFaceBounds": {
+        "x": 174,
+        "y": 55,
+        "width": 91,
+        "height": 94
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 48,
+        "y": 12,
+        "width": 285,
+        "height": 521
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "0516fb4c012c067b817df4143649353b146f85858554575e47f247d2d43f80ee",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c04-2b4a55cdca--initial",
+      "name": "은호",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-04-spaced.png",
+      "sourceImageSha256": "2ebe270f9f299ddb2ec4eb52c99a36c5db830934401e02124d9ed270b30d4c07",
+      "newFaceBounds": {
+        "x": 495,
+        "y": 60,
+        "width": 86,
+        "height": 75
+      },
+      "oldFaceBounds": {
+        "x": 495,
+        "y": 55,
+        "width": 86,
+        "height": 95
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 379,
+        "y": 2,
+        "width": 272,
+        "height": 531
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "9d9f8d2d4558dcde075b44f9be12c440e008b6ceb67dd2d473ed46323d4de9a4",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c04-9342a878fe--initial",
+      "name": "우진",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-04-spaced.png",
+      "sourceImageSha256": "2ebe270f9f299ddb2ec4eb52c99a36c5db830934401e02124d9ed270b30d4c07",
+      "newFaceBounds": {
+        "x": 821,
+        "y": 63,
+        "width": 81,
+        "height": 68
+      },
+      "oldFaceBounds": {
+        "x": 812,
+        "y": 53,
+        "width": 91,
+        "height": 103
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 703,
+        "y": 5,
+        "width": 290,
+        "height": 528
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "6a414c0e794e47bf3b3c821ad48b32e5d3dd175343acc04157c7fba977ad50ed",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c04-d13cec79f6--initial",
+      "name": "소리",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-04-spaced.png",
+      "sourceImageSha256": "2ebe270f9f299ddb2ec4eb52c99a36c5db830934401e02124d9ed270b30d4c07",
+      "newFaceBounds": {
+        "x": 154,
+        "y": 572,
+        "width": 90,
+        "height": 90
+      },
+      "oldFaceBounds": {
+        "x": 163,
+        "y": 580,
+        "width": 85,
+        "height": 93
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 51,
+        "y": 542,
+        "width": 274,
+        "height": 493
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "9e5e35589f93589a35646856352227f4ee0559205b7d36bb31a95c6391cd4702",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c05-5d55907078--initial",
+      "name": "온달수",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-04-spaced.png",
+      "sourceImageSha256": "2ebe270f9f299ddb2ec4eb52c99a36c5db830934401e02124d9ed270b30d4c07",
+      "newFaceBounds": {
+        "x": 489,
+        "y": 591,
+        "width": 91,
+        "height": 75
+      },
+      "oldFaceBounds": {
+        "x": 484,
+        "y": 589,
+        "width": 91,
+        "height": 88
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 369,
+        "y": 540,
+        "width": 306,
+        "height": 495
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "42f97db12a8e274c79d42974ac964294c486dcf7ff96eb86b70c144357b652ee",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c05-af3a370523--initial",
+      "name": "민서",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-04-spaced.png",
+      "sourceImageSha256": "2ebe270f9f299ddb2ec4eb52c99a36c5db830934401e02124d9ed270b30d4c07",
+      "newFaceBounds": {
+        "x": 819,
+        "y": 585,
+        "width": 83,
+        "height": 81
+      },
+      "oldFaceBounds": {
+        "x": 816,
+        "y": 582,
+        "width": 86,
+        "height": 93
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 704,
+        "y": 540,
+        "width": 285,
+        "height": 496
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "c6d041591d073ecdce51d453976f50fe88ef38bec2bff5a4723cf14ab7688b6c",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c05-6154d33563--initial",
+      "name": "길원",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-04-spaced.png",
+      "sourceImageSha256": "2ebe270f9f299ddb2ec4eb52c99a36c5db830934401e02124d9ed270b30d4c07",
+      "newFaceBounds": {
+        "x": 158,
+        "y": 1088,
+        "width": 94,
+        "height": 75
+      },
+      "oldFaceBounds": {
+        "x": 162,
+        "y": 1084,
+        "width": 97,
+        "height": 97
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 3,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 30,
+        "y": 1035,
+        "width": 318,
+        "height": 494
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "427b42430caf8f595bb381f19df184331684535d8866fd9065882abe0d7b7998",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c05-e5f0e82b54--initial",
+      "name": "진하",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-04-spaced.png",
+      "sourceImageSha256": "2ebe270f9f299ddb2ec4eb52c99a36c5db830934401e02124d9ed270b30d4c07",
+      "newFaceBounds": {
+        "x": 495,
+        "y": 1091,
+        "width": 88,
+        "height": 74
+      },
+      "oldFaceBounds": {
+        "x": 496,
+        "y": 1100,
+        "width": 84,
+        "height": 93
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 373,
+        "y": 1039,
+        "width": 291,
+        "height": 490
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "cb3c2fb59442d838c96bd5d54ce409f588930bcce386739dcf3b67b7322fa9d3",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c05-3c6833fdb6--initial",
+      "name": "지오",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-04-spaced.png",
+      "sourceImageSha256": "2ebe270f9f299ddb2ec4eb52c99a36c5db830934401e02124d9ed270b30d4c07",
+      "newFaceBounds": {
+        "x": 827,
+        "y": 1094,
+        "width": 83,
+        "height": 73
+      },
+      "oldFaceBounds": {
+        "x": 815,
+        "y": 1090,
+        "width": 93,
+        "height": 92
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 700,
+        "y": 1040,
+        "width": 294,
+        "height": 489
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "8e6ad7e7430e9994cb1e55a23c3c5bbe47c2e689003f4f71531d13c7f511c36a",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c05-f39ddef04b--initial",
+      "name": "초연",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-05.png",
+      "sourceImageSha256": "16bc8143d3239f82eb368d250eff9b7be8b3c3142d4c56556b6736e903d12dc2",
+      "newFaceBounds": {
+        "x": 171,
+        "y": 45,
+        "width": 72,
+        "height": 68
+      },
+      "oldFaceBounds": {
+        "x": 166,
+        "y": 42,
+        "width": 73,
+        "height": 79
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 72,
+        "y": 4,
+        "width": 255,
+        "height": 533
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "1d856e85594ad9713d6b682221509a712bae6820eec8b4a6e39a72031b80cfd3",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c06-06c13888f0--initial",
+      "name": "솔아",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-05.png",
+      "sourceImageSha256": "16bc8143d3239f82eb368d250eff9b7be8b3c3142d4c56556b6736e903d12dc2",
+      "newFaceBounds": {
+        "x": 483,
+        "y": 41,
+        "width": 78,
+        "height": 70
+      },
+      "oldFaceBounds": {
+        "x": 481,
+        "y": 43,
+        "width": 80,
+        "height": 80
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 399,
+        "y": 15,
+        "width": 240,
+        "height": 517
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "dc52ee10d4e8dc5964e89488ae18d325c0f76e21785017e3839e1b812f6b01af",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c06-a57fc4150e--initial",
+      "name": "유솔",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-05.png",
+      "sourceImageSha256": "16bc8143d3239f82eb368d250eff9b7be8b3c3142d4c56556b6736e903d12dc2",
+      "newFaceBounds": {
+        "x": 793,
+        "y": 54,
+        "width": 71,
+        "height": 57
+      },
+      "oldFaceBounds": {
+        "x": 787,
+        "y": 51,
+        "width": 83,
+        "height": 82
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 705,
+        "y": 6,
+        "width": 236,
+        "height": 530
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "750694bbcc1d494d3430a19e1acad099bec83cdc90de30cddb8e6b586eea8f3a",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c07-e5bc0b19d9--initial",
+      "name": "다솔",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-05.png",
+      "sourceImageSha256": "16bc8143d3239f82eb368d250eff9b7be8b3c3142d4c56556b6736e903d12dc2",
+      "newFaceBounds": {
+        "x": 168,
+        "y": 550,
+        "width": 71,
+        "height": 67
+      },
+      "oldFaceBounds": {
+        "x": 161,
+        "y": 556,
+        "width": 78,
+        "height": 78
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 78,
+        "y": 522,
+        "width": 244,
+        "height": 507
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "6b1245b9343ee86d565001c7f3085f82ab2c6178f104158dd989bb54557d0e75",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c08-654ff58ca5--initial",
+      "name": "한결",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-05.png",
+      "sourceImageSha256": "16bc8143d3239f82eb368d250eff9b7be8b3c3142d4c56556b6736e903d12dc2",
+      "newFaceBounds": {
+        "x": 493,
+        "y": 566,
+        "width": 70,
+        "height": 54
+      },
+      "oldFaceBounds": {
+        "x": 486,
+        "y": 556,
+        "width": 83,
+        "height": 85
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 398,
+        "y": 523,
+        "width": 240,
+        "height": 508
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "360c1f8ea17002a92944c7363be1eea7ca3ec527bcfc82d483d6926c6e08f027",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c09-a249e6df49--initial",
+      "name": "도연",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-05.png",
+      "sourceImageSha256": "16bc8143d3239f82eb368d250eff9b7be8b3c3142d4c56556b6736e903d12dc2",
+      "newFaceBounds": {
+        "x": 805,
+        "y": 561,
+        "width": 74,
+        "height": 62
+      },
+      "oldFaceBounds": {
+        "x": 801,
+        "y": 561,
+        "width": 83,
+        "height": 83
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 3,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 708,
+        "y": 521,
+        "width": 248,
+        "height": 509
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "b0167e5b8f163b651e24fcf3858a5b5e35e8a02df6f29185adcedc79fae1e72e",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c09-030d6d22c0--initial",
+      "name": "다은",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-05.png",
+      "sourceImageSha256": "16bc8143d3239f82eb368d250eff9b7be8b3c3142d4c56556b6736e903d12dc2",
+      "newFaceBounds": {
+        "x": 164,
+        "y": 1047,
+        "width": 79,
+        "height": 71
+      },
+      "oldFaceBounds": {
+        "x": 163,
+        "y": 1049,
+        "width": 84,
+        "height": 92
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 77,
+        "y": 1018,
+        "width": 230,
+        "height": 512
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "c6728a6331e6ca3db1bbb6fc5e34122d66ada92eb7c00809c0ccbbfcf9f13d89",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c09-10ee4060ed--initial",
+      "name": "설",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-05.png",
+      "sourceImageSha256": "16bc8143d3239f82eb368d250eff9b7be8b3c3142d4c56556b6736e903d12dc2",
+      "newFaceBounds": {
+        "x": 482,
+        "y": 1041,
+        "width": 77,
+        "height": 76
+      },
+      "oldFaceBounds": {
+        "x": 484,
+        "y": 1044,
+        "width": 83,
+        "height": 92
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 394,
+        "y": 1018,
+        "width": 250,
+        "height": 512
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "79d3cad42424ef6e5386553e6ab0e769bf487c5d46552da9cc8791d16cab01f2",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c10-0eeeeba617--initial",
+      "name": "미솔",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-05.png",
+      "sourceImageSha256": "16bc8143d3239f82eb368d250eff9b7be8b3c3142d4c56556b6736e903d12dc2",
+      "newFaceBounds": {
+        "x": 811,
+        "y": 1054,
+        "width": 74,
+        "height": 66
+      },
+      "oldFaceBounds": {
+        "x": 810,
+        "y": 1056,
+        "width": 83,
+        "height": 83
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 726,
+        "y": 1013,
+        "width": 230,
+        "height": 518
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "96af0650c4f21c6e80da0f57fa6f33a30718831111b543dea80a10f269a1723e",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c16-7e8edf17f5--initial",
+      "name": "온유",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-07.png",
+      "sourceImageSha256": "bffdce0fd79996b099a760feb53b3df63234ddc23f2e4972d759b579ec0cffd4",
+      "newFaceBounds": {
+        "x": 157,
+        "y": 47,
+        "width": 88,
+        "height": 85
+      },
+      "oldFaceBounds": {
+        "x": 163,
+        "y": 43,
+        "width": 88,
+        "height": 99
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 41,
+        "y": 16,
+        "width": 265,
+        "height": 556
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "56cd2e23def4a243c16ff9123f8ac5dee232b026bccef336ecc0dab1d7cef5b5",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c16-f15519bc0e--initial",
+      "name": "도겸",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-07.png",
+      "sourceImageSha256": "bffdce0fd79996b099a760feb53b3df63234ddc23f2e4972d759b579ec0cffd4",
+      "newFaceBounds": {
+        "x": 468,
+        "y": 39,
+        "width": 88,
+        "height": 88
+      },
+      "oldFaceBounds": {
+        "x": 466,
+        "y": 38,
+        "width": 94,
+        "height": 107
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 3,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 354,
+        "y": 4,
+        "width": 292,
+        "height": 569
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "1fefbd9c7a06212f4286e99665dee467be9fb26322b365fbe07045f7b53e399b",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c16-3234e73f8f--initial",
+      "name": "소담",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-07.png",
+      "sourceImageSha256": "bffdce0fd79996b099a760feb53b3df63234ddc23f2e4972d759b579ec0cffd4",
+      "newFaceBounds": {
+        "x": 822,
+        "y": 49,
+        "width": 86,
+        "height": 83
+      },
+      "oldFaceBounds": {
+        "x": 813,
+        "y": 43,
+        "width": 103,
+        "height": 107
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 730,
+        "y": 19,
+        "width": 263,
+        "height": 554
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "c84a342b866c6dd6a460a1bd22b83b526c3f5ac33c287c6c54eb2f7616b982a9",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c17-81195904d9--initial",
+      "name": "가온",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-07.png",
+      "sourceImageSha256": "bffdce0fd79996b099a760feb53b3df63234ddc23f2e4972d759b579ec0cffd4",
+      "newFaceBounds": {
+        "x": 164,
+        "y": 616,
+        "width": 92,
+        "height": 84
+      },
+      "oldFaceBounds": {
+        "x": 167,
+        "y": 604,
+        "width": 91,
+        "height": 110
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 3,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 32,
+        "y": 568,
+        "width": 296,
+        "height": 541
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "ff34c2a10dfa8338a3695c090a8f9aae8bd80a98f7ceef0411615e61cb8e303d",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c21-981196efe9--middle-aged",
+      "name": "다온",
+      "ageVariant": "middle-aged",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-07.png",
+      "sourceImageSha256": "bffdce0fd79996b099a760feb53b3df63234ddc23f2e4972d759b579ec0cffd4",
+      "newFaceBounds": {
+        "x": 496,
+        "y": 610,
+        "width": 92,
+        "height": 80
+      },
+      "oldFaceBounds": {
+        "x": 493,
+        "y": 606,
+        "width": 96,
+        "height": 107
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 3,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 364,
+        "y": 569,
+        "width": 308,
+        "height": 569
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "e9e131fad9d7c300b3c3858469be12742e64768b4b66130835485340f788b5f7",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c21-8cd85480b5--elderly",
+      "name": "다솜",
+      "ageVariant": "elderly",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-07.png",
+      "sourceImageSha256": "bffdce0fd79996b099a760feb53b3df63234ddc23f2e4972d759b579ec0cffd4",
+      "newFaceBounds": {
+        "x": 831,
+        "y": 599,
+        "width": 92,
+        "height": 96
+      },
+      "oldFaceBounds": {
+        "x": 828,
+        "y": 596,
+        "width": 98,
+        "height": 118
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 720,
+        "y": 576,
+        "width": 283,
+        "height": 563
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "0d233dcc748fb8fc29193dcfe4c3fcef927c8c54d1604257cb1b1d6fc045921c",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c23-5c3916ce0b--initial",
+      "name": "도하",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-07.png",
+      "sourceImageSha256": "bffdce0fd79996b099a760feb53b3df63234ddc23f2e4972d759b579ec0cffd4",
+      "newFaceBounds": {
+        "x": 165,
+        "y": 1156,
+        "width": 89,
+        "height": 73
+      },
+      "oldFaceBounds": {
+        "x": 165,
+        "y": 1147,
+        "width": 92,
+        "height": 95
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 3,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 38,
+        "y": 1108,
+        "width": 306,
+        "height": 428
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "f2f04eb55a5443499cffce30223879147af4731157f9a0b224b51af76861ea1a",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c01-de48dcbf5b--initial",
+      "name": "모진",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-01.png",
+      "sourceImageSha256": "e8a074bb36b83fa87d07039ca1e3838aece08ae77a5dafee02fa92a5ed079426",
+      "newFaceBounds": {
+        "x": 183,
+        "y": 48,
+        "width": 70,
+        "height": 55
+      },
+      "oldFaceBounds": {
+        "x": 187,
+        "y": 43,
+        "width": 67,
+        "height": 73
+      },
+      "auditSource": "docs/three-content/recurring01-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 94,
+        "y": 2,
+        "width": 251,
+        "height": 572
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "aae9264125c67625d637908155d52fe8c4cef8aae1adb776155de24cc3876c49",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c02-dc712ed4d6--initial",
+      "name": "도림",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-01.png",
+      "sourceImageSha256": "e8a074bb36b83fa87d07039ca1e3838aece08ae77a5dafee02fa92a5ed079426",
+      "newFaceBounds": {
+        "x": 466,
+        "y": 41,
+        "width": 66,
+        "height": 60
+      },
+      "oldFaceBounds": {
+        "x": 466,
+        "y": 44,
+        "width": 76,
+        "height": 74
+      },
+      "auditSource": "docs/three-content/recurring01-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 380,
+        "y": 4,
+        "width": 258,
+        "height": 570
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "e90488bb6e013a8689796697b97f5365ec3f693ca1aede68bad51b460209d18a",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c02-f88710b136--initial",
+      "name": "소운",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-01.png",
+      "sourceImageSha256": "e8a074bb36b83fa87d07039ca1e3838aece08ae77a5dafee02fa92a5ed079426",
+      "newFaceBounds": {
+        "x": 784,
+        "y": 39,
+        "width": 68,
+        "height": 63
+      },
+      "oldFaceBounds": {
+        "x": 789,
+        "y": 41,
+        "width": 74,
+        "height": 75
+      },
+      "auditSource": "docs/three-content/recurring01-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 705,
+        "y": 3,
+        "width": 238,
+        "height": 572
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "b214c5d967aabef695e30c0e3df0c94ff9cb12b0393bd77f754df33e236b7a07",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c04-030d6d22c0--initial",
+      "name": "다은",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-01.png",
+      "sourceImageSha256": "e8a074bb36b83fa87d07039ca1e3838aece08ae77a5dafee02fa92a5ed079426",
+      "newFaceBounds": {
+        "x": 169,
+        "y": 595,
+        "width": 71,
+        "height": 63
+      },
+      "oldFaceBounds": {
+        "x": 171,
+        "y": 606,
+        "width": 74,
+        "height": 78
+      },
+      "auditSource": "docs/three-content/recurring01-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 75,
+        "y": 568,
+        "width": 264,
+        "height": 534
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "e523b5bedd8c4f6b148b6c80094b059c5d40b6f1c62ed8908bfed4b13f4ea5d3",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c05-f0f456bbbe--initial",
+      "name": "윤서",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-01.png",
+      "sourceImageSha256": "e8a074bb36b83fa87d07039ca1e3838aece08ae77a5dafee02fa92a5ed079426",
+      "newFaceBounds": {
+        "x": 470,
+        "y": 606,
+        "width": 71,
+        "height": 54
+      },
+      "oldFaceBounds": {
+        "x": 478,
+        "y": 607,
+        "width": 73,
+        "height": 79
+      },
+      "auditSource": "docs/three-content/recurring01-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 391,
+        "y": 563,
+        "width": 258,
+        "height": 547
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "43f6ceff6df725117448df09d74f93651771e5f0feda9f8afdca6309c9973786",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c05-0b1fbc16b0--initial",
+      "name": "태문",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-01.png",
+      "sourceImageSha256": "e8a074bb36b83fa87d07039ca1e3838aece08ae77a5dafee02fa92a5ed079426",
+      "newFaceBounds": {
+        "x": 777,
+        "y": 599,
+        "width": 69,
+        "height": 65
+      },
+      "oldFaceBounds": {
+        "x": 782,
+        "y": 607,
+        "width": 73,
+        "height": 80
+      },
+      "auditSource": "docs/three-content/recurring01-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 3,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 699,
+        "y": 562,
+        "width": 252,
+        "height": 549
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "dea7c771078f4a636e8dd4104f19563d2f0045e85770aa3fd2a6f91d99872bdf",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c07-cf158c9e21--initial",
+      "name": "해인",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-01.png",
+      "sourceImageSha256": "e8a074bb36b83fa87d07039ca1e3838aece08ae77a5dafee02fa92a5ed079426",
+      "newFaceBounds": {
+        "x": 183,
+        "y": 1118,
+        "width": 68,
+        "height": 64
+      },
+      "oldFaceBounds": {
+        "x": 183,
+        "y": 1119,
+        "width": 72,
+        "height": 79
+      },
+      "auditSource": "docs/three-content/recurring01-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 92,
+        "y": 1085,
+        "width": 249,
+        "height": 449
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "5191c5a14382f85c58a369a6130c04a7ef249dc21959712694741c06eefa3bb8",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c08-dadbb6670e--initial",
+      "name": "여울",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-02.png",
+      "sourceImageSha256": "3f6ce19a1ce02017ad47dc329fcadb5bda293a9e3e56570d8333e86be2803169",
+      "newFaceBounds": {
+        "x": 468,
+        "y": 48,
+        "width": 77,
+        "height": 72
+      },
+      "oldFaceBounds": {
+        "x": 466,
+        "y": 49,
+        "width": 79,
+        "height": 83
+      },
+      "auditSource": "docs/three-content/recurring-face-skin-review-b.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 388,
+        "y": 18,
+        "width": 277,
+        "height": 584
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "3e2e75585c519cfb700f98fda893f9e93260fb8725749da089cb5606b5603b4c",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c08-dadbb6670e--later",
+      "name": "여울",
+      "ageVariant": "later",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-02.png",
+      "sourceImageSha256": "3f6ce19a1ce02017ad47dc329fcadb5bda293a9e3e56570d8333e86be2803169",
+      "newFaceBounds": {
+        "x": 789,
+        "y": 46,
+        "width": 74,
+        "height": 74
+      },
+      "oldFaceBounds": {
+        "x": 786,
+        "y": 47,
+        "width": 80,
+        "height": 88
+      },
+      "auditSource": "docs/three-content/recurring-face-skin-review-b.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 708,
+        "y": 17,
+        "width": 265,
+        "height": 585
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "2f987f8ed3fe1d550dad01627a44a869337cf826bf4724820548eb34a10a334d",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c14-a432ade2f8--initial",
+      "name": "아라",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-02.png",
+      "sourceImageSha256": "3f6ce19a1ce02017ad47dc329fcadb5bda293a9e3e56570d8333e86be2803169",
+      "newFaceBounds": {
+        "x": 152,
+        "y": 628,
+        "width": 78,
+        "height": 74
+      },
+      "oldFaceBounds": {
+        "x": 156,
+        "y": 628,
+        "width": 83,
+        "height": 88
+      },
+      "auditSource": "docs/three-content/recurring-face-skin-review-b.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 60,
+        "y": 599,
+        "width": 275,
+        "height": 579
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "025836013499e0c9d916cc3f488fd4b3a69e2b288000090d227d8e0b711b842b",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c14-0dd939f957--initial",
+      "name": "해들",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-02.png",
+      "sourceImageSha256": "3f6ce19a1ce02017ad47dc329fcadb5bda293a9e3e56570d8333e86be2803169",
+      "newFaceBounds": {
+        "x": 472,
+        "y": 646,
+        "width": 82,
+        "height": 62
+      },
+      "oldFaceBounds": {
+        "x": 474,
+        "y": 638,
+        "width": 86,
+        "height": 90
+      },
+      "auditSource": "docs/three-content/recurring-face-skin-review-b.json",
+      "manualBoundaryUncertaintyPx": 3,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 387,
+        "y": 592,
+        "width": 266,
+        "height": 605
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "b0ebb5c47b40786b4228504865fb89490b68d7b56bcfd11570a23561db3dac18",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c17-96b6ef53a4--initial",
+      "name": "보라",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-02.png",
+      "sourceImageSha256": "3f6ce19a1ce02017ad47dc329fcadb5bda293a9e3e56570d8333e86be2803169",
+      "newFaceBounds": {
+        "x": 787,
+        "y": 639,
+        "width": 75,
+        "height": 73
+      },
+      "oldFaceBounds": {
+        "x": 784,
+        "y": 641,
+        "width": 85,
+        "height": 86
+      },
+      "auditSource": "docs/three-content/recurring-face-skin-review-b.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 704,
+        "y": 594,
+        "width": 275,
+        "height": 603
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "99d6a1b43d00cd9f7f49b601a7ba277252202e0c8113848a6037d52fa94083f7",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c17-439b052a1f--initial",
+      "name": "해명",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-05.png",
+      "sourceImageSha256": "4d0f06e84084bcd7784a7db84d7f47c9fd6fdcec39154ce59193aef01517ce49",
+      "newFaceBounds": {
+        "x": 270,
+        "y": 63,
+        "width": 86,
+        "height": 81
+      },
+      "oldFaceBounds": {
+        "x": 269,
+        "y": 67,
+        "width": 89,
+        "height": 91
+      },
+      "auditSource": "docs/three-content/recurring-face-skin-review-b.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 135,
+        "y": 28,
+        "width": 378,
+        "height": 791
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "a3911e629a437611e87ded8d9df3b0a92f862ed639997093ca0ed52ecf689cc1",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c20-4d6a648490--later",
+      "name": "해루",
+      "ageVariant": "later",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-05.png",
+      "sourceImageSha256": "4d0f06e84084bcd7784a7db84d7f47c9fd6fdcec39154ce59193aef01517ce49",
+      "newFaceBounds": {
+        "x": 694,
+        "y": 60,
+        "width": 85,
+        "height": 83
+      },
+      "oldFaceBounds": {
+        "x": 695,
+        "y": 58,
+        "width": 92,
+        "height": 100
+      },
+      "auditSource": "docs/three-content/recurring-face-skin-review-b.json",
+      "manualBoundaryUncertaintyPx": 3,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 546,
+        "y": 17,
+        "width": 371,
+        "height": 806
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "f216187521ad380a71870d808c994049675d332ecbc2eefb4d284ce411f33b42",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c23-3943a3c0de--initial",
+      "name": "시온",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-05.png",
+      "sourceImageSha256": "4d0f06e84084bcd7784a7db84d7f47c9fd6fdcec39154ce59193aef01517ce49",
+      "newFaceBounds": {
+        "x": 287,
+        "y": 845,
+        "width": 93,
+        "height": 92
+      },
+      "oldFaceBounds": {
+        "x": 294,
+        "y": 850,
+        "width": 91,
+        "height": 99
+      },
+      "auditSource": "docs/three-content/recurring-face-skin-review-b.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 174,
+        "y": 812,
+        "width": 330,
+        "height": 724
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "bdbafa91def0cd3ea58d93aa03b23b60a67453cae599e6565921a16562955515",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c23-3943a3c0de--later",
+      "name": "시온",
+      "ageVariant": "later",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-05.png",
+      "sourceImageSha256": "4d0f06e84084bcd7784a7db84d7f47c9fd6fdcec39154ce59193aef01517ce49",
+      "newFaceBounds": {
+        "x": 691,
+        "y": 847,
+        "width": 92,
+        "height": 90
+      },
+      "oldFaceBounds": {
+        "x": 696,
+        "y": 847,
+        "width": 96,
+        "height": 104
+      },
+      "auditSource": "docs/three-content/recurring-face-skin-review-b.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 564,
+        "y": 809,
+        "width": 327,
+        "height": 727
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "dbf7476a5474b8b8b96f5c7b0a53543039b2b56e1af1f4b93c474a68f2378912",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c07-cf158c9e21--later",
+      "name": "해인",
+      "ageVariant": "later",
+      "src": "assets/ancient/three-complete/characters/haein-later-fullbody-v1.png",
+      "sourceImageSha256": "9f2d7ab37073683de671dd95f3ff412bf8d4cd16c93b163413a4edae3e475131",
+      "newFaceBounds": {
+        "x": 354,
+        "y": 70,
+        "width": 147,
+        "height": 134
+      },
+      "oldFaceBounds": {
+        "x": 354,
+        "y": 73,
+        "width": 150,
+        "height": 138
+      },
+      "auditSource": "docs/three-content/standalone-face-skin-review.json",
+      "manualBoundaryUncertaintyPx": null,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 142,
+        "y": 6,
+        "width": 803,
+        "height": 1520
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "d038c0181a48edd00f74bd65c858ea5edf835137a56ace1524dddfc621e683c6",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c10-7b3c1b6146--initial",
+      "name": "다함",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-06.png",
+      "sourceImageSha256": "50d889e5cef9004e8632c83fea1471e170ec3ff7dea526df80f3725b1486e774",
+      "newFaceBounds": {
+        "x": 187,
+        "y": 66,
+        "width": 94,
+        "height": 78
+      },
+      "oldFaceBounds": {
+        "x": 182,
+        "y": 65,
+        "width": 98,
+        "height": 96
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 3,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 62,
+        "y": 8,
+        "width": 290,
+        "height": 510
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "1cb78d5dc6465b4a1ff7f49bd635e6a1af2ee1f2775006556f43afbddda9dda0",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c11-6c2b4824cf--initial",
+      "name": "보리",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-06.png",
+      "sourceImageSha256": "50d889e5cef9004e8632c83fea1471e170ec3ff7dea526df80f3725b1486e774",
+      "newFaceBounds": {
+        "x": 795,
+        "y": 74,
+        "width": 90,
+        "height": 82
+      },
+      "oldFaceBounds": {
+        "x": 796,
+        "y": 74,
+        "width": 92,
+        "height": 96
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 3,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 695,
+        "y": 34,
+        "width": 266,
+        "height": 486
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "e923b615f804bdff119c6202c7f2471d23c97f78bd007ffb76250918bb227ca8",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c11-a432ade2f8--initial",
+      "name": "아라",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-06.png",
+      "sourceImageSha256": "50d889e5cef9004e8632c83fea1471e170ec3ff7dea526df80f3725b1486e774",
+      "newFaceBounds": {
+        "x": 172,
+        "y": 556,
+        "width": 89,
+        "height": 87
+      },
+      "oldFaceBounds": {
+        "x": 176,
+        "y": 552,
+        "width": 85,
+        "height": 96
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 55,
+        "y": 520,
+        "width": 297,
+        "height": 501
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "e430eab65ca0952cec9845f10db681d5fb8aea738f4e4947afef3887463c8d43",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c14-af5024ce09--initial",
+      "name": "나루",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-06.png",
+      "sourceImageSha256": "50d889e5cef9004e8632c83fea1471e170ec3ff7dea526df80f3725b1486e774",
+      "newFaceBounds": {
+        "x": 803,
+        "y": 572,
+        "width": 91,
+        "height": 78
+      },
+      "oldFaceBounds": {
+        "x": 806,
+        "y": 567,
+        "width": 88,
+        "height": 96
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 3,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 682,
+        "y": 520,
+        "width": 296,
+        "height": 506
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "65f77ad2ec5a6e40630817624307f9333c57142e4ca4fdce66091c196bc20259",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c15-a432ade2f8--initial",
+      "name": "아라",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-06.png",
+      "sourceImageSha256": "50d889e5cef9004e8632c83fea1471e170ec3ff7dea526df80f3725b1486e774",
+      "newFaceBounds": {
+        "x": 173,
+        "y": 1065,
+        "width": 94,
+        "height": 86
+      },
+      "oldFaceBounds": {
+        "x": 172,
+        "y": 1065,
+        "width": 87,
+        "height": 96
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 51,
+        "y": 1020,
+        "width": 306,
+        "height": 512
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "5c68817c9f14f606748be1afe03f54bc456574c3234dedacb16fb607f10a2448",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c15-dadbb6670e--initial",
+      "name": "여울",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-06.png",
+      "sourceImageSha256": "50d889e5cef9004e8632c83fea1471e170ec3ff7dea526df80f3725b1486e774",
+      "newFaceBounds": {
+        "x": 493,
+        "y": 1059,
+        "width": 95,
+        "height": 91
+      },
+      "oldFaceBounds": {
+        "x": 498,
+        "y": 1063,
+        "width": 91,
+        "height": 98
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 393,
+        "y": 1028,
+        "width": 279,
+        "height": 505
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "4c0a990e6b27c37f119ef81e73e9b92e02bd3d9b142316aba00bafce79aa50d9",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c16-c0f5430502--initial",
+      "name": "수인",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-06.png",
+      "sourceImageSha256": "50d889e5cef9004e8632c83fea1471e170ec3ff7dea526df80f3725b1486e774",
+      "newFaceBounds": {
+        "x": 811,
+        "y": 1076,
+        "width": 90,
+        "height": 86
+      },
+      "oldFaceBounds": {
+        "x": 813,
+        "y": 1068,
+        "width": 87,
+        "height": 99
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 3,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 712,
+        "y": 1023,
+        "width": 268,
+        "height": 510
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "b065753e5d3abd0b565d0f5f07781a6f76047e280cd3dee2c82862ca0bc8056a",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c10-55716739a3--initial",
+      "name": "가람",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-garam-haram-v1.png",
+      "sourceImageSha256": "6c8b4ff0fad6b16a43176884ab9400fb38b5511b1076e00ff4eeb031531ae5a5",
+      "newFaceBounds": {
+        "x": 260,
+        "y": 130,
+        "width": 176,
+        "height": 167
+      },
+      "oldFaceBounds": {
+        "x": 291,
+        "y": 134,
+        "width": 148,
+        "height": 168
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 43,
+        "y": 23,
+        "width": 575,
+        "height": 1219
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "3034f30a5f2c5be228e761465ca7c84b984a4bcf993c597af8f17973056e9f49",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c12-2d4773df99--initial",
+      "name": "하람",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-garam-haram-v1.png",
+      "sourceImageSha256": "6c8b4ff0fad6b16a43176884ab9400fb38b5511b1076e00ff4eeb031531ae5a5",
+      "newFaceBounds": {
+        "x": 842,
+        "y": 162,
+        "width": 182,
+        "height": 140
+      },
+      "oldFaceBounds": {
+        "x": 891,
+        "y": 153,
+        "width": 150,
+        "height": 166
+      },
+      "auditSource": "docs/three-content/principal-face-anchor-audit.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 628,
+        "y": 48,
+        "width": 598,
+        "height": 1194
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "5bb09480bccf4aa461bc4c1d06f1d68d95756cf5345fae2ff7b9710ab49a8412",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c18-3b7989e4fe--initial",
+      "name": "나래",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-03-spaced.png",
+      "sourceImageSha256": "1a1ffb525c5eef2cd1b9c1581b0b8c9567420e9c179daca98fef9937324f1677",
+      "newFaceBounds": {
+        "x": 210,
+        "y": 63,
+        "width": 86,
+        "height": 82
+      },
+      "oldFaceBounds": {
+        "x": 220,
+        "y": 64,
+        "width": 70,
+        "height": 76
+      },
+      "auditSource": "docs/three-content/recurring-face-skin-review-b.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 129,
+        "y": 31,
+        "width": 231,
+        "height": 593
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "beaab0cdc06997839211135b259dff137aacefb6b0cf8f913c150a631f2561e3",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c18-3b7989e4fe--later",
+      "name": "나래",
+      "ageVariant": "later",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-03-spaced.png",
+      "sourceImageSha256": "1a1ffb525c5eef2cd1b9c1581b0b8c9567420e9c179daca98fef9937324f1677",
+      "newFaceBounds": {
+        "x": 597,
+        "y": 64,
+        "width": 88,
+        "height": 81
+      },
+      "oldFaceBounds": {
+        "x": 612,
+        "y": 64,
+        "width": 70,
+        "height": 76
+      },
+      "auditSource": "docs/three-content/recurring-face-skin-review-b.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 509,
+        "y": 32,
+        "width": 240,
+        "height": 592
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "3aca20a5090a2eae256a49c30e51982960223d9f1b2ca8db49e43b8aa75ec7dd",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c19-b25411c7fa--initial",
+      "name": "재인",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-03-spaced.png",
+      "sourceImageSha256": "1a1ffb525c5eef2cd1b9c1581b0b8c9567420e9c179daca98fef9937324f1677",
+      "newFaceBounds": {
+        "x": 979,
+        "y": 66,
+        "width": 85,
+        "height": 78
+      },
+      "oldFaceBounds": {
+        "x": 993,
+        "y": 58,
+        "width": 73,
+        "height": 86
+      },
+      "auditSource": "docs/three-content/recurring-face-skin-review-b.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 879,
+        "y": 25,
+        "width": 257,
+        "height": 599
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "f36892a00c8bed7fc9472e9ff00ee63e93b2ec3bf0bbc39d7068f91db0fb0fe5",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c19-b25411c7fa--later",
+      "name": "재인",
+      "ageVariant": "later",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-03-spaced.png",
+      "sourceImageSha256": "1a1ffb525c5eef2cd1b9c1581b0b8c9567420e9c179daca98fef9937324f1677",
+      "newFaceBounds": {
+        "x": 207,
+        "y": 678,
+        "width": 88,
+        "height": 80
+      },
+      "oldFaceBounds": {
+        "x": 214,
+        "y": 687,
+        "width": 74,
+        "height": 78
+      },
+      "auditSource": "docs/three-content/recurring-face-skin-review-b.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 98,
+        "y": 635,
+        "width": 271,
+        "height": 594
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "ad748ca3572eb31a79d931c61017b3047e455f630e15a451823c2826f0120587",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c19-c8f92f89ce--initial",
+      "name": "지우",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-03-spaced.png",
+      "sourceImageSha256": "1a1ffb525c5eef2cd1b9c1581b0b8c9567420e9c179daca98fef9937324f1677",
+      "newFaceBounds": {
+        "x": 590,
+        "y": 682,
+        "width": 92,
+        "height": 75
+      },
+      "oldFaceBounds": {
+        "x": 602,
+        "y": 691,
+        "width": 72,
+        "height": 77
+      },
+      "auditSource": "docs/three-content/recurring-face-skin-review-b.json",
+      "manualBoundaryUncertaintyPx": 3,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 513,
+        "y": 644,
+        "width": 237,
+        "height": 585
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "4c021db008bc633babfba8f57846b6f3904879a21432d0e09df2a6574c2ed618",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c20-4d6a648490--initial",
+      "name": "해루",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-03-spaced.png",
+      "sourceImageSha256": "1a1ffb525c5eef2cd1b9c1581b0b8c9567420e9c179daca98fef9937324f1677",
+      "newFaceBounds": {
+        "x": 994,
+        "y": 679,
+        "width": 86,
+        "height": 77
+      },
+      "oldFaceBounds": {
+        "x": 1007,
+        "y": 687,
+        "width": 72,
+        "height": 80
+      },
+      "auditSource": "docs/three-content/recurring-face-skin-review-b.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 889,
+        "y": 638,
+        "width": 263,
+        "height": 591
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "1ddaa0744ef4775ff8dc597923af064d2317d4c3e7025c63c04cf01256c118ef",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c20-5dd3802c4d--initial",
+      "name": "누리",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-04-spaced.png",
+      "sourceImageSha256": "837b8e23145eacb587daa9b5a3de2a64b18073eaa4e0d9b2d2f5b409c113e320",
+      "newFaceBounds": {
+        "x": 184,
+        "y": 49,
+        "width": 91,
+        "height": 84
+      },
+      "oldFaceBounds": {
+        "x": 201,
+        "y": 56,
+        "width": 76,
+        "height": 83
+      },
+      "auditSource": "docs/three-content/recurring-face-skin-review-root.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 92,
+        "y": 19,
+        "width": 255,
+        "height": 621
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "a3e8e0ffa490d03537338feb73dd20fb364d38c5858148eb542397fb54aacd2b",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c22-c9e48fc48e--initial",
+      "name": "은서",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-04-spaced.png",
+      "sourceImageSha256": "837b8e23145eacb587daa9b5a3de2a64b18073eaa4e0d9b2d2f5b409c113e320",
+      "newFaceBounds": {
+        "x": 590,
+        "y": 47,
+        "width": 90,
+        "height": 86
+      },
+      "oldFaceBounds": {
+        "x": 606,
+        "y": 50,
+        "width": 76,
+        "height": 90
+      },
+      "auditSource": "docs/three-content/recurring-face-skin-review-root.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 492,
+        "y": 18,
+        "width": 273,
+        "height": 622
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "fd2df3b9fd5d7167281de08f05e5faddff66b643678527a8ac949c5e944de254",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c22-c9e48fc48e--later",
+      "name": "은서",
+      "ageVariant": "later",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-04-spaced.png",
+      "sourceImageSha256": "837b8e23145eacb587daa9b5a3de2a64b18073eaa4e0d9b2d2f5b409c113e320",
+      "newFaceBounds": {
+        "x": 994,
+        "y": 48,
+        "width": 91,
+        "height": 86
+      },
+      "oldFaceBounds": {
+        "x": 1013,
+        "y": 50,
+        "width": 76,
+        "height": 90
+      },
+      "auditSource": "docs/three-content/recurring-face-skin-review-root.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 902,
+        "y": 18,
+        "width": 270,
+        "height": 622
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "b7839d24b9cf978c26f7727e7d741ced5892ee1e7fb597ad38407ffc6cf5400b",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c22-c56eca783f--initial",
+      "name": "은서의 딸",
+      "ageVariant": "initial",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-04-spaced.png",
+      "sourceImageSha256": "837b8e23145eacb587daa9b5a3de2a64b18073eaa4e0d9b2d2f5b409c113e320",
+      "newFaceBounds": {
+        "x": 184,
+        "y": 711,
+        "width": 90,
+        "height": 83
+      },
+      "oldFaceBounds": {
+        "x": 199,
+        "y": 734,
+        "width": 73,
+        "height": 79
+      },
+      "auditSource": "docs/three-content/recurring-face-skin-review-root.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 105,
+        "y": 680,
+        "width": 232,
+        "height": 528
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "f508875047d725804b352f767352b31d47a55609ebe4c46f78106638dd8c4868",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "characterId": "civilian-c22-c56eca783f--later",
+      "name": "은서의 딸",
+      "ageVariant": "later",
+      "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-04-spaced.png",
+      "sourceImageSha256": "837b8e23145eacb587daa9b5a3de2a64b18073eaa4e0d9b2d2f5b409c113e320",
+      "newFaceBounds": {
+        "x": 585,
+        "y": 685,
+        "width": 91,
+        "height": 89
+      },
+      "oldFaceBounds": {
+        "x": 602,
+        "y": 708,
+        "width": 74,
+        "height": 82
+      },
+      "auditSource": "docs/three-content/recurring-face-skin-review-root.json",
+      "manualBoundaryUncertaintyPx": 2,
+      "coordinateSpace": "absolute source PNG pixels",
+      "sourceRectPreserved": true,
+      "sourceRect": {
+        "x": 490,
+        "y": 656,
+        "width": 268,
+        "height": 583
+      },
+      "clipPathPreserved": true,
+      "clipPathSha256": "4ef2dd30fa9d61382988e799aa1009d71c21ce3ca1f18b2a1600f0efbb912f18",
+      "alphaAndUpperBodyBoundsPreserved": true,
+      "runtimeFaceBoundsMatch": true,
+      "opaqueSubjectPixelsOmitted": 0,
+      "faceCoordinatesChanged": true,
+      "runtimeVisualReviewComplete": false
+    }
+  ],
+  "actingVariants": [
+    {
+      "variantId": "yeonwoo-mother-support-pair",
+      "src": "assets/ancient/three-complete/characters/yeonwoo-mother-support-pair-v1.png",
+      "sourceImageSha256": "022edd8a2242455c6616d33ca27b50d2fe2e62fb73326a034a14fe83a918ccfa",
+      "oldFaceBounds": {
+        "x": 330,
+        "y": 116,
+        "width": 150,
+        "height": 137
+      },
+      "newFaceBounds": {
+        "x": 329,
+        "y": 119,
+        "width": 146,
+        "height": 117
+      },
+      "sourceShaMatches": true,
+      "sourceRectAndSpriteUnchanged": true,
+      "alphaBoundsUnchanged": true,
+      "newSkinBoundsApplied": true,
+      "originalAlphaThreshold": 32,
+      "subjectOpaquePixels": 874681,
+      "opaqueSubjectPixelsOutsideCrop": 0,
+      "foreignLargeComponentsInCrop": 0,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "variantId": "seoa-book-lifting",
+      "src": "assets/ancient/three-complete/characters/seoa-book-actions-v1.png",
+      "sourceImageSha256": "1c01e99616daf6564e7526e519edf816f6dd2489cd50aa1b52945fd9298e8efa",
+      "oldFaceBounds": {
+        "x": 314,
+        "y": 107,
+        "width": 105,
+        "height": 105
+      },
+      "newFaceBounds": {
+        "x": 311,
+        "y": 104,
+        "width": 113,
+        "height": 104
+      },
+      "sourceShaMatches": true,
+      "sourceRectAndSpriteUnchanged": true,
+      "alphaBoundsUnchanged": true,
+      "newSkinBoundsApplied": true,
+      "originalAlphaThreshold": 32,
+      "subjectOpaquePixels": 320985,
+      "opaqueSubjectPixelsOutsideCrop": 0,
+      "foreignLargeComponentsInCrop": 0,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "variantId": "seoa-book-held",
+      "src": "assets/ancient/three-complete/characters/seoa-book-actions-v1.png",
+      "sourceImageSha256": "1c01e99616daf6564e7526e519edf816f6dd2489cd50aa1b52945fd9298e8efa",
+      "oldFaceBounds": {
+        "x": 974,
+        "y": 85,
+        "width": 111,
+        "height": 116
+      },
+      "newFaceBounds": {
+        "x": 977,
+        "y": 80,
+        "width": 112,
+        "height": 111
+      },
+      "sourceShaMatches": true,
+      "sourceRectAndSpriteUnchanged": true,
+      "alphaBoundsUnchanged": true,
+      "newSkinBoundsApplied": true,
+      "originalAlphaThreshold": 32,
+      "subjectOpaquePixels": 314551,
+      "opaqueSubjectPixelsOutsideCrop": 0,
+      "foreignLargeComponentsInCrop": 0,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "variantId": "haemyeong-hidden",
+      "src": "assets/ancient/three-complete/characters/haemyeong-acting-v1.png",
+      "sourceImageSha256": "2b39eea68c0dff098f8efd33fcce32b1dda8454c403e4b46421b687684fe388c",
+      "oldFaceBounds": {
+        "x": 304,
+        "y": 59,
+        "width": 96,
+        "height": 98
+      },
+      "newFaceBounds": {
+        "x": 311,
+        "y": 51,
+        "width": 107,
+        "height": 96
+      },
+      "sourceShaMatches": true,
+      "sourceRectAndSpriteUnchanged": true,
+      "alphaBoundsUnchanged": true,
+      "newSkinBoundsApplied": true,
+      "originalAlphaThreshold": 32,
+      "subjectOpaquePixels": 252332,
+      "opaqueSubjectPixelsOutsideCrop": 0,
+      "foreignLargeComponentsInCrop": 0,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "variantId": "haemyeong-bandaged",
+      "src": "assets/ancient/three-complete/characters/haemyeong-acting-v1.png",
+      "sourceImageSha256": "2b39eea68c0dff098f8efd33fcce32b1dda8454c403e4b46421b687684fe388c",
+      "oldFaceBounds": {
+        "x": 1072,
+        "y": 59,
+        "width": 96,
+        "height": 98
+      },
+      "newFaceBounds": {
+        "x": 1080,
+        "y": 51,
+        "width": 105,
+        "height": 97
+      },
+      "sourceShaMatches": true,
+      "sourceRectAndSpriteUnchanged": true,
+      "alphaBoundsUnchanged": true,
+      "newSkinBoundsApplied": true,
+      "originalAlphaThreshold": 32,
+      "subjectOpaquePixels": 258330,
+      "opaqueSubjectPixelsOutsideCrop": 0,
+      "foreignLargeComponentsInCrop": 0,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "variantId": "yeoul-empty",
+      "src": "assets/ancient/three-complete/characters/yeoul-c15-empty-hands-v1.png",
+      "sourceImageSha256": "55e0d3d76b655c0efc489d8ae1f4c1fd021cc1565ba30624dab1d90b0437da0d",
+      "oldFaceBounds": {
+        "x": 478,
+        "y": 79,
+        "width": 140,
+        "height": 149
+      },
+      "newFaceBounds": {
+        "x": 462,
+        "y": 64,
+        "width": 154,
+        "height": 150
+      },
+      "sourceShaMatches": true,
+      "sourceRectAndSpriteUnchanged": true,
+      "alphaBoundsUnchanged": true,
+      "newSkinBoundsApplied": true,
+      "originalAlphaThreshold": 32,
+      "subjectOpaquePixels": 481497,
+      "opaqueSubjectPixelsOutsideCrop": 0,
+      "foreignLargeComponentsInCrop": 0,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "variantId": "yeonwoo-support",
+      "src": "assets/ancient/three-complete/characters/yeonwoo-support-v1.png",
+      "sourceImageSha256": "aff6bb8bce45739fc73f5a74b733a1038bfc4e23d2b609f877db591efe4ce770",
+      "oldFaceBounds": {
+        "x": 500,
+        "y": 117,
+        "width": 155,
+        "height": 161
+      },
+      "newFaceBounds": {
+        "x": 490,
+        "y": 113,
+        "width": 161,
+        "height": 145
+      },
+      "sourceShaMatches": true,
+      "sourceRectAndSpriteUnchanged": true,
+      "alphaBoundsUnchanged": true,
+      "newSkinBoundsApplied": true,
+      "originalAlphaThreshold": 32,
+      "subjectOpaquePixels": 572042,
+      "opaqueSubjectPixelsOutsideCrop": 0,
+      "foreignLargeComponentsInCrop": 0,
+      "runtimeVisualReviewComplete": false
+    }
+  ],
+  "limitations": [
+    "Manual visible-skin bounds have the per-audit pixel uncertainty recorded above, especially at hairlines, headbands and beards.",
+    "This metadata comparison confirms immutable source/crop preservation and exact application of measured faces. Actual perceived size, overlap and framing still require the browser review."
+  ],
+  "canonicalFilesUnchangedFromHead": {
+    "dist/three-story-script.json": "a2b0454b84dd7b2543ea41f8cb3c518e4a10d1f7db29f855b9324d5ab57fa6f0",
+    "dist/three-exam-data.json": "323e167f88250cc72b8ecc5787c2746552402cd1d068048e81d043eb881621ea"
+  }
+}

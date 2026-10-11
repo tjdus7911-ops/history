@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "contentVersion": "three-complete-23-v1",
-  "status": "mapped-art-recurring-portraits-complete-other-principals-incomplete",
+  "status": "principal-portraits-and-fullbody-sources-ready-runtime-composition-review-pending",
   "backgrounds": {
     "THR-PRO-S01": {
       "src": "assets/v2/backgrounds/modern-study-night.webp",
@@ -3998,10 +3998,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 405,
+          "x": 410,
           "y": 77,
-          "width": 166,
-          "height": 151
+          "width": 147,
+          "height": 142
         },
         "alphaBounds": {
           "x": 241,
@@ -4015,7 +4015,7 @@
           "width": 519,
           "height": 857
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -4035,7 +4035,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {
@@ -4100,10 +4100,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 187,
-          "y": 43,
-          "width": 67,
-          "height": 73
+          "x": 183,
+          "y": 48,
+          "width": 70,
+          "height": 55
         },
         "alphaBounds": {
           "x": 96,
@@ -4117,7 +4117,7 @@
           "width": 213,
           "height": 323
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -4137,7 +4137,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {
@@ -4202,9 +4202,9 @@
         "sheetHeight": 1536,
         "faceBounds": {
           "x": 810,
-          "y": 51,
-          "width": 73,
-          "height": 79
+          "y": 55,
+          "width": 69,
+          "height": 64
         },
         "alphaBounds": {
           "x": 702,
@@ -4218,7 +4218,7 @@
           "width": 228,
           "height": 296
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -4238,7 +4238,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -4403,9 +4403,9 @@
         "sheetHeight": 1536,
         "faceBounds": {
           "x": 466,
-          "y": 44,
-          "width": 76,
-          "height": 74
+          "y": 41,
+          "width": 66,
+          "height": 60
         },
         "alphaBounds": {
           "x": 382,
@@ -4419,7 +4419,7 @@
           "width": 215,
           "height": 322
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -4439,7 +4439,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {
@@ -4504,10 +4504,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 789,
-          "y": 41,
-          "width": 74,
-          "height": 75
+          "x": 784,
+          "y": 39,
+          "width": 68,
+          "height": 63
         },
         "alphaBounds": {
           "x": 707,
@@ -4521,7 +4521,7 @@
           "width": 208,
           "height": 323
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -4541,7 +4541,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {
@@ -4605,10 +4605,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 173,
-          "y": 568,
-          "width": 78,
-          "height": 83
+          "x": 179,
+          "y": 567,
+          "width": 69,
+          "height": 65
         },
         "alphaBounds": {
           "x": 48,
@@ -4622,7 +4622,7 @@
           "width": 256,
           "height": 292
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -4642,7 +4642,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -4717,10 +4717,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 488,
-          "y": 573,
-          "width": 76,
-          "height": 79
+          "x": 484,
+          "y": 568,
+          "width": 72,
+          "height": 66
         },
         "alphaBounds": {
           "x": 356,
@@ -4734,7 +4734,7 @@
           "width": 243,
           "height": 286
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -4754,7 +4754,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -4809,9 +4809,9 @@
         "sheetHeight": 1536,
         "faceBounds": {
           "x": 831,
-          "y": 577,
-          "width": 74,
-          "height": 81
+          "y": 586,
+          "width": 72,
+          "height": 52
         },
         "alphaBounds": {
           "x": 697,
@@ -4825,7 +4825,7 @@
           "width": 264,
           "height": 289
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -4845,7 +4845,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -4899,10 +4899,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 180,
-          "y": 1064,
-          "width": 72,
-          "height": 82
+          "x": 175,
+          "y": 1065,
+          "width": 73,
+          "height": 69
         },
         "alphaBounds": {
           "x": 49,
@@ -4916,7 +4916,7 @@
           "width": 260,
           "height": 289
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -4936,7 +4936,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -4990,10 +4990,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 195,
-          "y": 42,
+          "x": 194,
+          "y": 30,
           "width": 62,
-          "height": 66
+          "height": 63
         },
         "alphaBounds": {
           "x": 87,
@@ -5007,7 +5007,7 @@
           "width": 225,
           "height": 283
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -5027,7 +5027,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "historical-person"
@@ -5082,9 +5082,9 @@
         "sheetHeight": 1536,
         "faceBounds": {
           "x": 498,
-          "y": 1085,
-          "width": 76,
-          "height": 78
+          "y": 1087,
+          "width": 74,
+          "height": 62
         },
         "alphaBounds": {
           "x": 401,
@@ -5098,7 +5098,7 @@
           "width": 229,
           "height": 279
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -5118,7 +5118,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -5193,10 +5193,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 835,
-          "y": 1080,
-          "width": 76,
-          "height": 77
+          "x": 832,
+          "y": 1076,
+          "width": 70,
+          "height": 64
         },
         "alphaBounds": {
           "x": 709,
@@ -5210,7 +5210,7 @@
           "width": 239,
           "height": 282
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -5230,7 +5230,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -5284,10 +5284,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 501,
+          "x": 498,
           "y": 54,
           "width": 66,
-          "height": 68
+          "height": 47
         },
         "alphaBounds": {
           "x": 372,
@@ -5301,7 +5301,7 @@
           "width": 245,
           "height": 294
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -5321,7 +5321,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "historical-person"
@@ -5481,10 +5481,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 171,
-          "y": 606,
-          "width": 74,
-          "height": 78
+          "x": 169,
+          "y": 595,
+          "width": 71,
+          "height": 63
         },
         "alphaBounds": {
           "x": 77,
@@ -5498,7 +5498,7 @@
           "width": 222,
           "height": 302
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -5518,7 +5518,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {
@@ -5603,10 +5603,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 174,
-          "y": 55,
-          "width": 91,
-          "height": 94
+          "x": 168,
+          "y": 54,
+          "width": 93,
+          "height": 86
         },
         "alphaBounds": {
           "x": 50,
@@ -5620,7 +5620,7 @@
           "width": 281,
           "height": 294
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -5640,7 +5640,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -5695,9 +5695,9 @@
         "sheetHeight": 1536,
         "faceBounds": {
           "x": 791,
-          "y": 52,
-          "width": 65,
-          "height": 68
+          "y": 54,
+          "width": 63,
+          "height": 50
         },
         "alphaBounds": {
           "x": 689,
@@ -5711,7 +5711,7 @@
           "width": 261,
           "height": 295
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -5731,7 +5731,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "historical-person"
@@ -5786,9 +5786,9 @@
         "sheetHeight": 1536,
         "faceBounds": {
           "x": 495,
-          "y": 55,
+          "y": 60,
           "width": 86,
-          "height": 95
+          "height": 75
         },
         "alphaBounds": {
           "x": 381,
@@ -5802,7 +5802,7 @@
           "width": 268,
           "height": 300
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -5822,7 +5822,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -5876,10 +5876,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 812,
-          "y": 53,
-          "width": 91,
-          "height": 103
+          "x": 821,
+          "y": 63,
+          "width": 81,
+          "height": 68
         },
         "alphaBounds": {
           "x": 705,
@@ -5893,7 +5893,7 @@
           "width": 286,
           "height": 298
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -5913,7 +5913,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -5967,10 +5967,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 163,
-          "y": 580,
-          "width": 85,
-          "height": 93
+          "x": 154,
+          "y": 572,
+          "width": 90,
+          "height": 90
         },
         "alphaBounds": {
           "x": 53,
@@ -5984,7 +5984,7 @@
           "width": 270,
           "height": 278
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -6004,7 +6004,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -6079,10 +6079,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 484,
-          "y": 589,
+          "x": 489,
+          "y": 591,
           "width": 91,
-          "height": 88
+          "height": 75
         },
         "alphaBounds": {
           "x": 371,
@@ -6096,7 +6096,7 @@
           "width": 302,
           "height": 279
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -6116,7 +6116,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -6170,10 +6170,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 176,
-          "y": 573,
-          "width": 73,
-          "height": 72
+          "x": 182,
+          "y": 558,
+          "width": 68,
+          "height": 57
         },
         "alphaBounds": {
           "x": 46,
@@ -6187,7 +6187,7 @@
           "width": 265,
           "height": 290
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -6207,7 +6207,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "historical-person"
@@ -6261,10 +6261,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 816,
-          "y": 582,
-          "width": 86,
-          "height": 93
+          "x": 819,
+          "y": 585,
+          "width": 83,
+          "height": 81
         },
         "alphaBounds": {
           "x": 706,
@@ -6278,7 +6278,7 @@
           "width": 281,
           "height": 280
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -6298,7 +6298,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -6352,10 +6352,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 162,
-          "y": 1084,
-          "width": 97,
-          "height": 97
+          "x": 158,
+          "y": 1088,
+          "width": 94,
+          "height": 75
         },
         "alphaBounds": {
           "x": 32,
@@ -6369,7 +6369,7 @@
           "width": 314,
           "height": 279
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -6389,7 +6389,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -6443,10 +6443,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 496,
-          "y": 1100,
-          "width": 84,
-          "height": 93
+          "x": 495,
+          "y": 1091,
+          "width": 88,
+          "height": 74
         },
         "alphaBounds": {
           "x": 375,
@@ -6460,7 +6460,7 @@
           "width": 287,
           "height": 277
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -6480,7 +6480,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -6534,10 +6534,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 815,
-          "y": 1090,
-          "width": 93,
-          "height": 92
+          "x": 827,
+          "y": 1094,
+          "width": 83,
+          "height": 73
         },
         "alphaBounds": {
           "x": 702,
@@ -6551,7 +6551,7 @@
           "width": 288,
           "height": 276
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -6571,7 +6571,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -6626,10 +6626,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 478,
-          "y": 607,
-          "width": 73,
-          "height": 79
+          "x": 470,
+          "y": 606,
+          "width": 71,
+          "height": 54
         },
         "alphaBounds": {
           "x": 393,
@@ -6643,7 +6643,7 @@
           "width": 205,
           "height": 309
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -6663,7 +6663,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {
@@ -6727,10 +6727,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 166,
-          "y": 42,
-          "width": 73,
-          "height": 79
+          "x": 171,
+          "y": 45,
+          "width": 72,
+          "height": 68
         },
         "alphaBounds": {
           "x": 74,
@@ -6744,7 +6744,7 @@
           "width": 232,
           "height": 301
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -6764,7 +6764,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -6819,10 +6819,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 782,
-          "y": 607,
-          "width": 73,
-          "height": 80
+          "x": 777,
+          "y": 599,
+          "width": 69,
+          "height": 65
         },
         "alphaBounds": {
           "x": 701,
@@ -6836,7 +6836,7 @@
           "width": 229,
           "height": 310
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -6856,7 +6856,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {
@@ -6941,10 +6941,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 481,
-          "y": 43,
-          "width": 80,
-          "height": 80
+          "x": 483,
+          "y": 41,
+          "width": 78,
+          "height": 70
         },
         "alphaBounds": {
           "x": 401,
@@ -6958,7 +6958,7 @@
           "width": 235,
           "height": 292
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -6978,7 +6978,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -7137,10 +7137,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 787,
-          "y": 51,
-          "width": 83,
-          "height": 82
+          "x": 793,
+          "y": 54,
+          "width": 71,
+          "height": 57
         },
         "alphaBounds": {
           "x": 707,
@@ -7154,7 +7154,7 @@
           "width": 232,
           "height": 299
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -7174,7 +7174,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -7312,10 +7312,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 493,
-          "y": 554,
-          "width": 74,
-          "height": 75
+          "x": 498,
+          "y": 535,
+          "width": 69,
+          "height": 65
         },
         "alphaBounds": {
           "x": 392,
@@ -7329,7 +7329,7 @@
           "width": 247,
           "height": 287
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -7349,7 +7349,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "historical-person"
@@ -7405,9 +7405,9 @@
         "sheetHeight": 1536,
         "faceBounds": {
           "x": 183,
-          "y": 1119,
-          "width": 72,
-          "height": 79
+          "y": 1118,
+          "width": 68,
+          "height": 64
         },
         "alphaBounds": {
           "x": 94,
@@ -7421,7 +7421,7 @@
           "width": 195,
           "height": 253
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -7441,7 +7441,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {
@@ -7568,10 +7568,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 808,
-          "y": 564,
-          "width": 72,
-          "height": 70
+          "x": 810,
+          "y": 562,
+          "width": 70,
+          "height": 54
         },
         "alphaBounds": {
           "x": 711,
@@ -7585,7 +7585,7 @@
           "width": 250,
           "height": 295
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -7605,7 +7605,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "historical-person"
@@ -7659,10 +7659,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 161,
-          "y": 556,
-          "width": 78,
-          "height": 78
+          "x": 168,
+          "y": 550,
+          "width": 71,
+          "height": 67
         },
         "alphaBounds": {
           "x": 80,
@@ -7676,7 +7676,7 @@
           "width": 217,
           "height": 286
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -7696,7 +7696,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -7773,9 +7773,9 @@
         "sheetHeight": 1536,
         "faceBounds": {
           "x": 354,
-          "y": 73,
-          "width": 150,
-          "height": 138
+          "y": 70,
+          "width": 147,
+          "height": 134
         },
         "alphaBounds": {
           "x": 144,
@@ -7789,7 +7789,7 @@
           "width": 561,
           "height": 864
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -7809,7 +7809,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {
@@ -7894,10 +7894,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 177,
-          "y": 1070,
-          "width": 73,
-          "height": 75
+          "x": 181,
+          "y": 1068,
+          "width": 68,
+          "height": 55
         },
         "alphaBounds": {
           "x": 62,
@@ -7911,7 +7911,7 @@
           "width": 254,
           "height": 292
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -7931,7 +7931,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "historical-person"
@@ -7985,10 +7985,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 466,
-          "y": 49,
-          "width": 79,
-          "height": 83
+          "x": 468,
+          "y": 48,
+          "width": 77,
+          "height": 72
         },
         "alphaBounds": {
           "x": 390,
@@ -8002,7 +8002,7 @@
           "width": 235,
           "height": 330
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -8022,7 +8022,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {
@@ -8107,10 +8107,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 487,
-          "y": 1081,
-          "width": 73,
-          "height": 74
+          "x": 491,
+          "y": 1060,
+          "width": 65,
+          "height": 63
         },
         "alphaBounds": {
           "x": 370,
@@ -8124,7 +8124,7 @@
           "width": 270,
           "height": 292
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -8144,7 +8144,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "historical-person"
@@ -8282,10 +8282,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 786,
-          "y": 47,
-          "width": 80,
-          "height": 88
+          "x": 789,
+          "y": 46,
+          "width": 74,
+          "height": 74
         },
         "alphaBounds": {
           "x": 710,
@@ -8299,7 +8299,7 @@
           "width": 241,
           "height": 331
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -8319,7 +8319,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {
@@ -8383,10 +8383,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 486,
-          "y": 556,
-          "width": 83,
-          "height": 85
+          "x": 493,
+          "y": 566,
+          "width": 70,
+          "height": 54
         },
         "alphaBounds": {
           "x": 400,
@@ -8400,7 +8400,7 @@
           "width": 230,
           "height": 287
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -8420,7 +8420,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -8537,10 +8537,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 801,
+          "x": 805,
           "y": 561,
-          "width": 83,
-          "height": 83
+          "width": 74,
+          "height": 62
         },
         "alphaBounds": {
           "x": 710,
@@ -8554,7 +8554,7 @@
           "width": 244,
           "height": 287
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -8574,7 +8574,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -8754,10 +8754,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 163,
-          "y": 1049,
-          "width": 84,
-          "height": 92
+          "x": 164,
+          "y": 1047,
+          "width": 79,
+          "height": 71
         },
         "alphaBounds": {
           "x": 79,
@@ -8771,7 +8771,7 @@
           "width": 226,
           "height": 289
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -8791,7 +8791,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -8908,10 +8908,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 484,
-          "y": 1044,
-          "width": 83,
-          "height": 92
+          "x": 482,
+          "y": 1041,
+          "width": 77,
+          "height": 76
         },
         "alphaBounds": {
           "x": 396,
@@ -8925,7 +8925,7 @@
           "width": 240,
           "height": 289
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -8945,7 +8945,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -9020,10 +9020,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 810,
-          "y": 1056,
-          "width": 83,
-          "height": 83
+          "x": 811,
+          "y": 1054,
+          "width": 74,
+          "height": 66
         },
         "alphaBounds": {
           "x": 728,
@@ -9037,7 +9037,7 @@
           "width": 226,
           "height": 292
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -9057,7 +9057,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -9132,10 +9132,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 182,
-          "y": 65,
-          "width": 98,
-          "height": 96
+          "x": 187,
+          "y": 66,
+          "width": 94,
+          "height": 78
         },
         "alphaBounds": {
           "x": 64,
@@ -9149,7 +9149,7 @@
           "width": 283,
           "height": 288
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -9169,7 +9169,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -9244,10 +9244,10 @@
         "sheetWidth": 1254,
         "sheetHeight": 1254,
         "faceBounds": {
-          "x": 291,
-          "y": 134,
-          "width": 148,
-          "height": 168
+          "x": 260,
+          "y": 130,
+          "width": 176,
+          "height": 167
         },
         "alphaBounds": {
           "x": 45,
@@ -9261,7 +9261,7 @@
           "width": 566,
           "height": 692
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -9281,7 +9281,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -9419,10 +9419,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 796,
+          "x": 795,
           "y": 74,
-          "width": 92,
-          "height": 96
+          "width": 90,
+          "height": 82
         },
         "alphaBounds": {
           "x": 697,
@@ -9436,7 +9436,7 @@
           "width": 262,
           "height": 274
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -9456,7 +9456,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -9699,10 +9699,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 817,
-          "y": 1080,
+          "x": 821,
+          "y": 1070,
           "width": 71,
-          "height": 74
+          "height": 59
         },
         "alphaBounds": {
           "x": 711,
@@ -9716,7 +9716,7 @@
           "width": 262,
           "height": 290
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -9736,7 +9736,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "historical-person"
@@ -9790,10 +9790,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 176,
-          "y": 552,
-          "width": 85,
-          "height": 96
+          "x": 172,
+          "y": 556,
+          "width": 89,
+          "height": 87
         },
         "alphaBounds": {
           "x": 57,
@@ -9807,7 +9807,7 @@
           "width": 287,
           "height": 283
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -9827,7 +9827,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -9944,10 +9944,10 @@
         "sheetWidth": 1254,
         "sheetHeight": 1254,
         "faceBounds": {
-          "x": 891,
-          "y": 153,
-          "width": 150,
-          "height": 166
+          "x": 842,
+          "y": 162,
+          "width": 182,
+          "height": 140
         },
         "alphaBounds": {
           "x": 630,
@@ -9961,7 +9961,7 @@
           "width": 562,
           "height": 678
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -9981,7 +9981,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -10309,9 +10309,9 @@
         "sheetHeight": 1536,
         "faceBounds": {
           "x": 171,
-          "y": 33,
-          "width": 75,
-          "height": 78
+          "y": 23,
+          "width": 74,
+          "height": 70
         },
         "alphaBounds": {
           "x": 64,
@@ -10325,7 +10325,7 @@
           "width": 258,
           "height": 296
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -10345,7 +10345,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "historical-person"
@@ -10420,10 +10420,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 493,
-          "y": 49,
-          "width": 78,
-          "height": 76
+          "x": 497,
+          "y": 44,
+          "width": 73,
+          "height": 56
         },
         "alphaBounds": {
           "x": 387,
@@ -10437,7 +10437,7 @@
           "width": 264,
           "height": 300
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -10457,7 +10457,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "historical-person"
@@ -10532,10 +10532,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 806,
-          "y": 39,
-          "width": 87,
-          "height": 86
+          "x": 816,
+          "y": 37,
+          "width": 71,
+          "height": 69
         },
         "alphaBounds": {
           "x": 717,
@@ -10549,7 +10549,7 @@
           "width": 254,
           "height": 300
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -10569,7 +10569,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "historical-person"
@@ -10792,10 +10792,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 156,
+          "x": 152,
           "y": 628,
-          "width": 83,
-          "height": 88
+          "width": 78,
+          "height": 74
         },
         "alphaBounds": {
           "x": 62,
@@ -10809,7 +10809,7 @@
           "width": 235,
           "height": 327
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -10829,7 +10829,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {
@@ -10915,10 +10915,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 474,
-          "y": 638,
-          "width": 86,
-          "height": 90
+          "x": 472,
+          "y": 646,
+          "width": 82,
+          "height": 62
         },
         "alphaBounds": {
           "x": 389,
@@ -10932,7 +10932,7 @@
           "width": 258,
           "height": 342
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -10952,7 +10952,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {
@@ -11121,10 +11121,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 806,
-          "y": 567,
-          "width": 88,
-          "height": 96
+          "x": 803,
+          "y": 572,
+          "width": 91,
+          "height": 78
         },
         "alphaBounds": {
           "x": 684,
@@ -11138,7 +11138,7 @@
           "width": 292,
           "height": 286
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -11158,7 +11158,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -11212,10 +11212,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 172,
+          "x": 173,
           "y": 1065,
-          "width": 87,
-          "height": 96
+          "width": 94,
+          "height": 86
         },
         "alphaBounds": {
           "x": 53,
@@ -11229,7 +11229,7 @@
           "width": 300,
           "height": 289
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -11249,7 +11249,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -11366,10 +11366,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 168,
-          "y": 556,
-          "width": 74,
-          "height": 80
+          "x": 170,
+          "y": 539,
+          "width": 70,
+          "height": 68
         },
         "alphaBounds": {
           "x": 53,
@@ -11383,7 +11383,7 @@
           "width": 270,
           "height": 301
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -11403,7 +11403,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "historical-person"
@@ -11457,10 +11457,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 498,
-          "y": 1063,
-          "width": 91,
-          "height": 98
+          "x": 493,
+          "y": 1059,
+          "width": 95,
+          "height": 91
         },
         "alphaBounds": {
           "x": 395,
@@ -11474,7 +11474,7 @@
           "width": 275,
           "height": 285
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -11494,7 +11494,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -11611,10 +11611,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 500,
-          "y": 557,
-          "width": 77,
-          "height": 79
+          "x": 502,
+          "y": 548,
+          "width": 73,
+          "height": 64
         },
         "alphaBounds": {
           "x": 386,
@@ -11628,7 +11628,7 @@
           "width": 275,
           "height": 301
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -11648,7 +11648,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "historical-person"
@@ -11702,10 +11702,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 813,
-          "y": 1068,
-          "width": 87,
-          "height": 99
+          "x": 811,
+          "y": 1076,
+          "width": 90,
+          "height": 86
         },
         "alphaBounds": {
           "x": 714,
@@ -11719,7 +11719,7 @@
           "width": 264,
           "height": 288
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -11739,7 +11739,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -11835,10 +11835,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 163,
-          "y": 43,
+          "x": 157,
+          "y": 47,
           "width": 88,
-          "height": 99
+          "height": 85
         },
         "alphaBounds": {
           "x": 43,
@@ -11852,7 +11852,7 @@
           "width": 261,
           "height": 314
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -11872,7 +11872,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -11948,10 +11948,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 466,
-          "y": 38,
-          "width": 94,
-          "height": 107
+          "x": 468,
+          "y": 39,
+          "width": 88,
+          "height": 88
         },
         "alphaBounds": {
           "x": 356,
@@ -11965,7 +11965,7 @@
           "width": 288,
           "height": 322
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -11985,7 +11985,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -12144,10 +12144,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 813,
-          "y": 43,
-          "width": 103,
-          "height": 107
+          "x": 822,
+          "y": 49,
+          "width": 86,
+          "height": 83
         },
         "alphaBounds": {
           "x": 732,
@@ -12161,7 +12161,7 @@
           "width": 259,
           "height": 313
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -12181,7 +12181,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -12257,10 +12257,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 167,
-          "y": 604,
-          "width": 91,
-          "height": 110
+          "x": 164,
+          "y": 616,
+          "width": 92,
+          "height": 84
         },
         "alphaBounds": {
           "x": 34,
@@ -12274,7 +12274,7 @@
           "width": 292,
           "height": 306
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -12294,7 +12294,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -12350,10 +12350,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 784,
-          "y": 641,
-          "width": 85,
-          "height": 86
+          "x": 787,
+          "y": 639,
+          "width": 75,
+          "height": 73
         },
         "alphaBounds": {
           "x": 706,
@@ -12367,7 +12367,7 @@
           "width": 238,
           "height": 341
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -12387,7 +12387,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {
@@ -12452,10 +12452,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 822,
-          "y": 560,
-          "width": 77,
-          "height": 82
+          "x": 827,
+          "y": 535,
+          "width": 75,
+          "height": 69
         },
         "alphaBounds": {
           "x": 721,
@@ -12469,7 +12469,7 @@
           "width": 262,
           "height": 298
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -12489,7 +12489,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "historical-person"
@@ -12585,10 +12585,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 159,
-          "y": 1065,
-          "width": 71,
-          "height": 78
+          "x": 162,
+          "y": 1049,
+          "width": 66,
+          "height": 62
         },
         "alphaBounds": {
           "x": 61,
@@ -12602,7 +12602,7 @@
           "width": 248,
           "height": 285
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -12622,7 +12622,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "historical-person"
@@ -12677,10 +12677,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 269,
-          "y": 67,
-          "width": 89,
-          "height": 91
+          "x": 270,
+          "y": 63,
+          "width": 86,
+          "height": 81
         },
         "alphaBounds": {
           "x": 137,
@@ -12694,7 +12694,7 @@
           "width": 285,
           "height": 448
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -12714,7 +12714,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {
@@ -12863,10 +12863,10 @@
         "sheetWidth": 1254,
         "sheetHeight": 1254,
         "faceBounds": {
-          "x": 220,
-          "y": 64,
-          "width": 70,
-          "height": 76
+          "x": 210,
+          "y": 63,
+          "width": 86,
+          "height": 82
         },
         "alphaBounds": {
           "x": 131,
@@ -12880,7 +12880,7 @@
           "width": 216,
           "height": 335
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -12900,7 +12900,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {
@@ -13027,10 +13027,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 509,
-          "y": 1065,
-          "width": 74,
-          "height": 79
+          "x": 510,
+          "y": 1066,
+          "width": 69,
+          "height": 54
         },
         "alphaBounds": {
           "x": 400,
@@ -13044,7 +13044,7 @@
           "width": 254,
           "height": 287
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -13064,7 +13064,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "historical-person"
@@ -13181,10 +13181,10 @@
         "sheetWidth": 1254,
         "sheetHeight": 1254,
         "faceBounds": {
-          "x": 612,
+          "x": 597,
           "y": 64,
-          "width": 70,
-          "height": 76
+          "width": 88,
+          "height": 81
         },
         "alphaBounds": {
           "x": 511,
@@ -13198,7 +13198,7 @@
           "width": 215,
           "height": 335
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -13218,7 +13218,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {
@@ -13366,10 +13366,10 @@
         "sheetWidth": 1254,
         "sheetHeight": 1254,
         "faceBounds": {
-          "x": 993,
-          "y": 58,
-          "width": 73,
-          "height": 86
+          "x": 979,
+          "y": 66,
+          "width": 85,
+          "height": 78
         },
         "alphaBounds": {
           "x": 881,
@@ -13383,7 +13383,7 @@
           "width": 253,
           "height": 339
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -13403,7 +13403,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {
@@ -13594,10 +13594,10 @@
         "sheetWidth": 1254,
         "sheetHeight": 1254,
         "faceBounds": {
-          "x": 602,
-          "y": 691,
-          "width": 72,
-          "height": 77
+          "x": 590,
+          "y": 682,
+          "width": 92,
+          "height": 75
         },
         "alphaBounds": {
           "x": 515,
@@ -13611,7 +13611,7 @@
           "width": 229,
           "height": 331
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -13631,7 +13631,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {
@@ -13716,10 +13716,10 @@
         "sheetWidth": 1254,
         "sheetHeight": 1254,
         "faceBounds": {
-          "x": 214,
-          "y": 687,
-          "width": 74,
-          "height": 78
+          "x": 207,
+          "y": 678,
+          "width": 88,
+          "height": 80
         },
         "alphaBounds": {
           "x": 100,
@@ -13733,7 +13733,7 @@
           "width": 267,
           "height": 336
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -13753,7 +13753,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {
@@ -13817,10 +13817,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 837,
+          "x": 843,
           "y": 1078,
-          "width": 77,
-          "height": 75
+          "width": 68,
+          "height": 50
         },
         "alphaBounds": {
           "x": 741,
@@ -13834,7 +13834,7 @@
           "width": 243,
           "height": 285
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -13854,7 +13854,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "historical-person"
@@ -13934,10 +13934,10 @@
         "sheetWidth": 1254,
         "sheetHeight": 1254,
         "faceBounds": {
-          "x": 1007,
-          "y": 687,
-          "width": 72,
-          "height": 80
+          "x": 994,
+          "y": 679,
+          "width": 86,
+          "height": 77
         },
         "alphaBounds": {
           "x": 891,
@@ -13951,7 +13951,7 @@
           "width": 259,
           "height": 334
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -13971,7 +13971,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {
@@ -14039,10 +14039,10 @@
         "sheetWidth": 1254,
         "sheetHeight": 1254,
         "faceBounds": {
-          "x": 201,
-          "y": 56,
-          "width": 76,
-          "height": 83
+          "x": 184,
+          "y": 49,
+          "width": 91,
+          "height": 84
         },
         "alphaBounds": {
           "x": 94,
@@ -14056,7 +14056,7 @@
           "width": 206,
           "height": 351
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -14076,7 +14076,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {
@@ -14161,10 +14161,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 191,
-          "y": 43,
-          "width": 73,
-          "height": 82
+          "x": 189,
+          "y": 36,
+          "width": 72,
+          "height": 67
         },
         "alphaBounds": {
           "x": 38,
@@ -14178,7 +14178,7 @@
           "width": 269,
           "height": 308
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -14198,7 +14198,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "historical-person"
@@ -14273,10 +14273,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 695,
-          "y": 58,
-          "width": 92,
-          "height": 100
+          "x": 694,
+          "y": 60,
+          "width": 85,
+          "height": 83
         },
         "alphaBounds": {
           "x": 548,
@@ -14290,7 +14290,7 @@
           "width": 288,
           "height": 457
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -14310,7 +14310,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {
@@ -14479,10 +14479,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 493,
-          "y": 606,
-          "width": 96,
-          "height": 107
+          "x": 496,
+          "y": 610,
+          "width": 92,
+          "height": 80
         },
         "alphaBounds": {
           "x": 366,
@@ -14496,7 +14496,7 @@
           "width": 302,
           "height": 322
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -14516,7 +14516,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -14612,10 +14612,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 828,
-          "y": 596,
-          "width": 98,
-          "height": 118
+          "x": 831,
+          "y": 599,
+          "width": 92,
+          "height": 96
         },
         "alphaBounds": {
           "x": 722,
@@ -14629,7 +14629,7 @@
           "width": 276,
           "height": 318
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -14649,7 +14649,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -14788,10 +14788,10 @@
         "sheetWidth": 1254,
         "sheetHeight": 1254,
         "faceBounds": {
-          "x": 606,
-          "y": 50,
-          "width": 76,
-          "height": 90
+          "x": 590,
+          "y": 47,
+          "width": 90,
+          "height": 86
         },
         "alphaBounds": {
           "x": 494,
@@ -14805,7 +14805,7 @@
           "width": 219,
           "height": 352
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -14825,7 +14825,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {
@@ -14889,10 +14889,10 @@
         "sheetWidth": 1254,
         "sheetHeight": 1254,
         "faceBounds": {
-          "x": 199,
-          "y": 734,
-          "width": 73,
-          "height": 79
+          "x": 184,
+          "y": 711,
+          "width": 90,
+          "height": 83
         },
         "alphaBounds": {
           "x": 107,
@@ -14906,7 +14906,7 @@
           "width": 172,
           "height": 298
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -14926,7 +14926,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {
@@ -15053,10 +15053,10 @@
         "sheetWidth": 1254,
         "sheetHeight": 1254,
         "faceBounds": {
-          "x": 1013,
-          "y": 50,
-          "width": 76,
-          "height": 90
+          "x": 994,
+          "y": 48,
+          "width": 91,
+          "height": 86
         },
         "alphaBounds": {
           "x": 904,
@@ -15070,7 +15070,7 @@
           "width": 219,
           "height": 352
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -15090,7 +15090,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {
@@ -15154,10 +15154,10 @@
         "sheetWidth": 1254,
         "sheetHeight": 1254,
         "faceBounds": {
-          "x": 602,
-          "y": 708,
-          "width": 74,
-          "height": 82
+          "x": 585,
+          "y": 685,
+          "width": 91,
+          "height": 89
         },
         "alphaBounds": {
           "x": 492,
@@ -15171,7 +15171,7 @@
           "width": 224,
           "height": 330
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -15191,7 +15191,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {
@@ -15318,10 +15318,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 294,
-          "y": 850,
-          "width": 91,
-          "height": 99
+          "x": 287,
+          "y": 845,
+          "width": 93,
+          "height": 92
         },
         "alphaBounds": {
           "x": 176,
@@ -15335,7 +15335,7 @@
           "width": 269,
           "height": 410
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -15355,7 +15355,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {
@@ -15462,9 +15462,9 @@
         "sheetHeight": 1536,
         "faceBounds": {
           "x": 165,
-          "y": 1147,
-          "width": 92,
-          "height": 95
+          "y": 1156,
+          "width": 89,
+          "height": 73
         },
         "alphaBounds": {
           "x": 40,
@@ -15478,7 +15478,7 @@
           "width": 290,
           "height": 242
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -15498,7 +15498,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "named-local-role"
@@ -15615,10 +15615,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 489,
-          "y": 48,
-          "width": 82,
-          "height": 91
+          "x": 491,
+          "y": 47,
+          "width": 74,
+          "height": 63
         },
         "alphaBounds": {
           "x": 372,
@@ -15632,7 +15632,7 @@
           "width": 272,
           "height": 308
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -15652,7 +15652,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "portraitPriority": "historical-person"
@@ -15706,10 +15706,10 @@
         "sheetWidth": 1024,
         "sheetHeight": 1536,
         "faceBounds": {
-          "x": 696,
+          "x": 691,
           "y": 847,
-          "width": 96,
-          "height": 104
+          "width": 92,
+          "height": 90
         },
         "alphaBounds": {
           "x": 566,
@@ -15723,7 +15723,7 @@
           "width": 279,
           "height": 413
         },
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "framing": "full-body"
       },
       "portraitFraming": "full-body",
@@ -15743,7 +15743,7 @@
         "omittedOpaquePixelCount": 0,
         "sourceRectContainsWholeComponent": true,
         "pixelEditingPerformed": false,
-        "faceAnchorMethod": "manual visual region excluding headgear",
+        "faceAnchorMethod": "manual skin-face landmarks: forehead to chin, visible ears included; hair, headgear and neck excluded",
         "runtimeComposite": "pending"
       },
       "preservedSource": {

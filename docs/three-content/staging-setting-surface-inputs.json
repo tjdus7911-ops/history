@@ -1,0 +1,206 @@
+{
+  "schemaVersion": 1,
+  "surfaces": [
+    {
+      "id": "tomb-section-ink-v1",
+      "kind": "tomb-section",
+      "sceneId": "THR-C10-S03",
+      "width": 1024,
+      "height": 1536,
+      "backgroundSrc": "assets/ancient/three-complete/backgrounds/silla-tomb-worksite-v1.png",
+      "backgroundSha256": "e2f3611b01c3a45a9a129d9140bb79ecac65d0b52a63d5058efc2b26ef910624",
+      "label": "돌무지덧널무덤의 구조 단면",
+      "description": "설명용 단면: 안쪽 관을 둘러싼 나무 덧널, 위와 둘레의 돌무지, 바깥 봉토를 구별한다. 실제 씬은 돌을 덮기 전 축조 중인 상태이며, 이 그림이 완공 상태로 시간을 바꾸지 않는다. 일반 돌무지무덤이나 굴식돌방무덤의 복도는 넣지 않는다.",
+      "references": [
+        {
+          "url": "https://contents.history.go.kr/data/pdf/eh/eh_r0080_0010.pdf",
+          "pageIndex": 8,
+          "publisher": "국사편찬위원회 우리역사넷",
+          "use": "Layer relationships only; own explanatory geometry, not a tracing of the original diagram."
+        }
+      ]
+    },
+    {
+      "id": "warehouse-map-and-tags-v1",
+      "kind": "warehouse-map-tags",
+      "sceneId": "THR-C18-S03",
+      "width": 1024,
+      "height": 1536,
+      "backgroundSrc": "assets/ancient/three-complete/backgrounds/cheonghaejin-warehouse-v1.png",
+      "backgroundSha256": "05b22f910e1809a2ba9faccd23d8a16c35bd27110f37d95638587382c3f66672",
+      "label": "청해진 창고의 화물 표지와 교류 거점 개략도",
+      "description": "당·신라·일본의 표지는 필체가 서로 다르다. 개략도는 신라방과 신라촌을 거주지, 신라소를 관리 기관, 신라원과 적산 법화원을 사찰로 구별한다. 여러 지역의 형성 시기와 사찰 건립·활동 기록의 시기는 본문 옆 기존 설명 자리에서 구분한다. 이 그림은 당시 실물 지도를 복제한 자료가 아니며 모든 거점이 같은 해에 창설되었다고 단정하지 않는다.",
+      "cargoTags": [
+        {
+          "hanja": "唐",
+          "x": 307,
+          "y": 722,
+          "fontSize": 42,
+          "weight": 700,
+          "rotate": -5
+        },
+        {
+          "hanja": "新羅",
+          "x": 507,
+          "y": 721,
+          "fontSize": 25,
+          "weight": 400,
+          "rotate": 2
+        },
+        {
+          "hanja": "日本",
+          "x": 708,
+          "y": 721,
+          "fontSize": 26,
+          "weight": 600,
+          "rotate": -1
+        }
+      ],
+      "references": [
+        {
+          "url": "https://contents.history.go.kr/front/ta/view.do?levelId=ta_h71_0050_0010_0020_0020",
+          "publisher": "국사편찬위원회 우리역사넷",
+          "supports": "신라방·신라촌 거주지, 신라소 관리 기관, 신라원 사찰; 8세기 이후 교류 확대"
+        },
+        {
+          "url": "https://contents.history.go.kr/front/hm/print.do?levelId=hm_034_0060&tabId=01&treeId=010302&whereStr=",
+          "publisher": "국사편찬위원회 우리역사넷, 입당구법순례행기 발췌",
+          "supports": "839년 신라소 운영자와 장보고가 세운 적산 법화원 활동 기록"
+        },
+        {
+          "url": "https://contents.history.go.kr/mobile/km/view.do?levelId=km_030_0030_0030",
+          "publisher": "국사편찬위원회 우리역사넷",
+          "supports": "산둥 신라인 촌락과 적산촌, 839~840년 법화원 강회; 거주·농업·교역·사찰 기능 구별"
+        }
+      ]
+    },
+    {
+      "id": "balhae-department-ink-v1",
+      "kind": "office-departments",
+      "sceneId": "THR-C21-S04",
+      "width": 1024,
+      "height": 1536,
+      "backgroundSrc": "assets/ancient/three-complete/backgrounds/balhae-office-readable-labels-v3.png",
+      "backgroundSha256": "482f923720c9616fdbfdbb3ded71cab1535ade7dfb42beb72ddd8adadba9a37b",
+      "label": "발해 3성·6부 문서 표지",
+      "description": "원문에 나온 3성과 6부의 명칭을 아홉 실제 문서 묶음의 빈 표지에 적는다. 중대성·선조성·정당성, 충부·인부·의부·지부·예부·신부. 서가 배치는 학습 장면의 문서 정리를 위한 가상 구성이며 기관의 고고학적 배치도나 실제 문서의 복제가 아니다. 원문에 없는 세부 직무는 표지에 추가하지 않는다.",
+      "tags": [
+        {
+          "name": "중대성",
+          "hanja": "中臺省",
+          "paperRect": {
+            "x": 309,
+            "y": 246,
+            "width": 89,
+            "height": 51
+          },
+          "fontSize": 25,
+          "inkCenterY": 282
+        },
+        {
+          "name": "선조성",
+          "hanja": "宣詔省",
+          "paperRect": {
+            "x": 478,
+            "y": 246,
+            "width": 88,
+            "height": 51
+          },
+          "fontSize": 25,
+          "inkCenterY": 282
+        },
+        {
+          "name": "정당성",
+          "hanja": "政堂省",
+          "paperRect": {
+            "x": 640,
+            "y": 246,
+            "width": 91,
+            "height": 51
+          },
+          "fontSize": 25,
+          "inkCenterY": 282
+        },
+        {
+          "name": "충부",
+          "hanja": "忠部",
+          "paperRect": {
+            "x": 285,
+            "y": 385,
+            "width": 51,
+            "height": 34
+          },
+          "fontSize": 21,
+          "inkCenterY": 403
+        },
+        {
+          "name": "인부",
+          "hanja": "仁部",
+          "paperRect": {
+            "x": 366,
+            "y": 385,
+            "width": 51,
+            "height": 34
+          },
+          "fontSize": 21,
+          "inkCenterY": 403
+        },
+        {
+          "name": "의부",
+          "hanja": "義部",
+          "paperRect": {
+            "x": 446,
+            "y": 385,
+            "width": 51,
+            "height": 34
+          },
+          "fontSize": 21,
+          "inkCenterY": 403
+        },
+        {
+          "name": "지부",
+          "hanja": "智部",
+          "paperRect": {
+            "x": 527,
+            "y": 385,
+            "width": 51,
+            "height": 34
+          },
+          "fontSize": 21,
+          "inkCenterY": 403
+        },
+        {
+          "name": "예부",
+          "hanja": "禮部",
+          "paperRect": {
+            "x": 607,
+            "y": 385,
+            "width": 51,
+            "height": 34
+          },
+          "fontSize": 21,
+          "inkCenterY": 403
+        },
+        {
+          "name": "신부",
+          "hanja": "信部",
+          "paperRect": {
+            "x": 688,
+            "y": 385,
+            "width": 51,
+            "height": 34
+          },
+          "fontSize": 21,
+          "inkCenterY": 403
+        }
+      ],
+      "references": [
+        {
+          "url": "https://contents.history.go.kr/front/hm/print.do?levelId=hm_030_0080&tabId=01&treeId=010301&whereStr=",
+          "publisher": "국사편찬위원회 우리역사넷, 신당서 권219 발해전 원문",
+          "supports": "宣詔省·中臺省·政堂省, 忠部·仁部·義部·智部·禮部·信部의 정확한 한자 명칭; 원문 政堂省 표기를 사용"
+        }
+      ]
+    }
+  ]
+}
