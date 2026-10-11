@@ -35,9 +35,17 @@
         if(kind==='choice')index=entries.length-1;
       }
     }else if(era==='proto-kingdoms'&&globalThis.PROTO_REVISION_ACTIONS){
-      const api=PROTO_REVISION_ACTIONS,book=api.book(),order=PROTO_REVISION_RUNTIME.order,position=order.indexOf(sceneId);
-      book.readSceneIds=order.slice(0,Math.max(0,position));book.readLineIds=book.readSceneIds.flatMap(id=>{const s=PROTO_REVISION_RUNTIME.sources.get(id);return [...s.main,...s.join].map(l=>l.lineId);});
-      if(kind==='choice'){book.readLineIds.push(...source.dialogues.map(l=>l.lineId));api.switchPhase(source,'choice');index=entries.length-1;}else api.switchPhase(source,'main');
+      const api=PROTO_REVISION_ACTIONS,book=api.book(),runtime=PROTO_REVISION_RUNTIME;
+      const order=PROTO_STORY_SCRIPT.flatMap(chapter=>chapter.scenes.map(scene=>scene.sceneId)),position=order.indexOf(sceneId);
+      book.readSceneIds=order.slice(0,Math.max(0,position));
+      book.readLineIds=book.readSceneIds.flatMap(id=>{const s=runtime.sources.get(id);return [...s.dialogues,...s.protoCommon].map(line=>line.lineId);});
+      for(const id of book.readSceneIds)if(runtime.sources.get(id).choices?.length&&!Number.isInteger(book.choiceBySceneId[id]))book.choiceBySceneId[id]=0;
+      if(kind==='choice'){
+        book.readLineIds.push(...source.dialogues.map(line=>line.lineId));api.switchPhase(source,'choice');index=entries.length-1;
+      }else{
+        const target=Number.isInteger(details.cursor)?details.cursor-1:Math.max(0,index);
+        book.readLineIds.push(...source.dialogues.slice(0,target).map(line=>line.lineId));api.switchPhase(source,'main');
+      }
     }else if(kind==='choice')index=entries.length-1;
     if(Number.isInteger(details.cursor))index=details.cursor-1;
     run().dialogueCursor=Math.max(1,index+1);save();render();
