@@ -40,12 +40,28 @@ def build():
     cues = read('docs/three-content/staging-cues.json')
     props = read('docs/three-content/staging-prop-generation.json')
     acting = read('docs/three-content/staging-acting-generation.json')
+    art = read('dist/three-complete-art.json')
+    source_photos = art['sourcePhotos']
+    require(len(source_photos) == 3, 'Expected three original genealogy photographs')
+    for photo in source_photos:
+        require(photo['sourceKind'] == 'user-original-photo', 'Genealogy must use the original photographs')
+        checked_file(photo['src'], photo['sha256'])
     require(story['source']['sha256'] == cues['sourceManuscriptSha256'], 'Staging manuscript version differs')
     for record in props['generation'] + acting['generation']:
         checked_file(record['repoSrc'], record['sha256'])
-    for art in list(props['props'].values()) + list(acting['hands'].values()) + list(acting['variants'].values()):
-        checked_file(art['src'], art.get('sha256'))
-        validate_rect(art)
+    for asset in list(props['props'].values()) + list(acting['hands'].values()) + list(acting['variants'].values()):
+        checked_file(asset['src'], asset.get('sha256'))
+        validate_rect(asset)
+        for surface in asset.get('photoSurfaces', []):
+            rect = asset['sprite']['sourceRect']
+            require(surface['photoNumber'] in [1,2,3], 'Unknown original genealogy photograph')
+            require(surface['width'] > 0 and surface['height'] > 0 and
+                    surface['x'] >= rect['x'] and surface['y'] >= rect['y'] and
+                    surface['x'] + surface['width'] <= rect['x'] + rect['width'] and
+                    surface['y'] + surface['height'] <= rect['y'] + rect['height'],
+                    f'Genealogy surface outside character crop: {asset["id"]}')
+        if asset.get('photoSurfaces'):
+            require(sorted(surface['photoNumber'] for surface in asset['photoSurfaces']) == [1,2,3], 'All three original genealogy photographs must remain inserted')
     scenes = story['prologue']['scenes'] + [scene for chapter in story['chapters'] for scene in chapter['scenes']]
     require(len(scenes) == 218, 'Expected 218 approved playable scenes')
     scene_ids = {scene['sceneId'] for scene in scenes}
@@ -79,6 +95,12 @@ def build():
                 if group == 'portraits': require(rule['variant'] in acting['variants'], f'Missing acting variant {rule["variant"]}')
                 if group == 'backgrounds': require(rule['assetId'] in acting['backgrounds'], f'Missing background {rule["assetId"]}')
                 if group == 'handActions': require(rule['variant'] in acting['hands'], f'Missing hand action {rule["variant"]}')
+                if group == 'bookActions': require(rule['variant'] in ['ground','lifting','held'], 'Unknown arrival book state')
+                if group == 'actorPresence':
+                    person = art['characters'].get(rule['characterId'])
+                    require(person and person['name'] == rule['characterName'], 'Unknown visual cast identity')
+                    require(rule['characterName'] in scene['cast'], 'Visual cast absent from the approved scene')
+                    require(rule['position'] == person['position'], 'Visual cast position differs from approved art')
         cue_count += len(cue_ids)
         record_lines = [line['lineId'] for line in lines if cues.get('contextOverrides',{}).get(line['lineId'],line.get('presentationContext',scene.get('presentationContext','scene'))) == 'record']
         result[scene_id] = {
@@ -95,7 +117,8 @@ def build():
     require(set(cues.get('contextOverrides',{})) <= all_lines, 'Unknown context override line')
     data = {'contentVersion':cues['contentVersion'],'sourceManuscriptSha256':cues['sourceManuscriptSha256'],
             'contextOverrides':cues.get('contextOverrides',{}),'props':props['props'],
-            'variants':acting['variants'],'backgrounds':acting['backgrounds'],'hands':acting['hands'],'scenes':result}
+            'variants':acting['variants'],'backgrounds':acting['backgrounds'],'hands':acting['hands'],
+            'sourcePhotos':source_photos,'scenes':result}
     source = (ROOT/'scripts/three-staging-runtime.js').read_text(encoding='utf-8')
     require(source.count('/*__THREE_STAGING_DATA__*/') == 1, 'Missing or repeated staging data slot')
     compiled = source.replace('/*__THREE_STAGING_DATA__*/',json.dumps(data,ensure_ascii=False,separators=(',',':')))
@@ -105,7 +128,11 @@ def build():
              'scenesWithExplicitCues':sum(bool(scene['runtimeCueIds']) for scene in audit_scenes),
              'propImageCount':len(props['props']),'handActionImageCount':len(acting['hands']),
              'actorVariantImageCount':len(acting['variants']),'backgroundStateImageCount':len(acting['backgrounds']),
+             'originalGenealogyPhotoCount':len(source_photos),
              'sourcePixelsEdited':False,'saveMutations':False,'cursorMutations':False,'autoAdvance':False,
+             'runtimeVisualReviewComplete':False,
+             'allAuthoredStagingVerified':False,
+             'completionLedger':'docs/three-content/staging-completion-ledger.json',
              'sceneAudit':audit_scenes,
              'limitations':['Source line links and asset rectangles are validated separately from actual browser composition.',
                             'Generic props are original fictional illustrations, not archaeological or historical-document facsimiles.',
