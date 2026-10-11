@@ -24,8 +24,14 @@ if (globalThis.THREE_STORY_RUNTIME?.version === 3) {
     stringArray(value.unlockedQuestionIds) && value.unlockedQuestionIds.every(ownsOfficialQuestion) && stringArray(value.hintReadIds);
   function validStoryState(value) {
     if (!object(value) || value.version !== version || !object(value.scenes)) return false;
-    return Object.entries(value.scenes).every(([id, item]) => ownsScene(id) && object(item) && phases.has(item.phase) &&
-      (item.choiceIndex == null || Number.isInteger(item.choiceIndex) && item.choiceIndex >= 0 && item.choiceIndex < (runtime.sources.get(id).choices?.length || 0)));
+    return Object.entries(value.scenes).every(([id, item]) => {
+      if (!ownsScene(id) || !object(item) || !phases.has(item.phase)) return false;
+      const choices = runtime.sources.get(id).choices || [];
+      const hasChoice = Number.isInteger(item.choiceIndex) && item.choiceIndex >= 0 && item.choiceIndex < choices.length;
+      if (item.choiceIndex != null && !hasChoice) return false;
+      if (item.phase === 'choice' && !choices.length) return false;
+      return item.phase !== 'branch' || hasChoice;
+    });
   }
   function validRun(value) {
     if (!object(value) || !ownsChapter(value.currentChapter) || value.contentVersion !== version ||
@@ -36,6 +42,18 @@ if (globalThis.THREE_STORY_RUNTIME?.version === 3) {
       value.threeCheckpoint.returnTo?.values?.currentChapter === value.currentChapter;
     if (!source || (source.isPrologue ? value.currentChapter !== firstChapterId : source.chapterId !== value.currentChapter && !review)) return false;
     if (!ownsScene(value.storyId) || value.pending && !ownsScene(value.pending.sourceSceneId)) return false;
+    const current = value.threeStoryState.scenes[source.sceneId];
+    if (current?.phase === 'branch') {
+      const selected = STORIES[source.sceneId]?.choices?.[current.choiceIndex];
+      // A branch resumes only the spoken line and replies actually selected.
+      // Invalid source evidence is archived by migration before a safe restart.
+      if (!selected || !object(value.pending) || value.storyId !== source.sceneId ||
+          value.pending.sourceSceneId !== source.sceneId || value.pending.choiceId !== selected.choiceId ||
+          value.pending.threeChoiceId !== selected.threeChoiceId || value.pending.nextStoryId !== selected.nextStoryId ||
+          !Array.isArray(value.pending.resultDialogues) || !value.pending.resultDialogues.length ||
+          JSON.stringify(value.pending.resultDialogues) !== JSON.stringify(selected.resultDialogues) ||
+          value.dialogueCursor > selected.resultDialogues.length) return false;
+    } else if (value.pending != null) return false;
     if (value.activeQuestionId != null && !ownsQuestion(value.activeQuestionId)) return false;
     if (!Array.isArray(value.questionQueue) || value.questionQueue.some(id => !ownsQuestion(id))) return false;
     if (!Number.isInteger(value.questionQueueIndex) || value.questionQueueIndex < 0 || value.questionQueueIndex > value.questionQueue.length) return false;

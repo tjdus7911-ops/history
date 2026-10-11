@@ -1,0 +1,38 @@
+[
+  {
+    "repoSrc": "assets/ancient/three-complete/props/staging-props-continuity-v1.png",
+    "kind": "props",
+    "prompt": "Create a true transparent PNG sprite atlas for the same grounded hand-drawn 2D Korean historical visual-novel art style: warm muted colors, fine brown contour lines and painted cel shading, clear ordinary objects, no backdrop, no fake checkerboard, no people or body parts, no labels or readable text. A square canvas with a strict 3x3 grid, nine independent complete props; each item max65% of its cell, generous alpha0 gutters all around and between rows. Row-major order. 1: an EMPTY collapsed coarse linen grain sack, the mouth open enough to make emptiness clear, no grain spilling. 2: an old round brown cooking pot with one fine repaired crack on the outside and a discreet low waterline scratch; no flame, no food, no gaping hole. 3: a NEW small brown earthenware family eating bowl carrying a deliberately drawn dark wavy line that echoes the repaired crack of item2, an inherited private motif, NOT a broken bowl. 4: a modest intact gray-brown early Korean fictional household bowl with a small side handle and a simple private three-wave maker mark, rustic and unadorned, not a replica of a famous artifact. 5: one curved broken SHARD visibly from the SAME gray-brown bowl as item4, preserving part of that same three-wave maker mark and handle; not a whole bowl. These pairings are crucial story identity continuity. 6: a small folded worn beige handkerchief with one muted-red stitched corner. 7: a rolled travel blanket bound with plain cloth straps. 8: a small visibly carved static WOODEN lion model, wooden texture and join marks, neutral artifact presentation, not a living animal or monster. 9: a plain roughly forged flattened iron trade ingot, no numerals, coins, stamps or modern currency symbols. Keep every item distinct and fully visible; no shadows or objects crossing cell boundaries.",
+    "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-1c6bbe01-2102-4c3e-8864-a0b058db4c2c.png",
+    "sha256": "c55b8faaa7e3b8e6503ce10a0c91e093e0a5edeb66d05005fd0a1fcb447fe3c8",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "pixelEditingPerformed": false,
+    "visualReview": true
+  },
+  {
+    "repoSrc": "assets/ancient/three-complete/characters/haemyeong-acting-v1.png",
+    "kind": "actor-states",
+    "prompt": "Edit the attached game sprite sheet into a NEW transparent two-column one-row atlas containing ONLY TWO full-body versions of its TOP-LEFT man, the stoneworker Haemyeong. Discard the other three men. Preserve the top-left man's exact youthful-adult face, dark tied-back hair, beige robe with dark blue-gray collar and sash, white trousers, black wrist wraps and footwear. Preserve the existing polished 2D Korean historical game illustration, fine lines, muted colors, expression identity. Both figures face LEFT and have the same head size, natural bodily proportions, entire hair to shoes, generous alpha-zero padding and a wide transparent gap. Canvas square or wide enough, no column crossing. Left column: the same man quietly distressed and trying to endure an injured hand; his right forearm and hand are naturally held BEHIND his back, completely concealing that hand, his other hand relaxed; no blood, no stone or tools, no dramatic pose. Right column: the same man after basic care, calmer but still tired; right hand visible, gently held near waist and wrapped in clean WHITE LINEN, not a medical cast, slight loose strip, no blood; other hand relaxed. The bandage must be visibly different from his black wrist wrap and stay on the same anatomical right hand as the concealed one. Keep each complete independent silhouette and face stable. This is character acting for two authored states, not two different people. No backdrop, haze, labels, ground, text or fake transparency. True transparent alpha PNG.",
+    "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-bb3d5a72-a72b-43b3-8bd8-d826bd4a2199.png",
+    "sha256": "2b39eea68c0dff098f8efd33fcce32b1dda8454c403e4b46421b687684fe388c",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "pixelEditingPerformed": false,
+    "visualReview": true
+  },
+  {
+    "repoSrc": "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-after-collapse.png",
+    "kind": "scene-state",
+    "prompt": "Edit the attached approved illustration as a closely matched AFTER-state of the exact same scene. Preserve the entire camera composition, warm hand-painted 2D game style, thatched houses, mountain, pale spring trees, empty sacks, waiting villagers and the exact identities/clothes of the central elderly gray-haired grandmother and child. Change only the grandmother's posture and the immediate reactions: she has just fainted from hunger and weakness and is now slumped sitting low against the ground, knees bent, upper body sagging, eyes closed, still fully clothed, no injury, no blood. The SAME child in the same clothes remains beside her, alarmed and reaching toward her shoulder, and the nearest adult in line leans forward to notice but has not rescued or fed her. The main playable characters Seoa and Yeonwoo remain absent from this background so their separate foreground sprites can be used. The waiting line is still present. Food has NOT arrived and the situation is NOT solved. Do not change her clothing, hair, age or identity; do not make her dead or wounded. No text, no UI, no new prominent characters. This is the exact continuity state at the first line of Chapter1Scene1, after the prologue's unstable standing grandmother.",
+    "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-b4a3229a-4584-4c26-8e7a-83cd6752f862.png",
+    "sha256": "bd5fc0e5d0b82a91f4b14ae32509d09dc9f1cd3b602c0d7b8cfc3d7d28c04037",
+    "width": 1672,
+    "height": 941,
+    "mode": "RGB",
+    "pixelEditingPerformed": false,
+    "visualReview": true
+  }
+]

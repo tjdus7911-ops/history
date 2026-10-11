@@ -43,13 +43,13 @@ if (globalThis.CORE_APP_READY === true && globalThis.EDITORIAL_UI_READY === true
     } else if (tab === 'originals') {
       content = '<p>처음 공부하던 족보 세 장입니다. 이미지를 누르면 원본 크기로 볼 수 있어요.</p>'+globalThis.THREE_COMPLETE_ART.sourcePhotos.map((photo,index)=>'<button class="three-original-photo" data-three-photo="'+index+'"><img src="'+esc(photo.src)+'" alt="'+esc(photo.displayLabel)+'" loading="lazy"><span>'+esc(photo.displayLabel)+' · 확대하기</span></button>').join('');
     }
-    return '<div class="modal-overlay"><section class="modal three-recordbook-modal" role="dialog" aria-modal="true" aria-labelledby="three-book-title"><header><div><small>서아의 기록</small><h2 id="three-book-title">함께 지나온 시간</h2></div><button data-action="close">닫기</button></header><nav class="three-book-tabs" aria-label="기록책">'+tabs.map(([id,label])=>'<button data-three-book-tab="'+id+'" aria-pressed="'+(tab===id)+'">'+label+'</button>').join('')+'</nav><div class="three-book-content">'+content+'</div></section></div>';
+    return '<div class="modal-overlay three-modal-overlay"><section class="modal three-recordbook-modal" role="dialog" aria-modal="true" aria-labelledby="three-book-title"><header><div><small>서아의 기록</small><h2 id="three-book-title">함께 지나온 시간</h2></div><button data-action="close">닫기</button></header><nav class="three-book-tabs" aria-label="기록책">'+tabs.map(([id,label])=>'<button data-three-book-tab="'+id+'" aria-pressed="'+(tab===id)+'">'+label+'</button>').join('')+'</nav><div class="three-book-content">'+content+'</div></section></div>';
   }
   modalHTML = function() {
     if (modal?.type === 'three-recordbook') return recordBook();
     if (modal?.type === 'three-source-photo') {
       const photo = globalThis.THREE_COMPLETE_ART.sourcePhotos[modal.index];
-      return '<div class="modal-overlay"><section class="modal three-photo-modal" role="dialog" aria-modal="true" aria-label="'+esc(photo.displayLabel)+'"><header><h2>'+esc(photo.displayLabel)+'</h2><button data-action="three-photo-back">족보로 돌아가기</button><button data-action="close">닫기</button></header><div class="three-photo-pan"><img src="'+esc(photo.src)+'" alt="'+esc(photo.displayLabel)+'"></div></section></div>';
+      return '<div class="modal-overlay three-modal-overlay"><section class="modal three-photo-modal" role="dialog" aria-modal="true" aria-label="'+esc(photo.displayLabel)+'"><header><h2>'+esc(photo.displayLabel)+'</h2><button data-action="three-photo-back">족보로 돌아가기</button><button data-action="close">닫기</button></header><div class="three-photo-pan"><img src="'+esc(photo.src)+'" alt="'+esc(photo.displayLabel)+'"></div></section></div>';
     }
     return beforeModal();
   };

@@ -80,8 +80,8 @@
     },
     {
       "path": "tests/three-save-v3-test.cjs",
-      "bytes": 12497,
-      "sha256": "b3e21512dab13d8dfda341cae5776930b3ba78329e327174cd597e75b48be177"
+      "bytes": 18170,
+      "sha256": "9803ff12498e2f33be356f787cb92c007d3487c4848b44094732576457f16249"
     }
   ]
 }

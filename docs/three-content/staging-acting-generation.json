@@ -1,0 +1,333 @@
+{
+  "schemaVersion": 1,
+  "variants": {
+    "haemyeong-hidden": {
+      "id": "haemyeong-hidden",
+      "characterId": "civilian-c17-439b052a1f--initial",
+      "src": "assets/ancient/three-complete/characters/haemyeong-acting-v1.png",
+      "neutral": "assets/ancient/three-complete/characters/haemyeong-acting-v1.png",
+      "sha256": "2b39eea68c0dff098f8efd33fcce32b1dda8454c403e4b46421b687684fe388c",
+      "flipX": true,
+      "nativeFacing": "left",
+      "portraitGeometry": {
+        "coordinateSpace": "sheet-pixels",
+        "sheetWidth": 1536,
+        "sheetHeight": 1024,
+        "alphaThreshold": 32,
+        "faceBounds": {
+          "x": 304,
+          "y": 59,
+          "width": 96,
+          "height": 98
+        },
+        "alphaBounds": {
+          "x": 136,
+          "y": 12,
+          "width": 485,
+          "height": 989
+        },
+        "upperBodyBounds": {
+          "x": 136,
+          "y": 12,
+          "width": 485,
+          "height": 563
+        },
+        "framing": "full-body",
+        "faceAnchorMethod": "manual visual region excluding headgear"
+      },
+      "sprite": {
+        "columns": 2,
+        "rows": 1,
+        "column": 0,
+        "row": 0,
+        "sheetWidth": 1536,
+        "sheetHeight": 1024,
+        "sourceRect": {
+          "x": 134,
+          "y": 10,
+          "width": 489,
+          "height": 993
+        }
+      },
+      "sourceSceneId": "THR-C17-S04",
+      "visualFileReview": true,
+      "cropReview": {
+        "alphaThreshold": 32,
+        "foreignPortraitComponents": 0,
+        "completeSolidSilhouetteInsideClip": true,
+        "pixelEditingPerformed": false
+      },
+      "sourceReference": {
+        "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-05.png",
+        "sha256": "4d0f06e84084bcd7784a7db84d7f47c9fd6fdcec39154ce59193aef01517ce49"
+      }
+    },
+    "haemyeong-bandaged": {
+      "id": "haemyeong-bandaged",
+      "characterId": "civilian-c17-439b052a1f--initial",
+      "src": "assets/ancient/three-complete/characters/haemyeong-acting-v1.png",
+      "neutral": "assets/ancient/three-complete/characters/haemyeong-acting-v1.png",
+      "sha256": "2b39eea68c0dff098f8efd33fcce32b1dda8454c403e4b46421b687684fe388c",
+      "flipX": true,
+      "nativeFacing": "left",
+      "portraitGeometry": {
+        "coordinateSpace": "sheet-pixels",
+        "sheetWidth": 1536,
+        "sheetHeight": 1024,
+        "alphaThreshold": 32,
+        "faceBounds": {
+          "x": 1072,
+          "y": 59,
+          "width": 96,
+          "height": 98
+        },
+        "alphaBounds": {
+          "x": 903,
+          "y": 12,
+          "width": 490,
+          "height": 989
+        },
+        "upperBodyBounds": {
+          "x": 903,
+          "y": 12,
+          "width": 490,
+          "height": 563
+        },
+        "framing": "full-body",
+        "faceAnchorMethod": "manual visual region excluding headgear"
+      },
+      "sprite": {
+        "columns": 2,
+        "rows": 1,
+        "column": 1,
+        "row": 0,
+        "sheetWidth": 1536,
+        "sheetHeight": 1024,
+        "sourceRect": {
+          "x": 901,
+          "y": 10,
+          "width": 494,
+          "height": 993
+        }
+      },
+      "sourceSceneId": "THR-C17-S05",
+      "visualFileReview": true,
+      "cropReview": {
+        "alphaThreshold": 32,
+        "foreignPortraitComponents": 0,
+        "completeSolidSilhouetteInsideClip": true,
+        "pixelEditingPerformed": false
+      },
+      "sourceReference": {
+        "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-05.png",
+        "sha256": "4d0f06e84084bcd7784a7db84d7f47c9fd6fdcec39154ce59193aef01517ce49"
+      }
+    },
+    "yeoul-empty": {
+      "id": "yeoul-empty",
+      "characterId": "civilian-c15-dadbb6670e--initial",
+      "src": "assets/ancient/three-complete/characters/yeoul-c15-empty-hands-v1.png",
+      "neutral": "assets/ancient/three-complete/characters/yeoul-c15-empty-hands-v1.png",
+      "sha256": "55e0d3d76b655c0efc489d8ae1f4c1fd021cc1565ba30624dab1d90b0437da0d",
+      "flipX": false,
+      "nativeFacing": "right",
+      "portraitGeometry": {
+        "coordinateSpace": "sheet-pixels",
+        "sheetWidth": 1024,
+        "sheetHeight": 1536,
+        "alphaThreshold": 32,
+        "faceBounds": {
+          "x": 478,
+          "y": 79,
+          "width": 140,
+          "height": 149
+        },
+        "alphaBounds": {
+          "x": 276,
+          "y": 19,
+          "width": 501,
+          "height": 1498
+        },
+        "upperBodyBounds": {
+          "x": 276,
+          "y": 19,
+          "width": 501,
+          "height": 853
+        },
+        "framing": "full-body",
+        "faceAnchorMethod": "manual visual region excluding headgear"
+      },
+      "sprite": {
+        "columns": 1,
+        "rows": 1,
+        "column": 0,
+        "row": 0,
+        "sheetWidth": 1024,
+        "sheetHeight": 1536,
+        "sourceRect": {
+          "x": 274,
+          "y": 17,
+          "width": 505,
+          "height": 1502
+        }
+      },
+      "sourceSceneId": "THR-C15-S07",
+      "visualFileReview": true,
+      "cropReview": {
+        "alphaThreshold": 32,
+        "foreignPortraitComponents": 0,
+        "completeSolidSilhouetteInsideClip": true,
+        "pixelEditingPerformed": false
+      },
+      "sourceReference": {
+        "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-06.png",
+        "sha256": "50d889e5cef9004e8632c83fea1471e170ec3ff7dea526df80f3725b1486e774"
+      }
+    }
+  },
+  "backgrounds": {
+    "collapsed-queue": {
+      "repoSrc": "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-after-collapse.png",
+      "kind": "scene-state",
+      "prompt": "Edit the attached approved illustration as a closely matched AFTER-state of the exact same scene. Preserve the entire camera composition, warm hand-painted 2D game style, thatched houses, mountain, pale spring trees, empty sacks, waiting villagers and the exact identities/clothes of the central elderly gray-haired grandmother and child. Change only the grandmother's posture and the immediate reactions: she has just fainted from hunger and weakness and is now slumped sitting low against the ground, knees bent, upper body sagging, eyes closed, still fully clothed, no injury, no blood. The SAME child in the same clothes remains beside her, alarmed and reaching toward her shoulder, and the nearest adult in line leans forward to notice but has not rescued or fed her. The main playable characters Seoa and Yeonwoo remain absent from this background so their separate foreground sprites can be used. The waiting line is still present. Food has NOT arrived and the situation is NOT solved. Do not change her clothing, hair, age or identity; do not make her dead or wounded. No text, no UI, no new prominent characters. This is the exact continuity state at the first line of Chapter1Scene1, after the prologue's unstable standing grandmother.",
+      "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-b4a3229a-4584-4c26-8e7a-83cd6752f862.png",
+      "sha256": "bd5fc0e5d0b82a91f4b14ae32509d09dc9f1cd3b602c0d7b8cfc3d7d28c04037",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "pixelEditingPerformed": false,
+      "visualReview": true,
+      "id": "collapsed-queue",
+      "src": "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-after-collapse.png",
+      "sourceSceneId": "THR-C01-S01",
+      "state": "grandmother-collapsed-before-rescue",
+      "preservedBeforeSceneId": "THR-PRO-S03"
+    },
+    "letter-relay-post": {
+      "id": "letter-relay-post",
+      "kind": "scene-state",
+      "repoSrc": "assets/ancient/three-complete/backgrounds/baekje-letter-relay-post.png",
+      "prompt": "Create a clean unpeopled background illustration for a hand-drawn 2D Korean historical visual novel. An ordinary fictional Baekje rear-line correspondence post near Gwansanseong in 554, before news of the battle's result. Quiet daytime, a small rough timber shelter with cloth awning, a low desk carrying plain folded cream letters and writing brush, a simple wooden bench, water jar, bundled supplies, a path leading to distant army tents and wooded hills. The foreground left and right quarters must have comfortable open space for separate standing character sprites. This is a temporary civilian-to-soldier letter relay, not a palace, famous monument, victory scene, destruction scene or battlefield. No people, no visible fighting or injuries, no flags with symbols, no legible text, no modern objects, no UI. Warm restrained tan/green/gray palette, subtle brown ink outlines, atmospheric painterly shading, polished semi-realistic Korean anime game background consistent with a historical countryside illustration. Landscape 16:9, full opaque background, subtle perspective and readable setting.",
+      "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-98abd3ef-266e-41e8-afce-a381c770a81a.png",
+      "sha256": "488811d65a31a7561497f4478d4af7fef53002f7017963964e6ab00a6cb66e91",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "pixelEditingPerformed": false,
+      "visualReview": true,
+      "src": "assets/ancient/three-complete/backgrounds/baekje-letter-relay-post.png",
+      "sourceSceneId": "THR-C08-S08",
+      "condition": "B1-R01 through B1-R03 only; restore waiting place at join"
+    }
+  },
+  "hands": {
+    "resting-hand": {
+      "id": "resting-hand",
+      "src": "assets/ancient/three-complete/props/seoa-desk-hands-v1.png",
+      "sha256": "45a756453db65ff451ad1fad84e4d418b157708b703a1c96af215270d05df035",
+      "sheetWidth": 1774,
+      "sheetHeight": 887,
+      "sourceRect": {
+        "x": 89,
+        "y": 89,
+        "width": 786,
+        "height": 793
+      },
+      "alphaBounds": {
+        "x": 91,
+        "y": 91,
+        "width": 782,
+        "height": 789
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    },
+    "lifting-hand": {
+      "id": "lifting-hand",
+      "src": "assets/ancient/three-complete/props/seoa-desk-hands-v1.png",
+      "sha256": "45a756453db65ff451ad1fad84e4d418b157708b703a1c96af215270d05df035",
+      "sheetWidth": 1774,
+      "sheetHeight": 887,
+      "sourceRect": {
+        "x": 1052,
+        "y": 106,
+        "width": 719,
+        "height": 774
+      },
+      "alphaBounds": {
+        "x": 1054,
+        "y": 108,
+        "width": 715,
+        "height": 770
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    }
+  },
+  "generation": [
+    {
+      "repoSrc": "assets/ancient/three-complete/characters/haemyeong-acting-v1.png",
+      "kind": "actor-states",
+      "prompt": "Edit the attached game sprite sheet into a NEW transparent two-column one-row atlas containing ONLY TWO full-body versions of its TOP-LEFT man, the stoneworker Haemyeong. Discard the other three men. Preserve the top-left man's exact youthful-adult face, dark tied-back hair, beige robe with dark blue-gray collar and sash, white trousers, black wrist wraps and footwear. Preserve the existing polished 2D Korean historical game illustration, fine lines, muted colors, expression identity. Both figures face LEFT and have the same head size, natural bodily proportions, entire hair to shoes, generous alpha-zero padding and a wide transparent gap. Canvas square or wide enough, no column crossing. Left column: the same man quietly distressed and trying to endure an injured hand; his right forearm and hand are naturally held BEHIND his back, completely concealing that hand, his other hand relaxed; no blood, no stone or tools, no dramatic pose. Right column: the same man after basic care, calmer but still tired; right hand visible, gently held near waist and wrapped in clean WHITE LINEN, not a medical cast, slight loose strip, no blood; other hand relaxed. The bandage must be visibly different from his black wrist wrap and stay on the same anatomical right hand as the concealed one. Keep each complete independent silhouette and face stable. This is character acting for two authored states, not two different people. No backdrop, haze, labels, ground, text or fake transparency. True transparent alpha PNG.",
+      "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-bb3d5a72-a72b-43b3-8bd8-d826bd4a2199.png",
+      "sha256": "2b39eea68c0dff098f8efd33fcce32b1dda8454c403e4b46421b687684fe388c",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "pixelEditingPerformed": false,
+      "visualReview": true
+    },
+    {
+      "repoSrc": "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-after-collapse.png",
+      "kind": "scene-state",
+      "prompt": "Edit the attached approved illustration as a closely matched AFTER-state of the exact same scene. Preserve the entire camera composition, warm hand-painted 2D game style, thatched houses, mountain, pale spring trees, empty sacks, waiting villagers and the exact identities/clothes of the central elderly gray-haired grandmother and child. Change only the grandmother's posture and the immediate reactions: she has just fainted from hunger and weakness and is now slumped sitting low against the ground, knees bent, upper body sagging, eyes closed, still fully clothed, no injury, no blood. The SAME child in the same clothes remains beside her, alarmed and reaching toward her shoulder, and the nearest adult in line leans forward to notice but has not rescued or fed her. The main playable characters Seoa and Yeonwoo remain absent from this background so their separate foreground sprites can be used. The waiting line is still present. Food has NOT arrived and the situation is NOT solved. Do not change her clothing, hair, age or identity; do not make her dead or wounded. No text, no UI, no new prominent characters. This is the exact continuity state at the first line of Chapter1Scene1, after the prologue's unstable standing grandmother.",
+      "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-b4a3229a-4584-4c26-8e7a-83cd6752f862.png",
+      "sha256": "bd5fc0e5d0b82a91f4b14ae32509d09dc9f1cd3b602c0d7b8cfc3d7d28c04037",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "pixelEditingPerformed": false,
+      "visualReview": true
+    },
+    {
+      "id": "letter-relay-post",
+      "kind": "scene-state",
+      "repoSrc": "assets/ancient/three-complete/backgrounds/baekje-letter-relay-post.png",
+      "prompt": "Create a clean unpeopled background illustration for a hand-drawn 2D Korean historical visual novel. An ordinary fictional Baekje rear-line correspondence post near Gwansanseong in 554, before news of the battle's result. Quiet daytime, a small rough timber shelter with cloth awning, a low desk carrying plain folded cream letters and writing brush, a simple wooden bench, water jar, bundled supplies, a path leading to distant army tents and wooded hills. The foreground left and right quarters must have comfortable open space for separate standing character sprites. This is a temporary civilian-to-soldier letter relay, not a palace, famous monument, victory scene, destruction scene or battlefield. No people, no visible fighting or injuries, no flags with symbols, no legible text, no modern objects, no UI. Warm restrained tan/green/gray palette, subtle brown ink outlines, atmospheric painterly shading, polished semi-realistic Korean anime game background consistent with a historical countryside illustration. Landscape 16:9, full opaque background, subtle perspective and readable setting.",
+      "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-98abd3ef-266e-41e8-afce-a381c770a81a.png",
+      "sha256": "488811d65a31a7561497f4478d4af7fef53002f7017963964e6ab00a6cb66e91",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "pixelEditingPerformed": false,
+      "visualReview": true
+    },
+    {
+      "id": "seoa-desk-hands",
+      "kind": "hand-actions",
+      "repoSrc": "assets/ancient/three-complete/props/seoa-desk-hands-v1.png",
+      "prompt": "Use the attached approved character as the identity/style/clothing reference to create a NEW isolated hand-action sprite atlas, two columns one row, TRUE transparent alpha. Show only the same young adult woman's right forearm and hand from a top-down desk viewpoint, not the rest of her body or face. Exact light skin tone and muted teal jacket sleeve with ivory rolled inner cuff from the attached modern Seoa outfit. Two complete forearm/hand sprites, one per cell, wide fully transparent gutter; no table, paper, book, photo, writing, objects, shadows in backdrop, haze or UI. LEFT: her right hand lies gently open, palm down, five natural fingers relaxed and slightly spread, fingers pointing diagonally toward the upper-left, as if resting over a book margin. RIGHT: the same right hand and sleeve gently pinch/lift a paper corner with thumb and index finger, other three fingers relaxed; the paper itself MUST be absent/transparent because the actual source paper will be composited separately. No jewelry, no injuries, no extra/missing fingers, no detached floating finger pieces. Natural feminine adult hand anatomy, the sleeve connects continuously to the forearm. Polished delicate hand-drawn 2D game lines and cel shading. Each action fully within its independent transparent cell. Keep wrist and finger scale the same between the two actions.",
+      "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-1a804967-69ed-4ec9-aa2a-cc8554649d13.png",
+      "sha256": "45a756453db65ff451ad1fad84e4d418b157708b703a1c96af215270d05df035",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "pixelEditingPerformed": false,
+      "visualReview": true
+    },
+    {
+      "id": "yeoul-empty",
+      "kind": "actor-state",
+      "repoSrc": "assets/ancient/three-complete/characters/yeoul-c15-empty-hands-v1.png",
+      "prompt": "Edit the attached 3x3 sheet into ONE isolated full-body portrait of ONLY the woman in the BOTTOM-MIDDLE cell, Yeoul of the Gaya refugee scene. Preserve her exact worried young-adult female face, dark brown hair tied back with a small rust-red ribbon, ivory patched work robe, gray-blue sleeveless outer vest and collar. Preserve the exact refined hand-drawn 2D historical game style and her body proportions. She looks RIGHT in a three-quarter view. Extend naturally from full hair top down through the knees to her complete simple trousered legs and modest cloth/leather travel shoes. REMOVE the hammer completely. Her hands are naturally relaxed, EMPTY, one resting lightly near her waist and the other down by her side; do not replace the hammer with any other tool, bag, letter or prop. This is the exact same woman immediately after she has redistributed or left behind heavy belongings, not a new person. Whole head to feet within the canvas, generous transparent margin, opaque character with true alpha-zero background. No other figures, no background, no haze, no floor, no text. Face/costume continuity with that specific bottom-middle cell is the most important requirement; do not copy the neighbor woman's face.",
+      "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-ebe86fc1-f01c-432d-a957-f551636a0fe5.png",
+      "sha256": "55e0d3d76b655c0efc489d8ae1f4c1fd021cc1565ba30624dab1d90b0437da0d",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "pixelEditingPerformed": false,
+      "visualReview": true
+    }
+  ],
+  "runtimeVisualQA": "pending"
+}

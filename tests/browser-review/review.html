@@ -3,7 +3,32 @@
 <style>body{margin:0;background:#e9e8e3;color:#243039;font:14px/1.5 system-ui,sans-serif}header{padding:14px 18px;background:#fff;border-bottom:1px solid #bfc3c0}h1{font-size:19px;margin:0 0 8px}p{margin:6px 0}label{margin-right:12px}select,button{font:inherit;padding:8px 11px;margin:4px;border:1px solid #aeb8b5;border-radius:5px;background:#fff;color:inherit;min-height:40px}button[aria-pressed=true]{background:#19303d;color:#fff}#viewport{padding:18px;overflow:auto}iframe{display:block;border:0;background:white;box-shadow:0 4px 24px #142c3922;max-width:none}#status{font-size:12px;white-space:pre-wrap;color:#405259}small{color:#52615d}</style></head>
 <body><header><h1>배포 전 게임 화면 비교</h1><p>실제 게임의 대본·렌더러·버튼·저장을 사용합니다. 이 검증 화면의 저장은 일반 게임 기록과 분리됩니다.</p>
 <label>확인할 장면 <select id="scenario" aria-label="확인할 장면">
-<option value="menus">시대 선택부터 직접 플레이</option><option value="goryeo-player">기준 고려 · 주인공</option><option value="goryeo-npc">기준 고려 · NPC 대화</option><option value="joseon-npc">기준 조선 · NPC 대화</option><option value="proto-player">원삼국 · 주인공</option><option value="proto-npc">원삼국 · NPC 대화</option><option value="proto-choice">원삼국 · 대사 선택</option><option value="three-prologue">삼국 · 프롤로그</option><option value="three-yeonwoo">삼국 · 연우</option><option value="three-eulpaso">삼국 · 을파소</option><option value="three-npc-switch">삼국 · NPC 교체</option><option value="three-long-line">삼국 · 가장 긴 본문 대사</option><option value="three-long-choice">삼국 · 긴 대사 선택지</option><option value="three-choice-quiz">삼국 · 선택·반응·기출·복귀</option><option value="proto-choice-quiz">원삼국 · 선택·반응·기출·복귀</option>
+<option value="menus">시대 선택부터 직접 플레이</option><option value="goryeo-player">기준 고려 · 주인공</option><option value="goryeo-npc">기준 고려 · NPC 대화</option><option value="joseon-npc">기준 조선 · NPC 대화</option><option value="proto-player">원삼국 · 주인공</option><option value="proto-npc">원삼국 · NPC 대화</option><option value="proto-choice">원삼국 · 대사 선택</option><option value="three-prologue">삼국 · 프롤로그</option><option value="three-yeonwoo">삼국 · 연우</option><option value="three-eulpaso">삼국 · 을파소</option><option value="three-npc-switch">삼국 · NPC 교체</option>
+<option value="three-sundo">삼국 · 순도 (C03-S01)</option>
+<option value="three-haein-young">삼국 · 해인 · 젊은 시절 (C07-S04)</option>
+<option value="three-haein-older">삼국 · 해인 · 나이 든 시절 (C07-S06)</option>
+<option value="three-garam">삼국 · 가람 (C10-S04)</option>
+<option value="three-haram">삼국 · 하람 (C12-S01)</option>
+<option value="three-record-line">삼국 · 기록책 대사 (C16-S03 · 10번째)</option>
+<option value="three-record-choice">삼국 · 기록책 대사 뒤 선택 (C16-S03)</option>
+<option value="three-stage-grandmother-before">연출 · 할머니 · 쓰러지기 전 (PRO-S03)</option>
+<option value="three-stage-grandmother-after">연출 · 할머니 · 쓰러진 뒤 (C01-S01)</option>
+<option value="three-stage-tools-lost">연출 · 도구상자 유실 · B1 반응 (C07-S01)</option>
+<option value="three-stage-tools-kept">연출 · 도구상자 보존 · B2 반응 (C07-S01)</option>
+<option value="three-stage-tools-lost-join">연출 · 도구상자 유실 · B1 합류 (C07-S01)</option>
+<option value="three-stage-tools-kept-join">연출 · 도구상자 보존 · B2 합류 (C07-S01)</option>
+<option value="three-stage-letter-delivered">연출 · 한결 연락 초소 · B1 반응 (C08-S08)</option>
+<option value="three-stage-letter-return">연출 · 여울 대기처 복귀 · B1 합류 (C08-S08)</option>
+<option value="three-stage-letter-wait">연출 · 여울 대기처 · B2 반응 (C08-S08)</option>
+<option value="three-stage-letter-wait-join">연출 · 여울 대기처 · B2 합류 (C08-S08)</option>
+<option value="three-stage-hammer-down">연출 · 여울 망치 내려놓기 · B1 반응 (C15-S07)</option>
+<option value="three-stage-hammer-join">연출 · 여울 빈손 · B1 합류 (C15-S07)</option>
+<option value="three-stage-hand-hidden">연출 · 해명 손 숨김 (C17-S04)</option>
+<option value="three-stage-hand-bandage">연출 · 흰 천으로 손 묶기 · B1 반응 (C17-S04)</option>
+<option value="three-stage-bandage-continues">연출 · 다음 씬에서도 붕대 유지 (C17-S05)</option>
+<option value="three-stage-reunion-names">연출 · 은서 재회 · 연락표만 (C22-S06)</option>
+<option value="three-stage-reunion-tools">연출 · 은서 재회 · 경로·바늘함 (C22-S06)</option>
+<option value="three-long-line">삼국 · 가장 긴 본문 대사</option><option value="three-long-choice">삼국 · 긴 대사 선택지</option><option value="three-choice-quiz">삼국 · 선택·반응·기출·복귀</option><option value="proto-choice-quiz">원삼국 · 선택·반응·기출·복귀</option>
 </select></label><span id="widths"><button data-width="360">360px</button><button data-width="390" aria-pressed="true">390px</button><button data-width="430">430px</button><button data-width="1363">PC 1363px</button></span><button id="reload">새로고침·이어하기</button><button id="fresh">이 검증 장면 새로 시작</button><p id="status" role="status">불러오는 중</p><small>장면 바로 보기는 독립된 시험 저장에만 적용됩니다. PC·모바일 스크린샷은 아래의 실제 게임 프레임을 촬영합니다.</small></header>
 <main id="viewport"><iframe id="game" title="게임 검증 화면" width="390" height="844"></iframe></main>
 <script>

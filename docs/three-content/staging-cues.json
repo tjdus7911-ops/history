@@ -1,0 +1,3193 @@
+{
+  "schemaVersion": 1,
+  "contentVersion": "three-staging-v1",
+  "sourceManuscriptSha256": "09e17274a506391305b36efee52b1cd60c4c504cc6619e68fe70cd9909e9674e",
+  "scenes": {
+    "THR-C01-S01": {
+      "props": [
+        {
+          "propId": "empty-sack",
+          "from": "THR-C01-S01-M01",
+          "scope": "scene",
+          "label": "빈 배급 자루"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [
+        {
+          "target": "player",
+          "value": "attentive",
+          "from": "THR-C01-S01-M01",
+          "scope": "scene"
+        }
+      ],
+      "portraits": [],
+      "backgrounds": [
+        {
+          "assetId": "collapsed-queue",
+          "from": "THR-C01-S01-M01",
+          "scope": "scene"
+        }
+      ]
+    },
+    "THR-C01-S02": {
+      "props": [
+        {
+          "propId": "grain-sack",
+          "from": "THR-C01-S02-M01",
+          "scope": "scene",
+          "label": "문 안의 관곡"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C01-S03": {
+      "props": [
+        {
+          "propId": "contact-sheet",
+          "from": "THR-C01-S03-M02",
+          "scope": "scene",
+          "label": "옛 부족 장부"
+        },
+        {
+          "propId": "contact-sheet",
+          "from": "THR-C01-S03-M02",
+          "scope": "scene",
+          "label": "지역 명부"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C01-S04": {
+      "props": [
+        {
+          "propId": "record-book",
+          "from": "THR-C01-S04-M05",
+          "scope": "scene",
+          "label": "씨앗과 먹을 몫"
+        }
+      ],
+      "captions": [
+        {
+          "label": "기록책 재방문 · 194년 → 191년 · 3년 전",
+          "from": "THR-C01-S04-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C01-S04-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C01-S05": {
+      "props": [
+        {
+          "propId": "contact-sheet",
+          "from": "THR-C01-S05-M01",
+          "scope": "scene",
+          "label": "구휼 계산 장부"
+        }
+      ],
+      "captions": [
+        {
+          "label": "191년의 장을 닫고 · 194년 10월",
+          "from": "THR-C01-S05-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C01-S05-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C01-S06": {
+      "props": [
+        {
+          "propId": "grain-sack",
+          "from": "THR-C01-S06-M01",
+          "scope": "scene",
+          "label": "빌려 주는 곡식"
+        }
+      ],
+      "captions": [
+        {
+          "label": "195년 봄 · 진대법 시행 뒤의 마을",
+          "from": "THR-C01-S06-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C01-S06-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C01-S07": {
+      "props": [
+        {
+          "propId": "grain-sack",
+          "from": "THR-C01-S07-M01",
+          "scope": "scene",
+          "label": "남은 수확"
+        }
+      ],
+      "captions": [
+        {
+          "label": "195년 10월 · 상환을 앞둔 마을",
+          "from": "THR-C01-S07-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C01-S07-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C01-S08": {
+      "props": [
+        {
+          "propId": "grain-sack",
+          "from": "THR-C01-S08-M01",
+          "scope": "scene",
+          "label": "길에서 먹을 볶은 곡식",
+          "phases": [
+            "main",
+            "choice",
+            "branch"
+          ]
+        }
+      ],
+      "captions": [
+        {
+          "label": "195년 → 313년 · 118년이 멀어진다",
+          "from": "THR-C01-S08-J01",
+          "kind": "timeline",
+          "scope": "both",
+          "phases": [
+            "join"
+          ]
+        }
+      ],
+      "visibility": [
+        {
+          "hideNpc": true,
+          "from": "THR-C01-S08-J01",
+          "scope": "both"
+        }
+      ],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C02-S02": {
+      "props": [
+        {
+          "propId": "record-book",
+          "from": "THR-C02-S02-M02",
+          "scope": "scene",
+          "label": "젖은 장부"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C02-S03": {
+      "props": [
+        {
+          "propId": "grain-sack",
+          "from": "THR-C02-S03-M03",
+          "scope": "scene",
+          "label": "거점으로 보낼 군량"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C03-S05": {
+      "props": [
+        {
+          "propId": "record-book",
+          "from": "THR-C03-S05-M01",
+          "scope": "scene",
+          "label": "영락의 연수"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C03-S08": {
+      "props": [
+        {
+          "propId": "balance-scale",
+          "from": "THR-C03-S08-J01",
+          "scope": "scene",
+          "label": "고쳐 쓸 저울"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C04-S02": {
+      "props": [
+        {
+          "propId": "grain-sack",
+          "from": "THR-C04-S02-M01",
+          "scope": "scene",
+          "label": "나루의 곡식 짐"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C04-S05": {
+      "props": [
+        {
+          "propId": "letter",
+          "from": "THR-C04-S05-M01",
+          "scope": "scene",
+          "label": "북위로 보내는 외교문서"
+        }
+      ],
+      "captions": [
+        {
+          "label": "472년 · 백제 한성 · 39년 뒤",
+          "from": "THR-C04-S05-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C04-S05-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C04-S09": {
+      "props": [
+        {
+          "propId": "letter",
+          "from": "THR-C04-S09-M01",
+          "scope": "both",
+          "label": "427년에 쓴 다은의 편지"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C05-S01": {
+      "props": [
+        {
+          "propId": "grain-sack",
+          "from": "THR-C05-S01-M01",
+          "scope": "scene",
+          "label": "후방 군량"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C05-S03": {
+      "props": [
+        {
+          "propId": "bandage",
+          "from": "THR-C05-S03-M01",
+          "scope": "scene",
+          "label": "구호소의 천"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C05-S04": {
+      "props": [
+        {
+          "propId": "rope",
+          "from": "THR-C05-S04-M02",
+          "scope": "scene"
+        }
+      ],
+      "captions": [
+        {
+          "label": "631년 · 19년 뒤 · 천리장성 축조 시작",
+          "from": "THR-C05-S04-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C05-S04-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C05-S08": {
+      "props": [
+        {
+          "propId": "empty-sack",
+          "from": "THR-C05-S08-M01",
+          "scope": "scene"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C05-S09": {
+      "props": [
+        {
+          "propId": "contact-sheet",
+          "from": "THR-C05-S09-M01",
+          "scope": "scene",
+          "label": "서로 다른 명령서"
+        },
+        {
+          "propId": "letter",
+          "from": "THR-C05-S09-M01",
+          "scope": "scene",
+          "label": "엇갈린 지시"
+        }
+      ],
+      "captions": [
+        {
+          "label": "666년 · 안시성 전투에서 21년 뒤",
+          "from": "THR-C05-S09-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C05-S09-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C06-S02": {
+      "props": [
+        {
+          "propId": "contact-sheet",
+          "from": "THR-C06-S02-M01",
+          "scope": "scene",
+          "label": "솔아의 수선 대금 청구서"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C06-S04": {
+      "props": [
+        {
+          "propId": "grain-sack",
+          "from": "THR-C06-S04-M01",
+          "scope": "scene"
+        },
+        {
+          "propId": "rope",
+          "from": "THR-C06-S04-M01",
+          "scope": "scene"
+        }
+      ],
+      "captions": [
+        {
+          "label": "371년 · 솔아의 후손, 새 인물 유솔",
+          "from": "THR-C06-S04-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C06-S04-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C06-S07": {
+      "props": [
+        {
+          "propId": "letter",
+          "from": "THR-C06-S07-M01",
+          "scope": "scene",
+          "label": "외교 문서"
+        },
+        {
+          "propId": "record-book",
+          "from": "THR-C06-S07-M01",
+          "scope": "scene",
+          "label": "책 꾸러미"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C07-S01": {
+      "props": [
+        {
+          "propId": "toolbox",
+          "from": "THR-C07-S01-M03",
+          "scope": "scene",
+          "phases": [
+            "main",
+            "choice"
+          ],
+          "label": "성 안의 도구 상자"
+        },
+        {
+          "propId": "toolbox",
+          "from": "THR-C07-S01-B2-R02",
+          "scope": "scene",
+          "choiceId": "THR-C07-S01-B2",
+          "phases": [
+            "branch",
+            "join"
+          ],
+          "label": "함께 밀어 건진 상자"
+        },
+        {
+          "propId": "toolbox",
+          "from": "THR-C07-S01-B1-LABEL",
+          "through": "THR-C07-S01-B1-LABEL",
+          "scope": "scene",
+          "choiceId": "THR-C07-S01-B1",
+          "phases": [
+            "branch"
+          ],
+          "label": "아직 성 안에 있는 상자"
+        },
+        {
+          "propId": "toolbox",
+          "from": "THR-C07-S01-B2-LABEL",
+          "through": "THR-C07-S01-B2-R01",
+          "scope": "scene",
+          "choiceId": "THR-C07-S01-B2",
+          "phases": [
+            "branch"
+          ],
+          "label": "문턱에 걸린 수레의 상자"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [
+        {
+          "target": "player",
+          "value": "steady",
+          "from": "THR-C07-S01-B1-LABEL",
+          "choiceId": "THR-C07-S01-B1",
+          "phases": [
+            "branch"
+          ],
+          "scope": "scene"
+        },
+        {
+          "target": "player",
+          "value": "effort",
+          "from": "THR-C07-S01-B2-R01",
+          "through": "THR-C07-S01-B2-R02",
+          "choiceId": "THR-C07-S01-B2",
+          "phases": [
+            "branch"
+          ],
+          "scope": "scene"
+        }
+      ],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C07-S06": {
+      "props": [
+        {
+          "propId": "toolbox",
+          "from": "THR-C07-S06-M01",
+          "scope": "scene",
+          "label": "17년 뒤 다시 마련한 도구"
+        }
+      ],
+      "captions": [
+        {
+          "label": "492년 · 17년이 흐른 해인의 삶",
+          "from": "THR-C07-S06-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C07-S06-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C07-S08": {
+      "props": [
+        {
+          "propId": "empty-bowl",
+          "from": "THR-C07-S08-M07",
+          "scope": "scene",
+          "label": "새지 않는지 살필 그릇"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C07-S09": {
+      "props": [
+        {
+          "propId": "record-book",
+          "from": "THR-C07-S09-M07",
+          "scope": "scene",
+          "label": "지방 장부"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C08-S02": {
+      "props": [
+        {
+          "propId": "contact-sheet",
+          "from": "THR-C08-S02-M01",
+          "scope": "scene",
+          "label": "담로의 장부"
+        },
+        {
+          "propId": "contact-sheet",
+          "from": "THR-C08-S02-M02",
+          "scope": "scene",
+          "label": "마을에서 올린 수"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C08-S07": {
+      "props": [
+        {
+          "propId": "route-note",
+          "from": "THR-C08-S07-M01",
+          "scope": "both",
+          "label": "551년과 553년의 강"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C08-S08": {
+      "props": [
+        {
+          "propId": "letter",
+          "from": "THR-C08-S08-M04",
+          "scope": "scene",
+          "label": "여울의 편지",
+          "phases": [
+            "main",
+            "choice"
+          ]
+        },
+        {
+          "propId": "letter",
+          "from": "THR-C08-S08-B1-R01",
+          "scope": "scene",
+          "label": "한결에게 닿은 편지",
+          "choiceId": "THR-C08-S08-B1",
+          "phases": [
+            "branch"
+          ]
+        },
+        {
+          "propId": "letter",
+          "from": "THR-C08-S08-B1-R03",
+          "scope": "scene",
+          "label": "한결의 답장",
+          "choiceId": "THR-C08-S08-B1",
+          "phases": [
+            "branch",
+            "join"
+          ]
+        },
+        {
+          "propId": "contact-sheet",
+          "from": "THR-C08-S08-B2-R03",
+          "scope": "scene",
+          "label": "소식을 받을 곳",
+          "choiceId": "THR-C08-S08-B2",
+          "phases": [
+            "branch",
+            "join"
+          ]
+        }
+      ],
+      "captions": [
+        {
+          "label": "554년 · 여울은 60대 후반, 손자 한결은 새 청년",
+          "from": "THR-C08-S08-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C08-S08-M01"
+          ]
+        },
+        {
+          "label": "한결이 있는 후방 연락 초소",
+          "from": "THR-C08-S08-B1-R01",
+          "kind": "timeline",
+          "scope": "both",
+          "choiceId": "THR-C08-S08-B1",
+          "phases": [
+            "branch"
+          ]
+        },
+        {
+          "label": "여울의 대기처로 돌아온다",
+          "from": "THR-C08-S08-J01",
+          "kind": "timeline",
+          "scope": "both",
+          "choiceId": "THR-C08-S08-B1",
+          "phases": [
+            "join"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": [
+        {
+          "assetId": "letter-relay-post",
+          "from": "THR-C08-S08-B1-R01",
+          "choiceId": "THR-C08-S08-B1",
+          "phases": [
+            "branch"
+          ],
+          "scope": "scene"
+        }
+      ]
+    },
+    "THR-C08-S09": {
+      "props": [
+        {
+          "propId": "bandage",
+          "from": "THR-C08-S09-M03",
+          "scope": "scene",
+          "label": "구호소의 천"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C08-S10": {
+      "props": [
+        {
+          "propId": "empty-bowl",
+          "from": "THR-C08-S10-M02",
+          "scope": "scene",
+          "label": "거래할 그릇"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C09-S01": {
+      "props": [
+        {
+          "propId": "craft-tools",
+          "from": "THR-C09-S01-M01",
+          "scope": "scene",
+          "label": "돌을 다듬는 도구"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C09-S04": {
+      "props": [
+        {
+          "propId": "bundle",
+          "from": "THR-C09-S04-M01",
+          "scope": "scene",
+          "label": "출항 준비"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C09-S07": {
+      "props": [
+        {
+          "propId": "craft-tools",
+          "from": "THR-C09-S07-M02",
+          "scope": "scene",
+          "label": "도연에게 배운 끌"
+        },
+        {
+          "propId": "bandage",
+          "from": "THR-C09-S07-J01",
+          "scope": "scene",
+          "label": "끌 끝을 감싸는 천"
+        }
+      ],
+      "captions": [
+        {
+          "label": "660년 · 도연의 손녀 다은, 새 세대",
+          "from": "THR-C09-S07-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C09-S07-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C09-S08": {
+      "props": [
+        {
+          "propId": "letter",
+          "from": "THR-C09-S08-M07",
+          "scope": "scene",
+          "label": "돌아오지 않은 연락"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C10-S03": {
+      "props": [
+        {
+          "propId": "craft-tools",
+          "from": "THR-C10-S03-M01",
+          "scope": "scene",
+          "label": "축조터의 도구"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C10-S04": {
+      "props": [
+        {
+          "propId": "record-book",
+          "from": "THR-C10-S04-M01",
+          "scope": "scene",
+          "label": "가람의 개인 기록"
+        }
+      ],
+      "captions": [
+        {
+          "label": "6세기 이후 · 가람의 삶으로 보는 골품",
+          "from": "THR-C10-S04-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C10-S04-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C10-S06": {
+      "props": [
+        {
+          "propId": "empty-bowl",
+          "from": "THR-C10-S06-M01",
+          "scope": "scene",
+          "label": "교류를 담은 허구의 그릇"
+        }
+      ],
+      "captions": [
+        {
+          "label": "기록책 재방문 · 400년 구원 직후",
+          "from": "THR-C10-S06-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C10-S06-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C11-S03": {
+      "props": [
+        {
+          "propId": "wooden-lion",
+          "from": "THR-C11-S03-M01",
+          "scope": "scene",
+          "label": "나무사자 전승의 재현 소품"
+        },
+        {
+          "propId": "rope",
+          "from": "THR-C11-S03-M08",
+          "scope": "scene",
+          "label": "출항 짐의 매듭"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C11-S04": {
+      "props": [
+        {
+          "propId": "cooking-pot",
+          "from": "THR-C11-S04-J01",
+          "scope": "scene",
+          "label": "물건을 함께 확인한다"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C11-S08": {
+      "props": [
+        {
+          "propId": "craft-tools",
+          "from": "THR-C11-S08-M05",
+          "scope": "scene",
+          "label": "아라 가족의 도구"
+        }
+      ],
+      "captions": [
+        {
+          "label": "532년 · 이 아라는 가야계 여성, 새 인물",
+          "from": "THR-C11-S08-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C11-S08-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C12-S04": {
+      "props": [
+        {
+          "propId": "empty-bowl",
+          "from": "THR-C12-S04-M01",
+          "scope": "scene",
+          "label": "장터의 그릇"
+        },
+        {
+          "propId": "record-book",
+          "from": "THR-C12-S04-M08",
+          "scope": "scene",
+          "label": "상인의 장부"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C12-S08": {
+      "props": [
+        {
+          "propId": "gaya-shard",
+          "from": "THR-C12-S08-M03",
+          "scope": "scene",
+          "label": "가야의 표식"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C12-S09": {
+      "props": [
+        {
+          "propId": "balance-scale",
+          "from": "THR-C12-S09-M06",
+          "scope": "scene",
+          "label": "서로의 저울을 비교한다"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C12-S10": {
+      "props": [
+        {
+          "propId": "gaya-shard",
+          "from": "THR-C12-S10-J01",
+          "scope": "both",
+          "label": "다시 펼칠 가야의 표식"
+        }
+      ],
+      "captions": [
+        {
+          "label": "진흥왕 → 진지왕 → 진평왕 → 선덕여왕",
+          "from": "THR-C12-S10-M01",
+          "kind": "record",
+          "scope": "both"
+        }
+      ],
+      "visibility": [
+        {
+          "hideNpc": true,
+          "from": "THR-C12-S10-J01",
+          "scope": "both"
+        }
+      ],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C13-S03": {
+      "props": [
+        {
+          "propId": "craft-tools",
+          "from": "THR-C13-S03-M02",
+          "scope": "scene",
+          "label": "목탑 공사 도구"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C13-S04": {
+      "props": [
+        {
+          "propId": "letter",
+          "from": "THR-C13-S04-M09",
+          "scope": "scene",
+          "label": "뱃전에 두지 않을 편지"
+        },
+        {
+          "propId": "rope",
+          "from": "THR-C13-S04-J01",
+          "scope": "scene"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C13-S12": {
+      "props": [
+        {
+          "propId": "gaya-shard",
+          "from": "THR-C13-S12-M05",
+          "scope": "scene",
+          "label": "미뤄 둔 가야의 표식"
+        }
+      ],
+      "captions": [
+        {
+          "label": "가야의 표식을 펼친다 · 3세기 금관가야",
+          "from": "THR-C13-S12-J02",
+          "kind": "timeline",
+          "scope": "both",
+          "phases": [
+            "join"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C14-S01": {
+      "props": [
+        {
+          "propId": "gaya-bowl",
+          "from": "THR-C14-S01-M01",
+          "scope": "scene",
+          "label": "온전한 그릇의 모습"
+        }
+      ],
+      "captions": [
+        {
+          "label": "기록책 재방문 · 3세기 말 금관가야",
+          "from": "THR-C14-S01-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C14-S01-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C14-S03": {
+      "props": [
+        {
+          "propId": "craft-tools",
+          "from": "THR-C14-S03-M01",
+          "scope": "scene"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C14-S04": {
+      "props": [
+        {
+          "propId": "iron-ingot",
+          "from": "THR-C14-S04-M01",
+          "scope": "scene",
+          "label": "철 재료·교역품"
+        },
+        {
+          "propId": "balance-scale",
+          "from": "THR-C14-S04-M02",
+          "scope": "scene"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C14-S05": {
+      "props": [
+        {
+          "propId": "craft-tools",
+          "from": "THR-C14-S05-M01",
+          "scope": "scene"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C14-S07": {
+      "props": [
+        {
+          "propId": "rope",
+          "from": "THR-C14-S07-M07",
+          "scope": "scene",
+          "label": "갑옷 장인의 매듭"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C15-S03": {
+      "props": [
+        {
+          "propId": "gaya-bowl",
+          "from": "THR-C15-S03-M01",
+          "scope": "scene",
+          "label": "공방의 그릇"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C15-S07": {
+      "props": [
+        {
+          "propId": "craft-tools",
+          "from": "THR-C15-S07-M01",
+          "scope": "scene",
+          "phases": [
+            "main",
+            "choice"
+          ],
+          "label": "모두 실을 수 없는 도구"
+        },
+        {
+          "propId": "craft-tools",
+          "from": "THR-C15-S07-B2-R03",
+          "scope": "scene",
+          "phases": [
+            "branch",
+            "join"
+          ],
+          "choiceId": "THR-C15-S07-B2",
+          "label": "이웃과 나눈 생계 도구"
+        },
+        {
+          "propId": "bundle",
+          "from": "THR-C15-S07-J01",
+          "scope": "scene",
+          "label": "어머니에게 덮는 옷"
+        }
+      ],
+      "captions": [
+        {
+          "label": "562년 · 고령의 아라의 증손녀 여울",
+          "from": "THR-C15-S07-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C15-S07-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [
+        {
+          "variant": "yeoul-empty",
+          "from": "THR-C15-S07-B1-R01",
+          "choiceId": "THR-C15-S07-B1",
+          "phases": [
+            "branch",
+            "join"
+          ],
+          "scope": "scene",
+          "priority": 2
+        },
+        {
+          "variant": "yeoul-empty",
+          "from": "THR-C15-S07-B2-R03",
+          "choiceId": "THR-C15-S07-B2",
+          "phases": [
+            "branch",
+            "join"
+          ],
+          "scope": "scene",
+          "priority": 2
+        }
+      ],
+      "backgrounds": []
+    },
+    "THR-C15-S08": {
+      "props": [
+        {
+          "propId": "gaya-shard",
+          "from": "THR-C15-S08-J01",
+          "scope": "both",
+          "label": "돌려놓는 그릇 조각"
+        }
+      ],
+      "captions": [
+        {
+          "label": "피란 뒤의 짧은 기록 → 681년 통일신라",
+          "from": "THR-C15-S08-M01",
+          "kind": "timeline",
+          "scope": "both"
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C16-S01": {
+      "props": [
+        {
+          "propId": "grain-sack",
+          "from": "THR-C16-S01-J01",
+          "scope": "scene"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C16-S02": {
+      "props": [
+        {
+          "propId": "record-book",
+          "from": "THR-C16-S02-M01",
+          "scope": "scene",
+          "label": "정무 장부"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C16-S05": {
+      "props": [
+        {
+          "propId": "bundle",
+          "from": "THR-C16-S05-M01",
+          "scope": "scene",
+          "label": "이주 가족의 살림"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C16-S06": {
+      "props": [
+        {
+          "propId": "empty-bowl",
+          "from": "THR-C16-S06-M07",
+          "scope": "scene",
+          "label": "함께 놓는 배급 그릇"
+        }
+      ],
+      "captions": [
+        {
+          "label": "7세기 말 · 693년 이후의 완성 명칭 비교",
+          "from": "THR-C16-S06-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C16-S06-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C16-S08": {
+      "props": [
+        {
+          "propId": "record-book",
+          "from": "THR-C16-S08-M01",
+          "scope": "scene",
+          "label": "이관할 장부"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C16-S09": {
+      "props": [
+        {
+          "propId": "contact-sheet",
+          "from": "THR-C16-S09-M05",
+          "scope": "scene",
+          "label": "밭의 크기를 확인하는 장부"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C17-S01": {
+      "props": [
+        {
+          "propId": "spoons",
+          "from": "THR-C17-S01-M01",
+          "scope": "scene",
+          "label": "나란히 놓인 두 숟가락"
+        }
+      ],
+      "captions": [
+        {
+          "label": "기록책 재방문 · 7세기 후반의 신앙",
+          "from": "THR-C17-S01-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C17-S01-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C17-S02": {
+      "props": [
+        {
+          "propId": "empty-bowl",
+          "from": "THR-C17-S02-M01",
+          "scope": "scene",
+          "label": "보라에게 건넨 빈 그릇"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C17-S04": {
+      "props": [
+        {
+          "propId": "craft-tools",
+          "from": "THR-C17-S04-M01",
+          "scope": "scene",
+          "label": "석공의 도구"
+        },
+        {
+          "propId": "bandage",
+          "from": "THR-C17-S04-B1-R03",
+          "scope": "scene",
+          "choiceId": "THR-C17-S04-B1",
+          "phases": [
+            "branch",
+            "join"
+          ],
+          "label": "손을 감싼 흰 천"
+        },
+        {
+          "propId": "bandage",
+          "from": "THR-C17-S04-B2-R03",
+          "scope": "scene",
+          "choiceId": "THR-C17-S04-B2",
+          "phases": [
+            "branch",
+            "join"
+          ],
+          "label": "처치를 위해 가져온 천"
+        }
+      ],
+      "captions": [
+        {
+          "label": "751년 · 새 석공 해명",
+          "from": "THR-C17-S04-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C17-S04-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [
+        {
+          "variant": "haemyeong-hidden",
+          "from": "THR-C17-S04-M01",
+          "phases": [
+            "main",
+            "choice",
+            "branch"
+          ],
+          "scope": "scene"
+        },
+        {
+          "variant": "haemyeong-bandaged",
+          "from": "THR-C17-S04-B1-R03",
+          "choiceId": "THR-C17-S04-B1",
+          "phases": [
+            "branch",
+            "join"
+          ],
+          "scope": "scene",
+          "priority": 2
+        },
+        {
+          "variant": "haemyeong-bandaged",
+          "from": "THR-C17-S04-J01",
+          "phases": [
+            "join"
+          ],
+          "scope": "scene",
+          "priority": 2
+        }
+      ],
+      "backgrounds": []
+    },
+    "THR-C17-S05": {
+      "props": [
+        {
+          "propId": "bandage",
+          "from": "THR-C17-S05-M01",
+          "scope": "scene",
+          "label": "아직 남은 흰 천"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [
+        {
+          "variant": "haemyeong-bandaged",
+          "from": "THR-C17-S05-M01",
+          "scope": "scene",
+          "priority": 2
+        }
+      ],
+      "backgrounds": []
+    },
+    "THR-C17-S09": {
+      "props": [
+        {
+          "propId": "boat-tag",
+          "from": "THR-C17-S09-J01",
+          "scope": "scene",
+          "label": "아직 이름이 없는 배 표지"
+        }
+      ],
+      "captions": [
+        {
+          "label": "828년 · 완도 인근 교류 기록처",
+          "from": "THR-C17-S09-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C17-S09-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C18-S01": {
+      "props": [
+        {
+          "propId": "child-shoe",
+          "from": "THR-C18-S01-M01",
+          "scope": "scene",
+          "label": "열 살 도경의 작은 신"
+        },
+        {
+          "propId": "boat-tag",
+          "from": "THR-C18-S01-M01",
+          "scope": "scene",
+          "label": "빈 배 표지"
+        },
+        {
+          "propId": "contact-sheet",
+          "from": "THR-C18-S01-B1-R02",
+          "scope": "scene",
+          "choiceId": "THR-C18-S01-B1",
+          "phases": [
+            "branch",
+            "join"
+          ],
+          "label": "목격 기록 · 이름 미확인"
+        },
+        {
+          "propId": "knot-drawing",
+          "from": "THR-C18-S01-B2-R03",
+          "scope": "scene",
+          "choiceId": "THR-C18-S01-B2",
+          "phases": [
+            "branch",
+            "join"
+          ],
+          "label": "가족이 기억한 세 줄 매듭"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C18-S03": {
+      "props": [
+        {
+          "propId": "boat-tag",
+          "from": "THR-C18-S03-M01",
+          "scope": "scene",
+          "label": "화물의 출처 표지"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C18-S04": {
+      "props": [
+        {
+          "propId": "rope",
+          "from": "THR-C18-S04-M01",
+          "scope": "scene",
+          "label": "바람에 팽팽해진 밧줄"
+        },
+        {
+          "propId": "letter",
+          "from": "THR-C18-S04-M04",
+          "scope": "scene",
+          "label": "도경에게 보낼 편지"
+        }
+      ],
+      "captions": [
+        {
+          "label": "833년 무렵 · 도경의 생존은 아직 확인 중",
+          "from": "THR-C18-S04-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C18-S04-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [
+        {
+          "target": "npc",
+          "value": "tense",
+          "from": "THR-C18-S04-M01",
+          "scope": "scene"
+        }
+      ],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C18-S05": {
+      "props": [
+        {
+          "propId": "letter",
+          "from": "THR-C18-S05-M01",
+          "scope": "scene",
+          "label": "서로 다른 편지 묶음"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C18-S07": {
+      "props": [
+        {
+          "propId": "letter",
+          "from": "THR-C18-S07-M01",
+          "scope": "scene",
+          "label": "연락을 되찾은 도경의 편지"
+        },
+        {
+          "propId": "contact-sheet",
+          "from": "THR-C18-S07-M01",
+          "scope": "scene",
+          "requiresChoices": {
+            "THR-C18-S01": "THR-C18-S01-B1"
+          },
+          "label": "함께 보관한 목격표"
+        },
+        {
+          "propId": "knot-drawing",
+          "from": "THR-C18-S07-M01",
+          "scope": "scene",
+          "requiresChoices": {
+            "THR-C18-S01": "THR-C18-S01-B2"
+          },
+          "label": "함께 보관한 매듭 그림"
+        },
+        {
+          "propId": "contact-sheet",
+          "from": "THR-C18-S07-B1-R03",
+          "scope": "scene",
+          "choiceId": "THR-C18-S07-B1",
+          "phases": [
+            "branch",
+            "join"
+          ],
+          "label": "도경에게 남길 새 주소"
+        },
+        {
+          "propId": "balance-scale",
+          "from": "THR-C18-S07-B2-R03",
+          "scope": "scene",
+          "choiceId": "THR-C18-S07-B2",
+          "phases": [
+            "branch",
+            "join"
+          ],
+          "label": "다시 장사할 때 쓸 저울"
+        }
+      ],
+      "captions": [
+        {
+          "label": "851년 · 23년이 흐른 나래",
+          "from": "THR-C18-S07-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C18-S07-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C19-S02": {
+      "props": [
+        {
+          "propId": "contact-sheet",
+          "from": "THR-C19-S02-M01",
+          "scope": "scene",
+          "label": "관등의 상한을 남긴 초안"
+        }
+      ],
+      "captions": [
+        {
+          "label": "869년 무렵 · 서른 안팎의 재인",
+          "from": "THR-C19-S02-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C19-S02-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C19-S03": {
+      "props": [
+        {
+          "propId": "grain-sack",
+          "from": "THR-C19-S03-M01",
+          "scope": "scene",
+          "label": "성문에서 기다리는 곡식"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C19-S06": {
+      "props": [
+        {
+          "propId": "empty-sack",
+          "from": "THR-C19-S06-M01",
+          "scope": "scene",
+          "label": "흉작 뒤의 살림"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C19-S07": {
+      "props": [
+        {
+          "propId": "bandage",
+          "from": "THR-C19-S07-M01",
+          "scope": "scene",
+          "label": "피해를 돌보는 천"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C19-S08": {
+      "props": [
+        {
+          "propId": "letter",
+          "from": "THR-C19-S08-M01",
+          "scope": "both",
+          "label": "25년 뒤에도 남은 건의 초안"
+        }
+      ],
+      "captions": [
+        {
+          "label": "894년 · 25년이 흐른 재인",
+          "from": "THR-C19-S08-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C19-S08-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C19-S09": {
+      "props": [
+        {
+          "propId": "letter",
+          "from": "THR-C19-S09-M01",
+          "scope": "both",
+          "label": "남쪽에서 남긴 건의문"
+        }
+      ],
+      "captions": [
+        {
+          "label": "889·894년 남쪽 → 698년 건국의 배경 → 696년 이후 피란길",
+          "from": "THR-C19-S09-M01",
+          "kind": "timeline",
+          "scope": "both"
+        }
+      ],
+      "visibility": [
+        {
+          "hideNpc": true,
+          "from": "THR-C19-S09-J02",
+          "scope": "both"
+        }
+      ],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C20-S01": {
+      "props": [
+        {
+          "propId": "bundle",
+          "from": "THR-C20-S01-M01",
+          "scope": "scene"
+        }
+      ],
+      "captions": [
+        {
+          "label": "기록책 재방문 · 696년 이후 영주의 피란길",
+          "from": "THR-C20-S01-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C20-S01-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C20-S02": {
+      "props": [
+        {
+          "propId": "repaired-pot",
+          "from": "THR-C20-S02-M07",
+          "scope": "scene",
+          "label": "오늘 끓일 만큼 고친 솥"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C20-S03": {
+      "props": [
+        {
+          "propId": "repaired-pot",
+          "from": "THR-C20-S03-M01",
+          "scope": "scene",
+          "label": "함께 가져가는 솥"
+        },
+        {
+          "propId": "bundle",
+          "from": "THR-C20-S03-M01",
+          "scope": "scene"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C20-S05": {
+      "props": [
+        {
+          "propId": "contact-sheet",
+          "from": "THR-C20-S05-M01",
+          "scope": "scene",
+          "label": "빠진 이름을 확인하는 기록"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C20-S06": {
+      "props": [
+        {
+          "propId": "family-bowl",
+          "from": "THR-C20-S06-M01",
+          "scope": "scene",
+          "label": "누리가 남긴 솥의 무늬"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C20-S08": {
+      "props": [
+        {
+          "propId": "letter",
+          "from": "THR-C20-S08-M07",
+          "scope": "both",
+          "label": "해루가 남긴 편지"
+        }
+      ],
+      "captions": [
+        {
+          "label": "719년 무왕 즉위 → 732년 · 13년 간격",
+          "from": "THR-C20-S08-J01",
+          "kind": "timeline",
+          "scope": "both",
+          "phases": [
+            "join"
+          ]
+        }
+      ],
+      "visibility": [
+        {
+          "hideNpc": true,
+          "from": "THR-C20-S08-J01",
+          "scope": "both"
+        }
+      ],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C21-S02": {
+      "props": [
+        {
+          "propId": "letter",
+          "from": "THR-C21-S02-M01",
+          "scope": "scene",
+          "label": "병사의 가족 편지"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C21-S04": {
+      "props": [
+        {
+          "propId": "contact-sheet",
+          "from": "THR-C21-S04-M01",
+          "scope": "scene",
+          "label": "3성·6부의 전달 문서"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C21-S05": {
+      "props": [
+        {
+          "propId": "letter",
+          "from": "THR-C21-S05-M01",
+          "scope": "scene",
+          "label": "아버지 해루의 편지"
+        },
+        {
+          "propId": "contact-sheet",
+          "from": "THR-C21-S05-M01",
+          "scope": "scene",
+          "label": "다온 가족의 새 주소"
+        }
+      ],
+      "captions": [
+        {
+          "label": "문왕대 · 40대 다온, 해루의 아들",
+          "from": "THR-C21-S05-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C21-S05-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C21-S07": {
+      "props": [
+        {
+          "propId": "letter",
+          "from": "THR-C21-S07-M01",
+          "scope": "scene",
+          "label": "역참을 지나는 집 소식"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C21-S09": {
+      "props": [
+        {
+          "propId": "family-bowl",
+          "from": "THR-C21-S09-M01",
+          "scope": "scene",
+          "label": "누리의 손녀 다솜에게 이어진 무늬"
+        }
+      ],
+      "captions": [
+        {
+          "label": "810년 무렵 · 70대 다솜, 누리의 손녀",
+          "from": "THR-C21-S09-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C21-S09-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C22-S02": {
+      "props": [
+        {
+          "propId": "cooking-pot",
+          "from": "THR-C22-S02-M01",
+          "scope": "scene",
+          "phases": [
+            "main",
+            "choice"
+          ],
+          "label": "아직 따뜻한 솥"
+        },
+        {
+          "propId": "bundle",
+          "from": "THR-C22-S02-M01",
+          "scope": "scene",
+          "label": "가져갈 살림",
+          "phases": [
+            "main",
+            "choice"
+          ]
+        },
+        {
+          "propId": "contact-sheet",
+          "from": "THR-C22-S02-B1-R03",
+          "scope": "scene",
+          "choiceId": "THR-C22-S02-B1",
+          "phases": [
+            "branch",
+            "join"
+          ],
+          "label": "가족이 만날 표식"
+        },
+        {
+          "propId": "needle-case",
+          "from": "THR-C22-S02-B2-R01",
+          "scope": "scene",
+          "choiceId": "THR-C22-S02-B2",
+          "phases": [
+            "branch",
+            "join"
+          ],
+          "label": "딸에게 맡길 바늘함"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [
+        {
+          "target": "npc",
+          "value": "unsteady",
+          "from": "THR-C22-S02-J01",
+          "phases": [
+            "join"
+          ],
+          "scope": "scene"
+        }
+      ],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C22-S04": {
+      "props": [
+        {
+          "propId": "contact-sheet",
+          "from": "THR-C22-S04-B1-R02",
+          "scope": "scene",
+          "choiceId": "THR-C22-S04-B1",
+          "phases": [
+            "branch",
+            "join"
+          ],
+          "label": "고향 이름과 다른 호칭"
+        },
+        {
+          "propId": "route-note",
+          "from": "THR-C22-S04-B2-R03",
+          "scope": "scene",
+          "choiceId": "THR-C22-S04-B2",
+          "phases": [
+            "branch",
+            "join"
+          ],
+          "label": "확인 시점을 남긴 경로"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C22-S06": {
+      "props": [
+        {
+          "propId": "contact-sheet",
+          "from": "THR-C22-S06-M01",
+          "scope": "scene",
+          "requiresChoices": {
+            "THR-C22-S04": "THR-C22-S04-B1"
+          },
+          "label": "가족 연락표"
+        },
+        {
+          "propId": "route-note",
+          "from": "THR-C22-S06-M01",
+          "scope": "scene",
+          "requiresChoices": {
+            "THR-C22-S04": "THR-C22-S04-B2"
+          },
+          "label": "가족의 경로 기록"
+        },
+        {
+          "propId": "needle-case",
+          "from": "THR-C22-S06-M01",
+          "scope": "scene",
+          "requiresChoices": {
+            "THR-C22-S02": "THR-C22-S02-B2"
+          },
+          "label": "8년 전 보존한 바늘함"
+        }
+      ],
+      "captions": [
+        {
+          "label": "8년 뒤 · 40대의 은서와 청소년이 된 딸",
+          "from": "THR-C22-S06-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C22-S06-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C22-S08": {
+      "props": [
+        {
+          "propId": "letter",
+          "from": "THR-C22-S08-M01",
+          "scope": "both",
+          "label": "새로 적은 은서의 주소"
+        }
+      ],
+      "captions": [
+        {
+          "label": "서아만 기록책을 펼친다 · 934년 → 900년",
+          "from": "THR-C22-S08-M01",
+          "kind": "timeline",
+          "scope": "both"
+        }
+      ],
+      "visibility": [
+        {
+          "hideNpc": true,
+          "from": "THR-C22-S08-M01",
+          "scope": "both"
+        }
+      ],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C23-S02": {
+      "props": [
+        {
+          "propId": "contact-sheet",
+          "from": "THR-C23-S02-M01",
+          "scope": "scene",
+          "label": "옛 납부 기록"
+        },
+        {
+          "propId": "contact-sheet",
+          "from": "THR-C23-S02-M01",
+          "scope": "scene",
+          "label": "새 요구서"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C23-S03": {
+      "props": [
+        {
+          "propId": "record-book",
+          "from": "THR-C23-S03-M08",
+          "scope": "scene",
+          "label": "맨 아래부터 읽는 이름"
+        }
+      ],
+      "captions": [
+        {
+          "label": "901년 · 왕건은 궁예 휘하의 장수",
+          "from": "THR-C23-S03-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C23-S03-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C23-S05": {
+      "props": [
+        {
+          "propId": "letter",
+          "from": "THR-C23-S05-M01",
+          "scope": "scene",
+          "label": "시온과 도하의 소식"
+        }
+      ],
+      "captions": [
+        {
+          "label": "자료 비교를 닫고 · 905년 철원",
+          "from": "THR-C23-S05-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C23-S05-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C23-S08": {
+      "props": [
+        {
+          "propId": "letter",
+          "from": "THR-C23-S08-M06",
+          "scope": "both",
+          "label": "아직 오지 않은 때의 자료"
+        }
+      ],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C23-S09": {
+      "props": [
+        {
+          "propId": "letter",
+          "from": "THR-C23-S09-M05",
+          "scope": "scene",
+          "label": "도하의 편지"
+        }
+      ],
+      "captions": [
+        {
+          "label": "919년 · 19년이 흐른 시온",
+          "from": "THR-C23-S09-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C23-S09-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C23-S10": {
+      "props": [
+        {
+          "propId": "handkerchief",
+          "from": "THR-C23-S10-M02",
+          "scope": "both",
+          "label": "책에 남은 손수건",
+          "through": "THR-C23-S10-M02"
+        },
+        {
+          "propId": "family-bowl",
+          "from": "THR-C23-S10-M02",
+          "scope": "both",
+          "label": "기억 속 그릇 무늬",
+          "through": "THR-C23-S10-M02"
+        },
+        {
+          "propId": "contact-sheet",
+          "from": "THR-C23-S10-M02",
+          "scope": "both",
+          "label": "낡은 주소",
+          "through": "THR-C23-S10-M02"
+        },
+        {
+          "propId": "bandage",
+          "from": "THR-C23-S10-M03",
+          "scope": "both",
+          "label": "해명에게 남긴 약속",
+          "through": "THR-C23-S10-M03"
+        },
+        {
+          "propId": "letter",
+          "from": "THR-C23-S10-M04",
+          "scope": "both",
+          "label": "끝내 놓지 못한 글",
+          "through": "THR-C23-S10-M05"
+        }
+      ],
+      "captions": [
+        {
+          "label": "918년 건국 · 919년 송악 천도\n후삼국의 경쟁은 계속된다",
+          "from": "THR-C23-S10-J01",
+          "kind": "record",
+          "scope": "both",
+          "phases": [
+            "join"
+          ]
+        }
+      ],
+      "visibility": [
+        {
+          "hideNpc": true,
+          "from": "THR-C23-S10-M01",
+          "scope": "both"
+        }
+      ],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C02-S06": {
+      "props": [],
+      "captions": [
+        {
+          "label": "331년 · 미천왕 사망, 고국원왕 즉위",
+          "from": "THR-C02-S06-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C02-S06-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C02-S07": {
+      "props": [],
+      "captions": [
+        {
+          "label": "371년 · 40년이 흐른 뒤",
+          "from": "THR-C02-S07-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C02-S07-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C02-S08": {
+      "props": [],
+      "captions": [
+        {
+          "label": "372년 · 소수림왕대의 새 기록",
+          "from": "THR-C02-S08-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C02-S08-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C03-S04": {
+      "props": [],
+      "captions": [
+        {
+          "label": "384년 소수림왕 사망·고국양왕 즉위 → 391년 광개토대왕 즉위",
+          "from": "THR-C03-S04-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C03-S04-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C04-S01": {
+      "props": [],
+      "captions": [
+        {
+          "label": "427년 · 국내성에서 평양으로",
+          "from": "THR-C04-S01-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C04-S01-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C04-S04": {
+      "props": [],
+      "captions": [
+        {
+          "label": "433년 · 평양 천도 6년 뒤",
+          "from": "THR-C04-S04-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C04-S04-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C04-S06": {
+      "props": [],
+      "captions": [
+        {
+          "label": "475년 · 한성 공격 직전의 후방",
+          "from": "THR-C04-S06-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C04-S06-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C05-S05": {
+      "props": [],
+      "captions": [
+        {
+          "label": "642년 · 축조 시작에서 11년 뒤",
+          "from": "THR-C05-S05-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C05-S05-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C05-S06": {
+      "props": [],
+      "captions": [
+        {
+          "label": "645년 · 642년의 정변과 다른 때",
+          "from": "THR-C05-S06-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C05-S06-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C05-S11": {
+      "props": [],
+      "captions": [
+        {
+          "label": "670년 · 고구려 멸망 2년 뒤",
+          "from": "THR-C05-S11-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C05-S11-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C06-S01": {
+      "props": [],
+      "captions": [
+        {
+          "label": "기록책 재방문 · 670년 고구려 → 260년 백제",
+          "from": "THR-C06-S01-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C06-S01-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C06-S08": {
+      "props": [],
+      "captions": [
+        {
+          "label": "384년 · 동진을 거쳐 온 마라난타",
+          "from": "THR-C06-S08-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C06-S08-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C08-S01": {
+      "props": [],
+      "captions": [
+        {
+          "label": "510년 · 창작 생활 장면의 기준 연도",
+          "from": "THR-C08-S01-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C08-S01-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C08-S03": {
+      "props": [],
+      "captions": [
+        {
+          "label": "후대 유물 자료 · 1971년 발굴 기록",
+          "from": "THR-C08-S03-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C08-S03-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C08-S04": {
+      "props": [],
+      "captions": [
+        {
+          "label": "538년 · 성왕의 사비 천도",
+          "from": "THR-C08-S04-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C08-S04-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C10-S01": {
+      "props": [],
+      "captions": [
+        {
+          "label": "기록책 재방문 · 356년 이후 신라",
+          "from": "THR-C10-S01-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C10-S01-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C10-S02": {
+      "props": [],
+      "captions": [
+        {
+          "label": "5세기 후반 · 새 왕실 공방",
+          "from": "THR-C10-S02-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C10-S02-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C10-S08": {
+      "props": [],
+      "captions": [
+        {
+          "label": "502년 · 앞선 왕대의 기록을 펼친다",
+          "from": "THR-C10-S08-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C10-S08-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C12-S01": {
+      "props": [],
+      "captions": [
+        {
+          "label": "551년 · 같은 한강의 신라 측 기록",
+          "from": "THR-C12-S01-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C12-S01-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C12-S05": {
+      "props": [],
+      "captions": [
+        {
+          "label": "545~550년대 추정 · 단양 적성비 기록 재방문",
+          "from": "THR-C12-S05-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C12-S05-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C13-S06": {
+      "props": [],
+      "captions": [
+        {
+          "label": "654년 · 진골 왕위 계승 · 약 60세의 김유신",
+          "from": "THR-C13-S06-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C13-S06-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C14-S06": {
+      "props": [],
+      "captions": [
+        {
+          "label": "4세기 초 · 새 교역 상대와 통역",
+          "from": "THR-C14-S06-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C14-S06-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C14-S08": {
+      "props": [],
+      "captions": [
+        {
+          "label": "400년의 전쟁 뒤 · 400년 후라는 뜻이 아니다",
+          "from": "THR-C14-S08-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C14-S08-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C15-S01": {
+      "props": [],
+      "captions": [
+        {
+          "label": "5세기 고령 · 김해의 아라와 다른 상인",
+          "from": "THR-C15-S01-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C15-S01-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C16-S07": {
+      "props": [],
+      "captions": [
+        {
+          "label": "기록책 재방문 · 687년 관료전",
+          "from": "THR-C16-S07-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C16-S07-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C17-S03": {
+      "props": [],
+      "captions": [
+        {
+          "label": "676년 이후 부석사 · 원효와 다른 만남",
+          "from": "THR-C17-S03-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C17-S03-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C17-S07": {
+      "props": [],
+      "captions": [
+        {
+          "label": "기록책 재방문 · 727년경 당의 필사 공간",
+          "from": "THR-C17-S07-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C17-S07-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C17-S08": {
+      "props": [],
+      "captions": [
+        {
+          "label": "771년 · 성덕대왕신종의 완성 기록",
+          "from": "THR-C17-S08-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C17-S08-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C19-S01": {
+      "props": [],
+      "captions": [
+        {
+          "label": "822년 · 889년보다 67년 앞선 기록",
+          "from": "THR-C19-S01-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C19-S01-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C20-S07": {
+      "props": [],
+      "captions": [
+        {
+          "label": "713년 · 건국에서 15년 뒤",
+          "from": "THR-C20-S07-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C20-S07-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C21-S03": {
+      "props": [],
+      "captions": [
+        {
+          "label": "737년 이후 · 문왕대의 새로운 문서",
+          "from": "THR-C21-S03-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C21-S03-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C22-S05": {
+      "props": [],
+      "captions": [
+        {
+          "label": "934년 · 926년에서 8년 뒤",
+          "from": "THR-C22-S05-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C22-S05-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C22-S07": {
+      "props": [],
+      "captions": [
+        {
+          "label": "934년 이후 · 926년 자료의 회상",
+          "from": "THR-C22-S07-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C22-S07-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C23-S01": {
+      "props": [],
+      "captions": [
+        {
+          "label": "기록책 재방문 · 934년 → 900년 · 34년 전",
+          "from": "THR-C23-S01-M01",
+          "kind": "timeline",
+          "scope": "both",
+          "lineIds": [
+            "THR-C23-S01-M01"
+          ]
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C04-S10": {
+      "props": [],
+      "captions": [
+        {
+          "label": "475년 → 612년 · 137년 뒤",
+          "from": "THR-C04-S10-M01",
+          "kind": "timeline",
+          "scope": "both"
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C05-S12": {
+      "props": [],
+      "captions": [
+        {
+          "label": "출발은 670년 · 기록의 668년을 짚고 260년 백제로",
+          "from": "THR-C05-S12-M01",
+          "kind": "timeline",
+          "scope": "both"
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C06-S09": {
+      "props": [],
+      "captions": [
+        {
+          "label": "384년 → 475년 · 91년 뒤",
+          "from": "THR-C06-S09-M01",
+          "kind": "timeline",
+          "scope": "both"
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C09-S10": {
+      "props": [],
+      "captions": [
+        {
+          "label": "다음 기록책 재방문 · 356년 이후 신라",
+          "from": "THR-C09-S10-J01",
+          "kind": "timeline",
+          "scope": "both",
+          "phases": [
+            "join"
+          ]
+        }
+      ],
+      "visibility": [
+        {
+          "hideNpc": true,
+          "from": "THR-C09-S10-M01",
+          "scope": "both"
+        }
+      ],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C18-S06": {
+      "props": [],
+      "captions": [
+        {
+          "label": "삼국사기: 846년\n속일본후기 등을 근거로 한 견해: 841년",
+          "from": "THR-C18-S06-M01",
+          "kind": "source-comparison",
+          "scope": "both"
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C18-S08": {
+      "props": [],
+      "captions": [
+        {
+          "label": "851년 → 889년 · 다음 장은 822년 기록부터",
+          "from": "THR-C18-S08-M01",
+          "kind": "timeline",
+          "scope": "both"
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-C21-S10": {
+      "props": [],
+      "captions": [
+        {
+          "label": "대이진 → 대건황 → 대현석 → 대위해 → 대인선",
+          "from": "THR-C21-S10-M01",
+          "kind": "record",
+          "scope": "both"
+        }
+      ],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": []
+    },
+    "THR-PRO-S01": {
+      "props": [],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": [],
+      "handActions": [
+        {
+          "variant": "resting-hand",
+          "from": "THR-PRO-S01-L03",
+          "through": "THR-PRO-S01-L03"
+        },
+        {
+          "variant": "lifting-hand",
+          "from": "THR-PRO-S01-L04",
+          "through": "THR-PRO-S01-L04"
+        }
+      ]
+    },
+    "THR-PRO-S02": {
+      "props": [],
+      "captions": [],
+      "visibility": [],
+      "motions": [],
+      "portraits": [],
+      "backgrounds": [],
+      "handActions": [
+        {
+          "variant": "lifting-hand",
+          "from": "THR-PRO-S02-L01",
+          "through": "THR-PRO-S02-L02"
+        }
+      ]
+    }
+  },
+  "contextOverrides": {
+    "THR-C16-S03-M09": "record",
+    "THR-C16-S03-M10": "record"
+  }
+}

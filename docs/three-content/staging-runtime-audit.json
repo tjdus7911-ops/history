@@ -1,0 +1,3668 @@
+{
+  "schemaVersion": 1,
+  "status": "runtime-linked-cues-source-validated-browser-review-pending",
+  "sourceManuscriptSha256": "09e17274a506391305b36efee52b1cd60c4c504cc6619e68fe70cd9909e9674e",
+  "sceneCount": 218,
+  "authoredUtteranceCount": 2777,
+  "explicitCueCount": 246,
+  "scenesWithExplicitCues": 143,
+  "propImageCount": 27,
+  "handActionImageCount": 2,
+  "actorVariantImageCount": 3,
+  "backgroundStateImageCount": 2,
+  "sourcePixelsEdited": false,
+  "saveMutations": false,
+  "cursorMutations": false,
+  "autoAdvance": false,
+  "sceneAudit": [
+    {
+      "sceneId": "THR-PRO-S01",
+      "authoredStaging": "시작 버튼을 누르면 곧바로 방 일러스트와 첫 대사를 보여 준다. 첫 검은 화면이나 긴 시대 설명은 없다. 세 번째 대사에서 족보의 사람·생활 관련 메모에 손을 올리고, 네 번째 대사에서 책 사이의 빈 장을 발견한다. 족보의 실제 내용을 임의의 가짜 필기로 대체하지 않는다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0,
+        "handActions": 2
+      },
+      "runtimeCueIds": [
+        "THR-PRO-S01:handActions:1",
+        "THR-PRO-S01:handActions:2"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-PRO-S02",
+      "authoredStaging": "말소리 없는 종이 스침과 바람 효과만 사용한다. 책에서 남자 목소리가 나거나 누군가 서아를 부르는 연출은 없다. 마지막 대사에서 서아가 책을 붙잡고 균형을 잃는다. 족보 세 장은 책 속에 끼워진 상태로 함께 이동한다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0,
+        "handActions": 1
+      },
+      "runtimeCueIds": [
+        "THR-PRO-S02:handActions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-PRO-S03",
+      "authoredStaging": "서아만 시대를 이동한다. 책과 족보는 서아 곁에 떨어져 있다. 서아는 집에 돌아갈 방법을 묻기 위해 사람들에게 다가가다가, 창백한 노인을 먼저 알아본다. 프롤로그 안에서는 아직 물을 주거나 사람을 옮기지 않는다. 노인이 완전히 쓰러지는 순간은 기존 CH01 S01 첫 대사 직전이다. 책의 연도·장소 표시는 기존 CH01 S01 연출에 맡긴다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C01-S01",
+      "authoredStaging": "삽화: 194년 봄 고구려 농촌의 빈 배급 자루와 긴 줄. 기록책에 연도·장소가 먼저 나타난다. 서아는 오른쪽, 어머니를 부축한 연우는 왼쪽. 아이와 줄 선 주민은 배경 속 인물이다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 1,
+        "portraits": 0,
+        "backgrounds": 1
+      },
+      "runtimeCueIds": [
+        "THR-C01-S01:props:1",
+        "THR-C01-S01:motions:1",
+        "THR-C01-S01:backgrounds:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C01-S02",
+      "authoredStaging": "같은 날 관곡 창고 앞. 서아가 다가오면 연우 스탠딩은 사라지고 창고지기 모진이 왼쪽에 선다. 잠금장치·봉인·안쪽 곡식 자루가 한 삽화에 보인다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C01-S02:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C01-S03",
+      "authoredStaging": "194년을 배경으로 한 지방 관청의 허구 실무 장면. 자막에 '5부 개편의 정확한 연도는 확정하지 않음'을 제작 주석으로 둔다. 서아 오른쪽·해솔 왼쪽. 귀족의 옛 부족 장부와 지역 명부를 다른 소품으로 보여 준다.",
+      "runtimeCueCounts": {
+        "props": 2,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C01-S03:props:1",
+        "THR-C01-S03:props:2"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C01-S04",
+      "authoredStaging": "기록책이 '191년, 을파소가 국상으로 등용되던 무렵'을 연다. 현재 194년에서 3년 전 기록 속으로 재방문한다는 전환을 명시한다. 서아·을파소의 대화는 창작이며 서아가 역사적 등용을 성사시킨 인물로 연출하지 않는다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C01-S04:props:1",
+        "THR-C01-S04:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C01-S05",
+      "authoredStaging": "기록책이 191년 장을 닫고 '194년 10월, 고구려'로 돌아온다. 진대법 제정 시점을 분명히 한다. 고국천왕 왼쪽·서아 오른쪽, 구휼 논의 현장과 계산 장부는 창작 재현.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C01-S05:props:1",
+        "THR-C01-S05:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C01-S06",
+      "authoredStaging": "'195년 봄, 진대법 시행 뒤의 허구 마을 사례' 자막. 서아 오른쪽, 을파소·모진·농민 연우가 발화에 따라 왼쪽 자리 교체. 같은 인물들의 1년 경과만 반영한다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C01-S06:props:1",
+        "THR-C01-S06:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C01-S07",
+      "authoredStaging": "'195년 10월, 허구 상환 사례'. 황량한 일부 밭과 수확한 다른 밭을 함께 보여 일률적 풍년으로 그리지 않는다. 서아 오른쪽·연우 왼쪽. 경·무는 토지 면적 표기이며 진대법의 별도 납부액 산식으로 제시하지 않는다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C01-S07:props:1",
+        "THR-C01-S07:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C01-S08",
+      "authoredStaging": "195년 장면에서 연우와 작별한 뒤에만 인물들을 퇴장시킨다. 기록책 날짜가 313년으로 변하며 118년 경과 표시. 연우를 313년 현장에 재등장시키지 않는다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 1,
+        "visibility": 1,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C01-S08:props:1",
+        "THR-C01-S08:captions:1",
+        "THR-C01-S08:visibility:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C02-S01",
+      "authoredStaging": "'313년, 낙랑 접경. 앞 장에서 118년 뒤' 전환. 서아는 오래된 관곡 자루를 품고 새 검문선 앞에 선다. 도림 왼쪽·서아 오른쪽. 검문병·피란 가족은 짧은 발화 때 왼쪽에서 교체한다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C02-S02",
+      "authoredStaging": "313년 같은 접경 관청. 옛 군현의 관인은 치워졌지만 주민 장부는 바닥에 남는다. 하준 왼쪽·서아 오른쪽. 폐기 명령은 전해 들은 말로 처리한다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C02-S02:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C02-S03",
+      "authoredStaging": "313년 고구려군 보급·호송 집결지. 서아가 들고 온 명부에는 확인한 주민 정보만 있다. 장교 왼쪽·서아 오른쪽. 서아가 낙랑군 축출 전략을 만든 것으로 묘사하지 않는다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C02-S03:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C02-S04",
+      "authoredStaging": "313년 군현 축출 직후 귀향 마을. 소운 왼쪽·서아 오른쪽, 상반된 주장을 하는 이웃은 배경에서 짧게 반응한다. 귀향 가족을 국적만으로 구분하지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C02-S05",
+      "authoredStaging": "314년, 313년 낙랑군 축출에서1년이 흐른 뒤의 교역로 설명 장면. 도림은 CH02 첫 장면에서1년 더 나이 든 동일 인물이다. 311년 서안평, 313년 낙랑, 314년 대방을 서로 다른 때의 진출로 지도에 표시한다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C02-S06",
+      "authoredStaging": "기록책이 '331년, 미천왕 사망과 고국원왕 즉위'를 연다. 도림은 퇴장한다. 새 인물인 기록관 소정이 왼쪽에 등장한다. 왕의 계승 관계는 기록을 읽는 방식으로 확인한다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C02-S06:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C02-S07",
+      "authoredStaging": "371년 고구려 군영 후방. 소정 대신 별인물 전령 태수가 왼쪽에 선다. 원문 '활맞아 죽은' 연상과 역사 사실인 고국원왕 전사를 연결하되 구체 피격 부위·장면은 창작 확정하지 않는다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C02-S07:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C02-S08",
+      "authoredStaging": "371년 패전 장면 뒤 기록책이 '372년, 소수림왕대'로 넘어간다. 331년의 소정과 다른 인물인 기록관 연진이 왼쪽. 다음 챕터에서 동일 시점의 순도를 만난다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C02-S08:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C03-S01",
+      "authoredStaging": "372년. 전진에서 온 순도의 경전 꾸러미를 둘러싼 주민들. 서아 오른쪽·순도 왼쪽. 주민의 두려움은 배경 반응으로 보이며, 모든 주민이 즉시 개종하는 연출을 하지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C03-S02",
+      "authoredStaging": "372년 태학 문 앞. 귀족 자제의 교육기관이라는 성격을 명시한다. 규림은 입학 자격이 없는 주변의 글 배우는 청년으로, 현대적 보편 학교의 재학생이 아니다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C03-S03",
+      "authoredStaging": "373년 율령을 알리는 관청. 이전 마을들의 처분 차이를 호소하는 형제는 배경 인물. 율령 담당관 왼쪽·서아 오른쪽. 법 정비를 현대적 만민평등이나 즉시 공정함으로 설명하지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C03-S04",
+      "authoredStaging": "기록책에 384년 소수림왕 사망·고국양왕 즉위, 391년 광개토대왕 즉위를 순서대로 표시한다. 규림과 앞선 관청 인물은 퇴장한다. 새 기록관 가현은 서로 다른 시기의 왕계 문서를 함께 열람한다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C03-S04:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C03-S05",
+      "authoredStaging": "391년 이후 광개토대왕대의 창작 군량 점검 장면. 정확한 하루의 친견 기록으로 제시하지 않는다. 왕 왼쪽·서아 오른쪽. 영락은 독자 연호, 장부 연도 표기에 자연스럽게 들어간다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C03-S05:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C03-S06",
+      "authoredStaging": "광개토대왕대 여러 해의 원정 기록을 비교하는 군영 문서 공간. 자막으로 서로 다른 연도·방향의 기록을 읽는 장면임을 명시한다. 한 장교가 모든 전쟁을 같은 날 직접 겪은 것처럼 연출하지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C03-S07",
+      "authoredStaging": "400년 신라가 고구려에 구원을 청한 시기. 신라 사신 왼쪽·서아 오른쪽. 구원 결과·국제 관계는 고정이며 서아 선택이 파병 여부를 결정하지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C03-S08",
+      "authoredStaging": "400년 고구려군의 남정 이후 가야권 교역로. 신라 사신 대신 가야 상인이 왼쪽에 등장한다. 금관가야가 이때 완전히 멸망했다는 표현을 금지한다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C03-S08:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C03-S09",
+      "authoredStaging": "414년 광개토대왕릉비 건립 현장. 장수왕대에 아버지의 업적을 기록하는 비임을 명확히 한다. 마지막 join은 기록책의 후대 유물 비교 화면으로 전환하여 415년 명문의 호우명 그릇 사진을 제시한다. 414년 현장에 아직 제작되지 않은 그릇을 두지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [
+        "THR-C03-S09-J01",
+        "THR-C03-S09-J02"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C03-S10",
+      "authoredStaging": "고구려 무덤의 시대별 구조를 관찰하는 재현 공간. 장례 장인은 일반 창작 인물이며 특정 왕릉의 묘주를 증언하지 않는다. 뒤에서는 명확히 '후대 유물 기록: 6세기'를 띄워 금동 연가 7년명 여래 입상을 비교한 다음, 427년으로 되돌아간다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [
+        "THR-C03-S10-M01",
+        "THR-C03-S10-M02",
+        "THR-C03-S10-M03",
+        "THR-C03-S10-M04",
+        "THR-C03-S10-M05",
+        "THR-C03-S10-M06",
+        "THR-C03-S10-M07",
+        "THR-C03-S10-M08",
+        "THR-C03-S10-J01",
+        "THR-C03-S10-J02"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C04-S01",
+      "authoredStaging": "'427년, 국내성에서 평양으로 향하는 길' 자막. 자료 비교 공간을 닫고 실제 여정으로 진입한다. 서아 오른쪽·다은 왼쪽. 다은의 가족은 창작 이주 가구이며 온 나라 사람이 모두 이주한 것으로 보이지 않게 한다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C04-S01:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C04-S02",
+      "authoredStaging": "427년 평양행 나루. 곡식 배와 이주민 배가 뒤엉킨 일러스트. 다은은 배경의 가족으로 옮기고 뱃사공이 왼쪽을 맡는다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C04-S02:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C04-S03",
+      "authoredStaging": "427년 새 도읍 평양의 집터. 다은 왼쪽·서아 오른쪽으로 시작하고 기존 주민 설모가 발화할 때 왼쪽에서 교체. 두 주민이 주인공 오른쪽을 차지하지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C04-S04",
+      "authoredStaging": "'433년, 평양 천도 6년 뒤'로 전환. 장수왕의 창작 정책 설명 장면. 433년 나제 동맹이 475년 한성 함락 뒤에 일어난 것처럼 연결되지 않게 한다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C04-S04:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C04-S05",
+      "authoredStaging": "기록책이 '472년, 백제 한성'을 열어 39년 이동과 국가 변경을 명시한다. 장수왕과 다은은 퇴장. 백제 서리 은호가 왼쪽에서 개로왕의 북위 외교 문서를 다룬다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C04-S05:props:1",
+        "THR-C04-S05:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C04-S06",
+      "authoredStaging": "'475년, 한성 공격 직전 고구려군 후방' 전환. 은호와 다른 인물 보급병 우진이 왼쪽. 민간 대피 보고는 창작이며 역사상의 특정 대피 보장 정책으로 제시하지 않는다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C04-S06:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C04-S07",
+      "authoredStaging": "475년 한성 함락 뒤 피란 나루. 백제 피란민 소리 왼쪽·서아 오른쪽. 개로왕 전사는 확정 소식으로, 가족 생사는 아직 미확인으로 분리한다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C04-S08",
+      "authoredStaging": "기록책 안의 후대 비문 관찰 공간. '충주 고구려비, 5세기 관련 자료·정확한 건립 연대 논쟁'을 자료 표제로 표시한다. 현재의 판독·연대 논의를 5세기 현지인이 미래를 아는 대사로 말하지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [
+        "THR-C04-S08-M01",
+        "THR-C04-S08-M02",
+        "THR-C04-S08-M03",
+        "THR-C04-S08-M04",
+        "THR-C04-S08-M05",
+        "THR-C04-S08-M06",
+        "THR-C04-S08-M07",
+        "THR-C04-S08-M08",
+        "THR-C04-S08-J01",
+        "THR-C04-S08-J02"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C04-S09",
+      "authoredStaging": "475년 이후의 기록책 열람. 다은의 427년 정착 당시 편지를 글과 음성 기록으로만 재생한다. 다은 스탠딩을 현재 생존 인물로 배치하지 않는다. 대화 상대는 후대 기록을 다루는 별인물 기록관이다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C04-S09:props:1"
+      ],
+      "recordLineIds": [
+        "THR-C04-S09-M01",
+        "THR-C04-S09-M02",
+        "THR-C04-S09-M03",
+        "THR-C04-S09-M04",
+        "THR-C04-S09-M05",
+        "THR-C04-S09-M06",
+        "THR-C04-S09-M07",
+        "THR-C04-S09-M08",
+        "THR-C04-S09-J01",
+        "THR-C04-S09-J02"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C04-S10",
+      "authoredStaging": "기록책에 '475년 → 612년, 137년 뒤'를 크게 표시한다. 장수왕·다은·소리 등 이전 인물은 등장하지 않는다. 왕계 기록은 장수왕대에서 영양왕대로 시간 간격을 분명히 보여 준다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C04-S10:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C05-S01",
+      "authoredStaging": "612년 고구려 후방 군량 수레. 서아 오른쪽·창작 보급병 온달수 왼쪽. 온달수는 고구려 장군 온달과 관계없는 인물이다. 600년 신집 편찬은 이미 지난 일로 말한다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C05-S01:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C05-S02",
+      "authoredStaging": "612년 을지문덕의 지휘가 이어지는 후방 연락처. 서아는 정찰 정보 전달·의료 지원에 참여하는 창작 인물이다. 승리를 서아가 만든 비밀 수공 작전으로 바꾸지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C05-S03",
+      "authoredStaging": "612년 살수 전투 뒤 후방 구호 공간. 피와 시신을 강조하지 않고 젖은 옷·빈 물통·다친 손으로 피해를 표현한다. 민서 왼쪽·서아 오른쪽.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C05-S03:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C05-S04",
+      "authoredStaging": "'631년, 19년 뒤. 영류왕대 천리장성 축조가 시작된 때' 자막. 온달수·민서는 퇴장하고 새 인물 축성 인부 길원이 왼쪽에 선다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C05-S04:props:1",
+        "THR-C05-S04:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C05-S05",
+      "authoredStaging": "'642년, 천리장성 축조 시작에서 11년 뒤' 전환. 궁중 서리 진하가 왼쪽, 서아 오른쪽. 영류왕 피살·연개소문 정변·보장왕 즉위를 확정 핵심으로 말하고 불명확한 희생자 숫자는 제시하지 않는다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C05-S05:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C05-S06",
+      "authoredStaging": "645년 당 태종의 침입. 642년 정변과 다른 날짜를 기록책에 나란히 표시한다. 전령 지오 왼쪽·서아 오른쪽. 전쟁을 안시성 한 곳만의 사건으로 축소하지 않는다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C05-S06:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C05-S07",
+      "authoredStaging": "645년 안시성 포위 중 성 안. 서아 오른쪽·성민 윤서 왼쪽. 당군의 토산·성민의 운반 노동을 보여 주되 수비 지휘자의 이름은 '안시성주'만 사용한다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C05-S08",
+      "authoredStaging": "645년 당군 철수 소식이 전해진 아침. 포위 때와 동일한 윤서가 왼쪽에 선다. 파손된 성과 빈 자루는 남아 있어 회복 과제가 보인다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C05-S08:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C05-S09",
+      "authoredStaging": "'666년, 안시성 전투에서 21년 뒤' 전환. 윤서는 등장하지 않는다. 새 서리 초연이 서로 상충하는 명령서를 들고 왼쪽에 선다.",
+      "runtimeCueCounts": {
+        "props": 2,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C05-S09:props:1",
+        "THR-C05-S09:props:2",
+        "THR-C05-S09:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C05-S10",
+      "authoredStaging": "668년 평양 함락 직후 피란 공간. 태문과 아이는 창작 가족. 서아 오른쪽·태문 왼쪽. 뒤의 소식으로 보장왕 항복과 당의 안동도호부 설치를 전한다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C05-S11",
+      "authoredStaging": "'670년, 멸망에서 2년 뒤' 자막. 태문은 2년의 피란 생활을 겪은 같은 인물로 다시 등장한다. 검모잠·고연무·안승의 활동은 소식으로 전하며, 전원이 하나의 동일 부대·명령 계통인 것처럼 묶지 않는다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C05-S11:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C05-S12",
+      "authoredStaging": "670년 유민 장면을 닫고 기록책의668년 멸망 항목을 짚은 뒤 '260년 백제, 과거의 시작을 다시 방문'으로 전환한다. 실제 출발 시각은670년임을 안내해 직전 씬과 연결한다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C05-S12:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C06-S01",
+      "authoredStaging": "670년 고구려 기록이 닫히고 260년 고이왕대 제도 정비 기사의 재현으로 역행한다. 사료 재현 표지에 ‘6좌평·16관등의 완성 시기는 학술적 논의가 있음’을 표시한다. 서아 오른쪽, 솔아·아이·관리는 발화마다 왼쪽 교체. 실제260년의 제도가 하루에 모두 완성되었다는 연출은 피한다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C06-S01:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C06-S02",
+      "authoredStaging": "260년 기사 재현의 같은 날, 솔아의 수선 대금 청구서를 들고 집무처로 간다. 서아 오른쪽·백제 서리 왼쪽. 마지막 기록관은 역사 속 관리가 아니라 책 가장자리의 후대 해설 인물로 화면색을 바꿔 분리한다. ‘6좌평’은 담당 직무, ‘16관등’은 서열로 구분한다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C06-S02:props:1"
+      ],
+      "recordLineIds": [
+        "THR-C06-S02-J02"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C06-S03",
+      "authoredStaging": "책장이 한 세기 넘게 앞으로 넘어간다. 솔아의 공방 자리에는 다른 간판이 있다. 서아 오른쪽·마한 상인과 백제 관리 왼쪽 교체. 마한 전역을 일시에 정복했다는 지도를 상인의 실제 교역길과 비교한다. 본선 마지막 두 턴은 서아만 보는 기록책의 현대 지도 비교이며 상인과 관리는 듣지 않는다. 요서·규슈·마한의 진출 표시를 직접 지배의 동일한 증거로 처리하지 않는다. 책을 닫으면 짐을 싸던 과거 현장과 장면 끝 대사로 돌아온다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [
+        "THR-C06-S03-M09",
+        "THR-C06-S03-M10"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C06-S04",
+      "authoredStaging": "371년 백제 출정 나루. 군량 담당 유솔은260년 솔아의 후손인 새 인물이다. 솔아는 살아서 재등장하지 않는다. 서아는 이미 CH02에서 고구려 측 결과를 보았지만 병사들에게 미래의 전사 소식을 말하지 않는다. 서아 오른쪽·유솔 왼쪽, 분기에서 병사/장교 왼쪽 교체.",
+      "runtimeCueCounts": {
+        "props": 2,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C06-S04:props:1",
+        "THR-C06-S04:props:2",
+        "THR-C06-S04:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C06-S05",
+      "authoredStaging": "371년 귀환 소식이 도착한 한성. 출정 때의 유솔은 생사 확인 전인 채로 남겨 선택 결과와 무관한 전사자 다른 이름을 듣는다. 서아 오른쪽·백제 전령 왼쪽. 승전 북소리가 전사자 호명 때 낮아진다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C06-S06",
+      "authoredStaging": "371년 거리에서 4세기 칠지도 제작 기록으로 이동한다. 화면에 ‘제작·전달 연대와 명문 해석에는 논의가 있음’을 표시하여 특정 전달일을 단정하지 않는다. 장인의 창작 공방과 후대 명문 판독 화면을 구분한다. 서아 오른쪽·칠지도 장인 왼쪽.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C06-S07",
+      "authoredStaging": "375년 무렵 한성 외교 나루. 통역관은 새 인물이며260년 서리와 동일인이 아니다. 근초고왕대 동진·왜 교류와375년 고흥의 서기를 나루의 외교 문서·책 꾸러미에 연결한다. 서아 오른쪽·통역관 왼쪽, 양쪽 사신은 발화 시 왼쪽 교체.",
+      "runtimeCueCounts": {
+        "props": 2,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C06-S07:props:1",
+        "THR-C06-S07:props:2"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C06-S08",
+      "authoredStaging": "384년 침류왕대 왕도. 이전 통역관과는 헤어졌고 새로 도착한 마라난타를 만난다. 서아 오른쪽·마라난타 왼쪽. 동진을 경유해 온 승려의 출신과 출항지를 동일시하지 않으며, 불교의 국가적 수용과 모든 주민의 즉각적 개종을 구분한다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C06-S08:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C06-S09",
+      "authoredStaging": "384년 밤 나루가 멈추고, 책 밖 자료 공간의 기록관이 등장한다. 기록관은 당대 주민이 아니라 시간 전환을 설명하는 인물이다. 384년→475년의91년 이동을 명시하며 마라난타나 솔아의 후손을 계속 살아 있는 동행자로 옮기지 않는다. 서아 오른쪽·기록관 왼쪽.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C06-S09:captions:1"
+      ],
+      "recordLineIds": [
+        "THR-C06-S09-M01",
+        "THR-C06-S09-M02",
+        "THR-C06-S09-M03",
+        "THR-C06-S09-M04",
+        "THR-C06-S09-M05",
+        "THR-C06-S09-M06",
+        "THR-C06-S09-M07",
+        "THR-C06-S09-M08",
+        "THR-C06-S09-J01",
+        "THR-C06-S09-J02"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C07-S01",
+      "authoredStaging": "475년 한성 성문 안. CH06 마지막의 아이 울음이 이어진다. 해인은20대 피란민이자 수리·생활용품을 파는 사람이다. 서아 오른쪽·해인/아이/수문 병사 왼쪽 교체. B1에서는 기존 도구 상자를 잃고 B2에서는 보존하며, 공통 대사는 도구 소유를 전제하지 않는다.",
+      "runtimeCueCounts": {
+        "props": 4,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 2,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C07-S01:props:1",
+        "THR-C07-S01:props:2",
+        "THR-C07-S01:props:3",
+        "THR-C07-S01:props:4",
+        "THR-C07-S01:motions:1",
+        "THR-C07-S01:motions:2"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C07-S02",
+      "authoredStaging": "475년 한성 함락 직후 피란 나루. 해인은 배편을 알아보러 이동하고 서아가 전령의 소식을 듣는다. 서아 오른쪽·백제 전령 왼쪽. 개로왕·문주왕의 친족관계는 확정하지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C07-S03",
+      "authoredStaging": "475년 웅진 천도 결정의 재현. 한성에서 금강 주변으로 이동했음을 자막으로 명시한다. 서아 오른쪽·문주왕 왼쪽. 왕과 서아의 만남은 창작이며 천도 결정이 서아의 조언으로 내려지는 것으로 연출하지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C07-S04",
+      "authoredStaging": "475년 웅진 거주지. 현지 주민 다솔과 피란민 해인의 첫 만남. 서아 오른쪽·다솔/해인 왼쪽 교체. 물을 돌리는 분기와 집터를 찾는 분기의 공통 합류는 해결한 대상을 특정하지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C07-S05",
+      "authoredStaging": "웅진 기록실479년. 기록책이477년 문주왕 사망, 삼근왕 즉위, 479년 동성왕 즉위 표지를 순서대로 보여 준다. 서아 오른쪽·새 서리 왼쪽. 왕위 계승을 같은 날의 사건처럼 묶지 않으며 삼근왕의 죽음을 피살로 단정하지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C07-S06",
+      "authoredStaging": "492년 웅진 장터. 475년 이후17년이 지났다. 해인은40대가 되었고 당시 어린아이는 장터 일을 돕는 청년으로 성장했다. 서아만 외모가 그대로다. 과거 분기에서 도구를 잃었는지와 무관하게 웅진에서 새로 마련한 현재 물건을 다룬다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C07-S06:props:1",
+        "THR-C07-S06:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C07-S07",
+      "authoredStaging": "493년 사절 숙소. 서아 오른쪽·신라 사신 왼쪽. 동성왕과 혼인하는 신부는 소지왕의 친딸로 그리지 않고 이벌찬 비지의 딸로 명시한다. 혼인의 당사자에게 임의의 실명·성격·감정을 부여하지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C07-S08",
+      "authoredStaging": "495년 웅진 나루. 493년 혼인 이후2년이 흘렀다. 해인은 이전 장터의 동일 인물로 자연스럽게 나이를 더한다. 494년 백제의 신라 지원과495년 신라의 백제 지원을 지난 일·현재 소식으로 구분한다. 서아 오른쪽·해인 왼쪽.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C07-S08:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C07-S09",
+      "authoredStaging": "501년 웅진 관청. 495년의 해인과 헤어진 뒤6년을 건넌다. 서아 오른쪽·자료 공간의 기록관 왼쪽. 동성왕·무령왕 관계는 단정하지 않고 왕위 계승과 지방 통치 변화로 이어 간다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C07-S09:props:1"
+      ],
+      "recordLineIds": [
+        "THR-C07-S09-M01",
+        "THR-C07-S09-M02",
+        "THR-C07-S09-M03",
+        "THR-C07-S09-M04",
+        "THR-C07-S09-M05",
+        "THR-C07-S09-M06",
+        "THR-C07-S09-M07",
+        "THR-C07-S09-M08",
+        "THR-C07-S09-J01",
+        "THR-C07-S09-J02"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C08-S01",
+      "authoredStaging": "CH07의 파견장에서510년으로 설정한 무령왕대 생활 장면으로 들어간다. 510년은 창작 장면의 기준이지22담로 설치의 확정 연도가 아니다. 서아 오른쪽·무령왕 왼쪽. 왕의 지방 통치 결정은 이미 진행 중이며 서아의 선택으로 만들어지지 않는다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C08-S01:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C08-S02",
+      "authoredStaging": "510년 지방 담로. 여울은20대 서리이며554년의 병사 가족 여울과 동일 인물이다. 서아 오른쪽·여울/주민 왼쪽 교체. 부정 의심만으로 관리의 고의 횡령을 확정하지 않는다. D014의 두락제는 파종량을 기준으로 땅을 헤아리는 방식으로 제시하며 현대 면적 환산값은 붙이지 않는다.",
+      "runtimeCueCounts": {
+        "props": 2,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C08-S02:props:1",
+        "THR-C08-S02:props:2"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C08-S03",
+      "authoredStaging": "510년 생활 장면을 닫고 후대 유물 자료 공간으로 이동한다. 1971년 발굴 자료와 왕릉 지석을 보는 장면이며 살아 있는523년 왕에게 사후 사실을 말하지 않는다. 서아 오른쪽·유물 기록관 왼쪽. 523왕 사망/525왕 안장, 526왕비 사망/529왕비 합장을 구분한다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C08-S03:captions:1"
+      ],
+      "recordLineIds": [
+        "THR-C08-S03-M01",
+        "THR-C08-S03-M02",
+        "THR-C08-S03-M03",
+        "THR-C08-S03-M04",
+        "THR-C08-S03-M05",
+        "THR-C08-S03-M06",
+        "THR-C08-S03-M07",
+        "THR-C08-S03-M08",
+        "THR-C08-S03-M09",
+        "THR-C08-S03-M10",
+        "THR-C08-S03-J01",
+        "THR-C08-S03-J02"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C08-S04",
+      "authoredStaging": "자료 공간을 닫고538년, 성왕의 사비 천도 준비처로 이동한다. 서아 오른쪽·성왕 왼쪽. 무령왕이 살아서 함께 등장하지 않는다. 웅진·사비의 지형·수운을 실제 이주민의 짐 행렬과 함께 보여 준다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C08-S04:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C08-S05",
+      "authoredStaging": "사비 관청에 남부여 현판을 거는538년 장면과 사비시대 제도 자료를 연결한다. 중앙22부·도성5부·지방5방의 장기 정비 결과를 천도 당일 한 번에 완성한 일로 연출하지 않는다. 서아 오른쪽·백제 서리 왼쪽.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [
+        "THR-C08-S05-M05",
+        "THR-C08-S05-M06",
+        "THR-C08-S05-M07"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C08-S06",
+      "authoredStaging": "551년 한강 회복 지역. 서아 오른쪽·백제 병사/주민 왼쪽 교체. 백제의 한강 하류 회복과 신라의 상류 진출을 함께 움직인 동맹의 성과로 제시한다. 한 국가의 성과를 서아의 선택으로 만들어 내지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C08-S07",
+      "authoredStaging": "553년 사비 군영. 551년 지도 옆에 신라의 한강 장악을 표시한 새 지도가 펼쳐진다. 서아 오른쪽·백제 사신 왼쪽. 앞 선택의 전공 기록이나 주민 구호가 국가 간 결별 원인으로 연결되지 않는다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C08-S07:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C08-S08",
+      "authoredStaging": "554년 관산성 후방. 여울은510년20대 서리에서60대 후반이 된 동일 인물이다. 군사로 출정한 손자 한결은 새 청년 인물. 서아만 나이가 그대로이며 여울이 이를 알아본다. 서아 오른쪽·여울/한결 왼쪽 교체. B1에서 전달·답장, B2에서는 거짓 귀환 보장 대신 연락처 준비를 한다. B1에서는 후방 연락 초소의 한결에게 편지를 전한 뒤 여울의 대기처로 돌아오는 화면 전환을 넣는다. B2에서는 계속 여울의 대기처에 머문다.",
+      "runtimeCueCounts": {
+        "props": 4,
+        "captions": 3,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 1
+      },
+      "runtimeCueIds": [
+        "THR-C08-S08:props:1",
+        "THR-C08-S08:props:2",
+        "THR-C08-S08:props:3",
+        "THR-C08-S08:props:4",
+        "THR-C08-S08:captions:1",
+        "THR-C08-S08:captions:2",
+        "THR-C08-S08:captions:3",
+        "THR-C08-S08:backgrounds:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C08-S09",
+      "authoredStaging": "554년 관산성 전투 패전 소식 직후 구호소. 서아 오른쪽·전령 왼쪽. 여울의 손자 한결의 생사는 어느 분기에서도 임의로 확정하지 않는다. 성왕 전사라는 역사적 결과만 고정한다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C08-S09:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C08-S10",
+      "authoredStaging": "관산성 패전 이후의 접경 장터. 서아 오른쪽, 서로 다른 백제 상인·신라 상인은 번갈아 왼쪽에 표시한다. 손바닥 규모의 허가된 물품 거래를 창작하며 국가 간 적대나 통제가 해소되었다는 결론을 만들지 않는다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C08-S10:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C08-S11",
+      "authoredStaging": "554년 기록을 닫고 자료 공간에서 성왕 이후의 여러 왕대를 지나639년 익산으로 향한다. 서아 오른쪽·기록관 왼쪽만 유지한다. 도연은CH09에서 처음 등장하며 이곳에서 미리 동행시키지 않는다. 여울이639년까지 살아 있거나 젊어지는 연출을 넣지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [
+        "THR-C08-S11-M01",
+        "THR-C08-S11-M02",
+        "THR-C08-S11-M03",
+        "THR-C08-S11-M04",
+        "THR-C08-S11-M05",
+        "THR-C08-S11-M06",
+        "THR-C08-S11-M07",
+        "THR-C08-S11-M08",
+        "THR-C08-S11-J01",
+        "THR-C08-S11-J02"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C09-S01",
+      "authoredStaging": "639년 미륵사. 목조건축의 요소를 돌로 표현한 서탑 공사와 사리 봉안 준비를 재현한다. 실제 왕후의 육성·공사 당일 상황은 창작. 서동설화 장면을 사리봉안기 실물과 혼합하지 않는다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C09-S01:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C09-S02",
+      "authoredStaging": "6~7세기 제작일 미상의 백제 금동대향로를 이해하기 위한 사비 공방 재현. 이 장인은 도연과 다른 금속 장인이다. 특정 실물의 제작일·개인 제작자를 확정하지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C09-S03",
+      "authoredStaging": "기록책 안의 비시대적 비교 공간. 한성·웅진·사비의 실제 유적 단면을 관찰하는 재현이며, 장례 기록관은 서로 다른 시기 자료를 읽어 주는 기록 속 화자다. 현실 NPC가 여러 왕조를 살아온 설정이 아니다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [
+        "THR-C09-S03-M01",
+        "THR-C09-S03-M02",
+        "THR-C09-S03-M03",
+        "THR-C09-S03-M04",
+        "THR-C09-S03-M05",
+        "THR-C09-S03-M06",
+        "THR-C09-S03-M07",
+        "THR-C09-S03-M08",
+        "THR-C09-S03-M09",
+        "THR-C09-S03-M10",
+        "THR-C09-S03-J01",
+        "THR-C09-S03-J02"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C09-S04",
+      "authoredStaging": "6~7세기 백제와 왜의 학문·불교·기술 교류 비교. 7세기 허구 출항 장면에서 602년 관륵 파견을 회상한다. 해당 승려를 관륵 본인으로 표시하지 않는다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C09-S04:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C09-S05",
+      "authoredStaging": "642년 사비. 윤충의 대야성 함락은 확정 사건, 갑옷 수레와 유족은 허구다. 660년 멸망을 이때의 전령이 예언하지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C09-S06",
+      "authoredStaging": "660년 황산벌 후방. 642년 전령과 다른 인물이다. 계백의 가족 살해 전승이나 비극을 충성의 이상으로 미화하지 않는다. 비시각적 전사 소식과 구호 대화 중심.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C09-S07",
+      "authoredStaging": "660년 사비 함락과 항복 뒤 피란길. 도연(639년 장인)의 손녀 다은(허구, 20대)을 소개해 세대 교체를 명시한다. 전쟁으로 국가가 멸망한 것과 주민의 생존을 구분한다.",
+      "runtimeCueCounts": {
+        "props": 2,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C09-S07:props:1",
+        "THR-C09-S07:props:2",
+        "THR-C09-S07:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C09-S08",
+      "authoredStaging": "660~662년 백제 부흥 운동을 압축 관찰한다. 661년 이후 연락관 대화로 도침 사망을 회상하며, 정확한 날은 부여하지 않는다. 복신·도침·부여풍·흑치상지는 서로 다른 역할로 구분한다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C09-S08:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C09-S09",
+      "authoredStaging": "663년 백강 전투 뒤 후방 나루. 부여풍과 복신의 내분 및 부흥군·왜 지원군의 패배는 고정이다. 난민 전체가 동일 국가로 떠났다고 처리하지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C09-S10",
+      "authoredStaging": "663년 바닷가에서 직전 피란 가족의 말을 서아가 회상한다. 설의 기억은 생존 여부를 아는 초자연적 화자가 아니라 직전 들은 말의 회상 음성이다. 마지막 탭 후 자막으로 “기록책 재방문:356년 이후 신라”를 명시하며 CH10으로 전환.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 1,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C09-S10:captions:1",
+        "THR-C09-S10:visibility:1"
+      ],
+      "recordLineIds": [
+        "THR-C09-S10-M02",
+        "THR-C09-S10-M03",
+        "THR-C09-S10-M04",
+        "THR-C09-S10-M05",
+        "THR-C09-S10-M06",
+        "THR-C09-S10-M07",
+        "THR-C09-S10-M08"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C10-S01",
+      "authoredStaging": "663년 백제에서 356년 이후 신라로 기록책이 되돌아간다는 자막을 먼저 보여 준다. 현대 여성 서아 오른쪽, 새 조연 미솔 왼쪽. 내물마립간 재위기를 살아가는 장터 대화이며 시조 박혁거세 건국은 전승 회상이다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C10-S01:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C10-S02",
+      "authoredStaging": "시간 전환:4세기에서 5세기 후반 왕실 공방 재현으로 이동한다. 미솔은 등장하지 않으며 새 금속 장인으로 교체한다. 신라 금관을 통상 매일 착용한 왕관으로 단정하지 않고 위세·의례·부장과 관련된 물건으로 연출한다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C10-S02:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C10-S03",
+      "authoredStaging": "5세기 후반 축조터. 직전 공방과 같은 시대지만 다른 현장 인물이다. 돌무지덧널무덤은 나무 덧널·돌무지·봉토 단면을 정확히 그린다. 일반 돌무지무덤과 구별한다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C10-S03:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C10-S04",
+      "authoredStaging": "기록책 비교 전환:6세기 이후 골품 제도 장면. 5세기의 다함과 다른 청년 가람을 새로 소개한다. 신분에 따른 관등 제한을 사람의 삶으로 체감하며, 후대 6두품 문제와 연결할 개인 기록을 남긴다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C10-S04:props:1",
+        "THR-C10-S04:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C10-S05",
+      "authoredStaging": "531년 상대등 설치 이후의 6세기 제도 비교. 화백을 현대 보통선거 의회로 표현하지 않는다. 상대등은 귀족 회의와 관련된 최고 관직이며 왕의 뜻을 집행하는 집사부 시중과 구별할 복선이다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C10-S06",
+      "authoredStaging": "시간 재방문:6세기 비교 뒤 400년 고구려 구원 직후의 신라로 돌아간다. 호우명 그릇 실물을 400년에 놓지 않는다(호우총 호우명 그릇은 415년 명문). 배경의 이 그릇은 교류를 표현하는 허구 소품이며 실제 호우명 그릇 자료는 별도 비교로만 노출한다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C10-S06:props:1",
+        "THR-C10-S06:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C10-S07",
+      "authoredStaging": "433년 신라·백제 외교. 사신이 사건연도를 소리 내어 말하는 부분은 기록책이 현장어를 연대 표기로 옮기는 연출로 처리한다. 양국 동맹은 공동의 위협에 대한 선택이며 영구 우정을 보장하지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C10-S08",
+      "authoredStaging": "433년 외교 기록을 닫고 502년 기록 공간으로 전환한다. 이 기록관은 502년 인물의 재현으로 이전 왕들을 회상한다. 소지왕 재위까지의 시간 경과와 실성·자비를 포함한 왕위 순서를 지도 옆에 명시한다. B002의 행정 개편 연도는 미확정으로 표기.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C10-S08:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C11-S01",
+      "authoredStaging": "502년 지증왕대 농촌. 우경 장려의 국가 기록을 배경으로 소가 부족한 마을의 허구 갈등을 보여 준다. 일러스트는농경지·쟁기·소를 포함하며 서아의 임의 수의치료를 연출하지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C11-S02",
+      "authoredStaging": "503년 관청 장면의 8번째 발화 직전에 “기록 추가:509년 동시전” 자막으로 관청 기록을 비교한다. 서리의 당시 육성 부분과 509년 기록 낭독 부분을 구분하고 얼굴이 변하지 않은 장기 동행으로 처리하지 않는다. 502년 순장금지는 직전해 회상.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [
+        "THR-C11-S02-M08",
+        "THR-C11-S02-M09",
+        "THR-C11-S02-M10"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C11-S03",
+      "authoredStaging": "512년 동해 출항지. 우산국 복속과 이사부는 확정 학습점, 나무사자로 위협했다는 내용은 문헌의 전승으로 표시한다. 괴물이나 살아 움직이는 나무 사자를 사실 장면으로 만들지 않는다.",
+      "runtimeCueCounts": {
+        "props": 2,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C11-S03:props:1",
+        "THR-C11-S03:props:2"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C11-S04",
+      "authoredStaging": "520년 법흥왕대 율령 반포 뒤 법집행을 소재로 한 허구 민원. 517년 병부 설치는 과거 회상, 관등·공복·골품 정비는 신분 질서와 연결한다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C11-S04:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C11-S05",
+      "authoredStaging": "527/528년 불교 공인 전후 천경림 주변. 주민의 신앙은 허구 개인사로 다루며 불교 공인을 모두의 자발적 개종으로 단정하지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C11-S06",
+      "authoredStaging": "527년 순교 전승을 돌아보는 장면. 처형 직접 묘사 대신 소식을 들은 거리의 창작 지인을 배치한다. 이차돈의 실제 마지막 육성 대사를 발명하지 않으며 흰 피는 후대 전승으로만 구분한다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C11-S07",
+      "authoredStaging": "528년 전후 법흥왕과의 허구 면담. 율령·불교 공인으로 왕권과 국가체제를 정비하는 역사 흐름을 다루되 서아가 실제 정책을 결정하거나 531/536년 조치를 예언하지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C11-S08",
+      "authoredStaging": "532년 금관가야 병합. 이 아라는 532년 가야계 여성으로 CH14의 3세기 상인 아라와 다른 인물이다. 구형왕/구해왕 표기는 같은 인물의 이름 차이로 소품에서 구별한다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C11-S08:props:1",
+        "THR-C11-S08:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C11-S09",
+      "authoredStaging": "앞 6턴은 532년 이후 정착지 대화. 7~8턴만 기록책을 여는 서아의 독백으로 분리하고 NPC가 듣거나 답하지 않는다. 김유신은 595년 출생이므로 532년 청년에게 미래의 계보를 설명시키지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [
+        "THR-C11-S09-M07",
+        "THR-C11-S09-M08"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C11-S10",
+      "authoredStaging": "540년 기록 공간. 법흥왕의 상대등 531·건원 536을 이미 지난 일로 회상한 뒤 진흥왕대에 진입한다. 다음 CH12는 551년으로 추가 전환한다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C12-S01",
+      "authoredStaging": "551년 한강 전선 후방. 신라 병사 하람은 이 장의 새 인물. 백제 관점 CH08과 동일한 역사 사건을 재방문하며 전투를 다시 반복 재현하지 않는다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C12-S01:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C12-S02",
+      "authoredStaging": "553년 한강 나루. 신라가 한강 유역과 서해 교통로를 확보하는 가치와 주민의 통행 혼란을 함께 보여 준다. 당항성의 현대 위치 비정은 대사에서 확정하지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C12-S03",
+      "authoredStaging": "553년 신주 설치 뒤 관청을 재현한다. 영토 장악·행정 설치·주민 협력은 서로 다른 단계로 체감시킨다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C12-S04",
+      "authoredStaging": "554년 관산성 전투 뒤. 성왕 전사와 나제동맹 파탄은 고정이며 CH08의 전투 장면을 반복하지 않는다. 민간 백제 출신 상인과 신라 주민의 갈등을 다룬다.",
+      "runtimeCueCounts": {
+        "props": 2,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C12-S04:props:1",
+        "THR-C12-S04:props:2"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C12-S05",
+      "authoredStaging": "545~550년대 추정 기록 재방문. 단양 적성비의 구체 제작일은 확정하지 않는 재현이다. 신라에 협력한 야이차와 포상 내용이 핵심이며 네 순수비와 구별한다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C12-S05:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C12-S06",
+      "authoredStaging": "연대가 다른 비석을 기록책 비교 공간에서 관찰한다. 창녕 555·황초령/마운령 568·북한산 연대 유보를 각 그림 아래 표시. 572년 연호는 후속 기록 낭독으로 분리하고 568년 실제NPC의 미래 예언으로 처리하지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [
+        "THR-C12-S06-M01",
+        "THR-C12-S06-M02",
+        "THR-C12-S06-M03",
+        "THR-C12-S06-M04",
+        "THR-C12-S06-M05",
+        "THR-C12-S06-M06",
+        "THR-C12-S06-M07",
+        "THR-C12-S06-M08",
+        "THR-C12-S06-M09",
+        "THR-C12-S06-M10",
+        "THR-C12-S06-J01",
+        "THR-C12-S06-J02"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C12-S07",
+      "authoredStaging": "6세기 화랑도 정비를 보여 주는 산길 재현. 화랑을 현대 특수부대로 규정하지 않고 청소년 집단의 수련·교유·인재 양성을 묘사한다. 임신서기석 실물은 이 현장에 놓지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C12-S08",
+      "authoredStaging": "562년 대가야 멸망 뒤. 신라 관점의 영토 확대를 가야 주민의 상실과 연결한다. 정복 이전 가야를 살펴볼 CH14·15의 동기를 직접 남긴다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C12-S08:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C12-S09",
+      "authoredStaging": "562년 이후 편입 지역 장터. 새 통치의 계량·납품을 소재로 한 창작 장면이며 확인되지 않은 구체 국가별 저울 비율을 만들지 않는다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C12-S09:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C12-S10",
+      "authoredStaging": "568년에서 634년까지 기록책 전환. 거칠부의 국사 545는 과거 회상, 임신서기석의 552/612년 비정은 비시대적 사료 해설로 분리한다. 진흥·진지·진평·선덕 왕위를 누락 없이 표시. 서아 혼자만 시간 이동한다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 1,
+        "visibility": 1,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C12-S10:props:1",
+        "THR-C12-S10:captions:1",
+        "THR-C12-S10:visibility:1"
+      ],
+      "recordLineIds": [
+        "THR-C12-S10-M01",
+        "THR-C12-S10-M02",
+        "THR-C12-S10-M03",
+        "THR-C12-S10-M04",
+        "THR-C12-S10-M05",
+        "THR-C12-S10-M06",
+        "THR-C12-S10-M07",
+        "THR-C12-S10-M08",
+        "THR-C12-S10-M09",
+        "THR-C12-S10-M10",
+        "THR-C12-S10-J01"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C13-S01",
+      "authoredStaging": "634년 분황사. 모전석탑은 돌을 벽돌처럼 다듬어 쌓은 탑임을 석재로 체감한다. 후대 용어를 번역한 대사이며 당시부터 현대 분류명으로 불렸다고 확정하지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C13-S02",
+      "authoredStaging": "선덕여왕대 첨성대 주변 밤 일러스트. 당대 천문·역법과 국가 운영을 연결하는 허구 보조 인물. 첨성대 내부의 구체 관측 자세·도구·사용법은 확인되지 않은 부분을 확정 재현하지 않는다. 선명력은 이 시대에 끼워 넣지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C13-S03",
+      "authoredStaging": "645년 황룡사 9층목탑 공사 재현. 자장의 건의와 백제 장인 아비지 관련 전승을 토대로 한 창작 대화다. 화자는 아비지의 제자라는 허구 장인. 무너지지 않은 아홉 층 완성 외관은 공정 종료 뒤에만 보여 주고 현재 남아 있는 실물 건물처럼 표시하지 않는다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C13-S03:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C13-S04",
+      "authoredStaging": "648년 김춘추의 대당 외교. 647년 비담·염종의 난을 과거로 회상한다. 성별 비난은 반란 명분으로 구별하며 역사 원인을 전부 성별 갈등으로 축소하지 않는다. 김춘추가 아직 일어나지 않은 나당전쟁을 구체 예언하지 않는다.",
+      "runtimeCueCounts": {
+        "props": 2,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C13-S04:props:1",
+        "THR-C13-S04:props:2"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C13-S05",
+      "authoredStaging": "651년 진덕여왕대 집사부. 당대 장관 중시와 후대 명칭 시중을 혼동하지 않는다. 귀족의 화백회의·상대등과 왕권을 뒷받침하는 정무 집행 기능을 문서 전달 갈등으로 체감한다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C13-S06",
+      "authoredStaging": "654년 김춘추/태종무열왕 즉위. 진골 왕위 계승과 골품제 존속을 구분한다. 김유신은 595년생으로 약 60세 모습. 가람은 6세기 인물의 과거 기억이며 지금도 청년으로 재등장하지 않는다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C13-S06:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C13-S07",
+      "authoredStaging": "660년 나당 연합군의 백제 공격 준비. 김법민은 당시 왕자이며 661년 즉위 이후 문무왕으로 불린다. 당군 소정방과 신라 육군 김유신을 구별한다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C13-S08",
+      "authoredStaging": "668년 고구려 멸망 직후. 안동도호부 668·웅진도독부 660·계림도독부 663을 구분해 당의 지배 구상을 보여 준다. 모든 유민이 즉시신라로편입되었다고단정하지않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C13-S09",
+      "authoredStaging": "674년 보덕왕 책봉. 안승과 검모잠·고연무의 서로 다른 활동을 한 사람의 동일 부대로 단순화하지 않는다. 연락관은 7세기 허구 유민이며 다음 세기까지 동일 얼굴로 계속 살지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C13-S10",
+      "authoredStaging": "675년 매소성 전투의 육상 보급 후방. 길 안내는 현지 주민의 정보를 바탕으로 하며 서아가 현대 지도 지식으로 전투 결과를 변경하지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C13-S11",
+      "authoredStaging": "676년 기벌포 전투. 신라 시득과 당 설인귀의 수전을 매소성 육상전과 구별한다. 사람을 구하는 작은 배는 허구이며 군사 전략이나 승패는 바뀌지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C13-S12",
+      "authoredStaging": "676년 전쟁 뒤 피란 거처. 통일의 의미와 영역·외세 의존의 한계를 함께 다룬다. 마지막에 기록책의 발해 표제가 잠시 보이나, 서아가 미뤄 둔 가야 표식을 펼쳐 재방문:3세기 금관가야로 전환한다. 발해의 미래를 당대 NPC가 입으로 예언하지 않는다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C13-S12:props:1",
+        "THR-C13-S12:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C14-S01",
+      "authoredStaging": "재방문 자막:3세기 말 금관가야 항구(오늘날 김해 일대). 아라 1은 20대 상인으로 서아와 첫 만남이다. 김수로 42년은 건국 전승임을 별도 자막으로 표시한다. 서아가 들고 온 가야 표식은 시간 여행 장치의 허구 소품이다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C14-S01:props:1",
+        "THR-C14-S01:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C14-S02",
+      "authoredStaging": "3세기 말 연맹 교역 회합. 정치체마다 독립성이 남은 가야 연맹의 성격을 도장·깃발·물품 계약으로 체감한다. 여러 왕을 신라의 지방관처럼 그리지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C14-S03",
+      "authoredStaging": "3세기 말~4세기 초 범위의 제철소 허구 재현. 해들은 아라와 같은 세대의 장인이다. 정밀 제련 공정 교육보다 숙련 노동·안전한 도움·철 생산의 의미를 다룬다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C14-S03:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C14-S04",
+      "authoredStaging": "3세기 말의 같은 아라와 이어지는 교역 장면. 덩이쇠를 현대의 통일 규격 법정 화폐로 단정하지 않고 철 재료·교역품·교환 수단의 역할을 나눈다.",
+      "runtimeCueCounts": {
+        "props": 2,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C14-S04:props:1",
+        "THR-C14-S04:props:2"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C14-S05",
+      "authoredStaging": "3세기 말~4세기 초의 같은 해들 공방. 철이 군사력뿐 아니라 농업 생산을 떠받친다는 점을 주문 갈등으로 체감한다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C14-S05:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C14-S06",
+      "authoredStaging": "4세기 초의 별도 교역 기록으로 전환한다. 새 왜 교역 상대와 현지 통역이 등장하며 대사는 통역된 한국어로 제공한다. 직전 3세기 인물이 노화 없이 계속 등장하지 않는다. 가야의 해상 교역은 상호 교환으로 표현한다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C14-S06:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C14-S07",
+      "authoredStaging": "4세기 말~5세기 초 갑옷 공방 재현. 해들과 다른 장인을 새로 소개한다. 가야의 철제 갑옷 형태를 관찰하며 전쟁을 미화하지 않는다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C14-S07:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C14-S08",
+      "authoredStaging": "서기 400년 전쟁 이후. 제목의 400년 뒤는 400년 후가 아니라 400년 전쟁 뒤라는 뜻으로 자막을 보충한다. 나루는 3세기 말 아라의 증손으로 새 인물이다. 전쟁이 금관가야 중심 세력에 준 충격과 다음 장 대가야의 성장을 연결한다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C14-S08:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C15-S01",
+      "authoredStaging": "5세기 고령으로 전환. 이 상인 아라는 3세기말 김해의 아라와 별개 인물로 다른 얼굴·복장·이름표를 사용한다. 전기가야 금관가야/김해와 후기가야 대가야/고령의 중심 변화를 교역로에서 체감한다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C15-S01:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C15-S02",
+      "authoredStaging": "5~6세기 후기 연맹의 외교를 비교하는 별도 6세기초 회합. 5세기 상인 아라는 등장하지 않는다. 각 정치체의 자율성과 다른 이해관계를 표현한다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C15-S03",
+      "authoredStaging": "5~6세기 가야 토기 비교 공방. 고령·김해·함안 지역차와 가야 등 한반도의 토기 기술이 일본 스에키에 미친 영향을 다룬다. 모든 스에키가 가야에서 완제품으로 수입됐다는 뜻으로 쓰지 않는다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C15-S03:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C15-S04",
+      "authoredStaging": "5~6세기 지산동 고분군 관련 관찰 공간. 순장을 구체적이고 선정적인 사망 장면으로 재현하지 않는다. 고분의 권력·부장품과 희생자의 삶을 함께 살피며 충성의 아름다움으로 포장하지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C15-S05",
+      "authoredStaging": "6세기 중엽 우륵의 신라 정착지 공방 재현. 가야금·가실왕 전승과 우륵의 음악 계승을 다룬다. 562년 대가야 멸망 이후에야 우륵이 신라로 갔다고 만들지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C15-S06",
+      "authoredStaging": "532년 기록 재방문 뒤 562년 사건을 별도 자료로 비교하는 기록책 공간. 금관가야와 대가야의 다른 멸망 시점·왕·장소를 분리한다. 기록관은 시간 여행 동행자가 아니다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [
+        "THR-C15-S06-M01",
+        "THR-C15-S06-M02",
+        "THR-C15-S06-M03",
+        "THR-C15-S06-M04",
+        "THR-C15-S06-M05",
+        "THR-C15-S06-M06",
+        "THR-C15-S06-M07",
+        "THR-C15-S06-M08",
+        "THR-C15-S06-J01",
+        "THR-C15-S06-J02"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C15-S07",
+      "authoredStaging": "562년 대가야 멸망의 후방 피란길. 여울은 5세기 고령 상인 아라의 증손녀인 새 인물이다. 대가야 정치체의 멸망 결과는 고정하고 사람과 도구를 둘러싼 개인적 도움만 분기한다.",
+      "runtimeCueCounts": {
+        "props": 3,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 2,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C15-S07:props:1",
+        "THR-C15-S07:props:2",
+        "THR-C15-S07:props:3",
+        "THR-C15-S07:captions:1",
+        "THR-C15-S07:portraits:1",
+        "THR-C15-S07:portraits:2"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C15-S08",
+      "authoredStaging": "562년 후 여울의 허구 기록 낭독에서 681년 통일신라로 전환한다. 여울의 기록은 피란 후 짧은 정착 기록이며 몇 세기 뒤에도 동일 인물이 생존한 것으로 보이지 않는다. 소리와 기술의 계승을 남기되 국가 멸망의 상실을 상쇄하지 않는다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C15-S08:props:1",
+        "THR-C15-S08:captions:1"
+      ],
+      "recordLineIds": [
+        "THR-C15-S08-M01",
+        "THR-C15-S08-M02",
+        "THR-C15-S08-M03",
+        "THR-C15-S08-M04",
+        "THR-C15-S08-M05",
+        "THR-C15-S08-M06",
+        "THR-C15-S08-M07",
+        "THR-C15-S08-M08",
+        "THR-C15-S08-J01"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C16-S01",
+      "authoredStaging": "681년 신문왕 즉위와 김흠돌의 난 진압 뒤. 혼례 시점을 681년으로 새로 만들어 넣지 않고 기존 혼인 관계를 설명한다. 김흠돌은 앞선 647년 비담·염종과 다른 반란 주체이며 B004에 연결한다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C16-S01:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C16-S02",
+      "authoredStaging": "681년 이후 신문왕의 허구 면담. 상대등 중심 귀족정치의 견제와 집사부 중시를 통한 왕권 강화가 핵심. 674년 월지·679년 동궁을 이미 지난 문무왕대 일로 회상한다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C16-S02:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C16-S03",
+      "authoredStaging": "682년 국학 설치. 수인은 새 청년이며 6두품 가문 등의 구체 신분은 원고에서 임의 승진 보장으로 사용하지 않는다. 같은 해 완공된 감은사와 삼층석탑 두 기를 공사 소식으로 연결한다. 마지막 2턴은 서아가 혼자 본 기록책의 설총 화왕계와 만파식적 전승 비교이며 수인은 듣지 않는다. 화왕계의 정확 작성연도는 미상으로 682년의 정규 교재였다고 단정하지 않는다. 서아가 책을 닫은 뒤 두 선택지로 다시 당대 수업에 합류한다. 만파식적은 삼국유사 등에 전하는 설화이며, 신비한 피리의 작동을 역사적 사실로 재현하지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [
+        "THR-C16-S03-M09",
+        "THR-C16-S03-M10"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C16-S04",
+      "authoredStaging": "685년 지방 행정실. 9주 정비를 보여 주며 673년 외사정 설치와 문무왕대 상수리 운용을 과거로 회상한다. 9주가 생긴 날 감찰제와 상수리까지 동시에 시작됐다고 만들지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C16-S05",
+      "authoredStaging": "685년 소경 이주 거점의 허구 가족. 5소경은 수도의 동남쪽 편중 보완과 지역 통합의 거점이며 이주민의 경험이 모두 같다고 하지 않는다. 온유는 30대 인물로 이후 722년에 딸 소담을 통해 이어진다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C16-S05:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C16-S06",
+      "authoredStaging": "7세기말, 693년 이후 완성 명칭을 비교하는 군영 재현. 신문왕대 누적 편성을 바탕으로 하고 비금서당 명칭 693년을 반영한다. 가야계 군인은 별도의 제10서당을 뜻하지 않는다. 당시 인물들은 실제 화자이며 다음 687년 씬은 기록책 재방문으로 표시한다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C16-S06:props:1",
+        "THR-C16-S06:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C16-S07",
+      "authoredStaging": "기록책 재방문 자막:“687년, 관료전 지급”. 직전 693년 이후 군영 인물은 등장하지 않는다. 교과서 수준에서 관료전의 수조권과 녹읍의 노동력 지배를 구분하되 현대적 토지 완전소유권을 일괄 이전한 것처럼 설명하지 않는다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C16-S07:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C16-S08",
+      "authoredStaging": "689년 녹읍 폐지. 687년 관료전 지급과 분리하고 국가 조세·군역 등이 계속 존재함을 대사에서 밝힌다. 선택은 소통·이관 방식만 바꾸며 정책의 시행 여부를 바꾸지 않는다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C16-S08:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C16-S09",
+      "authoredStaging": "앞 6턴과 JOIN은 722년 농촌의 실제 허구 대화. 7~10턴은 서아가 연 기록책의 비시대적 촌락문서 비교로 분리하고 소담은 듣거나 답하지 않는다. 기록관이 미래에서 온 동행인으로 보이지 않게 자료 공간을 별도 표시. 정확 작성연대에 이견이 있어 722년/8세기로 고정하지 않는다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C16-S09:props:1"
+      ],
+      "recordLineIds": [
+        "THR-C16-S09-M07",
+        "THR-C16-S09-M08",
+        "THR-C16-S09-M09",
+        "THR-C16-S09-M10"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C16-S10",
+      "authoredStaging": "757~759년 경덕왕대 관청과 작성연대 미확정 촌락문서 비교를 나눠 보여 준다. 7~10턴은 기록책 자료 공간이며 현재 관청의 서리는 들을 수 없다. 사진의 시중과 당대 명칭 중시, 녹읍의 폐지와 부활을 분리한다. 다음 CH17은 7세기 불교 사상으로 재방문한다는 전환 자막을 표시한다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [
+        "THR-C16-S10-M07",
+        "THR-C16-S10-M08",
+        "THR-C16-S10-M09",
+        "THR-C16-S10-M10"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C17-S01",
+      "authoredStaging": "757~759년의 관청 장면을 닫고, 사람들의 신앙이 형성되던 7세기 후반으로 되돌아간다는 자막. 설법터의 밥상이 반으로 갈라져 있다. 원효가 숟가락 두 개를 나란히 놓는다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C17-S01:props:1",
+        "THR-C17-S01:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C17-S02",
+      "authoredStaging": "같은 마을의 다음 날. 설법터에 놓을 그릇이 아침 볕에 마른다. 글자를 읽지 못하는 보라가 종이를 접으려 하자 원효가 그 손을 막지 않고 빈 그릇을 건넨다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C17-S02:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C17-S03",
+      "authoredStaging": "676년 이후 부석사. 원효를 만난 시기와 의상을 만나는 시기를 기록책이 분리한다. 의상의 제자가 불을 피울 마른 잎을 모은다. 말미의 5교 정보는 시대 속 인물의 대사가 아니라 현대 기록책 주석으로만 표시한다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C17-S03:captions:1"
+      ],
+      "recordLineIds": [
+        "THR-C17-S03-J02"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C17-S04",
+      "authoredStaging": "751년 불국사 조성 현장으로 수십 년 이동. 원효와 의상은 등장하지 않는다. 새 인물 해명은 서른 안팎의 석공이다. 돌을 떠받치다 다친 손을 뒤로 숨긴다.",
+      "runtimeCueCounts": {
+        "props": 3,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 3,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C17-S04:props:1",
+        "THR-C17-S04:props:2",
+        "THR-C17-S04:props:3",
+        "THR-C17-S04:captions:1",
+        "THR-C17-S04:portraits:1",
+        "THR-C17-S04:portraits:2",
+        "THR-C17-S04:portraits:3"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C17-S05",
+      "authoredStaging": "751년 이후 같은 조성 시기의 불국사. 해명의 손에 옅은 상처와 흰 천이 남아 있다. 다보탑과 석가탑의 실루엣이 나란히 보이고, 현대 유물 사진은 별도 테두리로 분리한다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 1,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C17-S05:props:1",
+        "THR-C17-S05:portraits:1"
+      ],
+      "recordLineIds": [
+        "THR-C17-S05-J01",
+        "THR-C17-S05-J02"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C17-S06",
+      "authoredStaging": "8세기 석굴암 조성 현장. 석재를 짜 맞춘 인공 석굴의 공정 일부를 보여 준다. 본존불과 둘레 조각은 제작 중인 상태이며 현대 보호 시설을 창건 당시 배경에 넣지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C17-S07",
+      "authoredStaging": "석굴암 장면의 ‘다른 곳에서 본 기록’이라는 질문이 기록책을 727년경 당으로 되돌린다. 혜초의 귀국 환영식이 아니라 당에 돌아와 남긴 여행 기록을 필사하는 공간이다. 혜초 본인을 확정적으로 등장시키지 않는다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C17-S07:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C17-S08",
+      "authoredStaging": "727년의 필사 공간을 닫고 771년 완성 기록으로 이동한다. 실제 과거 현장에 후대 전설을 아는 장인을 세우지 않는다. 기록책이 재구성한 주조 장인의 허구 증언을 들려주며 전설 검토 자막은 현대 층위에 배치한다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C17-S08:captions:1"
+      ],
+      "recordLineIds": [
+        "THR-C17-S08-M01",
+        "THR-C17-S08-M02",
+        "THR-C17-S08-M03",
+        "THR-C17-S08-M04",
+        "THR-C17-S08-M05",
+        "THR-C17-S08-M06",
+        "THR-C17-S08-M07",
+        "THR-C17-S08-M08",
+        "THR-C17-S08-M09",
+        "THR-C17-S08-J01"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C17-S09",
+      "authoredStaging": "8세기 기록을 닫은 뒤 대화 시작 전에 ‘828년·완도 인근 교류 기록처’ 자막을 확정한다. 필사자는 828년의 새 인물이며 앞 장면의 필사자와 같은 얼굴을 재사용하지 않는다. 원효·의상은 책 속 인명으로만 나타난다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C17-S09:props:1",
+        "THR-C17-S09:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C18-S01",
+      "authoredStaging": "828년 완도. 나래가 열 살 안팎 동생 도경의 작은 신을 쥔다. 서아가 CH17에서 받은 빈 배 표지를 펴지만 곧 이름을 함부로 채우지 않는다. 나래는 이 장에서 처음 등장한 20대 초반 인물이다.",
+      "runtimeCueCounts": {
+        "props": 4,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C18-S01:props:1",
+        "THR-C18-S01:props:2",
+        "THR-C18-S01:props:3",
+        "THR-C18-S01:props:4"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C18-S02",
+      "authoredStaging": "828년 청해진 설치를 청하는 조정 관련 기록. 서아는 허구의 청원 자료 전달자로 장보고와 대화한다. 나래 가족의 사례가 국가 설치의 유일한 원인처럼 연출되지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C18-S03",
+      "authoredStaging": "830년대 청해진 창고. 당·신라·일본 화물 표지가 서로 다른 서체로 붙어 있다. 벽 지도에 법화원과 신라방·신라소·신라원·신라촌을 표시하되 각각의 기능과 존재 시기를 구분한다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C18-S03:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C18-S04",
+      "authoredStaging": "833년 무렵으로 구체 자막. 나래는 20대 후반. 도경의 생존은 아직 확인 중이며, 항구에서 계속 장사하며 연락망을 지킨다. 센 바람에 팽팽해진 밧줄이 위험을 드러낸다.",
+      "runtimeCueCounts": {
+        "props": 2,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 1,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C18-S04:props:1",
+        "THR-C18-S04:props:2",
+        "THR-C18-S04:captions:1",
+        "THR-C18-S04:motions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C18-S05",
+      "authoredStaging": "839년 이후 정치 개입을 다루는 연락소. 기록책에 ‘9세기 전반·사망 연대 이설은 다음 장면에서 구분’ 표시. 항구의 군사·교역망이 왕위 다툼과 혼인 정치에 연결된다는 점을 다룬다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C18-S05:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C18-S06",
+      "authoredStaging": "사료 비교 공간. 화면 양쪽에 ‘삼국사기: 846년’과 ‘속일본후기 등을 근거로 한 견해: 841년’. 서아와 이 장면의 필사자는 과거 사건을 검토하며, 한 날짜를 정답으로 고르는 버튼을 제시하지 않는다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C18-S06:captions:1"
+      ],
+      "recordLineIds": [
+        "THR-C18-S06-M01",
+        "THR-C18-S06-M02",
+        "THR-C18-S06-M03",
+        "THR-C18-S06-M04",
+        "THR-C18-S06-M05",
+        "THR-C18-S06-M06",
+        "THR-C18-S06-M07",
+        "THR-C18-S06-M08",
+        "THR-C18-S06-J01",
+        "THR-C18-S06-J02"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C18-S07",
+      "authoredStaging": "851년 청해진 폐지. 828년보다 23년이 흐른 나래는 40대 중반으로, 세월이 반영된 전용 표정과 머리 묘사를 사용한다. 나래가 수년 전 연락을 되찾은 도경의 편지를 보관한다. 찾기 방식에 따라 S01의 목격표 또는 매듭 그림이 함께 묶여 있다.",
+      "runtimeCueCounts": {
+        "props": 5,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C18-S07:props:1",
+        "THR-C18-S07:props:2",
+        "THR-C18-S07:props:3",
+        "THR-C18-S07:props:4",
+        "THR-C18-S07:props:5",
+        "THR-C18-S07:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C18-S08",
+      "authoredStaging": "851년의 이주를 닫고, 지방 해상 세력이 자라는 흐름을 거쳐 889년으로 이동. 다음 장은 그 흐름의 정치적 출발점을 보려고 822년 기록부터 확인한다. 나래를 889년 젊은 얼굴로 다시 세우지 않는다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C18-S08:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C19-S01",
+      "authoredStaging": "822년 기록 회상. 889년의 농민 봉기와 원인을 비교하기 위해 67년 앞선 문서를 펼친다. 지방 서리는 기록을 설명하는 창작 인물이며 미래를 예언하지 않는다. 말미의 768~825 연표는 현대 검토 층위이다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C19-S01:captions:1"
+      ],
+      "recordLineIds": [
+        "THR-C19-S01-J01",
+        "THR-C19-S01-J02"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C19-S02",
+      "authoredStaging": "869년 무렵 6두품 학자 재인의 집으로 이동. 재인은 서른 안팎이며 관등표와 귀국 후 쓴 건의 초안이 놓여 있다. 검은 잉크로 칠한 관등 칸은 능력 부족이 아니라 골품의 상한을 뜻한다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C19-S02:props:1",
+        "THR-C19-S02:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C19-S03",
+      "authoredStaging": "같은 9세기 후반, 지방 성. 주민이 곡식 꾸러미를 든 채 문을 기다린다. 성벽은 보호 시설이면서 지역 권력을 보여 주는 공간이다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C19-S03:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C19-S04",
+      "authoredStaging": "9세기 후반 선종 산문. 철감선사의 승탑을 다루는 별도 현대 유물 카드가 뒤에 연결된다. 승려는 여러 산문을 하나의 수장 아래 모인 동일 조직처럼 설명하지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [
+        "THR-C19-S04-J01",
+        "THR-C19-S04-J02"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C19-S05",
+      "authoredStaging": "9세기 후반 지방 산길. 장면의 승려는 도선과 동일시하지 않는 풍수 지식을 지닌 창작 인물. 물길과 묘역·마을터를 살피되 초자연적 예언이 실제로 증명되는 연출을 피한다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C19-S06",
+      "authoredStaging": "889년 진성여왕대 상주 지역 농촌. 농민 지우는 새 인물로 등장한다. 세금 요구, 흉작, 국가 재정 부족을 서로 다른 사실로 연결하며 임의 세율을 제시하지 않는다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C19-S06:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C19-S07",
+      "authoredStaging": "889년 사벌주. 원종·애노의 봉기가 퍼지는 주변으로 지우가 이웃과 함께 이동한다. 서아는 군사적 지휘나 진압 결과에 개입하지 않는다. 부상·피해는 필요한 범위로 묘사한다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C19-S07:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C19-S08",
+      "authoredStaging": "894년 최치원의 시무10여조 건의 관련 기록. 서아는 청원 자료를 가져온 창작 방문자다. 재인은 869년보다 25년 나이 든 50대 중반이며 옛 초안이나 주민 청원 묶음을 갖고 있다. 최치원의 알려지지 않은 조문 전체를 창작해 사료처럼 읽지 않는다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C19-S08:props:1",
+        "THR-C19-S08:captions:1"
+      ],
+      "recordLineIds": [
+        "THR-C19-S08-J01",
+        "THR-C19-S08-J02"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C19-S09",
+      "authoredStaging": "9세기 말의 남쪽 지도. 재인의 낡은 건의문과 북쪽 지도가 함께 열린다. 표시 순서: 현재까지 본 남쪽 889·894년 → 북쪽 건국 698년을 되돌아보는 경로 → 다음 장의 696년 이후 피란 출발. 발해가 신라 말에 처음 생긴 것처럼 이어 붙이지 않는다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 1,
+        "visibility": 1,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C19-S09:props:1",
+        "THR-C19-S09:captions:1",
+        "THR-C19-S09:visibility:1"
+      ],
+      "recordLineIds": [
+        "THR-C19-S09-J02"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C20-S01",
+      "authoredStaging": "남쪽의 9세기 말 기록을 닫고 696년 이후 영주를 떠난 동쪽 피란길로 이동한다. 해루는 부모에게 고구려 이야기를 들은 20대 청년이다. 서아는 CH05의 태문을 찾으려다가 세대 차이를 알아차린다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C20-S01:props:1",
+        "THR-C20-S01:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C20-S02",
+      "authoredStaging": "7세기 말 동쪽 이동 중 야영지. 말갈 출신 누리는 해루와 같은 세대의 새 인물이며 토기를 다룰 줄 안다. 통역을 거친 말은 모두 누리 자신의 대사로 표시하고, 발음 차이를 희화화하지 않는다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C20-S02:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C20-S03",
+      "authoredStaging": "698년 건국 전 천문령 전투 후방. 장소를 확정되지 않은 현대 좌표로 표시하지 않는다. 해루와 누리가 야영 물품을 묶는 가운데 전령이 도착한다.",
+      "runtimeCueCounts": {
+        "props": 2,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C20-S03:props:1",
+        "THR-C20-S03:props:2"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C20-S04",
+      "authoredStaging": "698년 동모산 일대. 대조영과의 대화는 건국 선포의 실제 발언 재현이 아닌 창작 방문 장면이다. 한 집단만 국가의 주인이며 다른 집단은 부속이라는 구도를 피한다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [
+        "THR-C20-S04-J02"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C20-S05",
+      "authoredStaging": "698년 이후 초기 발해 기록처. 해루가 서리 일을 배우기 시작한다. 누리는 자기 집단 이름의 누락을 지적한다. 일본 국서의 계승 표현은 말미 현대 주석에서만 제시한다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C20-S05:props:1"
+      ],
+      "recordLineIds": [
+        "THR-C20-S05-J01",
+        "THR-C20-S05-J02"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C20-S06",
+      "authoredStaging": "8세기 초 초기 발해 마을. 누리는 야영지에서 솥을 수리하던 경험을 이어 도공으로 일한다. 둘이 함께 먹던 솥의 흠집을 새 그릇 무늬에 작게 남겼다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C20-S06:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C20-S07",
+      "authoredStaging": "713년 사절 접견처. 698년보다 15년이 흐른 해루와 누리의 나이를 반영하되 장면 중심은 새 사신이다. 건국과 당의 책봉을 구별한다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C20-S07:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C20-S08",
+      "authoredStaging": "719년 대조영 사후 무왕 즉위. 해루·누리를 영원히 같은 나이로 붙들지 않고 왕계 기록과 작별 편지로 전환한다. 다음 732년 사건과는 13년 간격이 있음을 자막으로 표시한다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 1,
+        "visibility": 1,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C20-S08:props:1",
+        "THR-C20-S08:captions:1",
+        "THR-C20-S08:visibility:1"
+      ],
+      "recordLineIds": [
+        "THR-C20-S08-J01",
+        "THR-C20-S08-J02"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C21-S01",
+      "authoredStaging": "732년 전후의 발해 왕실 연락처에서 앞선 대문예 갈등을 회상한다. 무왕의 동생 대문예가 흑수말갈 공격에 반대하고 당으로 망명한 일을 과거형으로 말해, 732년 등주 공격과 동시 사건처럼 압축하지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C21-S02",
+      "authoredStaging": "732년 발해 출항지. 장문휴 휘하 병사가 가족에게 보낼 편지를 다시 접는다. 배의 행선지는 산둥반도 등주이며 무왕의 연호 인안을 명확히 표시한다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C21-S02:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C21-S03",
+      "authoredStaging": "737년 이후 문왕대 사절 숙소. 무왕의 전쟁 장면에서 왕이 교체되고 시간이 흘렀다는 자막을 먼저 보인다. 문왕의 이름 대흠무와 대흥 연호를 새 문서에서 확인한다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C21-S03:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C21-S04",
+      "authoredStaging": "문왕대 제도 정비를 살피는 8세기 정당성 관청. 부서별 문서 전달이 어긋나 한 가족의 요청이 되돌아온다. 3성·6부 명칭은 표지가 있는 소품과 실제 대화에 함께 노출된다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C21-S04:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C21-S05",
+      "authoredStaging": "문왕대 중경에서 상경 용천부로 옮기는 시기의 이주 현장. 해루의 아들 다온은 40대이며 아버지의 편지와 새 주소를 들고 있다. 상경의 주작대로와 질서 있는 도성 구조가 보인다. 뒤의 동경 이동·성왕대 환도는 현대 비교 주석에만 둔다.",
+      "runtimeCueCounts": {
+        "props": 2,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C21-S05:props:1",
+        "THR-C21-S05:props:2",
+        "THR-C21-S05:captions:1"
+      ],
+      "recordLineIds": [
+        "THR-C21-S05-J01",
+        "THR-C21-S05-J02"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C21-S06",
+      "authoredStaging": "818~830년 선왕대 지도실. 문왕대 인물들을 같은 얼굴로 재배치하지 않는다. 장교가 이미 주민이 있는 북방의 땅을 색칠하다 마을 표식 앞에서 붓을 멈춘다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C21-S07",
+      "authoredStaging": "9세기 발해의 지방제도·역참. 5경15부62주가 정비된 체계를 지도 비교로 제시한다. 솔빈부에서 온 말과 당의 발해관을 향하는 교류 문서, 신라도를 이용한 연락이 생활 소품으로 등장한다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C21-S07:props:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C21-S08",
+      "authoredStaging": "777년 정혜공주와 792년 정효공주의 사망·묘지 자료를 비교하는 기록 공간. 두 시점을 실제 동시 장례식으로 만들지 않는다. 정혜의 장례 연대와 현대 발굴 연대는 별도 표기하며 살아 있는 공주 캐릭터를 유물 설명자로 세우지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [
+        "THR-C21-S08-M01",
+        "THR-C21-S08-M02",
+        "THR-C21-S08-M03",
+        "THR-C21-S08-M04",
+        "THR-C21-S08-M05",
+        "THR-C21-S08-M06",
+        "THR-C21-S08-M07",
+        "THR-C21-S08-M08",
+        "THR-C21-S08-J01",
+        "THR-C21-S08-J02"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C21-S09",
+      "authoredStaging": "8~9세기 발해 가옥·사찰을 비교하는 기록 여행. 생활 장면은 810년 무렵으로 고정하고 누리의 손녀 다솜이 70대 노년의 모습으로 등장한다. 누리는 698년의 20대에서 세월을 살다 떠났고, 다솜은 8세기 전반에 태어난 후손이다. 당대 건물과 현대 소장 유물을 동시에 실제 거리에서 만나는 듯 섞지 않는다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C21-S09:props:1",
+        "THR-C21-S09:captions:1"
+      ],
+      "recordLineIds": [
+        "THR-C21-S09-J01",
+        "THR-C21-S09-J02"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C21-S10",
+      "authoredStaging": "830년 선왕 이후 왕계가 여러 장에 걸쳐 넘어간다. 대이진·대건황·대현석·대위해·대인선을 생략하지 않고 각 인물의 새 표지를 보여 준다. 사료가 부족한 구간은 확정 연대 대신 확인 수준을 표시한다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C21-S10:captions:1"
+      ],
+      "recordLineIds": [
+        "THR-C21-S10-J01",
+        "THR-C21-S10-J02"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C22-S01",
+      "authoredStaging": "925년 말~926년 초 발해 국경 마을. 첫 소식과 확인된 소식이 순차로 들어온다. 부여부 공격이 상경의 최후보다 앞선다는 연표를 표시한다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C22-S02",
+      "authoredStaging": "926년 상경 피란길. 은서는 30대 중반으로 어린 딸과 살림을 묶는다. 국가 멸망 직전의 직접 현장과 이후 대인선 항복 확인을 구별한다. 다솜과 함께 있었던 온돌방은 서아의 방문 기억으로만 짧게 회상한다. 한쪽 선택에서만 그린 그림을 공통 소지품으로 만들지 않는다.",
+      "runtimeCueCounts": {
+        "props": 4,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 1,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C22-S02:props:1",
+        "THR-C22-S02:props:2",
+        "THR-C22-S02:props:3",
+        "THR-C22-S02:props:4",
+        "THR-C22-S02:motions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C22-S03",
+      "authoredStaging": "926년 이후 사건을 살피는 현대 기록 공간. 부여부 이후 상경으로 진격한 거란과 대인선의 항복, 926년 발해 멸망을 먼저 확인한다. 백두산 분화 연대 비교는 전적으로 현대 자료 검토이다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [
+        "THR-C22-S03-M01",
+        "THR-C22-S03-M02",
+        "THR-C22-S03-M03",
+        "THR-C22-S03-M04",
+        "THR-C22-S03-M05",
+        "THR-C22-S03-M06",
+        "THR-C22-S03-M07",
+        "THR-C22-S03-M08",
+        "THR-C22-S03-J01"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C22-S04",
+      "authoredStaging": "926년 이후 유민 이동로. 어느 길이든 쉽거나 모두 자유롭게 선택할 수 있었다고 연출하지 않는다. 고려행, 현지 잔류, 다른 지역 이동, 강제 이주의 차이가 가족 갈림으로 드러난다.",
+      "runtimeCueCounts": {
+        "props": 2,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C22-S04:props:1",
+        "THR-C22-S04:props:2"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C22-S05",
+      "authoredStaging": "926년에서 8년이 지난 934년으로 이동한다. 대광현의 귀부 행렬 관련 연락관을 만나는 창작 장면이다. 인원·공식 접수 양식을 사료 확인 없이 구체적 사실로 정하지 않는다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C22-S05:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C22-S06",
+      "authoredStaging": "934년 고려 유민 접수처. 은서는 926년보다 8년 나이 든 40대 초중반이고 딸은 청소년으로 자랐다. 서아만 외모가 거의 그대로다. 앞의 선택에 따라 가족 연락표 또는 경로 기록, 보존한 바늘함을 소품으로 노출하되 공통 대사가 특정 선택을 강제하지 않는다.",
+      "runtimeCueCounts": {
+        "props": 3,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C22-S06:props:1",
+        "THR-C22-S06:props:2",
+        "THR-C22-S06:props:3",
+        "THR-C22-S06:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C22-S07",
+      "authoredStaging": "934년 이후의 유민 기록 모임에서 926년 멸망 자료를 다시 펼친다. 실제 926년 현장 재방문이 아니라 자료 회상임을 자막으로 구분한다. 확인되지 않은 대인선 복국 성공을 위로로 쓰지 않는다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C22-S07:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C22-S08",
+      "authoredStaging": "934년 고려에서 기록책을 열어 900년 완산주로 돌아가는 단독 전환. 신라는 여전히 존재하고 후백제가 건국되는 시점이다. 서아의 낮은 독백은 탭으로 한 줄씩 진행하며 자동 넘김을 사용하지 않는다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 1,
+        "visibility": 1,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C22-S08:props:1",
+        "THR-C22-S08:captions:1",
+        "THR-C22-S08:visibility:1"
+      ],
+      "recordLineIds": [
+        "THR-C22-S08-M01",
+        "THR-C22-S08-M02",
+        "THR-C22-S08-M03",
+        "THR-C22-S08-M04",
+        "THR-C22-S08-M05",
+        "THR-C22-S08-M06",
+        "THR-C22-S08-J01"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C23-S01",
+      "authoredStaging": "934년 고려에서 34년을 되돌아 900년 완산주로 이동한다. 견훤의 연락관이 새로운 깃발 아래 지방 주민의 요청을 받는다. 신라는 여전히 존재하며 아직 왕건의 고려는 건국되지 않았다.",
+      "runtimeCueCounts": {
+        "props": 0,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C23-S01:captions:1"
+      ],
+      "recordLineIds": [
+        "THR-C23-S01-J01"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C23-S02",
+      "authoredStaging": "900년 완산주 장터. 20대 중반 상인 시온이 옛 납부 기록과 새 요구서를 펴 놓는다. 개별 주민의 허구 거래·수취 문서이며 신라와 후백제가 전국적으로 동일한 이중 과세율을 적용한 증거로 제시하지 않는다.",
+      "runtimeCueCounts": {
+        "props": 2,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C23-S02:props:1",
+        "THR-C23-S02:props:2"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C23-S03",
+      "authoredStaging": "901년 송악 군영. 왕건은 궁예 휘하 장수이며 왕으로 호칭하지 않는다. 서아는 미래의 고려를 보고 온 기억을 잠시 붙잡지만 상대에게 아직 오지 않은 즉위 사실을 말하지 않는다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C23-S03:props:1",
+        "THR-C23-S03:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C23-S04",
+      "authoredStaging": "904년과 911년 국호 변경 기록을 비교하는 자료 공간. 태봉 서리는 해당 기록을 남긴 창작 인물의 재구성된 목소리다. 광평성 설치 904년을 문서 변화에 연결하고 905년 천도·914년 연호는 현대 연표에서 구분한다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [
+        "THR-C23-S04-M01",
+        "THR-C23-S04-M02",
+        "THR-C23-S04-M03",
+        "THR-C23-S04-M04",
+        "THR-C23-S04-M05",
+        "THR-C23-S04-M06",
+        "THR-C23-S04-M07",
+        "THR-C23-S04-M08",
+        "THR-C23-S04-J01",
+        "THR-C23-S04-J02"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C23-S05",
+      "authoredStaging": "국호 변경 자료 비교를 닫고 905년 철원 천도 이후의 공사 현장으로 되돌아간다. 시온의 친척인 인부 도하는 별도 인물이다. 농사철과 부역이 겹치는 개인 사례로 통치 부담을 보여 준다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C23-S05:props:1",
+        "THR-C23-S05:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C23-S06",
+      "authoredStaging": "태봉 시기의 거리로 시간 전환. 주민이 미륵이라는 칭호를 듣고 정치권력과 자신의 불교 신앙 사이에서 혼란을 느낀다. 궁예의 정신질환을 추정하거나 폭력 장면을 선정적으로 재연하지 않는다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [
+        "THR-C23-S06-J01"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C23-S07",
+      "authoredStaging": "918년 철원 정변 직후 연락소. 홍유·배현경·신숭겸·복지겸 등의 추대로 왕건이 즉위한 사실을 전달한다. 서아는 정변을 계획하거나 결정하지 않는다. 왕건의 발언은 역사 기반 창작 대화다.",
+      "runtimeCueCounts": {},
+      "runtimeCueIds": [],
+      "recordLineIds": [],
+      "status": "existing-cast-background-and-dialogue-presentation",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C23-S08",
+      "authoredStaging": "918년 고려 건국 뒤 서신 공간. 서아와 기록관은 이미 CH22에서 보았던 미래 자료를 재정렬한다. 현재의 사람들 앞에서 926년 멸망이나 934년 귀부가 이미 끝났다고 말하지 않으며 은서를 재등장시키지 않는다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 0,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C23-S08:props:1"
+      ],
+      "recordLineIds": [
+        "THR-C23-S08-M01",
+        "THR-C23-S08-M02",
+        "THR-C23-S08-M03",
+        "THR-C23-S08-M04",
+        "THR-C23-S08-M05",
+        "THR-C23-S08-M06",
+        "THR-C23-S08-M07",
+        "THR-C23-S08-M08",
+        "THR-C23-S08-J01"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C23-S09",
+      "authoredStaging": "919년 송악으로 도읍을 옮기는 길. 시온은 900년보다 19년 나이 든 40대 중반의 상인이다. 관찰 가능한 시간 경과는 손과 머리, 가족 구성에 반영한다. 도하의 편지는 가족 관계의 연속성을 만드는 소품이다.",
+      "runtimeCueCounts": {
+        "props": 1,
+        "captions": 1,
+        "visibility": 0,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C23-S09:props:1",
+        "THR-C23-S09:captions:1"
+      ],
+      "recordLineIds": [],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    },
+    {
+      "sceneId": "THR-C23-S10",
+      "authoredStaging": "919년 송악 나루. 서아 혼자 책장을 덮기 전, 각 인물은 살아 있는 단체 초상이 아니라 해당 시기의 물건·필체·그림으로만 짧게 회상된다. 이후 고려편 안내는 서아의 역사 예언 대사와 분리된 화면이다.",
+      "runtimeCueCounts": {
+        "props": 5,
+        "captions": 1,
+        "visibility": 1,
+        "motions": 0,
+        "portraits": 0,
+        "backgrounds": 0
+      },
+      "runtimeCueIds": [
+        "THR-C23-S10:props:1",
+        "THR-C23-S10:props:2",
+        "THR-C23-S10:props:3",
+        "THR-C23-S10:props:4",
+        "THR-C23-S10:props:5",
+        "THR-C23-S10:captions:1",
+        "THR-C23-S10:visibility:1"
+      ],
+      "recordLineIds": [
+        "THR-C23-S10-J01",
+        "THR-C23-S10-J02"
+      ],
+      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "customIllustrationCompletion": "not-inferred-from-cue-count"
+    }
+  ],
+  "limitations": [
+    "Source line links and asset rectangles are validated separately from actual browser composition.",
+    "Generic props are original fictional illustrations, not archaeological or historical-document facsimiles.",
+    "An explicit presentation cue does not imply that every authored background detail, hand interaction or audio cue has a custom illustration."
+  ]
+}

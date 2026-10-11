@@ -39,7 +39,8 @@ function frame(list,n,limit,label){
  }
  const actors=[...html.matchAll(/<(?:div|img)\b[^>]*\bclass="stage-character [^"]*"[^>]*>/g)].map(m=>attrs(m[0]));
  const current=list[n-1];
- if(current&&(['narration','thought'].includes(current.speakerType)||current.presentationContext==='record')){
+ const displayContext=h.run('THREE_STAGING.context(THREE_COMPLETE_ACTIONS.currentSource(),{phase:'+q(mode)+',entry:'+q(current)+'})');
+ if(current&&((mode!=='choice'&&['narration','thought'].includes(current.speakerType))||displayContext==='record')){
   assert.equal(actors.length,0,label+' narrative/record has no standing actors');narrationFrames++;
  }
  for(const actor of actors){

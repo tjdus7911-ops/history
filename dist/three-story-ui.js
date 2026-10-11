@@ -210,13 +210,29 @@ if (globalThis.CORE_APP_READY === true && globalThis.THREE_STORY_RUNTIME?.versio
 
   // Measure the actual face in original sheet pixels. The image and its crop
   // receive one uniform scale; transparent margins never determine body size.
-  function portraitPresentation(line) {
-    const portraitId=resolvedPortraitId(line),portrait=PORTRAITS[portraitId];
+  function stagingState(source,entry,current=phaseState(source)) {
+    const choicesByScene={};
+    for(const [sceneId,index] of Object.entries(book().choiceBySceneId||{})) {
+      const choiceId=runtime.sources.get(sceneId)?.choices?.[index]?.choiceId;
+      if(choiceId) choicesByScene[sceneId]=choiceId;
+    }
+    const selected=source.choices?.[current.choiceIndex];
+    return {phase:current.phase,entry,choiceId:selected?.threeChoiceId||selected?.choiceId||null,choicesByScene};
+  }
+  function stagingContext(source,entry,current) {
+    return globalThis.THREE_STAGING?.context(source,stagingState(source,entry,current))
+      ||entry?.presentationContext||source.threeSource?.presentationContext||'scene';
+  }
+  function portraitPresentation(line,source,presentation) {
+    const portraitId=resolvedPortraitId(line),original=PORTRAITS[portraitId];
+    const variant=globalThis.THREE_STAGING?.portraitOverride(source,presentation,line.characterId);
+    const portrait=variant?{...original,...variant}:original;
     if(!portrait?.src) return null;
     const art=globalThis.THREE_COMPLETE_ART||{};
-    const authored=line.speakerType==='player'
+    const originalAuthored=line.speakerType==='player'
       ?(art.protagonist?.files||[]).find(item=>item.src===portrait.src)||{}
       :art.characters?.[line.characterId]||{};
+    const authored=variant?{...originalAuthored,...variant}:originalAuthored;
     const geometry=portrait.portraitGeometry||authored.portraitGeometry
       ||art.approvedGeometry?.files?.[portrait.src]
       ||(line.speakerType==='player'&&portrait.src===art.protagonist?.modernSrc?art.protagonist?.modernGeometry:null)
@@ -229,8 +245,8 @@ if (globalThis.CORE_APP_READY === true && globalThis.THREE_STORY_RUNTIME?.versio
     if(![width,height,rect.width,rect.height,face.width,face.height].every(value=>Number.isFinite(value)&&value>0)) return {portraitId,portrait,authored};
     return {portraitId,portrait,authored,geometry,sprite,width,height,rect};
   }
-  function threePortrait(line, active) {
-    const setup=portraitPresentation(line);
+  function threePortrait(line, active, source, presentation) {
+    const setup=portraitPresentation(line,source,presentation);
     if(!setup) return '';
     if(!setup.geometry) return stagePortrait({...line,show:true,presentation:'standing'},line.position,active);
     const {portraitId,portrait,authored,geometry,sprite,width,height,rect}=setup;
@@ -250,12 +266,17 @@ if (globalThis.CORE_APP_READY === true && globalThis.THREE_STORY_RUNTIME?.versio
   characterStage = function(visible, source, complete, pending, assetId, allEntries, cursor) {
     if (!isThree(source)) return beforeStage(visible, source, complete, pending, assetId, allEntries, cursor);
     const entries=allEntries||phaseEntries(source),index=Math.max(0,Math.min((cursor||run().dialogueCursor||1)-1,entries.length-1));
-    const active=entries[index],current=phaseState(source),authored=source.threeSource;
-    const context=active?.presentationContext||authored.presentationContext||'scene';
+    const current=phaseState(source),presentation=stagingState(source,entries[index],current);
+    const context=stagingContext(source,entries[index],current);
+    const lineContext=line=>stagingContext(source,line,{...current,phase:current.phase==='choice'?'main':current.phase});
+    let active=entries[index];
+    if(current.phase==='choice'&&(lineContext(active)==='record'||['narration','thought'].includes(active?.speakerType))) {
+      active=[...entries.slice(0,index+1)].reverse().find(line=>['player','npc'].includes(line.speakerType)&&lineContext(line)!=='record');
+    }
     if(!active||['narration','thought'].includes(active.speakerType)||context==='record') return '';
     const history=[...(current.phase==='branch'||current.phase==='join'?source.dialogues:[]),
       ...(current.phase==='join'&&current.choiceIndex!==null?source.choices[current.choiceIndex]?.resultDialogues||[]:[]),...entries.slice(0,index+1)];
-    const spoken=line=>['player','thought','npc'].includes(line?.speakerType)&&line.presentationContext!=='record';
+    const spoken=line=>['player','thought','npc'].includes(line?.speakerType)&&lineContext(line)!=='record';
     const nearby=[];
     for(let distance=1;distance<entries.length;distance++){
       if(index-distance>=0&&spoken(entries[index-distance]))nearby.push(entries[index-distance]);
@@ -268,14 +289,17 @@ if (globalThis.CORE_APP_READY === true && globalThis.THREE_STORY_RUNTIME?.versio
       cast=[standing(active,'left'),...(peer&&['player','thought'].includes(peer.speakerType)?[standing(peer,'right')]:[])];
     }else{
       const peer=nearby.find(line=>line.speakerType==='npc')
-        ||((current.phase==='branch'||current.phase==='join')?[...history].reverse().find(line=>line.speakerType==='npc'&&line.presentationContext!=='record'):null);
+        ||((current.phase==='branch'||current.phase==='join')?[...history].reverse().find(line=>line.speakerType==='npc'&&lineContext(line)!=='record'):null);
       cast=[...(peer?[standing(peer,'left')]:[]),standing(active,'right')];
     }
-    return '<div class="character-stage" data-slot-mode="three-conversation" data-presentation-context="'+esc(context)+'" aria-hidden="true">'+cast.map(line=>threePortrait(line,line.characterId===active.characterId)).join('')+'</div>';
+    const hidden=globalThis.THREE_STAGING?.actorVisibility(source,presentation)||{};
+    cast=cast.filter(line=>!(line.position==='left'?hidden.hideNpc:hidden.hidePlayer));
+    return cast.length?'<div class="character-stage" data-slot-mode="three-conversation" data-presentation-context="'+esc(context)+'" aria-hidden="true">'+cast.map(line=>threePortrait(line,line.characterId===active.characterId,source,presentation)).join('')+'</div>':'';
   };
   // Use the approved messenger renderer verbatim; add only stable scene metadata.
-  function bubble(entry, index) {
-    const metadata = 'data-line-id="'+esc(entry.lineId)+'" data-character-id="'+esc(entry.characterId)+'" data-position="'+(entry.speakerType==='player'?'right':'left')+'" data-presentation-context="'+esc(entry.presentationContext||'scene')+'"';
+  function bubble(entry, index, source, current) {
+    const context=stagingContext(source,entry,{...current,phase:current.phase==='choice'?'main':current.phase});
+    const metadata = 'data-line-id="'+esc(entry.lineId)+'" data-character-id="'+esc(entry.characterId)+'" data-position="'+(entry.speakerType==='player'?'right':'left')+'" data-presentation-context="'+esc(context)+'"';
     return dialogueBubble(entry,index).replace('<div ', '<div '+metadata+' ');
   }
   function prologueBook(source, cursor) {
@@ -289,7 +313,11 @@ if (globalThis.CORE_APP_READY === true && globalThis.THREE_STORY_RUNTIME?.versio
     const source = currentSource(); if (!isThree(source)) return beforeGame();
     const r=run(),current=phaseState(source),entries=phaseEntries(source);
     const cursor=Math.max(1,Math.min(r.dialogueCursor||1,entries.length)),entry=entries[cursor-1];
-    const raw=source.threeSource,context=entry?.presentationContext||raw.presentationContext||'scene';
+    const raw=source.threeSource,presentation=stagingState(source,entry,current),context=stagingContext(source,entry,current);
+    const staging=globalThis.THREE_STAGING,stagedView=staging?.resolve(source,presentation);
+    const background=staging?.backgroundOverride(source,presentation);
+    const sceneStyle=background?.src?"background-image:url('"+esc(background.src)+"')":assetStyle(source.illustrationId);
+    const stagingLayers=staging?.layers(source,presentation)||'';
     const first=source.sceneId==='THR-PRO-S03',cut=first&&cursor===1&&prologueCutPending;
     prologueCutPending=false;
     const choices=current.phase==='choice',visibleStart=Math.max(0,cursor-(choices?2:3));
@@ -302,13 +330,13 @@ if (globalThis.CORE_APP_READY === true && globalThis.THREE_STORY_RUNTIME?.versio
     const chapterLabel=source.isPrologue?'프롤로그':'CH.'+info.number+' &nbsp; '+esc(headerDate);
     const count=source.isPrologue?3:chapterScenes(source.chapterId).length;
     const readCount=book().readSceneIds.filter(id=>source.isPrologue?id.startsWith('THR-PRO-'):runtime.sources.get(id)?.chapterId===source.chapterId).length;
-    const contextLabel=entry?.presentationLabel||(context==='record'?(raw.presentationLabel||'기록책 속의 자료'):'');
+    const contextLabel=stagedView?.caption?.label||entry?.presentationLabel||(context==='record'?(raw.presentationLabel||'기록책 속의 자료'):'');
     const notice=source.isPrologue&&source.sceneId==='THR-PRO-S01'?'화면을 누르면 서아의 이야기가 이어집니다.':context==='record'?'서아가 기록책에서 확인하는 내용입니다.':'최근 대화만 남겨 장면에 집중할 수 있어요.';
     const stage=characterStage(visible,source,cursor>=entries.length,r.pending,source.illustrationId,entries,cursor);
     const choiceMarkup=choices?choiceButtons(source,r).replace('class="choices"','class="choices three-dialogue-choices" role="group" aria-label="서아가 할 말"'):'';
     const advancing=!choices&&cursor<entries.length?'<button class="advance-dialogue" data-action="'+action+'">'+label+' <b>›</b></button>':'';
     const continuing=!choices&&cursor>=entries.length?'<button class="primary next" data-action="'+action+'">'+label+'</button>':'';
-    return '<section class="game conversation-game three-complete-game has-art layered-art '+(first?'three-wake ':'')+(cut?'three-prologue-cut ':'')+(first&&cursor>=5?'three-queue-focus ':'')+(context==='record'?'three-record-context':'')+'" data-three-scene="'+esc(source.sceneId)+'" data-three-phase="'+current.phase+'" data-three-ui="approved-messenger-v1" style="'+assetStyle(source.illustrationId)+'"><div class="scene-scrim"></div>'+prologueBook(source,cursor)+'<div class="game-header"><button class="glass" data-nav="era">‹ &nbsp; 이야기 나가기</button><span class="glass">'+chapterLabel+'</span><button class="glass" data-action="three-recordbook">기록책</button></div><div class="game-stats"><span>♡ &nbsp; 체력 '+r.stats.health+'</span><span>◇ &nbsp; 지식 '+r.stats.knowledge+'</span><span>◉ &nbsp; '+r.stats.wealth+'냥</span></div><div class="scene-title"><small>'+(raw.showDateAndLocation===false?'':esc(source.location))+'</small><h2>'+esc(source.title)+'</h2>'+(!source.isPrologue&&date!==headerDate?'<p class="three-date">'+esc(date)+'</p>':'')+'</div>'+stage+'<section class="conversation-panel" aria-label="대화">'+(contextLabel?'<div class="three-context-label">'+esc(contextLabel)+'</div>':'')+'<div class="dialogue-log">'+visible.map((line,index)=>bubble(line,visibleStart+index)).join('')+'</div><div class="dialogue-step"><span>'+cursor+' / '+entries.length+'</span>'+advancing+'</div>'+continuing+choiceMarkup+'<div class="conversation-sub">'+notice+'</div></section><div class="chapter-progress" aria-label="읽은 장면 '+readCount+' / '+count+'">'+Array.from({length:count},(_,i)=>'<i class="'+(i<readCount?'on':'')+'"></i>').join('')+'</div></section>';
+    return '<section class="game conversation-game three-complete-game has-art layered-art '+(first?'three-wake ':'')+(cut?'three-prologue-cut ':'')+(first&&cursor>=5?'three-queue-focus ':'')+(context==='record'?'three-record-context':'')+'" data-three-scene="'+esc(source.sceneId)+'" data-three-phase="'+current.phase+'" data-three-ui="approved-messenger-v1" style="'+sceneStyle+'"><div class="scene-scrim"></div>'+prologueBook(source,cursor)+'<div class="game-header"><button class="glass" data-nav="era">‹ &nbsp; 이야기 나가기</button><span class="glass">'+chapterLabel+'</span><button class="glass" data-action="three-recordbook">기록책</button></div><div class="game-stats"><span>♡ &nbsp; 체력 '+r.stats.health+'</span><span>◇ &nbsp; 지식 '+r.stats.knowledge+'</span><span>◉ &nbsp; '+r.stats.wealth+'냥</span></div><div class="scene-title"><small>'+(raw.showDateAndLocation===false?'':esc(source.location))+'</small><h2>'+esc(source.title)+'</h2>'+(!source.isPrologue&&date!==headerDate?'<p class="three-date">'+esc(date)+'</p>':'')+'</div>'+stage+stagingLayers+'<section class="conversation-panel" aria-label="대화">'+(contextLabel?'<div class="three-context-label">'+esc(contextLabel)+'</div>':'')+'<div class="dialogue-log">'+visible.map((line,index)=>bubble(line,visibleStart+index,source,current)).join('')+'</div><div class="dialogue-step"><span>'+cursor+' / '+entries.length+'</span>'+advancing+'</div>'+continuing+choiceMarkup+'<div class="conversation-sub">'+notice+'</div></section><div class="chapter-progress" aria-label="읽은 장면 '+readCount+' / '+count+'">'+Array.from({length:count},(_,i)=>'<i class="'+(i<readCount?'on':'')+'"></i>').join('')+'</div></section>';
   };
   // Three lines are complete when rendered. Older saves may retain their
   // threeTypedLineId field, but it never gates input or schedules characters.
