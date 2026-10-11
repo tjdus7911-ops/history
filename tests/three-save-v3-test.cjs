@@ -51,6 +51,33 @@ assert.deepEqual(reloaded.copy('meta().threeCompleteBook'),book);
 assert.equal(reloaded.run('run().playerOutfit'),'three_traveler');
 assert(!reloaded.run("run().inventory.some(item=>item.id==='goryeo-commoner-clothes')"));
 assert(!reloaded.run("Object.hasOwn(run().characterStates,'doyun')"));
+
+// A corrupt branch must not become an empty dialogue that skips the selected
+// spoken line and replies. Keep its complete original payload in the archive.
+for(const [label,corrupt] of [
+  ['null branch choice',value=>{value.run.threeStoryState.scenes['THR-C01-S04'].choiceIndex=null;value.run.pending=null;}],
+  ['mismatched pending choice',value=>{value.run.pending={...current.copy("STORIES['THR-C01-S04'].choices[0]"),sourceSceneId:'THR-C01-S04'};}]
+]){
+  const damaged=current.copy('state');delete damaged.meta.eraProgress['three-kingdoms-v3'];
+  damaged.meta.savePreservationProbe={otherEra:'retain'};corrupt(damaged);
+  assert.equal(current.run('THREE_SAVE_V3.validRun('+JSON.stringify(damaged.run)+')'),false,label+' rejected');
+  const repaired=load({'lived-history-v1':JSON.stringify(damaged)}, {storyUI:true});
+  assert.equal(repaired.run('run().storyId'),'THR-PRO-S01',label+' safely restarts');
+  assert(repaired.run('THREE_SAVE_V3.validRun(run())'),label+' recovers a valid cursor');
+  assert.deepEqual(repaired.copy("meta().threeSaveArchives.entries.find(entry=>entry.sourceKey==='main-save.run').payload"),damaged.run,label+' original archived');
+  assert.deepEqual(repaired.copy('meta().threeCompleteBook'),book,label+' retains the learned record');
+  assert(repaired.run("meta().completedChapters.includes('ch01')"),label+' retains other-era completion');
+  assert.deepEqual(repaired.copy('meta().savePreservationProbe'),{otherEra:'retain'});
+}
+for(const corrupt of [
+  value=>{value.pending.sourceSceneId='THR-C01-S01';},
+  value=>{value.pending.resultDialogues=value.pending.resultDialogues.slice(1);},
+  value=>{value.dialogueCursor=value.pending.resultDialogues.length+1;},
+  value=>{value.threeStoryState.scenes['THR-C01-S04'].phase='choice';}
+]){
+  const damaged=JSON.parse(JSON.stringify(branch));corrupt(damaged);
+  assert.equal(current.run('THREE_SAVE_V3.validRun('+JSON.stringify(damaged)+')'),false,'inconsistent branch/pending rejected');
+}
 reloaded.run(`run().pending=null;run().storyId='THR-C01-S06';run().dialogueSceneId='THR-C01-S06';run().dialogueCursor=2;
   run().threeStoryState.scenes['THR-C01-S06']={phase:'hints',choiceIndex:0};
   run().threeHintEntries=[{kind:'record',speaker:'기록책',text:'자료를 다시 확인한다.',lineId:'hint-line'}];
@@ -188,4 +215,4 @@ draftClick.run('meta().threeAnswerDraft='+JSON.stringify({questionId:otherQuesti
 assert.equal(JSON.parse(draftClick.storage()[draftKey]).meta.threeAnswerDraft,undefined);
 assert.deepEqual(draftClick.copy('meta().threeAnswerDraft'),{questionId:otherQuestion,answer:0});
 assert.deepEqual(draftClick.copy('meta().draftPreservationProbe'),{otherEra:'unchanged'});
-console.log('PASS three v3 saves: exact branch/hint/queue/typewriter/book round trips; independent recovery; legacy and unknown-schema archives; no inherited completion; restart retains learning; four-era isolation; submitted-vs-draft independent recovery and stale/malformed draft rejection.');
+console.log('PASS three v3 saves: exact branch/hint/queue/typewriter/book round trips; independent recovery; legacy and unknown-schema archives; no inherited completion; restart retains learning; four-era isolation; submitted-vs-draft independent recovery and stale/malformed draft rejection; invalid branch/pending payloads archived before safe recovery.');

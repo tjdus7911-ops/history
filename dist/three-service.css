@@ -2,6 +2,7 @@
    Only authored text wrapping, record context, staging and portrait geometry
    are scoped here; shared colors, tails, typography and controls stay shared. */
 .three-complete-game .conversation-panel {flex-shrink:0;}
+.three-complete-game .dialogue-step>span {flex-shrink:0;white-space:nowrap;}
 .three-complete-game .speech-bubble,
 .three-complete-game .narration-line p,
 .three-complete-game .choice span {white-space:pre-wrap;overflow-wrap:anywhere;word-break:keep-all;}
@@ -25,7 +26,8 @@
 .three-queue-focus {background-size:auto 112%;background-position:38% 48%}
 .three-complete-quiz {max-width:760px;margin:auto;color:#26352f}
 .three-complete-quiz .quiz-top {gap:10px;position:relative}
-.three-complete-quiz .quiz-top button {min-width:44px;min-height:44px;white-space:normal;font-size:13px}
+.three-complete-quiz .quiz-top button {min-width:44px;min-height:44px}
+.three-complete-quiz .quiz-top button[data-action="three-recordbook"] {width:auto;padding:0 8px;white-space:nowrap;font-size:13px}
 .three-complete-quiz .quiz-question-title {font-size:23px;line-height:1.4;margin:22px 0 16px;white-space:normal}
 .three-complete-quiz .official-question-figure {width:100%;max-width:100%;margin:16px 0}
 .three-complete-quiz .official-question-figure img {display:block;width:100%;max-width:100%;height:auto;object-fit:contain}
@@ -40,7 +42,8 @@
 .three-delayed-explanation {font-size:12px;color:#747064}.three-exam-source {margin:26px 0;font-size:12px;line-height:1.6;overflow-wrap:anywhere}
 .three-exam-source a {color:#456948;text-decoration:underline}
 .three-chapter-count {display:block;color:#7a8173;font-size:11px;margin-top:5px;font-weight:500}
-.three-recordbook-modal {width:min(92vw,850px);max-height:90dvh;padding:0;overflow:hidden;display:flex;flex-direction:column;border-radius:20px;background:#faf8f0}
+.three-modal-overlay {z-index:60;}
+.three-recordbook-modal {width:min(850px,100%);max-width:100%;min-width:0;max-height:calc(100dvh - 40px);padding:0;overflow:hidden;display:flex;flex-direction:column;border-radius:20px;background:#faf8f0}
 .three-recordbook-modal>header {padding:20px 22px 12px;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .three-recordbook-modal header small {color:#8b8063;font-size:11px}.three-recordbook-modal header h2 {font-size:22px;margin:4px 0;line-height:1.3}
 .three-recordbook-modal button {cursor:pointer;min-height:44px;white-space:normal}
@@ -61,14 +64,14 @@
 .three-mnemonic p {font-size:13px}.three-empty {padding:28px 0;color:#7c8070}
 .three-original-photo {display:block;width:100%;padding:12px;margin-bottom:16px;border:1px solid #e3dcc7;background:#fffdf5;border-radius:12px}
 .three-original-photo img {display:block;width:100%;height:auto;max-height:320px;object-fit:contain}.three-original-photo span {display:block;margin-top:10px;font-size:13px}
-.three-photo-modal {width:min(96vw,1150px);max-height:94dvh;display:flex;flex-direction:column;padding:15px}.three-photo-modal header {display:flex;align-items:center;justify-content:space-between;gap:10px}.three-photo-modal header h2 {font-size:18px}
+.three-photo-modal {width:min(1150px,100%);max-width:100%;min-width:0;max-height:calc(100dvh - 40px);display:flex;flex-direction:column;padding:15px}.three-photo-modal header {display:flex;align-items:center;justify-content:space-between;gap:10px}.three-photo-modal header h2 {font-size:18px}
 .three-photo-pan {overflow:auto;max-height:80dvh;overscroll-behavior:contain}.three-photo-pan img {display:block;width:auto;max-width:none;min-width:100%;height:auto}
 .three-save-notice {margin:15px 0;padding:20px;background:#f2ecdc;border-radius:14px;border:1px solid #ddd0aa}.three-save-notice h2 {font-size:18px}.three-save-notice p {font-size:14px;line-height:1.65}
 @media(max-width:760px) {
  .three-prologue-book {top:29%;width:56%;height:22%;left:5%}.three-prologue-book.closeup {top:25%;width:75%;height:26%;left:3%}
  .three-complete-quiz {padding:14px 14px 28px}.three-complete-quiz .quiz-question-title {font-size:21px}
  .three-number-options {gap:6px}.three-number-options .choice {min-height:69px;font-size:12px;padding:7px 3px}
- .three-recordbook-modal {width:96vw;max-height:94dvh;border-radius:14px}.three-recordbook-modal>header {padding:15px 15px 8px}.three-recordbook-modal header h2 {font-size:19px}.three-book-content {padding:13px 15px 22px}.three-book-tabs {padding:0 8px;gap:0}.three-book-tabs button {font-size:12px;padding:8px 11px}
+ .three-recordbook-modal {width:100%;border-radius:14px}.three-recordbook-modal>header {padding:15px 15px 8px}.three-recordbook-modal header h2 {font-size:19px}.three-book-content {padding:13px 15px 22px}.three-book-tabs {padding:0 8px;gap:0}.three-book-tabs button {font-size:12px;padding:8px 11px}
  .three-book-question {gap:8px}.three-book-question button {padding:7px 10px}.three-photo-modal header {flex-wrap:wrap}
 }
 

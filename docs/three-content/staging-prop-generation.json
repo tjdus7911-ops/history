@@ -1,0 +1,801 @@
+{
+  "schemaVersion": 1,
+  "sourceKind": "built-in-imagegen-ordinary-fictional-scene-props",
+  "generation": [
+    {
+      "sheetId": "staging-props-daily-v1",
+      "file": "staging-props-daily-v1.png",
+      "prompt": "Create one production transparent PNG sprite atlas for a Korean historical visual novel. 3 columns by 3 rows, exactly nine separate isolated illustrated props, row-major order. Square canvas with generous fully transparent gutters and padding: every complete object contained in its own cell and no object touching any neighboring cell. No people, faces, hands, captions, labels, readable writing, borders, checkerboard, lighting haze or backdrop. Actual alpha transparency. Style: polished hand-drawn 2D Korean historical game illustration, delicate dark-brown contour lines, fine tactile shading, warm muted teal/rust/ochre/ivory palette, slightly painterly cel shading, same grounded semi-realistic material quality as a historical anime visual novel. Crisp scalable inventory-size forms, consistent three-quarter view. These are ordinary fictional daily-life props for Three Kingdoms scenes, not exact archaeological reproductions. Cell 1 top left: one empty unglazed brown ceramic food bowl, interior clearly empty. Cell 2 top center: small rough cloth grain sack with modest visible millet grains near opening. Cell 3 top right: worn small wooden repair toolbox, open lid, a simple wooden mallet and old iron repair tools inside. Cell 4 middle left: folded cloth belongings tied in a plain tan bundle. Cell 5 middle center: ONE small woven straw child's shoe, for a child about ten, no human foot. Cell 6 middle right: compact wooden sewing needle case open, a few needles and muted thread neatly inside. Cell 7 bottom left: small coil of hemp rope with a loose end. Cell 8 bottom center: loosely folded clean white linen bandage, no body parts and no blood. Cell 9 bottom right: TWO humble wooden eating spoons together, a matched pair, isolated as one prop. Each item occupies at most 65 percent of its own cell so the transparent gutters are unmistakable.",
+      "rects": [
+        [
+          "empty-bowl",
+          "빈 그릇",
+          [
+            49,
+            145,
+            363,
+            234
+          ]
+        ],
+        [
+          "grain-sack",
+          "곡식 자루",
+          [
+            461,
+            98,
+            329,
+            320
+          ]
+        ],
+        [
+          "toolbox",
+          "생활 도구 상자",
+          [
+            837,
+            42,
+            405,
+            391
+          ]
+        ],
+        [
+          "bundle",
+          "살림 보따리",
+          [
+            35,
+            498,
+            389,
+            290
+          ]
+        ],
+        [
+          "child-shoe",
+          "도경의 작은 신",
+          [
+            480,
+            505,
+            300,
+            274
+          ]
+        ],
+        [
+          "needle-case",
+          "바늘함",
+          [
+            858,
+            498,
+            379,
+            301
+          ]
+        ],
+        [
+          "rope",
+          "밧줄",
+          [
+            41,
+            870,
+            368,
+            334
+          ]
+        ],
+        [
+          "bandage",
+          "흰 천",
+          [
+            451,
+            877,
+            364,
+            309
+          ]
+        ],
+        [
+          "spoons",
+          "나무 숟가락 두 개",
+          [
+            879,
+            865,
+            354,
+            340
+          ]
+        ]
+      ],
+      "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-78ec5297-46b7-4d22-9c30-8ab93223012c.png",
+      "repoSrc": "assets/ancient/three-complete/props/staging-props-daily-v1.png",
+      "sha256": "09d84da61dd09f1b5a2dabc215bb261f66cf2cee75c595dc9750174e8426cd70",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "pixelEditingPerformed": false,
+      "visualReview": true
+    },
+    {
+      "sheetId": "staging-props-records-v1",
+      "file": "staging-props-records-v1.png",
+      "prompt": "Create one production transparent PNG sprite atlas for a Korean historical visual novel. 3 columns by 3 rows, exactly nine separate isolated illustrated props, row-major order. Square canvas; each whole item at most 65 percent of its cell; large fully transparent gutters. No people, faces, hands, text, invented historical writing, borders, fake alpha checkerboard, floor, shadows extending to neighbors, haze or backdrop. True alpha transparency. Style: polished hand-drawn 2D Korean historical visual-novel illustration, delicate brown outlines, warm subdued ivory/wood/rust/teal colors, refined cel shading with gentle painted material textures. Grounded ordinary fictional objects, not archaeological replicas. Cell1 top-left: an open old thread-bound record book with clean blank ivory pages, slightly curved corners. Cell2 top-middle: a folded ordinary cream paper letter secured by a thin dull-red cord, no envelope flap from modern mail and no seal. Cell3 top-right: one flat cream paper contact sheet with faint EMPTY ruled columns, absolutely no names, glyphs or portraits. Cell4 middle-left: one rough route-note paper with a simple winding path and three SMALL unlabeled dots, clearly an abstract personal sketch, not an accurate geographical map. Cell5 middle-middle: one paper showing a simple pen sketch of a THREE-strand rope knot as a family identification clue, no lettering. Cell6 middle-right: a small plain wooden cargo/boat identification tag with a cord through a hole, completely blank face. Cell7 bottom-left: compact wooden balance scale with two small hanging shallow pans, unweighted and level. Cell8 bottom-middle: ordinary dark clay cooking pot with its lid set slightly aside, no food and no fire. Cell9 bottom-right: a small wooden mallet and plain stoneworker's iron chisel crossing loosely as one isolated prop. Keep all objects independent and fully visible with consistent visual weight.",
+      "rects": [
+        [
+          "record-book",
+          "기록책",
+          [
+            23,
+            43,
+            417,
+            341
+          ]
+        ],
+        [
+          "letter",
+          "편지",
+          [
+            448,
+            91,
+            382,
+            267
+          ]
+        ],
+        [
+          "contact-sheet",
+          "연락표",
+          [
+            873,
+            23,
+            360,
+            391
+          ]
+        ],
+        [
+          "route-note",
+          "경로 기록",
+          [
+            23,
+            430,
+            421,
+            389
+          ]
+        ],
+        [
+          "knot-drawing",
+          "세 줄 매듭 그림",
+          [
+            472,
+            444,
+            357,
+            355
+          ]
+        ],
+        [
+          "boat-tag",
+          "빈 배 표지",
+          [
+            908,
+            422,
+            324,
+            397
+          ]
+        ],
+        [
+          "balance-scale",
+          "저울",
+          [
+            17,
+            816,
+            405,
+            392
+          ]
+        ],
+        [
+          "cooking-pot",
+          "솥",
+          [
+            438,
+            893,
+            441,
+            292
+          ]
+        ],
+        [
+          "craft-tools",
+          "작업 도구",
+          [
+            880,
+            839,
+            354,
+            372
+          ]
+        ]
+      ],
+      "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-dc98523e-24bb-4171-8866-c4f16719cebb.png",
+      "repoSrc": "assets/ancient/three-complete/props/staging-props-records-v1.png",
+      "sha256": "eb9620b77671866ad34db9898a267e93995aa997b9651fe56c98026f713abc0a",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "pixelEditingPerformed": false,
+      "visualReview": true
+    },
+    {
+      "repoSrc": "assets/ancient/three-complete/props/staging-props-continuity-v1.png",
+      "kind": "props",
+      "prompt": "Create a true transparent PNG sprite atlas for the same grounded hand-drawn 2D Korean historical visual-novel art style: warm muted colors, fine brown contour lines and painted cel shading, clear ordinary objects, no backdrop, no fake checkerboard, no people or body parts, no labels or readable text. A square canvas with a strict 3x3 grid, nine independent complete props; each item max65% of its cell, generous alpha0 gutters all around and between rows. Row-major order. 1: an EMPTY collapsed coarse linen grain sack, the mouth open enough to make emptiness clear, no grain spilling. 2: an old round brown cooking pot with one fine repaired crack on the outside and a discreet low waterline scratch; no flame, no food, no gaping hole. 3: a NEW small brown earthenware family eating bowl carrying a deliberately drawn dark wavy line that echoes the repaired crack of item2, an inherited private motif, NOT a broken bowl. 4: a modest intact gray-brown early Korean fictional household bowl with a small side handle and a simple private three-wave maker mark, rustic and unadorned, not a replica of a famous artifact. 5: one curved broken SHARD visibly from the SAME gray-brown bowl as item4, preserving part of that same three-wave maker mark and handle; not a whole bowl. These pairings are crucial story identity continuity. 6: a small folded worn beige handkerchief with one muted-red stitched corner. 7: a rolled travel blanket bound with plain cloth straps. 8: a small visibly carved static WOODEN lion model, wooden texture and join marks, neutral artifact presentation, not a living animal or monster. 9: a plain roughly forged flattened iron trade ingot, no numerals, coins, stamps or modern currency symbols. Keep every item distinct and fully visible; no shadows or objects crossing cell boundaries.",
+      "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-1c6bbe01-2102-4c3e-8864-a0b058db4c2c.png",
+      "sha256": "c55b8faaa7e3b8e6503ce10a0c91e093e0a5edeb66d05005fd0a1fcb447fe3c8",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "pixelEditingPerformed": false,
+      "visualReview": true
+    }
+  ],
+  "props": {
+    "empty-bowl": {
+      "id": "empty-bowl",
+      "label": "빈 그릇",
+      "src": "assets/ancient/three-complete/props/staging-props-daily-v1.png",
+      "sheetWidth": 1254,
+      "sheetHeight": 1254,
+      "sourceRect": {
+        "x": 49,
+        "y": 145,
+        "width": 363,
+        "height": 234
+      },
+      "alphaBounds": {
+        "x": 59,
+        "y": 156,
+        "width": 343,
+        "height": 216
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    },
+    "grain-sack": {
+      "id": "grain-sack",
+      "label": "곡식 자루",
+      "src": "assets/ancient/three-complete/props/staging-props-daily-v1.png",
+      "sheetWidth": 1254,
+      "sheetHeight": 1254,
+      "sourceRect": {
+        "x": 461,
+        "y": 98,
+        "width": 329,
+        "height": 320
+      },
+      "alphaBounds": {
+        "x": 479,
+        "y": 108,
+        "width": 300,
+        "height": 293
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    },
+    "toolbox": {
+      "id": "toolbox",
+      "label": "생활 도구 상자",
+      "src": "assets/ancient/three-complete/props/staging-props-daily-v1.png",
+      "sheetWidth": 1254,
+      "sheetHeight": 1254,
+      "sourceRect": {
+        "x": 837,
+        "y": 42,
+        "width": 405,
+        "height": 391
+      },
+      "alphaBounds": {
+        "x": 853,
+        "y": 52,
+        "width": 371,
+        "height": 371
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    },
+    "bundle": {
+      "id": "bundle",
+      "label": "살림 보따리",
+      "src": "assets/ancient/three-complete/props/staging-props-daily-v1.png",
+      "sheetWidth": 1254,
+      "sheetHeight": 1254,
+      "sourceRect": {
+        "x": 35,
+        "y": 498,
+        "width": 389,
+        "height": 290
+      },
+      "alphaBounds": {
+        "x": 48,
+        "y": 506,
+        "width": 358,
+        "height": 273
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    },
+    "child-shoe": {
+      "id": "child-shoe",
+      "label": "도경의 작은 신",
+      "src": "assets/ancient/three-complete/props/staging-props-daily-v1.png",
+      "sheetWidth": 1254,
+      "sheetHeight": 1254,
+      "sourceRect": {
+        "x": 480,
+        "y": 505,
+        "width": 300,
+        "height": 274
+      },
+      "alphaBounds": {
+        "x": 497,
+        "y": 519,
+        "width": 261,
+        "height": 242
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    },
+    "needle-case": {
+      "id": "needle-case",
+      "label": "바늘함",
+      "src": "assets/ancient/three-complete/props/staging-props-daily-v1.png",
+      "sheetWidth": 1254,
+      "sheetHeight": 1254,
+      "sourceRect": {
+        "x": 858,
+        "y": 498,
+        "width": 379,
+        "height": 301
+      },
+      "alphaBounds": {
+        "x": 872,
+        "y": 507,
+        "width": 352,
+        "height": 279
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    },
+    "rope": {
+      "id": "rope",
+      "label": "밧줄",
+      "src": "assets/ancient/three-complete/props/staging-props-daily-v1.png",
+      "sheetWidth": 1254,
+      "sheetHeight": 1254,
+      "sourceRect": {
+        "x": 41,
+        "y": 870,
+        "width": 368,
+        "height": 334
+      },
+      "alphaBounds": {
+        "x": 64,
+        "y": 894,
+        "width": 304,
+        "height": 295
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    },
+    "bandage": {
+      "id": "bandage",
+      "label": "흰 천",
+      "src": "assets/ancient/three-complete/props/staging-props-daily-v1.png",
+      "sheetWidth": 1254,
+      "sheetHeight": 1254,
+      "sourceRect": {
+        "x": 451,
+        "y": 877,
+        "width": 364,
+        "height": 309
+      },
+      "alphaBounds": {
+        "x": 468,
+        "y": 893,
+        "width": 330,
+        "height": 281
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    },
+    "spoons": {
+      "id": "spoons",
+      "label": "나무 숟가락 두 개",
+      "src": "assets/ancient/three-complete/props/staging-props-daily-v1.png",
+      "sheetWidth": 1254,
+      "sheetHeight": 1254,
+      "sourceRect": {
+        "x": 879,
+        "y": 865,
+        "width": 354,
+        "height": 340
+      },
+      "alphaBounds": {
+        "x": 895,
+        "y": 873,
+        "width": 323,
+        "height": 316
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    },
+    "record-book": {
+      "id": "record-book",
+      "label": "기록책",
+      "src": "assets/ancient/three-complete/props/staging-props-records-v1.png",
+      "sheetWidth": 1254,
+      "sheetHeight": 1254,
+      "sourceRect": {
+        "x": 23,
+        "y": 43,
+        "width": 417,
+        "height": 341
+      },
+      "alphaBounds": {
+        "x": 34,
+        "y": 56,
+        "width": 399,
+        "height": 318
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    },
+    "letter": {
+      "id": "letter",
+      "label": "편지",
+      "src": "assets/ancient/three-complete/props/staging-props-records-v1.png",
+      "sheetWidth": 1254,
+      "sheetHeight": 1254,
+      "sourceRect": {
+        "x": 448,
+        "y": 91,
+        "width": 382,
+        "height": 267
+      },
+      "alphaBounds": {
+        "x": 461,
+        "y": 104,
+        "width": 356,
+        "height": 241
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    },
+    "contact-sheet": {
+      "id": "contact-sheet",
+      "label": "연락표",
+      "src": "assets/ancient/three-complete/props/staging-props-records-v1.png",
+      "sheetWidth": 1254,
+      "sheetHeight": 1254,
+      "sourceRect": {
+        "x": 873,
+        "y": 23,
+        "width": 360,
+        "height": 391
+      },
+      "alphaBounds": {
+        "x": 888,
+        "y": 37,
+        "width": 328,
+        "height": 367
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    },
+    "route-note": {
+      "id": "route-note",
+      "label": "경로 기록",
+      "src": "assets/ancient/three-complete/props/staging-props-records-v1.png",
+      "sheetWidth": 1254,
+      "sheetHeight": 1254,
+      "sourceRect": {
+        "x": 23,
+        "y": 430,
+        "width": 421,
+        "height": 389
+      },
+      "alphaBounds": {
+        "x": 39,
+        "y": 445,
+        "width": 394,
+        "height": 360
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    },
+    "knot-drawing": {
+      "id": "knot-drawing",
+      "label": "세 줄 매듭 그림",
+      "src": "assets/ancient/three-complete/props/staging-props-records-v1.png",
+      "sheetWidth": 1254,
+      "sheetHeight": 1254,
+      "sourceRect": {
+        "x": 472,
+        "y": 444,
+        "width": 357,
+        "height": 355
+      },
+      "alphaBounds": {
+        "x": 483,
+        "y": 453,
+        "width": 335,
+        "height": 329
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    },
+    "boat-tag": {
+      "id": "boat-tag",
+      "label": "빈 배 표지",
+      "src": "assets/ancient/three-complete/props/staging-props-records-v1.png",
+      "sheetWidth": 1254,
+      "sheetHeight": 1254,
+      "sourceRect": {
+        "x": 908,
+        "y": 422,
+        "width": 324,
+        "height": 397
+      },
+      "alphaBounds": {
+        "x": 926,
+        "y": 440,
+        "width": 294,
+        "height": 371
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    },
+    "balance-scale": {
+      "id": "balance-scale",
+      "label": "저울",
+      "src": "assets/ancient/three-complete/props/staging-props-records-v1.png",
+      "sheetWidth": 1254,
+      "sheetHeight": 1254,
+      "sourceRect": {
+        "x": 17,
+        "y": 816,
+        "width": 405,
+        "height": 392
+      },
+      "alphaBounds": {
+        "x": 28,
+        "y": 822,
+        "width": 384,
+        "height": 370
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    },
+    "cooking-pot": {
+      "id": "cooking-pot",
+      "label": "솥",
+      "src": "assets/ancient/three-complete/props/staging-props-records-v1.png",
+      "sheetWidth": 1254,
+      "sheetHeight": 1254,
+      "sourceRect": {
+        "x": 438,
+        "y": 893,
+        "width": 441,
+        "height": 292
+      },
+      "alphaBounds": {
+        "x": 447,
+        "y": 906,
+        "width": 420,
+        "height": 259
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    },
+    "craft-tools": {
+      "id": "craft-tools",
+      "label": "작업 도구",
+      "src": "assets/ancient/three-complete/props/staging-props-records-v1.png",
+      "sheetWidth": 1254,
+      "sheetHeight": 1254,
+      "sourceRect": {
+        "x": 880,
+        "y": 839,
+        "width": 354,
+        "height": 372
+      },
+      "alphaBounds": {
+        "x": 887,
+        "y": 849,
+        "width": 327,
+        "height": 347
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    },
+    "empty-sack": {
+      "id": "empty-sack",
+      "label": "빈 곡식 자루",
+      "src": "assets/ancient/three-complete/props/staging-props-continuity-v1.png",
+      "sheetWidth": 1254,
+      "sheetHeight": 1254,
+      "sourceRect": {
+        "x": 12,
+        "y": 84,
+        "width": 440,
+        "height": 321
+      },
+      "alphaBounds": {
+        "x": 18,
+        "y": 92,
+        "width": 430,
+        "height": 309
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    },
+    "repaired-pot": {
+      "id": "repaired-pot",
+      "label": "함께 고친 솥",
+      "src": "assets/ancient/three-complete/props/staging-props-continuity-v1.png",
+      "sheetWidth": 1254,
+      "sheetHeight": 1254,
+      "sourceRect": {
+        "x": 455,
+        "y": 85,
+        "width": 408,
+        "height": 320
+      },
+      "alphaBounds": {
+        "x": 461,
+        "y": 93,
+        "width": 396,
+        "height": 304
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    },
+    "family-bowl": {
+      "id": "family-bowl",
+      "label": "솥의 무늬를 이은 그릇",
+      "src": "assets/ancient/three-complete/props/staging-props-continuity-v1.png",
+      "sheetWidth": 1254,
+      "sheetHeight": 1254,
+      "sourceRect": {
+        "x": 899,
+        "y": 146,
+        "width": 334,
+        "height": 235
+      },
+      "alphaBounds": {
+        "x": 907,
+        "y": 155,
+        "width": 317,
+        "height": 218
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    },
+    "gaya-bowl": {
+      "id": "gaya-bowl",
+      "label": "온전한 가야 그릇",
+      "src": "assets/ancient/three-complete/props/staging-props-continuity-v1.png",
+      "sheetWidth": 1254,
+      "sheetHeight": 1254,
+      "sourceRect": {
+        "x": 28,
+        "y": 508,
+        "width": 446,
+        "height": 270
+      },
+      "alphaBounds": {
+        "x": 34,
+        "y": 515,
+        "width": 435,
+        "height": 255
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    },
+    "gaya-shard": {
+      "id": "gaya-shard",
+      "label": "가야 그릇의 표식 조각",
+      "src": "assets/ancient/three-complete/props/staging-props-continuity-v1.png",
+      "sheetWidth": 1254,
+      "sheetHeight": 1254,
+      "sourceRect": {
+        "x": 497,
+        "y": 523,
+        "width": 323,
+        "height": 244
+      },
+      "alphaBounds": {
+        "x": 504,
+        "y": 530,
+        "width": 308,
+        "height": 228
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    },
+    "handkerchief": {
+      "id": "handkerchief",
+      "label": "낡은 손수건",
+      "src": "assets/ancient/three-complete/props/staging-props-continuity-v1.png",
+      "sheetWidth": 1254,
+      "sheetHeight": 1254,
+      "sourceRect": {
+        "x": 853,
+        "y": 497,
+        "width": 386,
+        "height": 286
+      },
+      "alphaBounds": {
+        "x": 859,
+        "y": 505,
+        "width": 374,
+        "height": 268
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    },
+    "travel-blanket": {
+      "id": "travel-blanket",
+      "label": "여행 담요",
+      "src": "assets/ancient/three-complete/props/staging-props-continuity-v1.png",
+      "sheetWidth": 1254,
+      "sheetHeight": 1254,
+      "sourceRect": {
+        "x": 15,
+        "y": 870,
+        "width": 484,
+        "height": 314
+      },
+      "alphaBounds": {
+        "x": 23,
+        "y": 878,
+        "width": 470,
+        "height": 297
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    },
+    "wooden-lion": {
+      "id": "wooden-lion",
+      "label": "전승의 나무사자",
+      "src": "assets/ancient/three-complete/props/staging-props-continuity-v1.png",
+      "sheetWidth": 1254,
+      "sheetHeight": 1254,
+      "sourceRect": {
+        "x": 513,
+        "y": 797,
+        "width": 345,
+        "height": 402
+      },
+      "alphaBounds": {
+        "x": 521,
+        "y": 804,
+        "width": 328,
+        "height": 387
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    },
+    "iron-ingot": {
+      "id": "iron-ingot",
+      "label": "교역할 덩이쇠",
+      "src": "assets/ancient/three-complete/props/staging-props-continuity-v1.png",
+      "sheetWidth": 1254,
+      "sheetHeight": 1254,
+      "sourceRect": {
+        "x": 866,
+        "y": 900,
+        "width": 373,
+        "height": 253
+      },
+      "alphaBounds": {
+        "x": 874,
+        "y": 909,
+        "width": 357,
+        "height": 235
+      },
+      "visualFileReview": true,
+      "pixelEditingPerformed": false
+    }
+  },
+  "limitations": [
+    "Ordinary fictional scene props, not exact archaeological reproductions. Names and dates are rendered as separate source-derived text.",
+    "Original user genealogy photographs are retained as separate source-photo layers; these blank papers never replace them."
+  ]
+}
