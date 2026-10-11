@@ -49,6 +49,8 @@ def build():
     require(story['source']['sha256'] == cues['sourceManuscriptSha256'], 'Staging manuscript version differs')
     for record in props['generation'] + acting['generation']:
         checked_file(record['repoSrc'], record['sha256'])
+    for asset in acting['backgrounds'].values():
+        checked_file(asset['src'], asset.get('sha256'))
     for asset in list(props['props'].values()) + list(acting['hands'].values()) + list(acting['variants'].values()):
         checked_file(asset['src'], asset.get('sha256'))
         validate_rect(asset)

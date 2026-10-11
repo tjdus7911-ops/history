@@ -62,12 +62,20 @@
     {
       "sceneId": "THR-C11-S01",
       "detail": "Ox/plough/field action is not proved by generic prop coverage",
-      "status": "custom-detail-review-required"
+      "status": "runtime-linked-awaiting-browser-composition-review",
+      "asset": "assets/ancient/three-complete/backgrounds/silla-ox-field-rest-v1.png",
+      "sourceFileVisualReview": true,
+      "runtimeVisualReviewComplete": false,
+      "preservedMeaning": "Ox rests in both branches; no treatment or completed healing is shown."
     },
     {
       "sceneId": "THR-C13-S03",
       "detail": "Construction state of the nine-storey wooden pagoda, before completion",
-      "status": "custom-detail-review-required"
+      "status": "runtime-linked-awaiting-browser-composition-review",
+      "asset": "assets/ancient/three-complete/backgrounds/hwangnyongsa-construction-v1.png",
+      "sourceFileVisualReview": true,
+      "runtimeVisualReviewComplete": false,
+      "preservedMeaning": "The wooden pagoda remains under construction through the join; no completed tower is shown."
     },
     {
       "sceneId": "THR-C17-S05",
@@ -99,13 +107,13 @@
   "currentImplementation": {
     "sceneCount": 218,
     "authoredUtteranceCount": 2777,
-    "explicitCueCount": 254,
+    "explicitCueCount": 256,
     "purePresentationFrameCount": 2919,
     "propAppearanceCount": 27,
     "handActionAppearanceCount": 2,
     "actorVariantAppearanceCount": 6,
-    "backgroundStateAppearanceCount": 2,
-    "imageFileCount": 10,
+    "backgroundStateAppearanceCount": 4,
+    "imageFileCount": 12,
     "originalGenealogyPhotoCount": 3,
     "prologueRendererHooksConnected": true
   },

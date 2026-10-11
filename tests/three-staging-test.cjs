@@ -102,6 +102,24 @@ for(const selected of ['B1','B2']) {
 assert.equal(api.backgroundOverride(sources.get('THR-PRO-S03'),state('THR-PRO-S03','THR-PRO-S03-L01')),null);
 assert.equal(api.backgroundOverride(sources.get('THR-C01-S01'),state('THR-C01-S01','THR-C01-S01-M01')).id,'collapsed-queue');
 
+// The ox remains resting on both decisions, and the pagoda remains unfinished.
+// These are physical settings from the first line, including choice/join/reload.
+for(const [sceneId,assetId] of [['THR-C11-S01','silla-ox-field'],['THR-C13-S03','hwangnyongsa-construction']]) {
+  const source=sources.get(sceneId),raw=source.threeSource;
+  const frames=raw.main.map(line=>state(sceneId,line.lineId));
+  if(raw.choices.length)frames.push(state(sceneId,raw.main.at(-1).lineId,'choice'));
+  for(const choice of raw.choices.length?raw.choices:[null]) {
+    if(choice)for(const line of [choice.spokenLine,...choice.reply])frames.push(state(sceneId,line.lineId,'branch',choice.choiceId));
+    for(const line of raw.join)frames.push(state(sceneId,line.lineId,'join',choice?.choiceId||null));
+  }
+  for(const current of frames) {
+    assert.equal(api.backgroundOverride(source,current).id,assetId);
+    assert.equal(api.backgroundOverride(source,JSON.parse(JSON.stringify(current))).id,assetId);
+  }
+  const next=sources.get(raw.nextSceneId);
+  assert.equal(api.backgroundOverride(next,state(next.sceneId,next.threeSource.main[0].lineId)),null,'Setting must not leak into the next scene');
+}
+
 // Arrival book continuity is a line-bound physical pose, not a new dialogue
 // step or an inventory panel. The original three photographs travel with it.
 for(let number=1;number<=6;number++) {

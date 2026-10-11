@@ -11,7 +11,7 @@
 .three-complete-game .three-staging-hand {position:absolute;left:23%;top:34%;width:40%;height:22%;overflow:hidden;transform:rotate(-8deg);}
 .three-complete-game .three-staging-hand .three-prop-sprite {position:absolute;right:-12%;bottom:-10%;filter:drop-shadow(0 3px 2px #47382435);}
 .three-complete-game .three-arrival-book-stage {position:absolute;inset:92px 0 128px;pointer-events:none;}
-.three-complete-game .three-arrival-book {position:absolute;left:48%;top:65%;width:25%;height:16%;transform:perspective(350px) rotateX(55deg) rotateZ(-17deg);filter:drop-shadow(2px 5px 2px #39271c65);}
+.three-complete-game .three-arrival-book {position:absolute;left:35%;top:91%;width:22%;height:12%;transform:perspective(350px) rotateX(55deg) rotateZ(-17deg);filter:drop-shadow(2px 5px 2px #39271c65);}
 .three-complete-game .three-arrival-book .three-book-leaf {border-width:1px;border-bottom-width:5px;}
 .three-complete-game .three-portrait-photos {display:block;position:absolute;inset:0;pointer-events:none;}
 .three-complete-game .three-portrait-genealogy-leaf {display:block;position:absolute;object-fit:cover;object-position:top;background:#eae3ce;transform-origin:center;}
