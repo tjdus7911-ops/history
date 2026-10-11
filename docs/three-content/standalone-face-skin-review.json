@@ -1,0 +1,359 @@
+{
+  "schemaVersion": 1,
+  "status": "manual-skin-face-bounds-applied-source-pixels-and-full-silhouette-crops-preserved",
+  "criterion": "Visible facial skin from forehead to lowest chin edge, including a visible ear in width. Exclude hair, headgear and neck. These coordinates define appearance scale/anchor only; do not alter the image or complete silhouette crop.",
+  "coordinateSpace": "absolute source-image pixels",
+  "sourcePixelEditingPerformed": false,
+  "runtimeApplied": true,
+  "runtimeVisualReviewComplete": false,
+  "diagnosticFigure": "/workspace/scratch/fea3030a5c98/three-art-recovery/face-review/standalone-face-coordinate-review.png",
+  "appearances": [
+    {
+      "id": "yeonwoo-fullbody-v1",
+      "src": "assets/ancient/three-complete/characters/yeonwoo-fullbody-v1.png",
+      "sourceSha256": "e1dadcd9f40b89935297864d775b79c2626d56e07d81f6a453b11598772af01d",
+      "oldFaceBounds": {
+        "x": 405,
+        "y": 77,
+        "width": 166,
+        "height": 151
+      },
+      "faceBounds": {
+        "x": 410,
+        "y": 77,
+        "width": 147,
+        "height": 142
+      },
+      "method": "manual inspection of source image at original pixel coordinates with 5px coordinate grid",
+      "reason": "Lowest chin edge at y218; prior rectangle included neck down to y228 and excess hair at the right.",
+      "sameTargetFaceHeightScaleChange": 1.06338,
+      "imagePixelsEdited": false,
+      "sourceRectChanged": false,
+      "alphaBoundsChanged": false,
+      "runtimeApplied": true,
+      "runtimeVisualReviewComplete": false,
+      "target": {
+        "file": "docs/three-content/fullbody-portrait-layout.json",
+        "sheetId": "yeonwoo-fullbody-v1",
+        "field": "cells[0].faceBounds (array x,y,width,height)"
+      }
+    },
+    {
+      "id": "haein-later-fullbody-v1",
+      "src": "assets/ancient/three-complete/characters/haein-later-fullbody-v1.png",
+      "sourceSha256": "9f2d7ab37073683de671dd95f3ff412bf8d4cd16c93b163413a4edae3e475131",
+      "oldFaceBounds": {
+        "x": 354,
+        "y": 73,
+        "width": 150,
+        "height": 138
+      },
+      "faceBounds": {
+        "x": 354,
+        "y": 70,
+        "width": 147,
+        "height": 134
+      },
+      "method": "manual inspection of source image at original pixel coordinates with 5px coordinate grid",
+      "reason": "Visible forehead starts around y70 and chin ends around y203; neck below is excluded.",
+      "sameTargetFaceHeightScaleChange": 1.029851,
+      "imagePixelsEdited": false,
+      "sourceRectChanged": false,
+      "alphaBoundsChanged": false,
+      "runtimeApplied": true,
+      "runtimeVisualReviewComplete": false,
+      "target": {
+        "file": "docs/three-content/fullbody-portrait-layout.json",
+        "sheetId": "haein-later-fullbody-v1",
+        "field": "cells[0].faceBounds (array x,y,width,height)"
+      }
+    },
+    {
+      "id": "yeonwoo-mother-support-pair",
+      "src": "assets/ancient/three-complete/characters/yeonwoo-mother-support-pair-v1.png",
+      "sourceSha256": "022edd8a2242455c6616d33ca27b50d2fe2e62fb73326a034a14fe83a918ccfa",
+      "oldFaceBounds": {
+        "x": 330,
+        "y": 116,
+        "width": 150,
+        "height": 137
+      },
+      "faceBounds": {
+        "x": 329,
+        "y": 119,
+        "width": 146,
+        "height": 117
+      },
+      "method": "manual inspection of source image at original pixel coordinates with 5px coordinate grid",
+      "reason": "Use Yeonwoo only: forehead at y119, lowest chin at y235; no mother, neck or hair in face height.",
+      "sameTargetFaceHeightScaleChange": 1.17094,
+      "imagePixelsEdited": false,
+      "sourceRectChanged": false,
+      "alphaBoundsChanged": false,
+      "runtimeApplied": true,
+      "runtimeVisualReviewComplete": false,
+      "target": {
+        "file": "docs/three-content/staging-acting-generation.json",
+        "variantId": "yeonwoo-mother-support-pair",
+        "field": "portraitGeometry.faceBounds"
+      },
+      "preservationValidation": {
+        "sourceShaMatches": true,
+        "sourceRectAndSpriteUnchanged": true,
+        "alphaBoundsUnchanged": true,
+        "newSkinBoundsApplied": true,
+        "originalAlphaThreshold": 32,
+        "subjectOpaquePixels": 874681,
+        "opaqueSubjectPixelsOutsideCrop": 0,
+        "foreignLargeComponentsInCrop": 0
+      }
+    },
+    {
+      "id": "seoa-book-lifting",
+      "src": "assets/ancient/three-complete/characters/seoa-book-actions-v1.png",
+      "sourceSha256": "1c01e99616daf6564e7526e519edf816f6dd2489cd50aa1b52945fd9298e8efa",
+      "oldFaceBounds": {
+        "x": 314,
+        "y": 107,
+        "width": 105,
+        "height": 105
+      },
+      "faceBounds": {
+        "x": 311,
+        "y": 104,
+        "width": 113,
+        "height": 104
+      },
+      "method": "manual inspection of source image at original pixel coordinates with 5px coordinate grid",
+      "reason": "Visible forehead at y104, lowest chin at y207; visible ear remains included.",
+      "sameTargetFaceHeightScaleChange": 1.009615,
+      "imagePixelsEdited": false,
+      "sourceRectChanged": false,
+      "alphaBoundsChanged": false,
+      "runtimeApplied": true,
+      "runtimeVisualReviewComplete": false,
+      "target": {
+        "file": "docs/three-content/staging-acting-generation.json",
+        "variantId": "seoa-book-lifting",
+        "field": "portraitGeometry.faceBounds"
+      },
+      "preservationValidation": {
+        "sourceShaMatches": true,
+        "sourceRectAndSpriteUnchanged": true,
+        "alphaBoundsUnchanged": true,
+        "newSkinBoundsApplied": true,
+        "originalAlphaThreshold": 32,
+        "subjectOpaquePixels": 320985,
+        "opaqueSubjectPixelsOutsideCrop": 0,
+        "foreignLargeComponentsInCrop": 0
+      }
+    },
+    {
+      "id": "seoa-book-held",
+      "src": "assets/ancient/three-complete/characters/seoa-book-actions-v1.png",
+      "sourceSha256": "1c01e99616daf6564e7526e519edf816f6dd2489cd50aa1b52945fd9298e8efa",
+      "oldFaceBounds": {
+        "x": 974,
+        "y": 85,
+        "width": 111,
+        "height": 116
+      },
+      "faceBounds": {
+        "x": 977,
+        "y": 80,
+        "width": 112,
+        "height": 111
+      },
+      "method": "manual inspection of source image at original pixel coordinates with 5px coordinate grid",
+      "reason": "Forehead visible above the previous y85 bound; chin ends at y190, neck down to y201 is excluded.",
+      "sameTargetFaceHeightScaleChange": 1.045045,
+      "imagePixelsEdited": false,
+      "sourceRectChanged": false,
+      "alphaBoundsChanged": false,
+      "runtimeApplied": true,
+      "runtimeVisualReviewComplete": false,
+      "target": {
+        "file": "docs/three-content/staging-acting-generation.json",
+        "variantId": "seoa-book-held",
+        "field": "portraitGeometry.faceBounds"
+      },
+      "preservationValidation": {
+        "sourceShaMatches": true,
+        "sourceRectAndSpriteUnchanged": true,
+        "alphaBoundsUnchanged": true,
+        "newSkinBoundsApplied": true,
+        "originalAlphaThreshold": 32,
+        "subjectOpaquePixels": 314551,
+        "opaqueSubjectPixelsOutsideCrop": 0,
+        "foreignLargeComponentsInCrop": 0
+      }
+    },
+    {
+      "id": "haemyeong-hidden",
+      "src": "assets/ancient/three-complete/characters/haemyeong-acting-v1.png",
+      "sourceSha256": "2b39eea68c0dff098f8efd33fcce32b1dda8454c403e4b46421b687684fe388c",
+      "oldFaceBounds": {
+        "x": 304,
+        "y": 59,
+        "width": 96,
+        "height": 98
+      },
+      "faceBounds": {
+        "x": 311,
+        "y": 51,
+        "width": 107,
+        "height": 96
+      },
+      "method": "manual inspection of source image at original pixel coordinates with 5px coordinate grid",
+      "reason": "Forehead starts near y51, chin ends at y146; extend width to include the outer visible ear without adding neck height.",
+      "sameTargetFaceHeightScaleChange": 1.020833,
+      "imagePixelsEdited": false,
+      "sourceRectChanged": false,
+      "alphaBoundsChanged": false,
+      "runtimeApplied": true,
+      "runtimeVisualReviewComplete": false,
+      "target": {
+        "file": "docs/three-content/staging-acting-generation.json",
+        "variantId": "haemyeong-hidden",
+        "field": "portraitGeometry.faceBounds"
+      },
+      "preservationValidation": {
+        "sourceShaMatches": true,
+        "sourceRectAndSpriteUnchanged": true,
+        "alphaBoundsUnchanged": true,
+        "newSkinBoundsApplied": true,
+        "originalAlphaThreshold": 32,
+        "subjectOpaquePixels": 252332,
+        "opaqueSubjectPixelsOutsideCrop": 0,
+        "foreignLargeComponentsInCrop": 0
+      }
+    },
+    {
+      "id": "haemyeong-bandaged",
+      "src": "assets/ancient/three-complete/characters/haemyeong-acting-v1.png",
+      "sourceSha256": "2b39eea68c0dff098f8efd33fcce32b1dda8454c403e4b46421b687684fe388c",
+      "oldFaceBounds": {
+        "x": 1072,
+        "y": 59,
+        "width": 96,
+        "height": 98
+      },
+      "faceBounds": {
+        "x": 1080,
+        "y": 51,
+        "width": 105,
+        "height": 97
+      },
+      "method": "manual inspection of source image at original pixel coordinates with 5px coordinate grid",
+      "reason": "Independently read second cell: forehead y51, chin y147 and outer ear x1184.",
+      "sameTargetFaceHeightScaleChange": 1.010309,
+      "imagePixelsEdited": false,
+      "sourceRectChanged": false,
+      "alphaBoundsChanged": false,
+      "runtimeApplied": true,
+      "runtimeVisualReviewComplete": false,
+      "target": {
+        "file": "docs/three-content/staging-acting-generation.json",
+        "variantId": "haemyeong-bandaged",
+        "field": "portraitGeometry.faceBounds"
+      },
+      "preservationValidation": {
+        "sourceShaMatches": true,
+        "sourceRectAndSpriteUnchanged": true,
+        "alphaBoundsUnchanged": true,
+        "newSkinBoundsApplied": true,
+        "originalAlphaThreshold": 32,
+        "subjectOpaquePixels": 258330,
+        "opaqueSubjectPixelsOutsideCrop": 0,
+        "foreignLargeComponentsInCrop": 0
+      }
+    },
+    {
+      "id": "yeoul-empty",
+      "src": "assets/ancient/three-complete/characters/yeoul-c15-empty-hands-v1.png",
+      "sourceSha256": "55e0d3d76b655c0efc489d8ae1f4c1fd021cc1565ba30624dab1d90b0437da0d",
+      "oldFaceBounds": {
+        "x": 478,
+        "y": 79,
+        "width": 140,
+        "height": 149
+      },
+      "faceBounds": {
+        "x": 462,
+        "y": 64,
+        "width": 154,
+        "height": 150
+      },
+      "method": "manual inspection of source image at original pixel coordinates with 5px coordinate grid",
+      "reason": "Include visible forehead above old y79 and full ear at x462; exclude neck below chin y213.",
+      "sameTargetFaceHeightScaleChange": 0.993333,
+      "imagePixelsEdited": false,
+      "sourceRectChanged": false,
+      "alphaBoundsChanged": false,
+      "runtimeApplied": true,
+      "runtimeVisualReviewComplete": false,
+      "target": {
+        "file": "docs/three-content/staging-acting-generation.json",
+        "variantId": "yeoul-empty",
+        "field": "portraitGeometry.faceBounds"
+      },
+      "preservationValidation": {
+        "sourceShaMatches": true,
+        "sourceRectAndSpriteUnchanged": true,
+        "alphaBoundsUnchanged": true,
+        "newSkinBoundsApplied": true,
+        "originalAlphaThreshold": 32,
+        "subjectOpaquePixels": 481497,
+        "opaqueSubjectPixelsOutsideCrop": 0,
+        "foreignLargeComponentsInCrop": 0
+      }
+    },
+    {
+      "id": "yeonwoo-support",
+      "src": "assets/ancient/three-complete/characters/yeonwoo-support-v1.png",
+      "sourceSha256": "aff6bb8bce45739fc73f5a74b733a1038bfc4e23d2b609f877db591efe4ce770",
+      "oldFaceBounds": {
+        "x": 500,
+        "y": 117,
+        "width": 155,
+        "height": 161
+      },
+      "faceBounds": {
+        "x": 490,
+        "y": 113,
+        "width": 161,
+        "height": 145
+      },
+      "method": "manual inspection of source image at original pixel coordinates with 5px coordinate grid",
+      "reason": "Preserved, no longer active pose: forehead y113, chin y257; no neck below it.",
+      "sameTargetFaceHeightScaleChange": 1.110345,
+      "imagePixelsEdited": false,
+      "sourceRectChanged": false,
+      "alphaBoundsChanged": false,
+      "runtimeApplied": true,
+      "runtimeVisualReviewComplete": false,
+      "target": {
+        "file": "docs/three-content/staging-acting-generation.json",
+        "variantId": "yeonwoo-support",
+        "field": "portraitGeometry.faceBounds"
+      },
+      "preservationValidation": {
+        "sourceShaMatches": true,
+        "sourceRectAndSpriteUnchanged": true,
+        "alphaBoundsUnchanged": true,
+        "newSkinBoundsApplied": true,
+        "originalAlphaThreshold": 32,
+        "subjectOpaquePixels": 572042,
+        "opaqueSubjectPixelsOutsideCrop": 0,
+        "foreignLargeComponentsInCrop": 0
+      }
+    }
+  ],
+  "actingPreservationValidation": {
+    "comparedVariantCount": 7,
+    "baselineSha256": "eacf461af9a06e7d81ff314e5841472c377b487ee977805c820dec822ec53b77",
+    "sourcePixelsChanged": false,
+    "spriteRectOrAlphaGeometryChanged": false,
+    "faceBoundsOnly": true
+  }
+}

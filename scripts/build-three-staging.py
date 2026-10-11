@@ -40,6 +40,7 @@ def build():
     cues = read('docs/three-content/staging-cues.json')
     props = read('docs/three-content/staging-prop-generation.json')
     acting = read('docs/three-content/staging-acting-generation.json')
+    setting_surfaces = read('docs/three-content/staging-setting-surface-generation.json')['surfaces']
     art = read('dist/three-complete-art.json')
     source_photos = art['sourcePhotos']
     require(len(source_photos) == 3, 'Expected three original genealogy photographs')
@@ -51,6 +52,13 @@ def build():
         checked_file(record['repoSrc'], record['sha256'])
     for asset in acting['backgrounds'].values():
         checked_file(asset['src'], asset.get('sha256'))
+    background_by_src = {asset['src']:asset for asset in acting['backgrounds'].values()}
+    for surface in setting_surfaces.values():
+        checked_file(surface['src'], surface['sha256'])
+        checked_file(surface['backgroundSrc'], surface['backgroundSha256'])
+        require(surface['backgroundSrc'] in background_by_src, 'Setting ink has no linked physical background')
+        background = background_by_src[surface['backgroundSrc']]
+        require((surface['width'],surface['height']) == (background['width'],background['height']), 'Setting ink and background coordinate spaces differ')
     for asset in list(props['props'].values()) + list(acting['hands'].values()) + list(acting['variants'].values()):
         checked_file(asset['src'], asset.get('sha256'))
         validate_rect(asset)
@@ -96,12 +104,18 @@ def build():
                 if group == 'props': require(rule['propId'] in props['props'], f'Missing prop {rule["propId"]}')
                 if group == 'portraits': require(rule['variant'] in acting['variants'], f'Missing acting variant {rule["variant"]}')
                 if group == 'backgrounds': require(rule['assetId'] in acting['backgrounds'], f'Missing background {rule["assetId"]}')
+                if group == 'settingSurfaces':
+                    require(rule['surfaceId'] in setting_surfaces, f'Missing setting surface {rule["surfaceId"]}')
+                    require(setting_surfaces[rule['surfaceId']]['sceneId'] == scene_id, 'Setting ink is attached to a different authored scene')
                 if group == 'handActions': require(rule['variant'] in acting['hands'], f'Missing hand action {rule["variant"]}')
                 if group == 'bookActions': require(rule['variant'] in ['ground','lifting','held'], 'Unknown arrival book state')
                 if group == 'actorPresence':
                     person = art['characters'].get(rule['characterId'])
                     require(person and person['name'] == rule['characterName'], 'Unknown visual cast identity')
-                    require(rule['characterName'] in scene['cast'], 'Visual cast absent from the approved scene')
+                    cast_name = rule['characterName']
+                    in_cast = cast_name in scene['cast'] or (scene_id in person.get('sourceSceneIds', []) and
+                               any(label.endswith(' ' + cast_name) for label in scene['cast']))
+                    require(in_cast, 'Visual cast absent from the approved scene')
                     require(rule['position'] == person['position'], 'Visual cast position differs from approved art')
         cue_count += len(cue_ids)
         record_lines = [line['lineId'] for line in lines if cues.get('contextOverrides',{}).get(line['lineId'],line.get('presentationContext',scene.get('presentationContext','scene'))) == 'record']
@@ -120,6 +134,7 @@ def build():
     data = {'contentVersion':cues['contentVersion'],'sourceManuscriptSha256':cues['sourceManuscriptSha256'],
             'contextOverrides':cues.get('contextOverrides',{}),'props':props['props'],
             'variants':acting['variants'],'backgrounds':acting['backgrounds'],'hands':acting['hands'],
+            'settingSurfaces':setting_surfaces,
             'sourcePhotos':source_photos,'scenes':result}
     source = (ROOT/'scripts/three-staging-runtime.js').read_text(encoding='utf-8')
     require(source.count('/*__THREE_STAGING_DATA__*/') == 1, 'Missing or repeated staging data slot')
@@ -130,6 +145,7 @@ def build():
              'scenesWithExplicitCues':sum(bool(scene['runtimeCueIds']) for scene in audit_scenes),
              'propImageCount':len(props['props']),'handActionImageCount':len(acting['hands']),
              'actorVariantImageCount':len(acting['variants']),'backgroundStateImageCount':len(acting['backgrounds']),
+             'preciseSettingSurfaceCount':len(setting_surfaces),
              'originalGenealogyPhotoCount':len(source_photos),
              'sourcePixelsEdited':False,'saveMutations':False,'cursorMutations':False,'autoAdvance':False,
              'runtimeVisualReviewComplete':False,
@@ -150,7 +166,7 @@ def main():
         path = ROOT/relative
         if args.check: require(path.is_file() and path.read_text(encoding='utf-8') == content,f'Stale staging output: {relative}')
         else: path.write_text(content,encoding='utf-8')
-    print(json.dumps({key:audit[key] for key in ['sceneCount','authoredUtteranceCount','explicitCueCount','propImageCount','handActionImageCount','actorVariantImageCount','backgroundStateImageCount']},ensure_ascii=False))
+    print(json.dumps({key:audit[key] for key in ['sceneCount','authoredUtteranceCount','explicitCueCount','propImageCount','handActionImageCount','actorVariantImageCount','backgroundStateImageCount','preciseSettingSurfaceCount']},ensure_ascii=False))
 
 if __name__ == '__main__':
     main()

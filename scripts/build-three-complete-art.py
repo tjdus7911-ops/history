@@ -226,7 +226,7 @@ def completed_portraits():
                 "sheetWidth": sheet["width"], "sheetHeight": sheet["height"],
                 "faceBounds": cell["faceBounds"], "alphaBounds": cell["alphaBounds"],
                 "upperBodyBounds": cell["upperBodyBounds"],
-                "faceAnchorMethod": "manual visual region excluding headgear", "framing": cell["portraitFraming"]}
+                "faceAnchorMethod": cell["cropReview"]["faceAnchorMethod"], "framing": cell["portraitFraming"]}
             portraits[cid] = {
                 "neutral": sheet["src"], "asset": info, "atlasId": sheet["sheetId"],
                 "flipX": cell["flipX"], "nativeFacing": cell["nativeFacing"],
@@ -482,7 +482,8 @@ def build():
                           for c in characters.values() if c["portraitStatus"] == "unmade-principal"]
     authored_scene_props = [{"sceneId": scene["sceneId"], "staging": scene["staging"],
                              "status": "requires-runtime-staging-review"} for scene in all_scenes]
-    audit = {"schemaVersion": 1, "status": "mapped-art-recurring-portraits-complete-other-principals-incomplete",
+    audit = {"schemaVersion": 1,
+             "status": "principal-portraits-and-fullbody-sources-ready-runtime-composition-review-pending" if not missing_principals else "mapped-art-principal-portraits-incomplete",
              "sceneBackgroundCount": len(backgrounds), "distinctBackgroundCount": len({b["src"] for b in backgrounds.values()}),
              "characterAppearanceCount": len(characters), "characterIdentityCount": len({c["identityId"] for c in characters.values()}),
              "existingPrincipalPortraitCount": sum(c["portraitStatus"] == "existing-character-reviewed" for c in characters.values()),
@@ -506,7 +507,7 @@ def build():
                               "Unmade principal portraits have no substitute stock face. Their dialogue and identity remain available.",
                               "Supporting occupations can be staged inside background illustrations or as off-screen speech; individual portraits are not required.",
                               "Book closeup and the original-photo layers are implemented in the runtime, not baked into a new raster image."],
-             "visualReview": {"method": "repository illustration inspection plus full-resolution review of all 29 atlas portraits and eight age pairs",
+             "visualReview": {"method": "source-file identity review, full alpha-component crop validation and manual skin-face landmark audits; actual browser composition reviewed separately",
                               "backgroundFileReview": True, "knownPortraitFileReview": True,
                               "generatedPortraitFileReview": True, "generatedPortraitAppearanceCount": len(atlas_portraits),
                               "runtimeDesktopReview": False, "runtimeMobileReview": False}}

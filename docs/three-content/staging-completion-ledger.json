@@ -13,7 +13,8 @@
     "canonicalDialogueChanged": false,
     "canonicalExamDataChanged": false,
     "sourceImagePixelsEdited": false,
-    "otherEraChanges": false
+    "otherEraChanges": false,
+    "newSettingSurfaceGlyphsAndGeometryViewed": true
   },
   "checkpoint": {
     "sceneCount": 218,
@@ -49,8 +50,12 @@
         "THR-PRO-S03-L06"
       ],
       "required": "Same Yeonwoo identity at the left supports the mother whose knees weaken. Same face scale as Chapter 1. No water, completed rescue or second copy of the mother.",
-      "status": "runtime-linked-awaiting-browser-composition-review",
-      "runtimeVisualReviewComplete": false
+      "status": "physical-pair-linked-awaiting-browser-composition-review",
+      "runtimeVisualReviewComplete": false,
+      "sourceManifest": "docs/three-content/prologue-support-pair-generation.json",
+      "actualReviewFinding": "Initial isolated Yeonwoo support hands did not contact the mother in the background at 390px and PC.",
+      "repair": "L06 only: same-identity Yeonwoo and mother as one physically connected transparent sprite; same girl and waiting line in a derived background with the duplicate foreground mother removed.",
+      "sourceFileVisualReviewComplete": true
     }
   ],
   "authoredDetailReviewQueue": [
@@ -107,15 +112,20 @@
   "currentImplementation": {
     "sceneCount": 218,
     "authoredUtteranceCount": 2777,
-    "explicitCueCount": 256,
+    "explicitCueCount": 270,
     "purePresentationFrameCount": 2919,
     "propAppearanceCount": 27,
     "handActionAppearanceCount": 2,
-    "actorVariantAppearanceCount": 6,
-    "backgroundStateAppearanceCount": 4,
-    "imageFileCount": 12,
+    "actorVariantAppearanceCount": 7,
+    "backgroundStateAppearanceCount": 10,
+    "imageFileCount": 21,
     "originalGenealogyPhotoCount": 3,
-    "prologueRendererHooksConnected": true
+    "prologueRendererHooksConnected": true,
+    "activeActorVariantAppearanceCount": 6,
+    "preservedSupersededActorVariantCount": 1,
+    "preciseSettingSurfaceCount": 3,
+    "sourceValidatedSettingSurfaceCount": 3,
+    "allAuthoredStagingVerified": false
   },
   "actualReviewFindings": [
     {
@@ -124,6 +134,17 @@
       "evidence": "docs/ui-qa/after-three-haein-older-390.jpg",
       "finding": "Toolbox floated at chest height with the initial 42% baseline",
       "fix": "Common scene props now share the existing character-stage floor: 128px desktop / 116px mobile; contact shadows; unchanged z-index behind dialogue",
+      "fixRuntimeVisualReviewComplete": false
+    },
+    {
+      "sceneId": "THR-PRO-S03",
+      "lineId": "THR-PRO-S03-L06",
+      "evidence": [
+        "docs/ui-qa/after-three-prologue-support-390.jpg",
+        "docs/ui-qa/after-three-prologue-support-pc.jpg"
+      ],
+      "finding": "Initial lone support pose had no physical contact with the background mother",
+      "fix": "Replace L06 only with connected Yeonwoo/mother pair and duplicate-mother-free background; retain original face identity, source art and normal next-scene pose",
       "fixRuntimeVisualReviewComplete": false
     }
   ]

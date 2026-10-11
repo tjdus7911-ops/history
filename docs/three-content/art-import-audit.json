@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "status": "mapped-art-recurring-portraits-complete-other-principals-incomplete",
+  "status": "principal-portraits-and-fullbody-sources-ready-runtime-composition-review-pending",
   "sceneBackgroundCount": 218,
   "distinctBackgroundCount": 22,
   "characterAppearanceCount": 244,
@@ -1281,7 +1281,7 @@
     "Book closeup and the original-photo layers are implemented in the runtime, not baked into a new raster image."
   ],
   "visualReview": {
-    "method": "repository illustration inspection plus full-resolution review of all 29 atlas portraits and eight age pairs",
+    "method": "source-file identity review, full alpha-component crop validation and manual skin-face landmark audits; actual browser composition reviewed separately",
     "backgroundFileReview": true,
     "knownPortraitFileReview": true,
     "generatedPortraitFileReview": true,

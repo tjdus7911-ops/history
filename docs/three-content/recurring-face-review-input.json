@@ -1,0 +1,331 @@
+{
+  "sheets": [
+    {
+      "sheetId": "recurring-fullbody-01",
+      "src": "/workspace/scratch/fea3030a5c98/history-playable/dist/assets/ancient/three-complete/characters/recurring-fullbody-atlas-01.png",
+      "faces": [
+        {
+          "id": "civilian-c01-de48dcbf5b--initial",
+          "name": "모진",
+          "age": "initial",
+          "face": {
+            "x": 187,
+            "y": 43,
+            "width": 67,
+            "height": 73
+          }
+        },
+        {
+          "id": "civilian-c02-dc712ed4d6--initial",
+          "name": "도림",
+          "age": "initial",
+          "face": {
+            "x": 466,
+            "y": 44,
+            "width": 76,
+            "height": 74
+          }
+        },
+        {
+          "id": "civilian-c02-f88710b136--initial",
+          "name": "소운",
+          "age": "initial",
+          "face": {
+            "x": 789,
+            "y": 41,
+            "width": 74,
+            "height": 75
+          }
+        },
+        {
+          "id": "civilian-c04-030d6d22c0--initial",
+          "name": "다은",
+          "age": "initial",
+          "face": {
+            "x": 171,
+            "y": 606,
+            "width": 74,
+            "height": 78
+          }
+        },
+        {
+          "id": "civilian-c05-f0f456bbbe--initial",
+          "name": "윤서",
+          "age": "initial",
+          "face": {
+            "x": 478,
+            "y": 607,
+            "width": 73,
+            "height": 79
+          }
+        },
+        {
+          "id": "civilian-c05-0b1fbc16b0--initial",
+          "name": "태문",
+          "age": "initial",
+          "face": {
+            "x": 782,
+            "y": 607,
+            "width": 73,
+            "height": 80
+          }
+        },
+        {
+          "id": "civilian-c07-cf158c9e21--initial",
+          "name": "해인",
+          "age": "initial",
+          "face": {
+            "x": 183,
+            "y": 1119,
+            "width": 72,
+            "height": 79
+          }
+        }
+      ]
+    },
+    {
+      "sheetId": "recurring-fullbody-02-selected",
+      "src": "/workspace/scratch/fea3030a5c98/history-playable/dist/assets/ancient/three-complete/characters/recurring-fullbody-atlas-02.png",
+      "faces": [
+        {
+          "id": "civilian-c08-dadbb6670e--initial",
+          "name": "여울",
+          "age": "initial",
+          "face": {
+            "x": 466,
+            "y": 49,
+            "width": 79,
+            "height": 83
+          }
+        },
+        {
+          "id": "civilian-c08-dadbb6670e--later",
+          "name": "여울",
+          "age": "later",
+          "face": {
+            "x": 786,
+            "y": 47,
+            "width": 80,
+            "height": 88
+          }
+        },
+        {
+          "id": "civilian-c14-a432ade2f8--initial",
+          "name": "아라",
+          "age": "initial",
+          "face": {
+            "x": 156,
+            "y": 628,
+            "width": 83,
+            "height": 88
+          }
+        },
+        {
+          "id": "civilian-c14-0dd939f957--initial",
+          "name": "해들",
+          "age": "initial",
+          "face": {
+            "x": 474,
+            "y": 638,
+            "width": 86,
+            "height": 90
+          }
+        },
+        {
+          "id": "civilian-c17-96b6ef53a4--initial",
+          "name": "보라",
+          "age": "initial",
+          "face": {
+            "x": 784,
+            "y": 641,
+            "width": 85,
+            "height": 86
+          }
+        }
+      ]
+    },
+    {
+      "sheetId": "recurring-fullbody-05",
+      "src": "/workspace/scratch/fea3030a5c98/history-playable/dist/assets/ancient/three-complete/characters/recurring-fullbody-atlas-05.png",
+      "faces": [
+        {
+          "id": "civilian-c17-439b052a1f--initial",
+          "name": "해명",
+          "age": "initial",
+          "face": {
+            "x": 269,
+            "y": 67,
+            "width": 89,
+            "height": 91
+          }
+        },
+        {
+          "id": "civilian-c20-4d6a648490--later",
+          "name": "해루",
+          "age": "later",
+          "face": {
+            "x": 695,
+            "y": 58,
+            "width": 92,
+            "height": 100
+          }
+        },
+        {
+          "id": "civilian-c23-3943a3c0de--initial",
+          "name": "시온",
+          "age": "initial",
+          "face": {
+            "x": 294,
+            "y": 850,
+            "width": 91,
+            "height": 99
+          }
+        },
+        {
+          "id": "civilian-c23-3943a3c0de--later",
+          "name": "시온",
+          "age": "later",
+          "face": {
+            "x": 696,
+            "y": 847,
+            "width": 96,
+            "height": 104
+          }
+        }
+      ]
+    },
+    {
+      "sheetId": "recurring-fullbody-03-spaced",
+      "src": "/workspace/scratch/fea3030a5c98/history-playable/dist/assets/ancient/three-complete/characters/recurring-fullbody-atlas-03-spaced.png",
+      "faces": [
+        {
+          "id": "civilian-c18-3b7989e4fe--initial",
+          "name": "나래",
+          "age": "initial",
+          "face": {
+            "x": 220,
+            "y": 64,
+            "width": 70,
+            "height": 76
+          }
+        },
+        {
+          "id": "civilian-c18-3b7989e4fe--later",
+          "name": "나래",
+          "age": "later",
+          "face": {
+            "x": 612,
+            "y": 64,
+            "width": 70,
+            "height": 76
+          }
+        },
+        {
+          "id": "civilian-c19-b25411c7fa--initial",
+          "name": "재인",
+          "age": "initial",
+          "face": {
+            "x": 993,
+            "y": 58,
+            "width": 73,
+            "height": 86
+          }
+        },
+        {
+          "id": "civilian-c19-b25411c7fa--later",
+          "name": "재인",
+          "age": "later",
+          "face": {
+            "x": 214,
+            "y": 687,
+            "width": 74,
+            "height": 78
+          }
+        },
+        {
+          "id": "civilian-c19-c8f92f89ce--initial",
+          "name": "지우",
+          "age": "initial",
+          "face": {
+            "x": 602,
+            "y": 691,
+            "width": 72,
+            "height": 77
+          }
+        },
+        {
+          "id": "civilian-c20-4d6a648490--initial",
+          "name": "해루",
+          "age": "initial",
+          "face": {
+            "x": 1007,
+            "y": 687,
+            "width": 72,
+            "height": 80
+          }
+        }
+      ]
+    },
+    {
+      "sheetId": "recurring-fullbody-04-spaced",
+      "src": "/workspace/scratch/fea3030a5c98/history-playable/dist/assets/ancient/three-complete/characters/recurring-fullbody-atlas-04-spaced.png",
+      "faces": [
+        {
+          "id": "civilian-c20-5dd3802c4d--initial",
+          "name": "누리",
+          "age": "initial",
+          "face": {
+            "x": 201,
+            "y": 56,
+            "width": 76,
+            "height": 83
+          }
+        },
+        {
+          "id": "civilian-c22-c9e48fc48e--initial",
+          "name": "은서",
+          "age": "initial",
+          "face": {
+            "x": 606,
+            "y": 50,
+            "width": 76,
+            "height": 90
+          }
+        },
+        {
+          "id": "civilian-c22-c9e48fc48e--later",
+          "name": "은서",
+          "age": "later",
+          "face": {
+            "x": 1013,
+            "y": 50,
+            "width": 76,
+            "height": 90
+          }
+        },
+        {
+          "id": "civilian-c22-c56eca783f--initial",
+          "name": "은서의 딸",
+          "age": "initial",
+          "face": {
+            "x": 199,
+            "y": 734,
+            "width": 73,
+            "height": 79
+          }
+        },
+        {
+          "id": "civilian-c22-c56eca783f--later",
+          "name": "은서의 딸",
+          "age": "later",
+          "face": {
+            "x": 602,
+            "y": 708,
+            "width": 74,
+            "height": 82
+          }
+        }
+      ]
+    }
+  ]
+}

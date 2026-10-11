@@ -2,6 +2,9 @@
    Every state is a pure consequence of the current line and selected branch.
    There are deliberately no keyframes, timers or enter/re-enter animations. */
 .three-complete-game .three-staging-layer {position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden;border-radius:inherit;--prop-size:62px;}
+/* Ink shares the unchanged background's full cover projection. It is beneath
+   the scene scrim, people and existing dialogue, never a floating label UI. */
+.three-complete-game .three-setting-surface {position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;object-position:center 35%;pointer-events:none;border-radius:inherit;}
 .three-complete-game .three-staging-props {position:absolute;left:50%;bottom:128px;translate:-50% 0;display:flex;align-items:flex-end;justify-content:center;gap:12px;width:max-content;max-width:76%;}
 .three-complete-game .three-staged-prop {display:block;position:relative;isolation:isolate;margin:0;max-width:84px;}
 .three-complete-game .three-staged-prop::after {content:"";position:absolute;z-index:-1;left:10%;right:10%;height:6px;bottom:-2px;border-radius:50%;background:radial-gradient(ellipse,#211b12a0,transparent 72%);pointer-events:none;}
@@ -21,6 +24,7 @@
 .three-complete-game:has(.three-staging-layer[data-npc-motion="tense"]) .character-stage .stage-left .three-portrait-image {translate:1px 1px;rotate:.4deg;}
 .three-complete-game:has(.three-staging-layer[data-npc-motion="unsteady"]) .character-stage .stage-left .three-portrait-image {translate:0 2px;rotate:.5deg;}
 @media(max-width:760px) {
+ .three-complete-game .three-setting-surface {object-position:center 32%;}
  .three-complete-game .three-staging-layer {--prop-size:54px;}
  .three-complete-game .three-staging-props {bottom:116px;gap:10px;max-width:80%;}
  .three-complete-game .three-staged-prop {max-width:75px;}

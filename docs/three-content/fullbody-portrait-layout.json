@@ -13,10 +13,10 @@
           "chapter": 3,
           "ageVariant": "initial",
           "faceBounds": [
-            195,
-            42,
+            194,
+            30,
             62,
-            66
+            63
           ]
         },
         {
@@ -24,10 +24,10 @@
           "chapter": 3,
           "ageVariant": "initial",
           "faceBounds": [
-            501,
+            498,
             54,
             66,
-            68
+            47
           ]
         },
         {
@@ -36,9 +36,9 @@
           "ageVariant": "initial",
           "faceBounds": [
             791,
-            52,
-            65,
-            68
+            54,
+            63,
+            50
           ]
         },
         {
@@ -46,10 +46,10 @@
           "chapter": 5,
           "ageVariant": "initial",
           "faceBounds": [
-            176,
-            573,
-            73,
-            72
+            182,
+            558,
+            68,
+            57
           ]
         },
         {
@@ -57,10 +57,10 @@
           "chapter": 6,
           "ageVariant": "initial",
           "faceBounds": [
-            493,
-            554,
-            74,
-            75
+            498,
+            535,
+            69,
+            65
           ]
         },
         {
@@ -68,10 +68,10 @@
           "chapter": 7,
           "ageVariant": "initial",
           "faceBounds": [
-            808,
-            564,
-            72,
-            70
+            810,
+            562,
+            70,
+            54
           ]
         },
         {
@@ -79,10 +79,10 @@
           "chapter": 8,
           "ageVariant": "initial",
           "faceBounds": [
-            177,
-            1070,
-            73,
-            75
+            181,
+            1068,
+            68,
+            55
           ]
         },
         {
@@ -90,10 +90,10 @@
           "chapter": 8,
           "ageVariant": "initial",
           "faceBounds": [
-            487,
-            1081,
-            73,
-            74
+            491,
+            1060,
+            65,
+            63
           ]
         },
         {
@@ -101,10 +101,10 @@
           "chapter": 11,
           "ageVariant": "initial",
           "faceBounds": [
-            817,
-            1080,
+            821,
+            1070,
             71,
-            74
+            59
           ]
         }
       ],
@@ -123,9 +123,9 @@
           "ageVariant": "initial",
           "faceBounds": [
             171,
-            33,
-            75,
-            78
+            23,
+            74,
+            70
           ]
         },
         {
@@ -133,10 +133,10 @@
           "chapter": 13,
           "ageVariant": "initial",
           "faceBounds": [
-            493,
-            49,
-            78,
-            76
+            497,
+            44,
+            73,
+            56
           ]
         },
         {
@@ -144,10 +144,10 @@
           "chapter": 13,
           "ageVariant": "older",
           "faceBounds": [
-            806,
-            39,
-            87,
-            86
+            816,
+            37,
+            71,
+            69
           ]
         },
         {
@@ -155,10 +155,10 @@
           "chapter": 15,
           "ageVariant": "initial",
           "faceBounds": [
-            168,
-            556,
-            74,
-            80
+            170,
+            539,
+            70,
+            68
           ]
         },
         {
@@ -166,10 +166,10 @@
           "chapter": 16,
           "ageVariant": "initial",
           "faceBounds": [
-            500,
-            557,
-            77,
-            79
+            502,
+            548,
+            73,
+            64
           ]
         },
         {
@@ -177,10 +177,10 @@
           "chapter": 17,
           "ageVariant": "initial",
           "faceBounds": [
-            822,
-            560,
-            77,
-            82
+            827,
+            535,
+            75,
+            69
           ]
         },
         {
@@ -188,10 +188,10 @@
           "chapter": 17,
           "ageVariant": "initial",
           "faceBounds": [
-            159,
-            1065,
-            71,
-            78
+            162,
+            1049,
+            66,
+            62
           ]
         },
         {
@@ -199,10 +199,10 @@
           "chapter": 18,
           "ageVariant": "initial",
           "faceBounds": [
-            509,
-            1065,
-            74,
-            79
+            510,
+            1066,
+            69,
+            54
           ]
         },
         {
@@ -210,10 +210,10 @@
           "chapter": 19,
           "ageVariant": "initial",
           "faceBounds": [
-            837,
+            843,
             1078,
-            77,
-            75
+            68,
+            50
           ]
         }
       ],
@@ -231,10 +231,10 @@
           "name": "연우",
           "chapter": 1,
           "faceBounds": [
-            405,
+            410,
             77,
-            166,
-            151
+            147,
+            142
           ],
           "sourceRect": {
             "x": 238,
@@ -257,20 +257,20 @@
           "name": "대조영",
           "chapter": 20,
           "faceBounds": [
-            191,
-            43,
-            73,
-            82
+            189,
+            36,
+            72,
+            67
           ]
         },
         {
           "name": "왕건",
           "chapter": 23,
           "faceBounds": [
-            489,
-            48,
-            82,
-            91
+            491,
+            47,
+            74,
+            63
           ]
         },
         {
@@ -278,29 +278,29 @@
           "chapter": 1,
           "faceBounds": [
             810,
-            51,
-            73,
-            79
+            55,
+            69,
+            64
           ]
         },
         {
           "name": "하준",
           "chapter": 2,
           "faceBounds": [
-            173,
-            568,
-            78,
-            83
+            179,
+            567,
+            69,
+            65
           ]
         },
         {
           "name": "기록관 소정",
           "chapter": 2,
           "faceBounds": [
-            488,
-            573,
-            76,
-            79
+            484,
+            568,
+            72,
+            66
           ]
         },
         {
@@ -308,19 +308,19 @@
           "chapter": 2,
           "faceBounds": [
             831,
-            577,
-            74,
-            81
+            586,
+            72,
+            52
           ]
         },
         {
           "name": "기록관 연진",
           "chapter": 2,
           "faceBounds": [
-            180,
-            1064,
-            72,
-            82
+            175,
+            1065,
+            73,
+            69
           ]
         },
         {
@@ -328,19 +328,19 @@
           "chapter": 3,
           "faceBounds": [
             498,
-            1085,
-            76,
-            78
+            1087,
+            74,
+            62
           ]
         },
         {
           "name": "기록관 가현",
           "chapter": 3,
           "faceBounds": [
-            835,
-            1080,
-            76,
-            77
+            832,
+            1076,
+            70,
+            64
           ]
         }
       ],
@@ -357,10 +357,10 @@
           "name": "설모",
           "chapter": 4,
           "faceBounds": [
-            174,
-            55,
-            91,
-            94
+            168,
+            54,
+            93,
+            86
           ]
         },
         {
@@ -368,79 +368,79 @@
           "chapter": 4,
           "faceBounds": [
             495,
-            55,
+            60,
             86,
-            95
+            75
           ]
         },
         {
           "name": "우진",
           "chapter": 4,
           "faceBounds": [
-            812,
-            53,
-            91,
-            103
+            821,
+            63,
+            81,
+            68
           ]
         },
         {
           "name": "소리",
           "chapter": 4,
           "faceBounds": [
-            163,
-            580,
-            85,
-            93
+            154,
+            572,
+            90,
+            90
           ]
         },
         {
           "name": "온달수",
           "chapter": 5,
           "faceBounds": [
-            484,
-            589,
+            489,
+            591,
             91,
-            88
+            75
           ]
         },
         {
           "name": "민서",
           "chapter": 5,
           "faceBounds": [
-            816,
-            582,
-            86,
-            93
+            819,
+            585,
+            83,
+            81
           ]
         },
         {
           "name": "길원",
           "chapter": 5,
           "faceBounds": [
-            162,
-            1084,
-            97,
-            97
+            158,
+            1088,
+            94,
+            75
           ]
         },
         {
           "name": "진하",
           "chapter": 5,
           "faceBounds": [
-            496,
-            1100,
-            84,
-            93
+            495,
+            1091,
+            88,
+            74
           ]
         },
         {
           "name": "지오",
           "chapter": 5,
           "faceBounds": [
-            815,
-            1090,
-            93,
-            92
+            827,
+            1094,
+            83,
+            73
           ]
         }
       ],
@@ -457,10 +457,10 @@
           "name": "초연",
           "chapter": 5,
           "faceBounds": [
-            166,
-            42,
-            73,
-            79
+            171,
+            45,
+            72,
+            68
           ],
           "nativeFacing": "left"
         },
@@ -468,40 +468,40 @@
           "name": "솔아",
           "chapter": 6,
           "faceBounds": [
-            481,
-            43,
-            80,
-            80
+            483,
+            41,
+            78,
+            70
           ]
         },
         {
           "name": "유솔",
           "chapter": 6,
           "faceBounds": [
-            787,
-            51,
-            83,
-            82
+            793,
+            54,
+            71,
+            57
           ]
         },
         {
           "name": "다솔",
           "chapter": 7,
           "faceBounds": [
-            161,
-            556,
-            78,
-            78
+            168,
+            550,
+            71,
+            67
           ]
         },
         {
           "name": "한결",
           "chapter": 8,
           "faceBounds": [
-            486,
-            556,
-            83,
-            85
+            493,
+            566,
+            70,
+            54
           ],
           "genderEvidence": "male"
         },
@@ -509,10 +509,10 @@
           "name": "도연",
           "chapter": 9,
           "faceBounds": [
-            801,
+            805,
             561,
-            83,
-            83
+            74,
+            62
           ],
           "genderEvidence": "male"
         },
@@ -520,20 +520,20 @@
           "name": "다은",
           "chapter": 9,
           "faceBounds": [
-            163,
-            1049,
-            84,
-            92
+            164,
+            1047,
+            79,
+            71
           ]
         },
         {
           "name": "설",
           "chapter": 9,
           "faceBounds": [
-            484,
-            1044,
-            83,
-            92
+            482,
+            1041,
+            77,
+            76
           ],
           "genderEvidence": "female"
         },
@@ -541,10 +541,10 @@
           "name": "미솔",
           "chapter": 10,
           "faceBounds": [
-            810,
-            1056,
-            83,
-            83
+            811,
+            1054,
+            74,
+            66
           ]
         }
       ],
@@ -561,10 +561,10 @@
           "name": "온유",
           "chapter": 16,
           "faceBounds": [
-            163,
-            43,
+            157,
+            47,
             88,
-            99
+            85
           ],
           "genderEvidence": "female"
         },
@@ -572,10 +572,10 @@
           "name": "도겸",
           "chapter": 16,
           "faceBounds": [
-            466,
-            38,
-            94,
-            107
+            468,
+            39,
+            88,
+            88
           ],
           "genderEvidence": "male"
         },
@@ -583,10 +583,10 @@
           "name": "소담",
           "chapter": 16,
           "faceBounds": [
-            813,
-            43,
-            103,
-            107
+            822,
+            49,
+            86,
+            83
           ],
           "genderEvidence": "female"
         },
@@ -594,20 +594,20 @@
           "name": "가온",
           "chapter": 17,
           "faceBounds": [
-            167,
-            604,
-            91,
-            110
+            164,
+            616,
+            92,
+            84
           ]
         },
         {
           "name": "다온",
           "chapter": 21,
           "faceBounds": [
-            493,
-            606,
-            96,
-            107
+            496,
+            610,
+            92,
+            80
           ],
           "ageVariant": "middle-aged",
           "genderEvidence": "male"
@@ -616,10 +616,10 @@
           "name": "다솜",
           "chapter": 21,
           "faceBounds": [
-            828,
-            596,
-            98,
-            118
+            831,
+            599,
+            92,
+            96
           ],
           "ageVariant": "elderly",
           "genderEvidence": "female"
@@ -629,9 +629,9 @@
           "chapter": 23,
           "faceBounds": [
             165,
-            1147,
-            92,
-            95
+            1156,
+            89,
+            73
           ]
         }
       ],
@@ -649,10 +649,10 @@
           "name": "모진",
           "chapter": 1,
           "faceBounds": [
-            187,
-            43,
-            67,
-            73
+            183,
+            48,
+            70,
+            55
           ]
         },
         {
@@ -660,49 +660,49 @@
           "chapter": 2,
           "faceBounds": [
             466,
-            44,
-            76,
-            74
+            41,
+            66,
+            60
           ]
         },
         {
           "name": "소운",
           "chapter": 2,
           "faceBounds": [
-            789,
-            41,
-            74,
-            75
+            784,
+            39,
+            68,
+            63
           ]
         },
         {
           "name": "다은",
           "chapter": 4,
           "faceBounds": [
-            171,
-            606,
-            74,
-            78
+            169,
+            595,
+            71,
+            63
           ]
         },
         {
           "name": "윤서",
           "chapter": 5,
           "faceBounds": [
-            478,
-            607,
-            73,
-            79
+            470,
+            606,
+            71,
+            54
           ]
         },
         {
           "name": "태문",
           "chapter": 5,
           "faceBounds": [
-            782,
-            607,
-            73,
-            80
+            777,
+            599,
+            69,
+            65
           ]
         },
         {
@@ -710,9 +710,9 @@
           "chapter": 7,
           "faceBounds": [
             183,
-            1119,
-            72,
-            79
+            1118,
+            68,
+            64
           ]
         }
       ],
@@ -732,10 +732,10 @@
           "chapter": 8,
           "ageVariant": "initial",
           "faceBounds": [
-            466,
-            49,
-            79,
-            83
+            468,
+            48,
+            77,
+            72
           ],
           "componentIndex": 1
         },
@@ -744,10 +744,10 @@
           "chapter": 8,
           "ageVariant": "later",
           "faceBounds": [
-            786,
-            47,
-            80,
-            88
+            789,
+            46,
+            74,
+            74
           ],
           "componentIndex": 2
         },
@@ -756,10 +756,10 @@
           "chapter": 14,
           "ageVariant": "initial",
           "faceBounds": [
-            156,
+            152,
             628,
-            83,
-            88
+            78,
+            74
           ],
           "componentIndex": 3
         },
@@ -768,10 +768,10 @@
           "chapter": 14,
           "ageVariant": "initial",
           "faceBounds": [
-            474,
-            638,
-            86,
-            90
+            472,
+            646,
+            82,
+            62
           ],
           "componentIndex": 4
         },
@@ -780,10 +780,10 @@
           "chapter": 17,
           "ageVariant": "initial",
           "faceBounds": [
-            784,
-            641,
-            85,
-            86
+            787,
+            639,
+            75,
+            73
           ],
           "componentIndex": 5
         }
@@ -802,10 +802,10 @@
           "chapter": 17,
           "ageVariant": "initial",
           "faceBounds": [
-            269,
-            67,
-            89,
-            91
+            270,
+            63,
+            86,
+            81
           ],
           "nativeFacing": "left"
         },
@@ -814,10 +814,10 @@
           "chapter": 20,
           "ageVariant": "later",
           "faceBounds": [
-            695,
-            58,
-            92,
-            100
+            694,
+            60,
+            85,
+            83
           ],
           "nativeFacing": "right"
         },
@@ -826,10 +826,10 @@
           "chapter": 23,
           "ageVariant": "initial",
           "faceBounds": [
-            294,
-            850,
-            91,
-            99
+            287,
+            845,
+            93,
+            92
           ],
           "nativeFacing": "right"
         },
@@ -838,10 +838,10 @@
           "chapter": 23,
           "ageVariant": "later",
           "faceBounds": [
-            696,
+            691,
             847,
-            96,
-            104
+            92,
+            90
           ],
           "nativeFacing": "right"
         }
@@ -862,9 +862,9 @@
           "ageVariant": "later",
           "faceBounds": [
             354,
-            73,
-            150,
-            138
+            70,
+            147,
+            134
           ]
         }
       ],
@@ -882,10 +882,10 @@
           "name": "다함",
           "chapter": 10,
           "faceBounds": [
-            182,
-            65,
-            98,
-            96
+            187,
+            66,
+            94,
+            78
           ],
           "componentIndex": 0,
           "row": 0,
@@ -895,10 +895,10 @@
           "name": "보리",
           "chapter": 11,
           "faceBounds": [
-            796,
+            795,
             74,
-            92,
-            96
+            90,
+            82
           ],
           "componentIndex": 2,
           "row": 0,
@@ -908,10 +908,10 @@
           "name": "아라",
           "chapter": 11,
           "faceBounds": [
-            176,
-            552,
-            85,
-            96
+            172,
+            556,
+            89,
+            87
           ],
           "componentIndex": 3,
           "row": 1,
@@ -922,10 +922,10 @@
           "name": "나루",
           "chapter": 14,
           "faceBounds": [
-            806,
-            567,
-            88,
-            96
+            803,
+            572,
+            91,
+            78
           ],
           "componentIndex": 4,
           "row": 1,
@@ -936,10 +936,10 @@
           "name": "아라",
           "chapter": 15,
           "faceBounds": [
-            172,
+            173,
             1065,
-            87,
-            96
+            94,
+            86
           ],
           "componentIndex": 5,
           "row": 2,
@@ -950,10 +950,10 @@
           "name": "여울",
           "chapter": 15,
           "faceBounds": [
-            498,
-            1063,
-            91,
-            98
+            493,
+            1059,
+            95,
+            91
           ],
           "componentIndex": 6,
           "row": 2,
@@ -964,10 +964,10 @@
           "name": "수인",
           "chapter": 16,
           "faceBounds": [
-            813,
-            1068,
-            87,
-            99
+            811,
+            1076,
+            90,
+            86
           ],
           "componentIndex": 7,
           "row": 2,
@@ -987,20 +987,20 @@
           "name": "가람",
           "chapter": 10,
           "faceBounds": [
-            291,
-            134,
-            148,
-            168
+            260,
+            130,
+            176,
+            167
           ]
         },
         {
           "name": "하람",
           "chapter": 12,
           "faceBounds": [
-            891,
-            153,
-            150,
-            166
+            842,
+            162,
+            182,
+            140
           ]
         }
       ],
@@ -1017,20 +1017,20 @@
           "name": "나래",
           "chapter": 18,
           "faceBounds": [
-            220,
-            64,
-            70,
-            76
+            210,
+            63,
+            86,
+            82
           ]
         },
         {
           "name": "나래",
           "chapter": 18,
           "faceBounds": [
-            612,
+            597,
             64,
-            70,
-            76
+            88,
+            81
           ],
           "ageVariant": "later"
         },
@@ -1038,20 +1038,20 @@
           "name": "재인",
           "chapter": 19,
           "faceBounds": [
-            993,
-            58,
-            73,
-            86
+            979,
+            66,
+            85,
+            78
           ]
         },
         {
           "name": "재인",
           "chapter": 19,
           "faceBounds": [
-            214,
-            687,
-            74,
-            78
+            207,
+            678,
+            88,
+            80
           ],
           "ageVariant": "later"
         },
@@ -1059,20 +1059,20 @@
           "name": "지우",
           "chapter": 19,
           "faceBounds": [
-            602,
-            691,
-            72,
-            77
+            590,
+            682,
+            92,
+            75
           ]
         },
         {
           "name": "해루",
           "chapter": 20,
           "faceBounds": [
-            1007,
-            687,
-            72,
-            80
+            994,
+            679,
+            86,
+            77
           ]
         }
       ],
@@ -1089,30 +1089,30 @@
           "name": "누리",
           "chapter": 20,
           "faceBounds": [
-            201,
-            56,
-            76,
-            83
+            184,
+            49,
+            91,
+            84
           ]
         },
         {
           "name": "은서",
           "chapter": 22,
           "faceBounds": [
-            606,
-            50,
-            76,
-            90
+            590,
+            47,
+            90,
+            86
           ]
         },
         {
           "name": "은서",
           "chapter": 22,
           "faceBounds": [
-            1013,
-            50,
-            76,
-            90
+            994,
+            48,
+            91,
+            86
           ],
           "ageVariant": "later"
         },
@@ -1120,20 +1120,20 @@
           "name": "은서의 딸",
           "chapter": 22,
           "faceBounds": [
-            199,
-            734,
-            73,
-            79
+            184,
+            711,
+            90,
+            83
           ]
         },
         {
           "name": "은서의 딸",
           "chapter": 22,
           "faceBounds": [
-            602,
-            708,
-            74,
-            82
+            585,
+            685,
+            91,
+            89
           ],
           "ageVariant": "later"
         }
@@ -1141,5 +1141,5 @@
       "portraitFraming": "full-body"
     }
   ],
-  "status": "all-90-body-extensions-connected-source-crops-reviewed-runtime-composite-pending"
+  "status": "all-90-fullbody-crops-and-manual-skin-face-anchors-linked-runtime-composition-review-pending"
 }

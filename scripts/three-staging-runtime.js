@@ -128,7 +128,7 @@
   }
 
   function resolve(source, state = {}) {
-    const data = definition(source), empty = {sceneId:sourceId(source),context:'scene',props:[],caption:null,motions:{},hand:null,book:null};
+    const data = definition(source), empty = {sceneId:sourceId(source),context:'scene',props:[],settingSurfaces:[],caption:null,motions:{},hand:null,book:null};
     if (!data || !VALID_PHASES.has(phase(state))) return empty;
     const seen = new Set(), props = [];
     for (const rule of matching(source,state,'props')) {
@@ -142,7 +142,14 @@
     for (const rule of matching(source,state,'motions')) motions[rule.target] = rule.value;
     const handRule = matching(source,state,'handActions').at(-1);
     const bookRule = matching(source,state,'bookActions').at(-1);
-    return {sceneId:data.sceneId,context:displayContext,props,caption,motions,
+    const background = backgroundOverride(source,state);
+    // These are ink/diagrams aligned to a particular physical background.
+    // Never show a label on the previous/next scene or on a record backdrop.
+    const settingSurfaces = matching(source,state,'settingSurfaces').map(rule => {
+      const art = DATA.settingSurfaces[rule.surfaceId];
+      return art && art.backgroundSrc === background?.src ? {...art,cueId:rule.cueId} : null;
+    }).filter(Boolean);
+    return {sceneId:data.sceneId,context:displayContext,props,settingSurfaces,caption,motions,
       hand:handRule ? DATA.hands[handRule.variant] || null : null,
       book:bookRule ? {state:bookRule.variant,sourcePhotos:DATA.sourcePhotos} : null};
   }
@@ -156,17 +163,18 @@
 
   function layers(source, state = {}) {
     const view = resolve(source,state);
-    if (!view.props.length && !view.caption && !view.hand && !view.book && !Object.keys(view.motions).length) return '';
+    if (!view.props.length && !view.settingSurfaces.length && !view.caption && !view.hand && !view.book && !Object.keys(view.motions).length) return '';
+    const settingInk = view.settingSurfaces.map(art => '<img class="three-setting-surface" data-setting-surface="'+esc(art.id)+'" data-setting-background="'+esc(art.backgroundSrc)+'" data-staging-cue="'+esc(art.cueId)+'" src="'+esc(art.src)+'" alt="" aria-hidden="true">').join('');
     const props = view.props.map(prop => '<span class="three-staged-prop" data-three-prop="'+esc(prop.id)+'" data-prop-label="'+esc(prop.label)+'" data-staging-cue="'+esc(prop.cueId)+'" role="img" aria-label="'+esc(prop.label)+'"><span class="three-prop-sprite" style="'+esc(spriteStyle(prop))+'"></span></span>').join('');
     const hand = view.hand ? '<div class="three-staging-hand" data-hand-state="'+esc(view.hand.id)+'"><span class="three-prop-sprite" style="'+esc(spriteStyle(view.hand,2.6))+'"></span></div>' : '';
     const groundBook = view.book?.state === 'ground' ? '<div class="three-arrival-book-stage"><div class="three-arrival-book" data-book-location="ground"><div class="three-book-leaf left-leaf"></div><div class="three-book-leaf right-leaf"></div>'+view.book.sourcePhotos.map((photo,index)=>'<img class="three-genealogy-leaf leaf-'+index+'" data-source-photo="'+photo.photoNumber+'" src="'+esc(photo.src)+'" alt="">').join('')+'</div></div>' : '';
     // Captions are returned by resolve() for the existing context-label slot.
     // The layer adds physical artwork only, never an inventory/card interface.
-    return '<aside class="three-staging-layer" data-staging-scene="'+esc(view.sceneId)+'" data-staging-line="'+esc(entryId(state))+'" data-staging-context="'+esc(view.context)+'" data-player-motion="'+esc(view.motions.player || '')+'" data-npc-motion="'+esc(view.motions.npc || '')+'" data-book-state="'+esc(view.book?.state || '')+'" aria-hidden="true">'+(props?'<div class="three-staging-props">'+props+'</div>':'')+hand+groundBook+'</aside>';
+    return settingInk+'<aside class="three-staging-layer" data-staging-scene="'+esc(view.sceneId)+'" data-staging-line="'+esc(entryId(state))+'" data-staging-context="'+esc(view.context)+'" data-player-motion="'+esc(view.motions.player || '')+'" data-npc-motion="'+esc(view.motions.npc || '')+'" data-book-state="'+esc(view.book?.state || '')+'" aria-hidden="true">'+(props?'<div class="three-staging-props">'+props+'</div>':'')+hand+groundBook+'</aside>';
   }
 
   root.THREE_STAGING = Object.freeze({version:DATA.contentVersion,context,layers,resolve,actorVisibility,actorPresence,backgroundOverride,portraitOverride,portraitLayers,
-    audit:Object.freeze({sceneCount:Object.keys(DATA.scenes).length,propCount:Object.keys(DATA.props).length,variantCount:Object.keys(DATA.variants).length,sourceManuscriptSha256:DATA.sourceManuscriptSha256}),
+    audit:Object.freeze({sceneCount:Object.keys(DATA.scenes).length,propCount:Object.keys(DATA.props).length,variantCount:Object.keys(DATA.variants).length,settingSurfaceCount:Object.keys(DATA.settingSurfaces).length,sourceManuscriptSha256:DATA.sourceManuscriptSha256}),
     // Test/debug access is immutable by convention and never reads or writes
     // application saves, timers, cursors or DOM.
     sourceCueIds:source => (definition(source)?.cueIds || []).slice()});

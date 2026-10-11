@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "status": "historical-pair-only-checkpoint-superseded-by-pr9-art-staging-checkpoint",
+  "sourceBaseline": "c032fc2badb339bf73fbc933e518d656bbf3e5df",
+  "sceneId": "THR-PRO-S03",
+  "lineId": "THR-PRO-S03-L06",
+  "apiChanged": false,
+  "canonicalSourceChanged": false,
+  "originalImagePixelsChanged": false,
+  "verification": {
+    "purePresentationTest": "PASS 218 scenes, 2919 immutable frames",
+    "stagingGeneratorCheck": "PASS 257 cues; 27 props; 2 hands; 7 stored pose variants; 5 background states",
+    "sourceFilesViewed": true,
+    "pairFullAlphaComponentIncluded": true,
+    "runtimeVisualReviewComplete": false
+  },
+  "files": {
+    "dist/assets/ancient/three-complete/characters/yeonwoo-mother-support-pair-v1.png": {
+      "sha256": "022edd8a2242455c6616d33ca27b50d2fe2e62fb73326a034a14fe83a918ccfa",
+      "bytes": 2376646
+    },
+    "dist/assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-mother-in-pair-v1.png": {
+      "sha256": "2461423f56a394cd0e658c847f8ebb216839d1b2bb601e4237ea080d6e1df9c0",
+      "bytes": 2917357
+    },
+    "docs/three-content/prologue-support-pair-generation.json": {
+      "sha256": "4f3106ab07ef62b4f005fef47e441738f24241059395e79f37fe2b64372bfd5d",
+      "bytes": 6210
+    },
+    "docs/three-content/staging-acting-generation.json": {
+      "sha256": "eacf461af9a06e7d81ff314e5841472c377b487ee977805c820dec822ec53b77",
+      "bytes": 54300
+    },
+    "docs/three-content/staging-cues.json": {
+      "sha256": "a764b79d725c92780d41237309b867b243471af3edfc210cb0cf23f7ba51c24d",
+      "bytes": 76589
+    },
+    "docs/three-content/staging-completion-ledger.json": {
+      "sha256": "f553c9c47acd98ca8855b17e499b04221c7606100f57f24e73220404a617c5a4",
+      "bytes": 6335
+    },
+    "docs/three-content/STAGING_IMPLEMENTATION.md": {
+      "sha256": "280e4998d2917fb178686c12b5e7d86bc097401a8b7113dab7c24babf45bbc9b",
+      "bytes": 13572
+    },
+    "dist/three-staging.js": {
+      "sha256": "bc048ec9733106cf6442106f53ef65034cf8d52eb3662eb1496e92f8016facc3",
+      "bytes": 434342
+    },
+    "docs/three-content/staging-runtime-audit.json": {
+      "sha256": "4394c255a5c9f619dadd8656b59a455b53bb358919c0389ff4e3cdf6cdc67cd4",
+      "bytes": 158748
+    },
+    "tests/three-staging-test.cjs": {
+      "sha256": "901861a968c912b7372afeb43b50b35535cfb4082642f274a54b117b0388ca8e",
+      "bytes": 13288
+    }
+  },
+  "supersededBy": "docs/three-content/pr9-art-staging-checkpoint.json",
+  "hashScope": "File hashes below describe the earlier pair-only snapshot before skin-face and detailed-setting integration, not the final working tree."
+}

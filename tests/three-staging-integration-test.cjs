@@ -106,6 +106,7 @@ function toScene(sceneId,label){
 // into her portrait. Yeonwoo's visual-only support pose adds no spoken line.
 fixture('three-stage-grandmother-before');
 const originalPhotos=h.copy('THREE_COMPLETE_ART.sourcePhotos').map(photo=>({number:String(photo.photoNumber),src:photo.src}));
+const originalPrologueBackground=h.run('assetStyle(THREE_COMPLETE_ACTIONS.currentSource().illustrationId)');
 assert.equal(originalPhotos.length,3);
 let liftingImage='',heldImage='';
 for(let number=1;number<=6;number++){
@@ -115,6 +116,8 @@ for(let number=1;number<=6;number++){
   assert.equal(entries().length,6,label+' no extra staging dialogue');
   assert.equal(view.bookState,number<=2?'ground':number===3?'lifting':'held');
   assert.equal(view.groundBook,number<=2,label+' one book location');
+  if(number<6)assert.equal(view.background,originalPrologueBackground,label+' approved background before support pair');
+  else assert(view.background.includes('goguryeo-spring-queue-mother-in-pair-v1.png'),label+' background excludes the mother now carried in the foreground');
   assert.deepEqual(view.photos.map(({number,src})=>({number,src})),originalPhotos,label+' exact three original image sources, once each');
   assert.equal(seoa.position,'right');assert.equal(seoa.id,'three_v3_seoa');
   assert.deepEqual(seoa.photos.map(({number,src})=>({number,src})),number<=2?[]:originalPhotos,label+' carried photos are inside Seoa portrait');
@@ -126,7 +129,7 @@ for(let number=1;number<=6;number++){
   if(number===6){
     const yeonwoo=actor('연우');
     assert.equal(yeonwoo.id,'civilian-c01-0e375c4533--initial','same Yeonwoo identity');
-    assert.equal(yeonwoo.position,'left');assert(yeonwoo.imageStyle.includes('yeonwoo-support-v1.png'));
+    assert.equal(yeonwoo.position,'left');assert(yeonwoo.imageStyle.includes('yeonwoo-mother-support-pair-v1.png'));
     assert.equal(yeonwoo.photos.length,0,'source photos remain with Seoa');
     assert.equal(new Set(view.actors.map(value=>value.id)).size,2,'visual cast has no duplicate actor');
     assert.equal(new Set(view.actors.map(value=>value.position)).size,2,'one actor per side');
@@ -142,7 +145,9 @@ assert.equal(h.run('run().storyId'),'THR-C01-S01','last prologue tap hands off d
 assert.equal(h.run('run().dialogueCursor'),1,'handoff does not consume the next scene first line');
 const arrival=frame('PRO3 continuous handoff');
 assert.equal(arrival.groundBook,false);assert.equal(arrival.photos.length,0,'prologue photo overlay does not leak into next scene');
-assert(arrival.actors.every(value=>!value.imageStyle.includes('yeonwoo-support-v1.png')&&!value.imageStyle.includes('seoa-book-actions-v1.png')),'prologue pose overrides end at the authored handoff');
+assert(arrival.actors.every(value=>!value.imageStyle.includes('yeonwoo-mother-support-pair-v1.png')&&!value.imageStyle.includes('seoa-book-actions-v1.png')),'prologue pose overrides end at the authored handoff');
+assert(arrival.background.includes('goguryeo-spring-queue-after-collapse.png'),'C01 uses the authored collapsed state after the support pair');
+assert(!arrival.background.includes('goguryeo-spring-queue-mother-in-pair-v1.png'),'support-pair background ends at the handoff');
 
 // Two unchanged authored lines are presented as records. Their choice menu
 // returns to the people while still showing both complete recent bubbles.
@@ -183,6 +188,7 @@ for(const [name,delivered] of [['three-stage-letter-delivered',true],['three-sta
 // binds it in both paths, so the next scene keeps that portrait and its history.
 let hiddenImage='',bandagedImage='';
 for(const index of [0,1]){
+  let wrappedDuringReply='';
   fixture('three-stage-hand-hidden');frame('C17 hidden hand');
   hiddenImage=actor('해명').imageStyle;assert(hiddenImage.includes('haemyeong-acting-v1.png'));
   cursor(entries().length);progress();choose(index);frame('C17 B'+(index+1)+' spoken');
@@ -190,10 +196,25 @@ for(const index of [0,1]){
   progress();frame('C17 B'+(index+1)+' R02');assert.equal(entries()[h.run('run().dialogueCursor')-1].characterName,'동료 석공');
   progress();frame('C17 B'+(index+1)+' R03');assert(hasProp('bandage'));
   assert(visuals().props.some(prop=>prop.label===(index===0?'손을 감싼 흰 천':'처치를 위해 가져온 천')),'cloth follows the selected authored action');
-  // The colleague speaks R02 and is the nearest peer during Seoa's R03.
-  // Haemyeong is visible again when he speaks in the common join.
+  // During B1-R03 the actual wrapping must show Haemyeong, even though the
+  // preceding colleague would ordinarily remain Seoa's nearest NPC peer.
+  if(index===0){
+    assert.equal(entries()[h.run('run().dialogueCursor')-1].lineId,'THR-C17-S04-B1-R03');
+    const wrapped=actor('해명');
+    assert.equal(wrapped.id,'civilian-c17-439b052a1f--initial');
+    assert.equal(wrapped.position,'left','B1-R03 shows the recipient of the bandage');
+    assert(wrapped.imageStyle.includes('haemyeong-acting-v1.png'));
+    // Original sheet 1536x1024, bandaged crop x901/y10/494x993.
+    assert(wrapped.imageStyle.includes('background-size:310.93117% 103.12185%;background-position:86.46833% 32.25806%'),'B1-R03 renders the bandaged source crop');
+    assert.notEqual(wrapped.imageStyle,hiddenImage,'B1-R03 has already wrapped the hand');
+    wrappedDuringReply=wrapped.imageStyle;
+    reload('C17 B1 R03 recipient and bandage');
+    assert.equal(actor('해명').imageStyle,wrappedDuringReply);
+  }else{
+    assert(!visuals().actors.some(value=>value.id==='civilian-c17-439b052a1f--initial'),'B1 visual-only recipient does not leak into B2-R03');
+  }
   toJoin('C17 B'+(index+1));
-  if(index===0){bandagedImage=actor('해명').imageStyle;assert.notEqual(bandagedImage,hiddenImage);assert(bandagedImage.includes('haemyeong-acting-v1.png'));}
+  if(index===0){bandagedImage=actor('해명').imageStyle;assert.notEqual(bandagedImage,hiddenImage);assert(bandagedImage.includes('haemyeong-acting-v1.png'));assert.equal(bandagedImage,wrappedDuringReply,'B1-R03 wrapped pose continues into the common join');}
   else assert.equal(actor('해명').imageStyle,bandagedImage);
   reload('C17 B'+(index+1)+' join');
   toScene('THR-C17-S05','C17 B'+(index+1)+' next scene');
@@ -219,4 +240,4 @@ for(const [name,expected] of [['three-stage-reunion-names',['contact-sheet']],['
 }
 assert.equal(sourceDigest(),originalSourceDigest,'staging never changes any authored or converted dialogue');
 assert.equal(h.run('JSON.stringify(THREE_STORY_SCRIPT)'),JSON.stringify(canonical),'entire approved manuscript remains exact');
-console.log('PASS Three staging integration: '+frames+' actual HTML frames, '+reloads+' fresh-VM restores; prologue book/original-photo poses and support cast, record-to-choice actor return, branch props/backgrounds, hand and hammer continuity, past-choice evidence, unchanged complete dialogue and cursors.');
+console.log('PASS Three staging integration: '+frames+' actual HTML frames, '+reloads+' fresh-VM restores; prologue book/original-photo poses and support pair/background handoff, record-to-choice actor return, branch props/backgrounds, hand and hammer continuity, past-choice evidence, unchanged complete dialogue and cursors.');

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "status": "two-composition-corrections-runtime-linked-awaiting-browser-review",
+  "reason": "Common face anchors place foreground heads below the upper scene aperture; scene content must be composed in that aperture rather than changing the approved UI.",
+  "generation": [
+    {
+      "key": "silla-ox-field-readable-v3",
+      "repoSrc": "assets/ancient/three-complete/backgrounds/silla-ox-field-readable-v3.png",
+      "reference": "/workspace/scratch/fea3030a5c98/history-playable/dist/assets/ancient/three-complete/backgrounds/silla-ox-field-rest-portrait-v2.png",
+      "prompt": "Edit this approved tall 1024x1536 hand-painted historical farm background only to improve the physical composition. Keep the exact same Silla spring setting, same brown resting ox, same wooden yoke/slack rope and wooden plough with modest iron share, same art style, muted warm colors and village. The current ox and plough are too large and low for the foreground dialogue actors. Repaint the OX AND PLOUGH TOGETHER at roughly TWO THIRDS of their current size, farther back in the field, and shift their whole group UP. Their entire combined silhouette, from horns to all hooves and every plough handle/share, must fit in the compact central rectangle approximately x340..740 and y265..445 on this 1024x1536 canvas. Absolutely no ox/plough part below y460. They are grounded on the same receding field, naturally smaller in the middle distance, NOT floating or a pasted inventory icon. Keep the ox's head and lifted resting foreleg clearly visible and the complete plough immediately next to it; orient the plough backward in depth rather than widely sideways. Preserve no wound, no bandage, no treatment, no active forced ploughing, no collapse and no completed recovery. Move the horizon/village naturally as needed to make this composition believable. Lower two-thirds remains empty tilled earth for separate story actors. Do not change crop size, do not add people, do not add UI/text/signs/borders/letterboxing, do not make a poster or schematic. This is an ordinary physical farm scene. Portrait 2:3 opaque background.",
+      "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-dca850d4-4dbf-4d07-b77f-b76d9ce87969.png",
+      "sha256": "fd6cd6555e330778717f2767203db34ff994edec12c9dd6d9a0afbf23d6b304f",
+      "width": 1024,
+      "height": 1536,
+      "sourceVisualReviewComplete": true,
+      "runtimeVisualReviewComplete": false,
+      "runtimeLinked": true
+    },
+    {
+      "key": "balhae-office-readable-labels-v3",
+      "repoSrc": "assets/ancient/three-complete/backgrounds/balhae-office-readable-labels-v3.png",
+      "reference": "/workspace/scratch/fea3030a5c98/history-playable/dist/assets/ancient/three-complete/backgrounds/balhae-office-readable-shelf-v2.png",
+      "prompt": "Edit this exact approved 1024x1536 hand-painted Balhae office background with a small practical rearrangement of the same documents. Keep the architecture, furniture, daylight, style and palette. The upper shelf still has exactly THREE larger document bundles with large blank horizontal paper tags tied on their fronts. Reorganize the SIX smaller bundles currently on two lower shelves into ONE SINGLE ROW OF SIX on ONE shelf immediately below the large three. The six smaller bundles should each have one entirely blank horizontal cream paper tag, clearly independent, about 58x38 image pixels, and all six tags must remain visible/unobstructed. The whole 3+6 grouping fits high in the central portion x260..775 of the canvas, with the top three tags around y260..305 and all six lower tags around y365..410. There must be NO third row of bundles and NO label below y420, because separate story characters will cover that lower area. Preserve nine total bundles, 3 above and 6 below, neatly supported on two actual connected wooden shelves, not a flowchart, modern UI grid, invented card panel or floating paper. All tag surfaces MUST be blank without marks or pseudo-writing; exact historic names will be added as ink later. Keep the lower wall, low writing desk and broad open floor unchanged as much as possible. Do not add people, modern objects, headings, symbols, dividers, UI or text. Tall portrait 2:3 opaque background, exact original 2D historical illustration style.",
+      "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-99c6d3df-df61-4716-bc85-e59d10be7f52.png",
+      "sha256": "482f923720c9616fdbfdbb3ded71cab1535ade7dfb42beb72ddd8adadba9a37b",
+      "width": 1024,
+      "height": 1536,
+      "sourceVisualReviewComplete": true,
+      "runtimeVisualReviewComplete": false,
+      "runtimeLinked": true
+    }
+  ]
+}

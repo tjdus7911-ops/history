@@ -14,7 +14,8 @@ vm.runInContext(fs.readFileSync(path.join(root,'dist/three-staging.js'),'utf8'),
 const api = box.THREE_STAGING;
 assert.equal(api.audit.sceneCount,218);
 assert.equal(api.audit.propCount,27);
-assert.equal(api.audit.variantCount,6);
+assert.equal(api.audit.variantCount,7);
+assert.equal(api.audit.settingSurfaceCount,3);
 const before = JSON.stringify(story);
 
 function state(sceneId,lineId,phase='main',choiceId=null,choicesByScene={}) {
@@ -120,6 +121,58 @@ for(const [sceneId,assetId] of [['THR-C11-S01','silla-ox-field'],['THR-C13-S03',
   assert.equal(api.backgroundOverride(next,state(next.sceneId,next.threeSource.main[0].lineId)),null,'Setting must not leak into the next scene');
 }
 
+// Authored settings persist through the selected response and join, while a
+// present-day record switches back to its own background. The wood/stone/soil
+// section is an explanation on exactly M03-M04, not a completed worksite.
+for(const [sceneId,assetId] of [
+  ['THR-C10-S03','silla-tomb-worksite'],
+  ['THR-C17-S05','bulguksa-distinct-pagodas'],
+  ['THR-C17-S06','seokguram-assembly'],
+  ['THR-C18-S03','cheonghaejin-warehouse'],
+  ['THR-C21-S04','balhae-jeongdangseong-office']
+]) {
+  const source=sources.get(sceneId),raw=source.threeSource;
+  const frames=raw.main.map(line=>state(sceneId,line.lineId));
+  if(raw.choices.length)frames.push(state(sceneId,raw.main.at(-1).lineId,'choice'));
+  for(const choice of raw.choices.length?raw.choices:[null]) {
+    if(choice)for(const line of [choice.spokenLine,...choice.reply])frames.push(state(sceneId,line.lineId,'branch',choice.choiceId));
+    for(const line of raw.join)frames.push(state(sceneId,line.lineId,'join',choice?.choiceId||null));
+  }
+  for(const current of frames) {
+    const background=api.backgroundOverride(source,current);
+    assert.equal(background?.id||null,api.context(source,current)==='record'?null:assetId);
+    assert.deepEqual(api.backgroundOverride(source,JSON.parse(JSON.stringify(current))),background);
+    const ink=api.resolve(source,current).settingSurfaces;
+    for(const art of ink)assert.equal(art.backgroundSrc,background.src,'Ink can only label the matching physical background');
+    if(sceneId==='THR-C10-S03') {
+      assert.equal(ink.length,current.phase==='main'&&['THR-C10-S03-M03','THR-C10-S03-M04'].includes(current.entry.lineId)?1:0);
+    } else if(['THR-C18-S03','THR-C21-S04'].includes(sceneId)) {
+      assert.equal(ink.length,1,'Physical map/chest/document labels are continuous across dialogue phases');
+      const html=api.layers(source,current);
+      assert(html.startsWith('<img class="three-setting-surface"'));
+      assert.equal((html.match(/data-setting-surface=/g)||[]).length,1);
+    } else assert.equal(ink.length,0);
+  }
+  const next=sources.get(raw.nextSceneId);
+  const nextState=state(next.sceneId,next.threeSource.main[0].lineId);
+  assert.notEqual(api.backgroundOverride(next,nextState)?.id||null,assetId,'Previous historical setting must not leak into the next scene');
+  assert(!api.resolve(next,nextState).settingSurfaces.some(art=>art.sceneId===sceneId));
+}
+assert(api.backgroundOverride(sources.get('THR-C11-S01'),state('THR-C11-S01','THR-C11-S01-M02')).src.endsWith('silla-ox-field-readable-v3.png'));
+has('THR-C18-S03','M01','main',null,'boat-tag',false); // now on actual chests
+has('THR-C21-S04','M01','main',null,'contact-sheet',false); // now on actual bundles
+{
+  const surface=JSON.parse(fs.readFileSync(path.join(root,'docs/three-content/staging-setting-surface-generation.json'),'utf8')).surfaces;
+  assert.equal(Object.keys(surface).length,3);
+  const office=fs.readFileSync(path.join(root,'dist',surface['balhae-department-ink-v1'].src),'utf8');
+  for(const name of ['中臺省','宣詔省','政堂省','忠部','仁部','義部','智部','禮部','信部'])assert(office.includes('>'+name+'</text>'));
+  assert(!office.includes('正堂省'),'Use the primary original 政堂省 spelling');
+  const warehouse=fs.readFileSync(path.join(root,'dist',surface['warehouse-map-and-tags-v1'].src),'utf8');
+  for(const name of ['新羅坊','新羅所','新羅院','新羅村','赤山法華院'])assert(warehouse.includes('>'+name+'</text>'));
+  const text=view('THR-C18-S03','M08').caption.label;
+  assert(text.includes('건립')&&text.includes('839년 기록'),'Formation and surviving records remain distinct');
+}
+
 // Arrival book continuity is a line-bound physical pose, not a new dialogue
 // step or an inventory panel. The original three photographs travel with it.
 for(let number=1;number<=6;number++) {
@@ -128,7 +181,7 @@ for(let number=1;number<=6;number++) {
   assert.equal(view.book.state,number<=2?'ground':number===3?'lifting':'held');
   assert.equal(view.book.sourcePhotos.length,3);
   assert(view.book.sourcePhotos.every(photo=>photo.sourceKind==='user-original-photo'));
-  assert.equal(api.backgroundOverride(source,current),null,'Approved prologue background is preserved');
+  assert.equal(api.backgroundOverride(source,current)?.id||null,number===6?'queue-mother-in-pair':null,'Only L06 removes the duplicate background mother');
   const ground=api.layers(source,current),photoLayers=api.portraitLayers(source,current,'three_v3_seoa');
   assert.equal(ground.includes('data-book-location="ground"'),number<=2);
   assert.equal((ground.match(/data-source-photo=/g)||[]).length,number<=2?3:0);
@@ -139,12 +192,41 @@ for(let number=1;number<=6;number++) {
     assert.equal(presence[0].characterId,'civilian-c01-0e375c4533--initial');
     assert.equal(presence[0].position,'left');
     assert.equal(presence[0].visualOnly,true);
-    assert.equal(api.portraitOverride(source,current,presence[0].characterId).id,'yeonwoo-support');
+    const pair=api.portraitOverride(source,current,presence[0].characterId);
+    assert.equal(pair.id,'yeonwoo-mother-support-pair');
+    assert.equal(pair.interaction.anchorCharacterId,presence[0].characterId);
+    assert.equal(pair.interaction.completeFeetPresent,true);
     assert.equal(api.portraitLayers(source,current,presence[0].characterId),'');
   }
+  const reloaded=JSON.parse(JSON.stringify(current));
+  assert.deepEqual(api.backgroundOverride(source,reloaded),api.backgroundOverride(source,current));
+  assert.deepEqual(api.actorPresence(source,reloaded),presence);
+}
+{
+  const source=sources.get('THR-PRO-S03'),menu=state(source.sceneId,source.sceneId+'-L06','choice');
+  assert.equal(api.backgroundOverride(source,menu),null);
+  assert.equal(api.portraitOverride(source,menu,'civilian-c01-0e375c4533--initial'),null);
+  assert.equal(api.actorPresence(source,menu).length,0);
 }
 assert.equal(api.actorPresence(sources.get('THR-C01-S01'),state('THR-C01-S01','THR-C01-S01-M01')).length,0);
+assert.equal(api.portraitOverride(sources.get('THR-C01-S01'),state('THR-C01-S01','THR-C01-S01-M01'),'civilian-c01-0e375c4533--initial'),null);
 assert.equal(api.portraitLayers(sources.get('THR-C01-S01'),state('THR-C01-S01','THR-C01-S01-M01'),'three_v3_seoa'),'');
+
+// Seoa is binding Haemyeong's hand in this exact line. A preceding unnamed
+// mason must not make the recipient of that physical action disappear.
+{
+  const source=sources.get('THR-C17-S04'),sid=source.sceneId;
+  const current=state(sid,sid+'-B1-R03','branch',sid+'-B1');
+  const cast=api.actorPresence(source,current);
+  assert.equal(cast.length,1);
+  assert.equal(cast[0].characterId,'civilian-c17-439b052a1f--initial');
+  assert.equal(cast[0].position,'left');
+  assert.equal(api.portraitOverride(source,current,cast[0].characterId).id,'haemyeong-bandaged');
+  assert.deepEqual(api.actorPresence(source,JSON.parse(JSON.stringify(current))),cast);
+  for(const [line,phase,choice] of [['M08','main',null],['B1-R02','branch','B1'],['B2-R03','branch','B2'],['J01','join','B1']]) {
+    assert.equal(api.actorPresence(source,state(sid,sid+'-'+line,phase,choice?sid+'-'+choice:null)).length,0,'Presence is limited to the missing B1 recipient');
+  }
+}
 
 const art=JSON.parse(fs.readFileSync(path.join(root,'dist/three-complete-art.json'),'utf8'));
 const haemyeong=Object.values(art.characters).find(person=>person.name==='해명').characterId;
