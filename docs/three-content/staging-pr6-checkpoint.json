@@ -1,0 +1,71 @@
+{
+  "checkpoint": "PRO3-C18-prop-floor-before-PR6",
+  "fileCount": 13,
+  "files": [
+    {
+      "path": "scripts/three-staging-runtime.js",
+      "sha256": "43114ba6c62f62618410efed8740efea8efc55ec03a5a5ee91f678399e25aec1",
+      "bytes": 11140
+    },
+    {
+      "path": "scripts/build-three-staging.py",
+      "sha256": "eb557736616751b22c64a9b4a127655b59ddc0dfb0de4a04e567f8cfb480834d",
+      "bytes": 10866
+    },
+    {
+      "path": "tests/three-staging-test.cjs",
+      "sha256": "75a989d328195005e1d7a0d0b5f4b1086a56ecfbdd2aa4ce6cbbc0c34ac44ab6",
+      "bytes": 11210
+    },
+    {
+      "path": "dist/three-staging.js",
+      "sha256": "2a933a3e27f7805a2dac7b8e12016eb2dc1d9e17633d0e4f8d29d49643db6162",
+      "bytes": 424228
+    },
+    {
+      "path": "dist/three-staging.css",
+      "sha256": "8aa561a5f532e937fd74588c0141a003c79be88943c6e16e429fe5854618ecdd",
+      "bytes": 3644
+    },
+    {
+      "path": "docs/three-content/staging-cues.json",
+      "sha256": "688c69716ca73ec0a4f192edadd3c3a48834f10a735c4af5b5727bcffcf23757",
+      "bytes": 76010
+    },
+    {
+      "path": "docs/three-content/staging-acting-generation.json",
+      "sha256": "1f289209610557f2bef4ad608815782608a386fa7f943dece4ca14fc81b6b81c",
+      "bytes": 31782
+    },
+    {
+      "path": "docs/three-content/staging-prologue-generation-inputs.json",
+      "sha256": "9560919df824f7b0853f17c1aabcc86cdd099e901da1902fbbb2be28b2e071d4",
+      "bytes": 7589
+    },
+    {
+      "path": "docs/three-content/staging-runtime-audit.json",
+      "sha256": "6f581498741293d1438153667de7022a5598f9507224799cb369a80f13f24f2b",
+      "bytes": 158570
+    },
+    {
+      "path": "docs/three-content/staging-completion-ledger.json",
+      "sha256": "cc8cf1bdd2b5a7f35c971f441f6e42a1bcc638c3fa3fb6eda66fc57982c30ae3",
+      "bytes": 4618
+    },
+    {
+      "path": "docs/three-content/STAGING_IMPLEMENTATION.md",
+      "sha256": "215274b899e235bb71b93ce6200a13239b1ba36877fb16239a33c431699c43fb",
+      "bytes": 10344
+    },
+    {
+      "path": "dist/assets/ancient/three-complete/characters/yeonwoo-support-v1.png",
+      "sha256": "aff6bb8bce45739fc73f5a74b733a1038bfc4e23d2b609f877db591efe4ce770",
+      "bytes": 1803835
+    },
+    {
+      "path": "dist/assets/ancient/three-complete/characters/seoa-book-actions-v1.png",
+      "sha256": "1c01e99616daf6564e7526e519edf816f6dd2489cd50aa1b52945fd9298e8efa",
+      "bytes": 1394098
+    }
+  ]
+}

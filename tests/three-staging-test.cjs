@@ -14,7 +14,7 @@ vm.runInContext(fs.readFileSync(path.join(root,'dist/three-staging.js'),'utf8'),
 const api = box.THREE_STAGING;
 assert.equal(api.audit.sceneCount,218);
 assert.equal(api.audit.propCount,27);
-assert.equal(api.audit.variantCount,3);
+assert.equal(api.audit.variantCount,6);
 const before = JSON.stringify(story);
 
 function state(sceneId,lineId,phase='main',choiceId=null,choicesByScene={}) {
@@ -65,6 +65,9 @@ for(const clue of [null,'B1','B2']) {
   has('THR-C18-S07','M01','main',null,'knot-drawing',clue==='B2',history);
   has('THR-C18-S07','M01','main',null,'letter',true,history);
 }
+has('THR-C18-S01','B2-R03','branch','B2','knot-drawing',false);
+has('THR-C18-S01','J01','join','B2','knot-drawing',true);
+has('THR-C18-S01','J01','join','B1','knot-drawing',false);
 
 // Seoa and the record are separate from the contemporary people, with the
 // response menu and chosen branch explicitly returning to the scene.
@@ -99,6 +102,32 @@ for(const selected of ['B1','B2']) {
 assert.equal(api.backgroundOverride(sources.get('THR-PRO-S03'),state('THR-PRO-S03','THR-PRO-S03-L01')),null);
 assert.equal(api.backgroundOverride(sources.get('THR-C01-S01'),state('THR-C01-S01','THR-C01-S01-M01')).id,'collapsed-queue');
 
+// Arrival book continuity is a line-bound physical pose, not a new dialogue
+// step or an inventory panel. The original three photographs travel with it.
+for(let number=1;number<=6;number++) {
+  const source=sources.get('THR-PRO-S03'),current=state(source.sceneId,source.sceneId+'-L0'+number);
+  const view=api.resolve(source,current),presence=api.actorPresence(source,current);
+  assert.equal(view.book.state,number<=2?'ground':number===3?'lifting':'held');
+  assert.equal(view.book.sourcePhotos.length,3);
+  assert(view.book.sourcePhotos.every(photo=>photo.sourceKind==='user-original-photo'));
+  assert.equal(api.backgroundOverride(source,current),null,'Approved prologue background is preserved');
+  const ground=api.layers(source,current),photoLayers=api.portraitLayers(source,current,'three_v3_seoa');
+  assert.equal(ground.includes('data-book-location="ground"'),number<=2);
+  assert.equal((ground.match(/data-source-photo=/g)||[]).length,number<=2?3:0);
+  assert.equal((photoLayers.match(/data-source-photo=/g)||[]).length,number>=3?3:0);
+  assert.equal(api.portraitOverride(source,current,'three_v3_seoa')?.id||null,number<=2?null:number===3?'seoa-book-lifting':'seoa-book-held');
+  assert.equal(presence.length,number===6?1:0);
+  if(number===6) {
+    assert.equal(presence[0].characterId,'civilian-c01-0e375c4533--initial');
+    assert.equal(presence[0].position,'left');
+    assert.equal(presence[0].visualOnly,true);
+    assert.equal(api.portraitOverride(source,current,presence[0].characterId).id,'yeonwoo-support');
+    assert.equal(api.portraitLayers(source,current,presence[0].characterId),'');
+  }
+}
+assert.equal(api.actorPresence(sources.get('THR-C01-S01'),state('THR-C01-S01','THR-C01-S01-M01')).length,0);
+assert.equal(api.portraitLayers(sources.get('THR-C01-S01'),state('THR-C01-S01','THR-C01-S01-M01'),'three_v3_seoa'),'');
+
 const art=JSON.parse(fs.readFileSync(path.join(root,'dist/three-complete-art.json'),'utf8'));
 const haemyeong=Object.values(art.characters).find(person=>person.name==='해명').characterId;
 const yeoul=Object.values(art.characters).find(person=>person.name==='여울'&&person.characterId.startsWith('civilian-c15-')).characterId;
@@ -131,6 +160,8 @@ for(const source of sources.values()) {
     const current=freeze(state(source.sceneId,frame.line.lineId,frame.phase,frame.choiceId));
     const saved=JSON.stringify(current),html=api.layers(source,current);
     assert.equal(api.layers(source,current),html);
+    assert.equal(api.portraitLayers(source,current,'three_v3_seoa'),api.portraitLayers(source,current,'three_v3_seoa'));
+    assert.equal(JSON.stringify(api.actorPresence(source,current)),JSON.stringify(api.actorPresence(source,current)));
     assert.equal(JSON.stringify(current),saved);
     assert(!/<(?:button|input|select|figcaption)\b/.test(html),'Artwork adds no input or inventory labels');
     assert(!/(?:NaN|Infinity)/.test(html),'Finite atlas geometry');

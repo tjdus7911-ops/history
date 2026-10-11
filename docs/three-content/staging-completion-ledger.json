@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-11",
+  "sourceManuscriptSha256": "09e17274a506391305b36efee52b1cd60c4c504cc6619e68fe70cd9909e9674e",
+  "status": "runtime-checkpoint-with-authored-staging-followup-in-progress",
+  "allAuthoredStagingVerified": false,
+  "verification": {
+    "sourceLinksAndRectanglesChecked": true,
+    "allAuthoredLinesPureRenderChecked": true,
+    "newGeneratedImageFilesViewed": true,
+    "newStagingRuntimeVisualReviewComplete": false,
+    "allDetailedIllustrationsComplete": false,
+    "canonicalDialogueChanged": false,
+    "canonicalExamDataChanged": false,
+    "sourceImagePixelsEdited": false,
+    "otherEraChanges": false
+  },
+  "checkpoint": {
+    "sceneCount": 218,
+    "authoredUtteranceCount": 2777,
+    "explicitCueCount": 246,
+    "purePresentationFrameCount": 2919,
+    "propAppearanceCount": 27,
+    "handActionAppearanceCount": 2,
+    "actorVariantAppearanceCount": 3,
+    "backgroundStateAppearanceCount": 2,
+    "imageFileCount": 8
+  },
+  "nextWork": [
+    {
+      "id": "prologue-arrival-book",
+      "sceneId": "THR-PRO-S03",
+      "lineIds": [
+        "THR-PRO-S03-L01",
+        "THR-PRO-S03-L02",
+        "THR-PRO-S03-L03",
+        "THR-PRO-S03-L04",
+        "THR-PRO-S03-L05",
+        "THR-PRO-S03-L06"
+      ],
+      "required": "Book and the three original genealogy photographs are on the ground for L01-L02, lifted at L03, held against Seoa from L04. No fabricated writing or new dialogue.",
+      "status": "runtime-linked-awaiting-browser-composition-review",
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "id": "prologue-yeonwoo-support",
+      "sceneId": "THR-PRO-S03",
+      "lineIds": [
+        "THR-PRO-S03-L06"
+      ],
+      "required": "Same Yeonwoo identity at the left supports the mother whose knees weaken. Same face scale as Chapter 1. No water, completed rescue or second copy of the mother.",
+      "status": "runtime-linked-awaiting-browser-composition-review",
+      "runtimeVisualReviewComplete": false
+    }
+  ],
+  "authoredDetailReviewQueue": [
+    {
+      "sceneId": "THR-C10-S03",
+      "detail": "Layered tomb structure and burial chamber must be visually distinguishable",
+      "status": "custom-detail-review-required"
+    },
+    {
+      "sceneId": "THR-C11-S01",
+      "detail": "Ox/plough/field action is not proved by generic prop coverage",
+      "status": "custom-detail-review-required"
+    },
+    {
+      "sceneId": "THR-C13-S03",
+      "detail": "Construction state of the nine-storey wooden pagoda, before completion",
+      "status": "custom-detail-review-required"
+    },
+    {
+      "sceneId": "THR-C17-S05",
+      "detail": "Distinct Dabotap/Seokgatap silhouettes and construction context",
+      "status": "custom-detail-review-required"
+    },
+    {
+      "sceneId": "THR-C17-S06",
+      "detail": "Stone-assembled artificial cave and in-progress work",
+      "status": "custom-detail-review-required"
+    },
+    {
+      "sceneId": "THR-C18-S03",
+      "detail": "Authored place/function distinction in the trade setting",
+      "status": "custom-detail-review-required"
+    },
+    {
+      "sceneId": "THR-C21-S04",
+      "detail": "Specific office/document grouping requires a separate visual check",
+      "status": "custom-detail-review-required"
+    }
+  ],
+  "scopeNotes": [
+    "The detail review queue is not an assertion that these are the only remaining authored details; all 218 source staging strings remain in staging-runtime-audit.json.",
+    "A rendered prop cue does not prove complete hands, crowd, architecture or audio staging.",
+    "Pending work remains authorized follow-up and is not cancelled or marked complete.",
+    "Root owns remote checkpoints, deployment and actual browser composition review."
+  ],
+  "currentImplementation": {
+    "sceneCount": 218,
+    "authoredUtteranceCount": 2777,
+    "explicitCueCount": 254,
+    "purePresentationFrameCount": 2919,
+    "propAppearanceCount": 27,
+    "handActionAppearanceCount": 2,
+    "actorVariantAppearanceCount": 6,
+    "backgroundStateAppearanceCount": 2,
+    "imageFileCount": 10,
+    "originalGenealogyPhotoCount": 3,
+    "prologueRendererHooksConnected": true
+  },
+  "actualReviewFindings": [
+    {
+      "sceneId": "THR-C07-S06",
+      "viewportWidth": 390,
+      "evidence": "docs/ui-qa/after-three-haein-older-390.jpg",
+      "finding": "Toolbox floated at chest height with the initial 42% baseline",
+      "fix": "Common scene props now share the existing character-stage floor: 128px desktop / 116px mobile; contact shadows; unchanged z-index behind dialogue",
+      "fixRuntimeVisualReviewComplete": false
+    }
+  ]
+}

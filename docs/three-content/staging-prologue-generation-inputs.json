@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "sourceManuscriptSha256": "09e17274a506391305b36efee52b1cd60c4c504cc6619e68fe70cd9909e9674e",
+  "generation": [
+    {
+      "key": "yeonwoo-support",
+      "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-71a18e89-d4bd-45be-b036-bc3123600a27.png",
+      "repoSrc": "assets/ancient/three-complete/characters/yeonwoo-support-v1.png",
+      "prompt": "Edit the attached approved Yeonwoo character image into ONE new full-body acting pose for the same 2D Korean historical story game. Preserve EXACTLY the same recognizable young adult face, dark low tied hair, green-gray short-sleeve outer robe, ivory crossed inner robe and loose sleeves, gray-brown waist sash, brown trousers and wrapped boots. Same polished warm hand-drawn anime illustration, clean painterly shading, no photorealism. Change only the pose and worried expression: Yeonwoo is positioned on the LEFT of the game, turned three-quarter toward the RIGHT, hurrying one small step and leaning gently forward, both forearms reaching forward-right at waist/lower-chest height to support the upper arm and shoulder of an elderly mother who is ALREADY drawn in the separate background. Draw ONLY Yeonwoo, do NOT draw the mother or any second person, no disembodied hands, no props. The palms and naturally bent fingers should form believable gentle supporting grips, not fists, fighting, pointing or a hug. Eyes look downward-right toward the mother's shoulder, brows worried. Keep the adult head size, natural body proportions and all feet fully visible with small empty margins. The pose must read as urgently steadying someone whose knees are beginning to weaken, not a completed rescue, carrying or giving water. Output one isolated full-body sprite on a fully transparent alpha background, no glow, no ground, no shadows cast onto a background, no typography, no border. The attached village scene is visual context only: do not redraw it or include any of its people or objects. All character detail and identity must come from the first reference.",
+      "references": [
+        "assets/ancient/three-complete/characters/yeonwoo-fullbody-v1.png",
+        "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-before-collapse.png"
+      ]
+    },
+    {
+      "key": "seoa-book",
+      "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-9703c511-749e-4433-b6b2-5596c33e0e30.png",
+      "repoSrc": "assets/ancient/three-complete/characters/seoa-book-actions-v1.png",
+      "prompt": "Use the attached approved Seoa portrait as the identity, age, costume and style reference. Create ONE transparent two-column character action atlas for this exact same 23-year-old female protagonist in the same Korean historical 2D story game. Exactly TWO full-body figures, side by side with a wide completely empty transparent gutter, each head and both feet entirely visible and independent, same body scale, same face proportions and same long dark braided high ponytail with rust ribbon. Keep the exact teal blue-green crossed robe, ivory sleeves, rust short shoulder layer, brown wrist wraps, red belt, tan cross-body pouch, loose white trousers and wrapped boots. Do not change face or costume. Both look three-quarter LEFT because Seoa stands on the right of the game. LEFT CELL: Seoa has just lifted her own plain old brown history book from the ground, standing upright and looking down in uneasy surprise, holding the book open in BOTH hands at waist-to-lower-chest height. RIGHT CELL: same Seoa now holds that SAME book firmly against the lower chest with both arms, head turned LEFT with worried attentive eyes toward a person nearby. Keep face unobscured and upright enough for a standing portrait. In both poses the same three cream paper genealogy sheets remain securely inserted in the same book, their edges visibly separate, and their visible surfaces should form a clean almost-front-facing shallow-perspective rectangle for later overlay of ORIGINAL user photographs. All book pages and all three sheets MUST be completely blank; do not invent symbols, pseudo-text, map marks or writing. Book about two hand-widths, not enormous. Hands anatomically natural with five fingers each and convincing grips. No other person, no scenery, no ground, no UI, no labels, no captions, no frame, no dividers. Actual transparent alpha background, no black matte, no glow or background shadow. Warm detailed hand-drawn Korean anime illustration and subtle painterly shading exactly as the reference. This atlas is a pose edit of one existing identity, not a redesign or two different people.",
+      "references": [
+        "assets/ancient/three-v2/characters/seoa-worried.png"
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "yeonwoo-support",
+      "generationKey": "yeonwoo-support",
+      "characterId": "civilian-c01-0e375c4533--initial",
+      "faceBounds": {
+        "x": 500,
+        "y": 117,
+        "width": 155,
+        "height": 161
+      },
+      "alphaBounds": {
+        "x": 86,
+        "y": 23,
+        "width": 915,
+        "height": 1491
+      },
+      "sourceRect": {
+        "x": 84,
+        "y": 21,
+        "width": 919,
+        "height": 1495
+      },
+      "columns": 1,
+      "column": 0,
+      "faceEvidence": "visual region of same Yeonwoo face, excluding hair",
+      "nativeFacing": "right"
+    },
+    {
+      "id": "seoa-book-lifting",
+      "generationKey": "seoa-book",
+      "characterId": "three_v3_seoa",
+      "faceBounds": {
+        "x": 314,
+        "y": 107,
+        "width": 105,
+        "height": 105
+      },
+      "alphaBounds": {
+        "x": 124,
+        "y": 7,
+        "width": 547,
+        "height": 1130
+      },
+      "sourceRect": {
+        "x": 122,
+        "y": 5,
+        "width": 551,
+        "height": 1134
+      },
+      "columns": 2,
+      "column": 0,
+      "faceEvidence": "same approved Seoa face in downward-looking book pose",
+      "nativeFacing": "left",
+      "photoSurfaces": [
+        {
+          "photoNumber": 1,
+          "x": 232,
+          "y": 300,
+          "width": 36,
+          "height": 25,
+          "rotate": -5
+        },
+        {
+          "photoNumber": 2,
+          "x": 278,
+          "y": 295,
+          "width": 35,
+          "height": 32,
+          "rotate": 0
+        },
+        {
+          "photoNumber": 3,
+          "x": 326,
+          "y": 298,
+          "width": 44,
+          "height": 28,
+          "rotate": 2
+        }
+      ]
+    },
+    {
+      "id": "seoa-book-held",
+      "generationKey": "seoa-book",
+      "characterId": "three_v3_seoa",
+      "faceBounds": {
+        "x": 974,
+        "y": 85,
+        "width": 111,
+        "height": 116
+      },
+      "alphaBounds": {
+        "x": 825,
+        "y": 12,
+        "width": 525,
+        "height": 1129
+      },
+      "sourceRect": {
+        "x": 823,
+        "y": 10,
+        "width": 529,
+        "height": 1133
+      },
+      "columns": 2,
+      "column": 1,
+      "faceEvidence": "same approved Seoa face in attentive left-facing book pose",
+      "nativeFacing": "left",
+      "photoSurfaces": [
+        {
+          "photoNumber": 1,
+          "x": 1043,
+          "y": 278,
+          "width": 25,
+          "height": 24,
+          "rotate": 0
+        },
+        {
+          "photoNumber": 2,
+          "x": 1075,
+          "y": 278,
+          "width": 25,
+          "height": 25,
+          "rotate": 2
+        },
+        {
+          "photoNumber": 3,
+          "x": 1106,
+          "y": 281,
+          "width": 23,
+          "height": 23,
+          "rotate": 3
+        }
+      ]
+    }
+  ]
+}

@@ -2,13 +2,19 @@
    Every state is a pure consequence of the current line and selected branch.
    There are deliberately no keyframes, timers or enter/re-enter animations. */
 .three-complete-game .three-staging-layer {position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden;border-radius:inherit;--prop-size:62px;}
-.three-complete-game .three-staging-props {position:absolute;left:50%;bottom:42%;translate:-50% 0;display:flex;align-items:flex-end;justify-content:center;gap:12px;width:max-content;max-width:76%;}
-.three-complete-game .three-staged-prop {display:block;margin:0;max-width:84px;}
+.three-complete-game .three-staging-props {position:absolute;left:50%;bottom:128px;translate:-50% 0;display:flex;align-items:flex-end;justify-content:center;gap:12px;width:max-content;max-width:76%;}
+.three-complete-game .three-staged-prop {display:block;position:relative;isolation:isolate;margin:0;max-width:84px;}
+.three-complete-game .three-staged-prop::after {content:"";position:absolute;z-index:-1;left:10%;right:10%;height:6px;bottom:-2px;border-radius:50%;background:radial-gradient(ellipse,#211b12a0,transparent 72%);pointer-events:none;}
 .three-complete-game .three-prop-sprite {display:block;flex:none;width:calc(var(--prop-size) * var(--prop-w));height:calc(var(--prop-size) * var(--prop-h));background-repeat:no-repeat;filter:drop-shadow(0 2px 2px #08110f60);}
 .three-complete-game .three-context-label {white-space:pre-line;}
 .three-complete-game .three-staging-layer[data-staging-context="record"] .three-staging-props {bottom:42%;--prop-size:95px;}
 .three-complete-game .three-staging-hand {position:absolute;left:23%;top:34%;width:40%;height:22%;overflow:hidden;transform:rotate(-8deg);}
 .three-complete-game .three-staging-hand .three-prop-sprite {position:absolute;right:-12%;bottom:-10%;filter:drop-shadow(0 3px 2px #47382435);}
+.three-complete-game .three-arrival-book-stage {position:absolute;inset:92px 0 128px;pointer-events:none;}
+.three-complete-game .three-arrival-book {position:absolute;left:48%;top:65%;width:25%;height:16%;transform:perspective(350px) rotateX(55deg) rotateZ(-17deg);filter:drop-shadow(2px 5px 2px #39271c65);}
+.three-complete-game .three-arrival-book .three-book-leaf {border-width:1px;border-bottom-width:5px;}
+.three-complete-game .three-portrait-photos {display:block;position:absolute;inset:0;pointer-events:none;}
+.three-complete-game .three-portrait-genealogy-leaf {display:block;position:absolute;object-fit:cover;object-position:top;background:#eae3ce;transform-origin:center;}
 .three-complete-game:has(.three-staging-layer[data-player-motion="attentive"]) .character-stage .stage-right .three-portrait-image {translate:-2px 2px;rotate:-.5deg;}
 .three-complete-game:has(.three-staging-layer[data-player-motion="effort"]) .character-stage .stage-right .three-portrait-image {translate:-3px 3px;rotate:-.8deg;}
 .three-complete-game:has(.three-staging-layer[data-player-motion="steady"]) .character-stage .stage-right .three-portrait-image {translate:-1px 1px;}
@@ -16,9 +22,10 @@
 .three-complete-game:has(.three-staging-layer[data-npc-motion="unsteady"]) .character-stage .stage-left .three-portrait-image {translate:0 2px;rotate:.5deg;}
 @media(max-width:760px) {
  .three-complete-game .three-staging-layer {--prop-size:54px;}
- .three-complete-game .three-staging-props {gap:10px;max-width:80%;}
+ .three-complete-game .three-staging-props {bottom:116px;gap:10px;max-width:80%;}
  .three-complete-game .three-staged-prop {max-width:75px;}
  .three-complete-game .three-staging-hand {left:18%;top:32%;}
+ .three-complete-game .three-arrival-book-stage {inset:86px 0 116px;}
 }
 @media(prefers-reduced-motion:reduce) {
  .three-complete-game:has(.three-staging-layer) .character-stage .three-portrait-image {translate:none;rotate:none;}

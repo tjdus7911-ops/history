@@ -1594,11 +1594,10 @@
         },
         {
           "propId": "knot-drawing",
-          "from": "THR-C18-S01-B2-R03",
+          "from": "THR-C18-S01-J01",
           "scope": "scene",
           "choiceId": "THR-C18-S01-B2",
           "phases": [
-            "branch",
             "join"
           ],
           "label": "가족이 기억한 세 줄 매듭"
@@ -3182,6 +3181,93 @@
           "variant": "lifting-hand",
           "from": "THR-PRO-S02-L01",
           "through": "THR-PRO-S02-L02"
+        }
+      ]
+    },
+    "THR-PRO-S03": {
+      "bookActions": [
+        {
+          "variant": "ground",
+          "phases": [
+            "main"
+          ],
+          "from": "THR-PRO-S03-L01",
+          "through": "THR-PRO-S03-L02"
+        },
+        {
+          "variant": "lifting",
+          "phases": [
+            "main"
+          ],
+          "lineIds": [
+            "THR-PRO-S03-L03"
+          ]
+        },
+        {
+          "variant": "held",
+          "phases": [
+            "main"
+          ],
+          "from": "THR-PRO-S03-L04",
+          "through": "THR-PRO-S03-L06"
+        }
+      ],
+      "portraits": [
+        {
+          "variant": "seoa-book-lifting",
+          "phases": [
+            "main"
+          ],
+          "lineIds": [
+            "THR-PRO-S03-L03"
+          ],
+          "scope": "scene"
+        },
+        {
+          "variant": "seoa-book-held",
+          "phases": [
+            "main"
+          ],
+          "from": "THR-PRO-S03-L04",
+          "through": "THR-PRO-S03-L06",
+          "scope": "scene"
+        },
+        {
+          "variant": "yeonwoo-support",
+          "phases": [
+            "main"
+          ],
+          "lineIds": [
+            "THR-PRO-S03-L06"
+          ],
+          "scope": "scene"
+        }
+      ],
+      "actorPresence": [
+        {
+          "characterId": "civilian-c01-0e375c4533--initial",
+          "characterName": "연우",
+          "position": "left",
+          "phases": [
+            "main"
+          ],
+          "lineIds": [
+            "THR-PRO-S03-L06"
+          ],
+          "scope": "scene"
+        }
+      ],
+      "motions": [
+        {
+          "target": "player",
+          "value": "attentive",
+          "phases": [
+            "main"
+          ],
+          "lineIds": [
+            "THR-PRO-S03-L06"
+          ],
+          "scope": "scene"
         }
       ]
     }

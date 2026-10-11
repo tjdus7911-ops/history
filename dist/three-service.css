@@ -76,9 +76,9 @@
 }
 
 /* Every image uses the same face anchor and uniform scale, including atlases.
-   Source pixels are never stretched. Any lower crop occurs at the common stage
-   floor, behind the dialogue area, rather than at a floating portrait edge. */
-.three-complete-game .character-stage {container-type:inline-size;}
+   Keep the common anchor box, but let complete bodies continue behind the
+   dialogue controls. Clipping at that box left a visible horizontal seam. */
+.three-complete-game .character-stage {container-type:inline-size;overflow:visible;}
 .three-complete-game .three-scaled-character {
   --three-face-height:68px;
   display:block;position:absolute;max-width:none;max-height:none;min-width:0;

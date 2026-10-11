@@ -260,7 +260,8 @@ if (globalThis.CORE_APP_READY === true && globalThis.THREE_STORY_RUNTIME?.versio
     const round=value=>Number(value.toFixed(5));
     const style='width:calc(var(--three-face-height) * '+round(rect.width/face.height*scale)+');height:calc(var(--three-face-height) * '+round(rect.height/face.height*scale)+');left:calc('+centerX+'% - var(--three-face-height) * '+round(x)+');top:calc('+centerY+'% - var(--three-face-height) * '+round(y)+')';
     const imageStyle="background-image:url('"+portrait.src+"');background-size:"+round(width/rect.width*100)+'% '+round(height/rect.height*100)+'%;background-position:'+round(width===rect.width?0:rect.x/(width-rect.width)*100)+'% '+round(height===rect.height?0:rect.y/(height-rect.height)*100)+'%;transform:scaleX('+(flip?-1:1)+')'+(sprite?.clipPath?';clip-path:'+sprite.clipPath:'');
-    return '<div class="stage-character three-scaled-character stage-'+line.position+' '+(active?'active':'listening')+'" data-character-id="'+esc(line.characterId)+'" data-position="'+line.position+'" data-portrait="'+esc(portraitId)+'" data-character-framing="'+esc(geometry.framing||'full-body')+'" data-portrait-source="'+(sprite?.columns>1?'atlas':'file')+'" data-face-scale="'+scale+'" style="'+esc(style)+'" role="img" aria-label="'+esc(line.characterName)+'"><span class="three-portrait-image '+(sprite?.columns>1?'three-atlas-image':'')+'" style="'+esc(imageStyle)+'"></span></div>';
+    const portraitLayers=globalThis.THREE_STAGING?.portraitLayers(source,presentation,line.characterId)||'';
+    return '<div class="stage-character three-scaled-character stage-'+line.position+' '+(active?'active':'listening')+'" data-character-id="'+esc(line.characterId)+'" data-position="'+line.position+'" data-portrait="'+esc(portraitId)+'" data-character-framing="'+esc(geometry.framing||'full-body')+'" data-portrait-source="'+(sprite?.columns>1?'atlas':'file')+'" data-face-scale="'+scale+'" style="'+esc(style)+'" role="img" aria-label="'+esc(line.characterName)+'"><span class="three-portrait-image '+(sprite?.columns>1?'three-atlas-image':'')+'" style="'+esc(imageStyle)+'">'+portraitLayers+'</span></div>';
   }
   const beforeStage = characterStage;
   characterStage = function(visible, source, complete, pending, assetId, allEntries, cursor) {
@@ -291,6 +292,13 @@ if (globalThis.CORE_APP_READY === true && globalThis.THREE_STORY_RUNTIME?.versio
       const peer=nearby.find(line=>line.speakerType==='npc')
         ||((current.phase==='branch'||current.phase==='join')?[...history].reverse().find(line=>line.speakerType==='npc'&&lineContext(line)!=='record'):null);
       cast=[...(peer?[standing(peer,'left')]:[]),standing(active,'right')];
+    }
+    for(const presence of globalThis.THREE_STAGING?.actorPresence(source,presentation)||[]) {
+      // Authored visual staging uses the same two actor slots, without adding a
+      // speaker, changing a dialogue line, or moving an NPC to the player's side.
+      const position=presence.speakerType==='player'?'right':'left';
+      cast=cast.filter(line=>line.characterId!==presence.characterId&&line.position!==position);
+      cast.push(standing(presence,position));
     }
     const hidden=globalThis.THREE_STAGING?.actorVisibility(source,presentation)||{};
     cast=cast.filter(line=>!(line.position==='left'?hidden.hideNpc:hidden.hidePlayer));

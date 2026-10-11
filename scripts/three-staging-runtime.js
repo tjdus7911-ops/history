@@ -100,8 +100,35 @@
     return matches.length ? DATA.variants[matches.at(-1).variant] : null;
   }
 
+  function actorPresence(source, state = {}) {
+    // A visual cast cue is not a new speaker or line. The caller merges these
+    // bodies into the ordinary left/right stage before applying visibility.
+    return matching(source,state,'actorPresence').map(rule => ({
+      characterId:rule.characterId,characterName:rule.characterName,
+      speakerType:rule.position === 'right' ? 'player' : 'npc',
+      position:rule.position,expression:'neutral',portrait:rule.characterId+'_neutral',
+      show:true,presentation:'standing',visualOnly:true
+    }));
+  }
+
+  function portraitLayers(source, state = {}, character) {
+    const art = portraitOverride(source,state,character), surfaces = art?.photoSurfaces;
+    if (!surfaces?.length) return '';
+    const rect = art.sprite.sourceRect;
+    // Only the original photographs are placed on the generated blank paper.
+    // Their pixels and written content are never regenerated or transcribed.
+    return '<span class="three-portrait-photos" data-genealogy-source="user-originals">'+surfaces.map(surface => {
+      const photo = DATA.sourcePhotos.find(item=>item.photoNumber===surface.photoNumber);
+      if (!photo) return '';
+      const style = 'left:'+((surface.x-rect.x)/rect.width*100)+'%;top:'+((surface.y-rect.y)/rect.height*100)+
+        '%;width:'+(surface.width/rect.width*100)+'%;height:'+(surface.height/rect.height*100)+
+        '%;rotate:'+(surface.rotate || 0)+'deg';
+      return '<img class="three-portrait-genealogy-leaf" data-source-photo="'+photo.photoNumber+'" src="'+esc(photo.src)+'" style="'+esc(style)+'" alt="">';
+    }).join('')+'</span>';
+  }
+
   function resolve(source, state = {}) {
-    const data = definition(source), empty = {sceneId:sourceId(source),context:'scene',props:[],caption:null,motions:{},hand:null};
+    const data = definition(source), empty = {sceneId:sourceId(source),context:'scene',props:[],caption:null,motions:{},hand:null,book:null};
     if (!data || !VALID_PHASES.has(phase(state))) return empty;
     const seen = new Set(), props = [];
     for (const rule of matching(source,state,'props')) {
@@ -114,7 +141,10 @@
     const caption = matching(source,state,'captions').at(-1) || null, motions = {};
     for (const rule of matching(source,state,'motions')) motions[rule.target] = rule.value;
     const handRule = matching(source,state,'handActions').at(-1);
-    return {sceneId:data.sceneId,context:displayContext,props,caption,motions,hand:handRule ? DATA.hands[handRule.variant] || null : null};
+    const bookRule = matching(source,state,'bookActions').at(-1);
+    return {sceneId:data.sceneId,context:displayContext,props,caption,motions,
+      hand:handRule ? DATA.hands[handRule.variant] || null : null,
+      book:bookRule ? {state:bookRule.variant,sourcePhotos:DATA.sourcePhotos} : null};
   }
 
   function spriteStyle(art, size = 1) {
@@ -126,15 +156,16 @@
 
   function layers(source, state = {}) {
     const view = resolve(source,state);
-    if (!view.props.length && !view.caption && !view.hand && !Object.keys(view.motions).length) return '';
+    if (!view.props.length && !view.caption && !view.hand && !view.book && !Object.keys(view.motions).length) return '';
     const props = view.props.map(prop => '<span class="three-staged-prop" data-three-prop="'+esc(prop.id)+'" data-prop-label="'+esc(prop.label)+'" data-staging-cue="'+esc(prop.cueId)+'" role="img" aria-label="'+esc(prop.label)+'"><span class="three-prop-sprite" style="'+esc(spriteStyle(prop))+'"></span></span>').join('');
     const hand = view.hand ? '<div class="three-staging-hand" data-hand-state="'+esc(view.hand.id)+'"><span class="three-prop-sprite" style="'+esc(spriteStyle(view.hand,2.6))+'"></span></div>' : '';
+    const groundBook = view.book?.state === 'ground' ? '<div class="three-arrival-book-stage"><div class="three-arrival-book" data-book-location="ground"><div class="three-book-leaf left-leaf"></div><div class="three-book-leaf right-leaf"></div>'+view.book.sourcePhotos.map((photo,index)=>'<img class="three-genealogy-leaf leaf-'+index+'" data-source-photo="'+photo.photoNumber+'" src="'+esc(photo.src)+'" alt="">').join('')+'</div></div>' : '';
     // Captions are returned by resolve() for the existing context-label slot.
     // The layer adds physical artwork only, never an inventory/card interface.
-    return '<aside class="three-staging-layer" data-staging-scene="'+esc(view.sceneId)+'" data-staging-line="'+esc(entryId(state))+'" data-staging-context="'+esc(view.context)+'" data-player-motion="'+esc(view.motions.player || '')+'" data-npc-motion="'+esc(view.motions.npc || '')+'" aria-hidden="true">'+(props?'<div class="three-staging-props">'+props+'</div>':'')+hand+'</aside>';
+    return '<aside class="three-staging-layer" data-staging-scene="'+esc(view.sceneId)+'" data-staging-line="'+esc(entryId(state))+'" data-staging-context="'+esc(view.context)+'" data-player-motion="'+esc(view.motions.player || '')+'" data-npc-motion="'+esc(view.motions.npc || '')+'" data-book-state="'+esc(view.book?.state || '')+'" aria-hidden="true">'+(props?'<div class="three-staging-props">'+props+'</div>':'')+hand+groundBook+'</aside>';
   }
 
-  root.THREE_STAGING = Object.freeze({version:DATA.contentVersion,context,layers,resolve,actorVisibility,backgroundOverride,portraitOverride,
+  root.THREE_STAGING = Object.freeze({version:DATA.contentVersion,context,layers,resolve,actorVisibility,actorPresence,backgroundOverride,portraitOverride,portraitLayers,
     audit:Object.freeze({sceneCount:Object.keys(DATA.scenes).length,propCount:Object.keys(DATA.props).length,variantCount:Object.keys(DATA.variants).length,sourceManuscriptSha256:DATA.sourceManuscriptSha256}),
     // Test/debug access is immutable by convention and never reads or writes
     // application saves, timers, cursors or DOM.
