@@ -5,8 +5,8 @@ globalThis.THREE_STORY_SCRIPT={
   "source": {
     "path": "docs/three-content/complete-manuscript.md",
     "filename": "눈떠보니삼국_전체대본_23챕터.md",
-    "sha256": "09e17274a506391305b36efee52b1cd60c4c504cc6619e68fe70cd9909e9674e",
-    "byteLength": 939693
+    "sha256": "b7d416b9281dfeb60bd41d9d621870c1297ac2c70d8767c8300032b6ddbdf9c6",
+    "byteLength": 940588
   },
   "chapterCount": 23,
   "sceneCount": 215,
@@ -27001,7 +27001,7 @@ globalThis.THREE_STORY_SCRIPT={
             {
               "lineId": "THR-C17-S08-M08",
               "speaker": "서아",
-              "text": "알겠어요. 석가탑 속 인쇄물도 종의 소리도, 신비한 이야기 전에 만든 손과 남은 근거를 보려고요.",
+              "text": "알겠어요. 상원사 동종은 725년, 이 성덕대왕신종은 771년. 가장 오래된 종과 가장 큰 고대 범종은 다르네요. 석가탑 속 인쇄물도 종의 소리도, 신비한 이야기 전에 만든 손과 남은 근거를 보려고요.",
               "kind": "dialogue",
               "advance": "tap",
               "sourceLine": 13267,
@@ -29148,7 +29148,7 @@ globalThis.THREE_STORY_SCRIPT={
             {
               "lineId": "THR-C19-S04-M08",
               "speaker": "서아",
-              "text": "지금은 안 그래도 돼요. 이분들 이름은 제가 따로 적어 둘게요. 옆자리, 비어 있죠?",
+              "text": "지금은 안 그래도 돼요. 기록책에서 본 쌍봉사 철감선사탑도 부처의 사리가 아니라 스님을 기리는 승탑이었어요. 이름 뒤에 어떤 사람이 있었는지부터 알아가면 되겠죠. 옆자리, 비어 있죠?",
               "kind": "dialogue",
               "advance": "tap",
               "sourceLine": 14334,
@@ -32701,7 +32701,7 @@ globalThis.THREE_STORY_SCRIPT={
             {
               "lineId": "THR-C21-S09-M07",
               "speaker": "서아",
-              "text": "온돌이나 불상을 고구려와 연결하고, 도시의 큰길은 당과 연결할 수 있겠어요. 한쪽 영향이 보이면 다른 쪽을 지울 필요는 없고요.",
+              "text": "온돌이나 불상을 고구려와 연결하고, 도시의 큰길은 당과 연결할 수 있겠어요. 영광탑과 석등, 돌사자상도 이름만 외우던 유물이었는데, 이제 다솜 씨가 살던 곳의 풍경으로 떠올릴 수 있겠어요. 한쪽 영향이 보이면 다른 쪽을 지울 필요는 없고요.",
               "kind": "dialogue",
               "advance": "tap",
               "sourceLine": 16105,
@@ -35842,7 +35842,7 @@ globalThis.THREE_STORY_SCRIPT={
             {
               "lineId": "THR-C23-S10-M06",
               "speaker": "서아",
-              "text": "오늘은 919년 송악이에요. 고려가 시작됐다는 것은 알지만, 이제 모두 평안해졌다고 끝내지는 못하겠어요.",
+              "text": "오늘은 919년 송악이에요. 918년에 세워진 고려가 도읍을 옮겼어도, 후백제는 오월과 외교를 이어 가네요. 책의 뒤쪽에는 후당과 맺은 관계도 나와요. 새 나라 하나가 생겼다고 경쟁까지 끝난 건 아니군요.",
               "kind": "dialogue",
               "advance": "tap",
               "sourceLine": 17649,
@@ -35860,7 +35860,7 @@ globalThis.THREE_STORY_SCRIPT={
             {
               "lineId": "THR-C23-S10-M08",
               "speaker": "서아",
-              "text": "다음 길에서도 누가 먼저 말하고 있는지 잘 들을게요. 이제는 이름을 알아도, 그 사람의 마음까지 안다고 생각하지 않으려고요.",
+              "text": "다음 길에서도 누가 먼저 말하고 있는지 잘 들을게요. 책에는 927년 견훤의 신라 공격으로 경애왕이 죽고 공산에서는 견훤이, 930년 고창에서는 왕건이 이겼다고 적혀 있어요. 935년 신라가 고려에 귀부하고, 936년 왕건 쪽이 일리천에서 이겨 후삼국을 통일하기까지…… 시온 씨의 편지는 그 긴 세월에도 누군가를 찾아가겠죠. 아직 만나지 않은 사람들의 마음까지 안다고 생각하지 않을게요.",
               "kind": "dialogue",
               "advance": "tap",
               "sourceLine": 17655,

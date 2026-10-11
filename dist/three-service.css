@@ -8,19 +8,10 @@
 .three-complete-game .choice span {white-space:pre-wrap;overflow-wrap:anywhere;word-break:keep-all;}
 .three-complete-game .choice {height:auto;white-space:normal;}
 .three-complete-game .scene-title h2 {white-space:normal;overflow:visible;text-overflow:clip;}
-.three-complete-game .three-date {margin:4px 0 0;font-size:9px;line-height:1.5;color:#f0e4ccad;}
 .three-complete-game .game-header>span {min-width:0;white-space:normal;text-align:center;}
 .three-context-label {margin:0 0 8px;font-size:10px;line-height:1.5;color:#f4dfb0;text-align:center;overflow-wrap:anywhere;}
 .three-record-context::after {content:"";position:absolute;inset:0;border-radius:inherit;background:rgba(45,36,22,.24);z-index:1;pointer-events:none;}
-.three-prologue-book {position:absolute;z-index:1;left:9%;top:31%;width:46%;height:26%;transform:rotate(-8deg);filter:drop-shadow(0 12px 16px #09151470);pointer-events:none}
-.three-book-leaf {position:absolute;top:0;width:50%;height:100%;background:#e9dbba;border:2px solid #c5b389;border-bottom:10px solid #665740;border-radius:6px}
-.left-leaf {left:0;transform:perspective(400px) rotateY(5deg)}.right-leaf {right:0;transform:perspective(400px) rotateY(-5deg)}
-.three-genealogy-leaf {position:absolute;width:42%;height:90%;object-fit:contain;background:#f4f0de;box-shadow:0 2px 3px #342d1d30}
-.three-genealogy-leaf.leaf-0 {left:6%;top:4%;transform:rotate(-10deg)}.three-genealogy-leaf.leaf-1 {left:22%;top:2%;transform:rotate(6deg)}.three-genealogy-leaf.leaf-2 {left:38%;top:5%;transform:rotate(15deg)}
-.three-prologue-book.closeup {left:5%;top:27%;width:68%;height:30%;transform:rotate(-3deg)}
-.closeup .three-genealogy-leaf {width:26%;height:70%;top:-8%}.closeup .leaf-0 {left:0}.closeup .leaf-1 {left:13%}.closeup .leaf-2 {left:25%}
-.three-ink-trace {position:absolute;left:35%;top:30%;width:24%;height:34%;border-radius:55% 45% 65% 40%;background:#484f5090;filter:blur(5px);transform:rotate(27deg)}
-.three-prologue-book.wind .right-leaf {transform:perspective(400px) rotateY(-21deg) rotateZ(-3deg);box-shadow:12px -8px 20px #d6e0d648}.three-prologue-book.wind .three-genealogy-leaf {margin-top:-9px}
+
 .three-prologue-cut::before {content:"";position:absolute;inset:0;border-radius:inherit;background:#070b0b;z-index:30;pointer-events:none;animation:three-wake-cut .12s steps(1,end) both}
 @keyframes three-wake-cut {from{opacity:1}to{opacity:0}}
 .three-queue-focus {background-size:auto 112%;background-position:38% 48%}
@@ -62,17 +53,14 @@
 .three-mnemonic {padding:15px 0;border-bottom:1px solid #dedbcc}.three-mnemonic h3 {font-size:17px;margin:4px 0 10px}
 .three-mnemonic blockquote {padding:13px 15px;background:#eee9d7;margin:0;white-space:pre-wrap;border-left:3px solid #ac9568;border-radius:6px}
 .three-mnemonic p {font-size:13px}.three-empty {padding:28px 0;color:#7c8070}
-.three-original-photo {display:block;width:100%;padding:12px;margin-bottom:16px;border:1px solid #e3dcc7;background:#fffdf5;border-radius:12px}
-.three-original-photo img {display:block;width:100%;height:auto;max-height:320px;object-fit:contain}.three-original-photo span {display:block;margin-top:10px;font-size:13px}
-.three-photo-modal {width:min(1150px,100%);max-width:100%;min-width:0;max-height:calc(100dvh - 40px);display:flex;flex-direction:column;padding:15px}.three-photo-modal header {display:flex;align-items:center;justify-content:space-between;gap:10px}.three-photo-modal header h2 {font-size:18px}
-.three-photo-pan {overflow:auto;max-height:80dvh;overscroll-behavior:contain}.three-photo-pan img {display:block;width:auto;max-width:none;min-width:100%;height:auto}
+
 .three-save-notice {margin:15px 0;padding:20px;background:#f2ecdc;border-radius:14px;border:1px solid #ddd0aa}.three-save-notice h2 {font-size:18px}.three-save-notice p {font-size:14px;line-height:1.65}
 @media(max-width:760px) {
- .three-prologue-book {top:29%;width:56%;height:22%;left:5%}.three-prologue-book.closeup {top:25%;width:75%;height:26%;left:3%}
+
  .three-complete-quiz {padding:14px 14px 28px}.three-complete-quiz .quiz-question-title {font-size:21px}
  .three-number-options {gap:6px}.three-number-options .choice {min-height:69px;font-size:12px;padding:7px 3px}
  .three-recordbook-modal {width:100%;border-radius:14px}.three-recordbook-modal>header {padding:15px 15px 8px}.three-recordbook-modal header h2 {font-size:19px}.three-book-content {padding:13px 15px 22px}.three-book-tabs {padding:0 8px;gap:0}.three-book-tabs button {font-size:12px;padding:8px 11px}
- .three-book-question {gap:8px}.three-book-question button {padding:7px 10px}.three-photo-modal header {flex-wrap:wrap}
+ .three-book-question {gap:8px}.three-book-question button {padding:7px 10px}
 }
 
 /* Every image uses the same face anchor and uniform scale, including atlases.

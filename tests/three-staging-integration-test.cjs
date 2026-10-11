@@ -102,8 +102,8 @@ function toScene(sceneId,label){
 }
 
 // The approved prologue has exactly six taps/lines here. The book travels from
-// the ground to Seoa's two distinct poses; the same three original photos move
-// into her portrait. Yeonwoo's visual-only support pose adds no spoken line.
+// its existing Seoa poses without displaying archived reference photographs.
+// Yeonwoo's visual-only support pose adds no spoken line.
 fixture('three-stage-grandmother-before');
 const originalPhotos=h.copy('THREE_COMPLETE_ART.sourcePhotos').map(photo=>({number:String(photo.photoNumber),src:photo.src}));
 const originalPrologueBackground=h.run('assetStyle(THREE_COMPLETE_ACTIONS.currentSource().illustrationId)');
@@ -115,12 +115,12 @@ for(let number=1;number<=6;number++){
   assert.equal(phase(),'main');assert.equal(h.run('run().dialogueCursor'),number,label+' exact authored cursor');
   assert.equal(entries().length,6,label+' no extra staging dialogue');
   assert.equal(view.bookState,number<=2?'ground':number===3?'lifting':'held');
-  assert.equal(view.groundBook,number<=2,label+' one book location');
+  assert.equal(view.groundBook,false,label+' no reference-photo book overlay');
   if(number<6)assert.equal(view.background,originalPrologueBackground,label+' approved background before support pair');
   else assert(view.background.includes('goguryeo-spring-queue-mother-in-pair-v1.png'),label+' background excludes the mother now carried in the foreground');
-  assert.deepEqual(view.photos.map(({number,src})=>({number,src})),originalPhotos,label+' exact three original image sources, once each');
+  assert.deepEqual(view.photos.map(({number,src})=>({number,src})),[],label+' reference photos are not story artwork');
   assert.equal(seoa.position,'right');assert.equal(seoa.id,'three_v3_seoa');
-  assert.deepEqual(seoa.photos.map(({number,src})=>({number,src})),number<=2?[]:originalPhotos,label+' carried photos are inside Seoa portrait');
+  assert.deepEqual(seoa.photos.map(({number,src})=>({number,src})),[],label+' no reference photos inside Seoa portrait');
   assert.equal(seoa.imageStyle.includes('seoa-book-actions-v1.png'),number>=3);
   if(number===3)liftingImage=seoa.imageStyle;
   if(number===4){heldImage=seoa.imageStyle;assert.notEqual(heldImage,liftingImage,'lifting and held render different approved crops');}
@@ -240,4 +240,4 @@ for(const [name,expected] of [['three-stage-reunion-names',['contact-sheet']],['
 }
 assert.equal(sourceDigest(),originalSourceDigest,'staging never changes any authored or converted dialogue');
 assert.equal(h.run('JSON.stringify(THREE_STORY_SCRIPT)'),JSON.stringify(canonical),'entire approved manuscript remains exact');
-console.log('PASS Three staging integration: '+frames+' actual HTML frames, '+reloads+' fresh-VM restores; prologue book/original-photo poses and support pair/background handoff, record-to-choice actor return, branch props/backgrounds, hand and hammer continuity, past-choice evidence, unchanged complete dialogue and cursors.');
+console.log('PASS Three staging integration: '+frames+' actual HTML frames, '+reloads+' fresh-VM restores; prologue poses without reference-photo layers and support pair/background handoff, record-to-choice actor return, branch props/backgrounds, hand and hammer continuity, past-choice evidence, unchanged complete dialogue and cursors.');

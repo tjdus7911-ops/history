@@ -183,9 +183,9 @@ for(let number=1;number<=6;number++) {
   assert(view.book.sourcePhotos.every(photo=>photo.sourceKind==='user-original-photo'));
   assert.equal(api.backgroundOverride(source,current)?.id||null,number===6?'queue-mother-in-pair':null,'Only L06 removes the duplicate background mother');
   const ground=api.layers(source,current),photoLayers=api.portraitLayers(source,current,'three_v3_seoa');
-  assert.equal(ground.includes('data-book-location="ground"'),number<=2);
-  assert.equal((ground.match(/data-source-photo=/g)||[]).length,number<=2?3:0);
-  assert.equal((photoLayers.match(/data-source-photo=/g)||[]).length,number>=3?3:0);
+  assert.equal(ground.includes('data-book-location="ground"'),false);
+  assert.equal((ground.match(/data-source-photo=/g)||[]).length,0);
+  assert.equal((photoLayers.match(/data-source-photo=/g)||[]).length,0);
   assert.equal(api.portraitOverride(source,current,'three_v3_seoa')?.id||null,number<=2?null:number===3?'seoa-book-lifting':'seoa-book-held');
   assert.equal(presence.length,number===6?1:0);
   if(number===6) {

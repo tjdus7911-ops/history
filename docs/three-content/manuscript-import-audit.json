@@ -3,8 +3,8 @@
   "source": {
     "path": "docs/three-content/complete-manuscript.md",
     "filename": "눈떠보니삼국_전체대본_23챕터.md",
-    "sha256": "09e17274a506391305b36efee52b1cd60c4c504cc6619e68fe70cd9909e9674e",
-    "byteLength": 939693
+    "sha256": "b7d416b9281dfeb60bd41d9d621870c1297ac2c70d8767c8300032b6ddbdf9c6",
+    "byteLength": 940588
   },
   "contentVersion": "three-complete-23-v1",
   "counts": {
@@ -29,9 +29,9 @@
     "narration": 10,
     "record": 33
   },
-  "originalAuthoredDialogueSha256": "43c604c81964a67833e846366e98703044c1cac1d80575c6aa6496bc54402280",
-  "importedAuthoredDialogueSha256": "43c604c81964a67833e846366e98703044c1cac1d80575c6aa6496bc54402280",
-  "allAuthoredDialogueSha256": "171e7d3641ff9f9a50ef429c9a958035cbd7153c5583b6799520b76d63cd25be",
+  "originalAuthoredDialogueSha256": "9888391f7f5e4fdb0aebe85b392d49e9dbb2321bec4b14a4d513898ad4440b33",
+  "importedAuthoredDialogueSha256": "9888391f7f5e4fdb0aebe85b392d49e9dbb2321bec4b14a4d513898ad4440b33",
+  "allAuthoredDialogueSha256": "e3755dfa104cd3a66bade5c89b4cc166332ff8dda00ba56371be29398d20c801",
   "mnemonicOriginalsSha256": "9dc05d36e240a52de43a86a0cc62032bbb47aa05e97e90e851e80b0c07328384",
   "checkedChoicePaths": 142,
   "brokenTransitions": [],

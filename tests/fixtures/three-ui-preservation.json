@@ -1,10 +1,10 @@
 {
   "dist/three-story-script.json": {
-    "sha256": "a2b0454b84dd7b2543ea41f8cb3c518e4a10d1f7db29f855b9324d5ab57fa6f0",
-    "bytes": 1620184
+    "sha256": "fdf33adf9685a4c84425a7218efa42a9680897b6872853bd8f0e1d21bb4426a5",
+    "bytes": 1621079
   },
   "dist/three-exam-data.json": {
-    "sha256": "323e167f88250cc72b8ecc5787c2746552402cd1d068048e81d043eb881621ea",
+    "sha256": "220af19c134da1ebe33f5d11596ddc1d40583a347b0e3a654ac1b71030b79325",
     "bytes": 814244
   },
   "dist/mnemonic-inventory.json": {

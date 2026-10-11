@@ -16,11 +16,11 @@ if (globalThis.CORE_APP_READY === true && globalThis.EDITORIAL_UI_READY === true
     return [...source.main, ...(Number.isInteger(index) ? [source.choices[index].spokenLine,...source.choices[index].reply] : []), ...source.join];
   }
   function recordBook() {
-    const value = actions.book(), tab = modal.tab || 'scenes';
+    const value = actions.book(), tab = ['scenes','questions','notes'].includes(modal.tab) ? modal.tab : 'scenes';
     const read = new Set(value.readSceneIds), mainRead = manuscript.chapters.flatMap(ch=>ch.scenes).filter(s=>read.has(s.sceneId));
     const questions = questionRows();
     const mnemonics = manuscript.mnemonics.filter(item=>item.sceneIds.every(id=>read.has(id)));
-    const tabs = [['scenes','읽은 이야기'],['questions','기출 복습'],['notes','암기 기록'],['originals','내 족보']];
+    const tabs = [['scenes','읽은 이야기'],['questions','기출 복습'],['notes','암기 기록']];
     let content = '';
     if (tab === 'scenes') {
       const source = runtime.sources.get(modal.sceneId);
@@ -40,17 +40,11 @@ if (globalThis.CORE_APP_READY === true && globalThis.EDITORIAL_UI_READY === true
       }).join(''):'<p class="three-empty">기출에 필요한 장면을 읽은 뒤 문제가 열립니다.</p>')+(!playable&&questions.length?'<p>이야기 화면으로 돌아오면 선택 복습을 시작할 수 있어요.</p>':'');
     } else if (tab === 'notes') {
       content = '<p>배운 내용을 모은 암기 기록 '+mnemonics.length+' / '+manuscript.mnemonics.length+'</p>'+mnemonics.map(item=>'<article class="three-mnemonic"><h3>'+esc(item.title)+'</h3><blockquote>'+esc(item.originalText)+'</blockquote><p>'+esc(item.explanation)+'</p></article>').join('')+(mnemonics.length?'':'<p class="three-empty">연결된 장면을 모두 읽으면 원래의 암기 문구와 설명이 열립니다.</p>');
-    } else if (tab === 'originals') {
-      content = '<p>처음 공부하던 족보 세 장입니다. 이미지를 누르면 원본 크기로 볼 수 있어요.</p>'+globalThis.THREE_COMPLETE_ART.sourcePhotos.map((photo,index)=>'<button class="three-original-photo" data-three-photo="'+index+'"><img src="'+esc(photo.src)+'" alt="'+esc(photo.displayLabel)+'" loading="lazy"><span>'+esc(photo.displayLabel)+' · 확대하기</span></button>').join('');
     }
     return '<div class="modal-overlay three-modal-overlay"><section class="modal three-recordbook-modal" role="dialog" aria-modal="true" aria-labelledby="three-book-title"><header><div><small>서아의 기록</small><h2 id="three-book-title">함께 지나온 시간</h2></div><button data-action="close">닫기</button></header><nav class="three-book-tabs" aria-label="기록책">'+tabs.map(([id,label])=>'<button data-three-book-tab="'+id+'" aria-pressed="'+(tab===id)+'">'+label+'</button>').join('')+'</nav><div class="three-book-content">'+content+'</div></section></div>';
   }
   modalHTML = function() {
     if (modal?.type === 'three-recordbook') return recordBook();
-    if (modal?.type === 'three-source-photo') {
-      const photo = globalThis.THREE_COMPLETE_ART.sourcePhotos[modal.index];
-      return '<div class="modal-overlay three-modal-overlay"><section class="modal three-photo-modal" role="dialog" aria-modal="true" aria-label="'+esc(photo.displayLabel)+'"><header><h2>'+esc(photo.displayLabel)+'</h2><button data-action="three-photo-back">족보로 돌아가기</button><button data-action="close">닫기</button></header><div class="three-photo-pan"><img src="'+esc(photo.src)+'" alt="'+esc(photo.displayLabel)+'"></div></section></div>';
-    }
     return beforeModal();
   };
   const beforeHero = heroContent;
@@ -58,11 +52,27 @@ if (globalThis.CORE_APP_READY === true && globalThis.EDITORIAL_UI_READY === true
     let html = beforeHero(era,detail); if (era.id !== runtime.eraId) return html;
     return html.replace('진행률','읽은 진행도');
   };
-  const beforeRow = editorialChapterRow;
-  editorialChapterRow = function(chapter) {
-    const html = beforeRow(chapter); if (chapter.threeStoryVersion !== 3) return html;
-    const count = chapter.sceneIds.length;
-    return html.replace('</b>','</b><small class="three-chapter-count">'+count+'개 장면 · 대사 선택과 기출</small>');
+  const beforeYears = editorialChapterYears;
+  editorialChapterYears = function(chapter) {
+    if(chapter.threeStoryVersion !== 3) return beforeYears(chapter);
+    const dates=chapter.sceneIds.map(id=>runtime.sources.get(id)?.year||'');
+    const years=dates.flatMap(date=>[...String(date).replace(/\([^)]*\)/g,'').matchAll(/(\d{3,4})년/g)].map(match=>Number(match[1])));
+    if(!years.length) return globalThis.THREE_COMPACT_DATE(dates[0]);
+    const first=Math.min(...years),last=Math.max(...years);
+    return first===last?first+'년':first+'–'+last+'년';
+  };
+  const beforeChapterDetail = chapterDetailModal;
+  chapterDetailModal = function(id) {
+    const html=beforeChapterDetail(id),chapter=CHAPTERS[id];
+    if(chapter?.threeStoryVersion !== 3) return html;
+    return html.replace('<h2>'+esc(chapter.subtitle)+'</h2>','<h2>'+esc(chapter.title)+'</h2><p>'+esc(editorialChapterYears(chapter))+'</p>');
+  };
+  const beforeTeaser = teaser;
+  teaser = function() {
+    const html=beforeTeaser(),chapter=CHAPTERS[run().currentChapter];
+    if(chapter?.threeStoryVersion !== 3) return html;
+    const order=eraChapters(runtime.eraId),next=order[order.findIndex(item=>item.chapterId===chapter.chapterId)+1];
+    return html.replace(/(<h2>[\s\S]*?<\/h2>)<p>[\s\S]*?<\/p>/,'$1<p>'+esc(editorialChapterYears(next||chapter))+'</p>');
   };
   function archiveNotice() {
     const notices = globalThis.THREE_ERA_ISOLATION?.archiveNotices?.() || [];
@@ -85,12 +95,6 @@ if (globalThis.CORE_APP_READY === true && globalThis.EDITORIAL_UI_READY === true
       modal = {type:'three-recordbook',tab:'scenes',sceneId:data.threeBookScene}; render();
     } else if (data.threeReview) {
       event.stopImmediatePropagation(); actions.startReview(data.threeReview,data.threePlacement);
-    } else if (data.threePhoto !== undefined) {
-      event.stopImmediatePropagation(); const index = Number(data.threePhoto);
-      if (!Number.isInteger(index) || !globalThis.THREE_COMPLETE_ART.sourcePhotos[index]) return;
-      modal = {type:'three-source-photo',index}; render();
-    } else if (data.action === 'three-photo-back') {
-      event.stopImmediatePropagation(); modal = {type:'three-recordbook',tab:'originals'}; render();
     } else if (data.action === 'three-dismiss-archive') {
       event.stopImmediatePropagation(); actions.book().archiveNoticeDismissed = true; save(); render();
     }

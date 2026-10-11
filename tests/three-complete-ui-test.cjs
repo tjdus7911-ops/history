@@ -60,8 +60,7 @@ async function fits(page, label) {
       await page.waitForFunction(() => globalThis.THREE_STORY_UI_READY === true);
       await page.evaluate(() => { localStorage.clear(); resumeEra('three-kingdoms'); });
       assert.equal(await page.locator('.three-complete-game').getAttribute('data-three-scene'), 'THR-PRO-S01');
-      assert.equal(await page.locator('.three-genealogy-leaf').count(), 3);
-      await decodedImages(page, '.three-genealogy-leaf');
+      assert.equal(await page.locator('.three-genealogy-leaf').count(), 0);
       const initial = await page.evaluate(() => [run().storyId, run().dialogueCursor]);
       await page.waitForTimeout(1100);
       assert.deepEqual(await page.evaluate(() => [run().storyId, run().dialogueCursor]), initial, 'prologue advanced without a tap');
@@ -120,7 +119,7 @@ async function fits(page, label) {
       assert.deepEqual(errors, [], 'browser JavaScript errors');
       await context.close();
     }
-    console.log('PASS: actual index.html in Chromium at 390/1280px; tap-only prologue, source photos, one-shot cut, spoken choice and branch reload, atlas rendering, 4/5-option original quizzes.');
+    console.log('PASS: actual index.html in Chromium at 390/1280px; tap-only prologue, reference photos absent, one-shot cut, spoken choice and branch reload, atlas rendering, 4/5-option original quizzes.');
   } finally {
     if (browser) await browser.close();
     await new Promise(resolve => server.close(resolve));

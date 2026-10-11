@@ -310,12 +310,15 @@ if (globalThis.CORE_APP_READY === true && globalThis.THREE_STORY_RUNTIME?.versio
     const metadata = 'data-line-id="'+esc(entry.lineId)+'" data-character-id="'+esc(entry.characterId)+'" data-position="'+(entry.speakerType==='player'?'right':'left')+'" data-presentation-context="'+esc(context)+'"';
     return dialogueBubble(entry,index).replace('<div ', '<div '+metadata+' ');
   }
-  function prologueBook(source, cursor) {
-    if (!['THR-PRO-S01','THR-PRO-S02'].includes(source.sceneId)) return '';
-    const photos = globalThis.THREE_COMPLETE_ART?.sourcePhotos || [];
-    const wind = source.sceneId === 'THR-PRO-S02' && cursor >= 3;
-    return '<div class="three-prologue-book '+(source.sceneId==='THR-PRO-S02'?'closeup ':'')+(wind?'wind':'')+'" aria-hidden="true"><div class="three-book-leaf left-leaf"></div><div class="three-book-leaf right-leaf">'+(source.sceneId==='THR-PRO-S02'?'<span class="three-ink-trace"></span>':'')+'</div>'+photos.map((p,i)=>'<img class="three-genealogy-leaf leaf-'+i+'" src="'+esc(p.src)+'" alt="">').join('')+'</div>';
+  function compactThreeDate(value) {
+    const text=String(value||'').replace(/\s*[（(][^）)]*[）)]/g,'').trim();
+    const years=[...text.matchAll(/(\d{3,4})(?:년|(?=\s*[~～–—→]))/g)].map(match=>match[1]);
+    if(years.length) return [...new Set(years)].join('·')+'년';
+    const century=text.match(/(?:\d{1,2}~)?\d{1,2}세기(?:\s*(?:초|중엽|중반|말))?/);
+    if(century) return century[0];
+    return text.split(/[·,—→]|\s[—–-]\s/)[0].trim();
   }
+  globalThis.THREE_COMPACT_DATE=compactThreeDate;
   const beforeGame = game;
   game = function() {
     const source = currentSource(); if (!isThree(source)) return beforeGame();
@@ -333,8 +336,7 @@ if (globalThis.CORE_APP_READY === true && globalThis.THREE_STORY_RUNTIME?.versio
     const action=current.phase==='branch'&&cursor>=entries.length?'result-next':cursor>=entries.length?'next':'advance-dialogue';
     const label=cursor<entries.length?'탭하여 계속':current.phase==='hints'?'기출 펼치기':current.phase==='main'&&source.choices?.length?'응답 고르기':source.completeChapter&&current.phase==='join'?'기록을 마친다':'이야기 계속';
     const date=String(source.threeDateLabel||'');
-    const compactDate=date.match(/^([0-9]{3,4})(?:년|$)/)?.[1];
-    const headerDate=compactDate?compactDate+'년':date.replace(/\s*[（(][^）)]*[）)]/g,'').trim();
+    const headerDate=compactThreeDate(date);
     const chapterLabel=source.isPrologue?'프롤로그':'CH.'+info.number+' &nbsp; '+esc(headerDate);
     const count=source.isPrologue?3:chapterScenes(source.chapterId).length;
     const readCount=book().readSceneIds.filter(id=>source.isPrologue?id.startsWith('THR-PRO-'):runtime.sources.get(id)?.chapterId===source.chapterId).length;
@@ -344,7 +346,7 @@ if (globalThis.CORE_APP_READY === true && globalThis.THREE_STORY_RUNTIME?.versio
     const choiceMarkup=choices?choiceButtons(source,r).replace('class="choices"','class="choices three-dialogue-choices" role="group" aria-label="서아가 할 말"'):'';
     const advancing=!choices&&cursor<entries.length?'<button class="advance-dialogue" data-action="'+action+'">'+label+' <b>›</b></button>':'';
     const continuing=!choices&&cursor>=entries.length?'<button class="primary next" data-action="'+action+'">'+label+'</button>':'';
-    return '<section class="game conversation-game three-complete-game has-art layered-art '+(first?'three-wake ':'')+(cut?'three-prologue-cut ':'')+(first&&cursor>=5?'three-queue-focus ':'')+(context==='record'?'three-record-context':'')+'" data-three-scene="'+esc(source.sceneId)+'" data-three-phase="'+current.phase+'" data-three-ui="approved-messenger-v1" style="'+sceneStyle+'"><div class="scene-scrim"></div>'+prologueBook(source,cursor)+'<div class="game-header"><button class="glass" data-nav="era">‹ &nbsp; 이야기 나가기</button><span class="glass">'+chapterLabel+'</span><button class="glass" data-action="three-recordbook">기록책</button></div><div class="game-stats"><span>♡ &nbsp; 체력 '+r.stats.health+'</span><span>◇ &nbsp; 지식 '+r.stats.knowledge+'</span><span>◉ &nbsp; '+r.stats.wealth+'냥</span></div><div class="scene-title"><small>'+(raw.showDateAndLocation===false?'':esc(source.location))+'</small><h2>'+esc(source.title)+'</h2>'+(!source.isPrologue&&date!==headerDate?'<p class="three-date">'+esc(date)+'</p>':'')+'</div>'+stage+stagingLayers+'<section class="conversation-panel" aria-label="대화">'+(contextLabel?'<div class="three-context-label">'+esc(contextLabel)+'</div>':'')+'<div class="dialogue-log">'+visible.map((line,index)=>bubble(line,visibleStart+index,source,current)).join('')+'</div><div class="dialogue-step"><span>'+cursor+' / '+entries.length+'</span>'+advancing+'</div>'+continuing+choiceMarkup+'<div class="conversation-sub">'+notice+'</div></section><div class="chapter-progress" aria-label="읽은 장면 '+readCount+' / '+count+'">'+Array.from({length:count},(_,i)=>'<i class="'+(i<readCount?'on':'')+'"></i>').join('')+'</div></section>';
+    return '<section class="game conversation-game three-complete-game has-art layered-art '+(first?'three-wake ':'')+(cut?'three-prologue-cut ':'')+(first&&cursor>=5?'three-queue-focus ':'')+(context==='record'?'three-record-context':'')+'" data-three-scene="'+esc(source.sceneId)+'" data-three-phase="'+current.phase+'" data-three-ui="approved-messenger-v1" style="'+sceneStyle+'"><div class="scene-scrim"></div>'+'<div class="game-header"><button class="glass" data-nav="era">‹ &nbsp; 이야기 나가기</button><span class="glass">'+chapterLabel+'</span><button class="glass" data-action="three-recordbook">기록책</button></div><div class="game-stats"><span>♡ &nbsp; 체력 '+r.stats.health+'</span><span>◇ &nbsp; 지식 '+r.stats.knowledge+'</span><span>◉ &nbsp; '+r.stats.wealth+'냥</span></div><div class="scene-title"><small>'+(raw.showDateAndLocation===false?'':esc(source.location))+'</small><h2>'+esc(source.title)+'</h2>'+'</div>'+stage+stagingLayers+'<section class="conversation-panel" aria-label="대화">'+(contextLabel?'<div class="three-context-label">'+esc(contextLabel)+'</div>':'')+'<div class="dialogue-log">'+visible.map((line,index)=>bubble(line,visibleStart+index,source,current)).join('')+'</div><div class="dialogue-step"><span>'+cursor+' / '+entries.length+'</span>'+advancing+'</div>'+continuing+choiceMarkup+'<div class="conversation-sub">'+notice+'</div></section><div class="chapter-progress" aria-label="읽은 장면 '+readCount+' / '+count+'">'+Array.from({length:count},(_,i)=>'<i class="'+(i<readCount?'on':'')+'"></i>').join('')+'</div></section>';
   };
   // Three lines are complete when rendered. Older saves may retain their
   // threeTypedLineId field, but it never gates input or schedules characters.

@@ -111,20 +111,9 @@
     }));
   }
 
-  function portraitLayers(source, state = {}, character) {
-    const art = portraitOverride(source,state,character), surfaces = art?.photoSurfaces;
-    if (!surfaces?.length) return '';
-    const rect = art.sprite.sourceRect;
-    // Only the original photographs are placed on the generated blank paper.
-    // Their pixels and written content are never regenerated or transcribed.
-    return '<span class="three-portrait-photos" data-genealogy-source="user-originals">'+surfaces.map(surface => {
-      const photo = DATA.sourcePhotos.find(item=>item.photoNumber===surface.photoNumber);
-      if (!photo) return '';
-      const style = 'left:'+((surface.x-rect.x)/rect.width*100)+'%;top:'+((surface.y-rect.y)/rect.height*100)+
-        '%;width:'+(surface.width/rect.width*100)+'%;height:'+(surface.height/rect.height*100)+
-        '%;rotate:'+(surface.rotate || 0)+'deg';
-      return '<img class="three-portrait-genealogy-leaf" data-source-photo="'+photo.photoNumber+'" src="'+esc(photo.src)+'" style="'+esc(style)+'" alt="">';
-    }).join('')+'</span>';
+  function portraitLayers() {
+    // Reference photographs are archived source material, never story artwork.
+    return '';
   }
 
   function resolve(source, state = {}) {
@@ -167,7 +156,7 @@
     const settingInk = view.settingSurfaces.map(art => '<img class="three-setting-surface" data-setting-surface="'+esc(art.id)+'" data-setting-background="'+esc(art.backgroundSrc)+'" data-staging-cue="'+esc(art.cueId)+'" src="'+esc(art.src)+'" alt="" aria-hidden="true">').join('');
     const props = view.props.map(prop => '<span class="three-staged-prop" data-three-prop="'+esc(prop.id)+'" data-prop-label="'+esc(prop.label)+'" data-staging-cue="'+esc(prop.cueId)+'" role="img" aria-label="'+esc(prop.label)+'"><span class="three-prop-sprite" style="'+esc(spriteStyle(prop))+'"></span></span>').join('');
     const hand = view.hand ? '<div class="three-staging-hand" data-hand-state="'+esc(view.hand.id)+'"><span class="three-prop-sprite" style="'+esc(spriteStyle(view.hand,2.6))+'"></span></div>' : '';
-    const groundBook = view.book?.state === 'ground' ? '<div class="three-arrival-book-stage"><div class="three-arrival-book" data-book-location="ground"><div class="three-book-leaf left-leaf"></div><div class="three-book-leaf right-leaf"></div>'+view.book.sourcePhotos.map((photo,index)=>'<img class="three-genealogy-leaf leaf-'+index+'" data-source-photo="'+photo.photoNumber+'" src="'+esc(photo.src)+'" alt="">').join('')+'</div></div>' : '';
+    const groundBook = ''; // Do not stage the reference-photo book overlay.
     // Captions are returned by resolve() for the existing context-label slot.
     // The layer adds physical artwork only, never an inventory/card interface.
     return settingInk+'<aside class="three-staging-layer" data-staging-scene="'+esc(view.sceneId)+'" data-staging-line="'+esc(entryId(state))+'" data-staging-context="'+esc(view.context)+'" data-player-motion="'+esc(view.motions.player || '')+'" data-npc-motion="'+esc(view.motions.npc || '')+'" data-book-state="'+esc(view.book?.state || '')+'" aria-hidden="true">'+(props?'<div class="three-staging-props">'+props+'</div>':'')+hand+groundBook+'</aside>';
