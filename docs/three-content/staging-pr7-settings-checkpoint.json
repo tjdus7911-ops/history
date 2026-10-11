@@ -1,0 +1,60 @@
+{
+  "status": "two-new-settings-linked-pure-tests-pass-actual-review-pending",
+  "files": [
+    {
+      "path": "scripts/build-three-staging.py",
+      "sha256": "be9e0a96c16de399503f4dc4aa2da9b084b7da0f84f63ce3ce2478ac345c9766",
+      "bytes": 10971
+    },
+    {
+      "path": "tests/three-staging-test.cjs",
+      "sha256": "e7ce0c1be6c817c0202ae88d1ff016b7ff3f85b262382a8f79a1c3657ff26998",
+      "bytes": 12392
+    },
+    {
+      "path": "dist/three-staging.js",
+      "sha256": "ef85df855d59aa7036218334d6517a697e79ba64e49207c7a368c388b13b82e6",
+      "bytes": 429496
+    },
+    {
+      "path": "docs/three-content/staging-cues.json",
+      "sha256": "9d82eac44024015ba4513026992eb16b48fe9bf602f9b6a32c649512bb2c689c",
+      "bytes": 76333
+    },
+    {
+      "path": "docs/three-content/staging-acting-generation.json",
+      "sha256": "52b9f59916ec2b107d662e7635d797f74cc4bde800237552b373af1f793b4288",
+      "bytes": 42479
+    },
+    {
+      "path": "docs/three-content/staging-setting-generation-inputs.json",
+      "sha256": "b64872cdab8da0aeefa4db044f60e2e1cbd4ca17f314d3682653b3dc6b274849",
+      "bytes": 5073
+    },
+    {
+      "path": "docs/three-content/staging-runtime-audit.json",
+      "sha256": "12c68ef63bff1219e7f7e4049eac70c20c460eceb468786cfbb0f48ee85f1cc6",
+      "bytes": 158685
+    },
+    {
+      "path": "docs/three-content/staging-completion-ledger.json",
+      "sha256": "1f66280a085f07a182114fd6743a9d650b4d43b937354dcc2d2493e4c9ad8157",
+      "bytes": 5225
+    },
+    {
+      "path": "docs/three-content/STAGING_IMPLEMENTATION.md",
+      "sha256": "7488b14b5582ba3592d83b34150da4321aa123a6d4198c4b6e9355d69666d400",
+      "bytes": 11743
+    },
+    {
+      "path": "dist/assets/ancient/three-complete/backgrounds/silla-ox-field-rest-v1.png",
+      "sha256": "2b26997fbf22e6191dcc2e261bb6bcb6ec29a9e87ac674e3227a638015975e11",
+      "bytes": 3501520
+    },
+    {
+      "path": "dist/assets/ancient/three-complete/backgrounds/hwangnyongsa-construction-v1.png",
+      "sha256": "ba82824025af2ccc4d13ebac92fad04f954a43c585efb57a785f09c9e53c0ca5",
+      "bytes": 3246307
+    }
+  ]
+}

@@ -4,12 +4,12 @@
   "sourceManuscriptSha256": "09e17274a506391305b36efee52b1cd60c4c504cc6619e68fe70cd9909e9674e",
   "sceneCount": 218,
   "authoredUtteranceCount": 2777,
-  "explicitCueCount": 254,
-  "scenesWithExplicitCues": 144,
+  "explicitCueCount": 256,
+  "scenesWithExplicitCues": 145,
   "propImageCount": 27,
   "handActionImageCount": 2,
   "actorVariantImageCount": 6,
-  "backgroundStateImageCount": 2,
+  "backgroundStateImageCount": 4,
   "originalGenealogyPhotoCount": 3,
   "sourcePixelsEdited": false,
   "saveMutations": false,
@@ -1635,10 +1635,14 @@
     {
       "sceneId": "THR-C11-S01",
       "authoredStaging": "502년 지증왕대 농촌. 우경 장려의 국가 기록을 배경으로 소가 부족한 마을의 허구 갈등을 보여 준다. 일러스트는농경지·쟁기·소를 포함하며 서아의 임의 수의치료를 연출하지 않는다.",
-      "runtimeCueCounts": {},
-      "runtimeCueIds": [],
+      "runtimeCueCounts": {
+        "backgrounds": 1
+      },
+      "runtimeCueIds": [
+        "THR-C11-S01:backgrounds:1"
+      ],
       "recordLineIds": [],
-      "status": "existing-cast-background-and-dialogue-presentation",
+      "status": "implemented-presentation-cues-awaiting-browser-review",
       "customIllustrationCompletion": "not-inferred-from-cue-count"
     },
     {
@@ -1957,10 +1961,11 @@
         "visibility": 0,
         "motions": 0,
         "portraits": 0,
-        "backgrounds": 0
+        "backgrounds": 1
       },
       "runtimeCueIds": [
-        "THR-C13-S03:props:1"
+        "THR-C13-S03:props:1",
+        "THR-C13-S03:backgrounds:1"
       ],
       "recordLineIds": [],
       "status": "implemented-presentation-cues-awaiting-browser-review",

@@ -1062,7 +1062,13 @@
       "visibility": [],
       "motions": [],
       "portraits": [],
-      "backgrounds": []
+      "backgrounds": [
+        {
+          "assetId": "hwangnyongsa-construction",
+          "from": "THR-C13-S03-M01",
+          "scope": "scene"
+        }
+      ]
     },
     "THR-C13-S04": {
       "props": [
@@ -3267,6 +3273,15 @@
           "lineIds": [
             "THR-PRO-S03-L06"
           ],
+          "scope": "scene"
+        }
+      ]
+    },
+    "THR-C11-S01": {
+      "backgrounds": [
+        {
+          "assetId": "silla-ox-field",
+          "from": "THR-C11-S01-M01",
           "scope": "scene"
         }
       ]

@@ -79,6 +79,8 @@
         'three-stage-letter-return':['THR-C08-S08','join',{choiceIndex:0,cursor:1}],
         'three-stage-letter-wait':['THR-C08-S08','branch',{choiceIndex:1,cursor:2}],
         'three-stage-letter-wait-join':['THR-C08-S08','join',{choiceIndex:1,cursor:1}],
+        'three-stage-ox-field':['THR-C11-S01','main',{cursor:2}],
+        'three-stage-pagoda-build':['THR-C13-S03','main',{cursor:2}],
         'three-stage-hammer-down':['THR-C15-S07','branch',{choiceIndex:0,cursor:2}],
         'three-stage-hammer-join':['THR-C15-S07','join',{choiceIndex:0,cursor:1}],
         'three-stage-hand-hidden':['THR-C17-S04','main',{cursor:2}],

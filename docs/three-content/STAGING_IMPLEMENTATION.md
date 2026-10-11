@@ -88,3 +88,12 @@ CH07 S06의 실제 390px 화면에서 공통 소품을 `bottom:42%`에 놓으면
 4. 원문이 명시한 종이 스침·바람·멀어지는 소리 등의 음향. 현재 모듈은 음향 자산을 추가하거나 자동 재생하지 않는다.
 
 미완 항목을 후보 또는 취소로 바꾸지 않으며, 다음 작업·검증 대상으로 유지한다. 최종 완료 여부는 원고의 해당 연출과 실제 화면을 함께 대조한 결과로 판단한다.
+
+
+## Added physical settings after PR6
+
+Two separately generated backgrounds now replace the generic setting only in their approved scene. `THR-C11-S01` uses `silla-ox-field` from M01 through the choice, both branches and join: the ox is resting, with a yoke, plough and tilled ground, and no treatment or recovery is implied. `THR-C13-S03` uses `hwangnyongsa-construction` from M01 through join: the wooden pagoda frame remains unfinished. The next scene resolves its ordinary background again.
+
+The generator validates both immutable PNG hashes through `staging-acting-generation.json`; complete generation prompts and source reference hashes remain in `staging-setting-generation-inputs.json`. The regression test checks every line in these two scenes, both ox branches, the menu, join, JSON round-trip reload, and the following scene. Pure staging validation passes for 218 scenes and 2,919 immutable frames, with 256 explicit cues and four background states. These counts do not establish that the remaining authored architecture, crowd, hand or audio details are complete.
+
+The generated source files were viewed. Actual browser crop/composition review for these two added settings remains pending; `runtimeVisualReviewComplete` stays false. The ox and plough must both remain readable in the vertical game crop. No canonical dialogue, exam, source-photo pixel or other-era changes were made.
