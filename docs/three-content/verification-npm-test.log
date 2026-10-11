@@ -1,0 +1,264 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> lived-history-goryeo@6.2.0 test
+> node tests/mnemonic-data-test.cjs && node tests/verify.cjs && node tests/exam-bank-test.cjs && node tests/ui-test.cjs && node tests/ch02-ui-test.cjs && node tests/ch03-sourced-quiz-test.cjs && node tests/ch03-verified-contract-test.cjs && node tests/ch03-ui-test.cjs && node tests/ch03-character-slots-test.cjs && node tests/replay-ui-test.cjs && node tests/ch01-expansion-test.cjs && node tests/story-audit-test.cjs && node tests/ch01-reading-test.cjs && node tests/question-set-ui-test.cjs && node tests/late-goryeo-test.cjs && node tests/late-goryeo-ui-test.cjs && node tests/official-image-ui-test.cjs && node tests/ch05-refinement-test.cjs && node tests/ch06-background-test.cjs && node tests/ch06-quiz-test.cjs && node tests/v2-renewal-test.cjs && node tests/v2-preservation-test.cjs && node tests/character-art-style-test.cjs && node tests/v2-full-play-test.cjs --choice=0 && node tests/v2-full-play-test.cjs --choice=1 --wrong && node tests/v2-full-play-test.cjs --choice=2 && node tests/editorial-ui-test.cjs && node tests/season-framework-test.cjs && node tests/ancient-exam-analysis-test.cjs && node tests/ancient-story-test.cjs && node tests/ancient-full-play-test.cjs && node tests/exam-library-test.cjs && node tests/official-exam-timer-test.cjs && node tests/official-exam-pass-test.cjs && node tests/official-explanation-test.cjs && node tests/official-canonical-qa-test.cjs && node tests/ox-quiz-test.cjs && node tests/ox-route-test.cjs && node tests/v2-full-play-test.cjs --editorial --choice=0 && node tests/v2-full-play-test.cjs --editorial --choice=1 --wrong && node tests/joseon-data-test.cjs && node tests/joseon-learning-qa-test.cjs && node tests/joseon-ui-test.cjs && node tests/joseon-character-state-test.cjs && node tests/joseon-full-play-test.cjs && node tests/proto-story-test.cjs && node tests/proto-main-preservation-test.cjs && node tests/proto-art-test.cjs && node tests/proto-background-art-test.cjs && node tests/build.cjs && npm run test:three
+
+PASS: 118 explicit mnemonic records, exact source strings, review gates, structured detail, canonical question IDs and Story IDs.
+{"scenes":281,"ch01Scenes":35,"ch02Scenes":66,"questions":227,"ch02Paths":324,"ch02Choices":16,"status":"PASS"}
+PASS: CH.01 has 9 and CH.02 has 15 active questions, 12 advanced practice questions are explicitly labeled, and all 33 official answers remain source-labeled and story-linked.
+PASS: sequential NPC/player dialogue, expression portraits, thought styling, choice response/reaction, cursor reload, full CH.01 flow, restart preservation, and review return.
+PASS: opening tap flow, typing completion, both portraits, one-time fade and legacy save continuity.
+PASS: CH.03 transitions, aged portraits, preserved choice arcs, twenty-nine questions across fifteen sets, thirty-six-question review, delayed mystery reveal, wrong-note save, teaser, reload, and replay start.
+PASS: CH.03 twenty-nine questions in fifteen 1–3-question blocks, all correct, source labels, choices, explanation, rewards, reload, story return and chapter clear.
+PASS: CH.03 twenty-nine questions in fifteen 1–3-question blocks, all incorrect, source labels, choices, explanation, rewards, reload, story return and chapter clear.
+PASS: eighteen PDF-verified official exams, all existing questions retained, twelve added official records, complete provenance labels with eight negative cases, CH01/02 exact preservation, same-chapter resumes, and legacy queue/review/wrong-note continuity.
+PASS: CH.04 982 time jump, aged portraits, Seongjong 3-question official set, uninterrupted Doyun farewell/soliloquy/legacy, teaser, save, and reload.
+PASS: 36 CH.03 scenes, 134 spoken frames/choice results, dialogue slots, hidden description/history layers, active/listening emphasis, reload, unchanged content and 38 images. Repaired dialogue scenes: ch02_reunion_949, ch02_market, ch02_life_path, ch02_shop_956, ch02_dispute, ch02_trust, ch02_policy_reason, ch02_noble_night, ch02_exam_notice, ch02_three_way, ch02_ssanggi, ch02_exam_eve, ch02_exam_day, ch02_hyunwoo_official, ch02_purge, ch02_night_discussion, ch02_complete
+PASS: chapter card details, completed replay, main progress restoration, result shortcut isolation, locked feedback, refresh persistence, attempt history, and CH.01~12 metadata rendering.
+PASS: protected prologue, both early chapter flows, three war branches, 9 + 15 story questions, matching independent reviews, canonical merchant aging, reload, and save migration idempotence.
+PASS: 41 verified official questions, 24 ready question sets, 0 waiting sets, CH.01–04 reachable paths, aging assets, Doyun finale, and v15 save migration.
+PASS: CH.01 advance taps 62 -> 39, every line retained, polite voice, narrative grouping, reload, timeline, 9 questions and CH.02 speech agreement.
+PASS: story question sets run as uninterrupted 1/3–3/3 queues, survive reload, show set score, resume correctly, and never interrupt Doyun finale.
+PASS: CH.05–12 provide 118 reachable scenes, 37 uninterrupted three-question sets, 8 verified official and 103 clearly labeled practice questions, historical coverage, aging, save migration, and full data play.
+PASS: CH.05–12 UI full play, 3-question queues, explanation return, reload, unlock, ending teaser, replay preservation, and render-tier output.
+PASS: all 140 official records (including 20 ancient story links), 136 source images/answers, 4 explicit missing PDFs, original choices, correct/wrong feedback, zoom/close, reload, future factory and unchanged content/IDs/transitions.
+PASS: CH.05 13 scenes/16 questions (7 verified + 9 preserved), every frame, portraits, correct/wrong, return/save, CH.06 speaking participation, all other chapters and historical/quiz content preserved.
+PASS: CH06 14 scenes/13 backgrounds, both choice branches, all 22 quizzes correct/wrong/explanation/return, save migration, CH07 transition; every other story/quiz/character/asset unchanged.
+PASS: CH06 22 questions/8 verified officials/14 practices/8 source images; all recall assets match witnessed scenes; full play correct and wrong, stable order despite attempts, legacy queue, no duplicates, save/resume, CH07 transition, all other content preserved.
+PASS: V2 real metrics, unknown-date legacy records, official-only filters, empty filters, safe story revisit, era readiness, calendar, recall mapping and save continuity.
+PASS: every original story, dialogue, choice, chronology, character identity, practice question and save version preserved; all official records have original images.
+PASS: character art contract (15 Joseon expressions, 6 NPCs, 2237 asset references).
+PASS: V2 CH.01–12 UI full play, 3-question queues, explanation return, reload, unlock, ending teaser, replay preservation, and render-tier output.
+PASS: V2 CH.01–12 UI full play, 3-question queues, explanation return, reload, unlock, ending teaser, replay preservation, and render-tier output.
+PASS: V2 CH.01–12 UI full play, 3-question queues, explanation return, reload, unlock, ending teaser, replay preservation, and render-tier output.
+PASS: seven-season editorial UI, distinct protagonist identities, strict scene lookup, independent resume, real date metrics/readiness, deduplicated wrong filters, explicit answer confirmation, preserved retry history, exact recall and calendar.
+PASS: exact seven-season order, independent protagonist/progress identities, blocked coming-soon seasons, lazy banner assets, legacy save preservation and intact Goryeo/Joseon chapters.
+PASS: 1800 rows / 1800 unique IDs / 370 ancient-related questions analyzed without duplication.
+PASS: playable 8/23 chapter ancient seasons, preserved legacy catalog, 91 new verified Three questions, independent saves, protagonist/NPC/background assets and no fabricated practice items.
+PASS: complete 원삼국 CH.00–07 in the current entry, independent completion, original Three draft excluded from the active route.
+PASS: 1,800 canonical official questions, 36 editions, reusable mnemonic accordions, hint-free stable Recall Test choices, post-answer mnemonic review, preserved official grading and shared records.
+PASS: READY/start/pause/resume/restart controls, active-time deadline persistence, reload recovery, timeout auto-submit, grading and Story isolation.
+PASS: pass queue order, last-question revisit, repeated pass rotation, answer clearing, reload restore and unanswered manual submission verified.
+PASS: all 1,800 official explanations covered; era/round correct+wrong feedback, exam spoiler gate+post-grade review, Story, wrong-note detail, and null safety.
+PASS: 1,800 canonical questions; 500 attached imports; no duplicate/missing keys; official answers, images, explanations, newest-first era order, round order, stable solved/wrong order, Story preservation, shared canonical explanations, and 57-basic-20 correction verified.
+PASS: 810 audited OX questions across seven eras, top-level weakness summary, unique-wrong donut parity, focused review, 20-question unique sessions, canonical attempts, isolation, and reload persistence.
+PASS: URL-first refresh routing, independent OX analysis route, safe detail Back/Forward, OX main/resume isolation, explicit quiz restoration, and invalid fallback.
+PASS: Editorial selection/confirmation + V2 CH.01–12 UI full play, 3-question queues, explanation return, reload, unlock, ending teaser, replay preservation, and render-tier output.
+PASS: Editorial selection/confirmation + V2 CH.01–12 UI full play, 3-question queues, explanation return, reload, unlock, ending teaser, replay preservation, and render-tier output.
+PASS: Joseon CH.00–22 data, 65 official images, 6 labeled practice questions, scene mapping, assets, heroine, NPCs and fixed ending
+PASS: Joseon Story learning QA
+{
+  "relatedSceneRemapCount": 49,
+  "totals": {
+    "scenes": 97,
+    "storyBlocks": 74,
+    "questionBlocks": 49,
+    "official": 65,
+    "practice": 6
+  },
+  "chapters": [
+    {
+      "chapter": "CH.00",
+      "scenes": 5,
+      "storyBlocks": 4,
+      "questionBlocks": 0,
+      "official": 0,
+      "practice": 0
+    },
+    {
+      "chapter": "CH.01",
+      "scenes": 4,
+      "storyBlocks": 3,
+      "questionBlocks": 1,
+      "official": 1,
+      "practice": 0
+    },
+    {
+      "chapter": "CH.02",
+      "scenes": 4,
+      "storyBlocks": 3,
+      "questionBlocks": 2,
+      "official": 0,
+      "practice": 2
+    },
+    {
+      "chapter": "CH.03",
+      "scenes": 4,
+      "storyBlocks": 3,
+      "questionBlocks": 2,
+      "official": 2,
+      "practice": 0
+    },
+    {
+      "chapter": "CH.04",
+      "scenes": 4,
+      "storyBlocks": 3,
+      "questionBlocks": 2,
+      "official": 2,
+      "practice": 0
+    },
+    {
+      "chapter": "CH.05",
+      "scenes": 4,
+      "storyBlocks": 3,
+      "questionBlocks": 2,
+      "official": 0,
+      "practice": 2
+    },
+    {
+      "chapter": "CH.06",
+      "scenes": 4,
+      "storyBlocks": 3,
+      "questionBlocks": 2,
+      "official": 0,
+      "practice": 2
+    },
+    {
+      "chapter": "CH.07",
+      "scenes": 4,
+      "storyBlocks": 3,
+      "questionBlocks": 2,
+      "official": 3,
+      "practice": 0
+    },
+    {
+      "chapter": "CH.08",
+      "scenes": 4,
+      "storyBlocks": 3,
+      "questionBlocks": 3,
+      "official": 3,
+      "practice": 0
+    },
+    {
+      "chapter": "CH.09",
+      "scenes": 4,
+      "storyBlocks": 3,
+      "questionBlocks": 1,
+      "official": 1,
+      "practice": 0
+    },
+    {
+      "chapter": "CH.10",
+      "scenes": 4,
+      "storyBlocks": 3,
+      "questionBlocks": 2,
+      "official": 4,
+      "practice": 0
+    },
+    {
+      "chapter": "CH.11",
+      "scenes": 4,
+      "storyBlocks": 3,
+      "questionBlocks": 2,
+      "official": 2,
+      "practice": 0
+    },
+    {
+      "chapter": "CH.12",
+      "scenes": 4,
+      "storyBlocks": 3,
+      "questionBlocks": 3,
+      "official": 4,
+      "practice": 0
+    },
+    {
+      "chapter": "CH.13",
+      "scenes": 4,
+      "storyBlocks": 3,
+      "questionBlocks": 1,
+      "official": 1,
+      "practice": 0
+    },
+    {
+      "chapter": "CH.14",
+      "scenes": 4,
+      "storyBlocks": 3,
+      "questionBlocks": 1,
+      "official": 1,
+      "practice": 0
+    },
+    {
+      "chapter": "CH.15",
+      "scenes": 4,
+      "storyBlocks": 3,
+      "questionBlocks": 1,
+      "official": 2,
+      "practice": 0
+    },
+    {
+      "chapter": "CH.16",
+      "scenes": 4,
+      "storyBlocks": 3,
+      "questionBlocks": 3,
+      "official": 5,
+      "practice": 0
+    },
+    {
+      "chapter": "CH.17",
+      "scenes": 4,
+      "storyBlocks": 3,
+      "questionBlocks": 3,
+      "official": 3,
+      "practice": 0
+    },
+    {
+      "chapter": "CH.18",
+      "scenes": 4,
+      "storyBlocks": 3,
+      "questionBlocks": 3,
+      "official": 6,
+      "practice": 0
+    },
+    {
+      "chapter": "CH.19",
+      "scenes": 4,
+      "storyBlocks": 3,
+      "questionBlocks": 3,
+      "official": 5,
+      "practice": 0
+    },
+    {
+      "chapter": "CH.20",
+      "scenes": 6,
+      "storyBlocks": 5,
+      "questionBlocks": 5,
+      "official": 13,
+      "practice": 0
+    },
+    {
+      "chapter": "CH.21",
+      "scenes": 4,
+      "storyBlocks": 3,
+      "questionBlocks": 3,
+      "official": 5,
+      "practice": 0
+    },
+    {
+      "chapter": "CH.22",
+      "scenes": 6,
+      "storyBlocks": 5,
+      "questionBlocks": 2,
+      "official": 2,
+      "practice": 0
+    }
+  ]
+}
+PASS: Joseon chapter selection, independent save/resume, official wrong-note ID, era completion and always-unlocked 1,800-question library
+PASS: Joseon character state 495 states, 398 transitions, question resume and Goryeo regression
+PASS: complete Joseon CH.00–22 playthrough, 71 questions, one preserved official wrong note, completion flag and library unlock
+PASS: 83 scenes, 108 choices, 23 original questions, all branches including wrong answers, saved queues, legacy saves, character slots, immutable other eras and original question objects.
+PASS: 22 protected runtime scenes/aliases, all original questions/cast/assets/renderers unchanged; 18 slots (15 verified, 3 pending); 512 dialogue frames and 108 branch results rendered.
+PASS: all content/questions/systems preserved; 731 virtual dialogue frames, 1205 portrait tags. NOT browser QA. 0 scenes still use symbolic backgrounds.
+PASS: 83 scene paths checked, 19 protected scenes retain dialogue/choices/performance. 0 symbolic scenes remain. Browser QA pending.
+PASS: static PWA build verified (53 files, 682 ready illustrations, install manifest and service worker).
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> lived-history-goryeo@6.2.0 test:three
+> node tests/three-complete-test.cjs && node tests/three-save-v3-test.cjs && node tests/three-learning-boundary-test.cjs
+
+PASS: exact 2,777 lines, 142 spoken branches, 91 source-image hashes and answer bases, official entry registration.
+PASS: complete 218-scene A path, 71 choices, 77 first quizzes, correct answers, 91 unlocked questions, saved phase/queue continuity.
+PASS: complete 218-scene B path, 71 choices, 77 first quizzes, wrong answers, 91 unlocked questions, saved phase/queue continuity.
+PASS: optional additional review survives reload and returns to the exact interrupted branch.
+PASS three v3 saves: exact branch/hint/queue/typewriter/book round trips; independent recovery; legacy and unknown-schema archives; no inherited completion; restart retains learning; four-era isolation.
+PASS Three learning boundaries: locked legacy entry/recall, independent official dedup, delayed explanations across aliases, explicit other-era behavior, unchanged foreign runs, all 91 unlocks.

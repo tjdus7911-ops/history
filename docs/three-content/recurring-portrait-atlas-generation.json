@@ -1,0 +1,1109 @@
+{
+  "schemaVersion": 1,
+  "status": "generated-reviewed-with-css-source-rects",
+  "toolMode": "built-in-image_gen",
+  "sourceManuscript": "docs/three-content/complete-manuscript.md",
+  "styleReference": "dist/assets/ancient/three-v2/characters/seoa-neutral.png",
+  "styleReferenceRole": "2D illustration style only; the protagonist is not renamed as these civilians",
+  "editingPolicy": "All raster creation and edits used the built-in image_gen tool. Python only inspected pixel/alpha data and copied unchanged files; no pixel editing, cropping or resizing was used.",
+  "portraitIdentityCount": 21,
+  "portraitAppearanceCount": 29,
+  "presentationRule": "Use sprite.sourceRect when rendering. The generated 4x4 visual layout is not exactly uniform enough for mathematical quarter-cell clipping.",
+  "genderPolicy": "Only explicit source family roles establish a gender. Unspecified source genders remain unspecified in the manifest; practical androgynous costume/face design is a visual interpretation.",
+  "agePolicy": "Source ages and elapsed years determine the eight age pairs. Approximate numeric ages inferred only for a child/teen drawing are labelled as visual estimates.",
+  "sheets": [
+    {
+      "sheetId": "recurring-civilians-01",
+      "src": "assets/ancient/three-complete/characters/recurring-civilians-atlas-01.png",
+      "sha256": "814b1be2c0464ed26e98adf2383f12a931e96754a34aee39a654c63371a27cb8",
+      "width": 1254,
+      "height": 1254,
+      "columns": 4,
+      "rows": 4,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "occupiedCellCount": 15,
+      "emptyCells": [
+        {
+          "row": 3,
+          "column": 3,
+          "maximumAlpha": 7,
+          "nonzeroAlphaPixels": 799,
+          "pixelsAboveAlpha32": 0
+        }
+      ],
+      "cells": [
+        {
+          "chapter": 1,
+          "name": "연우",
+          "ageVariant": "initial",
+          "row": 0,
+          "column": 0,
+          "sourceRect": {
+            "x": 17,
+            "y": 59,
+            "width": 292,
+            "height": 268
+          },
+          "ageEvidence": "adult-unspecified",
+          "genderEvidence": "unspecified",
+          "sourceEvidence": "194년 고구려 농민; 정확한 나이와 성별은 원고에 명시되지 않음",
+          "sourceSceneId": "THR-C01-S01",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 20,
+            "y": 62,
+            "width": 286,
+            "height": 262,
+            "pixelCount": 45077
+          }
+        },
+        {
+          "chapter": 1,
+          "name": "모진",
+          "ageVariant": "initial",
+          "row": 0,
+          "column": 1,
+          "sourceRect": {
+            "x": 320,
+            "y": 41,
+            "width": 302,
+            "height": 286
+          },
+          "ageEvidence": "adult-unspecified",
+          "genderEvidence": "unspecified",
+          "sourceEvidence": "194년 창고 담당자; 정확한 나이와 성별은 원고에 명시되지 않음",
+          "sourceSceneId": "THR-C01-S02",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 323,
+            "y": 44,
+            "width": 296,
+            "height": 280,
+            "pixelCount": 47323
+          }
+        },
+        {
+          "chapter": 2,
+          "name": "도림",
+          "ageVariant": "initial",
+          "row": 0,
+          "column": 2,
+          "sourceRect": {
+            "x": 634,
+            "y": 39,
+            "width": 302,
+            "height": 288
+          },
+          "ageEvidence": "adult-unspecified",
+          "genderEvidence": "unspecified",
+          "sourceEvidence": "국경 길의 인물; 정확한 나이와 성별은 원고에 명시되지 않음",
+          "sourceSceneId": "THR-C02-S01",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 637,
+            "y": 42,
+            "width": 296,
+            "height": 282,
+            "pixelCount": 45967
+          }
+        },
+        {
+          "chapter": 2,
+          "name": "소운",
+          "ageVariant": "initial",
+          "row": 0,
+          "column": 3,
+          "sourceRect": {
+            "x": 948,
+            "y": 45,
+            "width": 290,
+            "height": 282
+          },
+          "ageEvidence": "adult-unspecified",
+          "genderEvidence": "unspecified",
+          "sourceEvidence": "귀환민; 정확한 나이와 성별은 원고에 명시되지 않음",
+          "sourceSceneId": "THR-C02-S04",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 951,
+            "y": 48,
+            "width": 284,
+            "height": 276,
+            "pixelCount": 47526
+          }
+        },
+        {
+          "chapter": 4,
+          "name": "다은",
+          "ageVariant": "initial",
+          "row": 1,
+          "column": 0,
+          "sourceRect": {
+            "x": 15,
+            "y": 352,
+            "width": 302,
+            "height": 278
+          },
+          "ageEvidence": "adult-unspecified",
+          "genderEvidence": "unspecified",
+          "sourceEvidence": "427년 이주민 다은; 제9장 도연의 손녀 다은과 다른 인물",
+          "sourceSceneId": "THR-C04-S01",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 18,
+            "y": 355,
+            "width": 296,
+            "height": 272,
+            "pixelCount": 48413
+          }
+        },
+        {
+          "chapter": 5,
+          "name": "윤서",
+          "ageVariant": "initial",
+          "row": 1,
+          "column": 1,
+          "sourceRect": {
+            "x": 327,
+            "y": 340,
+            "width": 300,
+            "height": 290
+          },
+          "ageEvidence": "adult-unspecified",
+          "genderEvidence": "unspecified",
+          "sourceEvidence": "645년 안시성 주민; 정확한 나이와 성별은 원고에 명시되지 않음",
+          "sourceSceneId": "THR-C05-S07",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 330,
+            "y": 343,
+            "width": 294,
+            "height": 284,
+            "pixelCount": 47007
+          }
+        },
+        {
+          "chapter": 5,
+          "name": "태문",
+          "ageVariant": "initial",
+          "row": 1,
+          "column": 2,
+          "sourceRect": {
+            "x": 633,
+            "y": 342,
+            "width": 312,
+            "height": 288
+          },
+          "ageEvidence": "adult-unspecified",
+          "genderEvidence": "male",
+          "sourceEvidence": "아내와 아이가 있는 아버지; C05S10의 아내 언급과 C05S11의 '아버지 등에' 발화",
+          "sourceSceneId": "THR-C05-S11",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 636,
+            "y": 345,
+            "width": 306,
+            "height": 282,
+            "pixelCount": 48464
+          }
+        },
+        {
+          "chapter": 7,
+          "name": "해인",
+          "ageVariant": "initial",
+          "row": 1,
+          "column": 3,
+          "sourceRect": {
+            "x": 951,
+            "y": 343,
+            "width": 291,
+            "height": 287
+          },
+          "ageEvidence": "20s",
+          "genderEvidence": "unspecified",
+          "sourceEvidence": "원고 등장인물 주석: 475년에는 20대",
+          "sourceSceneId": "THR-C07-S01",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 954,
+            "y": 346,
+            "width": 285,
+            "height": 281,
+            "pixelCount": 46938
+          }
+        },
+        {
+          "chapter": 7,
+          "name": "해인",
+          "ageVariant": "later",
+          "row": 2,
+          "column": 0,
+          "sourceRect": {
+            "x": 16,
+            "y": 658,
+            "width": 302,
+            "height": 267
+          },
+          "ageEvidence": "40s",
+          "genderEvidence": "unspecified",
+          "sourceEvidence": "원고 주석: 475년의 20대에서 492년의 40대로; C07S08은 다시 3년 뒤",
+          "sourceSceneId": "THR-C07-S06",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 19,
+            "y": 661,
+            "width": 296,
+            "height": 261,
+            "pixelCount": 46533
+          }
+        },
+        {
+          "chapter": 8,
+          "name": "여울",
+          "ageVariant": "initial",
+          "row": 2,
+          "column": 1,
+          "sourceRect": {
+            "x": 330,
+            "y": 656,
+            "width": 301,
+            "height": 269
+          },
+          "ageEvidence": "20s",
+          "genderEvidence": "unspecified",
+          "sourceEvidence": "510년의 20대 백제 지방 관리; 제15장 여울과 다른 인물",
+          "sourceSceneId": "THR-C08-S02",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 333,
+            "y": 659,
+            "width": 295,
+            "height": 263,
+            "pixelCount": 44963
+          }
+        },
+        {
+          "chapter": 8,
+          "name": "여울",
+          "ageVariant": "later",
+          "row": 2,
+          "column": 2,
+          "sourceRect": {
+            "x": 637,
+            "y": 660,
+            "width": 307,
+            "height": 265
+          },
+          "ageEvidence": "late-60s",
+          "genderEvidence": "unspecified",
+          "sourceEvidence": "원고 C08S08 주석: 554년 60대 후반; 군사 한결은 여울의 손자",
+          "sourceSceneId": "THR-C08-S08",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 640,
+            "y": 663,
+            "width": 301,
+            "height": 259,
+            "pixelCount": 45352
+          }
+        },
+        {
+          "chapter": 14,
+          "name": "아라",
+          "ageVariant": "initial",
+          "row": 2,
+          "column": 3,
+          "sourceRect": {
+            "x": 955,
+            "y": 644,
+            "width": 289,
+            "height": 281
+          },
+          "ageEvidence": "20s",
+          "genderEvidence": "unspecified",
+          "sourceEvidence": "원고 C14S01 등장인물: 3세기 가야의 20대 상인; 제11/15장 아라와 다른 인물",
+          "sourceSceneId": "THR-C14-S01",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 958,
+            "y": 647,
+            "width": 283,
+            "height": 275,
+            "pixelCount": 45690
+          }
+        },
+        {
+          "chapter": 14,
+          "name": "해들",
+          "ageVariant": "initial",
+          "row": 3,
+          "column": 0,
+          "sourceRect": {
+            "x": 16,
+            "y": 938,
+            "width": 305,
+            "height": 286
+          },
+          "ageEvidence": "same-adult-generation-as-ara",
+          "genderEvidence": "unspecified",
+          "sourceEvidence": "아라와 같은 세대의 철공; 정밀한 수치 나이는 원고에 명시되지 않음",
+          "sourceSceneId": "THR-C14-S03",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 19,
+            "y": 941,
+            "width": 299,
+            "height": 280,
+            "pixelCount": 50728
+          }
+        },
+        {
+          "chapter": 17,
+          "name": "보라",
+          "ageVariant": "initial",
+          "row": 3,
+          "column": 1,
+          "sourceRect": {
+            "x": 331,
+            "y": 940,
+            "width": 298,
+            "height": 284
+          },
+          "ageEvidence": "adult-unspecified",
+          "genderEvidence": "unspecified",
+          "sourceEvidence": "7세기 신라 이웃 보라; '이웃 보라'와 동일인",
+          "sourceSceneId": "THR-C17-S01",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 334,
+            "y": 943,
+            "width": 292,
+            "height": 278,
+            "pixelCount": 47960
+          }
+        },
+        {
+          "chapter": 17,
+          "name": "해명",
+          "ageVariant": "initial",
+          "row": 3,
+          "column": 2,
+          "sourceRect": {
+            "x": 634,
+            "y": 939,
+            "width": 308,
+            "height": 285
+          },
+          "ageEvidence": "around-30",
+          "genderEvidence": "unspecified",
+          "sourceEvidence": "751년 불국사 석공, 원고 약 30세; 손 부상 전후 모두 쓸 수 있도록 손은 초상 범위 밖",
+          "sourceSceneId": "THR-C17-S04",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 637,
+            "y": 942,
+            "width": 302,
+            "height": 279,
+            "pixelCount": 45554
+          }
+        }
+      ],
+      "generationHistory": [
+        {
+          "operation": "style-reference-generation",
+          "outputFilename": "exec-1f05f361-dd02-4dc7-9e4b-a16240d39105.png",
+          "selected": false,
+          "prompt": "Use case: illustration-story.\nAsset type: production transparent PNG portrait atlas for a Korean historical visual novel, sheet 1 of 2.\nInput image 1 is ONLY an approved illustration STYLE reference. Borrow its fine dark linework, softly shaded 2D painted-cel finish, believable faces and muted cloth colors. Do not copy the heroine's face or costume.\nMake ONE square high-resolution sheet, ideally 2048 x 2048, with an EXACT invisible 4-column by 4-row uniform grid. Each cell is exactly one quarter of the total width and height. Fifteen separate characters, one centered in each specified cell, and the final bottom-right cell entirely empty transparent. All canvas outside character silhouettes must be genuinely transparent alpha, including gutters and the empty cell. No visible checkerboard, backgrounds, plates, colored rectangles, shadows behind people, lettering, labels, numbers, borders or grid lines.\nFraming: each character is a large waist-up portrait, head fully included, torso cut neatly at the waist within the cell; top of hair around 6% below its cell top, waist around 94%, shoulders comfortably inside 90% cell width. Leave a transparent gutter inside every cell edge. No portrait may cross a cell boundary. All face gently toward the viewer with a slight turn to the viewer's RIGHT (toward the heroine's UI slot), calm attentive neutral expressions. Do not render hands or held objects. Practical ancient Korean commoner robes appropriate to each specified era; no crowns, court regalia, modern fashion, armor, fantasy weapons, ornate Joseon court hats or sexualized clothes.\nUse DISTINCT adult faces and hair arrangements. Characters whose gender is unspecified must have natural androgynous facial features and plain practical clothing, not exaggerated gender presentation. These are fictional civilians, not purported historical likenesses.\n\nThe following row/column positions are ONE-BASED instructions only, never printed:\nROW 1, COLUMN 1: Yeonwoo / 연우, adult Goguryeo farmer in 194; gender unspecified. Long oval face, straight brows, dark hair tied low, plain sage outer robe over oatmeal tunic, subtle work-worn cloth. Responsible and worried but neutral.\nROW 1, COLUMN 2: Mojin / 모진, adult Goguryeo granary keeper in 194; gender unspecified. Broader round face, small attentive eyes, loosely tied hair beneath a plain dark brown cloth band, brown-grey practical jacket. Distinct from Yeonwoo.\nROW 1, COLUMN 3: Dorim / 도림, adult Goguryeo frontier gate worker in the early 4th century; gender unspecified. Angular cheekbones, close neat tied hair, dark slate wrap coat with a rust collar, alert neutral face.\nROW 1, COLUMN 4: Soun / 소운, adult displaced Goguryeo returnee in the 4th century; gender unspecified. Soft square face, gently hooded eyes, loosely swept dark hair, faded ochre robe and simple cream shoulder wrap.\n\nROW 2, COLUMN 1: Daeun / 다은, adult Goguryeo migrant leaving home in 427; gender unspecified. Slender long face, soft straight eyebrows, long black hair bundled at the nape, muted plum-brown robe and light tan collar. This is the 427 character, not a similarly named descendant in another chapter.\nROW 2, COLUMN 2: Yunseo / 윤서, adult civilian resident of Ansi fortress in 645; gender unspecified. Compact sturdy build, rounded nose, tied dark hair with a plain blue head cloth, muted blue-grey working robe with cream undersleeves.\nROW 2, COLUMN 3: Taemun / 태문, adult MALE refugee father in 668; medium build, slightly long nose, short restrained moustache and stubble, black hair tied back, worn brown outer robe over a pale moss tunic. Concerned but composed.\nROW 2, COLUMN 4: Haein / 해인, INITIAL age in the 20s in 475, Baekje refugee who repairs and trades household goods; gender unspecified. Distinct narrow oval face, almond eyes, a few loose strands at the temples, black hair tied in a low short tail. Muted brick-red collar and teal-grey work jacket. This exact facial identity returns in ROW 3 COLUMN 1.\n\nROW 3, COLUMN 1: Haein / 해인, SAME person as ROW 2 COLUMN 4, now in their 40s around 492-495. Preserve face shape, eyes, eyebrows, nose, mouth and hairline. Add believable subtle age lines around eyes and a slightly weathered face, a few grey strands; do not make elderly. Similar teal-grey jacket with brick-red collar.\nROW 3, COLUMN 2: Yeoul / 여울, INITIAL age in the 20s in 510, Baekje local administrative clerk; gender unspecified. Wider oval face, long fine straight brows, neat center-part dark hair tied behind, plain dusty-indigo collar and light taupe robe. Same person returns next cell.\nROW 3, COLUMN 3: Yeoul / 여울, SAME person as ROW 3 COLUMN 2, now in late 60s in 554; preserve recognizable bone structure and eyes, naturally grey hair, wrinkles and slightly leaner cheeks. Similar taupe robe with dusty-indigo collar. This is the grandparent of a soldier, not that soldier.\nROW 3, COLUMN 4: Ara / 아라, Gaya merchant in their 20s in the third century; gender unspecified. Round-oval face, bright alert eyes, wavy black hair loosely knotted, warm terracotta work coat with cream collar. This is the third-century Ara, not the different Ara of 532 or another century.\n\nROW 4, COLUMN 1: Haedeul / 해들, Gaya ironworker, adult of the same generation as the third-century Ara; gender unspecified. Broad angular face, strong but not exaggerated physique, tied-back hair with simple dark cloth headband, plain charcoal work apron over muted warm-grey long-sleeved robe. No held tools.\nROW 4, COLUMN 2: Bora / 보라, adult Silla village neighbor in the seventh century; gender unspecified. Round kind face, slightly arched brows, dark hair tied loosely with an ochre strip, dusty mustard outer robe and moss collar. Natural unembellished village clothing.\nROW 4, COLUMN 3: Haemyeong / 해명, Silla stonemason around age 30 in 751; gender unspecified. Lean square face, narrow eyes, cropped side wisps with tied top hair, faded stone-blue work robe and plain beige shoulder cloth. Keep hands out of frame: do not depict an injury, cast or bandage because the portrait must work before and after a story event.\nROW 4, COLUMN 4: EMPTY, entirely transparent, no person or object.\n\nConsistency constraints: Haein's two ages must clearly be one individual; Yeoul's two ages must clearly be one different individual. Every other person must have their own face rather than clones. Render all 15 portraits with equally polished detail and consistent proportions and lighting. No text anywhere. True alpha transparency. Exact 4x4 uniform sprite atlas."
+        },
+        {
+          "operation": "layout-edit",
+          "outputFilename": "exec-1590a94f-96dc-459e-ae7c-6fcc2ae832b6.png",
+          "selected": false,
+          "prompt": "Use case: identity-preserve.\nEdit this transparent 15-portrait character atlas ONLY to correct its uniform sprite-cell layout.\nKeep all fifteen portraits, their current order, identity, faces, ages, costumes, linework and soft 2D rendering. Keep the last bottom-right cell empty. Keep genuine alpha transparency.\nThe output must remain a SQUARE 4 by 4 equal-cell atlas. Reposition and REDUCE each complete portrait enough to leave at least 8% OF ITS CELL HEIGHT of fully transparent margin above the hair AND below its flat torso cutoff, and at least 5% OF ITS CELL WIDTH on both sides. Each full character silhouette must stay entirely in its own equal-size cell. Important: the existing third row begins too high and collides with the second row's exact boundary. All row starts must match the mathematical quarters of the full square canvas. Center every bust within its proper cell. Do not resize the whole grid while leaving its contents overflowing. Do not create guide lines, text, borders, panels or background color.\nUniform grid: row1 has four people; row2 four people; row3 four people; row4 three people then one empty cell. Exactly fifteen. Match original face identities and clear aging of the paired Haein (row2 col4 and row3 col1) and Yeoul (row3 col2 and col3). Use the high resolution necessary for game portraits. Do not change direction or introduce new accessories."
+        },
+        {
+          "operation": "layout-edit",
+          "outputFilename": "exec-561e89a3-aef2-4928-85b1-fda50ae4cf41.png",
+          "selected": true,
+          "prompt": "Use case: identity-preserve.\nTechnical cleanup of the supplied transparent character sprite atlas. Preserve every face, costume, age, identity and cell order. This is NOT a redesign.\nReflow the existing busts into a mathematically UNIFORM 4-column by 4-row square grid with LARGE CLEAR TRANSPARENT GUTTERS. The current portraits touch row and column boundaries, so they will bleed when clipped by CSS; fix that.\nMANDATORY: leave a continuous transparent horizontal band, about 4% of the total canvas height thick, centered at exactly 25%, 50% and 75% of the canvas height. Also leave transparent vertical bands 3% of the total canvas width thick centered at exactly 25%, 50% and 75% of canvas width. These bands must run clear across the whole sheet with absolutely no character pixels. Leave transparent outside margins. Shrink and center each COMPLETE portrait to fit the remaining rectangular area inside its original cell, keeping all of the head and the shoulders. Repaint/reposition complete heads rather than cropping them at the bands. Each bust should still fill most of its remaining cell interior and be crisp enough for game UI. The empty bottom-right cells remain entirely empty; do not add portraits there.\nNo actual visible bands, lines or panels: the gutters are empty ALPHA transparency. Keep the background and blank cells genuinely transparent. Clean isolated bright red/yellow fringe pixels around silhouettes. NO letters, captions, numbers, labels, watermarks or checkerboard. Keep all portraits in the same 2D illustration style and their existing facing direction."
+        }
+      ],
+      "nativeFacing": "left",
+      "flipX": true,
+      "pixelInspection": {
+        "portraitComponentsAbove1000Pixels": 15,
+        "alphaThreshold": 128,
+        "allLargeComponentsAssignedExactlyOnce": true,
+        "allSourceRectChecks": "passed",
+        "pixelEditingPerformed": false
+      }
+    },
+    {
+      "sheetId": "recurring-civilians-02",
+      "src": "assets/ancient/three-complete/characters/recurring-civilians-atlas-02.png",
+      "sha256": "28db2d60ec3b2c8f5bc92659a753ef7efae51b938b2068b6d355432902e84e8f",
+      "width": 1254,
+      "height": 1254,
+      "columns": 4,
+      "rows": 4,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "occupiedCellCount": 14,
+      "emptyCells": [
+        {
+          "row": 3,
+          "column": 2,
+          "maximumAlpha": 1,
+          "nonzeroAlphaPixels": 985,
+          "pixelsAboveAlpha32": 0
+        },
+        {
+          "row": 3,
+          "column": 3,
+          "maximumAlpha": 1,
+          "nonzeroAlphaPixels": 775,
+          "pixelsAboveAlpha32": 0
+        }
+      ],
+      "cells": [
+        {
+          "chapter": 18,
+          "name": "나래",
+          "ageVariant": "initial",
+          "row": 0,
+          "column": 0,
+          "sourceRect": {
+            "x": 17,
+            "y": 40,
+            "width": 284,
+            "height": 281
+          },
+          "ageEvidence": "early-20s",
+          "genderEvidence": "female",
+          "sourceEvidence": "원고 828년 20대 초반, 833년에도 초기 모습 사용; C18S04 도경의 '누나'",
+          "sourceSceneId": "THR-C18-S01",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 20,
+            "y": 43,
+            "width": 278,
+            "height": 275,
+            "pixelCount": 49128
+          }
+        },
+        {
+          "chapter": 18,
+          "name": "나래",
+          "ageVariant": "later",
+          "row": 0,
+          "column": 1,
+          "sourceRect": {
+            "x": 327,
+            "y": 40,
+            "width": 286,
+            "height": 281
+          },
+          "ageEvidence": "mid-40s",
+          "genderEvidence": "female",
+          "sourceEvidence": "원고 851년의 40대 중반 나래",
+          "sourceSceneId": "THR-C18-S07",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 330,
+            "y": 43,
+            "width": 280,
+            "height": 275,
+            "pixelCount": 48766
+          }
+        },
+        {
+          "chapter": 19,
+          "name": "재인",
+          "ageVariant": "initial",
+          "row": 0,
+          "column": 2,
+          "sourceRect": {
+            "x": 633,
+            "y": 33,
+            "width": 284,
+            "height": 288
+          },
+          "ageEvidence": "around-30",
+          "genderEvidence": "unspecified",
+          "sourceEvidence": "원고 869년의 30세 전후 6두품 지식인",
+          "sourceSceneId": "THR-C19-S02",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 636,
+            "y": 36,
+            "width": 278,
+            "height": 282,
+            "pixelCount": 48681
+          }
+        },
+        {
+          "chapter": 19,
+          "name": "재인",
+          "ageVariant": "later",
+          "row": 0,
+          "column": 3,
+          "sourceRect": {
+            "x": 944,
+            "y": 35,
+            "width": 284,
+            "height": 286
+          },
+          "ageEvidence": "mid-50s",
+          "genderEvidence": "unspecified",
+          "sourceEvidence": "원고 894년의 50대 중반 재인",
+          "sourceSceneId": "THR-C19-S08",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 947,
+            "y": 38,
+            "width": 278,
+            "height": 280,
+            "pixelCount": 48597
+          }
+        },
+        {
+          "chapter": 19,
+          "name": "지우",
+          "ageVariant": "initial",
+          "row": 1,
+          "column": 0,
+          "sourceRect": {
+            "x": 16,
+            "y": 350,
+            "width": 290,
+            "height": 280
+          },
+          "ageEvidence": "adult-unspecified",
+          "genderEvidence": "unspecified",
+          "sourceEvidence": "889년 농민 지우; 정확한 나이와 성별은 원고에 명시되지 않음",
+          "sourceSceneId": "THR-C19-S06",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 19,
+            "y": 353,
+            "width": 284,
+            "height": 274,
+            "pixelCount": 50095
+          }
+        },
+        {
+          "chapter": 20,
+          "name": "해루",
+          "ageVariant": "initial",
+          "row": 1,
+          "column": 1,
+          "sourceRect": {
+            "x": 326,
+            "y": 345,
+            "width": 288,
+            "height": 285
+          },
+          "ageEvidence": "20s",
+          "genderEvidence": "male",
+          "sourceEvidence": "원고 696~698년 20대 고구려 유민; 제21장 다온의 아버지로 확인",
+          "sourceSceneId": "THR-C20-S01",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 329,
+            "y": 348,
+            "width": 282,
+            "height": 279,
+            "pixelCount": 48864
+          }
+        },
+        {
+          "chapter": 20,
+          "name": "해루",
+          "ageVariant": "later",
+          "row": 1,
+          "column": 2,
+          "sourceRect": {
+            "x": 633,
+            "y": 344,
+            "width": 288,
+            "height": 286
+          },
+          "ageEvidence": "about-15-years-older",
+          "genderEvidence": "male",
+          "sourceEvidence": "713년, 초기 정착보다 약 15년 지난 해루; 고령 노인으로 만들지 않음",
+          "sourceSceneId": "THR-C20-S07",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 636,
+            "y": 347,
+            "width": 282,
+            "height": 280,
+            "pixelCount": 48535
+          }
+        },
+        {
+          "chapter": 20,
+          "name": "누리",
+          "ageVariant": "initial",
+          "row": 1,
+          "column": 3,
+          "sourceRect": {
+            "x": 944,
+            "y": 352,
+            "width": 283,
+            "height": 278
+          },
+          "ageEvidence": "20s-generation",
+          "genderEvidence": "female",
+          "sourceEvidence": "말갈 출신 도공, 해루와 같은 20대 세대; C21S09 손녀 다솜이 할머니로 지칭",
+          "sourceSceneId": "THR-C20-S02",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 947,
+            "y": 355,
+            "width": 277,
+            "height": 272,
+            "pixelCount": 48842
+          }
+        },
+        {
+          "chapter": 22,
+          "name": "은서",
+          "ageVariant": "initial",
+          "row": 2,
+          "column": 0,
+          "sourceRect": {
+            "x": 19,
+            "y": 648,
+            "width": 285,
+            "height": 280
+          },
+          "ageEvidence": "mid-30s",
+          "genderEvidence": "female",
+          "sourceEvidence": "원고 926년 30대 중반의 은서, 어린 딸의 어머니",
+          "sourceSceneId": "THR-C22-S02",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 22,
+            "y": 651,
+            "width": 279,
+            "height": 274,
+            "pixelCount": 48371
+          }
+        },
+        {
+          "chapter": 22,
+          "name": "은서",
+          "ageVariant": "later",
+          "row": 2,
+          "column": 1,
+          "sourceRect": {
+            "x": 329,
+            "y": 648,
+            "width": 284,
+            "height": 280
+          },
+          "ageEvidence": "early-to-mid-40s",
+          "genderEvidence": "female",
+          "sourceEvidence": "원고 934년 40대 초중반의 은서",
+          "sourceSceneId": "THR-C22-S06",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 332,
+            "y": 651,
+            "width": 278,
+            "height": 274,
+            "pixelCount": 48482
+          }
+        },
+        {
+          "chapter": 22,
+          "name": "은서의 딸",
+          "ageVariant": "initial",
+          "row": 2,
+          "column": 2,
+          "sourceRect": {
+            "x": 647,
+            "y": 663,
+            "width": 257,
+            "height": 265
+          },
+          "ageEvidence": "young-child",
+          "genderEvidence": "female",
+          "sourceEvidence": "원고 926년 '어린 딸'; 6~8세는 그림의 시각적 추정이며 원고의 확정 나이가 아님",
+          "sourceSceneId": "THR-C22-S02",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 650,
+            "y": 666,
+            "width": 251,
+            "height": 259,
+            "pixelCount": 45370
+          }
+        },
+        {
+          "chapter": 22,
+          "name": "은서의 딸",
+          "ageVariant": "later",
+          "row": 2,
+          "column": 3,
+          "sourceRect": {
+            "x": 951,
+            "y": 646,
+            "width": 284,
+            "height": 282
+          },
+          "ageEvidence": "adolescent",
+          "genderEvidence": "female",
+          "sourceEvidence": "934년까지 8년 성장한 같은 딸; 14~16세는 그림의 시각적 추정",
+          "sourceSceneId": "THR-C22-S06",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 954,
+            "y": 649,
+            "width": 278,
+            "height": 276,
+            "pixelCount": 49438
+          }
+        },
+        {
+          "chapter": 23,
+          "name": "시온",
+          "ageVariant": "initial",
+          "row": 3,
+          "column": 0,
+          "sourceRect": {
+            "x": 17,
+            "y": 944,
+            "width": 281,
+            "height": 282
+          },
+          "ageEvidence": "mid-20s",
+          "genderEvidence": "unspecified",
+          "sourceEvidence": "원고 900년 20대 중반 상인",
+          "sourceSceneId": "THR-C23-S02",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 20,
+            "y": 947,
+            "width": 275,
+            "height": 276,
+            "pixelCount": 50196
+          }
+        },
+        {
+          "chapter": 23,
+          "name": "시온",
+          "ageVariant": "later",
+          "row": 3,
+          "column": 1,
+          "sourceRect": {
+            "x": 326,
+            "y": 942,
+            "width": 286,
+            "height": 284
+          },
+          "ageEvidence": "mid-40s",
+          "genderEvidence": "unspecified",
+          "sourceEvidence": "원고 919년 40대 중반 시온",
+          "sourceSceneId": "THR-C23-S09",
+          "visualFileReview": true,
+          "review": {
+            "faceAndCostume": "reviewed-in-full-resolution-sheet",
+            "sourceRect": "connected-alpha-silhouette-plus-three-pixel-margin",
+            "pose": "upper-body-with-hands-outside-frame",
+            "identityInterpretation": "authored-fictional-civilian",
+            "branchOutcomePropsIncluded": false,
+            "completeSolidSilhouetteInsideSourceRect": true
+          },
+          "alphaComponentBounds": {
+            "x": 329,
+            "y": 945,
+            "width": 280,
+            "height": 278,
+            "pixelCount": 50944
+          }
+        }
+      ],
+      "generationHistory": [
+        {
+          "operation": "style-reference-generation",
+          "outputFilename": "exec-9f3a7c43-2974-450c-b07c-210538954d7b.png",
+          "selected": false,
+          "prompt": "Use case: illustration-story.\nAsset type: production transparent PNG portrait atlas for a Korean historical visual novel, sheet 2 of 2.\nReference image 1 supplies ONLY the approved visual STYLE: fine dark contours, soft painted-cel 2D shading, natural expressive almond eyes and muted historical fabric colors. Do not copy the heroine's face, clothing or body.\nCreate ONE SQUARE high-resolution PNG, ideally 2048 x 2048, with an exact invisible 4-COLUMN by 4-ROW equal-size sprite grid. Fourteen portraits plus two empty cells in bottom-right. All empty areas must be truly alpha-transparent, no checkerboard or color. No text, lettering, labels, frames, dividing lines, background gradients or shadows behind the people.\nTECHNICAL CELL LAYOUT IS CRITICAL: every cell occupies precisely 25% of total image width and height. Each portrait is a large upper-body bust centered entirely WITHIN its own cell. Leave at least 8% of the CELL height as fully transparent margin above the hair and below the lower chest/waist cutoff, and 5% cell width at each side. No hair, shoulder or pixel from one cell may enter a neighboring cell. Use large detailed heads and upper chests instead of small full-body figures. Head and shoulders fully inside each cell. Hands out of frame. Each portrait slightly turns toward the viewer's RIGHT with a calm attentive neutral expression. Natural nonsexualized practical ancient Northeast Asian commoner clothing. No crown, ornate court hats, armor, weapons, modern items, or held props whose presence depends on a story choice. Different people must have distinct facial anatomy. When gender is unspecified, draw a natural androgynous adult in plain practical robes.\n\nCell assignment below uses one-based row/column for instructions ONLY. NEVER draw names, numbers or labels:\nROW1 COLUMN1: Nara / 나래, WOMAN in her early20s, a coastal merchant seeking her younger brother in Silla in828. Distinct gently square face, direct dark eyes, slightly arched thick brows, dark hair tied low with a plain burgundy strip, weathered dusty blue coat and burgundy collar. Plain practical traveler clothing.\nROW1 COLUMN2: Nara, SAME WOMAN in mid40s in851. Preserve exactly recognizable square face, eye shape, eyebrows, nose, mouth and hairline. Visible natural smile lines, mature cheeks, a few greys. Same blue and burgundy clothing family, no ornate jewelry. Clearly adult middle age, not elderly.\nROW1 COLUMN3: Jaein / 재인, Silla scholar of sixth head rank, around30 in869; gender unspecified. Narrow rectangular face, long straight nose, contemplative narrow eyes and high forehead; long black hair neatly tied under a SMALL SIMPLE black cloth wrap, no tall ceremonial hat. Plain charcoal robe over muted ivory collar.\nROW1 COLUMN4: Jaein, SAME PERSON now mid50s in894. Same narrow rectangular bone structure and long nose, older brow and cheek lines, temples visibly greying, plain charcoal robe. Distinct from all merchants.\n\nROW2 COLUMN1: Jiu / 지우, rural Silla farmer in889, adult, gender unspecified. Broad rounded face, heavier eyelids and rounded nose, dark hair bundled beneath a faded moss headcloth, plain sand-colored work robe with moss collar. Weathered but healthy enough to work.\nROW2 COLUMN2: Haeru / 해루, MALE Goguryeo refugee, in his20s in696-698; later a father. Long oval face, firm level brows, dark hair tied in a compact knot with a grey strip, slightly longer chin, plain charcoal-blue travel robe and oatmeal collar. Clean shaven.\nROW2 COLUMN3: Haeru, SAME MAN about15years later in713, aroundlate30s/40. Keep same bone structure, brows, nose and hairline. Subtle older expression lines and faint stubble, a few grey temple strands only; absolutely not an elderly man. Similar charcoal-blue robe, slightly tidier.\nROW2 COLUMN4: Nuri / 누리, WOMAN in her20s in696-698, Malgal-origin potter who will become a grandmother in later history. Round face with a small chin, soft broad cheeks, dark eyes, dark hair in two low simple bundled braids, plain warm-grey long-sleeve robe with an ochre collar. Respectful ordinary ancient Northeast Asian clothing; no ethnic caricature, face paint, feathers, animal-skin costume or primitive cliché.\n\nROW3 COLUMN1: Eunseo / 은서, WOMAN in her mid30s in926, refugee mother. Recognizable long heart-shaped face, slightly tired but steady eyes, slender straight nose, dark hair parted slightly to one side and tied low, muted plum robe over cream collar. Calm resilient expression.\nROW3 COLUMN2: Eunseo, SAME WOMAN in early-to-mid40s in934. Same facial proportions, side part and low knot; add natural subtle age lines and mature cheeks, a few grey strands, similar plum robe. Eight years have passed, not decades.\nROW3 COLUMN3: Eunseo's daughter / 은서의 딸, YOUNG GIRL in926, approximately6-8 as a visual age interpretation. She must unmistakably be a child with childlike face/body proportions, resemblance to her mother's heart-shaped face and eyes, dark hair in simple paired low braids, modest cream and faded coral long-sleeve robe. Fully clothed and age-appropriate, shoulders to upper torso, no mature anatomy.\nROW3 COLUMN4: Eunseo's daughter, SAME GIRL eight years later in934, now an adolescent approximately14-16. Same recognizable eyes, nose and heart-shaped face, naturally more grown but still teen appearance, plain longer paired braids or a simple low braid, modest cream and faded coral robe, no cosmetics or sexualized body.\n\nROW4 COLUMN1: Sion / 시온, merchant in mid20s in900; gender unspecified. Distinct wide oval face, bright slightly upturned eyes, softly rounded nose, wavy dark hair tied loosely near the nape, faded olive-green travel coat with brown collar. Friendly but neutral.\nROW4 COLUMN2: Sion, SAME PERSON in mid40s in919. Preserve same facial features and wide oval face, naturally weathered cheek and eye lines and a few grey strands, similar olive and brown robe. Middle-aged, not elderly.\nROW4 COLUMN3: COMPLETELY EMPTY TRANSPARENT CELL.\nROW4 COLUMN4: COMPLETELY EMPTY TRANSPARENT CELL.\n\nAcross the sheet there are six explicit aging pairs: Nara, Jaein, Haeru, Eunseo, her daughter, Sion. Within each pair keep facial identity while showing the requested actual elapsed years. Nuri and Jiu are independent distinct people. Do not reuse the reference heroine's face. Equal polish, consistent head scale, all14 entirely contained in the exact uniform cells. True alpha PNG."
+        },
+        {
+          "operation": "layout-edit",
+          "outputFilename": "exec-052016a1-6576-4968-9bf9-7729f3b2884c.png",
+          "selected": true,
+          "prompt": "Use case: identity-preserve.\nTechnical cleanup of the supplied transparent character sprite atlas. Preserve every face, costume, age, identity and cell order. This is NOT a redesign.\nReflow the existing busts into a mathematically UNIFORM 4-column by 4-row square grid with LARGE CLEAR TRANSPARENT GUTTERS. The current portraits touch row and column boundaries, so they will bleed when clipped by CSS; fix that.\nMANDATORY: leave a continuous transparent horizontal band, about 4% of the total canvas height thick, centered at exactly 25%, 50% and 75% of the canvas height. Also leave transparent vertical bands 3% of the total canvas width thick centered at exactly 25%, 50% and 75% of canvas width. These bands must run clear across the whole sheet with absolutely no character pixels. Leave transparent outside margins. Shrink and center each COMPLETE portrait to fit the remaining rectangular area inside its original cell, keeping all of the head and the shoulders. Repaint/reposition complete heads rather than cropping them at the bands. Each bust should still fill most of its remaining cell interior and be crisp enough for game UI. The empty bottom-right cells remain entirely empty; do not add portraits there.\nNo actual visible bands, lines or panels: the gutters are empty ALPHA transparency. Keep the background and blank cells genuinely transparent. Clean isolated bright red/yellow fringe pixels around silhouettes. NO letters, captions, numbers, labels, watermarks or checkerboard. Keep all portraits in the same 2D illustration style and their existing facing direction."
+        }
+      ],
+      "nativeFacing": "right",
+      "flipX": false,
+      "pixelInspection": {
+        "portraitComponentsAbove1000Pixels": 14,
+        "alphaThreshold": 128,
+        "allLargeComponentsAssignedExactlyOnce": true,
+        "allSourceRectChecks": "passed",
+        "pixelEditingPerformed": false
+      }
+    }
+  ],
+  "visualReview": {
+    "reviewedAppearanceCount": 29,
+    "uniformCellBleedFound": true,
+    "resolution": "per-portrait CSS sourceRect; generated PNG kept unchanged",
+    "reviewedAgePairs": [
+      "해인",
+      "백제 여울",
+      "나래",
+      "재인",
+      "해루",
+      "은서",
+      "은서의 딸",
+      "시온"
+    ],
+    "facialContinuity": "Age variants retain the same face shape, hair arrangement and costume color family.",
+    "differentIdentityGuard": "Each individual uses a distinct sheet cell; young/later pairs share identityId but have separate appearanceIds.",
+    "limitations": [
+      "Portraits are original game illustrations, not established historical likenesses.",
+      "Neutral upper-body portraits do not include separate emotion variants.",
+      "The unused transparent cells contain a few residual alpha values of 1–7/255 but no pixels above alpha32.",
+      "Cell positions are reviewed metadata, not a claim that image generation produced a pixel-perfect grid."
+    ],
+    "cssReviewPage": "implementation-work/manuscript/atlas-rect-review.html (scratch review helper)",
+    "cssRuntimeScreenshotStatus": "Pending parent UI review: local Playwright package has no Chromium executable. Full-resolution source-sheet visual review and measured source-rectangle checks completed."
+  }
+}

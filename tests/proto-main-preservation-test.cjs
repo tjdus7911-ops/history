@@ -7,13 +7,19 @@ for(const [id,hash] of Object.entries(baseline.sceneHashes))assert.equal(digest(
 for(const [id,hash] of Object.entries(baseline.chapterHashes))assert.equal(digest(copy(`CHAPTERS[${JSON.stringify(id)}]`)),hash,'protected chapter '+id);
 for(const [name,hash] of Object.entries(baseline.runtimeHashes)){
  const value=copy(name);
- const original=name==='QUESTIONS'?value.filter(q=>q.threeStoryVersion!==2):Object.fromEntries(Object.entries(value).filter(([id])=>!id.startsWith('three_v2')));
+ const addedCharacters=new Set(copy('[THREE_STORY_RUNTIME.protagonist,...THREE_STORY_RUNTIME.people.keys()]'));
+ const addedAssets=new Set(copy("THREE_STORY_RUNTIME.order.map(id=>id+'_background')"));
+ const original=name==='QUESTIONS'?value.filter(q=>!q.threeStoryVersion):Object.fromEntries(Object.entries(value).filter(([id,entry])=>!addedCharacters.has(id)&&!addedCharacters.has(entry.characterId)&&!addedAssets.has(id)));
  assert.equal(digest(original),hash,'unchanged original runtime '+name);
 }
 for(const [file,hash] of Object.entries(baseline.fileHashes)){
  let source=fs.readFileSync(file,'utf8');
+ if(file==='dist/app.js'){
+  const addition='&&(globalThis.THREE_LEARNING_BOUNDARY?.canPractice(q)??true)';
+  assert.equal(source.split(addition).length,2,'only intended study gate change');source=source.replace(addition,'');
+ }
  if(file==='dist/editorial-ui.js'){
-  const addition="&&(!globalThis.THREE_STORY_RUNTIME||id!=='three-kingdoms'||q.threeStoryVersion===2)";
+  const addition="&&(!globalThis.THREE_STORY_RUNTIME||id!=='three-kingdoms'||q.threeStoryVersion===globalThis.THREE_STORY_RUNTIME.version)";
   assert.equal(source.split(addition).length,2,'only intended era query change');
   source=source.replace(addition,'');
  }

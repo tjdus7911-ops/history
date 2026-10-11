@@ -25,7 +25,10 @@ function playSeason(eraId,expectedCount){
  return completed;
 }
 assert.deepEqual(playSeason('proto-kingdoms',8),Array.from({length:8},(_,index)=>`proto-ch${String(index).padStart(2,'0')}`));
-assert.deepEqual(playSeason('three-kingdoms',14),Array.from({length:14},(_,index)=>`three-ch${String(index).padStart(2,'0')}`));
-assert.equal(run("Object.keys(meta().questionRecords).filter(id=>([...PROTO_STUDY_QUESTION_IDS,...ANCIENT_OFFICIAL_MAP.filter(row=>row[0]==='three').map(row=>row[3])]).includes(id)).length"),36);assert.equal(run("meta().wrongQuestionIds.filter(id=>ANCIENT_OFFICIAL_QUESTION_IDS.includes(id)).length"),0);
-assert.equal(run("meta().eraProgress['proto-kingdoms'].progress"),100);assert.equal(run("meta().eraProgress['three-kingdoms'].progress"),100);assert(run("meta().completedChapters.includes('three-ch13')"));
-console.log('PASS: complete 원삼국 CH.00–07 and 삼국 CH.00–13 playthrough, 36 official story questions, 100% independent season completion and no dead-end transition.');
+// The legacy Three season is archived. Complete v3 A/B paths are tested in three-complete-test.cjs.
+assert.equal(run("eraChapters('three-kingdoms').length"),23);
+assert.equal(run("Object.values(STORIES).filter(s=>s.eraId==='three-kingdoms'&&!s.threeStoryVersion&&s.storyActive!==false).length"),0);
+assert.equal(run("meta().eraProgress['proto-kingdoms'].progress"),100);
+assert.equal(run("meta().completedChapters.filter(id=>id.startsWith('THR-C')).length"),0);
+assert.equal(run("meta().wrongQuestionIds.filter(id=>ANCIENT_OFFICIAL_QUESTION_IDS.includes(id)).length"),0);
+console.log('PASS: complete 원삼국 CH.00–07 in the current entry, independent completion, original Three draft excluded from the active route.');

@@ -1,0 +1,787 @@
+{
+  "passed": true,
+  "source": {
+    "workbook": "docs/three-content/exam-mapping.xlsx",
+    "workbookSha256": "f6c210c6182f79be104a446f9aa7ad1acbf59f0ea20a2c8d4ba3b9be1c2f596a",
+    "manuscript": "docs/three-content/complete-manuscript.md",
+    "manuscriptSha256": "09e17274a506391305b36efee52b1cd60c4c504cc6619e68fe70cd9909e9674e",
+    "evidence": "docs/three-content/exam-source-evidence.json",
+    "evidenceSha256": "48bc7aae80a3966949780fed881877d74405bcf30771cad25de4dab91396a9b6",
+    "catalog": "dist/official-exam-catalog.json",
+    "catalogSha256": "be2dc831561fb9e3b03e27489485c44566189d5ac14481bbd744e6faee2d9e6f"
+  },
+  "stats": {
+    "mainScenes": 215,
+    "mainChapters": 23,
+    "verifiedQuestionPool": 122,
+    "usedDistinctQuestions": 91,
+    "unusedReviewedQuestions": 31,
+    "connections": 302,
+    "representativeConnections": 215,
+    "additionalConnections": 87,
+    "representativeScheduleRows": 99,
+    "firstQuestions": 77,
+    "reviewCandidates": 22,
+    "additionalScheduleCandidates": 26,
+    "firstQuestionCheckpoints": 62,
+    "allRepresentativeCheckpoints": 80,
+    "maxFirstQuestionsAtCheckpoint": 3,
+    "connectionTypes": {
+      "관련복습": 52,
+      "서사연결": 39,
+      "선지학습": 37,
+      "직접": 174
+    },
+    "basicQuestions": 31,
+    "advancedQuestions": 60,
+    "questionsWithCompleteTextOptions": 9,
+    "questionsUsingOnlyOriginalImageOptions": 82,
+    "originalImagesVerified": 91,
+    "verifiedExamSets": 24
+  },
+  "checks": {
+    "allWorkbookSheetsRead": true,
+    "workbookAndManuscriptConnectionsMatch": true,
+    "allAnswersMatchOriginalEvidence": true,
+    "allAnswersMatchCatalogAfterSingleConversion": true,
+    "allSelectedQuestionImagesExistAndMatchReviewedHashes": true,
+    "allSelectedImagesHaveCompleteStemMaterialAndOptions": true,
+    "allOfficialQuestionIdsUnique": true,
+    "allSchedulePairsDeduplicated": true,
+    "allScheduleAnchorsMatchManuscript": true,
+    "noQuestionBeforeItsSourceScenes": true,
+    "allConditionalHintsAssigned": true
+  },
+  "images": [
+    {
+      "officialQuestionId": "official-58-basic-07",
+      "questionImage": "assets/exams/catalog/58-basic-07.webp",
+      "sha256": "edd7befc70da7b11535a8430e6c017b1ee1930b10afc9c21c6dbafd9d0a3dc01",
+      "width": 552,
+      "height": 542,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-59-advanced-04",
+      "questionImage": "assets/exams/catalog/59-advanced-04.webp",
+      "sha256": "d18373f671bd97a283d609974a009ffbe6169f1cd21b2374ac0d220482f58a65",
+      "width": 551,
+      "height": 675,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-60-advanced-05",
+      "questionImage": "assets/exams/catalog/60-advanced-05.webp",
+      "sha256": "ca0c6f306830a07db9b91fc583c7aecd520f262562261b36b43e1efb32705bd9",
+      "width": 546,
+      "height": 574,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-61-basic-08",
+      "questionImage": "assets/exams/catalog/61-basic-08.webp",
+      "sha256": "3201eb9281104120cb198a6e0299fab32fe812bf4440385e16a3e666936dc370",
+      "width": 552,
+      "height": 946,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-61-advanced-04",
+      "questionImage": "assets/exams/catalog/61-advanced-04.webp",
+      "sha256": "8b136ff6a41dcc4a618d8e27c67c7f5a1d76d76eccd34b42d4320a46833e4a59",
+      "width": 552,
+      "height": 610,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-61-advanced-05",
+      "questionImage": "assets/exams/catalog/61-advanced-05.webp",
+      "sha256": "87216b837840fb9f01a84d66500eca2ab181ed6a7164508d7b58477a6d49df4d",
+      "width": 546,
+      "height": 610,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-61-advanced-06",
+      "questionImage": "assets/exams/catalog/61-advanced-06.webp",
+      "sha256": "289ce0d27f1f5ccec27ebd450a39aad761128eeab413f0e167151ae81daa9a37",
+      "width": 546,
+      "height": 579,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-61-advanced-07",
+      "questionImage": "assets/exams/catalog/61-advanced-07.webp",
+      "sha256": "344d03b16ec4e724ad202a08e928e8a869ff79d118f1634df69dfd5ff07059cd",
+      "width": 552,
+      "height": 479,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-61-advanced-08",
+      "questionImage": "assets/exams/catalog/61-advanced-08.webp",
+      "sha256": "fe408e61cff42499041c1bd7d7d46ede1c54637e3e3ab67f2415f94a7c2ed77e",
+      "width": 552,
+      "height": 496,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-61-advanced-10",
+      "questionImage": "assets/exams/catalog/61-advanced-10.webp",
+      "sha256": "5a04bb12b24aab32a2d078a90c5ec7b58e6d6d3973ff9e6aef6e7a7e323c013a",
+      "width": 546,
+      "height": 610,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-61-advanced-11",
+      "questionImage": "assets/exams/catalog/61-advanced-11.webp",
+      "sha256": "ad01fdfaf628007eb73406823267b6fd037625ac5f2e4d530d1b4476a6b16aba",
+      "width": 546,
+      "height": 730,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-62-advanced-04",
+      "questionImage": "assets/exams/catalog/62-advanced-04.webp",
+      "sha256": "37d26071358d80e6e2d91dd5d84d55bf3b9e2f4394c79c6761439001360d5487",
+      "width": 552,
+      "height": 575,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-63-basic-05",
+      "questionImage": "assets/exams/catalog/63-basic-05.webp",
+      "sha256": "99b42fbe8b6ae8893390fecd65c153b0d85b9b2fa8dc621a79a790b66447c769",
+      "width": 546,
+      "height": 893,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-63-advanced-08",
+      "questionImage": "assets/exams/catalog/63-advanced-08.webp",
+      "sha256": "1001a79ef9d8b30c428411a1ec5280f42323b3e5abc7c0cb588bca51a4c604bb",
+      "width": 552,
+      "height": 495,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-64-basic-03",
+      "questionImage": "assets/exams/catalog/64-basic-03.webp",
+      "sha256": "3b9f31e6d64b0fa1e7a18f41fa795ee29476d770fccf11e6ac10a055cb9e6cee",
+      "width": 552,
+      "height": 581,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-64-basic-06",
+      "questionImage": "assets/exams/catalog/64-basic-06.webp",
+      "sha256": "ca318647d8601389830eef947d776301b9e2de9755c7ae737a10d45870fb8813",
+      "width": 546,
+      "height": 756,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-64-advanced-03",
+      "questionImage": "assets/exams/catalog/64-advanced-03.webp",
+      "sha256": "02ba133ef808a3ddc5482f19dd3dd1a225afdd2ac5a3b020f9ea64dc65296db9",
+      "width": 552,
+      "height": 601,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-64-advanced-06",
+      "questionImage": "assets/exams/catalog/64-advanced-06.webp",
+      "sha256": "0686dd938173ed8d83c455a972dacbaa104925ec5d07d8e31d7fcf2e1e394f44",
+      "width": 546,
+      "height": 599,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-65-advanced-03",
+      "questionImage": "assets/exams/catalog/65-advanced-03.webp",
+      "sha256": "b2720a19bfa733117e5b44ecadaa4122c7a2ee34b8d931d643bb24cb338111a1",
+      "width": 552,
+      "height": 660,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-65-advanced-05",
+      "questionImage": "assets/exams/catalog/65-advanced-05.webp",
+      "sha256": "5bc2e0e4e3c0642c98df4ce5a9b54623048a67a18aaeb15898b35ede90481374",
+      "width": 546,
+      "height": 370,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-65-advanced-06",
+      "questionImage": "assets/exams/catalog/65-advanced-06.webp",
+      "sha256": "1930a3d3f188f079b409356047397385dfadcf9a8c4baed0d92e99a5778783d6",
+      "width": 546,
+      "height": 509,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-66-advanced-03",
+      "questionImage": "assets/exams/catalog/66-advanced-03.webp",
+      "sha256": "32a01ce0aa6bea2923dd55acb741f3eb1dac6836dd32a545fed37c74184a70bb",
+      "width": 552,
+      "height": 793,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-66-advanced-04",
+      "questionImage": "assets/exams/catalog/66-advanced-04.webp",
+      "sha256": "7873879ecbd82f4ceb0473dac4cf4712d5934e12a77c31db80df83def9d2f3b4",
+      "width": 552,
+      "height": 495,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-66-advanced-05",
+      "questionImage": "assets/exams/catalog/66-advanced-05.webp",
+      "sha256": "06f793dae69963965d8a6f12bdda6b71a451d282549c8d231feb4792bb99f00d",
+      "width": 546,
+      "height": 731,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-66-advanced-06",
+      "questionImage": "assets/exams/catalog/66-advanced-06.webp",
+      "sha256": "c840372effc3749bd400f8fe2098f19fd1d7e34fdd7a67c8372dc5be365dcd85",
+      "width": 546,
+      "height": 642,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-66-advanced-08",
+      "questionImage": "assets/exams/catalog/66-advanced-08.webp",
+      "sha256": "1c7ca9f037a7eb1349608bd1023a43760d53605708fe7886bba1a98060251b57",
+      "width": 552,
+      "height": 734,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-67-basic-03",
+      "questionImage": "assets/exams/catalog/67-basic-03.webp",
+      "sha256": "4188fedf8113c8f471d7e96eab5e2a390783820fa1cd597f957ffa092a1e06d9",
+      "width": 552,
+      "height": 553,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-67-basic-05",
+      "questionImage": "assets/exams/catalog/67-basic-05.webp",
+      "sha256": "080b216a78873a4522ec58abf8a31405aef3991247b20df3922ac358a53fd03d",
+      "width": 546,
+      "height": 669,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-67-basic-06",
+      "questionImage": "assets/exams/catalog/67-basic-06.webp",
+      "sha256": "7ff7420b95cc7fc6221936f32772460363fbb04d92feac9f63b1e56482b87f69",
+      "width": 546,
+      "height": 582,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-67-basic-07",
+      "questionImage": "assets/exams/catalog/67-basic-07.webp",
+      "sha256": "370269ebe3f2db5e9cddfc240c9a6b1cc495a7b0eca8d30b6d407468f7489deb",
+      "width": 552,
+      "height": 605,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-67-basic-08",
+      "questionImage": "assets/exams/catalog/67-basic-08.webp",
+      "sha256": "c02f80930238b52c08a06443070e424d2ee6414e5f16b37fc60b6e9200d61ed0",
+      "width": 552,
+      "height": 804,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-67-basic-09",
+      "questionImage": "assets/exams/catalog/67-basic-09.webp",
+      "sha256": "280e0379faa11e7c3d01820f6e04520fd8d7b908b3a9be9c7eaf34dd757b9f3b",
+      "width": 546,
+      "height": 882,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-67-basic-10",
+      "questionImage": "assets/exams/catalog/67-basic-10.webp",
+      "sha256": "7145ec0ef5d20105a99f8eca439fdcb685b99d39d942abba81970517181236d5",
+      "width": 546,
+      "height": 507,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-68-advanced-04",
+      "questionImage": "assets/exams/catalog/68-advanced-04.webp",
+      "sha256": "bd05136af976859c061d03f0a5b2c9f50c182099246ae75b356b103449fe8c4e",
+      "width": 552,
+      "height": 829,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-68-advanced-05",
+      "questionImage": "assets/exams/catalog/68-advanced-05.webp",
+      "sha256": "889447cfbe988ec90fe10fc1b7de019034bd26dcceb1ad44e9a939b63509a5f1",
+      "width": 546,
+      "height": 671,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-68-advanced-06",
+      "questionImage": "assets/exams/catalog/68-advanced-06.webp",
+      "sha256": "73999b336139ac82e24fc4b5d749fedeb16963bf4d97b820518c7068c049c08c",
+      "width": 546,
+      "height": 618,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-68-advanced-08",
+      "questionImage": "assets/exams/catalog/68-advanced-08.webp",
+      "sha256": "930c1341ab4cbb4dbf21304f864a1b948488dbc376d15212a9399d96abc4c781",
+      "width": 552,
+      "height": 443,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-68-advanced-10",
+      "questionImage": "assets/exams/catalog/68-advanced-10.webp",
+      "sha256": "0c62e97dd3122179d7097caa1da362306e1bbefe3763fda861833232e7b121eb",
+      "width": 546,
+      "height": 738,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-69-basic-03",
+      "questionImage": "assets/exams/catalog/69-basic-03.webp",
+      "sha256": "e90a7365173415d89aa4de60ee1abb543aa1b49184bbcdd75818691034803d16",
+      "width": 537,
+      "height": 806,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-69-basic-04",
+      "questionImage": "assets/exams/catalog/69-basic-04.webp",
+      "sha256": "ffdcca1b71b7c248c65cffe93e922eb043b28b1b4efe87e5cdcc7b15d2a844f8",
+      "width": 537,
+      "height": 428,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-69-basic-06",
+      "questionImage": "assets/exams/catalog/69-basic-06.webp",
+      "sha256": "59e49100b1450ddb4b5f415ee654a4cbb490f9283fad2a50f15a1eb83324086c",
+      "width": 531,
+      "height": 458,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-69-basic-07",
+      "questionImage": "assets/exams/catalog/69-basic-07.webp",
+      "sha256": "020d709b02f9e4cb2f0953a04929c6a9f39343332f2d6daefe01c17630c693a4",
+      "width": 537,
+      "height": 690,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-69-basic-08",
+      "questionImage": "assets/exams/catalog/69-basic-08.webp",
+      "sha256": "a07b80d3e7d4021d9f5987b70fb58cf626eb01474a8fe78c8cd92368e118543b",
+      "width": 537,
+      "height": 601,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-69-basic-09",
+      "questionImage": "assets/exams/catalog/69-basic-09.webp",
+      "sha256": "f2aed9807009656f0d5cd8d57d816c9bf31508e2aef8034b4afbe27179531db5",
+      "width": 531,
+      "height": 723,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-69-basic-10",
+      "questionImage": "assets/exams/catalog/69-basic-10.webp",
+      "sha256": "69b175fe08bc4040726feb0dc69c3218befd95699288ad90a531c36f4d2398d5",
+      "width": 531,
+      "height": 490,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-69-basic-48",
+      "questionImage": "assets/exams/catalog/69-basic-48.webp",
+      "sha256": "bcdf978352afe7268fb77b07c28df1f33582d4ad52d8c855ae8b5af0cf887404",
+      "width": 531,
+      "height": 725,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-70-advanced-03",
+      "questionImage": "assets/exams/catalog/70-advanced-03.webp",
+      "sha256": "53bfb825bfa549ef9a0162912cff0d82a9424899560f2562e3484ed2786ea778",
+      "width": 537,
+      "height": 565,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-70-advanced-04",
+      "questionImage": "assets/exams/catalog/70-advanced-04.webp",
+      "sha256": "194e3e52d3d8bbb0cfa8eab17082afa2e6b132a126fe7ade17791f2892af1090",
+      "width": 537,
+      "height": 577,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-70-advanced-07",
+      "questionImage": "assets/exams/catalog/70-advanced-07.webp",
+      "sha256": "eebc663fbf22d6cc36c85786566375431f5e49679e559980413e66845ad6614b",
+      "width": 531,
+      "height": 383,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-70-advanced-08",
+      "questionImage": "assets/exams/catalog/70-advanced-08.webp",
+      "sha256": "3c8fa5834af7dc914b6ec96f984c4eec7e65eb57b3d9c0f0030f4028f24db350",
+      "width": 537,
+      "height": 663,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-71-advanced-06",
+      "questionImage": "assets/exams/catalog/71-advanced-06.webp",
+      "sha256": "82c8acb65ed930b2760c4d8d2fdb0df3be234d97aef86866f23e90dd6a295b95",
+      "width": 531,
+      "height": 590,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-73-basic-04",
+      "questionImage": "assets/exams/catalog/73-basic-04.webp",
+      "sha256": "bbb110487f52f72b1b704413bd5b9113d5e7c1884531e3367b7a793ac2c52785",
+      "width": 537,
+      "height": 454,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-73-basic-05",
+      "questionImage": "assets/exams/catalog/73-basic-05.webp",
+      "sha256": "e41e54db6e18ecf86d336180f974157e8505178f3ec1c36bd6f2629fd6c52ed4",
+      "width": 531,
+      "height": 471,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-73-basic-06",
+      "questionImage": "assets/exams/catalog/73-basic-06.webp",
+      "sha256": "0f23b76305d07f59764bdbee1d6e54680ceb41c350e8333b49c57f35540d8577",
+      "width": 531,
+      "height": 545,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-73-basic-07",
+      "questionImage": "assets/exams/catalog/73-basic-07.webp",
+      "sha256": "c21b99d8e67d182a36893043367840d8d8c1741f1be511a155fb61ec6eb6b1f0",
+      "width": 531,
+      "height": 416,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-73-basic-09",
+      "questionImage": "assets/exams/catalog/73-basic-09.webp",
+      "sha256": "f53876aa4b12605db00f4072c279089dafe1fdf7352dc9c37fff2ba75c458bb2",
+      "width": 537,
+      "height": 617,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-73-basic-30",
+      "questionImage": "assets/exams/catalog/73-basic-30.webp",
+      "sha256": "21935fecafa7aa63c9351bf1f9f26dc455810d89616be4aeb5979b2867582c18",
+      "width": 531,
+      "height": 498,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-74-advanced-04",
+      "questionImage": "assets/exams/catalog/74-advanced-04.webp",
+      "sha256": "7f93e051873bfe035ed20ab3f9b9deff8224df8e21599b53c4199c1d3cfd9522",
+      "width": 537,
+      "height": 459,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-74-advanced-06",
+      "questionImage": "assets/exams/catalog/74-advanced-06.webp",
+      "sha256": "d8ec6f4f71c3d49a3aef2afc6cf55742f854b90e95e876e84a7473008f5332e9",
+      "width": 531,
+      "height": 780,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-74-advanced-08",
+      "questionImage": "assets/exams/catalog/74-advanced-08.webp",
+      "sha256": "9611b0887943cc6a2244a029a397427b34e92d462c91e22416a3505aa4389c03",
+      "width": 537,
+      "height": 654,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-74-advanced-09",
+      "questionImage": "assets/exams/catalog/74-advanced-09.webp",
+      "sha256": "5e9f0d8181ee9adb5224f4260bb2d9b4986529691c880aaf03ce0598b6e9c39d",
+      "width": 531,
+      "height": 734,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-74-advanced-10",
+      "questionImage": "assets/exams/catalog/74-advanced-10.webp",
+      "sha256": "88d47ce83d3709d563589de954bc9afddcd0f585d77879fc2dd088270e391acd",
+      "width": 531,
+      "height": 529,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-75-basic-02",
+      "questionImage": "assets/exams/catalog/75-basic-02.webp",
+      "sha256": "accea9b3facc7a62882cea529cf267d28468efbb3d0b336e84f5e1d7363112e6",
+      "width": 531,
+      "height": 652,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-75-basic-06",
+      "questionImage": "assets/exams/catalog/75-basic-06.webp",
+      "sha256": "2254c8ebf2909a429f1d74484d2f5172c290ed4540b235185680b0b329aea368",
+      "width": 531,
+      "height": 587,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-75-basic-07",
+      "questionImage": "assets/exams/catalog/75-basic-07.webp",
+      "sha256": "0eab2669a7ea23edf1cfd2e51b6c35724f5d3a01a38f879e8a6c5688e34cbbd5",
+      "width": 537,
+      "height": 655,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-75-basic-08",
+      "questionImage": "assets/exams/catalog/75-basic-08.webp",
+      "sha256": "d82fac1565bde9f1d0c0961e671d127a5a2671e67e743b186338fdb5d58c8791",
+      "width": 537,
+      "height": 640,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-75-basic-09",
+      "questionImage": "assets/exams/catalog/75-basic-09.webp",
+      "sha256": "234cb6e6797c60b8354ff180d9aaa8284e2612fd3db1d65ce70c7c5cfc30d8ac",
+      "width": 531,
+      "height": 514,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-76-advanced-03",
+      "questionImage": "assets/exams/catalog/76-advanced-03.webp",
+      "sha256": "c8b107ffeb8fa9c76094fd303a5b3f7a0d7f6249fb3b944d7d77ff75a1d745bb",
+      "width": 537,
+      "height": 551,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-76-advanced-04",
+      "questionImage": "assets/exams/catalog/76-advanced-04.webp",
+      "sha256": "2576e4d8c84cc920176c1d9438bc242532e8d8d3ac106fc4b3b200cd7b975521",
+      "width": 537,
+      "height": 749,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-76-advanced-05",
+      "questionImage": "assets/exams/catalog/76-advanced-05.webp",
+      "sha256": "d51667ce640dd8ca58cb1560612fbc5acad2b58fc48360729786f2f5e54872d8",
+      "width": 531,
+      "height": 688,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-76-advanced-06",
+      "questionImage": "assets/exams/catalog/76-advanced-06.webp",
+      "sha256": "33402a1955225058fb082b9a663d9f5167524d20ef63694334ddbece7ad48cfe",
+      "width": 531,
+      "height": 496,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-76-advanced-07",
+      "questionImage": "assets/exams/catalog/76-advanced-07.webp",
+      "sha256": "dee81aeb94c237b8bd753665d626f905d589b0d00f71b37bd9c7b98a1e26cd64",
+      "width": 537,
+      "height": 573,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-76-advanced-09",
+      "questionImage": "assets/exams/catalog/76-advanced-09.webp",
+      "sha256": "7d482bb98abe012939fe25edda3d7d048e957d8fc8b3b8a00f63222a5f4dab14",
+      "width": 531,
+      "height": 532,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-77-advanced-05",
+      "questionImage": "assets/exams/catalog/77-advanced-05.webp",
+      "sha256": "d6b6e447b5844096f6cddba3903eec22a81d416f1fa622972dd8bca47d2e8b18",
+      "width": 531,
+      "height": 516,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-77-advanced-06",
+      "questionImage": "assets/exams/catalog/77-advanced-06.webp",
+      "sha256": "cede34d715b1f0cec92385958b86da32cfe5cff8c6a6d949f56054a343137574",
+      "width": 531,
+      "height": 508,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-77-advanced-07",
+      "questionImage": "assets/exams/catalog/77-advanced-07.webp",
+      "sha256": "4084936c0bcf4259e375bfe5700383fbc1136af5f6545f279e1da22a50ef3d45",
+      "width": 531,
+      "height": 424,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-77-advanced-08",
+      "questionImage": "assets/exams/catalog/77-advanced-08.webp",
+      "sha256": "8d59f567c71a38e9eb7ad2e8929bc8c80398d43601829844886db45a2c782d33",
+      "width": 537,
+      "height": 862,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-77-advanced-09",
+      "questionImage": "assets/exams/catalog/77-advanced-09.webp",
+      "sha256": "b175536a5385957a8d2bebaaf9336b0b925b39762a3e3752f0660844df425c7a",
+      "width": 537,
+      "height": 523,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-77-advanced-10",
+      "questionImage": "assets/exams/catalog/77-advanced-10.webp",
+      "sha256": "d78381e2767bcba78449869669842d74df4373c93319016e5d395140333d88b4",
+      "width": 531,
+      "height": 592,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-77-advanced-13",
+      "questionImage": "assets/exams/catalog/77-advanced-13.webp",
+      "sha256": "cbd86603f689b9c24d6af3ec18fa8b0c6b83c3b4c6d0976aee95274b52257e08",
+      "width": 537,
+      "height": 729,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-77-advanced-50",
+      "questionImage": "assets/exams/catalog/77-advanced-50.webp",
+      "sha256": "f881f2730dff258f8b23311f28a26ecf7dc41a76d893428c2559f8252b7405dd",
+      "width": 537,
+      "height": 814,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-78-advanced-06",
+      "questionImage": "assets/exams/catalog/78-advanced-06.webp",
+      "sha256": "123352e1dbf0d244ace634b582d778051c109f4fe6b79698427a8bbd7769e346",
+      "width": 531,
+      "height": 675,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-78-advanced-07",
+      "questionImage": "assets/exams/catalog/78-advanced-07.webp",
+      "sha256": "2745b3cb77c1345cd29725880c8043f604e64bd2625c6839b8f06444b2815456",
+      "width": 537,
+      "height": 570,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-78-advanced-08",
+      "questionImage": "assets/exams/catalog/78-advanced-08.webp",
+      "sha256": "51530c6d2266accb5813da7bbd0a3efd2c8fe9c1016f2d8ecc5be196dda926b5",
+      "width": 537,
+      "height": 519,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-78-advanced-09",
+      "questionImage": "assets/exams/catalog/78-advanced-09.webp",
+      "sha256": "a5f762e043cd2cbf37d7727fc79573fe91af2cae4115311cd5d963214444e9c7",
+      "width": 531,
+      "height": 816,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-79-advanced-03",
+      "questionImage": "assets/exams/catalog/79-advanced-03.webp",
+      "sha256": "0e7d6415b2d5171ebec16117f7b0f653951ec3f8c41dc326315f2ed9b23235de",
+      "width": 537,
+      "height": 630,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-79-advanced-04",
+      "questionImage": "assets/exams/catalog/79-advanced-04.webp",
+      "sha256": "f206b5b39eaa44d30d9da30114ada23f785ed58efd14a435d8293ee968b6107b",
+      "width": 537,
+      "height": 690,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-79-advanced-06",
+      "questionImage": "assets/exams/catalog/79-advanced-06.webp",
+      "sha256": "4c1bc37a9c2ff1caba0e4177ac56ff8753ddfed45d5435f8d4f8bfb83b59fd3c",
+      "width": 531,
+      "height": 747,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-79-advanced-07",
+      "questionImage": "assets/exams/catalog/79-advanced-07.webp",
+      "sha256": "c816dcafb9cf65af4a289ebf8e1209b515868833d74f07b60671e1e92bf7d567",
+      "width": 537,
+      "height": 500,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-79-advanced-09",
+      "questionImage": "assets/exams/catalog/79-advanced-09.webp",
+      "sha256": "44d1d9be42507daf0f43a3a1d6f0bc2d5f13dbc22e7a4e0dfffa648796b510c5",
+      "width": 537,
+      "height": 452,
+      "cropReviewed": true
+    },
+    {
+      "officialQuestionId": "official-79-advanced-10",
+      "questionImage": "assets/exams/catalog/79-advanced-10.webp",
+      "sha256": "6339d6d70829446d6e078c8e92736927e7e7a92dc4c38d462686a3696cae6f6a",
+      "width": 531,
+      "height": 572,
+      "cropReviewed": true
+    }
+  ],
+  "visualReviewScope": "All 91 original repository crops were visually checked for question number, stem, source material, numbered options and bottom edge. Mobile layout, enlargement and runtime play are separate UI checks.",
+  "imagePolicy": "Original repository image bytes are unchanged. No AI image, synthetic stem, fabricated option, reordered choice or autogenerated explanation is used."
+}
