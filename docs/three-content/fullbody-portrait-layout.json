@@ -6,7 +6,7 @@
       "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-01.png",
       "columns": 3,
       "rows": 3,
-      "displayHeightFraction": 0.86,
+      "displayHeightFraction": 1,
       "cells": [
         {
           "name": "순도",
@@ -107,14 +107,15 @@
             74
           ]
         }
-      ]
+      ],
+      "portraitFraming": "full-body"
     },
     {
       "sheetId": "principal-fullbody-02",
       "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-02.png",
       "columns": 3,
       "rows": 3,
-      "displayHeightFraction": 0.86,
+      "displayHeightFraction": 1,
       "cells": [
         {
           "name": "자장",
@@ -215,7 +216,8 @@
             75
           ]
         }
-      ]
+      ],
+      "portraitFraming": "full-body"
     },
     {
       "sheetId": "yeonwoo-fullbody-v1",
@@ -241,14 +243,15 @@
             "height": 1510
           }
         }
-      ]
+      ],
+      "displayHeightFraction": 1
     },
     {
       "sheetId": "principal-fullbody-03-spaced",
       "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-03-spaced.png",
       "columns": 3,
       "rows": 3,
-      "displayHeightFraction": 0.86,
+      "displayHeightFraction": 1,
       "cells": [
         {
           "name": "대조영",
@@ -340,7 +343,8 @@
             77
           ]
         }
-      ]
+      ],
+      "portraitFraming": "full-body"
     },
     {
       "sheetId": "principal-fullbody-04-spaced",
@@ -439,14 +443,15 @@
             92
           ]
         }
-      ]
+      ],
+      "portraitFraming": "full-body"
     },
     {
       "sheetId": "principal-fullbody-05",
       "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-05.png",
       "columns": 3,
       "rows": 3,
-      "displayHeightFraction": 0.86,
+      "displayHeightFraction": 1,
       "cells": [
         {
           "name": "초연",
@@ -542,7 +547,8 @@
             83
           ]
         }
-      ]
+      ],
+      "portraitFraming": "full-body"
     },
     {
       "sheetId": "principal-fullbody-07",
@@ -628,14 +634,15 @@
             95
           ]
         }
-      ]
+      ],
+      "portraitFraming": "full-body"
     },
     {
       "sheetId": "recurring-fullbody-01",
       "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-01.png",
       "columns": 3,
       "rows": 3,
-      "displayHeightFraction": 0.86,
+      "displayHeightFraction": 1,
       "nativeFacing": "left",
       "cells": [
         {
@@ -708,14 +715,15 @@
             79
           ]
         }
-      ]
+      ],
+      "portraitFraming": "full-body"
     },
     {
       "sheetId": "recurring-fullbody-02-selected",
       "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-02.png",
       "columns": 3,
       "rows": 3,
-      "displayHeightFraction": 0.86,
+      "displayHeightFraction": 1,
       "nativeFacing": "left",
       "sourceComponentCount": 7,
       "cells": [
@@ -779,14 +787,15 @@
           ],
           "componentIndex": 5
         }
-      ]
+      ],
+      "portraitFraming": "full-body"
     },
     {
       "sheetId": "recurring-fullbody-05",
       "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-05.png",
       "columns": 2,
       "rows": 2,
-      "displayHeightFraction": 0.86,
+      "displayHeightFraction": 1,
       "cells": [
         {
           "name": "해명",
@@ -836,7 +845,8 @@
           ],
           "nativeFacing": "right"
         }
-      ]
+      ],
+      "portraitFraming": "full-body"
     },
     {
       "sheetId": "haein-later-fullbody-v1",
@@ -857,7 +867,8 @@
             138
           ]
         }
-      ]
+      ],
+      "displayHeightFraction": 1
     },
     {
       "sheetId": "principal-fullbody-06-safe",
@@ -962,7 +973,8 @@
           "row": 2,
           "column": 2
         }
-      ]
+      ],
+      "portraitFraming": "full-body"
     },
     {
       "sheetId": "principal-fullbody-garam-haram-v1",
@@ -991,14 +1003,15 @@
             166
           ]
         }
-      ]
+      ],
+      "portraitFraming": "full-body"
     },
     {
       "sheetId": "recurring-fullbody-03-spaced",
       "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-03-spaced.png",
       "columns": 3,
       "rows": 2,
-      "displayHeightFraction": 0.86,
+      "displayHeightFraction": 1,
       "cells": [
         {
           "name": "나래",
@@ -1062,14 +1075,15 @@
             80
           ]
         }
-      ]
+      ],
+      "portraitFraming": "full-body"
     },
     {
       "sheetId": "recurring-fullbody-04-spaced",
       "src": "assets/ancient/three-complete/characters/recurring-fullbody-atlas-04-spaced.png",
       "columns": 3,
       "rows": 2,
-      "displayHeightFraction": 0.86,
+      "displayHeightFraction": 1,
       "cells": [
         {
           "name": "누리",
@@ -1123,7 +1137,8 @@
           ],
           "ageVariant": "later"
         }
-      ]
+      ],
+      "portraitFraming": "full-body"
     }
   ],
   "status": "all-90-body-extensions-connected-source-crops-reviewed-runtime-composite-pending"

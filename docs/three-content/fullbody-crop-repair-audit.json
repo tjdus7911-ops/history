@@ -1,0 +1,2361 @@
+{
+  "schemaVersion": 1,
+  "status": "metadata-repaired-automated-coverage-passed-actual-runtime-review-pending",
+  "sourceBaseline": "PR7 main c032fc2badb339bf73fbc933e518d656bbf3e5df",
+  "cause": "Nine atlas specs used displayHeightFraction 0.86. The previous contour check validated only the already cropped region and could not detect excluded legs or shoes.",
+  "repair": "Use full component height; preserve original x/y/width and face anchors; trace complete pixel-edge contours with even-odd holes so neighboring portraits cannot appear between limbs. Reject any sourceRect omitting alpha>32 pixels of the original component.",
+  "summary": {
+    "appearances": 90,
+    "sourceImages": 15,
+    "restoredSourceRectCount": 63,
+    "alreadyCompleteSourceRectCount": 27,
+    "correctedFramingLabels": 88,
+    "unchangedFaceAnchors": 90,
+    "unchangedImageHashes": 15,
+    "omittedOpaquePixelsAfterRepair": 0,
+    "pixelEditingPerformed": false,
+    "actualRuntimeReviewAfterRepair": false
+  },
+  "characters": [
+    {
+      "characterId": "history-sundo--initial",
+      "name": "순도",
+      "sheetId": "principal-fullbody-01",
+      "sourceRectBefore": {
+        "x": 85,
+        "y": 17,
+        "width": 241,
+        "height": 431
+      },
+      "sourceRectAfter": {
+        "x": 85,
+        "y": 17,
+        "width": 241,
+        "height": 501
+      },
+      "restoredBottomPixels": 70,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 76184,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "history-gwanggaeto--initial",
+      "name": "광개토대왕",
+      "sheetId": "principal-fullbody-01",
+      "sourceRectBefore": {
+        "x": 370,
+        "y": 6,
+        "width": 271,
+        "height": 447
+      },
+      "sourceRectAfter": {
+        "x": 370,
+        "y": 6,
+        "width": 271,
+        "height": 520
+      },
+      "restoredBottomPixels": 73,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 87353,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "history-jangsu--initial",
+      "name": "장수왕",
+      "sheetId": "principal-fullbody-01",
+      "sourceRectBefore": {
+        "x": 687,
+        "y": 6,
+        "width": 265,
+        "height": 449
+      },
+      "sourceRectAfter": {
+        "x": 687,
+        "y": 6,
+        "width": 265,
+        "height": 522
+      },
+      "restoredBottomPixels": 73,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 88716,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "history-euljimundeok--initial",
+      "name": "을지문덕",
+      "sheetId": "principal-fullbody-01",
+      "sourceRectBefore": {
+        "x": 44,
+        "y": 516,
+        "width": 291,
+        "height": 441
+      },
+      "sourceRectAfter": {
+        "x": 44,
+        "y": 516,
+        "width": 291,
+        "height": 513
+      },
+      "restoredBottomPixels": 72,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 92423,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "history-marananta--initial",
+      "name": "마라난타",
+      "sheetId": "principal-fullbody-01",
+      "sourceRectBefore": {
+        "x": 390,
+        "y": 522,
+        "width": 260,
+        "height": 437
+      },
+      "sourceRectAfter": {
+        "x": 390,
+        "y": 522,
+        "width": 260,
+        "height": 508
+      },
+      "restoredBottomPixels": 71,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 86518,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "history-munju--initial",
+      "name": "문주왕",
+      "sheetId": "principal-fullbody-01",
+      "sourceRectBefore": {
+        "x": 709,
+        "y": 517,
+        "width": 255,
+        "height": 449
+      },
+      "sourceRectAfter": {
+        "x": 709,
+        "y": 517,
+        "width": 255,
+        "height": 522
+      },
+      "restoredBottomPixels": 73,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 87914,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "history-muryeong--initial",
+      "name": "무령왕",
+      "sheetId": "principal-fullbody-01",
+      "sourceRectBefore": {
+        "x": 60,
+        "y": 1021,
+        "width": 268,
+        "height": 445
+      },
+      "sourceRectAfter": {
+        "x": 60,
+        "y": 1021,
+        "width": 268,
+        "height": 515
+      },
+      "restoredBottomPixels": 70,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 85780,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "history-seong--initial",
+      "name": "성왕",
+      "sheetId": "principal-fullbody-01",
+      "sourceRectBefore": {
+        "x": 368,
+        "y": 1021,
+        "width": 291,
+        "height": 445
+      },
+      "sourceRectAfter": {
+        "x": 368,
+        "y": 1021,
+        "width": 291,
+        "height": 515
+      },
+      "restoredBottomPixels": 70,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 92120,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "history-beopheung--initial",
+      "name": "법흥왕",
+      "sheetId": "principal-fullbody-01",
+      "sourceRectBefore": {
+        "x": 709,
+        "y": 1025,
+        "width": 269,
+        "height": 441
+      },
+      "sourceRectAfter": {
+        "x": 709,
+        "y": 1025,
+        "width": 269,
+        "height": 511
+      },
+      "restoredBottomPixels": 70,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 87124,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "history-jajang--initial",
+      "name": "자장",
+      "sheetId": "principal-fullbody-02",
+      "sourceRectBefore": {
+        "x": 62,
+        "y": 5,
+        "width": 262,
+        "height": 452
+      },
+      "sourceRectAfter": {
+        "x": 62,
+        "y": 5,
+        "width": 262,
+        "height": 525
+      },
+      "restoredBottomPixels": 73,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 86888,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "history-kimchunchu--initial",
+      "name": "김춘추",
+      "sheetId": "principal-fullbody-02",
+      "sourceRectBefore": {
+        "x": 385,
+        "y": 0,
+        "width": 269,
+        "height": 457
+      },
+      "sourceRectAfter": {
+        "x": 385,
+        "y": 0,
+        "width": 269,
+        "height": 531
+      },
+      "restoredBottomPixels": 74,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 91141,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "history-kimyusin--older",
+      "name": "김유신",
+      "sheetId": "principal-fullbody-02",
+      "sourceRectBefore": {
+        "x": 715,
+        "y": 0,
+        "width": 258,
+        "height": 457
+      },
+      "sourceRectAfter": {
+        "x": 715,
+        "y": 0,
+        "width": 258,
+        "height": 531
+      },
+      "restoredBottomPixels": 74,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 83189,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "history-ureuk--initial",
+      "name": "우륵",
+      "sheetId": "principal-fullbody-02",
+      "sourceRectBefore": {
+        "x": 51,
+        "y": 514,
+        "width": 275,
+        "height": 458
+      },
+      "sourceRectAfter": {
+        "x": 51,
+        "y": 514,
+        "width": 275,
+        "height": 533
+      },
+      "restoredBottomPixels": 75,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 97488,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "history-sinmun--initial",
+      "name": "신문왕",
+      "sheetId": "principal-fullbody-02",
+      "sourceRectBefore": {
+        "x": 384,
+        "y": 514,
+        "width": 279,
+        "height": 458
+      },
+      "sourceRectAfter": {
+        "x": 384,
+        "y": 514,
+        "width": 279,
+        "height": 533
+      },
+      "restoredBottomPixels": 75,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 94404,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "history-wonhyo--initial",
+      "name": "원효",
+      "sheetId": "principal-fullbody-02",
+      "sourceRectBefore": {
+        "x": 719,
+        "y": 520,
+        "width": 266,
+        "height": 453
+      },
+      "sourceRectAfter": {
+        "x": 719,
+        "y": 520,
+        "width": 266,
+        "height": 527
+      },
+      "restoredBottomPixels": 74,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 89391,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "history-uisang--initial",
+      "name": "의상",
+      "sheetId": "principal-fullbody-02",
+      "sourceRectBefore": {
+        "x": 59,
+        "y": 1033,
+        "width": 252,
+        "height": 434
+      },
+      "sourceRectAfter": {
+        "x": 59,
+        "y": 1033,
+        "width": 252,
+        "height": 503
+      },
+      "restoredBottomPixels": 69,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 80009,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "history-jangbogo--initial",
+      "name": "장보고",
+      "sheetId": "principal-fullbody-02",
+      "sourceRectBefore": {
+        "x": 398,
+        "y": 1030,
+        "width": 260,
+        "height": 437
+      },
+      "sourceRectAfter": {
+        "x": 398,
+        "y": 1030,
+        "width": 260,
+        "height": 506
+      },
+      "restoredBottomPixels": 69,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 85948,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "history-choechiwon--initial",
+      "name": "최치원",
+      "sheetId": "principal-fullbody-02",
+      "sourceRectBefore": {
+        "x": 739,
+        "y": 1033,
+        "width": 247,
+        "height": 434
+      },
+      "sourceRectAfter": {
+        "x": 739,
+        "y": 1033,
+        "width": 247,
+        "height": 503
+      },
+      "restoredBottomPixels": 69,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 79462,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c01-0e375c4533--initial",
+      "name": "연우",
+      "sheetId": "yeonwoo-fullbody-v1",
+      "sourceRectBefore": {
+        "x": 238,
+        "y": 15,
+        "width": 648,
+        "height": 1510
+      },
+      "sourceRectAfter": {
+        "x": 238,
+        "y": 15,
+        "width": 648,
+        "height": 1510
+      },
+      "restoredBottomPixels": 0,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "full-body",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 523433,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "history-daejoyeong--initial",
+      "name": "대조영",
+      "sheetId": "principal-fullbody-03-spaced",
+      "sourceRectBefore": {
+        "x": 36,
+        "y": 2,
+        "width": 316,
+        "height": 470
+      },
+      "sourceRectAfter": {
+        "x": 36,
+        "y": 2,
+        "width": 316,
+        "height": 546
+      },
+      "restoredBottomPixels": 76,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 109041,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "history-wanggeon--initial",
+      "name": "왕건",
+      "sheetId": "principal-fullbody-03-spaced",
+      "sourceRectBefore": {
+        "x": 370,
+        "y": 2,
+        "width": 295,
+        "height": 470
+      },
+      "sourceRectAfter": {
+        "x": 370,
+        "y": 2,
+        "width": 295,
+        "height": 546
+      },
+      "restoredBottomPixels": 76,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 104001,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c01-e46c301472--initial",
+      "name": "해솔",
+      "sheetId": "principal-fullbody-03-spaced",
+      "sourceRectBefore": {
+        "x": 700,
+        "y": 21,
+        "width": 292,
+        "height": 451
+      },
+      "sourceRectAfter": {
+        "x": 700,
+        "y": 21,
+        "width": 292,
+        "height": 524
+      },
+      "restoredBottomPixels": 73,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 91672,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c02-4d5f80821a--initial",
+      "name": "하준",
+      "sheetId": "principal-fullbody-03-spaced",
+      "sourceRectBefore": {
+        "x": 46,
+        "y": 532,
+        "width": 287,
+        "height": 446
+      },
+      "sourceRectAfter": {
+        "x": 46,
+        "y": 532,
+        "width": 287,
+        "height": 518
+      },
+      "restoredBottomPixels": 72,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 95116,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c02-9b1f1302f8--initial",
+      "name": "기록관 소정",
+      "sheetId": "principal-fullbody-03-spaced",
+      "sourceRectBefore": {
+        "x": 354,
+        "y": 545,
+        "width": 322,
+        "height": 435
+      },
+      "sourceRectAfter": {
+        "x": 354,
+        "y": 545,
+        "width": 322,
+        "height": 506
+      },
+      "restoredBottomPixels": 71,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 94992,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c02-cb385fcd2e--initial",
+      "name": "전령 태수",
+      "sheetId": "principal-fullbody-03-spaced",
+      "sourceRectBefore": {
+        "x": 695,
+        "y": 540,
+        "width": 298,
+        "height": 440
+      },
+      "sourceRectAfter": {
+        "x": 695,
+        "y": 540,
+        "width": 298,
+        "height": 512
+      },
+      "restoredBottomPixels": 72,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 97915,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c02-55738cfbf1--initial",
+      "name": "기록관 연진",
+      "sheetId": "principal-fullbody-03-spaced",
+      "sourceRectBefore": {
+        "x": 47,
+        "y": 1024,
+        "width": 302,
+        "height": 440
+      },
+      "sourceRectAfter": {
+        "x": 47,
+        "y": 1024,
+        "width": 302,
+        "height": 512
+      },
+      "restoredBottomPixels": 72,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 93857,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c03-c4d6a1921b--initial",
+      "name": "규림",
+      "sheetId": "principal-fullbody-03-spaced",
+      "sourceRectBefore": {
+        "x": 399,
+        "y": 1042,
+        "width": 233,
+        "height": 426
+      },
+      "sourceRectAfter": {
+        "x": 399,
+        "y": 1042,
+        "width": 233,
+        "height": 494
+      },
+      "restoredBottomPixels": 68,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 72510,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c03-df0b7cedbc--initial",
+      "name": "기록관 가현",
+      "sheetId": "principal-fullbody-03-spaced",
+      "sourceRectBefore": {
+        "x": 707,
+        "y": 1038,
+        "width": 270,
+        "height": 429
+      },
+      "sourceRectAfter": {
+        "x": 707,
+        "y": 1038,
+        "width": 270,
+        "height": 498
+      },
+      "restoredBottomPixels": 69,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 85086,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c04-af5657ebbb--initial",
+      "name": "설모",
+      "sheetId": "principal-fullbody-04-spaced",
+      "sourceRectBefore": {
+        "x": 48,
+        "y": 12,
+        "width": 285,
+        "height": 521
+      },
+      "sourceRectAfter": {
+        "x": 48,
+        "y": 12,
+        "width": 285,
+        "height": 521
+      },
+      "restoredBottomPixels": 0,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 101144,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c04-2b4a55cdca--initial",
+      "name": "은호",
+      "sheetId": "principal-fullbody-04-spaced",
+      "sourceRectBefore": {
+        "x": 379,
+        "y": 2,
+        "width": 272,
+        "height": 531
+      },
+      "sourceRectAfter": {
+        "x": 379,
+        "y": 2,
+        "width": 272,
+        "height": 531
+      },
+      "restoredBottomPixels": 0,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 95004,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c04-9342a878fe--initial",
+      "name": "우진",
+      "sheetId": "principal-fullbody-04-spaced",
+      "sourceRectBefore": {
+        "x": 703,
+        "y": 5,
+        "width": 290,
+        "height": 528
+      },
+      "sourceRectAfter": {
+        "x": 703,
+        "y": 5,
+        "width": 290,
+        "height": 528
+      },
+      "restoredBottomPixels": 0,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 101629,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c04-d13cec79f6--initial",
+      "name": "소리",
+      "sheetId": "principal-fullbody-04-spaced",
+      "sourceRectBefore": {
+        "x": 51,
+        "y": 542,
+        "width": 274,
+        "height": 493
+      },
+      "sourceRectAfter": {
+        "x": 51,
+        "y": 542,
+        "width": 274,
+        "height": 493
+      },
+      "restoredBottomPixels": 0,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 94383,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c05-5d55907078--initial",
+      "name": "온달수",
+      "sheetId": "principal-fullbody-04-spaced",
+      "sourceRectBefore": {
+        "x": 369,
+        "y": 540,
+        "width": 306,
+        "height": 495
+      },
+      "sourceRectAfter": {
+        "x": 369,
+        "y": 540,
+        "width": 306,
+        "height": 495
+      },
+      "restoredBottomPixels": 0,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 99787,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c05-af3a370523--initial",
+      "name": "민서",
+      "sheetId": "principal-fullbody-04-spaced",
+      "sourceRectBefore": {
+        "x": 704,
+        "y": 540,
+        "width": 285,
+        "height": 496
+      },
+      "sourceRectAfter": {
+        "x": 704,
+        "y": 540,
+        "width": 285,
+        "height": 496
+      },
+      "restoredBottomPixels": 0,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 93581,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c05-6154d33563--initial",
+      "name": "길원",
+      "sheetId": "principal-fullbody-04-spaced",
+      "sourceRectBefore": {
+        "x": 30,
+        "y": 1035,
+        "width": 318,
+        "height": 494
+      },
+      "sourceRectAfter": {
+        "x": 30,
+        "y": 1035,
+        "width": 318,
+        "height": 494
+      },
+      "restoredBottomPixels": 0,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 102015,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c05-e5f0e82b54--initial",
+      "name": "진하",
+      "sheetId": "principal-fullbody-04-spaced",
+      "sourceRectBefore": {
+        "x": 373,
+        "y": 1039,
+        "width": 291,
+        "height": 490
+      },
+      "sourceRectAfter": {
+        "x": 373,
+        "y": 1039,
+        "width": 291,
+        "height": 490
+      },
+      "restoredBottomPixels": 0,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 93612,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c05-3c6833fdb6--initial",
+      "name": "지오",
+      "sheetId": "principal-fullbody-04-spaced",
+      "sourceRectBefore": {
+        "x": 700,
+        "y": 1040,
+        "width": 294,
+        "height": 489
+      },
+      "sourceRectAfter": {
+        "x": 700,
+        "y": 1040,
+        "width": 294,
+        "height": 489
+      },
+      "restoredBottomPixels": 0,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 98237,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c05-f39ddef04b--initial",
+      "name": "초연",
+      "sheetId": "principal-fullbody-05",
+      "sourceRectBefore": {
+        "x": 72,
+        "y": 4,
+        "width": 255,
+        "height": 458
+      },
+      "sourceRectAfter": {
+        "x": 72,
+        "y": 4,
+        "width": 255,
+        "height": 533
+      },
+      "restoredBottomPixels": 75,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 81475,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c06-06c13888f0--initial",
+      "name": "솔아",
+      "sheetId": "principal-fullbody-05",
+      "sourceRectBefore": {
+        "x": 399,
+        "y": 15,
+        "width": 240,
+        "height": 445
+      },
+      "sourceRectAfter": {
+        "x": 399,
+        "y": 15,
+        "width": 240,
+        "height": 517
+      },
+      "restoredBottomPixels": 72,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 82266,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c06-a57fc4150e--initial",
+      "name": "유솔",
+      "sheetId": "principal-fullbody-05",
+      "sourceRectBefore": {
+        "x": 705,
+        "y": 6,
+        "width": 236,
+        "height": 456
+      },
+      "sourceRectAfter": {
+        "x": 705,
+        "y": 6,
+        "width": 236,
+        "height": 530
+      },
+      "restoredBottomPixels": 74,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 77583,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c07-e5bc0b19d9--initial",
+      "name": "다솔",
+      "sheetId": "principal-fullbody-05",
+      "sourceRectBefore": {
+        "x": 78,
+        "y": 522,
+        "width": 244,
+        "height": 436
+      },
+      "sourceRectAfter": {
+        "x": 78,
+        "y": 522,
+        "width": 244,
+        "height": 507
+      },
+      "restoredBottomPixels": 71,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 77871,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c08-654ff58ca5--initial",
+      "name": "한결",
+      "sheetId": "principal-fullbody-05",
+      "sourceRectBefore": {
+        "x": 398,
+        "y": 523,
+        "width": 240,
+        "height": 437
+      },
+      "sourceRectAfter": {
+        "x": 398,
+        "y": 523,
+        "width": 240,
+        "height": 508
+      },
+      "restoredBottomPixels": 71,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 78851,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c09-a249e6df49--initial",
+      "name": "도연",
+      "sheetId": "principal-fullbody-05",
+      "sourceRectBefore": {
+        "x": 708,
+        "y": 521,
+        "width": 248,
+        "height": 438
+      },
+      "sourceRectAfter": {
+        "x": 708,
+        "y": 521,
+        "width": 248,
+        "height": 509
+      },
+      "restoredBottomPixels": 71,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 80290,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c09-030d6d22c0--initial",
+      "name": "다은",
+      "sheetId": "principal-fullbody-05",
+      "sourceRectBefore": {
+        "x": 77,
+        "y": 1018,
+        "width": 230,
+        "height": 440
+      },
+      "sourceRectAfter": {
+        "x": 77,
+        "y": 1018,
+        "width": 230,
+        "height": 512
+      },
+      "restoredBottomPixels": 72,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 75717,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c09-10ee4060ed--initial",
+      "name": "설",
+      "sheetId": "principal-fullbody-05",
+      "sourceRectBefore": {
+        "x": 394,
+        "y": 1018,
+        "width": 250,
+        "height": 440
+      },
+      "sourceRectAfter": {
+        "x": 394,
+        "y": 1018,
+        "width": 250,
+        "height": 512
+      },
+      "restoredBottomPixels": 72,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 84371,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c10-0eeeeba617--initial",
+      "name": "미솔",
+      "sheetId": "principal-fullbody-05",
+      "sourceRectBefore": {
+        "x": 726,
+        "y": 1013,
+        "width": 230,
+        "height": 446
+      },
+      "sourceRectAfter": {
+        "x": 726,
+        "y": 1013,
+        "width": 230,
+        "height": 518
+      },
+      "restoredBottomPixels": 72,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 76504,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c16-7e8edf17f5--initial",
+      "name": "온유",
+      "sheetId": "principal-fullbody-07",
+      "sourceRectBefore": {
+        "x": 41,
+        "y": 16,
+        "width": 265,
+        "height": 556
+      },
+      "sourceRectAfter": {
+        "x": 41,
+        "y": 16,
+        "width": 265,
+        "height": 556
+      },
+      "restoredBottomPixels": 0,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 106432,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c16-f15519bc0e--initial",
+      "name": "도겸",
+      "sheetId": "principal-fullbody-07",
+      "sourceRectBefore": {
+        "x": 354,
+        "y": 4,
+        "width": 292,
+        "height": 569
+      },
+      "sourceRectAfter": {
+        "x": 354,
+        "y": 4,
+        "width": 292,
+        "height": 569
+      },
+      "restoredBottomPixels": 0,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 113660,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c16-3234e73f8f--initial",
+      "name": "소담",
+      "sheetId": "principal-fullbody-07",
+      "sourceRectBefore": {
+        "x": 730,
+        "y": 19,
+        "width": 263,
+        "height": 554
+      },
+      "sourceRectAfter": {
+        "x": 730,
+        "y": 19,
+        "width": 263,
+        "height": 554
+      },
+      "restoredBottomPixels": 0,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 99777,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c17-81195904d9--initial",
+      "name": "가온",
+      "sheetId": "principal-fullbody-07",
+      "sourceRectBefore": {
+        "x": 32,
+        "y": 568,
+        "width": 296,
+        "height": 541
+      },
+      "sourceRectAfter": {
+        "x": 32,
+        "y": 568,
+        "width": 296,
+        "height": 541
+      },
+      "restoredBottomPixels": 0,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 108889,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c21-981196efe9--middle-aged",
+      "name": "다온",
+      "sheetId": "principal-fullbody-07",
+      "sourceRectBefore": {
+        "x": 364,
+        "y": 569,
+        "width": 308,
+        "height": 569
+      },
+      "sourceRectAfter": {
+        "x": 364,
+        "y": 569,
+        "width": 308,
+        "height": 569
+      },
+      "restoredBottomPixels": 0,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 122471,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c21-8cd85480b5--elderly",
+      "name": "다솜",
+      "sheetId": "principal-fullbody-07",
+      "sourceRectBefore": {
+        "x": 720,
+        "y": 576,
+        "width": 283,
+        "height": 563
+      },
+      "sourceRectAfter": {
+        "x": 720,
+        "y": 576,
+        "width": 283,
+        "height": 563
+      },
+      "restoredBottomPixels": 0,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 118329,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c23-5c3916ce0b--initial",
+      "name": "도하",
+      "sheetId": "principal-fullbody-07",
+      "sourceRectBefore": {
+        "x": 38,
+        "y": 1108,
+        "width": 306,
+        "height": 428
+      },
+      "sourceRectAfter": {
+        "x": 38,
+        "y": 1108,
+        "width": 306,
+        "height": 428
+      },
+      "restoredBottomPixels": 0,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 87558,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c01-de48dcbf5b--initial",
+      "name": "모진",
+      "sheetId": "recurring-fullbody-01",
+      "sourceRectBefore": {
+        "x": 94,
+        "y": 2,
+        "width": 251,
+        "height": 492
+      },
+      "sourceRectAfter": {
+        "x": 94,
+        "y": 2,
+        "width": 251,
+        "height": 572
+      },
+      "restoredBottomPixels": 80,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 86277,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c02-dc712ed4d6--initial",
+      "name": "도림",
+      "sheetId": "recurring-fullbody-01",
+      "sourceRectBefore": {
+        "x": 380,
+        "y": 4,
+        "width": 258,
+        "height": 490
+      },
+      "sourceRectAfter": {
+        "x": 380,
+        "y": 4,
+        "width": 258,
+        "height": 570
+      },
+      "restoredBottomPixels": 80,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 86922,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c02-f88710b136--initial",
+      "name": "소운",
+      "sheetId": "recurring-fullbody-01",
+      "sourceRectBefore": {
+        "x": 705,
+        "y": 3,
+        "width": 238,
+        "height": 492
+      },
+      "sourceRectAfter": {
+        "x": 705,
+        "y": 3,
+        "width": 238,
+        "height": 572
+      },
+      "restoredBottomPixels": 80,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 85795,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c04-030d6d22c0--initial",
+      "name": "다은",
+      "sheetId": "recurring-fullbody-01",
+      "sourceRectBefore": {
+        "x": 75,
+        "y": 568,
+        "width": 264,
+        "height": 459
+      },
+      "sourceRectAfter": {
+        "x": 75,
+        "y": 568,
+        "width": 264,
+        "height": 534
+      },
+      "restoredBottomPixels": 75,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 83962,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c05-f0f456bbbe--initial",
+      "name": "윤서",
+      "sheetId": "recurring-fullbody-01",
+      "sourceRectBefore": {
+        "x": 391,
+        "y": 563,
+        "width": 258,
+        "height": 470
+      },
+      "sourceRectAfter": {
+        "x": 391,
+        "y": 563,
+        "width": 258,
+        "height": 547
+      },
+      "restoredBottomPixels": 77,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 81195,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c05-0b1fbc16b0--initial",
+      "name": "태문",
+      "sheetId": "recurring-fullbody-01",
+      "sourceRectBefore": {
+        "x": 699,
+        "y": 562,
+        "width": 252,
+        "height": 472
+      },
+      "sourceRectAfter": {
+        "x": 699,
+        "y": 562,
+        "width": 252,
+        "height": 549
+      },
+      "restoredBottomPixels": 77,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 85407,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c07-cf158c9e21--initial",
+      "name": "해인",
+      "sheetId": "recurring-fullbody-01",
+      "sourceRectBefore": {
+        "x": 92,
+        "y": 1085,
+        "width": 249,
+        "height": 386
+      },
+      "sourceRectAfter": {
+        "x": 92,
+        "y": 1085,
+        "width": 249,
+        "height": 449
+      },
+      "restoredBottomPixels": 63,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 64534,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c08-dadbb6670e--initial",
+      "name": "여울",
+      "sheetId": "recurring-fullbody-02-selected",
+      "sourceRectBefore": {
+        "x": 388,
+        "y": 18,
+        "width": 277,
+        "height": 502
+      },
+      "sourceRectAfter": {
+        "x": 388,
+        "y": 18,
+        "width": 277,
+        "height": 584
+      },
+      "restoredBottomPixels": 82,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 97289,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c08-dadbb6670e--later",
+      "name": "여울",
+      "sheetId": "recurring-fullbody-02-selected",
+      "sourceRectBefore": {
+        "x": 708,
+        "y": 17,
+        "width": 265,
+        "height": 503
+      },
+      "sourceRectAfter": {
+        "x": 708,
+        "y": 17,
+        "width": 265,
+        "height": 585
+      },
+      "restoredBottomPixels": 82,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 98022,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c14-a432ade2f8--initial",
+      "name": "아라",
+      "sheetId": "recurring-fullbody-02-selected",
+      "sourceRectBefore": {
+        "x": 60,
+        "y": 599,
+        "width": 275,
+        "height": 498
+      },
+      "sourceRectAfter": {
+        "x": 60,
+        "y": 599,
+        "width": 275,
+        "height": 579
+      },
+      "restoredBottomPixels": 81,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 95853,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c14-0dd939f957--initial",
+      "name": "해들",
+      "sheetId": "recurring-fullbody-02-selected",
+      "sourceRectBefore": {
+        "x": 387,
+        "y": 592,
+        "width": 266,
+        "height": 520
+      },
+      "sourceRectAfter": {
+        "x": 387,
+        "y": 592,
+        "width": 266,
+        "height": 605
+      },
+      "restoredBottomPixels": 85,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 100623,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c17-96b6ef53a4--initial",
+      "name": "보라",
+      "sheetId": "recurring-fullbody-02-selected",
+      "sourceRectBefore": {
+        "x": 704,
+        "y": 594,
+        "width": 275,
+        "height": 519
+      },
+      "sourceRectAfter": {
+        "x": 704,
+        "y": 594,
+        "width": 275,
+        "height": 603
+      },
+      "restoredBottomPixels": 84,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 99669,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c17-439b052a1f--initial",
+      "name": "해명",
+      "sheetId": "recurring-fullbody-05",
+      "sourceRectBefore": {
+        "x": 135,
+        "y": 28,
+        "width": 378,
+        "height": 680
+      },
+      "sourceRectAfter": {
+        "x": 135,
+        "y": 28,
+        "width": 378,
+        "height": 791
+      },
+      "restoredBottomPixels": 111,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 163210,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c20-4d6a648490--later",
+      "name": "해루",
+      "sheetId": "recurring-fullbody-05",
+      "sourceRectBefore": {
+        "x": 546,
+        "y": 17,
+        "width": 371,
+        "height": 693
+      },
+      "sourceRectAfter": {
+        "x": 546,
+        "y": 17,
+        "width": 371,
+        "height": 806
+      },
+      "restoredBottomPixels": 113,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 164909,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c23-3943a3c0de--initial",
+      "name": "시온",
+      "sheetId": "recurring-fullbody-05",
+      "sourceRectBefore": {
+        "x": 174,
+        "y": 812,
+        "width": 330,
+        "height": 623
+      },
+      "sourceRectAfter": {
+        "x": 174,
+        "y": 812,
+        "width": 330,
+        "height": 724
+      },
+      "restoredBottomPixels": 101,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 142524,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c23-3943a3c0de--later",
+      "name": "시온",
+      "sheetId": "recurring-fullbody-05",
+      "sourceRectBefore": {
+        "x": 564,
+        "y": 809,
+        "width": 327,
+        "height": 627
+      },
+      "sourceRectAfter": {
+        "x": 564,
+        "y": 809,
+        "width": 327,
+        "height": 727
+      },
+      "restoredBottomPixels": 100,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 146101,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c07-cf158c9e21--later",
+      "name": "해인",
+      "sheetId": "haein-later-fullbody-v1",
+      "sourceRectBefore": {
+        "x": 142,
+        "y": 6,
+        "width": 803,
+        "height": 1520
+      },
+      "sourceRectAfter": {
+        "x": 142,
+        "y": 6,
+        "width": 803,
+        "height": 1520
+      },
+      "restoredBottomPixels": 0,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "full-body",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 615282,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c10-7b3c1b6146--initial",
+      "name": "다함",
+      "sheetId": "principal-fullbody-06-safe",
+      "sourceRectBefore": {
+        "x": 62,
+        "y": 8,
+        "width": 290,
+        "height": 510
+      },
+      "sourceRectAfter": {
+        "x": 62,
+        "y": 8,
+        "width": 290,
+        "height": 510
+      },
+      "restoredBottomPixels": 0,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 98238,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c11-6c2b4824cf--initial",
+      "name": "보리",
+      "sheetId": "principal-fullbody-06-safe",
+      "sourceRectBefore": {
+        "x": 695,
+        "y": 34,
+        "width": 266,
+        "height": 486
+      },
+      "sourceRectAfter": {
+        "x": 695,
+        "y": 34,
+        "width": 266,
+        "height": 486
+      },
+      "restoredBottomPixels": 0,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 86467,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c11-a432ade2f8--initial",
+      "name": "아라",
+      "sheetId": "principal-fullbody-06-safe",
+      "sourceRectBefore": {
+        "x": 55,
+        "y": 520,
+        "width": 297,
+        "height": 501
+      },
+      "sourceRectAfter": {
+        "x": 55,
+        "y": 520,
+        "width": 297,
+        "height": 501
+      },
+      "restoredBottomPixels": 0,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 103204,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c14-af5024ce09--initial",
+      "name": "나루",
+      "sheetId": "principal-fullbody-06-safe",
+      "sourceRectBefore": {
+        "x": 682,
+        "y": 520,
+        "width": 296,
+        "height": 506
+      },
+      "sourceRectAfter": {
+        "x": 682,
+        "y": 520,
+        "width": 296,
+        "height": 506
+      },
+      "restoredBottomPixels": 0,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 101589,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c15-a432ade2f8--initial",
+      "name": "아라",
+      "sheetId": "principal-fullbody-06-safe",
+      "sourceRectBefore": {
+        "x": 51,
+        "y": 1020,
+        "width": 306,
+        "height": 512
+      },
+      "sourceRectAfter": {
+        "x": 51,
+        "y": 1020,
+        "width": 306,
+        "height": 512
+      },
+      "restoredBottomPixels": 0,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 105239,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c15-dadbb6670e--initial",
+      "name": "여울",
+      "sheetId": "principal-fullbody-06-safe",
+      "sourceRectBefore": {
+        "x": 393,
+        "y": 1028,
+        "width": 279,
+        "height": 505
+      },
+      "sourceRectAfter": {
+        "x": 393,
+        "y": 1028,
+        "width": 279,
+        "height": 505
+      },
+      "restoredBottomPixels": 0,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 97955,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c16-c0f5430502--initial",
+      "name": "수인",
+      "sheetId": "principal-fullbody-06-safe",
+      "sourceRectBefore": {
+        "x": 712,
+        "y": 1023,
+        "width": 268,
+        "height": 510
+      },
+      "sourceRectAfter": {
+        "x": 712,
+        "y": 1023,
+        "width": 268,
+        "height": 510
+      },
+      "restoredBottomPixels": 0,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 90901,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c10-55716739a3--initial",
+      "name": "가람",
+      "sheetId": "principal-fullbody-garam-haram-v1",
+      "sourceRectBefore": {
+        "x": 43,
+        "y": 23,
+        "width": 575,
+        "height": 1219
+      },
+      "sourceRectAfter": {
+        "x": 43,
+        "y": 23,
+        "width": 575,
+        "height": 1219
+      },
+      "restoredBottomPixels": 0,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 472881,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c12-2d4773df99--initial",
+      "name": "하람",
+      "sheetId": "principal-fullbody-garam-haram-v1",
+      "sourceRectBefore": {
+        "x": 628,
+        "y": 48,
+        "width": 598,
+        "height": 1194
+      },
+      "sourceRectAfter": {
+        "x": 628,
+        "y": 48,
+        "width": 598,
+        "height": 1194
+      },
+      "restoredBottomPixels": 0,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 478814,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c18-3b7989e4fe--initial",
+      "name": "나래",
+      "sheetId": "recurring-fullbody-03-spaced",
+      "sourceRectBefore": {
+        "x": 129,
+        "y": 31,
+        "width": 231,
+        "height": 510
+      },
+      "sourceRectAfter": {
+        "x": 129,
+        "y": 31,
+        "width": 231,
+        "height": 593
+      },
+      "restoredBottomPixels": 83,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 88688,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c18-3b7989e4fe--later",
+      "name": "나래",
+      "sheetId": "recurring-fullbody-03-spaced",
+      "sourceRectBefore": {
+        "x": 509,
+        "y": 32,
+        "width": 240,
+        "height": 509
+      },
+      "sourceRectAfter": {
+        "x": 509,
+        "y": 32,
+        "width": 240,
+        "height": 592
+      },
+      "restoredBottomPixels": 83,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 90198,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c19-b25411c7fa--initial",
+      "name": "재인",
+      "sheetId": "recurring-fullbody-03-spaced",
+      "sourceRectBefore": {
+        "x": 879,
+        "y": 25,
+        "width": 257,
+        "height": 515
+      },
+      "sourceRectAfter": {
+        "x": 879,
+        "y": 25,
+        "width": 257,
+        "height": 599
+      },
+      "restoredBottomPixels": 84,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 94011,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c19-b25411c7fa--later",
+      "name": "재인",
+      "sheetId": "recurring-fullbody-03-spaced",
+      "sourceRectBefore": {
+        "x": 98,
+        "y": 635,
+        "width": 271,
+        "height": 511
+      },
+      "sourceRectAfter": {
+        "x": 98,
+        "y": 635,
+        "width": 271,
+        "height": 594
+      },
+      "restoredBottomPixels": 83,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 97222,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c19-c8f92f89ce--initial",
+      "name": "지우",
+      "sheetId": "recurring-fullbody-03-spaced",
+      "sourceRectBefore": {
+        "x": 513,
+        "y": 644,
+        "width": 237,
+        "height": 503
+      },
+      "sourceRectAfter": {
+        "x": 513,
+        "y": 644,
+        "width": 237,
+        "height": 585
+      },
+      "restoredBottomPixels": 82,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 88515,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c20-4d6a648490--initial",
+      "name": "해루",
+      "sheetId": "recurring-fullbody-03-spaced",
+      "sourceRectBefore": {
+        "x": 889,
+        "y": 638,
+        "width": 263,
+        "height": 508
+      },
+      "sourceRectAfter": {
+        "x": 889,
+        "y": 638,
+        "width": 263,
+        "height": 591
+      },
+      "restoredBottomPixels": 83,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 94811,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c20-5dd3802c4d--initial",
+      "name": "누리",
+      "sheetId": "recurring-fullbody-04-spaced",
+      "sourceRectBefore": {
+        "x": 92,
+        "y": 19,
+        "width": 255,
+        "height": 534
+      },
+      "sourceRectAfter": {
+        "x": 92,
+        "y": 19,
+        "width": 255,
+        "height": 621
+      },
+      "restoredBottomPixels": 87,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 96975,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c22-c9e48fc48e--initial",
+      "name": "은서",
+      "sheetId": "recurring-fullbody-04-spaced",
+      "sourceRectBefore": {
+        "x": 492,
+        "y": 18,
+        "width": 273,
+        "height": 535
+      },
+      "sourceRectAfter": {
+        "x": 492,
+        "y": 18,
+        "width": 273,
+        "height": 622
+      },
+      "restoredBottomPixels": 87,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 102112,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c22-c9e48fc48e--later",
+      "name": "은서",
+      "sheetId": "recurring-fullbody-04-spaced",
+      "sourceRectBefore": {
+        "x": 902,
+        "y": 18,
+        "width": 270,
+        "height": 535
+      },
+      "sourceRectAfter": {
+        "x": 902,
+        "y": 18,
+        "width": 270,
+        "height": 622
+      },
+      "restoredBottomPixels": 87,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 102243,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c22-c56eca783f--initial",
+      "name": "은서의 딸",
+      "sheetId": "recurring-fullbody-04-spaced",
+      "sourceRectBefore": {
+        "x": 105,
+        "y": 680,
+        "width": 232,
+        "height": 454
+      },
+      "sourceRectAfter": {
+        "x": 105,
+        "y": 680,
+        "width": 232,
+        "height": 528
+      },
+      "restoredBottomPixels": 74,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 72006,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    },
+    {
+      "characterId": "civilian-c22-c56eca783f--later",
+      "name": "은서의 딸",
+      "sheetId": "recurring-fullbody-04-spaced",
+      "sourceRectBefore": {
+        "x": 490,
+        "y": 656,
+        "width": 268,
+        "height": 501
+      },
+      "sourceRectAfter": {
+        "x": 490,
+        "y": 656,
+        "width": 268,
+        "height": 583
+      },
+      "restoredBottomPixels": 82,
+      "faceAnchorUnchanged": true,
+      "originalAlphaBoundsUnchanged": true,
+      "framingBefore": "head-to-knees",
+      "framingAfter": "full-body",
+      "originalOpaquePixelCount": 95933,
+      "omittedOpaquePixelCount": 0,
+      "contourForeignComponents": 0,
+      "runtimeCompositeAfterRepairReviewed": false
+    }
+  ]
+}

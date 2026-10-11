@@ -1,5 +1,5 @@
 const CACHE_PREFIX='lived-history-shell-';
-const CACHE_VERSION='2026-10-11-approved-three-ui-settings-v1-59';
+const CACHE_VERSION='2026-10-11-approved-three-ui-crop-v1-60';
 const CACHE_NAME=CACHE_PREFIX+CACHE_VERSION;
 const APP_SHELL=[
   '/',
