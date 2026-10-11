@@ -119,10 +119,10 @@ if(globalThis.PROTO_REVISION_RUNTIME?.version===3){
  }
  function freshRun(started=false){const value=INITIAL_RUN(firstChapterId);value.started=started;identifyRun(value,true);value.chapterStart=chapterSnapshot(value);return value;}
  function configureSeason(registry){const info=registry?.find(item=>item.id===eraId);if(info)Object.assign(info,{progressKey,contentVersion:version,contentRevision:contentVersion,years:'220 — 221년 · 여러 나라의 성장',description:'단과 라온의 흔적을 따라 배우는 여러 나라의 83개 이야기.'});}
- if(typeof HISTORY_SEASONS!=='undefined')configureSeason(HISTORY_SEASONS);
  const ownEntries=value=>Object.fromEntries(Object.entries(value||{}).filter(([id])=>ownsChapter(id)));
  const beforeMigration=migrateSave;
  migrateSave=function(raw){
+  if(typeof HISTORY_SEASONS!=='undefined')configureSeason(HISTORY_SEASONS);
   const preserved=copy(raw),result=beforeMigration(copy(raw));
   if(!preserved?.run||!preserved.meta){ensureBook(result.meta);return result;}
   for(const collection of ['chapterRecords','chapterRuns']){result.meta[collection]||={};for(const [id,value] of Object.entries(preserved.meta[collection]||{}))if(ownsChapter(id))result.meta[collection][id]=copy(value);}

@@ -236,7 +236,7 @@ if (globalThis.CORE_APP_READY === true && globalThis.THREE_STORY_RUNTIME?.versio
     const {portraitId,portrait,authored,geometry,sprite,width,height,rect}=setup;
     const face=geometry.faceBounds,flip=Boolean(portrait.flipX||authored.flipX);
     const age=String(authored.ageEvidence||'')+' '+String(authored.ageLabel||'');
-    const child=/(child|어린이|아동|소년|소녀)/i.test(age),teen=/(teen|청소년)/i.test(age);
+    const teen=/(teen|청소년)/i.test(age),child=!teen&&/(child|어린이|아동|소년|소녀)/i.test(age);
     const scale=geometry.faceScale||(child ? 0.88 : teen ? 0.96 : 1);
     const faceX=face.x+face.width/2-rect.x,faceY=face.y+face.height/2-rect.y;
     const x=(flip?rect.width-faceX:faceX)/face.height*scale,y=faceY/face.height*scale;
