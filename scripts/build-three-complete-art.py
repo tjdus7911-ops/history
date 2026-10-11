@@ -358,7 +358,7 @@ def build():
         backgrounds[scene["sceneId"]] = {**background_assets[key], "settingRole": "scene-setting",
                                            "fit": "approved-setting-reuse", "sourceSceneId": scene["sceneId"]}
         if scene["sceneId"] == "THR-PRO-S02":
-            backgrounds[scene["sceneId"]]["composition"] = "book-closeup-dom-overlay"
+            backgrounds[scene["sceneId"]]["composition"] = "modern-room-continuity"
         if scene["sceneId"] == "THR-PRO-S03":
             backgrounds[scene["sceneId"]]["continuityWith"] = "THR-C01-S01"
         scene_characters[scene["sceneId"]] = {}

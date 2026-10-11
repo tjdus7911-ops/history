@@ -5,8 +5,8 @@
   "source": {
     "path": "docs/three-content/complete-manuscript.md",
     "filename": "눈떠보니삼국_전체대본_23챕터.md",
-    "sha256": "b7d416b9281dfeb60bd41d9d621870c1297ac2c70d8767c8300032b6ddbdf9c6",
-    "byteLength": 940588
+    "sha256": "98b14d913fbf7cc19cc178bf0174ac1750cbebf3e3b29d72a196c6ef814cf3c3",
+    "byteLength": 958601
   },
   "chapterCount": 23,
   "sceneCount": 215,
@@ -38,7 +38,7 @@
   },
   "prologue": {
     "prologueId": "THR-PROLOGUE",
-    "title": "빈 장의 바람",
+    "title": "잠깐의 바람",
     "entrySceneId": "THR-PRO-S01",
     "exitSceneId": "THR-C01-S01",
     "choicesEnabled": false,
@@ -57,9 +57,9 @@
         "cast": [
           "서아"
         ],
-        "backgroundBrief": "작은 책상과 따뜻한 스탠드 조명. 펼친 역사책 사이에 손글씨 족보 세 장이 끼워져 있다. 필통과 접힌 담요 정도만 두어 생활감 있는 공부방으로 그린다. 책과 족보의 글자는 배경 그림에 생성하지 않고 별도 텍스트·원본 기반 레이어로 얹는다.",
+        "backgroundBrief": "작은 책상과 따뜻한 스탠드 조명이 있는 현대의 공부방. 기존 방 일러스트를 사용한다. 참고 사진이나 종이를 전경에 올리지 않는다.",
         "portraitLayout": "고정된 책상 사선 구도. 서아의 대화 스탠딩은 화면 오른쪽.",
-        "staging": "시작 버튼을 누르면 곧바로 방 일러스트와 첫 대사를 보여 준다. 첫 검은 화면이나 긴 시대 설명은 없다. 세 번째 대사에서 족보의 사람·생활 관련 메모에 손을 올리고, 네 번째 대사에서 책 사이의 빈 장을 발견한다. 족보의 실제 내용을 임의의 가짜 필기로 대체하지 않는다.",
+        "staging": "시작 버튼을 누르면 곧바로 방 일러스트와 첫 대사를 보여 준다. 공부하던 서아가 잠시 쉬며 당시 사람들의 삶을 생각한다. 팔을 편안히 내린 기존 스탠딩을 유지하며 별도의 손이나 소품을 덧씌우지 않는다.",
         "main": [
           {
             "lineId": "THR-PRO-S01-L01",
@@ -70,7 +70,7 @@
             "sourceLine": 121,
             "expression": "tired_soft",
             "speakerPosition": "right",
-            "visualCue": "책상에 한 팔을 괴고 족보를 살핀다.",
+            "visualCue": "공부를 멈추고 잠시 숨을 고른다. 양손은 편안히 내려 둔다.",
             "presentationContext": "scene"
           },
           {
@@ -82,7 +82,7 @@
             "sourceLine": 122,
             "expression": "wry",
             "speakerPosition": "right",
-            "visualCue": "자신의 메모를 다시 읽으며 눈썹을 살짝 찌푸린다.",
+            "visualCue": "방금 공부한 내용을 떠올리며 눈썹을 살짝 찌푸린다.",
             "presentationContext": "scene"
           },
           {
@@ -94,19 +94,19 @@
             "sourceLine": 123,
             "expression": "thoughtful",
             "speakerPosition": "right",
-            "visualCue": "족보 옆의 책 그림을 바라본다. 현장 장면이나 역사 설명을 삽입하지 않는다.",
+            "visualCue": "창밖을 보며 생각에 잠긴다. 현장 장면이나 역사 설명을 삽입하지 않는다.",
             "presentationContext": "scene"
           },
           {
             "lineId": "THR-PRO-S01-L04",
             "speaker": "서아",
-            "text": "……어? 이 책에 원래 빈 장이 있었나?",
+            "text": "……눈이 자꾸 감기네. 잠깐만 쉬자.",
             "kind": "dialogue",
             "advance": "tap",
             "sourceLine": 124,
             "expression": "puzzled",
             "speakerPosition": "right",
-            "visualCue": "종이 사이에 나타난 빈 장을 집어 든다. 아직 연도·규칙·귀환 방법은 나오지 않는다.",
+            "visualCue": "아무것도 집거나 들지 않고 잠시 멍해진다. 아직 연도·규칙·귀환 방법은 나오지 않는다.",
             "presentationContext": "scene"
           }
         ],
@@ -134,7 +134,7 @@
         "number": 2,
         "sceneId": "THR-PRO-S02",
         "chapterId": "THR-PROLOGUE",
-        "sceneTitle": "빈 장의 바람",
+        "sceneTitle": "잠깐의 바람",
         "year": "현대, 같은 밤",
         "location": "서아의 책상 앞",
         "country": "",
@@ -142,56 +142,56 @@
         "cast": [
           "서아"
         ],
-        "backgroundBrief": "펼쳐진 책과 손을 중심으로 한 2D 클로즈업. 끼워 둔 족보는 책 안쪽에 남아 있고, 빈 장의 잉크가 흙길 같은 선으로 이어진다. 책상 위의 가벼운 종이 끝만 들린다. 사람의 형상이나 새로운 동행 캐릭터를 그리지 않는다.",
-        "portraitLayout": "책 클로즈업. 서아 대화 스탠딩은 계속 오른쪽에 작게 유지한다.",
-        "staging": "말소리 없는 종이 스침과 바람 효과만 사용한다. 책에서 남자 목소리가 나거나 누군가 서아를 부르는 연출은 없다. 마지막 대사에서 서아가 책을 붙잡고 균형을 잃는다. 족보 세 장은 책 속에 끼워진 상태로 함께 이동한다.",
+        "backgroundBrief": "같은 방 일러스트를 유지한다. 책이나 손의 클로즈업 없이 창가의 밤빛이 보인다. 사람의 형상이나 새로운 동행 캐릭터를 그리지 않는다.",
+        "portraitLayout": "이전 씬과 같은 구도와 크기로 서아 대화 스탠딩을 오른쪽에 유지한다.",
+        "staging": "고요한 방에서 서아가 졸음과 낯선 바람을 느낀다. 누군가 부르는 목소리나 소품을 잡는 동작은 없다. 마지막 대사 뒤의 기존 탭 전환을 유지한다.",
         "main": [
           {
             "lineId": "THR-PRO-S02-L01",
             "speaker": "서아",
-            "text": "내가 끼워 둔 건 족보뿐인데.",
+            "text": "조금 전까지 또렷했는데… 머리가 멍해.",
             "kind": "dialogue",
             "advance": "tap",
             "sourceLine": 140,
             "expression": "puzzled",
             "speakerPosition": "right",
-            "visualCue": "서아가 족보 아래의 빈 장을 살짝 들어 올린다.",
+            "visualCue": "서아가 잠시 생각을 멈춘다. 양손은 그대로 내려 둔다.",
             "presentationContext": "scene"
           },
           {
             "lineId": "THR-PRO-S02-L02",
             "speaker": "서아",
-            "text": "……지금, 잉크가 번진 게 아니지?",
+            "text": "……이 바람은 어디서 들어오는 거지?",
             "kind": "dialogue",
             "advance": "tap",
             "sourceLine": 141,
             "expression": "startled",
             "speakerPosition": "right",
-            "visualCue": "인쇄되지 않았던 흙길 모양의 선이 장 안쪽에서 이어진다.",
+            "visualCue": "같은 방과 서아의 자연스러운 스탠딩을 유지한다.",
             "presentationContext": "scene"
           },
           {
             "lineId": "THR-PRO-S02-L03",
             "speaker": "서아",
-            "text": "책 속에서 바람이 나와?",
+            "text": "방 안인데… 풀 냄새가 나.",
             "kind": "dialogue",
             "advance": "tap",
             "sourceLine": 142,
             "expression": "uneasy",
             "speakerPosition": "right",
-            "visualCue": "종이 끝이 서아 쪽으로 들리고 책상 위 그림자가 흔들린다.",
+            "visualCue": "서아가 낯선 공기를 느낀다. 전경 소품이나 손 이미지는 없다.",
             "presentationContext": "scene"
           },
           {
             "lineId": "THR-PRO-S02-L04",
             "speaker": "서아",
-            "text": "잠깐, 책을 놓아야—!",
+            "text": "잠깐… 나 지금 꿈꾸는 건가?",
             "kind": "dialogue",
             "advance": "tap",
             "sourceLine": 143,
             "expression": "alarmed",
             "speakerPosition": "right",
-            "visualCue": "서아가 손을 떼려는 순간 시야가 기운다. 이 대사는 탭하기 전까지 그대로 유지한다.",
+            "visualCue": "서아가 눈을 감기 직전이다. 이 대사는 탭하기 전까지 그대로 유지한다.",
             "presentationContext": "scene"
           }
         ],
@@ -232,7 +232,7 @@
         ],
         "backgroundBrief": "기존 CH01 S01과 같은 고구려 농촌 배경·같은 시간대. 마을 흙길, 빈 자루를 든 주민들의 줄, 마을 끝 창고의 닫힌 문이 멀리 보인다. 곡식을 이미 나눠 주는 모습은 그리지 않는다. 처음에는 줄을 조금 멀리 두고, 마지막 두 대사에서 같은 배경의 가까운 구도로 바꾼다.",
         "portraitLayout": "서아 오른쪽 고정. 가까워진 구도에서 연우가 왼쪽에 어머니를 받치고 있고 아이는 배경에 있다.",
-        "staging": "서아만 시대를 이동한다. 책과 족보는 서아 곁에 떨어져 있다. 서아는 집에 돌아갈 방법을 묻기 위해 사람들에게 다가가다가, 창백한 노인을 먼저 알아본다. 프롤로그 안에서는 아직 물을 주거나 사람을 옮기지 않는다. 노인이 완전히 쓰러지는 순간은 기존 CH01 S01 첫 대사 직전이다. 책의 연도·장소 표시는 기존 CH01 S01 연출에 맡긴다.",
+        "staging": "서아만 시대를 이동한다. 손은 비어 있고, 곁에 떨어진 현대 소품은 없다. 서아는 집에 돌아갈 방법을 묻기 위해 사람들에게 다가가다가, 창백한 노인을 먼저 알아본다. 프롤로그 안에서는 아직 물을 주거나 사람을 옮기지 않는다. 노인이 완전히 쓰러지는 순간은 기존 CH01 S01 첫 대사 직전이다. 책의 연도·장소 표시는 기존 CH01 S01 연출에 맡긴다.",
         "main": [
           {
             "lineId": "THR-PRO-S03-L01",
@@ -261,13 +261,13 @@
           {
             "lineId": "THR-PRO-S03-L03",
             "speaker": "서아",
-            "text": "이 책만 나랑 같이 온 거야?",
+            "text": "내가… 정말 여기 혼자 온 거야?",
             "kind": "dialogue",
             "advance": "tap",
             "sourceLine": 163,
             "expression": "uneasy",
             "speakerPosition": "right",
-            "visualCue": "족보가 안에 끼워져 있는 책을 집어 든다. 다른 현대 인물이나 동행은 없다.",
+            "visualCue": "당황한 서아가 주위를 둘러본다. 다른 현대 인물이나 동행은 없다.",
             "presentationContext": "scene"
           },
           {
@@ -279,7 +279,7 @@
             "sourceLine": 164,
             "expression": "anxious_resolved",
             "speakerPosition": "right",
-            "visualCue": "책을 품에 안고 일어난다. 귀환 수단을 안다고 말하지 않는다.",
+            "visualCue": "서아가 마음을 가다듬고 일어선다. 귀환 수단을 안다고 말하지 않는다.",
             "presentationContext": "scene"
           },
           {

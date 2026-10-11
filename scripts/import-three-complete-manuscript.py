@@ -294,7 +294,7 @@ def parse_prologue(text):
                        "nextSceneId": next_scene[1], "exitTransition": transition,
                        "progression": "tap_only", "isPrologue": True,
                        "showDateAndLocation": index < 2, "examQuestions": []})
-    return {"prologueId": "THR-PROLOGUE", "title": "빈 장의 바람", "entrySceneId": "THR-PRO-S01",
+    return {"prologueId": "THR-PROLOGUE", "title": "잠깐의 바람", "entrySceneId": "THR-PRO-S01",
             "exitSceneId": "THR-C01-S01", "choicesEnabled": False, "autoAdvance": False,
             "timedBlackScreenOnlyMs": 120, "scenes": scenes}
 

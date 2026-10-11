@@ -3,8 +3,8 @@
   "source": {
     "path": "docs/three-content/complete-manuscript.md",
     "filename": "눈떠보니삼국_전체대본_23챕터.md",
-    "sha256": "b7d416b9281dfeb60bd41d9d621870c1297ac2c70d8767c8300032b6ddbdf9c6",
-    "byteLength": 940588
+    "sha256": "98b14d913fbf7cc19cc178bf0174ac1750cbebf3e3b29d72a196c6ef814cf3c3",
+    "byteLength": 958601
   },
   "contentVersion": "three-complete-23-v1",
   "counts": {
@@ -31,7 +31,7 @@
   },
   "originalAuthoredDialogueSha256": "9888391f7f5e4fdb0aebe85b392d49e9dbb2321bec4b14a4d513898ad4440b33",
   "importedAuthoredDialogueSha256": "9888391f7f5e4fdb0aebe85b392d49e9dbb2321bec4b14a4d513898ad4440b33",
-  "allAuthoredDialogueSha256": "e3755dfa104cd3a66bade5c89b4cc166332ff8dda00ba56371be29398d20c801",
+  "allAuthoredDialogueSha256": "ce738005418f2ac2f942d58d3bb71773dfa7bee74c51b8a4459e0e6e6ca20a06",
   "mnemonicOriginalsSha256": "9dc05d36e240a52de43a86a0cc62032bbb47aa05e97e90e851e80b0c07328384",
   "checkedChoicePaths": 142,
   "brokenTransitions": [],

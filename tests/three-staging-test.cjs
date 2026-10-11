@@ -173,20 +173,26 @@ has('THR-C21-S04','M01','main',null,'contact-sheet',false); // now on actual bun
   assert(text.includes('건립')&&text.includes('839년 기록'),'Formation and surviving records remain distinct');
 }
 
-// Arrival book continuity is a line-bound physical pose, not a new dialogue
-// step or an inventory panel. The original three photographs travel with it.
+// All 14 prologue lines must remain free of photograph/hand/book overlays.
+for(const raw of story.prologue.scenes) for(const line of raw.main) {
+  const source=sources.get(raw.sceneId),current=state(raw.sceneId,line.lineId),view=api.resolve(source,current);
+  assert.equal(view.hand,null); assert.equal(view.book,null);
+  assert.equal(api.portraitOverride(source,current,'three_v3_seoa'),null);
+  assert(!/족보|이 책|책 속|책을 놓/.test(line.text));
+  assert(!/data-source-photo=|three-hand-action|data-book-location=/.test(api.layers(source,current)));
+}
+// Prologue arrival has empty hands; the existing mother/Yeonwoo handoff remains.
 for(let number=1;number<=6;number++) {
   const source=sources.get('THR-PRO-S03'),current=state(source.sceneId,source.sceneId+'-L0'+number);
   const view=api.resolve(source,current),presence=api.actorPresence(source,current);
-  assert.equal(view.book.state,number<=2?'ground':number===3?'lifting':'held');
-  assert.equal(view.book.sourcePhotos.length,3);
-  assert(view.book.sourcePhotos.every(photo=>photo.sourceKind==='user-original-photo'));
+  assert.equal(view.book,null);
+  assert.equal(view.hand,null);
   assert.equal(api.backgroundOverride(source,current)?.id||null,number===6?'queue-mother-in-pair':null,'Only L06 removes the duplicate background mother');
   const ground=api.layers(source,current),photoLayers=api.portraitLayers(source,current,'three_v3_seoa');
   assert.equal(ground.includes('data-book-location="ground"'),false);
   assert.equal((ground.match(/data-source-photo=/g)||[]).length,0);
   assert.equal((photoLayers.match(/data-source-photo=/g)||[]).length,0);
-  assert.equal(api.portraitOverride(source,current,'three_v3_seoa')?.id||null,number<=2?null:number===3?'seoa-book-lifting':'seoa-book-held');
+  assert.equal(api.portraitOverride(source,current,'three_v3_seoa')?.id||null,null);
   assert.equal(presence.length,number===6?1:0);
   if(number===6) {
     assert.equal(presence[0].characterId,'civilian-c01-0e375c4533--initial');

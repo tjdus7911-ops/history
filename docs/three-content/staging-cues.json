@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "contentVersion": "three-staging-v1",
-  "sourceManuscriptSha256": "b7d416b9281dfeb60bd41d9d621870c1297ac2c70d8767c8300032b6ddbdf9c6",
+  "sourceManuscriptSha256": "98b14d913fbf7cc19cc178bf0174ac1750cbebf3e3b29d72a196c6ef814cf3c3",
   "scenes": {
     "THR-C01-S01": {
       "props": [
@@ -3288,18 +3288,7 @@
       "motions": [],
       "portraits": [],
       "backgrounds": [],
-      "handActions": [
-        {
-          "variant": "resting-hand",
-          "from": "THR-PRO-S01-L03",
-          "through": "THR-PRO-S01-L03"
-        },
-        {
-          "variant": "lifting-hand",
-          "from": "THR-PRO-S01-L04",
-          "through": "THR-PRO-S01-L04"
-        }
-      ]
+      "handActions": []
     },
     "THR-PRO-S02": {
       "props": [],
@@ -3308,62 +3297,11 @@
       "motions": [],
       "portraits": [],
       "backgrounds": [],
-      "handActions": [
-        {
-          "variant": "lifting-hand",
-          "from": "THR-PRO-S02-L01",
-          "through": "THR-PRO-S02-L02"
-        }
-      ]
+      "handActions": []
     },
     "THR-PRO-S03": {
-      "bookActions": [
-        {
-          "variant": "ground",
-          "phases": [
-            "main"
-          ],
-          "from": "THR-PRO-S03-L01",
-          "through": "THR-PRO-S03-L02"
-        },
-        {
-          "variant": "lifting",
-          "phases": [
-            "main"
-          ],
-          "lineIds": [
-            "THR-PRO-S03-L03"
-          ]
-        },
-        {
-          "variant": "held",
-          "phases": [
-            "main"
-          ],
-          "from": "THR-PRO-S03-L04",
-          "through": "THR-PRO-S03-L06"
-        }
-      ],
+      "bookActions": [],
       "portraits": [
-        {
-          "variant": "seoa-book-lifting",
-          "phases": [
-            "main"
-          ],
-          "lineIds": [
-            "THR-PRO-S03-L03"
-          ],
-          "scope": "scene"
-        },
-        {
-          "variant": "seoa-book-held",
-          "phases": [
-            "main"
-          ],
-          "from": "THR-PRO-S03-L04",
-          "through": "THR-PRO-S03-L06",
-          "scope": "scene"
-        },
         {
           "variant": "yeonwoo-mother-support-pair",
           "phases": [

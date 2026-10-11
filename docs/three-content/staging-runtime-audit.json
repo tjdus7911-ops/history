@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "status": "runtime-linked-cues-source-validated-browser-review-pending",
-  "sourceManuscriptSha256": "b7d416b9281dfeb60bd41d9d621870c1297ac2c70d8767c8300032b6ddbdf9c6",
+  "sourceManuscriptSha256": "98b14d913fbf7cc19cc178bf0174ac1750cbebf3e3b29d72a196c6ef814cf3c3",
   "sceneCount": 218,
   "authoredUtteranceCount": 2777,
-  "explicitCueCount": 270,
-  "scenesWithExplicitCues": 146,
+  "explicitCueCount": 262,
+  "scenesWithExplicitCues": 144,
   "propImageCount": 27,
   "handActionImageCount": 2,
   "actorVariantImageCount": 7,
@@ -22,7 +22,7 @@
   "sceneAudit": [
     {
       "sceneId": "THR-PRO-S01",
-      "authoredStaging": "시작 버튼을 누르면 곧바로 방 일러스트와 첫 대사를 보여 준다. 첫 검은 화면이나 긴 시대 설명은 없다. 세 번째 대사에서 족보의 사람·생활 관련 메모에 손을 올리고, 네 번째 대사에서 책 사이의 빈 장을 발견한다. 족보의 실제 내용을 임의의 가짜 필기로 대체하지 않는다.",
+      "authoredStaging": "시작 버튼을 누르면 곧바로 방 일러스트와 첫 대사를 보여 준다. 공부하던 서아가 잠시 쉬며 당시 사람들의 삶을 생각한다. 팔을 편안히 내린 기존 스탠딩을 유지하며 별도의 손이나 소품을 덧씌우지 않는다.",
       "runtimeCueCounts": {
         "props": 0,
         "captions": 0,
@@ -30,19 +30,16 @@
         "motions": 0,
         "portraits": 0,
         "backgrounds": 0,
-        "handActions": 2
+        "handActions": 0
       },
-      "runtimeCueIds": [
-        "THR-PRO-S01:handActions:1",
-        "THR-PRO-S01:handActions:2"
-      ],
+      "runtimeCueIds": [],
       "recordLineIds": [],
-      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "status": "existing-cast-background-and-dialogue-presentation",
       "customIllustrationCompletion": "not-inferred-from-cue-count"
     },
     {
       "sceneId": "THR-PRO-S02",
-      "authoredStaging": "말소리 없는 종이 스침과 바람 효과만 사용한다. 책에서 남자 목소리가 나거나 누군가 서아를 부르는 연출은 없다. 마지막 대사에서 서아가 책을 붙잡고 균형을 잃는다. 족보 세 장은 책 속에 끼워진 상태로 함께 이동한다.",
+      "authoredStaging": "고요한 방에서 서아가 졸음과 낯선 바람을 느낀다. 누군가 부르는 목소리나 소품을 잡는 동작은 없다. 마지막 대사 뒤의 기존 탭 전환을 유지한다.",
       "runtimeCueCounts": {
         "props": 0,
         "captions": 0,
@@ -50,32 +47,25 @@
         "motions": 0,
         "portraits": 0,
         "backgrounds": 0,
-        "handActions": 1
+        "handActions": 0
       },
-      "runtimeCueIds": [
-        "THR-PRO-S02:handActions:1"
-      ],
+      "runtimeCueIds": [],
       "recordLineIds": [],
-      "status": "implemented-presentation-cues-awaiting-browser-review",
+      "status": "existing-cast-background-and-dialogue-presentation",
       "customIllustrationCompletion": "not-inferred-from-cue-count"
     },
     {
       "sceneId": "THR-PRO-S03",
-      "authoredStaging": "서아만 시대를 이동한다. 책과 족보는 서아 곁에 떨어져 있다. 서아는 집에 돌아갈 방법을 묻기 위해 사람들에게 다가가다가, 창백한 노인을 먼저 알아본다. 프롤로그 안에서는 아직 물을 주거나 사람을 옮기지 않는다. 노인이 완전히 쓰러지는 순간은 기존 CH01 S01 첫 대사 직전이다. 책의 연도·장소 표시는 기존 CH01 S01 연출에 맡긴다.",
+      "authoredStaging": "서아만 시대를 이동한다. 손은 비어 있고, 곁에 떨어진 현대 소품은 없다. 서아는 집에 돌아갈 방법을 묻기 위해 사람들에게 다가가다가, 창백한 노인을 먼저 알아본다. 프롤로그 안에서는 아직 물을 주거나 사람을 옮기지 않는다. 노인이 완전히 쓰러지는 순간은 기존 CH01 S01 첫 대사 직전이다. 책의 연도·장소 표시는 기존 CH01 S01 연출에 맡긴다.",
       "runtimeCueCounts": {
-        "bookActions": 3,
-        "portraits": 3,
+        "bookActions": 0,
+        "portraits": 1,
         "actorPresence": 1,
         "motions": 1,
         "backgrounds": 1
       },
       "runtimeCueIds": [
-        "THR-PRO-S03:bookActions:1",
-        "THR-PRO-S03:bookActions:2",
-        "THR-PRO-S03:bookActions:3",
         "THR-PRO-S03:portraits:1",
-        "THR-PRO-S03:portraits:2",
-        "THR-PRO-S03:portraits:3",
         "THR-PRO-S03:actorPresence:1",
         "THR-PRO-S03:motions:1",
         "THR-PRO-S03:backgrounds:1"

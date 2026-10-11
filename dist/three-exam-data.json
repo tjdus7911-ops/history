@@ -7,7 +7,7 @@
     "workbook": "docs/three-content/exam-mapping.xlsx",
     "workbookSha256": "f6c210c6182f79be104a446f9aa7ad1acbf59f0ea20a2c8d4ba3b9be1c2f596a",
     "manuscript": "docs/three-content/complete-manuscript.md",
-    "manuscriptSha256": "b7d416b9281dfeb60bd41d9d621870c1297ac2c70d8767c8300032b6ddbdf9c6",
+    "manuscriptSha256": "98b14d913fbf7cc19cc178bf0174ac1750cbebf3e3b29d72a196c6ef814cf3c3",
     "evidence": "docs/three-content/exam-source-evidence.json",
     "evidenceSha256": "48bc7aae80a3966949780fed881877d74405bcf30771cad25de4dab91396a9b6",
     "catalog": "dist/official-exam-catalog.json",
