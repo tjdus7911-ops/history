@@ -2,7 +2,7 @@ const fs=require('fs'),vm=require('vm'),assert=require('assert');
 
 const scripts=[...fs.readFileSync('dist/index.html','utf8').matchAll(/<script src="([^"]+)"/g)]
  .map(match=>match[1]).filter(name=>name!=='pwa.js');
-let saved=null,html='',handlers={},context;
+let saved=null,html='',handlers={},context;const otherStorage=new Map();
 
 function boot(){
  html='';handlers={};
@@ -16,7 +16,7 @@ function boot(){
    createElement:()=>({set innerHTML(value){this.value=value},querySelector:()=>null,setAttribute(){},remove(){}}),
    body:{append(){}}
   },
-  localStorage:{getItem:()=>saved,setItem:(key,value)=>{saved=value}},
+  localStorage:{getItem:key=>key==='lived-history-v1'?saved:otherStorage.get(key)||null,setItem:(key,value)=>{if(key==='lived-history-v1')saved=value;else otherStorage.set(key,value)}},
   window:{scrollTo(){}},navigator:{},
   setTimeout:()=>0,clearTimeout(){},setInterval:()=>0,clearInterval(){}
  });

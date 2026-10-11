@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "planningMappingSha256": "bd48a51b5568577154e07633346cf9a04ccc4494f91baf5bf12585e1cf8b3e28",
+  "planningBankSha256": "ba3958a777b01b681bda2d21f3a093bb7f2696ecd00538df7ce8dae8d20a089c",
+  "sourceComparison": {
+    "sceneCount": 215,
+    "connectionCount": 302,
+    "representativeScheduleRows": 99,
+    "additionalCandidateRows": 26,
+    "errors": []
+  },
+  "mutationChecks": [
+    {
+      "case": "basic-answer-outside-four-options",
+      "rejected": true,
+      "reason": "Answer outside source choice range: official-58-basic-07"
+    },
+    {
+      "case": "scene-connection-changes-original-answer",
+      "rejected": true,
+      "reason": "Connection changes the original answer: THR-C01-S01 official-64-advanced-03"
+    },
+    {
+      "case": "question-moved-before-required-learning",
+      "rejected": true,
+      "reason": "Schedule destination/title mismatch: THR-C01-S01"
+    },
+    {
+      "case": "same-official-id-as-forced-first-twice",
+      "rejected": true,
+      "reason": "First/review order is inconsistent for official-64-advanced-03"
+    }
+  ],
+  "checks": [
+    {
+      "command": "python3 scripts/import-three-complete-exams.py --check",
+      "passed": true
+    }
+  ]
+}

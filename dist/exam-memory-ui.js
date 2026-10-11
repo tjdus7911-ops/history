@@ -59,7 +59,7 @@ const officialEntry=value=>typeof value==='string'?OFFICIAL_ENTRY_BY_ID.get(valu
 const officialQuestion=value=>{const entry=officialEntry(value);return entry&&QUESTIONS.find(question=>question.questionId===entry.canonicalQuestionId)};
 const officialAnswerAccepted=(question,answer)=>Array.isArray(question?.acceptedAnswers)?question.acceptedAnswers.includes(answer):question?.answer===answer;
 const officialAnswerLabel=question=>question?.answerLabel==='없음'?'모든 선택지':officialChoiceLabels[question?.answer]||String(question?.answerLabel||'');
-const officialExplanation=question=>{const stored=officialStoredExplanation(question);if(!stored)throw new Error(`Missing official explanation: ${question?.questionId||'unknown'}`);return stored.value};
+const officialExplanation=question=>{const stored=officialStoredExplanation(question);if(!stored)throw new Error(`Missing official explanation: ${question?.questionId||'unknown'}`);return globalThis.THREE_LEARNING_BOUNDARY?.explanation(question,stored.value,{kind:'catalog',explicitEra:officialExamTab==='era'?officialExamEra:null})??stored.value};
 libraryStatus=()=> 'UNLOCKED';
 libraryEligible=entry=>Boolean(entry&&!entry.needsVerification&&officialQuestion(entry.canonicalQuestionId)?.sourceQuestionImage);
 libraryEntries=era=>OFFICIAL_EXAM_CATALOG.filter(entry=>entry.primaryEra===era&&libraryEligible(entry));
@@ -161,6 +161,7 @@ function officialSessionQuestion(){return officialExamSession?.entries[officialE
 function recordOfficialAttempt(questionId,answer){
  const savedRun=JSON.parse(JSON.stringify(state.run)),savedMain=state.mainRun?JSON.parse(JSON.stringify(state.mainRun)):state.mainRun;let right=false;
  try{right=recordQuestion(state,questionId,answer)}finally{state.run=savedRun;state.mainRun=savedMain}
+ globalThis.THREE_LEARNING_BOUNDARY?.recordOfficialAttempt(officialEntry(questionId)?.sourceRecord?.officialQuestionId,answer);
  return right;
 }
 function officialFeedbackBlock(question,right,selectedAnswer){

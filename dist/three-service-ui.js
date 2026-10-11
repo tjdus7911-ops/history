@@ -1,53 +1,101 @@
-/* Official-shell presentation for playable but explicitly unfinished Three content. */
-if(globalThis.CORE_APP_READY===true&&globalThis.THREE_STORY_RUNTIME){
-  const runtime=globalThis.THREE_STORY_RUNTIME;
-  function sceneStatus(id){
-    const source=runtime.sources.get(id),art=globalThis.THREE_ART_MANIFEST;
-    const production=source.production;
-    const questions=QUESTIONS.filter(q=>q.threeStoryVersion===2&&q.relatedSceneId===id);
-    const background=!!art.backgrounds[id]?.visualFileReview,npc=!!art.characters[source.npcId]?.visualFileReview;
-    const expanded=production.dialogue==='expanded-needs-editorial-review'||production.dialogue==='ready';
-    const complete=production.dialogue==='ready'&&background&&npc&&art.characters[source.npcId].expressionVariantsReady&&
-      questions.length>=2&&production.desktopQA==='passed'&&production.mobileQA==='passed';
-    return {id,title:source.title,chapterId:source.chapterId,complete,expanded,background,npc,questionCount:questions.length,
-      label:complete?'완성':'제작 중',missing:[...(production.dialogue!=='ready'?['대사 검수']:[]),...(!background?['배경']:[]),
-        ...(!npc?['인물']:[]),...(questions.length<2?['추가 기출']:[]),...(production.desktopQA!=='passed'||production.mobileQA!=='passed'?['화면 검증']:[])]};
+/* Reader-facing record book for the complete Three manuscript. */
+if (globalThis.CORE_APP_READY === true && globalThis.EDITORIAL_UI_READY === true && globalThis.THREE_STORY_RUNTIME?.version === 3) {
+  const runtime = globalThis.THREE_STORY_RUNTIME, actions = globalThis.THREE_COMPLETE_ACTIONS;
+  const manuscript = globalThis.THREE_STORY_SCRIPT;
+  const beforeModal = modalHTML;
+  function questionRows() {
+    actions.unlockLearnedQuestions();
+    const value = actions.book(), read = new Set(value.readSceneIds), byId = new Map();
+    for (const row of [...runtime.exams.schedule, ...runtime.exams.additionalCandidates]) {
+      if (read.has(row.quizAfterSceneId)) byId.set(row.officialQuestionId, row);
+    }
+    return [...byId.values()].sort((a,b)=>runtime.order.indexOf(a.quizAfterSceneId)-runtime.order.indexOf(b.quizAfterSceneId));
   }
-  const statuses=()=>[...runtime.sources.keys()].map(sceneStatus);
-  const beforeHero=heroContent;
-  heroContent=function(era,detail=false){
-    const html=beforeHero(era,detail);if(era.id!=='three-kingdoms')return html;
-    return html.replace('<em class="available">공개</em>','<em class="available">제작 중</em>').replace('진행률','읽은 진행도')
-      .replace('<p class="era-description">','<p class="era-description">90씬 초안 공개 · 완성 '+statuses().filter(row=>row.complete).length+'씬. ');
+  function sceneTranscript(source) {
+    const index = actions.book().choiceBySceneId[source.sceneId];
+    return [...source.main, ...(Number.isInteger(index) ? [source.choices[index].spokenLine,...source.choices[index].reply] : []), ...source.join];
+  }
+  function recordBook() {
+    const value = actions.book(), tab = modal.tab || 'scenes';
+    const read = new Set(value.readSceneIds), mainRead = manuscript.chapters.flatMap(ch=>ch.scenes).filter(s=>read.has(s.sceneId));
+    const questions = questionRows();
+    const mnemonics = manuscript.mnemonics.filter(item=>item.sceneIds.every(id=>read.has(id)));
+    const tabs = [['scenes','읽은 이야기'],['questions','기출 복습'],['notes','암기 기록'],['originals','내 족보']];
+    let content = '';
+    if (tab === 'scenes') {
+      const source = runtime.sources.get(modal.sceneId);
+      if (source && read.has(source.sceneId)) {
+        content = '<button class="text-btn" data-three-book-tab="scenes">‹ 장면 목록</button><h3>'+esc(source.sceneTitle)+'</h3><div class="three-read-transcript">'+sceneTranscript(source).map(line=>'<article class="'+(line.kind==='record'?'record':'')+'"><b>'+esc(line.speaker)+'</b><p>'+esc(line.text)+'</p></article>').join('')+'</div>';
+      } else {
+        content = '<p>읽은 장면 '+mainRead.length+' / 215 · 선택했던 대사와 함께 다시 읽을 수 있어요.</p>'+(mainRead.length?manuscript.chapters.map(ch=>{
+          const scenes = ch.scenes.filter(scene=>read.has(scene.sceneId));
+          return scenes.length?'<details class="three-book-chapter"><summary>CH.'+String(ch.number).padStart(2,'0')+' '+esc(ch.title)+' · '+scenes.length+'장면</summary>'+scenes.map(scene=>'<button class="three-book-row" data-three-book-scene="'+scene.sceneId+'"><span>'+scene.number+'. '+esc(scene.sceneTitle)+'</span><b>›</b></button>').join('')+'</details>':'';
+        }).join(''):'<p class="three-empty">이야기를 읽으면 장면의 기록이 여기에 남습니다.</p>');
+      }
+    } else if (tab === 'questions') {
+      const playable = Boolean(STORIES[run().storyId]?.threeStoryVersion === 3) && !run().activeQuestionId && !run().threeCheckpoint;
+      content = '<p>배운 장면의 문제 '+questions.length+'개 · 풀이를 마친 문제 '+value.answeredQuestionIds.length+'개</p><p>같은 문항은 한 번만 모입니다. 다시 풀 문제를 직접 골라 주세요.</p>'+(questions.length?questions.map(row=>{
+        const q = runtime.questionByOfficialId.get(row.officialQuestionId), answered = value.answeredQuestionIds.includes(row.officialQuestionId);
+        return '<article class="three-book-question"><div><b>'+esc(q.threeExam.label)+'</b><small>'+esc(runtime.sources.get(row.quizAfterSceneId).sceneTitle)+' · '+(answered?'풀이 기록 있음':'추가로 풀 수 있는 문제')+'</small></div><button class="secondary" data-three-review="'+q.officialQuestionId+'" data-three-placement="'+row.id+'" '+(playable?'':'disabled')+'>'+(answered?'다시 풀기':'풀어 보기')+'</button></article>';
+      }).join(''):'<p class="three-empty">기출에 필요한 장면을 읽은 뒤 문제가 열립니다.</p>')+(!playable&&questions.length?'<p>이야기 화면으로 돌아오면 선택 복습을 시작할 수 있어요.</p>':'');
+    } else if (tab === 'notes') {
+      content = '<p>배운 내용을 모은 암기 기록 '+mnemonics.length+' / '+manuscript.mnemonics.length+'</p>'+mnemonics.map(item=>'<article class="three-mnemonic"><h3>'+esc(item.title)+'</h3><blockquote>'+esc(item.originalText)+'</blockquote><p>'+esc(item.explanation)+'</p></article>').join('')+(mnemonics.length?'':'<p class="three-empty">연결된 장면을 모두 읽으면 원래의 암기 문구와 설명이 열립니다.</p>');
+    } else if (tab === 'originals') {
+      content = '<p>처음 공부하던 족보 세 장입니다. 이미지를 누르면 원본 크기로 볼 수 있어요.</p>'+globalThis.THREE_COMPLETE_ART.sourcePhotos.map((photo,index)=>'<button class="three-original-photo" data-three-photo="'+index+'"><img src="'+esc(photo.src)+'" alt="'+esc(photo.displayLabel)+'" loading="lazy"><span>'+esc(photo.displayLabel)+' · 확대하기</span></button>').join('');
+    }
+    return '<div class="modal-overlay"><section class="modal three-recordbook-modal" role="dialog" aria-modal="true" aria-labelledby="three-book-title"><header><div><small>서아의 기록</small><h2 id="three-book-title">함께 지나온 시간</h2></div><button data-action="close">닫기</button></header><nav class="three-book-tabs" aria-label="기록책">'+tabs.map(([id,label])=>'<button data-three-book-tab="'+id+'" aria-pressed="'+(tab===id)+'">'+label+'</button>').join('')+'</nav><div class="three-book-content">'+content+'</div></section></div>';
+  }
+  modalHTML = function() {
+    if (modal?.type === 'three-recordbook') return recordBook();
+    if (modal?.type === 'three-source-photo') {
+      const photo = globalThis.THREE_COMPLETE_ART.sourcePhotos[modal.index];
+      return '<div class="modal-overlay"><section class="modal three-photo-modal" role="dialog" aria-modal="true" aria-label="'+esc(photo.displayLabel)+'"><header><h2>'+esc(photo.displayLabel)+'</h2><button data-action="three-photo-back">족보로 돌아가기</button><button data-action="close">닫기</button></header><div class="three-photo-pan"><img src="'+esc(photo.src)+'" alt="'+esc(photo.displayLabel)+'"></div></section></div>';
+    }
+    return beforeModal();
   };
-  const beforeRow=editorialChapterRow;
-  editorialChapterRow=function(chapter){
-    let html=beforeRow(chapter);if(chapter.threeStoryVersion!==2)return html;
-    const rows=statuses().filter(row=>row.chapterId===chapter.chapterId),ready=rows.filter(row=>row.complete).length;
-    if(!chapter.thumbnail)html=html.replace(/<img[^>]*>/,'<span class="three-card-art-pending">배경 준비 중</span>');
-    return html.replace('</b>','</b><small class="three-content-state">'+(ready===rows.length?'콘텐츠 완성':`제작 중 · 완성 ${ready}/${rows.length}씬`)+'</small>')
-      .replace('aria-label="완료"','aria-label="초안 읽음"');
+  const beforeHero = heroContent;
+  heroContent = function(era, detail = false) {
+    let html = beforeHero(era,detail); if (era.id !== runtime.eraId) return html;
+    return html.replace('진행률','읽은 진행도');
   };
-  const beforeEras=eras;
-  eras=function(){
-    const html=beforeEras();if(selectedEra!=='three-kingdoms')return html;
-    const rows=statuses(),complete=rows.filter(row=>row.complete).length;
-    return html+`<details class="three-content-report"><summary>90씬 제작 상태 · 완성 ${complete} / 미완성 ${90-complete}</summary><p>챕터 진행률은 읽은 위치입니다. 콘텐츠 제작 완료율과 다릅니다.</p><ul>${rows.map(row=>`<li data-three-scene-status="${row.id}"><b>CH.${CHAPTERS[row.chapterId].number} ${esc(row.title)}</b><span>${row.label} · ${row.expanded?'대사 보강됨':'대사 초안'} · ${esc(row.missing.join('·'))} 준비 중</span></li>`).join('')}</ul></details>`;
+  const beforeRow = editorialChapterRow;
+  editorialChapterRow = function(chapter) {
+    const html = beforeRow(chapter); if (chapter.threeStoryVersion !== 3) return html;
+    const count = chapter.sceneIds.length;
+    return html.replace('</b>','</b><small class="three-chapter-count">'+count+'개 장면 · 대사 선택과 기출</small>');
   };
-  const beforeGame=game;
-  game=function(){
-    const html=beforeGame(),id=run().pending?.sourceSceneId||run().storyId;
-    if(!runtime.sources.has(id))return html;
-    const row=sceneStatus(id),notice=`<aside class="three-scene-notice" role="status"><strong>삼국시대 · ${row.label}</strong><span>${row.expanded?'대사 보강됨':'대사 초안'} · ${row.background?'배경 연결됨':'배경 준비 중'} · ${row.npc?'인물 연결됨':'인물 준비 중'} · 검증 기출 ${row.questionCount}문항</span><small>미완성 장면을 플레이 중입니다. 진행 내용은 별도로 저장됩니다.</small></aside>`;
-    return notice+html.replace(/<p role="status" class="three-preview-notice">.*?<\/p>/,'');
+  function archiveNotice() {
+    const notices = globalThis.THREE_ERA_ISOLATION?.archiveNotices?.() || [];
+    if (!notices.length || actions.book().archiveNoticeDismissed) return '';
+    return '<aside class="three-save-notice" role="status"><h2>삼국 이야기가 새로 이어집니다.</h2><p>이전 초안의 진행 기록은 보관했습니다. 새 23챕터는 프롤로그에서 시작하고, 다른 시대의 이어하기는 그대로 유지됩니다.</p><button class="secondary" data-action="three-dismiss-archive">확인했어요</button></aside>';
+  }
+  const beforeEras = eras;
+  eras = function() {
+    const html = beforeEras(); return selectedEra === runtime.eraId ? archiveNotice()+html : html;
   };
-  const beforeComplete=complete;
-  complete=function(){
-    const id=resultChapterId||run().currentChapter;
-    if(CHAPTERS[id]?.threeStoryVersion!==2)return beforeComplete();
-    return `<section class="complete ancient-complete"><div class="eyebrow">삼국시대 · 제작 중</div><h1>${esc(CHAPTERS[id].title)}</h1><p>이 챕터의 초안 3씬을 읽었습니다. 콘텐츠 제작 완료를 의미하지 않습니다.</p><p>추가 기출·이미지·대사 검수·화면 검증이 남아 있습니다.</p>${resultFooter(id)}</section>`;
-  };
-  globalThis.THREE_CONTENT_STATUS={scene:sceneStatus,all:statuses};
-  globalThis.THREE_SERVICE_ENTRY_READY=true;
+  document.addEventListener('click', event => {
+    const button = event.target.closest('button'); if (!button || button.disabled) return;
+    const data = button.dataset;
+    if (data.action === 'three-recordbook') {
+      event.stopImmediatePropagation(); finishOpeningTyping(); modal = {type:'three-recordbook',tab:'scenes'}; save(); render();
+    } else if (data.threeBookTab !== undefined) {
+      event.stopImmediatePropagation(); modal = {type:'three-recordbook',tab:data.threeBookTab}; render();
+    } else if (data.threeBookScene) {
+      event.stopImmediatePropagation(); if (!actions.book().readSceneIds.includes(data.threeBookScene)) return;
+      modal = {type:'three-recordbook',tab:'scenes',sceneId:data.threeBookScene}; render();
+    } else if (data.threeReview) {
+      event.stopImmediatePropagation(); actions.startReview(data.threeReview,data.threePlacement);
+    } else if (data.threePhoto !== undefined) {
+      event.stopImmediatePropagation(); const index = Number(data.threePhoto);
+      if (!Number.isInteger(index) || !globalThis.THREE_COMPLETE_ART.sourcePhotos[index]) return;
+      modal = {type:'three-source-photo',index}; render();
+    } else if (data.action === 'three-photo-back') {
+      event.stopImmediatePropagation(); modal = {type:'three-recordbook',tab:'originals'}; render();
+    } else if (data.action === 'three-dismiss-archive') {
+      event.stopImmediatePropagation(); actions.book().archiveNoticeDismissed = true; save(); render();
+    }
+  }, true);
+  globalThis.THREE_SERVICE_ENTRY_READY = true;
+  globalThis.THREE_RECORD_BOOK = {questionRows,sceneTranscript};
   render();
 }

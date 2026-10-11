@@ -1,0 +1,65 @@
+{
+  "observedAtUTC": "2026-10-11T03:44:30.315945+00:00",
+  "baseCommit": "e27f008038d722934eee63070aac4e006c7d7bd9",
+  "branch": "codex/three-complete-23-chapters",
+  "automatedChecks": [
+    {
+      "command": "npm test",
+      "exitCode": 0,
+      "log": "verification-npm-test.log",
+      "scope": "Existing era regressions, static build, full Three A/correct and B/wrong paths, v3 saves, learning boundaries",
+      "timingNote": "Full path execution preceded the final one-shot prologue-cut change."
+    },
+    {
+      "command": "node tests/three-complete-test.cjs --optional-only",
+      "exitCode": 0,
+      "scope": "After final cut change: source equality, only explicit PRO-S02 final tap requests cut; render/reload never repeats; optional review restores exact branch."
+    },
+    {
+      "command": "npm run check:three",
+      "exitCode": 0,
+      "scope": "All three importers match checked-in generated data."
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "scope": "After final cut change: 53 required files, 682 ready illustrations, PWA and script syntax."
+    },
+    {
+      "command": "node --check tests/three-complete-ui-test.cjs && node --check tests/ancient-mobile-test.cjs",
+      "exitCode": 0,
+      "scope": "Syntax only, not browser behavior."
+    }
+  ],
+  "realBrowserCheck": {
+    "command": "npm run test:three:ui",
+    "exitCode": 1,
+    "status": "blocked_before_browser_launch",
+    "reason": "Playwright Chromium headless shell executable is missing. Browser download attempts returned SiteUnavailable HTML; managed preview failed mounting /proc.",
+    "log": "verification-browser-attempt.log",
+    "passed": false,
+    "screenshotsGenerated": false
+  },
+  "content": {
+    "chapters": 23,
+    "mainScenes": 215,
+    "prologueScenes": 3,
+    "authoredUtterances": 2777,
+    "choiceScenes": 71,
+    "choiceAlternatives": 142,
+    "uniqueOfficialQuestions": 91,
+    "mandatoryFirstQuestions": 77,
+    "firstCheckpoints": 62,
+    "maximumQuestionsPerCheckpoint": 3
+  },
+  "visualLimitations": {
+    "independentNamedPortraitsMissing": 61,
+    "historicalRolesMissing": 20,
+    "singleSceneCivilianRolesMissing": 41,
+    "generatedRecurringAppearances": 29,
+    "generatedRecurringPeople": 21,
+    "allAuthoredPropsAndActionsIndividuallyIllustrated": false,
+    "actualCSSCropAndMobileLayoutVerified": false
+  },
+  "mergeAndDeployment": "Not performed; reviewable branch / draft pull request is the intended handoff."
+}

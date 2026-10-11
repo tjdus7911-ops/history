@@ -1,4 +1,23 @@
-# 살아본 한국사 — 눈떠보니 고려
+# 살아본 한국사 — 눈떠보니 한국사
+
+## 눈떠보니 삼국: 확정 원고 적용
+
+삼국편의 실제 진입점인 `dist/index.html`은 첨부 확정 원고와 기출 배치표를 변환한 v3 콘텐츠를 읽습니다. 본편 23챕터·215씬과 프롤로그 3씬, 작성 발화 2,777개, 대사 선택 71곳·142개, 선정 기출 91문항을 연결했습니다. 원삼국·고려·조선은 별도 콘텐츠와 저장 상태를 유지합니다.
+
+삼국편의 새 게임은 `THR-PRO-S01`에서 시작합니다. 선택한 서아의 대사와 해당 분기만 재생하고, 공통 연결을 읽은 다음 배치표의 필수 기출을 엽니다. 기본 진행은 첫출제 77문항이며, 대표 배치의 복습 22회와 추가 후보는 기록책에서 선택합니다. 이어하기는 대사 단계·커서·선택 분기·기출 큐를 복원합니다.
+
+```bash
+npm run import:three   # 보관한 MD/XLSX와 자산 매니페스트에서 런타임 데이터 재생성
+npm run check:three    # 원본과 생성 결과의 일치 여부 검사
+npm run test:three     # 전체 A/B 경로, 저장 복원, 기출 개방 조건 검사
+npm run test:three:ui  # Playwright + Chromium이 있는 환경에서 실제 화면 검사
+```
+
+`npm test`와 `npm run build`에도 새 삼국편 검사가 포함됩니다. 브라우저 검사는 별도 명령이며, 실행 환경에 Playwright와 Chromium이 필요합니다. 이번 작업 환경에서는 브라우저 설치와 관리형 미리보기가 실행되지 않아 **데스크톱·모바일의 실제 화면 검증은 미확인**입니다. 주요 반복 조연 29개 모습은 연결했으며, 아직 독립 초상이 없는 인물과 세부 연출의 한계는 [구현·검증 보고서](docs/three-content/IMPLEMENTATION_REPORT.md)에 정확히 기록했습니다.
+
+원고·기출 원본, 재생성 방법, 검증 결과와 남은 항목은 [삼국편 보고서](docs/three-content/IMPLEMENTATION_REPORT.md), [기출 가져오기 기준](docs/three-content/EXAM_IMPORT.md), [대본 대조 결과](docs/three-content/manuscript-import-audit.json), [기출 대조 결과](docs/three-content/exam-import-audit.json)에서 확인할 수 있습니다.
+
+## 눈떠보니 고려
 
 기존 스토리를 보존한 모바일 우선 역사 게임입니다.
 
