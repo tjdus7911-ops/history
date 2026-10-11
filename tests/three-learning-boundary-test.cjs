@@ -81,26 +81,25 @@ assert.deepEqual(copy('run()'),foreign);
 
 // All first/review/additional placements unlock one item per official source.
 run('modal=null;meta().threeCompleteBook=THREE_SAVE_V3.emptyBook()');
-assert.equal(run("THREE_COMPLETE_EXAMS.schedule.filter(row=>row.playMode==='first').length"),77);
-assert.equal(run("THREE_COMPLETE_EXAMS.schedule.filter(row=>row.playMode==='review').length"),22);
+assert.equal(run("THREE_COMPLETE_EXAMS.schedule.filter(row=>row.playMode==='first').length"),98);
+assert.equal(run("THREE_COMPLETE_EXAMS.schedule.filter(row=>row.playMode==='review').length"),99);
 assert.equal(run('THREE_COMPLETE_EXAMS.additionalCandidates.length'),26);
 for(const sceneId of copy('THREE_STORY_RUNTIME.order')){
   run('meta().threeCompleteBook.readSceneIds.push('+JSON.stringify(sceneId)+');THREE_COMPLETE_ACTIONS.unlockLearnedQuestions()');
   const expected=copy("[...new Set([...THREE_COMPLETE_EXAMS.schedule,...THREE_COMPLETE_EXAMS.additionalCandidates].filter(row=>meta().threeCompleteBook.readSceneIds.includes(row.quizAfterSceneId)).map(row=>row.officialQuestionId))].sort()");
   assert.deepEqual(copy('meta().threeCompleteBook.unlockedQuestionIds.slice().sort()'),expected);
 }
-assert.equal(run('meta().threeCompleteBook.unlockedQuestionIds.length'),91);
-assert.equal(run('THREE_RECORD_BOOK.questionRows().length'),91);
-assert.equal((run("eraExamList('three-kingdoms')").match(/data-practice=/g)||[]).length,91);
+assert.equal(run('meta().threeCompleteBook.unlockedQuestionIds.length'),99);
+assert.equal(run('THREE_RECORD_BOOK.questionRows().length'),99);
+assert.equal((run("eraExamList('three-kingdoms')").match(/data-practice=/g)||[]).length,99);
 
-// A question solved in the independent catalog does not become a forced first
-// question when its authored checkpoint is later reached.
+// Independent catalog history must not skip a question in a fresh story run.
 run('meta().threeCompleteBook=THREE_SAVE_V3.emptyBook()');
 officialAttempt(firstId,run('THREE_STORY_RUNTIME.questionByOfficialId.get('+JSON.stringify(firstId)+').answer'));
 run(`state.mainRun=null;state.run=THREE_SAVE_V3.freshRun(true);selectedEra='three-kingdoms';modal=null;
   const row=THREE_STORY_RUNTIME.firstScheduleFor(${JSON.stringify(firstId)}),source=STORIES[row.quizAfterSceneId];
   run().currentChapter=source.chapterId;run().storyId=source.sceneId;run().dialogueSceneId=source.sceneId;
   THREE_COMPLETE_ACTIONS.phaseState(source).phase='join';THREE_COMPLETE_ACTIONS.checkpoint(source);`);
-assert(!copy('run().questionQueue').includes('THR-'+firstId));
-assert.notEqual(run('run().activeQuestionId'),'THR-'+firstId);
-console.log('PASS Three learning boundaries: locked legacy entry/recall, independent official dedup, delayed explanations across aliases, explicit other-era behavior, unchanged foreign runs, all 91 unlocks.');
+assert(copy('run().questionQueue').includes('THR-'+firstId));
+assert(run('run().activeQuestionId')==='THR-'+firstId || run('THREE_COMPLETE_ACTIONS.phaseState(STORIES[run().storyId]).phase')==='hints');
+console.log('PASS Three learning boundaries: locked legacy entry/recall, independent official dedup, delayed explanations across aliases, explicit other-era behavior, unchanged foreign runs, all 99 unlocks.');

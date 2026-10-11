@@ -112,7 +112,7 @@ const oldIndependent=JSON.stringify({schemaVersion:1,eraId:'three-kingdoms',cont
 const legacy=load({'lived-history-v1':JSON.stringify(old),'lived-history-three-kingdoms-v2':oldIndependent});
 assert.equal(legacy.storage()['lived-history-three-kingdoms-v2'],oldIndependent);
 assert.equal(legacy.run('run().storyId'),'THR-PRO-S01');
-assert.equal(legacy.run("chapterStatus('THR-C02')"),'LOCKED');
+assert.equal(legacy.run("chapterStatus('THR-C02')"),'CURRENT');
 assert.deepEqual(legacy.copy("meta().chapterRecords['three-v2-ch01']"),old.meta.chapterRecords['three-v2-ch01']);
 assert.deepEqual(legacy.copy("meta().eraProgress['three-kingdoms']"),{legacySentinel:'v1-preserved'});
 assert(legacy.run('THREE_ERA_ISOLATION.archiveNotices().length')>0);
@@ -139,7 +139,7 @@ const quarantined=load({'lived-history-v1':JSON.stringify(unknown)});
 assert.equal(quarantined.run('run().storyId'),'THR-PRO-S01');
 assert(!quarantined.run("meta().completedChapters.includes('THR-C01')"));
 assert(quarantined.run("meta().completedChapters.includes('ch01')"));
-assert.equal(quarantined.run("chapterStatus('THR-C02')"),'LOCKED');
+assert.equal(quarantined.run("chapterStatus('THR-C02')"),'CURRENT');
 const noBook={version:15,run:branch,mainRun:null,meta:current.copy('meta()')};
 delete noBook.meta.threeCompleteBook;delete noBook.meta.eraProgress['three-kingdoms-v3'];
 const missingBook=load({'lived-history-v1':JSON.stringify(noBook)});

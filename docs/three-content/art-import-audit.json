@@ -7,14 +7,14 @@
   "characterIdentityCount": 236,
   "existingPrincipalPortraitCount": 2,
   "generatedRecurringPortraitCount": 29,
-  "generatedPrincipalPortraitCount": 61,
+  "generatedPrincipalPortraitCount": 213,
   "fullbodyPortraitCount": 90,
-  "generatedPortraitAtlasCount": 17,
+  "generatedPortraitAtlasCount": 44,
   "missingPrincipalAppearanceCount": 0,
   "missingRecurringCivilianAppearances": 0,
   "missingHistoricalPersonAppearances": 0,
   "unmadeNamedLocalRoles": 0,
-  "supportingBackgroundRoleCount": 152,
+  "supportingBackgroundRoleCount": 0,
   "originalGenealogyPhotoCount": 3,
   "missingSourceFiles": [],
   "sameFaceReusedForDifferentPeople": [],
@@ -179,7 +179,7 @@
   ],
   "speakerAliasChecks": "passed",
   "npcPositionChecks": "all-left",
-  "atlasSourceRectChecks": "90 in-bounds portraits; distinct identity slots; body extensions use alpha-envelope CSS clips where bounding boxes meet",
+  "atlasSourceRectChecks": "242 in-bounds portraits; distinct identity slots; body extensions use alpha-envelope CSS clips where bounding boxes meet",
   "specificSceneProps": [
     {
       "sceneId": "THR-PRO-S01",
@@ -1285,7 +1285,7 @@
     "backgroundFileReview": true,
     "knownPortraitFileReview": true,
     "generatedPortraitFileReview": true,
-    "generatedPortraitAppearanceCount": 90,
+    "generatedPortraitAppearanceCount": 242,
     "runtimeDesktopReview": false,
     "runtimeMobileReview": false
   }

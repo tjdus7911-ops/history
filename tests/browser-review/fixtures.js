@@ -58,6 +58,10 @@
       if(scenario==='three-long-line'){const source=scenes.reduce((a,b)=>Math.max(...b.dialogues.map(l=>l.dialogue.length))>Math.max(...a.dialogues.map(l=>l.dialogue.length))?b:a);chooseScene('three-kingdoms',source.sceneId,'long');return;}
       if(scenario==='three-long-choice'){const source=scenes.filter(s=>s.choices?.length).reduce((a,b)=>b.choices.reduce((n,c)=>n+c.label.length,0)>a.choices.reduce((n,c)=>n+c.label.length,0)?b:a);chooseScene('three-kingdoms',source.sceneId,'choice');return;}
       const mapping={
+        'three-support-officer':['THR-C02-S03','npc'],
+        'three-support-law':['THR-C03-S03','npc'],
+        'three-support-child':['THR-C18-S07','npc',{cursor:6}],
+        'three-support-last':['THR-C23-S07','npc'],
         'three-yeonwoo':['THR-C01-S01','yeonwoo'],
         'three-eulpaso':['THR-C01-S04','eulpaso'],
         'three-npc-switch':['THR-C01-S06','npc'],
@@ -96,7 +100,8 @@
         'three-stage-reunion-tools':['THR-C22-S06','main',{cursor:1,savedChoices:{'THR-C22-S04':1,'THR-C22-S02':1}}]
       };const [id,kind,details]=mapping[scenario];chooseScene('three-kingdoms',id,kind,details);return;
     }
-    if(scenario.startsWith('proto-')){const mapping={'proto-player':['proto_ch00_s1','player'],'proto-npc':['proto_ch00_s2','npc'],'proto-choice':['proto_ch00_s2','choice'],'proto-choice-quiz':['proto_ch02_s3','choice']};const [id,kind]=mapping[scenario];chooseScene('proto-kingdoms',id,kind);return;}
+    if(scenario.startsWith('proto-')){const mapping={
+        'proto-player':['proto_ch00_s1','player'],'proto-npc':['proto_ch00_s2','npc'],'proto-choice':['proto_ch00_s2','choice'],'proto-choice-quiz':['proto_ch02_s3','choice']};const [id,kind]=mapping[scenario];chooseScene('proto-kingdoms',id,kind);return;}
     if(scenario==='goryeo-player'){chooseScene('goryeo','prologue','player');return;}
     if(scenario==='goryeo-npc'){chooseScene('goryeo','house','npc');return;}
     if(scenario==='joseon-npc'){const s=Object.values(STORIES).find(s=>s.eraId==='joseon'&&s.storyActive!==false&&s.dialogues?.some(l=>l.speakerType==='npc'));chooseScene('joseon',s.sceneId,'npc');}

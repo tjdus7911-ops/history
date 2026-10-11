@@ -1,0 +1,7193 @@
+{
+  "policy": {
+    "minimum": 2,
+    "maximum": 3,
+    "uniqueAcross": [
+      "proto",
+      "three",
+      "goryeo"
+    ],
+    "identity": "round + level + question number",
+    "shortageIsNotCompletion": true
+  },
+  "summary": {
+    "proto": {
+      "scenes": 83,
+      "questions": 23,
+      "satisfiedScenes": 8,
+      "shortScenes": 75,
+      "missingMinimum": 147
+    },
+    "three": {
+      "scenes": 215,
+      "questions": 98,
+      "satisfiedScenes": 23,
+      "shortScenes": 192,
+      "missingMinimum": 340
+    },
+    "goryeo": {
+      "scenes": 211,
+      "questions": 71,
+      "satisfiedScenes": 17,
+      "shortScenes": 194,
+      "missingMinimum": 356
+    }
+  },
+  "duplicateCount": 0,
+  "scenes": [
+    {
+      "sceneId": "prologue",
+      "chapterId": "ch01",
+      "era": "goryeo",
+      "title": "순서가 자꾸 헷갈린다",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "sleep",
+      "chapterId": "ch01",
+      "era": "goryeo",
+      "title": "책장 너머로",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "voice",
+      "chapterId": "ch01",
+      "era": "goryeo",
+      "title": "",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "house",
+      "chapterId": "ch01",
+      "era": "goryeo",
+      "title": "처음 눈에 들어온 고려",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "outfit_gift",
+      "chapterId": "ch01",
+      "era": "goryeo",
+      "title": "갈 곳부터 정합시다",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "rumor",
+      "chapterId": "ch01",
+      "era": "goryeo",
+      "title": "왕건이 왕이 되었다",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "foundation",
+      "chapterId": "ch01",
+      "era": "goryeo",
+      "title": "918년 · 고려 건국",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch01_trade_start",
+      "chapterId": "ch01",
+      "era": "goryeo",
+      "title": "둘이 장사꾼이 되어 가는 동안",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch01_jump_927",
+      "chapterId": "ch01",
+      "era": "goryeo",
+      "title": "아홉 해가 쌓인 뒤",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch01_gongsan",
+      "chapterId": "ch01",
+      "era": "goryeo",
+      "title": "남쪽으로 가지 마시오",
+      "learningConceptIds": [
+        "ch01-gongsan"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch01_conflict",
+      "chapterId": "ch01",
+      "era": "goryeo",
+      "title": "잃을 것이 없다는 말",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch01_reconcile",
+      "chapterId": "ch01",
+      "era": "goryeo",
+      "title": "다시 같은 편",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch01_jump_930",
+      "chapterId": "ch01",
+      "era": "goryeo",
+      "title": "다시 수레를 채우다",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch01_gochang",
+      "chapterId": "ch01",
+      "era": "goryeo",
+      "title": "다시 열린 길",
+      "learningConceptIds": [
+        "ch01-gochang"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch01_belonging",
+      "chapterId": "ch01",
+      "era": "goryeo",
+      "title": "우리가 이겼다는 말",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch01_clear_930",
+      "chapterId": "ch01",
+      "era": "goryeo",
+      "title": "새로운 나라",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch02_transition",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "삼십일 년",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch02_shop_exterior_949",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "도윤의 가게",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch02_reunion_949",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "여전한 두 사람",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch02_market",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "왕이 바뀐 나라",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch02_life_path",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "고려에서 나의 자리",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch02_jump_956",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "일곱 해 뒤",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch02_shop_956",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "조금 더 커진 가게",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch02_dispute",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "도윤이 아는 사람",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch02_trust",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "그냥 두고 갈 수는 없어",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch02_inspection",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "폐하의 명이다",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch02_policy_reason",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "양인으로 돌아가다",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch02_policy_memory",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "노비안검법",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-74-advanced-11"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch02_noble_night",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "귀족의 분노",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch02_jump_958",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "두 해 뒤",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch02_three_way",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "세 사람이 처음 웃은 날",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch02_ssanggi",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "후주에서 온 사람, 쌍기",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-78-advanced-11"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch02_official_robes_walk",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "서로 다른 빛깔의 옷",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch02_hyunwoo_official",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "관리의 옷을 입은 현우",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch02_reign_titles",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "거리에서 들은 새 연호",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch02_reign_followup",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "광덕에서 준풍으로",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-76-advanced-50",
+        "official-77-advanced-14"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "ch02_purge",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "사라진 큰손",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch02_night_discussion",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "세 사람에게 일어난 변화",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-68-advanced-11"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch02_complete",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "사십 년이 넘는 세월",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch02_night_reflection",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "물에 비친 얼굴",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch02_mystery",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "???",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch02_memory_retrieval",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "각자의 삶을 바꾼 장면",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch02_chapter_clear",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "왕의 나라",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch03_transition",
+      "chapterId": "ch04",
+      "era": "goryeo",
+      "title": "스물두 번의 겨울",
+      "learningConceptIds": [
+        "seongjong-state-system"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch03_gaegyeong",
+      "chapterId": "ch04",
+      "era": "goryeo",
+      "title": "커진 수도",
+      "learningConceptIds": [
+        "seongjong-state-system"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch03_guild_exterior",
+      "chapterId": "ch04",
+      "era": "goryeo",
+      "title": "이름을 건 상단",
+      "learningConceptIds": [
+        "seongjong-state-system"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch03_dream_realized",
+      "chapterId": "ch04",
+      "era": "goryeo",
+      "title": "결국 만들었네",
+      "learningConceptIds": [
+        "seongjong-state-system"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch03_unchanged",
+      "chapterId": "ch04",
+      "era": "goryeo",
+      "title": "흐른 사람, 멈춘 사람",
+      "learningConceptIds": [
+        "seongjong-state-system"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch03_returning_merchant",
+      "chapterId": "ch04",
+      "era": "goryeo",
+      "title": "절반만 돌아온 짐",
+      "learningConceptIds": [
+        "seongjong-state-system"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch03_provincial_problem",
+      "chapterId": "ch04",
+      "era": "goryeo",
+      "title": "왕이 닿지 않는 곳",
+      "learningConceptIds": [
+        "seongjong-state-system"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch03_policy_choice",
+      "chapterId": "ch04",
+      "era": "goryeo",
+      "title": "상단의 대응",
+      "learningConceptIds": [
+        "seongjong-state-system"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch03_hyunwoo_return",
+      "chapterId": "ch04",
+      "era": "goryeo",
+      "title": "말하면 나타나는 사람",
+      "learningConceptIds": [
+        "seongjong-state-system"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch03_seongjong_news",
+      "chapterId": "ch04",
+      "era": "goryeo",
+      "title": "새 왕의 정비",
+      "learningConceptIds": [
+        "seongjong-state-system"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch03_choe_reform",
+      "chapterId": "ch04",
+      "era": "goryeo",
+      "title": "스물여덟 가지 건의",
+      "learningConceptIds": [
+        "seongjong-state-system"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch03_twelve_mok",
+      "chapterId": "ch04",
+      "era": "goryeo",
+      "title": "지방에 내려간 관리",
+      "learningConceptIds": [
+        "seongjong-state-system"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch03_gukjagam",
+      "chapterId": "ch04",
+      "era": "goryeo",
+      "title": "나라가 사람을 가르치는 곳",
+      "learningConceptIds": [
+        "seongjong-state-system"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-75-basic-10",
+        "official-65-advanced-11",
+        "official-68-advanced-09"
+      ],
+      "count": 3,
+      "missing": 0
+    },
+    {
+      "sceneId": "ch03_policy_effect",
+      "chapterId": "ch04",
+      "era": "goryeo",
+      "title": "제도가 길에 닿을 때",
+      "learningConceptIds": [
+        "seongjong-state-system"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch03_three_friends",
+      "chapterId": "ch04",
+      "era": "goryeo",
+      "title": "세 사람의 저녁",
+      "learningConceptIds": [
+        "seongjong-state-system"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch03_history_reflection",
+      "chapterId": "ch04",
+      "era": "goryeo",
+      "title": "세 왕이 만든 흐름",
+      "learningConceptIds": [
+        "seongjong-state-system"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch03_courtyard",
+      "chapterId": "ch04",
+      "era": "goryeo",
+      "title": "처음에는 가게 하나였소",
+      "learningConceptIds": [
+        "seongjong-state-system"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch03_weakening",
+      "chapterId": "ch04",
+      "era": "goryeo",
+      "title": "느려진 하루",
+      "learningConceptIds": [
+        "seongjong-state-system"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch03_farewell",
+      "chapterId": "ch04",
+      "era": "goryeo",
+      "title": "오래 산 사람의 마지막 농담",
+      "learningConceptIds": [
+        "seongjong-state-system"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch03_death",
+      "chapterId": "ch04",
+      "era": "goryeo",
+      "title": "먼저 간 사람",
+      "learningConceptIds": [
+        "seongjong-state-system"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch03_legacy",
+      "chapterId": "ch04",
+      "era": "goryeo",
+      "title": "남겨진 것",
+      "learningConceptIds": [
+        "seongjong-state-system"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch03_doyun_soliloquy",
+      "chapterId": "ch04",
+      "era": "goryeo",
+      "title": "나쁘지 않은 장사",
+      "learningConceptIds": [
+        "seongjong-state-system"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch05_border",
+      "chapterId": "ch05",
+      "era": "goryeo",
+      "title": "닫히는 북쪽 길",
+      "learningConceptIds": [
+        "ch05-border"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-72-advanced-12"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch05_invasion",
+      "chapterId": "ch05",
+      "era": "goryeo",
+      "title": "80만이라는 외침",
+      "learningConceptIds": [
+        "ch05-invasion"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-63-advanced-14"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch05_council",
+      "chapterId": "ch05",
+      "era": "goryeo",
+      "title": "땅을 떼어 줄 것인가",
+      "learningConceptIds": [
+        "ch05-council"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-64-advanced-11"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch05_seohui",
+      "chapterId": "ch05",
+      "era": "goryeo",
+      "title": "서희가 읽은 판",
+      "learningConceptIds": [
+        "ch05-seohui"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-73-basic-11",
+        "official-67-basic-13",
+        "official-74-advanced-12"
+      ],
+      "count": 3,
+      "missing": 0
+    },
+    {
+      "sceneId": "ch05_terms",
+      "chapterId": "ch05",
+      "era": "goryeo",
+      "title": "말로 바꾼 조건",
+      "learningConceptIds": [
+        "ch05-terms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch05_withdraw",
+      "chapterId": "ch05",
+      "era": "goryeo",
+      "title": "칼이 멈춘 자리",
+      "learningConceptIds": [
+        "ch05-withdraw"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch05_six",
+      "chapterId": "ch05",
+      "era": "goryeo",
+      "title": "강동 6주",
+      "learningConceptIds": [
+        "ch05-six"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch05_builders",
+      "chapterId": "ch05",
+      "era": "goryeo",
+      "title": "지도 위의 선을 성으로",
+      "learningConceptIds": [
+        "ch05-builders"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch05_people",
+      "chapterId": "ch05",
+      "era": "goryeo",
+      "title": "국경에도 사람이 산다",
+      "learningConceptIds": [
+        "ch05-people"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch05_memory",
+      "chapterId": "ch05",
+      "era": "goryeo",
+      "title": "말이 국경이 된 날",
+      "learningConceptIds": [
+        "ch05-memory"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-77-basic-12"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch05_bridge",
+      "chapterId": "ch05",
+      "era": "goryeo",
+      "title": "평화 뒤의 균열",
+      "learningConceptIds": [
+        "ch05-bridge"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch05_after",
+      "chapterId": "ch05",
+      "era": "goryeo",
+      "title": "두 번째 문 앞에서",
+      "learningConceptIds": [
+        "ch05-after"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch05_prologue",
+      "chapterId": "ch05",
+      "era": "goryeo",
+      "title": "남겨진 시간",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch06_coup",
+      "chapterId": "ch06",
+      "era": "goryeo",
+      "title": "강조의 정변",
+      "learningConceptIds": [
+        "ch06-coup"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch06_march",
+      "chapterId": "ch06",
+      "era": "goryeo",
+      "title": "성종이 직접 온다",
+      "learningConceptIds": [
+        "ch06-march"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch06_gangjo",
+      "chapterId": "ch06",
+      "era": "goryeo",
+      "title": "강조의 패배",
+      "learningConceptIds": [
+        "ch06-gangjo"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch06_gaegyeong",
+      "chapterId": "ch06",
+      "era": "goryeo",
+      "title": "불타는 수도",
+      "learningConceptIds": [
+        "ch06-gaegyeong"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch06_burned_market",
+      "chapterId": "ch06",
+      "era": "goryeo",
+      "title": "왕이 떠난 뒤 남은 사람들",
+      "learningConceptIds": [
+        "ch06-burned_market"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch06_flight",
+      "chapterId": "ch06",
+      "era": "goryeo",
+      "title": "현종의 피난",
+      "learningConceptIds": [
+        "ch06-flight"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-65-advanced-12"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch06_yanggyu",
+      "chapterId": "ch06",
+      "era": "goryeo",
+      "title": "돌아가는 적의 뒤에서",
+      "learningConceptIds": [
+        "ch06-yanggyu"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch06_rescue",
+      "chapterId": "ch06",
+      "era": "goryeo",
+      "title": "삼만여 명의 귀환",
+      "learningConceptIds": [
+        "ch06-rescue"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch06_loss",
+      "chapterId": "ch06",
+      "era": "goryeo",
+      "title": "돌아오지 못한 장수",
+      "learningConceptIds": [
+        "ch06-loss"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch06_rebuild",
+      "chapterId": "ch06",
+      "era": "goryeo",
+      "title": "재조대장경의 시작",
+      "learningConceptIds": [
+        "ch06-rebuild"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch06_woodblocks",
+      "chapterId": "ch06",
+      "era": "goryeo",
+      "title": "한 글자씩 다시 세우다",
+      "learningConceptIds": [
+        "ch06-woodblocks"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-79-advanced-13",
+        "official-77-advanced-11"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "ch06_memory",
+      "chapterId": "ch06",
+      "era": "goryeo",
+      "title": "잿더미에서 남은 것",
+      "learningConceptIds": [
+        "ch06-memory"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch06_warning",
+      "chapterId": "ch06",
+      "era": "goryeo",
+      "title": "세 번째 불빛",
+      "learningConceptIds": [
+        "ch06-warning"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch06_after",
+      "chapterId": "ch06",
+      "era": "goryeo",
+      "title": "물길을 막는 사람들",
+      "learningConceptIds": [
+        "ch06-after"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch07_command",
+      "chapterId": "ch07",
+      "era": "goryeo",
+      "title": "강감찬의 판단",
+      "learningConceptIds": [
+        "ch07-command"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch07_heunghwa",
+      "chapterId": "ch07",
+      "era": "goryeo",
+      "title": "가죽으로 막은 물",
+      "learningConceptIds": [
+        "ch07-heunghwa"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch07_ambush",
+      "chapterId": "ch07",
+      "era": "goryeo",
+      "title": "첫 번째 타격",
+      "learningConceptIds": [
+        "ch07-ambush"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch07_gaegyeong",
+      "chapterId": "ch07",
+      "era": "goryeo",
+      "title": "비워 둔 수도 앞",
+      "learningConceptIds": [
+        "ch07-gaegyeong"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch07_return",
+      "chapterId": "ch07",
+      "era": "goryeo",
+      "title": "돌아가는 길",
+      "learningConceptIds": [
+        "ch07-return"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch07_gwiju",
+      "chapterId": "ch07",
+      "era": "goryeo",
+      "title": "바람이 바뀐 순간",
+      "learningConceptIds": [
+        "ch07-gwiju"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-69-basic-11"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch07_retreat",
+      "chapterId": "ch07",
+      "era": "goryeo",
+      "title": "승리 뒤에 열린 길",
+      "learningConceptIds": [
+        "ch07-retreat"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch07_peace",
+      "chapterId": "ch07",
+      "era": "goryeo",
+      "title": "세 나라 사이의 평화",
+      "learningConceptIds": [
+        "ch07-peace"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-66-advanced-11",
+        "official-60-basic-15"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "ch07_time",
+      "chapterId": "ch07",
+      "era": "goryeo",
+      "title": "이번에는 여진",
+      "learningConceptIds": [
+        "ch07-time"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch07_special",
+      "chapterId": "ch07",
+      "era": "goryeo",
+      "title": "별무반",
+      "learningConceptIds": [
+        "ch07-special"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-70-advanced-13",
+        "official-75-basic-17"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "ch07_nine_fortresses",
+      "chapterId": "ch07",
+      "era": "goryeo",
+      "title": "동북 9성의 무게",
+      "learningConceptIds": [
+        "ch07-nine_fortresses"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch07_nine",
+      "chapterId": "ch07",
+      "era": "goryeo",
+      "title": "동북 9성",
+      "learningConceptIds": [
+        "ch07-nine"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-69-advanced-13"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch07_return_nine",
+      "chapterId": "ch07",
+      "era": "goryeo",
+      "title": "돌려준 성",
+      "learningConceptIds": [
+        "ch07-return_nine"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch07_after",
+      "chapterId": "ch07",
+      "era": "goryeo",
+      "title": "전쟁이 멀어진 수도",
+      "learningConceptIds": [
+        "ch07-after"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch08_aristocrats",
+      "chapterId": "ch08",
+      "era": "goryeo",
+      "title": "가문이 만든 권력",
+      "learningConceptIds": [
+        "ch08-aristocrats"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch08_uicheon",
+      "chapterId": "ch08",
+      "era": "goryeo",
+      "title": "교장과 천태종",
+      "learningConceptIds": [
+        "ch08-uicheon"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch08_yi_power",
+      "chapterId": "ch08",
+      "era": "goryeo",
+      "title": "왕의 장인이자 외조부",
+      "learningConceptIds": [
+        "ch08-yi_power"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch08_rebellion",
+      "chapterId": "ch08",
+      "era": "goryeo",
+      "title": "이자겸의 난",
+      "learningConceptIds": [
+        "ch08-rebellion"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch08_palace_ashes",
+      "chapterId": "ch08",
+      "era": "goryeo",
+      "title": "혼인이 불태운 궁궐",
+      "learningConceptIds": [
+        "ch08-palace_ashes"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-73-basic-13"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch08_fall",
+      "chapterId": "ch08",
+      "era": "goryeo",
+      "title": "서로 등을 돌린 동맹",
+      "learningConceptIds": [
+        "ch08-fall"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch08_west",
+      "chapterId": "ch08",
+      "era": "goryeo",
+      "title": "서경으로 옮기자",
+      "learningConceptIds": [
+        "ch08-west"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch08_revolt",
+      "chapterId": "ch08",
+      "era": "goryeo",
+      "title": "대위국",
+      "learningConceptIds": [
+        "ch08-revolt"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch08_divided_city",
+      "chapterId": "ch08",
+      "era": "goryeo",
+      "title": "천도 논쟁이 전쟁이 되다",
+      "learningConceptIds": [
+        "ch08-divided_city"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch08_suppression",
+      "chapterId": "ch08",
+      "era": "goryeo",
+      "title": "김부식의 진압",
+      "learningConceptIds": [
+        "ch08-suppression"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch08_record",
+      "chapterId": "ch08",
+      "era": "goryeo",
+      "title": "삼국의 역사를 쓰다",
+      "learningConceptIds": [
+        "ch08-record"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-77-advanced-17"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch08_society",
+      "chapterId": "ch08",
+      "era": "goryeo",
+      "title": "화려함 아래의 틈",
+      "learningConceptIds": [
+        "ch08-society"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch08_pressure",
+      "chapterId": "ch08",
+      "era": "goryeo",
+      "title": "문신의 잔치, 무신의 분노",
+      "learningConceptIds": [
+        "ch08-pressure"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch08_memory",
+      "chapterId": "ch08",
+      "era": "goryeo",
+      "title": "무너지는 문벌의 질서",
+      "learningConceptIds": [
+        "ch08-memory"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch08_after",
+      "chapterId": "ch08",
+      "era": "goryeo",
+      "title": "칼이 먼저 말한 날",
+      "learningConceptIds": [
+        "ch08-after"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch09_coup",
+      "chapterId": "ch09",
+      "era": "goryeo",
+      "title": "무신 정변",
+      "learningConceptIds": [
+        "ch09-coup"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-76-advanced-14",
+        "official-65-advanced-14"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "ch09_puppet",
+      "chapterId": "ch09",
+      "era": "goryeo",
+      "title": "왕 위의 무신",
+      "learningConceptIds": [
+        "ch09-puppet"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch09_rulers",
+      "chapterId": "ch09",
+      "era": "goryeo",
+      "title": "정중부에서 이의민까지",
+      "learningConceptIds": [
+        "ch09-rulers"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-70-advanced-14"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch09_choe",
+      "chapterId": "ch09",
+      "era": "goryeo",
+      "title": "최충헌의 등장",
+      "learningConceptIds": [
+        "ch09-choe"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-66-advanced-14"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch09_bongsa",
+      "chapterId": "ch09",
+      "era": "goryeo",
+      "title": "봉사 10조",
+      "learningConceptIds": [
+        "ch09-bongsa"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-77-advanced-16"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch09_documents",
+      "chapterId": "ch09",
+      "era": "goryeo",
+      "title": "칼 옆의 인사 문서",
+      "learningConceptIds": [
+        "ch09-documents"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-60-basic-16"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch09_mangyi",
+      "chapterId": "ch09",
+      "era": "goryeo",
+      "title": "소의 사람들이 일어서다",
+      "learningConceptIds": [
+        "ch09-mangyi"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-71-advanced-14"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch09_revolt",
+      "chapterId": "ch09",
+      "era": "goryeo",
+      "title": "일반 군현을 요구하다",
+      "learningConceptIds": [
+        "ch09-revolt"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch09_other_revolts",
+      "chapterId": "ch09",
+      "era": "goryeo",
+      "title": "김사미와 효심",
+      "learningConceptIds": [
+        "ch09-other_revolts"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-69-advanced-14"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch09_manjeok",
+      "chapterId": "ch09",
+      "era": "goryeo",
+      "title": "왕후장상의 씨",
+      "learningConceptIds": [
+        "ch09-manjeok"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch09_jinul",
+      "chapterId": "ch09",
+      "era": "goryeo",
+      "title": "마음을 닦고 함께 일하다",
+      "learningConceptIds": [
+        "ch09-jinul"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-74-advanced-16",
+        "official-60-basic-17"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "ch09_economy",
+      "chapterId": "ch09",
+      "era": "goryeo",
+      "title": "화폐보다 곡식",
+      "learningConceptIds": [
+        "ch09-economy"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-65-advanced-16",
+        "official-72-advanced-16",
+        "official-69-basic-12"
+      ],
+      "count": 3,
+      "missing": 0
+    },
+    {
+      "sceneId": "ch09_memory",
+      "chapterId": "ch09",
+      "era": "goryeo",
+      "title": "칼 아래의 목소리",
+      "learningConceptIds": [
+        "ch09-memory"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch09_after",
+      "chapterId": "ch09",
+      "era": "goryeo",
+      "title": "몽골이 온다",
+      "learningConceptIds": [
+        "ch09-after"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch10_first",
+      "chapterId": "ch10",
+      "era": "goryeo",
+      "title": "몽골의 1차 침입",
+      "learningConceptIds": [
+        "ch10-first"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch10_cheoin",
+      "chapterId": "ch10",
+      "era": "goryeo",
+      "title": "승려가 쏜 화살",
+      "learningConceptIds": [
+        "ch10-cheoin"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch10_people",
+      "chapterId": "ch10",
+      "era": "goryeo",
+      "title": "이름 없는 방어자들",
+      "learningConceptIds": [
+        "ch10-people"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-75-basic-16"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch10_wall",
+      "chapterId": "ch10",
+      "era": "goryeo",
+      "title": "누가 성을 지켰는가",
+      "learningConceptIds": [
+        "ch10-wall"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch10_ganghwa",
+      "chapterId": "ch10",
+      "era": "goryeo",
+      "title": "바다를 건넌 조정",
+      "learningConceptIds": [
+        "ch10-ganghwa"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch10_island",
+      "chapterId": "ch10",
+      "era": "goryeo",
+      "title": "섬의 궁궐, 육지의 전쟁",
+      "learningConceptIds": [
+        "ch10-island"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-71-advanced-15"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch10_mainland",
+      "chapterId": "ch10",
+      "era": "goryeo",
+      "title": "섬 밖에서 치른 값",
+      "learningConceptIds": [
+        "ch10-mainland"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-66-advanced-13"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch10_tripitaka",
+      "chapterId": "ch10",
+      "era": "goryeo",
+      "title": "다시 새기는 경전",
+      "learningConceptIds": [
+        "ch10-tripitaka"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch10_haeinsa",
+      "chapterId": "ch10",
+      "era": "goryeo",
+      "title": "팔만여 장의 목판",
+      "learningConceptIds": [
+        "ch10-haeinsa"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch10_celadon",
+      "chapterId": "ch10",
+      "era": "goryeo",
+      "title": "상감청자의 무늬",
+      "learningConceptIds": [
+        "ch10-celadon"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-74-advanced-13",
+        "official-71-advanced-16"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "ch10_fall",
+      "chapterId": "ch10",
+      "era": "goryeo",
+      "title": "최씨 정권의 끝",
+      "learningConceptIds": [
+        "ch10-fall"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch10_return",
+      "chapterId": "ch10",
+      "era": "goryeo",
+      "title": "개경 환도",
+      "learningConceptIds": [
+        "ch10-return"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-70-advanced-15",
+        "official-72-advanced-14",
+        "official-74-advanced-14"
+      ],
+      "count": 3,
+      "missing": 0
+    },
+    {
+      "sceneId": "ch10_sambyeolcho",
+      "chapterId": "ch10",
+      "era": "goryeo",
+      "title": "삼별초의 항쟁",
+      "learningConceptIds": [
+        "ch10-sambyeolcho"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-68-advanced-15"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch10_jeju",
+      "chapterId": "ch10",
+      "era": "goryeo",
+      "title": "마지막 성",
+      "learningConceptIds": [
+        "ch10-jeju"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-69-advanced-17"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch10_memory",
+      "chapterId": "ch10",
+      "era": "goryeo",
+      "title": "섬에서 돌아온 나라",
+      "learningConceptIds": [
+        "ch10-memory"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch10_after",
+      "chapterId": "ch10",
+      "era": "goryeo",
+      "title": "왕이지만 왕이 아닌",
+      "learningConceptIds": [
+        "ch10-after"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch11_yuan",
+      "chapterId": "ch11",
+      "era": "goryeo",
+      "title": "원의 부마국",
+      "learningConceptIds": [
+        "ch11-yuan"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-76-advanced-18",
+        "official-70-advanced-16",
+        "official-68-advanced-16"
+      ],
+      "count": 3,
+      "missing": 0
+    },
+    {
+      "sceneId": "ch11_customs",
+      "chapterId": "ch11",
+      "era": "goryeo",
+      "title": "거리까지 내려온 원의 풍속",
+      "learningConceptIds": [
+        "ch11-customs"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-65-advanced-15",
+        "official-74-advanced-17"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "ch11_offices",
+      "chapterId": "ch11",
+      "era": "goryeo",
+      "title": "고려 안의 원 기구",
+      "learningConceptIds": [
+        "ch11-offices"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-72-advanced-15"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch11_land",
+      "chapterId": "ch11",
+      "era": "goryeo",
+      "title": "산과 강을 삼킨 문서",
+      "learningConceptIds": [
+        "ch11-land"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch11_culture",
+      "chapterId": "ch11",
+      "era": "goryeo",
+      "title": "쇠로 찍은 글자",
+      "learningConceptIds": [
+        "ch11-culture"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch11_gongmin",
+      "chapterId": "ch11",
+      "era": "goryeo",
+      "title": "공민왕의 선택",
+      "learningConceptIds": [
+        "ch11-gongmin"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-69-advanced-15"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch11_imunso",
+      "chapterId": "ch11",
+      "era": "goryeo",
+      "title": "정동행성 이문소를 없애다",
+      "learningConceptIds": [
+        "ch11-imunso"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch11_ssangseong",
+      "chapterId": "ch11",
+      "era": "goryeo",
+      "title": "쌍성총관부 수복",
+      "learningConceptIds": [
+        "ch11-ssangseong"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch11_north",
+      "chapterId": "ch11",
+      "era": "goryeo",
+      "title": "되찾은 땅의 사람들",
+      "learningConceptIds": [
+        "ch11-north"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch11_returning",
+      "chapterId": "ch11",
+      "era": "goryeo",
+      "title": "돌아오는 수레",
+      "learningConceptIds": [
+        "ch11-returning"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch11_sindon",
+      "chapterId": "ch11",
+      "era": "goryeo",
+      "title": "빼앗긴 땅과 사람",
+      "learningConceptIds": [
+        "ch11-sindon"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch11_reform",
+      "chapterId": "ch11",
+      "era": "goryeo",
+      "title": "문서를 다시 묻다",
+      "learningConceptIds": [
+        "ch11-reform"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-66-advanced-15"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch11_limits",
+      "chapterId": "ch11",
+      "era": "goryeo",
+      "title": "개혁을 둘러싼 벽",
+      "learningConceptIds": [
+        "ch11-limits"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch11_history",
+      "chapterId": "ch11",
+      "era": "goryeo",
+      "title": "삼국유사와 제왕운기",
+      "learningConceptIds": [
+        "ch11-history"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-60-basic-13"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch11_memory",
+      "chapterId": "ch11",
+      "era": "goryeo",
+      "title": "되찾으려 한 나라",
+      "learningConceptIds": [
+        "ch11-memory"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch11_after",
+      "chapterId": "ch11",
+      "era": "goryeo",
+      "title": "압록강 앞에서",
+      "learningConceptIds": [
+        "ch11-after"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch12_wihwa",
+      "chapterId": "ch12",
+      "era": "goryeo",
+      "title": "비가 내리는 섬",
+      "learningConceptIds": [
+        "ch12-wihwa"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-75-basic-14"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch12_supplies",
+      "chapterId": "ch12",
+      "era": "goryeo",
+      "title": "진군할 수 없는 밤",
+      "learningConceptIds": [
+        "ch12-supplies"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch12_return",
+      "chapterId": "ch12",
+      "era": "goryeo",
+      "title": "돌아온 군대",
+      "learningConceptIds": [
+        "ch12-return"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-65-advanced-18"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch12_newpower",
+      "chapterId": "ch12",
+      "era": "goryeo",
+      "title": "신진 사대부의 두 길",
+      "learningConceptIds": [
+        "ch12-newpower"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch12_land",
+      "chapterId": "ch12",
+      "era": "goryeo",
+      "title": "불타는 토지 문서",
+      "learningConceptIds": [
+        "ch12-land"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch12_gwajeon",
+      "chapterId": "ch12",
+      "era": "goryeo",
+      "title": "새 권력의 토지",
+      "learningConceptIds": [
+        "ch12-gwajeon"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch12_jikji",
+      "chapterId": "ch12",
+      "era": "goryeo",
+      "title": "직지가 남긴 증거",
+      "learningConceptIds": [
+        "ch12-jikji"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-68-advanced-17"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch12_poeun",
+      "chapterId": "ch12",
+      "era": "goryeo",
+      "title": "돌아오지 않을 사람",
+      "learningConceptIds": [
+        "ch12-poeun"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch12_bridge",
+      "chapterId": "ch12",
+      "era": "goryeo",
+      "title": "선죽교의 밤",
+      "learningConceptIds": [
+        "ch12-bridge"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch12_abdication",
+      "chapterId": "ch12",
+      "era": "goryeo",
+      "title": "마지막 왕의 자리",
+      "learningConceptIds": [
+        "ch12-abdication"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch12_registry",
+      "chapterId": "ch12",
+      "era": "goryeo",
+      "title": "고려라는 이름을 접다",
+      "learningConceptIds": [
+        "ch12-registry"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch12_founding",
+      "chapterId": "ch12",
+      "era": "goryeo",
+      "title": "조선 건국",
+      "learningConceptIds": [
+        "ch12-founding"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch12_918",
+      "chapterId": "ch12",
+      "era": "goryeo",
+      "title": "처음 눈을 뜬 자리",
+      "learningConceptIds": [
+        "ch12-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch12_faces",
+      "chapterId": "ch12",
+      "era": "goryeo",
+      "title": "늙어 간 사람들",
+      "learningConceptIds": [
+        "ch12-faces"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch12_memory",
+      "chapterId": "ch12",
+      "era": "goryeo",
+      "title": "고려 474년",
+      "learningConceptIds": [
+        "ch12-memory"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch12_teaser",
+      "chapterId": "ch12",
+      "era": "goryeo",
+      "title": "다음 시대의 문",
+      "learningConceptIds": [
+        "ch12-teaser"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch12_after",
+      "chapterId": "ch12",
+      "era": "goryeo",
+      "title": "끝과 시작 사이",
+      "learningConceptIds": [
+        "ch12-after"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "complete",
+      "chapterId": "ch02",
+      "era": "goryeo",
+      "title": "새로운 나라",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch01_exam_70_10",
+      "chapterId": "ch02",
+      "era": "goryeo",
+      "title": "후삼국의 마지막 순서",
+      "learningConceptIds": [
+        "later-three-kingdoms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch01_exam_73_10",
+      "chapterId": "ch02",
+      "era": "goryeo",
+      "title": "견훤의 선택",
+      "learningConceptIds": [
+        "later-three-kingdoms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch01_exam_74_10",
+      "chapterId": "ch02",
+      "era": "goryeo",
+      "title": "신라가 고려에 들어온 뒤",
+      "learningConceptIds": [
+        "later-three-kingdoms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch01_exam_76_10",
+      "chapterId": "ch02",
+      "era": "goryeo",
+      "title": "일리천으로 향한 흐름",
+      "learningConceptIds": [
+        "later-three-kingdoms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch01_jump_935",
+      "chapterId": "ch02",
+      "era": "goryeo",
+      "title": "익숙해진 장부",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch01_gyeonhwon",
+      "chapterId": "ch02",
+      "era": "goryeo",
+      "title": "적이 아군이 되다",
+      "learningConceptIds": [
+        "ch01-gyeonhwon"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-73-basic-10",
+        "official-66-advanced-09"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "ch01_jump_936",
+      "chapterId": "ch02",
+      "era": "goryeo",
+      "title": "마지막 전쟁 앞에서",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch01_war_choice",
+      "chapterId": "ch02",
+      "era": "goryeo",
+      "title": "평범한 사람의 몫",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch01_war_supply",
+      "chapterId": "ch02",
+      "era": "goryeo",
+      "title": "돌아올 수레의 자리",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch01_war_news",
+      "chapterId": "ch02",
+      "era": "goryeo",
+      "title": "소문과 소식 사이",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch01_war_refugees",
+      "chapterId": "ch02",
+      "era": "goryeo",
+      "title": "머물 수 있는 자리",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch01_victory",
+      "chapterId": "ch02",
+      "era": "goryeo",
+      "title": "끝났다는 소식",
+      "learningConceptIds": [
+        "ch01-illyecheon"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-70-advanced-10",
+        "official-76-advanced-10"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "ch01_unity",
+      "chapterId": "ch02",
+      "era": "goryeo",
+      "title": "후삼국 통일",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch01_sasimgwan",
+      "chapterId": "ch02",
+      "era": "goryeo",
+      "title": "호족을 묶는 두 방법",
+      "learningConceptIds": [
+        "ch01-sasimgwan"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-75-basic-12",
+        "official-65-advanced-10"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "ch01_refugee_family",
+      "chapterId": "ch02",
+      "era": "goryeo",
+      "title": "북쪽에서 온 손님",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-67-basic-11"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch01_welfare",
+      "chapterId": "ch02",
+      "era": "goryeo",
+      "title": "비어 가는 장바구니",
+      "learningConceptIds": [
+        "ch01-welfare"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch01_jump_943",
+      "chapterId": "ch02",
+      "era": "goryeo",
+      "title": "스물다섯 번째 해",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch01_memory_943",
+      "chapterId": "ch02",
+      "era": "goryeo",
+      "title": "평생 기억할 옷",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch01_taejo_death",
+      "chapterId": "ch02",
+      "era": "goryeo",
+      "title": "나라를 연 왕이 떠나다",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch01_hunyo",
+      "chapterId": "ch02",
+      "era": "goryeo",
+      "title": "열 가지 당부",
+      "learningConceptIds": [
+        "ch01-hunyo"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-69-advanced-10",
+        "official-73-advanced-11"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "ch01_guild_seed",
+      "chapterId": "ch02",
+      "era": "goryeo",
+      "title": "도윤상단이라는 이름",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch01_farewell",
+      "chapterId": "ch02",
+      "era": "goryeo",
+      "title": "하나가 된 나라",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch02_open_935",
+      "chapterId": "ch02",
+      "era": "goryeo",
+      "title": "그로부터 5년",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch00_s1",
+      "chapterId": "proto-ch00",
+      "era": "proto",
+      "title": "눈을 뜨다",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch00_s2",
+      "chapterId": "proto-ch00",
+      "era": "proto",
+      "title": "낯선 남자",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch00_s3",
+      "chapterId": "proto-ch00",
+      "era": "proto",
+      "title": "모닥불 앞에서",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch00_s4",
+      "chapterId": "proto-ch00",
+      "era": "proto",
+      "title": "동행 제안",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch00_s5",
+      "chapterId": "proto-ch00",
+      "era": "proto",
+      "title": "첫날의 끝",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch01_s1",
+      "chapterId": "proto-ch01",
+      "era": "proto",
+      "title": "부서진 수레",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch01_s2",
+      "chapterId": "proto-ch01",
+      "era": "proto",
+      "title": "남겨진 물건",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch01_s3",
+      "chapterId": "proto-ch01",
+      "era": "proto",
+      "title": "동생의 매듭",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch01_s4",
+      "chapterId": "proto-ch01",
+      "era": "proto",
+      "title": "갈라진 길",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch01_s5",
+      "chapterId": "proto-ch01",
+      "era": "proto",
+      "title": "북쪽에서 온 상인",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch01_s6",
+      "chapterId": "proto-ch01",
+      "era": "proto",
+      "title": "여러 나라의 지도",
+      "learningConceptIds": [
+        "GE-01"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch01_s7",
+      "chapterId": "proto-ch01",
+      "era": "proto",
+      "title": "비어 있는 야영지",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch01_s8",
+      "chapterId": "proto-ch01",
+      "era": "proto",
+      "title": "철에 관심을 가진 아이",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch01_s9",
+      "chapterId": "proto-ch01",
+      "era": "proto",
+      "title": "교역의 의미",
+      "learningConceptIds": [
+        "GE-02"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch01_s10",
+      "chapterId": "proto-ch01",
+      "era": "proto",
+      "title": "북쪽으로",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch02_s1",
+      "chapterId": "proto-ch02",
+      "era": "proto",
+      "title": "부여에 도착하다",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch02_s2",
+      "chapterId": "proto-ch02",
+      "era": "proto",
+      "title": "왕과 유력자",
+      "learningConceptIds": [
+        "BU-01",
+        "BU-02"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch02_s3",
+      "chapterId": "proto-ch02",
+      "era": "proto",
+      "title": "사출도의 길",
+      "learningConceptIds": [
+        "BU-02"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-60-advanced-02",
+        "official-62-advanced-02"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "proto_ch02_s4",
+      "chapterId": "proto-ch02",
+      "era": "proto",
+      "title": "영고를 준비하는 사람들",
+      "learningConceptIds": [
+        "BU-03"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch02_s5",
+      "chapterId": "proto-ch02",
+      "era": "proto",
+      "title": "제천 행사의 의미",
+      "learningConceptIds": [
+        "BU-04"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch02_s6",
+      "chapterId": "proto-ch02",
+      "era": "proto",
+      "title": "풍습을 묻다",
+      "learningConceptIds": [
+        "BU-05",
+        "BU-06",
+        "BU-07"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-64-advanced-02",
+        "official-66-basic-02"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "proto_ch02_s7",
+      "chapterId": "proto-ch02",
+      "era": "proto",
+      "title": "익숙한 매듭",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch02_s8",
+      "chapterId": "proto-ch02",
+      "era": "proto",
+      "title": "사라진 손님",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch02_s9",
+      "chapterId": "proto-ch02",
+      "era": "proto",
+      "title": "말하지 말라는 부탁",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch02_s10",
+      "chapterId": "proto-ch02",
+      "era": "proto",
+      "title": "영고의 밤",
+      "learningConceptIds": [
+        "BU-03"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch02_s11",
+      "chapterId": "proto-ch02",
+      "era": "proto",
+      "title": "부여에서 배운 것",
+      "learningConceptIds": [
+        "BU-01",
+        "BU-02",
+        "BU-03",
+        "BU-04",
+        "BU-05",
+        "BU-06",
+        "BU-07"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-61-basic-03",
+        "official-68-advanced-03",
+        "official-73-basic-02"
+      ],
+      "count": 3,
+      "missing": 0
+    },
+    {
+      "sceneId": "proto_ch02_s12",
+      "chapterId": "proto-ch02",
+      "era": "proto",
+      "title": "남겨진 그림",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch03_s1",
+      "chapterId": "proto-ch03",
+      "era": "proto",
+      "title": "고구려로 가는 길",
+      "learningConceptIds": [
+        "GO-06"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch03_s2",
+      "chapterId": "proto-ch03",
+      "era": "proto",
+      "title": "산성에 도착하다",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch03_s3",
+      "chapterId": "proto-ch03",
+      "era": "proto",
+      "title": "불가의 이야기꾼",
+      "learningConceptIds": [
+        "GO-05"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch03_s4",
+      "chapterId": "proto-ch03",
+      "era": "proto",
+      "title": "알에서 태어난 아이",
+      "learningConceptIds": [
+        "GO-05"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch03_s5",
+      "chapterId": "proto-ch03",
+      "era": "proto",
+      "title": "부여를 떠난 주몽",
+      "learningConceptIds": [
+        "GO-05"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch03_s6",
+      "chapterId": "proto-ch03",
+      "era": "proto",
+      "title": "졸본의 새로운 나라",
+      "learningConceptIds": [
+        "GO-05"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch03_s7",
+      "chapterId": "proto-ch03",
+      "era": "proto",
+      "title": "성문 앞의 검문",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch03_s8",
+      "chapterId": "proto-ch03",
+      "era": "proto",
+      "title": "단의 거짓말",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch03_s9",
+      "chapterId": "proto-ch03",
+      "era": "proto",
+      "title": "성 안의 질서",
+      "learningConceptIds": [
+        "GO-01",
+        "BU-02"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch03_s10",
+      "chapterId": "proto-ch03",
+      "era": "proto",
+      "title": "고구려의 혼인 풍습",
+      "learningConceptIds": [
+        "GO-02"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch03_s11",
+      "chapterId": "proto-ch03",
+      "era": "proto",
+      "title": "동맹의 이야기",
+      "learningConceptIds": [
+        "GO-03",
+        "BU-03"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch03_s12",
+      "chapterId": "proto-ch03",
+      "era": "proto",
+      "title": "사라진 교역단의 기록",
+      "learningConceptIds": [
+        "GE-02"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch03_s13",
+      "chapterId": "proto-ch03",
+      "era": "proto",
+      "title": "산성에서의 밤",
+      "learningConceptIds": [
+        "GO-04"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch03_s14",
+      "chapterId": "proto-ch03",
+      "era": "proto",
+      "title": "고구려를 떠나며",
+      "learningConceptIds": [
+        "GO-05",
+        "GO-01",
+        "GO-02",
+        "GO-03"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-76-advanced-02"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "proto_ch04_s1",
+      "chapterId": "proto-ch04",
+      "era": "proto",
+      "title": "바다가 보이는 길",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch04_s2",
+      "chapterId": "proto-ch04",
+      "era": "proto",
+      "title": "소하와의 만남",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch04_s3",
+      "chapterId": "proto-ch04",
+      "era": "proto",
+      "title": "바닷가 사람들의 삶",
+      "learningConceptIds": [
+        "OK-01",
+        "OK-04",
+        "GE-02"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch04_s4",
+      "chapterId": "proto-ch04",
+      "era": "proto",
+      "title": "어린 신부의 이야기",
+      "learningConceptIds": [
+        "OK-02",
+        "GO-02"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch04_s5",
+      "chapterId": "proto-ch04",
+      "era": "proto",
+      "title": "가족의 무덤",
+      "learningConceptIds": [
+        "OK-03"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-66-advanced-02",
+        "official-67-basic-02"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "proto_ch04_s6",
+      "chapterId": "proto-ch04",
+      "era": "proto",
+      "title": "기다리던 청년",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch04_s7",
+      "chapterId": "proto-ch04",
+      "era": "proto",
+      "title": "라온이 남긴 말",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch04_s8",
+      "chapterId": "proto-ch04",
+      "era": "proto",
+      "title": "형의 기억",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch04_s9",
+      "chapterId": "proto-ch04",
+      "era": "proto",
+      "title": "처음 털어놓는 후회",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch04_s10",
+      "chapterId": "proto-ch04",
+      "era": "proto",
+      "title": "남쪽을 향해",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch05_s1",
+      "chapterId": "proto-ch05",
+      "era": "proto",
+      "title": "낯선 경계",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch05_s2",
+      "chapterId": "proto-ch05",
+      "era": "proto",
+      "title": "책화",
+      "learningConceptIds": [
+        "DY-02"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch05_s3",
+      "chapterId": "proto-ch05",
+      "era": "proto",
+      "title": "책임을 지다",
+      "learningConceptIds": [
+        "DY-02"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch05_s4",
+      "chapterId": "proto-ch05",
+      "era": "proto",
+      "title": "마을의 규칙",
+      "learningConceptIds": [
+        "DY-01"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch05_s5",
+      "chapterId": "proto-ch05",
+      "era": "proto",
+      "title": "혼인 풍습",
+      "learningConceptIds": [
+        "DY-03",
+        "DY-02"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch05_s6",
+      "chapterId": "proto-ch05",
+      "era": "proto",
+      "title": "무천의 이야기",
+      "learningConceptIds": [
+        "DY-04",
+        "GO-03",
+        "BU-03"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-57-advanced-03"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "proto_ch05_s7",
+      "chapterId": "proto-ch05",
+      "era": "proto",
+      "title": "동예의 특산물",
+      "learningConceptIds": [
+        "DY-05",
+        "GE-02"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-64-basic-02",
+        "official-70-advanced-02",
+        "official-77-advanced-03"
+      ],
+      "count": 3,
+      "missing": 0
+    },
+    {
+      "sceneId": "proto_ch05_s8",
+      "chapterId": "proto-ch05",
+      "era": "proto",
+      "title": "떠나는 사람의 마음",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch05_s9",
+      "chapterId": "proto-ch05",
+      "era": "proto",
+      "title": "다시 길 위에서",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch05_s10",
+      "chapterId": "proto-ch05",
+      "era": "proto",
+      "title": "인정",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch06_s1",
+      "chapterId": "proto-ch06",
+      "era": "proto",
+      "title": "남쪽의 교역장",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch06_s2",
+      "chapterId": "proto-ch06",
+      "era": "proto",
+      "title": "삼한의 여러 소국",
+      "learningConceptIds": [
+        "SH-01"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch06_s3",
+      "chapterId": "proto-ch06",
+      "era": "proto",
+      "title": "소국의 지배자",
+      "learningConceptIds": [
+        "SH-02"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch06_s4",
+      "chapterId": "proto-ch06",
+      "era": "proto",
+      "title": "철을 만드는 사람들",
+      "learningConceptIds": [
+        "SH-06"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch06_s5",
+      "chapterId": "proto-ch06",
+      "era": "proto",
+      "title": "철의 가치",
+      "learningConceptIds": [
+        "SH-06",
+        "GE-02"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch06_s6",
+      "chapterId": "proto-ch06",
+      "era": "proto",
+      "title": "천군과 소도",
+      "learningConceptIds": [
+        "SH-03"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-73-advanced-04",
+        "official-61-advanced-02",
+        "official-77-basic-02"
+      ],
+      "count": 3,
+      "missing": 0
+    },
+    {
+      "sceneId": "proto_ch06_s7",
+      "chapterId": "proto-ch06",
+      "era": "proto",
+      "title": "제사의 의미",
+      "learningConceptIds": [
+        "SH-04",
+        "SH-05",
+        "SH-07"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-69-advanced-03",
+        "official-78-advanced-03"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "proto_ch06_s8",
+      "chapterId": "proto-ch06",
+      "era": "proto",
+      "title": "익숙한 매듭",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch06_s9",
+      "chapterId": "proto-ch06",
+      "era": "proto",
+      "title": "문 앞에서",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch06_s10",
+      "chapterId": "proto-ch06",
+      "era": "proto",
+      "title": "마침내 만나다",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch06_s11",
+      "chapterId": "proto-ch06",
+      "era": "proto",
+      "title": "형제의 갈등",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch06_s12",
+      "chapterId": "proto-ch06",
+      "era": "proto",
+      "title": "라온이 떠난 이유",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch06_s13",
+      "chapterId": "proto-ch06",
+      "era": "proto",
+      "title": "각자의 삶",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch06_s14",
+      "chapterId": "proto-ch06",
+      "era": "proto",
+      "title": "철을 가진 사람들",
+      "learningConceptIds": [
+        "SH-06"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch07_s1",
+      "chapterId": "proto-ch07",
+      "era": "proto",
+      "title": "여행의 끝",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch07_s2",
+      "chapterId": "proto-ch07",
+      "era": "proto",
+      "title": "부여와 고구려의 기억",
+      "learningConceptIds": [
+        "BU-03",
+        "GO-03",
+        "DY-04",
+        "GO-05"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-67-advanced-02"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "proto_ch07_s3",
+      "chapterId": "proto-ch07",
+      "era": "proto",
+      "title": "바다와 경계의 기억",
+      "learningConceptIds": [
+        "OK-02",
+        "OK-03",
+        "OK-04",
+        "DY-02",
+        "DY-03",
+        "DY-05"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch07_s4",
+      "chapterId": "proto-ch07",
+      "era": "proto",
+      "title": "마지막 역사 시험",
+      "learningConceptIds": [
+        "BU-01",
+        "BU-02",
+        "GO-01",
+        "OK-01",
+        "DY-01",
+        "SH-02",
+        "SH-03",
+        "SH-04",
+        "SH-06"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-57-basic-02",
+        "official-63-advanced-02",
+        "official-79-advanced-02"
+      ],
+      "count": 3,
+      "missing": 0
+    },
+    {
+      "sceneId": "proto_ch07_s5",
+      "chapterId": "proto-ch07",
+      "era": "proto",
+      "title": "돌아갈 길",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch07_s6",
+      "chapterId": "proto-ch07",
+      "era": "proto",
+      "title": "마지막 부탁",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch07_s7",
+      "chapterId": "proto-ch07",
+      "era": "proto",
+      "title": "마지막 선택",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch07_s8",
+      "chapterId": "proto-ch07",
+      "era": "proto",
+      "title": "에필로그",
+      "learningConceptIds": [
+        "goryeo-foundation-918"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C01-S01",
+      "chapterId": "THR-C01",
+      "era": "three",
+      "title": "빈 자루의 줄",
+      "learningConceptIds": [
+        "H-G3"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C01-S02",
+      "chapterId": "THR-C01",
+      "era": "three",
+      "title": "잠긴 창고",
+      "learningConceptIds": [
+        "H-G3"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C01-S03",
+      "chapterId": "THR-C01",
+      "era": "three",
+      "title": "누구의 부인가",
+      "learningConceptIds": [
+        "H-G1"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C01-S04",
+      "chapterId": "THR-C01",
+      "era": "three",
+      "title": "국상이 된 농부",
+      "learningConceptIds": [
+        "H-G2"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C01-S05",
+      "chapterId": "THR-C01",
+      "era": "three",
+      "title": "왕 앞의 계산",
+      "learningConceptIds": [
+        "H-G3"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C01-S06",
+      "chapterId": "THR-C01",
+      "era": "three",
+      "title": "첫 대여 장부",
+      "learningConceptIds": [
+        "H-G3"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-64-advanced-03",
+        "official-60-basic-03"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "THR-C01-S07",
+      "chapterId": "THR-C01",
+      "era": "three",
+      "title": "돌아온 곡식",
+      "learningConceptIds": [
+        "H-G3"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C01-S08",
+      "chapterId": "THR-C01",
+      "era": "three",
+      "title": "남겨진 이름",
+      "learningConceptIds": [
+        "H-G3"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C02-S01",
+      "chapterId": "THR-C02",
+      "era": "three",
+      "title": "낯선 검문패",
+      "learningConceptIds": [
+        "H-G4"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C02-S02",
+      "chapterId": "THR-C02",
+      "era": "three",
+      "title": "지워지는 세금표",
+      "learningConceptIds": [
+        "H-G4"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C02-S03",
+      "chapterId": "THR-C02",
+      "era": "three",
+      "title": "미천왕의 명령",
+      "learningConceptIds": [
+        "H-G4"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C02-S04",
+      "chapterId": "THR-C02",
+      "era": "three",
+      "title": "돌아갈 집의 표식",
+      "learningConceptIds": [
+        "H-G4"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C02-S05",
+      "chapterId": "THR-C02",
+      "era": "three",
+      "title": "남쪽 강의 지도",
+      "learningConceptIds": [
+        "H-G4"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C02-S06",
+      "chapterId": "THR-C02",
+      "era": "three",
+      "title": "가계도를 끊는 손",
+      "learningConceptIds": [
+        "H-G5"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C02-S07",
+      "chapterId": "THR-C02",
+      "era": "three",
+      "title": "화살 뒤의 침묵",
+      "learningConceptIds": [
+        "H-G5"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-64-basic-03"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C02-S08",
+      "chapterId": "THR-C02",
+      "era": "three",
+      "title": "다음 왕의 빈 자리",
+      "learningConceptIds": [
+        "H-G6"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-73-basic-05"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C03-S01",
+      "chapterId": "THR-C03",
+      "era": "three",
+      "title": "처음 들어온 경전",
+      "learningConceptIds": [
+        "H-G6"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C03-S02",
+      "chapterId": "THR-C03",
+      "era": "three",
+      "title": "태학의 문턱",
+      "learningConceptIds": [
+        "H-G6"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-68-advanced-08"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C03-S03",
+      "chapterId": "THR-C03",
+      "era": "three",
+      "title": "하나의 죄 두 판결",
+      "learningConceptIds": [
+        "H-G7"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-65-advanced-05",
+        "official-62-advanced-04",
+        "official-70-advanced-04"
+      ],
+      "count": 3,
+      "missing": 0
+    },
+    {
+      "sceneId": "THR-C03-S04",
+      "chapterId": "THR-C03",
+      "era": "three",
+      "title": "전쟁 사이의 왕들",
+      "learningConceptIds": [
+        "H-G8"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C03-S05",
+      "chapterId": "THR-C03",
+      "era": "three",
+      "title": "영락의 첫 장",
+      "learningConceptIds": [
+        "H-G8"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C03-S06",
+      "chapterId": "THR-C03",
+      "era": "three",
+      "title": "세 방향의 깃발",
+      "learningConceptIds": [
+        "H-G8"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C03-S07",
+      "chapterId": "THR-C03",
+      "era": "three",
+      "title": "신라의 급한 편지",
+      "learningConceptIds": [
+        "H-G9"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-61-advanced-04",
+        "official-66-advanced-04"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "THR-C03-S08",
+      "chapterId": "THR-C03",
+      "era": "three",
+      "title": "구원 뒤의 그림자",
+      "learningConceptIds": [
+        "H-G9"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-67-basic-03"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C03-S09",
+      "chapterId": "THR-C03",
+      "era": "three",
+      "title": "돌에 새긴 공적",
+      "learningConceptIds": [
+        "H-G10"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-77-advanced-13"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C03-S10",
+      "chapterId": "THR-C03",
+      "era": "three",
+      "title": "돌과 흙의 기억",
+      "learningConceptIds": [
+        "H-G14"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-77-advanced-08"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C04-S01",
+      "chapterId": "THR-C04",
+      "era": "three",
+      "title": "짐수레의 수도",
+      "learningConceptIds": [
+        "H-G11"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C04-S02",
+      "chapterId": "THR-C04",
+      "era": "three",
+      "title": "강을 따라 내려가다",
+      "learningConceptIds": [
+        "H-G11"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C04-S03",
+      "chapterId": "THR-C04",
+      "era": "three",
+      "title": "새 도읍의 빈집",
+      "learningConceptIds": [
+        "H-G11"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C04-S04",
+      "chapterId": "THR-C04",
+      "era": "three",
+      "title": "장수왕의 시선",
+      "learningConceptIds": [
+        "H-G11"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C04-S05",
+      "chapterId": "THR-C04",
+      "era": "three",
+      "title": "북위로 가는 글",
+      "learningConceptIds": [
+        "H-G12"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-61-advanced-06"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C04-S06",
+      "chapterId": "THR-C04",
+      "era": "three",
+      "title": "한성 앞의 밤",
+      "learningConceptIds": [
+        "H-G12"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C04-S07",
+      "chapterId": "THR-C04",
+      "era": "three",
+      "title": "불탄 왕도의 소식",
+      "learningConceptIds": [
+        "H-G12"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-60-advanced-05",
+        "official-75-basic-02"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "THR-C04-S08",
+      "chapterId": "THR-C04",
+      "era": "three",
+      "title": "남쪽 돌의 글자",
+      "learningConceptIds": [
+        "H-G13"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-73-basic-30"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C04-S09",
+      "chapterId": "THR-C04",
+      "era": "three",
+      "title": "누가 승리했나",
+      "learningConceptIds": [
+        "H-G12"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C04-S10",
+      "chapterId": "THR-C04",
+      "era": "three",
+      "title": "오래된 강의 다음 장",
+      "learningConceptIds": [
+        "H-G15"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C05-S01",
+      "chapterId": "THR-C05",
+      "era": "three",
+      "title": "끝없는 군량 수레",
+      "learningConceptIds": [
+        "H-G15"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C05-S02",
+      "chapterId": "THR-C05",
+      "era": "three",
+      "title": "을지문덕의 기다림",
+      "learningConceptIds": [
+        "H-G15"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C05-S03",
+      "chapterId": "THR-C05",
+      "era": "three",
+      "title": "살수 뒤의 사람들",
+      "learningConceptIds": [
+        "H-G15"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-69-basic-06"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C05-S04",
+      "chapterId": "THR-C05",
+      "era": "three",
+      "title": "길게 쌓는 돌",
+      "learningConceptIds": [
+        "H-G16"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C05-S05",
+      "chapterId": "THR-C05",
+      "era": "three",
+      "title": "뒤집힌 왕실",
+      "learningConceptIds": [
+        "H-G16"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C05-S06",
+      "chapterId": "THR-C05",
+      "era": "three",
+      "title": "당군이 온다",
+      "learningConceptIds": [
+        "H-G17"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C05-S07",
+      "chapterId": "THR-C05",
+      "era": "three",
+      "title": "안시성의 흙자루",
+      "learningConceptIds": [
+        "H-G17"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C05-S08",
+      "chapterId": "THR-C05",
+      "era": "three",
+      "title": "철수의 아침",
+      "learningConceptIds": [
+        "H-G17"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-59-advanced-04"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C05-S09",
+      "chapterId": "THR-C05",
+      "era": "three",
+      "title": "서로 다른 유언",
+      "learningConceptIds": [
+        "H-G18"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C05-S10",
+      "chapterId": "THR-C05",
+      "era": "three",
+      "title": "평양의 마지막 문",
+      "learningConceptIds": [
+        "H-G18"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C05-S11",
+      "chapterId": "THR-C05",
+      "era": "three",
+      "title": "나라 뒤에 남은 이름",
+      "learningConceptIds": [
+        "H-G18"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C05-S12",
+      "chapterId": "THR-C05",
+      "era": "three",
+      "title": "다시 한강으로",
+      "learningConceptIds": [
+        "H-B1"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C06-S01",
+      "chapterId": "THR-C06",
+      "era": "three",
+      "title": "관복을 빌린 아이",
+      "learningConceptIds": [
+        "H-B1"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C06-S02",
+      "chapterId": "THR-C06",
+      "era": "three",
+      "title": "여섯 자리의 권한",
+      "learningConceptIds": [
+        "H-B1"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C06-S03",
+      "chapterId": "THR-C06",
+      "era": "three",
+      "title": "남쪽에서 온 토기",
+      "learningConceptIds": [
+        "H-B2"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C06-S04",
+      "chapterId": "THR-C06",
+      "era": "three",
+      "title": "평양을 향한 배",
+      "learningConceptIds": [
+        "H-G5"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C06-S05",
+      "chapterId": "THR-C06",
+      "era": "three",
+      "title": "돌아온 승전보",
+      "learningConceptIds": [
+        "H-G5"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C06-S06",
+      "chapterId": "THR-C06",
+      "era": "three",
+      "title": "바다 건너의 칼",
+      "learningConceptIds": [
+        "H-B3"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-63-basic-05"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C06-S07",
+      "chapterId": "THR-C06",
+      "era": "three",
+      "title": "사신의 말은 다르다",
+      "learningConceptIds": [
+        "H-B2"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C06-S08",
+      "chapterId": "THR-C06",
+      "era": "three",
+      "title": "처음 맞는 승려",
+      "learningConceptIds": [
+        "H-B4"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C06-S09",
+      "chapterId": "THR-C06",
+      "era": "three",
+      "title": "오래된 강의 경고",
+      "learningConceptIds": [
+        "H-G12"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C07-S01",
+      "chapterId": "THR-C07",
+      "era": "three",
+      "title": "문이 닫히기 전에",
+      "learningConceptIds": [
+        "H-G12"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C07-S02",
+      "chapterId": "THR-C07",
+      "era": "three",
+      "title": "왕의 부재",
+      "learningConceptIds": [
+        "H-G12"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C07-S03",
+      "chapterId": "THR-C07",
+      "era": "three",
+      "title": "웅진을 고르는 까닭",
+      "learningConceptIds": [
+        "H-B5"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C07-S04",
+      "chapterId": "THR-C07",
+      "era": "three",
+      "title": "강가의 낯선 이웃",
+      "learningConceptIds": [
+        "H-B5"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C07-S05",
+      "chapterId": "THR-C07",
+      "era": "three",
+      "title": "끊긴 왕의 이름",
+      "learningConceptIds": [
+        "H-B5"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C07-S06",
+      "chapterId": "THR-C07",
+      "era": "three",
+      "title": "다시 모이는 장터",
+      "learningConceptIds": [
+        "H-B6"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C07-S07",
+      "chapterId": "THR-C07",
+      "era": "three",
+      "title": "혼인 문서의 무게",
+      "learningConceptIds": [
+        "H-B6"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C07-S08",
+      "chapterId": "THR-C07",
+      "era": "three",
+      "title": "믿음의 조건",
+      "learningConceptIds": [
+        "H-B6"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-70-advanced-03"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C07-S09",
+      "chapterId": "THR-C07",
+      "era": "three",
+      "title": "왕릉으로 이어진 길",
+      "learningConceptIds": [
+        "H-B7"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C08-S01",
+      "chapterId": "THR-C08",
+      "era": "three",
+      "title": "왕족의 파견장",
+      "learningConceptIds": [
+        "H-B7"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-79-advanced-03"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C08-S02",
+      "chapterId": "THR-C08",
+      "era": "three",
+      "title": "담로의 두 장부",
+      "learningConceptIds": [
+        "H-B7"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C08-S03",
+      "chapterId": "THR-C08",
+      "era": "three",
+      "title": "무덤의 이름표",
+      "learningConceptIds": [
+        "H-B8"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-77-advanced-05",
+        "official-65-advanced-03"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "THR-C08-S04",
+      "chapterId": "THR-C08",
+      "era": "three",
+      "title": "웅진의 좁은 길",
+      "learningConceptIds": [
+        "H-B9"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C08-S05",
+      "chapterId": "THR-C08",
+      "era": "three",
+      "title": "남부여의 현판",
+      "learningConceptIds": [
+        "H-B9"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-77-advanced-50"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C08-S06",
+      "chapterId": "THR-C08",
+      "era": "three",
+      "title": "옛 강으로의 귀환",
+      "learningConceptIds": [
+        "H-B10"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C08-S07",
+      "chapterId": "THR-C08",
+      "era": "three",
+      "title": "강을 빼앗긴 지도",
+      "learningConceptIds": [
+        "H-B10"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C08-S08",
+      "chapterId": "THR-C08",
+      "era": "three",
+      "title": "관산성으로 가는 편지",
+      "learningConceptIds": [
+        "H-B10"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C08-S09",
+      "chapterId": "THR-C08",
+      "era": "three",
+      "title": "돌아오지 못한 왕",
+      "learningConceptIds": [
+        "H-B10"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C08-S10",
+      "chapterId": "THR-C08",
+      "era": "three",
+      "title": "바뀐 국경의 사람",
+      "learningConceptIds": [
+        "H-B10"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-64-advanced-06"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C08-S11",
+      "chapterId": "THR-C08",
+      "era": "three",
+      "title": "기록을 건너는 불빛",
+      "learningConceptIds": [
+        "H-B11"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C09-S01",
+      "chapterId": "THR-C09",
+      "era": "three",
+      "title": "돌탑의 빈 자리",
+      "learningConceptIds": [
+        "H-B11"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-66-advanced-05",
+        "official-60-basic-05"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "THR-C09-S02",
+      "chapterId": "THR-C09",
+      "era": "three",
+      "title": "향로의 작은 산",
+      "learningConceptIds": [
+        "H-B12"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-76-advanced-04"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C09-S03",
+      "chapterId": "THR-C09",
+      "era": "three",
+      "title": "세 수도의 무덤",
+      "learningConceptIds": [
+        "H-B12"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-78-advanced-06",
+        "official-68-advanced-04"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "THR-C09-S04",
+      "chapterId": "THR-C09",
+      "era": "three",
+      "title": "바다 건너 배움",
+      "learningConceptIds": [
+        "H-B12"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C09-S05",
+      "chapterId": "THR-C09",
+      "era": "three",
+      "title": "대야성의 그림자",
+      "learningConceptIds": [
+        "H-B13"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C09-S06",
+      "chapterId": "THR-C09",
+      "era": "three",
+      "title": "황산벌 후방의 물",
+      "learningConceptIds": [
+        "H-B13"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C09-S07",
+      "chapterId": "THR-C09",
+      "era": "three",
+      "title": "사비의 닫힌 문",
+      "learningConceptIds": [
+        "H-B13"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-78-advanced-07",
+        "official-75-basic-07"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "THR-C09-S08",
+      "chapterId": "THR-C09",
+      "era": "three",
+      "title": "다시 세운 깃발",
+      "learningConceptIds": [
+        "H-B14"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C09-S09",
+      "chapterId": "THR-C09",
+      "era": "three",
+      "title": "백강의 갈라진 배",
+      "learningConceptIds": [
+        "H-B14"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-60-basic-09"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C09-S10",
+      "chapterId": "THR-C09",
+      "era": "three",
+      "title": "남은 말의 행선지",
+      "learningConceptIds": [
+        "H-B14"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C10-S01",
+      "chapterId": "THR-C10",
+      "era": "three",
+      "title": "왕의 이름을 부르다",
+      "learningConceptIds": [
+        "H-S1"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C10-S02",
+      "chapterId": "THR-C10",
+      "era": "three",
+      "title": "금관을 만드는 손",
+      "learningConceptIds": [
+        "H-S1"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C10-S03",
+      "chapterId": "THR-C10",
+      "era": "three",
+      "title": "돌을 덮는 사람들",
+      "learningConceptIds": [
+        "H-S3"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-66-advanced-03"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C10-S04",
+      "chapterId": "THR-C10",
+      "era": "three",
+      "title": "골품의 문턱",
+      "learningConceptIds": [
+        "H-S3"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C10-S05",
+      "chapterId": "THR-C10",
+      "era": "three",
+      "title": "합의가 늦는 밤",
+      "learningConceptIds": [
+        "H-S3"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-73-basic-06"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C10-S06",
+      "chapterId": "THR-C10",
+      "era": "three",
+      "title": "구원군이 남긴 물건",
+      "learningConceptIds": [
+        "H-G9"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C10-S07",
+      "chapterId": "THR-C10",
+      "era": "three",
+      "title": "백제에서 온 손",
+      "learningConceptIds": [
+        "H-S2"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C10-S08",
+      "chapterId": "THR-C10",
+      "era": "three",
+      "title": "왕계의 빈칸을 채우다",
+      "learningConceptIds": [
+        "H-S1",
+        "H-S2"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C11-S01",
+      "chapterId": "THR-C11",
+      "era": "three",
+      "title": "쟁기 앞의 소",
+      "learningConceptIds": [
+        "H-S4"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C11-S02",
+      "chapterId": "THR-C11",
+      "era": "three",
+      "title": "새 이름의 관청",
+      "learningConceptIds": [
+        "H-S4"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-60-basic-07"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C11-S03",
+      "chapterId": "THR-C11",
+      "era": "three",
+      "title": "바다를 두려워한 사공",
+      "learningConceptIds": [
+        "H-S5"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-71-advanced-06"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C11-S04",
+      "chapterId": "THR-C11",
+      "era": "three",
+      "title": "같은 잘못의 다른 벌",
+      "learningConceptIds": [
+        "H-S6"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C11-S05",
+      "chapterId": "THR-C11",
+      "era": "three",
+      "title": "왕의 뜻과 숲의 신",
+      "learningConceptIds": [
+        "H-S6"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C11-S06",
+      "chapterId": "THR-C11",
+      "era": "three",
+      "title": "이차돈의 마지막 말",
+      "learningConceptIds": [
+        "H-S6"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C11-S07",
+      "chapterId": "THR-C11",
+      "era": "three",
+      "title": "법흥왕의 결단",
+      "learningConceptIds": [
+        "H-S6"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-69-basic-04"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C11-S08",
+      "chapterId": "THR-C11",
+      "era": "three",
+      "title": "금관가야에서 온 짐",
+      "learningConceptIds": [
+        "H-S7"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C11-S09",
+      "chapterId": "THR-C11",
+      "era": "three",
+      "title": "갑옷을 벗은 왕자",
+      "learningConceptIds": [
+        "H-S7"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C11-S10",
+      "chapterId": "THR-C11",
+      "era": "three",
+      "title": "다음 왕의 길",
+      "learningConceptIds": [
+        "H-S8"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C12-S01",
+      "chapterId": "THR-C12",
+      "era": "three",
+      "title": "함께 되찾은 강",
+      "learningConceptIds": [
+        "H-B10"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C12-S02",
+      "chapterId": "THR-C12",
+      "era": "three",
+      "title": "어느 나라의 나루인가",
+      "learningConceptIds": [
+        "H-S8"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C12-S03",
+      "chapterId": "THR-C12",
+      "era": "three",
+      "title": "신주를 세운 사람",
+      "learningConceptIds": [
+        "H-S8"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C12-S04",
+      "chapterId": "THR-C12",
+      "era": "three",
+      "title": "동맹을 잃은 식탁",
+      "learningConceptIds": [
+        "H-B10",
+        "H-S8"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-76-advanced-03"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C12-S05",
+      "chapterId": "THR-C12",
+      "era": "three",
+      "title": "산길의 포상",
+      "learningConceptIds": [
+        "H-S8"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C12-S06",
+      "chapterId": "THR-C12",
+      "era": "three",
+      "title": "왕이 밟은 경계",
+      "learningConceptIds": [
+        "H-S8"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C12-S07",
+      "chapterId": "THR-C12",
+      "era": "three",
+      "title": "함께 걷는 화랑",
+      "learningConceptIds": [
+        "H-S3"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-67-basic-05"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C12-S08",
+      "chapterId": "THR-C12",
+      "era": "three",
+      "title": "가야 쪽에서 온 울음",
+      "learningConceptIds": [
+        "H-Y5"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C12-S09",
+      "chapterId": "THR-C12",
+      "era": "three",
+      "title": "새 영토의 일상",
+      "learningConceptIds": [
+        "H-S8"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-74-advanced-04"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C12-S10",
+      "chapterId": "THR-C12",
+      "era": "three",
+      "title": "높은 탑을 향한 장",
+      "learningConceptIds": [
+        "H-S9",
+        "H-S8"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C13-S01",
+      "chapterId": "THR-C13",
+      "era": "three",
+      "title": "여왕을 시험하는 말",
+      "learningConceptIds": [
+        "H-S9"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C13-S02",
+      "chapterId": "THR-C13",
+      "era": "three",
+      "title": "별을 세는 사람",
+      "learningConceptIds": [
+        "H-S9"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C13-S03",
+      "chapterId": "THR-C13",
+      "era": "three",
+      "title": "아홉 층의 기원",
+      "learningConceptIds": [
+        "H-S9"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-64-basic-06"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C13-S04",
+      "chapterId": "THR-C13",
+      "era": "three",
+      "title": "당으로 가는 사신",
+      "learningConceptIds": [
+        "H-S10"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-68-advanced-05"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C13-S05",
+      "chapterId": "THR-C13",
+      "era": "three",
+      "title": "집사부의 새 문서",
+      "learningConceptIds": [
+        "H-S10"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C13-S06",
+      "chapterId": "THR-C13",
+      "era": "three",
+      "title": "김춘추가 왕이 되다",
+      "learningConceptIds": [
+        "H-S11"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C13-S07",
+      "chapterId": "THR-C13",
+      "era": "three",
+      "title": "660년의 두 배",
+      "learningConceptIds": [
+        "H-S11"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C13-S08",
+      "chapterId": "THR-C13",
+      "era": "three",
+      "title": "668년의 빈 성",
+      "learningConceptIds": [
+        "H-G18"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-73-basic-07"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C13-S09",
+      "chapterId": "THR-C13",
+      "era": "three",
+      "title": "안승의 사람들",
+      "learningConceptIds": [
+        "H-S12"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C13-S10",
+      "chapterId": "THR-C13",
+      "era": "three",
+      "title": "매소성의 보급길",
+      "learningConceptIds": [
+        "H-S12"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-65-advanced-06",
+        "official-61-advanced-07"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "THR-C13-S11",
+      "chapterId": "THR-C13",
+      "era": "three",
+      "title": "기벌포의 파도",
+      "learningConceptIds": [
+        "H-S12"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C13-S12",
+      "chapterId": "THR-C13",
+      "era": "three",
+      "title": "통일의 바깥을 묻다",
+      "learningConceptIds": [
+        "H-S12"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-77-advanced-06",
+        "official-58-basic-07",
+        "official-67-basic-07"
+      ],
+      "count": 3,
+      "missing": 0
+    },
+    {
+      "sceneId": "THR-C14-S01",
+      "chapterId": "THR-C14",
+      "era": "three",
+      "title": "낙동강의 첫 물결",
+      "learningConceptIds": [
+        "H-Y1"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-60-basic-06"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C14-S02",
+      "chapterId": "THR-C14",
+      "era": "three",
+      "title": "여러 왕의 약속",
+      "learningConceptIds": [
+        "H-Y1"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C14-S03",
+      "chapterId": "THR-C14",
+      "era": "three",
+      "title": "뜨거운 노의 규칙",
+      "learningConceptIds": [
+        "H-Y2"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C14-S04",
+      "chapterId": "THR-C14",
+      "era": "three",
+      "title": "덩이쇠의 값",
+      "learningConceptIds": [
+        "H-Y2"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C14-S05",
+      "chapterId": "THR-C14",
+      "era": "three",
+      "title": "칼보다 먼저 만든 것",
+      "learningConceptIds": [
+        "H-Y2"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C14-S06",
+      "chapterId": "THR-C14",
+      "era": "three",
+      "title": "바다 건너의 계약",
+      "learningConceptIds": [
+        "H-Y2"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-79-advanced-04"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C14-S07",
+      "chapterId": "THR-C14",
+      "era": "three",
+      "title": "갑옷 속의 사람",
+      "learningConceptIds": [
+        "H-Y4"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-69-basic-03"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C14-S08",
+      "chapterId": "THR-C14",
+      "era": "three",
+      "title": "400년 뒤의 항구",
+      "learningConceptIds": [
+        "H-G9",
+        "H-Y2",
+        "H-Y3"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C15-S01",
+      "chapterId": "THR-C15",
+      "era": "three",
+      "title": "고령으로 간 철",
+      "learningConceptIds": [
+        "H-Y3"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C15-S02",
+      "chapterId": "THR-C15",
+      "era": "three",
+      "title": "하나가 아닌 회의",
+      "learningConceptIds": [
+        "H-Y3"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C15-S03",
+      "chapterId": "THR-C15",
+      "era": "three",
+      "title": "토기에 남은 다른 선",
+      "learningConceptIds": [
+        "H-Y4"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C15-S04",
+      "chapterId": "THR-C15",
+      "era": "three",
+      "title": "무덤 밖의 침묵",
+      "learningConceptIds": [
+        "H-Y4"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-67-basic-06"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C15-S05",
+      "chapterId": "THR-C15",
+      "era": "three",
+      "title": "열두 줄을 지키다",
+      "learningConceptIds": [
+        "H-Y4"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C15-S06",
+      "chapterId": "THR-C15",
+      "era": "three",
+      "title": "532년의 다른 길",
+      "learningConceptIds": [
+        "H-S7"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C15-S07",
+      "chapterId": "THR-C15",
+      "era": "three",
+      "title": "성문을 나서는 가족",
+      "learningConceptIds": [
+        "H-Y5"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C15-S08",
+      "chapterId": "THR-C15",
+      "era": "three",
+      "title": "정복 뒤에도 울리는 줄",
+      "learningConceptIds": [
+        "H-Y4"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C16-S01",
+      "chapterId": "THR-C16",
+      "era": "three",
+      "title": "혼례 뒤의 반란",
+      "learningConceptIds": [
+        "H-U1"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C16-S02",
+      "chapterId": "THR-C16",
+      "era": "three",
+      "title": "왕의 새 장부",
+      "learningConceptIds": [
+        "H-U1"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C16-S03",
+      "chapterId": "THR-C16",
+      "era": "three",
+      "title": "국학의 자리",
+      "learningConceptIds": [
+        "H-U2"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-75-basic-06"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C16-S04",
+      "chapterId": "THR-C16",
+      "era": "three",
+      "title": "아홉 주의 이름",
+      "learningConceptIds": [
+        "H-U3"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-74-advanced-06"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C16-S05",
+      "chapterId": "THR-C16",
+      "era": "three",
+      "title": "다섯 작은 수도",
+      "learningConceptIds": [
+        "H-U3"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C16-S06",
+      "chapterId": "THR-C16",
+      "era": "three",
+      "title": "함께 선 다른 군복",
+      "learningConceptIds": [
+        "H-U3"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C16-S07",
+      "chapterId": "THR-C16",
+      "era": "three",
+      "title": "관료전의 경계",
+      "learningConceptIds": [
+        "H-U4"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C16-S08",
+      "chapterId": "THR-C16",
+      "era": "three",
+      "title": "사라진 녹읍의 주인",
+      "learningConceptIds": [
+        "H-U4"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-76-advanced-06"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C16-S09",
+      "chapterId": "THR-C16",
+      "era": "three",
+      "title": "정전의 한 줄",
+      "learningConceptIds": [
+        "H-U5"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C16-S10",
+      "chapterId": "THR-C16",
+      "era": "three",
+      "title": "다시 돌아온 녹읍",
+      "learningConceptIds": [
+        "H-U6"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C17-S01",
+      "chapterId": "THR-C17",
+      "era": "three",
+      "title": "누구의 경전이 옳은가",
+      "learningConceptIds": [
+        "H-U7"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C17-S02",
+      "chapterId": "THR-C17",
+      "era": "three",
+      "title": "모두를 위한 노래",
+      "learningConceptIds": [
+        "H-U7"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-61-advanced-05",
+        "official-69-basic-07"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "THR-C17-S03",
+      "chapterId": "THR-C17",
+      "era": "three",
+      "title": "하나로 이어진 잎",
+      "learningConceptIds": [
+        "H-U8",
+        "H-U7"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-73-basic-04",
+        "official-76-advanced-07"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "THR-C17-S04",
+      "chapterId": "THR-C17",
+      "era": "three",
+      "title": "돌을 옮기는 어깨",
+      "learningConceptIds": [
+        "H-U9"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C17-S05",
+      "chapterId": "THR-C17",
+      "era": "three",
+      "title": "두 탑의 다른 그림자",
+      "learningConceptIds": [
+        "H-U9"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-61-basic-08",
+        "official-79-advanced-06"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "THR-C17-S06",
+      "chapterId": "THR-C17",
+      "era": "three",
+      "title": "바위 속의 얼굴",
+      "learningConceptIds": [
+        "H-U9",
+        "H-U10"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-67-basic-09"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C17-S07",
+      "chapterId": "THR-C17",
+      "era": "three",
+      "title": "돌아오지 않은 여행자",
+      "learningConceptIds": [
+        "H-U10"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C17-S08",
+      "chapterId": "THR-C17",
+      "era": "three",
+      "title": "종소리에 남은 노동",
+      "learningConceptIds": [
+        "H-U9"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C17-S09",
+      "chapterId": "THR-C17",
+      "era": "three",
+      "title": "바다로 이어진 기도",
+      "learningConceptIds": [
+        "H-U11",
+        "H-U7",
+        "H-U8"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C18-S01",
+      "chapterId": "THR-C18",
+      "era": "three",
+      "title": "항구의 사라진 아이",
+      "learningConceptIds": [
+        "H-U11"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C18-S02",
+      "chapterId": "THR-C18",
+      "era": "three",
+      "title": "청해진을 청하다",
+      "learningConceptIds": [
+        "H-U11"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C18-S03",
+      "chapterId": "THR-C18",
+      "era": "three",
+      "title": "세 나라의 물건",
+      "learningConceptIds": [
+        "H-U11"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-66-advanced-06",
+        "official-75-basic-08",
+        "official-76-advanced-05"
+      ],
+      "count": 3,
+      "missing": 0
+    },
+    {
+      "sceneId": "THR-C18-S04",
+      "chapterId": "THR-C18",
+      "era": "three",
+      "title": "파도를 기다리는 사람",
+      "learningConceptIds": [
+        "H-U11"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C18-S05",
+      "chapterId": "THR-C18",
+      "era": "three",
+      "title": "왕실로 간 제안",
+      "learningConceptIds": [
+        "H-U12",
+        "H-U13"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C18-S06",
+      "chapterId": "THR-C18",
+      "era": "three",
+      "title": "서로 다른 부고",
+      "learningConceptIds": [
+        "H-U12"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C18-S07",
+      "chapterId": "THR-C18",
+      "era": "three",
+      "title": "닫히는 청해진",
+      "learningConceptIds": [
+        "H-U12"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-74-advanced-09"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C18-S08",
+      "chapterId": "THR-C18",
+      "era": "three",
+      "title": "항로가 남긴 사람",
+      "learningConceptIds": [
+        "H-U13",
+        "H-L3"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C19-S01",
+      "chapterId": "THR-C19",
+      "era": "three",
+      "title": "822년의 깃발",
+      "learningConceptIds": [
+        "H-U14",
+        "H-U13"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-79-advanced-10",
+        "official-78-advanced-08",
+        "official-60-basic-10"
+      ],
+      "count": 3,
+      "missing": 0
+    },
+    {
+      "sceneId": "THR-C19-S02",
+      "chapterId": "THR-C19",
+      "era": "three",
+      "title": "벼슬의 마지막 칸",
+      "learningConceptIds": [
+        "H-U13"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C19-S03",
+      "chapterId": "THR-C19",
+      "era": "three",
+      "title": "스스로 지킨 성",
+      "learningConceptIds": [
+        "H-U13"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-67-basic-10"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C19-S04",
+      "chapterId": "THR-C19",
+      "era": "three",
+      "title": "참선하는 밤",
+      "learningConceptIds": [
+        "H-U13"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-77-advanced-10",
+        "official-74-advanced-08"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "THR-C19-S05",
+      "chapterId": "THR-C19",
+      "era": "three",
+      "title": "산을 읽는 두 눈",
+      "learningConceptIds": [
+        "H-U13"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C19-S06",
+      "chapterId": "THR-C19",
+      "era": "three",
+      "title": "오지 않는 세금",
+      "learningConceptIds": [
+        "H-U15"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C19-S07",
+      "chapterId": "THR-C19",
+      "era": "three",
+      "title": "원종과 애노의 목소리",
+      "learningConceptIds": [
+        "H-U15"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-61-advanced-08",
+        "official-76-advanced-09"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "THR-C19-S08",
+      "chapterId": "THR-C19",
+      "era": "three",
+      "title": "열 가지 건의의 문",
+      "learningConceptIds": [
+        "H-U15",
+        "H-U13"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-70-advanced-08",
+        "official-68-advanced-06",
+        "official-69-basic-09"
+      ],
+      "count": 3,
+      "missing": 0
+    },
+    {
+      "sceneId": "THR-C19-S09",
+      "chapterId": "THR-C19",
+      "era": "three",
+      "title": "세 갈래의 길",
+      "learningConceptIds": [
+        "H-L1",
+        "H-H1"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C20-S01",
+      "chapterId": "THR-C20",
+      "era": "three",
+      "title": "또 다른 피란길",
+      "learningConceptIds": [
+        "H-H1"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C20-S02",
+      "chapterId": "THR-C20",
+      "era": "three",
+      "title": "말이 다른 동료",
+      "learningConceptIds": [
+        "H-H2",
+        "H-H1"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C20-S03",
+      "chapterId": "THR-C20",
+      "era": "three",
+      "title": "천문령의 먼 소식",
+      "learningConceptIds": [
+        "H-H1"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C20-S04",
+      "chapterId": "THR-C20",
+      "era": "three",
+      "title": "동모산 아래의 약속",
+      "learningConceptIds": [
+        "H-H1"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C20-S05",
+      "chapterId": "THR-C20",
+      "era": "three",
+      "title": "이름을 잇는 문서",
+      "learningConceptIds": [
+        "H-H2"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C20-S06",
+      "chapterId": "THR-C20",
+      "era": "three",
+      "title": "국경을 넘는 그릇",
+      "learningConceptIds": [
+        "H-H2"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C20-S07",
+      "chapterId": "THR-C20",
+      "era": "three",
+      "title": "당이 부르는 이름",
+      "learningConceptIds": [
+        "H-H1"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C20-S08",
+      "chapterId": "THR-C20",
+      "era": "three",
+      "title": "무왕의 시대를 열다",
+      "learningConceptIds": [
+        "H-H3"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C21-S01",
+      "chapterId": "THR-C21",
+      "era": "three",
+      "title": "싸우자는 왕과 동생",
+      "learningConceptIds": [
+        "H-H3"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C21-S02",
+      "chapterId": "THR-C21",
+      "era": "three",
+      "title": "등주로 향한 돛",
+      "learningConceptIds": [
+        "H-H3"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-61-advanced-10",
+        "official-60-basic-11"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "THR-C21-S03",
+      "chapterId": "THR-C21",
+      "era": "three",
+      "title": "전쟁 뒤의 다른 외교",
+      "learningConceptIds": [
+        "H-H4"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C21-S04",
+      "chapterId": "THR-C21",
+      "era": "three",
+      "title": "세 성의 문서",
+      "learningConceptIds": [
+        "H-H4"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C21-S05",
+      "chapterId": "THR-C21",
+      "era": "three",
+      "title": "상경의 긴 길",
+      "learningConceptIds": [
+        "H-H4"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-63-advanced-08"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C21-S06",
+      "chapterId": "THR-C21",
+      "era": "three",
+      "title": "건흥의 새 지도",
+      "learningConceptIds": [
+        "H-H5"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C21-S07",
+      "chapterId": "THR-C21",
+      "era": "three",
+      "title": "다섯 경으로 가는 서신",
+      "learningConceptIds": [
+        "H-H6"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-77-advanced-07",
+        "official-79-advanced-07"
+      ],
+      "count": 2,
+      "missing": 0
+    },
+    {
+      "sceneId": "THR-C21-S08",
+      "chapterId": "THR-C21",
+      "era": "three",
+      "title": "두 공주의 무덤",
+      "learningConceptIds": [
+        "H-H7"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-67-basic-08"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C21-S09",
+      "chapterId": "THR-C21",
+      "era": "three",
+      "title": "온돌 곁의 두 부처",
+      "learningConceptIds": [
+        "H-H8",
+        "H-H7"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-66-advanced-08",
+        "official-68-advanced-10",
+        "official-78-advanced-09"
+      ],
+      "count": 3,
+      "missing": 0
+    },
+    {
+      "sceneId": "THR-C21-S10",
+      "chapterId": "THR-C21",
+      "era": "three",
+      "title": "전성기 뒤의 빈 기록",
+      "learningConceptIds": [
+        "H-H9"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-70-advanced-07",
+        "official-75-basic-09",
+        "official-69-basic-08"
+      ],
+      "count": 3,
+      "missing": 0
+    },
+    {
+      "sceneId": "THR-C22-S01",
+      "chapterId": "THR-C22",
+      "era": "three",
+      "title": "서쪽에서 온 경고",
+      "learningConceptIds": [
+        "H-H9"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C22-S02",
+      "chapterId": "THR-C22",
+      "era": "three",
+      "title": "상경의 마지막 겨울",
+      "learningConceptIds": [
+        "H-H9"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C22-S03",
+      "chapterId": "THR-C22",
+      "era": "three",
+      "title": "폭발 때문이라는 말",
+      "learningConceptIds": [
+        "H-H9"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C22-S04",
+      "chapterId": "THR-C22",
+      "era": "three",
+      "title": "어느 길로 갈 것인가",
+      "learningConceptIds": [
+        "H-H10"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C22-S05",
+      "chapterId": "THR-C22",
+      "era": "three",
+      "title": "여덟 해의 간격",
+      "learningConceptIds": [
+        "H-H10"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C22-S06",
+      "chapterId": "THR-C22",
+      "era": "three",
+      "title": "고향을 말할 권리",
+      "learningConceptIds": [
+        "H-H10"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C22-S07",
+      "chapterId": "THR-C22",
+      "era": "three",
+      "title": "왕의 귀환은 없다",
+      "learningConceptIds": [
+        "H-H9"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-73-basic-09"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C22-S08",
+      "chapterId": "THR-C22",
+      "era": "three",
+      "title": "남쪽의 900년으로",
+      "learningConceptIds": [
+        "H-L1",
+        "H-H10"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C23-S01",
+      "chapterId": "THR-C23",
+      "era": "three",
+      "title": "완산주의 새 깃발",
+      "learningConceptIds": [
+        "H-L1"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C23-S02",
+      "chapterId": "THR-C23",
+      "era": "three",
+      "title": "백성의 두 세금표",
+      "learningConceptIds": [
+        "H-L1"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C23-S03",
+      "chapterId": "THR-C23",
+      "era": "three",
+      "title": "송악의 젊은 장수",
+      "learningConceptIds": [
+        "H-L2",
+        "H-L3"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C23-S04",
+      "chapterId": "THR-C23",
+      "era": "three",
+      "title": "바뀌는 나라 이름",
+      "learningConceptIds": [
+        "H-L2"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-60-basic-12"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C23-S05",
+      "chapterId": "THR-C23",
+      "era": "three",
+      "title": "철원의 궁궐과 논",
+      "learningConceptIds": [
+        "H-L2"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-69-basic-10",
+        "official-79-advanced-09",
+        "official-77-advanced-09"
+      ],
+      "count": 3,
+      "missing": 0
+    },
+    {
+      "sceneId": "THR-C23-S06",
+      "chapterId": "THR-C23",
+      "era": "three",
+      "title": "미륵이라는 이름",
+      "learningConceptIds": [
+        "H-L2"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C23-S07",
+      "chapterId": "THR-C23",
+      "era": "three",
+      "title": "918년의 망설임",
+      "learningConceptIds": [
+        "H-L3"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C23-S08",
+      "chapterId": "THR-C23",
+      "era": "three",
+      "title": "북쪽 사람의 다음 자리",
+      "learningConceptIds": [
+        "H-H10",
+        "H-L3"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-61-advanced-11"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "THR-C23-S09",
+      "chapterId": "THR-C23",
+      "era": "three",
+      "title": "송악으로 옮긴 도읍",
+      "learningConceptIds": [
+        "H-L3"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "THR-C23-S10",
+      "chapterId": "THR-C23",
+      "era": "three",
+      "title": "덮지 않는 마지막 장",
+      "learningConceptIds": [
+        "H-L3"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-74-advanced-10"
+      ],
+      "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "ch02_exam_notice",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "새로운 시험, 현우의 꿈",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch02_exam_eve",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "잠들지 못하는 현우",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 2
+    },
+    {
+      "sceneId": "ch02_exam_day",
+      "chapterId": "ch03",
+      "era": "goryeo",
+      "title": "현우의 시험",
+      "learningConceptIds": [
+        "gwangjong-reforms"
+      ],
+      "implemented": true,
+      "officialQuestionIds": [
+        "official-71-advanced-11"
+      ],
+      "count": 1,
+      "missing": 1
+    }
+  ],
+  "deferred": [
+    {
+      "officialQuestionId": "official-73-basic-05",
+      "sceneId": "THR-C03-S02",
+      "reason": "duplicate-official-question"
+    },
+    {
+      "officialQuestionId": "official-67-basic-03",
+      "sceneId": "THR-C03-S07",
+      "reason": "duplicate-official-question"
+    },
+    {
+      "officialQuestionId": "official-66-advanced-04",
+      "sceneId": "THR-C03-S09",
+      "reason": "duplicate-official-question"
+    },
+    {
+      "officialQuestionId": "official-61-advanced-04",
+      "sceneId": "THR-C05-S04",
+      "reason": "duplicate-official-question"
+    },
+    {
+      "officialQuestionId": "official-76-advanced-03",
+      "sceneId": "THR-C08-S10",
+      "reason": "duplicate-official-question"
+    },
+    {
+      "officialQuestionId": "official-66-advanced-04",
+      "sceneId": "THR-C10-S06",
+      "reason": "duplicate-official-question"
+    },
+    {
+      "officialQuestionId": "official-71-advanced-06",
+      "sceneId": "THR-C11-S10",
+      "reason": "duplicate-official-question"
+    },
+    {
+      "officialQuestionId": "official-76-advanced-06",
+      "sceneId": "THR-C19-S02",
+      "reason": "duplicate-official-question"
+    },
+    {
+      "officialQuestionId": "official-61-basic-08",
+      "sceneId": "THR-C19-S04",
+      "reason": "duplicate-official-question"
+    },
+    {
+      "officialQuestionId": "official-69-basic-48",
+      "sceneId": "THR-C19-S08",
+      "reason": "scene-capacity-three"
+    },
+    {
+      "officialQuestionId": "official-76-advanced-05",
+      "sceneId": "THR-C21-S07",
+      "reason": "duplicate-official-question"
+    },
+    {
+      "officialQuestionId": "official-73-basic-09",
+      "sceneId": "THR-C23-S04",
+      "reason": "duplicate-official-question"
+    },
+    {
+      "officialQuestionId": "official-79-advanced-09",
+      "sceneId": "THR-C23-S10",
+      "reason": "duplicate-official-question"
+    },
+    {
+      "officialQuestionId": "official-69-basic-10",
+      "sceneId": "foundation",
+      "reason": "duplicate-official-question"
+    },
+    {
+      "officialQuestionId": "official-79-advanced-09",
+      "sceneId": "foundation",
+      "reason": "duplicate-official-question"
+    },
+    {
+      "officialQuestionId": "official-74-advanced-10",
+      "sceneId": "ch01_gyeonhwon",
+      "reason": "duplicate-official-question"
+    },
+    {
+      "officialQuestionId": "official-69-advanced-10",
+      "sceneId": "ch02_reunion_949",
+      "reason": "duplicate-official-question"
+    },
+    {
+      "officialQuestionId": "official-72-advanced-11",
+      "sceneId": "ch03_gukjagam",
+      "reason": "scene-capacity-three"
+    },
+    {
+      "officialQuestionId": "official-75-basic-10",
+      "sceneId": "ch02_exam_day",
+      "reason": "duplicate-official-question"
+    },
+    {
+      "officialQuestionId": "official-75-basic-12",
+      "sceneId": "ch02_reunion_949",
+      "reason": "duplicate-official-question"
+    },
+    {
+      "officialQuestionId": "official-76-advanced-11",
+      "reason": "no-directly-taught-scene-or-options-need-review"
+    },
+    {
+      "officialQuestionId": "official-65-advanced-10",
+      "sceneId": "ch01_sasimgwan",
+      "reason": "duplicate-official-question"
+    },
+    {
+      "officialQuestionId": "official-65-advanced-11",
+      "sceneId": "ch03_gukjagam",
+      "reason": "duplicate-official-question"
+    },
+    {
+      "officialQuestionId": "official-67-basic-10",
+      "sceneId": "ch01_sasimgwan",
+      "reason": "duplicate-official-question"
+    },
+    {
+      "officialQuestionId": "official-68-advanced-09",
+      "sceneId": "ch03_gukjagam",
+      "reason": "duplicate-official-question"
+    },
+    {
+      "officialQuestionId": "official-70-advanced-13",
+      "sceneId": "ch07_special",
+      "reason": "duplicate-official-question"
+    },
+    {
+      "officialQuestionId": "official-72-advanced-12",
+      "sceneId": "ch06_march",
+      "reason": "duplicate-official-question"
+    },
+    {
+      "officialQuestionId": "official-74-advanced-12",
+      "sceneId": "ch06_memory",
+      "reason": "duplicate-official-question"
+    },
+    {
+      "officialQuestionId": "official-79-advanced-13",
+      "sceneId": "ch06_woodblocks",
+      "reason": "duplicate-official-question"
+    },
+    {
+      "officialQuestionId": "official-65-advanced-17",
+      "reason": "no-directly-taught-scene-or-options-need-review"
+    },
+    {
+      "officialQuestionId": "official-72-advanced-17",
+      "reason": "no-directly-taught-scene-or-options-need-review"
+    },
+    {
+      "officialQuestionId": "official-60-basic-02",
+      "sceneId": "proto_ch06_s6",
+      "reason": "related-scene-already-has-three-distinct-questions"
+    }
+  ]
+}

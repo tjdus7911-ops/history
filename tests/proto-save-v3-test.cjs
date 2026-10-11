@@ -42,7 +42,7 @@ legacy.meta.eraProgress['proto-kingdoms-v3']={completed:true,progress:100,resume
 legacy.meta.eraProgress.joseon={sentinel:'other-era'};const oldStorage={schemaVersion:2,sentinel:'legacy storage'};
 const migrated=load({[sharedKey]:JSON.stringify(legacy),'lived-history-proto-kingdoms-v2':JSON.stringify(oldStorage),unrelated:'keep'});
 assert.equal(migrated.run('run().storyId'),'proto_ch00_s1');assert.equal(migrated.run('run().dialogueCursor'),1);assert.equal(migrated.run('PROTO_REVISION_ACTIONS.book().readSceneIds.length'),0);assert.equal(migrated.run("experiencedConcepts('proto-kingdoms').length"),0);
-assert.equal(migrated.run("meta().completedChapters.filter(id=>id.startsWith('proto-')).length"),0);assert.equal(migrated.run("meta().completedChapters.includes('ch02')"),true);assert.equal(migrated.run("chapterStatus('proto-ch01')"),'LOCKED');
+assert.equal(migrated.run("meta().completedChapters.filter(id=>id.startsWith('proto-')).length"),0);assert.equal(migrated.run("meta().completedChapters.includes('ch02')"),true);assert.equal(migrated.run("chapterStatus('proto-ch01')"),'CURRENT');
 assert.equal(migrated.run('PROTO_REVISION_ACTIONS.book().answeredQuestionIds.length'),2);assert.deepEqual(migrated.copy("meta().eraProgress['proto-kingdoms']"),legacy.meta.eraProgress['proto-kingdoms']);assert.deepEqual(migrated.copy('meta().eraProgress.joseon'),legacy.meta.eraProgress.joseon);
 assert.equal(migrated.storage.get('lived-history-proto-kingdoms-v2'),JSON.stringify(oldStorage));assert.equal(migrated.storage.get('unrelated'),'keep');
 assert(migrated.copy('meta().protoSaveArchives.entries').some(entry=>JSON.stringify(entry.payload).includes('"old final"')));

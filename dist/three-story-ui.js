@@ -102,7 +102,7 @@ if (globalThis.CORE_APP_READY === true && globalThis.THREE_STORY_RUNTIME?.versio
   }
   function checkpoint(source) {
     markRead(source);
-    const answered = new Set(book().answeredQuestionIds);
+    const answered = new Set(Object.keys(run().questionResults || {}).map(id => QUESTIONS.find(q=>q.questionId===id)?.officialQuestionId));
     const rows = runtime.exams.schedule.filter(row => row.quizAfterSceneId === source.sceneId && row.playMode === 'first' && !answered.has(row.officialQuestionId));
     if (!rows.length) return advanceScene(source);
     startQueue(source, rows);
@@ -286,22 +286,23 @@ if (globalThis.CORE_APP_READY === true && globalThis.THREE_STORY_RUNTIME?.versio
     const standing=(line,position)=>({...line,position});
     let cast;
     if(active.speakerType==='npc'){
-      const peer=nearby[0];
+      const peer=nearby.find(line=>line.speakerType==='player') || [...history].reverse().find(line=>line.speakerType==='player');
       cast=[standing(active,'left'),...(peer&&['player','thought'].includes(peer.speakerType)?[standing(peer,'right')]:[])];
     }else{
-      const peer=nearby.find(line=>line.speakerType==='npc')
-        ||((current.phase==='branch'||current.phase==='join')?[...history].reverse().find(line=>line.speakerType==='npc'&&lineContext(line)!=='record'):null);
+      const peer=[...history].reverse().find(line=>line.speakerType==='npc'&&lineContext(line)!=='record')
+        ||nearby.find(line=>line.speakerType==='npc');
       cast=[...(peer?[standing(peer,'left')]:[]),standing(active,'right')];
     }
     for(const presence of globalThis.THREE_STAGING?.actorPresence(source,presentation)||[]) {
       // Authored visual staging uses the same two actor slots, without adding a
       // speaker, changing a dialogue line, or moving an NPC to the player's side.
       const position=presence.speakerType==='player'?'right':'left';
+      if(active.speakerType==='npc'&&position==='left'&&presence.characterId!==active.characterId)continue;
       cast=cast.filter(line=>line.characterId!==presence.characterId&&line.position!==position);
       cast.push(standing(presence,position));
     }
     const hidden=globalThis.THREE_STAGING?.actorVisibility(source,presentation)||{};
-    cast=cast.filter(line=>!(line.position==='left'?hidden.hideNpc:hidden.hidePlayer));
+    cast=cast.filter(line=>line.characterId===active.characterId||!(line.position==='left'?hidden.hideNpc:hidden.hidePlayer));
     return cast.length?'<div class="character-stage" data-slot-mode="three-conversation" data-presentation-context="'+esc(context)+'" aria-hidden="true">'+cast.map(line=>threePortrait(line,line.characterId===active.characterId,source,presentation)).join('')+'</div>':'';
   };
   // Use the approved messenger renderer verbatim; add only stable scene metadata.
@@ -363,7 +364,7 @@ if (globalThis.CORE_APP_READY === true && globalThis.THREE_STORY_RUNTIME?.versio
     const selected = quizMode === 'story' ? run().questionAnswer : reviewAnswer;
     const done = Number.isInteger(selected), draft = meta().threeAnswerDraft?.questionId === q.questionId ? meta().threeAnswerDraft.answer : null;
     const row = currentSchedule(q), queue = run().threeCheckpoint ? run().questionQueue || [] : [], index = run().questionQueueIndex || 0;
-    return '<section class="editorial-quiz three-complete-quiz" data-three-question="'+esc(q.officialQuestionId)+'"><header class="quiz-top"><button data-nav="era" aria-label="시대 선택으로">‹</button><span>삼국 · 기록에서 기출로</span><button data-action="three-recordbook">기록책</button></header><div class="exam-source-row"><span class="official-pill">실제 한능검 기출</span><span>'+esc(q.threeExam.label)+'</span>'+(queue.length>1?'<span>'+(index+1)+' / '+queue.length+'</span>':'')+'</div><h1 class="quiz-question-title">'+esc(q.threeExam.label)+'</h1>'+officialQuestionFigure(q,q.threeExam.label)+'<p class="three-answer-instruction">원문 이미지의 보기를 읽고 번호를 골라 주세요.</p><div class="ed-answer-options three-number-options" role="group" aria-label="답 번호 선택">'+q.choices.map((_,i)=>'<button class="choice '+(done&&i===q.answer?'correct':done&&i===selected?'wrong':!done&&draft===i?'picked':'')+'" data-three-answer="'+i+'" aria-pressed="'+(!done&&draft===i)+'" '+(done?'disabled':'')+'><span class="answer-number">'+(i+1)+'</span><span>'+(i+1)+'번</span>'+(done&&i===q.answer?'<b>✓</b>':'')+'</button>').join('')+'</div>'+(done?'<div class="feedback" role="status"><h2>'+(selected===q.answer?'기억이 이어졌다.':'다시 기록해 둘 순간.')+'</h2><p><b>정답 '+(q.answer+1)+'번</b></p><p class="three-safe-explanation">'+esc(safeExplanation(q,row))+'</p>'+((q.threeExam.fullExplanationAfterSceneId&&!book().readSceneIds.includes(q.threeExam.fullExplanationAfterSceneId))?'<p class="three-delayed-explanation">아직 만나지 않은 사건의 비교 해설은 뒤의 기록을 읽은 후 열립니다.</p>':'')+'</div><button class="primary next" data-action="quiz-next">'+(queue.length>index+1?'다음 문제':run().threeCheckpoint?.kind==='review'?'기록책으로 돌아가기':'이야기 계속')+'</button>':'<button class="confirm-answer" data-action="three-submit" '+(draft===null?'disabled':'')+'>답 확인하기</button>')+'<details class="three-exam-source"><summary>문항 출처</summary><p>국사편찬위원회 한국사능력검정시험 · '+esc(q.threeExam.sourceFilename)+' · '+q.threeExam.sourcePage+'쪽</p><a href="'+esc(q.threeExam.originalQuestionPdfUrl)+'" target="_blank" rel="noopener">원본 문제지</a> · <a href="'+esc(q.threeExam.officialAnswerUrl)+'" target="_blank" rel="noopener">공식 정답표</a></details></section>';
+    return '<section class="editorial-quiz three-complete-quiz" data-three-question="'+esc(q.officialQuestionId)+'"><header class="quiz-top"><button data-nav="era" aria-label="시대 선택으로">‹</button><span>삼국 · 기록에서 기출로</span><button data-action="three-recordbook">기록책</button></header><div class="exam-source-row"><span class="official-pill">실제 한능검 기출</span><span>'+esc(q.threeExam.label)+'</span>'+(queue.length>1?'<span>'+(index+1)+' / '+queue.length+'</span>':'')+'</div><h1 class="quiz-question-title">'+esc(q.threeExam.label)+'</h1>'+officialQuestionFigure(q,q.threeExam.label)+'<p class="three-answer-instruction">원문 이미지의 보기를 읽고 번호를 골라 주세요.</p><div class="ed-answer-options three-number-options" role="group" aria-label="답 번호 선택">'+q.choices.map((_,i)=>'<button class="choice '+(done&&i===q.answer?'correct':done&&i===selected?'wrong':!done&&draft===i?'picked':'')+'" data-three-answer="'+i+'" aria-pressed="'+(!done&&draft===i)+'" '+(done?'disabled':'')+'><span class="answer-number">'+(i+1)+'</span><span>'+(i+1)+'번</span>'+(done&&i===q.answer?'<b>✓</b>':'')+'</button>').join('')+'</div>'+(done?'<div class="feedback" role="status"><h2>'+(selected===q.answer?'기억이 이어졌다.':'다시 기록해 둘 순간.')+'</h2><p><b>정답 '+(q.answer+1)+'번</b></p><p class="three-safe-explanation">'+esc(safeExplanation(q,row))+'</p>'+((q.threeExam.fullExplanationAfterSceneId&&!book().readSceneIds.includes(q.threeExam.fullExplanationAfterSceneId))?'<p class="three-delayed-explanation">아직 만나지 않은 사건의 비교 해설은 뒤의 기록을 읽은 후 열립니다.</p>':'')+'</div><button class="primary next" data-action="quiz-next">'+(queue.length>index+1?'다음 문제':run().threeCheckpoint?.kind==='review'?'기록책으로 돌아가기':'이야기 계속')+'</button>':'<button class="confirm-answer" data-action="three-submit" '+(draft===null?'disabled':'')+'>답 확인하기</button>')+'<details class="three-exam-source"><summary>문항 출처</summary><p>국사편찬위원회 한국사능력검정시험 · '+esc((q.threeExam.sourceFilename||q.sourceFile))+' · '+q.threeExam.sourcePage+'쪽</p><a href="'+esc(q.threeExam.originalQuestionPdfUrl||'https://www.historyexam.go.kr/pst/list.do?bbs=dat')+'" target="_blank" rel="noopener">원본 문제지</a> · <a href="'+esc(q.threeExam.officialAnswerUrl||'https://www.historyexam.go.kr/pst/list.do?bbs=dat')+'" target="_blank" rel="noopener">공식 정답표</a></details></section>';
   };
   function submitAnswer() {
     const q = activeQuestion(), draft = meta().threeAnswerDraft;

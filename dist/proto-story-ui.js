@@ -64,9 +64,9 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
   const point=source.protoQueue;
   if(!point||!markRead(source)||!book().readLineIds.includes(point.afterLineId))return false;
   book().answeredQuestionIds=[...new Set([...book().answeredQuestionIds,...answeredFromRecords(meta())])];
-  const unanswered=point.officialQuestionIds.filter(id=>!book().answeredQuestionIds.includes(id)).map(id=>runtime.questionByOfficialId.get(id));
+  const unanswered=point.officialQuestionIds.filter(id=>!Object.hasOwn(run().questionResults||{},runtime.questionByOfficialId.get(id)?.questionId)).map(id=>runtime.questionByOfficialId.get(id));
   if(!unanswered.length)return false;
-  if(unanswered.some(q=>!canPractice(q)))return false;
+  // Story queues are authorised by this scene; optional review still uses canPractice().
   run().pending=null;phaseState(source).phase='quiz';run().dialogueCursor=Math.min(source.dialogues.length,run().dialogueCursor);
   run().protoCheckpoint={kind:'first',sceneId:source.sceneId,afterLineId:point.afterLineId};
   run().questionQueue=unanswered.map(q=>q.questionId);run().questionQueueIndex=0;run().questionQueueResumeStoryId=source.nextStoryId;run().activeQuestionSetId=source.questionSetId;

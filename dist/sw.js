@@ -1,9 +1,13 @@
 const CACHE_PREFIX='lived-history-shell-';
-const CACHE_VERSION='2026-10-11-approved-three-ui-face-v1-61';
+const CACHE_VERSION='2026-10-11-npc-exams-free-chapters-v1';
 const CACHE_NAME=CACHE_PREFIX+CACHE_VERSION;
 const APP_SHELL=[
   '/',
   '/index.html',
+  '/chapter-access-ui.js',
+  '/story-exam-policy.js',
+  '/story-exam-runtime.js',
+  '/story-exam-ui.js',
   '/style.css',
   '/v2.css',
   '/dialogue.css',

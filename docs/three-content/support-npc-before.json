@@ -1,0 +1,4489 @@
+[
+  {
+    "id": "support-c02-s03-d990ae66a6--initial",
+    "scene": "THR-C02-S03",
+    "speaker": "장교",
+    "text": "수레 셋은 군량을 싣는다. 나머지 사람은 길가에서 기다리게 하라.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c02-s03-d990ae66a6--initial",
+    "scene": "THR-C02-S03",
+    "speaker": "장교",
+    "text": "앞선 군대에 곡식이 닿지 않으면, 어렵게 얻은 거점도 지킬 수 없소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c02-s03-d990ae66a6--initial",
+    "scene": "THR-C02-S03",
+    "speaker": "장교",
+    "text": "말은 쉽군. 병사는 모자라고 길은 길다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c02-s03-d990ae66a6--initial",
+    "scene": "THR-C02-S03",
+    "speaker": "장교",
+    "text": "미천왕의 진출로 낙랑이 물러났어도, 길과 창고를 다잡는 일은 이제 시작이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c02-s03-d990ae66a6--initial",
+    "scene": "THR-C02-S03",
+    "speaker": "장교",
+    "text": "명부를 두고 가시오. 군량 수레 뒤에 붙일 수 있는 인원을 살피겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s03-e19ee18eb8--initial",
+    "scene": "THR-C03-S03",
+    "speaker": "율령 담당관",
+    "text": "그 때문에 왕께서 나라의 법과 다스리는 규범을 정비하신 것이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s03-e19ee18eb8--initial",
+    "scene": "THR-C03-S03",
+    "speaker": "율령 담당관",
+    "text": "관청마다 제멋대로 일을 처리하면 왕의 명령도 한곳으로 닿지 않으니.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s03-e19ee18eb8--initial",
+    "scene": "THR-C03-S03",
+    "speaker": "율령 담당관",
+    "text": "신분에 따른 구별까지 모두 없어진 것은 아니오. 법을 어떻게 집행하는지도 보아야 하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s03-e19ee18eb8--initial",
+    "scene": "THR-C03-S03",
+    "speaker": "율령 담당관",
+    "text": "그래서 그 두 처분의 사유를 모두 가져오라고 한 것이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s03-e19ee18eb8--initial",
+    "scene": "THR-C03-S03",
+    "speaker": "율령 담당관",
+    "text": "그 요구도 함께 남기겠소. 법을 안다는 사람이 물을 일이니.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s05-da0dc41317--initial",
+    "scene": "THR-C03-S05",
+    "speaker": "군량 병사",
+    "text": "앞에서 싸울 자신이 없는 줄 알았는데…… 내 몫이 두 번 빠져 있었군.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s05-da0dc41317--initial",
+    "scene": "THR-C03-S05",
+    "speaker": "군량 병사",
+    "text": "다음에는 누가 뒤에서 버티는지도 생각하겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s06-d990ae66a6--initial",
+    "scene": "THR-C03-S06",
+    "speaker": "장교",
+    "text": "서쪽 깃발을 왜 남쪽 길에 꽂았소?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s06-d990ae66a6--initial",
+    "scene": "THR-C03-S06",
+    "speaker": "장교",
+    "text": "후연을 향한 움직임과 백제를 향한 움직임은 방향도, 때도 다르오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s06-d990ae66a6--initial",
+    "scene": "THR-C03-S06",
+    "speaker": "장교",
+    "text": "그렇소. 이 여러 해를 한 번의 전투로 적으면 누가 어디서 돌아오지 않았는지도 모르게 되지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s06-d990ae66a6--initial",
+    "scene": "THR-C03-S06",
+    "speaker": "장교",
+    "text": "성은 얻었다가 지켜야 하고, 길은 열었다가 다시 막히기도 하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s07-b48915ba7f--initial",
+    "scene": "THR-C03-S07",
+    "speaker": "신라 사신",
+    "text": "전갈이 닿았습니까? 왜군의 공격을 버티기가 어렵습니다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s07-b48915ba7f--initial",
+    "scene": "THR-C03-S07",
+    "speaker": "신라 사신",
+    "text": "그렇습니다. 왕께서 광개토대왕의 도움을 청하셨습니다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s07-b48915ba7f--initial",
+    "scene": "THR-C03-S07",
+    "speaker": "신라 사신",
+    "text": "나라를 구해 준 군대가 우리 일에 아무 말도 하지 않으리라 기대하기는 어렵지요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s07-b48915ba7f--initial",
+    "scene": "THR-C03-S07",
+    "speaker": "신라 사신",
+    "text": "그래도 오늘 살아야 내일의 외교도 할 수 있습니다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s07-b48915ba7f--initial",
+    "scene": "THR-C03-S07",
+    "speaker": "신라 사신",
+    "text": "고구려군의 지원은 나라의 큰일로 기록되겠지요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s07-b48915ba7f--initial",
+    "scene": "THR-C03-S07",
+    "speaker": "신라 사신",
+    "text": "제가 도움을 청하면서 조건부터 내세웠다고 들리지는 않겠습니까?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s07-b48915ba7f--initial",
+    "scene": "THR-C03-S07",
+    "speaker": "신라 사신",
+    "text": "그 말이라면 저도 함께 하겠습니다. 우리 백성의 사정은 우리가 전해야지요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s07-b48915ba7f--initial",
+    "scene": "THR-C03-S07",
+    "speaker": "신라 사신",
+    "text": "군사 이야기부터 해야 한다고 생각해 꺼내지 못했습니다. 이 종이에 있습니다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s07-b48915ba7f--initial",
+    "scene": "THR-C03-S07",
+    "speaker": "신라 사신",
+    "text": "전갈을 맡기는 것보다 더 떨리는군요. 부탁드립니다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s08-daa32019ef--initial",
+    "scene": "THR-C03-S08",
+    "speaker": "가야 상인",
+    "text": "구원받았다면서 웃는 얼굴을 보고 왔소? 이쪽도 좀 보시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s08-daa32019ef--initial",
+    "scene": "THR-C03-S08",
+    "speaker": "가야 상인",
+    "text": "쇠를 가져갈 배도, 물건을 맡긴 사람도 제때 오지 않소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s08-daa32019ef--initial",
+    "scene": "THR-C03-S08",
+    "speaker": "가야 상인",
+    "text": "신라에서는 구원이라 하겠지. 우리 항구에서는 달라진 힘의 무게를 먼저 느끼오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s08-daa32019ef--initial",
+    "scene": "THR-C03-S08",
+    "speaker": "가야 상인",
+    "text": "우리는 여기 있소. 다만 금관가야를 중심으로 다니던 길이 예전 같지는 않게 되었지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s08-daa32019ef--initial",
+    "scene": "THR-C03-S08",
+    "speaker": "가야 상인",
+    "text": "부서진 저울은 버릴까 했는데, 고쳐서 다시 써야겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s09-53ff070ba9--initial",
+    "scene": "THR-C03-S09",
+    "speaker": "석공",
+    "text": "그 획은 아직 긋지 마시오. 한 번 파내면 되돌리기 어렵소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s09-53ff070ba9--initial",
+    "scene": "THR-C03-S09",
+    "speaker": "석공",
+    "text": "비슷한 글자와 같은 글자는 다르지. 선왕의 일을 새기는 비이니 더욱 그러하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s09-53ff070ba9--initial",
+    "scene": "THR-C03-S09",
+    "speaker": "석공",
+    "text": "그렇소. 원정의 공적도, 왕릉을 지키는 일도 이 돌에 담기오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c03-s09-53ff070ba9--initial",
+    "scene": "THR-C03-S09",
+    "speaker": "석공",
+    "text": "돌에 들어갈 말을 고르는 이가 있지. 돌이 저절로 말하는 것은 아니오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c04-s02-301dc510b5--initial",
+    "scene": "THR-C04-S02",
+    "speaker": "뱃사공",
+    "text": "곡식 자루 위로 올라가지 마시오! 한쪽으로 몰리면 배가 기울어집니다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c04-s02-301dc510b5--initial",
+    "scene": "THR-C04-S02",
+    "speaker": "뱃사공",
+    "text": "도읍이 움직이는데 집 몇 채만 움직이겠소. 관청 물건과 군량도 따라오지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c04-s02-301dc510b5--initial",
+    "scene": "THR-C04-S02",
+    "speaker": "뱃사공",
+    "text": "대동강의 길과 주변 들이 있소. 남쪽으로 뻗는 데도 중요한 자리이지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c04-s02-301dc510b5--initial",
+    "scene": "THR-C04-S02",
+    "speaker": "뱃사공",
+    "text": "그럴수록 오늘처럼 한꺼번에 올라타서는 안 되오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c04-s02-301dc510b5--initial",
+    "scene": "THR-C04-S02",
+    "speaker": "뱃사공",
+    "text": "당신은 맨 마지막에 타시오. 사람 수를 끝까지 세었으니 빠지면 안 되지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c04-s10-3bcf3ac6c0--initial",
+    "scene": "THR-C04-S10",
+    "speaker": "기록관",
+    "text": "앞서 본 475년보다 137년 뒤입니다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c04-s10-3bcf3ac6c0--initial",
+    "scene": "THR-C04-S10",
+    "speaker": "기록관",
+    "text": "그렇습니다. 바깥의 큰 나라도 수나라가 되었습니다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c04-s10-3bcf3ac6c0--initial",
+    "scene": "THR-C04-S10",
+    "speaker": "기록관",
+    "text": "이번에는 수 양제의 원정 소식입니다. 아주 많은 군대와 군량이 움직입니다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c04-s10-3bcf3ac6c0--initial",
+    "scene": "THR-C04-S10",
+    "speaker": "기록관",
+    "text": "영양왕의 이름 옆에 전쟁과 기록을 함께 남겨 두십시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c05-s12-3bcf3ac6c0--initial",
+    "scene": "THR-C05-S12",
+    "speaker": "기록관",
+    "text": "이번에는 고구려와 마주했던 백제의 시작을 보려는 것입니다. 도착할 때는 260년입니다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c05-s12-3bcf3ac6c0--initial",
+    "scene": "THR-C05-S12",
+    "speaker": "기록관",
+    "text": "끝을 보았다고 처음의 사람들까지 실패한 사람으로 보지는 마십시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c05-s12-3bcf3ac6c0--initial",
+    "scene": "THR-C05-S12",
+    "speaker": "기록관",
+    "text": "자기 아이를 먹이고 새 물건을 만들고, 내일의 장을 기다렸을 겁니다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c05-s12-3bcf3ac6c0--initial",
+    "scene": "THR-C05-S12",
+    "speaker": "기록관",
+    "text": "왕의 관복을 만드는 작업장이 먼저 열립니다. 사람들이 나뉘는 색도 그곳에 있지요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s01-c3d655375e--initial",
+    "scene": "THR-C06-S01",
+    "speaker": "아이",
+    "text": "자줏빛 옷을 입으면 사람들이 제 말도 들어 줄 줄 알았어요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s01-29ae8f308f--initial",
+    "scene": "THR-C06-S01",
+    "speaker": "관리",
+    "text": "관청 옷을 입고 문을 넘으려 한 것이냐? 누가 시켰지?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s01-29ae8f308f--initial",
+    "scene": "THR-C06-S01",
+    "speaker": "관리",
+    "text": "사람을 속이려 한 것이 아니라 해도, 다시 이러면 가볍게 넘기지 않겠다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s01-c3d655375e--initial",
+    "scene": "THR-C06-S01",
+    "speaker": "아이",
+    "text": "제 말을 들어 주길 바랐어요. 다시는 남의 옷을 입지 않을게요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s01-29ae8f308f--initial",
+    "scene": "THR-C06-S01",
+    "speaker": "관리",
+    "text": "주인과 맡긴 까닭이 확인됐으니 돌아가도 좋다. 앞으로는 잘 간수하시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s02-3c0c34cf47--initial",
+    "scene": "THR-C06-S02",
+    "speaker": "백제 서리",
+    "text": "수선 대금이라면 옷을 입는 분께 먼저 가 보시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s02-3c0c34cf47--initial",
+    "scene": "THR-C06-S02",
+    "speaker": "백제 서리",
+    "text": "그럼 창고와 재정을 맡는 내두좌평 쪽이 맞겠군.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s02-3c0c34cf47--initial",
+    "scene": "THR-C06-S02",
+    "speaker": "백제 서리",
+    "text": "그렇소. 6좌평은 맡은 일이 다르고, 16관등은 관리들의 높고 낮은 자리를 가르는 체계요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s02-3c0c34cf47--initial",
+    "scene": "THR-C06-S02",
+    "speaker": "백제 서리",
+    "text": "고이왕께서 관등과 공복을 정비하고 법으로 다스릴 바탕을 세우려 하신 것도 일을 바로잡자는 뜻일 테지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s02-3c0c34cf47--initial",
+    "scene": "THR-C06-S02",
+    "speaker": "백제 서리",
+    "text": "이번에는 내가 담당자를 적어 주겠소. 솔아에게 빈손으로 돌아가게 하지는 말아야지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s03-7030f548c9--initial",
+    "scene": "THR-C06-S03",
+    "speaker": "마한 상인",
+    "text": "토기를 다 같은 곳에서 온 물건처럼 쌓지 마시오. 물길도, 만든 마을도 다르니.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s03-1e6cbaef08--initial",
+    "scene": "THR-C06-S03",
+    "speaker": "백제 관리",
+    "text": "근초고왕의 힘이 남쪽까지 뻗었소. 이제 모두 백제 물건이라 적으면 될 것이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s03-7030f548c9--initial",
+    "scene": "THR-C06-S03",
+    "speaker": "마한 상인",
+    "text": "그 말로 내가 지난 포구의 주인들이 다 없어지지는 않소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s03-7030f548c9--initial",
+    "scene": "THR-C06-S03",
+    "speaker": "마한 상인",
+    "text": "그 뒤에도 남쪽의 여러 세력이 제 고장을 다스렸지. 근초고왕의 진출이 커도 한날 모두 사라진 것은 아니오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s03-7030f548c9--initial",
+    "scene": "THR-C06-S03",
+    "speaker": "마한 상인",
+    "text": "이제야 장사 이야기가 통하는군. 저 작은 토기는 깨진 큰 항아리 속에 넣어 옮기시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s03-7030f548c9--initial",
+    "scene": "THR-C06-S03",
+    "speaker": "마한 상인",
+    "text": "배가 흔들리는 쪽에. 지도를 볼 때도 실제 흔들리는 배를 생각해 주시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s04-d990ae66a6--initial",
+    "scene": "THR-C06-S04",
+    "speaker": "장교",
+    "text": "두 배의 몫을 맞췄다. 마지막까지 숫자를 짚어 준 것은 잘한 일이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s05-77b78ad0f1--initial",
+    "scene": "THR-C06-S05",
+    "speaker": "백제 전령",
+    "text": "근초고왕의 군대가 평양성을 공격했다! 고구려 고국원왕이 전사하였다!",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s05-77b78ad0f1--initial",
+    "scene": "THR-C06-S05",
+    "speaker": "백제 전령",
+    "text": "이곳은 다르오. 고구려 왕을 쓰러뜨린 백제의 힘을 보았다며 온 거리가 들떠 있지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s05-77b78ad0f1--initial",
+    "scene": "THR-C06-S05",
+    "speaker": "백제 전령",
+    "text": "부상자와 전사자 명단이 따로 있소. 북소리가 커서 부르는 목소리가 묻히는군.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s05-77b78ad0f1--initial",
+    "scene": "THR-C06-S05",
+    "speaker": "백제 전령",
+    "text": "……전사한 보급병, 가온. 함께 온 동료가 작은 나무 빗을 맡겼소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s05-77b78ad0f1--initial",
+    "scene": "THR-C06-S05",
+    "speaker": "백제 전령",
+    "text": "승전보는 높은 곳에서 외쳤는데, 이 빗은 손에 쥐여 드리기가 어렵군.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s06-3f7aa07814--initial",
+    "scene": "THR-C06-S06",
+    "speaker": "칠지도 장인",
+    "text": "칼끝에 손을 대지 마시오. 옆으로 뻗은 가지도 날카로우니.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s06-3f7aa07814--initial",
+    "scene": "THR-C06-S06",
+    "speaker": "칠지도 장인",
+    "text": "싸움터에서 마구 휘두를 칼과는 다르오. 글자를 새기고 먼 바다를 건널 물건이지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s06-3f7aa07814--initial",
+    "scene": "THR-C06-S06",
+    "speaker": "칠지도 장인",
+    "text": "철만 잘 다뤄서 되는 일은 아니오. 양쪽이 칼의 글을 어떻게 받아들일지도 따지니.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s06-3f7aa07814--initial",
+    "scene": "THR-C06-S06",
+    "speaker": "칠지도 장인",
+    "text": "자기에게 유리하게 읽고 싶은 말은 있겠지. 한 문장을 앞뒤에서 떼어 읽으면 뜻이 달라질 수도 있소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s06-3f7aa07814--initial",
+    "scene": "THR-C06-S06",
+    "speaker": "칠지도 장인",
+    "text": "좋소. 천을 한 겹 더 대 주시오. 긴 길에 가지 하나라도 상하면 안 되니.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s07-d1df553a6c--initial",
+    "scene": "THR-C06-S07",
+    "speaker": "통역관",
+    "text": "물건 수는 맞는데, 사신들이 서로 인사를 거두는군요. 제가 말을 잘못 옮겼습니다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s07-d1df553a6c--initial",
+    "scene": "THR-C06-S07",
+    "speaker": "통역관",
+    "text": "한쪽은 배에 실을 물건의 교환을 말했는데, 다른 쪽은 나라가 바치는 예물로 들었습니다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s07-d1df553a6c--initial",
+    "scene": "THR-C06-S07",
+    "speaker": "통역관",
+    "text": "근초고왕께서는 동진과도, 왜와도 교류를 넓히셨습니다. 바다가 열릴수록 제 말 한마디도 무거워집니다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s07-d1df553a6c--initial",
+    "scene": "THR-C06-S07",
+    "speaker": "통역관",
+    "text": "고흥이 나라의 역사를 정리한 책입니다. 올해 편찬한 서기를 옮겨 적을 종이와 함께 묶어 두었지요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s07-d1df553a6c--initial",
+    "scene": "THR-C06-S07",
+    "speaker": "통역관",
+    "text": "글을 고르는 손에 달렸겠지요. 먼저 제 입에서 생긴 문제부터 풀어야겠습니다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s07-d1df553a6c--initial",
+    "scene": "THR-C06-S07",
+    "speaker": "통역관",
+    "text": "배를 띄우기 전에 목을 좀 축여야겠군요. 함께 우물까지 가시겠습니까?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s07-d1df553a6c--initial",
+    "scene": "THR-C06-S07",
+    "speaker": "통역관",
+    "text": "두 분 모두 물건과 수량을 먼저 확인하시겠답니다. 관계를 정하는 표현은 따로 논의하겠습니다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s07-d1df553a6c--initial",
+    "scene": "THR-C06-S07",
+    "speaker": "통역관",
+    "text": "좋습니다. 다음 항목으로 넘어갈 때는 당신이 신호해 주십시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s07-d1df553a6c--initial",
+    "scene": "THR-C06-S07",
+    "speaker": "통역관",
+    "text": "당장 같은 말로 고치지는 않겠다는 뜻으로 전하겠습니다. 두 분 모두 자기 표현이 남는다면 받아들이시겠답니다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c06-s07-d1df553a6c--initial",
+    "scene": "THR-C06-S07",
+    "speaker": "통역관",
+    "text": "불편한 문서가 되겠지만, 돌아가서 서로 다른 약속을 했다고 다투는 것보다는 낫겠습니다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c07-s01-c3d655375e--initial",
+    "scene": "THR-C07-S01",
+    "speaker": "아이",
+    "text": "엄마도 오는 거죠? 저 여기서 기다릴래요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c07-s01-7a46ca45c8--initial",
+    "scene": "THR-C07-S01",
+    "speaker": "수문 병사",
+    "text": "서둘러라! 짐을 건졌어도 이 문은 더 열어 둘 수 없다!",
+    "context": "scene"
+  },
+  {
+    "id": "support-c07-s02-77b78ad0f1--initial",
+    "scene": "THR-C07-S02",
+    "speaker": "백제 전령",
+    "text": "왕께서 돌아오신다는 소문을 믿고 성으로 되돌아가지 마시오!",
+    "context": "scene"
+  },
+  {
+    "id": "support-c07-s02-77b78ad0f1--initial",
+    "scene": "THR-C07-S02",
+    "speaker": "백제 전령",
+    "text": "개로왕께서는 목숨을 잃으셨소. 한성도 고구려군에 함락되었소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c07-s02-77b78ad0f1--initial",
+    "scene": "THR-C07-S02",
+    "speaker": "백제 전령",
+    "text": "돌아왔지만 무너진 한성을 구할 수는 없었소. 이제 문주왕을 중심으로 살아남은 사람들을 모아야 하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c07-s02-77b78ad0f1--initial",
+    "scene": "THR-C07-S02",
+    "speaker": "백제 전령",
+    "text": "그 마음을 막을 말이 어렵군. 그래도 닫힌 문으로 돌려보낼 수는 없소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c07-s02-77b78ad0f1--initial",
+    "scene": "THR-C07-S02",
+    "speaker": "백제 전령",
+    "text": "저 배가 떠나기 전에 알려야겠소. 목소리가 쉬었는데 같이 외쳐 주겠소?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c07-s05-fe00edadc4--initial",
+    "scene": "THR-C07-S05",
+    "speaker": "서리",
+    "text": "새 왕의 이름으로 문서를 고쳐야 하오. 아직 삼근왕의 인장을 기다리는 관서도 있군.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c07-s05-fe00edadc4--initial",
+    "scene": "THR-C07-S05",
+    "speaker": "서리",
+    "text": "477년에 문주왕께서 피살되셨소. 뒤를 이은 삼근왕도 올해 세상을 떠나셨지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c07-s05-fe00edadc4--initial",
+    "scene": "THR-C07-S05",
+    "speaker": "서리",
+    "text": "479년, 이제 동성왕의 시대요. 궁 안의 다툼이 잦으니 밖에서도 내일의 명령을 믿지 못하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c07-s05-fe00edadc4--initial",
+    "scene": "THR-C07-S05",
+    "speaker": "서리",
+    "text": "그렇다고 처음부터 기다리게 해서는 안 되겠지. 접수한 날은 그대로 두겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c07-s05-fe00edadc4--initial",
+    "scene": "THR-C07-S05",
+    "speaker": "서리",
+    "text": "여기 오래된 접수표를 묶어 주시오. 다시 흩어지면 또 처음부터 찾게 될 테니.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c07-s07-b48915ba7f--initial",
+    "scene": "THR-C07-S07",
+    "speaker": "신라 사신",
+    "text": "이 짐은 먼저 보내지 마시오. 사람과 따로 움직이면 길에서 오래 기다리게 되오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c07-s07-b48915ba7f--initial",
+    "scene": "THR-C07-S07",
+    "speaker": "신라 사신",
+    "text": "백제 동성왕께서 혼인을 청하셨소. 우리 소지왕께서 이벌찬 비지의 따님을 보내시지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c07-s07-b48915ba7f--initial",
+    "scene": "THR-C07-S07",
+    "speaker": "신라 사신",
+    "text": "그렇소. 이 혼인으로 백제와 신라의 동맹을 더 굳게 하려는 것이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c07-s07-b48915ba7f--initial",
+    "scene": "THR-C07-S07",
+    "speaker": "신라 사신",
+    "text": "혼인 문서에는 ‘동맹’ 두 글자면 되지만, 길에서는 잠자리와 수레와 호위가 모두 필요하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c07-s07-b48915ba7f--initial",
+    "scene": "THR-C07-S07",
+    "speaker": "신라 사신",
+    "text": "곧 출발할 시간이오. 저 끈이 바닥에 끌리지 않도록 한 번만 봐 주시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c07-s07-b48915ba7f--initial",
+    "scene": "THR-C07-S07",
+    "speaker": "신라 사신",
+    "text": "두 번째 나루에서 쉴 자리를 아직 못 정했소. 물이 불면 일정이 밀릴 수 있지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c07-s07-b48915ba7f--initial",
+    "scene": "THR-C07-S07",
+    "speaker": "신라 사신",
+    "text": "좋소. 문서만 챙기는 줄 알았는데, 길 위의 일까지 봐 주는군.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c07-s07-b48915ba7f--initial",
+    "scene": "THR-C07-S07",
+    "speaker": "신라 사신",
+    "text": "사절과 상인의 짐은 따로 확인해야 하오. 그래도 같은 길에서 막힐 사정은 미리 들을 수 있지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c07-s07-b48915ba7f--initial",
+    "scene": "THR-C07-S07",
+    "speaker": "신라 사신",
+    "text": "나루 책임자를 알려 주겠소. 이번 혼인으로 모든 통행이 저절로 풀리는 것은 아니라는 점도 전해 주시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s02-fad44df720--initial",
+    "scene": "THR-C08-S02",
+    "speaker": "주민",
+    "text": "비가 새서 이쪽 자루는 절반을 버렸어요. 땅에 씨를 뿌린 만큼 곡식을 거둔 것은 아닙니다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s05-3c0c34cf47--initial",
+    "scene": "THR-C08-S05",
+    "speaker": "백제 서리",
+    "text": "왼쪽을 조금 올려 주시오. ‘남부여’ 글자가 기울어졌소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s05-3c0c34cf47--initial",
+    "scene": "THR-C08-S05",
+    "speaker": "백제 서리",
+    "text": "아니오. 성왕께서 도읍을 사비로 옮기며 남부여라는 국호를 쓰시는 것이오. 부여를 잇는 뿌리를 드러내려는 뜻이지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s05-3c0c34cf47--initial",
+    "scene": "THR-C08-S05",
+    "speaker": "백제 서리",
+    "text": "됐소. 조금 전보다 반듯하군. 팔을 오래 들고 있어 힘들었겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s06-2d075668c5--initial",
+    "scene": "THR-C08-S06",
+    "speaker": "백제 병사",
+    "text": "드디어 한강으로 돌아왔소. 백제 혼자 되찾은 강이라고 크게 써 주시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s06-2d075668c5--initial",
+    "scene": "THR-C08-S06",
+    "speaker": "백제 병사",
+    "text": "그들도 싸웠지. 백제가 하류를 되찾고 신라도 상류 쪽으로 나아갔소. 그래도 우리 조상의 도읍이 있던 곳 아니오?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s06-2d075668c5--initial",
+    "scene": "THR-C08-S06",
+    "speaker": "백제 병사",
+    "text": "여기까지 오며 잃은 동료가 많소. 오늘만큼은 우리 이름을 먼저 듣고 싶군.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s06-fad44df720--initial",
+    "scene": "THR-C08-S06",
+    "speaker": "주민",
+    "text": "집터로 돌아가려는데 또 군막이 있소. 깃발은 바뀌어도 우리는 매번 집 앞에서 기다리오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s06-2d075668c5--initial",
+    "scene": "THR-C08-S06",
+    "speaker": "백제 병사",
+    "text": "해가 내려앉으니 강물은 예전 그림과 닮았군.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s06-2d075668c5--initial",
+    "scene": "THR-C08-S06",
+    "speaker": "백제 병사",
+    "text": "우리 공이 줄어드는 것 같아 마음에 걸리오. 그래도 그들이 지킨 길 덕에 우리가 건넌 것은 사실이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s06-2d075668c5--initial",
+    "scene": "THR-C08-S06",
+    "speaker": "백제 병사",
+    "text": "좋소. 여기서부터 우리 부대가 먼저 나아갔소. 그다음 고개는 신라군이 막았고.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s06-2d075668c5--initial",
+    "scene": "THR-C08-S06",
+    "speaker": "백제 병사",
+    "text": "저쪽 담장은 아직 위험하오. 돌아가는 길을 안내하겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s06-fad44df720--initial",
+    "scene": "THR-C08-S06",
+    "speaker": "주민",
+    "text": "우물이 남았는지만 보고 싶었소. 군사들의 승전보에는 우리 우물 이야기는 없더군.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s07-e60bdddb6f--initial",
+    "scene": "THR-C08-S07",
+    "speaker": "백제 사신",
+    "text": "이 지도를 거두시오. 이제 백제의 깃발을 저 강가에 그릴 수 없소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s07-e60bdddb6f--initial",
+    "scene": "THR-C08-S07",
+    "speaker": "백제 사신",
+    "text": "553년, 신라 진흥왕이 한강 유역을 차지했소. 성왕께서 크게 분노하셨지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s07-e60bdddb6f--initial",
+    "scene": "THR-C08-S07",
+    "speaker": "백제 사신",
+    "text": "누군가는 애초에 손을 잡은 일부터 잘못이었다고 하오. 사절 숙소도 냉랭해졌소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s07-e60bdddb6f--initial",
+    "scene": "THR-C08-S07",
+    "speaker": "백제 사신",
+    "text": "그때의 도움보다 지금의 손해가 더 크게 들리니 말이오. 강은 길이며 땅이고, 나라의 힘이니까.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s07-e60bdddb6f--initial",
+    "scene": "THR-C08-S07",
+    "speaker": "백제 사신",
+    "text": "옛 지도를 찢으려던 손이 멈추는군. 말아 둘 테니 끈을 주시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s09-af64c4f806--initial",
+    "scene": "THR-C08-S09",
+    "speaker": "전령",
+    "text": "성왕께서 관산성 전투에서 전사하셨소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s09-af64c4f806--initial",
+    "scene": "THR-C08-S09",
+    "speaker": "전령",
+    "text": "확인되었소. 부상자들이 들어오고 있으니 자리를 비워 주시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s09-af64c4f806--initial",
+    "scene": "THR-C08-S09",
+    "speaker": "전령",
+    "text": "병사들이 551년 함께 싸운 이야기를 꺼내면 다들 화부터 내오. 그때의 동맹도 거짓이었다고 하지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s09-af64c4f806--initial",
+    "scene": "THR-C08-S09",
+    "speaker": "전령",
+    "text": "연도를 나누어 말해도 오늘 죽은 사람이 돌아오지는 않소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s09-af64c4f806--initial",
+    "scene": "THR-C08-S09",
+    "speaker": "전령",
+    "text": "그쪽 들것을 좀 받아 주시오. 아직 의식이 있소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s10-3e518851d1--initial",
+    "scene": "THR-C08-S10",
+    "speaker": "백제 상인",
+    "text": "오늘은 돌아가시오. 당신 나라 군사 때문에 우리 손님들 얼굴을 볼 수가 없소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s10-f67f6cfcee--initial",
+    "scene": "THR-C08-S10",
+    "speaker": "신라 상인",
+    "text": "나도 장터에 나오기 무서웠소. 그래도 지난번 맡긴 그릇값은 치러야 하지 않겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s10-3e518851d1--initial",
+    "scene": "THR-C08-S10",
+    "speaker": "백제 상인",
+    "text": "돈만 받고 모른 척하라는 말이오?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s10-f67f6cfcee--initial",
+    "scene": "THR-C08-S10",
+    "speaker": "신라 상인",
+    "text": "짐은 길목에서 검사받았소. 약재를 조금 구하려 했지만 안 된다면 값만 두고 가겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s10-3e518851d1--initial",
+    "scene": "THR-C08-S10",
+    "speaker": "백제 상인",
+    "text": "병자에게 쓸 것이라면 작은 묶음은 있소. 그렇다고 예전처럼 마음 편히 웃을 수는 없소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s10-3e518851d1--initial",
+    "scene": "THR-C08-S10",
+    "speaker": "백제 상인",
+    "text": "그릇값은 맞소. 약재는 비 맞지 않게 안쪽에 넣으시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c08-s10-f67f6cfcee--initial",
+    "scene": "THR-C08-S10",
+    "speaker": "신라 상인",
+    "text": "……고맙소. 다음 장이 선다는 소식부터 서로 알 수 있으면 좋겠군.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s02-216ad00a46--initial",
+    "scene": "THR-C09-S02",
+    "speaker": "금속 장인",
+    "text": "장식이라고 들어 올렸다가 날개 하나라도 꺾으면 밤을 새워야 하오. 내려놓고 보시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s02-216ad00a46--initial",
+    "scene": "THR-C09-S02",
+    "speaker": "금속 장인",
+    "text": "밀랍을 다루는 손, 금속을 붓는 손, 마지막을 다듬는 손이 다르오. 내 손이 거쳤다고 전부 내 것은 아니지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s02-216ad00a46--initial",
+    "scene": "THR-C09-S02",
+    "speaker": "금속 장인",
+    "text": "그렇게 느낄 수 있지. 연꽃과 신선의 산을 함께 보는 사람도 있소. 눈에 보이는 것과 뜻풀이를 섞지는 마시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s02-216ad00a46--initial",
+    "scene": "THR-C09-S02",
+    "speaker": "금속 장인",
+    "text": "손님이 오래 머물면 나는 일손을 놓게 되오. 그래도 도와주겠다면 말을 더 해 주겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s02-216ad00a46--initial",
+    "scene": "THR-C09-S02",
+    "speaker": "금속 장인",
+    "text": "신선이 머무는 산으로 풀이하기도 하지. 그릇과 벽돌은 달라도, 사람이 바라는 세상이 스며드는 거요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s02-216ad00a46--initial",
+    "scene": "THR-C09-S02",
+    "speaker": "금속 장인",
+    "text": "그때까지 망가지지 않게 만드는 것이 오늘 내 일이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s02-216ad00a46--initial",
+    "scene": "THR-C09-S02",
+    "speaker": "금속 장인",
+    "text": "무딘 줄은 저쪽, 작은 송곳은 여기 두시오. 겉이 같아 보여도 닳은 정도가 다르오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s02-216ad00a46--initial",
+    "scene": "THR-C09-S02",
+    "speaker": "금속 장인",
+    "text": "잘 보는구려. 사람들이 향로만 보고 가서, 이 손이 왜 굳었는지는 묻지 않소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s02-216ad00a46--initial",
+    "scene": "THR-C09-S02",
+    "speaker": "금속 장인",
+    "text": "꼭대기에 새가 있다는 건 눈으로 알 수 있소. 그 새가 품은 뜻은 만드는 이와 보는 이의 말도 들어야 하지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s02-216ad00a46--initial",
+    "scene": "THR-C09-S02",
+    "speaker": "금속 장인",
+    "text": "좋소. 내 설명 하나로 산속의 모든 것을 다 안다고 하지는 마시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s04-5b196d2ab3--initial",
+    "scene": "THR-C09-S04",
+    "speaker": "승려",
+    "text": "책 궤짝은 위에 실어 주시오. 파도에 젖으면 글부터 번지오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s04-5b196d2ab3--initial",
+    "scene": "THR-C09-S04",
+    "speaker": "승려",
+    "text": "불교를 전하는 길에도 글이 필요하오. 백제에서 건너간 학자와 기술자들도 있었고.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s04-9d5641b871--initial",
+    "scene": "THR-C09-S04",
+    "speaker": "기술자",
+    "text": "같은 지붕도 나무와 비가 다르면 손을 바꾸어야 하오. 배운 사람이 고쳐 쓰기도 하지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s04-5b196d2ab3--initial",
+    "scene": "THR-C09-S04",
+    "speaker": "승려",
+    "text": "관륵이 역법과 천문에 관한 책을 가지고 왜로 건너간 일도 있소. 가르치는 쪽도 말을 다시 배워야 했겠지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s04-9d5641b871--initial",
+    "scene": "THR-C09-S04",
+    "speaker": "기술자",
+    "text": "이 그림도 넣어 주시오. 서산의 바위에 새긴 세 부처님의 얼굴을 보고 그린 것이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s04-9d5641b871--initial",
+    "scene": "THR-C09-S04",
+    "speaker": "기술자",
+    "text": "매듭은 제가 보겠소. 바다에서는 서로의 손을 믿어야 하니까.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s05-af64c4f806--initial",
+    "scene": "THR-C09-S05",
+    "speaker": "전령",
+    "text": "길을 비켜 주시오! 대야성에서 소식이 왔소!",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s05-af64c4f806--initial",
+    "scene": "THR-C09-S05",
+    "speaker": "전령",
+    "text": "윤충 장군이 대야성을 함락했소. 의자왕께 올릴 보고가 급하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s05-af64c4f806--initial",
+    "scene": "THR-C09-S05",
+    "speaker": "전령",
+    "text": "우리는 오래 밀렸소. 이제 되찾는다고 기뻐하는 사람도 있지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s05-af64c4f806--initial",
+    "scene": "THR-C09-S05",
+    "speaker": "전령",
+    "text": "주인 없는 갑옷도 있소. 승전이라 쓰는 종이는 가벼운데 돌아오는 짐은 늘 무겁구려.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s05-af64c4f806--initial",
+    "scene": "THR-C09-S05",
+    "speaker": "전령",
+    "text": "저 노인에게는 내가 직접 가겠소. 아들이 어느 부대였는지 알고 있소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s06-2d1905a352--initial",
+    "scene": "THR-C09-S06",
+    "speaker": "부상병",
+    "text": "물은 저쪽에 주시오. 나는 돌아오지 말았어야 했소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s06-af64c4f806--initial",
+    "scene": "THR-C09-S06",
+    "speaker": "전령",
+    "text": "황산벌이 무너졌소. 계백 장군의 군사는 김유신이 이끄는 신라군을 끝내 막지 못했소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s06-2d1905a352--initial",
+    "scene": "THR-C09-S06",
+    "speaker": "부상병",
+    "text": "나는 달아났소. 옆에서 이름을 불렀는데도… 뒤를 못 봤소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s06-af64c4f806--initial",
+    "scene": "THR-C09-S06",
+    "speaker": "전령",
+    "text": "누가 돌아왔는지부터 알아야 가족에게 소식을 전할 수 있소. 살아 있는 사람까지 전사자로 쓰고 있소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s06-2d1905a352--initial",
+    "scene": "THR-C09-S06",
+    "speaker": "부상병",
+    "text": "내 이름을 들으면 어머니가 부끄러워할 거요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s06-2d1905a352--initial",
+    "scene": "THR-C09-S06",
+    "speaker": "부상병",
+    "text": "…내 이름도 적어 주시오. 살아 돌아왔다고.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s06-2d1905a352--initial",
+    "scene": "THR-C09-S06",
+    "speaker": "부상병",
+    "text": "나도 남을 붙잡아 줄 수 있겠소?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s06-2d1905a352--initial",
+    "scene": "THR-C09-S06",
+    "speaker": "부상병",
+    "text": "알겠소. 당신, 정신 놓지 마시오. 물이 왔소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s06-2d1905a352--initial",
+    "scene": "THR-C09-S06",
+    "speaker": "부상병",
+    "text": "하진… 그리고 그 옆에 있던 이는 성도 몰랐소. 내가 죽는 것을 본 사람과 못 본 사람을 나눠 적어 주시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s06-af64c4f806--initial",
+    "scene": "THR-C09-S06",
+    "speaker": "전령",
+    "text": "그 종이는 내가 가져가겠소. 기다리는 가족에게 아는 만큼만 말하겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s07-c6067392c5--initial",
+    "scene": "THR-C09-S07",
+    "speaker": "피란민",
+    "text": "의자왕이 항복하셨다오. 당은 웅진도독부를 둔다는데, 우리는 어디의 사람이 되는 거요?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s07-c6067392c5--initial",
+    "scene": "THR-C09-S07",
+    "speaker": "피란민",
+    "text": "정림사의 오층석탑에는 소정방이 백제를 평정했다는 명문까지 새긴다오. 이제 당의 탑이라 부르게 되려나.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s08-658fa277b7--initial",
+    "scene": "THR-C09-S08",
+    "speaker": "연락관",
+    "text": "그 깃발 아래로 들어오시오. 백제를 되찾으려는 사람들이 모였소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s08-658fa277b7--initial",
+    "scene": "THR-C09-S08",
+    "speaker": "연락관",
+    "text": "복신과 도침이 군사를 모으고, 왜에 있던 왕자 부여풍을 모셔 왔소. 흑치상지처럼 따로 일어선 이들도 있었지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s08-658fa277b7--initial",
+    "scene": "THR-C09-S08",
+    "speaker": "연락관",
+    "text": "나라를 되찾자는 뜻은 가까워도 서로 믿는 사람은 다르오. 말이 어긋나면 군량부터 막히오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s08-658fa277b7--initial",
+    "scene": "THR-C09-S08",
+    "speaker": "연락관",
+    "text": "도침은 내부 다툼으로 죽었소. 적만 바라보면 될 줄 알았는데… 안에서도 편지가 돌아오지 않소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s08-658fa277b7--initial",
+    "scene": "THR-C09-S08",
+    "speaker": "연락관",
+    "text": "수량을 다시 세겠소. 군영의 이름은 달라도 굶는 사람은 알아볼 수 있으니.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s09-44688ad879--initial",
+    "scene": "THR-C09-S09",
+    "speaker": "사공",
+    "text": "그 짐을 다 실으면 배가 기울어요! 사람도 더는 못 탑니다!",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s09-af64c4f806--initial",
+    "scene": "THR-C09-S09",
+    "speaker": "전령",
+    "text": "백강에서 왜의 지원군과 부흥군이 패했소. 강 안쪽으로 다시 들어갈 수는 없소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s09-44688ad879--initial",
+    "scene": "THR-C09-S09",
+    "speaker": "사공",
+    "text": "물을 싣는 쪽도 비켜 주시오. 강물은 있어도 마실 물이 모자라오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s09-44688ad879--initial",
+    "scene": "THR-C09-S09",
+    "speaker": "사공",
+    "text": "앞배를 아직 붙잡을 수 있소. 이 가족이 함께 탈 수 있는지 내가 묻겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c09-s09-44688ad879--initial",
+    "scene": "THR-C09-S09",
+    "speaker": "사공",
+    "text": "컵이 하나뿐인데 다들 기다려 주겠소?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s02-216ad00a46--initial",
+    "scene": "THR-C10-S02",
+    "speaker": "금속 장인",
+    "text": "머리 위에 올려 보지 마시오. 다듬기도 전에 흠이 나면 내가 책임져야 하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s02-216ad00a46--initial",
+    "scene": "THR-C10-S02",
+    "speaker": "금속 장인",
+    "text": "당신 눈만 그런 것이 아니오. 높은 이가 나타났다는 걸 먼 곳에서도 알게 만들지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s02-216ad00a46--initial",
+    "scene": "THR-C10-S02",
+    "speaker": "금속 장인",
+    "text": "붙이고 달고, 흔들어 보기도 하지. 내게 맞추는 물건이었다면 더 쉬웠을 거요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s02-216ad00a46--initial",
+    "scene": "THR-C10-S02",
+    "speaker": "금속 장인",
+    "text": "이 손이 만들 수 있는 것과 이 몸이 가져도 되는 것은 다르오. 금보다 먼저 정해진 일이 있지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s02-216ad00a46--initial",
+    "scene": "THR-C10-S02",
+    "speaker": "금속 장인",
+    "text": "그러시오. 적어도 떨어진 작은 조각을 찾기는 쉬워지겠구려.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s03-7fcf6259bb--initial",
+    "scene": "THR-C10-S03",
+    "speaker": "감독",
+    "text": "길을 바꾸느라 작업을 늦출 셈이오?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s05-658fa277b7--initial",
+    "scene": "THR-C10-S05",
+    "speaker": "연락관",
+    "text": "아직 안에서 의견이 모이지 않았소. 조금 더 기다리시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s05-658fa277b7--initial",
+    "scene": "THR-C10-S05",
+    "speaker": "연락관",
+    "text": "귀족들이 화백에서 논의하고 있소. 중요한 일은 뜻을 모아야 하지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s05-658fa277b7--initial",
+    "scene": "THR-C10-S05",
+    "speaker": "연락관",
+    "text": "상대등이 회의를 이끌지만, 다른 귀족들의 뜻을 마음대로 없앨 수는 없소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s05-658fa277b7--initial",
+    "scene": "THR-C10-S05",
+    "speaker": "연락관",
+    "text": "누가 얼마나 기다렸는지 안에 전한 이는 없었소. 다들 이미 아는 줄 알았지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s05-658fa277b7--initial",
+    "scene": "THR-C10-S05",
+    "speaker": "연락관",
+    "text": "잠깐만 기다리시오. 그 사정부터 들어가 전하겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s06-ff55715422--initial",
+    "scene": "THR-C10-S06",
+    "speaker": "상인",
+    "text": "그릇 바닥을 가리시오. 그 글자 보고 시비 거는 사람이 있소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s06-ff55715422--initial",
+    "scene": "THR-C10-S06",
+    "speaker": "상인",
+    "text": "왜의 군사가 밀려왔을 때 고구려 군사가 왔소. 광개토왕이 보낸 구원군 덕을 본 사람도 많지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s06-ff55715422--initial",
+    "scene": "THR-C10-S06",
+    "speaker": "상인",
+    "text": "구해 준 힘이 돌아가고 나서도 우리 곁에 남는다면, 마냥 고마워할 수만 있겠소?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s06-ff55715422--initial",
+    "scene": "THR-C10-S06",
+    "speaker": "상인",
+    "text": "그래서 이 그릇을 버리지 못했소. 물건 하나인데 보려는 말은 사람마다 다르오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s06-ff55715422--initial",
+    "scene": "THR-C10-S06",
+    "speaker": "상인",
+    "text": "그릇은 다시 쓰면 되오. 사람들도 그렇게 단순하면 좋으련만.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s07-b48915ba7f--initial",
+    "scene": "THR-C10-S07",
+    "speaker": "신라 사신",
+    "text": "문 앞에서 오래 서 있지 마시오. 안에서 우리 표정부터 살피고 있소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s07-b48915ba7f--initial",
+    "scene": "THR-C10-S07",
+    "speaker": "신라 사신",
+    "text": "백제와 늘 사이가 좋았던 것은 아니오. 그래도 고구려의 힘을 우리 혼자 막기에는 버겁소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s07-b48915ba7f--initial",
+    "scene": "THR-C10-S07",
+    "speaker": "신라 사신",
+    "text": "433년의 약속이 오래가려면, 백제가 무엇을 두려워하는지도 알아야지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s07-b48915ba7f--initial",
+    "scene": "THR-C10-S07",
+    "speaker": "신라 사신",
+    "text": "그렇소. 다만 말을 세게 옮기면 문부터 닫힐 수도 있소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s07-b48915ba7f--initial",
+    "scene": "THR-C10-S07",
+    "speaker": "신라 사신",
+    "text": "문이 열렸소. 목소리를 낮출 필요는 있지만, 할 말까지 줄이지는 맙시다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s07-b48915ba7f--initial",
+    "scene": "THR-C10-S07",
+    "speaker": "신라 사신",
+    "text": "혹시 약점을 드러내면 더 많은 것을 요구할까 걱정이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s07-b48915ba7f--initial",
+    "scene": "THR-C10-S07",
+    "speaker": "신라 사신",
+    "text": "맞는 말이오. 백제 사신에게 차부터 들이고, 답은 그 다음에 하겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s07-b48915ba7f--initial",
+    "scene": "THR-C10-S07",
+    "speaker": "신라 사신",
+    "text": "전쟁 이야기보다 장사꾼 이야기를 먼저 하자는 것이오?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s07-b48915ba7f--initial",
+    "scene": "THR-C10-S07",
+    "speaker": "신라 사신",
+    "text": "그 피해는 백제 쪽 사람도 알겠구려. 둘이 지킬 길이 무엇인지 말해 보겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s08-3bcf3ac6c0--initial",
+    "scene": "THR-C10-S08",
+    "speaker": "기록관",
+    "text": "내물 다음에 눌지를 붙였구려. 그 사이 실성마립간을 빼면 기록이 맞지 않소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s08-3bcf3ac6c0--initial",
+    "scene": "THR-C10-S08",
+    "speaker": "기록관",
+    "text": "내물, 실성, 눌지, 자비, 소지, 그리고 지증의 순서요. 왕위가 모두 곧장 아들에게 간 것은 아니오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s08-3bcf3ac6c0--initial",
+    "scene": "THR-C10-S08",
+    "speaker": "기록관",
+    "text": "487년에는 우역을 두고 관도를 고쳤소. 소식과 물자가 오가야 먼 곳까지 명령이 닿을 테니.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s08-3bcf3ac6c0--initial",
+    "scene": "THR-C10-S08",
+    "speaker": "기록관",
+    "text": "수도의 여섯 촌을 여섯 부의 행정 질서로 묶어 가는 흐름도 살펴야 하오. 그 변화 전체를 어느 한 해의 명령으로 채우지는 마시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s08-3bcf3ac6c0--initial",
+    "scene": "THR-C10-S08",
+    "speaker": "기록관",
+    "text": "493년에는 백제 동성왕과 혼인을 맺었소. 신라 쪽 신부는 이벌찬 비지의 딸이었지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c10-s08-3bcf3ac6c0--initial",
+    "scene": "THR-C10-S08",
+    "speaker": "기록관",
+    "text": "지증왕대 기록 첫머리에는 소가 보이는구려. 이번에는 길을 걷는 소와 밭을 가는 소를 나눠 보시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s01-05057c0a0b--initial",
+    "scene": "THR-C11-S01",
+    "speaker": "소 주인",
+    "text": "나라에서 소로 밭을 갈라 하니 모두 내 소를 찾는구려. 돌보는 일은 내 몫이고.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s01-05057c0a0b--initial",
+    "scene": "THR-C11-S01",
+    "speaker": "소 주인",
+    "text": "오늘은 남의 밭을 다녀서 내 밭에도 못 갔소. 나도 욕심만 내는 것은 아니오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s01-05057c0a0b--initial",
+    "scene": "THR-C11-S01",
+    "speaker": "소 주인",
+    "text": "사료와 돌보는 일도 나누어 주시오. 소를 빌려 주는 동안 내 일이 쌓이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s01-05057c0a0b--initial",
+    "scene": "THR-C11-S01",
+    "speaker": "소 주인",
+    "text": "상처를 볼 줄 아시오?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s02-fe00edadc4--initial",
+    "scene": "THR-C11-S02",
+    "speaker": "서리",
+    "text": "이 문서는 고쳐 오시오. 국호와 임금의 칭호가 맞지 않소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s02-fe00edadc4--initial",
+    "scene": "THR-C11-S02",
+    "speaker": "서리",
+    "text": "503년부터 나라 이름은 신라, 임금의 칭호는 왕으로 정했소. 문서를 받으려면 맞추어야 하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s02-fad44df720--initial",
+    "scene": "THR-C11-S02",
+    "speaker": "주민",
+    "text": "왕이 바뀌면서 장례 때 산 사람을 함께 묻지 못하게 했다는 것도 사실이오?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s02-fe00edadc4--initial",
+    "scene": "THR-C11-S02",
+    "speaker": "서리",
+    "text": "지난해 502년에 순장을 금지했소. 죽은 이를 따르게 한다며 산 사람을 죽일 수 없다는 것이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s02-fe00edadc4--initial",
+    "scene": "THR-C11-S02",
+    "speaker": "서리",
+    "text": "좋소. 기다리는 사람부터 한 분씩 부르겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s03-44688ad879--initial",
+    "scene": "THR-C11-S03",
+    "speaker": "사공",
+    "text": "그런 이야기를 다 믿고 바다에 나가라니요. 섬에는 큰 짐승이 산다면서요?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s03-af64c4f806--initial",
+    "scene": "THR-C11-S03",
+    "speaker": "전령",
+    "text": "섬의 짐승 이야기가 아니오. 이사부 장군이 우산국으로 향한다는 말이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s03-44688ad879--initial",
+    "scene": "THR-C11-S03",
+    "speaker": "사공",
+    "text": "부두에서 들었지요. 겁을 주어 항복시키려고 나무 사자를 싣는다던데요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s03-af64c4f806--initial",
+    "scene": "THR-C11-S03",
+    "speaker": "전령",
+    "text": "출항 준비는 512년의 일로 남겠지. 그런데 나무 사자가 저 파도를 잠재워 주는 것은 아니오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s03-44688ad879--initial",
+    "scene": "THR-C11-S03",
+    "speaker": "사공",
+    "text": "제가 걱정하는 건 그거예요. 줄 하나가 풀리면 배에 탄 사람이 다 같이 위험해져요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s03-44688ad879--initial",
+    "scene": "THR-C11-S03",
+    "speaker": "사공",
+    "text": "저 배 끝의 항아리는 안쪽으로 옮겨 주세요. 그 부탁이 훨씬 마음 놓이는군요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s04-fad44df720--initial",
+    "scene": "THR-C11-S04",
+    "speaker": "주민",
+    "text": "저 집 사람이 가져간 것도 제 솥이오. 그런데 왜 저만 불려 왔소?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s04-9e1f071d67--initial",
+    "scene": "THR-C11-S04",
+    "speaker": "담당관",
+    "text": "새 율령에 따라 사정을 살피는 중이오. 안으로 밀려들지 마시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s04-9e1f071d67--initial",
+    "scene": "THR-C11-S04",
+    "speaker": "담당관",
+    "text": "법흥왕께서 520년에 율령을 반포하셨소. 관등과 공복, 처벌의 기준을 정비해 나라의 질서를 세우려는 것이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s04-fad44df720--initial",
+    "scene": "THR-C11-S04",
+    "speaker": "주민",
+    "text": "옷 색이 다르면 같은 잘못도 달라지오? 나는 그게 두려운 거요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s04-9e1f071d67--initial",
+    "scene": "THR-C11-S04",
+    "speaker": "담당관",
+    "text": "병부를 두어 군사 일을 모은 지도 517년 이후의 일이오. 이제 법도 관청이 맡아야 하지만 현장의 다툼은 아직 많소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s04-9e1f071d67--initial",
+    "scene": "THR-C11-S04",
+    "speaker": "담당관",
+    "text": "솥을 가져오게 하시오. 들은 말과 물건을 함께 보겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s04-9e1f071d67--initial",
+    "scene": "THR-C11-S04",
+    "speaker": "담당관",
+    "text": "사람들 앞에서 내 판단을 따지겠다는 것이오?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s04-fad44df720--initial",
+    "scene": "THR-C11-S04",
+    "speaker": "주민",
+    "text": "맞소. 내 잘못이 있으면 듣겠소. 다만 말을 끝까지 하게 해 주시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s04-fad44df720--initial",
+    "scene": "THR-C11-S04",
+    "speaker": "주민",
+    "text": "솥을 빌려 주었소. 돌려 달라 했더니 처음부터 자기 것이라고 하더군.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s04-9e1f071d67--initial",
+    "scene": "THR-C11-S04",
+    "speaker": "담당관",
+    "text": "증언할 이가 있다면 함께 부르겠소. 종이에 적힌 한 줄만으로는 알 수 없는 일이구려.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s05-fad44df720--initial",
+    "scene": "THR-C11-S05",
+    "speaker": "주민",
+    "text": "이 숲까지 들어온다더군요. 우리 어머니가 빌던 곳인데요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s05-fad44df720--initial",
+    "scene": "THR-C11-S05",
+    "speaker": "주민",
+    "text": "궁에서는 좋은 가르침이라 하지요. 그런데 내가 믿던 것은 이제 잘못이라고 할까 두려워요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s05-fad44df720--initial",
+    "scene": "THR-C11-S05",
+    "speaker": "주민",
+    "text": "당신은 어느 쪽을 믿소? 내 앞에서는 맞장구만 치는 것 아니오?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s05-fad44df720--initial",
+    "scene": "THR-C11-S05",
+    "speaker": "주민",
+    "text": "내가 반대하면 왕을 거스른다고 할까 봐, 집에서는 말도 못 했소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s05-fad44df720--initial",
+    "scene": "THR-C11-S05",
+    "speaker": "주민",
+    "text": "내 아이가 이 숲을 부끄러워하게 될까 봐 그렇소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s06-33f5f38343--initial",
+    "scene": "THR-C11-S06",
+    "speaker": "이차돈의 지인",
+    "text": "사람들이 자꾸 묻소. 정말 흰 피가 났느냐고. 그것만 궁금한 모양이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s06-33f5f38343--initial",
+    "scene": "THR-C11-S06",
+    "speaker": "이차돈의 지인",
+    "text": "괜찮을 리 없지. 그러나 그가 불교를 받아들이려다 죽었다는 말은 남겨야 하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s06-33f5f38343--initial",
+    "scene": "THR-C11-S06",
+    "speaker": "이차돈의 지인",
+    "text": "그러면 사람들은 그의 죽음을 대수롭지 않게 보지 않겠소?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s06-33f5f38343--initial",
+    "scene": "THR-C11-S06",
+    "speaker": "이차돈의 지인",
+    "text": "그가 마지막에 무슨 말을 했느냐고도 묻더군. 나는 그 자리에 있지도 않았는데.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s06-33f5f38343--initial",
+    "scene": "THR-C11-S06",
+    "speaker": "이차돈의 지인",
+    "text": "이름은 또렷하게 써 주시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s06-33f5f38343--initial",
+    "scene": "THR-C11-S06",
+    "speaker": "이차돈의 지인",
+    "text": "처음엔 그 말을 믿지 못하겠다고 들었소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s06-33f5f38343--initial",
+    "scene": "THR-C11-S06",
+    "speaker": "이차돈의 지인",
+    "text": "그렇다면 내가 들은 이야기도 전하겠소. 직접 본 사람인 척하지는 않을 것이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s06-33f5f38343--initial",
+    "scene": "THR-C11-S06",
+    "speaker": "이차돈의 지인",
+    "text": "이렇게 조용히 있는 사람이 오랜만이구려. 다들 가져갈 이야기부터 찾았소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s06-33f5f38343--initial",
+    "scene": "THR-C11-S06",
+    "speaker": "이차돈의 지인",
+    "text": "그는 사람들이 다투는 것을 못 견뎠소. 내가 기억하는 얼굴은 기적보다 그 얼굴이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s08-f49a6a9a17--initial",
+    "scene": "THR-C11-S08",
+    "speaker": "등록 서리",
+    "text": "금관가야가 신라에 들어왔으니 사람과 짐을 확인해야 하오. 왕의 항복 뒤 일이 많소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s08-f49a6a9a17--initial",
+    "scene": "THR-C11-S08",
+    "speaker": "등록 서리",
+    "text": "직업은 적을 수 있소. 가족이 함께 왔는지도 확인하겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s08-f49a6a9a17--initial",
+    "scene": "THR-C11-S08",
+    "speaker": "등록 서리",
+    "text": "줄을 잠시 멈추시오. 이 집의 가족부터 다시 맞추겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s09-350b0173e1--initial",
+    "scene": "THR-C11-S09",
+    "speaker": "가야계 청년",
+    "text": "저쪽은 왕족의 거처요. 우리 집도 같은 대우를 받을 거라 생각하지 마시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s09-350b0173e1--initial",
+    "scene": "THR-C11-S09",
+    "speaker": "가야계 청년",
+    "text": "구형왕과 그 아들들은 신라에서 자리를 얻었소. 그 아들 가운데 김무력도 있지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s09-350b0173e1--initial",
+    "scene": "THR-C11-S09",
+    "speaker": "가야계 청년",
+    "text": "그렇소. 새 옷을 받았다고 전에 입던 옷의 냄새까지 잊을 수 있겠소?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s09-350b0173e1--initial",
+    "scene": "THR-C11-S09",
+    "speaker": "가야계 청년",
+    "text": "그쪽에서 손짓하는구려. 아라 가족의 짐이 도착한 모양이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s10-3bcf3ac6c0--initial",
+    "scene": "THR-C11-S10",
+    "speaker": "기록관",
+    "text": "이 줄은 고쳐야 하오. 진흥왕을 법흥왕의 아들이라고 적었구려.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s10-3bcf3ac6c0--initial",
+    "scene": "THR-C11-S10",
+    "speaker": "기록관",
+    "text": "아버지는 입종갈문왕, 어머니는 지소부인이오. 왕위를 이은 순서와 부모를 따로 보아야 하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s10-3bcf3ac6c0--initial",
+    "scene": "THR-C11-S10",
+    "speaker": "기록관",
+    "text": "531년에 상대등을 두었소. 귀족들이 함께 논하는 자리도 나라의 질서 속에 놓아야 했지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s10-3bcf3ac6c0--initial",
+    "scene": "THR-C11-S10",
+    "speaker": "기록관",
+    "text": "536년에 쓰기 시작한 연호요. 나라 이름 신라와는 다르오. 해를 세는 이름이지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c11-s10-3bcf3ac6c0--initial",
+    "scene": "THR-C11-S10",
+    "speaker": "기록관",
+    "text": "다음 장은 강을 따라 펼쳐지는구려.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s02-fbe3bfb32f--initial",
+    "scene": "THR-C12-S02",
+    "speaker": "나루 주인",
+    "text": "어제 건너간 식구가 오늘은 허락 없이는 못 온답니다. 강이 하루 만에 달라졌소?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s02-fbe3bfb32f--initial",
+    "scene": "THR-C12-S02",
+    "speaker": "나루 주인",
+    "text": "553년, 신라가 이 강 아래쪽까지 차지했다지요. 장사꾼은 기뻐해야 한다는데 나는 아이 얼굴부터 보고 싶소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s02-fbe3bfb32f--initial",
+    "scene": "THR-C12-S02",
+    "speaker": "나루 주인",
+    "text": "당항성으로 나가 중국 쪽과 직접 오갈 수 있다는 말만 합니다. 내 작은 배의 사정은 아무도 안 묻고.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s02-fbe3bfb32f--initial",
+    "scene": "THR-C12-S02",
+    "speaker": "나루 주인",
+    "text": "한 문서에 엉켜 있소. 가족 이름이 화물 수량 밑에 가려졌소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s02-fbe3bfb32f--initial",
+    "scene": "THR-C12-S02",
+    "speaker": "나루 주인",
+    "text": "깃발이 바뀐 날보다 식구가 다시 건너오는 날을 기억하고 싶소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s02-fbe3bfb32f--initial",
+    "scene": "THR-C12-S02",
+    "speaker": "나루 주인",
+    "text": "화물은 늦어져도 좋소. 아이가 왜 아비가 오지 않느냐고 할 것이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s02-fbe3bfb32f--initial",
+    "scene": "THR-C12-S02",
+    "speaker": "나루 주인",
+    "text": "당신이 가면 내가 여기서 기다리겠소. 아이도 이 기둥을 알고 있소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s02-fbe3bfb32f--initial",
+    "scene": "THR-C12-S02",
+    "speaker": "나루 주인",
+    "text": "지금은 아이가 더 급하오. 종이가 왜 먼저요?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s02-fbe3bfb32f--initial",
+    "scene": "THR-C12-S02",
+    "speaker": "나루 주인",
+    "text": "…그렇구려. 이 상자는 내 것이오. 저쪽은 옆집 것이고. 내가 하나씩 말하겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s03-29ae8f308f--initial",
+    "scene": "THR-C12-S03",
+    "speaker": "관리",
+    "text": "지도에 선을 그었다고 사람들이 새 관청을 바로 찾지는 않는구려.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s03-29ae8f308f--initial",
+    "scene": "THR-C12-S03",
+    "speaker": "관리",
+    "text": "신주를 두어 이 지역을 다스리려 하오. 성 안의 군사만으로 모든 길을 지킬 수는 없으니.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s03-29ae8f308f--initial",
+    "scene": "THR-C12-S03",
+    "speaker": "관리",
+    "text": "그런데 옛 문서를 내라 하면 빼앗으려는 줄 알고 숨기는 이가 있소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s03-29ae8f308f--initial",
+    "scene": "THR-C12-S03",
+    "speaker": "관리",
+    "text": "서류를 내놓으라는 명령보다 시간이 들겠구려.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s03-29ae8f308f--initial",
+    "scene": "THR-C12-S03",
+    "speaker": "관리",
+    "text": "길을 아는 주민들을 부르겠소. 빈 지도부터 내놓지는 말아야겠구려.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s04-ff55715422--initial",
+    "scene": "THR-C12-S04",
+    "speaker": "상인",
+    "text": "오늘은 그릇을 밖에 놓지 말랍니다. 백제에서 왔다고요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s04-fad44df720--initial",
+    "scene": "THR-C12-S04",
+    "speaker": "주민",
+    "text": "관산성에서 우리 사람도 죽었소. 백제 왕 성왕도 전사했다지만, 마음이 풀리겠소?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s04-ff55715422--initial",
+    "scene": "THR-C12-S04",
+    "speaker": "상인",
+    "text": "나제 동맹이 끊어졌다는 말이 내 가게 문까지 닫을 줄은 몰랐소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s04-fad44df720--initial",
+    "scene": "THR-C12-S04",
+    "speaker": "주민",
+    "text": "물건값을 보내면 백제 군사에게 가는 것 아닌지 어찌 알아요?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s04-ff55715422--initial",
+    "scene": "THR-C12-S04",
+    "speaker": "상인",
+    "text": "내 장부를 보시오. 숨기지 않겠소. 다만 고향을 욕하라고 하지는 마시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s04-ff55715422--initial",
+    "scene": "THR-C12-S04",
+    "speaker": "상인",
+    "text": "그릇은 두 개를 놓겠소. 마주 보기 어렵다면 옆으로 앉아도 좋고.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s04-fad44df720--initial",
+    "scene": "THR-C12-S04",
+    "speaker": "주민",
+    "text": "당신이 모르는 일까지 책임질 수 있소?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s04-ff55715422--initial",
+    "scene": "THR-C12-S04",
+    "speaker": "상인",
+    "text": "그 이상 말해 줄 필요는 없소. 내가 한 일은 내 장부로 밝히겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s04-fad44df720--initial",
+    "scene": "THR-C12-S04",
+    "speaker": "주민",
+    "text": "내 동생이 돌아오지 않았소. 저 사람 얼굴을 보면 화가 났소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s04-ff55715422--initial",
+    "scene": "THR-C12-S04",
+    "speaker": "상인",
+    "text": "나도 백제에 둔 형 소식을 모르오. 당신에게 그 값을 달라고 한 적은 없소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s05-fe00edadc4--initial",
+    "scene": "THR-C12-S05",
+    "speaker": "서리",
+    "text": "그 이름을 빼면 글줄이 반듯해지지만, 비를 세우는 뜻이 달라지오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s05-fe00edadc4--initial",
+    "scene": "THR-C12-S05",
+    "speaker": "서리",
+    "text": "적성에서 신라에 협력한 사람이오. 그 공과 포상을 남겨 다른 이들도 알게 하려는 것이지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s05-fe00edadc4--initial",
+    "scene": "THR-C12-S05",
+    "speaker": "서리",
+    "text": "이 돌에는 누구의 도움이 있었고 어떻게 대우할 것인지가 들어가오. 사람 이름이 장식이 아니오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s05-fe00edadc4--initial",
+    "scene": "THR-C12-S05",
+    "speaker": "서리",
+    "text": "고운 줄을 만들겠다고 고르지 않은 삶을 깎아 버리지는 마시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s05-fe00edadc4--initial",
+    "scene": "THR-C12-S05",
+    "speaker": "서리",
+    "text": "글씨 놓을 자리를 조금 넓히겠소. 그 종이를 잡아 주시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s07-824fe549b7--initial",
+    "scene": "THR-C12-S07",
+    "speaker": "화랑 청년",
+    "text": "이 속도로 가면 해가 져도 못 넘겠소. 뒤처지는 사람은 돌아가는 편이 낫겠구려.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s07-824fe549b7--initial",
+    "scene": "THR-C12-S07",
+    "speaker": "화랑 청년",
+    "text": "함께 수련하러 나왔소. 싸움에 쓸 힘도 길러야 하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s07-60cd6085b9--initial",
+    "scene": "THR-C12-S07",
+    "speaker": "동료",
+    "text": "길은 내가 알고 있소. 저 너머로 가면 물이 있어. 잠깐만 쉬면…",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s07-824fe549b7--initial",
+    "scene": "THR-C12-S07",
+    "speaker": "화랑 청년",
+    "text": "화랑과 낭도들이 나라에 쓰일 사람으로 자라야 한다고 들었소. 내가 뒤처지는 것을 싫어했나 보오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s07-60cd6085b9--initial",
+    "scene": "THR-C12-S07",
+    "speaker": "동료",
+    "text": "다리가 따라가지 못해도 아는 길은 말할 수 있소. 아직 내 몫이 있으면 좋겠구려.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s07-824fe549b7--initial",
+    "scene": "THR-C12-S07",
+    "speaker": "화랑 청년",
+    "text": "물가에서는 한 사람씩 쉬겠소. 돌아갈 때도 함께 가야 하니.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s07-824fe549b7--initial",
+    "scene": "THR-C12-S07",
+    "speaker": "화랑 청년",
+    "text": "당신까지 느려져도 괜찮겠소?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s07-60cd6085b9--initial",
+    "scene": "THR-C12-S07",
+    "speaker": "동료",
+    "text": "저 소나무까지면 되오. 내가 걸을 수 있는 만큼은 걷겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s07-60cd6085b9--initial",
+    "scene": "THR-C12-S07",
+    "speaker": "동료",
+    "text": "물가로 내려가는 길이 따로 있소. 멀어 보여도 발 디딜 곳은 그쪽이 낫지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s07-824fe549b7--initial",
+    "scene": "THR-C12-S07",
+    "speaker": "화랑 청년",
+    "text": "나는 앞만 보고 걸었구려. 자네 짐은 내가 들겠네.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s08-c6067392c5--initial",
+    "scene": "THR-C12-S08",
+    "speaker": "피란민",
+    "text": "비켜 주시오. 성안으로 돌아갈 길은 없소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s08-c6067392c5--initial",
+    "scene": "THR-C12-S08",
+    "speaker": "피란민",
+    "text": "고령에서 만들던 그릇이오. 이제 대가야도 없어졌다지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s08-c6067392c5--initial",
+    "scene": "THR-C12-S08",
+    "speaker": "피란민",
+    "text": "당신도 축하하러 왔소? 그럼 그릇은 놓고 가시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s08-c6067392c5--initial",
+    "scene": "THR-C12-S08",
+    "speaker": "피란민",
+    "text": "우리가 만든 것만 탐내다가, 없어진 뒤에야 우리가 누구였는지 물을 셈이오?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s08-c6067392c5--initial",
+    "scene": "THR-C12-S08",
+    "speaker": "피란민",
+    "text": "그릇 손잡이에 우리 표식이 있소. 그것부터 뒤집어 보시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s09-29ae8f308f--initial",
+    "scene": "THR-C12-S09",
+    "speaker": "관리",
+    "text": "이 무게로는 관청에 납품할 수 없소. 기준을 다시 맞추시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s09-52ff30082e--initial",
+    "scene": "THR-C12-S09",
+    "speaker": "가야 장인",
+    "text": "우리 장터에서는 이만큼을 한 묶음으로 받았소. 갑자기 모자라다고 하면 누가 값을 치르오?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s09-29ae8f308f--initial",
+    "scene": "THR-C12-S09",
+    "speaker": "관리",
+    "text": "새로 편입된 곳도 같은 장부를 써야 하오. 아홉 가지 단위로는 셀 수 없소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s09-52ff30082e--initial",
+    "scene": "THR-C12-S09",
+    "speaker": "가야 장인",
+    "text": "내가 속였다고 말한 것이 먼저오. 그 말 때문에 거래하던 사람이 돌아갔소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s09-29ae8f308f--initial",
+    "scene": "THR-C12-S09",
+    "speaker": "관리",
+    "text": "…속였다고 단정한 말은 거두겠소. 우리가 정한 기준을 먼저 보여 줬어야 했구려.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s09-52ff30082e--initial",
+    "scene": "THR-C12-S09",
+    "speaker": "가야 장인",
+    "text": "그렇다면 다시 달겠소. 내 물건을 아는 사람 앞에서 같이 보시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c12-s09-52ff30082e--initial",
+    "scene": "THR-C12-S09",
+    "speaker": "가야 장인",
+    "text": "내가 아는 것을 모두 틀렸다고 하지 않는다면, 새것도 배울 수 있소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s01-fe00edadc4--initial",
+    "scene": "THR-C13-S01",
+    "speaker": "서리",
+    "text": "돌을 세는 일까지 여자 임금 탓으로 돌리다니, 대체 누구의 말을 들어야 할지 모르겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s01-fe00edadc4--initial",
+    "scene": "THR-C13-S01",
+    "speaker": "서리",
+    "text": "분황사를 세우는 중이오. 나라가 어수선하니 왕이 여자라 그런 것이라며 수군대고.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s01-fe00edadc4--initial",
+    "scene": "THR-C13-S01",
+    "speaker": "서리",
+    "text": "634년의 새 절이 사람들 마음을 모으길 바랐소. 시작부터 말이 많구려.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s01-fe00edadc4--initial",
+    "scene": "THR-C13-S01",
+    "speaker": "서리",
+    "text": "돌을 벽돌처럼 다듬어 쌓는 모전석탑 방식이오. 손이 많이 가오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s01-fe00edadc4--initial",
+    "scene": "THR-C13-S01",
+    "speaker": "서리",
+    "text": "그 돌 옆은 아직 위험하오. 당신도 인부들도 그늘 쪽에서 기다리시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s01-fe00edadc4--initial",
+    "scene": "THR-C13-S01",
+    "speaker": "서리",
+    "text": "백제와 고구려의 압박도 크고 공사 물자도 늦었소. 서로 다른 문제가 한꺼번에 몰렸지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s01-fe00edadc4--initial",
+    "scene": "THR-C13-S01",
+    "speaker": "서리",
+    "text": "내가 화가 나서 정작 설명할 일을 놓쳤구려. 담당자를 부르겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s01-fe00edadc4--initial",
+    "scene": "THR-C13-S01",
+    "speaker": "서리",
+    "text": "그 일을 맡은 관리가 오지 않았소. 기다리라고만 전했는데.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s01-fe00edadc4--initial",
+    "scene": "THR-C13-S01",
+    "speaker": "서리",
+    "text": "내가 가서 확인하겠소. 적어도 돌아와 답은 전하리다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s02-2691a76571--initial",
+    "scene": "THR-C13-S02",
+    "speaker": "관측 보조",
+    "text": "등불을 조금 가려 주시오. 저쪽 하늘이 안 보이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s02-2691a76571--initial",
+    "scene": "THR-C13-S02",
+    "speaker": "관측 보조",
+    "text": "밤을 넘긴다고 계절이 기다려 주지는 않소. 날과 절기를 알아야 농사 준비도 하니까.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s02-2691a76571--initial",
+    "scene": "THR-C13-S02",
+    "speaker": "관측 보조",
+    "text": "사람들이 먹지 못하면 성문 앞에 설 수도 없소. 멀어 보이는 일도 이어져 있지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s02-2691a76571--initial",
+    "scene": "THR-C13-S02",
+    "speaker": "관측 보조",
+    "text": "내가 구름을 걷을 수는 없소. 오늘 본 것과 못 본 것을 나눠 적을 뿐이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s02-2691a76571--initial",
+    "scene": "THR-C13-S02",
+    "speaker": "관측 보조",
+    "text": "그대로 잠깐만 있어 주시오. 구름이 조금 비켜가오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s03-1694d3acc4--initial",
+    "scene": "THR-C13-S03",
+    "speaker": "인부",
+    "text": "백제 장인의 말까지 따라야 하오? 백제 군사가 우리 성을 치고 있는데.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s03-42295a1d59--initial",
+    "scene": "THR-C13-S03",
+    "speaker": "장인",
+    "text": "아비지에게 배운 이음이오. 위의 무게를 받으려면 지금 대충 맞출 수 없소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s03-1694d3acc4--initial",
+    "scene": "THR-C13-S03",
+    "speaker": "인부",
+    "text": "내 사촌이 백제와 싸우다 죽었소. 당신에게 미워할 이유가 없다는 걸 알면서도 말이 먼저 나갔소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s03-42295a1d59--initial",
+    "scene": "THR-C13-S03",
+    "speaker": "장인",
+    "text": "이쪽을 잡으시오. 말은 내려놓은 뒤에 해도 늦지 않소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s03-1694d3acc4--initial",
+    "scene": "THR-C13-S03",
+    "speaker": "인부",
+    "text": "…여기를 받치면 되오?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s03-42295a1d59--initial",
+    "scene": "THR-C13-S03",
+    "speaker": "장인",
+    "text": "그렇소. 하나, 둘. 이제 같이 올립시다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s05-50e94f9768--initial",
+    "scene": "THR-C13-S05",
+    "speaker": "행정 서리",
+    "text": "이 문서는 집사부로 가야 하오. 화백의 안건과 섞지 마시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s05-50e94f9768--initial",
+    "scene": "THR-C13-S05",
+    "speaker": "행정 서리",
+    "text": "651년에 집사부를 두어 나라의 정무를 맡게 했소. 장관인 중시가 왕의 뜻을 받아 일을 살피지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s05-50e94f9768--initial",
+    "scene": "THR-C13-S05",
+    "speaker": "행정 서리",
+    "text": "역할이 같지는 않소. 그렇다고 두 쪽 사이의 말다툼까지 사라진 것은 아니지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s05-50e94f9768--initial",
+    "scene": "THR-C13-S05",
+    "speaker": "행정 서리",
+    "text": "내용은 집사부에서 보오. 그런데 담당자가 화백의 뜻부터 받으라며 미뤘소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s05-50e94f9768--initial",
+    "scene": "THR-C13-S05",
+    "speaker": "행정 서리",
+    "text": "내가 안으로 들어가겠소. 당신이 더 돌지 않게 여기서 기다리시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s07-8292c2c3da--initial",
+    "scene": "THR-C13-S07",
+    "speaker": "수군",
+    "text": "빈 배부터 끌어오시오. 덕물도에 당군이 와 있소. 소정방의 군사를 기다리게 할 수 없소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s07-8292c2c3da--initial",
+    "scene": "THR-C13-S07",
+    "speaker": "수군",
+    "text": "김법민 왕자께서 당군을 만나셨고, 육지에서는 김유신 장군의 군사가 움직이오. 시간이 모자라오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s07-8292c2c3da--initial",
+    "scene": "THR-C13-S07",
+    "speaker": "수군",
+    "text": "돌려줄 때 확인하려고 적고 있소. 다만 서둘러 옮기느라 빠진 것이 있겠지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s07-62b6e51a2f--initial",
+    "scene": "THR-C13-S07",
+    "speaker": "뱃사람",
+    "text": "돌아올 배가 있는지부터 무섭소. 저쪽 물가에도 피란하는 사람이 몰렸다오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s07-8292c2c3da--initial",
+    "scene": "THR-C13-S07",
+    "speaker": "수군",
+    "text": "당신도 보고만 있지는 않을 얼굴이구려. 도울 수 있다면 지금 말하시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s07-8292c2c3da--initial",
+    "scene": "THR-C13-S07",
+    "speaker": "수군",
+    "text": "북이 울리면 물가에서 물러나시오. 돌아설 틈도 없이 배가 붙소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s07-8292c2c3da--initial",
+    "scene": "THR-C13-S07",
+    "speaker": "수군",
+    "text": "주인이 여기 있는 동안 적어 두라는 말이구려. 표식도 함께 보겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s07-62b6e51a2f--initial",
+    "scene": "THR-C13-S07",
+    "speaker": "뱃사람",
+    "text": "뱃머리의 새긴 선이 둘이오. 내 아들이 새겼소. 같이 적어 주시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s07-8292c2c3da--initial",
+    "scene": "THR-C13-S07",
+    "speaker": "수군",
+    "text": "허락 없이 군선 옆으로 데려오면 위험하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s07-8292c2c3da--initial",
+    "scene": "THR-C13-S07",
+    "speaker": "수군",
+    "text": "저 바위 안쪽에서 기다리시오. 신호를 보내면 사공 한 명을 붙이겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s08-068624bdad--initial",
+    "scene": "THR-C13-S08",
+    "speaker": "고구려 유민",
+    "text": "성문을 지키던 군사가 바뀌었소. 돌아가도 우리를 들일지 모르겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s08-068624bdad--initial",
+    "scene": "THR-C13-S08",
+    "speaker": "고구려 유민",
+    "text": "668년에 고구려가 끝났다고 하더군. 그런데 내 아들은 아직 저 안에 있는데, 무엇이 끝났다는 것이오?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s08-068624bdad--initial",
+    "scene": "THR-C13-S08",
+    "speaker": "고구려 유민",
+    "text": "당은 안동도호부를 둔다고 하오. 백제에는 웅진도독부가 있다더니, 이곳도 제 땅으로 삼으려는 모양이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s08-068624bdad--initial",
+    "scene": "THR-C13-S08",
+    "speaker": "고구려 유민",
+    "text": "그 다툼에서 우리는 또 누구에게 이름을 대야 하오?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s08-068624bdad--initial",
+    "scene": "THR-C13-S08",
+    "speaker": "고구려 유민",
+    "text": "왼쪽 눈 밑에 작은 점이 있소. 웃으면 잘 안 보이고.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s09-658fa277b7--initial",
+    "scene": "THR-C13-S09",
+    "speaker": "연락관",
+    "text": "안승을 보덕왕으로 삼겠다는 소식이 왔소. 문무왕의 뜻이라 하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s09-658fa277b7--initial",
+    "scene": "THR-C13-S09",
+    "speaker": "연락관",
+    "text": "검모잠과 고연무가 나라를 되찾으려 일어났던 때부터 떠돌았소. 새 이름을 준다고 바로 마음 놓이겠소?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s09-658fa277b7--initial",
+    "scene": "THR-C13-S09",
+    "speaker": "연락관",
+    "text": "도움을 얻고 싶으면서도 우리 군사가 필요할 때만 부르는 것인가 의심하게 되오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s09-658fa277b7--initial",
+    "scene": "THR-C13-S09",
+    "speaker": "연락관",
+    "text": "흩어진 가족을 데려오고 싶소. 밭도, 이웃도 다시 정해야 하오. 들어 줄 사람이 있겠소?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s09-658fa277b7--initial",
+    "scene": "THR-C13-S09",
+    "speaker": "연락관",
+    "text": "돌아올 때도 이 길로 오시오. 내가 기다리겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s09-658fa277b7--initial",
+    "scene": "THR-C13-S09",
+    "speaker": "연락관",
+    "text": "봄이 오기 전에 씨앗과 땅을 정해 달라고 하시오. 군사 이야기만으로는 아이를 먹일 수 없소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s09-658fa277b7--initial",
+    "scene": "THR-C13-S09",
+    "speaker": "연락관",
+    "text": "답을 듣고 협력을 논하겠소. 우리도 기다리기만 하는 사람으로 남고 싶지는 않소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s09-658fa277b7--initial",
+    "scene": "THR-C13-S09",
+    "speaker": "연락관",
+    "text": "마지막 편지가 강 건너에서 멈췄소. 받는 사람 이름을 잘못 옮긴 것 같소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s09-658fa277b7--initial",
+    "scene": "THR-C13-S09",
+    "speaker": "연락관",
+    "text": "이번에는 돌아오는 소식이 있으면 좋겠구려. 편지를 주고도 잊힌 일이 많았소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s10-5190fbf590--initial",
+    "scene": "THR-C13-S10",
+    "speaker": "보급병",
+    "text": "수레를 멈추시오! 저 앞다리에는 마을 사람들이 올라와 있소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s10-5190fbf590--initial",
+    "scene": "THR-C13-S10",
+    "speaker": "보급병",
+    "text": "매소성에서 당군과 싸우는 중이오. 이근행의 군사가 물러났다는 소식이 왔지만, 아직 길은 위험하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s10-5190fbf590--initial",
+    "scene": "THR-C13-S10",
+    "speaker": "보급병",
+    "text": "옆길은 좁아 바퀴가 빠지오. 누가 길을 안다면 좋으련만.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s10-fad44df720--initial",
+    "scene": "THR-C13-S10",
+    "speaker": "주민",
+    "text": "아랫길은 어제 비에 무너졌소. 우물 쪽으로 돌면 사람들이 걸어갈 길은 남아 있소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s10-5190fbf590--initial",
+    "scene": "THR-C13-S10",
+    "speaker": "보급병",
+    "text": "수레가 비는 대로 밀겠소. 당신도 혼자 멀리 가지 말고 저 주민과 함께 가시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s10-5190fbf590--initial",
+    "scene": "THR-C13-S10",
+    "speaker": "보급병",
+    "text": "앞길 비었소! 천천히, 바퀴부터 움직이시오!",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s11-8292c2c3da--initial",
+    "scene": "THR-C13-S11",
+    "speaker": "수군",
+    "text": "물에서 조금 떨어지시오! 바람이 바뀌면 불씨가 이쪽으로 날아오오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s11-8292c2c3da--initial",
+    "scene": "THR-C13-S11",
+    "speaker": "수군",
+    "text": "기벌포는 바다와 강이 만나는 곳이오. 매소성의 육지 싸움과 같은 길로 생각하면 안 되오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s11-8292c2c3da--initial",
+    "scene": "THR-C13-S11",
+    "speaker": "수군",
+    "text": "신라의 시득이 당의 설인귀 군사와 싸우고 있소. 한 번 밀었다고 끝낼 수 없는 물길이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s11-8292c2c3da--initial",
+    "scene": "THR-C13-S11",
+    "speaker": "수군",
+    "text": "내가 갈고리를 가져오겠소. 당신은 줄 끝을 저 기둥에 걸고 물러서시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s11-8292c2c3da--initial",
+    "scene": "THR-C13-S11",
+    "speaker": "수군",
+    "text": "당군이 물러간다는 신호요! 그래도 줄은 풀지 마시오. 돌아오는 사람부터 건져야 하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s12-2ac647732f--initial",
+    "scene": "THR-C13-S12",
+    "speaker": "유민 어머니",
+    "text": "문무왕이 나라를 하나로 만들었다고들 하오. 그러면 북쪽에 둔 내 가족도 곧 올 수 있겠소?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s12-2ac647732f--initial",
+    "scene": "THR-C13-S12",
+    "speaker": "유민 어머니",
+    "text": "같이 당을 불러 싸우더니, 이번에는 당을 몰아내느라 또 사람을 보냈구려.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s12-2ac647732f--initial",
+    "scene": "THR-C13-S12",
+    "speaker": "유민 어머니",
+    "text": "아까부터 그 깨진 그릇 조각을 만지더군. 누가 준 것이오?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s12-2ac647732f--initial",
+    "scene": "THR-C13-S12",
+    "speaker": "유민 어머니",
+    "text": "그 집에서 밥 먹던 때를 먼저 들어 보지 그랬소. 무너지는 날만이 그 사람의 날은 아니었을 텐데.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c13-s12-2ac647732f--initial",
+    "scene": "THR-C13-S12",
+    "speaker": "유민 어머니",
+    "text": "다녀오시오. 돌아오면 이 그릇이 처음 어떤 모양이었는지 들려주고.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c14-s02-658fa277b7--initial",
+    "scene": "THR-C14-S02",
+    "speaker": "연락관",
+    "text": "그 계약은 저쪽 사람에게 다시 물으시오. 내 도장으로 끝낼 수 없소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c14-s02-658fa277b7--initial",
+    "scene": "THR-C14-S02",
+    "speaker": "연락관",
+    "text": "가야 안에도 여러 나라와 왕이 있소. 금관가야의 말을 전하러 왔다고 다른 왕의 물건값까지 정할 수는 없지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c14-s02-658fa277b7--initial",
+    "scene": "THR-C14-S02",
+    "speaker": "연락관",
+    "text": "필요하면 힘을 모으지만, 누가 얼마나 내고 어떤 길을 쓸지는 또 의논해야 하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c14-s02-658fa277b7--initial",
+    "scene": "THR-C14-S02",
+    "speaker": "연락관",
+    "text": "우리 짐은 오늘 가고 저쪽 짐은 내일 갈 수 있소. 그 차이 때문에 싸우지 않으려고 모인 것이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c14-s02-658fa277b7--initial",
+    "scene": "THR-C14-S02",
+    "speaker": "연락관",
+    "text": "바로 저 끈 표시요. 두 꾸러미는 다른 왕의 땅에서 왔소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c14-s04-3c42e4cf8a--initial",
+    "scene": "THR-C14-S04",
+    "speaker": "상대 상인",
+    "text": "내 저울을 못 믿겠다는 말이오?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c14-s04-3c42e4cf8a--initial",
+    "scene": "THR-C14-S04",
+    "speaker": "상대 상인",
+    "text": "물건이 젖어 끈을 새로 묶었소. 내가 그 무게를 빼지 못한 것 같구려.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c14-s05-f0dca44340--initial",
+    "scene": "THR-C14-S05",
+    "speaker": "농민",
+    "text": "내 괭이는 또 뒤로 밀렸소? 씨를 뿌릴 때가 지나겠구려.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c14-s05-f0dca44340--initial",
+    "scene": "THR-C14-S05",
+    "speaker": "농민",
+    "text": "내가 밭을 못 갈면 그 군사에게 갈 곡식도 줄어들 것이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c14-s05-f0dca44340--initial",
+    "scene": "THR-C14-S05",
+    "speaker": "농민",
+    "text": "옆집과 함께 쓸 수 있소. 대신 언제 나오는지는 알려 주시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c14-s05-f0dca44340--initial",
+    "scene": "THR-C14-S05",
+    "speaker": "농민",
+    "text": "그러면 나도 길을 비우는 일은 돕겠소. 내 괭이만 달라고 서 있을 수는 없지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c14-s06-f8b40a3198--initial",
+    "scene": "THR-C14-S06",
+    "speaker": "교역 상대",
+    "text": "상자가 모자라오. 약속한 것보다 적소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c14-s06-624011eb48--initial",
+    "scene": "THR-C14-S06",
+    "speaker": "통역",
+    "text": "저쪽은 덩이쇠의 개수를 말하고, 이쪽은 꾸러미 수를 말하고 있소. 둘이 다른 것을 세고 있었구려.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c14-s06-f8b40a3198--initial",
+    "scene": "THR-C14-S06",
+    "speaker": "교역 상대",
+    "text": "배가 뜨기 전에 확인할 수 있다면 좋소. 이대로 가면 고향에서 내가 책임져야 하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c14-s06-624011eb48--initial",
+    "scene": "THR-C14-S06",
+    "speaker": "통역",
+    "text": "이제 알아들었소. 철과 함께 토기도 싣기로 했는지 다시 묻는구려.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c14-s06-f8b40a3198--initial",
+    "scene": "THR-C14-S06",
+    "speaker": "교역 상대",
+    "text": "그것도 맞소. 왜로 돌아가면 기다리는 사람이 있소. 우리도 가져온 물건이 있으니 다시 보시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c14-s06-f8b40a3198--initial",
+    "scene": "THR-C14-S06",
+    "speaker": "교역 상대",
+    "text": "이 그림을 나도 한 장 갖고 가겠소. 다음 항구에서도 꺼낼 수 있게.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c14-s07-e504a1a0ef--initial",
+    "scene": "THR-C14-S07",
+    "speaker": "갑옷 장인",
+    "text": "끈이 또 풀리는구려. 그 아이 허리에 맞추려면 조금 줄여야겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c14-s07-e504a1a0ef--initial",
+    "scene": "THR-C14-S07",
+    "speaker": "갑옷 장인",
+    "text": "철판을 이어 만드는 판갑옷이오. 늘 남의 몸에 맞췄는데 이번에는 내 아이가 입는다지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c14-s07-e504a1a0ef--initial",
+    "scene": "THR-C14-S07",
+    "speaker": "갑옷 장인",
+    "text": "내 손이 틀리지 않았다는 것은 말할 수 있소. 그 아이에게 아무 일 없을 것이라는 말은 못 하겠구려.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c14-s07-e504a1a0ef--initial",
+    "scene": "THR-C14-S07",
+    "speaker": "갑옷 장인",
+    "text": "괜찮소. 혼자 있으면 같은 매듭만 계속 만지고 있게 되오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c14-s07-e504a1a0ef--initial",
+    "scene": "THR-C14-S07",
+    "speaker": "갑옷 장인",
+    "text": "아이가 부르는 소리요. 나가는 모습은 똑바로 봐야겠구려.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c14-s07-e504a1a0ef--initial",
+    "scene": "THR-C14-S07",
+    "speaker": "갑옷 장인",
+    "text": "끈 묶는 것을 싫어하오. 급해서 신발도 대충 신고 뛰어나가지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c14-s07-e504a1a0ef--initial",
+    "scene": "THR-C14-S07",
+    "speaker": "갑옷 장인",
+    "text": "그렇소. 돌아와서 또 잔소리하게 해 주면 좋겠는데.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c14-s07-e504a1a0ef--initial",
+    "scene": "THR-C14-S07",
+    "speaker": "갑옷 장인",
+    "text": "운반 끈은 너무 짧게 하지 마시오. 내 아이는 어깨가 넓소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c14-s07-e504a1a0ef--initial",
+    "scene": "THR-C14-S07",
+    "speaker": "갑옷 장인",
+    "text": "이 정도면 되오. 당신이 손을 보태니 이번 매듭은 그만 만져도 되겠구려.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c15-s02-658fa277b7--initial",
+    "scene": "THR-C15-S02",
+    "speaker": "연락관",
+    "text": "이 약속은 우리 고장 이름으로 맺었소. 다른 가야의 도장까지 내가 찍을 수는 없소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c15-s02-658fa277b7--initial",
+    "scene": "THR-C15-S02",
+    "speaker": "연락관",
+    "text": "신라와 가까워지려는 곳도, 백제의 도움을 원하는 곳도 있소. 왜와 오가는 길도 집집마다 다르고.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c15-s02-658fa277b7--initial",
+    "scene": "THR-C15-S02",
+    "speaker": "연락관",
+    "text": "누구에게 물었느냐부터 적어야 할 게요. 우리 고장에 필요한 것과 옆 고장에 필요한 것이 다르니.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c15-s02-658fa277b7--initial",
+    "scene": "THR-C15-S02",
+    "speaker": "연락관",
+    "text": "자기 물건이 지날 길을 남들이 먼저 약속했대요. 회의가 끝난 뒤에 들었다며.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c15-s02-658fa277b7--initial",
+    "scene": "THR-C15-S02",
+    "speaker": "연락관",
+    "text": "자리 하나를 더 내겠소. 차는 식었지만 말할 시간은 아직 있소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c15-s03-1b60628105--initial",
+    "scene": "THR-C15-S03",
+    "speaker": "도공",
+    "text": "고령 물건도 김해 물건도 함안 물건도 모두 같은 선을 넣으라니, 그럴 거면 왜 우리를 불렀소?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c15-s03-1b60628105--initial",
+    "scene": "THR-C15-S03",
+    "speaker": "도공",
+    "text": "굽도, 구멍도, 몸통도 다르오. 쓰는 사람과 굽는 손이 다른데 어떻게 한 모양이 되겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c15-s03-1b60628105--initial",
+    "scene": "THR-C15-S03",
+    "speaker": "도공",
+    "text": "바다 건너 왜에서도 여기서 건너간 기술을 배워 단단한 토기를 만든다오. 스에키라 하는 것에도 가야 같은 곳의 기술이 이어져 있지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c15-s03-1b60628105--initial",
+    "scene": "THR-C15-S03",
+    "speaker": "도공",
+    "text": "그렇소. 한번 불에 넣고 빼는 것으로 끝날 일이라면 내 손에 이 자국도 없겠지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c15-s03-1b60628105--initial",
+    "scene": "THR-C15-S03",
+    "speaker": "도공",
+    "text": "문 앞에 발소리가 들리는구려. 이번에는 그릇을 손에 쥐여 주고 말을 시작하겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c15-s03-1b60628105--initial",
+    "scene": "THR-C15-S03",
+    "speaker": "도공",
+    "text": "김해와 함안 물건도 옆에 놓겠소. 다름을 보면 무엇을 원했는지 말할 수 있겠지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c15-s03-1b60628105--initial",
+    "scene": "THR-C15-S03",
+    "speaker": "도공",
+    "text": "좋소. 다 같다는 말에는 무슨 대답부터 해야 할지 막막했는데.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c15-s03-1b60628105--initial",
+    "scene": "THR-C15-S03",
+    "speaker": "도공",
+    "text": "손에 쥐는 것과 받쳐 놓는 것이 같을 수 없지. 여기 잡아 보시오. 비어 있을 때와 물을 담았을 때도 다르오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c15-s03-1b60628105--initial",
+    "scene": "THR-C15-S03",
+    "speaker": "도공",
+    "text": "그걸 손으로 알았으면 주문한 사람에게도 전할 수 있겠구려.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c15-s04-75a09d7639--initial",
+    "scene": "THR-C15-S04",
+    "speaker": "장례 장인",
+    "text": "저 높은 봉분까지 올라가지 마시오. 흙이 내려앉은 곳이 있소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c15-s04-75a09d7639--initial",
+    "scene": "THR-C15-S04",
+    "speaker": "장례 장인",
+    "text": "높은 사람 하나를 묻으려고 많은 것을 함께 넣었소. 함께 묻힌 사람들도 있었지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c15-s04-75a09d7639--initial",
+    "scene": "THR-C15-S04",
+    "speaker": "장례 장인",
+    "text": "그런 이야기만은 아니오. 주인을 따른다며 산 사람을 죽여 묻는 순장도 있었소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c15-s04-75a09d7639--initial",
+    "scene": "THR-C15-S04",
+    "speaker": "장례 장인",
+    "text": "크기를 자랑하는 말은 멀리까지 가오. 내 손이 떨렸던 이야기를 듣겠다는 이는 드물었소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c15-s04-75a09d7639--initial",
+    "scene": "THR-C15-S04",
+    "speaker": "장례 장인",
+    "text": "이쪽 길로 내려오시오. 앉을 돌이 있소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c15-s07-56a0fd1527--initial",
+    "scene": "THR-C15-S07",
+    "speaker": "이웃",
+    "text": "우리도 넉넉하지는 않소. 저 작은 상자는 받겠소. 대신 내가 잡을 손도 하나 필요하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s01-fad44df720--initial",
+    "scene": "THR-C16-S01",
+    "speaker": "주민",
+    "text": "대문에 붙였던 축하 글을 떼어야겠소? 새 임금이 서신 지 얼마나 됐다고 군사가 오가오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s01-658fa277b7--initial",
+    "scene": "THR-C16-S01",
+    "speaker": "연락관",
+    "text": "김흠돌의 무리가오. 왕비의 아버지이니 임금과도 혼인으로 맺어진 집안이지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s01-658fa277b7--initial",
+    "scene": "THR-C16-S01",
+    "speaker": "연락관",
+    "text": "681년의 반란은 진압되었소. 관련 귀족들에 대한 처벌이 이어지고 있소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s01-fad44df720--initial",
+    "scene": "THR-C16-S01",
+    "speaker": "주민",
+    "text": "누구와 안다고 말해도 위험한 것 같소. 내 물건을 사 갔던 사람이 누구인지도 묻는다오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s01-658fa277b7--initial",
+    "scene": "THR-C16-S01",
+    "speaker": "연락관",
+    "text": "확인하는 사람도 조급하오. 그래도 모르는 일을 안다고 답할 필요는 없소. 본 것만 말하시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s01-fad44df720--initial",
+    "scene": "THR-C16-S01",
+    "speaker": "주민",
+    "text": "문을 닫기 전에 저 곡식은 들여놔야겠소. 축하하러 오는 사람보다 기다리는 식구가 먼저니.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s03-54fb001e12--initial",
+    "scene": "THR-C16-S03",
+    "speaker": "교관",
+    "text": "어디까지 읽었는지부터 말해 보아라. 모르는 곳을 짚어 왔으면 다시 가르칠 수 있다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s04-98825933db--initial",
+    "scene": "THR-C16-S04",
+    "speaker": "지방 서리",
+    "text": "옛 고향 이름만으로는 새 문서와 맞추기 어렵소. 어느 주에 속하는지 다시 봅시다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s04-98825933db--initial",
+    "scene": "THR-C16-S04",
+    "speaker": "지방 서리",
+    "text": "685년에는 나라의 아홉 주 체계가 갖추어졌소. 옛 신라·백제·고구려 영역을 묶어 다스릴 지방관도 필요하고.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s04-98825933db--initial",
+    "scene": "THR-C16-S04",
+    "speaker": "지방 서리",
+    "text": "문무왕께서 673년에 둔 외사정이 지방관의 일을 감찰하오. 지역을 다스리는 관리와 감찰하는 직무는 다르지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s04-98825933db--initial",
+    "scene": "THR-C16-S04",
+    "speaker": "지방 서리",
+    "text": "그쪽은 상수리요. 지방세력의 사람이나 자제를 수도에 머물게 해 통제하고 소식도 잇게 했소. 문무왕 때의 일에도 나오지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s04-98825933db--initial",
+    "scene": "THR-C16-S04",
+    "speaker": "지방 서리",
+    "text": "그렇소. 수도와 지방을 연결하는 일이 종이의 선 하나로 끝나지는 않소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s04-98825933db--initial",
+    "scene": "THR-C16-S04",
+    "speaker": "지방 서리",
+    "text": "옛 이름 옆에 새 소속을 적겠소. 같은 곳인 줄 확인했다는 표시도 남기고.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s06-f929e0da32--initial",
+    "scene": "THR-C16-S06",
+    "speaker": "군영 서리",
+    "text": "9서당의 물품을 나누는 중이오. 신라 사람으로 편성된 녹금·자금·비금부터 저쪽에 놓으시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s06-f929e0da32--initial",
+    "scene": "THR-C16-S06",
+    "speaker": "군영 서리",
+    "text": "백제계 백금·청금, 말갈계 흑금도 있소. 여러 해에 걸쳐 더하고 고친 군단들이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s06-a51116cde2--initial",
+    "scene": "THR-C16-S06",
+    "speaker": "가야계 군인",
+    "text": "내 집안은 가야에서 왔지만 지금 신라 군사로 섰소. 자네가 배급 그릇을 가져오면 내가 같이 놓겠네.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s06-f929e0da32--initial",
+    "scene": "THR-C16-S06",
+    "speaker": "군영 서리",
+    "text": "아니오. 9서당은 중앙의 군사 조직이고 지방에는 10정이 있소. 한주에 둘, 다른 주에 하나씩 두는 조직이지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s06-a51116cde2--initial",
+    "scene": "THR-C16-S06",
+    "speaker": "가야계 군인",
+    "text": "좋소. 줄이 끝나면 같이 앉읍시다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s07-f0dca44340--initial",
+    "scene": "THR-C16-S07",
+    "speaker": "농민",
+    "text": "이 땅을 받았다고 하기에 내 밭이 생기는 줄 알았소. 왜 관리의 이름이 먼저 적혀 있소?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s07-29ae8f308f--initial",
+    "scene": "THR-C16-S07",
+    "speaker": "관리",
+    "text": "687년에 문무 관리에게 관료전을 지급한다는 조치요. 그대에게 새 땅을 나누는 명령이 아니오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s07-f0dca44340--initial",
+    "scene": "THR-C16-S07",
+    "speaker": "농민",
+    "text": "내가 농사짓는 곳인데 다른 사람이 받는다니, 더 모르겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s07-29ae8f308f--initial",
+    "scene": "THR-C16-S07",
+    "speaker": "관리",
+    "text": "관리의 보수를 토지에서 거두는 몫과 연결하는 것이오. 밭에 사는 모든 사람이 그 관리의 소유가 되는 것은 아니오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s07-f0dca44340--initial",
+    "scene": "THR-C16-S07",
+    "speaker": "농민",
+    "text": "일손까지 마음대로 데려가는 것은 아닌지 그것이 두려웠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s07-29ae8f308f--initial",
+    "scene": "THR-C16-S07",
+    "speaker": "관리",
+    "text": "관료전은 녹읍과 같은 권한을 주는 것이 아니오. 조세를 받을 권리와 그대의 노동을 부릴 권리를 나눠 보아야 하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s07-f0dca44340--initial",
+    "scene": "THR-C16-S07",
+    "speaker": "농민",
+    "text": "그러겠소. 일단 내 이름 아래 적힌 부담부터 읽어 주시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s08-4d3f155d18--initial",
+    "scene": "THR-C16-S08",
+    "speaker": "귀족 대리인",
+    "text": "이 장부를 다 내놓으라니, 오랫동안 거두어 온 몫을 하루 만에 없애겠다는 것이오?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s08-4d3f155d18--initial",
+    "scene": "THR-C16-S08",
+    "speaker": "귀족 대리인",
+    "text": "689년의 새 조치라 하오. 관료전을 준 687년의 문서까지 한데 가져가라니 무엇을 넘기는지 혼란스럽소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s08-f0dca44340--initial",
+    "scene": "THR-C16-S08",
+    "speaker": "농민",
+    "text": "전에는 곡식만이 아니라 사람도 불렀소. 언제까지 일하느냐 물으면 마을 전체가 들으라며 화를 냈지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s08-4d3f155d18--initial",
+    "scene": "THR-C16-S08",
+    "speaker": "귀족 대리인",
+    "text": "그렇다고 나라가 받을 조세까지 사라지는 것은 아니오. 좋아할 일만 기다리지는 마시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s08-f0dca44340--initial",
+    "scene": "THR-C16-S08",
+    "speaker": "농민",
+    "text": "내가 이미 낸 것까지 또 내라 할까 봐 왔소. 이 종이를 누가 받아 줄 것이오?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s08-4d3f155d18--initial",
+    "scene": "THR-C16-S08",
+    "speaker": "귀족 대리인",
+    "text": "이미 낸 항목에는 서로 확인한 표시를 하겠소. 이 줄부터 읽읍시다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s08-f0dca44340--initial",
+    "scene": "THR-C16-S08",
+    "speaker": "농민",
+    "text": "지난달에 곡식을 냈고, 그다음에는 사흘 일을 했소. 받은 사람이 여기 적혀 있소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s08-4d3f155d18--initial",
+    "scene": "THR-C16-S08",
+    "speaker": "귀족 대리인",
+    "text": "내 앞에서 잘못만 들추자는 것이오?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s08-4d3f155d18--initial",
+    "scene": "THR-C16-S08",
+    "speaker": "귀족 대리인",
+    "text": "그러면 무슨 권리를 넘기는지 확인하기 쉽겠구려. 봉인도 따로 하겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s08-f0dca44340--initial",
+    "scene": "THR-C16-S08",
+    "speaker": "농민",
+    "text": "다시 돌아오라고 할 줄 알았소. 오늘 여기서 확인해 주면 기다리겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s10-98825933db--initial",
+    "scene": "THR-C16-S10",
+    "speaker": "지방 서리",
+    "text": "이번 문서에는 녹읍을 없앤다고 쓰면 안 되오. 경덕왕께서 757년에 다시 두셨소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s10-98825933db--initial",
+    "scene": "THR-C16-S10",
+    "speaker": "지방 서리",
+    "text": "지명도 757년에 고쳤소. 관직 이름을 중국식으로 정비한 것은 759년 기록을 따로 보아야 하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s10-98825933db--initial",
+    "scene": "THR-C16-S10",
+    "speaker": "지방 서리",
+    "text": "이름만 보아서는 힘이 누구에게 기우는지 다 보이지 않소. 귀족이 거두는 몫이 돌아왔다는 것부터 사람들이 묻고 있소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c16-s10-98825933db--initial",
+    "scene": "THR-C16-S10",
+    "speaker": "지방 서리",
+    "text": "밖에서 문을 두드리는구려. 새 고향 이름을 아직 몰라 찾아온 사람일 것이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c17-s02-e44aa157cc--initial",
+    "scene": "THR-C17-S02",
+    "speaker": "제자",
+    "text": "스승님은 밤에는 금강삼매경론과 대승기신론소를 살피시고, 낮에는 이런 장터를 다니십니다. 화엄경소와 십문화쟁론도 이 가방에 있지요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c17-s03-e44aa157cc--initial",
+    "scene": "THR-C17-S03",
+    "speaker": "제자",
+    "text": "저 사람은 나무만 나르는데 공양 때는 왜 우리와 같은 자리에 앉습니까?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c17-s03-e44aa157cc--initial",
+    "scene": "THR-C17-S03",
+    "speaker": "제자",
+    "text": "그래서 화엄일승법계도를 돌며 읽게 하신 겁니까? 글줄이 서로 떨어져 있지 않군요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c17-s03-e44aa157cc--initial",
+    "scene": "THR-C17-S03",
+    "speaker": "제자",
+    "text": "오늘은 제가 나무를 나르겠습니다. 불 앞에 앉아 있을 때는 그 무게를 몰랐습니다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c17-s04-3ecef770c2--initial",
+    "scene": "THR-C17-S04",
+    "speaker": "동료 석공",
+    "text": "올해 시작한 불국사 공사가 하루 만에 끝나는 것도 아니오. 자네가 내일 손을 못 쓰면 누가 대신하나.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c17-s04-3ecef770c2--initial",
+    "scene": "THR-C17-S04",
+    "speaker": "동료 석공",
+    "text": "물과 천은 저쪽에 있고, 돌을 받칠 나무도 더 있소. 무엇부터 할까?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c17-s04-3ecef770c2--initial",
+    "scene": "THR-C17-S04",
+    "speaker": "동료 석공",
+    "text": "자네를 기다리는 편이 낫소. 돌 밑에서 누가 더 다치는 것보다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c17-s04-3ecef770c2--initial",
+    "scene": "THR-C17-S04",
+    "speaker": "동료 석공",
+    "text": "작업 순서도 바꿉시다. 작은 돌을 고르는 동안 자네 손부터 돌보면 되겠군.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c17-s06-9ac6ffd6a9--initial",
+    "scene": "THR-C17-S06",
+    "speaker": "조각 장인",
+    "text": "등불을 조금 낮춰 주시오. 밝기보다 그림자가 필요한 부분이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c17-s06-9ac6ffd6a9--initial",
+    "scene": "THR-C17-S06",
+    "speaker": "조각 장인",
+    "text": "돌 하나가 어긋나면 뒤의 곡선도 달라지오. 본존불만 보고 돌아가면 둘레의 보살과 제자들은 못 보겠지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c17-s06-9ac6ffd6a9--initial",
+    "scene": "THR-C17-S06",
+    "speaker": "조각 장인",
+    "text": "사진이 무엇인지는 모르겠지만, 보는 자리에 따라 달라진다는 말은 알겠소. 여기로 와 보시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c17-s06-9ac6ffd6a9--initial",
+    "scene": "THR-C17-S06",
+    "speaker": "조각 장인",
+    "text": "보여 줄 사람에게 닿는 모양을 찾는 것이겠지. 나는 글에 서툴러 돌의 깊이를 고르오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c17-s06-9ac6ffd6a9--initial",
+    "scene": "THR-C17-S06",
+    "speaker": "조각 장인",
+    "text": "돌가루는 털고 가시오. 자네 책에까지 들어가겠군.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c17-s07-5a3fc92f53--initial",
+    "scene": "THR-C17-S07",
+    "speaker": "필사자",
+    "text": "이 기록의 승려 혜초는 오천축을 다녀와 당으로 돌아왔소. 이 종이에 신라 귀환을 덧붙일 근거는 없소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c17-s07-5a3fc92f53--initial",
+    "scene": "THR-C17-S07",
+    "speaker": "필사자",
+    "text": "인도 여러 지역을 지나 중앙아시아의 길도 적었소. 풍속이며 먹는 것, 나라의 사정을 눈여겨보았지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c17-s07-5a3fc92f53--initial",
+    "scene": "THR-C17-S07",
+    "speaker": "필사자",
+    "text": "낯섦을 없앨 수는 없어도 본 것과 짐작한 것을 가를 수는 있겠지. 이 흐린 지명도 함부로 채우지 않으려 하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c17-s07-5a3fc92f53--initial",
+    "scene": "THR-C17-S07",
+    "speaker": "필사자",
+    "text": "여기 길 이름을 놓은 쪽과 생활을 적은 쪽이 있소. 어느 쪽에 눈이 더 머무르오?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c17-s07-5a3fc92f53--initial",
+    "scene": "THR-C17-S07",
+    "speaker": "필사자",
+    "text": "그 물음 하나면 이 먼 길을 너무 쉽게 접지는 않겠군.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c17-s07-5a3fc92f53--initial",
+    "scene": "THR-C17-S07",
+    "speaker": "필사자",
+    "text": "이 지명 뒤에 바로 이 사막을 놓으면 하루 만에 넘은 셈이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c17-s07-5a3fc92f53--initial",
+    "scene": "THR-C17-S07",
+    "speaker": "필사자",
+    "text": "좋소. 길을 모른다는 표시도 다음 사람이 읽을 정보가 되겠군.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c17-s07-5a3fc92f53--initial",
+    "scene": "THR-C17-S07",
+    "speaker": "필사자",
+    "text": "옷감과 음식이 다르다고 적힌 대목이 있소. 그걸 가난하고 못났다는 말로 바꾸어 베끼는 이도 있지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c17-s07-5a3fc92f53--initial",
+    "scene": "THR-C17-S07",
+    "speaker": "필사자",
+    "text": "그렇게 읽어 주니 내가 이 글을 베끼는 보람도 생기는군.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c17-s09-5a3fc92f53--initial",
+    "scene": "THR-C17-S09",
+    "speaker": "필사자",
+    "text": "이 경전 상자의 끈이 여러 번 바뀌었소. 어느 항구를 거쳤는지 표지가 겹쳐 있군.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c17-s09-5a3fc92f53--initial",
+    "scene": "THR-C17-S09",
+    "speaker": "필사자",
+    "text": "먹을 것을 댄 상인, 머물 곳을 내준 절도 있었지. 길 위의 공부에는 길 밖의 일이 많이 필요하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c17-s09-5a3fc92f53--initial",
+    "scene": "THR-C17-S09",
+    "speaker": "필사자",
+    "text": "사람은 떠나도 종이는 남을 수 있소. 다만 저절로 안전하게 건너지는 않지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c17-s09-5a3fc92f53--initial",
+    "scene": "THR-C17-S09",
+    "speaker": "필사자",
+    "text": "완도 쪽에 새 군사 거점을 청하는 장보고라는 이의 소식이 있소. 해적과 사람을 잡아 파는 일이 길을 망치고 있다 하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c17-s09-5a3fc92f53--initial",
+    "scene": "THR-C17-S09",
+    "speaker": "필사자",
+    "text": "이 빈 표지 하나를 가져가시오. 돌아올 배의 이름을 적을 수 있게.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c18-s01-e140fb8379--initial",
+    "scene": "THR-C18-S01",
+    "speaker": "항구 주민",
+    "text": "장보고라는 이가 바닷길을 지킬 군사를 청한다 하오. 당에서도 신라 사람이 팔리는 일을 보았다지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c18-s01-81e3f8d332--initial",
+    "scene": "THR-C18-S01",
+    "speaker": "목격자",
+    "text": "배가 동쪽 나루에서 뜨는 것은 보았소. 아이 이름은 옆 사람에게 들었고.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c18-s01-f5925d7835--initial",
+    "scene": "THR-C18-S01",
+    "speaker": "나래의 어머니",
+    "text": "도경이 보따리에 세 줄 매듭을 묶어 주었소. 그걸 봤다는 이를 아직 못 만났지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c18-s03-4731498c4e--initial",
+    "scene": "THR-C18-S03",
+    "speaker": "통역 상인",
+    "text": "이 상자에 당에서 왔다고 쓰면 값이 더 붙겠지. 어차피 사는 이는 모를 텐데.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c18-s03-4731498c4e--initial",
+    "scene": "THR-C18-S03",
+    "speaker": "통역 상인",
+    "text": "돌아올 손님까지 생각하면 오늘 글자 하나가 오래 남겠군. 표지를 다시 붙이겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c18-s03-4731498c4e--initial",
+    "scene": "THR-C18-S03",
+    "speaker": "통역 상인",
+    "text": "멀리서 전해진 기록과 물건이 있어도 한 사람이 그 길을 전부 왔다고 단정하지는 마시오. 여러 항구의 손을 거쳤을 수도 있으니.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c18-s03-4731498c4e--initial",
+    "scene": "THR-C18-S03",
+    "speaker": "통역 상인",
+    "text": "당의 신라인 거주지인 신라방과 그들을 관리하는 신라소가 길잡이가 되오. 신라원과 마을인 신라촌도 교류의 발판이 되었지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c18-s03-4731498c4e--initial",
+    "scene": "THR-C18-S03",
+    "speaker": "통역 상인",
+    "text": "달력도 함께 건너오오. 당의 선명력으로 날짜를 맞추는 일을 보니 바다는 물건 상자만 나르는 길이 아니구려.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c18-s03-4731498c4e--initial",
+    "scene": "THR-C18-S03",
+    "speaker": "통역 상인",
+    "text": "도경이라는 아이의 이름도 신라인들이 모이는 곳에 전해 보겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c18-s04-e9fb7af351--initial",
+    "scene": "THR-C18-S04",
+    "speaker": "선장",
+    "text": "짐이 무겁고 바람도 좋지 않소. 지금 바로 나가자는 약속은 못 하겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c18-s04-e9fb7af351--initial",
+    "scene": "THR-C18-S04",
+    "speaker": "선장",
+    "text": "기다리며 짐을 나누거나, 먼저 무게를 줄이고 다음 출항 때 다시 살필 수 있소. 어느 쪽이든 지금 바람을 이긴다고 하지는 맙시다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c18-s04-e9fb7af351--initial",
+    "scene": "THR-C18-S04",
+    "speaker": "선장",
+    "text": "그동안 밧줄도 다시 보겠소. 기다리는 시간을 버린 셈으로 만들지는 맙시다.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c18-s04-e9fb7af351--initial",
+    "scene": "THR-C18-S04",
+    "speaker": "선장",
+    "text": "물과 선원 몫을 남기고 화물을 줄여 보겠소. 그래도 바람이 가라앉아야 출항할 수 있소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c18-s05-658fa277b7--initial",
+    "scene": "THR-C18-S05",
+    "speaker": "연락관",
+    "text": "청해진의 배를 논하던 사람들이 이제 왕실의 혼인을 묻는군. 편지 묶음이 전과 달라졌소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c18-s05-658fa277b7--initial",
+    "scene": "THR-C18-S05",
+    "speaker": "연락관",
+    "text": "장보고는 김우징을 도와 신무왕으로 세우는 일에 힘을 보탰소. 바다의 군사와 재물이 중앙의 일에도 영향을 주게 되었지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c18-s05-658fa277b7--initial",
+    "scene": "THR-C18-S05",
+    "speaker": "연락관",
+    "text": "뒤에는 문성왕과 장보고의 딸을 잇는 혼인 구상도 나왔소. 그러나 왕실과 중앙 귀족의 신분 질서가 쉽게 문을 열겠소?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c18-s05-658fa277b7--initial",
+    "scene": "THR-C18-S05",
+    "speaker": "연락관",
+    "text": "정치에 깊이 들어간 장보고를 두려워하는 이도 있었소. 편을 바꾼 자, 옛 약속을 잊은 자도 얽혀 있지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c18-s05-658fa277b7--initial",
+    "scene": "THR-C18-S05",
+    "speaker": "연락관",
+    "text": "항구에서 기다리는 이들은 이 편지들이 자신에게 무엇을 가져올지 모르오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c18-s07-fd7e22600f--initial",
+    "scene": "THR-C18-S07",
+    "speaker": "나래의 조카",
+    "text": "이 장부를 버리면 가벼워지지 않아요?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c18-s07-fd7e22600f--initial",
+    "scene": "THR-C18-S07",
+    "speaker": "나래의 조카",
+    "text": "외할머니 이름이 여기 없어요. 다른 집 아래에 적혔나 봐요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c18-s07-fd7e22600f--initial",
+    "scene": "THR-C18-S07",
+    "speaker": "나래의 조카",
+    "text": "저울은 제가 들게요. 대신 편지 묶음은 젖지 않는 쪽에 넣어 주세요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c18-s08-3bcf3ac6c0--initial",
+    "scene": "THR-C18-S08",
+    "speaker": "기록관",
+    "text": "청해진 표식을 지우면 바닷길 지도도 지워야 하오?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c18-s08-3bcf3ac6c0--initial",
+    "scene": "THR-C18-S08",
+    "speaker": "기록관",
+    "text": "서해와 남해의 지방 세력들이 길과 교역을 장악하며 자라고 있소. 송악에도 바닷길을 바탕으로 힘을 키우는 세력이 있지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c18-s08-3bcf3ac6c0--initial",
+    "scene": "THR-C18-S08",
+    "speaker": "기록관",
+    "text": "그 힘이 중앙의 명령보다 가까운 곳도 생겼소. 호족과 지방의 승려, 뜻을 펴지 못한 학자들이 서로 만나는 길이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c18-s08-3bcf3ac6c0--initial",
+    "scene": "THR-C18-S08",
+    "speaker": "기록관",
+    "text": "그럼 889년의 농촌으로 가기 전에 822년의 오래된 문서부터 보시오. 같은 지방의 소란이어도 시작한 사람과 이유가 다르오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c18-s08-3bcf3ac6c0--initial",
+    "scene": "THR-C18-S08",
+    "speaker": "기록관",
+    "text": "책이 다시 과거 쪽으로 열리는군.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s01-98825933db--initial",
+    "scene": "THR-C19-S01",
+    "speaker": "지방 서리",
+    "text": "822년 헌덕왕 때의 김헌창 이야기라면 그 한 줄로는 안 되오. 왕위에 오르지 못했던 김주원의 아들이 지방에서 세력을 모았지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s01-98825933db--initial",
+    "scene": "THR-C19-S01",
+    "speaker": "지방 서리",
+    "text": "웅천주에서 일어나 나라를 장안, 연호를 경운이라 했지만 진압되었소. 그 깃발 아래 있었던 사람들의 이유까지 같았을지는 또 살펴야지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s01-6a54b38f7e--initial",
+    "scene": "THR-C19-S01",
+    "speaker": "학동",
+    "text": "이건 할아버지의 공부책이에요. 788년 원성왕이 독서삼품과를 두었으니 경전을 잘 읽으면 길이 열릴 거라고 믿으셨대요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s01-6a54b38f7e--initial",
+    "scene": "THR-C19-S01",
+    "speaker": "학동",
+    "text": "외운 글은 늘었는데 오를 자리에는 끝이 있었대요. 그래서 이 책을 내게 주면서 기대하라는 말도 하지 못하셨어요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s01-98825933db--initial",
+    "scene": "THR-C19-S01",
+    "speaker": "지방 서리",
+    "text": "중앙 귀족의 힘이 커지고 상대등의 무게가 커지는 동안, 왕을 가까이 보좌하던 시중의 힘은 전과 달라졌소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s03-752c386769--initial",
+    "scene": "THR-C19-S03",
+    "speaker": "성주 연락관",
+    "text": "문이 닫히면 밖에 남지 마시오. 요즘은 중앙의 군사를 기다리고 있을 수가 없소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s03-752c386769--initial",
+    "scene": "THR-C19-S03",
+    "speaker": "성주 연락관",
+    "text": "성주가 사람과 물자를 모았소. 주변의 큰 집과 군사를 거느린 이들이 합세했지. 사람들은 이제 이곳 호족에게 먼저 도움을 청하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s03-fad44df720--initial",
+    "scene": "THR-C19-S03",
+    "speaker": "주민",
+    "text": "도적을 막아 준 것은 고맙지요. 그런데 지키는 값이라며 가져가는 곡식도 늘었어요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s03-752c386769--initial",
+    "scene": "THR-C19-S03",
+    "speaker": "성주 연락관",
+    "text": "군사를 먹이지 않고 성을 지킬 수는 없소. 그렇다고 제멋대로 거두는 일이 없어야 한다는 말도 알겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s03-fad44df720--initial",
+    "scene": "THR-C19-S03",
+    "speaker": "주민",
+    "text": "그럼 우리 이름으로 적어 줘요. 지켜 달라는 말과 덜 가져가 달라는 말을 같이 했다고.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s04-fad44df720--initial",
+    "scene": "THR-C19-S04",
+    "speaker": "주민",
+    "text": "경전 읽는 자리에 앉으면 내 차례가 올까 봐 겁이 납니다. 글자를 모르니까요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s04-5b196d2ab3--initial",
+    "scene": "THR-C19-S04",
+    "speaker": "승려",
+    "text": "오늘은 앉아 숨이 오가는 데 마음을 두어 보시오. 참선하며 스스로 깨닫는 길도 있소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s04-5b196d2ab3--initial",
+    "scene": "THR-C19-S04",
+    "speaker": "승려",
+    "text": "서로 아무 상관이 없는 불교라는 뜻은 아니오. 다만 배움의 길을 말하는 방식과 수행에 두는 무게가 다르지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s04-5b196d2ab3--initial",
+    "scene": "THR-C19-S04",
+    "speaker": "승려",
+    "text": "범일의 사굴산문, 홍척의 실상산문, 무염의 성주산문 같은 흐름이 있소. 도의에서 이어지는 가지산문의 계통도 들을 수 있지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s04-fad44df720--initial",
+    "scene": "THR-C19-S04",
+    "speaker": "주민",
+    "text": "내가 어디에 속하는지 외워야 여기 앉을 수 있는 겁니까?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s05-5b196d2ab3--initial",
+    "scene": "THR-C19-S05",
+    "speaker": "승려",
+    "text": "그대는 사람의 말을 들으러 다니더니, 오늘은 산에게 정답을 내놓으라 하는구려.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s05-5b196d2ab3--initial",
+    "scene": "THR-C19-S05",
+    "speaker": "승려",
+    "text": "풍수는 땅의 형세와 기운을 읽어 삶의 자리를 생각하는 믿음이오. 내가 그대의 모든 내일을 약속할 수는 없소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s05-5b196d2ab3--initial",
+    "scene": "THR-C19-S05",
+    "speaker": "승려",
+    "text": "지방의 산과 터에도 큰 뜻이 있다고 여기면, 왕도만 바라보던 눈이 달라지겠지. 지방 세력이 그 말에 귀를 기울이는 까닭도 생각해 보시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s05-fad44df720--initial",
+    "scene": "THR-C19-S05",
+    "speaker": "주민",
+    "text": "내가 바라는 것은 물이 넘치지 않는 밭이오. 산의 큰 뜻도 좋지만 아이들 밥부터 이어져야 하니까.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s05-5b196d2ab3--initial",
+    "scene": "THR-C19-S05",
+    "speaker": "승려",
+    "text": "이제 산에서 내려가 봅시다. 그대가 묻고 싶은 사람들은 아래에 있소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s05-fad44df720--initial",
+    "scene": "THR-C19-S05",
+    "speaker": "주민",
+    "text": "저 굽이에 물이 쌓이면 밭으로 넘어오오. 지난번에는 종자도 젖었지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s05-5b196d2ab3--initial",
+    "scene": "THR-C19-S05",
+    "speaker": "승려",
+    "text": "땅을 읽는 이야기에 여기 사는 이의 기억을 보태는군. 그것도 놓치지 말아야지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s05-fad44df720--initial",
+    "scene": "THR-C19-S05",
+    "speaker": "주민",
+    "text": "할머니는 저 봉우리를 집을 지켜 주는 등이라 불렀소. 흉년에도 거기에 올라 마을을 내려다보셨지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s05-5b196d2ab3--initial",
+    "scene": "THR-C19-S05",
+    "speaker": "승려",
+    "text": "그대의 글에서 믿는 사람의 목소리가 사라지지 않겠군.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s07-f44df11833--initial",
+    "scene": "THR-C19-S07",
+    "speaker": "이웃 농민",
+    "text": "원종과 애노를 따라 사람들이 모였소. 더는 내라는 대로 내고 살 수 없다고.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s07-f44df11833--initial",
+    "scene": "THR-C19-S07",
+    "speaker": "이웃 농민",
+    "text": "우리가 이긴다고 한 번만 말해 주면 좋겠소. 그러면 마음이라도 놓겠는데.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s07-f44df11833--initial",
+    "scene": "THR-C19-S07",
+    "speaker": "이웃 농민",
+    "text": "그러면 듣고 싶은 말만 고르지 마시오. 무서워서 떨었다는 말도 같이 써 주시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s07-f44df11833--initial",
+    "scene": "THR-C19-S07",
+    "speaker": "이웃 농민",
+    "text": "우리 조카도 같이 데려가 주겠소? 아이들을 맡길 사람이 필요했소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s07-f44df11833--initial",
+    "scene": "THR-C19-S07",
+    "speaker": "이웃 농민",
+    "text": "나는 세금 독촉을 보았소. 관군이 온다는 건 옆 마을에서 들었고.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s09-3bcf3ac6c0--initial",
+    "scene": "THR-C19-S09",
+    "speaker": "기록관",
+    "text": "남쪽의 갈라진 길을 따라가면 견훤과 궁예가 세력을 일으키는 장면이 나오오. 바로 넘기겠소?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s09-3bcf3ac6c0--initial",
+    "scene": "THR-C19-S09",
+    "speaker": "기록관",
+    "text": "발해를 말하는군. 그 첫 장은 698년이오. 지금 읽은 889년보다 훨씬 앞이지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s09-3bcf3ac6c0--initial",
+    "scene": "THR-C19-S09",
+    "speaker": "기록관",
+    "text": "맞소. 발해의 건국을 보려면 696년 이후 영주를 떠난 이들의 길부터 따라가야 하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c19-s09-3bcf3ac6c0--initial",
+    "scene": "THR-C19-S09",
+    "speaker": "기록관",
+    "text": "같은 이름의 나라를 기억해도 같은 사람은 아닐 수 있소. 그대만 책장을 건너뛰니.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c20-s03-af64c4f806--initial",
+    "scene": "THR-C20-S03",
+    "speaker": "전령",
+    "text": "천문령에서 당의 추격군과 싸웠소. 대조영 쪽이 승리했으며 길을 이어 갈 준비를 하라는 소식이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c20-s03-af64c4f806--initial",
+    "scene": "THR-C20-S03",
+    "speaker": "전령",
+    "text": "그렇게까지 말할 수는 없소. 다만 지금 들고 온 소식은 전멸이 아니라 승리요. 이동 지시는 확인되는 대로 전하겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c20-s07-87834c06e6--initial",
+    "scene": "THR-C20-S07",
+    "speaker": "발해 사신",
+    "text": "당에서 대조영을 발해군왕으로 책봉했소. 이제 외교 문서에도 그 이름이 더 분명하게 드러날 것이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c20-s07-87834c06e6--initial",
+    "scene": "THR-C20-S07",
+    "speaker": "발해 사신",
+    "text": "그 사이의 삶과 다스림이 사라질 수는 없지. 713년의 책봉은 당과 맺는 관계의 일이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c20-s07-87834c06e6--initial",
+    "scene": "THR-C20-S07",
+    "speaker": "발해 사신",
+    "text": "당이 쓰는 명칭을 받았다고 우리의 모든 일을 당이 결정한다는 뜻도 아니오. 관계는 문구 하나보다 복잡하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c20-s07-87834c06e6--initial",
+    "scene": "THR-C20-S07",
+    "speaker": "발해 사신",
+    "text": "다음 문서가 오면 새 날짜를 적어 주시오. 이전 날짜 위에 덮어쓰지 말고.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c20-s08-3bcf3ac6c0--initial",
+    "scene": "THR-C20-S08",
+    "speaker": "기록관",
+    "text": "대조영의 장을 닫고 아들 대무예의 장을 열어야 하오. 무왕이 이어받았소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c20-s08-3bcf3ac6c0--initial",
+    "scene": "THR-C20-S08",
+    "speaker": "기록관",
+    "text": "무왕이 쓰는 연호는 인안이오. 앞으로 당과 부딪치는 기록에서도 그 연호가 보일 것이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c20-s08-3bcf3ac6c0--initial",
+    "scene": "THR-C20-S08",
+    "speaker": "기록관",
+    "text": "동쪽의 새 나라가 자리를 잡았다고 주변의 관계가 다 편해진 것은 아니오. 흑수말갈과 당을 어떻게 대할지 왕실 안에서도 뜻이 갈리지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c20-s08-3bcf3ac6c0--initial",
+    "scene": "THR-C20-S08",
+    "speaker": "기록관",
+    "text": "해루가 놓고 간 편지요. 다음에 돌아오면 그릇 굽는 곳을 먼저 들러 달라 했소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s01-658fa277b7--initial",
+    "scene": "THR-C21-S01",
+    "speaker": "연락관",
+    "text": "전쟁을 말리는 글을 겁쟁이의 변명이라고 묶으라는 말이 나왔소. 그 묶음에 넣어도 되겠소?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s01-658fa277b7--initial",
+    "scene": "THR-C21-S01",
+    "speaker": "연락관",
+    "text": "무왕의 동생 대문예가 흑수말갈을 공격하는 일에 반대했소. 당과의 충돌까지 커질 것을 걱정했지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s01-658fa277b7--initial",
+    "scene": "THR-C21-S01",
+    "speaker": "연락관",
+    "text": "갈등 끝에 대문예는 당으로 망명했소. 왕은 그 일이 당을 향한 분노를 더할 일로 받아들였지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s01-658fa277b7--initial",
+    "scene": "THR-C21-S01",
+    "speaker": "연락관",
+    "text": "그렇다고 두 사람이 같은 일을 했다는 말로 흐릴 수는 없소. 왕의 명령과 망명이라는 행동이 남았으니.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s01-658fa277b7--initial",
+    "scene": "THR-C21-S01",
+    "speaker": "연락관",
+    "text": "그 글은 전쟁 반대 의견으로 따로 묶어 두겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s02-8dc5d9b0bb--initial",
+    "scene": "THR-C21-S02",
+    "speaker": "병사",
+    "text": "내 편지에는 돌아온다는 말만 세 번 썼소. 언제 돌아올지는 한 번도 못 썼는데.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s02-8dc5d9b0bb--initial",
+    "scene": "THR-C21-S02",
+    "speaker": "병사",
+    "text": "장문휴 장군을 따라 등주로 가오. 당의 산둥반도 쪽이니 바다를 건너야 하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s02-8dc5d9b0bb--initial",
+    "scene": "THR-C21-S02",
+    "speaker": "병사",
+    "text": "왕의 연호를 쓰면 종이가 당당해 보이는데 내 손은 자꾸 떨리오. 그건 편지에서 빼야 하겠지?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s02-8dc5d9b0bb--initial",
+    "scene": "THR-C21-S02",
+    "speaker": "병사",
+    "text": "그러면 무섭다고 한 줄 쓸까. 다만 내가 할 일도 남아 있소. 이 보급 꾸러미를 확인해야 하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s02-8dc5d9b0bb--initial",
+    "scene": "THR-C21-S02",
+    "speaker": "병사",
+    "text": "출항이 다가올수록 마음만 급했는데, 함께 확인해 주어 고맙소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s02-8dc5d9b0bb--initial",
+    "scene": "THR-C21-S02",
+    "speaker": "병사",
+    "text": "아이가 태어나면 내 아버지 이름을 꼭 따르지 않아도 된다고 써 주시오. 내가 고집을 부렸거든.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s02-8dc5d9b0bb--initial",
+    "scene": "THR-C21-S02",
+    "speaker": "병사",
+    "text": "고맙소. 돌아간다는 약속 말고도 남길 말이 있었군.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s02-8dc5d9b0bb--initial",
+    "scene": "THR-C21-S02",
+    "speaker": "병사",
+    "text": "물이 든 항아리 수가 적힌 것과 다르오. 빈 항아리 하나가 섞였군.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s02-8dc5d9b0bb--initial",
+    "scene": "THR-C21-S02",
+    "speaker": "병사",
+    "text": "전쟁을 겁내느라 내 눈앞의 짐도 못 봤소. 이제 이 일부터 끝내겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s03-87834c06e6--initial",
+    "scene": "THR-C21-S03",
+    "speaker": "발해 사신",
+    "text": "왕이 바뀌었소. 문왕 대흠무께서는 당과 관계를 다듬고 제도를 정비하는 일에 힘을 기울이고 있소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s03-87834c06e6--initial",
+    "scene": "THR-C21-S03",
+    "speaker": "발해 사신",
+    "text": "전쟁의 기억이 없어지는 것은 아니오. 그래도 사절이 오가고 배울 제도를 들여올 길은 열어야 하지 않겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s03-87834c06e6--initial",
+    "scene": "THR-C21-S03",
+    "speaker": "발해 사신",
+    "text": "신라도로 사람과 문서를 보내오. 가까운 나라와 소식이 끊기면 먼 나라와 통하는 길도 좁아지니.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s03-87834c06e6--initial",
+    "scene": "THR-C21-S03",
+    "speaker": "발해 사신",
+    "text": "관청으로 가 보시오. 종이가 오가는 길도 바다만큼 복잡하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s04-29ae8f308f--initial",
+    "scene": "THR-C21-S04",
+    "speaker": "관리",
+    "text": "그 서류는 중대성에서 온 것이오? 선조성을 거쳐 정당성으로 와야 하는 묶음과 섞였군.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s04-29ae8f308f--initial",
+    "scene": "THR-C21-S04",
+    "speaker": "관리",
+    "text": "정당성을 이끄는 대내상이 중요한 자리에 있소. 제도를 받아들여도 우리 운영까지 똑같다고 하면 곤란하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s04-29ae8f308f--initial",
+    "scene": "THR-C21-S04",
+    "speaker": "관리",
+    "text": "충부·인부·의부, 지부·예부·신부요. 누구의 일을 맡길지 보고 제대로 나누시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s04-29ae8f308f--initial",
+    "scene": "THR-C21-S04",
+    "speaker": "관리",
+    "text": "관원의 잘못을 살피는 중정대의 일도 그런 점과 닿아 있지. 감찰 문서와 일반 요청은 구별하시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s04-29ae8f308f--initial",
+    "scene": "THR-C21-S04",
+    "speaker": "관리",
+    "text": "문왕을 황상이라 부르는 기록도 살펴보시오. 당의 제도를 배운다고 우리 왕과 나라를 생각하는 말까지 한 가지만 있는 것은 아니오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s04-29ae8f308f--initial",
+    "scene": "THR-C21-S04",
+    "speaker": "관리",
+    "text": "이 가족의 종이를 다시 돌려보내지 않게 맡을 곳을 확인했소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s06-d990ae66a6--initial",
+    "scene": "THR-C21-S06",
+    "speaker": "장교",
+    "text": "선왕께서 여러 말갈 집단을 복속시키며 북쪽의 영역을 넓혔소. 새 지도는 더 큰 천이 필요하겠군.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s06-d990ae66a6--initial",
+    "scene": "THR-C21-S06",
+    "speaker": "장교",
+    "text": "사람들이 이미 살고 있지. 누가 다스리고 무엇을 내며 어느 길로 왕래할지도 달라질 것이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s06-d990ae66a6--initial",
+    "scene": "THR-C21-S06",
+    "speaker": "장교",
+    "text": "북쪽으로 영역을 넓히고 서쪽 요동으로 나아갔소. 남쪽 신라와 맞닿는 경계도 생각해야 하는 넓이요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s06-d990ae66a6--initial",
+    "scene": "THR-C21-S06",
+    "speaker": "장교",
+    "text": "큰 이름을 들으면 자랑스럽소. 다만 먼 고을의 보고가 도착하지 않으면 큰 지도를 가졌다는 것만으로는 다스릴 수 없지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s06-d990ae66a6--initial",
+    "scene": "THR-C21-S06",
+    "speaker": "장교",
+    "text": "그럼 역참으로 가 보시오. 그대가 찍은 작은 마을들이 오늘도 답장을 기다리고 있소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s07-386d8c7a88--initial",
+    "scene": "THR-C21-S07",
+    "speaker": "역참 관리",
+    "text": "이 서신이 다른 부로 갔다 돌아왔소. 이름 하나를 급하게 읽는 바람에 말만 지쳤군.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s07-386d8c7a88--initial",
+    "scene": "THR-C21-S07",
+    "speaker": "역참 관리",
+    "text": "맞소. 이 지도는 발해 것이오. 상경·중경·동경·남경·서경, 각 경과 부로 가는 길을 따로 확인하시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s07-386d8c7a88--initial",
+    "scene": "THR-C21-S07",
+    "speaker": "역참 관리",
+    "text": "말도 물품도 배와 길을 따라 나가오. 당의 발해관으로 가는 이도 있고, 신라도로 소식을 전하는 이도 있지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s07-386d8c7a88--initial",
+    "scene": "THR-C21-S07",
+    "speaker": "역참 관리",
+    "text": "이 작은 서신은 주자감에 간 아들에게 보내는 것이오. 나라의 큰 보고만 먼저 보내다 보면 이런 것은 자꾸 밀리오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s07-386d8c7a88--initial",
+    "scene": "THR-C21-S07",
+    "speaker": "역참 관리",
+    "text": "이번에는 목적지 이름을 둘이 함께 읽고 보내겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s09-5b196d2ab3--initial",
+    "scene": "THR-C21-S09",
+    "speaker": "승려",
+    "text": "이불병좌상을 말하는군. 닮은 형식과 만든 곳의 표현을 함께 보아야지, 닮았다고 모든 뜻을 다 안다고 할 수는 없소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s09-5b196d2ab3--initial",
+    "scene": "THR-C21-S09",
+    "speaker": "승려",
+    "text": "나란히 앉은 배치부터 보시오. 옷주름과 얼굴은 이 상 자체의 모습으로 그려야 하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s10-3bcf3ac6c0--initial",
+    "scene": "THR-C21-S10",
+    "speaker": "기록관",
+    "text": "전성기 그림 다음에 멸망 그림을 붙이니 책이 훨씬 얇아지는군.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s10-3bcf3ac6c0--initial",
+    "scene": "THR-C21-S10",
+    "speaker": "기록관",
+    "text": "대이진, 대건황, 대현석, 대위해를 거쳐 대인선의 이름으로 이어지오. 기록이 충분하지 않아 모든 재위 연도를 같은 확실함으로 적기는 어렵소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s10-3bcf3ac6c0--initial",
+    "scene": "THR-C21-S10",
+    "speaker": "기록관",
+    "text": "누군가는 나라가 잘살다가 사치해 망했다고 한 줄로 적었소. 이해하기는 쉬울 것이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c21-s10-3bcf3ac6c0--initial",
+    "scene": "THR-C21-S10",
+    "speaker": "기록관",
+    "text": "그러면 926년 앞의 마지막 소식을 차례로 보겠소? 결말을 이미 알아도 사람들이 무엇을 알았는지는 다를 것이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c22-s01-af64c4f806--initial",
+    "scene": "THR-C22-S01",
+    "speaker": "전령",
+    "text": "부여부 쪽이 공격받고 있소. 거란 군사가 빠르게 내려온다는 소식이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c22-s01-af64c4f806--initial",
+    "scene": "THR-C22-S01",
+    "speaker": "전령",
+    "text": "내가 가지고 온 것은 부여부의 소식이오. 상경 이야기까지 내 이름으로 전하면 안 되오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c22-s01-fad44df720--initial",
+    "scene": "THR-C22-S01",
+    "speaker": "주민",
+    "text": "그럼 어디로 가라는 거요? 길마다 먼저 도망온 사람이 다른 말을 하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c22-s01-af64c4f806--initial",
+    "scene": "THR-C22-S01",
+    "speaker": "전령",
+    "text": "거란이 커지면서 우리와 주변 나라의 관계도 위태로워졌소. 도움을 기다린다는 말만으로 이 진격이 멈추지는 않을 것이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c22-s01-fad44df720--initial",
+    "scene": "THR-C22-S01",
+    "speaker": "주민",
+    "text": "지난겨울에는 여기서 장을 봤소. 같은 길이 오늘은 버리고 가야 하는 길이구려.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c22-s01-af64c4f806--initial",
+    "scene": "THR-C22-S01",
+    "speaker": "전령",
+    "text": "부여부가 함락되었다는 확인이 왔소. 이제 상경 쪽 소식을 계속 받아야 하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c22-s02-56a0fd1527--initial",
+    "scene": "THR-C22-S02",
+    "speaker": "이웃",
+    "text": "내 수레에 조금 더 실을 수 있어요. 대신 길이 막히기 전에 같이 움직여야 해요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c22-s02-56a0fd1527--initial",
+    "scene": "THR-C22-S02",
+    "speaker": "이웃",
+    "text": "솥은 우리 집 것을 함께 써요. 그건 내려놓아도 굶기지는 않을게요.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c22-s04-3696d49ce7--initial",
+    "scene": "THR-C22-S04",
+    "speaker": "유민 안내자",
+    "text": "남쪽으로 가겠다는 집과 이 근처에 남겠다는 집이 갈렸소. 다들 같은 행렬을 따라갈 수 있는 형편도 아니오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c22-s04-3696d49ce7--initial",
+    "scene": "THR-C22-S04",
+    "speaker": "유민 안내자",
+    "text": "거란에 의해 옮겨진 이도 있고, 다른 지역으로 흩어진 이도 있소. 남았다고 고향을 덜 잃은 것도 아니지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c22-s04-3696d49ce7--initial",
+    "scene": "THR-C22-S04",
+    "speaker": "유민 안내자",
+    "text": "길이 안전하다는 소문도 날마다 바뀌오. 내가 아는 것은 지나온 길의 상태까지요. 그 앞의 일을 보장할 수는 없소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c22-s04-3696d49ce7--initial",
+    "scene": "THR-C22-S04",
+    "speaker": "유민 안내자",
+    "text": "우리가 다른 길로 간 사실도 남겨 주시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c22-s04-3696d49ce7--initial",
+    "scene": "THR-C22-S04",
+    "speaker": "유민 안내자",
+    "text": "중간에 소식을 맡길 곳을 아는 만큼 덧붙이겠소. 모르는 곳은 비워 두고.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c22-s04-3696d49ce7--initial",
+    "scene": "THR-C22-S04",
+    "speaker": "유민 안내자",
+    "text": "내가 건넌 나루는 사흘 전까지 열렸소. 지금도 그렇다고 보장하지는 못하오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c22-s05-658fa277b7--initial",
+    "scene": "THR-C22-S05",
+    "speaker": "연락관",
+    "text": "발해가 무너진 뒤 벌써 여덟 해요. 대광현이 고려로 귀부하는 이 행렬에 늦게 합류한 사람들도 있소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c22-s05-658fa277b7--initial",
+    "scene": "THR-C22-S05",
+    "speaker": "연락관",
+    "text": "그 사이 누구는 남았고 누구는 떠돌았지. 지금 하나의 줄에 서 있어도 걸어온 길은 다르오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c22-s05-658fa277b7--initial",
+    "scene": "THR-C22-S05",
+    "speaker": "연락관",
+    "text": "고려가 우리를 받아들이는 일이 새 터전을 마련할 길이 되기를 바라고 있소. 하지만 오늘 도착했다고 내일 살림이 다 갖추어지지는 않지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c22-s05-658fa277b7--initial",
+    "scene": "THR-C22-S05",
+    "speaker": "연락관",
+    "text": "저쪽에서 가족을 찾고 있소. 이름이 같아도 누구의 딸인지, 어느 고을에서 왔는지까지 들어 주시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c22-s06-c722a71442--initial",
+    "scene": "THR-C22-S06",
+    "speaker": "접수 담당자",
+    "text": "어디서 와서 누구와 함께 사는지 알아야 하오. 고향을 숨기라는 요청은 하지 않았소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c22-s06-c722a71442--initial",
+    "scene": "THR-C22-S06",
+    "speaker": "접수 담당자",
+    "text": "들리는 대로 쓰면 글자가 달라질 수 있겠군. 옛 이름을 아는 가족도 함께 확인해 주시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c22-s06-c722a71442--initial",
+    "scene": "THR-C22-S06",
+    "speaker": "접수 담당자",
+    "text": "옷을 기울 사람이 필요한 곳을 물어보겠소. 도착한 가족 수와 잠잘 곳도 함께 살펴야겠군.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c22-s07-3bcf3ac6c0--initial",
+    "scene": "THR-C22-S07",
+    "speaker": "기록관",
+    "text": "그렇게 적으면 은서의 여덟 해는 잘못 기억한 일이 되어 버리오. 그대가 편해지려고 그 사람의 삶을 고칠 것이오?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c22-s07-3bcf3ac6c0--initial",
+    "scene": "THR-C22-S07",
+    "speaker": "기록관",
+    "text": "926년 대인선의 항복과 발해 멸망을 확인할 수 있소. 대인선이 돌아와 나라를 다시 세웠다는 성공담은 그 근거가 없소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c22-s07-3bcf3ac6c0--initial",
+    "scene": "THR-C22-S07",
+    "speaker": "기록관",
+    "text": "이후의 여러 부흥 움직임과 유민들의 생활은 별도 기록으로 이어지오. 오늘 읽는 범위 밖이라고 존재까지 없애지는 마시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c22-s07-3bcf3ac6c0--initial",
+    "scene": "THR-C22-S07",
+    "speaker": "기록관",
+    "text": "그렇소. 이어진다는 말은 반드시 옛 나라의 모습 그대로 돌아온다는 뜻은 아니오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c23-s01-658fa277b7--initial",
+    "scene": "THR-C23-S01",
+    "speaker": "연락관",
+    "text": "완산주에 온 까닭이 무엇이오? 오늘은 견훤께서 세운 후백제의 일을 알리느라 모두 바쁘오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c23-s01-658fa277b7--initial",
+    "scene": "THR-C23-S01",
+    "speaker": "연락관",
+    "text": "옛 백제의 땅과 이름을 잇겠다는 뜻이오. 서남부의 힘을 모아 신라만 바라보고 있지 않겠다는 것이지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c23-s01-658fa277b7--initial",
+    "scene": "THR-C23-S01",
+    "speaker": "연락관",
+    "text": "모두가 같은 마음일 수는 없소. 군사가 들어오는 일부터 두려워하는 집도 있지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c23-s01-658fa277b7--initial",
+    "scene": "THR-C23-S01",
+    "speaker": "연락관",
+    "text": "외부 세력과의 관계도 맺어 나가야 하고, 안에서는 곡식과 군사를 마련해야 하오. 이름을 세운 뒤 할 일이 더 많소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c23-s01-658fa277b7--initial",
+    "scene": "THR-C23-S01",
+    "speaker": "연락관",
+    "text": "요청을 가져오려거든 누구의 일인지 들고 오시오. 새 깃발 아래서도 이름 없는 종이는 자꾸 밀리니.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c23-s02-f08602cf61--initial",
+    "scene": "THR-C23-S02",
+    "speaker": "옆집 상인",
+    "text": "우리 집도 낸 증표가 바뀌었다며 다시 가져오라 했어요. 가게를 닫고 다녀올 시간이 없는데.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c23-s03-bb4cf3ede4--initial",
+    "scene": "THR-C23-S03",
+    "speaker": "왕건의 부하",
+    "text": "왕건 장군을 찾는 것이오? 항로와 군량에 관한 보고를 받고 계시오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c23-s03-bb4cf3ede4--initial",
+    "scene": "THR-C23-S03",
+    "speaker": "왕건의 부하",
+    "text": "새 나라를 세운 분은 궁예요. 송악을 바탕으로 후고구려를 세웠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c23-s03-bb4cf3ede4--initial",
+    "scene": "THR-C23-S03",
+    "speaker": "왕건의 부하",
+    "text": "송악의 해상 기반과 왕건 집안의 힘이 군사 활동에도 도움이 되오. 그렇다고 장수가 모두 왕이 되는 것은 아니겠지.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c23-s03-bb4cf3ede4--initial",
+    "scene": "THR-C23-S03",
+    "speaker": "왕건의 부하",
+    "text": "그러면 이 물자를 받는 집들의 이름도 좀 확인해 주겠소? 장군 이름은 크게 쓰면서 받는 사람 이름은 자꾸 흘려 쓰는군.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c23-s03-bb4cf3ede4--initial",
+    "scene": "THR-C23-S03",
+    "speaker": "왕건의 부하",
+    "text": "좋소. 오늘 그대가 만날 사람들은 그 아래 줄에 있소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c23-s05-29ae8f308f--initial",
+    "scene": "THR-C23-S05",
+    "speaker": "관리",
+    "text": "이름 글자가 달라 다른 사람으로 두 번 적혔군. 확인한 날을 합쳐 다시 보겠소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c23-s06-4e90f55a69--initial",
+    "scene": "THR-C23-S06",
+    "speaker": "불교 신자",
+    "text": "임금이 미륵이라는데, 그 말에 두려움을 느끼는 내가 믿음이 부족한 겁니까?",
+    "context": "scene"
+  },
+  {
+    "id": "support-c23-s06-4e90f55a69--initial",
+    "scene": "THR-C23-S06",
+    "speaker": "불교 신자",
+    "text": "사람의 마음을 꿰뚫어 본다는 말을 들었소. 속으로 한 생각도 죄가 되는 것 같아 말을 삼키게 되오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c23-s06-4e90f55a69--initial",
+    "scene": "THR-C23-S06",
+    "speaker": "불교 신자",
+    "text": "예전에 원효의 가르침을 전하던 이는 누구나 부처의 길에 설 수 있다고 했소. 지금 거리의 말은 자꾸 누가 의심받을지를 묻는군.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c23-s06-4e90f55a69--initial",
+    "scene": "THR-C23-S06",
+    "speaker": "불교 신자",
+    "text": "그대 책에 내가 믿었다는 것만 남고 무서웠다는 말이 빠질까 봐 걱정했소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c23-s06-4e90f55a69--initial",
+    "scene": "THR-C23-S06",
+    "speaker": "불교 신자",
+    "text": "오늘은 누군가 내 말을 끝까지 들었다는 것만 기억하고 싶소.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c23-s07-17a1c0fa3e--initial",
+    "scene": "THR-C23-S07",
+    "speaker": "장수 연락관",
+    "text": "왕건께서 왕위에 오르셨소. 홍유·배현경·신숭겸·복지겸 등이 추대한 뒤의 일이오.",
+    "context": "scene"
+  },
+  {
+    "id": "support-c23-s07-17a1c0fa3e--initial",
+    "scene": "THR-C23-S07",
+    "speaker": "장수 연락관",
+    "text": "그대가 새 왕을 세운 것처럼 적을 생각은 없겠지?",
+    "context": "scene"
+  }
+]

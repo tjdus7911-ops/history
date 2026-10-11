@@ -29,8 +29,8 @@ boot(true);
 assert.equal(run('THREE_STORY_RUNTIME.version'),3);
 assert.equal(run("eraChapters('three-kingdoms').length"),23);
 assert.equal(run('THREE_STORY_RUNTIME.sources.size'),218);
-assert.equal(run('THREE_STORY_RUNTIME.questionByOfficialId.size'),91);
-assert.equal(run("QUESTIONS.filter(q=>q.threeStoryVersion===3&&!q.reviewOnly).length"),77);
+assert.equal(run('THREE_STORY_RUNTIME.questionByOfficialId.size'),99);
+assert.equal(run("QUESTIONS.filter(q=>q.threeStoryVersion===3&&!q.reviewOnly).length"),98);
 assert.equal(manuscript.authoredUtteranceCount,2777);
 assert.equal(manuscript.chapters.flatMap(c=>c.scenes).length,215);
 assert.equal(manuscript.chapters.flatMap(c=>c.scenes.flatMap(s=>s.choices)).length,142);
@@ -127,17 +127,17 @@ function fullPlay(choiceIndex,wrong=false) {
   }
   const expected=allScenes.flatMap(scene=>[...scene.main,...(scene.choices.length?[scene.choices[choiceIndex].spokenLine,...scene.choices[choiceIndex].reply]:[]),...scene.join].map(line=>line.lineId));
   assert.deepEqual(seen,expected,'every line in approved order, exactly once on the selected path');
-  assert.equal(chosen.length,71);assert.equal(firstQuestions.length,77);assert.equal(new Set(firstQuestions).size,77);
+  assert.equal(chosen.length,71);assert.equal(firstQuestions.length,98);assert.equal(new Set(firstQuestions).size,98);
   assert.equal(run('THREE_COMPLETE_ACTIONS.book().readSceneIds.length'),218);
-  assert.equal(run('THREE_COMPLETE_ACTIONS.book().answeredQuestionIds.length'),77);
-  assert.equal(run('THREE_COMPLETE_ACTIONS.book().unlockedQuestionIds.length'),91);
+  assert.equal(run('THREE_COMPLETE_ACTIONS.book().answeredQuestionIds.length'),98);
+  assert.equal(run('THREE_COMPLETE_ACTIONS.book().unlockedQuestionIds.length'),99);
   assert.equal(run("meta().completedChapters.filter(id=>id.startsWith('THR-C')).length"),23);
   assert.equal(run("meta().eraProgress['three-kingdoms-v3'].progress"),100);
   assert.deepEqual([...statesSeen].sort(),['branch','choice','hints','join','main'].sort());
-  assert.equal(run('THREE_RECORD_BOOK.questionRows().length'),91);
+  assert.equal(run('THREE_RECORD_BOOK.questionRows().length'),99);
   assert.equal(run('THREE_STORY_SCRIPT.mnemonics.filter(m=>m.sceneIds.every(id=>THREE_COMPLETE_ACTIONS.book().readSceneIds.includes(id))).length'),23);
   assert(run("THREE_COMPLETE_ACTIONS.safeExplanation(THREE_STORY_RUNTIME.questionByOfficialId.get('official-79-advanced-09')).includes('일리천')"));
-  console.log('PASS: complete 218-scene '+(choiceIndex?'B':'A')+' path, 71 choices, 77 first quizzes, '+(wrong?'wrong':'correct')+' answers, 91 unlocked questions, saved phase/queue continuity.');
+  console.log('PASS: complete 218-scene '+(choiceIndex?'B':'A')+' path, 71 choices, 98 first quizzes, '+(wrong?'wrong':'correct')+' answers, 99 unlocked questions, saved phase/queue continuity.');
 }
 if(!process.argv.includes('--optional-only')){fullPlay(0,false); fullPlay(1,true);}
 

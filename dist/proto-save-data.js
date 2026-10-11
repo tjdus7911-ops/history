@@ -7,7 +7,7 @@ if(globalThis.PROTO_REVISION_RUNTIME?.version===3){
  const ownsChapter=id=>CHAPTERS[id]?.eraId===eraId,ownsScene=id=>runtime.sources.has(id);
  const ownsQuestion=id=>ownsChapter(QUESTIONS.find(q=>q.questionId===id)?.chapterId);
  const familyRun=value=>!!value&&(ownsChapter(value.currentChapter)||value.contentEra===eraId);
- const questionIds=new Set(PROTO_STUDY_QUESTION_IDS),officialIds=new Set(runtime.questionByOfficialId.keys()),lineIds=new Set(),commonIds=new Set();
+ const questionIds={has:id=>ownsQuestion(id)},officialIds={has:id=>runtime.questionByOfficialId.has(id)},lineIds=new Set(),commonIds=new Set();
  for(const source of runtime.sources.values()){
   for(const line of [...source.dialogues,...source.protoCommon]){lineIds.add(line.lineId);commonIds.add(line.lineId);}
   for(const choice of source.choices||[])for(const line of choice.resultDialogues)lineIds.add(line.lineId);
@@ -100,7 +100,8 @@ if(globalThis.PROTO_REVISION_RUNTIME?.version===3){
   if(['quiz','finished'].includes(current.phase)&&!learned.readSceneIds.includes(source.sceneId))return false;
   if(current.phase==='quiz'){
    if(value.protoCheckpoint.afterLineId!==source.protoQueue.afterLineId||!read.has(source.protoQueue.afterLineId))return false;
-   if(value.questionQueue.some(id=>QUESTIONS.find(q=>q.questionId===id).protoRequiredSceneIds.some(sceneId=>!learned.readSceneIds.includes(sceneId))))return false;
+   // A freely entered scene authorises its own story queue; review gates remain separate.
+   if(!learned.readSceneIds.includes(source.sceneId))return false;
   }
   return true;
  }

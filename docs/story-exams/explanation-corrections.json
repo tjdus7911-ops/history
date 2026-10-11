@@ -1,0 +1,59 @@
+[
+  {
+    "officialQuestionId": "official-77-advanced-11",
+    "examRound": 77,
+    "examLevel": "심화",
+    "questionNumber": 11,
+    "answer": 3,
+    "choiceExplanations": [
+      "별무반은 여진에 대응하려고 숙종 때 윤관의 건의로 편성한 군대이다.",
+      "화통도감은 왜구에 대응하기 위해 우왕 때인 1377년 설치하여 화약과 화포를 만들었다.",
+      "진관 체제는 조선 세조 때 정비한 지역 방어 체제이다. 고려의 거란 대응이 아니다.",
+      "거란의 침입을 겪던 현종 때 초조대장경 조판을 시작했다. 자료의 태평 연호와 귀주 대첩은 거란을 가리킨다.",
+      "동녕부는 원이 고려 서북 지역에 설치한 기구이다. 반환 요청은 원과의 관계이며 거란 대응이 아니다."
+    ],
+    "sources": [
+      "https://contents.history.go.kr/mobile/km/view.do?levelId=km_011_0050_0010_0030_0010"
+    ],
+    "explanation": "1. 별무반은 여진에 대응하려고 숙종 때 윤관의 건의로 편성한 군대이다.\n2. 화통도감은 왜구에 대응하기 위해 우왕 때인 1377년 설치하여 화약과 화포를 만들었다.\n3. 진관 체제는 조선 세조 때 정비한 지역 방어 체제이다. 고려의 거란 대응이 아니다.\n4. 거란의 침입을 겪던 현종 때 초조대장경 조판을 시작했다. 자료의 태평 연호와 귀주 대첩은 거란을 가리킨다.\n5. 동녕부는 원이 고려 서북 지역에 설치한 기구이다. 반환 요청은 원과의 관계이며 거란 대응이 아니다.",
+    "originalImageVisuallyReviewed": true
+  },
+  {
+    "officialQuestionId": "official-69-basic-12",
+    "examRound": 69,
+    "examLevel": "기본",
+    "questionNumber": 12,
+    "answer": 3,
+    "choiceExplanations": [
+      "명도전은 중국 전국 시대 연나라의 칼 모양 화폐이다.",
+      "백동화는 조선 말·대한제국기에 유통한 화폐이다.",
+      "상평통보는 조선 시대의 화폐로 숙종 때인 1678년부터 본격적으로 유통되었다.",
+      "해동통보는 고려 숙종 때 주전도감에서 발행한 화폐이다. 의천의 화폐 주조 건의와 연결된다."
+    ],
+    "sources": [
+      "https://contents.history.go.kr/mobile/eh/view.do?levelId=eh_r0181_0010"
+    ],
+    "explanation": "1. 명도전은 중국 전국 시대 연나라의 칼 모양 화폐이다.\n2. 백동화는 조선 말·대한제국기에 유통한 화폐이다.\n3. 상평통보는 조선 시대의 화폐로 숙종 때인 1678년부터 본격적으로 유통되었다.\n4. 해동통보는 고려 숙종 때 주전도감에서 발행한 화폐이다. 의천의 화폐 주조 건의와 연결된다.",
+    "originalImageVisuallyReviewed": true
+  },
+  {
+    "officialQuestionId": "official-69-advanced-15",
+    "examRound": 69,
+    "examLevel": "심화",
+    "questionNumber": 15,
+    "answer": 4,
+    "choiceExplanations": [
+      "(가)는 고려 건국 918년부터 강조의 정변 1009년까지이다. 조일신의 난보다 이르다.",
+      "(나)는 강조의 정변 1009년부터 이자겸의 난 1126년까지이다.",
+      "(다)는 이자겸의 난 1126년부터 만적의 난 1198년까지이다.",
+      "(라)는 만적의 난 1198년부터 개경 환도 1270년까지이다.",
+      "조일신의 난은 공민왕 1년인 1352년이다. 개경 환도 1270년 이후, 고려 멸망 1392년 이전인 (마)에 해당한다."
+    ],
+    "sources": [
+      "https://encykorea.aks.ac.kr/Article/E0052534",
+      "https://db.history.go.kr/goryeo/itemLevelKrList.do?itemId=kr&parentId=kr_038_0030_0110&types=o"
+    ],
+    "explanation": "1. (가)는 고려 건국 918년부터 강조의 정변 1009년까지이다. 조일신의 난보다 이르다.\n2. (나)는 강조의 정변 1009년부터 이자겸의 난 1126년까지이다.\n3. (다)는 이자겸의 난 1126년부터 만적의 난 1198년까지이다.\n4. (라)는 만적의 난 1198년부터 개경 환도 1270년까지이다.\n5. 조일신의 난은 공민왕 1년인 1352년이다. 개경 환도 1270년 이후, 고려 멸망 1392년 이전인 (마)에 해당한다.",
+    "originalImageVisuallyReviewed": true
+  }
+]

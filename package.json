@@ -15,6 +15,9 @@
     "test:three:ui": "node tests/three-ui-preservation-test.cjs && node tests/three-approved-ui-test.cjs",
     "import:proto": "python3 scripts/import-proto-revision.py",
     "check:proto": "python3 scripts/import-proto-revision.py --check",
-    "test:proto:revision": "node tests/proto-revision-test.cjs && node tests/proto-save-v3-test.cjs"
+    "test:proto:revision": "node tests/proto-revision-test.cjs && node tests/proto-save-v3-test.cjs",
+    "import:story-policy": "node scripts/build-story-exam-policy.cjs",
+    "check:story-policy": "node scripts/build-story-exam-policy.cjs --check",
+    "test:chapter-access": "node tests/story-access-policy-test.cjs && node tests/three-support-npc-test.cjs"
   }
 }

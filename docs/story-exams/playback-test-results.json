@@ -1,0 +1,56 @@
+{
+  "freshEntryChapters": 66,
+  "results": [
+    {
+      "id": "proto-ch02",
+      "next": "proto-ch03",
+      "questions": 7,
+      "replayQuestions": 7,
+      "reload": true
+    },
+    {
+      "id": "THR-C03",
+      "next": "THR-C04",
+      "questions": 9,
+      "replayQuestions": 9,
+      "reload": true
+    },
+    {
+      "id": "ch09",
+      "next": "ch10",
+      "questions": 13,
+      "replayQuestions": 13,
+      "reload": true
+    },
+    {
+      "id": "joseon-ch12",
+      "next": "joseon-ch13",
+      "questions": 4,
+      "replayQuestions": 4,
+      "reload": true
+    }
+  ],
+  "summary": {
+    "proto": {
+      "scenes": 83,
+      "questions": 23,
+      "satisfiedScenes": 8,
+      "shortScenes": 75,
+      "missingMinimum": 147
+    },
+    "three": {
+      "scenes": 215,
+      "questions": 98,
+      "satisfiedScenes": 23,
+      "shortScenes": 192,
+      "missingMinimum": 340
+    },
+    "goryeo": {
+      "scenes": 211,
+      "questions": 71,
+      "satisfiedScenes": 17,
+      "shortScenes": 194,
+      "missingMinimum": 356
+    }
+  }
+}

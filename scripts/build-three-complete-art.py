@@ -311,6 +311,30 @@ def all_lines(scene):
     yield from scene["join"]
 
 
+def support_portraits():
+    relative = "docs/three-content/support-portrait-generation.json"
+    path = ROOT / relative
+    if not path.exists():
+        return {}, {}
+    source = json.loads(path.read_text(encoding="utf-8"))
+    portraits, sheets = {}, {}
+    for sheet in source["sheets"]:
+        info = asset_info(sheet["src"])
+        require(info["sha256"] == sheet["sha256"], "Support portrait changed")
+        sheets[sheet["sheetId"]] = {**info, "width": sheet["width"], "height": sheet["height"], "columns": sheet["columns"], "rows": sheet["rows"], "sourceKind": "built-in-imagegen-unique-supporting-character"}
+        for cell in sheet["cells"]:
+            cid = cell["characterId"]
+            require(cid not in portraits, "Repeated supporting identity: " + cid)
+            portraits[cid] = {
+                "neutral": sheet["src"], "asset": info, "atlasId": sheet["sheetId"],
+                "sprite": {"columns": sheet["columns"], "rows": sheet["rows"], "column": cell["column"], "row": cell["row"], "sheetWidth": sheet["width"], "sheetHeight": sheet["height"], "sourceRect": cell["sourceRect"]},
+                "portraitGeometry": {"coordinateSpace": "sheet-pixels", "sheetWidth": sheet["width"], "sheetHeight": sheet["height"], "faceBounds": cell["faceBounds"], "alphaBounds": cell["alphaBounds"], "upperBodyBounds": cell["upperBodyBounds"], "framing": "full-body", "faceAnchorMethod": "visually-reviewed-skin-component-upper-face"},
+                "flipX": cell["flipX"], "nativeFacing": cell["nativeFacing"], "portraitRequired": True,
+                "portraitStatus": "generated-support-portrait-reviewed", "portraitFraming": "full-body", "visualFileReview": cell["visualFileReview"],
+                "ageEvidence": cell["ageEvidence"], "portraitSourceEvidence": cell["sourceEvidence"], "portraitSourceSceneId": cell["sourceSceneId"], "portraitGenerationSource": relative}
+    return portraits, sheets
+
+
 def build():
     manuscript = json.loads((DIST / "three-story-script.json").read_text(encoding="utf-8"))
     atlas_portraits, portrait_atlases = recurring_portraits()
@@ -318,6 +342,9 @@ def build():
     completed, completed_atlases = completed_portraits()
     atlas_portraits.update(completed)
     portrait_atlases.update(completed_atlases)
+    support, support_atlases = support_portraits()
+    atlas_portraits.update(support)
+    portrait_atlases.update(support_atlases)
     geometry = approved_geometry()
     backgrounds, characters, scene_characters, record_voices = {}, {}, {}, {}
     background_assets = {key: {**asset_info(src), "label": label, "sourceKind": source_kind,
