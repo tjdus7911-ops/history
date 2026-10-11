@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "date": "2026-10-11",
   "sourceManuscriptSha256": "09e17274a506391305b36efee52b1cd60c4c504cc6619e68fe70cd9909e9674e",
-  "status": "runtime-checkpoint-with-authored-staging-followup-in-progress",
+  "status": "representative-production-visual-reviews-recorded-finer-staging-and-unobserved-states-pending",
   "allAuthoredStagingVerified": false,
   "verification": {
     "sourceLinksAndRectanglesChecked": true,
@@ -14,7 +14,11 @@
     "canonicalExamDataChanged": false,
     "sourceImagePixelsEdited": false,
     "otherEraChanges": false,
-    "newSettingSurfaceGlyphsAndGeometryViewed": true
+    "newSettingSurfaceGlyphsAndGeometryViewed": true,
+    "productionReviewRevision": "c6d402873114bb8f315a5f40454301427df0a1fb",
+    "representativeDetailReviewsRecorded": 7,
+    "currentRevisionRepresentativeDetailReviews": 6,
+    "historicalUnchangedBackgroundReview": 1
   },
   "checkpoint": {
     "sceneCount": 218,
@@ -40,8 +44,23 @@
         "THR-PRO-S03-L06"
       ],
       "required": "Book and the three original genealogy photographs are on the ground for L01-L02, lifted at L03, held against Seoa from L04. No fabricated writing or new dialogue.",
-      "status": "runtime-linked-awaiting-browser-composition-review",
-      "runtimeVisualReviewComplete": false
+      "status": "l06-held-book-observed-other-book-frames-awaiting-current-revision-review",
+      "runtimeVisualReviewComplete": false,
+      "currentRevisionVerifiedLineIds": [
+        "THR-PRO-S03-L06"
+      ],
+      "currentRevisionPendingLineIds": [
+        "THR-PRO-S03-L01",
+        "THR-PRO-S03-L02",
+        "THR-PRO-S03-L03",
+        "THR-PRO-S03-L04",
+        "THR-PRO-S03-L05"
+      ],
+      "evidence": [
+        "docs/ui-qa/after-three-grandmother-support-390.jpg",
+        "docs/ui-qa/after-three-grandmother-support-pc.jpg"
+      ],
+      "note": "L06 held book and photographs are visible. Prior source/API and earlier-revision book reviews remain valid records, but current-revision visual checks of ground/lift/earlier held frames are not inferred from L06."
     },
     {
       "id": "prologue-yeonwoo-support",
@@ -50,64 +69,378 @@
         "THR-PRO-S03-L06"
       ],
       "required": "Same Yeonwoo identity at the left supports the mother whose knees weaken. Same face scale as Chapter 1. No water, completed rescue or second copy of the mother.",
-      "status": "physical-pair-linked-awaiting-browser-composition-review",
-      "runtimeVisualReviewComplete": false,
+      "status": "authored-l06-support-contact-and-continuity-runtime-verified",
+      "runtimeVisualReviewComplete": true,
       "sourceManifest": "docs/three-content/prologue-support-pair-generation.json",
       "actualReviewFinding": "Initial isolated Yeonwoo support hands did not contact the mother in the background at 390px and PC.",
       "repair": "L06 only: same-identity Yeonwoo and mother as one physically connected transparent sprite; same girl and waiting line in a derived background with the duplicate foreground mother removed.",
-      "sourceFileVisualReviewComplete": true
+      "sourceFileVisualReviewComplete": true,
+      "actualReview": {
+        "result": "passed-within-observed-scope",
+        "productionRevision": "c6d402873114bb8f315a5f40454301427df0a1fb",
+        "observer": "root actual browser interaction; captured files also inspected where stated",
+        "screenshots": [
+          {
+            "path": "docs/ui-qa/after-three-grandmother-support-390.jpg",
+            "sha256": "defa6fd572c547392e3fe1173216c7f0985b7f015e535820f1e6a12e2c428dec",
+            "viewportWidth": 390,
+            "lineId": "THR-PRO-S03-L06",
+            "phase": "main"
+          },
+          {
+            "path": "docs/ui-qa/after-three-grandmother-support-pc.jpg",
+            "sha256": "9e888d62452ed000c1cee8b8b612344b157ac5bd03d3fa677113d1c51e693e03",
+            "viewportWidth": 1363,
+            "lineId": "THR-PRO-S03-L06",
+            "phase": "main"
+          }
+        ],
+        "observations": [
+          "The same grandmother appears once. Yeonwoo hands visibly contact her upper arm/forearm.",
+          "Both bodies extend behind the controls without a floating horizontal cutoff.",
+          "The listening pair is dimmed while active Seoa holds the original-photo book."
+        ],
+        "interactionChecks": [
+          "Reload retains L06 and the same cast/background.",
+          "Continue story returns to CH01 S01 cursor 1."
+        ],
+        "unverifiedScope": [],
+        "allBranchesAndViewportsVisuallyReviewed": false,
+        "scopeComplete": "The single authored support line at mobile390 and desktop1363, reload and following-scene handoff. This does not verify unrelated hand actions."
+      }
+    },
+    {
+      "id": "prologue-paper-wind-audio",
+      "sceneId": "THR-PRO-S02",
+      "lineIds": [
+        "THR-PRO-S02-L01",
+        "THR-PRO-S02-L02",
+        "THR-PRO-S02-L03",
+        "THR-PRO-S02-L04"
+      ],
+      "required": "Authored paper-brush and wind sounds only; no male voice, calling Seoa, extra speech or automatic dialogue progression.",
+      "status": "pending-implementation",
+      "runtimeLinked": false,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "id": "victory-drums-lowered",
+      "sceneId": "THR-C06-S05",
+      "lineIds": [
+        "THR-C06-S05-M05",
+        "THR-C06-S05-M06",
+        "THR-C06-S05-M07"
+      ],
+      "required": "Victory drums lower when the fallen are named. A static image or the names in dialogue do not implement the authored sound change.",
+      "status": "pending-implementation",
+      "runtimeLinked": false,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "id": "seokguram-lamp-contact",
+      "sceneId": "THR-C17-S06",
+      "lineIds": [
+        "THR-C17-S06-M01"
+      ],
+      "required": "The requested lowering of the lamp and its exact hand/lighting treatment require a separate authored action implementation. Stone-assembly scenery alone does not complete it.",
+      "status": "pending-fine-action-implementation",
+      "runtimeLinked": false,
+      "runtimeVisualReviewComplete": false
+    },
+    {
+      "id": "other-fine-contacts-and-crowd-actions",
+      "sourceReviewIndex": "docs/three-content/staging-runtime-audit.json",
+      "required": "Continue the 218-scene authored staging review for precise handoffs, tools in use and specified crowd actions; do not count generic props or seven reviewed backgrounds as complete actions.",
+      "status": "pending-authored-action-review-and-implementation",
+      "runtimeVisualReviewComplete": false
     }
   ],
   "authoredDetailReviewQueue": [
     {
       "sceneId": "THR-C10-S03",
       "detail": "Layered tomb structure and burial chamber must be visually distinguishable",
-      "status": "custom-detail-review-required"
+      "status": "representative-runtime-review-passed-with-unverified-states-retained",
+      "asset": "assets/ancient/three-complete/backgrounds/silla-tomb-worksite-v1.png",
+      "sourceFileVisualReview": true,
+      "representativeRuntimeReviewPassed": true,
+      "runtimeVisualReviewComplete": false,
+      "allAuthoredDetailActionsComplete": false,
+      "actualReview": {
+        "result": "passed-within-observed-scope",
+        "productionRevision": "c6d402873114bb8f315a5f40454301427df0a1fb",
+        "observer": "root actual browser interaction; captured files also inspected where stated",
+        "screenshots": [
+          {
+            "path": "docs/ui-qa/after-three-tomb-section-390.jpg",
+            "sha256": "c8dcacf0f989ef94d1cdb4d015d178bab80546cde8ad1fd62cf25137de255ad5",
+            "viewportWidth": 390,
+            "lineId": "THR-C10-S03-M03",
+            "phase": "main"
+          }
+        ],
+        "observations": [
+          "Wooden outer chamber, inner coffin, stone layer and outer earth cutaway are visible above the actors.",
+          "No horizontal overflow; existing buttons and navigation fit."
+        ],
+        "interactionChecks": [
+          "Advance M03 to M04: explanatory surface remains.",
+          "Advance M04 to M05: explanatory surface disappears; DOM tomb surface count is zero."
+        ],
+        "unverifiedScope": [
+          "Other viewports and branch/join composition were not inspected in this capture session."
+        ],
+        "allBranchesAndViewportsVisuallyReviewed": false
+      },
+      "preciseSurfaceAssets": [
+        "assets/ancient/three-complete/overlays/tomb-section-ink-v1.svg"
+      ]
     },
     {
       "sceneId": "THR-C11-S01",
-      "detail": "Ox/plough/field action is not proved by generic prop coverage",
-      "status": "runtime-linked-awaiting-browser-composition-review",
-      "asset": "assets/ancient/three-complete/backgrounds/silla-ox-field-rest-v1.png",
+      "detail": "Resting ox, yoke, complete plough and tilled field must be readable in the vertical game frame.",
+      "status": "representative-runtime-review-passed-with-unverified-states-retained",
+      "asset": "assets/ancient/three-complete/backgrounds/silla-ox-field-readable-v3.png",
       "sourceFileVisualReview": true,
       "runtimeVisualReviewComplete": false,
-      "preservedMeaning": "Ox rests in both branches; no treatment or completed healing is shown."
+      "preservedMeaning": "Ox rests in both branches; no treatment or completed healing is shown.",
+      "representativeRuntimeReviewPassed": true,
+      "allAuthoredDetailActionsComplete": false,
+      "actualReview": {
+        "result": "passed-within-observed-scope",
+        "productionRevision": "c6d402873114bb8f315a5f40454301427df0a1fb",
+        "observer": "root actual browser interaction; captured files also inspected where stated",
+        "screenshots": [
+          {
+            "path": "docs/ui-qa/after-three-ox-field-390.jpg",
+            "sha256": "e5100733c502864181de0c271cecb7b0dd2795a41ded2668df97d11cccf54f9f",
+            "viewportWidth": 390,
+            "lineId": "THR-C11-S01-M02",
+            "phase": "main"
+          }
+        ],
+        "observations": [
+          "After the background image finished loading, the complete ox head and legs and the complete plough are visible above the foreground faces.",
+          "Resting ox, field and farming equipment read in the vertical game frame.",
+          "No horizontal overflow; existing buttons and navigation fit."
+        ],
+        "interactionChecks": [],
+        "unverifiedScope": [
+          "Both branch/join compositions and additional viewports remain visually unverified."
+        ],
+        "allBranchesAndViewportsVisuallyReviewed": false
+      },
+      "preciseSurfaceAssets": [],
+      "supersededObservation": {
+        "finding": "The earlier wide composition cropped the ox head/legs and plough in the mobile frame.",
+        "evidencePathReused": "docs/ui-qa/after-three-ox-field-390.jpg",
+        "oldEvidenceGitRevision": "c6d402873114bb8f315a5f40454301427df0a1fb",
+        "oldEvidenceSha256": "b891bb9294a00b553111edaea715e6c80d98b2aa22966f77cc86dc02d5524f6a",
+        "latestEvidenceIsLoadedV3Composition": true,
+        "note": "The current file at the same path is the later successful loaded-frame capture. The initial not-yet-loaded view is not counted as a completed render or as a persistent rendering failure."
+      }
     },
     {
       "sceneId": "THR-C13-S03",
       "detail": "Construction state of the nine-storey wooden pagoda, before completion",
-      "status": "runtime-linked-awaiting-browser-composition-review",
+      "status": "prior-revision-representative-runtime-review-passed-current-frame-not-repeated",
       "asset": "assets/ancient/three-complete/backgrounds/hwangnyongsa-construction-v1.png",
       "sourceFileVisualReview": true,
       "runtimeVisualReviewComplete": false,
-      "preservedMeaning": "The wooden pagoda remains under construction through the join; no completed tower is shown."
+      "preservedMeaning": "The wooden pagoda remains under construction through the join; no completed tower is shown.",
+      "representativeRuntimeReviewPassed": true,
+      "allAuthoredDetailActionsComplete": false,
+      "actualReview": {
+        "result": "passed-within-observed-scope",
+        "productionRevision": "c032fc2badb339bf73fbc933e518d656bbf3e5df",
+        "observer": "root actual browser interaction; captured files also inspected where stated",
+        "screenshots": [
+          {
+            "path": "docs/ui-qa/after-three-pagoda-build-360.jpg",
+            "sha256": "9b22e961bfdfc8cc4b2b2b7f92761de0009946bc7e82b8fde3ef53c4dcf09332",
+            "viewportWidth": 360,
+            "lineId": "THR-C13-S03-M02",
+            "phase": "main"
+          }
+        ],
+        "observations": [
+          "Prior production review showed unfinished timber posts/frame, scaffold and wood in the center of the 360px composition.",
+          "The same background PNG is still linked; no replacement was needed."
+        ],
+        "interactionChecks": [],
+        "unverifiedScope": [
+          "This representative frame was not captured again after PR9 skin-face normalization.",
+          "Other branch/join compositions and viewports remain visually unverified."
+        ],
+        "allBranchesAndViewportsVisuallyReviewed": false
+      },
+      "preciseSurfaceAssets": []
     },
     {
       "sceneId": "THR-C17-S05",
       "detail": "Distinct Dabotap/Seokgatap silhouettes and construction context",
-      "status": "custom-detail-review-required"
+      "status": "representative-runtime-review-passed-with-unverified-states-retained",
+      "asset": "assets/ancient/three-complete/backgrounds/bulguksa-distinct-pagodas-v1.png",
+      "sourceFileVisualReview": true,
+      "representativeRuntimeReviewPassed": true,
+      "runtimeVisualReviewComplete": false,
+      "allAuthoredDetailActionsComplete": false,
+      "actualReview": {
+        "result": "passed-within-observed-scope",
+        "productionRevision": "c6d402873114bb8f315a5f40454301427df0a1fb",
+        "observer": "root actual browser interaction; captured files also inspected where stated",
+        "screenshots": [
+          {
+            "path": "docs/ui-qa/after-three-bulguksa-390.jpg",
+            "sha256": "4108e03f3d0ead7e968e9ac0eb902483483a568e0901be222d613a0abeabeb79",
+            "viewportWidth": 390,
+            "lineId": "THR-C17-S05-M02",
+            "phase": "main"
+          }
+        ],
+        "observations": [
+          "The simpler Seokgatap on the left and distinct Dabotap on the right are visible above the actors.",
+          "Construction surroundings and the bandaged Haemyeong pose are present.",
+          "No horizontal overflow; existing buttons and navigation fit."
+        ],
+        "interactionChecks": [],
+        "unverifiedScope": [
+          "The modern-record join background fallback and both selected histories were source/API-tested but not visually repeated in this capture session.",
+          "Other viewports remain visually unverified."
+        ],
+        "allBranchesAndViewportsVisuallyReviewed": false
+      },
+      "preciseSurfaceAssets": []
     },
     {
       "sceneId": "THR-C17-S06",
       "detail": "Stone-assembled artificial cave and in-progress work",
-      "status": "custom-detail-review-required"
+      "status": "representative-runtime-review-passed-with-unverified-states-retained",
+      "asset": "assets/ancient/three-complete/backgrounds/seokguram-assembly-v1.png",
+      "sourceFileVisualReview": true,
+      "representativeRuntimeReviewPassed": true,
+      "runtimeVisualReviewComplete": false,
+      "allAuthoredDetailActionsComplete": false,
+      "actualReview": {
+        "result": "passed-within-observed-scope",
+        "productionRevision": "c6d402873114bb8f315a5f40454301427df0a1fb",
+        "observer": "root actual browser interaction; captured files also inspected where stated",
+        "screenshots": [
+          {
+            "path": "docs/ui-qa/after-three-seokguram-360.jpg",
+            "sha256": "ce28d8399beb9179a9892d17926966be4c41b3bcb21160f57aab0107a2decc3b",
+            "viewportWidth": 360,
+            "lineId": "THR-C17-S06-M03",
+            "phase": "main"
+          }
+        ],
+        "observations": [
+          "Artificial stone assembly, wall/block seams, the main Buddha and side carvings are visible.",
+          "The unnamed carver speaks without an invented named portrait; Seoa listens on the right.",
+          "No horizontal overflow; existing buttons and navigation fit."
+        ],
+        "interactionChecks": [],
+        "unverifiedScope": [
+          "The precise lamp-lowering hand/lighting action is not implemented by this background.",
+          "Branch/join/following-scene composition and other viewports remain visually unverified."
+        ],
+        "allBranchesAndViewportsVisuallyReviewed": false
+      },
+      "preciseSurfaceAssets": []
     },
     {
       "sceneId": "THR-C18-S03",
       "detail": "Authored place/function distinction in the trade setting",
-      "status": "custom-detail-review-required"
+      "status": "representative-runtime-review-passed-with-unverified-states-retained",
+      "asset": "assets/ancient/three-complete/backgrounds/cheonghaejin-warehouse-v1.png",
+      "sourceFileVisualReview": true,
+      "representativeRuntimeReviewPassed": true,
+      "runtimeVisualReviewComplete": false,
+      "allAuthoredDetailActionsComplete": false,
+      "actualReview": {
+        "result": "passed-within-observed-scope",
+        "productionRevision": "c6d402873114bb8f315a5f40454301427df0a1fb",
+        "observer": "root actual browser interaction; captured files also inspected where stated",
+        "screenshots": [
+          {
+            "path": "docs/ui-qa/after-three-cheonghaejin-390.jpg",
+            "sha256": "f00a5df987b3bb5939f7961d6d2d5907bcfe39500f2b22b94935d44d8c8f1faa",
+            "viewportWidth": 390,
+            "lineId": "THR-C18-S03-M07",
+            "phase": "main"
+          },
+          {
+            "path": "docs/ui-qa/after-three-cheonghaejin-beophwawon-390.jpg",
+            "sha256": "838a30722b2f3a4d2a5b308426809189ee7be701d2d504361f88512dd3c21cd5",
+            "viewportWidth": 390,
+            "lineId": "THR-C18-S03-M08",
+            "phase": "main"
+          }
+        ],
+        "observations": [
+          "Wall map and settlement/office/temple legend are readable in the physical warehouse setting.",
+          "The existing context caption changes from the functional distinction to the Beophwawon period note at M08; full dialogue remains visible.",
+          "The left 唐 cargo tag is visible at M08. Other cargo tags are partially obscured by Seoa/dialogue, so simultaneous readability of all three is not claimed.",
+          "No horizontal overflow; existing buttons and navigation fit."
+        ],
+        "interactionChecks": [
+          "Advance M07 to M08: exact period caption changes with the authored line."
+        ],
+        "unverifiedScope": [
+          "Simultaneous readability of all three individual cargo tags is not verified in these two captured frames.",
+          "Branch/join/following-scene composition and other viewports remain visually unverified."
+        ],
+        "allBranchesAndViewportsVisuallyReviewed": false
+      },
+      "preciseSurfaceAssets": [
+        "assets/ancient/three-complete/overlays/warehouse-map-and-tags-v1.svg"
+      ]
     },
     {
       "sceneId": "THR-C21-S04",
       "detail": "Specific office/document grouping requires a separate visual check",
-      "status": "custom-detail-review-required"
+      "status": "representative-runtime-review-passed-with-unverified-states-retained",
+      "asset": "assets/ancient/three-complete/backgrounds/balhae-office-readable-labels-v3.png",
+      "sourceFileVisualReview": true,
+      "representativeRuntimeReviewPassed": true,
+      "runtimeVisualReviewComplete": false,
+      "allAuthoredDetailActionsComplete": false,
+      "actualReview": {
+        "result": "passed-within-observed-scope",
+        "productionRevision": "c6d402873114bb8f315a5f40454301427df0a1fb",
+        "observer": "root actual browser interaction; captured files also inspected where stated",
+        "screenshots": [
+          {
+            "path": "docs/ui-qa/after-three-balhae-office-390.jpg",
+            "sha256": "bba6eaca671af4bd9e02b0c25eacaa09611cd7ebc0dc4f7d6b196709af2ad783",
+            "viewportWidth": 390,
+            "lineId": "THR-C21-S04-M05",
+            "phase": "main"
+          }
+        ],
+        "observations": [
+          "Three larger and six smaller named document bundles are visible on the upper shelves.",
+          "The 6-department context caption and complete original dialogue fit the existing conversation layout.",
+          "No horizontal overflow; existing buttons and navigation fit."
+        ],
+        "interactionChecks": [],
+        "unverifiedScope": [
+          "Branch/join/following-scene composition and other viewports remain visually unverified."
+        ],
+        "allBranchesAndViewportsVisuallyReviewed": false
+      },
+      "preciseSurfaceAssets": [
+        "assets/ancient/three-complete/overlays/balhae-department-ink-v1.svg"
+      ]
     }
   ],
   "scopeNotes": [
     "The detail review queue is not an assertion that these are the only remaining authored details; all 218 source staging strings remain in staging-runtime-audit.json.",
     "A rendered prop cue does not prove complete hands, crowd, architecture or audio staging.",
     "Pending work remains authorized follow-up and is not cancelled or marked complete.",
-    "Root owns remote checkpoints, deployment and actual browser composition review."
+    "Root owns remote checkpoints, deployment and actual browser composition review.",
+    "Representative-frame pass is separate from full branch/viewports review. Item runtimeVisualReviewComplete stays false where unobserved visual states remain.",
+    "Historical C13 review uses the same unchanged background but was not repeated after PR9 face normalization.",
+    "The seven actual scene reviews do not complete pending audio, fine hand contacts, all cargo-label visibility or every authored staging instruction."
   ],
   "currentImplementation": {
     "sceneCount": 218,
@@ -143,9 +476,84 @@
         "docs/ui-qa/after-three-prologue-support-390.jpg",
         "docs/ui-qa/after-three-prologue-support-pc.jpg"
       ],
+      "historicalEvidenceAvailability": "These names identify the earlier reported failed-pose screenshots; the files are not present in the current checkout. Current verified repair screenshots and SHA-256 values are recorded separately in repairReview.",
       "finding": "Initial lone support pose had no physical contact with the background mother",
       "fix": "Replace L06 only with connected Yeonwoo/mother pair and duplicate-mother-free background; retain original face identity, source art and normal next-scene pose",
-      "fixRuntimeVisualReviewComplete": false
+      "fixRuntimeVisualReviewComplete": true,
+      "repairReview": {
+        "result": "passed-within-observed-scope",
+        "productionRevision": "c6d402873114bb8f315a5f40454301427df0a1fb",
+        "observer": "root actual browser interaction; captured files also inspected where stated",
+        "screenshots": [
+          {
+            "path": "docs/ui-qa/after-three-grandmother-support-390.jpg",
+            "sha256": "defa6fd572c547392e3fe1173216c7f0985b7f015e535820f1e6a12e2c428dec",
+            "viewportWidth": 390,
+            "lineId": "THR-PRO-S03-L06",
+            "phase": "main"
+          },
+          {
+            "path": "docs/ui-qa/after-three-grandmother-support-pc.jpg",
+            "sha256": "9e888d62452ed000c1cee8b8b612344b157ac5bd03d3fa677113d1c51e693e03",
+            "viewportWidth": 1363,
+            "lineId": "THR-PRO-S03-L06",
+            "phase": "main"
+          }
+        ],
+        "observations": [
+          "The same grandmother appears once. Yeonwoo hands visibly contact her upper arm/forearm.",
+          "Both bodies extend behind the controls without a floating horizontal cutoff.",
+          "The listening pair is dimmed while active Seoa holds the original-photo book."
+        ],
+        "interactionChecks": [
+          "Reload retains L06 and the same cast/background.",
+          "Continue story returns to CH01 S01 cursor 1."
+        ],
+        "unverifiedScope": [],
+        "allBranchesAndViewportsVisuallyReviewed": false,
+        "scopeComplete": "The single authored support line at mobile390 and desktop1363, reload and following-scene handoff. This does not verify unrelated hand actions."
+      }
+    },
+    {
+      "sceneId": "THR-C17-S04",
+      "lineId": "THR-C17-S04-B1-R03",
+      "finding": "An earlier unnamed carver caused the listening recipient Haemyeong to disappear in this exact player line.",
+      "fix": "Exact B1-R03 visual presence preserves Haemyeong; no blanket scene-wide presence rule.",
+      "fixRuntimeVisualReviewComplete": true,
+      "repairReview": {
+        "result": "passed-within-observed-scope",
+        "productionRevision": "c6d402873114bb8f315a5f40454301427df0a1fb",
+        "observer": "root actual browser interaction; captured files also inspected where stated",
+        "screenshots": [
+          {
+            "path": "docs/ui-qa/after-three-hand-bandage-390.jpg",
+            "sha256": "cfef87901ffa76d970fa6a65928f0ade82377588ec3f01f41446bff2a250f713",
+            "viewportWidth": 390,
+            "lineId": "THR-C17-S04-B1-R03",
+            "phase": "branch"
+          },
+          {
+            "path": "docs/ui-qa/after-three-hand-bandage-join-390.jpg",
+            "sha256": "eed19fac1afe89b3772454c72e9212c23b907d03dc14594dbcd8c77742fc4b12",
+            "viewportWidth": 390,
+            "lineId": "THR-C17-S04-J01",
+            "phase": "join"
+          }
+        ],
+        "observations": [
+          "The previously missing Haemyeong is present listening on the left during Seoa B1-R03.",
+          "Reload restores Seoa and the exact Haemyeong actor.",
+          "At B1 join1 the white bandage is visibly attached to the hand; the hammer is also visible."
+        ],
+        "interactionChecks": [
+          "Reload the B1-R03 frame: both actors remain.",
+          "Advance into B1 join1: same authored bandaged pose remains."
+        ],
+        "unverifiedScope": [
+          "B2 branch/join visual composition and other viewports were not repeated in this capture session."
+        ],
+        "allBranchesAndViewportsVisuallyReviewed": false
+      }
     }
   ]
 }
