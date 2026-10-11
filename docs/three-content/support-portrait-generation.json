@@ -5543,42 +5543,6 @@
           "visualFileReview": true
         },
         {
-          "characterId": "support-c23-s01-658fa277b7--initial",
-          "name": "연락관",
-          "sourceSceneId": "THR-C23-S01",
-          "row": 0,
-          "column": 1,
-          "sourceRect": {
-            "x": 418,
-            "y": 0,
-            "width": 418,
-            "height": 627
-          },
-          "faceBounds": {
-            "x": 590,
-            "y": 47,
-            "width": 80,
-            "height": 104
-          },
-          "alphaBounds": {
-            "x": 509,
-            "y": 12,
-            "width": 280,
-            "height": 614
-          },
-          "upperBodyBounds": {
-            "x": 509,
-            "y": 12,
-            "width": 280,
-            "height": 356
-          },
-          "ageEvidence": "adult fictional role",
-          "sourceEvidence": "완산주에 온 까닭이 무엇이오? 오늘은 견훤께서 세운 후백제의 일을 알리느라 모두 바쁘오.",
-          "nativeFacing": "left",
-          "flipX": true,
-          "visualFileReview": true
-        },
-        {
           "characterId": "support-c23-s02-f08602cf61--initial",
           "name": "옆집 상인",
           "sourceSceneId": "THR-C23-S02",
@@ -5722,6 +5686,12 @@
           "flipX": true,
           "visualFileReview": true
         }
+      ],
+      "retiredCells": [
+        {
+          "index": 1,
+          "reason": "Protagonist-like design rejected during production visual QA; replaced by a distinct male liaison portrait."
+        }
       ]
     },
     {
@@ -5767,6 +5737,53 @@
           "sourceEvidence": "왕건께서 왕위에 오르셨소. 홍유·배현경·신숭겸·복지겸 등이 추대한 뒤의 일이오.",
           "nativeFacing": "left",
           "flipX": true,
+          "visualFileReview": true
+        }
+      ]
+    },
+    {
+      "sheetId": "support-c23-s01-liaison-v1",
+      "src": "assets/ancient/three-complete/characters/support-c23-s01-liaison-v1.png",
+      "sha256": "0a1dd0466ea1c83d01bef3b34c8aa0b201f7ac5c7a36ad0921a3a10a01f4e322",
+      "width": 1024,
+      "height": 1536,
+      "columns": 1,
+      "rows": 1,
+      "cells": [
+        {
+          "characterId": "support-c23-s01-658fa277b7--initial",
+          "name": "연락관",
+          "sourceSceneId": "THR-C23-S01",
+          "row": 0,
+          "column": 0,
+          "sourceRect": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1536
+          },
+          "faceBounds": {
+            "x": 463,
+            "y": 114,
+            "width": 94,
+            "height": 96
+          },
+          "alphaBounds": {
+            "x": 174,
+            "y": 19,
+            "width": 640,
+            "height": 1497
+          },
+          "upperBodyBounds": {
+            "x": 174,
+            "y": 19,
+            "width": 640,
+            "height": 868
+          },
+          "ageEvidence": "adult fictional role",
+          "sourceEvidence": "완산주에 온 까닭이 무엇이오? 오늘은 견훤께서 세운 후백제의 일을 알리느라 모두 바쁘오.",
+          "nativeFacing": "right",
+          "flipX": false,
           "visualFileReview": true
         }
       ]

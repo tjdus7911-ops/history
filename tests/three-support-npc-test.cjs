@@ -1,5 +1,6 @@
 const fs=require('node:fs'),assert=require('node:assert/strict'),{load}=require('./proto-revision-harness.cjs');
 const g=load();
+assert.equal(g.run("PORTRAITS[STORIES['THR-C23-S01'].dialogues[0].portrait].src"),'assets/ancient/three-complete/characters/support-c23-s01-liaison-v1.png');
 const result=g.copy(`(()=>{
  const rows=[],failures=[],skipped=[];
  for(const source of Object.values(STORIES).filter(s=>s.threeStoryVersion===3)){

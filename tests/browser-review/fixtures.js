@@ -62,6 +62,7 @@
         'three-support-law':['THR-C03-S03','npc'],
         'three-support-child':['THR-C18-S07','npc',{cursor:6}],
         'three-support-last':['THR-C23-S07','npc'],
+        'three-support-liaison':['THR-C23-S01','npc'],
         'three-yeonwoo':['THR-C01-S01','yeonwoo'],
         'three-eulpaso':['THR-C01-S04','eulpaso'],
         'three-npc-switch':['THR-C01-S06','npc'],

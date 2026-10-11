@@ -9,6 +9,9 @@ plan=json.loads((ROOT/'docs/three-content/support-portrait-plan.json').read_text
 missing=json.loads((ROOT/'docs/three-content/support-npc-before.json').read_text(encoding='utf-8'))
 solo=next(p for p in missing if p['scene']=='THR-C02-S03' and '장교' in p['speaker'])
 plans=[{'id':'support-c02-s03-officer-v1','people':[solo],'columns':1,'rows':1}]+plan
+liaison=next(p for p in missing if p['scene']=='THR-C23-S01' and p['speaker']=='연락관')
+liaison_sheet='support-c23-s01-liaison-v1'
+plans.append({'id':liaison_sheet,'people':[liaison],'columns':1,'rows':1})
 for item in plans:
  if item['id']=='support-atlas-26-v1':item.update(columns=1,rows=1)
 out={'version':1,'reviewMethod':'Generated images visually inspected for distinct figures; alpha/skin geometry measured without image rewriting.','sheets':[]}
@@ -33,6 +36,8 @@ for sheet in plans:
  a=np.array(Image.open(path).convert('RGBA')).astype('int32');h,w=a.shape[:2];cols=sheet.get('columns',3);rows=sheet.get('rows',2)
  record={'sheetId':sheet['id'],'src':path.relative_to(ROOT/'dist').as_posix(),'sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'width':w,'height':h,'columns':cols,'rows':rows,'cells':[]}
  for i,p in enumerate(sheet['people']):
+  if sheet['id']=='support-atlas-25-v1' and p['id']==liaison['id']:
+   record.setdefault('retiredCells',[]).append({'index':i,'reason':'Protagonist-like design rejected during production visual QA; replaced by a distinct male liaison portrait.'});continue
   row,col=divmod(i,cols);x0=round(col*w/cols);x1=round((col+1)*w/cols);y0=round(row*h/rows);y1=round((row+1)*h/rows);cell=a[y0:y1,x0:x1];alpha=cell[:,:,3]>64
   rect={'x':x0,'y':y0,'width':x1-x0,'height':y1-y0};bounds=box(alpha,x0,y0)
   r,g,b=cell[:,:,0],cell[:,:,1],cell[:,:,2];skin=(r>140)&(g>90)&(b>65)&(r>g+10)&(g>b+10)&alpha

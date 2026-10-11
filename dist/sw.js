@@ -1,5 +1,5 @@
 const CACHE_PREFIX='lived-history-shell-';
-const CACHE_VERSION='2026-10-11-npc-exams-free-chapters-v1';
+const CACHE_VERSION='2026-10-11-npc-exams-free-chapters-v2';
 const CACHE_NAME=CACHE_PREFIX+CACHE_VERSION;
 const APP_SHELL=[
   '/',

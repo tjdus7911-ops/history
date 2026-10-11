@@ -23139,7 +23139,7 @@
       "identityKind": "supporting-role",
       "ageVariant": "initial",
       "ageLabel": "원고의 해당 시기",
-      "neutral": "assets/ancient/three-complete/characters/support-atlas-25-v1.png",
+      "neutral": "assets/ancient/three-complete/characters/support-c23-s01-liaison-v1.png",
       "portraitRequired": true,
       "position": "left",
       "portraitStatus": "generated-support-portrait-reviewed",
@@ -23152,53 +23152,53 @@
       ],
       "interpretationNotice": "역사 학습용 창작 인물 디자인; 실제 초상으로 표시하지 않는다.",
       "asset": {
-        "src": "assets/ancient/three-complete/characters/support-atlas-25-v1.png",
-        "sha256": "4bda8b1b9828013a06732bc8bc670ad484f8b465f7d186426a51fed93815dfc4",
-        "byteLength": 1505036,
+        "src": "assets/ancient/three-complete/characters/support-c23-s01-liaison-v1.png",
+        "sha256": "0a1dd0466ea1c83d01bef3b34c8aa0b201f7ac5c7a36ad0921a3a10a01f4e322",
+        "byteLength": 1686973,
         "exists": true
       },
-      "atlasId": "support-atlas-25-v1",
+      "atlasId": "support-c23-s01-liaison-v1",
       "sprite": {
-        "columns": 3,
-        "rows": 2,
-        "column": 1,
+        "columns": 1,
+        "rows": 1,
+        "column": 0,
         "row": 0,
-        "sheetWidth": 1254,
-        "sheetHeight": 1254,
+        "sheetWidth": 1024,
+        "sheetHeight": 1536,
         "sourceRect": {
-          "x": 418,
+          "x": 0,
           "y": 0,
-          "width": 418,
-          "height": 627
+          "width": 1024,
+          "height": 1536
         }
       },
       "portraitGeometry": {
         "coordinateSpace": "sheet-pixels",
-        "sheetWidth": 1254,
-        "sheetHeight": 1254,
+        "sheetWidth": 1024,
+        "sheetHeight": 1536,
         "faceBounds": {
-          "x": 590,
-          "y": 47,
-          "width": 80,
-          "height": 104
+          "x": 463,
+          "y": 114,
+          "width": 94,
+          "height": 96
         },
         "alphaBounds": {
-          "x": 509,
-          "y": 12,
-          "width": 280,
-          "height": 614
+          "x": 174,
+          "y": 19,
+          "width": 640,
+          "height": 1497
         },
         "upperBodyBounds": {
-          "x": 509,
-          "y": 12,
-          "width": 280,
-          "height": 356
+          "x": 174,
+          "y": 19,
+          "width": 640,
+          "height": 868
         },
         "framing": "full-body",
         "faceAnchorMethod": "visually-reviewed-skin-component-upper-face"
       },
-      "flipX": true,
-      "nativeFacing": "left",
+      "flipX": false,
+      "nativeFacing": "right",
       "portraitFraming": "full-body",
       "visualFileReview": true,
       "ageEvidence": "adult fictional role",
@@ -26676,13 +26676,24 @@
       "columns": 1,
       "rows": 1,
       "sourceKind": "built-in-imagegen-unique-supporting-character"
+    },
+    "support-c23-s01-liaison-v1": {
+      "src": "assets/ancient/three-complete/characters/support-c23-s01-liaison-v1.png",
+      "sha256": "0a1dd0466ea1c83d01bef3b34c8aa0b201f7ac5c7a36ad0921a3a10a01f4e322",
+      "byteLength": 1686973,
+      "exists": true,
+      "width": 1024,
+      "height": 1536,
+      "columns": 1,
+      "rows": 1,
+      "sourceKind": "built-in-imagegen-unique-supporting-character"
     }
   },
   "audit": {
     "sceneBackgroundCount": 218,
     "distinctBackgroundCount": 22,
     "generatedRecurringPortraitCount": 29,
-    "generatedPortraitAtlasCount": 44,
+    "generatedPortraitAtlasCount": 45,
     "missingPrincipalAppearanceCount": 0,
     "originalGenealogyPhotoCount": 3
   }
