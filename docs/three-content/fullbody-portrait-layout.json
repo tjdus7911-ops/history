@@ -1,0 +1,247 @@
+{
+  "schemaVersion": 1,
+  "sheets": [
+    {
+      "sheetId": "principal-fullbody-01",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-01.png",
+      "columns": 3,
+      "rows": 3,
+      "displayHeightFraction": 0.86,
+      "cells": [
+        {
+          "name": "순도",
+          "chapter": 3,
+          "ageVariant": "initial",
+          "faceBounds": [
+            195,
+            42,
+            62,
+            66
+          ]
+        },
+        {
+          "name": "광개토대왕",
+          "chapter": 3,
+          "ageVariant": "initial",
+          "faceBounds": [
+            501,
+            54,
+            66,
+            68
+          ]
+        },
+        {
+          "name": "장수왕",
+          "chapter": 4,
+          "ageVariant": "initial",
+          "faceBounds": [
+            791,
+            52,
+            65,
+            68
+          ]
+        },
+        {
+          "name": "을지문덕",
+          "chapter": 5,
+          "ageVariant": "initial",
+          "faceBounds": [
+            176,
+            573,
+            73,
+            72
+          ]
+        },
+        {
+          "name": "마라난타",
+          "chapter": 6,
+          "ageVariant": "initial",
+          "faceBounds": [
+            493,
+            554,
+            74,
+            75
+          ]
+        },
+        {
+          "name": "문주왕",
+          "chapter": 7,
+          "ageVariant": "initial",
+          "faceBounds": [
+            808,
+            564,
+            72,
+            70
+          ]
+        },
+        {
+          "name": "무령왕",
+          "chapter": 8,
+          "ageVariant": "initial",
+          "faceBounds": [
+            177,
+            1070,
+            73,
+            75
+          ]
+        },
+        {
+          "name": "성왕",
+          "chapter": 8,
+          "ageVariant": "initial",
+          "faceBounds": [
+            487,
+            1081,
+            73,
+            74
+          ]
+        },
+        {
+          "name": "법흥왕",
+          "chapter": 11,
+          "ageVariant": "initial",
+          "faceBounds": [
+            817,
+            1080,
+            71,
+            74
+          ]
+        }
+      ]
+    },
+    {
+      "sheetId": "principal-fullbody-02",
+      "src": "assets/ancient/three-complete/characters/principal-fullbody-atlas-02.png",
+      "columns": 3,
+      "rows": 3,
+      "displayHeightFraction": 0.86,
+      "cells": [
+        {
+          "name": "자장",
+          "chapter": 13,
+          "ageVariant": "initial",
+          "faceBounds": [
+            171,
+            33,
+            75,
+            78
+          ]
+        },
+        {
+          "name": "김춘추",
+          "chapter": 13,
+          "ageVariant": "initial",
+          "faceBounds": [
+            493,
+            49,
+            78,
+            76
+          ]
+        },
+        {
+          "name": "김유신",
+          "chapter": 13,
+          "ageVariant": "older",
+          "faceBounds": [
+            806,
+            39,
+            87,
+            86
+          ]
+        },
+        {
+          "name": "우륵",
+          "chapter": 15,
+          "ageVariant": "initial",
+          "faceBounds": [
+            168,
+            556,
+            74,
+            80
+          ]
+        },
+        {
+          "name": "신문왕",
+          "chapter": 16,
+          "ageVariant": "initial",
+          "faceBounds": [
+            500,
+            557,
+            77,
+            79
+          ]
+        },
+        {
+          "name": "원효",
+          "chapter": 17,
+          "ageVariant": "initial",
+          "faceBounds": [
+            822,
+            560,
+            77,
+            82
+          ]
+        },
+        {
+          "name": "의상",
+          "chapter": 17,
+          "ageVariant": "initial",
+          "faceBounds": [
+            159,
+            1065,
+            71,
+            78
+          ]
+        },
+        {
+          "name": "장보고",
+          "chapter": 18,
+          "ageVariant": "initial",
+          "faceBounds": [
+            509,
+            1065,
+            74,
+            79
+          ]
+        },
+        {
+          "name": "최치원",
+          "chapter": 19,
+          "ageVariant": "initial",
+          "faceBounds": [
+            837,
+            1078,
+            77,
+            75
+          ]
+        }
+      ]
+    },
+    {
+      "sheetId": "yeonwoo-fullbody-v1",
+      "src": "assets/ancient/three-complete/characters/yeonwoo-fullbody-v1.png",
+      "columns": 1,
+      "rows": 1,
+      "nativeFacing": "left",
+      "portraitFraming": "full-body",
+      "cells": [
+        {
+          "name": "연우",
+          "chapter": 1,
+          "faceBounds": [
+            405,
+            77,
+            166,
+            151
+          ],
+          "sourceRect": {
+            "x": 238,
+            "y": 15,
+            "width": 648,
+            "height": 1510
+          }
+        }
+      ]
+    }
+  ]
+}

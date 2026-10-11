@@ -7,10 +7,12 @@
   "characterIdentityCount": 236,
   "existingPrincipalPortraitCount": 2,
   "generatedRecurringPortraitCount": 29,
-  "generatedPortraitAtlasCount": 2,
-  "missingPrincipalAppearanceCount": 61,
+  "generatedPrincipalPortraitCount": 18,
+  "fullbodyPortraitCount": 19,
+  "generatedPortraitAtlasCount": 5,
+  "missingPrincipalAppearanceCount": 43,
   "missingRecurringCivilianAppearances": 0,
-  "missingHistoricalPersonAppearances": 20,
+  "missingHistoricalPersonAppearances": 2,
   "unmadeNamedLocalRoles": 41,
   "supportingBackgroundRoleCount": 152,
   "originalGenealogyPhotoCount": 3,
@@ -68,16 +70,6 @@
       "priority": "named-local-role"
     },
     {
-      "characterId": "history-sundo--initial",
-      "identityId": "history-sundo",
-      "name": "순도",
-      "ageLabel": "원고의 해당 시기",
-      "sceneIds": [
-        "THR-C03-S01"
-      ],
-      "priority": "historical-person"
-    },
-    {
       "characterId": "civilian-c03-c4d6a1921b--initial",
       "identityId": "civilian-c03-c4d6a1921b",
       "name": "규림",
@@ -98,16 +90,6 @@
       "priority": "named-local-role"
     },
     {
-      "characterId": "history-gwanggaeto--initial",
-      "identityId": "history-gwanggaeto",
-      "name": "광개토대왕",
-      "ageLabel": "원고의 해당 시기",
-      "sceneIds": [
-        "THR-C03-S05"
-      ],
-      "priority": "historical-person"
-    },
-    {
       "characterId": "civilian-c04-af5657ebbb--initial",
       "identityId": "civilian-c04-af5657ebbb",
       "name": "설모",
@@ -116,16 +98,6 @@
         "THR-C04-S03"
       ],
       "priority": "named-local-role"
-    },
-    {
-      "characterId": "history-jangsu--initial",
-      "identityId": "history-jangsu",
-      "name": "장수왕",
-      "ageLabel": "원고의 해당 시기",
-      "sceneIds": [
-        "THR-C04-S04"
-      ],
-      "priority": "historical-person"
     },
     {
       "characterId": "civilian-c04-2b4a55cdca--initial",
@@ -166,16 +138,6 @@
         "THR-C05-S01"
       ],
       "priority": "named-local-role"
-    },
-    {
-      "characterId": "history-euljimundeok--initial",
-      "identityId": "history-euljimundeok",
-      "name": "을지문덕",
-      "ageLabel": "원고의 해당 시기",
-      "sceneIds": [
-        "THR-C05-S02"
-      ],
-      "priority": "historical-person"
     },
     {
       "characterId": "civilian-c05-af3a370523--initial",
@@ -248,26 +210,6 @@
       "priority": "named-local-role"
     },
     {
-      "characterId": "history-marananta--initial",
-      "identityId": "history-marananta",
-      "name": "마라난타",
-      "ageLabel": "원고의 해당 시기",
-      "sceneIds": [
-        "THR-C06-S08"
-      ],
-      "priority": "historical-person"
-    },
-    {
-      "characterId": "history-munju--initial",
-      "identityId": "history-munju",
-      "name": "문주왕",
-      "ageLabel": "원고의 해당 시기",
-      "sceneIds": [
-        "THR-C07-S03"
-      ],
-      "priority": "historical-person"
-    },
-    {
       "characterId": "civilian-c07-e5bc0b19d9--initial",
       "identityId": "civilian-c07-e5bc0b19d9",
       "name": "다솔",
@@ -276,26 +218,6 @@
         "THR-C07-S04"
       ],
       "priority": "named-local-role"
-    },
-    {
-      "characterId": "history-muryeong--initial",
-      "identityId": "history-muryeong",
-      "name": "무령왕",
-      "ageLabel": "원고의 해당 시기",
-      "sceneIds": [
-        "THR-C08-S01"
-      ],
-      "priority": "historical-person"
-    },
-    {
-      "characterId": "history-seong--initial",
-      "identityId": "history-seong",
-      "name": "성왕",
-      "ageLabel": "원고의 해당 시기",
-      "sceneIds": [
-        "THR-C08-S04"
-      ],
-      "priority": "historical-person"
     },
     {
       "characterId": "civilian-c08-654ff58ca5--initial",
@@ -378,16 +300,6 @@
       "priority": "named-local-role"
     },
     {
-      "characterId": "history-beopheung--initial",
-      "identityId": "history-beopheung",
-      "name": "법흥왕",
-      "ageLabel": "원고의 해당 시기",
-      "sceneIds": [
-        "THR-C11-S07"
-      ],
-      "priority": "historical-person"
-    },
-    {
       "characterId": "civilian-c11-a432ade2f8--initial",
       "identityId": "civilian-c11-a432ade2f8",
       "name": "아라",
@@ -406,36 +318,6 @@
         "THR-C12-S01"
       ],
       "priority": "named-local-role"
-    },
-    {
-      "characterId": "history-jajang--initial",
-      "identityId": "history-jajang",
-      "name": "자장",
-      "ageLabel": "원고의 해당 시기",
-      "sceneIds": [
-        "THR-C13-S03"
-      ],
-      "priority": "historical-person"
-    },
-    {
-      "characterId": "history-kimchunchu--initial",
-      "identityId": "history-kimchunchu",
-      "name": "김춘추",
-      "ageLabel": "원고의 해당 시기",
-      "sceneIds": [
-        "THR-C13-S04"
-      ],
-      "priority": "historical-person"
-    },
-    {
-      "characterId": "history-kimyusin--older",
-      "identityId": "history-kimyusin",
-      "name": "김유신",
-      "ageLabel": "654년 약 60세의 김유신",
-      "sceneIds": [
-        "THR-C13-S06"
-      ],
-      "priority": "historical-person"
     },
     {
       "characterId": "civilian-c14-af5024ce09--initial",
@@ -458,16 +340,6 @@
       "priority": "named-local-role"
     },
     {
-      "characterId": "history-ureuk--initial",
-      "identityId": "history-ureuk",
-      "name": "우륵",
-      "ageLabel": "원고의 해당 시기",
-      "sceneIds": [
-        "THR-C15-S05"
-      ],
-      "priority": "historical-person"
-    },
-    {
       "characterId": "civilian-c15-dadbb6670e--initial",
       "identityId": "civilian-c15-dadbb6670e",
       "name": "여울",
@@ -476,16 +348,6 @@
         "THR-C15-S07"
       ],
       "priority": "named-local-role"
-    },
-    {
-      "characterId": "history-sinmun--initial",
-      "identityId": "history-sinmun",
-      "name": "신문왕",
-      "ageLabel": "원고의 해당 시기",
-      "sceneIds": [
-        "THR-C16-S02"
-      ],
-      "priority": "historical-person"
     },
     {
       "characterId": "civilian-c16-c0f5430502--initial",
@@ -536,47 +398,6 @@
         "THR-C17-S01"
       ],
       "priority": "named-local-role"
-    },
-    {
-      "characterId": "history-wonhyo--initial",
-      "identityId": "history-wonhyo",
-      "name": "원효",
-      "ageLabel": "원고의 해당 시기",
-      "sceneIds": [
-        "THR-C17-S01",
-        "THR-C17-S02"
-      ],
-      "priority": "historical-person"
-    },
-    {
-      "characterId": "history-uisang--initial",
-      "identityId": "history-uisang",
-      "name": "의상",
-      "ageLabel": "원고의 해당 시기",
-      "sceneIds": [
-        "THR-C17-S03"
-      ],
-      "priority": "historical-person"
-    },
-    {
-      "characterId": "history-jangbogo--initial",
-      "identityId": "history-jangbogo",
-      "name": "장보고",
-      "ageLabel": "원고의 해당 시기",
-      "sceneIds": [
-        "THR-C18-S02"
-      ],
-      "priority": "historical-person"
-    },
-    {
-      "characterId": "history-choechiwon--initial",
-      "identityId": "history-choechiwon",
-      "name": "최치원",
-      "ageLabel": "원고의 해당 시기",
-      "sceneIds": [
-        "THR-C19-S08"
-      ],
-      "priority": "historical-person"
     },
     {
       "characterId": "history-daejoyeong--initial",
@@ -789,7 +610,7 @@
   ],
   "speakerAliasChecks": "passed",
   "npcPositionChecks": "all-left",
-  "atlasSourceRectChecks": "29 rectangles in bounds, non-overlapping, one distinct slot per appearance",
+  "atlasSourceRectChecks": "47 in-bounds portraits; distinct identity slots; body extensions use alpha-envelope CSS clips where bounding boxes meet",
   "specificSceneProps": [
     {
       "sceneId": "THR-PRO-S01",
@@ -1885,7 +1706,7 @@
   "limitations": [
     "Existing illustrations establish compatible settings; they do not contain every authored action or object.",
     "The new spring queue illustration includes the waiting residents, unsteady grandmother and child; the later collapse/help actions still follow runtime staging.",
-    "The 29 recurring civilian appearances are reviewed upper-body illustrations with neutral expressions; exact CSS source rectangles are required because the generated grid is approximate.",
+    "Portrait source rectangles and alpha-envelope clips are required because generated grid positions are approximate; body-extension runtime composites are reviewed separately from source files.",
     "Unmade principal portraits have no substitute stock face. Their dialogue and identity remain available.",
     "Supporting occupations can be staged inside background illustrations or as off-screen speech; individual portraits are not required.",
     "Book closeup and the original-photo layers are implemented in the runtime, not baked into a new raster image."
@@ -1895,7 +1716,7 @@
     "backgroundFileReview": true,
     "knownPortraitFileReview": true,
     "generatedPortraitFileReview": true,
-    "generatedPortraitAppearanceCount": 29,
+    "generatedPortraitAppearanceCount": 47,
     "runtimeDesktopReview": false,
     "runtimeMobileReview": false
   }

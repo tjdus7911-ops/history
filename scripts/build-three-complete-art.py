@@ -187,6 +187,66 @@ def recurring_portraits():
     return portraits, sheets
 
 
+
+def completed_portraits():
+    """Load reviewed body extensions without changing original image bytes."""
+    relative = "docs/three-content/fullbody-portrait-generation.json"
+    path = ROOT / relative
+    if not path.is_file():
+        return {}, {}
+    source = json.loads(path.read_text(encoding="utf-8"))
+    portraits, sheets = {}, {}
+    for sheet in source["sheets"]:
+        info = asset_info(sheet["src"])
+        require(info["sha256"] == sheet["sha256"], f"Body extension changed: {sheet['src']}")
+        occupied = set()
+        sheets[sheet["sheetId"]] = {**info, "width": sheet["width"], "height": sheet["height"],
+            "columns": sheet["columns"], "rows": sheet["rows"],
+            "occupiedCellCount": sheet["occupiedCellCount"], "emptyCells": sheet["emptyCells"],
+            "visualFileReview": True, "sourceKind": "built-in-imagegen-identity-preserving-body-extension"}
+        for cell in sheet["cells"]:
+            cid, rect = cell["characterId"], cell["sourceRect"]
+            slot = (cell["row"], cell["column"])
+            require(slot not in occupied and cid not in portraits, f"Duplicate completed portrait: {cid}")
+            occupied.add(slot)
+            require(0 <= slot[0] < sheet["rows"] and 0 <= slot[1] < sheet["columns"], f"Invalid portrait slot: {cid}")
+            require(rect["x"] >= 0 and rect["y"] >= 0 and rect["width"] > 0 and rect["height"] > 0, f"Invalid body rectangle: {cid}")
+            require(rect["x"] + rect["width"] <= sheet["width"] and rect["y"] + rect["height"] <= sheet["height"], f"Body rectangle outside sheet: {cid}")
+            require(cell["visualFileReview"] and cell["cropReview"]["foreignPortraitComponents"] == 0 and
+                cell["cropReview"]["completeSolidSilhouetteInsideClip"], f"Incomplete portrait crop review: {cid}")
+            geometry = {"coordinateSpace": "sheet-pixels", "alphaThreshold": 32,
+                "sheetWidth": sheet["width"], "sheetHeight": sheet["height"],
+                "faceBounds": cell["faceBounds"], "alphaBounds": cell["alphaBounds"],
+                "upperBodyBounds": cell["upperBodyBounds"],
+                "faceAnchorMethod": "manual visual region excluding headgear", "framing": cell["portraitFraming"]}
+            portraits[cid] = {
+                "neutral": sheet["src"], "asset": info, "atlasId": sheet["sheetId"],
+                "flipX": cell["flipX"], "nativeFacing": cell["nativeFacing"],
+                "sprite": {"columns": sheet["columns"], "rows": sheet["rows"],
+                    "column": cell["column"], "row": cell["row"],
+                    "sheetWidth": sheet["width"], "sheetHeight": sheet["height"],
+                    "sourceRect": rect, **({"clipPath": cell["clipPath"]} if cell.get("clipPath") else {})},
+                "portraitGeometry": geometry, "portraitFraming": cell["portraitFraming"],
+                "portraitStatus": "generated-principal-portrait-reviewed" if cid.startswith("history-") else "generated-civilian-portrait-reviewed",
+                "visualFileReview": True, "genderEvidence": cell["genderEvidence"], "ageEvidence": cell["ageEvidence"],
+                "portraitSourceEvidence": cell["sourceEvidence"], "portraitSourceSceneId": cell["sourceSceneId"],
+                "portraitGenerationSource": relative, "cropReview": cell["cropReview"],
+                **({"preservedSource": cell["preservedSource"]} if cell.get("preservedSource") else {})}
+        require(len(occupied) == sheet["occupiedCellCount"], f"Body atlas occupied-cell count differs: {sheet['sheetId']}")
+    return portraits, sheets
+
+def approved_geometry():
+    path = ROOT / "docs/three-content/approved-portrait-geometry.json"
+    if not path.is_file():
+        return {"files": {}, "sourceOriginalHashes": {}}
+    source = json.loads(path.read_text(encoding="utf-8"))
+    for src, record in source["files"].items():
+        require(asset_info(src)["sha256"] == record["sha256"], f"Approved portrait original changed: {src}")
+    return {"coordinateSpace": "sheet-pixels", "alphaThreshold": 32,
+            "files": {src: record["portraitGeometry"] for src, record in source["files"].items()},
+            "sourceOriginalHashes": {src: record["sha256"] for src, record in source["files"].items()}}
+
+
 def identity(chapter, scene_number, speaker):
     name = ALIASES.get((chapter, speaker), speaker)
     if name in HISTORICAL:
@@ -246,6 +306,11 @@ def all_lines(scene):
 def build():
     manuscript = json.loads((DIST / "three-story-script.json").read_text(encoding="utf-8"))
     atlas_portraits, portrait_atlases = recurring_portraits()
+    recurring_appearance_ids = set(atlas_portraits)
+    completed, completed_atlases = completed_portraits()
+    atlas_portraits.update(completed)
+    portrait_atlases.update(completed_atlases)
+    geometry = approved_geometry()
     backgrounds, characters, scene_characters, record_voices = {}, {}, {}, {}
     background_assets = {key: {**asset_info(src), "label": label, "sourceKind": source_kind,
                                "visualFileReview": True, "containsNamedCharacters": False,
@@ -309,6 +374,8 @@ def build():
                     elif neutral:
                         characters[appearance_id]["asset"] = asset_info(neutral)
                         characters[appearance_id]["visualFileReview"] = True
+                        if neutral in geometry["files"]:
+                            characters[appearance_id]["portraitGeometry"] = geometry["files"][neutral]
                 person = characters[appearance_id]
                 if scene_id not in person["sourceSceneIds"]:
                     person["sourceSceneIds"].append(scene_id)
@@ -388,6 +455,10 @@ def build():
                    "visualFileReview": True, "sourceKind": "existing-approved-three-protagonist"}
     for src in [protagonist["modernSrc"], protagonist["cover"]["src"], *[f["src"] for f in protagonist["files"]]]:
         asset_info(src)
+    protagonist["files"].append({"expression": "modern", "src": protagonist["modernSrc"]})
+    for entry in protagonist["files"]:
+        if entry["src"] in geometry["files"]:
+            entry["portraitGeometry"] = geometry["files"][entry["src"]]
     photos = []
     for index, (original_name, expected_hash) in enumerate(ORIGINAL_PHOTOS, 1):
         src = f"{ART_DIR}/source-photos/genealogy-{index:02}.png"
@@ -407,7 +478,9 @@ def build():
              "sceneBackgroundCount": len(backgrounds), "distinctBackgroundCount": len({b["src"] for b in backgrounds.values()}),
              "characterAppearanceCount": len(characters), "characterIdentityCount": len({c["identityId"] for c in characters.values()}),
              "existingPrincipalPortraitCount": sum(c["portraitStatus"] == "existing-character-reviewed" for c in characters.values()),
-             "generatedRecurringPortraitCount": len(atlas_portraits), "generatedPortraitAtlasCount": len(portrait_atlases),
+             "generatedRecurringPortraitCount": len(recurring_appearance_ids),
+             "generatedPrincipalPortraitCount": len(set(atlas_portraits) - recurring_appearance_ids),
+             "fullbodyPortraitCount": len(completed), "generatedPortraitAtlasCount": len(portrait_atlases),
              "missingPrincipalAppearanceCount": len(missing_principals),
              "missingRecurringCivilianAppearances": sum(c["priority"] == "recurring-civilian" for c in missing_principals),
              "missingHistoricalPersonAppearances": sum(c["priority"] == "historical-person" for c in missing_principals),
@@ -417,11 +490,11 @@ def build():
              "sameFaceReusedForDifferentPeople": [], "missingPrincipalPortraits": missing_principals,
              "identityContinuityChecks": continuity_checks,
              "speakerAliasChecks": "passed", "npcPositionChecks": "all-left",
-             "atlasSourceRectChecks": "29 rectangles in bounds, non-overlapping, one distinct slot per appearance",
+             "atlasSourceRectChecks": f"{len(atlas_portraits)} in-bounds portraits; distinct identity slots; body extensions use alpha-envelope CSS clips where bounding boxes meet",
              "specificSceneProps": authored_scene_props,
              "limitations": ["Existing illustrations establish compatible settings; they do not contain every authored action or object.",
                               "The new spring queue illustration includes the waiting residents, unsteady grandmother and child; the later collapse/help actions still follow runtime staging.",
-                              "The 29 recurring civilian appearances are reviewed upper-body illustrations with neutral expressions; exact CSS source rectangles are required because the generated grid is approximate.",
+                              "Portrait source rectangles and alpha-envelope clips are required because generated grid positions are approximate; body-extension runtime composites are reviewed separately from source files.",
                               "Unmade principal portraits have no substitute stock face. Their dialogue and identity remain available.",
                               "Supporting occupations can be staged inside background illustrations or as off-screen speech; individual portraits are not required.",
                               "Book closeup and the original-photo layers are implemented in the runtime, not baked into a new raster image."],
@@ -432,7 +505,7 @@ def build():
     manifest = {"schemaVersion": 1, "contentVersion": manuscript["contentVersion"],
                 "status": audit["status"], "backgrounds": backgrounds, "characters": characters,
                 "sceneCharacters": scene_characters, "recordVoices": record_voices,
-                "protagonist": protagonist, "sourcePhotos": photos, "relationships": principal_relationships(),
+                "protagonist": protagonist, "approvedGeometry": geometry, "sourcePhotos": photos, "relationships": principal_relationships(),
                 "backgroundCatalog": background_assets, "portraitAtlases": portrait_atlases,
                 "audit": {k: audit[k] for k in ["sceneBackgroundCount", "distinctBackgroundCount", "generatedRecurringPortraitCount", "generatedPortraitAtlasCount", "missingPrincipalAppearanceCount", "originalGenealogyPhotoCount"]}}
     return manifest, audit
