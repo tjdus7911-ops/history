@@ -5,8 +5,25 @@ if(globalThis.CORE_APP_READY===true){
  chapterStatus=function(id){return available(id)?meta().completedChapters.includes(id)?'COMPLETED':'CURRENT':oldStatus(id);};
  const oldDetail=chapterDetailModal;
  chapterDetailModal=function(id){return oldDetail(id).replace('>다음 이야기</p>','>미시작</p>');};
+ const oldSeasonRun=seasonRun;
+ seasonRun=function(e){
+  const active=run(),saved=meta().eraProgress?.[historySeasonProgressKey(e.id)]?.resume?.run;
+  if(active.mode==='replay'&&active.started&&chapterEra(active.currentChapter)===e.id)return active;
+  if(saved?.mode==='replay'&&saved.started&&chapterEra(saved.currentChapter)===e.id)return saved;
+  return oldSeasonRun(e);
+ };
+ const oldEras=eras;
+ eras=function(){
+  const html=oldEras(),r=seasonRun(eraInfo(selectedEra));if(r?.mode!=='replay')return html;
+  const ch=CHAPTERS[r.currentChapter],s=STORIES[r.pending?.sourceSceneId||r.storyId];if(!ch)return html;
+  return html.replace(/(<button class="era-resume"[^>]*>[\s\S]*?<small>)[\s\S]*?(<\/small>)/,'$1CH.'+ch.number+' '+esc(ch.title)+' · '+esc(s?.title||'첫 장면')+'$2');
+ };
+ function hasStarted(id){
+  const saved=meta().eraProgress?.[historySeasonProgressKey(chapterEra(id))]?.resume;
+  return [run(),mainRun(),saved?.run,saved?.mainRun].some(r=>r?.started&&r.currentChapter===id);
+ }
  const oldRow=editorialChapterRow;
- editorialChapterRow=function(ch){let html=oldRow(ch);if(available(ch.chapterId)&&!meta().completedChapters.includes(ch.chapterId)&&!(run().currentChapter===ch.chapterId&&run().started))html=html.replace('aria-label="진행 중"','aria-label="미시작"');return html;};
+ editorialChapterRow=function(ch){let html=oldRow(ch);if(available(ch.chapterId)&&!meta().completedChapters.includes(ch.chapterId)&&!hasStarted(ch.chapterId))html=html.replace('aria-label="진행 중"','aria-label="미시작"');return html;};
  openChapterCard=function(id){if(!available(id))return toast('아직 준비 중인 챕터입니다.');modal={type:'chapter',chapterId:id};render();};
  function begin(id,replay=false){
   if(!available(id))return toast('아직 준비 중인 챕터입니다.');
