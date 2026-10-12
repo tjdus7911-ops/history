@@ -24,55 +24,106 @@ const oxInteger=value=>Math.max(0,Number.isFinite(Number(value))?Math.floor(Numb
 const oxAccuracy=(correct,total)=>total?Math.round(correct/total*100):0;
 const oxEra=id=>OX_ERAS.find(era=>era.id===id)||{id:id||'unknown',name:'기타',shortName:'기타'};
 const oxTopicLabel=question=>question?.topicName||question?.topicLabel||(Array.isArray(question?.tags)&&question.tags.length?question.tags.join(' · '):question?.topicId||`topic-${question?.id||'unknown'}`);
-const oxTopicId=question=>question?.analysisTopicId||(Array.isArray(question?.tags)&&question.tags.length?`${question?.eraId||'unknown'}:${question.tags.join('|')}`:question?.topicId||`topic-${question?.id||'unknown'}`);
+const oxTopicId=question=>question?.analysisTopicId||question?.topicId||(Array.isArray(question?.tags)&&question.tags.length?`${question?.eraId||'unknown'}:${question.tags.join('|')}`:`topic-${question?.id||'unknown'}`);
 const oxClone=value=>JSON.parse(JSON.stringify(value));
+const oxSessionQuestionIsCurrent=(session,id,staleIds=null)=>{const question=OX_BY_ID.get(id),fingerprint=session?.questionFingerprints?.[id];return Boolean(question&&!staleIds?.has(id)&&(!fingerprint||fingerprint===question.contentFingerprint));};
 
-function validOXSession(session,completed=false){
- return Boolean(session&&Array.isArray(session.questionIds)&&session.questionIds.length&&session.questionIds.every(id=>OX_BY_ID.has(id))&&Number.isInteger(session.index)&&session.index>=0&&session.index<session.questionIds.length&&(!completed||session.status==='completed'));
+function normalizeOXSession(session,completed=false,staleIds=null){
+ if(!session||!Array.isArray(session.questionIds)||!session.questionIds.length||completed&&session.status!=='completed')return null;
+ const originalIds=session.questionIds,questionIds=[],seen=new Set();
+ for(const id of originalIds)if(oxSessionQuestionIsCurrent(session,id,staleIds)&&!seen.has(id)){seen.add(id);questionIds.push(id);}
+ if(!questionIds.length)return null;
+ const oldIndex=Number.isInteger(session.index)?Math.max(0,Math.min(session.index,originalIds.length-1)):0,currentId=originalIds[oldIndex];
+ let index=questionIds.indexOf(currentId);
+ if(index<0)index=Math.min(questionIds.length-1,originalIds.slice(0,oldIndex).filter((id,position)=>oxSessionQuestionIsCurrent(session,id,staleIds)&&originalIds.indexOf(id)===position).length);
+ const answers={},results={};
+ for(const id of questionIds){
+  if(session.answers&&Object.hasOwn(session.answers,id)&&typeof session.answers[id]==='boolean')answers[id]=session.answers[id];
+  if(session.results&&Object.hasOwn(session.results,id)&&typeof session.results[id]==='boolean')results[id]=session.results[id];
+  else if(Object.hasOwn(answers,id))results[id]=answers[id]===OX_BY_ID.get(id).answer;
+ }
+ const normalized={...session,questionIds,index,answers,results,questionFingerprints:Object.fromEntries(questionIds.map(id=>[id,session.questionFingerprints?.[id]||OX_BY_ID.get(id).contentFingerprint]))};
+ if(completed){
+  const correct=Object.values(results).filter(Boolean).length,total=questionIds.length,durationMs=oxInteger(session.summary?.durationMs)||Math.max(0,Date.parse(session.completedAt||'')-Date.parse(session.startedAt||''))||0;
+  normalized.summary={...session.summary,total,correct,wrong:total-correct,accuracy:oxAccuracy(correct,total),durationMs};
+ }
+ return normalized;
 }
-function normalizeOXRecord(record={}){
+function normalizeOXRecord(record={},question=null){
  const suppliedCorrect=oxInteger(record.correctCount),suppliedWrong=oxInteger(record.wrongCount),attempts=oxInteger(record.attempts)||suppliedCorrect+suppliedWrong,correctCount=Math.min(attempts,suppliedCorrect),wrongCount=Math.max(0,Number.isFinite(Number(record.wrongCount))?suppliedWrong:attempts-correctCount);
- return {...record,attempts,correctCount,wrongCount,lastCorrect:typeof record.lastCorrect==='boolean'?record.lastCorrect:null,lastAnsweredAt:record.lastAnsweredAt||null};
+ return {...record,attempts,correctCount,wrongCount,lastCorrect:typeof record.lastCorrect==='boolean'?record.lastCorrect:null,lastAnsweredAt:record.lastAnsweredAt||null,contentFingerprint:record.contentFingerprint||question?.contentFingerprint||null};
 }
 function ensureOXMeta(){
  const m=meta();
  if(!m.oxQuiz||typeof m.oxQuiz!=='object')m.oxQuiz={};
  const ox=m.oxQuiz;
  if(oxMetaCache===ox)return ox;
- ox.records=ox.records&&typeof ox.records==='object'?ox.records:{};
- for(const [id,record] of Object.entries(ox.records))ox.records[id]=normalizeOXRecord(record);
+ const storedActiveSession=JSON.stringify(ox.activeSession??null),storedLastSession=JSON.stringify(ox.lastSession??null);
+ const storedLearningState=JSON.stringify({schemaVersion:ox.schemaVersion,contentRevision:ox.contentRevision,records:ox.records,history:ox.history,wrongIds:ox.wrongIds,recentQuestionIds:ox.recentQuestionIds});
+ const archived=ox.archivedContent&&typeof ox.archivedContent==='object'?ox.archivedContent:{};
+ archived.records=Array.isArray(archived.records)?archived.records:[];
+ archived.history=Array.isArray(archived.history)?archived.history:[];
+ archived.sessions=Array.isArray(archived.sessions)?archived.sessions:[];
+ let contentRepairNeeded=false;
+ const rawRecords=ox.records&&typeof ox.records==='object'?ox.records:{};
+ const rawHistory=Array.isArray(ox.history)?ox.history:[];
+ const staleContentIds=new Set(),normalizedRecords={};
+ for(const [id,record] of Object.entries(rawRecords)){
+  const question=OX_BY_ID.get(id),fingerprint=record?.contentFingerprint;
+  if(question&&fingerprint&&fingerprint!==question.contentFingerprint)staleContentIds.add(id);
+ }
+ for(const item of rawHistory){
+  const question=OX_BY_ID.get(item?.questionId),fingerprint=item?.contentFingerprint;
+  if(question&&fingerprint&&fingerprint!==question.contentFingerprint)staleContentIds.add(item.questionId);
+ }
+ for(const session of [ox.activeSession,ox.lastSession])for(const id of session?.questionIds||[]){
+  const question=OX_BY_ID.get(id),fingerprint=session?.questionFingerprints?.[id];
+  if(question&&fingerprint&&fingerprint!==question.contentFingerprint)staleContentIds.add(id);
+ }
+ for(const [id,record] of Object.entries(rawRecords)){
+  const question=OX_BY_ID.get(id);
+  if(question&&staleContentIds.has(id)){archived.records.push({...oxClone(record),questionId:id,currentContentFingerprint:question.contentFingerprint});contentRepairNeeded=true;continue;}
+  normalizedRecords[id]=normalizeOXRecord(record,question);
+ }
+ ox.records=normalizedRecords;
  const attemptNumbers={};
- ox.history=(Array.isArray(ox.history)?ox.history:[]).map(item=>{
+ ox.history=rawHistory.flatMap(item=>{
   const question=OX_BY_ID.get(item?.questionId),questionId=item?.questionId||'',selectedAnswer=typeof item?.selectedAnswer==='boolean'?item.selectedAnswer:typeof item?.answer==='boolean'?item.answer:null,correctAnswer=typeof item?.correctAnswer==='boolean'?item.correctAnswer:typeof question?.answer==='boolean'?question.answer:null,isCorrect=typeof item?.isCorrect==='boolean'?item.isCorrect:typeof item?.correct==='boolean'?item.correct:selectedAnswer!==null&&correctAnswer!==null?selectedAnswer===correctAnswer:false;
+  if(question&&staleContentIds.has(questionId)){archived.history.push({...oxClone(item),currentContentFingerprint:question.contentFingerprint});contentRepairNeeded=true;return [];}
   attemptNumbers[questionId]=(attemptNumbers[questionId]||0)+1;
-  return {...item,questionId,eraId:item?.eraId||question?.eraId||null,topicId:item?.topicId||oxTopicId(question),selectedAnswer,correctAnswer,isCorrect,answeredAt:item?.answeredAt||null,sessionId:item?.sessionId||null,attemptNumber:oxInteger(item?.attemptNumber)||attemptNumbers[questionId],answer:selectedAnswer,correct:isCorrect};
+  return [{...item,questionId,eraId:item?.eraId||question?.eraId||null,topicId:item?.topicId||oxTopicId(question),contentFingerprint:item?.contentFingerprint||question?.contentFingerprint||null,selectedAnswer,correctAnswer,isCorrect,answeredAt:item?.answeredAt||null,sessionId:item?.sessionId||null,attemptNumber:oxInteger(item?.attemptNumber)||attemptNumbers[questionId],answer:selectedAnswer,correct:isCorrect}];
  });
  const historyGroups=new Map();
  for(const event of ox.history){if(!OX_BY_ID.has(event.questionId))continue;const rows=historyGroups.get(event.questionId)||[];rows.push(event);historyGroups.set(event.questionId,rows);}
  for(const [id,events] of historyGroups){
-  const last=events.at(-1),historyCorrect=events.filter(event=>event.isCorrect).length,stored=normalizeOXRecord(ox.records[id]||{}),storedTime=Date.parse(stored.lastAnsweredAt||''),historyTime=Date.parse(last.answeredAt||'');
+  const last=events.at(-1),historyCorrect=events.filter(event=>event.isCorrect).length,stored=normalizeOXRecord(ox.records[id]||{},OX_BY_ID.get(id)),storedTime=Date.parse(stored.lastAnsweredAt||''),historyTime=Date.parse(last.answeredAt||'');
   if(!stored.attempts||events.length>=stored.attempts){
    ox.records[id]={...stored,attempts:events.length,correctCount:historyCorrect,wrongCount:events.length-historyCorrect,lastAnswer:last.selectedAnswer,lastCorrect:last.isCorrect,lastAnsweredAt:last.answeredAt};
   }else if(stored.lastCorrect===null||!stored.lastAnsweredAt||(Number.isFinite(historyTime)&&(!Number.isFinite(storedTime)||historyTime>=storedTime))){
    ox.records[id]={...stored,lastAnswer:last.selectedAnswer,lastCorrect:last.isCorrect,lastAnsweredAt:last.answeredAt};
   }
  }
- ox.recentQuestionIds=(Array.isArray(ox.recentQuestionIds)?ox.recentQuestionIds:[]).filter(id=>OX_BY_ID.has(id)).slice(-100);
- const legacyWrong=(Array.isArray(ox.wrongIds)?ox.wrongIds:[]).filter(id=>OX_BY_ID.has(id));
+ ox.recentQuestionIds=(Array.isArray(ox.recentQuestionIds)?ox.recentQuestionIds:[]).filter(id=>OX_BY_ID.has(id)&&!staleContentIds.has(id)).slice(-100);
+ const legacyWrong=(Array.isArray(ox.wrongIds)?ox.wrongIds:[]).filter(id=>OX_BY_ID.has(id)&&ox.records[id]);
  const latestWrong=Object.entries(ox.records).filter(([id,record])=>OX_BY_ID.has(id)&&record.lastCorrect===false).map(([id])=>id);
  ox.wrongIds=[...new Set([...legacyWrong,...latestWrong])].filter(id=>ox.records[id]?.lastCorrect!==true);
  ox.completedSessions=Array.isArray(ox.completedSessions)?ox.completedSessions:[];
- if(ox.activeSession&&!validOXSession(ox.activeSession))ox.activeSession=null;
- if(ox.lastSession&&!validOXSession(ox.lastSession,true))ox.lastSession=null;
+ for(const [kind,session] of [['activeSession',ox.activeSession],['lastSession',ox.lastSession]])if(session?.questionIds?.some(id=>!oxSessionQuestionIsCurrent(session,id,staleContentIds))){archived.sessions.push({kind,session:oxClone(session)});contentRepairNeeded=true;}
+ ox.activeSession=normalizeOXSession(ox.activeSession,false,staleContentIds);
+ ox.lastSession=normalizeOXSession(ox.lastSession,true,staleContentIds);
+ const sessionRepairNeeded=storedActiveSession!==JSON.stringify(ox.activeSession??null)||storedLastSession!==JSON.stringify(ox.lastSession??null);
+ if(archived.records.length||archived.history.length||archived.sessions.length)ox.archivedContent=archived;
  ox.schemaVersion=3;
  ox.contentRevision=globalThis.OX_CONTENT_REVISION||null;
+ const learningRepairNeeded=storedLearningState!==JSON.stringify({schemaVersion:ox.schemaVersion,contentRevision:ox.contentRevision,records:ox.records,history:ox.history,wrongIds:ox.wrongIds,recentQuestionIds:ox.recentQuestionIds});
  oxMetaCache=ox;
+ if((sessionRepairNeeded||contentRepairNeeded||learningRepairNeeded)&&typeof save==='function')save();
  return ox;
 }
 const oxMeta=()=>ensureOXMeta();
 function oxRecord(id){
  const stored=oxMeta().records[id];
- if(stored)return normalizeOXRecord(stored);
+ if(stored)return normalizeOXRecord(stored,OX_BY_ID.get(id));
  const attempts=oxMeta().history.filter(item=>item.questionId===id);
  if(!attempts.length)return null;
  const last=attempts.at(-1),correctCount=attempts.filter(item=>item.isCorrect).length;
@@ -128,11 +179,11 @@ function oxQuestionScore(question,{onlyWrong=false}={}){
 function chooseOXQuestions(count,{eraId=null,onlyWrong=false,seed=''}={}){
  const unique=new Map(),wrongIds=onlyWrong?new Set(oxCurrentWrongIds(eraId||'all')):null;
  for(const question of OX_QUESTIONS){if((!eraId||question.eraId===eraId)&&(!onlyWrong||wrongIds.has(question.id)))unique.set(question.id,question);}
- const pool=[...unique.values()].sort((a,b)=>oxQuestionScore(b,{onlyWrong})-oxQuestionScore(a,{onlyWrong})||oxHash(`${a.id}:${seed}`)-oxHash(`${b.id}:${seed}`)),selected=[],target=Math.min(oxInteger(count),pool.length);
+ const pool=[...unique.values()].sort((a,b)=>oxQuestionScore(b,{onlyWrong})-oxQuestionScore(a,{onlyWrong})||oxHash(`${seed}:${a.id}`)-oxHash(`${seed}:${b.id}`)),selected=[],target=Math.min(oxInteger(count),pool.length);
  let lastAnswer=null,streak=0;
  while(selected.length<target){
   let index=0;
-  if(streak>=2){const opposite=pool.findIndex(question=>question.answer!==lastAnswer);if(opposite>=0)index=opposite;}
+  if(streak>=2){const topScore=oxQuestionScore(pool[0],{onlyWrong}),opposite=pool.findIndex(question=>question.answer!==lastAnswer&&oxQuestionScore(question,{onlyWrong})===topScore);if(opposite>=0)index=opposite;}
   const [question]=pool.splice(index,1);selected.push(question);
   if(question.answer===lastAnswer)streak++;else{lastAnswer=question.answer;streak=1;}
  }
@@ -142,7 +193,7 @@ function newOXSession(mode,count,eraId=null,questionIds=null){
  const ox=oxMeta(),canonicalMode=mode==='wrong'?'review':mode,seed=`${canonicalMode}:${eraId||'all'}:${Date.now()}:${ox.completedSessions.length}`,questions=questionIds?[...new Set(questionIds)].map(id=>OX_BY_ID.get(id)).filter(Boolean).slice(0,oxInteger(count)):chooseOXQuestions(count,{eraId,onlyWrong:canonicalMode==='review',seed});
  if(!questions.length){toast(canonicalMode==='review'?'선택한 시대에 복습할 OX 오답이 없습니다.':'선택한 시대의 OX 문제가 없습니다.');return false;}
  const now=new Date().toISOString();
- ox.activeSession={id:`ox-session-${Date.now()}-${oxHash(seed)}`,mode:canonicalMode,eraId,questionIds:questions.map(question=>question.id),index:0,answers:{},results:{},startedAt:now,completedAt:null,status:'active'};
+ ox.activeSession={id:`ox-session-${Date.now()}-${oxHash(seed)}`,mode:canonicalMode,eraId,questionIds:questions.map(question=>question.id),questionFingerprints:Object.fromEntries(questions.map(question=>[question.id,question.contentFingerprint])),index:0,answers:{},results:{},startedAt:now,completedAt:null,status:'active'};
  oxView='quiz';screen='ox';oxWriteRoute('ox/quiz');save();render();window.scrollTo(0,0);return true;
 }
 function activeOXSession(){return oxMeta().activeSession;}
@@ -151,8 +202,8 @@ function answerOX(answer){
  const session=activeOXSession(),question=activeOXQuestion();if(!session||!question||Object.hasOwn(session.answers,question.id))return;
  const correct=answer===question.answer,now=new Date().toISOString(),ox=oxMeta(),previous=oxRecord(question.id)||{attempts:0,correctCount:0,wrongCount:0},attemptNumber=previous.attempts+1;
  session.answers[question.id]=answer;session.results[question.id]=correct;
- ox.records[question.id]={...previous,eraId:question.eraId,topicId:oxTopicId(question),attempts:attemptNumber,correctCount:previous.correctCount+(correct?1:0),wrongCount:previous.wrongCount+(correct?0:1),lastAnswer:answer,lastCorrect:correct,lastAnsweredAt:now};
- ox.history.push({questionId:question.id,eraId:question.eraId,topicId:oxTopicId(question),selectedAnswer:answer,correctAnswer:question.answer,isCorrect:correct,answeredAt:now,sessionId:session.id,attemptNumber,answer,correct,mode:session.mode});
+ ox.records[question.id]={...previous,eraId:question.eraId,topicId:oxTopicId(question),contentFingerprint:question.contentFingerprint,attempts:attemptNumber,correctCount:previous.correctCount+(correct?1:0),wrongCount:previous.wrongCount+(correct?0:1),lastAnswer:answer,lastCorrect:correct,lastAnsweredAt:now};
+ ox.history.push({questionId:question.id,eraId:question.eraId,topicId:oxTopicId(question),contentFingerprint:question.contentFingerprint,selectedAnswer:answer,correctAnswer:question.answer,isCorrect:correct,answeredAt:now,sessionId:session.id,attemptNumber,answer,correct,mode:session.mode});
  ox.recentQuestionIds.push(question.id);ox.recentQuestionIds=ox.recentQuestionIds.slice(-100);
  if(correct)ox.wrongIds=ox.wrongIds.filter(id=>id!==question.id);else if(!ox.wrongIds.includes(question.id))ox.wrongIds.push(question.id);
  save();render();
@@ -222,7 +273,7 @@ function oxHome(){
  return `<section class="ox-page ox-home">${editorialHeader('OX 퀴즈','한능검 심화 핵심 개념을 빠르게 확인해요.')}
  ${oxHomeAnalysis(stats,distribution)}
  ${resume?`<button class="ox-resume" data-ox-resume="true"><span><b>진행 중인 퀴즈 이어하기</b><small>${resume.index+1} / ${resume.questionIds.length}문제</small></span><strong>이어하기 ›</strong></button>`:''}
- <section class="ox-main-section"><div class="ox-main-heading"><div><small>ERA QUIZ</small><h2>시대별 OX 퀴즈</h2></div><span>한 세션 20문제</span></div><div class="ox-era-list">${OX_ERAS.map(era=>{const row=oxStats(era.id);return `<button class="ox-era-card" data-ox-era="${era.id}"><span class="ox-era-copy"><b>${esc(era.name)}</b><small>${esc(OX_ERA_DESCRIPTIONS[era.id]||'핵심 개념을 확인해요.')}</small><span class="ox-era-metrics"><em>전체 ${row.total}</em><em>학습 ${row.learned}</em><em>${row.learned?`정답률 ${row.accuracy}%`:'아직 학습 전'}</em></span></span><i aria-hidden="true">›</i></button>`;}).join('')}</div></section>
+ <section class="ox-main-section"><div class="ox-main-heading"><div><small>ERA QUIZ</small><h2>시대별 OX 퀴즈</h2></div><span>최대 20문제</span></div><div class="ox-era-list">${OX_ERAS.map(era=>{const row=oxStats(era.id);return `<button class="ox-era-card" data-ox-era="${era.id}"><span class="ox-era-copy"><b>${esc(era.name)}</b><small>${esc(OX_ERA_DESCRIPTIONS[era.id]||'핵심 개념을 확인해요.')}</small><span class="ox-era-metrics"><em>전체 ${row.total}</em><em>학습 ${row.learned}</em><em>${row.learned?`정답률 ${row.accuracy}%`:'아직 학습 전'}</em></span></span><i aria-hidden="true">›</i></button>`;}).join('')}</div></section>
  <section class="ox-main-section"><div class="ox-main-heading"><div><small>REVIEW</small><h2>틀린 OX 다시 풀기</h2></div></div><div class="ox-tool-list"><article class="ox-tool-card"><div><p>현재 복습이 필요한 문제를 시대별로 골라 풀어요.</p></div><label>시대 선택<select data-ox-home-review-era>${oxReviewOptions(oxHomeReviewEra)}</select></label><button class="primary" data-ox-review="true" ${wrongCount?'':'disabled'}>${wrongCount?`${wrongCount}문제 중 복습 시작`:'복습할 문제가 없어요'}</button></article></div></section></section>`;
 }
 function oxQuiz(){

@@ -17,6 +17,7 @@ const server=http.createServer((req,res)=>{
   await page.locator('[data-nav="ox"]').click();
   const homeText=await page.locator('#app').innerText();
   assert(homeText.includes('OX 퀴즈')&&homeText.includes('한능검 심화 핵심 개념을 빠르게 확인해요.'));
+  assert(homeText.includes('최대 20문제'),'dynamic session cap label missing '+width);
   assert(!homeText.includes('오늘의 심화 핵심 개념')&&!homeText.includes('빠른 OX 퀴즈'));
   assert.equal(await page.locator('[data-ox-start="quick"], [data-ox-start="daily"]').count(),0);
   assert.equal(await page.locator('[data-ox-era]').count(),7);
@@ -47,10 +48,11 @@ const server=http.createServer((req,res)=>{
   await page.locator('.ox-top [data-ox-back]').click();
   await page.waitForURL(/#ox$/);assert(await page.locator('[data-ox-home-analysis]').isVisible(),'detail header back did not return to OX home '+width);
 
+  const sessionSize=await page.evaluate(()=>Math.min(20,OX_QUESTIONS.filter(question=>question.eraId==='goryeo').length));
   await page.locator('[data-ox-era="goryeo"]').click();
-  assert.equal(await page.evaluate(()=>meta().oxQuiz.activeSession.questionIds.length),20,'era session size '+width);
-  assert.equal(await page.evaluate(()=>new Set(meta().oxQuiz.activeSession.questionIds).size),20,'era session duplicates '+width);
-  assert((await page.locator('.ox-progress-label').innerText()).includes('전체 20문제'));
+  assert.equal(await page.evaluate(()=>meta().oxQuiz.activeSession.questionIds.length),sessionSize,'era session size '+width);
+  assert.equal(await page.evaluate(()=>new Set(meta().oxQuiz.activeSession.questionIds).size),sessionSize,'era session duplicates '+width);
+  assert((await page.locator('.ox-progress-label').innerText()).includes(`전체 ${sessionSize}문제`));
   assert.equal(await page.locator('.ox-question-meta small').innerText(),'한능검 심화 핵심 개념','answer-bearing topic leaked before choice '+width);
   assert.equal(await page.locator('.ox-feedback').count(),0,'answer feedback leaked before choice '+width);
   assert.equal(await page.locator('[data-ox-next]').count(),0,'next action leaked before choice '+width);
@@ -67,9 +69,11 @@ const server=http.createServer((req,res)=>{
   await page.reload();assert(await page.locator('.ox-feedback').isVisible(),'session feedback did not restore '+width);assert((await page.locator('.ox-progress-label').innerText()).includes('현재 1번'));
   const firstQuestion=await page.locator('.ox-question-card h2').innerText();
   await page.locator('[data-ox-next]').click();
-  assert((await page.locator('.ox-progress-label').innerText()).includes('현재 2번'),'next button did not advance quiz '+width);
-  assert.notEqual(await page.locator('.ox-question-card h2').innerText(),firstQuestion,'next button repeated the same question '+width);
-  assert.equal(await page.locator('.ox-feedback').count(),0,'next question must hide feedback until a choice '+width);
+  if(sessionSize>1){
+   assert((await page.locator('.ox-progress-label').innerText()).includes('현재 2번'),'next button did not advance quiz '+width);
+   assert.notEqual(await page.locator('.ox-question-card h2').innerText(),firstQuestion,'next button repeated the same question '+width);
+   assert.equal(await page.locator('.ox-feedback').count(),0,'next question must hide feedback until a choice '+width);
+  }else assert.equal(await page.locator('.ox-result').count(),1,'a one-question era must finish safely '+width);
 
   await page.locator('[data-ox-back]').click();
   assert.equal(new URL(page.url()).hash,'#ox','quiz back must return to OX main '+width);

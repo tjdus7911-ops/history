@@ -1,102 +1,748 @@
 [
-  {"id":"ox-empire-001","statement":"흥선 대원군은 왕실의 권위를 높이기 위해 경복궁 중건을 추진하였다.","answer":true,"explanation":"고종 초 흥선 대원군은 임진왜란 때 불탄 뒤 폐허로 남은 경복궁을 다시 세워 왕권을 회복하려 했다. 공사비를 마련하려 원납전을 거두고 당백전을 발행하여 백성의 부담과 물가 상승을 낳았다."},
-  {"id":"ox-empire-002","statement":"흥선 대원군은 유생의 지지를 얻으려 서원을 전국적으로 늘렸다.","answer":false,"explanation":"서원을 늘렸다는 부분이 틀렸다. 흥선 대원군은 서원이 면세 특권을 누리고 농민을 수탈한다고 보아 사액 서원 47개소만 남기고 대폭 철폐하였다."},
-  {"id":"ox-empire-003","statement":"흥선 대원군은 양반에게도 군포를 부담시키는 호포제를 실시하였다.","answer":true,"explanation":"호포제는 군포를 양인 장정에게만 거두던 방식을 고쳐 양반 호에도 부과한 제도였다. 이로써 흥선 대원군은 군정의 폐단을 줄이고 국가 재정을 확보하려 하였다."},
-  {"id":"ox-empire-004","statement":"병인양요 직후 조선 정부는 전국에 독립문을 세워 서양 세력 배척 의지를 드러냈다.","answer":false,"explanation":"병인양요 직후 독립문을 세웠다는 내용이 틀렸다. 전국에 첩화비가 세워진 계기는 1871년 신미양요였고, 독립문은 1890년대 독립 협회가 자주독립의 상징으로 건립하였다."},
-  {"id":"ox-empire-005","statement":"1876년 강화도 조약은 조선이 외국과 맺은 최초의 근대적 조약이자 불평등 조약이었다.","answer":true,"explanation":"조일 수호 조규라고도 부르며, 운요호 사건 뒤 일본의 무력 위협 속에서 체결되었다. 조선을 자주국으로 규정했지만 해안 측량권과 영사 재판권을 일본에 인정하여 불평등한 성격을 띠었다."},
-  {"id":"ox-empire-006","statement":"강화도 조약에 따라 평양·개성·전주가 차례로 개항되었다.","answer":false,"explanation":"개항장의 위치가 틀렸다. 부산은 1876년, 원산은 1880년, 인천은 1883년에 개항되어 일본의 상업·군사적 침투 거점이 되었다."},
-  {"id":"ox-empire-007","statement":"1882년 조미 수호 통상 조약에는 두 나라 중 한 쪽이 어려움을 겪으면 돕는다는 거중 조정 조항이 담겼다.","answer":true,"explanation":"이 조약은 조선이 서양 국가와 맺은 최초의 수호 통상 조약이었다. 거중 조정 조항은 조선이 열강의 침략을 견제할 외교적 안전장치로 기대했으나 을사늑약 때 미국은 실질적으로 개입하지 않았다."},
-  {"id":"ox-empire-008","statement":"임오군란은 별기군이 폐지될 것을 우려한 신식 군인들이 주도하였다.","answer":false,"explanation":"봉기의 주체와 원인이 틀렸다. 1882년 구식 군인들이 별기군에 비해 차별받고 밀린 급료로 나쁜 쌀을 받자 분격하여 일으킨 것이 임오군란이다."},
-  {"id":"ox-empire-009","statement":"갑신정변의 개혁 정강에는 문벌 폐지와 인민 평등이 포함되었다.","answer":true,"explanation":"1884년 급진 개화파는 청의 간섭을 끊고 근대 국가를 세우려 정변을 일으켰다. 정강은 문벌 폐지 외에도 지조법 개혁, 재정의 호조 일원화 등을 제시하였지만 청군의 개입으로 3일 만에 실패하였다."},
-  {"id":"ox-empire-010","statement":"갑신정변 뒤 조선은 러시아와 포츠머스 조약을 맺아 정변을 수습하였다.","answer":false,"explanation":"조약의 당사국과 시기가 모두 틀렸다. 갑신정변 뒤 조선과 일본은 한성 조약을 맺었고, 포츠머스 조약은 미국의 중재로 1905년 러시아와 일본이 체결해 러시아가 일본의 한국에 대한 우월한 지위를 인정한 조약이다."},
-  {"id":"ox-empire-011","statement":"영국은 러시아의 남하를 견제한다는 명분으로 1885년 거문도를 불법 점령하였다.","answer":true,"explanation":"영국은 거문도의 해상이 러시아 함대의 태평양 진출을 막는 데 유리하다고 판단하였다. 조선 정부의 반발과 국제적 교섭 끝에 영국군은 1887년 철수하였으며, 이 사건은 열강이 조선을 둘러싸고 경쟁했음을 보여 준다."},
-  {"id":"ox-empire-012","statement":"동학 농민군의 핵심 구호는 서양과의 통상을 막자는 위정척사에만 한정되었다.","answer":false,"explanation":"동학 농민군의 목표를 위정척사로만 한정한 점이 틀렸다. 그들은 보국안민과 제폭구민을 내걸고 탐관오리 처벌·신분 차별 개선 등 사회 개혁을 요구하였다."},
-  {"id":"ox-empire-013","statement":"전주 화약 후 동학 농민군은 전라도 각지에 집강소를 두어 폐정 개혁을 실천하였다.","answer":true,"explanation":"1894년 농민군은 정부와 전주 화약을 맺고 전주성에서 물러난 뒤 지방 자치 기구인 집강소를 운영하였다. 집강소는 노비 문서 소각, 불법 세금 폐지 등 폐정 개혁안을 현지에서 실행하였다."},
-  {"id":"ox-empire-014","statement":"청일 전쟁은 임진왜란 중 명과 일본이 조선에서 충돌하며 시작되었다.","answer":false,"explanation":"전쟁의 시기와 당사국이 틀렸다. 청일 전쟁은 1894년 동학 농민 운동을 계기로 조선에 출병한 청과 일본이 조선에 대한 지배권을 놓고 벌인 전쟁이다."},
-  {"id":"ox-empire-015","statement":"제1차 갑오개혁은 김홍집 내각 아래 군국기무처를 중심으로 추진되었다.","answer":true,"explanation":"군국기무처는 1894년 일본군의 경복궁 점령 직후 설치되어 의정부와 6조를 넘어 개혁을 주도한 최고 정책 결정 기구였다. 이 기구는 신분제와 과거제를 폐지하고 재정을 탁지아문으로 일원화하는 등 근대적 개혁을 추진하였다."},
-  {"id":"ox-empire-016","statement":"갑오개혁은 양반 중심의 신분제와 관리 선발을 위한 과거제를 강화하였다.","answer":false,"explanation":"강화한 것이 아니라 폐지했다. 갑오개혁은 공·사노비제와 과거제를 없애 법제상 신분 해방의 길을 열었지만, 일본의 강압 아래 추진된 한계도 있었다."},
-  {"id":"ox-empire-017","statement":"을미개혁에서 태양력과 건양 연호가 사용되고 단발령이 시행되었다.","answer":true,"explanation":"1895년 을미개혁은 종두법, 우편 사무 재개, 소학교 설치 등 근대적 제도를 도입하였다. 그러나 명성 황후 시해와 단발령에 대한 반발은 을미의병이 일어나는 계기가 되었다."},
-  {"id":"ox-empire-018","statement":"고종은 아관 파천을 단행하여 일본 공사관에서 1년간 머물렀다.","answer":false,"explanation":"고종이 피신한 곳은 일본 공사관이 아니라 러시아 공사관이었다. 1896년 아관 파천으로 친일 내각이 무너졌지만, 러시아를 비롯한 열강의 이권 침탈은 더욱 심해졌다."},
-  {"id":"ox-empire-019","statement":"서재필은 『독립신문』을 창간했고, 뒤이어 조직된 독립 협회는 독립문 건립을 추진하였다.","answer":true,"explanation":"『독립신문』은 1896년 4월 먼저 창간되었고 독립 협회는 같은 해 7월 조직되었으므로 협회가 신문 창간을 지원했다고 보기는 어렵다. 독립 협회는 영은문 자리에 독립문을 세워 청으로부터의 자주를 상징하고 토론회로 자유 민권 의식을 확산하였다."},
-  {"id":"ox-empire-020","statement":"독립 협회는 만민 공동회를 통해 황제에게 무제한의 권력을 주자고 주장하였다.","answer":false,"explanation":"독립 협회는 황제권의 무제한 강화가 아니라 자주 국권과 자유 민권을 추구하였다. 만민 공동회와 관민 공동회를 열어 열강의 이권 요구에 반대하고 의회 설립 운동을 전개하였다."},
-  {"id":"ox-empire-021","statement":"고종은 1897년 원구단에서 황제로 즉위하고 대한 제국을 선포하였다.","answer":true,"explanation":"고종은 아관 파천에서 환궁한 뒤 국호를 대한으로 바꾸고 광무 연호를 사용하였다. 황제국 선포는 청과 대등한 자주 국가임을 대내외에 알리려는 조치였다."},
-  {"id":"ox-empire-022","statement":"대한 제국은 토지 조사령을 발포하고 식민지 토지 조사 사업을 실시하였다.","answer":false,"explanation":"토지 조사령과 토지 조사 사업의 주체가 틀렸으며, 이는 1910년대 조선 총독부가 추진하였다. 대한 제국은 광무개혁으로 양전 사업을 실시하고 토지 소유권 문서인 지계를 발급하였다."},
-  {"id":"ox-empire-023","statement":"1899년 반포된 대한국 국제는 대한 제국을 전제 군주국으로 규정하였다.","answer":true,"explanation":"대한국 국제는 황제가 육·해군 통수권과 입법·행정·사법권을 갖는다고 밝혔다. 이는 대한 제국의 자주독립을 선언하는 동시에 황제권을 법제적으로 강화한 규범이었다."},
-  {"id":"ox-empire-024","statement":"을사늑약으로 대한 제국은 만주 지역에 대한 영유권을 획득하였다.","answer":false,"explanation":"을사늑약은 영토를 얻은 조약이 아니라 1905년 일제에 외교권을 빼앗긴 강압적 협약이었다. 일제는 이후 통감부를 설치하고 이토 히로부미를 초대 통감으로 두어 내정 간섭을 강화하였다."},
-  {"id":"ox-empire-025","statement":"고종은 을사늑약의 부당성을 알리려 1907년 헤이그 만국 평화 회의에 특사를 파견하였다.","answer":true,"explanation":"고종은 이준·이상설·이위종을 특사로 보내 을사늑약이 황제의 승인 없이 체결되었음을 호소하게 했다. 열강의 냉담으로 회의 참석은 좌절되었고, 일제는 이 사건을 구실로 고종을 강제 퇴위시켰다."},
-  {"id":"ox-empire-026","statement":"일제는 1894년 대한 제국 군대를 창설하여 조선의 국방력을 강화하였다.","answer":false,"explanation":"대한 제국은 1897년에 수립되었으므로 1894년에 그 군대를 창설했다는 시기부터 틀렸다. 일제는 1907년 한일 신협약의 비밀 각서에 따라 대한 제국 군대를 강제 해산하였다."},
-  {"id":"ox-empire-027","statement":"1907년 군대 해산 후 해산 군인들이 의병에 합류하며 정미의병의 전투력이 강해졌다.","answer":true,"explanation":"서울 시위대의 박승환은 군대 해산에 항거하여 자결하였고, 일부 군인은 일본군과 시가전을 벌였다. 근대적 군사 훈련을 받은 군인들의 합류로 의병 전쟁은 조직과 무장면에서 한층 강화되었다."},
-  {"id":"ox-empire-028","statement":"안창호와 양기탁은 일제의 식민 통치를 돕기 위해 조선 총독부 중추원을 조직하였다.","answer":false,"explanation":"조직의 성격이 반대로 서술되었다. 안창호·양기탁 등은 1907년 공화정 수립과 실력 양성을 목표로 한 항일 비밀 결사 신민회를 조직하였다."},
-  {"id":"ox-empire-029","statement":"국채 보상 운동은 일본에 진 국채를 국민의 성금으로 갚아 경제적 자립을 지키려 한 운동이었다.","answer":true,"explanation":"1907년 대구에서 서상돈이 제안하자 대한매일신보 등 언론의 지원을 받아 전국으로 확산되었다. 남성의 담배 끊기와 여성의 비녀·패물 모으기 등 다양한 계층이 참여하였으나 일제의 탄압으로 목표를 이루지 못하였다."},
-  {"id":"ox-empire-030","statement":"안창호는 경성 제국 대학을 세워 일제의 식민 교육을 확산하였다.","answer":false,"explanation":"안창호가 세운 학교와 교육 목표가 모두 틀렸다. 그는 신민회의 실력 양성 운동으로 평양에 대성 학교를 세워 민족 교육을 실시하였으며, 경성 제국 대학은 1924년 일제가 설립하였다."},
-  {"id":"ox-empire-031","statement":"1875년 운요호 사건은 일본이 강화도 부근에서 무력 충돌을 일으켜 조선의 개항을 압박한 사건이다.","answer":true,"explanation":"일본 군함 운요호는 조선 수군의 포격을 유도한 뒤 영종진을 공격하고 민가를 약탈하였다. 일본은 이를 구실로 포함 외교를 펼쳐 이듬해 강화도 조약을 체결하였다."},
-  {"id":"ox-empire-032","statement":"강화도 조약은 조선의 관세 주권과 일본인에 대한 재판권을 완전히 보장한 평등 조약이었다.","answer":false,"explanation":"평등 조약이었다는 판단이 틀렸다. 강화도 조약과 부속 조약은 일본에 영사 재판권과 해안 측량권을 주고 일본 상품에 무관세를 적용하여 조선의 주권을 침해하였다."},
-  {"id":"ox-empire-033","statement":"조미 수호 통상 조약은 조선이 수출입품에 관세를 부과할 수 있도록 규정하였다.","answer":true,"explanation":"강화도 조약 뒤의 조일 무역 규칙은 사실상 무관세였지만, 1882년 조미 조약은 관세 조항을 두어 조선의 관세권을 인정하였다. 다만 미국에 영사 재판권과 최혜국 대우를 허용하여 불평등성은 남았다."},
-  {"id":"ox-empire-034","statement":"영남 만인소는 『조선책략』의 연미론을 지지하며 미국과 즉시 수교하자고 요구하였다.","answer":false,"explanation":"상소의 취지를 반대로 서술하였다. 이만손을 비롯한 영남 유생들은 러시아를 막으려 미국과 연대하자는 『조선책략』의 주장이 서양 세력과 천주교의 침투를 불러올 것이라며 개항 정책에 반대하였다."},
-  {"id":"ox-empire-035","statement":"조일 수호 조규 부록은 일본인의 개항장 거류지와 여행 범위를 규정하였다.","answer":true,"explanation":"1876년 부록은 일본인이 개항장에서 10리 이내를 여행할 수 있도록 행동 범위를 정했다. 또 개항장에서 일본 화폐를 사용할 수 있게 하여 일본 상인의 경제 활동을 보장하였다."},
-  {"id":"ox-empire-036","statement":"조일 무역 규칙은 조선이 일본 상품에 관세를 부과하고 양곡 수출을 엄격히 통제하도록 했다.","answer":false,"explanation":"관세와 양곡 무역에 대한 내용이 반대이다. 1876년 조일 무역 규칙은 일본 무역선에 항세를 부과하지 않고 양곡을 제한 없이 유출할 수 있게 하여 조선에 불리하였다."},
-  {"id":"ox-empire-037","statement":"1883년 민영익이 이끈 보빙사는 미국의 근대 시설과 문물을 시찰하였다.","answer":true,"explanation":"보빙사는 조미 수호 통상 조약 체결 뒤 미국에 파견된 최초의 공식 사절단이었다. 사절단은 우편·전신·교육·농업 시설을 살펴 이후 조선의 개화 정책에 참고가 되는 정보를 가져왔다."},
-  {"id":"ox-empire-038","statement":"고종 정부는 개화 정책을 총괄하기 위해 비변사를 설치하였다.","answer":false,"explanation":"개화 정책을 총괄한 기구는 비변사가 아니라 1880년에 설치된 통리기무아문이었다. 통리기무아문 아래에 12사를 두어 외교·군사·통상 등 근대화 업무를 나누어 담당하게 하였다."},
-  {"id":"ox-empire-039","statement":"개화 정책을 추진하던 조선 정부는 기존 5군영을 무위영과 장어영의 2영으로 개편하였다.","answer":true,"explanation":"이 군제 개편은 중앙군을 간소화하고 근대적 군사 체제를 마련하려는 조치였다. 신식 군대인 별기군에 대한 우대와 구식 군인의 차별은 훗날 임오군란의 배경이 되었다."},
-  {"id":"ox-empire-040","statement":"별기군은 청인 교관에게 전통식 군사 훈련을 받은 구식 군대였다.","answer":false,"explanation":"교관의 국적과 훈련 방식이 틀렸다. 1881년 조직된 별기군은 일본인 호리모토 레이조의 지도로 근대식 군사 훈련을 받았고, 이에 대한 특별 대우는 구식 군인의 반발을 키웠다."},
-  {"id":"ox-empire-041","statement":"1881년 조사 시찰단은 신분과 목적을 숨긴 채 일본의 근대 시설과 제도를 살펴보았다.","answer":true,"explanation":"조사들은 일본의 정부 기관·군사·산업 시설을 나누어 시찰하고 보고서를 작성하였다. 같은 해 청에는 군사 기술 습득을 위한 영선사가 파견되어 초기 개화 정책이 다각도로 진행되었다."},
-  {"id":"ox-empire-042","statement":"영선사는 미국의 의회 제도를 배우기 위해 워싱턴에 파견되었다.","answer":false,"explanation":"파견지와 연수 목적이 틀렸다. 김윤식이 이끈 영선사는 1881년 청의 천진에 파견되어 근대 무기 제조와 군사 기술을 배웠다."},
-  {"id":"ox-empire-043","statement":"김윤식이 인솔한 영선사 일행은 귀국 후 근대식 무기 제조소인 기기창 설치에 기여하였다.","answer":true,"explanation":"영선사 일행은 청의 기기국에서 화약·탄약·기계 제조 기술을 익혔다. 재정 난과 임오군란으로 조기 귀국했지만 그 경험은 1883년 서울 삼청동에 기기창을 설치하는 데 활용되었다."},
-  {"id":"ox-empire-044","statement":"임오군란 뒤 조선은 청의 군대를 철수시키고 내정 간섭에서 완전히 벗어났다.","answer":false,"explanation":"임오군란 뒤 청의 간섭이 사라졌다는 설명은 틀렸다. 청은 군대를 주둔시키고 위안스카이를 파견했으며 조청 상민 수륙 무역 장정으로 경제적 특권까지 확대하였다."},
-  {"id":"ox-empire-045","statement":"임오군란 때 구식 군인과 서울 하층민은 일본 공사관을 공격하였다.","answer":true,"explanation":"봉기군은 개화 정책과 민씨 세력에 대한 불만을 표출하며 흥선 대원군을 재집권시켰다. 그러나 청군이 개입하여 흥선 대원군을 청으로 압송하고 조선 내정에 대한 간섭을 강화하였다."},
-  {"id":"ox-empire-046","statement":"임오군란 후 일본군이 흥선 대원군을 도쿄로 압송하였다.","answer":false,"explanation":"흥선 대원군을 압송한 주체와 장소가 틀렸다. 청군은 임오군란을 진압하고 그를 청의 톈진으로 끌고 갔으며, 이후 청은 마젠창과 위안스카이를 파견하여 조선 내정을 간섭하였다."},
-  {"id":"ox-empire-047","statement":"제물포 조약은 조선이 임오군란의 배상금을 지급하고 일본 공사관에 경비병을 두도록 하였다.","answer":true,"explanation":"일본은 공사관 피습의 책임을 물어 배상과 사절단 파견을 조선에 강요하였다. 일본 공사관 경비병의 주둔은 일본군이 서울에 항상 머물 수 있는 근거가 되었다."},
-  {"id":"ox-empire-048","statement":"조청 상민 수륙 무역 장정은 청 상인의 내지 통상을 금지하여 조선 상인을 보호하였다.","answer":false,"explanation":"내지 통상을 금지했다는 내용이 틀렸다. 1882년 장정은 청 상인이 양화진에 점포를 열고 내지까지 상업 활동을 하도록 특권을 주어 청의 경제 침투를 확대하였다."},
-  {"id":"ox-empire-049","statement":"급진 개화파는 우정총국 개국 축하연을 이용하여 갑신정변을 일으켰다.","answer":true,"explanation":"김옥균·박영효 등은 청이 청불 전쟁으로 약해진 틈을 타 1884년 정변을 감행하였다. 그들은 고종을 경우궁으로 옮기고 개혁 정강을 발표했으나 청군의 개입으로 3일 만에 무너졌다."},
-  {"id":"ox-empire-050","statement":"김옥균·박영효·서재필은 점진 개화파로서 청과의 전통적 외교 질서를 그대로 유지하려 했다.","answer":false,"explanation":"이들은 점진 개화파가 아니라 갑신정변을 주도한 급진 개화파였다. 청에 대한 사대 관계를 끊고 문벌 폐지·인민 평등·재정 일원화 등 근대적 개혁을 빠르게 추진하려 하였다."},
-  {"id":"ox-empire-051","statement":"갑신정변의 개혁 정강은 재정 기관을 호조로 일원화하고 지조법을 개혁할 것을 밝혔다.","answer":true,"explanation":"급진 개화파는 당시 재정이 왕실과 여러 아문에 분산된 문제를 시정하려 하였다. 정강은 내시부 폐지, 문벌 폐지와 인민 평등 등을 내세운 위로부터의 근대화 구상이었다."},
-  {"id":"ox-empire-052","statement":"갑신정변은 조선 군대의 전국적 지지를 받아 세 달 동안 개혁 정부를 유지하였다.","answer":false,"explanation":"정변은 세 달이 아니라 3일 만에 실패하였다. 급진 개화파가 일본군에 의존했고 민중의 폭넓은 지지를 얻지 못한 상태에서 청군이 개입하자 정권은 무너졌다."},
-  {"id":"ox-empire-053","statement":"갑신정변 후 체결된 한성 조약은 조선이 일본에 배상금을 지급하도록 하였다.","answer":true,"explanation":"일본은 공사관 소실과 일본인 피해를 이유로 조선에 사죄와 배상을 요구하였다. 따라서 1885년 한성 조약은 정변 실패의 부담을 조선에 지운 불평등한 사후 처리였다."},
-  {"id":"ox-empire-054","statement":"톈진 조약은 청과 일본이 조선에 군대를 계속 주둔시키고 파병 사실을 서로 알리지 않도록 하였다.","answer":false,"explanation":"군대 처리와 파병 절차를 반대로 서술하였다. 1885년 청과 일본은 양국군의 조선 철수와 향후 조선에 파병할 때 서로 미리 알릴 것을 약속하였고, 이 통고 조항은 1894년 양국의 출병 과정에서 다시 적용되었다."},
-  {"id":"ox-empire-055","statement":"고부 농민 봉기는 군수 조병갑의 만석보 수세 등 탐학에 반발하여 일어났다.","answer":true,"explanation":"조병갑은 만석보를 새로 쌓은 뒤 불법으로 물세를 거두고 부모의 공덕비 비용까지 농민에게 징수하였다. 새 군수 박원명이 요구를 받아들이자 농민들은 해산했지만 안핵사 이용태가 참가자를 가혹하게 탄압해 무장기포가 일어났다."},
-  {"id":"ox-empire-056","statement":"동학 농민군은 백산에 집결한 뒤 손병희를 총대장으로 추대하였다.","answer":false,"explanation":"백산 집결 당시 총대장은 손병희가 아니라 전봉준이었다. 농민군은 백산 격문과 4대 명의를 발표하고 호남창의대장소를 중심으로 조직을 정비하였다."},
-  {"id":"ox-empire-057","statement":"동학 농민군은 황토현과 황룡촌 전투에서 관군을 격파하였다.","answer":true,"explanation":"황토현 전투는 농민군이 관군을 물리친 첫 대승이었고, 황룡촌에서는 장태를 이용해 관군의 총격을 막았다. 승리를 이어 감영이 있던 전주성을 점령하자 정부는 청에 원군을 요청하였다."},
-  {"id":"ox-empire-058","statement":"전주 화약이 체결되자 청군과 일본군은 약속대로 즉시 조선에서 함께 철수하였다.","answer":false,"explanation":"두 외국 군대가 곧바로 철수했다는 설명은 틀렸다. 청군은 철수를 준비했지만 일본은 이를 거부하고 경복궁을 점령한 뒤 청일 전쟁을 일으켰으며, 농민군은 일본을 몰아내려고 다시 봉기하였다."},
-  {"id":"ox-empire-059","statement":"동학 농민군의 폐정 개혁안에는 탐관오리 처벌과 천인 차별 개선이 담겼다.","answer":true,"explanation":"폐정 개혁안은 불법적 조세 폐지, 청상과부의 재가 허용, 노비 문서 소각 등을 요구하였다. 이는 외세 배척에 그치지 않고 신분·조세·지방 행정을 고치려 한 농민 대중의 사회 개혁 요구였다."},
-  {"id":"ox-empire-060","statement":"일본군이 경복궁을 점령한 뒤 동학 농민군은 일본과 연합하여 청군을 몰아내기 위해 다시 봉기하였다.","answer":false,"explanation":"농민군의 봉기 목표가 반대로 서술되었다. 일본군의 경복궁 점령과 청일 전쟁 발발 후 농민군은 일본 세력을 몰아내고 국권을 지키려 2차 봉기하였다."},
-  {"id":"ox-empire-061","statement":"동학 농민군은 공주 우금치 전투에서 일본군과 관군에게 패배하였다.","answer":true,"explanation":"1894년 11월 농민군은 우세한 화력을 갖춘 일본군·관군의 방어선을 뚫지 못하였다. 우금치 패배 후 농민군의 주력이 해산되었고 전봉준은 체포되어 처형되었다."},
-  {"id":"ox-empire-062","statement":"제1차 갑오개혁은 의정부와 8아문을 폐지하고 조선 후기의 6조 체제를 그대로 복원하였다.","answer":false,"explanation":"중앙 행정 조직의 개편 방향이 틀렸다. 제1차 갑오개혁은 종래의 6조를 8아문으로 바꾸고 의정부 아래에 두어 근대적 행정 체제를 만들려 하였다."},
-  {"id":"ox-empire-063","statement":"갑오개혁 과정에서 재판소 구성법이 공포되어 행정 기관과 사법 기관을 분리하려 하였다.","answer":true,"explanation":"재판소 구성법은 지방 재판소·한성 재판소·고등 재판소 등 근대적 재판 체계의 근거를 마련하였다. 이는 수령과 행정 관청이 재판까지 맡던 전통에서 벗어나 사법권을 독립시키려 한 개혁이었다."},
-  {"id":"ox-empire-064","statement":"갑오개혁의 신식 화폐 발행 장정은 금본위제를 채택하였다.","answer":false,"explanation":"금본위제를 채택했다는 부분이 틀렸고, 신식 화폐 발행 장정은 5냥 은화를 본위화로 삼은 은본위제를 도입하였다. 갑오개혁은 재정을 탁지아문으로 일원화하고 조세의 금납화를 추진하였다."},
-  {"id":"ox-empire-065","statement":"갑오개혁 때 왕실 사무를 맡는 궁내부를 두어 정부 사무와 분리하였다.","answer":true,"explanation":"궁내부는 왕실의 재정과 의식 등을 전담했고 의정부와 8아문은 국정을 담당하였다. 이 분리는 왕실 재정이 국가 재정을 임의로 사용하던 폐단을 줄이려는 근대적 개혁이었다."},
-  {"id":"ox-empire-066","statement":"홍범 14조는 청에 대한 사대 관계를 강화하고 왕실과 정부 사무를 통합하자고 선언하였다.","answer":false,"explanation":"홍범 14조는 청에 의존하려 한 것이 아니라 자주독립을 확고히 하겠다고 선언하였다. 또 왕실 사무와 국정을 분리하고 조세의 법정주의, 인재 등용 등 2차 갑오개혁의 방향을 제시하였다."},
-  {"id":"ox-empire-067","statement":"을미개혁 때 중앙에는 친위대, 지방에는 진위대가 설치되어 군제가 개편되었다.","answer":true,"explanation":"친위대는 서울과 왕궁을 지키고 진위대는 지방의 질서 유지와 국방을 담당하도록 편성되었다. 군제 개편과 함께 소학교 설치, 우편 사무 재개 등 근대적 제도가 추진되었지만 일본의 영향 아래 시행된 한계가 있었다."},
-  {"id":"ox-empire-068","statement":"을미의병은 을사늑약 체결과 고종의 강제 퇴위에 반발하여 1907년에 일어났다.","answer":false,"explanation":"을미의병의 발단 시기와 계기가 틀렸다. 을미의병은 1895년 명성 황후 시해와 단발령에 반발해 일어났고, 고종 강제 퇴위와 군대 해산은 1907년 정미의병의 계기였다."},
-  {"id":"ox-empire-069","statement":"아관 파천을 계기로 러시아의 영향력이 커지면서 알렉세예프가 재정 고문으로 임명되었다.","answer":true,"explanation":"아관 파천을 계기로 러시아는 군사 교관과 재정 고문을 보내 조선과 이후 대한 제국의 내정에 영향력을 넓혔다. 알렉세예프의 재정 간섭은 뒤에 독립 협회가 외국 고문 철수를 요구한 배경이 되었다."},
-  {"id":"ox-empire-070","statement":"아관 파천 기간에 외세의 이권 요구가 줄어 광산과 산림이 국가 직영으로 회수되었다.","answer":false,"explanation":"열강의 이권 침탈이 줄었다는 설명은 틀렸고 아관 파천기에 오히려 더욱 심해졌다. 러시아가 경원·종성의 광산과 울릉도·압록강 삼림 채벌권을 요구하고 미국·프랑스 등도 철도·광산 이권을 차지하였다."},
-  {"id":"ox-empire-071","statement":"독립 협회는 러시아의 절영도 조차 요구를 저지하고 한러 은행을 폐쇄시키는 데 앞장섰다.","answer":true,"explanation":"독립 협회는 만민 공동회를 열어 열강의 이권 침탈을 비판하고 자주 국권 수호 운동을 전개하였다. 대중의 반대 여론에 힘입어 러시아의 군사 교관과 재정 고문도 철수하여 반외세 운동의 성과를 보였다."},
-  {"id":"ox-empire-072","statement":"독립 협회는 보부상 단체인 황국 협회와 연합하여 만민 공동회를 강제로 해산하였다.","answer":false,"explanation":"두 단체의 관계를 반대로 서술했으므로 틀렸다. 황국 협회는 정부의 지원을 받은 보부상 단체로 만민 공동회를 습격했고, 정부는 군대를 동원해 독립 협회를 해산하였다."},
-  {"id":"ox-empire-073","statement":"관민 공동회에서 채택된 헌의 6조는 내각과 국민이 협의하는 정치를 지향하였다.","answer":true,"explanation":"헌의 6조는 외국과의 조약을 각부 대신과 중추원 의장이 합동 날인하게 하고 재정을 공개하도록 하였다. 중추원을 의회식으로 개편하려 한 내용은 입헌 군주제를 지향한 흐름을 보여 준다."},
-  {"id":"ox-empire-074","statement":"독립 협회는 의회 설립에 반대하여 중추원을 황제의 자문 기구로만 유지하려 하였다.","answer":false,"explanation":"독립 협회가 의회 설립에 반대했다는 설명은 틀렸다. 협회는 중추원을 상원 역할의 의회식 기구로 개편하고 의관의 절반은 관선, 절반은 민선으로 구성하려 했으나 정부의 탄압으로 실현하지 못하였다."},
-  {"id":"ox-empire-075","statement":"대한 제국은 1900년 칙령 제41호로 울릉도를 울도군으로 승격하고 석도를 관할 구역에 포함하였다.","answer":true,"explanation":"칙령 제41호는 울도 군수가 울릉 전도와 죽도·석도를 관할한다고 규정하였다. 석도는 독도를 가리키므로 대한 제국이 일본의 시마네현 고시보다 앞서 독도를 행정 구역에 포함했음을 보여 준다."},
-  {"id":"ox-empire-076","statement":"광무개혁은 서양의 제도를 전면 수용하고 전통 제도를 모두 폐기한다는 문명개화를 원칙으로 삼았다.","answer":false,"explanation":"광무개혁의 원칙은 전통을 모두 폐기하는 것이 아니라 구본신참이었다. 대한 제국은 옛 제도를 근본으로 삼되 새 제도를 참작하여 양전·상공업 진흥·군제 개편을 추진하였다."},
-  {"id":"ox-empire-077","statement":"광무개혁 기간에 상공 학교와 광무 학교가 세워져 실업 교육이 강화되었다.","answer":true,"explanation":"대한 제국은 상공업 진흥에 필요한 기술 인력을 양성하려 실용적 학교를 세웠다. 우무 학당·전무 학당·광무 학교 등의 설립은 통신·광산·산업의 근대화와 연결되었다."},
-  {"id":"ox-empire-078","statement":"대한 제국의 원수부는 황제의 군권을 제한하고 의회가 군대를 지휘하도록 설치되었다.","answer":false,"explanation":"원수부의 목적을 거꾸로 서술한 점이 틀렸다. 대한 제국은 1899년 원수부를 설치하여 황제가 육·해군을 직접 통솔하도록 했으며 친위대와 진위대를 증강하였다."},
-  {"id":"ox-empire-079","statement":"대한 제국은 광무개혁으로 근대적 공장과 회사의 설립을 지원하여 상공업을 진흥하려 하였다.","answer":true,"explanation":"정부는 제조 공장을 세우고 은행·철도·해운 회사의 설립을 장려하였다. 이러한 광무개혁은 자주적 근대화를 지향했지만 외세의 이권 침탈과 재정 부족으로 성과가 제한되었다."},
-  {"id":"ox-empire-080","statement":"대한 제국은 간도 주민을 청의 관할로 돌려보내기 위해 이범윤을 간도 관리사로 파견하였다.","answer":false,"explanation":"이범윤을 파견한 목적을 반대로 서술했으므로 틀렸다. 대한 제국은 간도의 한인을 보호하고 영유권을 뒷받침하려 그를 시찰원에 이어 1903년 간도 관리사로 임명했고, 이범윤은 사포대를 조직해 주민을 보호하였다."},
-  {"id":"ox-empire-081","statement":"한성 전기 회사의 전차는 서울 서대문과 청량리 사이에서 운행되었다.","answer":true,"explanation":"고종은 미국인 사업가와 함께 한성 전기 회사를 세워 1899년 전차 운행을 시작하였다. 전기·전화·전차의 보급은 대한 제국기 서울의 도시 공간과 생활 방식을 바꾸었다."},
-  {"id":"ox-empire-082","statement":"러일 전쟁 중 체결된 한일 의정서는 일본군이 대한 제국의 영토를 군사적 목적으로 사용하지 못하게 했다.","answer":false,"explanation":"한일 의정서의 내용을 반대로 서술하였다. 1904년 일본은 러일 전쟁 수행에 필요한 지역을 임의로 사용할 권리를 확보하여 대한 제국의 군사 주권을 침해하였다."},
-  {"id":"ox-empire-083","statement":"제1차 한일 협약으로 일본이 추천한 외국인 고문이 대한 제국의 재정과 외교에 배치되었다.","answer":true,"explanation":"1904년 협약에 따라 재정 고문으로 일본인 메가타, 외교 고문으로 미국인 스티븐스가 임명되었다. 고문의 배치는 대한 제국의 행정권을 잠식하는 고문 정치의 시작이었다."},
-  {"id":"ox-empire-084","statement":"을사늑약 후 설치된 통감부의 초대 통감은 러시아인 베베르였다.","answer":false,"explanation":"초대 통감은 베베르가 아니라 일본의 이토 히로부미였다. 통감은 대한 제국의 외교를 관장하고 내정을 감독하여 일제의 보호국 지배를 실행하였다."},
-  {"id":"ox-empire-085","statement":"을사늑약에 항거해 민영환이 자결하고 장지연이 「시일야방성대곡」을 게재하였다.","answer":true,"explanation":"민영환은 유서를 남겨 국민에게 자주독립의 의지를 호소하였다. 황성신문의 장지연은 을사오적을 규탄한 논설을 실어 조약의 부당성을 널리 알렸고, 이 때문에 신문은 정간 처분을 받았다."},
-  {"id":"ox-empire-086","statement":"러일 전쟁 발발 직전 대한 제국은 일본과 군사 동맹을 맺고 러시아에 선전 포고하였다.","answer":false,"explanation":"대한 제국은 전쟁에 휘말리지 않으려고 1904년 1월 국외 중립을 선언하였다. 일본은 이를 무시하고 서울을 군사적으로 장악한 뒤 한일 의정서를 강요했으므로 자발적으로 군사 동맹을 맺었다는 설명은 틀렸다."},
-  {"id":"ox-empire-087","statement":"1907년 한일 신협약은 일본인 차관이 대한 제국의 내정에 광범위하게 관여하도록 하였다.","answer":true,"explanation":"이토 히로부미와 이완용 내각이 체결한 이 협약은 주요 관리의 임면에 통감의 승인을 받게 하였다. 후속 비밀 각서에 따라 군대가 해산되고 사법·경찰권까지 차례로 침탈당하였다."},
-  {"id":"ox-empire-088","statement":"1908년 장인환과 전명운이 처단하려 한 인물은 이토 히로부미였다.","answer":false,"explanation":"의거의 대상이 틀렸다. 두 사람은 샌프란시스코에서 대한 제국의 외교 고문을 지내며 일본의 한국 지배를 옹호한 더럼 스티븐스를 공격했고, 이토 히로부미는 이듬해 하얼빈에서 안중근이 처단하였다."},
-  {"id":"ox-empire-089","statement":"평민 출신 의병장 신돌석은 영해를 근거지로 경북·강원 일대에서 유격전을 전개하였다.","answer":true,"explanation":"신돌석은 1906년 영해에서 의병을 일으켜 청송·울진·삼척 등지에서 일본군을 기습하였다. 그의 활약은 의병 운동의 참여 계층이 유생에서 평민으로 확대되었음을 보여 준다."},
-  {"id":"ox-empire-090","statement":"13도 창의군은 안창호를 총대장으로 추대하여 평양 진공 작전을 추진하였다.","answer":false,"explanation":"총대장과 진공 목표가 모두 틀렸다. 13도 창의군은 유생 의병장 이인영을 총대장으로, 평민 의병장 허위를 군사장으로 삼아 1908년 서울 진공 작전을 시도하였다."},
-  {"id":"ox-empire-091","statement":"호남 의병은 1909년 일제의 남한 대토벌 작전으로 큰 피해를 입었다.","answer":true,"explanation":"호남 지역은 기삼연·전해산 등이 활동하며 마지막까지 의병 항전이 강하게 이어진 곳이었다. 일제는 규모 큰 토벌을 벌여 부대와 민간 기반을 파괴했고, 생존 의병 일부는 만주·연해주 등으로 이동하였다."},
-  {"id":"ox-empire-092","statement":"안중근은 상하이 홍커우 공원에서 일본 군 대장 시라카와를 처단하였다.","answer":false,"explanation":"장소와 대상이 틀렸다. 안중근은 1909년 하얼빈 역에서 한국 침략을 주도한 이토 히로부미를 처단했고, 홍커우 공원에서 시라카와를 처단한 인물은 1932년의 윤봉길이다."},
-  {"id":"ox-empire-093","statement":"안중근은 여순 감옥에서 한·중·일의 협력을 지향한 『동양 평화론』을 집필하였다.","answer":true,"explanation":"안중근은 이토 히로부미를 처단한 이유를 일본의 침략이 동양 평화를 파괴했기 때문이라고 밝혔다. 그는 공동 은행과 공동 군단 등을 통한 동아시아 협력을 구상했으나 사형으로 저술을 완성하지 못하였다."},
-  {"id":"ox-empire-094","statement":"보안회는 일본의 황무지 개간권 요구를 지지하여 일본인 농장 건설을 도왔다.","answer":false,"explanation":"보안회는 일본의 요구를 지지한 것이 아니라 조직적으로 저지하였다. 1904년 대중 집회와 가로 연설을 펼쳐 황무지 개간권 요구를 철회시켰으며, 국민의 힘으로 경제 주권을 지킨 성과를 남겼다."},
-  {"id":"ox-empire-095","statement":"헌정 연구회는 입헌 정치 체제의 수립을 목표로 활동한 애국 계몽 단체였다.","answer":true,"explanation":"1905년 조직된 헌정 연구회는 군주의 권력을 헌법으로 제약하는 대의 정치를 연구하고 교육하였다. 을사늑약 뒤 대한 자강회로 계승되어 교육과 식산흥업을 통한 실력 양성 운동으로 발전하였다."},
-  {"id":"ox-empire-096","statement":"대한 자강회는 고종의 강제 퇴위를 적극 지지하고 의병 해산을 촉구하였다.","answer":false,"explanation":"대한 자강회는 고종 강제 퇴위에 반대하여 전국적인 시위 운동을 전개하였다. 교육 진흥과 산업 발전을 통한 자강을 추구했으며, 퇴위 반대 운동을 계기로 통감부에 의해 해산되었다."},
-  {"id":"ox-empire-097","statement":"신민회는 1911년 일제가 조작한 105인 사건으로 조직이 해체되었다.","answer":true,"explanation":"일제는 데라우치 총독 암살 모의를 꾸몄다는 혐의를 조작해 신민회 계열 인사들을 대거 체포하였다. 국내 비밀 조직은 무너졌지만 회원들은 서간도 등지에서 독립운동 기지 건설을 이어 갔다."},
-  {"id":"ox-empire-098","statement":"신민회는 민족 교육을 억제하려 오산 학교와 대성 학교를 폐쇄하였다.","answer":false,"explanation":"신민회는 두 학교를 폐쇄한 것이 아니라 민족 지도자를 기르기 위해 설립·지원하였다. 또 평양의 자기 회사와 대구의 태극 서관을 운영하여 민족 자본을 키우는 식산흥업 운동을 펼쳤다."},
-  {"id":"ox-empire-099","statement":"신민회는 서간도 삼원보에 경학사와 신흥 강습소를 세워 독립운동 기지를 건설하였다.","answer":true,"explanation":"국내에서 국권 회복이 어려워질 것에 대비해 신민회는 이회영·이상룡 등을 중심으로 서간도 기지 건설을 계획하였다. 경학사는 자치 기구, 신흥 강습소는 독립군 간부 양성 기관으로 발전하였다."},
-  {"id":"ox-empire-100","statement":"국채 보상 운동은 서울에서 안창호가 제안하여 시작되었다.","answer":false,"explanation":"발상지와 제안자가 틀렸다. 국채 보상 운동은 1907년 대구의 광문사에서 서상돈이 국채 1,300만 원을 국민이 담배를 끊어 마련한 돈으로 갚자고 제안하며 시작되었다."}
+  {
+    "id": "ox-empire-005",
+    "coreId": "ox-core-empire-74-opening-treaties",
+    "topicId": "empire-74-opening-treaties",
+    "statement": "1876년 강화도 조약은 조선이 외국과 맺은 최초의 근대적 조약이자 불평등 조약이었다.",
+    "answer": true,
+    "explanation": "조일 수호 조규라고도 부르며, 운요호 사건 뒤 일본의 무력 위협 속에서 체결되었다. 조선을 자주국으로 규정했지만 해안 측량권과 영사 재판권을 일본에 인정하여 불평등한 성격을 띠었다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "강화도 조약 이후의 조약 체계"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 74)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 74)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-007",
+    "coreId": "ox-core-empire-74-opening-treaties",
+    "topicId": "empire-74-opening-treaties",
+    "statement": "1882년 조미 수호 통상 조약에는 두 나라 중 한 쪽이 어려움을 겪으면 돕는다는 거중 조정 조항이 담겼다.",
+    "answer": true,
+    "explanation": "이 조약은 조선이 서양 국가와 맺은 최초의 수호 통상 조약이었다. 거중 조정 조항은 조선이 열강의 침략을 견제할 외교적 안전장치로 기대했으나 을사늑약 때 미국은 실질적으로 개입하지 않았다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "강화도 조약 이후의 조약 체계"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 74)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 74)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-011",
+    "coreId": "ox-core-empire-76-post-gapsin-sequence",
+    "topicId": "empire-76-post-gapsin-sequence",
+    "statement": "영국은 러시아의 남하를 견제한다는 명분으로 1885년 거문도를 불법 점령하였다.",
+    "answer": true,
+    "explanation": "영국은 거문도의 해상이 러시아 함대의 태평양 진출을 막는 데 유리하다고 판단하였다. 조선 정부의 반발과 국제적 교섭 끝에 영국군은 1887년 철수하였으며, 이 사건은 열강이 조선을 둘러싸고 경쟁했음을 보여 준다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "갑신정변 이후 정세의 전개"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 76)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 76)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-013",
+    "coreId": "ox-core-empire-78-donghak-sequence",
+    "topicId": "empire-78-donghak-sequence",
+    "statement": "전주 화약 후 동학 농민군은 전라도 각지에 집강소를 두어 폐정 개혁을 실천하였다.",
+    "answer": true,
+    "explanation": "1894년 농민군은 정부와 전주 화약을 맺고 전주성에서 물러난 뒤 지방 자치 기구인 집강소를 운영하였다. 집강소는 노비 문서 소각, 불법 세금 폐지 등 폐정 개혁안을 현지에서 실행하였다.",
+    "difficulty": "medium",
+    "tags": [
+      "개항기·대한 제국",
+      "동학 농민 운동의 전개"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 78)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 78)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-015",
+    "coreId": "ox-core-empire-80-first-gabo",
+    "topicId": "empire-80-first-gabo",
+    "statement": "제1차 갑오개혁은 김홍집 내각 아래 군국기무처를 중심으로 추진되었다.",
+    "answer": true,
+    "explanation": "군국기무처는 1894년 일본군의 경복궁 점령 직후 설치되어 의정부와 6조를 넘어 개혁을 주도한 최고 정책 결정 기구였다. 이 기구는 신분제와 과거제를 폐지하고 재정을 탁지아문으로 일원화하는 등 근대적 개혁을 추진하였다.",
+    "difficulty": "medium",
+    "tags": [
+      "개항기·대한 제국",
+      "제1차 갑오개혁"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 80)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 80)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-017",
+    "coreId": "ox-core-empire-82-eulmi-reform",
+    "topicId": "empire-82-eulmi-reform",
+    "statement": "을미개혁에서 태양력과 건양 연호가 사용되고 단발령이 시행되었다.",
+    "answer": true,
+    "explanation": "1895년 을미개혁은 종두법, 우편 사무 재개, 소학교 설치 등 근대적 제도를 도입하였다. 그러나 명성 황후 시해와 단발령에 대한 반발은 을미의병이 일어나는 계기가 되었다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "을미개혁"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 82)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 82)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-021",
+    "coreId": "ox-core-empire-85-reign-titles",
+    "topicId": "empire-85-reign-titles",
+    "statement": "고종은 1897년 원구단에서 황제로 즉위하고 대한 제국을 선포하였다.",
+    "answer": true,
+    "explanation": "고종은 아관 파천에서 환궁한 뒤 국호를 대한으로 바꾸고 광무 연호를 사용하였다. 황제국 선포는 청과 대등한 자주 국가임을 대내외에 알리려는 조치였다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "개항기와 대한 제국의 연호"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 85)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 85)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-025",
+    "coreId": "ox-core-empire-92-loss-of-sovereignty",
+    "topicId": "empire-92-loss-of-sovereignty",
+    "statement": "고종은 을사늑약의 부당성을 알리려 1907년 헤이그 만국 평화 회의에 특사를 파견하였다.",
+    "answer": true,
+    "explanation": "고종은 이준·이상설·이위종을 특사로 보내 을사늑약이 황제의 승인 없이 체결되었음을 호소하게 했다. 열강의 냉담으로 회의 참석은 좌절되었고, 일제는 이 사건을 구실로 고종을 강제 퇴위시켰다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "국권 피탈 과정"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 92)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 92)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-027",
+    "coreId": "ox-core-empire-92-loss-of-sovereignty",
+    "topicId": "empire-92-loss-of-sovereignty",
+    "statement": "1907년 군대 해산 후 해산 군인들이 의병에 합류하며 정미의병의 전투력이 강해졌다.",
+    "answer": true,
+    "explanation": "서울 시위대의 박승환은 군대 해산에 항거하여 자결하였고, 일부 군인은 일본군과 시가전을 벌였다. 근대적 군사 훈련을 받은 군인들의 합류로 의병 전쟁은 조직과 무장면에서 한층 강화되었다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "국권 피탈 과정"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 92)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 92)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-030",
+    "coreId": "ox-core-empire-91-modern-education-1900s",
+    "topicId": "empire-91-modern-education-1900s",
+    "statement": "안창호는 경성 제국 대학을 세워 일제의 식민 교육을 확산하였다.",
+    "answer": false,
+    "explanation": "안창호가 세운 학교와 교육 목표가 모두 틀렸다. 그는 신민회의 실력 양성 운동으로 평양에 대성 학교를 세워 민족 교육을 실시하였으며, 경성 제국 대학은 1924년 일제가 설립하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "1900년대 민족 교육 기관"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 91)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 91)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-031",
+    "coreId": "ox-core-empire-74-opening-treaties",
+    "topicId": "empire-74-opening-treaties",
+    "statement": "1875년 운요호 사건은 일본이 강화도 부근에서 무력 충돌을 일으켜 조선의 개항을 압박한 사건이다.",
+    "answer": true,
+    "explanation": "일본 군함 운요호는 조선 수군의 포격을 유도한 뒤 영종진을 공격하고 민가를 약탈하였다. 일본은 이를 구실로 포함 외교를 펼쳐 이듬해 강화도 조약을 체결하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "강화도 조약 이후의 조약 체계"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 74)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 74)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-035",
+    "coreId": "ox-core-empire-74-opening-treaties",
+    "topicId": "empire-74-opening-treaties",
+    "statement": "조일 수호 조규 부록은 일본인의 개항장 거류지와 여행 범위를 규정하였다.",
+    "answer": true,
+    "explanation": "1876년 부록은 일본인이 개항장에서 10리 이내를 여행할 수 있도록 행동 범위를 정했다. 또 개항장에서 일본 화폐를 사용할 수 있게 하여 일본 상인의 경제 활동을 보장하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "강화도 조약 이후의 조약 체계"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 74)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 74)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-036",
+    "coreId": "ox-core-empire-74-opening-treaties",
+    "topicId": "empire-74-opening-treaties",
+    "statement": "조일 무역 규칙은 조선이 일본 상품에 관세를 부과하고 양곡 수출을 엄격히 통제하도록 했다.",
+    "answer": false,
+    "explanation": "관세와 양곡 무역에 대한 내용이 반대이다. 1876년 조일 무역 규칙은 일본 무역선에 항세를 부과하지 않고 양곡을 제한 없이 유출할 수 있게 하여 조선에 불리하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "강화도 조약 이후의 조약 체계"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 74)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 74)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-051",
+    "coreId": "ox-core-empire-77-gapsin-fourteen",
+    "topicId": "empire-77-gapsin-fourteen",
+    "statement": "갑신정변의 개혁 정강은 재정 기관을 호조로 일원화하고 지조법을 개혁할 것을 밝혔다.",
+    "answer": true,
+    "explanation": "급진 개화파는 당시 재정이 왕실과 여러 아문에 분산된 문제를 시정하려 하였다. 정강은 내시부 폐지, 문벌 폐지와 인민 평등 등을 내세운 위로부터의 근대화 구상이었다.",
+    "difficulty": "medium",
+    "tags": [
+      "개항기·대한 제국",
+      "갑신정변 14개조 개혁 정강"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 77; mnemonic transcript)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 77)",
+      "https://contents.history.go.kr/front/hm/print.do?levelId=hm_116_0100&tabId=03&treeId=010701&whereStr="
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-053",
+    "coreId": "ox-core-empire-76-post-gapsin-sequence",
+    "topicId": "empire-76-post-gapsin-sequence",
+    "statement": "갑신정변 후 체결된 한성 조약은 조선이 일본에 배상금을 지급하도록 하였다.",
+    "answer": true,
+    "explanation": "일본은 공사관 소실과 일본인 피해를 이유로 조선에 사죄와 배상을 요구하였다. 따라서 1885년 한성 조약은 정변 실패의 부담을 조선에 지운 불평등한 사후 처리였다.",
+    "difficulty": "medium",
+    "tags": [
+      "개항기·대한 제국",
+      "갑신정변 이후 정세의 전개"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 76)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 76)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-054",
+    "coreId": "ox-core-empire-76-post-gapsin-sequence",
+    "topicId": "empire-76-post-gapsin-sequence",
+    "statement": "톈진 조약은 청과 일본이 조선에 군대를 계속 주둔시키고 파병 사실을 서로 알리지 않도록 하였다.",
+    "answer": false,
+    "explanation": "군대 처리와 파병 절차를 반대로 서술하였다. 1885년 청과 일본은 양국군의 조선 철수와 향후 조선에 파병할 때 서로 미리 알릴 것을 약속하였고, 이 통고 조항은 1894년 양국의 출병 과정에서 다시 적용되었다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "갑신정변 이후 정세의 전개"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 76)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 76)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-055",
+    "coreId": "ox-core-empire-78-donghak-sequence",
+    "topicId": "empire-78-donghak-sequence",
+    "statement": "고부 농민 봉기는 군수 조병갑의 만석보 수세 등 탐학에 반발하여 일어났다.",
+    "answer": true,
+    "explanation": "조병갑은 만석보를 새로 쌓은 뒤 불법으로 물세를 거두고 부모의 공덕비 비용까지 농민에게 징수하였다. 새 군수 박원명이 요구를 받아들이자 농민들은 해산했지만 안핵사 이용태가 참가자를 가혹하게 탄압해 무장기포가 일어났다.",
+    "difficulty": "medium",
+    "tags": [
+      "개항기·대한 제국",
+      "동학 농민 운동의 전개"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 78)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 78)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-057",
+    "coreId": "ox-core-empire-78-donghak-sequence",
+    "topicId": "empire-78-donghak-sequence",
+    "statement": "동학 농민군은 황토현과 황룡촌 전투에서 관군을 격파하였다.",
+    "answer": true,
+    "explanation": "황토현 전투는 농민군이 관군을 물리친 첫 대승이었고, 황룡촌에서는 장태를 이용해 관군의 총격을 막았다. 승리를 이어 감영이 있던 전주성을 점령하자 정부는 청에 원군을 요청하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "동학 농민 운동의 전개"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 78)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 78)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-058",
+    "coreId": "ox-core-empire-78-donghak-sequence",
+    "topicId": "empire-78-donghak-sequence",
+    "statement": "전주 화약이 체결되자 청군과 일본군은 약속대로 즉시 조선에서 함께 철수하였다.",
+    "answer": false,
+    "explanation": "두 외국 군대가 곧바로 철수했다는 설명은 틀렸다. 청군은 철수를 준비했지만 일본은 이를 거부하고 경복궁을 점령한 뒤 청일 전쟁을 일으켰으며, 농민군은 일본을 몰아내려고 다시 봉기하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "동학 농민 운동의 전개"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 78)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 78)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-059",
+    "coreId": "ox-core-empire-79-peasant-reform-program",
+    "topicId": "empire-79-peasant-reform-program",
+    "statement": "동학 농민군의 폐정 개혁안에는 탐관오리 처벌과 천인 차별 개선이 담겼다.",
+    "answer": true,
+    "explanation": "폐정 개혁안은 불법적 조세 폐지, 청상과부의 재가 허용, 노비 문서 소각 등을 요구하였다. 이는 외세 배척에 그치지 않고 신분·조세·지방 행정을 고치려 한 농민 대중의 사회 개혁 요구였다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "동학 농민군의 폐정 개혁안"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 79; mnemonic transcript)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 79)",
+      "https://contents.history.go.kr/mobile/mid/hm_117_0030?tabId=e"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-061",
+    "coreId": "ox-core-empire-78-donghak-sequence",
+    "topicId": "empire-78-donghak-sequence",
+    "statement": "동학 농민군은 공주 우금치 전투에서 일본군과 관군에게 패배하였다.",
+    "answer": true,
+    "explanation": "1894년 11월 농민군은 우세한 화력을 갖춘 일본군·관군의 방어선을 뚫지 못하였다. 우금치 패배 후 농민군의 주력이 해산되었고 전봉준은 체포되어 처형되었다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "동학 농민 운동의 전개"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 78)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 78)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-063",
+    "coreId": "ox-core-empire-81-second-gabo",
+    "topicId": "empire-81-second-gabo",
+    "statement": "갑오개혁 과정에서 재판소 구성법이 공포되어 행정 기관과 사법 기관을 분리하려 하였다.",
+    "answer": true,
+    "explanation": "재판소 구성법은 지방 재판소·한성 재판소·고등 재판소 등 근대적 재판 체계의 근거를 마련하였다. 이는 수령과 행정 관청이 재판까지 맡던 전통에서 벗어나 사법권을 독립시키려 한 개혁이었다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "제2차 갑오개혁"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 81)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 81)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-064",
+    "coreId": "ox-core-empire-80-first-gabo",
+    "topicId": "empire-80-first-gabo",
+    "statement": "갑오개혁의 신식 화폐 발행 장정은 금본위제를 채택하였다.",
+    "answer": false,
+    "explanation": "금본위제를 채택했다는 부분이 틀렸고, 신식 화폐 발행 장정은 5냥 은화를 본위화로 삼은 은본위제를 도입하였다. 갑오개혁은 재정을 탁지아문으로 일원화하고 조세의 금납화를 추진하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "제1차 갑오개혁"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 80)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 80)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-065",
+    "coreId": "ox-core-empire-80-first-gabo",
+    "topicId": "empire-80-first-gabo",
+    "statement": "갑오개혁 때 왕실 사무를 맡는 궁내부를 두어 정부 사무와 분리하였다.",
+    "answer": true,
+    "explanation": "궁내부는 왕실의 재정과 의식 등을 전담했고 의정부와 8아문은 국정을 담당하였다. 이 분리는 왕실 재정이 국가 재정을 임의로 사용하던 폐단을 줄이려는 근대적 개혁이었다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "제1차 갑오개혁"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 80)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 80)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-066",
+    "coreId": "ox-core-empire-83-hongbeom-fourteen",
+    "topicId": "empire-83-hongbeom-fourteen",
+    "statement": "홍범 14조는 청에 대한 사대 관계를 강화하고 왕실과 정부 사무를 통합하자고 선언하였다.",
+    "answer": false,
+    "explanation": "홍범 14조는 청에 의존하려 한 것이 아니라 자주독립을 확고히 하겠다고 선언하였다. 또 왕실 사무와 국정을 분리하고 조세의 법정주의, 인재 등용 등 2차 갑오개혁의 방향을 제시하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "홍범 14조의 원칙"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 83)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 83)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-067",
+    "coreId": "ox-core-empire-82-eulmi-reform",
+    "topicId": "empire-82-eulmi-reform",
+    "statement": "을미개혁 때 중앙에는 친위대, 지방에는 진위대가 설치되어 군제가 개편되었다.",
+    "answer": true,
+    "explanation": "친위대는 서울과 왕궁을 지키고 진위대는 지방의 질서 유지와 국방을 담당하도록 편성되었다. 군제 개편과 함께 소학교 설치, 우편 사무 재개 등 근대적 제도가 추진되었지만 일본의 영향 아래 시행된 한계가 있었다.",
+    "difficulty": "medium",
+    "tags": [
+      "개항기·대한 제국",
+      "을미개혁"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 82)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 82)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-068",
+    "coreId": "ox-core-empire-86-eulmi-righteous-armies",
+    "topicId": "empire-86-eulmi-righteous-armies",
+    "statement": "을미의병은 을사늑약 체결과 고종의 강제 퇴위에 반발하여 1907년에 일어났다.",
+    "answer": false,
+    "explanation": "을미의병의 발단 시기와 계기가 틀렸다. 을미의병은 1895년 명성 황후 시해와 단발령에 반발해 일어났고, 고종 강제 퇴위와 군대 해산은 1907년 정미의병의 계기였다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "을미의병의 지역별 지도자"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 86)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 86)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-073",
+    "coreId": "ox-core-empire-84-heonui-six",
+    "topicId": "empire-84-heonui-six",
+    "statement": "관민 공동회에서 채택된 헌의 6조는 내각과 국민이 협의하는 정치를 지향하였다.",
+    "answer": true,
+    "explanation": "헌의 6조는 외국과의 조약을 각부 대신과 중추원 의장이 합동 날인하게 하고 재정을 공개하도록 하였다. 중추원을 의회식으로 개편하려 한 내용은 입헌 군주제를 지향한 흐름을 보여 준다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "헌의 6조와 관민 공동회"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 84)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 84)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-082",
+    "coreId": "ox-core-empire-92-loss-of-sovereignty",
+    "topicId": "empire-92-loss-of-sovereignty",
+    "statement": "러일 전쟁 중 체결된 한일 의정서는 일본군이 대한 제국의 영토를 군사적 목적으로 사용하지 못하게 했다.",
+    "answer": false,
+    "explanation": "한일 의정서의 내용을 반대로 서술하였다. 1904년 일본은 러일 전쟁 수행에 필요한 지역을 임의로 사용할 권리를 확보하여 대한 제국의 군사 주권을 침해하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "국권 피탈 과정"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 92)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 92)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-083",
+    "coreId": "ox-core-empire-92-loss-of-sovereignty",
+    "topicId": "empire-92-loss-of-sovereignty",
+    "statement": "제1차 한일 협약으로 일본이 추천한 외국인 고문이 대한 제국의 재정과 외교에 배치되었다.",
+    "answer": true,
+    "explanation": "1904년 협약에 따라 재정 고문으로 일본인 메가타, 외교 고문으로 미국인 스티븐스가 임명되었다. 고문의 배치는 대한 제국의 행정권을 잠식하는 고문 정치의 시작이었다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "국권 피탈 과정"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 92)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 92)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-084",
+    "coreId": "ox-core-empire-92-loss-of-sovereignty",
+    "topicId": "empire-92-loss-of-sovereignty",
+    "statement": "을사늑약 후 설치된 통감부의 초대 통감은 러시아인 베베르였다.",
+    "answer": false,
+    "explanation": "초대 통감은 베베르가 아니라 일본의 이토 히로부미였다. 통감은 대한 제국의 외교를 관장하고 내정을 감독하여 일제의 보호국 지배를 실행하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "국권 피탈 과정"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 92)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 92)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-085",
+    "coreId": "ox-core-empire-88-modern-newspapers",
+    "topicId": "empire-88-modern-newspapers",
+    "statement": "을사늑약에 항거해 민영환이 자결하고 장지연이 「시일야방성대곡」을 게재하였다.",
+    "answer": true,
+    "explanation": "민영환은 유서를 남겨 국민에게 자주독립의 의지를 호소하였다. 황성신문의 장지연은 을사오적을 규탄한 논설을 실어 조약의 부당성을 널리 알렸고, 이 때문에 신문은 정간 처분을 받았다.",
+    "difficulty": "medium",
+    "tags": [
+      "개항기·대한 제국",
+      "근대 신문의 발행과 역할"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 88)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 88)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-087",
+    "coreId": "ox-core-empire-92-loss-of-sovereignty",
+    "topicId": "empire-92-loss-of-sovereignty",
+    "statement": "1907년 한일 신협약은 일본인 차관이 대한 제국의 내정에 광범위하게 관여하도록 하였다.",
+    "answer": true,
+    "explanation": "이토 히로부미와 이완용 내각이 체결한 이 협약은 주요 관리의 임면에 통감의 승인을 받게 하였다. 후속 비밀 각서에 따라 군대가 해산되고 사법·경찰권까지 차례로 침탈당하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "국권 피탈 과정"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 92)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 92)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-094",
+    "coreId": "ox-core-empire-87-patriotic-enlightenment-organizations",
+    "topicId": "empire-87-patriotic-enlightenment-organizations",
+    "statement": "보안회는 일본의 황무지 개간권 요구를 지지하여 일본인 농장 건설을 도왔다.",
+    "answer": false,
+    "explanation": "보안회는 일본의 요구를 지지한 것이 아니라 조직적으로 저지하였다. 1904년 대중 집회와 가로 연설을 펼쳐 황무지 개간권 요구를 철회시켰으며, 국민의 힘으로 경제 주권을 지킨 성과를 남겼다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "애국 계몽 단체"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 87)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 87)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 94, 신민회 국외 기지의 세부 사실)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-095",
+    "coreId": "ox-core-empire-87-patriotic-enlightenment-organizations",
+    "topicId": "empire-87-patriotic-enlightenment-organizations",
+    "statement": "헌정 연구회는 입헌 정치 체제의 수립을 목표로 활동한 애국 계몽 단체였다.",
+    "answer": true,
+    "explanation": "1905년 조직된 헌정 연구회는 군주의 권력을 헌법으로 제약하는 대의 정치를 연구하고 교육하였다. 을사늑약 뒤 대한 자강회로 계승되어 교육과 식산흥업을 통한 실력 양성 운동으로 발전하였다.",
+    "difficulty": "medium",
+    "tags": [
+      "개항기·대한 제국",
+      "애국 계몽 단체"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 87)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 87)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 94, 신민회 국외 기지의 세부 사실)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-097",
+    "coreId": "ox-core-empire-87-patriotic-enlightenment-organizations",
+    "topicId": "empire-87-patriotic-enlightenment-organizations",
+    "statement": "신민회는 1911년 일제가 조작한 105인 사건으로 조직이 해체되었다.",
+    "answer": true,
+    "explanation": "일제는 데라우치 총독 암살 모의를 꾸몄다는 혐의를 조작해 신민회 계열 인사들을 대거 체포하였다. 국내 비밀 조직은 무너졌지만 회원들은 서간도 등지에서 독립운동 기지 건설을 이어 갔다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "애국 계몽 단체"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 87)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 87)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 94, 신민회 국외 기지의 세부 사실)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-099",
+    "coreId": "ox-core-empire-87-patriotic-enlightenment-organizations",
+    "topicId": "empire-87-patriotic-enlightenment-organizations",
+    "statement": "신민회는 서간도 삼원보에 경학사와 신흥 강습소를 세워 독립운동 기지를 건설하였다.",
+    "answer": true,
+    "explanation": "국내에서 국권 회복이 어려워질 것에 대비해 신민회는 이회영·이상룡 등을 중심으로 서간도 기지 건설을 계획하였다. 경학사는 자치 기구, 신흥 강습소는 독립군 간부 양성 기관으로 발전하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "애국 계몽 단체"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 87)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 87)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 94, 신민회 국외 기지의 세부 사실)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-101",
+    "coreId": "ox-core-empire-73-western-incursions",
+    "topicId": "empire-73-western-incursions",
+    "statement": "신미양요 뒤 흥선 대원군은 서양과의 통상을 거부하겠다는 뜻을 담은 척화비를 전국에 세웠다.",
+    "answer": true,
+    "explanation": "1871년 미군이 광성보를 공격한 신미양요 뒤 흥선 대원군은 통상 수교 거부 의지를 분명히 하려고 척화비를 세웠다. 비문은 서양 세력과 화친하면 나라를 파는 행위가 된다는 논리로 쇄국 정책을 정당화하였다.",
+    "difficulty": "medium",
+    "tags": [
+      "흥선 대원군",
+      "신미양요",
+      "척화비"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 73)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 73)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-102",
+    "coreId": "ox-core-empire-89-modern-education-1880s",
+    "topicId": "empire-89-modern-education-1880s",
+    "statement": "원산 학사는 개항 이후 함경도 덕원 주민과 관리들이 세운 근대 교육 기관으로, 외국어와 신지식뿐 아니라 무술도 가르쳤다.",
+    "answer": true,
+    "explanation": "원산 학사는 1883년 덕원 주민과 지방 관리가 설립한 근대식 학교로 평가된다. 개항장의 통상 업무에 필요한 외국어·산술·법률 등과 함께 무술을 가르쳐 문무를 아우르는 인재를 길러 내려 하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "원산 학사",
+      "근대 교육",
+      "개항기"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 89)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 89)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-103",
+    "coreId": "ox-core-empire-90-modern-education-1890s",
+    "topicId": "empire-90-modern-education-1890s",
+    "statement": "교육 입국 조서가 반포된 뒤 소학교·사범 학교·외국어 학교 등 관립 근대 학교가 설립되었다.",
+    "answer": true,
+    "explanation": "1895년 고종은 교육 입국 조서를 반포해 근대 국민 교육의 필요성을 밝혔다. 이어 소학교령과 한성 사범 학교 관제 등이 마련되었고, 외국어 학교와 중학교도 설립되었다.",
+    "difficulty": "hard",
+    "tags": [
+      "근대 교육",
+      "교육 입국 조서"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 90)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 90)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-empire-104",
+    "coreId": "ox-core-empire-75-opening-order",
+    "topicId": "empire-75-opening-order",
+    "statement": "조선은 미국과 수교한 뒤 러시아·프랑스와 먼저 수교하고, 영국·독일과는 그 뒤에 수교하였다.",
+    "answer": false,
+    "explanation": "영국·독일과의 수교 순서를 러시아·프랑스보다 뒤로 놓은 것이 틀렸다. 조선은 미국(1882), 영국·독일(1883), 이탈리아·러시아(1884), 프랑스(1886)의 순서로 서양 여러 나라와 수교하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "개항기·대한 제국",
+      "서양 각국과의 수교 순서"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 75)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 75)"
+    ],
+    "sourceQuestionIds": []
+  }
 ]

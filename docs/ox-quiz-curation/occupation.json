@@ -1,122 +1,546 @@
 [
-{"id":"ox-occupation-001","statement":"조선 총독부는 대한 제국의 양전 사업을 계승해 모든 농민에게 지계를 무상으로 발급하였다.","answer":false,"explanation":"대한 제국의 양전·지계 사업과 일제의 토지 조사 사업을 혼동했으므로 틀렸다. 총독부는 신고주의를 적용한 토지 조사 사업으로 식민지 지세 수입과 토지 지배를 강화하였다."},
-{"id":"ox-occupation-002","statement":"1910년대 회사령에 따라 조선에서 회사를 세우려면 조선 총독의 허가가 필요했다.","answer":true,"explanation":"1910년 회사령은 허가제로 조선인 자본의 성장을 통제하였다. 1920년 신고제로 바뀐 뒤에는 일본 대자본의 조선 진출이 본격화되었다."},
-{"id":"ox-occupation-003","statement":"1910년대 일제는 헌병 경찰을 폐지하고 조선인에게 지방 자치권을 보장하였다.","answer":false,"explanation":"1910년대에는 헌병 경찰을 앞세운 무단 통치가 실시되었으므로 틀렸다. 헌병 경찰은 치안뿐 아니라 세금 징수와 노동 감독 같은 행정에도 관여하였다."},
-{"id":"ox-occupation-004","statement":"3·1 운동은 1919년 시작되어 전국과 국외로 확산된 비폭력 만세 운동이었다.","answer":true,"explanation":"민족 대표가 독립 선언서를 발표한 뒤 학생·시민·농민이 만세 시위를 이어 갔다. 이 운동은 대한민국 임시 정부 수립과 일제의 통치 방식 변화에 큰 영향을 주었다."},
-{"id":"ox-occupation-005","statement":"대한민국 임시 정부는 을사늑약 직후 한성에 총독부 자문 기구로 설립되었다.","answer":false,"explanation":"설립 시기·장소·성격이 모두 틀렸다. 임시 정부는 3·1 운동을 계기로 1919년 상하이에서 수립된 민주 공화제 독립운동 정부였다."},
-{"id":"ox-occupation-006","statement":"대한민국 임시 정부는 국내 비밀 행정 조직으로 연통제를 운영하였다.","answer":true,"explanation":"연통제는 도·군·면 단위에 조직망을 두어 정부 명령을 전달하고 자금을 모았다. 교통국은 국내외의 비밀 통신과 인물 이동을 담당하였다."},
-{"id":"ox-occupation-007","statement":"대한인 국민회는 일제의 지원을 받아 국내에서 친일 선거 운동을 벌였다.","answer":false,"explanation":"활동 지역과 성격이 틀렸다. 대한인 국민회는 1910년 미국에서 미주 한인 단체들을 통합해 조직되었으며, 독립운동 자금 모금과 외교·선전 활동으로 국외 독립운동을 지원하였다."},
-{"id":"ox-occupation-008","statement":"홍범도가 이끈 대한 독립군 등은 1920년 봉오동 전투에서 일본군을 물리쳤다.","answer":true,"explanation":"독립군은 추격해 온 일본군을 봉오동 골짜기로 유인해 큰 승리를 거두었다. 같은 해 가을 김좌진의 북로 군정서군 등은 청산리에서도 일본군에 큰 피해를 입혔다."},
-{"id":"ox-occupation-009","statement":"대한 광복군 정부는 조선 총독부의 허가를 받아 국내 지방 행정을 보조한 자치 기관이었다.","answer":false,"explanation":"설립 지역과 성격이 모두 틀렸다. 대한 광복군 정부는 1914년 연해주에서 권업회 계열 독립운동가들이 조직한 망명 정부 성격의 무장 독립운동 기구로, 이상설을 정통령, 이동휘를 부통령으로 두었다."},
-{"id":"ox-occupation-010","statement":"일제는 독립군의 기반을 없애려 1920년 간도 지역의 한인을 학살하는 간도 참변을 일으켰다.","answer":true,"explanation":"봉오동·청산리 패배 뒤 일제는 간도의 마을·학교·교회를 파괴하며 민간인을 살해하였다. 이 탄압으로 독립군 부대들은 밀산부 등으로 이동해 통합을 모색하였다."},
-{"id":"ox-occupation-011","statement":"1921년 자유시 참변을 계기로 한국 독립군은 일본 본토를 점령하였다.","answer":false,"explanation":"자유시 참변은 승리가 아니라 독립군이 큰 피해를 입은 사건이다. 러시아 자유시에 모인 부대들은 지휘권과 무장 해제 문제로 충돌해 사상되거나 흩어졌다."},
-{"id":"ox-occupation-012","statement":"물산 장려 운동은 조선인이 만든 상품을 사용해 민족 자본을 키우자는 운동이었다.","answer":true,"explanation":"1920년 평양에서 시작되어 ‘조선 사람 조선 것’을 구호로 토산품 애용을 권장하였다. 전국으로 확산되었지만 상품 가격을 올려 자본가만 이익을 본다는 비판도 받았다."},
-{"id":"ox-occupation-013","statement":"민립 대학 설립 운동은 조선 총독부가 경성 제국 대학을 세우기 위해 추진하였다.","answer":false,"explanation":"운동의 주체와 목적이 틀렸다. 이상재 등은 민족의 힘으로 대학을 세우려고 한민족 1천만 명이 1원씩 모으자는 모금 운동을 펼쳤다."},
-{"id":"ox-occupation-014","statement":"브나로드 운동은 동아일보가 주도해 문자 보급과 농촌 계몽을 추진한 운동이었다.","answer":true,"explanation":"1930년대 동아일보는 ‘민중 속으로’라는 뜻의 브나로드를 내걸고 학생 계몽대를 농촌에 보냈다. 조선일보의 문자 보급 운동과 함께 문맹 퇴치와 농촌 개선을 추구하였다."},
-{"id":"ox-occupation-015","statement":"신간회는 친일 인사만으로 구성된 조선 총독부의 자문 단체였다.","answer":false,"explanation":"신간회의 성격을 거꾸로 서술했으므로 틀렸다. 1927년 비타협적 민족주의와 사회주의 세력이 결성한 민족 협동 전선으로 전국에 지회를 둔 합법 단체였다."},
-{"id":"ox-occupation-016","statement":"광주 학생 항일 운동은 한·일 학생의 충돌을 계기로 1929년 광주에서 시작되었다.","answer":true,"explanation":"나주역에서 일본인 학생이 한국인 여학생을 희롱한 사건이 직접적 계기가 되었다. 신간회의 진상 조사와 지원 속에 시위는 이듬해까지 전국으로 확산되었다."},
-{"id":"ox-occupation-017","statement":"원산 총파업은 동학 농민군이 소작료 인하를 요구하며 일으킨 농민 운동이었다.","answer":false,"explanation":"주체와 운동의 성격이 틀렸다. 1929년 원산 총파업은 일본인 감독의 한국인 노동자 폭행을 계기로 원산 노동 연합회가 주도한 대규모 노동 쟁의였다."},
-{"id":"ox-occupation-018","statement":"조선어 학회는 한글 맞춤법 통일안을 마련하고 『우리말 큰사전』 편찬을 추진하였다.","answer":true,"explanation":"조선어 학회는 1933년 한글 맞춤법 통일안, 1936년 사정한 조선어 표준말 모음을 발표하였다. 사전 편찬은 1942년 조선어 학회 사건으로 중단되었지만 광복 후 『큰사전』 간행으로 이어졌다."},
-{"id":"ox-occupation-019","statement":"송죽회는 조선 총독부의 허가를 받아 친일 여성 교육을 벌인 공개 단체였다.","answer":false,"explanation":"조직의 성격과 활동 방식이 틀렸다. 송죽회는 1913년 평양의 숭의 여학교 교사와 학생들이 만든 여성 비밀 결사로, 회원의 회비를 모아 독립운동과 민족 교육을 지원하였다."},
-{"id":"ox-occupation-020","statement":"윤봉길은 1932년 상하이 훙커우 공원에서 일본군 요인을 향해 폭탄을 던졌다.","answer":true,"explanation":"윤봉길은 일본의 상하이 사변 승전 기념식장을 공격해 시라카와 대장 등을 처단하였다. 이 의거로 장제스의 중국 국민당 정부는 대한민국 임시 정부 지원을 확대하였다."},
-{"id":"ox-occupation-021","statement":"이봉창은 상하이 훙커우 공원에서 일본군 수뇌부를 공격하였다.","answer":false,"explanation":"의거의 장소와 목표가 틀렸다. 이봉창은 1932년 1월 도쿄에서 일왕 히로히토에게 폭탄을 던졌고, 훙커우 공원 의거는 같은 해 4월 윤봉길이 거사하였다."},
-{"id":"ox-occupation-022","statement":"지청천이 지휘한 한국 독립군은 중국 호로군과 연합해 일본군과 싸웠다.","answer":true,"explanation":"만주 사변 후 한국 독립군은 한·중 연합 작전으로 쌍성보·사도하자·대전자령 전투에서 승리하였다. 이는 일본의 만주 침략에 맞선 한국과 중국 독립 세력의 공동 전선이었다."},
-{"id":"ox-occupation-023","statement":"대한 독립 선언은 상하이의 대한민국 임시 정부가 헌법 문서로 발표하였다.","answer":false,"explanation":"발표 주체와 문서의 성격이 틀렸다. 대한 독립 선언은 만주 지린에서 조소앙이 작성하고 해외 독립운동가 39인이 이름을 올린 독립 선언서로, 일본에 맞선 전 민족의 독립 전쟁을 촉구하였다."},
-{"id":"ox-occupation-024","statement":"1938년 창설된 조선 의용대는 중국 관내에서 결성된 최초의 한인 무장 부대였다.","answer":true,"explanation":"김원봉이 대장을 맡았고 조선 민족 전선 연맹의 군사 조직으로 한커우에서 창설되었다. 중국군과 협력해 선전·정보 수집·포로 심문 등 항일 활동을 펼쳤다."},
-{"id":"ox-occupation-025","statement":"한국 광복군은 조선 총독부가 중일 전쟁에 투입하려 창설한 식민지 정규군이었다.","answer":false,"explanation":"한국 광복군의 소속과 목적이 전혀 틀렸다. 1940년 충칭에서 창설된 대한민국 임시 정부의 정규군으로, 지청천을 총사령으로 해 연합국과 함께 대일 항전을 전개하였다."},
-{"id":"ox-occupation-026","statement":"대한민국 임시 정부는 조소앙의 삼균주의를 바탕으로 건국 강령을 발표하였다.","answer":true,"explanation":"삼균주의는 개인·민족·국가의 균등을 정치·경제·교육의 균등으로 실현하려는 이념이었다. 1941년 건국 강령은 복국·건국·치국의 3단계로 광복 후 국가 건설 방안을 제시하였다."},
-{"id":"ox-occupation-027","statement":"한국 광복군은 일본 군부와 협력해 충칭의 대한민국 임시 정부를 공격할 작전을 준비하였다.","answer":false,"explanation":"협력 대상과 작전 목표가 반대로 서술되었다. 광복군은 미국 전략 정보국 OSS와 국내 진공 작전을 계획했으나 일본의 예상보다 빠른 항복으로 실행하지 못하였다."},
-{"id":"ox-occupation-028","statement":"일제는 민족 말살 통치기에 한국인에게 일본식 성과 이름을 쓰도록 창씨개명을 강요하였다.","answer":true,"explanation":"1939년 공포된 창씨개명은 한국인의 가족·성명 체계를 일본식으로 바꾸게 한 황국 신민화 정책이었다. 일제는 자원이라고 선전했지만 학교·취업·배급에서 불이익을 주어 사실상 강요하였다."},
-{"id":"ox-occupation-029","statement":"일제는 3·1 운동 직후 전시 동원을 중지하기 위해 국가 총동원법을 폐지하였다.","answer":false,"explanation":"국가 총동원법의 시기와 목적이 틀렸다. 일본은 중일 전쟁 후인 1938년 이 법을 제정해 조선의 인력·물자·자금을 전쟁에 강제 동원하였다."},
-{"id":"ox-occupation-030","statement":"일제는 전쟁 물자를 확보하려 미곡 공출과 강제 동원을 실시하였다.","answer":true,"explanation":"일제는 식량 배급제를 시행하면서 미곡·금속·생필품을 공출해 전쟁 수행에 사용하였다. 징용령·징병제·여성 정신 근로령으로 한국인을 광산·공장·전장에 강제로 끌고 갔다."},
-{"id":"ox-occupation-031","statement":"일제 강점기 조선 총독은 조선인이 선출했으며 입법·사법·행정권은 조선 의회에 분산되었다.","answer":false,"explanation":"총독의 선임 방식과 권한이 모두 틀렸다. 조선 총독은 일본 육·해군 대장 출신이 임명될 수 있었고 제령 제정권과 행정·사법·군사권을 장악한 천황 직속 통치자였다."},
-{"id":"ox-occupation-032","statement":"독립 의군부는 고종의 밀지를 받았다고 내세우며 복벽주의에 바탕을 둔 국권 회복을 추진하였다.","answer":true,"explanation":"임병찬은 1912년 의병 계열 인사들을 모아 전국적인 비밀 조직을 만들고 일제에 국권 반환 요구서를 보내려 하였다. 옛 황제를 다시 세우려는 복벽주의를 지향했으나 계획이 발각되어 조직원들이 체포되었다."},
-{"id":"ox-occupation-033","statement":"조선태형령은 일제 강점기 일본인에게만 적용되어 한국인을 법적으로 보호하였다.","answer":false,"explanation":"적용 대상을 거꾸로 서술했으므로 틀렸다. 1912년 제정된 조선태형령은 한국인에게만 태형을 가한 차별적 법령이며, 3·1 운동 뒤 일제가 문화 통치를 표방하면서 폐지하였다."},
-{"id":"ox-occupation-034","statement":"1910년대 한국인 보통학교의 수업 연한은 일본인 소학교보다 짧게 운영되었다.","answer":true,"explanation":"제1차 조선 교육령 아래 보통학교는 4년제였지만 일본인 소학교는 6년제였다. 일제는 고등 교육 기회를 제한하고 실업 교육을 강조해 한국인을 하급 노동력으로 길러 내려 하였다."},
-{"id":"ox-occupation-035","statement":"토지 조사 사업은 총독부가 모든 토지를 직접 조사했으므로 소유자의 신고가 필요하지 않았다.","answer":false,"explanation":"조사 방식을 잘못 설명하였다. 토지 소유자가 정한 기간 안에 소유권을 신고하는 신고주의를 취해 신고 절차를 모르거나 문서가 없는 농민의 토지가 총독부 소유로 편입되기도 하였다."},
-{"id":"ox-occupation-036","statement":"토지 조사 사업에서 신고되지 않은 토지와 국·공유지가 조선 총독부 소유로 편입되었다.","answer":true,"explanation":"총독부는 관습적 경작권을 인정하지 않고 문서상 소유권을 중시해 자신의 소유지를 크게 늘렸다. 이 토지 일부가 동양 척식 주식회사와 일본인 이주민에게 넘어가면서 소작농이 증가하였다."},
-{"id":"ox-occupation-037","statement":"권업회는 조선 총독부의 회사령 시행을 돕기 위해 서울에서 조직된 친일 경제 단체였다.","answer":false,"explanation":"활동 지역과 성격이 모두 틀렸다. 권업회는 1911년 연해주 블라디보스토크에서 조직되어 한인의 경제적 자립과 독립운동 기반을 마련했고, 『권업신문』을 발간하며 대한 광복군 정부 수립의 토대를 닦았다."},
-{"id":"ox-occupation-038","statement":"조선 총독부는 임야 조사령을 바탕으로 산림을 조사해 임산 자원을 장악하였다.","answer":true,"explanation":"총독부는 산림 법과 임야 조사 사업으로 전통적 공동 이용권을 무시하고 임야 소유권을 재편하였다. 국·공유림을 늘려 일본 자본의 벌목과 임산 자원 반출을 쉽게 하였다."},
-{"id":"ox-occupation-039","statement":"3·1 운동은 순종의 인산일을 앞두고 사회주의 학생 단체가 단독으로 독립 선언서를 발표하며 시작되었다.","answer":false,"explanation":"고종의 인산일을 앞두고 천도교·기독교·불교계 민족 대표가 독립 선언을 준비했으므로 틀렸다. 순종의 인산일을 계기로 학생과 사회주의 세력이 준비한 것은 1926년 6·10 만세 운동이다."},
-{"id":"ox-occupation-040","statement":"대한민국 임시 정부는 구미 위원부를 두어 미국에서 외교와 선전 활동을 전개하였다.","answer":true,"explanation":"임시 정부는 이승만을 중심으로 미국 워싱턴에 구미 위원부를 설치해 한국의 독립 문제를 국제사회에 알리려 하였다. 위원부는 외교 교섭과 언론 홍보, 독립운동 자금 모금을 담당하며 미주 한인 사회와 임시 정부를 연결하였다."},
-{"id":"ox-occupation-041","statement":"일제는 3·1 운동 때 화성 제암리의 시위를 평화적으로 보장하여 주민 피해를 막았다.","answer":false,"explanation":"일제는 시위를 보장한 것이 아니라 잔혹하게 탄압하였다. 일본군과 경찰은 제암리 주민을 교회에 가두고 사격한 뒤 불을 질렀고, 스코필드 등 외국인이 이 만행을 국제사회에 알렸다."},
-{"id":"ox-occupation-042","statement":"3·1 운동은 대한민국 임시 정부 수립과 일제의 통치 방식 변화에 영향을 주었다.","answer":true,"explanation":"국내외 독립운동 세력은 통합된 지도 기관의 필요성을 절감해 1919년 민주 공화제 임시 정부를 세웠다. 일제는 무단 통치의 한계가 드러나자 문화 통치를 표방했으나 경찰·검열·수탈을 오히려 강화하였다."},
-{"id":"ox-occupation-043","statement":"1920년대 문화 통치기에 일제는 헌병 경찰제를 보통 경찰제로 바꾸면서 경찰 인원과 기관을 대폭 줄였다.","answer":false,"explanation":"경찰의 외형은 바뀌었지만 규모가 줄었다는 부분이 틀렸다. 일제는 경찰서·주재소·경찰 인원과 예산을 늘려 민족 운동에 대한 감시를 더 촘촘히 하였다."},
-{"id":"ox-occupation-044","statement":"일제는 문화 통치기에 조선일보와 동아일보의 발행을 허용하면서도 검열과 정간으로 언론을 통제하였다.","answer":true,"explanation":"3·1 운동 뒤 일제는 통치를 완화한 듯 선전하려 한국인 민간 신문 발행을 일부 허용하였다. 그러나 비판 기사를 삭제하고 압수·정간 처분을 자주 내려 식민 통치에 유리한 여론만 허용하였다."},
-{"id":"ox-occupation-045","statement":"산미 증식 계획은 조선인의 식량 자급을 보장하려 쌀의 일본 반출을 금지한 정책이었다.","answer":false,"explanation":"정책의 목적과 결과가 반대로 서술되었다. 일제는 일본의 쌀 부족을 해결하려 조선의 증산을 추진했지만 증산량보다 많은 쌀을 반출해 조선인의 잡곡 소비와 식량난이 심해졌다."},
-{"id":"ox-occupation-046","statement":"산미 증식 계획의 수리 조합비와 비료 대금은 주로 조선 농민의 부담으로 돌아갔다.","answer":true,"explanation":"일제는 저수지와 수로 건설 비용을 수리 조합 조합원인 지주와 농민에게 전가하였다. 부채를 감당하지 못한 자작농이 토지를 잃고 소작농이 되거나 만주·일본으로 이주하는 일이 늘었다."},
-{"id":"ox-occupation-047","statement":"1920년 회사령이 허가제에서 신고제로 바뀌자 일본 대기업의 조선 진출이 억제되었다.","answer":false,"explanation":"회사령 개정의 결과가 틀렸다. 신고제 전환은 제1차 세계 대전으로 성장한 일본 대자본이 조선에 쉽게 진출해 광업·제조업을 장악하도록 하였다."},
-{"id":"ox-occupation-048","statement":"1930년대 일제의 농촌 진흥 운동은 농가 갱생을 내세워 농촌을 통제하고 식민 지배를 안정시키려 하였다.","answer":true,"explanation":"총독부는 소득 증대와 지출 절약을 담은 갱생 계획을 가구별로 강요하였다. 구조적 수탈은 두고 농민의 근면만 요구한 이 정책은 촌락을 전시 동원 체제에 편입하는 기반이 되었다."},
-{"id":"ox-occupation-049","statement":"일제는 중일 전쟁 뒤 황국 신민 서사와 신사 참배를 자율에 맡기고 한국인의 민족 문화를 보호하였다.","answer":false,"explanation":"자율적 보호가 아니라 강제적인 민족 말살 정책이었다. 일제는 내선일체를 내세워 신사 참배·황국 신민 서사·궁성 요배·일본어 사용을 강요하였다."},
-{"id":"ox-occupation-050","statement":"민족 말살 통치기에 일제는 학교와 관공서에서 한국어 사용을 금지하였다.","answer":true,"explanation":"제3·4차 조선 교육령으로 일본어를 ‘국어’라 하고 조선어 교과를 선택으로 바꾸었다가 없앴다. 조선어 학회를 탄압하고 조선일보·동아일보를 폐간한 것도 우리말과 민족의식을 없애려는 조치였다."},
-{"id":"ox-occupation-051","statement":"국민 정신 총동원 조선 연맹은 조선인이 자주적으로 조직해 징병제 반대 운동을 벌인 단체였다.","answer":false,"explanation":"조직 주체와 목적이 모두 틀렸다. 조선 총독부는 중일 전쟁 이후 황국 신민화와 전시 동원을 강화하려 1938년 국민 정신 총동원 조선 연맹을 만들었고, 1940년 이를 국민 총력 조선 연맹으로 재편해 애국반까지 이어지는 주민 통제망을 운영하였다."},
-{"id":"ox-occupation-052","statement":"일제는 1930년대 남면북양 정책으로 남부의 면화 재배와 북부의 양 사육을 확대하였다.","answer":true,"explanation":"일제는 일본 방직업에 필요한 원료를 확보하려 남부 농가에는 면화를, 북부 농가에는 양을 기르도록 장려하였다. 농민에게 식량 작물 대신 공업 원료 생산을 떠맡긴 이 정책은 조선 경제를 일본의 공업 구조에 종속시켰다."},
-{"id":"ox-occupation-053","statement":"국민 징용령은 한국인이 탄광과 공장에 끌려가는 것을 막고 전시 노동 선택권을 보장하였다.","answer":false,"explanation":"국민 징용령의 역할을 거꾸로 서술했으므로 틀렸다. 1939년 제정된 이 법령은 한국인을 일본과 사할린·남양 군도 등의 광산·공장·군사 시설에 강제로 동원하는 근거가 되었다."},
-{"id":"ox-occupation-054","statement":"일제는 육군 특별 지원병제와 학도 지원병제를 거쳐 1944년 조선에 징병제를 실시하였다.","answer":true,"explanation":"1938년 육군 특별 지원병제와 1943년 학도 지원병제는 ‘지원’을 내세웠지만 압력으로 참여를 강요하였다. 1944년에는 징병제를 시행해 한국인 청년을 일본군에 강제로 편입하였다."},
-  {"id":"ox-occupation-055","statement":"여성 정신 근로령은 한국 여성의 유급 노동과 취업 선택권을 법적으로 보장하였다.","answer":false,"explanation":"권리 보장이 아니라 전시 노동력을 강제로 동원하기 위한 법령이었다. 1944년 일제는 미혼 여성을 군수 공장 등에 끌고 갔고, 이와 별개로 일본군 ‘위안부’ 동원을 통해 성노예제 피해도 낳았다."},
-{"id":"ox-occupation-056","statement":"대한민국 임시 정부는 대한민국 임시 헌장에서 민주 공화제를 명시하였다.","answer":true,"explanation":"1919년 4월 임시 헌장 제1조는 대한민국을 민주 공화제로 한다고 선언하였다. 임시 의정원·국무원·법원의 삼권 분립을 지향해 군주정에서 공화정으로의 전환을 분명히 하였다."},
-{"id":"ox-occupation-057","statement":"상하이의 대한민국 임시 정부는 한성 정부와 연해주의 대한 국민 의회를 배제한 채 지방 정부로 남았다.","answer":false,"explanation":"임시 정부는 여러 정부를 배제한 것이 아니라 1919년 9월 통합하였다. 한성 정부의 정통성을 계승하고 대한 국민 의회 세력을 합쳐 국내외 독립운동을 지휘할 중앙 정부를 세웠다."},
-{"id":"ox-occupation-058","statement":"대한 광복회는 군자금을 모으고 친일 부호를 처단하며 공화정 수립을 준비하였다.","answer":true,"explanation":"1915년 대구에서 결성된 대한 광복회는 박상진을 총사령으로 삼고 군대식 조직을 갖추었다. 만주의 독립군 기지와 연결해 무장 투쟁을 준비했으며, 부호에게 군자금을 요구하고 이를 거부한 친일 인사를 처단하였다."},
-{"id":"ox-occupation-059","statement":"대한민국 임시 정부는 파리 강화 회의에 이승만을 보내 대한 제국의 외교권만 되찾아 달라고 요청하였다.","answer":false,"explanation":"파견 인물과 요구 내용이 틀렸다. 김규식은 파리에서 임시 정부의 외무 총장으로 활동하며 한국의 완전 독립을 호소했으나 열강의 외면으로 회의에 공식 참석하지 못하였다."},
-{"id":"ox-occupation-060","statement":"대한민국 임시 정부는 『독립신문』을 발행하고 사료 편찬소에서 『한일관계사료집』을 간행하였다.","answer":true,"explanation":"『독립신문』은 임시 정부의 활동과 국내외 독립운동 소식을 알리는 기관지 역할을 하였다. 『한일관계사료집』은 일제의 침략 자료를 정리해 국제사회에 한국 독립의 정당성을 설명하려고 편찬하였다."},
-{"id":"ox-occupation-061","statement":"국민 대표 회의는 임시 정부의 진로를 둘러싼 창조파와 개조파가 타협해 단일 지도 체제를 확립하였다.","answer":false,"explanation":"회의의 결말이 틀렸다. 1923년 국민 대표 회의에서 새 정부를 세우자는 창조파와 임시 정부를 고치자는 개조파가 대립해 합의하지 못했고, 임시 정부의 침체가 이어졌다."},
-{"id":"ox-occupation-062","statement":"김구는 침체된 의열 투쟁과 대한민국 임시 정부의 활동을 되살리려고 한인 애국단을 조직하였다.","answer":true,"explanation":"김구는 1931년 상하이에서 소수 정예의 비밀 결사인 한인 애국단을 만들었다. 이봉창과 윤봉길의 의거는 국제사회에 독립 의지를 알리고 중국 국민당 정부의 지원을 이끌어 냈다."},
-{"id":"ox-occupation-063","statement":"이봉창 의거는 일왕 히로히토 처단에 성공하여 곧바로 일본 군국주의 체제를 무너뜨렸다.","answer":false,"explanation":"의거의 결과를 과장한 설명이므로 틀렸다. 1932년 도쿄에서 던진 폭탄은 일왕의 마차를 맞히지 못했지만, 한인 애국단의 독립 의지와 일제 심장부에서도 투쟁할 수 있음을 국제사회에 알렸다."},
-{"id":"ox-occupation-064","statement":"의열단원들은 황푸 군관 학교에 입학해 정규 군사 교육을 받기도 하였다.","answer":true,"explanation":"김원봉을 비롯한 의열단원들은 1920년대 중반 중국 국민당의 황푸 군관 학교에서 근대 군사 훈련을 받았다. 이는 소수의 폭탄 의거를 넘어 군사 간부를 길러 조직적인 항일 전쟁을 준비하려는 노선 변화와 연결되었다."},
-{"id":"ox-occupation-065","statement":"2·8 독립 선언은 3·1 운동의 영향을 받아 서울에서 발표되었다.","answer":false,"explanation":"발표 순서와 장소가 틀렸다. 일본 도쿄의 한국인 유학생들은 1919년 2월 8일 조선 청년 독립단 명의로 독립 선언을 발표했고, 이 소식은 국내 학생과 민족 지도자에게 전해져 3·1 운동 준비를 촉진하였다."},
-{"id":"ox-occupation-066","statement":"의열단은 김원봉을 단장으로 1919년 만주 지린에서 조직되었다.","answer":true,"explanation":"의열단은 일제의 식민 통치 기관 파괴와 침략 원흉 처단을 목표로 한 비밀 결사였다. 신채호가 작성한 『조선 혁명 선언』을 활동 지침으로 삼아 민중의 직접 혁명과 의열 투쟁을 강조하였다."},
-{"id":"ox-occupation-067","statement":"신채호의 『조선 혁명 선언』은 의열단의 폭력 투쟁을 비판하고 외교 독립론만을 유일한 노선으로 제시하였다.","answer":false,"explanation":"선언의 주장이 반대로 서술되었다. 신채호는 외교론과 준비론을 비판하고 민중의 직접 혁명과 폭력 투쟁을 일제 타도의 방법으로 제시하였다."},
-{"id":"ox-occupation-068","statement":"의열단원 김익상은 서울의 조선 총독부 청사에 폭탄을 투척하였다.","answer":true,"explanation":"김익상은 1921년 전기 수리공으로 가장해 총독부 건물에 들어가 폭탄을 던졌다. 이후 상하이에서 일본군 육군 대장 다나카를 처단하려다 체포되어 의열단의 계속된 투쟁을 보여 주었다."},
-{"id":"ox-occupation-069","statement":"의열단원 김상옥은 도쿄에서 일왕에게 폭탄을 던진 뒤 상하이로 탈출하였다.","answer":false,"explanation":"김상옥의 의거 장소와 대상이 틀렸다. 그는 1923년 종로 경찰서에 폭탄을 던지고 서울 시내에서 일본 경찰과 교전하다 순국했으며, 도쿄 일왕 의거는 이봉창이 일으켰다."},
-{"id":"ox-occupation-070","statement":"나석주는 동양 척식 주식회사와 조선 식산 은행을 공격하였다.","answer":true,"explanation":"두 기관은 토지와 자본을 장악해 식민지 경제 수탈을 뒷받침한 대표적 기관이었다. 나석주는 1926년 서울에서 두 곳에 폭탄을 던지고 일본 경찰과 교전한 뒤 자결하였다."},
-{"id":"ox-occupation-071","statement":"박재혁은 부산 경찰서가 아니라 평양의 조선 총독부 청사를 공격하였다.","answer":false,"explanation":"의거 대상과 장소가 틀렸다. 의열단원 박재혁은 1920년 중국인 고서상으로 가장해 부산 경찰서장 하시모토에게 폭탄을 던졌다."},
-{"id":"ox-occupation-072","statement":"간도 참변 뒤 여러 독립군 부대는 서일을 총재로 하는 대한 독립 군단을 밀산부에서 조직하였다.","answer":true,"explanation":"청산리 대첩 뒤 일제의 토벌을 피해 이동한 북로 군정서·대한 독립군 등은 1920년 말 밀산에서 통합 부대를 만들었다. 대한 독립 군단은 러시아 자유시로 이동해 무기와 훈련 지원을 기대했지만 이듬해 자유시 참변을 겪었다."},
-{"id":"ox-occupation-073","statement":"북로 군정서군 등 독립군 연합 부대는 청산리에서 중국 군벌과 싸워 패배하였다.","answer":false,"explanation":"교전 상대와 결과가 틀렸다. 김좌진의 북로 군정서군과 홍범도 부대 등은 1920년 청산리 일대의 여러 전투에서 일본군을 상대로 큰 승리를 거두었다."},
-{"id":"ox-occupation-074","statement":"일제는 중국 마적이 일본 영사관을 습격한 훈춘 사건을 간도 출병의 구실로 이용하였다.","answer":true,"explanation":"일제는 훈춘 사건의 배후에 독립군이 있다고 몰아 대규모 병력을 간도에 투입하였다. 이후 한인 마을·학교·교회를 파괴하고 민간인을 학살한 간도 참변을 일으켜 독립군의 지원 기반을 끊으려 하였다."},
-{"id":"ox-occupation-075","statement":"대조선 국민 군단은 일제가 징병제를 시행하려 제주도에 만든 군사 조직이었다.","answer":false,"explanation":"설립 주체와 장소·목적이 모두 틀렸다. 박용만은 1914년 미국 하와이에서 대조선 국민 군단을 조직해 한인 청년에게 군사 훈련을 실시하고 독립 전쟁에 필요한 인력을 양성하려 하였다."},
-{"id":"ox-occupation-076","statement":"만주의 독립운동 세력은 참의부·정의부·신민부의 3부를 조직해 한인 사회를 다스리고 독립군을 운영하였다.","answer":true,"explanation":"3부는 행정·입법·사법 기능을 갖춘 자치 정부이자 독립군 조직인 군정부의 성격을 띠었다. 남만주의 참의부·정의부와 북만주의 신민부는 교육과 세금 징수, 무장 투쟁을 함께 담당하였다."},
-{"id":"ox-occupation-077","statement":"3부 통합 운동의 결과 북만주에 국민부, 남만주에 혁신 의회가 조직되었다.","answer":false,"explanation":"두 통합 조직의 지역을 서로 바꾸어 서술한 점이 틀렸다. 1928년 이후 북만주에는 혁신 의회, 남만주에는 국민부가 조직되었고 각각 한국 독립당·조선 혁명당과 연계하였다."},
-{"id":"ox-occupation-078","statement":"서로 군정서는 서간도에서 신흥 무관 학교와 연계해 독립군 간부를 양성하였다.","answer":true,"explanation":"서간도의 한인 자치 조직인 한족회는 군사 조직으로 서로 군정서를 운영하였다. 신흥 강습소에서 발전한 신흥 무관 학교가 장교와 병사를 길러 내면서 이 지역은 독립군 양성의 핵심 기지가 되었다."},
-{"id":"ox-occupation-079","statement":"한국 독립군은 중국군과 연합하지 않고 단독으로 영릉가·흥경성 전투를 치렀다.","answer":false,"explanation":"부대와 전투가 잘못 연결되었다. 지청천의 한국 독립군은 중국 호로군과 쌍성보·대전자령 등에서 싸웠고, 영릉가·흥경성 전투는 양세봉의 조선 혁명군이 중국 의용군과 연합해 치렀다."},
-{"id":"ox-occupation-080","statement":"조선 혁명당 산하 조선 혁명군은 양세봉의 지휘 아래 남만주에서 활동하였다.","answer":true,"explanation":"조선 혁명군은 국민부와 연계한 무장 부대로 만주 사변 뒤 중국 의용군과 공동 작전을 전개하였다. 영릉가·흥경성 전투에서 일본군을 물리친 것이 대표적 성과이다."},
-{"id":"ox-occupation-081","statement":"조선 혁명군은 일본 관동군과 연합해 중국 의용군을 영릉가에서 공격하였다.","answer":false,"explanation":"연합 대상과 공격 상대가 반대로 서술되었다. 양세봉의 조선 혁명군은 중국 의용군과 연합해 영릉가·흥경성 전투에서 일본군과 싸웠다."},
-{"id":"ox-occupation-082","statement":"김원봉 등은 1935년 중국 난징에서 민족 연합 전선인 조선 민족 혁명당을 조직하였다.","answer":true,"explanation":"의열단을 비롯한 여러 민족주의·사회주의 계열 단체가 참여해 단일 정당을 지향하였다. 일부 세력이 이탈했지만 중국 관내 독립운동 진영의 연합을 추진했고 뒤에 조선 의용대 창설의 기반이 되었다."},
-{"id":"ox-occupation-083","statement":"조선 의용대는 중국 관내에서 일본군을 돕는 선전 활동과 중국군 포로 심문을 담당하였다.","answer":false,"explanation":"활동의 방향을 반대로 서술하였다. 조선 의용대는 중국군을 도와 일본군을 상대로 선전물을 배포하고 일본군 포로를 심문하며 정보 수집과 후방 공작을 전개하였다."},
-{"id":"ox-occupation-084","statement":"조선 의용대의 일부는 화북으로 이동해 조선 의용군으로 개편되었다.","answer":true,"explanation":"화북으로 간 세력은 조선 의용대 화북 지대를 거쳐 조선 독립 동맹의 군사 조직인 조선 의용군이 되었다. 남은 본대는 1942년 한국 광복군에 편입되어 임시 정부 계열 무장 세력과 합류하였다."},
-{"id":"ox-occupation-085","statement":"한국 광복군은 김원봉을 총사령, 윤봉길을 참모장으로 삼아 창설되었다.","answer":false,"explanation":"지휘관이 잘못 연결되었다. 1940년 창설 당시 한국 광복군의 총사령은 지청천, 참모장은 이범석이었으며 김원봉은 뒤에 조선 의용대 일부와 함께 합류하였다."},
-{"id":"ox-occupation-086","statement":"한국 광복군은 영국군의 요청을 받아 인도·미얀마 전선에서 연합 작전을 수행하였다.","answer":true,"explanation":"광복군 인면 전구 공작대는 영국군과 함께 일본군 포로 심문·선전·통역 활동을 하였다. 임시 정부의 군대가 연합국의 일원으로 대일 전쟁에 참여한 국제적 항전 사례이다."},
-{"id":"ox-occupation-087","statement":"조국 광복회는 대한민국 임시 정부가 충칭에서 조직한 외교 단체였다.","answer":false,"explanation":"조직의 계열과 활동 지역이 틀렸다. 조국 광복회는 1936년 만주의 동북 항일 연군 계열이 조직해 국내 인사와 연결망을 넓히고 항일 민족 통일 전선을 구축하려 한 단체였다."},
-{"id":"ox-occupation-088","statement":"대한민국 임시 정부는 1940년 충칭에서 주석 중심의 지도 체제를 채택하였다.","answer":true,"explanation":"중일 전쟁 속에서 충칭에 정착한 임시 정부는 지도력을 집중하려 헌법을 고치고 김구를 주석으로 선출하였다. 1944년에는 주석·부주석제로 다시 개편해 김구와 김규식을 중심으로 좌우 세력의 연합을 강화하였다."},
-{"id":"ox-occupation-089","statement":"대한민국 임시 정부는 태평양 전쟁이 일어나자 일본과의 전쟁을 피하려 대일 선전 성명을 철회하였다.","answer":false,"explanation":"임시 정부의 대응을 반대로 서술하였다. 임시 정부는 1941년 12월 일본에 선전 포고하고 한국 광복군을 연합국의 대일 전선에 참여시켜 한국이 전쟁 당사국임을 인정받으려 하였다."},
-{"id":"ox-occupation-090","statement":"여운형은 광복에 대비해 국내 비밀 결사인 조선 건국 동맹을 조직하였다.","answer":true,"explanation":"1944년 조직된 건국 동맹은 일제 패망 뒤의 새 국가 건설을 준비한 좌우 연합 성격의 국내 항일 조직이었다. 농민 동맹을 조직하고 중국의 조선 독립 동맹 등 해외 세력과 연결을 모색하였다."},
-{"id":"ox-occupation-091","statement":"조선 독립 동맹은 김구가 충칭에서 조직하고 한국 광복군을 산하 군대로 두었다.","answer":false,"explanation":"지도자·활동 지역·산하 부대가 모두 틀렸다. 조선 독립 동맹은 김두봉 등을 중심으로 중국 화북의 옌안에서 조직되었고, 조선 의용군을 군사 조직으로 두어 중국 공산당 계열 세력과 함께 항일전을 전개하였다."},
-{"id":"ox-occupation-092","statement":"1925년 제정된 치안 유지법은 독립운동과 사회주의 운동을 탄압하는 데 이용되었다.","answer":true,"explanation":"이 법은 국체를 변혁하거나 사유 재산 제도를 부정하려는 결사를 처벌한다는 명분을 내세웠다. 일제는 적용 범위와 형량을 확대해 독립운동가와 사회주의자뿐 아니라 민족 운동 전반을 억압하였다."},
-{"id":"ox-occupation-093","statement":"물산 장려 운동은 값싼 수입품을 늘려 노동자의 생활비를 낮춘다는 이유로 사회주의자에게 지지를 받았다.","answer":false,"explanation":"운동의 내용과 사회주의자의 평가가 틀렸다. 토산품 애용을 내세웠지만 상품 가격 상승과 자본가의 이익만 늘린다는 비판을 받아 계급 문제를 해결하지 못한다는 지적이 제기되었다."},
-{"id":"ox-occupation-094","statement":"정우회 선언은 사회주의 세력이 비타협적 민족주의 세력과의 협동 전선을 모색하는 계기가 되었다.","answer":true,"explanation":"1926년 정우회는 분열된 사회주의 운동을 정비하고 민족주의 세력과 공동으로 항일 운동을 벌이자는 방향 전환을 선언하였다. 이러한 움직임은 이듬해 비타협적 민족주의자와 사회주의자가 신간회를 결성하는 사상적 배경이 되었다."},
-{"id":"ox-occupation-095","statement":"조선 청년 총동맹은 총독부가 청년을 전쟁에 동원하려 만든 관제 단체였다.","answer":false,"explanation":"조직의 성격과 시기가 틀렸다. 조선 청년 총동맹은 1924년 사회주의 계열을 중심으로 여러 청년 단체가 결집해 만든 전국적 대중 조직으로, 민족 해방 이념의 확산과 청년 대중의 조직화를 추구하였다."},
-{"id":"ox-occupation-096","statement":"동아일보의 일장기 말소 사건은 손기정의 사진에서 일장기를 지우면서 일어났다.","answer":true,"explanation":"1936년 베를린 올림픽 마라톤에서 우승한 손기정은 일본 국적으로 출전해야 했다. 동아일보는 그의 시상식 사진에서 가슴의 일장기를 지웠고, 일제는 관계자를 체포하고 신문을 장기간 정간하였다."},
-{"id":"ox-occupation-097","statement":"잡지 『개벽』은 조선 총독부가 황국 신민화를 선전하려 발행한 기관지였다.","answer":false,"explanation":"발행 주체와 성격이 틀렸다. 『개벽』은 천도교 계열의 개벽사가 발행한 종합 잡지로 민족 문제와 사회 개조론을 다루었고, 일제의 검열과 발매 금지를 거듭 겪다가 폐간되었다."},
-{"id":"ox-occupation-098","statement":"신간회는 광주 학생 항일 운동의 진상을 조사하고 민중 대회를 열어 지원하려 하였다.","answer":true,"explanation":"신간회는 조사단을 광주에 보내 일제의 탄압을 확인하고 서울에서 대규모 민중 대회를 계획하였다. 일제가 간부들을 검거해 대회는 무산되었지만 학생 운동을 전국적 항일 운동으로 확산하는 데 기여하였다."},
-{"id":"ox-occupation-099","statement":"근우회는 일제의 신사 참배를 선전하기 위해 총독부가 만든 관제 여성 단체였다.","answer":false,"explanation":"근우회의 성격이 틀렸다. 1927년 결성된 신간회의 자매 단체로 여성의 지위 향상과 민족 해방을 내세우며 여성 노동자·농민 지원과 계몽 활동을 전개하였다."},
-  {"id":"ox-occupation-100","statement":"광주 학생 항일 운동에서는 조선인 본위 교육과 식민지 교육 철폐 요구가 제기되었다.","answer":true,"explanation":"1929년 한·일 학생 충돌에서 시작된 시위는 차별 교육과 일제의 식민 통치 자체를 비판하는 항일 운동으로 발전하였다. 학생들은 언론·집회·결사의 자유도 요구하며 동맹 휴학과 시위를 전국으로 확산시켰다."},
-{"id":"ox-occupation-101","statement":"6·10 만세 운동은 고종의 인산일을 계기로 천도교 민족 대표가 주도한 1919년의 운동이었다.","answer":false,"explanation":"인산의 대상과 시기가 틀렸다. 6·10 만세 운동은 1926년 순종의 인산일에 학생들이 중심이 되어 전개했으며 민족주의와 사회주의 세력의 연대 분위기를 높여 신간회 결성에 영향을 주었다."},
-{"id":"ox-occupation-102","statement":"강주룡은 평양 을밀대 지붕에서 고공 농성을 벌이며 고무 공장 노동자의 임금 삭감에 항의하였다.","answer":true,"explanation":"1931년 평원 고무 공장 파업을 이끈 강주룡은 노동자의 생존권을 알리려고 을밀대에 올라 농성하였다. 그의 행동은 일제 강점기 여성 노동자가 저임금과 식민지 자본의 탄압에 맞서 주체적으로 싸운 사례로 기억된다."},
-{"id":"ox-occupation-103","statement":"암태도 소작 쟁의는 지주의 소작료 인상을 지지한 소작인들이 벌인 운동이었다.","answer":false,"explanation":"소작인의 요구가 반대로 서술되었다. 전남 신안 암태도의 농민들은 1923년부터 높은 소작료를 낮추라고 요구하며 소작료 불납과 단식 투쟁을 벌여 일부 인하를 이끌어 냈다."},
-{"id":"ox-occupation-104","statement":"형평 운동은 백정에 대한 사회적 차별을 없애기 위해 1923년 진주에서 시작되었다.","answer":true,"explanation":"백정 출신과 지식인들은 조선 형평사를 조직하고 ‘공평은 사회의 근본’이라며 직업·교육·일상에서의 차별 철폐를 요구하였다. 이는 신분제가 법적으로 폐지된 뒤에도 남은 차별에 맞선 인권 운동이었다."},
-{"id":"ox-occupation-105","statement":"방정환은 어린이날 제정을 반대하고 잡지 『어린이』의 발간을 금지하였다.","answer":false,"explanation":"방정환의 활동을 반대로 서술하였다. 그는 천도교 소년회를 중심으로 어린이날을 제정하고 잡지 『어린이』를 발간해 아동을 독립된 인격체로 존중하자는 운동을 펼쳤다."},
-{"id":"ox-occupation-106","statement":"조선어 연구회는 가갸날을 제정하고 잡지 『한글』을 발간하였다.","answer":true,"explanation":"1921년 조직된 조선어 연구회는 훈민정음 반포를 기념해 1926년 가갸날을 만들었고 뒤에 한글날로 이름을 바꾸었다. 강습회와 기관지 『한글』을 통해 우리말 연구와 보급을 민족 문화 수호 운동으로 전개하였다."},
-{"id":"ox-occupation-107","statement":"조선어 연구회는 1931년 조선사 편수회로 이름을 바꾸어 식민 사관 보급에 참여하였다.","answer":false,"explanation":"개칭한 단체와 활동이 틀렸다. 조선어 연구회는 1931년 조선어 학회로 이름을 바꾸고 맞춤법 통일·표준말 제정·사전 편찬을 추진하였다."},
-{"id":"ox-occupation-108","statement":"일제는 조선어 학회 사건을 일으켜 우리말 사전 편찬과 국어 연구에 참여한 인사들을 탄압하였다.","answer":true,"explanation":"1942년 일제는 조선어 학회의 연구를 독립운동으로 몰아 이극로·최현배 등을 체포했고 이윤재·한징은 옥중에서 숨졌다. 이 사건은 민족 말살 통치가 언어 연구까지 탄압했음을 보여 준다."},
-{"id":"ox-occupation-109","statement":"박은식은 식민 사관을 옹호하려 『조선사』를 편찬하고 일본 천황 중심의 국체를 강조하였다.","answer":false,"explanation":"저술과 사상이 모두 틀렸다. 박은식은 『한국통사』와 『한국독립운동지혈사』를 저술하고 나라는 형체, 역사는 정신이라는 관점에서 국혼의 보존을 강조한 민족주의 사학자였다."},
-{"id":"ox-occupation-110","statement":"신채호는 『조선상고사』에서 역사를 ‘아와 비아의 투쟁’으로 파악하였다.","answer":true,"explanation":"신채호는 민족을 역사의 주체로 보고 고대사의 중심을 만주까지 확장해 식민 사관을 비판하였다. 『독사신론』과 『조선사연구초』에서도 왕조 중심 역사관을 벗어난 낭가 사상과 민족 정신을 강조하였다."},
-{"id":"ox-occupation-111","statement":"정인보는 조선학 운동을 비판하고 일본과 조선의 역사가 하나라는 일선 동조론을 주장하였다.","answer":false,"explanation":"정인보의 역사관을 반대로 서술하였다. 그는 조선 후기 실학을 재평가하는 조선학 운동에 참여하고 민족의 주체적 정신인 ‘얼’을 강조해 식민 사관에 맞섰다."},
-{"id":"ox-occupation-112","statement":"문일평은 ‘조선심’을 강조하며 민족주의 역사 연구와 조선학 운동을 전개하였다.","answer":true,"explanation":"문일평은 민족 문화와 역사의 고유한 정신을 조선심으로 표현하고 대외 관계에서 자주성을 중시하였다. 정인보·안재홍 등과 함께 다산 정약용 서거 99주년 기념 사업을 계기로 조선학 운동을 펼쳤다."},
-{"id":"ox-occupation-113","statement":"백남운은 한국사가 세계사의 보편적 발전 법칙과 무관한 특수한 정체 사회였다고 보았다.","answer":false,"explanation":"백남운의 주장을 반대로 서술하였다. 그는 『조선사회경제사』에서 한국사도 원시 공동체·노예제·봉건제 등 세계사의 보편적 법칙에 따라 발전했다고 보아 식민 사관의 정체성론을 비판하였다."},
-{"id":"ox-occupation-114","statement":"진단 학회는 문헌과 유물을 엄밀히 검토하는 실증주의에 바탕을 두고 한국사를 연구하였다.","answer":true,"explanation":"이병도·손진태 등이 1934년 조직하고 학술지 『진단학보』를 발간하였다. 정치적 구호보다 객관적 사료 비판을 중시해 일본 관학자들의 왜곡된 한국사 연구에 학문적으로 대응하였다."},
-{"id":"ox-occupation-115","statement":"나운규의 영화 『아리랑』은 식민지 현실을 찬양하고 일본 제국의 근대화를 선전하였다.","answer":false,"explanation":"작품의 주제가 반대로 서술되었다. 1926년 개봉한 『아리랑』은 일제의 억압 속에서 광기에 빠진 청년의 비극을 통해 식민지 민중의 고통과 저항 의식을 표현하였다."},
-{"id":"ox-occupation-116","statement":"이육사는 「광야」와 「절정」 등에 일제에 맞서는 저항 의지와 광복의 염원을 담았다.","answer":true,"explanation":"이육사는 의열단과 연계해 독립운동에 참여하며 여러 차례 투옥된 시인이었다. 강인한 언어와 광활한 공간 이미지를 통해 암울한 식민 현실을 견디고 새 시대를 기다리는 의지를 드러냈다."},
-{"id":"ox-occupation-117","statement":"윤동주는 「서시」와 「참회록」에서 침략 전쟁을 찬양하고 황국 신민이 될 것을 주장하였다.","answer":false,"explanation":"작품의 주제가 전혀 틀렸다. 윤동주는 식민지 지식인의 부끄러움과 자기 성찰, 순결한 삶과 민족 현실에 대한 고뇌를 시에 담았고 후쿠오카 형무소에서 순국하였다."},
-{"id":"ox-occupation-118","statement":"대종교 계열 인사들은 중광단을 조직했고 이 조직은 북로 군정서로 발전하였다.","answer":true,"explanation":"나철이 창시한 대종교는 단군 신앙을 바탕으로 민족의식을 고취했고 만주 독립운동의 중요한 기반이 되었다. 서일 등이 조직한 중광단은 대한 정의단을 거쳐 북로 군정서로 개편되어 청산리 대첩에 참여하였다."},
-{"id":"ox-occupation-119","statement":"천도교는 3·1 운동과 6·10 만세 운동에 참여하지 않고 일제의 신사 참배 정책만 지원하였다.","answer":false,"explanation":"천도교의 민족 운동을 반대로 서술하였다. 손병희 등 천도교계는 3·1 운동의 민족 대표와 자금 마련에 참여했고, 6·10 만세 운동 준비에도 관여하며 언론·교육 활동을 펼쳤다."},
-{"id":"ox-occupation-120","statement":"원불교는 일제 강점기에 간척 사업과 허례허식 개선을 위한 새생활 운동을 전개하였다.","answer":true,"explanation":"박중빈이 창시한 원불교는 생활 속 수행과 근검절약을 강조하며 경제적 자립을 꾀하였다. 영산과 익산 등지의 간척 사업, 저축 조합, 남녀평등과 미신 타파를 포함한 새생활 운동으로 민중 생활 개선에 힘썼다."}
+  {
+    "id": "ox-occupation-008",
+    "coreId": "ox-core-occupation-99-manchuria-1920s",
+    "topicId": "occupation-99-manchuria-1920s",
+    "statement": "홍범도가 이끈 대한 독립군 등은 1920년 봉오동 전투에서 일본군을 물리쳤다.",
+    "answer": true,
+    "explanation": "독립군은 추격해 온 일본군을 봉오동 골짜기로 유인해 큰 승리를 거두었다. 같은 해 가을 김좌진의 북로 군정서군 등은 청산리에서도 일본군에 큰 피해를 입혔다.",
+    "difficulty": "hard",
+    "tags": [
+      "일제 강점기",
+      "1920년대 만주 독립전쟁과 재편"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 99)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 99)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-010",
+    "coreId": "ox-core-occupation-99-manchuria-1920s",
+    "topicId": "occupation-99-manchuria-1920s",
+    "statement": "일제는 독립군의 기반을 없애려 1920년 간도 지역의 한인을 학살하는 간도 참변을 일으켰다.",
+    "answer": true,
+    "explanation": "봉오동·청산리 패배 뒤 일제는 간도의 마을·학교·교회를 파괴하며 민간인을 살해하였다. 이 탄압으로 독립군 부대들은 밀산부 등으로 이동해 통합을 모색하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "일제 강점기",
+      "1920년대 만주 독립전쟁과 재편"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 99)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 99)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-022",
+    "coreId": "ox-core-occupation-101-korean-independence-army",
+    "topicId": "occupation-101-korean-independence-army",
+    "statement": "지청천이 지휘한 한국 독립군은 중국 호로군과 연합해 일본군과 싸웠다.",
+    "answer": true,
+    "explanation": "만주 사변 후 한국 독립군은 한·중 연합 작전으로 쌍성보·사도하자·대전자령 전투에서 승리하였다. 이는 일본의 만주 침략에 맞선 한국과 중국 독립 세력의 공동 전선이었다.",
+    "difficulty": "hard",
+    "tags": [
+      "일제 강점기",
+      "한국 독립군의 한중 연합 작전"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 101)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 101)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-032",
+    "coreId": "ox-core-occupation-93-secret-societies",
+    "topicId": "occupation-93-secret-societies",
+    "statement": "독립 의군부는 고종의 밀지를 받았다고 내세우며 복벽주의에 바탕을 둔 국권 회복을 추진하였다.",
+    "answer": true,
+    "explanation": "임병찬은 1912년 의병 계열 인사들을 모아 전국적인 비밀 조직을 만들고 일제에 국권 반환 요구서를 보내려 하였다. 옛 황제를 다시 세우려는 복벽주의를 지향했으나 계획이 발각되어 조직원들이 체포되었다.",
+    "difficulty": "medium",
+    "tags": [
+      "일제 강점기",
+      "1910년대 국내 비밀 결사"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 93)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 93)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-056",
+    "coreId": "ox-core-occupation-95-china-mainland",
+    "topicId": "occupation-95-china-mainland",
+    "statement": "대한민국 임시 정부는 대한민국 임시 헌장에서 민주 공화제를 명시하였다.",
+    "answer": true,
+    "explanation": "1919년 4월 임시 헌장 제1조는 대한민국을 민주 공화제로 한다고 선언하였다. 임시 의정원·국무원·법원의 삼권 분립을 지향해 군주정에서 공화정으로의 전환을 분명히 하였다.",
+    "difficulty": "medium",
+    "tags": [
+      "일제 강점기",
+      "1910년대 중국 관내 독립운동"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 95)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 95)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-057",
+    "coreId": "ox-core-occupation-95-china-mainland",
+    "topicId": "occupation-95-china-mainland",
+    "statement": "상하이의 대한민국 임시 정부는 한성 정부와 연해주의 대한 국민 의회를 배제한 채 지방 정부로 남았다.",
+    "answer": false,
+    "explanation": "임시 정부는 여러 정부를 배제한 것이 아니라 1919년 9월 통합하였다. 한성 정부의 정통성을 계승하고 대한 국민 의회 세력을 합쳐 국내외 독립운동을 지휘할 중앙 정부를 세웠다.",
+    "difficulty": "hard",
+    "tags": [
+      "일제 강점기",
+      "1910년대 중국 관내 독립운동"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 95)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 95)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-058",
+    "coreId": "ox-core-occupation-93-secret-societies",
+    "topicId": "occupation-93-secret-societies",
+    "statement": "대한 광복회는 군자금을 모으고 친일 부호를 처단하며 공화정 수립을 준비하였다.",
+    "answer": true,
+    "explanation": "1915년 대구에서 결성된 대한 광복회는 박상진을 총사령으로 삼고 군대식 조직을 갖추었다. 만주의 독립군 기지와 연결해 무장 투쟁을 준비했으며, 부호에게 군자금을 요구하고 이를 거부한 친일 인사를 처단하였다.",
+    "difficulty": "medium",
+    "tags": [
+      "일제 강점기",
+      "1910년대 국내 비밀 결사"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 93)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 93)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-059",
+    "coreId": "ox-core-occupation-95-china-mainland",
+    "topicId": "occupation-95-china-mainland",
+    "statement": "대한민국 임시 정부는 파리 강화 회의에 이승만을 보내 대한 제국의 외교권만 되찾아 달라고 요청하였다.",
+    "answer": false,
+    "explanation": "파견 인물과 요구 내용이 틀렸다. 김규식은 파리에서 임시 정부의 외무 총장으로 활동하며 한국의 완전 독립을 호소했으나 열강의 외면으로 회의에 공식 참석하지 못하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "일제 강점기",
+      "1910년대 중국 관내 독립운동"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 95)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 95)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-060",
+    "coreId": "ox-core-occupation-95-china-mainland",
+    "topicId": "occupation-95-china-mainland",
+    "statement": "대한민국 임시 정부는 『독립신문』을 발행하고 사료 편찬소에서 『한일관계사료집』을 간행하였다.",
+    "answer": true,
+    "explanation": "『독립신문』은 임시 정부의 활동과 국내외 독립운동 소식을 알리는 기관지 역할을 하였다. 『한일관계사료집』은 일제의 침략 자료를 정리해 국제사회에 한국 독립의 정당성을 설명하려고 편찬하였다.",
+    "difficulty": "medium",
+    "tags": [
+      "일제 강점기",
+      "1910년대 중국 관내 독립운동"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 95)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 95)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-067",
+    "coreId": "ox-core-occupation-104-shin-chaeho",
+    "topicId": "occupation-104-shin-chaeho",
+    "statement": "신채호의 『조선 혁명 선언』은 의열단의 폭력 투쟁을 비판하고 외교 독립론만을 유일한 노선으로 제시하였다.",
+    "answer": false,
+    "explanation": "선언의 주장이 반대로 서술되었다. 신채호는 외교론과 준비론을 비판하고 민중의 직접 혁명과 폭력 투쟁을 일제 타도의 방법으로 제시하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "일제 강점기",
+      "신채호의 민족주의 사학과 의열 투쟁론"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 104)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 104)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-072",
+    "coreId": "ox-core-occupation-99-manchuria-1920s",
+    "topicId": "occupation-99-manchuria-1920s",
+    "statement": "간도 참변 뒤 여러 독립군 부대는 서일을 총재로 하는 대한 독립 군단을 밀산부에서 조직하였다.",
+    "answer": true,
+    "explanation": "청산리 대첩 뒤 일제의 토벌을 피해 이동한 북로 군정서·대한 독립군 등은 1920년 말 밀산에서 통합 부대를 만들었다. 대한 독립 군단은 러시아 자유시로 이동해 무기와 훈련 지원을 기대했지만 이듬해 자유시 참변을 겪었다.",
+    "difficulty": "medium",
+    "tags": [
+      "일제 강점기",
+      "1920년대 만주 독립전쟁과 재편"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 99)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 99)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-073",
+    "coreId": "ox-core-occupation-100-cheongsanri",
+    "topicId": "occupation-100-cheongsanri",
+    "statement": "북로 군정서군 등 독립군 연합 부대는 청산리에서 중국 군벌과 싸워 패배하였다.",
+    "answer": false,
+    "explanation": "교전 상대와 결과가 틀렸다. 김좌진의 북로 군정서군과 홍범도 부대 등은 1920년 청산리 일대의 여러 전투에서 일본군을 상대로 큰 승리를 거두었다.",
+    "difficulty": "hard",
+    "tags": [
+      "일제 강점기",
+      "청산리 대첩의 주요 전투"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 100)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 100)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-074",
+    "coreId": "ox-core-occupation-99-manchuria-1920s",
+    "topicId": "occupation-99-manchuria-1920s",
+    "statement": "일제는 중국 마적이 일본 영사관을 습격한 훈춘 사건을 간도 출병의 구실로 이용하였다.",
+    "answer": true,
+    "explanation": "일제는 훈춘 사건의 배후에 독립군이 있다고 몰아 대규모 병력을 간도에 투입하였다. 이후 한인 마을·학교·교회를 파괴하고 민간인을 학살한 간도 참변을 일으켜 독립군의 지원 기반을 끊으려 하였다.",
+    "difficulty": "medium",
+    "tags": [
+      "일제 강점기",
+      "1920년대 만주 독립전쟁과 재편"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 99)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 99)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-076",
+    "coreId": "ox-core-occupation-99-manchuria-1920s",
+    "topicId": "occupation-99-manchuria-1920s",
+    "statement": "만주의 독립운동 세력은 참의부·정의부·신민부의 3부를 조직해 한인 사회를 다스리고 독립군을 운영하였다.",
+    "answer": true,
+    "explanation": "3부는 행정·입법·사법 기능을 갖춘 자치 정부이자 독립군 조직인 군정부의 성격을 띠었다. 남만주의 참의부·정의부와 북만주의 신민부는 교육과 세금 징수, 무장 투쟁을 함께 담당하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "일제 강점기",
+      "1920년대 만주 독립전쟁과 재편"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 99)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 99)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-077",
+    "coreId": "ox-core-occupation-99-manchuria-1920s",
+    "topicId": "occupation-99-manchuria-1920s",
+    "statement": "3부 통합 운동의 결과 북만주에 국민부, 남만주에 혁신 의회가 조직되었다.",
+    "answer": false,
+    "explanation": "두 통합 조직의 지역을 서로 바꾸어 서술한 점이 틀렸다. 1928년 이후 북만주에는 혁신 의회, 남만주에는 국민부가 조직되었고 각각 한국 독립당·조선 혁명당과 연계하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "일제 강점기",
+      "1920년대 만주 독립전쟁과 재편"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 99)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 99)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-078",
+    "coreId": "ox-core-occupation-94-south-manchuria",
+    "topicId": "occupation-94-south-manchuria",
+    "statement": "서로 군정서는 서간도에서 신흥 무관 학교와 연계해 독립군 간부를 양성하였다.",
+    "answer": true,
+    "explanation": "서간도의 한인 자치 조직인 한족회는 군사 조직으로 서로 군정서를 운영하였다. 신흥 강습소에서 발전한 신흥 무관 학교가 장교와 병사를 길러 내면서 이 지역은 독립군 양성의 핵심 기지가 되었다.",
+    "difficulty": "hard",
+    "tags": [
+      "일제 강점기",
+      "1910년대 서간도 독립운동 기지"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 94)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 94)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-079",
+    "coreId": "ox-core-occupation-101-korean-independence-army",
+    "topicId": "occupation-101-korean-independence-army",
+    "statement": "한국 독립군은 중국군과 연합하지 않고 단독으로 영릉가·흥경성 전투를 치렀다.",
+    "answer": false,
+    "explanation": "부대와 전투가 잘못 연결되었다. 지청천의 한국 독립군은 중국 호로군과 쌍성보·대전자령 등에서 싸웠고, 영릉가·흥경성 전투는 양세봉의 조선 혁명군이 중국 의용군과 연합해 치렀다.",
+    "difficulty": "hard",
+    "tags": [
+      "일제 강점기",
+      "한국 독립군의 한중 연합 작전"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 101)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 101)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-080",
+    "coreId": "ox-core-occupation-102-korean-revolutionary-army",
+    "topicId": "occupation-102-korean-revolutionary-army",
+    "statement": "조선 혁명당 산하 조선 혁명군은 양세봉의 지휘 아래 남만주에서 활동하였다.",
+    "answer": true,
+    "explanation": "조선 혁명군은 국민부와 연계한 무장 부대로 만주 사변 뒤 중국 의용군과 공동 작전을 전개하였다. 영릉가·흥경성 전투에서 일본군을 물리친 것이 대표적 성과이다.",
+    "difficulty": "medium",
+    "tags": [
+      "일제 강점기",
+      "국민부와 조선 혁명군"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 102)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 102)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-081",
+    "coreId": "ox-core-occupation-102-korean-revolutionary-army",
+    "topicId": "occupation-102-korean-revolutionary-army",
+    "statement": "조선 혁명군은 일본 관동군과 연합해 중국 의용군을 영릉가에서 공격하였다.",
+    "answer": false,
+    "explanation": "연합 대상과 공격 상대가 반대로 서술되었다. 양세봉의 조선 혁명군은 중국 의용군과 연합해 영릉가·흥경성 전투에서 일본군과 싸웠다.",
+    "difficulty": "hard",
+    "tags": [
+      "일제 강점기",
+      "국민부와 조선 혁명군"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 102)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 102)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-090",
+    "coreId": "ox-core-occupation-107-liberation-diplomacy",
+    "topicId": "occupation-107-liberation-diplomacy",
+    "statement": "여운형은 광복에 대비해 국내 비밀 결사인 조선 건국 동맹을 조직하였다.",
+    "answer": true,
+    "explanation": "1944년 조직된 건국 동맹은 일제 패망 뒤의 새 국가 건설을 준비한 좌우 연합 성격의 국내 항일 조직이었다. 농민 동맹을 조직하고 중국의 조선 독립 동맹 등 해외 세력과 연결을 모색하였다.",
+    "difficulty": "medium",
+    "tags": [
+      "일제 강점기",
+      "국제 회담과 광복 준비"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 107)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 107)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-094",
+    "coreId": "ox-core-occupation-103-singanhoe",
+    "topicId": "occupation-103-singanhoe",
+    "statement": "정우회 선언은 사회주의 세력이 비타협적 민족주의 세력과의 협동 전선을 모색하는 계기가 되었다.",
+    "answer": true,
+    "explanation": "1926년 정우회는 분열된 사회주의 운동을 정비하고 민족주의 세력과 공동으로 항일 운동을 벌이자는 방향 전환을 선언하였다. 이러한 움직임은 이듬해 비타협적 민족주의자와 사회주의자가 신간회를 결성하는 사상적 배경이 되었다.",
+    "difficulty": "medium",
+    "tags": [
+      "일제 강점기",
+      "신간회의 강령과 활동"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 103)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 103)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-098",
+    "coreId": "ox-core-occupation-103-singanhoe",
+    "topicId": "occupation-103-singanhoe",
+    "statement": "신간회는 광주 학생 항일 운동의 진상을 조사하고 민중 대회를 열어 지원하려 하였다.",
+    "answer": true,
+    "explanation": "신간회는 조사단을 광주에 보내 일제의 탄압을 확인하고 서울에서 대규모 민중 대회를 계획하였다. 일제가 간부들을 검거해 대회는 무산되었지만 학생 운동을 전국적 항일 운동으로 확산하는 데 기여하였다.",
+    "difficulty": "medium",
+    "tags": [
+      "일제 강점기",
+      "신간회의 강령과 활동"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 103)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 103)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-110",
+    "coreId": "ox-core-occupation-104-shin-chaeho",
+    "topicId": "occupation-104-shin-chaeho",
+    "statement": "신채호는 『조선상고사』에서 역사를 ‘아와 비아의 투쟁’으로 파악하였다.",
+    "answer": true,
+    "explanation": "신채호는 민족을 역사의 주체로 보고 고대사의 중심을 만주까지 확장해 식민 사관을 비판하였다. 『독사신론』과 『조선사연구초』에서도 왕조 중심 역사관을 벗어난 낭가 사상과 민족 정신을 강조하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "일제 강점기",
+      "신채호의 민족주의 사학과 의열 투쟁론"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 104)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 104)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-112",
+    "coreId": "ox-core-occupation-106-joseonhak",
+    "topicId": "occupation-106-joseonhak",
+    "statement": "문일평은 ‘조선심’을 강조하며 민족주의 역사 연구와 조선학 운동을 전개하였다.",
+    "answer": true,
+    "explanation": "문일평은 민족 문화와 역사의 고유한 정신을 조선심으로 표현하고 대외 관계에서 자주성을 중시하였다. 정인보·안재홍 등과 함께 다산 정약용 서거 99주년 기념 사업을 계기로 조선학 운동을 펼쳤다.",
+    "difficulty": "hard",
+    "tags": [
+      "일제 강점기",
+      "조선학 운동과 민족주의 역사 연구"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 106)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 106)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-118",
+    "coreId": "ox-core-occupation-96-north-gando",
+    "topicId": "occupation-96-north-gando",
+    "statement": "대종교 계열 인사들은 중광단을 조직했고 이 조직은 북로 군정서로 발전하였다.",
+    "answer": true,
+    "explanation": "나철이 창시한 대종교는 단군 신앙을 바탕으로 민족의식을 고취했고 만주 독립운동의 중요한 기반이 되었다. 서일 등이 조직한 중광단은 대한 정의단을 거쳐 북로 군정서로 개편되어 청산리 대첩에 참여하였다.",
+    "difficulty": "medium",
+    "tags": [
+      "일제 강점기",
+      "1910년대 북간도 독립운동 기지"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 96)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 96)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-121",
+    "coreId": "ox-core-occupation-105-park-eunsik",
+    "topicId": "occupation-105-park-eunsik",
+    "statement": "박은식은 민족의 정신인 국혼을 강조하고 『한국통사』와 『한국독립운동지혈사』를 저술하였다.",
+    "answer": true,
+    "explanation": "박은식은 나라의 형체가 사라져도 민족의 정신인 국혼을 지키면 독립을 회복할 수 있다고 보았다. 『한국통사』에서 일제 침략의 과정을 밝히고, 『한국독립운동지혈사』에서는 독립운동의 역사를 정리하였다.",
+    "difficulty": "medium",
+    "tags": [
+      "박은식",
+      "국혼",
+      "한국통사",
+      "한국독립운동지혈사"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 105)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 105)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-122",
+    "coreId": "ox-core-occupation-106-joseonhak",
+    "topicId": "occupation-106-joseonhak",
+    "statement": "정인보는 민족의 주체적 정신을 '얼'로 파악하고 조선학 운동을 전개하였다.",
+    "answer": true,
+    "explanation": "정인보는 식민 사관에 맞서 우리 역사와 문화의 주체성을 '조선의 얼'에서 찾았다. 그는 안재홍·문일평 등과 정약용 연구를 비롯한 조선학 운동을 전개하여 민족 문화의 독자성을 밝히려 하였다.",
+    "difficulty": "medium",
+    "tags": [
+      "정인보",
+      "조선의 얼",
+      "조선학 운동"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 106)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 106)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-123",
+    "coreId": "ox-core-occupation-107-liberation-diplomacy",
+    "topicId": "occupation-107-liberation-diplomacy",
+    "statement": "카이로 선언은 한국을 적당한 시기에 자유롭고 독립된 나라로 만들겠다는 연합국의 방침을 밝혔다.",
+    "answer": true,
+    "explanation": "1943년 미국·영국·중국 정상은 카이로 회담 뒤 한국의 독립을 국제 문서로 약속하였다. 다만 '적당한 시기'라는 단서가 붙었고, 이 방침은 1945년 포츠담 선언에서 다시 확인되었다.",
+    "difficulty": "hard",
+    "tags": [
+      "카이로 선언",
+      "포츠담 선언",
+      "한국 독립"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 107)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 107)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-124",
+    "coreId": "ox-core-occupation-97-maritime-province",
+    "topicId": "occupation-97-maritime-province",
+    "statement": "연해주의 권업회는 권업신문을 발간하며 한인 사회의 단결과 독립운동을 도왔다.",
+    "answer": true,
+    "explanation": "권업회는 1911년 블라디보스토크 신한촌을 중심으로 조직되어 한인의 권익 옹호와 실업 장려를 추진했다. 권업신문을 통해 민족의식을 높이고 해외 독립운동의 기반을 마련했다.",
+    "difficulty": "medium",
+    "tags": [
+      "연해주",
+      "권업회"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 97)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 97)"
+    ],
+    "sourceQuestionIds": []
+  },
+  {
+    "id": "ox-occupation-125",
+    "coreId": "ox-core-occupation-98-americas",
+    "topicId": "occupation-98-americas",
+    "statement": "대한인 국민회는 미주 한인 사회를 통합하고 독립운동 자금을 지원하였다.",
+    "answer": true,
+    "explanation": "1909년 공립협회와 한인합성협회가 통합해 국민회를 세웠고, 1910년 대동보국회까지 합류하면서 대한인 국민회로 확대되었다. 이후 언론·교육 활동과 의무금 모금을 통해 미주 한인을 결집하고 대한민국 임시 정부 등의 독립운동을 지원했다.",
+    "difficulty": "medium",
+    "tags": [
+      "미주 독립운동",
+      "대한인 국민회"
+    ],
+    "sourceRefs": [
+      "docs/mnemonic-sources/primary-reference.txt (topic 98)",
+      "docs/mnemonic-sources/cue-facts.txt (topic 98)"
+    ],
+    "sourceQuestionIds": []
+  }
 ]

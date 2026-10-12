@@ -1,722 +1,1508 @@
 [
   {
-    "id": "ox-kingdoms-001",
-    "statement": "고구려 태조왕은 백제를 멸망시켰다.",
-    "answer": false,
-    "explanation": "태조왕이 백제를 멸망시켰다는 부분이 틀렸다. 태조왕은 옥저를 정복하고 계루부 고씨의 왕위 세습을 확립했으며, 백제는 훗날 660년에 나당 연합군에 의해 멸망하였다."
-  },
-  {
-    "id": "ox-kingdoms-002",
-    "statement": "고구려 고국천왕은 백성을 구휼하기 위해 진대법을 실시하였다.",
-    "answer": true,
-    "explanation": "을파소의 건의로 시행한 진대법은 봄에 곡식을 빌려주고 가을에 갚게 한 제도였다. 농민의 몰락과 귀족에 대한 예속을 막아 왕권과 국가 재정을 안정시키려는 뜻이 있었다."
-  },
-  {
-    "id": "ox-kingdoms-003",
-    "statement": "우륵이 지은 가야금 12곡은 불교 경전의 내용을 한문으로 풀이한 노래였다.",
-    "answer": false,
-    "explanation": "가야의 가실왕은 여러 지역의 음악을 정리하기 위해 악사 우륵에게 가야금 12곡을 짓게 하였다. 우륵은 뒤에 신라 진흥왕에게 귀화해 계고·법지·만덕에게 연주·노래·춤을 가르쳤으므로 불교 경전을 풀이한 노래라는 설명은 틀렸다."
-  },
-  {
-    "id": "ox-kingdoms-004",
-    "statement": "고구려 소수림왕은 전진으로부터 불교를 받아들였다.",
-    "answer": true,
-    "explanation": "소수림왕은 372년 전진의 순도가 전한 불교를 수용하였다. 태학 설립과 율령 반포도 함께 추진해 고구려의 중앙 집권 체제를 정비하였다."
-  },
-  {
-    "id": "ox-kingdoms-005",
-    "statement": "광개토 대왕은 광덕과 준풍이라는 연호를 사용하였다.",
-    "answer": false,
-    "explanation": "광덕과 준풍을 광개토 대왕의 연호로 본 것이 틀렸다. 그는 영락이라는 독자 연호를 사용했고, 광덕과 준풍은 고려 광종 때의 연호이다."
-  },
-  {
-    "id": "ox-kingdoms-006",
-    "statement": "고구려 장수왕은 국내성에서 평양으로 수도를 옮겼다.",
-    "answer": true,
-    "explanation": "장수왕은 427년 평양 천도를 통해 국내성 귀족의 기반을 약화하고 남진 정책을 강화하였다. 이후 백제의 한성을 함락해 한강 유역까지 세력을 넓혔다."
-  },
-  {
-    "id": "ox-kingdoms-007",
-    "statement": "백제 고이왕은 지방의 22담로에 왕족을 파견하였다.",
-    "answer": false,
-    "explanation": "22담로에 왕족을 파견한 왕을 고이왕으로 제시한 것이 틀렸다. 이는 무령왕의 지방 통제책이며, 고이왕은 16관등과 관복을 정비해 중앙 집권의 기틀을 마련하였다."
-  },
-  {
-    "id": "ox-kingdoms-008",
-    "statement": "백제 근초고왕은 마한의 남은 세력을 복속하였다.",
-    "answer": true,
-    "explanation": "근초고왕은 마한의 잔여 세력을 정복해 전라도 지역까지 영향력을 넓혔다. 고구려 평양성을 공격하고 중국 남조·왜와 교류하며 백제의 전성기를 이끌었다."
-  },
-  {
-    "id": "ox-kingdoms-009",
-    "statement": "통일 신라의 상수리 제도는 중앙 귀족을 지방 촌주로 내려보내 장기간 머물게 한 제도였다.",
-    "answer": false,
-    "explanation": "상수리는 지방 세력의 일원이나 그 자제를 수도 경주에 머물게 한 제도였다. 중앙이 이들을 여러 관청에 복무시키며 지방 세력을 견제했으므로 사람을 보낸 방향과 대상이 반대로 서술되었다."
-  },
-  {
-    "id": "ox-kingdoms-010",
-    "statement": "백제 성왕은 사비로 천도하고 국호를 남부여로 바꾸었다.",
-    "answer": true,
-    "explanation": "성왕은 538년 웅진에서 사비로 수도를 옮기고 왕권 중심의 체제를 다시 세우려 했다. 부여 계승 의식을 드러내기 위해 남부여라는 국호도 사용하였다."
-  },
-  {
-    "id": "ox-kingdoms-011",
-    "statement": "신라 법흥왕은 원효의 순교를 계기로 불교를 공인하였다.",
-    "answer": false,
-    "explanation": "불교 공인의 계기가 된 인물을 원효로 제시한 것이 틀렸다. 법흥왕은 이차돈의 순교를 계기로 527년 불교를 공인했고, 원효는 통일 신라 때 불교 대중화에 힘썼다."
-  },
-  {
-    "id": "ox-kingdoms-012",
-    "statement": "신라 진흥왕은 화랑도를 국가적인 조직으로 정비하였다.",
-    "answer": true,
-    "explanation": "진흥왕은 청소년 집단인 화랑도를 국가가 관리하는 인재 양성 조직으로 개편하였다. 화랑은 심신을 수련하고 전쟁에 참여하면서 삼국 통일 과정의 인적 기반이 되었다."
-  },
-  {
-    "id": "ox-kingdoms-013",
-    "statement": "신라 진흥왕은 한강 유역을 빼앗긴 뒤 남한산성으로 피란하였다.",
-    "answer": false,
-    "explanation": "진흥왕이 한강 유역을 잃었다는 부분이 틀렸다. 백제와 함께 고구려를 몰아낸 뒤 한강 하류까지 차지하고 북한산 순수비를 세워 영토 확장을 기념하였다."
-  },
-  {
-    "id": "ox-kingdoms-014",
-    "statement": "첨성대는 신라 선덕 여왕 때 세워졌다.",
-    "answer": true,
-    "explanation": "경주 첨성대는 선덕 여왕 때 축조된 것으로 전해지는 천문 관측 시설이다. 농경과 국가 의례에 필요한 천문·역법 지식이 신라 왕실에서 중요했음을 보여 준다."
-  },
-  {
-    "id": "ox-kingdoms-015",
-    "statement": "신라 무열왕은 성골 출신의 마지막 왕이었다.",
-    "answer": false,
-    "explanation": "무열왕을 성골 출신으로 본 것이 틀렸다. 진덕 여왕이 마지막 성골 왕이고, 김춘추는 진골 출신으로는 처음 왕위에 올라 무열왕이 되었다."
-  },
-  {
-    "id": "ox-kingdoms-016",
-    "statement": "신라는 문무왕 때 나당 전쟁에서 승리하고 삼국 통일을 완성하였다.",
-    "answer": true,
-    "explanation": "백제와 고구려 멸망 뒤 당은 한반도 전체를 지배하려 했고 신라는 이에 맞서 싸웠다. 문무왕 때 매소성과 기벌포에서 당군을 물리친 뒤 676년 대동강 이남을 확보하였다."
-  },
-  {
-    "id": "ox-kingdoms-017",
-    "statement": "신문왕은 묘청의 서경 천도 운동을 진압하였다.",
-    "answer": false,
-    "explanation": "묘청의 서경 천도 운동을 신문왕 때 사건으로 본 것이 틀렸다. 고려 인종 때 김부식이 이 운동을 진압했으며, 신문왕은 김흠돌의 난을 제압해 진골 귀족 세력을 약화하였다."
-  },
-  {
-    "id": "ox-kingdoms-018",
-    "statement": "신문왕 때 지방 행정 조직인 9주 5소경이 정비되었다.",
-    "answer": true,
-    "explanation": "9주는 통일한 영토를 전국적으로 나누어 다스리기 위한 행정 구역이었다. 5소경은 수도 금성이 동남쪽에 치우친 약점을 보완하고 지방의 정치·문화를 발전시키기 위해 설치하였다."
-  },
-  {
-    "id": "ox-kingdoms-019",
-    "statement": "신문왕은 녹읍을 부활시키고 관료전을 폐지하였다.",
-    "answer": false,
-    "explanation": "신문왕의 토지 정책을 반대로 제시하였다. 관료에게 관료전을 지급하고 귀족이 주민과 조세를 지배하던 녹읍을 폐지하여 국가의 토지 지배와 왕권을 강화하였다."
-  },
-  {
-    "id": "ox-kingdoms-020",
-    "statement": "백제 금동 대향로는 부여 능산리 절터에서 출토되었다.",
-    "answer": true,
-    "explanation": "향로의 용 장식·봉래산·여러 인물과 동물상에는 백제의 불교·도교 사상이 함께 표현되어 있다. 섬세한 금속 공예 기술과 백제 왕실 문화의 국제성을 보여 주는 대표 유물이다."
-  },
-  {
-    "id": "ox-kingdoms-021",
-    "statement": "발해 무왕은 장보고를 보내 완도에 청해진을 설치하였다.",
-    "answer": false,
-    "explanation": "장보고와 청해진을 발해 무왕과 연결한 것이 틀렸다. 발해 무왕은 장문휴에게 당의 산둥 지방을 공격하게 했고, 장보고는 통일 신라 흥덕왕 때 완도에 청해진을 설치하였다."
-  },
-  {
-    "id": "ox-kingdoms-022",
-    "statement": "발해 문왕은 수도를 상경 용천부로 옮겼다.",
-    "answer": true,
-    "explanation": "문왕은 당과 친선 관계를 맺고 제도와 문물을 적극적으로 받아들였다. 상경성은 당 장안성을 본떠 바둑판 모양으로 조성되어 발해의 발전된 도시 문화를 보여 준다."
-  },
-  {
-    "id": "ox-kingdoms-023",
-    "statement": "발해는 선왕 때 금의 공격을 받아 멸망하였다.",
-    "answer": false,
-    "explanation": "선왕 때 발해가 멸망했다는 설명과 공격 세력이 모두 틀렸다. 선왕 때에는 영토가 크게 넓어져 해동성국이라 불렸고, 발해는 926년 거란의 공격으로 멸망하였다."
-  },
-  {
-    "id": "ox-kingdoms-024",
-    "statement": "발해는 당의 3성 6부제를 받아들이면서 6부에 독자적인 명칭을 사용하였다.",
-    "answer": true,
-    "explanation": "발해는 정당성을 중심으로 선조성과 중대성을 운영해 당과 다른 권력 구조를 만들었다. 6부에도 충·인·의·지·예·신 같은 유교 덕목을 반영하여 제도를 독자적으로 변용하였다."
-  },
-  {
-    "id": "ox-kingdoms-025",
-    "statement": "발해는 최고 교육 기관으로 성균관을 설치하였다.",
-    "answer": false,
-    "explanation": "발해의 교육 기관을 성균관으로 제시한 것이 틀렸다. 발해는 주자감을 두어 왕족과 귀족 자제에게 유교 경전을 가르쳤고, 성균관은 고려와 조선의 최고 교육 기관이었다."
-  },
-  {
-    "id": "ox-kingdoms-026",
-    "statement": "원효는 일심 사상을 바탕으로 불교의 여러 종파를 조화시키려 하였다.",
-    "answer": true,
-    "explanation": "원효는 모든 현상이 한마음에서 비롯된다는 일심 사상과 화쟁 사상을 내세웠다. 아미타 신앙을 쉬운 노래와 가르침으로 전해 불교 대중화에도 크게 기여하였다."
-  },
-  {
-    "id": "ox-kingdoms-027",
-    "statement": "의상은 수선사 결사를 조직하고 돈오점수를 주장하였다.",
-    "answer": false,
-    "explanation": "수선사 결사와 돈오점수를 의상의 활동으로 본 것이 틀렸다. 이는 고려 지눌과 관련되며, 의상은 부석사를 세우고 화엄 사상을 널리 펼쳤다."
-  },
-  {
-    "id": "ox-kingdoms-028",
-    "statement": "금동 미륵보살 반가사유상은 삼국 시대 불교 조각의 뛰어난 조형미를 보여 준다.",
-    "answer": true,
-    "explanation": "한쪽 다리를 다른 무릎 위에 올리고 손가락을 뺨에 댄 자세는 깨달음을 고민하는 미륵보살을 표현한다. 부드러운 미소와 균형 잡힌 신체는 삼국 시대 금속 주조와 불교 미술의 높은 수준을 보여 준다."
-  },
-  {
-    "id": "ox-kingdoms-029",
-    "statement": "장보고는 산둥의 법화원에서 신라인의 왕래를 금지하였다.",
-    "answer": false,
-    "explanation": "법화원에서 신라인의 왕래를 금지했다는 설명이 틀렸다. 장보고가 산둥 적산촌에 세운 법화원은 재당 신라인과 바다를 오가는 승려·상인을 돕는 종교·교통의 거점 구실을 하였다."
-  },
-  {
-    "id": "ox-kingdoms-030",
-    "statement": "최치원은 진성 여왕에게 시무책 10여 조를 올렸다.",
-    "answer": true,
-    "explanation": "진성 여왕은 시무 10여 조를 받아들이고 최치원에게 아찬 관등을 내렸다. 그러나 진골 귀족의 반대와 약해진 왕권 때문에 개혁은 실현되지 못했고, 최치원은 뒤에 정계를 떠났다."
-  },
-  {
-    "id": "ox-kingdoms-031",
-    "statement": "고구려 태조왕 때에도 소노부가 왕위를 계속 세습하였다.",
-    "answer": false,
-    "explanation": "태조왕 때까지 소노부가 왕위를 세습했다는 부분이 틀렸다. 이 시기에는 계루부 고씨의 왕위 세습이 확립되었고, 고국천왕 때에는 왕위 계승 방식이 형제 상속에서 부자 상속으로 바뀌었다."
-  },
-  {
     "id": "ox-kingdoms-032",
+    "coreId": "ox-core-kingdoms-goguryeo-state",
+    "topicId": "kingdoms-goguryeo-state",
     "statement": "고구려 고국천왕은 왕위의 부자 상속을 확립하고 부족적 5부를 행정적 5부로 바꾸었다.",
     "answer": true,
-    "explanation": "왕위 계승을 형제 상속에서 부자 상속으로 바꾸어 왕권을 안정시켰다. 부족 집단을 행정 구역으로 재편하고 진대법을 시행한 일도 중앙 집권화와 민생 안정을 함께 보여 준다."
+    "explanation": "왕위 계승을 형제 상속에서 부자 상속으로 바꾸어 왕권을 안정시켰다. 부족 집단을 행정 구역으로 재편하고 진대법을 시행한 일도 중앙 집권화와 민생 안정을 함께 보여 준다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "고구려의 중앙 집권 체제 정비"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1G02-P1G05",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-033",
+    "coreId": "ox-core-kingdoms-goguryeo-state",
+    "topicId": "kingdoms-goguryeo-state",
     "statement": "고구려 미천왕은 낙랑군의 지배를 강화하여 대동강 유역을 한에 넘겼다.",
     "answer": false,
-    "explanation": "미천왕의 대외 활동을 반대로 제시하였다. 그는 313년 낙랑군을 축출하고 대동강 유역을 확보하여 중국 군현 세력을 한반도에서 몰아냈다."
+    "explanation": "미천왕의 대외 활동을 반대로 제시하였다. 그는 313년 낙랑군을 축출하고 대동강 유역을 확보하여 중국 군현 세력을 한반도에서 몰아냈다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "고구려의 중앙 집권 체제 정비"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1G02-P1G05",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-034",
+    "coreId": "ox-core-kingdoms-goguryeo-state",
+    "topicId": "kingdoms-goguryeo-state",
     "statement": "고구려 고국원왕은 백제 근초고왕의 공격을 받아 평양성에서 전사하였다.",
     "answer": true,
-    "explanation": "4세기 백제의 전성기를 이끈 근초고왕은 고구려 평양성을 공격하였다. 이 전투에서 고국원왕이 전사하면서 고구려는 큰 타격을 입었고, 뒤이어 소수림왕이 체제 정비에 나섰다."
+    "explanation": "4세기 백제의 전성기를 이끈 근초고왕은 고구려 평양성을 공격하였다. 이 전투에서 고국원왕이 전사하면서 고구려는 큰 타격을 입었고, 뒤이어 소수림왕이 체제 정비에 나섰다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "고구려의 중앙 집권 체제 정비"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1G02-P1G05",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-035",
+    "coreId": "ox-core-kingdoms-goguryeo-state",
+    "topicId": "kingdoms-goguryeo-state",
     "statement": "고구려 소수림왕은 태학을 폐지하고 율령의 시행을 거부하였다.",
     "answer": false,
-    "explanation": "소수림왕의 정책을 정반대로 서술하였다. 그는 태학을 세워 인재를 양성하고 율령을 반포했으며, 불교를 공인해 중앙 집권 국가의 제도와 사상을 정비하였다."
+    "explanation": "소수림왕의 정책을 정반대로 서술하였다. 그는 태학을 세워 인재를 양성하고 율령을 반포했으며, 불교를 공인해 중앙 집권 국가의 제도와 사상을 정비하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "고구려의 중앙 집권 체제 정비"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1G02-P1G05",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-036",
+    "coreId": "ox-core-kingdoms-goguryeo-expansion",
+    "topicId": "kingdoms-goguryeo-expansion",
     "statement": "광개토 대왕은 신라에 침입한 왜를 격퇴하여 금관가야 세력의 약화에 영향을 주었다.",
     "answer": true,
-    "explanation": "신라 내물왕의 요청을 받은 광개토 대왕은 400년에 군대를 보내 왜를 물리쳤다. 고구려군이 낙동강 유역까지 진출하는 과정에서 전기 가야 연맹을 이끌던 금관가야도 타격을 받았다."
+    "explanation": "신라 내물왕의 요청을 받은 광개토 대왕은 400년에 군대를 보내 왜를 물리쳤다. 고구려군이 낙동강 유역까지 진출하는 과정에서 전기 가야 연맹을 이끌던 금관가야도 타격을 받았다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "광개토 대왕과 장수왕의 대외 확장"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1G06-P1G09",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-037",
+    "coreId": "ox-core-kingdoms-goguryeo-expansion",
+    "topicId": "kingdoms-goguryeo-expansion",
     "statement": "광개토 대왕은 자신의 업적을 기록한 광개토 대왕릉비를 직접 세웠다.",
     "answer": false,
-    "explanation": "비를 세운 주체를 광개토 대왕 자신으로 본 것이 틀렸다. 아들 장수왕이 414년 국내성 부근에 세워 아버지의 정복 활동과 고구려 중심의 천하관을 기록하였다."
+    "explanation": "비를 세운 주체를 광개토 대왕 자신으로 본 것이 틀렸다. 아들 장수왕이 414년 국내성 부근에 세워 아버지의 정복 활동과 고구려 중심의 천하관을 기록하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "광개토 대왕과 장수왕의 대외 확장"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1G06-P1G09",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-038",
+    "coreId": "ox-core-kingdoms-goguryeo-expansion",
+    "topicId": "kingdoms-goguryeo-expansion",
     "statement": "장수왕은 남진 정책을 추진하여 백제의 한성을 함락하였다.",
     "answer": true,
-    "explanation": "장수왕은 평양 천도 뒤 한강 유역으로 세력을 확대했고 475년 백제 한성을 공격하였다. 이때 개로왕이 전사하자 백제는 수도를 웅진으로 옮겨야 했다."
+    "explanation": "장수왕은 평양 천도 뒤 한강 유역으로 세력을 확대했고 475년 백제 한성을 공격하였다. 이때 개로왕이 전사하자 백제는 수도를 웅진으로 옮겨야 했다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "광개토 대왕과 장수왕의 대외 확장"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1G06-P1G09",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-039",
+    "coreId": "ox-core-kingdoms-goguryeo-expansion",
+    "topicId": "kingdoms-goguryeo-expansion",
     "statement": "충주 고구려비는 백제가 고구려의 수도까지 진출했음을 보여 준다.",
     "answer": false,
-    "explanation": "비석이 보여 주는 세력 관계를 거꾸로 해석하여 틀렸다. 충주 고구려비는 고구려가 한강 유역과 충주 지역까지 남하해 신라에 영향력을 행사했음을 알려 준다."
+    "explanation": "비석이 보여 주는 세력 관계를 거꾸로 해석하여 틀렸다. 충주 고구려비는 고구려가 한강 유역과 충주 지역까지 남하해 신라에 영향력을 행사했음을 알려 준다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "광개토 대왕과 장수왕의 대외 확장"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1G06-P1G09",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-040",
+    "coreId": "ox-core-kingdoms-goguryeo-wars",
+    "topicId": "kingdoms-goguryeo-wars",
     "statement": "고구려 영양왕 때 을지문덕은 살수 대첩에서 수의 군대를 물리쳤다.",
     "answer": true,
-    "explanation": "612년 수 양제의 대군이 침입하자 을지문덕은 거짓 항복과 유인 작전으로 적을 지치게 했다. 퇴각하던 수군을 살수에서 크게 격파하여 고구려가 수의 침략을 막는 데 결정적으로 기여하였다."
+    "explanation": "612년 수 양제의 대군이 침입하자 을지문덕은 거짓 항복과 유인 작전으로 적을 지치게 했다. 퇴각하던 수군을 살수에서 크게 격파하여 고구려가 수의 침략을 막는 데 결정적으로 기여하였다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "고구려의 수·당 전쟁"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1G10-P1G12",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-041",
+    "coreId": "ox-core-kingdoms-goguryeo-wars",
+    "topicId": "kingdoms-goguryeo-wars",
     "statement": "연개소문은 보장왕 때 정변을 일으킨 뒤 권력을 포기하고 물러났다.",
     "answer": false,
-    "explanation": "정변 뒤 권력을 포기했다는 부분이 틀렸다. 연개소문은 영류왕과 대신들을 제거하고 보장왕을 세운 뒤 대막리지로서 군사와 정치를 장악하였다."
+    "explanation": "정변 뒤 권력을 포기했다는 부분이 틀렸다. 연개소문은 영류왕과 대신들을 제거하고 보장왕을 세운 뒤 대막리지로서 군사와 정치를 장악하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "고구려의 수·당 전쟁"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1G10-P1G12",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-042",
+    "coreId": "ox-core-kingdoms-goguryeo-wars",
+    "topicId": "kingdoms-goguryeo-wars",
     "statement": "안시성 전투에서 고구려군은 당 태종의 침입을 막아 냈다.",
     "answer": true,
-    "explanation": "645년 당 태종이 대군을 이끌고 침입했지만 안시성의 완강한 저항을 돌파하지 못했다. 장기전과 추위, 보급 문제까지 겹치면서 당군은 철수하였다."
-  },
-  {
-    "id": "ox-kingdoms-043",
-    "statement": "고구려는 지방의 5부에 방령을 파견하여 다스렸다.",
-    "answer": false,
-    "explanation": "고구려 지방관의 명칭을 방령으로 제시한 것이 틀렸다. 고구려는 지방 5부에 욕살을 파견했고, 방령은 백제가 지방 5방에 둔 장관이다."
+    "explanation": "645년 당 태종이 대군을 이끌고 침입했지만 안시성의 완강한 저항을 돌파하지 못했다. 장기전과 추위, 보급 문제까지 겹치면서 당군은 철수하였다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "고구려의 수·당 전쟁"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1G10-P1G12",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-044",
+    "coreId": "ox-core-kingdoms-goguryeo-culture",
+    "topicId": "kingdoms-goguryeo-culture",
     "statement": "고구려의 고분 벽화는 당시 생활 모습과 사후 세계에 대한 관념을 보여 준다.",
     "answer": true,
-    "explanation": "초기 벽화에는 집 구조·의복·춤·사냥 같은 현실 생활이 구체적으로 그려졌다. 후기로 갈수록 사신도가 중심이 되어 도교적 우주관과 무덤을 지키려는 믿음이 드러난다."
+    "explanation": "초기 벽화에는 집 구조·의복·춤·사냥 같은 현실 생활이 구체적으로 그려졌다. 후기로 갈수록 사신도가 중심이 되어 도교적 우주관과 무덤을 지키려는 믿음이 드러난다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "고구려 고분과 벽화"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P2G01-P2G03",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-02.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-045",
+    "coreId": "ox-core-kingdoms-goguryeo-culture",
+    "topicId": "kingdoms-goguryeo-culture",
     "statement": "무용총 수렵도는 백제 귀족의 연회 장면을 그린 벽화이다.",
     "answer": false,
-    "explanation": "무용총의 소속 국가와 그림 주제가 모두 틀렸다. 고구려 무덤인 무용총의 수렵도에는 말을 달리며 활을 쏘는 모습이 역동적으로 표현되어 당시 무예와 복식을 알려 준다."
+    "explanation": "무용총의 소속 국가와 그림 주제가 모두 틀렸다. 고구려 무덤인 무용총의 수렵도에는 말을 달리며 활을 쏘는 모습이 역동적으로 표현되어 당시 무예와 복식을 알려 준다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "고구려 고분과 벽화"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P2G01-P2G03",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-02.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-046",
+    "coreId": "ox-core-kingdoms-goguryeo-culture",
+    "topicId": "kingdoms-goguryeo-culture",
     "statement": "강서대묘 벽화에는 청룡·백호·주작·현무의 사신도가 그려져 있다.",
     "answer": true,
-    "explanation": "사신은 동서남북을 지키는 상상의 동물로 무덤의 방위를 수호하는 존재였다. 강서대묘의 힘찬 선과 화려한 채색은 후기 고구려 벽화의 높은 수준을 보여 준다."
+    "explanation": "사신은 동서남북을 지키는 상상의 동물로 무덤의 방위를 수호하는 존재였다. 강서대묘의 힘찬 선과 화려한 채색은 후기 고구려 벽화의 높은 수준을 보여 준다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "고구려 고분과 벽화"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P2G01-P2G03",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-02.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-047",
+    "coreId": "ox-core-kingdoms-baekje-state",
+    "topicId": "kingdoms-baekje-state",
     "statement": "백제 고이왕은 목지국에 복속되어 한강 유역의 지배권을 잃었다.",
     "answer": false,
-    "explanation": "고이왕 때 백제가 목지국에 굴복했다는 설명이 틀렸다. 목지국을 압도해 한강 유역의 지배권을 강화하고 관등·관복제를 정비하여 중앙 집권의 기반을 다졌다."
+    "explanation": "고이왕 때 백제가 목지국에 굴복했다는 설명이 틀렸다. 목지국을 압도해 한강 유역의 지배권을 강화하고 관등·관복제를 정비하여 중앙 집권의 기반을 다졌다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "백제의 중앙 집권과 전성기"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1B01-P1B06",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-048",
+    "coreId": "ox-core-kingdoms-baekje-state",
+    "topicId": "kingdoms-baekje-state",
     "statement": "백제 근초고왕은 왕위의 부자 상속을 확립해 왕권을 안정시켰다.",
     "answer": true,
-    "explanation": "근초고왕은 왕위의 부자 상속을 확립해 왕권을 강화하고 백제의 전성기를 이끌었다. 마한의 남은 세력을 복속하고 고구려 평양성을 공격하는 한편, 중국 남조와 왜를 잇는 해상 교역망도 넓혔다."
-  },
-  {
-    "id": "ox-kingdoms-049",
-    "statement": "백제 근초고왕은 김부식에게 『삼국사기』를 편찬하게 하였다.",
-    "answer": false,
-    "explanation": "근초고왕과 김부식·『삼국사기』를 연결한 것이 시대상 틀렸다. 근초고왕은 박사 고흥에게 백제의 역사서인 『서기』를 편찬하게 했고, 김부식은 고려 인종 때 『삼국사기』를 썼다."
+    "explanation": "근초고왕은 왕위의 부자 상속을 확립해 왕권을 강화하고 백제의 전성기를 이끌었다. 마한의 남은 세력을 복속하고 고구려 평양성을 공격하는 한편, 중국 남조와 왜를 잇는 해상 교역망도 넓혔다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "백제의 중앙 집권과 전성기"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1B01-P1B06",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-050",
+    "coreId": "ox-core-kingdoms-baekje-state",
+    "topicId": "kingdoms-baekje-state",
     "statement": "백제 침류왕 때 동진에서 온 마라난타를 통해 불교가 수용되었다.",
     "answer": true,
-    "explanation": "384년 마라난타가 동진에서 백제로 오자 침류왕이 맞아들이고 절을 세웠다. 왕실은 불교를 국가적 사상으로 활용해 중앙 집권을 뒷받침하였다."
+    "explanation": "384년 마라난타가 동진에서 백제로 오자 침류왕이 맞아들이고 절을 세웠다. 왕실은 불교를 국가적 사상으로 활용해 중앙 집권을 뒷받침하였다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "백제의 중앙 집권과 전성기"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1B01-P1B06",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-051",
+    "coreId": "ox-core-kingdoms-unified-silla-institutions",
+    "topicId": "kingdoms-unified-silla-institutions",
     "statement": "통일 신라의 외사정은 당과 일본에 외교 문서를 전달하던 사신이었다.",
     "answer": false,
-    "explanation": "외사정은 신문왕이 지방관의 비행을 감찰하려 각 주에 보낸 관원이었다. 중앙이 9주 5소경 체제의 지방 행정을 감독하는 장치였으므로 국외에 파견한 외교 사신이라는 설명은 틀렸다."
+    "explanation": "외사정은 문무왕이 지방관의 비행을 감찰하려 각 주에 파견한 관원이었다. 중앙이 지방 행정을 감독하는 장치였으므로 국외에 파견한 외교 사신이라는 설명은 틀렸다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "통일 신라의 정치·군사·지방 제도"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3S01-P3S13",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-052",
+    "coreId": "ox-core-kingdoms-baekje-fall-culture",
+    "topicId": "kingdoms-baekje-fall-culture",
     "statement": "백제 무령왕릉은 중국 남조의 영향을 받은 벽돌무덤이다.",
     "answer": true,
-    "explanation": "무덤의 벽돌무늬와 구조에는 백제가 활발히 교류한 중국 남조의 문화가 반영되어 있다. 도굴되지 않은 채 지석과 수많은 부장품이 발견되어 웅진 시기 왕실 문화를 밝히는 기준 자료가 되었다."
+    "explanation": "무덤의 벽돌무늬와 구조에는 백제가 활발히 교류한 중국 남조의 문화가 반영되어 있다. 도굴되지 않은 채 지석과 수많은 부장품이 발견되어 웅진 시기 왕실 문화를 밝히는 기준 자료가 되었다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "백제의 웅진·사비 문화와 멸망"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1B01-P1B06",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-053",
+    "coreId": "ox-core-kingdoms-baekje-fall-culture",
+    "topicId": "kingdoms-baekje-fall-culture",
     "statement": "무령왕릉에서는 무덤 주인과 축조 시기를 알 수 있는 기록이 발견되지 않았다.",
     "answer": false,
-    "explanation": "무덤의 주인을 알 수 없다는 설명이 틀렸다. 왕과 왕비의 지석에 이름과 사망·매장 시기가 적혀 있어 삼국 시대 왕릉 가운데 피장자를 확실히 아는 드문 사례이다."
+    "explanation": "무덤의 주인을 알 수 없다는 설명이 틀렸다. 왕과 왕비의 지석에 이름과 사망·매장 시기가 적혀 있어 삼국 시대 왕릉 가운데 피장자를 확실히 아는 드문 사례이다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "백제의 웅진·사비 문화와 멸망"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1B01-P1B06",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-054",
+    "coreId": "ox-core-kingdoms-baekje-state",
+    "topicId": "kingdoms-baekje-state",
     "statement": "백제 성왕은 중앙에 22부를 두고 지방을 5방으로 정비하였다.",
     "answer": true,
-    "explanation": "성왕은 사비 천도 뒤 중앙 관청을 22부로 확대하고 지방 5방에 방령을 파견하였다. 왕권을 강화하고 확대된 영토를 효율적으로 다스리려 한 제도 정비였다."
+    "explanation": "성왕은 사비 천도 뒤 중앙 관청을 22부로 확대하고 지방 5방에 방령을 파견하였다. 왕권을 강화하고 확대된 영토를 효율적으로 다스리려 한 제도 정비였다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "백제의 중앙 집권과 전성기"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1B01-P1B06",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-055",
+    "coreId": "ox-core-kingdoms-baekje-state",
+    "topicId": "kingdoms-baekje-state",
     "statement": "백제 성왕은 관산성 전투에서 신라군을 격파하고 한강 유역을 계속 지배하였다.",
     "answer": false,
-    "explanation": "관산성 전투의 결과를 반대로 제시하였다. 성왕은 신라와 함께 한강 유역을 되찾았지만 신라가 이를 차지하자 보복전에 나섰고, 554년 관산성에서 전사하였다."
+    "explanation": "관산성 전투의 결과를 반대로 제시하였다. 성왕은 신라와 함께 한강 유역을 되찾았지만 신라가 이를 차지하자 보복전에 나섰고, 554년 관산성에서 전사하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "백제의 중앙 집권과 전성기"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1B01-P1B06",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-056",
+    "coreId": "ox-core-kingdoms-baekje-fall-culture",
+    "topicId": "kingdoms-baekje-fall-culture",
     "statement": "백제 의자왕은 즉위 초기에 신라의 40여 성을 빼앗으며 세력을 확대하였다.",
     "answer": true,
-    "explanation": "의자왕은 초기에는 왕권을 강화하고 대야성을 비롯한 신라의 여러 성을 공격하였다. 그러나 말기에 정치 질서가 흔들리고 나당 연합군의 침입을 받아 660년 백제가 멸망하였다."
-  },
-  {
-    "id": "ox-kingdoms-057",
-    "statement": "고구려의 천리장성은 백제의 침입을 막기 위해 근초고왕이 축조하였다.",
-    "answer": false,
-    "explanation": "축조 목적과 주체를 백제로 연결한 것이 틀렸다. 고구려는 영류왕 때인 631년부터 당의 침입에 대비해 부여성에서 비사성에 이르는 방어선을 쌓았고, 연개소문이 공사를 감독하였다."
+    "explanation": "의자왕은 초기에는 왕권을 강화하고 대야성을 비롯한 신라의 여러 성을 공격하였다. 그러나 말기에 정치 질서가 흔들리고 나당 연합군의 침입을 받아 660년 백제가 멸망하였다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "백제의 사비 시기·멸망·문화"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1B07-P2B05",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-02.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-058",
+    "coreId": "ox-core-kingdoms-baekje-fall-culture",
+    "topicId": "kingdoms-baekje-fall-culture",
     "statement": "흑치상지·복신·도침 등은 백제 멸망 뒤 부흥 운동을 전개하였다.",
     "answer": true,
-    "explanation": "이들은 주류성·임존성 등을 거점으로 군사를 일으켜 나당 연합군에 저항하였다. 왜의 지원도 받았지만 지도부의 내분과 백강 전투의 패배로 부흥 운동이 약화되었다."
+    "explanation": "이들은 주류성·임존성 등을 거점으로 군사를 일으켜 나당 연합군에 저항하였다. 왜의 지원도 받았지만 지도부의 내분과 백강 전투의 패배로 부흥 운동이 약화되었다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "백제의 사비 시기·멸망·문화"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1B07-P2B05",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-02.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-059",
+    "coreId": "ox-core-kingdoms-baekje-fall-culture",
+    "topicId": "kingdoms-baekje-fall-culture",
     "statement": "백강 전투의 승리로 백제 부흥군은 사비성을 되찾고 나라를 재건하였다.",
     "answer": false,
-    "explanation": "백강 전투의 승패와 결과가 틀렸다. 663년 백제 부흥군과 왜의 지원군이 나당 연합군에 패하면서 부흥 운동은 결정적인 타격을 입었다."
+    "explanation": "백강 전투의 승패와 결과가 틀렸다. 663년 백제 부흥군과 왜의 지원군이 나당 연합군에 패하면서 부흥 운동은 결정적인 타격을 입었다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "백제의 사비 시기·멸망·문화"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1B07-P2B05",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-02.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-060",
+    "coreId": "ox-core-kingdoms-baekje-fall-culture",
+    "topicId": "kingdoms-baekje-fall-culture",
     "statement": "익산 미륵사지는 백제 무왕 때의 불교 문화를 보여 준다.",
     "answer": true,
-    "explanation": "미륵사는 백제 최대 규모의 사찰로, 무왕대 왕실의 불교 진흥과 익산 경영을 보여 준다. 서탑에서 발견된 사리봉영기는 창건 주체와 시기를 연구하는 중요한 금석문이다."
+    "explanation": "미륵사는 백제 최대 규모의 사찰로, 무왕대 왕실의 불교 진흥과 익산 경영을 보여 준다. 서탑에서 발견된 사리봉영기는 창건 주체와 시기를 연구하는 중요한 금석문이다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "백제의 사비 시기·멸망·문화"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1B07-P2B05",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-02.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-061",
+    "coreId": "ox-core-kingdoms-baekje-fall-culture",
+    "topicId": "kingdoms-baekje-fall-culture",
     "statement": "부여 정림사지 오층 석탑은 통일 신라의 전형적인 삼층 석탑이다.",
     "answer": false,
-    "explanation": "시대와 층수를 모두 잘못 제시하였다. 정림사지 오층 석탑은 목탑의 구조를 석재로 구현한 백제 석탑이며, 표면에는 백제를 멸망시킨 당 장수 소정방의 글도 남아 있다."
+    "explanation": "시대와 층수를 모두 잘못 제시하였다. 정림사지 오층 석탑은 목탑의 구조를 석재로 구현한 백제 석탑이며, 표면에는 백제를 멸망시킨 당 장수 소정방의 글도 남아 있다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "백제의 사비 시기·멸망·문화"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1B07-P2B05",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-02.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-062",
+    "coreId": "ox-core-kingdoms-baekje-state",
+    "topicId": "kingdoms-baekje-state",
     "statement": "칠지도는 백제와 왜의 교류 관계를 보여 주는 유물이다.",
     "answer": true,
-    "explanation": "양쪽에 가지 모양 날이 달린 칠지도에는 백제 왕실과 왜의 관계를 알려 주는 명문이 새겨져 있다. 현재 일본 이소노카미 신궁에 전해져 백제의 대외 교류를 연구하는 핵심 자료로 쓰인다."
+    "explanation": "양쪽에 가지 모양 날이 달린 칠지도에는 백제 왕실과 왜의 관계를 알려 주는 명문이 새겨져 있다. 현재 일본 이소노카미 신궁에 전해져 백제의 대외 교류를 연구하는 핵심 자료로 쓰인다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "백제의 중앙 집권과 전성기"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1B07-P2B05",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-02.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-063",
+    "coreId": "ox-core-kingdoms-silla-state",
+    "topicId": "kingdoms-silla-state",
     "statement": "신라 내물왕은 김씨의 왕위 세습을 폐지하고 왕 칭호를 처음 사용하였다.",
     "answer": false,
-    "explanation": "내물왕의 왕위 계승과 칭호를 반대로 서술하였다. 내물왕 때 김씨의 왕위 세습이 확립되고 마립간 칭호가 사용되었으며, 왕이라는 칭호는 지증왕 때 채택되었다."
+    "explanation": "내물왕의 왕위 계승과 칭호를 반대로 서술하였다. 내물왕 때 김씨의 왕위 세습이 확립되고 마립간 칭호가 사용되었으며, 왕이라는 칭호는 지증왕 때 채택되었다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "신라의 체제 정비와 한강 진출"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1S01-P1S04",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-064",
+    "coreId": "ox-core-kingdoms-silla-state",
+    "topicId": "kingdoms-silla-state",
     "statement": "신라 지증왕은 국호를 신라로 정하고 왕이라는 칭호를 사용하였다.",
     "answer": true,
-    "explanation": "지증왕은 이전의 여러 국호를 신라로 확정하고 군주의 칭호를 마립간에서 왕으로 바꾸었다. 순장을 금지하고 우경을 장려하는 등 사회와 경제 제도도 정비하였다."
+    "explanation": "지증왕은 이전의 여러 국호를 신라로 확정하고 군주의 칭호를 마립간에서 왕으로 바꾸었다. 순장을 금지하고 우경을 장려하는 등 사회와 경제 제도도 정비하였다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "신라의 체제 정비와 한강 진출"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1S01-P1S04",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-065",
+    "coreId": "ox-core-kingdoms-silla-state",
+    "topicId": "kingdoms-silla-state",
     "statement": "지증왕 때 이사부는 제주도의 탐라를 정복하였다.",
     "answer": false,
-    "explanation": "이사부가 정복한 지역을 탐라로 제시한 것이 틀렸다. 그는 지증왕 때 우산국을 복속하여 신라의 영향력을 울릉도 일대로 넓혔다."
+    "explanation": "이사부가 정복한 지역을 탐라로 제시한 것이 틀렸다. 그는 지증왕 때 우산국을 복속하여 신라의 영향력을 울릉도 일대로 넓혔다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "신라의 체제 정비와 한강 진출"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1S01-P1S04",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-066",
+    "coreId": "ox-core-kingdoms-silla-state",
+    "topicId": "kingdoms-silla-state",
     "statement": "법흥왕은 병부를 설치하고 율령을 반포하여 신라의 통치 질서를 정비하였다.",
     "answer": true,
-    "explanation": "병부 설치는 군사권을 중앙에 모으고 율령 반포는 관등·복색과 형벌 기준을 정비하는 조치였다. 법흥왕은 불교 공인과 금관가야 병합도 추진해 왕권을 강화하였다."
-  },
-  {
-    "id": "ox-kingdoms-067",
-    "statement": "법흥왕은 영락이라는 연호를 사용하고 대가야를 병합하였다.",
-    "answer": false,
-    "explanation": "연호와 정복 대상이 모두 틀렸다. 법흥왕은 건원이라는 독자 연호를 쓰고 금관가야를 병합했으며, 영락은 광개토 대왕의 연호이고 대가야를 정복한 왕은 진흥왕이다."
+    "explanation": "병부 설치는 군사권을 중앙에 모으고 율령 반포는 관등·복색과 형벌 기준을 정비하는 조치였다. 법흥왕은 불교 공인과 금관가야 병합도 추진해 왕권을 강화하였다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "신라의 체제 정비와 한강 진출"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1S01-P1S04",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-068",
+    "coreId": "ox-core-kingdoms-silla-state",
+    "topicId": "kingdoms-silla-state",
     "statement": "진흥왕은 대가야를 정복하여 낙동강 서쪽까지 영토를 넓혔다.",
     "answer": true,
-    "explanation": "진흥왕은 562년 이사부와 사다함 등을 보내 대가야를 정복하였다. 신라는 가야 지역의 철 생산 기반과 낙동강 교통로를 확보하며 영토를 크게 확대하였다."
+    "explanation": "진흥왕은 562년 이사부와 사다함 등을 보내 대가야를 정복하였다. 신라는 가야 지역의 철 생산 기반과 낙동강 교통로를 확보하며 영토를 크게 확대하였다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "신라의 체제 정비와 한강 진출"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1S01-P1S04",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-069",
+    "coreId": "ox-core-kingdoms-silla-state",
+    "topicId": "kingdoms-silla-state",
     "statement": "진흥왕 순수비는 불교 성지를 표시하기 위해 지증왕이 세운 비석이다.",
     "answer": false,
-    "explanation": "비석을 세운 왕과 목적이 모두 틀렸다. 진흥왕은 북한산·창녕·황초령·마운령 등 새로 확보한 지역을 순행하고 영토 편입을 기념해 순수비를 세웠다."
-  },
-  {
-    "id": "ox-kingdoms-070",
-    "statement": "선덕 여왕 때 자장의 건의로 황룡사 구층 목탑이 세워졌다.",
-    "answer": true,
-    "explanation": "자장은 주변 아홉 나라의 침입을 막겠다는 뜻으로 구층 목탑 건립을 건의하였다. 백제 기술자 아비지가 공사를 맡아 삼국 사이의 기술 교류도 보여 준다."
+    "explanation": "비석을 세운 왕과 목적이 모두 틀렸다. 진흥왕은 북한산·창녕·황초령·마운령 등 새로 확보한 지역을 순행하고 영토 편입을 기념해 순수비를 세웠다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "신라의 체제 정비와 한강 진출"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1S01-P1S04",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-071",
+    "coreId": "ox-core-kingdoms-silla-unification",
+    "topicId": "kingdoms-silla-unification",
     "statement": "김춘추는 수와 군사 동맹을 맺어 백제를 공격할 기반을 마련하였다.",
     "answer": false,
-    "explanation": "김춘추가 동맹을 맺은 나라를 수로 제시한 것이 틀렸다. 그는 당 태종을 만나 나당 동맹을 성립시켰고, 이 동맹은 660년 백제 공격으로 이어졌다."
+    "explanation": "김춘추가 동맹을 맺은 나라를 수로 제시한 것이 틀렸다. 그는 당 태종을 만나 나당 동맹을 성립시켰고, 이 동맹은 660년 백제 공격으로 이어졌다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "나당 동맹과 신라의 삼국 통일"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1S05-P1S06",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-072",
+    "coreId": "ox-core-kingdoms-silla-unification",
+    "topicId": "kingdoms-silla-unification",
     "statement": "김유신이 이끈 신라군은 황산벌 전투에서 계백의 백제군을 물리쳤다.",
     "answer": true,
-    "explanation": "660년 신라군은 백제의 수도 사비로 진격하는 길목인 황산벌에서 결사적으로 저항한 계백군과 싸웠다. 신라의 승리 뒤 나당 연합군이 사비성을 함락하면서 백제가 멸망하였다."
+    "explanation": "660년 신라군은 백제의 수도 사비로 진격하는 길목인 황산벌에서 결사적으로 저항한 계백군과 싸웠다. 신라의 승리 뒤 나당 연합군이 사비성을 함락하면서 백제가 멸망하였다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "나당 동맹과 신라의 삼국 통일"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1S05-P1S06",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-073",
+    "coreId": "ox-core-kingdoms-silla-unification",
+    "topicId": "kingdoms-silla-unification",
     "statement": "매소성 전투에서는 백제 부흥군이 당군을 크게 물리쳤다.",
     "answer": false,
-    "explanation": "매소성 전투의 주체를 백제 부흥군으로 본 것이 틀렸다. 문무왕 때 신라가 한반도 지배를 꾀한 당과 싸워 675년 매소성에서 당군을 격파하였다."
+    "explanation": "매소성 전투의 주체를 백제 부흥군으로 본 것이 틀렸다. 문무왕 때 신라가 한반도 지배를 꾀한 당과 싸워 675년 매소성에서 당군을 격파하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "나당 동맹과 신라의 삼국 통일"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1S05-P1S06",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-074",
+    "coreId": "ox-core-kingdoms-silla-unification",
+    "topicId": "kingdoms-silla-unification",
     "statement": "기벌포 전투의 승리는 신라가 당을 몰아내고 삼국 통일을 완성하는 데 기여하였다.",
     "answer": true,
-    "explanation": "676년 신라 수군은 금강 하구의 기벌포에서 당 수군을 물리쳤다. 앞선 매소성 승리와 함께 당 세력을 대동강 이북으로 밀어내는 결정적 계기가 되었다."
+    "explanation": "676년 신라 수군은 금강 하구의 기벌포에서 당 수군을 물리쳤다. 앞선 매소성 승리와 함께 당 세력을 대동강 이북으로 밀어내는 결정적 계기가 되었다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "나당 동맹과 신라의 삼국 통일"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1S05-P1S06",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-075",
+    "coreId": "ox-core-kingdoms-unified-silla-institutions",
+    "topicId": "kingdoms-unified-silla-institutions",
     "statement": "신문왕은 유교 교육 기관인 국학을 폐지하였다.",
     "answer": false,
-    "explanation": "신문왕의 교육 정책을 반대로 제시하였다. 그는 국학을 설치해 유교 경전과 관료에게 필요한 지식을 가르치며 왕권을 뒷받침할 인재를 양성하였다."
+    "explanation": "신문왕의 교육 정책을 반대로 제시하였다. 그는 국학을 설치해 유교 경전과 관료에게 필요한 지식을 가르치며 왕권을 뒷받침할 인재를 양성하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "통일 신라의 정치·군사·지방 제도"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3S01-P3S13",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-076",
+    "coreId": "ox-core-kingdoms-unified-silla-institutions",
+    "topicId": "kingdoms-unified-silla-institutions",
     "statement": "신문왕은 9서당을 중앙군으로, 10정을 지방군으로 정비하였다.",
     "answer": true,
-    "explanation": "9서당에는 신라인뿐 아니라 고구려·백제·말갈 출신도 편성하여 통합을 꾀했다. 10정은 전국 9주에 배치되어 지방 방어와 반란 진압을 맡았다."
+    "explanation": "9서당에는 신라인뿐 아니라 고구려·백제·말갈 출신도 편성하여 통합을 꾀했다. 10정은 전국 9주에 배치되어 지방 방어와 반란 진압을 맡았다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "통일 신라의 정치·군사·지방 제도"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3S01-P3S13",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-077",
+    "coreId": "ox-core-kingdoms-unified-silla-institutions",
+    "topicId": "kingdoms-unified-silla-institutions",
     "statement": "통일 신라의 9주에는 지방 장관으로 고구려식 관직인 욕살을 파견하였다.",
     "answer": false,
-    "explanation": "9주의 지방 장관을 욕살이라고 한 부분이 틀렸다. 욕살은 고구려의 지방 장관이며, 통일 신라는 9주에 총관을 파견했다가 명칭을 도독으로 바꾸어 지방을 통치하였다."
+    "explanation": "9주의 지방 장관을 욕살이라고 한 부분이 틀렸다. 욕살은 고구려의 지방 장관이며, 통일 신라는 9주에 총관을 파견했다가 명칭을 도독으로 바꾸어 지방을 통치하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "통일 신라의 정치·군사·지방 제도"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3S01-P3S13",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-078",
+    "coreId": "ox-core-kingdoms-unified-silla-institutions",
+    "topicId": "kingdoms-unified-silla-institutions",
     "statement": "통일 신라는 지방의 요충지에 5소경을 두어 수도가 동남쪽에 치우친 약점을 보완하였다.",
     "answer": true,
-    "explanation": "금성에서 멀리 떨어진 지역에도 정치·문화 거점을 두어 지방 통치를 강화하려 했다. 5소경에는 옛 고구려·백제·가야의 귀족과 주민을 옮겨 살게 하여 지역 통합도 꾀하였다."
+    "explanation": "금성에서 멀리 떨어진 지역에도 정치·문화 거점을 두어 지방 통치를 강화하려 했다. 5소경에는 옛 고구려·백제·가야의 귀족과 주민을 옮겨 살게 하여 지역 통합도 꾀하였다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "통일 신라의 정치·군사·지방 제도"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3S01-P3S13",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-079",
+    "coreId": "ox-core-kingdoms-unified-silla-institutions",
+    "topicId": "kingdoms-unified-silla-institutions",
     "statement": "통일 신라는 촌주를 배제하고 중앙 관리만으로 모든 촌락 문서를 작성하였다.",
     "answer": false,
-    "explanation": "촌주가 지방 행정에서 배제되었다는 부분이 틀렸다. 국가는 토착 세력인 촌주를 통해 촌락을 지배했고, 조세와 역을 부과하기 위해 인구·토지·가축 등의 변동을 조사하였다."
+    "explanation": "촌주가 지방 행정에서 배제되었다는 부분이 틀렸다. 국가는 토착 세력인 촌주를 통해 촌락을 지배했고, 조세와 역을 부과하기 위해 인구·토지·가축 등의 변동을 조사하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "통일 신라의 정치·군사·지방 제도"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3S01-P3S13",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-080",
+    "coreId": "ox-core-kingdoms-unified-silla-institutions",
+    "topicId": "kingdoms-unified-silla-institutions",
     "statement": "신라 촌락 문서에는 인구·토지·가축·수목 등의 변동이 기록되었다.",
     "answer": true,
-    "explanation": "촌락 문서는 일정한 간격으로 작성되어 연령별 인구와 논밭, 소·말, 뽕나무 등의 수를 기록하였다. 국가가 세금과 노동력을 체계적으로 파악했음을 알려 주는 중요한 경제 자료이다."
+    "explanation": "촌락 문서는 일정한 간격으로 작성되어 연령별 인구와 논밭, 소·말, 뽕나무 등의 수를 기록하였다. 국가가 세금과 노동력을 체계적으로 파악했음을 알려 주는 중요한 경제 자료이다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "통일 신라의 정치·군사·지방 제도"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3S01-P3S13",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-081",
+    "coreId": "ox-core-kingdoms-unified-silla-institutions",
+    "topicId": "kingdoms-unified-silla-institutions",
     "statement": "통일 신라의 민정 문서는 경주 불국사에서 발견되었다.",
     "answer": false,
-    "explanation": "민정 문서의 발견 장소를 불국사로 제시한 것이 틀렸다. 이 문서는 일본 도다이사 쇼소인에 보관된 『화엄경론』의 종이 사이에서 발견되어 신라의 촌락 지배를 알려 주었다."
+    "explanation": "민정 문서의 발견 장소를 불국사로 제시한 것이 틀렸다. 이 문서는 일본 도다이사 쇼소인에 보관된 『화엄경론』의 종이 사이에서 발견되어 신라의 촌락 지배를 알려 주었다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "통일 신라의 정치·군사·지방 제도"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3S01-P3S13",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-082",
+    "coreId": "ox-core-kingdoms-unified-silla-institutions",
+    "topicId": "kingdoms-unified-silla-institutions",
     "statement": "통일 신라 원성왕은 유교 경전의 독해 능력을 평가하는 독서삼품과를 실시하였다.",
     "answer": true,
-    "explanation": "독서삼품과는 유교 경전의 이해 수준을 상·중·하품으로 나누어 관리 선발에 활용하려 한 제도였다. 골품보다 학문 능력을 중시하려 했지만 골품제의 한계를 완전히 극복하지는 못했다."
+    "explanation": "독서삼품과는 유교 경전의 이해 수준을 상·중·하품으로 나누어 관리 선발에 활용하려 한 제도였다. 골품보다 학문 능력을 중시하려 했지만 골품제의 한계를 완전히 극복하지는 못했다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "통일 신라의 정치·군사·지방 제도"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3S01-P3S13",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-083",
+    "coreId": "ox-core-kingdoms-unified-silla-culture",
+    "topicId": "kingdoms-unified-silla-culture",
     "statement": "혜초는 인도 여행 뒤 『삼국사기』를 저술하였다.",
     "answer": false,
-    "explanation": "혜초의 저술을 『삼국사기』로 제시한 것이 틀렸다. 그는 인도와 중앙아시아를 여행하고 각 지역의 종교·풍속을 기록한 『왕오천축국전』을 남겼으며, 『삼국사기』는 고려의 김부식이 편찬하였다."
+    "explanation": "혜초의 저술을 『삼국사기』로 제시한 것이 틀렸다. 그는 인도와 중앙아시아를 여행하고 각 지역의 종교·풍속을 기록한 『왕오천축국전』을 남겼으며, 『삼국사기』는 고려의 김부식이 편찬하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "통일 신라의 불교·예술 문화"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3C01-P3C09",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-084",
+    "coreId": "ox-core-kingdoms-unified-silla-culture",
+    "topicId": "kingdoms-unified-silla-culture",
     "statement": "원효는 무애가를 부르며 백성에게 불교를 쉽게 전하였다.",
     "answer": true,
-    "explanation": "원효는 무애박을 두드리며 무애가를 불러 어려운 불교 교리를 백성의 눈높이에 맞추어 전하였다. 누구나 염불하면 극락에 갈 수 있다는 아미타 신앙도 불교가 왕실과 귀족을 넘어 대중에게 퍼지는 데 기여하였다."
+    "explanation": "원효는 무애박을 두드리며 무애가를 불러 어려운 불교 교리를 백성의 눈높이에 맞추어 전하였다. 누구나 염불하면 극락에 갈 수 있다는 아미타 신앙도 불교가 왕실과 귀족을 넘어 대중에게 퍼지는 데 기여하였다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "통일 신라의 불교·예술 문화"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3C01-P3C09",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-085",
+    "coreId": "ox-core-kingdoms-unified-silla-culture",
+    "topicId": "kingdoms-unified-silla-culture",
     "statement": "의상은 교종을 부정하고 참선만 강조한 선종 승려였다.",
     "answer": false,
-    "explanation": "의상을 참선만 강조한 선종 승려로 설명한 것이 틀렸다. 의상은 당에서 화엄학을 배우고 돌아와 부석사를 세웠으며, 『화엄일승법계도』를 지어 화엄 사상을 정리하고 관음 신앙도 강조하였다."
+    "explanation": "의상을 참선만 강조한 선종 승려로 설명한 것이 틀렸다. 의상은 당에서 화엄학을 배우고 돌아와 부석사를 세웠으며, 『화엄일승법계도』를 지어 화엄 사상을 정리하고 관음 신앙도 강조하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "통일 신라의 불교·예술 문화"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3C01-P3C09",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-086",
+    "coreId": "ox-core-kingdoms-unified-silla-late",
+    "topicId": "kingdoms-unified-silla-late",
     "statement": "선종은 신라 말 호족의 후원을 받으며 지방 사회에서 성장하였다.",
     "answer": true,
-    "explanation": "선종은 경전 연구보다 참선과 개인의 깨달음을 중시하여 교종의 권위와 다른 길을 제시했다. 지방 산문을 중심으로 퍼지며 새로운 사회 질서를 원한 호족의 사상적 기반이 되었다."
+    "explanation": "선종은 경전 연구보다 참선과 개인의 깨달음을 중시하여 교종의 권위와 다른 길을 제시했다. 지방 산문을 중심으로 퍼지며 새로운 사회 질서를 원한 호족의 사상적 기반이 되었다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "신라 하대의 호족·선종·농민 봉기"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3S08-P3S11",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-087",
+    "coreId": "ox-core-kingdoms-unified-silla-late",
+    "topicId": "kingdoms-unified-silla-late",
     "statement": "도선의 풍수지리설은 금성 중심의 진골 질서만을 옹호하여 지방 호족의 배척을 받았다.",
     "answer": false,
-    "explanation": "풍수지리설과 호족의 관계를 반대로 서술하였다. 국토의 지세와 지역의 길흉을 강조한 도선의 사상은 수도 중심 질서에 도전하던 지방 호족에게 환영받았다."
+    "explanation": "풍수지리설과 호족의 관계를 반대로 서술하였다. 국토의 지세와 지역의 길흉을 강조한 도선의 사상은 수도 중심 질서에 도전하던 지방 호족에게 환영받았다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "신라 하대의 호족·선종·농민 봉기"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3S08-P3S11",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-088",
+    "coreId": "ox-core-kingdoms-unified-silla-culture",
+    "topicId": "kingdoms-unified-silla-culture",
     "statement": "통일 신라의 불국사 다보탑은 복잡하고 화려한 조형미를 보여 준다.",
     "answer": true,
-    "explanation": "다보탑은 여러 형태의 석재를 조합한 독창적 구조와 섬세한 장식이 특징이다. 간결하고 균형 잡힌 석가탑과 한 공간에 배치되어 서로 다른 미감을 대비한다."
+    "explanation": "다보탑은 여러 형태의 석재를 조합한 독창적 구조와 섬세한 장식이 특징이다. 간결하고 균형 잡힌 석가탑과 한 공간에 배치되어 서로 다른 미감을 대비한다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "통일 신라의 불교·예술 문화"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3C01-P3C09",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-089",
+    "coreId": "ox-core-kingdoms-unified-silla-culture",
+    "topicId": "kingdoms-unified-silla-culture",
     "statement": "석굴암 본존불은 백제 웅진 시기에 만든 불상이다.",
     "answer": false,
-    "explanation": "석굴암의 시대와 국가가 틀렸다. 석굴암은 통일 신라 경덕왕 때 조성된 인공 석굴 사원으로, 본존불과 주변 조각은 신라 불교 미술과 수학적 설계의 높은 수준을 보여 준다."
+    "explanation": "석굴암의 시대와 국가가 틀렸다. 석굴암은 통일 신라 경덕왕 때 조성된 인공 석굴 사원으로, 본존불과 주변 조각은 신라 불교 미술과 수학적 설계의 높은 수준을 보여 준다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "통일 신라의 불교·예술 문화"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3C01-P3C09",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-090",
+    "coreId": "ox-core-kingdoms-unified-silla-culture",
+    "topicId": "kingdoms-unified-silla-culture",
     "statement": "성덕 대왕 신종은 에밀레종이라는 별칭으로도 알려져 있다.",
     "answer": true,
-    "explanation": "성덕왕의 공덕을 기리기 위해 경덕왕 때 시작해 혜공왕 때 완성한 통일 신라의 범종이다. 맑고 긴 울림과 비천상·당좌의 정교한 주조 기술 때문에 신라 금속 공예의 걸작으로 평가된다."
+    "explanation": "성덕왕의 공덕을 기리기 위해 경덕왕 때 시작해 혜공왕 때 완성한 통일 신라의 범종이다. 맑고 긴 울림과 비천상·당좌의 정교한 주조 기술 때문에 신라 금속 공예의 걸작으로 평가된다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "통일 신라의 불교·예술 문화"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3C01-P3C09",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-091",
+    "coreId": "ox-core-kingdoms-unified-silla-late",
+    "topicId": "kingdoms-unified-silla-late",
     "statement": "통일 신라 하대에는 진골 귀족 사이의 왕위 다툼이 사라졌다.",
     "answer": false,
-    "explanation": "하대의 정치 상황을 반대로 설명하였다. 혜공왕 피살 뒤 진골 귀족의 왕위 쟁탈전이 격화되어 왕이 자주 바뀌었고, 중앙 통제력이 약해지면서 호족이 성장하였다."
+    "explanation": "하대의 정치 상황을 반대로 설명하였다. 혜공왕 피살 뒤 진골 귀족의 왕위 쟁탈전이 격화되어 왕이 자주 바뀌었고, 중앙 통제력이 약해지면서 호족이 성장하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "신라 하대의 호족·선종·농민 봉기"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3S08-P3S11",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-092",
+    "coreId": "ox-core-kingdoms-unified-silla-late",
+    "topicId": "kingdoms-unified-silla-late",
     "statement": "원종과 애노의 난은 신라 하대 농민의 불만을 보여 준다.",
     "answer": true,
-    "explanation": "진성 여왕 때 사벌주에서 일어난 이 봉기는 과중한 세금과 지방 통치의 혼란 속에서 발생하였다. 이를 계기로 각지에서 농민과 지방 세력의 봉기가 잇따라 신라 정부의 지배력이 빠르게 무너졌다."
+    "explanation": "진성 여왕 때 사벌주에서 일어난 이 봉기는 과중한 세금과 지방 통치의 혼란 속에서 발생하였다. 이를 계기로 각지에서 농민과 지방 세력의 봉기가 잇따라 신라 정부의 지배력이 빠르게 무너졌다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "신라 하대의 호족·선종·농민 봉기"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3S08-P3S11",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-093",
+    "coreId": "ox-core-kingdoms-unified-silla-trade",
+    "topicId": "kingdoms-unified-silla-trade",
     "statement": "장보고의 청해진은 국내 육상 교역만 담당하고 해외 무역에는 관여하지 않았다.",
     "answer": false,
-    "explanation": "청해진의 활동 범위를 국내 육상 교역으로 한정한 것이 틀렸다. 장보고는 완도를 거점으로 해적을 소탕하고 당·신라·일본을 잇는 국제 해상 무역망을 장악하였다."
+    "explanation": "청해진의 활동 범위를 국내 육상 교역으로 한정한 것이 틀렸다. 장보고는 완도를 거점으로 해적을 소탕하고 당·신라·일본을 잇는 국제 해상 무역망을 장악하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "장보고와 통일 신라의 해상 교류"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3S14-P3S16",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-094",
+    "coreId": "ox-core-kingdoms-balhae-kings",
+    "topicId": "kingdoms-balhae-kings",
     "statement": "발해는 고구려 유민 대조영이 동모산에서 건국하였다.",
     "answer": true,
-    "explanation": "고구려 멸망 뒤 대조영은 고구려 유민과 말갈인을 이끌고 당의 지배에서 벗어났다. 천문령 전투에서 당군을 물리친 뒤 698년 동모산 부근에서 나라를 세웠다."
+    "explanation": "고구려 멸망 뒤 대조영은 고구려 유민과 말갈인을 이끌고 당의 지배에서 벗어났다. 천문령 전투에서 당군을 물리친 뒤 698년 동모산 부근에서 나라를 세웠다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "발해의 건국·전성·멸망"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3B01-P3B05",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-095",
+    "coreId": "ox-core-kingdoms-balhae-kings",
+    "topicId": "kingdoms-balhae-kings",
     "statement": "발해 무왕은 대흥이라는 연호를 사용하였다.",
     "answer": false,
-    "explanation": "대흥을 무왕의 연호로 제시한 것이 틀렸다. 무왕은 인안을 사용하며 당과 대립했고, 대흥은 당과 친선 관계를 맺은 문왕의 연호이다."
+    "explanation": "대흥을 무왕의 연호로 제시한 것이 틀렸다. 무왕은 인안을 사용하며 당과 대립했고, 대흥은 당과 친선 관계를 맺은 문왕의 연호이다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "발해의 건국·전성·멸망"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3B01-P3B05",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-096",
+    "coreId": "ox-core-kingdoms-balhae-kings",
+    "topicId": "kingdoms-balhae-kings",
     "statement": "발해 문왕은 당과 친선 관계를 맺고 신라도라는 교통로를 이용하였다.",
     "answer": true,
-    "explanation": "문왕은 당의 제도와 문물을 받아들이고 일본에도 사신을 보내 국제 교류를 확대하였다. 발해와 신라 사이에는 신라도가 이어져 남북국 사이의 왕래가 이루어졌다."
+    "explanation": "문왕은 당의 제도와 문물을 받아들이고 일본에도 사신을 보내 국제 교류를 확대하였다. 발해와 신라 사이에는 신라도가 이어져 남북국 사이의 왕래가 이루어졌다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "발해의 건국·전성·멸망"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3B01-P3B05",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-097",
+    "coreId": "ox-core-kingdoms-balhae-government-culture",
+    "topicId": "kingdoms-balhae-government-culture",
     "statement": "발해의 중정대는 6부를 지휘하며 행정 실무를 총괄한 최고 관청이었다.",
     "answer": false,
-    "explanation": "중정대를 최고 행정 기구로 본 것이 틀렸다. 중정대는 당의 어사대와 비슷하게 관리의 비리를 감찰했고, 6부는 정당성 아래 좌사정과 우사정이 나누어 관할하였다."
+    "explanation": "중정대를 최고 행정 기구로 본 것이 틀렸다. 중정대는 당의 어사대와 비슷하게 관리의 비리를 감찰했고, 6부는 정당성 아래 좌사정과 우사정이 나누어 관할하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "발해의 통치 제도·고분·상경"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3B09-P3B15",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-098",
+    "coreId": "ox-core-kingdoms-balhae-government-culture",
+    "topicId": "kingdoms-balhae-government-culture",
     "statement": "발해의 중앙 정치 조직인 정당성 아래에는 6부가 설치되었다.",
     "answer": true,
-    "explanation": "정당성은 발해의 3성 가운데 실질적인 행정 집행을 맡은 중심 기구였다. 그 아래 6부를 좌사정과 우사정이 나누어 관할해 당의 제도를 독자적으로 운영하였다."
-  },
-  {
-    "id": "ox-kingdoms-099",
-    "statement": "발해의 문적원은 지방 군대를 지휘하고 국경의 성곽을 관리하였다.",
-    "answer": false,
-    "explanation": "문적원을 군사 기관으로 본 것이 틀렸다. 문적원은 당의 비서성에 해당하며 서책을 관리하고 비문·제문을 작성하는 문한 업무를 맡았다."
+    "explanation": "정당성은 발해의 3성 가운데 실질적인 행정 집행을 맡은 중심 기구였다. 그 아래 6부를 좌사정과 우사정이 나누어 관할해 당의 제도를 독자적으로 운영하였다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "발해의 통치 제도·고분·상경"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3B09-P3B15",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-100",
+    "coreId": "ox-core-kingdoms-balhae-government-culture",
+    "topicId": "kingdoms-balhae-government-culture",
     "statement": "발해 정혜 공주 묘는 고구려 양식의 돌방무덤이며 모줄임천장 구조를 보인다.",
     "answer": true,
-    "explanation": "돌을 층층이 안으로 좁혀 쌓은 모줄임천장은 고구려 무덤의 전통을 잇는다. 묘지명과 돌사자도 함께 발견되어 발해 왕실 문화와 고구려 계승 의식을 알려 준다."
+    "explanation": "돌을 층층이 안으로 좁혀 쌓은 모줄임천장은 고구려 무덤의 전통을 잇는다. 묘지명과 돌사자도 함께 발견되어 발해 왕실 문화와 고구려 계승 의식을 알려 준다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "발해의 통치 제도·고분·상경"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3B09-P3B15",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-101",
+    "coreId": "ox-core-kingdoms-balhae-government-culture",
+    "topicId": "kingdoms-balhae-government-culture",
     "statement": "발해 정효 공주 묘는 고구려식 돌방과 모줄임천장으로만 조성되었다.",
     "answer": false,
-    "explanation": "정효 공주 묘의 구조를 정혜 공주 묘와 혼동하여 틀렸다. 정효 공주 묘는 당의 영향을 받은 벽돌무덤이며 내부 벽화에는 발해인의 복식과 생활 모습이 나타난다."
+    "explanation": "정효 공주 묘의 구조를 정혜 공주 묘와 혼동하여 틀렸다. 정효 공주 묘는 당의 영향을 받은 벽돌무덤이며 내부 벽화에는 발해인의 복식과 생활 모습이 나타난다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "발해의 통치 제도·고분·상경"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3B09-P3B15",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-102",
+    "coreId": "ox-core-kingdoms-balhae-government-culture",
+    "topicId": "kingdoms-balhae-government-culture",
     "statement": "발해 상경성은 당의 장안성을 본떠 바둑판 모양으로 조성되었다.",
     "answer": true,
-    "explanation": "상경성은 외성·내성·궁성으로 구획되고 큰 도로가 규칙적으로 교차하는 계획도시였다. 당 문화를 받아들이면서도 온돌과 같은 고구려 계통의 생활 문화도 함께 이어졌다."
+    "explanation": "상경성은 외성·내성·궁성으로 구획되고 큰 도로가 규칙적으로 교차하는 계획도시였다. 당 문화를 받아들이면서도 온돌과 같은 고구려 계통의 생활 문화도 함께 이어졌다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "발해의 통치 제도·고분·상경"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3B09-P3B15",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-103",
+    "coreId": "ox-core-kingdoms-balhae-kings",
+    "topicId": "kingdoms-balhae-kings",
     "statement": "발해 멸망 뒤 유민은 모두 거란에 복속되어 부흥 운동을 전개하지 않았다.",
     "answer": false,
-    "explanation": "발해 유민이 모두 거란에 복속되었다는 설명이 틀렸다. 일부 유민은 후발해와 정안국 등을 세워 부흥을 꾀했고, 세자 대광현을 비롯한 많은 유민은 고려에 귀부해 고구려 계승 의식을 이어 갔다."
+    "explanation": "발해 유민이 모두 거란에 복속되었다는 설명이 틀렸다. 일부 유민은 후발해와 정안국 등을 세워 부흥을 꾀했고, 세자 대광현을 비롯한 많은 유민은 고려에 귀부해 고구려 계승 의식을 이어 갔다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "발해의 건국·전성·멸망"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3B01-P3B05",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-104",
+    "coreId": "ox-core-kingdoms-balhae-kings",
+    "topicId": "kingdoms-balhae-kings",
     "statement": "발해 유민 대광현은 무리를 이끌고 고려에 귀부하였다.",
     "answer": true,
-    "explanation": "발해 멸망 뒤 세자 대광현과 유민들은 934년 고려로 들어왔다. 태조 왕건은 이들을 우대해 고구려 계승 국가를 자처한 고려의 포용 정책을 드러냈다."
+    "explanation": "발해 멸망 뒤 세자 대광현과 유민들은 934년 고려로 들어왔다. 태조 왕건은 이들을 우대해 고구려 계승 국가를 자처한 고려의 포용 정책을 드러냈다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "발해의 건국·전성·멸망"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3B01-P3B05",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-105",
+    "coreId": "ox-core-kingdoms-later-three-foundation",
+    "topicId": "kingdoms-later-three-foundation",
     "statement": "궁예는 나라를 세운 뒤 국호를 끝까지 후고구려로만 사용하였다.",
     "answer": false,
-    "explanation": "궁예가 국호를 바꾸지 않았다는 부분이 틀렸다. 후고구려를 세운 뒤 마진, 다시 태봉으로 국호를 고쳤고 철원을 수도로 삼아 독자적인 통치 체제를 마련하였다."
+    "explanation": "궁예가 국호를 바꾸지 않았다는 부분이 틀렸다. 후고구려를 세운 뒤 마진, 다시 태봉으로 국호를 고쳤고 철원을 수도로 삼아 독자적인 통치 체제를 마련하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "후백제·후고구려·고려의 성립"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3L01-P3L03",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-106",
+    "coreId": "ox-core-kingdoms-later-three-foundation",
+    "topicId": "kingdoms-later-three-foundation",
     "statement": "궁예는 광평성을 설치하고 미륵 신앙을 이용해 왕권을 강화하려 하였다.",
     "answer": true,
-    "explanation": "광평성은 태봉의 최고 행정 기구로 고려의 관제에도 영향을 주었다. 궁예는 자신을 미륵불이라 내세워 신성한 권위를 확보하려 했지만 전제 정치로 인심을 잃었다."
+    "explanation": "광평성은 태봉의 최고 행정 기구로 고려의 관제에도 영향을 주었다. 궁예는 자신을 미륵불이라 내세워 신성한 권위를 확보하려 했지만 전제 정치로 인심을 잃었다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "후백제·후고구려·고려의 성립"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3L01-P3L03",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-107",
+    "coreId": "ox-core-kingdoms-later-three-foundation",
+    "topicId": "kingdoms-later-three-foundation",
     "statement": "견훤은 송악을 도읍으로 후고구려를 세웠다.",
     "answer": false,
-    "explanation": "견훤의 나라와 도읍을 모두 잘못 연결하였다. 그는 완산주를 도읍으로 후백제를 세웠고, 송악을 기반으로 성장해 후고구려의 장수가 된 인물은 왕건이다."
+    "explanation": "견훤의 나라와 도읍을 모두 잘못 연결하였다. 그는 완산주를 도읍으로 후백제를 세웠고, 송악을 기반으로 성장해 후고구려의 장수가 된 인물은 왕건이다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "후백제·후고구려·고려의 성립"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3L01-P3L03",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-108",
+    "coreId": "ox-core-kingdoms-later-three-unification",
+    "topicId": "kingdoms-later-three-unification",
     "statement": "견훤은 공산 전투에서 왕건의 고려군을 물리쳤다.",
     "answer": true,
-    "explanation": "927년 공산 전투에서 후백제군이 승리했고 왕건은 신숭겸 등의 희생으로 간신히 탈출하였다. 그러나 뒤의 고창 전투에서는 고려가 승리하면서 후삼국의 세력 균형이 바뀌었다."
+    "explanation": "927년 공산 전투에서 후백제군이 승리했고 왕건은 신숭겸 등의 희생으로 간신히 탈출하였다. 그러나 뒤의 고창 전투에서는 고려가 승리하면서 후삼국의 세력 균형이 바뀌었다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "후삼국 통일 과정"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3L04-P3L06",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-109",
+    "coreId": "ox-core-kingdoms-later-three-unification",
+    "topicId": "kingdoms-later-three-unification",
     "statement": "견훤은 아들들에게 유폐된 뒤 신라에 귀순하였다.",
     "answer": false,
-    "explanation": "견훤이 귀순한 나라를 신라로 제시한 것이 틀렸다. 신검 등 아들들에게 금산사에 갇힌 뒤 탈출해 고려 왕건에게 귀순했으며, 이후 고려의 후백제 공격에 협력하였다."
+    "explanation": "견훤이 귀순한 나라를 신라로 제시한 것이 틀렸다. 신검 등 아들들에게 금산사에 갇힌 뒤 탈출해 고려 왕건에게 귀순했으며, 이후 고려의 후백제 공격에 협력하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "후삼국 통일 과정"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3L04-P3L06",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-110",
+    "coreId": "ox-core-kingdoms-later-three-unification",
+    "topicId": "kingdoms-later-three-unification",
     "statement": "신라 경순왕은 나라를 고려에 넘기고 경주의 사심관이 되었다.",
     "answer": true,
-    "explanation": "경순왕은 935년 더 이상의 전쟁을 피하고 고려에 항복하였다. 왕건은 그를 경주 사심관으로 삼아 지방 세력을 회유했고, 이듬해 후백제까지 무너뜨려 후삼국을 통일하였다."
+    "explanation": "경순왕은 935년 더 이상의 전쟁을 피하고 고려에 항복하였다. 왕건은 그를 경주 사심관으로 삼아 지방 세력을 회유했고, 이듬해 후백제까지 무너뜨려 후삼국을 통일하였다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "후삼국 통일 과정"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3L04-P3L06",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-111",
+    "coreId": "ox-core-kingdoms-later-three-unification",
+    "topicId": "kingdoms-later-three-unification",
     "statement": "후백제는 일리천 전투에서 고려를 물리치고 후삼국을 통일하였다.",
     "answer": false,
-    "explanation": "일리천 전투의 승자와 결과를 반대로 제시하였다. 936년 고려군이 신검의 후백제군을 격파하면서 후백제가 멸망하고 왕건이 후삼국 통일을 완성하였다."
+    "explanation": "일리천 전투의 승자와 결과를 반대로 제시하였다. 936년 고려군이 신검의 후백제군을 격파하면서 후백제가 멸망하고 왕건이 후삼국 통일을 완성하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "후삼국 통일 과정"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3L04-P3L06",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-112",
+    "coreId": "ox-core-kingdoms-gaya",
+    "topicId": "kingdoms-gaya",
     "statement": "가야의 덩이쇠는 철의 생산과 교역이 활발했음을 보여 준다.",
     "answer": true,
-    "explanation": "덩이쇠는 철을 가공하기 전의 재료이면서 교환 수단과 부장품으로도 사용되었다. 낙동강 하류의 철과 해상 교통로는 가야가 주변 국가 및 왜와 교역하는 경제적 기반이었다."
+    "explanation": "덩이쇠는 철을 가공하기 전의 재료이면서 교환 수단과 부장품으로도 사용되었다. 낙동강 하류의 철과 해상 교통로는 가야가 주변 국가 및 왜와 교역하는 경제적 기반이었다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "가야 연맹의 성장과 철 문화"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1Y01-P2Y02",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-02.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-113",
+    "coreId": "ox-core-kingdoms-gaya",
+    "topicId": "kingdoms-gaya",
     "statement": "김해 대성동 고분군은 발해 왕실의 돌방무덤이 모인 유적이다.",
     "answer": false,
-    "explanation": "김해 대성동 고분군은 발해가 아니라 금관가야 지배층의 무덤 유적이므로 제시문은 틀렸다. 덧널무덤에서 철제 무기와 갑옷, 외래계 유물이 출토되어 금관가야의 철 생산과 활발한 대외 교류를 보여 준다."
+    "explanation": "김해 대성동 고분군은 발해가 아니라 금관가야 지배층의 무덤 유적이므로 제시문은 틀렸다. 덧널무덤에서 철제 무기와 갑옷, 외래계 유물이 출토되어 금관가야의 철 생산과 활발한 대외 교류를 보여 준다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "가야 연맹의 성장과 철 문화"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1Y01-P2Y02",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-02.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-114",
+    "coreId": "ox-core-kingdoms-gaya",
+    "topicId": "kingdoms-gaya",
     "statement": "대가야는 고령 지역을 중심으로 후기 가야 연맹을 이끌었다.",
     "answer": true,
-    "explanation": "고구려군의 남하로 금관가야가 약해진 뒤 내륙의 대가야가 세력을 키웠다. 대가야는 철과 농업 생산을 기반으로 중국 남조와 교류하고 독자적인 문화를 발전시켰다."
+    "explanation": "고구려군의 남하로 금관가야가 약해진 뒤 내륙의 대가야가 세력을 키웠다. 대가야는 철과 농업 생산을 기반으로 중국 남조와 교류하고 독자적인 문화를 발전시켰다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "가야 연맹의 성장과 철 문화"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1Y01-P2Y02",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-02.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-115",
+    "coreId": "ox-core-kingdoms-gaya",
+    "topicId": "kingdoms-gaya",
     "statement": "가야의 판갑옷과 말갖춤은 철기를 거의 만들지 못했음을 보여 준다.",
     "answer": false,
-    "explanation": "유물이 보여 주는 가야의 기술 수준을 반대로 해석하였다. 철판을 이어 만든 갑옷과 정교한 말갖춤은 풍부한 철 생산과 뛰어난 제철·가공 기술, 기마 전투 문화를 보여 준다."
+    "explanation": "유물이 보여 주는 가야의 기술 수준을 반대로 해석하였다. 철판을 이어 만든 갑옷과 정교한 말갖춤은 풍부한 철 생산과 뛰어난 제철·가공 기술, 기마 전투 문화를 보여 준다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "가야 연맹의 성장과 철 문화"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1Y01-P2Y02",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-02.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-116",
+    "coreId": "ox-core-kingdoms-gaya",
+    "topicId": "kingdoms-gaya",
     "statement": "고령 지산동 고분군에서는 대가야의 순장 풍습을 보여 주는 무덤이 확인된다.",
     "answer": true,
-    "explanation": "지산동의 대형 고분에는 주인공이 묻힌 공간 주변에 여러 순장자를 위한 무덤방이 함께 조성되었다. 많은 인력을 동원한 무덤과 순장 흔적은 대가야 지배층의 강한 권력과 신분 질서를 보여 준다."
+    "explanation": "지산동의 대형 고분에는 주인공이 묻힌 공간 주변에 여러 순장자를 위한 무덤방이 함께 조성되었다. 많은 인력을 동원한 무덤과 순장 흔적은 대가야 지배층의 강한 권력과 신분 질서를 보여 준다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "가야 연맹의 성장과 철 문화"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1Y01-P2Y02",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-02.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-117",
+    "coreId": "ox-core-kingdoms-unified-silla-institutions",
+    "topicId": "kingdoms-unified-silla-institutions",
     "statement": "신라의 골품제는 종교 의례에만 적용되고 관직과 일상생활에는 영향을 주지 않았다.",
     "answer": false,
-    "explanation": "골품제의 적용 범위를 종교에만 한정한 것이 틀렸다. 골품에 따라 오를 수 있는 관등과 관직이 달랐고 집의 크기·복식·수레 등 일상생활까지 제한하였다."
+    "explanation": "골품제의 적용 범위를 종교에만 한정한 것이 틀렸다. 골품에 따라 오를 수 있는 관등과 관직이 달랐고 집의 크기·복식·수레 등 일상생활까지 제한하였다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "통일 신라의 정치·군사·지방 제도"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3S01-P3S13",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-118",
+    "coreId": "ox-core-kingdoms-unified-silla-institutions",
+    "topicId": "kingdoms-unified-silla-institutions",
     "statement": "화백 회의는 만장일치로 국가의 중요한 일을 결정하였다.",
     "answer": true,
-    "explanation": "진골 귀족들이 참여한 화백 회의는 왕위 계승이나 전쟁 같은 중대사를 논의하였다. 만장일치 원칙은 공동 결정을 중시했지만 왕권을 견제하는 귀족 세력의 힘도 보여 준다."
+    "explanation": "진골 귀족들이 참여한 화백 회의는 왕위 계승이나 전쟁 같은 중대사를 논의하였다. 만장일치 원칙은 공동 결정을 중시했지만 왕권을 견제하는 귀족 세력의 힘도 보여 준다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "통일 신라의 정치·군사·지방 제도"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3S01-P3S13",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-119",
+    "coreId": "ox-core-kingdoms-unified-silla-institutions",
+    "topicId": "kingdoms-unified-silla-institutions",
     "statement": "상대등은 신라 왕이 지방에 파견한 행정 책임자였다.",
     "answer": false,
-    "explanation": "상대등을 지방관으로 본 것이 틀렸다. 상대등은 중앙의 최고 관직으로 화백 회의를 주관하고 진골 귀족을 대표했으며, 왕권과 긴장 관계를 이루기도 했다."
+    "explanation": "상대등을 지방관으로 본 것이 틀렸다. 상대등은 중앙의 최고 관직으로 화백 회의를 주관하고 진골 귀족을 대표했으며, 왕권과 긴장 관계를 이루기도 했다.",
+    "difficulty": "hard",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "통일 신라의 정치·군사·지방 제도"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P3S01-P3S13",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-03.png"
+    ],
+    "sourceQuestionIds": []
   },
   {
     "id": "ox-kingdoms-120",
+    "coreId": "ox-core-kingdoms-baekje-fall-culture",
+    "topicId": "kingdoms-baekje-fall-culture",
     "statement": "무령왕릉에서 출토된 금제 관식은 백제 왕실의 화려한 금속 공예를 보여 준다.",
     "answer": true,
-    "explanation": "왕과 왕비의 관식은 얇은 금판을 오리고 새겨 불꽃과 식물 무늬를 정교하게 표현하였다. 중국 남조계 유물과 백제 고유 공예품이 함께 나온 무령왕릉은 왕실의 국제 교류와 기술 수준을 보여 준다."
+    "explanation": "왕과 왕비의 관식은 얇은 금판을 오리고 새겨 불꽃과 식물 무늬를 정교하게 표현하였다. 중국 남조계 유물과 백제 고유 공예품이 함께 나온 무령왕릉은 왕실의 국제 교류와 기술 수준을 보여 준다.",
+    "difficulty": "medium",
+    "tags": [
+      "삼국·남북국·후삼국",
+      "백제의 사비 시기·멸망·문화"
+    ],
+    "sourceRefs": [
+      "docs/three-content/complete-manuscript.md#appendix-a-P1B07-P2B05",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-01.png",
+      "dist/assets/ancient/three-complete/source-photos/genealogy-02.png"
+    ],
+    "sourceQuestionIds": []
   }
 ]
