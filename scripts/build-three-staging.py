@@ -19,11 +19,13 @@ def require(condition, message):
         raise AssertionError(message)
 
 def checked_file(src, sha=None):
-    path = ROOT / 'dist' / src
+    path = ROOT / src if src.startswith('docs/') else ROOT / 'dist' / src
     require(path.is_file(), f'Missing staging asset: {src}')
-    actual = hashlib.sha256(path.read_bytes()).hexdigest()
+    raw = path.read_bytes()
+    actual = hashlib.sha256(raw).hexdigest()
     if sha:
-        require(actual == sha, f'Staging asset changed: {src}')
+        canonical = hashlib.sha256(raw.replace(b'\r\n', b'\n')).hexdigest() if path.suffix == '.svg' else actual
+        require(actual == sha or canonical == sha, f'Staging asset changed: {src}')
     return actual
 
 def validate_rect(art):

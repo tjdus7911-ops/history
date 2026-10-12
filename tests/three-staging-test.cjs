@@ -158,7 +158,7 @@ for(const [sceneId,assetId] of [
   assert.notEqual(api.backgroundOverride(next,nextState)?.id||null,assetId,'Previous historical setting must not leak into the next scene');
   assert(!api.resolve(next,nextState).settingSurfaces.some(art=>art.sceneId===sceneId));
 }
-assert(api.backgroundOverride(sources.get('THR-C11-S01'),state('THR-C11-S01','THR-C11-S01-M02')).src.endsWith('silla-ox-field-readable-v3.png'));
+assert(api.backgroundOverride(sources.get('THR-C11-S01'),state('THR-C11-S01','THR-C11-S01-M02')).src.endsWith('silla-ox-field-readable-v3.webp'));
 has('THR-C18-S03','M01','main',null,'boat-tag',false); // now on actual chests
 has('THR-C21-S04','M01','main',null,'contact-sheet',false); // now on actual bundles
 {

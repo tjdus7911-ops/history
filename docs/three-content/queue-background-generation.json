@@ -1,13 +1,16 @@
 {
   "schemaVersion": 1,
-  "asset": "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-before-collapse.png",
+  "asset": "docs/three-content/source-assets/backgrounds/goguryeo-spring-queue-before-collapse.png",
   "sourceAsset": "assets/ancient/three-v2/backgrounds/goguryeo-hungry-village-spring.webp",
   "sourceSha256": "661cb949bfa5df90579b5fffc10e76e4c7f3cbb5d96c0d7502503366b437d4ca",
   "outputSha256": "5060baac0f62d176e28d20ec2ee5567dc90cbe6843b29b7ab515092578c96ff9",
   "mode": "built-in-imagegen-edit",
   "transparentBackground": false,
   "originalModified": false,
-  "usedBySceneIds": ["THR-PRO-S03", "THR-C01-S01"],
+  "usedBySceneIds": [
+    "THR-PRO-S03",
+    "THR-C01-S01"
+  ],
   "prompt": "Use case: precise-object-edit / historical-scene. Asset type: wide 2D illustrated background for a Korean historical visual novel, used continuously between its prologue and first scene. Image 1 is the edit target. Preserve the existing early-spring Goguryeo rural village illustration: exactly the same viewpoint, wide aspect ratio, thatched houses, shut granary door on the right, bare budding trees, dirt lane, mountains, daylight, and painterly/anime-compatible brush style. Add only a small queue of hungry but dignified ordinary villagers holding EMPTY cloth grain sacks in the central midground lane, with modest practical undyed hemp clothing suitable for ancient Korea; about 8 people receding into the distance. In front of this queue, near the image center (slightly left of center, never in either outer foreground), add one elderly grandmother with gray hair and a pale tired face, standing unsteadily with her knees just starting to buckle, one hand braced on her own thigh. She has NOT yet fallen, is NOT sitting or lying down, and has NOT yet been rescued. A small child stands anxiously beside her holding an empty cloth sack and looking up at her. Keep these figures in the environment at natural midground scale, not large dialogue portrait scale. Reserve the leftmost foreground for a separately rendered adult NPC called Yeonwoo and the rightmost foreground for the separately rendered heroine Seoa; DO NOT draw Yeonwoo or Seoa or any foreground standing lead character into this background. Keep the central grandmother/child readable with open surrounding space. Nobody is giving water, moving the grandmother, carrying her, distributing grain, or completing a rescue. The granary door remains firmly shut. Do not add royal clothing, crowns, modern clothing, weapons, new signs, writing, captions, UI, logos, or watermarks. Preserve everything else in the input background. One seamless finished illustration.",
   "visualReview": {
     "originalVillageCompositionPreserved": true,

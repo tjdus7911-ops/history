@@ -3340,7 +3340,6 @@
     "dist/assets/ancient/story/village.svg": "0eb8916df4b36ebc7ce2c77373f57ee392d3fc0f",
     "dist/assets/ancient/story/wagon.svg": "6fa27480179257dab60f02252fbdb5a496097bfb",
     "dist/assets/ancient/story/workshop.svg": "899bff99a4702a2d9083fca6257b0c3526c18dad",
-    "dist/assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-before-collapse.png": "33d4e53318c09e3bc737f37d9a39f810416d97e3",
     "dist/assets/ancient/three-complete/characters/recurring-civilians-atlas-01.png": "bb27d6296b3986a2fad4da587c6006756f71eeb4",
     "dist/assets/ancient/three-complete/characters/recurring-civilians-atlas-02.png": "4c11206c2371a54f0c429afb003c7ec3bf78e231",
     "dist/assets/ancient/three-complete/source-photos/genealogy-01.png": "9848a6a4ec37c5999e356e9d0955b80d333f47df",
@@ -5723,6 +5722,7 @@
     "dist/assets/v2/characters/yeon-worried.webp": "083c58ea887ef6b22a639a7596afd22734f9c257",
     "dist/assets/v2/characters/yi_jagyeom-neutral.webp": "f3607ff362786a4d92ce35f3b295baecc6bf381a",
     "dist/assets/v2/characters/yi_seonggye-neutral.webp": "fe57597d5fc5c8e6be573bf728bc21efd3cbb29f",
-    "dist/assets/v2/characters/yoon_gwan-neutral.webp": "b33e5f1d223e7addc8b27c77380345e8f30cc979"
+    "dist/assets/v2/characters/yoon_gwan-neutral.webp": "b33e5f1d223e7addc8b27c77380345e8f30cc979",
+    "docs/three-content/source-assets/backgrounds/goguryeo-spring-queue-before-collapse.png": "33d4e53318c09e3bc737f37d9a39f810416d97e3"
   }
 }

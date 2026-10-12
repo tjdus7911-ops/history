@@ -143,6 +143,18 @@
       book:bookRule ? {state:bookRule.variant,sourcePhotos:DATA.sourcePhotos} : null};
   }
 
+  function assetUrls(source, state = {}, characterIds = []) {
+    const view = resolve(source,state), urls = [];
+    const background = backgroundOverride(source,state);
+    if (background?.src) urls.push(background.src);
+    for (const art of [...view.props,...view.settingSurfaces,view.hand].filter(Boolean)) if (art.src) urls.push(art.src);
+    for (const characterId of new Set(characterIds.filter(Boolean))) {
+      const variant = portraitOverride(source,state,characterId);
+      if (variant?.src) urls.push(variant.src);
+    }
+    return [...new Set(urls)];
+  }
+
   function spriteStyle(art, size = 1) {
     const r = art.sourceRect, width = art.sheetWidth, height = art.sheetHeight;
     const aspect = r.width / r.height, w = Math.min(1,aspect)*size, h = Math.min(1,1/aspect)*size;
@@ -162,7 +174,7 @@
     return settingInk+'<aside class="three-staging-layer" data-staging-scene="'+esc(view.sceneId)+'" data-staging-line="'+esc(entryId(state))+'" data-staging-context="'+esc(view.context)+'" data-player-motion="'+esc(view.motions.player || '')+'" data-npc-motion="'+esc(view.motions.npc || '')+'" data-book-state="'+esc(view.book?.state || '')+'" aria-hidden="true">'+(props?'<div class="three-staging-props">'+props+'</div>':'')+hand+groundBook+'</aside>';
   }
 
-  root.THREE_STAGING = Object.freeze({version:DATA.contentVersion,context,layers,resolve,actorVisibility,actorPresence,backgroundOverride,portraitOverride,portraitLayers,
+  root.THREE_STAGING = Object.freeze({version:DATA.contentVersion,context,layers,resolve,assetUrls,actorVisibility,actorPresence,backgroundOverride,portraitOverride,portraitLayers,
     audit:Object.freeze({sceneCount:Object.keys(DATA.scenes).length,propCount:Object.keys(DATA.props).length,variantCount:Object.keys(DATA.variants).length,settingSurfaceCount:Object.keys(DATA.settingSurfaces).length,sourceManuscriptSha256:DATA.sourceManuscriptSha256}),
     // Test/debug access is immutable by convention and never reads or writes
     // application saves, timers, cursors or DOM.

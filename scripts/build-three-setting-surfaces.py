@@ -86,7 +86,7 @@ def tomb(config):
 DRAWERS={'tomb-section':tomb,'warehouse-map-tags':warehouse,'office-departments':office}
 
 def build():
-    spec=json.loads((ROOT/SPEC).read_text())
+    spec=json.loads((ROOT/SPEC).read_text(encoding='utf-8'))
     outputs={};surfaces={}
     for config in spec['surfaces']:
         base=ROOT/'dist'/config['backgroundSrc']
@@ -115,8 +115,8 @@ def main():
     outputs=build()
     for name,content in outputs.items():
         p=ROOT/name
-        if args.check:assert p.is_file() and p.read_text()==content,('Stale setting surface',name)
-        else:p.parent.mkdir(parents=True,exist_ok=True);p.write_text(content)
+        if args.check:assert p.is_file() and p.read_text(encoding='utf-8')==content,('Stale setting surface',name)
+        else:p.parent.mkdir(parents=True,exist_ok=True);p.write_text(content,encoding='utf-8')
     print(json.dumps({'status':'checked' if args.check else 'generated','svgSurfaces':len(outputs)-1,'sourceImagePixelsChanged':False}))
 
 if __name__=='__main__':main()

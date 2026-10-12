@@ -1,5 +1,5 @@
 const CACHE_PREFIX='lived-history-shell-';
-const CACHE_VERSION='2026-10-12-player-nameplates-v1';
+const CACHE_VERSION='2026-10-12-asset-loading-v1';
 const CACHE_NAME=CACHE_PREFIX+CACHE_VERSION;
 const APP_SHELL=[
   '/',
@@ -27,6 +27,7 @@ const APP_SHELL=[
   '/three-season-data.js','/three-save-data.js','/three-story-ui.js',
   '/three-era-isolation.js','/three-service-ui.js','/three-learning-boundary.js','/three-service.css',
   '/three-staging.js','/three-staging.css',
+  '/image-preloader.js',
   '/pwa.js',
   '/manifest.webmanifest',
   '/goryeo.png',
@@ -35,27 +36,59 @@ const APP_SHELL=[
   '/icons/icon-maskable-512.png',
   '/icons/apple-touch-icon.png'
 ];
+const CORE_SHELL=APP_SHELL.filter(path=>path==='/'||path==='/index.html'||path.endsWith('.css')||path.endsWith('.webmanifest')||path.startsWith('/icons/')||path==='/image-preloader.js'||path==='/pwa.js');
+const DEFERRED_SHELL=APP_SHELL.filter(path=>!CORE_SHELL.includes(path));
 const SHELL_PATHS=new Set(APP_SHELL.map(path=>new URL(path,self.location.origin).pathname));
 
+async function warmDeferredShell(cache){
+  let cursor=0;
+  async function worker(){
+    while(cursor<DEFERRED_SHELL.length){
+      const path=DEFERRED_SHELL[cursor++];
+      await cache.add(path);
+    }
+  }
+  const results=await Promise.allSettled([worker(),worker()]);
+  const failure=results.find(result=>result.status==='rejected');
+  if(failure)throw failure.reason;
+}
+
+async function installShell(){
+  const cache=await caches.open(CACHE_NAME);
+  try{
+    await cache.addAll(CORE_SHELL);
+    await warmDeferredShell(cache);
+  }catch(error){
+    await caches.delete(CACHE_NAME);
+    throw error;
+  }
+}
+
 self.addEventListener('install',event=>{
-  event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(APP_SHELL)).then(()=>self.skipWaiting()));
+  // Registration starts after window.load. Warm the large dependency set with
+  // bounded concurrency, then activate only when a complete offline shell is
+  // ready. A failed install keeps the previous worker/cache authoritative.
+  event.waitUntil(installShell().then(()=>self.skipWaiting()));
 });
 
 self.addEventListener('activate',event=>{
-  event.waitUntil(
-    caches.keys()
-      .then(keys=>Promise.all(keys.filter(key=>key.startsWith(CACHE_PREFIX)&&key!==CACHE_NAME).map(key=>caches.delete(key))))
-      .then(()=>self.clients.claim())
-  );
+  event.waitUntil((async()=>{
+    const keys=await caches.keys();
+    await Promise.all(keys.filter(key=>key.startsWith(CACHE_PREFIX)&&key!==CACHE_NAME).map(key=>caches.delete(key)));
+    await self.clients.claim();
+  })());
 });
 
-async function networkFirst(request,fallbackPath){
+function writeThrough(event,cachePromise,request,response){
+  let copy;try{copy=response.clone()}catch{return Promise.resolve()}
+  const write=Promise.resolve(cachePromise).then(cache=>cache.put(request,copy)).catch(()=>undefined);
+  event?.waitUntil?.(write);return write;
+}
+
+async function networkFirst(request,fallbackPath,event){
   try{
-    const response=await fetch(request,{cache:'no-store'});
-    if(response.ok){
-      const cache=await caches.open(CACHE_NAME);
-      cache.put(request,response.clone());
-    }
+    const response=await fetch(request);
+    if(response.ok)writeThrough(event,caches.open(CACHE_NAME),request,response);
     return response;
   }catch(error){
     const cached=await caches.match(request);
@@ -68,14 +101,30 @@ async function networkFirst(request,fallbackPath){
   }
 }
 
+async function staleWhileRevalidate(event,request){
+  const network=fetch(request).then(response=>({response}),error=>({error}));
+  const cachePromise=caches.open(CACHE_NAME);
+  const cached=cachePromise.then(cache=>cache.match(request)).catch(()=>undefined);
+  const winner=await Promise.race([network,cached.then(response=>response?{cached:response}:network)]);
+  if(winner.cached){
+    const update=network.then(result=>result.response?.ok?cachePromise.then(cache=>cache.put(request,result.response.clone())):undefined).catch(()=>undefined);
+    event?.waitUntil?.(update);return winner.cached;
+  }
+  if(winner.response){
+    if(winner.response.ok){writeThrough(event,cachePromise,request,winner.response);return winner.response}
+    const fallback=await cached;return fallback||winner.response;
+  }
+  const fallback=await cached;if(fallback)return fallback;throw winner.error;
+}
+
 self.addEventListener('fetch',event=>{
   const request=event.request;
   if(request.method!=='GET')return;
   const url=new URL(request.url);
   if(url.origin!==self.location.origin)return;
   if(request.mode==='navigate'){
-    event.respondWith(networkFirst(request,'/index.html'));
+    event.respondWith(networkFirst(request,'/index.html',event));
     return;
   }
-  if(SHELL_PATHS.has(url.pathname))event.respondWith(networkFirst(request));
+  if(SHELL_PATHS.has(url.pathname))event.respondWith(staleWhileRevalidate(event,request));
 });

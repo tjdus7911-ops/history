@@ -24,7 +24,7 @@
     "visualReview": true
   },
   {
-    "repoSrc": "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-after-collapse.png",
+    "repoSrc": "docs/three-content/source-assets/backgrounds/goguryeo-spring-queue-after-collapse.png",
     "kind": "scene-state",
     "prompt": "Edit the attached approved illustration as a closely matched AFTER-state of the exact same scene. Preserve the entire camera composition, warm hand-painted 2D game style, thatched houses, mountain, pale spring trees, empty sacks, waiting villagers and the exact identities/clothes of the central elderly gray-haired grandmother and child. Change only the grandmother's posture and the immediate reactions: she has just fainted from hunger and weakness and is now slumped sitting low against the ground, knees bent, upper body sagging, eyes closed, still fully clothed, no injury, no blood. The SAME child in the same clothes remains beside her, alarmed and reaching toward her shoulder, and the nearest adult in line leans forward to notice but has not rescued or fed her. The main playable characters Seoa and Yeonwoo remain absent from this background so their separate foreground sprites can be used. The waiting line is still present. Food has NOT arrived and the situation is NOT solved. Do not change her clothing, hair, age or identity; do not make her dead or wounded. No text, no UI, no new prominent characters. This is the exact continuity state at the first line of Chapter1Scene1, after the prologue's unstable standing grandmother.",
     "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-b4a3229a-4584-4c26-8e7a-83cd6752f862.png",

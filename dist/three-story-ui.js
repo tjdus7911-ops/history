@@ -40,7 +40,7 @@ if (globalThis.CORE_APP_READY === true && globalThis.THREE_STORY_RUNTIME?.versio
     run().dialogueCursor = phase === 'choice' ? source.dialogues.length : 1;
     run().threeTypedLineId = null;
   }
-  function showGame() { screen = 'game'; save(); render(); }
+  function showGame() { screen = 'game'; preloadThreeAssets(); save(); render(); }
   function switchPhase(source, phase) { resetReading(source, phase); showGame(); }
   function unlockLearnedQuestions() {
     const value = book(), read = new Set(value.readSceneIds);
@@ -212,12 +212,83 @@ if (globalThis.CORE_APP_READY === true && globalThis.THREE_STORY_RUNTIME?.versio
   // receive one uniform scale; transparent margins never determine body size.
   function stagingState(source,entry,current=phaseState(source)) {
     const choicesByScene={};
-    for(const [sceneId,index] of Object.entries(book().choiceBySceneId||{})) {
+    for(const [sceneId,index] of Object.entries(meta().threeCompleteBook?.choiceBySceneId||{})) {
       const choiceId=runtime.sources.get(sceneId)?.choices?.[index]?.choiceId;
       if(choiceId) choicesByScene[sceneId]=choiceId;
     }
     const selected=source.choices?.[current.choiceIndex];
     return {phase:current.phase,entry,choiceId:selected?.threeChoiceId||selected?.choiceId||null,choicesByScene};
+  }
+  function entriesForState(source,current) {
+    if(current.phase==='branch')return source.choices[current.choiceIndex]?.resultDialogues||[];
+    if(current.phase==='join')return source.threeCommon||[];
+    if(current.phase==='hints')return run().threeHintEntries||[];
+    return source.dialogues||[];
+  }
+  function frameCast(source,current,entries,index) {
+    const entry=entries[index],presentation=stagingState(source,entry,current),context=stagingContext(source,entry,current);
+    const lineContext=line=>stagingContext(source,line,{...current,phase:current.phase==='choice'?'main':current.phase});
+    let active=entry;
+    if(current.phase==='choice'&&(lineContext(active)==='record'||['narration','thought'].includes(active?.speakerType))) {
+      active=[...entries.slice(0,index+1)].reverse().find(line=>['player','npc'].includes(line.speakerType)&&lineContext(line)!=='record');
+    }
+    if(!active||['narration','thought'].includes(active.speakerType)||context==='record')return {presentation,context,active,cast:[]};
+    const history=[...(current.phase==='branch'||current.phase==='join'?source.dialogues:[]),
+      ...(current.phase==='join'&&current.choiceIndex!==null?source.choices[current.choiceIndex]?.resultDialogues||[]:[]),...entries.slice(0,index+1)];
+    const spoken=line=>['player','thought','npc'].includes(line?.speakerType)&&lineContext(line)!=='record',nearby=[];
+    for(let distance=1;distance<entries.length;distance++){
+      if(index-distance>=0&&spoken(entries[index-distance]))nearby.push(entries[index-distance]);
+      if(index+distance<entries.length&&spoken(entries[index+distance]))nearby.push(entries[index+distance]);
+    }
+    const standing=(line,position)=>({...line,position});let cast;
+    if(active.speakerType==='npc'){
+      const peer=nearby.find(line=>line.speakerType==='player')||[...history].reverse().find(line=>line.speakerType==='player');
+      cast=[standing(active,'left'),...(peer&&['player','thought'].includes(peer.speakerType)?[standing(peer,'right')]:[])];
+    }else{
+      const peer=[...history].reverse().find(line=>line.speakerType==='npc'&&lineContext(line)!=='record')||nearby.find(line=>line.speakerType==='npc');
+      cast=[...(peer?[standing(peer,'left')]:[]),standing(active,'right')];
+    }
+    for(const presence of globalThis.THREE_STAGING?.actorPresence(source,presentation)||[]){
+      const position=presence.speakerType==='player'?'right':'left';
+      if(active.speakerType==='npc'&&position==='left'&&presence.characterId!==active.characterId)continue;
+      cast=cast.filter(line=>line.characterId!==presence.characterId&&line.position!==position);cast.push(standing(presence,position));
+    }
+    const hidden=globalThis.THREE_STAGING?.actorVisibility(source,presentation)||{};
+    cast=cast.filter(line=>line.characterId===active.characterId||!(line.position==='left'?hidden.hideNpc:hidden.hidePlayer));
+    return {presentation,context,active,cast};
+  }
+  function frameAssetUrls(source,current,entries,index) {
+    const entry=entries[index];if(!source||!entry)return[];
+    const frame=frameCast(source,current,entries,index),presentation=frame.presentation,staging=globalThis.THREE_STAGING,urls=[];
+    const background=staging?.backgroundOverride(source,presentation),base=ASSETS[source.illustrationId];
+    if(background?.src)urls.push(background.src);else if(base?.src&&source.sceneEffect!=='blackout')urls.push(base.src);
+    const characterIds=[];
+    for(const line of frame.cast){
+      characterIds.push(line.characterId);
+      const setup=portraitPresentation(line,source,presentation);if(setup?.portrait?.src)urls.push(setup.portrait.src);
+    }
+    if(typeof staging?.assetUrls==='function')urls.push(...staging.assetUrls(source,presentation,characterIds));
+    return unique(urls.filter(Boolean));
+  }
+  function preloadFrame(source,current,entries,index,priority) {
+    const urls=frameAssetUrls(source,current,entries,index);
+    urls.forEach(src=>preloadImage(src,priority));return urls;
+  }
+  function preloadThreeAssets(sceneId=currentSource()?.sceneId) {
+    const source=STORIES[sceneId];if(!isThree(source))return Promise.resolve([]);
+    const active=currentSource()?.sceneId===source.sceneId;
+    const current=active?(run().threeStoryState?.scenes?.[source.sceneId]||{phase:'main',choiceIndex:null}):{phase:'main',choiceIndex:null};
+    const entries=entriesForState(source,current),cursor=active?Math.max(1,Math.min(run().dialogueCursor||1,Math.max(1,entries.length))):1,index=cursor-1;
+    const currentUrls=preloadFrame(source,current,entries,index,'high');
+    if(index+1<entries.length)preloadFrame(source,current,entries,index+1,'near');
+    const shouldPrepareChoices=(current.phase==='choice')||(current.phase==='main'&&index>=entries.length-2);
+    if(shouldPrepareChoices)for(let choiceIndex=0;choiceIndex<(source.choices||[]).length;choiceIndex++){
+      const branch={phase:'branch',choiceIndex},branchEntries=entriesForState(source,branch);preloadFrame(source,branch,branchEntries,0,'near');
+    }
+    if(index>=entries.length-1&&current.phase==='main'&&!source.choices?.length&&source.threeCommon?.length){const join={phase:'join',choiceIndex:current.choiceIndex};preloadFrame(source,join,entriesForState(source,join),0,'near')}
+    if(index>=entries.length-1&&current.phase==='branch'&&source.threeCommon?.length){const join={phase:'join',choiceIndex:current.choiceIndex};preloadFrame(source,join,entriesForState(source,join),0,'near')}
+    const next=STORIES[source.nextStoryId];if(isThree(next)){const first={phase:'main',choiceIndex:null},nextEntries=entriesForState(next,first);preloadFrame(next,first,nextEntries,0,'idle')}
+    return Promise.all(currentUrls.map(src=>preloadImage(src,'high')));
   }
   function stagingContext(source,entry,current) {
     return globalThis.THREE_STAGING?.context(source,stagingState(source,entry,current))
@@ -267,42 +338,8 @@ if (globalThis.CORE_APP_READY === true && globalThis.THREE_STORY_RUNTIME?.versio
   characterStage = function(visible, source, complete, pending, assetId, allEntries, cursor) {
     if (!isThree(source)) return beforeStage(visible, source, complete, pending, assetId, allEntries, cursor);
     const entries=allEntries||phaseEntries(source),index=Math.max(0,Math.min((cursor||run().dialogueCursor||1)-1,entries.length-1));
-    const current=phaseState(source),presentation=stagingState(source,entries[index],current);
-    const context=stagingContext(source,entries[index],current);
-    const lineContext=line=>stagingContext(source,line,{...current,phase:current.phase==='choice'?'main':current.phase});
-    let active=entries[index];
-    if(current.phase==='choice'&&(lineContext(active)==='record'||['narration','thought'].includes(active?.speakerType))) {
-      active=[...entries.slice(0,index+1)].reverse().find(line=>['player','npc'].includes(line.speakerType)&&lineContext(line)!=='record');
-    }
-    if(!active||['narration','thought'].includes(active.speakerType)||context==='record') return '';
-    const history=[...(current.phase==='branch'||current.phase==='join'?source.dialogues:[]),
-      ...(current.phase==='join'&&current.choiceIndex!==null?source.choices[current.choiceIndex]?.resultDialogues||[]:[]),...entries.slice(0,index+1)];
-    const spoken=line=>['player','thought','npc'].includes(line?.speakerType)&&lineContext(line)!=='record';
-    const nearby=[];
-    for(let distance=1;distance<entries.length;distance++){
-      if(index-distance>=0&&spoken(entries[index-distance]))nearby.push(entries[index-distance]);
-      if(index+distance<entries.length&&spoken(entries[index+distance]))nearby.push(entries[index+distance]);
-    }
-    const standing=(line,position)=>({...line,position});
-    let cast;
-    if(active.speakerType==='npc'){
-      const peer=nearby.find(line=>line.speakerType==='player') || [...history].reverse().find(line=>line.speakerType==='player');
-      cast=[standing(active,'left'),...(peer&&['player','thought'].includes(peer.speakerType)?[standing(peer,'right')]:[])];
-    }else{
-      const peer=[...history].reverse().find(line=>line.speakerType==='npc'&&lineContext(line)!=='record')
-        ||nearby.find(line=>line.speakerType==='npc');
-      cast=[...(peer?[standing(peer,'left')]:[]),standing(active,'right')];
-    }
-    for(const presence of globalThis.THREE_STAGING?.actorPresence(source,presentation)||[]) {
-      // Authored visual staging uses the same two actor slots, without adding a
-      // speaker, changing a dialogue line, or moving an NPC to the player's side.
-      const position=presence.speakerType==='player'?'right':'left';
-      if(active.speakerType==='npc'&&position==='left'&&presence.characterId!==active.characterId)continue;
-      cast=cast.filter(line=>line.characterId!==presence.characterId&&line.position!==position);
-      cast.push(standing(presence,position));
-    }
-    const hidden=globalThis.THREE_STAGING?.actorVisibility(source,presentation)||{};
-    cast=cast.filter(line=>line.characterId===active.characterId||!(line.position==='left'?hidden.hideNpc:hidden.hidePlayer));
+    const current=phaseState(source),frame=frameCast(source,current,entries,index),{presentation,context,active,cast}=frame;
+    if(!cast.length)return '';
     return cast.length?'<div class="character-stage" data-slot-mode="three-conversation" data-presentation-context="'+esc(context)+'" aria-hidden="true">'+cast.map(line=>threePortrait(line,line.characterId===active.characterId,source,presentation)).join('')+'</div>':'';
   };
   // Use the approved messenger renderer verbatim; add only stable scene metadata.
@@ -324,6 +361,7 @@ if (globalThis.CORE_APP_READY === true && globalThis.THREE_STORY_RUNTIME?.versio
   game = function() {
     const source = currentSource(); if (!isThree(source)) return beforeGame();
     const r=run(),current=phaseState(source),entries=phaseEntries(source);
+    preloadThreeAssets(source.sceneId);
     const cursor=Math.max(1,Math.min(r.dialogueCursor||1,entries.length)),entry=entries[cursor-1];
     const raw=source.threeSource,presentation=stagingState(source,entry,current),context=stagingContext(source,entry,current);
     const staging=globalThis.THREE_STAGING,stagedView=staging?.resolve(source,presentation);
@@ -417,6 +455,7 @@ if (globalThis.CORE_APP_READY === true && globalThis.THREE_STORY_RUNTIME?.versio
     if (lockInput()) advance();
   }, true);
   globalThis.THREE_STORY_UI_READY = true;
+  globalThis.THREE_PRELOAD_PLAN = preloadThreeAssets;
   globalThis.THREE_COMPLETE_ACTIONS = {book,phaseState,phaseEntries,advance,choose,checkpoint,advanceScene,switchPhase,startReview,
     unlockLearnedQuestions,currentSchedule,safeExplanation,submitAnswer,openQueuedQuestion,currentSource};
   globalThis.THREE_PREVIEW_ACTIONS = globalThis.THREE_COMPLETE_ACTIONS;

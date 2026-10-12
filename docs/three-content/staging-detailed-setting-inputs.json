@@ -8,7 +8,7 @@
     {
       "key": "cheonghaejin-warehouse",
       "sceneId": "THR-C18-S03",
-      "repoSrc": "assets/ancient/three-complete/backgrounds/cheonghaejin-warehouse-v1.png",
+      "repoSrc": "docs/three-content/source-assets/backgrounds/cheonghaejin-warehouse-v1.png",
       "refs": [
         "/workspace/scratch/history-playable/dist/assets/ancient/three-v2/backgrounds/goguryeo-granary-office.webp"
       ],
@@ -29,12 +29,12 @@
       "mode": "RGB",
       "sha256": "05b22f910e1809a2ba9faccd23d8a16c35bd27110f37d95638587382c3f66672",
       "pixelEditingPerformed": false,
-      "activeRuntimeSrc": "assets/ancient/three-complete/backgrounds/cheonghaejin-warehouse-v1.png"
+      "activeRuntimeSrc": "assets/ancient/three-complete/backgrounds/cheonghaejin-warehouse-v1.webp"
     },
     {
       "key": "balhae-jeongdangseong-office",
       "sceneId": "THR-C21-S04",
-      "repoSrc": "assets/ancient/three-complete/backgrounds/balhae-jeongdangseong-office-v1.png",
+      "repoSrc": "docs/three-content/source-assets/backgrounds/balhae-jeongdangseong-office-v1.png",
       "refs": [
         "/workspace/scratch/history-playable/dist/assets/ancient/three-v2/backgrounds/goguryeo-granary-office.webp"
       ],
@@ -55,12 +55,12 @@
       "mode": "RGB",
       "sha256": "9ad757222e8c9c9c849785986073bbab829649716df1ad12925250548d951c3b",
       "pixelEditingPerformed": false,
-      "activeRuntimeSrc": "assets/ancient/three-complete/backgrounds/balhae-office-readable-labels-v3.png"
+      "activeRuntimeSrc": "assets/ancient/three-complete/backgrounds/balhae-office-readable-labels-v3.webp"
     },
     {
       "key": "bulguksa-distinct-pagodas",
       "sceneId": "THR-C17-S05",
-      "repoSrc": "assets/ancient/three-complete/backgrounds/bulguksa-distinct-pagodas-v1.png",
+      "repoSrc": "docs/three-content/source-assets/backgrounds/bulguksa-distinct-pagodas-v1.png",
       "refs": [
         "/workspace/scratch/fea3030a5c98/three-art-recovery/references/dabotap-khs.jpg",
         "/workspace/scratch/fea3030a5c98/three-art-recovery/references/seokgatap-khs.jpg",
@@ -91,12 +91,12 @@
       "mode": "RGB",
       "sha256": "4d16472a297d35fb41c2dbf5b857c0c59b56fab3daf5b89bd099d27ebac1a751",
       "pixelEditingPerformed": false,
-      "activeRuntimeSrc": "assets/ancient/three-complete/backgrounds/bulguksa-distinct-pagodas-v1.png"
+      "activeRuntimeSrc": "assets/ancient/three-complete/backgrounds/bulguksa-distinct-pagodas-v1.webp"
     },
     {
       "key": "silla-tomb-worksite",
       "sceneId": "THR-C10-S03",
-      "repoSrc": "assets/ancient/three-complete/backgrounds/silla-tomb-worksite-v1.png",
+      "repoSrc": "docs/three-content/source-assets/backgrounds/silla-tomb-worksite-v1.png",
       "refs": [
         "/workspace/scratch/history-playable/dist/assets/ancient/three-v2/backgrounds/goguryeo-hungry-village-spring.webp"
       ],
@@ -117,12 +117,12 @@
       "mode": "RGB",
       "sha256": "e2f3611b01c3a45a9a129d9140bb79ecac65d0b52a63d5058efc2b26ef910624",
       "pixelEditingPerformed": false,
-      "activeRuntimeSrc": "assets/ancient/three-complete/backgrounds/silla-tomb-worksite-v1.png"
+      "activeRuntimeSrc": "assets/ancient/three-complete/backgrounds/silla-tomb-worksite-v1.webp"
     },
     {
       "key": "seokguram-assembly",
       "sceneId": "THR-C17-S06",
-      "repoSrc": "assets/ancient/three-complete/backgrounds/seokguram-assembly-v1.png",
+      "repoSrc": "docs/three-content/source-assets/backgrounds/seokguram-assembly-v1.png",
       "refs": [
         "/workspace/scratch/fea3030a5c98/three-art-recovery/references/seokguram-nrich-hanseokhong.jpg",
         "/workspace/scratch/history-playable/dist/assets/ancient/three-v2/backgrounds/goguryeo-granary-office.webp"
@@ -148,7 +148,7 @@
           "sha256": "05d9901bca84a6c81032bd9c1f1d136c240d57e39c76966b03751118b6607d46"
         }
       ],
-      "activeRuntimeSrc": "assets/ancient/three-complete/backgrounds/seokguram-assembly-v1.png"
+      "activeRuntimeSrc": "assets/ancient/three-complete/backgrounds/seokguram-assembly-v1.webp"
     }
   ],
   "references": [

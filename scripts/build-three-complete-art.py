@@ -23,7 +23,7 @@ V2 = "assets/v2/backgrounds/"
 # All entries below were visually reviewed as illustrations. Reuse describes a
 # setting, not a photograph or a definitive reconstruction of a named monument.
 BACKGROUNDS = {
-    "queue": (ART_DIR + "/backgrounds/goguryeo-spring-queue-before-collapse.png", "배급 줄에서 휘청이는 어머니와 아이", "imagegen-edit-of-approved-goguryeo-spring-background"),
+    "queue": (ART_DIR + "/backgrounds/goguryeo-spring-queue-before-collapse.webp", "배급 줄에서 휘청이는 어머니와 아이", "webp-optimized-from-approved-goguryeo-spring-background"),
     "spring": (OLD + "goguryeo-hungry-village-spring.webp", "봄의 고구려 마을", "existing-approved-three-illustration"),
     "granary": (OLD + "goguryeo-granary-office.webp", "곡식 창고의 업무 공간", "existing-approved-three-illustration"),
     "autumn": (OLD + "goguryeo-grain-return-autumn.webp", "곡식을 돌려주는 계절의 마을", "existing-approved-three-illustration"),

@@ -7,8 +7,8 @@
       "sceneId": "THR-C10-S03",
       "width": 1024,
       "height": 1536,
-      "backgroundSrc": "assets/ancient/three-complete/backgrounds/silla-tomb-worksite-v1.png",
-      "backgroundSha256": "e2f3611b01c3a45a9a129d9140bb79ecac65d0b52a63d5058efc2b26ef910624",
+      "backgroundSrc": "assets/ancient/three-complete/backgrounds/silla-tomb-worksite-v1.webp",
+      "backgroundSha256": "fc759eb86b6b0575b7e2f95867574c3752c4a15295286c76a7bd0f5186e0c451",
       "label": "돌무지덧널무덤의 구조 단면",
       "description": "설명용 단면: 안쪽 관을 둘러싼 나무 덧널, 위와 둘레의 돌무지, 바깥 봉토를 구별한다. 실제 씬은 돌을 덮기 전 축조 중인 상태이며, 이 그림이 완공 상태로 시간을 바꾸지 않는다. 일반 돌무지무덤이나 굴식돌방무덤의 복도는 넣지 않는다.",
       "references": [
@@ -26,8 +26,8 @@
       "sceneId": "THR-C18-S03",
       "width": 1024,
       "height": 1536,
-      "backgroundSrc": "assets/ancient/three-complete/backgrounds/cheonghaejin-warehouse-v1.png",
-      "backgroundSha256": "05b22f910e1809a2ba9faccd23d8a16c35bd27110f37d95638587382c3f66672",
+      "backgroundSrc": "assets/ancient/three-complete/backgrounds/cheonghaejin-warehouse-v1.webp",
+      "backgroundSha256": "ff02b86d81792577838d30b34e6efb030ef83545e543b42e961119743f736599",
       "label": "청해진 창고의 화물 표지와 교류 거점 개략도",
       "description": "당·신라·일본의 표지는 필체가 서로 다르다. 개략도는 신라방과 신라촌을 거주지, 신라소를 관리 기관, 신라원과 적산 법화원을 사찰로 구별한다. 여러 지역의 형성 시기와 사찰 건립·활동 기록의 시기는 본문 옆 기존 설명 자리에서 구분한다. 이 그림은 당시 실물 지도를 복제한 자료가 아니며 모든 거점이 같은 해에 창설되었다고 단정하지 않는다.",
       "cargoTags": [
@@ -80,8 +80,8 @@
       "sceneId": "THR-C21-S04",
       "width": 1024,
       "height": 1536,
-      "backgroundSrc": "assets/ancient/three-complete/backgrounds/balhae-office-readable-labels-v3.png",
-      "backgroundSha256": "482f923720c9616fdbfdbb3ded71cab1535ade7dfb42beb72ddd8adadba9a37b",
+      "backgroundSrc": "assets/ancient/three-complete/backgrounds/balhae-office-readable-labels-v3.webp",
+      "backgroundSha256": "a59de6ed0b8991bff5715d9a36c061dacd0a3858439ecfaf5a15a58d6f9eacb4",
       "label": "발해 3성·6부 문서 표지",
       "description": "원문에 나온 3성과 6부의 명칭을 아홉 실제 문서 묶음의 빈 표지에 적는다. 중대성·선조성·정당성, 충부·인부·의부·지부·예부·신부. 서가 배치는 학습 장면의 문서 정리를 위한 가상 구성이며 기관의 고고학적 배치도나 실제 문서의 복제가 아니다. 원문에 없는 세부 직무는 표지에 추가하지 않는다.",
       "tags": [

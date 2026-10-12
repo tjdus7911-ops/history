@@ -117,7 +117,7 @@ for(let number=1;number<=6;number++){
   assert.equal(view.bookState,number<=2?'ground':number===3?'lifting':'held');
   assert.equal(view.groundBook,false,label+' no reference-photo book overlay');
   if(number<6)assert.equal(view.background,originalPrologueBackground,label+' approved background before support pair');
-  else assert(view.background.includes('goguryeo-spring-queue-mother-in-pair-v1.png'),label+' background excludes the mother now carried in the foreground');
+  else assert(view.background.includes('goguryeo-spring-queue-mother-in-pair-v1.webp'),label+' background excludes the mother now carried in the foreground');
   assert.deepEqual(view.photos.map(({number,src})=>({number,src})),[],label+' reference photos are not story artwork');
   assert.equal(seoa.position,'right');assert.equal(seoa.id,'three_v3_seoa');
   assert.deepEqual(seoa.photos.map(({number,src})=>({number,src})),[],label+' no reference photos inside Seoa portrait');
@@ -146,8 +146,8 @@ assert.equal(h.run('run().dialogueCursor'),1,'handoff does not consume the next 
 const arrival=frame('PRO3 continuous handoff');
 assert.equal(arrival.groundBook,false);assert.equal(arrival.photos.length,0,'prologue photo overlay does not leak into next scene');
 assert(arrival.actors.every(value=>!value.imageStyle.includes('yeonwoo-mother-support-pair-v1.png')&&!value.imageStyle.includes('seoa-book-actions-v1.png')),'prologue pose overrides end at the authored handoff');
-assert(arrival.background.includes('goguryeo-spring-queue-after-collapse.png'),'C01 uses the authored collapsed state after the support pair');
-assert(!arrival.background.includes('goguryeo-spring-queue-mother-in-pair-v1.png'),'support-pair background ends at the handoff');
+assert(arrival.background.includes('goguryeo-spring-queue-after-collapse.webp'),'C01 uses the authored collapsed state after the support pair');
+assert(!arrival.background.includes('goguryeo-spring-queue-mother-in-pair-v1.webp'),'support-pair background ends at the handoff');
 
 // Two unchanged authored lines are presented as records. Their choice menu
 // returns to the people while still showing both complete recent bubbles.
@@ -176,9 +176,9 @@ for(const [name,kept] of [['three-stage-tools-lost',false],['three-stage-tools-k
 // to the original scene background when their common dialogue begins.
 for(const [name,delivered] of [['three-stage-letter-delivered',true],['three-stage-letter-wait',false]]){
   fixture(name);cursor(1);const waiting=frame(name+'/spoken').background;
-  assert(!waiting.includes('baekje-letter-relay-post.png'));
+  assert(!waiting.includes('baekje-letter-relay-post.webp'));
   progress();const reply=frame(name+'/first reply');
-  assert.equal(reply.background.includes('baekje-letter-relay-post.png'),delivered);
+  assert.equal(reply.background.includes('baekje-letter-relay-post.webp'),delivered);
   if(!delivered)assert.equal(reply.background,waiting);
   reload(name+'/reply');toJoin(name);assert.equal(visuals().background,waiting,name+' returns to waiting place');
   reload(name+'/join');assert.equal(visuals().background,waiting);

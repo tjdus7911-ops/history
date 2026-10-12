@@ -506,7 +506,7 @@
           "sha256": "e1dadcd9f40b89935297864d775b79c2626d56e07d81f6a453b11598772af01d"
         },
         {
-          "src": "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-before-collapse.png",
+          "src": "docs/three-content/source-assets/backgrounds/goguryeo-spring-queue-before-collapse.png",
           "sha256": "5060baac0f62d176e28d20ec2ee5567dc90cbe6843b29b7ab515092578c96ff9"
         }
       ]
@@ -514,60 +514,78 @@
   },
   "backgrounds": {
     "collapsed-queue": {
-      "repoSrc": "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-after-collapse.png",
+      "repoSrc": "docs/three-content/source-assets/backgrounds/goguryeo-spring-queue-after-collapse.png",
       "kind": "scene-state",
       "prompt": "Edit the attached approved illustration as a closely matched AFTER-state of the exact same scene. Preserve the entire camera composition, warm hand-painted 2D game style, thatched houses, mountain, pale spring trees, empty sacks, waiting villagers and the exact identities/clothes of the central elderly gray-haired grandmother and child. Change only the grandmother's posture and the immediate reactions: she has just fainted from hunger and weakness and is now slumped sitting low against the ground, knees bent, upper body sagging, eyes closed, still fully clothed, no injury, no blood. The SAME child in the same clothes remains beside her, alarmed and reaching toward her shoulder, and the nearest adult in line leans forward to notice but has not rescued or fed her. The main playable characters Seoa and Yeonwoo remain absent from this background so their separate foreground sprites can be used. The waiting line is still present. Food has NOT arrived and the situation is NOT solved. Do not change her clothing, hair, age or identity; do not make her dead or wounded. No text, no UI, no new prominent characters. This is the exact continuity state at the first line of Chapter1Scene1, after the prologue's unstable standing grandmother.",
       "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-b4a3229a-4584-4c26-8e7a-83cd6752f862.png",
-      "sha256": "bd5fc0e5d0b82a91f4b14ae32509d09dc9f1cd3b602c0d7b8cfc3d7d28c04037",
+      "sha256": "58022ee1a3f6e07e31e16842bceb038ed7fbe65032c2eab2a49cf96c8225c9d2",
       "width": 1672,
       "height": 941,
       "mode": "RGB",
       "pixelEditingPerformed": false,
       "visualReview": true,
       "id": "collapsed-queue",
-      "src": "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-after-collapse.png",
+      "src": "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-after-collapse.webp",
       "sourceSceneId": "THR-C01-S01",
       "state": "grandmother-collapsed-before-rescue",
-      "preservedBeforeSceneId": "THR-PRO-S03"
+      "preservedBeforeSceneId": "THR-PRO-S03",
+      "sourceSha256": "bd5fc0e5d0b82a91f4b14ae32509d09dc9f1cd3b602c0d7b8cfc3d7d28c04037",
+      "optimization": {
+        "format": "webp",
+        "quality": 86,
+        "dimensionsPreserved": true
+      }
     },
     "letter-relay-post": {
       "id": "letter-relay-post",
       "kind": "scene-state",
-      "repoSrc": "assets/ancient/three-complete/backgrounds/baekje-letter-relay-post.png",
+      "repoSrc": "docs/three-content/source-assets/backgrounds/baekje-letter-relay-post.png",
       "prompt": "Create a clean unpeopled background illustration for a hand-drawn 2D Korean historical visual novel. An ordinary fictional Baekje rear-line correspondence post near Gwansanseong in 554, before news of the battle's result. Quiet daytime, a small rough timber shelter with cloth awning, a low desk carrying plain folded cream letters and writing brush, a simple wooden bench, water jar, bundled supplies, a path leading to distant army tents and wooded hills. The foreground left and right quarters must have comfortable open space for separate standing character sprites. This is a temporary civilian-to-soldier letter relay, not a palace, famous monument, victory scene, destruction scene or battlefield. No people, no visible fighting or injuries, no flags with symbols, no legible text, no modern objects, no UI. Warm restrained tan/green/gray palette, subtle brown ink outlines, atmospheric painterly shading, polished semi-realistic Korean anime game background consistent with a historical countryside illustration. Landscape 16:9, full opaque background, subtle perspective and readable setting.",
       "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-98abd3ef-266e-41e8-afce-a381c770a81a.png",
-      "sha256": "488811d65a31a7561497f4478d4af7fef53002f7017963964e6ab00a6cb66e91",
+      "sha256": "b5ef99b7ac2d7ef29d7cfb1f5ea74e75e8acf9fdd2f5f5384bd8565edf4a3cc4",
       "width": 1672,
       "height": 941,
       "mode": "RGB",
       "pixelEditingPerformed": false,
       "visualReview": true,
-      "src": "assets/ancient/three-complete/backgrounds/baekje-letter-relay-post.png",
+      "src": "assets/ancient/three-complete/backgrounds/baekje-letter-relay-post.webp",
       "sourceSceneId": "THR-C08-S08",
-      "condition": "B1-R01 through B1-R03 only; restore waiting place at join"
+      "condition": "B1-R01 through B1-R03 only; restore waiting place at join",
+      "sourceSha256": "488811d65a31a7561497f4478d4af7fef53002f7017963964e6ab00a6cb66e91",
+      "optimization": {
+        "format": "webp",
+        "quality": 86,
+        "dimensionsPreserved": true
+      }
     },
     "silla-ox-field": {
       "key": "silla-ox-field-readable-v3",
-      "repoSrc": "assets/ancient/three-complete/backgrounds/silla-ox-field-readable-v3.png",
-      "reference": "/workspace/scratch/fea3030a5c98/history-playable/dist/assets/ancient/three-complete/backgrounds/silla-ox-field-rest-portrait-v2.png",
+      "repoSrc": "docs/three-content/source-assets/backgrounds/silla-ox-field-readable-v3.png",
+      "reference": "docs/three-content/source-assets/backgrounds/silla-ox-field-rest-portrait-v2.png",
       "prompt": "Edit this approved tall 1024x1536 hand-painted historical farm background only to improve the physical composition. Keep the exact same Silla spring setting, same brown resting ox, same wooden yoke/slack rope and wooden plough with modest iron share, same art style, muted warm colors and village. The current ox and plough are too large and low for the foreground dialogue actors. Repaint the OX AND PLOUGH TOGETHER at roughly TWO THIRDS of their current size, farther back in the field, and shift their whole group UP. Their entire combined silhouette, from horns to all hooves and every plough handle/share, must fit in the compact central rectangle approximately x340..740 and y265..445 on this 1024x1536 canvas. Absolutely no ox/plough part below y460. They are grounded on the same receding field, naturally smaller in the middle distance, NOT floating or a pasted inventory icon. Keep the ox's head and lifted resting foreleg clearly visible and the complete plough immediately next to it; orient the plough backward in depth rather than widely sideways. Preserve no wound, no bandage, no treatment, no active forced ploughing, no collapse and no completed recovery. Move the horizon/village naturally as needed to make this composition believable. Lower two-thirds remains empty tilled earth for separate story actors. Do not change crop size, do not add people, do not add UI/text/signs/borders/letterboxing, do not make a poster or schematic. This is an ordinary physical farm scene. Portrait 2:3 opaque background.",
       "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-dca850d4-4dbf-4d07-b77f-b76d9ce87969.png",
-      "sha256": "fd6cd6555e330778717f2767203db34ff994edec12c9dd6d9a0afbf23d6b304f",
+      "sha256": "1968e456a6750373535d555a59dbf53a336665b2e4efa2189e3169661b049343",
       "width": 1024,
       "height": 1536,
       "sourceVisualReviewComplete": true,
       "runtimeVisualReviewComplete": false,
       "id": "silla-ox-field",
       "kind": "scene-setting",
-      "src": "assets/ancient/three-complete/backgrounds/silla-ox-field-readable-v3.png",
+      "src": "assets/ancient/three-complete/backgrounds/silla-ox-field-readable-v3.webp",
       "sourceSceneId": "THR-C11-S01",
       "runtimeLinked": true,
       "visualReview": true,
-      "state": "resting-ox-with-complete-plough-no-treatment-or-recovery"
+      "state": "resting-ox-with-complete-plough-no-treatment-or-recovery",
+      "sourceSha256": "fd6cd6555e330778717f2767203db34ff994edec12c9dd6d9a0afbf23d6b304f",
+      "optimization": {
+        "format": "webp",
+        "quality": 86,
+        "dimensionsPreserved": true
+      }
     },
     "hwangnyongsa-construction": {
       "key": "hwangnyongsa-construction",
-      "repoSrc": "assets/ancient/three-complete/backgrounds/hwangnyongsa-construction-v1.png",
+      "repoSrc": "docs/three-content/source-assets/backgrounds/hwangnyongsa-construction-v1.png",
       "sourceSceneId": "THR-C13-S03",
       "reference": "/workspace/scratch/history-playable/dist/assets/ancient/backgrounds/rebuild-byeonhan-workshop.webp",
       "prompt": "Create a NEW scene background matching the attached approved game's richly hand-painted warm 2D Korean historical illustration style, but depict a DIFFERENT setting: a fictional reconstruction of the construction site of Hwangnyongsa's planned nine-storey wooden pagoda in Silla in 645. The wooden pagoda is CURRENTLY UNFINISHED: show a broad stone foundation and only the lower timber post-and-beam levels raised, numerous open empty joints and an incomplete upper framework surrounded by rough wooden scaffolding with rope lashings. Do not show an intact completed nine-storey tower, a finished roofline, a modern surviving building, modern cranes, metal scaffold tubes, concrete, plastic or electric equipment. Include one large horizontal timber beam on supports in the central middle foreground, wooden mallets, chisels and joinery offcuts nearby, and stacks of unassembled timbers so the work of fitting a load-bearing joint is readable. Existing modest Buddhist temple halls may appear far behind the worksite, indicating that the temple predates the new tower. Keep the MAIN INCOMPLETE FRAME in the CENTRAL THIRD of the wide composition for a vertical game crop. Clear open earth at the left and right foreground for separate dialogue sprites; no named characters or close foreground people baked into the background, no printed labels or invented writing. Natural daylight, earthy ochre/wood browns/soft greens, visible wood texture, atmospheric depth. This is evocative construction scenery, not an exact technical reconstruction diagram. Landscape 16:9, full opaque background.",
@@ -579,7 +597,7 @@
       "runtimeLinked": true,
       "sourceFileVisualReview": true,
       "runtimeVisualReviewComplete": false,
-      "sha256": "ba82824025af2ccc4d13ebac92fad04f954a43c585efb57a785f09c9e53c0ca5",
+      "sha256": "0f5642556887dee6e77fb3cd37f90f1492069713b67745144ed1581f4ab91cdc",
       "width": 1672,
       "height": 941,
       "mode": "RGB",
@@ -587,43 +605,55 @@
       "sourceReferenceSha256": "b13cf9701f81627a144dd813f5699f12f46774ebc6620b678a2588699d5555fa",
       "id": "hwangnyongsa-construction",
       "kind": "scene-setting",
-      "src": "assets/ancient/three-complete/backgrounds/hwangnyongsa-construction-v1.png",
-      "visualReview": true
+      "src": "assets/ancient/three-complete/backgrounds/hwangnyongsa-construction-v1.webp",
+      "visualReview": true,
+      "sourceSha256": "ba82824025af2ccc4d13ebac92fad04f954a43c585efb57a785f09c9e53c0ca5",
+      "optimization": {
+        "format": "webp",
+        "quality": 86,
+        "dimensionsPreserved": true
+      }
     },
     "queue-mother-in-pair": {
       "key": "queue-mother-in-pair",
-      "repoSrc": "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-mother-in-pair-v1.png",
+      "repoSrc": "docs/three-content/source-assets/backgrounds/goguryeo-spring-queue-mother-in-pair-v1.png",
       "transparent": false,
       "prompt": "Edit the attached approved historical game background with the smallest possible continuity change. Preserve the exact 16:9 camera, every thatched house, mountain, cloudy sky, spring tree, stone wall, empty sack, dry soil, queue of waiting villagers, and especially the little girl in front at the right with her original face, hair and beige-and-brown clothes. REMOVE ONLY the LARGE GRAY-HAIRED ELDERLY WOMAN at the very front of the queue, beside that little girl, who is leaning on her knees. Do not remove the smaller older woman farther back. Fill the former foreground mother's area with a seamless continuation of the existing dry path, queue view and stone wall as appropriate, preserving all other people and objects. The removed mother is being supplied in a separate foreground sprite held by Yeonwoo, so do not draw any replacement elderly woman, ghost, silhouette, foreground man, rescue, food, water or extra actor anywhere. The girl's pose and gaze remain toward where her mother was. No improvement to the village, no new details, no altered weather or lighting, no changed identities. Keep the exact original warm hand-painted 2D style, proportions, colors and crop. Opaque full scene background; this is a new derived frame only for one line, not an edit to the original file.",
       "references": [
-        "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-before-collapse.png"
+        "docs/three-content/source-assets/backgrounds/goguryeo-spring-queue-before-collapse.png"
       ],
       "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-89f44fdf-8791-477e-879d-9c4a8d76c8bc.png",
       "sourceFileVisualReview": true,
       "runtimeVisualReviewComplete": false,
       "pixelEditingPerformed": false,
-      "sha256": "2461423f56a394cd0e658c847f8ebb216839d1b2bb601e4237ea080d6e1df9c0",
+      "sha256": "04e657c03d542f39cb6be1a798a349bd19d12781939ce386dea1e2e2b5c05aba",
       "width": 1672,
       "height": 941,
       "mode": "RGB",
       "sourceReferences": [
         {
-          "src": "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-before-collapse.png",
+          "src": "docs/three-content/source-assets/backgrounds/goguryeo-spring-queue-before-collapse.png",
           "sha256": "5060baac0f62d176e28d20ec2ee5567dc90cbe6843b29b7ab515092578c96ff9"
         }
       ],
       "id": "queue-mother-in-pair",
-      "src": "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-mother-in-pair-v1.png",
+      "src": "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-mother-in-pair-v1.webp",
       "kind": "line-state",
       "sourceSceneId": "THR-PRO-S03",
       "state": "mother-is-in-foreground-support-pair",
       "condition": "main THR-PRO-S03-L06 only; preserve original before background on all other prologue lines",
-      "visualReview": true
+      "visualReview": true,
+      "sourceSha256": "2461423f56a394cd0e658c847f8ebb216839d1b2bb601e4237ea080d6e1df9c0",
+      "optimization": {
+        "format": "webp",
+        "quality": 86,
+        "dimensionsPreserved": true
+      }
     },
     "cheonghaejin-warehouse": {
       "key": "cheonghaejin-warehouse",
       "sceneId": "THR-C18-S03",
-      "repoSrc": "assets/ancient/three-complete/backgrounds/cheonghaejin-warehouse-v1.png",
+      "repoSrc": "docs/three-content/source-assets/backgrounds/cheonghaejin-warehouse-v1.png",
       "refs": [
         "/workspace/scratch/history-playable/dist/assets/ancient/three-v2/backgrounds/goguryeo-granary-office.webp"
       ],
@@ -642,44 +672,56 @@
       "width": 1024,
       "height": 1536,
       "mode": "RGB",
-      "sha256": "05b22f910e1809a2ba9faccd23d8a16c35bd27110f37d95638587382c3f66672",
+      "sha256": "ff02b86d81792577838d30b34e6efb030ef83545e543b42e961119743f736599",
       "pixelEditingPerformed": false,
       "id": "cheonghaejin-warehouse",
       "kind": "scene-setting",
-      "src": "assets/ancient/three-complete/backgrounds/cheonghaejin-warehouse-v1.png",
+      "src": "assets/ancient/three-complete/backgrounds/cheonghaejin-warehouse-v1.webp",
       "sourceSceneId": "THR-C18-S03",
       "visualReview": true,
       "intendedCue": {
         "from": "THR-C18-S03-M01",
         "scope": "scene"
+      },
+      "sourceSha256": "05b22f910e1809a2ba9faccd23d8a16c35bd27110f37d95638587382c3f66672",
+      "optimization": {
+        "format": "webp",
+        "quality": 86,
+        "dimensionsPreserved": true
       }
     },
     "balhae-jeongdangseong-office": {
       "key": "balhae-jeongdangseong-office",
-      "repoSrc": "assets/ancient/three-complete/backgrounds/balhae-office-readable-labels-v3.png",
-      "reference": "/workspace/scratch/fea3030a5c98/history-playable/dist/assets/ancient/three-complete/backgrounds/balhae-office-readable-shelf-v2.png",
+      "repoSrc": "docs/three-content/source-assets/backgrounds/balhae-office-readable-labels-v3.png",
+      "reference": "docs/three-content/source-assets/backgrounds/balhae-office-readable-shelf-v2.png",
       "prompt": "Edit this exact approved 1024x1536 hand-painted Balhae office background with a small practical rearrangement of the same documents. Keep the architecture, furniture, daylight, style and palette. The upper shelf still has exactly THREE larger document bundles with large blank horizontal paper tags tied on their fronts. Reorganize the SIX smaller bundles currently on two lower shelves into ONE SINGLE ROW OF SIX on ONE shelf immediately below the large three. The six smaller bundles should each have one entirely blank horizontal cream paper tag, clearly independent, about 58x38 image pixels, and all six tags must remain visible/unobstructed. The whole 3+6 grouping fits high in the central portion x260..775 of the canvas, with the top three tags around y260..305 and all six lower tags around y365..410. There must be NO third row of bundles and NO label below y420, because separate story characters will cover that lower area. Preserve nine total bundles, 3 above and 6 below, neatly supported on two actual connected wooden shelves, not a flowchart, modern UI grid, invented card panel or floating paper. All tag surfaces MUST be blank without marks or pseudo-writing; exact historic names will be added as ink later. Keep the lower wall, low writing desk and broad open floor unchanged as much as possible. Do not add people, modern objects, headings, symbols, dividers, UI or text. Tall portrait 2:3 opaque background, exact original 2D historical illustration style.",
       "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-99c6d3df-df61-4716-bc85-e59d10be7f52.png",
-      "sha256": "482f923720c9616fdbfdbb3ded71cab1535ade7dfb42beb72ddd8adadba9a37b",
+      "sha256": "a59de6ed0b8991bff5715d9a36c061dacd0a3858439ecfaf5a15a58d6f9eacb4",
       "width": 1024,
       "height": 1536,
       "sourceVisualReviewComplete": true,
       "runtimeVisualReviewComplete": false,
       "id": "balhae-jeongdangseong-office",
       "kind": "scene-setting",
-      "src": "assets/ancient/three-complete/backgrounds/balhae-office-readable-labels-v3.png",
+      "src": "assets/ancient/three-complete/backgrounds/balhae-office-readable-labels-v3.webp",
       "sourceSceneId": "THR-C21-S04",
       "visualReview": true,
       "runtimeLinked": true,
       "intendedCue": {
         "from": "THR-C21-S04-M01",
         "scope": "scene"
+      },
+      "sourceSha256": "482f923720c9616fdbfdbb3ded71cab1535ade7dfb42beb72ddd8adadba9a37b",
+      "optimization": {
+        "format": "webp",
+        "quality": 86,
+        "dimensionsPreserved": true
       }
     },
     "bulguksa-distinct-pagodas": {
       "key": "bulguksa-distinct-pagodas",
       "sceneId": "THR-C17-S05",
-      "repoSrc": "assets/ancient/three-complete/backgrounds/bulguksa-distinct-pagodas-v1.png",
+      "repoSrc": "docs/three-content/source-assets/backgrounds/bulguksa-distinct-pagodas-v1.png",
       "refs": [
         "/workspace/scratch/fea3030a5c98/three-art-recovery/references/dabotap-khs.jpg",
         "/workspace/scratch/fea3030a5c98/three-art-recovery/references/seokgatap-khs.jpg",
@@ -708,22 +750,28 @@
       "width": 1024,
       "height": 1536,
       "mode": "RGB",
-      "sha256": "4d16472a297d35fb41c2dbf5b857c0c59b56fab3daf5b89bd099d27ebac1a751",
+      "sha256": "ae07b661355031f79e439ff0cab65de8f84a0383e6a0ac9a794c2d2a4e6d4104",
       "pixelEditingPerformed": false,
       "id": "bulguksa-distinct-pagodas",
       "kind": "scene-setting",
-      "src": "assets/ancient/three-complete/backgrounds/bulguksa-distinct-pagodas-v1.png",
+      "src": "assets/ancient/three-complete/backgrounds/bulguksa-distinct-pagodas-v1.webp",
       "sourceSceneId": "THR-C17-S05",
       "visualReview": true,
       "intendedCue": {
         "from": "THR-C17-S05-M01",
         "scope": "scene"
+      },
+      "sourceSha256": "4d16472a297d35fb41c2dbf5b857c0c59b56fab3daf5b89bd099d27ebac1a751",
+      "optimization": {
+        "format": "webp",
+        "quality": 86,
+        "dimensionsPreserved": true
       }
     },
     "silla-tomb-worksite": {
       "key": "silla-tomb-worksite",
       "sceneId": "THR-C10-S03",
-      "repoSrc": "assets/ancient/three-complete/backgrounds/silla-tomb-worksite-v1.png",
+      "repoSrc": "docs/three-content/source-assets/backgrounds/silla-tomb-worksite-v1.png",
       "refs": [
         "/workspace/scratch/history-playable/dist/assets/ancient/three-v2/backgrounds/goguryeo-hungry-village-spring.webp"
       ],
@@ -742,22 +790,28 @@
       "width": 1024,
       "height": 1536,
       "mode": "RGB",
-      "sha256": "e2f3611b01c3a45a9a129d9140bb79ecac65d0b52a63d5058efc2b26ef910624",
+      "sha256": "fc759eb86b6b0575b7e2f95867574c3752c4a15295286c76a7bd0f5186e0c451",
       "pixelEditingPerformed": false,
       "id": "silla-tomb-worksite",
       "kind": "scene-setting",
-      "src": "assets/ancient/three-complete/backgrounds/silla-tomb-worksite-v1.png",
+      "src": "assets/ancient/three-complete/backgrounds/silla-tomb-worksite-v1.webp",
       "sourceSceneId": "THR-C10-S03",
       "visualReview": true,
       "intendedCue": {
         "from": "THR-C10-S03-M01",
         "scope": "scene"
+      },
+      "sourceSha256": "e2f3611b01c3a45a9a129d9140bb79ecac65d0b52a63d5058efc2b26ef910624",
+      "optimization": {
+        "format": "webp",
+        "quality": 86,
+        "dimensionsPreserved": true
       }
     },
     "seokguram-assembly": {
       "key": "seokguram-assembly",
       "sceneId": "THR-C17-S06",
-      "repoSrc": "assets/ancient/three-complete/backgrounds/seokguram-assembly-v1.png",
+      "repoSrc": "docs/three-content/source-assets/backgrounds/seokguram-assembly-v1.png",
       "refs": [
         "/workspace/scratch/fea3030a5c98/three-art-recovery/references/seokguram-nrich-hanseokhong.jpg",
         "/workspace/scratch/history-playable/dist/assets/ancient/three-v2/backgrounds/goguryeo-granary-office.webp"
@@ -767,7 +821,7 @@
       "width": 1024,
       "height": 1536,
       "mode": "RGB",
-      "sha256": "715ff96e49288b8e712e677890da2d0a611af5dbbb1388264d0791c190b99bd8",
+      "sha256": "ebceda5ecfb7a6005bcbda88a9734268494a9d06eb8be534f41a44bd2c10cf84",
       "status": "source-art-created-surfaces-and-runtime-link-pending",
       "runtimeLinked": true,
       "sourceFileVisualReview": true,
@@ -785,12 +839,18 @@
       ],
       "id": "seokguram-assembly",
       "kind": "scene-setting",
-      "src": "assets/ancient/three-complete/backgrounds/seokguram-assembly-v1.png",
+      "src": "assets/ancient/three-complete/backgrounds/seokguram-assembly-v1.webp",
       "sourceSceneId": "THR-C17-S06",
       "visualReview": true,
       "intendedCue": {
         "from": "THR-C17-S06-M01",
         "scope": "scene"
+      },
+      "sourceSha256": "715ff96e49288b8e712e677890da2d0a611af5dbbb1388264d0791c190b99bd8",
+      "optimization": {
+        "format": "webp",
+        "quality": 86,
+        "dimensionsPreserved": true
       }
     }
   },
@@ -852,7 +912,7 @@
       "visualReview": true
     },
     {
-      "repoSrc": "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-after-collapse.png",
+      "repoSrc": "docs/three-content/source-assets/backgrounds/goguryeo-spring-queue-after-collapse.png",
       "kind": "scene-state",
       "prompt": "Edit the attached approved illustration as a closely matched AFTER-state of the exact same scene. Preserve the entire camera composition, warm hand-painted 2D game style, thatched houses, mountain, pale spring trees, empty sacks, waiting villagers and the exact identities/clothes of the central elderly gray-haired grandmother and child. Change only the grandmother's posture and the immediate reactions: she has just fainted from hunger and weakness and is now slumped sitting low against the ground, knees bent, upper body sagging, eyes closed, still fully clothed, no injury, no blood. The SAME child in the same clothes remains beside her, alarmed and reaching toward her shoulder, and the nearest adult in line leans forward to notice but has not rescued or fed her. The main playable characters Seoa and Yeonwoo remain absent from this background so their separate foreground sprites can be used. The waiting line is still present. Food has NOT arrived and the situation is NOT solved. Do not change her clothing, hair, age or identity; do not make her dead or wounded. No text, no UI, no new prominent characters. This is the exact continuity state at the first line of Chapter1Scene1, after the prologue's unstable standing grandmother.",
       "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-b4a3229a-4584-4c26-8e7a-83cd6752f862.png",
@@ -866,7 +926,7 @@
     {
       "id": "letter-relay-post",
       "kind": "scene-state",
-      "repoSrc": "assets/ancient/three-complete/backgrounds/baekje-letter-relay-post.png",
+      "repoSrc": "docs/three-content/source-assets/backgrounds/baekje-letter-relay-post.png",
       "prompt": "Create a clean unpeopled background illustration for a hand-drawn 2D Korean historical visual novel. An ordinary fictional Baekje rear-line correspondence post near Gwansanseong in 554, before news of the battle's result. Quiet daytime, a small rough timber shelter with cloth awning, a low desk carrying plain folded cream letters and writing brush, a simple wooden bench, water jar, bundled supplies, a path leading to distant army tents and wooded hills. The foreground left and right quarters must have comfortable open space for separate standing character sprites. This is a temporary civilian-to-soldier letter relay, not a palace, famous monument, victory scene, destruction scene or battlefield. No people, no visible fighting or injuries, no flags with symbols, no legible text, no modern objects, no UI. Warm restrained tan/green/gray palette, subtle brown ink outlines, atmospheric painterly shading, polished semi-realistic Korean anime game background consistent with a historical countryside illustration. Landscape 16:9, full opaque background, subtle perspective and readable setting.",
       "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-98abd3ef-266e-41e8-afce-a381c770a81a.png",
       "sha256": "488811d65a31a7561497f4478d4af7fef53002f7017963964e6ab00a6cb66e91",
@@ -909,7 +969,7 @@
       "prompt": "Edit the attached approved Yeonwoo character image into ONE new full-body acting pose for the same 2D Korean historical story game. Preserve EXACTLY the same recognizable young adult face, dark low tied hair, green-gray short-sleeve outer robe, ivory crossed inner robe and loose sleeves, gray-brown waist sash, brown trousers and wrapped boots. Same polished warm hand-drawn anime illustration, clean painterly shading, no photorealism. Change only the pose and worried expression: Yeonwoo is positioned on the LEFT of the game, turned three-quarter toward the RIGHT, hurrying one small step and leaning gently forward, both forearms reaching forward-right at waist/lower-chest height to support the upper arm and shoulder of an elderly mother who is ALREADY drawn in the separate background. Draw ONLY Yeonwoo, do NOT draw the mother or any second person, no disembodied hands, no props. The palms and naturally bent fingers should form believable gentle supporting grips, not fists, fighting, pointing or a hug. Eyes look downward-right toward the mother's shoulder, brows worried. Keep the adult head size, natural body proportions and all feet fully visible with small empty margins. The pose must read as urgently steadying someone whose knees are beginning to weaken, not a completed rescue, carrying or giving water. Output one isolated full-body sprite on a fully transparent alpha background, no glow, no ground, no shadows cast onto a background, no typography, no border. The attached village scene is visual context only: do not redraw it or include any of its people or objects. All character detail and identity must come from the first reference.",
       "references": [
         "assets/ancient/three-complete/characters/yeonwoo-fullbody-v1.png",
-        "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-before-collapse.png"
+        "docs/three-content/source-assets/backgrounds/goguryeo-spring-queue-before-collapse.png"
       ],
       "sha256": "aff6bb8bce45739fc73f5a74b733a1038bfc4e23d2b609f877db591efe4ce770",
       "width": 1024,
@@ -923,7 +983,7 @@
           "sha256": "e1dadcd9f40b89935297864d775b79c2626d56e07d81f6a453b11598772af01d"
         },
         {
-          "src": "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-before-collapse.png",
+          "src": "docs/three-content/source-assets/backgrounds/goguryeo-spring-queue-before-collapse.png",
           "sha256": "5060baac0f62d176e28d20ec2ee5567dc90cbe6843b29b7ab515092578c96ff9"
         }
       ]
@@ -951,7 +1011,7 @@
     },
     {
       "key": "silla-ox-field",
-      "repoSrc": "assets/ancient/three-complete/backgrounds/silla-ox-field-rest-v1.png",
+      "repoSrc": "docs/three-content/source-assets/backgrounds/silla-ox-field-rest-v1.png",
       "sourceSceneId": "THR-C11-S01",
       "reference": "/workspace/scratch/history-playable/dist/assets/ancient/three-v2/backgrounds/goguryeo-hungry-village-spring.webp",
       "prompt": "Create a NEW scene background in precisely the same restrained warm hand-drawn 2D Korean historical game style as the attached reference. This is an ordinary fictional Silla farming village in 502, illustrating a manuscript scene about scarce oxen, communal ploughing and the need to rest an overworked animal. It is a cultivated FIELD beside the thatched village, not the village road from the reference. Include clearly visible furrows of dark tilled soil, unploughed adjoining field strips, ONE ordinary brown ox stopped and resting quietly with its weight off one foreleg, a simple period wooden yoke with loose rope, and a wooden plough with a modest iron share lying on the ground directly beside it. The ox is alive, fully intact, not collapsed, no visible wound, no bandage, no veterinarian, no magical recovery, nobody treating it. Keep the ox and plough together in the CENTRAL THIRD of the wide image so they remain visible in a vertical game crop; the ox is in the middle distance, not huge or blocking foreground character sprites. Early growing-season daylight, simple thatched houses, bare practical farm fences, distant wooded Korean hills. Foreground left/right are open earth for separately rendered dialogue characters. Do not embed Seoa, named farmers, modern people, tractors or modern farm equipment. No text, labels, UI or signboards. An atmospheric historical story setting, not a scientific diagram or a claim of one exact excavated farm. Wide landscape 16:9, opaque background.",
@@ -971,12 +1031,12 @@
       "sourceReferenceSha256": "661cb949bfa5df90579b5fffc10e76e4c7f3cbb5d96c0d7502503366b437d4ca",
       "id": "silla-ox-field",
       "kind": "scene-setting",
-      "src": "assets/ancient/three-complete/backgrounds/silla-ox-field-rest-v1.png",
+      "src": "docs/three-content/source-assets/backgrounds/silla-ox-field-rest-v1.png",
       "visualReview": true
     },
     {
       "key": "hwangnyongsa-construction",
-      "repoSrc": "assets/ancient/three-complete/backgrounds/hwangnyongsa-construction-v1.png",
+      "repoSrc": "docs/three-content/source-assets/backgrounds/hwangnyongsa-construction-v1.png",
       "sourceSceneId": "THR-C13-S03",
       "reference": "/workspace/scratch/history-playable/dist/assets/ancient/backgrounds/rebuild-byeonhan-workshop.webp",
       "prompt": "Create a NEW scene background matching the attached approved game's richly hand-painted warm 2D Korean historical illustration style, but depict a DIFFERENT setting: a fictional reconstruction of the construction site of Hwangnyongsa's planned nine-storey wooden pagoda in Silla in 645. The wooden pagoda is CURRENTLY UNFINISHED: show a broad stone foundation and only the lower timber post-and-beam levels raised, numerous open empty joints and an incomplete upper framework surrounded by rough wooden scaffolding with rope lashings. Do not show an intact completed nine-storey tower, a finished roofline, a modern surviving building, modern cranes, metal scaffold tubes, concrete, plastic or electric equipment. Include one large horizontal timber beam on supports in the central middle foreground, wooden mallets, chisels and joinery offcuts nearby, and stacks of unassembled timbers so the work of fitting a load-bearing joint is readable. Existing modest Buddhist temple halls may appear far behind the worksite, indicating that the temple predates the new tower. Keep the MAIN INCOMPLETE FRAME in the CENTRAL THIRD of the wide composition for a vertical game crop. Clear open earth at the left and right foreground for separate dialogue sprites; no named characters or close foreground people baked into the background, no printed labels or invented writing. Natural daylight, earthy ochre/wood browns/soft greens, visible wood texture, atmospheric depth. This is evocative construction scenery, not an exact technical reconstruction diagram. Landscape 16:9, full opaque background.",
@@ -996,7 +1056,7 @@
       "sourceReferenceSha256": "b13cf9701f81627a144dd813f5699f12f46774ebc6620b678a2588699d5555fa",
       "id": "hwangnyongsa-construction",
       "kind": "scene-setting",
-      "src": "assets/ancient/three-complete/backgrounds/hwangnyongsa-construction-v1.png",
+      "src": "docs/three-content/source-assets/backgrounds/hwangnyongsa-construction-v1.png",
       "visualReview": true
     },
     {
@@ -1006,7 +1066,7 @@
       "prompt": "Create a NEW TRUE TRANSPARENT full-body two-person interaction sprite in the same approved hand-drawn 2D Korean historical game style. Reference 1 is the exact identity of Yeonwoo: retain his exact young-adult male face, dark tied-back hair, muted green long outer robe, ivory inner sleeves, gray-brown sash, loose trousers and boots, no age or costume changes. Reference 2 supplies the exact identity of the elderly mother: she is the LARGE FOREGROUND gray-haired woman immediately beside the little girl, NOT the smaller woman farther back in the queue. Preserve her deeply lined tired face, silver hair in a small high bun, worn beige-gray patched jacket, rough brown apron/overskirt, long dark gray-brown skirt and simple cloth-and-straw footwear. Isolate ONLY YEONWOO AND THIS MOTHER together, no little girl and no other figures, no background. This is ONE PHYSICALLY CONNECTED GROUP, not two separate atlas cells. Yeonwoo is on the LEFT, looking down to his RIGHT, and the mother is close on his RIGHT/front. Her knees have just weakened; she is still on her feet with both knees bent and upper body leaning toward him, weary but alive with eyes partly open, not already lying down or rescued/treated. Yeonwoo gently supports her at her near upper arm just above the elbow with one hand, while his other arm supports her other forearm in a natural stable hold. DRAW THE HANDS IN VISIBLE CONTACT WITH THE MOTHER'S CLOTHED ARM/FOREARM: fingers wrap around cloth, no gap of air, no hand aimed at an absent third person, no floating grip, no impossible arm entanglement. Mother is not embracing him and this is not romantic. Both complete heads, bodies, sleeves, hands and shoes must be present at natural proportions. Composition is compact: Yeonwoo's face is near the upper left, mother's face lower and just about 1.5 adult-face heights to his RIGHT and 1.5 face heights LOWER, so she fits between him and a separate game protagonist on the far right. They overlap naturally through the support action instead of standing far apart. The mother's head is comparable adult scale, not a child or miniature. Yeonwoo's head size/proportions remain the same as reference 1. Both lean/move only slightly; do not make an acrobatic rescue. No water, food, medicines, injury, blood, completed recovery, bags, labels, shadows on background, ground plane, haze, Seoa, scene or invented props. Transparent alpha-zero backdrop, generous padding around the full silhouette, tall or near-square canvas as needed. Keep identities and the natural actual contact unmistakable.",
       "references": [
         "assets/ancient/three-complete/characters/yeonwoo-fullbody-v1.png",
-        "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-before-collapse.png"
+        "docs/three-content/source-assets/backgrounds/goguryeo-spring-queue-before-collapse.png"
       ],
       "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-e719528a-9594-405c-9404-32df5920e715.png",
       "sourceFileVisualReview": true,
@@ -1022,18 +1082,18 @@
           "sha256": "e1dadcd9f40b89935297864d775b79c2626d56e07d81f6a453b11598772af01d"
         },
         {
-          "src": "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-before-collapse.png",
+          "src": "docs/three-content/source-assets/backgrounds/goguryeo-spring-queue-before-collapse.png",
           "sha256": "5060baac0f62d176e28d20ec2ee5567dc90cbe6843b29b7ab515092578c96ff9"
         }
       ]
     },
     {
       "key": "queue-mother-in-pair",
-      "repoSrc": "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-mother-in-pair-v1.png",
+      "repoSrc": "docs/three-content/source-assets/backgrounds/goguryeo-spring-queue-mother-in-pair-v1.png",
       "transparent": false,
       "prompt": "Edit the attached approved historical game background with the smallest possible continuity change. Preserve the exact 16:9 camera, every thatched house, mountain, cloudy sky, spring tree, stone wall, empty sack, dry soil, queue of waiting villagers, and especially the little girl in front at the right with her original face, hair and beige-and-brown clothes. REMOVE ONLY the LARGE GRAY-HAIRED ELDERLY WOMAN at the very front of the queue, beside that little girl, who is leaning on her knees. Do not remove the smaller older woman farther back. Fill the former foreground mother's area with a seamless continuation of the existing dry path, queue view and stone wall as appropriate, preserving all other people and objects. The removed mother is being supplied in a separate foreground sprite held by Yeonwoo, so do not draw any replacement elderly woman, ghost, silhouette, foreground man, rescue, food, water or extra actor anywhere. The girl's pose and gaze remain toward where her mother was. No improvement to the village, no new details, no altered weather or lighting, no changed identities. Keep the exact original warm hand-painted 2D style, proportions, colors and crop. Opaque full scene background; this is a new derived frame only for one line, not an edit to the original file.",
       "references": [
-        "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-before-collapse.png"
+        "docs/three-content/source-assets/backgrounds/goguryeo-spring-queue-before-collapse.png"
       ],
       "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-89f44fdf-8791-477e-879d-9c4a8d76c8bc.png",
       "sourceFileVisualReview": true,
@@ -1045,7 +1105,7 @@
       "mode": "RGB",
       "sourceReferences": [
         {
-          "src": "assets/ancient/three-complete/backgrounds/goguryeo-spring-queue-before-collapse.png",
+          "src": "docs/three-content/source-assets/backgrounds/goguryeo-spring-queue-before-collapse.png",
           "sha256": "5060baac0f62d176e28d20ec2ee5567dc90cbe6843b29b7ab515092578c96ff9"
         }
       ]
@@ -1053,7 +1113,7 @@
     {
       "key": "cheonghaejin-warehouse",
       "sceneId": "THR-C18-S03",
-      "repoSrc": "assets/ancient/three-complete/backgrounds/cheonghaejin-warehouse-v1.png",
+      "repoSrc": "docs/three-content/source-assets/backgrounds/cheonghaejin-warehouse-v1.png",
       "refs": [
         "/workspace/scratch/history-playable/dist/assets/ancient/three-v2/backgrounds/goguryeo-granary-office.webp"
       ],
@@ -1079,7 +1139,7 @@
     {
       "key": "balhae-jeongdangseong-office",
       "sceneId": "THR-C21-S04",
-      "repoSrc": "assets/ancient/three-complete/backgrounds/balhae-jeongdangseong-office-v1.png",
+      "repoSrc": "docs/three-content/source-assets/backgrounds/balhae-jeongdangseong-office-v1.png",
       "refs": [
         "/workspace/scratch/history-playable/dist/assets/ancient/three-v2/backgrounds/goguryeo-granary-office.webp"
       ],
@@ -1105,7 +1165,7 @@
     {
       "key": "bulguksa-distinct-pagodas",
       "sceneId": "THR-C17-S05",
-      "repoSrc": "assets/ancient/three-complete/backgrounds/bulguksa-distinct-pagodas-v1.png",
+      "repoSrc": "docs/three-content/source-assets/backgrounds/bulguksa-distinct-pagodas-v1.png",
       "refs": [
         "/workspace/scratch/fea3030a5c98/three-art-recovery/references/dabotap-khs.jpg",
         "/workspace/scratch/fea3030a5c98/three-art-recovery/references/seokgatap-khs.jpg",
@@ -1141,7 +1201,7 @@
     {
       "key": "silla-tomb-worksite",
       "sceneId": "THR-C10-S03",
-      "repoSrc": "assets/ancient/three-complete/backgrounds/silla-tomb-worksite-v1.png",
+      "repoSrc": "docs/three-content/source-assets/backgrounds/silla-tomb-worksite-v1.png",
       "refs": [
         "/workspace/scratch/history-playable/dist/assets/ancient/three-v2/backgrounds/goguryeo-hungry-village-spring.webp"
       ],
@@ -1167,7 +1227,7 @@
     {
       "key": "seokguram-assembly",
       "sceneId": "THR-C17-S06",
-      "repoSrc": "assets/ancient/three-complete/backgrounds/seokguram-assembly-v1.png",
+      "repoSrc": "docs/three-content/source-assets/backgrounds/seokguram-assembly-v1.png",
       "refs": [
         "/workspace/scratch/fea3030a5c98/three-art-recovery/references/seokguram-nrich-hanseokhong.jpg",
         "/workspace/scratch/history-playable/dist/assets/ancient/three-v2/backgrounds/goguryeo-granary-office.webp"
@@ -1197,8 +1257,8 @@
     },
     {
       "key": "silla-ox-field-readable-v3",
-      "repoSrc": "assets/ancient/three-complete/backgrounds/silla-ox-field-readable-v3.png",
-      "reference": "/workspace/scratch/fea3030a5c98/history-playable/dist/assets/ancient/three-complete/backgrounds/silla-ox-field-rest-portrait-v2.png",
+      "repoSrc": "docs/three-content/source-assets/backgrounds/silla-ox-field-readable-v3.png",
+      "reference": "docs/three-content/source-assets/backgrounds/silla-ox-field-rest-portrait-v2.png",
       "prompt": "Edit this approved tall 1024x1536 hand-painted historical farm background only to improve the physical composition. Keep the exact same Silla spring setting, same brown resting ox, same wooden yoke/slack rope and wooden plough with modest iron share, same art style, muted warm colors and village. The current ox and plough are too large and low for the foreground dialogue actors. Repaint the OX AND PLOUGH TOGETHER at roughly TWO THIRDS of their current size, farther back in the field, and shift their whole group UP. Their entire combined silhouette, from horns to all hooves and every plough handle/share, must fit in the compact central rectangle approximately x340..740 and y265..445 on this 1024x1536 canvas. Absolutely no ox/plough part below y460. They are grounded on the same receding field, naturally smaller in the middle distance, NOT floating or a pasted inventory icon. Keep the ox's head and lifted resting foreleg clearly visible and the complete plough immediately next to it; orient the plough backward in depth rather than widely sideways. Preserve no wound, no bandage, no treatment, no active forced ploughing, no collapse and no completed recovery. Move the horizon/village naturally as needed to make this composition believable. Lower two-thirds remains empty tilled earth for separate story actors. Do not change crop size, do not add people, do not add UI/text/signs/borders/letterboxing, do not make a poster or schematic. This is an ordinary physical farm scene. Portrait 2:3 opaque background.",
       "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-dca850d4-4dbf-4d07-b77f-b76d9ce87969.png",
       "sha256": "fd6cd6555e330778717f2767203db34ff994edec12c9dd6d9a0afbf23d6b304f",
@@ -1212,8 +1272,8 @@
     },
     {
       "key": "balhae-office-readable-labels-v3",
-      "repoSrc": "assets/ancient/three-complete/backgrounds/balhae-office-readable-labels-v3.png",
-      "reference": "/workspace/scratch/fea3030a5c98/history-playable/dist/assets/ancient/three-complete/backgrounds/balhae-office-readable-shelf-v2.png",
+      "repoSrc": "docs/three-content/source-assets/backgrounds/balhae-office-readable-labels-v3.png",
+      "reference": "docs/three-content/source-assets/backgrounds/balhae-office-readable-shelf-v2.png",
       "prompt": "Edit this exact approved 1024x1536 hand-painted Balhae office background with a small practical rearrangement of the same documents. Keep the architecture, furniture, daylight, style and palette. The upper shelf still has exactly THREE larger document bundles with large blank horizontal paper tags tied on their fronts. Reorganize the SIX smaller bundles currently on two lower shelves into ONE SINGLE ROW OF SIX on ONE shelf immediately below the large three. The six smaller bundles should each have one entirely blank horizontal cream paper tag, clearly independent, about 58x38 image pixels, and all six tags must remain visible/unobstructed. The whole 3+6 grouping fits high in the central portion x260..775 of the canvas, with the top three tags around y260..305 and all six lower tags around y365..410. There must be NO third row of bundles and NO label below y420, because separate story characters will cover that lower area. Preserve nine total bundles, 3 above and 6 below, neatly supported on two actual connected wooden shelves, not a flowchart, modern UI grid, invented card panel or floating paper. All tag surfaces MUST be blank without marks or pseudo-writing; exact historic names will be added as ink later. Keep the lower wall, low writing desk and broad open floor unchanged as much as possible. Do not add people, modern objects, headings, symbols, dividers, UI or text. Tall portrait 2:3 opaque background, exact original 2D historical illustration style.",
       "generatedPath": "/workspace/scratch/fea3030a5c98/generated_images/exec-99c6d3df-df61-4716-bc85-e59d10be7f52.png",
       "sha256": "482f923720c9616fdbfdbb3ded71cab1535ade7dfb42beb72ddd8adadba9a37b",
