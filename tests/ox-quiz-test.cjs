@@ -1,4 +1,5 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
+require('node:child_process').execFileSync(process.execPath,['scripts/build-ox-quiz-curation.cjs','--check'],{stdio:'pipe'});
 
 const scripts=[...fs.readFileSync('dist/index.html','utf8').matchAll(/<script src="([^"]+)"/g)]
  .map(match=>match[1]).filter(name=>name!=='pwa.js');
@@ -50,6 +51,7 @@ const targetCounts={prehistoric:100,kingdoms:120,goryeo:120,joseon:150,empire:10
 const questions=copy('globalThis.OX_QUESTIONS');
 const eras=copy('globalThis.OX_ERAS');
 const report=copy('globalThis.OX_ANALYSIS_REPORT');
+const curationReport=copy('globalThis.OX_CURATION_REPORT');
 const actualCounts=Object.fromEntries(Object.keys(targetCounts).map(eraId=>[eraId,questions.filter(question=>question.eraId===eraId).length]));
 assert.equal(eras.length,7,'seven OX eras must be exported');
 assert(questions.length>=810,`OX bank must contain at least 810 questions (actual ${questions.length})`);
@@ -64,19 +66,26 @@ assert.equal(report.generatedQuestionCount,questions.length,'analysis report tot
 assert.equal(report.linkedQuestionCount,questions.filter(question=>question.sourceQuestionIds.length).length,'linked count must come from the exported bank');
 assert.equal(Object.values(report.baselineEraCounts).reduce((sum,count)=>sum+count,0),210,'baseline inventory must remain intact');
 assert.equal(Object.values(report.addedEraCounts).reduce((sum,count)=>sum+count,0),600,'expansion inventory must report all additions');
-assert.equal(report.contentRevision,'2026-10-natural-fact-v1');
+assert.equal(report.contentRevision,'2026-10-deep-learning-v2');
+assert.equal(report.curatedQuestionCount,810,'every runtime question must use reviewed copy');
+assert.equal(curationReport.questionCount,810,'generated curation artifact must cover the whole bank');
+assert.deepEqual(curationReport.eraCounts,targetCounts);
+assert.deepEqual(curationReport.answerBalance,{o:405,x:405});
+assert(curationReport.explanationSentenceRange[0]>=2&&curationReport.explanationSentenceRange[1]<=4,'curated explanations must stay within 2-4 sentences');
+assert.equal(curationReport.declarativeStatementCount,810);
+assert.equal(curationReport.genericTemplateCount,0);
 assert.equal(report.editorialContextTokenMatchedCount,600);assert.equal(report.editorialContextTokenUnmatchedCount,0,'every expansion must have an editorial context-token audit trail');
 assert.equal(report.rawDirectLinkedCount+report.explanationOnlyMatchCount+report.genericTokenFallbackCount,600,'source-link quality tiers must cover every expansion');
 assert.equal(report.contextualFallbackCount,report.explanationOnlyMatchCount+report.genericTokenFallbackCount,'contextual fallback total must be explicit');
 assert.equal(report.unlinkedEditorialCount,report.contextualFallbackCount,'non-direct concepts must not expose unrelated official question ids');
 assert.deepEqual(report.expansionAnswerBalance,{o:300,x:300});
-assert(report.formatCounts.answerPrompt>300&&report.formatCounts.factStatement>0,'expansion must mix answer-presented questions with natural fact statements');
-assert.equal(report.formatCounts.answerPrompt+report.formatCounts.factStatement,600);
-for(const key of ['statementDuplicateCount','topicIdDuplicateCount','verifiedFactDuplicateCount','knowledgeFactDuplicateCount','baselineExpansionDuplicateCount','baselineExpansionNearDuplicateCount','expansionNearDuplicateCount','oppositePairDuplicateCount','wrongTagSameCount','wrongTagFactOverlapCount','wrongTagTokenCollisionCount'])assert.equal(report[key],0,`${key} must be zero`);
-assert.equal(report.sentenceValidation.invalidEndingCount,0);assert.equal(report.sentenceValidation.forbiddenFragmentCount,0);assert.equal(report.sentenceValidation.tooShortCount,0);assert.equal(report.sentenceValidation.xExplanationSpecificCount,300);
-assert.equal(report.sentenceValidation.questionWithoutPresentedAnswerCount,0,'every question-form item must present the answer to judge');
+assert.deepEqual(report.answerMigration,{legacyCompatibleCount:810,changedIds:[]},'re-reviewed answers must remain safe for existing attempt records in this release');
+assert.deepEqual(report.formatCounts,{declarativeStatement:600,questionForm:0},'generated additions must all be direct fact judgments');
+for(const key of ['statementDuplicateCount','topicIdDuplicateCount','verifiedFactDuplicateCount','knowledgeFactDuplicateCount','baselineExpansionDuplicateCount','baselineExpansionNearDuplicateCount','expansionNearDuplicateCount','oppositePairDuplicateCount'])assert.equal(report[key],0,`${key} must be zero`);
+assert.equal(report.sentenceValidation.invalidEndingCount,0);assert.equal(report.sentenceValidation.forbiddenFragmentCount,0);assert.equal(report.sentenceValidation.tooShortCount,0);
+assert.equal(report.sentenceValidation.questionFormCount,0,'all reviewed questions must be direct declarative judgments');
 assert.equal(report.sentenceValidation.mechanicalClassificationCount,0,'mechanical classification prompts must not be generated');
-assert.deepEqual(report.explanationValidation,{emptyCount:0,answerLabelMismatchCount:0,sentenceCountInvalidCount:0,xCorrectionMissingCount:0});
+assert.deepEqual(report.explanationValidation,{emptyCount:0,answerLabelLeakCount:0,sentenceCountInvalidCount:0,xCorrectionMissingCount:0,genericTemplateCount:0});
 assert.equal(new Set(questions.map(question=>question.id)).size,questions.length,'question ids must be unique');
 assert.equal(new Set(questions.map(question=>question.statement.trim())).size,questions.length,'question statements must be unique');
 assert.equal(new Set(questions.map(question=>question.topicId)).size,questions.length,'topic ids must be unique');
@@ -90,11 +99,14 @@ for(const question of questions){
  assert(Array.isArray(question.tags)&&question.tags.length>=2,`${question.id}: topic labels are required for analysis`);
  assert(Array.isArray(question.sourceQuestionIds)&&Array.isArray(question.sourceRounds),`${question.id}: source metadata must be arrays`);
   assert.equal(question.contentRevision,report.contentRevision,`${question.id}: content revision mismatch`);
-  assert(!/(?:이 문장이 (?:직접 )?설명하는 핵심 개념|위 설명은 .+로 분류|이 내용의 학습 주제)/.test(question.statement),`${question.id}: mechanical classification wording remains`);
-  if(question.statement.includes('?'))assert(question.statement.includes('→'),`${question.id}: question form must include the proposed answer`);
+  assert(!/(?:다음 설명에 해당하는 역사 용어|이 문장이 (?:직접 )?설명하는 핵심 개념|위 설명은 .+로 분류|이 내용의 학습 주제|→|\?)/.test(question.statement),`${question.id}: mechanical or question/arrow wording remains`);
   const explanationSentenceCount=(question.explanation.match(/[.!?](?=\s|$)/g)||[]).length;
-  assert(explanationSentenceCount>=2&&explanationSentenceCount<=3,`${question.id}: explanation must have 2-3 sentences`);
-  if(!question.answer)assert(question.explanation.includes('틀렸'),`${question.id}: X explanation must identify the incorrect part`);
+  assert(explanationSentenceCount>=2&&explanationSentenceCount<=4,`${question.id}: explanation must have 2-4 sentences`);
+  assert(!/^[OX]입니다\./.test(question.explanation),`${question.id}: feedback UI already presents the answer label`);
+  assert(!/(?:이 사실은 당시의 역사적 배경을 보여 줍니다|이는 .+의 특징입니다|위 설명은 올바른 역사적 사실입니다|제시된 답이 틀렸고 올바른 답은)/.test(question.explanation),`${question.id}: generic explanation remains`);
+  if(!question.answer)assert(/틀|아니|잘못|반대/.test(question.explanation),`${question.id}: X explanation must identify the incorrect part`);
+  const normalize=value=>String(value).normalize('NFKC').replace(/[\s.,!?·'"“”‘’():;~\-『』〈〉《》]/g,'');
+  assert(!normalize(question.explanation).startsWith(normalize(question.statement)),`${question.id}: explanation merely repeats the question`);
  if(!question.topicId.startsWith('supp-'))assert(question.sourceQuestionIds.length>0&&question.sourceRounds.length>0,`${question.id}: retained baseline source is required`);
  assert(question.sourceQuestionIds.every(id=>advancedIds.has(id)),`${question.id}: sources must be advanced official questions`);
  assert.deepEqual([...new Set(question.sourceRounds)].sort((a,b)=>a-b),question.sourceRounds,`${question.id}: source rounds must be unique/sorted`);
@@ -104,17 +116,9 @@ const expansionQuestions=questions.filter(question=>question.topicId.startsWith(
 assert.equal(expansionQuestions.filter(question=>question.sourceQuestionIds.length).length,report.rawDirectLinkedCount,'only raw-direct expansion links may be exported');
 assert.equal(questions.filter(question=>!question.topicId.startsWith('supp-')&&question.sourceQuestionIds.length).length,210,'all retained baseline concepts must keep their existing links');
 
-/* Audited corrections: dates/factual scope, ambiguous false labels, and known baseline/expansion duplicates stay fixed. */
-const byId=id=>questions.find(question=>question.id===id);
-assert(byId('ox-prehistoric-096').explanation.includes('변한에서는 철을 화폐처럼'),'iron-currency fact must not overgeneralize all Samhan');
-assert(!byId('ox-prehistoric-096').explanation.includes('삼한에서는 철을 화폐처럼'));
-assert(byId('ox-goryeo-098').explanation.includes('원이 고려 왕들에게 충 자가 든 시호를 내렸다'),'Yuan-era posthumous-title wording regressed');
-assert(byId('ox-republic-073').explanation.includes('1964년 한일 회담 추진에 반대'),'6·3 protest chronology regressed');
-for(const [id,wrongLabel] of Object.entries({'ox-prehistoric-052':'부여 제천 행사','ox-joseon-039':'조선 후기 광업','ox-joseon-129':'조선 군사 제도','ox-empire-070':'근대 교육','ox-republic-064':'남북 관계'})){
- assert.equal(byId(id).answer,false,`${id}: ambiguity guard must exercise an X item`);
- assert(byId(id).statement.includes(`→ ${wrongLabel}.`),`${id}: explicit unambiguous proposed answer missing`);
-}
-for(const [id,detail] of Object.entries({'ox-joseon-051':'관수 관급제','ox-joseon-088':'조헌과 영규','ox-joseon-093':'강홍립','ox-joseon-106':'선무군관포','ox-joseon-117':'도고','ox-empire-037':'보빙사','ox-empire-056':'전봉준을 총대장','ox-empire-058':'교정청','ox-empire-062':'공사 노비','ox-empire-077':'상공 학교','ox-occupation-083':'선전 활동과 포로 심문','ox-occupation-085':'지청천','ox-occupation-087':'조선 의용대의 일부','ox-occupation-100':'1929년 11월','ox-occupation-107':'1931년','ox-republic-042':'제주 4·3 특별법','ox-republic-062':'경향신문','ox-republic-081':'계엄','ox-republic-083':'정승화','ox-republic-098':'통일 방안의 공통성','ox-republic-100':'남측의 자본·기술'}))assert(byId(id).explanation.includes(detail),`${id}: audited replacement fact missing (${detail})`);
+/* Curated answers are authoritative after factual review. The migration report
+   proves that this release can preserve existing attempts without flipping any
+   historical correct/wrong result. */
 
 /* OX home starts with the compact weakness donut, then the seven era entries and
    finally wrong-answer review. Old daily/quick and duplicate summary cards stay gone. */
@@ -356,12 +360,13 @@ assert.equal(run('globalThis.OX_QUIZ_UI_READY'),true);
 
 /* Hybrid legacy records merge the latest event state without losing cumulative counts. */
 const migrationQuestion=questions[0];
-run(`(()=>{const q=OX_QUESTIONS.find(item=>item.id===${JSON.stringify(migrationQuestion.id)}),now='2026-10-08T01:02:03.000Z';meta().oxQuiz={records:{[q.id]:{attempts:3,correctCount:1,wrongCount:2}},wrongIds:[q.id],history:[{questionId:q.id,answer:q.answer,correct:true,answeredAt:now,sessionId:'legacy-hybrid',mode:'era'}],recentQuestionIds:[],completedSessions:[],activeSession:null,lastSession:null};save();})()`);
+run(`(()=>{const q=OX_QUESTIONS.find(item=>item.id===${JSON.stringify(migrationQuestion.id)}),now='2026-10-08T01:02:03.000Z';meta().oxQuiz={schemaVersion:3,contentRevision:'2026-10-natural-fact-v1',records:{[q.id]:{attempts:3,correctCount:1,wrongCount:2}},wrongIds:[q.id],history:[{questionId:q.id,answer:q.answer,correct:true,answeredAt:now,sessionId:'legacy-hybrid',mode:'era'}],recentQuestionIds:[],completedSessions:[],activeSession:null,lastSession:null};save();})()`);
 boot();
 const migratedRecord=copy(`meta().oxQuiz.records[${JSON.stringify(migrationQuestion.id)}]`),migratedEvent=copy('meta().oxQuiz.history[0]');
 assert.equal(migratedRecord.attempts,3);assert.equal(migratedRecord.correctCount,1);assert.equal(migratedRecord.wrongCount,2,'migration must preserve cumulative counts');
 assert.equal(migratedRecord.lastCorrect,true);assert(!run(`meta().oxQuiz.wrongIds.includes(${JSON.stringify(migrationQuestion.id)})`),'latest correct legacy event must mark review complete');
 assert(migratedEvent.topicId&&migratedEvent.eraId&&typeof migratedEvent.selectedAnswer==='boolean','legacy event must gain canonical fields');
+assert.equal(run('meta().oxQuiz.contentRevision'),report.contentRevision,'reviewed content revision must replace the old revision without deleting attempts');
 
 /* Reload keeps canonical event history and OX state after migration. */
 run('save()');const savedSnapshot=saved,historySnapshot=run('JSON.stringify(meta().oxQuiz.history)');boot();

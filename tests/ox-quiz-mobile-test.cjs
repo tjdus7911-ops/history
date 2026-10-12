@@ -52,15 +52,24 @@ const server=http.createServer((req,res)=>{
   assert.equal(await page.evaluate(()=>new Set(meta().oxQuiz.activeSession.questionIds).size),20,'era session duplicates '+width);
   assert((await page.locator('.ox-progress-label').innerText()).includes('전체 20문제'));
   assert.equal(await page.locator('.ox-question-meta small').innerText(),'한능검 심화 핵심 개념','answer-bearing topic leaked before choice '+width);
+  assert.equal(await page.locator('.ox-feedback').count(),0,'answer feedback leaked before choice '+width);
+  assert.equal(await page.locator('[data-ox-next]').count(),0,'next action leaked before choice '+width);
   assert((await page.locator('[data-ox-back]').boundingBox()).height>=44,'quiz back target too small '+width);
   const sizes=await page.locator('.ox-answer').evaluateAll(items=>items.map(item=>{const box=item.getBoundingClientRect();return {width:box.width,height:box.height}}));
   assert(sizes.every(size=>size.width>=120&&size.height>=72),'OX touch targets too small '+width);
   const correctAnswer=await page.evaluate(()=>{const session=meta().oxQuiz.activeSession;return OX_QUESTIONS.find(question=>question.id===session.questionIds[session.index]).answer});
   await page.locator(`[data-ox-answer="${String(!correctAnswer)}"]`).click();assert(await page.locator('.ox-feedback').isVisible());assert(await page.locator('[data-ox-next]').isVisible());
+  assert((await page.locator('.ox-feedback strong').innerText()).includes(`정답은 ${correctAnswer?'O':'X'}`),'correct answer label missing after choice '+width);
+  assert((await page.locator('.ox-feedback p').innerText()).split(/(?<=[.!?])\s+/).length>=2,'learning explanation must add context after choice '+width);
   assert.notEqual(await page.locator('.ox-question-meta small').innerText(),'한능검 심화 핵심 개념','topic label should be revealed after choice '+width);
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'quiz horizontal overflow '+width);
   await page.screenshot({path:`tmp/ox-mobile/answer-${width}.png`,fullPage:true});
   await page.reload();assert(await page.locator('.ox-feedback').isVisible(),'session feedback did not restore '+width);assert((await page.locator('.ox-progress-label').innerText()).includes('현재 1번'));
+  const firstQuestion=await page.locator('.ox-question-card h2').innerText();
+  await page.locator('[data-ox-next]').click();
+  assert((await page.locator('.ox-progress-label').innerText()).includes('현재 2번'),'next button did not advance quiz '+width);
+  assert.notEqual(await page.locator('.ox-question-card h2').innerText(),firstQuestion,'next button repeated the same question '+width);
+  assert.equal(await page.locator('.ox-feedback').count(),0,'next question must hide feedback until a choice '+width);
 
   await page.locator('[data-ox-back]').click();
   assert.equal(new URL(page.url()).hash,'#ox','quiz back must return to OX main '+width);
