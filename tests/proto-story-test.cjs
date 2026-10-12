@@ -14,8 +14,11 @@ function checkFrames(scene,entries,phase,index=null){
   assert(html.includes(h.run('esc('+JSON.stringify(entry.text)+')')),entry.lineId+' complete text');
   assert(html.includes('conversation-game proto-revision-game'));assert(html.includes('conversation-panel'));assert(!html.includes('class="proto-bubble'));
   assert.equal((html.match(/data-dialogue-index=/g)||[]).length,Math.min(3,cursor),entry.lineId+' shared recent-three layout');
-  if(entry.speaker==='주인공')assert(html.includes('data-speaker-type="player"')&&html.includes('주인공'),entry.lineId);
-  if(entry.speaker==='주인공(속마음)')assert(html.includes('주인공 · 속마음'),entry.lineId+' thought label');
+  const playerRows=html.match(/<div class="message-row player"[\s\S]*?<\/div><\/div>/g)||[],npcRows=html.match(/<div class="message-row npc"[\s\S]*?<\/div><\/div>/g)||[];
+  assert(playerRows.every(row=>!row.includes('character-name')),entry.lineId+' player nameplate removed');
+  assert(npcRows.every(row=>row.includes('character-name')),entry.lineId+' NPC nameplate retained');
+  if(entry.speaker==='주인공')assert(html.includes('data-speaker-type="player"'),entry.lineId+' player side retained');
+  if(entry.speaker==='주인공(속마음)')assert(!html.includes('<span class="character-name">주인공 · 속마음</span>'),entry.lineId+' thought nameplate removed');
   frames++;
  }
 }
@@ -31,6 +34,7 @@ for(const scene of scenes){
  if(scene.join.length){checkFrames(scene,scene.join,'join',scene.choices.length?0:null);assert(!h.run('game()').includes('choice-dock'));}
 }
 assert.equal(frames,1369);assert.equal(choices,108);
+assert.equal(h.run("CHARACTERS.proto_modern.characterName"),'주인공','protagonist identity data must remain intact');
 assert.equal(h.run('PROTO_CHECKPOINTS.length'),11);assert.equal(h.run('PROTO_STUDY_QUESTION_IDS.length'),23);assert.equal(h.run("QUESTIONS.filter(q=>q.protoStoryVersion===2).length"),23);
 for(const point of source.examPlan.queues){const scene=scenes.find(s=>s.sceneId===point.sceneId);assert.equal(point.afterLineId,(scene.join.length?scene.join:scene.main).at(-1).lineId);}
 console.log('PASS: all 1369 authored utterance frames and 108 choice buttons use the approved common messenger (3 recent messages / 2 with choices); 83 scenes, 31 learning topics and 23 questions in 11 queues.');

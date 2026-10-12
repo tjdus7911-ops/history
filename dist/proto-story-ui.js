@@ -218,11 +218,6 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
   const portraits=cast.map(entry=>stagePortrait(entry,entry.position,entry.characterId===active.characterId)).join('');
   return portraits?'<div class="character-stage" data-slot-mode="proto-conversation" aria-hidden="true">'+portraits+'</div>':'';
  };
- const beforeBubble=dialogueBubble;
- dialogueBubble=function(entry,index){
-  const html=beforeBubble(entry.protoSpeaker==='주인공'?{...entry,characterName:'주인공'}:entry,index);
-  return entry.protoKind==='thought'?html.replace('<p>','<span class="character-name">주인공 · 속마음</span><p>'):html;
- };
  const beforeGame=game;
  game=function(){
   const source=currentSource();if(!isProto(source))return beforeGame();
