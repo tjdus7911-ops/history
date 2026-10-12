@@ -64,14 +64,19 @@ assert.equal(report.generatedQuestionCount,questions.length,'analysis report tot
 assert.equal(report.linkedQuestionCount,questions.filter(question=>question.sourceQuestionIds.length).length,'linked count must come from the exported bank');
 assert.equal(Object.values(report.baselineEraCounts).reduce((sum,count)=>sum+count,0),210,'baseline inventory must remain intact');
 assert.equal(Object.values(report.addedEraCounts).reduce((sum,count)=>sum+count,0),600,'expansion inventory must report all additions');
+assert.equal(report.contentRevision,'2026-10-natural-fact-v1');
 assert.equal(report.editorialContextTokenMatchedCount,600);assert.equal(report.editorialContextTokenUnmatchedCount,0,'every expansion must have an editorial context-token audit trail');
 assert.equal(report.rawDirectLinkedCount+report.explanationOnlyMatchCount+report.genericTokenFallbackCount,600,'source-link quality tiers must cover every expansion');
 assert.equal(report.contextualFallbackCount,report.explanationOnlyMatchCount+report.genericTokenFallbackCount,'contextual fallback total must be explicit');
 assert.equal(report.unlinkedEditorialCount,report.contextualFallbackCount,'non-direct concepts must not expose unrelated official question ids');
-assert.deepEqual(report.expansionAnswerBalance,{o:300,x:300});assert.deepEqual(report.templateParity,{o:300,x:300});
+assert.deepEqual(report.expansionAnswerBalance,{o:300,x:300});
+assert(report.formatCounts.answerPrompt>300&&report.formatCounts.factStatement>0,'expansion must mix answer-presented questions with natural fact statements');
+assert.equal(report.formatCounts.answerPrompt+report.formatCounts.factStatement,600);
 for(const key of ['statementDuplicateCount','topicIdDuplicateCount','verifiedFactDuplicateCount','knowledgeFactDuplicateCount','baselineExpansionDuplicateCount','baselineExpansionNearDuplicateCount','expansionNearDuplicateCount','oppositePairDuplicateCount','wrongTagSameCount','wrongTagFactOverlapCount','wrongTagTokenCollisionCount'])assert.equal(report[key],0,`${key} must be zero`);
 assert.equal(report.sentenceValidation.invalidEndingCount,0);assert.equal(report.sentenceValidation.forbiddenFragmentCount,0);assert.equal(report.sentenceValidation.tooShortCount,0);assert.equal(report.sentenceValidation.xExplanationSpecificCount,300);
-assert.deepEqual(report.explanationValidation,{emptyCount:0,answerLabelMismatchCount:0});
+assert.equal(report.sentenceValidation.questionWithoutPresentedAnswerCount,0,'every question-form item must present the answer to judge');
+assert.equal(report.sentenceValidation.mechanicalClassificationCount,0,'mechanical classification prompts must not be generated');
+assert.deepEqual(report.explanationValidation,{emptyCount:0,answerLabelMismatchCount:0,sentenceCountInvalidCount:0,xCorrectionMissingCount:0});
 assert.equal(new Set(questions.map(question=>question.id)).size,questions.length,'question ids must be unique');
 assert.equal(new Set(questions.map(question=>question.statement.trim())).size,questions.length,'question statements must be unique');
 assert.equal(new Set(questions.map(question=>question.topicId)).size,questions.length,'topic ids must be unique');
@@ -84,6 +89,12 @@ for(const question of questions){
  assert(['medium','hard'].includes(question.difficulty),`${question.id}: unsupported difficulty`);
  assert(Array.isArray(question.tags)&&question.tags.length>=2,`${question.id}: topic labels are required for analysis`);
  assert(Array.isArray(question.sourceQuestionIds)&&Array.isArray(question.sourceRounds),`${question.id}: source metadata must be arrays`);
+  assert.equal(question.contentRevision,report.contentRevision,`${question.id}: content revision mismatch`);
+  assert(!/(?:이 문장이 (?:직접 )?설명하는 핵심 개념|위 설명은 .+로 분류|이 내용의 학습 주제)/.test(question.statement),`${question.id}: mechanical classification wording remains`);
+  if(question.statement.includes('?'))assert(question.statement.includes('→'),`${question.id}: question form must include the proposed answer`);
+  const explanationSentenceCount=(question.explanation.match(/[.!?](?=\s|$)/g)||[]).length;
+  assert(explanationSentenceCount>=2&&explanationSentenceCount<=3,`${question.id}: explanation must have 2-3 sentences`);
+  if(!question.answer)assert(question.explanation.includes('틀렸'),`${question.id}: X explanation must identify the incorrect part`);
  if(!question.topicId.startsWith('supp-'))assert(question.sourceQuestionIds.length>0&&question.sourceRounds.length>0,`${question.id}: retained baseline source is required`);
  assert(question.sourceQuestionIds.every(id=>advancedIds.has(id)),`${question.id}: sources must be advanced official questions`);
  assert.deepEqual([...new Set(question.sourceRounds)].sort((a,b)=>a-b),question.sourceRounds,`${question.id}: source rounds must be unique/sorted`);
@@ -101,7 +112,7 @@ assert(byId('ox-goryeo-098').explanation.includes('원이 고려 왕들에게 �
 assert(byId('ox-republic-073').explanation.includes('1964년 한일 회담 추진에 반대'),'6·3 protest chronology regressed');
 for(const [id,wrongLabel] of Object.entries({'ox-prehistoric-052':'부여 제천 행사','ox-joseon-039':'조선 후기 광업','ox-joseon-129':'조선 군사 제도','ox-empire-070':'근대 교육','ox-republic-064':'남북 관계'})){
  assert.equal(byId(id).answer,false,`${id}: ambiguity guard must exercise an X item`);
- assert(byId(id).statement.includes(`핵심 개념은 ${wrongLabel}이다`),`${id}: explicit unambiguous wrong label missing`);
+ assert(byId(id).statement.includes(`→ ${wrongLabel}.`),`${id}: explicit unambiguous proposed answer missing`);
 }
 for(const [id,detail] of Object.entries({'ox-joseon-051':'관수 관급제','ox-joseon-088':'조헌과 영규','ox-joseon-093':'강홍립','ox-joseon-106':'선무군관포','ox-joseon-117':'도고','ox-empire-037':'보빙사','ox-empire-056':'전봉준을 총대장','ox-empire-058':'교정청','ox-empire-062':'공사 노비','ox-empire-077':'상공 학교','ox-occupation-083':'선전 활동과 포로 심문','ox-occupation-085':'지청천','ox-occupation-087':'조선 의용대의 일부','ox-occupation-100':'1929년 11월','ox-occupation-107':'1931년','ox-republic-042':'제주 4·3 특별법','ox-republic-062':'경향신문','ox-republic-081':'계엄','ox-republic-083':'정승화','ox-republic-098':'통일 방안의 공통성','ox-republic-100':'남측의 자본·기술'}))assert(byId(id).explanation.includes(detail),`${id}: audited replacement fact missing (${detail})`);
 
@@ -110,6 +121,7 @@ for(const [id,detail] of Object.entries({'ox-joseon-051':'관수 관급제','ox-
 assert(!html.includes('data-nav="association"')&&!html.includes('>암기법<'));
 click({nav:'ox'});
 assert(html.includes('OX 퀴즈')&&html.includes('한능검 심화 핵심 개념을 빠르게 확인해요.'));
+assert.equal(run('meta().oxQuiz.schemaVersion'),3);assert.equal(run('meta().oxQuiz.contentRevision'),report.contentRevision,'saved OX metadata must track the revised answer key');
 for(const removed of ['오늘의 심화 핵심 개념','오늘의 OX 퀴즈','빠른 OX 퀴즈','QUICK START'])assert(!html.includes(removed),`removed menu remains: ${removed}`);
 assert(!html.includes('data-ox-start="daily"')&&!html.includes('data-ox-start="quick"'),'daily/quick start controls must be removed');
 assert.equal((html.match(/data-ox-era=/g)||[]).length,7,'home must render seven era cards');
@@ -153,6 +165,7 @@ assert.equal(new Set(session.questionIds).size,20);assert(session.questionIds.ev
 const firstSessionIds=[...session.questionIds],firstQuestion=questions.find(question=>question.id===session.questionIds[0]);
 assert(html.includes('<small>한능검 심화 핵심 개념</small>'),'the answer-bearing topic label must stay hidden before answering');
 assert(!html.includes(`<small>${firstQuestion.tags.join(' · ')}</small>`),'the correct topic must not leak before an O/X choice');
+assert(!html.includes('class="ox-feedback')&&!html.includes('data-ox-next="true"'),'answer, explanation, and next action must stay hidden before an O/X choice');
 answerCurrent(false);
 assert(html.includes(`<small>${firstQuestion.tags.join(' · ')}</small>`),'topic label should be revealed with the explanation');
 assert(!html.includes('연계 심화 기출'),'unreviewed source-round claims must not be rendered in OX feedback');

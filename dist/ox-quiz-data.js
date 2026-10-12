@@ -1,5 +1,6 @@
-/* Advanced Korean History Proficiency Test concept-based OX question bank. */
+/* Advanced Korean History Proficiency Test fact-judgement OX question bank. */
 (function(){
+const OX_CONTENT_REVISION='2026-10-natural-fact-v1';
 const SOURCE_RECORDS=(globalThis.OFFICIAL_EXAM_SOURCE_RECORDS||[]).filter(record=>record.examLevel==='심화');
 const EXPLANATIONS=globalThis.OFFICIAL_EXAM_EXPLANATION_RECORDS||[];
 const EXPLANATION_BY_ID=new Map(EXPLANATIONS.map(record=>[record.officialQuestionId,record]));
@@ -962,10 +963,9 @@ const WRONG_TAG_OVERRIDES={
  'ox-republic-064':'남북 관계'
 };
 
-function directionParticle(value){
- const text=String(value).trim(),code=text.charCodeAt(text.length-1)-0xac00,finalCode=code>=0&&code<=11171?code%28:0;
- return finalCode&&finalCode!==8?'으로':'로';
-}
+const sentenceBody=value=>String(value||'').trim().replace(/[.!?]+$/,'');
+const sentence=value=>`${sentenceBody(value)}.`;
+const answerPrompt=(fact,presentedTag)=>`다음 설명에 해당하는 역사 용어는? “${sentenceBody(fact)}” → ${presentedTag}.`;
 
 const baselineEraCounts=Object.fromEntries(OX_ERAS.map(era=>[era.id,(BANK[era.id]||[]).length]));
 const addedEraCounts={};
@@ -980,9 +980,9 @@ for(const era of OX_ERAS){
  if(eligible.length<required)throw new Error(`OX expansion source evidence shortage: ${era.id} ${eligible.length}/${required}`);
  const selected=eligible.slice(0,required),eraIndex=OX_ERAS.findIndex(candidate=>candidate.id===era.id);
  selected.forEach((entry,index)=>{
-   const sequence=baselineEraCounts[era.id]+index+1,questionId=`ox-${era.id}-${String(sequence).padStart(3,'0')}`,answer=(sequence-1+eraIndex)%2===0,wrongTag=WRONG_TAG_OVERRIDES[questionId]||chooseWrongTag(entry,index,selected),presentedTag=answer?entry.tag:wrongTag,trueStatement=`${entry.fact} 이 문장이 직접 설명하는 핵심 개념은 ${entry.tag}이다.`,falseStatement=`${entry.fact} 이 문장이 직접 설명하는 핵심 개념은 ${wrongTag}이다.`,falseReason=`직접 설명하는 핵심 개념을 ${wrongTag}${directionParticle(wrongTag)} 분류한 부분이 틀렸습니다. 올바른 핵심 개념은 ${entry.tag}입니다.`,trueReason=`사실 내용과 핵심 개념 분류가 모두 옳습니다. 올바른 핵심 개념은 ${entry.tag}입니다.`,sourceIds=entry.sources.map(source=>source.officialQuestionId);
+   const sequence=baselineEraCounts[era.id]+index+1,questionId=`ox-${era.id}-${String(sequence).padStart(3,'0')}`,answer=(sequence-1+eraIndex)%2===0,wrongTag=WRONG_TAG_OVERRIDES[questionId]||chooseWrongTag(entry,index,selected),presentedTag=answer?entry.tag:wrongTag,useAnswerPrompt=!answer||Math.floor(index/2)%4===0,trueStatement=useAnswerPrompt?answerPrompt(entry.fact,entry.tag):entry.fact,falseStatement=answerPrompt(entry.fact,wrongTag),falseReason=`제시된 답이 ${wrongTag}인 부분이 틀렸고, 올바른 답은 ${entry.tag}입니다.`,trueReason=useAnswerPrompt?`제시된 답은 ${entry.tag}이며, 역사적 사실과 일치합니다.`:'',sourceIds=entry.sources.map(source=>source.officialQuestionId);
   BANK[era.id].push([`supp-${era.id}-${String(index+1).padStart(3,'0')}`,trueStatement,falseStatement,[entry.sourceTerm],[era.shortName,entry.tag],falseReason,sourceIds,entry.fact,trueReason]);
-   expansionProvenance.push({eraId:era.id,topicId:`supp-${era.id}-${String(index+1).padStart(3,'0')}`,method:'editorial-fact',sourceSearchTerm:entry.sourceTerm,rawDirectMatch:entry.rawDirectMatch,explanationExactMatch:entry.explanationExactMatch,evidenceTokens:entry.matchedTokens,sourceQuestionIds:sourceIds,contextualSourceQuestionIds:entry.contextualSources.map(source=>source.officialQuestionId),sequence,answer,fact:entry.fact,correctTag:entry.tag,presentedTag,wrongTag:answer?null:wrongTag});
+   expansionProvenance.push({eraId:era.id,topicId:`supp-${era.id}-${String(index+1).padStart(3,'0')}`,method:'editorial-fact',format:useAnswerPrompt?'answer-prompt':'fact-statement',sourceSearchTerm:entry.sourceTerm,rawDirectMatch:entry.rawDirectMatch,explanationExactMatch:entry.explanationExactMatch,evidenceTokens:entry.matchedTokens,sourceQuestionIds:sourceIds,contextualSourceQuestionIds:entry.contextualSources.map(source=>source.officialQuestionId),sequence,answer,fact:entry.fact,correctTag:entry.tag,presentedTag,wrongTag:answer?null:wrongTag});
  });
  addedEraCounts[era.id]=required;
 }
@@ -995,7 +995,11 @@ for(const [eraIndex,era] of OX_ERAS.entries()){
  definitions.forEach((definition,index)=>{
    const [topicId,fact,falseStatement,terms,tags,falseReason,explicitSourceIds,verifiedFact,trueReason]=definition,hasExplicitSourceIds=Array.isArray(explicitSourceIds),explicitSources=(explicitSourceIds||[]).map(id=>SOURCE_RECORDS.find(source=>source.officialQuestionId===id)).filter(Boolean),sources=hasExplicitSourceIds?explicitSources:relatedSources(era.id,terms),sourceQuestionIds=sources.map(source=>source.officialQuestionId),sourceRounds=[...new Set(sources.map(source=>source.examRound))].sort((a,b)=>a-b),answer=(index+eraIndex)%2===0,explanationFact=verifiedFact||fact;
    const id=`ox-${era.id}-${String(index+1).padStart(3,'0')}`;
-   OX_QUESTIONS.push({id,eraId:era.id,topicId,statement:answer?fact:falseStatement,answer,explanation:`정답은 ${answer?'O':'X'}입니다. ${answer?(trueReason?`${trueReason} `:''):(falseReason?`${falseReason} `:'')}${explanationFact}`.trim(),difficulty:sourceRounds.length>=3?'hard':'medium',sourceQuestionIds,sourceRounds,frequency:sourceRounds.length,tags:[...tags]});
+   const statement=answer?fact:falseStatement;
+   const explanation=answer
+    ?`O입니다. ${trueReason?sentence(trueReason):sentence(explanationFact)} ${trueReason?sentence(explanationFact):`이 사실은 당시의 ${tags.at(-1)}에 관한 역사적 배경을 보여 줍니다.`}`
+    :`X입니다. ${falseReason?sentence(falseReason):`“${sentenceBody(statement)}”라는 부분이 틀렸습니다.`} ${sentence(explanationFact)}`;
+   OX_QUESTIONS.push({id,eraId:era.id,topicId,statement,answer,explanation,difficulty:sourceRounds.length>=3?'hard':'medium',sourceQuestionIds,sourceRounds,frequency:sourceRounds.length,tags:[...tags],contentRevision:OX_CONTENT_REVISION});
    knowledgeRows.push({id,eraId:era.id,topicId,key:normalizeKnowledge(explanationFact),fact:explanationFact,answer,isExpansion:topicId.startsWith('supp-')});
   });
 }
@@ -1025,11 +1029,14 @@ const sentenceForbiddenPattern=/[㉠-㉹]|(?:자료|보기|선지|정답)\s*(?:�
 const wrongTagSameCount=expansionProvenance.filter(item=>!item.answer&&item.wrongTag===item.correctTag).length;
 const wrongTagFactOverlapCount=expansionProvenance.filter(item=>!item.answer&&classificationTokens(item.wrongTag).some(token=>item.fact.replace(/\s+/g,'').includes(token))).length;
 const wrongTagTokenCollisionCount=expansionProvenance.filter(item=>!item.answer&&classificationTokens(item.wrongTag).some(token=>classificationTokens(item.correctTag).includes(token))).length;
-const templatePattern=/ 이 문장이 직접 설명하는 핵심 개념은 .+이다\.$/;
-const templateParity={o:expansionQuestions.filter(question=>question.answer&&templatePattern.test(question.statement)).length,x:expansionQuestions.filter(question=>!question.answer&&templatePattern.test(question.statement)).length};
-const sentenceValidation={invalidEndingCount:expansionQuestions.filter(question=>!/[.!?]$/.test(question.statement)).length,forbiddenFragmentCount:expansionQuestions.filter(question=>sentenceForbiddenPattern.test(question.statement)).length,tooShortCount:expansionQuestions.filter(question=>question.statement.length<20).length,xExplanationSpecificCount:expansionQuestions.filter(question=>!question.answer&&question.explanation.includes('분류한 부분이 틀렸습니다')).length};
-const explanationValidation={emptyCount:OX_QUESTIONS.filter(question=>!question.explanation.trim()).length,answerLabelMismatchCount:OX_QUESTIONS.filter(question=>!question.explanation.startsWith(`정답은 ${question.answer?'O':'X'}입니다.`)).length};
+const mechanicalClassificationPattern=/(?:이 문장이 (?:직접 )?설명하는 핵심 개념|위 설명은 .+로 분류|이 내용의 학습 주제)/;
+const answerPromptPattern=/\?\s*“.+”\s*→\s*.+\.$/;
+const explanationSentenceCount=value=>(String(value).match(/[.!?](?=\s|$)/g)||[]).length;
+const formatCounts={answerPrompt:expansionQuestions.filter(question=>answerPromptPattern.test(question.statement)).length,factStatement:expansionQuestions.filter(question=>!question.statement.includes('?')).length};
+const sentenceValidation={invalidEndingCount:expansionQuestions.filter(question=>!/[.!?]$/.test(question.statement)).length,forbiddenFragmentCount:expansionQuestions.filter(question=>sentenceForbiddenPattern.test(question.statement)).length,tooShortCount:expansionQuestions.filter(question=>question.statement.length<20).length,xExplanationSpecificCount:expansionQuestions.filter(question=>!question.answer&&question.explanation.includes('부분이 틀렸고, 올바른 답은')).length,questionWithoutPresentedAnswerCount:OX_QUESTIONS.filter(question=>question.statement.includes('?')&&!question.statement.includes('→')).length,mechanicalClassificationCount:OX_QUESTIONS.filter(question=>mechanicalClassificationPattern.test(question.statement)).length};
+const explanationValidation={emptyCount:OX_QUESTIONS.filter(question=>!question.explanation.trim()).length,answerLabelMismatchCount:OX_QUESTIONS.filter(question=>!question.explanation.startsWith(`${question.answer?'O':'X'}입니다.`)).length,sentenceCountInvalidCount:OX_QUESTIONS.filter(question=>{const count=explanationSentenceCount(question.explanation);return count<2||count>3}).length,xCorrectionMissingCount:OX_QUESTIONS.filter(question=>!question.answer&&!question.explanation.includes('틀렸')).length};
 globalThis.OX_ERAS=OX_ERAS;
 globalThis.OX_QUESTIONS=OX_QUESTIONS;
-globalThis.OX_ANALYSIS_REPORT={examLevel:'심화',roundCount:roundNumbers.length,rounds:roundNumbers,questionCount:SOURCE_RECORDS.length,generatedQuestionCount:OX_QUESTIONS.length,baselineEraCounts,addedEraCounts,eraCounts,answerBalance:{o:OX_QUESTIONS.filter(question=>question.answer).length,x:OX_QUESTIONS.filter(question=>!question.answer).length},expansionAnswerBalance,linkedQuestionCount:OX_QUESTIONS.filter(question=>question.sourceQuestionIds.length).length,rawDirectLinkedCount:expansionProvenance.filter(item=>item.rawDirectMatch).length,explanationOnlyMatchCount:expansionProvenance.filter(item=>!item.rawDirectMatch&&item.explanationExactMatch).length,genericTokenFallbackCount:expansionProvenance.filter(item=>!item.explanationExactMatch&&item.evidenceTokens.length).length,contextualFallbackCount:expansionProvenance.filter(item=>!item.rawDirectMatch&&item.evidenceTokens.length).length,unlinkedEditorialCount:expansionProvenance.filter(item=>!item.sourceQuestionIds.length).length,editorialContextTokenMatchedCount:expansionProvenance.filter(item=>item.evidenceTokens.length).length,editorialContextTokenUnmatchedCount:expansionProvenance.filter(item=>!item.evidenceTokens.length).length,statementDuplicateCount,topicIdDuplicateCount,verifiedFactDuplicateCount,knowledgeFactDuplicateCount,baselineExpansionDuplicateCount,baselineExpansionNearDuplicateCount,baselineExpansionNearDuplicatePairs,expansionNearDuplicateCount,expansionNearDuplicatePairs,oppositePairDuplicateCount,wrongTagSameCount,wrongTagFactOverlapCount,wrongTagTokenCollisionCount,templateParity,sentenceValidation,explanationValidation,provenance:{rawDirectOfficialConcept:{total:expansionProvenance.filter(item=>item.rawDirectMatch).length},editorialFact:{total:expansionQuestions.length,o:expansionAnswerBalance.o,x:expansionAnswerBalance.x}},topConcepts};
+globalThis.OX_CONTENT_REVISION=OX_CONTENT_REVISION;
+globalThis.OX_ANALYSIS_REPORT={contentRevision:OX_CONTENT_REVISION,examLevel:'심화',roundCount:roundNumbers.length,rounds:roundNumbers,questionCount:SOURCE_RECORDS.length,generatedQuestionCount:OX_QUESTIONS.length,baselineEraCounts,addedEraCounts,eraCounts,answerBalance:{o:OX_QUESTIONS.filter(question=>question.answer).length,x:OX_QUESTIONS.filter(question=>!question.answer).length},expansionAnswerBalance,linkedQuestionCount:OX_QUESTIONS.filter(question=>question.sourceQuestionIds.length).length,rawDirectLinkedCount:expansionProvenance.filter(item=>item.rawDirectMatch).length,explanationOnlyMatchCount:expansionProvenance.filter(item=>!item.rawDirectMatch&&item.explanationExactMatch).length,genericTokenFallbackCount:expansionProvenance.filter(item=>!item.explanationExactMatch&&item.evidenceTokens.length).length,contextualFallbackCount:expansionProvenance.filter(item=>!item.rawDirectMatch&&item.evidenceTokens.length).length,unlinkedEditorialCount:expansionProvenance.filter(item=>!item.sourceQuestionIds.length).length,editorialContextTokenMatchedCount:expansionProvenance.filter(item=>item.evidenceTokens.length).length,editorialContextTokenUnmatchedCount:expansionProvenance.filter(item=>!item.evidenceTokens.length).length,statementDuplicateCount,topicIdDuplicateCount,verifiedFactDuplicateCount,knowledgeFactDuplicateCount,baselineExpansionDuplicateCount,baselineExpansionNearDuplicateCount,baselineExpansionNearDuplicatePairs,expansionNearDuplicateCount,expansionNearDuplicatePairs,oppositePairDuplicateCount,wrongTagSameCount,wrongTagFactOverlapCount,wrongTagTokenCollisionCount,formatCounts,sentenceValidation,explanationValidation,provenance:{rawDirectOfficialConcept:{total:expansionProvenance.filter(item=>item.rawDirectMatch).length},editorialFact:{total:expansionQuestions.length,o:expansionAnswerBalance.o,x:expansionAnswerBalance.x}},topConcepts};
 })();

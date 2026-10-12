@@ -64,7 +64,8 @@ function ensureOXMeta(){
  ox.completedSessions=Array.isArray(ox.completedSessions)?ox.completedSessions:[];
  if(ox.activeSession&&!validOXSession(ox.activeSession))ox.activeSession=null;
  if(ox.lastSession&&!validOXSession(ox.lastSession,true))ox.lastSession=null;
- ox.schemaVersion=2;
+ ox.schemaVersion=3;
+ ox.contentRevision=globalThis.OX_CONTENT_REVISION||null;
  oxMetaCache=ox;
  return ox;
 }
