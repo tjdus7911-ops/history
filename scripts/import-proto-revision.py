@@ -7,9 +7,9 @@ import json
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'docs/proto-revision/눈떠보니원삼국_개정게임데이터.json'
-EXPECTED_SHA = 'd9e183fedd783fee7f7792dcb19c71a5a09d6c8188e266ea932b7361d1f0bed2'
+EXPECTED_SHA = 'e34fce45eedabdde950c1b08f440177cdfe958f7636b24022f8f7e84f6816595'
 LEGACY_QUESTIONS = ROOT / 'docs/proto-revision/legacy-study-questions.json'
-LEGACY_SHA = 'aec1224746096bac22cfa81edd6b949d4a09213877e0968c074ef05a62616b11'
+LEGACY_SHA = '32b3abdec10a4e359a8935c76dec0725d7780b61d4e118395e02baa7e130e016'
 
 
 def verify(data):
@@ -49,7 +49,8 @@ def verify(data):
         assert 0 <= question['answerIndex0'] < question['choiceCount']
         original = catalog[question['officialQuestionId']]
         assert original['answer'] == question['answerIndex0']
-        assert original['questionImage'] == question['questionImage']
+        assert original['questionImage'] == original['detailImage']
+        assert hashlib.sha256((ROOT / 'dist' / original['detailImage']).read_bytes()).hexdigest() == original['detailImageSha256']
         assert hashlib.sha256((ROOT / 'dist' / question['questionImage']).read_bytes()).hexdigest() == question['questionImageSha256']
         placement = question['proposed']
         assert all(order[required] <= order[placement['quizAfterSceneId']] for required in placement['requiresReadSceneIds'])

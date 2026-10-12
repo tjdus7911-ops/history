@@ -45,7 +45,7 @@ async function main(){
     }
     assert(partners.has('doyun')&&[...partners].every(id=>['doyun','hyunwoo'].includes(id)));
     assert.equal(await page.evaluate(()=>Object.keys(run().questionResults).length),29);
-    await tap('[data-nav="teaser"]');assert(await page.getByText('CH.04 시작하기',{exact:true}).count());
+    const direct='[data-action="chapter-next-direct"][data-chapter="ch03"]';if(await page.locator(direct).count()){await tap(direct);assert.equal(await page.evaluate(()=>run().currentChapter),'ch04')}else{await tap('[data-nav="teaser"]');assert(await page.getByText('CH.04 시작하기',{exact:true}).count())}
     assert.deepEqual(errors,[]);console.log(`PASS: CH.03 ${width}px full play, ${spokenFrames} spoken frames, two slots, emphasis, image decode, no overflow and CH.04 unlock.`);await profile.close();
   }
 }

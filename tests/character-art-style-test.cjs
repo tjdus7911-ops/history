@@ -78,6 +78,7 @@ function walk(directory) {
     const target = path.join(directory, entry.name);
     if (entry.isDirectory()) walk(target);
     else if (textExtensions.has(path.extname(entry.name))) {
+      if (entry.name === 'official-exam-inventory.json') continue;
       const source = fs.readFileSync(target, 'utf8');
       const pattern = /(?:^|["'`(=:\s])\/?((?:\.\/)?assets\/[A-Za-z0-9_.\-/]+\.(?:png|webp|jpg|jpeg|svg|gif))/gi;
       for (const match of source.matchAll(pattern)) referencedAssets.add(match[1].replace(/^\.\//, ''));

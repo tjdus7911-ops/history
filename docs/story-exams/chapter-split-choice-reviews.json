@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "sourceDocument": "dist/chapter-split.js",
+  "reviewMethod": "chapter-split.js의 verifiedStoryQuestion 수기 전사 중 지정된 8개 공식 문항의 choices와 choiceExplanations를 실행 없이 그대로 추출했다. 정답 인덱스는 0부터 시작한다.",
+  "records": [
+    {
+      "officialQuestionId": "official-65-advanced-10",
+      "examRound": 65,
+      "examLevel": "심화",
+      "questionNumber": 10,
+      "answer": 0,
+      "choices": [
+        "개국 공신에게 역분전을 지급하였다.",
+        "외침에 대비하여 광군을 조직하였다.",
+        "광덕, 준풍 등의 독자적 연호를 사용하였다.",
+        "관학 진흥을 목적으로 양현고를 운영하였다.",
+        "주전도감을 설치하여 해동통보를 발행하였다."
+      ],
+      "choiceExplanations": [
+        "태조는 개국 공신에게 역분전을 지급했습니다.",
+        "광군은 정종 때 조직되었습니다.",
+        "광덕과 준풍은 광종의 연호입니다.",
+        "양현고는 예종 때 설치되었습니다.",
+        "주전도감과 해동통보는 숙종 때입니다."
+      ],
+      "choiceTextVisuallyReviewed": true
+    },
+    {
+      "officialQuestionId": "official-65-advanced-11",
+      "examRound": 65,
+      "examLevel": "심화",
+      "questionNumber": 11,
+      "answer": 1,
+      "choices": ["(가)", "(나)", "(다)", "(라)", "(마)"],
+      "choiceExplanations": [
+        "918~945년 사이가 아닙니다.",
+        "983년은 945년과 1009년 사이입니다.",
+        "1009~1196년 사이가 아닙니다.",
+        "1196~1270년 사이가 아닙니다.",
+        "1270~1351년 사이가 아닙니다."
+      ],
+      "choiceTextVisuallyReviewed": true
+    },
+    {
+      "officialQuestionId": "official-66-advanced-09",
+      "examRound": 66,
+      "examLevel": "심화",
+      "questionNumber": 9,
+      "answer": 2,
+      "choices": [
+        "독서삼품과를 실시하였다.",
+        "동진으로부터 불교를 수용하였다.",
+        "후당과 오월에 사신을 파견하였다.",
+        "광평성 등의 정치 기구를 마련하였다.",
+        "화랑도를 국가적인 조직으로 개편하였다."
+      ],
+      "choiceExplanations": [
+        "독서삼품과는 신라 원성왕 때입니다.",
+        "동진에서 불교를 수용한 것은 백제 침류왕 때입니다.",
+        "견훤은 후당과 오월에 사신을 파견했습니다.",
+        "광평성은 궁예가 마련했습니다.",
+        "화랑도를 국가 조직으로 정비한 것은 신라 진흥왕입니다."
+      ],
+      "choiceTextVisuallyReviewed": true
+    },
+    {
+      "officialQuestionId": "official-67-basic-10",
+      "examRound": 67,
+      "examLevel": "기본",
+      "questionNumber": 10,
+      "answer": 1,
+      "choices": ["성골", "호족", "권문세족", "신진 사대부"],
+      "choiceExplanations": [
+        "성골은 신라의 최고 골품입니다.",
+        "호족은 신라 말 지방에서 성장한 세력입니다.",
+        "권문세족은 고려 후기의 지배 세력입니다.",
+        "신진 사대부는 고려 후기에 성장했습니다."
+      ],
+      "choiceTextVisuallyReviewed": true
+    },
+    {
+      "officialQuestionId": "official-67-basic-11",
+      "examRound": 67,
+      "examLevel": "기본",
+      "questionNumber": 11,
+      "answer": 0,
+      "choices": ["흑창을 두었다.", "강화도로 천도하였다.", "과거제를 처음 실시하였다.", "전민변정도감을 설치하였다."],
+      "choiceExplanations": [
+        "태조는 빈민 구제 기관인 흑창을 설치했습니다.",
+        "강화 천도는 고종 때입니다.",
+        "과거제는 광종 때 처음 실시했습니다.",
+        "전민변정도감은 공민왕 때 설치되었습니다."
+      ],
+      "choiceTextVisuallyReviewed": true
+    },
+    {
+      "officialQuestionId": "official-68-advanced-09",
+      "examRound": 68,
+      "examLevel": "심화",
+      "questionNumber": 9,
+      "answer": 1,
+      "choices": [
+        "서적포에서 책을 인쇄하는 관리",
+        "국자감 학생들을 가르치는 박사",
+        "양현고의 재정을 관리하는 관원",
+        "9재 학당에서 유교 경전을 읽는 학생",
+        "청연각의 소장 도서를 분류하는 학사"
+      ],
+      "choiceExplanations": [
+        "서적포는 숙종 때 설치되었습니다.",
+        "성종은 국자감을 설치했습니다.",
+        "양현고는 예종 때 설치되었습니다.",
+        "9재 학당은 최충의 문헌공도입니다.",
+        "청연각은 예종 때 설치되었습니다."
+      ],
+      "choiceTextVisuallyReviewed": true
+    },
+    {
+      "officialQuestionId": "official-68-advanced-11",
+      "examRound": 68,
+      "examLevel": "심화",
+      "questionNumber": 11,
+      "answer": 4,
+      "choices": [
+        "최승로가 시무 28조를 건의하였다.",
+        "경기에 한하여 과전법이 실시되었다.",
+        "신돈이 전민변정도감의 판사가 되었다.",
+        "빈민 구제 기관인 흑창이 처음 설치되었다.",
+        "광덕, 준풍 등의 독자적 연호가 사용되었다."
+      ],
+      "choiceExplanations": [
+        "시무 28조는 성종 때입니다.",
+        "과전법은 고려 말 공양왕 때입니다.",
+        "신돈과 전민변정도감은 공민왕 때입니다.",
+        "흑창은 태조 때 설치되었습니다.",
+        "광덕과 준풍은 광종의 독자적 연호입니다."
+      ],
+      "choiceTextVisuallyReviewed": true
+    },
+    {
+      "officialQuestionId": "official-71-advanced-11",
+      "examRound": 71,
+      "examLevel": "심화",
+      "questionNumber": 11,
+      "answer": 1,
+      "choices": [
+        "경기에 한하여 과전법이 실시되었다.",
+        "쌍기의 건의로 과거제가 시행되었다.",
+        "신돈이 전민변정도감의 책임자가 되었다.",
+        "만적이 개경에서 노비를 모아 반란을 모의하였다.",
+        "최충헌이 봉사 10조를 올려 시정 개혁을 건의하였다."
+      ],
+      "choiceExplanations": [
+        "과전법은 공양왕 때인 1391년에 실시되었습니다.",
+        "광종은 958년에 쌍기의 건의로 과거제를 시행했습니다.",
+        "신돈의 전민변정도감 개혁은 공민왕 때입니다.",
+        "만적의 봉기 모의는 1198년입니다.",
+        "최충헌의 봉사 10조는 1196년입니다."
+      ],
+      "choiceTextVisuallyReviewed": true
+    }
+  ]
+}

@@ -1,10 +1,23 @@
 /* A story queue belongs to the active run, never to cumulative review history. */
 if(globalThis.CORE_APP_READY&&globalThis.STORY_EXAM_GROUPS){
+ const mergeCuratedChoiceExplanations=(existing,fixes)=>(fixes||[]).map((explanation,index)=>{
+  const current=existing?.[index];
+  return current&&typeof current==='object'?{...current,explanation,verificationStatus:'CURATED_VERIFIED'}:explanation;
+ });
  for(const fix of STORY_EXAM_POLICY.corrections||[]){
-  for(const q of QUESTIONS)if(q.examRound===fix.examRound&&q.examLevel===fix.examLevel&&q.questionNumber===fix.questionNumber){q.explanation=fix.explanation;q.choiceExplanations=fix.choiceExplanations;}
-  const stored=typeof OFFICIAL_EXPLANATION_BY_SOURCE_ID!=='undefined'?OFFICIAL_EXPLANATION_BY_SOURCE_ID.get(fix.officialQuestionId):null;if(stored)stored.explanation=fix.explanation;
+  for(const q of QUESTIONS)if(q.examRound===fix.examRound&&q.examLevel===fix.examLevel&&q.questionNumber===fix.questionNumber){q.explanation=fix.explanation;q.choiceExplanations=mergeCuratedChoiceExplanations(q.choiceExplanations,fix.choiceExplanations);}
+  const stored=typeof OFFICIAL_EXPLANATION_BY_SOURCE_ID!=='undefined'?OFFICIAL_EXPLANATION_BY_SOURCE_ID.get(fix.officialQuestionId):null;if(stored){stored.explanation=fix.explanation;stored.choiceExplanations=mergeCuratedChoiceExplanations(stored.choiceExplanations,fix.choiceExplanations);}
  }
- const isGoryeo=s=>/^ch\d+$/.test(s?.chapterId||'');
+ const storyQuizBeforeChoiceDetails=quiz;
+ quiz=function(){
+  const markup=storyQuizBeforeChoiceDetails(),q=activeQuestion(),selected=quizMode==='story'?run().questionAnswer:reviewAnswer;
+  if(!q||!isVerifiedOfficialQuestion(q)||!Number.isInteger(selected)||markup.includes('official-choice-explanations')||markup.includes('official-choice-load')||!globalThis.OFFICIAL_EXAM_UI?.choiceExplanations)return markup;
+  const details=globalThis.OFFICIAL_EXAM_UI.choiceExplanations(q,selected);
+  return details?markup.replace('<p class="feedback-reward">',details+'<p class="feedback-reward">'):markup;
+ };
+ // Existing Goryeo scenes keep their authored question sets. A future scene may
+ // explicitly opt in to the policy queue without changing released story flow.
+ const isGoryeo=s=>/^ch\d+$/.test(s?.chapterId||'')&&s?.enableBaseOfficialQuestionQueue===true;
  const current=()=>STORIES[run().pending?.sourceSceneId||run().storyId];
  function resume(source,afterChoice=false){
   const r=run();

@@ -19,5 +19,5 @@ const audit=source.scenes.map(s=>({...s,officialQuestionIds:(byScene.get(s.scene
 const corrections=JSON.parse(fs.readFileSync('docs/story-exams/explanation-corrections.json','utf8'));
 const output={...source,supplements,corrections,audit,summary:Object.fromEntries(['proto','three','goryeo'].map(era=>{const rows=audit.filter(s=>s.era===era);return [era,{scenes:rows.length,questions:rows.reduce((a,s)=>a+s.count,0),satisfiedScenes:rows.filter(s=>s.count>=2).length,shortScenes:rows.filter(s=>s.count<2).length,missingMinimum:rows.reduce((a,s)=>a+s.missing,0)}]}))};
 const files={'dist/story-exam-policy.js':'/* Generated from docs/story-exams by scripts/build-story-exam-policy.cjs. */\nglobalThis.STORY_EXAM_POLICY='+JSON.stringify(output)+';\n','docs/story-exams/placement-audit.json':JSON.stringify({policy:source.policy,summary:output.summary,duplicateCount:0,scenes:audit,deferred:source.deferred},null,2)+'\n'};
-for(const [file,text] of Object.entries(files)){if(process.argv.includes('--check'))assert.equal(fs.readFileSync(file,'utf8'),text,file+' is stale');else fs.writeFileSync(file,text);}
+for(const [file,text] of Object.entries(files)){if(process.argv.includes('--check'))assert.equal(fs.readFileSync(file,'utf8').replace(/\r\n/g,'\n'),text.replace(/\r\n/g,'\n'),file+' is stale');else fs.writeFileSync(file,text);}
 console.log(JSON.stringify(output.summary));

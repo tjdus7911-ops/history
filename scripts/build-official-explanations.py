@@ -9,14 +9,50 @@ answer catalog remains the only grading source.
 from __future__ import annotations
 
 import argparse
+from functools import lru_cache
 import json
 from pathlib import Path
 import re
+from statistics import median
 import subprocess
 
 
 ROOT = Path(__file__).resolve().parents[1]
 DIST = ROOT / "dist"
+CURATED_CHOICE_CORRECTIONS = ROOT / "docs" / "story-exams" / "explanation-corrections.json"
+CURATED_CHOICE_SOURCE_PATHS = (
+    CURATED_CHOICE_CORRECTIONS,
+    ROOT / "docs" / "THREE_OFFICIAL_REVIEW_61.json",
+    ROOT / "docs" / "story-exams" / "supplement-60-basic.json",
+    ROOT / "docs" / "story-exams" / "chapter-split-choice-reviews.json",
+)
+EXPECTED_QUESTION_COUNT = 1_800
+EXPECTED_CHOICE_COUNT = 8_350
+EXPECTED_CURATED_CHOICE_QUESTION_COUNT = 35
+# 4 source-reviewed corrections (19) + 8 round-61 (40) + 14 round-60 basic (56)
+# + 8 chapter-split records (six advanced x 5, two basic x 4 = 38).
+EXPECTED_CURATED_CHOICE_COUNT = 158
+EXPECTED_CANONICAL_CURATED_QUESTION_COUNT = 21
+EXPECTED_CANONICAL_CURATED_CHOICE_COUNT = 102
+EXPECTED_NONCANONICAL_CURATED_QUESTION_COUNT = 14
+EXPECTED_NONCANONICAL_CURATED_CHOICE_COUNT = 56
+MISSING_CHOICE_TEXT = "[원문 이미지 선택지 — OCR 전사 필요]"
+VERIFICATION_CURATED = "CURATED_VERIFIED"
+VERIFICATION_CURATED_REVIEWED = "CURATED_REVIEWED"
+VERIFICATION_KNOWLEDGE = "KNOWLEDGE_RULE"
+VERIFICATION_REVIEW = "DATA_REVIEW_REQUIRED"
+CHOICE_TEXT_VISUALLY_REVIEWED = "VISUALLY_REVIEWED"
+INITIAL_CORE_FIELDS = (
+    "officialQuestionId",
+    "question",
+    "clue",
+    "correctChoice",
+    "explanation",
+    "curated",
+    "qualityTier",
+    "coreVerificationStatus",
+    "coreEvidenceSources",
+)
 ERA_LABELS = {
     "ancient": "선사·고대",
     "goryeo": "고려",
@@ -29,6 +65,26 @@ CHOICE_LABELS = ["①", "②", "③", "④", "⑤"]
 POINT_LINE = re.compile(r"^\[?\s*[123]\s*점\s*\]?$|^결점\]$|^\[[^]]{0,3}점\]$")
 QUESTION_LINE = re.compile(r"^\s*\d{1,2}\s*[.]\s*")
 MARKER_CHARACTERS = set("①②③④⑤㉠㉡㉢㉣㉤㉥㉦㉧㉨㉩㉪㉫㉬㉭㉮㉯㉰㉱㉲㉳㉴㉵㉶㉷㉸㉹㉺㉻㉼㉽㉾㉿@")
+BARE_CHOICE_MARKER = re.compile(r"^\s*([1-5])\s*(?=[가-힣ㄱ-ㅎㅏ-ㅣA-Za-z一-龥])")
+CIRCLED_CHOICE_MARKER = re.compile(
+    r"^\s*[\[(]?\s*([①②③④⑤])\s*[\])]?\s*"
+)
+DECORATED_CHOICE_MARKER = re.compile(
+    r"^\s*[\[(]?\s*([1-5])(?:\s*[\])\].:、]\s*|\s+(?=\S)|(?=[가-힣ㄱ-ㅎㅏ-ㅣA-Za-z一-龥]))"
+)
+STANDALONE_CHOICE_MARKER = re.compile(
+    r"^\s*(?:\(|\[)?\s*([1-5])\s*(?:\)|\])?[.]?\s*$"
+)
+QUESTION_STEM_FRAGMENT = re.compile(r"^(?:다음|자료|보기).*(?:옳|적절|해당|고른|것은)")
+UNSAFE_STANDALONE_RULE_ALIASES = frozenset({
+    "동맹",
+    "부여",
+    "전쟁",
+    "인재",
+    "학교",
+    "반란",
+})
+MIN_SINGLE_TOKEN_HANGUL_ALIAS_LENGTH = 4
 HISTORY_HINTS = ("시대", "왕", "왕조", "나라", "국가", "전투", "전쟁", "반란", "봉기", "운동", "개혁", "혁명", "독립", "광복", "정부", "위원회", "군대", "군사", "제도", "정책", "법", "조약", "기구", "기관", "학교", "교육", "불교", "유교", "문화", "유산", "유적", "토기", "석기", "청동", "철기", "고분", "무덤", "사찰", "서원", "궁", "탑", "수도", "도읍", "지방", "토지", "세금", "경제", "신분", "농민", "의병", "연호", "일본", "중국", "미국", "소련", "고구려", "백제", "신라", "가야", "발해", "고려", "조선", "대한제국", "대한민국", "북한", "남북")
 CURATED_EXPLANATIONS = {
     "official-57-basic-20": "엽서에는 강원도 평창의 오대산을 방문하고 월정사에 갈 예정이라는 내용이 제시되어 있습니다. 월정사의 대표 석탑인 팔각 구층 석탑은 고려 시대에 조성되었으며, 다각형 평면과 여러 층의 날렵한 지붕돌이 특징입니다. 따라서 ③ 월정사 팔각 구층 석탑이 옳습니다.",
@@ -78,7 +134,7 @@ CURATED_EXPLANATIONS = {
     "official-61-advanced-42": "원불교는 간척 사업과 새생활 운동을 전개했습니다. 단군 숭배는 대종교, 배재 학당 설립은 개신교, 어린이날 제정은 천도교와 연결됩니다. 따라서 ③이 옳습니다.",
     "official-63-basic-07": "신라의 집사부는 14부 가운데 왕명을 집행하고 국가 기밀을 맡은 핵심 중앙 관부였습니다. 장관인 중시는 시중이라고도 불렸습니다. 따라서 ③ 집사부가 옳습니다.",
     "official-63-basic-13": "고려의 최고 국립 교육 기관은 국자감이었고 최충의 문헌공도 등 사학 12도가 발달했으며 지방에는 향교가 있었습니다. 경당은 고구려의 지방 교육 기관이므로 고려의 교육 기관에 관한 설명이 아닙니다. 따라서 ②가 옳지 않은 답입니다.",
-    "official-63-basic-32": "우정총국은 개화 정책 과정에서 설립된 근대 우편 기관으로 군대식 우편 업무를 담당했습니다. 기기창은 무기 제조, 제중원은 근대 의료, 육영공원은 근대 교육과 관련됩니다. 따라서 우정총국 설명인 ②가 옳습니다.",
+    "official-63-basic-32": "우정총국은 개화 정책 과정에서 설립된 근대 우편 기관으로 근대식 우편 업무를 담당했습니다. 기기창은 무기 제조, 제중원은 근대 의료, 육영공원은 근대 교육과 관련됩니다. 따라서 우정총국 설명인 ②가 옳습니다.",
     "official-64-basic-25": "상평창 운영, 공인의 성장, 상품 작물 재배는 조선 후기 경제 모습입니다. 벽란도는 송·아라비아 상인이 드나든 고려의 국제 무역항이므로 이 시기의 설명이 아닙니다. 따라서 ④가 옳지 않은 답입니다.",
     "official-64-basic-40": "1927년 여성 운동가들이 민족주의와 사회주의 진영의 협동으로 조직한 전국적 여성 단체는 근우회입니다. 근우회는 여성의 지위 향상과 항일 운동을 함께 추진했습니다. 따라서 ①이 옳습니다.",
     "official-64-advanced-04": "부여 능산리 절터에서 출토되고 불교와 도교 사상을 정교하게 표현한 백제 공예품은 금동 대향로입니다. 산봉우리·동물·악사와 봉황을 입체적으로 새긴 백제 금속 공예의 걸작입니다. 따라서 ⑤가 옳습니다.",
@@ -94,7 +150,7 @@ CURATED_EXPLANATIONS = {
     "official-67-advanced-47": "(가)는 무신 집권기의 만적 봉기 모의, (나)는 공민왕 때의 노비 변정, (라)는 순조 때 공노비 해방, (다)는 갑오개혁의 신분제 폐지입니다. 사건은 1198년, 고려 말, 1801년, 1894년 순으로 이어집니다. 따라서 (가)－(나)－(라)－(다)인 ③이 옳습니다.",
     "official-69-basic-47": "경기전과 전주 향교, 전동 성당이 함께 있는 지역은 전주입니다. 전주는 조선 왕조의 본향이자 근대 천주교 순교 역사를 간직한 도시입니다. 따라서 ③이 옳습니다.",
     "official-69-advanced-06": "의령에서 출토되고 고구려 승려가 만들었으며 광배에 연가 7년 명문이 있는 불상은 연가 7년명 금동 여래 입상입니다. 명문을 통해 제작 주체와 연대를 알 수 있는 고구려 불상입니다. 따라서 ②가 옳습니다.",
-    "official-69-advanced-15": "조일신의 난은 공민왕 즉위 직후인 1352년에 일어났습니다. 이는 개경 환도 이전이자 고려 멸망 전으로 연표의 (마)에 해당합니다. 따라서 ⑤가 옳습니다.",
+    "official-69-advanced-15": "조일신의 난은 공민왕 즉위 직후인 1352년에 일어났습니다. 이는 개경 환도 이후이자 고려 멸망 전으로 연표의 (마)에 해당합니다. 따라서 ⑤가 옳습니다.",
     "official-71-basic-47": "경부 고속 도로는 박정희 정부의 경제 개발 정책에 따라 건설되었습니다. 이후 같은 정부에서 제3차 경제 개발 5개년 계획이 시작되었고 중화학 공업 육성이 본격화되었습니다. 따라서 ③이 옳습니다.",
     "official-71-basic-50": "대한국 국제는 1899년, 대동단결 선언은 1917년, 국민 주권을 밝힌 대한민국 임시 헌장은 1919년에 발표되었습니다. 대한 제국의 전제 군주제에서 공화정과 국민 주권으로 정치 이념이 변해 갔습니다. 따라서 (가)－(다)－(나)인 ②가 옳습니다.",
     "official-71-advanced-16": "강진에서 생산된 상감 청자는 고려 문화를 가리킵니다. 나전칠기·수월관음도·고려 석탑은 같은 시대이지만 ⑤의 풍속화는 조선 후기 작품입니다. 따라서 고려 문화유산이 아닌 ⑤가 옳습니다.",
@@ -106,6 +162,7 @@ CURATED_EXPLANATIONS = {
     "official-77-basic-18": "청자 상감 모란문 표주박 모양 주전자와 나전 국화 넝쿨무늬 합은 모두 고려 시대 공예품입니다. 고려는 국가 행사로 연등회와 팔관회를 열었습니다. 따라서 ③이 옳습니다.",
     "official-79-basic-16": "상평창 운영, 해동통보 주조, 전시과 시행은 고려의 경제 모습입니다. 담배와 면화 같은 상품 작물이 널리 재배된 것은 조선 후기입니다. 따라서 고려의 경제 상황으로 적절하지 않은 ④가 정답입니다.",
     "official-79-basic-43": "윤봉길은 중국 상하이 훙커우 공원에서 일본군 수뇌부를 향해 의거를 일으켰습니다. 안중근의 이토 히로부미 처단은 하얼빈, 2·8 독립 선언은 도쿄, 장인환·전명운 의거는 샌프란시스코의 사실입니다. 따라서 상하이와 윤봉길을 연결한 ③이 옳습니다.",
+    "official-79-advanced-01": "자료는 웅기 굴포리와 공주 석장리에서 출토된 뗀석기를 근거로 한반도의 구석기 시대를 묻습니다. 구석기인은 사냥과 채집을 하며 이동했고 동굴이나 강가의 막집에서 살았습니다. 따라서 ②가 정답이며, 가락바퀴·빗살무늬 토기는 신석기, 청동 방울·고인돌은 청동기 생활과 연결됩니다.",
     "official-62-advanced-50": "㉠은 고려 광종 때 쌍기의 건의로 도입된 과거제를 가리킵니다. 고려에서는 시험관인 지공거와 급제자 사이에 좌주와 문생의 관계가 형성되어 문벌 사회의 인적 기반이 되기도 했습니다. 따라서 ㉠에 대한 설명으로 ②가 옳습니다.",
     "official-66-advanced-30": "(다)를 쓴 인물은 민족주의 사학자 신채호입니다. 신채호는 대한매일신보의 주필로 활동했고, 「조선 혁명 선언」에서 민중의 직접 혁명을 주장했습니다. 따라서 (다)와 신채호의 활동을 바르게 연결한 ⑤가 옳습니다.",
     "official-66-advanced-31": "㉠은 김부식 등이 편찬한 『삼국사기』입니다. 『삼국사기』는 본기·연표·잡지·열전으로 구성된 현존 최고(最古)의 기전체 역사서입니다. 불교 설화와 고대 기록을 담은 책은 일연의 『삼국유사』이므로 정답은 ②입니다.",
@@ -606,8 +663,8 @@ def normalize_text(value: str) -> str:
     value = value.replace("고러", "고려").replace("전생 중", "전쟁 중").replace("(바에", "(나)에")
     value = value.replace("고려 알", "고려 말").replace("조신 후기", "조선 후기").replace("귀즈", "퀴즈")
     value = value.replace("빛살무니", "빗살무늬").replace("덧무니", "덧무늬")
-    value = value.replace("옮은", "옳은").replace("옮게", "옳게").replace("설지", "설치")
-    value = value.replace("회생", "희생").replace("전생", "전쟁").replace("운두", "운동")
+    value = value.replace("옮은", "옳은").replace("옮게", "옳게").replace("옮지", "옳지")
+    value = value.replace("적절하지않은", "적절하지 않은").replace("설지", "설치")
     value = re.sub(r"\s+([,.?!])", r"\1", value)
     return value.strip(" ·•-/")
 
@@ -651,6 +708,8 @@ def first_word(line: dict) -> dict:
 
 
 def is_choice_marker(line: dict) -> bool:
+    if choice_marker_index(line.get("text", ""), len(CHOICE_LABELS)) is not None:
+        return True
     word = first_word(line)
     token = str(word.get("text") or "").strip()
     if not token or is_point_line(line.get("text", "")):
@@ -663,17 +722,23 @@ def is_choice_marker(line: dict) -> bool:
 
 
 def remove_choice_marker(value: str) -> str:
-    return normalize_text(re.sub(r"^(?:[①②③④⑤㉠-㉿@]|\([^ ]{0,3}\)?|\[[^ ]{0,3}\]?)\s*", "", value, count=1))
+    value = CIRCLED_CHOICE_MARKER.sub("", value, count=1)
+    value = DECORATED_CHOICE_MARKER.sub("", value, count=1)
+    return normalize_text(value)
 
 
 def choice_marker_index(value: str, choice_count: int) -> int | None:
-    compact = value.strip()
-    for index, marker in enumerate(CHOICE_LABELS[:choice_count]):
-        position = compact.find(marker)
-        if 0 <= position <= 3:
+    compact = normalize_text(value)
+    circled = CIRCLED_CHOICE_MARKER.match(compact)
+    if circled:
+        index = CHOICE_LABELS.index(circled.group(1))
+        if index < choice_count:
             return index
-    match = re.match(r"^\s*[(\[]\s*([1-5])\s*[)\]]", compact)
+    match = DECORATED_CHOICE_MARKER.match(compact)
     if match and int(match.group(1)) <= choice_count:
+        remainder = DECORATED_CHOICE_MARKER.sub("", compact, count=1)
+        if QUESTION_STEM_FRAGMENT.search(remainder):
+            return None
         return int(match.group(1)) - 1
     return None
 
@@ -699,39 +764,371 @@ def question_stem(lines: list[dict], number: int) -> str:
     return line if text_quality(line) >= 0.48 else ""
 
 
-def choice_lines(lines: list[dict], choice_count: int) -> tuple[list[str], float | None]:
-    marked = [line for line in lines if is_choice_marker(line)]
-    indexed = [
-        (choice_marker_index(line["text"], choice_count), line)
-        for line in lines
+def exact_unanchored_choice_block(
+    atoms: list[dict],
+    choice_count: int,
+    image_width: float,
+    image_height: float,
+    candidate_floor: float,
+) -> list[dict] | None:
+    """Return only a terminal block with an unambiguous printed layout."""
+    tolerance = max(13.0, min(22.0, image_height * 0.016))
+    tail = [
+        atom
+        for atom in atoms
+        if atom["y"] >= max(image_height * 0.55, candidate_floor)
     ]
-    indexed = [(index, line) for index, line in indexed if index is not None]
-    if indexed:
-        values = [""] * choice_count
-        first_y = min(line["y"] for _, line in indexed)
-        for index, line in indexed:
-            value = remove_choice_marker(line["text"])
-            if text_quality(value) >= 0.48 and readable_choice(value):
-                values[index] = value
-        if any(values):
-            return values, first_y
-    if len(marked) < choice_count:
-        content_y = [line["y"] for line in lines if not is_point_line(line["text"])]
-        cutoff = max(content_y, default=0) * 0.58
-        tail = []
-        for line in lines:
-            value = remove_choice_marker(line["text"])
-            if line["y"] < cutoff or is_point_line(line["text"]) or QUESTION_LINE.match(line["text"]):
+    rows: list[dict] = []
+    for atom in sorted(tail, key=lambda item: (item["y"], item["x"], item["position"])):
+        if rows and abs(atom["y"] - rows[-1]["y"]) <= tolerance:
+            rows[-1]["atoms"].append(atom)
+            rows[-1]["y"] = median(item["y"] for item in rows[-1]["atoms"])
+        else:
+            rows.append({"y": atom["y"], "atoms": [atom]})
+    for row in rows:
+        row["atoms"].sort(key=lambda item: (item["x"], item["position"]))
+
+    for start in range(len(rows)):
+        selected_rows = rows[start:]
+        cells = [atom for row in selected_rows for atom in row["atoms"]]
+        if len(cells) != choice_count:
+            continue
+        if max(atom["y"] for atom in cells) < image_height * 0.74:
+            continue
+        row_sizes = [len(row["atoms"]) for row in selected_rows]
+        if len(selected_rows) > 1 and max(row_sizes) == 1:
+            gaps = [
+                selected_rows[index + 1]["y"] - selected_rows[index]["y"]
+                for index in range(len(selected_rows) - 1)
+            ]
+            if (
+                not gaps
+                or max(gaps) - min(gaps) > max(22.0, median(gaps) * 0.38)
+                or max(atom["x"] for atom in cells) - min(atom["x"] for atom in cells)
+                > image_width * 0.18
+            ):
                 continue
-            if text_quality(value) >= 0.48 and readable_choice(value):
-                tail.append(line)
-        if len(tail) == choice_count:
-            return [remove_choice_marker(line["text"]) for line in tail], tail[0]["y"]
-        return [], None
-    selected = marked[-choice_count:]
-    raw_values = [remove_choice_marker(line["text"]) for line in selected]
-    values = [value if text_quality(value) >= 0.48 and readable_choice(value) else "" for value in raw_values]
-    return values, selected[0]["y"]
+        else:
+            if len(set(row_sizes)) > 1:
+                continue
+            if len(selected_rows) > 1:
+                row_gaps = [
+                    selected_rows[index + 1]["y"] - selected_rows[index]["y"]
+                    for index in range(len(selected_rows) - 1)
+                ]
+                if min(row_gaps) < max(60.0, image_height * 0.06):
+                    continue
+                column_count = row_sizes[0]
+                if any(
+                    max(row["atoms"][column]["x"] for row in selected_rows)
+                    - min(row["atoms"][column]["x"] for row in selected_rows)
+                    > image_width * 0.12
+                    for column in range(column_count)
+                ):
+                    continue
+        ordered = [
+            atom
+            for row in selected_rows
+            for atom in sorted(row["atoms"], key=lambda item: item["x"])
+        ]
+        if any(
+            atom["marker"] is not None and atom["marker"] != index
+            for index, atom in enumerate(ordered)
+        ):
+            continue
+        return ordered
+    return None
+
+
+def spatial_choice_lines(
+    lines: list[dict],
+    choice_count: int,
+    image_height: float,
+    image_width: float | None = None,
+) -> tuple[list[str], float | None, list[float | None]]:
+    """Recover OCR choices by printed position while retaining omitted slots.
+
+    RapidOCR frequently reads the option text but drops its circled numeral.  A
+    recognized numeral is therefore a hard positional anchor.  Other lines are
+    assigned only from their y-row/x-column geometry; history meaning and the
+    official answer are deliberately not inputs to this function.
+    """
+    row_tolerance = max(14.0, min(30.0, image_height * 0.014))
+    resolved_width = image_width or max((line["x"] for line in lines), default=900.0) + 100.0
+    lower = [
+        (position, line)
+        for position, line in enumerate(lines)
+        if line["y"] >= image_height * 0.38
+        and not is_point_line(line["text"])
+        and not QUESTION_LINE.match(line["text"])
+    ]
+    marker_events: list[dict] = []
+    atoms: list[dict] = []
+    rejected_exact = {"이미지", "내용", "단계", "힌트", "강", "화"}
+    for position, line in lower:
+        marker = choice_marker_index(line["text"], choice_count)
+        standalone = STANDALONE_CHOICE_MARKER.fullmatch(line["text"])
+        if marker is None and standalone and int(standalone.group(1)) <= choice_count:
+            marker = int(standalone.group(1)) - 1
+        value = remove_choice_marker(line["text"]) if marker is not None else normalize_text(line["text"])
+        if standalone:
+            value = ""
+        compact = re.sub(r"\s+", "", value)
+        label = bool(re.fullmatch(r"\(?[가-마]\)?", compact))
+        acceptable = value not in rejected_exact and (readable_choice(value) or label)
+        event = None
+        if marker is not None:
+            event = {
+                "marker": marker,
+                "position": position,
+                "x": line["x"],
+                "y": line["y"],
+                "atom": None,
+            }
+            marker_events.append(event)
+        if acceptable:
+            atom = {
+                "position": position,
+                "marker": marker,
+                "value": value,
+                "x": line["x"],
+                "y": line["y"],
+            }
+            atoms.append(atom)
+            if event is not None:
+                event["atom"] = atom
+
+    # Circled numerals are often returned as their own slightly offset OCR line.
+    for event in marker_events:
+        if event["atom"] is not None:
+            continue
+        nearby = [
+            atom
+            for atom in atoms
+            if atom["marker"] is None
+            and abs(atom["y"] - event["y"]) <= row_tolerance
+            and atom["x"] >= event["x"] - 12
+        ]
+        if nearby:
+            atom = min(
+                nearby,
+                key=lambda item: (
+                    abs(item["y"] - event["y"]),
+                    abs(item["x"] - event["x"]),
+                ),
+            )
+            atom["marker"] = event["marker"]
+            event["atom"] = atom
+
+    # Select the latest coherent increasing marker chain.  The choices are the
+    # final 1..N sequence in the official question crop.
+    marker_events.sort(key=lambda item: (item["position"], item["x"], item["y"]))
+    chains: list[list[dict]] = []
+    for event in marker_events:
+        best_prefix = max(
+            (chain for chain in chains if chain[-1]["marker"] < event["marker"]),
+            key=lambda chain: (len(chain), chain[-1]["position"]),
+            default=[],
+        )
+        chains.append([*best_prefix, event])
+    chain = max(
+        chains,
+        key=lambda items: (
+            len(items),
+            sum(item["position"] for item in items) / len(items),
+            items[-1]["position"],
+        ),
+        default=[],
+    )
+    if chain and atoms:
+        tail_y = max(atom["y"] for atom in atoms)
+        if tail_y - max(item["y"] for item in chain) > image_height * 0.26:
+            chain = []
+
+    result = [MISSING_CHOICE_TEXT] * choice_count
+    result_y: list[float | None] = [None] * choice_count
+    if not chain:
+        # Marker-free text is accepted only when it forms an exact terminal
+        # vertical sequence or rectangular grid. A blind tail slice can mistake
+        # exhibit prose, dates, or locations for choices.
+        last_question_y = max(
+            (line["y"] for line in lines if QUESTION_LINE.match(line["text"])),
+            default=0.0,
+        )
+        block = exact_unanchored_choice_block(
+            atoms,
+            choice_count,
+            resolved_width,
+            image_height,
+            last_question_y + row_tolerance,
+        )
+        if block:
+            for index, atom in enumerate(block):
+                result[index] = atom["value"]
+                result_y[index] = atom["y"]
+        return result, min((value for value in result_y if value is not None), default=None), [None] * choice_count
+
+    anchored_atoms = []
+    for event in chain:
+        atom = event["atom"]
+        if atom is not None:
+            result[event["marker"]] = atom["value"]
+            result_y[event["marker"]] = atom["y"]
+            anchored_atoms.append((event["marker"], atom))
+    used = {id(atom) for _, atom in anchored_atoms}
+    remaining = [atom for atom in atoms if id(atom) not in used]
+
+    if len(chain) >= 2:
+        first_event, last_event = chain[0], chain[-1]
+        horizontal = (
+            max(item["y"] for item in chain) - min(item["y"] for item in chain)
+            <= row_tolerance
+        )
+        axis_key = "x" if horizontal else "y"
+        layout_tolerance = max(18.0, image_height * 0.022)
+        grid_like = not horizontal and any(
+            abs(left["y"] - right["y"]) <= layout_tolerance
+            and abs(left["x"] - right["x"]) >= resolved_width * 0.20
+            for left_index, left in enumerate(chain)
+            for right in chain[left_index + 1 :]
+        )
+        crossing = any(
+            abs(left["y"] - right["y"]) > layout_tolerance
+            and (left["marker"] - right["marker"]) * (left["y"] - right["y"]) < 0
+            for left_index, left in enumerate(chain)
+            for right in chain[left_index + 1 :]
+        )
+        if grid_like or crossing:
+            return result, min((value for value in result_y if value is not None), default=None), [None] * choice_count
+        first_axis, last_axis = first_event[axis_key], last_event[axis_key]
+        index_span = last_event["marker"] - first_event["marker"]
+        step = (last_axis - first_axis) / index_span if index_span else 0
+        if step > 0:
+            proposals = []
+            for atom in remaining:
+                if horizontal and abs(atom["y"] - first_event["y"]) > row_tolerance:
+                    continue
+                projected = first_event["marker"] + (atom[axis_key] - first_axis) / step
+                index = round(projected)
+                residual = abs(
+                    atom[axis_key]
+                    - (first_axis + (index - first_event["marker"]) * step)
+                )
+                if (
+                    0 <= index < choice_count
+                    and residual <= max(row_tolerance, step * 0.48)
+                ):
+                    proposals.append(
+                        (residual, abs(projected - index), -atom["position"], index, atom)
+                    )
+            for _, _, _, index, atom in sorted(proposals):
+                if result[index] == MISSING_CHOICE_TEXT:
+                    result[index] = atom["value"]
+                    result_y[index] = atom["y"]
+                    used.add(id(atom))
+    else:
+        anchor = chain[0]
+        max_gap = max(72.0, image_height * 0.08)
+        before = [atom for atom in remaining if atom["position"] < anchor["position"]]
+        after = [atom for atom in remaining if atom["position"] > anchor["position"]]
+        cursor_y = anchor["y"]
+        for index, atom in zip(range(anchor["marker"] - 1, -1, -1), reversed(before)):
+            if cursor_y - atom["y"] > max_gap:
+                break
+            result[index] = atom["value"]
+            result_y[index] = atom["y"]
+            cursor_y = atom["y"]
+        cursor_y = anchor["y"]
+        for index, atom in zip(range(anchor["marker"] + 1, choice_count), after):
+            if atom["y"] - cursor_y > max_gap:
+                break
+            result[index] = atom["value"]
+            result_y[index] = atom["y"]
+            cursor_y = atom["y"]
+
+    return result, min((value for value in result_y if value is not None), default=None), [None] * choice_count
+
+
+def choice_lines(
+    lines: list[dict],
+    choice_count: int,
+    image_height: float | None = None,
+    image_width: float | None = None,
+) -> tuple[list[str], float | None, list[float | None]]:
+    marker_lines = (
+        [line for line in lines if line["y"] >= image_height * 0.38]
+        if image_height is not None
+        else lines
+    )
+    indexed = [
+        (position, choice_marker_index(line["text"], choice_count))
+        for position, line in enumerate(marker_lines)
+    ]
+    indexed = [(position, index) for position, index in indexed if index is not None]
+
+    sequences: list[list[tuple[int, int]]] = []
+    for start, (_, marker_index) in enumerate(indexed):
+        if marker_index != 0:
+            continue
+        selected = [indexed[start]]
+        cursor = start + 1
+        for expected_index in range(1, choice_count):
+            while cursor < len(indexed) and indexed[cursor][1] != expected_index:
+                cursor += 1
+            if cursor >= len(indexed):
+                selected = []
+                break
+            selected.append(indexed[cursor])
+            cursor += 1
+        if selected:
+            sequences.append(selected)
+
+    if not sequences:
+        if image_height is not None:
+            return spatial_choice_lines(lines, choice_count, image_height, image_width)
+        return [], None, []
+
+    selected = sequences[-1]
+    values: list[str] = []
+    confidences: list[float | None] = []
+    selected_positions = {position for position, _ in selected}
+    for selected_index, (start, _) in enumerate(selected):
+        end = (
+            selected[selected_index + 1][0]
+            if selected_index + 1 < choice_count
+            else len(marker_lines)
+        )
+        parts = []
+        confidence_values = []
+        confidence_missing = False
+        for position in range(start, end):
+            line = marker_lines[position]
+            if position != start and position in selected_positions:
+                continue
+            if is_point_line(line["text"]) or QUESTION_LINE.match(line["text"]):
+                continue
+            value = remove_choice_marker(line["text"]) if position == start else line["text"]
+            if not value:
+                continue
+            parts.append(value)
+            raw_confidence = line.get("confidence")
+            if raw_confidence is None:
+                confidence_missing = True
+            else:
+                try:
+                    confidence_values.append(float(raw_confidence))
+                except (TypeError, ValueError):
+                    confidence_missing = True
+        values.append(normalize_text(" ".join(parts)))
+        confidences.append(
+            None
+            if confidence_missing or not confidence_values
+            else min(confidence_values)
+        )
+
+    if any(not value for value in values) and image_height is not None:
+        return spatial_choice_lines(lines, choice_count, image_height, image_width)
+    return values, marker_lines[selected[0][0]]["y"], confidences
 
 
 def clue_text(lines: list[dict], stem: str, first_choice_y: float | None) -> str:
@@ -758,7 +1155,8 @@ def clue_text(lines: list[dict], stem: str, first_choice_y: float | None) -> str
 
 
 def question_kind(stem: str) -> str:
-    if "옳지 않은" in stem or "적절하지 않은" in stem:
+    compact = re.sub(r"\s+", "", normalize_text(stem))
+    if any(phrase in compact for phrase in ("옳지않은", "옮지않은", "적절하지않은")):
         return "incorrect"
     if any(word in stem for word in ("순서", "나열", "먼저", "이후")):
         return "sequence"
@@ -768,7 +1166,7 @@ def question_kind(stem: str) -> str:
         return "location"
     if any(word in stem for word in ("사진", "그림", "문화유산", "유물", "유적", "건축물", "탑", "불상")):
         return "visual"
-    if any(word in stem for word in ("인물", "왕", "업적", "활동", "누구")):
+    if any(word in stem for word in ("인물", "왕", "업적", "누구")):
         return "person"
     if any(word in stem for word in ("사료", "자료", "기록", "일기", "기사", "연설", "대화")):
         return "source"
@@ -814,42 +1212,90 @@ def nominal_era(question_number: int) -> str:
     return "republic"
 
 
-def answer_fact(correct_choice: str) -> str:
-    value = normalize_text(correct_choice).rstrip(" .")
-    if not value:
-        return ""
-    if re.search(r"(?:다|했다|하였다|되었다|이었다|있었다|없었다|시행되었다|제정되었다)$", value):
-        return value + "."
-    return f"정답 선택지의 ‘{short_excerpt(value, 100)}’는 자료의 대상과 연결되는 구체적인 역사 사실입니다."
+@lru_cache(maxsize=None)
+def rule_alias_pattern(alias: str) -> tuple[re.Pattern[str] | None, str]:
+    """Compile one safe alias pattern once for the whole build."""
+    normalized_alias = normalize_text(alias).lower()
+    if not normalized_alias:
+        return None, ""
+    if normalized_alias in UNSAFE_STANDALONE_RULE_ALIASES:
+        return None, ""
+    if (
+        re.fullmatch(r"[가-힣]+", normalized_alias)
+        and len(normalized_alias) < MIN_SINGLE_TOKEN_HANGUL_ALIAS_LENGTH
+    ):
+        return None, ""
+    parts = [part for part in re.split(r"[\s·.\-]+", normalized_alias) if part]
+    if not parts:
+        return None, ""
+    alias_pattern = r"[\s·.\-]*".join(re.escape(part) for part in parts)
+    postposition = (
+        "에서|에게|께서|으로|부터|까지|이었다|였다|이다|"
+        "은|는|이|가|을|를|의|에|로|과|와|도|만|인|때|후|전"
+    )
+    return (
+        re.compile(
+            rf"(?<![가-힣A-Za-z0-9]){alias_pattern}"
+            rf"(?=$|[^가-힣A-Za-z0-9]|(?:{postposition})(?=$|[^가-힣A-Za-z0-9]))"
+        ),
+        parts[0],
+    )
+
+
+def rule_alias_matches(value: str, alias: str) -> bool:
+    """Match an explicit alias as a token, never as an arbitrary substring."""
+    haystack = normalize_text(value).lower()
+    pattern, first_part = rule_alias_pattern(alias)
+    return bool(haystack and pattern and first_part in haystack and pattern.search(haystack))
+
+
+def select_history_rule(value: str) -> tuple[str, str] | None:
+    """Select one unambiguous, explicit history rule for a piece of text."""
+    haystack = normalize_text(value).lower()
+    if not haystack:
+        return None
+    matches = []
+    for aliases, explanation in HISTORICAL_CONTEXTS:
+        matched_aliases = []
+        for alias in aliases:
+            pattern, first_part = rule_alias_pattern(alias)
+            if pattern and first_part in haystack and pattern.search(haystack):
+                matched_aliases.append(alias)
+        for alias in matched_aliases:
+            specificity = len(re.sub(r"[^가-힣A-Za-z0-9]", "", alias))
+            matches.append((specificity, alias, explanation))
+    if not matches:
+        return None
+    best_specificity = max(item[0] for item in matches)
+    strongest = [item for item in matches if item[0] == best_specificity]
+    if len({item[2] for item in strongest}) != 1:
+        return None
+    _, alias, explanation = strongest[0]
+    return alias, explanation
 
 
 def historical_context(stem: str, clue: str, correct_choice: str, era: str) -> tuple[str, bool]:
     for field in (correct_choice, clue, stem):
-        haystack = field.lower()
-        compact_haystack = re.sub(r"[\s·.-]+", "", haystack)
-        matches = []
-        for keywords, explanation in HISTORICAL_CONTEXTS:
-            matched_keywords = [
-                keyword for keyword in keywords
-                if keyword.lower() in haystack
-                or re.sub(r"[\s·.-]+", "", keyword.lower()) in compact_haystack
-            ]
-            if matched_keywords:
-                matches.append((max(len(keyword) for keyword in matched_keywords), explanation))
-        if matches:
-            matches.sort(key=lambda item: item[0], reverse=True)
-            return matches[0][1], True
-    fact = answer_fact(correct_choice)
-    if fact:
-        return fact, True
-    return "자료의 사료·사진·지도 자체가 해당 사건과 제도, 인물을 특정하는 근거입니다.", False
+        rule = select_history_rule(field)
+        if rule:
+            return rule[1], True
+    if correct_choice:
+        return (
+            f"공식 정답 선지는 OCR에서 ‘{short_excerpt(correct_choice, 100)}’로 전사되었으나, "
+            "저장된 규칙만으로 역사적 사실을 확정하지 않고 원문·근거 자료 검수 대상으로 둡니다.",
+            False,
+        )
+    return (
+        "공식 정답 번호는 보존했지만 선택지 원문과 역사적 판단 근거는 추가 검수 대상으로 둡니다.",
+        False,
+    )
 
 
 def ensure_three_sentences(value: str, answer_label: str) -> str:
     sentence_count = len(re.findall(r"[.!?](?:[’'\"]|$|\s)", value))
     if sentence_count >= 3:
         return value
-    return f"{value.rstrip()} 이 역사적 관계에 따라 정답은 {answer_label}입니다."
+    return f"{value.rstrip()} 공식 정답표의 정답 번호는 {answer_label}입니다."
 
 
 def make_explanation(source: dict, stem: str, clue: str, correct_choice: str) -> str:
@@ -859,29 +1305,39 @@ def make_explanation(source: dict, stem: str, clue: str, correct_choice: str) ->
     if clue:
         excerpt = short_excerpt(clue)
         if kind == "source":
-            evidence = f"사료에는 ‘{excerpt}’라는 표현이 제시되어 있습니다."
+            evidence = f"OCR 전사에는 사료의 ‘{excerpt}’라는 표현이 포착되어 있습니다."
         elif kind == "visual":
-            evidence = f"원문 이미지에는 ‘{excerpt}’와 관련된 문화재·유물이 제시되어 있습니다."
+            evidence = f"OCR 전사에는 ‘{excerpt}’와 관련된 이미지 설명이 포착되어 있습니다."
         elif kind == "location":
-            evidence = f"지도와 자료에는 ‘{excerpt}’와 관련된 지역 정보가 제시되어 있습니다."
+            evidence = f"OCR 전사에는 ‘{excerpt}’와 관련된 지역 정보가 포착되어 있습니다."
         elif kind in ("period", "sequence"):
-            evidence = f"연표·자료에는 ‘{excerpt}’와 관련된 사건이 제시되어 있습니다."
+            evidence = f"OCR 전사에는 ‘{excerpt}’와 관련된 연표·사건 단서가 포착되어 있습니다."
         elif kind == "person":
-            evidence = f"자료에는 ‘{excerpt}’와 관련된 인물의 활동이 제시되어 있습니다."
+            evidence = f"OCR 전사에는 ‘{excerpt}’와 관련된 인물 단서가 포착되어 있습니다."
         else:
-            evidence = f"자료에는 ‘{excerpt}’라는 역사적 사실이 제시되어 있습니다."
+            evidence = f"OCR 전사에는 ‘{excerpt}’라는 문구가 포착되어 있습니다."
     elif kind == "visual":
-        evidence = f"원문 이미지는 {era}의 문화재 또는 유물의 형태와 특징을 제시하고 있습니다."
+        evidence = f"문항은 {era}의 문화재·유물 이미지 판독형으로 분류되어 있습니다."
     elif kind == "location":
-        evidence = f"원문 지도는 {era}의 사건과 관련된 지역·경로를 제시하고 있습니다."
+        evidence = f"문항은 {era}의 지역·경로 판독형으로 분류되어 있습니다."
     elif kind in ("period", "sequence"):
-        evidence = f"원문 연표는 {era}에 일어난 사건들의 선후 관계를 제시하고 있습니다."
+        evidence = f"문항은 {era}의 시기·선후 관계 판독형으로 분류되어 있습니다."
     else:
-        evidence = f"원문 문제는 {era}의 사건·인물·제도 가운데 하나를 다루고 있습니다."
+        evidence = f"문항 메타데이터는 주제를 {era}로 분류하지만 OCR 판독 단서가 충분하지 않습니다."
 
     context, matched = historical_context(stem, clue, correct_choice, source["primaryEra"])
 
-    if source["answer"] is None:
+    if not matched:
+        if source["answer"] is None:
+            conclusion = "공식 정답표 정정에 따라 ①~⑤를 모두 정답 처리하며, 개별 선지 해설은 별도 검수 대상입니다."
+        elif correct_choice:
+            conclusion = (
+                f"공식 정답표는 {answer_label} ‘{short_excerpt(correct_choice, 92)}’를 가리키며, "
+                "OCR 전사와 근거 해설은 검수 전까지 확정 사실로 사용하지 않습니다."
+            )
+        else:
+            conclusion = f"공식 정답표의 정답 번호는 {answer_label}이며, 선택지 원문은 검수 대상입니다."
+    elif source["answer"] is None:
         conclusion = "공식 정답표가 모든 선택지를 정답으로 정정했으므로 서비스도 ①~⑤를 모두 정답 처리합니다."
     elif correct_choice:
         if kind == "incorrect":
@@ -923,16 +1379,579 @@ def choose_best(values: list[str], field: str) -> str:
     return max(candidates, default=(0, ""), key=lambda item: item[0])[1]
 
 
-def extract_ocr_evidence(source: dict, row: dict) -> dict[str, str]:
+def expected_choice_count(source: dict) -> int:
+    return 5 if source["examLevel"] == "심화" else 4
+
+
+def accepted_choice_indexes(source: dict) -> list[int]:
+    accepted = source.get("acceptedAnswers")
+    if isinstance(accepted, list):
+        indexes = sorted({int(index) for index in accepted})
+    elif source.get("answer") is None:
+        indexes = []
+    else:
+        indexes = [int(source["answer"])]
+    count = expected_choice_count(source)
+    if any(index < 0 or index >= count for index in indexes):
+        raise ValueError(f"invalid accepted answer indexes for {source['officialQuestionId']}: {indexes}")
+    return indexes
+
+
+def initial_core_record(record: dict) -> dict:
+    """Return the eager JS payload; option details hydrate from the full JSON."""
+    return {field: record.get(field) for field in INITIAL_CORE_FIELDS}
+
+
+def normalized_choice_list(
+    record: dict, choice_count: int
+) -> tuple[list[str], list[float | None], list[str | None]]:
+    raw_choices = record.get("choices") or []
+    choices = []
+    for item in raw_choices[:choice_count]:
+        if isinstance(item, dict):
+            choices.append(normalize_text(item.get("choiceText") or item.get("text") or ""))
+        else:
+            choices.append(normalize_text(str(item or "")))
+    choices.extend([""] * (choice_count - len(choices)))
+
+    raw_confidences = record.get("_choiceConfidences") or record.get("choiceConfidences") or []
+    confidences: list[float | None] = []
+    for value in raw_confidences[:choice_count]:
+        try:
+            confidences.append(float(value) if value is not None else None)
+        except (TypeError, ValueError):
+            confidences.append(None)
+    confidences.extend([None] * (choice_count - len(confidences)))
+
+    raw_hashes = record.get("_choiceImageSha256") or record.get("choiceImageSha256") or []
+    if isinstance(raw_hashes, str):
+        raw_hashes = [raw_hashes] * choice_count
+    hashes = [
+        str(value).lower() if isinstance(value, str) and re.fullmatch(r"[0-9a-fA-F]{64}", value) else None
+        for value in raw_hashes[:choice_count]
+    ]
+    hashes.extend([None] * (choice_count - len(hashes)))
+    return choices, confidences, hashes
+
+
+def choose_best_choices(
+    candidates: list[dict],
+    choice_count: int,
+    expected_image_hash: str = "",
+) -> tuple[list[str], list[float | None], list[str | None]]:
+    """Choose every original choice by its fixed index; never reorder choices by OCR score."""
+    result: list[str] = []
+    result_confidences: list[float | None] = []
+    result_hashes: list[str | None] = []
+    normalized = [
+        (normalized_choice_list(candidate, choice_count), bool(candidate.get("_freshOcrEvidence")))
+        for candidate in candidates
+    ]
+    for index in range(choice_count):
+        ranked = []
+        fresh_available = any(fresh for _, fresh in normalized)
+        for (choices, confidences, hashes), fresh in normalized:
+            if fresh_available and not fresh:
+                continue
+            value = choices[index]
+            if not value or value == MISSING_CHOICE_TEXT:
+                continue
+            confidence = confidences[index]
+            image_hash = hashes[index]
+            quality = text_quality(value)
+            readable_bonus = 2 if readable_choice(value) else 0
+            confidence_bonus = (confidence or 0) * 2
+            length_bonus = min(len(value), 100) / 200
+            ranked.append((
+                bool(expected_image_hash and image_hash == expected_image_hash),
+                confidence is not None,
+                quality * 10 + readable_bonus + confidence_bonus + length_bonus,
+                value,
+                confidence,
+                image_hash,
+            ))
+        if ranked:
+            _, _, _, value, confidence, image_hash = max(
+                ranked, key=lambda item: (item[0], item[1], item[2])
+            )
+            result.append(value)
+            result_confidences.append(confidence)
+            result_hashes.append(image_hash)
+        else:
+            result.append(MISSING_CHOICE_TEXT)
+            result_confidences.append(None)
+            result_hashes.append(next(
+                (
+                    hashes[index]
+                    for (choices, confidences, hashes), fresh in normalized
+                    if not fresh_available or fresh
+                    if hashes[index]
+                ),
+                None,
+            ))
+    return result, result_confidences, result_hashes
+
+
+def choice_text_needs_review(value: str, confidence: float | None) -> bool:
+    if not value or value == MISSING_CHOICE_TEXT:
+        return True
+    if not readable_choice(value) or text_quality(value) < 0.55:
+        return True
+    return confidence is None or confidence < 0.72
+
+
+def choice_history_rule(value: str) -> tuple[str, str] | None:
+    """Return only a rule directly evidenced by this choice, not by the question stem."""
+    return select_history_rule(value)
+
+
+def choice_judgment_reason(source: dict, index: int, stem: str) -> str:
+    label = CHOICE_LABELS[index]
+    accepted = accepted_choice_indexes(source)
+    if len(accepted) == expected_choice_count(source):
+        return (
+            "이 문항은 공식 정답표 정정으로 모든 선택지가 정답 인정 대상이므로 "
+            f"{label}도 정답 처리됩니다."
+        )
+    if index in accepted:
+        if question_kind(stem) == "incorrect":
+            return (
+                "발문이 옳지 않은 설명을 찾도록 요구하며, 공식 정답표에서 이 선지가 "
+                "그 조건에 해당하는 선택지로 확정되었습니다."
+            )
+        return "공식 정답표에서 이 선지가 발문의 조건을 충족하는 정답으로 확정되었습니다."
+    if question_kind(stem) == "incorrect":
+        return (
+            "이 선지는 공식 정답이 아니므로 발문이 요구한 ‘옳지 않은 설명’에 해당하지 않습니다. "
+            "따라서 선지 자체의 역사적 사실과 발문의 부정 조건을 구분해야 합니다."
+        )
+    return (
+        "이 선지는 공식 정답으로 인정되지 않으며, 발문이 요구한 대상·시기·사건과의 "
+        "연결을 정답 선지와 구분해야 합니다."
+    )
+
+
+def build_choice_explanation(
+    source: dict,
+    stem: str,
+    clue: str,
+    choice_text: str,
+    confidence: float | None,
+    image_hash: str | None,
+    index: int,
+    curated: dict | None,
+) -> dict:
+    accepted = accepted_choice_indexes(source)
+    label = CHOICE_LABELS[index]
+    expected_image_hash = str(source.get("detailImageSha256") or "").lower()
+    image_hash_verified = (
+        image_hash == expected_image_hash
+        if image_hash and expected_image_hash
+        else None
+    )
+    curated_choice_text = bool(curated and curated.get("choices"))
+    text_needs_review = (
+        False if curated_choice_text else choice_text_needs_review(choice_text, confidence)
+    )
+    rule = None if text_needs_review else choice_history_rule(choice_text)
+    rule_keyword = rule[0] if rule else ""
+    rule_explanation = rule[1] if rule else ""
+    related_era = ""
+    if rule:
+        inferred_era = infer_era("", "", f"{choice_text} {rule_explanation}", source["primaryEra"])
+        related_era = ERA_LABELS[inferred_era]
+
+    if curated:
+        explanation = normalize_text(curated["choiceExplanations"][index])
+        verification_status = curated["curationStatus"]
+        evidence_sources = list(curated.get("sources") or [])
+        meaning = explanation
+    elif text_needs_review:
+        explanation = (
+            f"{label} 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. "
+            "인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 "
+            "신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다."
+        )
+        verification_status = VERIFICATION_REVIEW
+        evidence_sources = ["official-question-image-ocr"]
+        meaning = "OCR 원문 확인이 필요한 선택지입니다."
+    elif rule:
+        reason = choice_judgment_reason(source, index, stem)
+        question_context = short_excerpt(clue or stem, 100)
+        explanation = (
+            f"{rule_explanation} 이 선지의 핵심인 ‘{rule_keyword}’를 문항의 "
+            f"‘{question_context}’와 대상·시기 면에서 대조해야 합니다. {reason}"
+        )
+        verification_status = VERIFICATION_KNOWLEDGE
+        evidence_sources = ["official-question-image-ocr", "embedded-history-rule"]
+        meaning = rule_explanation
+    else:
+        question_context = short_excerpt(clue or stem, 100)
+        explanation = (
+            f"이 문항은 ‘{question_context}’를 바탕으로 판단하며, {label}에는 "
+            f"‘{short_excerpt(choice_text, 100)}’가 제시되어 있습니다. 저장된 역사 지식 규칙만으로 "
+            "이 선지의 시대·대상과 정오 판단 근거를 확정할 수 없어 공식 원문과 신뢰 자료의 "
+            "추가 대조가 필요합니다."
+        )
+        verification_status = VERIFICATION_REVIEW
+        evidence_sources = ["official-question-image-ocr"]
+        meaning = "선지 원문은 확보했으나 역사적 대상과 판단 근거의 추가 검수가 필요합니다."
+
+    return {
+        "choiceIndex": index,
+        "label": label,
+        "choiceText": choice_text,
+        "isCorrect": index in accepted,
+        "relatedEra": related_era,
+        "relatedTarget": rule_keyword,
+        "coreConcept": rule_keyword,
+        "meaning": meaning,
+        "judgmentReason": choice_judgment_reason(source, index, stem),
+        "correctedFact": (
+            normalize_text(curated.get("correctedFacts", [None] * expected_choice_count(source))[index])
+            if curated
+            and isinstance(curated.get("correctedFacts"), list)
+            and len(curated["correctedFacts"]) == expected_choice_count(source)
+            and curated["correctedFacts"][index]
+            else None
+        ),
+        "explanation": explanation,
+        "verificationStatus": verification_status,
+        "ocrConfidence": confidence,
+        "sourceImageSha256": image_hash,
+        "sourceImageHashVerified": image_hash_verified,
+        "choiceTextVerificationStatus": (
+            CHOICE_TEXT_VISUALLY_REVIEWED
+            if curated_choice_text
+            else VERIFICATION_REVIEW
+            if text_needs_review
+            else "OCR_EXTRACTED"
+        ),
+        "evidenceSources": evidence_sources,
+    }
+
+
+CURATED_PROVENANCE_FIELDS = (
+    "officialSourceUrl",
+    "questionPdfSha256",
+    "answerPdfSha256",
+    "sourceQuestionSha256",
+    "sourceAnswerSha256",
+    "sourceImageSha256",
+    "sourcePdf",
+    "answerPdf",
+    "reviewMethod",
+    "verification",
+    "visualQuestionReview",
+    "visualAnswerReview",
+    "catalogImageReview",
+    "originalImageVisuallyReviewed",
+    "originalQuestionReviewed",
+    "officialAnswerVerified",
+    "sourceVerified",
+    "choiceTextVisuallyReviewed",
+)
+
+
+def repository_path(path: Path) -> str:
+    try:
+        return path.resolve().relative_to(ROOT.resolve()).as_posix()
+    except ValueError:
+        return path.resolve().as_posix()
+
+
+def normalize_curated_choice_source(path: Path) -> list[dict]:
+    """Normalize the reviewed source formats without executing application JS."""
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    rows = payload if isinstance(payload, list) else payload.get("records")
+    if not isinstance(rows, list):
+        raise ValueError(f"curated choice source has no records: {repository_path(path)}")
+    defaults = payload if isinstance(payload, dict) else {}
+    source_document = repository_path(path)
+    curation_status = (
+        VERIFICATION_CURATED
+        if path.resolve() == CURATED_CHOICE_CORRECTIONS.resolve()
+        else VERIFICATION_CURATED_REVIEWED
+    )
+    normalized = []
+    for raw in rows:
+        question_id = raw.get("officialQuestionId")
+        id_match = re.fullmatch(r"official-(\d+)-(advanced|basic)-(\d+)", str(question_id or ""))
+        id_round = int(id_match.group(1)) if id_match else None
+        id_level = {"advanced": "심화", "basic": "기본"}.get(id_match.group(2)) if id_match else None
+        id_question = int(id_match.group(3)) if id_match else None
+        choices = raw.get("choices")
+        if choices is None:
+            choices = raw.get("options")
+        explanations = raw.get("choiceExplanations")
+        if explanations is None:
+            explanations = raw.get("optionExplanations")
+        sources = []
+        for value in (
+            *(raw.get("sources") or []),
+            *(defaults.get("sources") or []),
+            defaults.get("officialSourceUrl"),
+            defaults.get("sourceDocument"),
+            source_document,
+        ):
+            text = normalize_text(str(value or ""))
+            if text and text not in sources:
+                sources.append(text)
+        provenance = {"sourceDocument": source_document}
+        for field in CURATED_PROVENANCE_FIELDS:
+            value = raw.get(field, defaults.get(field))
+            if value is not None:
+                provenance[field] = value
+        if not provenance.get("reviewMethod"):
+            if curation_status == VERIFICATION_CURATED:
+                provenance["reviewMethod"] = (
+                    "공식 문항 이미지를 육안 검토하고 선지별 역사 해설을 외부 역사 자료 URL과 대조했다."
+                )
+            elif choices:
+                provenance["reviewMethod"] = (
+                    "저장소의 수기 검수 자료에서 공식 선지 순서와 선지별 해설을 대조했다."
+                )
+            else:
+                provenance["reviewMethod"] = (
+                    "저장소의 수기 검수 원장에서 공식 문항·정답과 선지별 해설을 대조했다."
+                )
+        provenance["curationStatus"] = curation_status
+        visually_reviewed = bool(
+            raw.get("originalImageVisuallyReviewed")
+            or (
+                raw.get("visualQuestionReview")
+                and raw.get("visualAnswerReview")
+                and raw.get("catalogImageReview")
+            )
+            or (raw.get("originalQuestionReviewed") and raw.get("officialAnswerVerified"))
+            or raw.get("choiceTextVisuallyReviewed")
+        )
+        choice_text_reviewed = bool(
+            choices
+            and (
+                raw.get("choiceTextVisuallyReviewed")
+                or raw.get("originalImageVisuallyReviewed")
+                or (
+                    raw.get("visualQuestionReview")
+                    and raw.get("catalogImageReview")
+                )
+            )
+        )
+        normalized.append({
+            "officialQuestionId": question_id,
+            "examRound": raw.get("examRound", defaults.get("examRound", id_round)),
+            "examLevel": raw.get("examLevel", defaults.get("examLevel", id_level)),
+            "questionNumber": raw.get("questionNumber", id_question),
+            "answer": raw.get("answer"),
+            "choiceCount": raw.get("choiceCount", len(explanations or [])),
+            "choices": list(choices) if choices is not None else None,
+            "choiceExplanations": list(explanations or []),
+            "explanation": normalize_text(raw.get("explanation") or ""),
+            "correctedFacts": raw.get("correctedFacts"),
+            "sources": sources,
+            "provenance": provenance,
+            "curationStatus": curation_status,
+            "reviewLabel": (
+                "출처 근거 검수 완료"
+                if curation_status == VERIFICATION_CURATED
+                else "수기 해설 검토"
+            ),
+            "reviewConfirmed": visually_reviewed,
+            "choiceTextVisuallyReviewed": choice_text_reviewed,
+        })
+    return normalized
+
+
+def validate_curated_choice_corrections(
+    rows: list[dict],
+    catalog_by_id: dict[str, dict],
+    expected_total_question_count: int | None = None,
+    expected_total_choice_count: int | None = None,
+    expected_canonical_question_count: int | None = None,
+    expected_canonical_choice_count: int | None = None,
+    expected_noncanonical_question_count: int | None = None,
+    expected_noncanonical_choice_count: int | None = None,
+) -> tuple[dict[str, dict], list[dict]]:
+    result = {}
+    skipped_noncanonical = []
+    seen_ids = set()
+    supplement_source = repository_path(CURATED_CHOICE_SOURCE_PATHS[2])
+    for item in rows:
+        question_id = item.get("officialQuestionId")
+        if not isinstance(question_id, str) or not question_id:
+            raise ValueError("curated correction lacks an officialQuestionId")
+        if question_id in seen_ids:
+            raise ValueError(f"duplicate curated correction ID: {question_id}")
+        seen_ids.add(question_id)
+        id_match = re.fullmatch(r"official-(\d+)-(advanced|basic)-(\d+)", question_id)
+        if not id_match:
+            raise ValueError(f"invalid curated correction official ID: {question_id}")
+        id_round = int(id_match.group(1))
+        id_level = "심화" if id_match.group(2) == "advanced" else "기본"
+        id_question = int(id_match.group(3))
+        for field, expected in (
+            ("examRound", id_round),
+            ("examLevel", id_level),
+            ("questionNumber", id_question),
+        ):
+            if item.get(field) != expected:
+                raise ValueError(f"curated correction {field} mismatch: {question_id}")
+        count = item.get("choiceCount")
+        level_choice_count = 5 if id_level == "심화" else 4
+        if count != level_choice_count:
+            raise ValueError(f"curated correction declared choice count mismatch: {question_id}")
+        if len(item.get("choiceExplanations") or []) != count:
+            raise ValueError(f"curated correction choice count mismatch: {question_id}")
+        choices = item.get("choices")
+        if choices is not None and len(choices) != count:
+            raise ValueError(f"curated correction source-choice count mismatch: {question_id}")
+        if choices is not None and not item.get("choiceTextVisuallyReviewed"):
+            raise ValueError(f"curated source choices lack visual review: {question_id}")
+        answer = item.get("answer")
+        if not isinstance(answer, int) or not 0 <= answer < count:
+            raise ValueError(f"curated correction answer out of range: {question_id}")
+        if any(not normalize_text(value) for value in item.get("choiceExplanations") or []):
+            raise ValueError(f"curated correction has empty choice explanation: {question_id}")
+        if choices is not None and any(not normalize_text(value) for value in choices):
+            raise ValueError(f"curated correction has empty source choice: {question_id}")
+        corrected = item.get("correctedFacts")
+        if corrected is not None and len(corrected) != count:
+            raise ValueError(f"curated correction correctedFacts count mismatch: {question_id}")
+        provenance = item.get("provenance") or {}
+        source_document = provenance.get("sourceDocument")
+        if not item.get("sources") or not source_document or not provenance.get("reviewMethod"):
+            raise ValueError(f"curated correction lacks source provenance: {question_id}")
+        if not item.get("reviewConfirmed"):
+            raise ValueError(f"curated correction lacks review confirmation: {question_id}")
+        expected_curation_status = (
+            VERIFICATION_CURATED
+            if source_document == repository_path(CURATED_CHOICE_CORRECTIONS)
+            else VERIFICATION_CURATED_REVIEWED
+        )
+        if item.get("curationStatus") != expected_curation_status:
+            raise ValueError(f"curated correction trust status mismatch: {question_id}")
+        if provenance.get("curationStatus") != expected_curation_status:
+            raise ValueError(f"curated correction provenance status mismatch: {question_id}")
+        if expected_curation_status == VERIFICATION_CURATED and not any(
+            str(value).startswith("https://") for value in item["sources"]
+        ):
+            raise ValueError(f"source-verified correction lacks external evidence URL: {question_id}")
+
+        source = catalog_by_id.get(question_id)
+        if not source:
+            if source_document != supplement_source:
+                raise ValueError(f"curated correction has unknown ID: {question_id}")
+            skipped_noncanonical.append(item)
+            continue
+        slug = "advanced" if source["examLevel"] == "심화" else "basic"
+        expected_id = f"official-{source['examRound']}-{slug}-{source['questionNumber']:02d}"
+        if question_id != expected_id:
+            raise ValueError(f"curated correction official ID mismatch: {question_id}")
+        canonical_count = expected_choice_count(source)
+        if count != canonical_count:
+            raise ValueError(f"curated correction declared choice count mismatch: {question_id}")
+        if answer != source.get("answer"):
+            raise ValueError(f"curated correction answer mismatch: {question_id}")
+        for field in ("examRound", "examLevel", "questionNumber"):
+            if item.get(field) != source.get(field):
+                raise ValueError(f"curated correction {field} mismatch: {question_id}")
+        result[question_id] = item
+    registry_choice_count = sum(len(item["choiceExplanations"]) for item in rows)
+    canonical_choice_count = sum(len(item["choiceExplanations"]) for item in result.values())
+    noncanonical_choice_count = sum(
+        len(item["choiceExplanations"]) for item in skipped_noncanonical
+    )
+    if expected_total_question_count is not None and len(rows) != expected_total_question_count:
+        raise ValueError(
+            f"expected {expected_total_question_count} curated registry records, got {len(rows)}"
+        )
+    if expected_total_choice_count is not None and registry_choice_count != expected_total_choice_count:
+        raise ValueError(
+            f"expected {expected_total_choice_count} curated registry choice explanations, got {registry_choice_count}"
+        )
+    if expected_canonical_question_count is not None and len(result) != expected_canonical_question_count:
+        raise ValueError(
+            f"expected {expected_canonical_question_count} canonical curated records, got {len(result)}"
+        )
+    if expected_canonical_choice_count is not None and canonical_choice_count != expected_canonical_choice_count:
+        raise ValueError(
+            f"expected {expected_canonical_choice_count} canonical curated choice explanations, got {canonical_choice_count}"
+        )
+    if expected_noncanonical_question_count is not None and len(skipped_noncanonical) != expected_noncanonical_question_count:
+        raise ValueError(
+            f"expected {expected_noncanonical_question_count} non-canonical curated records, got {len(skipped_noncanonical)}"
+        )
+    if expected_noncanonical_choice_count is not None and noncanonical_choice_count != expected_noncanonical_choice_count:
+        raise ValueError(
+            f"expected {expected_noncanonical_choice_count} non-canonical curated choice explanations, got {noncanonical_choice_count}"
+        )
+    return result, skipped_noncanonical
+
+
+def load_curated_choice_corrections(
+    catalog_by_id: dict[str, dict],
+) -> tuple[dict[str, dict], list[dict]]:
+    rows = [
+        item
+        for path in CURATED_CHOICE_SOURCE_PATHS
+        for item in normalize_curated_choice_source(path)
+    ]
+    return validate_curated_choice_corrections(
+        rows,
+        catalog_by_id,
+        EXPECTED_CURATED_CHOICE_QUESTION_COUNT,
+        EXPECTED_CURATED_CHOICE_COUNT,
+        EXPECTED_CANONICAL_CURATED_QUESTION_COUNT,
+        EXPECTED_CANONICAL_CURATED_CHOICE_COUNT,
+        EXPECTED_NONCANONICAL_CURATED_QUESTION_COUNT,
+        EXPECTED_NONCANONICAL_CURATED_CHOICE_COUNT,
+    )
+
+
+def apply_curated_source_choices(
+    correction: dict | None,
+    choices: list[str],
+    confidences: list[float | None],
+    image_hashes: list[str | None],
+) -> tuple[list[str], list[float | None], list[str | None]]:
+    if not correction or not correction.get("choices"):
+        return choices, confidences, image_hashes
+    curated_choices = [normalize_text(value) for value in correction["choices"]]
+    if len(curated_choices) != len(choices):
+        raise ValueError(
+            f"curated source-choice count mismatch: {correction['officialQuestionId']}"
+        )
+    # A manual transcription replaces OCR text rather than borrowing its confidence
+    # or crop hash. Its source linkage is retained separately in curation provenance.
+    return curated_choices, [None] * len(choices), [None] * len(choices)
+
+
+def extract_ocr_evidence(source: dict, row: dict) -> dict:
     lines = ordered_lines(row)
-    count = 5 if source["examLevel"] == "심화" else 4
-    choices, first_choice_y = choice_lines(lines, count)
+    count = expected_choice_count(source)
+    choices, first_choice_y, confidences = choice_lines(
+        lines,
+        count,
+        float(source.get("detailImageHeight") or 0) or None,
+        float(source.get("detailImageWidth") or 0) or None,
+    )
+    image_hash = str(row.get("imageSha256") or "").lower()
+    if not re.fullmatch(r"[0-9a-f]{64}", image_hash):
+        image_hash = ""
+    expected_hash = str(source.get("detailImageSha256") or "").lower()
+    if image_hash and expected_hash and image_hash != expected_hash:
+        confidences = [None] * len(confidences)
     answer = source["answer"]
     stem = question_stem(lines, source["questionNumber"])
     return {
         "question": stem,
         "clue": "" if answer is None else clue_text(lines, stem, first_choice_y),
         "correctChoice": choices[answer] if answer is not None and len(choices) == count else "",
+        "choices": choices,
+        "_choiceConfidences": confidences,
+        "_choiceImageSha256": [image_hash or None] * count,
+        "_imageHashMismatch": bool(image_hash and expected_hash and image_hash != expected_hash),
+        "_freshOcrEvidence": True,
     }
 
 
@@ -954,6 +1973,12 @@ def main() -> None:
     catalog_path = DIST / "official-exam-catalog.json"
     explanation_path = DIST / "official-exam-explanations.json"
     catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+    if len(catalog) != EXPECTED_QUESTION_COUNT:
+        raise ValueError(f"expected {EXPECTED_QUESTION_COUNT:,} canonical questions, got {len(catalog):,}")
+    catalog_by_id = {item["officialQuestionId"]: item for item in catalog}
+    curated_choice_corrections, skipped_noncanonical_curated = (
+        load_curated_choice_corrections(catalog_by_id)
+    )
     previous_payload = json.loads(explanation_path.read_text(encoding="utf-8")) if explanation_path.exists() else {"records": []}
     previous_records = {item["officialQuestionId"]: item for item in previous_payload.get("records", [])}
     baseline_records = {}
@@ -980,17 +2005,36 @@ def main() -> None:
     for source in catalog:
         original_era = nominal_era(source["questionNumber"])
         source.update(FIXED_SOURCE_METADATA.get(source["officialQuestionId"], {}))
+        curated_choice = curated_choice_corrections.get(source["officialQuestionId"])
         slug = "advanced" if source["examLevel"] == "심화" else "basic"
         image_stem = f"{source['examRound']}-{slug}-{source['questionNumber']:02d}"
         fixed = FIXED_EVIDENCE.get(source["officialQuestionId"])
         ocr_rows = ocr_by_id.get(source["officialQuestionId"]) or ocr_by_stem.get(image_stem, [])
         previous = previous_records.get(source["officialQuestionId"], {})
         baseline = baseline_records.get(source["officialQuestionId"], {})
+        candidates = [extract_ocr_evidence(source, row) for row in ocr_rows]
+        candidates.extend(item for item in (previous, baseline) if item)
+        choice_count = expected_choice_count(source)
+        expected_image_hash = str(source.get("detailImageSha256") or "").lower()
+        choices, choice_confidences, choice_image_hashes = choose_best_choices(
+            candidates,
+            choice_count,
+            expected_image_hash,
+        )
+        if expected_image_hash:
+            choice_confidences = [
+                confidence if image_hash == expected_image_hash else None
+                for confidence, image_hash in zip(choice_confidences, choice_image_hashes)
+            ]
+        choices, choice_confidences, choice_image_hashes = apply_curated_source_choices(
+            curated_choice,
+            choices,
+            choice_confidences,
+            choice_image_hashes,
+        )
         if fixed:
             stem, clue, correct_choice = fixed["question"], fixed["clue"], fixed["correctChoice"]
-        elif ocr_rows or previous or baseline:
-            candidates = [extract_ocr_evidence(source, row) for row in ocr_rows]
-            candidates.extend(item for item in (previous, baseline) if item)
+        elif candidates:
             stem = choose_best([item.get("question", "") for item in candidates], "question")
             clue = choose_best([item.get("clue", "") for item in candidates], "clue")
             correct_choice = choose_best(
@@ -999,6 +2043,15 @@ def main() -> None:
         else:
             raise ValueError(f"missing OCR or prior evidence for {source['officialQuestionId']}")
 
+        answer_index = source.get("answer")
+        if answer_index is not None and fixed and correct_choice:
+            fixed_correct_choice = normalize_text(correct_choice)
+            if choices[answer_index] != fixed_correct_choice:
+                choices[answer_index] = fixed_correct_choice
+                choice_confidences[answer_index] = None
+        if answer_index is not None and choices[answer_index] != MISSING_CHOICE_TEXT:
+            correct_choice = choices[answer_index]
+
         if source["officialQuestionId"] not in FIXED_SOURCE_METADATA:
             source["primaryEra"] = infer_era(stem, clue, correct_choice, original_era)
         if source["primaryEra"] != original_era:
@@ -1006,15 +2059,62 @@ def main() -> None:
         if len(source.get("concepts", [])) == 1 and source["concepts"][0] in ERA_LABELS.values():
             source["concepts"] = [ERA_LABELS[source["primaryEra"]]]
 
-        curated = CURATED_EXPLANATIONS.get(source["officialQuestionId"])
+        # The manual correction ledger is the single source of truth when it
+        # supplies a core explanation; embedded curation covers all other IDs.
+        curated = (curated_choice or {}).get("explanation") or CURATED_EXPLANATIONS.get(
+            source["officialQuestionId"]
+        )
         answer_label = "없음" if source["answer"] is None else CHOICE_LABELS[source["answer"]]
         if curated:
             explanation = ensure_three_sentences(curated, answer_label)
             matched = True
             quality_tier = "curated"
+            core_verification_status = VERIFICATION_CURATED
+            core_evidence_sources = (
+                list(curated_choice.get("sources") or [])
+                if curated_choice and curated_choice.get("explanation")
+                else ["embedded-curated-explanation"]
+            )
         else:
             explanation, matched = make_explanation(source, stem, clue, correct_choice)
             quality_tier = "knowledge" if matched else "evidence"
+            core_verification_status = (
+                VERIFICATION_KNOWLEDGE if matched else VERIFICATION_REVIEW
+            )
+            core_evidence_sources = (
+                ["official-question-image-ocr", "embedded-history-rule"]
+                if matched
+                else ["official-question-image-ocr", "official-answer-catalog"]
+            )
+        choice_explanations = [
+            build_choice_explanation(
+                source,
+                stem,
+                clue,
+                choice_text,
+                choice_confidences[index],
+                choice_image_hashes[index],
+                index,
+                curated_choice,
+            )
+            for index, choice_text in enumerate(choices)
+        ]
+        if core_verification_status == VERIFICATION_REVIEW or any(
+            item["verificationStatus"] == VERIFICATION_REVIEW
+            or item["choiceTextVerificationStatus"] == VERIFICATION_REVIEW
+            for item in choice_explanations
+        ):
+            verification_status = VERIFICATION_REVIEW
+        elif all(item["verificationStatus"] == VERIFICATION_CURATED for item in choice_explanations):
+            verification_status = VERIFICATION_CURATED
+        elif all(
+            item["verificationStatus"]
+            in (VERIFICATION_CURATED, VERIFICATION_CURATED_REVIEWED)
+            for item in choice_explanations
+        ):
+            verification_status = VERIFICATION_CURATED_REVIEWED
+        else:
+            verification_status = VERIFICATION_KNOWLEDGE
         records.append({
             "officialQuestionId": source["officialQuestionId"],
             "question": stem,
@@ -1023,6 +2123,19 @@ def main() -> None:
             "explanation": explanation,
             "curated": bool(curated),
             "qualityTier": quality_tier,
+            "coreVerificationStatus": core_verification_status,
+            "coreEvidenceSources": core_evidence_sources,
+            "choiceCount": choice_count,
+            "choices": choices,
+            "choiceConfidences": choice_confidences,
+            "choiceImageSha256": choice_image_hashes,
+            "acceptedChoiceIndexes": accepted_choice_indexes(source),
+            "choiceExplanations": choice_explanations,
+            "choiceCurationSources": list(curated_choice.get("sources") or []) if curated_choice else [],
+            "choiceCurationProvenance": curated_choice.get("provenance") if curated_choice else None,
+            "choiceCurationStatus": curated_choice.get("curationStatus") if curated_choice else None,
+            "choiceCurationReviewLabel": curated_choice.get("reviewLabel") if curated_choice else None,
+            "verificationStatus": verification_status,
         })
 
     if len(records) != len(catalog) or len({item["officialQuestionId"] for item in records}) != len(catalog):
@@ -1041,6 +2154,109 @@ def main() -> None:
     ]
     if short_rows:
         raise ValueError(f"explanations shorter than three sentences: {short_rows[:10]}")
+
+    choice_total = sum(item["choiceCount"] for item in records)
+    if choice_total != EXPECTED_CHOICE_COUNT:
+        raise ValueError(f"expected {EXPECTED_CHOICE_COUNT:,} choices, got {choice_total:,}")
+    record_by_id = {item["officialQuestionId"]: item for item in records}
+    choice_validation_errors = []
+    choice_order_mismatch_count = 0
+    correct_choice_index_mismatch_count = 0
+    for source in catalog:
+        record = record_by_id[source["officialQuestionId"]]
+        count = expected_choice_count(source)
+        expected_indexes = list(range(count))
+        expected_accepted = accepted_choice_indexes(source)
+        actual_indexes = [item.get("choiceIndex") for item in record["choiceExplanations"]]
+        order_mismatch = (
+            record["choiceCount"] != count
+            or len(record["choices"]) != count
+            or len(record["choiceExplanations"]) != count
+            or actual_indexes != expected_indexes
+            or any(
+                item.get("label") != CHOICE_LABELS[index]
+                or item.get("choiceText") != record["choices"][index]
+                for index, item in enumerate(record["choiceExplanations"][:count])
+            )
+        )
+        if order_mismatch:
+            choice_order_mismatch_count += 1
+        if record["choiceCount"] != count or len(record["choices"]) != count:
+            choice_validation_errors.append(f"{source['officialQuestionId']}: choice count")
+        if len(record["choiceExplanations"]) != count or actual_indexes != expected_indexes:
+            choice_validation_errors.append(f"{source['officialQuestionId']}: choice order")
+        answer_index_mismatch = record["acceptedChoiceIndexes"] != expected_accepted
+        if record["acceptedChoiceIndexes"] != expected_accepted:
+            choice_validation_errors.append(f"{source['officialQuestionId']}: accepted indexes")
+        for index, item in enumerate(record["choiceExplanations"]):
+            if item.get("label") != CHOICE_LABELS[index]:
+                choice_validation_errors.append(f"{source['officialQuestionId']}: label {index}")
+            if item.get("choiceText") != record["choices"][index]:
+                choice_validation_errors.append(f"{source['officialQuestionId']}: text {index}")
+            if bool(item.get("isCorrect")) != (index in expected_accepted):
+                answer_index_mismatch = True
+                choice_validation_errors.append(f"{source['officialQuestionId']}: correct index {index}")
+            if item.get("ocrConfidence") != record["choiceConfidences"][index]:
+                choice_validation_errors.append(f"{source['officialQuestionId']}: confidence {index}")
+            if item.get("sourceImageSha256") != record["choiceImageSha256"][index]:
+                choice_validation_errors.append(f"{source['officialQuestionId']}: image hash {index}")
+            expected_hash = str(source.get("detailImageSha256") or "").lower()
+            expected_hash_status = (
+                item.get("sourceImageSha256") == expected_hash
+                if item.get("sourceImageSha256") and expected_hash
+                else None
+            )
+            if item.get("sourceImageHashVerified") != expected_hash_status:
+                choice_validation_errors.append(
+                    f"{source['officialQuestionId']}: image hash status {index}"
+                )
+            if not normalize_text(item.get("explanation", "")):
+                choice_validation_errors.append(f"{source['officialQuestionId']}: empty explanation {index}")
+        if len(expected_accepted) == 1:
+            answer_index = expected_accepted[0]
+            indexed_choice = record["choices"][answer_index]
+            correct_choice = normalize_text(record.get("correctChoice", ""))
+            if (
+                correct_choice
+                and indexed_choice != MISSING_CHOICE_TEXT
+                and correct_choice != normalize_text(indexed_choice)
+            ):
+                answer_index_mismatch = True
+                record["verificationStatus"] = VERIFICATION_REVIEW
+        if answer_index_mismatch:
+            correct_choice_index_mismatch_count += 1
+    special = record_by_id.get("official-63-advanced-42")
+    if not special or special["acceptedChoiceIndexes"] != [0, 1, 2, 3, 4]:
+        choice_validation_errors.append("official-63-advanced-42: all choices must be accepted")
+    if choice_validation_errors:
+        raise ValueError(f"choice validation failed: {choice_validation_errors[:10]}")
+
+    for question_id, correction in curated_choice_corrections.items():
+        record = record_by_id[question_id]
+        generated = [item["explanation"] for item in record["choiceExplanations"]]
+        expected = [normalize_text(item) for item in correction["choiceExplanations"]]
+        if generated != expected:
+            raise ValueError(f"curated choice explanations were not preserved: {question_id}")
+        if any(
+            item["verificationStatus"] != correction["curationStatus"]
+            for item in record["choiceExplanations"]
+        ):
+            raise ValueError(f"curated choice trust status was not preserved: {question_id}")
+        if correction.get("choices"):
+            expected_choices = [normalize_text(item) for item in correction["choices"]]
+            if record["choices"] != expected_choices:
+                raise ValueError(f"curated source choices were not preserved: {question_id}")
+            if any(
+                item["choiceTextVerificationStatus"] != CHOICE_TEXT_VISUALLY_REVIEWED
+                for item in record["choiceExplanations"]
+            ):
+                raise ValueError(f"curated source choices lost visual-review status: {question_id}")
+        if record["choiceCurationSources"] != correction["sources"]:
+            raise ValueError(f"curated choice sources were not preserved: {question_id}")
+        if record["choiceCurationProvenance"] != correction["provenance"]:
+            raise ValueError(f"curated choice provenance was not preserved: {question_id}")
+        if record["choiceCurationStatus"] != correction["curationStatus"]:
+            raise ValueError(f"curated choice status was not preserved: {question_id}")
 
     previous_generic_count = sum(
         any(phrase in item.get("explanation", "") for phrase in (
@@ -1064,6 +2280,77 @@ def main() -> None:
         min(rewritten_existing_count, modified_in_this_run),
         min(rewritten_existing_count, previous_qa.get("modifiedExistingCount", 0)),
     )
+    all_choice_explanations = [
+        choice
+        for record in records
+        for choice in record["choiceExplanations"]
+    ]
+    review_choice_count = sum(
+        choice["verificationStatus"] == VERIFICATION_REVIEW
+        or choice["choiceTextVerificationStatus"] == VERIFICATION_REVIEW
+        for choice in all_choice_explanations
+    )
+    review_question_count = sum(
+        record["verificationStatus"] == VERIFICATION_REVIEW for record in records
+    )
+    missing_choice_text_count = sum(
+        choice["choiceText"] == MISSING_CHOICE_TEXT for choice in all_choice_explanations
+    )
+    uncertain_choice_text_count = sum(
+        choice["choiceText"] != MISSING_CHOICE_TEXT
+        and choice["choiceTextVerificationStatus"] == VERIFICATION_REVIEW
+        for choice in all_choice_explanations
+    )
+    missing_choice_confidence_count = sum(
+        choice["ocrConfidence"] is None for choice in all_choice_explanations
+    )
+    missing_choice_image_hash_count = sum(
+        not choice["sourceImageSha256"] for choice in all_choice_explanations
+    )
+    choice_image_hash_mismatch_count = sum(
+        bool(choice["sourceImageSha256"])
+        and bool(catalog_by_id[record["officialQuestionId"]].get("detailImageSha256"))
+        and choice["sourceImageSha256"]
+        != catalog_by_id[record["officialQuestionId"]]["detailImageSha256"].lower()
+        for record in records
+        for choice in record["choiceExplanations"]
+    )
+    verification_status_counts = {
+        status: sum(choice["verificationStatus"] == status for choice in all_choice_explanations)
+        for status in (
+            VERIFICATION_CURATED,
+            VERIFICATION_CURATED_REVIEWED,
+            VERIFICATION_KNOWLEDGE,
+            VERIFICATION_REVIEW,
+        )
+    }
+    curated_source_documents = [repository_path(path) for path in CURATED_CHOICE_SOURCE_PATHS]
+    curated_source_choice_count = sum(
+        len(item.get("choices") or []) for item in curated_choice_corrections.values()
+    )
+    source_verified_curated = {
+        question_id: item
+        for question_id, item in curated_choice_corrections.items()
+        if item["curationStatus"] == VERIFICATION_CURATED
+    }
+    editorial_reviewed_curated = {
+        question_id: item
+        for question_id, item in curated_choice_corrections.items()
+        if item["curationStatus"] == VERIFICATION_CURATED_REVIEWED
+    }
+    skipped_noncanonical_curated_ids = sorted(
+        item["officialQuestionId"] for item in skipped_noncanonical_curated
+    )
+    skipped_noncanonical_curated_choice_count = sum(
+        len(item["choiceExplanations"]) for item in skipped_noncanonical_curated
+    )
+    initial_core_records = [initial_core_record(record) for record in records]
+    full_record_json_bytes = len(
+        json.dumps(records, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    )
+    initial_core_record_json_bytes = len(
+        json.dumps(initial_core_records, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    )
     qa = {
         "rewrittenExistingCount": rewritten_existing_count,
         "modifiedExistingCount": modified_existing_count,
@@ -1077,23 +2364,83 @@ def main() -> None:
         "eraMetadataCorrectionCount": era_metadata_corrections,
         "knowledgeRuleCount": sum(item["qualityTier"] in ("curated", "knowledge") for item in records),
         "evidenceFallbackCount": sum(item["qualityTier"] == "evidence" for item in records),
-        "qaDeferredCount": 0,
+        "choiceCount": len(all_choice_explanations),
+        "choiceExplanationCount": len(all_choice_explanations),
+        "curatedChoiceExplanationCount": (
+            verification_status_counts[VERIFICATION_CURATED]
+            + verification_status_counts[VERIFICATION_CURATED_REVIEWED]
+        ),
+        "curatedChoiceQuestionCount": len(curated_choice_corrections),
+        "sourceVerifiedChoiceExplanationCount": verification_status_counts[VERIFICATION_CURATED],
+        "sourceVerifiedChoiceQuestionCount": len(source_verified_curated),
+        "editorialReviewedChoiceExplanationCount": verification_status_counts[
+            VERIFICATION_CURATED_REVIEWED
+        ],
+        "editorialReviewedChoiceQuestionCount": len(editorial_reviewed_curated),
+        "curatedRegistryQuestionCount": (
+            len(curated_choice_corrections) + len(skipped_noncanonical_curated)
+        ),
+        "curatedRegistryChoiceExplanationCount": (
+            sum(len(item["choiceExplanations"]) for item in curated_choice_corrections.values())
+            + skipped_noncanonical_curated_choice_count
+        ),
+        "skippedNonCanonicalCuratedIds": skipped_noncanonical_curated_ids,
+        "skippedNonCanonicalCuratedQuestionCount": len(skipped_noncanonical_curated),
+        "skippedNonCanonicalCuratedChoiceExplanationCount": skipped_noncanonical_curated_choice_count,
+        "curatedSourceChoiceTextCount": curated_source_choice_count,
+        "curatedChoiceSourceDocuments": curated_source_documents,
+        "knowledgeRuleChoiceExplanationCount": verification_status_counts[VERIFICATION_KNOWLEDGE],
+        "dataReviewRequiredChoiceCount": review_choice_count,
+        "dataReviewRequiredQuestionCount": review_question_count,
+        "missingChoiceTextCount": missing_choice_text_count,
+        "uncertainChoiceTextCount": uncertain_choice_text_count,
+        "missingChoiceConfidenceCount": missing_choice_confidence_count,
+        "missingChoiceImageHashCount": missing_choice_image_hash_count,
+        "choiceImageHashMismatchCount": choice_image_hash_mismatch_count,
+        "choiceVerificationStatusCounts": verification_status_counts,
+        "choiceOrderMismatchCount": choice_order_mismatch_count,
+        "correctChoiceIndexMismatchCount": correct_choice_index_mismatch_count,
+        "allAcceptedChoiceQuestionCount": sum(
+            len(record["acceptedChoiceIndexes"]) == record["choiceCount"] for record in records
+        ),
+        "qaDeferredCount": review_question_count,
         "forbiddenGenericCount": 0,
         "minimumSentenceCount": 3,
+        "fullRecordJsonBytes": full_record_json_bytes,
+        "initialCoreRecordJsonBytes": initial_core_record_json_bytes,
+        "initialCoreRecordReductionPercent": round(
+            (1 - initial_core_record_json_bytes / full_record_json_bytes) * 100,
+            1,
+        ),
     }
     payload = {
-        "schemaVersion": 2,
+        "schemaVersion": 3,
         "canonicalQuestionCount": len(records),
+        "canonicalChoiceCount": len(all_choice_explanations),
         "officialAnswerSource": "official-exam-catalog.json",
+        "curatedChoiceCorrectionSource": repository_path(CURATED_CHOICE_CORRECTIONS),
+        "curatedChoiceCorrectionSources": curated_source_documents,
         "qa": qa,
         "records": records,
     }
     explanation_path.write_text(
         json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
-    js = "/* Generated from the canonical official catalog and OCR of official question crops. */\n"
+    js = "/* Core-only bootstrap; option explanations hydrate from official-exam-explanations.json. */\n"
     js += "globalThis.OFFICIAL_EXAM_EXPLANATION_RECORDS="
-    js += json.dumps(records, ensure_ascii=False, separators=(",", ":"))
+    js += json.dumps(initial_core_records, ensure_ascii=False, separators=(",", ":"))
+    js += ";\n"
+    js += "globalThis.OFFICIAL_EXAM_EXPLANATION_META="
+    js += json.dumps(
+        {
+            "schemaVersion": payload["schemaVersion"],
+            "canonicalQuestionCount": payload["canonicalQuestionCount"],
+            "canonicalChoiceCount": payload["canonicalChoiceCount"],
+            "qa": qa,
+        },
+        ensure_ascii=False,
+        separators=(",", ":"),
+    )
     js += ";\n"
     (DIST / "official-exam-explanations.js").write_text(js, encoding="utf-8")
 
@@ -1109,7 +2456,10 @@ def main() -> None:
     with_choice = sum(bool(item["correctChoice"]) for item in records)
     with_clue = sum(bool(item["clue"]) for item in records)
     print(
-        f"OK {len(records)} explanations; {with_clue} clues; {with_choice} exact correct-choice texts; "
+        f"OK {len(records)} explanations and {choice_total} choice explanations; "
+        f"{with_clue} clues; {with_choice} exact correct-choice texts; "
+        f"{review_choice_count} choices flagged {VERIFICATION_REVIEW}; "
+        f"bootstrap records {initial_core_record_json_bytes:,}/{full_record_json_bytes:,} bytes; "
         f"{qa['genericExplanationRemovedCount']} generic explanations removed"
     )
 

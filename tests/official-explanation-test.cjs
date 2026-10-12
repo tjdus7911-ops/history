@@ -23,15 +23,15 @@ for(const entry of entries){
 click({nav:'exam-library'});click({officialEra:'ancient'});
 const eraEntry=entries.find(entry=>entry.primaryEra==='ancient'),eraQuestion=entryQuestion(eraEntry.canonicalQuestionId),eraWrong=otherAnswer(eraQuestion);
 click({officialSingle:eraEntry.canonicalQuestionId});click({officialPick:String(eraWrong)});click({officialSubmit:'true'});
-assert(html.includes('✕ 오답입니다.'));assert(html.includes('정답 '+answerDisplay(eraQuestion)));assert(html.includes('[해설]'));assert(html.includes(eraQuestion.explanation));
+assert(html.includes('✕ 오답입니다.'));assert(html.includes('정답 '+answerDisplay(eraQuestion)));assert(html.includes('[문제 핵심 해설]'));assert(html.includes(eraQuestion.explanation));
 click({officialExit:'true'});click({officialSingle:eraEntry.canonicalQuestionId});click({officialPick:String(eraQuestion.answer)});click({officialSubmit:'true'});
-assert(html.includes('✓ 정답입니다.'));assert(html.includes('[해설]'));assert(html.includes(eraQuestion.explanation));
+assert(html.includes('✓ 정답입니다.'));assert(html.includes('[문제 핵심 해설]'));assert(html.includes(eraQuestion.explanation));
 
 // TEST 3/4: round learn mode immediately shows explanations for both outcomes.
 click({officialExit:'true'});click({officialBack:'home'});click({officialTab:'round'});click({officialRound:'70',officialEditionLevel:'심화'});click({officialStart:'learn'});
 let current=copy('officialSessionQuestion()'),question=entryQuestion(current.canonicalQuestionId),wrong=otherAnswer(question);
-click({officialPick:String(wrong)});click({officialSubmit:'true'});assert(html.includes('✕ 오답입니다.')&&html.includes('[해설]')&&html.includes(question.explanation));
-click({officialExit:'true'});click({officialStart:'learn'});current=copy('officialSessionQuestion()');question=entryQuestion(current.canonicalQuestionId);click({officialPick:String(question.answer)});click({officialSubmit:'true'});assert(html.includes('✓ 정답입니다.')&&html.includes('[해설]')&&html.includes(question.explanation));
+click({officialPick:String(wrong)});click({officialSubmit:'true'});assert(html.includes('✕ 오답입니다.')&&html.includes('[문제 핵심 해설]')&&html.includes(question.explanation));
+click({officialExit:'true'});click({officialStart:'learn'});current=copy('officialSessionQuestion()');question=entryQuestion(current.canonicalQuestionId);click({officialPick:String(question.answer)});click({officialSubmit:'true'});assert(html.includes('✓ 정답입니다.')&&html.includes('[문제 핵심 해설]')&&html.includes(question.explanation));
 
 // TEST 5/6: exam mode hides explanations while solving and exposes direct review only after grading.
 click({officialExit:'true'});click({officialStart:'exam'});click({officialTimerStart:'true'});
@@ -40,12 +40,12 @@ for(let index=0;index<examEntries.length;index++){
   const entry=examEntries[index],examQuestion=entryQuestion(entry.canonicalQuestionId),answer=index===0?otherAnswer(examQuestion):examQuestion.answer;
   if(index===0)firstWrongId=entry.canonicalQuestionId;
   click({officialPick:String(answer)});
-  assert(!html.includes('[해설]'));assert(!html.includes(examQuestion.explanation));
+  assert(!html.includes('[문제 핵심 해설]'));assert(!html.includes(examQuestion.explanation));
   click({officialNext:'true'});
 }
 assert(html.includes('시험을 제출하시겠어요?'));click({officialSubmitConfirm:'true'});
 assert(html.includes('OFFICIAL EXAM RESULT'));assert(html.includes('문제별 해설 · 오답 1'));assert(html.includes(`data-official-review="${firstWrongId}"`));
-click({officialReview:firstWrongId});const reviewed=entryQuestion(firstWrongId);assert(html.includes('채점 후 문제 다시 보기'));assert(html.includes('✕ 오답입니다.'));assert(html.includes('정답 '+answerDisplay(reviewed)));assert(html.includes('[해설]'));assert(html.includes(reviewed.explanation));
+click({officialReview:firstWrongId});const reviewed=entryQuestion(firstWrongId);assert(html.includes('채점 후 문제 다시 보기'));assert(html.includes('✕ 오답입니다.'));assert(html.includes('정답 '+answerDisplay(reviewed)));assert(html.includes('[문제 핵심 해설]'));assert(html.includes(reviewed.explanation));
 
 // TEST 7: Story official question keeps its submit -> grading -> explanation flow.
 const storyId=entries.find(entry=>entry.canonicalQuestionId.startsWith('ch')&&entryQuestion(entry.canonicalQuestionId).relatedSceneId).canonicalQuestionId,storyQuestion=entryQuestion(storyId);

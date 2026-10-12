@@ -62,7 +62,8 @@ if (globalThis.CORE_APP_READY === true && globalThis.THREE_STORY_RUNTIME?.versio
       if (!questions.length) return '<p class="ed-empty">기출에 필요한 장면을 읽으면 문제가 열립니다.</p>';
       return '<div class="ed-exam-list">'+questions.map(q => {
         const record = meta().questionRecords[q.questionId];
-        return '<article class="ed-exam-row"><button data-practice="'+q.questionId+'"><img loading="lazy" src="'+esc(q.sourceQuestionImage)+'" alt="원본 문항 미리보기"><span><small>'+esc(q.threeExam.label)+'</small><b>'+esc(q.sourceQuestionText||q.question)+'</b><small class="'+(record?.lastCorrect?'last-correct':'')+'">'+(!record?'미풀이':record.lastCorrect?'최근 정답':'최근 오답')+'</small></span><span>›</span></button></article>';
+        const thumbnail=globalThis.OFFICIAL_EXAM_UI?.thumbnail?.(q)||q.sourceQuestionImage;
+        return '<article class="ed-exam-row"><button data-practice="'+q.questionId+'"><img loading="lazy" decoding="async" src="'+esc(thumbnail)+'" alt="원본 문항 미리보기"><span><small>'+esc(q.threeExam.label)+'</small><b>'+esc(q.sourceQuestionText||q.question)+'</b><small class="'+(record?.lastCorrect?'last-correct':'')+'">'+(!record?'미풀이':record.lastCorrect?'최근 정답':'최근 오답')+'</small></span><span>›</span></button></article>';
       }).join('')+'</div>';
     };
   }

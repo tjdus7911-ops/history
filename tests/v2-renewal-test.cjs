@@ -1,5 +1,5 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
-const scripts=[...fs.readFileSync('dist/index.html','utf8').matchAll(/<script src="([^"]+)"/g)].map(m=>m[1]).filter(n=>!['pwa.js','editorial-ui.js'].includes(n));
+const allScripts=[...fs.readFileSync('dist/index.html','utf8').matchAll(/<script src="([^"]+)"/g)].map(m=>m[1]),scripts=allScripts.slice(0,allScripts.indexOf('editorial-ui.js')).filter(n=>n!=='pwa.js');
 let html='',saved=null;const handlers={};
 const context=vm.createContext({Date,console,document:{querySelector:s=>s==='#app'?{set innerHTML(v){html=v}}:null,querySelectorAll:()=>[],addEventListener:(name,fn)=>{(handlers[name]||=[]).push(fn)},createElement:()=>({setAttribute(){},remove(){}}),body:{append(){}}},localStorage:{getItem:()=>saved,setItem:(key,value)=>saved=value},window:{scrollTo(){}},navigator:{},setTimeout(){return 1},clearTimeout(){}});
 const run=code=>vm.runInContext(code,context);run(scripts.map(n=>fs.readFileSync('dist/'+n,'utf8')).join('\n'));
@@ -11,6 +11,7 @@ run("recordQuestion(state,'ch06-official-79-advanced-13',QUESTIONS.find(q=>q.que
 run("state.meta.learningEvents.push({questionId:'ch06-official-79-advanced-13',correct:false});");assert.equal(run('learningSummary(state.meta).todayAttempts'),1);run('state.meta.learningEvents.pop()');
 const before=run('JSON.stringify(state.run)');run("modal={type:'v2-memory',questionId:'ch06-official-79-advanced-13'};render()");assert(html.includes('관련 스토리 다시 보기'));assert(html.includes('assets/scenes/ch06-tripitaka-workshop.webp'));assert.equal(run('JSON.stringify(state.run)'),before);
 run("modal=null;screen='study';studyTab='review';wrongFilter='official';render()");assert(html.includes('최근 틀린 문제'));assert(html.includes('제79회'));run("wrongChapter='ch01';render()");assert(html.includes('선택한 조건에 맞는 오답이 없습니다'));
+const officialHandoff=run('v2OfficialStudy()');assert(officialHandoff.includes('data-nav="exam-library"'));assert(!officialHandoff.includes('v2-question-row')&&!officialHandoff.includes('<img'));assert(officialHandoff.length<5000,'legacy official study rendered the full 1,800-question catalog');
 run("screen='era';render()");assert(html.includes('고려 · 챕터 선택'));assert.equal((html.match(/class="v2-era-card coming"/g)||[]).length,4);
 run("screen='records';render()");assert(html.includes('학습 캘린더'));assert(html.includes('누적 문제 정답률'));assert(html.includes('날짜별 기록은 V2 이후'));
 for(const q of run('QUESTIONS')){const s=run('STORIES['+JSON.stringify(q.relatedSceneId)+']');if(s?.illustrationId)assert.equal(q.relatedIllustrationId,s.illustrationId,q.questionId+' exact recall')}

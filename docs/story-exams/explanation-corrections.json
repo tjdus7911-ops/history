@@ -55,5 +55,64 @@
     ],
     "explanation": "1. (가)는 고려 건국 918년부터 강조의 정변 1009년까지이다. 조일신의 난보다 이르다.\n2. (나)는 강조의 정변 1009년부터 이자겸의 난 1126년까지이다.\n3. (다)는 이자겸의 난 1126년부터 만적의 난 1198년까지이다.\n4. (라)는 만적의 난 1198년부터 개경 환도 1270년까지이다.\n5. 조일신의 난은 공민왕 1년인 1352년이다. 개경 환도 1270년 이후, 고려 멸망 1392년 이전인 (마)에 해당한다.",
     "originalImageVisuallyReviewed": true
+  },
+  {
+    "officialQuestionId": "official-79-advanced-01",
+    "examRound": 79,
+    "examLevel": "심화",
+    "questionNumber": 1,
+    "answer": 1,
+    "choices": [
+      "가락바퀴를 이용하여 실을 뽑았다.",
+      "주로 동굴이나 강가의 막집에 살았다.",
+      "청동 방울 등을 의례 도구로 이용하였다.",
+      "많은 인력을 동원하여 고인돌을 축조하였다.",
+      "빗살무늬 토기를 만들어 식량을 저장하였다."
+    ],
+    "choiceExplanations": [
+      "가락바퀴는 실을 뽑는 도구로 신석기 시대의 의생활과 연결된다. (가)는 뗀석기가 출토된 구석기 시대이므로 이 문제의 답이 아니다.",
+      "구석기인은 사냥과 채집을 하며 이동 생활을 했고 동굴이나 강가의 막집을 주거로 이용했다. 자료의 뗀석기와 정확히 연결되므로 이 선지가 정답이다.",
+      "청동 방울은 청동기 시대의 제사장이 의례에 사용한 도구로 알려져 있다. 구석기 생활을 묻는 자료와 시대가 다르다.",
+      "고인돌은 많은 노동력을 동원해 만든 청동기 시대의 대표 무덤이며 계급 사회의 성립을 보여 준다. 구석기 시대에는 이러한 지배층의 거대 무덤이 나타나지 않았다.",
+      "빗살무늬 토기는 신석기 시대에 음식을 조리하거나 식량을 저장하는 데 사용했다. 정착 생활과 토기의 사용은 구석기 시대 이후의 생활 모습이다."
+    ],
+    "sources": [
+      "https://contents.history.go.kr/mobile/kc/view.do?code=kc_age_10&levelId=kc_i000100",
+      "https://contents.history.go.kr/mobile/ta/view.do?levelId=ta_h21_0020_0010",
+      "https://contents.history.go.kr/data/pdf/km/km_023.pdf"
+    ],
+    "explanation": "자료는 웅기 굴포리와 공주 석장리에서 출토된 뗀석기를 근거로 한반도의 구석기 시대를 묻는다. 구석기인은 사냥과 채집을 하며 이동했고 동굴이나 강가의 막집에서 살았다. 따라서 ②가 정답이며, 가락바퀴·빗살무늬 토기는 신석기, 청동 방울·고인돌은 청동기 생활과 연결된다.",
+    "originalImageVisuallyReviewed": true
+  },
+  {
+    "officialQuestionId": "official-79-advanced-40",
+    "examRound": 79,
+    "examLevel": "심화",
+    "questionNumber": 40,
+    "answer": 3,
+    "choices": [
+      "조선 태형령이 시행되었다.",
+      "교육 입국 조서가 반포되었다.",
+      "여권통문이 황성신문에 게재되었다.",
+      "소학교라는 명칭이 국민학교로 변경되었다.",
+      "근대극 형식을 도입한 토월회가 조직되었다."
+    ],
+    "choiceExplanations": [
+      "조선 태형령은 무단 통치기인 1912년에 제정·시행되어 1920년에 폐지되었다. 1936년 손기정 선수 사진의 일장기 말소 사건보다 앞선 사실이므로 정답이 아니다.",
+      "교육 입국 조서는 갑오개혁기인 1895년에 반포되어 근대 교육의 방향을 제시했다. 일장기 말소 사건보다 40여 년 앞선 사실이다.",
+      "여권통문은 여성의 교육권·직업권·참정권을 주장한 글로 1898년 『황성신문』 등에 실렸다. 1936년 이후의 사실을 묻는 발문의 조건에 맞지 않는다.",
+      "조선총독부는 전시 동원 교육을 강화하면서 1941년 소학교의 명칭을 국민학교로 바꾸었다. 1936년 일장기 말소 사건 이후에 일어난 사실이므로 이 선지가 정답이다.",
+      "토월회는 박승희·김복진·김기진 등이 1923년에 조직한 극단으로 서구 근대극을 시도했다. 일장기 말소 사건보다 앞서 결성되었으므로 정답이 아니다."
+    ],
+    "sources": [
+      "https://contents.history.go.kr/mobile/eh/view.do?levelId=eh_n0900_0010",
+      "https://contents.history.go.kr/front/tg/print.do?levelId=tg_004_1520&treeId=0209",
+      "https://contents.history.go.kr/front/tg/view.do?ganada=%EA%B0%80&levelId=tg_004_0120&pageUnit=10&treeId=0100",
+      "https://contents.history.go.kr/front/hm/view.do?levelId=hm_140_0050",
+      "https://contents.history.go.kr/front/hm/view.do?levelId=hm_125_0150",
+      "https://encykorea.aks.ac.kr/Article/E0059203"
+    ],
+    "explanation": "밑줄 친 사건은 1936년 베를린 올림픽 마라톤 우승자 손기정의 사진에서 일장기를 지운 사건이다. 조선 태형령 시행·교육 입국 조서 반포·여권통문 게재·토월회 조직은 모두 1936년보다 앞선다. 조선총독부가 소학교를 국민학교로 바꾼 것은 1941년이므로 ④가 정답이다.",
+    "originalImageVisuallyReviewed": true
   }
 ]

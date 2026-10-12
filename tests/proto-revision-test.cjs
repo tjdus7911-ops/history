@@ -2,9 +2,9 @@ const fs=require('node:fs'),crypto=require('node:crypto'),assert=require('node:a
 const {load,step}=require('./proto-revision-harness.cjs');
 const raw=fs.readFileSync('docs/proto-revision/눈떠보니원삼국_개정게임데이터.json'),source=JSON.parse(raw);
 const digest=value=>crypto.createHash('sha256').update(value).digest('hex');
-assert.equal(digest(raw),'d9e183fedd783fee7f7792dcb19c71a5a09d6c8188e266ea932b7361d1f0bed2');
+assert.equal(digest(raw),'e34fce45eedabdde950c1b08f440177cdfe958f7636b24022f8f7e84f6816595');
 assert.deepEqual(fs.readFileSync('dist/proto-story-script.json'),raw);
-const h=load(),scenes=source.chapters.flatMap(chapter=>chapter.scenes);
+const h=load(),scenes=source.chapters.flatMap(chapter=>chapter.scenes),catalog=JSON.parse(fs.readFileSync('dist/official-exam-catalog.json')),catalogById=new Map(catalog.map(item=>[item.officialQuestionId,item]));
 assert.deepEqual(h.copy('PROTO_REVISION_SOURCE'),source);
 assert.equal(h.run('PROTO_REVISION_SOURCE_SHA256'),digest(raw));
 assert.equal(h.run('PROTO_STUDY_QUESTION_IDS.length'),23);
@@ -28,7 +28,9 @@ assert.equal(choices,108);assert.equal(utterances,1369);
 for(const authored of source.examPlan.questions){
  const q=h.copy('PROTO_REVISION_RUNTIME.questionByOfficialId.get('+JSON.stringify(authored.officialQuestionId)+')');
  assert.equal(q.answer,authored.answerIndex0);assert.equal(q.answer+1,authored.answerNumber1);assert.equal(q.choices.length,authored.choiceCount);
- assert.equal(q.sourceQuestionImage,authored.questionImage);assert.equal(digest(fs.readFileSync('dist/'+q.sourceQuestionImage)),authored.questionImageSha256);
+ const canonical=catalogById.get(authored.officialQuestionId);assert(canonical,authored.officialQuestionId+' canonical image');
+ assert.equal(digest(fs.readFileSync('dist/'+authored.questionImage)),authored.questionImageSha256);
+ assert.equal(q.sourceQuestionImage,canonical.detailImage);assert.equal(digest(fs.readFileSync('dist/'+q.sourceQuestionImage)),canonical.detailImageSha256);
  assert.equal(q.explanation,authored.proposed.playExplanation);assert.deepEqual(q.protoRequiredSceneIds,authored.proposed.requiresReadSceneIds);
 }
 h.run("resumeEra('proto-kingdoms')");
@@ -81,7 +83,8 @@ function fullPlay(branch,wrong){
  assert.equal(game.run("meta().eraProgress['proto-kingdoms-v3'].progress"),100);assert.equal(game.run("meta().eraProgress['proto-kingdoms-v3'].completed"),true);
  assert.equal(game.run('run().characterStates.proto_modern.characterAge'),24);assert.equal(game.run('run().characterStates.proto_guide.characterAge'),27);assert.equal(game.run('run().characterStates.proto_raon.characterAge'),19);
  assert.equal(game.run('run().characterStates.proto_guide.isAlive'),true);
- assert.equal(game.run("meta().wrongQuestionIds.filter(id=>id.startsWith('proto-v3-')).length"),wrong?23:0);
+ assert.equal(game.run("PROTO_STUDY_QUESTION_IDS.filter(id=>{const q=QUESTIONS.find(item=>item.questionId===id),entry=globalThis.OFFICIAL_EXAM_CATALOG.find(item=>item.sourceRecord.officialQuestionId===q.officialQuestionId);return meta().wrongQuestionIds.includes(entry.canonicalQuestionId)}).length"),wrong?23:0);
+ assert.equal(game.run("meta().wrongQuestionIds.filter(id=>id.startsWith('proto-v3-')).length"),0,'official wrong-note IDs stay canonical');
  game.click({action:'proto-recordbook'});assert.equal((game.html().match(/class="proto-topic"/g)||[]).length,31);
  const before=game.copy('run()');const reviewId=game.run('PROTO_STUDY_QUESTION_IDS[0]');game.click({protoReview:reviewId});game.click({protoAnswer:'0'});game.click({action:'proto-submit'});game.click({action:'proto-quiz-next'});assert.deepEqual(game.copy('run()'),before,'optional review changed main run');
  game.run("state.mainRun=null;state.run=INITIAL_RUN('proto-ch02');PROTO_SAVE_V3.identifyRun(run(),true);run().storyId='proto_ch02_s3';run().protoStoryState.scenes.proto_ch02_s3={phase:'join',choiceIndex:0};run().dialogueCursor=3;run().dialogueSceneId=run().storyId;modal=null;screen='game';render()");

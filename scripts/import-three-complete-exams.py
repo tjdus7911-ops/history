@@ -361,7 +361,13 @@ def compile_questions(ledger, evidence, catalog, schedule, repo_root):
         q = dict(source)
         q.pop("workbookRow")
         q.pop("selected")
-        q["questionImage"] = original["questionImage"]
+        # The reviewed manuscript keeps its exact historical crop as authoring
+        # evidence. Runtime media is upgraded separately through the canonical
+        # catalog's hashed detailImage, so regeneration must validate both
+        # without rewriting the approved Three data or its source proof.
+        authored_prefix = "dist/"
+        require(proof["repoImagePath"].startswith(authored_prefix), f"Invalid reviewed image path: {qid}")
+        q["questionImage"] = proof["repoImagePath"][len(authored_prefix):]
         image_path = repo_root / "dist" / q["questionImage"]
         require(image_path.is_file(), f"Missing original question image: {image_path}")
         require(proof["repoImagePath"] == "dist/" + q["questionImage"], f"Original image path mismatch: {qid}")
@@ -372,6 +378,14 @@ def compile_questions(ledger, evidence, catalog, schedule, repo_root):
         require((width, height) == (review["width"], review["height"]), f"Original image dimensions changed: {qid}")
         require(review.get("completeQuestionVisible") and review.get("questionNumberMatches"), f"Incomplete original image crop review: {qid}")
         require(width > 0 and height > 0, f"Invalid original image dimensions: {qid}")
+        detail_image = original.get("detailImage") or original["questionImage"]
+        detail_path = repo_root / "dist" / detail_image
+        require(detail_path.is_file(), f"Missing canonical detail image: {qid}")
+        require(original.get("questionImage") == detail_image, f"Canonical question/detail image mismatch: {qid}")
+        require(sha256(detail_path) == original.get("detailImageSha256"), f"Canonical detail image hash mismatch: {qid}")
+        detail_width, detail_height = webp_size(detail_path)
+        require((detail_width, detail_height) == (original.get("detailImageWidth"), original.get("detailImageHeight")), f"Canonical detail image dimensions changed: {qid}")
+        require(original.get("cropValidation", {}).get("status") == "passed", f"Canonical crop validation missing: {qid}")
         require(original["examYear"] > 0 and original["sourcePdf"].endswith(".pdf") and original["answerPdf"].endswith(".pdf"), f"Incomplete official source metadata: {qid}")
         options = proof.get("options", [])
         require(not options or (len(options) == q["choiceCount"] and all(isinstance(x, str) and x for x in options)), f"Partial text transcription must not become answer choices: {qid}")

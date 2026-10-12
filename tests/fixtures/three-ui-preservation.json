@@ -1,47 +1,47 @@
 {
   "dist/three-story-script.json": {
-    "sha256": "fdf33adf9685a4c84425a7218efa42a9680897b6872853bd8f0e1d21bb4426a5",
-    "bytes": 1621079
+    "sha256": "76899dde1ea2bf2841074b5ee90b406e469f7ec3ad1ba5764492abfbc1dc7fd4",
+    "bytes": 1658653
   },
   "dist/three-exam-data.json": {
-    "sha256": "220af19c134da1ebe33f5d11596ddc1d40583a347b0e3a654ac1b71030b79325",
-    "bytes": 814244
+    "sha256": "49d8989f52e3cc41735d80b1220d05aecb63544b55ea6af93e9d3d47c388dfb6",
+    "bytes": 830817
   },
   "dist/mnemonic-inventory.json": {
-    "sha256": "6e9d7cb26797fb5199825f458b76e88c7c4408fcc2d6e28dad35923690bcb199",
-    "bytes": 2073080
+    "sha256": "3a5f675fefaa3b6dc2abe0742742c311207dbd9baf67f922ec46a4254ab3b71d",
+    "bytes": 2073211
   },
   "dist/joseon-data.js": {
-    "sha256": "2c9d3dced09efe66caa09a128eab073189315529187a267c6752fbfb3372290b",
-    "bytes": 97755
+    "sha256": "e4b5d3da49c1c4eb89de75b6dbf1b3502bfee3854434874fbe6524403d4fec76",
+    "bytes": 98256
   },
   "dist/ancient-data.js": {
-    "sha256": "aea9cce6fff5e6d16b58a31a0eab4080426b0833ae81ad1ee7610497a7ea6e39",
-    "bytes": 41267
+    "sha256": "7bb0e4dd913dc2b450883f88c97f9b21c1de67af08c26927b9b6066891bf741d",
+    "bytes": 41477
   },
   "dist/data.js": {
-    "sha256": "84882d00cd497bbb62735bedbed6ca600acb76166a19ce481361cc21ed5e15ab",
-    "bytes": 78759
+    "sha256": "3ee0ad00d38f5cf54194d672fc9b516c11d9168b3dc89c2857821bf056227a92",
+    "bytes": 79085
   },
   "dist/ch02-data.js": {
-    "sha256": "910891293d6b33afbce264a05c6f939544308e543cc4848edcd47564b8d55e1d",
-    "bytes": 71236
+    "sha256": "ce16c537ed72190e3e44a6c4dcd09f08f3ef06fe9348ea0cf86849179844d73d",
+    "bytes": 71653
   },
   "dist/ch03-data.js": {
-    "sha256": "292f4e8e2cdacc5a8043fb18339205916a3e48adfb15a00ab652d511d2903f73",
-    "bytes": 34181
+    "sha256": "2167a400cd7c9d4d4a9cffb078ee3075341b80ef99ba68b003b109b36f04b9d6",
+    "bytes": 34313
   },
   "dist/late-goryeo.js": {
-    "sha256": "5c2ca7f58b71a6dd61ea2290e6942b59358436e7fde946e3cf4061c0dd0b10e0",
-    "bytes": 103612
+    "sha256": "a82e26a310cd9b1a7cb3672420d3986a742ec2975419d5e181c332dc9c6bb74c",
+    "bytes": 103988
   },
   "dist/proto-art.js": {
-    "sha256": "23ec8c60d72a0e49730edbe1ac85a15727ae43acc5875bf690e52669e0b4eb6a",
-    "bytes": 1152
+    "sha256": "2186c8a9cc941a348302768f58e8579632e84fc02a84d2c47092a7a9ee91e6d2",
+    "bytes": 1169
   },
   "dist/proto-background-art.js": {
-    "sha256": "8d2884e9a3c19fb833f89a6e22477eb4bc5a01238b01cf6007724f5f0c81c823",
-    "bytes": 1784
+    "sha256": "1afed2f5dd1c5684a183d5fb375f221e4e1058de27b24e776d1a551127c3ccfc",
+    "bytes": 1819
   },
   "three_contract": {
     "version": "three-complete-23-v1",
@@ -3234,13 +3234,13 @@
     "assets/exams/catalog/79-advanced-10.webp": "6339d6d70829446d6e078c8e92736927e7e7a92dc4c38d462686a3696cae6f6a"
   },
   "shared_ui": {
-    "dist/dialogue.css": "edb00021a09c62a8621f529c3730b833a418a83d338ac27f1cd8afc44296fb6d",
-    "dist/editorial.css": "f10cf7d04c6318dbe091df70526f495cbb990d4cd23fd0ff1011ece806d1c77b",
-    "dist/style.css": "65af173298141642d81368103b42e6b381261542675c297c111ebeadff6c411a",
-    "dist/renewal.css": "2b2f6ab20596d9c8573310bcddc9d4953ade92ebaa9ad17fa438740bb23473db",
-    "dist/v2.css": "df649f50e0e83f3205a8993740a8cdc79780ad33d59b89f2113bcba914a0d483",
-    "dist/editorial-ui.js": "31127b7d7300d31d06ede8b8984aff04980cccd1cb1abdaf5e69c313a41bf1d7",
-    "dist/joseon-ui.js": "252d5a218dc948a5fb5c6dac6546cd7479f91edf6d0e26351f2b3fbc440a2f04"
+    "dist/dialogue.css": "e5c76b155d50f68bb0bf399a425edee6806c3311656ea64450c724118aa7a990",
+    "dist/editorial.css": "57e3b9bf58011a26c4630218fbf346c89d664021d65d0a2da2fa9d0c92b392aa",
+    "dist/style.css": "79e11efb505d51bcd969d8af81b61f60f56c1ef0ed50be66a2821cac1face8ab",
+    "dist/renewal.css": "ca069dbe29bcfce63d1504f2c69f7512ddad7a4b0a683c7b27459d2eba5293f7",
+    "dist/v2.css": "cadc3c3d9d40b00c58d0174415b7657fea489aa4af5188aa9ec0fc494e669424",
+    "dist/editorial-ui.js": "587def45567a2acddee9f3fabb968b10512cb997747a15cefa9b564198499ad6",
+    "dist/joseon-ui.js": "5ce6d144ffde38b83660fa228ecb4190dc49f1e2149cb39cc0975ae9a9815858"
   },
   "original_asset_blobs": {
     "dist/assets/ancient/backgrounds/ancient-modern-museum.jpg": "086e04524371b4edd52ad30f7dc74b8ec9364886",

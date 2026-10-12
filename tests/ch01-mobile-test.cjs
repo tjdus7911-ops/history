@@ -18,14 +18,15 @@ async function main(){
   await page.goto(url);
   const read=()=>page.evaluate(()=>({screen,run:JSON.parse(JSON.stringify(run())),scene:STORIES[run().storyId],question:QUESTIONS.find(q=>q.questionId===run().activeQuestionId)}));
   const tap=async selector=>{await page.locator(selector).first().evaluate(element=>element.click());await page.evaluate(()=>{inputLockedUntil=0});await page.waitForTimeout(40)};
-  const answerQuestion=async answer=>{if(await page.locator('[data-pick-answer]').count()){await tap(`[data-pick-answer="${answer}"]`);await tap('[data-submit-answer]')}else await tap(`[data-answer="${answer}"]`)};
+  const answerQuestion=async answer=>{if(await page.locator('[data-pick-answer]').count()){await tap(`[data-pick-answer="${answer}"]`);if(await page.locator('[data-submit-answer]').count())await tap('[data-submit-answer]');else assert.notEqual((await read()).run.questionAnswer,null,'answer selection must either expose confirmation or complete the existing story flow')}else await tap(`[data-answer="${answer}"]`)};
+  const startNextChapter=async(previousChapterId,nextChapterId)=>{const direct=`[data-action="chapter-next-direct"][data-chapter="${previousChapterId}"]`;if(await page.locator(direct).count())await tap(direct);else{await tap('[data-nav="teaser"]');await tap(`[data-chapter="${nextChapterId}"]`)}assert.equal((await read()).run.currentChapter,nextChapterId)};
   const fit=async()=>assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'mobile horizontal overflow');
   const snapshot=async name=>{if(!process.env.TEST_ARTIFACT_DIR)return;fs.mkdirSync(process.env.TEST_ARTIFACT_DIR,{recursive:true});await page.screenshot({path:path.join(process.env.TEST_ARTIFACT_DIR,name+'.png'),fullPage:true})};
   await tap('[data-era-open="goryeo"]');await tap('[data-era-resume="goryeo"]');
   let guard=0,checkedOpening=false,checkedNormalMerchant=false,checked943=false,checkedVillagerVoice=false,checkedInjuredMerchant=false,checkedGyeonhwonRumor=false,checkedFoundationExam=false,checkedConflict=false,checkedGochang=false,checkedBelonging=false;
   const ch02DuoScenes=new Set();
   for(const chapterId of ['ch01','ch02']){
-  if(chapterId==='ch02'){await tap('[data-nav="teaser"]');await tap('[data-chapter="ch02"]');assert.equal((await read()).run.storyId,'ch02_open_935')}
+  if(chapterId==='ch02'){await startNextChapter('ch01','ch02');assert.equal((await read()).run.storyId,'ch02_open_935')}
   while(!(await read()).run.completed){
     const current=await read();await fit();
     if(current.run.storyId==='voice'&&!checkedOpening){
@@ -61,7 +62,7 @@ async function main(){
   }
   for(const sceneId of ['ch01_jump_935','ch01_gyeonhwon','ch01_jump_936','ch01_war_choice','ch01_war_supply','ch01_victory','ch01_sasimgwan','ch01_refugee_family','ch01_memory_943','ch01_taejo_death','ch01_guild_seed'])assert(ch02DuoScenes.has(sceneId),`${sceneId}: Doyun/player two-person mobile frame not observed`);
   assert(checkedOpening&&checkedNormalMerchant&&checked943&&checkedVillagerVoice&&checkedInjuredMerchant&&checkedGyeonhwonRumor&&checkedFoundationExam&&checkedConflict&&checkedGochang&&checkedBelonging);
-  await page.reload();await page.evaluate(()=>playMain());await tap('[data-nav="teaser"]');await tap('[data-chapter="ch03"]');assert.equal((await read()).run.currentChapter,'ch03');
+  await page.reload();await page.evaluate(()=>playMain());await startNextChapter('ch02','ch03');
   let checkedRobes=false,checkedHyunwooOfficial=false,checkedGwangdeok=false,checkedJunpung=false,checkedFreedMan=false,checkedDoyun960=false;
   while(!(await read()).run.completed){
     const current=await read();await fit();

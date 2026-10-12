@@ -64,7 +64,8 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
   const point=source.protoQueue;
   if(!point||!markRead(source)||!book().readLineIds.includes(point.afterLineId))return false;
   book().answeredQuestionIds=[...new Set([...book().answeredQuestionIds,...answeredFromRecords(meta())])];
-  const unanswered=point.officialQuestionIds.filter(id=>!Object.hasOwn(run().questionResults||{},runtime.questionByOfficialId.get(id)?.questionId)).map(id=>runtime.questionByOfficialId.get(id));
+  const answered=run().mode==='replay'?new Set():new Set(book().answeredQuestionIds);
+  const unanswered=point.officialQuestionIds.filter(id=>!answered.has(id)&&!Object.hasOwn(run().questionResults||{},runtime.questionByOfficialId.get(id)?.questionId)).map(id=>runtime.questionByOfficialId.get(id));
   if(!unanswered.length)return false;
   // Story queues are authorised by this scene; optional review still uses canPractice().
   run().pending=null;phaseState(source).phase='quiz';run().dialogueCursor=Math.min(source.dialogues.length,run().dialogueCursor);
@@ -233,7 +234,10 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
  const beforeFigure=officialQuestionFigure;
  officialQuestionFigure=function(q,label){
   if(!isProto(q))return beforeFigure(q,label);
-  return '<figure class="official-source-question proto-original-question"><button class="question-image-open" data-action="exam-image" data-question="'+esc(q.questionId)+'" aria-label="원본 문제 확대"><img src="'+esc(q.sourceQuestionImage)+'" loading="lazy" decoding="async" alt="실제 기출 원본: 지문, 자료, 보기"></button><figcaption>출처: 국사편찬위원회 한국사능력검정시험 · 탭하여 확대</figcaption></figure>';
+  return beforeFigure(q,label).replace(
+   'class="official-source-question"',
+   'class="official-source-question proto-original-question"'
+  );
  };
  function safeExplanation(q){const authored=sourceForQuestion(q);return authored?authored.proposed.playExplanation:q?.explanation||'';}
  const comparisonUnlocked=()=>book().readSceneIds.includes('proto_ch06_s7');
@@ -263,7 +267,8 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
   const session=meta().protoReviewSession,answer=session?session.answer:run().questionAnswer,draft=session?session.draft:run().protoAnswerDraft,done=answer!==null;
   const total=session?1:run().questionQueue.length,index=session?0:run().questionQueueIndex,ch=CHAPTERS[q.chapterId];
   const options=q.choices.map((label,i)=>'<button class="choice '+(done&&i===q.answer?'correct':done&&i===answer?'wrong':!done&&draft===i?'picked':'')+'" data-proto-answer="'+i+'" aria-pressed="'+(!done&&draft===i)+'" '+(done?'disabled':'')+'><span class="answer-number">'+(i+1)+'</span><span>'+esc(label)+'</span>'+(done&&i===q.answer?'<b>✓</b>':'')+'</button>').join('');
-  const feedback=done?'<div class="feedback"><h2>'+(answer===q.answer?'✓ 정답입니다.':'✕ 오답입니다.')+'</h2><p>선택한 답 '+(answer+1)+'번 · 정답 '+(q.answer+1)+'번</p><p>'+esc(safeExplanation(q))+'</p>'+(comparisonUnlocked()?'<button class="text-btn" data-proto-comparison="'+esc(q.officialQuestionId)+'">여러 나라 비교 해설</button>':'')+'<button class="primary next" data-action="proto-quiz-next">'+(session?'기록책으로 돌아가기':index+1<total?'다음 문제':'이야기 계속')+'</button></div>':'<div class="quiz-submit-row"><button class="confirm-answer" data-action="proto-submit" '+(draft==null?'disabled':'')+'>답 확인하기</button></div>';
+  const choiceDetails=done&&globalThis.OFFICIAL_EXAM_UI?.choiceExplanations?globalThis.OFFICIAL_EXAM_UI.choiceExplanations(q,answer):'';
+  const feedback=done?'<div class="feedback"><h2>'+(answer===q.answer?'✓ 정답입니다.':'✕ 오답입니다.')+'</h2><p>선택한 답 '+(answer+1)+'번 · 정답 '+(q.answer+1)+'번</p><p>'+esc(safeExplanation(q))+'</p>'+choiceDetails+(comparisonUnlocked()?'<button class="text-btn" data-proto-comparison="'+esc(q.officialQuestionId)+'">여러 나라 비교 해설</button>':'')+'<button class="primary next" data-action="proto-quiz-next">'+(session?'기록책으로 돌아가기':index+1<total?'다음 문제':'이야기 계속')+'</button></div>':'<div class="quiz-submit-row"><button class="confirm-answer" data-action="proto-submit" '+(draft==null?'disabled':'')+'>답 확인하기</button></div>';
   return '<section class="editorial-quiz proto-revision-quiz"><header class="quiz-top"><button '+(session?'data-action="proto-review-close"':'data-nav="era"')+' aria-label="학습 화면으로 돌아가기">‹</button><span>CH.'+ch.number+' '+esc(ch.title)+'</span><button data-action="status" aria-label="내 상태 보기">'+editorialIcon('profile')+'</button></header><div class="quiz-progress"><div class="progress"><span style="width:'+Math.round((index+1)/total*100)+'%"></span></div><small>'+(index+1)+' / '+total+'</small></div><div class="exam-source-row"><span class="official-pill">실제 한능검 기출</span><span>'+esc(q.protoExam.label)+'</span></div><p class="proto-answer-instruction">원본 이미지의 지문과 보기를 모두 읽고, 같은 번호를 선택해 주세요.</p>'+officialQuestionFigure(q)+'<div class="ed-answer-options" role="group" aria-label="답 선택">'+options+'</div>'+feedback+'<p class="proto-source">출처: 국사편찬위원회 한국사능력검정시험</p></section>';
  };
  function learnedTopics(){return runtime.source.learning.filter(item=>book().readSceneIds.includes(item.firstSceneId));}
@@ -283,7 +288,7 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
  const beforeEras=eras;
  eras=function(){const html=beforeEras();if(selectedEra!==eraId)return html;return html.replace(/data-story-memory="proto-learning-([^"]+)"/g,'data-proto-learning="$1"')+'<button class="secondary full proto-book-link" data-action="proto-recordbook">원삼국 기록책</button>';};
  const beforeExamList=eraExamList;
- eraExamList=function(id){if(id!==eraId)return beforeExamList(id);const questions=[...runtime.questionByOfficialId.values()].filter(canPractice);return '<div class="ed-exam-list">'+(questions.length?questions.map(q=>'<article class="ed-exam-row"><button data-proto-review="'+q.questionId+'"><img loading="lazy" src="'+esc(q.sourceQuestionImage)+'" alt="원본 문항 미리보기"><span><small>'+esc(q.protoExam.label)+'</small><b>'+esc(q.protoExam.editorialFocusSummary)+'</b><small>'+(book().answeredQuestionIds.includes(q.officialQuestionId)?'풀이 완료':'미풀이')+'</small></span><span>›</span></button></article>').join(''):'<p class="ed-empty">이야기에서 공통 학습을 마치면 관련 기출이 열립니다.</p>')+'</div>';};
+ eraExamList=function(id){if(id!==eraId)return beforeExamList(id);const questions=[...runtime.questionByOfficialId.values()].filter(canPractice);return '<div class="ed-exam-list">'+(questions.length?questions.map(q=>{const thumbnail=globalThis.OFFICIAL_EXAM_UI?.thumbnail?.(q)||q.sourceQuestionImage;return '<article class="ed-exam-row"><button data-proto-review="'+q.questionId+'"><img loading="lazy" decoding="async" src="'+esc(thumbnail)+'" alt="원본 문항 미리보기"><span><small>'+esc(q.protoExam.label)+'</small><b>'+esc(q.protoExam.editorialFocusSummary)+'</b><small>'+(book().answeredQuestionIds.includes(q.officialQuestionId)?'풀이 완료':'미풀이')+'</small></span><span>›</span></button></article>'}).join(''):'<p class="ed-empty">이야기에서 공통 학습을 마치면 관련 기출이 열립니다.</p>')+'</div>';};
  const beforeComplete=complete;
  complete=function(){
   const id=resultChapterId||run().currentChapter;if(!ownsChapter(id))return beforeComplete();

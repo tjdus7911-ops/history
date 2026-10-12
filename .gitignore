@@ -5,6 +5,9 @@ node_modules/
 *.log
 .DS_Store
 Thumbs.db
+__pycache__/
+*.pyc
+tmp/
 
 # Generated only for Vercel preview UI verification.
 dist/ui-review.html

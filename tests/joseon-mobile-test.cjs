@@ -14,6 +14,7 @@ async function main(){
   await page.goto(`http://127.0.0.1:${server.address().port}/`);
   const fit=async label=>assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`horizontal overflow: ${label}`);
   const tap=async selector=>{const target=page.locator(selector).first();await target.waitFor({state:'attached'});await target.evaluate(element=>element.click());await page.evaluate(()=>{inputLockedUntil=0})};
+  const startNextChapter=async chapterId=>{const next=`joseon-ch${String(Number(chapterId.slice(-2))+1).padStart(2,'0')}`,direct=`[data-action="chapter-next-direct"][data-chapter="${chapterId}"]`;if(await page.locator(direct).count())await tap(direct);else{await tap('[data-nav="teaser"]');await tap('[data-action="start-chapter"]')}assert.equal(await page.evaluate(()=>run().currentChapter),next)};
 
   const qaProfile=await browser.newContext({viewport:{width:390,height:910},deviceScaleFactor:3,isMobile:true,hasTouch:true,serviceWorkers:'block'}),qaPage=await qaProfile.newPage();await qaPage.goto(`http://127.0.0.1:${server.address().port}/`);assert.equal(await qaPage.evaluate(()=>devicePixelRatio),3);
   const showQaScene=async(chapter,story,cursor,file)=>{
@@ -101,7 +102,7 @@ async function main(){
     if(now.screen==='complete'){
       if(!completed.includes(now.chapter))completed.push(now.chapter);
       if(now.chapter==='joseon-ch22'){assert(await page.getByText('새로운 시대가 다가오고 있습니다.',{exact:false}).count());await page.screenshot({path:path.join(shots,'ch22-complete-390.png'),fullPage:true});break}
-      await tap('[data-nav="teaser"]');await tap('[data-action="start-chapter"]');continue;
+      await startNextChapter(now.chapter);continue;
     }
     throw Error(`unexpected screen ${now.screen}`);
   }

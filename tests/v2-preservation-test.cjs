@@ -10,5 +10,11 @@ const fixture=JSON.parse(fs.readFileSync('tests/fixtures/v2-content-preservation
 for(const [id,digest]of Object.entries(fixture.stories))assert.equal(hash(storyContent(current.STORIES[id])),digest,'Story, dialogue, choice, chronology or save ID changed: '+id);
 for(const [id,digest]of Object.entries(fixture.practice))assert.equal(hash(practiceContent(current.QUESTIONS.find(q=>q.questionId===id))),digest,'Original practice content changed: '+id);
 assert.equal(current.SAVE_VERSION,fixture.saveVersion);const newThreeCharacters=new Set(vm.runInContext('[...THREE_STORY_RUNTIME.people.keys()]',context));const joseonCharacters=new Set(['joseon_player','minjun_j','minjun_elder_j','joseon_scholar','joseon_soldier','joseon_naval','joseon_woman']),legacyCharacters=Object.fromEntries(Object.entries(current.CHARACTERS).filter(([id])=>!joseonCharacters.has(id)&&!newThreeCharacters.has(id)&&!id.startsWith('proto_')&&!id.startsWith('three_')));assert.equal(hash(legacyCharacters),fixture.characters);
-for(const q of current.QUESTIONS.filter(q=>q.isOfficial)){assert(q.sourceVerified&&q.examRound&&q.examYear&&q.examLevel&&q.questionNumber&&q.sourceFile&&q.answerFile&&q.sourceQuestionImage,'Unverified official: '+q.questionId);assert(fs.existsSync('dist/'+q.sourceQuestionImage),'Missing original image: '+q.questionId)}
+const catalog=JSON.parse(fs.readFileSync('dist/official-exam-catalog.json','utf8')),catalogById=new Map(catalog.map(item=>[item.officialQuestionId,item]));
+for(const q of current.QUESTIONS.filter(q=>q.isOfficial)){
+ assert(q.sourceVerified&&q.examRound&&q.examYear&&q.examLevel&&q.questionNumber&&q.sourceFile&&q.answerFile&&q.sourceQuestionImage,'Unverified official: '+q.questionId);
+ const officialId=q.officialQuestionId||`official-${q.examRound}-${q.examLevel==='기본'?'basic':'advanced'}-${String(q.questionNumber).padStart(2,'0')}`;
+ const canonicalImage=catalogById.get(officialId)?.detailImage;
+ assert(fs.existsSync('dist/'+q.sourceQuestionImage)||(canonicalImage&&fs.existsSync('dist/'+canonicalImage)),'Missing original image: '+q.questionId);
+}
 console.log('PASS: every original story, dialogue, choice, chronology, character identity, practice question and save version preserved; all official records have original images.');

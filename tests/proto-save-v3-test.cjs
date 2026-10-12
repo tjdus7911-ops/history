@@ -47,7 +47,7 @@ assert.equal(migrated.run('PROTO_REVISION_ACTIONS.book().answeredQuestionIds.len
 assert.equal(migrated.storage.get('lived-history-proto-kingdoms-v2'),JSON.stringify(oldStorage));assert.equal(migrated.storage.get('unrelated'),'keep');
 assert(migrated.copy('meta().protoSaveArchives.entries').some(entry=>JSON.stringify(entry.payload).includes('"old final"')));
 assert(migrated.copy('meta().protoSaveArchives.entries').some(entry=>entry.sourceKey==='meta.protoSaveArchives'&&entry.payload.raw==='preserve-this'));
-assert.equal(migrated.run("Object.keys(meta().questionRecords).filter(id=>id.startsWith('proto-study-')).length"),2);
+assert.deepEqual(migrated.copy('Object.keys(meta().questionRecords).sort()'),['official-60-advanced-02','official-62-advanced-02'],'legacy Proto records migrate to canonical official IDs');
 const corrupted=JSON.parse(JSON.stringify(lastAnswerState));corrupted.run.dialogueCursor=9999;delete corrupted.meta.eraProgress['proto-kingdoms-v3'];
 const recovered=load({[sharedKey]:JSON.stringify(corrupted)});
 assert.equal(recovered.run('run().dialogueCursor'),1);assert.equal(recovered.run('run().activeQuestionId'),null);assert.deepEqual(recovered.copy('PROTO_REVISION_ACTIONS.book()'),corrupted.meta.protoRevisionBook,'valid common reading survives corrupt run');

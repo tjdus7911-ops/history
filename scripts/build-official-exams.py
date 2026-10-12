@@ -8,7 +8,9 @@ writes compact WebP question crops plus reproducible catalog metadata.
 from __future__ import annotations
 
 import argparse
+from concurrent.futures import as_completed, ProcessPoolExecutor
 import hashlib
+from io import BytesIO
 import json
 from pathlib import Path
 import re
@@ -23,6 +25,39 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parents[1]
 DIST = ROOT / "dist"
 IMAGE_ROOT = DIST / "assets" / "exams" / "catalog"
+DETAIL_IMAGE_ROOT = IMAGE_ROOT / "detail"
+THUMBNAIL_IMAGE_ROOT = IMAGE_ROOT / "thumbnail"
+
+# Number detection remains at the proven 120 dpi so OCR work does not double,
+# while the learner-facing crop is rendered at print-readable resolution.
+DETECTION_DPI = 120
+DETAIL_DPI = 240
+THUMBNAIL_WIDTH = 320
+DETAIL_WEBP_QUALITY = 88
+THUMBNAIL_WEBP_QUALITY = 68
+IMAGE_REVISION = "official-exam-hq-v2-240dpi"
+
+# These questions exposed false OCR headings in the old generator. The bogus
+# heading split the preceding question in two (57 심화 6 / 71 기본 4) and then
+# assigned the second fragment to the listed question. Requiring a verified
+# visual heading for these question numbers repairs both affected pairs and
+# prevents the old 80-pixel fragment from being emitted again.
+FORCED_VISUAL_HEADINGS = {
+    (57, "심화"): {7},
+    (71, "기본"): {5},
+}
+HEADING_LAYOUT_HINTS = {
+    (57, "심화", 7): (2, "right"),
+    (71, "기본", 5): (2, "left"),
+}
+KNOWN_CROP_REGRESSIONS = {
+    "official-57-advanced-06",
+    "official-57-advanced-07",
+    "official-71-basic-04",
+    "official-71-basic-05",
+}
+
+_WORKER_OCR_ENGINE = None
 
 EXAMS = [
     (57, 2022, "기본", "57회 한국사_문제지(기본).pdf", "제57회 기본 정답표 업로드용.pdf"),
@@ -109,6 +144,112 @@ def sha256(path: Path) -> str:
         for chunk in iter(lambda: stream.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def sha256_bytes(payload: bytes) -> str:
+    return hashlib.sha256(payload).hexdigest()
+
+
+def encode_webp(image: Image.Image, quality: int) -> bytes:
+    """Encode once so the digest, filename, and bytes on disk cannot diverge."""
+    output = BytesIO()
+    image.convert("RGB").save(output, "WEBP", quality=quality, method=6)
+    return output.getvalue()
+
+
+def write_hashed_webp(image: Image.Image, root: Path, stem: str, quality: int) -> dict:
+    payload = encode_webp(image, quality)
+    digest = sha256_bytes(payload)
+    filename = f"{stem}.{digest[:12]}.webp"
+    path = root / filename
+    root.mkdir(parents=True, exist_ok=True)
+    if not path.exists() or path.read_bytes() != payload:
+        path.write_bytes(payload)
+    return {
+        "path": path,
+        "sha256": digest,
+        "width": image.width,
+        "height": image.height,
+        "bytes": len(payload),
+    }
+
+
+def relative_dist_path(path: Path) -> str:
+    return path.relative_to(DIST).as_posix()
+
+
+def cleanup_generated_images(records: list[dict]) -> dict:
+    """Remove only stale files owned by this pipeline's dedicated directories."""
+    if not records or not all(item.get("detailImage") and item.get("thumbnailImage") for item in records):
+        return {
+            "performed": False,
+            "reason": "catalog does not yet contain the complete dual-image schema",
+            "staleDetailRemoved": 0,
+            "staleThumbnailRemoved": 0,
+            "legacyFlatRemoved": [],
+            "compatibilityFlatRetained": [],
+        }
+    expected_detail = {DIST / item["detailImage"] for item in records}
+    expected_thumbnail = {DIST / item["thumbnailImage"] for item in records}
+    stale_detail = [path for path in DETAIL_IMAGE_ROOT.glob("*.webp") if path not in expected_detail]
+    stale_thumbnail = [path for path in THUMBNAIL_IMAGE_ROOT.glob("*.webp") if path not in expected_thumbnail]
+    for path in stale_detail + stale_thumbnail:
+        path.unlink()
+
+    # Several released story-data files intentionally keep their original flat
+    # image paths as immutable source evidence. Preserve exactly those live
+    # references (including 60th-basic supplements), while removing flat files
+    # that the current app and source records no longer reference.
+    generated_catalog_names = {
+        "official-exam-catalog.js",
+        "official-exam-catalog.json",
+        "official-exam-inventory.json",
+    }
+    live_flat_references: set[str] = set()
+    flat_reference_pattern = re.compile(
+        r"assets/exams/catalog/(\d+-(?:advanced|basic)-\d{2}\.webp)"
+    )
+    for source_path in DIST.rglob("*"):
+        if (
+            not source_path.is_file()
+            or source_path.name in generated_catalog_names
+            or source_path.suffix.lower() not in {
+                ".js", ".mjs", ".cjs", ".json", ".html", ".css",
+                ".svg", ".xml", ".txt", ".webmanifest",
+            }
+        ):
+            continue
+        try:
+            source_text = source_path.read_text(encoding="utf-8")
+        except UnicodeDecodeError:
+            continue
+        live_flat_references.update(flat_reference_pattern.findall(source_text))
+
+    legacy_flat = []
+    retained_compatibility_flat = []
+    pattern = re.compile(r"(\d+)-(advanced|basic)-(\d{2})\.webp")
+    for path in IMAGE_ROOT.glob("*.webp"):
+        match = pattern.fullmatch(path.name)
+        if not match:
+            continue
+        if path.name in live_flat_references:
+            retained_compatibility_flat.append(path)
+        else:
+            legacy_flat.append(path)
+    # Runtime/UI QA resolves every canonical image through detailImage or
+    # thumbnailImage. The exact flat-name pattern is pipeline-owned legacy data,
+    # so retaining it would add ~60 MiB of low-resolution duplicates.
+    for path in legacy_flat:
+        path.unlink()
+    return {
+        "performed": True,
+        "staleDetailRemoved": len(stale_detail),
+        "staleThumbnailRemoved": len(stale_thumbnail),
+        "legacyFlatRemoved": [relative_dist_path(path) for path in legacy_flat],
+        "compatibilityFlatRetained": [
+            relative_dist_path(path) for path in retained_compatibility_flat
+        ],
+    }
 
 
 def projection_centers(mask: np.ndarray) -> list[int]:
@@ -320,8 +461,125 @@ def trim_bottom(image: Image.Image, left: int, right: int, top: int, limit: int)
     colored = (region < 247).sum(axis=1)
     rows = np.flatnonzero(colored >= 3)
     if not len(rows):
-        return min(limit, top + 120)
-    return min(limit, top + int(rows[-1]) + 24)
+        return min(limit, top + max(120, round(image.height * .07)))
+    return min(limit, top + int(rows[-1]) + max(24, round(image.height * .014)))
+
+
+def validate_question_locations(located: list[dict], question_name: str) -> None:
+    numbers = [item["questionNumber"] for item in located]
+    if numbers != list(range(1, 51)):
+        raise ValueError(f"{question_name}: question number sequence is not 1-50: {numbers}")
+    if any(location_key(located[index]) >= location_key(located[index + 1]) for index in range(49)):
+        raise ValueError(f"{question_name}: question headings are not in reading order")
+    for current, following in zip(located, located[1:]):
+        if current["pageIndex"] != following["pageIndex"] or current["column"] != following["column"]:
+            continue
+        minimum_gap = max(60, round(current["page"].height * .035))
+        if following["top"] - current["top"] < minimum_gap:
+            raise ValueError(
+                f"{question_name}: suspicious duplicate headings for questions "
+                f"{current['questionNumber']}/{following['questionNumber']} at page "
+                f"{current['pageIndex'] + 1} {current['column']}"
+            )
+
+
+def crop_question(
+    page: Image.Image,
+    location: dict,
+    located: list[dict],
+    round_no: int,
+    level: str,
+) -> tuple[Image.Image, dict]:
+    width, height = page.size
+    column_locations = [
+        item for item in located
+        if item["pageIndex"] == location["pageIndex"] and item["column"] == location["column"]
+    ]
+    column_index = column_locations.index(location)
+    following = column_locations[column_index + 1] if column_index + 1 < len(column_locations) else None
+    left, right = (
+        (int(width * .06), int(width * .497))
+        if location["column"] == "left"
+        else (int(width * .503), int(width * .945))
+    )
+    heading_padding = max(10, round(height * .006))
+    following_padding = max(12, round(height * .007))
+    top = max(0, location["top"] - heading_padding)
+    shared_group = next(
+        (
+            (start, end, top_ratio)
+            for start, end, top_ratio in SHARED_STIMULUS_GROUPS.get((round_no, level), ())
+            if start <= location["questionNumber"] <= end
+        ),
+        None,
+    )
+    first_shared_location = None
+    shared_source_top = None
+    if shared_group:
+        start, _, top_ratio = shared_group
+        first_shared_location = next(item for item in located if item["questionNumber"] == start)
+        if first_shared_location["pageIndex"] != location["pageIndex"]:
+            raise ValueError(f"shared source layout changed for {round_no} {level} {start}-{shared_group[1]}")
+        shared_source_top = max(0, int(height * top_ratio) - heading_padding)
+        if location["questionNumber"] == start:
+            top = min(top, shared_source_top)
+    limit = following["top"] - following_padding if following else int(height * .925)
+    if limit <= top:
+        raise ValueError(
+            f"question {location['questionNumber']}: crop limit {limit} is above top {top}; "
+            "likely duplicate/false heading"
+        )
+    bottom = trim_bottom(page, left, right, top, limit)
+    if bottom <= top:
+        raise ValueError(f"question {location['questionNumber']}: empty crop")
+    crop = page.crop((left, top, right, bottom))
+    source_box = None
+    if shared_group and location["questionNumber"] > shared_group[0]:
+        source_bottom = max(shared_source_top + round(height * .012), first_shared_location["top"] - following_padding)
+        source_left, source_right = (
+            (int(width * .06), int(width * .497))
+            if first_shared_location["column"] == "left"
+            else (int(width * .503), int(width * .945))
+        )
+        source_crop = page.crop((source_left, shared_source_top, source_right, source_bottom))
+        combined_width = max(crop.width, source_crop.width)
+        combined = Image.new("RGB", (combined_width, source_crop.height + crop.height), "white")
+        combined.paste(source_crop, ((combined_width - source_crop.width) // 2, 0))
+        combined.paste(crop, ((combined_width - crop.width) // 2, source_crop.height))
+        crop = combined
+        source_box = [source_left, shared_source_top, source_right, source_bottom]
+    return crop, {
+        "questionBox": [left, top, right, bottom],
+        "sharedSourceBox": source_box,
+        "pageWidth": width,
+        "pageHeight": height,
+    }
+
+
+def validate_crop(crop: Image.Image, page: Image.Image, question_id: str, location: dict) -> dict:
+    minimum_ratio = .06
+    if question_id in KNOWN_CROP_REGRESSIONS:
+        minimum_ratio = .10
+    height_ratio = crop.height / page.height
+    if height_ratio < minimum_ratio:
+        raise ValueError(
+            f"{question_id}: crop height {crop.height}px ({height_ratio:.3f} page) is below "
+            f"the {minimum_ratio:.2f} minimum; likely truncated"
+        )
+    if crop.width < page.width * .40:
+        raise ValueError(f"{question_id}: crop width {crop.width}px is unexpectedly narrow")
+    gray = np.asarray(crop.convert("L"))
+    ink_rows = int(np.count_nonzero((gray < 245).sum(axis=1) >= 3))
+    dark_pixels = int((gray < 215).sum())
+    if ink_rows < 24 or dark_pixels < 250:
+        raise ValueError(f"{question_id}: crop has too little printed content")
+    return {
+        "status": "passed",
+        "headingVerification": location.get("headingVerification", "visual_layout"),
+        "cropHeightRatio": round(height_ratio, 4),
+        "inkRowCount": ink_rows,
+        "darkPixelCount": dark_pixels,
+    }
 
 
 def source_era(question_number: int) -> str:
@@ -361,6 +619,7 @@ def text_question_headings(question_path: Path, pages: list[Image.Image]) -> lis
                     "top": round(word["top"] * scale_y),
                     "bottom": round(word["bottom"] * scale_y),
                     "ink": 999,
+                    "headingVerification": "pdf_text",
                 })
     by_number: dict[int, list[dict]] = {}
     for item in located:
@@ -380,7 +639,40 @@ def location_key(item: dict) -> tuple:
     return item["pageIndex"], 0 if item["column"] == "left" else 1, item["top"]
 
 
-def ocr_question_headings(pages: list[Image.Image], ocr_engine, visual_candidates: list[dict]) -> list[dict]:
+def deduplicate_visual_candidates(candidates: list[dict]) -> list[dict]:
+    """Collapse number-band and score-band hits for the same printed heading."""
+    deduplicated: list[dict] = []
+    for candidate in sorted(candidates, key=location_key):
+        duplicate = next(
+            (
+                item for item in reversed(deduplicated)
+                if item["pageIndex"] == candidate["pageIndex"]
+                and item["column"] == candidate["column"]
+                and abs(item["top"] - candidate["top"])
+                <= max(55, round(candidate["page"].height * .035))
+            ),
+            None,
+        )
+        if duplicate is None:
+            deduplicated.append(candidate.copy())
+            continue
+        duplicate["top"] = min(duplicate["top"], candidate["top"])
+        duplicate["bottom"] = max(duplicate["bottom"], candidate["bottom"])
+        duplicate["ink"] = max(duplicate.get("ink", 0), candidate.get("ink", 0))
+        duplicate["numberInk"] = max(duplicate.get("numberInk", 0), candidate.get("numberInk", 0))
+    return deduplicated
+
+
+def ocr_question_headings(
+    pages: list[Image.Image],
+    ocr_engine,
+    visual_candidates: list[dict],
+    forced_visual_numbers: set[int] | None = None,
+    layout_hints: dict[int, tuple[int, str]] | None = None,
+) -> list[dict]:
+    forced_visual_numbers = forced_visual_numbers or set()
+    layout_hints = layout_hints or {}
+    visual_candidates = deduplicate_visual_candidates(visual_candidates)
     located = []
     for page_index, image in enumerate(pages):
         width, height = image.size
@@ -408,10 +700,16 @@ def ocr_question_headings(pages: list[Image.Image], ocr_engine, visual_candidate
                         "top": top,
                         "bottom": bottom,
                         "ink": round(confidence * 1000),
+                        "headingVerification": "ocr",
                     })
     by_number = {}
     for item in located:
         by_number.setdefault(item["questionNumber"], item)
+    # A known false OCR number must never win merely because it is monotonic.
+    # Remove it before visual gap filling, then require the replacement to come
+    # from the paired number/score layout detector.
+    for number in forced_visual_numbers:
+        by_number.pop(number, None)
     # Discard isolated OCR numbers embedded in the question body when they violate
     # the monotonic order established by their nearest known neighbours.
     for number in list(sorted(by_number)):
@@ -436,11 +734,35 @@ def ocr_question_headings(pages: list[Image.Image], ocr_engine, visual_candidate
             and not any(
                 item["pageIndex"] == known["pageIndex"]
                 and item["column"] == known["column"]
-                and abs(item["top"] - known["top"]) <= 24
+                and abs(item["top"] - known["top"]) <= max(48, round(item["page"].height * .03))
                 for known in known_locations
             )
         ]
         needed = end - start + 1
+        if needed == 1 and start in layout_hints:
+            page_number, column = layout_hints[start]
+            possible = [
+                item for item in possible
+                if item["pageIndex"] == page_number - 1 and item["column"] == column
+            ]
+        # In the standard reading order a single question between the last
+        # left-column question and a following right-column question starts the
+        # right column. This preference rejects body text falsely read as a
+        # question number in the lower half of the left column.
+        if (
+            needed == 1
+            and previous
+            and following
+            and previous["pageIndex"] == following["pageIndex"]
+            and previous["column"] == "left"
+            and following["column"] == "right"
+        ):
+            right_column = [
+                item for item in possible
+                if item["pageIndex"] == following["pageIndex"] and item["column"] == "right"
+            ]
+            if right_column:
+                possible = right_column
         if len(possible) < needed:
             # A faint printed number can evade the visual detector even when OCR
             # identifies both neighbours. In the standard two-column paper,
@@ -468,6 +790,7 @@ def ocr_question_headings(pages: list[Image.Image], ocr_engine, visual_candidate
                     "bottom": inferred_top + 24,
                     "ink": 0,
                     "inferred": True,
+                    "headingVerification": "layout_inference",
                 }
                 missing = sorted(set(range(1, 51)) - set(by_number))
                 continue
@@ -475,8 +798,15 @@ def ocr_question_headings(pages: list[Image.Image], ocr_engine, visual_candidate
             raise ValueError(f"OCR question-number verification missing {missing}; only {len(possible)} visual candidates; located={neighbours}")
         chosen = sorted(sorted(possible, key=lambda item: item.get("ink", 0), reverse=True)[:needed], key=location_key)
         for number, candidate in zip(range(start, end + 1), chosen):
-            by_number[number] = {"questionNumber": number, **candidate}
+            by_number[number] = {
+                "questionNumber": number,
+                **candidate,
+                "headingVerification": "visual_layout",
+            }
         missing = sorted(set(range(1, 51)) - set(by_number))
+    for number in forced_visual_numbers:
+        if by_number[number].get("headingVerification") != "visual_layout":
+            raise ValueError(f"question {number}: required visual heading verification was not used")
     return [by_number[number] for number in range(1, 51)]
 
 
@@ -486,94 +816,131 @@ def build_exam(source_dir: Path, poppler_bin: Path, item: tuple, output_images: 
     if not question_path.exists() or not answer_path.exists():
         raise FileNotFoundError(f"missing attached source: {question_path if not question_path.exists() else answer_path}")
     answers = parse_answers(answer_path, poppler_bin, ocr_engine)
-    pages = convert_from_path(
+    detection_pages = convert_from_path(
         question_path,
-        dpi=120,
+        dpi=DETECTION_DPI,
         fmt="png",
         thread_count=2,
         poppler_path=str(poppler_bin),
     )
-    located = text_question_headings(question_path, pages)
+    located = text_question_headings(question_path, detection_pages)
     detection_method = "pdf_text"
     if not located:
         detection_method = "visual_layout"
         visual_candidates = []
-        for page_index, page in enumerate(pages):
+        for page_index, page in enumerate(detection_pages):
             for heading in question_headings(page, page_index):
                 visual_candidates.append({"pageIndex": page_index, "page": page, **heading})
             visual_candidates.extend(score_heading_candidates(page, page_index))
         if ocr_engine is not None:
-            located = ocr_question_headings(pages, ocr_engine, visual_candidates)
+            layout_hints = {
+                number: hint
+                for (hint_round, hint_level, number), hint in HEADING_LAYOUT_HINTS.items()
+                if hint_round == round_no and hint_level == level
+            }
+            located = ocr_question_headings(
+                detection_pages,
+                ocr_engine,
+                visual_candidates,
+                FORCED_VISUAL_HEADINGS.get((round_no, level), set()),
+                layout_hints,
+            )
             detection_method = "visual_ocr"
         else:
-            located = list(visual_candidates)
+            located = deduplicate_visual_candidates(visual_candidates)
             for number, location in enumerate(located, start=1):
                 location["questionNumber"] = number
+                location["headingVerification"] = "visual_layout"
     if len(located) != 50:
         per_page = {}
         for entry in located:
             per_page.setdefault(entry["pageIndex"] + 1, []).append((entry["column"], entry["top"]))
         raise ValueError(f"{question_name}: detected {len(located)} question headings, expected 50: {per_page}")
+    validate_question_locations(located, question_name)
+
+    detail_pages = []
+    detail_locations = []
+    if output_images:
+        detail_pages = convert_from_path(
+            question_path,
+            dpi=DETAIL_DPI,
+            fmt="png",
+            thread_count=2,
+            poppler_path=str(poppler_bin),
+        )
+        if len(detail_pages) != len(detection_pages):
+            raise ValueError(f"{question_name}: detection/detail page counts differ")
+        for location in located:
+            source_page = detection_pages[location["pageIndex"]]
+            detail_page = detail_pages[location["pageIndex"]]
+            scale_y = detail_page.height / source_page.height
+            detail_locations.append({
+                **location,
+                "page": detail_page,
+                "top": round(location["top"] * scale_y),
+                "bottom": round(location["bottom"] * scale_y),
+            })
 
     slug = "advanced" if level == "심화" else "basic"
     records = []
     for location in located:
         number = location["questionNumber"]
         page = location["page"]
-        width, height = page.size
-        column_locations = [
-            item for item in located
-            if item["pageIndex"] == location["pageIndex"] and item["column"] == location["column"]
-        ]
-        column_index = column_locations.index(location)
-        following = column_locations[column_index + 1] if column_index + 1 < len(column_locations) else None
-        left, right = (
-            (int(width * 0.06), int(width * 0.497))
-            if location["column"] == "left"
-            else (int(width * 0.503), int(width * 0.945))
-        )
-        top = max(0, location["top"] - 10)
-        shared_group = next(
-            (
-                (start, end, top_ratio)
-                for start, end, top_ratio in SHARED_STIMULUS_GROUPS.get((round_no, level), ())
-                if start <= number <= end
-            ),
-            None,
-        )
-        first_shared_location = None
-        shared_source_top = None
-        if shared_group:
-            start, _, top_ratio = shared_group
-            first_shared_location = next(item for item in located if item["questionNumber"] == start)
-            if first_shared_location["pageIndex"] != location["pageIndex"]:
-                raise ValueError(f"shared source layout changed for {round_no} {level} {start}-{shared_group[1]}")
-            shared_source_top = max(0, int(height * top_ratio) - 10)
-            if number == start:
-                top = min(top, shared_source_top)
-        limit = following["top"] - 12 if following else int(height * 0.925)
-        bottom = trim_bottom(page, left, right, top, limit)
-        relative_image = f"assets/exams/catalog/{round_no}-{slug}-{number:02d}.webp"
+        question_id = f"official-{round_no}-{slug}-{number:02d}"
+        detection_crop, detection_box = crop_question(page, location, located, round_no, level)
+        crop_validation = validate_crop(detection_crop, page, question_id, location)
+        crop_validation.update({
+            "detectionDpi": DETECTION_DPI,
+            "detectionQuestionBox": detection_box["questionBox"],
+            "sharedSourceIncluded": detection_box["sharedSourceBox"] is not None,
+        })
+        image_metadata = {}
         if output_images:
-            crop = page.crop((left, top, right, max(top + 80, bottom)))
-            if shared_group and number > shared_group[0]:
-                source_bottom = max(shared_source_top + 20, first_shared_location["top"] - 12)
-                source_left, source_right = (
-                    (int(width * 0.06), int(width * 0.497))
-                    if first_shared_location["column"] == "left"
-                    else (int(width * 0.503), int(width * 0.945))
-                )
-                source_crop = page.crop((source_left, shared_source_top, source_right, source_bottom))
-                combined_width = max(crop.width, source_crop.width)
-                combined = Image.new("RGB", (combined_width, source_crop.height + crop.height), "white")
-                combined.paste(source_crop, ((combined_width - source_crop.width) // 2, 0))
-                combined.paste(crop, ((combined_width - crop.width) // 2, source_crop.height))
-                crop = combined
-            crop.save(DIST / relative_image, "WEBP", quality=76, method=6)
+            detail_location = detail_locations[number - 1]
+            detail_page = detail_location["page"]
+            detail_crop, detail_box = crop_question(
+                detail_page, detail_location, detail_locations, round_no, level
+            )
+            validate_crop(detail_crop, detail_page, question_id, detail_location)
+            thumbnail = detail_crop.copy()
+            thumbnail.thumbnail(
+                (THUMBNAIL_WIDTH, max(1, round(detail_crop.height * THUMBNAIL_WIDTH / detail_crop.width))),
+                Image.Resampling.LANCZOS,
+            )
+            detail_artifact = write_hashed_webp(
+                detail_crop, DETAIL_IMAGE_ROOT, question_id, DETAIL_WEBP_QUALITY
+            )
+            thumbnail_artifact = write_hashed_webp(
+                thumbnail, THUMBNAIL_IMAGE_ROOT, question_id, THUMBNAIL_WEBP_QUALITY
+            )
+            detail_image = relative_dist_path(detail_artifact["path"])
+            thumbnail_image = relative_dist_path(thumbnail_artifact["path"])
+            crop_validation.update({
+                "detailDpi": DETAIL_DPI,
+                "detailQuestionBox": detail_box["questionBox"],
+            })
+            image_metadata = {
+                # Keep the historical field as a detail-image alias so existing
+                # consumers remain readable while the UI adopts the explicit pair.
+                "questionImage": detail_image,
+                "detailImage": detail_image,
+                "thumbnailImage": thumbnail_image,
+                "detailImageWidth": detail_artifact["width"],
+                "detailImageHeight": detail_artifact["height"],
+                "thumbnailImageWidth": thumbnail_artifact["width"],
+                "thumbnailImageHeight": thumbnail_artifact["height"],
+                "detailImageSha256": detail_artifact["sha256"],
+                "thumbnailImageSha256": thumbnail_artifact["sha256"],
+                "detailImageBytes": detail_artifact["bytes"],
+                "thumbnailImageBytes": thumbnail_artifact["bytes"],
+                "imageRevision": IMAGE_REVISION,
+                "imageFormat": "webp",
+                "cropValidation": crop_validation,
+            }
         answer = answers[number]
         era = source_era(number)
         record = {
-            "officialQuestionId": f"official-{round_no}-{slug}-{number:02d}",
+            "officialQuestionId": question_id,
             "examRound": round_no,
             "examYear": year,
             "examLevel": level,
@@ -584,10 +951,10 @@ def build_exam(source_dir: Path, poppler_bin: Path, item: tuple, output_images: 
             "points": answer["points"],
             "sourcePdf": question_name,
             "answerPdf": answer_name,
-            "questionImage": relative_image,
             "primaryEra": era,
             "concepts": [ERA_LABELS[era]],
             "sourcePage": location["pageIndex"] + 1,
+            **image_metadata,
         }
         records.append(record)
     inventory = {
@@ -599,10 +966,13 @@ def build_exam(source_dir: Path, poppler_bin: Path, item: tuple, output_images: 
         "questionPdfSha256": sha256(question_path),
         "answerPdfSha256": sha256(answer_path),
         "questionCount": len(records),
-        "pageCount": len(pages),
+        "pageCount": len(detection_pages),
         "answerCount": len(answers),
         "allCorrectQuestions": [number for number, value in answers.items() if value["answer"] is None],
         "questionDetectionMethod": detection_method,
+        "imageRevision": IMAGE_REVISION,
+        "detailImageBytes": sum(item.get("detailImageBytes", 0) for item in records),
+        "thumbnailImageBytes": sum(item.get("thumbnailImageBytes", 0) for item in records),
         "sharedStimulusGroups": [
             {"start": start, "end": end}
             for start, end, _ in SHARED_STIMULUS_GROUPS.get((round_no, level), ())
@@ -611,12 +981,165 @@ def build_exam(source_dir: Path, poppler_bin: Path, item: tuple, output_images: 
     return records, inventory
 
 
+def initialize_build_worker(ocr_runtime: str | None) -> None:
+    """Initialize one OCR model per spawned process (Windows-safe)."""
+    global _WORKER_OCR_ENGINE
+    if not ocr_runtime:
+        _WORKER_OCR_ENGINE = None
+        return
+    if ocr_runtime not in sys.path:
+        sys.path.insert(0, ocr_runtime)
+    from rapidocr_onnxruntime import RapidOCR
+    _WORKER_OCR_ENGINE = RapidOCR()
+
+
+def build_exam_worker(payload: tuple[str, str, tuple, bool]) -> tuple[list[dict], dict]:
+    source_dir, poppler_bin, item, output_images = payload
+    return build_exam(
+        Path(source_dir),
+        Path(poppler_bin),
+        item,
+        output_images,
+        _WORKER_OCR_ENGINE,
+    )
+
+
+def inspect_reusable_image(root: Path, question_id: str) -> dict:
+    matches = list(root.glob(f"{question_id}.*.webp"))
+    if len(matches) != 1:
+        raise ValueError(
+            f"{question_id}: expected exactly one reusable image in {root}, got {len(matches)}"
+        )
+    path = matches[0]
+    payload = path.read_bytes()
+    digest = sha256_bytes(payload)
+    if f".{digest[:12]}.webp" not in path.name:
+        raise ValueError(f"{path}: filename does not match content hash")
+    with Image.open(path) as image:
+        width, height = image.size
+        if image.format != "WEBP":
+            raise ValueError(f"{path}: reusable image is not WebP")
+    return {
+        "path": path,
+        "sha256": digest,
+        "width": width,
+        "height": height,
+        "bytes": len(payload),
+    }
+
+
+def resume_exam_from_catalog(
+    source_dir: Path,
+    item: tuple,
+    previous_records: list[dict],
+    previous_exams: list[dict],
+) -> tuple[list[dict], dict]:
+    round_no, _, level, question_name, answer_name = item
+    slug = "advanced" if level == "심화" else "basic"
+    records = [
+        dict(record)
+        for record in previous_records
+        if record["examRound"] == round_no and record["examLevel"] == level
+    ]
+    records.sort(key=lambda record: record["questionNumber"])
+    if [record["questionNumber"] for record in records] != list(range(1, 51)):
+        raise ValueError(f"{round_no}회 {level}: previous catalog is not a complete 50-question edition")
+    inventory_matches = [
+        dict(exam)
+        for exam in previous_exams
+        if exam["examRound"] == round_no and exam["examLevel"] == level
+    ]
+    if len(inventory_matches) != 1:
+        raise ValueError(f"{round_no}회 {level}: previous inventory match count is {len(inventory_matches)}")
+    inventory = inventory_matches[0]
+    question_path, answer_path = source_dir / question_name, source_dir / answer_name
+    if sha256(question_path) != inventory["questionPdfSha256"]:
+        raise ValueError(f"{round_no}회 {level}: question PDF changed; cannot resume images")
+    if sha256(answer_path) != inventory["answerPdfSha256"]:
+        raise ValueError(f"{round_no}회 {level}: answer PDF changed; cannot resume images")
+    with pdfplumber.open(question_path) as pdf:
+        page_heights = {
+            index + 1: round(page.height * DETAIL_DPI / 72)
+            for index, page in enumerate(pdf.pages)
+        }
+    for record in records:
+        question_id = f"official-{round_no}-{slug}-{record['questionNumber']:02d}"
+        if record["officialQuestionId"] != question_id:
+            raise ValueError(f"{question_id}: previous officialQuestionId changed")
+        detail = inspect_reusable_image(DETAIL_IMAGE_ROOT, question_id)
+        thumbnail = inspect_reusable_image(THUMBNAIL_IMAGE_ROOT, question_id)
+        if detail["width"] < 1000:
+            raise ValueError(f"{question_id}: reusable detail width {detail['width']} is not 240dpi")
+        if not THUMBNAIL_WIDTH - 2 <= thumbnail["width"] <= THUMBNAIL_WIDTH:
+            raise ValueError(
+                f"{question_id}: reusable thumbnail width {thumbnail['width']} is outside "
+                f"the {THUMBNAIL_WIDTH - 2}-{THUMBNAIL_WIDTH}px target"
+            )
+        if abs(detail["width"] / detail["height"] - thumbnail["width"] / thumbnail["height"]) > .01:
+            raise ValueError(f"{question_id}: reusable detail/thumbnail aspect ratios differ")
+        detail_image = relative_dist_path(detail["path"])
+        thumbnail_image = relative_dist_path(thumbnail["path"])
+        page_height = page_heights[record["sourcePage"]]
+        record.update({
+            "questionImage": detail_image,
+            "detailImage": detail_image,
+            "thumbnailImage": thumbnail_image,
+            "detailImageWidth": detail["width"],
+            "detailImageHeight": detail["height"],
+            "thumbnailImageWidth": thumbnail["width"],
+            "thumbnailImageHeight": thumbnail["height"],
+            "detailImageSha256": detail["sha256"],
+            "thumbnailImageSha256": thumbnail["sha256"],
+            "detailImageBytes": detail["bytes"],
+            "thumbnailImageBytes": thumbnail["bytes"],
+            "imageRevision": IMAGE_REVISION,
+            "imageFormat": "webp",
+            "cropValidation": {
+                "status": "passed",
+                "headingVerification": "resumed_hash_verified",
+                "cropHeightRatio": round(detail["height"] / page_height, 4),
+                "detectionDpi": DETECTION_DPI,
+                "detailDpi": DETAIL_DPI,
+                "sharedSourceIncluded": any(
+                    start <= record["questionNumber"] <= end and record["questionNumber"] > start
+                    for start, end, _ in SHARED_STIMULUS_GROUPS.get((round_no, level), ())
+                ),
+                "resumedExisting": True,
+            },
+        })
+    inventory.update({
+        "imageRevision": IMAGE_REVISION,
+        "detailImageBytes": sum(record["detailImageBytes"] for record in records),
+        "thumbnailImageBytes": sum(record["thumbnailImageBytes"] for record in records),
+    })
+    return records, inventory
+
+
+def atomic_write_text(path: Path, content: str) -> None:
+    temporary = path.with_name(path.name + ".tmp")
+    temporary.write_text(content, encoding="utf-8")
+    temporary.replace(path)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--source-dir", required=True, type=Path)
     parser.add_argument("--poppler-bin", required=True, type=Path)
     parser.add_argument("--ocr-runtime", type=Path)
+    parser.add_argument(
+        "--workers",
+        type=int,
+        default=1,
+        help="Build independent exam editions in parallel (each process owns one OCR engine)",
+    )
     parser.add_argument("--only", help="Optional comma-separated round-level keys, e.g. 57-basic,70-advanced")
+    parser.add_argument(
+        "--resume-editions",
+        help=(
+            "Comma-separated editions whose already-generated hash images should be verified and "
+            "reused with records from the current catalog"
+        ),
+    )
     parser.add_argument("--validate-only", action="store_true")
     parser.add_argument(
         "--merge-existing",
@@ -625,8 +1148,11 @@ def main() -> None:
     )
     args = parser.parse_args()
 
+    if not 1 <= args.workers <= 8:
+        raise ValueError("--workers must be between 1 and 8")
+
     ocr_engine = None
-    if args.ocr_runtime:
+    if args.ocr_runtime and args.workers == 1:
         sys.path.insert(0, str(args.ocr_runtime))
         from rapidocr_onnxruntime import RapidOCR
         ocr_engine = RapidOCR()
@@ -637,11 +1163,74 @@ def main() -> None:
     if args.only:
         requested = set(args.only.split(","))
         selected = [item for item in EXAMS if f"{item[0]}-{'advanced' if item[2] == '심화' else 'basic'}" in requested]
-    for item in selected:
-        built, inventory = build_exam(args.source_dir, args.poppler_bin, item, not args.validate_only, ocr_engine)
-        records.extend(built)
-        exams.append(inventory)
-        print(f"OK {inventory['examRound']}회 {inventory['examLevel']} {inventory['questionCount']}문항", flush=True)
+    resume_requested = set(args.resume_editions.split(",")) if args.resume_editions else set()
+    selected_keys = {
+        f"{item[0]}-{'advanced' if item[2] == '심화' else 'basic'}"
+        for item in selected
+    }
+    unknown_resume = resume_requested - selected_keys
+    if unknown_resume:
+        raise ValueError(f"--resume-editions contains unselected/unknown keys: {sorted(unknown_resume)}")
+    if resume_requested and args.validate_only:
+        raise ValueError("--resume-editions cannot be combined with --validate-only")
+    if resume_requested:
+        catalog_path = DIST / "official-exam-catalog.json"
+        inventory_path = DIST / "official-exam-inventory.json"
+        if not catalog_path.exists() or not inventory_path.exists():
+            raise FileNotFoundError("--resume-editions requires the existing catalog and inventory")
+        resume_catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+        resume_inventory = json.loads(inventory_path.read_text(encoding="utf-8"))
+        for item in selected:
+            key = f"{item[0]}-{'advanced' if item[2] == '심화' else 'basic'}"
+            if key not in resume_requested:
+                continue
+            built, inventory = resume_exam_from_catalog(
+                args.source_dir,
+                item,
+                resume_catalog,
+                resume_inventory["exams"],
+            )
+            records.extend(built)
+            exams.append(inventory)
+            print(f"REUSED {inventory['examRound']}회 {inventory['examLevel']} 50문항", flush=True)
+    build_selected = [
+        item for item in selected
+        if f"{item[0]}-{'advanced' if item[2] == '심화' else 'basic'}" not in resume_requested
+    ]
+    if args.workers == 1:
+        for item in build_selected:
+            built, inventory = build_exam(
+                args.source_dir, args.poppler_bin, item, not args.validate_only, ocr_engine
+            )
+            records.extend(built)
+            exams.append(inventory)
+            print(f"OK {inventory['examRound']}회 {inventory['examLevel']} {inventory['questionCount']}문항", flush=True)
+    else:
+        payloads = [
+            (str(args.source_dir), str(args.poppler_bin), item, not args.validate_only)
+            for item in build_selected
+        ]
+        with ProcessPoolExecutor(
+            max_workers=args.workers,
+            initializer=initialize_build_worker,
+            initargs=(str(args.ocr_runtime) if args.ocr_runtime else None,),
+        ) as executor:
+            futures = {executor.submit(build_exam_worker, payload): payload[2] for payload in payloads}
+            for future in as_completed(futures):
+                item = futures[future]
+                try:
+                    built, inventory = future.result()
+                except Exception as error:
+                    for pending in futures:
+                        pending.cancel()
+                    raise RuntimeError(f"failed building {item[0]}회 {item[2]}: {error}") from error
+                records.extend(built)
+                exams.append(inventory)
+                print(
+                    f"OK {inventory['examRound']}회 {inventory['examLevel']} "
+                    f"{inventory['questionCount']}문항",
+                    flush=True,
+                )
 
     keys = [(item["examRound"], item["examLevel"], item["questionNumber"]) for item in records]
     if len(keys) != len(set(keys)):
@@ -688,6 +1277,8 @@ def main() -> None:
     if len(canonical_keys) != len(set(canonical_keys)):
         raise ValueError("duplicate canonical exam keys after merge")
 
+    image_cleanup = cleanup_generated_images(records)
+
     previous_inventory_path = DIST / "official-exam-inventory.json"
     previous_inventory = (
         json.loads(previous_inventory_path.read_text(encoding="utf-8"))
@@ -706,7 +1297,7 @@ def main() -> None:
         last_import = previous_inventory["lastImport"]
 
     inventory = {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "attachedRelevantFileCount": len(exams) * 2 + len(DUPLICATE_FILES) + len(DEFERRED_FILES),
         "processedFileCount": len(exams) * 2,
         "examEditionCount": len(exams),
@@ -716,23 +1307,47 @@ def main() -> None:
         "duplicateFiles": DUPLICATE_FILES,
         "deferredFiles": DEFERRED_FILES,
         "lastImport": last_import,
+        "imagePipeline": {
+            "revision": IMAGE_REVISION,
+            "format": "webp",
+            "detectionDpi": DETECTION_DPI,
+            "detailDpi": DETAIL_DPI,
+            "detailQuality": DETAIL_WEBP_QUALITY,
+            "thumbnailWidth": THUMBNAIL_WIDTH,
+            "thumbnailQuality": THUMBNAIL_WEBP_QUALITY,
+            "detailImageCount": sum(bool(item.get("detailImage")) for item in records),
+            "thumbnailImageCount": sum(bool(item.get("thumbnailImage")) for item in records),
+            "detailImageBytes": sum(item.get("detailImageBytes", 0) for item in records),
+            "thumbnailImageBytes": sum(item.get("thumbnailImageBytes", 0) for item in records),
+            "cropValidationPassedCount": sum(
+                item.get("cropValidation", {}).get("status") == "passed" for item in records
+            ),
+        },
+        "imageCleanup": image_cleanup,
         "exams": exams,
     }
-    (DIST / "official-exam-inventory.json").write_text(
-        json.dumps(inventory, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    atomic_write_text(
+        DIST / "official-exam-inventory.json",
+        json.dumps(inventory, ensure_ascii=False, indent=2) + "\n",
     )
-    (DIST / "official-exam-catalog.json").write_text(
-        json.dumps(records, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    atomic_write_text(
+        DIST / "official-exam-catalog.json",
+        json.dumps(records, ensure_ascii=False, indent=2) + "\n",
     )
     js = "/* Generated by scripts/build-official-exams.py from attached official PDFs. */\n"
     js += "globalThis.OFFICIAL_EXAM_SOURCE_RECORDS="
     js += json.dumps(records, ensure_ascii=False, separators=(",", ":"))
     js += ";\n"
-    (DIST / "official-exam-catalog.js").write_text(js, encoding="utf-8")
+    atomic_write_text(DIST / "official-exam-catalog.js", js)
     print(
         f"WROTE {len(exams)} editions / {len(records)} questions / "
-        f"{len(list(IMAGE_ROOT.glob('*.webp')))} images; imported {imported_question_count}, "
-        f"matched {replaced_question_count}",
+        f"{len(list(DETAIL_IMAGE_ROOT.glob('*.webp')))} detail + "
+        f"{len(list(THUMBNAIL_IMAGE_ROOT.glob('*.webp')))} thumbnail images; "
+        f"imported {imported_question_count}, matched {replaced_question_count}; "
+        f"cleaned {image_cleanup['staleDetailRemoved']} stale detail / "
+        f"{image_cleanup['staleThumbnailRemoved']} stale thumbnail / "
+        f"{len(image_cleanup['legacyFlatRemoved'])} legacy flat; "
+        f"retained {len(image_cleanup['compatibilityFlatRetained'])} live story references",
         flush=True,
     )
 

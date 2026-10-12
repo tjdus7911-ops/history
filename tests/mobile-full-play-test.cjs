@@ -10,7 +10,9 @@ async function main(){
   page.on('pageerror',error=>errors.push(error.message));await page.goto(`http://127.0.0.1:${server.address().port}/`);
   const read=()=>page.evaluate(()=>({screen,storyId:run().storyId,chapter:run().currentChapter,pending:Boolean(run().pending),cursor:run().dialogueCursor,dialogues:(run().pending?conversationEntries(STORIES[run().pending.sourceSceneId],run().pending):conversationEntries(STORIES[run().storyId],null)).length,questionId:run().activeQuestionId,answer:run().questionAnswer,queue:[...(run().questionQueue||[])],queueIndex:run().questionQueueIndex||0,completed:run().completed,characterStates:JSON.parse(JSON.stringify(run().characterStates)),wrong:[...meta().wrongQuestionIds],cards:[...meta().cards],completedChapters:[...meta().completedChapters]}));
   const tap=async selector=>{const locator=page.locator(selector).first();await locator.waitFor({state:'attached'});await locator.evaluate(element=>element.click());await page.evaluate(()=>{inputLockedUntil=0});await page.waitForTimeout(24)};
-  const answerQuestion=async answer=>{if(await page.locator('[data-pick-answer]').count()){await tap(`[data-pick-answer="${answer}"]`);await tap('[data-submit-answer]')}else await tap(`[data-answer="${answer}"]`)};
+  const answerQuestion=async answer=>{if(await page.locator('[data-pick-answer]').count()){await tap(`[data-pick-answer="${answer}"]`);if(await page.locator('[data-submit-answer]').count())await tap('[data-submit-answer]');else assert.notEqual((await read()).answer,null,'answer selection must either expose confirmation or complete the existing story flow')}else await tap(`[data-answer="${answer}"]`)};
+  const continueAfterChapter=async chapterId=>{const direct=`[data-action="chapter-next-direct"][data-chapter="${chapterId}"]`;if(await page.locator(direct).count())await tap(direct);else await tap('[data-nav="teaser"]')};
+  const replayChapter=async chapterId=>{const direct=`[data-action="chapter-replay-direct"][data-chapter="${chapterId}"]`;if(await page.locator(direct).count())await tap(direct);else{await tap('[data-action="request-replay"]');await tap(`[data-action="confirm-replay"][data-chapter="${chapterId}"]`)}};
   const fit=async()=>assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`horizontal overflow at ${(await read()).storyId}`);
   const shot=async name=>page.screenshot({path:path.join(shots,`${name}.png`),fullPage:true});
   await tap('[data-era-open="goryeo"]');await tap('[data-era-resume="goryeo"]');
@@ -33,7 +35,7 @@ async function main(){
       continue;
     }
     if(now.screen==='complete'){
-      if(!completed.includes(now.chapter))completed.push(now.chapter);await shot(`${now.chapter}-complete`);if(now.chapter==='ch04')break;await tap('[data-nav="teaser"]');continue;
+      if(!completed.includes(now.chapter))completed.push(now.chapter);await shot(`${now.chapter}-complete`);if(now.chapter==='ch04')break;await continueAfterChapter(now.chapter);continue;
     }
     if(now.screen==='teaser'){const next={ch01:'ch02',ch02:'ch03',ch03:'ch04'}[now.chapter];await tap(`[data-action="start-chapter"][data-chapter="${next}"]`);continue}
     assert.equal(now.screen,'game');seenScenes.add(now.storyId);
@@ -55,7 +57,7 @@ async function main(){
   for(const id of ['ch01_conflict','ch01_reconcile','ch01_belonging','ch01_memory_943','ch01_guild_seed','ch02_policy_reason','ch02_exam_day','ch03_courtyard','ch03_weakening','ch03_farewell','ch03_doyun_soliloquy','ch03_death','ch03_legacy'])assert(seenScenes.has(id),id);
   assert.deepEqual(seenQueues.ch01,expectedQueues.ch01);assert.deepEqual(seenQueues.ch02,expectedQueues.ch02);assert.deepEqual(seenQueues.ch03,expectedQueues.ch03);assert.deepEqual(seenQueues.ch04,expectedQueues.ch04);
   assert(Object.values(checks).every(Boolean),JSON.stringify(checks));const final=await read();assert.equal(final.characterStates.doyun.isAlive,false);assert(final.wrong.length>=1);assert(final.cards.includes('gukjagam'));assert.deepEqual(errors,[]);
-  await tap('[data-action="request-replay"]');await tap('[data-action="confirm-replay"][data-chapter="ch04"]');const replay=await read();assert.equal(replay.chapter,'ch04');assert.equal(replay.storyId,'ch03_transition');assert.equal(replay.characterStates.doyun.ageState,'elder_982');
+  await replayChapter('ch04');const replay=await read();assert.equal(replay.chapter,'ch04');assert.equal(replay.storyId,'ch03_transition');assert.equal(replay.characterStates.doyun.ageState,'elder_982');
   console.log(`PASS: 390px CH.01–04 full play (${seenScenes.size} scenes, ${questionOrder.length} answers), queues, exact source labels, reload, wrong note, history cards, aging portraits, Doyun finale, and replay.`);
 }
 main().finally(async()=>{if(browser)await browser.close();server.close()}).catch(error=>{console.error(error);process.exitCode=1});
