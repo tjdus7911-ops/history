@@ -77,7 +77,7 @@ run("meta().completedChapters=eraChapters('joseon').map(ch=>ch.chapterId)");
 assert.equal(run("libraryStatus('joseon')"),'UNLOCKED');
 click({nav:'exam-library'});
 click({officialEra:'joseon'});
-assert.equal((html.match(/data-official-single=/g)||[]).length,joseonOfficialCount);
+assert.equal((html.match(/data-official-study-from=/g)||[]).length,joseonOfficialCount);
 assert(html.includes('73회')&&html.includes('79회'));
 
 run("state.run=INITIAL_RUN('joseon-ch22');state.run.started=true;state.run.storyId='joseon_ch22_complete';meta().completedChapters=eraChapters('joseon').slice(0,-1).map(ch=>ch.chapterId);finishChapter(state)");

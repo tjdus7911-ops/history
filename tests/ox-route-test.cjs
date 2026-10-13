@@ -178,6 +178,8 @@ app=boot('#home',new Map());app.click({nav:'exam-library'});app.click({officialT
 assert.equal(app.run('screen'),'home');assert.equal(app.browser.location.hash,'#home');
 app.click({officialRequestSubmit:'true'});app.click({officialSubmitConfirm:'true'});
 assert.equal(app.run('screen'),'exam-library','completed official exam must enter its result screen');
-assert.equal(app.browser.location.hash,'#exam-library','completed official exam must synchronize its result route');
+assert.match(app.browser.location.hash,/^#exam-library\/results\/official-/,'completed official exam must synchronize its restorable result route');
+const resultHash=app.browser.location.hash,resultStorage=cloneStorage(app.storage),attemptsAfterSubmit=app.run("Object.values(meta().questionRecords).reduce((sum,record)=>sum+(record.attempts||0),0)");
+app=boot(resultHash,resultStorage);assert.equal(app.run('screen'),'exam-library','result URL refresh must restore the exam screen');assert(app.html().includes('OFFICIAL EXAM RESULT'));assert.equal(app.run('globalThis.OFFICIAL_EXAM_UI.snapshot().readOnlyResult'),true);assert.equal(app.run("Object.values(meta().questionRecords).reduce((sum,record)=>sum+(record.attempts||0),0)"),attemptsAfterSubmit,'reopening a result must not record attempts again');
 
 console.log('PASS: URL-first refresh routing, independent OX analysis route, safe detail Back/Forward, OX main/resume isolation, explicit quiz restoration, and invalid fallback.');

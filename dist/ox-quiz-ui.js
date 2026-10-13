@@ -17,6 +17,7 @@ const OX_ERA_COLORS={
  prehistoric:'#9a684f',kingdoms:'#c08b4e',goryeo:'#d0ad67',joseon:'#64877f',empire:'#5c7890',occupation:'#786b91',republic:'#a36b79'
 };
 const APP_ROUTES=new Set(['home','exam-library','ox','ox/quiz','ox/analysis','study','records']);
+const APP_DYNAMIC_ROUTE=/^exam-library\/results(?:\/[^/]+)?$/;
 let oxView='home',oxAnalysisSort='weakest',oxAnalysisReviewEra=null,oxHomeReviewEra='all',oxWrongReviewEra='all',oxMetaCache=null;
 let oxLastAppliedUrl='';
 
@@ -223,7 +224,7 @@ function oxNormalizeRoute(value){
  let route=String(value||'').trim().replace(/^#\/?/,'').replace(/^\/+|\/+$/g,'');
  try{route=decodeURIComponent(route)}catch{}
  if(route==='exam')route='exam-library';
- return APP_ROUTES.has(route)?route:'home';
+ return APP_ROUTES.has(route)||APP_DYNAMIC_ROUTE.test(route)?route:'home';
 }
 function oxReadRoute(){const location=oxRouteLocation();return location?oxNormalizeRoute(location.hash||''):null;}
 function oxWriteRoute(route,replace=false){
@@ -241,6 +242,7 @@ function oxApplyRoute(route=oxReadRoute()){
   screen='ox';
   if(activeOXSession())oxView='quiz';else{normalized='ox';oxView='home';oxWriteRoute('ox',true);}
  }else if(normalized==='ox'){screen='ox';oxView='home';}
+ else if(normalized==='exam-library'||APP_DYNAMIC_ROUTE.test(normalized)){screen='exam-library';oxView='home';globalThis.OFFICIAL_EXAM_UI?.applyRoute?.(normalized);}
  else{screen=normalized;oxView='home';}
  oxLastAppliedUrl=oxRouteLocation()?.href||`#${normalized}`;render();if(typeof window?.scrollTo==='function')window.scrollTo(0,0);return normalized;
 }

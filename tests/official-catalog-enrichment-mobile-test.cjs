@@ -12,6 +12,10 @@ let browser;
 async function main(){
   await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
   browser=await chromium.launch({headless:true,...(process.env.BROWSER_CHANNEL?{channel:process.env.BROWSER_CHANNEL}:{})});
+  const desktopContext=await browser.newContext({viewport:{width:1280,height:900},serviceWorkers:'block'}),desktopPage=await desktopContext.newPage();
+  await desktopPage.goto(`http://127.0.0.1:${server.address().port}/`);await desktopPage.locator('[data-nav="exam-library"]').click();await desktopPage.locator('[data-official-tab="round"]').click();await desktopPage.locator('[data-official-round-level="심화"]').click();
+  const desktopCards=desktopPage.locator('.official-card.round'),desktopBadges=desktopPage.locator('.official-card.round .official-pass-rate-badge');assert.equal(await desktopCards.count(),23);assert((await desktopBadges.count())>0&&(await desktopBadges.count())<(await desktopCards.count()),'desktop cards must omit the badge when a verified rate is unavailable');
+  const desktopLayout=await desktopCards.filter({has:desktopPage.locator('.official-pass-rate-badge')}).first().evaluate(card=>{const badge=card.querySelector('.official-pass-rate-badge'),title=card.querySelector('h2'),button=card.querySelector('.official-card-open'),cardBox=card.getBoundingClientRect(),badgeBox=badge.getBoundingClientRect(),buttonBox=button.getBoundingClientRect(),range=document.createRange();range.selectNodeContents(title);const titleTextBox=range.getBoundingClientRect();return {badgeText:badge.textContent.trim(),badgeInside:badgeBox.left>=cardBox.left&&badgeBox.right<=cardBox.right&&badgeBox.top>=cardBox.top&&badgeBox.bottom<=cardBox.bottom,titleClear:titleTextBox.right<=badgeBox.left||titleTextBox.bottom<=badgeBox.top,bottomGap:Math.abs(cardBox.bottom-buttonBox.bottom),cardText:card.innerText}});assert(/^합격률 \d+\.\d%$/.test(desktopLayout.badgeText),'desktop badge copy changed');assert(desktopLayout.badgeInside&&desktopLayout.titleClear,'desktop title and rate badge overlap or escape the card');assert(desktopLayout.bottomGap<=1,'retired bottom rate box left card space behind');assert(!/공식 합격률|발표일|출처|OPEN/.test(desktopLayout.cardText),'desktop card still exposes retired pass-rate metadata');assert.equal(await desktopPage.locator('.official-pass-rate.card').count(),0);await desktopContext.close();
   const context=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,serviceWorkers:'block'}),page=await context.newPage(),errors=[];
   page.on('pageerror',error=>errors.push(error.message));
   await page.goto(`http://127.0.0.1:${server.address().port}/`);
@@ -37,7 +41,7 @@ async function main(){
   await page.locator('[data-official-image-close]').click();assert.equal(await modal.count(),0);assert.deepEqual(await stableState(),before,'closing the image changed the active exam');
   const lastChoice=page.locator('.official-choice-grid button').last();await lastChoice.scrollIntoViewIfNeeded();await page.evaluate(()=>window.scrollBy(0,100));const choiceBox=await lastChoice.boundingBox();assert(choiceBox&&choiceBox.y>=0&&choiceBox.y+choiceBox.height<=772,`choices below the detail image must scroll above mobile navigation: ${JSON.stringify(choiceBox)}`);
 
-  await page.evaluate(()=>{const entry=OFFICIAL_EXAM_CATALOG.find(item=>item.sourceRecord.examRound===79&&item.sourceRecord.examLevel==='심화'&&item.sourceRecord.questionNumber===1);startOfficialSession([entry],'learn')});
+  await page.evaluate(()=>{const entries=OFFICIAL_EXAM_CATALOG.filter(item=>item.sourceRecord.examRound===79&&item.sourceRecord.examLevel==='심화'&&item.sourceRecord.questionNumber<=3).sort((a,b)=>a.sourceRecord.questionNumber-b.sourceRecord.questionNumber);startOfficialSession(entries,'learn')});
   const advancedAnswer=await page.evaluate(()=>QUESTIONS.find(question=>question.questionId===officialSessionQuestion().canonicalQuestionId).acceptedAnswers[0]);
   await page.locator(`[data-official-pick="${advancedAnswer}"]`).click();
   await page.locator('[data-official-submit]').click();
@@ -51,6 +55,7 @@ async function main(){
   const explanationBox=await advancedChoices.last().boundingBox();
   assert(explanationBox&&explanationBox.y<772&&explanationBox.y+explanationBox.height<=774,`last explanation must scroll above mobile navigation: ${JSON.stringify(explanationBox)}`);
   assert.equal(await page.evaluate(()=>meta().questionRecords[officialSessionQuestion().canonicalQuestionId].attempts),attemptsBeforeScroll,'reading explanations duplicated the attempt record');
+  assert.equal((await page.locator('[data-official-next]').innerText()).trim(),'다음 문제');await page.locator('[data-official-next]').click();assert.equal(await page.locator('.official-feedback').count(),0);assert.equal(await page.locator('[data-official-submit]').count(),1);assert.equal(await page.locator('[data-official-pick][aria-pressed="true"]').count(),0);await page.locator('[data-official-previous]').click();assert.equal(await page.locator('.official-feedback').count(),1);assert.equal(await page.evaluate(()=>meta().questionRecords[officialSessionQuestion().canonicalQuestionId].attempts),attemptsBeforeScroll,'same-session revisit duplicated the attempt record');assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'learning navigation caused mobile overflow');
 
   await page.evaluate(()=>{const entry=OFFICIAL_EXAM_CATALOG.find(item=>item.sourceRecord.examRound===79&&item.sourceRecord.examLevel==='기본'&&item.sourceRecord.questionNumber===1);startOfficialSession([entry],'learn')});
   const basicAnswer=await page.evaluate(()=>QUESTIONS.find(question=>question.questionId===officialSessionQuestion().canonicalQuestionId).acceptedAnswers[0]);
@@ -58,6 +63,6 @@ async function main(){
   await page.locator('.official-choice-explanations li').first().waitFor({timeout:30000});
   assert.equal(await page.locator('.official-choice-explanations li').count(),4,'basic review must preserve four official choices');
   assert.deepEqual(errors,[]);await context.close();
-  console.log('PASS: 390x844 fullscreen image is state-safe and scrollable; advanced/basic reviews preserve 5/4 choices, expose text badges, and keep the last explanation above navigation without duplicate attempts.');
+  console.log('PASS: 1280px round-card badges and 390x844 fullscreen/continuous-learning layouts preserve data, state, and responsive boundaries.');
 }
 main().then(async()=>{await browser.close();server.close()}).catch(async error=>{console.error(error);if(browser)await browser.close();server.close();process.exitCode=1});

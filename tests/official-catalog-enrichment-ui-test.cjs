@@ -187,17 +187,17 @@ assert.equal(storyMapping.wrongStoryScene,run(`QUESTIONS.find(item=>item.questio
 assert(storyMapping.eventIds.length===3&&storyMapping.eventIds.every(id=>id===storyMapping.canonicalQuestionId),'story learning-event IDs were not canonicalized');
 
 click({nav:'exam-library'});click({officialTab:'round'});click({officialRoundLevel:'심화'});
-assert(html.includes('공식 합격률')&&html.includes('63.6%'),'verified rate missing from round card or not rounded to one decimal place');
-assert(html.includes('49.3%'),'verified official statistic with a source note must remain available and use display rounding');
-assert(run(`officialStatisticMarkup({examRound:61,examLevel:'심화'},'card')`).includes('50.1%'),'50.05% must use decimal half-up display rounding');
-assert(run(`officialStatisticMarkup({examRound:66,examLevel:'기본'},'card')`).includes('46.2%'),'46.15% must use decimal half-up display rounding');
-assert(html.includes('공식 합격률 정보 없음'),'explicitly unavailable edition needs a distinct state');
-assert(html.includes('발표일 2026-08-21')&&html.includes('국사편찬위원회 출처'),'official announcement metadata missing');
-assert(html.includes('target="_blank"')&&html.includes('rel="noopener noreferrer"'),'source must be an external safe link');
+assert(html.includes('합격률 63.6%'),'verified rate missing from round-card badge or not rounded to one decimal place');
+assert(html.includes('합격률 49.3%'),'verified official statistic with a source note must remain connected to its edition and use display rounding');
+assert(run(`officialStatisticMarkup({examRound:61,examLevel:'심화'},'card')`).includes('합격률 50.1%'),'50.05% must use decimal half-up display rounding');
+assert(run(`officialStatisticMarkup({examRound:66,examLevel:'기본'},'card')`).includes('합격률 46.2%'),'46.15% must use decimal half-up display rounding');
+assert(!html.includes('공식 합격률')&&!html.includes('공식 합격률 정보 없음')&&!html.includes('공식 합격률 확인 중'),'round cards must not render the former large pass-rate block or unavailable placeholders');
+assert(!html.includes('발표일 2026-08-21')&&!html.includes('국사편찬위원회 출처'),'round cards must hide announcement and source metadata');
+assert(!html.includes('class="official-pass-rate verified card"')&&!html.includes('class="open-pill">OPEN</span><h2>제'),'round cards must use only the compact rate badge in the former OPEN position');
 
 run(`OFFICIAL_EXAM_STATISTICS.byEdition['79-advanced'].verificationStatus='SOURCE_NOT_FOUND';render()`);
-assert(html.includes('공식 합격률 확인 중'),'unverified statistics must not be presented as official');
-assert(!html.includes('63.6%'),'unverified pass rate leaked');
+assert(!html.includes('합격률 63.6%'),'unverified pass rate badge leaked');
+assert(!html.includes('공식 합격률 확인 중'),'unverified round-card statistics must not create a placeholder badge or box');
 run(`OFFICIAL_EXAM_STATISTICS.byEdition['79-advanced'].verificationStatus='OFFICIAL_VERIFIED';render()`);
 
 click({officialRound:'79',officialEditionLevel:'심화'});
@@ -278,7 +278,8 @@ assert(html.includes('src="detail-only.webp"'),'graded review must use detailIma
 for(let index=1;index<=choiceCount;index++)assert(html.includes(`MEANING-${index}`)&&html.includes(`JUDGMENT-${index}`),`review choice ${index} structured explanation missing`);
 
 const css=fs.readFileSync('dist/exam-memory.css','utf8');
-for(const contract of ['.official-image-modal-overlay','height:100dvh','.official-image-scroll{','overflow:auto','touch-action:pan-x pan-y pinch-zoom','.official-choice-explanations','.official-choice-text','word-break:keep-all','overflow-wrap:anywhere','.official-pass-rate'])assert(css.includes(contract),`missing CSS contract: ${contract}`);
+for(const contract of ['.official-image-modal-overlay','height:100dvh','.official-image-scroll{','overflow:auto','touch-action:pan-x pan-y pinch-zoom','.official-choice-explanations','.official-choice-text','word-break:keep-all','overflow-wrap:anywhere','.official-pass-rate','.official-pass-rate-badge','white-space:nowrap'])assert(css.includes(contract),`missing CSS contract: ${contract}`);
+assert(!css.includes('.official-pass-rate.card'),'retired card pass-rate box CSS remains');
 assert(fs.readFileSync('dist/story-exam-ui.js','utf8').includes("markup.includes('official-choice-load')"),'Story wrapper can duplicate the lazy loading/error block');
 console.log('PASS: thumbnail/detail routing, state-safe fullscreen zoom, verified official rates, strict pending state, and spoiler-safe choice explanations.');
 }).catch(error=>{console.error(error);process.exitCode=1});
