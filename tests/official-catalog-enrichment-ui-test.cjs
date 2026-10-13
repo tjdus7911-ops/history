@@ -240,12 +240,28 @@ click({officialSubmit:'true'});
 for(let index=1;index<=choiceCount;index++){
   assert(html.includes(`CHOICE-${index}`),`choice ${index} source text missing`);
   assert(html.includes(`MEANING-${index}`),`choice ${index} concise summary missing`);
-  assert(html.includes(`JUDGMENT-${index}`),`choice ${index} judgment reason missing`);
+  assert(!html.includes(`JUDGMENT-${index}`),`choice ${index} judgment reason leaked`);
   assert(!html.includes(`EXPLANATION-${index}`),`choice ${index} forced a duplicate supplement`);
 }
-assert(html.includes('official-choice-text">CHOICE-1')&&html.includes('<small>핵심 요약</small>')&&html.includes('<small>판단 이유</small>'),'choice source, concise summary, and judgment structure changed');
+assert(html.includes('official-choice-text">CHOICE-1')&&html.includes('<small>핵심 요약</small>')&&!html.includes('<small>판단 이유</small>'),'choice source or summary-only structure changed');
 assert(!html.includes('<small>선지 원문</small>')&&!html.includes('<small>보충 해설</small>'),'structured choices must not repeat source or force a supplement');
-assert(html.includes('MEANING-1')&&html.includes('JUDGMENT-1')&&html.includes('CORRECTION-1'),'structured summary, judgment, or optional correction is missing');
+assert(html.includes('MEANING-1')&&!html.includes('JUDGMENT-1')&&!html.includes('CORRECTION-1'),'summary must be retained without separate judgment or correction');
+// Summary-only rendering must preserve source data and support legacy explanations.
+run(`{
+ const probe={answer:0,choices:['A','B','C','D','E'],choiceExplanations:[
+  {meaning:'SUMMARY',judgmentReason:'HIDDEN_JUDGMENT',correctedFact:'HIDDEN_CORRECTION',explanation:'HIDDEN_DUPLICATE'},
+  {correctedFact:'CORRECTION_FALLBACK'},
+  {explanation:'EXPLANATION_FALLBACK'},
+  'LEGACY_FALLBACK',
+  {meaning:'OCR 원문 확인',explanation:'SAFE_FALLBACK'}
+ ]};
+ const before=JSON.stringify(probe),markup=OFFICIAL_EXAM_UI.choiceExplanations(probe,1);
+ if((markup.match(/<small>핵심 요약<\\/small>/g)||[]).length!==5)throw new Error('each choice needs one summary');
+ for(const value of ['SUMMARY','CORRECTION_FALLBACK','EXPLANATION_FALLBACK','LEGACY_FALLBACK','SAFE_FALLBACK'])if(!markup.includes(value))throw new Error('missing summary fallback: '+value);
+ if(/HIDDEN_|판단 이유|바로잡기|official-choice-judgment|official-choice-correction/.test(markup))throw new Error('duplicate explanation section leaked');
+ if(JSON.stringify(probe)!==before)throw new Error('renderer modified source data');
+ if(!markup.includes('정답')||!markup.includes('내 선택'))throw new Error('answer badges missing');
+}`);
 assert(!html.includes('ERA-1')&&!html.includes('TARGET-1'),'era and target metadata must not be forced into every choice introduction');
 assert(html.includes('[문제 핵심 해설]'),'question-level analysis heading missing');
 assert(html.includes('official-choice-badge answer">정답')&&html.includes('official-choice-badge selected">내 선택'),'answer and selection badges missing');
@@ -271,7 +287,7 @@ assert(html.includes('src="thumb-only.webp"'),'result row must use thumbnailImag
 assert(!html.includes('EXPLANATION-1'),'result summary must not expand choice explanations');
 click({officialReview:id});
 assert(html.includes('src="detail-only.webp"'),'graded review must use detailImage');
-for(let index=1;index<=choiceCount;index++)assert(html.includes(`MEANING-${index}`)&&html.includes(`JUDGMENT-${index}`),`review choice ${index} structured explanation missing`);
+for(let index=1;index<=choiceCount;index++)assert(html.includes(`MEANING-${index}`)&&!html.includes(`JUDGMENT-${index}`),`review choice ${index} summary-only explanation missing`);
 
 const css=fs.readFileSync('dist/exam-memory.css','utf8');
 for(const contract of ['.official-image-modal-overlay','height:100dvh','.official-image-scroll{','overflow:auto','touch-action:pan-x pan-y pinch-zoom','.official-choice-explanations','.official-choice-text','word-break:keep-all','overflow-wrap:anywhere','.official-pass-rate','.official-pass-rate-badge','white-space:nowrap'])assert(css.includes(contract),`missing CSS contract: ${contract}`);
