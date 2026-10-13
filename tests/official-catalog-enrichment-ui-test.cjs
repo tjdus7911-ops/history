@@ -287,7 +287,7 @@ assert(html.includes('src="thumb-only.webp"'),'result row must use thumbnailImag
 assert(!html.includes('EXPLANATION-1'),'result summary must not expand choice explanations');
 click({officialReview:id});
 assert(html.includes('src="detail-only.webp"'),'graded review must use detailImage');
-for(let index=1;index<=choiceCount;index++)assert(html.includes(`MEANING-${index}`)&&html.includes(`JUDGMENT-${index}`),`review choice ${index} structured explanation missing`);
+for(let index=1;index<=choiceCount;index++)assert(html.includes(`MEANING-${index}`)&&!html.includes(`JUDGMENT-${index}`),`review choice ${index} summary-only explanation missing`);
 
 const css=fs.readFileSync('dist/exam-memory.css','utf8');
 for(const contract of ['.official-image-modal-overlay','height:100dvh','.official-image-scroll{','overflow:auto','touch-action:pan-x pan-y pinch-zoom','.official-choice-explanations','.official-choice-text','word-break:keep-all','overflow-wrap:anywhere','.official-pass-rate','.official-pass-rate-badge','white-space:nowrap'])assert(css.includes(contract),`missing CSS contract: ${contract}`);
