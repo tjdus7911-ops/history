@@ -14,8 +14,8 @@
     "method": "배포 스냅샷의 detailImage를 내려받아 카탈로그 SHA-256과 일치하는지 확인"
   },
   "completedVisualReview": {
-    "questionCount": 7,
-    "choiceCount": 30,
+    "questionCount": 31,
+    "choiceCount": 126,
     "questionIds": [
       "official-57-basic-03",
       "official-57-basic-04",
@@ -23,14 +23,7 @@
       "official-57-basic-22",
       "official-79-basic-01",
       "official-63-advanced-42",
-      "official-75-advanced-36"
-    ],
-    "ledger": "docs/story-exams/image-choice-reviews.json"
-  },
-  "remainingManualReview": {
-    "questionCount": 1586,
-    "reason": "원본 이미지와 보조 OCR 자료는 확보했지만 사람의 육안 원문 판독 및 역사 해설 검수가 아직 완료되지 않음",
-    "questionIds": [
+      "official-75-advanced-36",
       "official-57-basic-01",
       "official-57-basic-02",
       "official-57-basic-06",
@@ -54,7 +47,14 @@
       "official-57-basic-27",
       "official-57-basic-30",
       "official-57-basic-31",
-      "official-57-basic-32",
+      "official-57-basic-32"
+    ],
+    "ledger": "docs/story-exams/image-choice-reviews.json"
+  },
+  "remainingManualReview": {
+    "questionCount": 1562,
+    "reason": "원본 이미지와 보조 OCR 자료는 확보했지만 사람의 육안 원문 판독 및 역사 해설 검수가 아직 완료되지 않음",
+    "questionIds": [
       "official-57-basic-33",
       "official-57-basic-35",
       "official-57-basic-36",

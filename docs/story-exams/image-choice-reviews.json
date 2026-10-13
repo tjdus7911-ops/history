@@ -205,6 +205,612 @@
       "sourceImageSha256": "a1a5ba0457f247e0afd98ec9698f75a85cfbe5eec1d8b45b9028f24fcfc9a562",
       "originalImageVisuallyReviewed": true,
       "officialAnswerVerified": true
+    },
+    {
+      "officialQuestionId": "official-57-basic-01",
+      "examRound": 57,
+      "examLevel": "기본",
+      "questionNumber": 1,
+      "answer": 1,
+      "choiceCount": 4,
+      "choices": [
+        "가락바퀴로 실 뽑기",
+        "뗀석기로 고기 자르기",
+        "점토로 빗살무늬 토기 빚기",
+        "거푸집으로 청동검 모형 만들기"
+      ],
+      "choiceExplanations": [
+        "가락바퀴는 신석기 시대에 실을 뽑는 데 사용한 도구이다. 동굴과 강가의 막집에서 생활한 구석기 시대의 체험이 아니므로 오답이다.",
+        "뗀석기는 구석기 시대 사람들이 사냥과 채집, 고기 손질에 사용한 도구이다. 축제가 소개하는 구석기 생활과 일치하므로 정답이다.",
+        "빗살무늬 토기는 신석기 시대의 대표적인 토기이다. 구석기 시대에는 토기를 만들지 않았으므로 오답이다.",
+        "청동검과 거푸집은 청동기 시대의 금속 제작과 관련된다. 구석기 시대보다 훨씬 뒤의 기술이므로 오답이다."
+      ],
+      "explanation": "동굴이나 강가의 막집에서 살았다는 안내는 구석기 시대를 가리킨다. 구석기인은 뗀석기를 사용해 사냥한 짐승의 고기를 손질하였다. 따라서 ②가 정답이다.",
+      "clue": "동굴과 강가의 막집은 이동 생활을 하던 구석기 시대의 대표적인 주거 형태이다.",
+      "topicTags": ["구석기 시대"],
+      "sources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-01.22cd2da00e99.webp"
+      ],
+      "sourceImageSha256": "22cd2da00e99f26ed8c8591f98a6070e27dc5bc73d8a213d71910c5ddb64affb",
+      "originalImageVisuallyReviewed": true,
+      "officialAnswerVerified": true
+    },
+    {
+      "officialQuestionId": "official-57-basic-02",
+      "examRound": 57,
+      "examLevel": "기본",
+      "questionNumber": 2,
+      "answer": 2,
+      "choiceCount": 4,
+      "choices": [
+        "서옥제라는 혼인 풍습을 표현해 보자.",
+        "무예를 익히는 화랑도의 모습을 보여주자.",
+        "특산물인 단궁, 과하마, 반어피를 그려 보자.",
+        "지배층인 마가, 우가, 저가, 구가를 등장시키자."
+      ],
+      "choiceExplanations": [
+        "서옥제는 혼인 뒤 신랑이 신부 집에서 생활하던 고구려의 혼인 풍습이다. 무천과 책화가 있었던 동예의 모습이 아니므로 오답이다.",
+        "화랑도는 신라의 청소년 수련 단체로 무예와 도덕을 익혔다. 동예를 표현할 내용이 아니므로 오답이다.",
+        "단궁·과하마·반어피는 동예의 대표적인 특산물이다. 무천과 책화가 제시된 나라의 특징과 일치하므로 정답이다.",
+        "마가·우가·저가·구가는 부여의 여러 가(加)를 가리킨다. 동예에는 왕이 없고 읍군·삼로가 각 읍락을 다스렸으므로 오답이다."
+      ],
+      "explanation": "제천 행사 무천과 다른 읍락을 침범했을 때 배상하게 한 책화는 동예의 특징이다. 동예의 특산물로는 단궁·과하마·반어피가 알려져 있다. 따라서 ③이 정답이다.",
+      "clue": "무천과 책화는 초기 국가 동예를 가리키는 핵심 단서이다.",
+      "topicTags": ["동예"],
+      "sources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-02.ef451b6f2844.webp"
+      ],
+      "sourceImageSha256": "ef451b6f2844506e007b0492a74ada947fb5bb90eb11e0532cb8504c4596daec",
+      "originalImageVisuallyReviewed": true,
+      "officialAnswerVerified": true
+    },
+    {
+      "officialQuestionId": "official-57-basic-06",
+      "examRound": 57,
+      "examLevel": "기본",
+      "questionNumber": 6,
+      "answer": 1,
+      "choiceCount": 4,
+      "choices": ["김대성", "김춘추", "사다함", "이사부"],
+      "choiceExplanations": [
+        "김대성은 통일 신라 때 불국사와 석굴암 창건을 주도한 인물이다. 고구려에 군사를 요청하러 갔다가 억류된 신라 왕족이 아니므로 오답이다.",
+        "김춘추는 고구려에 원군을 요청했다가 억류되었고, 뒤에 당과 동맹을 맺은 신라 왕족이다. 선덕 여왕 11년과 당과의 동맹이라는 단서에 모두 맞으므로 정답이다.",
+        "사다함은 신라 진흥왕 때 대가야 정벌에 공을 세운 화랑이다. 고구려·당과 외교한 인물이 아니므로 오답이다.",
+        "이사부는 지증왕 때 우산국을 정복한 신라의 장군이다. 토끼와 거북이 이야기로 고구려 감옥을 벗어난 인물이 아니므로 오답이다."
+      ],
+      "explanation": "선덕 여왕 때 고구려에 원군을 요청했다가 억류되고, 이후 당으로 건너가 동맹을 맺은 인물은 김춘추이다. 김춘추는 훗날 태종 무열왕이 되어 삼국 통일의 기반을 마련했다. 따라서 ②가 정답이다.",
+      "clue": "선덕 여왕 11년 고구려에 원군을 요청하고 뒤에 당과 동맹을 맺었다는 내용은 김춘추를 가리킨다.",
+      "topicTags": ["김춘추"],
+      "sources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-06.e528b8a3909a.webp"
+      ],
+      "sourceImageSha256": "e528b8a3909ae1a0335e86de5dfc38891c293f3d8db56fc5ca4bfe040bfe0464",
+      "originalImageVisuallyReviewed": true,
+      "officialAnswerVerified": true
+    },
+    {
+      "officialQuestionId": "official-57-basic-07",
+      "examRound": 57,
+      "examLevel": "기본",
+      "questionNumber": 7,
+      "answer": 3,
+      "choiceCount": 4,
+      "choices": [
+        "송악에서 철원으로 도읍을 옮겼다.",
+        "수의 군대를 살수에서 크게 무찔렀다.",
+        "인재 선발을 위하여 독서삼품과를 시행하였다.",
+        "정당성 아래 6부를 두어 행정을 담당하게 하였다."
+      ],
+      "choiceExplanations": [
+        "송악에서 철원으로 도읍을 옮긴 것은 후고구려를 세운 궁예의 행적이다. 영광탑과 정효 공주 무덤이 남은 발해와 다른 나라의 사실이므로 오답이다.",
+        "살수 대첩은 고구려의 을지문덕이 수 양제의 군대를 물리친 전투이다. 발해가 건국되기 전 고구려의 사실이므로 오답이다.",
+        "독서삼품과는 통일 신라 원성왕 때 유교 경전의 이해 수준으로 인재를 선발하려 한 제도이다. 발해의 제도가 아니므로 오답이다.",
+        "정당성은 발해의 3성 가운데 행정을 총괄한 기구이며 그 아래에 6부를 두었다. 발해의 중앙 정치 조직에 대한 옳은 설명이므로 정답이다."
+      ],
+      "explanation": "영광탑과 정효 공주 무덤은 발해의 유적이다. 발해는 당의 제도를 수용하면서도 정당성 중심의 3성 6부 체제를 운영하였다. 따라서 ④가 정답이다.",
+      "clue": "영광탑과 정효 공주 무덤은 발해의 건축과 장례 문화를 보여 주는 유적이다.",
+      "topicTags": ["발해"],
+      "sources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-07.1b142c62f49c.webp"
+      ],
+      "sourceImageSha256": "1b142c62f49cf7b5d12c594eb4cd571571be62e979baedbe78abeebf8983fb90",
+      "originalImageVisuallyReviewed": true,
+      "officialAnswerVerified": true
+    },
+    {
+      "officialQuestionId": "official-57-basic-08",
+      "examRound": 57,
+      "examLevel": "기본",
+      "questionNumber": 8,
+      "answer": 0,
+      "choiceCount": 4,
+      "choices": ["경주 감은사지", "여주 고달사지", "원주 법천사지", "화순 운주사지"],
+      "choiceExplanations": [
+        "경주 감은사지는 신문왕이 부왕 문무왕의 뜻을 기려 완성한 통일 신라의 절터이다. 동해안과 문무왕·신문왕이라는 일기의 단서에 맞으므로 정답이다.",
+        "여주 고달사지는 고려 시대에 크게 번성한 사찰 터로 원종 대사 탑 등이 남아 있다. 신문왕이 완성한 감은사와 다른 유적이므로 오답이다.",
+        "원주 법천사지는 고려 시대 지광 국사 현묘탑과 관련된 절터이다. 통일 신라 초기 동해안의 감은사와 위치와 시대가 다르므로 오답이다.",
+        "화순 운주사지는 다수의 석탑과 석불이 남아 있는 고려 시대의 유적이다. 문무왕을 기리기 위해 세운 절터가 아니므로 오답이다."
+      ],
+      "explanation": "동해안에 있고 신문왕이 아버지 문무왕의 뜻을 이어 완성한 절은 감은사이다. 경주 감은사지에는 통일 신라의 대표적인 삼층 석탑 두 기가 남아 있다. 따라서 ①이 정답이다.",
+      "clue": "동해안, 문무왕, 신문왕이 완성했다는 단서는 경주 감은사를 가리킨다.",
+      "topicTags": ["감은사"],
+      "sources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-08.29fc951bb460.webp"
+      ],
+      "sourceImageSha256": "29fc951bb460922a057d8577e9efc54be72323282438ae4dc03d2c5bba382c7f",
+      "originalImageVisuallyReviewed": true,
+      "officialAnswerVerified": true
+    },
+    {
+      "officialQuestionId": "official-57-basic-10",
+      "examRound": 57,
+      "examLevel": "기본",
+      "questionNumber": 10,
+      "answer": 3,
+      "choiceCount": 4,
+      "choices": [
+        "성리학을 공부하는 유생",
+        "금속 활자를 주조하는 장인",
+        "판소리 공연을 하는 소리꾼",
+        "군사를 모아 장군이라 칭하는 호족"
+      ],
+      "choiceExplanations": [
+        "성리학은 고려 말에 본격적으로 수용되어 조선의 통치 이념으로 발전하였다. 최치원이 활동한 신라 말보다 뒤의 모습이므로 오답이다.",
+        "금속 활자는 고려 시대에 발달하여 인쇄에 사용되었다. 신라 말 최치원의 활동 시기에는 볼 수 없는 모습이므로 오답이다.",
+        "판소리는 조선 후기에 서민 문화로 발달한 공연 예술이다. 신라 말과 시대가 크게 달라 오답이다.",
+        "호족은 신라 말 지방에서 군사력과 경제력을 바탕으로 성장한 세력이다. 최치원이 신라 조정에 실망해 은거하던 시기에 볼 수 있는 모습이므로 정답이다."
+      ],
+      "explanation": "진성 여왕에게 시무 10여 조를 올리고 해운대 지명의 유래가 된 인물은 신라 말의 최치원이다. 신라 말에는 지방 호족이 군사를 모으고 성주·장군을 자처하며 성장하였다. 따라서 ④가 정답이다.",
+      "clue": "시무 10여 조와 해운대는 신라 말 학자 최치원을 가리킨다.",
+      "topicTags": ["신라 말", "최치원"],
+      "sources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-10.aa69ac23615a.webp"
+      ],
+      "sourceImageSha256": "aa69ac23615a53e80c1ad526449ada788d91e779d89bb606cd58804263f6047c",
+      "originalImageVisuallyReviewed": true,
+      "officialAnswerVerified": true
+    },
+    {
+      "officialQuestionId": "official-57-basic-11",
+      "examRound": 57,
+      "examLevel": "기본",
+      "questionNumber": 11,
+      "answer": 0,
+      "choiceCount": 4,
+      "choices": ["훈요 10조를 남겼다.", "과거제를 시행하였다.", "만권당을 설립하였다.", "전시과를 마련하였다."],
+      "choiceExplanations": [
+        "훈요 10조는 고려 태조가 후대 왕들에게 남긴 통치 지침이다. 신라 왕 김부의 항복을 받고 경주의 사심관으로 임명한 왕건의 업적이므로 정답이다.",
+        "과거제는 고려 광종이 후주 출신 쌍기의 건의를 받아 시행하였다. 태조 왕건의 업적이 아니므로 오답이다.",
+        "만권당은 고려 충선왕이 원의 수도 대도에 세운 학문 연구 기관이다. 태조보다 훨씬 뒤의 사실이므로 오답이다.",
+        "전시과는 고려 경종 때 처음 마련되어 관리에게 전지와 시지를 지급한 제도이다. 태조 왕건의 업적이 아니므로 오답이다."
+      ],
+      "explanation": "신라 왕 김부의 항복을 받고 그를 경주의 사심관으로 임명한 왕은 고려 태조 왕건이다. 태조는 후대 왕이 지켜야 할 정책을 담은 훈요 10조를 남겼다. 따라서 ①이 정답이다.",
+      "clue": "신라를 경주라 부르고 김부를 사심관으로 임명했다는 내용은 고려 태조 왕건을 가리킨다.",
+      "topicTags": ["고려 태조"],
+      "sources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-11.3e0542d50daa.webp"
+      ],
+      "sourceImageSha256": "3e0542d50daa0be6ad54e5d93dcda82efb896b34bbdbeff6182093ffa940218d",
+      "originalImageVisuallyReviewed": true,
+      "officialAnswerVerified": true
+    },
+    {
+      "officialQuestionId": "official-57-basic-12",
+      "examRound": 57,
+      "examLevel": "기본",
+      "questionNumber": 12,
+      "answer": 0,
+      "choiceCount": 4,
+      "choices": ["(가) - (나) - (다)", "(가) - (다) - (나)", "(나) - (가) - (다)", "(다) - (가) - (나)"],
+      "choiceExplanations": [
+        "국자감 설치 뒤 9재 학당이 세워지고, 이후 성균관이 정비된 순서의 배열이다. 고려 교육 기관의 시간 순서와 일치하므로 정답이다.",
+        "국자감 다음에 성균관을 두고 9재 학당을 마지막에 놓은 배열이다. 최충의 9재 학당이 충선왕 때 정비된 성균관보다 앞서므로 오답이다.",
+        "9재 학당을 국자감보다 앞에 놓은 배열이다. 국자감은 성종 때, 9재 학당은 그 뒤 문종 때 세워졌으므로 오답이다.",
+        "성균관 정비를 가장 먼저 놓은 배열이다. 성균관 정비는 국자감 설치와 9재 학당 설립보다 뒤이므로 오답이다."
+      ],
+      "explanation": "국자감은 성종 때 설치되었고, 최충의 9재 학당은 문종 때 세워졌다. 성균관이라는 명칭과 조직이 정비된 것은 그보다 뒤인 충선왕 때이다. 따라서 (가)-(나)-(다)인 ①이 정답이다.",
+      "clue": "고려 교육 기관은 성종의 국자감, 문종 때 최충의 9재 학당, 충선왕 때의 성균관 정비 순으로 이어진다.",
+      "topicTags": ["고려 교육"],
+      "sources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-12.f91d73b33cea.webp"
+      ],
+      "sourceImageSha256": "f91d73b33cea9854b657f13ed09a0e880595f7dd24b0c30bcf44d45db986d2ba",
+      "originalImageVisuallyReviewed": true,
+      "officialAnswerVerified": true
+    },
+    {
+      "officialQuestionId": "official-57-basic-13",
+      "examRound": 57,
+      "examLevel": "기본",
+      "questionNumber": 13,
+      "answer": 1,
+      "choiceCount": 4,
+      "choices": [
+        "벽란도에서 국제 무역을 하였어요.",
+        "농민들이 고추, 담배 등 상품 작물을 재배하였어요.",
+        "시전 상인들이 개경에서 물품을 판매하였어요.",
+        "사원에서 종이와 기와를 만들어 팔았어요."
+      ],
+      "choiceExplanations": [
+        "벽란도는 고려의 국제 무역항으로 송과 아라비아 상인 등이 드나들었다. 고려 경제 활동에 대한 옳은 설명이므로 발문의 정답이 아니다.",
+        "고추와 담배는 조선 후기에 널리 재배된 상품 작물이다. 고려 시대의 경제 활동으로 볼 수 없으므로 옳지 않은 설명이자 정답이다.",
+        "고려의 수도 개경에는 시전이 설치되어 상인들이 물품을 판매하였다. 고려의 상업 활동에 대한 옳은 설명이므로 발문의 정답이 아니다.",
+        "고려의 사원은 넓은 토지와 노동력을 바탕으로 종이·기와 등 수공업품을 생산하고 판매하였다. 고려 경제 활동에 해당하므로 발문의 정답이 아니다."
+      ],
+      "explanation": "벽란도 국제 무역, 개경의 시전, 사원의 수공업품 생산은 고려 시대 경제의 모습이다. 고추와 담배는 임진왜란 이후 전래되어 조선 후기에 상품 작물로 재배되었다. 따라서 옳지 않은 ②가 정답이다.",
+      "clue": "발문은 고려 시대 경제 활동에 해당하지 않는 사실을 찾도록 요구한다.",
+      "topicTags": ["고려 경제"],
+      "sources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-13.f2271a47fe03.webp"
+      ],
+      "sourceImageSha256": "f2271a47fe039607480137b0526a1e96f73a5134d0e12c06a32b35c5adbd6cde",
+      "originalImageVisuallyReviewed": true,
+      "officialAnswerVerified": true
+    },
+    {
+      "officialQuestionId": "official-57-basic-15",
+      "examRound": 57,
+      "examLevel": "기본",
+      "questionNumber": 15,
+      "answer": 3,
+      "choiceCount": 4,
+      "choices": ["과전법이 시행되었다.", "이자겸이 난을 일으켰다.", "궁예가 후고구려를 세웠다.", "팔만대장경판이 제작되었다."],
+      "choiceExplanations": [
+        "과전법은 위화도 회군 뒤인 1391년에 시행된 토지 제도이다. 1380년 황산 전투보다 뒤이므로 (가) 시기에 해당하지 않아 오답이다.",
+        "이자겸의 난은 고려 인종 때인 1126년에 일어났다. 1232년 처인성 전투보다 앞선 일이므로 오답이다.",
+        "궁예가 후고구려를 세운 것은 후삼국 시대인 901년이다. 고려의 몽골 항쟁보다 훨씬 앞선 일이므로 오답이다.",
+        "팔만대장경판은 몽골의 침입을 물리치려는 염원으로 1236년부터 1251년까지 제작되었다. 처인성 전투 뒤이자 황산 전투 전의 사실이므로 정답이다."
+      ],
+      "explanation": "(가)는 김윤후가 몽골군을 물리친 1232년 처인성 전투와 이성계가 왜구를 격퇴한 1380년 황산 전투 사이이다. 팔만대장경판은 이 사이인 1236~1251년에 제작되었다. 따라서 ④가 정답이다.",
+      "clue": "(가)는 1232년 처인성 전투 이후부터 1380년 황산 전투 이전까지의 시기이다.",
+      "topicTags": ["고려"],
+      "sources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-15.a43bc2c4766b.webp"
+      ],
+      "sourceImageSha256": "a43bc2c4766b889134c53a3a92297538144557057beaae96dc6f23a1854289f2",
+      "originalImageVisuallyReviewed": true,
+      "officialAnswerVerified": true
+    },
+    {
+      "officialQuestionId": "official-57-basic-16",
+      "examRound": 57,
+      "examLevel": "기본",
+      "questionNumber": 16,
+      "answer": 2,
+      "choiceCount": 4,
+      "choices": ["양규", "일연", "김부식", "이제현"],
+      "choiceExplanations": [
+        "양규는 고려 현종 때 거란의 침입에 맞서 흥화진을 지키고 포로를 구한 장군이다. 묘청의 난 진압과 『삼국사기』 편찬의 주역이 아니므로 오답이다.",
+        "일연은 고려 후기 승려로 고대의 설화와 불교사를 담은 『삼국유사』를 편찬하였다. 『삼국사기』를 편찬한 유학자가 아니므로 오답이다.",
+        "김부식은 경주 출신의 고려 유학자로 묘청의 난을 진압하고 왕명으로 『삼국사기』를 편찬하였다. 세 단서와 모두 일치하므로 정답이다.",
+        "이제현은 원의 만권당에서 학문을 교류하고 『역옹패설』을 남긴 고려 후기 학자이다. 묘청의 난을 진압한 인물이 아니므로 오답이다."
+      ],
+      "explanation": "경주 출신 유학자이자 정치가로 묘청의 난을 진압하고 『삼국사기』를 편찬한 인물은 김부식이다. 『삼국사기』는 현존하는 우리나라 최고(最古)의 역사서이다. 따라서 ③이 정답이다.",
+      "clue": "경주 출신 유학자, 묘청의 난 진압, 『삼국사기』 편찬은 김부식을 가리킨다.",
+      "topicTags": ["김부식"],
+      "sources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-16.3dfaaf41f5a3.webp"
+      ],
+      "sourceImageSha256": "3dfaaf41f5a3b61944af4862f75f829aba0785e0ad6b5531e083e614386b86ef",
+      "originalImageVisuallyReviewed": true,
+      "officialAnswerVerified": true
+    },
+    {
+      "officialQuestionId": "official-57-basic-17",
+      "examRound": 57,
+      "examLevel": "기본",
+      "questionNumber": 17,
+      "answer": 0,
+      "choiceCount": 4,
+      "choices": [
+        "수원 화성을 축조하는 백성",
+        "쌍성총관부를 공격하는 군인",
+        "숙청당하는 기철 등 친원 세력",
+        "정방 폐지 교서를 작성하는 관리"
+      ],
+      "choiceExplanations": [
+        "수원 화성은 조선 정조 때인 1794~1796년에 축조되었다. 14세기 공민왕의 개혁을 다루는 다큐멘터리에 들어갈 수 없는 장면이므로 정답이다.",
+        "공민왕은 1356년 쌍성총관부를 공격하여 철령 이북의 영토를 회복하였다. 공민왕의 반원 자주 정책에 해당하므로 발문의 정답이 아니다.",
+        "공민왕은 기철을 비롯한 친원 세력을 숙청하여 원의 영향력을 약화하였다. 공민왕의 개혁에 해당하므로 발문의 정답이 아니다.",
+        "공민왕은 권문세족의 인사권 장악 기구였던 정방을 폐지하였다. 왕권 강화 개혁에 해당하므로 발문의 정답이 아니다."
+      ],
+      "explanation": "원의 간섭에서 벗어나 정동행성 이문소를 폐지하고 원의 연호 사용을 중지한 왕은 공민왕이다. 쌍성총관부 수복, 친원 세력 숙청, 정방 폐지는 공민왕의 개혁이지만 수원 화성은 조선 정조 때 축조되었다. 따라서 적절하지 않은 ①이 정답이다.",
+      "clue": "1356년 반원 자주 개혁과 왕권 강화를 추진한 인물은 고려 공민왕이다.",
+      "topicTags": ["공민왕"],
+      "sources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-17.e30040e97830.webp"
+      ],
+      "sourceImageSha256": "e30040e97830a5b62eee1fdd7bfef1ccb90c3e265a8d8bb53671213ba965ee4e",
+      "originalImageVisuallyReviewed": true,
+      "officialAnswerVerified": true
+    },
+    {
+      "officialQuestionId": "official-57-basic-18",
+      "examRound": 57,
+      "examLevel": "기본",
+      "questionNumber": 18,
+      "answer": 1,
+      "choiceCount": 4,
+      "choices": ["별자리를 그린 천문도", "나전 국화 넝쿨무늬 합", "고려청자 주전자", "분청사기 항아리"],
+      "choiceExplanations": [
+        "별자리의 위치를 그린 천문도는 천체를 관측하고 역법을 정비한 전통 과학 문화유산이다. 기사에서 찾는 나전칠기 공예품이 아니므로 오답이다.",
+        "나전 국화 넝쿨무늬 합은 옻칠한 바탕에 자개로 국화와 넝쿨무늬를 장식한 고려 나전칠기이다. 기사의 유물 설명과 일치하므로 정답이다.",
+        "청자 주전자는 비색 유약과 장식 기법이 특징인 고려 도자기이다. 고려 문화유산이지만 자개를 붙인 나전칠기는 아니므로 오답이다.",
+        "분청사기 항아리는 회청색 그릇 표면을 백토로 장식한 조선 전기 도자기이다. 기사에서 설명한 고려 나전칠기와 시대와 재료가 달라 오답이다."
+      ],
+      "explanation": "기사는 고려 시대의 나전칠기가 환수되었다고 설명한다. 이 유물은 옻칠한 표면에 자개로 국화와 넝쿨무늬를 장식한 합이다. 따라서 ② 나전 국화 넝쿨무늬 합이 정답이다.",
+      "clue": "옻칠한 표면에 자개로 국화와 넝쿨무늬를 장식했다는 표현이 고려 나전칠기를 가리킨다.",
+      "topicTags": ["고려", "나전칠기"],
+      "sources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-18.bbf89319af0d.webp"
+      ],
+      "sourceImageSha256": "bbf89319af0d02b4a8ecdff547687f314bf9d1909eeac8c94f3c0a7b493dcd03",
+      "originalImageVisuallyReviewed": true,
+      "officialAnswerVerified": true
+    },
+    {
+      "officialQuestionId": "official-57-basic-19",
+      "examRound": 57,
+      "examLevel": "기본",
+      "questionNumber": 19,
+      "answer": 3,
+      "choiceCount": 4,
+      "choices": ["거중기를 설계하였다.", "앙부일구를 제작하였다.", "비격진천뢰를 발명하였다.", "화통도감의 설치를 건의하였다."],
+      "choiceExplanations": [
+        "거중기는 정약용이 수원 화성 축성에 활용하도록 설계한 조선 후기의 기계이다. 진포 해전의 화포를 개발한 최무선과 관련이 없어 오답이다.",
+        "앙부일구는 장영실 등이 세종 때 만든 해시계이다. 고려 말 왜구 격퇴에 화약 무기를 사용한 최무선의 업적이 아니므로 오답이다.",
+        "비격진천뢰는 조선 선조 때 이장손이 만든 폭발성 화포이다. 진포 해전보다 뒤인 임진왜란기에 사용되었으므로 오답이다.",
+        "최무선은 원에서 화약 제조법을 익혀 화통도감 설치를 건의하고 화포를 만들었다. 그 화포가 진포 해전의 승리에 쓰였으므로 정답이다."
+      ],
+      "explanation": "고려 말 화약과 화포를 개발하여 진포 해전에서 왜구를 격퇴하는 데 기여한 인물은 최무선이다. 최무선은 화약 무기를 제작할 관청인 화통도감의 설치를 건의하였다. 따라서 ④가 정답이다.",
+      "clue": "진포 해전에서 화약 무기로 왜구를 크게 물리쳤다는 내용은 최무선을 가리킨다.",
+      "topicTags": ["최무선", "화통도감"],
+      "sources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-19.84fd2d779344.webp"
+      ],
+      "sourceImageSha256": "84fd2d779344ce7bb963c84139faa9909d8af1df5c2ed2d1f7b09717932a3a0d",
+      "originalImageVisuallyReviewed": true,
+      "officialAnswerVerified": true
+    },
+    {
+      "officialQuestionId": "official-57-basic-20",
+      "examRound": 57,
+      "examLevel": "기본",
+      "questionNumber": 20,
+      "answer": 2,
+      "choiceCount": 4,
+      "choices": ["불국사 다보탑", "신륵사 다층전탑", "월정사 팔각 구층 석탑", "화엄사 사사자 삼층 석탑"],
+      "choiceExplanations": [
+        "불국사 다보탑은 통일 신라 경주 불국사에 세워진 독특한 구조의 석탑이다. 평창 월정사의 팔각 다층 석탑이 아니므로 오답이다.",
+        "신륵사 다층전탑은 경기도 여주의 신륵사에 있는 고려 시대 벽돌탑이다. 월정사의 팔각 구층 석탑과 소재지와 재료가 달라 오답이다.",
+        "월정사 팔각 구층 석탑은 평창 월정사에 있는 고려 시대의 대표적인 다각 다층 석탑이다. 여행지와 사진의 특징에 모두 맞으므로 정답이다.",
+        "화엄사 사사자 삼층 석탑은 네 마리 사자가 탑신을 받치는 통일 신라의 석탑이다. 팔각형 구층 구조가 아니므로 오답이다."
+      ],
+      "explanation": "엽서는 강원도 평창 오대산 월정사에 있는 석탑을 보여 준다. 이 탑은 고려 시대를 대표하는 팔각형 다층 석탑인 월정사 팔각 구층 석탑이다. 따라서 ③이 정답이다.",
+      "clue": "평창 월정사와 팔각형으로 층층이 올라간 탑의 모습이 핵심 단서이다.",
+      "topicTags": ["고려 문화", "월정사"],
+      "sources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-20.88a42295b617.webp"
+      ],
+      "sourceImageSha256": "88a42295b617656d81686c9cc21927c2ef418fca85085464380f6e13c8339dc7",
+      "originalImageVisuallyReviewed": true,
+      "officialAnswerVerified": true
+    },
+    {
+      "officialQuestionId": "official-57-basic-21",
+      "examRound": 57,
+      "examLevel": "기본",
+      "questionNumber": 21,
+      "answer": 0,
+      "choiceCount": 4,
+      "choices": ["기묘사화", "신유박해", "인조반정", "임오군란"],
+      "choiceExplanations": [
+        "기묘사화는 중종 때 조광조의 개혁에 반발한 훈구 세력이 그와 사림을 제거한 사건이다. 자료의 전개와 일치하므로 정답이다.",
+        "신유박해는 순조 즉위 뒤 천주교 신자를 대규모로 탄압한 사건이다. 조광조의 개혁과 관련이 없어 오답이다.",
+        "인조반정은 서인이 광해군을 몰아내고 인조를 왕위에 올린 정변이다. 중종 때 조광조가 희생된 사건이 아니므로 오답이다.",
+        "임오군란은 구식 군인들이 차별 대우에 반발하여 일으킨 개항기 군란이다. 조선 전기 사림의 피해와 관계가 없어 오답이다."
+      ],
+      "explanation": "중종 때 조광조는 현량과 실시와 위훈 삭제 등의 개혁을 추진하였다. 이에 훈구 세력이 반발하여 조광조와 사림을 제거한 사건이 기묘사화이다. 따라서 ①이 정답이다.",
+      "clue": "조광조의 개혁, 유배와 죽음, 그를 따르던 인물들의 축출은 기묘사화를 가리킨다.",
+      "topicTags": ["기묘사화", "조광조"],
+      "sources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-21.337c485a49a1.webp"
+      ],
+      "sourceImageSha256": "337c485a49a1ddfda13c50dbdf411eec75db989faa200829bd559f1443c21b78",
+      "originalImageVisuallyReviewed": true,
+      "officialAnswerVerified": true
+    },
+    {
+      "officialQuestionId": "official-57-basic-23",
+      "examRound": 57,
+      "examLevel": "기본",
+      "questionNumber": 23,
+      "answer": 1,
+      "choiceCount": 4,
+      "choices": ["삼별초를 조직하였다.", "직전법을 시행하였다.", "한양으로 천도하였다.", "훈민정음을 창제하였다."],
+      "choiceExplanations": [
+        "삼별초는 고려 무신 정권이 치안과 군사 임무를 위해 조직한 부대이다. 계유정난으로 집권한 세조의 정책이 아니므로 오답이다.",
+        "직전법은 세조가 현직 관리에게만 수조권을 지급하도록 바꾼 토지 제도이다. 자료 속 왕의 정책에 해당하므로 정답이다.",
+        "한양 천도는 조선을 세운 태조가 새 수도를 마련하며 추진하였다. 세조보다 앞선 태조의 업적이므로 오답이다.",
+        "훈민정음은 세종이 백성이 쉽게 글을 쓰도록 창제하고 반포한 문자이다. 세조의 정책이 아니므로 오답이다."
+      ],
+      "explanation": "계유정난으로 권력을 잡고 단종을 몰아낸 뒤 6조 직계제를 시행하며 집현전을 폐지한 왕은 세조이다. 세조는 현직 관리에게만 수조권을 지급하는 직전법을 시행하였다. 따라서 ②가 정답이다.",
+      "clue": "계유정난, 단종 폐위, 집현전 폐지와 경연 중단은 세조를 가리킨다.",
+      "topicTags": ["세조", "직전법"],
+      "sources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-23.19d06b71fc54.webp"
+      ],
+      "sourceImageSha256": "19d06b71fc542f4675c48ca244f91c1534af8ab6b284710f4090c9dbabdc5a47",
+      "originalImageVisuallyReviewed": true,
+      "officialAnswerVerified": true
+    },
+    {
+      "officialQuestionId": "official-57-basic-24",
+      "examRound": 57,
+      "examLevel": "기본",
+      "questionNumber": 24,
+      "answer": 0,
+      "choiceCount": 4,
+      "choices": ["비변사", "어사대", "도병마사", "군국기무처"],
+      "choiceExplanations": [
+        "비변사는 조선 중종 때 외적의 침입에 대비하려 설치되어 양 난 이후 국정을 총괄한 기구이다. 흥선 대원군 집권 뒤 폐지되었다는 설명과도 맞으므로 정답이다.",
+        "어사대는 고려에서 관리의 비리를 감찰하고 풍속을 바로잡던 관청이다. 조선 후기 세도 정치의 권력 기반이 된 기구가 아니므로 오답이다.",
+        "도병마사는 고려에서 국방과 군사 문제를 논의하던 회의 기구이다. 조선의 양 난 이후 국정을 총괄한 비변사와는 다른 기구이므로 오답이다.",
+        "군국기무처는 갑오개혁을 추진하기 위해 1894년에 설치된 임시 개혁 기구이다. 흥선 대원군 집권 뒤 폐지된 세도 정치기의 기구가 아니므로 오답이다."
+      ],
+      "explanation": "외적의 침입에 대응하려 설치된 기구는 비변사이다. 비변사는 임진왜란과 병자호란을 거치며 국정을 총괄하다 세도 정치기의 권력 기구가 되었고, 흥선 대원군 집권 뒤 폐지되었다. 따라서 ①이 정답이다.",
+      "clue": "양 난을 거치며 국정을 총괄하고 흥선 대원군 때 폐지되었다는 설명이 비변사를 가리킨다.",
+      "topicTags": ["비변사", "조선 정치"],
+      "sources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-24.ee1bcfd83263.webp"
+      ],
+      "sourceImageSha256": "ee1bcfd832631af29f62a5ec27a16da7210c102c6059714fb8eb068c6f2e06c5",
+      "originalImageVisuallyReviewed": true,
+      "officialAnswerVerified": true
+    },
+    {
+      "officialQuestionId": "official-57-basic-25",
+      "examRound": 57,
+      "examLevel": "기본",
+      "questionNumber": 25,
+      "answer": 2,
+      "choiceCount": 4,
+      "choices": ["최윤덕이 4군을 개척하였다.", "서희가 강동 6주를 확보하였다.", "권율이 행주산성에서 승리하였다.", "이종무가 쓰시마섬을 토벌하였다."],
+      "choiceExplanations": [
+        "최윤덕은 세종 때 압록강 방면의 여진을 몰아내고 4군을 개척하였다. 임진왜란이 아니라 조선 전기 북방 개척에 해당하므로 오답이다.",
+        "서희는 고려 성종 때 거란의 소손녕과 담판하여 강동 6주를 확보하였다. 조선의 임진왜란보다 훨씬 앞선 일이므로 오답이다.",
+        "권율은 임진왜란 중 행주산성에서 일본군을 크게 물리쳤다. 한산도 대첩과 같은 전쟁에서 일어난 사실이므로 정답이다.",
+        "이종무는 세종 때 왜구의 근거지를 없애기 위해 쓰시마섬을 토벌하였다. 임진왜란보다 앞선 조선 전기의 대외 정책이므로 오답이다."
+      ],
+      "explanation": "1592년 이순신이 한산도 앞바다에서 일본 수군을 격파한 전쟁은 임진왜란이다. 같은 전쟁 중 권율은 행주산성에서 일본군을 물리쳤다. 따라서 ③이 정답이다.",
+      "clue": "1592년 이순신의 한산도 대첩은 임진왜란의 대표적 전투이다.",
+      "topicTags": ["임진왜란", "행주대첩"],
+      "sources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-25.b5b1e9178209.webp"
+      ],
+      "sourceImageSha256": "b5b1e9178209f368383c656a45309b11718bece44bd2dafe57261bfc12b625d9",
+      "originalImageVisuallyReviewed": true,
+      "officialAnswerVerified": true
+    },
+    {
+      "officialQuestionId": "official-57-basic-26",
+      "examRound": 57,
+      "examLevel": "기본",
+      "questionNumber": 26,
+      "answer": 0,
+      "choiceCount": 4,
+      "choices": ["동의보감", "목민심서", "열하일기", "향약집성방"],
+      "choiceExplanations": [
+        "『동의보감』은 허준이 광해군 때 완성한 의학서로 중국과 우리나라의 의학 지식을 집대성하였다. 유네스코 세계 기록 유산 등재 단서와도 맞으므로 정답이다.",
+        "『목민심서』는 정약용이 지방관이 지켜야 할 원칙과 행정 개선안을 정리한 조선 후기 저술이다. 허준이 편찬한 의학서가 아니므로 오답이다.",
+        "『열하일기』는 박지원이 청을 다녀온 경험과 청 문물에 대한 견해를 담은 연행록이다. 의학 지식을 집대성한 책이 아니므로 오답이다.",
+        "『향약집성방』은 세종 때 우리 풍토의 약재와 처방을 모아 편찬한 의학서이다. 의학서라는 점은 같지만 광해군 때 허준이 편찬한 책은 아니므로 오답이다."
+      ],
+      "explanation": "광해군 때 허준이 편찬한 의학서는 『동의보감』이다. 이 책은 중국과 우리나라의 전통 의학을 집대성했으며 2009년 유네스코 세계 기록 유산에 등재되었다. 따라서 ①이 정답이다.",
+      "clue": "허준, 광해군, 전통 의학 집대성, 유네스코 세계 기록 유산은 『동의보감』을 가리킨다.",
+      "topicTags": ["동의보감", "허준"],
+      "sources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-26.1cf00136a48d.webp"
+      ],
+      "sourceImageSha256": "1cf00136a48d4456a0b34744ec3cf477097c8ff735a9b7ee1f3d5e4a1d1f53be",
+      "originalImageVisuallyReviewed": true,
+      "officialAnswerVerified": true
+    },
+    {
+      "officialQuestionId": "official-57-basic-27",
+      "examRound": 57,
+      "examLevel": "기본",
+      "questionNumber": 27,
+      "answer": 1,
+      "choiceCount": 4,
+      "choices": ["금산사 미륵전", "법주사 팔상전", "봉정사 극락전", "부석사 무량수전"],
+      "choiceExplanations": [
+        "금산사 미륵전은 전북 김제에 있는 미륵 신앙의 대표적인 다층 불전이다. 보은에 있는 현존 최고 오층 목탑은 아니므로 오답이다.",
+        "법주사 팔상전은 충북 보은에 있으며 석가모니의 생애를 그린 팔상도를 봉안한 현존 최고 오층 목탑이다. 퀴즈의 모든 단서와 일치하므로 정답이다.",
+        "봉정사 극락전은 안동에 있는 고려 시대 목조 건축물로 현존하는 가장 오래된 목조 건물로 알려져 있다. 오층 목탑이 아니므로 오답이다.",
+        "부석사 무량수전은 영주 부석사에 있는 고려 시대 주심포 양식의 불전이다. 보은의 오층 목탑과는 다른 건축물이므로 오답이다."
+      ],
+      "explanation": "충북 보은의 법주사에는 팔상전이 있다. 팔상전은 석가모니의 생애를 여덟 장면으로 그린 팔상도를 봉안한 현존 최고 오층 목탑이다. 따라서 ②가 정답이다.",
+      "clue": "보은, 팔상도, 현존 최고 오층 목탑이라는 세 단서가 법주사 팔상전을 가리킨다.",
+      "topicTags": ["법주사 팔상전", "조선 문화"],
+      "sources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-27.3e5e48689295.webp"
+      ],
+      "sourceImageSha256": "3e5e4868929552ae7387e458d2a44e3b6a49872f40b51ca62f5756189baac4ab",
+      "originalImageVisuallyReviewed": true,
+      "officialAnswerVerified": true
+    },
+    {
+      "officialQuestionId": "official-57-basic-30",
+      "examRound": 57,
+      "examLevel": "기본",
+      "questionNumber": 30,
+      "answer": 2,
+      "choiceCount": 4,
+      "choices": ["장용영을 설치하였다.", "탕평비를 건립하였다.", "상평통보를 발행하였다.", "동국여지승람을 편찬하였다."],
+      "choiceExplanations": [
+        "장용영은 정조가 왕권을 강화하고 자신의 호위를 맡기기 위해 설치한 친위 부대이다. 환국을 여러 차례 단행한 숙종의 정책이 아니므로 오답이다.",
+        "탕평비는 영조가 성균관에 세워 붕당을 가리지 않고 인재를 쓰겠다는 탕평 의지를 나타낸 비석이다. 숙종보다 뒤의 정책이므로 오답이다.",
+        "상평통보는 조선 숙종 때 전국적으로 유통되며 상품 화폐 경제 발달에 기여하였다. 자료 속 숙종의 재위기에 시행된 정책이므로 정답이다.",
+        "『동국여지승람』은 성종 때 각 지역의 지리·역사·인물 등을 정리하여 편찬한 관찬 지리지이다. 숙종보다 앞선 시기의 편찬 사업이므로 오답이다."
+      ],
+      "explanation": "희빈 장씨를 왕비로 책봉하고 환국을 거듭했으며 대동법을 황해도까지 확대 시행한 왕은 숙종이다. 숙종 때 상평통보가 전국적으로 널리 유통되었다. 따라서 ③이 정답이다.",
+      "clue": "희빈 장씨, 여러 차례의 환국, 대동법의 황해도 확대는 숙종을 가리킨다.",
+      "topicTags": ["숙종", "상평통보"],
+      "sources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-30.89202163e0bd.webp"
+      ],
+      "sourceImageSha256": "89202163e0bd686c7ed01f11531019813a3374a4ff911212e92f90a33420adb7",
+      "originalImageVisuallyReviewed": true,
+      "officialAnswerVerified": true
+    },
+    {
+      "officialQuestionId": "official-57-basic-31",
+      "examRound": 57,
+      "examLevel": "기본",
+      "questionNumber": 31,
+      "answer": 0,
+      "choiceCount": 4,
+      "choices": ["(가)", "(나)", "(다)", "(라)"],
+      "choiceExplanations": [
+        "(가)는 고종 즉위 이후부터 강화도 조약 이전까지의 시기이다. 1868년 오페르트 도굴 미수 사건이 이 구간에 들어가므로 정답이다.",
+        "(나)는 강화도 조약 이후부터 갑신정변 이전까지의 시기이다. 남연군 묘 도굴 미수 사건보다 뒤이므로 오답이다.",
+        "(다)는 갑신정변 이후부터 갑오개혁 이전까지의 시기이다. 1868년에 일어난 사건을 이 구간에 놓을 수 없으므로 오답이다.",
+        "(라)는 갑오개혁 이후부터 을사늑약 이전까지의 시기이다. 남연군 묘 도굴 미수 사건보다 수십 년 뒤이므로 오답이다."
+      ],
+      "explanation": "자료는 독일 상인 오페르트 일행이 충남 덕산의 남연군 묘를 도굴하려 한 사건에 대해 조선이 청에 보낸 답서이다. 이 사건은 1868년에 일어났다. 따라서 고종 즉위와 강화도 조약 사이인 (가), 즉 ①이 정답이다.",
+      "clue": "덕산의 남연군 묘 도굴 미수는 1868년 오페르트 사건이다.",
+      "topicTags": ["오페르트 도굴 사건", "흥선 대원군"],
+      "sources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-31.d49655e21876.webp"
+      ],
+      "sourceImageSha256": "d49655e218765b354c4fd543edf3b983b95bd7ab97d0ca5d1a6329f5a8ea3153",
+      "originalImageVisuallyReviewed": true,
+      "officialAnswerVerified": true
+    },
+    {
+      "officialQuestionId": "official-57-basic-32",
+      "examRound": 57,
+      "examLevel": "기본",
+      "questionNumber": 32,
+      "answer": 2,
+      "choiceCount": 4,
+      "choices": ["병인박해가 일어났다.", "제너럴 셔먼호 사건이 발생하였다.", "이만손 등이 영남 만인소를 올렸다.", "어재연 부대가 광성보에서 항전하였다."],
+      "choiceExplanations": [
+        "병인박해는 1866년 흥선 대원군 정권이 프랑스 선교사와 천주교 신자를 탄압한 사건이다. 『조선책략』 유포보다 앞선 일이므로 오답이다.",
+        "제너럴 셔먼호 사건은 1866년 미국 상선이 평양에서 통상을 요구하다 충돌한 사건이다. 1880년대 『조선책략』 유포의 영향이 아니므로 오답이다.",
+        "영남 만인소는 1881년 이만손을 비롯한 영남 유생들이 『조선책략』의 친미·결일 정책에 반대하여 올린 상소이다. 책의 국내 유포가 낳은 반발이므로 정답이다.",
+        "어재연 부대의 광성보 항전은 1871년 신미양요 때 미군의 침입에 맞선 전투이다. 『조선책략』이 들어오기 전의 사건이므로 오답이다."
+      ],
+      "explanation": "황준헌의 『조선책략』은 러시아를 견제하기 위해 친중국·결일본·연미국 정책을 제안하였다. 1880년 수신사 김홍집이 이 책을 국내에 들여왔다. 이에 반발한 이만손 등 영남 유생들이 1881년 영남 만인소를 올렸으므로 ③이 정답이다.",
+      "clue": "황준헌, 제2차 수신사 김홍집, 친중국·결일본·연미국 주장은 『조선책략』을 가리킨다.",
+      "topicTags": ["조선책략", "영남 만인소"],
+      "sources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-32.19729fbef10f.webp"
+      ],
+      "sourceImageSha256": "19729fbef10f8358b6eb2d0b407214cfb4d784405761851254c845302d8cef0c",
+      "originalImageVisuallyReviewed": true,
+      "officialAnswerVerified": true
     }
   ]
 }

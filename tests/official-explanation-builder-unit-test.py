@@ -192,20 +192,20 @@ assert "개경 환도 이후" in builder.CURATED_EXPLANATIONS["official-69-advan
 catalog = json.loads((ROOT / "dist" / "official-exam-catalog.json").read_text(encoding="utf-8"))
 catalog_by_id = {item["officialQuestionId"]: item for item in catalog}
 corrections, skipped_noncanonical = builder.load_curated_choice_corrections(catalog_by_id)
-assert builder.EXPECTED_CURATED_CHOICE_QUESTION_COUNT == 42
-assert builder.EXPECTED_CURATED_CHOICE_COUNT == 188
-assert builder.EXPECTED_CANONICAL_CURATED_QUESTION_COUNT == 28
-assert builder.EXPECTED_CANONICAL_CURATED_CHOICE_COUNT == 132
-assert len(corrections) == 28
-assert sum(len(item["choiceExplanations"]) for item in corrections.values()) == 132
+assert builder.EXPECTED_CURATED_CHOICE_QUESTION_COUNT == 66
+assert builder.EXPECTED_CURATED_CHOICE_COUNT == 284
+assert builder.EXPECTED_CANONICAL_CURATED_QUESTION_COUNT == 52
+assert builder.EXPECTED_CANONICAL_CURATED_CHOICE_COUNT == 228
+assert len(corrections) == 52
+assert sum(len(item["choiceExplanations"]) for item in corrections.values()) == 228
 assert len(skipped_noncanonical) == 14
 assert sum(len(item["choiceExplanations"]) for item in skipped_noncanonical) == 56
-assert len(corrections) + len(skipped_noncanonical) == 42
+assert len(corrections) + len(skipped_noncanonical) == 66
 assert (
     sum(len(item["choiceExplanations"]) for item in corrections.values())
     + sum(len(item["choiceExplanations"]) for item in skipped_noncanonical)
-) == 188
-assert sum(len(item.get("choices") or []) for item in corrections.values()) == 118
+) == 284
+assert sum(len(item.get("choices") or []) for item in corrections.values()) == 214
 assert "해동통보" in corrections["official-69-basic-12"]["explanation"]
 assert "1941년" in corrections["official-79-advanced-40"]["explanation"]
 assert "소학교" in corrections["official-79-advanced-40"]["explanation"]
@@ -220,7 +220,7 @@ assert curated_counts_by_source == {
     "docs/story-exams/explanation-corrections.json": 5,
     "docs/THREE_OFFICIAL_REVIEW_61.json": 8,
     "docs/story-exams/chapter-split-choice-reviews.json": 8,
-    "docs/story-exams/image-choice-reviews.json": 7,
+    "docs/story-exams/image-choice-reviews.json": 31,
 }
 assert {
     item["provenance"]["sourceDocument"] for item in skipped_noncanonical
@@ -243,12 +243,12 @@ assert sum(
 assert sum(
     item["curationStatus"] == builder.VERIFICATION_CURATED_REVIEWED
     for item in corrections.values()
-) == 23
+) == 47
 assert sum(
     len(item["choiceExplanations"])
     for item in corrections.values()
     if item["curationStatus"] == builder.VERIFICATION_CURATED_REVIEWED
-) == 108
+) == 204
 
 image_review = corrections["official-79-basic-01"]
 assert image_review["choices"][2] == "주로 동굴이나 바위 그늘에서 살았다."

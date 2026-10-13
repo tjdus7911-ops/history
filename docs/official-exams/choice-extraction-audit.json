@@ -2,13 +2,9 @@
   "schemaVersion": 1,
   "ocrFailureIds": [],
   "emptyChoiceIds": [],
-  "placeholderChoiceCount": 2219,
-  "questionsWithPlaceholderCount": 991,
+  "placeholderChoiceCount": 2196,
+  "questionsWithPlaceholderCount": 983,
   "allPlaceholderQuestionIds": [
-    "official-57-basic-06",
-    "official-57-basic-13",
-    "official-57-basic-18",
-    "official-57-basic-24",
     "official-57-basic-43",
     "official-57-basic-47",
     "official-57-advanced-04",
@@ -204,10 +200,6 @@
     "official-79-advanced-50"
   ],
   "partialPlaceholderQuestionIds": [
-    "official-57-basic-15",
-    "official-57-basic-16",
-    "official-57-basic-26",
-    "official-57-basic-32",
     "official-57-basic-35",
     "official-57-basic-36",
     "official-57-basic-39",
@@ -1000,45 +992,6 @@
     "official-79-advanced-49"
   ],
   "placeholderChoiceIndexesByOfficialQuestionId": {
-    "official-57-basic-06": [
-      1,
-      2,
-      3,
-      4
-    ],
-    "official-57-basic-13": [
-      1,
-      2,
-      3,
-      4
-    ],
-    "official-57-basic-15": [
-      1
-    ],
-    "official-57-basic-16": [
-      2,
-      4
-    ],
-    "official-57-basic-18": [
-      1,
-      2,
-      3,
-      4
-    ],
-    "official-57-basic-24": [
-      1,
-      2,
-      3,
-      4
-    ],
-    "official-57-basic-26": [
-      4
-    ],
-    "official-57-basic-32": [
-      1,
-      2,
-      4
-    ],
     "official-57-basic-35": [
       4
     ],
