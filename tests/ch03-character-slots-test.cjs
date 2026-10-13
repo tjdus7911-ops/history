@@ -1,4 +1,5 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert'),crypto=require('crypto');
+const {assetExists,assertSha256IfLocal}=require('./deployment-asset-test-helper.cjs');
 const data=['data','ch02-data','ch03-data','exam-data','ch01-expansion','chapter-split','late-goryeo','official-late-exams'].map(x=>fs.readFileSync(`dist/${x}.js`,'utf8')).join('\n'),app=fs.readFileSync('dist/app.js','utf8');
 let html='',saved=null,context,handler;
 function boot(){context=vm.createContext({Date,navigator:{},window:{scrollTo(){}},document:{querySelector:s=>s==='#app'?{set innerHTML(v){html=v}}:null,querySelectorAll:()=>[],addEventListener:(event,fn)=>{if(event==='click')handler=fn},createElement:()=>({setAttribute(){},remove(){}}),body:{append(){}}},localStorage:{getItem:()=>saved,setItem:(key,value)=>saved=value},setTimeout:()=>1,clearTimeout(){}});vm.runInContext(data+'\n'+app,context)}
@@ -8,7 +9,7 @@ boot();
 const scenes=evaluate('Object.values(STORIES).filter(s=>s.chapterId==="ch03"&&!s.quizOnly)'),fixture=JSON.parse(fs.readFileSync('tests/fixtures/ch03-stage-protected.json','utf8'));
 const hash=value=>crypto.createHash('sha256').update(JSON.stringify(value)).digest('hex');
 for(const scene of scenes){const content=JSON.parse(JSON.stringify(scene));for(const key of fixture.ignoredPresentationAndLearningFields)delete content[key];for(const line of content.dialogues||[]){delete line.presentation;delete line.portraitAllowed;}assert.equal(hash(content),fixture.scenes[scene.sceneId],`story/choice/quiz preservation: ${scene.sceneId}`)}
-for(const[path,digest]of Object.entries(fixture.images))assert.equal(crypto.createHash('sha256').update(fs.readFileSync('dist/'+path)).digest('hex'),digest,`existing image unchanged: ${path}`);
+for(const[path,digest]of Object.entries(fixture.images))assertSha256IfLocal('dist/'+path,digest,`existing image unchanged: ${path}`);
 const portraits=()=>[...html.matchAll(/<img class="stage-character ([^"]+)"[^>]*data-character-id="([^"]+)"[^>]*data-position="([^"]+)"[^>]*src="([^"]+)"/g)].map(m=>({classes:m[1],id:m[2],position:m[3],src:m[4]}));
 let checked=0;const repaired=new Set();
 function check(line,expectedPartner,scene){const cast=portraits();if((['thought','narration'].includes(line.speakerType)||['description','history','result'].includes(line.presentation)||scene.characterStageMode==='hidden')||scene.sceneEffect==='blackout'||!expectedPartner){assert.equal(cast.length,0,scene.sceneId);return}
@@ -22,7 +23,7 @@ function check(line,expectedPartner,scene){const cast=portraits();if((['thought'
   assert.equal(cast.filter(c=>c.classes.split(' ').includes('active')).length,1);
   assert(cast.find(c=>c.id===line.characterId).classes.split(' ').includes('active'));
   for(const listener of cast.filter(c=>c.id!==line.characterId))assert(listener.classes.split(' ').includes('listening'));
-  for(const c of cast)assert(fs.existsSync('dist/'+c.src),c.src);
+  for(const c of cast)assert(assetExists('dist/'+c.src),c.src);
   repaired.add(scene.sceneId);checked++;
 }
 for(const scene of scenes){

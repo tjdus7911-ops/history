@@ -1,4 +1,5 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert'),path=require('path');
+const {assetExists}=require('./deployment-asset-test-helper.cjs');
 const code=['data','ch02-data','ch03-data','exam-data','ch01-expansion','chapter-split','late-goryeo','official-late-exams'].map(file=>fs.readFileSync(`dist/${file}.js`,'utf8')).join('\n');
 const context=vm.createContext({Date});
 vm.runInContext(`${code};this.api={SAVE_VERSION,CHAPTERS,STORIES,QUESTIONS,QUESTION_POOLS,QUESTION_SETS,SPLIT_STORY_QUESTION_IDS,SPLIT_REVIEW_IDS,ASSETS,PORTRAITS,CHARACTERS,CHARACTER_ASSET_MAP,INITIAL,applyChoice,applySceneEntry,applyDialogueMilestone,recordQuestion,finishChapter,startChapter,migrateSave};`,context);
@@ -95,8 +96,8 @@ assert.equal(STORIES.ch02_transition.enterCharacterStates.doyun.characterAge,55)
 assert.equal(STORIES.ch02_jump_956.enterCharacterStates.doyun.characterAge,62);
 assert.equal(STORIES.ch03_transition.enterCharacterStates.doyun.characterAge,88);
 assert.equal(STORIES.ch03_transition.enterCharacterStates.hyunwoo.characterAge,47);
-for(const file of ['merchant_01.png','injured_merchant_01.png','merchant_01_935.png','doyun_935.png','doyun_943.png','doyun_old_neutral.png','hyunwoo_middle_neutral.png'])assert(fs.existsSync(path.join('dist','assets','characters',file)),file);
-for(const asset of [...Object.values(ASSETS),...Object.values(PORTRAITS)].filter(a=>a.status==='ready'&&a.src))assert(fs.existsSync(path.join('dist',asset.src)),asset.src);
+for(const file of ['merchant_01.png','injured_merchant_01.png','merchant_01_935.png','doyun_935.png','doyun_943.png','doyun_old_neutral.png','hyunwoo_middle_neutral.png'])assert(assetExists(path.join('dist','assets','characters',file)),file);
+for(const asset of [...Object.values(ASSETS),...Object.values(PORTRAITS)].filter(a=>a.status==='ready'&&a.src))assert(assetExists(path.join('dist',asset.src)),asset.src);
 
 const old=INITIAL();old.version=13;old.meta.storyAuditVersion=0;old.run.started=true;old.run.currentChapter='ch04';old.run.storyId='ch03_trade_practice';old.run.activeQuestionId='ch03-practice-02';old.run.questionAnswer=1;old.run.stats.wealth=77;old.meta.wrongQuestionIds.push('ch03-practice-02');
 const migrated=migrateSave(old);assert.equal(migrated.version,15);assert.equal(migrated.run.storyId,'ch03_three_friends');assert.equal(migrated.run.activeQuestionId,null);assert.equal(migrated.run.stats.wealth,77);assert(migrated.meta.wrongQuestionIds.includes('ch03-practice-02'));assert.equal(migrated.meta.storyAuditVersion,1);assert.deepEqual(migrateSave(migrated),migrated);

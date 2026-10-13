@@ -1,4 +1,5 @@
-const fs=require('fs'),vm=require('vm'),assert=require('assert'),crypto=require('crypto');
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const {assertSha256IfLocal}=require('./deployment-asset-test-helper.cjs');
 const scripts=[...fs.readFileSync('dist/index.html','utf8').matchAll(/<script src="([^"]+)"/g)].map(m=>m[1]).filter(n=>!['editorial-ui.js','app.js','pwa.js','v2-app.js','v2-learning.js','v2-exam-restoration.js','v2-exam-additions.js','v2-art.js','v2-backgrounds.js','story-exam-policy.js','story-exam-runtime.js','story-exam-ui.js'].includes(n));
 const base=scripts.filter(n=>n!=='official-exam-images.js').map(n=>fs.readFileSync('dist/'+n,'utf8')).join('\n');
 const ctx=vm.createContext({Date});vm.runInContext(base+';this.original={stories:JSON.stringify(STORIES),questions:JSON.stringify(QUESTIONS)};',ctx);
@@ -9,7 +10,7 @@ boot();const all=ev('QUESTIONS.filter(q=>q.isOfficial&&!q.protoStoryVersion&&!q.
 assert.equal(all.length,140);assert.equal(sources.length,31);assert.equal(all.filter(q=>q.sourceImageStatus==='verified').length,136);assert.equal(all.filter(q=>q.sourceImageStatus==='missing_pdf').length,4);
 assert.equal(ev('JSON.stringify(STORIES)'),ctx.original.stories,'all stories, choices and quiz transitions unchanged');
 for(const before of JSON.parse(ctx.original.questions)){const after=ev('QUESTIONS.find(q=>q.questionId==='+JSON.stringify(before.questionId)+')');for(const key of ['questionId','chapterId','question','passage','choices','answer','explanation','choiceExplanations','rewardKnowledge','relatedSceneId','resumeStoryId'])assert.deepEqual(JSON.parse(JSON.stringify(after[key]??null)),before[key]??null,before.questionId+': legacy '+key);}
-for(const source of sources){assert.equal(crypto.createHash('sha256').update(fs.readFileSync('dist/'+source.sourceQuestionImage)).digest('hex'),source.sourceImageHash);assert(source.sourceImageWidth>=450&&source.sourceImageWidth<=800);assert(source.sourceImageHeight>100);assert(source.verifiedAnswer>=0&&source.verifiedAnswer<source.sourceChoices.length);}
+for(const source of sources){assertSha256IfLocal('dist/'+source.sourceQuestionImage,source.sourceImageHash,source.sourceQuestionImage);assert(source.sourceImageWidth>=450&&source.sourceImageWidth<=800);assert(source.sourceImageHeight>100);assert(source.verifiedAnswer>=0&&source.verifiedAnswer<source.sourceChoices.length);}
 for(const q of all){ev('reviewQuestionId='+JSON.stringify(q.questionId)+';reviewAnswer=null;quizMode="review";screen="quiz";modal=null;render();');if(q.sourceImageStatus==='verified'){
   assert(html.includes('official-source-question'));assert(html.includes(q.sourceQuestionImage));assert(html.includes('loading="eager"')&&html.includes('fetchpriority="high"'));assert(html.indexOf('[실제 기출]')<html.indexOf('official-source-question'));assert.equal((html.match(/data-answer="/g)||[]).length,q.sourceChoices.length);
   q.sourceChoices.forEach(text=>assert(html.includes(ev('esc('+JSON.stringify(text)+')'))));

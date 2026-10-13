@@ -1,4 +1,5 @@
 const fs=require('fs'),path=require('path'),vm=require('vm'),assert=require('assert');
+const {assetExists,assetInfo}=require('./deployment-asset-test-helper.cjs');
 
 const html=fs.readFileSync('dist/index.html','utf8');
 const scripts=[...html.matchAll(/<script src="([^"]+)"/g)].map(match=>match[1]);
@@ -32,7 +33,7 @@ const prologueText=scenes.filter(story=>story.chapterId===chapter00.chapterId).f
 for(const phrase of ['경복궁','비가','번개','휴대전화','안테나','촬영장','새 도성','태조','1390년대','조선'])assert(prologueText.includes(phrase),`CH.00 missing ${phrase}`);
 assert(!prologueText.includes('고려에서 왔'),`CH.00 must not explain the time slip through a Goryeo connection`);
 assert.equal(data.ASSETS['joseon-modern-gyeongbokgung'].src,'assets/joseon/backgrounds/modern-gyeongbokgung-rain.webp');
-assert(fs.existsSync(path.join('dist',data.ASSETS['joseon-modern-gyeongbokgung'].src)));
+assert(assetExists(path.join('dist',data.ASSETS['joseon-modern-gyeongbokgung'].src)));
 
 for(const chapter of chapters){
   const ownScenes=scenes.filter(story=>story.chapterId===chapter.chapterId);
@@ -68,8 +69,8 @@ for(const question of official){
   assert.equal(question.sourceImageWidth,714);
   assert(question.sourceImageHeight>=450);
   const image=path.join('dist',question.sourceQuestionImage);
-  assert(fs.existsSync(image),`${question.questionId} image`);
-  assert(fs.statSync(image).size>12000,`${question.questionId} image payload`);
+  assert(assetExists(image),`${question.questionId} image`);
+  assert(assetInfo(image).bytes>12000,`${question.questionId} image payload`);
   const story=data.STORIES[question.relatedSceneId];
   assert(story&&story.chapterId===question.chapterId,`${question.questionId} related scene`);
   assert.equal(question.relatedIllustrationId,story.illustrationId);
@@ -96,8 +97,8 @@ assert.equal(heroine.status,'playable');
 assert.equal(heroine.gender,'female');
 assert.equal(heroine.expressions.length,15);
 assert.equal(heroine.ageState.kind,'persistent');
-for(const expression of heroine.expressions)assert(fs.existsSync(path.join('dist',heroine.assetPaths[expression])),`heroine ${expression}`);
-for(const id of ['minjun_j','minjun_elder_j','joseon_scholar','joseon_soldier','joseon_naval','joseon_woman'])assert(data.CHARACTERS[id]&&fs.existsSync(path.join('dist',data.PORTRAITS[`${id}_neutral`].src)),`NPC ${id}`);
+for(const expression of heroine.expressions)assert(assetExists(path.join('dist',heroine.assetPaths[expression])),`heroine ${expression}`);
+for(const id of ['minjun_j','minjun_elder_j','joseon_scholar','joseon_soldier','joseon_naval','joseon_woman'])assert(data.CHARACTERS[id]&&assetExists(path.join('dist',data.PORTRAITS[`${id}_neutral`].src)),`NPC ${id}`);
 const joseonNpcIds=['minjun_j','minjun_elder_j','joseon_scholar','joseon_soldier','joseon_naval','joseon_woman'];
 assert.deepEqual(Object.keys(data.JOSEON_CHARACTER_RENDER_PROFILES).sort(),['joseon_player',...joseonNpcIds].sort());
 const expectedFrames={joseon_player:{scale:1.73,translateX:6,translateY:17},minjun_j:{scale:1.92,translateX:0,translateY:14},minjun_elder_j:{scale:1.82,translateX:0,translateY:14},joseon_scholar:{scale:1.87,translateX:0,translateY:14},joseon_soldier:{scale:1.7,translateX:0,translateY:14},joseon_naval:{scale:1.62,translateX:0,translateY:14},joseon_woman:{scale:1.79,translateX:0,translateY:14}};
@@ -108,7 +109,7 @@ assert.equal(data.CHARACTERS.joseon_player.position,'right');
 assert.equal(data.CHARACTER_RENDER_PROFILES.characters.player.scale??1,1,'Goryeo player scale preserved');
 assert.equal(data.CHARACTER_RENDER_PROFILES.characters.doyun.scale??1,1,'Goryeo Doyun scale preserved');
 assert.equal(Object.keys(data.ASSETS).filter(id=>id.startsWith('joseon-bg-')).length,22);
-for(const name of ['hunminjeongeum-workshop','hansando-sea','jinju-uprising','gyeongbokgung-reconstruction','jeongjoksanseong','gwangseongbo'])assert(fs.existsSync(path.join('dist',data.ASSETS[`joseon-bg-${name}`].src)),`historical background ${name}`);
+for(const name of ['hunminjeongeum-workshop','hansando-sea','jinju-uprising','gyeongbokgung-reconstruction','jeongjoksanseong','gwangseongbo'])assert(assetExists(path.join('dist',data.ASSETS[`joseon-bg-${name}`].src)),`historical background ${name}`);
 assert(fs.existsSync('docs/JOSEON_OFFICIAL_QUESTION_MAPPING.md'));
 assert(fs.existsSync('docs/JOSEON_STORY_LEARNING_MAPPING.md'));
 const minjunLateScenes=scenes.filter(story=>Number(story.chapterId.slice(-2))>3&&story.dialogues?.some(line=>line.characterId==='minjun_j'||line.characterId==='minjun_elder_j'));

@@ -1,20 +1,22 @@
 /* UI changes must preserve the released Three content and other eras. */
 const fs=require('node:fs'),crypto=require('node:crypto'),assert=require('node:assert/strict');
+const {assetExists,assertGitBlobSha1,assertSha256IfLocal}=require('./deployment-asset-test-helper.cjs');
 const baseline=JSON.parse(fs.readFileSync('tests/fixtures/three-ui-preservation.json'));
 const sha256=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
+function assertPortableTextHash(path,expected,message){
+ const text=fs.readFileSync(path,'utf8'),lf=text.replace(/\r\n/g,'\n'),crlf=lf.replace(/\n/g,'\r\n');
+ assert([text,lf,crlf].some(value=>sha256(value)===expected),message);
+}
 const catalog=JSON.parse(fs.readFileSync('dist/official-exam-catalog.json')),catalogById=new Map(catalog.map(item=>[item.officialQuestionId,item]));
-for(const [path,item] of Object.entries(baseline))if(path.startsWith('dist/'))assert.equal(sha256(fs.readFileSync(path)),item.sha256,'protected content changed: '+path);
-for(const [path,sha] of Object.entries(baseline.shared_ui))assert.equal(sha256(fs.readFileSync(path)),sha,'approved common UI changed: '+path);
-for(const [path,source] of Object.entries(baseline.three_exam_images))assert.equal(sha256(fs.readFileSync('dist/'+path)),typeof source==='string'?source:source.sha256,'official image changed: '+path);
+for(const [path,item] of Object.entries(baseline))if(path.startsWith('dist/'))assertPortableTextHash(path,item.sha256,'protected content changed: '+path);
+for(const [path,sha] of Object.entries(baseline.shared_ui))assertPortableTextHash(path,sha,'approved common UI changed: '+path);
+for(const [path,source] of Object.entries(baseline.three_exam_images))assertSha256IfLocal('dist/'+path,typeof source==='string'?source:source.sha256,'official image changed: '+path);
 for(const [path,sha] of Object.entries(baseline.original_asset_blobs)){
- if(fs.existsSync(path)){
-  const bytes=fs.readFileSync(path),hash=crypto.createHash('sha1').update(Buffer.from('blob '+bytes.length+'\0')).update(bytes).digest('hex');
-  assert.equal(hash,sha,'original asset changed: '+path);continue;
- }
+ if(assetExists(path)){assertGitBlobSha1(path,sha,'original asset changed: '+path);continue;}
  const match=path.replaceAll('\\','/').match(/assets\/exams\/catalog\/(\d+)-(advanced|basic)-(\d{2})\.webp$/);
  assert(match,'original asset missing: '+path);
  const id=`official-${match[1]}-${match[2]}-${match[3]}`,record=catalogById.get(id);assert(record,id+' HQ replacement missing');
- assert.equal(sha256(fs.readFileSync('dist/'+record.detailImage)),record.detailImageSha256,id+' HQ replacement hash');
+ assertSha256IfLocal('dist/'+record.detailImage,record.detailImageSha256,id+' HQ replacement hash');
 }
 const manuscript=JSON.parse(fs.readFileSync('dist/three-story-script.json'));
 const exams=JSON.parse(fs.readFileSync('dist/three-exam-data.json'));

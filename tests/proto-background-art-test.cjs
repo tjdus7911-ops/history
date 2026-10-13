@@ -1,4 +1,5 @@
 const fs=require('fs'),assert=require('assert');
+const {assetExists}=require('./deployment-asset-test-helper.cjs');
 const {load}=require('./proto-harness.cjs');
 const before=load({'proto-background-art.js':''}),after=load();
 const original=before.copy('STORIES'),current=after.copy('STORIES');
@@ -23,7 +24,7 @@ const rows=[];
 after.run("resumeEra('proto-kingdoms')");
 for(const source of Object.values(current).filter(s=>s.eraId==='proto-kingdoms'&&s.storyActive!==false)){
  const asset=after.copy(`ASSETS[${JSON.stringify(source.illustrationId)}]`);
- assert(asset&&fs.existsSync('dist/'+asset.src),source.sceneId+' background exists');
+ assert(asset&&assetExists('dist/'+asset.src),source.sceneId+' background exists');
  after.run(`run().currentChapter=${JSON.stringify(source.chapterId)};run().storyId=${JSON.stringify(source.sceneId)};run().pending=null;run().dialogueCursor=1`);
  const rendered=after.run('game()');
  if(source.sceneEffect!=='blackout')assert(rendered.includes(`background-image:url('${asset.src}')`),source.sceneId+' game renderer uses connected art');

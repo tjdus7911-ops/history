@@ -1,4 +1,5 @@
 const fs=require('fs'),path=require('path'),vm=require('vm'),assert=require('assert');
+const {assetInfo}=require('./deployment-asset-test-helper.cjs');
 
 const html=fs.readFileSync('dist/index.html','utf8');
 const scripts=[...html.matchAll(/<script src="([^"]+)"/g)].map(match=>match[1]);
@@ -20,7 +21,7 @@ assert.equal(Object.keys(data.JOSEON_OFFICIAL_STORY_MAP).length,65);
 assert(data.JOSEON_RELATED_SCENE_REMAP_COUNT>0);
 assert.equal(data.JOSEON_RELATED_SCENE_REMAP_COUNT,data.JOSEON_QUESTION_SCOPE.relatedSceneRemapCount);
 assert.equal(data.ASSETS['joseon-modern-gyeongbokgung'].src,'assets/joseon/backgrounds/modern-gyeongbokgung-rain.webp');
-assert(fs.statSync(path.join('dist',data.ASSETS['joseon-modern-gyeongbokgung'].src)).size>100000);
+assert(assetInfo(path.join('dist',data.ASSETS['joseon-modern-gyeongbokgung'].src)).bytes>100000);
 
 const report=[];
 for(const chapter of chapters){

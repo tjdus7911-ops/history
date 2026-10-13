@@ -1,4 +1,5 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const {assetExists}=require('./deployment-asset-test-helper.cjs');
 const files=[...fs.readFileSync('dist/index.html','utf8').matchAll(/<script src="([^"]+)"/g)].map(m=>m[1]).filter(f=>!['editorial-ui.js','app.js','pwa.js','v2-app.js','v2-learning.js','v2-exam-restoration.js','v2-exam-additions.js','v2-art.js','v2-backgrounds.js','ch06-backgrounds.js','ch06-quiz-refinement.js','story-exam-runtime.js'].includes(f));
 const c=vm.createContext({Date}),run=s=>vm.runInContext(s,c),copy=x=>JSON.parse(JSON.stringify(x));
 run(files.map(f=>fs.readFileSync('dist/'+f,'utf8')).join('\n'));
@@ -13,7 +14,7 @@ for(const [id,old]of Object.entries(before)){
   assert.notEqual(current.illustrationId,old.illustrationId,id+' old art replaced');
   const art=run('ASSETS['+JSON.stringify(current.illustrationId)+']');
   assert.equal(current.backgroundImage,art.src);assert(art.src.startsWith('assets/scenes/ch06-'));
-  assert(fs.existsSync('dist/'+art.src),id+' ready image');assert.equal(art.embeddedCharacters,false);
+  assert(assetExists('dist/'+art.src),id+' ready image');assert.equal(art.embeddedCharacters,false);
   current.illustrationId=old.illustrationId;current.backgroundImage=old.backgroundImage;
   for(let i=0;i<(current.choices||[]).length;i++){
    assert.equal(after[id].choices[i].resultIllustrationId,after[id].illustrationId);

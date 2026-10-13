@@ -1,4 +1,5 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert'),path=require('path');
+const {assetExists}=require('./deployment-asset-test-helper.cjs');
 const scripts=[...fs.readFileSync('dist/index.html','utf8').matchAll(/<script src="([^"]+)"/g)].map(match=>match[1]).filter(name=>name!=='pwa.js');
 let html='',saved=null,handlers={},context;
 context=vm.createContext({Date,console,document:{querySelector:selector=>selector==='#app'?{set innerHTML(value){html=value}}:null,querySelectorAll:()=>[],addEventListener:(type,handler,capture)=>{(handlers[type]||=[]).push({handler,capture})},createElement:()=>({setAttribute(){},remove(){}}),body:{append(){}}},localStorage:{getItem:()=>saved,setItem:(key,value)=>saved=value},window:{scrollTo(){}},navigator:{},setTimeout:()=>0,clearTimeout(){}});
@@ -15,7 +16,7 @@ for(const exam of inventory.exams){assert.equal(exam.questionCount,50);assert.eq
 const entries=copy('globalThis.OFFICIAL_EXAM_CATALOG'),sources=copy('globalThis.OFFICIAL_EXAM_SOURCE_RECORDS');
 assert.equal(entries.length,1800);assert.equal(sources.length,1800);assert.equal(new Set(entries.map(entry=>entry.key)).size,1800);assert.equal(new Set(entries.map(entry=>entry.canonicalQuestionId)).size,1800);
 assert.equal(copy('globalThis.OFFICIAL_ERA_TAXONOMY').length,6);for(const era of ['ancient','goryeo','joseon','empire','occupation','republic'])assert.equal(run(`libraryStatus('${era}')`),'UNLOCKED');
-for(const entry of entries){const question=copy(`QUESTIONS.find(question=>question.questionId===${JSON.stringify(entry.canonicalQuestionId)})`);assert(question);assert.equal(question.officialQuestionId,entry.canonicalQuestionId);assert.equal(question.sourceStatus,'verified');assert.equal(question.needsVerification,false);assert(fs.existsSync(path.join('dist',entry.libraryImage)),entry.libraryImage)}
+for(const entry of entries){const question=copy(`QUESTIONS.find(question=>question.questionId===${JSON.stringify(entry.canonicalQuestionId)})`);assert(question);assert.equal(question.officialQuestionId,entry.canonicalQuestionId);assert.equal(question.sourceStatus,'verified');assert.equal(question.needsVerification,false);assert(assetExists(path.join('dist',entry.libraryImage)),entry.libraryImage)}
 const fixed=copy("QUESTIONS.find(question=>question.examRound===70&&question.examLevel==='심화'&&question.questionNumber===13)");assert.equal(fixed.answer,0);assert.equal(fixed.answerLabel,'①');assert.equal(fixed.needsVerification,false);assert(!/missing_pdf/i.test(JSON.stringify(fixed)));
 const corrected=copy("QUESTIONS.find(question=>question.examRound===63&&question.examLevel==='심화'&&question.questionNumber===42)");assert.deepEqual(corrected.acceptedAnswers,[0,1,2,3,4]);
 const recovery=copy('globalThis.OFFICIAL_EXAM_RECOVERY_REPORT');assert.equal(recovery.legacyMissingPdfIds.length,4);assert.equal(recovery.recoveredMissingPdfIds.length,4);assert.equal(recovery.round70Advanced13.answer,0);

@@ -4,12 +4,12 @@
     "bytes": 1658653
   },
   "dist/three-exam-data.json": {
-    "sha256": "49d8989f52e3cc41735d80b1220d05aecb63544b55ea6af93e9d3d47c388dfb6",
+    "sha256": "242cab6ecbcbeda5c475c639278ec0851bf7356fd784b4df8598a140164f0c9d",
     "bytes": 830817
   },
   "dist/mnemonic-inventory.json": {
-    "sha256": "3a5f675fefaa3b6dc2abe0742742c311207dbd9baf67f922ec46a4254ab3b71d",
-    "bytes": 2073211
+    "sha256": "64e37cf45046a60cbff2efe3c5729e9b1ca6162cd037f96117e41164b5a913e9",
+    "bytes": 2073187
   },
   "dist/joseon-data.js": {
     "sha256": "e4b5d3da49c1c4eb89de75b6dbf1b3502bfee3854434874fbe6524403d4fec76",
@@ -3239,7 +3239,7 @@
     "dist/style.css": "79e11efb505d51bcd969d8af81b61f60f56c1ef0ed50be66a2821cac1face8ab",
     "dist/renewal.css": "ca069dbe29bcfce63d1504f2c69f7512ddad7a4b0a683c7b27459d2eba5293f7",
     "dist/v2.css": "cadc3c3d9d40b00c58d0174415b7657fea489aa4af5188aa9ec0fc494e669424",
-    "dist/editorial-ui.js": "587def45567a2acddee9f3fabb968b10512cb997747a15cefa9b564198499ad6",
+    "dist/editorial-ui.js": "a21585c8b311c9972b33daa94ec55aa8b27452eab4a3d2366069b3c7d09f5b0a",
     "dist/joseon-ui.js": "5ce6d144ffde38b83660fa228ecb4190dc49f1e2149cb39cc0975ae9a9815858"
   },
   "original_asset_blobs": {

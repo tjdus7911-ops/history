@@ -9,6 +9,11 @@ __pycache__/
 *.pyc
 tmp/
 
+# Runtime media is published from the immutable deployment-assets-v1 snapshot.
+# Keep local copies for authoring/QA, but do not put the 900+ MB asset tree back
+# into the application branch.
+/dist/assets/
+
 # Generated only for Vercel preview UI verification.
 dist/ui-review.html
 dist/ui-review-game.html

@@ -6,179 +6,192 @@ const fs = require('node:fs');
 const path = require('node:path');
 const childProcess = require('node:child_process');
 
-const DETAIL_PREFIX = 'assets/exams/catalog/detail/';
+const ORIGIN_FILE = path.join('config', 'deployment-asset-origin.json');
+const MANIFEST_FILE = path.join('config', 'deployment-assets-manifest.json');
+const PUBLIC_PREFIX = 'assets/';
+const cache = new Map();
 
-function sha256File(file) {
-  return crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
-}
-
-function gitBlobSha1File(file) {
-  const contents = fs.readFileSync(file);
-  return crypto.createHash('sha1').update(`blob ${contents.length}\0`).update(contents).digest('hex');
-}
-
-function assetSetDigest(records) {
-  const payload = records
-    .map((record) => [record.detailImage, record.detailImageSha256, record.detailImageBytes].join('\t'))
-    .sort()
-    .join('\n') + '\n';
-  return crypto.createHash('sha256').update(payload).digest('hex');
+function compareUtf8(left, right) {
+  return Buffer.compare(Buffer.from(left, 'utf8'), Buffer.from(right, 'utf8'));
 }
 
 function loadJson(file) {
   return JSON.parse(fs.readFileSync(file, 'utf8'));
 }
 
-function resolveInside(root, relativePath) {
-  const resolvedRoot = path.resolve(root);
-  const resolved = path.resolve(root, relativePath);
-  const relation = path.relative(resolvedRoot, resolved);
-  assert(relation && !relation.startsWith('..') && !path.isAbsolute(relation), `unsafe path outside ${resolvedRoot}: ${resolved}`);
-  return resolved;
+function assetSetDigest(entries) {
+  const payload = entries
+    .map((entry) => `${entry.path}\t${entry.blob}\t${entry.bytes}`)
+    .sort(compareUtf8)
+    .join('\n') + '\n';
+  return crypto.createHash('sha256').update(payload).digest('hex');
 }
 
-function validateDeploymentContract(repoRoot, options = {}) {
-  const verifyFileHashes = options.verifyFileHashes !== false;
-  const configFile = path.join(repoRoot, 'config', 'official-exam-detail-origin.json');
-  const vercelFile = path.join(repoRoot, 'vercel.json');
-  const catalogFile = path.join(repoRoot, 'dist', 'official-exam-catalog.json');
-  const origin = loadJson(configFile);
-  const vercel = loadJson(vercelFile);
-  const catalog = loadJson(catalogFile);
-
-  assert.equal(origin.schemaVersion, 1, 'unsupported detail-origin schema');
-  assert.match(origin.repository, /^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/, 'invalid GitHub repository');
-  assert.match(origin.commit, /^[0-9a-f]{40}$/, 'detail origin must use an immutable full commit SHA');
-  assert.equal(origin.sourcePath, 'dist/assets/exams/catalog/detail', 'unexpected detail source path');
-  assert.equal(origin.publicPath, '/assets/exams/catalog/detail', 'unexpected detail public path');
-  assert(Array.isArray(catalog) && catalog.length > 0, 'official exam catalog is empty');
-
-  assert.equal(origin.provider, 'github-raw', 'unsupported detail origin provider');
-  assert.match(origin.tree, /^[0-9a-f]{40}$/, 'detail origin must pin an immutable Git tree');
-  assert(Number.isSafeInteger(origin.snapshotAssetCount) && origin.snapshotAssetCount >= origin.assetCount, 'invalid snapshot asset count');
-  assert(Number.isSafeInteger(origin.snapshotTotalBytes) && origin.snapshotTotalBytes >= origin.totalBytes, 'invalid snapshot byte count');
-  assert(Array.isArray(origin.legacySnapshots), 'legacy snapshot metadata is missing');
-  const expectedDestination = `https://raw.githubusercontent.com/${origin.repository}/${origin.commit}/${origin.sourcePath}/:path*`;
-  const rewrite = (vercel.rewrites || []).find((rule) => rule.source === `${origin.publicPath}/:path*`);
-  assert(rewrite, 'missing immutable official-detail rewrite');
-  assert.equal(rewrite.destination, expectedDestination, 'official-detail rewrite does not match the pinned origin');
-
-  const detailRoot = resolveInside(repoRoot, origin.sourcePath);
-  assert.equal(detailRoot, path.resolve(repoRoot, 'dist', 'assets', 'exams', 'catalog', 'detail'), 'refusing unexpected detail root');
-  assert(fs.statSync(detailRoot).isDirectory(), 'official detail directory is missing');
-
-  const seen = new Set();
-  let totalBytes = 0;
-  for (const record of catalog) {
-    assert.equal(typeof record.detailImage, 'string', `${record.officialQuestionId}: missing detail path`);
-    assert(record.detailImage.startsWith(DETAIL_PREFIX), `${record.officialQuestionId}: detail path escaped the catalog root`);
-    assert(!record.detailImage.includes('..'), `${record.officialQuestionId}: unsafe detail path`);
-    assert.match(record.detailImageSha256, /^[0-9a-f]{64}$/, `${record.officialQuestionId}: invalid detail hash`);
-    assert(Number.isSafeInteger(record.detailImageBytes) && record.detailImageBytes > 0, `${record.officialQuestionId}: invalid detail byte count`);
-    assert(!seen.has(record.detailImage), `${record.officialQuestionId}: duplicate detail path`);
-    seen.add(record.detailImage);
-
-    const detailFile = resolveInside(path.join(repoRoot, 'dist'), record.detailImage);
-    const stat = fs.statSync(detailFile);
-    assert(stat.isFile(), `${record.officialQuestionId}: detail asset is not a file`);
-    assert.equal(stat.size, record.detailImageBytes, `${record.officialQuestionId}: detail byte count mismatch`);
-    assert(path.basename(detailFile).includes(`.${record.detailImageSha256.slice(0, 12)}.`), `${record.officialQuestionId}: filename hash mismatch`);
-    if (verifyFileHashes) {
-      assert.equal(sha256File(detailFile), record.detailImageSha256, `${record.officialQuestionId}: detail SHA-256 mismatch`);
-    }
-    totalBytes += stat.size;
-  }
-
-  assert.equal(seen.size, origin.assetCount, 'detail origin asset count is stale');
-  assert.equal(totalBytes, origin.totalBytes, 'detail origin total byte count is stale');
-  assert.equal(assetSetDigest(catalog), origin.assetSetSha256, 'detail origin asset-set digest is stale');
-
-  const diskFiles = fs.readdirSync(detailRoot, { withFileTypes: true });
-  assert(diskFiles.every((entry) => entry.isFile()), 'detail directory must contain files only');
-  assert.equal(diskFiles.length, origin.assetCount, 'detail directory contains stale or missing files');
-
-  return { catalog, detailRoot, expectedDestination, origin, totalBytes };
-}
-
-function git(repoRoot, args, options = {}) {
-  return childProcess.spawnSync('git', args, {
+function git(repoRoot, args) {
+  return childProcess.spawnSync('git', ['-c', 'core.quotepath=false', ...args], {
     cwd: repoRoot,
-    encoding: options.encoding || 'utf8',
-    maxBuffer: 16 * 1024 * 1024,
+    encoding: 'utf8',
+    maxBuffer: 32 * 1024 * 1024,
   });
 }
 
-function readGitDetailTree(repoRoot, revision) {
-  const result = git(repoRoot, ['ls-tree', '-rl', revision, '--', 'dist/assets/exams/catalog/detail']);
+function readGitAssetTree(repoRoot, revision, sourcePath = 'dist/assets') {
+  const result = git(repoRoot, ['ls-tree', '-rl', revision, '--', sourcePath]);
   if (result.status !== 0) return null;
-  const entries = new Map();
+  const entries = [];
   let totalBytes = 0;
   for (const line of result.stdout.split(/\r?\n/).filter(Boolean)) {
-    const match = line.match(/^100644 blob ([0-9a-f]{40})\s+(\d+)\t(dist\/assets\/exams\/catalog\/detail\/.+\.webp)$/);
-    assert(match, `unexpected detail snapshot entry: ${line}`);
+    const match = line.match(/^100644 blob ([0-9a-f]{40})\s+(\d+)\t(.+)$/);
+    assert(match, `unexpected asset snapshot entry: ${line}`);
     const bytes = Number(match[2]);
-    entries.set(match[3], { blob: match[1], bytes });
+    const repositoryPath = match[3];
+    assert(repositoryPath.startsWith('dist/assets/'), `asset escaped dist/assets: ${repositoryPath}`);
+    entries.push({ path: repositoryPath.slice('dist/'.length), blob: match[1], bytes });
     totalBytes += bytes;
   }
+  entries.sort((left, right) => compareUtf8(left.path, right.path));
   return { entries, totalBytes };
 }
 
-function validatePinnedSnapshot(repoRoot) {
-  const origin = loadJson(path.join(repoRoot, 'config', 'official-exam-detail-origin.json'));
-  const treeResult = git(repoRoot, ['rev-parse', `${origin.commit}^{tree}`]);
-  if (treeResult.status !== 0) return { available: false, origin };
-  assert.equal(treeResult.stdout.trim(), origin.tree, 'pinned detail snapshot tree mismatch');
-  const snapshot = readGitDetailTree(repoRoot, origin.commit);
-  assert(snapshot, 'pinned detail snapshot is unavailable');
-  assert.equal(snapshot.entries.size, origin.snapshotAssetCount, 'pinned snapshot asset count mismatch');
-  assert.equal(snapshot.totalBytes, origin.snapshotTotalBytes, 'pinned snapshot byte count mismatch');
+function loadExternalAssetIndex(repoRoot) {
+  const root = path.resolve(repoRoot);
+  if (cache.has(root)) return cache.get(root);
+  const origin = loadJson(path.join(root, ORIGIN_FILE));
+  const manifest = loadJson(path.join(root, MANIFEST_FILE));
 
-  const catalog = loadJson(path.join(repoRoot, 'dist', 'official-exam-catalog.json'));
-  for (const record of catalog) {
-    const snapshotPath = `dist/${record.detailImage}`;
-    const entry = snapshot.entries.get(snapshotPath);
-    assert(entry, `${record.officialQuestionId}: current detail is absent from pinned snapshot`);
-    assert.equal(entry.bytes, record.detailImageBytes, `${record.officialQuestionId}: pinned detail byte mismatch`);
-    assert.equal(entry.blob, gitBlobSha1File(path.join(repoRoot, 'dist', record.detailImage)), `${record.officialQuestionId}: pinned detail blob mismatch`);
+  assert.equal(origin.schemaVersion, 1, 'unsupported deployment asset origin schema');
+  assert.equal(manifest.schemaVersion, 1, 'unsupported deployment asset manifest schema');
+  assert.equal(origin.provider, 'github-raw', 'unsupported deployment asset provider');
+  assert.match(origin.repository, /^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/, 'invalid GitHub repository');
+  assert.match(origin.commit, /^[0-9a-f]{40}$/, 'deployment assets must use a full commit SHA');
+  assert.match(origin.tree, /^[0-9a-f]{40}$/, 'deployment assets must pin an immutable Git tree');
+  assert.equal(origin.sourcePath, 'dist/assets', 'unexpected deployment asset source path');
+  assert.equal(origin.publicPath, '/assets', 'unexpected deployment asset public path');
+  assert.equal(manifest.commit, origin.commit, 'asset manifest commit mismatch');
+  assert.equal(manifest.tree, origin.tree, 'asset manifest tree mismatch');
+  assert(Array.isArray(manifest.files), 'asset manifest files must be an array');
+
+  const entries = [];
+  const index = new Map();
+  let totalBytes = 0;
+  for (const row of manifest.files) {
+    assert(Array.isArray(row) && row.length === 3, 'invalid deployment asset manifest row');
+    const [assetPath, blob, bytes] = row;
+    assert.equal(typeof assetPath, 'string', 'invalid deployment asset path');
+    assert(assetPath.startsWith(PUBLIC_PREFIX), `asset escaped public prefix: ${assetPath}`);
+    assert(!assetPath.includes('..') && !path.isAbsolute(assetPath), `unsafe deployment asset path: ${assetPath}`);
+    assert.match(blob, /^[0-9a-f]{40}$/, `${assetPath}: invalid Git blob SHA-1`);
+    assert(Number.isSafeInteger(bytes) && bytes > 0, `${assetPath}: invalid byte count`);
+    assert(!index.has(assetPath), `duplicate deployment asset path: ${assetPath}`);
+    const entry = { path: assetPath, blob, bytes };
+    entries.push(entry);
+    index.set(assetPath, entry);
+    totalBytes += bytes;
   }
 
-  for (const legacy of origin.legacySnapshots) {
-    assert.match(legacy.commit, /^[0-9a-f]{40}$/, 'legacy snapshot must use a full commit SHA');
-    const legacyTree = readGitDetailTree(repoRoot, legacy.commit);
-    assert(legacyTree, `legacy snapshot ${legacy.commit} is unavailable`);
-    assert.equal(legacyTree.entries.size, legacy.assetCount, 'legacy snapshot asset count mismatch');
-    assert.equal(legacyTree.totalBytes, legacy.totalBytes, 'legacy snapshot byte count mismatch');
-    for (const [legacyPath, legacyEntry] of legacyTree.entries) {
-      const pinnedEntry = snapshot.entries.get(legacyPath);
-      assert(pinnedEntry, `legacy detail is absent from pinned snapshot: ${legacyPath}`);
-      assert.deepEqual(pinnedEntry, legacyEntry, `legacy detail changed in pinned snapshot: ${legacyPath}`);
-    }
-  }
-  return { available: true, origin, snapshot };
+  assert.equal(entries.length, origin.assetCount, 'deployment asset count is stale');
+  assert.equal(totalBytes, origin.totalBytes, 'deployment asset byte count is stale');
+  assert.equal(assetSetDigest(entries), origin.assetSetSha256, 'deployment asset-set digest is stale');
+  const value = { entries, index, manifest, origin, totalBytes };
+  cache.set(root, value);
+  return value;
 }
 
-function pruneDetailAssets(repoRoot, options = {}) {
-  const validation = validateDeploymentContract(repoRoot, options);
-  const expectedRoot = path.resolve(repoRoot, 'dist', 'assets', 'exams', 'catalog', 'detail');
-  assert.equal(validation.detailRoot, expectedRoot, 'refusing to remove an unexpected directory');
-  assert.equal(path.basename(validation.detailRoot), 'detail', 'refusing to remove a non-detail directory');
-  fs.rmSync(validation.detailRoot, { recursive: true, force: false });
-  assert(!fs.existsSync(validation.detailRoot), 'detail output directory was not removed');
-  return validation;
+function externalAssetInfo(repoRoot, file) {
+  const relative = String(file).replace(/\\/g, '/').replace(/^\.\//, '').replace(/^dist\//, '').replace(/^\//, '');
+  if (!relative.startsWith(PUBLIC_PREFIX)) return null;
+  return loadExternalAssetIndex(repoRoot).index.get(relative) || null;
+}
+
+function assetExists(repoRoot, file) {
+  const absolute = path.resolve(repoRoot, file);
+  const root = path.resolve(repoRoot);
+  const relation = path.relative(root, absolute);
+  assert(!relation.startsWith('..') && !path.isAbsolute(relation), `unsafe asset lookup: ${file}`);
+  const normalized = relation.replace(/\\/g, '/').replace(/^dist\//, '');
+  // Runtime assets are deployable only when the immutable manifest contains
+  // them. An ignored local file must never mask a missing production object.
+  if (normalized.startsWith(PUBLIC_PREFIX)) return Boolean(externalAssetInfo(root, relation));
+  return fs.existsSync(absolute);
+}
+
+function validateDeploymentContract(repoRoot) {
+  const root = path.resolve(repoRoot);
+  const assets = loadExternalAssetIndex(root);
+  const vercel = loadJson(path.join(root, 'vercel.json'));
+  const expectedDestination = `https://raw.githubusercontent.com/${assets.origin.repository}/${assets.origin.commit}/${assets.origin.sourcePath}/:path*`;
+  const rewrite = (vercel.rewrites || []).find((rule) => rule.source === `${assets.origin.publicPath}/:path*`);
+  assert(rewrite, 'missing immutable deployment asset rewrite');
+  assert.equal(rewrite.destination, expectedDestination, 'deployment asset rewrite does not match the pinned origin');
+  const cacheRule = (vercel.headers || []).find((rule) => rule.source === `${assets.origin.publicPath}/:path*`);
+  assert(cacheRule?.headers?.some((header) => header.key.toLowerCase() === 'x-vercel-enable-rewrite-caching' && header.value === '1'), 'external asset rewrite caching is not enabled');
+
+  const catalog = loadJson(path.join(root, 'dist', 'official-exam-catalog.json'));
+  assert.equal(catalog.length, 1800, 'official exam catalog count changed');
+  for (const record of catalog) {
+    for (const [assetPath, expectedBytes] of [[record.detailImage, record.detailImageBytes], [record.thumbnailImage, record.thumbnailImageBytes]]) {
+      const entry = assets.index.get(assetPath);
+      assert(entry, `${record.officialQuestionId}: deployment snapshot is missing ${assetPath}`);
+      assert.equal(entry.bytes, expectedBytes, `${record.officialQuestionId}: deployment snapshot byte mismatch for ${assetPath}`);
+    }
+  }
+  return { ...assets, expectedDestination };
+}
+
+function validatePinnedSnapshot(repoRoot) {
+  const root = path.resolve(repoRoot);
+  const assets = loadExternalAssetIndex(root);
+
+  const verifySourceSnapshot = (source, label) => {
+    const sourceAssets = readGitAssetTree(root, source.commit, source.sourcePath || 'dist/assets');
+    if (!sourceAssets) return null;
+    assert.equal(sourceAssets.entries.length, source.assetCount, `${label} asset source count mismatch`);
+    assert.equal(sourceAssets.totalBytes, source.totalBytes, `${label} asset source byte count mismatch`);
+    for (const entry of sourceAssets.entries) {
+      assert.deepEqual(assets.index.get(entry.path), entry, `${label} asset missing from deployment snapshot: ${entry.path}`);
+    }
+    return sourceAssets;
+  };
+
+  const current = assets.origin.currentSnapshot;
+  if (current) {
+    const currentTreeResult = git(root, ['rev-parse', `${current.commit}:dist/assets`]);
+    if (currentTreeResult.status === 0) {
+      assert.equal(currentTreeResult.stdout.trim(), current.tree, 'current asset source tree mismatch');
+      verifySourceSnapshot(current, 'current');
+    }
+  }
+
+  for (const legacy of assets.origin.legacySnapshots || []) verifySourceSnapshot(legacy, 'legacy');
+
+  const treeResult = git(root, ['rev-parse', `${assets.origin.commit}^{tree}`]);
+  if (treeResult.status !== 0) return { available: false, ...assets };
+  assert.equal(treeResult.stdout.trim(), assets.origin.tree, 'pinned deployment snapshot tree mismatch');
+  const snapshot = readGitAssetTree(root, assets.origin.commit, assets.origin.sourcePath);
+  assert(snapshot, 'pinned deployment asset snapshot is unavailable');
+  assert.equal(snapshot.entries.length, assets.entries.length, 'pinned deployment snapshot count mismatch');
+  assert.equal(snapshot.totalBytes, assets.totalBytes, 'pinned deployment snapshot byte count mismatch');
+  const snapshotIndex = new Map(snapshot.entries.map((entry) => [entry.path, entry]));
+  for (const entry of assets.entries) assert.deepEqual(snapshotIndex.get(entry.path), entry, `pinned deployment asset changed: ${entry.path}`);
+
+  return { available: true, snapshot, ...assets };
 }
 
 function main() {
   const repoRoot = path.resolve(__dirname, '..');
-  const shouldApply = process.argv.includes('--apply');
-  if (shouldApply) {
-    const result = pruneDetailAssets(repoRoot);
-    console.log(`PASS: pruned ${result.origin.assetCount} pinned detail assets (${result.totalBytes} bytes) from the Vercel output; ${result.expectedDestination}`);
-  } else {
-    const result = validateDeploymentContract(repoRoot);
-    console.log(`PASS: verified ${result.origin.assetCount} pinned detail assets (${result.totalBytes} bytes); no files removed.`);
-  }
+  const result = validateDeploymentContract(repoRoot);
+  const pinned = validatePinnedSnapshot(repoRoot);
+  console.log(`PASS: verified ${result.origin.assetCount} immutable deployment assets (${result.totalBytes} bytes); pinned snapshot ${pinned.available ? 'available' : 'not present in this shallow checkout'}.`);
 }
 
 if (require.main === module) main();
 
-module.exports = { assetSetDigest, pruneDetailAssets, validateDeploymentContract, validatePinnedSnapshot };
+module.exports = {
+  assetExists,
+  assetSetDigest,
+  externalAssetInfo,
+  loadExternalAssetIndex,
+  readGitAssetTree,
+  validateDeploymentContract,
+  validatePinnedSnapshot,
+};

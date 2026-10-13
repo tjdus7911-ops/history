@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "provider": "github-raw",
+  "repository": "tjdus7911-ops/history",
+  "commit": "83c9da64e68d16264d4ba2cf2437a3d095d04b38",
+  "tree": "346b69e6aa1bcfeef84f18504f60c7c20744ebca",
+  "sourcePath": "dist/assets",
+  "publicPath": "/assets",
+  "assetCount": 6294,
+  "totalBytes": 1127259070,
+  "assetSetSha256": "5148c31722ae02ea77ded484ed92c1586bdb616b1a0c7128c1413be1d402832b",
+  "currentSnapshot": {
+    "commit": "19520aa1e10781c276989cebf8d6ac0b15f0ac26",
+    "tree": "c618886e21b1b0be212d387aee71f18fb5e27c23",
+    "assetCount": 4494,
+    "totalBytes": 918201788
+  },
+  "legacySnapshots": [
+    {
+      "commit": "dc036fb4f4b3007120e42b73723a2b6d02c3bec7",
+      "sourcePath": "dist/assets/exams/catalog/detail",
+      "assetCount": 1800,
+      "totalBytes": 209057282
+    }
+  ]
+}

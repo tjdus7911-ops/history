@@ -1,4 +1,6 @@
 const fs=require('fs'),path=require('path'),vm=require('vm'),assert=require('assert'),crypto=require('crypto');
+const deploymentAssets=require('../scripts/prepare-vercel-output.cjs');
+const repoRoot=path.resolve(__dirname,'..');
 
 function webpDimensions(buffer){
   assert.equal(buffer.toString('ascii',0,4),'RIFF');
@@ -92,11 +94,16 @@ for(const item of catalog){
     ['detail',detailPath,item.detailImageSha256,item.detailImageWidth,item.detailImageHeight,item.detailImageBytes],
     ['thumbnail',thumbnailPath,item.thumbnailImageSha256,item.thumbnailImageWidth,item.thumbnailImageHeight,item.thumbnailImageBytes],
   ]){
-    assert(fs.existsSync(imagePath),imagePath);
-    const payload=fs.readFileSync(imagePath),dimensions=webpDimensions(payload);
-    assert.equal(payload.length,expectedBytes,`${imagePath} byte metadata`);
-    assert.equal(fileSha256(payload),expectedHash,`${imagePath} sha256 metadata`);
-    assert.deepEqual(dimensions,{width:expectedWidth,height:expectedHeight},`${imagePath} intrinsic dimensions`);
+    const external=deploymentAssets.externalAssetInfo(repoRoot,imagePath);
+    assert(fs.existsSync(imagePath)||external,imagePath);
+    if(fs.existsSync(imagePath)){
+      const payload=fs.readFileSync(imagePath),dimensions=webpDimensions(payload);
+      assert.equal(payload.length,expectedBytes,`${imagePath} byte metadata`);
+      assert.equal(fileSha256(payload),expectedHash,`${imagePath} sha256 metadata`);
+      assert.deepEqual(dimensions,{width:expectedWidth,height:expectedHeight},`${imagePath} intrinsic dimensions`);
+    }else{
+      assert.equal(external.bytes,expectedBytes,`${imagePath} external byte metadata`);
+    }
     assert(item[kind+'Image'].includes(expectedHash.slice(0,12)),`${imagePath} content hash filename`);
   }
   assert(item.detailImageWidth>=1000,item.officialQuestionId+' detail width is below 240dpi target');
@@ -252,7 +259,8 @@ for(const group of sharedGroups)for(let number=group.start;number<=group.end;num
   const record=catalog.find(item=>item.officialQuestionId===`official-${group.round}-${slug}-${String(number).padStart(2,'0')}`);
   assert(record,`${group.round}/${group.level}/${number} shared record`);
   const imagePath=path.join('dist',record.detailImage);
-  assert(fs.statSync(imagePath).size>20000,imagePath+' shared source missing');
+  assert(deploymentAssets.assetExists(repoRoot,imagePath),imagePath+' shared source missing');
+  assert(record.detailImageBytes>20000,imagePath+' shared source is unexpectedly small');
 }
 
 assert.equal(inventory.schemaVersion,2);

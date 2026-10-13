@@ -1,4 +1,6 @@
 const fs=require('fs'),path=require('path'),vm=require('vm'),assert=require('assert'),childProcess=require('node:child_process');
+const deploymentAssets=require('../scripts/prepare-vercel-output.cjs');
+const repoRoot=path.resolve(__dirname,'..');
 function resolvePython(){
   const configured=process.env.PYTHON?.trim();
   const candidates=configured?[[configured,[]]]:(process.platform==='win32'?[['python',[]],['py',['-3']]]:[['python3',[]],['python',[]]]);
@@ -11,10 +13,15 @@ function resolvePython(){
 const python=resolvePython();
 const runPython=(script,...args)=>childProcess.execFileSync(python.command,[...python.prefix,'scripts/'+script,...args],{stdio:'pipe'});
 const runPythonTest=(script,...args)=>childProcess.execFileSync(python.command,[...python.prefix,'tests/'+script,...args],{stdio:'pipe'});
-for(const script of ['import-proto-revision.py','import-three-complete-manuscript.py','import-three-complete-exams.py','build-three-complete-art.py'])runPython(script,'--check');
+const hasLocalAssetSources=fs.existsSync(path.join(repoRoot,'dist','assets'));
+const deploymentContract=deploymentAssets.validateDeploymentContract(repoRoot);
+runPython('import-three-complete-manuscript.py','--check');
+if(hasLocalAssetSources){
+  for(const script of ['import-proto-revision.py','import-three-complete-exams.py','build-three-complete-art.py'])runPython(script,'--check');
+}
 runPython('build-official-exam-statistics.py','--check');
 runPythonTest('official-explanation-builder-unit-test.py');
-require('node:child_process').execFileSync(process.execPath,['scripts/build-story-exam-policy.cjs','--check'],{stdio:'pipe'});
+if(hasLocalAssetSources)require('node:child_process').execFileSync(process.execPath,['scripts/build-story-exam-policy.cjs','--check'],{stdio:'pipe'});
 require('node:child_process').execFileSync(process.execPath,['scripts/build-ox-quiz-curation.cjs','--check'],{stdio:'pipe'});
 require('./mnemonic-data-test.cjs')(JSON.parse(fs.readFileSync('dist/mnemonic-inventory.json','utf8')),require('../scripts/mnemonic-runtime.cjs')());
 const required=['dist/index.html','dist/editorial.css','dist/editorial-ui.js','dist/era-visuals.js','dist/joseon-data.js','dist/season-data.js','dist/joseon-ui.js','dist/official-exam-catalog.js','dist/official-exam-catalog.json','dist/official-exam-explanations.js','dist/official-exam-explanations.json','dist/official-exam-statistics.js','dist/official-exam-statistics.json','dist/official-exam-inventory.json','dist/exam-memory-ui.js','dist/exam-memory.css','dist/exam-memory-results.css','dist/exam-memory-nav.css','dist/ox-quiz-curation.js','dist/ox-quiz-data.js','dist/ox-quiz-ui.js','dist/ox-quiz.css','dist/style.css','dist/renewal.css','dist/v2-learning.js','dist/v2-app.js','dist/v2-exam-restoration.js','dist/v2-exam-additions.js','dist/v2-art.js','dist/v2-backgrounds.js','dist/v2.css','dist/dialogue.css','dist/pwa.css','dist/data.js','dist/ch02-data.js','dist/ch03-data.js','dist/exam-data.js','dist/ch01-expansion.js','dist/chapter-split.js','dist/late-goryeo.js','dist/official-late-exams.js','dist/official-exam-images.js','dist/ch05-refinement.js','dist/ch06-backgrounds.js','dist/ch06-quiz-refinement.js','dist/app.js','dist/pwa.js','dist/sw.js','dist/manifest.webmanifest','dist/goryeo.png','dist/seoul-night.png','dist/icons/icon-192.png','dist/icons/icon-512.png','dist/icons/icon-maskable-512.png','dist/icons/apple-touch-icon.png','vercel.json'];
@@ -61,16 +68,19 @@ assert(worker.includes("url.pathname==='/official-exam-explanations.json'"),'ful
 assert(!worker.slice(worker.indexOf('const APP_SHELL=['),worker.indexOf('];',worker.indexOf('const APP_SHELL=['))).includes('/official-exam-explanations.json'),'full choice payload must not preload in the app shell');
 for(const file of ['/proto-save-data.js','/proto-revision.css','/season-data.js','/official-exam-catalog.js','/official-exam-explanations.js','/official-exam-statistics.js','/exam-memory-ui.js','/exam-memory.css','/exam-memory-results.css','/exam-memory-nav.css','/ox-quiz-curation.js','/ox-quiz-data.js','/ox-quiz-ui.js','/ox-quiz.css'])assert(worker.includes(file),`service worker missing ${file}`);
 assert(safeArea.includes('env(safe-area-inset-top)'));assert(safeArea.includes('env(safe-area-inset-bottom)'));assert(safeArea.includes('@media(display-mode:standalone)'));
-const vercel=JSON.parse(fs.readFileSync('vercel.json','utf8'));assert.equal(vercel.outputDirectory,'dist');assert(vercel.headers.some(rule=>rule.source==='/sw.js'));assert(vercel.headers.some(rule=>rule.source==='/manifest.webmanifest'));assert(vercel.headers.some(rule=>rule.source.includes('/assets/exams/catalog/')&&rule.headers?.some(header=>header.key==='Cache-Control'&&header.value.includes('immutable'))),'hashed official image assets need immutable caching');
-assert.equal(vercel.buildCommand,'npm run build && node scripts/prepare-vercel-output.cjs --apply');
-assert(vercel.rewrites?.some(rule=>rule.source==='/assets/exams/catalog/detail/:path*'&&rule.destination.includes('/abb20c178a777bee9041f2bf70a34bfb56c7debf/')),'high-resolution details must use the immutable CDN snapshot in Vercel output');
+const vercel=JSON.parse(fs.readFileSync('vercel.json','utf8'));assert.equal(vercel.outputDirectory,'dist');assert(vercel.headers.some(rule=>rule.source==='/sw.js'));assert(vercel.headers.some(rule=>rule.source==='/manifest.webmanifest'));
+assert.equal(vercel.buildCommand,'npm run build && node scripts/prepare-vercel-output.cjs');
+assert(vercel.rewrites?.some(rule=>rule.source==='/assets/:path*'&&rule.destination.includes('/'+deploymentContract.origin.commit+'/'+deploymentContract.origin.sourcePath+'/:path*')),'runtime assets must use the immutable deployment snapshot');
+assert(vercel.headers.some(rule=>rule.source==='/assets/:path*'&&rule.headers?.some(header=>header.key==='x-vercel-enable-rewrite-caching'&&header.value==='1')),'external asset rewrite caching must be enabled');
+assert(vercel.headers.some(rule=>rule.source==='/assets/:path*'&&rule.headers?.some(header=>header.key==='CDN-Cache-Control'&&header.value.includes('max-age=31536000'))),'immutable deployment assets need durable CDN caching');
+for(const file of ['balhae-department-ink-v1.svg','tomb-section-ink-v1.svg','warehouse-map-and-tags-v1.svg'])assert(vercel.headers.some(rule=>rule.source===`/assets/ancient/three-complete/overlays/${file}`&&rule.headers?.some(header=>header.key==='Content-Type'&&header.value.startsWith('image/svg+xml'))),`${file} needs an SVG response type`);
 const context=vm.createContext({});
 const dataScripts=[...html.matchAll(/<script src="([^"]+)"/g)].map(m=>m[1]).filter(n=>!['editorial-ui.js','app.js','v2-app.js','pwa.js'].includes(n));
 vm.runInContext(dataScripts.map(n=>fs.readFileSync('dist/'+n,'utf8')).join('\n')+';this.readyAssets=[...Object.values(ASSETS),...Object.values(PORTRAITS)].filter(a=>a.status==="ready"&&a.src).map(a=>a.src);',context);
 for(const name of [...dataScripts,'v2-app.js','editorial-ui.js'])new vm.Script(fs.readFileSync('dist/'+name,'utf8'),{filename:name});
-for(const file of context.readyAssets)assert(fs.existsSync(path.join('dist',file)),`missing ready illustration: ${file}`);
+for(const file of context.readyAssets)assert(deploymentAssets.assetExists(repoRoot,path.join('dist',file)),`missing ready illustration: ${file}`);
 vm.runInContext('this.eraAssets=[...Object.values(ERA_PROTAGONISTS).flatMap(c=>Object.values(c.assetPaths)),...Object.values(ERA_BACKGROUNDS).map(b=>b.src)]',context);
-for(const file of context.eraAssets)assert(fs.existsSync(path.join('dist',file)),`missing era visual: ${file}`);
+for(const file of context.eraAssets)assert(deploymentAssets.assetExists(repoRoot,path.join('dist',file)),`missing era visual: ${file}`);
 // Production builds must reject stale or incomplete official-exam outputs.
 // These checks cover all 1,800 detail/thumbnail files, their hashes and dimensions,
 // as well as every structured choice explanation and its spoiler-safe rendering.

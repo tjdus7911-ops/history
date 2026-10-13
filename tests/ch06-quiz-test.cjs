@@ -1,4 +1,5 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert'),crypto=require('crypto');
+const {assertSha256IfLocal}=require('./deployment-asset-test-helper.cjs');
 const scripts=[...fs.readFileSync('dist/index.html','utf8').matchAll(/<script src="([^"]+)"/g)].map(m=>m[1]).filter(n=>!['editorial-ui.js','app.js','pwa.js','v2-app.js','v2-learning.js','v2-exam-restoration.js','v2-exam-additions.js','v2-art.js','v2-backgrounds.js','story-exam-runtime.js'].includes(n));
 const base=scripts.filter(n=>n!=='ch06-quiz-refinement.js').map(n=>fs.readFileSync('dist/'+n,'utf8')).join('\n');
 const c=vm.createContext({Date}),run=s=>vm.runInContext(s,c),copy=x=>JSON.parse(JSON.stringify(x));
@@ -33,7 +34,7 @@ for(const source of sources){
 }
 for(const q of official){
  assert(q.isOfficial&&q.sourceVerified&&q.sourceImageVerified&&q.sourceAnswerVerified);assert.equal(q.sourceImageStatus,'verified');
- assert.equal(crypto.createHash('sha256').update(fs.readFileSync('dist/'+q.sourceQuestionImage)).digest('hex'),q.sourceImageHash,q.questionId+' original crop hash');
+ assertSha256IfLocal('dist/'+q.sourceQuestionImage,q.sourceImageHash,q.questionId+' original crop hash');
  assert(q.sourceImageWidth>=450&&q.sourceImageWidth<=800);assert(q.sourceImageHeight>100);assert(/^[a-f0-9]{64}$/.test(q.sourcePdfHash));assert(/^[a-f0-9]{64}$/.test(q.answerPdfHash));
 }
 let saved=null,html='',handlers={};

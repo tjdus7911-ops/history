@@ -1,4 +1,5 @@
 const fs=require('fs'),vm=require('vm'),crypto=require('crypto'),assert=require('assert');
+const {assetExists}=require('./deployment-asset-test-helper.cjs');
 const hash=v=>crypto.createHash('sha256').update(JSON.stringify(v)).digest('hex');
 function storyContent(s){const copy=JSON.parse(JSON.stringify(s));for(const field of ['illustrationId','backgroundImage','linkedQuestionIds','questionSequenceMode','questionSetId','afterChoiceQuestionSetId','questionSetResumeStoryId'])delete copy[field];for(const c of copy.choices||[])delete c.resultIllustrationId;return copy}
 function practiceContent(q){const copy=JSON.parse(JSON.stringify(q));for(const field of ['relatedSceneId','relatedIllustrationId'])delete copy[field];return copy}
@@ -15,6 +16,6 @@ for(const q of current.QUESTIONS.filter(q=>q.isOfficial)){
  assert(q.sourceVerified&&q.examRound&&q.examYear&&q.examLevel&&q.questionNumber&&q.sourceFile&&q.answerFile&&q.sourceQuestionImage,'Unverified official: '+q.questionId);
  const officialId=q.officialQuestionId||`official-${q.examRound}-${q.examLevel==='기본'?'basic':'advanced'}-${String(q.questionNumber).padStart(2,'0')}`;
  const canonicalImage=catalogById.get(officialId)?.detailImage;
- assert(fs.existsSync('dist/'+q.sourceQuestionImage)||(canonicalImage&&fs.existsSync('dist/'+canonicalImage)),'Missing original image: '+q.questionId);
+ assert(assetExists('dist/'+q.sourceQuestionImage)||(canonicalImage&&assetExists('dist/'+canonicalImage)),'Missing original image: '+q.questionId);
 }
 console.log('PASS: every original story, dialogue, choice, chronology, character identity, practice question and save version preserved; all official records have original images.');

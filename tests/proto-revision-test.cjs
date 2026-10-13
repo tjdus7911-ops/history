@@ -1,5 +1,6 @@
 const fs=require('node:fs'),crypto=require('node:crypto'),assert=require('node:assert/strict');
 const {load,step}=require('./proto-revision-harness.cjs');
+const {assertSha256IfLocal}=require('./deployment-asset-test-helper.cjs');
 const raw=fs.readFileSync('docs/proto-revision/눈떠보니원삼국_개정게임데이터.json'),source=JSON.parse(raw);
 const digest=value=>crypto.createHash('sha256').update(value).digest('hex');
 assert.equal(digest(raw),'e34fce45eedabdde950c1b08f440177cdfe958f7636b24022f8f7e84f6816595');
@@ -29,8 +30,8 @@ for(const authored of source.examPlan.questions){
  const q=h.copy('PROTO_REVISION_RUNTIME.questionByOfficialId.get('+JSON.stringify(authored.officialQuestionId)+')');
  assert.equal(q.answer,authored.answerIndex0);assert.equal(q.answer+1,authored.answerNumber1);assert.equal(q.choices.length,authored.choiceCount);
  const canonical=catalogById.get(authored.officialQuestionId);assert(canonical,authored.officialQuestionId+' canonical image');
- assert.equal(digest(fs.readFileSync('dist/'+authored.questionImage)),authored.questionImageSha256);
- assert.equal(q.sourceQuestionImage,canonical.detailImage);assert.equal(digest(fs.readFileSync('dist/'+q.sourceQuestionImage)),canonical.detailImageSha256);
+ assertSha256IfLocal('dist/'+authored.questionImage,authored.questionImageSha256,authored.officialQuestionId+' authored image');
+ assert.equal(q.sourceQuestionImage,canonical.detailImage);assertSha256IfLocal('dist/'+q.sourceQuestionImage,canonical.detailImageSha256,q.questionId);
  assert.equal(q.explanation,authored.proposed.playExplanation);assert.deepEqual(q.protoRequiredSceneIds,authored.proposed.requiresReadSceneIds);
 }
 h.run("resumeEra('proto-kingdoms')");

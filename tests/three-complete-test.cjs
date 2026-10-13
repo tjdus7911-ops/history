@@ -1,6 +1,7 @@
 /* Content, chronology, choices, official quizzes, and reload continuity through the real entry scripts. */
 const fs = require('node:fs'), vm = require('node:vm'), assert = require('node:assert/strict');
 const crypto = require('node:crypto');
+const { assertSha256IfLocal } = require('./deployment-asset-test-helper.cjs');
 const scripts = [...fs.readFileSync('dist/index.html','utf8').matchAll(/<script src="([^"]+)"/g)].map(m=>m[1]).filter(f=>f!=='pwa.js');
 const manuscript = JSON.parse(fs.readFileSync('dist/three-story-script.json'));
 const exams = JSON.parse(fs.readFileSync('dist/three-exam-data.json'));
@@ -56,7 +57,7 @@ for(const q of exams.questions) {
   assert.equal(installed.answer,q.answer);assert.equal(installed.answer,q.answerNumber-1);
   assert.equal(installed.choices.length,q.examLevel==='기본'?4:5);
   assert(run('isVerifiedOfficialQuestion(THREE_STORY_RUNTIME.questionByOfficialId.get('+JSON.stringify(q.officialQuestionId)+'))'));
-  assert.equal(crypto.createHash('sha256').update(fs.readFileSync('dist/'+q.questionImage)).digest('hex'),q.sourceImageSha256);
+  assertSha256IfLocal('dist/'+q.questionImage,q.sourceImageSha256,q.officialQuestionId);
 }
 console.log('PASS: exact 2,777 lines, 142 spoken branches, 91 source-image hashes and answer bases, official entry registration.');
 

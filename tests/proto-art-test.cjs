@@ -1,4 +1,5 @@
 const fs=require('fs'),assert=require('assert');
+const {assetExists}=require('./deployment-asset-test-helper.cjs');
 const {load}=require('./proto-harness.cjs');
 const before=load({'proto-art.js':''}),after=load();
 const normalize=value=>{
@@ -14,7 +15,7 @@ assert.deepEqual(normalize(after.copy('CHARACTERS')),before.copy('CHARACTERS'));
 const old=before.copy('PORTRAITS'),current=after.copy('PORTRAITS'),art=after.copy('PROTO_CHARACTER_ART');
 for(const [id,p] of Object.entries(current)){
  if(!art[p.characterId])assert.deepEqual(p,old[id],id+' unrelated portrait');
- else {assert.deepEqual({...p,src:old[id].src},old[id]);assert.equal(p.src,art[p.characterId][p.expression]||art[p.characterId].neutral);assert(fs.existsSync('dist/'+p.src),p.src);}
+ else {assert.deepEqual({...p,src:old[id].src},old[id]);assert.equal(p.src,art[p.characterId][p.expression]||art[p.characterId].neutral);assert(assetExists('dist/'+p.src),p.src);}
 }
 let frames=0,portraits=0;
 const rows=[];
@@ -27,7 +28,7 @@ for(const source of after.copy("Object.values(STORIES).filter(s=>s.eraId==='prot
   for(let i=0;i<entries.length;i++){
    const html=after.run(`characterStage([],STORIES[${JSON.stringify(source.sceneId)}],false,null,${JSON.stringify(source.illustrationId)},${JSON.stringify(entries)},${i+1})`);
    for(const match of html.matchAll(/<img[^>]+data-character-id="([^"]+)"[^>]+data-position="([^"]+)"[^>]+src="([^"]+)"/g)){
-    const [,id,side,src]=match;assert(fs.existsSync('dist/'+src),source.sceneId+' '+src);
+    const [,id,side,src]=match;assert(assetExists('dist/'+src),source.sceneId+' '+src);
     if(art[id]){assert(Object.values(art[id]).includes(src),source.sceneId+' stale portrait');assert.equal(side,id==='proto_modern'?'right':'left');}
     portraits++;
    }

@@ -2,6 +2,7 @@ const assert = require('assert');
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
+const { assetExists, assertAsset, listedAssets } = require('./deployment-asset-test-helper.cjs');
 
 const guide = 'docs/CHARACTER_ART_STYLE_GUIDE.md';
 assert(fs.existsSync(guide), `missing character style guide: ${guide}`);
@@ -34,7 +35,11 @@ const npcFiles = [
 ];
 
 function assertWebp(file) {
-  assert(fs.existsSync(file), `missing character asset: ${file}`);
+  const external = assertAsset(file, `missing character asset: ${file}`);
+  if (!fs.existsSync(file)) {
+    assert(external.bytes > 250_000, `high-DPI character asset is unexpectedly small: ${file}`);
+    return `git-${external.blob}`;
+  }
   const buffer = fs.readFileSync(file);
   assert(buffer.length > 250_000, `high-DPI character asset is unexpectedly small: ${file}`);
   assert.equal(buffer.subarray(0, 4).toString(), 'RIFF', `${file} is not a RIFF WebP`);
@@ -63,12 +68,12 @@ const hashes = finalFiles.map(assertWebp);
 assert.equal(new Set(hashes).size, hashes.length, 'duplicate Joseon character assets detected');
 
 const expectedExpressionFiles = new Set(Object.values(expressionFiles).slice(1).map(file => path.basename(file)));
-const actualExpressionFiles = fs.readdirSync('dist/assets/joseon/protagonist');
+const actualExpressionFiles = listedAssets('assets/joseon/protagonist');
 assert.deepEqual(new Set(actualExpressionFiles), expectedExpressionFiles, 'unexpected or missing Joseon expression asset');
 assert(!actualExpressionFiles.includes('neutral.webp'), 'neutral must use the canonical editorial protagonist asset');
 
 const expectedNpcFiles = new Set(npcFiles.map(file => path.basename(file)));
-const actualNpcFiles = fs.readdirSync('dist/assets/joseon/npcs');
+const actualNpcFiles = listedAssets('assets/joseon/npcs');
 assert.deepEqual(new Set(actualNpcFiles), expectedNpcFiles, 'unexpected or missing Joseon NPC asset');
 
 const textExtensions = new Set(['.js', '.cjs', '.mjs', '.html', '.css', '.json', '.webmanifest']);
@@ -87,7 +92,7 @@ function walk(directory) {
 }
 walk('dist');
 for (const asset of referencedAssets) {
-  assert(fs.existsSync(path.join('dist', asset)), `broken asset reference: ${asset}`);
+  assert(assetExists(path.join('dist', asset)), `broken asset reference: ${asset}`);
 }
 
 console.log(`PASS: character art contract (${Object.keys(expressionFiles).length} Joseon expressions, ${npcFiles.length} NPCs, ${referencedAssets.size} asset references).`);

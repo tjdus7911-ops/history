@@ -1,4 +1,5 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const {assetExists}=require('./deployment-asset-test-helper.cjs');
 let saved=null,html='',handlers={},context,timers=[];
 const data=fs.readFileSync('dist/data.js','utf8')+'\n'+fs.readFileSync('dist/ch02-data.js','utf8')+'\n'+fs.readFileSync('dist/ch03-data.js','utf8')+'\n'+fs.readFileSync('dist/exam-data.js','utf8')+'\n'+fs.readFileSync('dist/ch01-expansion.js','utf8')+'\n'+fs.readFileSync('dist/chapter-split.js','utf8')+'\n'+fs.readFileSync('dist/late-goryeo.js','utf8')+'\n'+fs.readFileSync('dist/official-late-exams.js','utf8'),app=fs.readFileSync('dist/app.js','utf8');
 function boot(){handlers={};timers=[];const root={set innerHTML(s){html=s},get innerHTML(){return html}};const document={querySelector:s=>s==='#app'?root:null,querySelectorAll:()=>[],addEventListener:(e,f)=>handlers[e]=f,createElement:()=>({setAttribute(){},remove(){}}),body:{append(){}}};context=vm.createContext({document,localStorage:{getItem:()=>saved,setItem:(k,s)=>saved=s},window:{scrollTo(){}},navigator:{},setTimeout(fn){timers.push(fn);return timers.length},clearTimeout(){},Date});vm.runInContext(data+app,context)}
@@ -19,7 +20,7 @@ for(const wrong of [false,true]){
   assert(++guard<500);
   if(vm.runInContext('screen',context)==='quiz'){
    const q=vm.runInContext('activeQuestion()',context);seen.push(q.questionId);
-   assert(html.includes(q.question));if(q.isOfficial){assert(html.includes(q.sourceQuestionImage));assert.equal(fs.existsSync("dist/"+q.sourceQuestionImage),true)}assert(html.includes(q.isOfficial?'제'+q.examRound+'회':'[심화 연습]'));assert.equal(vm.runInContext('STORIES[run().storyId].quizOnly',context),true);assert.equal(current().run.questionQueue.length,vm.runInContext("QUESTION_SETS[run().activeQuestionSetId].requiredCount",context));assert.equal(current().run.storyId,vm.runInContext('QUESTION_SCENE_IDS[run().activeQuestionId]',context));assert(!html.includes('character-stage'));
+   assert(html.includes(q.question));if(q.isOfficial){assert(html.includes(q.sourceQuestionImage));assert.equal(assetExists("dist/"+q.sourceQuestionImage),true)}assert(html.includes(q.isOfficial?'제'+q.examRound+'회':'[심화 연습]'));assert.equal(vm.runInContext('STORIES[run().storyId].quizOnly',context),true);assert.equal(current().run.questionQueue.length,vm.runInContext("QUESTION_SETS[run().activeQuestionSetId].requiredCount",context));assert.equal(current().run.storyId,vm.runInContext('QUESTION_SCENE_IDS[run().activeQuestionId]',context));assert(!html.includes('character-stage'));
    for(let i=0;i<q.choices.length;i++)assert(html.includes('data-answer="'+i+'"'));
    boot();action('play');assert.equal(current().run.activeQuestionId,q.questionId,'reload before answer');
    const before=current().run.stats.knowledge;answer(wrong?(q.answer+1)%q.choices.length:q.answer);

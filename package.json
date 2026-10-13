@@ -8,6 +8,8 @@
     "build": "npm run build:ox && node tests/build.cjs",
     "build:ox": "node scripts/build-ox-quiz-curation.cjs",
     "check:ox": "node scripts/build-ox-quiz-curation.cjs --check",
+    "build:asset-manifest": "node scripts/build-deployment-asset-manifest.cjs",
+    "check:asset-manifest": "node scripts/build-deployment-asset-manifest.cjs --check",
     "test:ox": "node tests/ox-quiz-test.cjs && node tests/ox-route-test.cjs && node tests/ox-quiz-desktop-test.cjs && node tests/ox-quiz-mobile-test.cjs",
     "test:official-sources": "node tests/official-source-manifest-test.cjs && node tests/official-exam-statistics-test.cjs && node tests/service-worker-cache-test.cjs && node tests/vercel-detail-assets-test.cjs",
     "test:nameplates": "node tests/dialogue-nameplate-test.cjs && node tests/dialogue-nameplate-browser-test.cjs",
