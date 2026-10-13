@@ -29,12 +29,12 @@ CURATED_CHOICE_SOURCE_PATHS = (
 )
 EXPECTED_QUESTION_COUNT = 1_800
 EXPECTED_CHOICE_COUNT = 8_350
-EXPECTED_CURATED_CHOICE_QUESTION_COUNT = 66
+EXPECTED_CURATED_CHOICE_QUESTION_COUNT = 1_814
 # 5 source-reviewed corrections (24) + 8 round-61 (40) + 14 round-60 basic (56)
-# + 8 chapter-split records (38) + 31 directly image-reviewed records (126).
-EXPECTED_CURATED_CHOICE_COUNT = 284
-EXPECTED_CANONICAL_CURATED_QUESTION_COUNT = 52
-EXPECTED_CANONICAL_CURATED_CHOICE_COUNT = 228
+# + 8 chapter-split records (38) + 1,779 directly image-reviewed records (8,248).
+EXPECTED_CURATED_CHOICE_COUNT = 8_406
+EXPECTED_CANONICAL_CURATED_QUESTION_COUNT = 1_800
+EXPECTED_CANONICAL_CURATED_CHOICE_COUNT = 8_350
 EXPECTED_NONCANONICAL_CURATED_QUESTION_COUNT = 14
 EXPECTED_NONCANONICAL_CURATED_CHOICE_COUNT = 56
 MISSING_CHOICE_TEXT = "[원문 이미지 선택지 — OCR 전사 필요]"
@@ -2120,9 +2120,11 @@ def apply_curated_source_choices(
         raise ValueError(
             f"curated source-choice count mismatch: {correction['officialQuestionId']}"
         )
-    # A manual transcription replaces OCR text rather than borrowing its confidence
-    # or crop hash. Its source linkage is retained separately in curation provenance.
-    return curated_choices, [None] * len(choices), [None] * len(choices)
+    # A manual transcription replaces OCR text rather than borrowing OCR confidence.
+    # Preserve a crop hash only when the curation record explicitly verified it.
+    curated_hash = str((correction.get("provenance") or {}).get("sourceImageSha256") or "").lower()
+    curated_hashes = [curated_hash or None] * len(choices)
+    return curated_choices, [None] * len(choices), curated_hashes
 
 
 def extract_ocr_evidence(source: dict, row: dict) -> dict:
@@ -2195,10 +2197,22 @@ def main() -> None:
     ocr_by_stem: dict[str, list[dict]] = {}
     ocr_by_id: dict[str, list[dict]] = {}
     for ocr_path in args.ocr_json:
-        for item in json.loads(ocr_path.read_text(encoding="utf-8")):
+        ocr_payload = json.loads(ocr_path.read_text(encoding="utf-8"))
+        ocr_rows = ocr_payload if isinstance(ocr_payload, list) else ocr_payload.get("records")
+        if not isinstance(ocr_rows, list):
+            raise ValueError(f"OCR source has no records: {repository_path(ocr_path)}")
+        for raw_item in ocr_rows:
+            item = dict(raw_item)
+            question_id = item.get("officialQuestionId")
+            source = catalog_by_id.get(question_id)
+            item.setdefault("file", item.get("imageFile") or (source or {}).get("detailImage") or "")
+            if source:
+                item.setdefault("imageSha256", source.get("detailImageSha256"))
+                item.setdefault("imageWidth", source.get("detailImageWidth"))
+                item.setdefault("imageHeight", source.get("detailImageHeight"))
             ocr_by_stem.setdefault(Path(item["file"]).stem, []).append(item)
-            if item.get("officialQuestionId"):
-                ocr_by_id.setdefault(item["officialQuestionId"], []).append(item)
+            if question_id:
+                ocr_by_id.setdefault(question_id, []).append(item)
     records = []
     era_metadata_corrections = 0
     for source in catalog:
@@ -2268,12 +2282,33 @@ def main() -> None:
             explanation = ensure_three_sentences(curated, answer_label)
             matched = True
             quality_tier = "curated"
-            core_verification_status = VERIFICATION_CURATED
+            core_verification_status = (
+                curated_choice["curationStatus"]
+                if curated_choice and curated_choice.get("explanation")
+                else VERIFICATION_CURATED
+            )
             core_evidence_sources = (
                 list(curated_choice.get("sources") or [])
                 if curated_choice and curated_choice.get("explanation")
                 else ["embedded-curated-explanation"]
             )
+        elif curated_choice:
+            accepted = accepted_choice_indexes(source)
+            representative_index = accepted[0] if accepted else 0
+            reviewed_detail = normalize_text(
+                curated_choice["choiceExplanations"][representative_index]
+            )
+            reviewed_clue = normalize_text(clue)
+            if reviewed_clue and reviewed_clue[-1] not in ".!?":
+                reviewed_clue += "."
+            reviewed_core = " ".join(
+                item for item in (reviewed_clue, reviewed_detail) if item
+            )
+            explanation = ensure_three_sentences(reviewed_core, answer_label)
+            matched = True
+            quality_tier = "curated"
+            core_verification_status = curated_choice["curationStatus"]
+            core_evidence_sources = list(curated_choice.get("sources") or [])
         else:
             explanation, matched = make_explanation(source, stem, clue, correct_choice)
             quality_tier = "knowledge" if matched else "evidence"

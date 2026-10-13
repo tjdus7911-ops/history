@@ -652,9 +652,9 @@
     "sourcePdf": "57회 한국사_문제지(기본).pdf",
     "answerPdf": "제57회 기본 정답표 업로드용.pdf",
     "questionImage": "assets/exams/catalog/detail/official-57-basic-17.e30040e97830.webp",
-    "primaryEra": "joseon",
+    "primaryEra": "goryeo",
     "concepts": [
-      "조선"
+      "고려"
     ],
     "sourcePage": 4,
     "detailImage": "assets/exams/catalog/detail/official-57-basic-17.e30040e97830.webp",
@@ -933,9 +933,9 @@
     "sourcePdf": "57회 한국사_문제지(기본).pdf",
     "answerPdf": "제57회 기본 정답표 업로드용.pdf",
     "questionImage": "assets/exams/catalog/detail/official-57-basic-24.ee1bcfd83263.webp",
-    "primaryEra": "joseon",
+    "primaryEra": "empire",
     "concepts": [
-      "조선"
+      "개항기·대한제국"
     ],
     "sourcePage": 6,
     "detailImage": "assets/exams/catalog/detail/official-57-basic-24.ee1bcfd83263.webp",
@@ -1493,9 +1493,9 @@
     "sourcePdf": "57회 한국사_문제지(기본).pdf",
     "answerPdf": "제57회 기본 정답표 업로드용.pdf",
     "questionImage": "assets/exams/catalog/detail/official-57-basic-38.f4dcd8cd7c6d.webp",
-    "primaryEra": "occupation",
+    "primaryEra": "goryeo",
     "concepts": [
-      "일제강점기"
+      "고려"
     ],
     "sourcePage": 9,
     "detailImage": "assets/exams/catalog/detail/official-57-basic-38.f4dcd8cd7c6d.webp",
@@ -5173,9 +5173,9 @@
     "sourcePdf": "58회 한국사_문제지(기본).pdf",
     "answerPdf": "58회 기본 정답표.pdf",
     "questionImage": "assets/exams/catalog/detail/official-58-basic-30.b84c5cb753f9.webp",
-    "primaryEra": "joseon",
+    "primaryEra": "empire",
     "concepts": [
-      "조선"
+      "개항기·대한제국"
     ],
     "sourcePage": 7,
     "detailImage": "assets/exams/catalog/detail/official-58-basic-30.b84c5cb753f9.webp",
@@ -17413,9 +17413,9 @@
     "sourcePdf": "62회 한국사능력검정시험 문제지(심화).pdf",
     "answerPdf": "제62회 한국사능력검정시험(심화) 정답표.pdf",
     "questionImage": "assets/exams/catalog/detail/official-62-advanced-36.6f44c4094646.webp",
-    "primaryEra": "occupation",
+    "primaryEra": "empire",
     "concepts": [
-      "일제강점기"
+      "개항기·대한제국"
     ],
     "sourcePage": 9,
     "detailImage": "assets/exams/catalog/detail/official-62-advanced-36.6f44c4094646.webp",
@@ -21659,9 +21659,9 @@
     "sourcePdf": "63회 한국사_문제지(심화).pdf",
     "answerPdf": "제63회 한국사능력검정시험 심화 정답표(정정).pdf",
     "questionImage": "assets/exams/catalog/detail/official-63-advanced-42.50f6a858b7b3.webp",
-    "primaryEra": "occupation",
+    "primaryEra": "republic",
     "concepts": [
-      "일제강점기"
+      "대한민국"
     ],
     "sourcePage": 10,
     "detailImage": "assets/exams/catalog/detail/official-63-advanced-42.50f6a858b7b3.webp",
@@ -23139,9 +23139,9 @@
     "sourcePdf": "64회 한국사_문제지(기본).pdf",
     "answerPdf": "제64회 기본 정답표.pdf",
     "questionImage": "assets/exams/catalog/detail/official-64-basic-29.8f8d5b8d37de.webp",
-    "primaryEra": "joseon",
+    "primaryEra": "empire",
     "concepts": [
-      "조선"
+      "개항기·대한제국"
     ],
     "sourcePage": 7,
     "detailImage": "assets/exams/catalog/detail/official-64-basic-29.8f8d5b8d37de.webp",
@@ -29419,9 +29419,9 @@
     "sourcePdf": "66회 한국사_문제지(기본).pdf",
     "answerPdf": "66회 한국사_정답표(기본).pdf",
     "questionImage": "assets/exams/catalog/detail/official-66-basic-36.9870d3b053e8.webp",
-    "primaryEra": "occupation",
+    "primaryEra": "empire",
     "concepts": [
-      "일제강점기"
+      "개항기·대한제국"
     ],
     "sourcePage": 9,
     "detailImage": "assets/exams/catalog/detail/official-66-basic-36.9870d3b053e8.webp",
@@ -29779,9 +29779,9 @@
     "sourcePdf": "66회 한국사_문제지(기본).pdf",
     "answerPdf": "66회 한국사_정답표(기본).pdf",
     "questionImage": "assets/exams/catalog/detail/official-66-basic-45.ad6321c1ddba.webp",
-    "primaryEra": "occupation",
+    "primaryEra": "joseon",
     "concepts": [
-      "일제강점기"
+      "조선"
     ],
     "sourcePage": 11,
     "detailImage": "assets/exams/catalog/detail/official-66-basic-45.ad6321c1ddba.webp",
@@ -37926,9 +37926,9 @@
     "points": 2,
     "sourcePdf": "68회 한국사_문제지(심화).pdf",
     "answerPdf": "68회 한국사_정답표(심화).pdf",
-    "primaryEra": "occupation",
+    "primaryEra": "empire",
     "concepts": [
-      "일제강점기"
+      "개항기·대한제국"
     ],
     "sourcePage": 9,
     "questionImage": "assets/exams/catalog/detail/official-68-advanced-37.b7e2284bb2b6.webp",
@@ -40788,9 +40788,9 @@
     "points": 3,
     "sourcePdf": "69회 한국사 문제지(기본).pdf",
     "answerPdf": "69회 한국사 정답표(기본).pdf",
-    "primaryEra": "occupation",
+    "primaryEra": "republic",
     "concepts": [
-      "일제강점기"
+      "대한민국"
     ],
     "sourcePage": 10,
     "questionImage": "assets/exams/catalog/detail/official-69-basic-41.f843b010469a.webp",
@@ -41371,9 +41371,9 @@
     "points": 2,
     "sourcePdf": "69회 한국사_문제지(심화).pdf",
     "answerPdf": "69회 한국사_정답표(심화).pdf",
-    "primaryEra": "joseon",
+    "primaryEra": "ancient",
     "concepts": [
-      "조선"
+      "선사·고대"
     ],
     "sourcePage": 1,
     "questionImage": "assets/exams/catalog/detail/official-69-advanced-02.26883d293a3f.webp",
@@ -46141,9 +46141,9 @@
     "points": 2,
     "sourcePdf": "70회 한국사_문제지(심화).pdf",
     "answerPdf": "70회 한국사_정답지(심화).pdf",
-    "primaryEra": "occupation",
+    "primaryEra": "republic",
     "concepts": [
-      "일제강점기"
+      "대한민국"
     ],
     "sourcePage": 11,
     "questionImage": "assets/exams/catalog/detail/official-70-advanced-42.0c1214655da9.webp",
@@ -48155,9 +48155,9 @@
     "points": 2,
     "sourcePdf": "71회 한국사_문제지(기본).pdf",
     "answerPdf": "71회 한국사_답지(기본).pdf",
-    "primaryEra": "joseon",
+    "primaryEra": "empire",
     "concepts": [
-      "조선"
+      "개항기·대한제국"
     ],
     "sourcePage": 7,
     "questionImage": "assets/exams/catalog/detail/official-71-basic-30.d0f88c84032e.webp",
@@ -48897,9 +48897,9 @@
     "points": 3,
     "sourcePdf": "71회 한국사_문제지(기본).pdf",
     "answerPdf": "71회 한국사_답지(기본).pdf",
-    "primaryEra": "occupation",
+    "primaryEra": "republic",
     "concepts": [
-      "일제강점기"
+      "대한민국"
     ],
     "sourcePage": 11,
     "questionImage": "assets/exams/catalog/detail/official-71-basic-44.f89eccceed54.webp",
@@ -50275,9 +50275,9 @@
     "points": 2,
     "sourcePdf": "71회 한국사_문제지(심화).pdf",
     "answerPdf": "제71회 심화 정답표.pdf",
-    "primaryEra": "joseon",
+    "primaryEra": "empire",
     "concepts": [
-      "조선"
+      "개항기·대한제국"
     ],
     "sourcePage": 5,
     "questionImage": "assets/exams/catalog/detail/official-71-advanced-20.51faf3b5ed32.webp",
@@ -54197,9 +54197,9 @@
     "points": 2,
     "sourcePdf": "제72회 심화 문제지.pdf",
     "answerPdf": "제72회 심화 정답표.pdf",
-    "primaryEra": "occupation",
+    "primaryEra": "republic",
     "concepts": [
-      "일제강점기"
+      "대한민국"
     ],
     "sourcePage": 11,
     "questionImage": "assets/exams/catalog/detail/official-72-advanced-44.1660fdcbe055.webp",
@@ -54356,9 +54356,9 @@
     "points": 3,
     "sourcePdf": "제72회 심화 문제지.pdf",
     "answerPdf": "제72회 심화 정답표.pdf",
-    "primaryEra": "republic",
+    "primaryEra": "goryeo",
     "concepts": [
-      "대한민국"
+      "고려"
     ],
     "sourcePage": 12,
     "questionImage": "assets/exams/catalog/detail/official-72-advanced-47.ba0ac0c8a31d.webp",
@@ -65115,9 +65115,9 @@
     "points": 2,
     "sourcePdf": "75회 한국사_문제지(기본).pdf",
     "answerPdf": "75회 한국사_답지(기본).pdf",
-    "primaryEra": "republic",
+    "primaryEra": "empire",
     "concepts": [
-      "대한민국"
+      "개항기·대한제국"
     ],
     "sourcePage": 12,
     "questionImage": "assets/exams/catalog/detail/official-75-basic-50.3dedb99e04eb.webp",
@@ -69249,9 +69249,9 @@
     "points": 3,
     "sourcePdf": "76회 한국사_문제지(심화).pdf",
     "answerPdf": "76회 한국사_답지(심화)).pdf",
-    "primaryEra": "joseon",
+    "primaryEra": "empire",
     "concepts": [
-      "조선"
+      "개항기·대한제국"
     ],
     "sourcePage": 7,
     "questionImage": "assets/exams/catalog/detail/official-76-advanced-28.4a351f92d33a.webp",
@@ -72429,9 +72429,9 @@
     "points": 2,
     "sourcePdf": "77회 한국사_문제지(기본).pdf",
     "answerPdf": "77회 한국사_답지(기본).pdf",
-    "primaryEra": "occupation",
+    "primaryEra": "republic",
     "concepts": [
-      "일제강점기"
+      "대한민국"
     ],
     "sourcePage": 9,
     "questionImage": "assets/exams/catalog/detail/official-77-basic-38.2dc30d0b90f6.webp",
@@ -74019,9 +74019,9 @@
     "points": 1,
     "sourcePdf": "77회 한국사_문제지(심화).pdf",
     "answerPdf": "77회 한국사_답지(심화).pdf",
-    "primaryEra": "joseon",
+    "primaryEra": "goryeo",
     "concepts": [
-      "조선"
+      "고려"
     ],
     "sourcePage": 5,
     "questionImage": "assets/exams/catalog/detail/official-77-advanced-18.d441c2c8af8f.webp",
@@ -79902,9 +79902,9 @@
     "points": 3,
     "sourcePdf": "79회 한국사_문제지(기본).pdf",
     "answerPdf": "79회 한국사_답지(기본).pdf",
-    "primaryEra": "joseon",
+    "primaryEra": "empire",
     "concepts": [
-      "조선"
+      "개항기·대한제국"
     ],
     "sourcePage": 7,
     "questionImage": "assets/exams/catalog/detail/official-79-basic-29.1b31be71bec2.webp",

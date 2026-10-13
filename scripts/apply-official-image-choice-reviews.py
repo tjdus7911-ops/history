@@ -74,10 +74,33 @@ def write_extraction_audit(records: list[dict]) -> None:
 
 
 def write_image_review_report(payload: dict, review_payload: dict) -> None:
-    visually_reviewed_ids = [item["officialQuestionId"] for item in review_payload["records"]]
-    remaining = [
+    ledger_ids = {item["officialQuestionId"] for item in review_payload["records"]}
+    previous = json.loads(IMAGE_REVIEW_REPORT.read_text(encoding="utf-8"))
+    baseline_ids = {
+        *(previous.get("completedVisualReview", {}).get("questionIds") or []),
+        *(previous.get("remainingManualReview", {}).get("questionIds") or []),
+    }
+    records_by_id = {item["officialQuestionId"]: item for item in payload["records"]}
+    remaining = sorted(
+        question_id for question_id in baseline_ids
+        if any(
+            choice["choiceTextVerificationStatus"] == "DATA_REVIEW_REQUIRED"
+            for choice in records_by_id[question_id]["choiceExplanations"]
+        )
+    )
+    completed_ids = sorted(baseline_ids - set(remaining))
+    completed_choice_count = sum(
+        len(records_by_id[question_id]["choiceExplanations"])
+        for question_id in completed_ids
+    )
+    source_verified_ids = sorted(set(completed_ids) - ledger_ids)
+    canonical_remaining = [
         record["officialQuestionId"] for record in payload["records"]
-        if any(choice["choiceTextVerificationStatus"] == "DATA_REVIEW_REQUIRED" for choice in record["choiceExplanations"])
+        if any(
+            choice["verificationStatus"] == "DATA_REVIEW_REQUIRED"
+            or choice["choiceTextVerificationStatus"] == "DATA_REVIEW_REQUIRED"
+            for choice in record["choiceExplanations"]
+        )
     ]
     report = {
         "schemaVersion": 1,
@@ -95,19 +118,33 @@ def write_image_review_report(payload: dict, review_payload: dict) -> None:
             "method": "배포 스냅샷의 detailImage를 내려받아 카탈로그 SHA-256과 일치하는지 확인",
         },
         "completedVisualReview": {
-            "questionCount": len(visually_reviewed_ids),
-            "choiceCount": sum(len(item["choices"]) for item in review_payload["records"]),
-            "questionIds": visually_reviewed_ids,
+            "questionCount": len(completed_ids),
+            "choiceCount": completed_choice_count,
+            "questionIds": completed_ids,
             "ledger": REVIEWS.relative_to(ROOT).as_posix(),
+            "ledgerRecordCount": len(review_payload["records"]),
+            "ledgerChoiceCount": sum(len(item["choices"]) for item in review_payload["records"]),
+            "additionalSourceVerifiedQuestionIds": source_verified_ids,
         },
         "remainingManualReview": {
             "questionCount": len(remaining),
-            "reason": "원본 이미지와 보조 OCR 자료는 확보했지만 사람의 육안 원문 판독 및 역사 해설 검수가 아직 완료되지 않음",
+            "reason": (
+                "모든 기준 문항의 원본 이미지 판독과 역사 해설 검수를 완료함"
+                if not remaining
+                else "원본 이미지와 보조 OCR 자료는 확보했지만 사람의 육안 원문 판독 및 역사 해설 검수가 아직 완료되지 않음"
+            ),
             "questionIds": remaining,
         },
         "unavailableOriginals": {
             "questionCount": 0,
             "questions": [],
+        },
+        "canonicalCoverage": {
+            "questionCount": len(payload["records"]),
+            "choiceCount": sum(len(item["choiceExplanations"]) for item in payload["records"]),
+            "fullyReviewedQuestionCount": len(payload["records"]) - len(canonical_remaining),
+            "remainingReviewQuestionCount": len(canonical_remaining),
+            "remainingReviewQuestionIds": canonical_remaining,
         },
         "userInterfacePolicy": {
             "developerQaBadgesVisible": False,
