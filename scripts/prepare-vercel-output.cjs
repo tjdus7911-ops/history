@@ -177,7 +177,7 @@ function validatePinnedSnapshot(repoRoot) {
   return { available: true, snapshot, ...assets };
 }
 
-function runtimeChoicePayload(payload) {
+function runtimeChoicePayload(payload, summaries = {}) {
   assert.equal(payload.schemaVersion, 3);
   assert.equal(payload.records.length, 1800);
   const records = payload.records.map(record => ({
@@ -188,7 +188,7 @@ function runtimeChoicePayload(payload) {
     choiceExplanations: record.choiceExplanations.map(choice => ({
       choiceIndex: choice.choiceIndex,
       choiceText: choice.choiceText,
-      meaning: choice.meaning,
+      meaning: summaries[record.officialQuestionId]?.[choice.choiceIndex] || choice.meaning,
       // Legacy explanations remain available only when a summary is absent.
       ...(!choice.meaning ? { correctedFact: choice.correctedFact, explanation: choice.explanation } : {}),
     })),
@@ -208,7 +208,7 @@ function main() {
   if (process.env.VERCEL === '1') {
     const file = path.join(repoRoot, 'dist', 'official-exam-explanations.json');
     const original = fs.readFileSync(file, 'utf8');
-    const compact = JSON.stringify(runtimeChoicePayload(JSON.parse(original)));
+    const compact = JSON.stringify(runtimeChoicePayload(JSON.parse(original), loadJson(path.join(repoRoot, 'config', 'official-choice-summary-corrections.json'))));
     fs.writeFileSync(file, compact);
     console.log(`PASS: packaged official choice summaries: ${Buffer.byteLength(original)} -> ${Buffer.byteLength(compact)} bytes.`);
   }
