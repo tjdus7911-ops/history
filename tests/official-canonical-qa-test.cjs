@@ -158,6 +158,8 @@ for(const item of catalog){
     assert(['CURATED_VERIFIED','CURATED_REVIEWED','KNOWLEDGE_RULE','DATA_REVIEW_REQUIRED'].includes(choice.verificationStatus),item.officialQuestionId+' choice verification status');
     assert(['VISUALLY_REVIEWED','OCR_EXTRACTED','DATA_REVIEW_REQUIRED'].includes(choice.choiceTextVerificationStatus),item.officialQuestionId+' source-text verification status');
     for(const key of ['relatedEra','relatedTarget','coreConcept','meaning','judgmentReason','evidenceSources'])assert(Object.hasOwn(choice,key),item.officialQuestionId+' missing '+key);
+    assert(/[다요](?:\([^()]*\))?[.!?]$/.test(choice.meaning.trim()),item.officialQuestionId+' incomplete summary');
+    assert(!/undefined|null|placeholder|확인 중|준비 중|추가 검수|OCR/i.test(choice.meaning),item.officialQuestionId+' placeholder summary');
     assert.equal((choice.meaning.match(/[.!?](?=\s|$|[가-힣A-Za-z])/g)||[]).length,1,item.officialQuestionId+' choice summary must be one sentence');
     assert([1,2].includes((choice.judgmentReason.match(/[.!?](?=\s|$|[가-힣A-Za-z])/g)||[]).length),item.officialQuestionId+' judgment must be one or two sentences');
     assert(!/[\r\n]/.test(choice.meaning),item.officialQuestionId+' choice summary must stay one prose sentence');

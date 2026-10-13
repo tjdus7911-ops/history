@@ -435,3 +435,10 @@ with TemporaryDirectory(dir=ROOT) as temporary_directory:
     assert ocr_row["imageSha256"] == hashlib.sha256(image_payload).hexdigest()
 
 print("official explanation builder unit checks passed")
+
+# A final period must not hide an unfinished predicate or a placeholder.
+for unfinished in ("", "고인돌은 무덤으로.", "왕권 강화 정책이며.", "관리를 선발하고.", "관련.", "확인 중입니다.", "placeholder입니다."):
+    assert not builder.complete_prose_sentence(unfinished), unfinished
+for complete in ("고인돌은 청동기 시대의 무덤이다.", "광해군은 대동법을 시행하였다.", "장수왕은 평양으로 옮겼습니다(427)."):
+    assert builder.complete_prose_sentence(complete), complete
+print("PASS: complete prose endings reject punctuated fragments and placeholders")

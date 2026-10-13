@@ -1,0 +1,39 @@
+{
+  "baseCommit": "d9d7b976778a878aa6d43026e1630552041cce6e",
+  "questionCount": 1800,
+  "summaryCount": 8350,
+  "incompleteFound": 943,
+  "incompleteFixed": 943,
+  "contextualSummaryImprovements": 5,
+  "totalSummaryEdits": 948,
+  "judgmentEdits": 865,
+  "protectedQuestionAndEvidenceFieldsUnchanged": true,
+  "retiredHeadingsVisible": false,
+  "generator": "scripts/build-official-explanations.py",
+  "regenerate": "python scripts/polish-official-choice-prose.py",
+  "verify": "python scripts/polish-official-choice-prose.py --check",
+  "tests": {
+    "canonical": "passed",
+    "generatorUnit": "passed (temporary-directory mode adapted for local Windows sandbox)",
+    "explanationFlows": "passed",
+    "examHistory": "passed",
+    "learningContinuation": "passed",
+    "uiIntegration": "passed",
+    "build": "blocked: subprocess spawnSync EPERM",
+    "playwright": "blocked: Chrome spawn EPERM",
+    "manualBrowser": "390x844 and 1280x900 passed using final-data preloaded QA entry; normal asynchronous JSON fetch failed in managed browser"
+  },
+  "examples": [
+    {
+      "before": "공산성과 송산리 고분군은 웅진 시기의 공주.",
+      "after": "공산성과 송산리 고분군은 백제 웅진 시기의 공주에 있는 유적이다."
+    },
+    {
+      "before": "장용영은 조선 정조 때 설치된 국왕 친위 부대이고.",
+      "after": "장용영은 조선 정조가 설치한 국왕 친위 부대이다."
+    }
+  ],
+  "supplementalUniqueChoicesChecked": 56,
+  "legacyAliasChoicesReusingFacts": 38,
+  "uniqueChoicesChecked": 8406
+}

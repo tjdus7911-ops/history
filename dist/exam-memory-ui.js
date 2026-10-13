@@ -287,20 +287,22 @@ function officialPaperFigure(entry){
  return `<figure class="official-paper">${officialImageOpenMarkup(entry)}<figcaption>${esc(entry.sourceRecord.sourcePdf)} · ${entry.sourceRecord.sourcePage}쪽 · 이미지를 누르면 확대합니다.</figcaption></figure>`;
 }
 function officialChoiceExplanationBlock(question,selectedAnswer){
- const inlineSupplement=Boolean(question?.isOfficial&&question?.sourceVerified&&!officialEntry(question)&&Array.isArray(question.choiceExplanations)&&question.choiceExplanations.length);
+ const displayExplanations=globalThis.OFFICIAL_SUPPLEMENTAL_CHOICE_PROSE?.[question?.questionId||question?.id]||question?.choiceExplanations;
+ const inlineSupplement=Boolean(question?.isOfficial&&question?.sourceVerified&&(!officialEntry(question)||Boolean(globalThis.OFFICIAL_SUPPLEMENTAL_CHOICE_PROSE?.[question?.questionId||question?.id]))&&Array.isArray(displayExplanations)&&displayExplanations.length);
  if(officialChoicePayloadState!=='ready'&&!inlineSupplement){
   if(officialChoicePayloadState==='idle')ensureOfficialChoiceExplanations();
   return officialChoicePayloadState==='error'?`<section class="official-choice-load error" role="alert"><b>선지별 상세 해설을 불러오지 못했습니다.</b><span>${esc(officialChoicePayloadError||'네트워크 상태를 확인해 주세요.')}</span><button class="text-btn" data-official-explanations-retry="true">다시 불러오기</button></section>`:'<section class="official-choice-load" role="status" aria-live="polite"><b>선지별 상세 해설을 불러오는 중입니다.</b><span>문제 원문과 연결된 전체 선지를 준비하고 있습니다.</span></section>';
  }
- const explanations=question?.choiceExplanations;
+ const explanations=displayExplanations;
  if(!Array.isArray(explanations)||!explanations.length)return '<section class="official-choice-load error" role="alert"><b>이 문항의 선지별 상세 해설을 연결하지 못했습니다.</b><span>문항 ID와 해설 데이터 연결을 다시 확인해 주세요.</span></section>';
  const count=Math.max(explanations.length,question.officialChoices?.length||0,question.choices?.length||0,question.examLevel==='기본'?4:5),selected=Number.isInteger(selectedAnswer)?selectedAnswer:null;
  const choices=Array.from({length:count},(_,index)=>{
   const item=explanations[index],structured=typeof item==='object'&&item!==null,text=typeof item==='string'?item:item?.explanation||item?.text||'',rawChoiceText=structured&&item.choiceText?item.choiceText:question.officialChoices?.[index]||question.choices?.[index]||'',unresolved=!rawChoiceText||rawChoiceText.includes('OCR 전사 필요'),choiceText=unresolved?'원문 확인 중':rawChoiceText;
   const internalText=value=>/OCR 원문 확인|추가 검수 필요|검수가 끝나지|추가 대조가 필요|확정할 수 없/.test(String(value||'')),meaning=structured&&!internalText(item.meaning)?item.meaning:'',correction=structured&&!internalText(item.correctedFact)?item.correctedFact:'',safeText=!internalText(text)?text:'';
   const summary=meaning||correction||safeText;
+  const reason=structured&&!internalText(item.judgmentReason)&&item.judgmentReason!==summary?item.judgmentReason:'';
   const badges=`${officialAnswerAccepted(question,index)?'<span class="official-choice-badge answer">정답</span>':''}${selected===index?'<span class="official-choice-badge selected">내 선택</span>':''}`;
-  return `<li class="${officialAnswerAccepted(question,index)?'answer ':''}${selected===index?'selected':''}"><div class="official-choice-heading"><b>${officialChoiceLabels[index]||index+1}</b><span class="official-choice-text">${esc(choiceText)}</span>${badges?`<span class="official-choice-badges">${badges}</span>`:''}</div>${summary?`<p class="official-choice-meaning"><small>핵심 요약</small><span>${esc(summary)}</span></p>`:unresolved?'<p class="official-choice-pending">원문 확인 중</p>':''}</li>`;
+  return `<li class="${officialAnswerAccepted(question,index)?'answer ':''}${selected===index?'selected':''}"><div class="official-choice-heading"><b>${officialChoiceLabels[index]||index+1}</b><span class="official-choice-text">${esc(choiceText)}</span>${badges?`<span class="official-choice-badges">${badges}</span>`:''}</div>${summary?`<p class="official-choice-meaning"><small>핵심 요약</small><span>${esc(summary)}</span></p>`:unresolved?'<p class="official-choice-pending">원문 확인 중</p>':''}${reason?`<p class="official-choice-reason">${esc(reason)}</p>`:''}</li>`;
  }).join('');
  return `<section class="official-choice-explanations" aria-label="선지별 해설"><h3>[선지별 해설]</h3><ol>${choices}</ol></section>`;
 }

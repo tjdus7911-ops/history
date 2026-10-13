@@ -916,11 +916,13 @@
     "qaDeferredCount": 0,
     "forbiddenGenericCount": 0,
     "minimumSentenceCount": 3,
-    "fullRecordJsonBytes": 15191312,
+    "fullRecordJsonBytes": 15205318,
     "initialCoreRecordJsonBytes": 1885542,
     "initialCoreRecordReductionPercent": 87.6,
     "imageVisuallyReviewedQuestionCount": 1779,
-    "imageVisuallyReviewedChoiceCount": 8248
+    "imageVisuallyReviewedChoiceCount": 8248,
+    "choiceSummaryCompleteSentenceViolationCount": 0,
+    "choiceJudgmentCompleteSentenceViolationCount": 0
   },
   "imageOptimization": {
     "mode": "verified-existing-240dpi-crop-reencode",

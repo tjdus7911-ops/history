@@ -31,3 +31,8 @@
 @media(max-width:760px){.official-choice-grid button{height:54px}}
 .official-choice-load{display:grid;gap:5px;margin-top:18px;padding:14px 15px;border:1px solid #dfe5e8;border-radius:9px;background:#f7f9fa;color:#53616c;font-size:11px;line-height:1.6}.official-choice-load b{color:#26384f;font-size:12px}.official-choice-load.error{border-color:#e2c5c2;background:#fff7f6}.official-choice-load button{justify-self:start;margin-top:3px;padding:3px 0;color:#765c32;text-decoration:underline}
 .official-choice-heading{flex-wrap:wrap}
+
+/* One summary followed by unlabeled, compact problem-specific prose. */
+.official-choice-explanations .official-choice-reason{display:block;margin:6px 0 0;padding:0;border:0;font-size:13px;line-height:1.75;overflow-wrap:anywhere}
+
+@media(max-width:560px){.official-choice-explanations li .official-choice-meaning{display:block}.official-choice-meaning small{display:block;margin-bottom:3px}}

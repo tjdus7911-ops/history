@@ -1528,6 +1528,35 @@ def choice_core_summary(explanation: str) -> str:
     return first
 
 
+
+@lru_cache(maxsize=1)
+def load_choice_prose_corrections() -> dict:
+    """Reviewed edits are keyed by immutable question ID and option index."""
+    path = ROOT / "config" / "official-choice-prose-corrections.json"
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if data.get("schemaVersion") != 1:
+        raise ValueError("unsupported choice prose correction schema")
+    return data["records"]
+
+
+def complete_prose_sentence(value: str) -> bool:
+    """Punctuation alone cannot turn a connective or a noun fragment into prose."""
+    value = normalize_text(value)
+    if not value or re.search(r"undefined|null|placeholder|확인 중|준비 중|추가 검수|OCR", value, re.I):
+        return False
+    return bool(re.search(r"[다요](?:[(][^()]*[)])?[.!?]$", value))
+
+
+def apply_choice_prose_correction(source: dict, index: int, meaning: str, judgment: str) -> tuple[str, str]:
+    correction = load_choice_prose_corrections().get(source.get("officialQuestionId"), {}).get(str(index), {})
+    for field, original in (("Meaning", meaning),):
+        expected = correction.get("expected" + field)
+        replacement = correction.get(field[0].lower() + field[1:])
+        if expected is not None and original not in (expected, replacement):
+            raise ValueError(f"stale choice prose correction: {source.get('officialQuestionId')}:{index}:{field}")
+    return correction.get("meaning", meaning), correction.get("judgmentReason", judgment)
+
+
 def judgment_clue(value: str) -> str:
     """Use one complete source fragment; never truncate it with an ellipsis for layout."""
     value = normalize_text(value)
@@ -1779,6 +1808,8 @@ def build_choice_explanation(
         text_needs_review,
         rule_keyword,
     )
+
+    meaning, judgment_reason = apply_choice_prose_correction(source, index, meaning, judgment_reason)
 
     return {
         "choiceIndex": index,
@@ -2520,12 +2551,14 @@ def main() -> None:
         for choice in record["choiceExplanations"]
     ]
     summary_sentence_violation_count = sum(
-        prose_sentence_count(choice.get("meaning", "")) != 1
+        not complete_prose_sentence(choice.get("meaning", ""))
+        or prose_sentence_count(choice.get("meaning", "")) != 1
         or "\n" in choice.get("meaning", "")
         for choice in all_choice_explanations
     )
     judgment_sentence_overflow_count = sum(
         prose_sentence_count(choice.get("judgmentReason", "")) not in (1, 2)
+        or not all(complete_prose_sentence(part) for part in sentence_parts(choice.get("judgmentReason", "")))
         for choice in all_choice_explanations
     )
     judgment_answer_table_phrase_count = sum(
@@ -2668,6 +2701,8 @@ def main() -> None:
         "missingChoiceConfidenceCount": missing_choice_confidence_count,
         "missingChoiceImageHashCount": missing_choice_image_hash_count,
         "choiceImageHashMismatchCount": choice_image_hash_mismatch_count,
+        "choiceSummaryCompleteSentenceViolationCount": summary_sentence_violation_count,
+        "choiceJudgmentCompleteSentenceViolationCount": judgment_sentence_overflow_count,
         "choiceSummaryOneSentenceViolationCount": summary_sentence_violation_count,
         "choiceJudgmentSentenceOverflowCount": judgment_sentence_overflow_count,
         "choiceJudgmentAnswerTablePhraseCount": judgment_answer_table_phrase_count,
@@ -2717,6 +2752,8 @@ def main() -> None:
         separators=(",", ":"),
     )
     js += ";\n"
+    supplemental = json.loads((ROOT / "config/official-choice-prose-corrections.json").read_text(encoding="utf-8")).get("supplementalRecords", {})
+    js += "globalThis.OFFICIAL_SUPPLEMENTAL_CHOICE_PROSE=" + json.dumps(supplemental, ensure_ascii=False, separators=(",", ":")) + ";\n"
     (DIST / "official-exam-explanations.js").write_text(js, encoding="utf-8")
 
     catalog_path.write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

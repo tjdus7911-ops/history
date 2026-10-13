@@ -21,6 +21,7 @@ if(hasLocalAssetSources){
 }
 runPython('build-official-exam-statistics.py','--check');
 runPythonTest('official-explanation-builder-unit-test.py');
+runPython('polish-official-choice-prose.py','--check');
 if(hasLocalAssetSources)require('node:child_process').execFileSync(process.execPath,['scripts/build-story-exam-policy.cjs','--check'],{stdio:'pipe'});
 require('node:child_process').execFileSync(process.execPath,['scripts/build-ox-quiz-curation.cjs','--check'],{stdio:'pipe'});
 require('./mnemonic-data-test.cjs')(JSON.parse(fs.readFileSync('dist/mnemonic-inventory.json','utf8')),require('../scripts/mnemonic-runtime.cjs')());

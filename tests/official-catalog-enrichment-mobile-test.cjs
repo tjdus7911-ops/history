@@ -62,6 +62,11 @@ async function main(){
   await page.locator(`[data-official-pick="${basicAnswer}"]`).click();await page.locator('[data-official-submit]').click();
   await page.locator('.official-choice-explanations li').first().waitFor({timeout:30000});
   assert.equal(await page.locator('.official-choice-explanations li').count(),4,'basic review must preserve four official choices');
+  for(const width of [390,1280]){
+    await page.setViewportSize({width,height:900});
+    const layout=await page.locator('.official-choice-explanations').evaluate(node=>{const reason=node.querySelector('.official-choice-reason'),card=reason.closest('li');return {summaries:node.querySelectorAll('.official-choice-meaning').length,reasons:node.querySelectorAll('.official-choice-reason').length,retiredHeading:/판단 이유|판단 근거/.test(node.innerText),display:getComputedStyle(reason).display,ratio:reason.getBoundingClientRect().width/card.getBoundingClientRect().width,overflow:document.documentElement.scrollWidth>innerWidth}});
+    assert.equal(layout.summaries,4);assert.equal(layout.reasons,4);assert.equal(layout.retiredHeading,false);assert.equal(layout.display,'block');assert(layout.ratio>0.8,'reason collapsed into the retired label column');assert.equal(layout.overflow,false);
+  }
   assert.deepEqual(errors,[]);await context.close();
   console.log('PASS: 1280px round-card badges and 390x844 fullscreen/continuous-learning layouts preserve data, state, and responsive boundaries.');
 }
