@@ -177,16 +177,48 @@ function validatePinnedSnapshot(repoRoot) {
   return { available: true, snapshot, ...assets };
 }
 
+function runtimeChoicePayload(payload) {
+  assert.equal(payload.schemaVersion, 3);
+  assert.equal(payload.records.length, 1800);
+  const records = payload.records.map(record => ({
+    officialQuestionId: record.officialQuestionId,
+    explanation: record.explanation,
+    coreVerificationStatus: record.coreVerificationStatus,
+    choices: record.choices,
+    choiceExplanations: record.choiceExplanations.map(choice => ({
+      choiceIndex: choice.choiceIndex,
+      choiceText: choice.choiceText,
+      meaning: choice.meaning,
+      // Legacy explanations remain available only when a summary is absent.
+      ...(!choice.meaning ? { correctedFact: choice.correctedFact, explanation: choice.explanation } : {}),
+    })),
+  }));
+  const count = records.reduce((sum, record) => sum + record.choiceExplanations.length, 0);
+  assert.equal(count, payload.canonicalChoiceCount);
+  return { schemaVersion: 3, canonicalChoiceCount: count, records };
+}
+
 function main() {
   const repoRoot = path.resolve(__dirname, '..');
   const result = validateDeploymentContract(repoRoot);
   const pinned = validatePinnedSnapshot(repoRoot);
+  // Package only the learner-facing data after canonical source QA has passed.
+  // The repository's complete explanation file is never changed by this step
+  // outside the disposable Vercel build checkout.
+  if (process.env.VERCEL === '1') {
+    const file = path.join(repoRoot, 'dist', 'official-exam-explanations.json');
+    const original = fs.readFileSync(file, 'utf8');
+    const compact = JSON.stringify(runtimeChoicePayload(JSON.parse(original)));
+    fs.writeFileSync(file, compact);
+    console.log(`PASS: packaged official choice summaries: ${Buffer.byteLength(original)} -> ${Buffer.byteLength(compact)} bytes.`);
+  }
   console.log(`PASS: verified ${result.origin.assetCount} immutable deployment assets (${result.totalBytes} bytes); pinned snapshot ${pinned.available ? 'available' : 'not present in this shallow checkout'}.`);
 }
 
 if (require.main === module) main();
 
 module.exports = {
+  runtimeChoicePayload,
   assetExists,
   assetSetDigest,
   externalAssetInfo,
