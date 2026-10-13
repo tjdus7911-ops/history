@@ -1,0 +1,28 @@
+/* Shared notebook and official analysis, aligned with the existing navy/gold UI. */
+.official-weakness{margin:24px 0;padding:20px;border:1px solid #e3e6e8;border-radius:14px;background:#fff}
+.official-weakness h2,.notebook-list h2{margin:0 0 12px;font-size:20px}.official-weakness header small{color:#7c6a49;font-size:11px}
+.notebook-note{margin:8px 0 16px;color:#697785;font-size:12px;line-height:1.7}
+.official-weakness-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.official-weakness-card{display:block;min-width:0;padding:15px;border:1px solid #e1e5e8;border-radius:11px;background:#fafbfc;text-align:left;color:#26384f}
+.official-weakness-card.weak{border-color:#d2b88d;background:#fcf8f0}
+.weakness-card-title{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px}.weakness-card-title>b{font-size:15px}
+.weakness-accuracy{display:flex;align-items:baseline;gap:9px;margin:10px 0 7px}.weakness-accuracy strong{font-size:25px}.weakness-accuracy small,.weakness-counts{font-size:12px;color:#61707d}
+.official-weakness-card .progress{display:block;margin:7px 0 10px;height:6px}.official-weakness-card .progress>span{display:block;height:100%;background:#26384f}
+.weakness-counts{display:block;margin-top:4px;line-height:1.65}.weakness-link{display:flex;justify-content:space-between;margin-top:10px;font-size:12px;font-weight:700}
+.weakness-policy{margin-top:14px;color:#62717d;font-size:12px;line-height:1.7}.weakness-policy summary{padding:12px 0;cursor:pointer}
+.notebook{padding-bottom:90px}.notebook .v2-wrong-tabs{display:flex;flex-wrap:wrap;gap:7px;border:0;margin:16px 0}
+.notebook .v2-wrong-tabs button,.notebook button.primary,.notebook button.secondary,.notebook-detail button.primary,.notebook-detail button.secondary,.notebook-back{min-height:44px;border-radius:10px;padding:10px 14px;line-height:1.4}
+.notebook .v2-wrong-tabs button{flex:0 1 auto;border:1px solid #e0e5e8;background:#fff;font-size:13px}
+.notebook .v2-wrong-tabs button.selected{background:#26384f;color:#fff;border-color:#26384f}
+.notebook-filters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:12px}
+.notebook-filters label{min-width:0;font-size:12px;color:#63717e}.notebook-filters select{width:100%;min-height:44px;margin-top:5px;padding:10px;border:1px solid #dfe4e8;border-radius:10px;background:#fff;font-size:13px}
+.notebook-row{margin:10px 0}.notebook-card{display:flex;align-items:center;gap:14px;width:100%;min-width:0;padding:17px;border:1px solid #e2e6e9;border-radius:13px;background:#fff;text-align:left;color:#26384f}
+.notebook-copy{display:grid;gap:8px;min-width:0;flex:1}.notebook-chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.notebook-chip{display:inline-flex;align-items:center;width:fit-content;min-height:24px;padding:3px 8px;border-radius:7px;background:#edf1f5;color:#40556b;font-size:11px;font-weight:700;line-height:1.5}
+.notebook-chip.wrong{background:#faece7;color:#9a4d37}.notebook-copy>small{font-size:12px;color:#7b8791}.notebook-copy>strong{font-size:15px;line-height:1.65;overflow-wrap:anywhere;word-break:keep-all;font-weight:700}
+.notebook-state{font-size:12px;color:#9a5c44;line-height:1.6}.notebook-state.completed{color:#397154}.notebook-chevron{flex:0 0 20px;font-size:25px;color:#8a98a3}
+.notebook-all{width:100%;margin-top:14px}.notebook button:focus-visible,.notebook-card:focus-visible,.official-weakness button:focus-visible{outline:3px solid #9c7b45;outline-offset:3px}
+.notebook-detail{padding-bottom:90px}.notebook-detail>.v2-question-row{padding:16px;background:#fff;border-radius:13px;margin-top:14px}
+.notebook-detail .question-row-actions{display:block}.notebook-detail .question-row-actions>button{min-height:44px;border-radius:10px;margin:6px 0;padding:10px 14px}
+.notebook-detail .wrong-answer-detail{margin-top:12px}.notebook-detail .wrong-answer-detail>summary{min-height:44px;padding:12px 0}.notebook-detail h1{font-size:21px;line-height:1.6;margin:16px 0}.notebook-detail>p{font-size:14px;line-height:1.8;margin:12px 0}
+@media(max-width:560px){.official-weakness{padding:15px;margin:18px 0}.official-weakness-grid{grid-template-columns:1fr}.notebook-card{padding:14px}.notebook .v2-wrong-tabs button{font-size:12px}.notebook-filters{gap:9px}.notebook-detail>.v2-question-row{display:block}.notebook-detail>.v2-question-row>img{max-width:100%;margin-top:12px}}

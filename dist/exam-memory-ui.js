@@ -273,6 +273,7 @@ function officialExamListPage(){
 }
 function officialSessionQuestion(){return officialExamSession?.entries[officialExamSession.index]}
 function recordOfficialAttempt(questionId,answer){
+ if(!Number.isInteger(answer))return false;
  const savedRun=JSON.parse(JSON.stringify(state.run)),savedMain=state.mainRun?JSON.parse(JSON.stringify(state.mainRun)):state.mainRun;let right=false;
  try{right=recordQuestion(state,questionId,answer)}finally{state.run=savedRun;state.mainRun=savedMain}
  globalThis.THREE_LEARNING_BOUNDARY?.recordOfficialAttempt(officialEntry(questionId)?.sourceRecord?.officialQuestionId,answer);

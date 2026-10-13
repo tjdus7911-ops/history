@@ -68,10 +68,10 @@ async function assertAsyncLoaderContract(){
     assert(harness.markup().includes(`data-review="${wrongId}"`)&&!harness.markup().includes('official-choice-load'),'home recent-wrong preview must not render hidden choice explanations');
     assert.equal(calls.length,0,'closed home wrong-answer detail eagerly fetched choice explanations');
     harness.run(`studyTab='review';screen='study';render()`);
-    assert(harness.markup().includes(`data-wrong-detail="${wrongId}"`)&&!harness.markup().includes(`data-wrong-detail="${wrongId}" open`),'review list must render wrong-answer detail closed');
+    assert(harness.markup().includes(`data-wrong-open="${wrongId}"`)&&!harness.markup().includes('wrong-answer-detail'),'review list must expose a read-only card without eager details');
     assert.equal(calls.length,0,'closed review-list detail eagerly fetched choice explanations');
     const details={dataset:{wrongDetail:wrongId},open:true,closest:selector=>selector==='details[data-wrong-detail]'?details:null};
-    harness.dispatch('toggle',details);
+    harness.click({wrongOpen:wrongId});
     assert.equal(calls.length,1,'opening a wrong-answer detail must start one lazy payload fetch');
     assert.equal(harness.run('OFFICIAL_EXAM_EXPLANATION_LOADER.state'),'loading');
     assert(harness.markup().includes(`data-wrong-detail="${wrongId}" open`)&&harness.markup().includes('official-choice-load'),'opened detail must stay open while choice explanations load');
@@ -80,12 +80,11 @@ async function assertAsyncLoaderContract(){
     assert.equal(await pending,true);
     assert.equal(calls.length,1,'hydrating an opened wrong-answer detail fetched more than once');
     assert(harness.markup().includes(`data-wrong-detail="${wrongId}" open`)&&harness.markup().includes('async fixture'),'opened detail did not rerender with hydrated explanations');
-    details.open=false;harness.dispatch('toggle',details);
-    const closed=harness.run(`v2QuestionRow(QUESTIONS.find(item=>item.questionId===${JSON.stringify(wrongId)}))`);
-    assert(!closed.includes(`data-wrong-detail="${wrongId}" open`)&&!closed.includes('async fixture'),'closing a wrong-answer detail must clear its expanded explanation state');
-    details.open=true;harness.dispatch('toggle',details);
+    harness.click({notebookBack:'true'});
+    assert(harness.markup().includes(`data-wrong-open="${wrongId}"`),'back must return to the notebook list');
+    harness.click({wrongOpen:wrongId});
     assert.equal(calls.length,1,'reopening after hydration must reuse the ready payload');
-    assert(harness.markup().includes(`data-wrong-detail="${wrongId}" open`)&&harness.markup().includes('async fixture'),'reopened detail did not restore hydrated explanations');
+    assert(harness.markup().includes('async fixture'),'reopened detail did not restore hydrated explanations');
   }
   {
     const harness=createLoaderHarness(),calls=[];let resolveFetch;

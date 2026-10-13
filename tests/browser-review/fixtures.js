@@ -52,6 +52,13 @@
   }
   function initial(){
     if(scenario==='menus')return;
+    if(scenario==='official-weakness'){
+      const ids=OFFICIAL_ENTRIES_FOR_ERA('joseon').filter(e=>e.sourceRecord.answer!==null).slice(0,10).map(e=>e.canonicalQuestionId);
+      for(const [index,id] of ids.entries()){const q=QUESTIONS.find(q=>q.questionId===id);recordQuestion(state,id,index<5?(q.answer+1)%q.choices.length:q.answer);}
+      const q=QUESTIONS.find(q=>q.questionId===ids[0]);for(let i=0;i<2;i++)recordQuestion(state,q.questionId,(q.answer+1)%q.choices.length);
+      const ox=OX_QUESTIONS[0];OX_QUIZ_API.startSession('review',null,{count:1,questionIds:[ox.id]});document.querySelector('[data-ox-answer="'+String(!ox.answer)+'"]').click();
+      screen='exam-library';modal=null;save();render();return;
+    }
     if(scenario.startsWith('three-')){
       const scenes=Object.values(STORIES).filter(s=>s.threeStoryVersion===3&&s.storyActive!==false);
       if(scenario==='three-prologue'){resumeEra('three-kingdoms');return;}
@@ -114,7 +121,7 @@
   }
   try{
     if(!localStorage.getItem('review-initialized')){initial();localStorage.setItem('review-initialized','1');}
-    else if(scenario!=='menus')resumeEra(scenario.startsWith('three-')?'three-kingdoms':scenario.startsWith('proto-')?'proto-kingdoms':scenario.startsWith('joseon-')?'joseon':'goryeo');
+    else if(!['menus','official-weakness'].includes(scenario))resumeEra(scenario.startsWith('three-')?'three-kingdoms':scenario.startsWith('proto-')?'proto-kingdoms':scenario.startsWith('joseon-')?'joseon':'goryeo');
     new MutationObserver(diagnostic).observe(document.querySelector('#app'),{subtree:true,childList:true});window.addEventListener('resize',diagnostic);diagnostic();
   }catch(error){parent.postMessage({kind:'history-ui-review',text:'검증 장면 오류: '+error.message},location.origin);throw error;}
 })();
