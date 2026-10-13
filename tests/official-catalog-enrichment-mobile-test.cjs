@@ -23,8 +23,7 @@ async function main(){
   await page.locator('[data-official-tab="round"]').click();
   await page.locator('[data-official-round-level="심화"]').click();
   await page.locator('[data-official-round="79"]').click();
-  await page.locator('[data-official-start="exam"]').click();
-  await page.locator('[data-official-timer-start]').click();
+  await page.locator('[data-official-start="exam"]').click();assert.equal(await page.locator('.official-exam-cover').count(),1);assert.equal(await page.evaluate(()=>meta().officialExamActiveSession),undefined);assert.equal(await page.locator('[data-official-timer]').count(),0);await page.reload();assert.equal(await page.locator('.official-exam-cover').count(),1);await page.locator('[data-official-cover-start]').click();
   const stableState=()=>page.evaluate(()=>{const snapshot=OFFICIAL_EXAM_TIMER.snapshot();return {index:snapshot.index,answers:snapshot.answers,timerState:snapshot.timerState,endTimeMs:snapshot.endTimeMs,stored:meta().officialExamActiveSession}});
   const before=await stableState();
   await page.locator('.official-paper-open').click();

@@ -174,7 +174,7 @@ assert.equal(app.run('screen'),'records','a valid external hash change must appl
 
 /* Direct official-exam grading also owns a main-screen transition and must not
    leave a stale URL behind when the timer/session completes off-screen. */
-app=boot('#home',new Map());app.click({nav:'exam-library'});app.click({officialTab:'round'});app.click({officialRoundLevel:'심화'});app.click({officialRound:'57',officialEditionLevel:'심화'});app.click({officialStart:'exam'});app.click({officialTimerStart:'true'});app.click({nav:'home'});
+app=boot('#home',new Map());app.click({nav:'exam-library'});app.click({officialTab:'round'});app.click({officialRoundLevel:'심화'});app.click({officialRound:'57',officialEditionLevel:'심화'});app.click({officialStart:'exam'});app.click({officialCoverStart:app.run('globalThis.OFFICIAL_EXAM_COVER.snapshot().token')});app.click({officialTimerStart:'true'});app.click({nav:'home'});
 assert.equal(app.run('screen'),'home');assert.equal(app.browser.location.hash,'#home');
 app.click({officialRequestSubmit:'true'});app.click({officialSubmitConfirm:'true'});
 assert.equal(app.run('screen'),'exam-library','completed official exam must enter its result screen');

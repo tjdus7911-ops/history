@@ -36,7 +36,7 @@
   ],
   "qa": {
     "unit": "PASS weakness, recovery, unanswered, duplicate submit, OX separation, filters",
-    "regression": "PASS canonical, explanations, history, continuation, timer, editorial, v2, Joseon, other-era data preservation",
+    "regression": "PASS canonical, explanations, history, continuation, timer, editorial, v2, Joseon, other-era data preservation; Proto save/story/art and Three save/content/boundary passed (boundary assertion updated for expanded cards)",
     "browser": "Manual IAB 390x844 and 1280x900 PASS; isolated fixture storage; explanation preload used because managed browser large JSON fetch failed",
     "limitations": [
       "Native automated browser/build subprocess blocked with EPERM; remote deployment build will verify build",
@@ -58,5 +58,11 @@
     "tests/official-weakness-review-mobile-test.cjs",
     "tests/fixtures/proto-runtime-preservation.json",
     "docs/official-weakness-review-qa.json"
-  ]
+  ],
+  "deployment": {
+    "commit": "2cc0e1c4750f37e2b7e8eb82356de0139565c192",
+    "mainPushed": true,
+    "vercel": "success",
+    "url": "https://vercel.com/tjdus7911-3014s-projects/history/FreEoYJv7uELVNoe8VhnS2r9JLCc"
+  }
 }

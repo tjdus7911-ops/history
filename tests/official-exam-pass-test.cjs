@@ -11,7 +11,7 @@ const currentNumber=()=>run('officialSessionQuestion().sourceRecord.questionNumb
 function answerCurrent(){const id=currentId(),answer=run(`QUESTIONS.find(question=>question.questionId===${JSON.stringify(id)}).acceptedAnswers[0]`);click({officialPick:String(answer)});return {id,answer}}
 function restartAndStart(){click({officialTimerRestart:'true'});click({officialRestartConfirm:'true'});click({officialTimerStart:'true'})}
 
-boot();click({nav:'exam-library'});click({officialTab:'round'});click({officialRoundLevel:'심화'});click({officialRound:'70',officialEditionLevel:'심화'});click({officialStart:'exam'});click({officialTimerStart:'true'});
+boot();click({nav:'exam-library'});click({officialTab:'round'});click({officialRoundLevel:'심화'});click({officialRound:'70',officialEditionLevel:'심화'});click({officialStart:'exam'});click({officialCoverStart:run('globalThis.OFFICIAL_EXAM_COVER.snapshot().token')});click({officialTimerStart:'true'});
 const ids=copy('meta().officialExamActiveSession.questionIds');assert.equal(ids.length,50);
 
 // Scenario 1: question 1 is passed, the untouched sequence reaches 50, then question 1 returns.

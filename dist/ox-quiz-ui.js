@@ -17,7 +17,7 @@ const OX_ERA_COLORS={
  prehistoric:'#9a684f',kingdoms:'#c08b4e',goryeo:'#d0ad67',joseon:'#64877f',empire:'#5c7890',occupation:'#786b91',republic:'#a36b79'
 };
 const APP_ROUTES=new Set(['home','exam-library','ox','ox/quiz','ox/analysis','study','records']);
-const APP_DYNAMIC_ROUTE=/^exam-library\/results(?:\/[^/]+)?$/;
+const APP_DYNAMIC_ROUTE=/^exam-library\/(?:results(?:\/[^/]+)?|(?:cover|list)\/(?:round|era)\/[^/]+\/[^/]+)$/;
 let oxView='home',oxAnalysisSort='weakest',oxAnalysisReviewEra=null,oxHomeReviewEra='all',oxWrongReviewEra='all',oxMetaCache=null;
 let oxLastAppliedUrl='';
 

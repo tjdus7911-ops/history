@@ -1,0 +1,50 @@
+{
+  "task": "시험지 표지와 명시적인 시험 시작",
+  "route": "exam-library/cover/{round|era}/{회차|시대}/{유형}",
+  "listRoute": "exam-library/list/{round|era}/{회차|시대}/{유형}",
+  "preStart": "URL과 메모리의 표지 상태만 생성. 응시 ID·시작 시각·진행률·시험 기록을 생성하지 않음",
+  "start": "시험 시작 클릭 시 한 번의 RUNNING 세션 저장; 동일한 Date.now로 startedAtMs와 deadline 계산; 1번 문항부터 시작",
+  "metadata": "회차·유형·문항 수·총 배점은 선택한 카탈로그에서 계산; 제한시간은 기존 검증된 OFFICIAL_EXAM_DURATION_MS 규칙 재사용 (현재 회차 시험 80분), 시대별 시험은 기존 시간 제한 없음 유지",
+  "duplicates": "표지별 token, view guard, start lock, 즉시 disabled 및 표지 소비로 중복/오래된 클릭 차단",
+  "active": "기존 세션 보존 후 이어하기 또는 확인을 거친 새로 시작. 다른 회차의 기존 응시도 이름과 위치를 표시함",
+  "refresh": "표지는 URL로 복원; 실제 응시는 기존 version 3 스키마의 시작 시각/마감 시각·답안·현재 위치로 복원",
+  "back": "표지의 나가기 및 목록 URL은 기록 없이 목록으로 복귀; 실제 시험은 기존 나가기/일시정지/재시작 정책 유지",
+  "migration": false,
+  "preserved": [
+    "문제 원문",
+    "정답",
+    "배점",
+    "이미지",
+    "ID",
+    "채점 로직",
+    "완료 결과 기록",
+    "스토리 진행"
+  ],
+  "qa": {
+    "contract": "PASS 30초 표지 대기, 표지 나가기/재진입/복원, 무기록, 중복 시작, 10번 이어하기, 응시 새로고침, 새 시험 확인, 완료 후 재응시, 기본·심화",
+    "regression": "PASS timer timeout/manual submit, previous/next/pass, answer editing, separate attempt IDs, results reopening, route Back/Forward, explanation spoiler gate, weakness stats, Three learning boundaries",
+    "manualBrowser": "IAB 390x844 and 1280x900: 표지/시작/1번 문항/타이머/답안/현재 위치 새로고침/이어하기/나가기 확인. 모바일 시작 버튼 bottom543.7px at844px screen; 가로 넘침 없음",
+    "automation": "PC1280 및 모바일360/390/412 브라우저 회귀 시나리오 갱신; 네이티브 자동 브라우저 실행은 로컬 EPERM 제한으로 미실행",
+    "localBuild": "subprocess EPERM 제한. GitHub main의 Vercel 빌드 결과를 별도로 확인",
+    "qaAssets": "Local QA entry preloads explanation data; original image assets not copied to scratch. Cover has no image dependency."
+  },
+  "files": [
+    "dist/exam-memory-ui.js",
+    "dist/exam-memory.css",
+    "dist/ox-quiz-ui.js",
+    "package.json",
+    "tests/build.cjs",
+    "tests/exam-library-test.cjs",
+    "tests/official-exam-pass-test.cjs",
+    "tests/official-exam-history-test.cjs",
+    "tests/official-explanation-test.cjs",
+    "tests/official-exam-timer-test.cjs",
+    "tests/ox-route-test.cjs",
+    "tests/official-exam-timer-mobile-test.cjs",
+    "tests/official-catalog-enrichment-mobile-test.cjs",
+    "tests/official-exam-cover-test.cjs",
+    "tests/three-learning-boundary-test.cjs",
+    "docs/official-exam-cover-qa.json",
+    "docs/official-weakness-review-qa.json"
+  ]
+}

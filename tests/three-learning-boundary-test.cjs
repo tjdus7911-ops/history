@@ -63,9 +63,10 @@ click({officialEra:'goryeo'});officialAttempt(gateId);
 assert(html.includes(run('esc('+JSON.stringify(visibleOriginal)+')')));
 assert.deepEqual(copy('run()'),foreign);
 
-// Wrong notes for the Three wrapper receive the same scene-aware explanation.
+// Opening a wrong-note card reveals the same scene-aware explanation.
 const threeGate='THR-'+gateId;
 run('meta().questionRecords['+JSON.stringify(threeGate)+']={attempts:1,correctCount:0,lastAnswer:0,lastCorrect:false}');
+run('v2OpenWrongDetails.add('+JSON.stringify(threeGate)+')');
 assert(run('v2QuestionRow(THREE_STORY_RUNTIME.questionByOfficialId.get('+JSON.stringify(gateId)+'))').includes(run('esc('+JSON.stringify(safe)+')')));
 run("meta().threeCompleteBook.readSceneIds.push('THR-C23-S10')");
 const full=run('THREE_STORY_RUNTIME.questionByOfficialId.get('+JSON.stringify(gateId)+').threeExam.explanation');
