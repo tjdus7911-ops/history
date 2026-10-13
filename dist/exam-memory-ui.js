@@ -165,6 +165,50 @@ recordQuestion=function(currentState,questionId,userAnswer){
  return right;
 };
 
+
+/* Match the OX sample floor; weakness means below the advanced level-3 (60%) target. */
+const OFFICIAL_WEAKNESS_POLICY=Object.freeze({minimumUniqueQuestions:10,targetAccuracy:60,recentDays:7});
+let officialEventIndex=null,officialEventArray=null,officialEventLength=-1,officialEventTail=null;
+function officialSubmittedEvents(){
+ const events=meta().learningEvents||[];
+ if(officialEventArray===events&&officialEventLength===events.length&&officialEventTail===events.at(-1))return officialEventIndex;
+ const index=new Map(),questionsById=new Map(QUESTIONS.map(q=>[q.questionId,q]));
+ for(const event of events){const id=officialEntry(event.questionId)?.canonicalQuestionId||event.questionId;if(!index.has(id))index.set(id,{missing:0,last:null});const row=index.get(id),question=questionsById.get(id),count=question?.choices?.length||5;
+  if(Object.hasOwn(event,'answer')&&(!Number.isInteger(event.answer)||event.answer<0||event.answer>=count))row.missing++;
+  else if(Number.isInteger(event.answer)&&(!row.last||!event.answeredAt||!row.last.answeredAt||event.answeredAt>=row.last.answeredAt))row.last=event;
+ }
+ officialEventArray=events;officialEventLength=events.length;officialEventTail=events.at(-1);officialEventIndex=index;return index;
+}
+function officialLearningRecord(value){
+ const entry=officialEntry(value),id=entry?.canonicalQuestionId||(typeof value==='string'?value:value?.questionId),runtimeId=typeof value==='string'?value:value?.questionId,record=meta().questionRecords?.[id]||meta().questionRecords?.[runtimeId];
+ if(!record)return {id,attempts:0,wrongCount:0,correctCount:0,lastCorrect:null,lastAnsweredAt:null};
+ const events=officialSubmittedEvents().get(id),missing=Math.min(Number(record.attempts)||0,events?.missing||0),attempts=Math.max(0,(Number(record.attempts)||0)-missing),correctCount=Math.min(attempts,Math.max(0,Number(record.correctCount)||0));
+ const latestSubmitted=events?.last,recordHasAnswer=Number.isInteger(record.lastAnswer),lastCorrect=recordHasAnswer?record.lastCorrect:latestSubmitted?latestSubmitted.correct:missing?null:record.lastCorrect;
+ return {id,attempts,correctCount,wrongCount:Math.max(0,attempts-correctCount),lastCorrect:typeof lastCorrect==='boolean'?lastCorrect:null,lastAnsweredAt:recordHasAnswer?record.lastAttempt||latestSubmitted?.answeredAt||null:latestSubmitted?.answeredAt||null};
+}
+function officialWeaknessRows(){
+ const rows=OFFICIAL_ERA_TAXONOMY.map((era,index)=>({...era,index,solved:0,known:0,correct:0,wrong:0,unknown:0,attempts:0,wrongCount:0,repeatedWrong:0,recentWrong:false,lastWrongAt:null})),byEra=new Map(rows.map(row=>[row.id,row])),recent=Date.now()-OFFICIAL_WEAKNESS_POLICY.recentDays*86400000,wrongTimes=new Map((meta().wrongAnswers||[]).map(item=>[item.questionId,item.answeredAt]));
+ for(const entry of OFFICIAL_EXAM_CATALOG){const record=officialLearningRecord(entry.canonicalQuestionId);if(!record.attempts)continue;const row=byEra.get(entry.primaryEra);if(!row)continue;row.solved++;row.attempts+=record.attempts;row.wrongCount+=record.wrongCount;row.repeatedWrong+=Math.max(0,record.wrongCount-1);
+  if(record.lastCorrect===true){row.correct++;row.known++}else if(record.lastCorrect===false){row.wrong++;row.known++}else row.unknown++;
+  const time=wrongTimes.get(entry.canonicalQuestionId);if(record.wrongCount&&time&&Number.isFinite(Date.parse(time))){if(!row.lastWrongAt||time>row.lastWrongAt)row.lastWrongAt=time;if(Date.parse(time)>=recent)row.recentWrong=true;}
+ }
+ return rows.map(row=>({...row,accuracy:row.known?Math.round(row.correct/row.known*100):null,errorRate:row.known?Math.round(row.wrong/row.known*100):null,eligible:row.known>=OFFICIAL_WEAKNESS_POLICY.minimumUniqueQuestions,weak:row.known>=OFFICIAL_WEAKNESS_POLICY.minimumUniqueQuestions&&row.correct/row.known*100<OFFICIAL_WEAKNESS_POLICY.targetAccuracy})).sort((a,b)=>Number(b.weak)-Number(a.weak)||Number(b.eligible)-Number(a.eligible)||(a.eligible&&b.eligible?(a.accuracy??100)-(b.accuracy??100)||b.repeatedWrong-a.repeatedWrong||Number(b.recentWrong)-Number(a.recentWrong):a.index-b.index));
+}
+function officialWeaknessSection(){
+ const rows=officialWeaknessRows(),hasData=rows.some(row=>row.solved);
+ return '<section class="official-weakness" aria-label="시대별 기출 취약점"><h2>시대별 취약점</h2><p>문항별 최근 제출 답안 기준 정답률 · 누적 오답 횟수는 별도 집계</p>'+(!hasData?'<div class="ed-empty">기출문제를 제출하면 시대별 학습 기록이 쌓여요.</div>':'')+'<div class="official-weakness-list">'+rows.map(row=>'<button class="official-weakness-row '+(row.weak?'weak':'')+'" data-official-weak-era="'+row.id+'"><span class="official-weakness-title"><b>'+row.name+'</b><small>'+(!row.solved?'학습 전':!row.eligible?'표본 부족 · '+row.known+'/'+OFFICIAL_WEAKNESS_POLICY.minimumUniqueQuestions+'문항':row.weak?'집중 복습':'학습 중')+'</small></span><span class="official-weakness-rate"><b>'+(row.accuracy===null?'—':row.accuracy+'%')+'</b><small>최근 정답률</small></span><span class="official-weakness-meter" role="img" aria-label="'+row.name+' 정답률 '+(row.accuracy===null?'기록 없음':row.accuracy+'%')+'"><i style="width:'+(row.accuracy||0)+'%"></i></span><span class="official-weakness-detail">'+row.solved+'문항 중 최근 오답 '+row.wrong+'문항 · 오답률 '+(row.errorRate===null?'—':row.errorRate+'%')+'<br>누적 '+row.wrongCount+'회 틀림 · 반복 '+row.repeatedWrong+'회'+(row.recentWrong?' · 최근 7일 오답 있음':'')+(row.unknown?' · 최근 답안 미확인 '+row.unknown+'문항':'')+'</span><span class="official-weakness-chevron" aria-hidden="true">›</span></button>').join('')+'</div><small class="official-weakness-policy">고유 '+OFFICIAL_WEAKNESS_POLICY.minimumUniqueQuestions+'문항 이상, 최근 정답률 '+OFFICIAL_WEAKNESS_POLICY.targetAccuracy+'% 미만일 때 집중 복습으로 표시합니다. 같은 정답률이면 반복·최근 오답을 함께 봅니다.</small></section>';
+}
+function officialWrongTitle(question){
+ const original=String(question?.sourceQuestionText||question?.question||'').split('\n')[0].trim();
+ if(original&&!/원문 이미지|문제와 선택지를 확인|^제\d+회.*\d+번$/.test(original))return original;
+ const entry=officialEntry(question),record=entry&&OFFICIAL_EXPLANATION_BY_SOURCE_ID.get(entry.sourceRecord.officialQuestionId),clue=String(record?.clue||'').trim();
+ if(clue.length<=110&&/[다요][.!?]$/.test(clue))return clue;
+ const sentence=String(record?.explanation||question?.explanation||'').split(/(?<=[다요][.!?])\s+/)[0];
+ if(sentence.length<=160&&/[다요][.!?]$/.test(sentence))return sentence;
+ return (question?.examKeywords||[]).filter(Boolean).join(' · ')||'기출문제';
+}
+globalThis.OFFICIAL_LEARNING_ANALYSIS=Object.freeze({title:officialWrongTitle,rows:officialWeaknessRows,record:officialLearningRecord,era:value=>officialEntry(value)?.primaryEra||null,policy:OFFICIAL_WEAKNESS_POLICY});
+
 const officialProgress=entries=>{const attempted=entries.filter(entry=>(meta().questionRecords[entry.canonicalQuestionId]?.attempts||0)>0).length;return {attempted,total:entries.length,percent:entries.length?Math.round(attempted/entries.length*100):0}};
 const officialEntryOrder=(a,b)=>b.sourceRecord.examRound-a.sourceRecord.examRound||a.sourceRecord.questionNumber-b.sourceRecord.questionNumber||(a.sourceRecord.examLevel==='심화'?-1:1);
 const officialEntriesForEra=(era,level='all')=>OFFICIAL_EXAM_CATALOG.filter(entry=>entry.primaryEra===era&&(level==='all'||entry.sourceRecord.examLevel===level)).sort(officialEntryOrder);
@@ -261,7 +305,7 @@ function officialExamHome(){
  const tab='<div class="official-tabs" role="tablist">'+[['era','시대별'],['round','회차별']].map(([id,label])=>`<button data-official-tab="${id}" aria-selected="${officialExamTab===id}">${label}</button>`).join('')+'</div>';
  const roundLevels=officialExamTab==='round'?`<div class="official-round-levels" role="tablist" aria-label="회차별 시험 유형">${OFFICIAL_ROUND_LEVELS.map(level=>`<button data-official-round-level="${level}" aria-selected="${officialExamLevel===level}">${level}</button>`).join('')}</div>`:'';
  const cards=officialExamTab==='era'?OFFICIAL_ERA_TAXONOMY.map(era=>{const entries=officialEntriesForEra(era.id),progress=officialProgress(entries);return `<button class="official-card" data-official-era="${era.id}"><span class="open-pill">OPEN</span><h2>${era.name}</h2><p>${era.years}</p><small>실제 기출 ${entries.length}문항</small><div class="official-card-progress"><i style="width:${progress.percent}%"></i></div><b>${progress.attempted} / ${progress.total} · ${progress.percent}%</b></button>`}).join(''):officialEditions(officialExamLevel).map(entries=>{const source=entries[0].sourceRecord,progress=officialProgress(entries),examState=officialEditionExamState(entries);return `<article class="official-card round"><button class="official-card-open" data-official-round="${source.examRound}" data-official-edition-level="${source.examLevel}">${officialStatisticMarkup(source,'card')}<h2>제${source.examRound}회 · ${source.examLevel}</h2><p>${source.examYear}</p><small>실제 기출 ${entries.length}문항</small><div class="official-personal-progress"><small>나의 진행</small><div class="official-card-progress"><i style="width:${progress.percent}%"></i></div><b>진행 ${progress.attempted} / ${progress.total} · ${progress.percent}% · 시험 ${examState}</b></div></button></article>`}).join('');
- return `<section class="official-exams">${editorialHeader('기출문제','공식 문제지 그대로, 잠금 없이 학습')}<div class="official-history-entry"><button class="secondary" data-official-results-list="true">시험 기록 · 결과지 다시 보기</button></div>${tab}${roundLevels}<div class="official-notice">등록이 완료된 공식 기출은 모두 바로 풀 수 있습니다. 스토리 진행도와 기출 이용 여부는 분리되어 있습니다.</div><div class="official-grid">${cards}</div></section>`;
+ return `<section class="official-exams">${editorialHeader('기출문제','공식 문제지 그대로, 잠금 없이 학습')}<div class="official-history-entry"><button class="secondary" data-official-results-list="true">시험 기록 · 결과지 다시 보기</button></div>${tab}${roundLevels}<div class="official-notice">등록이 완료된 공식 기출은 모두 바로 풀 수 있습니다. 스토리 진행도와 기출 이용 여부는 분리되어 있습니다.</div><div class="official-grid">${cards}</div>${officialWeaknessSection()}</section>`;
 }
 function officialSelectionEntries(){return officialExamTab==='era'?officialEntriesForEra(officialExamEra,officialExamLevel):officialEntriesForRound(officialExamRound,officialExamLevel)}
 function officialExamListPage(){
@@ -463,7 +507,7 @@ function officialRecordsPage(){
  const records=OFFICIAL_EXAM_CATALOG.map(entry=>({entry,record:meta().questionRecords[entry.canonicalQuestionId]})).filter(item=>item.record?.attempts),attempts=records.reduce((sum,item)=>sum+item.record.attempts,0),correct=records.reduce((sum,item)=>sum+item.record.correctCount,0);
  const eraRows=OFFICIAL_ERA_TAXONOMY.map(era=>{const entries=officialEntriesForEra(era.id),attempted=entries.filter(entry=>meta().questionRecords[entry.canonicalQuestionId]?.attempts),eraAttempts=attempted.reduce((sum,entry)=>sum+meta().questionRecords[entry.canonicalQuestionId].attempts,0),eraCorrect=attempted.reduce((sum,entry)=>sum+meta().questionRecords[entry.canonicalQuestionId].correctCount,0),accuracy=eraAttempts?Math.round(eraCorrect/eraAttempts*100):null;return `<div class="official-record-era"><b>${era.name}</b><span>${accuracy===null?'—':accuracy+'%'}</span><small>${attempted.length} / ${entries.length}문항 학습</small><div class="progress"><span style="width:${entries.length?Math.round(attempted.length/entries.length*100):0}%"></span></div></div>`}).join('');
  const examCount=officialExamResults().length;
- return `<section class="official-records">${editorialHeader('나의 기록','스토리와 기출을 하나의 기록으로')}<div class="official-record-overview"><div><small>누적 풀이</small><strong>${attempts}</strong></div><div><small>누적 정답</small><strong>${correct}</strong></div><div><small>정답률</small><strong>${attempts?Math.round(correct/attempts*100)+'%':'—'}</strong></div><div><small>학습 문항</small><strong>${records.length}</strong></div></div><section class="official-record-exams"><div><h2>시험 기록</h2><p>완료한 시험 ${examCount}건의 점수와 전체 결과지를 다시 볼 수 있습니다.</p></div><button class="secondary" data-official-results-list="true">시험 결과 보기</button></section><section><h2>시대별 기출 기록</h2>${eraRows}</section><section><h2>이야기 기록</h2>${recordsBeforeExamMemory().replace(/<header[\s\S]*?<\/header>/,'')}</section></section>`;
+ return `<section class="official-records">${editorialHeader('나의 기록','스토리와 기출을 하나의 기록으로')}<div class="official-record-overview"><div><small>누적 풀이</small><strong>${attempts}</strong></div><div><small>누적 정답</small><strong>${correct}</strong></div><div><small>정답률</small><strong>${attempts?Math.round(correct/attempts*100)+'%':'—'}</strong></div><div><small>학습 문항</small><strong>${records.length}</strong></div></div><section class="official-record-exams"><div><h2>시험 기록</h2><p>완료한 시험 ${examCount}건의 점수와 전체 결과지를 다시 볼 수 있습니다.</p></div><button class="secondary" data-official-results-list="true">시험 결과 보기</button></section>${officialWeaknessSection()}<section><h2>시대별 기출 기록</h2><p class="mode-description">아래 정답률은 누적 풀이 기준이며, 위 취약점은 문항별 최근 답안 기준입니다.</p>${eraRows}</section><section><h2>이야기 기록</h2>${recordsBeforeExamMemory().replace(/<header[\s\S]*?<\/header>/,'')}</section></section>`;
 }
 
 const shellBeforeExamMemory=shell;
@@ -524,6 +568,8 @@ function restoreOfficialSession(){
 }
 document.addEventListener('click',event=>{
  const button=event.target.closest('button');if(!button||button.disabled)return;const data=button.dataset;
+ if(data.officialWrongRetry){event.stopImmediatePropagation();const entries=editorialWrongQuestions().filter(q=>officialLearningRecord(q).lastCorrect===false).map(q=>officialEntry(q)).filter(Boolean);if(entries.length)startOfficialSession(entries,'learn',{scope:'wrong-only'});return}
+ if(data.officialWeakEra){event.stopImmediatePropagation();wrongEra=data.officialWeakEra;wrongChapter='all';wrongConcept='all';wrongFilter='official';studyTab='review';navigate('study');return}
  if(data.officialExplanationsRetry){event.stopImmediatePropagation();officialChoicePayloadState='idle';officialChoicePayloadError='';ensureOfficialChoiceExplanations();render();return}
  if(data.officialImageOpen){event.stopImmediatePropagation();const entry=officialEntry(data.officialImageOpen);if(!entry||!officialDetailImage(entry))return;officialImageReturnFocusId=entry.canonicalQuestionId;modal={type:'official-image',questionId:entry.canonicalQuestionId,zoomed:false};render();return}
  if(data.officialImageZoom){event.stopImmediatePropagation();if(modal?.type!=='official-image')return;modal.zoomed=!modal.zoomed;render();return}

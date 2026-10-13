@@ -1,0 +1,19 @@
+const fs=require('fs'),path=require('path'),http=require('http'),assert=require('assert');
+const {chromium}=require('playwright');
+const root=path.resolve(__dirname,'../dist');
+const server=http.createServer((req,res)=>{const name=decodeURIComponent(req.url.split('?')[0]),file=path.resolve(root,'.'+(name==='/'?'/index.html':name));if(!file.startsWith(root+path.sep)){res.writeHead(403);return res.end()}fs.readFile(file,(error,data)=>{if(error){res.writeHead(404);return res.end()}res.setHeader('Content-Type',({'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json'})[path.extname(file)]||'application/octet-stream');res.end(data)})});
+let browser;
+async function main(){
+ await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));browser=await chromium.launch({headless:true,...(process.env.BROWSER_CHANNEL?{channel:process.env.BROWSER_CHANNEL}:{})});
+ for(const width of [390,1280]){
+  const context=await browser.newContext({viewport:{width,height:900},serviceWorkers:'block'}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('http://127.0.0.1:'+server.address().port+'/');
+  const fixture=await page.evaluate(()=>{const entries=globalThis.OFFICIAL_EXAM_CATALOG.filter(e=>e.primaryEra==='joseon').slice(0,10);for(let i=0;i<10;i++){const q=QUESTIONS.find(q=>q.questionId===entries[i].canonicalQuestionId),wrong=[0,1,2,3,4].find(a=>!(q.acceptedAnswers||[q.answer]).includes(a));recordQuestion(state,q.questionId,i<5?wrong:q.answer)}const q=QUESTIONS.find(q=>q.questionId===entries[5].canonicalQuestionId),wrong=[0,1,2,3,4].find(a=>!(q.acceptedAnswers||[q.answer]).includes(a));for(let i=0;i<3;i++)recordQuestion(state,q.questionId,wrong);recordQuestion(state,q.questionId,q.answer);screen='exam-library';render();return {id:q.questionId,title:OFFICIAL_LEARNING_ANALYSIS.title(q)}});
+  const weak=page.locator('[data-official-weak-era="joseon"]');assert((await weak.innerText()).includes('50%'));await weak.click();assert.equal(await page.locator('[data-wrong-era]').inputValue(),'joseon');assert.equal(await page.locator('[data-ox-wrong-open]').count(),0);
+  const card=page.locator('[data-wrong-detail-open="'+fixture.id+'"]');assert((await card.innerText()).includes('3회 틀림'));assert((await card.innerText()).includes('최근 풀이 정답'));const before=await page.evaluate(()=>JSON.stringify(meta()));await card.click();await page.locator('.wrong-answer-detail').first().waitFor();assert.equal(await page.evaluate(()=>JSON.stringify(meta())),before,'opening a card recorded another attempt');
+  const layout=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth,buttons:[...document.querySelectorAll('.v2-wrong-tabs button')].map(n=>n.getBoundingClientRect().height),badCopy:/클릭하면 이동|누르면 이동|문제로 이동/.test(document.querySelector('main').innerText)}));assert.equal(layout.overflow,false);assert(layout.buttons.every(h=>h>=44));assert.equal(layout.badCopy,false);
+  await page.locator('[data-wrong-detail-open="'+fixture.id+'"]').click();await page.evaluate(()=>window.scrollTo(0,document.documentElement.scrollHeight));if(width===390){const clear=await page.locator('.wrong-note-card').last().evaluate(n=>{const rect=n.getBoundingClientRect(),nav=document.querySelector('.sidebar').getBoundingClientRect();return rect.bottom<=nav.top});assert(clear,'bottom navigation covered the final wrong card')}
+  assert.deepEqual(errors,[]);await context.close();
+ }
+ console.log('PASS: 390px/1280px weakness routing, full-card detail, cumulative chips, 44px filters, no overflow, and bottom navigation clearance');
+}
+main().then(async()=>{await browser.close();server.close()}).catch(async e=>{console.error(e);if(browser)await browser.close();server.close();process.exitCode=1});

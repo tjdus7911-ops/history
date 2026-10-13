@@ -87,6 +87,7 @@ for(const file of context.eraAssets)assert(deploymentAssets.assetExists(repoRoot
 // as well as every structured choice explanation and its spoiler-safe rendering.
 childProcess.execFileSync(process.execPath,['tests/official-canonical-qa-test.cjs'],{stdio:'inherit'});
 childProcess.execFileSync(process.execPath,['tests/official-catalog-enrichment-ui-test.cjs'],{stdio:'inherit'});
+childProcess.execFileSync(process.execPath,['tests/official-weakness-review-test.cjs'],{stdio:'inherit'});
 // Only preview builds expose the responsive review harness. It uses the same
 // game scripts and styles, with an isolated storage prefix for test fixtures.
 const reviewFiles=['ui-review.html','ui-review-game.html','ui-review-storage.js','ui-review-fixtures.js'];

@@ -55,7 +55,7 @@ assert(html.includes('역사 해설'));assert(html.includes(visibleExplanation(s
 
 // TEST 8: wrong-note detail includes question, correct answer, selected answer, and explanation.
 run(`recordQuestion(state,${JSON.stringify(eraEntry.canonicalQuestionId)},${eraWrong});screen='study';studyTab='review';render()`);
-assert(html.includes('wrong-answer-detail'));assert(html.includes('문제 · 정답 · 해설 보기'));assert(html.includes('내가 선택한 답'));assert(html.includes(visibleExplanation(eraQuestion)));
+click({wrongDetailOpen:eraEntry.canonicalQuestionId});assert(html.includes('wrong-answer-detail'));assert(html.includes('문제 · 정답 · 해설 보기'));assert(html.includes('내가 선택한 답'));assert(html.includes(visibleExplanation(eraQuestion)));
 
 // TEST 9 is covered by the exhaustive canonical assertions above.
 console.log('PASS: all 1,800 official explanations covered; era/round correct+wrong feedback, exam spoiler gate+post-grade review, Story, wrong-note detail, and null safety.');

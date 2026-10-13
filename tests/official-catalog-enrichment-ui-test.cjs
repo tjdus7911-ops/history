@@ -68,10 +68,10 @@ async function assertAsyncLoaderContract(){
     assert(harness.markup().includes(`data-review="${wrongId}"`)&&!harness.markup().includes('official-choice-load'),'home recent-wrong preview must not render hidden choice explanations');
     assert.equal(calls.length,0,'closed home wrong-answer detail eagerly fetched choice explanations');
     harness.run(`studyTab='review';screen='study';render()`);
-    assert(harness.markup().includes(`data-wrong-detail="${wrongId}"`)&&!harness.markup().includes(`data-wrong-detail="${wrongId}" open`),'review list must render wrong-answer detail closed');
+    assert(harness.markup().includes(`data-wrong-detail-open="${wrongId}"`)&&!harness.markup().includes(`data-wrong-detail="${wrongId}" open`),'review list must render wrong-answer detail closed');
     assert.equal(calls.length,0,'closed review-list detail eagerly fetched choice explanations');
     const details={dataset:{wrongDetail:wrongId},open:true,closest:selector=>selector==='details[data-wrong-detail]'?details:null};
-    harness.dispatch('toggle',details);
+    harness.click({wrongDetailOpen:wrongId});
     assert.equal(calls.length,1,'opening a wrong-answer detail must start one lazy payload fetch');
     assert.equal(harness.run('OFFICIAL_EXAM_EXPLANATION_LOADER.state'),'loading');
     assert(harness.markup().includes(`data-wrong-detail="${wrongId}" open`)&&harness.markup().includes('official-choice-load'),'opened detail must stay open while choice explanations load');
@@ -160,7 +160,7 @@ const storyMapping=copy(`(()=>{
   model.run.visited=[...(model.run.visited||[]),question.relatedSceneId];
   const protoAuthored=globalThis.PROTO_REVISION_RUNTIME?.questionByOfficialId?.get(question.officialQuestionId)?.protoExam,protoBook=globalThis.PROTO_REVISION_ACTIONS?.book?.(model);if(protoBook)for(const sceneId of new Set([...(protoAuthored?.proposed?.requiresReadSceneIds||[]),question.relatedSceneId])){const source=globalThis.PROTO_REVISION_RUNTIME?.sources?.get(sceneId);for(const line of [...(source?.dialogues||[]),...(source?.protoCommon||[])])if(!protoBook.readLineIds.includes(line.lineId))protoBook.readLineIds.push(line.lineId);if(source?.choices?.length&&!Number.isInteger(protoBook.choiceBySceneId[sceneId]))protoBook.choiceBySceneId[sceneId]=0;if(sceneId&&!protoBook.readSceneIds.includes(sceneId))protoBook.readSceneIds.push(sceneId)}
   const originalState=state,canonicalQuestion=QUESTIONS.find(item=>item.questionId===entry.canonicalQuestionId);let wrongRow='';
-  try{state=model;wrongRow=v2QuestionRow(canonicalQuestion)}finally{state=originalState}
+  try{state=model;v2OpenWrongDetails.add(canonicalQuestion.questionId);wrongRow=v2QuestionRow(canonicalQuestion)}finally{v2OpenWrongDetails.delete(canonicalQuestion.questionId);state=originalState}
   const wrongStoryQuestionId=wrongRow.match(/data-story-memory="([^"]+)"/)?.[1],wrongStoryScene=QUESTIONS.find(item=>item.questionId===wrongStoryQuestionId)?.relatedSceneId;
   Object.assign(entry,saved);
   return {

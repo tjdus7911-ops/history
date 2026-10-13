@@ -1,0 +1,62 @@
+{
+  "task": "시대별 취약점 분석 및 오답노트 UI",
+  "eras": [
+    "선사·고대",
+    "고려",
+    "조선",
+    "개항기·대한제국",
+    "일제강점기",
+    "대한민국"
+  ],
+  "method": {
+    "accuracy": "실제 제출한 고유 기출문제의 최근 답안 기준",
+    "minimumUniqueQuestions": 10,
+    "weakBelowPercent": 60,
+    "cumulativeWrong": "누적 시도 수에서 정답 수를 뺀 값; 정답으로 복구해도 보존",
+    "repeatedWrong": "각 문항의 누적 오답 중 첫 오답을 제외한 횟수",
+    "unanswered": "미응답은 통계에서 제외하며 이전 실제 답안 상태를 보존",
+    "ox": "기출과 별도 기록 및 통계 유지"
+  },
+  "ui": {
+    "wholeCard": true,
+    "openingDoesNotStartAttempt": true,
+    "explicitRetry": true,
+    "minimumTouchPx": 44,
+    "mobileBottomNavClear": true
+  },
+  "migration": false,
+  "preserved": [
+    "문제 원문",
+    "정답",
+    "배점",
+    "문제 ID",
+    "선지 순서",
+    "기록 형식",
+    "채점 로직"
+  ],
+  "qa": {
+    "unit": "PASS weakness, recovery, unanswered, duplicate submit, OX separation, filters",
+    "regression": "PASS canonical, explanations, history, continuation, timer, editorial, v2, Joseon, other-era data preservation",
+    "browser": "Manual IAB 390x844 and 1280x900 PASS; isolated fixture storage; explanation preload used because managed browser large JSON fetch failed",
+    "limitations": [
+      "Native automated browser/build subprocess blocked with EPERM; remote deployment build will verify build",
+      "Existing proto revision raw hash depends on CRLF checkout; untouched Git LF blob differs; no story source changed"
+    ],
+    "approvedBaseline": "Only editorial renderer hash updated to reflect authorized wrong-note UI; all question/data hashes preserved"
+  },
+  "files": [
+    "dist/exam-memory-ui.js",
+    "dist/exam-memory.css",
+    "dist/editorial-ui.js",
+    "dist/v2-app.js",
+    "dist/ox-quiz-ui.js",
+    "package.json",
+    "tests/build.cjs",
+    "tests/official-explanation-test.cjs",
+    "tests/official-catalog-enrichment-ui-test.cjs",
+    "tests/official-weakness-review-test.cjs",
+    "tests/official-weakness-review-mobile-test.cjs",
+    "tests/fixtures/proto-runtime-preservation.json",
+    "docs/official-weakness-review-qa.json"
+  ]
+}

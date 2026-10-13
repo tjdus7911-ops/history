@@ -303,9 +303,14 @@ function oxAnalysis(){
 }
 function oxPage(){return oxView==='quiz'?oxQuiz():oxView==='result'?oxResult():oxView==='analysis'?oxAnalysis():oxHome();}
 
+const oxWrongExpanded=new Set();
+function oxWrongCardIds(eraId,status='needed'){
+ const get=status==='completed'?oxCompletedReviewIds:oxCurrentWrongIds;
+ return eraId==='ancient'?[...get('prehistoric'),...get('kingdoms')]:get(eraId);
+}
 function oxWrongCards(eraId=oxWrongReviewEra,status='needed'){
- const ids=status==='completed'?oxCompletedReviewIds(eraId):oxCurrentWrongIds(eraId);
- return ids.length?ids.map(id=>{const question=OX_BY_ID.get(id),record=oxRecord(id);return `<article class="ox-wrong-row ${status==='completed'?'completed':''}"><span>${esc(oxEra(question.eraId).shortName)}</span><div><h3>${esc(question.statement)}</h3><p>${esc(oxTopicLabel(question))} · 누적 오답 ${record?.wrongCount||1}회</p></div>${status==='completed'?'<span class="ox-review-state">복습 완료</span>':`<button class="primary" data-ox-review-one="${id}">다시 풀기</button>`}</article>`;}).join(''):`<div class="ed-empty">${status==='completed'?'아직 복습을 완료한 과거 오답이 없습니다.':'선택한 시대에 현재 복습할 OX 오답이 없습니다.'}</div>`;
+ const ids=oxWrongCardIds(eraId,status);
+ return ids.length?ids.map(id=>{const question=OX_BY_ID.get(id),record=oxRecord(id),open=oxWrongExpanded.has(id);return '<article class="ox-wrong-row wrong-note-row '+(status==='completed'?'completed':'')+'"><button class="wrong-note-card" data-ox-wrong-open="'+esc(id)+'" aria-expanded="'+open+'" aria-controls="ox-wrong-panel-'+esc(id)+'"><span class="wrong-note-copy"><span class="wrong-note-chips"><span class="v2-source">OX 퀴즈</span><span class="wrong-count">'+(record?.wrongCount||0)+'회 틀림</span><span class="wrong-era-chip">'+esc(oxEra(question.eraId).shortName)+'</span></span><strong>'+esc(question.statement)+'</strong><small class="wrong-note-source">'+esc(oxTopicLabel(question))+'</small><span class="wrong-note-status '+(status==='completed'?'completed':'')+'">'+(status==='completed'?'최근 풀이 정답 · 복습 완료':'최근 풀이 오답 · 복습 필요')+'</span></span><span class="wrong-note-chevron" aria-hidden="true">›</span></button>'+(open?'<div class="wrong-note-detail" id="ox-wrong-panel-'+esc(id)+'"><p>내 답 <b>'+(record?.lastAnswer===true?'O':record?.lastAnswer===false?'X':'기록 없음')+'</b> · 정답 <b>'+(question.answer?'O':'X')+'</b></p><p>'+esc(question.explanation)+'</p><button class="primary" data-ox-review-one="'+esc(id)+'">다시 풀기</button></div>':'')+'</article>';}).join(''):'<div class="ed-empty">'+(status==='completed'?'아직 복습을 완료한 과거 오답이 없습니다.':'선택한 시대에 현재 복습할 OX 오답이 없습니다.')+'</div>';
 }
 const studyBeforeOX=study;
 study=function(){
@@ -316,7 +321,7 @@ study=function(){
  }
  let html=studyBeforeOX();
  html=html.replace('</div><div class="v2-filters">',`<button data-wrong-filter="ox">OX 퀴즈 ${oxCurrentWrongIds('all').length}</button></div><div class="v2-filters">`);
- if(wrongFilter==='all'&&oxCurrentWrongIds('all').length)html=html.replace('<button class="ed-link" data-study-jump="official">',`<section class="v2-section ox-wrong-in-all"><h2>OX 퀴즈 오답 · ${oxCurrentWrongIds('all').length}</h2>${oxWrongCards('all')}</section><button class="ed-link" data-study-jump="official">`);
+ if(wrongFilter==='all'&&oxWrongCardIds(wrongEra,'needed').length)html=html.replace('<button class="ed-link" data-study-jump="official">',`<section class="v2-section ox-wrong-in-all"><h2>OX 퀴즈 오답 · ${oxWrongCardIds(wrongEra,'needed').length}</h2>${oxWrongCards(wrongEra)}</section><button class="ed-link" data-study-jump="official">`);
  return html;
 };
 
@@ -344,6 +349,7 @@ if(typeof v2QuestionRow==='function'){
 
 document.addEventListener('click',event=>{
  const button=event.target.closest('button');if(!button||button.disabled)return;const data=button.dataset;
+ if(data.oxWrongOpen){event.stopImmediatePropagation();const id=data.oxWrongOpen;if(oxWrongExpanded.has(id))oxWrongExpanded.delete(id);else oxWrongExpanded.add(id);render();return;}
  if(data.nav==='ox'){event.stopImmediatePropagation();screen='ox';modal=null;oxView='home';oxWriteRoute('ox');render();window.scrollTo(0,0);return;}
  if(data.oxEra){event.stopImmediatePropagation();newOXSession('era',20,data.oxEra);return;}
  if(data.oxReview){event.stopImmediatePropagation();newOXSession('review',20,oxHomeReviewEra==='all'?null:oxHomeReviewEra);return;}
