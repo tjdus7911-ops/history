@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "provider": "github-raw",
+  "repository": "tjdus7911-ops/history",
+  "commit": "abb20c178a777bee9041f2bf70a34bfb56c7debf",
+  "tree": "2e9e70fdb897ec79289a038eee99b66f4deef6aa",
+  "sourcePath": "dist/assets/exams/catalog/detail",
+  "publicPath": "/assets/exams/catalog/detail",
+  "assetCount": 1800,
+  "totalBytes": 161084204,
+  "assetSetSha256": "687bb833eab8b60c55ffcb26e46f971a4ce39b1d8673c52c7684c83a144c6fd4",
+  "snapshotAssetCount": 3600,
+  "snapshotTotalBytes": 370141486,
+  "legacySnapshots": [
+    {
+      "commit": "dc036fb4f4b3007120e42b73723a2b6d02c3bec7",
+      "assetCount": 1800,
+      "totalBytes": 209057282
+    }
+  ]
+}

@@ -1,8 +1,14 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
-  "buildCommand": "HISTORY_UI_REVIEW=1 npm run build",
+  "buildCommand": "npm run build && node scripts/prepare-vercel-output.cjs --apply",
   "outputDirectory": "dist",
+  "rewrites": [
+    {
+      "source": "/assets/exams/catalog/detail/:path*",
+      "destination": "https://raw.githubusercontent.com/tjdus7911-ops/history/abb20c178a777bee9041f2bf70a34bfb56c7debf/dist/assets/exams/catalog/detail/:path*"
+    }
+  ],
   "headers": [
     {
       "source": "/manifest.webmanifest",
@@ -44,7 +50,16 @@
       ]
     },
     {
-      "source": "/assets/exams/catalog/(detail|thumbnail)/(.*)",
+      "source": "/assets/exams/catalog/detail/:path*",
+      "headers": [
+        {
+          "key": "x-vercel-enable-rewrite-caching",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "source": "/assets/exams/catalog/thumbnail/:path*",
       "headers": [
         {
           "key": "Cache-Control",
