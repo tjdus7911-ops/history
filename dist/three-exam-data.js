@@ -12,7 +12,7 @@ globalThis.THREE_COMPLETE_EXAMS = {
     "evidence": "docs/three-content/exam-source-evidence.json",
     "evidenceSha256": "35233b31bb44e7b54d920b94d8d7ccd56b2db96053d59978b32065db970cdaa3",
     "catalog": "dist/official-exam-catalog.json",
-    "catalogSha256": "e08bda5d27641b5a0e602f8a46522f243971bfba570ea5f82b6e54f6fc7d31b1"
+    "catalogSha256": "448cf29cf8edc7337e53d7d1d47f537ea44ced591f822e86792385cab45d3f6c"
   },
   "stats": {
     "mainScenes": 215,

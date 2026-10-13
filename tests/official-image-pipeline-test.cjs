@@ -8,7 +8,7 @@ const DIST = path.resolve('dist');
 const IMAGE_ROOT = path.join(DIST, 'assets', 'exams', 'catalog');
 const DETAIL_ROOT = path.join(IMAGE_ROOT, 'detail');
 const THUMBNAIL_ROOT = path.join(IMAGE_ROOT, 'thumbnail');
-const REVISION = 'official-exam-hq-v2-240dpi';
+const REVISION = 'official-exam-hq-v3-240dpi-q80';
 const FLAT_IMAGE_PATTERN = /assets\/exams\/catalog\/(\d+-(?:advanced|basic)-\d{2}\.webp)/g;
 const GENERATED_CATALOG_NAMES = new Set([
   'official-exam-catalog.js',
@@ -89,6 +89,7 @@ function liveFlatReferences() {
 
 const catalog = JSON.parse(fs.readFileSync(path.join(DIST, 'official-exam-catalog.json'), 'utf8'));
 const inventory = JSON.parse(fs.readFileSync(path.join(DIST, 'official-exam-inventory.json'), 'utf8'));
+const generator = fs.readFileSync(path.resolve('scripts/build-official-exams.py'), 'utf8');
 const jsContext = { globalThis: {} };
 vm.runInNewContext(fs.readFileSync(path.join(DIST, 'official-exam-catalog.js'), 'utf8'), jsContext);
 const jsCatalog = jsContext.globalThis.OFFICIAL_EXAM_SOURCE_RECORDS;
@@ -103,6 +104,11 @@ assert.deepEqual(
   'JS/JSON catalogs must contain the same records',
 );
 assert.equal(new Set(catalog.map(item => item.officialQuestionId)).size, 1800, 'question IDs must be unique');
+assert.equal(
+  (generator.match(/synchronize_explanation_image_hashes\(/g) || []).length,
+  3,
+  'both compression-only and normal PDF builds must refresh explanation image hashes',
+);
 
 const detailFiles = listFiles(DETAIL_ROOT, name => name.endsWith('.webp'));
 const thumbnailFiles = listFiles(THUMBNAIL_ROOT, name => name.endsWith('.webp'));
@@ -157,7 +163,7 @@ assert.deepEqual(inventory.imagePipeline, {
   format: 'webp',
   detectionDpi: 120,
   detailDpi: 240,
-  detailQuality: 88,
+  detailQuality: 80,
   thumbnailWidth: 320,
   thumbnailQuality: 68,
   detailImageCount: 1800,

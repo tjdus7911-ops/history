@@ -33,9 +33,9 @@ THUMBNAIL_IMAGE_ROOT = IMAGE_ROOT / "thumbnail"
 DETECTION_DPI = 120
 DETAIL_DPI = 240
 THUMBNAIL_WIDTH = 320
-DETAIL_WEBP_QUALITY = 88
+DETAIL_WEBP_QUALITY = 80
 THUMBNAIL_WEBP_QUALITY = 68
-IMAGE_REVISION = "official-exam-hq-v2-240dpi"
+IMAGE_REVISION = "official-exam-hq-v3-240dpi-q80"
 
 # These questions exposed false OCR headings in the old generator. The bogus
 # heading split the preceding question in two (57 심화 6 / 71 기본 4) and then
@@ -1121,10 +1121,204 @@ def atomic_write_text(path: Path, content: str) -> None:
     temporary.replace(path)
 
 
+def synchronize_explanation_image_hashes(
+    records: list[dict], *, require_complete_catalog: bool = True
+) -> int:
+    """Keep structured choice provenance linked after compression-only changes."""
+    explanation_path = DIST / "official-exam-explanations.json"
+    if not explanation_path.exists():
+        return 0
+    payload = json.loads(explanation_path.read_text(encoding="utf-8"))
+    hashes = {item["officialQuestionId"]: item["detailImageSha256"] for item in records}
+    refreshed = 0
+    for record in payload.get("records", []):
+        expected = hashes.get(record.get("officialQuestionId"))
+        if not expected:
+            if require_complete_catalog:
+                raise ValueError(
+                    f"explanation points outside canonical catalog: {record.get('officialQuestionId')}"
+                )
+            continue
+        linked_hashes = record.get("choiceImageSha256") or []
+        for index, current in enumerate(linked_hashes):
+            if current:
+                if current != expected:
+                    refreshed += 1
+                linked_hashes[index] = expected
+        for choice in record.get("choiceExplanations", []):
+            if choice.get("sourceImageSha256"):
+                if choice["sourceImageSha256"] != expected:
+                    refreshed += 1
+                choice["sourceImageSha256"] = expected
+                choice["sourceImageHashVerified"] = True
+
+    all_choices = [
+        choice
+        for record in payload.get("records", [])
+        for choice in record.get("choiceExplanations", [])
+    ]
+    qa = payload.setdefault("qa", {})
+    qa["missingChoiceImageHashCount"] = sum(
+        not choice.get("sourceImageSha256") for choice in all_choices
+    )
+    qa["choiceImageHashMismatchCount"] = sum(
+        bool(choice.get("sourceImageSha256"))
+        and bool(hashes.get(record.get("officialQuestionId")))
+        and choice["sourceImageSha256"] != hashes[record["officialQuestionId"]]
+        for record in payload.get("records", [])
+        for choice in record.get("choiceExplanations", [])
+    )
+    qa["fullRecordJsonBytes"] = len(
+        json.dumps(payload.get("records", []), ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    )
+    atomic_write_text(
+        explanation_path,
+        json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
+    )
+    return refreshed
+
+
+def reencode_existing_details() -> None:
+    """Re-encode verified 240 dpi crops without rerunning layout/OCR detection.
+
+    This mode is intentionally limited to compression-only revisions. It verifies
+    every current byte hash and preserves the decoded dimensions before swapping
+    catalog paths atomically. A later full PDF rebuild uses the same quality
+    constant, so this deployment optimization cannot be reverted by the normal
+    generator.
+    """
+    catalog_path = DIST / "official-exam-catalog.json"
+    inventory_path = DIST / "official-exam-inventory.json"
+    if not catalog_path.exists() or not inventory_path.exists():
+        raise FileNotFoundError("--reencode-existing-details requires the existing catalog and inventory")
+
+    records = json.loads(catalog_path.read_text(encoding="utf-8"))
+    inventory = json.loads(inventory_path.read_text(encoding="utf-8"))
+    if len(records) != len(EXAMS) * 50:
+        raise ValueError(f"expected {len(EXAMS) * 50} canonical records, got {len(records)}")
+
+    source_revisions = sorted({item.get("imageRevision", "unknown") for item in records})
+    source_bytes = sum(int(item.get("detailImageBytes") or 0) for item in records)
+    reencoded_count = 0
+    for index, item in enumerate(records, start=1):
+        current_path = DIST / item["detailImage"]
+        if not current_path.is_file():
+            raise FileNotFoundError(f"missing detail image: {current_path}")
+        current_payload = current_path.read_bytes()
+        current_hash = sha256_bytes(current_payload)
+        if current_hash != item.get("detailImageSha256"):
+            raise ValueError(f"detail hash mismatch before re-encode: {item['officialQuestionId']}")
+
+        if item.get("imageRevision") == IMAGE_REVISION:
+            generated = {
+                "path": current_path,
+                "sha256": current_hash,
+                "bytes": len(current_payload),
+                "width": int(item["detailImageWidth"]),
+                "height": int(item["detailImageHeight"]),
+            }
+        else:
+            with Image.open(BytesIO(current_payload)) as decoded:
+                decoded.load()
+                if decoded.size != (
+                    int(item["detailImageWidth"]), int(item["detailImageHeight"])
+                ):
+                    raise ValueError(f"detail dimensions changed before re-encode: {item['officialQuestionId']}")
+                generated = write_hashed_webp(
+                    decoded.convert("RGB"), DETAIL_IMAGE_ROOT,
+                    item["officialQuestionId"], DETAIL_WEBP_QUALITY,
+                )
+            reencoded_count += 1
+
+        item.update({
+            "questionImage": relative_dist_path(generated["path"]),
+            "detailImage": relative_dist_path(generated["path"]),
+            "detailImageWidth": generated["width"],
+            "detailImageHeight": generated["height"],
+            "detailImageSha256": generated["sha256"],
+            "detailImageBytes": generated["bytes"],
+            "imageRevision": IMAGE_REVISION,
+            "imageFormat": "webp",
+        })
+        if index % 100 == 0:
+            print(f"REENCODED {index}/{len(records)}", flush=True)
+
+    detail_bytes = sum(int(item["detailImageBytes"]) for item in records)
+    thumbnail_bytes = sum(int(item.get("thumbnailImageBytes") or 0) for item in records)
+    inventory["imagePipeline"] = {
+        "revision": IMAGE_REVISION,
+        "format": "webp",
+        "detectionDpi": DETECTION_DPI,
+        "detailDpi": DETAIL_DPI,
+        "detailQuality": DETAIL_WEBP_QUALITY,
+        "thumbnailWidth": THUMBNAIL_WIDTH,
+        "thumbnailQuality": THUMBNAIL_WEBP_QUALITY,
+        "detailImageCount": sum(bool(item.get("detailImage")) for item in records),
+        "thumbnailImageCount": sum(bool(item.get("thumbnailImage")) for item in records),
+        "detailImageBytes": detail_bytes,
+        "thumbnailImageBytes": thumbnail_bytes,
+        "cropValidationPassedCount": sum(
+            item.get("cropValidation", {}).get("status") == "passed" for item in records
+        ),
+    }
+    # Publish the new catalog before deleting the old hash-named files. If the
+    # process is interrupted, the last complete catalog still points only to
+    # files that exist; at worst a later run removes harmless stale files.
+    atomic_write_text(
+        catalog_path,
+        json.dumps(records, ensure_ascii=False, indent=2) + "\n",
+    )
+    js = "/* Generated by scripts/build-official-exams.py from attached official PDFs. */\n"
+    js += "globalThis.OFFICIAL_EXAM_SOURCE_RECORDS="
+    js += json.dumps(records, ensure_ascii=False, separators=(",", ":"))
+    js += ";\n"
+    atomic_write_text(DIST / "official-exam-catalog.js", js)
+
+    explanation_hash_refresh_count = synchronize_explanation_image_hashes(records)
+    image_cleanup = cleanup_generated_images(records)
+    inventory["imageCleanup"] = image_cleanup
+    previous_optimization = inventory.get("imageOptimization")
+    if reencoded_count or not previous_optimization:
+        inventory["imageOptimization"] = {
+            "mode": "verified-existing-240dpi-crop-reencode",
+            "sourceRevisions": source_revisions,
+            "reencodedCount": reencoded_count,
+            "dimensionsPreservedCount": len(records),
+            "sourceDetailImageBytes": source_bytes,
+            "outputDetailImageBytes": detail_bytes,
+            "savedDetailImageBytes": source_bytes - detail_bytes,
+            "explanationHashRefreshCount": explanation_hash_refresh_count,
+        }
+    else:
+        previous_optimization["explanationHashRefreshCount"] = (
+            int(previous_optimization.get("explanationHashRefreshCount") or 0)
+            + explanation_hash_refresh_count
+        )
+    for exam in inventory.get("exams", []):
+        matching = [
+            item for item in records
+            if item["examRound"] == exam["examRound"] and item["examLevel"] == exam["examLevel"]
+        ]
+        exam["imageRevision"] = IMAGE_REVISION
+        exam["detailImageBytes"] = sum(int(item["detailImageBytes"]) for item in matching)
+        exam["thumbnailImageBytes"] = sum(int(item.get("thumbnailImageBytes") or 0) for item in matching)
+
+    atomic_write_text(
+        inventory_path,
+        json.dumps(inventory, ensure_ascii=False, indent=2) + "\n",
+    )
+    print(
+        f"WROTE {len(records)} q{DETAIL_WEBP_QUALITY} detail images; "
+        f"{source_bytes} -> {detail_bytes} bytes; cleaned "
+        f"{image_cleanup['staleDetailRemoved']} stale detail files",
+        flush=True,
+    )
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--source-dir", required=True, type=Path)
-    parser.add_argument("--poppler-bin", required=True, type=Path)
+    parser.add_argument("--source-dir", type=Path)
+    parser.add_argument("--poppler-bin", type=Path)
     parser.add_argument("--ocr-runtime", type=Path)
     parser.add_argument(
         "--workers",
@@ -1146,7 +1340,20 @@ def main() -> None:
         action="store_true",
         help="Build only the selected attached editions and merge them into the existing canonical catalog",
     )
+    parser.add_argument(
+        "--reencode-existing-details",
+        action="store_true",
+        help="Compression-only rebuild of the verified 240 dpi crops; skips PDF layout/OCR detection",
+    )
     args = parser.parse_args()
+
+    if args.reencode_existing_details:
+        if args.only or args.resume_editions or args.merge_existing or args.validate_only:
+            parser.error("--reencode-existing-details cannot be combined with selection/build modes")
+        reencode_existing_details()
+        return
+    if not args.source_dir or not args.poppler_bin:
+        parser.error("--source-dir and --poppler-bin are required for PDF builds")
 
     if not 1 <= args.workers <= 8:
         raise ValueError("--workers must be between 1 and 8")
@@ -1277,8 +1484,6 @@ def main() -> None:
     if len(canonical_keys) != len(set(canonical_keys)):
         raise ValueError("duplicate canonical exam keys after merge")
 
-    image_cleanup = cleanup_generated_images(records)
-
     previous_inventory_path = DIST / "official-exam-inventory.json"
     previous_inventory = (
         json.loads(previous_inventory_path.read_text(encoding="utf-8"))
@@ -1323,13 +1528,11 @@ def main() -> None:
                 item.get("cropValidation", {}).get("status") == "passed" for item in records
             ),
         },
-        "imageCleanup": image_cleanup,
         "exams": exams,
     }
-    atomic_write_text(
-        DIST / "official-exam-inventory.json",
-        json.dumps(inventory, ensure_ascii=False, indent=2) + "\n",
-    )
+    # Keep the previously published hash-named assets until both catalog files
+    # point at the newly generated images. This makes an interrupted rebuild
+    # leave extra files rather than broken image references.
     atomic_write_text(
         DIST / "official-exam-catalog.json",
         json.dumps(records, ensure_ascii=False, indent=2) + "\n",
@@ -1339,6 +1542,16 @@ def main() -> None:
     js += json.dumps(records, ensure_ascii=False, separators=(",", ":"))
     js += ";\n"
     atomic_write_text(DIST / "official-exam-catalog.js", js)
+    synchronize_explanation_image_hashes(
+        records,
+        require_complete_catalog=len(records) == len(EXAMS) * 50,
+    )
+    image_cleanup = cleanup_generated_images(records)
+    inventory["imageCleanup"] = image_cleanup
+    atomic_write_text(
+        DIST / "official-exam-inventory.json",
+        json.dumps(inventory, ensure_ascii=False, indent=2) + "\n",
+    )
     print(
         f"WROTE {len(exams)} editions / {len(records)} questions / "
         f"{len(list(DETAIL_IMAGE_ROOT.glob('*.webp')))} detail + "

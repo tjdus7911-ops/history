@@ -4,14 +4,14 @@
     "scene": "foundation",
     "questionId": "ch01-official-69-basic-10",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-69-basic-10.0497a00bbdb3.webp"
+    "image": "assets/exams/catalog/detail/official-69-basic-10.e9d762926a25.webp"
   },
   {
     "chapter": "ch01",
     "scene": "foundation",
     "questionId": "ch01-official-79-advanced-09",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-79-advanced-09.d75cca87ec80.webp"
+    "image": "assets/exams/catalog/detail/official-79-advanced-09.af11528c7118.webp"
   },
   {
     "chapter": "ch01",
@@ -67,35 +67,35 @@
     "scene": "ch01_gyeonhwon",
     "questionId": "ch01-official-73-basic-10",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-73-basic-10.7ea9cc471da1.webp"
+    "image": "assets/exams/catalog/detail/official-73-basic-10.586d99807a4e.webp"
   },
   {
     "chapter": "ch02",
     "scene": "ch01_gyeonhwon",
     "questionId": "ch02-official-66-advanced-09",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-66-advanced-09.2da1efcf68ea.webp"
+    "image": "assets/exams/catalog/detail/official-66-advanced-09.8b2e77241732.webp"
   },
   {
     "chapter": "ch02",
     "scene": "ch01_gyeonhwon",
     "questionId": "ch01-official-74-advanced-10",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-74-advanced-10.038eeec95dab.webp"
+    "image": "assets/exams/catalog/detail/official-74-advanced-10.5175557b0f54.webp"
   },
   {
     "chapter": "ch02",
     "scene": "ch01_victory",
     "questionId": "ch01-official-76-advanced-10",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-76-advanced-10.c80a7268fa88.webp"
+    "image": "assets/exams/catalog/detail/official-76-advanced-10.5ea76752a6d4.webp"
   },
   {
     "chapter": "ch02",
     "scene": "ch01_victory",
     "questionId": "ch01-official-70-advanced-10",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-70-advanced-10.d0ecec1fb3c9.webp"
+    "image": "assets/exams/catalog/detail/official-70-advanced-10.93f018a2144c.webp"
   },
   {
     "chapter": "ch02",
@@ -109,28 +109,28 @@
     "scene": "ch01_sasimgwan",
     "questionId": "ch02-official-67-basic-10",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-67-basic-10.c97fa334d2e1.webp"
+    "image": "assets/exams/catalog/detail/official-67-basic-10.cb9b3c713503.webp"
   },
   {
     "chapter": "ch02",
     "scene": "ch01_sasimgwan",
     "questionId": "ch03-official-75-basic-12",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-75-basic-12.8d60834a2c62.webp"
+    "image": "assets/exams/catalog/detail/official-75-basic-12.d1d78c33f965.webp"
   },
   {
     "chapter": "ch02",
     "scene": "ch01_sasimgwan",
     "questionId": "ch02-official-65-advanced-10",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-65-advanced-10.77152ed40706.webp"
+    "image": "assets/exams/catalog/detail/official-65-advanced-10.9a467ae6c2c2.webp"
   },
   {
     "chapter": "ch02",
     "scene": "ch01_refugee_family",
     "questionId": "ch02-official-67-basic-11",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-67-basic-11.4e56ae09b3e9.webp"
+    "image": "assets/exams/catalog/detail/official-67-basic-11.bf28580a8971.webp"
   },
   {
     "chapter": "ch02",
@@ -151,7 +151,7 @@
     "scene": "ch01_hunyo",
     "questionId": "ch02-official-69-advanced-10",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-69-advanced-10.430cc308e126.webp"
+    "image": "assets/exams/catalog/detail/official-69-advanced-10.a25319ec03ab.webp"
   },
   {
     "chapter": "ch02",
@@ -172,14 +172,14 @@
     "scene": "ch02_reunion_949",
     "questionId": "ch03-pdf-69-advanced-10",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-69-advanced-10.430cc308e126.webp"
+    "image": "assets/exams/catalog/detail/official-69-advanced-10.a25319ec03ab.webp"
   },
   {
     "chapter": "ch03",
     "scene": "ch02_reunion_949",
     "questionId": "ch03-pdf-75-basic-12",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-75-basic-12.8d60834a2c62.webp"
+    "image": "assets/exams/catalog/detail/official-75-basic-12.d1d78c33f965.webp"
   },
   {
     "chapter": "ch03",
@@ -207,14 +207,14 @@
     "scene": "ch02_shop_956",
     "questionId": "ch03-pdf-65-advanced-10",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-65-advanced-10.77152ed40706.webp"
+    "image": "assets/exams/catalog/detail/official-65-advanced-10.9a467ae6c2c2.webp"
   },
   {
     "chapter": "ch03",
     "scene": "ch02_policy_reason",
     "questionId": "ch03-pdf-65-advanced-11",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-65-advanced-11.af44cff8e2d7.webp"
+    "image": "assets/exams/catalog/detail/official-65-advanced-11.b94341ccd7a6.webp"
   },
   {
     "chapter": "ch03",
@@ -235,7 +235,7 @@
     "scene": "ch02_policy_memory",
     "questionId": "ch02-official-74-advanced-11",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-74-advanced-11.620b157ba058.webp"
+    "image": "assets/exams/catalog/detail/official-74-advanced-11.b76a337353db.webp"
   },
   {
     "chapter": "ch03",
@@ -249,14 +249,14 @@
     "scene": "ch02_noble_night",
     "questionId": "ch03-pdf-73-advanced-11",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-73-advanced-11.af96e07f78bc.webp"
+    "image": "assets/exams/catalog/detail/official-73-advanced-11.f411e6562819.webp"
   },
   {
     "chapter": "ch03",
     "scene": "ch02_exam_notice",
     "questionId": "ch03-pdf-76-advanced-11",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-76-advanced-11.8d10ce382297.webp"
+    "image": "assets/exams/catalog/detail/official-76-advanced-11.17536bf66224.webp"
   },
   {
     "chapter": "ch03",
@@ -277,21 +277,21 @@
     "scene": "ch02_ssanggi",
     "questionId": "ch02-official-78-advanced-11",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-78-advanced-11.f3ccf7421302.webp"
+    "image": "assets/exams/catalog/detail/official-78-advanced-11.395435fcb914.webp"
   },
   {
     "chapter": "ch03",
     "scene": "ch02_exam_day",
     "questionId": "ch03-official-71-advanced-11",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-71-advanced-11.e1b234ee727e.webp"
+    "image": "assets/exams/catalog/detail/official-71-advanced-11.09378b23bafb.webp"
   },
   {
     "chapter": "ch03",
     "scene": "ch02_exam_day",
     "questionId": "ch03-pdf-75-basic-10",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-75-basic-10.b44c180e4c14.webp"
+    "image": "assets/exams/catalog/detail/official-75-basic-10.6cfdd541af78.webp"
   },
   {
     "chapter": "ch03",
@@ -305,14 +305,14 @@
     "scene": "ch02_hyunwoo_official",
     "questionId": "ch03-pdf-68-advanced-09",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-68-advanced-09.08f6b2bdfbb1.webp"
+    "image": "assets/exams/catalog/detail/official-68-advanced-09.6e0dc323c024.webp"
   },
   {
     "chapter": "ch03",
     "scene": "ch02_hyunwoo_official",
     "questionId": "ch03-pdf-76-advanced-18",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-76-advanced-18.474fc0732926.webp"
+    "image": "assets/exams/catalog/detail/official-76-advanced-18.3a1eda2a1c0c.webp"
   },
   {
     "chapter": "ch03",
@@ -326,28 +326,28 @@
     "scene": "ch02_reign_followup",
     "questionId": "ch02-official-76-advanced-50",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-76-advanced-50.2d37e3be03ce.webp"
+    "image": "assets/exams/catalog/detail/official-76-advanced-50.89899878583d.webp"
   },
   {
     "chapter": "ch03",
     "scene": "ch02_reign_followup",
     "questionId": "ch02-official-77-advanced-14",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-77-advanced-14.b07178b046db.webp"
+    "image": "assets/exams/catalog/detail/official-77-advanced-14.73ab48387e64.webp"
   },
   {
     "chapter": "ch03",
     "scene": "ch02_purge",
     "questionId": "ch03-pdf-70-advanced-13",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-70-advanced-13.eec5a4d184de.webp"
+    "image": "assets/exams/catalog/detail/official-70-advanced-13.40a19b1f59df.webp"
   },
   {
     "chapter": "ch03",
     "scene": "ch02_purge",
     "questionId": "ch03-pdf-79-advanced-13",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-79-advanced-13.3445fe944d87.webp"
+    "image": "assets/exams/catalog/detail/official-79-advanced-13.fdf83aba9d4f.webp"
   },
   {
     "chapter": "ch03",
@@ -361,49 +361,49 @@
     "scene": "ch02_night_discussion",
     "questionId": "ch03-official-68-advanced-11",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-68-advanced-11.51b24b6cf4f4.webp"
+    "image": "assets/exams/catalog/detail/official-68-advanced-11.d24f7d4a0698.webp"
   },
   {
     "chapter": "ch03",
     "scene": "ch02_complete",
     "questionId": "ch03-pdf-72-advanced-11",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-72-advanced-11.10360913cdae.webp"
+    "image": "assets/exams/catalog/detail/official-72-advanced-11.d4d39d5d4991.webp"
   },
   {
     "chapter": "ch04",
     "scene": "ch03_gukjagam",
     "questionId": "ch03-official-75-basic-10",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-75-basic-10.b44c180e4c14.webp"
+    "image": "assets/exams/catalog/detail/official-75-basic-10.6cfdd541af78.webp"
   },
   {
     "chapter": "ch04",
     "scene": "ch03_gukjagam",
     "questionId": "ch04-official-68-advanced-09",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-68-advanced-09.08f6b2bdfbb1.webp"
+    "image": "assets/exams/catalog/detail/official-68-advanced-09.6e0dc323c024.webp"
   },
   {
     "chapter": "ch04",
     "scene": "ch03_gukjagam",
     "questionId": "ch04-official-65-advanced-11",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-65-advanced-11.af44cff8e2d7.webp"
+    "image": "assets/exams/catalog/detail/official-65-advanced-11.b94341ccd7a6.webp"
   },
   {
     "chapter": "ch05",
     "scene": "ch05_border",
     "questionId": "ch05-official-72-advanced-12",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-72-advanced-12.defde774dfa0.webp"
+    "image": "assets/exams/catalog/detail/official-72-advanced-12.b28fdfbe3cc0.webp"
   },
   {
     "chapter": "ch05",
     "scene": "ch05_invasion",
     "questionId": "ch05-official-63-advanced-14",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-63-advanced-14.477a8387f469.webp"
+    "image": "assets/exams/catalog/detail/official-63-advanced-14.6ab6618e01b6.webp"
   },
   {
     "chapter": "ch05",
@@ -417,7 +417,7 @@
     "scene": "ch05_council",
     "questionId": "ch05-official-64-advanced-11",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-64-advanced-11.0a7825814249.webp"
+    "image": "assets/exams/catalog/detail/official-64-advanced-11.a92554798bbb.webp"
   },
   {
     "chapter": "ch05",
@@ -438,21 +438,21 @@
     "scene": "ch05_seohui",
     "questionId": "ch05-official-73-basic-11",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-73-basic-11.982610216bf6.webp"
+    "image": "assets/exams/catalog/detail/official-73-basic-11.4c5d624205d6.webp"
   },
   {
     "chapter": "ch05",
     "scene": "ch05_seohui",
     "questionId": "ch05-official-74-advanced-12",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-74-advanced-12.8917d3caddc2.webp"
+    "image": "assets/exams/catalog/detail/official-74-advanced-12.7b9b256059a1.webp"
   },
   {
     "chapter": "ch05",
     "scene": "ch05_seohui",
     "questionId": "ch05-official-67-basic-13",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-67-basic-13.c09897dad30a.webp"
+    "image": "assets/exams/catalog/detail/official-67-basic-13.0ee18b54f64d.webp"
   },
   {
     "chapter": "ch05",
@@ -501,14 +501,14 @@
     "scene": "ch05_memory",
     "questionId": "ch05-official-77-basic-12",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-77-basic-12.f37e1ef853e0.webp"
+    "image": "assets/exams/catalog/detail/official-77-basic-12.fce4ac35e34e.webp"
   },
   {
     "chapter": "ch06",
     "scene": "ch06_coup",
     "questionId": "ch06-official-76-advanced-14",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-76-advanced-14.6fc160a53a7a.webp"
+    "image": "assets/exams/catalog/detail/official-76-advanced-14.e7448e657899.webp"
   },
   {
     "chapter": "ch06",
@@ -522,7 +522,7 @@
     "scene": "ch06_march",
     "questionId": "ch06-official-72-advanced-12",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-72-advanced-12.defde774dfa0.webp"
+    "image": "assets/exams/catalog/detail/official-72-advanced-12.b28fdfbe3cc0.webp"
   },
   {
     "chapter": "ch06",
@@ -557,7 +557,7 @@
     "scene": "ch06_burned_market",
     "questionId": "ch06-official-70-advanced-13",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-70-advanced-13.eec5a4d184de.webp"
+    "image": "assets/exams/catalog/detail/official-70-advanced-13.40a19b1f59df.webp"
   },
   {
     "chapter": "ch06",
@@ -571,7 +571,7 @@
     "scene": "ch06_flight",
     "questionId": "ch06-official-65-advanced-12",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-65-advanced-12.63f1990c2f89.webp"
+    "image": "assets/exams/catalog/detail/official-65-advanced-12.1af18d9af2b8.webp"
   },
   {
     "chapter": "ch06",
@@ -627,7 +627,7 @@
     "scene": "ch06_woodblocks",
     "questionId": "ch06-official-77-advanced-11",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-77-advanced-11.c92c6e25892b.webp"
+    "image": "assets/exams/catalog/detail/official-77-advanced-11.f19247e90693.webp"
   },
   {
     "chapter": "ch06",
@@ -641,21 +641,21 @@
     "scene": "ch06_woodblocks",
     "questionId": "ch06-official-79-advanced-13",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-79-advanced-13.3445fe944d87.webp"
+    "image": "assets/exams/catalog/detail/official-79-advanced-13.fdf83aba9d4f.webp"
   },
   {
     "chapter": "ch06",
     "scene": "ch06_memory",
     "questionId": "ch06-official-74-advanced-12",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-74-advanced-12.8917d3caddc2.webp"
+    "image": "assets/exams/catalog/detail/official-74-advanced-12.7b9b256059a1.webp"
   },
   {
     "chapter": "ch06",
     "scene": "ch06_warning",
     "questionId": "ch06-official-66-advanced-11",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-66-advanced-11.ea00d845d1dd.webp"
+    "image": "assets/exams/catalog/detail/official-66-advanced-11.b0d49c4831e4.webp"
   },
   {
     "chapter": "ch07",
@@ -704,7 +704,7 @@
     "scene": "ch07_gwiju",
     "questionId": "ch07-official-69-basic-11",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-69-basic-11.1a6ed0ec7c98.webp"
+    "image": "assets/exams/catalog/detail/official-69-basic-11.d82102e4ac65.webp"
   },
   {
     "chapter": "ch07",
@@ -732,7 +732,7 @@
     "scene": "ch07_special",
     "questionId": "ch07-official-75-basic-17",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-75-basic-17.425cd86a9da1.webp"
+    "image": "assets/exams/catalog/detail/official-75-basic-17.3411dc17ad57.webp"
   },
   {
     "chapter": "ch07",
@@ -753,7 +753,7 @@
     "scene": "ch07_nine",
     "questionId": "ch07-official-69-advanced-13",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-69-advanced-13.db9505624abf.webp"
+    "image": "assets/exams/catalog/detail/official-69-advanced-13.960b2bd5244b.webp"
   },
   {
     "chapter": "ch08",
@@ -802,7 +802,7 @@
     "scene": "ch08_palace_ashes",
     "questionId": "ch08-official-73-basic-13",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-73-basic-13.de1c3f0feb4f.webp"
+    "image": "assets/exams/catalog/detail/official-73-basic-13.e53165a57c66.webp"
   },
   {
     "chapter": "ch08",
@@ -830,14 +830,14 @@
     "scene": "ch08_suppression",
     "questionId": "ch08-official-65-advanced-14",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-65-advanced-14.9bedde338630.webp"
+    "image": "assets/exams/catalog/detail/official-65-advanced-14.f2abaa5c6320.webp"
   },
   {
     "chapter": "ch08",
     "scene": "ch08_record",
     "questionId": "ch08-official-77-advanced-17",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-77-advanced-17.b3e50d106454.webp"
+    "image": "assets/exams/catalog/detail/official-77-advanced-17.56dc539f1a1e.webp"
   },
   {
     "chapter": "ch08",
@@ -879,7 +879,7 @@
     "scene": "ch09_rulers",
     "questionId": "ch09-official-70-advanced-14",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-70-advanced-14.264692368d03.webp"
+    "image": "assets/exams/catalog/detail/official-70-advanced-14.e1c3f7ee6a37.webp"
   },
   {
     "chapter": "ch09",
@@ -907,14 +907,14 @@
     "scene": "ch09_choe",
     "questionId": "ch09-official-66-advanced-14",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-66-advanced-14.7aa372458299.webp"
+    "image": "assets/exams/catalog/detail/official-66-advanced-14.1c96942a5813.webp"
   },
   {
     "chapter": "ch09",
     "scene": "ch09_bongsa",
     "questionId": "ch09-official-77-advanced-16",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-77-advanced-16.d2f6250b2f51.webp"
+    "image": "assets/exams/catalog/detail/official-77-advanced-16.76f5f19e4470.webp"
   },
   {
     "chapter": "ch09",
@@ -935,7 +935,7 @@
     "scene": "ch09_mangyi",
     "questionId": "ch09-official-71-advanced-14",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-71-advanced-14.36af9783d324.webp"
+    "image": "assets/exams/catalog/detail/official-71-advanced-14.6e08fd19ef37.webp"
   },
   {
     "chapter": "ch09",
@@ -963,14 +963,14 @@
     "scene": "ch09_other_revolts",
     "questionId": "ch09-official-69-advanced-14",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-69-advanced-14.e984dc39a8ff.webp"
+    "image": "assets/exams/catalog/detail/official-69-advanced-14.4c81cf141520.webp"
   },
   {
     "chapter": "ch09",
     "scene": "ch09_jinul",
     "questionId": "ch09-official-74-advanced-16",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-74-advanced-16.104d91b94553.webp"
+    "image": "assets/exams/catalog/detail/official-74-advanced-16.964d7211c9bb.webp"
   },
   {
     "chapter": "ch09",
@@ -998,28 +998,28 @@
     "scene": "ch09_economy",
     "questionId": "ch09-official-69-basic-12",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-69-basic-12.9cc22b7385eb.webp"
+    "image": "assets/exams/catalog/detail/official-69-basic-12.0ae167f64cc4.webp"
   },
   {
     "chapter": "ch09",
     "scene": "ch09_economy",
     "questionId": "ch09-official-72-advanced-16",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-72-advanced-16.4ccfeebf0705.webp"
+    "image": "assets/exams/catalog/detail/official-72-advanced-16.57089700fc7a.webp"
   },
   {
     "chapter": "ch09",
     "scene": "ch09_economy",
     "questionId": "ch09-official-65-advanced-16",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-65-advanced-16.fd6389cd94e8.webp"
+    "image": "assets/exams/catalog/detail/official-65-advanced-16.484653eb1a88.webp"
   },
   {
     "chapter": "ch10",
     "scene": "ch10_people",
     "questionId": "ch10-official-75-basic-16",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-75-basic-16.1f6c646a7b95.webp"
+    "image": "assets/exams/catalog/detail/official-75-basic-16.d228fa4780c2.webp"
   },
   {
     "chapter": "ch10",
@@ -1040,7 +1040,7 @@
     "scene": "ch10_island",
     "questionId": "ch10-official-71-advanced-15",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-71-advanced-15.6e12f83ea5dc.webp"
+    "image": "assets/exams/catalog/detail/official-71-advanced-15.859c142bbd41.webp"
   },
   {
     "chapter": "ch10",
@@ -1068,7 +1068,7 @@
     "scene": "ch10_mainland",
     "questionId": "ch10-official-66-advanced-13",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-66-advanced-13.ef9146a137dc.webp"
+    "image": "assets/exams/catalog/detail/official-66-advanced-13.45a1a8061bdb.webp"
   },
   {
     "chapter": "ch10",
@@ -1096,42 +1096,42 @@
     "scene": "ch10_celadon",
     "questionId": "ch10-official-71-advanced-16",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-71-advanced-16.3c900d6bdba4.webp"
+    "image": "assets/exams/catalog/detail/official-71-advanced-16.1309cb1b1e5a.webp"
   },
   {
     "chapter": "ch10",
     "scene": "ch10_celadon",
     "questionId": "ch10-official-74-advanced-13",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-74-advanced-13.5f1ca6c7006c.webp"
+    "image": "assets/exams/catalog/detail/official-74-advanced-13.e14827c5ea4f.webp"
   },
   {
     "chapter": "ch10",
     "scene": "ch10_celadon",
     "questionId": "ch10-official-65-advanced-17",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-65-advanced-17.9e63ced47545.webp"
+    "image": "assets/exams/catalog/detail/official-65-advanced-17.d4d8e156ae61.webp"
   },
   {
     "chapter": "ch10",
     "scene": "ch10_return",
     "questionId": "ch10-official-74-advanced-14",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-74-advanced-14.349deec18614.webp"
+    "image": "assets/exams/catalog/detail/official-74-advanced-14.f3a7381d49c2.webp"
   },
   {
     "chapter": "ch10",
     "scene": "ch10_return",
     "questionId": "ch10-official-72-advanced-14",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-72-advanced-14.8eaddd163c59.webp"
+    "image": "assets/exams/catalog/detail/official-72-advanced-14.28c899632a52.webp"
   },
   {
     "chapter": "ch10",
     "scene": "ch10_return",
     "questionId": "ch10-official-70-advanced-15",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-70-advanced-15.df9404af6d57.webp"
+    "image": "assets/exams/catalog/detail/official-70-advanced-15.c35d5834b625.webp"
   },
   {
     "chapter": "ch10",
@@ -1152,14 +1152,14 @@
     "scene": "ch10_sambyeolcho",
     "questionId": "ch10-official-68-advanced-15",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-68-advanced-15.9fb53e93cc1b.webp"
+    "image": "assets/exams/catalog/detail/official-68-advanced-15.54da0ae60af4.webp"
   },
   {
     "chapter": "ch10",
     "scene": "ch10_jeju",
     "questionId": "ch10-official-69-advanced-17",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-69-advanced-17.60c6893abc5a.webp"
+    "image": "assets/exams/catalog/detail/official-69-advanced-17.e0a0910f2236.webp"
   },
   {
     "chapter": "ch10",
@@ -1187,14 +1187,14 @@
     "scene": "ch11_yuan",
     "questionId": "ch11-official-68-advanced-16",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-68-advanced-16.cbb467b70b30.webp"
+    "image": "assets/exams/catalog/detail/official-68-advanced-16.88be57018ed4.webp"
   },
   {
     "chapter": "ch11",
     "scene": "ch11_yuan",
     "questionId": "ch11-official-70-advanced-16",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-70-advanced-16.0b987624d2e3.webp"
+    "image": "assets/exams/catalog/detail/official-70-advanced-16.f9e4e9a3ae99.webp"
   },
   {
     "chapter": "ch11",
@@ -1215,21 +1215,21 @@
     "scene": "ch11_customs",
     "questionId": "ch11-official-74-advanced-17",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-74-advanced-17.676b1475deb3.webp"
+    "image": "assets/exams/catalog/detail/official-74-advanced-17.53ee6ea0c2c1.webp"
   },
   {
     "chapter": "ch11",
     "scene": "ch11_customs",
     "questionId": "ch11-official-65-advanced-15",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-65-advanced-15.b8f68d218318.webp"
+    "image": "assets/exams/catalog/detail/official-65-advanced-15.e12440c72019.webp"
   },
   {
     "chapter": "ch11",
     "scene": "ch11_offices",
     "questionId": "ch11-official-72-advanced-15",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-72-advanced-15.ca5ee7afd63e.webp"
+    "image": "assets/exams/catalog/detail/official-72-advanced-15.409f5d3ff4e3.webp"
   },
   {
     "chapter": "ch11",
@@ -1257,14 +1257,14 @@
     "scene": "ch11_culture",
     "questionId": "ch11-official-72-advanced-17",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-72-advanced-17.8a9ab36e2577.webp"
+    "image": "assets/exams/catalog/detail/official-72-advanced-17.3bb0a5e8a00b.webp"
   },
   {
     "chapter": "ch11",
     "scene": "ch11_gongmin",
     "questionId": "ch11-official-69-advanced-15",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-69-advanced-15.4bf00ac4f470.webp"
+    "image": "assets/exams/catalog/detail/official-69-advanced-15.f0a3d64c8ed5.webp"
   },
   {
     "chapter": "ch11",
@@ -1313,7 +1313,7 @@
     "scene": "ch11_reform",
     "questionId": "ch11-official-66-advanced-15",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-66-advanced-15.696d90eff4b0.webp"
+    "image": "assets/exams/catalog/detail/official-66-advanced-15.937ad0fe020a.webp"
   },
   {
     "chapter": "ch11",
@@ -1341,7 +1341,7 @@
     "scene": "ch12_wihwa",
     "questionId": "ch12-official-75-basic-14",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-75-basic-14.874a200e0191.webp"
+    "image": "assets/exams/catalog/detail/official-75-basic-14.f133e241e74a.webp"
   },
   {
     "chapter": "ch12",
@@ -1362,7 +1362,7 @@
     "scene": "ch12_return",
     "questionId": "ch12-official-65-advanced-18",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-65-advanced-18.988f7b51d0e5.webp"
+    "image": "assets/exams/catalog/detail/official-65-advanced-18.3fbb86fa1e78.webp"
   },
   {
     "chapter": "ch12",
@@ -1411,7 +1411,7 @@
     "scene": "ch12_jikji",
     "questionId": "ch12-official-68-advanced-17",
     "official": true,
-    "image": "assets/exams/catalog/detail/official-68-advanced-17.c803b26ad8a3.webp"
+    "image": "assets/exams/catalog/detail/official-68-advanced-17.a5b81c008d69.webp"
   },
   {
     "chapter": "ch12",

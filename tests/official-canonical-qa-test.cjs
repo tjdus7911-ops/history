@@ -81,7 +81,7 @@ for(const item of catalog){
   assert.equal(item.officialQuestionId,`official-${item.examRound}-${item.examLevel==='심화'?'advanced':'basic'}-${String(item.questionNumber).padStart(2,'0')}`);
   assert.equal(item.answerLabel,item.answer===null?'없음':labels[item.answer]);
   assert(item.sourcePage>=1&&item.sourcePage<=12);
-  assert.equal(item.imageRevision,'official-exam-hq-v2-240dpi');
+  assert.equal(item.imageRevision,'official-exam-hq-v3-240dpi-q80');
   assert.equal(item.imageFormat,'webp');
   assert.equal(item.questionImage,item.detailImage,'legacy questionImage must alias detailImage');
   assert(item.detailImage.includes(`/detail/${item.officialQuestionId}.`),item.detailImage);
@@ -257,8 +257,8 @@ for(const group of sharedGroups)for(let number=group.start;number<=group.end;num
 
 assert.equal(inventory.schemaVersion,2);
 assert.deepEqual(inventory.imagePipeline,{
-  revision:'official-exam-hq-v2-240dpi',format:'webp',detectionDpi:120,detailDpi:240,
-  detailQuality:88,thumbnailWidth:320,thumbnailQuality:68,
+  revision:'official-exam-hq-v3-240dpi-q80',format:'webp',detectionDpi:120,detailDpi:240,
+  detailQuality:80,thumbnailWidth:320,thumbnailQuality:68,
   detailImageCount:1800,thumbnailImageCount:1800,
   detailImageBytes:catalog.reduce((sum,item)=>sum+item.detailImageBytes,0),
   thumbnailImageBytes:catalog.reduce((sum,item)=>sum+item.thumbnailImageBytes,0),
