@@ -901,6 +901,10 @@
     "missingChoiceConfidenceCount": 7112,
     "missingChoiceImageHashCount": 88,
     "choiceImageHashMismatchCount": 0,
+    "choiceSummaryOneSentenceViolationCount": 0,
+    "choiceJudgmentSentenceOverflowCount": 0,
+    "choiceJudgmentAnswerTablePhraseCount": 0,
+    "choiceSummaryJudgmentDuplicateCount": 0,
     "choiceVerificationStatusCounts": {
       "CURATED_VERIFIED": 24,
       "CURATED_REVIEWED": 78,
@@ -913,7 +917,7 @@
     "qaDeferredCount": 1794,
     "forbiddenGenericCount": 0,
     "minimumSentenceCount": 3,
-    "fullRecordJsonBytes": 12240232,
+    "fullRecordJsonBytes": 12259308,
     "initialCoreRecordJsonBytes": 1955859,
     "initialCoreRecordReductionPercent": 84.0
   },

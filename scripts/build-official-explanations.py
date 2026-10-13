@@ -1505,29 +1505,191 @@ def choice_history_rule(value: str) -> tuple[str, str] | None:
     return select_history_rule(value)
 
 
-def choice_judgment_reason(source: dict, index: int, stem: str) -> str:
+def sentence_parts(value: str) -> list[str]:
+    """Split Korean prose without rewriting or shortening the source text."""
+    value = normalize_text(value)
+    if not value:
+        return []
+    return [part.strip() for part in re.split(r"(?<=[.!?])\s+", value) if part.strip()]
+
+
+def choice_core_summary(explanation: str) -> str:
+    """Keep the option introduction to one short factual sentence."""
+    parts = sentence_parts(explanation)
+    if not parts:
+        return "역사적 대상과 핵심 특징을 확인 중인 선택지입니다."
+    first = parts[0]
+    generic_subject = re.fullmatch(r"(.+?)에 관한 설명이다[.]", first)
+    if generic_subject and len(parts) > 1 and not any(
+        cue in parts[1] for cue in JUDGMENT_CUES
+    ):
+        return f"{generic_subject.group(1)}에 관한 내용으로, {parts[1]}"
+    return first
+
+
+def judgment_clue(value: str) -> str:
+    """Use one complete source fragment; never truncate it with an ellipsis for layout."""
+    value = normalize_text(value)
+    fragments = [part.strip() for part in re.findall(r"[^.!?]+[.!?]?", value) if part.strip()]
+    return next((part for part in fragments if len(part.rstrip(".!?")) >= 8), value)
+
+
+def ensure_terminal_sentence(value: str) -> str:
+    value = normalize_text(value)
+    return value if not value or value[-1] in ".!?" else f"{value}."
+
+
+def prose_sentence_count(value: str) -> int:
+    value = normalize_text(value)
+    return len(re.findall(r"[.!?](?=\s|$|[가-힣A-Za-z])", value)) or int(bool(value))
+
+
+JUDGMENT_CUES = (
+    "정답",
+    "오답",
+    "자료",
+    "발문",
+    "해당하지",
+    "일치하지",
+    "맞지 않",
+    "구별",
+    "시대가 다",
+    "시기가 다",
+    "보다 앞",
+    "보다 뒤",
+    "이후의 사실",
+    "이전의 사실",
+)
+
+
+HISTORICAL_TARGET_TERMS = (
+    "구석기 시대",
+    "신석기 시대",
+    "청동기 시대",
+    "철기 시대",
+    "고조선",
+    "부여",
+    "고구려",
+    "백제",
+    "통일 신라",
+    "신라",
+    "가야",
+    "발해",
+    "고려",
+    "조선",
+    "대한 제국",
+    "대한제국",
+    "일제 강점기",
+    "일제강점기",
+    "대한민국",
+)
+
+
+def historical_target(value: str) -> str:
+    value = normalize_text(value)
+    return next((term for term in HISTORICAL_TARGET_TERMS if term in value), "")
+
+
+def curated_judgment_sentence(explanation: str, summary: str) -> str:
+    """Reuse a reviewed option-specific reason when the ledger already contains one."""
+    for sentence in sentence_parts(explanation):
+        if sentence == summary:
+            continue
+        if any(cue in sentence for cue in JUDGMENT_CUES):
+            return sentence
+    return ""
+
+
+def append_judgment_result(reason: str, is_correct: bool, kind: str) -> str:
+    if any(word in reason for word in ("정답", "오답", "해당하지")):
+        return reason
+    if kind == "incorrect":
+        result = (
+            "따라서 ‘옳지 않은 설명’을 찾는 조건에 해당합니다."
+            if is_correct
+            else "따라서 ‘옳지 않은 설명’을 찾는 조건에 해당하지 않습니다."
+        )
+    else:
+        result = "따라서 정답입니다." if is_correct else "따라서 오답입니다."
+    return f"{reason} {result}"
+
+
+def choice_judgment_reason(
+    source: dict,
+    index: int,
+    stem: str,
+    clue: str = "",
+    meaning: str = "",
+    curated: dict | None = None,
+    text_needs_review: bool = False,
+    rule_keyword: str = "",
+) -> str:
     label = CHOICE_LABELS[index]
     accepted = accepted_choice_indexes(source)
+    is_correct = index in accepted
+    kind = question_kind(stem)
     if len(accepted) == expected_choice_count(source):
         return (
-            "이 문항은 공식 정답표 정정으로 모든 선택지가 정답 인정 대상이므로 "
-            f"{label}도 정답 처리됩니다."
+            "문항의 채점 기준이 모든 선지를 정답으로 처리하도록 정정된 사례이므로 "
+            f"{label}도 정답입니다."
         )
-    if index in accepted:
-        if question_kind(stem) == "incorrect":
+
+    if curated:
+        reviewed_explanation = normalize_text(curated["choiceExplanations"][index])
+        direct_reason = curated_judgment_sentence(reviewed_explanation, meaning)
+        if direct_reason:
+            return append_judgment_result(direct_reason, is_correct, kind)
+        clue_sentence = ensure_terminal_sentence(
+            judgment_clue(curated.get("clue") or clue or stem)
+        )
+        expected_target = next(iter(curated.get("topicTags") or []), "")
+        option_target = historical_target(meaning)
+        if not is_correct and expected_target and option_target and expected_target != option_target:
             return (
-                "발문이 옳지 않은 설명을 찾도록 요구하며, 공식 정답표에서 이 선지가 "
-                "그 조건에 해당하는 선택지로 확정되었습니다."
+                f"자료가 가리키는 대상은 ‘{expected_target}’지만 이 선지는 ‘{option_target}’에 관한 "
+                "내용이므로 오답입니다."
             )
-        return "공식 정답표에서 이 선지가 발문의 조건을 충족하는 정답으로 확정되었습니다."
-    if question_kind(stem) == "incorrect":
+        if kind == "incorrect":
+            result = (
+                "이 선지는 그 대상에 관한 옳지 않은 설명이므로 정답입니다."
+                if is_correct
+                else "이 선지는 그 대상에 관한 옳은 설명이므로 발문의 조건에 해당하지 않습니다."
+            )
+        else:
+            result = (
+                "이 선지는 그 대상·시기의 특징과 일치하므로 정답입니다."
+                if is_correct
+                else "이 선지는 자료가 가리키는 대상·시기와 다르므로 오답입니다."
+            )
+        return f"{clue_sentence} {result}"
+
+    if text_needs_review:
+        relation = "일치하는" if is_correct else "어긋나는"
         return (
-            "이 선지는 공식 정답이 아니므로 발문이 요구한 ‘옳지 않은 설명’에 해당하지 않습니다. "
-            "따라서 선지 자체의 역사적 사실과 발문의 부정 조건을 구분해야 합니다."
+            "선지 원문과 역사적 근거의 검수가 끝나지 않아, 문제 단서와 "
+            f"{relation} 이유를 아직 확정할 수 없습니다."
+        )
+
+    clue_text_value = judgment_clue(clue or stem).rstrip(".!?")
+    choice_focus = f"‘{rule_keyword}’" if rule_keyword else "이 선지"
+    if is_correct:
+        if kind == "incorrect":
+            return (
+                f"문제의 ‘{clue_text_value}’와 대조하면 {choice_focus}의 설명이 맞지 않으므로, "
+                "‘옳지 않은 것’을 찾는 발문의 정답입니다."
+            )
+        return (
+            f"문제의 ‘{clue_text_value}’가 요구하는 대상·시기와 {choice_focus}의 내용이 "
+            "일치하므로 정답입니다."
+        )
+    if kind == "incorrect":
+        return (
+            f"{choice_focus}의 설명은 문제의 ‘{clue_text_value}’가 가리키는 대상에 관한 옳은 "
+            "사실이므로, ‘옳지 않은 것’을 찾는 발문의 조건에 해당하지 않습니다."
         )
     return (
-        "이 선지는 공식 정답으로 인정되지 않으며, 발문이 요구한 대상·시기·사건과의 "
-        "연결을 정답 선지와 구분해야 합니다."
+        f"문제의 ‘{clue_text_value}’가 요구하는 대상·시기와 {choice_focus}의 내용이 "
+        "일치하지 않으므로 오답입니다."
     )
 
 
@@ -1565,7 +1727,7 @@ def build_choice_explanation(
         explanation = normalize_text(curated["choiceExplanations"][index])
         verification_status = curated["curationStatus"]
         evidence_sources = list(curated.get("sources") or [])
-        meaning = explanation
+        meaning = choice_core_summary(explanation)
     elif text_needs_review:
         explanation = (
             f"{label} 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. "
@@ -1576,7 +1738,16 @@ def build_choice_explanation(
         evidence_sources = ["official-question-image-ocr"]
         meaning = "OCR 원문 확인이 필요한 선택지입니다."
     elif rule:
-        reason = choice_judgment_reason(source, index, stem)
+        reason = choice_judgment_reason(
+            source,
+            index,
+            stem,
+            clue,
+            rule_explanation,
+            None,
+            False,
+            rule_keyword,
+        )
         question_context = short_excerpt(clue or stem, 100)
         explanation = (
             f"{rule_explanation} 이 선지의 핵심인 ‘{rule_keyword}’를 문항의 "
@@ -1584,7 +1755,7 @@ def build_choice_explanation(
         )
         verification_status = VERIFICATION_KNOWLEDGE
         evidence_sources = ["official-question-image-ocr", "embedded-history-rule"]
-        meaning = rule_explanation
+        meaning = choice_core_summary(rule_explanation)
     else:
         question_context = short_excerpt(clue or stem, 100)
         explanation = (
@@ -1597,6 +1768,17 @@ def build_choice_explanation(
         evidence_sources = ["official-question-image-ocr"]
         meaning = "선지 원문은 확보했으나 역사적 대상과 판단 근거의 추가 검수가 필요합니다."
 
+    judgment_reason = choice_judgment_reason(
+        source,
+        index,
+        stem,
+        clue,
+        meaning,
+        curated,
+        text_needs_review,
+        rule_keyword,
+    )
+
     return {
         "choiceIndex": index,
         "label": label,
@@ -1606,7 +1788,7 @@ def build_choice_explanation(
         "relatedTarget": rule_keyword,
         "coreConcept": rule_keyword,
         "meaning": meaning,
-        "judgmentReason": choice_judgment_reason(source, index, stem),
+        "judgmentReason": judgment_reason,
         "correctedFact": (
             normalize_text(curated.get("correctedFacts", [None] * expected_choice_count(source))[index])
             if curated
@@ -1747,6 +1929,12 @@ def normalize_curated_choice_source(path: Path) -> list[dict]:
             "choices": list(choices) if choices is not None else None,
             "choiceExplanations": list(explanations or []),
             "explanation": normalize_text(raw.get("explanation") or ""),
+            "clue": normalize_text(raw.get("clue") or ""),
+            "topicTags": [
+                normalize_text(str(value))
+                for value in (raw.get("topicTags") or [])
+                if normalize_text(str(value))
+            ],
             "correctedFacts": raw.get("correctedFacts"),
             "sources": sources,
             "provenance": provenance,
@@ -2285,6 +2473,43 @@ def main() -> None:
         for record in records
         for choice in record["choiceExplanations"]
     ]
+    summary_sentence_violation_count = sum(
+        prose_sentence_count(choice.get("meaning", "")) != 1
+        or "\n" in choice.get("meaning", "")
+        for choice in all_choice_explanations
+    )
+    judgment_sentence_overflow_count = sum(
+        prose_sentence_count(choice.get("judgmentReason", "")) not in (1, 2)
+        for choice in all_choice_explanations
+    )
+    judgment_answer_table_phrase_count = sum(
+        any(
+            phrase in choice.get("judgmentReason", "")
+            for phrase in ("공식 정답표", "공식 정답으로 인정")
+        )
+        for choice in all_choice_explanations
+    )
+    summary_judgment_duplicate_count = sum(
+        normalize_text(choice.get("meaning", ""))
+        == normalize_text(choice.get("judgmentReason", ""))
+        for choice in all_choice_explanations
+    )
+    if summary_sentence_violation_count:
+        raise ValueError(
+            f"choice summaries must be one sentence: {summary_sentence_violation_count} violations"
+        )
+    if judgment_answer_table_phrase_count:
+        raise ValueError(
+            "choice judgment reasons must explain the problem link, not cite the answer table"
+        )
+    if judgment_sentence_overflow_count:
+        raise ValueError(
+            f"choice judgments must be one or two sentences: {judgment_sentence_overflow_count} violations"
+        )
+    if summary_judgment_duplicate_count:
+        raise ValueError(
+            f"choice summaries repeat judgment reasons: {summary_judgment_duplicate_count}"
+        )
     review_choice_count = sum(
         choice["verificationStatus"] == VERIFICATION_REVIEW
         or choice["choiceTextVerificationStatus"] == VERIFICATION_REVIEW
@@ -2397,6 +2622,10 @@ def main() -> None:
         "missingChoiceConfidenceCount": missing_choice_confidence_count,
         "missingChoiceImageHashCount": missing_choice_image_hash_count,
         "choiceImageHashMismatchCount": choice_image_hash_mismatch_count,
+        "choiceSummaryOneSentenceViolationCount": summary_sentence_violation_count,
+        "choiceJudgmentSentenceOverflowCount": judgment_sentence_overflow_count,
+        "choiceJudgmentAnswerTablePhraseCount": judgment_answer_table_phrase_count,
+        "choiceSummaryJudgmentDuplicateCount": summary_judgment_duplicate_count,
         "choiceVerificationStatusCounts": verification_status_counts,
         "choiceOrderMismatchCount": choice_order_mismatch_count,
         "correctChoiceIndexMismatchCount": correct_choice_index_mismatch_count,

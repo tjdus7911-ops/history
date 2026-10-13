@@ -48,6 +48,32 @@ assert builder.normalize_text("전생 설화와 경제 회생") == "전생 설�
 assert builder.question_kind("옮지 않은 것은?") == "incorrect"
 assert builder.question_kind("적절하지않은 것은?") == "incorrect"
 assert builder.question_kind("당시의 연구 활동으로 옳은 것은?") != "person"
+assert builder.choice_core_summary(
+    "조선 태형령은 1912년에 시행되었다. 자료의 사건보다 앞선 사실이므로 오답이다."
+) == "조선 태형령은 1912년에 시행되었다."
+assert builder.choice_core_summary(
+    "신라의 골품제에 관한 설명이다. 진골·6두품 등 신분에 따라 관등 승진이 제한되었다."
+) == "신라의 골품제에 관한 내용으로, 진골·6두품 등 신분에 따라 관등 승진이 제한되었다."
+assert builder.curated_judgment_sentence(
+    "조선 태형령은 1912년에 시행되었다. 자료의 사건보다 앞선 사실이므로 오답이다.",
+    "조선 태형령은 1912년에 시행되었다.",
+) == "자료의 사건보다 앞선 사실이므로 오답이다."
+assert builder.judgment_clue("곳이다. 사람들은 체격이 크고 굳세다. 뒤 문장이다.") == "사람들은 체격이 크고 굳세다."
+assert builder.prose_sentence_count("첫 문장입니다. 둘째 문장입니다.") == 2
+sample_source = {"examLevel": "기본", "answer": 1}
+sample_judgment = builder.choice_judgment_reason(
+    sample_source,
+    1,
+    "다음 사건 이후에 일어난 사실로 옳은 것은?",
+    "국왕이 러시아 공사관으로 거처를 옮겼다.",
+    "대한 제국은 광무개혁을 추진하였다.",
+    None,
+    False,
+    "대한 제국",
+)
+assert "공식 정답표" not in sample_judgment
+assert "러시아 공사관" in sample_judgment
+assert "정답" in sample_judgment
 
 assert builder.choice_marker_index("1. 다음 중 옳은 것은?", 5) is None
 assert builder.choice_marker_index("1 다음 중 옳은 것은?", 5) is None

@@ -237,9 +237,16 @@ click({officialPick:String(answer)});
 assert(html.includes('aria-pressed="true"')&&html.includes('내 선택'),'picked choice needs a non-color state label');
 assert(!html.includes('EXPLANATION-1'),'choice explanations leaked after picking but before confirmation');
 click({officialSubmit:'true'});
-for(let index=1;index<=choiceCount;index++){assert(html.includes(`CHOICE-${index}`),`choice ${index} source text missing`);assert(html.includes(`EXPLANATION-${index}`),`choice ${index} explanation missing`)}
-assert(html.includes('선지 원문')&&html.includes('official-choice-reason"><small>보충 해설</small>'),'source choice and explanation are not distinguished');
-assert(html.includes('ERA-1')&&html.includes('TARGET-1')&&html.includes('MEANING-1')&&html.includes('JUDGMENT-1')&&html.includes('CORRECTION-1'),'structured era, target, meaning, judgment, or correction is missing');
+for(let index=1;index<=choiceCount;index++){
+  assert(html.includes(`CHOICE-${index}`),`choice ${index} source text missing`);
+  assert(html.includes(`MEANING-${index}`),`choice ${index} concise summary missing`);
+  assert(html.includes(`JUDGMENT-${index}`),`choice ${index} judgment reason missing`);
+  assert(!html.includes(`EXPLANATION-${index}`),`choice ${index} forced a duplicate supplement`);
+}
+assert(html.includes('official-choice-text">CHOICE-1')&&html.includes('<small>핵심 요약</small>')&&html.includes('<small>판단 이유</small>'),'choice source, concise summary, and judgment structure changed');
+assert(!html.includes('<small>선지 원문</small>')&&!html.includes('<small>보충 해설</small>'),'structured choices must not repeat source or force a supplement');
+assert(html.includes('MEANING-1')&&html.includes('JUDGMENT-1')&&html.includes('CORRECTION-1'),'structured summary, judgment, or optional correction is missing');
+assert(!html.includes('ERA-1')&&!html.includes('TARGET-1'),'era and target metadata must not be forced into every choice introduction');
 assert(html.includes('[문제 핵심 해설]'),'question-level analysis heading missing');
 assert(/핵심 해설 추가 검수 필요|역사 규칙 대조|출처 근거 검수 완료|수기 해설 검토/.test(html),'question-level explanation verification badge missing');
 assert(html.includes('official-choice-badge answer">정답')&&html.includes('official-choice-badge selected">내 선택'),'answer and selection badges missing');
@@ -268,10 +275,10 @@ assert(html.includes('src="thumb-only.webp"'),'result row must use thumbnailImag
 assert(!html.includes('EXPLANATION-1'),'result summary must not expand choice explanations');
 click({officialReview:id});
 assert(html.includes('src="detail-only.webp"'),'graded review must use detailImage');
-for(let index=1;index<=choiceCount;index++)assert(html.includes(`EXPLANATION-${index}`),`review choice ${index} explanation missing`);
+for(let index=1;index<=choiceCount;index++)assert(html.includes(`MEANING-${index}`)&&html.includes(`JUDGMENT-${index}`),`review choice ${index} structured explanation missing`);
 
 const css=fs.readFileSync('dist/exam-memory.css','utf8');
-for(const contract of ['.official-image-modal-overlay','height:100dvh','.official-image-scroll{','overflow:auto','touch-action:pan-x pan-y pinch-zoom','.official-choice-explanations','.official-pass-rate'])assert(css.includes(contract),`missing CSS contract: ${contract}`);
+for(const contract of ['.official-image-modal-overlay','height:100dvh','.official-image-scroll{','overflow:auto','touch-action:pan-x pan-y pinch-zoom','.official-choice-explanations','.official-choice-text','word-break:keep-all','overflow-wrap:anywhere','.official-pass-rate'])assert(css.includes(contract),`missing CSS contract: ${contract}`);
 assert(fs.readFileSync('dist/story-exam-ui.js','utf8').includes("markup.includes('official-choice-load')"),'Story wrapper can duplicate the lazy loading/error block');
 console.log('PASS: thumbnail/detail routing, state-safe fullscreen zoom, verified official rates, strict pending state, and spoiler-safe choice explanations.');
 }).catch(error=>{console.error(error);process.exitCode=1});
