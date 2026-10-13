@@ -8,6 +8,7 @@ function click(dataset){run('inputLockedUntil=0');let stopped=false;const button
 const entryQuestion=id=>copy(`QUESTIONS.find(question=>question.questionId===${JSON.stringify(id)})`);
 const otherAnswer=question=>[0,1,2,3,4].find(value=>!(question.acceptedAnswers||[question.answer]).includes(value));
 const answerDisplay=question=>question.answerLabel==='없음'?'모든 선택지':['①','②','③','④','⑤'][question.answer];
+const visibleExplanation=question=>/OCR 전사|추가 검수|추가 대조|검수 전까지|확정 사실로 사용하지/.test(question.explanation)?'원문 확인 중':question.explanation;
 
 const coverage=copy('globalThis.OFFICIAL_EXPLANATION_COVERAGE');
 assert.deepEqual(coverage,{total:1800,preexisting:0,restoredMappings:0,supplemented:1800,covered:1800,missing:0});
@@ -23,15 +24,15 @@ for(const entry of entries){
 click({nav:'exam-library'});click({officialEra:'ancient'});
 const eraEntry=entries.find(entry=>entry.primaryEra==='ancient'),eraQuestion=entryQuestion(eraEntry.canonicalQuestionId),eraWrong=otherAnswer(eraQuestion);
 click({officialSingle:eraEntry.canonicalQuestionId});click({officialPick:String(eraWrong)});click({officialSubmit:'true'});
-assert(html.includes('✕ 오답입니다.'));assert(html.includes('정답 '+answerDisplay(eraQuestion)));assert(html.includes('[문제 핵심 해설]'));assert(html.includes(eraQuestion.explanation));
+assert(html.includes('✕ 오답입니다.'));assert(html.includes('정답 '+answerDisplay(eraQuestion)));assert(html.includes('[문제 핵심 해설]'));assert(html.includes(visibleExplanation(eraQuestion)));
 click({officialExit:'true'});click({officialSingle:eraEntry.canonicalQuestionId});click({officialPick:String(eraQuestion.answer)});click({officialSubmit:'true'});
-assert(html.includes('✓ 정답입니다.'));assert(html.includes('[문제 핵심 해설]'));assert(html.includes(eraQuestion.explanation));
+assert(html.includes('✓ 정답입니다.'));assert(html.includes('[문제 핵심 해설]'));assert(html.includes(visibleExplanation(eraQuestion)));
 
 // TEST 3/4: round learn mode immediately shows explanations for both outcomes.
 click({officialExit:'true'});click({officialBack:'home'});click({officialTab:'round'});click({officialRound:'70',officialEditionLevel:'심화'});click({officialStart:'learn'});
 let current=copy('officialSessionQuestion()'),question=entryQuestion(current.canonicalQuestionId),wrong=otherAnswer(question);
-click({officialPick:String(wrong)});click({officialSubmit:'true'});assert(html.includes('✕ 오답입니다.')&&html.includes('[문제 핵심 해설]')&&html.includes(question.explanation));
-click({officialExit:'true'});click({officialStart:'learn'});current=copy('officialSessionQuestion()');question=entryQuestion(current.canonicalQuestionId);click({officialPick:String(question.answer)});click({officialSubmit:'true'});assert(html.includes('✓ 정답입니다.')&&html.includes('[문제 핵심 해설]')&&html.includes(question.explanation));
+click({officialPick:String(wrong)});click({officialSubmit:'true'});assert(html.includes('✕ 오답입니다.')&&html.includes('[문제 핵심 해설]')&&html.includes(visibleExplanation(question)));
+click({officialExit:'true'});click({officialStart:'learn'});current=copy('officialSessionQuestion()');question=entryQuestion(current.canonicalQuestionId);click({officialPick:String(question.answer)});click({officialSubmit:'true'});assert(html.includes('✓ 정답입니다.')&&html.includes('[문제 핵심 해설]')&&html.includes(visibleExplanation(question)));
 
 // TEST 5/6: exam mode hides explanations while solving and exposes direct review only after grading.
 click({officialExit:'true'});click({officialStart:'exam'});click({officialTimerStart:'true'});
@@ -45,16 +46,16 @@ for(let index=0;index<examEntries.length;index++){
 }
 assert(!html.includes('시험을 제출하시겠어요?'));click({officialRequestSubmit:'true'});assert(html.includes('시험을 제출하시겠어요?'));click({officialSubmitConfirm:'true'});
 assert(html.includes('OFFICIAL EXAM RESULT'));assert(html.includes('문제별 해설 · 오답 1'));assert(html.includes(`data-official-review="${firstWrongId}"`));
-click({officialReview:firstWrongId});const reviewed=entryQuestion(firstWrongId);assert(html.includes('채점 후 문제 다시 보기'));assert(html.includes('✕ 오답입니다.'));assert(html.includes('정답 '+answerDisplay(reviewed)));assert(html.includes('[문제 핵심 해설]'));assert(html.includes(reviewed.explanation));
+click({officialReview:firstWrongId});const reviewed=entryQuestion(firstWrongId);assert(html.includes('채점 후 문제 다시 보기'));assert(html.includes('✕ 오답입니다.'));assert(html.includes('정답 '+answerDisplay(reviewed)));assert(html.includes('[문제 핵심 해설]'));assert(html.includes(visibleExplanation(reviewed)));
 
 // TEST 7: Story official question keeps its submit -> grading -> explanation flow.
 const storyId=entries.find(entry=>entry.canonicalQuestionId.startsWith('ch')&&entryQuestion(entry.canonicalQuestionId).relatedSceneId).canonicalQuestionId,storyQuestion=entryQuestion(storyId);
 run(`quizMode='story';run().activeQuestionId=${JSON.stringify(storyId)};run().questionAnswer=${storyQuestion.answer};screen='quiz';render()`);
-assert(html.includes('역사 해설'));assert(html.includes(storyQuestion.explanation));assert(html.includes('정답 · 정답'));
+assert(html.includes('역사 해설'));assert(html.includes(visibleExplanation(storyQuestion)));assert(html.includes('정답 · 정답'));
 
 // TEST 8: wrong-note detail includes question, correct answer, selected answer, and explanation.
 run(`recordQuestion(state,${JSON.stringify(eraEntry.canonicalQuestionId)},${eraWrong});screen='study';studyTab='review';render()`);
-assert(html.includes('wrong-answer-detail'));assert(html.includes('문제 · 정답 · 해설 보기'));assert(html.includes('내가 선택한 답'));assert(html.includes(eraQuestion.explanation));
+assert(html.includes('wrong-answer-detail'));assert(html.includes('문제 · 정답 · 해설 보기'));assert(html.includes('내가 선택한 답'));assert(html.includes(visibleExplanation(eraQuestion)));
 
 // TEST 9 is covered by the exhaustive canonical assertions above.
 console.log('PASS: all 1,800 official explanations covered; era/round correct+wrong feedback, exam spoiler gate+post-grade review, Story, wrong-note detail, and null safety.');

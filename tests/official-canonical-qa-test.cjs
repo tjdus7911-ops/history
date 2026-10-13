@@ -194,17 +194,19 @@ const computedCorrectChoiceIndexMismatchCount=catalog.filter(item=>{
   const indexed=row.choices[accepted[0]];
   return indexed!=='[원문 이미지 선택지 — OCR 전사 필요]'&&indexed!==row.correctChoice;
 }).length;
-assert.equal(explanationPayload.qa.curatedChoiceExplanationCount,102);
-assert.equal(explanationPayload.qa.curatedChoiceQuestionCount,21);
+assert.equal(explanationPayload.qa.curatedChoiceExplanationCount,132);
+assert.equal(explanationPayload.qa.curatedChoiceQuestionCount,28);
 assert.equal(explanationPayload.qa.sourceVerifiedChoiceExplanationCount,24);
 assert.equal(explanationPayload.qa.sourceVerifiedChoiceQuestionCount,5);
-assert.equal(explanationPayload.qa.editorialReviewedChoiceExplanationCount,78);
-assert.equal(explanationPayload.qa.editorialReviewedChoiceQuestionCount,16);
-assert.equal(explanationPayload.qa.curatedRegistryChoiceExplanationCount,158);
-assert.equal(explanationPayload.qa.curatedRegistryQuestionCount,35);
+assert.equal(explanationPayload.qa.editorialReviewedChoiceExplanationCount,108);
+assert.equal(explanationPayload.qa.editorialReviewedChoiceQuestionCount,23);
+assert.equal(explanationPayload.qa.curatedRegistryChoiceExplanationCount,188);
+assert.equal(explanationPayload.qa.curatedRegistryQuestionCount,42);
 assert.equal(explanationPayload.qa.skippedNonCanonicalCuratedChoiceExplanationCount,56);
 assert.equal(explanationPayload.qa.skippedNonCanonicalCuratedQuestionCount,14);
-assert.equal(explanationPayload.qa.curatedSourceChoiceTextCount,88);
+assert.equal(explanationPayload.qa.curatedSourceChoiceTextCount,118);
+assert.equal(explanationPayload.qa.imageVisuallyReviewedQuestionCount,7);
+assert.equal(explanationPayload.qa.imageVisuallyReviewedChoiceCount,30);
 const schoolRename=explanationById.get('official-79-advanced-40');
 assert(schoolRename.explanation.includes('1941년')&&schoolRename.explanation.includes('소학교')&&schoolRename.explanation.includes('국민학교'));
 assert(!schoolRename.explanation.includes('1996년')&&!schoolRename.explanation.includes("'국민학교' 명칭이 '초등학교'"));
@@ -241,7 +243,7 @@ assert.equal(explanationPayload.qa.allAcceptedChoiceQuestionCount,1);
 assert.equal(explanationPayload.qa.qaDeferredCount,explanationPayload.qa.dataReviewRequiredQuestionCount);
 assert.equal(Object.values(explanationPayload.qa.choiceVerificationStatusCounts).reduce((sum,count)=>sum+count,0),8350);
 assert.equal(explanationPayload.qa.choiceVerificationStatusCounts.CURATED_VERIFIED,curatedChoiceCount);
-assert.equal(explanationPayload.qa.choiceVerificationStatusCounts.CURATED_REVIEWED,78);
+assert.equal(explanationPayload.qa.choiceVerificationStatusCounts.CURATED_REVIEWED,108);
 assert(curatedChoiceCorrections.length>=3);
 assert(curatedChoiceCount>=14);
 for(const correction of curatedChoiceCorrections){
@@ -253,6 +255,14 @@ for(const correction of curatedChoiceCorrections){
 const allAccepted=explanationById.get('official-63-advanced-42');
 assert.deepEqual(allAccepted.acceptedChoiceIndexes,[0,1,2,3,4]);
 assert(allAccepted.choiceExplanations.every(item=>item.isCorrect),'official-63-advanced-42 must accept every choice');
+assert.deepEqual(allAccepted.choices,[
+  '국민 방위군에 소집되는 청년','원조 물자 배급을 기다리는 시민','지가 증권을 싼값에 매각하는 지주',
+  '거제도 포로수용소에서 석방되는 반공 포로','제2차 미소 공동 위원회 개최 소식을 보도하는 기자'
+]);
+assert(allAccepted.explanation.includes('1947년')&&allAccepted.explanation.includes('①~⑤를 모두 정답'));
+const marchFirst=explanationById.get('official-75-advanced-36');
+assert.equal(marchFirst.correctChoice,'미국 대통령 윌슨이 민족 자결주의를 제창하였다.');
+assert(marchFirst.explanation.includes('3·1 운동')&&marchFirst.choiceExplanations[2].explanation.includes('6·10 만세 운동'));
 
 const sharedGroups=inventory.exams.flatMap(exam=>(exam.sharedStimulusGroups||[]).map(group=>({round:exam.examRound,level:exam.examLevel,...group})));
 assert.deepEqual(sharedGroups,[

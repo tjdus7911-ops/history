@@ -25,15 +25,16 @@ CURATED_CHOICE_SOURCE_PATHS = (
     ROOT / "docs" / "THREE_OFFICIAL_REVIEW_61.json",
     ROOT / "docs" / "story-exams" / "supplement-60-basic.json",
     ROOT / "docs" / "story-exams" / "chapter-split-choice-reviews.json",
+    ROOT / "docs" / "story-exams" / "image-choice-reviews.json",
 )
 EXPECTED_QUESTION_COUNT = 1_800
 EXPECTED_CHOICE_COUNT = 8_350
-EXPECTED_CURATED_CHOICE_QUESTION_COUNT = 35
-# 4 source-reviewed corrections (19) + 8 round-61 (40) + 14 round-60 basic (56)
-# + 8 chapter-split records (six advanced x 5, two basic x 4 = 38).
-EXPECTED_CURATED_CHOICE_COUNT = 158
-EXPECTED_CANONICAL_CURATED_QUESTION_COUNT = 21
-EXPECTED_CANONICAL_CURATED_CHOICE_COUNT = 102
+EXPECTED_CURATED_CHOICE_QUESTION_COUNT = 42
+# 5 source-reviewed corrections (24) + 8 round-61 (40) + 14 round-60 basic (56)
+# + 8 chapter-split records (38) + 7 directly image-reviewed records (30).
+EXPECTED_CURATED_CHOICE_COUNT = 188
+EXPECTED_CANONICAL_CURATED_QUESTION_COUNT = 28
+EXPECTED_CANONICAL_CURATED_CHOICE_COUNT = 132
 EXPECTED_NONCANONICAL_CURATED_QUESTION_COUNT = 14
 EXPECTED_NONCANONICAL_CURATED_CHOICE_COUNT = 56
 MISSING_CHOICE_TEXT = "[원문 이미지 선택지 — OCR 전사 필요]"
@@ -1925,6 +1926,7 @@ def normalize_curated_choice_source(path: Path) -> list[dict]:
             "examLevel": raw.get("examLevel", defaults.get("examLevel", id_level)),
             "questionNumber": raw.get("questionNumber", id_question),
             "answer": raw.get("answer"),
+            "acceptedAnswers": raw.get("acceptedAnswers"),
             "choiceCount": raw.get("choiceCount", len(explanations or [])),
             "choices": list(choices) if choices is not None else None,
             "choiceExplanations": list(explanations or []),
@@ -1996,7 +1998,13 @@ def validate_curated_choice_corrections(
         if choices is not None and not item.get("choiceTextVisuallyReviewed"):
             raise ValueError(f"curated source choices lack visual review: {question_id}")
         answer = item.get("answer")
-        if not isinstance(answer, int) or not 0 <= answer < count:
+        accepted_answers = item.get("acceptedAnswers")
+        all_accepted = (
+            answer is None
+            and isinstance(accepted_answers, list)
+            and sorted(accepted_answers) == list(range(count))
+        )
+        if not all_accepted and (not isinstance(answer, int) or not 0 <= answer < count):
             raise ValueError(f"curated correction answer out of range: {question_id}")
         if any(not normalize_text(value) for value in item.get("choiceExplanations") or []):
             raise ValueError(f"curated correction has empty choice explanation: {question_id}")
@@ -2040,6 +2048,9 @@ def validate_curated_choice_corrections(
             raise ValueError(f"curated correction declared choice count mismatch: {question_id}")
         if answer != source.get("answer"):
             raise ValueError(f"curated correction answer mismatch: {question_id}")
+        source_accepted_answers = source.get("acceptedAnswers")
+        if accepted_answers is not None and accepted_answers != source_accepted_answers:
+            raise ValueError(f"curated correction accepted answers mismatch: {question_id}")
         for field in ("examRound", "examLevel", "questionNumber"):
             if item.get(field) != source.get(field):
                 raise ValueError(f"curated correction {field} mismatch: {question_id}")

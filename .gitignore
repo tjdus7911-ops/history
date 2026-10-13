@@ -20,3 +20,6 @@ dist/ui-review-game.html
 dist/ui-review-storage.js
 dist/ui-review-fixtures.js
 
+# Local OCR/image-review workspace. Source evidence is recorded in tracked QA ledgers.
+/work/
+

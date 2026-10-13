@@ -52,6 +52,7 @@ assert.deepEqual(copy('run()'),foreign);
 run("selectedEra='three-kingdoms';meta().selectedLearningEra=selectedEra;meta().threeCompleteBook.readSceneIds=['THR-C23-S01','THR-C23-S02','THR-C23-S03','THR-C23-S04','THR-C23-S05']");
 const safe=run('THREE_COMPLETE_ACTIONS.safeExplanation(THREE_STORY_RUNTIME.questionByOfficialId.get('+JSON.stringify(gateId)+'))');
 const original=run('QUESTIONS.find(q=>q.questionId==='+JSON.stringify(canonical(gateId))+').explanation');
+const visibleOriginal=/OCR 전사|OCR 원문 확인|추가 검수|추가 대조|검수 전까지|검수가 끝나지|확정 사실로 사용하지/.test(original)?'원문 확인 중':original;
 click({officialTab:'round'});officialAttempt(gateId);
 assert(html.includes(run('esc('+JSON.stringify(safe)+')')));
 assert(!html.includes(run('esc('+JSON.stringify(original)+')'))||original===safe);
@@ -59,7 +60,7 @@ assert.deepEqual(copy('run()'),foreign);
 
 // An explicit different era remains an independent study context.
 click({officialEra:'goryeo'});officialAttempt(gateId);
-assert(html.includes(run('esc('+JSON.stringify(original)+')')));
+assert(html.includes(run('esc('+JSON.stringify(visibleOriginal)+')')));
 assert.deepEqual(copy('run()'),foreign);
 
 // Wrong notes for the Three wrapper receive the same scene-aware explanation.
@@ -70,7 +71,7 @@ run("meta().threeCompleteBook.readSceneIds.push('THR-C23-S10')");
 const full=run('THREE_STORY_RUNTIME.questionByOfficialId.get('+JSON.stringify(gateId)+').threeExam.explanation');
 assert(run('v2QuestionRow(THREE_STORY_RUNTIME.questionByOfficialId.get('+JSON.stringify(gateId)+'))').includes(run('esc('+JSON.stringify(full)+')')));
 click({officialTab:'round'});officialAttempt(gateId);
-assert(html.includes(run('esc('+JSON.stringify(original)+')')));
+assert(html.includes(run('esc('+JSON.stringify(visibleOriginal)+')')));
 
 // Open a learned Three question through the old UI while another era runs.
 click({practice:threeGate});click({threeAnswer:'4'});click({action:'three-submit'});

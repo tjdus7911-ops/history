@@ -17,8 +17,11 @@ const baseline=JSON.parse(fs.readFileSync('tests/fixtures/proto-runtime-preserva
 for(const [file,hash] of Object.entries(baseline.fileHashes)){
  if(file==='dist/proto-story-ui.js')continue;
  let text=fs.readFileSync(file,'utf8');
- if(file==='dist/app.js')for(const addition of ['&&(globalThis.THREE_LEARNING_BOUNDARY?.canPractice(q)??true)','&&(globalThis.PROTO_LEARNING_BOUNDARY?.canPractice(q)??true)'])text=text.replace(addition,'');
- if(file==='dist/editorial-ui.js')text=text.replace("&&(!globalThis.THREE_STORY_RUNTIME||id!=='three-kingdoms'||q.threeStoryVersion===globalThis.THREE_STORY_RUNTIME.version)",'');
+ if(file==='dist/app.js'){
+  for(const addition of ['&&(globalThis.THREE_LEARNING_BOUNDARY?.canPractice(q)??true)','&&(globalThis.PROTO_LEARNING_BOUNDARY?.canPractice(q)??true)'])text=text.replace(addition,'');
+  text=text.replace(",visibleExplanation=isVerifiedOfficialQuestion(q)?globalThis.OFFICIAL_EXAM_UI?.visibleExplanation?.(q)||'원문 확인 중':q.explanation",'').replace('esc(visibleExplanation)','esc(q.explanation)');
+ }
+ if(file==='dist/editorial-ui.js')text=text.replace("&&(!globalThis.THREE_STORY_RUNTIME||id!=='three-kingdoms'||q.threeStoryVersion===globalThis.THREE_STORY_RUNTIME.version)",'').replace(",explanation=isVerifiedOfficialQuestion(q)?globalThis.OFFICIAL_EXAM_UI?.visibleExplanation?.(q)||'원문 확인 중':q.explanation",'').replace('esc(explanation)','esc(q.explanation)');
  assert.equal(digest(text),hash,'preserved shared renderer/styles/data: '+file);
 }
 for(const era of ['goryeo','joseon']){

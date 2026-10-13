@@ -248,12 +248,8 @@ assert(!html.includes('<small>선지 원문</small>')&&!html.includes('<small>�
 assert(html.includes('MEANING-1')&&html.includes('JUDGMENT-1')&&html.includes('CORRECTION-1'),'structured summary, judgment, or optional correction is missing');
 assert(!html.includes('ERA-1')&&!html.includes('TARGET-1'),'era and target metadata must not be forced into every choice introduction');
 assert(html.includes('[문제 핵심 해설]'),'question-level analysis heading missing');
-assert(/핵심 해설 추가 검수 필요|역사 규칙 대조|출처 근거 검수 완료|수기 해설 검토/.test(html),'question-level explanation verification badge missing');
 assert(html.includes('official-choice-badge answer">정답')&&html.includes('official-choice-badge selected">내 선택'),'answer and selection badges missing');
-assert(html.includes('출처 근거 검수 완료')&&html.includes('수기 해설 검토')&&html.includes('역사 규칙 대조')&&html.includes('해설 추가 검수 필요'),'choice explanation verification status labels missing');
-assert(html.includes('선지 원문 추가 검수 필요'),'curated explanation must not overstate OCR source-text verification');
-assert(html.includes('선지 원문 육안 대조'),'visually reviewed source text badge is missing');
-assert(html.includes('원본 연결 재확인 필요'),'source-text and image-hash review states must both remain visible');
+for(const internalQaLabel of ['핵심 해설 추가 검수 필요','역사 규칙 대조','출처 근거 검수 완료','수기 해설 검토','해설 추가 검수 필요','선지 원문 추가 검수 필요','선지 원문 육안 대조','원본 연결 재확인 필요'])assert(!html.includes(internalQaLabel),`internal QA label leaked to learner UI: ${internalQaLabel}`);
 assert(html.includes('정답·내답'),'graded choice needs a visible non-color answer/selection state');
 
 run(`startOfficialSession([OFFICIAL_EXAM_CATALOG.find(entry=>entry.canonicalQuestionId===${JSON.stringify(id)})],'exam');beginOrResumeOfficialTimer()`);

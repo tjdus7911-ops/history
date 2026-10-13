@@ -8,7 +8,8 @@
     "docs/story-exams/explanation-corrections.json",
     "docs/THREE_OFFICIAL_REVIEW_61.json",
     "docs/story-exams/supplement-60-basic.json",
-    "docs/story-exams/chapter-split-choice-reviews.json"
+    "docs/story-exams/chapter-split-choice-reviews.json",
+    "docs/story-exams/image-choice-reviews.json"
   ],
   "qa": {
     "rewrittenExistingCount": 1300,
@@ -17,18 +18,18 @@
     "genericExplanationRemovedCount": 1261,
     "metadataMismatchFixedCount": 32,
     "eraMetadataCorrectionCount": 72,
-    "knowledgeRuleCount": 608,
-    "evidenceFallbackCount": 1192,
+    "knowledgeRuleCount": 613,
+    "evidenceFallbackCount": 1187,
     "choiceCount": 8350,
     "choiceExplanationCount": 8350,
-    "curatedChoiceExplanationCount": 102,
-    "curatedChoiceQuestionCount": 21,
+    "curatedChoiceExplanationCount": 132,
+    "curatedChoiceQuestionCount": 28,
     "sourceVerifiedChoiceExplanationCount": 24,
     "sourceVerifiedChoiceQuestionCount": 5,
-    "editorialReviewedChoiceExplanationCount": 78,
-    "editorialReviewedChoiceQuestionCount": 16,
-    "curatedRegistryQuestionCount": 35,
-    "curatedRegistryChoiceExplanationCount": 158,
+    "editorialReviewedChoiceExplanationCount": 108,
+    "editorialReviewedChoiceQuestionCount": 23,
+    "curatedRegistryQuestionCount": 42,
+    "curatedRegistryChoiceExplanationCount": 188,
     "skippedNonCanonicalCuratedIds": [
       "official-60-basic-02",
       "official-60-basic-03",
@@ -47,18 +48,19 @@
     ],
     "skippedNonCanonicalCuratedQuestionCount": 14,
     "skippedNonCanonicalCuratedChoiceExplanationCount": 56,
-    "curatedSourceChoiceTextCount": 88,
+    "curatedSourceChoiceTextCount": 118,
     "curatedChoiceSourceDocuments": [
       "docs/story-exams/explanation-corrections.json",
       "docs/THREE_OFFICIAL_REVIEW_61.json",
       "docs/story-exams/supplement-60-basic.json",
-      "docs/story-exams/chapter-split-choice-reviews.json"
+      "docs/story-exams/chapter-split-choice-reviews.json",
+      "docs/story-exams/image-choice-reviews.json"
     ],
     "knowledgeRuleChoiceExplanationCount": 139,
-    "dataReviewRequiredChoiceCount": 8123,
-    "dataReviewRequiredQuestionCount": 1794,
-    "missingChoiceTextCount": 2235,
-    "uncertainChoiceTextCount": 5132,
+    "dataReviewRequiredChoiceCount": 8093,
+    "dataReviewRequiredQuestionCount": 1787,
+    "missingChoiceTextCount": 2219,
+    "uncertainChoiceTextCount": 5118,
     "missingChoiceConfidenceCount": 7112,
     "missingChoiceImageHashCount": 88,
     "choiceImageHashMismatchCount": 0,
@@ -67,20 +69,22 @@
     "choiceJudgmentAnswerTablePhraseCount": 0,
     "choiceSummaryJudgmentDuplicateCount": 0,
     "choiceVerificationStatusCounts": {
-      "CURATED_VERIFIED": 24,
-      "CURATED_REVIEWED": 78,
+      "DATA_REVIEW_REQUIRED": 8079,
+      "CURATED_REVIEWED": 108,
       "KNOWLEDGE_RULE": 139,
-      "DATA_REVIEW_REQUIRED": 8109
+      "CURATED_VERIFIED": 24
     },
     "choiceOrderMismatchCount": 0,
     "correctChoiceIndexMismatchCount": 0,
     "allAcceptedChoiceQuestionCount": 1,
-    "qaDeferredCount": 1794,
+    "qaDeferredCount": 1787,
     "forbiddenGenericCount": 0,
     "minimumSentenceCount": 3,
-    "fullRecordJsonBytes": 12259308,
-    "initialCoreRecordJsonBytes": 1955859,
-    "initialCoreRecordReductionPercent": 84.0
+    "fullRecordJsonBytes": 12266295,
+    "initialCoreRecordJsonBytes": 1954798,
+    "initialCoreRecordReductionPercent": 84.1,
+    "imageVisuallyReviewedQuestionCount": 7,
+    "imageVisuallyReviewedChoiceCount": 30
   },
   "records": [
     {
@@ -340,21 +344,21 @@
     {
       "officialQuestionId": "official-57-basic-03",
       "question": "다음 자료에 해당하는 나라에 대한 설명으로 옳은 것은?",
-      "clue": "위서에 이르기를,\"지금으로부터 2천여 년 전에 단군왕검이 ㅇ누선장군 양복()이 군사 7천을 거느리고 먼저왕검성에 도착하였다우거가 성을 지키고 있다가양복의 군사가적은",
+      "clue": "단군왕검과 왕검성이 언급된 자료는 고조선을 가리킨다.",
       "correctChoice": "사회 질서를 유지하기 위해 범금 8조를 만들었다.",
-      "explanation": "OCR 전사에는 사료의 ‘위서에 이르기를,\"지금으로부터 2천여 년 전에 단군왕검이 ㅇ누선장군 양복()이 군사 7천을 거느리고 먼저왕검성에 도착하였다우거가 성을 지키고 있다가양복의 군사가적은’라는 표현이 포착되어 있습니다. 고조선은 단군왕검의 건국 이야기와 범금 8조로 전해지며, 위만 조선은 한 무제의 침입으로 멸망했습니다. 따라서 정답은 ④ ‘사회 질서를 유지하기 위해 범금 8조를 만들었다.’입니다.",
-      "curated": false,
-      "qualityTier": "knowledge",
-      "coreVerificationStatus": "KNOWLEDGE_RULE",
+      "explanation": "자료의 단군왕검과 왕검성은 고조선을 가리킨다. 고조선은 사회 질서와 사유 재산을 보호하기 위해 범금 8조를 두었다. 따라서 ④가 정답이다.",
+      "curated": true,
+      "qualityTier": "curated",
+      "coreVerificationStatus": "CURATED_REVIEWED",
       "coreEvidenceSources": [
-        "official-question-image-ocr",
-        "embedded-history-rule"
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-03.40317e6853c3.webp",
+        "docs/story-exams/image-choice-reviews.json"
       ],
       "choiceCount": 4,
       "choices": [
         "신성 지역인 소도가 있었다.",
         "낙랑, 왜 등에 철을 수출하였다.",
-        "[원문 이미지 선택지 — OCR 전사 필요]",
+        "화백 회의에서 중요한 일을 결정하였다.",
         "사회 질서를 유지하기 위해 범금 8조를 만들었다."
       ],
       "choiceConfidences": [
@@ -379,19 +383,20 @@
           "choiceText": "신성 지역인 소도가 있었다.",
           "isCorrect": false,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "선지 원문과 역사적 근거의 검수가 끝나지 않아, 문제 단서와 어긋나는 이유를 아직 확정할 수 없습니다.",
+          "relatedTarget": "고조선",
+          "coreConcept": "고조선",
+          "meaning": "소도는 제정 분리 사회였던 삼한의 신성 지역이다.",
+          "judgmentReason": "자료의 단군왕검과 왕검성은 고조선을 가리키므로 삼한의 소도는 오답이다.",
           "correctedFact": null,
-          "explanation": "① 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "소도는 제정 분리 사회였던 삼한의 신성 지역이다. 자료의 단군왕검과 왕검성은 고조선을 가리키므로 삼한의 소도는 오답이다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "40317e6853c347fdea448641489e107c69d939e47db76fdda7e83fc156fe72be",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-03.40317e6853c3.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         },
         {
@@ -400,40 +405,42 @@
           "choiceText": "낙랑, 왜 등에 철을 수출하였다.",
           "isCorrect": false,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "선지 원문과 역사적 근거의 검수가 끝나지 않아, 문제 단서와 어긋나는 이유를 아직 확정할 수 없습니다.",
+          "relatedTarget": "고조선",
+          "coreConcept": "고조선",
+          "meaning": "철을 낙랑과 왜에 수출한 나라는 철 생산이 활발했던 변한이다.",
+          "judgmentReason": "자료가 가리키는 고조선과 다른 사회이므로 오답이다.",
           "correctedFact": null,
-          "explanation": "② 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "철을 낙랑과 왜에 수출한 나라는 철 생산이 활발했던 변한이다. 자료가 가리키는 고조선과 다른 사회이므로 오답이다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "40317e6853c347fdea448641489e107c69d939e47db76fdda7e83fc156fe72be",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-03.40317e6853c3.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         },
         {
           "choiceIndex": 2,
           "label": "③",
-          "choiceText": "[원문 이미지 선택지 — OCR 전사 필요]",
+          "choiceText": "화백 회의에서 중요한 일을 결정하였다.",
           "isCorrect": false,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "선지 원문과 역사적 근거의 검수가 끝나지 않아, 문제 단서와 어긋나는 이유를 아직 확정할 수 없습니다.",
+          "relatedTarget": "고조선",
+          "coreConcept": "고조선",
+          "meaning": "화백 회의는 신라의 귀족 회의로 국가의 중요한 일을 만장일치로 결정하였다.",
+          "judgmentReason": "고조선에 대한 설명이 아니므로 오답이다.",
           "correctedFact": null,
-          "explanation": "③ 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "화백 회의는 신라의 귀족 회의로 국가의 중요한 일을 만장일치로 결정하였다. 고조선에 대한 설명이 아니므로 오답이다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "40317e6853c347fdea448641489e107c69d939e47db76fdda7e83fc156fe72be",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-03.40317e6853c3.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         },
         {
@@ -442,47 +449,59 @@
           "choiceText": "사회 질서를 유지하기 위해 범금 8조를 만들었다.",
           "isCorrect": true,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "선지 원문과 역사적 근거의 검수가 끝나지 않아, 문제 단서와 일치하는 이유를 아직 확정할 수 없습니다.",
+          "relatedTarget": "고조선",
+          "coreConcept": "고조선",
+          "meaning": "범금 8조는 고조선의 사회 질서와 사유 재산 보호를 보여 주는 법이다.",
+          "judgmentReason": "단군왕검과 왕검성이 제시된 고조선의 특징과 일치하므로 정답이다.",
           "correctedFact": null,
-          "explanation": "④ 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "범금 8조는 고조선의 사회 질서와 사유 재산 보호를 보여 주는 법이다. 단군왕검과 왕검성이 제시된 고조선의 특징과 일치하므로 정답이다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "40317e6853c347fdea448641489e107c69d939e47db76fdda7e83fc156fe72be",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-03.40317e6853c3.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         }
       ],
-      "choiceCurationSources": [],
-      "choiceCurationProvenance": null,
-      "choiceCurationStatus": null,
-      "choiceCurationReviewLabel": null,
-      "verificationStatus": "DATA_REVIEW_REQUIRED"
+      "choiceCurationSources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-03.40317e6853c3.webp",
+        "docs/story-exams/image-choice-reviews.json"
+      ],
+      "choiceCurationProvenance": {
+        "sourceDocument": "docs/story-exams/image-choice-reviews.json",
+        "sourceImage": "assets/exams/catalog/detail/official-57-basic-03.40317e6853c3.webp",
+        "sourceImageSha256": "40317e6853c347fdea448641489e107c69d939e47db76fdda7e83fc156fe72be",
+        "reviewMethod": "고정 배포 스냅샷의 상세 문항 이미지를 원본 해상도로 직접 열어 발문·자료·선지 순서를 확인하고 공식 정답 인덱스와 대조했다.",
+        "originalImageVisuallyReviewed": true,
+        "officialAnswerVerified": true,
+        "curationStatus": "CURATED_REVIEWED"
+      },
+      "choiceCurationStatus": "CURATED_REVIEWED",
+      "choiceCurationReviewLabel": "원본 이미지 직접 검토",
+      "verificationStatus": "CURATED_REVIEWED"
     },
     {
       "officialQuestionId": "official-57-basic-04",
       "question": "(가) 왕에 대한 설명으로 옳은 것은?",
-      "clue": "이것은 경주의 고분에서 출토된 청동 그릇입니다. 바닥 면에 나타내는 글자가 새겨져 있이. 당시 신라와 고구려의 관계를 알 수 있습니다. 군대를 보내",
-      "correctChoice": "영락이라는 연호를 사용하였다",
-      "explanation": "OCR 전사에는 ‘이것은 경주의 고분에서 출토된 청동 그릇입니다. 바닥 면에 나타내는 글자가 새겨져 있이. 당시 신라와 고구려의 관계를 알 수 있습니다. 군대를 보내’와 관련된 인물 단서가 포착되어 있습니다. 공식 정답 선지는 OCR에서 ‘영락이라는 연호를 사용하였다’로 전사되었으나, 저장된 규칙만으로 역사적 사실을 확정하지 않고 원문·근거 자료 검수 대상으로 둡니다. 공식 정답표는 ④ ‘영락이라는 연호를 사용하였다’를 가리키며, OCR 전사와 근거 해설은 검수 전까지 확정 사실로 사용하지 않습니다.",
-      "curated": false,
-      "qualityTier": "evidence",
-      "coreVerificationStatus": "DATA_REVIEW_REQUIRED",
+      "clue": "호우명 청동 그릇과 신라에 침입한 왜를 격퇴했다는 내용은 광개토 대왕을 가리킨다.",
+      "correctChoice": "영락이라는 연호를 사용하였다.",
+      "explanation": "호우명 청동 그릇과 신라에 침입한 왜를 격퇴했다는 내용은 광개토 대왕을 가리킨다. 광개토 대왕은 영락이라는 독자 연호를 사용했다. 따라서 ④가 정답이다.",
+      "curated": true,
+      "qualityTier": "curated",
+      "coreVerificationStatus": "CURATED_REVIEWED",
       "coreEvidenceSources": [
-        "official-question-image-ocr",
-        "official-answer-catalog"
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-04.ad259807c3a9.webp",
+        "docs/story-exams/image-choice-reviews.json"
       ],
       "choiceCount": 4,
       "choices": [
-        "[원문 이미지 선택지 — OCR 전사 필요]",
-        "[원문 이미지 선택지 — OCR 전사 필요]",
-        "[원문 이미지 선택지 — OCR 전사 필요]",
-        "[원문 이미지 선택지 — OCR 전사 필요]"
+        "태학을 설립하였다.",
+        "낙랑군을 몰아내었다.",
+        "천리장성을 축조하였다.",
+        "영락이라는 연호를 사용하였다."
       ],
       "choiceConfidences": [
         null,
@@ -503,113 +522,128 @@
         {
           "choiceIndex": 0,
           "label": "①",
-          "choiceText": "[원문 이미지 선택지 — OCR 전사 필요]",
+          "choiceText": "태학을 설립하였다.",
           "isCorrect": false,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "선지 원문과 역사적 근거의 검수가 끝나지 않아, 문제 단서와 어긋나는 이유를 아직 확정할 수 없습니다.",
+          "relatedTarget": "고구려",
+          "coreConcept": "고구려",
+          "meaning": "태학은 고구려 소수림왕이 유교 교육을 위해 세운 교육 기관이다.",
+          "judgmentReason": "왜를 격퇴하고 호우명 그릇에 이름이 남은 광개토 대왕의 업적이 아니므로 오답이다.",
           "correctedFact": null,
-          "explanation": "① 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "태학은 고구려 소수림왕이 유교 교육을 위해 세운 교육 기관이다. 왜를 격퇴하고 호우명 그릇에 이름이 남은 광개토 대왕의 업적이 아니므로 오답이다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "ad259807c3a9319ecfd393ec708c563486329e2a7d766126b31137ab358178aa",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-04.ad259807c3a9.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         },
         {
           "choiceIndex": 1,
           "label": "②",
-          "choiceText": "[원문 이미지 선택지 — OCR 전사 필요]",
+          "choiceText": "낙랑군을 몰아내었다.",
           "isCorrect": false,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "선지 원문과 역사적 근거의 검수가 끝나지 않아, 문제 단서와 어긋나는 이유를 아직 확정할 수 없습니다.",
+          "relatedTarget": "고구려",
+          "coreConcept": "고구려",
+          "meaning": "낙랑군을 몰아내고 대동강 유역을 확보한 왕은 고구려 미천왕이다.",
+          "judgmentReason": "자료가 가리키는 광개토 대왕보다 앞선 왕의 업적이므로 오답이다.",
           "correctedFact": null,
-          "explanation": "② 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "낙랑군을 몰아내고 대동강 유역을 확보한 왕은 고구려 미천왕이다. 자료가 가리키는 광개토 대왕보다 앞선 왕의 업적이므로 오답이다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "ad259807c3a9319ecfd393ec708c563486329e2a7d766126b31137ab358178aa",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-04.ad259807c3a9.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         },
         {
           "choiceIndex": 2,
           "label": "③",
-          "choiceText": "[원문 이미지 선택지 — OCR 전사 필요]",
+          "choiceText": "천리장성을 축조하였다.",
           "isCorrect": false,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "선지 원문과 역사적 근거의 검수가 끝나지 않아, 문제 단서와 어긋나는 이유를 아직 확정할 수 없습니다.",
+          "relatedTarget": "고구려",
+          "coreConcept": "고구려",
+          "meaning": "고구려의 천리장성은 영류왕 때 축조를 시작해 보장왕 때 완성되었다.",
+          "judgmentReason": "광개토 대왕의 업적이 아니므로 오답이다.",
           "correctedFact": null,
-          "explanation": "③ 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "고구려의 천리장성은 영류왕 때 축조를 시작해 보장왕 때 완성되었다. 광개토 대왕의 업적이 아니므로 오답이다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "ad259807c3a9319ecfd393ec708c563486329e2a7d766126b31137ab358178aa",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-04.ad259807c3a9.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         },
         {
           "choiceIndex": 3,
           "label": "④",
-          "choiceText": "[원문 이미지 선택지 — OCR 전사 필요]",
+          "choiceText": "영락이라는 연호를 사용하였다.",
           "isCorrect": true,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "선지 원문과 역사적 근거의 검수가 끝나지 않아, 문제 단서와 일치하는 이유를 아직 확정할 수 없습니다.",
+          "relatedTarget": "고구려",
+          "coreConcept": "고구려",
+          "meaning": "영락은 광개토 대왕이 사용한 고구려의 독자 연호이다.",
+          "judgmentReason": "신라에 침입한 왜를 격퇴했다는 자료의 왕과 일치하므로 정답이다.",
           "correctedFact": null,
-          "explanation": "④ 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "영락은 광개토 대왕이 사용한 고구려의 독자 연호이다. 신라에 침입한 왜를 격퇴했다는 자료의 왕과 일치하므로 정답이다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "ad259807c3a9319ecfd393ec708c563486329e2a7d766126b31137ab358178aa",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-04.ad259807c3a9.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         }
       ],
-      "choiceCurationSources": [],
-      "choiceCurationProvenance": null,
-      "choiceCurationStatus": null,
-      "choiceCurationReviewLabel": null,
-      "verificationStatus": "DATA_REVIEW_REQUIRED"
+      "choiceCurationSources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-04.ad259807c3a9.webp",
+        "docs/story-exams/image-choice-reviews.json"
+      ],
+      "choiceCurationProvenance": {
+        "sourceDocument": "docs/story-exams/image-choice-reviews.json",
+        "sourceImage": "assets/exams/catalog/detail/official-57-basic-04.ad259807c3a9.webp",
+        "sourceImageSha256": "ad259807c3a9319ecfd393ec708c563486329e2a7d766126b31137ab358178aa",
+        "reviewMethod": "고정 배포 스냅샷의 상세 문항 이미지를 원본 해상도로 직접 열어 발문·자료·선지 순서를 확인하고 공식 정답 인덱스와 대조했다.",
+        "originalImageVisuallyReviewed": true,
+        "officialAnswerVerified": true,
+        "curationStatus": "CURATED_REVIEWED"
+      },
+      "choiceCurationStatus": "CURATED_REVIEWED",
+      "choiceCurationReviewLabel": "원본 이미지 직접 검토",
+      "verificationStatus": "CURATED_REVIEWED"
     },
     {
       "officialQuestionId": "official-57-basic-05",
       "question": "(가), (나) 사이의 시기에 있었던 사실로 옳은 것은?",
-      "clue": "고구려가 함락되고 왕께서도 문수왕께서 도읍을 평양으로",
+      "clue": "(가)는 고구려의 평양 천도 뒤, (나)는 백제가 한성을 잃고 웅진으로 천도하던 시점을 가리킨다.",
       "correctChoice": "백제가 신라와 동맹을 맺었다.",
-      "explanation": "OCR 전사에는 ‘고구려가 함락되고 왕께서도 문수왕께서 도읍을 평양으로’와 관련된 연표·사건 단서가 포착되어 있습니다. 공식 정답 선지는 OCR에서 ‘백제가 신라와 동맹을 맺었다.’로 전사되었으나, 저장된 규칙만으로 역사적 사실을 확정하지 않고 원문·근거 자료 검수 대상으로 둡니다. 공식 정답표는 ② ‘백제가 신라와 동맹을 맺었다.’를 가리키며, OCR 전사와 근거 해설은 검수 전까지 확정 사실로 사용하지 않습니다.",
-      "curated": false,
-      "qualityTier": "evidence",
-      "coreVerificationStatus": "DATA_REVIEW_REQUIRED",
+      "explanation": "(가)는 고구려가 평양으로 천도한 427년 뒤이고, (나)는 백제가 한성을 잃고 웅진으로 천도한 475년 무렵이다. 백제와 신라가 나제 동맹을 맺은 433년은 이 사이에 해당한다. 따라서 ②가 정답이다.",
+      "curated": true,
+      "qualityTier": "curated",
+      "coreVerificationStatus": "CURATED_REVIEWED",
       "coreEvidenceSources": [
-        "official-question-image-ocr",
-        "official-answer-catalog"
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-05.1b01880db971.webp",
+        "docs/story-exams/image-choice-reviews.json"
       ],
       "choiceCount": 4,
       "choices": [
         "고구려가 옥저를 정복하였다.",
         "백제가 신라와 동맹을 맺었다.",
         "백제가 관산성 전투에서 패배하였다.",
-        "[원문 이미지 선택지 — OCR 전사 필요]"
+        "고구려가 안시성에서 당군을 물리쳤다."
       ],
       "choiceConfidences": [
         null,
@@ -633,19 +667,20 @@
           "choiceText": "고구려가 옥저를 정복하였다.",
           "isCorrect": false,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "선지 원문과 역사적 근거의 검수가 끝나지 않아, 문제 단서와 어긋나는 이유를 아직 확정할 수 없습니다.",
+          "relatedTarget": "삼국 시대",
+          "coreConcept": "삼국 시대",
+          "meaning": "고구려의 옥저 정복은 태조왕 때 진행되어 427년 평양 천도보다 앞선 시기의 일이다.",
+          "judgmentReason": "문제의 (가)와 (나) 사이에 해당하지 않으므로 오답이다.",
           "correctedFact": null,
-          "explanation": "① 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "고구려의 옥저 정복은 태조왕 때 진행되어 427년 평양 천도보다 앞선 시기의 일이다. 문제의 (가)와 (나) 사이에 해당하지 않으므로 오답이다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "1b01880db9711a3c78ec551a78d66f286031b855d22fbafc124a9a6045d84d1c",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-05.1b01880db971.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         },
         {
@@ -654,19 +689,20 @@
           "choiceText": "백제가 신라와 동맹을 맺었다.",
           "isCorrect": true,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "선지 원문과 역사적 근거의 검수가 끝나지 않아, 문제 단서와 일치하는 이유를 아직 확정할 수 없습니다.",
+          "relatedTarget": "삼국 시대",
+          "coreConcept": "삼국 시대",
+          "meaning": "백제와 신라가 고구려의 남진에 맞서 나제 동맹을 맺은 것은 433년이다.",
+          "judgmentReason": "고구려의 평양 천도 뒤이자 백제 한성 함락 전이므로 정답이다.",
           "correctedFact": null,
-          "explanation": "② 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "백제와 신라가 고구려의 남진에 맞서 나제 동맹을 맺은 것은 433년이다. 고구려의 평양 천도 뒤이자 백제 한성 함락 전이므로 정답이다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "1b01880db9711a3c78ec551a78d66f286031b855d22fbafc124a9a6045d84d1c",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-05.1b01880db971.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         },
         {
@@ -675,48 +711,61 @@
           "choiceText": "백제가 관산성 전투에서 패배하였다.",
           "isCorrect": false,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "선지 원문과 역사적 근거의 검수가 끝나지 않아, 문제 단서와 어긋나는 이유를 아직 확정할 수 없습니다.",
+          "relatedTarget": "삼국 시대",
+          "coreConcept": "삼국 시대",
+          "meaning": "백제가 신라와 싸운 관산성 전투에서 패배한 것은 554년이다.",
+          "judgmentReason": "백제가 웅진으로 천도한 475년보다 뒤의 일이므로 오답이다.",
           "correctedFact": null,
-          "explanation": "③ 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "백제가 신라와 싸운 관산성 전투에서 패배한 것은 554년이다. 백제가 웅진으로 천도한 475년보다 뒤의 일이므로 오답이다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "1b01880db9711a3c78ec551a78d66f286031b855d22fbafc124a9a6045d84d1c",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-05.1b01880db971.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         },
         {
           "choiceIndex": 3,
           "label": "④",
-          "choiceText": "[원문 이미지 선택지 — OCR 전사 필요]",
+          "choiceText": "고구려가 안시성에서 당군을 물리쳤다.",
           "isCorrect": false,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "선지 원문과 역사적 근거의 검수가 끝나지 않아, 문제 단서와 어긋나는 이유를 아직 확정할 수 없습니다.",
+          "relatedTarget": "삼국 시대",
+          "coreConcept": "삼국 시대",
+          "meaning": "고구려가 안시성에서 당 태종의 군대를 물리친 것은 645년이다.",
+          "judgmentReason": "백제의 웅진 천도보다 훨씬 뒤의 일이므로 오답이다.",
           "correctedFact": null,
-          "explanation": "④ 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "고구려가 안시성에서 당 태종의 군대를 물리친 것은 645년이다. 백제의 웅진 천도보다 훨씬 뒤의 일이므로 오답이다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "1b01880db9711a3c78ec551a78d66f286031b855d22fbafc124a9a6045d84d1c",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-05.1b01880db971.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         }
       ],
-      "choiceCurationSources": [],
-      "choiceCurationProvenance": null,
-      "choiceCurationStatus": null,
-      "choiceCurationReviewLabel": null,
-      "verificationStatus": "DATA_REVIEW_REQUIRED"
+      "choiceCurationSources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-05.1b01880db971.webp",
+        "docs/story-exams/image-choice-reviews.json"
+      ],
+      "choiceCurationProvenance": {
+        "sourceDocument": "docs/story-exams/image-choice-reviews.json",
+        "sourceImage": "assets/exams/catalog/detail/official-57-basic-05.1b01880db971.webp",
+        "sourceImageSha256": "1b01880db9711a3c78ec551a78d66f286031b855d22fbafc124a9a6045d84d1c",
+        "reviewMethod": "고정 배포 스냅샷의 상세 문항 이미지를 원본 해상도로 직접 열어 발문·자료·선지 순서를 확인하고 공식 정답 인덱스와 대조했다.",
+        "originalImageVisuallyReviewed": true,
+        "officialAnswerVerified": true,
+        "curationStatus": "CURATED_REVIEWED"
+      },
+      "choiceCurationStatus": "CURATED_REVIEWED",
+      "choiceCurationReviewLabel": "원본 이미지 직접 검토",
+      "verificationStatus": "CURATED_REVIEWED"
     },
     {
       "officialQuestionId": "official-57-basic-06",
@@ -2752,22 +2801,22 @@
     {
       "officialQuestionId": "official-57-basic-22",
       "question": "(가)에 들어갈 인물로 옳은 것은?",
-      "clue": "조선 개국 공신 조선의 통치 기준과 운영 원칙을 제시한",
+      "clue": "조선 개국 공신, 『조선경국전』, 『불씨잡변』은 정도전을 가리킨다.",
       "correctChoice": "정도전",
-      "explanation": "OCR 전사에는 ‘조선 개국 공신 조선의 통치 기준과 운영 원칙을 제시한’와 관련된 인물 단서가 포착되어 있습니다. 공식 정답 선지는 OCR에서 ‘정도전’로 전사되었으나, 저장된 규칙만으로 역사적 사실을 확정하지 않고 원문·근거 자료 검수 대상으로 둡니다. 공식 정답표는 ③ ‘정도전’를 가리키며, OCR 전사와 근거 해설은 검수 전까지 확정 사실로 사용하지 않습니다.",
-      "curated": false,
-      "qualityTier": "evidence",
-      "coreVerificationStatus": "DATA_REVIEW_REQUIRED",
+      "explanation": "조선 개국 공신이면서 『조선경국전』과 『불씨잡변』을 저술한 인물은 정도전이다. 나머지 인물은 활동 시기나 조선 건국에 대한 입장이 단서와 다르다. 따라서 ③이 정답이다.",
+      "curated": true,
+      "qualityTier": "curated",
+      "coreVerificationStatus": "CURATED_REVIEWED",
       "coreEvidenceSources": [
-        "official-question-image-ocr",
-        "official-answer-catalog"
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-22.620b46b0c131.webp",
+        "docs/story-exams/image-choice-reviews.json"
       ],
       "choiceCount": 4,
       "choices": [
-        "[원문 이미지 선택지 — OCR 전사 필요]",
-        "[원문 이미지 선택지 — OCR 전사 필요]",
-        "[원문 이미지 선택지 — OCR 전사 필요]",
-        "[원문 이미지 선택지 — OCR 전사 필요]"
+        "이이",
+        "송시열",
+        "정도전",
+        "정몽주"
       ],
       "choiceConfidences": [
         null,
@@ -2788,93 +2837,108 @@
         {
           "choiceIndex": 0,
           "label": "①",
-          "choiceText": "[원문 이미지 선택지 — OCR 전사 필요]",
+          "choiceText": "이이",
           "isCorrect": false,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "선지 원문과 역사적 근거의 검수가 끝나지 않아, 문제 단서와 어긋나는 이유를 아직 확정할 수 없습니다.",
+          "relatedTarget": "정도전",
+          "coreConcept": "정도전",
+          "meaning": "이이는 조선 중기의 성리학자로 『성학집요』를 저술하고 십만 양병을 주장하였다.",
+          "judgmentReason": "조선 개국 공신이나 『조선경국전』의 저자가 아니므로 오답이다.",
           "correctedFact": null,
-          "explanation": "① 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "이이는 조선 중기의 성리학자로 『성학집요』를 저술하고 십만 양병을 주장하였다. 조선 개국 공신이나 『조선경국전』의 저자가 아니므로 오답이다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "620b46b0c131f1bdbfbf66b8c132ef5b5b3a844269df7ff851be82e86efeee25",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-22.620b46b0c131.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         },
         {
           "choiceIndex": 1,
           "label": "②",
-          "choiceText": "[원문 이미지 선택지 — OCR 전사 필요]",
+          "choiceText": "송시열",
           "isCorrect": false,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "선지 원문과 역사적 근거의 검수가 끝나지 않아, 문제 단서와 어긋나는 이유를 아직 확정할 수 없습니다.",
+          "relatedTarget": "정도전",
+          "coreConcept": "정도전",
+          "meaning": "송시열은 조선 후기 서인과 노론을 이끈 성리학자이며 북벌론과 예송 논쟁에 관여하였다.",
+          "judgmentReason": "조선 개국기의 인물이 아니므로 오답이다.",
           "correctedFact": null,
-          "explanation": "② 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "송시열은 조선 후기 서인과 노론을 이끈 성리학자이며 북벌론과 예송 논쟁에 관여하였다. 조선 개국기의 인물이 아니므로 오답이다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "620b46b0c131f1bdbfbf66b8c132ef5b5b3a844269df7ff851be82e86efeee25",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-22.620b46b0c131.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         },
         {
           "choiceIndex": 2,
           "label": "③",
-          "choiceText": "[원문 이미지 선택지 — OCR 전사 필요]",
+          "choiceText": "정도전",
           "isCorrect": true,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "선지 원문과 역사적 근거의 검수가 끝나지 않아, 문제 단서와 일치하는 이유를 아직 확정할 수 없습니다.",
+          "relatedTarget": "정도전",
+          "coreConcept": "정도전",
+          "meaning": "정도전은 조선 개국 공신으로 『조선경국전』을 저술하고 『불씨잡변』에서 불교를 비판하였다.",
+          "judgmentReason": "카드의 세 단서와 모두 일치하므로 정답이다.",
           "correctedFact": null,
-          "explanation": "③ 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "정도전은 조선 개국 공신으로 『조선경국전』을 저술하고 『불씨잡변』에서 불교를 비판하였다. 카드의 세 단서와 모두 일치하므로 정답이다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "620b46b0c131f1bdbfbf66b8c132ef5b5b3a844269df7ff851be82e86efeee25",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-22.620b46b0c131.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         },
         {
           "choiceIndex": 3,
           "label": "④",
-          "choiceText": "[원문 이미지 선택지 — OCR 전사 필요]",
+          "choiceText": "정몽주",
           "isCorrect": false,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "선지 원문과 역사적 근거의 검수가 끝나지 않아, 문제 단서와 어긋나는 이유를 아직 확정할 수 없습니다.",
+          "relatedTarget": "정도전",
+          "coreConcept": "정도전",
+          "meaning": "정몽주는 고려 말의 성리학자이자 충신으로 조선 건국에 반대하였다.",
+          "judgmentReason": "조선 개국 공신이라는 단서와 맞지 않으므로 오답이다.",
           "correctedFact": null,
-          "explanation": "④ 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "정몽주는 고려 말의 성리학자이자 충신으로 조선 건국에 반대하였다. 조선 개국 공신이라는 단서와 맞지 않으므로 오답이다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "620b46b0c131f1bdbfbf66b8c132ef5b5b3a844269df7ff851be82e86efeee25",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-22.620b46b0c131.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         }
       ],
-      "choiceCurationSources": [],
-      "choiceCurationProvenance": null,
-      "choiceCurationStatus": null,
-      "choiceCurationReviewLabel": null,
-      "verificationStatus": "DATA_REVIEW_REQUIRED"
+      "choiceCurationSources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-57-basic-22.620b46b0c131.webp",
+        "docs/story-exams/image-choice-reviews.json"
+      ],
+      "choiceCurationProvenance": {
+        "sourceDocument": "docs/story-exams/image-choice-reviews.json",
+        "sourceImage": "assets/exams/catalog/detail/official-57-basic-22.620b46b0c131.webp",
+        "sourceImageSha256": "620b46b0c131f1bdbfbf66b8c132ef5b5b3a844269df7ff851be82e86efeee25",
+        "reviewMethod": "고정 배포 스냅샷의 상세 문항 이미지를 원본 해상도로 직접 열어 발문·자료·선지 순서를 확인하고 공식 정답 인덱스와 대조했다.",
+        "originalImageVisuallyReviewed": true,
+        "officialAnswerVerified": true,
+        "curationStatus": "CURATED_REVIEWED"
+      },
+      "choiceCurationStatus": "CURATED_REVIEWED",
+      "choiceCurationReviewLabel": "원본 이미지 직접 검토",
+      "verificationStatus": "CURATED_REVIEWED"
     },
     {
       "officialQuestionId": "official-57-basic-23",
@@ -77134,22 +77198,23 @@
     {
       "officialQuestionId": "official-63-advanced-42",
       "question": "(가) 전쟁 중에 볼 수 있는 모습으로 적절하지 않은 것은?",
-      "clue": "",
+      "clue": "메러디스 빅토리호와 흥남 철수는 6·25 전쟁을 가리키며, 발문은 전쟁 중 볼 수 없는 모습을 묻는다.",
       "correctChoice": "",
-      "explanation": "이 문항은 공식 정답표 정정으로 모든 선택지가 정답으로 인정된 문항입니다. 서비스는 정정된 공식 채점 기준을 그대로 적용하므로 어느 선택지를 골라도 정답 처리합니다. 공식 정답표의 정답 번호는 없음입니다.",
+      "explanation": "메러디스 빅토리호와 흥남 철수는 6·25 전쟁을 가리킨다. 역사적 시기만 비교하면 1947년의 제2차 미소 공동 위원회를 보도하는 ⑤가 전쟁 중의 모습이 아니다. 다만 이 문항은 정정된 공식 정답표에 따라 ①~⑤를 모두 정답으로 처리한다.",
       "curated": true,
       "qualityTier": "curated",
-      "coreVerificationStatus": "CURATED_VERIFIED",
+      "coreVerificationStatus": "CURATED_REVIEWED",
       "coreEvidenceSources": [
-        "embedded-curated-explanation"
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-63-advanced-42.50f6a858b7b3.webp",
+        "docs/story-exams/image-choice-reviews.json"
       ],
       "choiceCount": 5,
       "choices": [
         "국민 방위군에 소집되는 청년",
-        "원조물자배급을기다리는시민",
-        "지가증권을싼값에 매각하는지주",
-        "거제도 포로수용소에서 석방되는반공 포로",
-        "제2차미소공동위원회 개최소식을보도하는기자"
+        "원조 물자 배급을 기다리는 시민",
+        "지가 증권을 싼값에 매각하는 지주",
+        "거제도 포로수용소에서 석방되는 반공 포로",
+        "제2차 미소 공동 위원회 개최 소식을 보도하는 기자"
       ],
       "choiceConfidences": [
         null,
@@ -77179,111 +77244,127 @@
           "choiceText": "국민 방위군에 소집되는 청년",
           "isCorrect": true,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "문항의 채점 기준이 모든 선지를 정답으로 처리하도록 정정된 사례이므로 ①도 정답입니다.",
+          "relatedTarget": "6·25 전쟁",
+          "coreConcept": "6·25 전쟁",
+          "meaning": "국민 방위군은 6·25 전쟁 중 후방 경비를 위해 조직된 군사 조직이다.",
+          "judgmentReason": "청년 소집은 전쟁 중의 모습에 해당하지만, 정정된 공식 채점 기준에 따라 이 문항은 모든 선지를 정답으로 처리한다.",
           "correctedFact": null,
-          "explanation": "① 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "국민 방위군은 6·25 전쟁 중 후방 경비를 위해 조직된 군사 조직이다. 청년 소집은 전쟁 중의 모습에 해당하지만, 정정된 공식 채점 기준에 따라 이 문항은 모든 선지를 정답으로 처리한다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "50f6a858b7b3db2afb64e9d1b78f001ad4aad1bf706554ff1f8b108321b3a834",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-63-advanced-42.50f6a858b7b3.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         },
         {
           "choiceIndex": 1,
           "label": "②",
-          "choiceText": "원조물자배급을기다리는시민",
+          "choiceText": "원조 물자 배급을 기다리는 시민",
           "isCorrect": true,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "문항의 채점 기준이 모든 선지를 정답으로 처리하도록 정정된 사례이므로 ②도 정답입니다.",
+          "relatedTarget": "6·25 전쟁",
+          "coreConcept": "6·25 전쟁",
+          "meaning": "원조 물자 배급은 6·25 전쟁으로 생활 기반을 잃은 피란민과 시민의 생활상을 보여 준다.",
+          "judgmentReason": "전쟁 중 볼 수 있는 모습이지만, 정정된 공식 채점 기준에 따라 이 문항은 모든 선지를 정답으로 처리한다.",
           "correctedFact": null,
-          "explanation": "② 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "원조 물자 배급은 6·25 전쟁으로 생활 기반을 잃은 피란민과 시민의 생활상을 보여 준다. 전쟁 중 볼 수 있는 모습이지만, 정정된 공식 채점 기준에 따라 이 문항은 모든 선지를 정답으로 처리한다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "50f6a858b7b3db2afb64e9d1b78f001ad4aad1bf706554ff1f8b108321b3a834",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-63-advanced-42.50f6a858b7b3.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         },
         {
           "choiceIndex": 2,
           "label": "③",
-          "choiceText": "지가증권을싼값에 매각하는지주",
+          "choiceText": "지가 증권을 싼값에 매각하는 지주",
           "isCorrect": true,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "문항의 채점 기준이 모든 선지를 정답으로 처리하도록 정정된 사례이므로 ③도 정답입니다.",
+          "relatedTarget": "6·25 전쟁",
+          "coreConcept": "6·25 전쟁",
+          "meaning": "지가 증권의 헐값 매각은 농지 개혁 보상으로 받은 증권의 가치가 전쟁기 물가 상승으로 떨어진 상황과 관련된다.",
+          "judgmentReason": "전쟁 중 나타난 모습이지만, 정정된 공식 채점 기준에 따라 이 문항은 모든 선지를 정답으로 처리한다.",
           "correctedFact": null,
-          "explanation": "③ 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "지가 증권의 헐값 매각은 농지 개혁 보상으로 받은 증권의 가치가 전쟁기 물가 상승으로 떨어진 상황과 관련된다. 전쟁 중 나타난 모습이지만, 정정된 공식 채점 기준에 따라 이 문항은 모든 선지를 정답으로 처리한다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "50f6a858b7b3db2afb64e9d1b78f001ad4aad1bf706554ff1f8b108321b3a834",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-63-advanced-42.50f6a858b7b3.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         },
         {
           "choiceIndex": 3,
           "label": "④",
-          "choiceText": "거제도 포로수용소에서 석방되는반공 포로",
+          "choiceText": "거제도 포로수용소에서 석방되는 반공 포로",
           "isCorrect": true,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "문항의 채점 기준이 모든 선지를 정답으로 처리하도록 정정된 사례이므로 ④도 정답입니다.",
+          "relatedTarget": "6·25 전쟁",
+          "coreConcept": "6·25 전쟁",
+          "meaning": "거제도 포로수용소의 반공 포로 석방은 휴전 협상 중이던 1953년에 일어났다.",
+          "judgmentReason": "6·25 전쟁 중의 사건이지만, 정정된 공식 채점 기준에 따라 이 문항은 모든 선지를 정답으로 처리한다.",
           "correctedFact": null,
-          "explanation": "④ 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "거제도 포로수용소의 반공 포로 석방은 휴전 협상 중이던 1953년에 일어났다. 6·25 전쟁 중의 사건이지만, 정정된 공식 채점 기준에 따라 이 문항은 모든 선지를 정답으로 처리한다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "50f6a858b7b3db2afb64e9d1b78f001ad4aad1bf706554ff1f8b108321b3a834",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-63-advanced-42.50f6a858b7b3.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         },
         {
           "choiceIndex": 4,
           "label": "⑤",
-          "choiceText": "제2차미소공동위원회 개최소식을보도하는기자",
+          "choiceText": "제2차 미소 공동 위원회 개최 소식을 보도하는 기자",
           "isCorrect": true,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "문항의 채점 기준이 모든 선지를 정답으로 처리하도록 정정된 사례이므로 ⑤도 정답입니다.",
+          "relatedTarget": "6·25 전쟁",
+          "coreConcept": "6·25 전쟁",
+          "meaning": "제2차 미소 공동 위원회는 대한민국 정부 수립 전인 1947년에 개최되었다.",
+          "judgmentReason": "6·25 전쟁 중의 모습이 아니어서 역사적 문맥상 발문의 조건에 해당하며, 정정된 공식 채점 기준으로도 정답 처리된다.",
           "correctedFact": null,
-          "explanation": "⑤ 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "제2차 미소 공동 위원회는 대한민국 정부 수립 전인 1947년에 개최되었다. 6·25 전쟁 중의 모습이 아니어서 역사적 문맥상 발문의 조건에 해당하며, 정정된 공식 채점 기준으로도 정답 처리된다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "50f6a858b7b3db2afb64e9d1b78f001ad4aad1bf706554ff1f8b108321b3a834",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-63-advanced-42.50f6a858b7b3.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         }
       ],
-      "choiceCurationSources": [],
-      "choiceCurationProvenance": null,
-      "choiceCurationStatus": null,
-      "choiceCurationReviewLabel": null,
-      "verificationStatus": "DATA_REVIEW_REQUIRED"
+      "choiceCurationSources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-63-advanced-42.50f6a858b7b3.webp",
+        "docs/story-exams/image-choice-reviews.json"
+      ],
+      "choiceCurationProvenance": {
+        "sourceDocument": "docs/story-exams/image-choice-reviews.json",
+        "sourceImage": "assets/exams/catalog/detail/official-63-advanced-42.50f6a858b7b3.webp",
+        "sourceImageSha256": "50f6a858b7b3db2afb64e9d1b78f001ad4aad1bf706554ff1f8b108321b3a834",
+        "reviewMethod": "고정 배포 스냅샷의 상세 문항 이미지를 원본 해상도로 직접 열어 발문·자료·선지 순서를 확인하고 공식 정답 인덱스와 대조했다.",
+        "originalImageVisuallyReviewed": true,
+        "officialAnswerVerified": true,
+        "curationStatus": "CURATED_REVIEWED"
+      },
+      "choiceCurationStatus": "CURATED_REVIEWED",
+      "choiceCurationReviewLabel": "원본 이미지 직접 검토",
+      "verificationStatus": "CURATED_REVIEWED"
     },
     {
       "officialQuestionId": "official-63-advanced-43",
@@ -211456,23 +211537,23 @@
     {
       "officialQuestionId": "official-75-advanced-36",
       "question": "(가) 운동의 배경으로 가장 적절한 것은?",
-      "clue": "파리 강화 회의가 진행되던 프랑스에서는 일제 강점기 최대 규모의 기사가 주목됩니다",
+      "clue": "파리 강화 회의 시기 프랑스 언론이 보도한 대규모 한국 독립운동은 3·1 운동을 가리킨다.",
       "correctChoice": "미국 대통령 윌슨이 민족 자결주의를 제창하였다.",
-      "explanation": "OCR 전사에는 ‘파리 강화 회의가 진행되던 프랑스에서는 일제 강점기 최대 규모의 기사가 주목됩니다’라는 문구가 포착되어 있습니다. 공식 정답 선지는 OCR에서 ‘미국 대통령 윌슨이 민족 자결주의를 제창하였다.’로 전사되었으나, 저장된 규칙만으로 역사적 사실을 확정하지 않고 원문·근거 자료 검수 대상으로 둡니다. 공식 정답표는 ⑤ ‘미국 대통령 윌슨이 민족 자결주의를 제창하였다.’를 가리키며, OCR 전사와 근거 해설은 검수 전까지 확정 사실로 사용하지 않습니다.",
-      "curated": false,
-      "qualityTier": "evidence",
-      "coreVerificationStatus": "DATA_REVIEW_REQUIRED",
+      "explanation": "파리 강화 회의 중 프랑스 언론이 한국 독립운동을 ‘혁명’으로 보도했다는 자료는 1919년 3·1 운동을 가리킨다. 제1차 세계 대전 뒤 윌슨이 제창한 민족 자결주의는 3·1 운동에 영향을 준 국제적 배경이었다. 따라서 ⑤가 정답이다.",
+      "curated": true,
+      "qualityTier": "curated",
+      "coreVerificationStatus": "CURATED_REVIEWED",
       "coreEvidenceSources": [
-        "official-question-image-ocr",
-        "official-answer-catalog"
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-75-advanced-36.a1a5ba0457f2.webp",
+        "docs/story-exams/image-choice-reviews.json"
       ],
       "choiceCount": 5,
       "choices": [
-        "[원문 이미지 선택지 — OCR 전사 필요]",
-        "[원문 이미지 선택지 — OCR 전사 필요]",
-        "[원문 이미지 선택지 — OCR 전사 필요]",
-        "[원문 이미지 선택지 — OCR 전사 필요]",
-        "[원문 이미지 선택지 — OCR 전사 필요]"
+        "간도 참변으로 민간인이 학살되었다.",
+        "민영익을 대표로 한 보빙사가 파견되었다.",
+        "대한 제국의 마지막 황제 순종이 서거하였다.",
+        "언론사의 주도로 브나로드 운동이 전개되었다.",
+        "미국 대통령 윌슨이 민족 자결주의를 제창하였다."
       ],
       "choiceConfidences": [
         null,
@@ -211495,114 +211576,130 @@
         {
           "choiceIndex": 0,
           "label": "①",
-          "choiceText": "[원문 이미지 선택지 — OCR 전사 필요]",
+          "choiceText": "간도 참변으로 민간인이 학살되었다.",
           "isCorrect": false,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "선지 원문과 역사적 근거의 검수가 끝나지 않아, 문제 단서와 어긋나는 이유를 아직 확정할 수 없습니다.",
+          "relatedTarget": "3·1 운동",
+          "coreConcept": "3·1 운동",
+          "meaning": "간도 참변은 청산리 대첩 뒤 일본군이 1920년 간도 지역의 한인들을 학살한 사건이다.",
+          "judgmentReason": "1919년 3·1 운동의 배경이 아니라 이후의 일이므로 오답이다.",
           "correctedFact": null,
-          "explanation": "① 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "간도 참변은 청산리 대첩 뒤 일본군이 1920년 간도 지역의 한인들을 학살한 사건이다. 1919년 3·1 운동의 배경이 아니라 이후의 일이므로 오답이다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "a1a5ba0457f247e0afd98ec9698f75a85cfbe5eec1d8b45b9028f24fcfc9a562",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-75-advanced-36.a1a5ba0457f2.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         },
         {
           "choiceIndex": 1,
           "label": "②",
-          "choiceText": "[원문 이미지 선택지 — OCR 전사 필요]",
+          "choiceText": "민영익을 대표로 한 보빙사가 파견되었다.",
           "isCorrect": false,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "선지 원문과 역사적 근거의 검수가 끝나지 않아, 문제 단서와 어긋나는 이유를 아직 확정할 수 없습니다.",
+          "relatedTarget": "3·1 운동",
+          "coreConcept": "3·1 운동",
+          "meaning": "보빙사는 조미 수호 통상 조약 체결 뒤인 1883년 미국에 파견된 외교 사절단이다.",
+          "judgmentReason": "일제 강점기의 3·1 운동과 시기가 달라 오답이다.",
           "correctedFact": null,
-          "explanation": "② 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "보빙사는 조미 수호 통상 조약 체결 뒤인 1883년 미국에 파견된 외교 사절단이다. 일제 강점기의 3·1 운동과 시기가 달라 오답이다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "a1a5ba0457f247e0afd98ec9698f75a85cfbe5eec1d8b45b9028f24fcfc9a562",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-75-advanced-36.a1a5ba0457f2.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         },
         {
           "choiceIndex": 2,
           "label": "③",
-          "choiceText": "[원문 이미지 선택지 — OCR 전사 필요]",
+          "choiceText": "대한 제국의 마지막 황제 순종이 서거하였다.",
           "isCorrect": false,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "선지 원문과 역사적 근거의 검수가 끝나지 않아, 문제 단서와 어긋나는 이유를 아직 확정할 수 없습니다.",
+          "relatedTarget": "3·1 운동",
+          "coreConcept": "3·1 운동",
+          "meaning": "순종의 서거는 1926년 6·10 만세 운동이 일어나는 계기가 되었다.",
+          "judgmentReason": "3·1 운동보다 뒤의 사실이므로 오답이다.",
           "correctedFact": null,
-          "explanation": "③ 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "순종의 서거는 1926년 6·10 만세 운동이 일어나는 계기가 되었다. 3·1 운동보다 뒤의 사실이므로 오답이다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "a1a5ba0457f247e0afd98ec9698f75a85cfbe5eec1d8b45b9028f24fcfc9a562",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-75-advanced-36.a1a5ba0457f2.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         },
         {
           "choiceIndex": 3,
           "label": "④",
-          "choiceText": "[원문 이미지 선택지 — OCR 전사 필요]",
+          "choiceText": "언론사의 주도로 브나로드 운동이 전개되었다.",
           "isCorrect": false,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "선지 원문과 역사적 근거의 검수가 끝나지 않아, 문제 단서와 어긋나는 이유를 아직 확정할 수 없습니다.",
+          "relatedTarget": "3·1 운동",
+          "coreConcept": "3·1 운동",
+          "meaning": "브나로드 운동은 1930년대 동아일보가 주도한 농촌 계몽 운동이다.",
+          "judgmentReason": "1919년 3·1 운동의 배경이 아니므로 오답이다.",
           "correctedFact": null,
-          "explanation": "④ 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "브나로드 운동은 1930년대 동아일보가 주도한 농촌 계몽 운동이다. 1919년 3·1 운동의 배경이 아니므로 오답이다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "a1a5ba0457f247e0afd98ec9698f75a85cfbe5eec1d8b45b9028f24fcfc9a562",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-75-advanced-36.a1a5ba0457f2.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         },
         {
           "choiceIndex": 4,
           "label": "⑤",
-          "choiceText": "[원문 이미지 선택지 — OCR 전사 필요]",
+          "choiceText": "미국 대통령 윌슨이 민족 자결주의를 제창하였다.",
           "isCorrect": true,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "선지 원문과 역사적 근거의 검수가 끝나지 않아, 문제 단서와 일치하는 이유를 아직 확정할 수 없습니다.",
+          "relatedTarget": "3·1 운동",
+          "coreConcept": "3·1 운동",
+          "meaning": "윌슨의 민족 자결주의는 제1차 세계 대전 뒤 약소민족의 독립 기대를 높인 원칙이다.",
+          "judgmentReason": "파리 강화 회의와 함께 3·1 운동에 영향을 준 국제 정세이므로 정답이다.",
           "correctedFact": null,
-          "explanation": "⑤ 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "윌슨의 민족 자결주의는 제1차 세계 대전 뒤 약소민족의 독립 기대를 높인 원칙이다. 파리 강화 회의와 함께 3·1 운동에 영향을 준 국제 정세이므로 정답이다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "a1a5ba0457f247e0afd98ec9698f75a85cfbe5eec1d8b45b9028f24fcfc9a562",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-75-advanced-36.a1a5ba0457f2.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         }
       ],
-      "choiceCurationSources": [],
-      "choiceCurationProvenance": null,
-      "choiceCurationStatus": null,
-      "choiceCurationReviewLabel": null,
-      "verificationStatus": "DATA_REVIEW_REQUIRED"
+      "choiceCurationSources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-75-advanced-36.a1a5ba0457f2.webp",
+        "docs/story-exams/image-choice-reviews.json"
+      ],
+      "choiceCurationProvenance": {
+        "sourceDocument": "docs/story-exams/image-choice-reviews.json",
+        "sourceImage": "assets/exams/catalog/detail/official-75-advanced-36.a1a5ba0457f2.webp",
+        "sourceImageSha256": "a1a5ba0457f247e0afd98ec9698f75a85cfbe5eec1d8b45b9028f24fcfc9a562",
+        "reviewMethod": "고정 배포 스냅샷의 상세 문항 이미지를 원본 해상도로 직접 열어 발문·자료·선지 순서를 확인하고 공식 정답 인덱스와 대조했다.",
+        "originalImageVisuallyReviewed": true,
+        "officialAnswerVerified": true,
+        "curationStatus": "CURATED_REVIEWED"
+      },
+      "choiceCurationStatus": "CURATED_REVIEWED",
+      "choiceCurationReviewLabel": "원본 이미지 직접 검토",
+      "verificationStatus": "CURATED_REVIEWED"
     },
     {
       "officialQuestionId": "official-75-advanced-37",
@@ -242739,21 +242836,21 @@
     {
       "officialQuestionId": "official-79-basic-01",
       "question": "(가) 시대의 생활 모습으로 가장 적절한 것은?",
-      "clue": "우리 모둠은 사유 재산과 계급이 발생한 시대 사람들의 생활 모습을 그림으로 표현해 보았습니다. 청동 방울",
+      "clue": "사유 재산과 계급의 발생, 청동 방울, 청동검, 민무늬 토기는 청동기 시대를 가리킨다.",
       "correctChoice": "반달 돌칼을 사용하여 곡식을 수확하였다.",
-      "explanation": "OCR 전사에는 ‘우리 모둠은 사유 재산과 계급이 발생한 시대 사람들의 생활 모습을 그림으로 표현해 보았습니다. 청동 방울’라는 문구가 포착되어 있습니다. 공식 정답 선지는 OCR에서 ‘반달 돌칼을 사용하여 곡식을 수확하였다.’로 전사되었으나, 저장된 규칙만으로 역사적 사실을 확정하지 않고 원문·근거 자료 검수 대상으로 둡니다. 공식 정답표는 ④ ‘반달 돌칼을 사용하여 곡식을 수확하였다.’를 가리키며, OCR 전사와 근거 해설은 검수 전까지 확정 사실로 사용하지 않습니다.",
-      "curated": false,
-      "qualityTier": "evidence",
-      "coreVerificationStatus": "DATA_REVIEW_REQUIRED",
+      "explanation": "사유 재산과 계급의 발생, 청동 방울, 청동검, 민무늬 토기는 청동기 시대를 가리킨다. 반달 돌칼은 청동기 시대에 곡식의 이삭을 거두는 데 사용한 농기구이다. 따라서 ④가 정답이다.",
+      "curated": true,
+      "qualityTier": "curated",
+      "coreVerificationStatus": "CURATED_REVIEWED",
       "coreEvidenceSources": [
-        "official-question-image-ocr",
-        "official-answer-catalog"
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-79-basic-01.0c49e55b5455.webp",
+        "docs/story-exams/image-choice-reviews.json"
       ],
       "choiceCount": 4,
       "choices": [
         "덩이쇠를 화폐처럼 사용하였다.",
         "불을 처음으로 사용하기 시작하였다.",
-        "[원문 이미지 선택지 — OCR 전사 필요]",
+        "주로 동굴이나 바위 그늘에서 살았다.",
         "반달 돌칼을 사용하여 곡식을 수확하였다."
       ],
       "choiceConfidences": [
@@ -242778,19 +242875,20 @@
           "choiceText": "덩이쇠를 화폐처럼 사용하였다.",
           "isCorrect": false,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "선지 원문과 역사적 근거의 검수가 끝나지 않아, 문제 단서와 어긋나는 이유를 아직 확정할 수 없습니다.",
+          "relatedTarget": "청동기 시대",
+          "coreConcept": "청동기 시대",
+          "meaning": "덩이쇠는 철 생산이 활발했던 가야에서 교역품이자 교환 수단으로 사용되었다.",
+          "judgmentReason": "청동 방울·청동검·민무늬 토기가 제시된 청동기 시대보다 뒤의 모습이므로 오답이다.",
           "correctedFact": null,
-          "explanation": "① 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "덩이쇠는 철 생산이 활발했던 가야에서 교역품이자 교환 수단으로 사용되었다. 청동 방울·청동검·민무늬 토기가 제시된 청동기 시대보다 뒤의 모습이므로 오답이다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "0c49e55b54554a6a1cdcebb7c79d3cc9174a79dbcfc805e4c0026a2dfb15e327",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-79-basic-01.0c49e55b5455.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         },
         {
@@ -242799,40 +242897,42 @@
           "choiceText": "불을 처음으로 사용하기 시작하였다.",
           "isCorrect": false,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "선지 원문과 역사적 근거의 검수가 끝나지 않아, 문제 단서와 어긋나는 이유를 아직 확정할 수 없습니다.",
+          "relatedTarget": "청동기 시대",
+          "coreConcept": "청동기 시대",
+          "meaning": "불을 사용하기 시작한 것은 구석기 시대의 생활 변화이다.",
+          "judgmentReason": "사유 재산과 계급이 발생한 청동기 시대의 생활 모습이 아니므로 오답이다.",
           "correctedFact": null,
-          "explanation": "② 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "불을 사용하기 시작한 것은 구석기 시대의 생활 변화이다. 사유 재산과 계급이 발생한 청동기 시대의 생활 모습이 아니므로 오답이다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "0c49e55b54554a6a1cdcebb7c79d3cc9174a79dbcfc805e4c0026a2dfb15e327",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-79-basic-01.0c49e55b5455.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         },
         {
           "choiceIndex": 2,
           "label": "③",
-          "choiceText": "[원문 이미지 선택지 — OCR 전사 필요]",
+          "choiceText": "주로 동굴이나 바위 그늘에서 살았다.",
           "isCorrect": false,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "선지 원문과 역사적 근거의 검수가 끝나지 않아, 문제 단서와 어긋나는 이유를 아직 확정할 수 없습니다.",
+          "relatedTarget": "청동기 시대",
+          "coreConcept": "청동기 시대",
+          "meaning": "동굴이나 바위 그늘은 이동 생활을 하던 구석기인의 대표적인 주거 공간이다.",
+          "judgmentReason": "농경이 발달한 청동기 시대의 생활 모습과 다르므로 오답이다.",
           "correctedFact": null,
-          "explanation": "③ 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "동굴이나 바위 그늘은 이동 생활을 하던 구석기인의 대표적인 주거 공간이다. 농경이 발달한 청동기 시대의 생활 모습과 다르므로 오답이다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "0c49e55b54554a6a1cdcebb7c79d3cc9174a79dbcfc805e4c0026a2dfb15e327",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-79-basic-01.0c49e55b5455.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         },
         {
@@ -242841,27 +242941,39 @@
           "choiceText": "반달 돌칼을 사용하여 곡식을 수확하였다.",
           "isCorrect": true,
           "relatedEra": "",
-          "relatedTarget": "",
-          "coreConcept": "",
-          "meaning": "OCR 원문 확인이 필요한 선택지입니다.",
-          "judgmentReason": "선지 원문과 역사적 근거의 검수가 끝나지 않아, 문제 단서와 일치하는 이유를 아직 확정할 수 없습니다.",
+          "relatedTarget": "청동기 시대",
+          "coreConcept": "청동기 시대",
+          "meaning": "반달 돌칼은 청동기 시대에 곡식의 이삭을 거두는 데 사용한 농기구이다.",
+          "judgmentReason": "자료의 청동 방울·청동검·민무늬 토기와 같은 시대의 생활 모습이므로 정답이다.",
           "correctedFact": null,
-          "explanation": "④ 선택지는 원문 이미지에서 텍스트를 신뢰할 수준으로 판독하지 못했습니다. 인물명·연도·부정 표현 또는 그림의 대상을 추측하지 않고 공식 문제 이미지와 신뢰할 수 있는 역사 자료를 대조한 뒤 해설을 확정해야 합니다.",
-          "verificationStatus": "DATA_REVIEW_REQUIRED",
+          "explanation": "반달 돌칼은 청동기 시대에 곡식의 이삭을 거두는 데 사용한 농기구이다. 자료의 청동 방울·청동검·민무늬 토기와 같은 시대의 생활 모습이므로 정답이다.",
+          "verificationStatus": "CURATED_REVIEWED",
           "ocrConfidence": null,
           "sourceImageSha256": "0c49e55b54554a6a1cdcebb7c79d3cc9174a79dbcfc805e4c0026a2dfb15e327",
           "sourceImageHashVerified": true,
-          "choiceTextVerificationStatus": "DATA_REVIEW_REQUIRED",
+          "choiceTextVerificationStatus": "VISUALLY_REVIEWED",
           "evidenceSources": [
-            "official-question-image-ocr"
+            "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-79-basic-01.0c49e55b5455.webp",
+            "docs/story-exams/image-choice-reviews.json"
           ]
         }
       ],
-      "choiceCurationSources": [],
-      "choiceCurationProvenance": null,
-      "choiceCurationStatus": null,
-      "choiceCurationReviewLabel": null,
-      "verificationStatus": "DATA_REVIEW_REQUIRED"
+      "choiceCurationSources": [
+        "https://raw.githubusercontent.com/tjdus7911-ops/history/83c9da64e68d16264d4ba2cf2437a3d095d04b38/dist/assets/exams/catalog/detail/official-79-basic-01.0c49e55b5455.webp",
+        "docs/story-exams/image-choice-reviews.json"
+      ],
+      "choiceCurationProvenance": {
+        "sourceDocument": "docs/story-exams/image-choice-reviews.json",
+        "sourceImage": "assets/exams/catalog/detail/official-79-basic-01.0c49e55b5455.webp",
+        "sourceImageSha256": "0c49e55b54554a6a1cdcebb7c79d3cc9174a79dbcfc805e4c0026a2dfb15e327",
+        "reviewMethod": "고정 배포 스냅샷의 상세 문항 이미지를 원본 해상도로 직접 열어 발문·자료·선지 순서를 확인하고 공식 정답 인덱스와 대조했다.",
+        "originalImageVisuallyReviewed": true,
+        "officialAnswerVerified": true,
+        "curationStatus": "CURATED_REVIEWED"
+      },
+      "choiceCurationStatus": "CURATED_REVIEWED",
+      "choiceCurationReviewLabel": "원본 이미지 직접 검토",
+      "verificationStatus": "CURATED_REVIEWED"
     },
     {
       "officialQuestionId": "official-79-basic-02",
