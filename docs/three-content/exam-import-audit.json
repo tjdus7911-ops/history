@@ -8,7 +8,7 @@
     "evidence": "docs/three-content/exam-source-evidence.json",
     "evidenceSha256": "35233b31bb44e7b54d920b94d8d7ccd56b2db96053d59978b32065db970cdaa3",
     "catalog": "dist/official-exam-catalog.json",
-    "catalogSha256": "448cf29cf8edc7337e53d7d1d47f537ea44ced591f822e86792385cab45d3f6c"
+    "catalogSha256": "8a9054219b3ecfd2db42a24e705b6470886abaea97a1284a10522ca13d36fbd7"
   },
   "stats": {
     "mainScenes": 215,

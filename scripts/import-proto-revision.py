@@ -104,7 +104,13 @@ const PROTO_LEGACY_STUDY_QUESTIONS = ''' + json.dumps(legacy['questions'], ensur
                ROOT / 'dist/proto-story-script.js': wrapper.encode('utf-8')}
     for path, content in outputs.items():
         if args.check:
-            assert path.read_bytes() == content, 'Generated file differs: ' + str(path.relative_to(ROOT))
+            # Git's Windows checkout may translate a generated text artifact to
+            # CRLF even though the canonical generator emits LF.  Compare text
+            # bytes after newline normalization so --check remains portable
+            # without weakening any source hash or semantic validation above.
+            actual = path.read_bytes().replace(b'\r\n', b'\n')
+            expected = content.replace(b'\r\n', b'\n')
+            assert actual == expected, 'Generated file differs: ' + str(path.relative_to(ROOT))
         else:
             path.write_bytes(content)
     print(json.dumps({'mode': 'check' if args.check else 'write', 'canonicalSha256': EXPECTED_SHA, **report}, ensure_ascii=False))

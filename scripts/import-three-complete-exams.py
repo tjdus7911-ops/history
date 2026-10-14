@@ -54,6 +54,11 @@ def sha256(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def text_sha256(path):
+    """Hash repository text canonically across Git LF/CRLF checkouts."""
+    return hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+
+
 def optional(value):
     return "" if value in ("", "—", None) else str(value)
 
@@ -465,7 +470,7 @@ def compile_payload(workbook, manuscript, evidence_path, catalog_path, repo_root
         "workbook": "docs/three-content/exam-mapping.xlsx", "workbookSha256": sha256(workbook),
         "manuscript": "docs/three-content/complete-manuscript.md", "manuscriptSha256": sha256(manuscript),
         "evidence": "docs/three-content/exam-source-evidence.json", "evidenceSha256": sha256(evidence_path),
-        "catalog": "dist/official-exam-catalog.json", "catalogSha256": sha256(catalog_path),
+        "catalog": "dist/official-exam-catalog.json", "catalogSha256": text_sha256(catalog_path),
     }
     payload = {
         "schemaVersion": 1, "contentVersion": "three-complete-" + source["workbookSha256"][:12],

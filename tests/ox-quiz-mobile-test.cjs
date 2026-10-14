@@ -133,6 +133,8 @@ const server=http.createServer((req,res)=>{
 
   await page.locator('[data-nav="study"]').click();await page.locator('[data-wrong-filter="ox"]').click();
   assert((await page.locator('[data-ox-review-filter]').boundingBox()).height>=44,'wrong-review select touch target '+width);
+  assert((await page.locator('[data-ox-wrong-open]').first().boundingBox()).height>=44,'wrong-review card touch target '+width);
+  await page.locator('[data-ox-wrong-open]').first().click();
   assert((await page.locator('[data-ox-review-one]').first().boundingBox()).height>=44,'wrong-review button touch target '+width);
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'review horizontal overflow '+width);
 

@@ -234,7 +234,7 @@ assert(html.includes(`data-official-image-open="${id}"`),'detail image is not ac
 assert(!html.includes('EXPLANATION-1')&&!html.includes('선지별 해설'),'choice explanations leaked before answer confirmation');
 const answer=run(`QUESTIONS.find(question=>question.questionId===${JSON.stringify(id)}).acceptedAnswers[0]`);
 click({officialPick:String(answer)});
-assert(html.includes('aria-pressed="true"')&&html.includes('내 선택'),'picked choice needs a non-color state label');
+assert(html.includes('role="radio"')&&html.includes('aria-checked="true"')&&html.includes('내 선택'),'picked choice needs a semantic radio state and non-color label');
 assert(!html.includes('EXPLANATION-1'),'choice explanations leaked after picking but before confirmation');
 click({officialSubmit:'true'});
 for(let index=1;index<=choiceCount;index++){
@@ -267,7 +267,7 @@ assert(!html.includes('ERA-1')&&!html.includes('TARGET-1'),'era and target metad
 assert(html.includes('[문제 핵심 해설]'),'question-level analysis heading missing');
 assert(html.includes('official-choice-badge answer">정답')&&html.includes('official-choice-badge selected">내 선택'),'answer and selection badges missing');
 for(const internalQaLabel of ['핵심 해설 추가 검수 필요','역사 규칙 대조','출처 근거 검수 완료','수기 해설 검토','해설 추가 검수 필요','선지 원문 추가 검수 필요','선지 원문 육안 대조','원본 연결 재확인 필요'])assert(!html.includes(internalQaLabel),`internal QA label leaked to learner UI: ${internalQaLabel}`);
-assert(html.includes('정답·내답'),'graded choice needs a visible non-color answer/selection state');
+assert(html.includes('정답 · 내 선택'),'graded choice needs a visible non-color answer/selection state');
 
 run(`startOfficialSession([OFFICIAL_EXAM_CATALOG.find(entry=>entry.canonicalQuestionId===${JSON.stringify(id)})],'exam');beginOrResumeOfficialTimer()`);
 click({officialPick:String(answer)});
@@ -276,7 +276,7 @@ const stableSession=`(()=>{const snapshot=OFFICIAL_EXAM_TIMER.snapshot();return 
 const before=copy(stableSession);
 click({officialImageOpen:id});
 assert(html.includes('official-image-modal')&&html.includes('src="detail-only.webp"'),'fullscreen detail modal missing');
-assert(html.includes('선지까지 확인'),'modal must explain vertical scrolling');
+assert(html.includes('원본 선지는 제외'),'modal must explain the question-only crop');
 assert.deepEqual(copy(stableSession),before,'opening the modal changed answer/timer state');
 click({officialImageZoom:'true'});assert(html.includes('official-image-scroll zoomed'));
 assert.deepEqual(copy(stableSession),before,'zooming changed answer/timer state');
@@ -291,7 +291,7 @@ assert(html.includes('src="detail-only.webp"'),'graded review must use detailIma
 for(let index=1;index<=choiceCount;index++)assert(html.includes(`MEANING-${index}`)&&html.includes(`JUDGMENT-${index}`),`review choice ${index} summary or reason missing`);
 
 const css=fs.readFileSync('dist/exam-memory.css','utf8');
-for(const contract of ['.official-image-modal-overlay','height:100dvh','.official-image-scroll{','overflow:auto','touch-action:pan-x pan-y pinch-zoom','.official-choice-explanations','.official-choice-text','word-break:keep-all','overflow-wrap:anywhere','.official-pass-rate','.official-pass-rate-badge','white-space:nowrap'])assert(css.includes(contract),`missing CSS contract: ${contract}`);
+for(const contract of ['.official-image-modal-overlay','height:100dvh','.official-image-scroll{','overflow:auto','touch-action:pan-x pan-y pinch-zoom','.official-content-image','.official-modal-content-crop','.official-choice-panel','.official-choice-label','.official-choice-explanations','.official-choice-text','word-break:keep-all','overflow-wrap:anywhere','.official-pass-rate','.official-pass-rate-badge','white-space:nowrap'])assert(css.includes(contract),`missing CSS contract: ${contract}`);
 assert(!css.includes('.official-pass-rate.card'),'retired card pass-rate box CSS remains');
 assert(fs.readFileSync('dist/story-exam-ui.js','utf8').includes("markup.includes('official-choice-load')"),'Story wrapper can duplicate the lazy loading/error block');
 console.log('PASS: thumbnail/detail routing, state-safe fullscreen zoom, verified official rates, strict pending state, and spoiler-safe choice explanations.');
