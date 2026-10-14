@@ -34,9 +34,14 @@ jobs:
         run: |
           set -o pipefail
           node tests/official-content-swipe-test.cjs
-          for test in exam-library official-learning-continuation official-exam-history official-era-result official-exam-timer official-exam-cover official-exam-pass official-source-manifest official-exam-statistics official-choice-ui-data official-choice-media-assets official-content-crop-regression service-worker-cache official-explanation official-weakness-review official-canonical-qa vercel-detail-assets; do
+          for test in exam-library official-learning-continuation official-exam-history official-era-result official-exam-timer official-exam-cover official-exam-pass official-source-manifest official-exam-statistics official-choice-ui-data official-content-crop-regression service-worker-cache official-explanation official-weakness-review official-canonical-qa vercel-detail-assets; do
             node tests/$test-test.cjs
           done 2>&1 | tee tmp/mobile-product/regression.log
+          if [ -d dist/assets/exams/catalog ]; then
+            node tests/official-choice-media-assets-test.cjs
+          else
+            echo 'SKIP physical source-file audit: assets are externalized; deployment manifests, crop contracts and rendered representative images are checked separately.' | tee -a tmp/mobile-product/regression.log
+          fi
       - name: Build validation
         run: npm run build 2>&1 | tee tmp/mobile-product/build.log
         shell: bash
