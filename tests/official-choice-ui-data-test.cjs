@@ -20,13 +20,16 @@ let choiceCount=0;
 for(const [index,record] of choices.records.entries()){
  const source=catalog[index],fullRecord=byFull.get(record.officialQuestionId),crop=byCrop.get(record.officialQuestionId),expected=source.examLevel==='기본'?4:5;
  assert.equal(record.officialQuestionId,source.officialQuestionId,'choice bundle order drifted from catalog');
- assert.deepEqual(Object.keys(record),['officialQuestionId','question','choices','contentCropRatio'],'answer-bearing field leaked into pre-grade bundle');
+ assert.deepEqual(Object.keys(record),['officialQuestionId','question','choices','contentCropRatio','contentCropY'],'answer-bearing field leaked into pre-grade bundle');
  assert.equal(record.question,fullRecord.question);
  assert.deepEqual(record.choices,fullRecord.choices);
  assert.equal(record.choices.length,expected);
  assert(record.choices.every(value=>typeof value==='string'&&value.trim().length>0));
  assert(record.contentCropRatio>=.2&&record.contentCropRatio<=.985);
  assert.equal(record.contentCropRatio,crop.contentCropRatio);
+ assert.equal(record.contentCropY,crop.contentCropY);
+ assert.equal(record.contentCropY,Math.round(crop.imageHeight*record.contentCropRatio));
+ assert(crop.choiceStartY-record.contentCropY>=Math.min(31,crop.cropGuardPixels-.6),'first choice clearance is too small');
  assert.equal(crop.sourceImageSha256,source.detailImageSha256);
  choiceCount+=record.choices.length;
 }

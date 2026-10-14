@@ -19,9 +19,10 @@ const records=catalog.map(source=>{
  if(!explanation||!crop)throw new Error(`missing choice UI source: ${source.officialQuestionId}`);
  if(explanation.choices?.length!==expected||explanation.choices.some(choice=>!String(choice||'').trim()))throw new Error(`invalid choice text: ${source.officialQuestionId}`);
  if(crop.sourceImageSha256!==source.detailImageSha256)throw new Error(`stale crop image hash: ${source.officialQuestionId}`);
- const ratio=Number(crop.contentCropRatio);
+ const ratio=Number(crop.contentCropRatio),contentCropY=Number(crop.contentCropY);
  if(!Number.isFinite(ratio)||ratio<0.2||ratio>0.985)throw new Error(`invalid crop ratio: ${source.officialQuestionId}`);
- return {officialQuestionId:source.officialQuestionId,question:String(explanation.question||'').trim(),choices:explanation.choices.map(choice=>String(choice).trim()),contentCropRatio:ratio};
+ if(!Number.isInteger(contentCropY)||contentCropY<1||contentCropY>=Number(crop.imageHeight))throw new Error(`invalid crop pixel boundary: ${source.officialQuestionId}`);
+ return {officialQuestionId:source.officialQuestionId,question:String(explanation.question||'').trim(),choices:explanation.choices.map(choice=>String(choice).trim()),contentCropRatio:ratio,contentCropY};
 });
 const choiceCount=records.reduce((sum,record)=>sum+record.choices.length,0);
 if(choiceCount!==8350)throw new Error(`expected 8350 choices, received ${choiceCount}`);

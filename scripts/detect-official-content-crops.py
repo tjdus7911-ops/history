@@ -12,6 +12,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+from itertools import combinations
 from pathlib import Path
 from statistics import median
 
@@ -42,6 +43,39 @@ MANUAL_FIRST_CHOICE_MARKERS = {
     "official-78-advanced-14": {"y": 947.0, "radius": 18.0},
     "official-79-basic-16": {"y": 399.0, "radius": 14.0},
 }
+
+
+def evenly_spaced(values: list[float], tolerance: float = 0.24) -> bool:
+    """Return true when printed option columns form a regular row."""
+    if len(values) < 3:
+        return True
+    gaps = [right - left for left, right in zip(values, values[1:])]
+    typical = median(gaps)
+    return typical > 0 and max(abs(gap - typical) for gap in gaps) <= typical * tolerance
+
+
+def regular_row_subset(circles: list[dict], count: int, width: int) -> list[dict] | None:
+    """Choose printed option markers even when nearby parenthesis also look circular."""
+    viable = []
+    for subset in combinations(sorted(circles, key=lambda item: item["x"]), count):
+        items = list(subset)
+        xs = [item["x"] for item in items]
+        ys = [item["y"] for item in items]
+        radii = [item["radius"] for item in items]
+        if (
+            not width * 0.030 <= xs[0] <= width * 0.130
+            or xs[-1] - xs[0] < width * 0.55
+            or not evenly_spaced(xs, tolerance=0.30)
+            or max(ys) - min(ys) > width * 0.009
+            or max(radii) - min(radii) > width * 0.009
+        ):
+            continue
+        gaps = [right - left for left, right in zip(xs, xs[1:])]
+        typical = median(gaps)
+        regularity = sum(abs(gap - typical) for gap in gaps) / typical
+        score = regularity + (max(ys) - min(ys)) / width + abs(xs[0] / width - 0.07)
+        viable.append((score, items))
+    return min(viable, key=lambda value: value[0])[1] if viable else None
 
 
 def sha256(path: Path) -> str:
@@ -116,6 +150,7 @@ def first_choice_circle(image_path: Path, choice_count: int) -> tuple[dict, dict
     secondary = [item for item in circles if width * 0.49 <= item["x"] <= width * 0.59]
     expected_left_grid = (choice_count + 1) // 2
     candidates = []
+    horizontal_fallbacks = []
     secondary_clusters = x_clusters(secondary, max(7.0, width * 0.008))
     for cluster in x_clusters(left, max(5.0, width * 0.006)):
         ordered = sorted(cluster, key=lambda item: item["y"])
@@ -161,16 +196,41 @@ def first_choice_circle(image_path: Path, choice_count: int) -> tuple[dict, dict
             - len(block) * 5
             - (4 if grid_layout else 0)
         )
-        candidates.append((score, first, block, grid_layout))
+        candidates.append((score, first, block, grid_layout, "vertical"))
 
     # Compact layouts put every option on one horizontal line.  Prefer that
     # unmistakable terminal row over incidental circles inside a photograph or
     # infographic; otherwise an illustration near the left edge can look like
     # a short vertical choice column.
-    row_tolerance = max(16, width * 0.020)
+    row_tolerance = max(7, width * 0.009)
     for anchor in circles:
         row = unique_circles(
             [item for item in circles if abs(item["y"] - anchor["y"]) <= row_tolerance],
+            distance=8,
+        )
+        row = sorted(row, key=lambda item: item["x"])
+        if (
+            len(row) < choice_count
+            or anchor["y"] / height < 0.72
+        ):
+            continue
+        row = regular_row_subset(row, choice_count, width)
+        if row is None:
+            continue
+        candidates.append(
+            (-60 - anchor["y"] / height * 10, min(row, key=lambda item: item["y"]), row, True, "horizontal")
+        )
+
+    # Some compact source tables make one of the printed option markers merge
+    # with an adjacent parenthesis, so the strict regular-row pass above can
+    # miss the row.  Preserve the older broad row detector only as a fallback:
+    # it may replace a verified vertical candidate solely when it starts
+    # earlier on the page.  This removes the historical failure mode where a
+    # later body-text line overrode the true first option row.
+    broad_row_tolerance = max(16, width * 0.020)
+    for anchor in circles:
+        row = unique_circles(
+            [item for item in circles if abs(item["y"] - anchor["y"]) <= broad_row_tolerance],
             distance=8,
         )
         row = sorted(row, key=lambda item: item["x"])
@@ -183,18 +243,22 @@ def first_choice_circle(image_path: Path, choice_count: int) -> tuple[dict, dict
             or max(abs(item["radius"] - radius_value) for item in row) > width * 0.008
         ):
             continue
-        # Retain the widest, evenly distributed subset when letters elsewhere
-        # on the same text line also trigger the circle detector.
         if len(row) > choice_count:
-            possible=[row[start:start+choice_count] for start in range(len(row)-choice_count+1)]
-            row=max(possible,key=lambda items:items[-1]["x"]-items[0]["x"])
-        candidates.append((-60 - anchor["y"] / height * 10, min(row, key=lambda item: item["y"]), row, True))
+            possible = [row[start : start + choice_count] for start in range(len(row) - choice_count + 1)]
+            row = max(possible, key=lambda items: items[-1]["x"] - items[0]["x"])
+        horizontal_fallbacks.append(
+            (-40 - anchor["y"] / height * 5, min(row, key=lambda item: item["y"]), row, True, "horizontal-fallback")
+        )
 
-    if not candidates:
+    if not candidates and not horizontal_fallbacks:
         raise ValueError(
             f"could not isolate {choice_count} terminal choice markers from {len(circles)} circles"
         )
-    _, first, block, grid_layout = min(candidates, key=lambda item: item[0])
+    selected = min(candidates, key=lambda item: item[0]) if candidates else None
+    fallback = min(horizontal_fallbacks, key=lambda item: item[0]) if horizontal_fallbacks else None
+    if selected is None or (fallback is not None and fallback[1]["y"] < selected[1]["y"]):
+        selected = fallback
+    _, first, block, grid_layout, layout_detection = selected
     return first, {
         "imageWidth": width,
         "imageHeight": height,
@@ -203,6 +267,7 @@ def first_choice_circle(image_path: Path, choice_count: int) -> tuple[dict, dict
         "gridLayout": grid_layout,
         "markerX": round(median(item["x"] for item in block), 1),
         "lastMarkerY": round(max(item["y"] for item in block), 1),
+        "layoutDetection": layout_detection,
     }
 
 
@@ -243,10 +308,21 @@ def main() -> None:
                     "markerX": None,
                     "lastMarkerY": None,
                     "manualLayoutReview": True,
+                    "layoutDetection": "manual",
                 }
             else:
                 first, audit = first_choice_circle(image_path, choice_count)
-            cut_y = max(1, round(first["y"] - first["radius"] * 1.75))
+            # Manual boundaries were visually reviewed against unusually
+            # complex illustrations.  Automatic boundaries reserve at least
+            # 2.5 marker radii (and a source-width floor) above the centre so
+            # that the marker top and the first option's ascenders cannot leak
+            # into the retained question image.
+            crop_guard = (
+                first["radius"] * 1.75
+                if audit.get("manualLayoutReview")
+                else max(first["radius"] * 2.5, audit["imageWidth"] * 0.029)
+            )
+            cut_y = max(1, round(first["y"] - crop_guard))
             ratio = round(cut_y / audit["imageHeight"], 6)
             if not 0.20 <= ratio <= 0.985:
                 raise ValueError(f"implausible content crop ratio: {ratio}")
@@ -255,6 +331,8 @@ def main() -> None:
                     "officialQuestionId": source["officialQuestionId"],
                     "sourceImageSha256": image_hash,
                     "contentCropRatio": ratio,
+                    "contentCropY": cut_y,
+                    "cropGuardPixels": round(crop_guard, 1),
                     "choiceStartY": round(first["y"], 1),
                     "choiceMarkerRadius": round(first["radius"], 1),
                     **audit,
@@ -267,7 +345,7 @@ def main() -> None:
 
     payload = {
         "schemaVersion": 1,
-        "method": "circled-choice-marker-hough-v2",
+        "method": "circled-choice-marker-layout-v3",
         "canonicalQuestionCount": len(catalog),
         "detectedQuestionCount": len(rows),
         "failureCount": len(failures),
