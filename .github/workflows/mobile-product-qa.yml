@@ -1,0 +1,26 @@
+name: Mobile product QA
+on:
+  push:
+    branches: [codex/mobile-ui-20261014]
+permissions:
+  contents: read
+jobs:
+  mobile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-save --package-lock=false playwright
+      - run: npx playwright install --with-deps chromium
+      - run: node tests/mobile-product-qa.cjs
+        env:
+          QA_PHASE: before
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mobile-product-qa
+          path: tmp/mobile-product
+
