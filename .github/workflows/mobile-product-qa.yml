@@ -15,9 +15,15 @@ jobs:
           node-version: 22
       - run: npm install --no-save --package-lock=false playwright
       - run: npx playwright install --with-deps chromium
-      - run: node tests/mobile-product-qa.cjs
-        env:
-          QA_PHASE: before
+      - name: Before screenshots with original application
+        run: |
+          git restore --source=bb4f507fec8aafa177e84084cdf9dc55726a9124 --worktree dist
+          QA_PHASE=before node tests/mobile-product-qa.cjs
+          git restore --source=HEAD --worktree dist
+      - name: Mobile screenshots and native touch QA
+        run: node tests/mobile-product-qa.cjs
+      - name: Regression suite
+        run: npm test
       - uses: actions/upload-artifact@v4
         if: always()
         with:

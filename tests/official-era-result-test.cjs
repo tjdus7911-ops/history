@@ -28,8 +28,10 @@ for(const [index,id] of selectedIds.entries()){const accepted=copy(`QUESTIONS.fi
 click({officialRequestSubmit:'true'});click({officialSubmitConfirm:'true'});
 const analysis=copy('OFFICIAL_RESULT_ANALYSIS.current("attempt")');assert.equal(analysis.total,8);assert.equal(analysis.correct,5);assert.equal(analysis.wrongTotal,3);assert.equal(analysis.rows.reduce((sum,row)=>sum+row.wrong,0),3);assert(Math.abs(analysis.rows.reduce((sum,row)=>sum+row.wrongShare,0)-100)<0.2);assert.equal(analysis.rows.filter(row=>row.total===0).length,6);assert(analysis.rows.filter(row=>row.total===0).every(row=>row.status.label==='분석 데이터 없음'));assert(analysis.rows.filter(row=>row.total===2).every(row=>row.sampleLimited));
 assert(html.includes('class="official-results"'),html.slice(0,500));
-for(const copyText of ['최종 점수','시대별 취약점 분석','오답 기준','시대별 정답률','집중 복습 필요 TOP 3','문제별 정답과 해설','오답 다시 풀기','해설 보기','데이터 부족','분석 데이터 없음'])assert(html.includes(copyText),copyText);assert(/심화 [123]급|불합격/.test(html),'the result must show an official advanced grade or fail state');
-assert.equal((html.match(/data-official-analysis-era=/g)||[]).length,20,'ten legend items and ten detail rows must be selectable');
+for(const copyText of ['최종 점수','시대별 취약점 분석','오답 기준','집중 복습 필요 TOP 3','문제별 정답과 해설','오답 다시 풀기','해설 보기'])assert(html.includes(copyText),copyText);assert(/심화 [123]급|불합격/.test(html),'the result must show an official advanced grade or fail state');
+assert.equal((html.match(/data-official-analysis-era=/g)||[]).length,10,'all ten legend items remain selectable');
+assert(!html.includes('official-era-detail-section')&&!html.includes('official-era-detail-list'),'duplicate accuracy section must not render');
 click({officialAnalysisScope:'cumulative'});assert(html.includes('data-official-analysis-scope="cumulative" aria-selected="true"'));assert(html.includes('가장 최근 답안'));
 click({officialAnalysisScope:'attempt'});click({officialAnalysisEra:analysis.top3[0].id});assert(html.includes('aria-pressed="true"')&&html.includes('선택한 시대'));
 console.log('PASS: first round tab, 1,800 ten-era mappings, actual-answer analysis, no-data/low-sample policy, donut semantics, selection and official grade thresholds verified.');
+
