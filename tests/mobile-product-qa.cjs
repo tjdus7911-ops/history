@@ -11,7 +11,21 @@ async function main(){
  for(const width of [360,390,412]){
   const context=await browser.newContext({viewport:{width,height:844},isMobile:true,hasTouch:true,serviceWorkers:'block'}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto(`http://127.0.0.1:${server.address().port}`);await page.locator('[data-nav="exam-library"]').click();
-  const capture=async name=>{await page.evaluate(()=>scrollTo(0,0));await page.waitForFunction(()=>[...document.images].filter(i=>i.getBoundingClientRect().top<innerHeight&&i.getBoundingClientRect().bottom>0).every(i=>i.complete&&i.naturalWidth>0),null,{timeout:60000});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`${width} ${name} overflow`);await page.screenshot({path:path.join(out,`${name}-${width}.png`)});if(name==='result')await page.screenshot({path:path.join(out,`${name}-full-${width}.png`),fullPage:true})};
+  const capture=async name=>{
+   await page.evaluate(()=>scrollTo(0,0));
+   await page.waitForFunction(()=>[...document.images].filter(i=>i.getBoundingClientRect().top<innerHeight&&i.getBoundingClientRect().bottom>0).every(i=>i.complete&&i.naturalWidth>0),null,{timeout:60000});
+   await page.evaluate(async()=>{await Promise.all([...document.images].filter(i=>i.complete&&i.naturalWidth).map(i=>i.decode()));await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))});
+   const paper=page.locator('.official-paper img').first();
+   if(await paper.count()){
+    const {PNG}=require('pngjs');let painted=false;
+    for(let retry=0;retry<5;retry++){const png=PNG.sync.read(await paper.screenshot());let ink=0;for(let i=0;i<png.data.length;i+=4)if(png.data[i]<230||png.data[i+1]<230||png.data[i+2]<230)ink++;if(ink/(png.width*png.height)>.02){painted=true;break}await page.waitForTimeout(600)}
+    assert(painted,'question image pixels must be visible: '+width+' '+name);
+   }
+   await page.evaluate(()=>scrollTo(0,0));await page.waitForTimeout(300);
+   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),width+' '+name+' overflow');
+   await page.screenshot({path:path.join(out,name+'-'+width+'.png')});
+   if(name==='result')await page.screenshot({path:path.join(out,name+'-full-'+width+'.png'),fullPage:true});
+  };
   await capture('main');await page.locator('[data-official-round="70"]').click();await capture('detail');await page.locator('[data-official-start="exam"]').click();await page.locator('[data-official-cover-start]').click();await capture('exam');
   await page.evaluate(()=>gradeOfficialSession('MANUAL'));await capture('result');
   if(phase==='after'){
@@ -31,7 +45,8 @@ async function verifyTouches(page,width,capture){
  const cdp=await page.context().newCDPSession(page);
  const drag=async(selector,dx,dy=0)=>{
   const loc=page.locator(selector).first();await loc.scrollIntoViewIfNeeded();const b=await loc.boundingBox();
-  const x=Math.min(width-40,Math.max(40,b.x+b.width/2)),y=Math.min(680,Math.max(120,b.y+Math.min(b.height/2,120)));
+  const x=Math.min(width-40,Math.max(40,b.x+b.width/2));let y=Math.min(680,Math.max(120,b.y+Math.min(b.height/2,120)));
+  if(selector==='.official-choice-grid'){const first=await page.locator('[data-official-pick]').first().boundingBox(),second=await page.locator('[data-official-pick]').nth(1).boundingBox();y=(first.y+first.height+second.y)/2;assert(y>first.y+first.height&&y<second.y,'drag starts in the gap between choices')}
   const endX=dx<0?Math.max(28,x+dx):Math.min(width-28,x+dx);
   await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y}]});
   for(let i=1;i<=6;i++)await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:x+(endX-x)*i/6,y:y+dy*i/6}]});

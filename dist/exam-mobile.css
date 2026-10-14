@@ -33,6 +33,14 @@
 .official-exams .library-summary small{font-size:11px;color:#786c60}
 .official-mode-actions{margin:16px 0 12px;gap:8px}
 .official-mode-actions button{min-height:46px;border-radius:6px;font-size:13px}
+.official-mode-actions .primary,.official-exam-bottom-actions .primary{background:#6b4e36;border-color:#6b4e36;color:#fff}
+.official-edition-detail .official-round-levels:has(button:only-child){display:none}
+.official-edition-detail .official-pass-rate{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:12px 0 0;padding:10px 0;border:0;border-bottom:1px solid #ded5c9;border-radius:0;background:transparent;color:#6b4e36}
+.official-edition-detail .official-pass-rate>div{display:flex;align-items:baseline;gap:6px}
+.official-edition-detail .official-pass-rate strong{font-size:18px;color:#6b4e36}
+.official-edition-detail .official-pass-rate-source{font-size:10px}
+.official-edition-detail .official-pass-rate-source>span{display:none}
+.official-edition-detail .official-pass-rate-source a{font-size:10px;color:#786c60}
 .official-detail-list-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:20px 0 0;padding-bottom:10px;border-bottom:1px solid #ded5c9}
 .official-detail-list-heading h2{margin:0;font-size:15px}
 .official-detail-list-heading span{font-size:12px;color:#786c60}
@@ -70,6 +78,7 @@
 .official-certification{padding:14px}
 .official-certification b{font-size:24px}
 .official-certification small{font-size:11px}
+.official-certification.fail>span{color:#a15143}
 .official-results .official-result-summary{margin:12px 0 20px;border-radius:0;border-width:0 0 1px;background:transparent}
 .official-results .official-result-summary>div{padding:8px 4px 14px;background:transparent}
 .official-results .official-result-summary b{font-size:18px}
@@ -79,10 +88,13 @@
 .official-analysis-scopes{flex-basis:auto;width:100%;border-radius:6px}
 .official-analysis-scopes button{min-height:40px;border-radius:4px;font-size:12px}
 .official-analysis-description{font-size:11px;line-height:1.65;margin:8px 0 12px}
-.official-donut-layout{grid-template-columns:124px minmax(0,1fr);gap:12px}
+.official-donut-layout{display:block}
+.official-donut-wrap{flex-direction:row;justify-content:center;gap:16px}
+.official-donut-wrap>p{max-width:120px;margin:0;font-size:11px;text-align:left;line-height:1.65}
 .official-donut{width:120px;height:120px}
 .official-donut>span{width:86px;height:86px;background:#f7f4ee}
 .official-donut-legend button{min-height:36px}
+.official-donut-legend{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px;margin-top:14px}
 .official-donut-legend b,.official-donut-legend strong{font-size:11px}
 .official-top-weak>p{font-size:11px;line-height:1.65}
 .official-top-weak ol{gap:14px}
@@ -93,5 +105,5 @@
 .official-results .official-result-actions{position:static;display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0 0;padding:0;border:0;background:transparent;box-shadow:none;backdrop-filter:none}
 .official-results .official-result-actions button{min-height:46px;border-radius:6px;font-size:13px}
 .official-results .official-result-actions .official-result-retake{grid-column:1/-1}
-@media(min-width:761px){.official-donut-layout{grid-template-columns:180px minmax(0,1fr)}.official-donut{width:160px;height:160px}.official-donut>span{width:116px;height:116px}.official-donut-legend{grid-template-columns:1fr 1fr;gap:0 16px}.official-analysis-heading{flex-direction:row;justify-content:space-between;align-items:center}.official-analysis-scopes{width:220px}}
+@media(min-width:761px){.official-donut-layout{display:grid;grid-template-columns:180px minmax(0,1fr);gap:24px}.official-donut-wrap{flex-direction:column;gap:8px}.official-donut{width:160px;height:160px}.official-donut>span{width:116px;height:116px}.official-donut-legend{grid-template-columns:1fr 1fr;gap:0 16px}.official-analysis-heading{flex-direction:row;justify-content:space-between;align-items:center}.official-analysis-scopes{width:220px}}
 

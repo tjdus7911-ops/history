@@ -16,18 +16,30 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm install --no-save --package-lock=false playwright
+      - run: npm install --no-save --package-lock=false playwright pngjs
       - run: npx playwright install --with-deps chromium
       - name: Before screenshots with original application
         run: |
+          set -o pipefail
           git restore --source=bb4f507fec8aafa177e84084cdf9dc55726a9124 --worktree dist
           mkdir -p tmp/mobile-product
+          node tests/v2-preservation-test.cjs > tmp/mobile-product/baseline-preservation.log 2>&1 || true
           QA_PHASE=before node tests/mobile-product-qa.cjs 2>&1 | tee tmp/mobile-product/before.log
           git restore --source=HEAD --worktree dist
       - name: Mobile screenshots and native touch QA
-        run: node tests/mobile-product-qa.cjs 2>&1 | tee tmp/mobile-product/after.log
+        run: |
+          set -o pipefail
+          node tests/mobile-product-qa.cjs 2>&1 | tee tmp/mobile-product/after.log
       - name: Regression suite
-        run: npm test 2>&1 | tee tmp/mobile-product/regression.log
+        run: |
+          set -o pipefail
+          node tests/official-content-swipe-test.cjs
+          for test in exam-library official-learning-continuation official-exam-history official-era-result official-exam-timer official-exam-cover official-exam-pass official-source-manifest official-exam-statistics official-choice-ui-data official-choice-media-assets official-content-crop-regression service-worker-cache official-explanation official-weakness-review official-canonical-qa vercel-detail-assets; do
+            node tests/$test-test.cjs
+          done 2>&1 | tee tmp/mobile-product/regression.log
+      - name: Build validation
+        run: npm run build 2>&1 | tee tmp/mobile-product/build.log
+        shell: bash
       - uses: actions/upload-artifact@v4
         if: always()
         with:
