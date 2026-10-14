@@ -21,8 +21,8 @@ const pausedIndex=run('meta().officialExamActiveSession.index');click({officialP
 nowMs+=10*60*1000;run('render()');assert(html.includes('01:15:00'),'paused time must not elapse');
 boot();assert.equal(run('screen'),'exam-library');assert.equal(run('globalThis.OFFICIAL_EXAM_TIMER.snapshot().timerState'),'PAUSED');assert.equal(run('globalThis.OFFICIAL_EXAM_TIMER.snapshot().index'),1);assert.equal(run(`globalThis.OFFICIAL_EXAM_TIMER.snapshot().answers[${JSON.stringify(firstId)}]`),firstAnswer);assert(html.includes('01:15:00')&&html.includes('시험이 일시정지되었습니다.'));
 click({officialTimerStart:'true'});assert.equal(run('meta().officialExamActiveSession.timerState'),'RUNNING');assert.equal(run('meta().officialExamActiveSession.endTimeMs'),nowMs+75*60*1000);
-nowMs+=65*60*1000;run('render()');assert(html.includes('00:10:00')&&html.includes('official-exam-timer warning'));
-nowMs+=5*60*1000;run('render()');assert(html.includes('00:05:00')&&html.includes('official-exam-timer critical'));
+nowMs+=65*60*1000;run('render()');assert(html.includes('00:10:00')&&html.includes('official-exam-timer-inline warning'));
+nowMs+=5*60*1000;run('render()');assert(html.includes('00:05:00')&&html.includes('official-exam-timer-inline critical'));
 const secondId=run('meta().officialExamActiveSession.questionIds[1]'),secondAnswer=run(`QUESTIONS.find(question=>question.questionId===${JSON.stringify(secondId)}).acceptedAnswers[0]`);click({officialPick:String(secondAnswer)});assert.equal(run(`meta().officialExamActiveSession.answers[${JSON.stringify(secondId)}]`),secondAnswer);
 nowMs=run('meta().officialExamActiveSession.endTimeMs')+1;run('globalThis.OFFICIAL_EXAM_TIMER.tick()');
 assert(html.includes('OFFICIAL EXAM RESULT'));assert(html.includes('시간 종료로 자동 제출되었습니다'));assert.equal(run('meta().officialExamActiveSession'),undefined);assert.equal(run('globalThis.OFFICIAL_EXAM_TIMER.snapshot().running'),false);assert.equal(run('JSON.stringify({run:state.run,mainRun:state.mainRun})'),storyBefore,'timed exam must not alter Story progress');

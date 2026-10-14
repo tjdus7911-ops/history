@@ -75,3 +75,27 @@
 @media(prefers-reduced-motion:reduce){.official-question-stage.slide-next,.official-question-stage.slide-previous{animation:none}.official-exam-progress-bar i{transition:none}}
 .official-exam-bottom-actions{position:fixed;left:50%;width:min(calc(100% - 40px),800px);margin:0;transform:translateX(-50%)}
 @media(max-width:760px){.official-exam-bottom-actions{width:calc(100% - 32px)}}
+
+/* Compact, scroll-away CBT chrome: keep the viewport focused on the question. */
+.official-exam-practice{padding-bottom:calc(92px + env(safe-area-inset-bottom))}
+.official-exam-intro{position:static;display:grid;grid-template-columns:38px minmax(0,1fr);align-items:start;gap:10px;margin:0 0 12px;padding:2px 2px 12px;border-bottom:1px solid #e3e0d8;background:transparent}
+.official-exam-back{display:grid;place-items:center;width:38px;height:38px;padding:0;border:1px solid #d9d5cc;border-radius:50%;background:#fff;color:#26384f;font-size:25px;line-height:1}
+.official-exam-intro-copy{min-width:0}
+.official-exam-intro-title{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:34px}
+.official-exam-intro-title strong{min-width:0;overflow:hidden;color:#26384f;font-size:16px;font-weight:850;line-height:1.35;text-overflow:ellipsis;white-space:nowrap}
+.official-exam-map-link,.official-timer-inline-action{flex:0 0 auto;min-height:30px;padding:5px 9px;border:1px solid #d8d4ca;border-radius:8px;background:#fff;color:#53616b;font-size:10px;font-weight:800;white-space:nowrap}
+.official-exam-intro-copy>p{display:flex;align-items:center;flex-wrap:wrap;gap:2px 4px;margin:1px 0 8px;color:#69757e;font-size:10px;font-weight:650;line-height:1.55}
+.official-exam-intro-copy>p b{color:#26384f;font-variant-numeric:tabular-nums}
+.official-exam-timer-inline{display:inline-flex;align-items:center;gap:4px;color:#69757e;font-variant-numeric:tabular-nums;white-space:nowrap}
+.official-exam-timer-inline.warning,.official-exam-timer-inline.warning b{color:#9b671c}
+.official-exam-timer-inline.critical,.official-exam-timer-inline.critical b{color:#ae3d32}
+.official-timer-inline-action{min-height:25px;padding:3px 7px;border-color:transparent;background:#f0eee8;font-size:9px}
+.official-exam-intro .official-exam-progress-bar{height:3px;background:#e3e5e5}
+.official-question-kicker{margin-top:0}
+.official-pause-cover>div{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:8px;margin-top:16px}
+.official-pause-cover>div button{min-height:46px}
+.official-exam-bottom-actions{position:static;left:auto;bottom:auto;width:100%;margin:22px 0 0;transform:none;box-shadow:0 8px 24px #26384f12;backdrop-filter:none}
+.official-question-sheet-tools{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:15px 0 0;padding-top:13px;border-top:1px solid #e7e4dd}
+.official-question-sheet-tools span{color:#78838a;font-size:9px;line-height:1.45}
+.official-question-sheet-tools button{flex:0 0 auto;min-height:36px;padding:7px 10px;color:#76572d;font-size:10px}
+@media(max-width:390px){.official-exam-intro{grid-template-columns:34px minmax(0,1fr);gap:8px;padding-inline:0}.official-exam-back{width:34px;height:34px}.official-exam-intro-title{gap:6px}.official-exam-intro-title strong{font-size:14px}.official-exam-map-link{padding-inline:7px}.official-exam-intro-copy>p{font-size:9px}.official-timer-inline-action{padding-inline:6px}.official-exam-bottom-actions{width:100%;gap:6px;padding:8px}.official-question-sheet-tools{align-items:stretch;flex-direction:column}.official-question-sheet-tools button{width:100%}}
