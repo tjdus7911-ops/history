@@ -82,6 +82,7 @@ async function verifyTouches(page,width,capture){
 }
 async function verifyRevision(page,capture){
  const ids=await page.evaluate(()=>OFFICIAL_EXAM_UI.snapshot().questionIds);
+ assert.equal(await page.evaluate(()=>typeof window.history.pushState),'function','app renderers must not shadow native browser history');
  await page.locator('[data-nav="ox"]').click();assert.equal(await page.locator('[data-ox-home-analysis],.ox-weakness-donut').count(),0);await capture('ox-home');
  await page.evaluate(()=>{
   globalThis.oxDebugEvents=[];
