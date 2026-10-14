@@ -34,7 +34,7 @@
 .official-mode-actions{margin:16px 0 12px;gap:8px}
 .official-mode-actions button{min-height:46px;border-radius:6px;font-size:13px}
 .official-mode-actions .primary,.official-exam-bottom-actions .primary{background:#6b4e36;border-color:#6b4e36;color:#fff}
-.official-edition-detail .official-round-levels:has(button:only-child){display:none}
+.official-edition-detail .library-filters:has(button:only-child){display:none}
 .official-edition-detail .official-pass-rate{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:12px 0 0;padding:10px 0;border:0;border-bottom:1px solid #ded5c9;border-radius:0;background:transparent;color:#6b4e36}
 .official-edition-detail .official-pass-rate>div{display:flex;align-items:baseline;gap:6px}
 .official-edition-detail .official-pass-rate strong{font-size:18px;color:#6b4e36}
