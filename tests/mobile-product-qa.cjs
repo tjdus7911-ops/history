@@ -81,8 +81,26 @@ async function verifyTouches(page,width,capture){
  await cdp.detach();console.log('PASS touch gestures and learning/exam behavior at '+width+'px');
 }
 async function verifyRevision(page,capture){
- await page.clock.install();
  const ids=await page.evaluate(()=>OFFICIAL_EXAM_UI.snapshot().questionIds);
+ await page.locator('[data-nav="ox"]').click();assert.equal(await page.locator('[data-ox-home-analysis],.ox-weakness-donut').count(),0);await capture('ox-home');
+ await page.evaluate(()=>{
+  globalThis.oxDebugEvents=[];
+  document.addEventListener('click',e=>{const button=e.target.closest('button');if(button)oxDebugEvents.push({type:'click',data:{...button.dataset},text:button.textContent})},true);
+  for(const type of ['hashchange','popstate'])window.addEventListener(type,()=>oxDebugEvents.push({type,url:location.href}));
+ });
+ await page.evaluate(()=>OX_QUIZ_API.startSession('era','goryeo',{count:2}));
+ assert.equal(await page.evaluate(()=>OX_QUIZ_API.snapshot().meta.activeSession.questionIds.length),2);
+ await page.locator('[data-ox-answer="true"]').tap();await page.locator('.ox-feedback').waitFor();await page.waitForTimeout(350);await page.locator('[data-ox-next]').tap();
+ await page.waitForFunction(()=>OX_QUIZ_API.snapshot().meta.activeSession.index===1);
+ await page.locator('[data-ox-answer="false"]').tap();await page.locator('.ox-feedback').waitFor();await page.waitForTimeout(350);await page.locator('[data-ox-next]').tap();
+ await page.waitForTimeout(500);
+ console.log('OX transition',JSON.stringify(await page.evaluate(()=>({view:OX_QUIZ_API.snapshot().view,events:oxDebugEvents,url:location.href}))));
+ await page.screenshot({path:path.join(out,'ox-transition-'+page.viewportSize().width+'.png')});
+ await page.locator('.ox-result').waitFor();
+ assert.equal(await page.locator('.ox-result').count(),1,'OX result still works');
+ await page.locator('[data-ox-home]').tap();await page.evaluate(()=>APP_ROUTE.apply('ox/analysis'));assert.equal(await page.locator('.ox-home').count(),1,'legacy analysis links safely redirect');
+ // Install the accelerated clock only after testing ordinary quiz navigation.
+ await page.clock.install();
  await page.evaluate(ids=>OFFICIAL_EXAM_UI.startExam(ids,{examTab:'round',examRound:79,examLevel:'심화',timed:true,startImmediately:true}),ids);
  await page.clock.fastForward(7200001);
  assert.equal(await page.locator('.official-results').count(),1,'timer expiry automatically submits');
@@ -90,18 +108,6 @@ async function verifyRevision(page,capture){
  await capture('timeout-result');
  await page.locator('[data-official-result-home]').click();await page.locator('[data-official-round="79"]').click();
  assert.equal(await page.locator('.official-previous-results').count(),0,'recent-result button removed even with prior attempts');
- await page.locator('[data-nav="ox"]').click();assert.equal(await page.locator('[data-ox-home-analysis],.ox-weakness-donut').count(),0);await capture('ox-home');
- await page.evaluate(()=>OX_QUIZ_API.startSession('era','goryeo',{count:2}));
- assert.equal(await page.evaluate(()=>OX_QUIZ_API.snapshot().meta.activeSession.questionIds.length),2);
- await page.locator('[data-ox-answer="true"]').tap();await page.locator('.ox-feedback').waitFor();await page.waitForTimeout(350);await page.locator('[data-ox-next]').tap();
- await page.waitForFunction(()=>OX_QUIZ_API.snapshot().meta.activeSession.index===1);
- await page.locator('[data-ox-answer="false"]').tap();await page.locator('.ox-feedback').waitFor();await page.waitForTimeout(350);await page.locator('[data-ox-next]').tap();
- await page.waitForTimeout(500);
- console.log('OX transition',JSON.stringify(await page.evaluate(()=>({snapshot:OX_QUIZ_API.snapshot(),url:location.href,text:document.querySelector('#app').innerText.slice(-3000)}))));
- await page.screenshot({path:path.join(out,'ox-transition-'+page.viewportSize().width+'.png')});
- await page.locator('.ox-result').waitFor();
- assert.equal(await page.locator('.ox-result').count(),1,'OX result still works');
- await page.locator('[data-ox-home]').tap();await page.evaluate(()=>APP_ROUTE.apply('ox/analysis'));assert.equal(await page.locator('.ox-home').count(),1,'legacy analysis links safely redirect');
 }
 main().catch(e=>{console.error(e);process.exitCode=1}).finally(async()=>{if(browser)await browser.close();server.close()});
 
