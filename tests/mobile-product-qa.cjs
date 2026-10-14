@@ -92,7 +92,11 @@ async function verifyRevision(page,capture){
  assert.equal(await page.locator('.official-previous-results').count(),0,'recent-result button removed even with prior attempts');
  await page.locator('[data-nav="ox"]').click();assert.equal(await page.locator('[data-ox-home-analysis],.ox-weakness-donut').count(),0);await capture('ox-home');
  await page.evaluate(()=>OX_QUIZ_API.startSession('era','goryeo',{count:2}));
- await page.locator('[data-ox-answer="true"]').tap();await page.locator('[data-ox-next]').tap();await page.locator('[data-ox-answer="false"]').tap();await page.locator('[data-ox-next]').tap();
+ assert.equal(await page.evaluate(()=>OX_QUIZ_API.snapshot().meta.activeSession.questionIds.length),2);
+ await page.locator('[data-ox-answer="true"]').tap();await page.locator('.ox-feedback').waitFor();await page.waitForTimeout(350);await page.locator('[data-ox-next]').tap();
+ await page.waitForFunction(()=>OX_QUIZ_API.snapshot().meta.activeSession.index===1);
+ await page.locator('[data-ox-answer="false"]').tap();await page.locator('.ox-feedback').waitFor();await page.waitForTimeout(350);await page.locator('[data-ox-next]').tap();
+ await page.locator('.ox-result').waitFor();
  assert.equal(await page.locator('.ox-result').count(),1,'OX result still works');
  await page.locator('[data-ox-home]').tap();await page.evaluate(()=>APP_ROUTE.apply('ox/analysis'));assert.equal(await page.locator('.ox-home').count(),1,'legacy analysis links safely redirect');
 }

@@ -118,7 +118,7 @@
 .official-exams>.official-round-heading{margin-bottom:8px}
 .official-exams>.official-round-heading h2{font-size:15px;font-weight:600}
 .official-exams>.official-grid.official-round-grid{border-top:0}
-.official-round-row{padding:16px 0;border-bottom:1px solid var(--ed-line);min-width:0}
+.official-round-row{padding:12px 0;border-bottom:1px solid var(--ed-line);min-width:0}
 .official-round-overview{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .official-round-row .official-round-title{display:flex;align-items:center;gap:10px;min-height:44px;min-width:0}
 .official-round-row .official-round-title h2{font-size:18px!important;white-space:nowrap}
@@ -126,7 +126,7 @@
 .official-round-row .official-edition-status{flex-shrink:0;min-height:22px;padding:3px 7px;font-size:10px}
 .official-round-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px;color:#786c60;font-size:12px;line-height:1.5}
 .official-round-row .official-pass-rate-badge{background:transparent;padding:0;min-height:0;font-size:11px}
-.official-round-footer{display:grid;grid-template-columns:minmax(0,1fr) 104px;align-items:center;gap:20px;margin-top:12px}
+.official-round-footer{display:grid;grid-template-columns:minmax(0,1fr) 104px;align-items:center;gap:20px;margin-top:8px}
 .official-round-row .official-personal-progress{margin:0;padding:0;border:0;min-width:0}
 .official-round-row .official-card-progress{height:3px;max-width:150px;margin:0;background:var(--ed-line)}
 .official-round-row .official-card-progress i{background:#a07f5f}
@@ -134,7 +134,10 @@
 .official-round-row .official-personal-progress strong{font-size:12px;color:#6b4e36}
 .official-round-row .official-round-action{grid-column:auto;grid-row:auto;width:104px;min-height:44px;padding:10px 8px;font-size:13px;border-radius:6px}
 .official-home-insights>summary{min-height:44px}
-.official-exam-intro{grid-template-columns:32px minmax(0,1fr);gap:8px;padding:0 0 12px}
+.official-exam-intro{grid-template-columns:44px minmax(0,1fr);gap:8px;padding:0 0 12px}
+.official-exam-back,.ed-exam-library .official-subhead>button{width:44px;height:44px;min-height:44px}
+.official-result-head{grid-template-columns:44px minmax(0,1fr) 44px}
+.official-result-head button{width:44px;height:44px}
 .official-exam-intro-copy>p{margin:7px 0 0;font-size:12px;color:#786c60;line-height:1.5}
 .official-exam-intro-title strong{font-size:14px;line-height:1.5}
 .official-exam-map-link{min-height:44px;padding:8px;font-size:12px}
@@ -156,7 +159,7 @@
 .official-grade-criteria summary{min-height:32px;display:flex;align-items:center;font-size:12px}
 .official-results .official-result-actions{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:6px 0 16px}
 .official-results .official-result-actions button{min-width:0;min-height:48px;padding:8px 4px;font-size:12px;line-height:1.4;word-break:keep-all;box-shadow:none}
-.official-results .official-result-actions .official-result-retake{grid-column:auto;background:transparent;border:1px solid #d8d0c5;color:#6b4e36}
+.official-results .official-result-actions .official-result-retake{grid-column:auto;background:transparent;border:1px solid #d8d0c5;color:#6b4e36;box-shadow:none}
 .official-results .official-result-summary{margin:0 0 16px}
 .official-results .official-result-summary>div{padding:8px 4px 12px}
 .official-results .official-result-summary b{font-size:16px}
