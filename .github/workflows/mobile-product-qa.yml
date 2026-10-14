@@ -11,8 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-          filter: blob:none
+          fetch-depth: 1
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -21,6 +20,7 @@ jobs:
       - name: Before screenshots with original application
         run: |
           set -o pipefail
+          git fetch --depth=1 origin bb4f507fec8aafa177e84084cdf9dc55726a9124
           git restore --source=bb4f507fec8aafa177e84084cdf9dc55726a9124 --worktree dist
           mkdir -p tmp/mobile-product
           node tests/v2-preservation-test.cjs > tmp/mobile-product/baseline-preservation.log 2>&1 || true
