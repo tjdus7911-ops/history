@@ -1,0 +1,696 @@
+{
+  "schemaVersion": 1,
+  "scope": "풀이 전 선지는 원본 시험지의 텍스트·이미지만 노출하고 역사적 의미 설명은 채점 후 해설로 분리",
+  "source": "국사편찬위원회 원본 PDF에서 생성한 카탈로그 detailImage와 전체 재실행 OCR",
+  "auditedQuestionCount": 1800,
+  "auditedChoiceCount": 8350,
+  "sourceHashMatchedQuestionCount": 1800,
+  "freshOcrQuestionCount": 1800,
+  "completeOcrChoiceQuestionCount": 897,
+  "normalizedExactOcrQuestionCount": 683,
+  "visualReviewBaselineQuestionCount": 1800,
+  "originalMismatchQuestionCount": 131,
+  "fixedQuestionCount": 131,
+  "sourceTextCorrectionQuestionCount": 26,
+  "imageChoiceProseSuppressedQuestionCount": 105,
+  "unverifiedQuestionCount": 0,
+  "unverifiedQuestionIds": [],
+  "potentialUncorrectedHintQuestionIds": [],
+  "correctionOcrEvidence": [
+    {
+      "officialQuestionId": "official-68-advanced-26",
+      "sourcePdf": "68회 한국사_문제지(심화).pdf",
+      "sourcePage": 7,
+      "originalChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoices": [
+        "(가)",
+        "[원문 이미지 선택지 — OCR 전사 필요]",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoiceConfidences": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "sourceDetailSha256": "1b6a2437d50aa56ed5b973b7320fde63cd2d940b3225070835e5f870c17ba42f"
+    },
+    {
+      "officialQuestionId": "official-68-advanced-32",
+      "sourcePdf": "68회 한국사_문제지(심화).pdf",
+      "sourcePage": 8,
+      "originalChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoiceConfidences": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "sourceDetailSha256": "884730b2e32aaf0e51809d7df32d4bdb719d8640987c7579196fc5826bb4c433"
+    },
+    {
+      "officialQuestionId": "official-69-basic-13",
+      "sourcePdf": "69회 한국사 문제지(기본).pdf",
+      "sourcePage": 4,
+      "originalChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)"
+      ],
+      "ocrChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)"
+      ],
+      "ocrChoiceConfidences": [
+        0.92443,
+        0.85196,
+        0.93002,
+        0.85924
+      ],
+      "sourceDetailSha256": "c677dc248211ac53c376086b9c9fde4272cdb214bcef17f7e12cf11e2649d2b1"
+    },
+    {
+      "officialQuestionId": "official-69-basic-41",
+      "sourcePdf": "69회 한국사 문제지(기본).pdf",
+      "sourcePage": 10,
+      "originalChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)"
+      ],
+      "ocrChoices": [
+        "(가)",
+        "[원문 이미지 선택지 — OCR 전사 필요]",
+        "[원문 이미지 선택지 — OCR 전사 필요]",
+        "(라)"
+      ],
+      "ocrChoiceConfidences": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "sourceDetailSha256": "f843b010469a53ee01970c1c55e102d3b09d58b6e90d8393162913217a0035de"
+    },
+    {
+      "officialQuestionId": "official-69-advanced-15",
+      "sourcePdf": "69회 한국사_문제지(심화).pdf",
+      "sourcePage": 4,
+      "originalChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoiceConfidences": [
+        0.93124,
+        0.89857,
+        0.94387,
+        0.86581,
+        0.92154
+      ],
+      "sourceDetailSha256": "f0a3d64c8ed5257fa84b6a19f7d3c44b1a6d9b9ffccc582712ff601fcb88acdd"
+    },
+    {
+      "officialQuestionId": "official-70-advanced-09",
+      "sourcePdf": "70회 한국사_문제지(심화).pdf",
+      "sourcePage": 2,
+      "originalChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoices": [
+        "(가)",
+        "[원문 이미지 선택지 — OCR 전사 필요]",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoiceConfidences": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "sourceDetailSha256": "e147434ccacd37e68ede687b56c5fd905e309c81034979fe91db98656b2d83bd"
+    },
+    {
+      "officialQuestionId": "official-70-advanced-42",
+      "sourcePdf": "70회 한국사_문제지(심화).pdf",
+      "sourcePage": 11,
+      "originalChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoiceConfidences": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "sourceDetailSha256": "0c1214655da9be3ed0f838c4d74021aca68270484d944532e04cb8b39d0233b7"
+    },
+    {
+      "officialQuestionId": "official-71-basic-15",
+      "sourcePdf": "71회 한국사_문제지(기본).pdf",
+      "sourcePage": 4,
+      "originalChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)"
+      ],
+      "ocrChoices": [
+        "(가)",
+        "[원문 이미지 선택지 — OCR 전사 필요]",
+        "(다)",
+        "(라)"
+      ],
+      "ocrChoiceConfidences": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "sourceDetailSha256": "727c2426e0f1a9df785105f7fa61275694782cd80369cec98378454ddb252d83"
+    },
+    {
+      "officialQuestionId": "official-71-basic-44",
+      "sourcePdf": "71회 한국사_문제지(기본).pdf",
+      "sourcePage": 11,
+      "originalChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)"
+      ],
+      "ocrChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)"
+      ],
+      "ocrChoiceConfidences": [
+        0.899,
+        0.83791,
+        0.92228,
+        0.87342
+      ],
+      "sourceDetailSha256": "f89eccceed5493c216b59ff29b7a0fa7e78e0c683f5d223d116c9ddb9945f2f9"
+    },
+    {
+      "officialQuestionId": "official-71-advanced-09",
+      "sourcePdf": "71회 한국사_문제지(심화).pdf",
+      "sourcePage": 3,
+      "originalChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoices": [
+        "(가)",
+        "[원문 이미지 선택지 — OCR 전사 필요]",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoiceConfidences": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "sourceDetailSha256": "270b8ae20eaadd138590aac5400300a053dd7ee0c9469848748db4be7d2e20c8"
+    },
+    {
+      "officialQuestionId": "official-71-advanced-40",
+      "sourcePdf": "71회 한국사_문제지(심화).pdf",
+      "sourcePage": 10,
+      "originalChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoiceConfidences": [
+        0.92037,
+        0.87846,
+        0.92901,
+        0.91646,
+        0.92319
+      ],
+      "sourceDetailSha256": "fa797831a20d9e3ed585d9352a02f8ccd636677d74314aa46b8d960c4eb44fb5"
+    },
+    {
+      "officialQuestionId": "official-72-advanced-21",
+      "sourcePdf": "제72회 심화 문제지.pdf",
+      "sourcePage": 5,
+      "originalChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoiceConfidences": [
+        0.92875,
+        0.84999,
+        0.90878,
+        0.88753,
+        0.91521
+      ],
+      "sourceDetailSha256": "5e19ecd890d1f200d5875426da39dfc72b654aa866e6888c84be9ea59544aed5"
+    },
+    {
+      "officialQuestionId": "official-72-advanced-38",
+      "sourcePdf": "제72회 심화 문제지.pdf",
+      "sourcePage": 9,
+      "originalChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoiceConfidences": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "sourceDetailSha256": "e4eac931dbdc65b058c4ecc52564b1bf9753b7ec94804da46a81f64143ae2d73"
+    },
+    {
+      "officialQuestionId": "official-73-basic-13",
+      "sourcePdf": "73회 한국사_문제지(기본).pdf",
+      "sourcePage": 3,
+      "originalChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)"
+      ],
+      "ocrChoices": [
+        "(가)",
+        "(다)",
+        "(라)",
+        "[원문 이미지 선택지 — OCR 전사 필요]"
+      ],
+      "ocrChoiceConfidences": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "sourceDetailSha256": "e53165a57c66bf7767fd87ac2a58c907bb826fd23475ec6da95ffd1620e028f5"
+    },
+    {
+      "officialQuestionId": "official-73-advanced-46",
+      "sourcePdf": "73회 심화 문제지.pdf",
+      "sourcePage": 11,
+      "originalChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoices": [
+        "(가)",
+        "[원문 이미지 선택지 — OCR 전사 필요]",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoiceConfidences": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "sourceDetailSha256": "443ca2ba37bcec58e07d443dfde00e0aeef1707f3a563f76bdc1ca2a517178b0"
+    },
+    {
+      "officialQuestionId": "official-74-advanced-35",
+      "sourcePdf": "74회 한국사_문제지(심화).pdf",
+      "sourcePage": 9,
+      "originalChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoices": [
+        "(가)",
+        "[원문 이미지 선택지 — OCR 전사 필요]",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoiceConfidences": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "sourceDetailSha256": "890dffedaca7cd389042f90a72c6099bd9db92e2f135c26f60efe5a3381ade6e"
+    },
+    {
+      "officialQuestionId": "official-75-basic-05",
+      "sourcePdf": "75회 한국사_문제지(기본).pdf",
+      "sourcePage": 2,
+      "originalChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)"
+      ],
+      "ocrChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)"
+      ],
+      "ocrChoiceConfidences": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "sourceDetailSha256": "01f38ea98da361bab9bd90f4853f15282d46dc8fa6332b85ce0e1e8afa06e925"
+    },
+    {
+      "officialQuestionId": "official-75-advanced-14",
+      "sourcePdf": "제75회 심화 문제지.pdf",
+      "sourcePage": 4,
+      "originalChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoiceConfidences": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "sourceDetailSha256": "48b1be4ddc334be2d1089d74a62c28a8bc23437df0d81be2349bccffcb7379a6"
+    },
+    {
+      "officialQuestionId": "official-76-advanced-28",
+      "sourcePdf": "76회 한국사_문제지(심화).pdf",
+      "sourcePage": 7,
+      "originalChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoices": [
+        "(가)",
+        "[원문 이미지 선택지 — OCR 전사 필요]",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoiceConfidences": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "sourceDetailSha256": "4a351f92d33a1375250020a5c3df5bb364de2f8b9f82ef09353e7f76e6bc25fa"
+    },
+    {
+      "officialQuestionId": "official-77-basic-02",
+      "sourcePdf": "77회 한국사_문제지(기본).pdf",
+      "sourcePage": 1,
+      "originalChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)"
+      ],
+      "ocrChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)"
+      ],
+      "ocrChoiceConfidences": [
+        0.89808,
+        0.85785,
+        0.93616,
+        0.82064
+      ],
+      "sourceDetailSha256": "67188043f1b1eea4f774ed79b2b6792c6547baa384c3a1072ee7b560eebc6913"
+    },
+    {
+      "officialQuestionId": "official-77-basic-14",
+      "sourcePdf": "77회 한국사_문제지(기본).pdf",
+      "sourcePage": 4,
+      "originalChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)"
+      ],
+      "ocrChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)"
+      ],
+      "ocrChoiceConfidences": [
+        0.92673,
+        0.8896,
+        0.94877,
+        0.91058
+      ],
+      "sourceDetailSha256": "c75e163731122cc2fd09283b286f76f776ca1daa014a0f1c4ceac29e66cbe81b"
+    },
+    {
+      "officialQuestionId": "official-77-advanced-18",
+      "sourcePdf": "77회 한국사_문제지(심화).pdf",
+      "sourcePage": 5,
+      "originalChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoices": [
+        "(가)",
+        "[원문 이미지 선택지 — OCR 전사 필요]",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoiceConfidences": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "sourceDetailSha256": "d441c2c8af8f99f503988dac2019ce870b9aaa465ee909adbc4a8272d0c8dae6"
+    },
+    {
+      "officialQuestionId": "official-78-advanced-23",
+      "sourcePdf": "78회 한국사_문제지(심화).pdf",
+      "sourcePage": 6,
+      "originalChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoiceConfidences": [
+        0.91091,
+        0.89548,
+        0.94533,
+        0.91294,
+        0.92077
+      ],
+      "sourceDetailSha256": "d0a2e54e2ee9b3c15502a1a1c347385454838e85b960963dbd196962650af050"
+    },
+    {
+      "officialQuestionId": "official-79-basic-29",
+      "sourcePdf": "79회 한국사_문제지(기본).pdf",
+      "sourcePage": 7,
+      "originalChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)"
+      ],
+      "ocrChoices": [
+        "(가)",
+        "(다)",
+        "(라)",
+        "[원문 이미지 선택지 — OCR 전사 필요]"
+      ],
+      "ocrChoiceConfidences": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "sourceDetailSha256": "1b31be71bec2ac61fc9204b554bbb36aea963bce7d4d97788da1dae8c230f9e8"
+    },
+    {
+      "officialQuestionId": "official-79-advanced-17",
+      "sourcePdf": "79회 한국사_문제지(심화).pdf",
+      "sourcePage": 4,
+      "originalChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoiceConfidences": [
+        0.94386,
+        0.85302,
+        0.9293,
+        0.87947,
+        0.92822
+      ],
+      "sourceDetailSha256": "75400da5f9cde6955a62eaaac529898bd11f0992a9f830f8b591dfc518a90d47"
+    },
+    {
+      "officialQuestionId": "official-79-advanced-33",
+      "sourcePdf": "79회 한국사_문제지(심화).pdf",
+      "sourcePage": 8,
+      "originalChoices": [
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoices": [
+        "(가)",
+        "[원문 이미지 선택지 — OCR 전사 필요]",
+        "(다)",
+        "(라)",
+        "(마)"
+      ],
+      "ocrChoiceConfidences": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "sourceDetailSha256": "9a6e455ebfa4330f9f656e71256c5b7afda6a916d741effef299d6933985dce8"
+    }
+  ]
+}

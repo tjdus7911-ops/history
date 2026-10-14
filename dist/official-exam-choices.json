@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "canonicalQuestionCount": 1800,
   "canonicalChoiceCount": 8350,
   "contentImageAssetCount": 1800,
@@ -9,8 +9,10 @@
     "image": 105,
     "mixed": 8
   },
+  "sourceTextCorrectionCount": 26,
+  "imageChoiceProseSuppressedQuestionCount": 105,
   "answerDataIncluded": false,
-  "source": "official-exam-explanations.json + question-choice-media.json",
+  "source": "official-exam-explanations.json + question-choice-media.json + choice-source-text-audit.json",
   "records": [
     {
       "officialQuestionId": "official-57-basic-01",
@@ -128,10 +130,10 @@
       "officialQuestionId": "official-57-basic-08",
       "question": "다음일기의 소재가된유적으로",
       "choices": [
-        "경주 감은사지",
-        "여주 고달사지",
-        "원주 법천사지",
-        "화순 운주사지"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-57-basic-08-content.58c3987c27b1.webp",
       "contentImageWidth": 1103,
@@ -346,10 +348,10 @@
       "officialQuestionId": "official-57-basic-18",
       "question": "다음 기사에 보도된 문화유산으로 옳은 것은?",
       "choices": [
-        "별자리를 그린 천문도",
-        "나전 국화 넝쿨무늬 합",
-        "고려청자 주전자",
-        "분청사기 항아리"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-57-basic-18-content.6e439e05278c.webp",
       "contentImageWidth": 1091,
@@ -407,10 +409,10 @@
       "officialQuestionId": "official-57-basic-20",
       "question": "밑줄 그은 ‘탑’으로 옳은 것은?",
       "choices": [
-        "불국사 다보탑",
-        "신륵사 다층전탑",
-        "월정사 팔각 구층 석탑",
-        "화엄사 사사자 삼층 석탑"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-57-basic-20-content.27459208047c.webp",
       "contentImageWidth": 1103,
@@ -468,10 +470,10 @@
       "officialQuestionId": "official-57-basic-22",
       "question": "(가)에 들어갈 인물로 옳은 것은?",
       "choices": [
-        "이이",
-        "송시열",
-        "정도전",
-        "정몽주"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-57-basic-22-content.fc51dacafe89.webp",
       "contentImageWidth": 1091,
@@ -577,10 +579,10 @@
       "officialQuestionId": "official-57-basic-27",
       "question": "다음 퀴즈의 정답으로 옳은 것은?",
       "choices": [
-        "금산사 미륵전",
-        "법주사 팔상전",
-        "봉정사 극락전",
-        "부석사 무량수전"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-57-basic-27-content.db26301c1cab.webp",
       "contentImageWidth": 1091,
@@ -814,10 +816,10 @@
       "officialQuestionId": "official-57-basic-40",
       "question": "(끼에 들어갈 사진으로 옳은 것은?",
       "choices": [
-        "정미의병",
-        "6·10 만세 운동",
-        "조선어 학회 창설",
-        "헤이그 특사 파견"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-57-basic-40-content.1d8567831079.webp",
       "contentImageWidth": 1091,
@@ -955,10 +957,10 @@
       "officialQuestionId": "official-57-basic-47",
       "question": "(가)에 해당하는 인물로 옳은 것은?",
       "choices": [
-        "김주열",
-        "장준하",
-        "전태일",
-        "이한열"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-57-basic-47-content.c9629a0a54ad.webp",
       "contentImageWidth": 1091,
@@ -1099,11 +1101,11 @@
       "officialQuestionId": "official-57-advanced-04",
       "question": "밑줄 그은 '이 불상으로 옳은 것은?",
       "choices": [
-        "금동 관음보살 입상",
-        "금동 미륵보살 반가사유상",
-        "금동 신묘명 삼존불",
-        "금동 계미명 삼존불",
-        "경주 석굴암 본존불"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-57-advanced-04-content.8eb28197029c.webp",
       "contentImageWidth": 1103,
@@ -1322,11 +1324,11 @@
       "officialQuestionId": "official-57-advanced-15",
       "question": "다음 대화에 해당하는 문화유산으로 옳은 것은?",
       "choices": [
-        "안동 봉정사 극락전",
-        "보은 법주사 팔상전",
-        "구례 화엄사 각황전",
-        "예산 수덕사 대웅전",
-        "영주 부석사 무량수전"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-57-advanced-15-content.f125816e3d50.webp",
       "contentImageWidth": 1091,
@@ -1443,11 +1445,11 @@
       "officialQuestionId": "official-57-advanced-20",
       "question": "(가에 해당하는 문화유산으로 옳은 것은?",
       "choices": [
-        "서울 원각사지 십층 석탑",
-        "익산 미륵사지 석탑",
-        "경주 불국사 다보탑",
-        "부여 정림사지 오층 석탑",
-        "경주 분황사 모전 석탑"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-57-advanced-20-content.49fccfc87246.webp",
       "contentImageWidth": 1091,
@@ -2150,10 +2152,10 @@
       "officialQuestionId": "official-58-basic-10",
       "question": "(가)에 들어갈 문화유산으로 옳은 것은?",
       "choices": [
-        "금산사 미륵전",
-        "법주사 팔상전",
-        "화엄사 각황전",
-        "부석사 무량수전"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-58-basic-10-content.a7a91d926b9f.webp",
       "contentImageWidth": 1091,
@@ -2464,10 +2466,10 @@
       "officialQuestionId": "official-58-basic-26",
       "question": "(가)에 들어갈 인물로 옳은 것은?",
       "choices": [
-        "허목",
-        "김정희",
-        "송시열",
-        "채제공"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-58-basic-26-content.c66039fcdfac.webp",
       "contentImageWidth": 1103,
@@ -2653,10 +2655,10 @@
       "officialQuestionId": "official-58-basic-36",
       "question": "(가)에 해당하는 인물로 옳은 것은?",
       "choices": [
-        "김좌진",
-        "양세봉",
-        "지청천",
-        "홍범도"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-58-basic-36-content.de58e04b12ea.webp",
       "contentImageWidth": 1091,
@@ -3177,11 +3179,11 @@
       "officialQuestionId": "official-58-advanced-16",
       "question": "다음 기획전에 전시될 문화유산으로 적절한 것은?",
       "choices": [
-        "갈색 유약을 입힌 뚜껑 항아리",
-        "녹색 유리로 만든 긴 목병",
-        "청자 상감 운학문 매병",
-        "청화 안료로 무늬를 그린 백자 항아리",
-        "회청색 바탕의 분청사기 항아리"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-58-advanced-16-content.4d1a2f492251.webp",
       "contentImageWidth": 1091,
@@ -3893,11 +3895,11 @@
       "officialQuestionId": "official-59-advanced-06",
       "question": "(가) 국가의 문화유산으로 옳은 것은?",
       "choices": [
-        "철제 갑옷과 투구",
-        "금동 연가 7년명 여래 입상",
-        "경주 석굴암 본존불",
-        "백제 금동 대향로",
-        "발해 영광탑"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-59-advanced-06-content.2e506c41b509.webp",
       "contentImageWidth": 1090,
@@ -4082,11 +4084,11 @@
       "officialQuestionId": "official-59-advanced-15",
       "question": "(가)에 들어갈 사진 자료로 적절한 것은?",
       "choices": [
-        "금동 연가 7년명 여래 입상",
-        "서산 용현리 마애 여래 삼존상",
-        "경주 분황사 모전 석탑",
-        "영주 부석사 무량수전",
-        "보은 법주사 팔상전"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-59-advanced-15-content.bc61be87131a.webp",
       "contentImageWidth": 1090,
@@ -4883,11 +4885,11 @@
       "officialQuestionId": "official-60-advanced-10",
       "question": "(가)에 들어갈 불상으로 옳은 것은?",
       "choices": [
-        "금동 연가 7년명 여래 입상",
-        "하남 하사창동 철조 석가여래 좌상",
-        "석조 승가 여래 좌상",
-        "금동 관음보살 좌상",
-        "금동 미륵보살 반가사유상"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-60-advanced-10-content.c1f8fc696d4d.webp",
       "contentImageWidth": 1091,
@@ -5664,10 +5666,10 @@
       "officialQuestionId": "official-61-basic-04",
       "question": "(끼에 들어갈 문화유산으로 옳지 것은?",
       "choices": [
-        "금동 연가 7년명 여래 입상",
-        "논산 관촉사 석조 미륵보살 입상",
-        "천마총 장니 천마도",
-        "장군총"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-61-basic-04-content.25b0af198770.webp",
       "contentImageWidth": 1103,
@@ -5757,10 +5759,10 @@
       "officialQuestionId": "official-61-basic-08",
       "question": "다음 일기의 소재가 된 절에서 볼 수 있는 문화유산으로 옳은",
       "choices": [
-        "불국사 삼층 석탑",
-        "쌍봉사 철감선사탑",
-        "이불병좌상",
-        "성덕 대왕 신종"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-61-basic-08-content.1a38f4b2f3b4.webp",
       "contentImageWidth": 1103,
@@ -6058,10 +6060,10 @@
       "officialQuestionId": "official-61-basic-25",
       "question": "(가)에 들어갈 인물로 옳은 것은?",
       "choices": [
-        "이이",
-        "김정희",
-        "박지원",
-        "송시열"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-61-basic-25-content.121368a82fb5.webp",
       "contentImageWidth": 1103,
@@ -6295,10 +6297,10 @@
       "officialQuestionId": "official-61-basic-38",
       "question": "(가)에 해당하는 인물로 옳은 것은?",
       "choices": [
-        "심훈",
-        "윤동주",
-        "이육사",
-        "한용운"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-61-basic-38-content.7e1f28c9ccb0.webp",
       "contentImageWidth": 1103,
@@ -6420,10 +6422,10 @@
       "officialQuestionId": "official-61-basic-44",
       "question": "다음사진전에 전시될사진으로적절하지",
       "choices": [
-        "5·10 총선거 실시",
-        "6·10 만세 운동 전개",
-        "좌우 합작 위원회 활동",
-        "제1차 미소 공동 위원회 개최"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-61-basic-44-content.78df47575a6b.webp",
       "contentImageWidth": 1091,
@@ -6850,11 +6852,11 @@
       "officialQuestionId": "official-61-advanced-18",
       "question": "밑줄 그은 '문화유산'으로 옳지 않을 것은?",
       "choices": [
-        "청동 은입사 포류수금문 정병",
-        "부석사 소조여래좌상",
-        "청자 상감운학문 매병",
-        "월정사 팔각 구층 석탑",
-        "법주사 팔상전"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-61-advanced-18-content.40c858dc32b3.webp",
       "contentImageWidth": 1103,
@@ -7056,11 +7058,11 @@
       "officialQuestionId": "official-61-advanced-28",
       "question": "(가) 인물의 작품으로 옳은 것은?",
       "choices": [
-        "산수화 작품",
-        "씨름",
-        "단오 풍정",
-        "바위와 산을 그린 진경 산수화",
-        "수묵으로 그린 강가 풍경"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-61-advanced-28-content.cab3ac725755.webp",
       "contentImageWidth": 1091,
@@ -7551,11 +7553,11 @@
       "officialQuestionId": "official-62-advanced-05",
       "question": "밑줄 그은 '이 탑으로 옳은 것은?",
       "choices": [
-        "경주 분황사 모전석탑",
-        "평창 월정사 팔각 구층 석탑",
-        "익산 미륵사지 석탑",
-        "발해 영광탑",
-        "부여 정림사지 오층 석탑"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-62-advanced-05-content.6fe935216c9d.webp",
       "contentImageWidth": 1091,
@@ -8433,10 +8435,10 @@
       "officialQuestionId": "official-63-basic-05",
       "question": "(가)에 들어갈 문화유산으로 옳은 것은?",
       "choices": [
-        "칠지도",
-        "청자 상감 운학문 매병",
-        "천마총 장니 천마도",
-        "호우총 청동 그릇"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-63-basic-05-content.cdf71e185b5c.webp",
       "contentImageWidth": 1091,
@@ -8494,10 +8496,10 @@
       "officialQuestionId": "official-63-basic-07",
       "question": "다음 퀴즈의 정답으로 옳은 것은?",
       "choices": [
-        "의정부",
-        "정당성",
-        "집사부",
-        "도병마사"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-63-basic-07-content.50e148517012.webp",
       "contentImageWidth": 1103,
@@ -8696,10 +8698,10 @@
       "officialQuestionId": "official-63-basic-16",
       "question": "(가)에 들어갈 문화유산으로 가장 적절한 것은?",
       "choices": [
-        "종묘 정전",
-        "경복궁 근정전",
-        "법주사 팔상전",
-        "부석사 무량수전"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-63-basic-16-content.f111ad4789b2.webp",
       "contentImageWidth": 1103,
@@ -9109,10 +9111,10 @@
       "officialQuestionId": "official-63-basic-40",
       "question": "(가)에 해당하는 인물로 옳은 것은?",
       "choices": [
-        "강주룡",
-        "남자현",
-        "유관순",
-        "윤희순"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-63-basic-40-content.a2c444a3b6cb.webp",
       "contentImageWidth": 1091,
@@ -9467,11 +9469,11 @@
       "officialQuestionId": "official-63-advanced-10",
       "question": "밑줄 그은 '이 탑으로 옳은 것은?",
       "choices": [
-        "불국사 삼층 석탑",
-        "부여 정림사지 오층 석탑",
-        "익산 미륵사지 석탑",
-        "불국사 다보탑",
-        "평창 월정사 팔각 구층 석탑"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-63-advanced-10-content.6e0843971a35.webp",
       "contentImageWidth": 1091,
@@ -9588,11 +9590,11 @@
       "officialQuestionId": "official-63-advanced-15",
       "question": "(새에 들어갈 문화유산으로 옴은 것은?",
       "choices": [
-        "금동 대향로",
-        "호우총 청동 그릇",
-        "청자 상감 모란문 표주박모양 주전자",
-        "이불병좌상",
-        "인왕제색도"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-63-advanced-15-content.c3662e7a6bd4.webp",
       "contentImageWidth": 1091,
@@ -10151,11 +10153,11 @@
       "officialQuestionId": "official-63-advanced-46",
       "question": "(가에 해당하는 문화유산으로 옳은 것은?",
       "choices": [
-        "석조 여래 좌상",
-        "금동 보살 좌상",
-        "철조 여래 좌상",
-        "금동 미륵보살 반가사유상",
-        "영주 부석사 소조여래좌상"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-63-advanced-46-content.63e9c68e294c.webp",
       "contentImageWidth": 1103,
@@ -10336,10 +10338,10 @@
       "officialQuestionId": "official-64-basic-05",
       "question": "다음 퀴즈의 정답으로 옳은 것은?",
       "choices": [
-        "골품 제도",
-        "기인 제도",
-        "음서 제도",
-        "상수리 제도"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-64-basic-05-content.31f3c2ac3e7d.webp",
       "contentImageWidth": 1091,
@@ -10381,10 +10383,10 @@
       "officialQuestionId": "official-64-basic-06",
       "question": "(가)에 들어갈 문화유산으로 옳은 것은?",
       "choices": [
-        "분황사 모전 석탑",
-        "정림사지 오층 석탑",
-        "월정사 팔각 구층 석탑",
-        "화엄사 사사자 삼층 석탑"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-64-basic-06-content.16f7302ddc49.webp",
       "contentImageWidth": 1091,
@@ -10458,10 +10460,10 @@
       "officialQuestionId": "official-64-basic-09",
       "question": "다음 자료에 해당하는 국가의 문화유산으로 옳은 것은?",
       "choices": [
-        "발해 영광탑",
-        "금관총 금관",
-        "백제 금동 대향로",
-        "고구려 판갑옷과 투구"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-64-basic-09-content.02c1c0dc7402.webp",
       "contentImageWidth": 1091,
@@ -10535,10 +10537,10 @@
       "officialQuestionId": "official-64-basic-12",
       "question": "(가)에 들어갈 화폐로 옳은 것은?",
       "choices": [
-        "명도전",
-        "당백전",
-        "백동화",
-        "해동통보"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-64-basic-12-content.e72b4ec9a866.webp",
       "contentImageWidth": 1103,
@@ -10596,10 +10598,10 @@
       "officialQuestionId": "official-64-basic-14",
       "question": "(가) 시기에 볼 수 있는 장면으로 옳은 것은?",
       "choices": [
-        "정중부 등이 무신 정변을 일으켰다.",
-        "최무선이 화포를 사용하여 왜구를 격퇴하였다.",
-        "강감찬이 귀주에서 거란군을 크게 물리쳤다.",
-        "배중손이 삼별초를 이끌고 대몽 항쟁을 전개하였다."
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-64-basic-14-content.976233303f4c.webp",
       "contentImageWidth": 1091,
@@ -10785,10 +10787,10 @@
       "officialQuestionId": "official-64-basic-24",
       "question": "다음 특별전에서 볼 수 있는 작품으로 옳은 것은?",
       "choices": [
-        "영통동구도",
-        "인왕제색도",
-        "세한도",
-        "몽유도원도"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-64-basic-24-content.09bbae640e5b.webp",
       "contentImageWidth": 1103,
@@ -11326,11 +11328,11 @@
       "officialQuestionId": "official-64-advanced-04",
       "question": "(끼에 해당하는 문화유산으로 옳은 것은?",
       "choices": [
-        "고구려 금동 연가 7년명 여래 입상",
-        "신라 금동 미륵보살 반가사유상",
-        "신라 금관총 금관",
-        "신라 도기 기마 인물형 명기",
-        "백제 금동 대향로"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-64-advanced-04-content.f8d355efcf04.webp",
       "contentImageWidth": 1103,
@@ -11566,11 +11568,11 @@
       "officialQuestionId": "official-64-advanced-16",
       "question": "(가)에 들어갈 문화유산으로 적절하지 않읕 것은?",
       "choices": [
-        "평창 월정사 팔각 구층 석탑",
-        "논산 관촉사 석조 미륵보살 입상",
-        "원주 법천사지 지광국사 탑비",
-        "보은 법주사 팔상전",
-        "영주 부석사 무량수전"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-64-advanced-16-content.bd51af2417b5.webp",
       "contentImageWidth": 1103,
@@ -12248,11 +12250,11 @@
       "officialQuestionId": "official-65-advanced-04",
       "question": "(가)에 해당하는 문화유산으로 옳은 것은?",
       "choices": [
-        "광개토 대왕의 이름이 새겨진 청동 호우",
-        "동물 모양 장식이 달린 고대 금속 공예품",
-        "백제에서 왜왕에게 전한 것으로 알려진 칠지도",
-        "광배를 갖춘 금동 불상",
-        "말을 탄 인물을 본뜬 가야의 토기"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-65-advanced-04-content.de1135a44734.webp",
       "contentImageWidth": 1103,
@@ -12505,11 +12507,11 @@
       "officialQuestionId": "official-65-advanced-17",
       "question": "(가)에 해당하는 문화유산으로 옳은 것은?",
       "choices": [
-        "수덕사 대웅전",
-        "화엄사 각황전",
-        "부석사 무량수전",
-        "봉정사 극락전",
-        "법주사 팔상전"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-65-advanced-17-content.d0418571c70b.webp",
       "contentImageWidth": 1103,
@@ -12626,11 +12628,11 @@
       "officialQuestionId": "official-65-advanced-22",
       "question": "(가)에 해당하는 작품으로 옳은 것은?",
       "choices": [
-        "안견의 몽유도원도",
-        "김정희의 세한도",
-        "정선의 인왕제색도",
-        "강희안의 고사관수도",
-        "정선의 금강전도"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-65-advanced-22-content.99bfeb3b70df.webp",
       "contentImageWidth": 1103,
@@ -13267,10 +13269,10 @@
       "officialQuestionId": "official-66-basic-08",
       "question": "(가)에 들어갈 문화유산으로 옳은 것은?",
       "choices": [
-        "경천사지 십층 석탑",
-        "화엄사 사사자 삼층 석탑",
-        "미륵사지 석탑",
-        "분황사 모전 석탑"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-66-basic-08-content.bef06b5d61af.webp",
       "contentImageWidth": 1103,
@@ -13328,10 +13330,10 @@
       "officialQuestionId": "official-66-basic-10",
       "question": "다음 특별전에 전시될 문화유산으로 적절하지 않은 것은?",
       "choices": [
-        "치미",
-        "연꽃무늬 수막새",
-        "이불병좌상",
-        "성덕 대왕 신종"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-66-basic-10-content.d4da6880f492.webp",
       "contentImageWidth": 1091,
@@ -13453,10 +13455,10 @@
       "officialQuestionId": "official-66-basic-16",
       "question": "(가)에 들어갈 가상 우표로 가장 적절한 것은?",
       "choices": [
-        "산수무늬 벽돌",
-        "도기 바퀴장식 뿔잔",
-        "황남대총 금관",
-        "청자 상감 운학문 매병"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-66-basic-16-content.f1e1fb251273.webp",
       "contentImageWidth": 1103,
@@ -13514,10 +13516,10 @@
       "officialQuestionId": "official-66-basic-18",
       "question": "(가)에 해당하는 인물로 옳은 것은?",
       "choices": [
-        "송시열",
-        "채제공",
-        "정몽주",
-        "정도전"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-66-basic-18-content.d51a8cdb0373.webp",
       "contentImageWidth": 1091,
@@ -13687,10 +13689,10 @@
       "officialQuestionId": "official-66-basic-27",
       "question": "(가)에 들어갈 그림으로 옳은 것은?",
       "choices": [
-        "씨름도",
-        "노상알현도",
-        "고사관수도",
-        "월하정인"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-66-basic-27-content.0a2e972b420c.webp",
       "contentImageWidth": 1091,
@@ -13796,10 +13798,10 @@
       "officialQuestionId": "official-66-basic-32",
       "question": "(가)에 해당하는 인물로 옳은 것은?",
       "choices": [
-        "신돌석",
-        "최익현",
-        "안중근",
-        "홍범도"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-66-basic-32-content.8b656843b8d0.webp",
       "contentImageWidth": 1103,
@@ -14163,11 +14165,11 @@
       "officialQuestionId": "official-66-advanced-03",
       "question": "(가) 국가의 문화유산으로 옳은 것은?",
       "choices": [
-        "고려청자 주전자",
-        "금동 연가 7년명 여래 입상",
-        "천마총 금관",
-        "금동 신묘명 삼존불 입상",
-        "백제 금동대향로"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-66-advanced-03-content.3d80360c79a0.webp",
       "contentImageWidth": 1103,
@@ -14437,11 +14439,11 @@
       "officialQuestionId": "official-66-advanced-17",
       "question": "(끼에 해당하는 문화유산으로 옳은 것은?",
       "choices": [
-        "월정사 팔각 구층 석탑",
-        "부여 정림사지 오층 석탑",
-        "경천사지 십층 석탑",
-        "발해 영광탑",
-        "익산 왕궁리 오층 석탑"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-66-advanced-17-content.d9f9e822d80f.webp",
       "contentImageWidth": 1091,
@@ -15099,10 +15101,10 @@
       "officialQuestionId": "official-67-basic-04",
       "question": "(가)에 들어갈 문화유산으로 적절한 것은?",
       "choices": [
-        "금동 연가 7년명 여래 입상",
-        "천마총 장니 천마도",
-        "몽촌 토성",
-        "장군총"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-67-basic-04-content.10657bcccb18.webp",
       "contentImageWidth": 1103,
@@ -15192,10 +15194,10 @@
       "officialQuestionId": "official-67-basic-08",
       "question": "(가) 국가의 문화유산으로 옳지 않은 것은?",
       "choices": [
-        "칠지도",
-        "이불병좌상",
-        "영광탑",
-        "정효 공주 무덤 벽화"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-67-basic-08-content.b2805ecee1cd.webp",
       "contentImageWidth": 1103,
@@ -15237,10 +15239,10 @@
       "officialQuestionId": "official-67-basic-09",
       "question": "밑줄 그은 '불상에 해당하는 것으로 옳은 것은?",
       "choices": [
-        "사진 ① - 석굴암 본존불",
-        "사진 ② - 서산 용현리 마애여래삼존상",
-        "사진 ③ - 금동 미륵보살 반가사유상",
-        "사진 ④ - 철조 여래 좌상"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-67-basic-09-content.7ccf0ab3ec8d.webp",
       "contentImageWidth": 1091,
@@ -15989,11 +15991,11 @@
       "officialQuestionId": "official-67-advanced-04",
       "question": "(가)에 해당하는 문화유산으로 옳은 것은?",
       "choices": [
-        "사진 ① - 경주 나원리 오층 석탑",
-        "사진 ② - 부여 정림사지 오층 석탑",
-        "사진 ③ - 발해 영광탑",
-        "사진 ④ - 경주 분황사 모전석탑",
-        "사진 ⑤ - 익산 미륵사지 석탑"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-67-advanced-04-content.338ff1d12f5a.webp",
       "contentImageWidth": 1103,
@@ -16229,11 +16231,11 @@
       "officialQuestionId": "official-67-advanced-16",
       "question": "밑줄 그은 '불상에 해당하는 문화유산으로 옳은 것은?",
       "choices": [
-        "사진 ① - 파주 용미리 마애이불입상",
-        "사진 ② - 바위 면에 조각된 좌불상",
-        "사진 ③ - 논산 관촉사 석조 미륵보살 입상",
-        "사진 ④ - 서산 용현리 마애여래삼존상",
-        "사진 ⑤ - 안동 이천동 마애여래입상"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-67-advanced-16-content.7d76bde22678.webp",
       "contentImageWidth": 1103,
@@ -17013,11 +17015,11 @@
       "officialQuestionId": "official-68-advanced-10",
       "question": "(가) 국가의 문화유산으로 옳은 것은?",
       "choices": [
-        "사진 ① - 발해 이불병좌상",
-        "사진 ② - 광배를 갖춘 금동 좌불상",
-        "사진 ③ - 금동 사리기",
-        "사진 ④ - 석조 여래 좌상",
-        "사진 ⑤ - 금동 관음보살 입상"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-68-advanced-10-content.a59861323b15.webp",
       "contentImageWidth": 1091,
@@ -17321,11 +17323,11 @@
       "officialQuestionId": "official-68-advanced-26",
       "question": "다음 상황이 나타난 시기를 연표에서 옳게 고른 것은?",
       "choices": [
-        "(가) - 계유정난과 중종반정 사이",
-        "(나) - 중종반정과 을사사화 사이",
-        "(다) - 을사사화와 인조반정 사이",
-        "(라) - 인조반정과 경신환국 사이",
-        "(마) - 경신환국과 이인좌의 난 사이"
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
       ],
       "contentImage": "assets/exams/catalog/content/official-68-advanced-26-content.c157a7de575c.webp",
       "contentImageWidth": 1091,
@@ -17423,11 +17425,11 @@
       "officialQuestionId": "official-68-advanced-32",
       "question": "해설사가 설명하는 사건이 발생한 시기를 연표에서 옳게 고른",
       "choices": [
-        "(가) - 척화비 건립과 제1차 수신사 파견 사이",
-        "(나) - 제1차 수신사 파견과 거문도 점령 사이",
-        "(다) - 거문도 점령과 함경도 방곡령 선포 사이",
-        "(라) - 함경도 방곡령 선포와 청일 전쟁 발발 사이",
-        "(마) - 청일 전쟁과 러일 전쟁 발발 사이"
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
       ],
       "contentImage": "assets/exams/catalog/content/official-68-advanced-32-content.7114ef08a87f.webp",
       "contentImageWidth": 1091,
@@ -17712,11 +17714,11 @@
       "officialQuestionId": "official-68-advanced-49",
       "question": "(가)~(마)의 설명과 사진을 연결한 것으로 옳지 않은 것은?",
       "choices": [
-        "(가) - 백자 달항아리",
-        "(나) - 청자 오리 모양 연적",
-        "(다) - 검은 자연 유약이 흐른 갈색 도기 항아리",
-        "(라) - 청화 백자 매화·대나무 무늬 항아리",
-        "(마) - 청자 상감 운학문 매병"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-68-advanced-49-content.157747bd8d1b.webp",
       "contentImageWidth": 1103,
@@ -17814,10 +17816,10 @@
       "officialQuestionId": "official-69-basic-03",
       "question": "다음 전시회에서 볼 수 있는 문화유산으로 가장 적절한 것은?",
       "choices": [
-        "호우명 청동 그릇",
-        "성덕 대왕 신종",
-        "칠지도",
-        "가야 철제 판갑옷"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-69-basic-03-content.122ec88dab74.webp",
       "contentImageWidth": 1074,
@@ -18016,10 +18018,10 @@
       "officialQuestionId": "official-69-basic-12",
       "question": "(가)에 들어갈 화폐로 적절한 것은?",
       "choices": [
-        "명도전",
-        "백동화",
-        "상평통보",
-        "해동통보"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-69-basic-12-content.ea230ec22c89.webp",
       "contentImageWidth": 1074,
@@ -18061,10 +18063,10 @@
       "officialQuestionId": "official-69-basic-13",
       "question": "다음 사건이 일어난 시기를 연표에서 옳게 고른 것은?",
       "choices": [
-        "(가) - 고려 건국과 강조의 정변 사이",
-        "(나) - 강조의 정변과 무신 정변 사이",
-        "(다) - 무신 정변과 공민왕 즉위 사이",
-        "(라) - 공민왕 즉위와 조선 건국 사이"
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)"
       ],
       "contentImage": "assets/exams/catalog/content/official-69-basic-13-content.224461242b9e.webp",
       "contentImageWidth": 1062,
@@ -18141,10 +18143,10 @@
       "officialQuestionId": "official-69-basic-18",
       "question": "(가)에 들어갈 스탬프로 적절하지 않은 것은?",
       "choices": [
-        "측우기",
-        "자격루",
-        "혼천의",
-        "첨성대"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-69-basic-18-content.9b5601682aeb.webp",
       "contentImageWidth": 1062,
@@ -18538,10 +18540,10 @@
       "officialQuestionId": "official-69-basic-41",
       "question": "밑줄 그은 '이 회의가 개최된 시기를 연표에서 옳게 고른",
       "choices": [
-        "(가) - 8·15 광복과 대한민국 정부 수립 사이",
-        "(나) - 대한민국 정부 수립과 사사오입 개헌 사이",
-        "(다) - 사사오입 개헌과 4·19 혁명 사이",
-        "(라) - 4·19 혁명과 6·3 시위 사이"
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)"
       ],
       "contentImage": "assets/exams/catalog/content/official-69-basic-41-content.3fa54939c4b7.webp",
       "contentImageWidth": 1074,
@@ -18783,11 +18785,11 @@
       "officialQuestionId": "official-69-advanced-06",
       "question": "다음 설명에 해당하는 문화유산으로 옳은 것은?",
       "choices": [
-        "금동 미륵보살 반가사유상",
-        "연가 7년명 금동 여래 입상",
-        "광배를 갖춘 금동 여래 입상",
-        "금동 관음보살 입상",
-        "이불병좌상"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-69-advanced-06-content.37eab8f01ddc.webp",
       "contentImageWidth": 1062,
@@ -18972,11 +18974,11 @@
       "officialQuestionId": "official-69-advanced-15",
       "question": "다음 사건이 일어난 시기를 연표에서 옳게 고른 것은?",
       "choices": [
-        "(가) - 고려 건국과 강조의 정변 사이",
-        "(나) - 강조의 정변과 이자겸의 난 사이",
-        "(다) - 이자겸의 난과 만적의 난 사이",
-        "(라) - 만적의 난과 개경 환도 사이",
-        "(마) - 개경 환도와 고려 멸망 사이"
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
       ],
       "contentImage": "assets/exams/catalog/content/official-69-advanced-15-content.d47b2a45e429.webp",
       "contentImageWidth": 1062,
@@ -18989,11 +18991,11 @@
       "officialQuestionId": "official-69-advanced-16",
       "question": "밑줄 그은 '국가의 문화유산으로 옳지 않은 것은?",
       "choices": [
-        "백제 금동 대향로",
-        "논산 관촉사 석조 미륵보살 입상",
-        "청자 투각 칠보무늬 향로",
-        "고려 시대 다층 석탑",
-        "청동 은입사 포류수금문 정병"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-69-advanced-16-content.880863869b37.webp",
       "contentImageWidth": 1074,
@@ -19756,11 +19758,11 @@
       "officialQuestionId": "official-70-advanced-09",
       "question": "다음 상황이 나타난 시기를 연표에서 옳게 고른 것은?",
       "choices": [
-        "(가) - 무열왕 즉위 무렵",
-        "(나) - 김흠돌의 난 무렵",
-        "(다) - 정전 지급 무렵",
-        "(라) - 혜공왕 피살 무렵",
-        "(마) - 청해진 설치와 원종·애노의 난 사이"
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
       ],
       "contentImage": "assets/exams/catalog/content/official-70-advanced-09-content.29ddf89a4412.webp",
       "contentImageWidth": 1074,
@@ -20317,11 +20319,11 @@
       "officialQuestionId": "official-70-advanced-42",
       "question": "다음 편지가 작성된 시기를 연표에서 옳게 고른 것은?",
       "choices": [
-        "(가) - 8·15 광복과 모스크바 3국 외상 회의 사이",
-        "(나) - 모스크바 3국 외상 회의와 5·10 총선거 사이",
-        "(다) - 5·10 총선거와 대한민국 정부 수립 사이",
-        "(라) - 대한민국 정부 수립과 6·25 전쟁 사이",
-        "(마) - 6·25 전쟁과 한미 상호 방위 조약 체결 사이"
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
       ],
       "contentImage": "assets/exams/catalog/content/official-70-advanced-42-content.383b71c4ce97.webp",
       "contentImageWidth": 1062,
@@ -20694,10 +20696,10 @@
       "officialQuestionId": "official-71-basic-15",
       "question": "다음 사건이 일어난 시기를 연표에서 옳게 고른 것은?",
       "choices": [
-        "(가) - 묘청의 난과 무신 정변 사이",
-        "(나) - 무신 정변과 강화도 천도 사이",
-        "(다) - 강화도 천도와 쌍성총관부 수복 사이",
-        "(라) - 쌍성총관부 수복과 위화도 회군 사이"
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)"
       ],
       "contentImage": "assets/exams/catalog/content/official-71-basic-15-content.34897e33bfba.webp",
       "contentImageWidth": 1074,
@@ -20803,10 +20805,10 @@
       "officialQuestionId": "official-71-basic-20",
       "question": "(가)에 들어갈 국가유산으로 가장 적절한 것은?",
       "choices": [
-        "청자 상감 운학문 매병",
-        "분청사기 물고기무늬 편병",
-        "백자 달항아리",
-        "청화 백자 항아리"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-71-basic-20-content.88aa2dd45a64.webp",
       "contentImageWidth": 1074,
@@ -20912,10 +20914,10 @@
       "officialQuestionId": "official-71-basic-25",
       "question": "다음 특별전에서 볼 수 있는 작품으로 가장 적절한 것은?",
       "choices": [
-        "강희안, 고사관수도",
-        "김득신, 야묘도추",
-        "김홍도, 무동",
-        "신윤복, 월하정인"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-71-basic-25-content.bc6614b4b98e.webp",
       "contentImageWidth": 1074,
@@ -21245,10 +21247,10 @@
       "officialQuestionId": "official-71-basic-44",
       "question": "밑줄 그은 이 발표된 시기를 연표에서 옳게 고른 것은?",
       "choices": [
-        "(가) - 8·15 광복과 대한민국 정부 수립 사이",
-        "(나) - 대한민국 정부 수립과 사사오입 개헌 사이",
-        "(다) - 사사오입 개헌과 3·15 부정 선거 사이",
-        "(라) - 3·15 부정 선거와 6·3 시위 사이"
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)"
       ],
       "contentImage": "assets/exams/catalog/content/official-71-basic-44-content.ebfcfc1142a7.webp",
       "contentImageWidth": 1062,
@@ -21459,11 +21461,11 @@
       "officialQuestionId": "official-71-advanced-07",
       "question": "(가)에 해당하는 국가유산으로 옳은 것은?",
       "choices": [
-        "경주 불국사 다보탑",
-        "익산 미륵사지 석탑",
-        "경주 분황사 모전 석탑",
-        "발해 영광탑",
-        "경주 불국사 삼층 석탑(석가탑)"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-71-advanced-07-content.9189d56d2f53.webp",
       "contentImageWidth": 1074,
@@ -21529,11 +21531,11 @@
       "officialQuestionId": "official-71-advanced-09",
       "question": "다음 사건이 일어난 시기를 연표에서 옳게 고른 것은?",
       "choices": [
-        "(가) - 발해 건국과 무왕 즉위 사이",
-        "(나) - 무왕 즉위와 문왕의 상경 천도 사이",
-        "(다) - 문왕의 상경 천도와 선왕 즉위 사이",
-        "(라) - 선왕 즉위와 고려 건국 사이",
-        "(마) - 고려 건국과 발해 멸망 사이"
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
       ],
       "contentImage": "assets/exams/catalog/content/official-71-advanced-09-content.6c27a28d3bd9.webp",
       "contentImageWidth": 1062,
@@ -21648,11 +21650,11 @@
       "officialQuestionId": "official-71-advanced-16",
       "question": "(가) 국가의 국가유산으로 옳지 않은 것은?",
       "choices": [
-        "고려 시대 금속 공예품",
-        "나전 국화 넝쿨무늬 합",
-        "고려 수월관음도",
-        "고려 시대 다층 석탑",
-        "김득신, 파적도(야묘도추)"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-71-advanced-16-content.f41a0a613767.webp",
       "contentImageWidth": 1074,
@@ -22092,11 +22094,11 @@
       "officialQuestionId": "official-71-advanced-40",
       "question": "다음 자료가 발표된 시기를 연표에서 옳게 고른 것은?",
       "choices": [
-        "(가) - 한성 사범 학교 설립과 제1차 조선 교육령 사이",
-        "(나) - 제1차 조선 교육령과 3·1 운동 사이",
-        "(다) - 3·1 운동과 경성 제국 대학 개교 사이",
-        "(라) - 경성 제국 대학 개교와 제3차 조선 교육령 사이",
-        "(마) - 제3차 조선 교육령과 조선어 학회 사건 사이"
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
       ],
       "contentImage": "assets/exams/catalog/content/official-71-advanced-40-content.748e1e39140f.webp",
       "contentImageWidth": 1062,
@@ -22551,11 +22553,11 @@
       "officialQuestionId": "official-72-advanced-17",
       "question": "(가) 국가의 탑으로 옳은 것은?",
       "choices": [
-        "고려 시대 승탑",
-        "고려 시대 석탑",
-        "평창 월정사 팔각 구층 석탑",
-        "경주 불국사 다보탑",
-        "다층 석탑"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-72-advanced-17-content.59ef56f927bb.webp",
       "contentImageWidth": 1074,
@@ -22655,11 +22657,11 @@
       "officialQuestionId": "official-72-advanced-21",
       "question": "밑줄 그은 '이 사건'이 일어난 시기를 연표에서 옳게 고른",
       "choices": [
-        "(가) - 이시애의 난과 연산군 즉위 사이",
-        "(나) - 연산군 즉위와 중종반정 사이",
-        "(다) - 중종반정과 기묘사화 사이",
-        "(라) - 기묘사화와 선조 즉위 사이",
-        "(마) - 선조 즉위와 이괄의 난 사이"
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
       ],
       "contentImage": "assets/exams/catalog/content/official-72-advanced-21-content.f06bb6d5210a.webp",
       "contentImageWidth": 1074,
@@ -22689,11 +22691,11 @@
       "officialQuestionId": "official-72-advanced-23",
       "question": "(가)에 들어갈 작품으로 옳은 것은?",
       "choices": [
-        "눈 덮인 산과 초가를 그린 산수화",
-        "신윤복, 월하정인",
-        "먹으로 그린 산수화",
-        "강희안, 고사관수도",
-        "정선, 금강전도"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-72-advanced-23-content.952d58bf6247.webp",
       "contentImageWidth": 1062,
@@ -22980,11 +22982,11 @@
       "officialQuestionId": "official-72-advanced-38",
       "question": "밑줄 그은 '이 지역을 지도에서 옳게 찾은 것은?",
       "choices": [
-        "(가) - 남만주",
-        "(나) - 연해주",
-        "(다) - 일본",
-        "(라) - 하와이",
-        "(마) - 멕시코"
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
       ],
       "contentImage": "assets/exams/catalog/content/official-72-advanced-38-content.2ea33c38acf8.webp",
       "contentImageWidth": 1074,
@@ -23313,10 +23315,10 @@
       "officialQuestionId": "official-73-basic-08",
       "question": "다음 가상 공모전에 제출할 지역화폐 도안으로 가장 적절한",
       "choices": [
-        "풍납토성 출토 동전무늬 수막새",
-        "석굴암 본존불",
-        "부여 정림사지 오층 석탑",
-        "호우명 청동 그릇"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-73-basic-08-content.8edff2cb45a9.webp",
       "contentImageWidth": 1074,
@@ -23390,10 +23392,10 @@
       "officialQuestionId": "official-73-basic-11",
       "question": "(끼에 해당하는 인물로 옳은 것은?",
       "choices": [
-        "서희",
-        "윤관",
-        "최영",
-        "정도전"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-73-basic-11-content.8a3a5bc86945.webp",
       "contentImageWidth": 1062,
@@ -23435,10 +23437,10 @@
       "officialQuestionId": "official-73-basic-12",
       "question": "(끼에 들어갈 문화유산으로 적절한 것은?",
       "choices": [
-        "강화 전등사 대웅전",
-        "안동 봉정사 극락전",
-        "보은 법주사 팔상전",
-        "구례 화엄사 각황전"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-73-basic-12-content.91235ca3605b.webp",
       "contentImageWidth": 1074,
@@ -23480,10 +23482,10 @@
       "officialQuestionId": "official-73-basic-13",
       "question": "다음 상황이 나타난 시기를 연표에서 옳게 고른 것은?",
       "choices": [
-        "(가) - 고려 건국과 귀주 대첩 사이",
-        "(나) - 귀주 대첩과 무신 정변 사이",
-        "(다) - 무신 정변과 개경 환도 사이",
-        "(라) - 개경 환도와 진포 대첩 사이"
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)"
       ],
       "contentImage": "assets/exams/catalog/content/official-73-basic-13-content.b21cb182afb5.webp",
       "contentImageWidth": 1074,
@@ -23624,10 +23626,10 @@
       "officialQuestionId": "official-73-basic-22",
       "question": "(가)에 해당하는 문화유산으로 가장 적절한 것은?",
       "choices": [
-        "서울 원각사지 십층 석탑",
-        "평창 월정사 팔각 구층 석탑",
-        "경주 불국사 삼층 석탑",
-        "익산 미륵사지 석탑"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-73-basic-22-content.a1f05019cd5d.webp",
       "contentImageWidth": 1062,
@@ -23717,10 +23719,10 @@
       "officialQuestionId": "official-73-basic-26",
       "question": "(가)에 들어갈 그림으로 적절한 것은?",
       "choices": [
-        "김홍도, 서당",
-        "강희안, 고사관수도",
-        "김정희, 세한도",
-        "정선, 인왕제색도"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-73-basic-26-content.a60f3b991fbf.webp",
       "contentImageWidth": 1062,
@@ -23906,10 +23908,10 @@
       "officialQuestionId": "official-73-basic-36",
       "question": "(가)에 들어갈 화폐로 옳은 것은?",
       "choices": [
-        "당백전",
-        "백동화",
-        "건원중보",
-        "삼한통보"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-73-basic-36-content.ced34080caa2.webp",
       "contentImageWidth": 1062,
@@ -24260,11 +24262,11 @@
       "officialQuestionId": "official-73-advanced-06",
       "question": "다음 특별전에 전시될 문화유산으로 가장 적절한 것은?",
       "choices": [
-        "비석 조각",
-        "동물 모양 토우",
-        "사람 모양 토우",
-        "청동 제기",
-        "호우명 청동 그릇"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-73-advanced-06-content.2487b91cf864.webp",
       "contentImageWidth": 1062,
@@ -24636,11 +24638,11 @@
       "officialQuestionId": "official-73-advanced-26",
       "question": "(가) 인물의 작품으로 옳은 것은?",
       "choices": [
-        "정선의 금강산 진경 산수화",
-        "먹으로 그린 산수화",
-        "신윤복, 월하정인",
-        "강희안, 고사관수도",
-        "안견, 몽유도원도"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-73-advanced-26-content.3d7f353da808.webp",
       "contentImageWidth": 1062,
@@ -25012,11 +25014,11 @@
       "officialQuestionId": "official-73-advanced-46",
       "question": "다음 상황이 나타난 시기를 연표에서 옳게 고른 것은?",
       "choices": [
-        "(가) - 8·15 광복과 모스크바 3국 외상 회의 사이",
-        "(나) - 모스크바 3국 외상 회의와 5·10 총선거 사이",
-        "(다) - 5·10 총선거와 대한민국 정부 수립 사이",
-        "(라) - 대한민국 정부 수립과 6·25 전쟁 사이",
-        "(마) - 6·25 전쟁과 한미 상호 방위 조약 체결 사이"
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
       ],
       "contentImage": "assets/exams/catalog/content/official-73-advanced-46-content.54d8c88ecd96.webp",
       "contentImageWidth": 1074,
@@ -25301,11 +25303,11 @@
       "officialQuestionId": "official-74-advanced-13",
       "question": "(가) 국가의 문화유산으로 적절하지 않은 것은?",
       "choices": [
-        "도기 기마인물형 명기",
-        "고려 청자 주자",
-        "고려 불화",
-        "고려 시대 청동 거울",
-        "고려 시대 불상"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-74-advanced-13-content.ae9cd6c04d57.webp",
       "contentImageWidth": 1062,
@@ -25439,11 +25441,11 @@
       "officialQuestionId": "official-74-advanced-19",
       "question": "(새에 해당하는 문화유산으로 옳은 것은?",
       "choices": [
-        "종묘 정전",
-        "궁궐 연못의 누각",
-        "전통 목조 누각",
-        "궁궐의 전각",
-        "목조 누각 건물"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-74-advanced-19-content.b3c0b4652b88.webp",
       "contentImageWidth": 1062,
@@ -25747,11 +25749,11 @@
       "officialQuestionId": "official-74-advanced-35",
       "question": "다음 상황이 나타난 시기를 연표에서 옳게 고른 것은?",
       "choices": [
-        "(가) - 신미양요와 갑신정변 사이",
-        "(나) - 갑신정변과 청일 전쟁 사이",
-        "(다) - 청일 전쟁과 아관 파천 사이",
-        "(라) - 아관 파천과 러일 전쟁 사이",
-        "(마) - 러일 전쟁과 국권 피탈 사이"
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
       ],
       "contentImage": "assets/exams/catalog/content/official-74-advanced-35-content.fa1b40691856.webp",
       "contentImageWidth": 1062,
@@ -26067,10 +26069,10 @@
       "officialQuestionId": "official-75-basic-04",
       "question": "밑줄 그은 '이 나라의 문화유산으로 옳은 것은?",
       "choices": [
-        "가야 철제 판갑옷과 투구",
-        "칠지도",
-        "성덕 대왕 신종",
-        "연가 7년명 금동 여래 입상"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-75-basic-04-content.331ca1af64cf.webp",
       "contentImageWidth": 1074,
@@ -26112,10 +26114,10 @@
       "officialQuestionId": "official-75-basic-05",
       "question": "다음 답사가 이루어진 지역을 지도에서 옳게 고른 것은?",
       "choices": [
-        "(가) - 서울",
-        "(나) - 공주",
-        "(다) - 부여",
-        "(라) - 익산"
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)"
       ],
       "contentImage": "assets/exams/catalog/content/official-75-basic-05-content.fae10a48f1d6.webp",
       "contentImageWidth": 1062,
@@ -26256,10 +26258,10 @@
       "officialQuestionId": "official-75-basic-14",
       "question": "학생들이 공통으로 이야기하는 인물로 옳은 것은?",
       "choices": [
-        "최영",
-        "이규보",
-        "정도전",
-        "최무선"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-75-basic-14-content.875fba28e940.webp",
       "contentImageWidth": 1062,
@@ -26685,10 +26687,10 @@
       "officialQuestionId": "official-75-basic-39",
       "question": "(가)에 해당하는 인물로 옳은 것은?",
       "choices": [
-        "박상진",
-        "안창호",
-        "윤봉길",
-        "이회영"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-75-basic-39-content.528fd0de15b2.webp",
       "contentImageWidth": 1062,
@@ -26858,10 +26860,10 @@
       "officialQuestionId": "official-75-basic-48",
       "question": "(가)에 들어갈 사진으로 가장 적절한 것은?",
       "choices": [
-        "금융 실명제 실시",
-        "100억 달러 수출 달성",
-        "개성 공단 조성",
-        "아시아·태평양 경제 협력체 정상 회의 개최"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-75-basic-48-content.0cbad9e80591.webp",
       "contentImageWidth": 1062,
@@ -26969,11 +26971,11 @@
       "officialQuestionId": "official-75-advanced-03",
       "question": "(가) 국가의 문화유산으로 옳은 것은?",
       "choices": [
-        "금동 향로",
-        "연가 7년명 금동 여래 입상",
-        "도기 인물상",
-        "석탑",
-        "천마도 장니"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-75-advanced-03-content.42b5ee330457.webp",
       "contentImageWidth": 1074,
@@ -27192,11 +27194,11 @@
       "officialQuestionId": "official-75-advanced-14",
       "question": "다음 상황이 나타난 시기를 연표에서 옳게 고른 것은?",
       "choices": [
-        "(가) - 고려 건국과 강조의 정변 사이",
-        "(나) - 강조의 정변과 이자겸의 난 사이",
-        "(다) - 이자겸의 난과 무신 정변 사이",
-        "(라) - 무신 정변과 쌍성총관부 탈환 사이",
-        "(마) - 쌍성총관부 탈환과 고려 멸망 사이"
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
       ],
       "contentImage": "assets/exams/catalog/content/official-75-advanced-14-content.20e287170341.webp",
       "contentImageWidth": 1062,
@@ -27260,11 +27262,11 @@
       "officialQuestionId": "official-75-advanced-18",
       "question": "(가) 국가의 문화유산으로 옳은 것은?",
       "choices": [
-        "익산 미륵사지 석탑",
-        "부여 정림사지 오층 석탑",
-        "개성 경천사지 십층 석탑",
-        "발해 영광탑",
-        "경주 불국사 다보탑"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-75-advanced-18-content.519a2c734be0.webp",
       "contentImageWidth": 1062,
@@ -27908,11 +27910,11 @@
       "officialQuestionId": "official-76-advanced-04",
       "question": "(가) 국가의 문화유산으로 옳은 것은?",
       "choices": [
-        "백제 산수무늬 벽돌",
-        "금제 관 장식",
-        "호우명 청동 그릇",
-        "도기 기마인물형 명기",
-        "금동 불상 장식판"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-76-advanced-04-content.e92210cd4c83.webp",
       "contentImageWidth": 1074,
@@ -28165,11 +28167,11 @@
       "officialQuestionId": "official-76-advanced-17",
       "question": "다음 특별전에 전시될 문화유산으로 가장 적절한 것은?",
       "choices": [
-        "청자 어룡 모양 주전자",
-        "닭 모양 백자 연적",
-        "물고기무늬 편구병",
-        "수레바퀴 모양 토기",
-        "코끼리 모양 토기"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-76-advanced-17-content.955c33d28352.webp",
       "contentImageWidth": 1074,
@@ -28371,11 +28373,11 @@
       "officialQuestionId": "official-76-advanced-27",
       "question": "(가)에 해당하는 작품으로 옳은 것은?",
       "choices": [
-        "김득신, 야묘도추",
-        "인물들의 모임을 그린 풍속화",
-        "신윤복, 월하정인",
-        "김홍도, 대장간",
-        "강희안, 고사관수도"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-76-advanced-27-content.4c74eac34d3d.webp",
       "contentImageWidth": 1062,
@@ -28424,11 +28426,11 @@
       "officialQuestionId": "official-76-advanced-28",
       "question": "다음 상소가 올려진 시기를 연표에서 옳게 고른 것은?",
       "choices": [
-        "(가) - 고종 즉위와 신미양요 사이",
-        "(나) - 신미양요와 갑신정변 사이",
-        "(다) - 갑신정변과 을미사변 사이",
-        "(라) - 을미사변과 러일 전쟁 사이",
-        "(마) - 러일 전쟁과 국권 피탈 사이"
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
       ],
       "contentImage": "assets/exams/catalog/content/official-76-advanced-28-content.b95288ed2af2.webp",
       "contentImageWidth": 1062,
@@ -28831,10 +28833,10 @@
       "officialQuestionId": "official-77-basic-02",
       "question": "학생들이 공통으로 이야기하고 있는 나라를 지도에서 옳게 찾은",
       "choices": [
-        "(가) - 한반도 북부",
-        "(나) - 한반도 중북부",
-        "(다) - 한반도 서남부",
-        "(라) - 삼한 지역"
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)"
       ],
       "contentImage": "assets/exams/catalog/content/official-77-basic-02-content.ee697be9013c.webp",
       "contentImageWidth": 1062,
@@ -28879,10 +28881,10 @@
       "officialQuestionId": "official-77-basic-05",
       "question": "다음 전시회에서 볼 수 있는 문화유산으로 가장 적절한 것은?",
       "choices": [
-        "연가 7년명 금동 여래 입상",
-        "무령왕 금제 관식",
-        "천마총 금관",
-        "백제 금동 대향로"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-77-basic-05-content.4476764d8abc.webp",
       "contentImageWidth": 1062,
@@ -29081,10 +29083,10 @@
       "officialQuestionId": "official-77-basic-14",
       "question": "다음 시나리오의 상황이 나타난 시기를 연표에서 옳게 고른",
       "choices": [
-        "(가) - 고려 건국과 별무반 설치 사이",
-        "(나) - 별무반 설치와 이자겸의 난 사이",
-        "(다) - 이자겸의 난과 무신 정변 사이",
-        "(라) - 무신 정변과 위화도 회군 사이"
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)"
       ],
       "contentImage": "assets/exams/catalog/content/official-77-basic-14-content.f8c21496f4db.webp",
       "contentImageWidth": 1062,
@@ -29097,10 +29099,10 @@
       "officialQuestionId": "official-77-basic-15",
       "question": "(가)에 들어갈 스탬프로 옳은 것은?",
       "choices": [
-        "건원중보",
-        "상평통보",
-        "반량전",
-        "명도전"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-77-basic-15-content.cb2e33ababa7.webp",
       "contentImageWidth": 1062,
@@ -29494,10 +29496,10 @@
       "officialQuestionId": "official-77-basic-38",
       "question": "(가)에 들어갈 내용으로 적절하지 않은 것은?",
       "choices": [
-        "백화점과 소비 문화",
-        "여성 직업인 모집 광고",
-        "다방의 사교 문화",
-        "새마을 운동과 주택 개량"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-77-basic-38-content.ad68128c507e.webp",
       "contentImageWidth": 1074,
@@ -29782,11 +29784,11 @@
       "officialQuestionId": "official-77-advanced-04",
       "question": "(가) 국가의 문화유산으로 옳은 것은?",
       "choices": [
-        "백제 금동 대향로",
-        "칠지도",
-        "고리가 달린 청동 유물",
-        "신라 금제 관식",
-        "백제 금동 관음보살 입상"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-77-advanced-04-content.94596d3cd82c.webp",
       "contentImageWidth": 1074,
@@ -29971,11 +29973,11 @@
       "officialQuestionId": "official-77-advanced-13",
       "question": "(가) 국가의 문화유산으로 옳지 않은 것은?",
       "choices": [
-        "평창 월정사 팔각 구층 석탑",
-        "고려 청자 주자",
-        "고려 수월관음도",
-        "호우명 청동 그릇",
-        "논산 관촉사 석조 미륵보살 입상"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-77-advanced-13-content.17903312df15.webp",
       "contentImageWidth": 1074,
@@ -30092,11 +30094,11 @@
       "officialQuestionId": "official-77-advanced-18",
       "question": "다음 상황이 나타난 시기를 연표에서 옳게 고른 것은?",
       "choices": [
-        "(가) - 강조의 정변과 이자겸의 난 사이",
-        "(나) - 이자겸의 난과 처인성 전투 사이",
-        "(다) - 처인성 전투와 삼별초 항쟁 진압 사이",
-        "(라) - 삼별초 항쟁 진압과 공민왕 즉위 사이",
-        "(마) - 공민왕 즉위와 고려 멸망 사이"
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
       ],
       "contentImage": "assets/exams/catalog/content/official-77-advanced-18-content.93571f9fef3d.webp",
       "contentImageWidth": 1062,
@@ -30789,11 +30791,11 @@
       "officialQuestionId": "official-78-advanced-09",
       "question": "(가) 국가의 문화유산으로 옳은 것은?",
       "choices": [
-        "연가 7년명 금동 여래 입상",
-        "석조 여래 좌상",
-        "발해 불교 유물",
-        "금동 불상",
-        "광배를 갖춘 금동 불상"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-78-advanced-09-content.6c7ec20e7d95.webp",
       "contentImageWidth": 1062,
@@ -30910,11 +30912,11 @@
       "officialQuestionId": "official-78-advanced-14",
       "question": "(가) 국가의 문화유산으로 옳은 것은?",
       "choices": [
-        "부여 정림사지 오층 석탑",
-        "발해 영광탑",
-        "평창 월정사 팔각 구층 석탑",
-        "통일 신라 삼층 석탑",
-        "경주 불국사 다보탑"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-78-advanced-14-content.49fe4477db10.webp",
       "contentImageWidth": 1062,
@@ -31099,11 +31101,11 @@
       "officialQuestionId": "official-78-advanced-23",
       "question": "다음 상황이 나타난 시기를 연표에서 옳게 고른 것은?",
       "choices": [
-        "(가) - 인조반정과 경신환국 사이",
-        "(나) - 경신환국과 이인좌의 난 사이",
-        "(다) - 이인좌의 난과 장용영 창설 사이",
-        "(라) - 장용영 창설과 홍경래의 난 사이",
-        "(마) - 홍경래의 난과 병인양요 사이"
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
       ],
       "contentImage": "assets/exams/catalog/content/official-78-advanced-23-content.8de303002fcd.webp",
       "contentImageWidth": 1062,
@@ -31150,11 +31152,11 @@
       "officialQuestionId": "official-78-advanced-26",
       "question": "(가) 인물의 작품으로 옳은 것은?",
       "choices": [
-        "신윤복, 월하정인",
-        "눈 덮인 산과 매화를 그린 그림",
-        "강가 절벽과 나룻배를 그린 산수화",
-        "김득신, 파적도(야묘도추)",
-        "김정희, 세한도"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-78-advanced-26-content.07e8aa21094e.webp",
       "contentImageWidth": 1062,
@@ -31643,10 +31645,10 @@
       "officialQuestionId": "official-79-basic-03",
       "question": "(가)에 해당하는 문화유산으로 적절한 것은?",
       "choices": [
-        "공산성",
-        "풍납동 토성",
-        "삼년산성",
-        "진도 용장성"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-79-basic-03-content.66bd2da0b286.webp",
       "contentImageWidth": 1074,
@@ -31704,10 +31706,10 @@
       "officialQuestionId": "official-79-basic-05",
       "question": "다음 학생이 읽고 있는 책에 등장하는 고분 벽화로 적절하지",
       "choices": [
-        "안악 3호분 벽화",
-        "정효 공주 무덤 벽화",
-        "무용총 벽화",
-        "수산리 고분 벽화"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-79-basic-05-content.ccf1c65a3b6e.webp",
       "contentImageWidth": 1062,
@@ -31765,10 +31767,10 @@
       "officialQuestionId": "official-79-basic-07",
       "question": "(가)에 들어갈 문화유산으로 적절하지 않은 것은?",
       "choices": [
-        "금동 미륵보살 반가사유상",
-        "연가 7년명 금동 여래 입상",
-        "논산 관촉사 석조 미륵보살 입상",
-        "서산 용현리 마애여래삼존상"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-79-basic-07-content.c03625c2ee4a.webp",
       "contentImageWidth": 1074,
@@ -31826,10 +31828,10 @@
       "officialQuestionId": "official-79-basic-09",
       "question": "(가)에 들어갈 문화유산으로 적절한 것은?",
       "choices": [
-        "호우명 청동 그릇",
-        "연꽃무늬 수막새",
-        "성덕 대왕 신종",
-        "가야 판갑옷과 투구"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-79-basic-09-content.326afc4d5e85.webp",
       "contentImageWidth": 1062,
@@ -31935,10 +31937,10 @@
       "officialQuestionId": "official-79-basic-14",
       "question": "학생들이 공통으로 이야기하는 인물로 옳은 것은?",
       "choices": [
-        "지눌",
-        "의천",
-        "원효",
-        "유정"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-79-basic-14-content.857ecc184410.webp",
       "contentImageWidth": 1062,
@@ -32233,10 +32235,10 @@
       "officialQuestionId": "official-79-basic-29",
       "question": "밑줄 그은 '이 사건'이 일어난 시기를 연표에서 옳게 고른",
       "choices": [
-        "(가) - 고종 즉위와 강화도 조약 사이",
-        "(나) - 강화도 조약과 갑오개혁 사이",
-        "(다) - 갑오개혁과 러일 전쟁 사이",
-        "(라) - 러일 전쟁과 국권 피탈 사이"
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)"
       ],
       "contentImage": "assets/exams/catalog/content/official-79-basic-29-content.71c7138dcfc3.webp",
       "contentImageWidth": 1074,
@@ -32409,10 +32411,10 @@
       "officialQuestionId": "official-79-basic-40",
       "question": "다음 자료에 해당하는 인물로 옳은 것은?",
       "choices": [
-        "주시경",
-        "윤동주",
-        "한용운",
-        "이육사"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-79-basic-40-content.001cc59a78cb.webp",
       "contentImageWidth": 1062,
@@ -32486,10 +32488,10 @@
       "officialQuestionId": "official-79-basic-43",
       "question": "(가)~(라)에 들어갈 내용으로 옳은 것은?",
       "choices": [
-        "도쿄 - 안중근의 이토 히로부미 처단",
-        "샌프란시스코 - 2·8 독립 선언",
-        "상하이 - 윤봉길의 훙커우 공원 의거",
-        "하와이 - 장인환·전명운의 스티븐스 처단"
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-79-basic-43-content.38aa6fd1d177.webp",
       "contentImageWidth": 1062,
@@ -32728,11 +32730,11 @@
       "officialQuestionId": "official-79-advanced-06",
       "question": "밑줄 그은 '이 탑으로 옳은 것은?",
       "choices": [
-        "부여 정림사지 오층 석탑",
-        "경주 불국사 다보탑",
-        "발해 영광탑",
-        "구례 화엄사 사사자 삼층 석탑",
-        "평창 월정사 팔각 구층 석탑"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-79-advanced-06-content.c08a1e3c2c5c.webp",
       "contentImageWidth": 1062,
@@ -32849,11 +32851,11 @@
       "officialQuestionId": "official-79-advanced-11",
       "question": "(가) 국가의 문화유산으로 옳은 것은?",
       "choices": [
-        "논산 관촉사 석조 미륵보살 입상",
-        "발해 이불병좌상",
-        "신라 금관",
-        "백제 금동 대향로",
-        "고려 청자 주자"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "contentImage": "assets/exams/catalog/content/official-79-advanced-11-content.2f908e323cac.webp",
       "contentImageWidth": 1062,
@@ -32987,11 +32989,11 @@
       "officialQuestionId": "official-79-advanced-17",
       "question": "다음 상황이 전개된 시기를 연표에서 옳게 고른 것은?",
       "choices": [
-        "(가) - 최충헌 집권과 강화도 천도 사이",
-        "(나) - 강화도 천도와 제1차 일본 원정 사이",
-        "(다) - 제1차 일본 원정과 쌍성총관부 탈환 사이",
-        "(라) - 쌍성총관부 탈환과 과전법 제정 사이",
-        "(마) - 과전법 제정과 제1차 왕자의 난 사이"
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
       ],
       "contentImage": "assets/exams/catalog/content/official-79-advanced-17-content.47dc673f2604.webp",
       "contentImageWidth": 1074,
@@ -33259,11 +33261,11 @@
       "officialQuestionId": "official-79-advanced-33",
       "question": "다음 상황이 나타난 시기를 연표에서 옳게 고른 것은?",
       "choices": [
-        "(가) - 고종 즉위와 신미양요 사이",
-        "(나) - 신미양요와 갑신정변 사이",
-        "(다) - 갑신정변과 을미사변 사이",
-        "(라) - 을미사변과 을사늑약 사이",
-        "(마) - 을사늑약과 국권 피탈 사이"
+        "(가)",
+        "(나)",
+        "(다)",
+        "(라)",
+        "(마)"
       ],
       "contentImage": "assets/exams/catalog/content/official-79-advanced-33-content.b0033480be92.webp",
       "contentImageWidth": 1074,
