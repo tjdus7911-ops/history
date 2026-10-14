@@ -142,14 +142,14 @@ for(const [eraId,count] of Object.entries(actualCounts)){
  assert(html.includes(`data-ox-era="${eraId}"`),`${eraId} card missing`);
  assert(html.includes(`${count}`),`${eraId} actual question count missing from home`);
 }
-assert(html.includes('data-ox-home-analysis'),'OX main must render the compact weakness analysis without another click');
+assert(!html.includes('data-ox-home-analysis'),'OX weakness summary must not render');
 assert.equal((html.match(/class="ox-weakness-donut/g)||[]).length,0,'no-history OX main must show an empty state instead of a meaningless donut');
-assert(html.includes('data-ox-analysis'),'compact weakness analysis needs a working detail control');
-assert(html.includes('상세보기'),'compact weakness analysis must label its detail control');
+assert(!html.includes('data-ox-analysis='),'OX analysis entry must not render');
+assert(!html.includes('data-ox-analysis="true"'),'analysis detail control is removed');
 assert(!html.includes('class="ox-learning-summary"')&&!html.includes('나의 OX 학습'),'the old duplicate learning summary card must be removed');
-assert(html.includes('아직 분석할 학습 기록이 없어요.')&&html.includes('OX 퀴즈를 풀면 시대별 취약점을 확인할 수 있어요.'),'no-history OX main must retain the analysis area with its dedicated empty state');
-const analysisPosition=html.indexOf('data-ox-home-analysis'),eraPosition=html.indexOf('data-ox-era='),reviewPosition=html.indexOf('틀린 OX 다시 풀기');
-assert(analysisPosition>=0&&analysisPosition<eraPosition&&eraPosition<reviewPosition,'OX main order must be header, weakness analysis, era quizzes, then wrong-answer review');
+assert(!html.includes('시대별 취약점 분석'),'OX analysis description is removed');
+const eraPosition=html.indexOf('data-ox-era='),reviewPosition=html.indexOf('틀린 OX 다시 풀기');
+assert(eraPosition>=0&&reviewPosition>eraPosition,'era quiz and wrong review remain in order');
 assert((html.match(/아직 학습 전/g)||[]).length>=7,'unattempted eras must say 아직 학습 전');
 assert(html.includes('data-ox-review'),'wrong-answer review entry is required');
 
@@ -157,7 +157,7 @@ assert(html.includes('data-ox-review'),'wrong-answer review entry is required');
    never having learned. The compact analysis remains visible in both cases. */
 const emptyHomeSnapshot=run('JSON.stringify(meta().oxQuiz)'),allCorrectQuestion=questions[0];
 run(`(()=>{const q=OX_QUESTIONS.find(item=>item.id===${JSON.stringify(allCorrectQuestion.id)}),ox=meta().oxQuiz;ox.records={[q.id]:{attempts:2,correctCount:2,wrongCount:0,lastCorrect:true,lastAnsweredAt:'2026-10-08T00:00:00.000Z'}};ox.history=[];ox.wrongIds=[];oxView='home';screen='ox';render();})()`);
-assert(html.includes('현재 복습이 필요한 오답이 없어요.'),'learned-with-zero-wrong state must not be shown as no learning history');
+assert(html.includes('복습할 문제가 없어요'),'empty wrong-review state remains available');
 assert(!html.includes('아직 분석할 학습 기록이 없어요.'),'zero-wrong state must be distinct from no-history state');
 run(`meta().oxQuiz=${emptyHomeSnapshot};oxView='home';screen='ox';render()`);
 
@@ -296,29 +296,9 @@ assert.equal(distributionRow('prehistoric').percentage,'52.9');assert.equal(dist
 assert.equal(distribution.leader.eraId,'prehistoric','the largest unique-wrong share must drive the compact summary highlight');
 
 click({nav:'ox'});
-assert(html.includes('data-ox-home-analysis'),'analysis summary must be visible immediately on OX main');
-assert.equal((html.match(/class="ox-weakness-donut/g)||[]).length,1,'OX main must render one compact donut once wrong history exists');
-assert(html.includes('고유 오답 총 17문제'),'compact donut needs an accessible unique-wrong total');
-assert(html.includes('가장 취약한 시대')&&html.includes('선사·고조선'),'compact summary must identify the era with the largest wrong share');
-assert(html.includes('선사·고조선 오답 비중')&&html.includes('52.9%'),'compact summary must label wrong share separately from accuracy');
-const homeDonutFill=html.match(/--ox-donut-fill:([^";]+(?:\([^";]*\))?)/)?.[1]||html.match(/--ox-donut-fill:([^";]+)/)?.[1];
-assert(homeDonutFill,'compact donut fill must be data-driven');
-click({oxAnalysis:'true'});
-assert.equal(run('OX_QUIZ_API.snapshot().view'),'analysis','detail control must open an independent analysis view');
-assert(html.includes('class="ox-page ox-analysis"')&&html.includes('시대별 취약점 분석'));
-for(const label of ['누적 풀이 수','전체 정답률','고유 오답 문제 수','가장 취약한 시대'])assert(html.includes(label),`detail summary metric missing: ${label}`);
-assert.equal((html.match(/class="ox-analysis-summary"/g)||[]).length,1,'detail page needs one four-metric learning summary');
-assert(html.includes('데이터 부족'),'analysis screen must identify insufficient samples');
-assert.equal((html.match(/class="ox-weakness-donut/g)||[]).length,1,'analysis must render one all-era wrong-answer donut');
-assert.equal((html.match(/data-era="(?:prehistoric|kingdoms|goryeo|joseon|empire|occupation|republic)" data-wrong=/g)||[]).length,7,'donut must include a labeled row for every era');
-assert.equal((html.match(/class="ox-weakness-card/g)||[]).length,7,'detail page must render one learning-analysis card for each era');
-assert(!html.includes('ox-weakness-meter'),'the replaced horizontal weakness bars must not remain');
-assert(html.includes('role="img"')&&html.includes('고유 오답 총 17문제'),'donut needs an accessible unique-wrong data summary');
-assert(html.includes('data-era="goryeo" data-wrong="5" data-share="29.4"'),'legend must expose the actual count and calculated share');
-assert(html.includes('class="ox-focus-review"')&&html.includes('취약 시대 집중 복습'),'detail page must provide the focused-review section');
-assert(html.includes('data-ox-analysis-review-era')&&html.includes('data-ox-analysis-review-start'),'focused review must allow era selection and start its historical review flow');
-const detailDonutFill=html.match(/--ox-donut-fill:([^";]+(?:\([^";]*\))?)/)?.[1]||html.match(/--ox-donut-fill:([^";]+)/)?.[1];
-assert.equal(detailDonutFill,homeDonutFill,'OX main and detail must render the same wrong-share distribution');
+assert(!html.includes('data-ox-home-analysis'),'OX weakness summary must not render');
+assert(!html.includes('ox-weakness-donut'),'OX charts must not render even when history exists');
+click({oxAnalysis:'true'});assert.equal(run('OX_QUIZ_API.snapshot().view'),'home','stale analysis controls return to the quiz home');
 
 /* The detail selector follows the historical unique-wrong basis used by the chart.
    A corrected past error must remain available here without returning to the
@@ -328,7 +308,7 @@ const completedHistoricalId=run("meta().oxQuiz.history.find(item=>item.eraId==='
 const unresolvedHistoricalId=run(`meta().oxQuiz.history.find(item=>item.eraId==='joseon'&&item.isCorrect===false&&item.questionId!==${JSON.stringify(completedHistoricalId)}).questionId`);
 run(`(()=>{const completedId=${JSON.stringify(completedHistoricalId)},unresolvedId=${JSON.stringify(unresolvedHistoricalId)},completed=OX_QUESTIONS.find(item=>item.id===completedId),unresolved=OX_QUESTIONS.find(item=>item.id===unresolvedId),ox=meta().oxQuiz;ox.records[completedId]={attempts:2,correctCount:1,wrongCount:1,lastCorrect:true,lastAnswer:completed.answer,lastAnsweredAt:'2026-10-08T00:00:00.000Z'};ox.records[unresolvedId]={attempts:1,correctCount:0,wrongCount:1,lastCorrect:false,lastAnswer:!unresolved.answer,lastAnsweredAt:'2026-10-08T00:01:00.000Z'};ox.wrongIds=[unresolvedId];render();})()`);
 change({oxAnalysisReviewEra:'true'},'joseon');
-assert(html.includes('data-ox-analysis-review-start="joseon"'),'focus review start control must follow the selected era');
+assert(html.includes('data-ox-home-review-era'),'the main wrong-review selector remains available');
 click({oxAnalysisReviewStart:'joseon'});
 assert.equal(run('meta().oxQuiz.activeSession.mode'),'review');
 assert.equal(run('meta().oxQuiz.activeSession.eraId'),'joseon');
@@ -370,18 +350,18 @@ run(`meta().oxQuiz=${analyticsSnapshot}`);
 const donutSnapshot=run('JSON.stringify(meta().oxQuiz)'),singleWrong=questions.find(question=>question.eraId==='occupation');
 run(`(()=>{const ox=meta().oxQuiz;ox.records={};ox.history=[];ox.wrongIds=[];render();})()`);
 let emptyDistribution=copy('OX_QUIZ_API.wrongDistribution()');assert.equal(emptyDistribution.total,0);assert(emptyDistribution.rows.every(item=>item.percentage==='0'));
-assert(html.includes('아직 분석할 학습 기록이 없어요.')&&!html.includes('conic-gradient()'),'no-history detail must render its dedicated empty state');
+assert(!html.includes('시대별 취약점 분석'),'OX analysis description is removed');
 run(`(()=>{const q=OX_QUESTIONS.find(item=>item.id===${JSON.stringify(allCorrectQuestion.id)}),ox=meta().oxQuiz;ox.records={[q.id]:{attempts:2,correctCount:2,wrongCount:0,lastCorrect:true,lastAnsweredAt:'2026-10-08T00:00:00.000Z'}};ox.history=[];ox.wrongIds=[];render();})()`);
 emptyDistribution=copy('OX_QUIZ_API.wrongDistribution()');assert.equal(emptyDistribution.total,0);
-assert(html.includes('현재 복습이 필요한 오답이 없어요.')&&!html.includes('아직 분석할 학습 기록이 없어요.'),'all-correct history must render the zero-wrong state');
+assert(html.includes('복습할 문제가 없어요'),'empty wrong-review state remains available');
 run(`(()=>{const q=OX_QUESTIONS.find(item=>item.id===${JSON.stringify(singleWrong.id)}),ox=meta().oxQuiz;ox.records={[q.id]:{attempts:2,correctCount:1,wrongCount:1,lastCorrect:true,lastAnsweredAt:'2026-10-08T00:00:00.000Z'}};ox.history=[];ox.wrongIds=[];oxView='home';screen='ox';render();})()`);
-assert(html.includes('누적 고유 오답')&&html.includes('한 번 이상 틀린 서로 다른 문제 기준이에요.'),'completed-only home must explain the historical unique-wrong basis');
-assert(html.includes('고유 오답 총 1문제')&&html.includes('복습할 문제가 없어요'),'completed-only history must keep its donut without re-entering the current-wrong queue');
+assert(!html.includes('누적 고유 오답'),'removed analysis metrics must not reappear');
+assert(html.includes('복습할 문제가 없어요')&&!html.includes('ox-weakness-donut'),'completed history remains out of the current-wrong queue');
 run(`(()=>{const q=OX_QUESTIONS.find(item=>item.id===${JSON.stringify(singleWrong.id)}),ox=meta().oxQuiz;ox.records={[q.id]:{attempts:2,correctCount:0,wrongCount:2,lastCorrect:false,lastAnsweredAt:'2026-10-08T00:00:00.000Z'}};ox.history=[];ox.wrongIds=[q.id];oxView='analysis';render();})()`);
 const singleDistribution=copy('OX_QUIZ_API.wrongDistribution()');assert.equal(copy('OX_QUIZ_API.stats()').wrong,2,'cumulative statistics must retain both wrong attempts');
 assert.equal(singleDistribution.total,1,'the donut must count the repeatedly missed question only once');
 assert.equal(singleDistribution.rows.find(item=>item.eraId==='occupation').percentage,'100');
-assert(html.includes('data-era="occupation" data-wrong="1" data-share="100"'),'one-era unique-wrong data must fill the donut at an exact 100% share');
+assert.equal(copy('OX_QUIZ_API.wrongDistribution()').rows.find(row=>row.eraId==='occupation').percentage,'100','historical distribution data is preserved');
 run(`meta().oxQuiz=${donutSnapshot}`);
 
 /* OX work remains isolated from Story, official exams, and their wrong-note records. */
@@ -455,3 +435,4 @@ run('save()');const savedSnapshot=saved,historySnapshot=run('JSON.stringify(meta
 assert.equal(saved,savedSnapshot);assert.equal(run('JSON.stringify(meta().oxQuiz.history)'),historySnapshot);
 
 console.log(`PASS: ${questions.length} audited OX questions across seven eras, dynamic up-to-20 sessions, retired-id session repair, canonical attempts, isolation, and reload persistence.`);
+

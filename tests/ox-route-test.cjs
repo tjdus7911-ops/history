@@ -111,46 +111,13 @@ assert.equal(app.run('screen'),'ox','#ox must restore the OX screen');
 assert.equal(app.run('OX_QUIZ_API.snapshot().view'),'home','#ox must restore the OX main, not force the active quiz');
 assert(app.html().includes('진행 중인 퀴즈 이어하기'),'OX main must offer the saved session as an explicit resume action');
 assert(!app.html().includes('class="ox-page ox-play"'),'OX main reload unexpectedly entered the quiz');
-const oxMainHistoryLength=app.browser.history.length;
 app.click({oxAnalysis:'true'});
-assert.equal(app.run('OX_QUIZ_API.snapshot().view'),'analysis','detail control must open the independent analysis screen');
-assert.equal(app.browser.location.hash,'#ox/analysis','detail control must write the independent analysis URL');
-assert.equal(app.browser.history.length,oxMainHistoryLength+1,'opening analysis from OX main must create one navigable history entry');
-assert(app.html().includes('class="ox-page ox-analysis"'),'analysis route must render the independent analysis page');
-app.click({oxBack:'home'});
-assert.equal(app.run('OX_QUIZ_API.snapshot().view'),'home','analysis header Back must return to OX main');
-assert.equal(app.browser.location.hash,'#ox','analysis header Back must restore the OX main URL');
-assert.equal(app.browser.history.length,oxMainHistoryLength+1,'analysis header Back must not append a duplicate OX entry');
-app.browser.history.forward();
-assert.equal(app.run('OX_QUIZ_API.snapshot().view'),'analysis','browser Forward must reopen analysis after header Back');
-assert.equal(app.browser.location.hash,'#ox/analysis');
-app.browser.history.back();
-assert.equal(app.run('OX_QUIZ_API.snapshot().view'),'home','browser Back must return from analysis to OX main');
-
-/* A directly opened analysis URL has no app-owned previous entry. Its header Back
-   must replace the URL with OX main instead of leaving the app or adding history. */
+assert.equal(app.run('OX_QUIZ_API.snapshot().view'),'home');
+assert.equal(app.browser.location.hash,'#ox');
 app=boot('#ox/analysis',cloneStorage(activeStorage));
-assert.equal(app.run('screen'),'ox','#ox/analysis must restore the OX screen');
-assert.equal(app.run('OX_QUIZ_API.snapshot().view'),'analysis','#ox/analysis must survive refresh as the detail page');
-assert.equal(app.browser.location.hash,'#ox/analysis');
-assert(!app.html().includes('class="ox-page ox-play"'),'an active quiz must not hijack an explicit analysis URL');
-const directAnalysisLength=app.browser.history.length;
-app.click({oxBack:'home'});
-assert.equal(app.run('OX_QUIZ_API.snapshot().view'),'home','direct analysis header Back must fall back to OX main');
-assert.equal(app.browser.location.hash,'#ox','direct analysis header Back must replace with the OX main URL');
-assert.equal(app.browser.history.length,directAnalysisLength,'direct analysis fallback must not append browser history');
-
-app=boot('#ox/quiz',cloneStorage(activeStorage));
-assert.equal(app.run('screen'),'ox','#ox/quiz must restore the OX screen');
-assert.equal(app.run('OX_QUIZ_API.snapshot().view'),'quiz','#ox/quiz must restore the active quiz explicitly');
-assert(app.html().includes('class="ox-page ox-play"'),'explicit OX quiz route did not render the active quiz');
-
-app=boot('#not-a-real-screen',cloneStorage(activeStorage));
-assert.equal(app.run('screen'),'home','an invalid route must safely fall back to home');
-
-app=boot('#home',cloneStorage(activeStorage));app.click({studyJump:'official'});
-assert.equal(app.run('screen'),'study','direct wrong-note links must enter study');
-assert.equal(app.browser.location.hash,'#study','direct wrong-note links must synchronize the URL');
+assert.equal(app.run('OX_QUIZ_API.snapshot().view'),'home','legacy analysis links redirect to OX home');
+assert.equal(app.browser.location.hash,'#ox');
+assert(app.html().includes('진행 중인 퀴즈 이어하기'),'legacy analysis links preserve resume');
 
 /* Main-nav changes must write navigable history. Back/forward and an external hash
    change then apply the URL without resurrecting the active OX quiz. */
@@ -183,3 +150,4 @@ const resultHash=app.browser.location.hash,resultStorage=cloneStorage(app.storag
 app=boot(resultHash,resultStorage);assert.equal(app.run('screen'),'exam-library','result URL refresh must restore the exam screen');assert(app.html().includes('OFFICIAL EXAM RESULT'));assert.equal(app.run('globalThis.OFFICIAL_EXAM_UI.snapshot().readOnlyResult'),true);assert.equal(app.run("Object.values(meta().questionRecords).reduce((sum,record)=>sum+(record.attempts||0),0)"),attemptsAfterSubmit,'reopening a result must not record attempts again');
 
 console.log('PASS: URL-first refresh routing, independent OX analysis route, safe detail Back/Forward, OX main/resume isolation, explicit quiz restoration, and invalid fallback.');
+

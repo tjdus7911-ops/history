@@ -1,7 +1,7 @@
 name: Mobile product QA
 on:
   push:
-    branches: [codex/mobile-ui-20261014]
+    branches: [codex/mobile-actions-20261014]
 permissions:
   contents: read
 jobs:
@@ -20,8 +20,8 @@ jobs:
       - name: Before screenshots with original application
         run: |
           set -o pipefail
-          git fetch --depth=1 origin bb4f507fec8aafa177e84084cdf9dc55726a9124
-          git restore --source=bb4f507fec8aafa177e84084cdf9dc55726a9124 --worktree dist
+          git fetch --depth=1 origin c4091b15ea23d9d4691640f9093c65544e01f0c7
+          git restore --source=c4091b15ea23d9d4691640f9093c65544e01f0c7 --worktree dist
           mkdir -p tmp/mobile-product
           node tests/v2-preservation-test.cjs > tmp/mobile-product/baseline-preservation.log 2>&1 || true
           QA_PHASE=before node tests/mobile-product-qa.cjs 2>&1 | tee tmp/mobile-product/before.log
@@ -34,7 +34,7 @@ jobs:
         run: |
           set -o pipefail
           node tests/official-content-swipe-test.cjs
-          for test in exam-library official-learning-continuation official-exam-history official-era-result official-exam-timer official-exam-cover official-exam-pass official-source-manifest official-exam-statistics official-choice-ui-data official-content-crop-regression service-worker-cache official-explanation official-weakness-review official-canonical-qa vercel-detail-assets; do
+          for test in ox-quiz ox-route exam-library official-learning-continuation official-exam-history official-era-result official-exam-timer official-exam-cover official-exam-pass official-source-manifest official-exam-statistics official-choice-ui-data official-content-crop-regression service-worker-cache official-explanation official-weakness-review official-canonical-qa vercel-detail-assets; do
             node tests/$test-test.cjs
           done 2>&1 | tee tmp/mobile-product/regression.log
           if [ -d dist/assets/exams/catalog ]; then
@@ -50,4 +50,5 @@ jobs:
         with:
           name: mobile-product-qa
           path: tmp/mobile-product
+
 
