@@ -1,5 +1,5 @@
 const CACHE_PREFIX='lived-history-shell-';
-const CACHE_VERSION='2026-10-14-mobile-exam-v4';
+const CACHE_VERSION='2026-10-14-mobile-exam-actions-v5';
 const CACHE_NAME=CACHE_PREFIX+CACHE_VERSION;
 const APP_SHELL=[
   '/',
@@ -90,4 +90,5 @@ self.addEventListener('fetch',event=>{
   }
   if(SHELL_PATHS.has(url.pathname))event.respondWith(networkFirst(request));
 });
+
 

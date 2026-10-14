@@ -284,7 +284,7 @@ click({officialImageClose:'true'});assert.equal(run('modal'),null);
 assert.deepEqual(copy(stableSession),before,'closing the modal changed answer/timer state');
 
 run(`gradeOfficialSession('MANUAL')`);
-assert(html.includes('src="thumb-only.webp"'),'result row must use thumbnailImage');
+assert(!html.includes('official-result-review'),'the removed result review card must not render thumbnails');
 assert(!html.includes('EXPLANATION-1'),'result summary must not expand choice explanations');
 click({officialReview:id});
 assert(html.includes('src="content-only.webp"'),'graded review must use the physical body image');
@@ -306,3 +306,4 @@ run(`{
   if(JSON.stringify(question)!==before)throw new Error('supplement renderer changed question '+id);
  }
 }`);
+

@@ -45,7 +45,7 @@ for(let index=0;index<examEntries.length;index++){
   click({officialNext:'true'});
 }
 assert(!html.includes('시험을 제출하시겠습니까?'));click({officialRequestSubmit:'true'});assert(html.includes('시험을 제출하시겠습니까?'));click({officialSubmitConfirm:'true'});
-assert(html.includes('OFFICIAL EXAM RESULT'));assert(html.includes('문제별 해설 · 오답 1'));assert(html.includes(`data-official-review="${firstWrongId}"`));
+assert(html.includes('OFFICIAL EXAM RESULT'));assert(!html.includes('official-result-review'),'result review card removed');assert(html.includes(`data-official-review="${firstWrongId}"`));
 click({officialReview:firstWrongId});const reviewed=entryQuestion(firstWrongId);assert(html.includes('채점 후 문제 다시 보기'));assert(html.includes('✕ 오답입니다.'));assert(html.includes('정답 '+answerDisplay(reviewed)));assert(html.includes('[문제 핵심 해설]'));assert(html.includes(visibleExplanation(reviewed)));
 
 // TEST 7: Story official question keeps its submit -> grading -> explanation flow.
@@ -59,3 +59,4 @@ click({wrongDetailOpen:eraEntry.canonicalQuestionId});assert(html.includes('wron
 
 // TEST 9 is covered by the exhaustive canonical assertions above.
 console.log('PASS: all 1,800 official explanations covered; era/round correct+wrong feedback, exam spoiler gate+post-grade review, Story, wrong-note detail, and null safety.');
+

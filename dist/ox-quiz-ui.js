@@ -237,7 +237,7 @@ function oxWriteRoute(route,replace=false){
 function oxApplyRoute(route=oxReadRoute()){
  if(route===null){render();return screen;}
  let normalized=oxNormalizeRoute(route);modal=null;
- if(normalized==='ox/analysis'){screen='ox';oxView='analysis';}
+ if(normalized==='ox/analysis'){normalized='ox';screen='ox';oxView='home';oxWriteRoute('ox',true);}
  else if(normalized==='ox/quiz'){
   screen='ox';
   if(activeOXSession())oxView='quiz';else{normalized='ox';oxView='home';oxWriteRoute('ox',true);}
@@ -273,7 +273,7 @@ function oxDetailDonut(stats,distribution){
 function oxHome(){
  const stats=oxStats(),distribution=oxWrongDistribution(),resume=oxMeta().activeSession,wrongCount=oxCurrentWrongIds(oxHomeReviewEra).length;
  return `<section class="ox-page ox-home">${editorialHeader('OX 퀴즈','한능검 심화 핵심 개념을 빠르게 확인해요.')}
- ${oxHomeAnalysis(stats,distribution)}
+
  ${resume?`<button class="ox-resume" data-ox-resume="true"><span><b>진행 중인 퀴즈 이어하기</b><small>${resume.index+1} / ${resume.questionIds.length}문제</small></span><strong>이어하기 ›</strong></button>`:''}
  <section class="ox-main-section"><div class="ox-main-heading"><div><small>ERA QUIZ</small><h2>시대별 OX 퀴즈</h2></div><span>최대 20문제</span></div><div class="ox-era-list">${OX_ERAS.map(era=>{const row=oxStats(era.id);return `<button class="ox-era-card" data-ox-era="${era.id}"><span class="ox-era-copy"><b>${esc(era.name)}</b><small>${esc(OX_ERA_DESCRIPTIONS[era.id]||'핵심 개념을 확인해요.')}</small><span class="ox-era-metrics"><em>전체 ${row.total}</em><em>학습 ${row.learned}</em><em>${row.learned?`정답률 ${row.accuracy}%`:'아직 학습 전'}</em></span></span><i aria-hidden="true">›</i></button>`;}).join('')}</div></section>
  <section class="ox-main-section"><div class="ox-main-heading"><div><small>REVIEW</small><h2>틀린 OX 다시 풀기</h2></div></div><div class="ox-tool-list"><article class="ox-tool-card"><div><p>현재 복습이 필요한 문제를 시대별로 골라 풀어요.</p></div><label>시대 선택<select data-ox-home-review-era>${oxReviewOptions(oxHomeReviewEra)}</select></label><button class="primary" data-ox-review="true" ${wrongCount?'':'disabled'}>${wrongCount?`${wrongCount}문제 중 복습 시작`:'복습할 문제가 없어요'}</button></article></div></section></section>`;
@@ -296,11 +296,7 @@ function oxResult(){
  const summary=session.summary,wrongIds=session.questionIds.filter(id=>session.results[id]===false);
  return `<section class="ox-page ox-result">${oxHeader('학습 결과','한 문제씩 쌓인 오늘의 기록','home')}<section class="ox-result-score"><span>${summary.total}문제 중</span><strong>${summary.correct}문제 정답</strong><div>${summary.accuracy}%</div><p>오답 ${summary.wrong}개 · 소요 시간 ${oxDuration(summary.durationMs)}</p></section>${oxResultBreakdown(session,wrongIds)}${wrongIds.length?`<section class="ox-section"><div class="ox-section-title"><div><span>REVIEW</span><h2>틀린 문제 다시 보기</h2></div></div><div class="ox-result-wrongs">${wrongIds.map(id=>{const question=OX_BY_ID.get(id);return question?`<details><summary><span>${esc(oxEra(question.eraId).shortName)}</span>${esc(question.statement)}</summary><p><b>정답 ${question.answer?'O':'X'}</b><br>${esc(question.explanation)}</p></details>`:'';}).join('')}</div><button class="secondary ox-full" data-ox-retry-wrong="true">틀린 문제 다시 풀기</button></section>`:'<section class="ox-perfect"><b>모든 문제를 맞혔어요!</b><p>심화 핵심 개념을 정확히 기억하고 있습니다.</p></section>'}<div class="ox-result-actions"><button class="secondary" data-ox-retry="true">다시 풀기</button><button class="primary" data-ox-home="true">OX 퀴즈 메인</button></div></section>`;
 }
-function oxAnalysis(){
- const stats=oxStats(),rankedRows=oxWeaknessRows('weakest').filter(row=>row.eligible),rows=oxWeaknessRows(oxAnalysisSort),distribution=oxWrongDistribution(),weakest=distribution.leader;
- const requestedEra=OX_ERAS.some(era=>era.id===oxAnalysisReviewEra)?oxAnalysisReviewEra:null,focusEra=requestedEra||weakest?.eraId||OX_ERAS[0].id,focusReviewCount=oxHistoricalWrongIds(focusEra).length;
- return `<section class="ox-page ox-analysis">${oxHeader('시대별 취약점 분석','고유 오답 문제와 누적 학습 기록을 나누어 확인해요.','home')}<section class="ox-analysis-summary" data-ox-analysis-summary><div><span>누적 풀이 수</span><b>${stats.attempts}</b></div><div><span>전체 정답률</span><b>${stats.accuracy===null?'—':stats.accuracy+'%'}</b></div><div><span>고유 오답 문제 수</span><b>${distribution.total}</b></div><div><span>가장 취약한 시대</span><b>${weakest?esc(weakest.shortName):stats.attempts?'없음':'데이터 없음'}</b></div></section>${oxDetailDonut(stats,distribution)}<div class="ox-analysis-toolbar"><div><h2>시대별 학습 분석</h2><p>정답률은 누적 풀이 기준, 오답 수는 한 번 이상 틀린 고유 문제 기준이에요.</p></div><div class="ox-sort-buttons" role="group" aria-label="분석 정렬"><button data-ox-analysis-sort="weakest" aria-pressed="${oxAnalysisSort==='weakest'}">취약 순</button><button data-ox-analysis-sort="era" aria-pressed="${oxAnalysisSort==='era'}">시대 순</button></div></div><div class="ox-weakness-list">${rows.map(row=>{const topics=oxTopicStats(row.id).filter(topic=>topic.uniqueWrong>0).slice(0,3),rank=rankedRows.findIndex(item=>item.id===row.id)+1;return `<article class="ox-weakness-card ox-analysis-row ox-weakness-row ${row.eligible?'':'insufficient'}"><header><div><small>${row.eligible?`누적 정답률 취약 순위 ${rank}`:'데이터 부족 · 고유 문제 10개 필요'}</small><h3>${esc(row.name)}</h3></div><span class="ox-era-accuracy"><small>누적 정답률</small><strong>${row.accuracy===null?'—':row.accuracy+'%'}</strong></span></header><div class="ox-attempt-metrics"><span>학습한 문제 <b>${row.learned}</b></span><span>누적 풀이 <b>${row.attempts}</b></span><span>고유 오답 <b>${row.uniqueWrong}</b></span></div><p class="ox-latest-state"><b>현재 복습 상태</b> ${row.learned?`복습 필요 ${row.currentWrong}문제 · 복습 완료 ${row.completedReview}문제`:'아직 학습 전'}</p><div class="ox-weak-topics"><b>취약한 세부 개념</b>${topics.length?`<ul>${topics.map(topic=>`<li><span>${esc(topic.label)}</span><em>고유 오답 ${topic.uniqueWrong}문제</em></li>`).join('')}</ul>`:'<p>아직 확인된 취약 개념이 없어요.</p>'}</div></article>`;}).join('')}</div><section class="ox-focus-review"><div><span>FOCUSED REVIEW</span><h2>취약 시대 집중 복습</h2><p>시대를 선택하면 한 번 이상 틀린 고유 OX 문제를 다시 풀 수 있어요.</p></div><label>시대 선택<select data-ox-analysis-review-era>${oxAnalysisReviewOptions(focusEra)}</select></label><button class="primary" data-ox-analysis-review-start="${focusEra}" ${focusReviewCount?'':'disabled'}>${focusReviewCount?focusReviewCount>20?`${focusReviewCount}문제 중 20문제 복습`:`${focusReviewCount}문제 복습하기`:'복습할 고유 오답 없음'}</button></section></section>`;
-}
+function oxAnalysis(){oxView='home';return oxHome();}
 function oxPage(){return oxView==='quiz'?oxQuiz():oxView==='result'?oxResult():oxView==='analysis'?oxAnalysis():oxHome();}
 
 const oxWrongExpanded=new Set();
@@ -355,7 +351,7 @@ document.addEventListener('click',event=>{
  if(data.oxReview){event.stopImmediatePropagation();newOXSession('review',20,oxHomeReviewEra==='all'?null:oxHomeReviewEra);return;}
  if(data.oxAnalysisReviewStart){event.stopImmediatePropagation();const eraId=data.oxAnalysisReviewStart,historyIds=oxHistoricalWrongIds(eraId);newOXSession('review',20,eraId,historyIds);return;}
  if(data.oxReviewEra){event.stopImmediatePropagation();const eraId=data.oxReviewEra==='all'?null:data.oxReviewEra;newOXSession('review',20,eraId);return;}
- if(data.oxAnalysis){event.stopImmediatePropagation();oxView='analysis';screen='ox';oxWriteRoute('ox/analysis');render();window.scrollTo(0,0);return;}
+ if(data.oxAnalysis){event.stopImmediatePropagation();oxView='home';screen='ox';oxWriteRoute('ox',true);render();window.scrollTo(0,0);return;}
  if(data.oxAnalysisSort){event.stopImmediatePropagation();oxAnalysisSort=data.oxAnalysisSort;render();return;}
  if(data.oxStart){event.stopImmediatePropagation();newOXSession(data.oxStart,Number(data.count)||20);return;}
  if(data.oxResume){event.stopImmediatePropagation();oxView='quiz';screen='ox';oxWriteRoute('ox/quiz');render();window.scrollTo(0,0);return;}
@@ -399,3 +395,4 @@ if(typeof window?.addEventListener==='function'){
 globalThis.OX_QUIZ_UI_READY=true;
 oxApplyRoute(oxReadRoute());
 })();
+
