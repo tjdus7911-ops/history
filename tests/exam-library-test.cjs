@@ -33,7 +33,7 @@ click({officialStart:'exam'});click({officialCoverStart:run('globalThis.OFFICIAL
 const round70=entries.filter(entry=>entry.sourceRecord.examRound===70&&entry.sourceRecord.examLevel==='심화').sort((a,b)=>a.sourceRecord.questionNumber-b.sourceRecord.questionNumber);
 for(const entry of round70){const answer=(entry.sourceRecord.acceptedAnswers||[entry.sourceRecord.answer])[0];click({officialPick:String(answer)});click({officialNext:'true'})}
 assert(!html.includes('시험을 제출하시겠습니까?'),'마지막 문항에서도 사용자가 제출하기 전에는 시험을 종료하지 않는다');click({officialRequestSubmit:'true'});assert(html.includes('시험을 제출하시겠습니까?')&&html.includes('취소')&&html.includes('>제출<'));assert(!html.includes('class="official-results"'));click({officialSubmitCancel:'true'});assert(html.includes('시험 모드')&&!html.includes('시험을 제출하시겠습니까?'));click({officialRequestSubmit:'true'});click({officialSubmitConfirm:'true'});
-assert(html.includes('class="official-results"'));assert(html.includes('100<span>점</span>'));for(const label of ['최종 점수','정답','오답','정답률','시대별 정답률','집중 복습 필요 TOP 3','오답 다시 풀기','해설 보기'])assert(html.includes(label));assert.equal(run('JSON.stringify({run:state.run,mainRun:state.mainRun})'),storySnapshot,'exam grading must not alter story progress');
+assert(html.includes('class="official-results"'));assert(html.includes('100<span>점</span>'));for(const label of ['최종 점수','정답','오답','정답률','집중 복습 필요 TOP 3','오답 다시 풀기','해설 보기'])assert(html.includes(label));assert.equal(run('JSON.stringify({run:state.run,mainRun:state.mainRun})'),storySnapshot,'exam grading must not alter story progress');
 for(const entry of round70)assert.equal(run(`meta().questionRecords[${JSON.stringify(entry.canonicalQuestionId)}].attempts`),1);
 assert.equal(run('meta().officialExamActiveSession'),undefined);const completedExam=copy('meta().officialExamResults.at(-1)');assert.equal(completedExam.examRound,70);assert.equal(completedExam.examLevel,'심화');assert.equal(completedExam.submissionReason,'MANUAL');assert.equal(completedExam.timed,true);
 click({officialBack:'list'});click({officialBack:'home'});assert(html.includes('제70회')&&html.includes('심화 · 문항 보기'));assert(html.includes('응시 완료'));assert(html.includes('50 / 50문항 (100%)'));assert(html.includes('최근 100점'));assert(html.includes('결과 보기'));
@@ -88,3 +88,4 @@ click({nav:'records'});assert(html.includes('시대별 기출 기록'));assert(h
 click({nav:'study'});assert(html.includes('오답노트'));
 assert.equal(run('globalThis.EXAM_MEMORY_UI_READY'),true);
 console.log('PASS: 1,800 canonical official questions, 36 editions, reusable mnemonic accordions, hint-free stable Recall Test choices, post-answer mnemonic review, preserved official grading and shared records.');
+

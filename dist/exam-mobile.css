@@ -1,0 +1,109 @@
+/* Shared rhythm for the official-question workflow. */
+.ed-exam-library :is(.official-exams,.official-practice,.official-results){color:#302820;font-variant-numeric:tabular-nums;letter-spacing:0}
+.ed-exam-library :is(h1,h2,h3,button,small,b,strong,span){letter-spacing:0}
+.ed-exam-library :is(button,a):focus-visible{outline:3px solid #8f7355;outline-offset:3px}
+.official-home-service{margin-bottom:14px;font-size:13px}
+.official-home-header{margin-bottom:12px}
+.official-home-header h1{font-size:25px}
+.official-home-header>p{display:none}
+.official-exams>.official-tabs{margin-bottom:12px;height:44px}
+.official-exams>.official-tabs button{min-height:44px}
+.official-exams>.official-round-levels{margin-bottom:16px;border-radius:8px;height:48px}
+.official-exams>.official-round-levels button{min-height:40px;border-radius:5px}
+.official-exams>.official-round-heading small{display:none}
+.official-exams>.official-round-heading h2{font-size:17px}
+.official-exams>.official-grid.official-round-grid{gap:0;border-top:1px solid #ded5c9}
+.official-exams .official-card.round{display:grid;grid-template-columns:minmax(0,1fr) 104px;gap:4px 12px;min-height:0;padding:16px 0;border:0;border-bottom:1px solid #ded5c9;border-radius:0;background:transparent;box-shadow:none}
+.official-round-card-head{display:contents}
+.official-round-title{grid-column:1;grid-row:1;min-height:44px}
+.official-round-title h2{font-size:18px!important}
+.official-exams .official-edition-status{grid-column:2;grid-row:1;justify-self:end;align-self:start;min-height:22px;padding:3px 7px;font-size:10px}
+.official-exams .official-card-date{grid-column:1;grid-row:2;margin:0;font-size:11px;gap:4px}
+.official-round-card-bottom{display:contents}
+.official-card.round .official-personal-progress{grid-column:1;grid-row:3;margin-top:6px}
+.official-card.round .official-card-progress{height:3px;max-width:150px}
+.official-card.round .official-card-progress-copy{margin-top:4px;flex-wrap:wrap;gap:4px}
+.official-card.round .official-card-progress-copy b,.official-card.round .official-card-progress-copy strong{font-size:11px;white-space:normal}
+.official-card.round .official-card-progress-copy strong{display:block}
+.official-round-action{grid-column:2;grid-row:2/4;align-self:end;width:104px;min-height:44px;border-radius:6px;font-size:13px}
+.official-subhead{margin:4px 0 16px;gap:10px}
+.official-subhead h1{margin:2px 0 0;font-size:22px}
+.official-exams .library-summary{padding:14px 0;border-radius:0;border-block:1px solid #ded5c9;background:transparent}
+.official-exams .library-summary b{font-size:20px}
+.official-exams .library-summary small{font-size:11px;color:#786c60}
+.official-mode-actions{margin:16px 0 12px;gap:8px}
+.official-mode-actions button{min-height:46px;border-radius:6px;font-size:13px}
+.official-mode-actions .primary,.official-exam-bottom-actions .primary{background:#6b4e36;border-color:#6b4e36;color:#fff}
+.official-edition-detail .library-filters:has(button:only-child){display:none}
+.official-edition-detail .official-pass-rate{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:12px 0 0;padding:10px 0;border:0;border-bottom:1px solid #ded5c9;border-radius:0;background:transparent;color:#6b4e36}
+.official-edition-detail .official-pass-rate>div{display:flex;align-items:baseline;gap:6px}
+.official-edition-detail .official-pass-rate strong{font-size:18px;color:#6b4e36}
+.official-edition-detail .official-pass-rate-source{font-size:10px}
+.official-edition-detail .official-pass-rate-source>span{display:none}
+.official-edition-detail .official-pass-rate-source a{font-size:10px;color:#786c60}
+.official-detail-list-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:20px 0 0;padding-bottom:10px;border-bottom:1px solid #ded5c9}
+.official-detail-list-heading h2{margin:0;font-size:15px}
+.official-detail-list-heading span{font-size:12px;color:#786c60}
+.official-question-list>button{grid-template-columns:64px minmax(0,1fr) 20px;gap:12px;padding:12px 0;min-height:88px}
+.official-question-list img{width:64px;height:64px;border-radius:4px}
+.official-question-list small{font-size:11px}
+.official-question-list b{margin:4px 0;font-size:13px}
+.official-exam-intro{border-bottom:1px solid #ded5c9;margin-bottom:12px;color:#4c3929}
+.official-exam-intro-title strong{color:#4c3929}
+.official-question-stage{touch-action:pan-y pinch-zoom;min-height:120px}
+.official-question-kicker{margin:0 0 8px}
+.official-question-kicker span{background:transparent;color:#66503a;padding:0;min-height:24px;font-size:13px}
+.official-paper{border:1px solid #e5ddd2;border-radius:6px}
+.official-paper figcaption{padding:8px 10px}
+.official-paper figcaption small,.official-paper figcaption em{display:none}
+.official-choice-panel{margin:14px 0 16px}
+.official-choice-panel>header{display:flex;align-items:center;margin:0 0 8px}
+.official-choice-panel>header small,.official-choice-panel>header p{display:none}
+.official-choice-panel>header h2{margin:0;color:#736555;font-size:12px;font-weight:600}
+.official-choice-grid{gap:7px}
+.official-choice-grid button{grid-template-columns:28px minmax(0,1fr) 18px;column-gap:10px;min-height:52px;padding:10px;border-color:#ded5c9;border-radius:6px;box-shadow:none;color:#302820}
+.official-choice-number{width:27px;height:27px;font-size:15px;color:#74624f;background:transparent;border-color:#ded5c9}
+.official-choice-label{font-size:14px;font-weight:500;line-height:1.6}
+.official-choice-indicator{width:18px;height:18px}
+.official-choice-grid button.has-media{border-radius:6px}
+.official-exam-forward-row{margin:8px 0}
+.official-exam-forward-row button{border-radius:6px;box-shadow:none}
+.official-exam-bottom-actions{margin-top:10px;padding:12px 0 0;border:0;border-top:1px solid #ded5c9;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none}
+.official-exam-bottom-actions button{min-height:44px;border-radius:6px;font-size:12px}
+.ed-exam-library .official-results{padding-bottom:24px}
+.official-result-head{margin-bottom:12px}
+.official-result-hero{border-radius:6px;box-shadow:none}
+.official-result-hero>div:first-child{padding:16px}
+.official-result-hero h1{font-size:44px}
+.official-certification{padding:14px}
+.official-certification b{font-size:24px}
+.official-certification small{font-size:11px}
+.official-certification.fail>span{color:#a15143}
+.official-results .official-result-summary{margin:12px 0 20px;border-radius:0;border-width:0 0 1px;background:transparent}
+.official-results .official-result-summary>div{padding:8px 4px 14px;background:transparent}
+.official-results .official-result-summary b{font-size:18px}
+.official-results .official-result-analysis,.official-results .official-top-weak{margin:0;padding:16px 0;border:0;border-top:1px solid #ded5c9;border-radius:0;background:transparent}
+.official-analysis-heading{align-items:flex-start;flex-direction:column;gap:10px}
+.official-analysis-heading h2,.official-top-weak h2{font-size:17px}
+.official-analysis-scopes{flex-basis:auto;width:100%;border-radius:6px}
+.official-analysis-scopes button{min-height:40px;border-radius:4px;font-size:12px}
+.official-analysis-description{font-size:11px;line-height:1.65;margin:8px 0 12px}
+.official-donut-layout{display:block}
+.official-donut-wrap{flex-direction:row;justify-content:center;gap:16px}
+.official-donut-wrap>p{max-width:120px;margin:0;font-size:11px;text-align:left;line-height:1.65}
+.official-donut{width:120px;height:120px}
+.official-donut>span{width:86px;height:86px;background:#f7f4ee}
+.official-donut-legend button{min-height:36px}
+.official-donut-legend{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px;margin-top:14px}
+.official-donut-legend b,.official-donut-legend strong{font-size:11px}
+.official-top-weak>p{font-size:11px;line-height:1.65}
+.official-top-weak ol{gap:14px}
+.official-top-weak-copy b{font-size:14px}
+.official-top-weak-copy small{font-size:11px}
+.official-top-weak-meter{height:5px!important}
+.official-result-review{margin:16px 0 0;border-radius:6px}
+.official-results .official-result-actions{position:static;display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0 0;padding:0;border:0;background:transparent;box-shadow:none;backdrop-filter:none}
+.official-results .official-result-actions button{min-height:46px;border-radius:6px;font-size:13px}
+.official-results .official-result-actions .official-result-retake{grid-column:1/-1}
+@media(min-width:761px){.official-donut-layout{display:grid;grid-template-columns:180px minmax(0,1fr);gap:24px}.official-donut-wrap{flex-direction:column;gap:8px}.official-donut{width:160px;height:160px}.official-donut>span{width:116px;height:116px}.official-donut-legend{grid-template-columns:1fr 1fr;gap:0 16px}.official-analysis-heading{flex-direction:row;justify-content:space-between;align-items:center}.official-analysis-scopes{width:220px}}
+
