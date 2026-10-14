@@ -10,6 +10,9 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          filter: blob:none
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -18,12 +21,13 @@ jobs:
       - name: Before screenshots with original application
         run: |
           git restore --source=bb4f507fec8aafa177e84084cdf9dc55726a9124 --worktree dist
-          QA_PHASE=before node tests/mobile-product-qa.cjs
+          mkdir -p tmp/mobile-product
+          QA_PHASE=before node tests/mobile-product-qa.cjs 2>&1 | tee tmp/mobile-product/before.log
           git restore --source=HEAD --worktree dist
       - name: Mobile screenshots and native touch QA
-        run: node tests/mobile-product-qa.cjs
+        run: node tests/mobile-product-qa.cjs 2>&1 | tee tmp/mobile-product/after.log
       - name: Regression suite
-        run: npm test
+        run: npm test 2>&1 | tee tmp/mobile-product/regression.log
       - uses: actions/upload-artifact@v4
         if: always()
         with:
