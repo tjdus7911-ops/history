@@ -16,8 +16,8 @@ const ERA_PROTAGONISTS = {
     baseAppearance:'높게 땋아 묶은 검은 머리와 또렷한 눈매의 20대 여성 시간 여행자',outfits:{modern:'청록색 필드 재킷과 청바지, 운동화',historical:'청록·벽돌색·소색의 삼국 시대 여행복'},
     expressions:['neutral','smile','surprised','embarrassed','suspicious','angry','sad','determined','fear','worried','relieved'],
     assetPaths:Object.fromEntries(['neutral','smile','surprised','embarrassed','suspicious','angry','sad','determined','fear','worried','relieved'].map(expression=>[expression,`assets/ancient/characters/three-player-${expression}.png`]).concat([['modern','assets/ancient/characters/three-player-modern.png'],['hero','assets/ancient/heroes/three-kingdoms.jpg']])),
-    displayName:'나',defaultTitle:'삼국편 여성 주인공',basePose:'standing',dialogueStyle:'정책과 전쟁의 원인·전개·결과를 기록한다',relationshipIds:['three_companion','three_goguryeo','three_baekje','three_silla','three_gaya','three_balhae','three_cheonghae'],
-    ageState:{kind:'time-traveler',age:23,description:'현대에서 이동한 같은 인물. 해솔은 기억의 길 안내자이며 역사 속 NPC가 아니다.'},role:'삼국 경쟁에서 남북국과 바닷길까지 연결하는 기록자',status:'playable',appearanceLocked:true
+    displayName:'나',defaultTitle:'삼국편 여성 주인공',basePose:'standing',dialogueStyle:'정책과 전쟁의 원인·전개·결과를 기록한다',relationshipIds:[],
+    ageState:{kind:'time-traveler',age:23,description:'현대에서 이동한 같은 인물.'},role:'삼국 경쟁에서 남북국과 바닷길까지 연결하는 기록자',status:'playable',appearanceLocked:true
   },
   protagonist_goryeo: {
     id:'protagonist_goryeo', era:'goryeo', gender:'male', legacyCharacterId:'player',

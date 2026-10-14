@@ -62,6 +62,9 @@ fs.writeFileSync(path.join(root,'dist/three-story-script.js'), 'globalThis.THREE
 const reviewed = JSON.parse(fs.readFileSync(path.join(root,'docs/THREE_OFFICIAL_REVIEW_61.json'),'utf8'));
 fs.writeFileSync(path.join(root,'dist/three-official-review.js'),'globalThis.THREE_VERIFIED_REVIEW_RECORDS='+JSON.stringify(reviewed.records)+';\n');
 const artManifest=JSON.parse(fs.readFileSync(path.join(root,'dist/three-art-manifest.json'),'utf8'));
+// The story is being rewritten: legacy NPC art must not be re-registered by a rebuild.
+artManifest.status='protagonist-only-roster-reset';
+artManifest.characters={};
 const protagonistDir=path.join(root,'dist/assets/ancient/three-v2/characters');
 fs.mkdirSync(protagonistDir,{recursive:true});
 const expressions=['neutral','smile','surprised','embarrassed','suspicious','angry','sad','determined','fear','worried','relieved'];

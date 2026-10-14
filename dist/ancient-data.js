@@ -21,8 +21,7 @@ Object.entries(ancientPlayerFiles).forEach(([season,prefix])=>{
  ANCIENT_EXPRESSIONS.forEach(expression=>PORTRAITS[`${season}_player_${expression}`]={characterId:`${season}_player`,expression,label:`${season}편 주인공 · ${expression}`,src:`assets/ancient/characters/${prefix}-${expression}.png`});
 });
 const ancientNpcFiles={
- proto_guide:'proto-guide-neutral.png',proto_warrior:'proto-warrior-neutral.png',proto_villager:'proto-villager-neutral.png',proto_priest:'proto-priest-neutral.png',
- three_companion:'three-companion-neutral.png',three_goguryeo:'three-goguryeo-neutral.png',three_baekje:'three-baekje-neutral.png',three_silla:'three-silla-neutral.png',three_gaya:'three-gaya-neutral.png',three_balhae:'three-balhae-neutral.png',three_cheonghae:'three-cheonghae-neutral.png'
+ proto_guide:'proto-guide-neutral.png',proto_warrior:'proto-warrior-neutral.png',proto_villager:'proto-villager-neutral.png',proto_priest:'proto-priest-neutral.png'
 };
 Object.entries(ancientNpcFiles).forEach(([characterId,file])=>ANCIENT_EXPRESSIONS.forEach(expression=>{
  PORTRAITS[`${characterId}_${expression}`]={characterId,expression,label:`고대편 조력자 · ${characterId}`,src:`assets/ancient/characters/${file}`};
@@ -35,17 +34,10 @@ Object.assign(CHARACTERS,{
  proto_villager:{characterId:'proto_villager',characterName:'동해안 마을 사람',speakerType:'npc',position:'left',show:true,presentation:'standing',portraitPrefix:'proto_villager'},
  proto_priest:{characterId:'proto_priest',characterName:'삼한의 천군',speakerType:'npc',position:'left',show:true,presentation:'standing',portraitPrefix:'proto_priest'},
  three_modern:{characterId:'three_modern',characterName:'나',speakerType:'player',position:'right',show:true,presentation:'standing',portraitPrefix:'three_modern'},
- three_player:{characterId:'three_player',characterName:'나',speakerType:'player',position:'right',show:true,presentation:'standing',portraitPrefix:'three_player'},
- three_companion:{characterId:'three_companion',characterName:'기록 안내자 해솔',speakerType:'npc',position:'left',show:true,presentation:'standing',portraitPrefix:'three_companion'},
- three_goguryeo:{characterId:'three_goguryeo',characterName:'그 시대의 고구려 군관',speakerType:'npc',position:'left',show:true,presentation:'standing',portraitPrefix:'three_goguryeo'},
- three_baekje:{characterId:'three_baekje',characterName:'그 시대의 백제 기록관',speakerType:'npc',position:'left',show:true,presentation:'standing',portraitPrefix:'three_baekje'},
- three_silla:{characterId:'three_silla',characterName:'그 시대의 신라 전령',speakerType:'npc',position:'left',show:true,presentation:'standing',portraitPrefix:'three_silla'},
- three_gaya:{characterId:'three_gaya',characterName:'가야의 철 장인',speakerType:'npc',position:'left',show:true,presentation:'standing',portraitPrefix:'three_gaya'},
- three_balhae:{characterId:'three_balhae',characterName:'발해의 기록관',speakerType:'npc',position:'left',show:true,presentation:'standing',portraitPrefix:'three_balhae'},
- three_cheonghae:{characterId:'three_cheonghae',characterName:'청해진의 상인',speakerType:'npc',position:'left',show:true,presentation:'standing',portraitPrefix:'three_cheonghae'}
+ three_player:{characterId:'three_player',characterName:'나',speakerType:'player',position:'right',show:true,presentation:'standing',portraitPrefix:'three_player'}
 });
 
-const ancientMainProfiles={proto_modern:1.68,proto_player:1.68,three_modern:1.68,three_player:1.68,proto_guide:1.62,proto_warrior:1.6,proto_villager:1.62,proto_priest:1.62,three_companion:1.66,three_goguryeo:1.58,three_baekje:1.62,three_silla:1.64,three_gaya:1.6,three_balhae:1.62,three_cheonghae:1.62};
+const ancientMainProfiles={proto_modern:1.68,proto_player:1.68,three_modern:1.68,three_player:1.68,proto_guide:1.62,proto_warrior:1.6,proto_villager:1.62,proto_priest:1.62};
 if(typeof CHARACTER_RENDER_PROFILES!=='undefined')Object.assign(CHARACTER_RENDER_PROFILES.characters,Object.fromEntries(Object.entries(ancientMainProfiles).map(([id,scale])=>[id,{tier:'MAIN',scale,anchorX:0,anchorY:15,framing:'upper-body',lockStateScale:true}])));
 
 const aN=text=>dialogueLine('narrator','neutral',text,'narration');

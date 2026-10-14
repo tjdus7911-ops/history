@@ -11,6 +11,7 @@ if (globalThis.THREE_ENABLE_CONTENT === true || globalThis.THREE_ENABLE_DEVELOPM
   }
   const eraId = 'three-kingdoms', version = 3, protagonist = 'three_v3_seoa';
   const art = globalThis.THREE_COMPLETE_ART || {};
+  const protagonistOnly = art.status === 'protagonist-only-roster-reset';
   const sources = new Map([...script.prologue.scenes, ...script.chapters.flatMap(c => c.scenes)].map(s => [s.sceneId, s]));
   const order = [...sources.keys()];
   const questionByOfficialId = new Map();
@@ -35,6 +36,9 @@ if (globalThis.THREE_ENABLE_CONTENT === true || globalThis.THREE_ENABLE_DEVELOPM
   const people = new Map();
   function characterFor(source, name) {
     if (name === '서아') return protagonist;
+    // Preserve the previous script as reference text without recreating its
+    // retired cast in the live character registry.
+    if (protagonistOnly) return 'narrator';
     const stableId = art.sceneCharacters?.[source.sceneId]?.[name] ||
       'three_v3_' + source.chapterId + '_' + name;
     if (!CHARACTERS[stableId]) {

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "status": "partial-development-assets",
+  "status": "protagonist-only-roster-reset",
   "backgrounds": {
     "three_v2_ch01_s1": {
       "src": "assets/ancient/three-v2/backgrounds/goguryeo-hungry-village-spring.webp",
@@ -30,42 +30,7 @@
       "mobileRenderReview": false
     }
   },
-  "characters": {
-    "three_v2_ch01_s1_npc": {
-      "name": "고국천왕",
-      "interpretationNotice": "실제 초상이 아닌 역사 학습용 창작 디자인",
-      "neutral": "assets/ancient/three-v2/characters/gogukcheon-neutral.webp",
-      "sourceImage": "exec-b497bb91-993c-4be5-8149-14efb62e8de4.png",
-      "visualFileReview": true,
-      "alphaReview": true,
-      "expressionVariantsReady": false,
-      "desktopRenderReview": false,
-      "mobileRenderReview": false
-    },
-    "three_v2_ch01_s2_npc": {
-      "name": "을파소",
-      "interpretationNotice": "실제 초상이 아닌 역사 학습용 창작 디자인",
-      "neutral": "assets/ancient/three-v2/characters/eulpaso-neutral.webp",
-      "sourceImage": "exec-ee5de482-f7a8-4a50-aaac-7093d2d3bf56.png",
-      "visualFileReview": true,
-      "alphaReview": true,
-      "expressionVariantsReady": false,
-      "desktopRenderReview": false,
-      "mobileRenderReview": false
-    },
-    "three_v2_ch01_s3_npc": {
-      "name": "마을 아이",
-      "interpretationNotice": "허구의 고구려 농촌 어린이",
-      "neutral": "assets/ancient/three-v2/characters/village-boy-neutral.webp",
-      "sourceImage": "exec-342203e2-ab75-40de-9813-8079e41f5ec9.png",
-      "renderScale": 1.2,
-      "visualFileReview": true,
-      "alphaReview": true,
-      "expressionVariantsReady": false,
-      "desktopRenderReview": false,
-      "mobileRenderReview": false
-    }
-  },
+  "characters": {},
   "protagonist": {
     "characterId": "three_v2_seoa",
     "sourceKind": "existing-three-heroine-reused-in-independent-directory",

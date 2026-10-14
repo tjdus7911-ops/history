@@ -1,28 +1,35 @@
-const fs=require('node:fs'),assert=require('node:assert/strict'),{load}=require('./proto-revision-harness.cjs');
-const g=load();
-assert.equal(g.run("PORTRAITS[STORIES['THR-C23-S01'].dialogues[0].portrait].src"),'assets/ancient/three-complete/characters/support-c23-s01-liaison-v1.png');
-const result=g.copy(`(()=>{
- const rows=[],failures=[],skipped=[];
- for(const source of Object.values(STORIES).filter(s=>s.threeStoryVersion===3)){
-  state.run=INITIAL_RUN(source.isPrologue?'THR-C01':source.chapterId);THREE_SAVE_V3.identifyRun(run(),true);run().storyId=source.sceneId;
-  const cases=[{phase:'main',entries:source.dialogues},{phase:'join',entries:source.threeCommon,choiceIndex:source.choices?.length?0:null},...(source.choices||[]).map((c,i)=>({phase:'branch',entries:c.resultDialogues,choiceIndex:i}))];
-  for(const c of cases){Object.assign(THREE_COMPLETE_ACTIONS.phaseState(source),{phase:c.phase,choiceIndex:c.choiceIndex??null});
-   for(let i=0;i<c.entries.length;i++){
-    const line=c.entries[i];run().dialogueCursor=i+1;
-    const context=THREE_STAGING.context(source,{phase:c.phase,entry:line,choiceId:source.choices?.[c.choiceIndex]?.choiceId});
-    const html=characterStage(c.entries.slice(0,i+1),source,false,null,source.illustrationId,c.entries,i+1);
-    if(context==='record'){if(html)failures.push({sceneId:source.sceneId,lineId:line.lineId,reason:'record-must-not-show-stage'});skipped.push(line.lineId);continue;}
-    if(line.speakerType!=='npc')continue;
-    const mapped=THREE_STORY_RUNTIME.people.get?.(line.characterId)||null;
-    const expected='data-character-id="'+line.characterId+'"';
-    const ok=html.includes(expected)&&html.includes('stage-left active');
-    const row={sceneId:source.sceneId,lineId:line.lineId,name:line.characterName,characterId:line.characterId,rendered:ok};rows.push(row);if(!ok)failures.push({...row,reason:'active-NPC-not-left-or-missing'});
-   }
+const assert = require('node:assert/strict');
+const {load} = require('./proto-revision-harness.cjs');
+
+const game = load();
+const result = game.copy(`(()=>{
+  const rows=[], failures=[];
+  for(const source of Object.values(STORIES).filter(item=>item.threeStoryVersion===3)) {
+    state.run=INITIAL_RUN(source.isPrologue?'THR-C01':source.chapterId);
+    THREE_SAVE_V3.identifyRun(run(),true);
+    run().storyId=source.sceneId;
+    const cases=[
+      {phase:'main',entries:source.dialogues},
+      {phase:'join',entries:source.threeCommon,choiceIndex:source.choices?.length?0:null},
+      ...(source.choices||[]).map((choice,index)=>({phase:'branch',entries:choice.resultDialogues,choiceIndex:index}))
+    ];
+    for(const item of cases) {
+      Object.assign(THREE_COMPLETE_ACTIONS.phaseState(source),{phase:item.phase,choiceIndex:item.choiceIndex??null});
+      for(let index=0;index<item.entries.length;index++) {
+        const line=item.entries[index];
+        if(line.speakerType!=='npc') continue;
+        run().dialogueCursor=index+1;
+        const html=characterStage(item.entries.slice(0,index+1),source,false,null,source.illustrationId,item.entries,index+1);
+        const renderedNonSeoa=/data-character-id="(?!three_v3_seoa)[^"]+"/.test(html);
+        rows.push({sceneId:source.sceneId,lineId:line.lineId,name:line.characterName,renderedNonSeoa});
+        if(renderedNonSeoa) failures.push({sceneId:source.sceneId,lineId:line.lineId,name:line.characterName});
+      }
+    }
   }
- }
- return {npcUtterances:rows.length,recordLines:skipped.length,failures,rows};
+  return {npcUtterances:rows.length,failures};
 })()`);
-const original=JSON.parse(fs.readFileSync('docs/three-content/support-npc-before.json','utf8'));
-result.repaired=original.map(item=>({sceneId:item.scene,characterId:item.id,name:item.speaker,cause:'unregistered supporting portrait; characterFor show:false',matchingChecks:result.rows.filter(row=>row.characterId===item.id&&row.sceneId===item.scene).length})).filter((r,i,a)=>a.findIndex(v=>v.sceneId===r.sceneId&&v.characterId===r.characterId)===i);
-fs.writeFileSync('docs/three-content/support-npc-audit.json',JSON.stringify(result,null,2)+'\n');
-console.log(JSON.stringify({npcUtterances:result.npcUtterances,recordLines:result.recordLines,failures:result.failures.length,examples:result.failures.slice(0,10)}));assert.equal(result.failures.length,0);
+
+assert(result.npcUtterances > 0, 'Archived script dialogue remains available as rewrite reference');
+assert.deepEqual(result.failures, []);
+assert.equal(game.run('THREE_STORY_RUNTIME.people.size'), 0);
+console.log(`PASS: ${result.npcUtterances} archived NPC lines retain text without re-registering or rendering retired characters.`);

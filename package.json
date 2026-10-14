@@ -23,7 +23,7 @@
     "test:proto": "node tests/proto-story-test.cjs && node tests/proto-main-preservation-test.cjs && node tests/proto-art-test.cjs && node tests/proto-background-art-test.cjs && node tests/proto-mobile-test.cjs",
     "import:three": "python3 scripts/import-three-complete-manuscript.py && python3 scripts/import-three-complete-exams.py && python3 scripts/build-three-complete-art.py",
     "check:three": "python3 scripts/import-three-complete-manuscript.py --check && python3 scripts/import-three-complete-exams.py --check && python3 scripts/build-three-complete-art.py --check",
-    "test:three": "node tests/three-complete-test.cjs && node tests/three-save-v3-test.cjs && node tests/three-learning-boundary-test.cjs",
+    "test:three": "node tests/three-character-roster-reset-test.cjs && node tests/three-complete-test.cjs && node tests/three-save-v3-test.cjs && node tests/three-learning-boundary-test.cjs",
     "test:three:ui": "node tests/three-ui-preservation-test.cjs && node tests/three-approved-ui-test.cjs",
     "import:proto": "python3 scripts/import-proto-revision.py",
     "check:proto": "python3 scripts/import-proto-revision.py --check",

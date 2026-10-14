@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "status": "principal-portraits-and-fullbody-sources-ready-runtime-composition-review-pending",
+  "status": "protagonist-only-roster-reset",
   "sceneBackgroundCount": 218,
   "distinctBackgroundCount": 22,
-  "characterAppearanceCount": 244,
-  "characterIdentityCount": 236,
-  "existingPrincipalPortraitCount": 2,
-  "generatedRecurringPortraitCount": 29,
-  "generatedPrincipalPortraitCount": 213,
-  "fullbodyPortraitCount": 90,
-  "generatedPortraitAtlasCount": 47,
+  "characterAppearanceCount": 0,
+  "characterIdentityCount": 0,
+  "existingPrincipalPortraitCount": 0,
+  "generatedRecurringPortraitCount": 0,
+  "generatedPrincipalPortraitCount": 0,
+  "fullbodyPortraitCount": 0,
+  "generatedPortraitAtlasCount": 0,
   "missingPrincipalAppearanceCount": 0,
   "missingRecurringCivilianAppearances": 0,
   "missingHistoricalPersonAppearances": 0,
@@ -19,167 +19,10 @@
   "missingSourceFiles": [],
   "sameFaceReusedForDifferentPeople": [],
   "missingPrincipalPortraits": [],
-  "identityContinuityChecks": [
-    {
-      "kind": "same-person-distinct-age-appearance",
-      "name": "해인",
-      "sceneIds": [
-        "THR-C07-S01",
-        "THR-C07-S08"
-      ],
-      "status": "passed"
-    },
-    {
-      "kind": "same-person-distinct-age-appearance",
-      "name": "여울",
-      "sceneIds": [
-        "THR-C08-S02",
-        "THR-C08-S08"
-      ],
-      "status": "passed"
-    },
-    {
-      "kind": "same-person-distinct-age-appearance",
-      "name": "나래",
-      "sceneIds": [
-        "THR-C18-S01",
-        "THR-C18-S07"
-      ],
-      "status": "passed"
-    },
-    {
-      "kind": "same-person-distinct-age-appearance",
-      "name": "재인",
-      "sceneIds": [
-        "THR-C19-S02",
-        "THR-C19-S08"
-      ],
-      "status": "passed"
-    },
-    {
-      "kind": "same-person-distinct-age-appearance",
-      "name": "해루",
-      "sceneIds": [
-        "THR-C20-S01",
-        "THR-C20-S07"
-      ],
-      "status": "passed"
-    },
-    {
-      "kind": "same-person-distinct-age-appearance",
-      "name": "은서",
-      "sceneIds": [
-        "THR-C22-S02",
-        "THR-C22-S06"
-      ],
-      "status": "passed"
-    },
-    {
-      "kind": "same-person-distinct-age-appearance",
-      "name": "은서의 딸",
-      "sceneIds": [
-        "THR-C22-S02",
-        "THR-C22-S06"
-      ],
-      "status": "passed"
-    },
-    {
-      "kind": "same-person-distinct-age-appearance",
-      "name": "시온",
-      "sceneIds": [
-        "THR-C23-S02",
-        "THR-C23-S09"
-      ],
-      "status": "passed"
-    },
-    {
-      "kind": "distinct-person-or-generation",
-      "names": [
-        "다은",
-        "다은"
-      ],
-      "sceneIds": [
-        "THR-C04-S01",
-        "THR-C09-S07"
-      ],
-      "status": "passed"
-    },
-    {
-      "kind": "distinct-person-or-generation",
-      "names": [
-        "아라",
-        "아라"
-      ],
-      "sceneIds": [
-        "THR-C11-S08",
-        "THR-C14-S01"
-      ],
-      "status": "passed"
-    },
-    {
-      "kind": "distinct-person-or-generation",
-      "names": [
-        "아라",
-        "상인 아라"
-      ],
-      "sceneIds": [
-        "THR-C14-S01",
-        "THR-C15-S01"
-      ],
-      "status": "passed"
-    },
-    {
-      "kind": "distinct-person-or-generation",
-      "names": [
-        "여울",
-        "여울"
-      ],
-      "sceneIds": [
-        "THR-C08-S02",
-        "THR-C15-S07"
-      ],
-      "status": "passed"
-    },
-    {
-      "kind": "distinct-person-or-generation",
-      "names": [
-        "해루",
-        "다온"
-      ],
-      "sceneIds": [
-        "THR-C20-S01",
-        "THR-C21-S05"
-      ],
-      "status": "passed"
-    },
-    {
-      "kind": "distinct-person-or-generation",
-      "names": [
-        "누리",
-        "다솜"
-      ],
-      "sceneIds": [
-        "THR-C20-S02",
-        "THR-C21-S09"
-      ],
-      "status": "passed"
-    },
-    {
-      "kind": "distinct-person-or-generation",
-      "names": [
-        "온유",
-        "소담"
-      ],
-      "sceneIds": [
-        "THR-C16-S05",
-        "THR-C16-S09"
-      ],
-      "status": "passed"
-    }
-  ],
-  "speakerAliasChecks": "passed",
-  "npcPositionChecks": "all-left",
-  "atlasSourceRectChecks": "242 in-bounds portraits; distinct identity slots; body extensions use alpha-envelope CSS clips where bounding boxes meet",
+  "identityContinuityChecks": [],
+  "speakerAliasChecks": "retired-with-previous-roster",
+  "npcPositionChecks": "no-active-npcs",
+  "atlasSourceRectChecks": "no-active-npc-atlases",
   "specificSceneProps": [
     {
       "sceneId": "THR-PRO-S01",
@@ -1273,20 +1116,18 @@
     }
   ],
   "limitations": [
-    "Existing illustrations establish compatible settings; they do not contain every authored action or object.",
-    "The new spring queue illustration includes the waiting residents, unsteady grandmother and child; the later collapse/help actions still follow runtime staging.",
-    "Portrait source rectangles and alpha-envelope clips are required because generated grid positions are approximate; body-extension runtime composites are reviewed separately from source files.",
-    "Unmade principal portraits have no substitute stock face. Their dialogue and identity remain available.",
-    "Supporting occupations can be staged inside background illustrations or as off-screen speech; individual portraits are not required.",
-    "Book closeup and the original-photo layers are implemented in the runtime, not baked into a new raster image."
+    "The previous non-protagonist roster is intentionally retired while a new story is authored.",
+    "Only Seoa and her reviewed expression assets remain active in the runtime character registry."
   ],
   "visualReview": {
     "method": "source-file identity review, full alpha-component crop validation and manual skin-face landmark audits; actual browser composition reviewed separately",
     "backgroundFileReview": true,
-    "knownPortraitFileReview": true,
-    "generatedPortraitFileReview": true,
-    "generatedPortraitAppearanceCount": 242,
+    "knownPortraitFileReview": false,
+    "generatedPortraitFileReview": false,
+    "generatedPortraitAppearanceCount": 0,
     "runtimeDesktopReview": false,
     "runtimeMobileReview": false
-  }
+  },
+  "retiredCharacterAppearanceCount": 244,
+  "retiredCharacterIdentityCount": 236
 }

@@ -14,7 +14,7 @@ vm.runInContext(fs.readFileSync(path.join(root,'dist/three-staging.js'),'utf8'),
 const api = box.THREE_STAGING;
 assert.equal(api.audit.sceneCount,218);
 assert.equal(api.audit.propCount,27);
-assert.equal(api.audit.variantCount,7);
+assert.equal(api.audit.variantCount,2);
 assert.equal(api.audit.settingSurfaceCount,3);
 const before = JSON.stringify(story);
 
@@ -181,7 +181,8 @@ for(const raw of story.prologue.scenes) for(const line of raw.main) {
   assert(!/족보|이 책|책 속|책을 놓/.test(line.text));
   assert(!/data-source-photo=|three-hand-action|data-book-location=/.test(api.layers(source,current)));
 }
-// Prologue arrival has empty hands; the existing mother/Yeonwoo handoff remains.
+// Prologue arrival has empty hands, and the retired cast is never reintroduced
+// through a visual-presence or acting-variant cue.
 for(let number=1;number<=6;number++) {
   const source=sources.get('THR-PRO-S03'),current=state(source.sceneId,source.sceneId+'-L0'+number);
   const view=api.resolve(source,current),presence=api.actorPresence(source,current);
@@ -193,17 +194,7 @@ for(let number=1;number<=6;number++) {
   assert.equal((ground.match(/data-source-photo=/g)||[]).length,0);
   assert.equal((photoLayers.match(/data-source-photo=/g)||[]).length,0);
   assert.equal(api.portraitOverride(source,current,'three_v3_seoa')?.id||null,null);
-  assert.equal(presence.length,number===6?1:0);
-  if(number===6) {
-    assert.equal(presence[0].characterId,'civilian-c01-0e375c4533--initial');
-    assert.equal(presence[0].position,'left');
-    assert.equal(presence[0].visualOnly,true);
-    const pair=api.portraitOverride(source,current,presence[0].characterId);
-    assert.equal(pair.id,'yeonwoo-mother-support-pair');
-    assert.equal(pair.interaction.anchorCharacterId,presence[0].characterId);
-    assert.equal(pair.interaction.completeFeetPresent,true);
-    assert.equal(api.portraitLayers(source,current,presence[0].characterId),'');
-  }
+  assert.equal(presence.length,0);
   const reloaded=JSON.parse(JSON.stringify(current));
   assert.deepEqual(api.backgroundOverride(source,reloaded),api.backgroundOverride(source,current));
   assert.deepEqual(api.actorPresence(source,reloaded),presence);
@@ -218,16 +209,13 @@ assert.equal(api.actorPresence(sources.get('THR-C01-S01'),state('THR-C01-S01','T
 assert.equal(api.portraitOverride(sources.get('THR-C01-S01'),state('THR-C01-S01','THR-C01-S01-M01'),'civilian-c01-0e375c4533--initial'),null);
 assert.equal(api.portraitLayers(sources.get('THR-C01-S01'),state('THR-C01-S01','THR-C01-S01-M01'),'three_v3_seoa'),'');
 
-// Seoa is binding Haemyeong's hand in this exact line. A preceding unnamed
-// mason must not make the recipient of that physical action disappear.
+// Old story-specific visual cast and acting variants are retired.
 {
   const source=sources.get('THR-C17-S04'),sid=source.sceneId;
   const current=state(sid,sid+'-B1-R03','branch',sid+'-B1');
   const cast=api.actorPresence(source,current);
-  assert.equal(cast.length,1);
-  assert.equal(cast[0].characterId,'civilian-c17-439b052a1f--initial');
-  assert.equal(cast[0].position,'left');
-  assert.equal(api.portraitOverride(source,current,cast[0].characterId).id,'haemyeong-bandaged');
+  assert.equal(cast.length,0);
+  assert.equal(api.portraitOverride(source,current,'civilian-c17-439b052a1f--initial'),null);
   assert.deepEqual(api.actorPresence(source,JSON.parse(JSON.stringify(current))),cast);
   for(const [line,phase,choice] of [['M08','main',null],['B1-R02','branch','B1'],['B2-R03','branch','B2'],['J01','join','B1']]) {
     assert.equal(api.actorPresence(source,state(sid,sid+'-'+line,phase,choice?sid+'-'+choice:null)).length,0,'Presence is limited to the missing B1 recipient');
@@ -235,21 +223,10 @@ assert.equal(api.portraitLayers(sources.get('THR-C01-S01'),state('THR-C01-S01','
 }
 
 const art=JSON.parse(fs.readFileSync(path.join(root,'dist/three-complete-art.json'),'utf8'));
-const haemyeong=Object.values(art.characters).find(person=>person.name==='해명').characterId;
-const yeoul=Object.values(art.characters).find(person=>person.name==='여울'&&person.characterId.startsWith('civilian-c15-')).characterId;
-function acting(sceneId,suffix,phase,choice,characterId) {
-  return api.portraitOverride(sources.get(sceneId),state(sceneId,sceneId+'-'+suffix,phase,choice?sceneId+'-'+choice:null),characterId);
-}
-assert.equal(acting('THR-C17-S04','M02','main',null,haemyeong).id,'haemyeong-hidden');
-assert.equal(acting('THR-C17-S04','B1-R02','branch','B1',haemyeong).id,'haemyeong-hidden');
-assert.equal(acting('THR-C17-S04','B1-R03','branch','B1',haemyeong).id,'haemyeong-bandaged');
-assert.equal(acting('THR-C17-S04','B2-R03','branch','B2',haemyeong).id,'haemyeong-hidden');
-assert.equal(acting('THR-C17-S04','J01','join','B2',haemyeong).id,'haemyeong-bandaged');
-assert.equal(acting('THR-C17-S05','M01','main',null,haemyeong).id,'haemyeong-bandaged');
-assert.equal(acting('THR-C17-S04','M02','main',null,yeoul),null,'Never borrow another character face');
-assert.equal(acting('THR-C15-S07','M08','main',null,yeoul),null);
-assert.equal(acting('THR-C15-S07','B1-R01','branch','B1',yeoul).id,'yeoul-empty');
-assert.equal(acting('THR-C15-S07','J01','join','B1',yeoul).id,'yeoul-empty');
+assert.equal(art.status,'protagonist-only-roster-reset');
+assert.deepEqual(art.characters,{});
+assert.deepEqual(art.sceneCharacters,{});
+assert.deepEqual(art.relationships,[]);
 
 // Exercise every source utterance through a frozen frame; repeated rendering
 // must produce identical markup without changing input, saves, or timers.

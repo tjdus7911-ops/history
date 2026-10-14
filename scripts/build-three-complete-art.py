@@ -544,6 +544,64 @@ def build():
                 "protagonist": protagonist, "approvedGeometry": geometry, "sourcePhotos": photos, "relationships": principal_relationships(),
                 "backgroundCatalog": background_assets, "portraitAtlases": portrait_atlases,
                 "audit": {k: audit[k] for k in ["sceneBackgroundCount", "distinctBackgroundCount", "generatedRecurringPortraitCount", "generatedPortraitAtlasCount", "missingPrincipalAppearanceCount", "originalGenealogyPhotoCount"]}}
+
+    # The Three Kingdoms story is being rewritten. Keep Seoa and her reviewed
+    # expressions, but publish no previous NPC identity, portrait, relationship
+    # or scene-cast registration. The production source documents remain in Git
+    # history for recovery and are deliberately not part of the runtime roster.
+    retired_appearances = len(characters)
+    retired_identities = len({person["identityId"] for person in characters.values()})
+    protagonist_sources = {protagonist["modernSrc"], *[item["src"] for item in protagonist["files"]]}
+    geometry["files"] = {src: value for src, value in geometry["files"].items() if src in protagonist_sources}
+    geometry["sourceOriginalHashes"] = {
+        src: value for src, value in geometry.get("sourceOriginalHashes", {}).items() if src in protagonist_sources
+    }
+    audit.update({
+        "status": "protagonist-only-roster-reset",
+        "characterAppearanceCount": 0,
+        "characterIdentityCount": 0,
+        "existingPrincipalPortraitCount": 0,
+        "generatedRecurringPortraitCount": 0,
+        "generatedPrincipalPortraitCount": 0,
+        "fullbodyPortraitCount": 0,
+        "generatedPortraitAtlasCount": 0,
+        "missingPrincipalAppearanceCount": 0,
+        "missingRecurringCivilianAppearances": 0,
+        "missingHistoricalPersonAppearances": 0,
+        "unmadeNamedLocalRoles": 0,
+        "supportingBackgroundRoleCount": 0,
+        "retiredCharacterAppearanceCount": retired_appearances,
+        "retiredCharacterIdentityCount": retired_identities,
+        "identityContinuityChecks": [],
+        "sameFaceReusedForDifferentPeople": [],
+        "missingPrincipalPortraits": [],
+        "speakerAliasChecks": "retired-with-previous-roster",
+        "npcPositionChecks": "no-active-npcs",
+        "atlasSourceRectChecks": "no-active-npc-atlases",
+    })
+    audit["visualReview"].update({
+        "knownPortraitFileReview": False,
+        "generatedPortraitFileReview": False,
+        "generatedPortraitAppearanceCount": 0,
+    })
+    audit["limitations"] = [
+        "The previous non-protagonist roster is intentionally retired while a new story is authored.",
+        "Only Seoa and her reviewed expression assets remain active in the runtime character registry.",
+    ]
+    manifest.update({
+        "status": audit["status"],
+        "characters": {},
+        "sceneCharacters": {},
+        "recordVoices": {},
+        "relationships": [],
+        "portraitAtlases": {},
+        "audit": {key: audit[key] for key in [
+            "sceneBackgroundCount", "distinctBackgroundCount", "characterAppearanceCount",
+            "characterIdentityCount", "generatedRecurringPortraitCount", "generatedPortraitAtlasCount",
+            "missingPrincipalAppearanceCount", "originalGenealogyPhotoCount",
+            "retiredCharacterAppearanceCount", "retiredCharacterIdentityCount",
+        ]},
+    })
     return manifest, audit
 
 

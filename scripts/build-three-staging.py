@@ -42,6 +42,7 @@ def build():
     acting = read('docs/three-content/staging-acting-generation.json')
     setting_surfaces = read('docs/three-content/staging-setting-surface-generation.json')['surfaces']
     art = read('dist/three-complete-art.json')
+    protagonist_only = art.get('status') == 'protagonist-only-roster-reset'
     source_photos = art['sourcePhotos']
     require(len(source_photos) == 3, 'Expected three original genealogy photographs')
     for photo in source_photos:
@@ -84,7 +85,14 @@ def build():
         lines = scene['main'] + scene['join'] + [line for choice in scene['choices'] for line in [choice['spokenLine']] + choice['reply']]
         line_ids = {line['lineId'] for line in lines}
         all_lines.update(line_ids)
-        authored = cues['scenes'].get(scene_id, {})
+        authored = {key:list(value) for key,value in cues['scenes'].get(scene_id, {}).items()}
+        if protagonist_only:
+            # Previous-story NPC acting variants and visual-presence cues are
+            # not runtime registrations after the roster reset.
+            authored['portraits'] = [rule for rule in authored.get('portraits', [])
+                                     if acting['variants'].get(rule['variant'], {}).get('characterId') == 'three_v3_seoa']
+            authored['actorPresence'] = [rule for rule in authored.get('actorPresence', [])
+                                         if rule.get('characterId') == 'three_v3_seoa']
         cue_ids, counts = [], {}
         for group, rules in authored.items():
             require(isinstance(rules,list), f'Invalid staging group: {scene_id}/{group}')
@@ -131,9 +139,11 @@ def build():
                              'status':'implemented-presentation-cues-awaiting-browser-review' if cue_ids or record_lines else 'existing-cast-background-and-dialogue-presentation',
                              'customIllustrationCompletion':'not-inferred-from-cue-count'})
     require(set(cues.get('contextOverrides',{})) <= all_lines, 'Unknown context override line')
+    active_variants = {key:value for key,value in acting['variants'].items()
+                       if not protagonist_only or value.get('characterId') == 'three_v3_seoa'}
     data = {'contentVersion':cues['contentVersion'],'sourceManuscriptSha256':cues['sourceManuscriptSha256'],
             'contextOverrides':cues.get('contextOverrides',{}),'props':props['props'],
-            'variants':acting['variants'],'backgrounds':acting['backgrounds'],'hands':acting['hands'],
+            'variants':active_variants,'backgrounds':acting['backgrounds'],'hands':acting['hands'],
             'settingSurfaces':setting_surfaces,
             'sourcePhotos':source_photos,'scenes':result}
     source = (ROOT/'scripts/three-staging-runtime.js').read_text(encoding='utf-8')
@@ -144,7 +154,7 @@ def build():
              'authoredUtteranceCount':len(all_lines),'explicitCueCount':cue_count,
              'scenesWithExplicitCues':sum(bool(scene['runtimeCueIds']) for scene in audit_scenes),
              'propImageCount':len(props['props']),'handActionImageCount':len(acting['hands']),
-             'actorVariantImageCount':len(acting['variants']),'backgroundStateImageCount':len(acting['backgrounds']),
+             'actorVariantImageCount':len(active_variants),'backgroundStateImageCount':len(acting['backgrounds']),
              'preciseSettingSurfaceCount':len(setting_surfaces),
              'originalGenealogyPhotoCount':len(source_photos),
              'sourcePixelsEdited':False,'saveMutations':False,'cursorMutations':False,'autoAdvance':False,
