@@ -99,3 +99,70 @@
 .official-question-sheet-tools span{color:#78838a;font-size:9px;line-height:1.45}
 .official-question-sheet-tools button{flex:0 0 auto;min-height:36px;padding:7px 10px;color:#76572d;font-size:10px}
 @media(max-width:390px){.official-exam-intro{grid-template-columns:34px minmax(0,1fr);gap:8px;padding-inline:0}.official-exam-back{width:34px;height:34px}.official-exam-intro-title{gap:6px}.official-exam-intro-title strong{font-size:14px}.official-exam-map-link{padding-inline:7px}.official-exam-intro-copy>p{font-size:9px}.official-timer-inline-action{padding-inline:6px}.official-exam-bottom-actions{width:100%;gap:6px;padding:8px}.official-question-sheet-tools{align-items:stretch;flex-direction:column}.official-question-sheet-tools button{width:100%}}
+
+/* 2026 premium exam-library home. Functionality stays in the existing exam engine. */
+.ed-exam-library{background:#f7f4ee;color:#2b241f}
+.ed-exam-library .official-exams{width:min(100%,720px);max-width:720px;padding:8px 0 calc(40px + env(safe-area-inset-bottom));color:#2b241f}
+.official-home-header{margin:0 0 18px;padding:0 2px}
+.official-home-service{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px;color:#4b3425;font-size:15px;font-weight:650}
+.official-home-service button{min-height:34px;padding:6px 10px;border:1px solid #e5ddd2;border-radius:12px;background:#fff;color:#6b4e36;font-size:12px;font-weight:700}
+.official-home-header h1{margin:0;color:#2b241f;font-size:28px;font-weight:750;line-height:1.3;letter-spacing:-.035em}
+.official-home-header>p{margin:5px 0 0;color:#7b736b;font-size:14px;font-weight:400;line-height:1.55}
+.official-exams>.official-tabs{display:grid;grid-template-columns:1fr 1fr;gap:0;height:40px;margin:0 0 16px;padding:0;border:0;border-bottom:1px solid #e5ddd2;border-radius:0;background:transparent}
+.official-exams>.official-tabs button{position:relative;min-height:40px;padding:7px 10px 10px;border:0;border-radius:0;background:transparent;box-shadow:none;color:#7b736b;font-size:15px;font-weight:500}
+.official-exams>.official-tabs button[aria-selected=true]{background:transparent;box-shadow:none;color:#2b241f;font-weight:750}
+.official-exams>.official-tabs button[aria-selected=true]:after{content:'';position:absolute;right:16%;bottom:-1px;left:16%;height:2px;border-radius:2px;background:#6b4e36}
+.official-exams>.official-round-levels{display:grid;grid-template-columns:1fr 1fr;gap:0;height:44px;margin:0 0 20px;padding:3px;border:1px solid #e5ddd2;border-radius:16px;background:#f5f1eb}
+.official-exams>.official-round-levels button{min-height:36px;border:0;border-radius:13px;background:transparent;color:#6f675d;font-size:14px;font-weight:650;transition:background-color .18s ease,color .18s ease}
+.official-exams>.official-round-levels button[aria-selected=true]{background:#6b4e36;color:#fff;box-shadow:none}
+.official-exams>.official-round-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin:0 2px 12px;padding:0}
+.official-exams>.official-round-heading small{display:block;margin-bottom:2px;color:#a79f95;font-size:11px;font-weight:550}
+.official-exams>.official-round-heading h2{margin:0;color:#2b241f;font-size:20px;font-weight:750;line-height:1.4}
+.official-exams>.official-round-heading>span{align-self:flex-end;padding:0;background:transparent;color:#a79f95;font-size:12px;font-weight:550}
+.official-exams>.official-grid.official-round-grid{display:grid;grid-template-columns:1fr;gap:14px}
+.official-exams .official-card.round{min-height:124px;padding:18px;border:1px solid #eae3d8;border-radius:18px;background:#fff;box-shadow:0 3px 12px rgba(75,52,37,.045);overflow:visible}
+.official-round-card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.official-round-title{min-width:0;padding:0;border:0;background:transparent;color:#2b241f;text-align:left}
+.official-round-title h2{margin:0!important;padding:0!important;color:#2b241f;font-size:18px!important;font-weight:750;line-height:1.35}
+.official-round-title small{display:block!important;margin-top:2px;color:#a79f95!important;font-size:11px!important;font-weight:500}
+.official-exams .official-edition-status{display:inline-flex;align-items:center;justify-content:center;min-height:28px;padding:5px 12px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}
+.official-exams .official-edition-status.active{background:#fbe8d7;color:#b56f34}
+.official-exams .official-edition-status.complete{background:#e7f3e6;color:#4e8a5b}
+.official-exams .official-edition-status.idle{background:#efefef;color:#8a8a8a}
+.official-exams .official-card-date{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:5px 0 14px;color:#7b736b;font-size:13px;line-height:1.45}
+.official-exams .official-card-date time{font-variant-numeric:tabular-nums}
+.official-exams .official-pass-rate-badge{position:static;display:inline-flex;min-height:20px;max-width:none;padding:3px 7px;border-radius:999px;background:#f5f1eb;color:#7b736b;font-size:10px;font-weight:650}
+.official-round-card-bottom{display:grid;grid-template-columns:minmax(0,1fr) 110px;align-items:end;gap:16px}
+.official-card.round .official-personal-progress{min-width:0;margin:0;padding:0;border:0}
+.official-card.round .official-card-progress{height:6px;margin:0;overflow:hidden;border-radius:999px;background:#ece6dd}
+.official-card.round .official-card-progress i{display:block;height:100%;border-radius:inherit;background:#a07f5f}
+.official-card.round .official-card-progress-copy{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:7px;color:#7b736b;font-variant-numeric:tabular-nums}
+.official-card.round .official-card-progress-copy b,.official-card.round .official-card-progress-copy strong{display:block;margin:0;font-size:12px;line-height:1.35;white-space:nowrap}
+.official-card.round .official-card-progress-copy b{color:#6f675d;font-weight:600}
+.official-card.round .official-card-progress-copy strong{color:#6b4e36;font-weight:700}
+.official-round-action{display:flex;align-items:center;justify-content:center;gap:5px;width:110px;min-height:44px;padding:9px 10px;border-radius:14px;font-size:14px;font-weight:750;white-space:nowrap}
+.official-round-action.primary{border-color:#6b4e36;background:#6b4e36;color:#fff}
+.official-round-action.secondary{border:1px solid #d8d0c5;background:#fff;color:#2b241f}
+.official-round-action span{font-size:18px;font-weight:400;line-height:1}
+.official-card.round:focus-within{border-color:#b89e84;box-shadow:0 0 0 3px rgba(107,78,54,.08)}
+.official-home-insights{margin-top:20px;border-top:1px solid #e5ddd2}
+.official-home-insights>summary{padding:18px 2px;color:#6b4e36;font-size:13px;font-weight:700;cursor:pointer;list-style-position:inside}
+.official-home-insights>.official-weakness{margin-top:0}
+.official-era-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:520px){
+ .ed-exam-library .official-exams{padding-right:0;padding-left:0}
+ .official-home-service{margin-bottom:24px}
+ .official-exams>.official-round-heading{align-items:flex-end;flex-direction:row;gap:12px}
+ .official-exams>.official-round-heading>span{align-self:auto}
+ .official-exams .official-card.round{min-height:124px;padding:16px}
+ .official-round-card-bottom{grid-template-columns:minmax(0,1fr) 106px;gap:12px}
+ .official-round-action{width:106px}
+ .official-card.round .official-card-progress-copy strong{display:none}
+}
+@media(max-width:370px){
+ .official-exams .official-card.round{padding:15px}
+ .official-round-card-bottom{grid-template-columns:minmax(0,1fr) 102px;gap:10px}
+ .official-round-action{width:102px;padding-inline:7px;font-size:13px}
+ .official-exams .official-card-date{font-size:12px}
+ .official-exams .official-pass-rate-badge{font-size:9px}
+}
