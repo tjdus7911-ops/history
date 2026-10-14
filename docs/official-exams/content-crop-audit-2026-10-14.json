@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "auditDate": "2026-10-14",
+  "scope": "등록된 기본·심화 기출 1,800문항의 본문/선지 분리 크롭 재검사",
+  "canonicalQuestionCount": 1800,
+  "automatedCoordinateAndHashCheck": {
+    "checkedQuestionCount": 1800,
+    "passedQuestionCount": 1800,
+    "failureCount": 0,
+    "method": "공식 PDF에서 생성된 불변 detailImage의 SHA-256을 확인하고 문항 유형별 선지 마커 좌표를 다시 검출"
+  },
+  "changedCandidateVisualReview": {
+    "reviewedQuestionCount": 105,
+    "shortenedChoiceLeakageCount": 96,
+    "extendedBodyRecoveryCount": 9,
+    "fixedQuestionCount": 105,
+    "remainingIssueCount": 0,
+    "method": "기존 경계(빨강)와 새 경계(초록)를 원본 detailImage 위에 겹친 9장 검수 시트로 전수 확인"
+  },
+  "reportedRegression": {
+    "officialQuestionId": "official-65-advanced-12",
+    "officialPdfFileId": "B_202306170100293950",
+    "officialPdfPage": 3,
+    "oldContentImage": "assets/exams/catalog/content/official-65-advanced-12-content.817d7f641bff.webp",
+    "oldDimensions": [1103, 1092],
+    "newContentImage": "assets/exams/catalog/content/official-65-advanced-12-content.0cff75445baf.webp",
+    "newDimensions": [1103, 821],
+    "result": "문제 본문과 사진은 보존하고 원본 선지 1~5는 본문 이미지에서 제거"
+  },
+  "choiceMediaIntegrity": {
+    "textQuestionCount": 1687,
+    "imageQuestionCount": 105,
+    "mixedQuestionCount": 8,
+    "physicalChoiceAssetCount": 498,
+    "missingChoiceAssetCount": 0
+  },
+  "reviewCoverageDisclosure": {
+    "cumulativeExistingVisualReviewRemainingCount": 0,
+    "freshlyReviewedChangedCandidateCount": 105,
+    "freshOfficialPdfPageComparisonCount": 1,
+    "notFreshlyReopenedAsFullPdfPageCount": 1799,
+    "reason": "변경이 없는 문항은 기존 시각 검수 결과와 동일한 sourceImage SHA-256을 유지했으며 이번 작업에서는 PDF 페이지를 1,799개 문항별로 새로 열어 수동 대조했다고 주장하지 않음"
+  }
+}

@@ -44,6 +44,15 @@ MANUAL_FIRST_CHOICE_MARKERS = {
     "official-79-basic-16": {"y": 399.0, "radius": 14.0},
 }
 
+# These source layouts contain numbered rows inside the question material.
+# Circle detection cannot distinguish those rows from answer markers, so the
+# reviewed body boundary is stored directly.  The second item is already a
+# body-only source crop and must be retained through its final pixel row.
+MANUAL_CONTENT_CROPS = {
+    "official-64-advanced-49": 860,
+    "official-71-advanced-02": 651,
+}
+
 
 def evenly_spaced(values: list[float], tolerance: float = 0.24) -> bool:
     """Return true when printed option columns form a regular row."""
@@ -117,7 +126,12 @@ def x_clusters(circles: list[dict], tolerance: float) -> list[list[dict]]:
     return clusters
 
 
-def first_choice_circle(image_path: Path, choice_count: int) -> tuple[dict, dict]:
+def first_choice_circle(
+    image_path: Path,
+    choice_count: int,
+    *,
+    allow_horizontal: bool = True,
+) -> tuple[dict, dict]:
     # cv2.imread still fails on some Windows Unicode paths; imdecode accepts the
     # exact bytes read by pathlib and is equivalent for the analysis below.
     image = cv2.imdecode(np.frombuffer(image_path.read_bytes(), dtype=np.uint8), cv2.IMREAD_GRAYSCALE)
@@ -203,7 +217,7 @@ def first_choice_circle(image_path: Path, choice_count: int) -> tuple[dict, dict
     # infographic; otherwise an illustration near the left edge can look like
     # a short vertical choice column.
     row_tolerance = max(7, width * 0.009)
-    for anchor in circles:
+    for anchor in circles if allow_horizontal else []:
         row = unique_circles(
             [item for item in circles if abs(item["y"] - anchor["y"]) <= row_tolerance],
             distance=8,
@@ -228,7 +242,7 @@ def first_choice_circle(image_path: Path, choice_count: int) -> tuple[dict, dict
     # earlier on the page.  This removes the historical failure mode where a
     # later body-text line overrode the true first option row.
     broad_row_tolerance = max(16, width * 0.020)
-    for anchor in circles:
+    for anchor in circles if allow_horizontal else []:
         row = unique_circles(
             [item for item in circles if abs(item["y"] - anchor["y"]) <= broad_row_tolerance],
             distance=8,
@@ -279,6 +293,19 @@ def main() -> None:
     args = parser.parse_args()
 
     catalog = json.loads((DIST / "official-exam-catalog.json").read_text(encoding="utf-8"))
+    choice_bundle_path = DIST / "official-exam-choices.json"
+    choice_rows = (
+        json.loads(choice_bundle_path.read_text(encoding="utf-8")).get("records", [])
+        if choice_bundle_path.exists()
+        else []
+    )
+    choices_by_id = {row["officialQuestionId"]: row.get("choices", []) for row in choice_rows}
+    media_review_path = ROOT / "config" / "official-choice-media-reviews.json"
+    media_question_ids: set[str] = set()
+    if media_review_path.exists():
+        media_review = json.loads(media_review_path.read_text(encoding="utf-8"))
+        media_question_ids.update(media_review.get("imageQuestionIds", []))
+        media_question_ids.update(media_review.get("mixedQuestionIds", []))
     selected = {item.strip() for item in (args.only or "").split(",") if item.strip()}
     if selected:
         catalog = [item for item in catalog if item["officialQuestionId"] in selected]
@@ -296,6 +323,33 @@ def main() -> None:
             if expected_hash and image_hash != expected_hash:
                 raise ValueError("detail image hash does not match canonical catalog")
             choice_count = 4 if source["examLevel"] == "기본" else 5
+            if source["officialQuestionId"] in MANUAL_CONTENT_CROPS:
+                with image_path.open("rb") as stream:
+                    shape = cv2.imdecode(
+                        np.frombuffer(stream.read(), dtype=np.uint8), cv2.IMREAD_GRAYSCALE
+                    ).shape
+                cut_y = min(shape[0], MANUAL_CONTENT_CROPS[source["officialQuestionId"]])
+                rows.append(
+                    {
+                        "officialQuestionId": source["officialQuestionId"],
+                        "sourceImageSha256": image_hash,
+                        "contentCropRatio": round(cut_y / shape[0], 6),
+                        "contentCropY": cut_y,
+                        "cropGuardPixels": None,
+                        "choiceStartY": None,
+                        "choiceMarkerRadius": None,
+                        "imageWidth": shape[1],
+                        "imageHeight": shape[0],
+                        "markerCount": 0,
+                        "markerYs": [],
+                        "gridLayout": False,
+                        "markerX": None,
+                        "lastMarkerY": None,
+                        "manualLayoutReview": True,
+                        "layoutDetection": "manual-content-boundary",
+                    }
+                )
+                continue
             if source["officialQuestionId"] in MANUAL_FIRST_CHOICE_MARKERS:
                 first = MANUAL_FIRST_CHOICE_MARKERS[source["officialQuestionId"]]
                 with image_path.open("rb") as stream:
@@ -311,7 +365,25 @@ def main() -> None:
                     "layoutDetection": "manual",
                 }
             else:
-                first, audit = first_choice_circle(image_path, choice_count)
+                source_choices = choices_by_id.get(source["officialQuestionId"], [])
+                compact_choices = [
+                    "".join(character for character in str(choice) if character.isalnum())
+                    for choice in source_choices
+                ]
+                # A genuine one-row choice set contains compact labels such as
+                # (가)~(마) or short ordering combinations.  Long sentence
+                # choices are printed vertically; Hangul circles inside the
+                # final sentence must never be mistaken for five option marks.
+                allow_horizontal = (
+                    source["officialQuestionId"] in media_question_ids
+                    or not compact_choices
+                    or max(map(len, compact_choices)) <= 12
+                )
+                first, audit = first_choice_circle(
+                    image_path,
+                    choice_count,
+                    allow_horizontal=allow_horizontal,
+                )
             # Manual boundaries were visually reviewed against unusually
             # complex illustrations.  Automatic boundaries reserve at least
             # 2.5 marker radii (and a source-width floor) above the centre so

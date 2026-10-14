@@ -585,24 +585,24 @@
     {
       "officialQuestionId": "official-57-basic-28",
       "sourceImageSha256": "46fdfa35cc3a77c00a8aabeec8b7144c520688889eeaf6bba8d5667e8a1b6aa7",
-      "contentCropRatio": 0.775605,
-      "contentCropY": 833,
-      "cropGuardPixels": 33.2,
-      "choiceStartY": 865.8,
-      "choiceMarkerRadius": 13.3,
+      "contentCropRatio": 0.709497,
+      "contentCropY": 762,
+      "cropGuardPixels": 41.3,
+      "choiceStartY": 803.4,
+      "choiceMarkerRadius": 16.5,
       "imageWidth": 1103,
       "imageHeight": 1074,
       "markerCount": 4,
       "markerYs": [
-        865.8,
-        868.2,
+        803.4,
         869.4,
-        873.0
+        937.8,
+        1003.8
       ],
-      "gridLayout": true,
-      "markerX": 405.6,
-      "lastMarkerY": 873.0,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 95.4,
+      "lastMarkerY": 1003.8,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-57-basic-29",
@@ -1015,24 +1015,24 @@
     {
       "officialQuestionId": "official-57-basic-48",
       "sourceImageSha256": "cd645448125dc5f9ac6305236e3ac91cce7f1ea45ee0a2e459ebde0cc5911278",
-      "contentCropRatio": 0.889265,
-      "contentCropY": 1052,
-      "cropGuardPixels": 46.4,
-      "choiceStartY": 1098.6,
-      "choiceMarkerRadius": 18.6,
+      "contentCropRatio": 0.736264,
+      "contentCropY": 871,
+      "cropGuardPixels": 41.6,
+      "choiceStartY": 912.6,
+      "choiceMarkerRadius": 16.6,
       "imageWidth": 1091,
       "imageHeight": 1183,
       "markerCount": 4,
       "markerYs": [
-        1098.6,
-        1111.8,
-        1115.4,
-        1115.4
+        912.6,
+        978.6,
+        1047.0,
+        1111.8
       ],
       "gridLayout": true,
-      "markerX": 357.0,
-      "lastMarkerY": 1115.4,
-      "layoutDetection": "horizontal-fallback"
+      "markerX": 66.6,
+      "lastMarkerY": 1111.8,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-57-basic-49",
@@ -1104,25 +1104,25 @@
     {
       "officialQuestionId": "official-57-advanced-02",
       "sourceImageSha256": "cc22e4f0aa15790dd6cc231a91f218abf6309e11cef776b7cc4bd579d8adeca6",
-      "contentCropRatio": 0.851363,
-      "contentCropY": 1031,
-      "cropGuardPixels": 31.6,
-      "choiceStartY": 1062.6,
-      "choiceMarkerRadius": 11.6,
+      "contentCropRatio": 0.68621,
+      "contentCropY": 831,
+      "cropGuardPixels": 41.6,
+      "choiceStartY": 873.0,
+      "choiceMarkerRadius": 16.6,
       "imageWidth": 1091,
       "imageHeight": 1211,
       "markerCount": 5,
       "markerYs": [
-        1062.6,
-        1062.6,
-        1062.6,
-        1068.6,
-        1072.2
+        873.0,
+        939.0,
+        1008.6,
+        1072.2,
+        1140.6
       ],
-      "gridLayout": true,
-      "markerX": 473.4,
-      "lastMarkerY": 1072.2,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 95.4,
+      "lastMarkerY": 1140.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-57-advanced-03",
@@ -1283,25 +1283,25 @@
     {
       "officialQuestionId": "official-57-advanced-10",
       "sourceImageSha256": "970605a528a3bff39ba4c388af9df89062eb0155fde3d17cd48374cff07b5952",
-      "contentCropRatio": 0.918435,
-      "contentCropY": 1385,
-      "cropGuardPixels": 43.4,
-      "choiceStartY": 1428.6,
-      "choiceMarkerRadius": 17.4,
+      "contentCropRatio": 0.75,
+      "contentCropY": 1131,
+      "cropGuardPixels": 40.1,
+      "choiceStartY": 1170.6,
+      "choiceMarkerRadius": 16.0,
       "imageWidth": 1091,
       "imageHeight": 1508,
       "markerCount": 5,
       "markerYs": [
-        1428.6,
-        1432.2,
-        1434.6,
-        1434.6,
+        1170.6,
+        1239.0,
+        1303.8,
+        1373.4,
         1438.2
       ],
-      "gridLayout": true,
-      "markerX": 389.4,
+      "gridLayout": false,
+      "markerX": 95.4,
       "lastMarkerY": 1438.2,
-      "layoutDetection": "horizontal"
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-57-advanced-11",
@@ -1442,25 +1442,25 @@
     {
       "officialQuestionId": "official-57-advanced-17",
       "sourceImageSha256": "54cddcf3066bdda3e2da7a642053b43618a5f3e4c57499145ef374400c8bb144",
-      "contentCropRatio": 0.850796,
-      "contentCropY": 1015,
-      "cropGuardPixels": 40.1,
-      "choiceStartY": 1055.4,
-      "choiceMarkerRadius": 16.0,
+      "contentCropRatio": 0.689019,
+      "contentCropY": 822,
+      "cropGuardPixels": 35.6,
+      "choiceStartY": 857.4,
+      "choiceMarkerRadius": 14.2,
       "imageWidth": 1103,
       "imageHeight": 1193,
       "markerCount": 5,
       "markerYs": [
+        857.4,
+        924.6,
+        990.6,
         1055.4,
-        1055.4,
-        1055.4,
-        1059.0,
-        1061.4
+        1122.6
       ],
       "gridLayout": true,
-      "markerX": 395.4,
-      "lastMarkerY": 1061.4,
-      "layoutDetection": "horizontal"
+      "markerX": 67.8,
+      "lastMarkerY": 1122.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-57-advanced-18",
@@ -1600,48 +1600,48 @@
     {
       "officialQuestionId": "official-57-advanced-24",
       "sourceImageSha256": "bfe098df4c4d757bcf0c361d3fff29c19d3a9c97f6a5f291ad31e036b01ba94c",
-      "contentCropRatio": 0.927869,
-      "contentCropY": 1415,
-      "cropGuardPixels": 31.6,
-      "choiceStartY": 1446.6,
-      "choiceMarkerRadius": 12.1,
+      "contentCropRatio": 0.754098,
+      "contentCropY": 1150,
+      "cropGuardPixels": 37.4,
+      "choiceStartY": 1187.4,
+      "choiceMarkerRadius": 15.0,
       "imageWidth": 1091,
       "imageHeight": 1525,
       "markerCount": 5,
       "markerYs": [
-        1446.6,
-        1451.4,
-        1451.4,
-        1456.2,
-        1457.4
+        1187.4,
+        1253.4,
+        1321.8,
+        1389.0,
+        1455.0
       ],
-      "gridLayout": true,
-      "markerX": 425.4,
-      "lastMarkerY": 1457.4,
-      "layoutDetection": "horizontal-fallback"
+      "gridLayout": false,
+      "markerX": 66.6,
+      "lastMarkerY": 1455.0,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-57-advanced-25",
       "sourceImageSha256": "b8495f463af1595eba9684a31bd741bb6552fdc39111b69ce21f361c2acd1d77",
-      "contentCropRatio": 0.834188,
-      "contentCropY": 976,
-      "cropGuardPixels": 46.7,
-      "choiceStartY": 1023.0,
-      "choiceMarkerRadius": 18.7,
+      "contentCropRatio": 0.676923,
+      "contentCropY": 792,
+      "cropGuardPixels": 40.1,
+      "choiceStartY": 832.2,
+      "choiceMarkerRadius": 16.0,
       "imageWidth": 1103,
       "imageHeight": 1170,
       "markerCount": 5,
       "markerYs": [
-        1023.0,
-        1026.6,
+        832.2,
+        899.4,
+        965.4,
         1032.6,
-        1032.6,
-        1032.6
+        1098.6
       ],
       "gridLayout": true,
-      "markerX": 405.0,
-      "lastMarkerY": 1032.6,
-      "layoutDetection": "horizontal"
+      "markerX": 67.8,
+      "lastMarkerY": 1098.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-57-advanced-26",
@@ -1669,25 +1669,25 @@
     {
       "officialQuestionId": "official-57-advanced-27",
       "sourceImageSha256": "74ca7992c9744872f4002f75d58fc79d4c8d7e212bfb9328ad80a10efd4f9fe7",
-      "contentCropRatio": 0.778481,
-      "contentCropY": 861,
-      "cropGuardPixels": 33.5,
-      "choiceStartY": 894.6,
-      "choiceMarkerRadius": 13.4,
+      "contentCropRatio": 0.657324,
+      "contentCropY": 727,
+      "cropGuardPixels": 41.9,
+      "choiceStartY": 768.6,
+      "choiceMarkerRadius": 16.8,
       "imageWidth": 1091,
       "imageHeight": 1106,
       "markerCount": 5,
       "markerYs": [
-        894.6,
-        900.6,
-        900.6,
-        901.8,
-        904.2
+        768.6,
+        834.6,
+        904.2,
+        970.2,
+        1037.4
       ],
-      "gridLayout": true,
-      "markerX": 411.0,
-      "lastMarkerY": 904.2,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 95.4,
+      "lastMarkerY": 1037.4,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-57-advanced-28",
@@ -2012,25 +2012,25 @@
     {
       "officialQuestionId": "official-57-advanced-42",
       "sourceImageSha256": "a6bb66c7943b75e2a846b4d08cac8804d85dfda2c81ce2674c603850733c6503",
-      "contentCropRatio": 0.905477,
-      "contentCropY": 1025,
-      "cropGuardPixels": 32.0,
-      "choiceStartY": 1056.6,
-      "choiceMarkerRadius": 11.8,
+      "contentCropRatio": 0.669611,
+      "contentCropY": 758,
+      "cropGuardPixels": 38.0,
+      "choiceStartY": 796.2,
+      "choiceMarkerRadius": 15.2,
       "imageWidth": 1103,
       "imageHeight": 1132,
       "markerCount": 5,
       "markerYs": [
-        1056.6,
-        1056.6,
-        1056.6,
-        1062.6,
-        1066.2
+        796.2,
+        862.2,
+        928.2,
+        996.6,
+        1062.6
       ],
-      "gridLayout": true,
-      "markerX": 426.6,
-      "lastMarkerY": 1066.2,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 66.6,
+      "lastMarkerY": 1062.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-57-advanced-43",
@@ -2285,24 +2285,24 @@
     {
       "officialQuestionId": "official-58-basic-04",
       "sourceImageSha256": "9d8d769927e19d4735c1cbf726194412da4deacb6d5924cf73190af0db3378d8",
-      "contentCropRatio": 0.887594,
-      "contentCropY": 1066,
-      "cropGuardPixels": 53.3,
-      "choiceStartY": 1119.0,
-      "choiceMarkerRadius": 21.3,
+      "contentCropRatio": 0.745212,
+      "contentCropY": 895,
+      "cropGuardPixels": 37.1,
+      "choiceStartY": 931.8,
+      "choiceMarkerRadius": 14.8,
       "imageWidth": 1103,
       "imageHeight": 1201,
       "markerCount": 4,
       "markerYs": [
-        1119.0,
-        1128.6,
-        1131.0,
-        1133.4
+        931.8,
+        999.0,
+        1065.0,
+        1131.0
       ],
       "gridLayout": true,
-      "markerX": 279.0,
-      "lastMarkerY": 1133.4,
-      "layoutDetection": "horizontal-fallback"
+      "markerX": 95.4,
+      "lastMarkerY": 1131.0,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-58-basic-05",
@@ -3143,24 +3143,24 @@
     {
       "officialQuestionId": "official-58-basic-44",
       "sourceImageSha256": "4e2dce04333eda863ccd645b4a54f6391b678bab66f8254a982c7d20a378bebe",
-      "contentCropRatio": 0.69598,
-      "contentCropY": 831,
-      "cropGuardPixels": 38.9,
-      "choiceStartY": 869.4,
-      "choiceMarkerRadius": 15.6,
+      "contentCropRatio": 0.742044,
+      "contentCropY": 886,
+      "cropGuardPixels": 37.4,
+      "choiceStartY": 923.4,
+      "choiceMarkerRadius": 15.0,
       "imageWidth": 1091,
       "imageHeight": 1194,
       "markerCount": 4,
       "markerYs": [
-        869.4,
-        875.4,
-        875.4,
-        875.4
+        923.4,
+        991.8,
+        1057.8,
+        1122.6
       ],
       "gridLayout": true,
-      "markerX": 522.0,
-      "lastMarkerY": 875.4,
-      "layoutDetection": "horizontal"
+      "markerX": 95.4,
+      "lastMarkerY": 1122.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-58-basic-45",
@@ -3527,25 +3527,25 @@
     {
       "officialQuestionId": "official-58-advanced-11",
       "sourceImageSha256": "dc07b52ba0ce002f80012f04adeb60c500906b7f93a028bc95dcfdc388d613b4",
-      "contentCropRatio": 0.913529,
-      "contentCropY": 1310,
-      "cropGuardPixels": 46.7,
-      "choiceStartY": 1356.6,
-      "choiceMarkerRadius": 18.7,
+      "contentCropRatio": 0.739191,
+      "contentCropY": 1060,
+      "cropGuardPixels": 37.4,
+      "choiceStartY": 1097.4,
+      "choiceMarkerRadius": 15.0,
       "imageWidth": 1091,
       "imageHeight": 1434,
       "markerCount": 5,
       "markerYs": [
-        1356.6,
-        1356.6,
-        1362.6,
-        1362.6,
+        1097.4,
+        1164.6,
+        1231.8,
+        1296.6,
         1365.0
       ],
-      "gridLayout": true,
-      "markerX": 467.4,
+      "gridLayout": false,
+      "markerX": 95.4,
       "lastMarkerY": 1365.0,
-      "layoutDetection": "horizontal"
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-58-advanced-12",
@@ -3823,25 +3823,25 @@
     {
       "officialQuestionId": "official-58-advanced-24",
       "sourceImageSha256": "ede80833eeadb41d1655ab80c0a1d834f5ec47fb2388f0157701f7ce2e470811",
-      "contentCropRatio": 0.901585,
-      "contentCropY": 1081,
-      "cropGuardPixels": 46.7,
-      "choiceStartY": 1127.4,
-      "choiceMarkerRadius": 18.7,
+      "contentCropRatio": 0.688907,
+      "contentCropY": 826,
+      "cropGuardPixels": 37.4,
+      "choiceStartY": 863.4,
+      "choiceMarkerRadius": 15.0,
       "imageWidth": 1091,
       "imageHeight": 1199,
       "markerCount": 5,
       "markerYs": [
-        1127.4,
-        1128.6,
-        1128.6,
-        1128.6,
-        1139.4
+        863.4,
+        930.6,
+        997.8,
+        1062.6,
+        1128.6
       ],
       "gridLayout": true,
-      "markerX": 540.6,
-      "lastMarkerY": 1139.4,
-      "layoutDetection": "horizontal-fallback"
+      "markerX": 66.6,
+      "lastMarkerY": 1128.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-58-advanced-25",
@@ -4350,25 +4350,25 @@
     {
       "officialQuestionId": "official-58-advanced-47",
       "sourceImageSha256": "6fecde5cf78fbacd0fa1d681f8ced6e664d7e9c7d1dd7bd5465f7fe966e487fe",
-      "contentCropRatio": 0.735679,
-      "contentCropY": 899,
-      "cropGuardPixels": 43.4,
-      "choiceStartY": 942.6,
-      "choiceMarkerRadius": 17.4,
+      "contentCropRatio": 0.582651,
+      "contentCropY": 712,
+      "cropGuardPixels": 41.0,
+      "choiceStartY": 753.0,
+      "choiceMarkerRadius": 16.4,
       "imageWidth": 1091,
       "imageHeight": 1222,
       "markerCount": 5,
       "markerYs": [
-        942.6,
-        948.6,
-        948.6,
+        753.0,
+        819.0,
         951.0,
-        952.2
+        1018.2,
+        1086.6
       ],
-      "gridLayout": true,
-      "markerX": 437.4,
-      "lastMarkerY": 952.2,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 66.6,
+      "lastMarkerY": 1086.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-58-advanced-48",
@@ -4851,25 +4851,25 @@
     {
       "officialQuestionId": "official-59-advanced-19",
       "sourceImageSha256": "f58a51bcc928a27340fe826fc4e4c2718c19a087896f86f8098fbaa9720e4526",
-      "contentCropRatio": 0.772388,
-      "contentCropY": 828,
-      "cropGuardPixels": 41.6,
-      "choiceStartY": 869.4,
-      "choiceMarkerRadius": 16.6,
+      "contentCropRatio": 0.647388,
+      "contentCropY": 694,
+      "cropGuardPixels": 41.9,
+      "choiceStartY": 736.2,
+      "choiceMarkerRadius": 16.8,
       "imageWidth": 1090,
       "imageHeight": 1072,
       "markerCount": 5,
       "markerYs": [
+        736.2,
+        803.4,
         869.4,
-        869.4,
-        869.4,
-        869.4,
-        875.4
+        934.2,
+        1001.4
       ],
       "gridLayout": true,
-      "markerX": 425.4,
-      "lastMarkerY": 875.4,
-      "layoutDetection": "horizontal"
+      "markerX": 95.4,
+      "lastMarkerY": 1001.4,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-59-advanced-20",
@@ -5012,25 +5012,25 @@
     {
       "officialQuestionId": "official-59-advanced-26",
       "sourceImageSha256": "d16106c01f9f5ecaa477f96a2482f7cb172c992893a9733cb435291acfe8fd54",
-      "contentCropRatio": 0.695791,
-      "contentCropY": 1091,
-      "cropGuardPixels": 50.0,
-      "choiceStartY": 1140.6,
-      "choiceMarkerRadius": 20.0,
+      "contentCropRatio": 0.758291,
+      "contentCropY": 1189,
+      "cropGuardPixels": 41.9,
+      "choiceStartY": 1230.6,
+      "choiceMarkerRadius": 16.8,
       "imageWidth": 1090,
       "imageHeight": 1568,
       "markerCount": 5,
       "markerYs": [
-        1140.6,
-        1146.6,
-        1146.6,
-        1146.6,
-        1146.6
+        1230.6,
+        1297.8,
+        1363.8,
+        1429.8,
+        1499.4
       ],
-      "gridLayout": true,
-      "markerX": 486.6,
-      "lastMarkerY": 1146.6,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 95.4,
+      "lastMarkerY": 1499.4,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-59-advanced-27",
@@ -5216,25 +5216,25 @@
     {
       "officialQuestionId": "official-59-advanced-35",
       "sourceImageSha256": "c5db5cc74ba5bba8901b1f3de8e70c4134d807428af4310432e07ebf09a748a8",
-      "contentCropRatio": 0.755123,
-      "contentCropY": 737,
-      "cropGuardPixels": 31.6,
-      "choiceStartY": 768.6,
-      "choiceMarkerRadius": 11.6,
+      "contentCropRatio": 0.61373,
+      "contentCropY": 599,
+      "cropGuardPixels": 41.6,
+      "choiceStartY": 640.2,
+      "choiceMarkerRadius": 16.6,
       "imageWidth": 1090,
       "imageHeight": 976,
       "markerCount": 5,
       "markerYs": [
-        768.6,
-        768.6,
+        640.2,
+        705.0,
         773.4,
-        773.4,
-        777.0
+        839.4,
+        905.4
       ],
-      "gridLayout": true,
-      "markerX": 466.2,
-      "lastMarkerY": 777.0,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 94.2,
+      "lastMarkerY": 905.4,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-59-advanced-36",
@@ -5377,25 +5377,25 @@
     {
       "officialQuestionId": "official-59-advanced-42",
       "sourceImageSha256": "585c95c0971d0b278af9ec21add1eda6019d9be1b0a60552a3d180955701cfe0",
-      "contentCropRatio": 0.931549,
-      "contentCropY": 1497,
-      "cropGuardPixels": 33.5,
-      "choiceStartY": 1530.6,
-      "choiceMarkerRadius": 13.4,
+      "contentCropRatio": 0.765401,
+      "contentCropY": 1230,
+      "cropGuardPixels": 41.9,
+      "choiceStartY": 1271.4,
+      "choiceMarkerRadius": 16.8,
       "imageWidth": 1102,
       "imageHeight": 1607,
       "markerCount": 5,
       "markerYs": [
-        1530.6,
-        1536.6,
-        1536.6,
-        1541.4,
-        1543.8
+        1271.4,
+        1338.6,
+        1403.4,
+        1469.4,
+        1536.6
       ],
       "gridLayout": true,
-      "markerX": 418.2,
-      "lastMarkerY": 1543.8,
-      "layoutDetection": "horizontal-fallback"
+      "markerX": 66.6,
+      "lastMarkerY": 1536.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-59-advanced-43",
@@ -6108,25 +6108,25 @@
     {
       "officialQuestionId": "official-60-advanced-24",
       "sourceImageSha256": "fd344409c62708257cd52b4128c206e726e9f29fbe56800244f89655dd676503",
-      "contentCropRatio": 0.833194,
-      "contentCropY": 994,
-      "cropGuardPixels": 46.7,
-      "choiceStartY": 1041.0,
-      "choiceMarkerRadius": 18.7,
+      "contentCropRatio": 0.686505,
+      "contentCropY": 819,
+      "cropGuardPixels": 37.4,
+      "choiceStartY": 856.2,
+      "choiceMarkerRadius": 15.0,
       "imageWidth": 1103,
       "imageHeight": 1193,
       "markerCount": 5,
       "markerYs": [
-        1041.0,
-        1044.6,
-        1044.6,
-        1048.2,
-        1050.6
+        856.2,
+        923.4,
+        988.2,
+        1055.4,
+        1122.6
       ],
-      "gridLayout": true,
-      "markerX": 557.4,
-      "lastMarkerY": 1050.6,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 67.8,
+      "lastMarkerY": 1122.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-60-advanced-25",
@@ -6269,25 +6269,25 @@
     {
       "officialQuestionId": "official-60-advanced-31",
       "sourceImageSha256": "f00f9e47ac1bf49abb064b17773a3387384e7870fa1fc1b037b58d1da0a5d8b2",
-      "contentCropRatio": 0.913589,
-      "contentCropY": 1311,
-      "cropGuardPixels": 43.4,
-      "choiceStartY": 1354.2,
-      "choiceMarkerRadius": 17.4,
+      "contentCropRatio": 0.739373,
+      "contentCropY": 1061,
+      "cropGuardPixels": 37.4,
+      "choiceStartY": 1098.6,
+      "choiceMarkerRadius": 15.0,
       "imageWidth": 1091,
       "imageHeight": 1435,
       "markerCount": 5,
       "markerYs": [
-        1354.2,
-        1356.6,
-        1356.6,
-        1362.6,
+        1098.6,
+        1164.6,
+        1231.8,
+        1299.0,
         1363.8
       ],
-      "gridLayout": true,
-      "markerX": 415.8,
+      "gridLayout": false,
+      "markerX": 66.6,
       "lastMarkerY": 1363.8,
-      "layoutDetection": "horizontal"
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-60-advanced-32",
@@ -8230,25 +8230,25 @@
     {
       "officialQuestionId": "official-61-advanced-19",
       "sourceImageSha256": "56cb76b99be856c84d45efe2e463a61e3919401e90591761158a411130e7e82c",
-      "contentCropRatio": 0.845503,
-      "contentCropY": 1100,
-      "cropGuardPixels": 46.7,
-      "choiceStartY": 1146.6,
-      "choiceMarkerRadius": 18.7,
+      "contentCropRatio": 0.699462,
+      "contentCropY": 910,
+      "cropGuardPixels": 43.1,
+      "choiceStartY": 953.4,
+      "choiceMarkerRadius": 17.2,
       "imageWidth": 1091,
       "imageHeight": 1301,
       "markerCount": 5,
       "markerYs": [
-        1146.6,
-        1151.4,
-        1152.6,
-        1152.6,
-        1153.8
+        953.4,
+        1019.4,
+        1087.8,
+        1153.8,
+        1219.8
       ],
       "gridLayout": true,
-      "markerX": 401.4,
-      "lastMarkerY": 1153.8,
-      "layoutDetection": "horizontal"
+      "markerX": 95.4,
+      "lastMarkerY": 1219.8,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-61-advanced-20",
@@ -8389,25 +8389,25 @@
     {
       "officialQuestionId": "official-61-advanced-26",
       "sourceImageSha256": "4c96bb7ccb44df1703f94925ca77859805fdfcd9d8e4517ffa11741c77440e0e",
-      "contentCropRatio": 0.922573,
-      "contentCropY": 1549,
-      "cropGuardPixels": 40.1,
-      "choiceStartY": 1589.4,
-      "choiceMarkerRadius": 16.0,
+      "contentCropRatio": 0.772484,
+      "contentCropY": 1297,
+      "cropGuardPixels": 35.9,
+      "choiceStartY": 1332.6,
+      "choiceMarkerRadius": 14.4,
       "imageWidth": 1103,
       "imageHeight": 1679,
       "markerCount": 5,
       "markerYs": [
-        1589.4,
-        1595.4,
-        1596.6,
-        1596.6,
-        1611.0
+        1332.6,
+        1398.6,
+        1465.8,
+        1531.8,
+        1599.0
       ],
-      "gridLayout": true,
-      "markerX": 485.4,
-      "lastMarkerY": 1611.0,
-      "layoutDetection": "horizontal-fallback"
+      "gridLayout": false,
+      "markerX": 66.6,
+      "lastMarkerY": 1599.0,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-61-advanced-27",
@@ -8548,25 +8548,25 @@
     {
       "officialQuestionId": "official-61-advanced-33",
       "sourceImageSha256": "52bbf463f74a06cc87588a4e9dede601176ed0bac03cece5d3445bc458a63514",
-      "contentCropRatio": 0.8958,
-      "contentCropY": 1109,
-      "cropGuardPixels": 43.4,
-      "choiceStartY": 1152.6,
-      "choiceMarkerRadius": 17.4,
+      "contentCropRatio": 0.693053,
+      "contentCropY": 858,
+      "cropGuardPixels": 35.9,
+      "choiceStartY": 893.4,
+      "choiceMarkerRadius": 14.4,
       "imageWidth": 1103,
       "imageHeight": 1238,
       "markerCount": 5,
       "markerYs": [
-        1152.6,
-        1158.6,
-        1158.6,
-        1164.6,
-        1170.6
+        893.4,
+        960.6,
+        1027.8,
+        1093.8,
+        1161.0
       ],
       "gridLayout": true,
-      "markerX": 323.4,
-      "lastMarkerY": 1170.6,
-      "layoutDetection": "horizontal-fallback"
+      "markerX": 67.8,
+      "lastMarkerY": 1161.0,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-61-advanced-34",
@@ -8729,25 +8729,25 @@
     {
       "officialQuestionId": "official-61-advanced-41",
       "sourceImageSha256": "d8278db1a22ce7e2d44100eb85e8f1aa941abe1cbba78ba5836413b161d4ca9f",
-      "contentCropRatio": 0.820401,
-      "contentCropY": 941,
-      "cropGuardPixels": 53.0,
-      "choiceStartY": 994.2,
-      "choiceMarkerRadius": 21.2,
+      "contentCropRatio": 0.664342,
+      "contentCropY": 762,
+      "cropGuardPixels": 40.7,
+      "choiceStartY": 802.2,
+      "choiceMarkerRadius": 16.3,
       "imageWidth": 1103,
       "imageHeight": 1147,
       "markerCount": 5,
       "markerYs": [
-        994.2,
-        996.6,
-        996.6,
-        997.8,
-        1003.8
+        802.2,
+        869.4,
+        936.6,
+        1003.8,
+        1069.8
       ],
-      "gridLayout": true,
-      "markerX": 544.2,
-      "lastMarkerY": 1003.8,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 66.6,
+      "lastMarkerY": 1069.8,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-61-advanced-42",
@@ -8867,25 +8867,25 @@
     {
       "officialQuestionId": "official-61-advanced-47",
       "sourceImageSha256": "344efdc421ce448c475581fd5bb536a838c58bb496b7903abd871f44cc924570",
-      "contentCropRatio": 0.818681,
-      "contentCropY": 1341,
-      "cropGuardPixels": 46.7,
-      "choiceStartY": 1387.8,
-      "choiceMarkerRadius": 18.7,
+      "contentCropRatio": 0.669109,
+      "contentCropY": 1096,
+      "cropGuardPixels": 35.3,
+      "choiceStartY": 1131.0,
+      "choiceMarkerRadius": 14.1,
       "imageWidth": 1091,
       "imageHeight": 1638,
       "markerCount": 5,
       "markerYs": [
-        1387.8,
-        1390.2,
-        1392.6,
-        1392.6,
-        1392.6
+        1131.0,
+        1199.4,
+        1265.4,
+        1331.4,
+        1398.6
       ],
       "gridLayout": true,
-      "markerX": 480.6,
-      "lastMarkerY": 1392.6,
-      "layoutDetection": "horizontal"
+      "markerX": 66.6,
+      "lastMarkerY": 1398.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-61-advanced-48",
@@ -9416,25 +9416,25 @@
     {
       "officialQuestionId": "official-62-advanced-21",
       "sourceImageSha256": "37bef0a8d149b1d7af29d9476fd47a4ec692f2c01ec57d6488451170bff5d71e",
-      "contentCropRatio": 0.86758,
-      "contentCropY": 1140,
-      "cropGuardPixels": 36.2,
-      "choiceStartY": 1176.6,
-      "choiceMarkerRadius": 14.5,
+      "contentCropRatio": 0.712329,
+      "contentCropY": 936,
+      "cropGuardPixels": 39.8,
+      "choiceStartY": 976.2,
+      "choiceMarkerRadius": 15.9,
       "imageWidth": 1103,
       "imageHeight": 1314,
       "markerCount": 5,
       "markerYs": [
+        976.2,
+        1042.2,
+        1110.6,
         1176.6,
-        1176.6,
-        1181.4,
-        1181.4,
-        1181.4
+        1242.6
       ],
-      "gridLayout": true,
-      "markerX": 502.2,
-      "lastMarkerY": 1181.4,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 95.4,
+      "lastMarkerY": 1242.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-62-advanced-22",
@@ -9508,25 +9508,25 @@
     {
       "officialQuestionId": "official-62-advanced-25",
       "sourceImageSha256": "89ae8f9cc95f1e4755519849b2e5acb3986c53b3d05c7cc98016ce651002a888",
-      "contentCropRatio": 0.856164,
-      "contentCropY": 750,
-      "cropGuardPixels": 46.1,
-      "choiceStartY": 796.2,
-      "choiceMarkerRadius": 18.4,
+      "contentCropRatio": 0.569635,
+      "contentCropY": 499,
+      "cropGuardPixels": 40.1,
+      "choiceStartY": 539.4,
+      "choiceMarkerRadius": 16.0,
       "imageWidth": 1103,
       "imageHeight": 876,
       "markerCount": 5,
       "markerYs": [
-        796.2,
-        797.4,
-        798.6,
-        798.6,
+        539.4,
+        607.8,
+        673.8,
+        739.8,
         805.8
       ],
-      "gridLayout": true,
-      "markerX": 480.6,
+      "gridLayout": false,
+      "markerX": 66.6,
       "lastMarkerY": 805.8,
-      "layoutDetection": "horizontal"
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-62-advanced-26",
@@ -9577,25 +9577,25 @@
     {
       "officialQuestionId": "official-62-advanced-28",
       "sourceImageSha256": "ddae35a179c32f58c10eb6c324a1291ddc405a0bd9bc59d2ac2296adb279ef22",
-      "contentCropRatio": 0.898188,
-      "contentCropY": 1041,
-      "cropGuardPixels": 40.1,
-      "choiceStartY": 1080.6,
-      "choiceMarkerRadius": 16.0,
+      "contentCropRatio": 0.672994,
+      "contentCropY": 780,
+      "cropGuardPixels": 42.5,
+      "choiceStartY": 822.6,
+      "choiceMarkerRadius": 17.0,
       "imageWidth": 1091,
       "imageHeight": 1159,
       "markerCount": 5,
       "markerYs": [
-        1080.6,
-        1081.8,
-        1086.6,
-        1086.6,
-        1098.6
+        822.6,
+        889.8,
+        955.8,
+        1023.0,
+        1089.0
       ],
       "gridLayout": true,
-      "markerX": 629.4,
-      "lastMarkerY": 1098.6,
-      "layoutDetection": "horizontal-fallback"
+      "markerX": 95.4,
+      "lastMarkerY": 1089.0,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-62-advanced-29",
@@ -9761,25 +9761,25 @@
     {
       "officialQuestionId": "official-62-advanced-36",
       "sourceImageSha256": "6f44c4094646d5485ab55adb4e0cc3d8a043107bb3485e9da1fd4f26881af518",
-      "contentCropRatio": 0.737207,
-      "contentCropY": 850,
-      "cropGuardPixels": 31.6,
-      "choiceStartY": 881.4,
-      "choiceMarkerRadius": 11.8,
+      "contentCropRatio": 0.671292,
+      "contentCropY": 774,
+      "cropGuardPixels": 42.5,
+      "choiceStartY": 816.6,
+      "choiceMarkerRadius": 17.0,
       "imageWidth": 1091,
       "imageHeight": 1153,
       "markerCount": 5,
       "markerYs": [
-        881.4,
+        816.6,
         882.6,
-        882.6,
-        886.2,
-        887.4
+        951.0,
+        1018.2,
+        1084.2
       ],
-      "gridLayout": true,
-      "markerX": 408.6,
-      "lastMarkerY": 887.4,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 95.4,
+      "lastMarkerY": 1084.2,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-62-advanced-37",
@@ -9830,25 +9830,25 @@
     {
       "officialQuestionId": "official-62-advanced-39",
       "sourceImageSha256": "4132cc0e59091bc556d1a27634229730a4214a7f0c1f1d5e13c616654fdd0827",
-      "contentCropRatio": 0.78331,
-      "contentCropY": 1117,
-      "cropGuardPixels": 31.6,
-      "choiceStartY": 1149.0,
-      "choiceMarkerRadius": 12.1,
+      "contentCropRatio": 0.734923,
+      "contentCropY": 1048,
+      "cropGuardPixels": 41.0,
+      "choiceStartY": 1089.0,
+      "choiceMarkerRadius": 16.4,
       "imageWidth": 1091,
       "imageHeight": 1426,
       "markerCount": 5,
       "markerYs": [
-        1149.0,
+        1089.0,
         1155.0,
-        1157.4,
-        1157.4,
-        1158.6
+        1222.2,
+        1288.2,
+        1355.4
       ],
-      "gridLayout": true,
-      "markerX": 407.4,
-      "lastMarkerY": 1158.6,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 66.6,
+      "lastMarkerY": 1355.4,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-62-advanced-40",
@@ -10083,25 +10083,25 @@
     {
       "officialQuestionId": "official-62-advanced-50",
       "sourceImageSha256": "9e04bf2a840747e6300c621831f36aba5d23dc83278e4d7a64ef2c6ec35e7fe2",
-      "contentCropRatio": 0.853755,
-      "contentCropY": 1512,
-      "cropGuardPixels": 46.4,
-      "choiceStartY": 1558.2,
-      "choiceMarkerRadius": 18.6,
+      "contentCropRatio": 0.750988,
+      "contentCropY": 1330,
+      "cropGuardPixels": 40.1,
+      "choiceStartY": 1369.8,
+      "choiceMarkerRadius": 16.0,
       "imageWidth": 1103,
       "imageHeight": 1771,
       "markerCount": 5,
       "markerYs": [
-        1558.2,
-        1560.6,
-        1560.6,
-        1560.6,
-        1567.8
+        1369.8,
+        1434.6,
+        1501.8,
+        1569.0,
+        1702.2
       ],
-      "gridLayout": true,
-      "markerX": 456.6,
-      "lastMarkerY": 1567.8,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 66.6,
+      "lastMarkerY": 1702.2,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-63-basic-01",
@@ -11034,68 +11034,68 @@
     {
       "officialQuestionId": "official-63-basic-44",
       "sourceImageSha256": "917ad14365b377f9b8d8277ae2d5bca6eff4f99d576c3cef7a035ac076d52149",
-      "contentCropRatio": 0.902157,
-      "contentCropY": 1171,
-      "cropGuardPixels": 46.7,
-      "choiceStartY": 1217.4,
-      "choiceMarkerRadius": 18.7,
+      "contentCropRatio": 0.760401,
+      "contentCropY": 987,
+      "cropGuardPixels": 41.6,
+      "choiceStartY": 1029.0,
+      "choiceMarkerRadius": 16.6,
       "imageWidth": 1091,
       "imageHeight": 1298,
       "markerCount": 4,
       "markerYs": [
-        1217.4,
-        1218.6,
-        1218.6,
+        1029.0,
+        1096.2,
+        1161.0,
         1227.0
       ],
-      "gridLayout": true,
-      "markerX": 378.6,
+      "gridLayout": false,
+      "markerX": 95.4,
       "lastMarkerY": 1227.0,
-      "layoutDetection": "horizontal"
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-63-basic-45",
       "sourceImageSha256": "5d603bbdcbad96fea4c1586dff987edab920b11463b9d64b23eeab2d506926eb",
-      "contentCropRatio": 0.917533,
-      "contentCropY": 1235,
-      "cropGuardPixels": 32.0,
-      "choiceStartY": 1266.6,
-      "choiceMarkerRadius": 12.1,
+      "contentCropRatio": 0.773403,
+      "contentCropY": 1041,
+      "cropGuardPixels": 35.9,
+      "choiceStartY": 1077.0,
+      "choiceMarkerRadius": 14.4,
       "imageWidth": 1103,
       "imageHeight": 1346,
       "markerCount": 4,
       "markerYs": [
-        1266.6,
-        1272.6,
-        1272.6,
+        1077.0,
+        1143.0,
+        1210.2,
         1275.0
       ],
-      "gridLayout": true,
-      "markerX": 411.0,
+      "gridLayout": false,
+      "markerX": 94.2,
       "lastMarkerY": 1275.0,
-      "layoutDetection": "horizontal"
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-63-basic-46",
       "sourceImageSha256": "5b9117889f3c655ace0b47bba5860808c7c27a49087f73c4443c5dc0f08c58c1",
-      "contentCropRatio": 0.829078,
-      "contentCropY": 1169,
-      "cropGuardPixels": 32.0,
-      "choiceStartY": 1200.6,
-      "choiceMarkerRadius": 11.5,
+      "contentCropRatio": 0.778014,
+      "contentCropY": 1097,
+      "cropGuardPixels": 42.2,
+      "choiceStartY": 1139.4,
+      "choiceMarkerRadius": 16.9,
       "imageWidth": 1103,
       "imageHeight": 1410,
       "markerCount": 4,
       "markerYs": [
-        1200.6,
-        1200.6,
+        1139.4,
         1206.6,
-        1206.6
+        1275.0,
+        1341.0
       ],
-      "gridLayout": true,
-      "markerX": 436.8,
-      "lastMarkerY": 1206.6,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 95.4,
+      "lastMarkerY": 1341.0,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-63-basic-47",
@@ -11526,25 +11526,25 @@
     {
       "officialQuestionId": "official-63-advanced-16",
       "sourceImageSha256": "248fd9e7c5a46ebc2c6cf64fbd979f6ff02a972afffe359f622e5b40b5b1a674",
-      "contentCropRatio": 0.798054,
-      "contentCropY": 984,
-      "cropGuardPixels": 35.6,
-      "choiceStartY": 1019.4,
-      "choiceMarkerRadius": 14.2,
+      "contentCropRatio": 0.684509,
+      "contentCropY": 844,
+      "cropGuardPixels": 43.4,
+      "choiceStartY": 887.4,
+      "choiceMarkerRadius": 17.4,
       "imageWidth": 1103,
       "imageHeight": 1233,
       "markerCount": 5,
       "markerYs": [
+        887.4,
+        953.4,
         1019.4,
-        1020.6,
-        1025.4,
-        1025.4,
-        1027.8
+        1086.6,
+        1152.6
       ],
       "gridLayout": true,
-      "markerX": 395.4,
-      "lastMarkerY": 1027.8,
-      "layoutDetection": "horizontal"
+      "markerX": 66.6,
+      "lastMarkerY": 1152.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-63-advanced-17",
@@ -11639,25 +11639,25 @@
     {
       "officialQuestionId": "official-63-advanced-21",
       "sourceImageSha256": "7a051a398b8102169349653570ff18f62e7249890673de0d5037dc583b647610",
-      "contentCropRatio": 0.721491,
-      "contentCropY": 1316,
-      "cropGuardPixels": 46.7,
-      "choiceStartY": 1362.6,
-      "choiceMarkerRadius": 18.7,
+      "contentCropRatio": 0.587171,
+      "contentCropY": 1071,
+      "cropGuardPixels": 34.4,
+      "choiceStartY": 1105.8,
+      "choiceMarkerRadius": 13.8,
       "imageWidth": 1103,
       "imageHeight": 1824,
       "markerCount": 5,
       "markerYs": [
-        1362.6,
-        1362.6,
-        1368.6,
-        1371.0,
+        1105.8,
+        1171.8,
+        1239.0,
+        1303.8,
         1372.2
       ],
-      "gridLayout": true,
-      "markerX": 519.0,
+      "gridLayout": false,
+      "markerX": 95.4,
       "lastMarkerY": 1372.2,
-      "layoutDetection": "horizontal"
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-63-advanced-22",
@@ -11708,25 +11708,25 @@
     {
       "officialQuestionId": "official-63-advanced-24",
       "sourceImageSha256": "2da8fc4118885273c4603be9db45ded9d03acd9d453c152cf7d2adc9e89e9144",
-      "contentCropRatio": 0.877591,
-      "contentCropY": 1355,
-      "cropGuardPixels": 31.6,
-      "choiceStartY": 1386.6,
-      "choiceMarkerRadius": 12.0,
+      "contentCropRatio": 0.751295,
+      "contentCropY": 1160,
+      "cropGuardPixels": 35.6,
+      "choiceStartY": 1195.8,
+      "choiceMarkerRadius": 14.2,
       "imageWidth": 1091,
       "imageHeight": 1544,
       "markerCount": 5,
       "markerYs": [
-        1386.6,
-        1387.8,
-        1391.4,
-        1392.6,
-        1396.2
+        1195.8,
+        1263.0,
+        1329.0,
+        1396.2,
+        1463.4
       ],
       "gridLayout": true,
-      "markerX": 450.6,
-      "lastMarkerY": 1396.2,
-      "layoutDetection": "horizontal"
+      "markerX": 66.6,
+      "lastMarkerY": 1463.4,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-63-advanced-25",
@@ -11846,25 +11846,25 @@
     {
       "officialQuestionId": "official-63-advanced-30",
       "sourceImageSha256": "80a4d61fabe3d732913c5e0a4ad9e836ea3db8b6146d11d97189b30cd3432863",
-      "contentCropRatio": 0.847431,
-      "contentCropY": 1072,
-      "cropGuardPixels": 36.5,
-      "choiceStartY": 1108.2,
-      "choiceMarkerRadius": 14.6,
+      "contentCropRatio": 0.690119,
+      "contentCropY": 873,
+      "cropGuardPixels": 43.1,
+      "choiceStartY": 916.2,
+      "choiceMarkerRadius": 17.2,
       "imageWidth": 1103,
       "imageHeight": 1265,
       "markerCount": 5,
       "markerYs": [
-        1108.2,
-        1111.8,
+        916.2,
+        983.4,
+        1050.6,
         1116.6,
-        1116.6,
-        1117.8
+        1183.8
       ],
-      "gridLayout": true,
-      "markerX": 451.8,
-      "lastMarkerY": 1117.8,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 95.4,
+      "lastMarkerY": 1183.8,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-63-advanced-31",
@@ -11961,25 +11961,25 @@
     {
       "officialQuestionId": "official-63-advanced-35",
       "sourceImageSha256": "054d1984a714209fdddc9a1497ba81860e6b2f9a622f724588b7fb8632e7377f",
-      "contentCropRatio": 0.881679,
-      "contentCropY": 1386,
-      "cropGuardPixels": 33.5,
-      "choiceStartY": 1419.0,
-      "choiceMarkerRadius": 13.4,
+      "contentCropRatio": 0.759542,
+      "contentCropY": 1194,
+      "cropGuardPixels": 34.7,
+      "choiceStartY": 1228.2,
+      "choiceMarkerRadius": 13.9,
       "imageWidth": 1091,
       "imageHeight": 1572,
       "markerCount": 5,
       "markerYs": [
-        1419.0,
-        1422.6,
-        1422.6,
-        1422.6,
-        1428.6
+        1228.2,
+        1295.4,
+        1362.6,
+        1428.6,
+        1495.8
       ],
       "gridLayout": true,
-      "markerX": 591.0,
-      "lastMarkerY": 1428.6,
-      "layoutDetection": "horizontal"
+      "markerX": 95.4,
+      "lastMarkerY": 1495.8,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-63-advanced-36",
@@ -12030,25 +12030,25 @@
     {
       "officialQuestionId": "official-63-advanced-38",
       "sourceImageSha256": "1d5f3d3127a83c91f442379805cd4676b6940ffb5203a8b228d9e4554187bda2",
-      "contentCropRatio": 0.862966,
-      "contentCropY": 1228,
-      "cropGuardPixels": 38.6,
-      "choiceStartY": 1266.6,
-      "choiceMarkerRadius": 15.4,
+      "contentCropRatio": 0.73085,
+      "contentCropY": 1040,
+      "cropGuardPixels": 34.7,
+      "choiceStartY": 1074.6,
+      "choiceMarkerRadius": 13.9,
       "imageWidth": 1103,
       "imageHeight": 1423,
       "markerCount": 5,
       "markerYs": [
-        1266.6,
-        1266.6,
-        1267.8,
-        1269.0,
-        1275.0
+        1074.6,
+        1141.8,
+        1209.0,
+        1275.0,
+        1342.2
       ],
-      "gridLayout": true,
-      "markerX": 400.2,
-      "lastMarkerY": 1275.0,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 95.4,
+      "lastMarkerY": 1342.2,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-63-advanced-39",
@@ -12257,48 +12257,48 @@
     {
       "officialQuestionId": "official-63-advanced-48",
       "sourceImageSha256": "826a37dce6493f40aed8bf8fe9591855187f4b160cecff701a4717979330dd16",
-      "contentCropRatio": 0.917677,
-      "contentCropY": 2196,
-      "cropGuardPixels": 36.8,
-      "choiceStartY": 2232.6,
-      "choiceMarkerRadius": 14.7,
+      "contentCropRatio": 0.840368,
+      "contentCropY": 2011,
+      "cropGuardPixels": 34.7,
+      "choiceStartY": 2045.4,
+      "choiceMarkerRadius": 13.9,
       "imageWidth": 1091,
       "imageHeight": 2393,
       "markerCount": 5,
       "markerYs": [
-        2232.6,
-        2239.8,
-        2247.0,
-        2249.4,
-        2249.4
+        2045.4,
+        2111.4,
+        2178.6,
+        2244.6,
+        2310.6
       ],
-      "gridLayout": true,
-      "markerX": 576.6,
-      "lastMarkerY": 2249.4,
-      "layoutDetection": "horizontal-fallback"
+      "gridLayout": false,
+      "markerX": 66.6,
+      "lastMarkerY": 2310.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-63-advanced-49",
       "sourceImageSha256": "6a366089def0382f05d36880f727e6bdd010c43ba44aafcc2d4c25e89276104e",
-      "contentCropRatio": 0.827373,
-      "contentCropY": 1203,
-      "cropGuardPixels": 39.8,
-      "choiceStartY": 1242.6,
-      "choiceMarkerRadius": 15.9,
+      "contentCropRatio": 0.737276,
+      "contentCropY": 1072,
+      "cropGuardPixels": 42.2,
+      "choiceStartY": 1114.2,
+      "choiceMarkerRadius": 16.9,
       "imageWidth": 1103,
       "imageHeight": 1454,
       "markerCount": 5,
       "markerYs": [
-        1242.6,
-        1242.6,
-        1245.0,
+        1114.2,
+        1182.6,
         1249.8,
-        1249.8
+        1314.6,
+        1383.0
       ],
       "gridLayout": true,
-      "markerX": 371.4,
-      "lastMarkerY": 1249.8,
-      "layoutDetection": "horizontal"
+      "markerX": 67.8,
+      "lastMarkerY": 1383.0,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-63-advanced-50",
@@ -12518,24 +12518,24 @@
     {
       "officialQuestionId": "official-64-basic-10",
       "sourceImageSha256": "412ca98b9278b0a684b1e9bcb7980111f223539df8e26bc6210682cf27c4dd0e",
-      "contentCropRatio": 0.679792,
-      "contentCropY": 915,
-      "cropGuardPixels": 43.1,
-      "choiceStartY": 958.2,
-      "choiceMarkerRadius": 17.2,
+      "contentCropRatio": 0.768945,
+      "contentCropY": 1035,
+      "cropGuardPixels": 41.6,
+      "choiceStartY": 1077.0,
+      "choiceMarkerRadius": 16.6,
       "imageWidth": 1091,
       "imageHeight": 1346,
       "markerCount": 4,
       "markerYs": [
-        958.2,
-        960.6,
-        972.6,
-        973.8
+        1077.0,
+        1144.2,
+        1209.0,
+        1275.0
       ],
-      "gridLayout": true,
-      "markerX": 573.0,
-      "lastMarkerY": 973.8,
-      "layoutDetection": "horizontal-fallback"
+      "gridLayout": false,
+      "markerX": 95.4,
+      "lastMarkerY": 1275.0,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-64-basic-11",
@@ -12756,24 +12756,24 @@
     {
       "officialQuestionId": "official-64-basic-21",
       "sourceImageSha256": "4d26b23ad11ffb31e8ae49f3bb126171785e218bb5b74c45d6558328540f0384",
-      "contentCropRatio": 0.924649,
-      "contentCropY": 1448,
-      "cropGuardPixels": 36.5,
-      "choiceStartY": 1485.0,
-      "choiceMarkerRadius": 14.6,
+      "contentCropRatio": 0.800128,
+      "contentCropY": 1253,
+      "cropGuardPixels": 42.2,
+      "choiceStartY": 1295.4,
+      "choiceMarkerRadius": 16.9,
       "imageWidth": 1103,
       "imageHeight": 1566,
       "markerCount": 4,
       "markerYs": [
-        1485.0,
-        1488.6,
-        1499.4,
-        1499.4
+        1295.4,
+        1362.6,
+        1429.8,
+        1495.8
       ],
-      "gridLayout": true,
-      "markerX": 690.0,
-      "lastMarkerY": 1499.4,
-      "layoutDetection": "horizontal-fallback"
+      "gridLayout": false,
+      "markerX": 95.4,
+      "lastMarkerY": 1495.8,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-64-basic-22",
@@ -12884,24 +12884,24 @@
     {
       "officialQuestionId": "official-64-basic-27",
       "sourceImageSha256": "efbc1ad45707212d6ebe2e31c205a69342f5501d6ccb17f8bbd05e437e726775",
-      "contentCropRatio": 0.885172,
-      "contentCropY": 979,
-      "cropGuardPixels": 46.7,
-      "choiceStartY": 1025.4,
-      "choiceMarkerRadius": 18.7,
+      "contentCropRatio": 0.718807,
+      "contentCropY": 795,
+      "cropGuardPixels": 41.6,
+      "choiceStartY": 837.0,
+      "choiceMarkerRadius": 16.6,
       "imageWidth": 1091,
       "imageHeight": 1106,
       "markerCount": 4,
       "markerYs": [
-        1025.4,
-        1032.6,
-        1032.6,
+        837.0,
+        904.2,
+        969.0,
         1035.0
       ],
       "gridLayout": true,
-      "markerX": 414.0,
+      "markerX": 95.4,
       "lastMarkerY": 1035.0,
-      "layoutDetection": "horizontal"
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-64-basic-28",
@@ -12950,24 +12950,24 @@
     {
       "officialQuestionId": "official-64-basic-30",
       "sourceImageSha256": "19eb9b41ad9a5da918deb70b6373010ddd1947b0b9a395a41beb46b51c8b33f6",
-      "contentCropRatio": 0.688462,
-      "contentCropY": 895,
-      "cropGuardPixels": 43.1,
-      "choiceStartY": 937.8,
-      "choiceMarkerRadius": 17.2,
+      "contentCropRatio": 0.760769,
+      "contentCropY": 989,
+      "cropGuardPixels": 39.8,
+      "choiceStartY": 1029.0,
+      "choiceMarkerRadius": 15.9,
       "imageWidth": 1091,
       "imageHeight": 1300,
       "markerCount": 4,
       "markerYs": [
-        937.8,
-        942.6,
-        949.8,
-        954.6
+        1029.0,
+        1097.4,
+        1164.6,
+        1229.4
       ],
-      "gridLayout": true,
-      "markerX": 483.0,
-      "lastMarkerY": 954.6,
-      "layoutDetection": "horizontal-fallback"
+      "gridLayout": false,
+      "markerX": 66.6,
+      "lastMarkerY": 1229.4,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-64-basic-31",
@@ -13102,24 +13102,24 @@
     {
       "officialQuestionId": "official-64-basic-37",
       "sourceImageSha256": "a31d8a5489414193370614283e3c7aabf1d9df561513db3fc89efcf4eb78e740",
-      "contentCropRatio": 0.853434,
-      "contentCropY": 1019,
-      "cropGuardPixels": 32.0,
-      "choiceStartY": 1050.6,
-      "choiceMarkerRadius": 11.4,
+      "contentCropRatio": 0.737856,
+      "contentCropY": 881,
+      "cropGuardPixels": 42.2,
+      "choiceStartY": 923.4,
+      "choiceMarkerRadius": 16.9,
       "imageWidth": 1103,
       "imageHeight": 1194,
       "markerCount": 4,
       "markerYs": [
-        1050.6,
-        1050.6,
-        1054.2,
-        1057.8
+        923.4,
+        990.6,
+        1057.8,
+        1123.8
       ],
-      "gridLayout": true,
-      "markerX": 429.6,
-      "lastMarkerY": 1057.8,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 95.4,
+      "lastMarkerY": 1123.8,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-64-basic-38",
@@ -13188,24 +13188,24 @@
     {
       "officialQuestionId": "official-64-basic-41",
       "sourceImageSha256": "a761983e12c38d64f3d95a1d9d982454e315aaff95129c1db8a013b9fb9034b9",
-      "contentCropRatio": 0.931187,
-      "contentCropY": 1475,
-      "cropGuardPixels": 32.0,
-      "choiceStartY": 1506.6,
-      "choiceMarkerRadius": 11.8,
+      "contentCropRatio": 0.804293,
+      "contentCropY": 1274,
+      "cropGuardPixels": 39.5,
+      "choiceStartY": 1313.4,
+      "choiceMarkerRadius": 15.8,
       "imageWidth": 1103,
       "imageHeight": 1584,
       "markerCount": 4,
       "markerYs": [
-        1506.6,
-        1506.6,
-        1506.6,
+        1313.4,
+        1380.6,
+        1446.6,
         1513.8
       ],
-      "gridLayout": true,
-      "markerX": 393.0,
+      "gridLayout": false,
+      "markerX": 67.8,
       "lastMarkerY": 1513.8,
-      "layoutDetection": "horizontal"
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-64-basic-42",
@@ -13296,24 +13296,24 @@
     {
       "officialQuestionId": "official-64-basic-46",
       "sourceImageSha256": "a842d38e8c09793cd300f6149f1c72d95fa6a69b1478070c9ce22da51c3116b0",
-      "contentCropRatio": 0.877823,
-      "contentCropY": 855,
-      "cropGuardPixels": 40.1,
-      "choiceStartY": 894.6,
-      "choiceMarkerRadius": 16.0,
+      "contentCropRatio": 0.680698,
+      "contentCropY": 663,
+      "cropGuardPixels": 41.3,
+      "choiceStartY": 703.8,
+      "choiceMarkerRadius": 16.5,
       "imageWidth": 1103,
       "imageHeight": 974,
       "markerCount": 4,
       "markerYs": [
-        894.6,
-        895.8,
-        900.6,
+        703.8,
+        769.8,
+        837.0,
         904.2
       ],
-      "gridLayout": true,
-      "markerX": 532.2,
+      "gridLayout": false,
+      "markerX": 95.4,
       "lastMarkerY": 904.2,
-      "layoutDetection": "horizontal"
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-64-basic-47",
@@ -13585,25 +13585,25 @@
     {
       "officialQuestionId": "official-64-advanced-09",
       "sourceImageSha256": "f87d3a87706e98855d4cdf4f20a65b48e1cfc373781c75be183a9b3738993ea7",
-      "contentCropRatio": 0.905004,
-      "contentCropY": 1067,
-      "cropGuardPixels": 31.6,
-      "choiceStartY": 1098.6,
-      "choiceMarkerRadius": 12.0,
+      "contentCropRatio": 0.679389,
+      "contentCropY": 801,
+      "cropGuardPixels": 41.3,
+      "choiceStartY": 841.8,
+      "choiceMarkerRadius": 16.5,
       "imageWidth": 1091,
       "imageHeight": 1179,
       "markerCount": 5,
       "markerYs": [
-        1098.6,
-        1105.8,
-        1115.4,
-        1115.4,
-        1115.4
+        841.8,
+        910.2,
+        976.2,
+        1041.0,
+        1108.2
       ],
-      "gridLayout": true,
-      "markerX": 467.4,
-      "lastMarkerY": 1115.4,
-      "layoutDetection": "horizontal-fallback"
+      "gridLayout": false,
+      "markerX": 95.4,
+      "lastMarkerY": 1108.2,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-64-advanced-10",
@@ -13882,25 +13882,25 @@
     {
       "officialQuestionId": "official-64-advanced-22",
       "sourceImageSha256": "8b820b82d5bbf8c40462a5edb3bfea4e6ce2a742d9087da30dc931bc26e2129c",
-      "contentCropRatio": 0.876098,
-      "contentCropY": 898,
-      "cropGuardPixels": 46.7,
-      "choiceStartY": 945.0,
-      "choiceMarkerRadius": 18.7,
+      "contentCropRatio": 0.63122,
+      "contentCropY": 647,
+      "cropGuardPixels": 41.3,
+      "choiceStartY": 688.2,
+      "choiceMarkerRadius": 16.5,
       "imageWidth": 1091,
       "imageHeight": 1025,
       "markerCount": 5,
       "markerYs": [
-        945.0,
-        948.6,
-        948.6,
-        954.6,
-        959.4
+        688.2,
+        756.6,
+        821.4,
+        887.4,
+        955.8
       ],
-      "gridLayout": true,
-      "markerX": 455.4,
-      "lastMarkerY": 959.4,
-      "layoutDetection": "horizontal-fallback"
+      "gridLayout": false,
+      "markerX": 66.6,
+      "lastMarkerY": 955.8,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-64-advanced-23",
@@ -14112,25 +14112,25 @@
     {
       "officialQuestionId": "official-64-advanced-32",
       "sourceImageSha256": "a335cd8d7bd31eb9e4cf20131dcc628ace804f404b1049ba19eb2a87730a59d3",
-      "contentCropRatio": 0.842742,
-      "contentCropY": 1045,
-      "cropGuardPixels": 49.7,
-      "choiceStartY": 1095.0,
-      "choiceMarkerRadius": 19.9,
+      "contentCropRatio": 0.694355,
+      "contentCropY": 861,
+      "cropGuardPixels": 40.4,
+      "choiceStartY": 901.8,
+      "choiceMarkerRadius": 16.2,
       "imageWidth": 1103,
       "imageHeight": 1240,
       "markerCount": 5,
       "markerYs": [
-        1095.0,
-        1098.6,
-        1098.6,
-        1108.2,
-        1109.4
+        901.8,
+        969.0,
+        1037.4,
+        1102.2,
+        1170.6
       ],
       "gridLayout": true,
-      "markerX": 473.4,
-      "lastMarkerY": 1109.4,
-      "layoutDetection": "horizontal-fallback"
+      "markerX": 67.8,
+      "lastMarkerY": 1170.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-64-advanced-33",
@@ -14181,25 +14181,25 @@
     {
       "officialQuestionId": "official-64-advanced-35",
       "sourceImageSha256": "564b2115c9f91c3115b72f08e4329c1bff1dc05733c24d945739823b8c2ed588",
-      "contentCropRatio": 0.883422,
-      "contentCropY": 826,
-      "cropGuardPixels": 32.9,
-      "choiceStartY": 858.6,
-      "choiceMarkerRadius": 13.2,
+      "contentCropRatio": 0.603209,
+      "contentCropY": 564,
+      "cropGuardPixels": 35.6,
+      "choiceStartY": 599.4,
+      "choiceMarkerRadius": 14.2,
       "imageWidth": 1091,
       "imageHeight": 935,
       "markerCount": 5,
       "markerYs": [
-        858.6,
-        858.6,
-        862.2,
-        864.6,
+        599.4,
+        665.4,
+        735.0,
+        801.0,
         868.2
       ],
       "gridLayout": true,
-      "markerX": 555.0,
+      "markerX": 95.4,
       "lastMarkerY": 868.2,
-      "layoutDetection": "horizontal"
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-64-advanced-36",
@@ -14250,25 +14250,25 @@
     {
       "officialQuestionId": "official-64-advanced-38",
       "sourceImageSha256": "8f03d3987993f1b8f6b0f1b87ea92b04e9748efeea2ed6bce81ec8f5a92b83a7",
-      "contentCropRatio": 0.861776,
-      "contentCropY": 1116,
-      "cropGuardPixels": 36.5,
-      "choiceStartY": 1152.6,
-      "choiceMarkerRadius": 14.6,
+      "contentCropRatio": 0.708108,
+      "contentCropY": 917,
+      "cropGuardPixels": 41.6,
+      "choiceStartY": 958.2,
+      "choiceMarkerRadius": 16.6,
       "imageWidth": 1103,
       "imageHeight": 1295,
       "markerCount": 5,
       "markerYs": [
-        1152.6,
-        1152.6,
+        958.2,
+        1024.2,
+        1090.2,
         1158.6,
-        1158.6,
-        1161.0
+        1224.6
       ],
-      "gridLayout": true,
-      "markerX": 433.8,
-      "lastMarkerY": 1161.0,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 95.4,
+      "lastMarkerY": 1224.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-64-advanced-39",
@@ -14480,48 +14480,43 @@
     {
       "officialQuestionId": "official-64-advanced-48",
       "sourceImageSha256": "56ef630db3e198bb966a2071886240b52bc7bdf61e893cdcfc6977320388e668",
-      "contentCropRatio": 0.77147,
-      "contentCropY": 1060,
-      "cropGuardPixels": 42.2,
-      "choiceStartY": 1102.2,
-      "choiceMarkerRadius": 16.9,
+      "contentCropRatio": 0.578603,
+      "contentCropY": 795,
+      "cropGuardPixels": 41.6,
+      "choiceStartY": 837.0,
+      "choiceMarkerRadius": 16.6,
       "imageWidth": 1091,
       "imageHeight": 1374,
       "markerCount": 5,
       "markerYs": [
-        1102.2,
+        837.0,
+        903.0,
+        970.2,
         1103.4,
-        1103.4,
-        1107.0,
-        1109.4
+        1236.6
       ],
-      "gridLayout": true,
-      "markerX": 486.6,
-      "lastMarkerY": 1109.4,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 66.6,
+      "lastMarkerY": 1236.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-64-advanced-49",
       "sourceImageSha256": "cbfa88fe54460650d51a83b66150ebe69321013db3f3dd87c9cab45cde0375af",
-      "contentCropRatio": 0.804644,
-      "contentCropY": 1005,
-      "cropGuardPixels": 32.0,
-      "choiceStartY": 1037.4,
-      "choiceMarkerRadius": 11.8,
+      "contentCropRatio": 0.688551,
+      "contentCropY": 860,
+      "cropGuardPixels": null,
+      "choiceStartY": null,
+      "choiceMarkerRadius": null,
       "imageWidth": 1103,
       "imageHeight": 1249,
-      "markerCount": 5,
-      "markerYs": [
-        1037.4,
-        1038.6,
-        1038.6,
-        1041.0,
-        1045.8
-      ],
-      "gridLayout": true,
-      "markerX": 504.6,
-      "lastMarkerY": 1045.8,
-      "layoutDetection": "horizontal"
+      "markerCount": 0,
+      "markerYs": [],
+      "gridLayout": false,
+      "markerX": null,
+      "lastMarkerY": null,
+      "manualLayoutReview": true,
+      "layoutDetection": "manual-content-boundary"
     },
     {
       "officialQuestionId": "official-64-advanced-50",
@@ -14799,25 +14794,25 @@
     {
       "officialQuestionId": "official-65-advanced-12",
       "sourceImageSha256": "1af18d9af2b8fb6ca77dca1774abf456752a0400d8b2d39c9becaaa6e6e7483f",
-      "contentCropRatio": 0.911519,
-      "contentCropY": 1092,
-      "cropGuardPixels": 37.1,
-      "choiceStartY": 1128.6,
-      "choiceMarkerRadius": 14.8,
+      "contentCropRatio": 0.685309,
+      "contentCropY": 821,
+      "cropGuardPixels": 41.3,
+      "choiceStartY": 862.2,
+      "choiceMarkerRadius": 16.5,
       "imageWidth": 1103,
       "imageHeight": 1198,
       "markerCount": 5,
       "markerYs": [
-        1128.6,
-        1131.0,
-        1133.4,
-        1133.4,
-        1133.4
+        862.2,
+        929.4,
+        995.4,
+        1062.6,
+        1128.6
       ],
       "gridLayout": true,
-      "markerX": 516.6,
-      "lastMarkerY": 1133.4,
-      "layoutDetection": "horizontal"
+      "markerX": 95.4,
+      "lastMarkerY": 1128.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-65-advanced-13",
@@ -15138,25 +15133,25 @@
     {
       "officialQuestionId": "official-65-advanced-27",
       "sourceImageSha256": "b1f1bc32a7bb374e384d991220c519fcf399f8c21c93492c9608d5087dfcd4a9",
-      "contentCropRatio": 0.867316,
-      "contentCropY": 1157,
-      "cropGuardPixels": 31.6,
-      "choiceStartY": 1188.6,
-      "choiceMarkerRadius": 12.0,
+      "contentCropRatio": 0.715892,
+      "contentCropY": 955,
+      "cropGuardPixels": 41.9,
+      "choiceStartY": 996.6,
+      "choiceMarkerRadius": 16.8,
       "imageWidth": 1091,
       "imageHeight": 1334,
       "markerCount": 5,
       "markerYs": [
-        1188.6,
-        1188.6,
-        1194.6,
-        1194.6,
-        1198.2
+        996.6,
+        1062.6,
+        1132.2,
+        1198.2,
+        1263.0
       ],
-      "gridLayout": true,
-      "markerX": 435.0,
-      "lastMarkerY": 1198.2,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 95.4,
+      "lastMarkerY": 1263.0,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-65-advanced-28",
@@ -15345,25 +15340,25 @@
     {
       "officialQuestionId": "official-65-advanced-36",
       "sourceImageSha256": "f6734d407d1d1e41faa47592bf75e5303c9acaac42b7a09f380c180f687a256c",
-      "contentCropRatio": 0.795377,
-      "contentCropY": 929,
-      "cropGuardPixels": 31.6,
-      "choiceStartY": 960.6,
-      "choiceMarkerRadius": 12.0,
+      "contentCropRatio": 0.681507,
+      "contentCropY": 796,
+      "cropGuardPixels": 35.3,
+      "choiceStartY": 831.0,
+      "choiceMarkerRadius": 14.1,
       "imageWidth": 1091,
       "imageHeight": 1168,
       "markerCount": 5,
       "markerYs": [
-        960.6,
-        960.6,
+        831.0,
+        899.4,
         965.4,
-        965.4,
-        967.8
+        1031.4,
+        1098.6
       ],
-      "gridLayout": true,
-      "markerX": 479.4,
-      "lastMarkerY": 967.8,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 95.4,
+      "lastMarkerY": 1098.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-65-advanced-37",
@@ -15621,25 +15616,25 @@
     {
       "officialQuestionId": "official-65-advanced-48",
       "sourceImageSha256": "50bea06d65a437b3a79b55d25c39bab927fd95dbcd7cc2ced0e14196290a3a24",
-      "contentCropRatio": 0.852007,
-      "contentCropY": 1019,
-      "cropGuardPixels": 32.0,
-      "choiceStartY": 1050.6,
-      "choiceMarkerRadius": 12.8,
+      "contentCropRatio": 0.682274,
+      "contentCropY": 816,
+      "cropGuardPixels": 42.5,
+      "choiceStartY": 858.6,
+      "choiceMarkerRadius": 17.0,
       "imageWidth": 1091,
       "imageHeight": 1196,
       "markerCount": 5,
       "markerYs": [
-        1050.6,
-        1050.6,
-        1050.6,
-        1055.4,
-        1059.0
+        858.6,
+        925.8,
+        994.2,
+        1059.0,
+        1125.0
       ],
-      "gridLayout": true,
-      "markerX": 371.4,
-      "lastMarkerY": 1059.0,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 66.6,
+      "lastMarkerY": 1125.0,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-65-advanced-49",
@@ -16768,25 +16763,25 @@
     {
       "officialQuestionId": "official-66-advanced-01",
       "sourceImageSha256": "38868371e749442897b1ce0065e4e8c5edf6e3e31ca3ab4d3cadcf2f4994d0fd",
-      "contentCropRatio": 0.924725,
-      "contentCropY": 1511,
-      "cropGuardPixels": 43.4,
-      "choiceStartY": 1554.6,
-      "choiceMarkerRadius": 17.4,
+      "contentCropRatio": 0.769278,
+      "contentCropY": 1257,
+      "cropGuardPixels": 40.1,
+      "choiceStartY": 1296.6,
+      "choiceMarkerRadius": 16.0,
       "imageWidth": 1091,
       "imageHeight": 1634,
       "markerCount": 5,
       "markerYs": [
-        1554.6,
-        1558.2,
-        1560.6,
-        1560.6,
+        1296.6,
+        1363.8,
+        1432.2,
+        1499.4,
         1564.2
       ],
-      "gridLayout": true,
-      "markerX": 431.4,
+      "gridLayout": false,
+      "markerX": 95.4,
       "lastMarkerY": 1564.2,
-      "layoutDetection": "horizontal"
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-66-advanced-02",
@@ -17016,25 +17011,25 @@
     {
       "officialQuestionId": "official-66-advanced-12",
       "sourceImageSha256": "3996fe055b4be61226fb6d24aaa7b8d073f1088be885b5f3c2eda63e038c420e",
-      "contentCropRatio": 0.717799,
-      "contentCropY": 1226,
-      "cropGuardPixels": 50.0,
-      "choiceStartY": 1276.2,
-      "choiceMarkerRadius": 20.0,
+      "contentCropRatio": 0.778689,
+      "contentCropY": 1330,
+      "cropGuardPixels": 40.1,
+      "choiceStartY": 1369.8,
+      "choiceMarkerRadius": 16.0,
       "imageWidth": 1103,
       "imageHeight": 1708,
       "markerCount": 5,
       "markerYs": [
-        1276.2,
-        1284.6,
-        1284.6,
-        1284.6,
-        1284.6
+        1369.8,
+        1438.2,
+        1504.2,
+        1571.4,
+        1638.6
       ],
-      "gridLayout": true,
-      "markerX": 534.6,
-      "lastMarkerY": 1284.6,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 95.4,
+      "lastMarkerY": 1638.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-66-advanced-13",
@@ -17197,25 +17192,25 @@
     {
       "officialQuestionId": "official-66-advanced-20",
       "sourceImageSha256": "623eb18670f652b54ee7ed6225556dae8220d1d881c4f774359db73451b9c744",
-      "contentCropRatio": 0.899287,
-      "contentCropY": 1009,
-      "cropGuardPixels": 33.5,
-      "choiceStartY": 1042.2,
-      "choiceMarkerRadius": 13.4,
+      "contentCropRatio": 0.666667,
+      "contentCropY": 748,
+      "cropGuardPixels": 37.1,
+      "choiceStartY": 785.4,
+      "choiceMarkerRadius": 14.8,
       "imageWidth": 1103,
       "imageHeight": 1122,
       "markerCount": 5,
       "markerYs": [
-        1042.2,
-        1044.6,
-        1044.6,
-        1050.6,
-        1055.4
+        785.4,
+        852.6,
+        918.6,
+        985.8,
+        1051.8
       ],
-      "gridLayout": true,
-      "markerX": 690.6,
-      "lastMarkerY": 1055.4,
-      "layoutDetection": "horizontal-fallback"
+      "gridLayout": false,
+      "markerX": 95.4,
+      "lastMarkerY": 1051.8,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-66-advanced-21",
@@ -17450,25 +17445,25 @@
     {
       "officialQuestionId": "official-66-advanced-31",
       "sourceImageSha256": "0d3ec50cbf65e914b89be2cbdb3a0871c54f65bcbfc5b0c81399683611cf4009",
-      "contentCropRatio": 0.852754,
-      "contentCropY": 2276,
-      "cropGuardPixels": 46.7,
-      "choiceStartY": 2322.6,
-      "choiceMarkerRadius": 18.7,
+      "contentCropRatio": 0.859873,
+      "contentCropY": 2295,
+      "cropGuardPixels": 37.4,
+      "choiceStartY": 2332.2,
+      "choiceMarkerRadius": 15.0,
       "imageWidth": 1103,
       "imageHeight": 2669,
       "markerCount": 5,
       "markerYs": [
-        2322.6,
-        2328.6,
-        2328.6,
-        2328.6,
-        2332.2
+        2332.2,
+        2399.4,
+        2466.6,
+        2531.4,
+        2598.6
       ],
-      "gridLayout": true,
-      "markerX": 443.4,
-      "lastMarkerY": 2332.2,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 67.8,
+      "lastMarkerY": 2598.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-66-advanced-32",
@@ -19176,25 +19171,25 @@
     {
       "officialQuestionId": "official-67-advanced-09",
       "sourceImageSha256": "af86f02f1e04fb744ad1e8998d88b2b7e14d7f8c37e3f9fd6171526290348344",
-      "contentCropRatio": 0.847826,
-      "contentCropY": 1053,
-      "cropGuardPixels": 43.4,
-      "choiceStartY": 1096.2,
-      "choiceMarkerRadius": 17.4,
+      "contentCropRatio": 0.696457,
+      "contentCropY": 865,
+      "cropGuardPixels": 41.6,
+      "choiceStartY": 906.6,
+      "choiceMarkerRadius": 16.6,
       "imageWidth": 1091,
       "imageHeight": 1242,
       "markerCount": 5,
       "markerYs": [
-        1096.2,
-        1098.6,
+        906.6,
+        971.4,
+        1038.6,
         1104.6,
-        1104.6,
-        1104.6
+        1174.2
       ],
       "gridLayout": true,
-      "markerX": 431.4,
-      "lastMarkerY": 1104.6,
-      "layoutDetection": "horizontal"
+      "markerX": 95.4,
+      "lastMarkerY": 1174.2,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-67-advanced-10",
@@ -19314,25 +19309,25 @@
     {
       "officialQuestionId": "official-67-advanced-15",
       "sourceImageSha256": "67721f058a190828a973fc11f70eedb79436cd4cc9084a6e6a03bf46b649e99b",
-      "contentCropRatio": 0.710162,
-      "contentCropY": 615,
-      "cropGuardPixels": 39.8,
-      "choiceStartY": 654.6,
-      "choiceMarkerRadius": 15.9,
+      "contentCropRatio": 0.569284,
+      "contentCropY": 493,
+      "cropGuardPixels": 35.9,
+      "choiceStartY": 528.6,
+      "choiceMarkerRadius": 14.4,
       "imageWidth": 1091,
       "imageHeight": 866,
       "markerCount": 5,
       "markerYs": [
-        654.6,
-        655.8,
-        660.6,
-        660.6,
-        663.0
+        528.6,
+        595.8,
+        663.0,
+        729.0,
+        795.0
       ],
-      "gridLayout": true,
-      "markerX": 372.6,
-      "lastMarkerY": 663.0,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 66.6,
+      "lastMarkerY": 795.0,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-67-advanced-16",
@@ -19544,25 +19539,25 @@
     {
       "officialQuestionId": "official-67-advanced-25",
       "sourceImageSha256": "600653bc140e6bf54bef0c59287bc8cfea70f7806634eb27a966e0129a1990e1",
-      "contentCropRatio": 0.918819,
-      "contentCropY": 1245,
-      "cropGuardPixels": 33.2,
-      "choiceStartY": 1278.6,
-      "choiceMarkerRadius": 13.3,
+      "contentCropRatio": 0.720295,
+      "contentCropY": 976,
+      "cropGuardPixels": 41.9,
+      "choiceStartY": 1018.2,
+      "choiceMarkerRadius": 16.8,
       "imageWidth": 1103,
       "imageHeight": 1355,
       "markerCount": 5,
       "markerYs": [
-        1278.6,
-        1279.8,
-        1283.4,
-        1283.4,
-        1287.0
+        1018.2,
+        1084.2,
+        1150.2,
+        1217.4,
+        1283.4
       ],
       "gridLayout": true,
-      "markerX": 364.2,
-      "lastMarkerY": 1287.0,
-      "layoutDetection": "horizontal"
+      "markerX": 67.8,
+      "lastMarkerY": 1283.4,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-67-advanced-26",
@@ -19657,25 +19652,25 @@
     {
       "officialQuestionId": "official-67-advanced-30",
       "sourceImageSha256": "e55f566027b94f03fe6fbee27b5a11b2b6bc7362674ea38d63f6b19af092ce65",
-      "contentCropRatio": 0.844483,
-      "contentCropY": 972,
-      "cropGuardPixels": 33.5,
-      "choiceStartY": 1005.0,
-      "choiceMarkerRadius": 13.4,
+      "contentCropRatio": 0.675934,
+      "contentCropY": 778,
+      "cropGuardPixels": 35.3,
+      "choiceStartY": 813.0,
+      "choiceMarkerRadius": 14.1,
       "imageWidth": 1103,
       "imageHeight": 1151,
       "markerCount": 5,
       "markerYs": [
-        1005.0,
-        1005.0,
-        1007.4,
-        1008.6,
-        1014.6
+        813.0,
+        881.4,
+        947.4,
+        1014.6,
+        1080.6
       ],
       "gridLayout": true,
-      "markerX": 384.6,
-      "lastMarkerY": 1014.6,
-      "layoutDetection": "horizontal"
+      "markerX": 95.4,
+      "lastMarkerY": 1080.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-67-advanced-31",
@@ -19703,25 +19698,25 @@
     {
       "officialQuestionId": "official-67-advanced-32",
       "sourceImageSha256": "2ce676179ad44692d3ebcc6a1471f1ec7bad04386d894a1d7ee7104d9cef6aff",
-      "contentCropRatio": 0.797342,
-      "contentCropY": 960,
-      "cropGuardPixels": 36.5,
-      "choiceStartY": 996.6,
-      "choiceMarkerRadius": 14.6,
+      "contentCropRatio": 0.686877,
+      "contentCropY": 827,
+      "cropGuardPixels": 41.6,
+      "choiceStartY": 868.2,
+      "choiceMarkerRadius": 16.6,
       "imageWidth": 1091,
       "imageHeight": 1204,
       "markerCount": 5,
       "markerYs": [
-        996.6,
-        996.6,
-        999.0,
+        868.2,
+        933.0,
         1001.4,
-        1002.6
+        1066.2,
+        1133.4
       ],
-      "gridLayout": true,
-      "markerX": 373.8,
-      "lastMarkerY": 1002.6,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 66.6,
+      "lastMarkerY": 1133.4,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-67-advanced-33",
@@ -20002,25 +19997,25 @@
     {
       "officialQuestionId": "official-67-advanced-45",
       "sourceImageSha256": "0c054b197aba81d2a49382621881a9703b9ef7745ddfd8a3221612f4f3e66d59",
-      "contentCropRatio": 0.72836,
-      "contentCropY": 1035,
-      "cropGuardPixels": 40.1,
-      "choiceStartY": 1074.6,
-      "choiceMarkerRadius": 16.0,
+      "contentCropRatio": 0.736805,
+      "contentCropY": 1047,
+      "cropGuardPixels": 37.1,
+      "choiceStartY": 1084.2,
+      "choiceMarkerRadius": 14.8,
       "imageWidth": 1103,
       "imageHeight": 1421,
       "markerCount": 5,
       "markerYs": [
-        1074.6,
-        1075.8,
-        1079.4,
-        1080.6,
-        1084.2
+        1084.2,
+        1151.4,
+        1217.4,
+        1284.6,
+        1351.8
       ],
-      "gridLayout": true,
-      "markerX": 414.6,
-      "lastMarkerY": 1084.2,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 95.4,
+      "lastMarkerY": 1351.8,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-67-advanced-46",
@@ -20094,25 +20089,25 @@
     {
       "officialQuestionId": "official-67-advanced-49",
       "sourceImageSha256": "5d892e9f8adf1bc119d78e569e85fbcdc1f948f9fc20fc9619e1d04cc84505df",
-      "contentCropRatio": 0.810687,
-      "contentCropY": 1062,
-      "cropGuardPixels": 36.8,
-      "choiceStartY": 1098.6,
-      "choiceMarkerRadius": 14.7,
+      "contentCropRatio": 0.714504,
+      "contentCropY": 936,
+      "cropGuardPixels": 37.4,
+      "choiceStartY": 973.8,
+      "choiceMarkerRadius": 15.0,
       "imageWidth": 1103,
       "imageHeight": 1310,
       "markerCount": 5,
       "markerYs": [
-        1098.6,
-        1098.6,
-        1098.6,
-        1104.6,
-        1105.8
+        973.8,
+        1041.0,
+        1105.8,
+        1173.0,
+        1241.4
       ],
-      "gridLayout": true,
-      "markerX": 420.6,
-      "lastMarkerY": 1105.8,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 67.8,
+      "lastMarkerY": 1241.4,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-67-advanced-50",
@@ -20163,25 +20158,25 @@
     {
       "officialQuestionId": "official-68-advanced-02",
       "sourceImageSha256": "ec9550548236a2a2cbad9d561391dfc69f6488f98bd74d276de03eaa33b64d86",
-      "contentCropRatio": 0.770318,
-      "contentCropY": 872,
-      "cropGuardPixels": 46.7,
-      "choiceStartY": 918.6,
-      "choiceMarkerRadius": 18.7,
+      "contentCropRatio": 0.665194,
+      "contentCropY": 753,
+      "cropGuardPixels": 41.6,
+      "choiceStartY": 795.0,
+      "choiceMarkerRadius": 16.6,
       "imageWidth": 1091,
       "imageHeight": 1132,
       "markerCount": 5,
       "markerYs": [
-        918.6,
-        918.6,
-        918.6,
-        924.6,
-        928.2
+        795.0,
+        862.2,
+        928.2,
+        994.2,
+        1062.6
       ],
-      "gridLayout": true,
-      "markerX": 463.8,
-      "lastMarkerY": 928.2,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 95.4,
+      "lastMarkerY": 1062.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-68-advanced-03",
@@ -20255,25 +20250,25 @@
     {
       "officialQuestionId": "official-68-advanced-06",
       "sourceImageSha256": "f4ec3b319cd63f4f8a70ce1c009d84d3d756dde83c51500b4757ebef2144108e",
-      "contentCropRatio": 0.858293,
-      "contentCropY": 1066,
-      "cropGuardPixels": 31.6,
-      "choiceStartY": 1097.4,
-      "choiceMarkerRadius": 11.6,
+      "contentCropRatio": 0.698873,
+      "contentCropY": 868,
+      "cropGuardPixels": 37.4,
+      "choiceStartY": 905.4,
+      "choiceMarkerRadius": 15.0,
       "imageWidth": 1091,
       "imageHeight": 1242,
       "markerCount": 5,
       "markerYs": [
-        1097.4,
-        1097.4,
-        1103.4,
+        905.4,
+        971.4,
+        1038.6,
         1104.6,
-        1104.6
+        1170.6
       ],
-      "gridLayout": true,
-      "markerX": 407.4,
-      "lastMarkerY": 1104.6,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 66.6,
+      "lastMarkerY": 1170.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-68-advanced-07",
@@ -20664,25 +20659,25 @@
     {
       "officialQuestionId": "official-68-advanced-24",
       "sourceImageSha256": "fcde634f3a0c35f5d3c1cda3cd30641ff2f98343d20c3e60863e58af6b090a9a",
-      "contentCropRatio": 0.852327,
-      "contentCropY": 1062,
-      "cropGuardPixels": 36.5,
-      "choiceStartY": 1098.6,
-      "choiceMarkerRadius": 14.6,
+      "contentCropRatio": 0.699037,
+      "contentCropY": 871,
+      "cropGuardPixels": 38.3,
+      "choiceStartY": 909.0,
+      "choiceMarkerRadius": 15.3,
       "imageWidth": 1103,
       "imageHeight": 1246,
       "markerCount": 5,
       "markerYs": [
-        1098.6,
-        1104.6,
-        1104.6,
-        1104.6,
-        1108.2
+        909.0,
+        977.4,
+        1042.2,
+        1108.2,
+        1176.6
       ],
       "gridLayout": true,
-      "markerX": 471.0,
-      "lastMarkerY": 1108.2,
-      "layoutDetection": "horizontal"
+      "markerX": 66.6,
+      "lastMarkerY": 1176.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-68-advanced-25",
@@ -20733,25 +20728,25 @@
     {
       "officialQuestionId": "official-68-advanced-27",
       "sourceImageSha256": "2394587db1977b7103ff9861f13d747f2de29fb89a74ce0339f7bac4d724ab53",
-      "contentCropRatio": 0.704692,
-      "contentCropY": 766,
-      "cropGuardPixels": 43.4,
-      "choiceStartY": 809.4,
-      "choiceMarkerRadius": 17.4,
+      "contentCropRatio": 0.656854,
+      "contentCropY": 714,
+      "cropGuardPixels": 35.6,
+      "choiceStartY": 749.4,
+      "choiceMarkerRadius": 14.2,
       "imageWidth": 1091,
       "imageHeight": 1087,
       "markerCount": 5,
       "markerYs": [
-        809.4,
-        810.6,
-        810.6,
-        810.6,
-        815.4
+        749.4,
+        815.4,
+        885.0,
+        949.8,
+        1017.0
       ],
-      "gridLayout": true,
-      "markerX": 401.4,
-      "lastMarkerY": 815.4,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 95.4,
+      "lastMarkerY": 1017.0,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-68-advanced-28",
@@ -20779,25 +20774,25 @@
     {
       "officialQuestionId": "official-68-advanced-29",
       "sourceImageSha256": "055095bea73328fa7d795ff3a937a447b60129923f72bc2eb8450e17c8388138",
-      "contentCropRatio": 0.699678,
-      "contentCropY": 869,
-      "cropGuardPixels": 32.0,
-      "choiceStartY": 900.6,
-      "choiceMarkerRadius": 12.0,
+      "contentCropRatio": 0.641707,
+      "contentCropY": 797,
+      "cropGuardPixels": 41.3,
+      "choiceStartY": 838.2,
+      "choiceMarkerRadius": 16.5,
       "imageWidth": 1103,
       "imageHeight": 1242,
       "markerCount": 5,
       "markerYs": [
-        900.6,
-        900.6,
+        838.2,
         905.4,
-        907.8,
-        909.0
+        972.6,
+        1038.6,
+        1105.8
       ],
-      "gridLayout": true,
-      "markerX": 450.6,
-      "lastMarkerY": 909.0,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 95.4,
+      "lastMarkerY": 1105.8,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-68-advanced-30",
@@ -20915,25 +20910,25 @@
     {
       "officialQuestionId": "official-68-advanced-35",
       "sourceImageSha256": "b1e86dd9a85b647c98dcae3a36f8b3f25c64310f3cdeda3798d5f82724bb0d2d",
-      "contentCropRatio": 0.849175,
-      "contentCropY": 1081,
-      "cropGuardPixels": 46.4,
-      "choiceStartY": 1127.4,
-      "choiceMarkerRadius": 18.6,
+      "contentCropRatio": 0.703849,
+      "contentCropY": 896,
+      "cropGuardPixels": 39.8,
+      "choiceStartY": 935.4,
+      "choiceMarkerRadius": 15.9,
       "imageWidth": 1091,
       "imageHeight": 1273,
       "markerCount": 5,
       "markerYs": [
-        1127.4,
-        1128.6,
-        1131.0,
-        1134.6,
-        1135.8
+        935.4,
+        1002.6,
+        1068.6,
+        1135.8,
+        1204.2
       ],
-      "gridLayout": true,
-      "markerX": 504.6,
-      "lastMarkerY": 1135.8,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 95.4,
+      "lastMarkerY": 1204.2,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-68-advanced-36",
@@ -21028,25 +21023,25 @@
     {
       "officialQuestionId": "official-68-advanced-40",
       "sourceImageSha256": "e5f5af1adc4e47f824f467a782b0e9cd79c12e94a042228dacd349dd4f5bc470",
-      "contentCropRatio": 0.877972,
-      "contentCropY": 1403,
-      "cropGuardPixels": 49.4,
-      "choiceStartY": 1452.6,
-      "choiceMarkerRadius": 19.8,
+      "contentCropRatio": 0.766583,
+      "contentCropY": 1225,
+      "cropGuardPixels": 35.9,
+      "choiceStartY": 1260.6,
+      "choiceMarkerRadius": 14.4,
       "imageWidth": 1091,
       "imageHeight": 1598,
       "markerCount": 5,
       "markerYs": [
-        1452.6,
-        1457.4,
-        1458.6,
-        1458.6,
-        1462.2
+        1260.6,
+        1326.6,
+        1396.2,
+        1462.2,
+        1527.0
       ],
-      "gridLayout": true,
-      "markerX": 511.8,
-      "lastMarkerY": 1462.2,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 66.6,
+      "lastMarkerY": 1527.0,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-68-advanced-41",
@@ -21120,25 +21115,25 @@
     {
       "officialQuestionId": "official-68-advanced-44",
       "sourceImageSha256": "5144d038393af42fc4798f37d024ac07082e9612e3d921c1cc49c744197a243a",
-      "contentCropRatio": 0.860427,
-      "contentCropY": 1048,
-      "cropGuardPixels": 31.6,
-      "choiceStartY": 1079.4,
-      "choiceMarkerRadius": 11.7,
+      "contentCropRatio": 0.689655,
+      "contentCropY": 840,
+      "cropGuardPixels": 40.1,
+      "choiceStartY": 880.2,
+      "choiceMarkerRadius": 16.0,
       "imageWidth": 1091,
       "imageHeight": 1218,
       "markerCount": 5,
       "markerYs": [
-        1079.4,
-        1080.6,
-        1080.6,
+        880.2,
+        947.4,
+        1014.6,
         1081.8,
-        1084.2
+        1149.0
       ],
       "gridLayout": true,
-      "markerX": 401.4,
-      "lastMarkerY": 1084.2,
-      "layoutDetection": "horizontal"
+      "markerX": 95.4,
+      "lastMarkerY": 1149.0,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-68-advanced-45",
@@ -22214,24 +22209,24 @@
     {
       "officialQuestionId": "official-69-basic-44",
       "sourceImageSha256": "0a302083728996f334afadd589107e45a9a06579406b3a6a2325b3466f2623c3",
-      "contentCropRatio": 0.894774,
-      "contentCropY": 1284,
-      "cropGuardPixels": 47.3,
-      "choiceStartY": 1331.4,
-      "choiceMarkerRadius": 18.9,
+      "contentCropRatio": 0.811847,
+      "contentCropY": 1165,
+      "cropGuardPixels": 40.7,
+      "choiceStartY": 1205.4,
+      "choiceMarkerRadius": 16.3,
       "imageWidth": 1062,
       "imageHeight": 1435,
       "markerCount": 4,
       "markerYs": [
-        1331.4,
-        1331.4,
+        1205.4,
+        1275.0,
         1339.8,
-        1343.4
+        1405.8
       ],
       "gridLayout": true,
-      "markerX": 270.0,
-      "lastMarkerY": 1343.4,
-      "layoutDetection": "horizontal-fallback"
+      "markerX": 52.2,
+      "lastMarkerY": 1405.8,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-69-basic-45",
@@ -23049,25 +23044,25 @@
     {
       "officialQuestionId": "official-69-advanced-31",
       "sourceImageSha256": "e3b2a5297bfa3af45749c2c9cb35417c169fb79504284a5b151b5a5ee3d1ab70",
-      "contentCropRatio": 0.933333,
-      "contentCropY": 1386,
-      "cropGuardPixels": 30.8,
-      "choiceStartY": 1416.6,
-      "choiceMarkerRadius": 12.1,
+      "contentCropRatio": 0.752189,
+      "contentCropY": 1117,
+      "cropGuardPixels": 35.3,
+      "choiceStartY": 1152.6,
+      "choiceMarkerRadius": 14.1,
       "imageWidth": 1062,
       "imageHeight": 1485,
       "markerCount": 5,
       "markerYs": [
-        1416.6,
-        1416.6,
-        1416.6,
-        1417.8,
-        1422.6
+        1152.6,
+        1219.8,
+        1285.8,
+        1350.6,
+        1417.8
       ],
-      "gridLayout": true,
-      "markerX": 347.4,
-      "lastMarkerY": 1422.6,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 52.2,
+      "lastMarkerY": 1417.8,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-69-advanced-32",
@@ -23737,25 +23732,25 @@
     {
       "officialQuestionId": "official-70-advanced-11",
       "sourceImageSha256": "a411630d917e58137123c13f8d4e1d525d034c175a20066d5eb4906ee84892c0",
-      "contentCropRatio": 0.935409,
-      "contentCropY": 1202,
-      "cropGuardPixels": 47.0,
-      "choiceStartY": 1248.6,
-      "choiceMarkerRadius": 18.8,
+      "contentCropRatio": 0.740856,
+      "contentCropY": 952,
+      "cropGuardPixels": 40.1,
+      "choiceStartY": 991.8,
+      "choiceMarkerRadius": 16.0,
       "imageWidth": 1062,
       "imageHeight": 1285,
       "markerCount": 5,
       "markerYs": [
-        1248.6,
-        1257.0,
-        1259.4,
-        1259.4,
-        1265.4
+        991.8,
+        1057.8,
+        1123.8,
+        1191.0,
+        1257.0
       ],
-      "gridLayout": true,
-      "markerX": 351.0,
-      "lastMarkerY": 1265.4,
-      "layoutDetection": "horizontal-fallback"
+      "gridLayout": false,
+      "markerX": 51.0,
+      "lastMarkerY": 1257.0,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-70-advanced-12",
@@ -23990,25 +23985,25 @@
     {
       "officialQuestionId": "official-70-advanced-22",
       "sourceImageSha256": "bad077080010cb56221c79fc51159049df76df85e101c25b66464409f7c96185",
-      "contentCropRatio": 0.830311,
-      "contentCropY": 1282,
-      "cropGuardPixels": 50.6,
-      "choiceStartY": 1332.6,
-      "choiceMarkerRadius": 20.2,
+      "contentCropRatio": 0.757124,
+      "contentCropY": 1169,
+      "cropGuardPixels": 40.4,
+      "choiceStartY": 1209.0,
+      "choiceMarkerRadius": 16.2,
       "imageWidth": 1062,
       "imageHeight": 1544,
       "markerCount": 5,
       "markerYs": [
-        1332.6,
-        1332.6,
-        1332.6,
-        1338.6,
-        1341.0
+        1209.0,
+        1276.2,
+        1345.8,
+        1411.8,
+        1476.6
       ],
       "gridLayout": true,
-      "markerX": 606.6,
-      "lastMarkerY": 1341.0,
-      "layoutDetection": "horizontal"
+      "markerX": 52.2,
+      "lastMarkerY": 1476.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-70-advanced-23",
@@ -25611,24 +25606,24 @@
     {
       "officialQuestionId": "official-71-basic-45",
       "sourceImageSha256": "9feedc341fa2f91e278516a05f8e4c7383f61958344f9d239003729c9b59b2d6",
-      "contentCropRatio": 0.886538,
-      "contentCropY": 1383,
-      "cropGuardPixels": 37.4,
-      "choiceStartY": 1420.2,
-      "choiceMarkerRadius": 15.0,
+      "contentCropRatio": 0.801282,
+      "contentCropY": 1250,
+      "cropGuardPixels": 41.9,
+      "choiceStartY": 1291.8,
+      "choiceMarkerRadius": 16.8,
       "imageWidth": 1074,
       "imageHeight": 1560,
       "markerCount": 4,
       "markerYs": [
-        1420.2,
-        1422.6,
+        1291.8,
+        1360.2,
         1425.0,
-        1428.6
+        1491.0
       ],
-      "gridLayout": true,
-      "markerX": 426.6,
-      "lastMarkerY": 1428.6,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 81.0,
+      "lastMarkerY": 1491.0,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-71-basic-46",
@@ -25766,25 +25761,20 @@
     {
       "officialQuestionId": "official-71-advanced-02",
       "sourceImageSha256": "8e2b5699eef4ef9ff839807fe183dfa0695073e86eed9526f0d15226039b594f",
-      "contentCropRatio": 0.77573,
-      "contentCropY": 505,
-      "cropGuardPixels": 44.0,
-      "choiceStartY": 549.0,
-      "choiceMarkerRadius": 17.6,
+      "contentCropRatio": 1.0,
+      "contentCropY": 651,
+      "cropGuardPixels": null,
+      "choiceStartY": null,
+      "choiceMarkerRadius": null,
       "imageWidth": 1062,
       "imageHeight": 651,
-      "markerCount": 5,
-      "markerYs": [
-        549.0,
-        552.6,
-        552.6,
-        552.6,
-        557.4
-      ],
-      "gridLayout": true,
-      "markerX": 568.2,
-      "lastMarkerY": 557.4,
-      "layoutDetection": "horizontal"
+      "markerCount": 0,
+      "markerYs": [],
+      "gridLayout": false,
+      "markerX": null,
+      "lastMarkerY": null,
+      "manualLayoutReview": true,
+      "layoutDetection": "manual-content-boundary"
     },
     {
       "officialQuestionId": "official-71-advanced-03",
@@ -28320,24 +28310,24 @@
     {
       "officialQuestionId": "official-73-basic-15",
       "sourceImageSha256": "1e9b1e872d0d6047a7b732eafbca29e858c0f10221be81b7b4c52aa5d4da1c28",
-      "contentCropRatio": 0.944658,
-      "contentCropY": 1229,
-      "cropGuardPixels": 36.8,
-      "choiceStartY": 1265.4,
-      "choiceMarkerRadius": 14.7,
+      "contentCropRatio": 0.798616,
+      "contentCropY": 1039,
+      "cropGuardPixels": 35.9,
+      "choiceStartY": 1074.6,
+      "choiceMarkerRadius": 14.4,
       "imageWidth": 1062,
       "imageHeight": 1301,
       "markerCount": 4,
       "markerYs": [
-        1265.4,
-        1266.6,
-        1275.0,
-        1285.8
+        1074.6,
+        1140.6,
+        1206.6,
+        1275.0
       ],
-      "gridLayout": true,
-      "markerX": 342.0,
-      "lastMarkerY": 1285.8,
-      "layoutDetection": "horizontal-fallback"
+      "gridLayout": false,
+      "markerX": 52.2,
+      "lastMarkerY": 1275.0,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-73-basic-16",
@@ -29036,24 +29026,24 @@
     {
       "officialQuestionId": "official-73-basic-48",
       "sourceImageSha256": "9054cc1943fb03c08b9377ad19e6d58e8e85e98be839f842e976a1e06acf29fb",
-      "contentCropRatio": 0.934734,
-      "contentCropY": 1246,
-      "cropGuardPixels": 50.6,
-      "choiceStartY": 1296.6,
-      "choiceMarkerRadius": 20.2,
+      "contentCropRatio": 0.80045,
+      "contentCropY": 1067,
+      "cropGuardPixels": 39.8,
+      "choiceStartY": 1107.0,
+      "choiceMarkerRadius": 15.9,
       "imageWidth": 1062,
       "imageHeight": 1333,
       "markerCount": 4,
       "markerYs": [
-        1296.6,
-        1296.6,
-        1302.6,
+        1107.0,
+        1173.0,
+        1237.8,
         1305.0
       ],
-      "gridLayout": true,
-      "markerX": 483.6,
+      "gridLayout": false,
+      "markerX": 51.0,
       "lastMarkerY": 1305.0,
-      "layoutDetection": "horizontal"
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-73-basic-49",
@@ -29329,25 +29319,25 @@
     {
       "officialQuestionId": "official-73-advanced-11",
       "sourceImageSha256": "f411e656281967543b01f517020d56a3365fc28385200c6d57e182c7f4ccc285",
-      "contentCropRatio": 0.874933,
-      "contentCropY": 1637,
-      "cropGuardPixels": 31.1,
-      "choiceStartY": 1668.6,
-      "choiceMarkerRadius": 12.3,
+      "contentCropRatio": 0.799572,
+      "contentCropY": 1496,
+      "cropGuardPixels": 41.6,
+      "choiceStartY": 1537.8,
+      "choiceMarkerRadius": 16.6,
       "imageWidth": 1074,
       "imageHeight": 1871,
       "markerCount": 5,
       "markerYs": [
-        1668.6,
-        1668.6,
+        1537.8,
+        1603.8,
         1669.8,
-        1674.6,
-        1674.6
+        1737.0,
+        1804.2
       ],
-      "gridLayout": true,
-      "markerX": 430.2,
-      "lastMarkerY": 1674.6,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 81.0,
+      "lastMarkerY": 1804.2,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-73-advanced-12",
@@ -29628,25 +29618,25 @@
     {
       "officialQuestionId": "official-73-advanced-24",
       "sourceImageSha256": "0d233d67d2d7df7e2319d5985e80bfe11802e0fdfb2778b53a8041e25ea78475",
-      "contentCropRatio": 0.943335,
-      "contentCropY": 1465,
-      "cropGuardPixels": 47.3,
-      "choiceStartY": 1512.6,
-      "choiceMarkerRadius": 18.9,
+      "contentCropRatio": 0.788152,
+      "contentCropY": 1224,
+      "cropGuardPixels": 35.6,
+      "choiceStartY": 1259.4,
+      "choiceMarkerRadius": 14.2,
       "imageWidth": 1074,
       "imageHeight": 1553,
       "markerCount": 5,
       "markerYs": [
-        1512.6,
-        1513.8,
-        1524.6,
-        1524.6,
-        1527.0
+        1259.4,
+        1325.4,
+        1391.4,
+        1457.4,
+        1524.6
       ],
       "gridLayout": true,
-      "markerX": 587.4,
-      "lastMarkerY": 1527.0,
-      "layoutDetection": "horizontal-fallback"
+      "markerX": 81.0,
+      "lastMarkerY": 1524.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-73-advanced-25",
@@ -29833,25 +29823,25 @@
     {
       "officialQuestionId": "official-73-advanced-33",
       "sourceImageSha256": "28948d5fd68c6d2db5e6526f105e645ef04e89c3a5c787b64d4776f2a5cbce92",
-      "contentCropRatio": 0.867058,
-      "contentCropY": 887,
-      "cropGuardPixels": 31.1,
-      "choiceStartY": 918.6,
-      "choiceMarkerRadius": 12.3,
+      "contentCropRatio": 0.671554,
+      "contentCropY": 687,
+      "cropGuardPixels": 39.8,
+      "choiceStartY": 726.6,
+      "choiceMarkerRadius": 15.9,
       "imageWidth": 1074,
       "imageHeight": 1023,
       "markerCount": 5,
       "markerYs": [
-        918.6,
-        918.6,
-        918.6,
-        918.6,
-        928.2
+        726.6,
+        795.0,
+        861.0,
+        928.2,
+        994.2
       ],
-      "gridLayout": true,
-      "markerX": 468.6,
-      "lastMarkerY": 928.2,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 81.0,
+      "lastMarkerY": 994.2,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-73-advanced-34",
@@ -30339,25 +30329,25 @@
     {
       "officialQuestionId": "official-74-advanced-05",
       "sourceImageSha256": "2077836efac361211880944978ea69fd50f84dd201b75ef37045774bcee22892",
-      "contentCropRatio": 0.879234,
-      "contentCropY": 1194,
-      "cropGuardPixels": 30.8,
-      "choiceStartY": 1224.6,
-      "choiceMarkerRadius": 12.2,
+      "contentCropRatio": 0.723859,
+      "contentCropY": 983,
+      "cropGuardPixels": 40.4,
+      "choiceStartY": 1023.0,
+      "choiceMarkerRadius": 16.2,
       "imageWidth": 1062,
       "imageHeight": 1358,
       "markerCount": 5,
       "markerYs": [
-        1224.6,
+        1023.0,
+        1092.6,
+        1158.6,
         1225.8,
-        1229.4,
-        1229.4,
-        1230.6
+        1290.6
       ],
-      "gridLayout": true,
-      "markerX": 357.0,
-      "lastMarkerY": 1230.6,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 52.2,
+      "lastMarkerY": 1290.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-74-advanced-06",
@@ -30886,25 +30876,25 @@
     {
       "officialQuestionId": "official-74-advanced-29",
       "sourceImageSha256": "cdd67e955a5818ce83f03a94e1b2687d07b506fa1d5087f340077457ef614c82",
-      "contentCropRatio": 0.874223,
-      "contentCropY": 1265,
-      "cropGuardPixels": 37.4,
-      "choiceStartY": 1302.6,
-      "choiceMarkerRadius": 15.0,
+      "contentCropRatio": 0.736697,
+      "contentCropY": 1066,
+      "cropGuardPixels": 50.6,
+      "choiceStartY": 1116.6,
+      "choiceMarkerRadius": 20.2,
       "imageWidth": 1074,
       "imageHeight": 1447,
       "markerCount": 5,
       "markerYs": [
-        1302.6,
-        1302.6,
-        1302.6,
+        1116.6,
+        1176.6,
+        1241.4,
         1308.6,
-        1311.0
+        1374.6
       ],
       "gridLayout": true,
-      "markerX": 453.0,
-      "lastMarkerY": 1311.0,
-      "layoutDetection": "horizontal"
+      "markerX": 132.6,
+      "lastMarkerY": 1374.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-74-advanced-30",
@@ -32177,24 +32167,24 @@
     {
       "officialQuestionId": "official-75-basic-37",
       "sourceImageSha256": "2fef5d41075340c662b1690a5f6fe20733849ca73b8300dbcc0daef4a20018b0",
-      "contentCropRatio": 0.687023,
-      "contentCropY": 900,
-      "cropGuardPixels": 36.8,
-      "choiceStartY": 936.6,
-      "choiceMarkerRadius": 14.7,
+      "contentCropRatio": 0.767176,
+      "contentCropY": 1005,
+      "cropGuardPixels": 39.5,
+      "choiceStartY": 1044.6,
+      "choiceMarkerRadius": 15.8,
       "imageWidth": 1074,
       "imageHeight": 1310,
       "markerCount": 4,
       "markerYs": [
-        936.6,
-        946.2,
-        964.2,
-        965.4
+        1044.6,
+        1111.8,
+        1179.0,
+        1245.0
       ],
-      "gridLayout": true,
-      "markerX": 699.0,
-      "lastMarkerY": 965.4,
-      "layoutDetection": "horizontal-fallback"
+      "gridLayout": false,
+      "markerX": 81.0,
+      "lastMarkerY": 1245.0,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-75-basic-38",
@@ -32712,25 +32702,25 @@
     {
       "officialQuestionId": "official-75-advanced-11",
       "sourceImageSha256": "c9afb7d3f88a85348217cd8d4e22b44fb6d0601735bad68264003ad05826b4e0",
-      "contentCropRatio": 0.943911,
-      "contentCropY": 1279,
-      "cropGuardPixels": 40.7,
-      "choiceStartY": 1319.4,
-      "choiceMarkerRadius": 16.3,
+      "contentCropRatio": 0.75203,
+      "contentCropY": 1019,
+      "cropGuardPixels": 40.4,
+      "choiceStartY": 1059.0,
+      "choiceMarkerRadius": 16.2,
       "imageWidth": 1062,
       "imageHeight": 1355,
       "markerCount": 5,
       "markerYs": [
-        1319.4,
-        1320.6,
-        1320.6,
-        1326.6,
+        1059.0,
+        1125.0,
+        1192.2,
+        1261.8,
         1327.8
       ],
-      "gridLayout": true,
-      "markerX": 342.6,
+      "gridLayout": false,
+      "markerX": 52.2,
       "lastMarkerY": 1327.8,
-      "layoutDetection": "horizontal"
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-75-advanced-12",
@@ -32890,25 +32880,25 @@
     {
       "officialQuestionId": "official-75-advanced-19",
       "sourceImageSha256": "6f746eac7d39101d304d45d54fa97955c80c084877136c1988d7617a48779905",
-      "contentCropRatio": 0.876966,
-      "contentCropY": 948,
-      "cropGuardPixels": 37.1,
-      "choiceStartY": 984.6,
-      "choiceMarkerRadius": 14.8,
+      "contentCropRatio": 0.691952,
+      "contentCropY": 748,
+      "cropGuardPixels": 40.1,
+      "choiceStartY": 787.8,
+      "choiceMarkerRadius": 16.0,
       "imageWidth": 1062,
       "imageHeight": 1081,
       "markerCount": 5,
       "markerYs": [
-        984.6,
-        984.6,
+        787.8,
+        851.4,
+        918.6,
         987.0,
-        989.4,
-        989.4
+        1051.8
       ],
       "gridLayout": true,
-      "markerX": 513.0,
-      "lastMarkerY": 989.4,
-      "layoutDetection": "horizontal"
+      "markerX": 52.2,
+      "lastMarkerY": 1051.8,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-75-advanced-20",
@@ -33304,25 +33294,25 @@
     {
       "officialQuestionId": "official-75-advanced-37",
       "sourceImageSha256": "6de261bf413f6289d938c747c10549bcb6a33fe1e5d456edda0ae64251c4137f",
-      "contentCropRatio": 0.896283,
-      "contentCropY": 1037,
-      "cropGuardPixels": 44.0,
-      "choiceStartY": 1080.6,
-      "choiceMarkerRadius": 17.6,
+      "contentCropRatio": 0.680207,
+      "contentCropY": 787,
+      "cropGuardPixels": 35.3,
+      "choiceStartY": 822.6,
+      "choiceMarkerRadius": 14.1,
       "imageWidth": 1074,
       "imageHeight": 1157,
       "markerCount": 5,
       "markerYs": [
-        1080.6,
-        1086.6,
-        1086.6,
-        1091.4,
+        822.6,
+        891.0,
+        957.0,
+        1023.0,
         1091.4
       ],
-      "gridLayout": true,
-      "markerX": 360.6,
+      "gridLayout": false,
+      "markerX": 81.0,
       "lastMarkerY": 1091.4,
-      "layoutDetection": "horizontal-fallback"
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-75-advanced-38",
@@ -35745,24 +35735,24 @@
     {
       "officialQuestionId": "official-77-basic-46",
       "sourceImageSha256": "8c30b58aece72cc30754b1d51bd6c90aac93379f183acbd1bd7f42874115fe89",
-      "contentCropRatio": 0.687232,
-      "contentCropY": 802,
-      "cropGuardPixels": 50.6,
-      "choiceStartY": 852.6,
-      "choiceMarkerRadius": 20.2,
+      "contentCropRatio": 0.767781,
+      "contentCropY": 896,
+      "cropGuardPixels": 41.9,
+      "choiceStartY": 937.8,
+      "choiceMarkerRadius": 16.8,
       "imageWidth": 1074,
       "imageHeight": 1167,
       "markerCount": 4,
       "markerYs": [
-        852.6,
-        856.2,
-        856.2,
-        859.8
+        937.8,
+        1005.0,
+        1073.4,
+        1137.0
       ],
-      "gridLayout": true,
-      "markerX": 502.2,
-      "lastMarkerY": 859.8,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 81.0,
+      "lastMarkerY": 1137.0,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-77-basic-47",
@@ -35789,24 +35779,24 @@
     {
       "officialQuestionId": "official-77-basic-48",
       "sourceImageSha256": "f13152d2543fea773c086758a4c12e7aaf891a287c76c2c1966f0bb83cb82227",
-      "contentCropRatio": 0.828257,
-      "contentCropY": 1278,
-      "cropGuardPixels": 30.8,
-      "choiceStartY": 1308.6,
-      "choiceMarkerRadius": 12.3,
+      "contentCropRatio": 0.825664,
+      "contentCropY": 1274,
+      "cropGuardPixels": 41.9,
+      "choiceStartY": 1315.8,
+      "choiceMarkerRadius": 16.8,
       "imageWidth": 1062,
       "imageHeight": 1543,
       "markerCount": 4,
       "markerYs": [
-        1308.6,
-        1308.6,
-        1308.6,
-        1315.8
+        1315.8,
+        1383.0,
+        1449.0,
+        1517.4
       ],
-      "gridLayout": true,
-      "markerX": 369.6,
-      "lastMarkerY": 1315.8,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 52.2,
+      "lastMarkerY": 1517.4,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-77-basic-49",
@@ -36307,25 +36297,25 @@
     {
       "officialQuestionId": "official-77-advanced-21",
       "sourceImageSha256": "37d425de073a5e45493730a63e63f072906dba208b98498f3de5e92aec3a7531",
-      "contentCropRatio": 0.824421,
-      "contentCropY": 1033,
-      "cropGuardPixels": 47.3,
-      "choiceStartY": 1080.6,
-      "choiceMarkerRadius": 18.9,
+      "contentCropRatio": 0.731844,
+      "contentCropY": 917,
+      "cropGuardPixels": 40.4,
+      "choiceStartY": 957.0,
+      "choiceMarkerRadius": 16.2,
       "imageWidth": 1074,
       "imageHeight": 1253,
       "markerCount": 5,
       "markerYs": [
-        1080.6,
-        1080.6,
-        1080.6,
-        1084.2,
-        1090.2
+        957.0,
+        1025.4,
+        1090.2,
+        1157.4,
+        1223.4
       ],
-      "gridLayout": true,
-      "markerX": 341.4,
-      "lastMarkerY": 1090.2,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 81.0,
+      "lastMarkerY": 1223.4,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-77-advanced-22",
@@ -36376,25 +36366,25 @@
     {
       "officialQuestionId": "official-77-advanced-24",
       "sourceImageSha256": "f7addc1633905cfa83a76e5e3e84efa2fcdccd10a34b1d2711607e495f34df27",
-      "contentCropRatio": 0.809924,
-      "contentCropY": 1061,
-      "cropGuardPixels": 37.4,
-      "choiceStartY": 1098.6,
-      "choiceMarkerRadius": 15.0,
+      "contentCropRatio": 0.719084,
+      "contentCropY": 942,
+      "cropGuardPixels": 35.3,
+      "choiceStartY": 977.4,
+      "choiceMarkerRadius": 14.1,
       "imageWidth": 1074,
       "imageHeight": 1310,
       "markerCount": 5,
       "markerYs": [
-        1098.6,
-        1098.6,
-        1104.6,
-        1104.6,
-        1108.2
+        977.4,
+        1044.6,
+        1108.2,
+        1177.8,
+        1242.6
       ],
-      "gridLayout": true,
-      "markerX": 469.8,
-      "lastMarkerY": 1108.2,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 81.0,
+      "lastMarkerY": 1242.6,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-77-advanced-25",
@@ -37224,25 +37214,25 @@
     {
       "officialQuestionId": "official-78-advanced-11",
       "sourceImageSha256": "395435fcb91473f748f3df013fbf17beb585b9efc36a9b230db7bf7f6dc03c6f",
-      "contentCropRatio": 0.887397,
-      "contentCropY": 859,
-      "cropGuardPixels": 34.1,
-      "choiceStartY": 893.4,
-      "choiceMarkerRadius": 13.6,
+      "contentCropRatio": 0.617769,
+      "contentCropY": 598,
+      "cropGuardPixels": 37.7,
+      "choiceStartY": 635.4,
+      "choiceMarkerRadius": 15.1,
       "imageWidth": 1074,
       "imageHeight": 968,
       "markerCount": 5,
       "markerYs": [
-        893.4,
-        894.6,
-        900.6,
-        900.6,
+        635.4,
+        702.6,
+        768.6,
+        834.6,
         900.6
       ],
       "gridLayout": true,
-      "markerX": 384.6,
+      "markerX": 81.0,
       "lastMarkerY": 900.6,
-      "layoutDetection": "horizontal"
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-78-advanced-12",
@@ -37517,25 +37507,25 @@
     {
       "officialQuestionId": "official-78-advanced-24",
       "sourceImageSha256": "687a2b4a93332d963635a2ac5c2069986b056a5972036b28fee0e8d1e5584cdc",
-      "contentCropRatio": 0.928801,
-      "contentCropY": 1448,
-      "cropGuardPixels": 40.7,
-      "choiceStartY": 1488.6,
-      "choiceMarkerRadius": 16.3,
+      "contentCropRatio": 0.762027,
+      "contentCropY": 1188,
+      "cropGuardPixels": 37.7,
+      "choiceStartY": 1225.8,
+      "choiceMarkerRadius": 15.1,
       "imageWidth": 1074,
       "imageHeight": 1559,
       "markerCount": 5,
       "markerYs": [
-        1488.6,
-        1492.2,
-        1494.6,
-        1495.8,
-        1497.0
+        1225.8,
+        1293.0,
+        1360.2,
+        1425.0,
+        1492.2
       ],
-      "gridLayout": true,
-      "markerX": 456.6,
-      "lastMarkerY": 1497.0,
-      "layoutDetection": "horizontal"
+      "gridLayout": false,
+      "markerX": 81.0,
+      "lastMarkerY": 1492.2,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-78-advanced-25",
@@ -38671,24 +38661,24 @@
     {
       "officialQuestionId": "official-79-basic-26",
       "sourceImageSha256": "7601e7d8f92db1170e7ddc4cdfcad911ef1e62d6db54f091d631be5555f6f7e6",
-      "contentCropRatio": 0.937095,
-      "contentCropY": 1013,
-      "cropGuardPixels": 31.1,
-      "choiceStartY": 1044.6,
-      "choiceMarkerRadius": 12.1,
+      "contentCropRatio": 0.749306,
+      "contentCropY": 810,
+      "cropGuardPixels": 42.2,
+      "choiceStartY": 852.6,
+      "choiceMarkerRadius": 16.9,
       "imageWidth": 1074,
       "imageHeight": 1081,
       "markerCount": 4,
       "markerYs": [
-        1044.6,
-        1044.6,
-        1050.6,
-        1056.6
+        852.6,
+        919.8,
+        987.0,
+        1053.0
       ],
-      "gridLayout": true,
-      "markerX": 273.0,
-      "lastMarkerY": 1056.6,
-      "layoutDetection": "horizontal-fallback"
+      "gridLayout": false,
+      "markerX": 81.0,
+      "lastMarkerY": 1053.0,
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-79-basic-27",
@@ -39147,24 +39137,24 @@
     {
       "officialQuestionId": "official-79-basic-48",
       "sourceImageSha256": "3e962c4998892ac5261012892c80342729ae322c3263033a7ad5770c20528ff8",
-      "contentCropRatio": 0.923445,
-      "contentCropY": 965,
-      "cropGuardPixels": 44.0,
-      "choiceStartY": 1008.6,
-      "choiceMarkerRadius": 17.6,
+      "contentCropRatio": 0.747368,
+      "contentCropY": 781,
+      "cropGuardPixels": 35.6,
+      "choiceStartY": 816.6,
+      "choiceMarkerRadius": 14.2,
       "imageWidth": 1062,
       "imageHeight": 1045,
       "markerCount": 4,
       "markerYs": [
-        1008.6,
-        1014.6,
-        1015.8,
+        816.6,
+        882.6,
+        949.8,
         1015.8
       ],
-      "gridLayout": true,
-      "markerX": 314.4,
+      "gridLayout": false,
+      "markerX": 52.2,
       "lastMarkerY": 1015.8,
-      "layoutDetection": "horizontal"
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-79-basic-49",
@@ -40219,25 +40209,25 @@
     {
       "officialQuestionId": "official-79-advanced-45",
       "sourceImageSha256": "6f5cb4601e68d13f9330aed1fbb19c2ee4f1263a227ce9cbbc05f8f2e3aa810f",
-      "contentCropRatio": 0.91545,
-      "contentCropY": 1191,
-      "cropGuardPixels": 33.2,
-      "choiceStartY": 1224.6,
-      "choiceMarkerRadius": 13.3,
+      "contentCropRatio": 0.710992,
+      "contentCropY": 925,
+      "cropGuardPixels": 41.6,
+      "choiceStartY": 966.6,
+      "choiceMarkerRadius": 16.6,
       "imageWidth": 1074,
       "imageHeight": 1301,
       "markerCount": 5,
       "markerYs": [
-        1224.6,
-        1224.6,
-        1230.6,
-        1230.6,
+        966.6,
+        1035.0,
+        1101.0,
+        1167.0,
         1234.2
       ],
       "gridLayout": true,
-      "markerX": 551.4,
+      "markerX": 81.0,
       "lastMarkerY": 1234.2,
-      "layoutDetection": "horizontal"
+      "layoutDetection": "vertical"
     },
     {
       "officialQuestionId": "official-79-advanced-46",

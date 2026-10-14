@@ -92,13 +92,16 @@
 .official-timer-inline-action{min-height:25px;padding:3px 7px;border-color:transparent;background:#f0eee8;font-size:9px}
 .official-exam-intro .official-exam-progress-bar{height:3px;background:#e3e5e5}
 .official-question-kicker{margin-top:0}
+.official-exam-forward-row{display:flex;justify-content:flex-end;margin:8px 2px -6px}
+.official-exam-forward-row button{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-width:116px;min-height:42px;padding:8px 13px;border:1px solid #d9d5cc;border-radius:999px;background:#fff;color:#5e4936;font-size:12px;font-weight:800;text-decoration:none;box-shadow:0 5px 14px #26384f0d}
+.official-exam-forward-row button span{font-size:18px;line-height:1}
 .official-pause-cover>div{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:8px;margin-top:16px}
 .official-pause-cover>div button{min-height:46px}
 .official-exam-bottom-actions{position:static;left:auto;bottom:auto;width:100%;margin:22px 0 0;transform:none;box-shadow:0 8px 24px #26384f12;backdrop-filter:none}
 .official-question-sheet-tools{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:15px 0 0;padding-top:13px;border-top:1px solid #e7e4dd}
 .official-question-sheet-tools span{color:#78838a;font-size:9px;line-height:1.45}
 .official-question-sheet-tools button{flex:0 0 auto;min-height:36px;padding:7px 10px;color:#76572d;font-size:10px}
-@media(max-width:390px){.official-exam-intro{grid-template-columns:34px minmax(0,1fr);gap:8px;padding-inline:0}.official-exam-back{width:34px;height:34px}.official-exam-intro-title{gap:6px}.official-exam-intro-title strong{font-size:14px}.official-exam-map-link{padding-inline:7px}.official-exam-intro-copy>p{font-size:9px}.official-timer-inline-action{padding-inline:6px}.official-exam-bottom-actions{width:100%;gap:6px;padding:8px}.official-question-sheet-tools{align-items:stretch;flex-direction:column}.official-question-sheet-tools button{width:100%}}
+@media(max-width:390px){.official-exam-intro{grid-template-columns:34px minmax(0,1fr);gap:8px;padding-inline:0}.official-exam-back{width:34px;height:34px}.official-exam-intro-title{gap:6px}.official-exam-intro-title strong{font-size:14px}.official-exam-map-link{padding-inline:7px}.official-exam-intro-copy>p{font-size:9px}.official-timer-inline-action{padding-inline:6px}.official-exam-forward-row button{min-width:106px;min-height:40px}.official-exam-bottom-actions{width:100%;gap:6px;padding:8px}.official-question-sheet-tools{align-items:stretch;flex-direction:column}.official-question-sheet-tools button{width:100%}}
 
 /* 2026 premium exam-library home. Functionality stays in the existing exam engine. */
 .ed-exam-library{background:#f7f4ee;color:#2b241f}

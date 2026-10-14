@@ -1206,17 +1206,17 @@
       "sourcePage": 7,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-57-basic-28-content.7f0f972ce95b.webp",
+        "path": "assets/exams/catalog/content/official-57-basic-28-content.750208395327.webp",
         "width": 1103,
-        "height": 833,
-        "sha256": "7f0f972ce95ba865b34d95ffc1377ff5c684ff79e7594a9c366973727f8f2adf",
-        "bytes": 75994,
+        "height": 762,
+        "sha256": "75020839532792b40ad24054ab1ce1217aa84a5e60902a52a3e4dfbbe1b3cd49",
+        "bytes": 69524,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            833
+            762
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -1884,17 +1884,17 @@
       "sourcePage": 12,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-57-basic-48-content.d6b511eb985c.webp",
+        "path": "assets/exams/catalog/content/official-57-basic-48-content.d2b72b5062a5.webp",
         "width": 1091,
-        "height": 1052,
-        "sha256": "d6b511eb985c5b46ee5def80800c7065619d9ae4c0217e86d94bb4a596a4dbd0",
-        "bytes": 78852,
+        "height": 871,
+        "sha256": "d2b72b5062a59472af9e66df2211edbddcad23c484d77e8fc7587d8fcc77d4c7",
+        "bytes": 64480,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            1052
+            871
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -1984,17 +1984,17 @@
       "sourcePage": 1,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-57-advanced-02-content.fb270ab34a1d.webp",
+        "path": "assets/exams/catalog/content/official-57-advanced-02-content.b255edd3b074.webp",
         "width": 1091,
-        "height": 1031,
-        "sha256": "fb270ab34a1d52f70e778852d8f8dbebc4d45b3f8d904d10eaa9b03ab90d0358",
-        "bytes": 71886,
+        "height": 831,
+        "sha256": "b255edd3b0741e308e8c1e08dea18c925ddfff9dc7ab46c0ffff9462a73e8f00",
+        "bytes": 51568,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            1031
+            831
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -2292,17 +2292,17 @@
       "sourcePage": 3,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-57-advanced-10-content.8c2774087eac.webp",
+        "path": "assets/exams/catalog/content/official-57-advanced-10-content.ae5c3bf7908c.webp",
         "width": 1091,
-        "height": 1385,
-        "sha256": "8c2774087eacf42127762dcf79d29e8176f659d945a9ecdffd56dae7a9e27f8b",
-        "bytes": 113032,
+        "height": 1131,
+        "sha256": "ae5c3bf7908cb3262ef90ef023cf3ae702cf2c71956ef123b2db6030b8cc4f1d",
+        "bytes": 84686,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            1385
+            1131
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -2557,17 +2557,17 @@
       "sourcePage": 4,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-57-advanced-17-content.f7dd7c60fe09.webp",
+        "path": "assets/exams/catalog/content/official-57-advanced-17-content.7f3f1e4095e3.webp",
         "width": 1103,
-        "height": 1015,
-        "sha256": "f7dd7c60fe0943778cb6b710f99979074d638debb761eba1e9d36b84ceefa8a0",
-        "bytes": 83822,
+        "height": 822,
+        "sha256": "7f3f1e4095e3c4fd8908bbe018faba8363b75bdc0d8c06424605cdfee8086bff",
+        "bytes": 64532,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            1015
+            822
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -2840,17 +2840,17 @@
       "sourcePage": 6,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-57-advanced-24-content.6d5880cb977d.webp",
+        "path": "assets/exams/catalog/content/official-57-advanced-24-content.f6e6fd98364d.webp",
         "width": 1091,
-        "height": 1415,
-        "sha256": "6d5880cb977dee4f96b6873f923a91ee572ccef4fb0987bb5d79ea5acf23803d",
-        "bytes": 98346,
+        "height": 1150,
+        "sha256": "f6e6fd98364d7ec3dbdc8d47516a62b1be417f194e98de86f0eb9f101ad2dfdc",
+        "bytes": 65672,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            1415
+            1150
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -2865,17 +2865,17 @@
       "sourcePage": 6,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-57-advanced-25-content.58dce0f538c1.webp",
+        "path": "assets/exams/catalog/content/official-57-advanced-25-content.7226ca433bd3.webp",
         "width": 1103,
-        "height": 976,
-        "sha256": "58dce0f538c1afcae8ee8e4785b5fae77b03a588c0a8a0bef6597ecce25a5a78",
-        "bytes": 83556,
+        "height": 792,
+        "sha256": "7226ca433bd326f248107891419ee1d817596912cadb859fefcd762c112dcc64",
+        "bytes": 62906,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            976
+            792
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -2915,17 +2915,17 @@
       "sourcePage": 7,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-57-advanced-27-content.a23ddf222bc1.webp",
+        "path": "assets/exams/catalog/content/official-57-advanced-27-content.4fce96415152.webp",
         "width": 1091,
-        "height": 861,
-        "sha256": "a23ddf222bc16a0f4a4cf2f27f038cd119af943e88ea50a342e8c8565df00771",
-        "bytes": 72438,
+        "height": 727,
+        "sha256": "4fce96415152e5d6d8ca718acac49c1b4a450e2fee00f8d26b82f27c812baa7a",
+        "bytes": 58506,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            861
+            727
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -3290,17 +3290,17 @@
       "sourcePage": 10,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-57-advanced-42-content.e5533335dce4.webp",
+        "path": "assets/exams/catalog/content/official-57-advanced-42-content.c7a52ae14396.webp",
         "width": 1103,
-        "height": 1025,
-        "sha256": "e5533335dce4b7f377fbbe7c5f45f1bf3879ad49585a759f4ae9ba9d3bee6e87",
-        "bytes": 99470,
+        "height": 758,
+        "sha256": "c7a52ae1439633233215c449dc937c3750994c5f3391829598335a178da1eedb",
+        "bytes": 68670,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            1025
+            758
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -3590,17 +3590,17 @@
       "sourcePage": 1,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-58-basic-04-content.a9672711a574.webp",
+        "path": "assets/exams/catalog/content/official-58-basic-04-content.dcfac5caeaef.webp",
         "width": 1103,
-        "height": 1066,
-        "sha256": "a9672711a5741fc4ec38cec127b68275e78ac5403b346497eae06713dcfc9d55",
-        "bytes": 117246,
+        "height": 895,
+        "sha256": "dcfac5caeaef5ede340044d0916799a6b458a98647cea93991c095046a54e9ff",
+        "bytes": 98930,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            1066
+            895
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -4924,17 +4924,17 @@
       "sourcePage": 11,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-58-basic-44-content.081d716bc851.webp",
+        "path": "assets/exams/catalog/content/official-58-basic-44-content.99eb7b7337b0.webp",
         "width": 1091,
-        "height": 831,
-        "sha256": "081d716bc85137f1a90d2961ea487eb796e29921a4cd8b6dd9137a0ca0f68bdc",
-        "bytes": 86360,
+        "height": 886,
+        "sha256": "99eb7b7337b0103d55b8b53cfcd3df57703d138df045d9e83921bb858e781650",
+        "bytes": 90050,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            831
+            886
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -5349,17 +5349,17 @@
       "sourcePage": 3,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-58-advanced-11-content.9f0b92e4e668.webp",
+        "path": "assets/exams/catalog/content/official-58-advanced-11-content.a0843deed630.webp",
         "width": 1091,
-        "height": 1310,
-        "sha256": "9f0b92e4e668c97d6e2fe3d2df8e14b8f1a672633279defe4a76f36b5b4de564",
-        "bytes": 117538,
+        "height": 1060,
+        "sha256": "a0843deed630d41aadc3de3c9338cd3f7f0117a6ce6fb76ed47b2c6ea62ca53a",
+        "bytes": 87436,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            1310
+            1060
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -5782,17 +5782,17 @@
       "sourcePage": 6,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-58-advanced-24-content.daf75ce39fe9.webp",
+        "path": "assets/exams/catalog/content/official-58-advanced-24-content.633a3d0e867d.webp",
         "width": 1091,
-        "height": 1081,
-        "sha256": "daf75ce39fe960073a228f1be3c74f61979f0001dd04de70abfe39afabcc67a8",
-        "bytes": 87428,
+        "height": 826,
+        "sha256": "633a3d0e867d861e32eac9c35bf396d4e2e96c58b867c946889d22a5e7928375",
+        "bytes": 56940,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            1081
+            826
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -6357,17 +6357,17 @@
       "sourcePage": 12,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-58-advanced-47-content.63e8e56f2061.webp",
+        "path": "assets/exams/catalog/content/official-58-advanced-47-content.dffea81355fe.webp",
         "width": 1091,
-        "height": 899,
-        "sha256": "63e8e56f206174e3afd3a51ce6605b813c422808d886ecb551fdefb4f4830a81",
-        "bytes": 71898,
+        "height": 712,
+        "sha256": "dffea81355fed71e1600830dbd07f1fa69a005af6a9ee945a2b9a3a2cab2afae",
+        "bytes": 53316,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            899
+            712
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -7105,17 +7105,17 @@
       "sourcePage": 5,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-59-advanced-19-content.248e19db88ac.webp",
+        "path": "assets/exams/catalog/content/official-59-advanced-19-content.580a49214f51.webp",
         "width": 1090,
-        "height": 828,
-        "sha256": "248e19db88ac4318a75e67e9dcc08f8522eba606e95e488bac2d2861fd475b47",
-        "bytes": 68552,
+        "height": 694,
+        "sha256": "580a49214f51b3f269752371f1b669e4d4c4e0dc1bcdb8ac205261e5bd7ae2da",
+        "bytes": 54382,
         "sourceRects": [
           [
             0,
             0,
             1090,
-            828
+            694
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -7280,17 +7280,17 @@
       "sourcePage": 7,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-59-advanced-26-content.3cdb3216e2f6.webp",
+        "path": "assets/exams/catalog/content/official-59-advanced-26-content.1f561661f957.webp",
         "width": 1090,
-        "height": 1091,
-        "sha256": "3cdb3216e2f6942c4d5351f6738a75db595160e1770f4aa86be74ff1672d903e",
-        "bytes": 65738,
+        "height": 1189,
+        "sha256": "1f561661f9577d7360470864e23f82b8519fea96fd842a7c4b3719cf6d93bfe4",
+        "bytes": 66972,
         "sourceRects": [
           [
             0,
             0,
             1090,
-            1091
+            1189
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -7505,17 +7505,17 @@
       "sourcePage": 9,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-59-advanced-35-content.f9be86912b16.webp",
+        "path": "assets/exams/catalog/content/official-59-advanced-35-content.d0249e2920e5.webp",
         "width": 1090,
-        "height": 737,
-        "sha256": "f9be86912b1692008f3cf8d1b2b8e5e8b196c057edbd904da9e6e2181f671b32",
-        "bytes": 62716,
+        "height": 599,
+        "sha256": "d0249e2920e5f6390196c173c0376bb9eaa4bb0fdb3421a8b166a4d8fa2fd160",
+        "bytes": 48312,
         "sourceRects": [
           [
             0,
             0,
             1090,
-            737
+            599
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -7680,17 +7680,17 @@
       "sourcePage": 10,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-59-advanced-42-content.82996a4d625b.webp",
+        "path": "assets/exams/catalog/content/official-59-advanced-42-content.c3161b5c8f5c.webp",
         "width": 1102,
-        "height": 1497,
-        "sha256": "82996a4d625b2c21e584b9a1796dac6021b70eef9407644a2f947858a99cefe8",
-        "bytes": 113376,
+        "height": 1230,
+        "sha256": "c3161b5c8f5c0dd3f400245022adf8031fa3d607dd4865cacf5283a67046390b",
+        "bytes": 79656,
         "sourceRects": [
           [
             0,
             0,
             1102,
-            1497
+            1230
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -8588,17 +8588,17 @@
       "sourcePage": 6,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-60-advanced-24-content.32a1404339a9.webp",
+        "path": "assets/exams/catalog/content/official-60-advanced-24-content.b11ad3fb9f11.webp",
         "width": 1103,
-        "height": 994,
-        "sha256": "32a1404339a9ca552cb15924f676c40c31a1df498851fe517636c45aa4226c37",
-        "bytes": 97702,
+        "height": 819,
+        "sha256": "b11ad3fb9f11c9c602504df71ab7367cfb55b7df4d7afddc87a10d5421931764",
+        "bytes": 75092,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            994
+            819
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -8763,17 +8763,17 @@
       "sourcePage": 8,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-60-advanced-31-content.12f81f6e8f47.webp",
+        "path": "assets/exams/catalog/content/official-60-advanced-31-content.b3206d969e03.webp",
         "width": 1091,
-        "height": 1311,
-        "sha256": "12f81f6e8f47de61525178c6f18a31a1776c66296acf0dd0e872cac292ec8bd0",
-        "bytes": 97152,
+        "height": 1061,
+        "sha256": "b3206d969e03c8c2fc9acff9703149c537e174585bbac7043ef05f93627a2f1e",
+        "bytes": 74450,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            1311
+            1061
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -11516,17 +11516,17 @@
       "sourcePage": 5,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-61-advanced-19-content.1b047e80fc13.webp",
+        "path": "assets/exams/catalog/content/official-61-advanced-19-content.a077e9726c50.webp",
         "width": 1091,
-        "height": 1100,
-        "sha256": "1b047e80fc136cd802178003d6227b71a1ad36be4881c63e05aae55d5e7090a4",
-        "bytes": 70600,
+        "height": 910,
+        "sha256": "a077e9726c50ae843de6260261b0ba86627a3859f37bcbd643bf1d8a65f8f99f",
+        "bytes": 55502,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            1100
+            910
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -11691,17 +11691,17 @@
       "sourcePage": 6,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-61-advanced-26-content.937b503c7223.webp",
+        "path": "assets/exams/catalog/content/official-61-advanced-26-content.011aaddaf51b.webp",
         "width": 1103,
-        "height": 1549,
-        "sha256": "937b503c72232ecd984be97077ab238cc8f5eb6f0e4a38047e4c7411b3f0bf20",
-        "bytes": 156694,
+        "height": 1297,
+        "sha256": "011aaddaf51bd78038043cfe13453883128642e0857d5e687224bb5c85831452",
+        "bytes": 126522,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            1549
+            1297
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -11956,17 +11956,17 @@
       "sourcePage": 8,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-61-advanced-33-content.b0a8809fdee0.webp",
+        "path": "assets/exams/catalog/content/official-61-advanced-33-content.5e96b1af1cf9.webp",
         "width": 1103,
-        "height": 1109,
-        "sha256": "b0a8809fdee09fa79b9483c0cc941ffa9e7567d4f77d57cc56db7d7247ace41f",
-        "bytes": 138218,
+        "height": 858,
+        "sha256": "5e96b1af1cf953b99e47a5fcc49332dfeb7e32ac0c78cd6941825f039a7d0894",
+        "bytes": 111720,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            1109
+            858
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -12156,17 +12156,17 @@
       "sourcePage": 10,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-61-advanced-41-content.e15a50ad4edc.webp",
+        "path": "assets/exams/catalog/content/official-61-advanced-41-content.6273494f102e.webp",
         "width": 1103,
-        "height": 941,
-        "sha256": "e15a50ad4edc6deb0e8b47c11be463ceb7e56f0572b9bd00e6ef3d4af69bc349",
-        "bytes": 93256,
+        "height": 762,
+        "sha256": "6273494f102e5482c044ff756051e08ecb53bb79b235426c507b7629c38886a2",
+        "bytes": 73198,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            941
+            762
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -12306,17 +12306,17 @@
       "sourcePage": 12,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-61-advanced-47-content.5551ee8d0cb6.webp",
+        "path": "assets/exams/catalog/content/official-61-advanced-47-content.76a87f4942a3.webp",
         "width": 1091,
-        "height": 1341,
-        "sha256": "5551ee8d0cb6fe123193f6dd79b3d5336f5a9b636b43c3f78826752ed667cc0b",
-        "bytes": 115044,
+        "height": 1096,
+        "sha256": "76a87f4942a358730e12ad2ea122c676f614ae045ab11ac926d92ad76735dc1c",
+        "bytes": 85928,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            1341
+            1096
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -13014,17 +13014,17 @@
       "sourcePage": 5,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-62-advanced-21-content.94a9ccbf323f.webp",
+        "path": "assets/exams/catalog/content/official-62-advanced-21-content.d965e8205462.webp",
         "width": 1103,
-        "height": 1140,
-        "sha256": "94a9ccbf323fd6f0c5afba889194e64e8324304996d67fe4e4b46d7c02df4fe4",
-        "bytes": 96428,
+        "height": 936,
+        "sha256": "d965e8205462e8e30a6847c8726d388dbb2b1f0fbe1fe0cee44e9d9b8febb166",
+        "bytes": 75684,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            1140
+            936
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -13114,17 +13114,17 @@
       "sourcePage": 6,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-62-advanced-25-content.5b9f8c3fe29e.webp",
+        "path": "assets/exams/catalog/content/official-62-advanced-25-content.0f994443c6af.webp",
         "width": 1103,
-        "height": 750,
-        "sha256": "5b9f8c3fe29e0894176ea4eb9b485d3b5e098dcfec2b43eba6a1567a23e8ed4b",
-        "bytes": 68078,
+        "height": 499,
+        "sha256": "0f994443c6af57a8fec356fb49c3805e88d1b2e992c55fd60285972391b2c3ec",
+        "bytes": 43554,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            750
+            499
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -13189,17 +13189,17 @@
       "sourcePage": 7,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-62-advanced-28-content.8495eb80c710.webp",
+        "path": "assets/exams/catalog/content/official-62-advanced-28-content.e1f2ca20dcaa.webp",
         "width": 1091,
-        "height": 1041,
-        "sha256": "8495eb80c7108f39bb388209c2c2f2c382c8a9088ae3b0092afeea4d43f7684e",
-        "bytes": 102704,
+        "height": 780,
+        "sha256": "e1f2ca20dcaacbccf98e53a0dee10bcf169014fa9c889dd519f880357b71c9a7",
+        "bytes": 73978,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            1041
+            780
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -13389,17 +13389,17 @@
       "sourcePage": 9,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-62-advanced-36-content.07b0757c416c.webp",
+        "path": "assets/exams/catalog/content/official-62-advanced-36-content.d4615227e240.webp",
         "width": 1091,
-        "height": 850,
-        "sha256": "07b0757c416c9e09d3bf3cd2c656685ee9a59b692867d9c18575c766e9597e96",
-        "bytes": 73136,
+        "height": 774,
+        "sha256": "d4615227e24014c2ee9ef2f9d25da7673ce3b780c37f12a830792fe9b571c109",
+        "bytes": 66554,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            850
+            774
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -13464,17 +13464,17 @@
       "sourcePage": 10,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-62-advanced-39-content.367f06485a2e.webp",
+        "path": "assets/exams/catalog/content/official-62-advanced-39-content.86bc8c4345b1.webp",
         "width": 1091,
-        "height": 1117,
-        "sha256": "367f06485a2e6c46d77c6d631f9c1a09d32763b9972b38b87715ea36305007ee",
-        "bytes": 84594,
+        "height": 1048,
+        "sha256": "86bc8c4345b1d273bf4596e47b477d1ea9ea73e98b7cce30b3980bb6a5a5cb56",
+        "bytes": 78202,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            1117
+            1048
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -13739,17 +13739,17 @@
       "sourcePage": 12,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-62-advanced-50-content.17d9a4c85866.webp",
+        "path": "assets/exams/catalog/content/official-62-advanced-50-content.675dbec448a2.webp",
         "width": 1103,
-        "height": 1512,
-        "sha256": "17d9a4c8586619da51f213986a0f6174b45d28384e7ca20086385c1e00d134ba",
-        "bytes": 154950,
+        "height": 1330,
+        "sha256": "675dbec448a27c02b4a7ebae0fce8ae8347055ffd330276ba566e7aa77cf7e25",
+        "bytes": 129082,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            1512
+            1330
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -15262,17 +15262,17 @@
       "sourcePage": 11,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-63-basic-44-content.3adb4f241929.webp",
+        "path": "assets/exams/catalog/content/official-63-basic-44-content.8a4453c05a8a.webp",
         "width": 1091,
-        "height": 1171,
-        "sha256": "3adb4f24192992c40718ef0b8d630d37500ca9bdc6353c5653b1da82fdbda9fd",
-        "bytes": 89226,
+        "height": 987,
+        "sha256": "8a4453c05a8a1d0807bba8052a5de01e946fc03853717921ebd1a74ca8e628b7",
+        "bytes": 74234,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            1171
+            987
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -15287,17 +15287,17 @@
       "sourcePage": 11,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-63-basic-45-content.6a5fa8b34928.webp",
+        "path": "assets/exams/catalog/content/official-63-basic-45-content.4d07f7deac0a.webp",
         "width": 1103,
-        "height": 1235,
-        "sha256": "6a5fa8b34928c09b055c03836c047cb907a7d42757d9cfaf0217b5a46c34c45c",
-        "bytes": 115072,
+        "height": 1041,
+        "sha256": "4d07f7deac0a8272abc6f73568c416cb5eb04df4ef05294e3c9ba67e49b2a220",
+        "bytes": 94814,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            1235
+            1041
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -15312,17 +15312,17 @@
       "sourcePage": 11,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-63-basic-46-content.0d99c08afd6d.webp",
+        "path": "assets/exams/catalog/content/official-63-basic-46-content.2dfe053d169b.webp",
         "width": 1103,
-        "height": 1169,
-        "sha256": "0d99c08afd6d2830d50bc6d62da8fb4b238b1c55cda62c1d708c80581f3169da",
-        "bytes": 99640,
+        "height": 1097,
+        "sha256": "2dfe053d169bd730f60057553792266e983ab89e080680d7fb0f72d022bbf4d9",
+        "bytes": 92538,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            1169
+            1097
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -16028,17 +16028,17 @@
       "sourcePage": 4,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-63-advanced-16-content.bd1152c33958.webp",
+        "path": "assets/exams/catalog/content/official-63-advanced-16-content.4f8c3f6e6054.webp",
         "width": 1103,
-        "height": 984,
-        "sha256": "bd1152c33958c849d38061b80dcc017ce1391c506a37c6b3ec10ce66ad5f0e3c",
-        "bytes": 80778,
+        "height": 844,
+        "sha256": "4f8c3f6e605497af498ce556ca062e8dad94faf1577aeb0627c9b2a45e46fa00",
+        "bytes": 67130,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            984
+            844
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -16153,17 +16153,17 @@
       "sourcePage": 5,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-63-advanced-21-content.90a130e587f5.webp",
+        "path": "assets/exams/catalog/content/official-63-advanced-21-content.40851a043df4.webp",
         "width": 1103,
-        "height": 1316,
-        "sha256": "90a130e587f56c6074a7a82f11d10c7310b9a4b5653d7eb4de4e52b325beb2d4",
-        "bytes": 122328,
+        "height": 1071,
+        "sha256": "40851a043df430f88daa2ba4bc1b65441c911c4d780118b70e7641c30b9d3118",
+        "bytes": 96138,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            1316
+            1071
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -16228,17 +16228,17 @@
       "sourcePage": 6,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-63-advanced-24-content.3ad3a74cc7d5.webp",
+        "path": "assets/exams/catalog/content/official-63-advanced-24-content.720b03dfcfd6.webp",
         "width": 1091,
-        "height": 1355,
-        "sha256": "3ad3a74cc7d59322c71ab71693c25f22f37647e1bbb9e09835dbea172f223a7d",
-        "bytes": 131724,
+        "height": 1160,
+        "sha256": "720b03dfcfd6b58ee8a38fd6bd99623039f211daa536aa9e3cff1eee5ea6b279",
+        "bytes": 112242,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            1355
+            1160
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -16378,17 +16378,17 @@
       "sourcePage": 7,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-63-advanced-30-content.6b888bb75b22.webp",
+        "path": "assets/exams/catalog/content/official-63-advanced-30-content.c5699bad5f15.webp",
         "width": 1103,
-        "height": 1072,
-        "sha256": "6b888bb75b22dbf720d5fbd22963fb1ed5add726cc870bf29f63c93d154bc48f",
-        "bytes": 89966,
+        "height": 873,
+        "sha256": "c5699bad5f157a3dbaee29ced0f9b4322386616f3de8387323cb1e6071f44b51",
+        "bytes": 73038,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            1072
+            873
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -16503,17 +16503,17 @@
       "sourcePage": 9,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-63-advanced-35-content.0590a419fcfc.webp",
+        "path": "assets/exams/catalog/content/official-63-advanced-35-content.08467e4edce7.webp",
         "width": 1091,
-        "height": 1386,
-        "sha256": "0590a419fcfcba838bf5cb1eaa41f6521e90a47e09c7fe5d0c284d3985b60d79",
-        "bytes": 80908,
+        "height": 1194,
+        "sha256": "08467e4edce70134989b44ecf2a99b2916ff73958d8be52b80e04773d00abe06",
+        "bytes": 61810,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            1386
+            1194
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -16578,17 +16578,17 @@
       "sourcePage": 9,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-63-advanced-38-content.53b0a35aed99.webp",
+        "path": "assets/exams/catalog/content/official-63-advanced-38-content.6fe4861b65ee.webp",
         "width": 1103,
-        "height": 1228,
-        "sha256": "53b0a35aed99a72508b820398d1c98f99b2d8dc21626166acb23c5b79bf70c40",
-        "bytes": 110746,
+        "height": 1040,
+        "sha256": "6fe4861b65ee2184aaf11370341b67740545f99c799c4bb231be7ecdfe675f4b",
+        "bytes": 93834,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            1228
+            1040
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -16936,17 +16936,17 @@
       "sourcePage": 12,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-63-advanced-48-content.3fd9d4384bba.webp",
+        "path": "assets/exams/catalog/content/official-63-advanced-48-content.8f510c9a8d16.webp",
         "width": 1091,
-        "height": 2196,
-        "sha256": "3fd9d4384bba0ca39d864153e26075ce2b110b2b8d015c50103433a879df0b76",
-        "bytes": 191806,
+        "height": 2011,
+        "sha256": "8f510c9a8d16dd7c82315a077ef99ad36279221f62da32a00566d869ccc4cb3d",
+        "bytes": 175148,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            2196
+            2011
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -16961,17 +16961,17 @@
       "sourcePage": 12,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-63-advanced-49-content.5893abf3a23c.webp",
+        "path": "assets/exams/catalog/content/official-63-advanced-49-content.bb81211a8dec.webp",
         "width": 1103,
-        "height": 1203,
-        "sha256": "5893abf3a23ceed80ba784cf6ea37b33cdd9206fac544e0dc637baec07c5b4f1",
-        "bytes": 109232,
+        "height": 1072,
+        "sha256": "bb81211a8dec51375954197b47015ed13c274a5ef188f1b6254030e719e987c9",
+        "bytes": 97208,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            1203
+            1072
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -17503,17 +17503,17 @@
       "sourcePage": 3,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-64-basic-10-content.08a7f86af62c.webp",
+        "path": "assets/exams/catalog/content/official-64-basic-10-content.0c3599872f4e.webp",
         "width": 1091,
-        "height": 915,
-        "sha256": "08a7f86af62c573c1647b92ea99653d288a5950f0bb2bc39c01d9db0c60ddf3e",
-        "bytes": 94942,
+        "height": 1035,
+        "sha256": "0c3599872f4e64b9e6440c679149a18b7809029b37a437b0354916c0a690ff83",
+        "bytes": 96956,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            915
+            1035
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -17956,17 +17956,17 @@
       "sourcePage": 5,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-64-basic-21-content.cf5baff85c57.webp",
+        "path": "assets/exams/catalog/content/official-64-basic-21-content.35a82d7674cb.webp",
         "width": 1103,
-        "height": 1448,
-        "sha256": "cf5baff85c57b3fe40cb73a62bb70d1af88b15816aabb860bc5a3564b392fb87",
-        "bytes": 98718,
+        "height": 1253,
+        "sha256": "35a82d7674cb65b1f64b1d91961dc94c31d5370baa7cccaf1d796368963949a5",
+        "bytes": 79064,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            1448
+            1253
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -18262,17 +18262,17 @@
       "sourcePage": 7,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-64-basic-27-content.39b73026c688.webp",
+        "path": "assets/exams/catalog/content/official-64-basic-27-content.e611886760a6.webp",
         "width": 1091,
-        "height": 979,
-        "sha256": "39b73026c6884ad08a7bd236a920e1d0c2324afc5d72d8c76012b4f5f4217b5b",
-        "bytes": 113956,
+        "height": 795,
+        "sha256": "e611886760a6235d6771c07558d69a9633659d2a7451e31a973c57f415c95bb0",
+        "bytes": 90218,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            979
+            795
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -18337,17 +18337,17 @@
       "sourcePage": 8,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-64-basic-30-content.333487d98804.webp",
+        "path": "assets/exams/catalog/content/official-64-basic-30-content.4be54b6ef5b4.webp",
         "width": 1091,
-        "height": 895,
-        "sha256": "333487d98804a858783467fa145c222f09c2c7a7ec31bfb0071d3515be47d097",
-        "bytes": 78178,
+        "height": 989,
+        "sha256": "4be54b6ef5b4d7949e4d86a2ebc04fa6254c7646d458300c62ed80d384c7f001",
+        "bytes": 87600,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            895
+            989
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -18512,17 +18512,17 @@
       "sourcePage": 9,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-64-basic-37-content.ae68a5f3eeba.webp",
+        "path": "assets/exams/catalog/content/official-64-basic-37-content.40f7ed96af4f.webp",
         "width": 1103,
-        "height": 1019,
-        "sha256": "ae68a5f3eebabe71ac76aeb9f0da09fcf537c245871d5379615c505eb33d1c5f",
-        "bytes": 94108,
+        "height": 881,
+        "sha256": "40f7ed96af4f4f5b836e07458265ea4ded48620b2b5a6bb10cd84ac920977e65",
+        "bytes": 78506,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            1019
+            881
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -18612,17 +18612,17 @@
       "sourcePage": 10,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-64-basic-41-content.064b3e2d81b8.webp",
+        "path": "assets/exams/catalog/content/official-64-basic-41-content.a0568a76e869.webp",
         "width": 1103,
-        "height": 1475,
-        "sha256": "064b3e2d81b8cc09e1452bd2056581909156a53140c86f50497ebb517b16091a",
-        "bytes": 115186,
+        "height": 1274,
+        "sha256": "a0568a76e869ef16fc0193fd5a82eae1811d1965026596fac2c4e2c38fbb1009",
+        "bytes": 94294,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            1475
+            1274
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -18737,17 +18737,17 @@
       "sourcePage": 11,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-64-basic-46-content.5641a6c61a74.webp",
+        "path": "assets/exams/catalog/content/official-64-basic-46-content.c935ea5ca428.webp",
         "width": 1103,
-        "height": 855,
-        "sha256": "5641a6c61a74622625afbfdb2643744fde609fca3abbd105cb6b059e448fdd6a",
-        "bytes": 80172,
+        "height": 663,
+        "sha256": "c935ea5ca4287b77c08b377967d25021f80982a91b5a7bc05d6b03ff33e1e18a",
+        "bytes": 59934,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            855
+            663
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -19170,17 +19170,17 @@
       "sourcePage": 3,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-64-advanced-09-content.02f43dd567b1.webp",
+        "path": "assets/exams/catalog/content/official-64-advanced-09-content.f97ae6467bf1.webp",
         "width": 1091,
-        "height": 1067,
-        "sha256": "02f43dd567b18d04d8845649b0645d3084ccb0620f02ba7bd61e904d0b0ef9d9",
-        "bytes": 180830,
+        "height": 801,
+        "sha256": "f97ae6467bf1c695307772450af1a538b74bcf4853b606526f12d5e88679bde1",
+        "bytes": 154002,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            1067
+            801
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -19603,17 +19603,17 @@
       "sourcePage": 6,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-64-advanced-22-content.3d148041cb9d.webp",
+        "path": "assets/exams/catalog/content/official-64-advanced-22-content.c276804c6655.webp",
         "width": 1091,
-        "height": 898,
-        "sha256": "3d148041cb9dc243ba9d128393b0dbbea62482cbd4fc90f28fd8dedd964d0ad0",
-        "bytes": 106726,
+        "height": 647,
+        "sha256": "c276804c66554aa047204cba72dce6158e4e5dc4653f09aad1549dd9f2051b50",
+        "bytes": 76708,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            898
+            647
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -19853,17 +19853,17 @@
       "sourcePage": 8,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-64-advanced-32-content.3fd9a0422441.webp",
+        "path": "assets/exams/catalog/content/official-64-advanced-32-content.939918bd075d.webp",
         "width": 1103,
-        "height": 1045,
-        "sha256": "3fd9a0422441e9485d8236b14a669985988e24b2dfd459bb92c8d6dedaff4c02",
-        "bytes": 127266,
+        "height": 861,
+        "sha256": "939918bd075dbe04e19320cecc1398d02ae6057a789bb8af545dfbb0ce7581c7",
+        "bytes": 106908,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            1045
+            861
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -19928,17 +19928,17 @@
       "sourcePage": 9,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-64-advanced-35-content.c0a16930ccaa.webp",
+        "path": "assets/exams/catalog/content/official-64-advanced-35-content.0de94476b51c.webp",
         "width": 1091,
-        "height": 826,
-        "sha256": "c0a16930ccaa0127be09783c1ef7ab9c8e7ab0ceab630d31dc492214b746e125",
-        "bytes": 94072,
+        "height": 564,
+        "sha256": "0de94476b51ca5f58293be83c27fd647566bdcc05ee8ba881a69c8e2de708428",
+        "bytes": 60722,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            826
+            564
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -20003,17 +20003,17 @@
       "sourcePage": 9,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-64-advanced-38-content.5f0ccec8c3e1.webp",
+        "path": "assets/exams/catalog/content/official-64-advanced-38-content.685474c66fa2.webp",
         "width": 1103,
-        "height": 1116,
-        "sha256": "5f0ccec8c3e1449a304ae0eacbf76fbcced0d11d765de57e753d52548216286c",
-        "bytes": 114308,
+        "height": 917,
+        "sha256": "685474c66fa2234649b49266aa536b089aa46adc311696f9c0e478fbd967a0c4",
+        "bytes": 92636,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            1116
+            917
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -20253,17 +20253,17 @@
       "sourcePage": 12,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-64-advanced-48-content.b8c5c8ae9858.webp",
+        "path": "assets/exams/catalog/content/official-64-advanced-48-content.c00aebb2ab31.webp",
         "width": 1091,
-        "height": 1060,
-        "sha256": "b8c5c8ae9858f7fcedb4433424d80b0f40bc80d94c5835be9550f6a08d243e0e",
-        "bytes": 127500,
+        "height": 795,
+        "sha256": "c00aebb2ab31a1763555e6ab29201c7fbfd2770d2da4722fccdad44316c86096",
+        "bytes": 90970,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            1060
+            795
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -20278,17 +20278,17 @@
       "sourcePage": 12,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-64-advanced-49-content.8a8152988119.webp",
+        "path": "assets/exams/catalog/content/official-64-advanced-49-content.9e4f59757cf6.webp",
         "width": 1103,
-        "height": 1005,
-        "sha256": "8a81529881191017a0df12ea0c1ce3ff16f91ca0ea704c0e23e7ecb706b526d5",
-        "bytes": 69962,
+        "height": 860,
+        "sha256": "9e4f59757cf664ba44a77a4a6d4b430faca888ef3aea3d82641a424cb859b77f",
+        "bytes": 54664,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            1005
+            860
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -20711,17 +20711,17 @@
       "sourcePage": 3,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-65-advanced-12-content.817d7f641bff.webp",
+        "path": "assets/exams/catalog/content/official-65-advanced-12-content.0cff75445baf.webp",
         "width": 1103,
-        "height": 1092,
-        "sha256": "817d7f641bff37224ff71559680f00e5ad8f87fc0c9c4f0ea33912d5f0270f4f",
-        "bytes": 155256,
+        "height": 821,
+        "sha256": "0cff75445bafd2fdb20e3d50ab0e825d27399bfede191b6a7f78367bee2fe3c2",
+        "bytes": 125742,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            1092
+            821
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -21270,17 +21270,17 @@
       "sourcePage": 7,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-65-advanced-27-content.d2fcf18d6251.webp",
+        "path": "assets/exams/catalog/content/official-65-advanced-27-content.21022fbca681.webp",
         "width": 1091,
-        "height": 1157,
-        "sha256": "d2fcf18d625184eb1c8a6dc6f47e2f0207bfb3c07b2f016b4e33951098d4e86a",
-        "bytes": 107972,
+        "height": 955,
+        "sha256": "21022fbca681146681fc838ae6102bc4328b10f78848ea941b648fe7414146d2",
+        "bytes": 83634,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            1157
+            955
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -21495,17 +21495,17 @@
       "sourcePage": 9,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-65-advanced-36-content.7b329030d833.webp",
+        "path": "assets/exams/catalog/content/official-65-advanced-36-content.c57b2b0b6508.webp",
         "width": 1091,
-        "height": 929,
-        "sha256": "7b329030d83373d2ae8805e0412e5e5909abe7e2e3d47fb02c7d9e5410556fec",
-        "bytes": 92154,
+        "height": 796,
+        "sha256": "c57b2b0b6508a436e4ffbcaeb6a645b3c5e38cc7fafbf720173036b57a4857b6",
+        "bytes": 78220,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            929
+            796
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -21795,17 +21795,17 @@
       "sourcePage": 12,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-65-advanced-48-content.6cc76d654020.webp",
+        "path": "assets/exams/catalog/content/official-65-advanced-48-content.226eacaa31bf.webp",
         "width": 1091,
-        "height": 1019,
-        "sha256": "6cc76d6540209c74c4a452667c44ef5311e40f899d43c3ab5056e951ef05a6d7",
-        "bytes": 102796,
+        "height": 816,
+        "sha256": "226eacaa31bf5ccbc1b94b7a4dc310682ba01a452fa4de1aa86dba2074338423",
+        "bytes": 77108,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            1019
+            816
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -23654,17 +23654,17 @@
       "sourcePage": 1,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-66-advanced-01-content.8002ab57c51c.webp",
+        "path": "assets/exams/catalog/content/official-66-advanced-01-content.71e183fcd4a1.webp",
         "width": 1091,
-        "height": 1511,
-        "sha256": "8002ab57c51c912ce1561ac019d8102affe11e535e21a422db8220cba25303ab",
-        "bytes": 114058,
+        "height": 1257,
+        "sha256": "71e183fcd4a1d7a3554182aeb1aa78b10fef4309534c7201195d66be55f5be1d",
+        "bytes": 90334,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            1511
+            1257
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -24037,17 +24037,17 @@
       "sourcePage": 3,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-66-advanced-12-content.53597e360ab8.webp",
+        "path": "assets/exams/catalog/content/official-66-advanced-12-content.fabbe1ebf3bb.webp",
         "width": 1103,
-        "height": 1226,
-        "sha256": "53597e360ab818bae14005a8637b8082c1aa1694113c900a639e11662d7812fa",
-        "bytes": 78508,
+        "height": 1330,
+        "sha256": "fabbe1ebf3bb17c1c647002da8ea22cc1ab25e58dfc2f6d488157fd8156cfc83",
+        "bytes": 80502,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            1226
+            1330
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -24345,17 +24345,17 @@
       "sourcePage": 5,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-66-advanced-20-content.88e2e9d2575b.webp",
+        "path": "assets/exams/catalog/content/official-66-advanced-20-content.b7c6fc2317dc.webp",
         "width": 1103,
-        "height": 1009,
-        "sha256": "88e2e9d2575b4663f2e2019d5c8228a777b915b77366d7a1edc1a85a63ed66d3",
-        "bytes": 117328,
+        "height": 748,
+        "sha256": "b7c6fc2317dc0f136282ce09721d8b90438b58d659c527e77e3ced3cff3d0899",
+        "bytes": 84834,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            1009
+            748
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -24620,17 +24620,17 @@
       "sourcePage": 8,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-66-advanced-31-content.4c4043ba6dbe.webp",
+        "path": "assets/exams/catalog/content/official-66-advanced-31-content.37b65aa1a5df.webp",
         "width": 1103,
-        "height": 2276,
-        "sha256": "4c4043ba6dbe27fb6f14bbf4345ed988b5207908e8f57f7a2960589b090da358",
-        "bytes": 242878,
+        "height": 2295,
+        "sha256": "37b65aa1a5df39ac545197f2a0a487ec58f680cbb35450181c62b54dbb7036d9",
+        "bytes": 242952,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            2276
+            2295
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -26945,17 +26945,17 @@
       "sourcePage": 3,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-67-advanced-09-content.263904438552.webp",
+        "path": "assets/exams/catalog/content/official-67-advanced-09-content.82f58ea04e43.webp",
         "width": 1091,
-        "height": 1053,
-        "sha256": "26390443855274fa690c2b4f878615b11d4cef7f4afdcf52ae07198fa9d16b91",
-        "bytes": 108278,
+        "height": 865,
+        "sha256": "82f58ea04e4338c44f4f0a40cabaff35831555f2d25577e765f1e4c94a6b18d0",
+        "bytes": 88928,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            1053
+            865
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -27095,17 +27095,17 @@
       "sourcePage": 4,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-67-advanced-15-content.b1a286033992.webp",
+        "path": "assets/exams/catalog/content/official-67-advanced-15-content.3055a37bbc31.webp",
         "width": 1091,
-        "height": 615,
-        "sha256": "b1a2860339928e31dc5249c7c57d46f1a6ec0ee77e270f048b687f70faea42d5",
-        "bytes": 67520,
+        "height": 493,
+        "sha256": "3055a37bbc31ed09b56356d6fd816bac9caef94a9d612dff0f88aa02cdbb8056",
+        "bytes": 54558,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            615
+            493
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -27453,17 +27453,17 @@
       "sourcePage": 6,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-67-advanced-25-content.2a1245328712.webp",
+        "path": "assets/exams/catalog/content/official-67-advanced-25-content.170139e9d962.webp",
         "width": 1103,
-        "height": 1245,
-        "sha256": "2a1245328712190cba35d0e286d01897df79c31bb05a82c14fcde862fae98b1f",
-        "bytes": 117864,
+        "height": 976,
+        "sha256": "170139e9d96243d22047d29a52c7f32e0c78b074f789b15c5edad34c9fc477b6",
+        "bytes": 81632,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            1245
+            976
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -27578,17 +27578,17 @@
       "sourcePage": 7,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-67-advanced-30-content.a3f9d8d916f4.webp",
+        "path": "assets/exams/catalog/content/official-67-advanced-30-content.e4d040d8b726.webp",
         "width": 1103,
-        "height": 972,
-        "sha256": "a3f9d8d916f475c6040306149e2170e88638ea765aafa1082d116df81361323c",
-        "bytes": 95984,
+        "height": 778,
+        "sha256": "e4d040d8b7268b858e05358e2dece3b8d16dc9ffbf8cc5359de5c3ac8b0a7a30",
+        "bytes": 74706,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            972
+            778
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -27628,17 +27628,17 @@
       "sourcePage": 8,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-67-advanced-32-content.4d0f4fddfb2d.webp",
+        "path": "assets/exams/catalog/content/official-67-advanced-32-content.e7d9b159f19d.webp",
         "width": 1091,
-        "height": 960,
-        "sha256": "4d0f4fddfb2d109f6f354901d4b3c62e8e52e55363a541ca2f60fe14e3ab4ef1",
-        "bytes": 71954,
+        "height": 827,
+        "sha256": "e7d9b159f19d6ebf2c12c3af8f8a9710bef4fc4ad5d6d971eb4dcdd7138c7093",
+        "bytes": 57830,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            960
+            827
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -27953,17 +27953,17 @@
       "sourcePage": 11,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-67-advanced-45-content.00514ea5a10a.webp",
+        "path": "assets/exams/catalog/content/official-67-advanced-45-content.f0608b3bc4f2.webp",
         "width": 1103,
-        "height": 1035,
-        "sha256": "00514ea5a10a10d22d008fefd74ff5a097ac837d2d0b46444a3a2eb4693a9a57",
-        "bytes": 86042,
+        "height": 1047,
+        "sha256": "f0608b3bc4f2ae376670e1f32d0a7309b45080a3c54354f5ff2afa6fccafacb3",
+        "bytes": 86094,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            1035
+            1047
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -28053,17 +28053,17 @@
       "sourcePage": 12,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-67-advanced-49-content.a222e2cf59e2.webp",
+        "path": "assets/exams/catalog/content/official-67-advanced-49-content.4f8cd075ffcc.webp",
         "width": 1103,
-        "height": 1062,
-        "sha256": "a222e2cf59e2fa7ab855cf65e7e45776d1b0bc04e8e153838cf21f87c6acf9c7",
-        "bytes": 85526,
+        "height": 936,
+        "sha256": "4f8cd075ffcca47fbd935e3568472f38e51c879f50cc3e5bd471f42e8449b2c6",
+        "bytes": 71148,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            1062
+            936
           ]
         ],
         "pdfPageRects240Dpi": []
@@ -28135,17 +28135,17 @@
       "sourcePage": 1,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-68-advanced-02-content.aeb5eaf7a1fe.webp",
+        "path": "assets/exams/catalog/content/official-68-advanced-02-content.e5a29720dff2.webp",
         "width": 1091,
-        "height": 872,
-        "sha256": "aeb5eaf7a1fe0ecc0eaf7cc3a71b0836975523a1945e1f95f2739800760f28dc",
-        "bytes": 72286,
+        "height": 753,
+        "sha256": "e5a29720dff2d9f18942e022e363fa483a5b239385825029fcc2baa4c6ae08e3",
+        "bytes": 59252,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            872
+            753
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -28153,7 +28153,7 @@
             149,
             2196,
             1240,
-            3068
+            2949
           ]
         ]
       },
@@ -28263,17 +28263,17 @@
       "sourcePage": 2,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-68-advanced-06-content.2638e4e74371.webp",
+        "path": "assets/exams/catalog/content/official-68-advanced-06-content.c2716a667bdc.webp",
         "width": 1091,
-        "height": 1066,
-        "sha256": "2638e4e74371875fba42216d7551bdf0e054a6f94c62d3b4face0a8f38dc420b",
-        "bytes": 125600,
+        "height": 868,
+        "sha256": "c2716a667bdceecf59a233abbc4d9fccf272efcf27ae0a8a55964a80f9ceb650",
+        "bytes": 107358,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            1066
+            868
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -28281,7 +28281,7 @@
             149,
             2086,
             1240,
-            3152
+            2954
           ]
         ]
       },
@@ -28972,17 +28972,17 @@
       "sourcePage": 6,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-68-advanced-24-content.262fcba496bb.webp",
+        "path": "assets/exams/catalog/content/official-68-advanced-24-content.8c3e1954eb66.webp",
         "width": 1103,
-        "height": 1062,
-        "sha256": "262fcba496bb77699fd57b8113e46efa8e8522d2d57c4cd42770c47cc694d77f",
-        "bytes": 106376,
+        "height": 871,
+        "sha256": "8c3e1954eb667048c9ca9114ff255e57b760f08b12fd44bf470db2e8111c72e8",
+        "bytes": 76962,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            1062
+            871
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -28990,7 +28990,7 @@
             1254,
             322,
             2357,
-            1384
+            1193
           ]
         ]
       },
@@ -29068,17 +29068,17 @@
       "sourcePage": 7,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-68-advanced-27-content.2c8c696ee296.webp",
+        "path": "assets/exams/catalog/content/official-68-advanced-27-content.384663be3bac.webp",
         "width": 1091,
-        "height": 766,
-        "sha256": "2c8c696ee2961417a18bd07895099e321edcb2f0e017d60606bf7dc427558098",
-        "bytes": 127158,
+        "height": 714,
+        "sha256": "384663be3baca3a0fbbd17db82a4a4a89380ef55eed20773c62421e9176778cb",
+        "bytes": 120974,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            766
+            714
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -29086,7 +29086,7 @@
             149,
             1190,
             1240,
-            1956
+            1904
           ]
         ]
       },
@@ -29132,17 +29132,17 @@
       "sourcePage": 7,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-68-advanced-29-content.70ff3a31196f.webp",
+        "path": "assets/exams/catalog/content/official-68-advanced-29-content.4305464fadb0.webp",
         "width": 1103,
-        "height": 869,
-        "sha256": "70ff3a31196fb0bf352c79b6017fa9d59d6f425f91764009c1daf48c56ec3e7f",
-        "bytes": 91528,
+        "height": 797,
+        "sha256": "4305464fadb0e8a57420f05ec9e9263d706ecaa9960fe9e406c38aa17c67f716",
+        "bytes": 85712,
         "sourceRects": [
           [
             0,
             0,
             1103,
-            869
+            797
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -29150,7 +29150,7 @@
             1254,
             322,
             2357,
-            1191
+            1119
           ]
         ]
       },
@@ -29324,17 +29324,17 @@
       "sourcePage": 9,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-68-advanced-35-content.0b830ff510c2.webp",
+        "path": "assets/exams/catalog/content/official-68-advanced-35-content.80083cd9b535.webp",
         "width": 1091,
-        "height": 1081,
-        "sha256": "0b830ff510c26084e8a168fdd09c0a3163f97ee7b759d9db360f9f9338d11f95",
-        "bytes": 138298,
+        "height": 896,
+        "sha256": "80083cd9b535495ff8464364779a9a6af8772fe8e7a31a43d28e6d688f2c5364",
+        "bytes": 116180,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            1081
+            896
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -29342,7 +29342,7 @@
             149,
             322,
             1240,
-            1403
+            1218
           ]
         ]
       },
@@ -29484,17 +29484,17 @@
       "sourcePage": 10,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-68-advanced-40-content.4024c6cc230c.webp",
+        "path": "assets/exams/catalog/content/official-68-advanced-40-content.8af9c6bf7855.webp",
         "width": 1091,
-        "height": 1403,
-        "sha256": "4024c6cc230ca1e536d7e8ed452ab9a63e493f2cc82387bc5035de017e267aa3",
-        "bytes": 114336,
+        "height": 1225,
+        "sha256": "8af9c6bf78558789b15bf83cc4e877a9823e9fddb8e17b3dd21adfb96fd0b6e6",
+        "bytes": 94444,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            1403
+            1225
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -29502,7 +29502,7 @@
             149,
             1730,
             1240,
-            3133
+            2955
           ]
         ]
       },
@@ -29612,17 +29612,17 @@
       "sourcePage": 11,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-68-advanced-44-content.470e0f651d28.webp",
+        "path": "assets/exams/catalog/content/official-68-advanced-44-content.4b4bfbf0d08a.webp",
         "width": 1091,
-        "height": 1048,
-        "sha256": "470e0f651d28ab14a170a2893d8f388c7fbc3768d31b126bdf9cd0543a5cf83b",
-        "bytes": 122190,
+        "height": 840,
+        "sha256": "4b4bfbf0d08aab482cd0bfc91cfd531843c4512451f9671b7c982c55ab8d6dc2",
+        "bytes": 106736,
         "sourceRects": [
           [
             0,
             0,
             1091,
-            1048
+            840
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -29630,7 +29630,7 @@
             149,
             2110,
             1240,
-            3158
+            2950
           ]
         ]
       },
@@ -31765,17 +31765,17 @@
       "sourcePage": 11,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-69-basic-44-content.ac7762e136de.webp",
+        "path": "assets/exams/catalog/content/official-69-basic-44-content.f44afe36277f.webp",
         "width": 1062,
-        "height": 1284,
-        "sha256": "ac7762e136dee040b7075acf250d2e5ae5d6f8ca83639a33041a78610245d219",
-        "bytes": 159162,
+        "height": 1165,
+        "sha256": "f44afe36277f23ed2376470158534dad97f25f216f740b56ef38a4f2c852569f",
+        "bytes": 149048,
         "sourceRects": [
           [
             0,
             0,
             1062,
-            1284
+            1165
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -31783,7 +31783,7 @@
             145,
             1747,
             1207,
-            3031
+            2912
           ]
         ]
       },
@@ -33215,17 +33215,17 @@
       "sourcePage": 8,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-69-advanced-31-content.298e242966eb.webp",
+        "path": "assets/exams/catalog/content/official-69-advanced-31-content.77421e390a5b.webp",
         "width": 1062,
-        "height": 1386,
-        "sha256": "298e242966eb9385342e2a9c457af208dab494f5cf0d6fe4328f3bc122ee634a",
-        "bytes": 81838,
+        "height": 1117,
+        "sha256": "77421e390a5b616f0b465fbcb4ef7bbe24216024ff5f1db1d32d86a625f68c72",
+        "bytes": 57632,
         "sourceRects": [
           [
             0,
             0,
             1062,
-            1386
+            1117
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -33233,7 +33233,7 @@
             145,
             225,
             1207,
-            1611
+            1342
           ]
         ]
       },
@@ -34175,17 +34175,17 @@
       "sourcePage": 3,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-70-advanced-11-content.82b91ace9329.webp",
+        "path": "assets/exams/catalog/content/official-70-advanced-11-content.b93ac39437df.webp",
         "width": 1062,
-        "height": 1202,
-        "sha256": "82b91ace93294e2f2b88225c9f998a7b6cb1a56eb6c4c3e39d12efa4891100a3",
-        "bytes": 112622,
+        "height": 952,
+        "sha256": "b93ac39437dfb92d20228b08a84a1dcda1d2abba2aaa6687442ef2575fe9d27d",
+        "bytes": 86644,
         "sourceRects": [
           [
             0,
             0,
             1062,
-            1202
+            952
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -34193,7 +34193,7 @@
             145,
             1897,
             1207,
-            3099
+            2849
           ]
         ]
       },
@@ -34527,17 +34527,17 @@
       "sourcePage": 6,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-70-advanced-22-content.a2454817f99c.webp",
+        "path": "assets/exams/catalog/content/official-70-advanced-22-content.6e3cfbfe6f07.webp",
         "width": 1062,
-        "height": 1282,
-        "sha256": "a2454817f99c6051ffcf01b72c164f868ee8957d2f5421cd960c76c278364e6f",
-        "bytes": 115510,
+        "height": 1169,
+        "sha256": "6e3cfbfe6f07517c6836c03c7177ccc166f95536d57e86d15f49a63bb4c3897a",
+        "bytes": 99532,
         "sourceRects": [
           [
             0,
             0,
             1062,
-            1282
+            1169
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -34545,7 +34545,7 @@
             145,
             221,
             1207,
-            1503
+            1390
           ]
         ]
       },
@@ -37174,17 +37174,17 @@
       "sourcePage": 11,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-71-basic-45-content.9ceca6052722.webp",
+        "path": "assets/exams/catalog/content/official-71-basic-45-content.78f452600242.webp",
         "width": 1074,
-        "height": 1383,
-        "sha256": "9ceca60527225d8e0e1d9d4885486bc24d8db01d5848691b70558216bf9e33e2",
-        "bytes": 96716,
+        "height": 1250,
+        "sha256": "78f45260024280d3714988c63d3d992d16568b145ac9e56bafeb0b0c7cef468d",
+        "bytes": 86062,
         "sourceRects": [
           [
             0,
             0,
             1074,
-            1383
+            1250
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -37192,7 +37192,7 @@
             1221,
             221,
             2295,
-            1604
+            1471
           ]
         ]
       },
@@ -37398,17 +37398,17 @@
       "sourcePage": 1,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-71-advanced-02-content.f852c6a855ec.webp",
+        "path": "assets/exams/catalog/content/official-71-advanced-02-content.a619c079c874.webp",
         "width": 1062,
-        "height": 505,
-        "sha256": "f852c6a855ec71d645148575683948f5e54a1558b9cdfc27f8c0efdde2d99dbd",
-        "bytes": 44652,
+        "height": 651,
+        "sha256": "a619c079c874cf8cd65c4b764a76067f3c1108adc29f717edf237cda1c99aecf",
+        "bytes": 61284,
         "sourceRects": [
           [
             0,
             0,
             1062,
-            505
+            651
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -37416,7 +37416,7 @@
             145,
             1995,
             1207,
-            2500
+            2646
           ]
         ]
       },
@@ -41851,17 +41851,17 @@
       "sourcePage": 4,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-73-basic-15-content.72d75a370c48.webp",
+        "path": "assets/exams/catalog/content/official-73-basic-15-content.6f5d87e8020b.webp",
         "width": 1062,
-        "height": 1229,
-        "sha256": "72d75a370c481ccb907777c2522285ff190854203a913414470bcb26ae3df2ac",
-        "bytes": 79782,
+        "height": 1039,
+        "sha256": "6f5d87e8020b33920d380f1945ff8ff16c03cb926374212c7db706656fc4104a",
+        "bytes": 59792,
         "sourceRects": [
           [
             0,
             0,
             1062,
-            1229
+            1039
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -41869,7 +41869,7 @@
             145,
             1881,
             1207,
-            3110
+            2920
           ]
         ]
       },
@@ -43234,17 +43234,17 @@
       "sourcePage": 12,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-73-basic-48-content.04eb487c9851.webp",
+        "path": "assets/exams/catalog/content/official-73-basic-48-content.39811a348228.webp",
         "width": 1062,
-        "height": 1246,
-        "sha256": "04eb487c9851a4a607eb7105b29d895685a1d522dfed457c4e03b14f93ef1bc0",
-        "bytes": 86828,
+        "height": 1067,
+        "sha256": "39811a348228f2c4bcc05cf3e4d4853a6b5f3f971c09eb54d07b95f0fb563661",
+        "bytes": 69190,
         "sourceRects": [
           [
             0,
             0,
             1062,
-            1246
+            1067
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -43252,7 +43252,7 @@
             145,
             1849,
             1207,
-            3095
+            2916
           ]
         ]
       },
@@ -43783,17 +43783,17 @@
       "sourcePage": 3,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-73-advanced-11-content.4d9d0d261840.webp",
+        "path": "assets/exams/catalog/content/official-73-advanced-11-content.a32560f32e0a.webp",
         "width": 1074,
-        "height": 1637,
-        "sha256": "4d9d0d261840e834df1772173083c16d665d3d5011844c62ddc1b1f2e9233184",
-        "bytes": 127140,
+        "height": 1496,
+        "sha256": "a32560f32e0ae8b52d45ac575da55e6ce5d00271dfc61af3636b008fe2fdd871",
+        "bytes": 113448,
         "sourceRects": [
           [
             0,
             0,
             1074,
-            1637
+            1496
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -43801,7 +43801,7 @@
             1221,
             223,
             2295,
-            1860
+            1719
           ]
         ]
       },
@@ -44199,17 +44199,17 @@
       "sourcePage": 6,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-73-advanced-24-content.f798d990a4bf.webp",
+        "path": "assets/exams/catalog/content/official-73-advanced-24-content.a27caa42ed22.webp",
         "width": 1074,
-        "height": 1465,
-        "sha256": "f798d990a4bfa31205a01bad994e7f16f7c89aa36247bb650005bdc4b5159506",
-        "bytes": 128896,
+        "height": 1224,
+        "sha256": "a27caa42ed22d7e09c02b52c1fd20d8523785116f6594c8f0b49e209cea643cc",
+        "bytes": 100012,
         "sourceRects": [
           [
             0,
             0,
             1074,
-            1465
+            1224
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -44217,7 +44217,7 @@
             1221,
             1629,
             2295,
-            3094
+            2853
           ]
         ]
       },
@@ -44629,17 +44629,17 @@
       "sourcePage": 8,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-73-advanced-33-content.3399c95e3dcc.webp",
+        "path": "assets/exams/catalog/content/official-73-advanced-33-content.bc376a09461a.webp",
         "width": 1074,
-        "height": 887,
-        "sha256": "3399c95e3dccb35fc963d592599085e662575d442ec03af667b812d3036355f4",
-        "bytes": 84500,
+        "height": 687,
+        "sha256": "bc376a09461a5ccfe3c7e07f8da5a2657cca4185ab53eec0ae33181fd769e262",
+        "bytes": 62422,
         "sourceRects": [
           [
             0,
             0,
             1074,
-            887
+            687
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -44647,7 +44647,7 @@
             1221,
             2159,
             2295,
-            3046
+            2846
           ]
         ]
       },
@@ -45333,17 +45333,17 @@
       "sourcePage": 2,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-74-advanced-05-content.d93f6b8fd0a0.webp",
+        "path": "assets/exams/catalog/content/official-74-advanced-05-content.5fa1cacb45fb.webp",
         "width": 1062,
-        "height": 1194,
-        "sha256": "d93f6b8fd0a00f9a96c50934d9b0afa88292f7e9d91a559caced0c8a8ab9d8d2",
-        "bytes": 166786,
+        "height": 983,
+        "sha256": "5fa1cacb45fb28f39e17e962fb913df40db1fd7599f2e09795012c9a4a159050",
+        "bytes": 146606,
         "sourceRects": [
           [
             0,
             0,
             1062,
-            1194
+            983
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -45351,7 +45351,7 @@
             145,
             223,
             1207,
-            1417
+            1206
           ]
         ]
       },
@@ -46335,17 +46335,17 @@
       "sourcePage": 7,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-74-advanced-29-content.37416ff71c91.webp",
+        "path": "assets/exams/catalog/content/official-74-advanced-29-content.49831e818cd9.webp",
         "width": 1074,
-        "height": 1265,
-        "sha256": "37416ff71c91b0f9ff6fa059acb610029c4441842a11cec6d059a7bb6a5aba1e",
-        "bytes": 72944,
+        "height": 1066,
+        "sha256": "49831e818cd9e685c403d3a40374a0948f34961f46a8137002a385157100c3d8",
+        "bytes": 48562,
         "sourceRects": [
           [
             0,
             0,
             1074,
-            1265
+            1066
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -46353,7 +46353,7 @@
             1221,
             223,
             2295,
-            1488
+            1289
           ]
         ]
       },
@@ -48387,17 +48387,17 @@
       "sourcePage": 9,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-75-basic-37-content.97b907cb791c.webp",
+        "path": "assets/exams/catalog/content/official-75-basic-37-content.39010d70dfd6.webp",
         "width": 1074,
-        "height": 900,
-        "sha256": "97b907cb791cdd4dae9ba762f78c2eaab5bcded04ac6d4e7ebd3c82ccab06c34",
-        "bytes": 109896,
+        "height": 1005,
+        "sha256": "39010d70dfd674650f4c2a6c88161cade52c4dd44a0dbb556474e14658a5db19",
+        "bytes": 118892,
         "sourceRects": [
           [
             0,
             0,
             1074,
-            900
+            1005
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -48405,7 +48405,7 @@
             1221,
             223,
             2295,
-            1123
+            1228
           ]
         ]
       },
@@ -49484,17 +49484,17 @@
       "sourcePage": 3,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-75-advanced-11-content.258fae45c325.webp",
+        "path": "assets/exams/catalog/content/official-75-advanced-11-content.77feb613c729.webp",
         "width": 1062,
-        "height": 1279,
-        "sha256": "258fae45c325895878ad29e45de879002fa4b654b3af67ead5e5ab09b69c6d54",
-        "bytes": 119788,
+        "height": 1019,
+        "sha256": "77feb613c72930697ab2aff7110451fcc757d87a342759fde2551738d5df19a6",
+        "bytes": 88952,
         "sourceRects": [
           [
             0,
             0,
             1062,
-            1279
+            1019
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -49502,7 +49502,7 @@
             145,
             1827,
             1207,
-            3106
+            2846
           ]
         ]
       },
@@ -49873,17 +49873,17 @@
       "sourcePage": 5,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-75-advanced-19-content.eb9cf432248a.webp",
+        "path": "assets/exams/catalog/content/official-75-advanced-19-content.164ef1a29e19.webp",
         "width": 1062,
-        "height": 948,
-        "sha256": "eb9cf432248a7c0354e74ffce3fd4a6178fc38254b0251ee27334cea3e4a2d8f",
-        "bytes": 108494,
+        "height": 748,
+        "sha256": "164ef1a29e19542c5d334be1f9126d810ca752c6e778b14b24c6f3098999f13a",
+        "bytes": 86226,
         "sourceRects": [
           [
             0,
             0,
             1062,
-            948
+            748
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -49891,7 +49891,7 @@
             145,
             2101,
             1207,
-            3049
+            2849
           ]
         ]
       },
@@ -50449,17 +50449,17 @@
       "sourcePage": 9,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-75-advanced-37-content.94d54eb17131.webp",
+        "path": "assets/exams/catalog/content/official-75-advanced-37-content.c1205f25b697.webp",
         "width": 1074,
-        "height": 1037,
-        "sha256": "94d54eb171312b32643294c727060bcd2a4a9cdeb99aea397eb72e6e1fbf170b",
-        "bytes": 105086,
+        "height": 787,
+        "sha256": "c1205f25b697d90776481a2a15ab908d6aa1d3948e9ca5e1447ac0fc14694593",
+        "bytes": 79488,
         "sourceRects": [
           [
             0,
             0,
             1074,
-            1037
+            787
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -50467,7 +50467,7 @@
             1221,
             223,
             2295,
-            1260
+            1010
           ]
         ]
       },
@@ -54768,17 +54768,17 @@
       "sourcePage": 11,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-77-basic-46-content.4af55135b173.webp",
+        "path": "assets/exams/catalog/content/official-77-basic-46-content.c51e7e42a3ef.webp",
         "width": 1074,
-        "height": 802,
-        "sha256": "4af55135b173e077a64a98cba814b66a136470881b7551a4585690984b5610f3",
-        "bytes": 163508,
+        "height": 896,
+        "sha256": "c51e7e42a3effc567cf52a81295c6eaa01314b7fc244edd55cede4076306f97f",
+        "bytes": 182874,
         "sourceRects": [
           [
             0,
             0,
             1074,
-            802
+            896
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -54786,7 +54786,7 @@
             1221,
             2015,
             2295,
-            2817
+            2911
           ]
         ]
       },
@@ -54832,17 +54832,17 @@
       "sourcePage": 12,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-77-basic-48-content.0b690ce501ed.webp",
+        "path": "assets/exams/catalog/content/official-77-basic-48-content.de02619c992a.webp",
         "width": 1062,
-        "height": 1278,
-        "sha256": "0b690ce501ed4860609320658fcc1cd8a1eeda5b97e03273a18df057fe05cb51",
+        "height": 1274,
+        "sha256": "de02619c992abc5a65c24e7956343295fef61cc3bc4861352ab32a6699f28ca7",
         "bytes": 79178,
         "sourceRects": [
           [
             0,
             0,
             1062,
-            1278
+            1274
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -54850,7 +54850,7 @@
             145,
             1639,
             1207,
-            2917
+            2913
           ]
         ]
       },
@@ -55834,17 +55834,17 @@
       "sourcePage": 5,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-77-advanced-21-content.f88bf4c35ae0.webp",
+        "path": "assets/exams/catalog/content/official-77-advanced-21-content.a7924be67eea.webp",
         "width": 1074,
-        "height": 1033,
-        "sha256": "f88bf4c35ae0fd979b9e6bde92945c9d7252fcd72ad84bdd4ee266d0cb34fb83",
-        "bytes": 161658,
+        "height": 917,
+        "sha256": "a7924be67eeaafac2a994ac5e03cbce79ffe5e92864b109f078390e199ddaf69",
+        "bytes": 149006,
         "sourceRects": [
           [
             0,
             0,
             1074,
-            1033
+            917
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -55852,7 +55852,7 @@
             1221,
             1929,
             2295,
-            2962
+            2846
           ]
         ]
       },
@@ -55930,17 +55930,17 @@
       "sourcePage": 6,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-77-advanced-24-content.3a7556e5c5c2.webp",
+        "path": "assets/exams/catalog/content/official-77-advanced-24-content.364d1c42070c.webp",
         "width": 1074,
-        "height": 1061,
-        "sha256": "3a7556e5c5c259906e709190ed6cbc1d6ce450aea52fb80b5a9ca19644343df5",
-        "bytes": 119490,
+        "height": 942,
+        "sha256": "364d1c42070c16b8aee3674faed3a1426e79373729d43f0b819d81f13d7211a5",
+        "bytes": 102760,
         "sourceRects": [
           [
             0,
             0,
             1074,
-            1061
+            942
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -55948,7 +55948,7 @@
             1221,
             223,
             2295,
-            1284
+            1165
           ]
         ]
       },
@@ -57247,17 +57247,17 @@
       "sourcePage": 3,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-78-advanced-11-content.2184260704f3.webp",
+        "path": "assets/exams/catalog/content/official-78-advanced-11-content.b38efa36bc1a.webp",
         "width": 1074,
-        "height": 859,
-        "sha256": "2184260704f3e92850beffb5c5dba62a0f200c77f254c19332cad7ab652c5ecf",
-        "bytes": 86556,
+        "height": 598,
+        "sha256": "b38efa36bc1a1069e522d9319c748a738af8955b8c48bcdbe7783291ea8774b9",
+        "bytes": 59014,
         "sourceRects": [
           [
             0,
             0,
             1074,
-            859
+            598
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -57265,7 +57265,7 @@
             1221,
             223,
             2295,
-            1082
+            821
           ]
         ]
       },
@@ -57796,17 +57796,17 @@
       "sourcePage": 6,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-78-advanced-24-content.a6229938d101.webp",
+        "path": "assets/exams/catalog/content/official-78-advanced-24-content.61958ae3f621.webp",
         "width": 1074,
-        "height": 1448,
-        "sha256": "a6229938d10192ed01b2fa2e1b58ee83eb5a39572cecbdec575582b4b076e811",
-        "bytes": 118216,
+        "height": 1188,
+        "sha256": "61958ae3f6217b19148705f4490a3903471c184347a1340f70c4f73ae5283ceb",
+        "bytes": 90270,
         "sourceRects": [
           [
             0,
             0,
             1074,
-            1448
+            1188
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -57814,7 +57814,7 @@
             1221,
             221,
             2295,
-            1669
+            1409
           ]
         ]
       },
@@ -60213,17 +60213,17 @@
       "sourcePage": 6,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-79-basic-26-content.9413dfe06445.webp",
+        "path": "assets/exams/catalog/content/official-79-basic-26-content.71029e9e8d34.webp",
         "width": 1074,
-        "height": 1013,
-        "sha256": "9413dfe06445dd9e4c1951d5f3eadf896497696572a416e1464d7ed756c18602",
-        "bytes": 95678,
+        "height": 810,
+        "sha256": "71029e9e8d34aa73c14ff9168f06ca433715d178abe826771d727a73b9ac9311",
+        "bytes": 76394,
         "sourceRects": [
           [
             0,
             0,
             1074,
-            1013
+            810
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -60231,7 +60231,7 @@
             1221,
             2101,
             2295,
-            3114
+            2911
           ]
         ]
       },
@@ -61135,17 +61135,17 @@
       "sourcePage": 12,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-79-basic-48-content.d7f48308b396.webp",
+        "path": "assets/exams/catalog/content/official-79-basic-48-content.395efb826d6c.webp",
         "width": 1062,
-        "height": 965,
-        "sha256": "d7f48308b3963e0e5facf40e296ee7014e5bd030d1c9fe0d656ad1d967ca52fb",
-        "bytes": 91072,
+        "height": 781,
+        "sha256": "395efb826d6c96c30c304d0d3087390a25dc957ff3fbae09dc35d3ade1b26f3a",
+        "bytes": 72414,
         "sourceRects": [
           [
             0,
             0,
             1062,
-            965
+            781
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -61153,7 +61153,7 @@
             145,
             2137,
             1207,
-            3102
+            2918
           ]
         ]
       },
@@ -62905,17 +62905,17 @@
       "sourcePage": 11,
       "detailDpi": 240,
       "contentImage": {
-        "path": "assets/exams/catalog/content/official-79-advanced-45-content.0aab1416298f.webp",
+        "path": "assets/exams/catalog/content/official-79-advanced-45-content.73428a95aeff.webp",
         "width": 1074,
-        "height": 1191,
-        "sha256": "0aab1416298fbcba60be92d7ac39bd3984652c34fd9b0118abe1a0fba2aa4021",
-        "bytes": 106586,
+        "height": 925,
+        "sha256": "73428a95aeff44d268dbe10c6469e4c41f5d1e50e2cb10c7c925fc73094c178c",
+        "bytes": 77892,
         "sourceRects": [
           [
             0,
             0,
             1074,
-            1191
+            925
           ]
         ],
         "pdfPageRects240Dpi": [
@@ -62923,7 +62923,7 @@
             1221,
             221,
             2295,
-            1412
+            1146
           ]
         ]
       },

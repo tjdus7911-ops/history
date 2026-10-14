@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "commit": "bf6bcf420a1bd8a2946689b5404933afef9f9cc3",
-  "tree": "39d443de20f827613b3c3f2da74b236a92e45c9a",
+  "commit": "626df1151884efff18b64584bb0eaea7bf92f3d2",
+  "tree": "89ed1951b26ac20eebbac71fd4dc6be6612878d2",
   "files": [
     [
       "assets/ancient/backgrounds/ancient-modern-museum.jpg",
@@ -3079,6 +3079,16 @@
       16396
     ],
     [
+      "assets/exams/catalog/choices/official-65-advanced-22-choice-1.f4b1bc8eb08d.webp",
+      "4165de39e42bc3720ff37ebfaebd98a973ed0ee7",
+      18800
+    ],
+    [
+      "assets/exams/catalog/choices/official-65-advanced-22-choice-2.e375f54a22d8.webp",
+      "3d65c055f36a68c4b0f575abb0ebfbe0e7835cd6",
+      13302
+    ],
+    [
       "assets/exams/catalog/choices/official-65-advanced-22-choice-2.e97182af4188.webp",
       "fbf4dd39265ab0a57676260ce970c6938707a44c",
       11470
@@ -3089,14 +3099,29 @@
       20720
     ],
     [
+      "assets/exams/catalog/choices/official-65-advanced-22-choice-3.c9b02be68195.webp",
+      "5a6038eca0d1db0aeac77bfca03551daea9d6fb0",
+      5978
+    ],
+    [
       "assets/exams/catalog/choices/official-65-advanced-22-choice-4.c18200c22d38.webp",
       "ce2c7c7155c05d53a780f0d78ca09fdc5d8dbc91",
       11108
     ],
     [
+      "assets/exams/catalog/choices/official-65-advanced-22-choice-4.f72ea3c8361f.webp",
+      "0cf5f69b8029a3d393cbc8fb35ba9b37e347aa26",
+      9164
+    ],
+    [
       "assets/exams/catalog/choices/official-65-advanced-22-choice-5.50e8954d1cd8.webp",
       "424db5ead8f337466e4036751b7af697c98a6a16",
       13020
+    ],
+    [
+      "assets/exams/catalog/choices/official-65-advanced-22-choice-5.f0b50b7bea10.webp",
+      "e5377c56cdf7b8d107e17746f3a7e45ef71157d8",
+      3692
     ],
     [
       "assets/exams/catalog/choices/official-66-advanced-03-choice-1.9e94617e5ba1.webp",
@@ -3919,9 +3944,24 @@
       12666
     ],
     [
+      "assets/exams/catalog/choices/official-74-advanced-19-choice-1.cef6799d3f90.webp",
+      "82418b5ddd96151fce292919a3a8ce4c9ecd2335",
+      12758
+    ],
+    [
+      "assets/exams/catalog/choices/official-74-advanced-19-choice-2.71d350aad35d.webp",
+      "c64dc763cbe6a281cc183f03f76137bdec96fc3b",
+      18262
+    ],
+    [
       "assets/exams/catalog/choices/official-74-advanced-19-choice-2.a0bc930d0692.webp",
       "505b294b51140a5f43fdd817915ae471d457b649",
       23374
+    ],
+    [
+      "assets/exams/catalog/choices/official-74-advanced-19-choice-3.133131b2746b.webp",
+      "0ba810bc1c650b2b92c7478e6b1abfb686402872",
+      14224
     ],
     [
       "assets/exams/catalog/choices/official-74-advanced-19-choice-3.e31f108af62d.webp",
@@ -3929,9 +3969,19 @@
       13730
     ],
     [
+      "assets/exams/catalog/choices/official-74-advanced-19-choice-4.38a0ee524211.webp",
+      "b09ed6d551fd78e910fb3ad2e2f9046a16112f45",
+      14944
+    ],
+    [
       "assets/exams/catalog/choices/official-74-advanced-19-choice-4.513a94d95fcd.webp",
       "d0cea20aa2af745fd65699160e35da83a049a444",
       16006
+    ],
+    [
+      "assets/exams/catalog/choices/official-74-advanced-19-choice-5.924ed775accb.webp",
+      "fc0417404b27865fcc422204d43e14ad96a2663e",
+      10564
     ],
     [
       "assets/exams/catalog/choices/official-74-advanced-19-choice-5.c38ea3defadd.webp",
@@ -4564,6 +4614,11 @@
       87352
     ],
     [
+      "assets/exams/catalog/content/official-57-advanced-02-content.b255edd3b074.webp",
+      "cf72a68c4de04e932200b117f1591fcdf369da38",
+      51568
+    ],
+    [
       "assets/exams/catalog/content/official-57-advanced-02-content.fb270ab34a1d.webp",
       "8fb4145780c2c298b4554eeac33d3fb7262f9b64",
       71886
@@ -4609,6 +4664,11 @@
       113032
     ],
     [
+      "assets/exams/catalog/content/official-57-advanced-10-content.ae5c3bf7908c.webp",
+      "3f4f6c437e06fe56e849cdb231a5c83855865b34",
+      84686
+    ],
+    [
       "assets/exams/catalog/content/official-57-advanced-11-content.0e4f6d503972.webp",
       "a690f14da1b78f3e8405ec7d5ca4d726ee0484f7",
       115624
@@ -4637,6 +4697,11 @@
       "assets/exams/catalog/content/official-57-advanced-16-content.da45a996fdcd.webp",
       "01e88c5c9269149dd176b6546c30d49e6dfd01f5",
       101252
+    ],
+    [
+      "assets/exams/catalog/content/official-57-advanced-17-content.7f3f1e4095e3.webp",
+      "9a50ab0370eb46d10b3cc56d5a27029f5e0e12ae",
+      64532
     ],
     [
       "assets/exams/catalog/content/official-57-advanced-17-content.f7dd7c60fe09.webp",
@@ -4679,14 +4744,29 @@
       98346
     ],
     [
+      "assets/exams/catalog/content/official-57-advanced-24-content.f6e6fd98364d.webp",
+      "df3d4943c8e32bf3d97c5cf44fec0f7037b19e88",
+      65672
+    ],
+    [
       "assets/exams/catalog/content/official-57-advanced-25-content.58dce0f538c1.webp",
       "ba1a8ce33cedfda2e4b6c6cbb5498c41c1d9ca11",
       83556
     ],
     [
+      "assets/exams/catalog/content/official-57-advanced-25-content.7226ca433bd3.webp",
+      "1a1771f3a5b2a0f9bab5001d72f2e5599a422f3a",
+      62906
+    ],
+    [
       "assets/exams/catalog/content/official-57-advanced-26-content.adfa90380fdc.webp",
       "e5e1df39f78b6a45a002bacdd34e2aaee18e4cbe",
       111368
+    ],
+    [
+      "assets/exams/catalog/content/official-57-advanced-27-content.4fce96415152.webp",
+      "c61df0d597a075d24c4d6add1a2f77bc05b29ae1",
+      58506
     ],
     [
       "assets/exams/catalog/content/official-57-advanced-27-content.a23ddf222bc1.webp",
@@ -4762,6 +4842,11 @@
       "assets/exams/catalog/content/official-57-advanced-41-content.eb98c414a80c.webp",
       "721e22bd92e42d9f9845e634c78489a289d8ac76",
       53220
+    ],
+    [
+      "assets/exams/catalog/content/official-57-advanced-42-content.c7a52ae14396.webp",
+      "e899fd2052256d9e36aeeae23cb467e003a2f4c6",
+      68670
     ],
     [
       "assets/exams/catalog/content/official-57-advanced-42-content.e5533335dce4.webp",
@@ -4944,6 +5029,11 @@
       75476
     ],
     [
+      "assets/exams/catalog/content/official-57-basic-28-content.750208395327.webp",
+      "683b2a994c768697ea2d88ba7bed41de8b916fd1",
+      69524
+    ],
+    [
       "assets/exams/catalog/content/official-57-basic-28-content.7f0f972ce95b.webp",
       "ba6bfe8945628e3e313e32b4754b56f1e68dd396",
       75994
@@ -5044,6 +5134,11 @@
       76192
     ],
     [
+      "assets/exams/catalog/content/official-57-basic-48-content.d2b72b5062a5.webp",
+      "ac448bd6776f68736bdb4b2a51bb13d51a8427a4",
+      64480
+    ],
+    [
       "assets/exams/catalog/content/official-57-basic-48-content.d6b511eb985c.webp",
       "96f3095cc6dae5b49cb4149ff2e7afc9a48f8a7a",
       78852
@@ -5114,6 +5209,11 @@
       117538
     ],
     [
+      "assets/exams/catalog/content/official-58-advanced-11-content.a0843deed630.webp",
+      "1e538d9b2c6606708d65ba178a44fa7ae853414d",
+      87436
+    ],
+    [
       "assets/exams/catalog/content/official-58-advanced-12-content.337ea5297312.webp",
       "d50ab83f56702201e17a2244646b6308fda1ede8",
       106382
@@ -5172,6 +5272,11 @@
       "assets/exams/catalog/content/official-58-advanced-23-content.b2aee9e1729e.webp",
       "f2d6976ecc73601ac1d85c03cd0144a9dc28000b",
       79070
+    ],
+    [
+      "assets/exams/catalog/content/official-58-advanced-24-content.633a3d0e867d.webp",
+      "66fbe7ff5013b89ff6ffc515c7dfa0aa731e676f",
+      56940
     ],
     [
       "assets/exams/catalog/content/official-58-advanced-24-content.daf75ce39fe9.webp",
@@ -5294,6 +5399,11 @@
       71898
     ],
     [
+      "assets/exams/catalog/content/official-58-advanced-47-content.dffea81355fe.webp",
+      "2a60d4eac3014a4052eda44cf29b9f5d5552eb33",
+      53316
+    ],
+    [
       "assets/exams/catalog/content/official-58-advanced-48-content.43d9727cfb63.webp",
       "8c41c3dd65ddcc374b23c7266d9dec83b66c6784",
       95284
@@ -5327,6 +5437,11 @@
       "assets/exams/catalog/content/official-58-basic-04-content.a9672711a574.webp",
       "8d3b293fbddc62174b2108c0e2d2b06698563e6e",
       117246
+    ],
+    [
+      "assets/exams/catalog/content/official-58-basic-04-content.dcfac5caeaef.webp",
+      "0383979fa78a31dce9ceb73d2d190674db50715f",
+      98930
     ],
     [
       "assets/exams/catalog/content/official-58-basic-05-content.c0d2d605c8fe.webp",
@@ -5529,6 +5644,11 @@
       86360
     ],
     [
+      "assets/exams/catalog/content/official-58-basic-44-content.99eb7b7337b0.webp",
+      "f115b3054abee1b69bbe2e2812297fa4f4bede91",
+      90050
+    ],
+    [
       "assets/exams/catalog/content/official-58-basic-45-content.eec3c3f44b3f.webp",
       "b432a31d6452e9b3986adfdd0dbadee71cd7e239",
       54886
@@ -5654,6 +5774,11 @@
       68552
     ],
     [
+      "assets/exams/catalog/content/official-59-advanced-19-content.580a49214f51.webp",
+      "c95d9df3e4e08d485eff476b8ef11d93bf466972",
+      54382
+    ],
+    [
       "assets/exams/catalog/content/official-59-advanced-20-content.2c110ce5d025.webp",
       "d9b941e62bea17b55569aaa60556258ff71f0eb4",
       70486
@@ -5682,6 +5807,11 @@
       "assets/exams/catalog/content/official-59-advanced-25-content.3f2c0ea00e8e.webp",
       "7daf7024412a51f5a43af5f0fddeb4ca3a2da599",
       67336
+    ],
+    [
+      "assets/exams/catalog/content/official-59-advanced-26-content.1f561661f957.webp",
+      "d30e3363389486175b80405745e119ac7e23b6f3",
+      66972
     ],
     [
       "assets/exams/catalog/content/official-59-advanced-26-content.3cdb3216e2f6.webp",
@@ -5729,6 +5859,11 @@
       81282
     ],
     [
+      "assets/exams/catalog/content/official-59-advanced-35-content.d0249e2920e5.webp",
+      "7bf839cbcc0afbfc7591714f560b7e925221f4f1",
+      48312
+    ],
+    [
       "assets/exams/catalog/content/official-59-advanced-35-content.f9be86912b16.webp",
       "a2f24db871d63f4f5fb6633f13c0a2d076fb5a33",
       62716
@@ -5767,6 +5902,11 @@
       "assets/exams/catalog/content/official-59-advanced-42-content.82996a4d625b.webp",
       "5ae3024fcc31ae7da344d36979b779dd83a6361f",
       113376
+    ],
+    [
+      "assets/exams/catalog/content/official-59-advanced-42-content.c3161b5c8f5c.webp",
+      "a19ba8528f3fd9f8141534fa0e7dd87395f35a56",
+      79656
     ],
     [
       "assets/exams/catalog/content/official-59-advanced-43-content.e0c065b40899.webp",
@@ -5929,6 +6069,11 @@
       97702
     ],
     [
+      "assets/exams/catalog/content/official-60-advanced-24-content.b11ad3fb9f11.webp",
+      "19c829d51d9cbe8a5c153ea50e979c5cea6f4ccd",
+      75092
+    ],
+    [
       "assets/exams/catalog/content/official-60-advanced-25-content.799137ef26bf.webp",
       "5c0cc4ec56b469f9b15e9a0ca43778b99c921532",
       69902
@@ -5962,6 +6107,11 @@
       "assets/exams/catalog/content/official-60-advanced-31-content.12f81f6e8f47.webp",
       "a7f841e3d058de3c62ac1bac3dde389837cab0a5",
       97152
+    ],
+    [
+      "assets/exams/catalog/content/official-60-advanced-31-content.b3206d969e03.webp",
+      "849a624c3ebf214fe50610efed12500ef5febacc",
+      74450
     ],
     [
       "assets/exams/catalog/content/official-60-advanced-32-content.b0c72d3841ac.webp",
@@ -6154,6 +6304,11 @@
       70600
     ],
     [
+      "assets/exams/catalog/content/official-61-advanced-19-content.a077e9726c50.webp",
+      "e061e65f887b938d6bfaba525f853ab4d8d2fda8",
+      55502
+    ],
+    [
       "assets/exams/catalog/content/official-61-advanced-20-content.406cee8d6be2.webp",
       "e89f47cd72157af8bd61e8a213c14cc7d17cb80c",
       65026
@@ -6182,6 +6337,11 @@
       "assets/exams/catalog/content/official-61-advanced-25-content.7388aea89222.webp",
       "6b19307d6c751d65b39b562015af0baa91b1c11d",
       81266
+    ],
+    [
+      "assets/exams/catalog/content/official-61-advanced-26-content.011aaddaf51b.webp",
+      "0b1926ea8fb12ccf1475158f951079a4e9bacab3",
+      126522
     ],
     [
       "assets/exams/catalog/content/official-61-advanced-26-content.937b503c7223.webp",
@@ -6217,6 +6377,11 @@
       "assets/exams/catalog/content/official-61-advanced-32-content.b707d82ddb25.webp",
       "8f45ff16607429169ffb0f3c4a4bbf9cf4fb3ffc",
       78738
+    ],
+    [
+      "assets/exams/catalog/content/official-61-advanced-33-content.5e96b1af1cf9.webp",
+      "9b129a2b31ef4e80c771034db4fd4bddf8803f05",
+      111720
     ],
     [
       "assets/exams/catalog/content/official-61-advanced-33-content.b0a8809fdee0.webp",
@@ -6259,6 +6424,11 @@
       140090
     ],
     [
+      "assets/exams/catalog/content/official-61-advanced-41-content.6273494f102e.webp",
+      "2ce69fb5aa487f75848aceccaedced3fb17fdbc7",
+      73198
+    ],
+    [
       "assets/exams/catalog/content/official-61-advanced-41-content.e15a50ad4edc.webp",
       "2db1625977f1612814ab89da6b9d1c116811339b",
       93256
@@ -6292,6 +6462,11 @@
       "assets/exams/catalog/content/official-61-advanced-47-content.5551ee8d0cb6.webp",
       "e220ebe52c5bbb91710dc9a7d089b117481baa32",
       115044
+    ],
+    [
+      "assets/exams/catalog/content/official-61-advanced-47-content.76a87f4942a3.webp",
+      "5d47903d18ccf048b13887faf5f02bc4869c0196",
+      85928
     ],
     [
       "assets/exams/catalog/content/official-61-advanced-48-content.7c2bafaad0a8.webp",
@@ -6664,6 +6839,11 @@
       96428
     ],
     [
+      "assets/exams/catalog/content/official-62-advanced-21-content.d965e8205462.webp",
+      "949308a40a9a1da7371a6b13258b260139ab7793",
+      75684
+    ],
+    [
       "assets/exams/catalog/content/official-62-advanced-22-content.2488e48ec384.webp",
       "9c42f9e0e476272b6b7be542b07727aece0450f8",
       125612
@@ -6677,6 +6857,11 @@
       "assets/exams/catalog/content/official-62-advanced-24-content.27446673e0c4.webp",
       "54d5607925adc11d80cd99bbdca68da0e16a9094",
       90524
+    ],
+    [
+      "assets/exams/catalog/content/official-62-advanced-25-content.0f994443c6af.webp",
+      "13700d587f04108f23e5a42f31cc2b4ed974fb76",
+      43554
     ],
     [
       "assets/exams/catalog/content/official-62-advanced-25-content.5b9f8c3fe29e.webp",
@@ -6697,6 +6882,11 @@
       "assets/exams/catalog/content/official-62-advanced-28-content.8495eb80c710.webp",
       "850b0bf41c809f38d74e5eb54d65891e399d30d9",
       102704
+    ],
+    [
+      "assets/exams/catalog/content/official-62-advanced-28-content.e1f2ca20dcaa.webp",
+      "6d974317824b134f4ba462454f863369759775c8",
+      73978
     ],
     [
       "assets/exams/catalog/content/official-62-advanced-29-content.a6e66c91a1ac.webp",
@@ -6739,6 +6929,11 @@
       73136
     ],
     [
+      "assets/exams/catalog/content/official-62-advanced-36-content.d4615227e240.webp",
+      "8a504221a49875c69679e5cbba02cc6a8c9b64c0",
+      66554
+    ],
+    [
       "assets/exams/catalog/content/official-62-advanced-37-content.3c810c328658.webp",
       "4f8c8dfd335a03d50f3d39dbe1160af51d43928b",
       77820
@@ -6752,6 +6947,11 @@
       "assets/exams/catalog/content/official-62-advanced-39-content.367f06485a2e.webp",
       "cabc36051245ce457850e04a5303b7b16cf1c420",
       84594
+    ],
+    [
+      "assets/exams/catalog/content/official-62-advanced-39-content.86bc8c4345b1.webp",
+      "396536c357b81e01c57958e9e768948ee4abbc2c",
+      78202
     ],
     [
       "assets/exams/catalog/content/official-62-advanced-40-content.e99aa3cbc0f8.webp",
@@ -6807,6 +7007,11 @@
       "assets/exams/catalog/content/official-62-advanced-50-content.17d9a4c85866.webp",
       "5e5389299c061a54f7ca7262ed34a12da38d1bf9",
       154950
+    ],
+    [
+      "assets/exams/catalog/content/official-62-advanced-50-content.675dbec448a2.webp",
+      "3162c8b93721f6cdbd2ee0ae2243039a03762bba",
+      129082
     ],
     [
       "assets/exams/catalog/content/official-63-advanced-01-content.a4e0ac93dc90.webp",
@@ -6884,6 +7089,11 @@
       55836
     ],
     [
+      "assets/exams/catalog/content/official-63-advanced-16-content.4f8c3f6e6054.webp",
+      "694d6ea973959e6f65b764f86400baefd62e2575",
+      67130
+    ],
+    [
       "assets/exams/catalog/content/official-63-advanced-16-content.bd1152c33958.webp",
       "3bba1d08391bc44e17e01172c440456b21e2db98",
       80778
@@ -6909,6 +7119,11 @@
       78738
     ],
     [
+      "assets/exams/catalog/content/official-63-advanced-21-content.40851a043df4.webp",
+      "814ccc20e44e3a8ff6f8a78de637378a72f1c913",
+      96138
+    ],
+    [
       "assets/exams/catalog/content/official-63-advanced-21-content.90a130e587f5.webp",
       "9e455a18713960cf9d899cf993544b18b87c9a3d",
       122328
@@ -6927,6 +7142,11 @@
       "assets/exams/catalog/content/official-63-advanced-24-content.3ad3a74cc7d5.webp",
       "42ba515d7e4d469349a652ffb6d7fb52a8ac72db",
       131724
+    ],
+    [
+      "assets/exams/catalog/content/official-63-advanced-24-content.720b03dfcfd6.webp",
+      "7e873abd0d4c6563feb5d5cdb4c26722017f40a0",
+      112242
     ],
     [
       "assets/exams/catalog/content/official-63-advanced-25-content.9e1e051d93d6.webp",
@@ -6959,6 +7179,11 @@
       89966
     ],
     [
+      "assets/exams/catalog/content/official-63-advanced-30-content.c5699bad5f15.webp",
+      "c4f858056f90bcf1fab243bcf736f241a433d77f",
+      73038
+    ],
+    [
       "assets/exams/catalog/content/official-63-advanced-31-content.ceb6c5e84cac.webp",
       "f7b7ca19ccb65f3f126dfb9a8e56923ceeea746a",
       89878
@@ -6984,6 +7209,11 @@
       80908
     ],
     [
+      "assets/exams/catalog/content/official-63-advanced-35-content.08467e4edce7.webp",
+      "5c61b85b1bd15f3fc0b2ab07c1e1fa1667655f05",
+      61810
+    ],
+    [
       "assets/exams/catalog/content/official-63-advanced-36-content.9b30c03d530e.webp",
       "ca0b7944c18fee5303ec27040aa63096e0697528",
       80390
@@ -6997,6 +7227,11 @@
       "assets/exams/catalog/content/official-63-advanced-38-content.53b0a35aed99.webp",
       "17bdf6ab036924a7eccf0192beb11eea8b78c998",
       110746
+    ],
+    [
+      "assets/exams/catalog/content/official-63-advanced-38-content.6fe4861b65ee.webp",
+      "9565d30fab27c5a789410600e5b7ae7918dc75e0",
+      93834
     ],
     [
       "assets/exams/catalog/content/official-63-advanced-39-content.5116a1466218.webp",
@@ -7049,9 +7284,19 @@
       191806
     ],
     [
+      "assets/exams/catalog/content/official-63-advanced-48-content.8f510c9a8d16.webp",
+      "31145bc34673bd4fcbf6d3f915e37946ccccb526",
+      175148
+    ],
+    [
       "assets/exams/catalog/content/official-63-advanced-49-content.5893abf3a23c.webp",
       "478ceee17994d4dff7b02054ad0a45fd546f2f17",
       109232
+    ],
+    [
+      "assets/exams/catalog/content/official-63-advanced-49-content.bb81211a8dec.webp",
+      "bf60b74e85204f6477e474ca9dae2b2ba04a1d04",
+      97208
     ],
     [
       "assets/exams/catalog/content/official-63-advanced-50-content.55a9825a3d86.webp",
@@ -7279,6 +7524,16 @@
       89226
     ],
     [
+      "assets/exams/catalog/content/official-63-basic-44-content.8a4453c05a8a.webp",
+      "49a9c40d67e3ffb3df5143bc3e8d136e2437b4e6",
+      74234
+    ],
+    [
+      "assets/exams/catalog/content/official-63-basic-45-content.4d07f7deac0a.webp",
+      "320dcc23430f7c5951e11d60b9b3a8c7022cf53b",
+      94814
+    ],
+    [
       "assets/exams/catalog/content/official-63-basic-45-content.6a5fa8b34928.webp",
       "541dd7599f11e1153cf33d9f5bbfae1ce303ca22",
       115072
@@ -7287,6 +7542,11 @@
       "assets/exams/catalog/content/official-63-basic-46-content.0d99c08afd6d.webp",
       "1f4a1f66d39579492246c553b0ce056961a6812f",
       99640
+    ],
+    [
+      "assets/exams/catalog/content/official-63-basic-46-content.2dfe053d169b.webp",
+      "cc3ebe4de32fcec95bedbe2870ef2b6b265682a8",
+      92538
     ],
     [
       "assets/exams/catalog/content/official-63-basic-47-content.9d26e0c833a1.webp",
@@ -7354,6 +7614,11 @@
       180830
     ],
     [
+      "assets/exams/catalog/content/official-64-advanced-09-content.f97ae6467bf1.webp",
+      "59785dcf058b70f76a1585e4cf7fb4c3cbd9115b",
+      154002
+    ],
+    [
       "assets/exams/catalog/content/official-64-advanced-10-content.ed0262d65a6f.webp",
       "65bf59a940955faa6dabd3daa61b5b05270f161b",
       48776
@@ -7419,6 +7684,11 @@
       106726
     ],
     [
+      "assets/exams/catalog/content/official-64-advanced-22-content.c276804c6655.webp",
+      "dd3eefeb64438d3a38e2e577545fabe271bea0e0",
+      76708
+    ],
+    [
       "assets/exams/catalog/content/official-64-advanced-23-content.f0d9d01f180b.webp",
       "d815e367915619728937d621430ea3247f73ecd1",
       50434
@@ -7469,6 +7739,11 @@
       127266
     ],
     [
+      "assets/exams/catalog/content/official-64-advanced-32-content.939918bd075d.webp",
+      "ccc7dc6ef11cacd8cad514c988870b5e9e45f5f6",
+      106908
+    ],
+    [
       "assets/exams/catalog/content/official-64-advanced-33-content.ddf427026c83.webp",
       "97140df62e5301a534a7f167f0f6e782dffe4033",
       52368
@@ -7477,6 +7752,11 @@
       "assets/exams/catalog/content/official-64-advanced-34-content.635fd6b9d327.webp",
       "d2069a4ff9d47c95d4a7226381333304afc764eb",
       56336
+    ],
+    [
+      "assets/exams/catalog/content/official-64-advanced-35-content.0de94476b51c.webp",
+      "42a9eb4d347d0ec900b4b2fc0e99aa5e52b7e179",
+      60722
     ],
     [
       "assets/exams/catalog/content/official-64-advanced-35-content.c0a16930ccaa.webp",
@@ -7497,6 +7777,11 @@
       "assets/exams/catalog/content/official-64-advanced-38-content.5f0ccec8c3e1.webp",
       "1c8ce4f856e83bf02e9238c63a4a7611e5f537a4",
       114308
+    ],
+    [
+      "assets/exams/catalog/content/official-64-advanced-38-content.685474c66fa2.webp",
+      "a27c58d23f1c679e147a698febac6880234361e5",
+      92636
     ],
     [
       "assets/exams/catalog/content/official-64-advanced-39-content.d44de4499f04.webp",
@@ -7549,9 +7834,19 @@
       127500
     ],
     [
+      "assets/exams/catalog/content/official-64-advanced-48-content.c00aebb2ab31.webp",
+      "fff0ee10f42eaff41e3a216e05e108ddcadd6dd3",
+      90970
+    ],
+    [
       "assets/exams/catalog/content/official-64-advanced-49-content.8a8152988119.webp",
       "d101c67cc4ec549333c13c2307f5be8625521110",
       69962
+    ],
+    [
+      "assets/exams/catalog/content/official-64-advanced-49-content.9e4f59757cf6.webp",
+      "bf84360aa386586b1e254cbe488cae2a45897cf6",
+      54664
     ],
     [
       "assets/exams/catalog/content/official-64-advanced-50-content.f159560d3c96.webp",
@@ -7609,6 +7904,11 @@
       94942
     ],
     [
+      "assets/exams/catalog/content/official-64-basic-10-content.0c3599872f4e.webp",
+      "f9b6e3238b6347629d2f24291b4770d91adf1d2a",
+      96956
+    ],
+    [
       "assets/exams/catalog/content/official-64-basic-11-content.bb4a183d326e.webp",
       "4b8fc9c04ef1fdfaf212ffad5b2ffc5ff502258b",
       55524
@@ -7659,6 +7959,11 @@
       107730
     ],
     [
+      "assets/exams/catalog/content/official-64-basic-21-content.35a82d7674cb.webp",
+      "7ef6ad13f5715934a755ef93d0fcd778dd173c78",
+      79064
+    ],
+    [
       "assets/exams/catalog/content/official-64-basic-21-content.cf5baff85c57.webp",
       "345ba0ed785257c92e2776303088fd9168ae6a63",
       98718
@@ -7694,6 +7999,11 @@
       113956
     ],
     [
+      "assets/exams/catalog/content/official-64-basic-27-content.e611886760a6.webp",
+      "84ce6a1ee3f029e296980c711f0936f74c7d98e9",
+      90218
+    ],
+    [
       "assets/exams/catalog/content/official-64-basic-28-content.5a10505f0837.webp",
       "3aab106a0d9d60633f81a632e1eb2483061489f8",
       105736
@@ -7707,6 +8017,11 @@
       "assets/exams/catalog/content/official-64-basic-30-content.333487d98804.webp",
       "bdfa3d8919cc56337e182fb48d322e9c6f8511f4",
       78178
+    ],
+    [
+      "assets/exams/catalog/content/official-64-basic-30-content.4be54b6ef5b4.webp",
+      "62036a3b1fcad7d2d686d6aa02ddc6969e9401bb",
+      87600
     ],
     [
       "assets/exams/catalog/content/official-64-basic-31-content.eb59956c6227.webp",
@@ -7739,6 +8054,11 @@
       98790
     ],
     [
+      "assets/exams/catalog/content/official-64-basic-37-content.40f7ed96af4f.webp",
+      "277d661f128606bdf30351034c546b79376db849",
+      78506
+    ],
+    [
       "assets/exams/catalog/content/official-64-basic-37-content.ae68a5f3eeba.webp",
       "074f68d806d9e6006974cd9540235913ea02d9d7",
       94108
@@ -7764,6 +8084,11 @@
       115186
     ],
     [
+      "assets/exams/catalog/content/official-64-basic-41-content.a0568a76e869.webp",
+      "df4b076b3d6ed57027e4166737d3bb4cb2f8eb83",
+      94294
+    ],
+    [
       "assets/exams/catalog/content/official-64-basic-42-content.fe600f65c128.webp",
       "8a96265c1f6f25c9ff875f731c65c2b041277202",
       53144
@@ -7787,6 +8112,11 @@
       "assets/exams/catalog/content/official-64-basic-46-content.5641a6c61a74.webp",
       "69a6f1dce0679b8efb1545bfafbc36ee6b34e7cd",
       80172
+    ],
+    [
+      "assets/exams/catalog/content/official-64-basic-46-content.c935ea5ca428.webp",
+      "3b948ad4e44fefa33a49cdfd0d77c3e5459af97a",
+      59934
     ],
     [
       "assets/exams/catalog/content/official-64-basic-47-content.9cf70c57e45b.webp",
@@ -7864,6 +8194,11 @@
       79798
     ],
     [
+      "assets/exams/catalog/content/official-65-advanced-12-content.0cff75445baf.webp",
+      "4f91de8debe8bda7e049dc3173365c67988b5be5",
+      125742
+    ],
+    [
       "assets/exams/catalog/content/official-65-advanced-12-content.817d7f641bff.webp",
       "93105d7c6141641233a9a2320d432367c046e66a",
       155256
@@ -7914,6 +8249,11 @@
       48328
     ],
     [
+      "assets/exams/catalog/content/official-65-advanced-22-content.59e106bea478.webp",
+      "fb0fc5add60c582cf8a1d072e0f523dc62ebb83a",
+      84430
+    ],
+    [
       "assets/exams/catalog/content/official-65-advanced-22-content.99bfeb3b70df.webp",
       "5043ae31847006bd3533f60605d62de13e0f66b2",
       59610
@@ -7937,6 +8277,11 @@
       "assets/exams/catalog/content/official-65-advanced-26-content.a0f57a673b1c.webp",
       "a05b20aad1816e2b916b548763a086eb25a58070",
       165766
+    ],
+    [
+      "assets/exams/catalog/content/official-65-advanced-27-content.21022fbca681.webp",
+      "d4293b8a0672ff761e6675d61227eca32e9a0a84",
+      83634
     ],
     [
       "assets/exams/catalog/content/official-65-advanced-27-content.d2fcf18d6251.webp",
@@ -7987,6 +8332,11 @@
       "assets/exams/catalog/content/official-65-advanced-36-content.7b329030d833.webp",
       "826aa694244fc32c4bbec5009235193e9508e409",
       92154
+    ],
+    [
+      "assets/exams/catalog/content/official-65-advanced-36-content.c57b2b0b6508.webp",
+      "ef53937811fed3228e6e68e28bd15f3e3652bed1",
+      78220
     ],
     [
       "assets/exams/catalog/content/official-65-advanced-37-content.e9d3c8e96c4d.webp",
@@ -8044,6 +8394,11 @@
       138718
     ],
     [
+      "assets/exams/catalog/content/official-65-advanced-48-content.226eacaa31bf.webp",
+      "3e3f911980efa4b6dd4da997246f1bb9011d9778",
+      77108
+    ],
+    [
       "assets/exams/catalog/content/official-65-advanced-48-content.6cc76d654020.webp",
       "58ad229636313823fa524bb9225365bc3919ab08",
       102796
@@ -8057,6 +8412,11 @@
       "assets/exams/catalog/content/official-65-advanced-50-content.caad0d4749b9.webp",
       "b4312520494d53c98db0589f8c26e075aa0450e3",
       99610
+    ],
+    [
+      "assets/exams/catalog/content/official-66-advanced-01-content.71e183fcd4a1.webp",
+      "30e2d827bb47cd9f8666695516b48de483189ffd",
+      90334
     ],
     [
       "assets/exams/catalog/content/official-66-advanced-01-content.8002ab57c51c.webp",
@@ -8119,6 +8479,11 @@
       78508
     ],
     [
+      "assets/exams/catalog/content/official-66-advanced-12-content.fabbe1ebf3bb.webp",
+      "02ca208292eb76a6f1099f9107acbda95c7ed4b0",
+      80502
+    ],
+    [
       "assets/exams/catalog/content/official-66-advanced-13-content.664efe8edf76.webp",
       "6edb34cbd98a3597fa814a99587e24593b8271ff",
       203732
@@ -8157,6 +8522,11 @@
       "assets/exams/catalog/content/official-66-advanced-20-content.88e2e9d2575b.webp",
       "5152693709a727c54427244782be9ce7c10108e6",
       117328
+    ],
+    [
+      "assets/exams/catalog/content/official-66-advanced-20-content.b7c6fc2317dc.webp",
+      "25f34ef0429dd1ef8b0d618f4525e363f9a9d0e6",
+      84834
     ],
     [
       "assets/exams/catalog/content/official-66-advanced-21-content.cbaf315b986f.webp",
@@ -8207,6 +8577,11 @@
       "assets/exams/catalog/content/official-66-advanced-30-content.1d47263f41a2.webp",
       "d103106bd59c51e59da40dc8e8c709284df1aea0",
       246822
+    ],
+    [
+      "assets/exams/catalog/content/official-66-advanced-31-content.37b65aa1a5df.webp",
+      "29141615a709aa62686867cfad27328f7e821151",
+      242952
     ],
     [
       "assets/exams/catalog/content/official-66-advanced-31-content.4c4043ba6dbe.webp",
@@ -8604,6 +8979,11 @@
       108278
     ],
     [
+      "assets/exams/catalog/content/official-67-advanced-09-content.82f58ea04e43.webp",
+      "c171e2080568d871395aa6cc7706bb72460ec51f",
+      88928
+    ],
+    [
       "assets/exams/catalog/content/official-67-advanced-10-content.a04fcc9be5bf.webp",
       "28dccd3008647eb3092920f736e413dbd4c6e56b",
       58118
@@ -8627,6 +9007,11 @@
       "assets/exams/catalog/content/official-67-advanced-14-content.3b83b983e086.webp",
       "ec109202ccb41c10c56f180252233080a0dfa9ab",
       54788
+    ],
+    [
+      "assets/exams/catalog/content/official-67-advanced-15-content.3055a37bbc31.webp",
+      "909139928a6c848283eb0040ec14a9fd682c8edb",
+      54558
     ],
     [
       "assets/exams/catalog/content/official-67-advanced-15-content.b1a286033992.webp",
@@ -8679,6 +9064,11 @@
       103774
     ],
     [
+      "assets/exams/catalog/content/official-67-advanced-25-content.170139e9d962.webp",
+      "65e8ac3128e8f8f6ca512e660e22a46917031561",
+      81632
+    ],
+    [
       "assets/exams/catalog/content/official-67-advanced-25-content.2a1245328712.webp",
       "0044c4ce08d4bee0528b1c9c17ecfede219bcf04",
       117864
@@ -8709,6 +9099,11 @@
       95984
     ],
     [
+      "assets/exams/catalog/content/official-67-advanced-30-content.e4d040d8b726.webp",
+      "6f3c7e26a447a5b29ffa807215b0974dfa1b3463",
+      74706
+    ],
+    [
       "assets/exams/catalog/content/official-67-advanced-31-content.5f52cd8f8062.webp",
       "42ba3562c6b49712f33e26a766825053f1357b8c",
       54628
@@ -8717,6 +9112,11 @@
       "assets/exams/catalog/content/official-67-advanced-32-content.4d0f4fddfb2d.webp",
       "35efde236bf5c1088a7f64714c9e4d8d2155de65",
       71954
+    ],
+    [
+      "assets/exams/catalog/content/official-67-advanced-32-content.e7d9b159f19d.webp",
+      "a2d8453b7f44b06898250471bf343f3522772a43",
+      57830
     ],
     [
       "assets/exams/catalog/content/official-67-advanced-33-content.8049d82d35da.webp",
@@ -8784,6 +9184,11 @@
       86042
     ],
     [
+      "assets/exams/catalog/content/official-67-advanced-45-content.f0608b3bc4f2.webp",
+      "d52e410550903a58e1708275a591f68ee5eeaaf3",
+      86094
+    ],
+    [
       "assets/exams/catalog/content/official-67-advanced-46-content.daad48fb6c0e.webp",
       "2a4567d91c13a58ae38db1c56707bb517d8931b1",
       44804
@@ -8797,6 +9202,11 @@
       "assets/exams/catalog/content/official-67-advanced-48-content.df9b963c5f85.webp",
       "7fab153d967c041d41de9846f32f539666ac5514",
       189522
+    ],
+    [
+      "assets/exams/catalog/content/official-67-advanced-49-content.4f8cd075ffcc.webp",
+      "afc9b34adb2d6a84aa24c54ab96113083898b297",
+      71148
     ],
     [
       "assets/exams/catalog/content/official-67-advanced-49-content.a222e2cf59e2.webp",
@@ -9069,6 +9479,11 @@
       72286
     ],
     [
+      "assets/exams/catalog/content/official-68-advanced-02-content.e5a29720dff2.webp",
+      "6f51638281e84363db79c4967b2016ca4e6155dd",
+      59252
+    ],
+    [
       "assets/exams/catalog/content/official-68-advanced-03-content.10cd355c2f96.webp",
       "80010d1c30f056c25a273ebce8a205afe2de597d",
       57848
@@ -9087,6 +9502,11 @@
       "assets/exams/catalog/content/official-68-advanced-06-content.2638e4e74371.webp",
       "821ff484eb2ca1cd605d56f8ca75c2dd662663e5",
       125600
+    ],
+    [
+      "assets/exams/catalog/content/official-68-advanced-06-content.c2716a667bdc.webp",
+      "547e0833cc8f534603bf01977065ae9a57fff6d7",
+      107358
     ],
     [
       "assets/exams/catalog/content/official-68-advanced-07-content.08824be2d825.webp",
@@ -9179,6 +9599,11 @@
       106376
     ],
     [
+      "assets/exams/catalog/content/official-68-advanced-24-content.8c3e1954eb66.webp",
+      "0c756814b468107419e97f7d47a728113ec71ccc",
+      76962
+    ],
+    [
       "assets/exams/catalog/content/official-68-advanced-25-content.b89b3a096ba9.webp",
       "75605f7d49ab22b49f480d8fef88396c68912c7d",
       91472
@@ -9194,9 +9619,19 @@
       127158
     ],
     [
+      "assets/exams/catalog/content/official-68-advanced-27-content.384663be3bac.webp",
+      "2475df60e6af5a7c0316b6c14b01168ba3d5e20b",
+      120974
+    ],
+    [
       "assets/exams/catalog/content/official-68-advanced-28-content.2941f650244b.webp",
       "7bac31f732ef924ff8b4d21836f25eff4eacb890",
       42992
+    ],
+    [
+      "assets/exams/catalog/content/official-68-advanced-29-content.4305464fadb0.webp",
+      "4a255633d7756221a106346abed2a484f642f1d4",
+      85712
     ],
     [
       "assets/exams/catalog/content/official-68-advanced-29-content.70ff3a31196f.webp",
@@ -9234,6 +9669,11 @@
       138298
     ],
     [
+      "assets/exams/catalog/content/official-68-advanced-35-content.80083cd9b535.webp",
+      "f03c7454838a370ecd47c796a68b4a5f34fef206",
+      116180
+    ],
+    [
       "assets/exams/catalog/content/official-68-advanced-36-content.eec4e93ae8d7.webp",
       "d759c7d323e35d6573d33441a548c33d11a48f13",
       89488
@@ -9259,6 +9699,11 @@
       114336
     ],
     [
+      "assets/exams/catalog/content/official-68-advanced-40-content.8af9c6bf7855.webp",
+      "d8d735d6a15b7c2c03cbee78d99490fc99fb875d",
+      94444
+    ],
+    [
       "assets/exams/catalog/content/official-68-advanced-41-content.b5e25077f502.webp",
       "08b72aeedaf0114c6ea7455277676e97e76214c4",
       80840
@@ -9277,6 +9722,11 @@
       "assets/exams/catalog/content/official-68-advanced-44-content.470e0f651d28.webp",
       "abe5377acb779c02cf5cdfb6968a9aadba2bc213",
       122190
+    ],
+    [
+      "assets/exams/catalog/content/official-68-advanced-44-content.4b4bfbf0d08a.webp",
+      "797f20e581f9465823eb58c5109b448f3d9b5e1b",
+      106736
     ],
     [
       "assets/exams/catalog/content/official-68-advanced-45-content.2ca64d16a6cb.webp",
@@ -9462,6 +9912,11 @@
       "assets/exams/catalog/content/official-69-advanced-31-content.298e242966eb.webp",
       "5de7b6ad61e7d5addd16e6a7ec045d3241de639c",
       81838
+    ],
+    [
+      "assets/exams/catalog/content/official-69-advanced-31-content.77421e390a5b.webp",
+      "e012e91aeae54f790287c71969c78d4a792d849b",
+      57632
     ],
     [
       "assets/exams/catalog/content/official-69-advanced-32-content.0c91dacc6edb.webp",
@@ -9779,6 +10234,11 @@
       159162
     ],
     [
+      "assets/exams/catalog/content/official-69-basic-44-content.f44afe36277f.webp",
+      "9799cef0f96dd0bda744bdb5abcccc04bc88ddc5",
+      149048
+    ],
+    [
       "assets/exams/catalog/content/official-69-basic-45-content.7fcc56582650.webp",
       "db252577b1c39f7daba5cd2f444fb57fd49266cb",
       53746
@@ -9864,6 +10324,11 @@
       112622
     ],
     [
+      "assets/exams/catalog/content/official-70-advanced-11-content.b93ac39437df.webp",
+      "2ad4e6c582f7065786396b91d67779b19b8115cd",
+      86644
+    ],
+    [
       "assets/exams/catalog/content/official-70-advanced-12-content.903d7c838664.webp",
       "99b00350be81ed5b0a35c6ff6ccf027803254657",
       80928
@@ -9912,6 +10377,11 @@
       "assets/exams/catalog/content/official-70-advanced-21-content.9904697780e5.webp",
       "50347b7b10f53a1add987d870adf358f1a5ad30c",
       82788
+    ],
+    [
+      "assets/exams/catalog/content/official-70-advanced-22-content.6e3cfbfe6f07.webp",
+      "92a04c2d2b4975908e6f8fd37f8c523f29c696ae",
+      99532
     ],
     [
       "assets/exams/catalog/content/official-70-advanced-22-content.a2454817f99c.webp",
@@ -10062,6 +10532,11 @@
       "assets/exams/catalog/content/official-71-advanced-01-content.683fdc1a6af1.webp",
       "8487fd9879f3c39db0c45b91e215e2c058dde657",
       86176
+    ],
+    [
+      "assets/exams/catalog/content/official-71-advanced-02-content.a619c079c874.webp",
+      "48a22b937c73abc511617107c9e939083b1b3310",
+      61284
     ],
     [
       "assets/exams/catalog/content/official-71-advanced-02-content.f852c6a855ec.webp",
@@ -10529,6 +11004,11 @@
       71962
     ],
     [
+      "assets/exams/catalog/content/official-71-basic-45-content.78f452600242.webp",
+      "1cdc418e54972246d7bf93ba9b0abd6e66cac2f9",
+      86062
+    ],
+    [
       "assets/exams/catalog/content/official-71-basic-45-content.9ceca6052722.webp",
       "da2cf174311fb5120b4798dad2f9f672c96a2bbb",
       96716
@@ -10864,6 +11344,11 @@
       127140
     ],
     [
+      "assets/exams/catalog/content/official-73-advanced-11-content.a32560f32e0a.webp",
+      "6442ce85d48230fe7b7f287e09f616734e2824b5",
+      113448
+    ],
+    [
       "assets/exams/catalog/content/official-73-advanced-12-content.4e2d7225b577.webp",
       "fbe316511984ce9f03eb1cc6b0e7127a70a2ba69",
       61602
@@ -10924,6 +11409,11 @@
       50766
     ],
     [
+      "assets/exams/catalog/content/official-73-advanced-24-content.a27caa42ed22.webp",
+      "8609ad5e9b65d651bec48fd05b20dca5dea8028c",
+      100012
+    ],
+    [
       "assets/exams/catalog/content/official-73-advanced-24-content.f798d990a4bf.webp",
       "907d860aa2478094c37107e41f48be7a5e3e03b9",
       128896
@@ -10972,6 +11462,11 @@
       "assets/exams/catalog/content/official-73-advanced-33-content.3399c95e3dcc.webp",
       "b2de9f445265e0f08d07ea46c37e556a4adfad97",
       84500
+    ],
+    [
+      "assets/exams/catalog/content/official-73-advanced-33-content.bc376a09461a.webp",
+      "170b24d4169caa48bad97118ecc6a2001235ff54",
+      62422
     ],
     [
       "assets/exams/catalog/content/official-73-advanced-34-content.cf7928032c3f.webp",
@@ -11127,6 +11622,11 @@
       "assets/exams/catalog/content/official-73-basic-14-content.6a128e3ca454.webp",
       "6953d12f75fbe8e977bf17c68fbe12dd3c6bb888",
       76010
+    ],
+    [
+      "assets/exams/catalog/content/official-73-basic-15-content.6f5d87e8020b.webp",
+      "52efb1dc17e6ece52e71f53329fdc90f7d08c977",
+      59792
     ],
     [
       "assets/exams/catalog/content/official-73-basic-15-content.72d75a370c48.webp",
@@ -11299,6 +11799,11 @@
       86828
     ],
     [
+      "assets/exams/catalog/content/official-73-basic-48-content.39811a348228.webp",
+      "2a4d1a2e801e60d6281e499fbed06d3e2a799415",
+      69190
+    ],
+    [
       "assets/exams/catalog/content/official-73-basic-49-content.1e5bea79a080.webp",
       "b9f0ae37bf945459397e84e7c0b82a3cd54ff5d8",
       75108
@@ -11327,6 +11832,11 @@
       "assets/exams/catalog/content/official-74-advanced-04-content.21bddcfa321d.webp",
       "ed15eba2390a0888b75b941d67b788967e9e2deb",
       60452
+    ],
+    [
+      "assets/exams/catalog/content/official-74-advanced-05-content.5fa1cacb45fb.webp",
+      "eb2a7f45920c81fe778c675a845c417bb8952d9a",
+      146606
     ],
     [
       "assets/exams/catalog/content/official-74-advanced-05-content.d93f6b8fd0a0.webp",
@@ -11399,6 +11909,11 @@
       87480
     ],
     [
+      "assets/exams/catalog/content/official-74-advanced-19-content.a67d11c75040.webp",
+      "6a27fefb6f0e89bd759a3d3537ba722e09d46065",
+      95588
+    ],
+    [
       "assets/exams/catalog/content/official-74-advanced-19-content.b3c0b4652b88.webp",
       "fe23eaed27c530175e2cda87bb5c1a9242b80a4f",
       95588
@@ -11452,6 +11967,11 @@
       "assets/exams/catalog/content/official-74-advanced-29-content.37416ff71c91.webp",
       "e175b15d40396d16ee235094b0db17e9854fc876",
       72944
+    ],
+    [
+      "assets/exams/catalog/content/official-74-advanced-29-content.49831e818cd9.webp",
+      "90d35282a2b23dd3226a8f7de71554408fc39a5e",
+      48562
     ],
     [
       "assets/exams/catalog/content/official-74-advanced-30-content.487b5ba049c1.webp",
@@ -11614,6 +12134,11 @@
       119788
     ],
     [
+      "assets/exams/catalog/content/official-75-advanced-11-content.77feb613c729.webp",
+      "45e7617070eaff3bb64becf14e17fa31983c80e5",
+      88952
+    ],
+    [
       "assets/exams/catalog/content/official-75-advanced-12-content.57dcb21a4fe2.webp",
       "b77f4db66f68eec1171ff704a158678b5035f69c",
       214044
@@ -11647,6 +12172,11 @@
       "assets/exams/catalog/content/official-75-advanced-18-content.519a2c734be0.webp",
       "454f688a2a9e5174e45fea300edfb1bdf59d55ae",
       133254
+    ],
+    [
+      "assets/exams/catalog/content/official-75-advanced-19-content.164ef1a29e19.webp",
+      "f742b8bf3e192ccab51859299eff8c4a0fd31137",
+      86226
     ],
     [
       "assets/exams/catalog/content/official-75-advanced-19-content.eb9cf432248a.webp",
@@ -11742,6 +12272,11 @@
       "assets/exams/catalog/content/official-75-advanced-37-content.94d54eb17131.webp",
       "0de5aae6f43748a231c080f4103cd61b1facb574",
       105086
+    ],
+    [
+      "assets/exams/catalog/content/official-75-advanced-37-content.c1205f25b697.webp",
+      "ee28e4ef5b283db5237619c0eda0bf911e373887",
+      79488
     ],
     [
       "assets/exams/catalog/content/official-75-advanced-38-content.1ec006429090.webp",
@@ -11987,6 +12522,11 @@
       "assets/exams/catalog/content/official-75-basic-36-content.edc2775614f2.webp",
       "0ccac09922e43930a2ad1a6bc669455f16ae8c91",
       144004
+    ],
+    [
+      "assets/exams/catalog/content/official-75-basic-37-content.39010d70dfd6.webp",
+      "70e3bd1005356e6509802acbf0a3fad921d813c2",
+      118892
     ],
     [
       "assets/exams/catalog/content/official-75-basic-37-content.97b907cb791c.webp",
@@ -12409,6 +12949,11 @@
       92956
     ],
     [
+      "assets/exams/catalog/content/official-77-advanced-21-content.a7924be67eea.webp",
+      "046ed7d4f8cb1ce9ebe76b073de2acacfaa8a576",
+      149006
+    ],
+    [
       "assets/exams/catalog/content/official-77-advanced-21-content.f88bf4c35ae0.webp",
       "c468901697f8c533b01afe14f24148bd5fe881fe",
       161658
@@ -12422,6 +12967,11 @@
       "assets/exams/catalog/content/official-77-advanced-23-content.1634ea859c46.webp",
       "08eb15b083fa2140bb0138a1428e597335e76131",
       104476
+    ],
+    [
+      "assets/exams/catalog/content/official-77-advanced-24-content.364d1c42070c.webp",
+      "3878478d53b81c085d377274f455c66786e0d6a2",
+      102760
     ],
     [
       "assets/exams/catalog/content/official-77-advanced-24-content.3a7556e5c5c2.webp",
@@ -12789,6 +13339,11 @@
       163508
     ],
     [
+      "assets/exams/catalog/content/official-77-basic-46-content.c51e7e42a3ef.webp",
+      "bc6afdea98381cd97522279d84929f72c3ea7541",
+      182874
+    ],
+    [
       "assets/exams/catalog/content/official-77-basic-47-content.22db25ab325b.webp",
       "c17a9ec7a15f1a37a2553f64985d42565dad251a",
       59972
@@ -12796,6 +13351,11 @@
     [
       "assets/exams/catalog/content/official-77-basic-48-content.0b690ce501ed.webp",
       "2cf3e8f0b2bfe74a3c8aaa710f3d97ded124cae0",
+      79178
+    ],
+    [
+      "assets/exams/catalog/content/official-77-basic-48-content.de02619c992a.webp",
+      "164da6288fb219d2a9d99a25967d19c8baf32ede",
       79178
     ],
     [
@@ -12864,6 +13424,11 @@
       86556
     ],
     [
+      "assets/exams/catalog/content/official-78-advanced-11-content.b38efa36bc1a.webp",
+      "ee97e4b45a02825703d6cdf3d9c666eeb8276c38",
+      59014
+    ],
+    [
       "assets/exams/catalog/content/official-78-advanced-12-content.130558a61ccc.webp",
       "1c575db22273dcc8348bf37ef3560c8b7481ac0a",
       40470
@@ -12922,6 +13487,11 @@
       "assets/exams/catalog/content/official-78-advanced-23-content.8de303002fcd.webp",
       "41b61ab53d3f6d996ccb98aadb99ef6ba73407c7",
       72104
+    ],
+    [
+      "assets/exams/catalog/content/official-78-advanced-24-content.61958ae3f621.webp",
+      "bd1664af89973e569778198b01e5998bdfe28216",
+      90270
     ],
     [
       "assets/exams/catalog/content/official-78-advanced-24-content.a6229938d101.webp",
@@ -13284,6 +13854,11 @@
       106586
     ],
     [
+      "assets/exams/catalog/content/official-79-advanced-45-content.73428a95aeff.webp",
+      "c9af5fa70cdd82fc35886261fb99f007a8ca3733",
+      77892
+    ],
+    [
       "assets/exams/catalog/content/official-79-advanced-46-content.248de6aa3931.webp",
       "faaa1055eb423d4cb08ac5f606c5cc508bdd6ae1",
       86904
@@ -13434,6 +14009,11 @@
       93360
     ],
     [
+      "assets/exams/catalog/content/official-79-basic-26-content.71029e9e8d34.webp",
+      "3b2fc5584b5d4feb1eb88ebf59626d28378885f0",
+      76394
+    ],
+    [
       "assets/exams/catalog/content/official-79-basic-26-content.9413dfe06445.webp",
       "26be2a391ecdf3993623bc9e20a59da60a52d71f",
       95678
@@ -13542,6 +14122,11 @@
       "assets/exams/catalog/content/official-79-basic-47-content.fb6346ca74eb.webp",
       "80bcfbf616ddf5f5273ca71b6e2cfc43d6dc829d",
       100916
+    ],
+    [
+      "assets/exams/catalog/content/official-79-basic-48-content.395efb826d6c.webp",
+      "88e4692ec1aa5c34f40b8248505ec24272477d67",
+      72414
     ],
     [
       "assets/exams/catalog/content/official-79-basic-48-content.d7f48308b396.webp",
