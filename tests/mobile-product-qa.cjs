@@ -96,6 +96,9 @@ async function verifyRevision(page,capture){
  await page.locator('[data-ox-answer="true"]').tap();await page.locator('.ox-feedback').waitFor();await page.waitForTimeout(350);await page.locator('[data-ox-next]').tap();
  await page.waitForFunction(()=>OX_QUIZ_API.snapshot().meta.activeSession.index===1);
  await page.locator('[data-ox-answer="false"]').tap();await page.locator('.ox-feedback').waitFor();await page.waitForTimeout(350);await page.locator('[data-ox-next]').tap();
+ await page.waitForTimeout(500);
+ console.log('OX transition',JSON.stringify(await page.evaluate(()=>({snapshot:OX_QUIZ_API.snapshot(),url:location.href,text:document.querySelector('#app').innerText.slice(-3000)}))));
+ await page.screenshot({path:path.join(out,'ox-transition-'+page.viewportSize().width+'.png')});
  await page.locator('.ox-result').waitFor();
  assert.equal(await page.locator('.ox-result').count(),1,'OX result still works');
  await page.locator('[data-ox-home]').tap();await page.evaluate(()=>APP_ROUTE.apply('ox/analysis'));assert.equal(await page.locator('.ox-home').count(),1,'legacy analysis links safely redirect');

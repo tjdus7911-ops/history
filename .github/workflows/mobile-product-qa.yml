@@ -31,6 +31,7 @@ jobs:
           set -o pipefail
           node tests/mobile-product-qa.cjs 2>&1 | tee tmp/mobile-product/after.log
       - name: Regression suite
+        if: always()
         run: |
           set -o pipefail
           node tests/official-content-swipe-test.cjs
@@ -43,6 +44,7 @@ jobs:
             echo 'SKIP physical source-file audit: assets are externalized; deployment manifests, crop contracts and rendered representative images are checked separately.' | tee -a tmp/mobile-product/regression.log
           fi
       - name: Build validation
+        if: always()
         run: npm run build 2>&1 | tee tmp/mobile-product/build.log
         shell: bash
       - uses: actions/upload-artifact@v4
