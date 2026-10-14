@@ -1,8 +1,8 @@
 const fs=require('fs'),path=require('path'),http=require('http'),assert=require('assert');
 const {chromium}=require('playwright');
 const root=path.resolve(__dirname,'../dist');
-const cropLedger=require('../docs/official-exams/question-content-crops.json');
-const cropById=new Map(cropLedger.records.map(record=>[record.officialQuestionId,record]));
+const mediaLedger=require('../docs/official-exams/question-choice-media.json');
+const mediaById=new Map(mediaLedger.records.map(record=>[record.officialQuestionId,record]));
 const server=http.createServer((req,res)=>{
   const pathname=decodeURIComponent(req.url.split('?')[0]==='/'?'/index.html':req.url.split('?')[0]);
   const file=path.resolve(root,'.'+pathname);
@@ -21,13 +21,13 @@ async function main(){
   const context=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,serviceWorkers:'block'}),page=await context.newPage(),errors=[];
   page.on('pageerror',error=>errors.push(error.message));
   await page.goto(`http://127.0.0.1:${server.address().port}/`);
-  const cropSamples=['official-57-basic-08','official-57-basic-43','official-58-basic-10','official-58-advanced-14','official-59-advanced-31','official-61-advanced-42','official-63-basic-36','official-65-advanced-17','official-67-basic-05','official-67-advanced-30','official-71-basic-17','official-73-basic-11','official-74-advanced-19','official-77-advanced-08','official-77-advanced-29','official-78-advanced-14','official-79-basic-05','official-79-basic-16','official-79-advanced-11'];
-  for(const id of cropSamples){
-    const expected=cropById.get(id);assert(expected,`missing crop QA fixture: ${id}`);
-    await page.evaluate(questionId=>{const entry=OFFICIAL_EXAM_CATALOG.find(item=>item.canonicalQuestionId===questionId||item.sourceRecord?.officialQuestionId===questionId);if(!entry)throw new Error(`missing browser crop sample: ${questionId}`);startOfficialSession([entry],'learn')},id);
+  const physicalSamples=['official-57-basic-08','official-57-basic-43','official-58-basic-10','official-58-advanced-14','official-59-advanced-31','official-61-advanced-42','official-63-basic-36','official-65-advanced-17','official-67-basic-05','official-67-advanced-30','official-71-basic-17','official-73-basic-11','official-74-advanced-19','official-77-advanced-08','official-77-advanced-29','official-78-advanced-14','official-79-basic-03','official-79-basic-07','official-79-basic-16','official-79-advanced-11'];
+  for(const id of physicalSamples){
+    const expected=mediaById.get(id);assert(expected,`missing physical media QA fixture: ${id}`);
+    await page.evaluate(questionId=>{const entry=OFFICIAL_EXAM_CATALOG.find(item=>item.canonicalQuestionId===questionId||item.sourceRecord?.officialQuestionId===questionId);if(!entry)throw new Error(`missing browser media sample: ${questionId}`);startOfficialSession([entry],'learn')},id);
     const image=page.locator('.official-content-image img');await image.waitFor();await image.evaluate(node=>node.decode());
-    const layout=await page.locator('.official-content-image').evaluate(node=>{const image=node.querySelector('img'),panel=document.querySelector('.official-choice-panel'),choices=panel.querySelector('.official-choice-grid'),box=node.closest('.official-paper').getBoundingClientRect(),imageBox=image.getBoundingClientRect(),panelBox=panel.getBoundingClientRect(),cropBox=node.getBoundingClientRect(),styles=getComputedStyle(node);return {pixelBoundary:Number(styles.getPropertyValue('--official-content-height')),cropHeight:cropBox.height,imageHeight:imageBox.height,gap:panelBox.top-box.bottom,choiceCount:choices.querySelectorAll('button').length,overflow:document.documentElement.scrollWidth>innerWidth}});
-    assert.equal(layout.pixelBoundary,expected.contentCropY,`${id} did not use its exact reviewed pixel boundary`);assert(layout.imageHeight>layout.cropHeight,`${id} did not clip source choices`);assert(layout.gap>=14&&layout.gap<=32,`${id} image/choice spacing is not mobile-safe: ${layout.gap}`);assert.equal(layout.choiceCount,id.includes('-basic-')?4:5);assert.equal(layout.overflow,false,`${id} caused mobile horizontal overflow`);
+    const layout=await page.locator('.official-content-image').evaluate(node=>{const image=node.querySelector('img'),panel=document.querySelector('.official-choice-panel'),choices=panel.querySelector('.official-choice-grid'),box=node.closest('.official-paper').getBoundingClientRect(),imageBox=image.getBoundingClientRect(),panelBox=panel.getBoundingClientRect(),styles=getComputedStyle(node);return {src:image.getAttribute('src'),width:Number(image.getAttribute('width')),height:Number(image.getAttribute('height')),position:getComputedStyle(image).position,overflow:styles.overflow,gap:panelBox.top-box.bottom,choiceCount:choices.querySelectorAll('button').length,choiceMediaCount:choices.querySelectorAll('.official-choice-media img').length,contentHeight:imageBox.height,overflowPage:document.documentElement.scrollWidth>innerWidth}});
+    assert(layout.src.endsWith(expected.contentImage.path),`${id} did not render the physical body crop`);assert.equal(layout.width,expected.contentImage.width);assert.equal(layout.height,expected.contentImage.height);assert.notEqual(layout.position,'absolute',`${id} still relies on positioned CSS clipping`);assert.notEqual(layout.overflow,'hidden',`${id} still hides source pixels with CSS`);assert(layout.contentHeight>0);assert(layout.gap>=14&&layout.gap<=32,`${id} image/choice spacing is not mobile-safe: ${layout.gap}`);assert.equal(layout.choiceCount,id.includes('-basic-')?4:5);assert.equal(layout.choiceMediaCount,expected.choiceMedia.length,`${id} lost choice images`);assert.equal(layout.overflowPage,false,`${id} caused mobile horizontal overflow`);
   }
   await page.locator('[data-nav="exam-library"]').click();
   assert.equal(await page.locator('[data-official-tab="round"][aria-selected="true"]').count(),1);
@@ -45,8 +45,8 @@ async function main(){
   assert.deepEqual(await stableState(),before,'opening the image changed the active exam');
   const scroller=page.locator('.official-image-scroll');
   const cropLayout=await page.locator('.official-modal-content-crop').evaluate(node=>{const image=node.querySelector('img'),box=node.getBoundingClientRect(),imageBox=image.getBoundingClientRect();return {cropHeight:box.height,imageHeight:imageBox.height,copy:node.closest('.official-image-modal').innerText}});
-  assert(cropLayout.imageHeight>cropLayout.cropHeight,'modal must clip the original answer-choice pixels');
-  assert(cropLayout.copy.includes('원본 선지는 제외'),'modal must explain that choices moved to text buttons');
+  assert(Math.abs(cropLayout.imageHeight-cropLayout.cropHeight)<=1,'modal must show the complete physical body crop');
+  assert(cropLayout.copy.includes('원본 PDF에서 분리'),'modal must explain the physical source separation');
   await page.locator('[data-official-image-zoom]').click();
   assert.equal(await page.locator('.official-image-scroll.zoomed').count(),1);assert.deepEqual(await stableState(),before,'zoom changed the active exam');
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=390),'modal caused document-level horizontal overflow');
@@ -76,7 +76,7 @@ async function main(){
   assert.equal(await page.locator('.official-choice-explanations li').count(),4,'basic review must preserve four official choices');
   for(const width of [390,1280]){
     await page.setViewportSize({width,height:900});
-    const responsiveCrop=await page.locator('.official-content-image').evaluate(node=>{const image=node.querySelector('img'),box=node.getBoundingClientRect(),imageBox=image.getBoundingClientRect();return {cropHeight:box.height,imageHeight:imageBox.height,right:box.right,overflow:document.documentElement.scrollWidth>innerWidth}});assert(responsiveCrop.imageHeight>responsiveCrop.cropHeight,`${width}px official image stopped clipping original choices`);assert(responsiveCrop.right<=width+1,`${width}px official image escaped the viewport`);assert.equal(responsiveCrop.overflow,false);
+    const responsiveCrop=await page.locator('.official-content-image').evaluate(node=>{const image=node.querySelector('img'),box=node.getBoundingClientRect(),imageBox=image.getBoundingClientRect();return {cropHeight:box.height,imageHeight:imageBox.height,right:box.right,overflow:document.documentElement.scrollWidth>innerWidth}});assert(Math.abs(responsiveCrop.imageHeight-responsiveCrop.cropHeight)<=1,`${width}px physical body image was clipped`);assert(responsiveCrop.right<=width+1,`${width}px official image escaped the viewport`);assert.equal(responsiveCrop.overflow,false);
     const layout=await page.locator('.official-choice-explanations').evaluate(node=>{const reason=node.querySelector('.official-choice-reason'),card=reason.closest('li');return {summaries:node.querySelectorAll('.official-choice-meaning').length,reasons:node.querySelectorAll('.official-choice-reason').length,retiredHeading:/판단 이유|판단 근거/.test(node.innerText),display:getComputedStyle(reason).display,ratio:reason.getBoundingClientRect().width/card.getBoundingClientRect().width,overflow:document.documentElement.scrollWidth>innerWidth}});
     assert.equal(layout.summaries,4);assert.equal(layout.reasons,4);assert.equal(layout.retiredHeading,false);assert.equal(layout.display,'block');assert(layout.ratio>0.8,'reason collapsed into the retired label column');assert.equal(layout.overflow,false);
   }

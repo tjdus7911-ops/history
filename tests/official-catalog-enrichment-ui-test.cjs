@@ -146,8 +146,8 @@ const storyMapping=copy(`(()=>{
     return item.protoStoryVersion===3&&mapped&&Number(item.rewardKnowledge)!==Number(canonical?.rewardKnowledge);
   });
   if(!question)throw new Error('story-specific official reward fixture missing');
-  const entry=OFFICIAL_EXAM_CATALOG.find(item=>item.sourceRecord.officialQuestionId===question.officialQuestionId),saved={detailImage:entry.detailImage,detailImageWidth:entry.detailImageWidth,detailImageHeight:entry.detailImageHeight};
-  entry.detailImage='story-hq-detail.webp';entry.detailImageWidth=1280;entry.detailImageHeight=1960;
+  const entry=OFFICIAL_EXAM_CATALOG.find(item=>item.sourceRecord.officialQuestionId===question.officialQuestionId),saved={contentImage:entry.contentImage,contentImageWidth:entry.contentImageWidth,contentImageHeight:entry.contentImageHeight};
+  entry.contentImage='story-content.webp';entry.contentImageWidth=1280;entry.contentImageHeight=1120;
   const detail=OFFICIAL_EXAM_UI.choiceExplanations(question,question.answer),figure=officialQuestionFigure(question,'스토리 기출'),model=JSON.parse(JSON.stringify(state));
   model.run.questionResults={};model.run.stats.knowledge=10;model.meta.questionRecords={};model.meta.wrongQuestionIds=[];model.meta.wrongAnswers=[];model.meta.reviewedQuestionIds=[];model.meta.learningEvents=[];
   const knowledgeBefore=model.run.stats.knowledge;
@@ -172,7 +172,7 @@ const storyMapping=copy(`(()=>{
   };
 })()`);
 assert(storyMapping.detail.includes('fixture'),'story-specific official IDs did not receive the canonical lazy choice explanations');
-assert(storyMapping.figure.includes('story-hq-detail.webp')&&storyMapping.figure.includes('width="1280" height="1960"'),'story official figure did not use the HQ detail image and dimensions');
+assert(storyMapping.figure.includes('story-content.webp')&&storyMapping.figure.includes('width="1280" height="1120"'),'story official figure did not use the physical body image and dimensions');
 assert.equal(storyMapping.firstKnowledgeDelta,storyMapping.rewardKnowledge,'story-specific official question lost its original knowledge reward');
 assert.equal(storyMapping.secondKnowledgeDelta,0,'repeating the same story question granted its first-correct reward twice');
 assert(!storyMapping.storyRecordPresent&&storyMapping.storyResult===false&&storyMapping.questionAnswer!==null,'story attempt did not preserve story gameplay results while merging progress');
@@ -209,10 +209,10 @@ const id=run(`OFFICIAL_EXAM_CATALOG.find(entry=>entry.sourceRecord.examRound===7
 const choiceCount=run(`QUESTIONS.find(question=>question.questionId===${JSON.stringify(id)}).choices.length`);
 run(`{
   const entry=OFFICIAL_EXAM_CATALOG.find(item=>item.canonicalQuestionId===${JSON.stringify(id)}),question=QUESTIONS.find(item=>item.questionId===${JSON.stringify(id)});
-  entry.thumbnailImage='thumb-only.webp';entry.detailImage='detail-only.webp';entry.libraryImage='legacy-library.webp';
-  entry.thumbnailImageWidth=320;entry.thumbnailImageHeight=180;entry.detailImageWidth=1200;entry.detailImageHeight=1600;
-  question.thumbnailImage='thumb-only.webp';question.detailImage='detail-only.webp';question.sourceQuestionImage='legacy-question.webp';
-  question.thumbnailImageWidth=320;question.thumbnailImageHeight=180;question.detailImageWidth=1200;question.detailImageHeight=1600;
+  entry.thumbnailImage='thumb-only.webp';entry.detailImage='detail-only.webp';entry.contentImage='content-only.webp';entry.libraryImage='legacy-library.webp';
+  entry.thumbnailImageWidth=320;entry.thumbnailImageHeight=180;entry.detailImageWidth=1200;entry.detailImageHeight=1600;entry.contentImageWidth=1200;entry.contentImageHeight=900;
+  question.thumbnailImage='thumb-only.webp';question.detailImage='detail-only.webp';question.contentImage='content-only.webp';question.sourceQuestionImage='legacy-question.webp';
+  question.thumbnailImageWidth=320;question.thumbnailImageHeight=180;question.detailImageWidth=1200;question.detailImageHeight=1600;question.contentImageWidth=1200;question.contentImageHeight=900;
   question.officialChoices=Array.from({length:${choiceCount}},(_,index)=>'CHOICE-'+(index+1));
   question.choiceExplanations=Array.from({length:${choiceCount}},(_,index)=>({choiceIndex:index,choiceText:'CHOICE-'+(index+1),relatedEra:'ERA-'+(index+1),relatedTarget:'TARGET-'+(index+1),meaning:'MEANING-'+(index+1),judgmentReason:'JUDGMENT-'+(index+1),correctedFact:index===0?'CORRECTION-1':null,explanation:'EXPLANATION-'+(index+1),verificationStatus:index===0?'CURATED_VERIFIED':index===1?'DATA_REVIEW_REQUIRED':index===2?'CURATED_REVIEWED':'KNOWLEDGE_RULE',choiceTextVerificationStatus:index===0?'DATA_REVIEW_REQUIRED':index===2?'VISUALLY_REVIEWED':'OCR_EXTRACTED',sourceImageHashVerified:index!==0}));
 }`);
@@ -222,13 +222,13 @@ assert(html.includes('width="320" height="180" loading="lazy" decoding="async"')
 assert(!html.includes('src="detail-only.webp"'),'list leaked detailImage');
 
 const legacyLibraryFigure=run(`(()=>{librarySession={era:'goryeo'};const question=QUESTIONS.find(item=>item.questionId===${JSON.stringify(id)});return officialQuestionFigure(question,'상세 이미지')})()`);
-assert(legacyLibraryFigure.includes('detail-only.webp'),'legacy exam library practice replaced HQ detail with its thumbnail');
+assert(legacyLibraryFigure.includes('content-only.webp'),'legacy exam library practice did not use the physical body image');
 assert(!legacyLibraryFigure.includes('thumb-only.webp')&&!legacyLibraryFigure.includes('legacy-library.webp'),'legacy exam library detail leaked a preview image');
 run('librarySession=null');
 
 click({officialSingle:id});
-assert(html.includes('src="detail-only.webp"'),'practice must use detailImage');
-assert(html.includes('width="1200" height="1600" loading="eager" decoding="async" fetchpriority="high"'),'detail dimensions/loading contract missing');
+assert(html.includes('src="content-only.webp"'),'practice must use the physical body image');
+assert(html.includes('width="1200" height="900" loading="eager" decoding="async" fetchpriority="high"'),'physical content dimensions/loading contract missing');
 assert(!html.includes('src="thumb-only.webp"'),'practice must not use the thumbnail');
 assert(html.includes(`data-official-image-open="${id}"`),'detail image is not actionable');
 assert(!html.includes('EXPLANATION-1')&&!html.includes('선지별 해설'),'choice explanations leaked before answer confirmation');
@@ -275,8 +275,8 @@ assert(!html.includes('EXPLANATION-1'),'exam mode leaked explanations before gra
 const stableSession=`(()=>{const snapshot=OFFICIAL_EXAM_TIMER.snapshot();return {session:{index:snapshot.index,answers:snapshot.answers,timerState:snapshot.timerState,endTimeMs:snapshot.endTimeMs},stored:meta().officialExamActiveSession}})()`;
 const before=copy(stableSession);
 click({officialImageOpen:id});
-assert(html.includes('official-image-modal')&&html.includes('src="detail-only.webp"'),'fullscreen detail modal missing');
-assert(html.includes('원본 선지는 제외'),'modal must explain the question-only crop');
+assert(html.includes('official-image-modal')&&html.includes('src="content-only.webp"'),'fullscreen physical body modal missing');
+assert(html.includes('원본 PDF에서 분리'),'modal must explain the physical source separation');
 assert.deepEqual(copy(stableSession),before,'opening the modal changed answer/timer state');
 click({officialImageZoom:'true'});assert(html.includes('official-image-scroll zoomed'));
 assert.deepEqual(copy(stableSession),before,'zooming changed answer/timer state');
@@ -287,11 +287,11 @@ run(`gradeOfficialSession('MANUAL')`);
 assert(html.includes('src="thumb-only.webp"'),'result row must use thumbnailImage');
 assert(!html.includes('EXPLANATION-1'),'result summary must not expand choice explanations');
 click({officialReview:id});
-assert(html.includes('src="detail-only.webp"'),'graded review must use detailImage');
+assert(html.includes('src="content-only.webp"'),'graded review must use the physical body image');
 for(let index=1;index<=choiceCount;index++)assert(html.includes(`MEANING-${index}`)&&html.includes(`JUDGMENT-${index}`),`review choice ${index} summary or reason missing`);
 
 const css=fs.readFileSync('dist/exam-memory.css','utf8');
-for(const contract of ['.official-image-modal-overlay','height:100dvh','.official-image-scroll{','overflow:auto','touch-action:pan-x pan-y pinch-zoom','.official-content-image','.official-modal-content-crop','.official-choice-panel','.official-choice-label','.official-choice-explanations','.official-choice-text','word-break:keep-all','overflow-wrap:anywhere','.official-pass-rate','.official-pass-rate-badge','white-space:nowrap'])assert(css.includes(contract),`missing CSS contract: ${contract}`);
+for(const contract of ['.official-image-modal-overlay','height:100dvh','.official-image-scroll{','overflow:auto','touch-action:pan-x pan-y pinch-zoom','.official-content-image','.official-modal-content-crop','.official-choice-panel','.official-choice-media','.official-choice-label','.official-choice-explanations','.official-choice-text','word-break:keep-all','overflow-wrap:anywhere','.official-pass-rate','.official-pass-rate-badge','white-space:nowrap'])assert(css.includes(contract),`missing CSS contract: ${contract}`);
 assert(!css.includes('.official-pass-rate.card'),'retired card pass-rate box CSS remains');
 assert(fs.readFileSync('dist/story-exam-ui.js','utf8').includes("markup.includes('official-choice-load')"),'Story wrapper can duplicate the lazy loading/error block');
 console.log('PASS: thumbnail/detail routing, state-safe fullscreen zoom, verified official rates, strict pending state, and spoiler-safe choice explanations.');

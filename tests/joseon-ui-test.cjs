@@ -61,9 +61,11 @@ assert.equal(run('screen'),'game');
 
 const questionId=run("QUESTIONS.find(q=>q.primaryEra==='joseon'&&q.isOfficial).questionId");
 run(`state.run=INITIAL_RUN('joseon-ch01');state.run.started=true;state.run.activeQuestionId=${JSON.stringify(questionId)};state.run.questionQueue=[${JSON.stringify(questionId)}];state.run.questionQueueIndex=0;quizMode='story';screen='quiz';render()`);
-const question=copy('activeQuestion()'),wrong=(question.answer+1)%question.choices.length;
+const question=copy('activeQuestion()'),contentImage=run('OFFICIAL_EXAM_UI.detail(activeQuestion())'),wrong=(question.answer+1)%question.choices.length;
 assert.equal(question.questionId,question.officialQuestionId);
-assert(html.includes(question.sourceQuestionImage));
+assert(contentImage&&html.includes(contentImage));
+assert.notEqual(contentImage,question.sourceQuestionImage);
+assert(!html.includes(`src="${question.sourceQuestionImage}"`));
 click({pickAnswer:String(wrong)});
 click({submitAnswer:'true'});
 assert.equal(run(`meta().questionRecords[${JSON.stringify(questionId)}].lastCorrect`),false);

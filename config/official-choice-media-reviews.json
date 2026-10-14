@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "reviewMethod": "1,800 canonical detail images were automatically screened by marker layout; 251 grid, horizontal, long-gap, and manual-boundary candidates were rendered as contact sheets and visually reviewed against the original question images.",
+  "canonicalQuestionCount": 1800,
+  "visualCandidateCount": 251,
+  "textChoiceCount": 1687,
+  "mediaChoiceCount": 113,
+  "imageQuestionIds": [
+    "official-57-basic-08", "official-57-basic-18", "official-57-basic-20", "official-57-basic-22", "official-57-basic-27", "official-57-basic-40", "official-57-basic-47",
+    "official-57-advanced-04", "official-57-advanced-15", "official-57-advanced-20",
+    "official-58-basic-10", "official-58-basic-26", "official-58-basic-36", "official-58-advanced-16",
+    "official-59-advanced-06", "official-59-advanced-15",
+    "official-60-advanced-10",
+    "official-61-basic-04", "official-61-basic-08", "official-61-basic-25", "official-61-basic-38", "official-61-basic-44", "official-61-advanced-18", "official-61-advanced-28",
+    "official-62-advanced-05",
+    "official-63-basic-05", "official-63-basic-07", "official-63-basic-16", "official-63-basic-40", "official-63-advanced-10", "official-63-advanced-15", "official-63-advanced-46",
+    "official-64-basic-05", "official-64-basic-06", "official-64-basic-09", "official-64-basic-12", "official-64-basic-14", "official-64-basic-24", "official-64-advanced-04", "official-64-advanced-16",
+    "official-65-advanced-04", "official-65-advanced-17", "official-65-advanced-22",
+    "official-66-basic-08", "official-66-basic-10", "official-66-basic-16", "official-66-basic-18", "official-66-basic-27", "official-66-basic-32", "official-66-advanced-03", "official-66-advanced-17",
+    "official-67-basic-04", "official-67-basic-08", "official-67-basic-09", "official-67-advanced-04", "official-67-advanced-16",
+    "official-68-advanced-10", "official-68-advanced-49",
+    "official-69-basic-03", "official-69-basic-12", "official-69-basic-18", "official-69-advanced-06", "official-69-advanced-16",
+    "official-71-basic-20", "official-71-basic-25", "official-71-advanced-07", "official-71-advanced-16",
+    "official-72-advanced-17", "official-72-advanced-23",
+    "official-73-basic-08", "official-73-basic-11", "official-73-basic-12", "official-73-basic-22", "official-73-basic-26", "official-73-basic-36", "official-73-advanced-06", "official-73-advanced-26",
+    "official-74-advanced-13", "official-74-advanced-19",
+    "official-75-basic-04", "official-75-basic-14", "official-75-basic-39", "official-75-basic-48", "official-75-advanced-03", "official-75-advanced-18",
+    "official-76-advanced-04", "official-76-advanced-17", "official-76-advanced-27",
+    "official-77-basic-05", "official-77-basic-15", "official-77-basic-38", "official-77-advanced-04", "official-77-advanced-13",
+    "official-78-advanced-09", "official-78-advanced-14", "official-78-advanced-26",
+    "official-79-basic-03", "official-79-basic-05", "official-79-basic-07", "official-79-basic-09", "official-79-basic-14", "official-79-basic-40", "official-79-basic-43", "official-79-advanced-06", "official-79-advanced-11"
+  ],
+  "mixedQuestionIds": [
+    "official-57-basic-13", "official-58-basic-16", "official-63-basic-13", "official-64-basic-25",
+    "official-69-basic-06", "official-71-basic-18", "official-77-basic-08", "official-79-basic-16"
+  ],
+  "singleRowQuestionIds": ["official-73-basic-11", "official-75-basic-14", "official-75-basic-39"],
+  "manualImageLayouts": {
+    "official-65-advanced-22": {
+      "contentY": 770,
+      "choiceRects": [[0, 770, 552, 968], [552, 770, 1103, 968], [0, 968, 552, 1323], [552, 968, 1103, 1323], [0, 1323, 552, 1582]]
+    },
+    "official-74-advanced-19": {
+      "contentY": 929,
+      "choiceRects": [[0, 929, 531, 1168], [531, 929, 1062, 1168], [0, 1168, 531, 1405], [531, 1168, 1062, 1405], [0, 1405, 531, 1625]]
+    }
+  },
+  "compositeLayouts": {
+    "official-57-basic-13": {
+      "bodyRegions": [[0, 0, 1091, 105], [345, 95, 735, 300]],
+      "choiceRects": [[75, 260, 455, 485], [680, 260, 1050, 485], [45, 775, 475, 1075], [585, 770, 1045, 1075]]
+    },
+    "official-58-basic-16": {
+      "bodyRegions": [[0, 0, 1103, 105], [75, 105, 1005, 225]],
+      "choiceRects": [[395, 265, 715, 455], [735, 250, 1045, 455], [390, 440, 715, 675], [730, 440, 1045, 675]]
+    },
+    "official-63-basic-13": {
+      "bodyRegions": [[0, 0, 1103, 105], [385, 95, 725, 335]],
+      "choiceRects": [[55, 370, 420, 620], [785, 370, 1075, 620], [45, 825, 430, 1090], [690, 825, 1060, 1090]]
+    },
+    "official-64-basic-25": {
+      "bodyRegions": [[0, 0, 1103, 105], [350, 100, 755, 735]],
+      "choiceRects": [[65, 295, 410, 525], [745, 295, 1070, 525], [35, 800, 395, 1060], [735, 800, 1070, 1060]]
+    },
+    "official-69-basic-06": {
+      "bodyRegions": [[0, 0, 1062, 105], [145, 95, 910, 215]],
+      "choiceRects": [[35, 215, 425, 375], [640, 215, 1035, 375], [25, 750, 400, 915], [680, 750, 1045, 915]]
+    },
+    "official-71-basic-18": {
+      "bodyRegions": [[0, 0, 1062, 105], [380, 95, 690, 335]],
+      "choiceRects": [[15, 335, 370, 590], [730, 335, 1045, 590], [15, 795, 365, 1018], [715, 795, 1045, 1018]]
+    },
+    "official-77-basic-08": {
+      "bodyRegions": [[0, 0, 1074, 105], [250, 105, 675, 615], [665, 130, 1045, 365]],
+      "choiceRects": [[45, 385, 325, 610], [735, 355, 1060, 565], [15, 560, 330, 755], [750, 520, 1060, 755]]
+    },
+    "official-79-basic-16": {
+      "bodyRegions": [[0, 0, 1074, 140], [295, 145, 825, 325]],
+      "choiceRects": [[80, 325, 405, 535], [755, 325, 1055, 535], [55, 820, 420, 1060], [700, 805, 1055, 1060]]
+    }
+  }
+}

@@ -14,21 +14,22 @@ const {
 
 const repoRoot = path.resolve(__dirname, '..');
 const live = validateDeploymentContract(repoRoot);
-assert.equal(live.origin.assetCount, 6294);
-assert.equal(live.origin.totalBytes, 1127259070);
+assert.equal(live.origin.assetCount, 8592);
+assert.equal(live.origin.totalBytes, 1288473206);
 assert.equal(live.origin.currentSnapshot.assetCount, 4494);
 assert.equal(live.origin.currentSnapshot.totalBytes, 918201788);
-assert.equal(live.index.size, 6294);
+assert.equal(live.index.size, 8592);
 assert(externalAssetInfo(repoRoot, 'dist/assets/exams/catalog/detail/official-79-advanced-01.0a4f704ec51c.webp'));
 assert(externalAssetInfo(repoRoot, 'dist/assets/exams/catalog/detail/official-79-advanced-01.ca7342c3fb31.webp'));
 assert(externalAssetInfo(repoRoot, 'dist/assets/ancient/backgrounds/ancient-modern-museum.jpg'));
+assert(externalAssetInfo(repoRoot, 'dist/assets/exams/catalog/content/official-79-basic-01-content.1d87f3ae2330.webp'));
 const pinned = validatePinnedSnapshot(repoRoot);
 // A full maintainer clone verifies every pinned Git blob. Vercel and CI use a
 // branch-scoped shallow checkout, so the sibling asset-snapshot commit may not
 // be present there; the checked-in manifest remains the deployment contract.
 if (pinned.available) {
-  assert.equal(pinned.snapshot.entries.length, 6294);
-  assert.equal(pinned.snapshot.totalBytes, 1127259070);
+  assert.equal(pinned.snapshot.entries.length, 8592);
+  assert.equal(pinned.snapshot.totalBytes, 1288473206);
 }
 
 const vercel = JSON.parse(fs.readFileSync(path.join(repoRoot, 'vercel.json'), 'utf8'));
