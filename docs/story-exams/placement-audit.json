@@ -13,10 +13,10 @@
   "summary": {
     "proto": {
       "scenes": 17,
-      "questions": 26,
-      "satisfiedScenes": 5,
-      "shortScenes": 12,
-      "missingMinimum": 25
+      "questions": 41,
+      "satisfiedScenes": 12,
+      "shortScenes": 5,
+      "missingMinimum": 10
     },
     "three": {
       "scenes": 215,
@@ -5909,10 +5909,12 @@
       "era": "proto",
       "title": "열두 배의 값",
       "officialQuestionIds": [
-        "official-73-basic-02"
+        "official-73-basic-02",
+        "official-71-advanced-02",
+        "official-43-intermediate-02"
       ],
-      "count": 1,
-      "missing": 2
+      "count": 3,
+      "missing": 0
     },
     {
       "sceneId": "proto_ch02_s1",
@@ -5949,18 +5951,23 @@
       "chapterId": "proto-ch02",
       "era": "proto",
       "title": "사라진 짐의 행방",
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 3
+      "officialQuestionIds": [
+        "official-48-advanced-02",
+        "official-41-high-03"
+      ],
+      "count": 2,
+      "missing": 1
     },
     {
       "sceneId": "proto_ch03_s1",
       "chapterId": "proto-ch03",
       "era": "proto",
       "title": "소금 수레가 돌아오는 곳",
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 3
+      "officialQuestionIds": [
+        "official-55-advanced-02"
+      ],
+      "count": 1,
+      "missing": 2
     },
     {
       "sceneId": "proto_ch03_s2",
@@ -5968,10 +5975,12 @@
       "era": "proto",
       "title": "이 집에서 자라는 아이",
       "officialQuestionIds": [
-        "official-67-basic-02"
+        "official-67-basic-02",
+        "official-66-advanced-02",
+        "official-42-high-03"
       ],
-      "count": 1,
-      "missing": 2
+      "count": 3,
+      "missing": 0
     },
     {
       "sceneId": "proto_ch03_s3",
@@ -5980,10 +5989,11 @@
       "title": "가족이 다시 모이는 곳",
       "officialQuestionIds": [
         "official-58-basic-02",
-        "official-66-advanced-02"
+        "official-46-high-02",
+        "official-45-intermediate-02"
       ],
-      "count": 2,
-      "missing": 1
+      "count": 3,
+      "missing": 0
     },
     {
       "sceneId": "proto_ch04_s1",
@@ -5991,19 +6001,25 @@
       "era": "proto",
       "title": "넘으면 안 되는 경계",
       "officialQuestionIds": [
-        "official-77-advanced-03"
+        "official-77-advanced-03",
+        "official-42-intermediate-02",
+        "official-54-advanced-02"
       ],
-      "count": 1,
-      "missing": 2
+      "count": 3,
+      "missing": 0
     },
     {
       "sceneId": "proto_ch04_s2",
       "chapterId": "proto-ch04",
       "era": "proto",
       "title": "다른 씨족으로 가는 사람",
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 3
+      "officialQuestionIds": [
+        "official-45-high-02",
+        "official-46-intermediate-03",
+        "official-50-advanced-03"
+      ],
+      "count": 3,
+      "missing": 0
     },
     {
       "sceneId": "proto_ch04_s3",
@@ -6038,10 +6054,11 @@
       "title": "따라 들어갈 수 없는 곳",
       "officialQuestionIds": [
         "official-77-basic-02",
-        "official-60-basic-02"
+        "official-60-basic-02",
+        "official-47-basic-03"
       ],
-      "count": 2,
-      "missing": 1
+      "count": 3,
+      "missing": 0
     },
     {
       "sceneId": "proto_ch05_s2",
@@ -6063,10 +6080,11 @@
       "title": "철이 향하는 곳, 우리가 돌아갈 곳",
       "officialQuestionIds": [
         "official-67-advanced-02",
-        "official-78-advanced-03"
+        "official-78-advanced-03",
+        "official-53-advanced-02"
       ],
-      "count": 2,
-      "missing": 1
+      "count": 3,
+      "missing": 0
     }
   ],
   "deferred": [

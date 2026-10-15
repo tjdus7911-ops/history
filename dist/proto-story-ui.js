@@ -273,6 +273,9 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
   }
   finally{STORIES[source.sceneId]=source;}
  };
+ // Pre-2020 originals retain their historical 고급/중급 labels and HWP answer keys.
+ const beforeVerified=isVerifiedOfficialQuestion;
+ isVerifiedOfficialQuestion=function(q){return isProto(q)&&q.sourceVerified===true&&q.protoExam?.sourceEvidence?.answerVerification==='original_answer_table'&&q.protoExam?.sourceEvidence?.visualReview==='verified'&&/^[a-f0-9]{64}$/.test(q.questionImageSha256||'')&&Boolean(q.sourceQuestionImage)||beforeVerified(q);};
  const beforeSourceLabel=questionSourceLabel;
  questionSourceLabel=function(q){return isProto(q)?'한능검 대비 · 실제 기출':beforeSourceLabel(q);};
  const beforeFigure=officialQuestionFigure;

@@ -30,7 +30,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
  }else throw Error(current.screen);
  maxOverflow=Math.max(maxOverflow,await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth));assert(tick<1099,'route did not finish');
  }
- assert.equal(scenes.size,17);assert.equal(exams.size,26);assert.deepEqual(outro,['준비됐어?','응. 이번에는 같이.']);assert.equal(maxOverflow,0);assert.deepEqual(errors,[]);
+ assert.equal(scenes.size,17);assert.equal(exams.size,41);assert.deepEqual(outro,['준비됐어?','응. 이번에는 같이.']);assert.equal(maxOverflow,0);assert.deepEqual(errors,[]);
  // Reload at the ending and verify its completion, then enter replay without losing the completed main run.
  await page.reload({waitUntil:'domcontentloaded'});await page.evaluate(()=>resumeEra('proto-kingdoms'));assert.equal(await page.evaluate(()=>run().currentChapter),'proto-ch05');
  report.push({width,height,branch,scenes:scenes.size,exams:exams.size,pageErrors:errors,horizontalOverflow:maxOverflow});await page.close();

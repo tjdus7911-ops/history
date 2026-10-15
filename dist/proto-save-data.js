@@ -115,7 +115,7 @@ if(globalThis.PROTO_REVISION_RUNTIME?.version===3){
  function validResume(value,learned){if(!object(value)||!validRun(value.run)||value.mainRun&&!validRun(value.mainRun))return false;return learned===undefined||validLearningCursor(value.run,learned)&&(!value.mainRun||validLearningCursor(value.mainRun,learned));}
  function identifyRun(value,fresh=false){
   if(!value||!ownsChapter(value.currentChapter))return value;
-  value.contentEra=eraId;value.contentVersion=version;value.protoContentVersion=contentVersion;value.flags||={};value.flags.protoStoryVersion=version;
+  value.protoExamRevision=2;value.contentEra=eraId;value.contentVersion=version;value.protoContentVersion=contentVersion;value.flags||={};value.flags.protoStoryVersion=version;
   value.playerOutfit='modern';value.flags.wearingModernClothes=true;value.flags.hasModernClothes=true;delete value.flags.receivedGoryeoClothesFromDoyun;
   value.inventory=(value.inventory||[]).filter(item=>item.id!=='goryeo-commoner-clothes');
   const clothes=value.inventory.find(item=>item.id==='modern-clothes');if(clothes)clothes.status='equipped';else value.inventory.push({id:'modern-clothes',status:'equipped',source:'2026-seoul'});
@@ -139,10 +139,26 @@ if(globalThis.PROTO_REVISION_RUNTIME?.version===3){
  }
  function configureSeason(registry){const info=registry?.find(item=>item.id===eraId);if(info)Object.assign(info,{progressKey,contentVersion:version,contentRevision:contentVersion,years:'원삼국 시대 · 다섯 나라의 생활',description:'동생이 남긴 표식을 따라 부여·고구려·옥저·동예·삼한의 17장면을 여행합니다.',bannerAsset:'media/proto-v4/buyeo-village.webp',backgroundAssets:PROTO_SYMBOLIC_BACKGROUNDS.map(id=>'media/proto-v4/'+id+'.webp')});}
  const ownEntries=value=>Object.fromEntries(Object.entries(value||{}).filter(([id])=>ownsChapter(id)));
+ // Exam-only revision preserves the manuscript cursor, choices, and completed chapters.
+ function refreshExamQueue(value,book){
+  if(!familyRun(value)||value.protoContentVersion!==contentVersion||value.protoExamRevision===2)return;
+  const source=runtime.sources.get(value.storyId),current=value.protoStoryState?.scenes?.[value.storyId];
+  if(source&&current?.phase==='quiz'){
+   const allowed=source.protoQueue.officialQuestionIds.map(id=>'proto-v4-'+id),old=value.activeQuestionId;
+   const prefix=(value.questionQueue||[]).slice(0,value.questionQueueIndex).filter(id=>allowed.includes(id));
+   const remainder=allowed.filter(id=>!prefix.includes(id)&&id!==old);
+   value.questionQueue=[...prefix,...(allowed.includes(old)?[old]:[]),...remainder];value.questionQueueIndex=prefix.length;
+   value.activeQuestionId=value.questionQueue[prefix.length];
+   if(value.activeQuestionId!==old){value.questionAnswer=null;value.protoAnswerDraft=null;}
+  }
+  value.protoExamRevision=2;
+ }
  const beforeMigration=migrateSave;
  migrateSave=function(raw){
   if(typeof HISTORY_SEASONS!=='undefined')configureSeason(HISTORY_SEASONS);
-  const preserved=copy(raw),result=beforeMigration(copy(raw));
+  const preserved=copy(raw);
+  for(const value of [preserved?.run,preserved?.mainRun,preserved?.meta?.eraProgress?.[progressKey]?.resume?.run,preserved?.meta?.eraProgress?.[progressKey]?.resume?.mainRun])refreshExamQueue(value,preserved?.meta?.protoRevisionBook);
+  const result=beforeMigration(copy(preserved));
   if(!preserved?.run||!preserved.meta){ensureBook(result.meta);return result;}
   for(const collection of ['chapterRecords','chapterRuns']){result.meta[collection]||={};for(const [id,value] of Object.entries(preserved.meta[collection]||{}))if(ownsChapter(id))result.meta[collection][id]=copy(value);}
   if(preserved.meta.protoSaveArchives!=null)result.meta.protoSaveArchives=copy(preserved.meta.protoSaveArchives);

@@ -337,7 +337,7 @@ for(const entry of copy('globalThis.OFFICIAL_EXAM_CATALOG')){
   // Runtime policy intentionally gives the manual correction ledger precedence
   // over regenerated OCR explanations.  The canonical alias assertion must
   // verify that same precedence rather than treating curation as stale data.
-  const expected=manuallyCuratedExplanationById.get(officialQuestionId)||explanationById.get(officialQuestionId).explanation;
+  const expected=run('globalThis.OFFICIAL_EXAM_REPAIRS?.['+JSON.stringify(officialQuestionId)+']?.explanation')||manuallyCuratedExplanationById.get(officialQuestionId)||explanationById.get(officialQuestionId).explanation;
   for(const alias of entry.aliases){
     const actual=run(`QUESTIONS.find(question=>question.questionId===${JSON.stringify(alias)})?.explanation`);
     assert.equal(actual,expected,alias+' does not use canonical explanation');
