@@ -22,24 +22,27 @@ async function main(){
    assert(overflow.scroll<=width+1,name+' '+width+' overflow '+JSON.stringify(overflow));
    if(phase==='after')assert.equal(overflow.offenders.length,0,name+' offscreen '+JSON.stringify(overflow.offenders));
    await page.screenshot({path:path.join(out,name+'-'+width+'.png')});
+   fs.writeFileSync(path.join(out,name+'-'+width+'.json'),JSON.stringify(await page.evaluate(()=>[...document.querySelectorAll('main .r3-play,main .r3-era-back,main .r3-play-header,main .r3-score')].map(n=>({class:n.className,rect:n.getBoundingClientRect().toJSON(),color:getComputedStyle(n).color,display:getComputedStyle(n).display}))),null,2));
    if(width===390)await page.screenshot({path:path.join(out,name+'-full-'+width+'.png'),fullPage:true});
   };
   await capture('A1-home');
-  await page.locator('[data-nav="records"]').click();await capture('K4-empty-records');
-  await page.locator('[data-nav="home"]').click();
+  await page.locator('.nav [data-nav="records"]').click();await capture('K4-empty-records');
+  await page.locator('.nav [data-nav="home"]').click();
   if(phase==='after'){
    assert.equal(await page.evaluate(()=>REV3_UI.version),3);
    assert.equal(await page.evaluate(()=>getComputedStyle(document.body).backgroundColor),'rgb(255, 255, 255)');
    assert((await page.locator('main').evaluate(n=>getComputedStyle(n).fontFamily)).includes('Malgun Gothic'));
    await page.locator('.r3-era-covers [data-era-open="goryeo"]').click();await capture('B2-era');
+   await page.locator('[data-action="restart-episode"]').click();await capture('J5-restart');await page.locator('[data-action="close"]').click();
    await page.locator('[data-chapter]').first().click();await capture('J4-chapter-sheet');
    await page.locator('[data-action="close"]').first().click();
    await page.locator('[data-chapter]').first().click();
    const starter=page.locator('[data-action="start-chapter"],[data-action="continue-chapter"]').first();
    if(await starter.count()){await starter.click();await page.waitForTimeout(300);await capture('story-goryeo');await page.locator('[data-action="advance-dialogue"]').first().click();assert(await page.locator('.game').count());}
-   await page.locator('[data-nav="home"]').click({force:true}).catch(async()=>{await page.evaluate(()=>navigate('home'))});
+   await page.locator('.nav [data-nav="home"]').click({force:true}).catch(async()=>{await page.evaluate(()=>navigate('home'))});
   }
-  await page.locator('[data-nav="exam-library"]').click();await capture('E1-main');
+  if(phase==='after'){await page.evaluate(()=>{resultChapterId='ch01';screen='complete';render()});await capture('J7-chapter-complete');await page.evaluate(()=>{resultChapterId=null;navigate('home')});}
+  await page.locator('.nav [data-nav="exam-library"]').click();await capture('E1-main');
   await page.locator('[data-official-round="79"]').first().click();await capture('E2-detail');
   const ids=await page.evaluate(()=>OFFICIAL_ENTRIES_FOR_ROUND(79,'심화').map(e=>e.canonicalQuestionId));
   if(phase==='after'){await page.locator('[data-r3-begin]').click();}
@@ -65,13 +68,13 @@ async function main(){
    await page.locator('[data-r3-aux-back]').click();await page.locator('[data-official-retry]').click();await capture('E8-wrong-learning');await page.locator('[data-official-pick]').first().tap();await page.locator('[data-official-submit]').tap();await capture('learning-feedback');assert.equal(await page.locator('.official-feedback').count(),1);
    assert.equal(await page.evaluate(()=>JSON.stringify({run:state.run,main:state.mainRun})),runState,'exam UI cannot mutate story progress');
    await page.evaluate(()=>REV3_UI.views.analysis());await capture('E10-analysis');await page.locator('[data-r3-aux-back]').click();
-   await page.locator('[data-nav="exam-library"]').click({force:true});await page.locator('[data-official-tab="era"]').click();await capture('E11-era');
-   await page.locator('[data-nav="records"]').click();await capture('K1-records');await page.locator('[data-official-results-list]').click();await capture('K2-history');await page.locator('[data-official-result-open]').first().click();await capture('K3-record-detail');
-   await page.locator('[data-nav="exam-library"]').click({force:true}).catch(async()=>{await page.evaluate(()=>navigate('exam-library'))});
+   await page.locator('.nav [data-nav="exam-library"]').click({force:true});await page.locator('[data-official-tab="era"]').click();await capture('E11-era');
+   await page.locator('.nav [data-nav="records"]').click();await capture('K1-records');await page.locator('[data-official-results-list]').click();await capture('K2-history');await page.locator('[data-official-result-open]').first().click();await capture('K3-record-detail');
+   await page.locator('.nav [data-nav="exam-library"]').click({force:true}).catch(async()=>{await page.evaluate(()=>navigate('exam-library'))});
    await page.evaluate(()=>{EXAM_PRESENTATION.view='home';render()});await page.locator('[data-r3-filter]').click();await capture('T7-filter');await page.locator('[data-r3-filter-apply]').click();
    await page.evaluate(()=>REV3_UI.views.search());await page.locator('[data-r3-search-input]').fill('no-such-history-987654');await page.waitForTimeout(250);await capture('T3-search-empty');await page.locator('[data-r3-aux-back]').click();
    await page.evaluate(()=>REV3_UI.states.loading());await capture('T1-loading');await page.evaluate(()=>REV3_UI.states.network());await capture('T2-network');await page.locator('[data-r3-reconnect]').click();
-   await page.locator('[data-nav="ox"]').click();await capture('Q1-ox-home');
+   await page.locator('.nav [data-nav="ox"]').click();await capture('Q1-ox-home');
    assert.equal(await page.locator('.ox-weakness-donut,[data-ox-home-analysis]').count(),0);
    await page.evaluate(()=>OX_QUIZ_API.startSession('era','goryeo',{count:2}));
    await capture('Q2-ox-question');

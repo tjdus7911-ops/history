@@ -36,7 +36,7 @@ jobs:
         run: |
           mkdir -p tmp/rev3
           failed=0
-          for test in official-content-swipe official-learning-continuation official-exam-history official-exam-pass official-exam-timer official-exam-cover official-source-manifest official-exam-statistics official-choice-ui-data official-content-crop-regression service-worker-cache official-canonical-qa vercel-detail-assets ox-quiz ox-route proto-save-v3 proto-main-preservation three-save-v3 three-learning-boundary; do
+          for test in official-content-swipe official-learning-continuation official-exam-history official-exam-pass official-exam-timer official-exam-cover official-source-manifest official-exam-statistics official-choice-ui-data official-content-crop-regression service-worker-cache official-canonical-qa vercel-detail-assets ox-quiz ox-route proto-save-v3 proto-main-preservation three-save-v3 three-learning-boundary story-access-policy; do
             node tests/$test-test.cjs >> tmp/rev3/regression.log 2>&1 || failed=1
           done
           cat tmp/rev3/regression.log
