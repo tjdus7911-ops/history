@@ -130,13 +130,13 @@ assert(builderSource.includes('DECISION_LEDGER_FILE')&&builderSource.includes('l
 
 /* OX home starts with the compact weakness donut, then the seven era entries and
    finally wrong-answer review. Old daily/quick and duplicate summary cards stay gone. */
-assert(html.includes('data-nav="association"'),'existing mnemonic tools must remain reachable');
+assert(!html.includes('data-nav="association"')&&!html.includes('>암기법<'));
 click({nav:'ox'});
-assert(html.includes('OX 퀴즈')&&html.includes('오늘의 20문제, 3분 여행'));
+assert(html.includes('OX 퀴즈')&&html.includes('한능검 심화 핵심 개념을 빠르게 확인해요.'));
 assert.equal(run('meta().oxQuiz.schemaVersion'),3);assert.equal(run('meta().oxQuiz.contentRevision'),report.contentRevision,'saved OX metadata must track the revised answer key');
 for(const removed of ['오늘의 심화 핵심 개념','오늘의 OX 퀴즈','빠른 OX 퀴즈','QUICK START'])assert(!html.includes(removed),`removed menu remains: ${removed}`);
-assert(html.includes('data-ox-start="daily"')&&!html.includes('data-ox-start="quick"'),'Rev.3 restores the daily journey without a duplicate quick control');
-assert(html.includes('TODAY · 20 STOPS'),'Rev.3 daily journey heading missing');
+assert(!html.includes('data-ox-start="daily"')&&!html.includes('data-ox-start="quick"'),'daily/quick start controls must be removed');
+assert(html.includes('최대 20문제')&&!html.includes('한 세션 20문제'),'home must describe the session cap rather than promise a fixed count');
 assert.equal((html.match(/data-ox-era=/g)||[]).length,7,'home must render seven era cards');
 for(const [eraId,count] of Object.entries(actualCounts)){
  assert(html.includes(`data-ox-era="${eraId}"`),`${eraId} card missing`);
@@ -148,9 +148,9 @@ assert(!html.includes('data-ox-analysis='),'OX analysis entry must not render');
 assert(!html.includes('data-ox-analysis="true"'),'analysis detail control is removed');
 assert(!html.includes('class="ox-learning-summary"')&&!html.includes('나의 OX 학습'),'the old duplicate learning summary card must be removed');
 assert(!html.includes('시대별 취약점 분석'),'OX analysis description is removed');
-const eraPosition=html.indexOf('data-ox-era='),reviewPosition=html.indexOf('틀린 OX ');
-assert(eraPosition>=0&&reviewPosition<eraPosition,'Rev.3 wrong review precedes era stations');
-assert((html.match(/아직 출발 전/g)||[]).length>=7,'unattempted eras must say 아직 학습 전');
+const eraPosition=html.indexOf('data-ox-era='),reviewPosition=html.indexOf('틀린 OX 다시 풀기');
+assert(eraPosition>=0&&reviewPosition>eraPosition,'era quiz and wrong review remain in order');
+assert((html.match(/아직 학습 전/g)||[]).length>=7,'unattempted eras must say 아직 학습 전');
 assert(html.includes('data-ox-review'),'wrong-answer review entry is required');
 
 /* Learning history with no historical wrong question has a different state from
@@ -182,7 +182,7 @@ assert.equal(run(`OX_QUIZ_API.startSession('era',${JSON.stringify(shortEraId)})`
 assert.equal(run('meta().oxQuiz.activeSession.questionIds.length'),shortEraCount,'short-era session must include every available question exactly once');
 while(run('meta().oxQuiz.activeSession')){answerCurrent(true);click({oxNext:'true'})}
 assert.equal(run('meta().oxQuiz.lastSession.summary.total'),shortEraCount,'short-era result must keep the actual session size');
-assert(html.includes(`${shortEraCount} STOPS`),'short-era result must display the actual question total');
+assert(html.includes(`총 ${shortEraCount}문제`)||html.includes(`${shortEraCount}문제 중`),'short-era result must display the actual question total');
 run(`meta().oxQuiz=${shortSessionSnapshot};oxView='home';screen='ox';render()`);
 
 /* A real era session stores canonical attempt events and preserves non-OX app records. */
@@ -193,11 +193,11 @@ assert.equal(session.mode,'era');assert.equal(session.eraId,'goryeo');assert.equ
 assert.equal(new Set(session.questionIds).size,sessionSize);assert(session.questionIds.every(id=>questions.find(question=>question.id===id)?.eraId==='goryeo'));
 assert.deepEqual(session.questionFingerprints,Object.fromEntries(session.questionIds.map(id=>[id,questions.find(question=>question.id===id).contentFingerprint])),'session must snapshot current source fingerprints');
 const firstSessionIds=[...session.questionIds],firstQuestion=questions.find(question=>question.id===session.questionIds[0]);
-assert(html.includes('STOP 01'),'the answer-bearing topic label must stay hidden before answering');
+assert(html.includes('<small>한능검 심화 핵심 개념</small>'),'the answer-bearing topic label must stay hidden before answering');
 assert(!html.includes(`<small>${firstQuestion.tags.join(' · ')}</small>`),'the correct topic must not leak before an O/X choice');
 assert(!html.includes('class="ox-feedback')&&!html.includes('data-ox-next="true"'),'answer, explanation, and next action must stay hidden before an O/X choice');
 answerCurrent(false);
-assert(html.includes(firstQuestion.explanation),'the source explanation must be revealed after answering');
+assert(html.includes(`<small>${firstQuestion.tags.join(' · ')}</small>`),'topic label should be revealed with the explanation');
 assert(!html.includes('연계 심화 기출'),'unreviewed source-round claims must not be rendered in OX feedback');
 let event=copy('meta().oxQuiz.history.at(-1)');
 const canonical=['answeredAt','attemptNumber','contentFingerprint','correctAnswer','eraId','isCorrect','questionId','selectedAnswer','sessionId','topicId'];
@@ -207,12 +207,12 @@ assert.equal(event.selectedAnswer,!firstQuestion.answer);assert.equal(event.corr
 assert(!Number.isNaN(Date.parse(event.answeredAt))&&event.sessionId===session.id,'attempt timestamp/session id invalid');
 click({oxNext:'true'});
 for(let index=1;index<sessionSize;index++){answerCurrent(true);click({oxNext:'true'})}
-assert.equal(run('meta().oxQuiz.activeSession'),null);assert(html.includes('OX 결과'));
-assert(html.includes(`${sessionSize} STOPS`),'result total missing');
-assert(html.includes(`<h1>${sessionSize-1}</h1>`)&&html.includes('길을 잃은 1곳'),'result correct/wrong counts missing');
-assert(html.includes('소요'),'result duration missing');
-assert(!html.includes('ox-result-analysis'),'Rev.3 replaces redundant analysis with individual wrong-question review');
-assert(html.includes(firstQuestion.statement)&&(html.match(/class="r3-ox-wrong"/g)||[]).length===1,'era result must display the actual wrong question');
+assert.equal(run('meta().oxQuiz.activeSession'),null);assert(html.includes('학습 결과'));
+assert(html.includes(`총 ${sessionSize}문제`)||html.includes(`${sessionSize}문제 중`),'result total missing');
+assert(html.includes(`${sessionSize-1}문제 정답`)&&html.includes('오답 1'),'result correct/wrong counts missing');
+assert(html.includes('소요 시간'),'result duration missing');
+assert(html.includes('세부 주제')&&html.includes('오답 분석'),'era result must include topic-level wrong analysis');
+assert(html.includes(firstQuestion.tags.join(' · '))&&(html.match(/class="ox-bar-row"/g)||[]).length===1,'era result must group wrong answers by topic');
 
 /* The next same-era session prefers unseen questions; learned progress counts unique ids. */
 click({oxHome:'true'});click({oxEra:'goryeo'});
@@ -266,8 +266,8 @@ click({nav:'ox'});click({oxEra:'joseon'});const joseonWrong=questions.find(quest
 answerCurrent(false);click({oxBack:'home'});click({nav:'study'});click({wrongFilter:'ox'});change({oxReviewFilter:'true'},'all');click({oxReviewEra:'all'});
 session=copy('meta().oxQuiz.activeSession');assert.deepEqual(new Set(session.questionIds),new Set([otherWrong.id,joseonWrong.id]),'all-era review must contain only current wrong questions');
 while(run('meta().oxQuiz.activeSession')){answerCurrent(false);click({oxNext:'true'})}
-assert((html.match(/class="r3-ox-wrong"/g)||[]).length===2,'mixed review result must retain both wrong-question disclosures');
-assert(html.includes(otherWrong.statement)&&html.includes(joseonWrong.statement),'mixed review result must retain each wrong source statement');
+assert(html.includes('시대별 오답')&&(html.match(/class="ox-bar-row"/g)||[]).length===2,'mixed review result must group wrong answers by era');
+assert(html.includes('개항기')&&html.includes('조선'),'mixed review result must label each wrong era');
 
 /* Old events without topicId are safe; weakness ranking requires at least ten attempts. */
 if(actualCounts.prehistoric>=9&&actualCounts.goryeo>=10&&actualCounts.joseon>=12){

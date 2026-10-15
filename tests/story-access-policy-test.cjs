@@ -28,11 +28,11 @@ for(const id of fixtures){
  g.click({action:'chapter-next-direct',chapter:id});assert.equal(g.run('run().currentChapter'),next);step(g);
  g.run('save()');const before=g.copy('run()'),storage=Object.fromEntries(g.storage),era=g.run('chapterEra(run().currentChapter)');g=load(storage);g.run('resumeEra('+JSON.stringify(era)+')');
  assert.equal(g.run('run().currentChapter'),next,id+' next reload chapter');assert.equal(g.run('run().storyId'),before.storyId,id+' next reload scene');assert.equal(g.run('run().dialogueCursor'),before.dialogueCursor,id+' next reload cursor');
- g.run('selectedEra='+JSON.stringify(era));const resumeCard=g.run('eras()').match(/<button class="r3-continue era-resume"[^>]*>[\s\S]*?<\/button>/)?.[0];assert(resumeCard?.includes(g.run('esc(CHAPTERS[run().currentChapter].title)')),id+' replay resume label');
+ g.run('selectedEra='+JSON.stringify(era));const resumeCard=g.run('eras()').match(/<button class="era-resume"[^>]*>[\s\S]*?<\/button>/)?.[0];assert(resumeCard?.includes(g.run('esc(CHAPTERS[run().currentChapter].title)')),id+' replay resume label');
  results.push({id,next,questions:first.size,replayQuestions:second.size,reload:true});
 }
 const policy=g.copy('STORY_EXAM_POLICY');assert.equal(new Set(policy.placements.map(p=>p.officialQuestionId)).size,policy.placements.length);
 assert.equal(new Set(policy.placements.map(p=>[p.examRound,p.examLevel,p.questionNumber].join(':'))).size,policy.placements.length);
-for(const row of policy.placements){const q=g.copy('QUESTIONS.find(q=>q.questionId==='+JSON.stringify(row.questionId)+')');assert(q);assert.equal(q.answer,row.answer);assert(fs.existsSync('dist/'+q.sourceQuestionImage)||JSON.parse(fs.readFileSync('config/deployment-assets-manifest.json','utf8')).files.some(e=>e[0]===q.sourceQuestionImage),'question image must be present locally or in the immutable deployment manifest');}
+for(const row of policy.placements){const q=g.copy('QUESTIONS.find(q=>q.questionId==='+JSON.stringify(row.questionId)+')');assert(q);assert.equal(q.answer,row.answer);assert(fs.existsSync('dist/'+q.sourceQuestionImage));}
 fs.writeFileSync('docs/story-exams/playback-test-results.json',JSON.stringify({freshEntryChapters:chapters.length,results,summary:policy.summary},null,2)+'\n');console.log(JSON.stringify({freshEntryChapters:chapters.length,results}));
 module.exports={step,finish};

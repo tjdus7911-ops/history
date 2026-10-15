@@ -392,12 +392,6 @@ if(typeof window?.addEventListener==='function'){
  window.addEventListener('popstate',oxHandleRouteChange);
  window.addEventListener('hashchange',oxHandleRouteChange);
 }
-globalThis.OX_PRESENTATION={
- get view(){return oxView},get homeReviewEra(){return oxHomeReviewEra},
- functions:{oxCurrentWrongIds,oxDuration,oxEra,oxMeta,oxReviewOptions,oxStats,oxRecordSection,activeOXSession,activeOXQuestion},
- byId:OX_BY_ID,renderers:{oxHome,oxQuiz,oxResult},
- replace(r){if(r.oxHome)oxHome=r.oxHome;if(r.oxQuiz)oxQuiz=r.oxQuiz;if(r.oxResult)oxResult=r.oxResult}
-};
 globalThis.OX_QUIZ_UI_READY=true;
 oxApplyRoute(oxReadRoute());
 })();
