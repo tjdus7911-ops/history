@@ -1,0 +1,325 @@
+{
+  "snapshotCommit": "fbee9785c1656af06623a3da9fbe45ad466a9cce",
+  "deletedCount": 62,
+  "deleted": [
+    {
+      "path": "assets/ancient/backgrounds/proto-buyeo-village.jpg",
+      "sha": "340da38f01aa531fa2e403e1322ef13451ace49a",
+      "bytes": 454877
+    },
+    {
+      "path": "assets/ancient/backgrounds/proto-dongye-boundary.jpg",
+      "sha": "dfd2375513c910966c31b91df7aa1380d077d06f",
+      "bytes": 539511
+    },
+    {
+      "path": "assets/ancient/backgrounds/proto-okjeo-coast.jpg",
+      "sha": "2afa577aa33e03d27a7bd53562f1dd964ae9b1d2",
+      "bytes": 454704
+    },
+    {
+      "path": "assets/ancient/backgrounds/proto-samhan-market.jpg",
+      "sha": "57d0b95c86c7fc078007c29fe1d26302e9612d47",
+      "bytes": 493565
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-buyeo-council.webp",
+      "sha": "665bfdd3e01ec8de2a4b5aa6c41b0909ffaf56ee",
+      "bytes": 676356
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-buyeo-court.webp",
+      "sha": "e955a16fc28cf443de1a20a97e744e9efaf51842",
+      "bytes": 752648
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-buyeo-funeral.webp",
+      "sha": "d3b0b2b1cea5d82fe13a2f71616dcbfb7c63620d",
+      "bytes": 688024
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-buyeo-market.webp",
+      "sha": "611191ec935306c5e82dd0e121a0d61d2357a828",
+      "bytes": 719676
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-buyeo-yeonggo.webp",
+      "sha": "b6ca61b71b0acf9e29cd370ce81e5734ccd66bec",
+      "bytes": 599346
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-dongye-mucheon-market.webp",
+      "sha": "18f88de54b4e45089fe7a6df71b4e60899cbe174",
+      "bytes": 678558
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-dongye-wedding.webp",
+      "sha": "b2958b69035479ad2208d51801ad68117f783949",
+      "bytes": 696140
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-forest-crossroads.webp",
+      "sha": "05f6836029b9c4fca744a0b9232def1bb0808d76",
+      "bytes": 765892
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-goguryeo-dongmaeng.webp",
+      "sha": "da872dd1e40a1052efd364cc44168cd80bd8261e",
+      "bytes": 644142
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-goguryeo-seook.webp",
+      "sha": "2eae331d3710652de1b220bdbae38ff44e74fd15",
+      "bytes": 659804
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-jolbon.webp",
+      "sha": "820876806aa42a975c4e2da453cb385ecb75df29",
+      "bytes": 682154
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-okjeo-family-tomb.webp",
+      "sha": "32218f46e0f6ce67717b9c8fb1d1d73014aff611",
+      "bytes": 698232
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-okjeo-house.webp",
+      "sha": "0d6eea227370b200c42e4d96bd1ba5f45725a418",
+      "bytes": 695708
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-samhan-farm.webp",
+      "sha": "3dbd8867d963de230e29bf80939a11b311183551",
+      "bytes": 740240
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-samhan-sodo.webp",
+      "sha": "d7357e701488d2e263a8e0533b98d9a37101e9ea",
+      "bytes": 724172
+    },
+    {
+      "path": "assets/ancient/backgrounds/rebuild-trade-map.webp",
+      "sha": "f1022f1b3b528449117691dfa2f3a9ca65fddfb9",
+      "bytes": 595936
+    },
+    {
+      "path": "assets/ancient/characters/proto-arin-neutral.png",
+      "sha": "d2bd20c4ff93efdf6c7ea7ef5bace31427f68e46",
+      "bytes": 1880340
+    },
+    {
+      "path": "assets/ancient/characters/proto-biryu-neutral.png",
+      "sha": "389b84dda937845d1e9a91e938f19cda74c738c0",
+      "bytes": 2204340
+    },
+    {
+      "path": "assets/ancient/characters/proto-consistent-dan-neutral.png",
+      "sha": "a36dc069c450dd5d2cc34306e2b3744cc39c7b63",
+      "bytes": 1942169
+    },
+    {
+      "path": "assets/ancient/characters/proto-consistent-dan-smile.png",
+      "sha": "e842651babd5d8db3e72ac137105df90ac6b6ca9",
+      "bytes": 1882450
+    },
+    {
+      "path": "assets/ancient/characters/proto-consistent-dan-surprised.png",
+      "sha": "2ae661856f99edc583d96c048214a5a0ebc80e44",
+      "bytes": 1890888
+    },
+    {
+      "path": "assets/ancient/characters/proto-consistent-player-smile.png",
+      "sha": "a084402d3191f8a62cb5af9193a4a96bd82f3a4a",
+      "bytes": 1575589
+    },
+    {
+      "path": "assets/ancient/characters/proto-consistent-player-surprised.png",
+      "sha": "b2f2291edda3a4d6a81e73efbd970352305f135c",
+      "bytes": 1572015
+    },
+    {
+      "path": "assets/ancient/characters/proto-guide-determined.png",
+      "sha": "8aa8ef562003d063d49a8442c521e72d3fb57cec",
+      "bytes": 2108238
+    },
+    {
+      "path": "assets/ancient/characters/proto-guide-neutral.png",
+      "sha": "1af30b953827bcfda8f0a6dd722b432d729fe04a",
+      "bytes": 2120262
+    },
+    {
+      "path": "assets/ancient/characters/proto-guide-sad.png",
+      "sha": "49006da02b6e65691809cc7864b3d0103a86afbd",
+      "bytes": 2061383
+    },
+    {
+      "path": "assets/ancient/characters/proto-guide-smile.png",
+      "sha": "93f7e327fd3589f83910ef50c5d2d13c0e2559a1",
+      "bytes": 2111803
+    },
+    {
+      "path": "assets/ancient/characters/proto-haeru-neutral.png",
+      "sha": "c9173f17ff861aefcb3db997840bd986e0c8b461",
+      "bytes": 2039425
+    },
+    {
+      "path": "assets/ancient/characters/proto-merchant-neutral.png",
+      "sha": "8f3033b3efe46df5f6a79af042ed046097725d20",
+      "bytes": 2205792
+    },
+    {
+      "path": "assets/ancient/characters/proto-player-angry.png",
+      "sha": "9a61c1ddf90644a9d2604f5040b6956671e3c828",
+      "bytes": 1647234
+    },
+    {
+      "path": "assets/ancient/characters/proto-player-determined.png",
+      "sha": "218eb1a9dd2fa5c595cc47671277c168ac103c56",
+      "bytes": 1652643
+    },
+    {
+      "path": "assets/ancient/characters/proto-player-embarrassed.png",
+      "sha": "24b018004f089d55c009cffe4703ef8504eadb31",
+      "bytes": 1641305
+    },
+    {
+      "path": "assets/ancient/characters/proto-player-fear.png",
+      "sha": "1862869f46f46c68b911d72f4c64665e0cf1855d",
+      "bytes": 1648891
+    },
+    {
+      "path": "assets/ancient/characters/proto-player-modern.png",
+      "sha": "3a0ac8497864d4805d49a050e76580cde9c559c0",
+      "bytes": 1589055
+    },
+    {
+      "path": "assets/ancient/characters/proto-player-neutral.png",
+      "sha": "a4185feae2298de18c0694af2cd0c0566789f5ad",
+      "bytes": 1681950
+    },
+    {
+      "path": "assets/ancient/characters/proto-player-relieved.png",
+      "sha": "1b61e752bf2d78f24495f5dff6bcca96d52664f6",
+      "bytes": 1675872
+    },
+    {
+      "path": "assets/ancient/characters/proto-player-sad.png",
+      "sha": "d219345e098ee187b14747c9f1513fc85e2128d9",
+      "bytes": 1651602
+    },
+    {
+      "path": "assets/ancient/characters/proto-player-smile.png",
+      "sha": "536d1e8536e0a74ee163dfe604af8283f4afef0c",
+      "bytes": 1671858
+    },
+    {
+      "path": "assets/ancient/characters/proto-player-surprised.png",
+      "sha": "ad5d409ff4bd00a02c20bcd1d603711e45448995",
+      "bytes": 1640919
+    },
+    {
+      "path": "assets/ancient/characters/proto-player-suspicious.png",
+      "sha": "3d5d700ef801440251b6b5d760b19b661d5621a3",
+      "bytes": 1655196
+    },
+    {
+      "path": "assets/ancient/characters/proto-player-worried.png",
+      "sha": "7325de0ce86cd1eece505b246c6f6691ad7d8a42",
+      "bytes": 1650399
+    },
+    {
+      "path": "assets/ancient/characters/proto-priest-neutral.png",
+      "sha": "3a0cf963661da285cdaff4ba0884b4ba64fe5eda",
+      "bytes": 2247876
+    },
+    {
+      "path": "assets/ancient/characters/proto-raon-neutral.png",
+      "sha": "cd8b2ede90985805b8f100f789184ec8bfbfc1fa",
+      "bytes": 1824188
+    },
+    {
+      "path": "assets/ancient/characters/proto-storyteller-neutral.png",
+      "sha": "be94fdcc35d51cfde928cf05127cd4ef5c9f9400",
+      "bytes": 2323425
+    },
+    {
+      "path": "assets/ancient/characters/proto-villager-neutral.png",
+      "sha": "0e41b0555e6fa99f8ff26092e51cc0146a60081a",
+      "bytes": 2038685
+    },
+    {
+      "path": "assets/ancient/characters/proto-warrior-neutral.png",
+      "sha": "4e4236bd003e10726a1aa8369492241525484e97",
+      "bytes": 1968020
+    },
+    {
+      "path": "assets/ancient/heroes/proto-kingdoms.jpg",
+      "sha": "126357616973d021d9435b442ec6becabf7757d0",
+      "bytes": 330235
+    },
+    {
+      "path": "assets/ancient/story/camp.svg",
+      "sha": "7c88f6eadd4f0e409516b3e174b55b6f377f4a3d",
+      "bytes": 1472
+    },
+    {
+      "path": "assets/ancient/story/crossroads.svg",
+      "sha": "949d5cf750b905b04e3a7b36cad23e5fc42faf4d",
+      "bytes": 1184
+    },
+    {
+      "path": "assets/ancient/story/grave.svg",
+      "sha": "e6f5499e9381e1a9f2f1db1d69186f4adf766d5f",
+      "bytes": 1170
+    },
+    {
+      "path": "assets/ancient/story/jolbon.svg",
+      "sha": "5d455d0835e7b840e1fbd4bd0e046ee520e106a6",
+      "bytes": 1677
+    },
+    {
+      "path": "assets/ancient/story/jumong-birth.svg",
+      "sha": "1fdac416a2b26e4416ac54f4eaadf9cd16d39f22",
+      "bytes": 1237
+    },
+    {
+      "path": "assets/ancient/story/map.svg",
+      "sha": "bebda4a4203ae79a8835889295ac042628365210",
+      "bytes": 1600
+    },
+    {
+      "path": "assets/ancient/story/ritual.svg",
+      "sha": "4b1ed249a2712066fdae792b27a2afdd100b5968",
+      "bytes": 1692
+    },
+    {
+      "path": "assets/ancient/story/sodo.svg",
+      "sha": "8cebf41dd057fb38370d956e7d9c109c97e0e9c5",
+      "bytes": 1363
+    },
+    {
+      "path": "assets/ancient/story/village.svg",
+      "sha": "0eb8916df4b36ebc7ce2c77373f57ee392d3fc0f",
+      "bytes": 1745
+    },
+    {
+      "path": "assets/ancient/story/wagon.svg",
+      "sha": "6fa27480179257dab60f02252fbdb5a496097bfb",
+      "bytes": 1333
+    },
+    {
+      "path": "assets/ancient/story/workshop.svg",
+      "sha": "899bff99a4702a2d9083fca6257b0c3526c18dad",
+      "bytes": 1487
+    }
+  ],
+  "retainedShared": [
+    "proto-forest-road.jpg",
+    "proto-goguryeo-fortress.jpg",
+    "rebuild-byeonhan-workshop.webp",
+    "rebuild-forest-camp.webp",
+    "rebuild-goguryeo-council.webp",
+    "rebuild-jumong-birth.webp",
+    "rebuild-wagon.webp"
+  ]
+}

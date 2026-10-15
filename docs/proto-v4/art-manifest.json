@@ -1,0 +1,212 @@
+[
+  {
+    "id": "player",
+    "path": "media/proto-v4/player.webp",
+    "width": 768,
+    "height": 1152,
+    "alpha": true,
+    "bytes": 75186,
+    "sha256": "946669a27a3128ec996e2542ed3721d89ad9c8af7a7016d480414c39a2eb5cc4",
+    "style": "2D anime, clean linework, cel shading"
+  },
+  {
+    "id": "naru",
+    "path": "media/proto-v4/naru.webp",
+    "width": 768,
+    "height": 1152,
+    "alpha": true,
+    "bytes": 92286,
+    "sha256": "1acf114e70c0c2a0e34a5889f33d9839f66fddb5bc7119871b16d544b22ab9a4",
+    "style": "2D anime, clean linework, cel shading"
+  },
+  {
+    "id": "sibling",
+    "path": "media/proto-v4/sibling.webp",
+    "width": 768,
+    "height": 1152,
+    "alpha": true,
+    "bytes": 94298,
+    "sha256": "d86c0a11d178a350c82b84bbfd120632c5d1be5d8ede7219e7e98e8c666e2e83",
+    "style": "2D anime, clean linework, cel shading"
+  },
+  {
+    "id": "buyeo-village",
+    "path": "media/proto-v4/buyeo-village.webp",
+    "width": 1536,
+    "height": 1024,
+    "alpha": false,
+    "bytes": 440652,
+    "sha256": "ababe93c62d00bf7632106fd25c9ed15100bf1bb0f7fd6e45e8edd7e91142734",
+    "style": "2D anime, clean linework, cel shading"
+  },
+  {
+    "id": "buyeo-ritual",
+    "path": "media/proto-v4/buyeo-ritual.webp",
+    "width": 1536,
+    "height": 1024,
+    "alpha": false,
+    "bytes": 447446,
+    "sha256": "63f796a37d2f16ba9273f68d039b66613c72b4f49fa437a415505d023045116c",
+    "style": "2D anime, clean linework, cel shading"
+  },
+  {
+    "id": "goguryeo-village",
+    "path": "media/proto-v4/goguryeo-village.webp",
+    "width": 1536,
+    "height": 1024,
+    "alpha": false,
+    "bytes": 517410,
+    "sha256": "3c0bc9f6ca104ea1eae35c49cfd6e6d46b3a4a5a62e8264178d7f446cbfc938b",
+    "style": "2D anime, clean linework, cel shading"
+  },
+  {
+    "id": "goguryeo-house",
+    "path": "media/proto-v4/goguryeo-house.webp",
+    "width": 1536,
+    "height": 1024,
+    "alpha": false,
+    "bytes": 480956,
+    "sha256": "68fca2de356ab1e2f505693fea1bfaeb38dcc6e8e4e67078b332544d67e025ef",
+    "style": "2D anime, clean linework, cel shading"
+  },
+  {
+    "id": "okjeo-coast",
+    "path": "media/proto-v4/okjeo-coast.webp",
+    "width": 1536,
+    "height": 1024,
+    "alpha": false,
+    "bytes": 449864,
+    "sha256": "5ce08c9440fc6bfdcd9a3672aa2a8a680b65bc03f64a4fa1c5d4cbeb89cf5687",
+    "style": "2D anime, clean linework, cel shading"
+  },
+  {
+    "id": "okjeo-house",
+    "path": "media/proto-v4/okjeo-house.webp",
+    "width": 1536,
+    "height": 1024,
+    "alpha": false,
+    "bytes": 406106,
+    "sha256": "8384622f2f6ce2164e0d10dc17e1e3c100de422adc77e430ab24d575f753799a",
+    "style": "2D anime, clean linework, cel shading"
+  },
+  {
+    "id": "okjeo-tomb",
+    "path": "media/proto-v4/okjeo-tomb.webp",
+    "width": 1536,
+    "height": 1024,
+    "alpha": false,
+    "bytes": 398406,
+    "sha256": "6b2bc750525fb4def9ad9b60826b334ff49bec756729869145e77d166eddb4eb",
+    "style": "2D anime, clean linework, cel shading"
+  },
+  {
+    "id": "dongye-boundary",
+    "path": "media/proto-v4/dongye-boundary.webp",
+    "width": 1536,
+    "height": 1024,
+    "alpha": false,
+    "bytes": 508410,
+    "sha256": "cb74f196c86cbff743e184108ed03080284210f331fa569fdb90402476072254",
+    "style": "2D anime, clean linework, cel shading"
+  },
+  {
+    "id": "dongye-village",
+    "path": "media/proto-v4/dongye-village.webp",
+    "width": 1536,
+    "height": 1024,
+    "alpha": false,
+    "bytes": 362912,
+    "sha256": "968317c553ba1eda9ed09d058f3db17fab51e2bec900609e4ed1ac8a3c014f50",
+    "style": "2D anime, clean linework, cel shading"
+  },
+  {
+    "id": "samhan-sodo",
+    "path": "media/proto-v4/samhan-sodo.webp",
+    "width": 1536,
+    "height": 1024,
+    "alpha": false,
+    "bytes": 435810,
+    "sha256": "b12e0345bb14db2fb46f4772c4e48ceaf18cade99d47cf33257829805806c022",
+    "style": "2D anime, clean linework, cel shading"
+  },
+  {
+    "id": "samhan-farm",
+    "path": "media/proto-v4/samhan-farm.webp",
+    "width": 1536,
+    "height": 1024,
+    "alpha": false,
+    "bytes": 505974,
+    "sha256": "a4e53244e5024f7283c71d7925f93266acc549fe6b35304561e3aa5df9c132c4",
+    "style": "2D anime, clean linework, cel shading"
+  },
+  {
+    "id": "byeonhan-port",
+    "path": "media/proto-v4/byeonhan-port.webp",
+    "width": 1536,
+    "height": 1024,
+    "alpha": false,
+    "bytes": 456774,
+    "sha256": "d4b0dbae372bb5611ff0f55581449bb16ca9d6aeb0433216daf56b477e020db0",
+    "style": "2D anime, clean linework, cel shading"
+  },
+  {
+    "id": "elder",
+    "path": "media/proto-v4/elder.webp",
+    "width": 768,
+    "height": 1152,
+    "alpha": true,
+    "bytes": 77930,
+    "sha256": "598aba2e2841906ee16a0c7b433e07a80595e73712aee02981f18a50aa2e1a4b",
+    "style": "2D anime, clean linework, cel shading"
+  },
+  {
+    "id": "merchant",
+    "path": "media/proto-v4/merchant.webp",
+    "width": 768,
+    "height": 1152,
+    "alpha": true,
+    "bytes": 95038,
+    "sha256": "9427756d07c6d85a7ab97c64cc5533984efc03a20a2eae2ff8497103d4382b65",
+    "style": "2D anime, clean linework, cel shading"
+  },
+  {
+    "id": "worker",
+    "path": "media/proto-v4/worker.webp",
+    "width": 768,
+    "height": 1152,
+    "alpha": true,
+    "bytes": 111104,
+    "sha256": "6dbbff318a79243ac642d0edbac4982644838ca7cc97c5a016515236c7ca4880",
+    "style": "2D anime, clean linework, cel shading"
+  },
+  {
+    "id": "woman",
+    "path": "media/proto-v4/woman.webp",
+    "width": 768,
+    "height": 1152,
+    "alpha": true,
+    "bytes": 76788,
+    "sha256": "5e3386a5ce75f6c234c0ded363add582840a992074baec1a7fcab0b123914b45",
+    "style": "2D anime, clean linework, cel shading"
+  },
+  {
+    "id": "girl",
+    "path": "media/proto-v4/girl.webp",
+    "width": 768,
+    "height": 1152,
+    "alpha": true,
+    "bytes": 76694,
+    "sha256": "4049045af6982923bc67fedbb2deeac0a3cf8fc3d777d2b6b425727b6ed771a1",
+    "style": "2D anime, clean linework, cel shading"
+  },
+  {
+    "id": "priest",
+    "path": "media/proto-v4/priest.webp",
+    "width": 768,
+    "height": 1152,
+    "alpha": true,
+    "bytes": 84894,
+    "sha256": "6d4690c59dc2652d2d1581a59a6bd05fabb27f77282c35b8fcc8d7377283783e",
+    "style": "2D anime, clean linework, cel shading"
+  }
+]

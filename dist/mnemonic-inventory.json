@@ -6438,14 +6438,11 @@
         "official-64-basic-02"
       ],
       "relatedSceneIds": [
-        "proto_ch07_s2",
-        "proto_ch01_s2",
-        "proto_ch02_s1",
+        "proto_ch01_s1",
         "three_ch06_s1",
         "proto_ch02_s3",
-        "proto_ch03_s1",
-        "proto_ch05_s1",
-        "proto_ch04_s2"
+        "proto_ch04_s4",
+        "proto_ch04_s3"
       ],
       "linkEvidence": [
         {
@@ -8187,9 +8184,7 @@
         "official-64-advanced-27",
         "official-67-basic-28"
       ],
-      "relatedSceneIds": [
-        "proto_ch07_s2"
-      ],
+      "relatedSceneIds": [],
       "linkEvidence": [
         {
           "source": "dist/official-exam-explanations.json",
@@ -33220,7 +33215,6 @@
         "official-58-advanced-12"
       ],
       "relatedSceneIds": [
-        "proto_ch07_s2",
         "three_ch02_s2"
       ],
       "linkEvidence": [
@@ -55554,7 +55548,7 @@
         "official-58-basic-39"
       ],
       "relatedSceneIds": [
-        "proto_ch02_s1"
+        "proto_ch01_s2"
       ],
       "linkEvidence": [
         {

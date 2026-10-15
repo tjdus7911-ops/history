@@ -5,8 +5,7 @@ const ANCIENT_EXPRESSIONS=['neutral','smile','surprised','embarrassed','suspicio
 const ancientAssetId=name=>`ancient-bg-${name}`;
 const ANCIENT_BACKGROUNDS={
  'ancient-modern-museum':'ancient-modern-museum.jpg',
- 'proto-forest-road':'proto-forest-road.jpg','proto-buyeo-village':'proto-buyeo-village.jpg','proto-goguryeo-fortress':'proto-goguryeo-fortress.jpg',
- 'proto-okjeo-coast':'proto-okjeo-coast.jpg','proto-dongye-boundary':'proto-dongye-boundary.jpg','proto-samhan-market':'proto-samhan-market.jpg',
+ 'proto-goguryeo-fortress':'proto-goguryeo-fortress.jpg',
  'three-border-market':'three-border-market.jpg','three-han-river':'three-han-river.jpg','three-gaya-workshop':'three-gaya-workshop.jpg',
  'three-sabi-fortress':'three-sabi-fortress.jpg','three-pyongyang-fortress':'three-pyongyang-fortress.jpg',
  'three-unified-capitals':'three-unified-capitals.jpg','three-balhae-harbor':'three-balhae-harbor.jpg'
@@ -15,29 +14,21 @@ Object.entries(ANCIENT_BACKGROUNDS).forEach(([name,file])=>{
  ASSETS[ancientAssetId(name)]={id:ancientAssetId(name),label:`고대편 ${name} 역사 장면`,src:`assets/ancient/backgrounds/${file}`,imageKind:'story-background',embeddedCharacters:false};
 });
 
-const ancientPlayerFiles={proto:'proto-player',three:'three-player'};
+const ancientPlayerFiles={three:'three-player'};
 Object.entries(ancientPlayerFiles).forEach(([season,prefix])=>{
  PORTRAITS[`${season}_modern_neutral`]={characterId:`${season}_modern`,expression:'neutral',label:`${season}편 주인공 · 현대복`,src:`assets/ancient/characters/${prefix}-modern.png`};
  ANCIENT_EXPRESSIONS.forEach(expression=>PORTRAITS[`${season}_player_${expression}`]={characterId:`${season}_player`,expression,label:`${season}편 주인공 · ${expression}`,src:`assets/ancient/characters/${prefix}-${expression}.png`});
 });
-const ancientNpcFiles={
- proto_guide:'proto-guide-neutral.png',proto_warrior:'proto-warrior-neutral.png',proto_villager:'proto-villager-neutral.png',proto_priest:'proto-priest-neutral.png'
-};
+const ancientNpcFiles={};
 Object.entries(ancientNpcFiles).forEach(([characterId,file])=>ANCIENT_EXPRESSIONS.forEach(expression=>{
  PORTRAITS[`${characterId}_${expression}`]={characterId,expression,label:`고대편 조력자 · ${characterId}`,src:`assets/ancient/characters/${file}`};
 }));
 Object.assign(CHARACTERS,{
- proto_modern:{characterId:'proto_modern',characterName:'나',speakerType:'player',position:'right',show:true,presentation:'standing',portraitPrefix:'proto_modern'},
- proto_player:{characterId:'proto_player',characterName:'나',speakerType:'player',position:'right',show:true,presentation:'standing',portraitPrefix:'proto_player'},
- proto_guide:{characterId:'proto_guide',characterName:'기억 안내자 단',speakerType:'npc',position:'left',show:true,presentation:'standing',portraitPrefix:'proto_guide'},
- proto_warrior:{characterId:'proto_warrior',characterName:'고구려 수비대 청년',speakerType:'npc',position:'left',show:true,presentation:'standing',portraitPrefix:'proto_warrior'},
- proto_villager:{characterId:'proto_villager',characterName:'동해안 마을 사람',speakerType:'npc',position:'left',show:true,presentation:'standing',portraitPrefix:'proto_villager'},
- proto_priest:{characterId:'proto_priest',characterName:'삼한의 천군',speakerType:'npc',position:'left',show:true,presentation:'standing',portraitPrefix:'proto_priest'},
  three_modern:{characterId:'three_modern',characterName:'나',speakerType:'player',position:'right',show:true,presentation:'standing',portraitPrefix:'three_modern'},
  three_player:{characterId:'three_player',characterName:'나',speakerType:'player',position:'right',show:true,presentation:'standing',portraitPrefix:'three_player'}
 });
 
-const ancientMainProfiles={proto_modern:1.68,proto_player:1.68,three_modern:1.68,three_player:1.68,proto_guide:1.62,proto_warrior:1.6,proto_villager:1.62,proto_priest:1.62};
+const ancientMainProfiles={three_modern:1.68,three_player:1.68};
 if(typeof CHARACTER_RENDER_PROFILES!=='undefined')Object.assign(CHARACTER_RENDER_PROFILES.characters,Object.fromEntries(Object.entries(ancientMainProfiles).map(([id,scale])=>[id,{tier:'MAIN',scale,anchorX:0,anchorY:15,framing:'upper-body',lockStateScale:true}])));
 
 const aN=text=>dialogueLine('narrator','neutral',text,'narration');
@@ -45,37 +36,6 @@ const aP=(season,text,expression='neutral')=>dialogueLine(`${season}_player`,exp
 const aC=(id,text,expression='neutral',name=null)=>dialogueLine(id,expression,text,'npc',name);
 const ancientChapterId=(season,n)=>`${season}-ch${String(n).padStart(2,'0')}`;
 const ancientSceneId=(season,n,i)=>`${season}_ch${String(n).padStart(2,'0')}_s${i}`;
-
-const PROTO_BLUEPRINTS=[
- {n:1,title:'다섯 나라의 길',subtitle:'연맹 왕국과 읍락 사회',years:'기원전 1세기 — 1세기',beats:[
-  ['나라가 하나가 아니었다',-50,'북방 교역로','proto-forest-road','proto_guide','한나라 군현 주변의 여러 집단은 각자의 군장과 읍락을 중심으로 움직였다.','왜 같은 시대인데 나라의 모습이 이렇게 다르죠?','왕 아래 여러 세력이 나뉘어 다스리는 연맹 왕국과 읍락 사회가 함께 존재했다.'],
-  ['환경이 만든 생활',20,'압록강과 동해안으로 갈라지는 길','proto-forest-road','proto_guide','북쪽 평야·산간·해안·남쪽 논농사 지대의 환경이 생산과 교역 방식을 달리했다.','풍습만 외우면 자꾸 섞였는데, 삶의 터전부터 봐야겠네요.','부여·고구려·옥저·동예·삼한은 정치 구조뿐 아니라 경제와 혼인·장례 풍습도 달랐다.'],
-  ['기억의 지도',50,'여러 나라로 이어지는 갈림길','proto-forest-road','proto_guide','길잡이는 다섯 갈래 길에 제천 행사와 특산물, 정치 구조를 표시했다.','나라 이름과 단서를 한 장면씩 연결해 볼게요.','이후 챕터는 북쪽 부여에서 남쪽 삼한까지 공간 순서로 이어진다.']]},
- {n:2,title:'부여, 넓은 들의 나라',subtitle:'사출도·영고·순장',years:'1세기',beats:[
-  ['왕과 네 갈래 땅',50,'부여의 넓은 평야 마을','proto-buyeo-village','proto_guide','왕 아래 마가·우가·저가·구가가 있었고, 여러 가는 사출도를 따로 다스렸다.','왕이 있어도 각 가의 힘이 컸던 거군요.','부여는 왕권이 강한 중앙 집권 국가가 아니라 여러 세력이 결합한 연맹 왕국이었다.'],
-  ['겨울의 영고',50,'부여의 제천 행사 준비터','proto-buyeo-village','proto_guide','12월이면 하늘에 제사를 지내는 영고를 열어 공동체의 결속을 다졌다.','12월 영고, 부여. 장소와 계절까지 같이 기억할게요.','부여의 영고·고구려의 동맹·동예의 무천은 나라별 제천 행사를 가르는 핵심 단서다.'],
-  ['풍습과 계층',50,'부여 취락의 장례 준비터','proto-buyeo-village','proto_guide','형사취수제와 순장 풍습은 당시 가족 질서와 지배층의 권력을 보여 주었다.','풍습을 현대 기준으로 꾸미지 말고 사료의 단서로 봐야겠어요.','소를 죽여 굽으로 점을 치는 우제점법도 부여를 식별하는 단서다.']]},
- {n:3,title:'초기 고구려, 산성의 나라',subtitle:'제가 회의·서옥제·동맹',years:'1세기',beats:[
-  ['산과 골짜기의 선택',60,'압록강 중류 산성 아래','proto-goguryeo-fortress','proto_warrior','산지가 많은 고구려는 부족한 곡식을 주변 지역과의 교역·정복으로 보완했다.','환경이 대외 활동의 방향에도 영향을 주었군요.','초기 고구려는 졸본에서 국내성으로 중심을 옮기며 압록강 유역에서 성장했다.'],
-  ['제가 회의',60,'고구려 성 안 회의터','proto-goguryeo-fortress','proto_warrior','왕과 대가들이 함께 중대한 일을 논의하는 제가 회의가 열렸다.','왕 혼자 결정하는 중앙 집권 체제와는 다르네요.','제가 회의는 여러 집단의 결합이라는 초기 국가의 성격을 보여 준다.'],
-  ['서옥제와 동맹',60,'고구려 취락과 제천 터','proto-goguryeo-fortress','proto_warrior','혼인 뒤 신랑이 신부 집 뒤 서옥에서 지내는 풍습과 10월 동맹이 이어졌다.','서옥제와 10월 동맹을 같은 장면으로 기억할게요.','가족 풍습과 제천 행사는 고구려를 다른 초기 국가와 구별하는 대표 단서다.']]},
- {n:4,title:'옥저, 바다와 산 사이',subtitle:'민며느리제·가족 공동 무덤·공납',years:'1세기',beats:[
-  ['해산물과 소금',70,'함경도 동해안의 옥저 마을','proto-okjeo-coast','proto_villager','바다와 비옥한 땅에서 소금·해산물·곡식이 났지만 강한 왕권은 형성되지 못했다.','풍요로운 생산과 정치적 힘은 꼭 같지 않았군요.','옥저의 읍락들은 고구려의 압력을 받아 특산물을 공납하기도 했다.'],
-  ['민며느리제',70,'옥저 마을의 혼인 약속 자리','proto-okjeo-coast','proto_villager','어린 신부가 될 아이를 미리 신랑 집에서 길러 혼인하는 민며느리제가 있었다.','현대의 기준으로 미화하지 않고 당시 혼인 풍습으로 구분할게요.','민며느리제는 옥저를 식별하는 대표 혼인 풍습이다.'],
-  ['가족 공동 무덤',70,'옥저 마을 밖 장례 터','proto-okjeo-coast','proto_villager','시신을 임시로 묻었다가 뼈를 추려 가족 공동 무덤에 함께 안치했다.','한 가족의 뼈를 한 곽에 모셨다는 단서군요.','골장제와 가족 공동 무덤은 옥저의 장례 풍습을 보여 준다.']]},
- {n:5,title:'동예, 경계를 지키는 마을',subtitle:'책화·무천·특산물',years:'1세기',beats:[
-  ['읍락의 경계',80,'동예의 들과 산 경계','proto-dongye-boundary','proto_villager','다른 읍락의 경계를 침범하면 노비·소·말로 갚게 하는 책화가 적용됐다.','경계를 중시한 생활 질서가 법에 드러났네요.','책화는 읍락의 독립성과 공동체 영역을 중시한 동예의 풍습이다.'],
-  ['10월의 무천',80,'동예의 제천 행사 터','proto-dongye-boundary','proto_villager','10월이면 무천을 열어 하늘에 제사하고 노래와 춤으로 결속을 다졌다.','10월 동맹은 고구려, 10월 무천은 동예로 구분할게요.','행사 달이 같아도 이름과 나라를 함께 묶어야 한다.'],
-  ['단궁·과하마·반어피',80,'동예 교역 길목','proto-dongye-boundary','proto_villager','작은 말 과하마, 단궁, 바다표범 가죽 반어피가 교역품으로 모였다.','특산물 세 가지가 동예 문제의 빠른 단서가 되겠어요.','단궁·과하마·반어피는 동예와 연결되는 대표 특산물이다.']]},
- {n:6,title:'삼한, 소도와 철의 길',subtitle:'마한·진한·변한·천군',years:'2세기',beats:[
-  ['쉰네 나라의 연맹',150,'삼한의 논과 시장','proto-samhan-market','proto_priest','마한·진한·변한의 여러 소국은 큰 연맹을 이루었지만 통일된 왕권은 없었다.','삼한 안에도 다시 여러 소국이 있었군요.','마한의 목지국이 연맹을 주도했고, 진한·변한에도 여러 소국이 있었다.'],
-  ['천군과 소도',150,'삼한의 소도 경계','proto-samhan-market','proto_priest','정치 지도자와 별개로 천군이 제사를 맡았고 소도는 신성 지역으로 보호됐다.','정치와 제사가 분리된 모습이 핵심이네요.','천군·소도는 삼한의 제정 분리를 보여 주는 대표 단서다.'],
-  ['철과 벼농사',150,'변한과 낙랑을 잇는 시장','proto-samhan-market','proto_priest','벼농사가 발달했고 변한의 철은 낙랑과 왜로 수출되며 덩이쇠가 교환 수단으로 쓰였다.','경제 단서까지 붙이니 삼한의 모습이 선명해져요.','두레 같은 공동 노동과 계절제도 농경 사회의 특징을 보여 준다.']]},
- {n:7,title:'연맹에서 삼국으로',subtitle:'비교 정리·백제·신라·가야의 성장',years:'2세기 — 4세기',beats:[
-  ['다섯 나라 비교',180,'남북 교역로의 기록소','proto-forest-road','proto_guide','영고·동맹·무천, 민며느리제·책화·소도를 한 장의 비교표에 놓았다.','비슷한 단서를 나라·계절·생활과 함께 구분하겠어요.','환경·정치 구조·제천 행사·혼인과 장례를 같은 기준으로 비교하면 혼동이 줄어든다.'],
-  ['소국의 재편',250,'한강과 낙동강으로 이어지는 길','proto-samhan-market','proto_guide','마한에서는 백제가, 진한에서는 신라가, 변한에서는 가야 연맹이 성장했다.','작은 나라들의 변화가 다음 시즌의 세 나라와 가야로 이어지는군요.','여러 소국은 경쟁과 통합을 거치며 삼국과 가야의 기반이 됐다.'],
-  ['다음 시대의 문',350,'산성과 강이 만나는 시간의 경계','proto-goguryeo-fortress','proto_guide','고구려·백제·신라는 율령과 관등, 군사 조직을 정비하며 중앙 집권 국가로 성장했다.','연맹의 길을 지나 이제 왕들이 영토를 다투는 시대로 가요.','원삼국의 사회 구조를 이해하면 삼국 성장의 출발점을 연결할 수 있다.']]}
-];
 
 const THREE_BLUEPRINTS=[
  {n:1,title:'성장하는 고구려',subtitle:'진대법·불교·율령·태학',years:'194 — 4세기',beats:[
@@ -146,7 +106,6 @@ function createAncientIntro(season,title,year,location,background,npc){
  STORIES[`${prefix}_complete`]=scene({sceneId:`${prefix}_complete`,chapterId:id,eraId:CHAPTERS[id].eraId,year,location,title:'첫 기록 완료',illustrationId:ancientAssetId(background),dialogues:[aN('현재 위치와 시대, 이동 규칙을 확인했다.'),dialogueLine(player,'determined','첫 번째 역사 장면으로 간다.','player')],completeChapter:true});
 }
 
-createAncientIntro('proto','고조선 멸망 전후의 여러 나라',-50,'북방 교역로','proto-forest-road','proto_guide');
 createAncientIntro('three','삼국이 성장하던 길목',194,'삼국의 경계 시장','three-border-market','three_companion');
 
 function installAncientBlueprints(season,eraId,blueprints){
@@ -161,11 +120,9 @@ function installAncientBlueprints(season,eraId,blueprints){
   STORIES[completeId]=scene({sceneId:completeId,chapterId:id,eraId,year:last[1],location:last[2],title:`CH.${String(ch.n).padStart(2,'0')} 기억 완료`,illustrationId:ancientAssetId(last[3]),dialogues:[aN(`${ch.title}의 원인·전개·결과와 시험 단서를 한 흐름으로 연결했다.`),aP(season,'원본 기출 이미지의 자료와 선택지를 다시 확인해 두자.','relieved')],completeChapter:true});
  });
 }
-installAncientBlueprints('proto','proto-kingdoms',PROTO_BLUEPRINTS);
 installAncientBlueprints('three','three-kingdoms',THREE_BLUEPRINTS);
 
 const ANCIENT_OFFICIAL_MAP=[
- ['proto',1,2,'official-60-advanced-02','연맹 왕국·사출도'],['proto',2,3,'official-57-advanced-03','서옥제'],['proto',3,3,'official-66-advanced-02','옥저·민며느리제'],['proto',4,2,'official-63-advanced-02','동예·무천'],['proto',5,2,'official-61-advanced-02','삼한·소도'],['proto',6,1,'official-69-advanced-03','초기 국가 비교'],['proto',7,2,'official-58-basic-04','삼국 성장과 한강'],
  ['three',1,2,'official-65-advanced-05','소수림왕'],['three',2,2,'official-58-advanced-03','장수왕의 남진'],['three',3,2,'official-61-basic-05','백제·22담로'],['three',4,3,'official-67-basic-05','진흥왕·화랑도'],['three',5,1,'official-62-advanced-03','가야·덩이쇠'],['three',6,1,'official-57-basic-05','나제 동맹'],['three',7,3,'official-68-advanced-05','안시성'],['three',8,3,'official-59-advanced-03','백제 멸망'],['three',9,1,'official-69-advanced-05','연개소문'],['three',10,3,'official-58-basic-07','기벌포 전투'],['three',11,3,'official-58-advanced-07','촌락 문서'],['three',12,1,'official-58-basic-08','발해 건국'],['three',13,1,'official-62-advanced-09','장보고·청해진']
 ];
 const ancientSourceById=new Map((globalThis.OFFICIAL_EXAM_SOURCE_RECORDS||[]).map(record=>[record.officialQuestionId,record]));

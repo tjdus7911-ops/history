@@ -4,7 +4,7 @@ if(globalThis.STORY_EXAM_POLICY&&globalThis.THREE_STORY_RUNTIME){
  const groups=new Map();for(const row of policy.placements){const rows=groups.get(row.sceneId)||[];rows.push(row);groups.set(row.sceneId,rows);}
  const placementQuestion=row=>QUESTIONS.find(q=>q.questionId===row.questionId)||(row.era==='proto'?proto?.questionByOfficialId?.get(row.officialQuestionId):row.era==='three'?three.questionByOfficialId?.get(row.officialQuestionId):QUESTIONS.find(q=>q.officialQuestionId===row.officialQuestionId));
  for(const item of policy.supplements){
-  const placement=policy.placements.find(row=>row.officialQuestionId===item.officialQuestionId&&row.questionId===item.questionId);if(!placement)continue;
+  const placement=policy.placements.find(row=>row.officialQuestionId===item.officialQuestionId&&row.questionId===item.questionId);if(!placement||placement.era==='proto')continue;
   const source=STORIES[placement.sceneId],isThree=placement.era==='three',options=Array.from({length:item.choiceCount},(_,i)=>(i+1)+'번');
   const q=question({...item,questionId:item.questionId,chapterId:source.chapterId,relatedSceneId:source.sceneId,relatedIllustrationId:source.illustrationId,resumeStoryId:source.sceneId,
    question:item.question,sourceQuestionText:item.question,choices:options,sourceChoices:options,acceptedAnswers:[item.answer],examType:'한국사능력검정시험 '+item.examLevel+' 기출',difficulty:item.examLevel,

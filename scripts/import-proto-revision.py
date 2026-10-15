@@ -1,154 +1,98 @@
-#!/usr/bin/env python3
-"""Install the approved five-scene Proto story and verified official questions."""
-from pathlib import Path
-import argparse
-import hashlib
-import json
-
-ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / 'docs/proto-revision/눈떠보니원삼국_개정게임데이터.json'
-EXPECTED_SHA = '13f950c903028d8ae17d74e28eb62d8416f15dc33b84986b921a8c7fb981b4f9'
-LEGACY_QUESTIONS = ROOT / 'docs/proto-revision/legacy-study-questions.json'
-LEGACY_SHA = '32b3abdec10a4e359a8935c76dec0725d7780b61d4e118395e02baa7e130e016'
-
-
-def verify(data):
-    chapters = data['chapters']
-    scenes = [scene for chapter in chapters for scene in chapter['scenes']]
-    assert len(chapters) == 5 and len(scenes) == 5
-    assert [chapter['chapterNumber'] for chapter in chapters] == [2, 3, 4, 5, 6]
-    assert len({scene['sceneId'] for scene in scenes}) == 5
-    by_id = {scene['sceneId']: scene for scene in scenes}
-    all_lines, all_line_ids = [], set()
-    learning_ids = {item['id'] for item in data['learning']}
-    assert len(learning_ids) == 31
-    all_scene_ids = {scene['sceneId'] for scene in scenes}
-    assert all(item['firstSceneId'] in all_scene_ids for item in data['learning'])
-    assert all(set(item['sceneIds']) <= all_scene_ids for item in data['learning'])
-    for index, scene in enumerate(scenes):
-        assert scene['country'] and scene['place'] and scene['location']
-        assert scene['nextSceneId'] == (scenes[index + 1]['sceneId'] if index + 1 < len(scenes) else None)
-        assert scene['choices'] == []
-        assert scene['learning'] and all(item['id'] in learning_ids for item in scene['learning'])
-        assert all(item['firstSceneId'] in all_scene_ids for item in scene['learning'])
-        lines = [*scene['main'], *scene['join']]
-        all_lines.extend(lines)
-        for line in lines:
-            assert isinstance(line.get('learningKeywordIds'), list)
-            assert set(line['learningKeywordIds']) <= learning_ids
-            assert line['lineId'] not in all_line_ids
-            all_line_ids.add(line['lineId'])
-        line_by_id = {line['lineId']: line for line in lines}
-        assert set(scene['keyDialogueLineIds']) == {line['lineId'] for line in lines if line['learningKeywordIds']}
-        assert all(entry['text'] == line_by_id[entry['lineId']]['text'] for entry in scene['keyDialogues'])
-        assert {entry['lineId'] for entry in scene['keyDialogues']} == set(scene['keyDialogueLineIds'])
-        assert set(scene['learningIds'] if 'learningIds' in scene else [item['id'] for item in scene['learning']]) <= learning_ids
-
-    text_by_country = {
-        scene['country']: '\n'.join(line['text'] for line in [*scene['main'], *scene['join']])
-        for scene in scenes
-    }
-    required = {
-        '부여': ['5부족 연맹체', '사출도', '영고', '12월', '1책 12법'],
-        '고구려': ['5부족 연맹체', '연맹왕국', '동맹', '10월', '서옥제', '1책 12법'],
-        '옥저': ['읍군·삼로', '민며느리제', '가족 공동 무덤', '소금', '어물'],
-        '동예': ['읍군·삼로', '무천', '10월', '족외혼', '책화', '단궁', '과하마', '반어피'],
-        '삼한': ['소도', '천군', '계절제', '10월', '두레', '철', '수출'],
-    }
-    for country, keywords in required.items():
-        for keyword in keywords:
-            assert keyword in text_by_country[country], f'{country}: missing spoken keyword {keyword}'
-
-    questions, queues = data['examPlan']['questions'], data['examPlan']['queues']
-    assert len(questions) == 15 and len(queues) == 5
-    ids = [question['officialQuestionId'] for question in questions]
-    assert len(set(ids)) == 15
-    catalog = {question['officialQuestionId']: question for question in json.loads((ROOT / 'dist/official-exam-catalog.json').read_bytes())}
-    options = {question['officialQuestionId']: question for question in json.loads((ROOT / 'dist/official-exam-choices.json').read_bytes())['records']}
-    explanations = {question['officialQuestionId']: question for question in json.loads((ROOT / 'dist/official-exam-explanations.json').read_bytes())['records']}
-    question_by_id = {question['officialQuestionId']: question for question in questions}
-    queue_ids = []
-    for queue in queues:
-        scene = by_id[queue['sceneId']]
-        last = (scene['join'] or scene['main'])[-1]
-        assert (queue['afterLineId'], queue['afterSpeaker'], queue['afterText']) == (last['lineId'], last['speaker'], last['text'])
-        assert queue['officialQuestionIds'] == scene['quizAfter']['officialQuestionIds']
-        assert len(queue['officialQuestionIds']) == queue['count'] == 3
-        queue_ids.extend(queue['officialQuestionIds'])
-    assert len(queue_ids) == 15 and set(queue_ids) == set(ids)
-    for question in questions:
-        official_id = question['officialQuestionId']
-        original, choice, detail = catalog[official_id], options[official_id], explanations[official_id]
-        assert question['proposed']['quizAfterSceneId'] in by_id
-        assert question['proposed']['quizAfterSceneId'] in question['proposed']['requiresReadSceneIds']
-        assert all(scene_id in by_id for scene_id in question['proposed']['requiresReadSceneIds'])
-        assert question['answerIndex0'] == original['answer']
-        assert question['answerNumber1'] == original['answer'] + 1
-        assert question['choiceCount'] == len(choice['choices']) == {'기본': 4, '심화': 5}[question['examLevel']]
-        assert len(detail['choiceExplanations']) == question['choiceCount']
-        assert question['examRound'] == original['examRound'] and question['examYear'] == original['examYear']
-        assert question['examLevel'] == original['examLevel'] and question['questionNumber'] == original['questionNumber']
-        assert question['questionImage'] == original['detailImage']
-        assert hashlib.sha256((ROOT / 'dist' / original['detailImage']).read_bytes()).hexdigest() == original['detailImageSha256']
-        assert question['questionImageSha256'] == original['detailImageSha256']
-        assert question['learningKeywordIds'] and set(question['learningKeywordIds']) <= learning_ids
-        assert question['proposed']['playExplanation'] == detail['explanation']
-        required_scenes = [by_id[scene_id] for scene_id in question['proposed']['requiresReadSceneIds']]
-        learned_ids = {keyword_id for scene in required_scenes for line in [*scene['main'], *scene['join']]
-                       for keyword_id in line['learningKeywordIds']}
-        assert all(keyword_id in learned_ids for keyword_id in question['learningKeywordIds'])
-
-    compatibility = data['saveCompatibility']
-    assert compatibility['previousContentVersion'] == 'proto-revision-83-v1'
-    assert set(compatibility['legacyCompletionMilestones']) == {
-        'proto_ch02_s5', 'proto_ch03_s13', 'proto_ch04_s5', 'proto_ch05_s7', 'proto_ch06_s7'
-    }
-    return {'contentVersion': data['contentVersion'], 'chapters': 5, 'scenes': 5,
-            'utterances': len(all_lines), 'learning': len(learning_ids), 'questions': 15,
-            'queues': 5, 'questionsPerQueue': 3, 'verifiedQuestionImages': 15,
-            'verifiedChoiceExplanationSets': 15}
-
-
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--check', action='store_true')
-    args = parser.parse_args()
-    raw = SOURCE.read_bytes()
-    assert hashlib.sha256(raw).hexdigest() == EXPECTED_SHA, 'Approved source identity changed'
-    data = json.loads(raw)
-    report = verify(data)
-    legacy_raw = LEGACY_QUESTIONS.read_bytes()
-    assert hashlib.sha256(legacy_raw).hexdigest() == LEGACY_SHA, 'Legacy question snapshot changed'
-    legacy = json.loads(legacy_raw)
-    assert legacy['sourceCommit'] == '585688d8f8032983cdc1acfe186838ef733849d7'
-    assert len(legacy['questions']) == 23
-    wrapper = '''/* Generated by scripts/import-proto-revision.py. Complete canonical input; do not edit. */
-const PROTO_REVISION_SOURCE_SHA256 = "''' + EXPECTED_SHA + '''";
-const PROTO_REVISION_SOURCE = ''' + raw.decode('utf-8').rstrip() + ''';
-const PROTO_STORY_SCRIPT = PROTO_REVISION_SOURCE.chapters.map(chapter => ({
-  number:chapter.chapterNumber, title:chapter.chapterTitle, arc:chapter.arc,
-  scenes:chapter.scenes.map(source => ({...source, background:source.background||source.location,
-    type:source.choices.length?'CHOICE':'STORY', dialogues:source.main,
-    choices:source.choices.map(choice => ({...choice,dialogues:choice.reply})),
-    checkpoint:source.quizAfter?{topic:source.learning.map(item=>item.id).join(" · ")}:null
-  }))
-}));
-const PROTO_EXAM_ASSIGNMENTS = PROTO_REVISION_SOURCE.examPlan.queues.map(queue => {
-  const match=queue.sceneId.match(/^proto_ch(\\d+)_s(\\d+)$/);
-  return [Number(match[1]),Number(match[2]),queue.officialQuestionIds.map(id=>id.replace(/^official-/,""))];
-});
-const PROTO_LEGACY_STUDY_QUESTIONS = ''' + json.dumps(legacy['questions'], ensure_ascii=False, indent=2) + ';\n'
-    outputs = {ROOT / 'dist/proto-story-script.json': raw,
-               ROOT / 'dist/proto-story-script.js': wrapper.encode('utf-8')}
-    for path, content in outputs.items():
-        if args.check:
-            actual = path.read_bytes().replace(b'\r\n', b'\n')
-            expected = content.replace(b'\r\n', b'\n')
-            assert actual == expected, 'Generated file differs: ' + str(path.relative_to(ROOT))
-        else:
-            path.write_bytes(content)
-    print(json.dumps({'mode': 'check' if args.check else 'write', 'canonicalSha256': EXPECTED_SHA, **report}, ensure_ascii=False))
-
-
-if __name__ == '__main__':
-    main()
+"""Deterministically import the complete attached manuscript, never synthesize dialogue or exams."""
+import re,json,hashlib,pathlib,sys
+ROOT=pathlib.Path(__file__).resolve().parents[1]
+source=ROOT/'docs/proto-v4/manuscript.md'
+text=source.read_text(); sha=hashlib.sha256(source.read_bytes()).hexdigest()
+cat={q['officialQuestionId']:q for q in json.loads((ROOT/'dist/official-exam-catalog.json').read_text())}
+supp=json.loads((ROOT/'docs/story-exams/supplement-60-basic.json').read_text())
+def find_rows(v):
+ if isinstance(v,dict):
+  if 'officialQuestionId' in v: yield v
+  for x in v.values(): yield from find_rows(x)
+ elif isinstance(v,list):
+  for x in v: yield from find_rows(x)
+for q in find_rows(supp):cat.setdefault(q['officialQuestionId'],q)
+circles='①②③④⑤'
+questions=[]
+for block in re.split(r'^#### 제',text,flags=re.M)[1:]:
+ block=block.split('\n### ')[0]
+ m=re.search(r'배치: (\d-\d) / ID: `(official-[^`]+)` / 정답: ([①②③④⑤])',block)
+ if not m:continue
+ scene,oid,answer=m.groups(); src=cat[oid]
+ pick=lambda key:re.search(r'^- '+key+r': (.+)$',block,re.M).group(1)
+ opts=re.findall(r'^  - ([①②③④⑤]) (.+?) → (.+)$',block,re.M)
+ assert len(opts) in [4,5],oid
+ q={**src,'officialQuestionId':oid,'question':pick('발문'),'clue':pick('자료 핵심'),'choices':[o[1] for o in opts],'choiceExplanations':[o[2] for o in opts], 'answerIndex0':circles.index(answer),'answerNumber1':circles.index(answer)+1,'choiceCount':len(opts),'sceneKey':scene,'learningKeywordIds':[], 'questionImage':re.search(r'원문 이미지 경로: `([^`]+)`',block).group(1).removeprefix('dist/'),'proposed':{'editorialFocusSummary':pick('배치 이유'),'requiresReadSceneIds':[],'playExplanation':pick('자료 핵심')+' 정답은 '+answer+' '+pick('정답 내용')}}
+ assert src.get('answer',q['answerIndex0'])==q['answerIndex0'],oid
+ q['questionImageSha256']=src.get('detailImageSha256',src.get('questionImageSha256',src.get('sourceImageSha256','')))
+ questions.append(q)
+assert len(questions)==26 and len({q['officialQuestionId'] for q in questions})==26
+bg=['buyeo-village','buyeo-ritual','buyeo-village','goguryeo-village','goguryeo-village','goguryeo-house','goguryeo-village','okjeo-coast','okjeo-house','okjeo-tomb','dongye-boundary','dongye-village','dongye-village','dongye-village','samhan-sodo','samhan-farm','byeonhan-port']
+chapters=[];learning=[];queues=[];i=0
+for ch in re.split(r'^## CH\.',text,flags=re.M)[1:]:
+ header=ch.splitlines()[0];num=int(header[:2]);title=header[3:].strip();country=title.split(' — ')[0]
+ chapter={'number':num,'chapterNumber':num,'title':title,'arc':'동생이 남긴 표식을 따라 '+country+'의 생활을 배운다.','scenes':[]}
+ for block in re.split(r'^### ',ch,flags=re.M)[1:]:
+  sm=re.match(r'(\d)-(\d)\. (.+)',block)
+  if not sm:continue
+  c,s,title=sm.groups();s=int(s);key=f'{c}-{s}';sid=f'proto_ch{int(c):02}_s{s}'
+  setup=re.search(r'^배경: (.+)',block,re.M).group(1)
+  body=block.split('실제 기출 연결')[0].splitlines()[2:]
+  outro=block.split('[문제 종료 뒤 마지막 대화]')[1].split('\n## ')[0] if '[문제 종료 뒤 마지막 대화]' in block else ''
+  sc={'number':s,'sceneId':sid,'title':title,'country':country,'period':'원삼국 시대','place':setup.split('. 핵심:')[0],'location':country+' · '+setup.split('. 핵심:')[0],'background':setup,'backgroundId':bg[i],'main':[],'choices':[],'join':[],'outro':[],'learning':[],'stageDirections':[]}
+  phase='main';target=sc['main'];direction='';counter=0;black=key=='1-1'
+  def line(speaker,raw):
+   global counter
+   counter+=1
+   emph=re.findall(r'\*\*(.+?)\*\*',raw)
+   return {'speaker':speaker,'text':raw.replace('**',''),'emphasis':emph,'lineId':sid+f'-l{counter:03}','learningKeywordIds':[],'stageDirection':direction,'blackout':black,'expression':'worried' if re.search('걱정|무서|미안|다치',raw) else 'smile' if re.search('고맙|좋아|웃|함께',raw) else 'neutral'}
+  for raw in body:
+   raw=raw.strip()
+   if not raw:continue
+   if raw.startswith('말 선택:'):phase='choice';continue
+   if raw.startswith('['):
+    direction=raw.strip('[]');sc['stageDirections'].append(direction)
+    if '차가운 들판' in direction:black=False
+    if raw.startswith('[합류'):phase='join';target=sc['join']
+    continue
+   m=re.match(r'([AB])\. “(.+)”',raw)
+   if m:
+    choice={'id':sid+'-'+m[1],'label':m[2].replace('**',''),'emphasis':re.findall(r'\*\*(.+?)\*\*',m[2]),'reply':[]}
+    sc['choices'].append(choice);target=choice['reply'];continue
+   m=re.match(r'(?:→ )?([^:]+): “(.+)”$',raw)
+   if m:target.append(line(*m.groups()));direction=''
+  for raw in outro.splitlines():
+   m=re.match(r'([^:]+): “(.+)”$',raw)
+   if m:sc['outro'].append(line(*m.groups()))
+   elif raw.startswith('['):sc['stageDirections'].append(raw.strip('[]'))
+  assert sc['main'] and sc['join'] and len(sc['choices'])==2,key
+  all_lines=sc['main']+sc['join']+sc['outro']+[l for c in sc['choices'] for l in c['reply']]
+  words=list(dict.fromkeys(w for l in all_lines for w in l['emphasis']))
+  # Repeat emphasis for every occurrence of a marked learning term, including unmarked repeats.
+  for n,w in enumerate(words):
+   topic={'id':sid+f'-k{n+1}','title':w,'keyword':w,'firstSceneId':sid,'sceneIds':[sid],'facts':list(dict.fromkeys(l['text'] for l in all_lines if w in l['text'])),'questionIds':[q['officialQuestionId'] for q in questions if q['sceneKey']==key]}
+   sc['learning'].append(topic);learning.append(topic)
+   for l in all_lines:
+    if len(w)>1 and w in l['text'] or w in l['emphasis']:l['emphasis']=list(dict.fromkeys(l['emphasis']+[w]));l['learningKeywordIds'].append(topic['id'])
+  queue={'sceneId':sid,'afterLineId':sc['join'][-1]['lineId'],'officialQuestionIds':[q['officialQuestionId'] for q in questions if q['sceneKey']==key],'targetCount':3}
+  queue['missingQuestionCount']=3-len(queue['officialQuestionIds']);queues.append(queue);sc['quizAfter']=queue
+  for q in questions:
+   if q['sceneKey']==key:q['learningKeywordIds']=[l['id'] for l in sc['learning']];q['proposed']['requiresReadSceneIds']=[sid]
+  chapter['scenes'].append(sc);i+=1
+ chapters.append(chapter)
+assert [len(c['scenes']) for c in chapters]==[3,4,3,4,3]
+scenes=[s for c in chapters for s in c['scenes']]
+for n,s in enumerate(scenes):s['nextSceneId']=scenes[n+1]['sceneId'] if n+1<len(scenes) else None
+terms={w for sc in scenes for section in ['main','join','outro'] for l in sc[section] for w in l['emphasis'] if len(w)>1}
+for sc in scenes:
+ for l in sc['main']+sc['join']+sc['outro']+[l for c in sc['choices'] for l in c['reply']]:
+  l['emphasis']=sorted(set(l['emphasis'])|{w for w in terms if w in l['text']},key=lambda w:(-len(w),w))
+ for choice in sc['choices']:choice['emphasis']=sorted(set(choice['emphasis'])|{w for w in terms if w in choice['label']},key=lambda w:(-len(w),w))
+out={'schemaVersion':2,'contentVersion':'proto-five-countries-17-scenes-v4','title':'눈떠보니 원삼국 — 동생이 남긴 길','sourcePath':'docs/proto-v4/manuscript.md','sourceSha256':sha,'saveCompatibility':{'previousContentVersion':'proto-compact-5-scenes-v2','previousSceneCounts':{},'legacyCompletionMilestones':{}},'chapters':chapters,'learning':learning,'examPlan':{'questions':questions,'queues':queues,'targetSlots':51,'unfilledSlots':25,'blockedCandidates':[{'officialQuestionId':'official-71-advanced-02','reason':'원본 이미지 하단 잘림; 미복구 문항 제외'}]},'counts':{'sceneCount':17,'mainChapterCount':5,'choiceSceneCount':17,'choiceAlternatives':34,'officialQuestions':26,'authoredUtterances':sum(len(s['main'])+len(s['join'])+len(s['outro'])+sum(len(c['reply']) for c in s['choices']) for s in scenes),'learningTopicCount':len(learning)}}
+payload=json.dumps(out,ensure_ascii=False,indent=2)+'\n'
+js='/* Generated from docs/proto-v4/manuscript.md; do not edit. */\nconst PROTO_REVISION_SOURCE_SHA256='+json.dumps(sha)+';\nconst PROTO_REVISION_SOURCE='+payload.strip()+';\nconst PROTO_STORY_SCRIPT=PROTO_REVISION_SOURCE.chapters;\nconst PROTO_LEGACY_STUDY_QUESTIONS=[];\n'
+for path,data in [('dist/proto-story-script.json',payload),('dist/proto-story-script.js',js)]:
+ p=ROOT/path
+ if '--check' in sys.argv:assert p.read_text()==data,path+' is stale'
+ else:p.write_text(data)
+print(json.dumps(out['counts'],ensure_ascii=False))
