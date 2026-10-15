@@ -3,7 +3,7 @@ const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),
 const phase=process.env.QA_PHASE||'after',out=path.resolve(process.env.QA_OUTPUT||'tmp/rev3',phase);
 const root=path.resolve('dist');
 const origin=JSON.parse(fs.readFileSync('config/deployment-asset-origin.json','utf8'));
-const server=http.createServer((req,res)=>{const name=decodeURIComponent(req.url.split('?')[0]),file=path.resolve(root,'.'+(name==='/'?'/index.html':name));if(!file.startsWith(root+path.sep)){res.writeHead(403);return res.end()}fs.readFile(file,(error,data)=>{if(error){if(name.startsWith('/assets/')){res.writeHead(302,{Location:encodeURI('https://raw.githubusercontent.com/'+origin.repository+'/'+origin.commit+'/'+origin.sourcePath+name.slice(7))});return res.end()}res.writeHead(404);return res.end()}res.setHeader('Content-Type',({'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json','.png':'image/png','.webp':'image/webp'})[path.extname(file)]||'application/octet-stream');res.end(data)})});
+const server=http.createServer((req,res)=>{const name=decodeURIComponent(req.url.split('?')[0]),file=path.resolve(root,'.'+(name==='/'?'/index.html':name));if(!file.startsWith(root+path.sep)){res.writeHead(403);return res.end()}fs.readFile(file,(error,data)=>{if(error){if(name.startsWith('/assets/')){res.writeHead(302,{Location:encodeURI('https://raw.githubusercontent.com/'+origin.repository+'/'+origin.commit+'/'+origin.sourcePath+name.slice(7))});return res.end()}res.writeHead(404);return res.end()}res.setHeader('Content-Type',({'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.webp':'image/webp'})[path.extname(file)]||'application/octet-stream');res.end(data)})});
 let browser;
 
 async function main(){
@@ -15,12 +15,12 @@ async function main(){
   await page.goto('http://127.0.0.1:'+server.address().port);await page.waitForTimeout(300);
   const capture=async name=>{
    await page.evaluate(()=>scrollTo(0,0));
-   await page.waitForFunction(()=>[...document.images].filter(i=>i.getBoundingClientRect().top<innerHeight&&i.getBoundingClientRect().bottom>0).every(i=>i.complete&&i.naturalWidth>0),null,{timeout:90000});
+   await page.waitForFunction(()=>[...document.images].filter(i=>i.getBoundingClientRect().top<innerHeight&&i.getBoundingClientRect().bottom>0).every(i=>i.complete&&i.naturalWidth>0),null,{timeout:90000}).catch(async error=>{await page.screenshot({path:path.join(out,name+'-failed-'+width+'.png')});console.log('Image diagnostics',await page.evaluate(()=>[...document.images].filter(i=>!i.complete||!i.naturalWidth).map(i=>({src:i.src,complete:i.complete,naturalWidth:i.naturalWidth}))));throw error;});
    await page.evaluate(async()=>{await Promise.all([...document.images].filter(i=>i.complete&&i.naturalWidth).map(i=>i.decode()));await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))});
    await page.waitForTimeout(250);
    const overflow=await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,offenders:[...document.querySelectorAll('main button,main h1,main h2')].filter(n=>{const b=n.getBoundingClientRect();return b.width&& (b.left<-1||b.right>innerWidth+1)&&!n.closest('.r3-era-covers')}).map(n=>({tag:n.tagName,text:n.textContent.slice(0,60),box:n.getBoundingClientRect().toJSON()}))}));
    assert(overflow.scroll<=width+1,name+' '+width+' overflow '+JSON.stringify(overflow));
-   assert.equal(overflow.offenders.length,0,name+' offscreen '+JSON.stringify(overflow.offenders));
+   if(phase==='after')assert.equal(overflow.offenders.length,0,name+' offscreen '+JSON.stringify(overflow.offenders));
    await page.screenshot({path:path.join(out,name+'-'+width+'.png')});
    if(width===390)await page.screenshot({path:path.join(out,name+'-full-'+width+'.png'),fullPage:true});
   };

@@ -130,13 +130,13 @@ assert(builderSource.includes('DECISION_LEDGER_FILE')&&builderSource.includes('l
 
 /* OX home starts with the compact weakness donut, then the seven era entries and
    finally wrong-answer review. Old daily/quick and duplicate summary cards stay gone. */
-assert(!html.includes('data-nav="association"')&&!html.includes('>암기법<'));
+assert(html.includes('data-nav="association"'),'existing mnemonic tools must remain reachable');
 click({nav:'ox'});
-assert(html.includes('OX 퀴즈')&&html.includes('한능검 심화 핵심 개념을 빠르게 확인해요.'));
+assert(html.includes('OX 퀴즈')&&html.includes('오늘의 20문제, 3분 여행'));
 assert.equal(run('meta().oxQuiz.schemaVersion'),3);assert.equal(run('meta().oxQuiz.contentRevision'),report.contentRevision,'saved OX metadata must track the revised answer key');
 for(const removed of ['오늘의 심화 핵심 개념','오늘의 OX 퀴즈','빠른 OX 퀴즈','QUICK START'])assert(!html.includes(removed),`removed menu remains: ${removed}`);
-assert(!html.includes('data-ox-start="daily"')&&!html.includes('data-ox-start="quick"'),'daily/quick start controls must be removed');
-assert(html.includes('최대 20문제')&&!html.includes('한 세션 20문제'),'home must describe the session cap rather than promise a fixed count');
+assert(html.includes('data-ox-start="daily"')&&!html.includes('data-ox-start="quick"'),'Rev.3 restores the daily journey without a duplicate quick control');
+assert(html.includes('TODAY · 20 STOPS'),'Rev.3 daily journey heading missing');
 assert.equal((html.match(/data-ox-era=/g)||[]).length,7,'home must render seven era cards');
 for(const [eraId,count] of Object.entries(actualCounts)){
  assert(html.includes(`data-ox-era="${eraId}"`),`${eraId} card missing`);
@@ -148,9 +148,9 @@ assert(!html.includes('data-ox-analysis='),'OX analysis entry must not render');
 assert(!html.includes('data-ox-analysis="true"'),'analysis detail control is removed');
 assert(!html.includes('class="ox-learning-summary"')&&!html.includes('나의 OX 학습'),'the old duplicate learning summary card must be removed');
 assert(!html.includes('시대별 취약점 분석'),'OX analysis description is removed');
-const eraPosition=html.indexOf('data-ox-era='),reviewPosition=html.indexOf('틀린 OX 다시 풀기');
-assert(eraPosition>=0&&reviewPosition>eraPosition,'era quiz and wrong review remain in order');
-assert((html.match(/아직 학습 전/g)||[]).length>=7,'unattempted eras must say 아직 학습 전');
+const eraPosition=html.indexOf('data-ox-era='),reviewPosition=html.indexOf('틀린 OX ');
+assert(eraPosition>=0&&reviewPosition<eraPosition,'Rev.3 wrong review precedes era stations');
+assert((html.match(/아직 출발 전/g)||[]).length>=7,'unattempted eras must say 아직 학습 전');
 assert(html.includes('data-ox-review'),'wrong-answer review entry is required');
 
 /* Learning history with no historical wrong question has a different state from
@@ -435,4 +435,5 @@ run('save()');const savedSnapshot=saved,historySnapshot=run('JSON.stringify(meta
 assert.equal(saved,savedSnapshot);assert.equal(run('JSON.stringify(meta().oxQuiz.history)'),historySnapshot);
 
 console.log(`PASS: ${questions.length} audited OX questions across seven eras, dynamic up-to-20 sessions, retired-id session repair, canonical attempts, isolation, and reload persistence.`);
+
 

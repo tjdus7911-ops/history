@@ -109,7 +109,7 @@ for(const [hash,expected] of [['#home','home'],['#exam-library','exam-library'],
 app=boot('#ox',cloneStorage(activeStorage));
 assert.equal(app.run('screen'),'ox','#ox must restore the OX screen');
 assert.equal(app.run('OX_QUIZ_API.snapshot().view'),'home','#ox must restore the OX main, not force the active quiz');
-assert(app.html().includes('진행 중인 퀴즈 이어하기'),'OX main must offer the saved session as an explicit resume action');
+assert(app.html().includes('진행 중인 퀴즈'),'OX main must offer the saved session as an explicit resume action');
 assert(!app.html().includes('class="ox-page ox-play"'),'OX main reload unexpectedly entered the quiz');
 app.click({oxAnalysis:'true'});
 assert.equal(app.run('OX_QUIZ_API.snapshot().view'),'home');
@@ -117,7 +117,7 @@ assert.equal(app.browser.location.hash,'#ox');
 app=boot('#ox/analysis',cloneStorage(activeStorage));
 assert.equal(app.run('OX_QUIZ_API.snapshot().view'),'home','legacy analysis links redirect to OX home');
 assert.equal(app.browser.location.hash,'#ox');
-assert(app.html().includes('진행 중인 퀴즈 이어하기'),'legacy analysis links preserve resume');
+assert(app.html().includes('진행 중인 퀴즈'),'legacy analysis links preserve resume');
 
 /* Main-nav changes must write navigable history. Back/forward and an external hash
    change then apply the URL without resurrecting the active OX quiz. */
@@ -147,7 +147,8 @@ app.click({officialRequestSubmit:'true'});app.click({officialSubmitConfirm:'true
 assert.equal(app.run('screen'),'exam-library','completed official exam must enter its result screen');
 assert.match(app.browser.location.hash,/^#exam-library\/results\/official-/,'completed official exam must synchronize its restorable result route');
 const resultHash=app.browser.location.hash,resultStorage=cloneStorage(app.storage),attemptsAfterSubmit=app.run("Object.values(meta().questionRecords).reduce((sum,record)=>sum+(record.attempts||0),0)");
-app=boot(resultHash,resultStorage);assert.equal(app.run('screen'),'exam-library','result URL refresh must restore the exam screen');assert(app.html().includes('OFFICIAL EXAM RESULT'));assert.equal(app.run('globalThis.OFFICIAL_EXAM_UI.snapshot().readOnlyResult'),true);assert.equal(app.run("Object.values(meta().questionRecords).reduce((sum,record)=>sum+(record.attempts||0),0)"),attemptsAfterSubmit,'reopening a result must not record attempts again');
+app=boot(resultHash,resultStorage);assert.equal(app.run('screen'),'exam-library','result URL refresh must restore the exam screen');assert(app.html().includes('class="official-results r3-result"'));assert.equal(app.run('globalThis.OFFICIAL_EXAM_UI.snapshot().readOnlyResult'),true);assert.equal(app.run("Object.values(meta().questionRecords).reduce((sum,record)=>sum+(record.attempts||0),0)"),attemptsAfterSubmit,'reopening a result must not record attempts again');
 
 console.log('PASS: URL-first refresh routing, independent OX analysis route, safe detail Back/Forward, OX main/resume isolation, explicit quiz restoration, and invalid fallback.');
+
 
