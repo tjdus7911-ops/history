@@ -34,9 +34,9 @@ async function main(){
    assert((await page.locator('main').evaluate(n=>getComputedStyle(n).fontFamily)).includes('Malgun Gothic'));
    await page.locator('.r3-era-covers [data-era-open="goryeo"]').click();await capture('B2-era');
    await page.locator('[data-action="restart-episode"]').click();await capture('J5-restart');await page.locator('[data-action="close"]').click();
-   await page.locator('[data-chapter]').first().click();await capture('J4-chapter-sheet');
+   await page.waitForTimeout(350);await page.locator('[data-chapter]').first().click();await page.locator('.chapter-sheet').waitFor();await capture('J4-chapter-sheet');
    await page.locator('[data-action="close"]').first().click();
-   await page.locator('[data-chapter]').first().click();
+   await page.waitForTimeout(350);await page.locator('[data-chapter]').first().click();
    const starter=page.locator('[data-action="start-chapter"],[data-action="continue-chapter"]').first();
    if(await starter.count()){await starter.click();await page.waitForTimeout(300);await capture('story-goryeo');await page.locator('[data-action="advance-dialogue"]').first().click();assert(await page.locator('.game').count());}
    await page.locator('.nav [data-nav="home"]').click({force:true}).catch(async()=>{await page.evaluate(()=>navigate('home'))});
