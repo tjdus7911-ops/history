@@ -1,7 +1,7 @@
 /* Authoritative Rev.3 tokens and component styles, loaded after legacy screens. */
 :root{color-scheme:light;--r3-primary:#2d5be3;--r3-primary-soft:#eaf0ff;--r3-accent:#f2a516;--r3-accent-soft:#fff5dc;--r3-error:#e5484d;--r3-error-soft:#fdecec;--r3-ink:#15192b;--r3-secondary:#4a5168;--r3-muted:#848ba0;--r3-line:#e6eaf2;--r3-sunken:#f4f6fb;--r3-radius:12px;--r3-font:'Malgun Gothic','맑은 고딕',sans-serif;--ed-paper:#fff;--ed-ink:var(--r3-ink);--ed-muted:var(--r3-muted);--ed-line:var(--r3-line);--ed-gold:var(--r3-primary);--ed-display:var(--r3-font);--ed-ui:var(--r3-font);--bg:#fff;--panel:#fff;--ink:var(--r3-ink);--muted:var(--r3-muted);--gold:var(--r3-primary);--line:var(--r3-line);--mint:var(--r3-primary)}
 body{background:#fff;color:var(--r3-ink);font-family:var(--r3-font)}
-.r3-shell,.r3-shell *,.modal-overlay,.modal-overlay *{font-family:var(--r3-font);letter-spacing:0}
+.r3-shell,.r3-shell *,.modal-overlay,.modal-overlay *{font-family:var(--r3-font)!important;letter-spacing:0}
 .r3-main{font-size:14px;line-height:1.5;color:var(--r3-ink);background:#fff}
 .r3-shell .main.r3-main{width:100%;max-width:760px;margin:0 auto;padding:16px 0 96px;min-height:100dvh}
 .r3-main h1,.r3-main h2,.r3-main h3{color:var(--r3-ink);font-family:var(--r3-font);font-weight:700}
@@ -41,6 +41,7 @@ body{background:#fff;color:var(--r3-ink);font-family:var(--r3-font)}
 .r3-shell .sidebar .nav button.active{font-weight:700;color:var(--r3-ink);background:none}.r3-shell.r3-focus .sidebar{display:none}
 .r3-shell.r3-focus .r3-main{padding-bottom:100px}
 .r3-main .r3-home-date{color:var(--r3-muted);font-size:12px;line-height:16px;margin:-12px 20px 12px}
+.r3-shell .ed-home.r3-main{padding-top:0}.r3-main .r3-brand-header{min-height:66px;margin:0;padding:8px 12px 12px 20px}.r3-brand-header>div{flex:1;min-width:0}.r3-main .r3-brand-header h1{font-size:19px;line-height:28px}.r3-brand-header small{display:block;font-size:12px;line-height:16px;color:var(--r3-muted);margin-bottom:2px}
 .r3-home-hero{position:relative;height:300px;margin:0 20px;border-radius:16px;overflow:hidden;color:white}
 .r3-home-hero>img{width:100%;height:100%;object-fit:cover;display:block}.r3-hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,transparent 25%,rgba(15,18,20,.9))}
 .r3-hero-badges{position:absolute;top:20px;left:20px;right:20px;display:flex;gap:6px;flex-wrap:wrap}
