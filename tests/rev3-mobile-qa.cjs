@@ -75,7 +75,7 @@ async function main(){
    await page.locator('[data-r3-leave]').click();await page.locator('[data-official-tab="era"]').click();await capture('E11-era');assert.equal(await page.locator('[data-official-era]').count(),7,'Rev.3 has seven era rows');
    await page.locator('.nav [data-nav="records"]').click();await capture('K1-records');await page.locator('.r3-link[data-official-results-list]').click();await capture('K2-history');await page.locator('[data-official-result-open]').first().click();await capture('K3-record-detail');
    await page.locator('.nav [data-nav="exam-library"]').click({force:true}).catch(async()=>{await page.evaluate(()=>navigate('exam-library'))});
-   await page.evaluate(()=>{EXAM_PRESENTATION.view='home';render()});await page.locator('[data-r3-filter]').click();await capture('T7-filter');await page.locator('[data-r3-filter-apply]').click();
+   await page.evaluate(()=>{EXAM_PRESENTATION.view='home';render()});await page.locator('[data-official-tab="round"]').click();await page.locator('[data-r3-filter]').click();await capture('T7-filter');await page.locator('[data-r3-filter-apply]').click();
    await page.evaluate(()=>REV3_UI.views.search());await page.locator('[data-r3-search-input]').fill('no-such-history-987654');await page.waitForTimeout(250);await capture('T3-search-empty');await page.locator('[data-r3-aux-back]').click();
    await page.evaluate(()=>REV3_UI.states.loading());await capture('T1-loading');await page.evaluate(()=>REV3_UI.states.network());await capture('T2-network');await page.locator('[data-r3-reconnect]').click();
    await page.locator('.nav [data-nav="ox"]').click();await capture('Q1-ox-home');
