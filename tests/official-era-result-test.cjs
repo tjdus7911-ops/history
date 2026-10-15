@@ -28,11 +28,12 @@ for(const [index,id] of selectedIds.entries()){const accepted=copy(`QUESTIONS.fi
 click({officialRequestSubmit:'true'});click({officialSubmitConfirm:'true'});
 const analysis=copy('OFFICIAL_RESULT_ANALYSIS.current("attempt")');assert.equal(analysis.total,8);assert.equal(analysis.correct,5);assert.equal(analysis.wrongTotal,3);assert.equal(analysis.rows.reduce((sum,row)=>sum+row.wrong,0),3);assert(Math.abs(analysis.rows.reduce((sum,row)=>sum+row.wrongShare,0)-100)<0.2);assert.equal(analysis.rows.filter(row=>row.total===0).length,6);assert(analysis.rows.filter(row=>row.total===0).every(row=>row.status.label==='분석 데이터 없음'));assert(analysis.rows.filter(row=>row.total===2).every(row=>row.sampleLimited));
 assert(html.includes('class="official-results"'),html.slice(0,500));
-for(const copyText of ['최종 점수','시대별 취약점 분석','오답 다시 풀기','해설 보기'])assert(html.includes(copyText),copyText);assert(/심화 [123]급|불합격/.test(html),'the result must show an official advanced grade or fail state');
-assert(!html.includes('data-official-analysis-era=')&&!html.includes('official-top-weak')&&!html.includes('official-result-review'),'result analysis must remain compact');
-assert(!html.includes('official-era-detail-section')&&!html.includes('official-era-detail-list'),'duplicate accuracy section must not render');
-click({officialAnalysisScope:'cumulative'});assert(html.includes('data-official-analysis-scope="cumulative" aria-selected="true"'));
-click({officialAnalysisScope:'attempt'});assert(html.includes('official-weakness-item'));
-console.log('PASS: first round tab, 1,800 ten-era mappings, actual-answer analysis, no-data/low-sample policy, donut semantics, selection and official grade thresholds verified.');
+for(const copyText of ['최종 점수','시대별 취약점 분석','오답 다시 풀기','해설 보기','재시험 보기'])assert(html.includes(copyText),copyText);assert(/심화 [123]급|불합격/.test(html),'the result must show an official advanced grade or fail state');
+assert(!html.includes('누적 학습')&&!html.includes('data-official-analysis-scope=')&&!html.includes('official-top-weak')&&!html.includes('official-donut'),'analysis should show a concise current-attempt view');
+assert(!html.includes('official-era-detail-section')&&!html.includes('공식 등급 기준'));
+const statsIndex=html.indexOf('official-result-summary'),actionsIndex=html.indexOf('official-result-actions'),criteriaIndex=html.indexOf('official-grade-criteria'),analysisIndex=html.indexOf('official-result-analysis');assert(statsIndex>=0&&statsIndex<actionsIndex&&actionsIndex<criteriaIndex&&criteriaIndex<analysisIndex,'result sections must follow the requested order');
+assert.equal((html.match(/class="official-result-actions[\s\S]*?<\/div>/)||[''])[0].match(/<button/g)?.length,3,'all three actions should stay available');
+const firstAttemptEra=analysis.rows.find(row=>row.total>0);click({officialAnalysisEra:firstAttemptEra.id});assert(html.includes('class="official-selected-era"')&&html.includes('data-official-review='),'selecting an era should expose its wrong-question review');
+console.log('PASS: first round tab, 1,800 ten-era mappings, actual-answer analysis, sample policy, compact current-attempt view, action order, era selection and official grade thresholds verified.');
 
 

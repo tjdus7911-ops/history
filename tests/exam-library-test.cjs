@@ -84,7 +84,7 @@ const memory=memories.find(item=>item.id==='gong-go-sin-il');assert.deepEqual(me
 
 const associationCss=fs.readFileSync('dist/exam-memory.css','utf8');assert(associationCss.includes('min-height:58px'));assert(associationCss.includes('grid-template-rows .24s ease'));assert(associationCss.includes('.association-step.open .association-chevron'));assert(associationCss.includes('.association-recall-question'));assert(associationCss.includes('.association-recall-review'));
 
-click({nav:'records'});assert(html.includes('시대별 기출 기록'));assert(html.includes('누적 풀이'));assert(run('Object.keys(meta().questionRecords).length')>=50);
+click({nav:'records'});assert(html.includes('시대별 기출 기록'));assert(html.includes('누적 풀이'));assert(html.includes('시험 기록')&&html.includes('최근 응시'));assert(!html.includes('학습 캘린더')&&!html.includes('이야기와 수집 기록'));assert(run('Object.keys(meta().questionRecords).length')>=50);
 click({nav:'study'});assert(html.includes('오답노트'));
 assert.equal(run('globalThis.EXAM_MEMORY_UI_READY'),true);
 console.log('PASS: 1,800 canonical official questions, 36 editions, reusable mnemonic accordions, hint-free stable Recall Test choices, post-answer mnemonic review, preserved official grading and shared records.');
