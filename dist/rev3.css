@@ -81,6 +81,7 @@ body{background:#fff;color:var(--r3-ink);font-family:var(--r3-font)}
 .r3-ladder-marker{position:absolute;top:22px;width:4px;height:24px;background:var(--r3-ink);border-radius:99px}.r3-ladder-marker.previous{background:var(--r3-muted)}
 .r3-ladder-marker small{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-size:12px;line-height:16px;font-weight:700;white-space:nowrap;color:var(--r3-ink)}.r3-ladder-marker.previous small{color:var(--r3-muted)}
 .r3-ladder-labels{display:flex;margin-left:60%;gap:0;padding-top:8px}.r3-ladder-labels span{width:25%;font-size:12px;line-height:16px;color:var(--r3-muted);text-align:center}
+.r3-ladder.r3-ladder-close{height:90px;padding-top:46px}.r3-ladder-close .r3-ladder-marker{top:40px}.r3-ladder-close .r3-ladder-marker.previous small{bottom:46px}
 .r3-shell .r3-main .official-tabs.r3-segment{display:flex;background:var(--r3-sunken);border:0;border-radius:10px;gap:0;padding:3px;margin:0 0 12px;width:100%}
 .r3-shell .r3-main .r3-segment button{flex:1;padding:8px 12px;min-height:38px;font-size:14px;border:0;background:none;color:var(--r3-muted);border-radius:10px;box-shadow:none;line-height:20px}
 .r3-shell .r3-main .r3-segment button[aria-selected=true]{background:#fff;color:var(--r3-ink);box-shadow:0 2px 4px #1214170a,0 1px 1px #1214170a;font-weight:700}

@@ -23,6 +23,7 @@ async function main(){
    const overflow=await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,offenders:[...document.querySelectorAll('main button,main h1,main h2')].filter(n=>{const b=n.getBoundingClientRect();return b.width&& (b.left<-1||b.right>innerWidth+1)&&!n.closest('.r3-era-covers')}).map(n=>({tag:n.tagName,text:n.textContent.slice(0,60),box:n.getBoundingClientRect().toJSON()}))}));
    assert(overflow.scroll<=width+1,name+' '+width+' overflow '+JSON.stringify(overflow));
    if(phase==='after')assert.equal(overflow.offenders.length,0,name+' offscreen '+JSON.stringify(overflow.offenders));
+   if(phase==='after')assert(await page.evaluate(()=>[...document.querySelectorAll('.r3-ladder')].every(n=>{const a=n.querySelector('.previous small')?.getBoundingClientRect(),b=n.querySelector('.r3-ladder-marker:not(.previous) small')?.getBoundingClientRect();return !a||!b||a.right<=b.left||b.right<=a.left||a.bottom<=b.top||b.bottom<=a.top})),name+' score labels must not overlap');
    await page.screenshot({path:path.join(out,name+'-'+width+'.png')});
    fs.writeFileSync(path.join(out,name+'-'+width+'.json'),JSON.stringify(await page.evaluate(()=>[...document.querySelectorAll('main .r3-play,main .r3-era-back,main .r3-play-header,main .r3-score')].map(n=>({class:n.className,rect:n.getBoundingClientRect().toJSON(),color:getComputedStyle(n).color,display:getComputedStyle(n).display}))),null,2));
    if(width===390)await page.screenshot({path:path.join(out,name+'-full-'+width+'.png'),fullPage:true});
