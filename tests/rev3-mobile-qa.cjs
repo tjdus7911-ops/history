@@ -4,16 +4,18 @@ const phase=process.env.QA_PHASE||'after',out=path.resolve(process.env.QA_OUTPUT
 const root=path.resolve('dist');
 const origin=JSON.parse(fs.readFileSync('config/deployment-asset-origin.json','utf8'));
 const server=http.createServer((req,res)=>{const name=decodeURIComponent(req.url.split('?')[0]),file=path.resolve(root,'.'+(name==='/'?'/index.html':name));if(!file.startsWith(root+path.sep)){res.writeHead(403);return res.end()}fs.readFile(file,(error,data)=>{if(error){if(name.startsWith('/assets/')){res.writeHead(302,{Location:encodeURI('https://raw.githubusercontent.com/'+origin.repository+'/'+origin.commit+'/'+origin.sourcePath+name.slice(7))});return res.end()}res.writeHead(404);return res.end()}res.setHeader('Content-Type',({'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.webp':'image/webp'})[path.extname(file)]||'application/octet-stream');res.end(data)})});
-let browser;
+let browser,activePage,lastCapture;
 
 async function main(){
  fs.mkdirSync(out,{recursive:true});await new Promise(r=>server.listen(0,'127.0.0.1',r));
  browser=await chromium.launch({headless:true});
  for(const width of [360,375,390,412,430]){
   const context=await browser.newContext({viewport:{width,height:844},isMobile:true,hasTouch:true,serviceWorkers:'block'}),page=await context.newPage(),errors=[];
+  activePage=page;
   page.on('pageerror',e=>{errors.push(e.message);console.log('BROWSER_ERROR',e.message)});
   await page.goto('http://127.0.0.1:'+server.address().port);await page.waitForTimeout(300);
   const capture=async name=>{
+   lastCapture=name+'-'+width;
    await page.evaluate(()=>scrollTo(0,0));
    await page.waitForFunction(()=>[...document.images].filter(i=>!i.closest('details:not([open])')&&i.getBoundingClientRect().width>0&&i.getBoundingClientRect().top<innerHeight&&i.getBoundingClientRect().bottom>0).every(i=>i.complete&&i.naturalWidth>0),null,{timeout:90000}).catch(async error=>{await page.screenshot({path:path.join(out,name+'-failed-'+width+'.png')});console.log('Image diagnostics',await page.evaluate(()=>[...document.images].filter(i=>!i.complete||!i.naturalWidth).map(i=>({src:i.src,complete:i.complete,naturalWidth:i.naturalWidth}))));throw error;});
    await page.evaluate(async()=>{await Promise.all([...document.images].filter(i=>i.complete&&i.naturalWidth).map(i=>i.decode()));await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))});
@@ -68,7 +70,7 @@ async function main(){
    await page.locator('[data-r3-aux-back]').click();await page.locator('[data-official-retry]').click();await capture('E8-wrong-learning');await page.locator('[data-official-pick]').first().tap();await page.locator('[data-official-submit]').tap();await capture('learning-feedback');assert.equal(await page.locator('.official-feedback').count(),1);
    assert.equal(await page.evaluate(()=>JSON.stringify({run:state.run,main:state.mainRun})),runState,'exam UI cannot mutate story progress');
    await page.evaluate(()=>REV3_UI.views.analysis());await capture('E10-analysis');await page.locator('[data-r3-aux-back]').click();
-   await page.locator('.nav [data-nav="exam-library"]').click({force:true});await page.locator('[data-official-tab="era"]').click();await capture('E11-era');assert.equal(await page.locator('[data-official-era]').count(),7,'Rev.3 has seven era rows');
+   await page.locator('[data-r3-leave]').click();await page.locator('[data-official-tab="era"]').click();await capture('E11-era');assert.equal(await page.locator('[data-official-era]').count(),7,'Rev.3 has seven era rows');
    await page.locator('.nav [data-nav="records"]').click();await capture('K1-records');await page.locator('[data-official-results-list]').click();await capture('K2-history');await page.locator('[data-official-result-open]').first().click();await capture('K3-record-detail');
    await page.locator('.nav [data-nav="exam-library"]').click({force:true}).catch(async()=>{await page.evaluate(()=>navigate('exam-library'))});
    await page.evaluate(()=>{EXAM_PRESENTATION.view='home';render()});await page.locator('[data-r3-filter]').click();await capture('T7-filter');await page.locator('[data-r3-filter-apply]').click();
@@ -132,5 +134,5 @@ async function verifyTouches(page,width,capture){
  await cdp.detach();console.log('PASS touch gestures and learning/exam behavior at '+width+'px');
 }
 
-main().catch(e=>{console.error(e);process.exitCode=1}).finally(async()=>{if(browser)await browser.close();server.close()});
+main().catch(async e=>{console.error(e);if(activePage&&!activePage.isClosed())await activePage.screenshot({path:path.join(out,'failure-'+lastCapture+'.png'),fullPage:true}).catch(()=>{});process.exitCode=1}).finally(async()=>{if(browser)await browser.close();server.close()});
 
