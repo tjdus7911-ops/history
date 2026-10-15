@@ -60,6 +60,8 @@ async function main(){
   await page.evaluate(()=>{if(globalThis.EXAM_PRESENTATION){const p=EXAM_PRESENTATION;for(const [i,e]of p.session.entries.entries())p.session.answers[e.canonicalQuestionId]=i%7===0?(p.functions.officialQuestion(e.canonicalQuestionId).answer+1)%5:p.functions.officialQuestion(e.canonicalQuestionId).answer;}gradeOfficialSession('MANUAL');});
   await capture('E6-result');
   if(phase==='after'){
+   const scoreStyle=await page.locator('.r3-score h1').evaluate(n=>({color:getComputedStyle(n).color,size:parseFloat(getComputedStyle(n).fontSize),height:n.parentElement.getBoundingClientRect().height}));
+   assert.equal(scoreStyle.color,'rgb(21, 25, 43)','legacy score color must not override Rev.3');assert(scoreStyle.size>=72&&scoreStyle.height<=110,'Rev.3 score typography and compact hero');
    assert.equal(await page.locator('[data-official-retake]').count(),1);
    const old=await page.evaluate(()=>OFFICIAL_EXAM_UI.results()),runState=await page.evaluate(()=>JSON.stringify({run:state.run,main:state.mainRun}));
    await page.locator('[data-official-review]').first().click();await capture('E7-explanation');await page.locator('[data-official-review-back]').click();
@@ -71,7 +73,7 @@ async function main(){
    assert.equal(await page.evaluate(()=>JSON.stringify({run:state.run,main:state.mainRun})),runState,'exam UI cannot mutate story progress');
    await page.evaluate(()=>REV3_UI.views.analysis());await capture('E10-analysis');await page.locator('[data-r3-aux-back]').click();
    await page.locator('[data-r3-leave]').click();await page.locator('[data-official-tab="era"]').click();await capture('E11-era');assert.equal(await page.locator('[data-official-era]').count(),7,'Rev.3 has seven era rows');
-   await page.locator('.nav [data-nav="records"]').click();await capture('K1-records');await page.locator('[data-official-results-list]').click();await capture('K2-history');await page.locator('[data-official-result-open]').first().click();await capture('K3-record-detail');
+   await page.locator('.nav [data-nav="records"]').click();await capture('K1-records');await page.locator('.r3-link[data-official-results-list]').click();await capture('K2-history');await page.locator('[data-official-result-open]').first().click();await capture('K3-record-detail');
    await page.locator('.nav [data-nav="exam-library"]').click({force:true}).catch(async()=>{await page.evaluate(()=>navigate('exam-library'))});
    await page.evaluate(()=>{EXAM_PRESENTATION.view='home';render()});await page.locator('[data-r3-filter]').click();await capture('T7-filter');await page.locator('[data-r3-filter-apply]').click();
    await page.evaluate(()=>REV3_UI.views.search());await page.locator('[data-r3-search-input]').fill('no-such-history-987654');await page.waitForTimeout(250);await capture('T3-search-empty');await page.locator('[data-r3-aux-back]').click();
