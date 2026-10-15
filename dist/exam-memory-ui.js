@@ -876,10 +876,20 @@ function applyOfficialExamRoute(route){
  return false;
 }
 Object.assign(globalThis.OFFICIAL_EXAM_UI,{applyRoute:applyOfficialExamRoute,openResult:attemptId=>openOfficialResult(attemptId),results:()=>JSON.parse(JSON.stringify(officialExamResults())),startLearning:(questionIds,options={})=>startOfficialSession((questionIds||[]).map(id=>officialEntry(id)).filter(Boolean),'learn',options),startExam:(questionIds,options={})=>startOfficialSession((questionIds||[]).map(id=>officialEntry(id)).filter(Boolean),'exam',options),snapshot:()=>officialExamSession?JSON.parse(JSON.stringify({attemptId:officialExamSession.attemptId,mode:officialExamSession.mode,questionIds:officialExamSession.entries.map(entry=>entry.canonicalQuestionId),index:officialExamSession.index,answers:officialExamSession.answers,feedback:officialExamSession.feedback,graded:officialExamSession.graded,scope:officialExamSession.scope,view:officialExamView,readOnlyResult:officialExamSession.readOnlyResult,unansweredNavigation:Boolean(officialExamSession.unansweredNavigation),answered:officialAnsweredIds(officialExamSession).size,unanswered:officialUnansweredIndexes(officialExamSession).length})):null,autoAdvanceMs:OFFICIAL_EXAM_AUTO_ADVANCE_MS});
+/* Narrow view adapter: presentation may replace renderers, never grading or storage. */
+globalThis.EXAM_PRESENTATION={
+ get session(){return officialExamSession},get view(){return officialExamView},set view(value){officialExamView=value},
+ get tab(){return officialExamTab},get level(){return officialExamLevel},get round(){return officialExamRound},get era(){return officialExamEra},
+ get cover(){return officialExamCover},get suspended(){return officialSuspendedSession},
+ functions:{officialAnsweredIds,officialCertification,officialEditionActivity,officialEditions,officialEntriesForEra,officialEntry,officialEraInfo,officialExamDate,officialExamResults,officialFormatDuration,officialImageOpenMarkup,officialProgress,officialQuestion,officialRemainingMs,officialResultDuration,officialResultEdition,officialResultEraAnalysis,officialResultSummary,officialSelectionEntries,officialSessionQuestion,officialStatisticForEdition,officialThumbnailImage,officialTimedSession,officialTimerMarkup,officialTimerState,officialUnansweredIndexes,officialVisibleExplanation,officialWeaknessRows,officialWeaknessSection,examSourceLabel,recordsBeforeExamMemory,startOfficialSession,openOfficialExamCover,beginOfficialCover,requestOfficialSubmission,suspendOfficialActiveSession},
+ renderers:{officialExamHome,officialExamListPage,officialRoundCard,officialPaperFigure,officialPracticePage,officialReviewPage,officialResultPage,officialExamHistoryPage,officialRecordsPage},
+ replace(r){if(r.officialExamHome)officialExamHome=r.officialExamHome;if(r.officialExamListPage)officialExamListPage=r.officialExamListPage;if(r.officialRoundCard)officialRoundCard=r.officialRoundCard;if(r.officialPaperFigure)officialPaperFigure=r.officialPaperFigure;if(r.officialPracticePage)officialPracticePage=r.officialPracticePage;if(r.officialReviewPage)officialReviewPage=r.officialReviewPage;if(r.officialResultPage)officialResultPage=r.officialResultPage;if(r.officialExamHistoryPage)officialExamHistoryPage=r.officialExamHistoryPage;if(r.officialRecordsPage)officialRecordsPage=r.officialRecordsPage}
+};
 globalThis.EXAM_MEMORY_UI_READY=true;
 normalizeOfficialExamResults();
 restoreOfficialSession();
 render();
 }
+
 
 

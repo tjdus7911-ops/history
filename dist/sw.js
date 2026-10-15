@@ -1,10 +1,11 @@
 const CACHE_PREFIX='lived-history-shell-';
-const CACHE_VERSION='2026-10-15-standalone-shell-refresh-v6';
+const CACHE_VERSION='2026-10-15-figma-rev3-v7';
 const CACHE_NAME=CACHE_PREFIX+CACHE_VERSION;
 const APP_SHELL=[
   '/',
   '/index.html',
   '/chapter-access-ui.js',
+  '/rev3-ui.js','/rev3.css',
   '/story-exam-policy.js',
   '/story-exam-runtime.js',
   '/story-exam-ui.js',
@@ -88,7 +89,8 @@ self.addEventListener('fetch',event=>{
     event.respondWith(networkFirst(request));
     return;
   }
-  if(SHELL_PATHS.has(url.pathname))event.respondWith(networkFirst(request));
+  if(SHELL_PATHS.has(url.pathname)||url.pathname.startsWith('/rev3-assets/'))event.respondWith(networkFirst(request));
 });
+
 
 
