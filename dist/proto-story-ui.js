@@ -20,7 +20,10 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
  function switchPhase(source,phase){resetReading(source,phase);show();return true;}
  function readCurrent(source){
   const current=phaseState(source),line=phaseEntries(source,current)[run().dialogueCursor-1];
-  if(line&&['main','join'].includes(current.phase)&&!book().readLineIds.includes(line.lineId))book().readLineIds.push(line.lineId);
+  if(line&&['main','join'].includes(current.phase)){
+   if(!book().readLineIds.includes(line.lineId))book().readLineIds.push(line.lineId);
+   book().learnedKeywordIds=[...new Set([...book().learnedKeywordIds,...(line.learningKeywordIds||[])])];
+  }
  }
  function markRead(source=currentSource()){
   const learned=book(),read=new Set(learned.readLineIds);
@@ -149,18 +152,37 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
  }
  function mergeRecoveryMeta(stored){
   const m=meta();
-  for(const key of ['completedChapters','wrongQuestionIds','reviewedQuestionIds']){const predicate=key==='completedChapters'?ownsChapter:ownsQuestion;m[key]=[...new Set([...(m[key]||[]),...(stored[key]||[]).filter(predicate)])];}
+  for(const key of ['completedChapters','wrongQuestionIds','reviewedQuestionIds']){const activeChapters=new Set(api.activeChapterIds()),predicate=key==='completedChapters'?id=>activeChapters.has(id):ownsQuestion,existing=key==='completedChapters'?(m[key]||[]).filter(id=>!ownsChapter(id)||activeChapters.has(id)):(m[key]||[]);m[key]=[...new Set([...existing,...(stored[key]||[]).filter(predicate)])];}
   for(const key of ['questionRecords','chapterRecords']){m[key]||={};for(const [id,record] of Object.entries(stored[key]||{})){if(!(key==='questionRecords'?ownsQuestion(id):ownsChapter(id)))continue;const field=key==='questionRecords'?'attempts':'runsCount';if(!m[key][id]||(record[field]||0)>(m[key][id][field]||0))m[key][id]=copy(record);}}
   m.chapterRuns||={};for(const [id,records] of Object.entries(stored.chapterRuns||{})){if(!ownsChapter(id)||!Array.isArray(records))continue;const combined=[...(m.chapterRuns[id]||[])],ids=new Set(combined.map(item=>item.runId+':'+item.completedAt));for(const record of records)if(!ids.has(record.runId+':'+record.completedAt))combined.push(copy(record));m.chapterRuns[id]=combined;}
   const wrong=new Map((m.wrongAnswers||[]).map(item=>[item.questionId,item]));for(const item of stored.wrongAnswers||[])if(ownsQuestion(item.questionId)&&(!wrong.has(item.questionId)||String(item.answeredAt||'')>String(wrong.get(item.questionId).answeredAt||'')))wrong.set(item.questionId,copy(item));m.wrongAnswers=[...wrong.values()];
   const events=[...(m.learningEvents||[])],ids=new Set(events.map(api.fingerprint));for(const item of stored.learningEvents||[])if(ownsQuestion(item.questionId)&&!ids.has(api.fingerprint(item))){events.push(copy(item));ids.add(api.fingerprint(item));}m.learningEvents=events;
-  if(validBook(stored.protoRevisionBook)){const learned=book(),recovered=stored.protoRevisionBook;for(const key of ['readSceneIds','readLineIds','openedQuestionIds','answeredQuestionIds'])learned[key]=[...new Set([...learned[key],...recovered[key]])];learned.choiceBySceneId={...recovered.choiceBySceneId,...learned.choiceBySceneId};}
+  if(validBook(stored.protoRevisionBook)){const learned=book(),recovered=stored.protoRevisionBook;for(const key of ['readSceneIds','readLineIds','learnedKeywordIds','openedQuestionIds','answeredQuestionIds'])learned[key]=[...new Set([...learned[key],...recovered[key]])];learned.choiceBySceneId={...recovered.choiceBySceneId,...learned.choiceBySceneId};}
+ }
+ function migrateIndependentStored(stored){
+  if(!object(stored)||stored.schemaVersion!==3||stored.eraId!==eraId||stored.contentVersion!==3||stored.contentRevision!==api.legacyContentVersion||!object(stored.meta)||!object(stored.progress?.resume))return null;
+  const oldBook=stored.meta.protoRevisionBook;if(!object(oldBook)||oldBook.contentVersion!==api.legacyContentVersion)return null;
+  const migrated=copy(stored),meta=migrated.meta,activeChapters=new Set(api.activeChapterIds()),completed=new Set((meta.completedChapters||[]).filter(id=>activeChapters.has(id)));
+  const nextBook=api.migrateLegacyBook(oldBook,meta);if(!nextBook)return null;
+  meta.completedChapters=[...completed];meta.protoRevisionBook=nextBook;
+  for(const key of ['chapterRecords','chapterRuns'])meta[key]=Object.fromEntries(Object.entries(meta[key]||{}).filter(([id])=>ownsChapter(id)));
+  for(const key of ['questionRecords'])meta[key]=Object.fromEntries(Object.entries(meta[key]||{}).filter(([id])=>ownsQuestion(id)));
+  for(const key of ['wrongQuestionIds','reviewedQuestionIds'])meta[key]=(meta[key]||[]).filter(ownsQuestion);
+  meta.wrongAnswers=(meta.wrongAnswers||[]).filter(item=>ownsQuestion(item.questionId));
+  meta.learningEvents=(meta.learningEvents||[]).filter(item=>ownsQuestion(item.questionId));
+  const oldRun=migrated.progress.resume.run,active=api.activeChapterIds(),current=oldRun?.currentChapter;
+  const chapter=active.includes(current)&&!completed.has(current)?current:active.find(id=>!completed.has(id))||active.at(-1)||api.firstChapterId;
+  const resumeRun=api.freshRun(Boolean(oldRun?.started),chapter),complete=active.every(id=>completed.has(id));
+  migrated.progress={...migrated.progress,contentVersion:3,contentRevision:contentVersion,progress:complete?100:Math.round(completed.size/active.length*100),lastChapter:resumeRun.currentChapter,lastScene:resumeRun.storyId,completed:complete,resume:{run:resumeRun,mainRun:null}};
+  migrated.contentRevision=contentVersion;
+  return migrated;
  }
  function recoverIndependentResume(){
   const previous=meta().eraProgress?.[progressKey];if(validResume(previous?.resume,book())&&!previous.resume.run.protoNeedsResumeRecovery)return false;
   if(previous){archive(meta(),'invalid-resume','eraProgress.'+progressKey,previous);delete meta().eraProgress[progressKey];}
   const text=readStorage(storageKey);if(!text)return false;let stored;
   try{stored=JSON.parse(text);}catch{archive(meta(),'unreadable-json',storageKey,{raw:text});persistArchives();return false;}
+  if(stored?.contentRevision===api.legacyContentVersion){const previousStored=stored,migrated=migrateIndependentStored(stored);if(migrated){archive(meta(),'content-revision-migration',storageKey,previousStored);stored=migrated;}}
   if(!object(stored)||stored.schemaVersion!==3||stored.eraId!==eraId||stored.contentVersion!==3||stored.contentRevision!==contentVersion){archive(meta(),'unknown-schema',storageKey,stored);persistArchives();return false;}
   if(!validBook(stored.meta?.protoRevisionBook)||!validResume(stored.progress?.resume,stored.meta.protoRevisionBook)){archive(meta(),'invalid-resume',storageKey,stored);persistArchives();return false;}
   meta().eraProgress||={};meta().eraProgress[progressKey]=copy(stored.progress);mergeRecoveryMeta(stored.meta);return true;
@@ -172,7 +194,7 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
   const resume=ownsChapter(run().currentChapter)?{run:copy(run()),mainRun:copy(state.mainRun)}:{run:copy(mainRun()),mainRun:null};
   if(!validResume(resume))return;
   const m=meta(),previous=m.eraProgress?.[progressKey]||{};m.eraProgress||={};
-  m.eraProgress[progressKey]={...previous,contentVersion:3,contentRevision:contentVersion,lastChapter:mainRun().currentChapter,lastScene:mainRun().storyId,progress:eraProgress(eraId),resume,updatedAt:previous.updatedAt||null};
+  const progress=eraProgress(eraId);m.eraProgress[progressKey]={...previous,contentVersion:3,contentRevision:contentVersion,lastChapter:mainRun().currentChapter,lastScene:mainRun().storyId,progress,completed:progress>=100,resume,updatedAt:previous.updatedAt||null};
   if(['game','quiz','complete'].includes(screen)&&mainRun().started){m.eraProgress[progressKey].updatedAt=new Date().toISOString();m.lastLearningEra=eraId;}
  };
  const beforeSave=save;
@@ -222,11 +244,18 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
  const beforeGame=game;
  game=function(){
   const source=currentSource();if(!isProto(source))return beforeGame();
-  const current=phaseState(source),continueLabel=current.phase==='main'&&source.choices?.length?'응답 고르기':source.protoQueue&&['main','join'].includes(current.phase)?'🧠 기억을 더듬는다':'다음 이야기';
+  const current=phaseState(source),continueLabel=current.phase==='main'&&source.choices?.length?'응답 고르기':source.protoQueue&&['main','join'].includes(current.phase)?'🧠 기출 3문제 풀기':'다음 이야기';
   // A temporary view feeds the shared renderer; the complete immutable source stays installed.
   const view={...source,choices:['choice','branch'].includes(current.phase)?source.choices:null,continueLabel};
   STORIES[source.sceneId]=view;
-  try{return beforeGame().replace('class="game conversation-game ','class="game conversation-game proto-revision-game ').replace('data-illustration=','data-proto-scene="'+esc(source.sceneId)+'" data-proto-phase="'+current.phase+'" data-illustration=');}
+  try{
+   const atEnd=(current.phase==='join'||current.phase==='main'&&!source.protoCommon.length)&&run().dialogueCursor>=phaseEntries(source,current).length;
+   const recap=atEnd?'<aside class="proto-scene-recap" aria-label="이번 장면에서 배운 것"><h3>이번 장면에서 배운 것</h3><ul>'+source.protoSource.learning.map(item=>'<li>'+esc(item.keyword||item.title)+'</li>').join('')+'</ul></aside>':'';
+   let html=beforeGame().replace('class="game conversation-game ','class="game conversation-game proto-revision-game ').replace('data-illustration=','data-proto-country="'+esc(source.protoCountry)+'" data-proto-place="'+esc(source.protoPlace)+'" data-proto-scene="'+esc(source.sceneId)+'" data-proto-phase="'+current.phase+'" data-illustration=');
+   html=html.replace('<small>'+esc(source.location)+'</small>','<div class="proto-place-label"><span>'+esc(source.protoCountry)+'</span><small>'+esc(source.protoPlace)+'</small></div>');
+   if(recap)html=html.replace('</section><div class="chapter-progress">','</section>'+recap+'<div class="chapter-progress">');
+   return html;
+  }
   finally{STORIES[source.sceneId]=source;}
  };
  const beforeSourceLabel=questionSourceLabel;
@@ -240,7 +269,7 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
   );
  };
  function safeExplanation(q){const authored=sourceForQuestion(q);return authored?authored.proposed.playExplanation:q?.explanation||'';}
- const comparisonUnlocked=()=>book().readSceneIds.includes('proto_ch06_s7');
+ const comparisonUnlocked=()=>book().readSceneIds.includes(runtime.source.chapters.at(-1).scenes.at(-1).sceneId);
  function startReview(id){
   const q=questionFrom(id);if(!isProto(q)||!canPractice(q))return false;
   if(!meta().protoReviewSession)meta().protoReviewSession={questionId:q.questionId,draft:null,answer:null,returnTo:{screen,quizMode,reviewQuestionId,reviewAnswer,modal:copy(modal)}};
@@ -271,7 +300,7 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
   const feedback=done?'<div class="feedback"><h2>'+(answer===q.answer?'✓ 정답입니다.':'✕ 오답입니다.')+'</h2><p>선택한 답 '+(answer+1)+'번 · 정답 '+(q.answer+1)+'번</p><p>'+esc(safeExplanation(q))+'</p>'+choiceDetails+(comparisonUnlocked()?'<button class="text-btn" data-proto-comparison="'+esc(q.officialQuestionId)+'">여러 나라 비교 해설</button>':'')+'<button class="primary next" data-action="proto-quiz-next">'+(session?'기록책으로 돌아가기':index+1<total?'다음 문제':'이야기 계속')+'</button></div>':'<div class="quiz-submit-row"><button class="confirm-answer" data-action="proto-submit" '+(draft==null?'disabled':'')+'>답 확인하기</button></div>';
   return '<section class="editorial-quiz proto-revision-quiz"><header class="quiz-top"><button '+(session?'data-action="proto-review-close"':'data-nav="era"')+' aria-label="학습 화면으로 돌아가기">‹</button><span>CH.'+ch.number+' '+esc(ch.title)+'</span><button data-action="status" aria-label="내 상태 보기">'+editorialIcon('profile')+'</button></header><div class="quiz-progress"><div class="progress"><span style="width:'+Math.round((index+1)/total*100)+'%"></span></div><small>'+(index+1)+' / '+total+'</small></div><div class="exam-source-row"><span class="official-pill">실제 한능검 기출</span><span>'+esc(q.protoExam.label)+'</span></div><p class="proto-answer-instruction">원본 이미지의 지문과 보기를 모두 읽고, 같은 번호를 선택해 주세요.</p>'+officialQuestionFigure(q)+'<div class="ed-answer-options" role="group" aria-label="답 선택">'+options+'</div>'+feedback+'<p class="proto-source">출처: 국사편찬위원회 한국사능력검정시험</p></section>';
  };
- function learnedTopics(){return runtime.source.learning.filter(item=>book().readSceneIds.includes(item.firstSceneId));}
+ function learnedTopics(){const learned=new Set([...book().learnedKeywordIds,...book().readSceneIds.flatMap(id=>runtime.sources.get(id)?.protoLearningIds||[])]);return runtime.source.learning.filter(item=>learned.has(item.id));}
  function allowLegacyAction(dataset){
   const id=dataset?.review||dataset?.practice;if(id){const q=questionFrom(id);if((ownsChapter(q?.chapterId)||sourceForQuestion(q))&&!canPractice(q))return false;}
   const memory=dataset?.storyMemory;if(memory){const q=questionFrom(memory);if(ownsChapter(q?.chapterId)&&!canRecall(q))return false;}
@@ -290,10 +319,16 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
  const beforeExamList=eraExamList;
  eraExamList=function(id){if(id!==eraId)return beforeExamList(id);const questions=[...runtime.questionByOfficialId.values()].filter(canPractice);return '<div class="ed-exam-list">'+(questions.length?questions.map(q=>{const thumbnail=globalThis.OFFICIAL_EXAM_UI?.thumbnail?.(q)||q.sourceQuestionImage;return '<article class="ed-exam-row"><button data-proto-review="'+q.questionId+'"><img loading="lazy" decoding="async" src="'+esc(thumbnail)+'" alt="원본 문항 미리보기"><span><small>'+esc(q.protoExam.label)+'</small><b>'+esc(q.protoExam.editorialFocusSummary)+'</b><small>'+(book().answeredQuestionIds.includes(q.officialQuestionId)?'풀이 완료':'미풀이')+'</small></span><span>›</span></button></article>'}).join(''):'<p class="ed-empty">이야기에서 공통 학습을 마치면 관련 기출이 열립니다.</p>')+'</div>';};
  const beforeComplete=complete;
+ function protoResultFooter(id){
+  if(run().mode==='replay'&&run().completed&&!resultChapterId)return '<div class="replay-complete-actions"><button class="primary next" data-action="return-replay-home">원삼국 여정으로 돌아가기</button><button class="secondary full" data-action="current-main">현재 이야기 이어하기</button></div>';
+  if(resultChapterId)return '<button class="primary next" data-action="request-replay" data-chapter="'+id+'">이 장면 다시 보기</button><button class="text-btn home-link" data-nav="home">홈으로 돌아가기</button>';
+  const chapters=api.activeChapterIds(),next=chapters[chapters.indexOf(id)+1];
+  return (next?'<button class="primary next" data-action="start-chapter" data-chapter="'+next+'">다음 나라 살펴보기</button>':'<button class="primary next" data-nav="home">원삼국 이야기 마치기</button>')+'<button class="secondary full" data-action="request-replay" data-chapter="'+id+'">이 장면 다시 보기</button><button class="text-btn home-link" data-action="proto-recordbook">학습 기록 확인</button>';
+ }
  complete=function(){
   const id=resultChapterId||run().currentChapter;if(!ownsChapter(id))return beforeComplete();
   const info=CHAPTERS[id],r=resultRun(id),questions=[...runtime.questionByOfficialId.values()].filter(q=>q.chapterId===id),attempted=questions.filter(q=>Object.hasOwn(r.questionResults||{},q.questionId)),correct=attempted.filter(q=>r.questionResults[q.questionId]).length;
-  return '<section class="complete late-complete ancient-complete"><div class="seal">原</div><div class="eyebrow complete-label">CHAPTER '+info.number+' CLEAR</div><h1>'+esc(info.title)+'</h1><p>단과 함께 걸은 길, 사람들에게 배운 역사</p><div class="chapter-learning"><div><small>이야기</small><strong>'+chapterScenes(id).length+'씬</strong></div><div><small>실제 기출</small><strong>'+questions.length+'문항</strong></div><div><small>복습 정답</small><strong>'+correct+' / '+attempted.length+'</strong></div></div><button class="secondary full" data-action="proto-recordbook">원삼국 기록책</button>'+resultFooter(id)+'</section>';
+  return '<section class="complete late-complete ancient-complete"><div class="seal">原</div><div class="eyebrow complete-label">CHAPTER '+info.number+' CLEAR</div><h1>'+esc(info.title)+'</h1><p>단과 함께 걸은 길, 사람들에게 배운 역사</p><div class="chapter-learning"><div><small>이야기</small><strong>'+chapterScenes(id).length+'씬</strong></div><div><small>실제 기출</small><strong>'+questions.length+'문항</strong></div><div><small>복습 정답</small><strong>'+correct+' / '+attempted.length+'</strong></div></div><button class="secondary full" data-action="proto-recordbook">원삼국 기록책</button>'+protoResultFooter(id)+'</section>';
  };
  function bubble(line){return '<div class="proto-book-bubble '+(line.speaker==='주인공'?'player':line.speaker==='나레이션'?'narration':'npc')+'"><strong>'+esc(line.speaker)+'</strong><p>'+esc(line.text)+'</p></div>';}
  function recordbook(){
@@ -303,7 +338,7 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
   if(tab==='choices')body=Object.entries(learned.choiceBySceneId).map(([id,index])=>{const source=runtime.sources.get(id),choice=source.protoSource.choices[index];return '<article class="proto-choice-memory"><h3>'+esc(source.title)+'</h3><blockquote>'+esc(choice.label)+'</blockquote>'+choice.reply.map(bubble).join('')+'<button class="text-btn" data-proto-recall="'+id+'" '+(learned.readSceneIds.includes(id)?'':'disabled')+'>공통 장면 다시 읽기</button></article>';}).join('')||'<p>고른 말과 그에 대한 반응이 이곳에 남습니다.</p>';
   if(tab==='questions')body=eraExamList(eraId);
   const archives=meta().protoSaveArchives?.entries?.length||0;
-  return '<div class="modal-overlay"><section class="modal proto-recordbook" role="dialog" aria-modal="true" aria-label="원삼국 기록책"><header><div><small>원삼국 기록책</small><h2>함께 읽고 고른 기억</h2></div><button data-action="close">닫기</button></header><div class="proto-book-counts"><span>읽은 장면 '+learned.readSceneIds.length+' / 83</span><span>배운 내용 '+learnedTopics().length+' / 31</span><span>푼 기출 '+learned.answeredQuestionIds.length+' / 23</span></div><nav class="proto-book-tabs">'+[['learning','배운 내용'],['choices','내가 고른 말'],['questions','실제 기출']].map(([id,label])=>'<button data-proto-book-tab="'+id+'" aria-current="'+(id===tab)+'">'+label+'</button>').join('')+'</nav>'+body+(archives?'<p class="proto-archive-note">이전 버전의 기록 '+archives+'개를 보관했습니다. 이전 풀이 기록은 누적 학습 기록에 남아 있습니다.</p>':'')+'</section></div>';
+  return '<div class="modal-overlay"><section class="modal proto-recordbook" role="dialog" aria-modal="true" aria-label="원삼국 기록책"><header><div><small>원삼국 기록책</small><h2>함께 읽고 고른 기억</h2></div><button data-action="close">닫기</button></header><div class="proto-book-counts"><span>읽은 장면 '+learned.readSceneIds.length+' / '+runtime.sources.size+'</span><span>배운 내용 '+learnedTopics().length+' / '+runtime.source.learning.length+'</span><span>푼 기출 '+learned.answeredQuestionIds.filter(id=>runtime.questionByOfficialId.has(id)).length+' / '+PROTO_STUDY_QUESTION_IDS.length+'</span></div><nav class="proto-book-tabs">'+[['learning','배운 내용'],['choices','내가 고른 말'],['questions','실제 기출']].map(([id,label])=>'<button data-proto-book-tab="'+id+'" aria-current="'+(id===tab)+'">'+label+'</button>').join('')+'</nav>'+body+(archives?'<p class="proto-archive-note">이전 버전의 기록 '+archives+'개를 보관했습니다. 기존 응시 기록과 진행 정보는 그대로 이어집니다.</p>':'')+'</section></div>';
  }
  const beforeModal=modalHTML;
  modalHTML=function(){

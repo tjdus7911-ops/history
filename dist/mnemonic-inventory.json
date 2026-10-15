@@ -6440,12 +6440,12 @@
       "relatedSceneIds": [
         "proto_ch07_s2",
         "proto_ch01_s2",
-        "proto_ch02_s3",
+        "proto_ch02_s1",
         "three_ch06_s1",
-        "proto_ch05_s6",
-        "proto_ch07_s4",
-        "proto_ch04_s2",
-        "proto_ch05_s7"
+        "proto_ch02_s3",
+        "proto_ch03_s1",
+        "proto_ch05_s1",
+        "proto_ch04_s2"
       ],
       "linkEvidence": [
         {
@@ -55554,7 +55554,7 @@
         "official-58-basic-39"
       ],
       "relatedSceneIds": [
-        "proto_ch02_s11"
+        "proto_ch02_s1"
       ],
       "linkEvidence": [
         {

@@ -31,9 +31,9 @@ for(const source of Object.values(current).filter(s=>s.eraId==='proto-kingdoms'&
  for(const c of source.choices||[])if(c.resultIllustrationId)assert(after.run(`assetStyle(${JSON.stringify(c.resultIllustrationId)})`).includes(asset.src),source.sceneId+' branch uses matching art');
  rows.push({sceneId:source.sceneId,title:source.title,background:asset.src,symbolic:asset.src.endsWith('.svg'),actualBrowserVerified:false});
 }
-const protectedIds=[...Array.from({length:5},(_,i)=>`proto_ch00_s${i+1}`),...Array.from({length:6},(_,i)=>`proto_ch06_s${i+9}`),...Array.from({length:8},(_,i)=>`proto_ch07_s${i+1}`)];
+const protectedIds=Object.values(current).filter(scene=>scene.eraId==='proto-kingdoms'&&scene.storyActive!==false).map(scene=>scene.sceneId);
 assert.equal(rows.filter(r=>r.symbolic).length,0,'all active proto scene backgrounds must be raster illustrations');
 for(const id of protectedIds)assert(!rows.find(s=>s.sceneId===id).symbolic,id+' protected scene uses raster art');
 const audit={status:'incomplete',actualPCVerified:false,actualMobileVerified:false,protectedScenesCompared:protectedIds.length,scenes:rows};
 fs.writeFileSync('docs/PROTO_BACKGROUND_AUDIT.json',JSON.stringify(audit,null,2)+'\n');
-console.log(`PASS: ${rows.length} scene paths checked, ${protectedIds.length} protected scenes retain dialogue/choices/performance. ${rows.filter(r=>r.symbolic).length} symbolic scenes remain. Browser QA pending.`);
+console.log(`PASS: ${rows.length} current scene paths checked, ${protectedIds.length} current scenes retain dialogue and performance. ${rows.filter(r=>r.symbolic).length} symbolic scenes remain. Browser QA pending.`);

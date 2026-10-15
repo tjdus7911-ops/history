@@ -30,8 +30,7 @@ if(globalThis.STORY_EXAM_POLICY&&globalThis.THREE_STORY_RUNTIME){
  }
  for(const spec of policy.scenes){
   if(spec.era==='goryeo')continue;
-  const source=STORIES[spec.sceneId],placements=groups.get(spec.sceneId)||[],ids=placements.map(p=>placementQuestion(p)?.questionId||p.questionId);if(!source&&spec.era==='proto'&&!proto)continue;if(!source)throw Error('Missing story scene '+spec.sceneId);
-  if(spec.era==='proto'&&proto){source.baseOfficialQuestionIds=placements.map(p=>p.questionId);source.legacyProtoQueue=source.protoQueue;continue;}
+  const source=STORIES[spec.sceneId],placements=groups.get(spec.sceneId)||[],ids=placements.map(p=>placementQuestion(p)?.questionId||p.questionId);if(spec.era==='proto'&&proto){if(source){source.baseOfficialQuestionIds=placements.map(p=>p.questionId);source.legacyProtoQueue=source.protoQueue;}continue;}if(!source&&spec.era==='proto'&&!proto)continue;if(!source)throw Error('Missing story scene '+spec.sceneId);
   source.baseOfficialQuestionIds=ids;
   if(spec.era==='proto'){
    source.legacyProtoQueue=source.protoQueue;

@@ -12,7 +12,7 @@ const run=()=>state.run,mainRun=()=>state.mainRun||state.run,meta=()=>state.meta
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const chapter=()=>CHAPTERS[run().currentChapter||'ch01'];
 const mainChapter=()=>CHAPTERS[mainRun().currentChapter||'ch01']||CHAPTERS.ch01;
-const chapterOrder=(era=null)=>Object.values(CHAPTERS).filter(chapter=>era===null||chapterEraId(chapter)===era).sort((a,b)=>Number(a.number)-Number(b.number));
+const chapterOrder=(era=null)=>Object.values(CHAPTERS).filter(chapter=>(chapter.eraId!=='proto-kingdoms'||chapter.implemented!==false)&&(era===null||chapterEraId(chapter)===era)).sort((a,b)=>Number(a.number)-Number(b.number));
 const chapterEraId=chapter=>chapter?.eraId||chapter?.episode||'goryeo';
 const chapterScenes=id=>Object.values(STORIES).filter(s=>(s.chapterId||'ch01')===id&&s.storyActive!==false);
 const chapterQuestions=id=>QUESTIONS.filter(q=>q.chapterId===id&&!q.reviewOnly&&!q.retired&&(typeof globalThis.protoActiveStoryQuestion!=='function'||globalThis.protoActiveStoryQuestion(q)));

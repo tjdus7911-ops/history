@@ -18,6 +18,7 @@ for(const [file,hash] of Object.entries(baseline.fileHashes)){
  if(file==='dist/proto-story-ui.js')continue;
  let text=fs.readFileSync(file,'utf8');
  if(file==='dist/app.js'){
+  text=text.replace("filter(chapter=>(chapter.eraId!=='proto-kingdoms'||chapter.implemented!==false)&&(era===null||chapterEraId(chapter)===era))","filter(chapter=>era===null||chapterEraId(chapter)===era)");
   for(const addition of ['&&(globalThis.THREE_LEARNING_BOUNDARY?.canPractice(q)??true)','&&(globalThis.PROTO_LEARNING_BOUNDARY?.canPractice(q)??true)'])text=text.replace(addition,'');
   text=text.replace(",visibleExplanation=isVerifiedOfficialQuestion(q)?globalThis.OFFICIAL_EXAM_UI?.visibleExplanation?.(q)||'원문 확인 중':q.explanation",'').replace('esc(visibleExplanation)','esc(q.explanation)');
  }

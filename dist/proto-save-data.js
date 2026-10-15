@@ -2,12 +2,12 @@
 if(globalThis.PROTO_REVISION_RUNTIME?.version===3){
 (function(){
  const runtime=globalThis.PROTO_REVISION_RUNTIME;
- const version=3,eraId='proto-kingdoms',progressKey='proto-kingdoms-v3',storageKey='lived-history-proto-kingdoms-v3',archiveStorageKey='lived-history-proto-kingdoms-archives-v3',contentVersion=runtime.contentVersion,firstChapterId='proto-ch00';
+ const version=3,eraId='proto-kingdoms',progressKey='proto-kingdoms-v3',storageKey='lived-history-proto-kingdoms-v3',archiveStorageKey='lived-history-proto-kingdoms-archives-v3',contentVersion=runtime.contentVersion,legacyContentVersion=PROTO_LEGACY_CONTENT_VERSION,firstChapterId='proto-ch02';
  const copy=value=>value==null?value:JSON.parse(JSON.stringify(value)),object=value=>!!value&&typeof value==='object'&&!Array.isArray(value);
  const ownsChapter=id=>CHAPTERS[id]?.eraId===eraId,ownsScene=id=>runtime.sources.has(id);
  const ownsQuestion=id=>ownsChapter(QUESTIONS.find(q=>q.questionId===id)?.chapterId);
  const familyRun=value=>!!value&&(ownsChapter(value.currentChapter)||value.contentEra===eraId);
- const questionIds={has:id=>ownsQuestion(id)},officialIds={has:id=>runtime.questionByOfficialId.has(id)},lineIds=new Set(),commonIds=new Set();
+ const questionIds={has:id=>ownsQuestion(id)},officialIds={has:id=>runtime.questionByOfficialId.has(id)||runtime.legacyOfficialIds.has(id)},lineIds=new Set(),commonIds=new Set(),learningIds=new Set(runtime.source.learning.map(item=>item.id));
  for(const source of runtime.sources.values()){
   for(const line of [...source.dialogues,...source.protoCommon]){lineIds.add(line.lineId);commonIds.add(line.lineId);}
   for(const choice of source.choices||[])for(const line of choice.resultDialogues)lineIds.add(line.lineId);
@@ -43,9 +43,9 @@ if(globalThis.PROTO_REVISION_RUNTIME?.version===3){
   }
   return answered;
  }
- const emptyBook=(m={})=>({version,contentVersion,readSceneIds:[],readLineIds:[],openedQuestionIds:[],answeredQuestionIds:answeredFromRecords(m),choiceBySceneId:{}});
+ const emptyBook=(m={})=>({version,contentVersion,readSceneIds:[],readLineIds:[],learnedKeywordIds:[],openedQuestionIds:[],answeredQuestionIds:answeredFromRecords(m),choiceBySceneId:{}});
  function validBook(value){
-  if(!object(value)||value.version!==version||value.contentVersion!==contentVersion||!object(value.choiceBySceneId))return false;
+  if(!object(value)||value.version!==version||value.contentVersion!==contentVersion||!object(value.choiceBySceneId)||!stringArray(value.learnedKeywordIds)||value.learnedKeywordIds.some(id=>!learningIds.has(id)))return false;
   for(const [key,known] of [['readSceneIds',runtime.sources],['readLineIds',commonIds],['openedQuestionIds',officialIds],['answeredQuestionIds',officialIds]])if(!stringArray(value[key])||value[key].some(id=>!known.has(id)))return false;
   if(Object.entries(value.choiceBySceneId).some(([id,index])=>!ownsScene(id)||!Number.isInteger(index)||index<0||index>=(runtime.sources.get(id).choices?.length||0)))return false;
   const read=new Set(value.readLineIds);
@@ -53,7 +53,33 @@ if(globalThis.PROTO_REVISION_RUNTIME?.version===3){
   if(value.readSceneIds.some(id=>runtime.sources.get(id).choices?.length&&!Number.isInteger(value.choiceBySceneId[id])))return false;
   return true;
  }
- function ensureBook(m){if(!validBook(m.protoRevisionBook)){if(m.protoRevisionBook!=null)archive(m,'invalid-book','meta.protoRevisionBook',m.protoRevisionBook);m.protoRevisionBook=emptyBook(m);}return m.protoRevisionBook;}
+ function migrateLegacyBook(value,m={}){
+  if(!object(value)||value.version!==version||value.contentVersion!==legacyContentVersion)return null;
+  const migrated=emptyBook(m),oldRead=new Set(Array.isArray(value.readSceneIds)?value.readSceneIds:[]);
+  migrated.learnedKeywordIds=runtime.source.learning.filter(item=>oldRead.has(item.legacyFirstSceneId)).map(item=>item.id);
+  for(const id of value.openedQuestionIds||[])if(officialIds.has(id)&&!migrated.openedQuestionIds.includes(id))migrated.openedQuestionIds.push(id);
+  for(const id of [...(value.answeredQuestionIds||[]),...answeredFromRecords(m)])if(officialIds.has(id)&&!migrated.answeredQuestionIds.includes(id))migrated.answeredQuestionIds.push(id);
+  const completed=new Set((m.completedChapters||[]).filter(ownsChapter));
+  for(const [legacySceneId,currentSceneId] of Object.entries(runtime.source.saveCompatibility.legacyCompletionMilestones)){
+   const chapterId='proto-ch'+legacySceneId.slice(8,10),isComplete=oldRead.has(legacySceneId)||completed.has(chapterId);
+   if(!isComplete)continue;
+   const source=runtime.sources.get(currentSceneId);if(!source)continue;
+   if(!migrated.readSceneIds.includes(currentSceneId))migrated.readSceneIds.push(currentSceneId);
+   migrated.readLineIds.push(...[...source.dialogues,...source.protoCommon].map(line=>line.lineId));
+   migrated.learnedKeywordIds.push(...source.protoLearningIds);
+  }
+  migrated.readLineIds=[...new Set(migrated.readLineIds)];
+  migrated.learnedKeywordIds=[...new Set(migrated.learnedKeywordIds.filter(id=>learningIds.has(id)))];
+  migrated.openedQuestionIds=[...new Set(migrated.openedQuestionIds)];migrated.answeredQuestionIds=[...new Set(migrated.answeredQuestionIds)];
+  return validBook(migrated)?migrated:null;
+ }
+ function ensureBook(m){
+  if(validBook(m.protoRevisionBook))return m.protoRevisionBook;
+  const previous=m.protoRevisionBook,migrated=migrateLegacyBook(previous,m);
+  if(migrated){archive(m,'content-revision-migration','meta.protoRevisionBook',previous);m.protoRevisionBook=migrated;return m.protoRevisionBook;}
+  if(previous!=null)archive(m,'invalid-book','meta.protoRevisionBook',previous);
+  m.protoRevisionBook=emptyBook(m);return m.protoRevisionBook;
+ }
  function phaseEntries(source,current){if(current?.phase==='branch')return source.choices?.[current.choiceIndex]?.resultDialogues||[];if(current?.phase==='join')return source.protoCommon;return source.dialogues;}
  function validRun(value){
   if(!object(value)||!ownsChapter(value.currentChapter)||value.contentVersion!==version||value.protoContentVersion!==contentVersion||!object(value.protoStoryState)||value.protoStoryState.version!==version||!object(value.protoStoryState.scenes))return false;
@@ -118,8 +144,19 @@ if(globalThis.PROTO_REVISION_RUNTIME?.version===3){
   if(fresh){value.pending=null;value.dialogueSceneId=value.storyId;value.dialogueCursor=1;value.protoTypedLineId=null;value.protoCheckpoint=null;value.protoAnswerDraft=null;value.questionQueue=[];value.questionQueueIndex=0;value.questionQueueResumeStoryId=null;value.activeQuestionId=null;value.activeQuestionSetId=null;value.questionAnswer=null;delete value.protoNeedsResumeRecovery;}
   return value;
  }
- function freshRun(started=false){const value=INITIAL_RUN(firstChapterId);value.started=started;identifyRun(value,true);value.chapterStart=chapterSnapshot(value);return value;}
- function configureSeason(registry){const info=registry?.find(item=>item.id===eraId);if(info)Object.assign(info,{progressKey,contentVersion:version,contentRevision:contentVersion,years:'220 — 221년 · 여러 나라의 성장',description:'단과 라온의 흔적을 따라 배우는 여러 나라의 83개 이야기.'});}
+ function freshRun(started=false,chapterId=firstChapterId){const value=INITIAL_RUN(chapterId);value.started=started;identifyRun(value,true);value.chapterStart=chapterSnapshot(value);return value;}
+ function activeChapterIds(){return runtime.source.chapters.map(chapter=>'proto-ch'+String(chapter.chapterNumber).padStart(2,'0'));}
+ function legacyResumeChapter(value,m){
+  const active=activeChapterIds(),completed=new Set((m.completedChapters||[]).filter(id=>active.includes(id))),current=value?.currentChapter;
+  if(active.includes(current)&&!completed.has(current))return current;
+  return active.find(id=>!completed.has(id))||active.at(-1)||firstChapterId;
+ }
+ function upgradeLegacyRun(value,m){
+  const target=freshRun(Boolean(value?.started),legacyResumeChapter(value,m));
+  if(value)archive(m,'content-revision-migration','main-save.proto-run',value);
+  return target;
+ }
+ function configureSeason(registry){const info=registry?.find(item=>item.id===eraId);if(info)Object.assign(info,{progressKey,contentVersion:version,contentRevision:contentVersion,years:'220 — 221년 · 다섯 나라의 생활',description:'단과 라온의 흔적을 따라 다섯 장면에서 원삼국의 필수 키워드를 익힙니다.'});}
  const ownEntries=value=>Object.fromEntries(Object.entries(value||{}).filter(([id])=>ownsChapter(id)));
  const beforeMigration=migrateSave;
  migrateSave=function(raw){
@@ -128,7 +165,14 @@ if(globalThis.PROTO_REVISION_RUNTIME?.version===3){
   if(!preserved?.run||!preserved.meta){ensureBook(result.meta);return result;}
   for(const collection of ['chapterRecords','chapterRuns']){result.meta[collection]||={};for(const [id,value] of Object.entries(preserved.meta[collection]||{}))if(ownsChapter(id))result.meta[collection][id]=copy(value);}
   if(preserved.meta.protoSaveArchives!=null)result.meta.protoSaveArchives=copy(preserved.meta.protoSaveArchives);
-  const candidates=[preserved.run,preserved.mainRun].filter(familyRun),trustedBook=validBook(preserved.meta.protoRevisionBook);
+  const candidates=[preserved.run,preserved.mainRun].filter(familyRun),previousProgress=preserved.meta.eraProgress?.[progressKey];
+  const oldBook=preserved.meta.protoRevisionBook?.contentVersion===legacyContentVersion?preserved.meta.protoRevisionBook:null;
+  const legacyRun=candidates.some(value=>value.protoContentVersion===legacyContentVersion||value.contentVersion===version&&value.protoContentVersion!==contentVersion);
+  const legacyUpgrade=Boolean(oldBook||legacyRun||previousProgress?.contentRevision===legacyContentVersion);
+  const migratableBook=oldBook||legacyUpgrade?oldBook||{version,contentVersion:legacyContentVersion,readSceneIds:[],readLineIds:[],openedQuestionIds:[],answeredQuestionIds:[],choiceBySceneId:{}}:null;
+  const convertedBook=migratableBook?migrateLegacyBook(migratableBook,preserved.meta):null;
+  if(convertedBook){archive(result.meta,'content-revision-migration','meta.protoRevisionBook',migratableBook);result.meta.protoRevisionBook=convertedBook;}
+  const trustedBook=validBook(result.meta.protoRevisionBook)||validBook(preserved.meta.protoRevisionBook);
   const hasRecords=(preserved.meta.completedChapters||[]).some(ownsChapter)||Object.keys(ownEntries(preserved.meta.chapterRecords)).length>0||Object.keys(ownEntries(preserved.meta.chapterRuns)).length>0;
   const untrustedContent=!trustedBook&&(candidates.length>0||hasRecords),untrusted=untrustedContent||candidates.some(value=>!validLearningCursor(value,preserved.meta.protoRevisionBook));
   if(untrusted){
@@ -137,12 +181,18 @@ if(globalThis.PROTO_REVISION_RUNTIME?.version===3){
   }
   for(const name of ['run','mainRun']){
    const value=preserved[name];if(!familyRun(value))continue;
-   if(trustedBook&&validLearningCursor(value,preserved.meta.protoRevisionBook))result[name]=copy(value);
+   if(legacyUpgrade&&convertedBook)result[name]=upgradeLegacyRun(value,result.meta);
+   else if(trustedBook&&validLearningCursor(value,result.meta.protoRevisionBook||preserved.meta.protoRevisionBook))result[name]=copy(value);
    else{archive(result.meta,value.contentVersion===version?'invalid-resume':'legacy-content','main-save.'+name,value);result[name]=name==='run'?freshRun(false):null;if(name==='run')result[name].protoNeedsResumeRecovery=true;}
   }
   if(familyRun(preserved.run)&&!validLearningCursor(preserved.run,preserved.meta.protoRevisionBook)&&preserved.mainRun&&!familyRun(preserved.mainRun)){result.run=result.mainRun;result.mainRun=null;}
-  result.meta.eraProgress||={};const previous=preserved.meta.eraProgress?.[progressKey];
-  if(previous&&(!trustedBook||!validResume(previous.resume,preserved.meta.protoRevisionBook))){archive(result.meta,'invalid-resume','main-save.'+progressKey,previous);delete result.meta.eraProgress[progressKey];}
+  result.meta.eraProgress||={};
+  if(previousProgress&&legacyUpgrade&&convertedBook){
+   const resumeRun=[result.run,result.mainRun].find(value=>familyRun(value)&&validRun(value))||freshRun(true,legacyResumeChapter(preserved.run,preserved.meta));
+   const resume={run:copy(resumeRun),mainRun:familyRun(result.mainRun)?copy(result.mainRun):null};
+   const completedCount=activeChapterIds().filter(id=>result.meta.completedChapters?.includes(id)).length;
+   result.meta.eraProgress[progressKey]={...previousProgress,contentVersion:version,contentRevision:contentVersion,lastChapter:resumeRun.currentChapter,lastScene:resumeRun.storyId,progress:Math.min(100,Math.max(Number(previousProgress.progress)||0,Math.round(completedCount/activeChapterIds().length*100))),completed:Boolean(previousProgress.completed||completedCount===activeChapterIds().length),resume,updatedAt:previousProgress.updatedAt||null};
+  }else if(previousProgress&&(!trustedBook||!validResume(previousProgress.resume,result.meta.protoRevisionBook||preserved.meta.protoRevisionBook))){archive(result.meta,'invalid-resume','main-save.'+progressKey,previousProgress);delete result.meta.eraProgress[progressKey];}
   ensureBook(result.meta);return result;
  };
  for(const name of ['startChapter','restartChapter','beginReplay','resetRun']){
@@ -161,6 +211,6 @@ if(globalThis.PROTO_REVISION_RUNTIME?.version===3){
   const record=target.meta.chapterRecords?.[target.run.currentChapter];if(record){record.contentVersion=version;record.protoContentVersion=contentVersion;}
   return result;
  };
- globalThis.PROTO_SAVE_V3={version,eraId,progressKey,storageKey,archiveStorageKey,contentVersion,firstChapterId,copy,object,ownsChapter,ownsScene,ownsQuestion,familyRun,lineIds,commonIds,validBook,validRun,validLearningCursor,validResume,emptyBook,ensureBook,identifyRun,freshRun,configureSeason,archive,fingerprint,answeredFromRecords,phaseEntries};
+ globalThis.PROTO_SAVE_V3={version,eraId,progressKey,storageKey,archiveStorageKey,contentVersion,legacyContentVersion,firstChapterId,copy,object,ownsChapter,ownsScene,ownsQuestion,familyRun,lineIds,commonIds,validBook,validRun,validLearningCursor,validResume,emptyBook,ensureBook,migrateLegacyBook,upgradeLegacyRun,activeChapterIds,identifyRun,freshRun,configureSeason,archive,fingerprint,answeredFromRecords,phaseEntries};
 })();
 }

@@ -36,6 +36,6 @@ for(const source of after.copy("Object.values(STORIES).filter(s=>s.eraId==='prot
   }
  }
 }
-assert.equal(rows.length,83);assert(portraits>0);
+assert.equal(rows.length,5);assert(portraits>0);
 fs.writeFileSync('docs/PROTO_ART_AUDIT.json',JSON.stringify({status:'incomplete',actualPCVerified:false,actualMobileVerified:false,frames,portraits,scenes:rows},null,2)+'\n');
-console.log(`PASS: all content/questions/systems preserved; ${frames} virtual dialogue frames, ${portraits} portrait tags. NOT browser QA. ${rows.filter(r=>r.symbolic).length} scenes still use symbolic backgrounds.`);
+console.log(`PASS: five active scenes retain approved story art; ${frames} virtual dialogue frames, ${portraits} portrait tags. NOT browser QA. ${rows.filter(r=>r.symbolic).length} scenes still use symbolic backgrounds.`);

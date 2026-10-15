@@ -1,12 +1,18 @@
-/* 원삼국 전용 설치 계층. 승인한 원본을 그대로 설치하고 다른 시대를 보존한다. */
+/* 원삼국 전용 설치 계층. 승인한 다섯 장면 원본을 그대로 설치한다. */
 const PROTO_STORY_VERSION=3;
 const PROTO_CONTENT_VERSION=PROTO_REVISION_SOURCE.contentVersion;
-// Older saved question IDs retain their exact catalog objects and answers.
+const PROTO_LEGACY_CONTENT_VERSION=PROTO_REVISION_SOURCE.saveCompatibility.previousContentVersion;
+const PROTO_LEGACY_STORY_SCENE_IDS=new Set(Object.keys(PROTO_REVISION_SOURCE.saveCompatibility.previousSceneCounts).flatMap(chapter=>{
+ const count=PROTO_REVISION_SOURCE.saveCompatibility.previousSceneCounts[chapter];
+ return Array.from({length:count},(_,index)=>`${chapter}_s${index+1}`);
+}));
+// Older saved question IDs retain their exact catalog objects, answers and review records.
 QUESTIONS.push(...PROTO_LEGACY_STUDY_QUESTIONS.map(q=>JSON.parse(JSON.stringify(q))));
 const PROTO_LEGACY_QUESTION_ART=new Map(QUESTIONS.filter(q=>q.chapterId?.startsWith('proto-')).map(q=>[q,q.relatedIllustrationId]));
 const PROTO_CAST={
  '주인공':'proto_modern','단':'proto_guide','단(???)':'proto_guide','현재 단':'proto_guide','과거의 단':'proto_guide',
- '라온':'proto_raon','어린 라온':'proto_raon','아린':'proto_arin','무진':'proto_warrior','소하':'proto_villager','해루':'proto_haeru','비류':'proto_biryu','상인':'proto_merchant','교역상':'proto_merchant','이야기꾼':'proto_storyteller'
+ '라온':'proto_raon','어린 라온':'proto_raon','아린':'proto_arin','무진':'proto_warrior','소하':'proto_villager',
+ '해루':'proto_haeru','비류':'proto_biryu','상인':'proto_merchant','교역상':'proto_merchant','이야기꾼':'proto_storyteller'
 };
 const PROTO_NAMES={proto_modern:['나',24],proto_guide:['단',27],proto_raon:['라온',19],proto_arin:['아린',null],proto_warrior:['무진',null],proto_villager:['소하',null],proto_haeru:['해루',null],proto_biryu:['비류',null],proto_merchant:['상인',null],proto_storyteller:['이야기꾼',null]};
 for(const [id,[name,age]] of Object.entries(PROTO_NAMES)){
@@ -19,7 +25,7 @@ for(const [id,[name,age]] of Object.entries(PROTO_NAMES)){
  if(typeof CHARACTER_RENDER_PROFILES!=='undefined')CHARACTER_RENDER_PROFILES.characters[id]={tier:'MAIN',scale:1.62,anchorX:0,anchorY:15,framing:'upper-body',lockStateScale:true};
 }
 for(const expression of ['smile','sad','determined'])PORTRAITS[`proto_guide_${expression}`]={...PORTRAITS[`proto_guide_${expression}`],src:`assets/ancient/characters/proto-guide-${expression}.png`};
-const protoLine=({speaker,text,lineId})=>{
+const protoLine=({speaker,text,lineId,learningKeywordIds=[]})=>{
  let line;
  const thought=speaker==='주인공(속마음)';
  if(speaker==='나레이션')line=aN(text);
@@ -29,7 +35,7 @@ const protoLine=({speaker,text,lineId})=>{
   const expression=/미안|두렵|겁|후회|침묵|두려/.test(text)?'worried':/고맙|하하|ㅋㅋ|약속|마음에/.test(text)?'smile':/\?!|으악|알이라고/.test(text)?'surprised':'neutral';
   line=dialogueLine(id,expression,text,thought?'thought':id==='proto_modern'?'player':'npc',speaker==='단(???)'?'???':thought?'주인공 · 속마음':speaker==='주인공'?null:speaker);
  }
- return {...line,lineId,protoSpeaker:speaker,protoKind:speaker==='나레이션'?'narration':thought?'thought':'dialogue'};
+ return {...line,lineId,protoSpeaker:speaker,protoKind:speaker==='나레이션'?'narration':thought?'thought':'dialogue',learningKeywordIds:[...learningKeywordIds]};
 };
 const PROTO_SYMBOLIC_BACKGROUNDS=['camp','wagon','village','ritual','jumong-birth','jolbon','grave','workshop','sodo','crossroads','map'];
 for(const name of PROTO_SYMBOLIC_BACKGROUNDS){const id=`proto-story-${name}`;ASSETS[id]={id,label:`원삼국 ${name} 장면 · 상징 삽화`,src:`assets/ancient/story/${name}.svg`,imageKind:'story-background',embeddedCharacters:false,status:'ready'};}
@@ -54,17 +60,14 @@ function protoBackground(c,s){
 }
 const protoSceneId=(c,s)=>`proto_ch${String(c).padStart(2,'0')}_s${s}`;
 for(const story of Object.values(STORIES))if(story.eraId==='proto-kingdoms')story.storyActive=false;
+for(const chapterId of ['proto-ch00','proto-ch01','proto-ch07'])if(CHAPTERS[chapterId])CHAPTERS[chapterId].implemented=false;
 for(const c of PROTO_STORY_SCRIPT){
  const id=ancientChapterId('proto',c.number),last=c.scenes.at(-1).sceneId;
- Object.assign(CHAPTERS[id],{title:c.title,subtitle:c.arc,years:c.number<=2?'220년 늦가을 — 겨울':'221년 겨울 — 늦봄',startStoryId:c.scenes[0].sceneId,completeStoryId:last,thumbnail:ASSETS[protoBackground(c.number,c.scenes[0])].src,questionCount:0,reviewQuestionCount:0,questionSetCount:0,storyVersion:PROTO_STORY_VERSION,contentVersion:PROTO_CONTENT_VERSION});
+ const first=c.scenes[0],firstBackground=protoBackground(c.number,first),year=Number(first.period.match(/\d{3}/)?.[0]||220);
+ Object.assign(CHAPTERS[id],{title:c.title,subtitle:c.arc,years:`${year}년 · 여러 나라의 성장`,startStoryId:first.sceneId,completeStoryId:last,thumbnail:ASSETS[firstBackground].src,questionCount:0,reviewQuestionCount:0,questionSetCount:0,storyVersion:PROTO_STORY_VERSION,contentVersion:PROTO_CONTENT_VERSION,implemented:true});
  for(const s of c.scenes){
-  const sceneId=s.sceneId,next=s.sceneId===last?null:s.nextSceneId,bg=protoBackground(c.number,s),dialogues=s.main.map(protoLine);
-  const source=scene({sceneId,chapterId:id,eraId:'proto-kingdoms',year:c.number<=2?220:221,location:s.location,title:s.title,sceneType:s.choices.length?'CHOICE':'STORY',illustrationId:bg,dialogues,nextStoryId:next,completeChapter:!next,storyActive:true,protoStoryVersion:PROTO_STORY_VERSION,contentVersion:PROTO_CONTENT_VERSION,sceneNumber:s.number,protoSource:s,protoCommon:s.join.map(protoLine),protoNextSceneId:s.nextSceneId,protoPeriod:s.period,protoLearningIds:s.learning.map(item=>item.id),protoQueue:s.quizAfter,fictionNotice:'단과 라온의 여행은 여러 나라의 사료 속 특징을 배우는 허구 이야기입니다.',enterCharacterStates:{proto_modern:{characterAge:24},proto_guide:{characterAge:27,isAlive:true},proto_raon:{characterAge:19,isAlive:true}},flashback:/회상/.test(s.location),timeOfDay:/밤|어두운|모닥불/.test(s.location)?'night':'day'});
-  if(c.number===3&&s.number>=4&&s.number<=6)source.fictionNotice='주몽의 건국 전승을 듣는 회상입니다. 현재 여행에서 주몽을 직접 만나지 않습니다.';
-  if(c.number===4&&s.number===8)source.fictionNotice='현재보다 앞선 형제의 기억입니다. 과거 회상 속 모습을 상징적으로 보여 줍니다.';
-  if(s.choices.length)source.choices=s.choices.map((v,index)=>choice(v.label,sceneId,{}, {},'',{
-   resultIllustrationId:bg,resultDialogues:[protoLine(v.spokenLine),...v.reply.map(protoLine)],protoChoiceId:v.choiceId,protoChoiceIndex:index,importantChoice:v.choiceId,flags:{[`protoChoice_${c.number}_${s.number}`]:index}
-  }));
+  const sceneId=s.sceneId,next=s.sceneId===last?null:s.nextSceneId,bg=protoBackground(c.number,s),dialogues=s.main.map(protoLine),sceneYear=Number(s.period.match(/\d{3}/)?.[0]||year);
+  const source=scene({sceneId,chapterId:id,eraId:'proto-kingdoms',year:sceneYear,location:s.location,title:s.title,sceneType:s.choices.length?'CHOICE':'STORY',illustrationId:bg,dialogues,nextStoryId:next,completeChapter:!next,storyActive:true,protoStoryVersion:PROTO_STORY_VERSION,contentVersion:PROTO_CONTENT_VERSION,sceneNumber:s.number,protoSource:s,protoCommon:s.join.map(protoLine),protoNextSceneId:s.nextSceneId,protoPeriod:s.period,protoCountry:s.country,protoPlace:s.place,protoLearningIds:s.learning.map(item=>item.id),protoQueue:s.quizAfter,fictionNotice:'단과 라온의 여행은 여러 나라의 사료 속 특징을 배우는 허구 이야기입니다.',enterCharacterStates:{proto_modern:{characterAge:24},proto_guide:{characterAge:27,isAlive:true},proto_raon:{characterAge:19,isAlive:true}},flashback:/회상/.test(s.location),timeOfDay:/밤|어두운|모닥불/.test(s.location)?'night':'day'});
   STORIES[sceneId]=source;
  }
  const alias=`proto_ch${String(c.number).padStart(2,'0')}_complete`;
@@ -79,9 +82,10 @@ for(const checkpoint of PROTO_CHECKPOINTS){
  const story=STORIES[checkpoint.sceneId],setId=`${story.sceneId}_questions`,linked=[];
  for(const officialId of checkpoint.questionIds){
   const source=ancientSourceById.get(officialId),details=ancientExplanationById.get(officialId),authored=PROTO_REVISION_SOURCE.examPlan.questions.find(q=>q.officialQuestionId===officialId),questionId=`proto-v3-${officialId}`;
-  if(!source||!details||!authored||source.answer!==authored.answerIndex0)throw Error(`검증 데이터 누락: ${officialId}`);
-  const choices=Array.from({length:authored.choiceCount},(_,index)=>`${index+1}번`),learningIds=PROTO_REVISION_SOURCE.learning.filter(item=>item.questionIds.includes(officialId)).map(item=>item.id);
-  const q=question({questionId,officialQuestionId:officialId,chapterId:checkpoint.chapterId,era:'원삼국',primaryEra:'ancient',relatedSceneId:story.sceneId,relatedHistoricalEventId:`proto-checkpoint-${checkpoint.number}`,historicalEventId:`proto-checkpoint-${checkpoint.number}`,historicalEvent:authored.editorialFocusSummary,relatedIllustrationId:story.illustrationId,questionType:'공식 원본 자료 분석형',difficulty:source.examLevel,question:details.question,sourceQuestionText:details.question,passage:details.clue,choices,sourceChoices:choices,answer:authored.answerIndex0,answerLabel:String(authored.answerNumber1),acceptedAnswers:authored.acceptedAnswersFromCatalog||[authored.answerIndex0],explanation:authored.proposed.playExplanation,wrongFeedback:authored.proposed.playExplanation,memoryPrompt:story.title,gameMemory:story.title,storyConnection:story.title,examKeywords:learningIds,concepts:learningIds,conceptIds:learningIds,rewardKnowledge:3,resumeStoryId:story.nextStoryId,isOfficial:true,sourceVerified:true,sourceStatus:'verified',sourceImageStatus:'verified',examRound:authored.examRound,examYear:authored.examYear,examLevel:authored.examLevel,questionNumber:authored.questionNumber,points:source.points,sourcePage:authored.sourcePage,sourceFile:authored.sourcePdf,answerFile:authored.answerPdf,sourcePdf:authored.sourcePdf,answerPdf:authored.answerPdf,sourceQuestionImage:authored.questionImage,questionImage:authored.questionImage,examType:'한능검 대비 · 실제 기출',source:'국사편찬위원회 한국사능력검정시험 공식 문제지·정답표',protoStoryVersion:PROTO_STORY_VERSION,contentVersion:PROTO_CONTENT_VERSION,protoExam:authored,protoRequiredSceneIds:[...authored.proposed.requiresReadSceneIds],protoIndependentExplanation:details.explanation,protoLearningIds:learningIds});
+  if(!source||!details?.explanation||!authored||source.answer!==authored.answerIndex0)throw Error(`검증 데이터 누락: ${officialId}`);
+  const learningIds=[...authored.learningKeywordIds],choices=Array.from({length:authored.choiceCount},(_,index)=>`${index+1}번`);
+  const protoExam={...authored,label:`${authored.examRound}회 ${authored.examLevel} ${authored.questionNumber}번`,editorialFocusSummary:authored.proposed.editorialFocusSummary,proposed:{...authored.proposed,playExplanation:details.explanation}};
+  const q=question({questionId,officialQuestionId:officialId,chapterId:checkpoint.chapterId,era:'원삼국',primaryEra:'ancient',relatedSceneId:story.sceneId,relatedHistoricalEventId:`proto-checkpoint-${checkpoint.number}`,historicalEventId:`proto-checkpoint-${checkpoint.number}`,historicalEvent:authored.proposed.editorialFocusSummary,relatedIllustrationId:story.illustrationId,questionType:'공식 원본 자료 분석형',difficulty:source.examLevel,question:details.question,sourceQuestionText:details.question,passage:details.clue,choices,sourceChoices:choices,answer:authored.answerIndex0,answerLabel:String(authored.answerNumber1),acceptedAnswers:[authored.answerIndex0],explanation:details.explanation,wrongFeedback:details.explanation,memoryPrompt:story.title,gameMemory:story.title,storyConnection:story.title,examKeywords:learningIds,concepts:learningIds,conceptIds:learningIds,rewardKnowledge:3,resumeStoryId:story.nextStoryId,isOfficial:true,sourceVerified:true,sourceStatus:'verified',sourceImageStatus:'verified',examRound:authored.examRound,examYear:authored.examYear,examLevel:authored.examLevel,questionNumber:authored.questionNumber,points:source.points,sourcePage:source.sourcePage,sourceFile:source.sourcePdf,answerFile:source.answerPdf,sourcePdf:source.sourcePdf,answerPdf:source.answerPdf,sourceQuestionImage:authored.questionImage,questionImage:authored.questionImage,questionImageSha256:authored.questionImageSha256,examType:'한능검 대비 · 실제 기출',source:'국사편찬위원회 한국사능력검정시험 공식 문제지·정답표',protoStoryVersion:PROTO_STORY_VERSION,contentVersion:PROTO_CONTENT_VERSION,protoExam,protoRequiredSceneIds:[...authored.proposed.requiresReadSceneIds],protoIndependentExplanation:details.explanation,protoLearningIds:learningIds});
   QUESTIONS.push(q);linked.push(questionId);PROTO_STUDY_QUESTION_IDS.push(questionId);
  }
  QUESTION_SETS[setId]={questionSetId:setId,checkpointId:checkpoint.checkpointId,chapterId:story.chapterId,afterSceneId:story.sceneId,afterLineId:checkpoint.afterLineId,resumeStoryId:story.nextStoryId,requiredCount:linked.length,targetCount:linked.length,officialQuestionIds:linked,practiceQuestionIds:[],verifiedCount:linked.length,missingQuestionCount:0,status:'ready',sourceType:'official_verified',preserveQuestionOrder:true,verified:true};
@@ -93,13 +97,17 @@ for(const c of PROTO_STORY_SCRIPT){
  Object.assign(CHAPTERS[id],{questionCount:ids.length,reviewQuestionCount:ids.length,questionSetCount:PROTO_CHECKPOINTS.filter(cp=>cp.chapterId===id).length});
  if(typeof SPLIT_REVIEW_IDS!=='undefined')SPLIT_REVIEW_IDS[id]=ids;
 }
+const PROTO_LEGACY_OFFICIAL_IDS=new Set(PROTO_LEGACY_STUDY_QUESTIONS.map(q=>q.officialQuestionId).filter(Boolean));
 globalThis.PROTO_CHECKPOINTS=PROTO_CHECKPOINTS;
-globalThis.PROTO_STORY_SCOPE={contentVersion:PROTO_CONTENT_VERSION,storyScenes:83,checkpointCount:11,officialQuestionCount:23,missingQuestionCount:0,choices:108,dialogues:1369,learningCount:31};
-Object.assign(globalThis.ANCIENT_STORY_SCOPE,{protoScenes:83});
+globalThis.PROTO_STUDY_QUESTION_IDS=PROTO_STUDY_QUESTION_IDS;
+globalThis.PROTO_LEGACY_OFFICIAL_IDS=PROTO_LEGACY_OFFICIAL_IDS;
+globalThis.PROTO_STORY_SCOPE={contentVersion:PROTO_CONTENT_VERSION,storyScenes:5,chapterCount:5,checkpointCount:5,officialQuestionCount:15,missingQuestionCount:0,choices:0,dialogues:PROTO_REVISION_SOURCE.counts.authoredUtterances,learningCount:31};
+Object.assign(globalThis.ANCIENT_STORY_SCOPE,{protoChapters:PROTO_STORY_SCRIPT.length,protoScenes:PROTO_STORY_SCOPE.storyScenes});
 globalThis.protoActiveStoryQuestion=q=>!q.chapterId?.startsWith('proto-')||q.protoStoryVersion===PROTO_STORY_VERSION;
 globalThis.PROTO_QUESTION_SLOTS=PROTO_REVISION_SOURCE.learning.map(item=>({questionSlotId:item.id,sceneId:item.firstSceneId,sceneIds:[...item.sceneIds],learningConcept:item.title,questionIds:item.questionIds.map(id=>`proto-v3-${id}`),officialQuestionIds:[...item.questionIds],sourceVerificationStatus:'official_original_and_answer_checked'}));
 globalThis.PROTO_LEARNING_LINKS=PROTO_REVISION_SOURCE.learning.map(item=>({conceptId:item.id,learningConcept:item.title,sceneIds:[...item.sceneIds],questionSlotIds:[item.id],questionIds:item.questionIds.map(id=>`proto-v3-${id}`)}));
 globalThis.PROTO_REVISION_RUNTIME={version:PROTO_STORY_VERSION,contentVersion:PROTO_CONTENT_VERSION,source:PROTO_REVISION_SOURCE,
  sources:new Map(Object.values(STORIES).filter(source=>source.protoStoryVersion===PROTO_STORY_VERSION&&source.storyActive!==false).map(source=>[source.sceneId,source])),
  questionByOfficialId:new Map(QUESTIONS.filter(q=>q.protoStoryVersion===PROTO_STORY_VERSION).map(q=>[q.officialQuestionId,q])),
+ legacyOfficialIds:PROTO_LEGACY_OFFICIAL_IDS,
  learningById:new Map(PROTO_REVISION_SOURCE.learning.map(item=>[item.id,item]))};

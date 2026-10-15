@@ -1,40 +1,27 @@
 const fs=require('node:fs'),assert=require('node:assert/strict');
-const {load}=require('./proto-revision-harness.cjs'),h=load(),source=JSON.parse(fs.readFileSync('dist/proto-story-script.json'));
-const scenes=source.chapters.flatMap(chapter=>chapter.scenes);
-assert.equal(scenes.length,83);assert.deepEqual(source.chapters.map(ch=>ch.scenes.length),[5,10,12,14,10,10,14,8]);
-assert.equal(h.run("eraProtagonist('proto-kingdoms').gender"),'male');assert.equal(h.run("eraProtagonist('proto-kingdoms').id"),'protagonist_proto_kingdoms');
-function setScene(scene,phase,index=null){
- h.run("(function(){const source=STORIES["+JSON.stringify(scene.sceneId)+"];state.mainRun=null;state.run=INITIAL_RUN(source.chapterId);PROTO_SAVE_V3.identifyRun(run(),true);run().started=true;run().storyId=source.sceneId;run().protoStoryState.scenes[source.sceneId]={phase:"+JSON.stringify(phase)+",choiceIndex:"+index+"};run().pending="+(phase==='branch'?"{...source.choices["+index+"],sourceSceneId:source.sceneId}":"null")+";run().dialogueSceneId=run().pending?'result:'+source.sceneId:source.sceneId;screen='game';modal=null;})()");
-}
-let frames=0,choices=0;
-function checkFrames(scene,entries,phase,index=null){
- setScene(scene,phase,index);
- for(let cursor=1;cursor<=entries.length;cursor++){
-  h.run('run().dialogueCursor='+cursor);const html=h.run('game()'),entry=entries[cursor-1];
-  assert(html.includes(h.run('esc('+JSON.stringify(entry.text)+')')),entry.lineId+' complete text');
-  assert(html.includes('conversation-game proto-revision-game'));assert(html.includes('conversation-panel'));assert(!html.includes('class="proto-bubble'));
-  assert.equal((html.match(/data-dialogue-index=/g)||[]).length,Math.min(3,cursor),entry.lineId+' shared recent-three layout');
-  const playerRows=html.match(/<div class="message-row player"[\s\S]*?<\/div><\/div>/g)||[],npcRows=html.match(/<div class="message-row npc"[\s\S]*?<\/div><\/div>/g)||[];
-  assert(playerRows.every(row=>!row.includes('character-name')),entry.lineId+' player nameplate removed');
-  assert(npcRows.every(row=>row.includes('character-name')),entry.lineId+' NPC nameplate retained');
-  if(entry.speaker==='주인공')assert(html.includes('data-speaker-type="player"'),entry.lineId+' player side retained');
-  if(entry.speaker==='주인공(속마음)')assert(!html.includes('<span class="character-name">주인공 · 속마음</span>'),entry.lineId+' thought nameplate removed');
-  frames++;
- }
-}
+const {load}=require('./proto-revision-harness.cjs');
+const h=load(),source=JSON.parse(fs.readFileSync('dist/proto-story-script.json'));
+const scenes=source.chapters.flatMap(chapter=>chapter.scenes),allIds=new Set();
+assert.equal(scenes.length,5);assert.deepEqual(source.chapters.map(ch=>ch.chapterNumber),[2,3,4,5,6]);
+assert.equal(source.learning.length,31);assert.equal(source.examPlan.questions.length,15);
+let utterances=0;
 for(const scene of scenes){
- checkFrames(scene,scene.main,'main');
- if(scene.choices.length){
-  setScene(scene,'choice');h.run('run().dialogueCursor='+scene.main.length);const html=h.run('game()');
-  assert.equal((html.match(/data-dialogue-index=/g)||[]).length,2,scene.sceneId+' shared choice context');
-  assert.equal((html.match(/data-choice="/g)||[]).length,3);assert(html.includes('choice-dock'));
-  for(let index=0;index<3;index++){const choice=scene.choices[index];assert(html.includes(h.run('esc('+JSON.stringify(choice.label)+')')),choice.choiceId+' full button');checkFrames(scene,[choice.spokenLine,...choice.reply],'branch',index);choices++;}
-  assert.equal(h.run('STORIES['+JSON.stringify(scene.sceneId)+'].choices.length'),3,'temporary renderer view did not restore source');
- }
- if(scene.join.length){checkFrames(scene,scene.join,'join',scene.choices.length?0:null);assert(!h.run('game()').includes('choice-dock'));}
+ const installed=h.copy('STORIES['+JSON.stringify(scene.sceneId)+']');
+ assert.equal(installed.title,scene.title);assert.equal(installed.location,scene.location);assert.equal(installed.protoCountry,scene.country);assert.equal(installed.protoPlace,scene.place);
+ const lines=[...scene.main,...scene.join];utterances+=lines.length;
+ for(const line of lines){assert(!allIds.has(line.lineId),line.lineId+' unique');allIds.add(line.lineId);assert(Array.isArray(line.learningKeywordIds),line.lineId+' keyword metadata');}
+ assert(lines.filter(line=>line.learningKeywordIds.length).length>0,scene.country+' has tagged history dialogue');
+ assert.deepEqual(installed.dialogues.map(line=>line.lineId),scene.main.map(line=>line.lineId));
+ assert.deepEqual(installed.protoCommon.map(line=>line.lineId),scene.join.map(line=>line.lineId));
+ h.run('(function(){state.mainRun=null;state.run=INITIAL_RUN('+JSON.stringify(installed.chapterId)+');PROTO_SAVE_V3.identifyRun(run(),true);run().storyId='+JSON.stringify(scene.sceneId)+';run().dialogueSceneId='+JSON.stringify(scene.sceneId)+';run().dialogueCursor=1;run().protoStoryState.scenes['+JSON.stringify(scene.sceneId)+']={phase:"main",choiceIndex:null};screen="game";modal=null;})()');
+ let html=h.run('game()');assert(html.includes(scene.country));assert(html.includes(scene.place));assert(html.includes('data-proto-country="'+scene.country+'"'));
+ assert(!html.includes('이번 장면에서 배운 것'),'the recap waits until the final join line');
+ h.run('(function(){run().protoStoryState.scenes['+JSON.stringify(scene.sceneId)+'].phase="join";run().dialogueCursor='+scene.join.length+';return game()})()');
+ html=h.run('game()');assert(html.includes('이번 장면에서 배운 것'));for(const item of scene.learning)assert(html.includes(item.keyword||item.title),scene.country+' recap '+item.id);
+ assert.equal(scene.quizAfter.officialQuestionIds.length,3);assert.equal(scene.quizAfter.afterLineId,lines.at(-1).lineId);
 }
-assert.equal(frames,1369);assert.equal(choices,108);
-assert.equal(h.run("CHARACTERS.proto_modern.characterName"),'주인공','protagonist identity data must remain intact');
-assert.equal(h.run('PROTO_CHECKPOINTS.length'),11);assert.equal(h.run('PROTO_STUDY_QUESTION_IDS.length'),23);assert.equal(h.run("QUESTIONS.filter(q=>q.protoStoryVersion===2).length"),23);
-for(const point of source.examPlan.queues){const scene=scenes.find(s=>s.sceneId===point.sceneId);assert.equal(point.afterLineId,(scene.join.length?scene.join:scene.main).at(-1).lineId);}
-console.log('PASS: all 1369 authored utterance frames and 108 choice buttons use the approved common messenger (3 recent messages / 2 with choices); 83 scenes, 31 learning topics and 23 questions in 11 queues.');
+assert.equal(utterances,50);assert.equal(h.run('PROTO_CHECKPOINTS.length'),5);assert.equal(h.run('PROTO_STUDY_QUESTION_IDS.length'),15);
+assert.equal(h.run("QUESTIONS.filter(q=>q.protoStoryVersion===2).length"),23,'old Proto question catalog remains available as legacy data');
+assert.equal(h.run("chapterOrder('proto-kingdoms').length"),5,'only the five current chapters appear in the story list');
+assert.equal(h.run("Object.values(STORIES).filter(s=>s.eraId==='proto-kingdoms'&&s.storyActive!==false).length"),5);
+console.log('PASS: five compact country scenes, 31 linked topics, 15 queued official questions, country/place labels and end-of-scene recaps.');

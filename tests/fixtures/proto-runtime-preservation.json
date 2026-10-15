@@ -37,10 +37,10 @@
   "fileHashes": {
     "dist/proto-story-ui.js": "1e250c183add9d0d87495d85004c5c4872f945d7b9ac41741c8f6aa75336a728",
     "dist/ancient-ui.js": "825682142f37979c31a15aa8c81268339df54292effae42097ca00a9b69f911e",
-    "dist/app.js": "777450e65f3eee29b8a22892484f275d2f4b3710abf8cfed295cf55729680650",
+    "dist/app.js": "68d77ed1e575287ce87a74533deaf6373f31cefb4c7f9a2c36468c0b62fdfdc0",
     "dist/editorial-ui.js": "7de52c97d2f6fd06a62146cbd908adf13a5fe4876cd7964cae263bfebaa5d930",
     "dist/dialogue.css": "edb00021a09c62a8621f529c3730b833a418a83d338ac27f1cd8afc44296fb6d",
-    "dist/ancient-data.js": "aea9cce6fff5e6d16b58a31a0eab4080426b0833ae81ad1ee7610497a7ea6e39",
+    "dist/ancient-data.js": "3e29e191ec5885e0e1eef2906d6ed613f77b5536592daf3683b2cff2bfc721b6",
     "dist/season-data.js": "718deebededad56844e200bf2012e6e7816302cff37bf4bc2921ba082b62f07b"
   }
 }
