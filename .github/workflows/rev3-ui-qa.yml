@@ -1,7 +1,8 @@
 name: Rev3 UI QA
 on:
   push:
-    branches: [codex/figma-rev3-20261015]
+    branches: [main, codex/figma-rev3-20261015]
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:

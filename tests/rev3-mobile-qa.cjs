@@ -84,6 +84,8 @@ async function main(){
    await capture('Q2-ox-question');
    await page.evaluate(()=>{const q=OX_PRESENTATION.functions.activeOXQuestion();document.querySelector('[data-ox-answer="'+q.answer+'"]').click()});await capture('Q3-ox-correct');await page.locator('[data-ox-next]').tap();
    await page.evaluate(()=>{const q=OX_PRESENTATION.functions.activeOXQuestion();document.querySelector('[data-ox-answer="'+(!q.answer)+'"]').click()});await capture('Q4-ox-wrong');await page.locator('[data-ox-next]').tap();await capture('Q5-ox-result');assert.equal(await page.locator('.ox-result').count(),1);
+   assert.match(await page.locator('.ox-result .r3-metrics>div').nth(1).locator('strong').innerText(),/^\d+:\d{2}$/,'compact result duration');
+   assert(await page.locator('.ox-result .r3-metrics>div').nth(1).locator('strong').evaluate(n=>n.scrollWidth<=n.clientWidth+1),'OX duration must fit one metric');
    await page.locator('[data-ox-retry-wrong]').tap();assert.equal(await page.evaluate(()=>OX_QUIZ_API.snapshot().meta.activeSession.questionIds.length),1);
    await page.evaluate(()=>{toast('틀린 3문제를 복습에 담았어요.');});await page.screenshot({path:path.join(out,'T4-toast-'+width+'.png')});
    await page.evaluate(ids=>OFFICIAL_EXAM_UI.startExam(ids,{examTab:'round',examRound:79,examLevel:'심화',timed:false,startImmediately:true}),ids);
