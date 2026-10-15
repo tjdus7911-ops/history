@@ -16,4 +16,3 @@ game.run("selectedEra='goryeo';screen='era';openChapterCard('ch01')");assert(gam
 game.run("modal=null;screen='home';render()");assert(game.html().includes('data-nav="association"'),'mnemonic entry removed');
 const data=game.run('JSON.stringify(meta().questionRecords)');game.run("REV3_UI.views.analysis()");assert.equal(game.run('JSON.stringify(meta().questionRecords)'),data,'analysis view mutated records');
 console.log('PASS: all 32 Rev.3 screens/22 components indexed, local original assets, CSS/script authority, palette/font, chapter action and read-only presentation state.');
-

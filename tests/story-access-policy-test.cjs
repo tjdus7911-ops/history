@@ -36,4 +36,3 @@ assert.equal(new Set(policy.placements.map(p=>[p.examRound,p.examLevel,p.questio
 for(const row of policy.placements){const q=g.copy('QUESTIONS.find(q=>q.questionId==='+JSON.stringify(row.questionId)+')');assert(q);assert.equal(q.answer,row.answer);assert(fs.existsSync('dist/'+q.sourceQuestionImage)||JSON.parse(fs.readFileSync('config/deployment-assets-manifest.json','utf8')).files.some(e=>e[0]===q.sourceQuestionImage),'question image must be present locally or in the immutable deployment manifest');}
 fs.writeFileSync('docs/story-exams/playback-test-results.json',JSON.stringify({freshEntryChapters:chapters.length,results,summary:policy.summary},null,2)+'\n');console.log(JSON.stringify({freshEntryChapters:chapters.length,results}));
 module.exports={step,finish};
-

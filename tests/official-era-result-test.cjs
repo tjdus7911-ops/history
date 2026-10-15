@@ -39,4 +39,3 @@ click({r3Analysis:'true'});assert(html.includes('취약점 분석')&&html.includ
 console.log('PASS: first round tab, 1,800 ten-era mappings, actual-answer analysis, sample policy, Rev.3 grouping without data loss, actions and official grade thresholds.');
 
 
-

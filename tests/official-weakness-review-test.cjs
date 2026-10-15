@@ -42,4 +42,3 @@ const oxBefore=copy('OX_QUIZ_API.snapshot()'),officialBefore=copy('meta().questi
 click({wrongFilter:'ox'});assert(html.includes('1회 틀림'));assert(!html.includes('data-wrong-detail-open="'+repeated+'"'));
 click({oxReviewOne:oxQuestion.id});click({oxAnswer:String(oxQuestion.answer)});click({oxNext:'true'});run("wrongFilter='ox';screen='study';render()");assert(html.includes('최근 풀이 정답 · 복습 완료'));assert(html.includes('1회 틀림'));assert.equal(copy('OX_QUIZ_API.snapshot().meta.records['+JSON.stringify(oxQuestion.id)+']').wrongCount,1);
 console.log('PASS: 10/5 weakness, sample floor, latest-versus-cumulative correctness, era routing, 3 wrong then right, no-answer exclusion, record-free official/OX detail opening, separate records, and duplicate submit guard');
-

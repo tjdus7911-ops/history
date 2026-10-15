@@ -459,7 +459,39 @@ function officialChoiceExplanationBlock(question,selectedAnswer){
  const count=Math.max(explanations.length,question.officialChoices?.length||0,question.choices?.length||0,question.examLevel==='기본'?4:5),selected=Number.isInteger(selectedAnswer)?selectedAnswer:null;
  const choices=Array.from({length:count},(_,index)=>{
   const item=explanations[index],structured=typeof item==='object'&&item!==null,text=typeof item==='string'?item:item?.explanation||item?.text||'',rawChoiceText=question.officialChoices?.[index]||question.choices?.[index]||structured&&item.choiceText||'',unresolved=!rawChoiceText||rawChoiceText.includes('OCR 전사 필요'),choiceText=unresolved?'이미지 원문 선지':rawChoiceText;
-  const internalText=value=>/OCR 원문 확인|추가 검수 필요|검수가 끝나지|추가 대조가 필요|확정할 수 없/.test(String(value||'')),meaning=structured&&!internalText(item.meaning)?item.meaning:'',correctiuestionBody}</div>${forward}<div class="official-practice-actions">${actions}</div></section>`;
+  const internalText=value=>/OCR 원문 확인|추가 검수 필요|검수가 끝나지|추가 대조가 필요|확정할 수 없/.test(String(value||'')),meaning=structured&&!internalText(item.meaning)?item.meaning:'',correction=structured&&!internalText(item.correctedFact)?item.correctedFact:'',safeText=!internalText(text)?text:'';
+  const summary=meaning||correction||safeText;
+  const reason=structured&&!internalText(item.judgmentReason)&&item.judgmentReason!==summary?item.judgmentReason:'';
+  const badges=`${officialAnswerAccepted(question,index)?'<span class="official-choice-badge answer">정답</span>':''}${selected===index?'<span class="official-choice-badge selected">내 선택</span>':''}`;
+  return `<li class="${officialAnswerAccepted(question,index)?'answer ':''}${selected===index?'selected':''}"><div class="official-choice-heading"><b>${officialChoiceLabels[index]||index+1}</b><span class="official-choice-text">${esc(choiceText)}</span>${badges?`<span class="official-choice-badges">${badges}</span>`:''}</div>${summary?`<p class="official-choice-meaning"><small>핵심 요약</small><span>${esc(summary)}</span></p>`:unresolved?'<p class="official-choice-pending">원문 확인 중</p>':''}${reason?`<p class="official-choice-reason">${esc(reason)}</p>`:''}</li>`;
+ }).join('');
+ return `<section class="official-choice-explanations" aria-label="선지별 해설"><h3>[선지별 해설]</h3><ol>${choices}</ol></section>`;
+}
+Object.assign(globalThis.OFFICIAL_EXAM_UI,{detail:officialContentImage,dimensions:(value,kind='detail')=>kind==='thumbnail'?officialImageDimensions(value,'thumbnail'):officialContentDimensions(value),choiceExplanations:officialChoiceExplanationBlock,choiceSelector:officialChoiceSelector,imageOpen:officialImageOpenMarkup,paper:officialPaperFigure});
+function officialCoreVerificationBadge(question){
+ return '';
+}
+const officialVisibleExplanation=question=>{const value=officialExplanation(question);return /OCR 전사|OCR 원문 확인|추가 검수|추가 대조|검수 전까지|검수가 끝나지|확정 사실로 사용하지/.test(value)?'원문 확인 중':value};
+globalThis.OFFICIAL_EXAM_UI.visibleExplanation=officialVisibleExplanation;
+function officialFeedbackBlock(question,right,selectedAnswer,storedResult=null){
+ const memories=memoryForQuestion(question),selected=Number.isInteger(selectedAnswer)?officialChoiceLabels[selectedAnswer]||String(selectedAnswer+1):'선택하지 않음';
+ const answerLabel=storedResult?.answerLabel||(!storedResult?officialAnswerLabel(question):'저장 당시 정답 정보 없음');
+ return `<div class="official-feedback ${right?'correct':'wrong'}" role="status"><h2>${right?'✓ 정답입니다.':'✕ 오답입니다.'}</h2><p class="official-selected-answer">내가 선택한 답 <b>${selected}</b></p><p class="official-answer-line"><b>정답 ${esc(answerLabel)}</b></p><div class="official-explanation"><h3><span>[문제 핵심 해설]</span>${officialCoreVerificationBadge(question)}</h3><p>${esc(officialVisibleExplanation(question))}</p>${memories.length?`<button class="text-btn" data-association-for="${memories[0].id}">암기법 보기 · ${esc(memories[0].title)} ›</button>`:''}</div>${officialChoiceExplanationBlock(question,selectedAnswer)}</div>`;
+}
+function officialPracticePage(){
+ const session=officialExamSession,entry=officialSessionQuestion();if(!session||!entry)return officialExamHome();
+ const question=officialQuestion(entry.canonicalQuestionId),picked=session.answers[entry.canonicalQuestionId],feedback=session.feedback[entry.canonicalQuestionId],done=session.mode==='learn'&&feedback!==undefined,timed=officialTimedSession(session),timerState=officialTimerState(session),interactionAllowed=!timed||timerState===OFFICIAL_TIMER_STATES.RUNNING,paused=timed&&timerState===OFFICIAL_TIMER_STATES.PAUSED,blocked=timed&&!interactionAllowed;
+ const answered=officialAnsweredIds(session).size,total=session.entries.length,unanswered=total-answered,progress=total?Math.round(answered/total*100):0,questionNumber=entry.sourceRecord.questionNumber||session.index+1,isExam=session.mode==='exam',pending=isExam&&officialExamChoiceLocked&&officialExamPendingQuestionId===entry.canonicalQuestionId;
+ const examTitle=session.examTab==='round'&&session.examRound?`제${session.examRound}회 ${session.examLevel}`:'기출 시험';
+ const status=isExam?`<header class="official-exam-intro" data-official-exam-intro="true"><button class="official-exam-back" data-official-exit="true" aria-label="목록으로">‹</button><div class="official-exam-intro-copy"><div class="official-exam-intro-title"><strong><span class="sr-only">시험 모드 · </span>${esc(examTitle)} · ${session.index+1}/${total}번</strong><button class="official-exam-map-link" data-official-question-list="true">문제 목록</button></div><p>응답 완료 <b>${answered}</b>문항 · 미응답 <b>${unanswered}</b>문항</p>${timed?`<div class="official-exam-clock">${officialTimerMarkup(session)}</div>`:''}<div class="official-exam-progress-bar" role="progressbar" aria-label="답안 선택 진행률" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress}"><i style="width:${progress}%"></i></div></div></header>`:'';
+ const blockedLabel=paused?'시험이 일시정지되었습니다.':'시험을 시작해 주세요.';
+ const blockedDescription=paused?'계속하기를 누르면 남은 시간부터 문제를 이어서 풀 수 있습니다.':'시험을 시작하면 타이머가 작동하고 답안을 선택할 수 있습니다.';
+ const questionBody=blocked?`<div class="official-pause-cover" role="status"><b>${blockedLabel}</b><p>${blockedDescription}</p><div><button class="primary" data-official-timer-start="true">${paused?'시험 계속하기':'시험 시작'}</button></div></div>`:`${officialPaperFigure(entry)}${officialChoiceSelector(question,picked,{disabled:done||!interactionAllowed||pending,reveal:done,exam:isExam})}${pending?'<p class="official-auto-advance-status" role="status">답안을 저장했습니다. 다음 문제로 이동합니다.</p>':''}${done?officialFeedbackBlock(question,feedback,picked):''}`;
+ const previous=`<button class="secondary" data-official-previous="true" ${session.index===0||!interactionAllowed?'disabled':''}>이전 문제</button>`,hasNext=session.index<session.entries.length-1,forward=isExam&&hasNext&&interactionAllowed?'<div class="official-exam-forward-row"><button class="text-btn" data-official-forward="true" aria-label="다음 문제로 이동">다음 문제 <span aria-hidden="true">›</span></button></div>':'';
+ const actions=session.mode==='learn'&&!done?`<div class="official-learning-actions">${previous}<button class="primary" data-official-submit="true" ${picked===undefined?'disabled':''}>정답 확인</button></div>`:session.mode==='learn'?`<div class="official-learning-actions">${previous}<button class="primary" data-official-next="true">${hasNext?'다음 문제':'학습 결과 보기'}</button></div>`:`<div class="official-exam-bottom-actions">${previous}<button class="primary" data-official-request-submit="true" ${!interactionAllowed?'disabled':''}>시험 제출</button></div>`;
+ const header=`<header class="official-subhead"><button data-official-exit="true" aria-label="목록으로">‹</button><div><small>${session.mode==='learn'?'학습 모드':'시험 모드'} · ${examSourceLabel(entry)}</small><h1>${session.index+1} / ${session.entries.length}</h1></div></header>`;
+ const top=isExam?status:`${header}<div class="quiz-progress"><div class="progress"><span style="width:${Math.round((session.index+1)/session.entries.length*100)}%"></span></div></div>`;
+ return `<section class="official-practice ${isExam?'official-exam-practice':''}">${top}<div class="official-question-stage slide-${officialExamSlideDirection}" data-official-question-stage="true" data-question-index="${session.index}"><div class="official-question-kicker"><span>${questionNumber}번</span></div>${questionBody}</div>${forward}<div class="official-practice-actions">${actions}</div></section>`;
 }
 const officialResultDate=value=>{const date=new Date(value);return Number.isNaN(date.getTime())?'일시 정보 없음':date.toLocaleString('ko-KR')};
 const officialResultDuration=value=>{if(!Number.isFinite(Number(value)))return '기록 없음';const seconds=Math.max(0,Math.round(Number(value)/1000)),minutes=Math.floor(seconds/60),rest=seconds%60;return `${minutes}분 ${String(rest).padStart(2,'0')}초`};
@@ -858,6 +890,5 @@ normalizeOfficialExamResults();
 restoreOfficialSession();
 render();
 }
-
 
 

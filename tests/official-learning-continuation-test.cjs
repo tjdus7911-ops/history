@@ -37,4 +37,3 @@ assert(html.includes('학습 결과 보기')&&!html.includes('data-official-next
 // An explicitly requested single-question review remains a one-question session.
 click({officialBack:'list'});click({officialSingle:ids[0]});assert.equal(run('globalThis.OFFICIAL_EXAM_UI.snapshot().questionIds.length'),1);assert.equal(currentId(),ids[0]);
 console.log('PASS: completed/mixed history, middle-start scope, previous revisit state, wrong-only order, final action, single review and duplicate-attempt guard verified.');
-

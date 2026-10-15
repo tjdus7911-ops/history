@@ -134,4 +134,3 @@ async function verifyTouches(page,width,capture){
 
 main().catch(e=>{console.error(e);process.exitCode=1}).finally(async()=>{if(browser)await browser.close();server.close()});
 
-

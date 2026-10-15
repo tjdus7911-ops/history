@@ -402,4 +402,3 @@ globalThis.OX_QUIZ_UI_READY=true;
 oxApplyRoute(oxReadRoute());
 })();
 
-

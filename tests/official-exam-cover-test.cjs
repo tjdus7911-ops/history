@@ -25,4 +25,3 @@ click({officialRequestSubmit:'true'});click({officialSubmitConfirm:'true'});cons
 click({officialExit:'true'});edition('기본');assert(html.includes('기본')&&html.includes('제57회'));assert.equal(run('meta().officialExamActiveSession'),undefined);
 console.log('PASS: cover 30-second idle/exit/reload, no pre-start writes, atomic start, duplicate guard, deadline/answers/index reload, active resume, confirmed replacement, separate retake history and basic edition.');
 
-

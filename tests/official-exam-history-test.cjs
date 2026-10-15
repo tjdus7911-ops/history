@@ -17,4 +17,3 @@ click({officialRetake:'true'});assert(html.includes('재시험을 보시겠습�
 click({officialRetake:'true'});click({officialRetakeConfirm:'true'});const activeAttempt=run('meta().officialExamActiveSession.attemptId');click({officialPick:'0'});click({nav:'records'});assert(html.includes('내 기록')&&html.includes('이야기 · 족보 · 학습 기록'),'Rev.3 records retain story and learning details behind an explicit disclosure');click({officialResultsList:'true'});click({officialResultOpen:firstAttempt});assert(html.includes('진행 중 시험으로 돌아가기'));click({officialResumeActive:'true'});assert.equal(run('meta().officialExamActiveSession.attemptId'),activeAttempt);assert.equal(run('meta().officialExamActiveSession.answers[meta().officialExamActiveSession.questionIds[0]]'),0,'opening a past result must not overwrite the active exam');
 console.log('PASS: immutable result snapshots, zero-valued answers, duplicate-submit guard, history reopening, detailed review and separate retake IDs verified.');
 
-

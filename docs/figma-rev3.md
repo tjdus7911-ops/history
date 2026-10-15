@@ -28,4 +28,3 @@ Stories, mnemonic tools, wrong-note details, original exam source information an
 The QA screenshots use isolated browser storage and deterministic test attempts. They never reset or seed a real user's learning records. Loading/empty/error states are explicitly exercised as component states; the network view is also wired to failed question-image loads and retry.
 
 Original Figma references and rendered captures are delivered in the task's comparison report. Main is updated only after native mobile QA and regression/build validation pass.
-

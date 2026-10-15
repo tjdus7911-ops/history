@@ -41,4 +41,3 @@ vm.runInContext(fs.readFileSync('dist/sw.js','utf8'),context);
   assert.equal(clientsClaimed,true,'the refreshed worker controls installed app clients immediately');
   console.log('PASS: service-worker explanation fallback, awaited cache writes, new shell install and stale-version cleanup.');
 })().catch(error=>{console.error(error);process.exitCode=1});
-
