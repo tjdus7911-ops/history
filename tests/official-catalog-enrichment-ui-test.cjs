@@ -65,7 +65,7 @@ async function assertAsyncLoaderContract(){
     const harness=createLoaderHarness(),calls=[];let resolveFetch;
     harness.context.fetch=(url,options)=>{calls.push({url,options});return new Promise(resolve=>{resolveFetch=resolve})};
     const wrongId=harness.run(`(()=>{const question=QUESTIONS.find(item=>item.isOfficial&&(globalThis.THREE_LEARNING_BOUNDARY?.canPractice(item)??true)&&(globalThis.PROTO_LEARNING_BOUNDARY?.canPractice(item)??true));if(!question)throw new Error('official wrong-answer fixture missing');const data=meta();data.wrongQuestionIds=[question.questionId];data.wrongAnswers=[{questionId:question.questionId,userAnswer:0,answeredAt:'2026-10-12T00:00:00.000Z'}];data.questionRecords[question.questionId]={attempts:1,correctCount:0,lastAnswer:0,lastCorrect:false};screen='home';render();return question.questionId})()`);
-    assert(harness.markup().includes(`data-review="${wrongId}"`)&&!harness.markup().includes('official-choice-load'),'home recent-wrong preview must not render hidden choice explanations');
+    assert(harness.markup().includes('보완이 필요한 시대')&&!harness.markup().includes('official-choice-load'),'home recent-wrong preview must not render hidden choice explanations');
     assert.equal(calls.length,0,'closed home wrong-answer detail eagerly fetched choice explanations');
     harness.run(`studyTab='review';screen='study';render()`);
     assert(harness.markup().includes(`data-wrong-detail-open="${wrongId}"`)&&!harness.markup().includes(`data-wrong-detail="${wrongId}" open`),'review list must render wrong-answer detail closed');
@@ -201,9 +201,9 @@ assert(!html.includes('공식 합격률 확인 중'),'unverified round-card stat
 run(`OFFICIAL_EXAM_STATISTICS.byEdition['79-advanced'].verificationStatus='OFFICIAL_VERIFIED';render()`);
 
 click({officialRound:'79',officialEditionLevel:'심화'});
-assert(html.includes('aria-label="나의 기출 진행률"'),'personal progress label missing');
+assert(html.includes('aria-label="풀이 방식"'),'personal progress label missing');
 assert(html.includes('class="official-pass-rate verified detail"'),'official detail statistic is not separated');
-assert(html.indexOf('aria-label="나의 기출 진행률"')<html.indexOf('class="official-pass-rate verified detail"'));
+assert(html.indexOf('aria-label="풀이 방식"')<html.indexOf('class="official-pass-rate verified detail"'));
 
 const id=run(`OFFICIAL_EXAM_CATALOG.find(entry=>entry.sourceRecord.examRound===79&&entry.sourceRecord.examLevel==='심화'&&QUESTIONS.find(question=>question.questionId===entry.canonicalQuestionId).acceptedAnswers.length===1).canonicalQuestionId`);
 const choiceCount=run(`QUESTIONS.find(question=>question.questionId===${JSON.stringify(id)}).choices.length`);

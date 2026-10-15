@@ -1,0 +1,466 @@
+{
+  "fileKey": "iL6dHoA2qFaggZjqNub77u",
+  "revision": 3,
+  "baseline": "f1d88559b494815a22c3ff6e1761b84301b6f958",
+  "font": "Malgun Gothic",
+  "palette": {
+    "primary": "#2D5BE3",
+    "accent": "#F2A516",
+    "error": "#E5484D",
+    "canvas": "#FFFFFF"
+  },
+  "decisions": [
+    "Rev.3 page frames only; exclude revisions 1, 2 and 4.",
+    "Normalize A1 and B2 legacy-bound colors to Rev.3 blue/yellow/red per explicit user decision.",
+    "Keep original story artwork, characters, question bodies, choices and persisted records dynamic.",
+    "Keep existing screens not defined in Rev.3, applying shared UI tokens without removing their functions."
+  ],
+  "screens": [
+    {
+      "code": "A1",
+      "nodeId": "54:10112",
+      "name": "홈 대시보드",
+      "route": "home",
+      "capture": "A1-home"
+    },
+    {
+      "code": "B2",
+      "nodeId": "54:10328",
+      "name": "시대 여행",
+      "route": "era",
+      "capture": "B2-era"
+    },
+    {
+      "code": "J4",
+      "nodeId": "40:24601",
+      "name": "정거장 상세",
+      "route": "chapter modal",
+      "capture": "J4-chapter-sheet"
+    },
+    {
+      "code": "J5",
+      "nodeId": "40:24819",
+      "name": "다시하기 확인",
+      "route": "restart-episode modal",
+      "capture": "J5-restart"
+    },
+    {
+      "code": "J7",
+      "nodeId": "40:25064",
+      "name": "정거장 도착",
+      "route": "complete",
+      "capture": "J7-chapter-complete"
+    },
+    {
+      "code": "E1",
+      "nodeId": "32:15267",
+      "name": "기출문제 메인",
+      "route": "exam-library",
+      "capture": "E1-main"
+    },
+    {
+      "code": "E2",
+      "nodeId": "32:15521",
+      "name": "회차 상세·모드 선택",
+      "route": "exam-library/list/round",
+      "capture": "E2-detail"
+    },
+    {
+      "code": "E3",
+      "nodeId": "32:15607",
+      "name": "시험 응시",
+      "route": "exam practice",
+      "capture": "E3-exam"
+    },
+    {
+      "code": "E4",
+      "nodeId": "32:15871",
+      "name": "문제 목록",
+      "route": "official-question-sheet modal",
+      "capture": "E4-question-sheet"
+    },
+    {
+      "code": "E5",
+      "nodeId": "32:16101",
+      "name": "제출 확인",
+      "route": "official-submit-confirm modal",
+      "capture": "E5-submit"
+    },
+    {
+      "code": "E6",
+      "nodeId": "32:16208",
+      "name": "시험 결과",
+      "route": "exam result",
+      "capture": "E6-result"
+    },
+    {
+      "code": "E7",
+      "nodeId": "32:16442",
+      "name": "해설 보기",
+      "route": "exam review",
+      "capture": "E7-explanation"
+    },
+    {
+      "code": "E8",
+      "nodeId": "32:16614",
+      "name": "오답 다시 풀기",
+      "route": "exam learning",
+      "capture": "learning-feedback"
+    },
+    {
+      "code": "E9",
+      "nodeId": "32:16723",
+      "name": "재시험 결과 비교",
+      "route": "result comparison",
+      "capture": "E9-comparison"
+    },
+    {
+      "code": "E10",
+      "nodeId": "32:16860",
+      "name": "취약점 분석",
+      "route": "cumulative analysis",
+      "capture": "E10-analysis"
+    },
+    {
+      "code": "E11",
+      "nodeId": "32:16963",
+      "name": "기출문제 시대별",
+      "route": "exam-library era tab",
+      "capture": "E11-era"
+    },
+    {
+      "code": "Q1",
+      "nodeId": "32:17105",
+      "name": "OX 퀴즈 메인",
+      "route": "ox",
+      "capture": "Q1-ox-home"
+    },
+    {
+      "code": "Q2",
+      "nodeId": "32:17278",
+      "name": "OX 문제 풀이",
+      "route": "ox/quiz",
+      "capture": "Q2-ox-question"
+    },
+    {
+      "code": "Q3",
+      "nodeId": "32:17341",
+      "name": "OX 정답 피드백",
+      "route": "OX correct feedback",
+      "capture": "Q3-ox-correct"
+    },
+    {
+      "code": "Q4",
+      "nodeId": "32:17422",
+      "name": "OX 오답 피드백",
+      "route": "OX incorrect feedback",
+      "capture": "Q4-ox-wrong"
+    },
+    {
+      "code": "Q5",
+      "nodeId": "32:17501",
+      "name": "OX 결과",
+      "route": "OX result",
+      "capture": "Q5-ox-result"
+    },
+    {
+      "code": "K1",
+      "nodeId": "32:17602",
+      "name": "내 기록",
+      "route": "records",
+      "capture": "K1-records"
+    },
+    {
+      "code": "K2",
+      "nodeId": "32:17748",
+      "name": "시험 기록",
+      "route": "exam-library/results",
+      "capture": "K2-history"
+    },
+    {
+      "code": "K3",
+      "nodeId": "32:17897",
+      "name": "기록 상세",
+      "route": "exam-library/results/:attemptId",
+      "capture": "K3-record-detail"
+    },
+    {
+      "code": "K4",
+      "nodeId": "32:18089",
+      "name": "내 기록 빈 상태",
+      "route": "records empty",
+      "capture": "K4-empty-records"
+    },
+    {
+      "code": "T1",
+      "nodeId": "32:18179",
+      "name": "로딩",
+      "route": "loading presentation state",
+      "capture": "T1-loading"
+    },
+    {
+      "code": "T2",
+      "nodeId": "32:18273",
+      "name": "네트워크 오류",
+      "route": "resource error and retry",
+      "capture": "T2-network"
+    },
+    {
+      "code": "T3",
+      "nodeId": "32:18335",
+      "name": "검색 결과 없음",
+      "route": "search empty",
+      "capture": "T3-search-empty"
+    },
+    {
+      "code": "T4",
+      "nodeId": "32:18415",
+      "name": "토스트",
+      "route": "toast",
+      "capture": "T4-toast"
+    },
+    {
+      "code": "T5",
+      "nodeId": "32:18532",
+      "name": "시간 종료",
+      "route": "automatic submission modal",
+      "capture": "T5-timeout"
+    },
+    {
+      "code": "T6",
+      "nodeId": "32:18633",
+      "name": "일시정지",
+      "route": "paused timer modal",
+      "capture": "T6-pause"
+    },
+    {
+      "code": "T7",
+      "nodeId": "32:18801",
+      "name": "정렬·필터",
+      "route": "exam sort/filter sheet",
+      "capture": "T7-filter"
+    }
+  ],
+  "componentFamilies": [
+    "Button",
+    "Badge",
+    "Chip",
+    "Tab",
+    "Progress",
+    "Navigation/Bottom Bar",
+    "Navigation/Top Bar",
+    "Section Header",
+    "Data/Stat",
+    "Data/Era Tag",
+    "Exam/Choice",
+    "OX/Answer Button",
+    "Control/Selection",
+    "Input/Search",
+    "Feedback/Toast",
+    "Overlay/Dialog",
+    "Feedback/Inline Banner",
+    "Feedback/Skeleton",
+    "State/Empty",
+    "List/Chapter Row",
+    "List/Exam Round Row",
+    "Journey/Station"
+  ],
+  "assets": [
+    {
+      "path": "rev3-assets/32-13791-imgIconHome.svg",
+      "sourceNode": "32:13791"
+    },
+    {
+      "path": "rev3-assets/32-13791-imgIconExam.svg",
+      "sourceNode": "32:13791"
+    },
+    {
+      "path": "rev3-assets/32-13791-imgIconOx.svg",
+      "sourceNode": "32:13791"
+    },
+    {
+      "path": "rev3-assets/32-13791-imgIconRecord.svg",
+      "sourceNode": "32:13791"
+    },
+    {
+      "path": "rev3-assets/32-15267-imgIconSearch.svg",
+      "sourceNode": "32:15267"
+    },
+    {
+      "path": "rev3-assets/32-15267-imgIconUser.svg",
+      "sourceNode": "32:15267"
+    },
+    {
+      "path": "rev3-assets/32-15267-imgIconClock.svg",
+      "sourceNode": "32:15267"
+    },
+    {
+      "path": "rev3-assets/32-15267-imgIconHome.svg",
+      "sourceNode": "32:15267"
+    },
+    {
+      "path": "rev3-assets/32-15267-imgIconExam.svg",
+      "sourceNode": "32:15267"
+    },
+    {
+      "path": "rev3-assets/32-15267-imgIconOx.svg",
+      "sourceNode": "32:15267"
+    },
+    {
+      "path": "rev3-assets/32-15267-imgIconRecord.svg",
+      "sourceNode": "32:15267"
+    },
+    {
+      "path": "rev3-assets/32-17105-imgIconCheck.svg",
+      "sourceNode": "32:17105"
+    },
+    {
+      "path": "rev3-assets/32-17105-imgIconSearch.svg",
+      "sourceNode": "32:17105"
+    },
+    {
+      "path": "rev3-assets/32-17105-imgIconUser.svg",
+      "sourceNode": "32:17105"
+    },
+    {
+      "path": "rev3-assets/32-17105-imgIconRefresh.svg",
+      "sourceNode": "32:17105"
+    },
+    {
+      "path": "rev3-assets/32-17105-imgIconChevronRight.svg",
+      "sourceNode": "32:17105"
+    },
+    {
+      "path": "rev3-assets/32-17105-imgIconHome.svg",
+      "sourceNode": "32:17105"
+    },
+    {
+      "path": "rev3-assets/32-17105-imgIconExam.svg",
+      "sourceNode": "32:17105"
+    },
+    {
+      "path": "rev3-assets/32-17105-imgIconOx.svg",
+      "sourceNode": "32:17105"
+    },
+    {
+      "path": "rev3-assets/32-17105-imgIconRecord.svg",
+      "sourceNode": "32:17105"
+    },
+    {
+      "path": "rev3-assets/32-17602-imgIconMore.svg",
+      "sourceNode": "32:17602"
+    },
+    {
+      "path": "rev3-assets/32-17602-imgIconNote.svg",
+      "sourceNode": "32:17602"
+    },
+    {
+      "path": "rev3-assets/32-17602-imgIconTarget.svg",
+      "sourceNode": "32:17602"
+    },
+    {
+      "path": "rev3-assets/32-17602-imgIconHome.svg",
+      "sourceNode": "32:17602"
+    },
+    {
+      "path": "rev3-assets/32-17602-imgIconExam.svg",
+      "sourceNode": "32:17602"
+    },
+    {
+      "path": "rev3-assets/32-17602-imgIconOx.svg",
+      "sourceNode": "32:17602"
+    },
+    {
+      "path": "rev3-assets/32-17602-imgIconRecord.svg",
+      "sourceNode": "32:17602"
+    },
+    {
+      "path": "rev3-assets/32-15607-imgIconClose.svg",
+      "sourceNode": "32:15607"
+    },
+    {
+      "path": "rev3-assets/32-15607-imgIconClock.svg",
+      "sourceNode": "32:15607"
+    },
+    {
+      "path": "rev3-assets/32-15607-imgIconGrid.svg",
+      "sourceNode": "32:15607"
+    },
+    {
+      "path": "rev3-assets/32-15607-imgIconFlag.svg",
+      "sourceNode": "32:15607"
+    },
+    {
+      "path": "rev3-assets/32-15607-imgIconZoom.svg",
+      "sourceNode": "32:15607"
+    },
+    {
+      "path": "rev3-assets/32-16442-imgIconClose.svg",
+      "sourceNode": "32:16442"
+    },
+    {
+      "path": "rev3-assets/32-16442-imgIconFilter.svg",
+      "sourceNode": "32:16442"
+    },
+    {
+      "path": "rev3-assets/32-16442-imgIconFlag.svg",
+      "sourceNode": "32:16442"
+    },
+    {
+      "path": "rev3-assets/32-16442-imgIconZoom.svg",
+      "sourceNode": "32:16442"
+    },
+    {
+      "path": "rev3-assets/54-10112-imgHeroMedia.png",
+      "sourceNode": "54:10112"
+    },
+    {
+      "path": "rev3-assets/54-10112-imgCover.png",
+      "sourceNode": "54:10112"
+    },
+    {
+      "path": "rev3-assets/54-10112-imgCover1.png",
+      "sourceNode": "54:10112"
+    },
+    {
+      "path": "rev3-assets/54-10112-imgCover2.png",
+      "sourceNode": "54:10112"
+    },
+    {
+      "path": "rev3-assets/54-10112-imgCover3.png",
+      "sourceNode": "54:10112"
+    },
+    {
+      "path": "rev3-assets/54-10112-imgCover4.png",
+      "sourceNode": "54:10112"
+    },
+    {
+      "path": "rev3-assets/54-10112-imgCover5.png",
+      "sourceNode": "54:10112"
+    },
+    {
+      "path": "rev3-assets/32-15521-imgIconChevronLeft.svg",
+      "sourceNode": "32:15521"
+    },
+    {
+      "path": "rev3-assets/54-10328-imgIconChevronLeft.svg",
+      "sourceNode": "54:10328"
+    },
+    {
+      "path": "rev3-assets/54-10328-imgIconPlay.svg",
+      "sourceNode": "54:10328"
+    },
+    {
+      "path": "rev3-assets/32-15521-imgTrail.svg",
+      "sourceNode": "32:15521"
+    },
+    {
+      "path": "rev3-assets/32-15267-imgTrail1.svg",
+      "sourceNode": "32:15267"
+    },
+    {
+      "path": "rev3-assets/32-15521-imgIconBookmark.svg",
+      "sourceNode": "32:15521"
+    }
+  ]
+}

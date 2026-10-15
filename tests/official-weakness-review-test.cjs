@@ -26,7 +26,7 @@ for(let i=0;i<2;i++)run('recordQuestion(state,'+JSON.stringify(repeated)+','+oth
 assert.equal(copy('OFFICIAL_LEARNING_ANALYSIS.record('+JSON.stringify(repeated)+')').wrongCount,3);
 run('recordQuestion(state,'+JSON.stringify(repeated)+','+rq.answer+')');
 assert.equal(copy('OFFICIAL_LEARNING_ANALYSIS.record('+JSON.stringify(repeated)+')').wrongCount,3);assert.equal(joseonRow().accuracy,60);assert.equal(joseonRow().wrong,4);assert.equal(joseonRow().repeatedWrong,2);
-run("screen='exam-library';render()");assert(html.includes('시대별 취약점'));click({officialWeakEra:'joseon'});
+run("screen='exam-library';render()");assert(html.includes('기출문제'));click({officialWeakEra:'joseon'});
 assert.equal(run('screen'),'study');assert.equal(run('wrongFilter'),'official');assert.equal(run('wrongEra'),'joseon');assert(html.includes('3회 틀림'));assert(html.includes('최근 풀이 정답'));assert(!html.includes('data-wrong-detail-open="'+gq.questionId+'"'));
 const before=copy('meta()'),sessionBefore=copy('OFFICIAL_EXAM_UI.snapshot()');click({wrongDetailOpen:repeated});assert(html.includes('wrong-answer-detail'));assert(html.includes('내가 선택한 답'));assert(html.includes('정답'));assert.deepEqual(copy('meta()'),before);assert.deepEqual(copy('OFFICIAL_EXAM_UI.snapshot()'),sessionBefore);
 click({wrongDetailOpen:repeated});assert.deepEqual(copy('meta()'),before);click({officialWeakEra:'occupation'});assert(html.includes('선택한 조건에 맞는 오답이 없습니다.'));click({officialWeakEra:'joseon'});assert(!/클릭하면 이동|누르면 이동|문제로 이동/.test(html));

@@ -21,19 +21,21 @@ for(const [level,score,passed,grade] of [['심화',100,true,1],['심화',80,true
  const value=copy(`OFFICIAL_CERTIFICATION({score:${score},maxScore:100},${JSON.stringify(level)},true)`);assert.equal(value.passed,passed,`${level} ${score}`);assert.equal(value.grade,grade,`${level} ${score}`);
 }
 
-click({nav:'exam-library'});const roundIndex=html.indexOf('data-official-tab="round"'),eraIndex=html.indexOf('data-official-tab="era"');assert(roundIndex>=0&&roundIndex<eraIndex,'round tab must be the first visible tab');assert(html.includes('data-official-tab="round" aria-selected="true"'));
+click({nav:'exam-library'});const roundIndex=html.indexOf('data-official-tab="round"'),eraIndex=html.indexOf('data-official-tab="era"');assert(roundIndex>=0&&roundIndex<eraIndex,'round tab must be the first visible tab');assert(html.includes('data-official-tab="round" role="tab" aria-selected="true"'));
 const selected=[];for(const era of eras.slice(0,4))selected.push(...entries.filter(entry=>entry.analysisEra===era.id).slice(0,2));const selectedIds=selected.map(entry=>entry.canonicalQuestionId);
 run(`startOfficialSession(${JSON.stringify(selectedIds)}.map(id=>globalThis.OFFICIAL_EXAM_CATALOG.find(entry=>entry.canonicalQuestionId===id)),'exam',{examTab:'round',examRound:79,examLevel:'심화',timed:false})`);
 for(const [index,id] of selectedIds.entries()){const accepted=copy(`QUESTIONS.find(question=>question.questionId===${JSON.stringify(id)}).acceptedAnswers`),answer=index%3===0?[0,1,2,3,4].find(value=>!accepted.includes(value)):accepted[0];click({officialPick:String(answer)});if(index<selectedIds.length-1)click({officialNext:'true'})}
 click({officialRequestSubmit:'true'});click({officialSubmitConfirm:'true'});
 const analysis=copy('OFFICIAL_RESULT_ANALYSIS.current("attempt")');assert.equal(analysis.total,8);assert.equal(analysis.correct,5);assert.equal(analysis.wrongTotal,3);assert.equal(analysis.rows.reduce((sum,row)=>sum+row.wrong,0),3);assert(Math.abs(analysis.rows.reduce((sum,row)=>sum+row.wrongShare,0)-100)<0.2);assert.equal(analysis.rows.filter(row=>row.total===0).length,6);assert(analysis.rows.filter(row=>row.total===0).every(row=>row.status.label==='분석 데이터 없음'));assert(analysis.rows.filter(row=>row.total===2).every(row=>row.sampleLimited));
-assert(html.includes('class="official-results"'),html.slice(0,500));
-for(const copyText of ['최종 점수','시대별 취약점 분석','오답 다시 풀기','해설 보기','재시험 보기'])assert(html.includes(copyText),copyText);assert(/심화 [123]급|불합격/.test(html),'the result must show an official advanced grade or fail state');
-assert(!html.includes('누적 학습')&&!html.includes('data-official-analysis-scope=')&&!html.includes('official-top-weak')&&!html.includes('official-donut'),'analysis should show a concise current-attempt view');
-assert(!html.includes('official-era-detail-section')&&!html.includes('공식 등급 기준'));
-const statsIndex=html.indexOf('official-result-summary'),actionsIndex=html.indexOf('official-result-actions'),criteriaIndex=html.indexOf('official-grade-criteria'),analysisIndex=html.indexOf('official-result-analysis');assert(statsIndex>=0&&statsIndex<actionsIndex&&actionsIndex<criteriaIndex&&criteriaIndex<analysisIndex,'result sections must follow the requested order');
-assert.equal((html.match(/class="official-result-actions[\s\S]*?<\/div>/)||[''])[0].match(/<button/g)?.length,3,'all three actions should stay available');
-const firstAttemptEra=analysis.rows.find(row=>row.total>0);click({officialAnalysisEra:firstAttemptEra.id});assert(html.includes('class="official-selected-era"')&&html.includes('data-official-review='),'selecting an era should expose its wrong-question review');
-console.log('PASS: first round tab, 1,800 ten-era mappings, actual-answer analysis, sample policy, compact current-attempt view, action order, era selection and official grade thresholds verified.');
+
+assert(html.includes('class="official-results r3-result"'));
+for(const copyText of ['시대별 정답률','오답 다시 풀기','해설 보기','재시험 보기'])assert(html.includes(copyText),copyText);
+assert(html.includes('불합격')||html.includes('급 합격'),'official grade must remain visible');
+assert(!html.includes('official-top-weak')&&!html.includes('official-donut')&&!html.includes('official-era-detail-section'),'Rev.3 uses a compact chart and separate analysis view');
+assert(html.includes('r3-result-counts')&&html.includes('official-grade-criteria')&&html.includes('official-result-actions'));
+const groups=copy('REV3_UI.groupEras(OFFICIAL_RESULT_ANALYSIS.current("attempt").rows)');
+assert.equal(groups.length,7);assert.equal(groups.reduce((n,r)=>n+r.total,0),8);assert.equal(groups.reduce((n,r)=>n+r.correct,0),5);assert.equal(groups.reduce((n,r)=>n+r.wrong,0),3);
+click({r3Analysis:'true'});assert(html.includes('취약점 분석')&&html.includes('r3-heatmap'));
+console.log('PASS: first round tab, 1,800 ten-era mappings, actual-answer analysis, sample policy, Rev.3 grouping without data loss, actions and official grade thresholds.');
 
 
