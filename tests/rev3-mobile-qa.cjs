@@ -37,6 +37,7 @@ async function main(){
    await page.locator('.r3-era-covers [data-era-open="goryeo"]').click();await capture('B2-era');
    await page.locator('[data-action="restart-episode"]').click();await capture('J5-restart');await page.locator('[data-action="close"]').click();
    await page.waitForTimeout(350);await page.locator('[data-chapter]').first().click();await page.locator('.chapter-sheet').waitFor();await capture('J4-chapter-sheet');
+   assert(await page.locator('.chapter-sheet').evaluate(n=>Math.abs(n.getBoundingClientRect().bottom-innerHeight)<=1),'chapter sheet must attach to viewport bottom');
    await page.locator('[data-action="close"]').first().click();
    await page.waitForTimeout(350);await page.locator('[data-chapter]').first().click();
    const starter=page.locator('[data-action="start-chapter"],[data-action="continue-chapter"]').first();
@@ -82,6 +83,7 @@ async function main(){
    assert.equal(await page.locator('.ox-weakness-donut,[data-ox-home-analysis]').count(),0);
    await page.evaluate(()=>OX_QUIZ_API.startSession('era','goryeo',{count:2}));
    await capture('Q2-ox-question');
+   assert.equal(await page.locator('.ox-answer.o b').evaluate(n=>getComputedStyle(n).color),'rgb(45, 91, 227)','OX O uses Rev.3 blue');
    await page.evaluate(()=>{const q=OX_PRESENTATION.functions.activeOXQuestion();document.querySelector('[data-ox-answer="'+q.answer+'"]').click()});await capture('Q3-ox-correct');await page.locator('[data-ox-next]').tap();
    await page.evaluate(()=>{const q=OX_PRESENTATION.functions.activeOXQuestion();document.querySelector('[data-ox-answer="'+(!q.answer)+'"]').click()});await capture('Q4-ox-wrong');await page.locator('[data-ox-next]').tap();await capture('Q5-ox-result');assert.equal(await page.locator('.ox-result').count(),1);
    assert.match(await page.locator('.ox-result .r3-metrics>div').nth(1).locator('strong').innerText(),/^\d+:\d{2}$/,'compact result duration');
