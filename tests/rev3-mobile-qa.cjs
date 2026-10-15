@@ -38,7 +38,7 @@ async function main(){
    await page.locator('[data-action="close"]').first().click();
    await page.waitForTimeout(350);await page.locator('[data-chapter]').first().click();
    const starter=page.locator('[data-action="start-chapter"],[data-action="continue-chapter"]').first();
-   if(await starter.count()){await starter.click();await page.waitForTimeout(300);await capture('story-goryeo');await page.locator('[data-action="advance-dialogue"]').first().click();assert(await page.locator('.game').count());}
+   if(await starter.count()){await page.waitForFunction(()=>Date.now()>=inputLockedUntil);await starter.click();await page.locator('.game').waitFor();await page.waitForTimeout(300);await capture('story-goryeo');const advance=page.locator('[data-action="advance-dialogue"],[data-action="next"],[data-action="result-next"]').first();await page.waitForFunction(()=>Date.now()>=inputLockedUntil);if(await advance.count())await advance.click();else await page.locator('.conversation-game').tap();assert(await page.locator('.game').count());}
    await page.locator('.nav [data-nav="home"]').click({force:true}).catch(async()=>{await page.evaluate(()=>navigate('home'))});
   }
   if(phase==='after'){await page.evaluate(()=>{resultChapterId='ch01';screen='complete';render()});await capture('J7-chapter-complete');await page.evaluate(()=>{resultChapterId=null;navigate('home')});}
