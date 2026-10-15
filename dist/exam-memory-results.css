@@ -261,3 +261,120 @@
 .ed-exam-library .official-results .official-result-actions button{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;width:100%;min-width:0;min-height:50px;padding:10px 8px;border-radius:11px;font-size:13px;font-weight:700;line-height:1.2;white-space:nowrap}
 .ed-exam-library .official-results .official-result-actions .secondary{border:1px solid #e2dbd0;background:#fff;color:#554a3c}
 .ed-exam-library .official-results .official-result-actions .official-result-retake{grid-column:1/-1;grid-row:2;border:1px solid #6b4e36;background:#6b4e36;color:#fff}
+
+/* Review slides and result analysis share the warm, editorial exam surface. */
+.ed-exam-library .official-review{width:min(100%,860px);max-width:860px;margin:0 auto;padding:8px 0 calc(98px + env(safe-area-inset-bottom));color:#302820;font-variant-numeric:tabular-nums;touch-action:pan-y pinch-zoom}
+.ed-exam-library .official-review-header{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:16px;margin:0 0 12px;padding:2px 0 14px;border-bottom:1px solid #e5ddd2}
+.ed-exam-library .official-review-title{min-width:0}
+.ed-exam-library .official-review-title>small,.ed-exam-library .official-review-answer>header small,.ed-exam-library .official-review-explanation>small{display:block;color:#9b7b52;font-size:9px;font-weight:800;letter-spacing:.1em}
+.ed-exam-library .official-review-title h1{margin:3px 0;color:#302820;font-size:21px;font-weight:750;line-height:1.35;letter-spacing:-.025em}
+.ed-exam-library .official-review-title p{margin:0;color:#84796c;font-size:11px;line-height:1.5}
+.ed-exam-library .official-review-header-actions{display:flex;align-items:center;gap:12px}
+.ed-exam-library .official-review-header-actions>strong{display:flex;align-items:baseline;gap:2px;color:#5b4430;font-size:22px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+.ed-exam-library .official-review-header-actions>strong span{color:#9d9388;font-size:12px;font-weight:650}
+.ed-exam-library .official-review-close{display:flex;align-items:center;justify-content:center;gap:5px;min-width:46px;min-height:44px;padding:6px 9px;border:1px solid #e5ddd2;border-radius:9px;background:#fff;color:#6f655a;font-size:11px;font-weight:700;white-space:nowrap}
+.ed-exam-library .official-review-close b{font-size:17px;font-weight:500;line-height:1}
+.ed-exam-library .official-review-progress{height:4px;margin:0 0 18px;overflow:hidden;border-radius:999px;background:#e9e5dc}
+.ed-exam-library .official-review-progress i{display:block;height:100%;border-radius:inherit;background:#9d805d;transition:width .18s ease}
+.ed-exam-library .official-review-kicker{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 10px;color:#8a8074;font-size:10px;line-height:1.4}
+.ed-exam-library .official-review-kicker span:first-child{display:inline-flex;align-items:center;min-height:28px;padding:4px 10px;border-radius:7px;background:#eee9df;color:#554738;font-size:11px;font-weight:750}
+.ed-exam-library .official-review-paper{overflow:hidden;border:1px solid #e7e1d8;border-radius:12px;background:#fff}
+.ed-exam-library .official-review .official-paper{margin:0;border:0;border-radius:0;background:#fff}
+.ed-exam-library .official-review .official-paper-open,.ed-exam-library .official-review .official-paper-open>img{display:block;width:100%;height:auto;max-height:none;object-fit:contain}
+.ed-exam-library .official-review .official-paper figcaption{padding:9px 12px;border-top:1px solid #eeeae3;color:#82796f}
+.ed-exam-library .official-review-answer{margin-top:18px;padding:18px;border:1px solid #e8e1d7;border-radius:12px;background:#fff}
+.ed-exam-library .official-review-answer>header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.ed-exam-library .official-review-answer>header h2{margin:3px 0 0;color:#352e26;font-size:16px;font-weight:750;line-height:1.4}
+.ed-exam-library .official-review-points{flex:0 0 auto;color:#746956;font-size:10px;font-weight:700;white-space:nowrap}
+.ed-exam-library .official-review .official-choice-panel{margin:0}
+.ed-exam-library .official-review .official-choice-panel>header{display:none}
+.ed-exam-library .official-review .official-choice-grid{gap:8px}
+.ed-exam-library .official-review .official-choice-grid button{min-height:56px;border-radius:9px;box-shadow:none}
+.ed-exam-library .official-review .official-choice-grid button.has-media{min-height:0}
+.ed-exam-library .official-review .official-choice-media{overflow:hidden;background:#f7f6f2}
+.ed-exam-library .official-review .official-choice-media img{width:100%;height:100%;max-height:none;object-fit:contain}
+.ed-exam-library .official-review-outcome{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px 14px;margin-top:14px;padding:12px 0;border-top:1px solid #eee9e1;border-bottom:1px solid #eee9e1}
+.ed-exam-library .official-review-outcome h2{grid-column:1/-1;margin:0;color:#66795f;font-size:14px;font-weight:750;line-height:1.4}
+.ed-exam-library .official-review-outcome.wrong h2{color:#a85d52}
+.ed-exam-library .official-review-outcome.unanswered h2{color:#83755e}
+.ed-exam-library .official-review-outcome>div{display:flex;flex-wrap:wrap;gap:5px 18px;min-width:0}
+.ed-exam-library .official-review-outcome p{margin:0;color:#766d62;font-size:11px;line-height:1.5}
+.ed-exam-library .official-review-outcome p b{color:#393329;font-weight:750}
+.ed-exam-library .official-review-outcome>small{color:#8b8175;font-size:10px;white-space:nowrap}
+.ed-exam-library .official-review-explanation{margin-top:16px}
+.ed-exam-library .official-review-explanation h2{margin:4px 0 7px;color:#352e26;font-size:14px;font-weight:750;line-height:1.5}
+.ed-exam-library .official-review-explanation>p{margin:0;color:#4f4a43;font-size:13px;line-height:1.85;overflow-wrap:anywhere}
+.ed-exam-library .official-review-explanation>.text-btn{min-height:40px;margin-top:8px;padding:6px 0;color:#82633b;font-size:11px}
+.ed-exam-library .official-review-actions{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:18px 0 0;padding:0 0 8px;border:0;border-radius:0;background:transparent}
+.ed-exam-library .official-review-actions button{display:inline-flex;align-items:center;justify-content:center;gap:6px;box-sizing:border-box;width:100%;min-width:0;min-height:48px;padding:9px 12px;border:1px solid #e2dbd0;border-radius:9px;background:#fff;color:#554a3c;font-size:12px;font-weight:700;white-space:nowrap}
+.ed-exam-library .official-review-actions button:disabled{border-color:#ece8e1;background:#f7f5f1;color:#b3aca2;cursor:default}
+.ed-exam-library .official-review.slide-next{animation:official-question-next .24s cubic-bezier(.22,.72,.3,1) both}
+.ed-exam-library .official-review.slide-previous{animation:official-question-previous .24s cubic-bezier(.22,.72,.3,1) both}
+.ed-exam-library .official-results .official-result-hero{min-height:146px;border-color:#e8e1d7;border-radius:14px;background:#fff;box-shadow:none}
+.ed-exam-library .official-results .official-result-hero>div:first-child{padding:22px;border-right-color:#ebe5dc}
+.ed-exam-library .official-results .official-result-hero h1{color:#463525;font-size:50px}
+.ed-exam-library .official-results .official-certification{height:100%;box-sizing:border-box;padding:18px 14px;border:0;border-radius:0}
+.ed-exam-library .official-results .official-certification.pass{background:#edf5ed;color:#47744e}
+.ed-exam-library .official-results .official-certification.fail{background:#fbefed;color:#a25246}
+.ed-exam-library .official-results .official-certification.learning{background:#f4f0e9;color:#756044}
+.ed-exam-library .official-results .official-result-summary{margin:14px 0 18px;border-color:#e8e1d7;border-radius:12px}
+.ed-exam-library .official-results .official-result-summary>div{padding:14px 8px}
+.ed-exam-library .official-results .official-result-summary small{color:#83796d;font-size:11px}
+.ed-exam-library .official-results .official-result-summary b{color:#3b3329;font-size:19px;font-weight:750}
+.ed-exam-library .official-results .official-result-actions{gap:9px;margin-bottom:20px}
+.ed-exam-library .official-results .official-result-actions button{min-height:50px;border-radius:9px;font-size:13px}
+.ed-exam-library .official-results .official-result-actions .official-result-retake{border-color:#654d37;background:#654d37}
+.ed-exam-library .official-results .official-grade-criteria{margin:0 0 18px;padding:4px 0 14px;border-bottom:1px solid #e8e1d7}
+.ed-exam-library .official-results .official-grade-criteria summary{min-height:36px;color:#695236;font-size:12px}
+.ed-exam-library .official-results .official-grade-criteria p,.ed-exam-library .official-results .official-grade-criteria small{font-size:11px}
+.ed-exam-library .official-results .official-result-analysis{margin:0 0 16px;padding:20px;border:1px solid #e8e1d7;border-radius:14px;background:#fff;box-shadow:none}
+.ed-exam-library .official-results .official-analysis-heading h2{color:#352e26;font-size:17px;font-weight:750}
+.ed-exam-library .official-results .official-analysis-description{margin:5px 0 10px;color:#82796f;font-size:11px;line-height:1.6}
+.ed-exam-library .official-results .official-era-detail-list{display:block;margin-top:6px;border:0;border-top:1px solid #eee9e1;border-radius:0;background:transparent}
+.ed-exam-library .official-results .official-era-detail-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;grid-template-areas:"name status score" "meter meter meter";align-items:center;gap:7px 10px;min-width:0;min-height:0;padding:13px 2px;border:0;border-bottom:1px solid #eee9e1;border-radius:0;background:transparent;text-align:left;transition:background-color .15s ease}
+.ed-exam-library .official-results .official-era-detail-row:last-child{border-bottom:0}
+.ed-exam-library .official-results .official-era-detail-row.selected,.ed-exam-library .official-results .official-era-detail-row:hover{border-color:#eee9e1;background:#f8faf6;box-shadow:none}
+.ed-exam-library .official-results .official-era-detail-name{grid-area:name;min-width:0}
+.ed-exam-library .official-results .official-era-detail-name b{display:block;overflow-wrap:anywhere;color:#3d372f;font-size:12px;font-weight:700;line-height:1.4}
+.ed-exam-library .official-results .official-era-detail-name small{display:none}
+.ed-exam-library .official-results .official-era-detail-score{grid-area:score;display:flex;align-items:flex-end;flex-direction:column;gap:2px;text-align:right}
+.ed-exam-library .official-results .official-era-detail-score b{color:#536f54;font-size:18px;font-weight:750;line-height:1.2}
+.ed-exam-library .official-results .official-era-detail-score small{color:#887e72;font-size:9px;white-space:nowrap}
+.ed-exam-library .official-results .official-analysis-status{grid-area:status;display:inline-flex;align-items:center;justify-content:center;min-height:22px;padding:3px 8px;border-radius:999px;background:#f0f3ee;color:#66775f;font-size:9px;font-weight:700;white-space:nowrap}
+.ed-exam-library .official-results .official-analysis-status.focus,.ed-exam-library .official-results .official-analysis-status.weak{background:#fbefed;color:#a35f53}
+.ed-exam-library .official-results .official-analysis-status.good,.ed-exam-library .official-results .official-analysis-status.strong{background:#edf5ed;color:#4f7954}
+.ed-exam-library .official-results .official-analysis-status.empty,.ed-exam-library .official-results .official-analysis-status.unknown,.ed-exam-library .official-results .official-analysis-status.sample-limited{background:#f3f1ed;color:#81796e}
+.ed-exam-library .official-results .official-era-detail-meter{grid-area:meter;display:block;width:100%;height:6px;overflow:hidden;border-radius:999px;background:#efeee9}
+.ed-exam-library .official-results .official-era-detail-meter i{display:block;height:100%;min-width:0;border-radius:inherit;background:#a8bea2;transition:width .2s ease}
+.ed-exam-library .official-results .official-era-detail-row.focus .official-era-detail-meter i,.ed-exam-library .official-results .official-era-detail-row.weak .official-era-detail-meter i{background:#d5a197}
+.ed-exam-library .official-results .official-era-detail-row.good .official-era-detail-meter i,.ed-exam-library .official-results .official-era-detail-row.strong .official-era-detail-meter i{background:#a5bea3}
+.ed-exam-library .official-results .official-selected-era{margin-top:0;padding:16px 0 0;border-top:1px solid #e8e1d7;border-right:0;border-bottom:0;border-left:0;border-radius:0;background:transparent}
+.ed-exam-library .official-results .official-selected-era header{padding:0}
+.ed-exam-library .official-results .official-selected-era h3{color:#352e26}
+.ed-exam-library .official-results .official-selected-era>p{margin:7px 0;color:#746d62;font-size:11px;line-height:1.6}
+.ed-exam-library .official-results .official-era-select-hint{margin:11px 0 0;padding:0;border-radius:0;background:transparent;color:#8b8175;font-size:10px;text-align:left}
+.ed-exam-library .official-results .official-analysis-empty{padding:14px 0;border-radius:0;background:transparent;color:#82796f;font-size:12px}
+@media(max-width:560px){
+ .ed-exam-library .official-review{padding-top:4px}
+ .ed-exam-library .official-review-header{gap:10px;padding-bottom:12px}
+ .ed-exam-library .official-review-title h1{font-size:18px}
+ .ed-exam-library .official-review-header-actions{gap:8px}
+ .ed-exam-library .official-review-header-actions>strong{font-size:20px}
+ .ed-exam-library .official-review-close{min-width:44px;padding-inline:7px}
+ .ed-exam-library .official-review-answer{margin-top:14px;padding:14px}
+ .ed-exam-library .official-review .official-choice-grid button{min-height:50px;padding:9px}
+ .ed-exam-library .official-review .official-choice-grid button.has-media{min-height:0}
+ .ed-exam-library .official-review-outcome>div{gap:5px 12px}
+ .ed-exam-library .official-results .official-result-hero{min-height:132px}
+ .ed-exam-library .official-results .official-result-hero>div:first-child{padding:15px}
+ .ed-exam-library .official-results .official-result-hero h1{font-size:40px}
+ .ed-exam-library .official-results .official-certification{padding:12px 8px}
+ .ed-exam-library .official-results .official-certification b{font-size:20px}
+ .ed-exam-library .official-results .official-result-summary>div{padding:12px 4px}
+ .ed-exam-library .official-results .official-result-summary b{font-size:17px}
+ .ed-exam-library .official-results .official-result-analysis{padding:16px}
+ .ed-exam-library .official-results .official-era-detail-row{gap:7px 6px;padding:12px 0}
+ .ed-exam-library .official-results .official-era-detail-score b{font-size:16px}
+ .ed-exam-library .official-results .official-era-detail-score small{font-size:8px}
+ .ed-exam-library .official-results .official-analysis-status{padding-inline:6px;font-size:8px}
+}
