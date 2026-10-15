@@ -940,7 +940,9 @@ const PROTO_REVISION_SOURCE={
                 "여기는 도둑질하면 물건값의 12배를 배상해야 하오."
               ],
               "questionIds": [
-                "official-73-basic-02"
+                "official-73-basic-02",
+                "official-71-advanced-02",
+                "official-43-intermediate-02"
               ]
             },
             {
@@ -955,7 +957,9 @@ const PROTO_REVISION_SOURCE={
                 "하나를 훔치면 열두 배. 1책 12법… 시험에서 봤던 말이 내 일이 될 뻔했네."
               ],
               "questionIds": [
-                "official-73-basic-02"
+                "official-73-basic-02",
+                "official-71-advanced-02",
+                "official-43-intermediate-02"
               ]
             },
             {
@@ -971,7 +975,9 @@ const PROTO_REVISION_SOURCE={
                 "도중에 짐 나르는 걸 도와주시오. 나도 고구려 쪽에 전할 물건이 있소."
               ],
               "questionIds": [
-                "official-73-basic-02"
+                "official-73-basic-02",
+                "official-71-advanced-02",
+                "official-43-intermediate-02"
               ]
             }
           ],
@@ -985,10 +991,12 @@ const PROTO_REVISION_SOURCE={
             "sceneId": "proto_ch01_s3",
             "afterLineId": "proto_ch01_s3-l017",
             "officialQuestionIds": [
-              "official-73-basic-02"
+              "official-73-basic-02",
+              "official-71-advanced-02",
+              "official-43-intermediate-02"
             ],
             "targetCount": 3,
-            "missingQuestionCount": 2
+            "missingQuestionCount": 0
           },
           "nextSceneId": "proto_ch02_s1"
         }
@@ -2050,7 +2058,10 @@ const PROTO_REVISION_SOURCE={
               "facts": [
                 "고구려의 법은 엄하오. 도둑질을 가볍게 넘길 수는 없지."
               ],
-              "questionIds": []
+              "questionIds": [
+                "official-48-advanced-02",
+                "official-41-high-03"
+              ]
             },
             {
               "id": "proto_ch02_s4-k2",
@@ -2063,7 +2074,10 @@ const PROTO_REVISION_SOURCE={
               "facts": [
                 "부여에서도 1책 12법 이야기를 들었어요. 남의 물건 하나도 큰일이 되더라고요."
               ],
-              "questionIds": []
+              "questionIds": [
+                "official-48-advanced-02",
+                "official-41-high-03"
+              ]
             },
             {
               "id": "proto_ch02_s4-k3",
@@ -2076,7 +2090,10 @@ const PROTO_REVISION_SOURCE={
               "facts": [
                 "그 소금 자루는 옥저에서 왔소. 아이가 따라간 일행도 그쪽으로 돌아갔지."
               ],
-              "questionIds": []
+              "questionIds": [
+                "official-48-advanced-02",
+                "official-41-high-03"
+              ]
             }
           ],
           "stageDirections": [
@@ -2088,9 +2105,12 @@ const PROTO_REVISION_SOURCE={
           "quizAfter": {
             "sceneId": "proto_ch02_s4",
             "afterLineId": "proto_ch02_s4-l017",
-            "officialQuestionIds": [],
+            "officialQuestionIds": [
+              "official-48-advanced-02",
+              "official-41-high-03"
+            ],
             "targetCount": 3,
-            "missingQuestionCount": 3
+            "missingQuestionCount": 1
           },
           "nextSceneId": "proto_ch03_s1"
         }
@@ -2326,7 +2346,9 @@ const PROTO_REVISION_SOURCE={
                 "옥저에 도착했소. 이곳은 소금과 어물이 풍부하지.",
                 "옥저, 바닷가의 소금·어물, 마을의 읍군·삼로."
               ],
-              "questionIds": []
+              "questionIds": [
+                "official-55-advanced-02"
+              ]
             },
             {
               "id": "proto_ch03_s1-k2",
@@ -2339,7 +2361,9 @@ const PROTO_REVISION_SOURCE={
               "facts": [
                 "옥저에 도착했소. 이곳은 소금과 어물이 풍부하지."
               ],
-              "questionIds": []
+              "questionIds": [
+                "official-55-advanced-02"
+              ]
             },
             {
               "id": "proto_ch03_s1-k3",
@@ -2353,7 +2377,9 @@ const PROTO_REVISION_SOURCE={
                 "이곳은 부여나 고구려처럼 강한 왕을 중심으로 통합되지는 않았소. 마을마다 읍군·삼로 같은 군장이 다스리지.",
                 "옥저, 바닷가의 소금·어물, 마을의 읍군·삼로."
               ],
-              "questionIds": []
+              "questionIds": [
+                "official-55-advanced-02"
+              ]
             },
             {
               "id": "proto_ch03_s1-k4",
@@ -2366,7 +2392,9 @@ const PROTO_REVISION_SOURCE={
               "facts": [
                 "옥저, 바닷가의 소금·어물, 마을의 읍군·삼로."
               ],
-              "questionIds": []
+              "questionIds": [
+                "official-55-advanced-02"
+              ]
             }
           ],
           "stageDirections": [
@@ -2375,9 +2403,11 @@ const PROTO_REVISION_SOURCE={
           "quizAfter": {
             "sceneId": "proto_ch03_s1",
             "afterLineId": "proto_ch03_s1-l016",
-            "officialQuestionIds": [],
+            "officialQuestionIds": [
+              "official-55-advanced-02"
+            ],
             "targetCount": 3,
-            "missingQuestionCount": 3
+            "missingQuestionCount": 2
           },
           "nextSceneId": "proto_ch03_s2"
         },
@@ -2612,7 +2642,9 @@ const PROTO_REVISION_SOURCE={
                 "이곳에는 혼인을 약속한 여자아이가 남자 집에서 자라는 풍속이 있소."
               ],
               "questionIds": [
-                "official-67-basic-02"
+                "official-67-basic-02",
+                "official-66-advanced-02",
+                "official-42-high-03"
               ]
             },
             {
@@ -2628,7 +2660,9 @@ const PROTO_REVISION_SOURCE={
                 "고구려에서는 남자가 여자 집으로 갔고… 옥저에서는 여자아이가 먼저 남자 집에서 자라는구나. 서옥제와 민며느리제는 다르네."
               ],
               "questionIds": [
-                "official-67-basic-02"
+                "official-67-basic-02",
+                "official-66-advanced-02",
+                "official-42-high-03"
               ]
             },
             {
@@ -2643,7 +2677,9 @@ const PROTO_REVISION_SOURCE={
                 "고구려에서는 남자가 여자 집으로 갔고… 옥저에서는 여자아이가 먼저 남자 집에서 자라는구나. 서옥제와 민며느리제는 다르네."
               ],
               "questionIds": [
-                "official-67-basic-02"
+                "official-67-basic-02",
+                "official-66-advanced-02",
+                "official-42-high-03"
               ]
             }
           ],
@@ -2655,10 +2691,12 @@ const PROTO_REVISION_SOURCE={
             "sceneId": "proto_ch03_s2",
             "afterLineId": "proto_ch03_s2-l017",
             "officialQuestionIds": [
-              "official-67-basic-02"
+              "official-67-basic-02",
+              "official-66-advanced-02",
+              "official-42-high-03"
             ],
             "targetCount": 3,
-            "missingQuestionCount": 2
+            "missingQuestionCount": 0
           },
           "nextSceneId": "proto_ch03_s3"
         },
@@ -2870,7 +2908,8 @@ const PROTO_REVISION_SOURCE={
               ],
               "questionIds": [
                 "official-58-basic-02",
-                "official-66-advanced-02"
+                "official-46-high-02",
+                "official-45-intermediate-02"
               ]
             },
             {
@@ -2886,7 +2925,8 @@ const PROTO_REVISION_SOURCE={
               ],
               "questionIds": [
                 "official-58-basic-02",
-                "official-66-advanced-02"
+                "official-46-high-02",
+                "official-45-intermediate-02"
               ]
             },
             {
@@ -2902,7 +2942,8 @@ const PROTO_REVISION_SOURCE={
               ],
               "questionIds": [
                 "official-58-basic-02",
-                "official-66-advanced-02"
+                "official-46-high-02",
+                "official-45-intermediate-02"
               ]
             }
           ],
@@ -2917,10 +2958,11 @@ const PROTO_REVISION_SOURCE={
             "afterLineId": "proto_ch03_s3-l015",
             "officialQuestionIds": [
               "official-58-basic-02",
-              "official-66-advanced-02"
+              "official-46-high-02",
+              "official-45-intermediate-02"
             ],
             "targetCount": 3,
-            "missingQuestionCount": 1
+            "missingQuestionCount": 0
           },
           "nextSceneId": "proto_ch04_s1"
         }
@@ -3181,7 +3223,9 @@ const PROTO_REVISION_SOURCE={
                 "우리가 경계를 몰랐소. 읍군이나 삼로께 사정을 설명하게 해주시오."
               ],
               "questionIds": [
-                "official-77-advanced-03"
+                "official-77-advanced-03",
+                "official-42-intermediate-02",
+                "official-54-advanced-02"
               ]
             },
             {
@@ -3196,7 +3240,9 @@ const PROTO_REVISION_SOURCE={
                 "동예에도 읍군·삼로 같은 군장이 있소."
               ],
               "questionIds": [
-                "official-77-advanced-03"
+                "official-77-advanced-03",
+                "official-42-intermediate-02",
+                "official-54-advanced-02"
               ]
             },
             {
@@ -3211,7 +3257,9 @@ const PROTO_REVISION_SOURCE={
                 "동예에도 읍군·삼로 같은 군장이 있소."
               ],
               "questionIds": [
-                "official-77-advanced-03"
+                "official-77-advanced-03",
+                "official-42-intermediate-02",
+                "official-54-advanced-02"
               ]
             },
             {
@@ -3228,7 +3276,9 @@ const PROTO_REVISION_SOURCE={
                 "이곳을 설명할 때 단궁·과하마·반어피라는 특산물과 10월 무천도 함께 듣게 될 것이오. 우선은 오늘 겪은 책화부터 기억하시오."
               ],
               "questionIds": [
-                "official-77-advanced-03"
+                "official-77-advanced-03",
+                "official-42-intermediate-02",
+                "official-54-advanced-02"
               ]
             },
             {
@@ -3243,7 +3293,9 @@ const PROTO_REVISION_SOURCE={
                 "물건을 훔친 것과는 다르다. 책화는 다른 마을의 영역 침범에 대한 배상이야."
               ],
               "questionIds": [
-                "official-77-advanced-03"
+                "official-77-advanced-03",
+                "official-42-intermediate-02",
+                "official-54-advanced-02"
               ]
             },
             {
@@ -3258,7 +3310,9 @@ const PROTO_REVISION_SOURCE={
                 "이곳을 설명할 때 단궁·과하마·반어피라는 특산물과 10월 무천도 함께 듣게 될 것이오. 우선은 오늘 겪은 책화부터 기억하시오."
               ],
               "questionIds": [
-                "official-77-advanced-03"
+                "official-77-advanced-03",
+                "official-42-intermediate-02",
+                "official-54-advanced-02"
               ]
             },
             {
@@ -3273,7 +3327,9 @@ const PROTO_REVISION_SOURCE={
                 "이곳을 설명할 때 단궁·과하마·반어피라는 특산물과 10월 무천도 함께 듣게 될 것이오. 우선은 오늘 겪은 책화부터 기억하시오."
               ],
               "questionIds": [
-                "official-77-advanced-03"
+                "official-77-advanced-03",
+                "official-42-intermediate-02",
+                "official-54-advanced-02"
               ]
             }
           ],
@@ -3285,10 +3341,12 @@ const PROTO_REVISION_SOURCE={
             "sceneId": "proto_ch04_s1",
             "afterLineId": "proto_ch04_s1-l017",
             "officialQuestionIds": [
-              "official-77-advanced-03"
+              "official-77-advanced-03",
+              "official-42-intermediate-02",
+              "official-54-advanced-02"
             ],
             "targetCount": 3,
-            "missingQuestionCount": 2
+            "missingQuestionCount": 0
           },
           "nextSceneId": "proto_ch04_s2"
         },
@@ -3513,7 +3571,11 @@ const PROTO_REVISION_SOURCE={
               "facts": [
                 "우리와 같은 씨족 사람과는 혼인하지 않소."
               ],
-              "questionIds": []
+              "questionIds": [
+                "official-45-high-02",
+                "official-46-intermediate-03",
+                "official-50-advanced-03"
+              ]
             },
             {
               "id": "proto_ch04_s2-k2",
@@ -3526,7 +3588,11 @@ const PROTO_REVISION_SOURCE={
               "facts": [
                 "족외혼이오. 자기 씨족 밖의 사람과 혼인하는 것이지."
               ],
-              "questionIds": []
+              "questionIds": [
+                "official-45-high-02",
+                "official-46-intermediate-03",
+                "official-50-advanced-03"
+              ]
             },
             {
               "id": "proto_ch04_s2-k3",
@@ -3539,7 +3605,11 @@ const PROTO_REVISION_SOURCE={
               "facts": [
                 "족외혼이오. 자기 씨족 밖의 사람과 혼인하는 것이지."
               ],
-              "questionIds": []
+              "questionIds": [
+                "official-45-high-02",
+                "official-46-intermediate-03",
+                "official-50-advanced-03"
+              ]
             },
             {
               "id": "proto_ch04_s2-k4",
@@ -3552,7 +3622,11 @@ const PROTO_REVISION_SOURCE={
               "facts": [
                 "그렇소. 핵심은 마을 이름보다 씨족이 다른가에 있소."
               ],
-              "questionIds": []
+              "questionIds": [
+                "official-45-high-02",
+                "official-46-intermediate-03",
+                "official-50-advanced-03"
+              ]
             },
             {
               "id": "proto_ch04_s2-k5",
@@ -3565,7 +3639,11 @@ const PROTO_REVISION_SOURCE={
               "facts": [
                 "별 그림을 그리던 아이 말이오? 얼마 전 무천 이야기를 하던 노인이 그 아이를 돌봐줬소."
               ],
-              "questionIds": []
+              "questionIds": [
+                "official-45-high-02",
+                "official-46-intermediate-03",
+                "official-50-advanced-03"
+              ]
             }
           ],
           "stageDirections": [
@@ -3576,9 +3654,13 @@ const PROTO_REVISION_SOURCE={
           "quizAfter": {
             "sceneId": "proto_ch04_s2",
             "afterLineId": "proto_ch04_s2-l016",
-            "officialQuestionIds": [],
+            "officialQuestionIds": [
+              "official-45-high-02",
+              "official-46-intermediate-03",
+              "official-50-advanced-03"
+            ],
             "targetCount": 3,
-            "missingQuestionCount": 3
+            "missingQuestionCount": 0
           },
           "nextSceneId": "proto_ch04_s3"
         },
@@ -4607,7 +4689,8 @@ const PROTO_REVISION_SOURCE={
               ],
               "questionIds": [
                 "official-77-basic-02",
-                "official-60-basic-02"
+                "official-60-basic-02",
+                "official-47-basic-03"
               ]
             },
             {
@@ -4623,7 +4706,8 @@ const PROTO_REVISION_SOURCE={
               ],
               "questionIds": [
                 "official-77-basic-02",
-                "official-60-basic-02"
+                "official-60-basic-02",
+                "official-47-basic-03"
               ]
             },
             {
@@ -4640,7 +4724,8 @@ const PROTO_REVISION_SOURCE={
               ],
               "questionIds": [
                 "official-77-basic-02",
-                "official-60-basic-02"
+                "official-60-basic-02",
+                "official-47-basic-03"
               ]
             },
             {
@@ -4658,7 +4743,8 @@ const PROTO_REVISION_SOURCE={
               ],
               "questionIds": [
                 "official-77-basic-02",
-                "official-60-basic-02"
+                "official-60-basic-02",
+                "official-47-basic-03"
               ]
             },
             {
@@ -4674,7 +4760,8 @@ const PROTO_REVISION_SOURCE={
               ],
               "questionIds": [
                 "official-77-basic-02",
-                "official-60-basic-02"
+                "official-60-basic-02",
+                "official-47-basic-03"
               ]
             },
             {
@@ -4691,7 +4778,8 @@ const PROTO_REVISION_SOURCE={
               ],
               "questionIds": [
                 "official-77-basic-02",
-                "official-60-basic-02"
+                "official-60-basic-02",
+                "official-47-basic-03"
               ]
             },
             {
@@ -4707,7 +4795,8 @@ const PROTO_REVISION_SOURCE={
               ],
               "questionIds": [
                 "official-77-basic-02",
-                "official-60-basic-02"
+                "official-60-basic-02",
+                "official-47-basic-03"
               ]
             },
             {
@@ -4723,7 +4812,8 @@ const PROTO_REVISION_SOURCE={
               ],
               "questionIds": [
                 "official-77-basic-02",
-                "official-60-basic-02"
+                "official-60-basic-02",
+                "official-47-basic-03"
               ]
             },
             {
@@ -4739,7 +4829,8 @@ const PROTO_REVISION_SOURCE={
               ],
               "questionIds": [
                 "official-77-basic-02",
-                "official-60-basic-02"
+                "official-60-basic-02",
+                "official-47-basic-03"
               ]
             },
             {
@@ -4755,7 +4846,8 @@ const PROTO_REVISION_SOURCE={
               ],
               "questionIds": [
                 "official-77-basic-02",
-                "official-60-basic-02"
+                "official-60-basic-02",
+                "official-47-basic-03"
               ]
             },
             {
@@ -4771,7 +4863,8 @@ const PROTO_REVISION_SOURCE={
               ],
               "questionIds": [
                 "official-77-basic-02",
-                "official-60-basic-02"
+                "official-60-basic-02",
+                "official-47-basic-03"
               ]
             }
           ],
@@ -4787,10 +4880,11 @@ const PROTO_REVISION_SOURCE={
             "afterLineId": "proto_ch05_s1-l019",
             "officialQuestionIds": [
               "official-77-basic-02",
-              "official-60-basic-02"
+              "official-60-basic-02",
+              "official-47-basic-03"
             ],
             "targetCount": 3,
-            "missingQuestionCount": 1
+            "missingQuestionCount": 0
           },
           "nextSceneId": "proto_ch05_s2"
         },
@@ -5505,7 +5599,8 @@ const PROTO_REVISION_SOURCE={
               ],
               "questionIds": [
                 "official-67-advanced-02",
-                "official-78-advanced-03"
+                "official-78-advanced-03",
+                "official-53-advanced-02"
               ]
             },
             {
@@ -5521,7 +5616,8 @@ const PROTO_REVISION_SOURCE={
               ],
               "questionIds": [
                 "official-67-advanced-02",
-                "official-78-advanced-03"
+                "official-78-advanced-03",
+                "official-53-advanced-02"
               ]
             },
             {
@@ -5540,7 +5636,8 @@ const PROTO_REVISION_SOURCE={
               ],
               "questionIds": [
                 "official-67-advanced-02",
-                "official-78-advanced-03"
+                "official-78-advanced-03",
+                "official-53-advanced-02"
               ]
             },
             {
@@ -5556,7 +5653,8 @@ const PROTO_REVISION_SOURCE={
               ],
               "questionIds": [
                 "official-67-advanced-02",
-                "official-78-advanced-03"
+                "official-78-advanced-03",
+                "official-53-advanced-02"
               ]
             },
             {
@@ -5572,7 +5670,8 @@ const PROTO_REVISION_SOURCE={
               ],
               "questionIds": [
                 "official-67-advanced-02",
-                "official-78-advanced-03"
+                "official-78-advanced-03",
+                "official-53-advanced-02"
               ]
             },
             {
@@ -5589,7 +5688,8 @@ const PROTO_REVISION_SOURCE={
               ],
               "questionIds": [
                 "official-67-advanced-02",
-                "official-78-advanced-03"
+                "official-78-advanced-03",
+                "official-53-advanced-02"
               ]
             },
             {
@@ -5605,7 +5705,8 @@ const PROTO_REVISION_SOURCE={
               ],
               "questionIds": [
                 "official-67-advanced-02",
-                "official-78-advanced-03"
+                "official-78-advanced-03",
+                "official-53-advanced-02"
               ]
             }
           ],
@@ -5624,10 +5725,11 @@ const PROTO_REVISION_SOURCE={
             "afterLineId": "proto_ch05_s3-l026",
             "officialQuestionIds": [
               "official-67-advanced-02",
-              "official-78-advanced-03"
+              "official-78-advanced-03",
+              "official-53-advanced-02"
             ],
             "targetCount": 3,
-            "missingQuestionCount": 1
+            "missingQuestionCount": 0
           },
           "nextSceneId": null
         }
@@ -5814,7 +5916,9 @@ const PROTO_REVISION_SOURCE={
         "여기는 도둑질하면 물건값의 12배를 배상해야 하오."
       ],
       "questionIds": [
-        "official-73-basic-02"
+        "official-73-basic-02",
+        "official-71-advanced-02",
+        "official-43-intermediate-02"
       ]
     },
     {
@@ -5829,7 +5933,9 @@ const PROTO_REVISION_SOURCE={
         "하나를 훔치면 열두 배. 1책 12법… 시험에서 봤던 말이 내 일이 될 뻔했네."
       ],
       "questionIds": [
-        "official-73-basic-02"
+        "official-73-basic-02",
+        "official-71-advanced-02",
+        "official-43-intermediate-02"
       ]
     },
     {
@@ -5845,7 +5951,9 @@ const PROTO_REVISION_SOURCE={
         "도중에 짐 나르는 걸 도와주시오. 나도 고구려 쪽에 전할 물건이 있소."
       ],
       "questionIds": [
-        "official-73-basic-02"
+        "official-73-basic-02",
+        "official-71-advanced-02",
+        "official-43-intermediate-02"
       ]
     },
     {
@@ -6005,7 +6113,10 @@ const PROTO_REVISION_SOURCE={
       "facts": [
         "고구려의 법은 엄하오. 도둑질을 가볍게 넘길 수는 없지."
       ],
-      "questionIds": []
+      "questionIds": [
+        "official-48-advanced-02",
+        "official-41-high-03"
+      ]
     },
     {
       "id": "proto_ch02_s4-k2",
@@ -6018,7 +6129,10 @@ const PROTO_REVISION_SOURCE={
       "facts": [
         "부여에서도 1책 12법 이야기를 들었어요. 남의 물건 하나도 큰일이 되더라고요."
       ],
-      "questionIds": []
+      "questionIds": [
+        "official-48-advanced-02",
+        "official-41-high-03"
+      ]
     },
     {
       "id": "proto_ch02_s4-k3",
@@ -6031,7 +6145,10 @@ const PROTO_REVISION_SOURCE={
       "facts": [
         "그 소금 자루는 옥저에서 왔소. 아이가 따라간 일행도 그쪽으로 돌아갔지."
       ],
-      "questionIds": []
+      "questionIds": [
+        "official-48-advanced-02",
+        "official-41-high-03"
+      ]
     },
     {
       "id": "proto_ch03_s1-k1",
@@ -6045,7 +6162,9 @@ const PROTO_REVISION_SOURCE={
         "옥저에 도착했소. 이곳은 소금과 어물이 풍부하지.",
         "옥저, 바닷가의 소금·어물, 마을의 읍군·삼로."
       ],
-      "questionIds": []
+      "questionIds": [
+        "official-55-advanced-02"
+      ]
     },
     {
       "id": "proto_ch03_s1-k2",
@@ -6058,7 +6177,9 @@ const PROTO_REVISION_SOURCE={
       "facts": [
         "옥저에 도착했소. 이곳은 소금과 어물이 풍부하지."
       ],
-      "questionIds": []
+      "questionIds": [
+        "official-55-advanced-02"
+      ]
     },
     {
       "id": "proto_ch03_s1-k3",
@@ -6072,7 +6193,9 @@ const PROTO_REVISION_SOURCE={
         "이곳은 부여나 고구려처럼 강한 왕을 중심으로 통합되지는 않았소. 마을마다 읍군·삼로 같은 군장이 다스리지.",
         "옥저, 바닷가의 소금·어물, 마을의 읍군·삼로."
       ],
-      "questionIds": []
+      "questionIds": [
+        "official-55-advanced-02"
+      ]
     },
     {
       "id": "proto_ch03_s1-k4",
@@ -6085,7 +6208,9 @@ const PROTO_REVISION_SOURCE={
       "facts": [
         "옥저, 바닷가의 소금·어물, 마을의 읍군·삼로."
       ],
-      "questionIds": []
+      "questionIds": [
+        "official-55-advanced-02"
+      ]
     },
     {
       "id": "proto_ch03_s2-k1",
@@ -6099,7 +6224,9 @@ const PROTO_REVISION_SOURCE={
         "이곳에는 혼인을 약속한 여자아이가 남자 집에서 자라는 풍속이 있소."
       ],
       "questionIds": [
-        "official-67-basic-02"
+        "official-67-basic-02",
+        "official-66-advanced-02",
+        "official-42-high-03"
       ]
     },
     {
@@ -6115,7 +6242,9 @@ const PROTO_REVISION_SOURCE={
         "고구려에서는 남자가 여자 집으로 갔고… 옥저에서는 여자아이가 먼저 남자 집에서 자라는구나. 서옥제와 민며느리제는 다르네."
       ],
       "questionIds": [
-        "official-67-basic-02"
+        "official-67-basic-02",
+        "official-66-advanced-02",
+        "official-42-high-03"
       ]
     },
     {
@@ -6130,7 +6259,9 @@ const PROTO_REVISION_SOURCE={
         "고구려에서는 남자가 여자 집으로 갔고… 옥저에서는 여자아이가 먼저 남자 집에서 자라는구나. 서옥제와 민며느리제는 다르네."
       ],
       "questionIds": [
-        "official-67-basic-02"
+        "official-67-basic-02",
+        "official-66-advanced-02",
+        "official-42-high-03"
       ]
     },
     {
@@ -6146,7 +6277,8 @@ const PROTO_REVISION_SOURCE={
       ],
       "questionIds": [
         "official-58-basic-02",
-        "official-66-advanced-02"
+        "official-46-high-02",
+        "official-45-intermediate-02"
       ]
     },
     {
@@ -6162,7 +6294,8 @@ const PROTO_REVISION_SOURCE={
       ],
       "questionIds": [
         "official-58-basic-02",
-        "official-66-advanced-02"
+        "official-46-high-02",
+        "official-45-intermediate-02"
       ]
     },
     {
@@ -6178,7 +6311,8 @@ const PROTO_REVISION_SOURCE={
       ],
       "questionIds": [
         "official-58-basic-02",
-        "official-66-advanced-02"
+        "official-46-high-02",
+        "official-45-intermediate-02"
       ]
     },
     {
@@ -6193,7 +6327,9 @@ const PROTO_REVISION_SOURCE={
         "우리가 경계를 몰랐소. 읍군이나 삼로께 사정을 설명하게 해주시오."
       ],
       "questionIds": [
-        "official-77-advanced-03"
+        "official-77-advanced-03",
+        "official-42-intermediate-02",
+        "official-54-advanced-02"
       ]
     },
     {
@@ -6208,7 +6344,9 @@ const PROTO_REVISION_SOURCE={
         "동예에도 읍군·삼로 같은 군장이 있소."
       ],
       "questionIds": [
-        "official-77-advanced-03"
+        "official-77-advanced-03",
+        "official-42-intermediate-02",
+        "official-54-advanced-02"
       ]
     },
     {
@@ -6223,7 +6361,9 @@ const PROTO_REVISION_SOURCE={
         "동예에도 읍군·삼로 같은 군장이 있소."
       ],
       "questionIds": [
-        "official-77-advanced-03"
+        "official-77-advanced-03",
+        "official-42-intermediate-02",
+        "official-54-advanced-02"
       ]
     },
     {
@@ -6240,7 +6380,9 @@ const PROTO_REVISION_SOURCE={
         "이곳을 설명할 때 단궁·과하마·반어피라는 특산물과 10월 무천도 함께 듣게 될 것이오. 우선은 오늘 겪은 책화부터 기억하시오."
       ],
       "questionIds": [
-        "official-77-advanced-03"
+        "official-77-advanced-03",
+        "official-42-intermediate-02",
+        "official-54-advanced-02"
       ]
     },
     {
@@ -6255,7 +6397,9 @@ const PROTO_REVISION_SOURCE={
         "물건을 훔친 것과는 다르다. 책화는 다른 마을의 영역 침범에 대한 배상이야."
       ],
       "questionIds": [
-        "official-77-advanced-03"
+        "official-77-advanced-03",
+        "official-42-intermediate-02",
+        "official-54-advanced-02"
       ]
     },
     {
@@ -6270,7 +6414,9 @@ const PROTO_REVISION_SOURCE={
         "이곳을 설명할 때 단궁·과하마·반어피라는 특산물과 10월 무천도 함께 듣게 될 것이오. 우선은 오늘 겪은 책화부터 기억하시오."
       ],
       "questionIds": [
-        "official-77-advanced-03"
+        "official-77-advanced-03",
+        "official-42-intermediate-02",
+        "official-54-advanced-02"
       ]
     },
     {
@@ -6285,7 +6431,9 @@ const PROTO_REVISION_SOURCE={
         "이곳을 설명할 때 단궁·과하마·반어피라는 특산물과 10월 무천도 함께 듣게 될 것이오. 우선은 오늘 겪은 책화부터 기억하시오."
       ],
       "questionIds": [
-        "official-77-advanced-03"
+        "official-77-advanced-03",
+        "official-42-intermediate-02",
+        "official-54-advanced-02"
       ]
     },
     {
@@ -6299,7 +6447,11 @@ const PROTO_REVISION_SOURCE={
       "facts": [
         "우리와 같은 씨족 사람과는 혼인하지 않소."
       ],
-      "questionIds": []
+      "questionIds": [
+        "official-45-high-02",
+        "official-46-intermediate-03",
+        "official-50-advanced-03"
+      ]
     },
     {
       "id": "proto_ch04_s2-k2",
@@ -6312,7 +6464,11 @@ const PROTO_REVISION_SOURCE={
       "facts": [
         "족외혼이오. 자기 씨족 밖의 사람과 혼인하는 것이지."
       ],
-      "questionIds": []
+      "questionIds": [
+        "official-45-high-02",
+        "official-46-intermediate-03",
+        "official-50-advanced-03"
+      ]
     },
     {
       "id": "proto_ch04_s2-k3",
@@ -6325,7 +6481,11 @@ const PROTO_REVISION_SOURCE={
       "facts": [
         "족외혼이오. 자기 씨족 밖의 사람과 혼인하는 것이지."
       ],
-      "questionIds": []
+      "questionIds": [
+        "official-45-high-02",
+        "official-46-intermediate-03",
+        "official-50-advanced-03"
+      ]
     },
     {
       "id": "proto_ch04_s2-k4",
@@ -6338,7 +6498,11 @@ const PROTO_REVISION_SOURCE={
       "facts": [
         "그렇소. 핵심은 마을 이름보다 씨족이 다른가에 있소."
       ],
-      "questionIds": []
+      "questionIds": [
+        "official-45-high-02",
+        "official-46-intermediate-03",
+        "official-50-advanced-03"
+      ]
     },
     {
       "id": "proto_ch04_s2-k5",
@@ -6351,7 +6515,11 @@ const PROTO_REVISION_SOURCE={
       "facts": [
         "별 그림을 그리던 아이 말이오? 얼마 전 무천 이야기를 하던 노인이 그 아이를 돌봐줬소."
       ],
-      "questionIds": []
+      "questionIds": [
+        "official-45-high-02",
+        "official-46-intermediate-03",
+        "official-50-advanced-03"
+      ]
     },
     {
       "id": "proto_ch04_s3-k1",
@@ -6612,7 +6780,8 @@ const PROTO_REVISION_SOURCE={
       ],
       "questionIds": [
         "official-77-basic-02",
-        "official-60-basic-02"
+        "official-60-basic-02",
+        "official-47-basic-03"
       ]
     },
     {
@@ -6628,7 +6797,8 @@ const PROTO_REVISION_SOURCE={
       ],
       "questionIds": [
         "official-77-basic-02",
-        "official-60-basic-02"
+        "official-60-basic-02",
+        "official-47-basic-03"
       ]
     },
     {
@@ -6645,7 +6815,8 @@ const PROTO_REVISION_SOURCE={
       ],
       "questionIds": [
         "official-77-basic-02",
-        "official-60-basic-02"
+        "official-60-basic-02",
+        "official-47-basic-03"
       ]
     },
     {
@@ -6663,7 +6834,8 @@ const PROTO_REVISION_SOURCE={
       ],
       "questionIds": [
         "official-77-basic-02",
-        "official-60-basic-02"
+        "official-60-basic-02",
+        "official-47-basic-03"
       ]
     },
     {
@@ -6679,7 +6851,8 @@ const PROTO_REVISION_SOURCE={
       ],
       "questionIds": [
         "official-77-basic-02",
-        "official-60-basic-02"
+        "official-60-basic-02",
+        "official-47-basic-03"
       ]
     },
     {
@@ -6696,7 +6869,8 @@ const PROTO_REVISION_SOURCE={
       ],
       "questionIds": [
         "official-77-basic-02",
-        "official-60-basic-02"
+        "official-60-basic-02",
+        "official-47-basic-03"
       ]
     },
     {
@@ -6712,7 +6886,8 @@ const PROTO_REVISION_SOURCE={
       ],
       "questionIds": [
         "official-77-basic-02",
-        "official-60-basic-02"
+        "official-60-basic-02",
+        "official-47-basic-03"
       ]
     },
     {
@@ -6728,7 +6903,8 @@ const PROTO_REVISION_SOURCE={
       ],
       "questionIds": [
         "official-77-basic-02",
-        "official-60-basic-02"
+        "official-60-basic-02",
+        "official-47-basic-03"
       ]
     },
     {
@@ -6744,7 +6920,8 @@ const PROTO_REVISION_SOURCE={
       ],
       "questionIds": [
         "official-77-basic-02",
-        "official-60-basic-02"
+        "official-60-basic-02",
+        "official-47-basic-03"
       ]
     },
     {
@@ -6760,7 +6937,8 @@ const PROTO_REVISION_SOURCE={
       ],
       "questionIds": [
         "official-77-basic-02",
-        "official-60-basic-02"
+        "official-60-basic-02",
+        "official-47-basic-03"
       ]
     },
     {
@@ -6776,7 +6954,8 @@ const PROTO_REVISION_SOURCE={
       ],
       "questionIds": [
         "official-77-basic-02",
-        "official-60-basic-02"
+        "official-60-basic-02",
+        "official-47-basic-03"
       ]
     },
     {
@@ -6895,7 +7074,8 @@ const PROTO_REVISION_SOURCE={
       ],
       "questionIds": [
         "official-67-advanced-02",
-        "official-78-advanced-03"
+        "official-78-advanced-03",
+        "official-53-advanced-02"
       ]
     },
     {
@@ -6911,7 +7091,8 @@ const PROTO_REVISION_SOURCE={
       ],
       "questionIds": [
         "official-67-advanced-02",
-        "official-78-advanced-03"
+        "official-78-advanced-03",
+        "official-53-advanced-02"
       ]
     },
     {
@@ -6930,7 +7111,8 @@ const PROTO_REVISION_SOURCE={
       ],
       "questionIds": [
         "official-67-advanced-02",
-        "official-78-advanced-03"
+        "official-78-advanced-03",
+        "official-53-advanced-02"
       ]
     },
     {
@@ -6946,7 +7128,8 @@ const PROTO_REVISION_SOURCE={
       ],
       "questionIds": [
         "official-67-advanced-02",
-        "official-78-advanced-03"
+        "official-78-advanced-03",
+        "official-53-advanced-02"
       ]
     },
     {
@@ -6962,7 +7145,8 @@ const PROTO_REVISION_SOURCE={
       ],
       "questionIds": [
         "official-67-advanced-02",
-        "official-78-advanced-03"
+        "official-78-advanced-03",
+        "official-53-advanced-02"
       ]
     },
     {
@@ -6979,7 +7163,8 @@ const PROTO_REVISION_SOURCE={
       ],
       "questionIds": [
         "official-67-advanced-02",
-        "official-78-advanced-03"
+        "official-78-advanced-03",
+        "official-53-advanced-02"
       ]
     },
     {
@@ -6995,7 +7180,8 @@ const PROTO_REVISION_SOURCE={
       ],
       "questionIds": [
         "official-67-advanced-02",
-        "official-78-advanced-03"
+        "official-78-advanced-03",
+        "official-53-advanced-02"
       ]
     }
   ],
@@ -7898,16 +8084,16 @@ const PROTO_REVISION_SOURCE={
         "answerIndex0": 1,
         "answerNumber1": 2,
         "choiceCount": 5,
-        "sceneKey": "3-3",
+        "sceneKey": "3-2",
         "learningKeywordIds": [
-          "proto_ch03_s3-k1",
-          "proto_ch03_s3-k2",
-          "proto_ch03_s3-k3"
+          "proto_ch03_s2-k1",
+          "proto_ch03_s2-k2",
+          "proto_ch03_s2-k3"
         ],
         "proposed": {
           "editorialFocusSummary": "가매장 후 뼈를 추려 가족 목곽에 안치한 사료에서 옥저를 찾고 민며느리제를 고른다.",
           "requiresReadSceneIds": [
-            "proto_ch03_s3"
+            "proto_ch03_s2"
           ],
           "playExplanation": "자료는 『삼국지』 동이전에 실린 옥저에 대한 기록이다. 정답은 ② 혼인 풍습으로 민며느리제가 있었다."
         },
@@ -9080,6 +9266,1023 @@ const PROTO_REVISION_SOURCE={
           "playExplanation": "(가)는 천군이 천신에 대한 제사를 주관하고 5월·10월 계절제를 지냈다는 내용으로 삼한에 해당하며. 정답은 ① (가) - 신성 지역인 소도가 있었다."
         },
         "questionImageSha256": "4424a6ea564d8bed5c83a08690bf1ccd22960bdf80f695f5b2f5b9c5119c00c0"
+      },
+      {
+        "officialQuestionId": "official-71-advanced-02",
+        "examRound": 71,
+        "examLevel": "심화",
+        "examYear": 2024,
+        "questionNumber": 2,
+        "question": "다음 검색창에 들어갈 나라에 대한 설명으로 옳은 것은?",
+        "clue": "부여의 위치, 도둑질한 물건값의 12배 배상, 소 발굽 점복이 제시되어 부여로 판단한다.",
+        "choices": [
+          "신성 지역인 소도가 있었다.",
+          "혼인 풍습으로 민며느리제가 있었다.",
+          "읍락 간의 경계를 중시하는 책화가 있었다.",
+          "여러 가(加)들이 각각 사출도를 주관하였다.",
+          "사회 질서를 유지하기 위해 범금 8조를 만들었다."
+        ],
+        "choiceExplanations": [
+          "소도는 삼한의 신성 지역이다.",
+          "민며느리제는 옥저의 혼인 풍습이다.",
+          "책화는 동예의 경계 침범에 대한 배상 풍습이다.",
+          "부여의 마가·우가·저가·구가는 사출도를 각각 주관하였다.",
+          "범금 8조는 고조선의 법률이다."
+        ],
+        "answer": 3,
+        "answerIndex0": 3,
+        "answerNumber1": 4,
+        "choiceCount": 5,
+        "points": 2,
+        "sceneKey": "1-3",
+        "questionImage": "media/proto-v4/exams/official-71-advanced-02.webp",
+        "questionImageSha256": "d40d0bf5a6bc0199e7ef44530712af0691da4c5c959d3f29c2cf9696be1a72d8",
+        "sourceImageWidth": 958,
+        "sourceImageHeight": 1116,
+        "sourcePdf": "71-advanced-0.pdf",
+        "answerPdf": "71-advanced-1.pdf",
+        "sourcePage": 1,
+        "learningKeywordIds": [
+          "proto_ch01_s3-k1",
+          "proto_ch01_s3-k2",
+          "proto_ch01_s3-k3"
+        ],
+        "sourceEvidence": {
+          "questionPdf": "71-advanced-0.pdf",
+          "answerFile": "71-advanced-1.pdf",
+          "questionPdfSha256": "4faa9016aa092da3684782b3c46f7ba04165c954649334ad5ba9956f4399c4a6",
+          "answerFileSha256": "d412bab448e17d15d0cfd71d6c98a524c109157362b854316d55b280ee6a2a4e",
+          "sourcePage": 1,
+          "cropBoxPoints": [
+            40.06772155761719,
+            593.2907836914062,
+            359.15248596191407,
+            964.7424047851563
+          ],
+          "sourcePublisher": "국사편찬위원회",
+          "visualReview": "verified",
+          "answerVerification": "original_answer_table",
+          "originalLevelLabel": "심화",
+          "archiveLanding": "https://www.historyexam.go.kr/pst/view.do?bbs=dat&pst_sno=1000030032",
+          "questionDownloadUrl": "https://www.historyexam.go.kr/atchFile/FileDown.do?atch_file_id=B_202408101138402030",
+          "answerDownloadUrl": "https://www.historyexam.go.kr/atchFile/FileDown.do?atch_file_id=B_202408101138403551"
+        },
+        "proposed": {
+          "editorialFocusSummary": "1책 12법을 직접 제시한 자료로 부여의 사출도를 복습한다.",
+          "requiresReadSceneIds": [
+            "proto_ch01_s3"
+          ],
+          "playExplanation": "부여의 위치, 도둑질한 물건값의 12배 배상, 소 발굽 점복이 제시되어 부여로 판단한다. 정답은 4번. 부여의 마가·우가·저가·구가는 사출도를 각각 주관하였다."
+        }
+      },
+      {
+        "officialQuestionId": "official-43-intermediate-02",
+        "examRound": 43,
+        "examLevel": "중급",
+        "examYear": 2019,
+        "questionNumber": 2,
+        "question": "다음 발표에 해당하는 나라에 대한 설명으로 옳은 것은?",
+        "clue": "12월 영고, 도둑질한 자의 12배 배상, 순장은 부여의 풍습이다.",
+        "choices": [
+          "신지, 읍차 등의 지배자가 있었다.",
+          "혼인 풍습으로 민며느리제가 있었다.",
+          "읍락 간의 경계를 중시하는 책화가 있었다.",
+          "여러 가(加)들이 별도로 사출도를 주관하였다.",
+          "사회 질서를 유지하기 위해 범금 8조를 만들었다."
+        ],
+        "choiceExplanations": [
+          "신지·읍차는 삼한의 지배자이다.",
+          "민며느리제는 옥저의 혼인 풍습이다.",
+          "책화는 동예의 경계 침범에 대한 배상 풍습이다.",
+          "12월 영고와 12배 배상은 부여의 단서이며 여러 가가 사출도를 다스렸다.",
+          "범금 8조는 고조선의 법률이다."
+        ],
+        "answer": 3,
+        "answerIndex0": 3,
+        "answerNumber1": 4,
+        "choiceCount": 5,
+        "points": 2,
+        "sceneKey": "1-3",
+        "questionImage": "media/proto-v4/exams/official-43-intermediate-02.webp",
+        "questionImageSha256": "5eba7fdd99e7a0094928cb1b574699366c3e15bf6d974c207080be2993bf375a",
+        "sourceImageWidth": 1016,
+        "sourceImageHeight": 1245,
+        "sourcePdf": "43회 한국사_문제지(중급).pdf",
+        "answerPdf": "제43회 중급_정답표.hwp",
+        "sourcePage": 1,
+        "learningKeywordIds": [
+          "proto_ch01_s3-k1",
+          "proto_ch01_s3-k2",
+          "proto_ch01_s3-k3"
+        ],
+        "sourceEvidence": {
+          "questionPdf": "43회 한국사_문제지(중급).pdf",
+          "answerFile": "제43회 중급_정답표.hwp",
+          "questionPdfSha256": "573e8b381da82f0a990ec1ee3d850469151e8e828d84c2c3a0364085a48c9380",
+          "answerFileSha256": "4f35179422dd256cab8cc71b9626c101007c150a650230709e7428b0618a3779",
+          "sourcePage": 1,
+          "cropBoxPoints": [
+            29.933840332031252,
+            616.6070806884765,
+            368.1862360839844,
+            1031.3162677001953
+          ],
+          "sourcePublisher": "국사편찬위원회",
+          "visualReview": "verified",
+          "answerVerification": "original_answer_table",
+          "originalLevelLabel": "중급",
+          "archiveLanding": "https://pjhhh.tistory.com/987"
+        },
+        "proposed": {
+          "editorialFocusSummary": "부여 1책 12법을 제시한 자료와 이미 배운 사출도를 연결한다.",
+          "requiresReadSceneIds": [
+            "proto_ch01_s3"
+          ],
+          "playExplanation": "12월 영고, 도둑질한 자의 12배 배상, 순장은 부여의 풍습이다. 정답은 4번. 12월 영고와 12배 배상은 부여의 단서이며 여러 가가 사출도를 다스렸다."
+        }
+      },
+      {
+        "officialQuestionId": "official-48-advanced-02",
+        "examRound": 48,
+        "examLevel": "심화",
+        "examYear": 2020,
+        "questionNumber": 2,
+        "question": "밑줄 그은 ‘이 나라’에 대한 설명으로 옳은 것은?",
+        "clue": "상가·대로·패자 등의 관직, 대가의 사자·조의·선인, 제가들이 모인 회의는 초기 고구려의 특징이다.",
+        "choices": [
+          "집집마다 부경이라는 창고가 있었다.",
+          "12월에 영고라는 제천 행사를 열었다.",
+          "혼인 풍습으로 민며느리제가 있었다.",
+          "읍락 간의 경계를 중시하는 책화가 있었다.",
+          "제사장인 천군과 신성 지역인 소도가 존재하였다."
+        ],
+        "choiceExplanations": [
+          "고구려에는 집집마다 작은 창고인 부경이 있었다.",
+          "12월 영고는 부여의 제천 행사이다.",
+          "민며느리제는 옥저의 혼인 풍습이다.",
+          "책화는 동예의 풍습이다.",
+          "천군·소도는 삼한의 제정 분리를 보여 준다."
+        ],
+        "answer": 0,
+        "answerIndex0": 0,
+        "answerNumber1": 1,
+        "choiceCount": 5,
+        "points": 2,
+        "sceneKey": "2-4",
+        "questionImage": "media/proto-v4/exams/official-48-advanced-02.webp",
+        "questionImageSha256": "07e01fb841ac19cbf2c6e04aee3ad7f54c833d3a7cc2e818bf1fc61c3d6c49dc",
+        "sourceImageWidth": 1016,
+        "sourceImageHeight": 1245,
+        "sourcePdf": "48회 한국사_문제지(심화).pdf",
+        "answerPdf": "제48회 심화 정답표.hwp",
+        "sourcePage": 1,
+        "learningKeywordIds": [
+          "proto_ch02_s4-k1",
+          "proto_ch02_s4-k2",
+          "proto_ch02_s4-k3"
+        ],
+        "sourceEvidence": {
+          "questionPdf": "48회 한국사_문제지(심화).pdf",
+          "answerFile": "제48회 심화 정답표.hwp",
+          "questionPdfSha256": "607add549fbd2c2b10dd29c6c8edb567443b9beb3d2be6ac7cc79f69c066bacd",
+          "answerFileSha256": "38a32115bb58f7bbd34a0f7a592ed4a5d79b208b17eda3ab040b1b849ee0528f",
+          "sourcePage": 1,
+          "cropBoxPoints": [
+            29.933840332031252,
+            616.6070806884765,
+            368.1862360839844,
+            1031.3162677001953
+          ],
+          "sourcePublisher": "국사편찬위원회",
+          "visualReview": "verified",
+          "answerVerification": "original_answer_table",
+          "originalLevelLabel": "심화",
+          "archiveLanding": "https://pjhhh.tistory.com/987"
+        },
+        "proposed": {
+          "editorialFocusSummary": "씬에서 직접 배운 제가 회의·부경을 함께 확인한다.",
+          "requiresReadSceneIds": [
+            "proto_ch02_s4"
+          ],
+          "playExplanation": "상가·대로·패자 등의 관직, 대가의 사자·조의·선인, 제가들이 모인 회의는 초기 고구려의 특징이다. 정답은 1번. 고구려에는 집집마다 작은 창고인 부경이 있었다."
+        }
+      },
+      {
+        "officialQuestionId": "official-41-high-03",
+        "examRound": 41,
+        "examLevel": "고급",
+        "examYear": 2018,
+        "questionNumber": 3,
+        "question": "(가), (나) 나라에 대한 설명으로 옳은 것은?",
+        "clue": "서옥제가 제시된 (가)는 고구려, 가족 공동 무덤이 제시된 (나)는 옥저이다.",
+        "choices": [
+          "(가) - 대가들이 사자, 조의 등을 거느렸다.",
+          "(가) - 읍락 간 경계를 중시하는 책화가 있었다.",
+          "(나) - 도둑질한 자에게 12배를 변상하게 하였다.",
+          "(나) - 철이 많이 생산되어 낙랑과 왜에 수출하였다.",
+          "(가), (나) - 제사장인 천군과 신성 지역인 소도가 존재하였다."
+        ],
+        "choiceExplanations": [
+          "서옥제가 제시된 (가)는 고구려이다. 고구려 대가들은 사자·조의 등의 관리를 두었다.",
+          "책화는 고구려가 아니라 동예의 풍습이다.",
+          "가족 공동 무덤이 제시된 (나)는 옥저이며, 12배 배상은 부여의 특징이다.",
+          "낙랑·왜에 철을 수출한 것은 변한과 가야이다.",
+          "천군·소도는 삼한의 특징이다."
+        ],
+        "answer": 0,
+        "answerIndex0": 0,
+        "answerNumber1": 1,
+        "choiceCount": 5,
+        "points": 1,
+        "sceneKey": "2-4",
+        "questionImage": "media/proto-v4/exams/official-41-high-03.webp",
+        "questionImageSha256": "60a451e6462870478798680d98de68b26c8eae0953e61fd628ff66d6c6e7d35c",
+        "sourceImageWidth": 989,
+        "sourceImageHeight": 1088,
+        "sourcePdf": "41회 한국사_문제지(고급).pdf",
+        "answerPdf": "제41회_고급_정답표.hwp",
+        "sourcePage": 1,
+        "learningKeywordIds": [
+          "proto_ch02_s4-k1",
+          "proto_ch02_s4-k2",
+          "proto_ch02_s4-k3"
+        ],
+        "sourceEvidence": {
+          "questionPdf": "41회 한국사_문제지(고급).pdf",
+          "answerFile": "제41회_고급_정답표.hwp",
+          "questionPdfSha256": "e7dcf71a4aaaebcefbea6e57632df25cb254f597480941496aaa80e8af15df3b",
+          "answerFileSha256": "6a6b61ee44f96fcd9122d520673b2839fc27d693a12ddd86f5cb501f26381a96",
+          "sourcePage": 1,
+          "cropBoxPoints": [
+            381.6564642333984,
+            172.43171459960936,
+            710.9287078857421,
+            534.7565832519531
+          ],
+          "sourcePublisher": "국사편찬위원회",
+          "visualReview": "verified",
+          "answerVerification": "original_answer_table",
+          "originalLevelLabel": "고급",
+          "archiveLanding": "https://pjhhh.tistory.com/987"
+        },
+        "proposed": {
+          "editorialFocusSummary": "고구려의 서옥제와 대가 중심 정치 구조를 복습한다. 옥저 장례는 자료에 제시되며 해설에서 비교한다.",
+          "requiresReadSceneIds": [
+            "proto_ch02_s4"
+          ],
+          "playExplanation": "서옥제가 제시된 (가)는 고구려, 가족 공동 무덤이 제시된 (나)는 옥저이다. 정답은 1번. 서옥제가 제시된 (가)는 고구려이다. 고구려 대가들은 사자·조의 등의 관리를 두었다."
+        }
+      },
+      {
+        "officialQuestionId": "official-55-advanced-02",
+        "examRound": 55,
+        "examLevel": "심화",
+        "examYear": 2021,
+        "questionNumber": 2,
+        "question": "(가), (나) 나라에 대한 설명으로 옳은 것은?",
+        "clue": "(가)는 민며느리제가 있는 옥저, (나)는 신지·읍차와 철 교역이 제시된 변한이다.",
+        "choices": [
+          "(가) - 신성 지역인 소도가 존재하였다.",
+          "(가) - 삼로라 불린 우두머리가 읍락을 다스렸다.",
+          "(나) - 여러 가(加)들이 별도로 사출도를 주관하였다.",
+          "(나) - 단궁, 과하마, 반어피 등의 특산물이 유명하였다.",
+          "(가), (나) - 한 무제가 파견한 군대의 공격으로 멸망하였다."
+        ],
+        "choiceExplanations": [
+          "소도는 옥저가 아니라 삼한의 신성 지역이다.",
+          "민며느리제 자료의 (가)는 옥저로, 읍군·삼로 같은 군장이 읍락을 다스렸다.",
+          "철을 화폐로 사용한 (나)는 변한이며 사출도는 부여의 제도이다.",
+          "단궁·과하마·반어피는 동예의 특산물이다.",
+          "한 무제의 공격으로 멸망한 나라는 위만 조선이다."
+        ],
+        "answer": 1,
+        "answerIndex0": 1,
+        "answerNumber1": 2,
+        "choiceCount": 5,
+        "points": 2,
+        "sceneKey": "3-1",
+        "questionImage": "media/proto-v4/exams/official-55-advanced-02.webp",
+        "questionImageSha256": "ea93ac329352c6e0f21ddf512390cd19e763f2e2d272103ecc8759222a4ee695",
+        "sourceImageWidth": 1016,
+        "sourceImageHeight": 1081,
+        "sourcePdf": "55회 한국사_문제지(심화).pdf",
+        "answerPdf": "제55회 정답표(심화).hwp",
+        "sourcePage": 1,
+        "learningKeywordIds": [
+          "proto_ch03_s1-k1",
+          "proto_ch03_s1-k2",
+          "proto_ch03_s1-k3",
+          "proto_ch03_s1-k4"
+        ],
+        "sourceEvidence": {
+          "questionPdf": "55회 한국사_문제지(심화).pdf",
+          "answerFile": "제55회 정답표(심화).hwp",
+          "questionPdfSha256": "207d622599ccd96f0ae552b388b255f3076aea156cb3542d43d95a717529a9e3",
+          "answerFileSha256": "274e7a3620f280aea53cdf01efdd27dda40b9f26d597becbcb60ba76c251ed73",
+          "sourcePage": 1,
+          "cropBoxPoints": [
+            29.933840332031252,
+            654.8039794921875,
+            368.1862360839844,
+            1014.9461682128907
+          ],
+          "sourcePublisher": "국사편찬위원회",
+          "visualReview": "verified",
+          "answerVerification": "original_answer_table",
+          "originalLevelLabel": "심화",
+          "archiveLanding": "https://pjhhh.tistory.com/987"
+        },
+        "proposed": {
+          "editorialFocusSummary": "정답인 옥저의 읍락 군장·삼로를 씬 대사와 직접 연결한다.",
+          "requiresReadSceneIds": [
+            "proto_ch03_s1"
+          ],
+          "playExplanation": "(가)는 민며느리제가 있는 옥저, (나)는 신지·읍차와 철 교역이 제시된 변한이다. 정답은 2번. 민며느리제 자료의 (가)는 옥저로, 읍군·삼로 같은 군장이 읍락을 다스렸다."
+        }
+      },
+      {
+        "officialQuestionId": "official-42-high-03",
+        "examRound": 42,
+        "examLevel": "고급",
+        "examYear": 2019,
+        "questionNumber": 3,
+        "question": "(가), (나) 나라에 대한 설명으로 옳은 것은?",
+        "clue": "고구려에 물고기·소금·해산물을 공납한 (가)는 옥저, 10월 무천이 제시된 (나)는 동예이다.",
+        "choices": [
+          "(가) - 혼인 풍속으로 민며느리제가 있었다.",
+          "(가) - 읍락 간의 경계를 중시하는 책화가 있었다.",
+          "(나) - 여러 가(加)들이 별도로 사출도를 주관하였다.",
+          "(나) - 남의 물건을 훔쳤을 때에는 12배로 갚게 하였다.",
+          "(가), (나) - 제사장인 천군과 신성 지역인 소도가 존재하였다."
+        ],
+        "choiceExplanations": [
+          "고구려에 조세와 해산물을 공납한 (가)는 옥저로, 민며느리제가 있었다.",
+          "책화는 옥저가 아니라 동예의 풍습이다.",
+          "무천이 제시된 (나)는 동예이며 사출도는 부여의 제도이다.",
+          "물건값의 12배 배상은 부여의 특징이다.",
+          "천군·소도는 삼한의 특징이다."
+        ],
+        "answer": 0,
+        "answerIndex0": 0,
+        "answerNumber1": 1,
+        "choiceCount": 5,
+        "points": 3,
+        "sceneKey": "3-2",
+        "questionImage": "media/proto-v4/exams/official-42-high-03.webp",
+        "questionImageSha256": "eafe8f5ebc28b52f9967e18f8f188d5aa29e9dc51165035257c667e46161893e",
+        "sourceImageWidth": 989,
+        "sourceImageHeight": 1415,
+        "sourcePdf": "42회 한국사_문제지(고급).pdf",
+        "answerPdf": "제42회 고급_정답표.hwp",
+        "sourcePage": 1,
+        "learningKeywordIds": [
+          "proto_ch03_s2-k1",
+          "proto_ch03_s2-k2",
+          "proto_ch03_s2-k3"
+        ],
+        "sourceEvidence": {
+          "questionPdf": "42회 한국사_문제지(고급).pdf",
+          "answerFile": "제42회 고급_정답표.hwp",
+          "questionPdfSha256": "a438888071ca2e0c9666429f3b42469552ebe340d1ed851d3b7b783a54c9e331",
+          "answerFileSha256": "baeae7ce24261e560b635b2b8f03073138b4c614c9f9bedb1a36ad253e9a38dd",
+          "sourcePage": 1,
+          "cropBoxPoints": [
+            381.6564642333984,
+            172.43171459960936,
+            710.9287078857421,
+            643.8905798339844
+          ],
+          "sourcePublisher": "국사편찬위원회",
+          "visualReview": "verified",
+          "answerVerification": "original_answer_table",
+          "originalLevelLabel": "고급",
+          "archiveLanding": "https://pjhhh.tistory.com/987"
+        },
+        "proposed": {
+          "editorialFocusSummary": "직전 씬의 옥저 공납과 현재 씬의 민며느리제를 연결한다.",
+          "requiresReadSceneIds": [
+            "proto_ch03_s2"
+          ],
+          "playExplanation": "고구려에 물고기·소금·해산물을 공납한 (가)는 옥저, 10월 무천이 제시된 (나)는 동예이다. 정답은 1번. 고구려에 조세와 해산물을 공납한 (가)는 옥저로, 민며느리제가 있었다."
+        }
+      },
+      {
+        "officialQuestionId": "official-46-high-02",
+        "examRound": 46,
+        "examLevel": "고급",
+        "examYear": 2020,
+        "questionNumber": 2,
+        "question": "(가), (나) 나라에 대한 설명으로 옳은 것은?",
+        "clue": "(가)의 민며느리제는 옥저, (나)의 서옥제는 고구려의 혼인 풍습이다.",
+        "choices": [
+          "(가) - 여러 가(加)들이 별도로 사출도를 주관하였다.",
+          "(가) - 가족의 유골을 한 목곽에 안치하는 풍습이 있었다.",
+          "(나) - 읍락 간의 경계를 중시하는 책화가 있었다.",
+          "(나) - 철이 많이 생산되어 낙랑과 왜에 수출하였다.",
+          "(가), (나) - 제사장인 천군과 신성 지역인 소도가 있었다."
+        ],
+        "choiceExplanations": [
+          "민며느리제가 있는 (가)는 옥저이며 사출도는 부여의 제도이다.",
+          "옥저는 가족의 유골을 한 목곽에 모시는 가족 공동 무덤 풍습이 있었다.",
+          "서옥제가 있는 (나)는 고구려이며 책화는 동예의 풍습이다.",
+          "낙랑·왜에 철을 수출한 것은 변한과 가야이다.",
+          "천군·소도는 삼한의 특징이다."
+        ],
+        "answer": 1,
+        "answerIndex0": 1,
+        "answerNumber1": 2,
+        "choiceCount": 5,
+        "points": 2,
+        "sceneKey": "3-3",
+        "questionImage": "media/proto-v4/exams/official-46-high-02.webp",
+        "questionImageSha256": "02df6c5fc83a5ac0829bec02f739ea324b1abf6576af7b17b1b9204b6f126fdd",
+        "sourceImageWidth": 1016,
+        "sourceImageHeight": 1212,
+        "sourcePdf": "46회 한국사_문제지(고급).pdf",
+        "answerPdf": "제46회 고급-정답표.hwp",
+        "sourcePage": 1,
+        "learningKeywordIds": [
+          "proto_ch03_s3-k1",
+          "proto_ch03_s3-k2",
+          "proto_ch03_s3-k3"
+        ],
+        "sourceEvidence": {
+          "questionPdf": "46회 한국사_문제지(고급).pdf",
+          "answerFile": "제46회 고급-정답표.hwp",
+          "questionPdfSha256": "4240ef8d3d161ca4958c074e4e831c1943a4281a667040d0f66276f335a5cfb9",
+          "answerFileSha256": "a3852428f421cc65848ead7dd4c5c065f8927f754ccaa64f72315f0b1f6b7f76",
+          "sourcePage": 1,
+          "cropBoxPoints": [
+            29.933840332031252,
+            627.5204803466796,
+            368.1862360839844,
+            1031.3162677001953
+          ],
+          "sourcePublisher": "국사편찬위원회",
+          "visualReview": "verified",
+          "answerVerification": "original_answer_table",
+          "originalLevelLabel": "고급",
+          "archiveLanding": "https://pjhhh.tistory.com/987"
+        },
+        "proposed": {
+          "editorialFocusSummary": "옥저의 가족 공동 무덤을 정답으로 묻고 서옥제·민며느리제도 비교한다.",
+          "requiresReadSceneIds": [
+            "proto_ch03_s3"
+          ],
+          "playExplanation": "(가)의 민며느리제는 옥저, (나)의 서옥제는 고구려의 혼인 풍습이다. 정답은 2번. 옥저는 가족의 유골을 한 목곽에 모시는 가족 공동 무덤 풍습이 있었다."
+        }
+      },
+      {
+        "officialQuestionId": "official-45-intermediate-02",
+        "examRound": 45,
+        "examLevel": "중급",
+        "examYear": 2019,
+        "questionNumber": 2,
+        "question": "밑줄 그은 ‘이 나라’에 대한 설명으로 옳은 것은?",
+        "clue": "고구려에 해산물을 공납하고 어린 여자를 신랑 집에서 기르는 풍습이 제시되어 옥저로 판단한다.",
+        "choices": [
+          "영고라는 제천 행사를 거행하였다.",
+          "화백 회의에서 중요한 일을 결정하였다.",
+          "여러 가(加)들이 별도로 사출도를 주관하였다.",
+          "사회 질서를 유지하기 위해 범금 8조를 만들었다.",
+          "가족의 유골을 한 목곽에 모아 두는 풍습이 있었다."
+        ],
+        "choiceExplanations": [
+          "영고는 부여의 제천 행사이다.",
+          "화백 회의는 신라의 귀족 회의이다.",
+          "사출도는 부여의 여러 가가 다스렸다.",
+          "범금 8조는 고조선의 법률이다.",
+          "공납과 민며느리제가 제시된 옥저에는 가족 공동 무덤 풍습도 있었다."
+        ],
+        "answer": 4,
+        "answerIndex0": 4,
+        "answerNumber1": 5,
+        "choiceCount": 5,
+        "points": 2,
+        "sceneKey": "3-3",
+        "questionImage": "media/proto-v4/exams/official-45-intermediate-02.webp",
+        "questionImageSha256": "19629956b4b9055b4042e2a67409016bf5dc2a6325d37f1873d78605b12954a1",
+        "sourceImageWidth": 1016,
+        "sourceImageHeight": 1212,
+        "sourcePdf": "45회 한국사_문제지(중급).pdf",
+        "answerPdf": "제45회 중급 - 정답표.hwp",
+        "sourcePage": 1,
+        "learningKeywordIds": [
+          "proto_ch03_s3-k1",
+          "proto_ch03_s3-k2",
+          "proto_ch03_s3-k3"
+        ],
+        "sourceEvidence": {
+          "questionPdf": "45회 한국사_문제지(중급).pdf",
+          "answerFile": "제45회 중급 - 정답표.hwp",
+          "questionPdfSha256": "07ba6f7287fcad5336474debf943315a90ac26a3080e5a0361c1de9298f68edf",
+          "answerFileSha256": "9d273135a6b7be8af3aea09ec2fa213fb2a6ccc86da781be7b91b84260a9fa98",
+          "sourcePage": 1,
+          "cropBoxPoints": [
+            29.933840332031252,
+            611.1503808593751,
+            368.1862360839844,
+            1014.9461682128907
+          ],
+          "sourcePublisher": "국사편찬위원회",
+          "visualReview": "verified",
+          "answerVerification": "original_answer_table",
+          "originalLevelLabel": "중급",
+          "archiveLanding": "https://pjhhh.tistory.com/987"
+        },
+        "proposed": {
+          "editorialFocusSummary": "옥저의 공납·민며느리제를 단서로 현재 씬의 가족 공동 무덤을 고른다.",
+          "requiresReadSceneIds": [
+            "proto_ch03_s3"
+          ],
+          "playExplanation": "고구려에 해산물을 공납하고 어린 여자를 신랑 집에서 기르는 풍습이 제시되어 옥저로 판단한다. 정답은 5번. 공납과 민며느리제가 제시된 옥저에는 가족 공동 무덤 풍습도 있었다."
+        }
+      },
+      {
+        "officialQuestionId": "official-42-intermediate-02",
+        "examRound": 42,
+        "examLevel": "중급",
+        "examYear": 2019,
+        "questionNumber": 2,
+        "question": "(가) 나라에 대한 설명으로 옳은 것은?",
+        "clue": "매년 10월에 무천을 지내고 호랑이를 신으로 섬겼던 나라는 동예이다.",
+        "choices": [
+          "소도라고 불리는 신성 지역이 있었다.",
+          "읍락 간의 경계를 중시한 책화가 있었다.",
+          "화백 회의에서 나라의 중대사를 결정하였다.",
+          "여러 가(加)들이 별도로 사출도를 주관하였다.",
+          "사회 질서를 유지하기 위해 범금 8조를 만들었다."
+        ],
+        "choiceExplanations": [
+          "소도는 삼한의 신성 지역이다.",
+          "무천이 제시된 동예는 읍락의 경계를 침범하면 배상하는 책화가 있었다.",
+          "화백 회의는 신라의 귀족 회의이다.",
+          "사출도는 부여의 제도이다.",
+          "범금 8조는 고조선의 법률이다."
+        ],
+        "answer": 1,
+        "answerIndex0": 1,
+        "answerNumber1": 2,
+        "choiceCount": 5,
+        "points": 2,
+        "sceneKey": "4-1",
+        "questionImage": "media/proto-v4/exams/official-42-intermediate-02.webp",
+        "questionImageSha256": "844c383bce8bd9dc95a1c30e6220a8feeb82d6085fdce24d609e0cc46582cb94",
+        "sourceImageWidth": 1016,
+        "sourceImageHeight": 1179,
+        "sourcePdf": "42회 한국사_문제지(중급).pdf",
+        "answerPdf": "제42회 중급_정답표.hwp",
+        "sourcePage": 1,
+        "learningKeywordIds": [
+          "proto_ch04_s1-k1",
+          "proto_ch04_s1-k2",
+          "proto_ch04_s1-k3",
+          "proto_ch04_s1-k4",
+          "proto_ch04_s1-k5",
+          "proto_ch04_s1-k6",
+          "proto_ch04_s1-k7"
+        ],
+        "sourceEvidence": {
+          "questionPdf": "42회 한국사_문제지(중급).pdf",
+          "answerFile": "제42회 중급_정답표.hwp",
+          "questionPdfSha256": "833b295d1c6353157533c453ba62f8267ea8aaadf1a9e621d21424549f1aa537",
+          "answerFileSha256": "ecc532cdce1af630ba12cf307d19f255f56dde73bda7bde9e80b663691b300b5",
+          "sourcePage": 1,
+          "cropBoxPoints": [
+            29.933840332031252,
+            622.063780517578,
+            368.1862360839844,
+            1014.9461682128907
+          ],
+          "sourcePublisher": "국사편찬위원회",
+          "visualReview": "verified",
+          "answerVerification": "original_answer_table",
+          "originalLevelLabel": "중급",
+          "archiveLanding": "https://pjhhh.tistory.com/987"
+        },
+        "proposed": {
+          "editorialFocusSummary": "현재 씬에서 배운 동예의 책화를 직접 묻는다.",
+          "requiresReadSceneIds": [
+            "proto_ch04_s1"
+          ],
+          "playExplanation": "매년 10월에 무천을 지내고 호랑이를 신으로 섬겼던 나라는 동예이다. 정답은 2번. 무천이 제시된 동예는 읍락의 경계를 침범하면 배상하는 책화가 있었다."
+        }
+      },
+      {
+        "officialQuestionId": "official-54-advanced-02",
+        "examRound": 54,
+        "examLevel": "심화",
+        "examYear": 2021,
+        "questionNumber": 2,
+        "question": "다음 자료에 해당하는 나라에 대한 설명으로 옳은 것은?",
+        "clue": "후·읍군·삼로, 10월 무천, 단궁·과하마·반어피를 통해 동예로 판단한다.",
+        "choices": [
+          "신성 지역인 소도가 존재하였다.",
+          "혼인 풍습으로 민며느리제가 있었다.",
+          "읍락 간의 경계를 중시하는 책화가 있었다.",
+          "제가 회의에서 나라의 중대사를 결정하였다.",
+          "여러 가(加)들이 별도로 사출도를 주관하였다."
+        ],
+        "choiceExplanations": [
+          "소도는 삼한의 신성 지역이다.",
+          "민며느리제는 옥저의 혼인 풍습이다.",
+          "후·읍군·삼로, 무천, 단궁·과하마·반어피 자료의 나라는 동예이며 책화가 있었다.",
+          "제가 회의는 초기 고구려의 귀족 회의이다.",
+          "사출도는 부여의 여러 가가 다스렸다."
+        ],
+        "answer": 2,
+        "answerIndex0": 2,
+        "answerNumber1": 3,
+        "choiceCount": 5,
+        "points": 2,
+        "sceneKey": "4-1",
+        "questionImage": "media/proto-v4/exams/official-54-advanced-02.webp",
+        "questionImageSha256": "1a750e637f3513feb8c1d3314ec8e4d49bf8daa6bc4d35ccf652ec4bd9baaace",
+        "sourceImageWidth": 1016,
+        "sourceImageHeight": 950,
+        "sourcePdf": "54회 한국사_문제지(심화).pdf",
+        "answerPdf": "제54회 정답표(심화).hwp",
+        "sourcePage": 1,
+        "learningKeywordIds": [
+          "proto_ch04_s1-k1",
+          "proto_ch04_s1-k2",
+          "proto_ch04_s1-k3",
+          "proto_ch04_s1-k4",
+          "proto_ch04_s1-k5",
+          "proto_ch04_s1-k6",
+          "proto_ch04_s1-k7"
+        ],
+        "sourceEvidence": {
+          "questionPdf": "54회 한국사_문제지(심화).pdf",
+          "answerFile": "제54회 정답표(심화).hwp",
+          "questionPdfSha256": "21d33c3fc8e339a3a7a80d5abefbe51562eedd067257c701ffe6fd8ae5c8b62f",
+          "answerFileSha256": "51a151c39543379aedda713393d4a4628956c2508a4f9c893113e0f7c5fb831f",
+          "sourcePage": 1,
+          "cropBoxPoints": [
+            29.933840332031252,
+            698.457578125,
+            368.1862360839844,
+            1014.9461682128907
+          ],
+          "sourcePublisher": "국사편찬위원회",
+          "visualReview": "verified",
+          "answerVerification": "original_answer_table",
+          "originalLevelLabel": "심화",
+          "archiveLanding": "https://pjhhh.tistory.com/987"
+        },
+        "proposed": {
+          "editorialFocusSummary": "정답인 동예의 책화를 현재 씬에서 경험한 경계 배상과 연결한다.",
+          "requiresReadSceneIds": [
+            "proto_ch04_s1"
+          ],
+          "playExplanation": "후·읍군·삼로, 10월 무천, 단궁·과하마·반어피를 통해 동예로 판단한다. 정답은 3번. 후·읍군·삼로, 무천, 단궁·과하마·반어피 자료의 나라는 동예이며 책화가 있었다."
+        }
+      },
+      {
+        "officialQuestionId": "official-45-high-02",
+        "examRound": 45,
+        "examLevel": "고급",
+        "examYear": 2019,
+        "questionNumber": 2,
+        "question": "다음 자료에 해당하는 나라에 대한 설명으로 옳은 것은?",
+        "clue": "후·읍군·삼로, 산천의 경계, 동성끼리 혼인하지 않는 풍습은 동예의 특징이다.",
+        "choices": [
+          "연맹 왕국으로 발전하였다.",
+          "낙랑과 왜에 철을 수출하였다.",
+          "무천이라는 제천 행사를 열었다.",
+          "혼인 풍습으로 민며느리제가 있었다.",
+          "여러 가(加)들이 별도로 사출도를 주관하였다."
+        ],
+        "choiceExplanations": [
+          "동예는 읍락 단위의 군장 사회였으며 부여·고구려는 연맹 왕국으로 성장하였다.",
+          "철의 낙랑·왜 수출은 변한과 가야의 특징이다.",
+          "산천의 경계를 중시하고 동성끼리 혼인하지 않은 동예는 10월에 무천을 열었다.",
+          "민며느리제는 옥저의 혼인 풍습이다.",
+          "사출도는 부여의 여러 가가 다스렸다."
+        ],
+        "answer": 2,
+        "answerIndex0": 2,
+        "answerNumber1": 3,
+        "choiceCount": 5,
+        "points": 1,
+        "sceneKey": "4-2",
+        "questionImage": "media/proto-v4/exams/official-45-high-02.webp",
+        "questionImageSha256": "b91d865dd9bd2dd377bf89d03f767d9b3065f06c9fe3e9f3faba5a3e18033962",
+        "sourceImageWidth": 1039,
+        "sourceImageHeight": 1032,
+        "sourcePdf": "45회 한국사_문제지(고급).pdf",
+        "answerPdf": "제45회 고급 - 정답표.hwp",
+        "sourcePage": 1,
+        "learningKeywordIds": [
+          "proto_ch04_s2-k1",
+          "proto_ch04_s2-k2",
+          "proto_ch04_s2-k3",
+          "proto_ch04_s2-k4",
+          "proto_ch04_s2-k5"
+        ],
+        "sourceEvidence": {
+          "questionPdf": "45회 한국사_문제지(고급).pdf",
+          "answerFile": "제45회 고급 - 정답표.hwp",
+          "questionPdfSha256": "de24a96b6d5d1a7f53d13da4cc986d36f236f894a273a74468a50e426bbbda12",
+          "answerFileSha256": "b44ee6ff48ff44e4f48ebe3c36a120a405494473cd9123ae65d327debd2fa1cf",
+          "sourcePage": 1,
+          "cropBoxPoints": [
+            30.61416015625,
+            703.8022344970703,
+            376.554169921875,
+            1047.3907269287108
+          ],
+          "sourcePublisher": "국사편찬위원회",
+          "visualReview": "verified",
+          "answerVerification": "original_answer_table",
+          "originalLevelLabel": "고급",
+          "archiveLanding": "https://pjhhh.tistory.com/987"
+        },
+        "proposed": {
+          "editorialFocusSummary": "직전 책화와 현재 족외혼을 자료 단서로 동예를 판단하고 무천을 확인한다.",
+          "requiresReadSceneIds": [
+            "proto_ch04_s2"
+          ],
+          "playExplanation": "후·읍군·삼로, 산천의 경계, 동성끼리 혼인하지 않는 풍습은 동예의 특징이다. 정답은 3번. 산천의 경계를 중시하고 동성끼리 혼인하지 않은 동예는 10월에 무천을 열었다."
+        }
+      },
+      {
+        "officialQuestionId": "official-46-intermediate-03",
+        "examRound": 46,
+        "examLevel": "중급",
+        "examYear": 2020,
+        "questionNumber": 3,
+        "question": "(가)에 들어갈 내용으로 옳은 것은?",
+        "clue": "읍군·삼로, 특산물 단궁·과하마·반어피, 책화가 제시된 나라는 동예이다.",
+        "choices": [
+          "제사장인 천군이 존재하였다.",
+          "서옥제라는 혼인 풍습이 있었다.",
+          "10월에 무천이라는 제천 행사를 열었다.",
+          "여러 가(加)들이 별도로 사출도를 주관하였다.",
+          "가족의 유골을 한 목곽에 안치하는 풍습이 있었다."
+        ],
+        "choiceExplanations": [
+          "천군은 삼한의 제사를 주관하였다.",
+          "서옥제는 고구려의 혼인 풍습이다.",
+          "읍군·삼로, 단궁·과하마·반어피와 책화가 제시된 동예는 10월 무천을 열었다.",
+          "사출도는 부여의 제도이다.",
+          "가족 공동 무덤은 옥저의 장례 풍습이다."
+        ],
+        "answer": 2,
+        "answerIndex0": 2,
+        "answerNumber1": 3,
+        "choiceCount": 5,
+        "points": 2,
+        "sceneKey": "4-2",
+        "questionImage": "media/proto-v4/exams/official-46-intermediate-03.webp",
+        "questionImageSha256": "59ea00a4c7e2a66346ad178f850bef088744101779a27d347d09c47702af8ebd",
+        "sourceImageWidth": 989,
+        "sourceImageHeight": 1121,
+        "sourcePdf": "46회 한국사_문제지(중급).pdf",
+        "answerPdf": "제46회 중급-정답표.hwp",
+        "sourcePage": 1,
+        "learningKeywordIds": [
+          "proto_ch04_s2-k1",
+          "proto_ch04_s2-k2",
+          "proto_ch04_s2-k3",
+          "proto_ch04_s2-k4",
+          "proto_ch04_s2-k5"
+        ],
+        "sourceEvidence": {
+          "questionPdf": "46회 한국사_문제지(중급).pdf",
+          "answerFile": "제46회 중급-정답표.hwp",
+          "questionPdfSha256": "2211072a464821134d0651c9a3950d38ffd71d6504388c6e8d6584c56ebd55c2",
+          "answerFileSha256": "b3728d0f7a2f944577c8bc726bc7f5749a23c9f7f67dc4dd418bdfb9ec1bde76",
+          "sourcePage": 1,
+          "cropBoxPoints": [
+            381.6564642333984,
+            172.43171459960936,
+            710.9287078857421,
+            545.6699829101562
+          ],
+          "sourcePublisher": "국사편찬위원회",
+          "visualReview": "verified",
+          "answerVerification": "original_answer_table",
+          "originalLevelLabel": "중급",
+          "archiveLanding": "https://pjhhh.tistory.com/987"
+        },
+        "proposed": {
+          "editorialFocusSummary": "책화로 동예를 판별하고 무천을 묻는 같은 나라 복습이다.",
+          "requiresReadSceneIds": [
+            "proto_ch04_s2"
+          ],
+          "playExplanation": "읍군·삼로, 특산물 단궁·과하마·반어피, 책화가 제시된 나라는 동예이다. 정답은 3번. 읍군·삼로, 단궁·과하마·반어피와 책화가 제시된 동예는 10월 무천을 열었다."
+        }
+      },
+      {
+        "officialQuestionId": "official-50-advanced-03",
+        "examRound": 50,
+        "examLevel": "심화",
+        "examYear": 2020,
+        "questionNumber": 3,
+        "question": "(가) 나라에 대한 설명으로 옳은 것은?",
+        "clue": "읍락 경계를 침범하면 소·말 등으로 배상하는 책화와 단궁·과하마·반어피는 동예의 특징이다.",
+        "choices": [
+          "신성 지역인 소도가 존재하였다.",
+          "정사암에 모여 재상을 선출하였다.",
+          "읍군이나 삼로라는 지배자가 있었다.",
+          "12월에 영고라는 제천 행사를 열었다.",
+          "도둑질한 자에게 12배로 배상하게 하였다."
+        ],
+        "choiceExplanations": [
+          "소도는 삼한의 신성 지역이다.",
+          "정사암에서 재상을 선출한 나라는 백제이다.",
+          "책화와 단궁·과하마·반어피가 제시된 동예는 읍군·삼로 등의 군장이 다스렸다.",
+          "12월 영고는 부여의 제천 행사이다.",
+          "물건값의 12배 배상은 부여의 특징이다."
+        ],
+        "answer": 2,
+        "answerIndex0": 2,
+        "answerNumber1": 3,
+        "choiceCount": 5,
+        "points": 2,
+        "sceneKey": "4-2",
+        "questionImage": "media/proto-v4/exams/official-50-advanced-03.webp",
+        "questionImageSha256": "7fcb100f85391806dd06240179669921702a0763ef32144b948050b2cd2e7f61",
+        "sourceImageWidth": 989,
+        "sourceImageHeight": 1383,
+        "sourcePdf": "50회 한국사_문제지(심화).pdf",
+        "answerPdf": "제50회 심화 정답표.hwp",
+        "sourcePage": 1,
+        "learningKeywordIds": [
+          "proto_ch04_s2-k1",
+          "proto_ch04_s2-k2",
+          "proto_ch04_s2-k3",
+          "proto_ch04_s2-k4",
+          "proto_ch04_s2-k5"
+        ],
+        "sourceEvidence": {
+          "questionPdf": "50회 한국사_문제지(심화).pdf",
+          "answerFile": "제50회 심화 정답표.hwp",
+          "questionPdfSha256": "1971269db24e807c57051ab8850cf478c01278a4f333d66d175f7f7400eac996",
+          "answerFileSha256": "2b749462d3d6f5fbf0728b57bef8d74372a89ec20407ebf3d86cd2680cf32578",
+          "sourcePage": 1,
+          "cropBoxPoints": [
+            381.76559875488283,
+            172.4601630859375,
+            711.1319976806641,
+            633.081611328125
+          ],
+          "sourcePublisher": "국사편찬위원회",
+          "visualReview": "verified",
+          "answerVerification": "original_answer_table",
+          "originalLevelLabel": "심화",
+          "archiveLanding": "https://pjhhh.tistory.com/987"
+        },
+        "proposed": {
+          "editorialFocusSummary": "직전 씬의 책화가 제시된 자료로 동예의 정치 구조를 비교한다.",
+          "requiresReadSceneIds": [
+            "proto_ch04_s2"
+          ],
+          "playExplanation": "읍락 경계를 침범하면 소·말 등으로 배상하는 책화와 단궁·과하마·반어피는 동예의 특징이다. 정답은 3번. 책화와 단궁·과하마·반어피가 제시된 동예는 읍군·삼로 등의 군장이 다스렸다."
+        }
+      },
+      {
+        "officialQuestionId": "official-47-basic-03",
+        "examRound": 47,
+        "examLevel": "기본",
+        "examYear": 2020,
+        "questionNumber": 3,
+        "question": "밑줄 그은 ‘이 나라’에 대한 설명으로 옳은 것은?",
+        "clue": "솟대, 소도, 제사장 천군이 제시된 나라는 삼한이다.",
+        "choices": [
+          "범금 8조로 백성을 다스렸다.",
+          "영고라는 제천 행사를 열었다.",
+          "서옥제라는 혼인 풍습이 있었다.",
+          "신지, 읍차 등의 지배자가 있었다."
+        ],
+        "choiceExplanations": [
+          "범금 8조는 고조선의 법률이다.",
+          "영고는 부여의 제천 행사이다.",
+          "서옥제는 고구려의 혼인 풍습이다.",
+          "천군·소도가 제시된 삼한에서는 신지·읍차 등의 군장이 다스렸다."
+        ],
+        "answer": 3,
+        "answerIndex0": 3,
+        "answerNumber1": 4,
+        "choiceCount": 4,
+        "points": 3,
+        "sceneKey": "5-1",
+        "questionImage": "media/proto-v4/exams/official-47-basic-03.webp",
+        "questionImageSha256": "aab02fb2f8a8362c67cf61648eefaddbbbaf406b44ea413f9aa4b913b3fe1451",
+        "sourceImageWidth": 989,
+        "sourceImageHeight": 1153,
+        "sourcePdf": "47회 한국사_문제지(기본).pdf",
+        "answerPdf": "제47회 기본 정답표.hwp",
+        "sourcePage": 1,
+        "learningKeywordIds": [
+          "proto_ch05_s1-k1",
+          "proto_ch05_s1-k2",
+          "proto_ch05_s1-k3",
+          "proto_ch05_s1-k4",
+          "proto_ch05_s1-k5",
+          "proto_ch05_s1-k6",
+          "proto_ch05_s1-k7",
+          "proto_ch05_s1-k8",
+          "proto_ch05_s1-k9",
+          "proto_ch05_s1-k10",
+          "proto_ch05_s1-k11"
+        ],
+        "sourceEvidence": {
+          "questionPdf": "47회 한국사_문제지(기본).pdf",
+          "answerFile": "제47회 기본 정답표.hwp",
+          "questionPdfSha256": "0e4735ae048915fb6c73eae41f3c9fe60b00a373543078b9f52823dc0e21c009",
+          "answerFileSha256": "70eb61d57423255d82f781797633569185ad453b5508401c78d13b4ec00fa015",
+          "sourcePage": 1,
+          "cropBoxPoints": [
+            381.6564642333984,
+            172.43171459960936,
+            710.9287078857421,
+            556.5833825683594
+          ],
+          "sourcePublisher": "국사편찬위원회",
+          "visualReview": "verified",
+          "answerVerification": "original_answer_table",
+          "originalLevelLabel": "기본",
+          "archiveLanding": "https://pjhhh.tistory.com/987"
+        },
+        "proposed": {
+          "editorialFocusSummary": "현재 씬에서 배운 삼한의 소도·천군과 정치 지도자를 연결한다.",
+          "requiresReadSceneIds": [
+            "proto_ch05_s1"
+          ],
+          "playExplanation": "솟대, 소도, 제사장 천군이 제시된 나라는 삼한이다. 정답은 4번. 천군·소도가 제시된 삼한에서는 신지·읍차 등의 군장이 다스렸다."
+        }
+      },
+      {
+        "officialQuestionId": "official-53-advanced-02",
+        "examRound": 53,
+        "examLevel": "심화",
+        "examYear": 2021,
+        "questionNumber": 2,
+        "question": "밑줄 그은 ‘이 나라’에 대한 설명으로 옳은 것은?",
+        "clue": "천군·소도, 5월과 10월의 제천 행사는 삼한의 특징이다.",
+        "choices": [
+          "신지, 읍차 등의 지배자가 있었다.",
+          "혼인 풍습으로 서옥제가 존재하였다.",
+          "여러 가(加)들이 별도로 사출도를 주관하였다.",
+          "남의 물건을 훔쳤을 때에는 12배로 갚게 하였다.",
+          "부족 간의 경계를 중시하는 책화라는 풍속이 있었다."
+        ],
+        "choiceExplanations": [
+          "천군·소도와 5월·10월 제천 행사는 삼한의 특징으로 신지·읍차 등의 군장이 다스렸다.",
+          "서옥제는 고구려의 혼인 풍습이다.",
+          "사출도는 부여의 여러 가가 다스렸다.",
+          "물건값의 12배 배상은 부여의 특징이다.",
+          "책화는 동예의 풍습이다."
+        ],
+        "answer": 0,
+        "answerIndex0": 0,
+        "answerNumber1": 1,
+        "choiceCount": 5,
+        "points": 2,
+        "sceneKey": "5-3",
+        "questionImage": "media/proto-v4/exams/official-53-advanced-02.webp",
+        "questionImageSha256": "4409ce7f32a019729fe1aa14bde641e454d26afa6eef127d25f3234d8dfdd8c3",
+        "sourceImageWidth": 1039,
+        "sourceImageHeight": 1298,
+        "sourcePdf": "53회 한국사_문제지(심화).pdf",
+        "answerPdf": "제53회_한국사_정답표(심화).hwp",
+        "sourcePage": 1,
+        "learningKeywordIds": [
+          "proto_ch05_s3-k1",
+          "proto_ch05_s3-k2",
+          "proto_ch05_s3-k3",
+          "proto_ch05_s3-k4",
+          "proto_ch05_s3-k5",
+          "proto_ch05_s3-k6",
+          "proto_ch05_s3-k7"
+        ],
+        "sourceEvidence": {
+          "questionPdf": "53회 한국사_문제지(심화).pdf",
+          "answerFile": "제53회_한국사_정답표(심화).hwp",
+          "questionPdfSha256": "fb0c3dee806cf30cd35515901faadfe505c0462d8145b95479964bf02309fb89",
+          "answerFileSha256": "8ef7f066081a420934d25ea93d8823839d9f0cc8648f52a210a146fa2f1319b9",
+          "sourcePage": 1,
+          "cropBoxPoints": [
+            30.61416015625,
+            615.1342364501953,
+            376.554169921875,
+            1047.3907269287108
+          ],
+          "sourcePublisher": "국사편찬위원회",
+          "visualReview": "verified",
+          "answerVerification": "original_answer_table",
+          "originalLevelLabel": "심화",
+          "archiveLanding": "https://pjhhh.tistory.com/987"
+        },
+        "proposed": {
+          "editorialFocusSummary": "삼한 마지막 씬에서 직전 두 씬의 정치·제사 구조를 복습한다.",
+          "requiresReadSceneIds": [
+            "proto_ch05_s3"
+          ],
+          "playExplanation": "천군·소도, 5월과 10월의 제천 행사는 삼한의 특징이다. 정답은 1번. 천군·소도와 5월·10월 제천 행사는 삼한의 특징으로 신지·읍차 등의 군장이 다스렸다."
+        }
       }
     ],
     "queues": [
@@ -9109,10 +10312,12 @@ const PROTO_REVISION_SOURCE={
         "sceneId": "proto_ch01_s3",
         "afterLineId": "proto_ch01_s3-l017",
         "officialQuestionIds": [
-          "official-73-basic-02"
+          "official-73-basic-02",
+          "official-71-advanced-02",
+          "official-43-intermediate-02"
         ],
         "targetCount": 3,
-        "missingQuestionCount": 2
+        "missingQuestionCount": 0
       },
       {
         "sceneId": "proto_ch02_s1",
@@ -9141,51 +10346,65 @@ const PROTO_REVISION_SOURCE={
       {
         "sceneId": "proto_ch02_s4",
         "afterLineId": "proto_ch02_s4-l017",
-        "officialQuestionIds": [],
+        "officialQuestionIds": [
+          "official-48-advanced-02",
+          "official-41-high-03"
+        ],
         "targetCount": 3,
-        "missingQuestionCount": 3
+        "missingQuestionCount": 1
       },
       {
         "sceneId": "proto_ch03_s1",
         "afterLineId": "proto_ch03_s1-l016",
-        "officialQuestionIds": [],
+        "officialQuestionIds": [
+          "official-55-advanced-02"
+        ],
         "targetCount": 3,
-        "missingQuestionCount": 3
+        "missingQuestionCount": 2
       },
       {
         "sceneId": "proto_ch03_s2",
         "afterLineId": "proto_ch03_s2-l017",
         "officialQuestionIds": [
-          "official-67-basic-02"
+          "official-67-basic-02",
+          "official-66-advanced-02",
+          "official-42-high-03"
         ],
         "targetCount": 3,
-        "missingQuestionCount": 2
+        "missingQuestionCount": 0
       },
       {
         "sceneId": "proto_ch03_s3",
         "afterLineId": "proto_ch03_s3-l015",
         "officialQuestionIds": [
           "official-58-basic-02",
-          "official-66-advanced-02"
+          "official-46-high-02",
+          "official-45-intermediate-02"
         ],
         "targetCount": 3,
-        "missingQuestionCount": 1
+        "missingQuestionCount": 0
       },
       {
         "sceneId": "proto_ch04_s1",
         "afterLineId": "proto_ch04_s1-l017",
         "officialQuestionIds": [
-          "official-77-advanced-03"
+          "official-77-advanced-03",
+          "official-42-intermediate-02",
+          "official-54-advanced-02"
         ],
         "targetCount": 3,
-        "missingQuestionCount": 2
+        "missingQuestionCount": 0
       },
       {
         "sceneId": "proto_ch04_s2",
         "afterLineId": "proto_ch04_s2-l016",
-        "officialQuestionIds": [],
+        "officialQuestionIds": [
+          "official-45-high-02",
+          "official-46-intermediate-03",
+          "official-50-advanced-03"
+        ],
         "targetCount": 3,
-        "missingQuestionCount": 3
+        "missingQuestionCount": 0
       },
       {
         "sceneId": "proto_ch04_s3",
@@ -9214,10 +10433,11 @@ const PROTO_REVISION_SOURCE={
         "afterLineId": "proto_ch05_s1-l019",
         "officialQuestionIds": [
           "official-77-basic-02",
-          "official-60-basic-02"
+          "official-60-basic-02",
+          "official-47-basic-03"
         ],
         "targetCount": 3,
-        "missingQuestionCount": 1
+        "missingQuestionCount": 0
       },
       {
         "sceneId": "proto_ch05_s2",
@@ -9235,27 +10455,25 @@ const PROTO_REVISION_SOURCE={
         "afterLineId": "proto_ch05_s3-l026",
         "officialQuestionIds": [
           "official-67-advanced-02",
-          "official-78-advanced-03"
+          "official-78-advanced-03",
+          "official-53-advanced-02"
         ],
         "targetCount": 3,
-        "missingQuestionCount": 1
+        "missingQuestionCount": 0
       }
     ],
     "targetSlots": 51,
-    "unfilledSlots": 25,
-    "blockedCandidates": [
-      {
-        "officialQuestionId": "official-71-advanced-02",
-        "reason": "원본 이미지 하단 잘림; 미복구 문항 제외"
-      }
-    ]
+    "unfilledSlots": 10,
+    "blockedCandidates": [],
+    "revision": 2,
+    "additionsSourceSha256": "ab790654aa04e2a84d6414524912010fbc440f8b4357592a843b98d7b5a12fd8"
   },
   "counts": {
     "sceneCount": 17,
     "mainChapterCount": 5,
     "choiceSceneCount": 17,
     "choiceAlternatives": 34,
-    "officialQuestions": 26,
+    "officialQuestions": 41,
     "authoredUtterances": 296,
     "learningTopicCount": 85
   }
