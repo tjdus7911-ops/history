@@ -11,7 +11,7 @@ async function main(){
  browser=await chromium.launch({headless:true});
  for(const width of [360,375,390,412,430]){
   const context=await browser.newContext({viewport:{width,height:844},isMobile:true,hasTouch:true,serviceWorkers:'block'}),page=await context.newPage(),errors=[];
-  page.on('pageerror',e=>errors.push(e.message));
+  page.on('pageerror',e=>{errors.push(e.message);console.log('BROWSER_ERROR',e.message)});
   await page.goto('http://127.0.0.1:'+server.address().port);await page.waitForTimeout(300);
   const capture=async name=>{
    await page.evaluate(()=>scrollTo(0,0));
@@ -53,7 +53,7 @@ async function main(){
    await page.locator('[data-official-pick]').first().tap();await page.waitForTimeout(450);assert.equal(await page.evaluate(()=>OFFICIAL_EXAM_UI.snapshot().index),1);
    await page.locator('[data-official-question-list]').tap();await capture('E4-question-sheet');await page.locator('[data-r3-sheet-submit]').tap();await capture('E5-submit');
    await page.locator('[data-official-submit-cancel]').tap();
-   await page.locator('[data-official-timer-pause]').tap();await capture('T6-pause');await page.locator('[data-official-timer-start]').tap();
+   await page.locator('[data-official-timer-pause]').tap();await capture('T6-pause');await page.locator('.modal [data-official-timer-start]').tap();
   }
   await page.evaluate(()=>{if(globalThis.EXAM_PRESENTATION){const p=EXAM_PRESENTATION;for(const [i,e]of p.session.entries.entries())p.session.answers[e.canonicalQuestionId]=i%7===0?(p.functions.officialQuestion(e.canonicalQuestionId).answer+1)%5:p.functions.officialQuestion(e.canonicalQuestionId).answer;}gradeOfficialSession('MANUAL');});
   await capture('E6-result');

@@ -451,11 +451,15 @@
       "sourceNode": "54:10328"
     },
     {
-      "path": "rev3-assets/32-17105-imgIconChevronRight.svg",
-      "sourceNode": "32:17105"
+      "path": "rev3-assets/32-15521-imgTrail.svg",
+      "sourceNode": "32:15521"
     },
     {
-      "path": "rev3-assets/32-15521-imgTrail.svg",
+      "path": "rev3-assets/32-15267-imgTrail1.svg",
+      "sourceNode": "32:15267"
+    },
+    {
+      "path": "rev3-assets/32-15521-imgIconBookmark.svg",
       "sourceNode": "32:15521"
     }
   ]
