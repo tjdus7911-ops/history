@@ -20,7 +20,7 @@ function step(game,branch=0,wrong=false){
  const {run,click}=game,screen=run('screen');
  if(screen==='game'){const phase=run('globalThis.PROTO_REVISION_ACTIONS.phaseState().phase');return phase==='choice'?click({choice:String(branch)}):click({action:'advance-dialogue'});}
  if(screen==='quiz'){if(run('run().questionAnswer===null')){const q=game.copy('activeQuestion()');click({protoAnswer:String(wrong?(q.answer+1)%q.choices.length:q.answer)});return click({action:'proto-submit'});}return click({action:'proto-quiz-next'});}
- if(screen==='complete'){const number=run('Number(CHAPTERS[run().currentChapter].number)');if(number<7)return click({action:'start-chapter',chapter:'proto-ch0'+(number+1)});return;}
+ if(screen==='complete'){const number=run('Number(CHAPTERS[run().currentChapter].number)');if(number<5)return click({action:'start-chapter',chapter:'proto-ch0'+(number+1)});return;}
  throw Error('Unexpected screen: '+screen);
 }
 function until(game,predicate,branch=0,wrong=false,limit=2200){for(let index=0;index<limit;index++){if(predicate(game))return;step(game,branch,wrong);}throw Error('Did not reach target: '+game.run('screen')+' '+game.run('run().storyId'));}

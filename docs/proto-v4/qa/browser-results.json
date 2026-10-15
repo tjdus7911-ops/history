@@ -1,0 +1,20 @@
+[
+  {
+    "width": 390,
+    "height": 844,
+    "branch": 0,
+    "scenes": 17,
+    "exams": 26,
+    "pageErrors": [],
+    "horizontalOverflow": 0
+  },
+  {
+    "width": 1280,
+    "height": 900,
+    "branch": 1,
+    "scenes": 17,
+    "exams": 26,
+    "pageErrors": [],
+    "horizontalOverflow": 0
+  }
+]

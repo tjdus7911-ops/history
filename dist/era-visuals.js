@@ -7,8 +7,8 @@ const ERA_PROTAGONISTS = {
     id:'protagonist_proto_kingdoms',era:'proto-kingdoms',gender:'male',
     baseAppearance:'짧게 넘긴 검은 머리와 차분한 인상의 20대 남성 시간 여행자',outfits:{modern:'남색 재킷과 후드, 청바지, 운동화',historical:'이끼색·갈색·먹색의 초기 국가 시대 여행복'},
     expressions:['neutral','smile','surprised','embarrassed','suspicious','angry','sad','determined','fear','worried','relieved'],
-    assetPaths:Object.fromEntries(['neutral','smile','surprised','embarrassed','suspicious','angry','sad','determined','fear','worried','relieved'].map(expression=>[expression,`assets/ancient/characters/proto-player-${expression}.png`]).concat([['modern','assets/ancient/characters/proto-player-modern.png'],['hero','assets/ancient/heroes/proto-kingdoms.jpg']])),
-    displayName:'나',defaultTitle:'원삼국편 남성 주인공',basePose:'standing',dialogueStyle:'관찰한 생활 풍습을 공간과 이유로 연결한다',relationshipIds:['proto_guide','proto_warrior','proto_villager','proto_priest'],
+    assetPaths:Object.fromEntries(['neutral','smile','surprised','embarrassed','suspicious','angry','sad','determined','fear','worried','relieved'].map(expression=>[expression,'media/proto-v4/player.webp']).concat([['modern','media/proto-v4/player.webp'],['hero','media/proto-v4/buyeo-village.webp']])),
+    displayName:'나',defaultTitle:'원삼국편 남성 주인공',basePose:'standing',dialogueStyle:'관찰한 생활 풍습을 공간과 이유로 연결한다',relationshipIds:['proto_naru','proto_sibling','proto_priest'],
     ageState:{kind:'time-traveler',age:24,description:'현대에서 이동한 같은 인물. 역사 속 NPC는 자기 시대에만 등장한다.'},role:'여러 초기 국가의 생활과 정치 구조를 기록하는 여행자',status:'playable',appearanceLocked:true
   },
   protagonist_three_kingdoms: {
@@ -57,12 +57,12 @@ const ERA_PROTAGONISTS = {
   }
 };
 const ERA_BACKGROUNDS = {
-  'proto-forest-road':{id:'proto-forest-road',era:'proto-kingdoms',yearRange:[-100,350],location:'early-states-route',event:'early-states',timeOfDay:'day',src:'assets/ancient/backgrounds/proto-forest-road.jpg',usage:'story',includesProtagonist:false},
-  'proto-buyeo-village':{id:'proto-buyeo-village',era:'proto-kingdoms',yearRange:[-100,200],location:'buyeo',event:'buyeo-life',timeOfDay:'day',src:'assets/ancient/backgrounds/proto-buyeo-village.jpg',usage:'story',includesProtagonist:false},
-  'proto-goguryeo-fortress':{id:'proto-goguryeo-fortress',era:'proto-kingdoms',yearRange:[-37,400],location:'early-goguryeo',event:'early-goguryeo',timeOfDay:'day',src:'assets/ancient/backgrounds/proto-goguryeo-fortress.jpg',usage:'story',includesProtagonist:false},
-  'proto-okjeo-coast':{id:'proto-okjeo-coast',era:'proto-kingdoms',yearRange:[-100,250],location:'okjeo',event:'okjeo-life',timeOfDay:'day',src:'assets/ancient/backgrounds/proto-okjeo-coast.jpg',usage:'story',includesProtagonist:false},
-  'proto-dongye-boundary':{id:'proto-dongye-boundary',era:'proto-kingdoms',yearRange:[-100,250],location:'dongye',event:'dongye-life',timeOfDay:'day',src:'assets/ancient/backgrounds/proto-dongye-boundary.jpg',usage:'story',includesProtagonist:false},
-  'proto-samhan-market':{id:'proto-samhan-market',era:'proto-kingdoms',yearRange:[-100,350],location:'samhan',event:'samhan-life',timeOfDay:'day',src:'assets/ancient/backgrounds/proto-samhan-market.jpg',usage:'story',includesProtagonist:false},
+  'proto-forest-road':{id:'proto-forest-road',era:'proto-kingdoms',yearRange:[-100,350],location:'early-states-route',event:'early-states',timeOfDay:'day',src:'media/proto-v4/buyeo-village.webp',usage:'story',includesProtagonist:false},
+  'proto-buyeo-village':{id:'proto-buyeo-village',era:'proto-kingdoms',yearRange:[-100,200],location:'buyeo',event:'buyeo-life',timeOfDay:'day',src:'media/proto-v4/buyeo-village.webp',usage:'story',includesProtagonist:false},
+  'proto-goguryeo-fortress':{id:'proto-goguryeo-fortress',era:'proto-kingdoms',yearRange:[-37,400],location:'early-goguryeo',event:'early-goguryeo',timeOfDay:'day',src:'media/proto-v4/goguryeo-village.webp',usage:'story',includesProtagonist:false},
+  'proto-okjeo-coast':{id:'proto-okjeo-coast',era:'proto-kingdoms',yearRange:[-100,250],location:'okjeo',event:'okjeo-life',timeOfDay:'day',src:'media/proto-v4/okjeo-coast.webp',usage:'story',includesProtagonist:false},
+  'proto-dongye-boundary':{id:'proto-dongye-boundary',era:'proto-kingdoms',yearRange:[-100,250],location:'dongye',event:'dongye-life',timeOfDay:'day',src:'media/proto-v4/dongye-boundary.webp',usage:'story',includesProtagonist:false},
+  'proto-samhan-market':{id:'proto-samhan-market',era:'proto-kingdoms',yearRange:[-100,350],location:'samhan',event:'samhan-life',timeOfDay:'day',src:'media/proto-v4/samhan-farm.webp',usage:'story',includesProtagonist:false},
   'three-border-market':{id:'three-border-market',era:'three-kingdoms',yearRange:[194,676],location:'three-kingdoms-border',event:'competition',timeOfDay:'day',src:'assets/ancient/backgrounds/three-border-market.jpg',usage:'story',includesProtagonist:false},
   'three-han-river':{id:'three-han-river',era:'three-kingdoms',yearRange:[371,700],location:'han-river',event:'han-river',timeOfDay:'day',src:'assets/ancient/backgrounds/three-han-river.jpg',usage:'story',includesProtagonist:false},
   'three-gaya-workshop':{id:'three-gaya-workshop',era:'three-kingdoms',yearRange:[250,562],location:'gaya',event:'iron-trade',timeOfDay:'day',src:'assets/ancient/backgrounds/three-gaya-workshop.jpg',usage:'story',includesProtagonist:false},

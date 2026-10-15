@@ -13,766 +13,6 @@
   },
   "placements": [
     {
-      "sceneId": "proto_ch02_s3",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "questionId": "proto-study-official-60-advanced-02",
-      "officialQuestionId": "official-60-advanced-02",
-      "originalOfficialQuestionId": "official-60-advanced-02",
-      "examRound": 60,
-      "examLevel": "심화",
-      "questionNumber": 2,
-      "answer": 2,
-      "connection": "원삼국 학습 항목 연결",
-      "dialogueEvidence": [
-        "이 길은 여러 지역으로 이어져. 여기서 광장 쪽으로 돌아가자.",
-        "마침 길도 여러 갈래네. 아까 들은 사출도가 생각나.",
-        "기억하는 데는 도움이 되겠지만, 눈앞의 길 모양이 사출도의 정확한 모습은 아니네.",
-        "맞아. 중요한 건 여러 가가 중앙 밖의 지역을 나누어 다스린다는 거야. 이 네 길을 각각 어느 가의 길이라고 정할 수는 없어.",
-        "길 네 개를 세는 공부가 아니라 누가 지역을 다스리는지 보는 거구나.",
-        "단이 갈림길 앞에서 멈췄다. 이번에는 먼저 나서지 않고 두 사람을 돌아보았다.",
-        "어디서 온 사람인지 듣기도 전에 달려 나갈 뻔했군.",
-        "수레 앞에서는 내가 불러 세웠는데, 이번엔 네가 멈췄네.",
-        "북쪽을 다녀온 상인도, 시장에서 일한 사람도 광장으로 모일 거야.",
-        "그렇다면 발자국 하나 대신 여러 사람이 기억하는 라온을 맞춰 보세.",
-        "세 사람은 지나온 길의 모양을 뒤로하고 사람들이 모이는 광장으로 향했다.",
-        "한 사람을 찾으려고 이렇게 많은 사람에게 귀를 기울이게 되네.",
-        "서두르는 동안 내 말만 하고 있었다는 걸 이제 알겠군."
-      ],
-      "verification": {
-        "source": "docs/proto-revision/exam-plan.json",
-        "status": "existing-reviewed-source",
-        "allDistractorsRecheckedThisChange": false
-      }
-    },
-    {
-      "sceneId": "proto_ch02_s3",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "questionId": "proto-study-official-62-advanced-02",
-      "officialQuestionId": "official-62-advanced-02",
-      "originalOfficialQuestionId": "official-62-advanced-02",
-      "examRound": 62,
-      "examLevel": "심화",
-      "questionNumber": 2,
-      "answer": 1,
-      "connection": "원삼국 학습 항목 연결",
-      "dialogueEvidence": [
-        "이 길은 여러 지역으로 이어져. 여기서 광장 쪽으로 돌아가자.",
-        "마침 길도 여러 갈래네. 아까 들은 사출도가 생각나.",
-        "기억하는 데는 도움이 되겠지만, 눈앞의 길 모양이 사출도의 정확한 모습은 아니네.",
-        "맞아. 중요한 건 여러 가가 중앙 밖의 지역을 나누어 다스린다는 거야. 이 네 길을 각각 어느 가의 길이라고 정할 수는 없어.",
-        "길 네 개를 세는 공부가 아니라 누가 지역을 다스리는지 보는 거구나.",
-        "단이 갈림길 앞에서 멈췄다. 이번에는 먼저 나서지 않고 두 사람을 돌아보았다.",
-        "어디서 온 사람인지 듣기도 전에 달려 나갈 뻔했군.",
-        "수레 앞에서는 내가 불러 세웠는데, 이번엔 네가 멈췄네.",
-        "북쪽을 다녀온 상인도, 시장에서 일한 사람도 광장으로 모일 거야.",
-        "그렇다면 발자국 하나 대신 여러 사람이 기억하는 라온을 맞춰 보세.",
-        "세 사람은 지나온 길의 모양을 뒤로하고 사람들이 모이는 광장으로 향했다.",
-        "한 사람을 찾으려고 이렇게 많은 사람에게 귀를 기울이게 되네.",
-        "서두르는 동안 내 말만 하고 있었다는 걸 이제 알겠군."
-      ],
-      "verification": {
-        "source": "docs/proto-revision/exam-plan.json",
-        "status": "existing-reviewed-source",
-        "allDistractorsRecheckedThisChange": false
-      }
-    },
-    {
-      "sceneId": "proto_ch02_s6",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "questionId": "proto-study-official-64-advanced-02",
-      "officialQuestionId": "official-64-advanced-02",
-      "originalOfficialQuestionId": "official-64-advanced-02",
-      "examRound": 64,
-      "examLevel": "심화",
-      "questionNumber": 2,
-      "answer": 0,
-      "connection": "원삼국 학습 항목 연결",
-      "dialogueEvidence": [
-        "준비가 한숨 돌자 아린은 두 사람을 집 안으로 불렀다. 밖의 웃음소리가 문 하나를 사이에 두고 작아졌다.",
-        "여기서는 모이는 날도, 물건을 지키는 법도 내가 알던 것과 다르네.",
-        "혼인이나 장례에 관한 풍습도 있어. 밝은 이야기만 있는 건 아니야.",
-        "형사취수제와 순장 같은 풍습을 말하는군.",
-        "형사취수제는 형이 죽으면 동생이 형수와 혼인하는 풍습이야. 가족의 관계를 이어 가는 당시의 관습이지.",
-        "가족을 어떻게 이어 갔는지 보여 주는 말이구나. 그 안에 살던 사람들 마음까지 한마디로 알 수는 없겠네.",
-        "순장은 왕이나 높은 지위의 사람이 죽었을 때 다른 사람도 함께 묻는 장례 풍습이야.",
-        "물건을 넣는 것과 달리, 살아 있던 사람의 생명까지 빼앗긴다는 거네.",
-        "힘을 가진 사람이 다른 사람의 삶까지 좌우했다는 것이지.",
-        "있었던 풍습이라고 기억하겠지만, 듣기 편한 말로 바꾸고 싶지는 않아.",
-        "소를 잡아 그 굽의 갈라짐을 보고 길흉을 점치기도 해.",
-        "소의 굽으로 점치는 우제점법. 미래를 알고 싶어 했다는 마음은 알겠지만, 점이 사람의 운명을 증명하는 건 아니지.",
-        "단은 손안의 매듭을 내려다보았다. 아린의 이야기가 끝난 뒤에도 잠시 입을 열지 못했다.",
-        "단, 추워? 아까부터 그 손을 한 번도 안 폈어.",
-        "무사한지 알고 싶은 마음이, 내가 바라는 대로 살아야 한다는 마음이 되어서는 안 되겠군.",
-        "그건 라온을 만나서 같이 이야기하자. 지금은 손부터 좀 쉬고.",
-        "단이 매듭을 무릎 위에 놓았다. 아린의 시선이 천 조각에 오래 머물렀다."
-      ],
-      "verification": {
-        "source": "docs/proto-revision/exam-plan.json",
-        "status": "existing-reviewed-source",
-        "allDistractorsRecheckedThisChange": false
-      }
-    },
-    {
-      "sceneId": "proto_ch02_s6",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "questionId": "proto-study-official-66-basic-02",
-      "officialQuestionId": "official-66-basic-02",
-      "originalOfficialQuestionId": "official-66-basic-02",
-      "examRound": 66,
-      "examLevel": "기본",
-      "questionNumber": 2,
-      "answer": 0,
-      "connection": "원삼국 학습 항목 연결",
-      "dialogueEvidence": [
-        "준비가 한숨 돌자 아린은 두 사람을 집 안으로 불렀다. 밖의 웃음소리가 문 하나를 사이에 두고 작아졌다.",
-        "여기서는 모이는 날도, 물건을 지키는 법도 내가 알던 것과 다르네.",
-        "혼인이나 장례에 관한 풍습도 있어. 밝은 이야기만 있는 건 아니야.",
-        "형사취수제와 순장 같은 풍습을 말하는군.",
-        "형사취수제는 형이 죽으면 동생이 형수와 혼인하는 풍습이야. 가족의 관계를 이어 가는 당시의 관습이지.",
-        "가족을 어떻게 이어 갔는지 보여 주는 말이구나. 그 안에 살던 사람들 마음까지 한마디로 알 수는 없겠네.",
-        "순장은 왕이나 높은 지위의 사람이 죽었을 때 다른 사람도 함께 묻는 장례 풍습이야.",
-        "물건을 넣는 것과 달리, 살아 있던 사람의 생명까지 빼앗긴다는 거네.",
-        "힘을 가진 사람이 다른 사람의 삶까지 좌우했다는 것이지.",
-        "있었던 풍습이라고 기억하겠지만, 듣기 편한 말로 바꾸고 싶지는 않아.",
-        "소를 잡아 그 굽의 갈라짐을 보고 길흉을 점치기도 해.",
-        "소의 굽으로 점치는 우제점법. 미래를 알고 싶어 했다는 마음은 알겠지만, 점이 사람의 운명을 증명하는 건 아니지.",
-        "단은 손안의 매듭을 내려다보았다. 아린의 이야기가 끝난 뒤에도 잠시 입을 열지 못했다.",
-        "단, 추워? 아까부터 그 손을 한 번도 안 폈어.",
-        "무사한지 알고 싶은 마음이, 내가 바라는 대로 살아야 한다는 마음이 되어서는 안 되겠군.",
-        "그건 라온을 만나서 같이 이야기하자. 지금은 손부터 좀 쉬고.",
-        "단이 매듭을 무릎 위에 놓았다. 아린의 시선이 천 조각에 오래 머물렀다."
-      ],
-      "verification": {
-        "source": "docs/proto-revision/exam-plan.json",
-        "status": "existing-reviewed-source",
-        "allDistractorsRecheckedThisChange": false
-      }
-    },
-    {
-      "sceneId": "proto_ch02_s11",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "questionId": "proto-study-official-61-basic-03",
-      "officialQuestionId": "official-61-basic-03",
-      "originalOfficialQuestionId": "official-61-basic-03",
-      "examRound": 61,
-      "examLevel": "기본",
-      "questionNumber": 3,
-      "answer": 2,
-      "connection": "원삼국 학습 항목 연결",
-      "dialogueEvidence": [
-        "다음 날, 주인공은 광장에 남은 짐끈을 정리하며 아린에게 어제 만난 얼굴들을 짚어 보였다.",
-        "처음엔 왕이 있는 곳에만 가면 다 알 줄 알았어.",
-        "왕도 있고 여러 가도 있지. 마가·우가·저가·구가가 각 지역에서 힘을 가지고 있으니까.",
-        "왕의 중심 세력과 여러 가, 5부족 연맹. 여러 가의 지역 지배는 사출도. 네 갈래 길 모양만 기억하면 안 되는 거고.",
-        "한 사람 말만 듣지 않으려 돌아다닌 일을 떠올리면 되겠네.",
-        "영고는 부여의 12월. 이건 어제 앉았던 자리까지 같이 떠오른다.",
-        "떨어진 손잡이도 기억해? 훔쳤을 때 열두 배를 갚게 하는 법 이야기를 했지.",
-        "응. 1책12법. 큰 벌이 있다고 눈앞의 사람을 먼저 의심해서는 안 된다고 생각했어.",
-        "집 안에서는 혼인과 장례, 소의 굽으로 점치는 풍습도 들었지.",
-        "형사취수제, 순장, 우제점법. 이름만 넘어가지 말고 누구의 삶에 닿았는지도 기억하려고.",
-        "다 기억해야 한다고 너무 오래 여기 서 있으면 손이 또 얼어.",
-        "맞아. 이름 붙이는 건 내가 할게. 길 나서는 건 같이 하자."
-      ],
-      "verification": {
-        "source": "docs/proto-revision/exam-plan.json",
-        "status": "existing-reviewed-source",
-        "allDistractorsRecheckedThisChange": false
-      }
-    },
-    {
-      "sceneId": "proto_ch02_s11",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "questionId": "proto-study-official-68-advanced-03",
-      "officialQuestionId": "official-68-advanced-03",
-      "originalOfficialQuestionId": "official-68-advanced-03",
-      "examRound": 68,
-      "examLevel": "심화",
-      "questionNumber": 3,
-      "answer": 2,
-      "connection": "원삼국 학습 항목 연결",
-      "dialogueEvidence": [
-        "다음 날, 주인공은 광장에 남은 짐끈을 정리하며 아린에게 어제 만난 얼굴들을 짚어 보였다.",
-        "처음엔 왕이 있는 곳에만 가면 다 알 줄 알았어.",
-        "왕도 있고 여러 가도 있지. 마가·우가·저가·구가가 각 지역에서 힘을 가지고 있으니까.",
-        "왕의 중심 세력과 여러 가, 5부족 연맹. 여러 가의 지역 지배는 사출도. 네 갈래 길 모양만 기억하면 안 되는 거고.",
-        "한 사람 말만 듣지 않으려 돌아다닌 일을 떠올리면 되겠네.",
-        "영고는 부여의 12월. 이건 어제 앉았던 자리까지 같이 떠오른다.",
-        "떨어진 손잡이도 기억해? 훔쳤을 때 열두 배를 갚게 하는 법 이야기를 했지.",
-        "응. 1책12법. 큰 벌이 있다고 눈앞의 사람을 먼저 의심해서는 안 된다고 생각했어.",
-        "집 안에서는 혼인과 장례, 소의 굽으로 점치는 풍습도 들었지.",
-        "형사취수제, 순장, 우제점법. 이름만 넘어가지 말고 누구의 삶에 닿았는지도 기억하려고.",
-        "다 기억해야 한다고 너무 오래 여기 서 있으면 손이 또 얼어.",
-        "맞아. 이름 붙이는 건 내가 할게. 길 나서는 건 같이 하자."
-      ],
-      "verification": {
-        "source": "docs/proto-revision/exam-plan.json",
-        "status": "existing-reviewed-source",
-        "allDistractorsRecheckedThisChange": false
-      }
-    },
-    {
-      "sceneId": "proto_ch02_s11",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "questionId": "proto-study-official-73-basic-02",
-      "officialQuestionId": "official-73-basic-02",
-      "originalOfficialQuestionId": "official-73-basic-02",
-      "examRound": 73,
-      "examLevel": "기본",
-      "questionNumber": 2,
-      "answer": 0,
-      "connection": "원삼국 학습 항목 연결",
-      "dialogueEvidence": [
-        "다음 날, 주인공은 광장에 남은 짐끈을 정리하며 아린에게 어제 만난 얼굴들을 짚어 보였다.",
-        "처음엔 왕이 있는 곳에만 가면 다 알 줄 알았어.",
-        "왕도 있고 여러 가도 있지. 마가·우가·저가·구가가 각 지역에서 힘을 가지고 있으니까.",
-        "왕의 중심 세력과 여러 가, 5부족 연맹. 여러 가의 지역 지배는 사출도. 네 갈래 길 모양만 기억하면 안 되는 거고.",
-        "한 사람 말만 듣지 않으려 돌아다닌 일을 떠올리면 되겠네.",
-        "영고는 부여의 12월. 이건 어제 앉았던 자리까지 같이 떠오른다.",
-        "떨어진 손잡이도 기억해? 훔쳤을 때 열두 배를 갚게 하는 법 이야기를 했지.",
-        "응. 1책12법. 큰 벌이 있다고 눈앞의 사람을 먼저 의심해서는 안 된다고 생각했어.",
-        "집 안에서는 혼인과 장례, 소의 굽으로 점치는 풍습도 들었지.",
-        "형사취수제, 순장, 우제점법. 이름만 넘어가지 말고 누구의 삶에 닿았는지도 기억하려고.",
-        "다 기억해야 한다고 너무 오래 여기 서 있으면 손이 또 얼어.",
-        "맞아. 이름 붙이는 건 내가 할게. 길 나서는 건 같이 하자."
-      ],
-      "verification": {
-        "source": "docs/proto-revision/exam-plan.json",
-        "status": "existing-reviewed-source",
-        "allDistractorsRecheckedThisChange": false
-      }
-    },
-    {
-      "sceneId": "proto_ch03_s14",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "questionId": "proto-study-official-76-advanced-02",
-      "officialQuestionId": "official-76-advanced-02",
-      "originalOfficialQuestionId": "official-76-advanced-02",
-      "examRound": 76,
-      "examLevel": "심화",
-      "questionNumber": 2,
-      "answer": 1,
-      "connection": "원삼국 학습 항목 연결",
-      "dialogueEvidence": [
-        "동쪽으로 떠나는 날, 고개 아래 얼음 끝에서 물이 떨어졌다. 머물며 길을 기다리는 사이 겨울의 날카로움도 조금 누그러졌다.",
-        "동쪽 길은 계곡을 몇 번 돌아간다. 날이 풀렸다고 물가를 바로 건너려 하지는 마라.",
-        "올 때 산한테 배웠어. 짧아 보이는 길이 꼭 갈 수 있는 길은 아니더라고.",
-        "여러모로 신세를 졌습니다. 검문 때 일도 잊지 않겠습니다.",
-        "다음에 누군가 너희 말을 듣게 되면, 그때는 처음부터 제대로 말해라.",
-        "불가에서는 주몽과 졸본 이야기를 듣고, 성 안에서는 제가회의와 서옥을 배웠네. 같은 고구려 이야기여도 시간과 자리는 달랐어.",
-        "지금 열리지 않은 동맹도 기억하겠지?",
-        "10월. 지금 본 축제로 바꾸어 기억하지 않을게.",
-        "주인공은 아린의 천을 한 번 더 펼쳤다. 교역 기록에서 본 철 그림의 선을 손가락으로 옆에 그려 보았다.",
-        "다음은 옥저네. 그곳에서 쉬었다는 말부터 확인하자.",
-        "응. 찾으면 어디로 데려갈지보다, 거기서 뭘 했는지 먼저.",
-        "그 질문을 자꾸 잊으려 하면 다시 말해 주게.",
-        "산성은 등 뒤로 멀어졌다. 두 사람은 여러 숙영지를 거쳐 바다가 있는 땅으로 향했다."
-      ],
-      "verification": {
-        "source": "docs/proto-revision/exam-plan.json",
-        "status": "existing-reviewed-source",
-        "allDistractorsRecheckedThisChange": false
-      }
-    },
-    {
-      "sceneId": "proto_ch04_s5",
-      "chapterId": "proto-ch04",
-      "era": "proto",
-      "questionId": "proto-study-official-66-advanced-02",
-      "officialQuestionId": "official-66-advanced-02",
-      "originalOfficialQuestionId": "official-66-advanced-02",
-      "examRound": 66,
-      "examLevel": "심화",
-      "questionNumber": 2,
-      "answer": 1,
-      "connection": "원삼국 학습 항목 연결",
-      "dialogueEvidence": [
-        "짐을 정리한 뒤 소하는 바람이 잦아든 길로 두 사람을 안내했다. 마을 바깥 낮은 곳에 무덤이 보였다.",
-        "이쪽으로는 조심해서 걸어. 가족의 뼈를 함께 모시는 무덤이 있어.",
-        "가족 공동 무덤이라는 거구나. 처음부터 모두 함께 묻는 거야?",
-        "사람이 죽으면 먼저 임시로 묻었다가, 뒤에 뼈를 추려 가족의 큰 나무 곽에 함께 모으는 풍습이 있지.",
-        "먼저 임시로 묻고 나중에 뼈를 모은다. 살아 있는 가족을 함께 묻는다는 뜻은 아니네.",
-        "부여에서 들은 순장하고도 구분해야겠군.",
-        "응. 같은 무덤 이야기라고 하나로 섞으면 누구에게 무슨 일이 일어났는지 완전히 달라져.",
-        "단은 길 가장자리에서 멈췄다. 소하는 더 가까이 다가가도록 재촉하지 않았다.",
-        "가족이라는 말을 들으면 나는 같이 있어야 한다는 생각부터 하는군요.",
-        "같이 기억하는 방식은 있어도, 살아 있는 사람의 마음까지 대신 알 수는 없지.",
-        "라온과 같이 산 날은 다 기억하려 했는데, 그 아이가 앞으로 어떻게 살고 싶은지는 잘 묻지 않았습니다.",
-        "만나면 그 앞으로의 시간도 물어보자. 옛날 얘기만 하지 말고.",
-        "두 사람은 무덤에 손대지 않고 돌아섰다. 돌아가는 길에서 단이 먼저 소하에게 라온의 이야기를 부탁했다."
-      ],
-      "verification": {
-        "source": "docs/proto-revision/exam-plan.json",
-        "status": "existing-reviewed-source",
-        "allDistractorsRecheckedThisChange": false
-      }
-    },
-    {
-      "sceneId": "proto_ch04_s5",
-      "chapterId": "proto-ch04",
-      "era": "proto",
-      "questionId": "proto-study-official-67-basic-02",
-      "officialQuestionId": "official-67-basic-02",
-      "originalOfficialQuestionId": "official-67-basic-02",
-      "examRound": 67,
-      "examLevel": "기본",
-      "questionNumber": 2,
-      "answer": 1,
-      "connection": "원삼국 학습 항목 연결",
-      "dialogueEvidence": [
-        "짐을 정리한 뒤 소하는 바람이 잦아든 길로 두 사람을 안내했다. 마을 바깥 낮은 곳에 무덤이 보였다.",
-        "이쪽으로는 조심해서 걸어. 가족의 뼈를 함께 모시는 무덤이 있어.",
-        "가족 공동 무덤이라는 거구나. 처음부터 모두 함께 묻는 거야?",
-        "사람이 죽으면 먼저 임시로 묻었다가, 뒤에 뼈를 추려 가족의 큰 나무 곽에 함께 모으는 풍습이 있지.",
-        "먼저 임시로 묻고 나중에 뼈를 모은다. 살아 있는 가족을 함께 묻는다는 뜻은 아니네.",
-        "부여에서 들은 순장하고도 구분해야겠군.",
-        "응. 같은 무덤 이야기라고 하나로 섞으면 누구에게 무슨 일이 일어났는지 완전히 달라져.",
-        "단은 길 가장자리에서 멈췄다. 소하는 더 가까이 다가가도록 재촉하지 않았다.",
-        "가족이라는 말을 들으면 나는 같이 있어야 한다는 생각부터 하는군요.",
-        "같이 기억하는 방식은 있어도, 살아 있는 사람의 마음까지 대신 알 수는 없지.",
-        "라온과 같이 산 날은 다 기억하려 했는데, 그 아이가 앞으로 어떻게 살고 싶은지는 잘 묻지 않았습니다.",
-        "만나면 그 앞으로의 시간도 물어보자. 옛날 얘기만 하지 말고.",
-        "두 사람은 무덤에 손대지 않고 돌아섰다. 돌아가는 길에서 단이 먼저 소하에게 라온의 이야기를 부탁했다."
-      ],
-      "verification": {
-        "source": "docs/proto-revision/exam-plan.json",
-        "status": "existing-reviewed-source",
-        "allDistractorsRecheckedThisChange": false
-      }
-    },
-    {
-      "sceneId": "proto_ch05_s6",
-      "chapterId": "proto-ch05",
-      "era": "proto",
-      "questionId": "proto-study-official-57-advanced-03",
-      "officialQuestionId": "official-57-advanced-03",
-      "originalOfficialQuestionId": "official-57-advanced-03",
-      "examRound": 57,
-      "examLevel": "심화",
-      "questionNumber": 3,
-      "answer": 1,
-      "connection": "원삼국 학습 항목 연결",
-      "dialogueEvidence": [
-        "해루가 마을의 넓은 빈터를 가리켰다. 바람에 마른 흙이 낮게 일었다.",
-        "10월이 되면 여기에도 많은 사람이 모인다. 무천이라는 제천 행사를 열지.",
-        "지금은 봄이라 조용한 거구나.",
-        "그래. 오늘은 그날의 이야기를 해 주는 것이다. 하늘에 제사를 지내고 함께 모이는 날이지.",
-        "고구려에서 들은 동맹도 10월이었네.",
-        "부여의 영고만 겨울 12월. 그날은 우리가 직접 봤고.",
-        "동맹은 겨울에 설명으로 들었고, 무천은 봄에 설명으로 듣는군.",
-        "이제 세 이름이 다 붙었다. 부영(이와) 고동(어는) 동무(다).",
-        "그건 어느 나라 말이냐?",
-        "내가 기억하려고 배운 말이야. 부여 영고, 고구려 동맹, 동예 무천을 이어 놓은 거지.",
-        "이상한 말인데, 다시 잊기는 어렵겠군.",
-        "이름만 말고 날짜도 같이. 영고 12월, 동맹과 무천은 10월.",
-        "빈터를 떠나며 나는 그 말을 작게 한 번 더 굴렸다. 이번에는 외운 이름마다 사람들의 얼굴이 따라왔다."
-      ],
-      "verification": {
-        "source": "docs/proto-revision/exam-plan.json",
-        "status": "existing-reviewed-source",
-        "allDistractorsRecheckedThisChange": false
-      }
-    },
-    {
-      "sceneId": "proto_ch05_s7",
-      "chapterId": "proto-ch05",
-      "era": "proto",
-      "questionId": "proto-study-official-64-basic-02",
-      "officialQuestionId": "official-64-basic-02",
-      "originalOfficialQuestionId": "official-64-basic-02",
-      "examRound": 64,
-      "examLevel": "기본",
-      "questionNumber": 2,
-      "answer": 0,
-      "connection": "원삼국 학습 항목 연결",
-      "dialogueEvidence": [
-        "남쪽으로 가기 전에 저 교역장에 길을 물어보아라.",
-        "저 말은 다 자란 거야? 나뭇가지 아래로 쏙 들어갔는데.",
-        "과하마라고 한다. 과실나무 아래를 지날 만큼 작은 말이라는 이름이지.",
-        "동예의 이름난 물산이군.",
-        "옆에 세워 둔 활도 여기서 만든 거야?",
-        "단궁이다. 박달나무로 만든 활이지.",
-        "저 얼룩 있는 가죽은?",
-        "반어피다. 바다표범 같은 바다짐승의 가죽이지. 단궁·과하마와 함께 귀한 물산으로 알려져 있다.",
-        "활은 단궁, 작은 말은 과하마, 바다 가죽은 반어피. 셋을 그냥 외울 때보다 눈에 남는다.",
-        "이 물건을 나르는 상인들도 남쪽 교역장으로 가겠군요.",
-        "그렇다. 라온도 그 길을 물었다. 철을 다루는 사람들을 만나고 싶다고 했지.",
-        "소금과 어물을 따라 여기까지 왔는데, 이제 활과 말과 가죽이 다음 길을 알려 주네.",
-        "길을 묻고 가겠소. 이번에는 짧아 보인다고 먼저 들어서지 않겠소."
-      ],
-      "verification": {
-        "source": "docs/proto-revision/exam-plan.json",
-        "status": "existing-reviewed-source",
-        "allDistractorsRecheckedThisChange": false
-      }
-    },
-    {
-      "sceneId": "proto_ch05_s7",
-      "chapterId": "proto-ch05",
-      "era": "proto",
-      "questionId": "proto-study-official-70-advanced-02",
-      "officialQuestionId": "official-70-advanced-02",
-      "originalOfficialQuestionId": "official-70-advanced-02",
-      "examRound": 70,
-      "examLevel": "심화",
-      "questionNumber": 2,
-      "answer": 2,
-      "connection": "원삼국 학습 항목 연결",
-      "dialogueEvidence": [
-        "남쪽으로 가기 전에 저 교역장에 길을 물어보아라.",
-        "저 말은 다 자란 거야? 나뭇가지 아래로 쏙 들어갔는데.",
-        "과하마라고 한다. 과실나무 아래를 지날 만큼 작은 말이라는 이름이지.",
-        "동예의 이름난 물산이군.",
-        "옆에 세워 둔 활도 여기서 만든 거야?",
-        "단궁이다. 박달나무로 만든 활이지.",
-        "저 얼룩 있는 가죽은?",
-        "반어피다. 바다표범 같은 바다짐승의 가죽이지. 단궁·과하마와 함께 귀한 물산으로 알려져 있다.",
-        "활은 단궁, 작은 말은 과하마, 바다 가죽은 반어피. 셋을 그냥 외울 때보다 눈에 남는다.",
-        "이 물건을 나르는 상인들도 남쪽 교역장으로 가겠군요.",
-        "그렇다. 라온도 그 길을 물었다. 철을 다루는 사람들을 만나고 싶다고 했지.",
-        "소금과 어물을 따라 여기까지 왔는데, 이제 활과 말과 가죽이 다음 길을 알려 주네.",
-        "길을 묻고 가겠소. 이번에는 짧아 보인다고 먼저 들어서지 않겠소."
-      ],
-      "verification": {
-        "source": "docs/proto-revision/exam-plan.json",
-        "status": "existing-reviewed-source",
-        "allDistractorsRecheckedThisChange": false
-      }
-    },
-    {
-      "sceneId": "proto_ch05_s7",
-      "chapterId": "proto-ch05",
-      "era": "proto",
-      "questionId": "proto-study-official-77-advanced-03",
-      "officialQuestionId": "official-77-advanced-03",
-      "originalOfficialQuestionId": "official-77-advanced-03",
-      "examRound": 77,
-      "examLevel": "심화",
-      "questionNumber": 3,
-      "answer": 1,
-      "connection": "원삼국 학습 항목 연결",
-      "dialogueEvidence": [
-        "남쪽으로 가기 전에 저 교역장에 길을 물어보아라.",
-        "저 말은 다 자란 거야? 나뭇가지 아래로 쏙 들어갔는데.",
-        "과하마라고 한다. 과실나무 아래를 지날 만큼 작은 말이라는 이름이지.",
-        "동예의 이름난 물산이군.",
-        "옆에 세워 둔 활도 여기서 만든 거야?",
-        "단궁이다. 박달나무로 만든 활이지.",
-        "저 얼룩 있는 가죽은?",
-        "반어피다. 바다표범 같은 바다짐승의 가죽이지. 단궁·과하마와 함께 귀한 물산으로 알려져 있다.",
-        "활은 단궁, 작은 말은 과하마, 바다 가죽은 반어피. 셋을 그냥 외울 때보다 눈에 남는다.",
-        "이 물건을 나르는 상인들도 남쪽 교역장으로 가겠군요.",
-        "그렇다. 라온도 그 길을 물었다. 철을 다루는 사람들을 만나고 싶다고 했지.",
-        "소금과 어물을 따라 여기까지 왔는데, 이제 활과 말과 가죽이 다음 길을 알려 주네.",
-        "길을 묻고 가겠소. 이번에는 짧아 보인다고 먼저 들어서지 않겠소."
-      ],
-      "verification": {
-        "source": "docs/proto-revision/exam-plan.json",
-        "status": "existing-reviewed-source",
-        "allDistractorsRecheckedThisChange": false
-      }
-    },
-    {
-      "sceneId": "proto_ch06_s6",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "questionId": "proto-study-official-73-advanced-04",
-      "officialQuestionId": "official-73-advanced-04",
-      "originalOfficialQuestionId": "official-73-advanced-04",
-      "examRound": 73,
-      "examLevel": "심화",
-      "questionNumber": 4,
-      "answer": 2,
-      "connection": "원삼국 학습 항목 연결",
-      "dialogueEvidence": [
-        "바로 옆이 장터인데 여긴 발걸음부터 조심스러워지네.",
-        "소도라 부르는 신성한 곳이네. 저 나무의 방울과 북도 보이지?",
-        "여기서는 장터를 다스리는 사람이 하듯 명령하면 안 되겠군.",
-        "그렇지. 이곳으로 도망쳐 온 사람도 함부로 끌어내지 않는다고 여기네.",
-        "아까 천군이라는 사람도 말했지?",
-        "천군은 하늘에 드리는 제사를 맡는 사람일세. 소도는 신성한 구역의 이름이고.",
-        "신지·읍차는 정치 지배자, 천군은 제사를 맡는 사람, 소도는 장소. 구분해서 기억할게.",
-        "정치와 제사의 역할이 구분되는 특징. 족보에서 보던 ‘제정 분리’가 이 이야기와 연결된다.",
-        "저 안에 동생이 있을까 봐 눈부터 돌렸군. 내가 찾는다고 어디든 밀고 들어갈 수는 없는데.",
-        "사람이 어느 곳에 있든, 무슨 생각으로 왔는지 들어야 하네.",
-        "작업장 쪽에서 심부름을 온 사람이 비류에게 짧게 말을 전했다.",
-        "아까 말한 젊은이가 아직 작업장에 있대. 일이 끝나면 만나겠다고 하니 조금만 더 기다리세.",
-        "……만나겠다고 했소? 알겠소. 기다리겠소."
-      ],
-      "verification": {
-        "source": "docs/proto-revision/exam-plan.json",
-        "status": "existing-reviewed-source",
-        "allDistractorsRecheckedThisChange": false
-      }
-    },
-    {
-      "sceneId": "proto_ch06_s6",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "questionId": "proto-study-official-61-advanced-02",
-      "officialQuestionId": "official-61-advanced-02",
-      "originalOfficialQuestionId": "official-61-advanced-02",
-      "examRound": 61,
-      "examLevel": "심화",
-      "questionNumber": 2,
-      "answer": 0,
-      "connection": "원삼국 학습 항목 연결",
-      "dialogueEvidence": [
-        "바로 옆이 장터인데 여긴 발걸음부터 조심스러워지네.",
-        "소도라 부르는 신성한 곳이네. 저 나무의 방울과 북도 보이지?",
-        "여기서는 장터를 다스리는 사람이 하듯 명령하면 안 되겠군.",
-        "그렇지. 이곳으로 도망쳐 온 사람도 함부로 끌어내지 않는다고 여기네.",
-        "아까 천군이라는 사람도 말했지?",
-        "천군은 하늘에 드리는 제사를 맡는 사람일세. 소도는 신성한 구역의 이름이고.",
-        "신지·읍차는 정치 지배자, 천군은 제사를 맡는 사람, 소도는 장소. 구분해서 기억할게.",
-        "정치와 제사의 역할이 구분되는 특징. 족보에서 보던 ‘제정 분리’가 이 이야기와 연결된다.",
-        "저 안에 동생이 있을까 봐 눈부터 돌렸군. 내가 찾는다고 어디든 밀고 들어갈 수는 없는데.",
-        "사람이 어느 곳에 있든, 무슨 생각으로 왔는지 들어야 하네.",
-        "작업장 쪽에서 심부름을 온 사람이 비류에게 짧게 말을 전했다.",
-        "아까 말한 젊은이가 아직 작업장에 있대. 일이 끝나면 만나겠다고 하니 조금만 더 기다리세.",
-        "……만나겠다고 했소? 알겠소. 기다리겠소."
-      ],
-      "verification": {
-        "source": "docs/proto-revision/exam-plan.json",
-        "status": "existing-reviewed-source",
-        "allDistractorsRecheckedThisChange": false
-      }
-    },
-    {
-      "sceneId": "proto_ch06_s6",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "questionId": "proto-study-official-77-basic-02",
-      "officialQuestionId": "official-77-basic-02",
-      "originalOfficialQuestionId": "official-77-basic-02",
-      "examRound": 77,
-      "examLevel": "기본",
-      "questionNumber": 2,
-      "answer": 3,
-      "connection": "원삼국 학습 항목 연결",
-      "dialogueEvidence": [
-        "바로 옆이 장터인데 여긴 발걸음부터 조심스러워지네.",
-        "소도라 부르는 신성한 곳이네. 저 나무의 방울과 북도 보이지?",
-        "여기서는 장터를 다스리는 사람이 하듯 명령하면 안 되겠군.",
-        "그렇지. 이곳으로 도망쳐 온 사람도 함부로 끌어내지 않는다고 여기네.",
-        "아까 천군이라는 사람도 말했지?",
-        "천군은 하늘에 드리는 제사를 맡는 사람일세. 소도는 신성한 구역의 이름이고.",
-        "신지·읍차는 정치 지배자, 천군은 제사를 맡는 사람, 소도는 장소. 구분해서 기억할게.",
-        "정치와 제사의 역할이 구분되는 특징. 족보에서 보던 ‘제정 분리’가 이 이야기와 연결된다.",
-        "저 안에 동생이 있을까 봐 눈부터 돌렸군. 내가 찾는다고 어디든 밀고 들어갈 수는 없는데.",
-        "사람이 어느 곳에 있든, 무슨 생각으로 왔는지 들어야 하네.",
-        "작업장 쪽에서 심부름을 온 사람이 비류에게 짧게 말을 전했다.",
-        "아까 말한 젊은이가 아직 작업장에 있대. 일이 끝나면 만나겠다고 하니 조금만 더 기다리세.",
-        "……만나겠다고 했소? 알겠소. 기다리겠소."
-      ],
-      "verification": {
-        "source": "docs/proto-revision/exam-plan.json",
-        "status": "existing-reviewed-source",
-        "allDistractorsRecheckedThisChange": false
-      }
-    },
-    {
-      "sceneId": "proto_ch06_s7",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "questionId": "proto-study-official-69-advanced-03",
-      "officialQuestionId": "official-69-advanced-03",
-      "originalOfficialQuestionId": "official-69-advanced-03",
-      "examRound": 69,
-      "examLevel": "심화",
-      "questionNumber": 3,
-      "answer": 2,
-      "connection": "원삼국 학습 항목 연결",
-      "dialogueEvidence": [
-        "기다리는 동안 주인공과 단은 논둑의 무거운 짐을 함께 옮겼다.",
-        "잠깐 도운 건데 팔이 벌써 떨리네. 혼자서 하면 한참 걸리겠어.",
-        "벼농사는 여러 사람이 힘을 보태야 할 일이 많지. 이곳 사람들도 함께 일하네.",
-        "저쪽에서는 음식도 준비하고 있군.",
-        "씨뿌리기를 마친 5월에 하늘에 제사를 지내네. 곡식을 거둔 뒤인 10월에도 모이지.",
-        "삼한의 계절제는 5월과 10월. 곡식을 심고 거두는 때구나.",
-        "함께 일하고, 함께 한 해 농사를 바라는 것이지.",
-        "내 족보에는 삼한의 공동 노동 옆에 ‘두레’라고 적혀 있었다. 지금 본 것은 함께 일하는 모습이다.",
-        "내가 아는 후대 두레의 조직과 규칙까지 이때와 똑같았다고 생각하면 안 되겠지.",
-        "라온도 이 근처 논에서 일을 도왔소?",
-        "도왔다는 말을 들었네. 사람들 틈에서 남이 일하는 모습을 오래 지켜보더군.",
-        "단이란 형이 있다고 말한 적은 없었소? ……아니, 그건 직접 물어보겠소.",
-        "망치 소리가 멎었군. 이제 작업장으로 가세."
-      ],
-      "verification": {
-        "source": "docs/proto-revision/exam-plan.json",
-        "status": "existing-reviewed-source",
-        "allDistractorsRecheckedThisChange": false
-      }
-    },
-    {
-      "sceneId": "proto_ch06_s7",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "questionId": "proto-study-official-78-advanced-03",
-      "officialQuestionId": "official-78-advanced-03",
-      "originalOfficialQuestionId": "official-78-advanced-03",
-      "examRound": 78,
-      "examLevel": "심화",
-      "questionNumber": 3,
-      "answer": 0,
-      "connection": "원삼국 학습 항목 연결",
-      "dialogueEvidence": [
-        "기다리는 동안 주인공과 단은 논둑의 무거운 짐을 함께 옮겼다.",
-        "잠깐 도운 건데 팔이 벌써 떨리네. 혼자서 하면 한참 걸리겠어.",
-        "벼농사는 여러 사람이 힘을 보태야 할 일이 많지. 이곳 사람들도 함께 일하네.",
-        "저쪽에서는 음식도 준비하고 있군.",
-        "씨뿌리기를 마친 5월에 하늘에 제사를 지내네. 곡식을 거둔 뒤인 10월에도 모이지.",
-        "삼한의 계절제는 5월과 10월. 곡식을 심고 거두는 때구나.",
-        "함께 일하고, 함께 한 해 농사를 바라는 것이지.",
-        "내 족보에는 삼한의 공동 노동 옆에 ‘두레’라고 적혀 있었다. 지금 본 것은 함께 일하는 모습이다.",
-        "내가 아는 후대 두레의 조직과 규칙까지 이때와 똑같았다고 생각하면 안 되겠지.",
-        "라온도 이 근처 논에서 일을 도왔소?",
-        "도왔다는 말을 들었네. 사람들 틈에서 남이 일하는 모습을 오래 지켜보더군.",
-        "단이란 형이 있다고 말한 적은 없었소? ……아니, 그건 직접 물어보겠소.",
-        "망치 소리가 멎었군. 이제 작업장으로 가세."
-      ],
-      "verification": {
-        "source": "docs/proto-revision/exam-plan.json",
-        "status": "existing-reviewed-source",
-        "allDistractorsRecheckedThisChange": false
-      }
-    },
-    {
-      "sceneId": "proto_ch07_s2",
-      "chapterId": "proto-ch07",
-      "era": "proto",
-      "questionId": "proto-study-official-67-advanced-02",
-      "officialQuestionId": "official-67-advanced-02",
-      "originalOfficialQuestionId": "official-67-advanced-02",
-      "examRound": 67,
-      "examLevel": "심화",
-      "questionNumber": 2,
-      "answer": 3,
-      "connection": "원삼국 학습 항목 연결",
-      "dialogueEvidence": [
-        "부여를 떠난 날에는 발이 너무 시려서 다른 생각이 안 났는데.",
-        "영고의 불가에서는 그래도 따뜻했지.",
-        "부여 영고는 12월. 그 겨울밤을 생각하면 이제 안 헷갈릴 것 같아.",
-        "고구려의 동맹은 10월이라 했고. 우리가 갔을 때에는 지난 행사를 이야기로 들었지.",
-        "동예 무천도 10월. 그것도 봄에 해루에게 들은 이야기였고.",
-        "내 메모에서는 이렇게 외웠어. ‘부영(이와) 고동(어는) 동무(다)’.",
-        "그 묘한 말이 또 나오는군. 자네에게는 기억할 만한 소리인가 보지?",
-        "응. 부여·영고, 고구려·동맹, 동예·무천. 이상하게 입에 붙어.",
-        "고구려 불가에서 들은, 알에서 태어났다는 왕의 이야기도 기억하나?",
-        "주몽, 동명성왕. 부여를 떠나 졸본에서 나라를 세웠다는 전승이었지.",
-        "자네는 그 이야기를 듣고도 길을 떠나는 마음부터 궁금해했어.",
-        "지금 다시 들으면 또 다른 데서 마음이 멈출 것 같아."
-      ],
-      "verification": {
-        "source": "docs/proto-revision/exam-plan.json",
-        "status": "existing-reviewed-source",
-        "allDistractorsRecheckedThisChange": false
-      }
-    },
-    {
-      "sceneId": "proto_ch07_s4",
-      "chapterId": "proto-ch07",
-      "era": "proto",
-      "questionId": "proto-study-official-57-basic-02",
-      "officialQuestionId": "official-57-basic-02",
-      "originalOfficialQuestionId": "official-57-basic-02",
-      "examRound": 57,
-      "examLevel": "기본",
-      "questionNumber": 2,
-      "answer": 2,
-      "connection": "원삼국 학습 항목 연결",
-      "dialogueEvidence": [
-        "단이 짐을 고치는 동안, 주인공은 평평한 바위에 작은 돌을 놓아 지나온 길을 짚었다.",
-        "처음에는 지도 위 이름뿐이었는데, 이제는 멈췄던 곳마다 얼굴이 떠올라.",
-        "부여의 여러 가에게 같은 질문을 하러 다녔지.",
-        "왕과 여러 가, 그리고 사출도. 네 갈래로 그린 것은 기억용 그림이지 정확한 도로 지도를 배운 건 아니었어.",
-        "고구려에서는 여러 부의 유력자들이 의논하는 질서도 들었고.",
-        "5부와 제가 회의. 옥저와 동예에서는 왕 없이 읍군·삼로 같은 군장이 있었지.",
-        "삼한에서는 소국의 신지·읍차와, 제사를 맡는 천군을 구분했네.",
-        "소도는 신성한 구역. 논에서는 같이 일하고, 5월과 10월에는 계절제를 지낸다고 들었고.",
-        "변한의 철은 논으로도, 낙랑과 왜로도 길을 이어 주었지.",
-        "이 이름들을 다 적으려면 손바닥만 한 지도는 모자라겠네.",
-        "이제 돌은 놓고 가도 되겠나?",
-        "응. 마지막으로 기억을 확인하고 일어날게."
-      ],
-      "verification": {
-        "source": "docs/proto-revision/exam-plan.json",
-        "status": "existing-reviewed-source",
-        "allDistractorsRecheckedThisChange": false
-      }
-    },
-    {
-      "sceneId": "proto_ch07_s4",
-      "chapterId": "proto-ch07",
-      "era": "proto",
-      "questionId": "proto-study-official-63-advanced-02",
-      "officialQuestionId": "official-63-advanced-02",
-      "originalOfficialQuestionId": "official-63-advanced-02",
-      "examRound": 63,
-      "examLevel": "심화",
-      "questionNumber": 2,
-      "answer": 3,
-      "connection": "원삼국 학습 항목 연결",
-      "dialogueEvidence": [
-        "단이 짐을 고치는 동안, 주인공은 평평한 바위에 작은 돌을 놓아 지나온 길을 짚었다.",
-        "처음에는 지도 위 이름뿐이었는데, 이제는 멈췄던 곳마다 얼굴이 떠올라.",
-        "부여의 여러 가에게 같은 질문을 하러 다녔지.",
-        "왕과 여러 가, 그리고 사출도. 네 갈래로 그린 것은 기억용 그림이지 정확한 도로 지도를 배운 건 아니었어.",
-        "고구려에서는 여러 부의 유력자들이 의논하는 질서도 들었고.",
-        "5부와 제가 회의. 옥저와 동예에서는 왕 없이 읍군·삼로 같은 군장이 있었지.",
-        "삼한에서는 소국의 신지·읍차와, 제사를 맡는 천군을 구분했네.",
-        "소도는 신성한 구역. 논에서는 같이 일하고, 5월과 10월에는 계절제를 지낸다고 들었고.",
-        "변한의 철은 논으로도, 낙랑과 왜로도 길을 이어 주었지.",
-        "이 이름들을 다 적으려면 손바닥만 한 지도는 모자라겠네.",
-        "이제 돌은 놓고 가도 되겠나?",
-        "응. 마지막으로 기억을 확인하고 일어날게."
-      ],
-      "verification": {
-        "source": "docs/proto-revision/exam-plan.json",
-        "status": "existing-reviewed-source",
-        "allDistractorsRecheckedThisChange": false
-      }
-    },
-    {
-      "sceneId": "proto_ch07_s4",
-      "chapterId": "proto-ch07",
-      "era": "proto",
-      "questionId": "proto-study-official-79-advanced-02",
-      "officialQuestionId": "official-79-advanced-02",
-      "originalOfficialQuestionId": "official-79-advanced-02",
-      "examRound": 79,
-      "examLevel": "심화",
-      "questionNumber": 2,
-      "answer": 3,
-      "connection": "원삼국 학습 항목 연결",
-      "dialogueEvidence": [
-        "단이 짐을 고치는 동안, 주인공은 평평한 바위에 작은 돌을 놓아 지나온 길을 짚었다.",
-        "처음에는 지도 위 이름뿐이었는데, 이제는 멈췄던 곳마다 얼굴이 떠올라.",
-        "부여의 여러 가에게 같은 질문을 하러 다녔지.",
-        "왕과 여러 가, 그리고 사출도. 네 갈래로 그린 것은 기억용 그림이지 정확한 도로 지도를 배운 건 아니었어.",
-        "고구려에서는 여러 부의 유력자들이 의논하는 질서도 들었고.",
-        "5부와 제가 회의. 옥저와 동예에서는 왕 없이 읍군·삼로 같은 군장이 있었지.",
-        "삼한에서는 소국의 신지·읍차와, 제사를 맡는 천군을 구분했네.",
-        "소도는 신성한 구역. 논에서는 같이 일하고, 5월과 10월에는 계절제를 지낸다고 들었고.",
-        "변한의 철은 논으로도, 낙랑과 왜로도 길을 이어 주었지.",
-        "이 이름들을 다 적으려면 손바닥만 한 지도는 모자라겠네.",
-        "이제 돌은 놓고 가도 되겠나?",
-        "응. 마지막으로 기억을 확인하고 일어날게."
-      ],
-      "verification": {
-        "source": "docs/proto-revision/exam-plan.json",
-        "status": "existing-reviewed-source",
-        "allDistractorsRecheckedThisChange": false
-      }
-    },
-    {
       "sceneId": "THR-C01-S06",
       "chapterId": "THR-C01",
       "era": "three",
@@ -5453,6 +4693,498 @@
         "status": "original-and-answer-pdf-visually-verified",
         "allDistractorsRecheckedThisChange": true
       }
+    },
+    {
+      "sceneId": "proto_ch01_s1",
+      "chapterId": "proto-ch01",
+      "era": "proto",
+      "title": "눈떠보니 부여",
+      "questionId": "proto-v4-official-60-advanced-02",
+      "officialQuestionId": "official-60-advanced-02",
+      "originalOfficialQuestionId": "official-60-advanced-02",
+      "examRound": 60,
+      "examLevel": "심화",
+      "questionNumber": 2,
+      "answer": 2,
+      "connection": "부여의 여러 가와 사출도. 자료의 영고를 모두 설명하지 않아도 사출도 정답을 배운 내용으로 연결할 수 있다.",
+      "dialogueEvidence": [
+        "부여요.",
+        "부여…? 설마 내가 책에서 봤던 그 나라?",
+        "우선 어느 지역을 지났는지부터 알아야 하오. 왕이 직접 다스리는 곳도 있고, 여러 가가 다스리는 곳도 있으니."
+      ]
+    },
+    {
+      "sceneId": "proto_ch01_s1",
+      "chapterId": "proto-ch01",
+      "era": "proto",
+      "title": "눈떠보니 부여",
+      "questionId": "proto-v4-official-62-advanced-02",
+      "officialQuestionId": "official-62-advanced-02",
+      "originalOfficialQuestionId": "official-62-advanced-02",
+      "examRound": 62,
+      "examLevel": "심화",
+      "questionNumber": 2,
+      "answer": 1,
+      "connection": "쑹화강·영고 자료에서 부여를 판단하고 사출도를 고른다. 형사취수제는 자료 안의 추가 단서이며 이번 핵심 키워드 밖이다.",
+      "dialogueEvidence": [
+        "부여요.",
+        "부여…? 설마 내가 책에서 봤던 그 나라?",
+        "우선 어느 지역을 지났는지부터 알아야 하오. 왕이 직접 다스리는 곳도 있고, 여러 가가 다스리는 곳도 있으니."
+      ]
+    },
+    {
+      "sceneId": "proto_ch01_s1",
+      "chapterId": "proto-ch01",
+      "era": "proto",
+      "title": "눈떠보니 부여",
+      "questionId": "proto-v4-official-68-advanced-03",
+      "officialQuestionId": "official-68-advanced-03",
+      "originalOfficialQuestionId": "official-68-advanced-03",
+      "examRound": 68,
+      "examLevel": "심화",
+      "questionNumber": 3,
+      "answer": 2,
+      "connection": "영고 자료를 보고 부여의 사출도를 연결한다. 자료의 은력 정월은 영고의 역사적 월 표기이며 현대 양력 1월로 바꾸지 않는다.",
+      "dialogueEvidence": [
+        "부여요.",
+        "부여…? 설마 내가 책에서 봤던 그 나라?",
+        "우선 어느 지역을 지났는지부터 알아야 하오. 왕이 직접 다스리는 곳도 있고, 여러 가가 다스리는 곳도 있으니."
+      ]
+    },
+    {
+      "sceneId": "proto_ch01_s2",
+      "chapterId": "proto-ch01",
+      "era": "proto",
+      "title": "열두 번째 달의 북소리",
+      "questionId": "proto-v4-official-61-basic-03",
+      "officialQuestionId": "official-61-basic-03",
+      "originalOfficialQuestionId": "official-61-basic-03",
+      "examRound": 61,
+      "examLevel": "기본",
+      "questionNumber": 3,
+      "answer": 2,
+      "connection": "12월 영고와 사출도 단서로 부여를 찾는다.",
+      "dialogueEvidence": [
+        "12월에 하늘에 제사를 지내는 영고를 준비하는 중이오.",
+        "부여는 12월, 영고. 겨울 들판이랑 저 북소리는 잊기 어렵겠네.",
+        "이 많은 사람이 영고 때문에 모이지 않았다면, 그 목격자를 찾기도 어려웠겠구려."
+      ]
+    },
+    {
+      "sceneId": "proto_ch01_s2",
+      "chapterId": "proto-ch01",
+      "era": "proto",
+      "title": "열두 번째 달의 북소리",
+      "questionId": "proto-v4-official-64-advanced-02",
+      "officialQuestionId": "official-64-advanced-02",
+      "originalOfficialQuestionId": "official-64-advanced-02",
+      "examRound": 64,
+      "examLevel": "심화",
+      "questionNumber": 2,
+      "answer": 0,
+      "connection": "마가·우가·구가가 있는 부여를 판별하여 영고를 연결한다.",
+      "dialogueEvidence": [
+        "12월에 하늘에 제사를 지내는 영고를 준비하는 중이오.",
+        "부여는 12월, 영고. 겨울 들판이랑 저 북소리는 잊기 어렵겠네.",
+        "이 많은 사람이 영고 때문에 모이지 않았다면, 그 목격자를 찾기도 어려웠겠구려."
+      ]
+    },
+    {
+      "sceneId": "proto_ch01_s2",
+      "chapterId": "proto-ch01",
+      "era": "proto",
+      "title": "열두 번째 달의 북소리",
+      "questionId": "proto-v4-official-66-basic-02",
+      "officialQuestionId": "official-66-basic-02",
+      "originalOfficialQuestionId": "official-66-basic-02",
+      "examRound": 66,
+      "examLevel": "기본",
+      "questionNumber": 2,
+      "answer": 0,
+      "connection": "여러 가와 사출도로 부여를 찾고 영고를 고른다.",
+      "dialogueEvidence": [
+        "12월에 하늘에 제사를 지내는 영고를 준비하는 중이오.",
+        "부여는 12월, 영고. 겨울 들판이랑 저 북소리는 잊기 어렵겠네.",
+        "이 많은 사람이 영고 때문에 모이지 않았다면, 그 목격자를 찾기도 어려웠겠구려."
+      ]
+    },
+    {
+      "sceneId": "proto_ch01_s3",
+      "chapterId": "proto-ch01",
+      "era": "proto",
+      "title": "열두 배의 값",
+      "questionId": "proto-v4-official-73-basic-02",
+      "officialQuestionId": "official-73-basic-02",
+      "originalOfficialQuestionId": "official-73-basic-02",
+      "examRound": 73,
+      "examLevel": "기본",
+      "questionNumber": 2,
+      "answer": 0,
+      "connection": "사출도와 말 관련 자료에서 부여를 판단하고 영고를 고르는 챕터 복습이다. 1책 12법을 직접 묻는 문제는 아니다.",
+      "dialogueEvidence": [
+        "여기는 도둑질하면 물건값의 12배를 배상해야 하오.",
+        "하나를 훔치면 열두 배. 1책 12법… 시험에서 봤던 말이 내 일이 될 뻔했네.",
+        "있었소. 함께 가던 일행이 고구려로 간다고 했지."
+      ]
+    },
+    {
+      "sceneId": "proto_ch02_s3",
+      "chapterId": "proto-ch02",
+      "era": "proto",
+      "title": "집 뒤의 작은 집",
+      "questionId": "proto-v4-official-76-advanced-02",
+      "officialQuestionId": "official-76-advanced-02",
+      "originalOfficialQuestionId": "official-76-advanced-02",
+      "examRound": 76,
+      "examLevel": "심화",
+      "questionNumber": 2,
+      "answer": 1,
+      "connection": "5부·서옥 단서로 고구려를 판단하고 10월 동맹을 고른다. 2-1과 2-2의 학습까지 모아 이 씬에서 한 번만 출제한다.",
+      "dialogueEvidence": [
+        "아내 집이오. 집 뒤의 서옥에서 지내며 일을 돕소.",
+        "이곳의 서옥제요. 혼인한 뒤 남자가 여자 집에서 지내는 풍속이지.",
+        "남자가 여자 집 뒤 작은 집에 머문다. 서옥제는 집의 위치랑 같이 기억하면 되겠다."
+      ]
+    },
+    {
+      "sceneId": "proto_ch02_s3",
+      "chapterId": "proto-ch02",
+      "era": "proto",
+      "title": "집 뒤의 작은 집",
+      "questionId": "proto-v4-official-57-advanced-03",
+      "officialQuestionId": "official-57-advanced-03",
+      "originalOfficialQuestionId": "official-57-advanced-03",
+      "examRound": 57,
+      "examLevel": "심화",
+      "questionNumber": 3,
+      "answer": 1,
+      "connection": "고구려 동맹과 동예 무천을 비교하며 고구려의 서옥제를 고른다. 동예는 아직 방문 전이므로 정답 판단은 이미 배운 고구려와 서옥제에 두고, 동예 자료는 뒤 챕터 예고로 처리한다.",
+      "dialogueEvidence": [
+        "아내 집이오. 집 뒤의 서옥에서 지내며 일을 돕소.",
+        "이곳의 서옥제요. 혼인한 뒤 남자가 여자 집에서 지내는 풍속이지.",
+        "남자가 여자 집 뒤 작은 집에 머문다. 서옥제는 집의 위치랑 같이 기억하면 되겠다."
+      ]
+    },
+    {
+      "sceneId": "proto_ch03_s2",
+      "chapterId": "proto-ch03",
+      "era": "proto",
+      "title": "이 집에서 자라는 아이",
+      "questionId": "proto-v4-official-67-basic-02",
+      "officialQuestionId": "official-67-basic-02",
+      "originalOfficialQuestionId": "official-67-basic-02",
+      "examRound": 67,
+      "examLevel": "기본",
+      "questionNumber": 2,
+      "answer": 1,
+      "connection": "동해안·읍군·삼로·민며느리제로 옥저를 찾는다.",
+      "dialogueEvidence": [
+        "이곳에는 혼인을 약속한 여자아이가 남자 집에서 자라는 풍속이 있소.",
+        "민며느리제라 하오.",
+        "고구려에서는 남자가 여자 집으로 갔고… 옥저에서는 여자아이가 먼저 남자 집에서 자라는구나. 서옥제와 민며느리제는 다르네."
+      ]
+    },
+    {
+      "sceneId": "proto_ch03_s3",
+      "chapterId": "proto-ch03",
+      "era": "proto",
+      "title": "가족이 다시 모이는 곳",
+      "questionId": "proto-v4-official-58-basic-02",
+      "officialQuestionId": "official-58-basic-02",
+      "originalOfficialQuestionId": "official-58-basic-02",
+      "examRound": 58,
+      "examLevel": "기본",
+      "questionNumber": 2,
+      "answer": 3,
+      "connection": "읍군·삼로·민며느리제·가족공동무덤을 모두 배운 뒤 옥저를 고른다.",
+      "dialogueEvidence": [
+        "옥저의 가족공동무덤이오. 돌아가신 분을 먼저 묻고, 나중에 뼈를 추려 가족이 함께 쓰는 큰 목곽에 모시기도 하오.",
+        "남쪽 동예에 이름난 작은 말이 있소. 그 일행의 짐을 설명한 것일 수도 있지."
+      ]
+    },
+    {
+      "sceneId": "proto_ch03_s3",
+      "chapterId": "proto-ch03",
+      "era": "proto",
+      "title": "가족이 다시 모이는 곳",
+      "questionId": "proto-v4-official-66-advanced-02",
+      "officialQuestionId": "official-66-advanced-02",
+      "originalOfficialQuestionId": "official-66-advanced-02",
+      "examRound": 66,
+      "examLevel": "심화",
+      "questionNumber": 2,
+      "answer": 1,
+      "connection": "가매장 후 뼈를 추려 가족 목곽에 안치한 사료에서 옥저를 찾고 민며느리제를 고른다.",
+      "dialogueEvidence": [
+        "옥저의 가족공동무덤이오. 돌아가신 분을 먼저 묻고, 나중에 뼈를 추려 가족이 함께 쓰는 큰 목곽에 모시기도 하오.",
+        "남쪽 동예에 이름난 작은 말이 있소. 그 일행의 짐을 설명한 것일 수도 있지."
+      ]
+    },
+    {
+      "sceneId": "proto_ch04_s1",
+      "chapterId": "proto-ch04",
+      "era": "proto",
+      "title": "넘으면 안 되는 경계",
+      "questionId": "proto-v4-official-77-advanced-03",
+      "officialQuestionId": "official-77-advanced-03",
+      "originalOfficialQuestionId": "official-77-advanced-03",
+      "examRound": 77,
+      "examLevel": "심화",
+      "questionNumber": 3,
+      "answer": 1,
+      "connection": "무천·특산물 자료의 나라가 동예임을 알고 책화를 고르는 문제다. 출제 전 아래 보충 대사로 아직 배우지 않은 자료 단서를 짧게 연결한다.",
+      "dialogueEvidence": [
+        "우리가 경계를 몰랐소. 읍군이나 삼로께 사정을 설명하게 해주시오.",
+        "동예에도 읍군·삼로 같은 군장이 있소.",
+        "영역을 함부로 침범하면 책화에 따라 배상해야 하오. 소나 말 등으로 물어주는 일이 생기지."
+      ]
+    },
+    {
+      "sceneId": "proto_ch04_s3",
+      "chapterId": "proto-ch04",
+      "era": "proto",
+      "title": "무천 뒤에 남은 말",
+      "questionId": "proto-v4-official-63-advanced-02",
+      "officialQuestionId": "official-63-advanced-02",
+      "originalOfficialQuestionId": "official-63-advanced-02",
+      "examRound": 63,
+      "examLevel": "심화",
+      "questionNumber": 2,
+      "answer": 3,
+      "connection": "읍군·삼로·책화·특산물 자료에서 동예를 판단하고 무천 탐구를 고른다.",
+      "dialogueEvidence": [
+        "10월에 하늘에 제사를 지내는 무천이 있소. 함께 노래하고 춤추는 날이지.",
+        "고구려도 10월에 제사를 지낸다고 했는데요.",
+        "달은 같아도 이름이 다르오. 고구려는 동맹, 동예는 무천이오."
+      ]
+    },
+    {
+      "sceneId": "proto_ch04_s3",
+      "chapterId": "proto-ch04",
+      "era": "proto",
+      "title": "무천 뒤에 남은 말",
+      "questionId": "proto-v4-official-70-advanced-02",
+      "officialQuestionId": "official-70-advanced-02",
+      "originalOfficialQuestionId": "official-70-advanced-02",
+      "examRound": 70,
+      "examLevel": "심화",
+      "questionNumber": 2,
+      "answer": 2,
+      "connection": "단궁·과하마·반어피를 생산한 동예와 10월 무천을 연결한다. 경제 표에는 삼한의 철 수출도 있어 뒤 챕터 예고가 된다.",
+      "dialogueEvidence": [
+        "10월에 하늘에 제사를 지내는 무천이 있소. 함께 노래하고 춤추는 날이지.",
+        "고구려도 10월에 제사를 지낸다고 했는데요.",
+        "달은 같아도 이름이 다르오. 고구려는 동맹, 동예는 무천이오."
+      ]
+    },
+    {
+      "sceneId": "proto_ch04_s3",
+      "chapterId": "proto-ch04",
+      "era": "proto",
+      "title": "무천 뒤에 남은 말",
+      "questionId": "proto-v4-official-71-basic-02",
+      "officialQuestionId": "official-71-basic-02",
+      "originalOfficialQuestionId": "official-71-basic-02",
+      "examRound": 71,
+      "examLevel": "기본",
+      "questionNumber": 2,
+      "answer": 0,
+      "connection": "특산물·무천·책화가 가리키는 동예를 찾는다. 저장소 발문 오염이 있어 원문 이미지에 맞는 발문 수정 후 연결한다.",
+      "dialogueEvidence": [
+        "10월에 하늘에 제사를 지내는 무천이 있소. 함께 노래하고 춤추는 날이지.",
+        "고구려도 10월에 제사를 지낸다고 했는데요.",
+        "달은 같아도 이름이 다르오. 고구려는 동맹, 동예는 무천이오."
+      ]
+    },
+    {
+      "sceneId": "proto_ch04_s4",
+      "chapterId": "proto-ch04",
+      "era": "proto",
+      "title": "작은 말이 끌던 수레",
+      "questionId": "proto-v4-official-57-basic-02",
+      "officialQuestionId": "official-57-basic-02",
+      "originalOfficialQuestionId": "official-57-basic-02",
+      "examRound": 57,
+      "examLevel": "기본",
+      "questionNumber": 2,
+      "answer": 2,
+      "connection": "무천·책화로 동예를 판별하고 단궁·과하마·반어피를 고른다.",
+      "dialogueEvidence": [
+        "저 활은 단궁, 몸집이 작은 저 말은 과하마요.",
+        "동생이 적어둔 ‘작은 말’이 과하마였네요.",
+        "그리고 저건 반어피, 바다짐승인 바다표범의 가죽이오. 우리 동예의 특산물로 이름나 있지."
+      ]
+    },
+    {
+      "sceneId": "proto_ch04_s4",
+      "chapterId": "proto-ch04",
+      "era": "proto",
+      "title": "작은 말이 끌던 수레",
+      "questionId": "proto-v4-official-64-basic-02",
+      "officialQuestionId": "official-64-basic-02",
+      "originalOfficialQuestionId": "official-64-basic-02",
+      "examRound": 64,
+      "examLevel": "기본",
+      "questionNumber": 2,
+      "answer": 0,
+      "connection": "읍군·삼로·무천·책화·족외혼·특산물 마인드맵을 보고 동예를 고른다.",
+      "dialogueEvidence": [
+        "저 활은 단궁, 몸집이 작은 저 말은 과하마요.",
+        "동생이 적어둔 ‘작은 말’이 과하마였네요.",
+        "그리고 저건 반어피, 바다짐승인 바다표범의 가죽이오. 우리 동예의 특산물로 이름나 있지."
+      ]
+    },
+    {
+      "sceneId": "proto_ch04_s4",
+      "chapterId": "proto-ch04",
+      "era": "proto",
+      "title": "작은 말이 끌던 수레",
+      "questionId": "proto-v4-official-79-advanced-02",
+      "officialQuestionId": "official-79-advanced-02",
+      "originalOfficialQuestionId": "official-79-advanced-02",
+      "examRound": 79,
+      "examLevel": "심화",
+      "questionNumber": 2,
+      "answer": 3,
+      "connection": "부여와 동예 자료를 비교하여 동예의 특산물을 고른다. 부여 자료의 형사취수제·흰옷은 부가 단서이며 정답에는 이미 배운 책화·족외혼·특산물을 이용한다.",
+      "dialogueEvidence": [
+        "저 활은 단궁, 몸집이 작은 저 말은 과하마요.",
+        "동생이 적어둔 ‘작은 말’이 과하마였네요.",
+        "그리고 저건 반어피, 바다짐승인 바다표범의 가죽이오. 우리 동예의 특산물로 이름나 있지."
+      ]
+    },
+    {
+      "sceneId": "proto_ch05_s1",
+      "chapterId": "proto-ch05",
+      "era": "proto",
+      "title": "따라 들어갈 수 없는 곳",
+      "questionId": "proto-v4-official-77-basic-02",
+      "officialQuestionId": "official-77-basic-02",
+      "originalOfficialQuestionId": "official-77-basic-02",
+      "examRound": 77,
+      "examLevel": "기본",
+      "questionNumber": 2,
+      "answer": 3,
+      "connection": "천군·소도·신지·읍차로 삼한을 판단하고 지도에서 남부 지역 (라)를 고른다. 지도 이미지를 반드시 함께 표시한다.",
+      "dialogueEvidence": [
+        "삼한이라는 한 나라의 성문이 나올 줄 알았어요.",
+        "삼한은 마한·진한·변한을 함께 이르는 말이오. 우리가 찾는 일행은 변한 쪽으로 향했지.",
+        "여기는 소도요. 함부로 소란을 피울 수 없소."
+      ]
+    },
+    {
+      "sceneId": "proto_ch05_s1",
+      "chapterId": "proto-ch05",
+      "era": "proto",
+      "title": "따라 들어갈 수 없는 곳",
+      "questionId": "proto-v4-official-60-basic-02",
+      "officialQuestionId": "official-60-basic-02",
+      "originalOfficialQuestionId": "official-60-basic-02",
+      "examRound": 60,
+      "examLevel": "기본",
+      "questionNumber": 2,
+      "answer": 1,
+      "connection": "천군과 소도 사료로 삼한을 판단하여 신지·읍차를 고른다. 정규 1800문항 카탈로그 밖의 실제 기출 보충 파일이므로 별도 등록 경로가 필요하다.",
+      "dialogueEvidence": [
+        "삼한이라는 한 나라의 성문이 나올 줄 알았어요.",
+        "삼한은 마한·진한·변한을 함께 이르는 말이오. 우리가 찾는 일행은 변한 쪽으로 향했지.",
+        "여기는 소도요. 함부로 소란을 피울 수 없소."
+      ]
+    },
+    {
+      "sceneId": "proto_ch05_s2",
+      "chapterId": "proto-ch05",
+      "era": "proto",
+      "title": "함께 일하는 사람들",
+      "questionId": "proto-v4-official-61-advanced-02",
+      "officialQuestionId": "official-61-advanced-02",
+      "originalOfficialQuestionId": "official-61-advanced-02",
+      "examRound": 61,
+      "examLevel": "심화",
+      "questionNumber": 2,
+      "answer": 0,
+      "connection": "5월·10월 계절제와 신지·읍차 단서로 삼한의 소도를 고른다.",
+      "dialogueEvidence": [
+        "이런 공동 노동을 보시오. 삼한에서는 공동체가 함께 일하는 전통을 배울 수 있소.",
+        "학교에서 두레라고 묶어 배웠던 공동 작업이 이런 모습이구나.",
+        "씨 뿌릴 때도, 거둘 때도 바쁘오. 5월에는 씨를 뿌린 뒤, 10월에는 수확을 마친 뒤 하늘에 제사도 지내지."
+      ]
+    },
+    {
+      "sceneId": "proto_ch05_s2",
+      "chapterId": "proto-ch05",
+      "era": "proto",
+      "title": "함께 일하는 사람들",
+      "questionId": "proto-v4-official-69-advanced-03",
+      "officialQuestionId": "official-69-advanced-03",
+      "originalOfficialQuestionId": "official-69-advanced-03",
+      "examRound": 69,
+      "examLevel": "심화",
+      "questionNumber": 3,
+      "answer": 2,
+      "connection": "동예와 삼한을 비교해 책화와 신지·읍차를 고른다. ㄱ~ㄹ 보기 원문을 빠뜨리지 않는다.",
+      "dialogueEvidence": [
+        "이런 공동 노동을 보시오. 삼한에서는 공동체가 함께 일하는 전통을 배울 수 있소.",
+        "학교에서 두레라고 묶어 배웠던 공동 작업이 이런 모습이구나.",
+        "씨 뿌릴 때도, 거둘 때도 바쁘오. 5월에는 씨를 뿌린 뒤, 10월에는 수확을 마친 뒤 하늘에 제사도 지내지."
+      ]
+    },
+    {
+      "sceneId": "proto_ch05_s2",
+      "chapterId": "proto-ch05",
+      "era": "proto",
+      "title": "함께 일하는 사람들",
+      "questionId": "proto-v4-official-73-advanced-04",
+      "officialQuestionId": "official-73-advanced-04",
+      "originalOfficialQuestionId": "official-73-advanced-04",
+      "examRound": 73,
+      "examLevel": "심화",
+      "questionNumber": 4,
+      "answer": 2,
+      "connection": "옥저의 소금·해산물·가족공동무덤과 삼한의 계절제를 비교하여 삼한의 소도를 고른다.",
+      "dialogueEvidence": [
+        "이런 공동 노동을 보시오. 삼한에서는 공동체가 함께 일하는 전통을 배울 수 있소.",
+        "학교에서 두레라고 묶어 배웠던 공동 작업이 이런 모습이구나.",
+        "씨 뿌릴 때도, 거둘 때도 바쁘오. 5월에는 씨를 뿌린 뒤, 10월에는 수확을 마친 뒤 하늘에 제사도 지내지."
+      ]
+    },
+    {
+      "sceneId": "proto_ch05_s3",
+      "chapterId": "proto-ch05",
+      "era": "proto",
+      "title": "철이 향하는 곳, 우리가 돌아갈 곳",
+      "questionId": "proto-v4-official-67-advanced-02",
+      "officialQuestionId": "official-67-advanced-02",
+      "originalOfficialQuestionId": "official-67-advanced-02",
+      "examRound": 67,
+      "examLevel": "심화",
+      "questionNumber": 2,
+      "answer": 3,
+      "connection": "부여·고구려·동예·삼한의 제천 행사를 비교하는 종합 복습이다. 철 수출 직접 문제는 아니다.",
+      "dialogueEvidence": [
+        "변한은 철 생산과 교역으로 이름난 곳이오.",
+        "이 철은 낙랑과 왜 쪽으로도 나가오. 여러 물건을 바꿀 때 값어치 있는 물품으로 쓰기도 하지.",
+        "삼한 중 변한, 철 생산, 낙랑·왜로 수출. 동생이 따라온 길의 끝이 여기구나."
+      ]
+    },
+    {
+      "sceneId": "proto_ch05_s3",
+      "chapterId": "proto-ch05",
+      "era": "proto",
+      "title": "철이 향하는 곳, 우리가 돌아갈 곳",
+      "questionId": "proto-v4-official-78-advanced-03",
+      "officialQuestionId": "official-78-advanced-03",
+      "originalOfficialQuestionId": "official-78-advanced-03",
+      "examRound": 78,
+      "examLevel": "심화",
+      "questionNumber": 3,
+      "answer": 0,
+      "connection": "삼한의 5월 제사·천군과 부여의 영고 자료를 비교하여 삼한의 소도를 고른다. 철 수출 직접 문제는 아니다.",
+      "dialogueEvidence": [
+        "변한은 철 생산과 교역으로 이름난 곳이오.",
+        "이 철은 낙랑과 왜 쪽으로도 나가오. 여러 물건을 바꿀 때 값어치 있는 물품으로 쓰기도 하지.",
+        "삼한 중 변한, 철 생산, 낙랑·왜로 수출. 동생이 따라온 길의 끝이 여기구나."
+      ]
     }
   ],
   "scenes": [
@@ -7531,876 +7263,6 @@
       "chapterId": "ch02",
       "era": "goryeo",
       "title": "그로부터 5년",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch00_s1",
-      "chapterId": "proto-ch00",
-      "era": "proto",
-      "title": "눈을 뜨다",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch00_s2",
-      "chapterId": "proto-ch00",
-      "era": "proto",
-      "title": "낯선 남자",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch00_s3",
-      "chapterId": "proto-ch00",
-      "era": "proto",
-      "title": "모닥불 앞에서",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch00_s4",
-      "chapterId": "proto-ch00",
-      "era": "proto",
-      "title": "동행 제안",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch00_s5",
-      "chapterId": "proto-ch00",
-      "era": "proto",
-      "title": "첫날의 끝",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch01_s1",
-      "chapterId": "proto-ch01",
-      "era": "proto",
-      "title": "부서진 수레",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch01_s2",
-      "chapterId": "proto-ch01",
-      "era": "proto",
-      "title": "남겨진 물건",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch01_s3",
-      "chapterId": "proto-ch01",
-      "era": "proto",
-      "title": "동생의 매듭",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch01_s4",
-      "chapterId": "proto-ch01",
-      "era": "proto",
-      "title": "갈라진 길",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch01_s5",
-      "chapterId": "proto-ch01",
-      "era": "proto",
-      "title": "북쪽에서 온 상인",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch01_s6",
-      "chapterId": "proto-ch01",
-      "era": "proto",
-      "title": "여러 나라의 지도",
-      "learningConceptIds": [
-        "GE-01"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch01_s7",
-      "chapterId": "proto-ch01",
-      "era": "proto",
-      "title": "비어 있는 야영지",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch01_s8",
-      "chapterId": "proto-ch01",
-      "era": "proto",
-      "title": "철에 관심을 가진 아이",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch01_s9",
-      "chapterId": "proto-ch01",
-      "era": "proto",
-      "title": "교역의 의미",
-      "learningConceptIds": [
-        "GE-02"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch01_s10",
-      "chapterId": "proto-ch01",
-      "era": "proto",
-      "title": "북쪽으로",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch02_s1",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "title": "부여에 도착하다",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch02_s2",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "title": "왕과 유력자",
-      "learningConceptIds": [
-        "BU-01",
-        "BU-02"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch02_s3",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "title": "사출도의 길",
-      "learningConceptIds": [
-        "BU-02"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch02_s4",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "title": "영고를 준비하는 사람들",
-      "learningConceptIds": [
-        "BU-03"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch02_s5",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "title": "제천 행사의 의미",
-      "learningConceptIds": [
-        "BU-04"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch02_s6",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "title": "풍습을 묻다",
-      "learningConceptIds": [
-        "BU-05",
-        "BU-06",
-        "BU-07"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch02_s7",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "title": "익숙한 매듭",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch02_s8",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "title": "사라진 손님",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch02_s9",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "title": "말하지 말라는 부탁",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch02_s10",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "title": "영고의 밤",
-      "learningConceptIds": [
-        "BU-03"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch02_s11",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "title": "부여에서 배운 것",
-      "learningConceptIds": [
-        "BU-01",
-        "BU-02",
-        "BU-03",
-        "BU-04",
-        "BU-05",
-        "BU-06",
-        "BU-07"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch02_s12",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "title": "남겨진 그림",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch03_s1",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "title": "고구려로 가는 길",
-      "learningConceptIds": [
-        "GO-06"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch03_s2",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "title": "산성에 도착하다",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch03_s3",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "title": "불가의 이야기꾼",
-      "learningConceptIds": [
-        "GO-05"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch03_s4",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "title": "알에서 태어난 아이",
-      "learningConceptIds": [
-        "GO-05"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch03_s5",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "title": "부여를 떠난 주몽",
-      "learningConceptIds": [
-        "GO-05"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch03_s6",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "title": "졸본의 새로운 나라",
-      "learningConceptIds": [
-        "GO-05"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch03_s7",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "title": "성문 앞의 검문",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch03_s8",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "title": "단의 거짓말",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch03_s9",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "title": "성 안의 질서",
-      "learningConceptIds": [
-        "GO-01",
-        "BU-02"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch03_s10",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "title": "고구려의 혼인 풍습",
-      "learningConceptIds": [
-        "GO-02"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch03_s11",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "title": "동맹의 이야기",
-      "learningConceptIds": [
-        "GO-03",
-        "BU-03"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch03_s12",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "title": "사라진 교역단의 기록",
-      "learningConceptIds": [
-        "GE-02"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch03_s13",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "title": "산성에서의 밤",
-      "learningConceptIds": [
-        "GO-04"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch03_s14",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "title": "고구려를 떠나며",
-      "learningConceptIds": [
-        "GO-05",
-        "GO-01",
-        "GO-02",
-        "GO-03"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch04_s1",
-      "chapterId": "proto-ch04",
-      "era": "proto",
-      "title": "바다가 보이는 길",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch04_s2",
-      "chapterId": "proto-ch04",
-      "era": "proto",
-      "title": "소하와의 만남",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch04_s3",
-      "chapterId": "proto-ch04",
-      "era": "proto",
-      "title": "바닷가 사람들의 삶",
-      "learningConceptIds": [
-        "OK-01",
-        "OK-04",
-        "GE-02"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch04_s4",
-      "chapterId": "proto-ch04",
-      "era": "proto",
-      "title": "어린 신부의 이야기",
-      "learningConceptIds": [
-        "OK-02",
-        "GO-02"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch04_s5",
-      "chapterId": "proto-ch04",
-      "era": "proto",
-      "title": "가족의 무덤",
-      "learningConceptIds": [
-        "OK-03"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch04_s6",
-      "chapterId": "proto-ch04",
-      "era": "proto",
-      "title": "기다리던 청년",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch04_s7",
-      "chapterId": "proto-ch04",
-      "era": "proto",
-      "title": "라온이 남긴 말",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch04_s8",
-      "chapterId": "proto-ch04",
-      "era": "proto",
-      "title": "형의 기억",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch04_s9",
-      "chapterId": "proto-ch04",
-      "era": "proto",
-      "title": "처음 털어놓는 후회",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch04_s10",
-      "chapterId": "proto-ch04",
-      "era": "proto",
-      "title": "남쪽을 향해",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch05_s1",
-      "chapterId": "proto-ch05",
-      "era": "proto",
-      "title": "낯선 경계",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch05_s2",
-      "chapterId": "proto-ch05",
-      "era": "proto",
-      "title": "책화",
-      "learningConceptIds": [
-        "DY-02"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch05_s3",
-      "chapterId": "proto-ch05",
-      "era": "proto",
-      "title": "책임을 지다",
-      "learningConceptIds": [
-        "DY-02"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch05_s4",
-      "chapterId": "proto-ch05",
-      "era": "proto",
-      "title": "마을의 규칙",
-      "learningConceptIds": [
-        "DY-01"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch05_s5",
-      "chapterId": "proto-ch05",
-      "era": "proto",
-      "title": "혼인 풍습",
-      "learningConceptIds": [
-        "DY-03",
-        "DY-02"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch05_s6",
-      "chapterId": "proto-ch05",
-      "era": "proto",
-      "title": "무천의 이야기",
-      "learningConceptIds": [
-        "DY-04",
-        "GO-03",
-        "BU-03"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch05_s7",
-      "chapterId": "proto-ch05",
-      "era": "proto",
-      "title": "동예의 특산물",
-      "learningConceptIds": [
-        "DY-05",
-        "GE-02"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch05_s8",
-      "chapterId": "proto-ch05",
-      "era": "proto",
-      "title": "떠나는 사람의 마음",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch05_s9",
-      "chapterId": "proto-ch05",
-      "era": "proto",
-      "title": "다시 길 위에서",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch05_s10",
-      "chapterId": "proto-ch05",
-      "era": "proto",
-      "title": "인정",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch06_s1",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "title": "남쪽의 교역장",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch06_s2",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "title": "삼한의 여러 소국",
-      "learningConceptIds": [
-        "SH-01"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch06_s3",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "title": "소국의 지배자",
-      "learningConceptIds": [
-        "SH-02"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch06_s4",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "title": "철을 만드는 사람들",
-      "learningConceptIds": [
-        "SH-06"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch06_s5",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "title": "철의 가치",
-      "learningConceptIds": [
-        "SH-06",
-        "GE-02"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch06_s6",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "title": "천군과 소도",
-      "learningConceptIds": [
-        "SH-03"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch06_s7",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "title": "제사의 의미",
-      "learningConceptIds": [
-        "SH-04",
-        "SH-05",
-        "SH-07"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch06_s8",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "title": "익숙한 매듭",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch06_s9",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "title": "문 앞에서",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch06_s10",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "title": "마침내 만나다",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch06_s11",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "title": "형제의 갈등",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch06_s12",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "title": "라온이 떠난 이유",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch06_s13",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "title": "각자의 삶",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch06_s14",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "title": "철을 가진 사람들",
-      "learningConceptIds": [
-        "SH-06"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch07_s1",
-      "chapterId": "proto-ch07",
-      "era": "proto",
-      "title": "여행의 끝",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch07_s2",
-      "chapterId": "proto-ch07",
-      "era": "proto",
-      "title": "부여와 고구려의 기억",
-      "learningConceptIds": [
-        "BU-03",
-        "GO-03",
-        "DY-04",
-        "GO-05"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch07_s3",
-      "chapterId": "proto-ch07",
-      "era": "proto",
-      "title": "바다와 경계의 기억",
-      "learningConceptIds": [
-        "OK-02",
-        "OK-03",
-        "OK-04",
-        "DY-02",
-        "DY-03",
-        "DY-05"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch07_s4",
-      "chapterId": "proto-ch07",
-      "era": "proto",
-      "title": "마지막 역사 시험",
-      "learningConceptIds": [
-        "BU-01",
-        "BU-02",
-        "GO-01",
-        "OK-01",
-        "DY-01",
-        "SH-02",
-        "SH-03",
-        "SH-04",
-        "SH-06"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch07_s5",
-      "chapterId": "proto-ch07",
-      "era": "proto",
-      "title": "돌아갈 길",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch07_s6",
-      "chapterId": "proto-ch07",
-      "era": "proto",
-      "title": "마지막 부탁",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch07_s7",
-      "chapterId": "proto-ch07",
-      "era": "proto",
-      "title": "마지막 선택",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true
-    },
-    {
-      "sceneId": "proto_ch07_s8",
-      "chapterId": "proto-ch07",
-      "era": "proto",
-      "title": "에필로그",
       "learningConceptIds": [
         "goryeo-foundation-918"
       ],
@@ -10604,6 +9466,108 @@
         "gwangjong-reforms"
       ],
       "implemented": true
+    },
+    {
+      "sceneId": "proto_ch01_s1",
+      "chapterId": "proto-ch01",
+      "era": "proto",
+      "title": "눈떠보니 부여"
+    },
+    {
+      "sceneId": "proto_ch01_s2",
+      "chapterId": "proto-ch01",
+      "era": "proto",
+      "title": "열두 번째 달의 북소리"
+    },
+    {
+      "sceneId": "proto_ch01_s3",
+      "chapterId": "proto-ch01",
+      "era": "proto",
+      "title": "열두 배의 값"
+    },
+    {
+      "sceneId": "proto_ch02_s1",
+      "chapterId": "proto-ch02",
+      "era": "proto",
+      "title": "다섯 세력의 문턱"
+    },
+    {
+      "sceneId": "proto_ch02_s2",
+      "chapterId": "proto-ch02",
+      "era": "proto",
+      "title": "열 번째 달에 남긴 그림"
+    },
+    {
+      "sceneId": "proto_ch02_s3",
+      "chapterId": "proto-ch02",
+      "era": "proto",
+      "title": "집 뒤의 작은 집"
+    },
+    {
+      "sceneId": "proto_ch02_s4",
+      "chapterId": "proto-ch02",
+      "era": "proto",
+      "title": "사라진 짐의 행방"
+    },
+    {
+      "sceneId": "proto_ch03_s1",
+      "chapterId": "proto-ch03",
+      "era": "proto",
+      "title": "소금 수레가 돌아오는 곳"
+    },
+    {
+      "sceneId": "proto_ch03_s2",
+      "chapterId": "proto-ch03",
+      "era": "proto",
+      "title": "이 집에서 자라는 아이"
+    },
+    {
+      "sceneId": "proto_ch03_s3",
+      "chapterId": "proto-ch03",
+      "era": "proto",
+      "title": "가족이 다시 모이는 곳"
+    },
+    {
+      "sceneId": "proto_ch04_s1",
+      "chapterId": "proto-ch04",
+      "era": "proto",
+      "title": "넘으면 안 되는 경계"
+    },
+    {
+      "sceneId": "proto_ch04_s2",
+      "chapterId": "proto-ch04",
+      "era": "proto",
+      "title": "다른 씨족으로 가는 사람"
+    },
+    {
+      "sceneId": "proto_ch04_s3",
+      "chapterId": "proto-ch04",
+      "era": "proto",
+      "title": "무천 뒤에 남은 말"
+    },
+    {
+      "sceneId": "proto_ch04_s4",
+      "chapterId": "proto-ch04",
+      "era": "proto",
+      "title": "작은 말이 끌던 수레"
+    },
+    {
+      "sceneId": "proto_ch05_s1",
+      "chapterId": "proto-ch05",
+      "era": "proto",
+      "title": "따라 들어갈 수 없는 곳"
+    },
+    {
+      "sceneId": "proto_ch05_s2",
+      "chapterId": "proto-ch05",
+      "era": "proto",
+      "title": "함께 일하는 사람들"
+    },
+    {
+      "sceneId": "proto_ch05_s3",
+      "chapterId": "proto-ch05",
+      "era": "proto",
+      "title": "철이 향하는 곳, 우리가 돌아갈 곳"
     }
   ],
   "deferred": [

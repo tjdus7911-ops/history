@@ -2,9 +2,9 @@
 if(globalThis.PROTO_REVISION_RUNTIME?.version===3){
 (function(){
  const runtime=globalThis.PROTO_REVISION_RUNTIME;
- const version=3,eraId='proto-kingdoms',progressKey='proto-kingdoms-v3',storageKey='lived-history-proto-kingdoms-v3',archiveStorageKey='lived-history-proto-kingdoms-archives-v3',contentVersion=runtime.contentVersion,legacyContentVersion=PROTO_LEGACY_CONTENT_VERSION,firstChapterId='proto-ch02';
+ const version=3,eraId='proto-kingdoms',progressKey='proto-kingdoms-v4',storageKey='lived-history-proto-kingdoms-v4',archiveStorageKey='lived-history-proto-kingdoms-archives-v4',contentVersion=runtime.contentVersion,legacyContentVersion=PROTO_LEGACY_CONTENT_VERSION,firstChapterId='proto-ch01';
  const copy=value=>value==null?value:JSON.parse(JSON.stringify(value)),object=value=>!!value&&typeof value==='object'&&!Array.isArray(value);
- const ownsChapter=id=>CHAPTERS[id]?.eraId===eraId,ownsScene=id=>runtime.sources.has(id);
+ const ownsChapter=id=>typeof id==='string'&&id.startsWith('proto-ch'),ownsScene=id=>runtime.sources.has(id);
  const ownsQuestion=id=>ownsChapter(QUESTIONS.find(q=>q.questionId===id)?.chapterId);
  const familyRun=value=>!!value&&(ownsChapter(value.currentChapter)||value.contentEra===eraId);
  const questionIds={has:id=>ownsQuestion(id)},officialIds={has:id=>runtime.questionByOfficialId.has(id)||runtime.legacyOfficialIds.has(id)},lineIds=new Set(),commonIds=new Set(),learningIds=new Set(runtime.source.learning.map(item=>item.id));
@@ -13,7 +13,7 @@ if(globalThis.PROTO_REVISION_RUNTIME?.version===3){
   for(const choice of source.choices||[])for(const line of choice.resultDialogues)lineIds.add(line.lineId);
  }
  const stringArray=value=>Array.isArray(value)&&value.every(item=>typeof item==='string');
- const phases=new Set(['main','choice','branch','join','quiz','finished']);
+ const phases=new Set(['main','choice','branch','join','quiz','outro','finished']);
  function fingerprint(value){const text=JSON.stringify(value);let hash=2166136261;for(let index=0;index<text.length;index++)hash=Math.imul(hash^text.charCodeAt(index),16777619);return (hash>>>0).toString(16)+'-'+text.length;}
  function archive(m,reasonCode,sourceKey,payload){
   const previous=m.protoSaveArchives;
@@ -53,26 +53,7 @@ if(globalThis.PROTO_REVISION_RUNTIME?.version===3){
   if(value.readSceneIds.some(id=>runtime.sources.get(id).choices?.length&&!Number.isInteger(value.choiceBySceneId[id])))return false;
   return true;
  }
- function migrateLegacyBook(value,m={}){
-  if(!object(value)||value.version!==version||value.contentVersion!==legacyContentVersion)return null;
-  const migrated=emptyBook(m),oldRead=new Set(Array.isArray(value.readSceneIds)?value.readSceneIds:[]);
-  migrated.learnedKeywordIds=runtime.source.learning.filter(item=>oldRead.has(item.legacyFirstSceneId)).map(item=>item.id);
-  for(const id of value.openedQuestionIds||[])if(officialIds.has(id)&&!migrated.openedQuestionIds.includes(id))migrated.openedQuestionIds.push(id);
-  for(const id of [...(value.answeredQuestionIds||[]),...answeredFromRecords(m)])if(officialIds.has(id)&&!migrated.answeredQuestionIds.includes(id))migrated.answeredQuestionIds.push(id);
-  const completed=new Set((m.completedChapters||[]).filter(ownsChapter));
-  for(const [legacySceneId,currentSceneId] of Object.entries(runtime.source.saveCompatibility.legacyCompletionMilestones)){
-   const chapterId='proto-ch'+legacySceneId.slice(8,10),isComplete=oldRead.has(legacySceneId)||completed.has(chapterId);
-   if(!isComplete)continue;
-   const source=runtime.sources.get(currentSceneId);if(!source)continue;
-   if(!migrated.readSceneIds.includes(currentSceneId))migrated.readSceneIds.push(currentSceneId);
-   migrated.readLineIds.push(...[...source.dialogues,...source.protoCommon].map(line=>line.lineId));
-   migrated.learnedKeywordIds.push(...source.protoLearningIds);
-  }
-  migrated.readLineIds=[...new Set(migrated.readLineIds)];
-  migrated.learnedKeywordIds=[...new Set(migrated.learnedKeywordIds.filter(id=>learningIds.has(id)))];
-  migrated.openedQuestionIds=[...new Set(migrated.openedQuestionIds)];migrated.answeredQuestionIds=[...new Set(migrated.answeredQuestionIds)];
-  return validBook(migrated)?migrated:null;
- }
+ function migrateLegacyBook(){return null;}
  function ensureBook(m){
   if(validBook(m.protoRevisionBook))return m.protoRevisionBook;
   const previous=m.protoRevisionBook,migrated=migrateLegacyBook(previous,m);
@@ -80,7 +61,7 @@ if(globalThis.PROTO_REVISION_RUNTIME?.version===3){
   if(previous!=null)archive(m,'invalid-book','meta.protoRevisionBook',previous);
   m.protoRevisionBook=emptyBook(m);return m.protoRevisionBook;
  }
- function phaseEntries(source,current){if(current?.phase==='branch')return source.choices?.[current.choiceIndex]?.resultDialogues||[];if(current?.phase==='join')return source.protoCommon;return source.dialogues;}
+ function phaseEntries(source,current){if(current?.phase==='outro')return source.protoOutro;if(current?.phase==='branch')return source.choices?.[current.choiceIndex]?.resultDialogues||[];if(current?.phase==='join')return source.protoCommon;return source.dialogues;}
  function validRun(value){
   if(!object(value)||!ownsChapter(value.currentChapter)||value.contentVersion!==version||value.protoContentVersion!==contentVersion||!object(value.protoStoryState)||value.protoStoryState.version!==version||!object(value.protoStoryState.scenes))return false;
   for(const [id,item] of Object.entries(value.protoStoryState.scenes)){
@@ -88,7 +69,7 @@ if(globalThis.PROTO_REVISION_RUNTIME?.version===3){
    if(!source||!object(item)||!phases.has(item.phase))return false;
    if(item.choiceIndex!=null&&(!Number.isInteger(item.choiceIndex)||item.choiceIndex<0||item.choiceIndex>=(source.choices?.length||0)))return false;
    if(['choice','branch'].includes(item.phase)&&!source.choices?.length)return false;
-   if(['branch','join','quiz','finished'].includes(item.phase)&&source.choices?.length&&item.choiceIndex==null)return false;
+   if(['branch','join','quiz','outro','finished'].includes(item.phase)&&source.choices?.length&&item.choiceIndex==null)return false;
   }
   const source=runtime.sources.get(value.pending?.sourceSceneId||value.storyId),current=value.protoStoryState.scenes[source?.sceneId];
   if(!source||source.chapterId!==value.currentChapter||!current||!ownsScene(value.storyId))return false;
@@ -121,9 +102,9 @@ if(globalThis.PROTO_REVISION_RUNTIME?.version===3){
   if(current.phase==='main')required=source.dialogues.slice(0,value.dialogueCursor-1);
   if(['choice','branch'].includes(current.phase))required=source.dialogues;
   if(current.phase==='join')required=[...source.dialogues,...source.protoCommon.slice(0,value.dialogueCursor-1)];
-  if(['quiz','finished'].includes(current.phase))required=[...source.dialogues,...source.protoCommon];
+  if(['quiz','outro','finished'].includes(current.phase))required=[...source.dialogues,...source.protoCommon];
   if(required.some(line=>!read.has(line.lineId)))return false;
-  if(['quiz','finished'].includes(current.phase)&&!learned.readSceneIds.includes(source.sceneId))return false;
+  if(['quiz','outro','finished'].includes(current.phase)&&!learned.readSceneIds.includes(source.sceneId))return false;
   if(current.phase==='quiz'){
    if(value.protoCheckpoint.afterLineId!==source.protoQueue.afterLineId||!read.has(source.protoQueue.afterLineId))return false;
    // A freely entered scene authorises its own story queue; review gates remain separate.
@@ -138,7 +119,7 @@ if(globalThis.PROTO_REVISION_RUNTIME?.version===3){
   value.playerOutfit='modern';value.flags.wearingModernClothes=true;value.flags.hasModernClothes=true;delete value.flags.receivedGoryeoClothesFromDoyun;
   value.inventory=(value.inventory||[]).filter(item=>item.id!=='goryeo-commoner-clothes');
   const clothes=value.inventory.find(item=>item.id==='modern-clothes');if(clothes)clothes.status='equipped';else value.inventory.push({id:'modern-clothes',status:'equipped',source:'2026-seoul'});
-  value.characterStates={...value.characterStates,proto_modern:{...value.characterStates?.proto_modern,characterAge:24,pose:'standing',outfit:'modern'},proto_guide:{...value.characterStates?.proto_guide,characterAge:27,isAlive:true},proto_raon:{...value.characterStates?.proto_raon,characterAge:19,isAlive:true}};
+  value.characterStates={...value.characterStates,proto_modern:{...value.characterStates?.proto_modern,characterAge:24,pose:'standing',outfit:'modern'},proto_naru:{isAlive:true},proto_sibling:{isAlive:true}};
   value.sharedEvents=(value.sharedEvents||[]).filter(event=>!['met_doyun_ch01','received_clothes_from_doyun'].includes(event));
   if(fresh||!value.protoStoryState)value.protoStoryState={version,scenes:{[value.storyId]:{phase:'main',choiceIndex:null}}};
   if(fresh){value.pending=null;value.dialogueSceneId=value.storyId;value.dialogueCursor=1;value.protoTypedLineId=null;value.protoCheckpoint=null;value.protoAnswerDraft=null;value.questionQueue=[];value.questionQueueIndex=0;value.questionQueueResumeStoryId=null;value.activeQuestionId=null;value.activeQuestionSetId=null;value.questionAnswer=null;delete value.protoNeedsResumeRecovery;}
@@ -152,11 +133,11 @@ if(globalThis.PROTO_REVISION_RUNTIME?.version===3){
   return active.find(id=>!completed.has(id))||active.at(-1)||firstChapterId;
  }
  function upgradeLegacyRun(value,m){
-  const target=freshRun(Boolean(value?.started),legacyResumeChapter(value,m));
+  const target=freshRun(false);
   if(value)archive(m,'content-revision-migration','main-save.proto-run',value);
   return target;
  }
- function configureSeason(registry){const info=registry?.find(item=>item.id===eraId);if(info)Object.assign(info,{progressKey,contentVersion:version,contentRevision:contentVersion,years:'220 — 221년 · 다섯 나라의 생활',description:'단과 라온의 흔적을 따라 다섯 장면에서 원삼국의 필수 키워드를 익힙니다.'});}
+ function configureSeason(registry){const info=registry?.find(item=>item.id===eraId);if(info)Object.assign(info,{progressKey,contentVersion:version,contentRevision:contentVersion,years:'원삼국 시대 · 다섯 나라의 생활',description:'동생이 남긴 표식을 따라 부여·고구려·옥저·동예·삼한의 17장면을 여행합니다.',bannerAsset:'media/proto-v4/buyeo-village.webp',backgroundAssets:PROTO_SYMBOLIC_BACKGROUNDS.map(id=>'media/proto-v4/'+id+'.webp')});}
  const ownEntries=value=>Object.fromEntries(Object.entries(value||{}).filter(([id])=>ownsChapter(id)));
  const beforeMigration=migrateSave;
  migrateSave=function(raw){

@@ -23,3 +23,6 @@ dist/ui-review-fixtures.js
 # Local OCR/image-review workspace. Source evidence is recorded in tracked QA ledgers.
 /work/
 
+
+# Regenerated full-size browser captures; compact review images and JSON are tracked.
+/docs/proto-v4/qa/*.png

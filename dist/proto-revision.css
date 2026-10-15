@@ -48,3 +48,19 @@
 .ancient-complete .chapter-learning>div {min-width:0;padding:14px 10px;text-align:center;}
 .ancient-complete .chapter-learning small {font-size:10px;}
 .ancient-complete .chapter-learning strong {font-size:14px;}
+
+.proto-keyword{font-weight:700;font-size:calc(1em + 1px);line-height:inherit;}
+.proto-revision-game .speech-bubble p{line-height:1.65;overflow:visible;}
+.proto-scene-position{padding:10px 16px;background:#20394a;color:#fff;font-size:12px;font-weight:700;letter-spacing:.02em;}
+.proto-revision-game .choice{white-space:normal;overflow:visible;line-height:1.6;}
+.proto-choice-explanations{padding-left:24px;line-height:1.7;}
+.proto-choice-explanations li{margin:14px 0;}
+.proto-revision-game .character-stage img{object-fit:contain;}
+/* Reserve a fixed portrait area below the longest two-line scene heading.
+   Contain the entire authored portrait so heads/arms never leave the viewport. */
+.proto-revision-game .character-stage{inset:230px 0 210px;overflow:visible;}
+.proto-revision-game .stage-character{height:100%;width:50%;max-width:50%;bottom:0;object-fit:contain;object-position:center top;}
+.proto-revision-game .stage-left{left:0;}
+.proto-revision-game .stage-right{right:0;}
+.proto-revision-game.cinematic-black .proto-scene-position{visibility:hidden;}
+.proto-revision-game.proto-finale:after{content:"";position:absolute;inset:0;pointer-events:none;z-index:3;background:radial-gradient(ellipse at 50% 45%,#fff8cfb0,transparent 70%);}

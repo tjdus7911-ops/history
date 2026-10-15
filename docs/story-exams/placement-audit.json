@@ -12,11 +12,11 @@
   },
   "summary": {
     "proto": {
-      "scenes": 83,
-      "questions": 23,
-      "satisfiedScenes": 8,
-      "shortScenes": 75,
-      "missingMinimum": 147
+      "scenes": 17,
+      "questions": 26,
+      "satisfiedScenes": 5,
+      "shortScenes": 12,
+      "missingMinimum": 25
     },
     "three": {
       "scenes": 215,
@@ -2849,1159 +2849,6 @@
       "chapterId": "ch02",
       "era": "goryeo",
       "title": "그로부터 5년",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch00_s1",
-      "chapterId": "proto-ch00",
-      "era": "proto",
-      "title": "눈을 뜨다",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch00_s2",
-      "chapterId": "proto-ch00",
-      "era": "proto",
-      "title": "낯선 남자",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch00_s3",
-      "chapterId": "proto-ch00",
-      "era": "proto",
-      "title": "모닥불 앞에서",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch00_s4",
-      "chapterId": "proto-ch00",
-      "era": "proto",
-      "title": "동행 제안",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch00_s5",
-      "chapterId": "proto-ch00",
-      "era": "proto",
-      "title": "첫날의 끝",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch01_s1",
-      "chapterId": "proto-ch01",
-      "era": "proto",
-      "title": "부서진 수레",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch01_s2",
-      "chapterId": "proto-ch01",
-      "era": "proto",
-      "title": "남겨진 물건",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch01_s3",
-      "chapterId": "proto-ch01",
-      "era": "proto",
-      "title": "동생의 매듭",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch01_s4",
-      "chapterId": "proto-ch01",
-      "era": "proto",
-      "title": "갈라진 길",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch01_s5",
-      "chapterId": "proto-ch01",
-      "era": "proto",
-      "title": "북쪽에서 온 상인",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch01_s6",
-      "chapterId": "proto-ch01",
-      "era": "proto",
-      "title": "여러 나라의 지도",
-      "learningConceptIds": [
-        "GE-01"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch01_s7",
-      "chapterId": "proto-ch01",
-      "era": "proto",
-      "title": "비어 있는 야영지",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch01_s8",
-      "chapterId": "proto-ch01",
-      "era": "proto",
-      "title": "철에 관심을 가진 아이",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch01_s9",
-      "chapterId": "proto-ch01",
-      "era": "proto",
-      "title": "교역의 의미",
-      "learningConceptIds": [
-        "GE-02"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch01_s10",
-      "chapterId": "proto-ch01",
-      "era": "proto",
-      "title": "북쪽으로",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch02_s1",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "title": "부여에 도착하다",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch02_s2",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "title": "왕과 유력자",
-      "learningConceptIds": [
-        "BU-01",
-        "BU-02"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch02_s3",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "title": "사출도의 길",
-      "learningConceptIds": [
-        "BU-02"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [
-        "official-60-advanced-02",
-        "official-62-advanced-02"
-      ],
-      "count": 2,
-      "missing": 0
-    },
-    {
-      "sceneId": "proto_ch02_s4",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "title": "영고를 준비하는 사람들",
-      "learningConceptIds": [
-        "BU-03"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch02_s5",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "title": "제천 행사의 의미",
-      "learningConceptIds": [
-        "BU-04"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch02_s6",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "title": "풍습을 묻다",
-      "learningConceptIds": [
-        "BU-05",
-        "BU-06",
-        "BU-07"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [
-        "official-64-advanced-02",
-        "official-66-basic-02"
-      ],
-      "count": 2,
-      "missing": 0
-    },
-    {
-      "sceneId": "proto_ch02_s7",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "title": "익숙한 매듭",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch02_s8",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "title": "사라진 손님",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch02_s9",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "title": "말하지 말라는 부탁",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch02_s10",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "title": "영고의 밤",
-      "learningConceptIds": [
-        "BU-03"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch02_s11",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "title": "부여에서 배운 것",
-      "learningConceptIds": [
-        "BU-01",
-        "BU-02",
-        "BU-03",
-        "BU-04",
-        "BU-05",
-        "BU-06",
-        "BU-07"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [
-        "official-61-basic-03",
-        "official-68-advanced-03",
-        "official-73-basic-02"
-      ],
-      "count": 3,
-      "missing": 0
-    },
-    {
-      "sceneId": "proto_ch02_s12",
-      "chapterId": "proto-ch02",
-      "era": "proto",
-      "title": "남겨진 그림",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch03_s1",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "title": "고구려로 가는 길",
-      "learningConceptIds": [
-        "GO-06"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch03_s2",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "title": "산성에 도착하다",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch03_s3",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "title": "불가의 이야기꾼",
-      "learningConceptIds": [
-        "GO-05"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch03_s4",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "title": "알에서 태어난 아이",
-      "learningConceptIds": [
-        "GO-05"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch03_s5",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "title": "부여를 떠난 주몽",
-      "learningConceptIds": [
-        "GO-05"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch03_s6",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "title": "졸본의 새로운 나라",
-      "learningConceptIds": [
-        "GO-05"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch03_s7",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "title": "성문 앞의 검문",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch03_s8",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "title": "단의 거짓말",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch03_s9",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "title": "성 안의 질서",
-      "learningConceptIds": [
-        "GO-01",
-        "BU-02"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch03_s10",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "title": "고구려의 혼인 풍습",
-      "learningConceptIds": [
-        "GO-02"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch03_s11",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "title": "동맹의 이야기",
-      "learningConceptIds": [
-        "GO-03",
-        "BU-03"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch03_s12",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "title": "사라진 교역단의 기록",
-      "learningConceptIds": [
-        "GE-02"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch03_s13",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "title": "산성에서의 밤",
-      "learningConceptIds": [
-        "GO-04"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch03_s14",
-      "chapterId": "proto-ch03",
-      "era": "proto",
-      "title": "고구려를 떠나며",
-      "learningConceptIds": [
-        "GO-05",
-        "GO-01",
-        "GO-02",
-        "GO-03"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [
-        "official-76-advanced-02"
-      ],
-      "count": 1,
-      "missing": 1
-    },
-    {
-      "sceneId": "proto_ch04_s1",
-      "chapterId": "proto-ch04",
-      "era": "proto",
-      "title": "바다가 보이는 길",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch04_s2",
-      "chapterId": "proto-ch04",
-      "era": "proto",
-      "title": "소하와의 만남",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch04_s3",
-      "chapterId": "proto-ch04",
-      "era": "proto",
-      "title": "바닷가 사람들의 삶",
-      "learningConceptIds": [
-        "OK-01",
-        "OK-04",
-        "GE-02"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch04_s4",
-      "chapterId": "proto-ch04",
-      "era": "proto",
-      "title": "어린 신부의 이야기",
-      "learningConceptIds": [
-        "OK-02",
-        "GO-02"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch04_s5",
-      "chapterId": "proto-ch04",
-      "era": "proto",
-      "title": "가족의 무덤",
-      "learningConceptIds": [
-        "OK-03"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [
-        "official-66-advanced-02",
-        "official-67-basic-02"
-      ],
-      "count": 2,
-      "missing": 0
-    },
-    {
-      "sceneId": "proto_ch04_s6",
-      "chapterId": "proto-ch04",
-      "era": "proto",
-      "title": "기다리던 청년",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch04_s7",
-      "chapterId": "proto-ch04",
-      "era": "proto",
-      "title": "라온이 남긴 말",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch04_s8",
-      "chapterId": "proto-ch04",
-      "era": "proto",
-      "title": "형의 기억",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch04_s9",
-      "chapterId": "proto-ch04",
-      "era": "proto",
-      "title": "처음 털어놓는 후회",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch04_s10",
-      "chapterId": "proto-ch04",
-      "era": "proto",
-      "title": "남쪽을 향해",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch05_s1",
-      "chapterId": "proto-ch05",
-      "era": "proto",
-      "title": "낯선 경계",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch05_s2",
-      "chapterId": "proto-ch05",
-      "era": "proto",
-      "title": "책화",
-      "learningConceptIds": [
-        "DY-02"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch05_s3",
-      "chapterId": "proto-ch05",
-      "era": "proto",
-      "title": "책임을 지다",
-      "learningConceptIds": [
-        "DY-02"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch05_s4",
-      "chapterId": "proto-ch05",
-      "era": "proto",
-      "title": "마을의 규칙",
-      "learningConceptIds": [
-        "DY-01"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch05_s5",
-      "chapterId": "proto-ch05",
-      "era": "proto",
-      "title": "혼인 풍습",
-      "learningConceptIds": [
-        "DY-03",
-        "DY-02"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch05_s6",
-      "chapterId": "proto-ch05",
-      "era": "proto",
-      "title": "무천의 이야기",
-      "learningConceptIds": [
-        "DY-04",
-        "GO-03",
-        "BU-03"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [
-        "official-57-advanced-03"
-      ],
-      "count": 1,
-      "missing": 1
-    },
-    {
-      "sceneId": "proto_ch05_s7",
-      "chapterId": "proto-ch05",
-      "era": "proto",
-      "title": "동예의 특산물",
-      "learningConceptIds": [
-        "DY-05",
-        "GE-02"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [
-        "official-64-basic-02",
-        "official-70-advanced-02",
-        "official-77-advanced-03"
-      ],
-      "count": 3,
-      "missing": 0
-    },
-    {
-      "sceneId": "proto_ch05_s8",
-      "chapterId": "proto-ch05",
-      "era": "proto",
-      "title": "떠나는 사람의 마음",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch05_s9",
-      "chapterId": "proto-ch05",
-      "era": "proto",
-      "title": "다시 길 위에서",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch05_s10",
-      "chapterId": "proto-ch05",
-      "era": "proto",
-      "title": "인정",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch06_s1",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "title": "남쪽의 교역장",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch06_s2",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "title": "삼한의 여러 소국",
-      "learningConceptIds": [
-        "SH-01"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch06_s3",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "title": "소국의 지배자",
-      "learningConceptIds": [
-        "SH-02"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch06_s4",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "title": "철을 만드는 사람들",
-      "learningConceptIds": [
-        "SH-06"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch06_s5",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "title": "철의 가치",
-      "learningConceptIds": [
-        "SH-06",
-        "GE-02"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch06_s6",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "title": "천군과 소도",
-      "learningConceptIds": [
-        "SH-03"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [
-        "official-73-advanced-04",
-        "official-61-advanced-02",
-        "official-77-basic-02"
-      ],
-      "count": 3,
-      "missing": 0
-    },
-    {
-      "sceneId": "proto_ch06_s7",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "title": "제사의 의미",
-      "learningConceptIds": [
-        "SH-04",
-        "SH-05",
-        "SH-07"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [
-        "official-69-advanced-03",
-        "official-78-advanced-03"
-      ],
-      "count": 2,
-      "missing": 0
-    },
-    {
-      "sceneId": "proto_ch06_s8",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "title": "익숙한 매듭",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch06_s9",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "title": "문 앞에서",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch06_s10",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "title": "마침내 만나다",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch06_s11",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "title": "형제의 갈등",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch06_s12",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "title": "라온이 떠난 이유",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch06_s13",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "title": "각자의 삶",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch06_s14",
-      "chapterId": "proto-ch06",
-      "era": "proto",
-      "title": "철을 가진 사람들",
-      "learningConceptIds": [
-        "SH-06"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch07_s1",
-      "chapterId": "proto-ch07",
-      "era": "proto",
-      "title": "여행의 끝",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch07_s2",
-      "chapterId": "proto-ch07",
-      "era": "proto",
-      "title": "부여와 고구려의 기억",
-      "learningConceptIds": [
-        "BU-03",
-        "GO-03",
-        "DY-04",
-        "GO-05"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [
-        "official-67-advanced-02"
-      ],
-      "count": 1,
-      "missing": 1
-    },
-    {
-      "sceneId": "proto_ch07_s3",
-      "chapterId": "proto-ch07",
-      "era": "proto",
-      "title": "바다와 경계의 기억",
-      "learningConceptIds": [
-        "OK-02",
-        "OK-03",
-        "OK-04",
-        "DY-02",
-        "DY-03",
-        "DY-05"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch07_s4",
-      "chapterId": "proto-ch07",
-      "era": "proto",
-      "title": "마지막 역사 시험",
-      "learningConceptIds": [
-        "BU-01",
-        "BU-02",
-        "GO-01",
-        "OK-01",
-        "DY-01",
-        "SH-02",
-        "SH-03",
-        "SH-04",
-        "SH-06"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [
-        "official-57-basic-02",
-        "official-63-advanced-02",
-        "official-79-advanced-02"
-      ],
-      "count": 3,
-      "missing": 0
-    },
-    {
-      "sceneId": "proto_ch07_s5",
-      "chapterId": "proto-ch07",
-      "era": "proto",
-      "title": "돌아갈 길",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch07_s6",
-      "chapterId": "proto-ch07",
-      "era": "proto",
-      "title": "마지막 부탁",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch07_s7",
-      "chapterId": "proto-ch07",
-      "era": "proto",
-      "title": "마지막 선택",
-      "learningConceptIds": [
-        "goryeo-foundation-918"
-      ],
-      "implemented": true,
-      "officialQuestionIds": [],
-      "count": 0,
-      "missing": 2
-    },
-    {
-      "sceneId": "proto_ch07_s8",
-      "chapterId": "proto-ch07",
-      "era": "proto",
-      "title": "에필로그",
       "learningConceptIds": [
         "goryeo-foundation-918"
       ],
@@ -7028,6 +5875,197 @@
         "official-71-advanced-11"
       ],
       "count": 1,
+      "missing": 1
+    },
+    {
+      "sceneId": "proto_ch01_s1",
+      "chapterId": "proto-ch01",
+      "era": "proto",
+      "title": "눈떠보니 부여",
+      "officialQuestionIds": [
+        "official-60-advanced-02",
+        "official-62-advanced-02",
+        "official-68-advanced-03"
+      ],
+      "count": 3,
+      "missing": 0
+    },
+    {
+      "sceneId": "proto_ch01_s2",
+      "chapterId": "proto-ch01",
+      "era": "proto",
+      "title": "열두 번째 달의 북소리",
+      "officialQuestionIds": [
+        "official-61-basic-03",
+        "official-64-advanced-02",
+        "official-66-basic-02"
+      ],
+      "count": 3,
+      "missing": 0
+    },
+    {
+      "sceneId": "proto_ch01_s3",
+      "chapterId": "proto-ch01",
+      "era": "proto",
+      "title": "열두 배의 값",
+      "officialQuestionIds": [
+        "official-73-basic-02"
+      ],
+      "count": 1,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch02_s1",
+      "chapterId": "proto-ch02",
+      "era": "proto",
+      "title": "다섯 세력의 문턱",
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 3
+    },
+    {
+      "sceneId": "proto_ch02_s2",
+      "chapterId": "proto-ch02",
+      "era": "proto",
+      "title": "열 번째 달에 남긴 그림",
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 3
+    },
+    {
+      "sceneId": "proto_ch02_s3",
+      "chapterId": "proto-ch02",
+      "era": "proto",
+      "title": "집 뒤의 작은 집",
+      "officialQuestionIds": [
+        "official-76-advanced-02",
+        "official-57-advanced-03"
+      ],
+      "count": 2,
+      "missing": 1
+    },
+    {
+      "sceneId": "proto_ch02_s4",
+      "chapterId": "proto-ch02",
+      "era": "proto",
+      "title": "사라진 짐의 행방",
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 3
+    },
+    {
+      "sceneId": "proto_ch03_s1",
+      "chapterId": "proto-ch03",
+      "era": "proto",
+      "title": "소금 수레가 돌아오는 곳",
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 3
+    },
+    {
+      "sceneId": "proto_ch03_s2",
+      "chapterId": "proto-ch03",
+      "era": "proto",
+      "title": "이 집에서 자라는 아이",
+      "officialQuestionIds": [
+        "official-67-basic-02"
+      ],
+      "count": 1,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch03_s3",
+      "chapterId": "proto-ch03",
+      "era": "proto",
+      "title": "가족이 다시 모이는 곳",
+      "officialQuestionIds": [
+        "official-58-basic-02",
+        "official-66-advanced-02"
+      ],
+      "count": 2,
+      "missing": 1
+    },
+    {
+      "sceneId": "proto_ch04_s1",
+      "chapterId": "proto-ch04",
+      "era": "proto",
+      "title": "넘으면 안 되는 경계",
+      "officialQuestionIds": [
+        "official-77-advanced-03"
+      ],
+      "count": 1,
+      "missing": 2
+    },
+    {
+      "sceneId": "proto_ch04_s2",
+      "chapterId": "proto-ch04",
+      "era": "proto",
+      "title": "다른 씨족으로 가는 사람",
+      "officialQuestionIds": [],
+      "count": 0,
+      "missing": 3
+    },
+    {
+      "sceneId": "proto_ch04_s3",
+      "chapterId": "proto-ch04",
+      "era": "proto",
+      "title": "무천 뒤에 남은 말",
+      "officialQuestionIds": [
+        "official-63-advanced-02",
+        "official-70-advanced-02",
+        "official-71-basic-02"
+      ],
+      "count": 3,
+      "missing": 0
+    },
+    {
+      "sceneId": "proto_ch04_s4",
+      "chapterId": "proto-ch04",
+      "era": "proto",
+      "title": "작은 말이 끌던 수레",
+      "officialQuestionIds": [
+        "official-57-basic-02",
+        "official-64-basic-02",
+        "official-79-advanced-02"
+      ],
+      "count": 3,
+      "missing": 0
+    },
+    {
+      "sceneId": "proto_ch05_s1",
+      "chapterId": "proto-ch05",
+      "era": "proto",
+      "title": "따라 들어갈 수 없는 곳",
+      "officialQuestionIds": [
+        "official-77-basic-02",
+        "official-60-basic-02"
+      ],
+      "count": 2,
+      "missing": 1
+    },
+    {
+      "sceneId": "proto_ch05_s2",
+      "chapterId": "proto-ch05",
+      "era": "proto",
+      "title": "함께 일하는 사람들",
+      "officialQuestionIds": [
+        "official-61-advanced-02",
+        "official-69-advanced-03",
+        "official-73-advanced-04"
+      ],
+      "count": 3,
+      "missing": 0
+    },
+    {
+      "sceneId": "proto_ch05_s3",
+      "chapterId": "proto-ch05",
+      "era": "proto",
+      "title": "철이 향하는 곳, 우리가 돌아갈 곳",
+      "officialQuestionIds": [
+        "official-67-advanced-02",
+        "official-78-advanced-03"
+      ],
+      "count": 2,
       "missing": 1
     }
   ],

@@ -6,7 +6,7 @@
   "rewrites": [
     {
       "source": "/assets/:path*",
-      "destination": "https://raw.githubusercontent.com/tjdus7911-ops/history/626df1151884efff18b64584bb0eaea7bf92f3d2/dist/assets/:path*"
+      "destination": "https://raw.githubusercontent.com/tjdus7911-ops/history/fbee9785c1656af06623a3da9fbe45ad466a9cce/dist/assets/:path*"
     }
   ],
   "headers": [

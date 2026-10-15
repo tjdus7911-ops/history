@@ -76,7 +76,8 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
   run().questionQueue=unanswered.map(q=>q.questionId);run().questionQueueIndex=0;run().questionQueueResumeStoryId=source.nextStoryId;run().activeQuestionSetId=source.questionSetId;
   openQuestion(run().questionQueue[0]);quizMode='story';show('quiz');return true;
  }
- function endCommon(source){if(!markRead(source))return false;if(checkpoint(source))return true;return advanceScene(source);}
+ function afterQuiz(source){clearQueue();if(source.protoOutro?.length)return switchPhase(source,'outro');return advanceScene(source);}
+ function endCommon(source){if(!markRead(source))return false;if(checkpoint(source))return true;return afterQuiz(source);}
  function advance(){
   const source=currentSource();if(!isProto(source)||screen!=='game'||modal)return false;
   if(finishOpeningTyping())return true;
@@ -91,12 +92,13 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
   }
   if(current.phase==='branch'){run().pending=null;if(source.protoCommon.length)return switchPhase(source,'join');return endCommon(source);}
   if(current.phase==='join')return endCommon(source);
+  if(current.phase==='outro')return advanceScene(source);
   return false;
  }
  function choose(index){
   const source=currentSource();if(!isProto(source)||phaseState(source).phase!=='choice'||!Number.isInteger(index)||!source.choices?.[index])return false;
   if(finishOpeningTyping())return false;
-  phaseState(source).choiceIndex=index;book().choiceBySceneId[source.sceneId]=index;applyChoice(state,source.sceneId,index);return switchPhase(source,'branch');
+  phaseState(source).choiceIndex=index;book().choiceBySceneId[source.sceneId]=index;applyChoice(state,source.sceneId,index);run().storyId=source.sceneId;return switchPhase(source,'branch');
  }
  const beforeEntries=conversationEntries;
  conversationEntries=function(source,p){return isProto(source)?phaseEntries(source,phaseState(source)):beforeEntries(source,p);};
@@ -107,7 +109,7 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
   const source=currentSource();if(!isProto(source)||phaseState(source).phase!=='quiz')return beforeContinue();
   if(run().questionAnswer===null)return false;
   if(run().questionQueueIndex+1<run().questionQueue.length){run().questionQueueIndex++;openQuestion(run().questionQueue[run().questionQueueIndex]);show('quiz');return true;}
-  return advanceScene(source);
+  return afterQuiz(source);
  };
  const beforeRecord=recordQuestion;
  recordQuestion=function(model,id,answer){
@@ -122,7 +124,7 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
  };
  for(const [q,art] of PROTO_LEGACY_QUESTION_ART)q.relatedIllustrationId=art;
  for(const q of runtime.questionByOfficialId.values()){
-  q.answer=q.protoExam.answerIndex0;q.choices=Array.from({length:q.protoExam.choiceCount},(_,index)=>(index+1)+'번');
+  q.answer=q.protoExam.answerIndex0;q.choices=[...q.protoExam.choices];
   q.explanation=q.protoExam.proposed.playExplanation;q.wrongFeedback=q.protoExam.proposed.playExplanation;
  }
  api.configureSeason(HISTORY_SEASONS);api.configureSeason(LEARNING_ERAS);
@@ -223,7 +225,7 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
   delete run().protoNeedsResumeRecovery;selectedEra=id;meta().selectedLearningEra=id;save();return playMain();
  };
  restoreArchives();
- for(const key of ['lived-history-proto-kingdoms-v2','lived-history-proto-kingdoms']){const text=readStorage(key);if(text){try{archive(meta(),'legacy-content',key,JSON.parse(text));}catch{archive(meta(),'unreadable-json',key,{raw:text});}}}
+ for(const key of ['lived-history-proto-kingdoms-v3','lived-history-proto-kingdoms-v2','lived-history-proto-kingdoms']){const text=readStorage(key);if(text){try{archive(meta(),'legacy-content',key,JSON.parse(text));}catch{archive(meta(),'unreadable-json',key,{raw:text});}}}
  for(const key of [eraId,'proto-kingdoms-v2'])if(meta().eraProgress?.[key])archive(meta(),'legacy-content','eraProgress.'+key,meta().eraProgress[key]);
  const recoveryPending=run().protoNeedsResumeRecovery;recoverIndependentResume();
  if(recoveryPending&&validResume(meta().eraProgress?.[progressKey]?.resume,book())&&!meta().eraProgress[progressKey].resume.run.protoNeedsResumeRecovery){state.run=copy(meta().eraProgress[progressKey].resume.run);state.mainRun=copy(meta().eraProgress[progressKey].resume.mainRun);}
@@ -233,26 +235,39 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
   if(!isProto(source))return beforeCharacterStage(visible,source,complete,p,assetId,allEntries,cursor);
   if(source.flashback)return '';
   const entries=allEntries||conversationEntries(source,p),index=Math.max(0,Math.min((cursor||run().dialogueCursor||1)-1,entries.length-1)),active=entries[index];
-  if(!active||active.speakerType==='narration')return '';
-  const standing=(entry,position)=>({...entry,position,show:true,presentation:'standing'}),spoken=entry=>['player','thought','npc'].includes(entry?.speakerType);
-  const nearby=[];for(let distance=1;distance<entries.length;distance++){if(index-distance>=0&&spoken(entries[index-distance]))nearby.push(entries[index-distance]);if(index+distance<entries.length&&spoken(entries[index+distance]))nearby.push(entries[index+distance]);}
-  let cast;if(active.speakerType==='npc'){const peer=nearby[0];cast=[standing(active,'left')];if(peer&&['player','thought'].includes(peer.speakerType))cast.push(standing(peer,'right'));}
-  else{const peer=nearby.find(entry=>entry.speakerType==='npc')||(p?(source.dialogues||[]).findLast(entry=>entry.speakerType==='npc'):null);cast=[...(peer?[standing(peer,'left')]:[]),standing(active,'right')];}
-  const portraits=cast.map(entry=>stagePortrait(entry,entry.position,entry.characterId===active.characterId)).join('');
-  return portraits?'<div class="character-stage" data-slot-mode="proto-conversation" aria-hidden="true">'+portraits+'</div>':'';
+  if(active?.protoBlackout)return '';
+  const standing=(entry,position)=>({...entry,position,show:true,presentation:'standing'});
+  const phase=phaseState(source),history=phase.phase==='main'?[]:phase.phase==='branch'?source.dialogues:phase.phase==='join'?[...source.dialogues,...(runtime.sources.get(source.sceneId).choices?.[phase.choiceIndex]?.resultDialogues||[])]:[...source.dialogues,...source.protoCommon];
+  const peer=active?.speakerType==='npc'?active:[...history,...entries.slice(0,index+1)].findLast(entry=>entry.speakerType==='npc')||(currentSource().protoSource.main.some(l=>l.speaker==='나루')?dialogueLine('proto_naru','neutral','','npc'):null);
+  const player=dialogueLine('proto_modern','neutral','','player');
+  const cast=[...(peer?[standing(peer,'left')]:[]),standing(player,'right')];
+  return '<div class="character-stage" data-slot-mode="proto-conversation" aria-hidden="true">'+cast.map(entry=>stagePortrait(entry,entry.position,entry.characterId===active?.characterId)).join('')+'</div>';
  };
+ function rich(text,words=[]){
+  const terms=[...new Set(words)].filter(Boolean).sort((a,b)=>b.length-a.length);
+  let result='',cursor=0;
+  while(cursor<text.length){const term=terms.find(w=>text.startsWith(w,cursor));if(term){result+='<strong class="proto-keyword">'+esc(term)+'</strong>';cursor+=term.length;}else{result+=esc(text[cursor]);cursor++;}}
+  return result;
+ }
+ const beforeBubble=dialogueBubble;
+ dialogueBubble=function(entry,index){const html=beforeBubble(entry,index);return entry.protoSpeaker?html.replace(esc(entry.dialogue),rich(entry.dialogue,entry.protoEmphasis)):html;};
  const beforeGame=game;
  game=function(){
   const source=currentSource();if(!isProto(source))return beforeGame();
-  const current=phaseState(source),continueLabel=current.phase==='main'&&source.choices?.length?'응답 고르기':source.protoQueue&&['main','join'].includes(current.phase)?'🧠 기출 3문제 풀기':'다음 이야기';
+  const current=phaseState(source),continueLabel=current.phase==='main'&&source.choices?.length?'응답 고르기':source.protoQueue&&['main','join'].includes(current.phase)?(source.protoQueue.officialQuestionIds.length?'🧠 실제 기출 '+source.protoQueue.officialQuestionIds.length+'문제 풀기':'다음 장면'):'다음 이야기';
   // A temporary view feeds the shared renderer; the complete immutable source stays installed.
-  const view={...source,choices:['choice','branch'].includes(current.phase)?source.choices:null,continueLabel};
+  const active=phaseEntries(source,current)[Math.min(run().dialogueCursor-1,phaseEntries(source,current).length-1)];
+  const view={...source,sceneEffect:active?.protoBlackout?'blackout':null,choices:['choice','branch'].includes(current.phase)?source.choices:null,continueLabel};
   STORIES[source.sceneId]=view;
   try{
    const atEnd=(current.phase==='join'||current.phase==='main'&&!source.protoCommon.length)&&run().dialogueCursor>=phaseEntries(source,current).length;
    const recap=atEnd?'<aside class="proto-scene-recap" aria-label="이번 장면에서 배운 것"><h3>이번 장면에서 배운 것</h3><ul>'+source.protoSource.learning.map(item=>'<li>'+esc(item.keyword||item.title)+'</li>').join('')+'</ul></aside>':'';
    let html=beforeGame().replace('class="game conversation-game ','class="game conversation-game proto-revision-game ').replace('data-illustration=','data-proto-country="'+esc(source.protoCountry)+'" data-proto-place="'+esc(source.protoPlace)+'" data-proto-scene="'+esc(source.sceneId)+'" data-proto-phase="'+current.phase+'" data-illustration=');
    html=html.replace('<small>'+esc(source.location)+'</small>','<div class="proto-place-label"><span>'+esc(source.protoCountry)+'</span><small>'+esc(source.protoPlace)+'</small></div>');
+   if(current.phase==='outro'&&run().dialogueCursor===source.protoOutro.length)html=html.replace('proto-revision-game ','proto-revision-game proto-finale ');
+   html=html.replace(/220년/g,'원삼국 시대');
+   html=html.replace('<section class="conversation-panel', '<div class="proto-scene-position">CH.'+String(CHAPTERS[source.chapterId].number).padStart(2,'0')+' '+esc(source.protoCountry)+' · SCENE '+String(source.sceneNumber).padStart(2,'0')+'/'+String(runtime.source.chapters.find(c=>c.number===Number(CHAPTERS[source.chapterId].number)).scenes.length).padStart(2,'0')+'</div><section class="conversation-panel');
+   if(current.phase==='choice')for(const choice of source.protoSource.choices)html=html.replace(esc(choice.label),rich(choice.label,choice.emphasis));
    if(recap)html=html.replace('</section><div class="chapter-progress">','</section>'+recap+'<div class="chapter-progress">');
    return html;
   }
@@ -296,7 +311,7 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
   const session=meta().protoReviewSession,answer=session?session.answer:run().questionAnswer,draft=session?session.draft:run().protoAnswerDraft,done=answer!==null;
   const total=session?1:run().questionQueue.length,index=session?0:run().questionQueueIndex,ch=CHAPTERS[q.chapterId];
   const options=q.choices.map((label,i)=>'<button class="choice '+(done&&i===q.answer?'correct':done&&i===answer?'wrong':!done&&draft===i?'picked':'')+'" data-proto-answer="'+i+'" aria-pressed="'+(!done&&draft===i)+'" '+(done?'disabled':'')+'><span class="answer-number">'+(i+1)+'</span><span>'+esc(label)+'</span>'+(done&&i===q.answer?'<b>✓</b>':'')+'</button>').join('');
-  const choiceDetails=done&&globalThis.OFFICIAL_EXAM_UI?.choiceExplanations?globalThis.OFFICIAL_EXAM_UI.choiceExplanations(q,answer):'';
+  const choiceDetails=done?'<ol class="proto-choice-explanations">'+q.protoExam.choiceExplanations.map((text,i)=>'<li><strong>'+esc(q.choices[i])+'</strong><p>'+esc(text)+'</p></li>').join('')+'</ol>':'';
   const feedback=done?'<div class="feedback"><h2>'+(answer===q.answer?'✓ 정답입니다.':'✕ 오답입니다.')+'</h2><p>선택한 답 '+(answer+1)+'번 · 정답 '+(q.answer+1)+'번</p><p>'+esc(safeExplanation(q))+'</p>'+choiceDetails+(comparisonUnlocked()?'<button class="text-btn" data-proto-comparison="'+esc(q.officialQuestionId)+'">여러 나라 비교 해설</button>':'')+'<button class="primary next" data-action="proto-quiz-next">'+(session?'기록책으로 돌아가기':index+1<total?'다음 문제':'이야기 계속')+'</button></div>':'<div class="quiz-submit-row"><button class="confirm-answer" data-action="proto-submit" '+(draft==null?'disabled':'')+'>답 확인하기</button></div>';
   return '<section class="editorial-quiz proto-revision-quiz"><header class="quiz-top"><button '+(session?'data-action="proto-review-close"':'data-nav="era"')+' aria-label="학습 화면으로 돌아가기">‹</button><span>CH.'+ch.number+' '+esc(ch.title)+'</span><button data-action="status" aria-label="내 상태 보기">'+editorialIcon('profile')+'</button></header><div class="quiz-progress"><div class="progress"><span style="width:'+Math.round((index+1)/total*100)+'%"></span></div><small>'+(index+1)+' / '+total+'</small></div><div class="exam-source-row"><span class="official-pill">실제 한능검 기출</span><span>'+esc(q.protoExam.label)+'</span></div><p class="proto-answer-instruction">원본 이미지의 지문과 보기를 모두 읽고, 같은 번호를 선택해 주세요.</p>'+officialQuestionFigure(q)+'<div class="ed-answer-options" role="group" aria-label="답 선택">'+options+'</div>'+feedback+'<p class="proto-source">출처: 국사편찬위원회 한국사능력검정시험</p></section>';
  };
@@ -323,12 +338,12 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
   if(run().mode==='replay'&&run().completed&&!resultChapterId)return '<div class="replay-complete-actions"><button class="primary next" data-action="return-replay-home">원삼국 여정으로 돌아가기</button><button class="secondary full" data-action="current-main">현재 이야기 이어하기</button></div>';
   if(resultChapterId)return '<button class="primary next" data-action="request-replay" data-chapter="'+id+'">이 장면 다시 보기</button><button class="text-btn home-link" data-nav="home">홈으로 돌아가기</button>';
   const chapters=api.activeChapterIds(),next=chapters[chapters.indexOf(id)+1];
-  return (next?'<button class="primary next" data-action="start-chapter" data-chapter="'+next+'">다음 나라 살펴보기</button>':'<button class="primary next" data-nav="home">원삼국 이야기 마치기</button>')+'<button class="secondary full" data-action="request-replay" data-chapter="'+id+'">이 장면 다시 보기</button><button class="text-btn home-link" data-action="proto-recordbook">학습 기록 확인</button>';
+  return (next?'<button class="primary next" data-action="start-chapter" data-chapter="'+next+'">다음 나라 살펴보기</button>':'<button class="primary next" data-era-resume="three-kingdoms">다음 이야기 · 삼국편</button><button class="secondary full" data-nav="home">원삼국 이야기 마치기</button>')+'<button class="secondary full" data-action="request-replay" data-chapter="'+id+'">이 장면 다시 보기</button><button class="text-btn home-link" data-action="proto-recordbook">학습 기록 확인</button>';
  }
  complete=function(){
   const id=resultChapterId||run().currentChapter;if(!ownsChapter(id))return beforeComplete();
   const info=CHAPTERS[id],r=resultRun(id),questions=[...runtime.questionByOfficialId.values()].filter(q=>q.chapterId===id),attempted=questions.filter(q=>Object.hasOwn(r.questionResults||{},q.questionId)),correct=attempted.filter(q=>r.questionResults[q.questionId]).length;
-  return '<section class="complete late-complete ancient-complete"><div class="seal">原</div><div class="eyebrow complete-label">CHAPTER '+info.number+' CLEAR</div><h1>'+esc(info.title)+'</h1><p>단과 함께 걸은 길, 사람들에게 배운 역사</p><div class="chapter-learning"><div><small>이야기</small><strong>'+chapterScenes(id).length+'씬</strong></div><div><small>실제 기출</small><strong>'+questions.length+'문항</strong></div><div><small>복습 정답</small><strong>'+correct+' / '+attempted.length+'</strong></div></div><button class="secondary full" data-action="proto-recordbook">원삼국 기록책</button>'+protoResultFooter(id)+'</section>';
+  return '<section class="complete late-complete ancient-complete"><div class="seal">原</div><div class="eyebrow complete-label">CHAPTER '+info.number+' CLEAR</div><h1>'+esc(info.title)+'</h1><p>나루와 함께 동생의 흔적을 따라 걸은 길</p><div class="chapter-learning"><div><small>이야기</small><strong>'+chapterScenes(id).length+'씬</strong></div><div><small>실제 기출</small><strong>'+questions.length+'문항</strong></div><div><small>복습 정답</small><strong>'+correct+' / '+attempted.length+'</strong></div></div><button class="secondary full" data-action="proto-recordbook">원삼국 기록책</button>'+protoResultFooter(id)+'</section>';
  };
  function bubble(line){return '<div class="proto-book-bubble '+(line.speaker==='주인공'?'player':line.speaker==='나레이션'?'narration':'npc')+'"><strong>'+esc(line.speaker)+'</strong><p>'+esc(line.text)+'</p></div>';}
  function recordbook(){
@@ -338,7 +353,7 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
   if(tab==='choices')body=Object.entries(learned.choiceBySceneId).map(([id,index])=>{const source=runtime.sources.get(id),choice=source.protoSource.choices[index];return '<article class="proto-choice-memory"><h3>'+esc(source.title)+'</h3><blockquote>'+esc(choice.label)+'</blockquote>'+choice.reply.map(bubble).join('')+'<button class="text-btn" data-proto-recall="'+id+'" '+(learned.readSceneIds.includes(id)?'':'disabled')+'>공통 장면 다시 읽기</button></article>';}).join('')||'<p>고른 말과 그에 대한 반응이 이곳에 남습니다.</p>';
   if(tab==='questions')body=eraExamList(eraId);
   const archives=meta().protoSaveArchives?.entries?.length||0;
-  return '<div class="modal-overlay"><section class="modal proto-recordbook" role="dialog" aria-modal="true" aria-label="원삼국 기록책"><header><div><small>원삼국 기록책</small><h2>함께 읽고 고른 기억</h2></div><button data-action="close">닫기</button></header><div class="proto-book-counts"><span>읽은 장면 '+learned.readSceneIds.length+' / '+runtime.sources.size+'</span><span>배운 내용 '+learnedTopics().length+' / '+runtime.source.learning.length+'</span><span>푼 기출 '+learned.answeredQuestionIds.filter(id=>runtime.questionByOfficialId.has(id)).length+' / '+PROTO_STUDY_QUESTION_IDS.length+'</span></div><nav class="proto-book-tabs">'+[['learning','배운 내용'],['choices','내가 고른 말'],['questions','실제 기출']].map(([id,label])=>'<button data-proto-book-tab="'+id+'" aria-current="'+(id===tab)+'">'+label+'</button>').join('')+'</nav>'+body+(archives?'<p class="proto-archive-note">이전 버전의 기록 '+archives+'개를 보관했습니다. 기존 응시 기록과 진행 정보는 그대로 이어집니다.</p>':'')+'</section></div>';
+  return '<div class="modal-overlay"><section class="modal proto-recordbook" role="dialog" aria-modal="true" aria-label="원삼국 기록책"><header><div><small>원삼국 기록책</small><h2>함께 읽고 고른 기억</h2></div><button data-action="close">닫기</button></header><div class="proto-book-counts"><span>읽은 장면 '+learned.readSceneIds.length+' / '+runtime.sources.size+'</span><span>배운 내용 '+learnedTopics().length+' / '+runtime.source.learning.length+'</span><span>푼 기출 '+learned.answeredQuestionIds.filter(id=>runtime.questionByOfficialId.has(id)).length+' / '+PROTO_STUDY_QUESTION_IDS.length+'</span></div><nav class="proto-book-tabs">'+[['learning','배운 내용'],['choices','내가 고른 말'],['questions','실제 기출']].map(([id,label])=>'<button data-proto-book-tab="'+id+'" aria-current="'+(id===tab)+'">'+label+'</button>').join('')+'</nav>'+body+(archives?'<p class="proto-archive-note">이전 버전의 기록 '+archives+'개를 보관했습니다. 이전 원삼국 진행은 새 이야기의 시작으로 연결됩니다. 다른 시대의 기록은 유지됩니다.</p>':'')+'</section></div>';
  }
  const beforeModal=modalHTML;
  modalHTML=function(){
