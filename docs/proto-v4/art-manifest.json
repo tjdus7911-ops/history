@@ -1,33 +1,33 @@
 [
   {
     "id": "player",
-    "path": "media/proto-v4/player.webp",
-    "width": 768,
-    "height": 1152,
+    "path": "media/proto-v4/player-v2.png",
+    "width": 1024,
+    "height": 1536,
     "alpha": true,
-    "bytes": 75186,
-    "sha256": "946669a27a3128ec996e2542ed3721d89ad9c8af7a7016d480414c39a2eb5cc4",
-    "style": "2D anime, clean linework, cel shading"
+    "bytes": 2165338,
+    "sha256": "e04075c00b6a3f81ca2869f430e1c6a84f85ad6007d0c7c7d02436ece42d76bf",
+    "style": "premium 2D story-game portrait, refined linework, painterly cel shading, head-to-thigh framing"
   },
   {
     "id": "naru",
-    "path": "media/proto-v4/naru.webp",
-    "width": 768,
-    "height": 1152,
+    "path": "media/proto-v4/naru-v2.png",
+    "width": 1024,
+    "height": 1536,
     "alpha": true,
-    "bytes": 92286,
-    "sha256": "1acf114e70c0c2a0e34a5889f33d9839f66fddb5bc7119871b16d544b22ab9a4",
-    "style": "2D anime, clean linework, cel shading"
+    "bytes": 2455554,
+    "sha256": "34b496d137da8c7990220cfd1ef53719ca5c4462aafb20b95bcb0a97f7243964",
+    "style": "premium 2D story-game portrait, angular period face, painterly cel shading, head-to-thigh framing"
   },
   {
     "id": "sibling",
-    "path": "media/proto-v4/sibling.webp",
-    "width": 768,
-    "height": 1152,
+    "path": "media/proto-v4/sibling-v2.png",
+    "width": 1024,
+    "height": 1536,
     "alpha": true,
-    "bytes": 94298,
-    "sha256": "d86c0a11d178a350c82b84bbfd120632c5d1be5d8ede7219e7e98e8c666e2e83",
-    "style": "2D anime, clean linework, cel shading"
+    "bytes": 2185585,
+    "sha256": "24cc94548b2fc6e5295abfadecb06188b044b6f6f935df6301708f00b9dc6a7f",
+    "style": "premium 2D story-game portrait, refined linework, painterly cel shading, head-to-thigh framing"
   },
   {
     "id": "buyeo-village",
@@ -151,62 +151,62 @@
   },
   {
     "id": "elder",
-    "path": "media/proto-v4/elder.webp",
-    "width": 768,
-    "height": 1152,
+    "path": "media/proto-v4/elder-v2.png",
+    "width": 1024,
+    "height": 1536,
     "alpha": true,
-    "bytes": 77930,
-    "sha256": "598aba2e2841906ee16a0c7b433e07a80595e73712aee02981f18a50aa2e1a4b",
-    "style": "2D anime, clean linework, cel shading"
+    "bytes": 2668817,
+    "sha256": "ab407b2c3dd361a294f6b52b5781aa0a9551a6022f38b99602fb2246d3912fa5",
+    "style": "premium 2D story-game portrait, refined linework, painterly cel shading, head-to-thigh framing"
   },
   {
     "id": "merchant",
-    "path": "media/proto-v4/merchant.webp",
-    "width": 768,
-    "height": 1152,
+    "path": "media/proto-v4/merchant-v2.png",
+    "width": 1024,
+    "height": 1536,
     "alpha": true,
-    "bytes": 95038,
-    "sha256": "9427756d07c6d85a7ab97c64cc5533984efc03a20a2eae2ff8497103d4382b65",
-    "style": "2D anime, clean linework, cel shading"
+    "bytes": 2611915,
+    "sha256": "aee714fe70f6642a7819a9cdfd3d0a64c94344867148fe75e6936cdd3e434279",
+    "style": "premium 2D story-game portrait, refined linework, painterly cel shading, head-to-thigh framing"
   },
   {
     "id": "worker",
-    "path": "media/proto-v4/worker.webp",
-    "width": 768,
-    "height": 1152,
+    "path": "media/proto-v4/worker-v2.png",
+    "width": 1024,
+    "height": 1536,
     "alpha": true,
-    "bytes": 111104,
-    "sha256": "6dbbff318a79243ac642d0edbac4982644838ca7cc97c5a016515236c7ca4880",
-    "style": "2D anime, clean linework, cel shading"
+    "bytes": 2635870,
+    "sha256": "43da729c965fa98174a62ee63b689b675f1a345618813f65ca5ab874e24821ef",
+    "style": "premium 2D story-game portrait, refined linework, painterly cel shading, head-to-thigh framing"
   },
   {
     "id": "woman",
-    "path": "media/proto-v4/woman.webp",
-    "width": 768,
-    "height": 1152,
+    "path": "media/proto-v4/woman-v2.png",
+    "width": 1024,
+    "height": 1536,
     "alpha": true,
-    "bytes": 76788,
-    "sha256": "5e3386a5ce75f6c234c0ded363add582840a992074baec1a7fcab0b123914b45",
-    "style": "2D anime, clean linework, cel shading"
+    "bytes": 2257144,
+    "sha256": "1b093b664e1fbca87ff60f4ec8b1eedf2ed3cf17e226b3e58272fec3f4ff5e65",
+    "style": "premium 2D story-game portrait, refined linework, painterly cel shading, head-to-thigh framing"
   },
   {
     "id": "girl",
-    "path": "media/proto-v4/girl.webp",
-    "width": 768,
-    "height": 1152,
+    "path": "media/proto-v4/girl-v2.png",
+    "width": 1024,
+    "height": 1536,
     "alpha": true,
-    "bytes": 76694,
-    "sha256": "4049045af6982923bc67fedbb2deeac0a3cf8fc3d777d2b6b425727b6ed771a1",
-    "style": "2D anime, clean linework, cel shading"
+    "bytes": 2177174,
+    "sha256": "03415ee311b6b3b92dfcd64d82afc0d1c96866ee3bb2d70edb3f1e77db96b192",
+    "style": "premium 2D story-game portrait, child proportions, painterly cel shading, head-to-thigh framing"
   },
   {
     "id": "priest",
-    "path": "media/proto-v4/priest.webp",
-    "width": 768,
-    "height": 1152,
+    "path": "media/proto-v4/priest-v2.png",
+    "width": 1024,
+    "height": 1536,
     "alpha": true,
-    "bytes": 84894,
-    "sha256": "6d4690c59dc2652d2d1581a59a6bd05fabb27f77282c35b8fcc8d7377283783e",
-    "style": "2D anime, clean linework, cel shading"
+    "bytes": 2450914,
+    "sha256": "97c6d53387fb60ba65834174252100d628744b0f5a6555767ef6e0b85b6f1d45",
+    "style": "premium 2D story-game portrait, refined linework, painterly cel shading, head-to-thigh framing"
   }
 ]

@@ -5,6 +5,8 @@
     "branch": 0,
     "scenes": 17,
     "exams": 41,
+    "portraits": 9,
+    "portraitSize": "298x546",
     "pageErrors": [],
     "horizontalOverflow": 0
   },
@@ -14,6 +16,8 @@
     "branch": 1,
     "scenes": 17,
     "exams": 41,
+    "portraits": 9,
+    "portraitSize": "305x647",
     "pageErrors": [],
     "horizontalOverflow": 0
   }
