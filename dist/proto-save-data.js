@@ -137,7 +137,7 @@ if(globalThis.PROTO_REVISION_RUNTIME?.version===3){
   if(value)archive(m,'content-revision-migration','main-save.proto-run',value);
   return target;
  }
- function configureSeason(registry){const info=registry?.find(item=>item.id===eraId);if(info)Object.assign(info,{progressKey,contentVersion:version,contentRevision:contentVersion,years:'원삼국 시대 · 다섯 나라의 생활',description:'동생이 남긴 표식을 따라 부여·고구려·옥저·동예·삼한의 17장면을 여행합니다.',bannerAsset:'media/proto-v4/buyeo-village.webp',backgroundAssets:PROTO_SYMBOLIC_BACKGROUNDS.map(id=>'media/proto-v4/'+id+'.webp')});}
+ function configureSeason(registry){const info=registry?.find(item=>item.id===eraId);if(info)Object.assign(info,{progressKey,contentVersion:version,contentRevision:contentVersion,years:'원삼국 시대 · 다섯 나라의 생활',description:'동생이 남긴 표식을 따라 부여·고구려·옥저·동예·삼한의 17장면을 여행합니다.',bannerAsset:'media/proto-v4/proto-thumbnail-back-view-v1.jpg',backgroundAssets:PROTO_SYMBOLIC_BACKGROUNDS.map(id=>'media/proto-v4/'+id+'.webp')});}
  const ownEntries=value=>Object.fromEntries(Object.entries(value||{}).filter(([id])=>ownsChapter(id)));
  // Exam-only revision preserves the manuscript cursor, choices, and completed chapters.
  function refreshExamQueue(value,book){
