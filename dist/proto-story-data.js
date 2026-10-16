@@ -12,10 +12,12 @@ const PROTO_LEGACY_QUESTION_ART=new Map(QUESTIONS.filter(q=>q.chapterId?.startsW
 const PROTO_CAST={'주인공':'proto_modern','동생':'proto_sibling','나루':'proto_naru','마을 사람':'proto_worker','마을 어른':'proto_elder','집안 어른':'proto_elder','노인':'proto_elder','상인':'proto_merchant','교역꾼':'proto_merchant','청년':'proto_worker','어민':'proto_worker','짐꾼':'proto_worker','행사 일꾼':'proto_worker','소녀':'proto_girl','아이':'proto_girl','여인':'proto_woman','천군':'proto_priest','관리자':'proto_elder','군장의 부하':'proto_worker','마을 군장':'proto_elder','짐 주인':'proto_merchant','창고지기':'proto_worker','혼인 당사자':'proto_woman'};
 const PROTO_NAMES={proto_modern:['주인공',null],proto_sibling:['동생',null],proto_naru:['나루',null],proto_worker:['마을 사람',null],proto_elder:['마을 어른',null],proto_merchant:['상인',null],proto_girl:['아이',null],proto_woman:['마을 사람',null],proto_priest:['천군',null]};
 const PROTO_PORTRAIT_ASSETS={proto_modern:'player-v3.png',proto_sibling:'sibling-v3.png',proto_naru:'naru-v3.png',proto_worker:'worker-v3.png',proto_elder:'elder-v3.png',proto_merchant:'merchant-v3.png',proto_girl:'girl-v3.png',proto_woman:'woman-v3.png',proto_priest:'priest-v3.png'};
+// One shared crop keeps every Proto portrait at the same Goryeo-like upper-body scale.
+const PROTO_CHARACTER_LAYOUT=Object.freeze({tier:'MAIN',scale:1.18,anchorX:0,anchorY:6,framing:'upper-body',lockStateScale:true});
 for(const [id,[name,age]] of Object.entries(PROTO_NAMES)){
  CHARACTERS[id]={characterId:id,characterName:name,characterAge:age,speakerType:id==='proto_modern'?'player':'npc',position:id==='proto_modern'?'right':'left',show:true,presentation:'standing',portraitPrefix:id};
  for(const expression of ANCIENT_EXPRESSIONS)PORTRAITS[`${id}_${expression}`]={characterId:id,expression,label:name,src:`media/proto-v4/${PROTO_PORTRAIT_ASSETS[id]}`};
- CHARACTER_RENDER_PROFILES.characters[id]={tier:'MAIN',scale:1.06,anchorX:0,anchorY:6,framing:'upper-body',lockStateScale:true,facing:id==='proto_modern'?'left':'right'};
+ CHARACTER_RENDER_PROFILES.characters[id]={...PROTO_CHARACTER_LAYOUT,facing:id==='proto_modern'?'left':'right'};
 }
 const protoLine=({speaker,text,lineId,learningKeywordIds=[],emphasis=[],stageDirection,blackout=false,expression:cue})=>{
  let line;
