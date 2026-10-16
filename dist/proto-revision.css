@@ -47,6 +47,7 @@
 .proto-recap-heading em {flex:none;padding:5px 8px;border-radius:999px;background:rgba(255,255,255,.08);color:#d9e0e4;font-size:10px;font-style:normal;}
 .proto-scene-recap ul {display:flex;flex-wrap:wrap;gap:7px;margin:0;padding:0;list-style:none;}
 .proto-scene-recap li {padding:7px 10px;border:1px solid rgba(255,255,255,.09);border-radius:8px;background:rgba(255,255,255,.08);color:#f2eee5;font-size:12px;line-height:1.35;}
+.proto-recap-ready .dialogue-log {display:none;}
 @media(max-width:600px){.proto-scene-recap{margin:10px auto 14px;padding:15px 14px 16px;}.proto-recap-heading{gap:9px;margin-bottom:12px;}.proto-recap-icon{width:31px;height:31px;}.proto-scene-recap ul{gap:6px;}.proto-scene-recap li{font-size:11px;}}
 @media(max-width:600px){.modal.proto-recordbook{padding:19px;}.proto-book-tabs{top:-19px;}}
 .ancient-complete h1 {word-break:keep-all;}
@@ -61,7 +62,7 @@
 .proto-revision-game .choice{white-space:normal;overflow:visible;line-height:1.6;}
 .proto-choice-explanations{padding-left:24px;line-height:1.7;}
 .proto-choice-explanations li{margin:14px 0;}
-/* Portrait size and anchors intentionally inherit the shared Goryeo messenger
-   rules from dialogue.css so both eras use the same mobile composition. */
+/* Proto v2 portraits are authored as head-to-thigh cutouts and inherit the
+   shared Goryeo stage, side anchors and active/listening treatment verbatim. */
 .proto-revision-game.cinematic-black .proto-scene-position{visibility:hidden;}
 .proto-revision-game.proto-finale:after{content:"";position:absolute;inset:0;pointer-events:none;z-index:3;background:radial-gradient(ellipse at 50% 45%,#fff8cfb0,transparent 70%);}

@@ -265,6 +265,7 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
    const atEnd=(current.phase==='join'||current.phase==='main'&&!source.protoCommon.length)&&run().dialogueCursor>=entries.length;
    const recap=atEnd?'<aside class="proto-scene-recap" aria-label="이번 장면에서 배운 것"><div class="proto-recap-heading"><span class="proto-recap-icon" aria-hidden="true">◇</span><div><small>LEARNING SUMMARY</small><h3>이번 장면에서 배운 것</h3></div><em>'+source.protoSource.learning.length+'개 핵심</em></div><ul>'+source.protoSource.learning.map(item=>'<li>'+esc(item.keyword||item.title)+'</li>').join('')+'</ul></aside>':'';
    let html=beforeGame().replace('class="game conversation-game ','class="game conversation-game proto-revision-game ').replace('data-illustration=','data-proto-country="'+esc(source.protoCountry)+'" data-proto-place="'+esc(source.protoPlace)+'" data-proto-scene="'+esc(source.sceneId)+'" data-proto-phase="'+current.phase+'" data-illustration=');
+   if(recap)html=html.replace('proto-revision-game ','proto-revision-game proto-recap-ready ');
    html=html.replace('<small>'+esc(source.location)+'</small>','<div class="proto-place-label"><span>'+esc(source.protoCountry)+'</span><small>'+esc(source.protoPlace)+'</small></div>');
    if(current.phase==='outro'&&run().dialogueCursor===source.protoOutro.length)html=html.replace('proto-revision-game ','proto-revision-game proto-finale ');
    html=html.replace(/220년/g,'원삼국 시대');
