@@ -12,7 +12,7 @@ const server=http.createServer((req,res)=>{
  const context=await browser.newContext({viewport:{width:1440,height:1000},serviceWorkers:'block'}),page=await context.newPage(),errors=[];
  page.on('pageerror',error=>errors.push(error.message));
  await page.goto('http://127.0.0.1:'+server.address().port);
- await page.locator('[data-nav="ox"]').click();
+ await page.locator('.rev4-navigation [data-nav="ox"]').click();
  assert.equal(await page.locator('[data-ox-era]').count(),7,'desktop must show all seven era choices');
  await page.locator('[data-ox-era="joseon"]').click();
  assert.equal(await page.locator('.ox-feedback').count(),0,'answer and explanation must stay hidden before selection');

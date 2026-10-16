@@ -31,6 +31,7 @@
     "import:story-policy": "node scripts/build-story-exam-policy.cjs",
     "check:story-policy": "node scripts/build-story-exam-policy.cjs --check",
     "test:chapter-access": "node tests/story-access-policy-test.cjs && node tests/three-support-npc-test.cjs",
-    "test:proto:browser": "node tests/proto-character-layout-mobile-test.cjs && node tests/proto-v4-browser-test.cjs && node tests/proto-exam-repair-browser-test.cjs"
+    "test:proto:browser": "node tests/proto-character-layout-mobile-test.cjs && node tests/proto-v4-browser-test.cjs && node tests/proto-exam-repair-browser-test.cjs",
+    "test:rev4": "node tests/rev4-ui-test.cjs && node tests/rev4-browser-test.cjs"
   }
 }
