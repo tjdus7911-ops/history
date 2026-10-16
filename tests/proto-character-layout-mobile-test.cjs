@@ -35,8 +35,8 @@ async function portraitMetrics(page){
     await render(page,3);
     assert.deepEqual(await page.locator('.stage-character').evaluateAll(images=>images.map(image=>image.dataset.characterId)),['proto_modern'],`${width}: first visible monologue is not protagonist-only`);
     let metrics=await portraitMetrics(page);
-    assert.equal(metrics[0].position,'right');assert.equal(metrics[0].facing,'left');assert.equal(metrics[0].scale,'1.18');
-    assert(metrics[0].rect.height>=607&&metrics[0].rect.height<=609,`${width}: shared Proto portrait height ${metrics[0].rect.height}`);
+    assert.equal(metrics[0].position,'right');assert.equal(metrics[0].facing,'left');assert.equal(metrics[0].scale,'1');
+    assert(metrics[0].rect.height>=455&&metrics[0].rect.height<=457,`${width}: Rev.4 portrait container height ${metrics[0].rect.height}`);
     assert(await page.locator('.conversation-game').evaluate(element=>getComputedStyle(element).overflowX!=='visible'||document.documentElement.scrollWidth<=innerWidth+1));
     await render(page,4);
     assert.equal(await page.locator('.stage-character').count(),1,`${width}: left character returned before the NPC entrance`);
@@ -44,7 +44,7 @@ async function portraitMetrics(page){
     await render(page,5);
     metrics=await portraitMetrics(page);
     assert.deepEqual(metrics.map(item=>[item.id,item.position,item.facing]),[['proto_naru','left','right'],['proto_modern','right','left']],`${width}: first conversation staging`);
-    assert(metrics.every(item=>item.scale==='1.18'),'Proto cast does not share one scale');
+    assert(metrics.every(item=>item.scale==='1'),'Proto cast does not share the Rev.4 portrait scale');
     assert(Math.max(...metrics.map(item=>item.rect.height))-Math.min(...metrics.map(item=>item.rect.height))<1,'Proto cast heights vary in the same scene');
     const faceBottom=Math.max(...metrics.map(item=>item.rect.top+item.rect.height*.3)),bubbleTop=await page.locator('.speech-bubble:visible').evaluateAll(elements=>Math.min(...elements.map(element=>element.getBoundingClientRect().top)));
     assert(bubbleTop>faceBottom,`${width}: dialogue overlaps the portrait face zone (${bubbleTop}/${faceBottom})`);
@@ -55,10 +55,10 @@ async function portraitMetrics(page){
       await page.evaluate(()=>{state=INITIAL();state.run.started=true;state.run.currentChapter='ch01';state.run.storyId='house';state.run.dialogueSceneId='house';state.run.dialogueCursor=2;screen='game';render();});
       await page.locator('.stage-character').first().waitFor({state:'visible'});await page.locator('.stage-character').evaluateAll(images=>Promise.all(images.map(image=>image.decode())));
       const goryeoHeight=Math.max(...(await portraitMetrics(page)).map(item=>item.rect.height)),protoHeight=metrics[0].rect.height;
-      assert(protoHeight>=goryeoHeight&&protoHeight<=goryeoHeight*1.2,`Proto ${protoHeight}px and Goryeo ${goryeoHeight}px portrait stages diverge`);
+      assert(Math.abs(protoHeight-goryeoHeight)<=12,`Proto ${protoHeight}px and Goryeo ${goryeoHeight}px visible portrait heights diverge`);
       await page.screenshot({path:path.join(shots,'goryeo-reference-390.png'),fullPage:true});
     }
     assert.deepEqual(errors,[]);await context.close();
   }
-  console.log('PASS: Proto uses one enlarged mobile portrait rule; opening monologue is protagonist-only and Naru enters on the first NPC line at 390/412px.');
+  console.log('PASS: Proto and Goryeo share the 250x456 Rev.4 portrait rule; the opening monologue is protagonist-only and Naru enters on the first NPC line at 390/412px.');
 }finally{if(browser)await browser.close();server.close();}})().catch(error=>{console.error(error);process.exitCode=1;});
