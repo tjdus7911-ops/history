@@ -14,11 +14,11 @@ const {
 
 const repoRoot = path.resolve(__dirname, '..');
 const live = validateDeploymentContract(repoRoot);
-assert.equal(live.origin.assetCount, 8709);
-assert.equal(live.origin.totalBytes, 1297881666);
-assert.equal(live.origin.currentSnapshot.assetCount, 4494);
-assert.equal(live.origin.currentSnapshot.totalBytes, 918201788);
-assert.equal(live.index.size, 8709);
+assert.equal(live.origin.assetCount, 8647);
+assert.equal(live.origin.totalBytes, 1228771974);
+assert.equal(live.origin.previousSnapshot.assetCount, 4494);
+assert.equal(live.origin.previousSnapshot.totalBytes, 918201788);
+assert.equal(live.index.size, 8647);
 assert(externalAssetInfo(repoRoot, 'dist/assets/exams/catalog/detail/official-79-advanced-01.0a4f704ec51c.webp'));
 assert(externalAssetInfo(repoRoot, 'dist/assets/exams/catalog/detail/official-79-advanced-01.ca7342c3fb31.webp'));
 assert(externalAssetInfo(repoRoot, 'dist/assets/ancient/backgrounds/ancient-modern-museum.jpg'));
@@ -28,8 +28,8 @@ const pinned = validatePinnedSnapshot(repoRoot);
 // branch-scoped shallow checkout, so the sibling asset-snapshot commit may not
 // be present there; the checked-in manifest remains the deployment contract.
 if (pinned.available) {
-  assert.equal(pinned.snapshot.entries.length, 8709);
-  assert.equal(pinned.snapshot.totalBytes, 1297881666);
+  assert.equal(pinned.snapshot.entries.length, 8647);
+  assert.equal(pinned.snapshot.totalBytes, 1228771974);
 }
 
 const vercel = JSON.parse(fs.readFileSync(path.join(repoRoot, 'vercel.json'), 'utf8'));

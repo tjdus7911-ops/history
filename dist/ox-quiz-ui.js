@@ -335,7 +335,10 @@ const renderContentBeforeOX=renderContent;
 renderContent=function(){
  if(screen==='ox')return oxPage();
  let html=renderContentBeforeOX();
- if(screen==='records')html=html.replace('<section><h2>시대별 기출 기록</h2>',oxRecordSection()+'<section><h2>시대별 기출 기록</h2>');
+ if(screen==='records'){
+  const marker='<section class="official-record-era-section">',legacyMarker='<section><h2>시대별 기출 기록</h2>';
+  html=html.includes(marker)?html.replace(marker,oxRecordSection()+marker):html.replace(legacyMarker,oxRecordSection()+legacyMarker);
+ }
  return html;
 };
 if(typeof v2QuestionRow==='function'){
