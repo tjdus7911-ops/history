@@ -1,0 +1,102 @@
+/* Rev.7 theme layer — presentation only (no data, no markup). Loaded after every other stylesheet.
+ * Re-skins the exam library, OX quiz, wrong-answer note, records and quiz screens:
+ * white page, navy ink, coral = action / selected, teal = progress / done, small radii, hairline dividers. */
+:root {
+  --ed-paper: #ffffff;
+  --ed-ink: #243242;
+  --ed-muted: #849098;
+  --ed-line: #e8edee;
+  --ed-gold: #e9513b;
+  --ed-display: 'Noto Serif KR', 'Gowun Batang', Georgia, serif;
+}
+button:focus-visible, select:focus-visible, [tabindex]:focus-visible { outline-color: var(--r7-coral); }
+
+/* page headers */
+.ed-header h1, .official-home-header h1, .ed-study .topbar h1 { font-family: var(--r7-serif); font-weight: 700; letter-spacing: -0.02em; color: var(--r7-ink); }
+.ed-header p, .official-home-header p, .ed-study .topbar .eyebrow { color: var(--r7-faint); }
+.ed-profile { background: var(--r7-bg); border: 1px solid var(--r7-line); border-radius: var(--r7-r-lg); }
+
+/* primary / secondary buttons */
+.primary, .quiz-submit-row .confirm-answer, .editorial-quiz .primary.next, .official-round-action.primary, button.primary {
+  background: var(--r7-coral); color: #fff; border-radius: var(--r7-r-lg); box-shadow: none; border: 0;
+}
+.primary:active, button.primary:active { background: var(--r7-coral-press); }
+.quiz-submit-row .secondary, button.secondary { background: var(--r7-bg); border: 1px solid var(--r7-line-strong); color: var(--r7-ink); border-radius: var(--r7-r-md); }
+.quiz-submit-row button { border-radius: var(--r7-r-lg); }
+
+/* tab rows: coral underline */
+.ed-tabs button[aria-selected=true], .ed-tabs button[aria-pressed=true] { color: var(--r7-coral-ink); border-bottom-color: var(--r7-coral); }
+.official-tabs { display: flex; border-bottom: 1px solid var(--r7-line); background: none; gap: 0; padding: 0; border-radius: 0; box-shadow: none; }
+.official-tabs button { flex: 1; min-height: 46px; background: none; border: 0; border-bottom: 2px solid transparent; border-radius: 0; color: var(--r7-faint); font-weight: 500; }
+.official-tabs button[aria-selected=true] { color: var(--r7-coral-ink); border-bottom-color: var(--r7-coral); background: none; font-weight: 700; box-shadow: none; }
+
+/* sub-filter chips (심화 / 기본, wrong-note filters, period tabs) */
+.official-round-levels { display: flex; gap: 8px; padding: 0; background: none; border: 0; border-radius: 0; box-shadow: none; margin: 14px 0 6px; }
+.official-round-levels button { flex: 0 0 auto; min-height: 36px; padding: 0 16px; border-radius: var(--r7-r-md); border: 1px solid var(--r7-line-strong); background: var(--r7-bg); color: var(--r7-sub); font-weight: 500; box-shadow: none; }
+.official-round-levels button[aria-selected=true] { background: var(--r7-ink); border-color: var(--r7-ink); color: #fff; font-weight: 700; }
+.v2-wrong-tabs button, .period-tabs button { border-radius: var(--r7-r-md); background: var(--r7-bg); border: 1px solid var(--r7-line-strong); color: var(--r7-sub); }
+.v2-wrong-tabs button.selected, .period-tabs button[aria-pressed=true] { background: var(--r7-ink); border-color: var(--r7-ink); color: #fff; }
+
+/* exam library: roomy hairline rows instead of cards */
+.official-home-service > span { color: var(--r7-faint); }
+.official-home-service button, .official-home-service a { border-radius: var(--r7-r-md); border: 1px solid var(--r7-line); background: var(--r7-bg); box-shadow: none; color: var(--r7-ink); }
+.official-round-heading small { color: var(--r7-faint); }
+.official-round-heading h2 { font-family: var(--r7-ui); color: var(--r7-ink); }
+.official-round-grid { display: block; gap: 0; }
+.official-round-row { background: none; border: 0; border-bottom: 1px solid var(--r7-line); border-radius: 0; box-shadow: none; padding: 22px 0; }
+.official-round-overview { margin-bottom: 8px; }
+.official-round-title h2 { font-family: var(--r7-ui); font-size: 20px; font-weight: 700; color: var(--r7-ink); }
+.official-round-title small { color: var(--r7-sub); }
+.official-round-meta { margin-bottom: 14px; color: var(--r7-faint); }
+.official-pass-rate-badge { background: var(--r7-sunken); color: var(--r7-sub); border-radius: var(--r7-r-sm); }
+.official-edition-status { border-radius: var(--r7-r-sm); background: var(--r7-sunken); color: var(--r7-sub); }
+.official-edition-status.complete, .official-edition-status.done { background: var(--r7-teal-soft); color: var(--r7-teal-ink); }
+.official-edition-status.active, .official-edition-status.progress { background: var(--r7-coral-soft); color: var(--r7-coral-ink); }
+.official-card-progress { background: var(--r7-sunken); border-radius: 2px; }
+.official-card-progress i { background: var(--r7-teal); border-radius: 2px; }
+.official-round-action { border-radius: var(--r7-r-md); min-height: 40px; font-weight: 600; }
+
+/* OX quiz */
+.ox-page { color: var(--r7-ink); }
+.ox-main-heading small, .ox-section-title span { color: var(--r7-faint); letter-spacing: .08em; }
+.ox-main-heading h2, .ox-section h2 { font-family: var(--r7-ui); font-size: 17px; color: var(--r7-ink); }
+.ox-resume { background: var(--r7-coral-soft); border: 0; border-radius: 0; margin: 0 -20px 24px; padding: 18px 20px; width: auto; }
+.ox-resume>strong { color: var(--r7-coral-ink); }
+.ox-era-list { border-top: 0; }
+.ox-era-card { min-height: 0; padding: 22px 0; border-bottom-color: var(--r7-line); }
+.ox-era-copy { gap: 6px; }
+.ox-era-copy>b { font-size: 16px; color: var(--r7-ink); }
+.ox-era-metrics { margin-top: 6px; }
+.ox-era-metrics em { border-radius: var(--r7-r-sm); background: var(--r7-sunken); color: var(--r7-sub); font-size: 11px; padding: 3px 8px; }
+.ox-era-card>i, .ox-tool-link>i { color: var(--r7-faint); }
+.ox-home-analysis-body, .ox-tool-card { border-radius: var(--r7-r-lg); border-color: var(--r7-line); }
+.ox-analysis-heading>button { color: var(--r7-coral-ink); }
+
+/* wrong-answer note + records + quiz */
+.ed-study select, .v2-filters select { border-radius: var(--r7-r-md); border-color: var(--r7-line-strong); background: var(--r7-bg); }
+.v2-question-row { border-bottom-color: var(--r7-line); padding: 22px 0; }
+.official-record-overview { border-radius: var(--r7-r-lg); box-shadow: none; border: 1px solid var(--r7-line); background: var(--r7-bg); }
+.official-record-learning-empty { background: var(--r7-sunken); border: 0; border-radius: var(--r7-r-lg); }
+.official-record-learning-empty .ed-link, .ed-link { color: var(--r7-coral-ink); }
+.official-record-exams, .official-record-empty, .readiness { background: var(--r7-bg); border: 1px solid var(--r7-line); border-radius: var(--r7-r-lg); box-shadow: none; }
+.official-record-empty > div { background: var(--r7-sunken); border-radius: var(--r7-r-md); }
+.official-record-section-heading small, .official-record-empty small { color: var(--r7-faint); }
+.gauge-value { stroke: var(--r7-teal); }
+.official-weakness-meter, .weak-meter { background: var(--r7-sunken); }
+.official-weakness-meter i, .weak-meter i { background: var(--r7-teal); }
+.progress span { background: var(--r7-teal); }
+.rank { background: var(--r7-ink); }
+
+/* quiz answers (exam session, OX, wrong retry) */
+.ed-answer-options .choice { border: 1px solid var(--r7-line); border-radius: var(--r7-r-md); box-shadow: none; background: var(--r7-bg); }
+.answer-number { border-radius: var(--r7-r-sm); background: var(--r7-sunken); }
+.ed-answer-options .choice.picked { border-color: var(--r7-coral); background: var(--r7-coral-soft); }
+.ed-answer-options .choice.picked .answer-number { background: var(--r7-coral); }
+.ed-answer-options .choice.correct { border-color: var(--r7-teal); background: var(--r7-teal-soft); }
+.ed-answer-options .choice.wrong { border-color: var(--r7-danger); background: var(--r7-danger-soft); }
+.editorial-quiz .feedback { border-top-color: var(--r7-line-strong); }
+.editorial-quiz .feedback h3 { color: var(--r7-teal-ink); }
+.official-pill { background: var(--r7-teal-soft); color: var(--r7-teal-ink); border-radius: var(--r7-r-sm); }
+.practice-pill { background: var(--r7-sunken); color: var(--r7-sub); border-radius: var(--r7-r-sm); }
+.question-set-summary { background: var(--r7-sunken); border-radius: var(--r7-r-md); }
+.modal { background: var(--r7-bg); color: var(--r7-ink); border-radius: var(--r7-r-xl); }

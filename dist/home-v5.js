@@ -1,14 +1,14 @@
-/* Home v5 — mobile-first home.
+/* Home v5 / Rev.7 — mobile-first home.
  * Loaded after every other UI layer so it only replaces home().
  * Story, scoring, exam sessions and saves are untouched: every button below
  * reuses an existing data-* action (data-era-resume, data-era-open, data-nav, data-review).
- * New persisted field: meta().examTargetDate ("YYYY-MM-DD"), set by the user. */
+ * D-day: reads meta().examTargetDate ("YYYY-MM-DD") when the data provides it; there is no in-app date setting. */
 (function () {
   'use strict';
   if (typeof document === 'undefined' || typeof window === 'undefined' || typeof setInterval !== 'function') return;
   if (typeof home !== 'function' || typeof render !== 'function' || typeof LEARNING_ERAS === 'undefined') return;
 
-  let sheet = null; // null | 'dday' | 'seasons'
+  let sheet = null; // null | 'seasons'
 
   const DAY = 86400000;
   const startOfDay = (d) => new Date(d.getFullYear(), d.getMonth(), d.getDate());
@@ -30,12 +30,12 @@
   }
 
   function cheerLine(d, hasActivity) {
-    if (d.kind === 'today') return '오늘이 시험일이에요.<br>지금까지 쌓은 만큼이면 충분해요.';
-    if (d.kind === 'set' && d.days <= 7) return '마지막 한 주,<br>기출로 감각만 지켜요.';
-    if (d.kind === 'set' && d.days <= 30) return '시험이 한 달 안으로 다가왔어요.<br>기출로 감각을 가볍게 이어가요.';
-    if (d.kind === 'set') return '차근차근,<br>오늘 몫만큼 쌓아가요.';
-    if (d.kind === 'past') return '시험 보느라 수고했어요.<br>다음 시험일을 정해 볼까요?';
-    return hasActivity ? '오늘도 한 장면,<br>한 문제씩 이어가요.' : '오늘 한 장면이면<br>충분히 시작이에요.';
+    if (d.kind === 'today') return '오늘이 시험일이에요. 지금까지 쌓은 만큼이면 충분해요.';
+    if (d.kind === 'set' && d.days <= 7) return '마지막 한 주, 기출로 감각만 지켜요.';
+    if (d.kind === 'set' && d.days <= 30) return '시험이 한 달 안으로 다가왔어요. 기출로 감각을 가볍게 이어가요.';
+    if (d.kind === 'set') return '차근차근, 오늘 몫만큼 쌓아가요.';
+    if (d.kind === 'past') return '시험 보느라 수고했어요. 오늘도 한 문제씩 이어가요.';
+    return hasActivity ? '오늘도 한 장면, 한 문제씩 이어가요.' : '오늘 한 장면이면 충분히 시작이에요.';
   }
 
   function heroEra() {
@@ -87,131 +87,154 @@
   const ico = {
     chevron: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>',
     user: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.4"/><path d="M5 20.5v-1.2a6.5 6.5 0 0 1 14 0v1.2"/></svg>',
-    cal: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M8 3v4M16 3v4M3.5 10h17"/></svg>',
     paper: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h8l4 4V20a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 6 20V5A1.5 1.5 0 0 1 7 3.5Z"/><path d="M14.5 3.5V8H19M9.5 12.5h6M9.5 16h4"/></svg>',
+    ox: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="8" r="3.6"/><path d="m14.5 14.5 6 6M20.5 14.5l-6 6"/></svg>',
     redo: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.4-5.5"/><path d="M4 4v4.5h4.5"/></svg>',
     check: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>',
-    swap: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h13l-3-3M19 16H6l3 3"/></svg>',
     close: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>',
   };
 
-  function ddayChip(d) {
-    if (d.kind === 'set') return '<button class="hv-chip hv-chip-dday" data-hv-sheet="dday" aria-label="시험일 변경, ' + (d.date.getMonth() + 1) + '월 ' + d.date.getDate() + '일, ' + d.days + '일 남음">' + ico.cal + '<b>D-' + d.days + '</b></button>';
-    if (d.kind === 'today') return '<button class="hv-chip hv-chip-dday today" data-hv-sheet="dday" aria-label="시험일 변경">' + ico.cal + '<b>D-DAY</b></button>';
-    return '<button class="hv-chip hv-chip-ghost" data-hv-sheet="dday" aria-label="시험일 설정">' + ico.cal + '<span>' + (d.kind === 'past' ? '시험일 다시 설정' : '시험일 설정') + '</span></button>';
+  /* ---------- Rev.7 derived numbers (all computed from saved learning events) ---------- */
+  function studyStats() {
+    const events = (meta().learningEvents || []).filter((e) => e && e.answeredAt);
+    const days = new Set(events.map((e) => toKey(new Date(e.answeredAt))));
+    const today = toKey(new Date());
+    const todayCount = events.filter((e) => toKey(new Date(e.answeredAt)) === today).length;
+    let streak = 0;
+    const cursor = startOfDay(new Date());
+    if (!days.has(toKey(cursor))) cursor.setDate(cursor.getDate() - 1);
+    while (days.has(toKey(cursor))) { streak += 1; cursor.setDate(cursor.getDate() - 1); }
+    const recent = events.slice(-50);
+    const accuracy = recent.length >= 5 ? Math.round((recent.filter((e) => e.correct).length / recent.length) * 100) : null;
+    return { streak, todayCount, accuracy, any: events.length > 0 };
   }
 
-  function heroHTML(e) {
-    const r = seasonRun(e), started = Boolean(r?.started), pct = eraProgress(e.id);
+  function examHistoryCount() {
+    const r = meta().officialExamResults;
+    return Array.isArray(r) ? r.length : r && typeof r === 'object' ? Object.keys(r).length : 0;
+  }
+
+  function oxState() {
+    const ox = meta().ox || {};
+    const a = ox.activeSession;
+    if (a && Array.isArray(a.questionIds) && a.questionIds.length) {
+      const idx = Math.min(a.questionIds.length, Number(a.index || 0) + 1);
+      return { kind: 'active', text: 'OX 퀴즈 ' + idx + ' / ' + a.questionIds.length + '번째' };
+    }
+    const any = (ox.history && ox.history.length) || ox.lastSession || (ox.completedSessions && (Array.isArray(ox.completedSessions) ? ox.completedSessions.length : Number(ox.completedSessions)));
+    return { kind: any ? 'done' : 'none' };
+  }
+
+  function ddayRow(d, cheerHtml) {
+    const label = d.kind === 'today' ? 'D-DAY' : d.kind === 'set' ? 'D-' + d.days : '';
+    const dateText = d.date ? (d.date.getMonth() + 1) + '월 ' + d.date.getDate() + '일 (' + '일월화수목금토'[d.date.getDay()] + ')' : '';
+    return '<section class="hv-count" aria-label="시험 일정과 응원">'
+      + (label ? '<div class="hv-count-row"><span class="hv-count-name">한능검</span><b class="hv-count-d">' + label + '</b><span class="hv-count-date">' + dateText + '</span></div>' : '')
+      + '<p class="hv-cheer">' + cheerHtml + '</p></section>';
+  }
+
+  /* hero rail: one portrait card per era, ~1.5 cards visible */
+  function eraCard(e, current) {
+    const r = seasonRun(e), started = Boolean(r?.started), pct = e.available ? eraProgress(e.id) : 0;
     const ch = CHAPTERS[r?.currentChapter];
-    const scene = STORIES[r?.pending?.sourceSceneId || r?.storyId];
     const done = pct >= 100;
-    const where = started && ch ? 'CH.' + ch.number + ' ' + esc(ch.title) + (scene?.title ? ' · ' + esc(scene.title) : '') : '';
-    const action = started && !done ? 'data-era-resume="' + e.id + '"' : 'data-era-open="' + e.id + '"';
-    const label = done ? '챕터 다시 보기' : started ? '이어하기' : '이야기 시작하기';
-    const art = e.bannerAsset ? '<img class="hv-hero-art" src="' + esc(e.bannerAsset) + '" alt="" fetchpriority="high" decoding="async">' : '';
-    return '<section class="hv-hero" style="--era-accent:' + esc(e.accent || '#3450e4') + '" aria-label="' + esc(e.title) + '">'
-      + art + '<div class="hv-hero-shade"></div>'
-      + '<div class="hv-hero-top"><span class="hv-tag">' + (started ? (done ? '완료' : '진행 중') : '새 이야기') + '</span>'
-      + '<button class="hv-glass" data-hv-sheet="seasons" aria-label="시대 바꾸기">' + ico.swap + '<span>시대 바꾸기</span></button></div>'
-      + '<div class="hv-hero-body"><p class="hv-years">' + esc(e.years) + '</p>'
-      + '<h2 class="hv-title"><span>눈떠보니</span> ' + esc(e.name) + '</h2>'
-      + (started
-        ? (where ? '<p class="hv-where">' + where + '</p>' : '')
-          + '<div class="hv-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '" aria-label="' + esc(e.name) + ' 진행률"><i style="width:' + pct + '%"></i></div><p class="hv-pct">전체 ' + pct + '% 진행</p>'
-        : '<p class="hv-where hv-desc">' + esc(e.description) + '</p>')
-      + '<div class="hv-actions"><button class="hv-btn hv-btn-primary" ' + action + '>' + label + '</button>'
-      + (started ? '<button class="hv-btn hv-btn-glass" data-era-open="' + e.id + '">챕터</button>' : '')
-      + '</div></div></section>';
+    const sub = !e.available ? esc(e.years) + ' · 준비 중'
+      : started && ch ? 'CH.' + ch.number + ' ' + esc(ch.title) : esc(e.years);
+    const tag = !e.available ? '준비 중' : started ? (done ? '완료' : '이어서 학습') : '시작하기';
+    const action = !e.available ? 'disabled aria-disabled="true"' : started && !done ? 'data-era-resume="' + e.id + '"' : 'data-era-open="' + e.id + '"';
+    const label = !e.available ? '준비 중' : done ? '다시 보기' : started ? '이어하기' : '시작하기';
+    const art = e.bannerAsset ? '<img class="hv-card-art" src="' + esc(e.bannerAsset) + '" alt="" ' + (current ? 'fetchpriority="high" ' : 'loading="lazy" ') + 'decoding="async" onerror="this.remove()">' : '';
+    return '<article class="hv-era' + (e.available ? '' : ' is-soon') + (current ? ' is-current' : '') + '" style="--era-accent:' + esc(e.accent || '#169B8D') + '" aria-label="눈떠보니 ' + esc(e.name) + '">'
+      + art + '<div class="hv-era-shade"></div>'
+      + '<div class="hv-era-body"><div class="hv-era-tags"><span class="hv-tag' + (started && !done ? ' is-on' : '') + '">' + tag + '</span></div>'
+      + '<h2 class="hv-era-title">눈떠보니 ' + esc(e.name) + '</h2>'
+      + '<p class="hv-era-sub">' + sub + '</p>'
+      + (started && e.available ? '<div class="hv-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '" aria-label="' + esc(e.name) + ' 진행률"><i style="width:' + pct + '%"></i></div>' : '')
+      + '<button class="hv-era-btn" ' + action + '>' + label + '</button></div></article>';
   }
 
-  function examHTML() {
-    const a = activeExam();
+  function railHTML(current) {
+    const eras = LEARNING_ERAS.slice().sort((a, b) => a.order - b.order);
+    const ordered = [current].concat(eras.filter((e) => e.id !== current.id));
+    return '<section class="hv-rail-wrap" aria-label="시대별 이야기">'
+      + '<div class="hv-rail" role="list" tabindex="0">' + ordered.map((e) => '<div role="listitem" class="hv-rail-item">' + eraCard(e, e.id === current.id) + '</div>').join('') + '</div>'
+      + '<div class="hv-rail-foot"><div class="hv-dots" aria-hidden="true">' + ordered.map((_, i) => '<i class="' + (i === 0 ? 'on' : '') + '"></i>').join('') + '</div>'
+      + '<button class="hv-textbtn" data-hv-sheet="seasons">시대 전체</button></div></section>';
+  }
+
+  /* practice rows: pill = action in the row, chevron = plain link */
+  const row = (kind, iconClass, icon, title, sub, attrs, pill) =>
+    '<button class="hv-row hv-row-' + kind + '" ' + attrs + '><span class="hv-ico ' + iconClass + '">' + icon + '</span>'
+    + '<span class="hv-row-text"><b>' + title + '</b><small>' + sub + '</small></span>'
+    + (pill ? '<span class="hv-pill">' + pill + '</span>' : '<span class="hv-chev">' + ico.chevron + '</span>') + '</button>';
+
+  function practiceHTML() {
+    const a = activeExam(), pool = wrongPool(), ox = oxState();
+    let exam;
     if (a) {
-      const pct = Math.round((a.answered / a.total) * 100);
-      return '<section class="hv-card hv-exam is-active" aria-label="진행 중인 시험">'
-        + '<div class="hv-card-head"><span class="hv-icon blue">' + ico.paper + '</span><div class="hv-card-text">'
-        + '<p class="hv-eyebrow">시험 이어하기</p><h3>' + esc(a.title) + '</h3></div></div>'
-        + '<p class="hv-meta">' + a.answered + ' / ' + a.total + '문항 답변'
-        + (a.remaining != null ? ' · 남은 시간 ' + clock(a.remaining) + (a.paused ? ' (일시정지)' : '') : '') + '</p>'
-        + '<div class="hv-progress slim" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '" aria-label="시험 답변 진행률"><i style="width:' + pct + '%"></i></div>'
-        + '<button class="hv-btn hv-btn-tonal" data-nav="exam-library">이어서 풀기</button></section>';
+      exam = row('exam', 'coral', ico.paper, '기출문제 이어 풀기',
+        esc(a.title) + ' · ' + a.answered + '/' + a.total + '문항' + (a.remaining != null ? ' · 남은 ' + (a.paused ? '시간 정지' : Math.ceil(a.remaining / 60000) + '분') : ''),
+        'data-nav="exam-library"', '이어 풀기');
+    } else if (examHistoryCount() > 0) {
+      exam = row('exam', 'coral', ico.paper, '기출문제', '회차별·시대별 실제 기출로 실전 감각을 길러요', 'data-nav="exam-library"', '');
+    } else {
+      exam = row('exam', 'coral', ico.paper, '기출문제', '아직 기출 문제를 풀지 않았어요 : (', 'data-nav="exam-library"', '시작하기');
     }
-    return '<button class="hv-card hv-row" data-nav="exam-library"><span class="hv-icon blue">' + ico.paper + '</span>'
-      + '<span class="hv-card-text"><h3>기출문제 풀기</h3><small>회차별·시대별 실제 기출로 실전 감각을 길러요</small></span>'
-      + '<span class="hv-chev">' + ico.chevron + '</span></button>';
+    let oxRow;
+    if (ox.kind === 'active') oxRow = row('ox', 'teal', ico.ox, 'OX 퀴즈 이어 풀기', esc(ox.text), 'data-nav="ox"', '이어 풀기');
+    else if (ox.kind === 'done') oxRow = row('ox', 'teal', ico.ox, 'OX 퀴즈', '핵심 개념을 빠르게 확인해요', 'data-nav="ox"', '');
+    else oxRow = row('ox', 'teal', ico.ox, 'OX 퀴즈', '아직 푼 OX 퀴즈가 없어요 : (', 'data-nav="ox"', 'OX 풀기');
+    let wrong;
+    if (pool.length) wrong = row('wrong', 'amber', ico.redo, '오답 복습', '틀린 문제 ' + pool.length + '개 · 최근에 틀린 것부터', 'data-review="' + esc(pool[0]) + '"', '');
+    else {
+      const hadAny = (meta().wrongQuestionIds || []).length > 0;
+      wrong = '<div class="hv-row hv-row-wrong is-quiet" role="group" aria-label="오답 복습"><span class="hv-ico amber">' + ico.check + '</span><span class="hv-row-text"><b>' + (hadAny ? '오답을 모두 복습했어요' : '복습할 오답이 없어요') + '</b><small>' + (hadAny ? '새로 틀린 문제가 생기면 여기에 모여요' : '틀린 문제는 여기에 모여요') + '</small></span></div>';
+    }
+    return '<section class="hv-section" aria-label="실전 학습"><h2 class="hv-h">실전 학습</h2><div class="hv-list">' + exam + oxRow + wrong + '</div></section>';
   }
 
-  function reviewHTML() {
-    const pool = wrongPool();
-    if (pool.length) {
-      return '<button class="hv-card hv-row" data-review="' + esc(pool[0]) + '"><span class="hv-icon rose">' + ico.redo + '</span>'
-        + '<span class="hv-card-text"><h3>오답 복습</h3><small>틀린 문제 ' + pool.length + '개 · 최근에 틀린 것부터</small></span>'
-        + '<span class="hv-chev">' + ico.chevron + '</span></button>';
-    }
-    const hadAny = (meta().wrongQuestionIds || []).length > 0;
-    return '<section class="hv-card hv-row is-quiet" aria-label="오답 복습"><span class="hv-icon mint">' + ico.check + '</span>'
-      + '<span class="hv-card-text"><h3>' + (hadAny ? '오답을 모두 복습했어요' : '복습할 오답이 없어요') + '</h3>'
-      + '<small>' + (hadAny ? '새로 틀린 문제가 생기면 여기에 모여요' : '기출을 풀다 틀린 문제는 여기에 모여요') + '</small></span></section>';
+  function metricsHTML() {
+    const s = studyStats();
+    const cell = (l, v, u) => '<div class="hv-metric"><small>' + l + '</small><b>' + v + (u ? '<em>' + u + '</em>' : '') + '</b></div>';
+    return '<section class="hv-metrics" aria-label="학습 현황">' + cell('연속 학습', s.streak, '일') + cell('오늘 푼 문제', s.todayCount, '문항') + cell('최근 정답률', s.accuracy == null ? '-' : s.accuracy, s.accuracy == null ? '' : '%') + '</section>';
   }
 
-  function sheetHTML(d) {
-    if (sheet === 'dday') {
-      const today = toKey(new Date()), cur = d.kind === 'set' || d.kind === 'today' ? meta().examTargetDate : '';
-      return '<div class="hv-scrim" data-hv-close="1"></div><section class="hv-sheet" role="dialog" aria-modal="true" aria-labelledby="hv-sheet-title">'
-        + '<div class="hv-sheet-grip" aria-hidden="true"></div>'
-        + '<div class="hv-sheet-head"><h2 id="hv-sheet-title">시험일 설정</h2><button class="hv-x" data-hv-close="1" aria-label="닫기">' + ico.close + '</button></div>'
-        + '<p class="hv-sheet-desc">공식 시험 공고에서 확인한 응시 예정일을 입력해 주세요. 입력한 날짜는 이 기기에만 저장돼요.</p>'
-        + '<label class="hv-field"><span>응시 예정일</span><input type="date" id="hv-dday-input" min="' + today + '" value="' + esc(cur) + '"></label>'
-        + '<button class="hv-btn hv-btn-primary hv-full" data-hv-save-dday="1">저장</button>'
-        + (cur ? '<button class="hv-btn hv-btn-text hv-full" data-hv-clear-dday="1">시험일 삭제</button>' : '')
-        + '</section>';
-    }
-    if (sheet === 'seasons') {
-      return '<div class="hv-scrim" data-hv-close="1"></div><section class="hv-sheet" role="dialog" aria-modal="true" aria-labelledby="hv-sheet-title">'
-        + '<div class="hv-sheet-grip" aria-hidden="true"></div>'
-        + '<div class="hv-sheet-head"><h2 id="hv-sheet-title">시대 선택</h2><button class="hv-x" data-hv-close="1" aria-label="닫기">' + ico.close + '</button></div>'
-        + '<ul class="hv-seasons">' + LEARNING_ERAS.slice().sort((a, b) => a.order - b.order).map((e) => {
-          const started = Boolean(seasonRun(e)?.started), pct = eraProgress(e.id);
-          const right = !e.available ? '<em class="hv-soon">준비 중</em>' : started ? '<b class="hv-season-pct">' + pct + '%</b>' : '<em class="hv-new">시작 전</em>';
-          return '<li><button class="hv-season" ' + (e.available ? 'data-era-open="' + e.id + '"' : 'disabled aria-disabled="true"') + '>'
-            + '<span class="hv-season-text"><b>눈떠보니 ' + esc(e.name) + '</b><small>' + esc(e.years) + '</small></span>' + right + '</button></li>';
-        }).join('') + '</ul></section>';
-    }
-    return '';
+  function sheetHTML() {
+    if (sheet !== 'seasons') return '';
+    return '<div class="hv-scrim" data-hv-close="1"></div><section class="hv-sheet" role="dialog" aria-modal="true" aria-labelledby="hv-sheet-title">'
+      + '<div class="hv-sheet-grip" aria-hidden="true"></div>'
+      + '<div class="hv-sheet-head"><h2 id="hv-sheet-title">시대 선택</h2><button class="hv-x" data-hv-close="1" aria-label="닫기">' + ico.close + '</button></div>'
+      + '<ul class="hv-seasons">' + LEARNING_ERAS.slice().sort((a, b) => a.order - b.order).map((e) => {
+        const started = Boolean(seasonRun(e)?.started), pct = eraProgress(e.id);
+        const right = !e.available ? '<em class="hv-soon">준비 중</em>' : started ? '<b class="hv-season-pct">' + pct + '%</b>' : '<em class="hv-new">시작 전</em>';
+        return '<li><button class="hv-season" ' + (e.available ? 'data-era-open="' + e.id + '"' : 'disabled aria-disabled="true"') + '>'
+          + '<span class="hv-season-text"><b>눈떠보니 ' + esc(e.name) + '</b><small>' + esc(e.years) + '</small></span>' + right + '</button></li>';
+      }).join('') + '</ul></section>';
   }
 
   /* ---------- home() ---------- */
+  const WEEK = '일월화수목금토';
   home = function () {
     const e = heroEra(), d = ddayState();
     const hasActivity = Boolean(seasonRun(e)?.started) || (meta().learningEvents || []).length > 0;
+    const now = new Date();
     return '<div class="hv">'
-      + '<header class="hv-top"><div class="hv-top-row"><span class="hv-brand">눈떠보니 한국사</span>'
-      + '<div class="hv-top-actions">' + ddayChip(d)
-      + '<button class="hv-icon-btn" data-action="status" aria-label="내 상태 보기">' + ico.user + '</button></div></div>'
-      + '<h1 class="hv-cheer">' + cheerLine(d, hasActivity) + '</h1></header>'
-      + heroHTML(e)
-      + '<div class="hv-stack">' + examHTML() + reviewHTML() + '</div>'
-      + sheetHTML(d) + '</div>';
+      + '<header class="hv-top"><div><p class="hv-date">' + (now.getMonth() + 1) + '월 ' + now.getDate() + '일 ' + WEEK[now.getDay()] + '요일</p><h1 class="hv-brand">눈떠보니 한국사</h1></div>'
+      + '<button class="hv-icon-btn" data-action="status" aria-label="내 상태 보기">' + ico.user + '</button></header>'
+      + railHTML(e)
+      + ddayRow(d, cheerLine(d, hasActivity))
+      + practiceHTML()
+      + metricsHTML()
+      + sheetHTML() + '</div>';
   };
 
   /* ---------- interactions ---------- */
   document.addEventListener('click', (ev) => {
-    const t = ev.target?.closest?.('[data-hv-sheet],[data-hv-close],[data-hv-save-dday],[data-hv-clear-dday]');
+    const t = ev.target?.closest?.('[data-hv-sheet],[data-hv-close]');
     const d = t?.dataset || {};
-    if (d.hvSheet || d.hvClose || d.hvSaveDday || d.hvClearDday) {
+    if (d.hvSheet || d.hvClose) {
       ev.stopImmediatePropagation();
-      if (d.hvSheet) { sheet = d.hvSheet; render(); return; }
-      if (d.hvClose) { sheet = null; render(); return; }
-      if (d.hvSaveDday) {
-        const input = document.getElementById('hv-dday-input');
-        const day = parseKey(input?.value);
-        if (!day) { input?.focus(); return; }
-        if (day < startOfDay(new Date())) { toast('오늘 이후 날짜를 선택해 주세요.'); return; }
-        meta().examTargetDate = toKey(day);
-        save(); sheet = null; render(); return;
-      }
-      delete meta().examTargetDate; save(); sheet = null; render(); return;
+      sheet = d.hvSheet || null; render(); return;
     }
     // leaving through a sheet row (data-era-open) must close the sheet; other handlers still run
     if (sheet && ev.target?.closest?.('.hv-sheet [data-era-open]')) sheet = null;
@@ -221,30 +244,24 @@
     if (ev.key === 'Escape' && sheet) { sheet = null; render(); }
   });
 
+  /* dots follow the rail's scroll position */
+  document.addEventListener('scroll', (ev) => {
+    const rail = ev.target;
+    if (!rail || !rail.classList || !rail.classList.contains('hv-rail')) return;
+    const items = rail.querySelectorAll('.hv-rail-item');
+    if (!items.length) return;
+    const step = items.length > 1 ? items[1].offsetLeft - items[0].offsetLeft : rail.clientWidth;
+    const i = Math.max(0, Math.min(items.length - 1, Math.round(rail.scrollLeft / Math.max(1, step))));
+    rail.parentElement.querySelectorAll('.hv-dots i').forEach((dot, k) => dot.classList.toggle('on', k === i));
+  }, true);
+
   const renderBeforeHomeV5 = render;
   render = function () {
     if (screen !== 'home') sheet = null;
     renderBeforeHomeV5();
     document.body?.classList?.toggle?.('hv-locked', Boolean(sheet) && screen === 'home');
-    if (sheet && screen === 'home') document.querySelector?.('.hv-sheet input, .hv-sheet button')?.focus?.({ preventScroll: true });
+    if (sheet && screen === 'home') document.querySelector?.('.hv-sheet button')?.focus?.({ preventScroll: true });
   };
-
-  // The countdown only ticks while the home is visible with a running timed exam.
-  let ticker = null;
-  const stopTicker = () => { if (ticker !== null) { clearInterval(ticker); ticker = null; } };
-  function syncTicker() {
-    const a = screen === 'home' && !sheet ? activeExam() : null;
-    if (!a || a.remaining == null || a.paused || meta().officialExamActiveSession?.timerState !== 'RUNNING') { stopTicker(); return; }
-    if (ticker !== null) return;
-    ticker = setInterval(() => {
-      const cur = screen === 'home' && !sheet ? activeExam() : null;
-      if (!cur || cur.remaining == null) { stopTicker(); return; }
-      const m = document.querySelector?.('.hv-exam .hv-meta');
-      if (m) m.textContent = cur.answered + ' / ' + cur.total + '문항 답변 · 남은 시간 ' + clock(cur.remaining);
-    }, 1000);
-  }
-  const renderWithTicker = render;
-  render = function () { renderWithTicker(); syncTicker(); };
 
   render();
 })();
