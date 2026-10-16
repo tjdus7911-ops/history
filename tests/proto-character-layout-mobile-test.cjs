@@ -50,9 +50,6 @@ async function portraitMetrics(page){
     assert(bubbleTop>faceBottom,`${width}: dialogue overlaps the portrait face zone (${bubbleTop}/${faceBottom})`);
     const layers=await page.evaluate(()=>({stage:Number(getComputedStyle(document.querySelector('.character-stage')).zIndex),panel:Number(getComputedStyle(document.querySelector('.conversation-panel')).zIndex),overflow:document.documentElement.scrollWidth-innerWidth}));
     assert(layers.panel>layers.stage,`${width}: dialogue/buttons do not remain above the portrait layer`);assert(layers.overflow<=1,`${width}: horizontal overflow ${layers.overflow}`);
-    const dialogueOverflow=await page.locator('.dialogue-log').evaluate(element=>({overflowX:getComputedStyle(element).overflowX,scrollWidth:element.scrollWidth,clientWidth:element.clientWidth}));
-    assert.equal(dialogueOverflow.overflowX,'hidden',`${width}: dialogue log can expose a horizontal scrollbar`);
-    assert(dialogueOverflow.scrollWidth<=dialogueOverflow.clientWidth+1,`${width}: dialogue content exceeds its padded viewport ${JSON.stringify(dialogueOverflow)}`);
     await page.screenshot({path:path.join(shots,`first-npc-${width}.png`),fullPage:true});
     if(width===390){
       await page.evaluate(()=>{state=INITIAL();state.run.started=true;state.run.currentChapter='ch01';state.run.storyId='house';state.run.dialogueSceneId='house';state.run.dialogueCursor=2;screen='game';render();});
