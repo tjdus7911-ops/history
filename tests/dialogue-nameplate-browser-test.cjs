@@ -6,7 +6,7 @@ const server=http.createServer((req,res)=>{const relative=decodeURIComponent(req
 const samples=[
  {label:'Goryeo',id:'house',chapterId:'ch01',cursor:2,npc:'낯선 청년',kind:'common'},
  {label:'Joseon',id:'joseon_ch00_s3',chapterId:'joseon-ch00',cursor:2,npc:'민준',kind:'common'},
- {label:'Proto',id:'proto_ch01_s1',chapterId:'proto-ch01',cursor:5,npc:'나루',kind:'proto'},
+ {label:'Proto',id:'proto_ch00_s2',chapterId:'proto-ch00',cursor:2,npc:'???',kind:'proto'},
  {label:'Three',id:'THR-C01-S01',chapterId:'THR-C01',cursor:2,npc:'연우',kind:'three'}
 ];
 
