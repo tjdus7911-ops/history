@@ -7,7 +7,7 @@ async function main(){
  const context=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,serviceWorkers:"block"}),page=await context.newPage(),errors=[];
  page.on("pageerror",error=>errors.push(error.message));
  await page.goto("file:///"+root.replace(/\\/g,"/")+"/index.html");
- await page.locator("[data-nav=exam-library]").click();
+ await page.locator("nav.nav [data-nav=exam-library]").click();
  assert.equal(await page.locator(".official-home-header").count(),1);
  const wrongAnswer=await page.evaluate(()=>{const entries=OFFICIAL_EXAM_CATALOG.filter(entry=>entry.sourceRecord.examRound===79&&entry.sourceRecord.examLevel==="심화").sort((a,b)=>a.sourceRecord.questionNumber-b.sourceRecord.questionNumber);startOfficialSession(entries,"exam",{examTab:"round",examRound:79,examLevel:"심화",timed:false});const question=QUESTIONS.find(question=>question.questionId===entries[0].canonicalQuestionId),accepted=question.acceptedAnswers||[question.answer];return (question.officialChoices||question.choices||[]).map((_,index)=>index).find(value=>!accepted.includes(value))});
  await page.locator(`[data-official-pick="${wrongAnswer}"]`).click();

@@ -100,3 +100,21 @@ button:focus-visible, select:focus-visible, [tabindex]:focus-visible { outline-c
 .practice-pill { background: var(--r7-sunken); color: var(--r7-sub); border-radius: var(--r7-r-sm); }
 .question-set-summary { background: var(--r7-sunken); border-radius: var(--r7-r-md); }
 .modal { background: var(--r7-bg); color: var(--r7-ink); border-radius: var(--r7-r-xl); }
+
+/* exam choices keep a >=64px touch target on mobile (exam-mobile.css had compacted them to 52px) */
+@media (max-width: 760px) {
+  .official-choice-grid button { min-height: 64px; }
+  .official-choice-grid button.has-media { min-height: 0; }
+}
+
+/* compact exam header: keep the 44px tap areas but let them overlap the surrounding whitespace
+ * so the whole summary stays under ~105px (it was 141px) */
+.official-exam-map-link, .official-timer-inline-action { margin-block: -8px; }
+.official-exam-intro-copy > p { margin-top: 2px; }
+.official-exam-clock { margin: 0 0 6px; }
+.official-exam-intro { padding-bottom: 8px; }
+
+/* higher-specificity overrides for the segmented 심화/기본 control (legacy rule used a brown fill) */
+.official-exams > .official-round-levels { display: grid; grid-template-columns: 1fr 1fr; gap: 0; height: 44px; padding: 3px; border: 1px solid var(--r7-line); border-radius: var(--r7-r-lg); background: var(--r7-sunken); }
+.official-exams > .official-round-levels button { min-height: 36px; border: 0; border-radius: var(--r7-r-md); background: transparent; color: var(--r7-sub); font-weight: 500; }
+.official-exams > .official-round-levels button[aria-selected=true] { background: var(--r7-ink); color: #fff; font-weight: 700; }
