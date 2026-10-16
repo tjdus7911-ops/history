@@ -1,33 +1,33 @@
 [
   {
     "id": "player",
-    "path": "media/proto-v4/player-v2.png",
+    "path": "media/proto-v4/player-v3.png",
     "width": 1024,
     "height": 1536,
     "alpha": true,
-    "bytes": 2165338,
-    "sha256": "e04075c00b6a3f81ca2869f430e1c6a84f85ad6007d0c7c7d02436ece42d76bf",
-    "style": "premium 2D story-game portrait, refined linework, painterly cel shading, head-to-thigh framing"
+    "bytes": 2104633,
+    "sha256": "bb39ab190de989fa43039285c62a2ef0efc467ee91cdc4db85e8b399e055941f",
+    "style": "premium 2D story-game portrait, natural student posture, left-facing conversation gaze, painterly cel shading"
   },
   {
     "id": "naru",
-    "path": "media/proto-v4/naru-v2.png",
+    "path": "media/proto-v4/naru-v3.png",
     "width": 1024,
     "height": 1536,
     "alpha": true,
-    "bytes": 2455554,
-    "sha256": "34b496d137da8c7990220cfd1ef53719ca5c4462aafb20b95bcb0a97f7243964",
-    "style": "premium 2D story-game portrait, angular period face, painterly cel shading, head-to-thigh framing"
+    "bytes": 2541239,
+    "sha256": "3db63e5d37ac951e13ee12d75c196667a1b19ee90b5ff463a1d4e9355de5eca1",
+    "style": "premium 2D story-game portrait, angular period face, right-facing conversation gaze, painterly cel shading"
   },
   {
     "id": "sibling",
-    "path": "media/proto-v4/sibling-v2.png",
+    "path": "media/proto-v4/sibling-v3.png",
     "width": 1024,
     "height": 1536,
     "alpha": true,
-    "bytes": 2185585,
-    "sha256": "24cc94548b2fc6e5295abfadecb06188b044b6f6f935df6301708f00b9dc6a7f",
-    "style": "premium 2D story-game portrait, refined linework, painterly cel shading, head-to-thigh framing"
+    "bytes": 2281727,
+    "sha256": "442c7d2cc7ad088f0c876e256ccfeb285379241653edde3aca8b8a39c2b945c7",
+    "style": "premium 2D story-game portrait, younger distinct face, right-facing conversation gaze, painterly cel shading"
   },
   {
     "id": "buyeo-village",
@@ -151,62 +151,62 @@
   },
   {
     "id": "elder",
-    "path": "media/proto-v4/elder-v2.png",
+    "path": "media/proto-v4/elder-v3.png",
     "width": 1024,
     "height": 1536,
     "alpha": true,
-    "bytes": 2668817,
-    "sha256": "ab407b2c3dd361a294f6b52b5781aa0a9551a6022f38b99602fb2246d3912fa5",
-    "style": "premium 2D story-game portrait, refined linework, painterly cel shading, head-to-thigh framing"
+    "bytes": 2592477,
+    "sha256": "c5854faf66d4f766c7c2ad1dc7e470e2dcccca3789702781b6b7ef18445fb8dd",
+    "style": "premium 2D story-game portrait, natural folded hands, right-facing conversation gaze, painterly cel shading"
   },
   {
     "id": "merchant",
-    "path": "media/proto-v4/merchant-v2.png",
+    "path": "media/proto-v4/merchant-v3.png",
     "width": 1024,
     "height": 1536,
     "alpha": true,
-    "bytes": 2611915,
-    "sha256": "aee714fe70f6642a7819a9cdfd3d0a64c94344867148fe75e6936cdd3e434279",
-    "style": "premium 2D story-game portrait, refined linework, painterly cel shading, head-to-thigh framing"
+    "bytes": 2639111,
+    "sha256": "fad30ee32f9d8d03bff81fc9a62d6e6a31cb3a1165ffcc3bbe78ec19cb5677ac",
+    "style": "premium 2D story-game portrait, distinctive merchant gesture, right-facing conversation gaze, painterly cel shading"
   },
   {
     "id": "worker",
-    "path": "media/proto-v4/worker-v2.png",
+    "path": "media/proto-v4/worker-v3.png",
     "width": 1024,
     "height": 1536,
     "alpha": true,
-    "bytes": 2635870,
-    "sha256": "43da729c965fa98174a62ee63b689b675f1a345618813f65ca5ab874e24821ef",
-    "style": "premium 2D story-game portrait, refined linework, painterly cel shading, head-to-thigh framing"
+    "bytes": 2684748,
+    "sha256": "9b17ce768d19d59fe2da119adce3f92e034a12bc7f4e32e9d7a3ac151fea9d09",
+    "style": "premium 2D story-game portrait, grounded worker posture, right-facing conversation gaze, painterly cel shading"
   },
   {
     "id": "woman",
-    "path": "media/proto-v4/woman-v2.png",
+    "path": "media/proto-v4/woman-v3.png",
     "width": 1024,
     "height": 1536,
     "alpha": true,
-    "bytes": 2257144,
-    "sha256": "1b093b664e1fbca87ff60f4ec8b1eedf2ed3cf17e226b3e58272fec3f4ff5e65",
-    "style": "premium 2D story-game portrait, refined linework, painterly cel shading, head-to-thigh framing"
+    "bytes": 2356962,
+    "sha256": "18cc124e49db46cfb0c486b6c1f5f5fca045ce266cf69b4a02df27aa53922264",
+    "style": "premium 2D story-game portrait, mature distinct features and stable hands, right-facing conversation gaze"
   },
   {
     "id": "girl",
-    "path": "media/proto-v4/girl-v2.png",
+    "path": "media/proto-v4/girl-v3.png",
     "width": 1024,
     "height": 1536,
     "alpha": true,
-    "bytes": 2177174,
-    "sha256": "03415ee311b6b3b92dfcd64d82afc0d1c96866ee3bb2d70edb3f1e77db96b192",
-    "style": "premium 2D story-game portrait, child proportions, painterly cel shading, head-to-thigh framing"
+    "bytes": 2489901,
+    "sha256": "86742c1c9ddf36f4e819d64dc4351642f40f16bf83f62d2f62d70bb444446c9e",
+    "style": "premium 2D story-game portrait, restrained child proportions, right-facing conversation gaze, painterly cel shading"
   },
   {
     "id": "priest",
-    "path": "media/proto-v4/priest-v2.png",
+    "path": "media/proto-v4/priest-v3.png",
     "width": 1024,
     "height": 1536,
     "alpha": true,
-    "bytes": 2450914,
-    "sha256": "97c6d53387fb60ba65834174252100d628744b0f5a6555767ef6e0b85b6f1d45",
-    "style": "premium 2D story-game portrait, refined linework, painterly cel shading, head-to-thigh framing"
+    "bytes": 2504956,
+    "sha256": "03efd7c84f8fef7ee8b3f4d33a408f78fa56e939f8019b9b18bab438ea221930",
+    "style": "premium 2D story-game portrait, restrained ritual posture, right-facing conversation gaze, painterly cel shading"
   }
 ]

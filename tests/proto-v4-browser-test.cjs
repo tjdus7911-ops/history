@@ -16,8 +16,9 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
  const visible=page.locator('.stage-character');for(const img of await visible.all()){
   await img.evaluate(el=>el.decode());assert(await img.evaluate(el=>el.naturalWidth>0),'portrait missing');
   const src=await img.getAttribute('src'),classes=await img.getAttribute('class'),box=await img.boundingBox();
-  assert(src?.endsWith('-v2.png'),'legacy Proto portrait rendered in '+current.sid);portraitSources.add(src.split('/').at(-1));portraitBoxes.add(`${Math.round(box.width)}x${Math.round(box.height)}`);
-  assert(classes.includes(src.includes('player-v2.png')?'stage-right':'stage-left'),'Proto side placement changed in '+current.sid);
+  assert(src?.endsWith('-v3.png'),'legacy Proto portrait rendered in '+current.sid);portraitSources.add(src.split('/').at(-1));portraitBoxes.add(`${Math.round(box.width)}x${Math.round(box.height)}`);
+  const isPlayer=src.includes('player-v3.png');assert(classes.includes(isPlayer?'stage-right':'stage-left'),'Proto side placement changed in '+current.sid);
+  assert.equal(await img.getAttribute('data-character-facing'),isPlayer?'left':'right','Proto conversation-facing contract changed in '+current.sid);
  }
  const visibleBubbles=page.locator('.speech-bubble:visible');
  if(width===390&&await visible.count()&&await visibleBubbles.count()){
@@ -44,7 +45,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
  maxOverflow=Math.max(maxOverflow,await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth));assert(tick<1099,'route did not finish');
  }
  assert.equal(scenes.size,17);assert.equal(choiceScenes.size,17);assert.equal(exams.size,41);assert.deepEqual(outro,['준비됐어?','응. 이번에는 같이.']);assert.equal(maxOverflow,0);assert.deepEqual(errors,[]);
- assert.deepEqual([...portraitSources].sort(),['elder-v2.png','girl-v2.png','merchant-v2.png','naru-v2.png','player-v2.png','priest-v2.png','sibling-v2.png','woman-v2.png','worker-v2.png']);assert.equal(portraitBoxes.size,1,'Proto portrait size varies between characters or scenes');
+ assert.deepEqual([...portraitSources].sort(),['elder-v3.png','girl-v3.png','merchant-v3.png','naru-v3.png','player-v3.png','priest-v3.png','sibling-v3.png','woman-v3.png','worker-v3.png']);assert.equal(portraitBoxes.size,1,'Proto portrait size varies between characters or scenes');
  // Reload at the ending and verify its completion, then enter replay without losing the completed main run.
  await page.reload({waitUntil:'domcontentloaded'});await page.evaluate(()=>resumeEra('proto-kingdoms'));assert.equal(await page.evaluate(()=>run().currentChapter),'proto-ch05');
  report.push({width,height,branch,scenes:scenes.size,exams:exams.size,portraits:portraitSources.size,portraitSize:[...portraitBoxes][0],pageErrors:errors,horizontalOverflow:maxOverflow});await page.close();
