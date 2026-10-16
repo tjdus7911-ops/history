@@ -7,7 +7,7 @@ const ERA_PROTAGONISTS = {
     id:'protagonist_proto_kingdoms',era:'proto-kingdoms',gender:'male',
     baseAppearance:'짧게 넘긴 검은 머리와 차분한 인상의 20대 남성 시간 여행자',outfits:{modern:'남색 재킷과 후드, 청바지, 운동화',historical:'이끼색·갈색·먹색의 초기 국가 시대 여행복'},
     expressions:['neutral','smile','surprised','embarrassed','suspicious','angry','sad','determined','fear','worried','relieved'],
-    assetPaths:Object.fromEntries(['neutral','smile','surprised','embarrassed','suspicious','angry','sad','determined','fear','worried','relieved'].map(expression=>[expression,'media/proto-v4/player-v3.png']).concat([['modern','media/proto-v4/player-v3.png'],['hero','media/proto-v4/buyeo-village.webp']])),
+    assetPaths:Object.fromEntries(['neutral','smile','surprised','embarrassed','suspicious','angry','sad','determined','fear','worried','relieved'].map(expression=>[expression,'media/proto-v4/player-v3.png']).concat([['modern','media/proto-v4/player-v3.png'],['hero','media/proto-v4/proto-thumbnail-back-view-v1.jpg']])),
     displayName:'나',defaultTitle:'원삼국편 남성 주인공',basePose:'standing',dialogueStyle:'관찰한 생활 풍습을 공간과 이유로 연결한다',relationshipIds:['proto_naru','proto_sibling','proto_priest'],
     ageState:{kind:'time-traveler',age:24,description:'현대에서 이동한 같은 인물. 역사 속 NPC는 자기 시대에만 등장한다.'},role:'여러 초기 국가의 생활과 정치 구조를 기록하는 여행자',status:'playable',appearanceLocked:true
   },
