@@ -6,7 +6,6 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const root = path.resolve(__dirname, 'dist');
-const port = Number(process.env.PORT) || 4173;
 const assetOrigin = JSON.parse(fs.readFileSync(path.join(__dirname, 'config', 'deployment-asset-origin.json'), 'utf8'));
 const remoteAssetRoot = `https://raw.githubusercontent.com/${assetOrigin.repository}/${assetOrigin.commit}/${assetOrigin.sourcePath}`;
 const contentTypes = {
@@ -61,4 +60,4 @@ http.createServer((request, response) => {
     if (name === '/sw.js') response.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
     response.end(data);
   });
-}).listen(port, '127.0.0.1', () => console.log(`http://127.0.0.1:${port}`));
+}).listen(4173, '127.0.0.1', () => console.log('http://127.0.0.1:4173'));

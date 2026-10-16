@@ -43,7 +43,7 @@ if (globalThis.CORE_APP_READY === true && globalThis.THREE_STORY_RUNTIME?.versio
     if (gate && !read().has(gate) && threeContext(context)) return actions.safeExplanation(installed);
     return fallback;
   }
-  function recordThreeOfficialAttempt(id, answer) {
+  function recordOfficialAttempt(id, answer) {
     const question = runtime.questionByOfficialId.get(id);
     if (!question || !Number.isInteger(answer) || answer < 0 || answer >= question.choices.length) return;
     // This is called only after a new independent attempt was recorded. Old
@@ -51,7 +51,7 @@ if (globalThis.CORE_APP_READY === true && globalThis.THREE_STORY_RUNTIME?.versio
     const value = globalThis.THREE_SAVE_V3.ensureBook(meta());
     if (!value.answeredQuestionIds.includes(id)) value.answeredQuestionIds.push(id);
   }
-  globalThis.THREE_LEARNING_BOUNDARY = {officialId,canPractice,canRecall,allowLegacyAction,explanation,recordOfficialAttempt:recordThreeOfficialAttempt};
+  globalThis.THREE_LEARNING_BOUNDARY = {officialId,canPractice,canRecall,allowLegacyAction,explanation,recordOfficialAttempt};
 
   if (typeof eraExamList === 'function') {
     const previous = eraExamList;
