@@ -240,7 +240,10 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
   if(active?.protoBlackout)return '';
   const standing=(entry,position)=>({...entry,position,show:true,presentation:'standing'});
   const phase=phaseState(source),history=phase.phase==='main'?[]:phase.phase==='branch'?source.dialogues:phase.phase==='join'?[...source.dialogues,...(runtime.sources.get(source.sceneId).choices?.[phase.choiceIndex]?.resultDialogues||[])]:[...source.dialogues,...source.protoCommon];
-  const peer=active?.speakerType==='npc'?active:[...history,...entries.slice(0,index+1)].findLast(entry=>entry.speakerType==='npc')||(currentSource().protoSource.main.some(l=>l.speaker==='나루')?dialogueLine('proto_naru','neutral','','npc'):null);
+  // Only characters who have actually entered the revealed conversation may appear.
+  // This keeps the opening monologue protagonist-only instead of previewing Naru.
+  const revealed=[...history,...entries.slice(0,index+1)];
+  const peer=active?.speakerType==='npc'?active:revealed.findLast(entry=>entry.speakerType==='npc'&&!entry.protoBlackout);
   const player=dialogueLine('proto_modern','neutral','','player');
   const cast=[...(peer?[standing(peer,'left')]:[]),standing(player,'right')];
   return '<div class="character-stage" data-slot-mode="proto-conversation" aria-hidden="true">'+cast.map(entry=>stagePortrait(entry,entry.position,entry.characterId===active?.characterId)).join('')+'</div>';

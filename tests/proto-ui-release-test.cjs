@@ -29,7 +29,7 @@ for(const name of portraitNames){
 }
 assert.equal(new Set(portraitHashes).size,portraitNames.length,'Proto characters reuse the same portrait art');
 const protoData=fs.readFileSync('dist/proto-story-data.js','utf8');
-assert(/scale:1\.06,anchorX:0,anchorY:6,framing:'upper-body',lockStateScale:true/.test(protoData),'Proto portraits do not share the enlarged, face-safe Goryeo-aligned render profile');
+assert(/const PROTO_CHARACTER_LAYOUT=Object\.freeze\(\{tier:'MAIN',scale:1\.18,anchorX:0,anchorY:6,framing:'upper-body',lockStateScale:true\}\)/.test(protoData),'Proto portraits do not share one enlarged, face-safe Goryeo-aligned render profile');
 assert(/facing:id==='proto_modern'\?'left':'right'/.test(protoData),'Proto conversation-facing contract is missing');
 
 assert(/\.proto-revision-quiz \.quiz-submit-row\s*\{grid-template-columns:minmax\(0,1fr\)/.test(protoCss),'answer confirmation row is not full width');
@@ -39,6 +39,15 @@ assert(ui.includes('LEARNING SUMMARY')&&ui.includes('proto-recap-heading'),'lear
 assert(ui.includes("proto-revision-game proto-recap-ready ")&&/\.proto-recap-ready \.dialogue-log\s*\{display:none/.test(protoCss),'completed-scene dialogue history can still cover portrait faces');
 
 const game=load();game.run("resumeEra('proto-kingdoms')");
+const stageCharacters=()=>[...game.html().matchAll(/<img class="stage-character[^>]*data-character-id="([^"]+)"/g)].map(match=>match[1]);
+game.run("run().storyId='proto_ch01_s1';run().dialogueSceneId='proto_ch01_s1';run().dialogueCursor=3;screen='game';render()");
+assert.deepEqual(stageCharacters(),['proto_modern'],'the first visible monologue must show only the protagonist');
+game.run('run().dialogueCursor=4;render()');
+assert.deepEqual(stageCharacters(),['proto_modern'],'the complete opening monologue must remain protagonist-only');
+game.run('run().dialogueCursor=5;render()');
+assert.deepEqual(stageCharacters(),['proto_naru','proto_modern'],'Naru must enter only on the first NPC dialogue');
+assert.equal(game.run('CHARACTER_RENDER_PROFILES.characters.proto_modern.scale'),1.18);
+assert(Object.keys(game.copy('PROTO_NAMES')).every(id=>game.run(`CHARACTER_RENDER_PROFILES.characters[${JSON.stringify(id)}].scale`)===1.18),'every Proto protagonist and NPC must use the same scale');
 let guard=0;
 while(!(game.run("PROTO_REVISION_ACTIONS.phaseState().phase==='main'&&run().dialogueCursor>=PROTO_REVISION_ACTIONS.phaseEntries().length&&PROTO_REVISION_ACTIONS.currentSource().choices.length"))){
   game.click({action:'advance-dialogue'});assert(++guard<80,'first Proto choice did not become ready');
