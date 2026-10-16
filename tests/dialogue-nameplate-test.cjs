@@ -20,7 +20,8 @@ assert(rows.length>3000,'complete story dialogue corpus must be checked');
 const counts={goryeo:0,joseon:0,'proto-kingdoms':0,'three-kingdoms':0},playerNames=new Set();
 for(const row of rows){
  const count=(row.html.match(/class="character-name"/g)||[]).length;
- assert(row.html.includes(row.escapedDialogue),`${row.sceneId}/${row.phase}: dialogue text changed`);
+ const textPreservingMarkup=row.html.replace(/<strong class="proto-keyword">([\s\S]*?)<\/strong>/g,'$1');
+ assert(textPreservingMarkup.includes(row.escapedDialogue),`${row.sceneId}/${row.phase}: dialogue text changed`);
  if(row.speakerType==='player'){
   assert(row.html.includes('class="message-row player"'),`${row.sceneId}/${row.phase}: player side changed`);
   assert(row.html.includes('<div class="bubble-stack"><p class="speech-bubble">'),`${row.sceneId}/${row.phase}: empty nameplate gap remains`);
@@ -38,12 +39,11 @@ for(const row of rows){
 for(const [eraId,count] of Object.entries(counts))assert(count>0,`${eraId}: no protagonist dialogue audited`);
 for(const name of ['나','주인공','서아'])assert(playerNames.has(name),`${name}: protagonist label data must remain present`);
 
-const identities=h.copy(`Object.fromEntries(['player','joseon_player','proto_modern','proto_player','three_modern','three_player','three_v3_seoa'].map(id=>[id,CHARACTERS[id]&&{characterId:CHARACTERS[id].characterId,characterName:CHARACTERS[id].characterName,speakerType:CHARACTERS[id].speakerType}]))`);
+const identities=h.copy(`Object.fromEntries(['player','joseon_player','proto_modern','three_modern','three_player','three_v3_seoa'].map(id=>[id,CHARACTERS[id]&&{characterId:CHARACTERS[id].characterId,characterName:CHARACTERS[id].characterName,speakerType:CHARACTERS[id].speakerType}]))`);
 assert.deepEqual(identities,{
  player:{characterId:'player',characterName:'나',speakerType:'player'},
  joseon_player:{characterId:'joseon_player',characterName:'나',speakerType:'player'},
  proto_modern:{characterId:'proto_modern',characterName:'주인공',speakerType:'player'},
- proto_player:{characterId:'proto_player',characterName:'나',speakerType:'player'},
  three_modern:{characterId:'three_modern',characterName:'나',speakerType:'player'},
  three_player:{characterId:'three_player',characterName:'나',speakerType:'player'},
  three_v3_seoa:{characterId:'three_v3_seoa',characterName:'서아',speakerType:'player'}

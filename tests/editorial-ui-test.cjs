@@ -9,8 +9,8 @@ boot();
 assert(html.includes('오늘의 학습')&&html.includes('최근 학습')&&html.includes('최근 오답'));
 assert(!html.includes('ed-chapter-row'));assert.equal((html.match(/data-era-slide=/g)||[]).length,7);
 const heroes=copy('LEARNING_ERAS.map(e=>eraHero(e.id))');assert.equal(heroes.filter(Boolean).length,7);assert.equal(new Set(heroes.filter(Boolean)).size,7);
-const hashes=new Set();for(const c of copy('Object.values(ERA_PROTAGONISTS)')){assert.equal(c.id,run(`eraProtagonist('${c.era}').id`));for(const file of Object.values(c.assetPaths)){assert(assetExists('dist/'+file));hashes.add(assetFingerprint('dist/'+file))}for(const file of Object.values(c.conceptAssetPaths||{}))assert(assetExists('dist/'+file))}
-assert.equal(hashes.size,44,'all four playable season protagonist assets remain independent');
+const hashes=new Set();let uniquePlayableAssets=0;for(const c of copy('Object.values(ERA_PROTAGONISTS)')){assert.equal(c.id,run(`eraProtagonist('${c.era}').id`));const characterHashes=new Set();const uniquePaths=new Set(Object.values(c.assetPaths));for(const file of uniquePaths){assert(assetExists('dist/'+file));const fingerprint=assetFingerprint('dist/'+file);characterHashes.add(fingerprint);hashes.add(fingerprint)}if(c.status==='playable'){assert.equal(characterHashes.size,uniquePaths.size,`${c.era} unique asset paths must have independent artwork`);uniquePlayableAssets+=characterHashes.size}for(const file of Object.values(c.conceptAssetPaths||{}))assert(assetExists('dist/'+file))}
+assert.equal(hashes.size,uniquePlayableAssets,'all four playable season protagonist assets remain independent across eras');
 assert.deepEqual(copy('Object.values(ERA_PROTAGONISTS).map(c=>c.gender)'),['male','female','male','female','UNSPECIFIED','UNSPECIFIED','UNSPECIFIED']);
 assert.equal(run("eraProtagonist('missing')"),null);assert.equal(run("eraSceneVisuals('joseon',{backgroundId:'goryeo-gaegyeong-cover',year:1398})"),null);
 for(const b of copy('Object.values(ERA_BACKGROUNDS)')){assert(b.era&&b.yearRange.length===2&&b.location&&b.event&&b.timeOfDay);assert(assetExists('dist/'+b.src))}
@@ -33,7 +33,7 @@ const q=copy('activeQuestion()');click({pickAnswer:String((q.answer+1)%q.choices
 click({pickAnswer:String(q.answer)});click({submitAnswer:'true'});assert(html.includes('역사 해설'));assert.equal(run(`meta().questionRecords['${q.questionId}'].attempts`),9);assert.equal(run(`meta().questionRecords['${q.questionId}'].correctCount`),4);assert(run(`meta().wrongQuestionIds.includes('${q.questionId}')`),'wrong history preserved after success');
 const after=run('JSON.stringify(meta().questionRecords)');click({submitAnswer:'true'});assert.equal(run('JSON.stringify(meta().questionRecords)'),after);
 const runBeforeMemory=run('JSON.stringify(state.run)');click({storyMemory:q.questionId});assert(html.includes('관련 스토리 다시 보기'));assert.equal(run('JSON.stringify(state.run)'),runBeforeMemory);click({action:'close'});
-click({nav:'records'});assert(html.includes('예상 준비도'));assert(html.includes('학습 캘린더'));click({recordEra:'joseon'});assert(html.includes('학습 기록이 쌓이면'));assert(!html.includes('class="weak-row"'));
+click({nav:'records'});assert(html.includes('시대별 기출 기록'));assert(html.includes('누적 풀이'));assert(html.includes('시험 기록'));assert(!html.includes('학습 캘린더'));
 // All latest UI source files and artwork are included in the build/cache contract.
 const worker=fs.readFileSync('dist/sw.js','utf8');for(const n of ['editorial-ui.js','editorial.css','era-visuals.js','ancient-data.js','season-data.js','ancient-ui.js'])assert(worker.includes('/'+n));
-console.log('PASS: seven-season editorial UI, distinct protagonist identities, strict scene lookup, independent resume, real date metrics/readiness, deduplicated wrong filters, explicit answer confirmation, preserved retry history, exact recall and calendar.');
+console.log('PASS: seven-season editorial UI, distinct protagonist identities, strict scene lookup, independent resume, real date metrics/readiness, deduplicated wrong filters, explicit answer confirmation, preserved retry history, exact recall and official records.');

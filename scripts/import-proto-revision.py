@@ -2,7 +2,7 @@
 import re,json,hashlib,pathlib,sys
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 source=ROOT/'docs/proto-v4/manuscript.md'
-text=source.read_text(); sha=hashlib.sha256(source.read_bytes()).hexdigest()
+text=source.read_text(); sha=hashlib.sha256(text.encode()).hexdigest()
 cat={q['officialQuestionId']:q for q in json.loads((ROOT/'dist/official-exam-catalog.json').read_text())}
 supp=json.loads((ROOT/'docs/story-exams/supplement-60-basic.json').read_text())
 def find_rows(v):
@@ -29,7 +29,7 @@ for block in re.split(r'^#### 제',text,flags=re.M)[1:]:
 assert len(questions)==26 and len({q['officialQuestionId'] for q in questions})==26
 # Separately reviewed official originals supplement, without changing the manuscript.
 additions_path=ROOT/'docs/proto-v4/exam-additions.json'
-additions=json.loads(additions_path.read_text())
+additions_text=additions_path.read_text(); additions=json.loads(additions_text)
 for q in questions:q['sceneKey']=additions.get('placementOverrides',{}).get(q['officialQuestionId'],q['sceneKey'])
 for q in additions['questions']:
  assert q['officialQuestionId'] not in {x['officialQuestionId'] for x in questions}
@@ -99,7 +99,7 @@ for sc in scenes:
  for l in sc['main']+sc['join']+sc['outro']+[l for c in sc['choices'] for l in c['reply']]:
   l['emphasis']=sorted(set(l['emphasis'])|{w for w in terms if w in l['text']},key=lambda w:(-len(w),w))
  for choice in sc['choices']:choice['emphasis']=sorted(set(choice['emphasis'])|{w for w in terms if w in choice['label']},key=lambda w:(-len(w),w))
-out={'schemaVersion':2,'contentVersion':'proto-five-countries-17-scenes-v4','title':'눈떠보니 원삼국 — 동생이 남긴 길','sourcePath':'docs/proto-v4/manuscript.md','sourceSha256':sha,'saveCompatibility':{'previousContentVersion':'proto-compact-5-scenes-v2','previousSceneCounts':{},'legacyCompletionMilestones':{}},'chapters':chapters,'learning':learning,'examPlan':{'questions':questions,'queues':queues,'targetSlots':51,'unfilledSlots':51-len(questions),'blockedCandidates':[],'revision':2,'additionsSourceSha256':hashlib.sha256(additions_path.read_bytes()).hexdigest()},'counts':{'sceneCount':17,'mainChapterCount':5,'choiceSceneCount':17,'choiceAlternatives':34,'officialQuestions':len(questions),'authoredUtterances':sum(len(s['main'])+len(s['join'])+len(s['outro'])+sum(len(c['reply']) for c in s['choices']) for s in scenes),'learningTopicCount':len(learning)}}
+out={'schemaVersion':2,'contentVersion':'proto-five-countries-17-scenes-v4','title':'눈떠보니 원삼국 — 동생이 남긴 길','sourcePath':'docs/proto-v4/manuscript.md','sourceSha256':sha,'saveCompatibility':{'previousContentVersion':'proto-compact-5-scenes-v2','previousSceneCounts':{},'legacyCompletionMilestones':{}},'chapters':chapters,'learning':learning,'examPlan':{'questions':questions,'queues':queues,'targetSlots':51,'unfilledSlots':51-len(questions),'blockedCandidates':[],'revision':2,'additionsSourceSha256':hashlib.sha256(additions_text.encode()).hexdigest()},'counts':{'sceneCount':17,'mainChapterCount':5,'choiceSceneCount':17,'choiceAlternatives':34,'officialQuestions':len(questions),'authoredUtterances':sum(len(s['main'])+len(s['join'])+len(s['outro'])+sum(len(c['reply']) for c in s['choices']) for s in scenes),'learningTopicCount':len(learning)}}
 payload=json.dumps(out,ensure_ascii=False,indent=2)+'\n'
 js='/* Generated from docs/proto-v4/manuscript.md; do not edit. */\nconst PROTO_REVISION_SOURCE_SHA256='+json.dumps(sha)+';\nconst PROTO_REVISION_SOURCE='+payload.strip()+';\nconst PROTO_STORY_SCRIPT=PROTO_REVISION_SOURCE.chapters;\nconst PROTO_LEGACY_STUDY_QUESTIONS=[];\n'
 for path,data in [('dist/proto-story-script.json',payload),('dist/proto-story-script.js',js)]:

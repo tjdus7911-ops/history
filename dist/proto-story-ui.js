@@ -96,9 +96,11 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
   return false;
  }
  function choose(index){
-  const source=currentSource();if(!isProto(source)||phaseState(source).phase!=='choice'||!Number.isInteger(index)||!source.choices?.[index])return false;
+  const source=currentSource(),current=phaseState(source),entries=phaseEntries(source,current),choiceReady=current.phase==='main'&&run().dialogueCursor>=entries.length;
+  if(!isProto(source)||!['choice','main'].includes(current.phase)||current.phase==='main'&&!choiceReady||!Number.isInteger(index)||!source.choices?.[index])return false;
   if(finishOpeningTyping())return false;
-  phaseState(source).choiceIndex=index;book().choiceBySceneId[source.sceneId]=index;applyChoice(state,source.sceneId,index);run().storyId=source.sceneId;return switchPhase(source,'branch');
+  if(current.phase==='main')readCurrent(source);
+  current.phase='choice';current.choiceIndex=index;book().choiceBySceneId[source.sceneId]=index;applyChoice(state,source.sceneId,index);run().storyId=source.sceneId;return switchPhase(source,'branch');
  }
  const beforeEntries=conversationEntries;
  conversationEntries=function(source,p){return isProto(source)?phaseEntries(source,phaseState(source)):beforeEntries(source,p);};
@@ -254,14 +256,14 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
  const beforeGame=game;
  game=function(){
   const source=currentSource();if(!isProto(source))return beforeGame();
-  const current=phaseState(source),continueLabel=current.phase==='main'&&source.choices?.length?'응답 고르기':source.protoQueue&&['main','join'].includes(current.phase)?(source.protoQueue.officialQuestionIds.length?'🧠 실제 기출 '+source.protoQueue.officialQuestionIds.length+'문제 풀기':'다음 장면'):'다음 이야기';
+  const current=phaseState(source),entries=phaseEntries(source,current),choiceReady=current.phase==='main'&&source.choices?.length&&run().dialogueCursor>=entries.length,continueLabel=source.protoQueue&&['main','join'].includes(current.phase)?(source.protoQueue.officialQuestionIds.length?'🧠 실제 기출 '+source.protoQueue.officialQuestionIds.length+'문제 풀기':'다음 장면'):'다음 이야기';
   // A temporary view feeds the shared renderer; the complete immutable source stays installed.
-  const active=phaseEntries(source,current)[Math.min(run().dialogueCursor-1,phaseEntries(source,current).length-1)];
-  const view={...source,sceneEffect:active?.protoBlackout?'blackout':null,choices:['choice','branch'].includes(current.phase)?source.choices:null,continueLabel};
+  const active=entries[Math.min(run().dialogueCursor-1,entries.length-1)];
+  const view={...source,sceneEffect:active?.protoBlackout?'blackout':null,choices:choiceReady||['choice','branch'].includes(current.phase)?source.choices:null,continueLabel};
   STORIES[source.sceneId]=view;
   try{
-   const atEnd=(current.phase==='join'||current.phase==='main'&&!source.protoCommon.length)&&run().dialogueCursor>=phaseEntries(source,current).length;
-   const recap=atEnd?'<aside class="proto-scene-recap" aria-label="이번 장면에서 배운 것"><h3>이번 장면에서 배운 것</h3><ul>'+source.protoSource.learning.map(item=>'<li>'+esc(item.keyword||item.title)+'</li>').join('')+'</ul></aside>':'';
+   const atEnd=(current.phase==='join'||current.phase==='main'&&!source.protoCommon.length)&&run().dialogueCursor>=entries.length;
+   const recap=atEnd?'<aside class="proto-scene-recap" aria-label="이번 장면에서 배운 것"><div class="proto-recap-heading"><span class="proto-recap-icon" aria-hidden="true">◇</span><div><small>LEARNING SUMMARY</small><h3>이번 장면에서 배운 것</h3></div><em>'+source.protoSource.learning.length+'개 핵심</em></div><ul>'+source.protoSource.learning.map(item=>'<li>'+esc(item.keyword||item.title)+'</li>').join('')+'</ul></aside>':'';
    let html=beforeGame().replace('class="game conversation-game ','class="game conversation-game proto-revision-game ').replace('data-illustration=','data-proto-country="'+esc(source.protoCountry)+'" data-proto-place="'+esc(source.protoPlace)+'" data-proto-scene="'+esc(source.sceneId)+'" data-proto-phase="'+current.phase+'" data-illustration=');
    html=html.replace('<small>'+esc(source.location)+'</small>','<div class="proto-place-label"><span>'+esc(source.protoCountry)+'</span><small>'+esc(source.protoPlace)+'</small></div>');
    if(current.phase==='outro'&&run().dialogueCursor===source.protoOutro.length)html=html.replace('proto-revision-game ','proto-revision-game proto-finale ');
