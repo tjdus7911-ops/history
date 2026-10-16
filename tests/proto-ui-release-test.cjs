@@ -18,18 +18,19 @@ assert(/@media\(max-width:760px\)[\s\S]*\.character-stage\{inset:86px 0 116px\}[
 const portraitNames=['player','naru','sibling','worker','elder','merchant','girl','woman','priest'];
 const portraitHashes=[];
 for(const name of portraitNames){
-  const relative=`media/proto-v4/${name}-v2.png`,file=`dist/${relative}`,png=fs.readFileSync(file);
+  const relative=`media/proto-v4/${name}-v3.png`,file=`dist/${relative}`,png=fs.readFileSync(file);
   assert(fs.statSync(file).size>2_000_000,`${name} portrait is not the production-quality source asset`);
   assert.equal(png.toString('ascii',1,4),'PNG',`${name} portrait is not PNG`);
   assert.equal(png.readUInt32BE(16),1024,`${name} portrait width`);
   assert.equal(png.readUInt32BE(20),1536,`${name} portrait height`);
   assert.equal(png[25],6,`${name} portrait must retain RGBA transparency`);
-  assert(fs.readFileSync('dist/proto-story-data.js','utf8').includes(`${name}-v2.png`),`${name} v2 portrait is not wired to Proto`);
+  assert(fs.readFileSync('dist/proto-story-data.js','utf8').includes(`${name}-v3.png`),`${name} v3 portrait is not wired to Proto`);
   portraitHashes.push(require('node:crypto').createHash('sha256').update(png).digest('hex'));
 }
 assert.equal(new Set(portraitHashes).size,portraitNames.length,'Proto characters reuse the same portrait art');
 const protoData=fs.readFileSync('dist/proto-story-data.js','utf8');
 assert(/scale:1\.06,anchorX:0,anchorY:6,framing:'upper-body',lockStateScale:true/.test(protoData),'Proto portraits do not share the enlarged, face-safe Goryeo-aligned render profile');
+assert(/facing:id==='proto_modern'\?'left':'right'/.test(protoData),'Proto conversation-facing contract is missing');
 
 assert(/\.proto-revision-quiz \.quiz-submit-row\s*\{grid-template-columns:minmax\(0,1fr\)/.test(protoCss),'answer confirmation row is not full width');
 assert(/\.proto-revision-quiz \.confirm-answer\s*\{[^}]*min-height:54px[^}]*width:100%/.test(protoCss),'answer confirmation button size is not normalized');
