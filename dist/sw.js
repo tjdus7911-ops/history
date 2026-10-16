@@ -1,5 +1,5 @@
 const CACHE_PREFIX='lived-history-shell-';
-const CACHE_VERSION='2026-10-16-proto-stage-r2';
+const CACHE_VERSION='2026-10-16-home-v5-r1';
 const CACHE_NAME=CACHE_PREFIX+CACHE_VERSION;
 const APP_SHELL=[
   '/',
@@ -27,6 +27,7 @@ const APP_SHELL=[
   '/three-season-data.js','/three-save-data.js','/three-story-ui.js',
   '/three-era-isolation.js','/three-service-ui.js','/three-learning-boundary.js','/three-service.css',
   '/three-staging.js','/three-staging.css',
+  '/home-v5.js','/home-v5.css',
   '/pwa.js',
   '/manifest.webmanifest',
   '/goryeo.png',
