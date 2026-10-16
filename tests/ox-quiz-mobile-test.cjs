@@ -13,8 +13,8 @@ const server=http.createServer((req,res)=>{
   const context=await browser.newContext({viewport:{width,height:844},isMobile:true,hasTouch:true,serviceWorkers:'block'}),page=await context.newPage(),errors=[];
   page.on('pageerror',error=>errors.push(error.message));
   await page.goto('http://127.0.0.1:'+server.address().port);
-  assert.equal(await page.locator('[data-nav="association"]').count(),0);assert.equal(await page.locator('[data-nav="ox"]').count(),1);
-  await page.locator('[data-nav="ox"]').click();
+  assert.equal(await page.locator('[data-nav="association"]').count(),0);assert.equal(await page.locator('nav.nav [data-nav="ox"]').count(),1);
+  await page.locator('nav.nav [data-nav="ox"]').click();
   const homeText=await page.locator('#app').innerText();
   assert(homeText.includes('OX 퀴즈')&&homeText.includes('한능검 심화 핵심 개념을 빠르게 확인해요.'));
   assert(homeText.includes('최대 20문제'),'dynamic session cap label missing '+width);

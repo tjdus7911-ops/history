@@ -10,7 +10,7 @@ async function main(){
  browser=await chromium.launch({headless:true,...(process.env.QA_BROWSER?{executablePath:process.env.QA_BROWSER}:{})});
  for(const width of [360,375,390,430]){
   const context=await browser.newContext({viewport:{width,height:844},isMobile:true,hasTouch:true,serviceWorkers:'block'}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
-  await page.goto(`http://127.0.0.1:${server.address().port}`);const homeBackground=await page.evaluate(()=>getComputedStyle(document.body).backgroundColor);await page.locator('[data-nav="exam-library"]').click();if(phase==='after')assert.equal(await page.locator('.ed-exam-library').evaluate(n=>getComputedStyle(n).backgroundColor),homeBackground,'exam surface must match home');
+  await page.goto(`http://127.0.0.1:${server.address().port}`);const homeBackground=await page.evaluate(()=>getComputedStyle(document.body).backgroundColor);await page.locator('nav.nav [data-nav="exam-library"]').click();if(phase==='after')assert.equal(await page.locator('.ed-exam-library').evaluate(n=>getComputedStyle(n).backgroundColor),homeBackground,'exam surface must match home');
   const capture=async name=>{
    await page.evaluate(()=>scrollTo(0,0));
    await page.waitForFunction(()=>[...document.images].filter(i=>i.getBoundingClientRect().top<innerHeight&&i.getBoundingClientRect().bottom>0).every(i=>i.complete&&i.naturalWidth>0),null,{timeout:60000});
@@ -83,7 +83,7 @@ async function verifyTouches(page,width,capture){
 async function verifyRevision(page,capture){
  const ids=await page.evaluate(()=>OFFICIAL_EXAM_UI.snapshot().questionIds);
  assert.equal(await page.evaluate(()=>typeof window.history.pushState),'function','app renderers must not shadow native browser history');
- await page.locator('[data-nav="ox"]').click();assert.equal(await page.locator('[data-ox-home-analysis],.ox-weakness-donut').count(),0);await capture('ox-home');
+ await page.locator('nav.nav [data-nav="ox"]').click();assert.equal(await page.locator('[data-ox-home-analysis],.ox-weakness-donut').count(),0);await capture('ox-home');
  await page.evaluate(()=>{
   globalThis.oxDebugEvents=[];
   document.addEventListener('click',e=>{const button=e.target.closest('button');if(button)oxDebugEvents.push({type:'click',data:{...button.dataset},text:button.textContent})},true);
