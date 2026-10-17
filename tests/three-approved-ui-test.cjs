@@ -86,5 +86,9 @@ for(const [id,n] of [['THR-C01-S06',6],['THR-C07-S04',2]]){
  setup(sources.find(s=>s.sceneId===id));cursor(n);
  assert(!h.html().includes('class="stage-character three-scaled-character stage-right'),'NPC conversation does not insert a character on the player side: '+id);
 }
-assert.equal(choiceCount,142);assert.equal(lineIds.size,2777);assert(narrationFrames>0);assert(npcFrames>0);assert(playerFrames>0);assert(taps>0);
+assert.equal(choiceCount,142);assert.equal(lineIds.size,2777);assert(narrationFrames>0);
+// bb4f507 ("reset Three Kingdoms cast to Seoa") deliberately retired the NPC standing roster: NPC lines stay in the
+// script but only the protagonist is staged. If a roster is restored, NPC actors must be staged again.
+const protagonistOnlyRoster=h.run("typeof THREE_COMPLETE_ART!=='undefined'?THREE_COMPLETE_ART.status==='protagonist-only-roster-reset':false");
+if(protagonistOnlyRoster)assert.equal(npcFrames,0,'protagonist-only roster must not stage NPC actors');else assert(npcFrames>0);assert(playerFrames>0);assert(taps>0);
 console.log('PASS approved Three messenger VM: '+sources.length+' scenes, '+frames+' rendered frames, '+lineIds.size+' exact line IDs, '+choiceCount+' spoken choices, '+taps+' single-tap transitions, '+narrationFrames+' narrative/record frames, correct actor sides, immediate text and full-line reload. Browser screenshots remain separate.');
