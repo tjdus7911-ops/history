@@ -139,17 +139,17 @@
     const ch = CHAPTERS[r?.currentChapter];
     const done = pct >= 100;
     const sub = !e.available ? esc(e.years) + ' · 준비 중'
-      : started && ch ? 'CH.' + ch.number + ' ' + esc(ch.title) : esc(e.years);
+      : started && ch ? 'CH.' + ch.number + ' ' + esc(ch.title) + (ch.sceneIds?.length ? ' · 장면 ' + Math.max(1, ch.sceneIds.indexOf(r.storyId) + 1) + ' / ' + ch.sceneIds.length : '') : esc(e.years);
     const tag = !e.available ? '준비 중' : started ? (done ? '완료' : '이어서 학습') : '시작하기';
-    const action = !e.available ? 'disabled aria-disabled="true"' : started && !done ? 'data-era-resume="' + e.id + '"' : 'data-era-open="' + e.id + '"';
+    const action = !e.available ? 'disabled aria-disabled="true"' : started && !done ? 'data-r7-story-resume="' + e.id + '"' : 'data-era-open="' + e.id + '"';
     const label = !e.available ? '준비 중' : done ? '다시 보기' : started ? '이어하기' : '시작하기';
     const art = e.bannerAsset ? '<img class="hv-card-art" src="' + esc(e.bannerAsset) + '" alt="" ' + (current ? 'fetchpriority="high" ' : 'loading="lazy" ') + 'decoding="async" onerror="this.remove()">' : '';
     return '<article class="hv-era' + (e.available ? '' : ' is-soon') + (current ? ' is-current' : '') + '" style="--era-accent:' + esc(e.accent || '#169B8D') + '" aria-label="눈떠보니 ' + esc(e.name) + '">'
       + art + '<div class="hv-era-shade"></div>'
-      + '<div class="hv-era-body"><div class="hv-era-tags"><span class="hv-tag' + (started && !done ? ' is-on' : '') + '">' + tag + '</span></div>'
+      + '<div class="hv-era-body"><div class="hv-era-tags"><span class="hv-tag' + (started && !done ? ' is-on' : '') + '">' + tag + '</span><span class="hv-season-tag">SEASON ' + String(e.order).padStart(2,'0') + ' · ' + esc(e.name) + '</span></div>'
       + '<h2 class="hv-era-title">눈떠보니 ' + esc(e.name) + '</h2>'
       + '<p class="hv-era-sub">' + sub + '</p>'
-      + (started && e.available ? '<div class="hv-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '" aria-label="' + esc(e.name) + ' 진행률"><i style="width:' + pct + '%"></i></div>' : '')
+      + (e.available ? '<div class="hv-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '" aria-label="' + esc(e.name) + ' 진행률"><i style="width:' + pct + '%"></i></div>' : '')
       + '<button class="hv-era-btn" ' + action + '>' + label + '</button></div></article>';
   }
 
@@ -198,6 +198,11 @@
     const cell = (l, v, u) => '<div class="hv-metric"><small>' + l + '</small><b>' + v + (u ? '<em>' + u + '</em>' : '') + '</b></div>';
     return '<section class="hv-metrics" aria-label="학습 현황">' + cell('연속 학습', s.streak, '일') + cell('오늘 푼 문제', s.todayCount, '문항') + cell('최근 정답률', s.accuracy == null ? '-' : s.accuracy, s.accuracy == null ? '' : '%') + '</section>';
   }
+  function weakHTML() {
+    const weak=globalThis.OFFICIAL_LEARNING_ANALYSIS?.rows?.().find(row=>row.weak);
+    if(!weak)return '';
+    return '<section class="hv-section hv-weak-section"><div class="hv-weak-heading"><h2 class="hv-h">보완이 필요한 시대</h2><button class="hv-textbtn" data-official-weak-era="'+esc(weak.id)+'">분석 보기</button></div><button class="hv-weak-card" data-official-weak-era="'+esc(weak.id)+'"><span><b>'+weak.accuracy+'</b><small>정답률 %</small></span><span><b>'+esc(weak.name)+'</b><small>최근 오답 '+weak.wrong+'문항 · 반복 오답 '+weak.repeatedWrong+'문항</small></span><em>풀기</em></button></section>';
+  }
 
   function sheetHTML() {
     if (sheet !== 'seasons') return '';
@@ -225,6 +230,7 @@
       + ddayRow(d, cheerLine(d, hasActivity))
       + practiceHTML()
       + metricsHTML()
+      + weakHTML()
       + sheetHTML() + '</div>';
   };
 
@@ -234,6 +240,7 @@
     const d = t?.dataset || {};
     if (d.hvSheet || d.hvClose) {
       ev.stopImmediatePropagation();
+      if(d.hvSheet==='seasons' && globalThis.REV7_STORY_VIEWS_READY){sheet=null;navigate('seasons');globalThis.APP_ROUTE?.push('seasons');return;}
       sheet = d.hvSheet || null; render(); return;
     }
     // leaving through a sheet row (data-era-open) must close the sheet; other handlers still run

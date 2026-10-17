@@ -1,0 +1,39 @@
+name: Rev7 design QA
+on:
+  push:
+    branches: [design/rev7-complete]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  mobile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm install --no-save --package-lock=false playwright pngjs
+      - run: npx playwright install --with-deps chromium
+      - name: Runtime and record preservation
+        run: |
+          node tests/rev7-layouts-test.cjs
+          node tests/official-exam-timer-test.cjs
+          node tests/official-learning-continuation-test.cjs
+          node tests/official-exam-history-test.cjs
+      - name: Responsive layouts
+        env:
+          QA_OUTPUT: tmp/rev7-qa
+        run: node tests/rev7-layouts-mobile-test.cjs
+      - name: Build
+        run: npm run build
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rev7-mobile-qa
+          path: tmp/rev7-qa
+          retention-days: 7

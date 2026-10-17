@@ -1,5 +1,5 @@
 const CACHE_PREFIX='lived-history-shell-';
-const CACHE_VERSION='2026-10-17-rev7-r7';
+const CACHE_VERSION='2026-10-17-rev7-layouts-1';
 const CACHE_NAME=CACHE_PREFIX+CACHE_VERSION;
 const APP_SHELL=[
   '/',
@@ -28,6 +28,11 @@ const APP_SHELL=[
   '/three-era-isolation.js','/three-service-ui.js','/three-learning-boundary.js','/three-service.css',
   '/three-staging.js','/three-staging.css',
   '/home-v5.js','/home-v5.css','/rev7-theme.css','/rev7-auto.css','/rev7-screens.css',
+  '/rev7-layouts.css','/rev7-layouts.js','/rev7-ox-layouts.js','/rev7-story-layouts.js','/rev7-story-player.js','/rev7-exam-layouts.js',
+  '/rev7-resource-states.js',
+  '/media/rev7/user.svg','/media/rev7/chevron.svg','/media/rev7/chart.svg','/media/rev7/back.svg','/media/rev7/check.svg','/media/rev7/down.svg','/media/rev7/empty-wrong.svg','/media/rev7/close.svg',
+  '/media/rev7/timeline-rail.svg','/media/rev7/timeline-rail-next.svg','/media/rev7/story-back.svg','/media/rev7/story-more.svg','/media/rev7/exam-close.svg','/media/rev7/exam-clock.svg','/media/rev7/exam-pause.svg','/media/rev7/exam-list.svg',
+  '/media/rev7/story-loading.svg','/media/rev7/story-offline.svg','/media/rev7/offline.svg',
   '/pwa.js',
   '/manifest.webmanifest',
   '/goryeo.png',

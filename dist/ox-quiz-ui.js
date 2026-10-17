@@ -237,7 +237,7 @@ function oxWriteRoute(route,replace=false){
 function oxApplyRoute(route=oxReadRoute()){
  if(route===null){render();return screen;}
  let normalized=oxNormalizeRoute(route);modal=null;
- if(normalized==='ox/analysis'){normalized='ox';screen='ox';oxView='home';oxWriteRoute('ox',true);}
+ if(normalized==='ox/analysis'){screen='ox';oxView='analysis';}
  else if(normalized==='ox/quiz'){
   screen='ox';
   if(activeOXSession())oxView='quiz';else{normalized='ox';oxView='home';oxWriteRoute('ox',true);}
@@ -328,7 +328,7 @@ function oxRecordSection(){
 
 const shellBeforeOX=shell;
 shell=function(content){
- const current=screen==='ox'?'ox':screen.startsWith('exam-')?'exam-library':['era','game','quiz','complete','teaser','history'].includes(screen)?'home':screen;
+ const current=screen==='ox'?'ox':screen.startsWith('exam-')?'exam-library':['era','seasons','chapter-scenes','game','quiz','complete','teaser','history'].includes(screen)?'home':screen;
  return `<div class="shell editorial-shell five-nav"><aside class="sidebar"><div class="brand">눈떠보니 한국사<small>역사를 살고, 기출로 기억하다</small></div><nav class="nav" aria-label="주 메뉴">${[['home','홈',editorialIcon('home')],['exam-library','기출문제',editorialIcon('book')],['ox','OX 퀴즈',OX_ICON],['study','오답노트',editorialIcon('note')],['records','내 기록',editorialIcon('records')]].map(([id,label,image])=>`<button data-nav="${id}" ${current===id?'aria-current="page"':''} class="${current===id?'active':''}">${image}<span>${label}</span></button>`).join('')}</nav></aside><main class="main ed-screen ed-${screen}">${content}</main></div>${modal?modalHTML():''}`;
 };
 const renderContentBeforeOX=renderContent;
@@ -396,6 +396,8 @@ if(typeof window?.addEventListener==='function'){
  window.addEventListener('hashchange',oxHandleRouteChange);
 }
 globalThis.OX_QUIZ_UI_READY=true;
+globalThis.REV7_OX_VIEWS={meta:oxMeta,stats:oxStats,era:oxEra,active:activeOXSession,wrongIds:oxCurrentWrongIds,recordSection:oxRecordSection,descriptions:OX_ERA_DESCRIPTIONS,home:()=>oxHome,setHome:view=>{oxHome=view},readRoute:oxReadRoute,writeRoute:oxWriteRoute,applyRoute:oxApplyRoute,addRoute:route=>APP_ROUTES.add(route),setApplyRoute:apply=>{oxApplyRoute=apply;globalThis.REV7_OX_VIEWS.applyRoute=apply}};
+Object.assign(globalThis.REV7_OX_VIEWS,{question:activeOXQuestion,topicLabel:oxTopicLabel,setQuiz:view=>{oxQuiz=view},distribution:oxWrongDistribution,resume:()=>{oxView='quiz';screen='ox';oxWriteRoute('ox/quiz');render();window.scrollTo(0,0)}});
 oxApplyRoute(oxReadRoute());
 })();
 
