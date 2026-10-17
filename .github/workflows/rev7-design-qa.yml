@@ -22,6 +22,7 @@ jobs:
       - name: Runtime and record preservation
         run: |
           node tests/rev7-layouts-test.cjs
+          node tests/ox-route-test.cjs
           node tests/official-exam-timer-test.cjs
           node tests/official-learning-continuation-test.cjs
           node tests/official-exam-history-test.cjs

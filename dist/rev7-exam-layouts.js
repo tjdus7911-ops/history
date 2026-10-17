@@ -3,7 +3,7 @@
  'use strict';
  const views=globalThis.REV7_EXAM_VIEWS;if(!views||!globalThis.REV7_OX_VIEWS)return;
  const icon=name=>'<span class="r7-icon" aria-hidden="true"><img src="media/rev7/'+name+'.svg" alt=""></span>';
- let level='all',resultTab='summary',lastResult=null,trend=null,gradingPending=false,lastView=null;
+ let level='all',resultTab='summary',lastResult=null,trend=null,gradingPending=false,lastView=null,cumulativeEra=null;
  const expiredSeen=new Set();
  const examLabel=s=>s.examRound?'제 '+s.examRound+'회 '+s.examLevel:views.eraInfo(s.examEra).name+' · '+s.examLevel;
  const tabs=active=>'<div class="r7-tabs" role="tablist" aria-label="기출문제 보기 방식"><button data-official-tab="round" aria-selected="'+(active==='round')+'">회차별</button><button data-official-tab="era" aria-selected="'+(active==='era')+'">시대별</button><button data-official-results-list="true" aria-selected="'+(active==='history')+'">기록</button></div>';
@@ -11,7 +11,11 @@
  const heading=()=>'<header class="r7-heading"><h1>기출문제</h1></header>';
  views.setHome(function(){
   const state=views.state(),active=meta().officialExamActiveSession;
-  if(state.tab==='era')return '<section class="r7-page r7-exam-home" data-figma-frame="E-22">'+heading()+tabs('era')+views.weakness()+'<details class="r7-legacy"><summary>시대별 기출 전체 목록</summary>'+views.eras.map(e=>'<button class="r7-secondary" data-official-era="'+e.id+'">'+esc(e.name)+'</button>').join('')+'</details></section>';
+  if(state.tab==='era'){
+   const analysis=views.analysis(null,'cumulative'),policy=globalThis.OFFICIAL_LEARNING_ANALYSIS.policy;
+   if(cumulativeEra){const row=analysis.rows.find(r=>r.id===cumulativeEra),entries=views.catalog.filter(e=>e.analysisEra===cumulativeEra&&typeof views.record(e.canonicalQuestionId).lastCorrect==='boolean');return '<section class="r7-page" data-figma-frame="E-12"><header class="r7-appbar"><button data-r7-cumulative-back aria-label="시대별 취약점으로">'+icon('back')+'</button><h1>'+esc(row?.name||'시대별 기록')+'</h1><span></span></header><h2>푼 문항 '+entries.length+'개</h2><div class="r7-result-map">'+entries.map(e=>'<button class="'+(views.record(e.canonicalQuestionId).lastCorrect?'correct':'wrong')+'" data-r7-cumulative-detail="'+e.canonicalQuestionId+'" aria-label="'+esc(e.sourceRecord.examRound+'회 '+e.sourceRecord.questionNumber+'번 해설')+'">'+e.sourceRecord.questionNumber+'</button>').join('')+'</div></section>';}
+   return '<section class="r7-page r7-exam-home" data-figma-frame="E-22">'+heading()+tabs('era')+'<p class="r7-note">문항별 최근 제출 답안 기준 정답률이에요. 표본이 적은 시대는 참고용으로 봐 주세요.</p><div class="r7-cumulative-eras">'+analysis.rows.map(row=>{const tag=!row.total?'학습 전':row.total<policy.minimumUniqueQuestions?'표본 부족':row.accuracy<policy.targetAccuracy?'집중 복습':'학습 중';return '<button data-r7-cumulative-era="'+row.id+'" '+(row.total?'':'disabled')+'><span><b>'+esc(row.name)+'</b><em>'+tag+'</em><strong>'+(row.accuracy===null?'기록 없음':row.accuracy+'%')+'</strong></span><span class="r7-cumulative-track"><i style="width:'+(row.accuracy||0)+'%"></i></span></button>';}).join('')+'</div><p class="r7-note">고유 '+policy.minimumUniqueQuestions+'문항 이상·최근 정답률 '+policy.targetAccuracy+'% 미만이면 집중 복습으로 표시해요.</p><details class="r7-legacy"><summary>누적 오답 횟수와 기존 시대별 학습</summary>'+views.weakness()+views.eras.map(e=>'<button class="r7-secondary" data-official-era="'+e.id+'">'+esc(e.name)+'</button>').join('')+'</details></section>';
+  }
   const rows=views.editions(level).map(entries=>{
    const source=entries[0].sourceRecord,activity=views.editionActivity(entries),summary=activity.summary;
    const cert=summary?views.certification(summary,source.examLevel,true):null;
@@ -97,6 +101,9 @@
  document.addEventListener('click',function(event){
   const b=event.target.closest('button');if(!b)return;const d=b.dataset;
   const handled=()=>event.stopImmediatePropagation();
+  if(d.r7CumulativeEra){handled();cumulativeEra=d.r7CumulativeEra;render();return;}
+  if('r7CumulativeBack' in d){handled();cumulativeEra=null;render();return;}
+  if(d.r7CumulativeDetail){handled();const route='study/question/'+encodeURIComponent(d.r7CumulativeDetail);globalThis.REV7_OX_VIEWS.addRoute(route);globalThis.REV7_OX_VIEWS.applyRoute(route);globalThis.REV7_OX_VIEWS.writeRoute(route);return;}
   if(d.r7ExamLevel){handled();level=d.r7ExamLevel;render();return;}
   if(d.r7ExamRound){handled();trend=null;views.openCover(views.entriesForRound(Number(d.r7ExamRound),d.r7ExamLevelValue),{examTab:'round',examRound:Number(d.r7ExamRound),examLevel:d.r7ExamLevelValue,timed:true});return;}
   if('r7ExamOpen' in d){handled();modal={type:'r7-exam-resume'};render();return;}

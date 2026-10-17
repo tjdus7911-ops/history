@@ -44,3 +44,11 @@ Chrome subprocess startup fails in this Windows sandbox. Responsive screenshots 
 The checkout externalizes 8,647 original asset files through its existing GitHub asset origin. Tests requiring physical `dist/assets` files cannot pass against this checkout; source manifests and actual external-image rendering must be checked instead. No original asset URL, question, answer, explanation, script, chapter, scene, choice, or save schema was edited.
 
 This is a progress record, not a declaration that all 69 screens have passed visual QA. Final per-frame status and screenshots are maintained in the task outputs.
+
+## Expanded QA result
+
+Commit 3ba2e97 passed GitHub Actions run 39036573786: runtime preservation, 50 captured states at 360/390/412px (48 distinct Rev.7 frame IDs), and production build. The same flow uses real commands for ordinary navigation, exam answering, wrong review and OX feedback. Story connection-question and completion states additionally use disposable QA fixtures; this is not a complete playthrough of every campaign.
+
+All 69 confirmed frames have presentation code or shared component handling; 4 unconfirmed frames retain the original renderers. Per-frame pixel comparison for every state is not complete. Special error/loading states, the five-minute timer appearance and several story player states still need individual visual verification. Final counts, remaining checks, comparison notes and exact file list are in the task output reports.
+
+E-22 was subsequently compared directly and corrected from the inherited six-group weakness layout to ten existing analysis eras with compact rows and bars. Its cumulative detail uses existing canonical records; opening an explanation is verified not to mutate answers or learning history. The original six-group analysis remains in the detailed disclosure. OX route regression now verifies the implemented O-06 page rather than the retired redirect placeholder.
