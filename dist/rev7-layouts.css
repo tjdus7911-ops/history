@@ -107,3 +107,5 @@ html body .r7-page.r7-review-result{display:flex;flex-direction:column;min-heigh
 /* Hide mobile scrollbar chrome while retaining native scrolling and zoom. */
 @media(max-width:760px){html,body,#app,#app *{scrollbar-width:none;-ms-overflow-style:none}html::-webkit-scrollbar,body::-webkit-scrollbar,#app::-webkit-scrollbar,#app *::-webkit-scrollbar{display:none;width:0;height:0}}
 .r7-cover-start>[data-r7-cover-learn]{margin-top:10px;width:100%}
+
+.r7-exam-modes{display:flex;gap:8px;margin-top:18px}.r7-exam-modes>button{flex:1;min-height:44px;padding:10px 8px;border:1px solid var(--r7-line);border-radius:4px;background:white;color:var(--r7-ink);font-size:14px}.r7-exam-modes>button[aria-pressed=true]{background:var(--r7-ink);border-color:var(--r7-ink);color:white}

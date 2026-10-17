@@ -172,9 +172,9 @@
     const a = activeExam(), pool = wrongPool(), ox = oxState();
     let exam;
     if (a) {
-      exam = row('exam', 'coral', ico.paper, '기출문제 이어 풀기',
+      exam = row('exam', 'coral', ico.paper, '기출문제',
         esc(a.title) + ' · ' + a.answered + '/' + a.total + '문항' + (a.remaining != null ? ' · 남은 ' + (a.paused ? '시간 정지' : Math.ceil(a.remaining / 60000) + '분') : ''),
-        'data-nav="exam-library"', '이어 풀기');
+        'data-nav="exam-library"', '목록 보기');
     } else if (examHistoryCount() > 0) {
       exam = row('exam', 'coral', ico.paper, '기출문제', '회차별·시대별 실제 기출로 실전 감각을 길러요', 'data-nav="exam-library"', '');
     } else {
