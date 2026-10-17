@@ -251,7 +251,8 @@
     const items = rail.querySelectorAll('.hv-rail-item');
     if (!items.length) return;
     const step = items.length > 1 ? items[1].offsetLeft - items[0].offsetLeft : rail.clientWidth;
-    const i = Math.max(0, Math.min(items.length - 1, Math.round(rail.scrollLeft / Math.max(1, step))));
+    const atEnd = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 2;
+    const i = atEnd ? items.length - 1 : Math.max(0, Math.min(items.length - 1, Math.round(rail.scrollLeft / Math.max(1, step))));
     rail.parentElement.querySelectorAll('.hv-dots i').forEach((dot, k) => dot.classList.toggle('on', k === i));
   }, true);
 
