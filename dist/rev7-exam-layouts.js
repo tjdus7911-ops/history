@@ -44,8 +44,8 @@
    const time=views.timerMarkup(session).replace('남은 시간 ','<span class="sr-only">남은 시간 </span>'+icon('exam-clock')).replace('>일시정지</button>','>'+icon('exam-pause')+' 일시정지</button>');
    const top='<header class="r7-exam-head"><button data-r7-exam-pause-exit aria-label="시험 중지">'+icon('exam-close')+'</button>'+time+'<button data-official-question-list="true">'+icon('exam-list')+' 문제 목록</button></header><div class="r7-exam-progress"><span>'+(session.index+1)+' / '+session.entries.length+'</span><div><i style="width:'+((session.index+1)/session.entries.length*100)+'%"></i></div></div>';
    html=html.replace(/<header class="official-exam-intro"[\s\S]*?<\/header>/,top).replace('class="official-practice ','data-figma-frame="'+(session.timed&&OFFICIAL_EXAM_TIMER.remainingMs()<=300000?'E-20':'E-03')+'" class="official-practice r7-exam-practice ');
-   const previous='<button class="secondary" data-official-previous="true" '+(session.index===0?'disabled':'')+'>이전</button>',next=session.index<session.entries.length-1?'<button class="primary" data-official-forward="true">다음</button>':'<button class="primary" data-official-request-submit="true">시험 제출</button>';
-   html=html.replace(/<div class="official-exam-bottom-actions">[\s\S]*?<\/div>/,'<div class="official-exam-bottom-actions">'+previous+next+'</div>');
+   const previous='<button class="secondary" data-official-previous="true" '+(session.index===0?'disabled':'')+'>이전</button>',next=session.index<session.entries.length-1?'<button class="secondary" data-official-forward="true">다음</button>':'';
+   html=html.replace(/<div class="official-exam-bottom-actions">[\s\S]*?<\/div>/,'<div class="official-exam-bottom-actions">'+previous+next+'<button class="primary" data-official-request-submit="true">시험 제출</button></div>');
   }else if(session.scope==='wrong-only'){
    const current=session.entries[session.index],done=Object.hasOwn(session.feedback,current.canonicalQuestionId),right=session.feedback[current.canonicalQuestionId];
    html=html.replace('class="official-practice ','data-figma-frame="'+(done?right?'W-05':'W-06':'W-04')+'" class="official-practice r7-page r7-wrong-practice ')
@@ -132,6 +132,6 @@
  function activeSession(){return meta().officialExamActiveSession;}
  function queueResultPaint(){if(typeof requestAnimationFrame!=='function')return;gradingPending=true;requestAnimationFrame(()=>requestAnimationFrame(()=>{gradingPending=false;render();}));}
  const renderBefore=render;
- render=function(){const before=views.state();if(screen==='exam-library'&&before.view==='home'&&(lastScreen!==screen||lastView!=='home'))practiceMode='exam';lastScreen=screen;if(lastView==='practice'&&before.view==='result'&&before.session?.mode==='exam'&&before.session?.submissionReason!=='TIME_EXPIRED')queueResultPaint();lastView=before.view;renderBefore();const state=views.state();document.body?.classList?.toggle('r7-exam-active',screen==='exam-library'&&['cover','practice','review','result'].includes(state.view));};
+ render=function(){const before=views.state();if(screen==='exam-library'&&before.view==='home'&&(lastScreen!==screen||lastView!=='home'))practiceMode='exam';lastScreen=screen;if(lastView==='practice'&&before.view==='result'&&before.session?.mode==='exam'&&before.session?.submissionReason!=='TIME_EXPIRED')queueResultPaint();lastView=before.view;renderBefore();const state=views.state();document.body?.classList?.toggle('r7-exam-active',screen==='exam-library'&&['cover','practice','review'].includes(state.view));};
  render();
 })();
