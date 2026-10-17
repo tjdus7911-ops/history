@@ -12,6 +12,8 @@ const origin = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'config', '
 const remoteRoot = `https://raw.githubusercontent.com/${origin.repository}/${origin.commit}/${origin.sourcePath}`;
 const dist = path.resolve(__dirname, '..', 'dist');
 const createServer = http.createServer;
+// A keep-alive upstream agent would hold the event loop open after server.close() and make tests appear to hang.
+const upstreamAgent = new https.Agent({ keepAlive: false });
 http.createServer = function patched(...args) {
   const listenerIndex = typeof args[0] === 'function' ? 0 : 1;
   const listener = args[listenerIndex];
@@ -22,7 +24,7 @@ http.createServer = function patched(...args) {
       if (name.startsWith('/assets/') && !name.includes('..') && !fs.existsSync(path.join(dist, name))) {
         // stream the pinned snapshot bytes through the test server so pages stay same-origin
         // (canvas/getImageData checks would otherwise be tainted by a cross-origin redirect)
-        https.get(encodeURI(remoteRoot + name.slice('/assets'.length)), upstream => {
+        https.get(encodeURI(remoteRoot + name.slice('/assets'.length)), { agent: upstreamAgent }, upstream => {
           const type = upstream.headers['content-type'] || 'application/octet-stream';
           res.writeHead(upstream.statusCode || 502, { 'Content-Type': type, 'Cache-Control': 'public, max-age=300' });
           upstream.pipe(res);

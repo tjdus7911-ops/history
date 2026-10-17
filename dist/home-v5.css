@@ -78,8 +78,8 @@ body.hv-locked { overflow: hidden; }
 .hv-rail-wrap { margin: 0 -20px; }
 .hv-rail { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 20px; scroll-padding-left: 20px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
 .hv-rail::-webkit-scrollbar { display: none; }
-.hv-rail-item { flex: 0 0 min(62vw, 240px); scroll-snap-align: start; }
-.hv-era { position: relative; isolation: isolate; overflow: hidden; height: 300px; border-radius: var(--r7-r-xl); background: var(--era-accent, var(--r7-teal)); color: #fff; display: flex; flex-direction: column; justify-content: flex-end; }
+.hv-rail-item { flex: 0 0 min(72vw, 288px); scroll-snap-align: start; }
+.hv-era { position: relative; isolation: isolate; overflow: hidden; height: 360px; border-radius: var(--r7-r-xl); background: var(--era-accent, var(--r7-teal)); color: #fff; display: flex; flex-direction: column; justify-content: flex-end; }
 .hv-era.is-soon { background: var(--r7-faint); }
 .hv-card-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 55% 30%; z-index: -2; }
 .hv-era-shade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(20,30,42,.15) 0%, rgba(20,30,42,.05) 30%, rgba(20,30,42,.72) 70%, rgba(20,30,42,.9) 100%); }
@@ -88,8 +88,8 @@ body.hv-locked { overflow: hidden; }
 .hv-tag { display: inline-flex; align-items: center; min-height: 22px; padding: 0 8px; border-radius: var(--r7-r-sm); background: rgba(255,255,255,.22); font-size: 11px; font-weight: 600; color: #fff; }
 .hv-tag.is-on { background: var(--r7-coral); }
 .hv-tag-light { background: #fff; color: var(--r7-ink); }
-.hv-era-title { margin: 6px 0 0; font-family: var(--r7-serif); font-size: 22px; line-height: 1.25; font-weight: 700; letter-spacing: -0.03em; text-shadow: 0 1px 12px rgba(0,0,0,.3); }
-.hv-era-sub { margin: 0; font-size: 12px; line-height: 1.4; color: rgba(255,255,255,.9); }
+.hv-era-title { margin: 6px 0 0; font-family: var(--r7-serif); font-size: 24px; line-height: 1.25; font-weight: 700; letter-spacing: -0.03em; text-shadow: 0 1px 12px rgba(0,0,0,.3); }
+.hv-era-sub { margin: 0; font-size: 13px; line-height: 1.4; color: rgba(255,255,255,.9); }
 .hv-progress { height: 3px; background: rgba(255,255,255,.3); overflow: hidden; margin: 4px 0 2px; border-radius: 2px; }
 .hv-progress i { display: block; height: 100%; background: #fff; transition: width .3s; }
 .hv-era-btn { margin-top: 6px; min-height: 36px; border: 0; border-radius: var(--r7-r-md); background: #fff; color: var(--r7-ink); font-size: 14px; font-weight: 500; }

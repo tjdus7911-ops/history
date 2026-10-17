@@ -346,3 +346,8 @@ html body .official-result-hero .official-certification { margin: 6px 0 0; gap: 
 html body .official-result-hero .official-certification span { padding: 1px 8px; line-height: 1.4; }
 html body .official-result-hero .official-certification small { font-size: 12px; line-height: 1.2; }
 html body .official-result-hero > div:first-child { padding: 0 !important; min-height: 0 !important; }
+
+/* E-10: primary full-width, review + retake side by side (legacy grid-column/grid-row on retake overridden) */
+html body .official-result-actions button[data-official-review], html body .official-result-actions button.official-result-retake { grid-column: auto !important; grid-row: auto !important; order: 0 !important; }
+html body .official-result-actions button[data-official-retry] { grid-row: auto !important; }
+html body .official-round-row .official-edition-status { grid-column: 3 !important; grid-row: 1 !important; justify-self: end; align-self: center; white-space: nowrap; }

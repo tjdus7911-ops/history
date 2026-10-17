@@ -89,7 +89,7 @@ async function main(){
         const shouldMiss=!wrongId&&question.isOfficial&&question.chapter==='joseon-ch12',answer=shouldMiss?(question.answer+1)%5:question.answer;
         if(await page.locator('[data-pick-answer]').count()){await tap(`[data-pick-answer="${answer}"]`);await tap('[data-submit-answer]')}else await tap(`[data-answer="${answer}"]`);
         if(shouldMiss)wrongId=question.id;
-        assert(await page.locator('.feedback').count());continue;
+        assert(await page.locator('.feedback, .official-feedback').count());continue;
       }
       await tap('[data-action="quiz-next"]');
       if(!reloaded&&now.chapter==='joseon-ch12'){
