@@ -42,7 +42,7 @@
   }
   function myHome() {
     const events = learningEvents(), summary = learningSummary(meta()), seen = visitedScenes(), today = events.filter(e => day(e.answeredAt) === day(new Date()));
-    const any = summary.attempts > 0 || events.length > 0 || seen.length > 0 || officialExamResults().length > 0;
+    const any = summary.attempts > 0 || oxStats().attempts > 0 || events.length > 0 || seen.length > 0 || officialExamResults().length > 0;
     if (!any) return '<section class="r7-page r7-my" data-figma-frame="M-09">' + header('내 기록', true) + '<div class="r7-empty"><span class="r7-empty-icon">' + asset('chart') + '</span><h2>아직 학습 기록이 없어요</h2><p>이야기를 읽거나 문제를 풀면 오늘의 학습이 여기에 쌓여요.</p></div><button class="r7-primary" data-nav="home">첫 이야기 시작하기</button></section>';
     const wrong = wrongEntries().filter(row => row.record.lastCorrect === false).length + oxCurrentWrongIds('all').length;
     return '<section class="r7-page r7-my" data-figma-frame="M-01">' + header('내 기록', true)
@@ -91,9 +91,9 @@
     const session = activeOXSession(), all = oxStats();
     const row = (id, name, description, stats) => {
       const inProgress = session && (id === 'all' ? !session.eraId : session.eraId === id);
-      const state = inProgress ? '풀던 중 ' + (session.index + 1) + '/' + session.questionIds.length : stats.accuracy === null ? '학습 전' : '정답률 ' + stats.accuracy + '%';
+      const state = inProgress ? '풀던 중 ' + (session.index + 1) + '/' + session.questionIds.length : stats.accuracy === null ? '아직 학습 전' : '정답률 ' + stats.accuracy + '%';
       const action = inProgress ? 'data-ox-resume="true"' : id === 'all' ? 'data-ox-start="all"' : 'data-ox-era="' + id + '"';
-      return '<button class="r7-ox-row" ' + action + '><span><b>' + esc(name) + '</b><small>' + esc(description) + '</small></span><em class="' + (inProgress ? 'active' : stats.accuracy === null ? '' : stats.accuracy < 70 ? 'low' : 'learned') + '">' + state + '</em>' + chevron() + '</button>';
+      return '<button class="r7-ox-row" ' + action + '><span><b>' + esc(name) + '</b><small>' + esc(description) + '</small><small>전체 ' + OX_QUESTIONS.filter(q=>id==='all'||q.eraId===id).length + '문제</small></span><em class="' + (inProgress ? 'active' : stats.accuracy === null ? '' : stats.accuracy < 70 ? 'low' : 'learned') + '">' + state + '</em>' + chevron() + '</button>';
     };
     return '<section class="r7-page r7-ox-home" data-figma-frame="O-01">' + header('OX 퀴즈') + '<p class="r7-intro">한능검 심화 핵심 개념을 빠르게 확인해요.</p>'
       + (session ? '<button class="r7-resume" data-ox-resume="true"><span><small>진행 중인 퀴즈 이어하기</small><b>' + esc(session.eraId ? oxEra(session.eraId).shortName : '전체 시대') + ' · ' + (session.index + 1) + ' / ' + session.questionIds.length + ' 문제</b></span>' + chevron() + '</button>' : '')

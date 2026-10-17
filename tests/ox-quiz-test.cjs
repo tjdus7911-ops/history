@@ -193,11 +193,11 @@ assert.equal(session.mode,'era');assert.equal(session.eraId,'goryeo');assert.equ
 assert.equal(new Set(session.questionIds).size,sessionSize);assert(session.questionIds.every(id=>questions.find(question=>question.id===id)?.eraId==='goryeo'));
 assert.deepEqual(session.questionFingerprints,Object.fromEntries(session.questionIds.map(id=>[id,questions.find(question=>question.id===id).contentFingerprint])),'session must snapshot current source fingerprints');
 const firstSessionIds=[...session.questionIds],firstQuestion=questions.find(question=>question.id===session.questionIds[0]);
-assert(html.includes('<small>한능검 심화 핵심 개념</small>'),'the answer-bearing topic label must stay hidden before answering');
-assert(!html.includes(`<small>${firstQuestion.tags.join(' · ')}</small>`),'the correct topic must not leak before an O/X choice');
+assert(html.includes('한능검 심화 핵심 개념'),'the answer-bearing topic label must stay hidden before answering');
+assert(!html.includes(firstQuestion.tags.join(' · ')),'the correct topic must not leak before an O/X choice');
 assert(!html.includes('class="ox-feedback')&&!html.includes('data-ox-next="true"'),'answer, explanation, and next action must stay hidden before an O/X choice');
 answerCurrent(false);
-assert(html.includes(`<small>${firstQuestion.tags.join(' · ')}</small>`),'topic label should be revealed with the explanation');
+assert(html.includes(firstQuestion.tags.join(' · ')),'topic label should be revealed with the explanation');
 assert(!html.includes('연계 심화 기출'),'unreviewed source-round claims must not be rendered in OX feedback');
 let event=copy('meta().oxQuiz.history.at(-1)');
 const canonical=['answeredAt','attemptNumber','contentFingerprint','correctAnswer','eraId','isCorrect','questionId','selectedAnswer','sessionId','topicId'];
@@ -366,7 +366,7 @@ run(`meta().oxQuiz=${donutSnapshot}`);
 
 /* OX work remains isolated from Story, official exams, and their wrong-note records. */
 assert.equal(run('JSON.stringify({run:state.run,mainRun:state.mainRun,officialResults:meta().officialExamResults||[],questionRecords:meta().questionRecords,wrongQuestionIds:meta().wrongQuestionIds,wrongAnswers:meta().wrongAnswers})'),protectedBefore,'OX must not alter Story or official exam records');
-click({nav:'records'});assert(html.includes('OX 퀴즈 학습 통계')&&html.includes('시대별 기출 기록'));
+click({nav:'records'});click({r7RecordLearning:''});assert(html.includes('OX 퀴즈 학습 통계')&&html.includes('시대별 기출 기록'));
 assert.equal(run('globalThis.OX_QUIZ_UI_READY'),true);
 
 /* Sessions survive retired questions: invalid ids are removed and the cursor,
