@@ -67,7 +67,7 @@
       + '<div class="r7-chips r7-era-chips" aria-label="학습 시대">' + [{id:'all',name:'전체'},...LEARNING_ERAS.filter(e => e.available)].map(e => '<button data-record-era="' + e.id + '" aria-pressed="' + (recordEra === e.id) + '">' + esc(e.name) + '</button>').join('') + '</div>'
       + '<div class="r7-tiles">' + tile('읽은 장면', scenes, recordPeriod === 'all' ? '저장된 장면 기록' : '날짜별 장면 기록 없음') + tile('푼 문제', events.length, '정답 ' + correct) + '</div>'
       + '<section class="r7-chart"><h2>요일별 학습</h2><div class="r7-bars">' + counts.map((n,i) => '<div><i style="height:' + (n ? Math.max(4, n / max * 84) : 2) + 'px" aria-label="' + '월화수목금토일'[i] + '요일 ' + n + '문제"></i><small>' + '월화수목금토일'[i] + '</small></div>').join('') + '</div></section>'
-      + '<p class="r7-note">날짜가 저장된 문제 풀이 기록을 집계해요.</p><details class="r7-legacy"><summary>기존 상세 통계 보기</summary>' + officialRecordsPage() + oxRecordSection() + '</details></section>';
+      + '<p class="r7-note">날짜가 저장된 문제 풀이 기록을 집계해요.</p><details class="r7-legacy"><summary>상세 통계 보기</summary>' + officialRecordsPage() + oxRecordSection() + '</details></section>';
   }
 
   const renderBefore = renderContent;
@@ -123,9 +123,9 @@
   }
   const wrongTabs=selected=>'<div class="r7-tabs" role="tablist" aria-label="오답 유형"><button role="tab" aria-selected="'+(selected==='official')+'" data-wrong-filter="official">기출 오답</button><button role="tab" aria-selected="'+(selected==='ox')+'" data-wrong-filter="ox">OX 오답</button></div>';
   study = function () {
-    if(studyTab==='review'&&wrongFilter==='ox'&&!oxCurrentWrongIds('all').length)return '<section class="r7-page" data-figma-frame="O-09">'+header('오답노트')+wrongTabs('ox')+'<div class="r7-empty"><span class="r7-empty-icon">'+asset('empty-wrong')+'</span><h2>OX 오답이 없습니다</h2><p>퀴즈를 풀다 틀린 문제가 생기면 여기에 모여요.</p></div><button class="r7-primary" data-nav="ox">시대 골라 풀기</button><details class="r7-legacy"><summary>기존 OX 복습 완료 이력</summary>'+studyBefore()+'</details></section>';
+    if(studyTab==='review'&&wrongFilter==='ox'&&!oxCurrentWrongIds('all').length)return '<section class="r7-page" data-figma-frame="O-09">'+header('오답노트')+wrongTabs('ox')+'<div class="r7-empty"><span class="r7-empty-icon">'+asset('empty-wrong')+'</span><h2>OX 오답이 없습니다</h2><p>퀴즈를 풀다 틀린 문제가 생기면 여기에 모여요.</p></div><button class="r7-primary" data-nav="ox">시대 골라 풀기</button><details class="r7-legacy"><summary>OX 복습 완료 이력</summary>'+studyBefore()+'</details></section>';
     if (studyTab !== 'review' || wrongFilter === 'ox') return studyBefore(); // Populated O-07 intentionally unchanged.
-    if (!wrongEntries().length) return '<section class="r7-page r7-wrong" data-figma-frame="W-03">'+header('오답노트')+wrongTabs('official')+'<div class="r7-empty"><span class="r7-empty-icon">'+asset('empty-wrong')+'</span><h2>복습할 오답이 아직 없어요</h2><p>기출문제나 이야기 속 문제에서 틀린 문제가 여기에 모여요.</p></div><button class="r7-primary" data-nav="exam-library">기출문제 풀러 가기</button><button class="r7-secondary" data-nav="home">이야기 읽으러 가기</button><details class="r7-legacy"><summary>OX 오답과 기존 학습 이력</summary>'+studyBefore()+'</details></section>';
+    if (!wrongEntries().length) return '<section class="r7-page r7-wrong" data-figma-frame="W-03">'+header('오답노트')+wrongTabs('official')+'<div class="r7-empty"><span class="r7-empty-icon">'+asset('empty-wrong')+'</span><h2>복습할 오답이 아직 없어요</h2><p>기출문제나 이야기 속 문제에서 틀린 문제가 여기에 모여요.</p></div><button class="r7-primary" data-nav="exam-library">기출문제 풀러 가기</button><button class="r7-secondary" data-nav="home">이야기 읽으러 가기</button><details class="r7-legacy"><summary>OX 오답과 학습 이력</summary>'+studyBefore()+'</details></section>';
     const all = wrongEntries().filter(row => wrongEra === 'all' || row.entry.primaryEra === wrongEra);
     const needed = all.filter(row => row.record.lastCorrect === false), completed = all.filter(row => row.record.lastCorrect === true);
     const rows = wrongStatus === 'completed' ? completed : needed;
@@ -142,7 +142,7 @@
       + '<div class="r7-wrong-controls"><div class="r7-chips"><button data-r7-wrong-status="needed" aria-pressed="' + (wrongStatus === 'needed') + '">복습 필요</button><button data-r7-wrong-status="completed" aria-pressed="' + (wrongStatus === 'completed') + '">복습 완료</button></div><button class="r7-filter-button" data-r7-filter-open>' + esc(eraName) + asset('down') + '</button></div>'
       + (rows.length ? '<div class="r7-wrong-list">' + list + '</div>' : '<div class="r7-empty"><span class="r7-empty-icon">' + asset('empty-wrong') + '</span><h2>' + (wrongStatus === 'completed' ? '아직 복습 완료한 오답이 없어요' : '복습할 오답이 없어요') + '</h2><p>틀린 문제는 여기에 모여요.<br>문제를 풀며 차근차근 쌓아가요.</p></div>')
       + (needed.length && wrongStatus === 'needed' ? '<div class="r7-bottom"><button class="r7-primary" data-r7-wrong-bulk>오답 ' + needed.length + '개 풀기</button></div>' : '')
-      + '<details class="r7-legacy"><summary>기존 오답 이력과 추가 필터</summary>' + studyBefore() + '</details>' + eraFilter() + '</section>';
+      + '<details class="r7-legacy"><summary>오답 이력과 추가 필터</summary>' + studyBefore() + '</details>' + eraFilter() + '</section>';
   };
   document.addEventListener('click', function (event) {
     const button = event.target.closest('button'); if (!button) return;
