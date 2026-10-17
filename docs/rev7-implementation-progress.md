@@ -25,8 +25,17 @@ Source: Figma page `132:4`, 73 screen frames, 69 saved detailed responses. No ad
 
 - Daily study minutes, dated scene counts, chapter expected minutes, and story duration are not recorded by the existing schema. Missing values say “기록 없음” or “—”; Figma sample values were not invented and the schema was not extended.
 - Existing official grading passes at 60/100. Figma sample goal-line numbers do not override grading.
-- E-09 grading is synchronous in the existing runtime. A fabricated delay was not introduced; this standalone loading frame remains unimplemented.
+- E-09 now paints between synchronous grading and result analysis rendering using browser animation frames. It introduces no fixed delay, changes no timer/grade calculation, and is covered by a duplicate-result preservation test.
+- Figma E-04 shows a marked-question state. The app has no saved bookmark/mark field; this new feature was not invented. The existing answered/current/unanswered states and six-column layout are implemented.
 - Existing extra filters, summaries and recordbook actions remain available through disclosure menus.
+
+## Latest verification
+
+- GitHub Actions run 39035560460 passed runtime preservation, 360/390/412 priority layouts, and production build.
+- The expanded browser flow covers OX feedback/resume/analysis, exam cover/map/pause/submission/result/review, and story chapter/scene/player/menu/exit at all three widths. Final run is tracked in task outputs.
+- Corrected real scene counts to use the existing chapterScenes runtime; no chapter content was modified.
+- Restored verified official pass-rate badges and the suspended-exam retry guard.
+- Original grading thresholds remain 60/70/80 for advanced certification; the result graph uses the true minimum 60-point pass line.
 
 ## Local test constraints
 

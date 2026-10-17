@@ -28,4 +28,9 @@ app.click({nav:'ox'});app.click({r7OxAnalysis:''});assert(app.html().includes('d
 app.click({r7OxAnalysisBack:''});app.click({nav:'home'});app.click({r7Seasons:''});assert(app.html().includes('data-figma-frame="S-01"'));
 app.click({eraOpen:'goryeo'});assert(app.html().includes('data-figma-frame="S-02"'));
 const chapter=app.run("eraChapters('goryeo')[0].chapterId");app.click({chapter});assert(app.html().includes('r7-chapter-sheet'));app.click({r7ChapterScenes:chapter});assert(app.html().includes('data-figma-frame="S-04B"'));assert(app.run('chapterScenes('+JSON.stringify(chapter)+').length')>0);assert(app.html().includes('장면 1')||app.html().includes('아직 읽지 않은 장면')); 
+
+app.run("globalThis.rev7Frames=[];globalThis.requestAnimationFrame=callback=>rev7Frames.push(callback)");
+app.run("REV7_EXAM_VIEWS.start(REV7_EXAM_VIEWS.entriesForRound(79,'심화'),'exam',{examTab:'round',examRound:79,examLevel:'심화',timed:false})");app.click({officialSubmitConfirm:'true'});
+assert(app.html().includes('data-figma-frame="E-09"'));assert(app.run('OFFICIAL_EXAM_UI.snapshot().graded'),'loading presentation must not defer or duplicate grading');
+const resultState=app.run('JSON.stringify(meta().officialExamResults)');app.run('rev7Frames.shift()();rev7Frames.shift()()');assert(app.html().includes('data-figma-frame="E-10"'));assert.equal(app.run('JSON.stringify(meta().officialExamResults)'),resultState,'rendering the analysis must preserve the result');
 console.log('PASS: Rev.7 record/learning routes, wrong review filters/detail/bulk, record preservation, OX answer/feedback/resume/analysis, story selection/chapter/scene entry.');
