@@ -20,7 +20,7 @@
   currentSceneUrl=url;
   if(loaded.has(url)){storyState(game,url,loaded.get(url));return;}
   loaded.set(url,'loading');storyState(game,url,'loading');const preload=new Image();
-  const finish=state=>{loaded.set(url,state);const current=document.querySelector('.r7-story-play');if(current&&currentSceneUrl===url)storyState(current,url,state);};
+  const finish=state=>{loaded.set(url,state);const current=document.querySelector('.r7-story-play');if(current&&currentSceneUrl===url){if(state==='ready'&&current.style.backgroundImage){const background=current.style.backgroundImage;current.style.backgroundImage='none';current.getBoundingClientRect();current.style.backgroundImage=background;}storyState(current,url,state);}};
   preload.onload=()=>finish('ready');preload.onerror=()=>finish('failed');preload.src=url;
  }
  document.addEventListener('error',function(event){
@@ -34,7 +34,7 @@
  document.addEventListener('click',function(event){
   const button=event.target.closest('button');if(!button)return;
   if(button.hasAttribute('data-r7-offline-retry')){event.stopImmediatePropagation();location.reload();}
-  if(button.hasAttribute('data-r7-story-retry')){event.stopImmediatePropagation();loaded.delete(currentSceneUrl);inspectStory();}
+  if(button.hasAttribute('data-r7-story-retry')){event.stopImmediatePropagation();document.querySelector('.r7-story-play')?.querySelectorAll('img').forEach(img=>{if(!img.naturalWidth){const src=img.getAttribute('src');if(src){img.removeAttribute('src');img.src=src;}}});loaded.delete(currentSceneUrl);inspectStory();}
   if(button.hasAttribute('data-r7-paper-retry')){event.stopImmediatePropagation();const figure=button.closest('.official-paper'),img=figure?.querySelector('img[data-r7-retry-source]');if(!img)return;figure.querySelector('.r7-paper-error')?.remove();img.hidden=false;const src=img.dataset.r7RetrySource;img.removeAttribute('src');img.src=src;}
  },true);
  // This hook is attached after the app scripts have initialized their final renderer.
