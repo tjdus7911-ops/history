@@ -27,8 +27,13 @@
   let html=quizBefore();if(quizMode!=='story')return html;
   const q=activeQuestion();if(!q)return html;const selected=run().questionAnswer,draft=quizDraft(),done=selected!==null;
   const frame=done?selected===q.answer?'S-11':'S-12':draft===null?'S-09':draft===q.answer?'S-10':'S-10B';
-  html=html.replace('class="editorial-quiz','data-figma-frame="'+frame+'" class="editorial-quiz r7-story-question');
-  html=html.replace(/<header class="quiz-top">[\s\S]*?<\/header>/,'<header class="quiz-top"><button data-r7-story-exit aria-label="연결 문제 나가기">'+icon('back')+'</button><span>연결 문제</span><button data-action="status" aria-label="내 상태 보기">'+icon('user')+'</button></header>');
+  html=html.replace('class="editorial-quiz','data-figma-frame="'+frame+'" class="editorial-quiz r7-page r7-story-question');
+  const queue=run().questionQueue||[],questionIndex=run().questionQueueIndex||0,entry=globalThis.REV7_EXAM_VIEWS.entry(q.questionId),points=entry?.sourceRecord?.points;
+  html=html.replace(/<header class="quiz-top">[\s\S]*?<\/header>/,'<header class="quiz-top r7-appbar"><button data-r7-story-exit aria-label="연결 문제 나가기">'+icon('back')+'</button><h1>이야기 속 문제 '+(questionIndex+1)+' / '+Math.max(1,queue.length)+'</h1><span></span></header>');
+  html=html.replace(/<div class="quiz-progress">[\s\S]*?<\/small><\/div>/,'');
+  if(isVerifiedOfficialQuestion(q))html=html.replace(/<div class="exam-source-row">[\s\S]*?<\/div>/,'<div class="r7-story-source"><span>연결 기출</span><p>제 '+q.examRound+'회 '+esc(q.examLevel)+' · '+q.questionNumber+'번'+(points?' · '+points+'점':'')+'</p></div>');
+  html=html.replace('>Q. ','>');
+  html=html.replace(/<\/section>$/,'<details class="r7-legacy"><summary>내 상태 보기</summary><button class="r7-secondary" data-action="status">내 상태 열기</button></details></section>');
   return html;
  };
  const modalBefore=modalHTML;
@@ -48,8 +53,8 @@
  renderContent=function(){
   const legacy=contentBefore();if(screen!=='complete')return legacy;
   const id=resultChapterId||run().currentChapter,ch=CHAPTERS[id];if(!ch)return legacy;
-  const r=resultRun(id),score=questionScore(id,r.questionResults),order=eraChapters(chapterEra(id)),at=order.findIndex(c=>c.chapterId===id),next=order[at+1];
-  return '<section class="r7-page r7-story-complete" data-figma-frame="S-13"><div class="r7-complete-mark">'+icon('check')+'</div><p class="r7-complete-chapter">CH.'+ch.number+' '+esc(ch.title)+'</p><h1>챕터를 마쳤어요</h1><p>이야기 속 연결 문제까지 모두 풀었어요</p><div class="r7-metrics r7-complete-metrics"><article><small>연결 문제</small><strong>'+score.correct+' / '+score.total+'</strong><p>정답</p></article><article><small>챕터 진행</small><strong>'+meta().completedChapters.filter(c=>chapterEra(c)===chapterEra(id)).length+' / '+order.length+'</strong><p>챕터</p></article><article><small>걸린 시간</small><strong>—</strong><p>기록 없음</p></article></div>'+(next?'<div class="r7-next-story"><small>다음 이야기</small><h2>CH.'+next.number+' '+esc(next.title)+'</h2></div>':'')+resultFooter(id)+(score.correct<score.total?'<button class="r7-secondary" data-action="review-wrong">틀린 문제 복습하기 ('+(score.total-score.correct)+')</button>':'')+'<details class="r7-legacy"><summary>기존 플레이 결과와 수집 기록</summary>'+legacy+'</details></section>';
+  const r=resultRun(id),score=questionScore(id,r.questionResults),order=eraChapters(chapterEra(id)),at=order.findIndex(c=>c.chapterId===id),next=order[at+1],footer=resultFooter(id),primaryFooter=footer.match(/<button class="primary[^"]*"[^>]*>[\s\S]*?<\/button>/)?.[0]||footer;
+  return '<section class="r7-page r7-story-complete" data-figma-frame="S-13"><div class="r7-complete-mark">'+icon('check')+'</div><p class="r7-complete-chapter">CH.'+ch.number+' '+esc(ch.title)+'</p><h1>챕터를 마쳤어요</h1><p>이야기 속 연결 문제까지 모두 풀었어요</p><div class="r7-metrics r7-complete-metrics"><article><small>연결 문제</small><strong>'+score.correct+' / '+score.total+'</strong><p>정답</p></article><article><small>챕터 진행</small><strong>'+meta().completedChapters.filter(c=>chapterEra(c)===chapterEra(id)).length+' / '+order.length+'</strong><p>챕터</p></article><article><small>걸린 시간</small><strong>—</strong><p>기록 없음</p></article></div>'+(next?'<div class="r7-next-story"><small>다음 이야기</small><h2>CH.'+next.number+' '+esc(next.title)+'</h2></div>':'')+primaryFooter+(score.correct<score.total?'<button class="r7-secondary" data-action="review-wrong">틀린 문제 복습하기 ('+(score.total-score.correct)+')</button>':'')+'<details class="r7-legacy"><summary>기존 플레이 결과와 수집 기록</summary>'+legacy+'</details></section>';
  };
  document.addEventListener('click',function(event){
   const b=event.target.closest('button');if(!b)return;const d=b.dataset;
