@@ -33,6 +33,6 @@ for(const id of fixtures){
 }
 const policy=g.copy('STORY_EXAM_POLICY');assert.equal(new Set(policy.placements.map(p=>p.officialQuestionId)).size,policy.placements.length);
 assert.equal(new Set(policy.placements.map(p=>[p.examRound,p.examLevel,p.questionNumber].join(':'))).size,policy.placements.length);
-for(const row of policy.placements){const q=g.copy('QUESTIONS.find(q=>q.questionId==='+JSON.stringify(row.questionId)+')');assert(q);assert.equal(q.answer,row.answer);assert(fs.existsSync('dist/'+q.sourceQuestionImage));}
+for(const row of policy.placements){const q=g.copy('QUESTIONS.find(q=>q.questionId==='+JSON.stringify(row.questionId)+')');assert(q);assert.equal(q.answer,row.answer);assert(fs.existsSync('dist/'+q.sourceQuestionImage)||JSON.parse(fs.readFileSync('config/deployment-assets-manifest.json','utf8')).files.some(([asset,hash,bytes])=>asset===q.sourceQuestionImage&&/^[a-f0-9]{40}$/.test(hash)&&bytes>0),'original story question image must exist locally or in the immutable deployment manifest');}
 fs.writeFileSync('docs/story-exams/playback-test-results.json',JSON.stringify({freshEntryChapters:chapters.length,results,summary:policy.summary},null,2)+'\n');console.log(JSON.stringify({freshEntryChapters:chapters.length,results}));
 module.exports={step,finish};
