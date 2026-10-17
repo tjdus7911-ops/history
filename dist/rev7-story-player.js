@@ -63,6 +63,6 @@
   if(d.r7StoryRestart){event.stopImmediatePropagation();resumeEra(d.r7StoryRestart);modal={type:'restart-current',chapterId:run().currentChapter};render();return;}
  },true);
  const renderBefore=render;
- render=function(){renderBefore();document.body?.classList?.toggle('r7-story-active',screen==='game');};
+ render=function(){renderBefore();document.body?.classList?.toggle('r7-story-active',screen==='game'||screen==='complete'||screen==='quiz'&&quizMode==='story');};
  render();
 })();
