@@ -30,10 +30,11 @@ click({officialExit:'true'});click({officialStudyFrom:ids[9]});assert.equal(curr
 // Wrong-only retry keeps its filtered order and exposes the result action only at the real end.
 click({officialExit:'true'});const wrongIds=[ids[2],ids[6],ids[11]],wrongLiteral=JSON.stringify(wrongIds);run(`globalThis.OFFICIAL_EXAM_UI.startLearning(${wrongLiteral},{scope:'wrong-seed'})`);
 for(let index=0;index<wrongIds.length;index++){const answer=run(`(QUESTIONS.find(question=>question.questionId===${JSON.stringify(wrongIds[index])}).acceptedAnswers[0]+1)%4`);click({officialPick:String(answer)});click({officialSubmit:'true'});click({officialNext:'true'})}
-assert(html.includes('OFFICIAL EXAM RESULT'));click({officialRetry:'true'});assert.deepEqual(copy('globalThis.OFFICIAL_EXAM_UI.snapshot().questionIds'),wrongIds);assert.equal(currentId(),wrongIds[0]);
+assert(run('globalThis.OFFICIAL_EXAM_UI.snapshot().graded')&&/data-figma-frame="(?:W-07|E-10)"/.test(html));click({officialRetry:'true'});assert.deepEqual(copy('globalThis.OFFICIAL_EXAM_UI.snapshot().questionIds'),wrongIds);assert.equal(currentId(),wrongIds[0]);
 for(let index=0;index<wrongIds.length;index++){assert.equal(currentId(),wrongIds[index]);answerCurrent();if(index<wrongIds.length-1){assert(html.includes('다음 문제')&&!html.includes('학습 결과 보기'));click({officialNext:'true'})}}
-assert(html.includes('학습 결과 보기')&&!html.includes('data-official-next="true">다음 문제'));click({officialNext:'true'});assert(html.includes('OFFICIAL EXAM RESULT'));assert.equal(run('globalThis.OFFICIAL_EXAM_UI.snapshot().questionIds.length'),3);assert.equal(currentId(),wrongIds[2]);
+assert(html.includes('학습 결과 보기')&&!html.includes('data-official-next="true">다음 문제'));click({officialNext:'true'});assert(run('globalThis.OFFICIAL_EXAM_UI.snapshot().graded')&&/data-figma-frame="(?:W-07|E-10)"/.test(html));assert.equal(run('globalThis.OFFICIAL_EXAM_UI.snapshot().questionIds.length'),3);assert.equal(currentId(),wrongIds[2]);
 
 // An explicitly requested single-question review remains a one-question session.
 click({officialBack:'list'});click({officialSingle:ids[0]});assert.equal(run('globalThis.OFFICIAL_EXAM_UI.snapshot().questionIds.length'),1);assert.equal(currentId(),ids[0]);
 console.log('PASS: completed/mixed history, middle-start scope, previous revisit state, wrong-only order, final action, single review and duplicate-attempt guard verified.');
+
