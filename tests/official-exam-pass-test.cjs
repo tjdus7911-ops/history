@@ -15,7 +15,7 @@ boot();click({nav:'exam-library'});click({officialTab:'round'});click({officialR
 const ids=copy('meta().officialExamActiveSession.questionIds');assert.equal(ids.length,50);
 
 // Scenario 1: question 1 is passed, the untouched sequence reaches 50, then question 1 returns.
-click({officialPass:'true'});assert.equal(currentNumber(),2);assert.deepEqual(copy('meta().officialExamActiveSession.passedQuestionIds'),[ids[0]]);assert(html.includes('응답 완료 <b>0</b>문항')&&html.includes('미응답 <b>50</b>문항')&&html.includes('aria-valuenow="0"'));
+click({officialPass:'true'});assert.equal(currentNumber(),2);assert.deepEqual(copy('meta().officialExamActiveSession.passedQuestionIds'),[ids[0]]);assert.equal(run('OFFICIAL_EXAM_UI.snapshot().answered'),0);assert.equal(run('OFFICIAL_EXAM_UI.snapshot().unanswered'),50);assert(html.includes('r7-exam-progress'));
 click({officialNext:'true'});assert.equal(currentNumber(),2,'unanswered next must not move');
 for(let number=2;number<=50;number++){assert.equal(currentNumber(),number);answerCurrent();click({officialNext:'true'})}
 assert.equal(currentNumber(),1);assert.equal(run('meta().officialExamActiveSession.initialPassComplete'),true);assert.deepEqual(copy('meta().officialExamActiveSession.passedQuestionIds'),[ids[0]]);

@@ -66,3 +66,12 @@ W-07 now follows the confirmed full result structure: completed/remaining/time m
 The W-08 single-question CTA now opens the same confirmed W-04 review presentation with the existing canonical learning runtime. Starting and stopping that review is checked not to count an answer. E-14 disables wrong-only retry when the attempt has no wrong answers. Native Chromium touch input verifies image swipes in both directions without changing answers/results/deadline, and vertical scrolling on the long-material fixture without changing the question index.
 
 Native touch navigation and vertical scrolling passed in run 39039541878 at 360/390/412px. Asset-retry verification was additionally extended through the recovered painted scene, including failed character images and a record/story-position immutability check. Retry operates on image resources and DOM presentation only; it does not restart the scene or rerun story commands.
+## 2026-10-18 기능 회귀 복구
+
+- 시험 안내에서 누락된 ‘학습처럼 풀기’를 기존 학습 런타임으로 복구. 선택한 회차의 원본 문항을 그대로 사용하며 시험 답안/종료 시각과 학습 기록을 분리한다.
+- 안내 진입 시 회차/유형 선택 상태를 동기화해 뒤로 이동한 목록과 학습 진입이 다른 회차로 어긋나지 않게 수정.
+- 마지막 문항 버튼을 ‘시험 제출’로 표시. 기존 제출 확인, 미응답 이동, 확정 채점 동작 유지.
+- 문제 본문에 제한되던 스와이프 시작 범위를 문제 화면 전체로 확대. 별도 제어 버튼/입력·모달은 제외하고 선택지 위 스와이프의 오입력 방지 유지.
+- 모바일 스크롤바 표시만 숨기고 기존 세로·가로 스크롤 및 확대 동작 유지.
+- 추가한 실제 사용자 흐름 QA는 각 360/390/412px에서 50문항 답안 선택→제출 확인→결과→해설→25개 오답 복습→기록 재열기→재시험→중지/새로고침/이어하기를 실행한다. 검증 결과는 CI 통과 후 확정한다.
+
