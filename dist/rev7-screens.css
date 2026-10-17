@@ -116,7 +116,7 @@ html body .official-exam-intro { display: grid; grid-template-columns: 44px auto
 html body .official-exam-intro-copy, html body .official-exam-intro-title, html body .official-exam-clock { display: contents; }
 html body .official-exam-back { grid-area: back; margin-left: -10px; }
 html body .official-exam-timer-inline { grid-area: timer; display: inline-flex; align-items: center; gap: 4px; min-height: 36px; padding: 0 10px; border-radius: var(--r7-r-md); background: var(--r7-sunken); font-size: 0; color: var(--r7-ink); }
-html body .official-exam-timer-inline b { font-size: 15px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+html body .official-exam-timer-inline b { font-size: 18px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
 html body .official-exam-timer-inline.warning, html body .official-exam-timer-inline.danger, html body .official-exam-timer-inline.urgent { background: var(--r7-coral-soft); color: var(--r7-coral-ink); }
 html body .official-timer-inline-action, html body .official-exam-map-link { min-height: 36px; margin: 0; padding: 0 12px; border: 1px solid var(--r7-line-strong); border-radius: var(--r7-r-md); background: var(--r7-bg); color: var(--r7-ink); font-size: 13px; font-weight: 500; box-shadow: none; }
 html body .official-timer-inline-action { grid-area: pause; }
@@ -139,7 +139,8 @@ html body .official-choice-label { font-size: 16px; line-height: 1.5; font-weigh
 html body .official-choice-indicator { display: none; }
 html body .official-choice-grid button[aria-checked=true], html body .official-choice-grid button.selected { border: 2px solid var(--r7-coral); background: var(--r7-coral-soft); }
 html body .official-choice-grid button[aria-checked=true] .official-choice-number, html body .official-choice-grid button.selected .official-choice-number { background: var(--r7-coral); color: #fff; }
-html body .official-exam-forward-row { display: none; }
+html body .official-exam-forward-row { display: flex; justify-content: flex-end; margin: 4px 0 0; }
+html body .official-exam-forward-row button { min-height: 44px; min-width: 0; padding: 0 12px; border: 1px solid var(--r7-line-strong); border-radius: var(--r7-r-md); background: var(--r7-bg); color: var(--r7-sub); font-size: 13px; box-shadow: none; }
 html body .official-practice-actions { margin-top: 16px; }
 html body .official-exam-bottom-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 html body .official-exam-bottom-actions button { min-height: 52px; border-radius: var(--r7-r-lg); font-size: 16px; font-weight: 700; box-shadow: none; }
@@ -327,3 +328,21 @@ html body main.main.ed-screen { background: #fff; }
 html body .v2-wrong-tabs { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 8px; scrollbar-width: none; }
 html body .v2-wrong-tabs::-webkit-scrollbar { display: none; }
 html body .v2-wrong-tabs button { flex: 0 0 auto; white-space: nowrap; min-height: 40px; padding: 0 14px; }
+
+/* touch targets stay >= 44px (mobile-product-qa) */
+html body .official-exams button, html body .official-exams .official-round-action { min-height: 44px; }
+html body .official-exams > .official-round-levels { height: auto; padding: 0; gap: 8px; border: 0; background: none; }
+html body .official-exams > .official-round-levels button { min-height: 44px; border: 1px solid var(--r7-line-strong); background: var(--r7-bg); }
+html body .official-exams > .official-round-levels button[aria-selected=true] { background: var(--r7-ink); border-color: var(--r7-ink); color: #fff; }
+html body .official-round-row .official-round-title { min-height: 44px; }
+html body .official-round-row .official-round-action.primary { min-height: 44px; }
+
+/* compact result hero (<=140px, mobile-product-qa) */
+html body .official-result-hero { padding: 8px 0 10px; }
+html body .official-result-hero > div:first-child small { font-size: 13px; line-height: 1.2; }
+html body .official-result-hero h1 { margin: 2px 0 0; font-size: 40px; line-height: 1; }
+html body .official-result-hero > div:first-child p { margin: 2px 0 0; font-size: 12px; line-height: 1.2; }
+html body .official-result-hero .official-certification { margin: 6px 0 0; gap: 2px 8px; }
+html body .official-result-hero .official-certification span { padding: 1px 8px; line-height: 1.4; }
+html body .official-result-hero .official-certification small { font-size: 12px; line-height: 1.2; }
+html body .official-result-hero > div:first-child { padding: 0 !important; min-height: 0 !important; }
