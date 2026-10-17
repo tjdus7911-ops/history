@@ -3,7 +3,7 @@
  'use strict';
  const views=globalThis.REV7_EXAM_VIEWS;if(!views||!globalThis.REV7_OX_VIEWS)return;
  const icon=name=>'<span class="r7-icon" aria-hidden="true"><img src="media/rev7/'+name+'.svg" alt=""></span>';
- let practiceMode='exam',level='all',resultTab='summary',lastResult=null,trend=null,gradingPending=false,lastView=null,cumulativeEra=null,lastExamMarkup='';
+ let practiceMode='exam',level='all',resultTab='summary',lastResult=null,trend=null,gradingPending=false,lastView=null,lastScreen=null,cumulativeEra=null,lastExamMarkup='';
  const expiredSeen=new Set();
  const examLabel=s=>s.examRound?'제 '+s.examRound+'회 '+s.examLevel:views.eraInfo(s.examEra).name+' · '+s.examLevel;
  const tabs=active=>'<div class="r7-tabs" role="tablist" aria-label="기출문제 보기 방식"><button data-official-tab="round" aria-selected="'+(active==='round')+'">회차별</button><button data-official-tab="era" aria-selected="'+(active==='era')+'">시대별</button><button data-official-results-list="true" aria-selected="'+(active==='history')+'">기록</button></div>';
@@ -114,7 +114,6 @@
   if(d.r7CumulativeDetail){handled();const route='study/question/'+encodeURIComponent(d.r7CumulativeDetail);globalThis.REV7_OX_VIEWS.addRoute(route);globalThis.REV7_OX_VIEWS.applyRoute(route);globalThis.REV7_OX_VIEWS.writeRoute(route);return;}
   if(d.r7ExamLevel){handled();level=d.r7ExamLevel;render();return;}
   if(d.r7CoverLearn){handled();views.learnCover(d.r7CoverLearn);return;}
-  if(d.nav==='exam-library'){practiceMode='exam';cumulativeEra=null;trend=null;}
   if(d.r7ExamMode){handled();practiceMode=d.r7ExamMode==='learn'?'learn':'exam';render();return;}
   if(d.r7ExamRound){handled();trend=null;if(practiceMode==='learn'){views.learnSelection(views.entriesForRound(Number(d.r7ExamRound),d.r7ExamLevelValue),{examTab:'round',examRound:Number(d.r7ExamRound),examLevel:d.r7ExamLevelValue});return;}views.openCover(views.entriesForRound(Number(d.r7ExamRound),d.r7ExamLevelValue),{examTab:'round',examRound:Number(d.r7ExamRound),examLevel:d.r7ExamLevelValue,timed:true});return;}
   if('r7ExamOpen' in d){handled();modal={type:'r7-exam-resume'};render();return;}
@@ -133,6 +132,6 @@
  function activeSession(){return meta().officialExamActiveSession;}
  function queueResultPaint(){if(typeof requestAnimationFrame!=='function')return;gradingPending=true;requestAnimationFrame(()=>requestAnimationFrame(()=>{gradingPending=false;render();}));}
  const renderBefore=render;
- render=function(){const before=views.state();if(lastView==='practice'&&before.view==='result'&&before.session?.mode==='exam'&&before.session?.submissionReason!=='TIME_EXPIRED')queueResultPaint();lastView=before.view;renderBefore();const state=views.state();document.body?.classList?.toggle('r7-exam-active',screen==='exam-library'&&['cover','practice','review','result'].includes(state.view));};
+ render=function(){const before=views.state();if(screen==='exam-library'&&before.view==='home'&&(lastScreen!==screen||lastView!=='home'))practiceMode='exam';lastScreen=screen;if(lastView==='practice'&&before.view==='result'&&before.session?.mode==='exam'&&before.session?.submissionReason!=='TIME_EXPIRED')queueResultPaint();lastView=before.view;renderBefore();const state=views.state();document.body?.classList?.toggle('r7-exam-active',screen==='exam-library'&&['cover','practice','review','result'].includes(state.view));};
  render();
 })();
