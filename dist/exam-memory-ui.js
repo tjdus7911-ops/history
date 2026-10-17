@@ -681,6 +681,14 @@ modalHTML=function(){
  return modalHTMLBeforeOfficialSubmit();
 };
 function suspendOfficialActiveSession(){if(officialExamSession?.mode==='exam'&&!officialExamSession.graded){cancelOfficialAutoAdvance();persistOfficialSession();officialSuspendedSession=officialExamSession;stopOfficialTimer();return true}return false}
+function showOfficialExamHome(){
+ suspendOfficialActiveSession();if(officialExamSession?.mode!=='exam'||officialExamSession.graded)officialExamSession=null;
+ officialExamTab='round';officialExamLevel='심화';officialExamCover=null;officialExamView='home';screen='exam-library';modal=null;
+}
+function startOfficialLearningSelection(entries,options){
+ officialExamTab=options.examTab||'round';officialExamRound=options.examRound||officialExamRound;officialExamLevel=options.examLevel||officialExamLevel;
+ startOfficialSession(entries,'learn',options);globalThis.APP_ROUTE?.push('exam-library');
+}
 function resumeOfficialActiveSession(){if(!officialSuspendedSession)return false;officialExamSession=officialSuspendedSession;officialSuspendedSession=null;officialExamView='practice';screen='exam-library';modal=null;if(officialTimedSession()&&officialTimerState()===OFFICIAL_TIMER_STATES.RUNNING)startOfficialTimer();globalThis.APP_ROUTE?.push('exam-library');render();window.scrollTo(0,0);return true}
 
 // A cover is navigation state only: it never allocates an attempt or writes learning records.
@@ -691,6 +699,7 @@ function openOfficialExamCover(entries,options={},route=true){
  const examTab=options.examTab||officialExamTab,selected=entries.filter(Boolean);if(!selected.length)return false;
  suspendOfficialActiveSession();officialExamSession=null;
  officialExamCover={token:String(++officialCoverSequence),entries:selected,options:{examTab,examEra:options.examEra||officialExamEra,examRound:options.examRound||officialExamRound,examLevel:options.examLevel||officialExamLevel,timed:options.timed??examTab==='round'}};
+ officialExamTab=officialExamCover.options.examTab;officialExamEra=officialExamCover.options.examEra;officialExamRound=officialExamCover.options.examRound;officialExamLevel=officialExamCover.options.examLevel;
  officialCoverStarting=false;officialExamView='cover';screen='exam-library';modal=null;
  if(route)globalThis.APP_ROUTE?.push(officialCoverRoute(officialExamCover));render();window.scrollTo(0,0);return true;
 }
@@ -699,6 +708,11 @@ function officialCoverPage(){
  const cover=officialExamCover;if(!cover)return officialExamListPage();
  const {entries,options}=cover,source=entries[0].sourceRecord,count=options.examTab==='era'?Math.min(20,entries.length):entries.length,selected=options.examTab==='era'?entries.slice().sort((a,b)=>b.sourceRecord.examRound-a.sourceRecord.examRound||a.sourceRecord.questionNumber-b.sourceRecord.questionNumber).slice(0,20):entries,maxScore=selected.reduce((sum,e)=>sum+(Number(e.sourceRecord.points)||0),0),active=officialCoverActive(),level=options.examLevel==='all'?'전체 유형':options.examLevel;
  return '<section class="official-cover-page"><header class="official-subhead"><button data-official-cover-back="true" aria-label="시험 목록으로">‹</button><div><small>시험 시작 전</small><h1>시험 안내</h1></div></header><article class="official-exam-cover"><p class="official-cover-name">한국사능력검정시험</p><h2>'+(options.examTab==='round'?'제'+options.examRound+'회':esc(officialEraInfo(options.examEra).name))+'</h2><span class="official-cover-level">'+esc(level)+'</span><h3>시험처럼 풀기</h3><p class="official-cover-facts">'+count+'문항 · '+(options.timed?OFFICIAL_EXAM_DURATION_MS/60000+'분':'시간 제한 없음')+'<br><strong>총점 '+maxScore+'점</strong></p><ul><li>제출 전까지 답안을 수정할 수 있어요.</li><li>시험 중 정답과 해설은 표시되지 않아요.</li>'+(options.timed?'<li>시간이 끝나면 자동 제출돼요.</li>':'')+'</ul>'+(active?'<div class="official-cover-active"><strong>진행 중인 시험이 있습니다.</strong><p>'+esc(active.examTab==='round'?'제'+active.examRound+'회 '+active.examLevel:officialEraInfo(active.examEra).name)+' · '+(active.index+1)+'번 문항</p><button class="primary" data-official-cover-resume="'+cover.token+'">이어하기</button><button class="secondary" data-official-cover-new="'+cover.token+'">새로 시작하기</button></div>':'<button class="primary official-cover-start" data-official-cover-start="'+cover.token+'">시험 시작</button>')+'</article></section>';
+}
+function beginOfficialCoverLearning(token){
+ const cover=officialExamCover;if(!cover||officialExamView!=='cover'||cover.token!==String(token)||officialCoverStarting)return;
+ officialCoverStarting=true;officialExamCover=null;
+ startOfficialSession(cover.entries,'learn',cover.options);globalThis.APP_ROUTE?.push('exam-library');
 }
 function beginOfficialCover(token,replace=false){
  const cover=officialExamCover;if(!cover||officialExamView!=='cover'||cover.token!==String(token)||officialCoverStarting)return;
@@ -746,7 +760,7 @@ function restoreOfficialSession(){
  if(timed&&timerState===OFFICIAL_TIMER_STATES.RUNNING){if(officialRemainingMs()<=0)gradeOfficialSession('TIME_EXPIRED');else startOfficialTimer()}return true;
 }
 document.addEventListener('click',event=>{
- if(Date.now()<officialSwipeClickUntil&&(event.target?.closest?.('[data-official-question-stage]')||event.target?.closest?.('[data-official-review-surface]')&&!event.target?.closest?.('[data-official-review],[data-official-review-back]'))){event.preventDefault();event.stopImmediatePropagation();return}
+ if(Date.now()<officialSwipeClickUntil&&(event.target?.closest?.('.official-practice')||event.target?.closest?.('[data-official-review-surface]')&&!event.target?.closest?.('[data-official-review],[data-official-review-back]'))){event.preventDefault();event.stopImmediatePropagation();return}
  if(event.target?.dataset?.officialQuestionListClose==='overlay'&&modal?.type==='official-question-sheet'){modal=null;render();return}
  const button=event.target.closest('button');if(!button||button.disabled)return;const data=button.dataset;
  if(data.officialWrongRetry){event.stopImmediatePropagation();const entries=editorialWrongQuestions().filter(q=>officialLearningRecord(q).lastCorrect===false).map(q=>officialEntry(q)).filter(Boolean);if(entries.length)startOfficialSession(entries,'learn',{scope:'wrong-only'});return}
@@ -755,7 +769,7 @@ document.addEventListener('click',event=>{
  if(data.officialImageOpen){event.stopImmediatePropagation();const entry=officialEntry(data.officialImageOpen);if(!entry||!officialDetailImage(entry))return;officialImageReturnFocusId=entry.canonicalQuestionId;modal={type:'official-image',questionId:entry.canonicalQuestionId,zoomed:false};render();return}
  if(data.officialImageZoom){event.stopImmediatePropagation();if(modal?.type!=='official-image')return;modal.zoomed=!modal.zoomed;render();return}
  if(data.officialImageClose){event.stopImmediatePropagation();if(modal?.type!=='official-image')return;const returnId=officialImageReturnFocusId;officialImageReturnFocusId=null;modal=null;render();if(returnId)setTimeout(()=>document.querySelector(`[data-official-image-open="${returnId}"]`)?.focus(),0);return}
- if(data.nav==='exam-library'||data.nav==='association'){event.stopImmediatePropagation();librarySession=null;if(data.nav==='exam-library'){if(officialSuspendedSession){resumeOfficialActiveSession();return}if(officialExamSession?.mode==='exam'&&!officialExamSession.graded)officialExamView='practice';else{officialExamTab='round';officialExamLevel='심화';officialExamView='home';officialExamSession=null}}else{associationDetailId=null;associationRecall=null;associationExpandedSteps=new Set()}screen=data.nav;modal=null;if(data.nav==='exam-library')globalThis.APP_ROUTE?.push('exam-library');render();window.scrollTo(0,0);return}
+ if(data.nav==='exam-library'||data.nav==='association'){event.stopImmediatePropagation();librarySession=null;if(data.nav==='exam-library'){showOfficialExamHome();}else{associationDetailId=null;associationRecall=null;associationExpandedSteps=new Set()}screen=data.nav;modal=null;if(data.nav==='exam-library')globalThis.APP_ROUTE?.push('exam-library');render();window.scrollTo(0,0);return}
  if(data.officialTab){event.stopImmediatePropagation();officialExamTab=data.officialTab;officialExamView='home';officialExamLevel=data.officialTab==='round'?'심화':'all';render();return}
  if(data.officialRoundLevel){event.stopImmediatePropagation();if(!OFFICIAL_ROUND_FILTERS.includes(data.officialRoundLevel))return;officialExamLevel=data.officialRoundLevel;render();return}
  if(data.officialEra){event.stopImmediatePropagation();officialExamTab='era';officialExamEra=data.officialEra;officialExamLevel='all';officialExamView='list';globalThis.APP_ROUTE?.push('exam-library/list/era/'+encodeURIComponent(officialExamEra)+'/'+encodeURIComponent(officialExamLevel));render();window.scrollTo(0,0);return}
@@ -815,7 +829,7 @@ document.addEventListener('click',event=>{
 },true);
 // Delegate through the shared stage so choices, media and the spaces between them behave alike.
 function officialExamSwipeBlocked(target){
- return !target?.closest?.('[data-official-question-stage]')||Boolean(target.closest('button:not([data-official-pick]):not(.official-content-image),a,input,select,textarea,.official-image-modal,.official-question-sheet'));
+ return !target?.closest?.('.official-practice')||Boolean(target.closest('button:not([data-official-pick]):not(.official-content-image),a,input,select,textarea,.official-image-modal,.official-question-sheet'));
 }
 function officialReviewSwipeBlocked(target){
  return !target?.closest?.('[data-official-review-surface]')||Boolean(target.closest('a,input,select,textarea,.official-image-modal,.official-question-sheet,[data-official-review],[data-official-review-back]'));
@@ -872,13 +886,17 @@ function applyOfficialExamRoute(route){
  const coverMatch=/^exam-library\/(cover|list)\/(round|era)\/([^/]+)\/([^/]+)$/.exec(normalized);if(coverMatch){let value,level;try{value=decodeURIComponent(coverMatch[3]);level=decodeURIComponent(coverMatch[4])}catch{return false}const tab=coverMatch[2];if(tab==='round'&&!OFFICIAL_ROUND_LEVELS.includes(level))return false;if(tab==='era'&&!OFFICIAL_ERA_TAXONOMY.some(e=>e.id===value))return false;officialExamTab=tab;officialExamLevel=level;if(tab==='round')officialExamRound=Number(value);else officialExamEra=value;const entries=officialSelectionEntries();if(!entries.length)return false;if(coverMatch[1]==='cover')return openOfficialExamCover(entries,{},false);officialExamCover=null;suspendOfficialActiveSession();officialExamSession=null;officialExamView='list';screen='exam-library';modal=null;return true}
  if(normalized==='exam-library/results'){suspendOfficialActiveSession();officialExamSession=null;officialExamView='history';screen='exam-library';modal=null;return true}
  const match=/^exam-library\/results\/([^/]+)$/.exec(normalized);if(match){let attemptId=match[1];try{attemptId=decodeURIComponent(attemptId)}catch{}return openOfficialResult(attemptId,{route:false})}
- if(normalized==='exam-library'){if(officialSuspendedSession){officialExamSession=officialSuspendedSession;officialSuspendedSession=null;officialExamView='practice';if(officialTimedSession()&&officialTimerState()===OFFICIAL_TIMER_STATES.RUNNING)startOfficialTimer()}else if(officialExamSession?.mode==='exam'&&!officialExamSession.graded)officialExamView='practice';else{officialExamTab='round';officialExamLevel='심화';officialExamSession=null;officialExamView='home'}screen='exam-library';modal=null;return true}
+ if(normalized==='exam-library'){showOfficialExamHome();return true}
  return false;
 }
 Object.assign(globalThis.OFFICIAL_EXAM_UI,{applyRoute:applyOfficialExamRoute,openResult:attemptId=>openOfficialResult(attemptId),results:()=>JSON.parse(JSON.stringify(officialExamResults())),startLearning:(questionIds,options={})=>startOfficialSession((questionIds||[]).map(id=>officialEntry(id)).filter(Boolean),'learn',options),startExam:(questionIds,options={})=>startOfficialSession((questionIds||[]).map(id=>officialEntry(id)).filter(Boolean),'exam',options),snapshot:()=>officialExamSession?JSON.parse(JSON.stringify({attemptId:officialExamSession.attemptId,mode:officialExamSession.mode,questionIds:officialExamSession.entries.map(entry=>entry.canonicalQuestionId),index:officialExamSession.index,answers:officialExamSession.answers,feedback:officialExamSession.feedback,graded:officialExamSession.graded,scope:officialExamSession.scope,view:officialExamView,readOnlyResult:officialExamSession.readOnlyResult,unansweredNavigation:Boolean(officialExamSession.unansweredNavigation),answered:officialAnsweredIds(officialExamSession).size,unanswered:officialUnansweredIndexes(officialExamSession).length})):null,autoAdvanceMs:OFFICIAL_EXAM_AUTO_ADVANCE_MS});
 globalThis.EXAM_MEMORY_UI_READY=true;
+// View adapter for the Rev.7 presentation layer. Runtime grading and persistence stay here.
+globalThis.REV7_EXAM_VIEWS={catalog:OFFICIAL_EXAM_CATALOG,eras:OFFICIAL_ERA_TAXONOMY,entry:officialEntry,question:officialQuestion,record:officialLearningRecord,eraInfo:officialEraInfo,results:officialExamResults,recordsPage:officialRecordsPage,start:startOfficialSession};
+Object.assign(globalThis.REV7_EXAM_VIEWS,{learnCover:beginOfficialCoverLearning,learnSelection:startOfficialLearningSelection,state:()=>({view:officialExamView,tab:officialExamTab,level:officialExamLevel,session:officialExamSession,cover:officialExamCover}),editions:officialEditions,entriesForRound:officialEntriesForRound,editionActivity:officialEditionActivity,openCover:openOfficialExamCover,coverActive:officialCoverActive,canRetry:()=>!officialSuspendedSession,statistic:officialStatisticMarkup,summary:officialResultSummary,certification:officialCertification,analysis:officialResultEraAnalysis,timerMarkup:officialTimerMarkup,duration:officialResultDuration,date:officialResultDate,weakness:officialWeaknessSection,setHome:view=>{officialExamHome=view},home:()=>officialExamHome,setCover:view=>{officialCoverPage=view},setResult:view=>{officialResultPage=view},result:()=>officialResultPage,setHistory:view=>{officialExamHistoryPage=view},history:()=>officialExamHistoryPage,review:()=>officialReviewPage,setReview:view=>{officialReviewPage=view},storedResult:officialStoredQuestionResult,paper:officialPaperFigure,choiceExplanations:officialChoiceExplanationBlock,visibleExplanation:officialVisibleExplanation,answerLabel:officialAnswerLabel,setPractice:view=>{officialPracticePage=view},practice:()=>officialPracticePage,pause:pauseOfficialTimer,leaveToHome:()=>{showOfficialExamHome();render();globalThis.APP_ROUTE?.push('exam-library')},resume:()=>{if(resumeOfficialActiveSession())return;if(!officialExamSession)restoreOfficialSession();if(officialExamSession){officialExamView='practice';screen='exam-library';modal=null;render();globalThis.APP_ROUTE?.push('exam-library')}}});
 normalizeOfficialExamResults();
 restoreOfficialSession();
+globalThis.REV7_EXAM_VIEWS.formatTimer=officialFormatDuration;
 render();
 }
 

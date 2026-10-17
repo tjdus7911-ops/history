@@ -115,9 +115,11 @@ app.click({oxAnalysis:'true'});
 assert.equal(app.run('OX_QUIZ_API.snapshot().view'),'home');
 assert.equal(app.browser.location.hash,'#ox');
 app=boot('#ox/analysis',cloneStorage(activeStorage));
-assert.equal(app.run('OX_QUIZ_API.snapshot().view'),'home','legacy analysis links redirect to OX home');
-assert.equal(app.browser.location.hash,'#ox');
-assert(app.html().includes('진행 중인 퀴즈 이어하기'),'legacy analysis links preserve resume');
+assert.equal(app.run('OX_QUIZ_API.snapshot().view'),'home','analysis keeps the saved quiz on its home/resume view');
+assert.equal(app.browser.location.hash,'#ox/analysis');
+assert(app.html().includes('data-figma-frame="O-06"'),'Rev.7 analysis route must render its confirmed design');
+app.click({r7OxAnalysisBack:''});assert.equal(app.browser.location.hash,'#ox');
+assert(app.html().includes('진행 중인 퀴즈 이어하기'),'analysis navigation must preserve resume');
 
 /* Main-nav changes must write navigable history. Back/forward and an external hash
    change then apply the URL without resurrecting the active OX quiz. */

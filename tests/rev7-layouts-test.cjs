@@ -1,0 +1,39 @@
+const fs=require('fs'),vm=require('vm'),assert=require('node:assert/strict');
+// Reuse the real route-test browser/document fixture, loading every production script.
+const fixtureSource=fs.readFileSync('tests/ox-route-test.cjs','utf8').split('/* Build one genuine persisted active session.')[0];
+const harness={require,console,URL};vm.runInNewContext(fixtureSource+'\nglobalThis.boot=boot;',harness);
+const app=harness.boot('#records');
+assert(app.html().includes('data-figma-frame="M-09"'));
+app.run(`{
+ const entries=REV7_EXAM_VIEWS.catalog.filter(e=>REV7_EXAM_VIEWS.question(e.canonicalQuestionId)).slice(0,2);
+ entries.forEach((e,i)=>{const q=REV7_EXAM_VIEWS.question(e.canonicalQuestionId);meta().questionRecords[q.questionId]={attempts:2,correctCount:i,lastCorrect:Boolean(i),lastAnswer:0,lastAttempt:new Date().toISOString()};meta().wrongQuestionIds.push(q.questionId);meta().learningEvents.push({questionId:q.questionId,answer:0,correct:Boolean(i),answeredAt:new Date().toISOString()})});save();render();
+}`);
+assert(app.html().includes('data-figma-frame="M-01"'));
+const protectedState=()=>app.run('JSON.stringify({records:meta().questionRecords,events:meta().learningEvents,wrong:meta().wrongQuestionIds,results:meta().officialExamResults})');
+const before=protectedState();
+app.click({r7RecordLearning:''});assert(app.html().includes('data-figma-frame="M-02"'));assert.equal(app.browser.location.hash,'#records/learning');
+app.browser.history.back();assert(app.html().includes('data-figma-frame="M-01"'));app.browser.history.forward();assert(app.html().includes('data-figma-frame="M-02"'));
+app.click({nav:'study'});assert(app.html().includes('기출 오답'));assert(app.html().includes('오답 1개 풀기'));
+app.click({r7WrongStatus:'completed'});assert(app.html().includes('복습 완료'));app.click({r7WrongStatus:'needed'});
+app.click({r7FilterOpen:''});assert(app.html().includes('role="dialog"'));app.click({r7FilterEra:'joseon'});app.click({r7FilterClose:''});assert(app.html().includes('오답 1개 풀기'));
+const id=app.run('REV7_EXAM_VIEWS.catalog.find(e=>REV7_EXAM_VIEWS.record(e.canonicalQuestionId).lastCorrect===false).canonicalQuestionId');
+app.click({r7WrongDetail:id});assert(app.html().includes('data-figma-frame="W-08"'));assert.equal(app.browser.location.hash,'#study/question/'+id);app.browser.history.back();assert(app.html().includes('data-figma-frame="W-01"'));
+assert.equal(protectedState(),before,'presentation/navigation must preserve learning records');
+app.click({r7WrongBulk:''});assert.equal(app.run('OFFICIAL_EXAM_UI.snapshot().scope'),'wrong-only');assert.equal(app.run('OFFICIAL_EXAM_UI.snapshot().questionIds.length'),1);
+app.click({nav:'ox'});assert(app.html().includes('data-ox-start="all"'));app.click({oxStart:'all'});assert(app.html().includes('data-figma-frame="O-02"'));
+const right=app.run('REV7_OX_VIEWS.question().answer');app.click({oxAnswer:String(right)});assert(app.html().includes('data-figma-frame="O-03"'));
+app.click({oxNext:'true'});app.click({oxAnswer:String(!app.run('REV7_OX_VIEWS.question().answer'))});assert(app.html().includes('data-figma-frame="O-04"'));
+app.click({oxBack:'home'});app.click({r7OxOpenResume:''});assert(app.html().includes('퀴즈를 이어 풀까요？')||app.html().includes('퀴즈를 이어 풀까요?'));app.click({r7OxContinue:''});assert(app.html().includes('data-figma-frame="O-04"'));
+app.click({nav:'ox'});app.click({r7OxAnalysis:''});assert(app.html().includes('data-figma-frame="O-06"'));assert.equal(app.browser.location.hash,'#ox/analysis');
+app.click({r7OxAnalysisBack:''});app.click({nav:'home'});app.click({r7Seasons:''});assert(app.html().includes('data-figma-frame="S-01"'));
+app.click({eraOpen:'goryeo'});assert(app.html().includes('data-figma-frame="S-02"'));
+const chapter=app.run("eraChapters('goryeo')[0].chapterId");app.click({chapter});assert(app.html().includes('r7-chapter-sheet'));app.click({r7ChapterScenes:chapter});assert(app.html().includes('data-figma-frame="S-04B"'));assert(app.run('chapterScenes('+JSON.stringify(chapter)+').length')>0);assert(app.html().includes('장면 1')||app.html().includes('아직 읽지 않은 장면')); 
+
+app.run("globalThis.rev7Frames=[];globalThis.requestAnimationFrame=callback=>rev7Frames.push(callback)");
+app.run("REV7_EXAM_VIEWS.start(REV7_EXAM_VIEWS.entriesForRound(79,'심화'),'exam',{examTab:'round',examRound:79,examLevel:'심화',timed:false})");app.click({officialSubmitConfirm:'true'});
+assert(app.html().includes('data-figma-frame="E-09"'));assert(app.run('OFFICIAL_EXAM_UI.snapshot().graded'),'loading presentation must not defer or duplicate grading');
+const resultState=app.run('JSON.stringify(meta().officialExamResults)');app.run('rev7Frames.shift()();rev7Frames.shift()()');assert(app.html().includes('data-figma-frame="E-10"'));assert.equal(app.run('JSON.stringify(meta().officialExamResults)'),resultState,'rendering the analysis must preserve the result');
+
+app.click({officialResultHome:'true'});app.click({officialTab:'era'});assert.equal((app.html().match(/data-r7-cumulative-era=/g)||[]).length,10);
+const cumulative=app.run('REV7_EXAM_VIEWS.analysis(null,"cumulative").rows.find(r=>r.total>0).id'),recordsBeforeDetail=protectedState();app.click({r7CumulativeEra:cumulative});assert(app.html().includes('data-figma-frame="E-12"'));app.click({r7CumulativeDetail:id});assert.equal(app.run('screen'),'study');assert(app.html().includes('data-figma-frame="W-08"'));assert.equal(protectedState(),recordsBeforeDetail,'cumulative browsing must not change answers or records');
+console.log('PASS: Rev.7 record/learning routes, wrong review filters/detail/bulk, record preservation, OX answer/feedback/resume/analysis, story selection/chapter/scene entry.');
