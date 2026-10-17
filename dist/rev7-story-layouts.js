@@ -8,7 +8,7 @@
  routes.addRoute('seasons');routes.addRoute('chapter-scenes');
   for(const era of LEARNING_ERAS)routes.addRoute('era/'+encodeURIComponent(era.id));
  const originalEras=eras,originalChapterDetail=chapterDetailModal;
- const sceneIds=id=>(CHAPTERS[id]?.sceneIds||[]).filter(scene=>STORIES[scene]);
+ const sceneIds=id=>chapterScenes(id).map(scene=>scene.sceneId);
  const resumeFor=id=>seasonRun(eraInfo(chapterEra(id)));
  function appbar(title,attrs){return '<header class="r7-appbar"><button '+attrs+' aria-label="뒤로 가기">'+icon('back')+'</button><h1>'+esc(title)+'</h1><span></span></header>';}
  function seasonSelect(){

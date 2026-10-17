@@ -7,7 +7,7 @@
  const gameBefore=game;
  game=function(){
   let html=gameBefore();const r=run(),source=STORIES[r.pending?.sourceSceneId||r.storyId],ch=CHAPTERS[r.currentChapter];if(!source||!ch||!html.includes('conversation-game'))return html;
-  const entries=conversationEntries(source,r.pending),cursor=Math.max(1,Math.min(r.dialogueCursor||1,entries.length)),active=entries[cursor-1],ids=(ch.sceneIds||[]).filter(id=>STORIES[id]),at=Math.max(1,ids.indexOf(source.sceneId)+1),complete=cursor>=entries.length;
+  const entries=conversationEntries(source,r.pending),cursor=Math.max(1,Math.min(r.dialogueCursor||1,entries.length)),active=entries[cursor-1],ids=chapterScenes(ch.chapterId).map(scene=>scene.sceneId),at=Math.max(1,ids.indexOf(source.sceneId)+1),complete=cursor>=entries.length;
   const linked=source.questionSequenceMode==='queue'&&source.linkedQuestionIds?.length||source.quizId;
   const frame=complete&&linked?'S-08':isNarrative(active||{})?'S-06':active?.position==='right'||active?.speakerType==='player'?'S-07B':'S-07';
   const oldHeader=html.match(/<div class="game-header">[\s\S]*?<\/div>/)?.[0]||'';
@@ -36,7 +36,7 @@
   if(modal?.type==='r7-story-exit')return '<div data-figma-frame="S-14" class="modal-overlay r7-confirm-overlay"><section class="modal r7-confirm" role="dialog" aria-modal="true" aria-labelledby="r7-story-exit-title"><h2 id="r7-story-exit-title">여기서 나갈까요?</h2><p>지금까지 읽은 곳은 저장돼요. 나중에 이어 읽을 수 있어요.</p><div><button class="secondary" data-action="close">계속 읽기</button><button class="primary" data-r7-story-exit-confirm>나가기</button></div></section></div>';
   if(modal?.type==='r7-story-menu')return '<div data-figma-frame="S-16" class="modal-overlay chapter-sheet-overlay r7-chapter-overlay"><section class="modal chapter-sheet r7-player-menu" role="dialog" aria-modal="true" aria-labelledby="r7-story-menu-title"><div class="sheet-handle"></div><header><h2 id="r7-story-menu-title">메뉴</h2><button class="close" data-action="close" aria-label="메뉴 닫기">×</button></header><button data-r7-story-font><span>글자 크기</span><b>'+(largeText?'크게':'보통')+'</b></button><button data-action="restart-current" data-chapter="'+esc(run().currentChapter)+'">챕터 처음부터 보기</button><button data-nav="era">챕터 목록으로</button><button data-r7-story-log>'+(showLog?'현재 대사만 보기':'대화 기록 보기')+'</button>'+originalControls+'<button data-r7-story-exit>읽기 종료</button></section></div>';
   if(modal?.type==='r7-story-resume'){
-   const e=eraInfo(modal.eraId),r=seasonRun(e),ch=CHAPTERS[r?.currentChapter],ids=ch?.sceneIds||[],index=ch?Math.max(1,ids.indexOf(r.storyId)+1):1;
+   const e=eraInfo(modal.eraId),r=seasonRun(e),ch=CHAPTERS[r?.currentChapter],ids=ch?chapterScenes(ch.chapterId).map(scene=>scene.sceneId):[],index=ch?Math.max(1,ids.indexOf(r.storyId)+1):1;
    return '<div data-figma-frame="S-15" class="modal-overlay chapter-sheet-overlay r7-chapter-overlay"><section class="modal chapter-sheet r7-player-menu" role="dialog" aria-modal="true" aria-labelledby="r7-story-resume-title"><div class="sheet-handle"></div><header><h2 id="r7-story-resume-title">이어서 읽을까요?</h2><button class="close" data-action="close" aria-label="닫기">×</button></header><p>'+esc(ch?'CH.'+ch.number+' '+ch.title+' · 장면 '+index+'에서 멈췄어요.':e.title)+'</p><button class="primary full" data-r7-story-continue="'+e.id+'">장면 '+index+'부터 이어 읽기</button><button class="secondary full" data-r7-story-restart="'+e.id+'">챕터 처음부터 다시 읽기</button></section></div>';
   }
   let html=modalBefore();

@@ -27,5 +27,5 @@ app.click({oxBack:'home'});app.click({r7OxOpenResume:''});assert(app.html().incl
 app.click({nav:'ox'});app.click({r7OxAnalysis:''});assert(app.html().includes('data-figma-frame="O-06"'));assert.equal(app.browser.location.hash,'#ox/analysis');
 app.click({r7OxAnalysisBack:''});app.click({nav:'home'});app.click({r7Seasons:''});assert(app.html().includes('data-figma-frame="S-01"'));
 app.click({eraOpen:'goryeo'});assert(app.html().includes('data-figma-frame="S-02"'));
-const chapter=app.run("eraChapters('goryeo')[0].chapterId");app.click({chapter});assert(app.html().includes('r7-chapter-sheet'));app.click({r7ChapterScenes:chapter});assert(app.html().includes('data-figma-frame="S-04B"'));
+const chapter=app.run("eraChapters('goryeo')[0].chapterId");app.click({chapter});assert(app.html().includes('r7-chapter-sheet'));app.click({r7ChapterScenes:chapter});assert(app.html().includes('data-figma-frame="S-04B"'));assert(app.run('chapterScenes('+JSON.stringify(chapter)+').length')>0);assert(app.html().includes('장면 1')||app.html().includes('아직 읽지 않은 장면')); 
 console.log('PASS: Rev.7 record/learning routes, wrong review filters/detail/bulk, record preservation, OX answer/feedback/resume/analysis, story selection/chapter/scene entry.');

@@ -139,7 +139,7 @@
     const ch = CHAPTERS[r?.currentChapter];
     const done = pct >= 100;
     const sub = !e.available ? esc(e.years) + ' · 준비 중'
-      : started && ch ? 'CH.' + ch.number + ' ' + esc(ch.title) + (ch.sceneIds?.length ? ' · 장면 ' + Math.max(1, ch.sceneIds.indexOf(r.storyId) + 1) + ' / ' + ch.sceneIds.length : '') : esc(e.years);
+      : started && ch ? 'CH.' + ch.number + ' ' + esc(ch.title) + (chapterScenes(ch.chapterId).length ? ' · 장면 ' + Math.max(1, chapterScenes(ch.chapterId).findIndex(scene=>scene.sceneId===r.storyId) + 1) + ' / ' + chapterScenes(ch.chapterId).length : '') : esc(e.years);
     const tag = !e.available ? '준비 중' : started ? (done ? '완료' : '이어서 학습') : '시작하기';
     const action = !e.available ? 'disabled aria-disabled="true"' : started && !done ? 'data-r7-story-resume="' + e.id + '"' : 'data-era-open="' + e.id + '"';
     const label = !e.available ? '준비 중' : done ? '다시 보기' : started ? '이어하기' : '시작하기';

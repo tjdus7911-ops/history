@@ -46,6 +46,13 @@
   }
   return html;
  });
+ const reviewBefore=views.review();
+ views.setReview(function(){
+  const s=views.state().session,entry=s?.entries.find(e=>e.canonicalQuestionId===s.reviewQuestionId);if(!entry)return reviewBefore();
+  const q=views.question(entry.canonicalQuestionId),snapshot=views.storedResult(s,entry.canonicalQuestionId),selected=snapshot?snapshot.selectedAnswer:s.answers[entry.canonicalQuestionId],right=snapshot?snapshot.right:Boolean(s.graded?.[entry.canonicalQuestionId]),index=s.entries.indexOf(entry),number=entry.sourceRecord?.questionNumber||index+1;
+  const label=Number.isInteger(selected)?['①','②','③','④','⑤'][selected]||String(selected+1):'미응답',answer=snapshot?.answerLabel||views.answerLabel(q),original=reviewBefore(),navigation=original.match(/<nav class="official-review-actions"[\s\S]*?<\/nav>/)?.[0]||'';
+  return '<section class="official-review r7-page r7-exam-review" data-figma-frame="E-13" data-official-review-surface="true" aria-label="문제 해설 슬라이드"><header class="r7-appbar"><button data-official-review-back="true" aria-label="결과 화면으로 닫기">'+icon('back')+'</button><h1>'+number+'번 해설</h1><span></span></header><div class="r7-review-banner '+(right?'correct':'wrong')+'" role="status">내 답 '+esc(label)+' · 정답 '+esc(answer)+'</div><div class="official-review-paper">'+views.paper(entry)+'</div><section class="r7-review-choices" aria-label="선지별 해설">'+views.choiceExplanations(q,selected)+'</section><section class="r7-review-core" aria-label="문제 해설"><h2>[문제 핵심 해설]</h2><p>'+esc(views.visibleExplanation(q))+'</p></section><details class="r7-legacy"><summary>기존 답안 분석과 암기법</summary>'+original.replace(/<section /,'<div ').replace(/<\/section>$/,'</div>')+'</details>'+navigation+'</section>';
+ });
  const resultBefore=views.result();
  views.setResult(function(){
   const s=views.state().session;if(!s)return resultBefore();
@@ -78,7 +85,7 @@
   if(modal?.type==='r7-exam-retry'&&s)return '<div data-figma-frame="E-14" class="modal-overlay chapter-sheet-overlay r7-chapter-overlay"><section class="modal chapter-sheet r7-player-menu" role="dialog" aria-modal="true"><div class="sheet-handle"></div><h2>어떻게 다시 풀까요?</h2><button data-official-retry="true">틀린 문제만 다시 풀기</button><button data-official-retake="true">전체 다시 풀기</button><button class="r7-secondary" data-action="close">취소</button></section></div>';
   if(modal?.type==='r7-exam-exit')return '<div class="modal-overlay r7-confirm-overlay"><section class="modal" role="dialog" aria-modal="true"><h2>시험을 멈출까요?</h2><p>지금까지 푼 답안은 저장돼요.</p><button class="secondary" data-action="close">계속 풀기</button><button class="primary" data-r7-exam-save-exit>나가기</button></section></div>';
   if(modal?.type==='r7-review-stop')return '<div data-figma-frame="W-10" class="modal-overlay r7-confirm-overlay"><section class="modal" role="dialog" aria-modal="true"><h2>복습을 멈출까요?</h2><p>지금까지 푼 문제의 기록은 저장돼요.</p><div><button class="secondary" data-action="close">계속 풀기</button><button class="primary" data-nav="study">나가기</button></div></section></div>';
-  let html=modalBefore();if(modal?.type==='official-question-sheet')html=html.replace('</section></div>','<button class="r7-primary" data-official-request-submit="true">답안 제출하기</button></section></div>');
+  let html=modalBefore();if(modal?.type==='official-question-sheet'){html=html.replace('class="modal-overlay official-question-sheet-overlay"','data-figma-frame="E-04" class="modal-overlay official-question-sheet-overlay r7-question-sheet-overlay"').replace('<small>QUESTION MAP</small>','').replace(/<div class="official-question-sheet-tools">([\s\S]*?)<\/div>/,'<details class="r7-sheet-tools"><summary>시험 관리</summary>$1</details>');html=html.replace('</section></div>','<button class="r7-primary" data-official-request-submit="true">답안 제출하기</button></section></div>');}
   if(modal?.type==='official-submit-confirm')html=html.replace('class="modal-overlay','class="modal-overlay r7-confirm-overlay');
   return html;
  };
