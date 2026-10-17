@@ -119,7 +119,7 @@
       +'<div class="r7-detail-meta"><small>'+esc(officialEraInfo(entry.primaryEra).name)+'</small><span>'+esc('제 '+q.examRound+'회 '+q.examLevel+' · '+q.questionNumber+'번')+'</span><em>'+record.wrongCount+'회 틀림</em></div><h2>'+esc(q.sourceQuestionText||q.question)+'</h2>'+image
       +'<div class="r7-answer-summary"><div><small>내가 고른 답</small><b>'+(Number.isInteger(selected)?labels[selected]:'기록 없음')+'</b></div><div><small>정답</small><b>'+(labels[q.answer]||esc(q.answerLabel||''))+'</b></div></div>'
       +'<section class="r7-detail-explanation"><h2>해설</h2><p>'+esc(explanation)+'</p>'+(globalThis.OFFICIAL_EXAM_UI?.choiceExplanations(q,selected)||'')+'</section>'
-      +'<section class="r7-detail-history"><h2>풀이 기록</h2>'+(history.length?history.map(e=>'<p><time>'+esc(new Date(e.answeredAt).toLocaleDateString('ko-KR'))+'</time><span>'+(labels[e.answer]||'답안 기록 없음')+' 선택 · '+(e.correct?'정답':'오답')+'</span></p>').join(''):'<p>날짜별 풀이 기록이 없어요.</p>')+'</section><button class="r7-primary" data-review="'+esc(q.questionId)+'">이 문제 다시 풀기</button></section>';
+      +'<section class="r7-detail-history"><h2>풀이 기록</h2>'+(history.length?history.map(e=>'<p><time>'+esc(new Date(e.answeredAt).toLocaleDateString('ko-KR'))+'</time><span>'+(labels[e.answer]||'답안 기록 없음')+' 선택 · '+(e.correct?'정답':'오답')+'</span></p>').join(''):'<p>날짜별 풀이 기록이 없어요.</p>')+'</section><button class="r7-primary" data-r7-wrong-single="'+esc(q.questionId)+'">이 문제 다시 풀기</button></section>';
   }
   const wrongTabs=selected=>'<div class="r7-tabs" role="tablist" aria-label="오답 유형"><button role="tab" aria-selected="'+(selected==='official')+'" data-wrong-filter="official">기출 오답</button><button role="tab" aria-selected="'+(selected==='ox')+'" data-wrong-filter="ox">OX 오답</button></div>';
   study = function () {
@@ -149,7 +149,7 @@
     const d = button.dataset;
     if (d.nav === 'records') recordView = 'home';
     if (d.nav || d.review) wrongDetailId = null;
-    if (!Object.keys(d).some(key => ['r7RecordLearning','r7RecordHome','r7WrongStatus','r7FilterOpen','r7FilterClose','r7FilterEra','r7FilterApply','r7WrongDetail','r7WrongBack','r7WrongBulk'].includes(key))) return;
+    if (!Object.keys(d).some(key => ['r7RecordLearning','r7RecordHome','r7WrongStatus','r7FilterOpen','r7FilterClose','r7FilterEra','r7FilterApply','r7WrongDetail','r7WrongBack','r7WrongBulk','r7WrongSingle'].includes(key))) return;
     event.stopImmediatePropagation();
     if ('r7RecordLearning' in d) { recordView = 'learning'; screen = 'records'; oxWriteRoute('records/learning'); }
     if ('r7RecordHome' in d) { recordView = 'home'; screen = 'records'; oxWriteRoute('records'); }
@@ -160,6 +160,7 @@
     if ('r7FilterApply' in d) { wrongEra = filterDraft; filterOpen = false; }
     if (d.r7WrongDetail) {wrongDetailId=d.r7WrongDetail;const route='study/question/'+encodeURIComponent(wrongDetailId);oxViews.addRoute(route);oxWriteRoute(route);}
     if ('r7WrongBack' in d) {wrongDetailId=null;oxWriteRoute('study');}
+    if(d.r7WrongSingle){const entry=officialEntry(d.r7WrongSingle);if(entry)startOfficialSession([entry],'learn',{scope:'wrong-only'});return;}
     if ('r7WrongBulk' in d) { const entries = wrongEntries().filter(row => row.record.lastCorrect === false && (wrongEra === 'all' || row.entry.primaryEra === wrongEra)).map(row => row.entry); if (entries.length) startOfficialSession(entries, 'learn', {scope:'wrong-only'}); return; }
     render();
     if (filterOpen) document.querySelector('.r7-sheet button')?.focus({preventScroll:true});
