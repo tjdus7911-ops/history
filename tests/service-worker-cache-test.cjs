@@ -34,7 +34,7 @@ vm.runInContext(fs.readFileSync('dist/sw.js','utf8'),context);
   let installPromise;listeners.install({waitUntil(promise){installPromise=promise}});await installPromise;
   assert.equal(skipWaitingCalled,true,'new service worker skips the waiting phase');
   assert(shellFiles.includes('/index.html')&&shellFiles.includes('/app.js')&&shellFiles.includes('/proto-story-data.js'),'install preloads the current app shell');
-  const activeVersion=vm.runInContext('CACHE_VERSION',context);assert.equal(activeVersion,'2026-10-20-story-mobile-qa-3');
+  const activeVersion=vm.runInContext('CACHE_VERSION',context);assert.equal(activeVersion,'2026-10-20-story-mobile-qa-4');
   let activatePromise;listeners.activate({waitUntil(promise){activatePromise=promise}});await activatePromise;
   assert(deletedCaches.includes('lived-history-shell-2026-10-14-mobile-exam-actions-v5'),'activation removes the installed app’s stale shell');
   assert(!deletedCaches.includes('unrelated-cache'),'activation keeps caches owned by other apps');
