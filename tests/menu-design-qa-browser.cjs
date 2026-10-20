@@ -22,13 +22,14 @@ async function runMenuFlow(page,{width,native=false,before=false,screenshot,swip
  }
  await click('nav [data-nav="jokbo"]');await click('[data-jk-era="three"]');await page.evaluate(()=>scrollTo(0,0));await capture('jokbo-three');
  if(!before){
-  const cdp=swipe?null:await page.context().newCDPSession(page);
+  const cdp=await page.context().newCDPSession(page);
   const gesture=swipe||(async({x,y,toX,toY})=>{await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y}]});for(let i=1;i<=8;i++)await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:x+(toX-x)*i/8,y:y+(toY-y)*i/8}]});await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});});
   const drag=async(direction,selector='[data-jk-swipe="true"]')=>{const r=await page.locator(selector).boundingBox(),y=Math.max(310,r.y+30);await gesture({x:width*.8,y,toX:direction==='vertical'?width*.8:width*.2,toY:direction==='vertical'?y-180:y});};
   const era=()=>page.evaluate(()=>JOKBO_API.state().activeEra);
   await drag('left');assert.equal(await era(),'north-south','left moves to next era');await page.waitForTimeout(210);
   assert.equal(await page.locator('[data-jk-era][aria-selected="true"]').getAttribute('data-jk-era'),'north-south');
   const centered=await page.locator('.jk-era-tabs').evaluate(el=>{const a=el.querySelector('[aria-selected="true"]').getBoundingClientRect(),r=el.getBoundingClientRect();return a.left>=r.left-1&&a.right<=r.right+1;});assert(centered,'active chip visible');
+  const detailButton=await page.locator('[data-jk-group]').first().boundingBox();await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:detailButton.x+detailButton.width/2,y:detailButton.y+detailButton.height/2}]});await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await page.locator('.jk-group-page').waitFor();await click('[data-jk-back="jokbo"]');await page.locator('[data-jk-swipe="true"]').waitFor();
   const r=await page.locator('[data-jk-swipe="true"]').boundingBox();await gesture({x:width*.2,y:r.y+30,toX:width*.8,toY:r.y+30});assert.equal(await era(),'three','right moves to previous era');await page.waitForTimeout(460);
   await drag('vertical');assert.equal(await era(),'three','vertical motion does not change era');await page.waitForFunction(()=>scrollY>20);await page.evaluate(()=>scrollTo(0,0));
   await click('[data-jk-era="prehistoric"]');const start=await era();const top=await page.locator('[data-jk-swipe="true"]').boundingBox();await gesture({x:width*.2,y:top.y+30,toX:width*.8,toY:top.y+30});assert.equal(await era(),start,'first era stops at boundary');await page.waitForTimeout(460);

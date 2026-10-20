@@ -193,7 +193,7 @@
  // Lock the gesture to its initial axis; vertical scrolling never changes eras.
  let eraGesture=null,suppressSwipeClickUntil=0;
  document.addEventListener('touchstart',event=>{
-  eraGesture=null;
+  eraGesture=null;suppressSwipeClickUntil=0;
   if(screen!=='jokbo'||mode!=='all'||query.trim()||event.touches.length!==1||!event.target.closest('[data-jk-swipe="true"]'))return;
   const t=event.touches[0];eraGesture={x:t.clientX,y:t.clientY,id:t.identifier,axis:null,era:activeEra};
  },{passive:true});
