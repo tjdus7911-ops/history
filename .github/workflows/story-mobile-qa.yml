@@ -1,7 +1,7 @@
 name: Story mobile QA and debug APK
 on:
   push:
-    branches: [fix/story-mobile-qa-20261020]
+    branches: [main, fix/story-mobile-qa-20261020]
   workflow_dispatch:
 permissions:
   contents: read
