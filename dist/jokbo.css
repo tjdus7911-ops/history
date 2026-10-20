@@ -117,93 +117,108 @@
   font-size: 22px;
 }
 
-/* Both navigation rows use the same compact filled-segment language. */
+/* View tabs stay quiet; eras use independent horizontally scrolling chips. */
 .jk-era-tabs {
   display: flex;
-  gap: 2px;
+  gap: 8px;
   width: 100%;
-  margin: 0;
+  margin: 0 0 8px;
   padding: 0;
   overflow-x: auto;
-  border-radius: 9px;
-  background: var(--jk-sunken);
+  overflow-y: hidden;
+  border-radius: 0;
+  background: transparent;
   overscroll-behavior-inline: contain;
   scroll-snap-type: x proximity;
+  scroll-padding-inline: 4px;
   touch-action: pan-x;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
 .jk-era-tabs::-webkit-scrollbar { display: none; }
 .jk-era-tabs button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex: 0 0 auto;
-  min-width: 66px;
+  min-width: 0;
   min-height: 44px;
-  padding: 0 12px;
-  border-radius: 7px;
+  padding: 4px 0;
+  border-radius: 0;
   background: transparent;
-  color: var(--jk-sub);
+  scroll-snap-align: start;
+}
+.jk-era-tabs button > span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 13px;
+  border-radius: 999px;
+  background: var(--jk-sunken);
+  color: var(--jk-ink);
   font-size: 12.5px;
   font-weight: 500;
   line-height: 18px;
   white-space: nowrap;
-  scroll-snap-align: center;
 }
-.jk-era-tabs button[aria-selected=true] {
+.jk-era-tabs button[aria-selected=true] > span {
   background: var(--jk-coral);
   color: #fff;
   font-weight: 700;
 }
-.jk-era-tabs button[aria-selected=true]:active { background: var(--jk-coral-press); }
+.jk-era-tabs button[aria-selected=true]:active > span { background: var(--jk-coral-press); }
 .jk-segment {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px;
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
   min-height: 44px;
-  margin: 6px 0 11px;
+  margin: 0 0 4px;
   padding: 0;
-  border-radius: 9px;
-  background: var(--jk-sunken);
+  border-bottom: 1px solid var(--jk-line);
+  border-radius: 0;
+  background: transparent;
 }
 .jk-segment button {
-  min-width: 0;
+  position: relative;
+  flex: 0 0 auto;
+  min-width: 44px;
   min-height: 44px;
-  padding: 0 8px;
-  border-radius: 7px;
+  padding: 0 1px;
+  border-radius: 0;
   background: transparent;
   color: var(--jk-sub);
   font-size: 13px;
   font-weight: 500;
 }
 .jk-segment button[aria-selected=true] {
-  background: var(--jk-coral);
-  color: #fff;
+  background: transparent;
+  color: var(--jk-coral-ink);
   font-weight: 700;
 }
-.jk-segment span {
+.jk-segment button[aria-selected=true]::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--jk-coral);
+}
+.jk-segment-count {
   display: inline-grid;
   place-items: center;
-  min-width: 18px;
-  height: 18px;
+  min-width: 17px;
+  height: 17px;
   margin-left: 4px;
   padding: 0 4px;
   border-radius: 10px;
-  background: var(--jk-coral-soft);
-  color: var(--jk-coral-ink);
-  font-size: 10.5px;
-  line-height: 18px;
-}
-.jk-segment span.is-empty {
   background: #e7ebec;
-  color: #7a878f;
-}
-.jk-segment button[aria-selected=true] span {
-  background: rgb(255 255 255 / 22%);
-  color: #fff;
-}
-.jk-segment button[aria-selected=true] span.is-empty {
-  background: rgb(255 255 255 / 84%);
   color: #6d7981;
+  font-size: 10px;
+  line-height: 17px;
 }
+.jk-segment-count.is-empty { color: #7a878f; }
 
 /* Era title */
 .jk-summary-head {
@@ -714,7 +729,6 @@
   .main.ed-jokbo-detail,
   .main.ed-jokbo-compare { padding-right: 42px; padding-left: 42px; }
   .jk-page { padding-top: 24px; }
-  .jk-era-tabs button { flex: 1 0 0; min-width: 62px; padding-inline: 8px; }
   .six-nav .nav { gap: 6px; }
   .six-nav .nav button { padding: 13px 16px; }
   .jk-exam-cta button { width: auto; min-width: 240px; }
@@ -775,7 +789,7 @@
 
 @media(max-width:370px) {
   .jk-page { padding-right: 16px; padding-left: 16px; }
-  .jk-era-tabs button { min-width: 64px; padding-inline: 11px; }
+  .jk-era-tabs button > span { padding-inline: 12px; }
   .jk-summary-head { padding-inline: 2px; }
   .jk-group-title { grid-template-columns: 42px minmax(0, auto) auto; }
   .jk-group-subtitle { margin-left: 42px; }

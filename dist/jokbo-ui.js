@@ -61,9 +61,9 @@
  function appbar(title,back='jokbo'){return '<header class="jk-appbar"><button data-jk-back="'+back+'" aria-label="뒤로 가기">'+icon('back')+'</button><h1>'+esc(title)+'</h1><span></span></header>';}
  function searchButton(){return '<button class="jk-search-button" data-jk-search aria-label="족보 검색" aria-expanded="'+searchOpen+'">'+icon(searchOpen?'close':'search')+'</button>';}
  function searchBox(){return !searchOpen?'':'<div class="jk-search"><span>'+icon('search')+'</span><input data-jk-query type="search" value="'+esc(query)+'" placeholder="키워드·국가·왕·인물·대표 단서 검색" aria-label="족보 검색어"><button data-jk-search-clear aria-label="검색어 지우기">'+(query?'×':'')+'</button></div>';}
- function eraTabs(){return '<div class="jk-era-tabs" role="tablist" aria-label="시대 선택">'+D.eras.map(e=>'<button role="tab" data-jk-era="'+e.id+'" aria-selected="'+(activeEra===e.id)+'">'+esc(e.label)+'</button>').join('')+'</div>';}
+ function eraTabs(){return '<div class="jk-era-tabs" role="tablist" aria-label="시대 선택">'+D.eras.map(e=>'<button role="tab" data-jk-era="'+e.id+'" aria-selected="'+(activeEra===e.id)+'"><span>'+esc(e.label)+'</span></button>').join('')+'</div>';}
  function revealActiveEraTab(){
-  const reveal=()=>{const tabs=document.querySelector('.jk-era-tabs'),selected=tabs?.querySelector('[data-jk-era][aria-selected="true"]');if(!tabs||!selected)return;const target=selected.offsetLeft-(tabs.clientWidth-selected.offsetWidth)/2,max=Math.max(0,tabs.scrollWidth-tabs.clientWidth);tabs.scrollLeft=Math.max(0,Math.min(max,target));};
+  const reveal=()=>{const tabs=document.querySelector('.jk-era-tabs'),selected=tabs?.querySelector('[data-jk-era][aria-selected="true"]');if(!tabs||!selected)return;const track=tabs.getBoundingClientRect(),chip=selected.getBoundingClientRect(),inset=4,max=Math.max(0,tabs.scrollWidth-tabs.clientWidth);let target=tabs.scrollLeft;if(chip.left<track.left+inset)target-=track.left+inset-chip.left;else if(chip.right>track.right-inset)target+=chip.right-(track.right-inset);tabs.scrollLeft=Math.max(0,Math.min(max,target));};
   if(typeof requestAnimationFrame==='function')requestAnimationFrame(reveal);else setTimeout(reveal,0);
  }
  function semanticValue(value){
@@ -83,26 +83,27 @@
   return '<article class="jk-group"><header><div class="jk-group-title"><span class="jk-group-number">'+number+'</span><h3>'+esc(title)+'</h3>'+(searching?'<span class="jk-group-era">'+esc(era.label)+'</span>':'')+'</div><button class="jk-group-detail" data-jk-group="'+group.id+'"><span>자세히 보기</span><span class="jk-group-arrow" aria-hidden="true">→</span></button></header>'+(group.subtitle?'<p class="jk-group-subtitle">'+esc(group.subtitle)+'</p>':'')+'<div class="jk-keywords">'+keywordRows(group,items)+'</div></article>';
  }
  function emptyMarkup(){
-  if(mode==='saved'&&!saved.size)return '<div class="jk-empty"><span>'+treeIcon+'</span><h2>저장한 키워드가 없어요</h2><p>상세 화면에서 필요한 키워드를 저장하면<br>시험 직전 목록으로 모아 드려요.</p><button data-jk-mode="all">전체 요약 보기</button></div>';
   return '<div class="jk-empty"><span>'+icon('search')+'</span><h2>검색 결과가 없어요</h2><p>띄어쓰기를 바꾸거나 더 짧은 단어로 검색해 보세요.</p><button data-jk-search-clear>검색어 지우기</button></div>';
  }
+ function savedEmptyMarkup(){const era=eraById.get(activeEra);return '<div class="jk-empty jk-saved-empty"><span>'+treeIcon+'</span><h2>'+esc(era.label)+'에 저장한 키워드가 없어요</h2><p>이 시대의 상세 화면에서 필요한 키워드를 저장하면<br>시험 직전 목록으로 모아 드려요.</p><button data-jk-mode="all">전체 요약 보기</button></div>';}
  function compareLinks(eraId){
   const rows=D.comparisons.filter(c=>c.eraIds.includes(eraId));if(!rows.length)return '';
   return '<section class="jk-links"><h2>헷갈리는 개념 비교</h2>'+rows.map(c=>'<button data-jk-compare="'+c.id+'"><span><b>'+esc(c.title)+'</b><small>차이를 한눈에 비교해요</small></span><i>›</i></button>').join('')+'</section>';
  }
  function savedList(){
-  const items=D.keywords.filter(k=>saved.has(k.id)&&searchMatches(k));
-  if(!items.length)return emptyMarkup();
+  const eraItems=D.keywords.filter(k=>k.eraId===activeEra&&saved.has(k.id)),items=eraItems.filter(searchMatches);
+  if(!items.length)return eraItems.length?emptyMarkup():savedEmptyMarkup();
   return '<div class="jk-saved-list">'+items.map(k=>'<article><button data-jk-detail="'+k.id+'"><span class="jk-tags"><em>'+esc(eraById.get(k.eraId).label)+'</em><em>'+esc(k.groupTitle.replace(/^\d+\s*/,''))+'</em><em>'+esc(k.label)+'</em></span><b>'+esc(k.value)+'</b><p>'+esc(k.definition)+'</p></button><button class="jk-unsave" data-jk-save="'+k.id+'" aria-label="'+esc(k.value)+' 저장 해제">'+icon('bookmark-filled')+'</button></article>').join('')+'</div>';
  }
  function mainPage(){
   const searching=Boolean(query.trim()),era=eraById.get(activeEra);
+  const eraSavedCount=D.keywords.filter(k=>k.eraId===activeEra&&saved.has(k.id)).length;
   const pool=searching?D.groups:D.groups.filter(g=>g.eraId===activeEra),rows=[];
   for(const group of pool){const items=group.keywords.filter(k=>searchMatches({...k,groupTitle:group.title,eraId:group.eraId}));if(items.length)rows.push({group,items});}
   const related=eraExamIds(activeEra);
-  return '<section class="jk-page jk-main" data-page="jokbo"><header class="jk-heading"><div><h1>족보</h1><p>시험 전에 필요한 것만</p></div>'+searchButton()+'</header>'+searchBox()+eraTabs()
-   +'<div class="jk-segment" role="tablist" aria-label="족보 보기"><button role="tab" data-jk-mode="all" aria-selected="'+(mode==='all')+'">전체 요약</button><button role="tab" data-jk-mode="saved" aria-selected="'+(mode==='saved')+'">저장한 키워드 <span class="'+(saved.size?'':'is-empty')+'">'+saved.size+'</span></button></div>'
-   +(mode==='saved'?'<section class="jk-summary-head"><h2>시험 직전, 이것만</h2><p>저장한 핵심 개념을 시대와 주제까지 함께 확인해요.</p></section>'+savedList():'<section class="jk-summary-head">'+(searching?'<small class="jk-summary-kicker">검색 결과</small>':'')+'<h2>'+esc(searching?'“'+query+'” 검색 결과':era.title)+'</h2><p>'+esc(searching?'전 시대의 국가·왕·인물·단서를 찾았어요.':era.subtitle)+'</p></section><div class="jk-groups">'+(rows.length?rows.map((row,i)=>groupMarkup(row.group,row.items,i,searching)).join(''):emptyMarkup())+'</div>'+(searching?'':compareLinks(activeEra))
+  return '<section class="jk-page jk-main" data-page="jokbo"><header class="jk-heading"><div><h1>족보</h1><p>시험 전에 필요한 것만</p></div>'+searchButton()+'</header>'+searchBox()
+   +'<div class="jk-segment" role="tablist" aria-label="족보 보기"><button role="tab" data-jk-mode="all" aria-selected="'+(mode==='all')+'">전체 요약</button><button role="tab" data-jk-mode="saved" aria-selected="'+(mode==='saved')+'">저장한 키워드 <span class="jk-segment-count'+(eraSavedCount?'':' is-empty')+'">'+eraSavedCount+'</span></button></div>'+eraTabs()
+   +(mode==='saved'?'<section class="jk-summary-head"><h2>'+esc(era.label)+' 저장 키워드</h2><p>이 시대에서 저장한 핵심 개념만 모았어요.</p></section>'+savedList():'<section class="jk-summary-head">'+(searching?'<small class="jk-summary-kicker">검색 결과</small>':'')+'<h2>'+esc(searching?'“'+query+'” 검색 결과':era.title)+'</h2><p>'+esc(searching?'전 시대의 국가·왕·인물·단서를 찾았어요.':era.subtitle)+'</p></section><div class="jk-groups">'+(rows.length?rows.map((row,i)=>groupMarkup(row.group,row.items,i,searching)).join(''):emptyMarkup())+'</div>'+(searching?'':compareLinks(activeEra))
    +(searching?'':'<section class="jk-exam-cta"><div><small>RELATED QUESTIONS</small><h2>이 시대 관련 기출 풀기</h2><p>'+related.length+'개의 검증된 실제 기출이 핵심 키워드와 연결되어 있어요.</p></div><button data-jk-era-exams="'+activeEra+'" '+(related.length?'':'disabled')+'>'+(related.length?'기출 '+Math.min(20,related.length)+'문제 풀기':'연결된 기출을 준비하고 있어요')+'</button></section>'))+'</section>';
  }
  function detailPage(){
@@ -150,7 +151,7 @@
   if(d.jkMode){event.stopImmediatePropagation();mode=d.jkMode;saveView({scrollY:0});render();revealActiveEraTab();window.scrollTo(0,0);return;}
   if(d.jkDetail){event.stopImmediatePropagation();saveView({scrollY:window.scrollY});detailId=d.jkDetail;screen='jokbo-detail';routes.writeRoute('jokbo/detail/'+encodeURIComponent(detailId));render();window.scrollTo(0,0);return;}
   if(d.jkGroup){event.stopImmediatePropagation();const first=D.groups.find(g=>g.id===d.jkGroup)?.keywords[0];if(first){saveView({scrollY:window.scrollY});detailId=first.id;screen='jokbo-detail';routes.writeRoute('jokbo/detail/'+detailId);render();window.scrollTo(0,0);}return;}
-  if(d.jkSave){event.stopImmediatePropagation();saved.has(d.jkSave)?saved.delete(d.jkSave):saved.add(d.jkSave);saveKeywords();render();return;}
+  if(d.jkSave){event.stopImmediatePropagation();saved.has(d.jkSave)?saved.delete(d.jkSave):saved.add(d.jkSave);saveKeywords();render();if(screen==='jokbo')revealActiveEraTab();return;}
   if(d.jkCompare){event.stopImmediatePropagation();saveView({scrollY:window.scrollY});compareId=d.jkCompare;compareTopic=0;screen='jokbo-compare';routes.writeRoute('jokbo/compare/'+compareId);render();window.scrollTo(0,0);return;}
   if(d.jkCompareTopic!==undefined){event.stopImmediatePropagation();compareTopic=Number(d.jkCompareTopic)||0;render();return;}
   if(d.jkBack){event.stopImmediatePropagation();if(d.jkBack==='jokbo'){screen='jokbo';detailId=null;compareId=null;routes.writeRoute('jokbo');render();revealActiveEraTab();setTimeout(()=>window.scrollTo(0,Number(readJSON(sessionStore,VIEW_KEY,{}).scrollY)||0),0);}return;}
