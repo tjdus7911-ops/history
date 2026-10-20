@@ -37,4 +37,47 @@ html body .r7-menu-heading{box-sizing:border-box;display:flex;align-items:center
 html body .r7-menu-heading.r7-heading h1,html body .r7-menu-heading.jk-heading h1{font:700 26px/36px var(--r7-serif);letter-spacing:0;margin:0;padding:0}
 html body .jk-main{max-width:560px;padding-top:0;padding-left:0;padding-right:0}
 html body .jk-heading-subtitle{font:450 13px/19px var(--r7-ui);color:var(--r7-sub);margin:0 0 16px}
-@media(max-width:700px){html body .main:is(.ed-ox,.ed-records,.ed-jokbo):has(.r7-menu-heading){padding-top:18px;padding-left:20px;padding-right:20px}html body .r7-page:is(.r7-ox-home,.r7-my){margin-top:0}}
+@media(max-width:700px){html body .main:is(.ed-ox,.ed-study,.ed-records,.ed-jokbo):has(.r7-menu-heading){padding-top:18px;padding-left:20px;padding-right:20px}html body .r7-page:is(.r7-ox-home,.r7-wrong,.r7-my){margin-top:0}}
+/* Confirmed M-02 uses its own 56px detail app bar, not a main-menu title. */
+html body .r7-page.r7-learning{margin-top:0}
+html body .r7-learning>.r7-appbar{margin:0 0 12px}
+html body .r7-learning>.r7-chips{gap:8px;margin:0 0 4px;overflow-x:auto;scrollbar-width:none}
+html body .r7-learning>.r7-chips button{flex:none;min-height:44px;padding:4px 0;border:0;background:transparent;font-weight:500}
+html body .r7-learning>.r7-chips button>span{display:flex;align-items:center;justify-content:center;min-height:36px;min-width:60px;padding:6px 13px;border:1px solid var(--r7-line-strong);border-radius:3px;background:white;color:var(--r7-sub);line-height:20px}
+html body .r7-learning>.r7-chips button[aria-pressed=true]>span{color:white;background:#16222e;border-color:#16222e}
+html body .r7-learning>.r7-tiles{margin:8px 0 12px}
+html body .r7-learning>.r7-chart{margin-top:0}
+html body .r7-learning .r7-bars .is-today{background:#e9513b}
+html body .r7-record-disclosure{margin:24px 0 16px;border-top:1px solid var(--r7-line);padding-top:8px}
+html body .r7-record-disclosure>summary{min-height:44px;padding:12px 0;font:500 14px/20px var(--r7-ui);color:var(--r7-ink);cursor:pointer}
+html body .r7-record-content{font-family:var(--r7-ui);color:var(--r7-ink);min-width:0}
+html body .r7-record-content .r7-record-panel{margin:0 0 16px;padding:16px;border:1px solid var(--r7-line);border-radius:6px;background:white;min-width:0}
+html body .r7-record-content .r7-record-panel h2{font:700 16px/24px var(--r7-ui);margin:0 0 12px}
+html body .r7-record-content .r7-record-panel h3{font:600 16px/24px var(--r7-ui);margin:4px 0}
+html body .r7-record-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+html body .r7-record-metrics .r7-tile{padding:12px;background:var(--r7-sunken);border:0}
+html body .r7-record-metrics .r7-tile strong{font:700 24px/32px var(--r7-ui)}
+html body .r7-record-link{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:44px;padding:10px 0;background:white;border:0;border-top:1px solid var(--r7-line);color:#d7402a;font:600 14px/22px var(--r7-ui)}
+html body .r7-record-result{padding-bottom:12px}
+html body .r7-record-result>small,html body .r7-record-result>p{font:400 13px/21px var(--r7-ui);color:var(--r7-sub)}
+html body .r7-record-result>div{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin-top:12px}
+html body .r7-record-result strong{font:700 26px/34px var(--r7-ui)}
+html body .r7-record-result span{font:500 13px/21px var(--r7-ui)}
+html body .r7-record-era-list{list-style:none;padding:0;margin:0}
+html body .r7-record-era-list>li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;border-bottom:1px solid var(--r7-line);padding:12px 0;min-width:0}
+html body .r7-record-era-list>li:last-child{border-bottom:0;padding-bottom:0}
+html body .r7-record-era-list b{display:block;font:500 14px/22px var(--r7-ui)}
+html body .r7-record-era-list span{display:block;font:400 12px/18px var(--r7-ui);color:var(--r7-sub)}
+html body .r7-record-era-list strong{font:600 16px/24px var(--r7-ui)}
+html body .r7-record-era-list progress{grid-column:1/-1;appearance:none;border:0;width:100%;height:4px;border-radius:4px;background:var(--r7-sunken);color:#e9513b}
+html body .r7-record-era-list progress::-webkit-progress-bar{background:var(--r7-sunken)}
+html body .r7-record-era-list progress::-webkit-progress-value{background:#e9513b}
+html body .r7-record-weakness .official-weakness{padding:0;margin:0;border:0;background:white}
+html body .r7-record-weakness .official-weakness-row{border:0;border-bottom:1px solid var(--r7-line);border-radius:0;box-shadow:none;background:white;padding:12px 0;color:var(--r7-ink)}
+html body .r7-record-weakness :is(p,small){font:400 12px/20px var(--r7-ui);color:var(--r7-sub)}
+html body .r7-record-recent{margin-top:16px}
+html body .r7-record-recent>summary{font:600 14px/22px var(--r7-ui);min-height:44px;padding:10px 0}
+html body .r7-record-recent article{padding:12px 0;border-bottom:1px solid var(--r7-line)}
+html body .r7-record-recent article>span{font:500 12px/20px var(--r7-ui);color:#d7402a}
+html body .r7-record-recent time{font:400 12px/20px var(--r7-ui);color:var(--r7-faint)}
+@media(max-width:700px){html body .main.ed-records:has(.r7-learning){padding-top:8px}}

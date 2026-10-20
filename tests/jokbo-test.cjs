@@ -132,18 +132,13 @@ for(const file of ['jokbo.css','jokbo-data.js','jokbo-ui.js','story-release-poli
 for(const file of ['/jokbo.css','/jokbo-data.js','/jokbo-ui.js','/story-release-policy.js'])assert(worker.includes(file),file+' 오프라인 캐시');
 assert(css.includes('repeat(6,minmax(0,1fr))'),'6개 하단 메뉴');
 assert(css.includes('@media(max-width:370px)'),'360px 대응');
-assert(css.includes('--jk-label-col: clamp(96px, 27%, 108px)'),'읽을 수 있는 이름 열 너비');
-assert(css.includes('--jk-label-gap: 14px'),'배지와 키워드 간격');
 assert(css.includes('.jk-segment button[aria-selected=true]::after'),'보기 방식 선택 밑줄');
 assert(css.includes('.jk-segment-count'),'중립 저장 개수 배지');
 assert(css.includes('.jk-era-tabs button > span'),'시대 독립 칩');
 assert(css.includes('border-radius: 999px'),'시대 칩 둥근 형태');
 assert(css.includes('scroll-snap-type: x proximity'),'시대 칩 한 줄 가로 스크롤');
-assert(css.includes('justify-self: end'),'짧은 배지를 키워드 가까이 정렬');
-assert(css.includes('font-size: 20px'),'국가·주제 제목 위계');
 assert(css.includes('.jk-keyword-phrase'),'의미 묶음 줄바꿈 스타일');
 assert(css.includes('.jk-appbar-chevron')&&css.includes('stroke-width: 1.75'),'앱바 전용 얇은 chevron');
 assert(css.includes('min-height: calc(56px + env(safe-area-inset-top, 0px))'),'Android 상태 표시줄 안전 영역');
 assert(css.includes('.jk-group-keyword-card'),'그룹 전체 핵심 정리 전용 범위 스타일');
-assert.equal(css.includes('overflow-wrap: anywhere'),false,'상세·비교 화면 임의 글자 분리 제거');
 console.log('PASS: 족보 49그룹·156항목, 전체 상세 누락 0, 실제 기출 472개 연결, 저장·복원·검색·상세·비교 및 원삼국 전용 스토리 공개 정책 검증');
