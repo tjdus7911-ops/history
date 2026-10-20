@@ -1,4 +1,5 @@
 const assert=require('node:assert/strict');
+const layoutCss=require('node:fs').readFileSync('dist/rev7-layouts.css','utf8');assert(layoutCss.indexOf('@import')<layoutCss.indexOf(':root'),'font import must precede ordinary CSS rules');
 const {load,step,until}=require('./proto-revision-harness.cjs');
 const protectedData=g=>g.copy('({completed:meta().completedChapters,records:meta().chapterRecords,runs:meta().chapterRuns,questions:meta().questionRecords,wrong:meta().wrongQuestionIds,events:meta().learningEvents,exams:meta().officialExamResults})');
 let g=load();g.click({eraOpen:'proto-kingdoms'});g.click({action:'start-chapter',chapter:'proto-ch01'});
