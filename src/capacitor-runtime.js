@@ -83,13 +83,21 @@ if (isNative) {
   document.documentElement.dataset.nativePlatform = Capacitor.getPlatform();
 
   App.addListener('backButton', handleBackButton);
+  const saveProgress = () => {
+    try {
+      globalThis.save?.();
+    } catch (error) {
+      console.warn('Native background save failed.', error);
+    }
+  };
+  // Save on WebView lifecycle events as well as the native app callback.
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) saveProgress();
+  });
+  globalThis.addEventListener('pagehide', saveProgress);
   App.addListener('appStateChange', ({ isActive }) => {
     if (!isActive) {
-      try {
-        globalThis.save?.();
-      } catch (error) {
-        console.warn('Native background save failed.', error);
-      }
+      saveProgress();
       return;
     }
 

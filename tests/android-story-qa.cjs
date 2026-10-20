@@ -9,7 +9,13 @@ const launch=()=>adb('shell','am','start','-W','-n',app+'/.MainActivity');
  fs.mkdirSync(output,{recursive:true});adb('shell','wm','size','780x1688');adb('shell','wm','density','320');adb('install','-r','android/app/build/outputs/apk/debug/app-debug.apk');adb('shell','pm','clear',app);launch();const page=await connect();assert(await page.evaluate(()=>HISTORY_NATIVE_RUNTIME.isNative));
  fs.writeFileSync(path.join(output,'android-home.png'),execFileSync('adb',['exec-out','screencap','-p']));adb('shell','uiautomator','dump','/sdcard/story-qa-window.xml');const nativeTree=adb('shell','cat','/sdcard/story-qa-window.xml');assert(!nativeTree.includes('action_bar_container'),'native title bar must not overlap the Rev.7 header');
  const info=await page.evaluate(()=>fetch('android-build-info.json').then(r=>r.json()));assert.equal(info.uiRelease,'2026-10-20-story-mobile-qa');assert.equal(info.sourceRevision,process.env.HISTORY_SOURCE_REVISION);
- const width=await page.evaluate(()=>innerWidth),result=await runFlow(page,{native:true,width,relaunch:async()=>{adb('shell','am','force-stop',app);launch();return connect();},screenshot:async file=>fs.writeFileSync(file,execFileSync('adb',['exec-out','screencap','-p'],{maxBuffer:20*1024*1024}))});
+ const width=await page.evaluate(()=>innerWidth),result=await runFlow(page,{native:true,width,relaunch:async currentPage=>{
+  assert.equal(await currentPage.evaluate(()=>JSON.parse(localStorage.getItem(KEY)).run.dialogueCursor),await currentPage.evaluate(()=>run().dialogueCursor),'latest dialogue is serialized before leaving');
+  // Reproduce closing from Android home/recents: allow the pause lifecycle and
+  // WebView's asynchronous disk write before killing the background process.
+  adb('shell','input','keyevent','3');await currentPage.waitForFunction(()=>document.hidden);await delay(1200);
+  adb('shell','am','force-stop',app);launch();return connect();
+ },screenshot:async file=>fs.writeFileSync(file,execFileSync('adb',['exec-out','screencap','-p'],{maxBuffer:20*1024*1024}))});
  const finalPage=await connect(),click=async selector=>{await finalPage.waitForFunction(()=>Date.now()>=inputLockedUntil);await finalPage.locator(selector).filter({visible:true}).first().click();};
  adb('shell','input','keyevent','4');await finalPage.locator('[data-figma-frame="M-01"]').waitFor();
   await click('nav [data-nav="home"]');await click('[data-r7-story-resume="proto-kingdoms"]');await click('[data-r7-story-continue="proto-kingdoms"]');await finalPage.locator('.r7-story-play').waitFor();

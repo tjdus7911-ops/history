@@ -29,7 +29,7 @@ app.click({r7OxAnalysisBack:''});app.click({nav:'home'});app.click({r7Seasons:''
 app.click({eraOpen:'goryeo'});assert(app.html().includes('data-figma-frame="S-01"'),'unpublished season button stays disabled');
 app.run("REV7_OX_VIEWS.applyRoute('era/goryeo')");assert(app.html().includes('data-figma-frame="S-03"'),'unpublished direct route remains a coming-soon screen');
 app.click({eraOpen:'proto-kingdoms'});assert(app.html().includes('data-figma-frame="S-02"'));
-const chapter=app.run("eraChapters('proto-kingdoms')[0].chapterId");app.click({chapter});assert(app.html().includes('r7-chapter-sheet'));app.click({r7ChapterScenes:chapter});assert(app.html().includes('data-figma-frame="S-04B"'));assert(app.run('chapterScenes('+JSON.stringify(chapter)+').length')>0);assert(app.html().includes('장면 1')||app.html().includes('아직 읽지 않은 장면')); 
+const chapter=app.run("eraChapters('proto-kingdoms')[0].chapterId");app.click({chapter});assert(app.html().includes('r7-chapter-sheet'));app.click({r7ChapterScenes:chapter});assert(app.html().includes('data-figma-frame="S-04B"'));assert(app.run('chapterScenes('+JSON.stringify(chapter)+').length')>0);assert(app.html().includes('장면 1')||app.html().includes('아직 읽지 않은 장면'));
 
 app.run("globalThis.rev7Frames=[];globalThis.requestAnimationFrame=callback=>rev7Frames.push(callback)");
 app.run("REV7_EXAM_VIEWS.start(REV7_EXAM_VIEWS.entriesForRound(79,'심화'),'exam',{examTab:'round',examRound:79,examLevel:'심화',timed:false})");app.click({officialSubmitConfirm:'true'});
