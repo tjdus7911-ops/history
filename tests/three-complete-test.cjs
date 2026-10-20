@@ -2,7 +2,9 @@
 const fs = require('node:fs'), vm = require('node:vm'), assert = require('node:assert/strict');
 const crypto = require('node:crypto');
 const { assertSha256IfLocal } = require('./deployment-asset-test-helper.cjs');
-const scripts = [...fs.readFileSync('dist/index.html','utf8').matchAll(/<script src="([^"]+)"/g)].map(m=>m[1]).filter(f=>f!=='pwa.js');
+// Exercise preserved Three Kingdoms content below the production release gate.
+// Public entry blocking is verified in the dedicated access-policy harnesses.
+const scripts = [...fs.readFileSync('dist/index.html','utf8').matchAll(/<script src="([^"]+)"/g)].map(m=>m[1]).filter(f=>!['pwa.js','story-release-policy.js'].includes(f));
 const manuscript = JSON.parse(fs.readFileSync('dist/three-story-script.json'));
 const exams = JSON.parse(fs.readFileSync('dist/three-exam-data.json'));
 let store = {}, html = '', context, listeners;

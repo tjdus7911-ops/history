@@ -109,4 +109,36 @@ html body .r7-page.r7-review-result{display:flex;flex-direction:column;min-heigh
 .r7-cover-start>[data-r7-cover-learn]{margin-top:10px;width:100%}
 
 .r7-exam-modes{display:flex;gap:8px;margin-top:18px}.r7-exam-modes>button{flex:1;min-height:44px;padding:10px 8px;border:1px solid var(--r7-line);border-radius:4px;background:white;color:var(--r7-ink);font-size:14px}.r7-exam-modes>button[aria-pressed=true]{background:var(--r7-ink);border-color:var(--r7-ink);color:white}
+
+/* Coral selection states and compact, collision-free exam history rows. */
+.r7-page .r7-wrong-controls .r7-chips button[aria-pressed=false],
+.r7-page .r7-exam-levels button[aria-pressed=false],
+.r7-page .r7-exam-modes>button[aria-pressed=false]{background:var(--r7-bg);border-color:var(--r7-line-strong);color:var(--r7-sub)}
+.r7-page .r7-wrong-controls .r7-chips button[aria-pressed=true],
+.r7-page .r7-exam-levels button[aria-pressed=true],
+.r7-page .r7-exam-modes>button[aria-pressed=true]{background:var(--r7-coral);border-color:var(--r7-coral);color:#fff}
+.r7-page.r7-exam-home>.r7-tabs button[aria-selected=true],
+.r7-page.r7-exam-history>.r7-tabs button[aria-selected=true]{color:var(--r7-coral-ink);border-bottom-color:var(--r7-coral)}
+.r7-page .r7-history-row>.r7-icon{flex:none;width:20px;height:20px}
+.r7-page.r7-exam-history .r7-history-item{padding:10px 0}
+.r7-page.r7-exam-history .r7-history-row{display:grid;grid-template-columns:68px minmax(0,1fr) 20px;column-gap:10px;align-items:center;min-height:96px;padding:8px 0}
+.r7-page.r7-exam-history .r7-history-score{width:auto;min-width:0;white-space:nowrap;align-self:start;padding-top:2px}
+.r7-page.r7-exam-history .r7-history-copy{display:flex;min-width:0;flex-direction:column;align-items:flex-start;gap:2px}
+.r7-page.r7-exam-history .r7-history-copy b{max-width:100%;font-size:16px;line-height:22px;word-break:keep-all;overflow-wrap:break-word}
+.r7-page.r7-exam-history .r7-history-copy small{max-width:100%;margin:0;font-size:11px;line-height:16px;word-break:keep-all;overflow-wrap:break-word}
+.r7-page.r7-exam-history .r7-history-cert{display:inline-flex;align-items:center;min-height:24px;margin-top:5px;padding:3px 8px;border-radius:3px;font-size:12px;line-height:16px;font-style:normal;white-space:nowrap}
+.r7-page.r7-exam-history .r7-history-cert.pass{background:var(--r7-teal-soft);color:var(--r7-teal-ink)}
+.r7-page.r7-exam-history .r7-history-cert.fail{background:var(--r7-danger-soft);color:var(--r7-danger)}
+.r7-page.r7-exam-history .r7-trend-link{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:44px;padding:8px 0;border:0;background:var(--r7-bg);color:var(--r7-coral-ink);text-align:left}
+.r7-page.r7-exam-history .r7-trend-link small{font-size:11px;color:var(--r7-faint)}
+.r7-page.r7-exam-history .r7-trend-empty{min-height:44px;margin:0;padding:10px 0;font-size:12px;line-height:20px;color:var(--r7-faint);word-break:keep-all}
+.r7-page.r7-exam-trend .r7-trend-bars i{background:var(--r7-coral)}
+.r7-page.r7-exam-trend .r7-history-row>span:first-child{min-width:0}
+.r7-page.r7-exam-trend .r7-history-row b,.r7-page.r7-exam-trend .r7-history-row small{word-break:keep-all;overflow-wrap:normal}
+.r7-page.r7-exam-trend .r7-history-row small>span{display:block}
+.r7-page.r7-exam-trend .r7-history-row small>span:last-child{white-space:nowrap}
+.r7-page .r7-trend-empty-state{display:flex;min-height:220px;padding:32px 20px;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center}
+.r7-page .r7-trend-empty-state h2{margin:0;font-size:18px;line-height:26px}
+.r7-page .r7-trend-empty-state p{max-width:280px;margin:0;color:var(--r7-sub);font-size:14px;line-height:22px;word-break:keep-all}
+@media(max-width:390px){.r7-page.r7-exam-history .r7-history-row{grid-template-columns:68px minmax(0,1fr) 20px;column-gap:8px}.r7-page.r7-exam-history .r7-history-score{font-size:30px}}
 html body .r7-exam-practice .official-exam-bottom-actions{position:fixed;left:50%;bottom:0;bottom:env(safe-area-inset-bottom);width:min(calc(100% - 40px),560px);transform:translateX(-50%);margin:0;padding:10px;background:white;z-index:20;grid-template-columns:1fr 1fr 1.4fr}html body .r7-exam-practice .official-exam-bottom-actions:not(:has([data-official-forward])){grid-template-columns:1fr 1.4fr}html body .r7-exam-practice{padding-bottom:110px}html body .r7-exam-practice .official-exam-bottom-actions button{min-height:48px;font-size:14px}

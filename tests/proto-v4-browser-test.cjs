@@ -6,12 +6,28 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
  try{for(const [width,height,branch] of [[390,844,0],[1280,900,1]]){
  const page=await browser.newPage({viewport:{width,height}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
  if(process.env.PROTO_QUESTION_CACHE){await page.route('**/assets/exams/**',async route=>{const url=route.request().url(),id=url.includes('/60-basic-02.webp')?'official-60-basic-02':url.match(/official-\d+-(?:basic|advanced)-\d+/)?.[0],file=id&&path.join(process.env.PROTO_QUESTION_CACHE,id+'.webp');if(file&&fs.existsSync(file))return route.fulfill({path:file,contentType:'image/webp'});return route.continue();});}
+ const assertBackground=async expected=>{
+  const rendered=await page.locator('.conversation-game').evaluate(element=>getComputedStyle(element).backgroundImage);assert(rendered.includes(expected),`expected ${expected}, rendered ${rendered}`);
+  assert.equal(await page.evaluate(src=>new Promise(resolve=>{const image=new Image();image.onload=()=>resolve(image.naturalWidth>0&&image.naturalHeight>0);image.onerror=()=>resolve(false);image.src=src;}),expected),true,`background failed to load: ${expected}`);
+ };
  await page.goto('http://127.0.0.1:4173',{waitUntil:'domcontentloaded'});await page.evaluate(()=>resumeEra('proto-kingdoms'));
- const scenes=new Set(),exams=new Set(),choiceScenes=new Set(),outro=[],portraitSources=new Set(),portraitBoxes=new Set();let maxOverflow=0;
+ assert.deepEqual(await page.evaluate(()=>[run().storyId,run().dialogueCursor]),['proto_prologue_museum',1]);await assertBackground('media/proto-v4/ancient-modern-museum.jpg');
+ assert.deepEqual(await page.locator('.stage-character').evaluateAll(elements=>elements.map(element=>element.dataset.characterId)),['proto_sibling','proto_modern']);
+ assert.equal(await page.locator('[data-choice]').count(),0);assert.equal(await page.locator('.proto-scene-recap').count(),0);await page.screenshot({path:`docs/proto-v4/qa/prologue-museum-${width}.png`,fullPage:true});
+ await page.locator('[data-action="advance-dialogue"]').last().click();assert.deepEqual(await page.evaluate(()=>[run().storyId,run().dialogueCursor]),['proto_prologue_museum',2]);
+ await page.reload({waitUntil:'domcontentloaded'});await page.evaluate(()=>resumeEra('proto-kingdoms'));assert.deepEqual(await page.evaluate(()=>[run().storyId,run().dialogueCursor]),['proto_prologue_museum',2],'museum cursor was not restored after reload');
+ const scenes=new Set(),historyScenes=new Set(),prologueScenes=new Set(),exams=new Set(),choiceScenes=new Set(),outro=[],portraitSources=new Set(),portraitBoxes=new Set(),backgroundChecked=new Set();let maxOverflow=0,firstMainChecked=false;
  for(let tick=0;tick<1100;tick++){
- const current=await page.evaluate(()=>{const source=screen==='game'?PROTO_REVISION_ACTIONS.currentSource():null,phase=source?PROTO_REVISION_ACTIONS.phaseState().phase:null,entries=source?PROTO_REVISION_ACTIONS.phaseEntries():[];return {screen,sid:run().storyId,cursor:run().dialogueCursor,phase,choiceReady:Boolean(source?.choices?.length&&phase==='main'&&run().dialogueCursor>=entries.length),chapter:Number(CHAPTERS[run().currentChapter].number),q:screen==='quiz'?{id:activeQuestion().officialQuestionId,answer:activeQuestion().answer,done:run().questionAnswer!==null}:null};});
+ const current=await page.evaluate(()=>{const source=screen==='game'?PROTO_REVISION_ACTIONS.currentSource():null,phase=source?PROTO_REVISION_ACTIONS.phaseState().phase:null,entries=source?PROTO_REVISION_ACTIONS.phaseEntries():[];return {screen,sid:run().storyId,cursor:run().dialogueCursor,phase,isPrologue:source?.isPrologue===true,illustrationId:source?.illustrationId,hasChoices:Boolean(source?.choices?.length),hasQueue:Boolean(source?.protoQueue),learningCount:source?.protoSource?.learning?.length??null,choiceReady:Boolean(source?.choices?.length&&phase==='main'&&run().dialogueCursor>=entries.length),chapter:Number(CHAPTERS[run().currentChapter].number),q:screen==='quiz'?{id:activeQuestion().officialQuestionId,answer:activeQuestion().answer,done:run().questionAnswer!==null}:null};});
  if(current.screen==='game'){
- if(!scenes.has(current.sid))console.log('browser',width,current.sid);scenes.add(current.sid);
+ if(!scenes.has(current.sid))console.log('browser',width,current.sid);scenes.add(current.sid);(current.isPrologue?prologueScenes:historyScenes).add(current.sid);
+ if(current.isPrologue){assert.equal(current.hasChoices,false,`choice leaked into ${current.sid}`);assert.equal(current.hasQueue,false,`quiz leaked into ${current.sid}`);assert.equal(current.learningCount,0,`learning content leaked into ${current.sid}`);}
+ if(!backgroundChecked.has(current.sid)){
+  backgroundChecked.add(current.sid);
+  if(['proto_prologue_museum','proto_prologue_separation','proto_prologue_timeslip'].includes(current.sid)){assert.equal(current.illustrationId,'proto-v4-modern-museum');await assertBackground('media/proto-v4/ancient-modern-museum.jpg');}
+  if(current.sid==='proto_prologue_buyeo_field'){assert.equal(current.illustrationId,'proto-v4-buyeo-village');await assertBackground('media/proto-v4/buyeo-village.webp');await page.screenshot({path:`docs/proto-v4/qa/prologue-buyeo-field-${width}.png`,fullPage:true});}
+  if(current.sid==='proto_ch01_s1'){assert.equal(current.illustrationId,'proto-v4-buyeo-village');assert.equal(current.cursor,10,'CH.01 did not start at its first historical line after the prologue');await assertBackground('media/proto-v4/buyeo-village.webp');firstMainChecked=true;await page.screenshot({path:`docs/proto-v4/qa/prologue-to-ch01-${width}.png`,fullPage:true});}
+ }
  if(current.phase==='outro')outro.push(await page.evaluate(()=>PROTO_REVISION_ACTIONS.phaseEntries()[run().dialogueCursor-1].dialogue));
  const visible=page.locator('.stage-character');for(const img of await visible.all()){
   await img.evaluate(el=>el.decode());assert(await img.evaluate(el=>el.naturalWidth>0),'portrait missing');
@@ -44,11 +60,11 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
  }else throw Error(current.screen);
  maxOverflow=Math.max(maxOverflow,await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth));assert(tick<1099,'route did not finish');
  }
- assert.equal(scenes.size,17);assert.equal(choiceScenes.size,17);assert.equal(exams.size,41);assert.deepEqual(outro,['준비됐어?','응. 이번에는 같이.']);assert.equal(maxOverflow,0);assert.deepEqual(errors,[]);
+ assert.equal(scenes.size,21);assert.equal(historyScenes.size,17);assert.deepEqual([...prologueScenes],['proto_prologue_museum','proto_prologue_separation','proto_prologue_timeslip','proto_prologue_buyeo_field']);assert.equal(choiceScenes.size,17);assert.equal(exams.size,41);assert.equal(firstMainChecked,true);assert.deepEqual(outro,['준비됐어?','응. 이번에는 같이.']);assert.equal(maxOverflow,0);assert.deepEqual(errors,[]);
  assert.deepEqual([...portraitSources].sort(),['elder-v3.png','girl-v3.png','merchant-v3.png','naru-v3.png','player-v3.png','priest-v3.png','sibling-v3.png','woman-v3.png','worker-v3.png']);assert.equal(portraitBoxes.size,1,'Proto portrait size varies between characters or scenes');
  // Reload at the ending and verify its completion, then enter replay without losing the completed main run.
  await page.reload({waitUntil:'domcontentloaded'});await page.evaluate(()=>resumeEra('proto-kingdoms'));assert.equal(await page.evaluate(()=>run().currentChapter),'proto-ch05');
- report.push({width,height,branch,scenes:scenes.size,exams:exams.size,portraits:portraitSources.size,portraitSize:[...portraitBoxes][0],pageErrors:errors,horizontalOverflow:maxOverflow});await page.close();
+ report.push({width,height,branch,prologueScenes:prologueScenes.size,historyScenes:historyScenes.size,exams:exams.size,portraits:portraitSources.size,portraitSize:[...portraitBoxes][0],pageErrors:errors,horizontalOverflow:maxOverflow});await page.close();
  }
  fs.writeFileSync('docs/proto-v4/qa/browser-results.json',JSON.stringify(report,null,2)+'\n');console.log('PASS browser full routes',JSON.stringify(report));
  }finally{await browser.close();server.kill();}

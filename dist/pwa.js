@@ -1,4 +1,5 @@
-if('serviceWorker' in navigator){
+const isNativeCapacitor=globalThis.Capacitor?.isNativePlatform?.()===true;
+if(!isNativeCapacitor&&'serviceWorker' in navigator){
   window.addEventListener('load',async()=>{
     try{
       const registration=await navigator.serviceWorker.register('/sw.js',{scope:'/',updateViaCache:'none'});

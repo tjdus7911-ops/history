@@ -38,7 +38,12 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
   if(!markRead(source))return false;
   phaseState(source).phase='finished';run().pending=null;clearQueue();
   if(source.completeChapter){finishChapter(state);save();navigate('complete');return true;}
-  run().storyId=source.nextStoryId;resetReading(STORIES[run().storyId],'main');enterStory();show();return true;
+  if(source.isPrologue&&source.nextStoryId===runtime.firstMainSceneId&&run().protoReplayScope==='prologue'){
+   restoreMainRun(state);save();navigate('era');toast('원삼국 프롤로그를 다시 봤어요.');return true;
+  }
+  run().storyId=source.nextStoryId;const next=STORIES[run().storyId];resetReading(next,'main');
+  if(source.protoNextDialogueCursor>1){const skipped=next.dialogues.slice(0,source.protoNextDialogueCursor-1);for(const line of skipped)if(!book().readLineIds.includes(line.lineId))book().readLineIds.push(line.lineId);run().dialogueCursor=source.protoNextDialogueCursor;run().dialogueSceneId=next.sceneId;}
+  enterStory();show();return true;
  }
  function sourceForQuestion(q){
   if(q?.protoExam)return q.protoExam;
@@ -182,11 +187,12 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
   return migrated;
  }
  function recoverIndependentResume(){
-  const previous=meta().eraProgress?.[progressKey];if(validResume(previous?.resume,book())&&!previous.resume.run.protoNeedsResumeRecovery)return false;
+  const previous=meta().eraProgress?.[progressKey];for(const value of [previous?.resume?.run,previous?.resume?.mainRun])api.redirectPristineEntry?.(value);if(validResume(previous?.resume,book())&&!previous.resume.run.protoNeedsResumeRecovery)return false;
   if(previous){archive(meta(),'invalid-resume','eraProgress.'+progressKey,previous);delete meta().eraProgress[progressKey];}
   const text=readStorage(storageKey);if(!text)return false;let stored;
   try{stored=JSON.parse(text);}catch{archive(meta(),'unreadable-json',storageKey,{raw:text});persistArchives();return false;}
   if(stored?.contentRevision===api.legacyContentVersion){const previousStored=stored,migrated=migrateIndependentStored(stored);if(migrated){archive(meta(),'content-revision-migration',storageKey,previousStored);stored=migrated;}}
+  for(const value of [stored?.progress?.resume?.run,stored?.progress?.resume?.mainRun])api.redirectPristineEntry?.(value);
   if(!object(stored)||stored.schemaVersion!==3||stored.eraId!==eraId||stored.contentVersion!==3||stored.contentRevision!==contentVersion){archive(meta(),'unknown-schema',storageKey,stored);persistArchives();return false;}
   if(!validBook(stored.meta?.protoRevisionBook)||!validResume(stored.progress?.resume,stored.meta.protoRevisionBook)){archive(meta(),'invalid-resume',storageKey,stored);persistArchives();return false;}
   meta().eraProgress||={};meta().eraProgress[progressKey]=copy(stored.progress);mergeRecoveryMeta(stored.meta);return true;
@@ -231,7 +237,7 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
  for(const key of [eraId,'proto-kingdoms-v2'])if(meta().eraProgress?.[key])archive(meta(),'legacy-content','eraProgress.'+key,meta().eraProgress[key]);
  const recoveryPending=run().protoNeedsResumeRecovery;recoverIndependentResume();
  if(recoveryPending&&validResume(meta().eraProgress?.[progressKey]?.resume,book())&&!meta().eraProgress[progressKey].resume.run.protoNeedsResumeRecovery){state.run=copy(meta().eraProgress[progressKey].resume.run);state.mainRun=copy(meta().eraProgress[progressKey].resume.mainRun);}
- delete run().protoNeedsResumeRecovery;book();identifyRun(run());identifyRun(state.mainRun);persistArchives();
+ delete run().protoNeedsResumeRecovery;book();identifyRun(run());identifyRun(state.mainRun);api.redirectPristineEntry?.(run());api.redirectPristineEntry?.(state.mainRun);persistArchives();
  const beforeCharacterStage=characterStage;
  characterStage=function(visible,source,complete,p,assetId,allEntries,cursor){
   if(!isProto(source))return beforeCharacterStage(visible,source,complete,p,assetId,allEntries,cursor);
@@ -266,13 +272,19 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
   STORIES[source.sceneId]=view;
   try{
    const atEnd=(current.phase==='join'||current.phase==='main'&&!source.protoCommon.length)&&run().dialogueCursor>=entries.length;
-   const recap=atEnd?'<aside class="proto-scene-recap" aria-label="이번 장면에서 배운 것"><div class="proto-recap-heading"><span class="proto-recap-icon" aria-hidden="true">◇</span><div><small>LEARNING SUMMARY</small><h3>이번 장면에서 배운 것</h3></div><em>'+source.protoSource.learning.length+'개 핵심</em></div><ul>'+source.protoSource.learning.map(item=>'<li>'+esc(item.keyword||item.title)+'</li>').join('')+'</ul></aside>':'';
+   const recap=atEnd&&!source.isPrologue?'<aside class="proto-scene-recap" aria-label="이번 장면에서 배운 것"><div class="proto-recap-heading"><span class="proto-recap-icon" aria-hidden="true">◇</span><div><small>LEARNING SUMMARY</small><h3>이번 장면에서 배운 것</h3></div><em>'+source.protoSource.learning.length+'개 핵심</em></div><ul>'+source.protoSource.learning.map(item=>'<li>'+esc(item.keyword||item.title)+'</li>').join('')+'</ul></aside>':'';
    let html=beforeGame().replace('class="game conversation-game ','class="game conversation-game proto-revision-game ').replace('data-illustration=','data-proto-country="'+esc(source.protoCountry)+'" data-proto-place="'+esc(source.protoPlace)+'" data-proto-scene="'+esc(source.sceneId)+'" data-proto-phase="'+current.phase+'" data-illustration=');
+   if(source.isPrologue)html=html.replace('proto-revision-game ','proto-revision-game proto-prologue-game ');
    if(recap)html=html.replace('proto-revision-game ','proto-revision-game proto-recap-ready ');
+   if(source.sceneId===runtime.firstMainSceneId&&current.phase==='main'){
+    const handoff=(runtime.sources.get(runtime.prologueSceneIds.at(-1))?.protoNextDialogueCursor||1)-1,shown=Math.max(1,(run().dialogueCursor||1)-handoff),total=Math.max(1,entries.length-handoff);
+    html=html.replace(/(<div class="dialogue-step"><span>)\d+ \/ \d+(<\/span>)/,'$1'+shown+' / '+total+'$2');
+   }
    html=html.replace('<small>'+esc(source.location)+'</small>','<div class="proto-place-label"><span>'+esc(source.protoCountry)+'</span><small>'+esc(source.protoPlace)+'</small></div>');
    if(current.phase==='outro'&&run().dialogueCursor===source.protoOutro.length)html=html.replace('proto-revision-game ','proto-revision-game proto-finale ');
    html=html.replace(/220년/g,'원삼국 시대');
-   html=html.replace('<section class="conversation-panel', '<div class="proto-scene-position">CH.'+String(CHAPTERS[source.chapterId].number).padStart(2,'0')+' '+esc(source.protoCountry)+' · SCENE '+String(source.sceneNumber).padStart(2,'0')+'/'+String(runtime.source.chapters.find(c=>c.number===Number(CHAPTERS[source.chapterId].number)).scenes.length).padStart(2,'0')+'</div><section class="conversation-panel');
+   const position=source.isPrologue?'PROLOGUE · SCENE '+String(source.sceneNumber).padStart(2,'0')+'/'+String(runtime.prologueSceneIds.length).padStart(2,'0'):'CH.'+String(CHAPTERS[source.chapterId].number).padStart(2,'0')+' '+esc(source.protoCountry)+' · SCENE '+String(source.sceneNumber).padStart(2,'0')+'/'+String(runtime.source.chapters.find(c=>c.number===Number(CHAPTERS[source.chapterId].number)).scenes.length).padStart(2,'0');
+   html=html.replace('<section class="conversation-panel', '<div class="proto-scene-position">'+position+'</div><section class="conversation-panel');
    if(current.phase==='choice')for(const choice of source.protoSource.choices)html=html.replace(esc(choice.label),rich(choice.label,choice.emphasis));
    if(recap)html=html.replace('</section><div class="chapter-progress">','</section>'+recap+'<div class="chapter-progress">');
    return html;
@@ -339,7 +351,11 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
   return learnedTopics().map(item=>[item.title,{questionId:'proto-learning-'+item.id,chapterId:STORIES[item.firstSceneId].chapterId,relatedSceneId:item.firstSceneId,concepts:[item.title],conceptIds:[item.id],protoLearningId:item.id,question:item.title}]);
  };
  const beforeEras=eras;
- eras=function(){const html=beforeEras();if(selectedEra!==eraId)return html;return html.replace(/data-story-memory="proto-learning-([^"]+)"/g,'data-proto-learning="$1"')+'<button class="secondary full proto-book-link" data-action="proto-recordbook">원삼국 기록책</button>';};
+ eras=function(){const html=beforeEras();if(selectedEra!==eraId)return html;const prologueRead=book().readSceneIds.includes(runtime.prologueSceneIds.at(-1));return html.replace(/data-story-memory="proto-learning-([^"]+)"/g,'data-proto-learning="$1"')+'<button class="secondary full proto-prologue-replay" data-action="proto-prologue-replay">'+(prologueRead?'프롤로그 다시 보기':'프롤로그 보기')+'</button><button class="secondary full proto-book-link" data-action="proto-recordbook">원삼국 기록책</button>';};
+ function replayPrologue(){
+  if(state.mainRun)restoreMainRun(state);
+  state.mainRun=copy(state.run);state.run=api.freshRun(true);state.run.mode='replay';state.run.replayChapterId=api.firstChapterId;state.run.protoReplayScope='prologue';selectedEra=eraId;meta().selectedLearningEra=eraId;modal=null;resultChapterId=null;save();screen='game';preloadScene(runtime.entrySceneId);enterStory();render();window.scrollTo(0,0);return true;
+ }
  const beforeExamList=eraExamList;
  eraExamList=function(id){if(id!==eraId)return beforeExamList(id);const questions=[...runtime.questionByOfficialId.values()].filter(canPractice);return '<div class="ed-exam-list">'+(questions.length?questions.map(q=>{const thumbnail=globalThis.OFFICIAL_EXAM_UI?.thumbnail?.(q)||q.sourceQuestionImage;return '<article class="ed-exam-row"><button data-proto-review="'+q.questionId+'"><img loading="lazy" decoding="async" src="'+esc(thumbnail)+'" alt="원본 문항 미리보기"><span><small>'+esc(q.protoExam.label)+'</small><b>'+esc(q.protoExam.editorialFocusSummary)+'</b><small>'+(book().answeredQuestionIds.includes(q.officialQuestionId)?'풀이 완료':'미풀이')+'</small></span><span>›</span></button></article>'}).join(''):'<p class="ed-empty">이야기에서 공통 학습을 마치면 관련 기출이 열립니다.</p>')+'</div>';};
  const beforeComplete=complete;
@@ -373,7 +389,8 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
   }
   if(modal?.type==='proto-recall'){
    const source=runtime.sources.get(modal.sceneId);if(!source||!book().readSceneIds.includes(source.sceneId))return '';
-   return '<div class="modal-overlay"><section class="modal proto-recordbook" role="dialog" aria-modal="true" aria-label="읽은 장면"><header><h2>'+esc(source.title)+'</h2><button data-action="proto-recordbook">기록책</button></header>'+[...source.protoSource.main,...source.protoSource.join].map(bubble).join('')+'</section></div>';
+   const start=source.sceneId===runtime.firstMainSceneId?(runtime.sources.get(runtime.prologueSceneIds.at(-1))?.protoNextDialogueCursor||1)-1:0,lines=[...source.protoSource.main.slice(start),...source.protoSource.join];
+   return '<div class="modal-overlay"><section class="modal proto-recordbook" role="dialog" aria-modal="true" aria-label="읽은 장면"><header><h2>'+esc(source.title)+'</h2><button data-action="proto-recordbook">기록책</button></header>'+lines.map(bubble).join('')+'</section></div>';
   }
   if(modal?.type==='proto-comparison'||modal?.type==='proto-independent'){
    const q=runtime.questionByOfficialId.get(modal.officialId),allowed=q&&book().answeredQuestionIds.includes(q.officialQuestionId)&&comparisonUnlocked();
@@ -387,6 +404,7 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
   const button=event.target.closest('button'),dataset=button?.dataset;
   const handled=callback=>{event.stopImmediatePropagation();event.preventDefault?.();if(button?.disabled)return;callback();};
   if(dataset?.action==='proto-recordbook')return handled(()=>{modal={type:'proto-recordbook',tab:'learning'};render();});
+  if(dataset?.action==='proto-prologue-replay')return handled(replayPrologue);
   if(dataset?.protoBookTab)return handled(()=>{modal={type:'proto-recordbook',tab:dataset.protoBookTab};render();});
   if(dataset?.protoLearning)return handled(()=>{modal={type:'proto-learning',learningId:dataset.protoLearning};render();});
   if(dataset?.protoRecall)return handled(()=>{if(book().readSceneIds.includes(dataset.protoRecall)){modal={type:'proto-recall',sceneId:dataset.protoRecall};render();}});
@@ -403,7 +421,7 @@ if(globalThis.CORE_APP_READY===true&&globalThis.ANCIENT_UI_READY===true&&globalT
   if(['advance-dialogue','next','result-next'].includes(dataset?.action)||!button&&event.target.closest('.conversation-game'))return handled(advance);
  },true);
  if(meta().protoReviewSession){const session=meta().protoReviewSession;if(isProto(QUESTIONS.find(q=>q.questionId===session.questionId))&&canPractice(session.questionId)){reviewQuestionId=session.questionId;reviewAnswer=session.answer;quizMode='review';screen='quiz';modal=null;}}
- globalThis.PROTO_REVISION_ACTIONS={book,phaseState,phaseEntries,advance,choose,checkpoint,markRead,advanceScene,canPractice,canRecall,learnedTopics,safeExplanation,comparisonUnlocked,submitAnswer,startReview,finishReview,currentSource,switchPhase};
+ globalThis.PROTO_REVISION_ACTIONS={book,phaseState,phaseEntries,advance,choose,checkpoint,markRead,advanceScene,canPractice,canRecall,learnedTopics,safeExplanation,comparisonUnlocked,submitAnswer,startReview,finishReview,replayPrologue,currentSource,switchPhase};
  globalThis.PROTO_ERA_ISOLATION={progressKey,storageKey,archiveStorageKey,validResume,recoverIndependentResume,persistIndependentResume};
  globalThis.PROTO_STORY_UI_READY=true;render();
 })();

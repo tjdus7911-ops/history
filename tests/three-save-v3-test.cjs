@@ -2,8 +2,10 @@
    in three-complete-test.cjs. No browser or legacy storage is overwritten. */
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
 let files=[...fs.readFileSync('dist/index.html','utf8').matchAll(/<script src="([^"]+)"/g)].map(m=>m[1]);
-const uiFiles=files.filter(file=>file!=='pwa.js');
-files=files.filter(f=>!['pwa.js','three-story-ui.js','three-service-ui.js'].includes(f));
+// Exercise preserved Three Kingdoms content below the production release gate.
+// Public entry blocking is verified in the dedicated access-policy harnesses.
+const uiFiles=files.filter(file=>!['pwa.js','story-release-policy.js'].includes(file));
+files=files.filter(f=>!['pwa.js','story-release-policy.js','three-story-ui.js','three-service-ui.js'].includes(f));
 // This standalone importer/save test can run while the entry point is being
 // wired. Once installed, the same authoritative script is read from index.html.
 if(!files.includes('three-exam-data.js'))files.splice(files.indexOf('three-story-data.js'),0,'three-exam-data.js');

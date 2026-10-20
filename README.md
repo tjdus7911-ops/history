@@ -29,7 +29,7 @@ npm run test:three:ui  # Playwright + Chromium이 있는 환경에서 실제 화
 
 ## 실행과 검증
 
-외부 패키지가 필요 없는 정적 앱입니다.
+웹 결과물은 정적 앱이며, Android 패키징 도구는 `devDependencies`로 고정되어 있습니다.
 
 ```bash
 npm start
@@ -64,3 +64,36 @@ npm run test:mobile
 ## PWA
 
 Vercel 정적 결과물은 dist이며 manifest와 루트 scope service worker를 제공합니다. Android 브라우저 메뉴의 앱 설치/홈 화면 추가, iPhone Safari 공유 메뉴의 홈 화면 추가를 사용할 수 있습니다. 앱 shell은 network-first로 갱신하며 이전 cache만 정리합니다. 게임 안 설치 UI는 추가하지 않습니다.
+
+## Capacitor Android
+
+Android 앱은 웹 사이트 URL을 띄우지 않고 `dist`에서 만든 네이티브 전용 웹 번들을 APK에 포함합니다. 대용량 삽화·기출 이미지는 웹 배포와 같은 불변 Git 스냅샷을 사용하며, 앱 셸·학습 데이터·저장 로직은 로컬에 포함됩니다. `capacitor.config.json`에는 개발 서버 URL을 두지 않습니다.
+
+Capacitor 8 빌드에는 Node.js 22 이상, JDK 21, Android SDK Platform 36이 필요합니다. 기존 웹 데이터 빌드에는 Python 3도 필요합니다. 이 저장소는 `minSdk 24`, `compileSdk/targetSdk 36`을 사용합니다.
+
+```powershell
+npm ci
+npm run android:build:debug
+```
+
+`python`이 PATH에 없으면 PowerShell에서 `$env:PYTHON='Python 3 실행 파일의 절대 경로'`를 먼저 지정합니다. Gradle 단위 테스트는 웹 빌드·동기화까지 포함하는 `npm run android:test`로 실행합니다. Android Studio에서는 먼저 `npm run android:sync`를 실행한 뒤 새 프로젝트를 만들지 말고 이 저장소의 `android` 폴더를 엽니다. Gradle JDK는 21로 선택합니다. 현재 최초 앱 ID `com.nuntteoboni.history`는 스토어 최초 등록 전에 최종 확정해야 합니다.
+
+개발 검토용 `three-preview.*` 진입점은 소스에는 보존하지만 Vercel 운영 산출물과 Android 번들에서는 제외합니다.
+
+서명된 출시용 AAB는 저장소 밖의 DPAPI 보호 설정과 업로드 키스토어를 사용해 다음처럼 빌드합니다. Play Console은 같은 `versionCode`의 번들을 다시 받지 않으므로 두 버전 값은 매 릴리스마다 명시하고, 특히 `versionCode`는 반드시 증가시킵니다.
+
+```powershell
+npm run android:build:release -- -VersionCode 2 -VersionName 1.0.1
+```
+
+표준 릴리스 명령은 웹 빌드와 Capacitor 동기화를 먼저 수행하고, 그 단계가 성공한 뒤에만 현재 Windows 사용자로 DPAPI 설정을 복호화해 Gradle 서명 환경 변수를 일시적으로 주입합니다. 키스토어, 비밀번호, `keystore.properties`는 저장소에 넣지 않습니다. 새 PC에서는 키스토어를 저장소 밖의 안전한 위치로 복원한 뒤 아래 명령을 한 번 실행합니다. 비밀번호는 보안 입력으로 받아 화면·명령 기록에 표시하지 않고, 새 Windows 사용자 전용 DPAPI 설정을 만듭니다. 현재 업로드 키는 저장소 비밀번호와 키 비밀번호가 같으므로 기본 동작을 사용합니다.
+
+```powershell
+npm run android:setup:release -- -StoreFile 'D:\secure\history-upload.jks'
+```
+
+그다음부터는 같은 `android:build:release` 명령을 사용합니다. 앱 ID `com.nuntteoboni.history`는 첫 Play artifact(내부 테스트 포함)를 올리기 전에 최종 확정해야 하며, 첫 업로드 후에는 같은 앱 업데이트에서 변경할 수 없습니다.
+
+DPAPI 설정은 해당 Windows 사용자에게만 유효하므로 휴대 가능한 백업이 아닙니다. 업로드 키스토어는 암호화된 외장 저장장치에 별도 보관하고, 비밀번호는 신뢰할 수 있는 비밀번호 관리자에 저장해야 새 PC에서도 업데이트할 수 있습니다. 비밀번호를 명령행·GitHub·문서·채팅에 적지 않습니다.
+
+웹 브라우저의 `localStorage`와 Android WebView 저장소는 서로 다른 영역입니다. 앱 내 진행·오답·족보 저장은 앱 재실행과 업데이트 뒤 유지되지만, 기존 웹 브라우저 데이터는 자동 이전되지 않으며 앱 삭제/데이터 삭제 시 사라집니다.

@@ -1,0 +1,130 @@
+apply plugin: 'com.android.application'
+
+def releaseSigningPropertiesFile = rootProject.file('keystore.properties')
+def releaseSigningProperties = new Properties()
+if (releaseSigningPropertiesFile.exists()) {
+    releaseSigningPropertiesFile.withInputStream { releaseSigningProperties.load(it) }
+}
+
+def releaseSigningValue = { String environmentName, String propertyName ->
+    def environmentValue = System.getenv(environmentName)
+    environmentValue ?: releaseSigningProperties.getProperty(propertyName)
+}
+def releaseStoreFilePath = releaseSigningValue('HISTORY_RELEASE_STORE_FILE', 'storeFile')
+def releaseStorePassword = releaseSigningValue('HISTORY_RELEASE_STORE_PASSWORD', 'storePassword')
+def releaseKeyAlias = releaseSigningValue('HISTORY_RELEASE_KEY_ALIAS', 'keyAlias')
+def releaseKeyPassword = releaseSigningValue('HISTORY_RELEASE_KEY_PASSWORD', 'keyPassword')
+def releaseStoreFile = releaseStoreFilePath ? rootProject.file(releaseStoreFilePath) : null
+def releaseSigningReady = releaseStoreFile && releaseStoreFile.exists() &&
+        releaseStorePassword && releaseKeyAlias && releaseKeyPassword
+def configuredVersionCode = (System.getenv('HISTORY_ANDROID_VERSION_CODE') ?: '1').toInteger()
+def configuredVersionName = System.getenv('HISTORY_ANDROID_VERSION_NAME') ?: '1.0'
+
+android {
+    namespace = "com.nuntteoboni.history"
+    compileSdk = rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId "com.nuntteoboni.history"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode configuredVersionCode
+        versionName configuredVersionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        aaptOptions {
+             // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
+             // Default: https://android.googlesource.com/platform/frameworks/base/+/282e181b58cf72b6ca770dc7ca5f91f135444502/tools/aapt/AaptAssets.cpp#61
+            ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
+        }
+    }
+    signingConfigs {
+        if (releaseSigningReady) {
+            release {
+                storeFile releaseStoreFile
+                storePassword releaseStorePassword
+                keyAlias releaseKeyAlias
+                keyPassword releaseKeyPassword
+            }
+        }
+    }
+    buildTypes {
+        release {
+            if (releaseSigningReady) {
+                signingConfig signingConfigs.release
+            }
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    flatDir{
+        dirs '../capacitor-cordova-android-plugins/src/main/libs', 'libs'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:$androidxCoordinatorLayoutVersion"
+    implementation "androidx.core:core-splashscreen:$coreSplashScreenVersion"
+    implementation project(':capacitor-android')
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
+    implementation project(':capacitor-cordova-android-plugins')
+}
+
+apply from: 'capacitor.build.gradle'
+
+def prepareCapacitorAssets = tasks.register('prepareCapacitorAssets', Exec) {
+    workingDir rootProject.projectDir.parentFile
+    commandLine(System.getenv('NODE_BINARY') ?: 'node', 'scripts/prepare-capacitor-android.cjs', 'before-build')
+}
+tasks.named('preBuild').configure {
+    dependsOn prepareCapacitorAssets
+}
+
+tasks.matching { it.name == 'preReleaseBuild' }.configureEach {
+    doFirst {
+        def missing = []
+        if (!releaseStoreFilePath) {
+            missing << 'HISTORY_RELEASE_STORE_FILE/storeFile'
+        } else if (!releaseStoreFile.exists()) {
+            missing << "keystore file not found: ${releaseStoreFile}"
+        }
+        if (!releaseStorePassword) missing << 'HISTORY_RELEASE_STORE_PASSWORD/storePassword'
+        if (!releaseKeyAlias) missing << 'HISTORY_RELEASE_KEY_ALIAS/keyAlias'
+        if (!releaseKeyPassword) missing << 'HISTORY_RELEASE_KEY_PASSWORD/keyPassword'
+        if (!missing.isEmpty()) {
+            throw new GradleException('Release signing is not configured. Missing: ' + missing.join(', '))
+        }
+    }
+}
+
+def conventionalBuildDirectory = file("$projectDir/build")
+if (buildDir.canonicalFile != conventionalBuildDirectory.canonicalFile) {
+    def exportDebugApk = tasks.register('exportDebugApk', Copy) {
+        from file("$buildDir/outputs/apk/debug/app-debug.apk")
+        into file("$conventionalBuildDirectory/outputs/apk/debug")
+    }
+    tasks.matching { it.name == 'assembleDebug' }.configureEach {
+        finalizedBy exportDebugApk
+    }
+    def exportReleaseBundle = tasks.register('exportReleaseBundle', Copy) {
+        from file("$buildDir/outputs/bundle/release/app-release.aab")
+        into file("$conventionalBuildDirectory/outputs/bundle/release")
+    }
+    tasks.matching { it.name == 'bundleRelease' }.configureEach {
+        finalizedBy exportReleaseBundle
+    }
+}
+
+try {
+    def servicesJSON = file('google-services.json')
+    if (servicesJSON.text) {
+        apply plugin: 'com.google.gms.google-services'
+    }
+} catch(Exception e) {
+    logger.info("google-services.json not found, google-services plugin not applied. Push Notifications won't work")
+}

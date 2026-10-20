@@ -1,0 +1,46 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.13.0'
+        classpath 'com.google.gms:google-services:4.4.4'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+apply from: "variables.gradle"
+
+// Gradle test workers on Windows receive their classpath through an argument
+// file. Keeping generated outputs outside a OneDrive/non-ASCII checkout avoids
+// Cloud Files reparse points and path-decoding failures without moving sources.
+def historyBuildRoot = System.getenv('HISTORY_ANDROID_BUILD_ROOT')
+if (!historyBuildRoot && System.getProperty('os.name').toLowerCase().contains('windows')) {
+    def publicDirectory = System.getenv('PUBLIC')
+    if (publicDirectory) {
+        def workspaceKey = Integer.toHexString(rootDir.canonicalPath.toLowerCase(java.util.Locale.ROOT).hashCode())
+        historyBuildRoot = new File(publicDirectory, "history-android-build/${workspaceKey}").absolutePath
+    }
+}
+ext.historyBuildRoot = historyBuildRoot
+
+allprojects {
+    if (rootProject.ext.historyBuildRoot) {
+        def projectKey = project.path == ':' ? 'root' : project.path.substring(1).replace(':', File.separator)
+        buildDir = new File(rootProject.ext.historyBuildRoot, projectKey)
+    }
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

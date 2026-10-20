@@ -2,9 +2,9 @@
 import re,json,hashlib,pathlib,sys
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 source=ROOT/'docs/proto-v4/manuscript.md'
-text=source.read_text(); sha=hashlib.sha256(text.encode()).hexdigest()
-cat={q['officialQuestionId']:q for q in json.loads((ROOT/'dist/official-exam-catalog.json').read_text())}
-supp=json.loads((ROOT/'docs/story-exams/supplement-60-basic.json').read_text())
+text=source.read_text(encoding='utf-8'); sha=hashlib.sha256(text.encode()).hexdigest()
+cat={q['officialQuestionId']:q for q in json.loads((ROOT/'dist/official-exam-catalog.json').read_text(encoding='utf-8'))}
+supp=json.loads((ROOT/'docs/story-exams/supplement-60-basic.json').read_text(encoding='utf-8'))
 def find_rows(v):
  if isinstance(v,dict):
   if 'officialQuestionId' in v: yield v
@@ -29,7 +29,7 @@ for block in re.split(r'^#### 제',text,flags=re.M)[1:]:
 assert len(questions)==26 and len({q['officialQuestionId'] for q in questions})==26
 # Separately reviewed official originals supplement, without changing the manuscript.
 additions_path=ROOT/'docs/proto-v4/exam-additions.json'
-additions_text=additions_path.read_text(); additions=json.loads(additions_text)
+additions_text=additions_path.read_text(encoding='utf-8'); additions=json.loads(additions_text)
 for q in questions:q['sceneKey']=additions.get('placementOverrides',{}).get(q['officialQuestionId'],q['sceneKey'])
 for q in additions['questions']:
  assert q['officialQuestionId'] not in {x['officialQuestionId'] for x in questions}
@@ -104,6 +104,6 @@ payload=json.dumps(out,ensure_ascii=False,indent=2)+'\n'
 js='/* Generated from docs/proto-v4/manuscript.md; do not edit. */\nconst PROTO_REVISION_SOURCE_SHA256='+json.dumps(sha)+';\nconst PROTO_REVISION_SOURCE='+payload.strip()+';\nconst PROTO_STORY_SCRIPT=PROTO_REVISION_SOURCE.chapters;\nconst PROTO_LEGACY_STUDY_QUESTIONS=[];\n'
 for path,data in [('dist/proto-story-script.json',payload),('dist/proto-story-script.js',js)]:
  p=ROOT/path
- if '--check' in sys.argv:assert p.read_text()==data,path+' is stale'
- else:p.write_text(data)
+ if '--check' in sys.argv:assert p.read_text(encoding='utf-8')==data,path+' is stale'
+ else:p.write_text(data, encoding='utf-8')
 print(json.dumps(out['counts'],ensure_ascii=False))

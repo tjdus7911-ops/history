@@ -55,7 +55,7 @@ teaser=function(){
 
 const modalHTMLBeforeAncient=modalHTML;
 modalHTML=function(){
- if(modal?.type==='ancient-restart'){const name=ancientSeasonName(modal.eraId);return `<div class="modal-overlay"><section class="modal confirm-modal" role="dialog" aria-modal="true" aria-label="${name}편 처음부터 다시 시작"><h2>${name}편을 처음부터 다시 시작할까요?</h2><p class="lead modal-copy">현재 ${name} 이야기를 CH.00 첫 장면으로 되돌립니다.<br>완료 챕터와 누적 기출·오답 기록은 보존됩니다.</p><div class="modal-actions"><button class="glass" data-action="close">취소</button><button class="primary" data-action="confirm-ancient-restart" data-era="${modal.eraId}">처음부터 다시하기</button></div></section></div>`;}
+ if(modal?.type==='ancient-restart'){const name=ancientSeasonName(modal.eraId),proto=modal.eraId==='proto-kingdoms',title=proto?'원삼국 프롤로그를 처음부터 다시 볼까요?':name+'편을 처음부터 다시 시작할까요?',start=proto?'프롤로그의 박물관 첫 장면':'CH.00 첫 장면';return `<div class="modal-overlay"><section class="modal confirm-modal" role="dialog" aria-modal="true" aria-label="${name}편 처음부터 다시 시작"><h2>${title}</h2><p class="lead modal-copy">현재 ${name} 이야기를 ${start}으로 되돌립니다.<br>완료 챕터와 누적 기출·오답 기록은 보존됩니다.</p><div class="modal-actions"><button class="glass" data-action="close">취소</button><button class="primary" data-action="confirm-ancient-restart" data-era="${modal.eraId}">처음부터 다시하기</button></div></section></div>`;}
  return modalHTMLBeforeAncient();
 };
 
@@ -64,7 +64,7 @@ document.addEventListener('click',event=>{
  if(button.dataset.action==='restart-episode'&&ancientIsEra(selectedEra)){event.stopImmediatePropagation();modal={type:'ancient-restart',eraId:selectedEra};render();return;}
  if(button.dataset.action==='confirm-ancient-restart'){
   event.stopImmediatePropagation();const eraId=button.dataset.era,first=eraChapters(eraId)[0];if(!first)return;
-  state.mainRun=null;state.run=INITIAL_RUN(first.chapterId);state.run.started=true;selectedEra=eraId;meta().selectedLearningEra=eraId;modal=null;save();play();
+  state.mainRun=null;state.run=eraId==='proto-kingdoms'&&globalThis.PROTO_SAVE_V3?globalThis.PROTO_SAVE_V3.freshRun(true):INITIAL_RUN(first.chapterId);state.run.started=true;selectedEra=eraId;meta().selectedLearningEra=eraId;modal=null;save();play();
  }
 },true);
 

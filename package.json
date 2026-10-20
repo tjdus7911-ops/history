@@ -2,10 +2,22 @@
   "name": "lived-history-goryeo",
   "version": "6.2.0",
   "private": true,
+  "engines": {
+    "node": ">=22"
+  },
   "description": "눈떠보니 한국사 — 역사 어드벤처와 실제 한능검 기출 학습",
   "scripts": {
     "start": "node serve.cjs",
     "build": "npm run build:choices && npm run build:ox && node tests/build.cjs",
+    "android:web": "npm run build && node scripts/prepare-android-web.cjs",
+    "android:sync": "npm run android:web && node scripts/prepare-capacitor-android.cjs before-sync && cap sync android",
+    "android:build:debug": "npm run android:sync && node scripts/run-android-gradle.cjs assembleDebug",
+    "android:setup:release": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/setup-android-release-signing.ps1",
+    "android:build:release": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-android-release.ps1",
+    "android:build:release:secure": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-android-release.ps1",
+    "android:test": "npm run android:sync && node scripts/run-android-gradle.cjs testDebugUnitTest",
+    "android:open": "cap open android",
+    "test:android": "node tests/production-entrypoints-test.cjs && node tests/android-package-test.cjs",
     "build:choices": "node scripts/build-official-choice-ui-data.cjs",
     "check:choices": "node scripts/build-official-choice-ui-data.cjs --check",
     "build:ox": "node scripts/build-ox-quiz-curation.cjs",
@@ -16,7 +28,7 @@
     "test:official-sources": "node tests/official-source-manifest-test.cjs && node tests/official-exam-statistics-test.cjs && node tests/official-choice-ui-data-test.cjs && node tests/official-choice-media-assets-test.cjs && node tests/official-content-crop-regression-test.cjs && node tests/service-worker-cache-test.cjs && node tests/vercel-detail-assets-test.cjs",
     "test:official-learning": "node tests/official-learning-continuation-test.cjs && node tests/official-exam-history-test.cjs && node tests/official-era-result-test.cjs",
     "test:nameplates": "node tests/dialogue-nameplate-test.cjs && node tests/dialogue-nameplate-browser-test.cjs",
-    "test": "node tests/mnemonic-data-test.cjs && node tests/verify.cjs && node tests/exam-bank-test.cjs && node tests/ui-test.cjs && node tests/dialogue-nameplate-test.cjs && node tests/ch02-ui-test.cjs && node tests/ch03-sourced-quiz-test.cjs && node tests/ch03-verified-contract-test.cjs && node tests/ch03-ui-test.cjs && node tests/ch03-character-slots-test.cjs && node tests/replay-ui-test.cjs && node tests/ch01-expansion-test.cjs && node tests/story-audit-test.cjs && node tests/ch01-reading-test.cjs && node tests/question-set-ui-test.cjs && node tests/late-goryeo-test.cjs && node tests/late-goryeo-ui-test.cjs && node tests/official-image-ui-test.cjs && node tests/ch05-refinement-test.cjs && node tests/ch06-background-test.cjs && node tests/ch06-quiz-test.cjs && node tests/v2-renewal-test.cjs && node tests/v2-preservation-test.cjs && node tests/character-art-style-test.cjs && node tests/v2-full-play-test.cjs --choice=0 && node tests/v2-full-play-test.cjs --choice=1 --wrong && node tests/v2-full-play-test.cjs --choice=2 && node tests/editorial-ui-test.cjs && node tests/season-framework-test.cjs && node tests/ancient-exam-analysis-test.cjs && node tests/exam-library-test.cjs && node tests/official-learning-continuation-test.cjs && node tests/official-exam-history-test.cjs && node tests/official-era-result-test.cjs && node tests/official-exam-timer-test.cjs && node tests/official-exam-cover-test.cjs && node tests/official-exam-pass-test.cjs && node tests/official-source-manifest-test.cjs && node tests/official-exam-statistics-test.cjs && node tests/official-choice-ui-data-test.cjs && node tests/official-choice-media-assets-test.cjs && node tests/official-content-crop-regression-test.cjs && node tests/service-worker-cache-test.cjs && node tests/official-explanation-test.cjs && node tests/official-weakness-review-test.cjs && node tests/official-canonical-qa-test.cjs && node tests/vercel-detail-assets-test.cjs && node tests/ox-quiz-test.cjs && node tests/ox-route-test.cjs && node tests/v2-full-play-test.cjs --editorial --choice=0 && node tests/v2-full-play-test.cjs --editorial --choice=1 --wrong && node tests/joseon-data-test.cjs && node tests/joseon-learning-qa-test.cjs && node tests/joseon-ui-test.cjs && node tests/joseon-character-state-test.cjs && node tests/joseon-full-play-test.cjs && npm run test:proto:revision && node tests/build.cjs && npm run test:three",
+    "test": "node tests/mnemonic-data-test.cjs && node tests/verify.cjs && node tests/exam-bank-test.cjs && node tests/ui-test.cjs && node tests/dialogue-nameplate-test.cjs && node tests/ch02-ui-test.cjs && node tests/ch03-sourced-quiz-test.cjs && node tests/ch03-verified-contract-test.cjs && node tests/ch03-ui-test.cjs && node tests/ch03-character-slots-test.cjs && node tests/replay-ui-test.cjs && node tests/ch01-expansion-test.cjs && node tests/story-audit-test.cjs && node tests/ch01-reading-test.cjs && node tests/question-set-ui-test.cjs && node tests/late-goryeo-test.cjs && node tests/late-goryeo-ui-test.cjs && node tests/official-image-ui-test.cjs && node tests/ch05-refinement-test.cjs && node tests/ch06-background-test.cjs && node tests/ch06-quiz-test.cjs && node tests/v2-renewal-test.cjs && node tests/v2-preservation-test.cjs && node tests/character-art-style-test.cjs && node tests/v2-full-play-test.cjs --choice=0 && node tests/v2-full-play-test.cjs --choice=1 --wrong && node tests/v2-full-play-test.cjs --choice=2 && node tests/editorial-ui-test.cjs && node tests/season-framework-test.cjs && node tests/ancient-exam-analysis-test.cjs && node tests/exam-library-test.cjs && node tests/official-learning-continuation-test.cjs && node tests/official-exam-history-test.cjs && node tests/official-era-result-test.cjs && node tests/official-exam-timer-test.cjs && node tests/official-exam-cover-test.cjs && node tests/official-exam-pass-test.cjs && node tests/official-source-manifest-test.cjs && node tests/official-exam-statistics-test.cjs && node tests/official-choice-ui-data-test.cjs && node tests/official-choice-media-assets-test.cjs && node tests/official-content-crop-regression-test.cjs && node tests/service-worker-cache-test.cjs && node tests/official-explanation-test.cjs && node tests/official-weakness-review-test.cjs && node tests/official-canonical-qa-test.cjs && node tests/vercel-detail-assets-test.cjs && node tests/ox-quiz-test.cjs && node tests/ox-route-test.cjs && node tests/v2-full-play-test.cjs --editorial --choice=0 && node tests/v2-full-play-test.cjs --editorial --choice=1 --wrong && node tests/joseon-data-test.cjs && node tests/joseon-learning-qa-test.cjs && node tests/joseon-ui-test.cjs && node tests/joseon-character-state-test.cjs && node tests/joseon-full-play-test.cjs && npm run test:proto:revision && node tests/build.cjs && npm run test:three && npm run test:android",
     "build:exam-stats": "python scripts/build-official-exam-statistics.py",
     "check:exam-stats": "python scripts/build-official-exam-statistics.py --check",
     "test:mobile": "node tests/ch01-mobile-test.cjs && node tests/mobile-full-play-test.cjs && node tests/ch03-character-mobile-test.cjs && node tests/late-goryeo-mobile-test.cjs && node tests/official-image-mobile-test.cjs && node tests/joseon-mobile-test.cjs && node tests/joseon-heroine-style-mobile-test.cjs && node tests/mnemonic-mobile-test.cjs && node tests/ox-quiz-mobile-test.cjs && node tests/official-exam-timer-mobile-test.cjs && node tests/official-exam-cbt-mobile-test.cjs && node tests/official-crop-regression-mobile-test.cjs && node tests/season-mobile-test.cjs && node tests/ancient-mobile-test.cjs && node tests/dialogue-nameplate-browser-test.cjs && node tests/official-catalog-enrichment-mobile-test.cjs && node tests/official-choice-fidelity-mobile-test.cjs && node tests/official-era-result-mobile-test.cjs && node tests/official-weakness-review-mobile-test.cjs",
@@ -33,7 +45,14 @@
     "test:chapter-access": "node tests/story-access-policy-test.cjs && node tests/three-support-npc-test.cjs",
     "test:proto:browser": "node tests/proto-character-layout-mobile-test.cjs && node tests/proto-v4-browser-test.cjs && node tests/proto-exam-repair-browser-test.cjs"
   },
+  "dependencies": {
+    "@capacitor/android": "8.5.3",
+    "@capacitor/app": "8.1.2",
+    "@capacitor/core": "8.5.3"
+  },
   "devDependencies": {
+    "@capacitor/cli": "8.5.3",
+    "esbuild": "0.28.2",
     "pngjs": "^7.0.0"
   }
 }

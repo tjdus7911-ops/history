@@ -13,6 +13,8 @@ tmp/
 # Keep local copies for authoring/QA, but do not put the 900+ MB asset tree back
 # into the application branch.
 /dist/assets/
+/android-web/
+/artifacts/
 
 # Generated only for Vercel preview UI verification.
 dist/ui-review.html

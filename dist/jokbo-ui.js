@@ -6,27 +6,42 @@
  const SAVE_KEY='history-jokbo:saved:v1',VIEW_KEY='history-jokbo:view:v1';
  const icon=(name)=>'<span class="jk-icon" aria-hidden="true"><img src="media/rev7/'+name+'.svg" alt=""></span>';
  const treeIcon='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M12 7H7v4M12 10h5v4M7 11H4v4M7 11h3M17 14h-3M17 14h3v4"/><circle cx="12" cy="4" r="1.5"/><circle cx="4" cy="16" r="1.5"/><circle cx="10" cy="12" r="1.5"/><circle cx="14" cy="15" r="1.5"/><circle cx="20" cy="19" r="1.5"/></svg>';
+ const backIcon='<svg class="jk-appbar-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M15.5 18 9.5 12l6-6"/></svg>';
  const quizIcon='<svg viewBox="0 0 24 24" class="ed-icon jk-nav-quiz" data-icon="answer-sheet" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="m8 9 1.5 1.5L12 7M15 8h2M8 14h4M15 13l3 3m0-3-3 3"/></svg>';
  const jokboIcon='<svg viewBox="0 0 24 24" class="ed-icon jk-nav-book" data-icon="summary-book" aria-hidden="true"><path d="M6 3.5h11.5A1.5 1.5 0 0 1 19 5v16H7a3 3 0 0 1 0-6h12"/><path d="M8 3.5V15M11 8h5M11 11h4"/></svg>';
  const memoryStore={data:new Map(),getItem(key){return this.data.get(key)||null},setItem(key,value){this.data.set(key,String(value))}};
- const localStore=typeof localStorage==='undefined'?memoryStore:localStorage,sessionStore=typeof sessionStorage==='undefined'?memoryStore:sessionStorage;
+ const localStore=typeof localStorage==='undefined'?memoryStore:localStorage,nativeStorage=globalThis.Capacitor?.isNativePlatform?.()===true,sessionStore=nativeStorage?localStore:typeof sessionStorage==='undefined'?memoryStore:sessionStorage;
  const readJSON=(storage,key,fallback)=>{try{return JSON.parse(storage.getItem(key))??fallback}catch{return fallback}};
  const storedSaved=readJSON(localStore,SAVE_KEY,[]),saved=new Set(Array.isArray(storedSaved)?storedSaved:[]);
  const initial=readJSON(sessionStore,VIEW_KEY,{});
  let activeEra=D.eras.some(e=>e.id===initial.activeEra)?initial.activeEra:'proto';
- let mode=initial.mode==='saved'?'saved':'all',query=String(initial.query||''),searchOpen=Boolean(initial.searchOpen||query),detailId=null,compareId=null,compareTopic=0;
+ let listScrollY=Number(initial.scrollY)||0;
+ let mode=initial.mode==='saved'?'saved':'all',query=String(initial.query||''),searchOpen=Boolean(initial.searchOpen||query),groupId=null,groupScrollY=0,detailId=null,detailParentGroupId=null,compareId=null,compareTopic=0,restoringScroll=false,scrollRestoreToken=0;
  const norm=value=>String(value||'').toLocaleLowerCase('ko-KR').replace(/\s+/g,'');
  const eraSource={prehistoric:'ancient',proto:'ancient',three:'ancient','north-south':'ancient',goryeo:'goryeo',joseon:'joseon',opening:'empire',colonial:'occupation',modern:'republic'};
  const sourceById=new Map((globalThis.OFFICIAL_EXAM_SOURCE_RECORDS||[]).map(row=>[row.officialQuestionId,row]));
  const explanationById=new Map((globalThis.OFFICIAL_EXAM_EXPLANATION_RECORDS||[]).map(row=>[row.officialQuestionId,row]));
  const keywordById=new Map(D.keywords.map(k=>[k.id,k]));
+ const groupById=new Map(D.groups.map(g=>[g.id,g]));
  const comparisonById=new Map(D.comparisons.map(c=>[c.id,c]));
  const eraById=new Map(D.eras.map(e=>[e.id,e]));
+ const pageScrollY=()=>Number(document.scrollingElement?.scrollTop??window.scrollY)||0;
+ const scrollPage=top=>{const y=Number(top)||0;window.scrollTo(0,y);if(document.scrollingElement&&Math.abs(document.scrollingElement.scrollTop-y)>1)document.scrollingElement.scrollTop=y;};
+ function restorePageScroll(top){
+  const y=Number(top)||0,token=++scrollRestoreToken;restoringScroll=true;
+  const finish=()=>{if(token!==scrollRestoreToken)return;scrollPage(y);restoringScroll=false;};
+  if(typeof requestAnimationFrame==='function')requestAnimationFrame(()=>{if(token!==scrollRestoreToken)return;scrollPage(y);requestAnimationFrame(finish);});
+  else setTimeout(finish,0);
+ }
 
  function saveView(extra={}){
-  const payload={activeEra,mode,query,searchOpen,scrollY:screen==='jokbo'?window.scrollY:Number(initial.scrollY||0),...extra};
+  const previous=readJSON(sessionStore,VIEW_KEY,{});
+  if(screen==='jokbo'&&!restoringScroll)listScrollY=pageScrollY();
+  if(Object.hasOwn(extra,'scrollY'))listScrollY=Number(extra.scrollY)||0;
+  const payload={...previous,activeEra,mode,query,searchOpen,...extra,scrollY:listScrollY};
   try{sessionStore.setItem(VIEW_KEY,JSON.stringify(payload))}catch{}
  }
+ function restoreListScroll(){restorePageScroll(listScrollY);}
  function saveKeywords(){try{localStore.setItem(SAVE_KEY,JSON.stringify([...saved]))}catch{toast('저장 공간을 사용할 수 없어요.')}}
  function fullText(k){
   const summary=(k.summaryRows||[]).flatMap(row=>[row.label,row.value]);
@@ -51,14 +66,19 @@
   const ids=[];for(const keyword of D.keywords.filter(k=>k.eraId===eraId))for(const id of directExamMatches(keyword))if(!ids.includes(id))ids.push(id);
   return ids;
  }
+ function groupKeywords(group){return (group?.keywords||[]).map(keyword=>keywordById.get(keyword.id)).filter(Boolean);}
+ function groupExamIds(group){
+  const ids=[];for(const keyword of groupKeywords(group))for(const id of directExamMatches(keyword))if(!ids.includes(id))ids.push(id);
+  return ids;
+ }
  function examLabel(id){const s=sourceById.get(id),e=explanationById.get(id);return s&&e?{meta:'제 '+s.examRound+'회 '+s.examLevel+' · '+s.questionNumber+'번',title:e.question||e.clue||'실제 기출문제'}:null;}
  function startExamIds(ids,eraId){
   const entries=ids.map(id=>exams.entry(id)).filter(Boolean);if(!entries.length)return toast('연결된 기출을 준비하고 있어요.');
-  saveView({scrollY:window.scrollY,returnFromExam:true});
+  saveView({returnFromExam:true});
   exams.start(entries,'learn',{examTab:'era',examEra:eraSource[eraId]||'ancient',examLevel:'all',scope:'jokbo'});
   routes.writeRoute('exam-library');
  }
- function appbar(title,back='jokbo'){return '<header class="jk-appbar"><button data-jk-back="'+back+'" aria-label="뒤로 가기">'+icon('back')+'</button><h1>'+esc(title)+'</h1><span></span></header>';}
+ function appbar(title,back='jokbo'){return '<header class="jk-appbar"><button type="button" class="jk-appbar-back" data-jk-back="'+back+'" aria-label="뒤로가기">'+backIcon+'</button><h1>'+esc(title)+'</h1><span aria-hidden="true"></span></header>';}
  function searchButton(){return '<button class="jk-search-button" data-jk-search aria-label="족보 검색" aria-expanded="'+searchOpen+'">'+icon(searchOpen?'close':'search')+'</button>';}
  function searchBox(){return !searchOpen?'':'<div class="jk-search"><span>'+icon('search')+'</span><input data-jk-query type="search" value="'+esc(query)+'" placeholder="키워드·국가·왕·인물·대표 단서 검색" aria-label="족보 검색어"><button data-jk-search-clear aria-label="검색어 지우기">'+(query?'×':'')+'</button></div>';}
  function eraTabs(){return '<div class="jk-era-tabs" role="tablist" aria-label="시대 선택">'+D.eras.map(e=>'<button role="tab" data-jk-era="'+e.id+'" aria-selected="'+(activeEra===e.id)+'"><span>'+esc(e.label)+'</span></button>').join('')+'</div>';}
@@ -80,7 +100,7 @@
  }).join('');}
  function groupMarkup(group,items,index,searching){
   const number=String(index+1).padStart(2,'0'),title=group.title.replace(/^\d+\s*/,''),era=eraById.get(group.eraId);
-  return '<article class="jk-group"><header><div class="jk-group-title"><span class="jk-group-number">'+number+'</span><h3>'+esc(title)+'</h3>'+(searching?'<span class="jk-group-era">'+esc(era.label)+'</span>':'')+'</div><button class="jk-group-detail" data-jk-group="'+group.id+'"><span>자세히 보기</span><span class="jk-group-arrow" aria-hidden="true">→</span></button></header>'+(group.subtitle?'<p class="jk-group-subtitle">'+esc(group.subtitle)+'</p>':'')+'<div class="jk-keywords">'+keywordRows(group,items)+'</div></article>';
+  return '<article class="jk-group"><header><div class="jk-group-title"><span class="jk-group-number">'+number+'</span><h3>'+esc(title)+'</h3>'+(searching?'<span class="jk-group-era">'+esc(era.label)+'</span>':'')+'</div><button class="jk-group-detail" data-jk-group="'+group.id+'" aria-label="'+esc(title)+' 전체 핵심 정리 보기"><span>자세히 보기</span><span class="jk-group-arrow" aria-hidden="true">→</span></button></header>'+(group.subtitle?'<p class="jk-group-subtitle">'+esc(group.subtitle)+'</p>':'')+'<div class="jk-keywords">'+keywordRows(group,items)+'</div></article>';
  }
  function emptyMarkup(){
   return '<div class="jk-empty"><span>'+icon('search')+'</span><h2>검색 결과가 없어요</h2><p>띄어쓰기를 바꾸거나 더 짧은 단어로 검색해 보세요.</p><button data-jk-search-clear>검색어 지우기</button></div>';
@@ -106,9 +126,17 @@
    +(mode==='saved'?'<section class="jk-summary-head"><h2>'+esc(era.label)+' 저장 키워드</h2><p>이 시대에서 저장한 핵심 개념만 모았어요.</p></section>'+savedList():'<section class="jk-summary-head">'+(searching?'<small class="jk-summary-kicker">검색 결과</small>':'')+'<h2>'+esc(searching?'“'+query+'” 검색 결과':era.title)+'</h2><p>'+esc(searching?'전 시대의 국가·왕·인물·단서를 찾았어요.':era.subtitle)+'</p></section><div class="jk-groups">'+(rows.length?rows.map((row,i)=>groupMarkup(row.group,row.items,i,searching)).join(''):emptyMarkup())+'</div>'+(searching?'':compareLinks(activeEra))
    +(searching?'':'<section class="jk-exam-cta"><div><small>RELATED QUESTIONS</small><h2>이 시대 관련 기출 풀기</h2><p>'+related.length+'개의 검증된 실제 기출이 핵심 키워드와 연결되어 있어요.</p></div><button data-jk-era-exams="'+activeEra+'" '+(related.length?'':'disabled')+'>'+(related.length?'기출 '+Math.min(20,related.length)+'문제 풀기':'연결된 기출을 준비하고 있어요')+'</button></section>'))+'</section>';
  }
+ function groupKeywordMarkup(group,k){
+  const rows=k.summaryRows?.length?k.summaryRows:[{label:k.label,value:k.value}],point=k.groupPoint||k.bullets?.[0]||k.definition;
+  return '<article class="jk-group-keyword-card" data-jk-group-keyword-id="'+k.id+'"><div class="jk-group-keyword-facts">'+rows.map(row=>'<div class="jk-group-keyword-fact"><span>'+esc(row.label)+'</span><strong aria-label="'+esc(row.value)+'">'+semanticValue(row.value)+'</strong></div>').join('')+'</div><p class="jk-group-keyword-description">'+esc(k.definition)+'</p><div class="jk-group-keyword-point"><small>시험 포인트</small><p>'+esc(point)+'</p></div>'+(k.source?'<p class="jk-group-keyword-source">사실 확인: <a href="'+esc(k.source.url)+'" target="_blank" rel="noreferrer">'+esc(k.source.label)+' ↗</a></p>':'')+'<div class="jk-group-keyword-actions"><button class="jk-group-save '+(saved.has(k.id)?'is-saved':'')+'" data-jk-save="'+k.id+'" aria-label="'+esc(k.value)+' 키워드 '+(saved.has(k.id)?'저장 해제':'저장')+'">'+icon(saved.has(k.id)?'bookmark-filled':'bookmark')+' <span>'+(saved.has(k.id)?'저장됨':'키워드 저장')+'</span></button><button class="jk-group-concept" data-jk-detail="'+k.id+'" data-jk-detail-parent="'+group.id+'" aria-label="'+esc(k.value)+' 개념 상세 보기"><span>개념 상세</span><i aria-hidden="true">→</i></button></div></article>';
+ }
+ function groupPage(){
+  const group=groupById.get(groupId);if(!group)return mainPage();const era=eraById.get(group.eraId),title=group.title.replace(/^\d+\s*/,''),keywords=groupKeywords(group),ids=groupExamIds(group);
+  return '<section class="jk-page jk-group-page" data-page="jokbo-group">'+appbar('전체 핵심 정리')+'<header class="jk-group-overview"><small>'+esc(era.label)+'</small><h2>'+esc(title)+' 핵심 정리</h2><p>요약에 나온 핵심을 의미와 시험 단서까지 한 번에 확인해요.</p></header><div class="jk-group-keyword-list">'+keywords.map(k=>groupKeywordMarkup(group,k)).join('')+'</div><section class="jk-detail-section jk-related jk-group-related"><div><h2>관련 실제 기출</h2><small>이 그룹의 키워드와 직접 연결된 문제 · 중복 제외</small></div>'+(ids.length?ids.map(id=>{const row=examLabel(id);return row?'<article><span><small>'+esc(row.meta)+'</small><b>'+esc(row.title)+'</b></span></article>':'';}).join(''):'<div class="jk-empty-inline">연결된 기출을 준비하고 있어요</div>')+'<button class="jk-primary" data-jk-group-exams="'+group.id+'" '+(ids.length?'':'disabled')+'>'+(ids.length?'관련 기출 '+ids.length+'문제 풀기':'연결된 기출을 준비하고 있어요')+'</button></section></section>';
+ }
  function detailPage(){
   const k=keywordById.get(detailId);if(!k)return mainPage();const era=eraById.get(k.eraId),ids=directExamMatches(k),comparison=comparisonById.get(k.comparisonId);
-  return '<section class="jk-page jk-detail" data-page="jokbo-detail">'+appbar('개념 상세')+'<header class="jk-detail-head"><div class="jk-detail-context jk-tags"><em>'+esc(era.label)+'</em><em>'+esc(k.groupTitle.replace(/^\d+\s*/,''))+'</em><em>'+esc(k.label)+'</em></div><h2 class="jk-detail-title">'+esc(k.value)+'</h2><p class="jk-detail-description">'+esc(k.definition)+'</p><button class="jk-save '+(saved.has(k.id)?'is-saved':'')+'" data-jk-save="'+k.id+'">'+icon(saved.has(k.id)?'bookmark-filled':'bookmark')+' '+(saved.has(k.id)?'저장됨':'키워드 저장')+'</button></header>'
+  return '<section class="jk-page jk-detail" data-page="jokbo-detail">'+appbar('개념 상세',detailParentGroupId?'group:'+detailParentGroupId:'jokbo')+'<header class="jk-detail-head"><div class="jk-detail-context jk-tags"><em>'+esc(era.label)+'</em><em>'+esc(k.groupTitle.replace(/^\d+\s*/,''))+'</em><em>'+esc(k.label)+'</em></div><h2 class="jk-detail-title">'+esc(k.value)+'</h2><p class="jk-detail-description">'+esc(k.definition)+'</p><button class="jk-save '+(saved.has(k.id)?'is-saved':'')+'" data-jk-save="'+k.id+'">'+icon(saved.has(k.id)?'bookmark-filled':'bookmark')+' '+(saved.has(k.id)?'저장됨':'키워드 저장')+'</button></header>'
    +'<section class="jk-detail-section"><h2>핵심 학습 내용</h2><ol>'+k.bullets.map((b,i)=>'<li><span>'+String(i+1).padStart(2,'0')+'</span><p>'+esc(b)+'</p></li>').join('')+'</ol></section>'
    +'<section class="jk-clue"><small>대표 단서</small><p>'+esc((k.examTerms||[]).join(' · ')||k.value)+'</p></section>'
    +(comparison?'<section class="jk-detail-section"><h2>함께 구분할 개념</h2><button class="jk-compare-link" data-jk-compare="'+comparison.id+'"><span><b>'+esc(comparison.title)+'</b><small>비슷한 개념의 차이를 나란히 확인해요.</small></span><i>›</i></button></section>':'')
@@ -128,19 +156,21 @@
   return '<div class="shell editorial-shell six-nav '+(current==='jokbo'?'jokbo-shell':'')+'"><aside class="sidebar"><div class="brand">눈떠보니 한국사<small>역사를 살고, 기출로 기억하다</small></div><nav class="nav" aria-label="주 메뉴">'+nav.map(([id,label,image])=>'<button data-nav="'+id+'" '+(current===id?'aria-current="page"':'')+' class="'+(current===id?'active':'')+'">'+image+'<span>'+label+'</span></button>').join('')+'</nav></aside><main class="main ed-screen ed-'+screen+'">'+content+'</main></div>'+(modal?modalHTML():'');
  };
  const contentBefore=renderContent;
- renderContent=function(){if(screen==='jokbo')return mainPage();if(screen==='jokbo-detail')return detailPage();if(screen==='jokbo-compare')return comparePage();return contentBefore();};
+ renderContent=function(){if(screen==='jokbo')return mainPage();if(screen==='jokbo-group')return groupPage();if(screen==='jokbo-detail')return detailPage();if(screen==='jokbo-compare')return comparePage();return contentBefore();};
  routes.addRoute('jokbo');
+ for(const g of D.groups)routes.addRoute('jokbo/group/'+g.id);
  for(const k of D.keywords)routes.addRoute('jokbo/detail/'+k.id);
  for(const c of D.comparisons)routes.addRoute('jokbo/compare/'+c.id);
  const applyBefore=routes.applyRoute;
  routes.setApplyRoute(function(route=routes.readRoute()){
-  if(route==='jokbo'){screen='jokbo';detailId=null;compareId=null;modal=null;render();revealActiveEraTab();setTimeout(()=>window.scrollTo(0,Number(readJSON(sessionStore,VIEW_KEY,{}).scrollY)||0),0);return route;}
-  if(route?.startsWith('jokbo/detail/')){detailId=decodeURIComponent(route.slice('jokbo/detail/'.length));screen='jokbo-detail';modal=null;render();window.scrollTo(0,0);return route;}
+  if(route==='jokbo'){restoringScroll=true;screen='jokbo';groupId=null;detailId=null;detailParentGroupId=null;compareId=null;modal=null;render();revealActiveEraTab();restoreListScroll();return route;}
+  if(route?.startsWith('jokbo/group/')){groupId=decodeURIComponent(route.slice('jokbo/group/'.length));const group=groupById.get(groupId);if(!group)return applyBefore('jokbo');activeEra=group.eraId;detailId=null;detailParentGroupId=null;compareId=null;screen='jokbo-group';modal=null;render();window.scrollTo(0,0);return route;}
+  if(route?.startsWith('jokbo/detail/')){detailId=decodeURIComponent(route.slice('jokbo/detail/'.length));const parent=groupId&&groupById.get(groupId)?.keywords.some(k=>k.id===detailId)?groupId:null;detailParentGroupId=parent;screen='jokbo-detail';modal=null;render();window.scrollTo(0,0);return route;}
   if(route?.startsWith('jokbo/compare/')){compareId=decodeURIComponent(route.slice('jokbo/compare/'.length));compareTopic=0;screen='jokbo-compare';modal=null;render();window.scrollTo(0,0);return route;}
   return applyBefore(route);
  });
  const navigateBefore=navigate;
- navigate=function(to){if(to==='jokbo'){saveView();screen='jokbo';detailId=null;compareId=null;modal=null;render();revealActiveEraTab();routes.writeRoute('jokbo');setTimeout(()=>window.scrollTo(0,Number(readJSON(sessionStore,VIEW_KEY,{}).scrollY)||0),0);return;}return navigateBefore(to);};
+ navigate=function(to){if(to==='jokbo'){saveView();screen='jokbo';groupId=null;detailId=null;detailParentGroupId=null;compareId=null;modal=null;render();revealActiveEraTab();routes.writeRoute('jokbo');restoreListScroll();return;}return navigateBefore(to);};
 
  document.addEventListener('click',function(event){
   const b=event.target.closest('button');if(!b||b.disabled)return;const d=b.dataset;
@@ -149,23 +179,28 @@
   if(d.jkSearchClear!==undefined){event.stopImmediatePropagation();query='';saveView({scrollY:0});render();revealActiveEraTab();setTimeout(()=>document.querySelector('[data-jk-query]')?.focus(),0);return;}
   if(d.jkEra){event.stopImmediatePropagation();activeEra=d.jkEra;query='';searchOpen=false;saveView({scrollY:0});render();revealActiveEraTab();window.scrollTo(0,0);return;}
   if(d.jkMode){event.stopImmediatePropagation();mode=d.jkMode;saveView({scrollY:0});render();revealActiveEraTab();window.scrollTo(0,0);return;}
-  if(d.jkDetail){event.stopImmediatePropagation();saveView({scrollY:window.scrollY});detailId=d.jkDetail;screen='jokbo-detail';routes.writeRoute('jokbo/detail/'+encodeURIComponent(detailId));render();window.scrollTo(0,0);return;}
-  if(d.jkGroup){event.stopImmediatePropagation();const first=D.groups.find(g=>g.id===d.jkGroup)?.keywords[0];if(first){saveView({scrollY:window.scrollY});detailId=first.id;screen='jokbo-detail';routes.writeRoute('jokbo/detail/'+detailId);render();window.scrollTo(0,0);}return;}
+  if(d.jkDetail){event.stopImmediatePropagation();if(screen==='jokbo')saveView({scrollY:pageScrollY()});detailParentGroupId=d.jkDetailParent||null;if(detailParentGroupId)groupScrollY=pageScrollY();detailId=d.jkDetail;screen='jokbo-detail';routes.writeRoute('jokbo/detail/'+encodeURIComponent(detailId));render();window.scrollTo(0,0);return;}
+  if(d.jkGroup){event.stopImmediatePropagation();const group=groupById.get(d.jkGroup);if(group){saveView({scrollY:pageScrollY()});groupId=group.id;groupScrollY=0;detailId=null;detailParentGroupId=null;screen='jokbo-group';routes.writeRoute('jokbo/group/'+encodeURIComponent(groupId));render();window.scrollTo(0,0);}return;}
   if(d.jkSave){event.stopImmediatePropagation();saved.has(d.jkSave)?saved.delete(d.jkSave):saved.add(d.jkSave);saveKeywords();render();if(screen==='jokbo')revealActiveEraTab();return;}
-  if(d.jkCompare){event.stopImmediatePropagation();saveView({scrollY:window.scrollY});compareId=d.jkCompare;compareTopic=0;screen='jokbo-compare';routes.writeRoute('jokbo/compare/'+compareId);render();window.scrollTo(0,0);return;}
+  if(d.jkCompare){event.stopImmediatePropagation();saveView();compareId=d.jkCompare;compareTopic=0;screen='jokbo-compare';routes.writeRoute('jokbo/compare/'+compareId);render();window.scrollTo(0,0);return;}
   if(d.jkCompareTopic!==undefined){event.stopImmediatePropagation();compareTopic=Number(d.jkCompareTopic)||0;render();return;}
-  if(d.jkBack){event.stopImmediatePropagation();if(d.jkBack==='jokbo'){screen='jokbo';detailId=null;compareId=null;routes.writeRoute('jokbo');render();revealActiveEraTab();setTimeout(()=>window.scrollTo(0,Number(readJSON(sessionStore,VIEW_KEY,{}).scrollY)||0),0);}return;}
+  if(d.jkBack){event.stopImmediatePropagation();if(d.jkBack.startsWith('group:')){groupId=d.jkBack.slice('group:'.length);detailId=null;detailParentGroupId=null;screen='jokbo-group';routes.writeRoute('jokbo/group/'+encodeURIComponent(groupId));render();restorePageScroll(groupScrollY);return;}if(d.jkBack==='jokbo'){restoringScroll=true;screen='jokbo';groupId=null;detailId=null;detailParentGroupId=null;compareId=null;routes.writeRoute('jokbo');render();revealActiveEraTab();restoreListScroll();}return;}
   if(d.jkKeywordExams){event.stopImmediatePropagation();const k=keywordById.get(d.jkKeywordExams);if(k)startExamIds(directExamMatches(k),k.eraId);return;}
+  if(d.jkGroupExams){event.stopImmediatePropagation();const group=groupById.get(d.jkGroupExams);if(group)startExamIds(groupExamIds(group),group.eraId);return;}
   if(d.jkEraExams){event.stopImmediatePropagation();startExamIds(eraExamIds(d.jkEraExams).slice(0,20),d.jkEraExams);return;}
  },true);
  document.addEventListener('input',event=>{if(event.target.matches('[data-jk-query]')){query=event.target.value;saveView({scrollY:0});render();revealActiveEraTab();const input=document.querySelector('[data-jk-query]');input?.focus();input?.setSelectionRange(query.length,query.length);}},true);
- let scrollTimer=0;if(typeof window?.addEventListener==='function')window.addEventListener('scroll',()=>{if(screen!=='jokbo')return;clearTimeout(scrollTimer);scrollTimer=setTimeout(()=>saveView({scrollY:window.scrollY}),80)},{passive:true});
+ let scrollTimer=0;if(typeof window?.addEventListener==='function')window.addEventListener('scroll',()=>{if(screen!=='jokbo'||restoringScroll)return;clearTimeout(scrollTimer);scrollTimer=setTimeout(()=>{if(screen==='jokbo'&&!restoringScroll)saveView({scrollY:pageScrollY()})},80)},{passive:true});
  const rawRoute=(globalThis.location?.hash||'').replace(/^#/,'');if(rawRoute==='jokbo'||rawRoute.startsWith('jokbo/'))routes.applyRoute(rawRoute);else render();
  globalThis.JOKBO_API=Object.freeze({
   count:()=>D.keywords.length,
   countsByEra:()=>Object.fromEntries(D.eras.map(e=>[e.id,D.keywords.filter(k=>k.eraId===e.id).length])),
   linkedExamIds:()=>[...new Set(D.keywords.flatMap(directExamMatches))],
   linkedByEra:()=>Object.fromEntries(D.eras.map(e=>[e.id,eraExamIds(e.id)])),
+  groupKeywordIds:id=>groupKeywords(groupById.get(id)).map(k=>k.id),
+  groupExamIds:id=>groupExamIds(groupById.get(id)),
+  state:()=>({screen,activeEra,listScrollY,groupId,groupScrollY,detailId,detailParentGroupId}),
+  view:()=>({...readJSON(sessionStore,VIEW_KEY,{})}),
   saved:()=>[...saved],
   search:value=>D.keywords.filter(k=>{const before=query;query=String(value||'');const result=searchMatches(k);query=before;return result;})
  });

@@ -40,18 +40,28 @@ assert(ui.includes("proto-revision-game proto-recap-ready ")&&/\.proto-recap-rea
 
 const game=load();game.run("resumeEra('proto-kingdoms')");
 const stageCharacters=()=>[...game.html().matchAll(/<img class="stage-character[^>]*data-character-id="([^"]+)"/g)].map(match=>match[1]);
-game.run("run().storyId='proto_ch01_s1';run().dialogueSceneId='proto_ch01_s1';run().dialogueCursor=3;screen='game';render()");
-assert.deepEqual(stageCharacters(),['proto_modern'],'the first visible monologue must show only the protagonist');
-game.run('run().dialogueCursor=4;render()');
-assert.deepEqual(stageCharacters(),['proto_modern'],'the complete opening monologue must remain protagonist-only');
+assert.equal(game.run('run().storyId'),'proto_prologue_museum');
+assert(game.html().includes('data-illustration="proto-v4-modern-museum"'),'the first rendered screen must use the museum illustration');
+assert(game.html().includes('PROLOGUE · SCENE 01/04'),'the museum scene is not labelled as the prologue');
+assert(!game.html().includes('proto-scene-recap'),'history learning recap leaked into the museum prologue');
+assert.deepEqual(stageCharacters(),['proto_sibling','proto_modern'],'the protagonist and sibling must begin together in the museum');
+game.run("run().storyId='proto_prologue_separation';run().dialogueSceneId='proto_prologue_separation';run().dialogueCursor=1;run().protoStoryState.scenes.proto_prologue_separation={phase:'main',choiceIndex:null};screen='game';render()");
+assert.deepEqual(stageCharacters(),['proto_modern'],'the sibling must no longer be on stage after the separation');
+game.run("run().storyId='proto_prologue_timeslip';run().dialogueSceneId='proto_prologue_timeslip';run().dialogueCursor=1;run().protoStoryState.scenes.proto_prologue_timeslip={phase:'main',choiceIndex:null};render()");
+assert.deepEqual(stageCharacters(),[],'the blackout time-slip should not display a portrait');
+game.run("run().storyId='proto_prologue_buyeo_field';run().dialogueSceneId='proto_prologue_buyeo_field';run().dialogueCursor=1;run().protoStoryState.scenes.proto_prologue_buyeo_field={phase:'main',choiceIndex:null};render()");
+assert(game.html().includes('data-illustration="proto-v4-buyeo-village"'),'the first historical backdrop must be the Buyeo winter field');
+assert.deepEqual(stageCharacters(),['proto_modern'],'the protagonist must wake alone in the field');
 game.run('run().dialogueCursor=5;render()');
 assert.deepEqual(stageCharacters(),['proto_naru','proto_modern'],'Naru must enter only on the first NPC dialogue');
 assert.equal(game.run('CHARACTER_RENDER_PROFILES.characters.proto_modern.scale'),1.18);
 assert(Object.keys(game.copy('PROTO_NAMES')).every(id=>game.run(`CHARACTER_RENDER_PROFILES.characters[${JSON.stringify(id)}].scale`)===1.18),'every Proto protagonist and NPC must use the same scale');
-let guard=0;
-while(!(game.run("PROTO_REVISION_ACTIONS.phaseState().phase==='main'&&run().dialogueCursor>=PROTO_REVISION_ACTIONS.phaseEntries().length&&PROTO_REVISION_ACTIONS.currentSource().choices.length"))){
-  game.click({action:'advance-dialogue'});assert(++guard<80,'first Proto choice did not become ready');
+game.run("state.run=PROTO_SAVE_V3.freshRun(true);screen='game';enterStory();render()");
+let guard=0,enteredMain=false;
+while(!(game.run("PROTO_REVISION_ACTIONS.phaseState().phase==='main'&&run().dialogueCursor>=PROTO_REVISION_ACTIONS.phaseEntries().length&&PROTO_REVISION_ACTIONS.currentSource().choices?.length"))){
+  game.click({action:'advance-dialogue'});if(game.run("run().storyId==='proto_ch01_s1'")&&!enteredMain){assert.equal(game.run('run().dialogueCursor'),10,'the prologue did not hand off at the first historical CH.01 line');enteredMain=true;}assert(++guard<80,'first Proto choice did not become ready');
 }
+assert(enteredMain,'the prologue never reached Buyeo CH.01');
 const choiceHtml=game.html();
 assert(!choiceHtml.includes('응답 고르기'),'legacy response button rendered at the first choice boundary');
 assert.equal((choiceHtml.match(/data-choice=/g)||[]).length,2,'both authored choices were not rendered immediately');

@@ -9,7 +9,21 @@ const childProcess = require('node:child_process');
 const ORIGIN_FILE = path.join('config', 'deployment-asset-origin.json');
 const MANIFEST_FILE = path.join('config', 'deployment-assets-manifest.json');
 const PUBLIC_PREFIX = 'assets/';
+const DEVELOPMENT_PREVIEW_FILES = Object.freeze([
+  'three-preview.html',
+  'three-preview-app.js',
+  'three-preview-editorial-ui.js',
+]);
 const cache = new Map();
+
+function removeDevelopmentPreviews(outputRoot) {
+  const root = path.resolve(outputRoot);
+  for (const name of DEVELOPMENT_PREVIEW_FILES) {
+    const target = path.resolve(root, name);
+    assert.equal(path.dirname(target), root, `unsafe preview output path: ${name}`);
+    fs.rmSync(target, { force: true });
+  }
+}
 
 function compareUtf8(left, right) {
   return Buffer.compare(Buffer.from(left, 'utf8'), Buffer.from(right, 'utf8'));
@@ -206,6 +220,7 @@ function main() {
   // The repository's complete explanation file is never changed by this step
   // outside the disposable Vercel build checkout.
   if (process.env.VERCEL === '1') {
+    removeDevelopmentPreviews(path.join(repoRoot, 'dist'));
     const file = path.join(repoRoot, 'dist', 'official-exam-explanations.json');
     const original = fs.readFileSync(file, 'utf8');
     const compact = JSON.stringify(runtimeChoicePayload(JSON.parse(original), loadJson(path.join(repoRoot, 'config', 'official-choice-summary-corrections.json'))));
@@ -226,4 +241,6 @@ module.exports = {
   readGitAssetTree,
   validateDeploymentContract,
   validatePinnedSnapshot,
+  DEVELOPMENT_PREVIEW_FILES,
+  removeDevelopmentPreviews,
 };

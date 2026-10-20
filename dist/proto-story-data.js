@@ -35,6 +35,43 @@ const PROTO_SYMBOLIC_BACKGROUNDS=[...new Set(PROTO_STORY_SCRIPT.flatMap(c=>c.sce
 for(const name of PROTO_SYMBOLIC_BACKGROUNDS){const id=`proto-v4-${name}`;ASSETS[id]={id,label:`원삼국 ${name}`,src:`media/proto-v4/${name}.webp`,imageKind:'story-background',embeddedCharacters:false,status:'ready'};}
 function protoBackground(c,s){return `proto-v4-${s.backgroundId}`;}
 const protoSceneId=(c,s)=>`proto_ch${String(c).padStart(2,'0')}_s${s}`;
+const PROTO_PROLOGUE_ENTRY_ID='proto_prologue_museum';
+const PROTO_FIRST_MAIN_SCENE_ID='proto_ch01_s1';
+const PROTO_PROLOGUE_SCENE_IDS=['proto_prologue_museum','proto_prologue_separation','proto_prologue_timeslip','proto_prologue_buyeo_field'];
+const PROTO_PROLOGUE_MUSEUM_ASSET='proto-v4-modern-museum';
+ASSETS[PROTO_PROLOGUE_MUSEUM_ASSET]={id:PROTO_PROLOGUE_MUSEUM_ASSET,label:'현대 박물관 고대관',src:'media/proto-v4/ancient-modern-museum.jpg',imageKind:'story-background',embeddedCharacters:false,status:'ready'};
+const PROTO_PROLOGUE_DEFINITIONS=[
+ {sceneId:'proto_prologue_museum',title:'마지막 전시실',year:2026,location:'현대 · 박물관 고대관',country:'프롤로그',place:'박물관 고대관',illustrationId:PROTO_PROLOGUE_MUSEUM_ASSET,nextStoryId:'proto_prologue_separation',lines:[
+  {speaker:'동생',text:'잠깐만, 저쪽 전시도 보고 가자!',lineId:'proto_prologue_museum-l001',expression:'smile'},
+  {speaker:'주인공',text:'그래. 마지막 전시실까지만 같이 보고 가자.',lineId:'proto_prologue_museum-l002',expression:'smile'},
+  {speaker:'나레이션',text:'두 사람은 나란히 유리 진열장과 벽면 지도를 천천히 둘러보았다.',lineId:'proto_prologue_museum-l003'},
+  {speaker:'동생',text:'여기 빛나는 지도가 있어. 이것도 같이 보자.',lineId:'proto_prologue_museum-l004',expression:'smile'},
+  {speaker:'주인공',text:'손 놓치지 말고, 천천히 보자.',lineId:'proto_prologue_museum-l005',expression:'smile'}
+ ]},
+ {sceneId:'proto_prologue_separation',title:'놓쳐 버린 손',year:2026,location:'현대 · 박물관 전시실',country:'프롤로그',place:'박물관 전시실',illustrationId:PROTO_PROLOGUE_MUSEUM_ASSET,nextStoryId:'proto_prologue_timeslip',lines:[
+  {speaker:'나레이션',text:'다른 관람객들이 두 사람 사이를 지나가는 순간, 맞잡은 손이 풀렸다.',lineId:'proto_prologue_separation-l001'},
+  {speaker:'주인공',text:'잠깐, 어디 갔어?',lineId:'proto_prologue_separation-l002',expression:'surprised'},
+  {speaker:'나레이션',text:'노란 가방이 전시대 너머로 사라진 듯했지만, 돌아선 복도에는 아무도 없었다.',lineId:'proto_prologue_separation-l003'},
+  {speaker:'주인공',text:'대답해! 장난치지 말고!',lineId:'proto_prologue_separation-l004',expression:'worried'},
+  {speaker:'나레이션',text:'중앙 전시장의 푸른 빛이 갑자기 번지더니, 박물관의 조명이 하나씩 꺼졌다.',lineId:'proto_prologue_separation-l005'}
+ ]},
+ {sceneId:'proto_prologue_timeslip',title:'빛이 사라진 자리',year:2026,location:'시간의 틈',country:'프롤로그',place:'시간의 틈',illustrationId:PROTO_PROLOGUE_MUSEUM_ASSET,nextStoryId:'proto_prologue_buyeo_field',lines:[
+  {speaker:'나레이션',text:'발밑이 꺼지는 듯한 진동과 함께, 차가운 바람 소리가 어둠을 가르며 지나갔다.',lineId:'proto_prologue_timeslip-l001',blackout:true},
+  {speaker:'주인공',text:'내 손 잡아! 어디 있어?',lineId:'proto_prologue_timeslip-l002',blackout:true,expression:'worried'},
+  {speaker:'나레이션',text:'대답 대신 거센 바람이 몰아쳤고, 바닥의 감각마저 사라졌다.',lineId:'proto_prologue_timeslip-l003',blackout:true}
+ ]},
+ {sceneId:'proto_prologue_buyeo_field',title:'차가운 들판',year:220,location:'부여 · 겨울 들판',country:'프롤로그',place:'부여 겨울 들판',illustrationId:'proto-v4-buyeo-village',nextStoryId:PROTO_FIRST_MAIN_SCENE_ID,nextDialogueCursor:10,lines:[
+  {speaker:'나레이션',text:'눈을 뜨자 차가운 흙과 눈발이 먼저 느껴졌다.',lineId:'proto_prologue_buyeo_field-l001'},
+  {speaker:'주인공',text:'여기… 어디야? 아까 박물관은?',lineId:'proto_prologue_buyeo_field-l002',expression:'surprised'},
+  {speaker:'주인공',text:'휴대폰도 안 켜지고… 잠깐, 내 동생은?',lineId:'proto_prologue_buyeo_field-l003',expression:'worried'},
+  {speaker:'나레이션',text:'주위를 둘러봐도 동생의 노란 가방은 보이지 않았다.',lineId:'proto_prologue_buyeo_field-l004'},
+  {speaker:'나루',text:'일어날 수 있소? 길 한가운데 누워 있으면 수레에 치이겠소.',lineId:'proto_prologue_buyeo_field-l005'},
+  {speaker:'주인공',text:'저랑 비슷한 옷을 입은 아이 못 보셨어요? 조금 전까지 같이 있었는데요.',lineId:'proto_prologue_buyeo_field-l006',expression:'worried'},
+  {speaker:'나루',text:'그런 옷은 처음 보오. 어디서 왔소?',lineId:'proto_prologue_buyeo_field-l007'},
+  {speaker:'주인공',text:'서울에서요. 아니, 일단 여기가 어디예요?',lineId:'proto_prologue_buyeo_field-l008'},
+  {speaker:'나루',text:'그런 아이는 못 봤소. 이곳은 부여요. 우선 마을 쪽으로 갑시다.',lineId:'proto_prologue_buyeo_field-l009'}
+ ]}
+];
 // Physically uninstall the old era graph, while preserving all shared/other-era objects.
 for(const [id,story] of Object.entries(STORIES))if(story.eraId==='proto-kingdoms')delete STORIES[id];
 for(let i=QUESTIONS.length-1;i>=0;i--)if(QUESTIONS[i].chapterId?.startsWith('proto-'))QUESTIONS.splice(i,1);
@@ -51,6 +88,11 @@ for(const c of PROTO_STORY_SCRIPT){
   STORIES[sceneId]=source;
  }
 }
+for(const [index,definition] of PROTO_PROLOGUE_DEFINITIONS.entries()){
+ const protoSource={number:index+1,sceneId:definition.sceneId,title:definition.title,country:definition.country,period:definition.year===2026?'2026년':'원삼국 시대',place:definition.place,location:definition.location,background:'원삼국 프롤로그',backgroundId:definition.illustrationId,main:definition.lines,choices:[],join:[],outro:[],learning:[],stageDirections:[],nextSceneId:definition.nextStoryId,quizAfter:null,isPrologue:true};
+ STORIES[definition.sceneId]=scene({sceneId:definition.sceneId,chapterId:'proto-prologue',eraId:'proto-kingdoms',year:definition.year,location:definition.location,title:definition.title,sceneType:'STORY',illustrationId:definition.illustrationId,dialogues:definition.lines.map(protoLine),choices:null,nextStoryId:definition.nextStoryId,completeChapter:false,storyActive:true,protoStoryVersion:PROTO_STORY_VERSION,contentVersion:PROTO_CONTENT_VERSION,sceneNumber:index+1,protoSource,protoCommon:[],protoOutro:[],protoNextSceneId:definition.nextStoryId,protoPeriod:protoSource.period,protoCountry:definition.country,protoPlace:definition.place,protoLearningIds:[],protoQueue:null,isPrologue:true,protoPrologue:true,protoNextDialogueCursor:definition.nextDialogueCursor||1,fictionNotice:'박물관에서 시작된 시간 이동과 인물의 여정은 창작입니다.',enterCharacterStates:Object.fromEntries(Object.keys(PROTO_NAMES).map(id=>[id,{isAlive:true}])),flashback:false,timeOfDay:definition.sceneId==='proto_prologue_timeslip'?'night':'day'});
+}
+Object.assign(CHAPTERS['proto-ch01'],{firstMainStoryId:PROTO_FIRST_MAIN_SCENE_ID,prologueEntryStoryId:PROTO_PROLOGUE_ENTRY_ID,prologueSceneIds:[...PROTO_PROLOGUE_SCENE_IDS]});
 const PROTO_CHECKPOINTS=PROTO_REVISION_SOURCE.examPlan.queues.map((queue,index)=>({
  ...queue,checkpointId:`proto-v3-${queue.sceneId}`,number:index+1,chapterId:STORIES[queue.sceneId].chapterId,
  learningTopics:STORIES[queue.sceneId].protoSource.learning.map(item=>item.id),questionIds:[...queue.officialQuestionIds],verified:true,missingQuestionCount:queue.missingQuestionCount
@@ -79,12 +121,12 @@ const PROTO_LEGACY_OFFICIAL_IDS=new Set(PROTO_LEGACY_STUDY_QUESTIONS.map(q=>q.of
 globalThis.PROTO_CHECKPOINTS=PROTO_CHECKPOINTS;
 globalThis.PROTO_STUDY_QUESTION_IDS=PROTO_STUDY_QUESTION_IDS;
 globalThis.PROTO_LEGACY_OFFICIAL_IDS=PROTO_LEGACY_OFFICIAL_IDS;
-globalThis.PROTO_STORY_SCOPE={contentVersion:PROTO_CONTENT_VERSION,storyScenes:17,chapterCount:5,checkpointCount:17,officialQuestionCount:PROTO_REVISION_SOURCE.examPlan.questions.length,missingQuestionCount:PROTO_REVISION_SOURCE.examPlan.unfilledSlots,choices:17,dialogues:PROTO_REVISION_SOURCE.counts.authoredUtterances,learningCount:PROTO_REVISION_SOURCE.learning.length};
+globalThis.PROTO_STORY_SCOPE={contentVersion:PROTO_CONTENT_VERSION,storyScenes:17,prologueScenes:PROTO_PROLOGUE_SCENE_IDS.length,totalStoryScenes:17+PROTO_PROLOGUE_SCENE_IDS.length,chapterCount:5,checkpointCount:17,officialQuestionCount:PROTO_REVISION_SOURCE.examPlan.questions.length,missingQuestionCount:PROTO_REVISION_SOURCE.examPlan.unfilledSlots,choices:17,dialogues:PROTO_REVISION_SOURCE.counts.authoredUtterances,learningCount:PROTO_REVISION_SOURCE.learning.length};
 Object.assign(globalThis.ANCIENT_STORY_SCOPE,{protoChapters:PROTO_STORY_SCRIPT.length,protoScenes:PROTO_STORY_SCOPE.storyScenes});
 globalThis.protoActiveStoryQuestion=q=>!q.chapterId?.startsWith('proto-')||q.protoStoryVersion===PROTO_STORY_VERSION;
 globalThis.PROTO_QUESTION_SLOTS=PROTO_REVISION_SOURCE.learning.map(item=>({questionSlotId:item.id,sceneId:item.firstSceneId,sceneIds:[...item.sceneIds],learningConcept:item.title,questionIds:item.questionIds.map(id=>`proto-v4-${id}`),officialQuestionIds:[...item.questionIds],sourceVerificationStatus:'official_original_and_answer_checked'}));
 globalThis.PROTO_LEARNING_LINKS=PROTO_REVISION_SOURCE.learning.map(item=>({conceptId:item.id,learningConcept:item.title,sceneIds:[...item.sceneIds],questionSlotIds:[item.id],questionIds:item.questionIds.map(id=>`proto-v4-${id}`)}));
-globalThis.PROTO_REVISION_RUNTIME={version:PROTO_STORY_VERSION,contentVersion:PROTO_CONTENT_VERSION,source:PROTO_REVISION_SOURCE,
+globalThis.PROTO_REVISION_RUNTIME={version:PROTO_STORY_VERSION,contentVersion:PROTO_CONTENT_VERSION,source:PROTO_REVISION_SOURCE,entrySceneId:PROTO_PROLOGUE_ENTRY_ID,firstMainSceneId:PROTO_FIRST_MAIN_SCENE_ID,prologueSceneIds:[...PROTO_PROLOGUE_SCENE_IDS],
  sources:new Map(Object.values(STORIES).filter(source=>source.protoStoryVersion===PROTO_STORY_VERSION&&source.storyActive!==false).map(source=>[source.sceneId,source])),
  questionByOfficialId:new Map(QUESTIONS.filter(q=>q.protoStoryVersion===PROTO_STORY_VERSION).map(q=>[q.officialQuestionId,q])),
  legacyOfficialIds:PROTO_LEGACY_OFFICIAL_IDS,

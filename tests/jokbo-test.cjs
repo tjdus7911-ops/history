@@ -11,7 +11,7 @@ assert.equal(g.run('new Set(JOKBO_DATA.keywords.map(k=>k.id)).size'),156,'키워
 assert.equal(g.run('JOKBO_DATA.keywords.filter(k=>k.bullets.length<2||k.bullets.length>4).length'),0,'상세 핵심 학습 내용 2~4개');
 assert.equal(g.run('JOKBO_DATA.eras.length'),9,'9개 시대 탭');
 assert.equal(g.run('JOKBO_DATA.comparisons.length'),7,'비교 화면');
-assert.equal(g.run('JOKBO_API.linkedExamIds().length'),468,'실제 기출 중복 제거 연결 수');
+assert.equal(g.run('JOKBO_API.linkedExamIds().length'),472,'검증 연결 보강 뒤 실제 기출 중복 제거 연결 수');
 assert.deepEqual(g.copy('JOKBO_DATA.keywords.filter(k=>!k.examIds.length).map(k=>k.id)'),['sataek','goryeo-status','goryeo-women'],'직접 연결 문항이 없는 항목만 비활성');
 assert(g.run("JOKBO_API.search('서옥제').some(k=>k.id==='seookje')"));
 assert(g.run("JOKBO_API.search('박종철').some(k=>k.id==='june-flow')"));
@@ -28,6 +28,51 @@ assert.deepEqual(g.copy("JOKBO_DATA.keywords.find(k=>k.id==='taejo-jeongdojeon')
 ],'태조·정도전 인물별 요약 행');
 assert.deepEqual(g.copy("JOKBO_DATA.keywords.find(k=>k.id==='true-view-landscape').summaryRows.map(row=>row.label)"),['정선','김홍도','신윤복','김정희'],'조선 후기 회화 인물별 요약 행');
 assert.equal(g.run("JOKBO_DATA.keywords.filter(k=>k.summaryRows).every(k=>k.summaryRows.every(row=>row.label&&row.value))"),true,'전 시대 표시 행 이름·설명');
+assert.equal(g.run('JOKBO_DATA.groups.length'),49,'전 시대 국가·왕·주제 그룹 수');
+assert.equal(g.run('new Set(JOKBO_DATA.groups.map(group=>group.id)).size'),49,'그룹 ID 중복 없음');
+assert.equal(g.run('JOKBO_DATA.groups.filter(group=>!group.keywords.length||group.keywords.some(keyword=>keyword.eraId&&keyword.eraId!==group.eraId)).length'),0,'빈 그룹·시대 불일치 없음');
+
+const groupGame=load(),groupIds=groupGame.copy('JOKBO_DATA.groups.map(group=>group.id)');
+for(const id of groupIds){
+  const serialized=JSON.stringify(id);
+  assert(groupGame.run(`(()=>{const group=JOKBO_DATA.groups.find(row=>row.id===${serialized});REV7_OX_VIEWS.applyRoute('jokbo/group/'+group.id);const html=renderContent(),keywords=JOKBO_DATA.keywords.filter(keyword=>keyword.groupId===group.id);return keywords.length===group.keywords.length&&keywords.every(keyword=>{const rows=keyword.summaryRows?.length?keyword.summaryRows:[{label:keyword.label,value:keyword.value}];return html.includes('data-jk-group-keyword-id="'+keyword.id+'"')&&rows.every(row=>html.includes('>'+esc(row.label)+'</span>')&&html.includes('aria-label="'+esc(row.value)+'"'));})})()`),id+' 그룹 전체 상세 키워드·표시 행 누락 없음');
+}
+assert.deepEqual(groupGame.copy("JOKBO_API.groupKeywordIds('buyeo')"),['buyeo-politics','buyeo-festival','buyeo-law'],'부여 전체 상세는 세 핵심 항목을 같은 그룹 데이터에서 사용');
+assert.deepEqual(groupGame.copy("JOKBO_API.groupExamIds('buyeo')"),[
+  'official-60-advanced-02','official-62-advanced-02','official-68-advanced-03',
+  'official-61-basic-03','official-64-advanced-02','official-66-basic-02',
+  'official-73-basic-02','official-71-advanced-02'
+],'부여 관련 기출 8문항 검증 연결·중복 제외');
+assert.equal(groupGame.run("new Set(JOKBO_API.groupExamIds('buyeo')).size"),8,'부여 그룹 기출 중복 없음');
+assert.equal(groupGame.run("JOKBO_API.groupExamIds('buyeo').every(id=>REV7_EXAM_VIEWS.entry(id))"),true,'부여 그룹 기출 전부 실제 학습 화면 연결 가능');
+groupGame.click({nav:'jokbo'});
+groupGame.click({jkEra:'proto'});
+groupGame.run("window.scrollY=640;window.scrollTo=(x,y)=>{window.scrollY=Number(y)||0;window.lastScrollY=window.scrollY}");
+groupGame.click({jkGroup:'buyeo'});
+assert.equal(groupGame.run('screen'),'jokbo-group','국가 자세히 보기는 그룹 전체 상세로 이동');
+assert(groupGame.run("renderContent().includes('부여 핵심 정리')"));
+for(const text of ['정치','5부족 연맹','사출도','제천 행사','영고','12월','법률','1책 12법','시험 포인트'])assert(groupGame.run(`renderContent().includes(${JSON.stringify(text)})`),'부여 그룹 상세 '+text);
+assert(groupGame.run("renderContent().includes('부여의 제가와 사출도')&&renderContent().includes('부여의 제천의례 영고')&&renderContent().includes('부여의 법률')"),'부여 공식 확인 자료');
+assert.equal(groupGame.run("JOKBO_API.view().scrollY"),640,'그룹 진입 전 목록 스크롤 저장');
+groupGame.click({jkSave:'buyeo-festival'});
+assert.deepEqual(groupGame.copy('JOKBO_API.saved()'),['buyeo-festival'],'그룹 전체 상세에서도 저장 대상이 명확함');
+groupGame.run('window.scrollY=380');
+groupGame.click({jkDetail:'buyeo-festival',jkDetailParent:'buyeo'});
+assert.equal(groupGame.run('screen'),'jokbo-detail','그룹 전체 상세에서 개별 개념 상세 이동');
+assert(groupGame.run("renderContent().includes('data-jk-back=\"group:buyeo\"')"),'개별 상세의 그룹 복귀 경로');
+assert(groupGame.run("renderContent().includes('aria-label=\"뒤로가기\"')"),'개념 상세 뒤로가기 접근성 이름');
+assert.equal(groupGame.run("JOKBO_API.view().scrollY"),640,'그룹 스크롤이 목록 스크롤을 덮어쓰지 않음');
+groupGame.click({jkBack:'group:buyeo'});groupGame.tick();
+assert.equal(groupGame.run('screen'),'jokbo-group');
+assert.equal(groupGame.run('window.lastScrollY'),380,'그룹 상세 스크롤 복원');
+groupGame.click({jkBack:'jokbo'});groupGame.tick();
+assert.equal(groupGame.run('screen'),'jokbo');
+assert.equal(groupGame.run('JOKBO_API.state().activeEra'),'proto','목록의 선택 시대 복원');
+assert.equal(groupGame.run('window.lastScrollY'),640,'목록 스크롤 위치 복원');
+groupGame.run("REV7_OX_VIEWS.applyRoute('jokbo/group/goguryeo-kings')");
+assert.equal(groupGame.run('screen'),'jokbo-group','그룹 전체 상세 직접 URL');
+assert.equal(groupGame.run('JOKBO_API.state().activeEra'),'three','그룹 직접 URL 시대 정렬');
+assert(groupGame.run("renderContent().includes('고구려의 성장 핵심 정리')"));
 
 g.click({nav:'jokbo'});
 assert.equal(g.run('screen'),'jokbo');
@@ -97,5 +142,8 @@ assert(css.includes('scroll-snap-type: x proximity'),'시대 칩 한 줄 가로 
 assert(css.includes('justify-self: end'),'짧은 배지를 키워드 가까이 정렬');
 assert(css.includes('font-size: 20px'),'국가·주제 제목 위계');
 assert(css.includes('.jk-keyword-phrase'),'의미 묶음 줄바꿈 스타일');
+assert(css.includes('.jk-appbar-chevron')&&css.includes('stroke-width: 1.75'),'앱바 전용 얇은 chevron');
+assert(css.includes('min-height: calc(56px + env(safe-area-inset-top, 0px))'),'Android 상태 표시줄 안전 영역');
+assert(css.includes('.jk-group-keyword-card'),'그룹 전체 핵심 정리 전용 범위 스타일');
 assert.equal(css.includes('overflow-wrap: anywhere'),false,'상세·비교 화면 임의 글자 분리 제거');
-console.log('PASS: 족보 156항목, 실제 기출 468개 연결, 보기 탭·시대 칩·시대별 저장, 행·타이포·하단 메뉴, 검색·상세·비교 및 원삼국 전용 스토리 공개 정책 검증');
+console.log('PASS: 족보 49그룹·156항목, 전체 상세 누락 0, 실제 기출 472개 연결, 저장·복원·검색·상세·비교 및 원삼국 전용 스토리 공개 정책 검증');

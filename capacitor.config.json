@@ -1,0 +1,16 @@
+{
+  "appId": "com.nuntteoboni.history",
+  "appName": "눈떠보니 한국사",
+  "webDir": "android-web",
+  "plugins": {
+    "App": {
+      "disableBackButtonHandler": false
+    },
+    "SystemBars": {
+      "insetsHandling": "css",
+      "initialViewportFitValueHint": "cover",
+      "style": "DEFAULT",
+      "hidden": false
+    }
+  }
+}

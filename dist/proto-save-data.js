@@ -72,7 +72,7 @@ if(globalThis.PROTO_REVISION_RUNTIME?.version===3){
    if(['branch','join','quiz','outro','finished'].includes(item.phase)&&source.choices?.length&&item.choiceIndex==null)return false;
   }
   const source=runtime.sources.get(value.pending?.sourceSceneId||value.storyId),current=value.protoStoryState.scenes[source?.sceneId];
-  if(!source||source.chapterId!==value.currentChapter||!current||!ownsScene(value.storyId))return false;
+  if(!source||(source.isPrologue?value.currentChapter!==firstChapterId:source.chapterId!==value.currentChapter)||!current||!ownsScene(value.storyId))return false;
   const entries=phaseEntries(source,current);
   if(!Number.isInteger(value.dialogueCursor)||value.dialogueCursor<1||value.dialogueCursor>entries.length)return false;
   if(current.phase==='choice'&&value.dialogueCursor!==source.dialogues.length)return false;
@@ -125,7 +125,19 @@ if(globalThis.PROTO_REVISION_RUNTIME?.version===3){
   if(fresh){value.pending=null;value.dialogueSceneId=value.storyId;value.dialogueCursor=1;value.protoTypedLineId=null;value.protoCheckpoint=null;value.protoAnswerDraft=null;value.questionQueue=[];value.questionQueueIndex=0;value.questionQueueResumeStoryId=null;value.activeQuestionId=null;value.activeQuestionSetId=null;value.questionAnswer=null;delete value.protoNeedsResumeRecovery;}
   return value;
  }
- function freshRun(started=false,chapterId=firstChapterId){const value=INITIAL_RUN(chapterId);value.started=started;identifyRun(value,true);value.chapterStart=chapterSnapshot(value);return value;}
+ function freshRun(started=false,chapterId=firstChapterId){const value=INITIAL_RUN(chapterId);if(chapterId===firstChapterId)value.storyId=runtime.entrySceneId;value.started=started;identifyRun(value,true);value.chapterStart=chapterSnapshot(value);return value;}
+ function enterFirstMain(value,m){
+  if(!value||value.currentChapter!==firstChapterId)return value;
+  const source=runtime.sources.get(runtime.firstMainSceneId),handoff=runtime.sources.get(runtime.prologueSceneIds.at(-1))?.protoNextDialogueCursor||1,learned=ensureBook(m);
+  value.storyId=runtime.firstMainSceneId;identifyRun(value,true);value.dialogueSceneId=runtime.firstMainSceneId;value.dialogueCursor=handoff;
+  value.protoStoryState={version,scenes:{[runtime.firstMainSceneId]:{phase:'main',choiceIndex:null}}};
+  for(const line of source.dialogues.slice(0,handoff-1))if(!learned.readLineIds.includes(line.lineId))learned.readLineIds.push(line.lineId);
+  value.chapterStart=chapterSnapshot(value);return value;
+ }
+ function redirectPristineEntry(value){
+  if(!value||value.currentChapter!==firstChapterId||value.mode==='replay'||value.completed||value.storyId!==runtime.firstMainSceneId||(value.dialogueCursor||1)!==1||value.pending||value.activeQuestionId||(value.visited||[]).length||(value.choices||[]).length||Object.keys(value.questionResults||{}).length)return false;
+  value.storyId=runtime.entrySceneId;value.dialogueSceneId=runtime.entrySceneId;value.dialogueCursor=1;value.protoStoryState={version,scenes:{[runtime.entrySceneId]:{phase:'main',choiceIndex:null}}};value.protoTypedLineId=null;value.protoCheckpoint=null;value.protoAnswerDraft=null;value.questionQueue=[];value.questionQueueIndex=0;value.questionQueueResumeStoryId=null;return true;
+ }
  function activeChapterIds(){return runtime.source.chapters.map(chapter=>'proto-ch'+String(chapter.chapterNumber).padStart(2,'0'));}
  function legacyResumeChapter(value,m){
   const active=activeChapterIds(),completed=new Set((m.completedChapters||[]).filter(id=>active.includes(id))),current=value?.currentChapter;
@@ -137,7 +149,7 @@ if(globalThis.PROTO_REVISION_RUNTIME?.version===3){
   if(value)archive(m,'content-revision-migration','main-save.proto-run',value);
   return target;
  }
- function configureSeason(registry){const info=registry?.find(item=>item.id===eraId);if(info)Object.assign(info,{progressKey,contentVersion:version,contentRevision:contentVersion,years:'원삼국 시대 · 다섯 나라의 생활',description:'동생이 남긴 표식을 따라 부여·고구려·옥저·동예·삼한의 17장면을 여행합니다.',bannerAsset:'media/proto-v4/proto-thumbnail-back-view-v1.jpg',backgroundAssets:PROTO_SYMBOLIC_BACKGROUNDS.map(id=>'media/proto-v4/'+id+'.webp')});}
+ function configureSeason(registry){const info=registry?.find(item=>item.id===eraId);if(info)Object.assign(info,{progressKey,contentVersion:version,contentRevision:contentVersion,years:'원삼국 시대 · 다섯 나라의 생활',description:'박물관에서 시작해 동생이 남긴 표식을 따라 부여·고구려·옥저·동예·삼한의 17장면을 여행합니다.',bannerAsset:'media/proto-v4/proto-thumbnail-back-view-v1.jpg',backgroundAssets:['media/proto-v4/ancient-modern-museum.jpg',...PROTO_SYMBOLIC_BACKGROUNDS.map(id=>'media/proto-v4/'+id+'.webp')]});}
  const ownEntries=value=>Object.fromEntries(Object.entries(value||{}).filter(([id])=>ownsChapter(id)));
  // Exam-only revision preserves the manuscript cursor, choices, and completed chapters.
  function refreshExamQueue(value,book){
@@ -190,11 +202,12 @@ if(globalThis.PROTO_REVISION_RUNTIME?.version===3){
    const completedCount=activeChapterIds().filter(id=>result.meta.completedChapters?.includes(id)).length;
    result.meta.eraProgress[progressKey]={...previousProgress,contentVersion:version,contentRevision:contentVersion,lastChapter:resumeRun.currentChapter,lastScene:resumeRun.storyId,progress:Math.min(100,Math.max(Number(previousProgress.progress)||0,Math.round(completedCount/activeChapterIds().length*100))),completed:Boolean(previousProgress.completed||completedCount===activeChapterIds().length),resume,updatedAt:previousProgress.updatedAt||null};
   }else if(previousProgress&&(!trustedBook||!validResume(previousProgress.resume,result.meta.protoRevisionBook||preserved.meta.protoRevisionBook))){archive(result.meta,'invalid-resume','main-save.'+progressKey,previousProgress);delete result.meta.eraProgress[progressKey];}
-  ensureBook(result.meta);return result;
+   for(const value of [result.run,result.mainRun,result.meta.eraProgress?.[progressKey]?.resume?.run,result.meta.eraProgress?.[progressKey]?.resume?.mainRun])redirectPristineEntry(value);
+   ensureBook(result.meta);return result;
  };
  for(const name of ['startChapter','restartChapter','beginReplay','resetRun']){
   const before=globalThis[name];if(typeof before!=='function')continue;
-  globalThis[name]=function(target,...args){const old=target.run,result=before(target,...args);if(target.run!==old&&ownsChapter(target.run?.currentChapter)){identifyRun(target.run,true);ensureBook(target.meta);}return result;};
+   globalThis[name]=function(target,...args){const old=target.run,result=before(target,...args);if(target.run!==old&&ownsChapter(target.run?.currentChapter)){const learned=ensureBook(target.meta),chapterId=target.run.currentChapter,needsEntry=chapterId===firstChapterId&&['startChapter','resetRun'].includes(name)&&!learned.readSceneIds.includes(runtime.prologueSceneIds.at(-1));if(needsEntry){target.run.storyId=runtime.entrySceneId;identifyRun(target.run,true);target.run.chapterStart=chapterSnapshot(target.run);}else if(chapterId===firstChapterId)enterFirstMain(target.run,target.meta);else identifyRun(target.run,true);ensureBook(target.meta);}return result;};
  }
  const beforeRestartEpisode=restartEpisodeMain;
  restartEpisodeMain=function(target){if(!ownsChapter((target.mainRun||target.run)?.currentChapter))return beforeRestartEpisode(target);target.mainRun=null;target.run=freshRun(true);ensureBook(target.meta);return target;};
@@ -208,6 +221,6 @@ if(globalThis.PROTO_REVISION_RUNTIME?.version===3){
   const record=target.meta.chapterRecords?.[target.run.currentChapter];if(record){record.contentVersion=version;record.protoContentVersion=contentVersion;}
   return result;
  };
- globalThis.PROTO_SAVE_V3={version,eraId,progressKey,storageKey,archiveStorageKey,contentVersion,legacyContentVersion,firstChapterId,copy,object,ownsChapter,ownsScene,ownsQuestion,familyRun,lineIds,commonIds,validBook,validRun,validLearningCursor,validResume,emptyBook,ensureBook,migrateLegacyBook,upgradeLegacyRun,activeChapterIds,identifyRun,freshRun,configureSeason,archive,fingerprint,answeredFromRecords,phaseEntries};
+  globalThis.PROTO_SAVE_V3={version,eraId,progressKey,storageKey,archiveStorageKey,contentVersion,legacyContentVersion,firstChapterId,copy,object,ownsChapter,ownsScene,ownsQuestion,familyRun,lineIds,commonIds,validBook,validRun,validLearningCursor,validResume,emptyBook,ensureBook,migrateLegacyBook,upgradeLegacyRun,activeChapterIds,identifyRun,freshRun,enterFirstMain,redirectPristineEntry,configureSeason,archive,fingerprint,answeredFromRecords,phaseEntries};
 })();
 }

@@ -20,7 +20,10 @@
  const S={
   history:{label:'우리역사넷',url:'https://contents.history.go.kr/'},
   heritage:{label:'국가유산포털',url:'https://www.heritage.go.kr/'},
-  encyclopedia:{label:'한국민족문화대백과사전',url:'https://encykorea.aks.ac.kr/'}
+  encyclopedia:{label:'한국민족문화대백과사전',url:'https://encykorea.aks.ac.kr/'},
+  buyeoPolitics:{label:'우리역사넷 · 부여의 제가와 사출도',url:'https://contents.history.go.kr/front/hm/view.do?levelId=hm_003_0020'},
+  buyeoFestival:{label:'우리역사넷 · 부여의 제천의례 영고',url:'https://contents.history.go.kr/front/hm/view.do?levelId=hm_003_0010'},
+  buyeoLaw:{label:'우리역사넷 · 부여의 법률',url:'https://contents.history.go.kr/front/hm/view.do?levelId=hm_006_0010'}
  };
  const groups=[
   G('paleolithic','prehistoric','01 구석기 시대',[
@@ -43,9 +46,9 @@
   ]),
 
   G('buyeo','proto','01 부여',[
-   K('buyeo-politics','정치','5부족 연맹 · 사출도','왕 아래 마가·우가·저가·구가가 각자의 영역인 사출도를 다스렸어요.',['왕권이 강한 중앙 집권 국가와 구분해요.','흉년이 들면 왕에게 책임을 묻기도 했어요.'],['부여','사출도']),
-   K('buyeo-festival','제천','영고 · 12월','수렵 사회 전통이 남은 12월 제천 행사예요.',['고구려 동맹·동예 무천은 10월이에요.','하늘에 제사하고 여러 날 노래와 춤을 즐겼어요.'],['부여','영고'],'early-customs'),
-   K('buyeo-law','법률','1책 12법','남의 물건을 훔치면 12배로 갚게 한 엄격한 배상법이에요.',['살인자는 사형, 가족은 노비로 삼았어요.','간음한 자와 질투한 부인은 사형에 처했다는 기록이 있어요.'],['부여','1책 12법'],'early-customs')
+   K('buyeo-politics','정치','5부족 연맹 · 사출도','왕 아래 마가·우가·저가·구가 등 여러 가가 사출도를 나누어 다스렸고, 왕이 다스린 중앙과 합쳐 5부를 이루었어요.',['가축 이름을 딴 제가와 사출도가 함께 나오면 부여예요. 고구려도 5부가 있었지만 사출도는 부여의 구분 단서예요.','여러 가가 지방에서 자치권을 행사하고 왕위 계승에도 영향력을 보인 연맹 왕국이었어요.'],['부여','사출도'],'',S.buyeoPolitics),
+   K('buyeo-festival','제천 행사','영고 · 12월','12월에 하늘에 제사하고 온 나라가 모여 여러 날 먹고 마시며 노래하고 춤춘 국중 대회예요.',['부여는 영고·12월, 고구려는 동맹·10월, 동예는 무천·10월로 구분해요.','형옥을 판결하고 죄수를 풀어 주는 일도 이루어졌고, 공동 수렵의 전통과 풍요를 기원하는 성격이 함께 있었던 것으로 봐요.'],['부여','영고'],'early-customs',S.buyeoFestival),
+   K('buyeo-law','법률','1책 12법','남의 물건을 훔치면 훔친 물건값의 12배를 물게 한 절도 규정이에요.',['절도한 물건값의 12배 배상은 부여를 찾는 핵심 단서예요. 고조선의 범금 8조와 구분해요.','엄격한 배상 규정은 사유 재산을 보호하고 사회 질서를 유지하려 한 모습을 보여 줘요.'],['부여','1책 12법'],'early-customs',S.buyeoLaw)
   ]),
   G('early-goguryeo','proto','02 고구려',[
    K('early-goguryeo-politics','정치','5부족 연맹 · 제가 회의','왕과 여러 가들이 제가 회의에서 국가의 큰일을 결정했어요.',['대가들은 사자·조의·선인을 거느렸어요.','산지가 많아 정복 활동이 활발했어요.'],['고구려','제가 회의']),
@@ -341,6 +344,17 @@
  for(const group of groups)for(const keyword of group.keywords){
   const rows=summaryRowsById[keyword.id];
   if(rows)keyword.summaryRows=rows.map(([label,value])=>({label,value}));
+ }
+
+ // Text matching remains the fallback for legacy entries. These reviewed links take
+ // precedence where a broad place name (notably "부여") can match an unrelated era.
+ const verifiedExamIdsByKeyword={
+  'buyeo-politics':['official-60-advanced-02','official-62-advanced-02','official-68-advanced-03'],
+  'buyeo-festival':['official-61-basic-03','official-64-advanced-02','official-66-basic-02'],
+  'buyeo-law':['official-73-basic-02','official-71-advanced-02']
+ };
+ for(const group of groups)for(const keyword of group.keywords){
+  if(verifiedExamIdsByKeyword[keyword.id])keyword.examIds=[...verifiedExamIdsByKeyword[keyword.id]];
  }
 
  const comparisons=[
