@@ -32,6 +32,10 @@ assert.equal(g.run("JOKBO_DATA.keywords.filter(k=>k.summaryRows).every(k=>k.summ
 g.click({nav:'jokbo'});
 assert.equal(g.run('screen'),'jokbo');
 assert(g.run('renderContent()').includes('원삼국 한 장 정리'));
+assert(g.run("renderContent().includes('<span class=\"is-empty\">0</span>')"),'저장 0 중립 상태 마크업');
+assert(g.run("shell(renderContent()).includes('data-icon=\"answer-sheet\"')"),'OX 답안지 아이콘');
+assert(g.run("shell(renderContent()).includes('data-icon=\"summary-book\"')"),'족보 요약집 아이콘');
+assert.equal(g.run("shell(renderContent()).includes('<b>OX</b>')"),false,'OX 텍스트 중복 제거');
 g.click({jkEra:'joseon'});
 assert(g.run('renderContent()').includes('조선 한 장 정리'));
 assert(g.run("renderContent().includes('data-jk-fact-name>태조</span>')"),'태조 독립 행 렌더');
@@ -67,6 +71,10 @@ for(const file of ['jokbo.css','jokbo-data.js','jokbo-ui.js','story-release-poli
 for(const file of ['/jokbo.css','/jokbo-data.js','/jokbo-ui.js','/story-release-policy.js'])assert(worker.includes(file),file+' 오프라인 캐시');
 assert(css.includes('repeat(6,minmax(0,1fr))'),'6개 하단 메뉴');
 assert(css.includes('@media(max-width:370px)'),'360px 대응');
-assert(css.includes('--jk-label-col: clamp(104px, 30%, 116px)'),'읽을 수 있는 이름 열 너비');
+assert(css.includes('--jk-label-col: clamp(96px, 27%, 108px)'),'읽을 수 있는 이름 열 너비');
+assert(css.includes('--jk-label-gap: 14px'),'배지와 키워드 간격');
+assert(css.includes('justify-self: end'),'짧은 배지를 키워드 가까이 정렬');
+assert(css.includes('font-size: 20px'),'국가·주제 제목 위계');
 assert(css.includes('.jk-keyword-phrase'),'의미 묶음 줄바꿈 스타일');
-console.log('PASS: 족보 156항목, 실제 기출 468개 연결, 인물별 요약·의미 단위 줄바꿈, 저장·검색·상세·비교 및 원삼국 전용 스토리 공개 정책 검증');
+assert.equal(css.includes('overflow-wrap: anywhere'),false,'상세·비교 화면 임의 글자 분리 제거');
+console.log('PASS: 족보 156항목, 실제 기출 468개 연결, 상단·행·타이포·하단 메뉴 미세 조정, 저장·검색·상세·비교 및 원삼국 전용 스토리 공개 정책 검증');
