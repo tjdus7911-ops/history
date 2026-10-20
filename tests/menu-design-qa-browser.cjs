@@ -30,12 +30,13 @@ async function runMenuFlow(page,{width,native=false,before=false,screenshot,swip
   assert.equal(await page.locator('[data-jk-era][aria-selected="true"]').getAttribute('data-jk-era'),'north-south');
   const centered=await page.locator('.jk-era-tabs').evaluate(el=>{const a=el.querySelector('[aria-selected="true"]').getBoundingClientRect(),r=el.getBoundingClientRect();return a.left>=r.left-1&&a.right<=r.right+1;});assert(centered,'active chip visible');
   const r=await page.locator('[data-jk-swipe="true"]').boundingBox();await gesture({x:width*.2,y:r.y+30,toX:width*.8,toY:r.y+30});assert.equal(await era(),'three','right moves to previous era');await page.waitForTimeout(460);
-  await drag('vertical');assert.equal(await era(),'three','vertical motion does not change era');await page.evaluate(()=>scrollTo(0,0));
+  await drag('vertical');assert.equal(await era(),'three','vertical motion does not change era');await page.waitForFunction(()=>scrollY>20);await page.evaluate(()=>scrollTo(0,0));
   await click('[data-jk-era="prehistoric"]');const start=await era();const top=await page.locator('[data-jk-swipe="true"]').boundingBox();await gesture({x:width*.2,y:top.y+30,toX:width*.8,toY:top.y+30});assert.equal(await era(),start,'first era stops at boundary');await page.waitForTimeout(460);
   await click('[data-jk-era="modern"]');await drag('left');assert.equal(await era(),'modern','last era stops at boundary');await page.waitForTimeout(460);
   await click('[data-jk-era="prehistoric"]');
   for(const expected of ['proto','three','north-south','goryeo','joseon','opening','colonial','modern']){await drag('left');assert.equal(await era(),expected,'rapid swipes follow the chip order');assert(await page.locator('.jk-keywords [data-jk-detail]').count()>0,'every era keeps its keywords');}
   await page.waitForTimeout(460);
+  await page.evaluate(()=>scrollTo(0,500));await page.waitForFunction(()=>scrollY>100);await gesture({x:width*.2,y:350,toX:width*.8,toY:350});assert.equal(await era(),'colonial');await page.waitForTimeout(210);assert(Math.abs((await page.locator('[data-jk-swipe="true"]').boundingBox()).y)<2,'scrolled era change reveals new content start');await page.waitForTimeout(260);
   await click('[data-jk-era="three"]');await click('[data-jk-mode="saved"]');await drag('left','.jk-summary-head');assert.equal(await era(),'three','saved tab has no era swipe');await click('[data-jk-mode="all"]');await page.evaluate(()=>scrollTo(0,0));
   await cdp?.detach();assert.deepEqual(await measureNav(),navigation[0].style);await capture('jokbo-swipe');
  }
