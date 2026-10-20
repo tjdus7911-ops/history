@@ -13,7 +13,7 @@ const launch=()=>adb('shell','am','start','-W','-n',app+'/.MainActivity');
   assert.equal(await currentPage.evaluate(()=>JSON.parse(localStorage.getItem(KEY)).run.dialogueCursor),await currentPage.evaluate(()=>run().dialogueCursor),'latest dialogue is serialized before leaving');
   // Reproduce closing from Android home/recents: allow the pause lifecycle and
   // WebView's asynchronous disk write before killing the background process.
-  adb('shell','input','keyevent','3');await currentPage.waitForFunction(()=>document.hidden);await delay(1200);
+  adb('shell','input','keyevent','3');await currentPage.waitForFunction(()=>HISTORY_NATIVE_RUNTIME.isActive===false);await delay(1200);
   adb('shell','am','force-stop',app);launch();return connect();
  },screenshot:async file=>fs.writeFileSync(file,execFileSync('adb',['exec-out','screencap','-p'],{maxBuffer:20*1024*1024}))});
  const finalPage=await connect(),click=async selector=>{await finalPage.waitForFunction(()=>Date.now()>=inputLockedUntil);await finalPage.locator(selector).filter({visible:true}).first().click();};
