@@ -20,6 +20,8 @@ jobs:
       - run: npm ci --no-audit --no-fund
       - run: npm install --no-save --package-lock=false playwright
       - run: npx playwright install --with-deps chromium
+      - name: Fetch original save migration baseline
+        run: git fetch --depth=1 origin 53c69a2d974a9055c7f24ce509d27d328554c436
       - name: Story and preserved learning regressions
         run: |
           node tests/story-mobile-qa-test.cjs
@@ -55,6 +57,8 @@ jobs:
           distribution: temurin
           java-version: 21
       - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
       - run: sdkmanager "platforms;android-36" "build-tools;36.0.0"
       - run: npm ci --no-audit --no-fund
       - run: npm install --no-save --package-lock=false playwright
