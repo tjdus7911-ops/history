@@ -22,12 +22,23 @@ assert.deepEqual(g.copy("JOKBO_DATA.comparisons.find(c=>c.id==='early-customs').
 assert(g.run("JOKBO_DATA.keywords.find(k=>k.id==='yiik').bullets.join(' ').includes('박지원')"),'한전론 구분');
 assert(g.run("JOKBO_DATA.keywords.find(k=>k.id==='june-flow').bullets.join(' ').includes('7월 5일')"),'6월 항쟁 순서');
 assert(g.run("JOKBO_DATA.keywords.find(k=>k.id==='sataek').definition.includes('불교')"),'사택지적비 불교 귀의');
+assert.deepEqual(g.copy("JOKBO_DATA.keywords.find(k=>k.id==='taejo-jeongdojeon').summaryRows"),[
+  {label:'태조',value:'조선 건국 · 한양 천도'},
+  {label:'정도전',value:'재상 중심 정치 · 조선경국전'}
+],'태조·정도전 인물별 요약 행');
+assert.deepEqual(g.copy("JOKBO_DATA.keywords.find(k=>k.id==='true-view-landscape').summaryRows.map(row=>row.label)"),['정선','김홍도','신윤복','김정희'],'조선 후기 회화 인물별 요약 행');
+assert.equal(g.run("JOKBO_DATA.keywords.filter(k=>k.summaryRows).every(k=>k.summaryRows.every(row=>row.label&&row.value))"),true,'전 시대 표시 행 이름·설명');
 
 g.click({nav:'jokbo'});
 assert.equal(g.run('screen'),'jokbo');
 assert(g.run('renderContent()').includes('원삼국 한 장 정리'));
 g.click({jkEra:'joseon'});
 assert(g.run('renderContent()').includes('조선 한 장 정리'));
+assert(g.run("renderContent().includes('data-jk-fact-name>태조</span>')"),'태조 독립 행 렌더');
+assert(g.run("renderContent().includes('data-jk-fact-name>정도전</span>')"),'정도전 독립 행 렌더');
+assert(g.run("renderContent().includes('data-jk-fact-name>정선</span>')"),'정선 독립 행 렌더');
+assert.equal(g.run("renderContent().includes('data-jk-fact-name>태조·정도전</span>')"),false,'결합 인물명 배지 제거');
+assert(g.run("renderContent().includes('data-jk-phrase aria-hidden=\"true\">재상 중심 정치<span class=\"jk-keyword-separator\"> ·</span>')"),'의미 묶음 줄바꿈 마크업');
 g.click({jkDetail:'yiik'});
 assert.equal(g.run('screen'),'jokbo-detail');
 assert(g.run('renderContent()').includes('영업전'));
@@ -56,4 +67,6 @@ for(const file of ['jokbo.css','jokbo-data.js','jokbo-ui.js','story-release-poli
 for(const file of ['/jokbo.css','/jokbo-data.js','/jokbo-ui.js','/story-release-policy.js'])assert(worker.includes(file),file+' 오프라인 캐시');
 assert(css.includes('repeat(6,minmax(0,1fr))'),'6개 하단 메뉴');
 assert(css.includes('@media(max-width:370px)'),'360px 대응');
-console.log('PASS: 족보 156항목, 실제 기출 468개 연결, PDF 범위·저장·검색·상세·비교 및 원삼국 전용 스토리 공개 정책 검증');
+assert(css.includes('--jk-label-col: clamp(104px, 30%, 116px)'),'읽을 수 있는 이름 열 너비');
+assert(css.includes('.jk-keyword-phrase'),'의미 묶음 줄바꿈 스타일');
+console.log('PASS: 족보 156항목, 실제 기출 468개 연결, 인물별 요약·의미 단위 줄바꿈, 저장·검색·상세·비교 및 원삼국 전용 스토리 공개 정책 검증');
