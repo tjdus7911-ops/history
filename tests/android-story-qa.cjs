@@ -14,10 +14,9 @@ const launch=()=>adb('shell','am','start','-W','-n',app+'/.MainActivity');
   // Reproduce closing from Android home/recents: allow the pause lifecycle and
   // WebView's asynchronous disk write before killing the background process.
   adb('shell','input','keyevent','3');
-  // requestAnimationFrame polling stops when the WebView is backgrounded.
-  // Poll from Node so the test can observe the native pause callback there.
-  let background=false;for(let i=0;i<50;i++){background=await currentPage.evaluate(()=>HISTORY_NATIVE_RUNTIME.isActive===false);if(background)break;await delay(100);}
-  assert(background,'native appStateChange confirms background save');await delay(1200);
+  // Inspect Android activity state instead of evaluating a paused WebView.
+  let background=false;for(let i=0;i<30;i++){const resumed=adb('shell','dumpsys','activity','activities').split('\n').filter(line=>/topResumedActivity|mResumedActivity/.test(line));background=resumed.length>0&&resumed.every(line=>!line.includes(app));if(background)break;await delay(100);}
+  assert(background,'Android confirms app is in the background');await delay(1200);
   adb('shell','am','force-stop',app);launch();return connect();
  },screenshot:async file=>fs.writeFileSync(file,execFileSync('adb',['exec-out','screencap','-p'],{maxBuffer:20*1024*1024}))});
  const finalPage=await connect(),click=async selector=>{await finalPage.waitForFunction(()=>Date.now()>=inputLockedUntil);await finalPage.locator(selector).filter({visible:true}).first().click();};

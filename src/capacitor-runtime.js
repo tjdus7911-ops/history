@@ -2,7 +2,6 @@ import { Capacitor } from '@capacitor/core';
 import { App } from '@capacitor/app';
 
 const isNative = Capacitor.isNativePlatform();
-let appActive = true;
 
 function isVisible(element) {
   if (!element || element.disabled || element.getAttribute('aria-hidden') === 'true') return false;
@@ -97,7 +96,6 @@ if (isNative) {
   });
   globalThis.addEventListener('pagehide', saveProgress);
   App.addListener('appStateChange', ({ isActive }) => {
-    appActive = isActive;
     if (!isActive) {
       saveProgress();
       return;
@@ -110,7 +108,6 @@ if (isNative) {
 
 globalThis.HISTORY_NATIVE_RUNTIME = Object.freeze({
   isNative,
-  get isActive() { return appActive; },
   platform: Capacitor.getPlatform(),
   closeTopLayer,
   handleBackButton
