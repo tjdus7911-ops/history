@@ -111,6 +111,8 @@ buildSync({
 
 fs.writeFileSync(path.join(outputRoot, 'android-build-info.json'), JSON.stringify({
   schemaVersion: 1,
+  uiRelease: '2026-10-20-story-mobile-qa',
+  sourceRevision: process.env.HISTORY_SOURCE_REVISION || null,
   webSource: 'dist',
   remoteAssetBase,
   assetSnapshot: {

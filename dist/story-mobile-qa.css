@@ -1,0 +1,33 @@
+/* Shared roles and the confirmed Rev.7 restart / record components. */
+html body .r7-era-hero .r7-era-thumbnail{position:absolute;inset:0;z-index:2;width:100%;height:100%;padding:0;border:0;border-radius:0;background:transparent}
+html body .r7-era-hero .r7-era-back{z-index:3}
+.r7-era-hero>div:last-child{pointer-events:none}
+.r7-thumbnail-hint{display:inline-block;margin-top:8px;font:700 13px/20px var(--r7-ui);text-decoration:underline;text-underline-offset:3px}
+#r7-era-chapters{scroll-margin-top:16px}
+html body .r7-restart-confirm{width:min(100%,360px);padding:24px;border-radius:12px;background:white;color:var(--r7-ink)}
+html body .r7-restart-confirm h2{margin:0 0 16px;font:700 22px/32px var(--r7-ui);overflow-wrap:anywhere}
+html body .r7-restart-confirm>p{margin:0 0 12px;font:400 14px/22px var(--r7-ui);color:var(--r7-sub)}
+html body .r7-restart-confirm>.r7-note{font-size:12px;line-height:20px}
+html body .r7-restart-actions{display:grid;gap:8px;margin-top:20px}
+html body .r7-restart-actions>button{width:100%;min-height:48px;margin:0;padding:12px 16px;border-radius:6px;font:700 16px/24px var(--r7-ui)}
+html body .r7-restart-actions>.primary{background:#e9513b;color:white;border:1px solid #e9513b}
+html body .r7-restart-actions>.secondary{background:#f5f7f7;color:#243242;border:1px solid #d3dbdd}
+html body .r7-confirm-overlay .modal-actions>.glass{background:#f5f7f7;color:#243242;border:1px solid #d3dbdd;min-height:48px;border-radius:6px}
+html body .jk-heading h1{font:700 var(--r7-page-title-size,26px)/var(--r7-page-title-line,36px) var(--r7-serif)}
+html body .jk-heading{min-height:64px;padding:10px 0 14px}
+html body .jk-segment button{font-size:var(--r7-tab-size,16px);font-weight:700;line-height:24px;min-height:45px}
+html body .jk-era-tabs button>span{font-size:var(--r7-chip-size,14px);line-height:20px;min-height:44px;border-radius:4px}
+html body .jk-primary{font-size:var(--r7-button-size,16px);line-height:24px;min-height:52px;border-radius:6px}
+html body .jk-appbar h1{font:700 18px/26px var(--r7-ui)}
+.r7-learning-empty{padding:20px 16px;margin:16px 0;border:1px solid var(--r7-line);border-radius:6px;background:var(--r7-sunken)}
+.r7-learning-empty h2{font:700 16px/24px var(--r7-ui);margin:0 0 6px}
+.r7-learning-empty p{font:400 13px/20px var(--r7-ui);margin:0;color:var(--r7-sub)}
+.r7-learning .r7-era-chips{overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}
+.r7-learning .r7-era-chips>button{flex:none}
+.r7-record-details .official-records>.ed-header{display:none}
+.r7-record-details .official-record-overview{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.r7-record-details .official-record-overview>div{min-width:0;padding:16px;border:1px solid var(--r7-line);border-radius:6px}
+.r7-record-details h2{font:700 18px/26px var(--r7-ui)}
+.r7-record-details p{font-size:13px;line-height:20px;overflow-wrap:anywhere}
+.r7-record-details button{min-height:44px;border-radius:6px;font-size:14px}
+.r7-my>[data-r7-record-learning]{width:100%;margin-top:12px}

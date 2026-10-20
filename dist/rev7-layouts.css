@@ -1,4 +1,5 @@
 /* Scoped structural layouts; O-05, O-07, W-11 and C-02 keep their prior styles. */
+:root{--r7-page-title-size:26px;--r7-page-title-line:36px;--r7-tab-size:16px;--r7-chip-size:14px;--r7-button-size:16px}
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700&display=swap');
 .r7-page{max-width:560px;margin:0 auto;color:var(--r7-ink);font-family:var(--r7-ui);letter-spacing:-.01em;min-width:0}
 .r7-page *{box-sizing:border-box}.r7-page button{font-family:inherit;cursor:pointer;box-shadow:none}.r7-page button:focus-visible{outline:2px solid var(--r7-coral);outline-offset:3px}
