@@ -1,0 +1,59 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const {load}=require('./proto-revision-harness.cjs');
+
+const g=load();
+assert.equal(g.run('JOKBO_API.count()'),156,'전 시대 학습 항목 수');
+assert.deepEqual(g.copy('JOKBO_API.countsByEra()'),{
+  prehistoric:10,proto:18,three:17,'north-south':15,goryeo:21,joseon:28,opening:17,colonial:16,modern:14
+});
+assert.equal(g.run('new Set(JOKBO_DATA.keywords.map(k=>k.id)).size'),156,'키워드 ID 중복 없음');
+assert.equal(g.run('JOKBO_DATA.keywords.filter(k=>k.bullets.length<2||k.bullets.length>4).length'),0,'상세 핵심 학습 내용 2~4개');
+assert.equal(g.run('JOKBO_DATA.eras.length'),9,'9개 시대 탭');
+assert.equal(g.run('JOKBO_DATA.comparisons.length'),7,'비교 화면');
+assert.equal(g.run('JOKBO_API.linkedExamIds().length'),468,'실제 기출 중복 제거 연결 수');
+assert.deepEqual(g.copy('JOKBO_DATA.keywords.filter(k=>!k.examIds.length).map(k=>k.id)'),['sataek','goryeo-status','goryeo-women'],'직접 연결 문항이 없는 항목만 비활성');
+assert(g.run("JOKBO_API.search('서옥제').some(k=>k.id==='seookje')"));
+assert(g.run("JOKBO_API.search('박종철').some(k=>k.id==='june-flow')"));
+for(const id of ['okjeo-products','samhan-festival','unification-flow','aristocratic-conflicts','goryeo-history-books','sejong-science','new-religions','sovereignty-loss','heroic-struggle','national-culture','coalition-negotiation']){
+  assert(g.run(`JOKBO_DATA.keywords.some(k=>k.id==='${id}')`),id+' PDF 범위 보강');
+}
+assert.deepEqual(g.copy("JOKBO_DATA.comparisons.find(c=>c.id==='early-customs').topics.map(t=>t.label)"),['혼인','법률','제천 행사']);
+assert(g.run("JOKBO_DATA.keywords.find(k=>k.id==='yiik').bullets.join(' ').includes('박지원')"),'한전론 구분');
+assert(g.run("JOKBO_DATA.keywords.find(k=>k.id==='june-flow').bullets.join(' ').includes('7월 5일')"),'6월 항쟁 순서');
+assert(g.run("JOKBO_DATA.keywords.find(k=>k.id==='sataek').definition.includes('불교')"),'사택지적비 불교 귀의');
+
+g.click({nav:'jokbo'});
+assert.equal(g.run('screen'),'jokbo');
+assert(g.run('renderContent()').includes('원삼국 한 장 정리'));
+g.click({jkEra:'joseon'});
+assert(g.run('renderContent()').includes('조선 한 장 정리'));
+g.click({jkDetail:'yiik'});
+assert.equal(g.run('screen'),'jokbo-detail');
+assert(g.run('renderContent()').includes('영업전'));
+g.click({jkSave:'yiik'});
+assert.deepEqual(g.copy('JOKBO_API.saved()'),['yiik']);
+g.run("REV7_OX_VIEWS.applyRoute('jokbo/detail/yiik')");
+assert.equal(g.run('screen'),'jokbo-detail','상세 직접 URL');
+assert(g.run('renderContent()').includes('영업전'),'상세 직접 URL 내용 복원');
+g.run("REV7_OX_VIEWS.applyRoute('jokbo/compare/land-reform')");
+assert.equal(g.run('screen'),'jokbo-compare','비교 직접 URL');
+assert(g.run('renderContent()').includes('한전론'),'비교 직접 URL 내용 복원');
+
+assert.deepEqual(g.copy('STORY_RELEASE_POLICY.availableEraIds'),['proto-kingdoms']);
+assert.deepEqual(g.copy('LEARNING_ERAS.filter(e=>e.available).map(e=>e.id)'),['proto-kingdoms']);
+assert.equal(g.run("CHAPTER_ACCESS.available('proto-ch01')"),true,'원삼국 챕터 공개');
+assert.equal(g.run("CHAPTER_ACCESS.available('ch01')"),false,'고려 챕터 차단');
+assert.equal(g.run("resumeEra('goryeo')"),false,'기존 저장 이어하기 우회 차단');
+assert.equal(g.run('screen'),'era');
+assert.equal(g.run("CHAPTER_ACCESS.begin('ch01')"),false,'챕터 직접 시작 우회 차단');
+g.run("REV7_OX_VIEWS.applyRoute('era/goryeo')");
+assert.equal(g.run('screen'),'era');
+assert(g.run('renderContent()').includes('스토리 준비 중'));
+
+const index=fs.readFileSync('dist/index.html','utf8'),worker=fs.readFileSync('dist/sw.js','utf8'),css=fs.readFileSync('dist/jokbo.css','utf8');
+for(const file of ['jokbo.css','jokbo-data.js','jokbo-ui.js','story-release-policy.js'])assert(index.includes(file),file+' index 연결');
+for(const file of ['/jokbo.css','/jokbo-data.js','/jokbo-ui.js','/story-release-policy.js'])assert(worker.includes(file),file+' 오프라인 캐시');
+assert(css.includes('repeat(6,minmax(0,1fr))'),'6개 하단 메뉴');
+assert(css.includes('@media(max-width:370px)'),'360px 대응');
+console.log('PASS: 족보 156항목, 실제 기출 468개 연결, PDF 범위·저장·검색·상세·비교 및 원삼국 전용 스토리 공개 정책 검증');
