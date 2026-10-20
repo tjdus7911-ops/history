@@ -5,18 +5,18 @@
   'use strict';
   if (!globalThis.REV7_OX_VIEWS || !globalThis.REV7_EXAM_VIEWS || typeof document === 'undefined') return;
   const examViews=globalThis.REV7_EXAM_VIEWS, oxViews=globalThis.REV7_OX_VIEWS;
-  const {catalog:OFFICIAL_EXAM_CATALOG,eras:OFFICIAL_ERA_TAXONOMY,entry:officialEntry,question:officialQuestion,record:officialLearningRecord,eraInfo:officialEraInfo,results:officialExamResults,recordsPage:officialRecordsPage,start:startOfficialSession}=examViews;
+  const {catalog:OFFICIAL_EXAM_CATALOG,eras:OFFICIAL_ERA_TAXONOMY,entry:officialEntry,question:officialQuestion,record:officialLearningRecord,eraInfo:officialEraInfo,results:officialExamResults,start:startOfficialSession}=examViews;
   const {meta:oxMeta,stats:oxStats,era:oxEra,active:activeOXSession,wrongIds:oxCurrentWrongIds,recordSection:oxRecordSection,descriptions:OX_ERA_DESCRIPTIONS,readRoute:oxReadRoute,writeRoute:oxWriteRoute}=oxViews;
   const asset = name => '<span class="r7-icon" aria-hidden="true"><img src="media/rev7/' + name + '.svg" alt=""></span>';
   const chevron = () => asset('chevron');
   const tile = (label, value, caption) => '<article class="r7-tile"><small>' + label + '</small><strong>' + value + '</strong><p>' + caption + '</p></article>';
-  const header = (title, profile = false) => '<header class="r7-heading"><h1>' + title + '</h1>' + (profile ? '<button class="r7-profile" data-action="status" aria-label="내 상태 보기">' + asset('user') + '</button>' : '') + '</header>';
+  const header = (title, profile = false) => '<header class="r7-heading r7-menu-heading"><h1>' + title + '</h1>' + (profile ? '<button class="r7-profile" data-action="status" aria-label="내 상태 보기">' + asset('user') + '</button>' : '') + '</header>';
   const bar = title => '<header class="r7-appbar"><button data-r7-record-home aria-label="내 기록으로 돌아가기">' + asset('back') + '</button><h1>' + title + '</h1><span></span></header>';
   const day = value => learningDay(value);
   let recordView = 'home', wrongStatus = 'needed', filterOpen = false, filterDraft = 'all', wrongDetailId = null;
 
   function learningEvents() {
-    return [...(meta().learningEvents || []).map(e => ({...e, correct: e.correct})), ...(oxMeta().history || []).map(e => ({...e, correct: e.isCorrect}))]
+    return [...(meta().learningEvents || []).map(e => ({...e, eraId:e.eraId||officialEntry(e.questionId)?.primaryEra||chapterEra(QUESTIONS.find(q=>q.questionId===e.questionId)?.chapterId), correct: e.correct})), ...(oxMeta().history || []).map(e => ({...e, correct: e.isCorrect}))]
       .filter(e => day(e.answeredAt));
   }
   function streak(events) {
@@ -32,6 +32,14 @@
       for (const id of progress.resume?.run?.visited || []) scenes.add(id);
       for (const id of progress.resume?.mainRun?.visited || []) scenes.add(id);
     }
+    // A chapter restart replaces its live cursor, not its cumulative reading.
+    for (const book of [meta().protoRevisionBook, meta().threeCompleteBook]) {
+      for (const id of book?.readSceneIds || []) scenes.add(id);
+    }
+    for (const record of Object.values(meta().chapterRecords || {})) {
+      for (const id of record.finalRun?.visited || []) scenes.add(id);
+      for (const id of record.latestRun?.finalRun?.visited || []) scenes.add(id);
+    }
     return [...scenes].filter(id => STORIES[id]);
   }
   function wrongEntries() {
@@ -43,7 +51,7 @@
   function myHome() {
     const events = learningEvents(), summary = learningSummary(meta()), seen = visitedScenes(), today = events.filter(e => day(e.answeredAt) === day(new Date()));
     const any = summary.attempts > 0 || oxStats().attempts > 0 || events.length > 0 || seen.length > 0 || officialExamResults().length > 0;
-    if (!any) return '<section class="r7-page r7-my" data-figma-frame="M-09">' + header('내 기록', true) + '<div class="r7-empty"><span class="r7-empty-icon">' + asset('chart') + '</span><h2>아직 학습 기록이 없어요</h2><p>이야기를 읽거나 문제를 풀면 오늘의 학습이 여기에 쌓여요.</p></div><button class="r7-primary" data-nav="home">첫 이야기 시작하기</button></section>';
+    if (!any) return '<section class="r7-page r7-my" data-figma-frame="M-09">' + header('내 기록', true) + '<div class="r7-empty"><span class="r7-empty-icon">' + asset('chart') + '</span><h2>아직 학습 기록이 없어요</h2><p>이야기를 읽거나 문제를 풀면 오늘의 학습이 여기에 쌓여요.</p></div><button class="r7-primary" data-nav="home">첫 이야기 시작하기</button><button class="r7-secondary" data-r7-record-learning>학습 기록 보기</button></section>';
     const wrong = wrongEntries().filter(row => row.record.lastCorrect === false).length + oxCurrentWrongIds('all').length;
     return '<section class="r7-page r7-my" data-figma-frame="M-01">' + header('내 기록', true)
       + '<div class="r7-tiles">' + tile('오늘 학습', '—', '학습 시간 기록 없음 · 문제 ' + today.length) + tile('연속 학습', streak(events) + '일', '문제 풀이 기록 기준') + '</div>'
@@ -51,6 +59,19 @@
       + '<button data-r7-record-learning><span><b>학습 기록</b><small>오늘 · 이번 주 · 시대별</small></span>' + chevron() + '</button>'
       + '<button data-official-results-list="true"><span><b>기출 기록</b><small>푼 시험과 점수 추이</small></span>' + chevron() + '</button>'
       + '<button data-nav="study"><span><b>오답 복습</b><small>복습할 오답 ' + wrong + '개</small></span>' + chevron() + '</button></div></section>';
+  }
+  // Read existing statistics/result helpers; never mount the legacy records page
+  // inside M-02. Extra cumulative sections have no separate confirmed Figma frame.
+  function learningDetails() {
+    const records=OFFICIAL_EXAM_CATALOG.map(entry=>({entry,record:officialLearningRecord(entry.canonicalQuestionId)})).filter(row=>row.record.attempts>0);
+    const attempts=records.reduce((sum,row)=>sum+row.record.attempts,0),correct=records.reduce((sum,row)=>sum+row.record.correctCount,0),results=officialExamResults();
+    const latest=results.reduce((best,row)=>!best||String(row.completedAt)>String(best.completedAt)?row:best,null);
+    const eraRows=OFFICIAL_ERA_TAXONOMY.map(era=>{const entries=OFFICIAL_EXAM_CATALOG.filter(entry=>entry.primaryEra===era.id),done=entries.map(entry=>officialLearningRecord(entry.canonicalQuestionId)).filter(r=>r.attempts>0),total=done.reduce((n,r)=>n+r.attempts,0),right=done.reduce((n,r)=>n+r.correctCount,0);return '<li><div><b>'+esc(era.name)+'</b><span>'+done.length+' / '+entries.length+'문항</span></div><strong>'+(total?Math.round(right/total*100)+'%':'—')+'</strong><progress value="'+done.length+'" max="'+Math.max(1,entries.length)+'" aria-label="'+esc(era.name)+' 학습 문항"></progress></li>';}).join('');
+    let exam='<p class="r7-record-empty">아직 완료한 시험이 없어요.</p><button class="r7-record-link" data-nav="exam-library">기출문제 풀기 '+chevron()+'</button>';
+    if(latest){const edition=officialResultEdition(latest),entries=(latest.questionIds||[]).map(id=>officialEntry(id)).filter(Boolean),summary=examViews.summary(latest,entries,latest.graded||{},latest.answers||{}),cert=examViews.certification(summary,edition?.examLevel,Boolean(edition)),title=edition?'제'+edition.examRound+'회 · '+edition.examLevel:latest.examEra?officialEraInfo(latest.examEra).name:'기출 시험';exam='<article class="r7-record-result"><small>'+esc(examViews.date(latest.completedAt))+'</small><h3>'+esc(title)+'</h3><p>정답 '+summary.correct+' / '+summary.total+'문항 · '+esc(examViews.duration(latest.elapsedMs))+'</p><div><strong>'+(summary.score==null?'—':summary.score+'점')+'</strong><span>'+(cert.eligible?(cert.grade?esc(edition.examLevel)+' '+cert.grade+'급 · ':'')+(cert.passed?'합격':'불합격'):'공식 등급 기준 미적용')+'</span></div></article><button class="r7-record-link" data-official-result-open="'+esc(latest.attemptId)+'">결과지 다시 보기 '+chevron()+'</button><button class="r7-record-link" data-official-results-list="true">전체 시험 기록 '+chevron()+'</button>';}
+    const ox=oxStats(),oxRows=oxViews.eraStats().map(row=>'<li><div><b>'+esc(row.name)+'</b><span>'+row.attempts+'회 · '+row.learned+'/'+row.total+'개 학습</span></div><strong>'+(row.accuracy===null?'—':row.accuracy+'%')+'</strong></li>').join('');
+    const recent=oxMeta().history.filter(e=>oxViews.questionById(e.questionId)).slice(-5).reverse();
+    return '<div class="r7-record-content" data-record-renderer="rev7-cumulative"><p class="r7-note">날짜가 없는 이전 기록까지 포함한 누적 통계예요. 위 기간 필터의 집계와 다를 수 있어요.</p><section class="r7-record-panel"><h2>기출 학습 요약</h2><div class="r7-record-metrics">'+tile('누적 풀이',attempts,'기출 문제')+tile('누적 정답',correct,attempts?'정답률 '+Math.round(correct/attempts*100)+'%':'정답률 기록 없음')+tile('학습 문항',records.length,'중복 제외')+tile('완료한 시험',results.length+'회','기존 시험 기록')+'</div></section><section class="r7-record-panel"><h2>시험 기록</h2>'+exam+'</section><section class="r7-record-panel r7-record-weakness">'+examViews.weakness()+'</section><section class="r7-record-panel"><h2>시대별 기출 기록</h2><ul class="r7-record-era-list">'+eraRows+'</ul></section><section class="r7-record-panel"><h2>OX 퀴즈 학습 통계</h2><div class="r7-record-metrics">'+tile('총 OX 풀이',ox.attempts,'기존 OX 기록')+tile('OX 정답률',ox.accuracy===null?'—':ox.accuracy+'%','누적 정답 기준')+tile('학습 개념',ox.learned,'중복 제외')+tile('복습할 OX',ox.currentWrong,'현재 오답')+'</div><ul class="r7-record-era-list">'+oxRows+'</ul>'+(recent.length?'<details class="r7-record-recent"><summary>최근 OX 학습 기록</summary>'+recent.map(e=>'<article><span>'+(e.isCorrect?'정답':'오답')+'</span><p>'+esc(oxViews.questionById(e.questionId).statement)+'</p><time>'+esc(e.answeredAt?new Date(e.answeredAt).toLocaleString('ko-KR'):'기록 시간 없음')+'</time></article>').join('')+'</details>':'')+'</section></div>';
   }
   function learningPage() {
     const now = new Date(), boundary = new Date(now); boundary.setHours(0, 0, 0, 0);
@@ -63,14 +84,17 @@
     const max = Math.max(1, ...counts), correct = events.filter(e => e.correct).length;
     const scenes = recordPeriod === 'all' ? visitedScenes().filter(id => recordEra === 'all' || chapterEra(STORIES[id].chapterId) === recordEra).length : '—';
     return '<section class="r7-page r7-learning" data-figma-frame="M-02">' + bar('학습 기록')
-      + '<div class="r7-chips" aria-label="학습 기간">' + [['today','오늘'],['7','이번 주'],['30','이번 달'],['all','전체']].map(([id,label]) => '<button data-record-period="' + id + '" aria-pressed="' + (recordPeriod === id) + '">' + label + '</button>').join('') + '</div>'
-      + '<div class="r7-chips r7-era-chips" aria-label="학습 시대">' + [{id:'all',name:'전체'},...LEARNING_ERAS.filter(e => e.available)].map(e => '<button data-record-era="' + e.id + '" aria-pressed="' + (recordEra === e.id) + '">' + esc(e.name) + '</button>').join('') + '</div>'
+      + '<div class="r7-chips" aria-label="학습 기간">' + [['today','오늘'],['7','이번 주'],['30','이번 달'],['all','전체']].map(([id,label]) => '<button data-record-period="' + id + '" aria-pressed="' + (recordPeriod === id) + '"><span>' + label + '</span></button>').join('') + '</div>'
+      + '<div class="r7-chips r7-era-chips" aria-label="학습 시대">' + [{id:'all',name:'전체'},...LEARNING_ERAS.filter(e => e.available||learningEvents().some(event=>event.eraId===e.id))].map(e => '<button data-record-era="' + e.id + '" aria-pressed="' + (recordEra === e.id) + '"><span>' + esc(e.name) + '</span></button>').join('') + '</div>'
       + '<div class="r7-tiles">' + tile('읽은 장면', scenes, recordPeriod === 'all' ? '저장된 장면 기록' : '날짜별 장면 기록 없음') + tile('푼 문제', events.length, '정답 ' + correct) + '</div>'
-      + '<section class="r7-chart"><h2>요일별 학습</h2><div class="r7-bars">' + counts.map((n,i) => '<div><i style="height:' + (n ? Math.max(4, n / max * 84) : 2) + 'px" aria-label="' + '월화수목금토일'[i] + '요일 ' + n + '문제"></i><small>' + '월화수목금토일'[i] + '</small></div>').join('') + '</div></section>'
-      + '<p class="r7-note">날짜가 저장된 문제 풀이 기록을 집계해요.</p><details class="r7-legacy"><summary>상세 통계 보기</summary>' + officialRecordsPage() + oxRecordSection() + '</details></section>';
+      + '<section class="r7-chart"><h2>요일별 학습</h2><div class="r7-bars">' + counts.map((n,i) => '<div><i class="'+(i===(now.getDay()+6)%7?'is-today':'')+'" style="height:' + (n ? Math.max(4, n / max * 84) : 2) + 'px" aria-label="' + '월화수목금토일'[i] + '요일 ' + n + '문제"></i><small>' + '월화수목금토일'[i] + '</small></div>').join('') + '</div></section>'
+      + (!events.length ? '<div class="r7-learning-empty" role="status"><h2>선택한 기간의 풀이 기록이 없어요</h2><p>다른 기간이나 시대를 선택해 보세요. 기존 누적 기록은 유지돼요.</p></div>' : '')
+      + '<p class="r7-note">날짜가 저장된 문제 풀이 기록을 집계해요.</p><details class="r7-record-details r7-record-disclosure"><summary>상세 통계 보기</summary>' + learningDetails() + '</details></section>';
   }
 
   const renderBefore = renderContent;
+  // Keep direct records() callers and route rendering on the same Rev.7 view.
+  records = function () { return recordView === 'learning' ? learningPage() : myHome(); };
   renderContent = function () {
     if (screen === 'records') return recordView === 'learning' ? learningPage() : myHome();
     if (screen === 'study' && wrongDetailId) return wrongDetailPage();

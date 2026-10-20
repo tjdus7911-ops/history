@@ -39,6 +39,11 @@
  };
  const modalBefore=modalHTML;
  modalHTML=function(){
+  if(modal?.type==='restart-current'){
+   const ch=CHAPTERS[modal.chapterId];if(!ch)return modalBefore();
+   const label='CH.'+String(ch.number).padStart(2,'0');
+   return '<div data-figma-frame="S-15B" class="modal-overlay r7-confirm-overlay"><section class="modal r7-restart-confirm" role="dialog" aria-modal="true" aria-labelledby="r7-restart-title"><h2 id="r7-restart-title">'+label+'를 처음부터<br>다시 시작할까요?</h2><p>'+label+'의 진행 위치가 첫 장면으로 돌아갑니다.</p><p class="r7-note">완료 기록과 오답, 학습 기록은 삭제되지 않습니다.</p><div class="r7-restart-actions"><button class="primary" data-action="confirm-restart-current">처음부터 다시</button><button class="secondary" data-action="close">취소</button></div></section></div>';
+  }
   if(modal?.type==='r7-story-exit')return '<div data-figma-frame="S-14" class="modal-overlay r7-confirm-overlay"><section class="modal r7-confirm" role="dialog" aria-modal="true" aria-labelledby="r7-story-exit-title"><h2 id="r7-story-exit-title">여기서 나갈까요?</h2><p>지금까지 읽은 곳은 저장돼요. 나중에 이어 읽을 수 있어요.</p><div><button class="secondary" data-action="close">계속 읽기</button><button class="primary" data-r7-story-exit-confirm>나가기</button></div></section></div>';
   if(modal?.type==='r7-story-menu'){const source=STORIES[run().pending?.sourceSceneId||run().storyId],prologue=source?.isPrologue;return '<div data-figma-frame="S-16" class="modal-overlay chapter-sheet-overlay r7-chapter-overlay"><section class="modal chapter-sheet r7-player-menu" role="dialog" aria-modal="true" aria-labelledby="r7-story-menu-title"><div class="sheet-handle"></div><header><h2 id="r7-story-menu-title">메뉴</h2><button class="close" data-action="close" aria-label="메뉴 닫기">×</button></header><button data-r7-story-font><span>글자 크기</span><b>'+(largeText?'크게':'보통')+'</b></button><button data-action="'+(prologue?'restart-episode':'restart-current')+'" data-chapter="'+esc(run().currentChapter)+'">'+(prologue?'프롤로그 처음부터 보기':'챕터 처음부터 보기')+'</button><button data-nav="era">챕터 목록으로</button><button data-r7-story-log>'+(showLog?'현재 대사만 보기':'대화 기록 보기')+'</button>'+originalControls+'<button data-r7-story-exit>읽기 종료</button></section></div>';}
   if(modal?.type==='r7-story-resume'){
@@ -46,7 +51,7 @@
    return '<div data-figma-frame="S-15" class="modal-overlay chapter-sheet-overlay r7-chapter-overlay"><section class="modal chapter-sheet r7-player-menu" role="dialog" aria-modal="true" aria-labelledby="r7-story-resume-title"><div class="sheet-handle"></div><header><h2 id="r7-story-resume-title">이어서 읽을까요?</h2><button class="close" data-action="close" aria-label="닫기">×</button></header><p>'+esc(label+' · 장면 '+index+'에서 멈췄어요.')+'</p><button class="primary full" data-r7-story-continue="'+e.id+'">장면 '+index+'부터 이어 읽기</button><button class="secondary full" data-r7-story-restart="'+e.id+'">'+(prologue?'프롤로그':'챕터')+' 처음부터 다시 읽기</button></section></div>';
   }
   let html=modalBefore();
-  if(['restart-current','replay-confirm'].includes(modal?.type))html=html.replace('class="modal-overlay','class="modal-overlay r7-confirm-overlay');
+  if(['restart-current','restart-episode','ancient-restart','replay-confirm'].includes(modal?.type))html=html.replace('class="modal-overlay','class="modal-overlay r7-confirm-overlay');
   if(['official-image','exam-image'].includes(modal?.type))html=html.replace('class="modal-overlay','class="modal-overlay r7-image-overlay');
   return html;
  };

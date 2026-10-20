@@ -6,7 +6,7 @@
  const icon=name=>'<span class="r7-icon" aria-hidden="true"><img src="media/rev7/'+name+'.svg" alt=""></span>';
  let sceneChapterId=null;
  routes.addRoute('seasons');routes.addRoute('chapter-scenes');
-  for(const era of LEARNING_ERAS)routes.addRoute('era/'+encodeURIComponent(era.id));
+  for(const era of LEARNING_ERAS){routes.addRoute('era/'+encodeURIComponent(era.id));routes.addRoute('era/'+encodeURIComponent(era.id)+'/chapters');}
  const originalEras=eras,originalChapterDetail=chapterDetailModal;
  const sceneIds=id=>chapterScenes(id).map(scene=>scene.sceneId);
  const resumeFor=id=>seasonRun(eraInfo(chapterEra(id)));
@@ -24,15 +24,15 @@
   const connected=eraQuestions(e.id).filter(isVerifiedOfficialQuestion).length;
   const chaptersHTML=chapters.map(info=>{
    const status=chapterStatus(info.chapterId),pct=chapterProgress(info.chapterId),started=Boolean(resumeFor(info.chapterId)?.started&&resumeFor(info.chapterId).currentChapter===info.chapterId),complete=meta().completedChapters.includes(info.chapterId);
-   const label=!info.implemented?'준비 중':complete?'완료':started?pct+'%':'시작하기';
+   const label=!info.implemented?'준비 중':status==='LOCKED'?'잠금':complete?'완료':started?'진행 중 · '+pct+'%':'시작하기';
    return '<button class="r7-chapter-row" data-chapter="'+esc(info.chapterId)+'"><span class="r7-chapter-number">'+String(info.number).padStart(2,'0')+'</span><span><b>'+esc(info.title)+'</b><small>'+esc(editorialChapterYears(info))+' · '+sceneIds(info.chapterId).length+'장면</small></span><em class="'+(complete?'complete':'')+'">'+label+'</em></button>';
   }).join('');
   const inPrologue=Boolean(scene?.isPrologue),currentSceneIds=inPrologue&&globalThis.PROTO_REVISION_RUNTIME?globalThis.PROTO_REVISION_RUNTIME.prologueSceneIds:ch?sceneIds(ch.chapterId):[];
   const index=ch?Math.max(1,currentSceneIds.indexOf(r?.storyId)+1):1;
   const resumeSection=inPrologue?'원삼국 프롤로그':ch?'CH.'+ch.number+' '+esc(ch.title):'';
-  return '<section class="r7-page r7-era-view" data-figma-frame="S-02"><div class="r7-era-hero">'+(e.bannerAsset?'<img src="'+esc(e.bannerAsset)+'" alt="">':'')+'<div class="r7-era-shade"></div><button class="r7-era-back" data-r7-seasons aria-label="시대 선택으로">'+icon('back')+'</button><div><small>SEASON '+String(e.order).padStart(2,'0')+'</small><h1>'+esc(e.name)+'</h1><p>'+esc(e.years)+' · '+esc(e.description)+'</p></div></div><div class="r7-metrics r7-era-metrics">'+stat('진행률',progress,'%')+stat('완료 챕터',chapters.filter(info=>meta().completedChapters.includes(info.chapterId)).length,' / '+chapters.length)+stat('연결 기출',connected,'문항')+'</div>'
+  return '<section class="r7-page r7-era-view" data-figma-frame="S-02"><div class="r7-era-hero">'+(e.bannerAsset?'<img src="'+esc(e.bannerAsset)+'" alt="">':'')+'<div class="r7-era-shade"></div><button class="r7-era-thumbnail" data-r7-era-chapters="'+e.id+'" aria-label="'+esc(e.name)+' 챕터 목록 보기"></button><button class="r7-era-back" data-r7-seasons aria-label="시대 선택으로">'+icon('back')+'</button><div><small>SEASON '+String(e.order).padStart(2,'0')+'</small><h1>'+esc(e.name)+'</h1><p>'+esc(e.years)+' · '+esc(e.description)+'</p><span class="r7-thumbnail-hint">챕터 목록 보기 ›</span></div></div><div class="r7-metrics r7-era-metrics">'+stat('진행률',progress,'%')+stat('완료 챕터',chapters.filter(info=>meta().completedChapters.includes(info.chapterId)).length,' / '+chapters.length)+stat('연결 기출',connected,'문항')+'</div>'
    +'<button class="r7-resume r7-era-resume" data-era-resume="'+e.id+'"><span><small>'+(r?.started&&ch?'이어서 · '+resumeSection:'새로운 이야기')+'</small><b>'+(r?.started&&ch?'장면 '+index+' / '+currentSceneIds.length+' · '+esc(scene?.title||ch.title):'이야기 시작하기')+'</b></span><span class="r7-era-play">▷</span></button><div class="r7-tabs" role="tablist" aria-label="시대 학습"><button role="tab" data-era-tab="chapters" aria-selected="'+(eraTab!=='exams')+'">챕터</button><button role="tab" data-era-tab="exams" aria-selected="'+(eraTab==='exams')+'">기출 모음</button></div>'
-   +(eraTab==='exams'?eraExamList(e.id):'<div class="r7-chapter-list">'+chaptersHTML+'</div>')+'<details class="r7-legacy"><summary>핵심 개념과 학습 메뉴</summary>'+originalEras()+'</details></section>';
+   +(eraTab==='exams'?eraExamList(e.id):'<div class="r7-chapter-list" id="r7-era-chapters" tabindex="-1" aria-label="'+esc(e.name)+' 챕터 목록">'+chaptersHTML+'</div>')+'<details class="r7-legacy"><summary>핵심 개념과 학습 메뉴</summary>'+originalEras()+'</details></section>';
  };
  chapterDetailModal=function(id){
   const info=CHAPTERS[id];if(!info)return originalChapterDetail(id);
@@ -46,9 +46,11 @@
   return '<section class="r7-page r7-scenes" data-figma-frame="S-04B">'+appbar('CH.'+String(info.number).padStart(2,'0'),'data-r7-scenes-back')+'<img class="r7-scenes-art" src="'+esc(info.thumbnail)+'" alt=""><h1>'+esc(info.title)+'</h1><p>'+esc(info.subtitle||'')+'</p><ol>'+ids.map((sceneId,i)=>'<li '+(i===index?'aria-current="step"':'')+'><span>'+String(i+1)+'</span><div><b>'+esc(STORIES[sceneId].title||'장면 '+(i+1))+'</b><small>'+(visited.has(sceneId)?'완료':i===index?'여기서 이어 읽어요':'아직 읽지 않은 장면')+'</small></div></li>').join('')+'</ol><button class="r7-primary" data-r7-chapter-continue="'+esc(id)+'">'+(r?.started&&r.currentChapter===id?'장면 '+(index+1)+'부터 이어 읽기':'챕터 시작하기')+'</button></section>';
  }
  const contentBefore=renderContent;
+ function showChapterList(id,write=true){selectedEra=id;eraTab='chapters';screen='era';modal=null;if(write)routes.writeRoute('era/'+encodeURIComponent(id)+'/chapters');render();document.querySelector('#r7-era-chapters')?.scrollIntoView?.({block:'start'});document.querySelector('#r7-era-chapters')?.focus?.({preventScroll:true});}
  renderContent=function(){if(screen==='seasons')return seasonSelect();if(screen==='chapter-scenes')return scenesPage();return contentBefore();};
  document.addEventListener('click',function(event){
   const button=event.target.closest('button');if(!button)return;const d=button.dataset;
+  if(d.r7EraChapters){event.stopImmediatePropagation();showChapterList(d.r7EraChapters);return;}
   if('r7Seasons' in d||d.nav==='seasons'){event.stopImmediatePropagation();screen='seasons';modal=null;routes.writeRoute('seasons');render();window.scrollTo(0,0);return;}
   if(d.r7EraPreview){event.stopImmediatePropagation();selectedEra=d.r7EraPreview;screen='era';modal=null;routes.writeRoute('era/'+encodeURIComponent(selectedEra));render();window.scrollTo(0,0);return;}
   if(d.r7ChapterScenes){event.stopImmediatePropagation();sceneChapterId=d.r7ChapterScenes;screen='chapter-scenes';modal=null;const route='chapter-scenes/'+encodeURIComponent(sceneChapterId);routes.addRoute(route);routes.writeRoute(route);render();window.scrollTo(0,0);return;}
@@ -57,6 +59,7 @@
  },true);
  const applyBefore=routes.applyRoute;
  routes.setApplyRoute(function(route=routes.readRoute()){
+  const listRoute=/^era\/([^/]+)\/chapters$/.exec(route||'');if(listRoute){showChapterList(decodeURIComponent(listRoute[1]),false);return route;}
   if(route?.startsWith('era/')){selectedEra=decodeURIComponent(route.slice(4));screen='era';modal=null;render();window.scrollTo(0,0);return route;}
   if(route?.startsWith('chapter-scenes/')){sceneChapterId=decodeURIComponent(route.slice(15));screen='chapter-scenes';modal=null;render();window.scrollTo(0,0);return route;}
   return applyBefore(route);
@@ -65,7 +68,7 @@
  navigate=function(to){const result=navigateBefore(to);if(to==='era')routes.writeRoute('era/'+encodeURIComponent(selectedEra));if(to==='seasons')routes.writeRoute('seasons');return result;};
  const initialRoute=(globalThis.location?.hash||'').replace(/^#/,'');
  if(initialRoute==='seasons'){screen='seasons';}
- if(initialRoute.startsWith('era/')){selectedEra=decodeURIComponent(initialRoute.slice(4));screen='era';}
+ if(initialRoute.startsWith('era/')){selectedEra=decodeURIComponent(initialRoute.slice(4).split('/')[0]);screen='era';if(initialRoute.endsWith('/chapters'))eraTab='chapters';}
  if(initialRoute.startsWith('chapter-scenes/')){sceneChapterId=decodeURIComponent(initialRoute.slice(15));routes.addRoute(initialRoute);screen='chapter-scenes';}
  globalThis.REV7_STORY_VIEWS_READY=true;
  render();

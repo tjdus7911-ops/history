@@ -1,6 +1,7 @@
 const assert = require('node:assert');
 const fs = require('node:fs');
 const path = require('node:path');
+const crypto = require('node:crypto');
 const { buildSync } = require('esbuild');
 const { runtimeChoicePayload } = require('./prepare-vercel-output.cjs');
 
@@ -111,6 +112,9 @@ buildSync({
 
 fs.writeFileSync(path.join(outputRoot, 'android-build-info.json'), JSON.stringify({
   schemaVersion: 1,
+  uiRelease: '2026-10-20-menu-design-qa',
+  uiFiles: Object.fromEntries(['rev7-layouts.js','jokbo-ui.js','jokbo.css','story-mobile-qa.css','app-navigation.css'].map(name=>[name,crypto.createHash('sha256').update(fs.readFileSync(path.join(outputRoot,name))).digest('hex')])),
+  sourceRevision: process.env.HISTORY_SOURCE_REVISION || null,
   webSource: 'dist',
   remoteAssetBase,
   assetSnapshot: {

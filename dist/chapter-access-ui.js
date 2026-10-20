@@ -53,7 +53,18 @@ if(globalThis.CORE_APP_READY===true){
   return '<div class="replay-complete-actions">'+(next?.implemented?'<button class="primary next" data-action="chapter-next-direct" data-chapter="'+id+'">다음 챕터로 · CH.'+next.number+' '+esc(next.title)+'</button>':'<button class="primary next" data-nav="home">시대 선택으로</button>')+'<button class="secondary full" data-action="chapter-list-direct" data-chapter="'+id+'">챕터 목록</button><button class="secondary full" data-action="chapter-replay-direct" data-chapter="'+id+'">다시 플레이</button></div>';
  };
  document.addEventListener('click',event=>{
-  const b=event.target.closest('button'),action=b?.dataset.action;if(action==='continue-chapter'&&b.dataset.chapter===run().currentChapter&&run().mode==='replay'){event.preventDefault();event.stopImmediatePropagation();modal=null;resultChapterId=null;return play();}if(!['chapter-next-direct','chapter-list-direct','chapter-replay-direct'].includes(action))return;
+  const b=event.target.closest('button'),action=b?.dataset.action;
+  if(action==='confirm-restart-current'){
+   event.preventDefault();event.stopImmediatePropagation();
+   const id=modal?.type==='restart-current'?modal.chapterId:null;
+   if(!id||!globalThis.CHAPTER_ACCESS.available(id))return;
+   // An individually opened chapter may be a replay above another main run.
+   // Keep that saved main run intact and reset the chapter being confirmed.
+   if(run().currentChapter!==id)return begin(id,true);
+   restartChapter(state);modal=null;resultChapterId=null;quizMode='story';
+   preloadChapterCore(id);save();return play();
+  }
+  if(action==='continue-chapter'&&b.dataset.chapter===run().currentChapter&&run().mode==='replay'){event.preventDefault();event.stopImmediatePropagation();modal=null;resultChapterId=null;return play();}if(!['chapter-next-direct','chapter-list-direct','chapter-replay-direct'].includes(action))return;
   event.preventDefault();event.stopImmediatePropagation();const id=b.dataset.chapter;if(!available(id))return;
   if(action==='chapter-list-direct'){selectedEra=chapterEra(id);meta().selectedLearningEra=selectedEra;modal=null;resultChapterId=null;save();eraTab='chapters';return navigate('era');}
   if(action==='chapter-replay-direct')return begin(id,true);

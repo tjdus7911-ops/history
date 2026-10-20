@@ -83,7 +83,7 @@
  function searchBox(){return !searchOpen?'':'<div class="jk-search"><span>'+icon('search')+'</span><input data-jk-query type="search" value="'+esc(query)+'" placeholder="키워드·국가·왕·인물·대표 단서 검색" aria-label="족보 검색어"><button data-jk-search-clear aria-label="검색어 지우기">'+(query?'×':'')+'</button></div>';}
  function eraTabs(){return '<div class="jk-era-tabs" role="tablist" aria-label="시대 선택">'+D.eras.map(e=>'<button role="tab" data-jk-era="'+e.id+'" aria-selected="'+(activeEra===e.id)+'"><span>'+esc(e.label)+'</span></button>').join('')+'</div>';}
  function revealActiveEraTab(){
-  const reveal=()=>{const tabs=document.querySelector('.jk-era-tabs'),selected=tabs?.querySelector('[data-jk-era][aria-selected="true"]');if(!tabs||!selected)return;const track=tabs.getBoundingClientRect(),chip=selected.getBoundingClientRect(),inset=4,max=Math.max(0,tabs.scrollWidth-tabs.clientWidth);let target=tabs.scrollLeft;if(chip.left<track.left+inset)target-=track.left+inset-chip.left;else if(chip.right>track.right-inset)target+=chip.right-(track.right-inset);tabs.scrollLeft=Math.max(0,Math.min(max,target));};
+  const reveal=()=>{const tabs=document.querySelector('.jk-era-tabs'),selected=tabs?.querySelector('[data-jk-era][aria-selected="true"]');if(!tabs||!selected)return;const track=tabs.getBoundingClientRect(),chip=selected.getBoundingClientRect(),max=Math.max(0,tabs.scrollWidth-tabs.clientWidth);tabs.scrollLeft=Math.max(0,Math.min(max,tabs.scrollLeft+chip.left-track.left-(tabs.clientWidth-chip.width)/2));};
   if(typeof requestAnimationFrame==='function')requestAnimationFrame(reveal);else setTimeout(reveal,0);
  }
  function semanticValue(value){
@@ -121,10 +121,10 @@
   const pool=searching?D.groups:D.groups.filter(g=>g.eraId===activeEra),rows=[];
   for(const group of pool){const items=group.keywords.filter(k=>searchMatches({...k,groupTitle:group.title,eraId:group.eraId}));if(items.length)rows.push({group,items});}
   const related=eraExamIds(activeEra);
-  return '<section class="jk-page jk-main" data-page="jokbo"><header class="jk-heading"><div><h1>족보</h1><p>시험 전에 필요한 것만</p></div>'+searchButton()+'</header>'+searchBox()
+  return '<section class="jk-page jk-main" data-page="jokbo"><header class="jk-heading r7-menu-heading"><h1>족보</h1>'+searchButton()+'</header><p class="jk-heading-subtitle">시험 전에 필요한 것만</p>'+searchBox()
    +'<div class="jk-segment" role="tablist" aria-label="족보 보기"><button role="tab" data-jk-mode="all" aria-selected="'+(mode==='all')+'">전체 요약</button><button role="tab" data-jk-mode="saved" aria-selected="'+(mode==='saved')+'">저장한 키워드 <span class="jk-segment-count'+(eraSavedCount?'':' is-empty')+'">'+eraSavedCount+'</span></button></div>'+eraTabs()
-   +(mode==='saved'?'<section class="jk-summary-head"><h2>'+esc(era.label)+' 저장 키워드</h2><p>이 시대에서 저장한 핵심 개념만 모았어요.</p></section>'+savedList():'<section class="jk-summary-head">'+(searching?'<small class="jk-summary-kicker">검색 결과</small>':'')+'<h2>'+esc(searching?'“'+query+'” 검색 결과':era.title)+'</h2><p>'+esc(searching?'전 시대의 국가·왕·인물·단서를 찾았어요.':era.subtitle)+'</p></section><div class="jk-groups">'+(rows.length?rows.map((row,i)=>groupMarkup(row.group,row.items,i,searching)).join(''):emptyMarkup())+'</div>'+(searching?'':compareLinks(activeEra))
-   +(searching?'':'<section class="jk-exam-cta"><div><small>RELATED QUESTIONS</small><h2>이 시대 관련 기출 풀기</h2><p>'+related.length+'개의 검증된 실제 기출이 핵심 키워드와 연결되어 있어요.</p></div><button data-jk-era-exams="'+activeEra+'" '+(related.length?'':'disabled')+'>'+(related.length?'기출 '+Math.min(20,related.length)+'문제 풀기':'연결된 기출을 준비하고 있어요')+'</button></section>'))+'</section>';
+   +(mode==='saved'?'<section class="jk-summary-head"><h2>'+esc(era.label)+' 저장 키워드</h2><p>이 시대에서 저장한 핵심 개념만 모았어요.</p></section>'+savedList():'<div class="jk-era-content" data-jk-swipe="'+(!searching)+'"><section class="jk-summary-head">'+(searching?'<small class="jk-summary-kicker">검색 결과</small>':'')+'<h2>'+esc(searching?'“'+query+'” 검색 결과':era.title)+'</h2><p>'+esc(searching?'전 시대의 국가·왕·인물·단서를 찾았어요.':era.subtitle)+'</p></section><div class="jk-groups">'+(rows.length?rows.map((row,i)=>groupMarkup(row.group,row.items,i,searching)).join(''):emptyMarkup())+'</div>'+(searching?'':compareLinks(activeEra))
+   +(searching?'':'<section class="jk-exam-cta"><div><small>RELATED QUESTIONS</small><h2>이 시대 관련 기출 풀기</h2><p>'+related.length+'개의 검증된 실제 기출이 핵심 키워드와 연결되어 있어요.</p></div><button data-jk-era-exams="'+activeEra+'" '+(related.length?'':'disabled')+'>'+(related.length?'기출 '+Math.min(20,related.length)+'문제 풀기':'연결된 기출을 준비하고 있어요')+'</button></section>')+'</div>')+'</section>';
  }
  function groupKeywordMarkup(group,k){
   const rows=k.summaryRows?.length?k.summaryRows:[{label:k.label,value:k.value}],point=k.groupPoint||k.bullets?.[0]||k.definition;
@@ -153,7 +153,7 @@
  shell=function(content){
   const current=screen.startsWith('jokbo')?'jokbo':screen==='ox'?'ox':screen.startsWith('exam-')?'exam-library':['era','seasons','chapter-scenes','game','quiz','complete','teaser','history'].includes(screen)?'home':screen;
   const nav=[['home','홈',editorialIcon('home')],['exam-library','기출문제',editorialIcon('book')],['ox','OX',quizIcon],['study','오답노트',editorialIcon('note')],['jokbo','족보',jokboIcon],['records','내 기록',editorialIcon('records')]];
-  return '<div class="shell editorial-shell six-nav '+(current==='jokbo'?'jokbo-shell':'')+'"><aside class="sidebar"><div class="brand">눈떠보니 한국사<small>역사를 살고, 기출로 기억하다</small></div><nav class="nav" aria-label="주 메뉴">'+nav.map(([id,label,image])=>'<button data-nav="'+id+'" '+(current===id?'aria-current="page"':'')+' class="'+(current===id?'active':'')+'">'+image+'<span>'+label+'</span></button>').join('')+'</nav></aside><main class="main ed-screen ed-'+screen+'">'+content+'</main></div>'+(modal?modalHTML():'');
+  return '<div class="shell editorial-shell six-nav"><aside class="sidebar"><div class="brand">눈떠보니 한국사<small>역사를 살고, 기출로 기억하다</small></div><nav class="nav app-navigation" aria-label="주 메뉴">'+nav.map(([id,label,image])=>'<button data-nav="'+id+'" '+(current===id?'aria-current="page"':'')+' class="'+(current===id?'active':'')+'">'+image+'<span>'+label+'</span></button>').join('')+'</nav></aside><main class="main ed-screen ed-'+screen+'">'+content+'</main></div>'+(modal?modalHTML():'');
  };
  const contentBefore=renderContent;
  renderContent=function(){if(screen==='jokbo')return mainPage();if(screen==='jokbo-group')return groupPage();if(screen==='jokbo-detail')return detailPage();if(screen==='jokbo-compare')return comparePage();return contentBefore();};
@@ -173,6 +173,7 @@
  navigate=function(to){if(to==='jokbo'){saveView();screen='jokbo';groupId=null;detailId=null;detailParentGroupId=null;compareId=null;modal=null;render();revealActiveEraTab();routes.writeRoute('jokbo');restoreListScroll();return;}return navigateBefore(to);};
 
  document.addEventListener('click',function(event){
+  if(Date.now()<suppressSwipeClickUntil&&event.target.closest('.jk-era-content')){event.preventDefault();event.stopImmediatePropagation();return;}
   const b=event.target.closest('button');if(!b||b.disabled)return;const d=b.dataset;
   if(d.nav==='jokbo'){event.preventDefault();event.stopImmediatePropagation();navigate('jokbo');return;}
   if(d.jkSearch!==undefined){event.stopImmediatePropagation();searchOpen=!searchOpen;if(!searchOpen)query='';saveView({scrollY:0});render();revealActiveEraTab();setTimeout(()=>document.querySelector('[data-jk-query]')?.focus(),0);return;}
@@ -189,6 +190,37 @@
   if(d.jkGroupExams){event.stopImmediatePropagation();const group=groupById.get(d.jkGroupExams);if(group)startExamIds(groupExamIds(group),group.eraId);return;}
   if(d.jkEraExams){event.stopImmediatePropagation();startExamIds(eraExamIds(d.jkEraExams).slice(0,20),d.jkEraExams);return;}
  },true);
+ // Lock the gesture to its initial axis; vertical scrolling never changes eras.
+ let eraGesture=null,suppressSwipeClickUntil=0;
+ document.addEventListener('touchstart',event=>{
+  eraGesture=null;suppressSwipeClickUntil=0;
+  if(screen!=='jokbo'||mode!=='all'||query.trim()||event.touches.length!==1||!event.target.closest('[data-jk-swipe="true"]'))return;
+  const t=event.touches[0];eraGesture={x:t.clientX,y:t.clientY,id:t.identifier,axis:null,era:activeEra};
+ },{passive:true});
+ document.addEventListener('touchmove',event=>{
+  if(!eraGesture)return;if(event.touches.length!==1){eraGesture=null;return;}
+  const t=event.touches[0],dx=t.clientX-eraGesture.x,dy=t.clientY-eraGesture.y;
+  if(!eraGesture.axis&&Math.max(Math.abs(dx),Math.abs(dy))>10)eraGesture.axis=Math.abs(dx)>Math.abs(dy)*1.35?'x':'y';
+  if(eraGesture.axis==='x'&&event.cancelable)event.preventDefault();
+ },{passive:false});
+ document.addEventListener('touchcancel',()=>{eraGesture=null;},{passive:true});
+ document.addEventListener('touchend',event=>{
+  const gesture=eraGesture;eraGesture=null;
+  if(!gesture||gesture.axis!=='x'||screen!=='jokbo'||mode!=='all'||query.trim()||activeEra!==gesture.era)return;
+  const t=Array.from(event.changedTouches).find(t=>t.identifier===gesture.id);if(!t)return;
+  const dx=t.clientX-gesture.x,dy=t.clientY-gesture.y;
+  if(Math.abs(dx)<56||Math.abs(dx)<Math.abs(dy)*1.35)return;
+  suppressSwipeClickUntil=Date.now()+450;
+  if(event.cancelable)event.preventDefault();
+  const index=D.eras.findIndex(e=>e.id===activeEra),next=index+(dx<0?1:-1);
+  if(next<0||next>=D.eras.length)return;
+  const previousY=pageScrollY(),oldContent=document.querySelector('[data-jk-swipe="true"]'),contentTop=oldContent.getBoundingClientRect().top+previousY;
+  activeEra=D.eras[next].id;saveView({scrollY:Math.min(previousY,contentTop)});render();revealActiveEraTab();
+  // Keep the header in place at the top; when already scrolled, reveal the new summary start.
+  restorePageScroll(Math.min(previousY,contentTop));
+  const content=document.querySelector('[data-jk-swipe="true"]');
+  if(!globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches)content?.animate?.([{opacity:.45,transform:'translateX('+(dx<0?28:-28)+'px)'},{opacity:1,transform:'translateX(0)'}],{duration:190,easing:'ease-out'});
+ },{passive:false});
  document.addEventListener('input',event=>{if(event.target.matches('[data-jk-query]')){query=event.target.value;saveView({scrollY:0});render();revealActiveEraTab();const input=document.querySelector('[data-jk-query]');input?.focus();input?.setSelectionRange(query.length,query.length);}},true);
  let scrollTimer=0;if(typeof window?.addEventListener==='function')window.addEventListener('scroll',()=>{if(screen!=='jokbo'||restoringScroll)return;clearTimeout(scrollTimer);scrollTimer=setTimeout(()=>{if(screen==='jokbo'&&!restoringScroll)saveView({scrollY:pageScrollY()})},80)},{passive:true});
  const rawRoute=(globalThis.location?.hash||'').replace(/^#/,'');if(rawRoute==='jokbo'||rawRoute.startsWith('jokbo/'))routes.applyRoute(rawRoute);else render();

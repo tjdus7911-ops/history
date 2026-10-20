@@ -396,8 +396,7 @@ if(typeof window?.addEventListener==='function'){
  window.addEventListener('hashchange',oxHandleRouteChange);
 }
 globalThis.OX_QUIZ_UI_READY=true;
-globalThis.REV7_OX_VIEWS={meta:oxMeta,stats:oxStats,era:oxEra,active:activeOXSession,wrongIds:oxCurrentWrongIds,recordSection:oxRecordSection,descriptions:OX_ERA_DESCRIPTIONS,home:()=>oxHome,setHome:view=>{oxHome=view},readRoute:oxReadRoute,writeRoute:oxWriteRoute,applyRoute:oxApplyRoute,addRoute:route=>APP_ROUTES.add(route),setApplyRoute:apply=>{oxApplyRoute=apply;globalThis.REV7_OX_VIEWS.applyRoute=apply}};
+globalThis.REV7_OX_VIEWS={meta:oxMeta,stats:oxStats,eraStats:oxEraStats,questionById:id=>OX_BY_ID.get(id),era:oxEra,active:activeOXSession,wrongIds:oxCurrentWrongIds,recordSection:oxRecordSection,descriptions:OX_ERA_DESCRIPTIONS,home:()=>oxHome,setHome:view=>{oxHome=view},readRoute:oxReadRoute,writeRoute:oxWriteRoute,applyRoute:oxApplyRoute,addRoute:route=>APP_ROUTES.add(route),setApplyRoute:apply=>{oxApplyRoute=apply;globalThis.REV7_OX_VIEWS.applyRoute=apply}};
 Object.assign(globalThis.REV7_OX_VIEWS,{question:activeOXQuestion,topicLabel:oxTopicLabel,setQuiz:view=>{oxQuiz=view},distribution:oxWrongDistribution,resume:()=>{oxView='quiz';screen='ox';oxWriteRoute('ox/quiz');render();window.scrollTo(0,0)}});
 oxApplyRoute(oxReadRoute());
 })();
-

@@ -1,0 +1,98 @@
+name: Story mobile QA and debug APK
+on:
+  push:
+    branches: [main, fix/story-mobile-qa-20261020]
+  workflow_dispatch:
+permissions:
+  contents: read
+env:
+  HISTORY_SOURCE_REVISION: ${{ github.sha }}
+  QA_OUTPUT: artifacts/story-mobile-qa
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --no-audit --no-fund
+      - run: npm install --no-save --package-lock=false playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Fetch original save migration baseline
+        run: |
+          git fetch --depth=1 origin 53c69a2d974a9055c7f24ce509d27d328554c436
+          git fetch --depth=1 origin 914bbf90590cb8ae1bf26d219d04a651e76689a0
+      - name: Story and preserved learning regressions
+        run: |
+          node tests/story-mobile-qa-test.cjs
+          node tests/rev7-layouts-test.cjs
+          node tests/proto-v4-test.cjs
+          node tests/proto-exam-supplement-test.cjs
+          node tests/proto-ui-release-test.cjs
+          node tests/three-save-v3-test.cjs
+          node tests/three-learning-boundary-test.cjs
+          node tests/replay-ui-test.cjs
+          node tests/official-exam-history-test.cjs
+          node tests/rev7-exam-ui-refinement-test.cjs
+          node tests/service-worker-cache-test.cjs
+          node tests/jokbo-test.cjs
+      - name: Actual mobile flows
+        run: node tests/story-mobile-qa-browser.cjs
+      - name: Capture baseline UI before changes
+        run: node tests/menu-design-qa-browser.cjs --before
+      - name: Verify all seven menu screens after changes
+        run: node tests/menu-design-qa-browser.cjs
+      - run: npm run build
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: story-web-qa
+          path: artifacts/story-mobile-qa
+          retention-days: 14
+  android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
+      - run: sdkmanager "platforms;android-36" "build-tools;36.0.0"
+      - run: npm ci --no-audit --no-fund
+      - run: npm install --no-save --package-lock=false playwright
+      - name: Capacitor sync and debug APK
+        run: |
+          npm run android:sync
+          node scripts/run-android-gradle.cjs assembleDebug testDebugUnitTest --no-daemon
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Real Android WebView scenarios
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          target: google_apis
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          script: node tests/android-story-qa.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: history-debug-apk-and-android-qa
+          path: |
+            android/app/build/outputs/apk/debug/app-debug.apk
+            android-web/android-build-info.json
+            artifacts/story-mobile-qa
+          retention-days: 14

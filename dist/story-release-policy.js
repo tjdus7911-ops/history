@@ -28,7 +28,7 @@
    if(!allowedEra(era))return coming(era);
   }
   if(route?.startsWith('era/')){
-   const era=decodeURIComponent(route.slice(4));
+   const era=decodeURIComponent(route.slice(4).split('/')[0]);
    if(!allowedEra(era)){selectedEra=era;screen='era';modal=null;render();window.scrollTo(0,0);return route;}
   }
   return applyBefore(route);
