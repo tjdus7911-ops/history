@@ -27,7 +27,8 @@ async function runFlow(initialPage,{width,native=false,relaunch,screenshot}={}){
  const headings=[];
  for(const menu of ['exam-library','ox','jokbo','records']){
   await click('nav [data-nav="'+menu+'"]');await page.locator('.r7-menu-heading').waitFor();await page.evaluate(()=>scrollTo(0,0));
-  const measured=await page.locator('.r7-menu-heading h1').first().evaluate(el=>{const r=el.getBoundingClientRect(),s=getComputedStyle(el),header=el.closest('header'),h=header.getBoundingClientRect(),p=getComputedStyle(header);return {x:r.x,y:r.y,family:s.fontFamily,size:s.fontSize,weight:s.fontWeight,line:s.lineHeight,headerHeight:h.height,padding:p.padding,letterSpacing:s.letterSpacing};});
+  const {style:measured,original}=await page.locator('.r7-menu-heading h1').first().evaluate((el,checkOriginal)=>{const header=el.closest('header'),read=()=>{const r=el.getBoundingClientRect(),s=getComputedStyle(el),h=header.getBoundingClientRect(),p=getComputedStyle(header);return {x:r.x,y:r.y,family:s.fontFamily,size:s.fontSize,weight:s.fontWeight,line:s.lineHeight,headerHeight:h.height,padding:p.padding,letterSpacing:s.letterSpacing};};const style=read();let original=null;if(checkOriginal){header.classList.remove('r7-menu-heading');original=read();header.classList.add('r7-menu-heading');}return {style,original};},menu==='exam-library');
+  if(original)assert.deepEqual(measured,original,'shared header must preserve the original exam header exactly');
   if(headings.length){assert.deepEqual(measured,headings[0].style,menu+' header must exactly match existing exam title');}else{assert.equal(measured.size,'26px');assert.equal(measured.line,'36px');assert.equal(measured.weight,'700');assert.equal(measured.x,20);assert.equal(measured.headerHeight,64);}
   headings.push({menu,style:measured});await capture('header-'+menu);
  }

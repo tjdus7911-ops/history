@@ -34,7 +34,7 @@ html body .jk-appbar h1{font:700 18px/26px var(--r7-ui)}
 /* Main menu titles inherit the existing exam header's 64px / 10px / 14px
    geometry. Fixed header height keeps 44px utility buttons from shifting h1. */
 html body .r7-menu-heading{box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;height:64px;min-height:64px;padding:10px 0 14px;margin:0}
-html body .r7-menu-heading.r7-heading h1,html body .r7-menu-heading.jk-heading h1{font:700 26px/36px var(--r7-serif);letter-spacing:-.26px;margin:0;padding:0}
+html body .r7-menu-heading.r7-heading h1,html body .r7-menu-heading.jk-heading h1{font:700 26px/36px var(--r7-serif);letter-spacing:0;margin:0;padding:0}
 html body .jk-main{max-width:560px;padding-top:0;padding-left:0;padding-right:0}
 html body .jk-heading-subtitle{font:450 13px/19px var(--r7-ui);color:var(--r7-sub);margin:0 0 16px}
 @media(max-width:700px){html body .main:is(.ed-ox,.ed-records,.ed-jokbo):has(.r7-menu-heading){padding-top:18px;padding-left:20px;padding-right:20px}html body .r7-page:is(.r7-ox-home,.r7-my){margin-top:0}}
