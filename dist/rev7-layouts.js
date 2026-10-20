@@ -10,7 +10,7 @@
   const asset = name => '<span class="r7-icon" aria-hidden="true"><img src="media/rev7/' + name + '.svg" alt=""></span>';
   const chevron = () => asset('chevron');
   const tile = (label, value, caption) => '<article class="r7-tile"><small>' + label + '</small><strong>' + value + '</strong><p>' + caption + '</p></article>';
-  const header = (title, profile = false) => '<header class="r7-heading"><h1>' + title + '</h1>' + (profile ? '<button class="r7-profile" data-action="status" aria-label="내 상태 보기">' + asset('user') + '</button>' : '') + '</header>';
+  const header = (title, profile = false) => '<header class="r7-heading r7-menu-heading"><h1>' + title + '</h1>' + (profile ? '<button class="r7-profile" data-action="status" aria-label="내 상태 보기">' + asset('user') + '</button>' : '') + '</header>';
   const bar = title => '<header class="r7-appbar"><button data-r7-record-home aria-label="내 기록으로 돌아가기">' + asset('back') + '</button><h1>' + title + '</h1><span></span></header>';
   const day = value => learningDay(value);
   let recordView = 'home', wrongStatus = 'needed', filterOpen = false, filterDraft = 'all', wrongDetailId = null;
@@ -31,6 +31,14 @@
     for (const progress of Object.values(meta().eraProgress || {})) {
       for (const id of progress.resume?.run?.visited || []) scenes.add(id);
       for (const id of progress.resume?.mainRun?.visited || []) scenes.add(id);
+    }
+    // A chapter restart replaces its live cursor, not its cumulative reading.
+    for (const book of [meta().protoRevisionBook, meta().threeCompleteBook]) {
+      for (const id of book?.readSceneIds || []) scenes.add(id);
+    }
+    for (const record of Object.values(meta().chapterRecords || {})) {
+      for (const id of record.finalRun?.visited || []) scenes.add(id);
+      for (const id of record.latestRun?.finalRun?.visited || []) scenes.add(id);
     }
     return [...scenes].filter(id => STORIES[id]);
   }

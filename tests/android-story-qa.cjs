@@ -12,7 +12,7 @@ const launch=()=>adb('shell','am','start','-W','-n',app+'/.MainActivity');
  const width=await page.evaluate(()=>innerWidth),result=await runFlow(page,{native:true,width,relaunch:async()=>{adb('shell','am','force-stop',app);launch();return connect();},screenshot:async file=>fs.writeFileSync(file,execFileSync('adb',['exec-out','screencap','-p'],{maxBuffer:20*1024*1024}))});
  const finalPage=await connect(),click=async selector=>{await finalPage.waitForFunction(()=>Date.now()>=inputLockedUntil);await finalPage.locator(selector).filter({visible:true}).first().click();};
  adb('shell','input','keyevent','4');await finalPage.locator('[data-figma-frame="M-01"]').waitFor();
- await click('nav [data-nav="home"]');await click('[data-era-open="proto-kingdoms"]');await click('.r7-era-resume');await finalPage.locator('.r7-story-play').waitFor();
+  await click('nav [data-nav="home"]');await click('[data-r7-story-resume="proto-kingdoms"]');await click('[data-r7-story-continue="proto-kingdoms"]');await finalPage.locator('.r7-story-play').waitFor();
  const beforeBack=await finalPage.evaluate(()=>JSON.stringify({chapter:run().currentChapter,story:run().storyId,cursor:run().dialogueCursor,pending:run().pending}));
  await click('[data-r7-story-menu]');await click('[data-action="restart-current"]');await finalPage.locator('.r7-restart-confirm').waitFor();adb('shell','input','keyevent','4');await finalPage.locator('.r7-restart-confirm').waitFor({state:'detached'});
  assert.equal(await finalPage.evaluate(()=>JSON.stringify({chapter:run().currentChapter,story:run().storyId,cursor:run().dialogueCursor,pending:run().pending})),beforeBack,'Android Back cancels restart without data changes');

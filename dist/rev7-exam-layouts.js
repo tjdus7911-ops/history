@@ -9,7 +9,7 @@
  const tabs=active=>'<div class="r7-tabs" role="tablist" aria-label="기출문제 보기 방식"><button data-official-tab="round" aria-selected="'+(active==='round')+'">회차별</button><button data-official-tab="era" aria-selected="'+(active==='era')+'">시대별</button><button data-official-results-list="true" aria-selected="'+(active==='history')+'">기록</button></div>';
  const chips=()=>'<div class="r7-chips r7-exam-levels" aria-label="시험 유형">'+[['all','전체'],['기본','기본'],['심화','심화']].map(([id,label])=>'<button data-r7-exam-level="'+id+'" aria-pressed="'+(level===id)+'">'+label+'</button>').join('')+'</div>';
  const modeTabs=()=>'<div class="r7-exam-modes" role="group" aria-label="기출문제 풀이 모드">'+[['exam','시험처럼 풀기'],['learn','학습처럼 풀기']].map(([id,label])=>'<button data-r7-exam-mode="'+id+'" aria-pressed="'+(practiceMode===id)+'">'+label+'</button>').join('')+'</div><p class="r7-note">'+(practiceMode==='learn'?'회차를 고르면 시간 제한 없이 정답과 해설을 문제마다 확인해요.':'회차를 고르면 시험 안내를 확인하고 시작할 수 있어요.')+'</p>';
- const heading=()=>'<header class="r7-heading"><h1>기출문제</h1></header>';
+ const heading=()=>'<header class="r7-heading r7-menu-heading"><h1>기출문제</h1></header>';
  views.setHome(function(){
   const state=views.state(),active=meta().officialExamActiveSession;
   if(state.tab==='era'){

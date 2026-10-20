@@ -25,6 +25,7 @@ jobs:
       - name: Story and preserved learning regressions
         run: |
           node tests/story-mobile-qa-test.cjs
+          node tests/rev7-layouts-test.cjs
           node tests/proto-v4-test.cjs
           node tests/proto-exam-supplement-test.cjs
           node tests/proto-ui-release-test.cjs

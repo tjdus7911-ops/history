@@ -14,6 +14,7 @@ g.click({action:'close'});assert.deepEqual(g.copy('({chapter:run().currentChapte
 g.click({action:'restart-current',chapter:'proto-ch02'});g.click({action:'confirm-restart-current'});
 assert.equal(g.run('run().currentChapter'),'proto-ch02');assert.equal(g.run('run().storyId'),'proto_ch02_s1');assert.equal(g.run('run().dialogueCursor'),1);assert.equal(g.run('run().pending'),null);assert.deepEqual(protectedData(g),before);assert.deepEqual(g.copy('state.mainRun'),main);
 const storage=Object.fromEntries(g.storage);g=load(storage);g.run('resumeEra("proto-kingdoms")');assert.equal(g.run('run().currentChapter'),'proto-ch02');assert.equal(g.run('run().dialogueCursor'),1);assert.deepEqual(protectedData(g),before);
+g.click({nav:'records'});g.click({r7RecordLearning:''});g.click({recordPeriod:'all'});const displayed=Number(/<small>읽은 장면<\/small><strong>(\d+)/.exec(g.run('records()'))?.[1]);assert(displayed>=g.run('meta().protoRevisionBook.readSceneIds.length'),'cumulative completed scenes remain visible after chapter restart');assert.deepEqual(protectedData(g),before);
 // The exact same confirm path must reset each implemented chapter. Other eras
 // remain unpublished in the product; only this internal regression bypasses the release gate.
 const internal=load({}, {overrides:{'story-release-policy.js':''}}),chapters=internal.copy('Object.values(CHAPTERS).filter(ch=>CHAPTER_ACCESS.available(ch.chapterId)).map(ch=>ch.chapterId)');
