@@ -179,15 +179,7 @@
   const c=comparisonById.get(compareId);if(!c)return mainPage();const topic=c.topics[Math.max(0,Math.min(compareTopic,c.topics.length-1))];
   return '<section class="jk-page jk-compare" data-page="jokbo-compare">'+appbar('개념 비교')+(c.topics.length>1?'<div class="jk-compare-tabs" role="tablist" aria-label="비교 주제">'+c.topics.map((t,i)=>'<button role="tab" data-jk-compare-topic="'+i+'" aria-selected="'+(i===compareTopic)+'">'+esc(t.label)+'</button>').join('')+'</div>':'')+'<header class="jk-compare-head"><h2>'+esc(c.title)+'</h2><p>시험에서 구분되는 단서만 짧게 비교해요.</p></header><div class="jk-compare-list">'+topic.entries.map(row=>'<article class="jk-compare-entry"><div><small class="jk-compare-heading">'+esc(row.heading)+'</small><h3 class="jk-compare-keyword">'+esc(row.keyword)+'</h3><p class="jk-compare-description">'+esc(row.description)+'</p></div></article>').join('')+'</div><section class="jk-test-point"><small class="jk-test-point-label">시험 포인트</small><p class="jk-test-point-text">'+esc(topic.point)+'</p></section></section>';
  }
- // 홈 진입점: '실전 학습' 목록의 족보 줄과 홈 하단 플로팅 버튼. 하단 메뉴는 기존 5개 그대로 둔다.
- function homeEntryRow(){return '<button class="hv-row hv-row-jokbo" data-jk-open="home"><span class="hv-ico coral">'+jokboIcon+'</span><span class="hv-row-text"><b>족보</b><small>시대별 핵심 키워드를 카드로 정리해요</small></span><span class="hv-chev">'+chevron+'</span></button>';}
- function withHomeEntry(html){
-  if(html.includes('data-jk-open="home"'))return html;
-  const at=html.indexOf('aria-label="실전 학습"');if(at<0)return html;
-  const wrong=html.indexOf('<div class="hv-row hv-row-wrong',at),wrongButton=html.indexOf('<button class="hv-row hv-row-wrong',at),end=html.indexOf('</div></section>',at);
-  const candidates=[wrong,wrongButton].filter(i=>i>at&&(end<0||i<end));const insertAt=candidates.length?Math.min(...candidates):end;
-  return insertAt<0?html:html.slice(0,insertAt)+homeEntryRow()+html.slice(insertAt);
- }
+ // 홈 진입점: 홈 하단(메뉴 바로 위)에 고정된 족보 버튼 하나. 하단 메뉴 5개는 그대로 둔다.
  const homeFab='<div class="jk-home-dock"><button type="button" class="jk-home-fab" data-jk-open="home" aria-label="족보 열기, 시대별 핵심 키워드 카드">'+jokboIcon+'<span><b>족보</b><small>시대별 핵심 키워드 한눈에 보기</small></span><i aria-hidden="true">'+chevron+'</i></button></div>';
 
  // Final navigation shell: the five existing destinations only. 족보 screens belong to 홈.
@@ -198,7 +190,7 @@
   return '<div class="shell editorial-shell app-nav-shell"><aside class="sidebar"><div class="brand">눈떠보니 한국사<small>역사를 살고, 기출로 기억하다</small></div><nav class="nav app-navigation" aria-label="주 메뉴">'+nav.map(([id,label,image])=>'<button data-nav="'+id+'" '+(current===id?'aria-current="page"':'')+' class="'+(current===id?'active':'')+'">'+image+'<span>'+label+'</span></button>').join('')+'</nav></aside><main class="main ed-screen ed-'+screen+'">'+content+'</main>'+(screen==='home'?homeFab:'')+'</div>'+(modal?modalHTML():'');
  };
  const contentBefore=renderContent;
- renderContent=function(){if(screen==='jokbo')return mainPage();if(screen==='jokbo-group')return groupPage();if(screen==='jokbo-detail')return detailPage();if(screen==='jokbo-compare')return comparePage();const html=contentBefore();return screen==='home'?withHomeEntry(html):html;};
+ renderContent=function(){if(screen==='jokbo')return mainPage();if(screen==='jokbo-group')return groupPage();if(screen==='jokbo-detail')return detailPage();if(screen==='jokbo-compare')return comparePage();return contentBefore();};
  routes.addRoute('jokbo');
  for(const g of D.groups)routes.addRoute('jokbo/group/'+g.id);
  for(const k of D.keywords)routes.addRoute('jokbo/detail/'+k.id);

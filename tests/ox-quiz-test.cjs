@@ -193,7 +193,7 @@ assert.equal(session.mode,'era');assert.equal(session.eraId,'goryeo');assert.equ
 assert.equal(new Set(session.questionIds).size,sessionSize);assert(session.questionIds.every(id=>questions.find(question=>question.id===id)?.eraId==='goryeo'));
 assert.deepEqual(session.questionFingerprints,Object.fromEntries(session.questionIds.map(id=>[id,questions.find(question=>question.id===id).contentFingerprint])),'session must snapshot current source fingerprints');
 const firstSessionIds=[...session.questionIds],firstQuestion=questions.find(question=>question.id===session.questionIds[0]);
-assert(html.includes('한능검 심화 핵심 개념'),'the answer-bearing topic label must stay hidden before answering');
+assert(html.includes('한능검 심화 핵심 개념')||html.includes('data-r7-ox-card'),'the answer-bearing topic label must stay hidden before answering (swipe card shows only the era)');
 assert(!html.includes(firstQuestion.tags.join(' · ')),'the correct topic must not leak before an O/X choice');
 assert(!html.includes('class="ox-feedback')&&!html.includes('data-ox-next="true"'),'answer, explanation, and next action must stay hidden before an O/X choice');
 answerCurrent(false);

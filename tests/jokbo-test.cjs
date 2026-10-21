@@ -132,8 +132,8 @@ assert(g.run('renderContent()').includes('스토리 준비 중'));
 // 카드형 개편: 홈 진입점, 시대·나라 칩, 요약 행 전체 노출
 const card=load();
 card.run("screen='home'");
-assert(card.run("renderContent().includes('data-jk-open=\"home\"')"),'홈 실전 학습에 족보 진입 줄');
-assert(card.run("shell(renderContent()).includes('class=\"jk-home-dock\"')"),'홈 하단 족보 바로가기');
+assert.equal(card.run("renderContent().includes('data-jk-open=\"home\"')"),false,'홈 본문에는 족보 줄을 넣지 않음');
+assert(card.run("shell(renderContent()).includes('class=\"jk-home-dock\"')"),'홈 하단 족보 버튼');
 card.click({jkOpen:'home'});
 assert.equal(card.run('screen'),'jokbo','홈에서 족보 진입');
 assert(card.run("renderContent().includes('data-jk-back=\"home\"')"),'족보 첫 화면에서 홈으로 돌아가기');

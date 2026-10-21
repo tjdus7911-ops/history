@@ -1089,7 +1089,32 @@ html body .main.ed-home { padding-bottom: calc(150px + env(safe-area-inset-botto
 }
 @media (max-width: 370px) {
   html body .jk-page { --jk-card-pad: 14px; }
-  html body .jk-fact-value { font-size: 15px; line-height: 23px; }
   html body .jk-fact-label { min-width: 52px; padding-inline: 7px; }
 }
 @media (prefers-reduced-motion: reduce) { html body .jk-pager-dots i { transition: none; } }
+
+/* 글자 크기 체계(ui-refresh.css와 동일 기준): 화면 제목 20 · 카드/섹션 제목 16~18 · 키워드 16 · 설명·필터·버튼 14 · 표시용 12~13 */
+html body .jk-heading-subtitle { font-size: 14px; line-height: 20px; }
+html body .jk-filterbar .jk-segment button { font-size: 15px; line-height: 22px; font-weight: 700; min-height: 44px; }
+html body .jk-filterbar .jk-segment button[aria-selected=false] { font-weight: 500; }
+html body .jk-chiprow-label { font-size: 13px; }
+html body .jk-chips button > span { font-size: 14px; min-height: 32px; padding-inline: 13px; }
+html body .jk-era-pager h2, html body .jk-saved-head h2 { font-size: 18px; line-height: 26px; font-weight: 700; letter-spacing: -.02em; }
+html body .jk-era-pager p, html body .jk-saved-head p, html body .jk-swipe-hint { font-size: 14px; line-height: 20px; }
+html body .jk-swipe-hint { font-size: 13px; }
+html body .jk-card-head h3 { font-size: 17px; line-height: 24px; font-weight: 700; letter-spacing: -.02em; }
+html body .jk-fact-label { font-size: 13px; }
+html body .jk-fact-value { font-size: 16px; line-height: 24px; font-weight: 600; letter-spacing: -.02em; }
+html body .jk-card-more { font-size: 14px; }
+html body .jk-card-more small { font-size: 13px; }
+html body .jk-links h2, html body .jk-exam-cta h2, html body .jk-empty h2 { font-size: 16px; line-height: 24px; font-weight: 700; }
+html body .jk-links b { font-size: 16px; }
+html body .jk-links small, html body .jk-exam-cta p { font-size: 14px; }
+html body .jk-compare-link i, html body .jk-links i { font-size: 18px; }
+html body .jk-group-overview h2, html body .jk-detail-title, html body .jk-compare-head h2 { font-size: 18px; line-height: 26px; font-weight: 700; letter-spacing: -.02em; }
+html body .jk-group-overview p, html body .jk-detail-description, html body .jk-group-keyword-description { font-size: 14px; line-height: 21px; }
+html body .jk-detail-section h2, html body .jk-related > div h2 { font-size: 16px; line-height: 24px; font-weight: 700; }
+html body .jk-detail-section li p, html body .jk-clue p { font-size: 15px; line-height: 23px; }
+html body .jk-compare-keyword { font-size: 16px; line-height: 24px; }
+html body .jk-home-fab b { font-size: 15px; }
+html body .jk-home-fab small { font-size: 14px; }
