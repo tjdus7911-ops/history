@@ -81,7 +81,9 @@ assert(g.run("(()=>{const html=renderContent();return html.indexOf('jk-heading')
 assert(g.run("renderContent().includes('<span class=\"jk-segment-count is-empty\">0</span>')"),'선택 시대 저장 0 중립 배지 마크업');
 assert(g.run("renderContent().includes('data-jk-era=\"proto\" aria-selected=\"true\"><span>원삼국</span>')"),'시대 선택 독립 칩 마크업');
 assert(g.run("shell(renderContent()).includes('data-icon=\"answer-sheet\"')"),'OX 답안지 아이콘');
-assert(g.run("shell(renderContent()).includes('data-icon=\"summary-book\"')"),'족보 요약집 아이콘');
+assert.equal(g.run("shell(renderContent()).includes('data-nav=\"jokbo\"')"),false,'족보는 하단 메뉴에 추가하지 않음');
+assert.deepEqual(g.copy("[...shell(renderContent()).matchAll(/data-nav=\"([^\"]+)\"/g)].map(m=>m[1])"),['home','exam-library','ox','study','records'],'하단 메뉴 5개 유지');
+assert(g.run("shell(renderContent()).includes('<button data-nav=\"home\" aria-current=\"page\"')"),'족보 화면은 홈 하위로 표시');
 assert.equal(g.run("shell(renderContent()).includes('<b>OX</b>')"),false,'OX 텍스트 중복 제거');
 g.click({jkMode:'saved'});
 assert(g.run("renderContent().includes('원삼국 저장 키워드')"),'저장 보기 선택 시대 제목');
@@ -127,10 +129,39 @@ g.run("REV7_OX_VIEWS.applyRoute('era/goryeo')");
 assert.equal(g.run('screen'),'era');
 assert(g.run('renderContent()').includes('스토리 준비 중'));
 
+// 카드형 개편: 홈 진입점, 시대·나라 칩, 요약 행 전체 노출
+const card=load();
+card.run("screen='home'");
+assert(card.run("renderContent().includes('data-jk-open=\"home\"')"),'홈 실전 학습에 족보 진입 줄');
+assert(card.run("shell(renderContent()).includes('class=\"jk-home-dock\"')"),'홈 하단 족보 바로가기');
+card.click({jkOpen:'home'});
+assert.equal(card.run('screen'),'jokbo','홈에서 족보 진입');
+assert(card.run("renderContent().includes('data-jk-back=\"home\"')"),'족보 첫 화면에서 홈으로 돌아가기');
+assert(card.run("renderContent().includes('2 / 9')"),'시대 위치 표시');
+assert.deepEqual(card.copy("JOKBO_API.countries('proto')"),['부여','고구려','옥저','동예','삼한'],'원삼국 나라 칩');
+assert.deepEqual(card.copy("JOKBO_API.countries('three')"),['고구려','백제','신라','가야'],'삼국 나라 칩');
+assert.deepEqual(card.copy("JOKBO_API.countries('north-south')"),['신라','발해','후삼국'],'남북국 나라 칩');
+assert.deepEqual(card.copy("JOKBO_API.countries('goryeo')"),[],'단일 국가 시대는 나라 칩 숨김');
+card.click({jkEra:'three'});
+card.click({jkCountry:'백제'});
+assert.equal(card.run('JOKBO_API.state().country'),'백제');
+assert(card.run("(()=>{const h=renderContent();return h.includes('data-jk-fact-name>고흥</span>')&&h.includes('data-jk-fact-name>사택지적</span>')&&!h.includes('data-jk-fact-name>소수림왕</span>')})()"),'백제 칩: 백제 행만 표시');
+card.click({jkEra:'proto'});
+assert.equal(card.run('JOKBO_API.state().country'),'all','시대를 바꾸면 나라 칩 초기화');
+const factMarkup=(html,k)=>k.every(row=>html.includes('data-jk-fact-name>'+row.label+'</span>'));
+for(const k of card.copy('JOKBO_DATA.keywords.map(k=>({id:k.id,rows:(k.summaryRows||[{label:k.label,value:k.value}]).map(r=>({label:r.label}))}))')){
+  card.run(`REV7_OX_VIEWS.applyRoute('jokbo/detail/${k.id}')`);
+  assert(factMarkup(card.run('renderContent()'),k.rows),'개념 상세 요약 키워드 전부: '+k.id);
+}
+card.run("REV7_OX_VIEWS.applyRoute('jokbo')");card.click({jkMode:'saved'});card.click({jkEra:'three'});
+card.click({jkSave:'geunchogo'});
+assert(card.run("(()=>{const h=renderContent();return h.includes('data-jk-fact-name>근초고왕</span>')&&h.includes('data-jk-fact-name>고흥</span>')})()"),'저장 카드도 요약 행 전부');
+
 const index=fs.readFileSync('dist/index.html','utf8'),worker=fs.readFileSync('dist/sw.js','utf8'),css=fs.readFileSync('dist/jokbo.css','utf8');
 for(const file of ['jokbo.css','jokbo-data.js','jokbo-ui.js','story-release-policy.js'])assert(index.includes(file),file+' index 연결');
 for(const file of ['/jokbo.css','/jokbo-data.js','/jokbo-ui.js','/story-release-policy.js'])assert(worker.includes(file),file+' 오프라인 캐시');
-assert(css.includes('repeat(6,minmax(0,1fr))'),'6개 하단 메뉴');
+assert(css.includes('repeat(5,minmax(0,1fr))'),'5개 하단 메뉴');
+assert(!css.includes('repeat(6,minmax(0,1fr))'),'6칸 하단 메뉴 제거');
 assert(css.includes('@media(max-width:370px)'),'360px 대응');
 assert(css.includes('.jk-segment button[aria-selected=true]::after'),'보기 방식 선택 밑줄');
 assert(css.includes('.jk-segment-count'),'중립 저장 개수 배지');

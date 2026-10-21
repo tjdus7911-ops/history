@@ -786,8 +786,8 @@
   text-wrap: pretty;
 }
 
-/* Six-item bottom navigation added by the 족보 feature. */
-.six-nav .nav button > svg {
+/* Shared five-item bottom navigation (족보 is opened from 홈). */
+.app-nav-shell .nav button > svg {
   width: 22px;
   height: 22px;
   fill: none;
@@ -796,8 +796,8 @@
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.six-nav .nav button > svg.ed-icon { width: 22px; height: 22px; }
-.six-nav .nav button.active { color: var(--jk-coral-ink); }
+.app-nav-shell .nav button > svg.ed-icon { width: 22px; height: 22px; }
+.app-nav-shell .nav button.active { color: var(--jk-coral-ink); }
 
 @media (hover: hover) {
   .jk-keyword:hover,
@@ -811,8 +811,8 @@
   .main.ed-jokbo-detail,
   .main.ed-jokbo-compare { padding-right: 42px; padding-left: 42px; }
   .jk-page { padding-top: 24px; }
-  .six-nav .nav { gap: 6px; }
-  .six-nav .nav button { padding: 13px 16px; }
+  .app-nav-shell .nav { gap: 6px; }
+  .app-nav-shell .nav button { padding: 13px 16px; }
   .jk-exam-cta button { width: auto; min-width: 240px; }
 }
 
@@ -833,17 +833,17 @@
     margin-right: -4px;
     margin-left: -4px;
   }
-  .editorial-shell.six-nav .sidebar {
+  .editorial-shell.app-nav-shell .sidebar {
     height: auto;
     padding: 0 4px env(safe-area-inset-bottom, 0px);
     border-top: 1px solid var(--jk-line);
   }
-  .editorial-shell.six-nav .nav {
+  .editorial-shell.app-nav-shell .nav {
     display: grid;
-    grid-template-columns:repeat(6,minmax(0,1fr));
+    grid-template-columns:repeat(5,minmax(0,1fr));
     height: 72px;
   }
-  .editorial-shell.six-nav .nav button {
+  .editorial-shell.app-nav-shell .nav button {
     min-width: 0;
     min-height: 72px;
     padding: 7px 1px;
@@ -851,10 +851,10 @@
     font-size: 9px;
     letter-spacing: -.04em;
   }
-  .editorial-shell.six-nav .nav button span { white-space: nowrap; }
-  .editorial-shell.six-nav .nav .ed-icon,
-  .editorial-shell.six-nav .nav button > svg { width: 21px; height: 21px; }
-  .editorial-shell.six-nav .nav button.active { background: none; color: var(--jk-coral-ink); }
+  .editorial-shell.app-nav-shell .nav button span { white-space: nowrap; }
+  .editorial-shell.app-nav-shell .nav .ed-icon,
+  .editorial-shell.app-nav-shell .nav button > svg { width: 21px; height: 21px; }
+  .editorial-shell.app-nav-shell .nav button.active { background: none; color: var(--jk-coral-ink); }
 }
 
 @media(max-width:370px) {
@@ -874,7 +874,7 @@
   .jk-compare-heading { font-size: 16px; }
   .jk-test-point { grid-template-columns: 1fr; gap: 6px; }
   .jk-test-point-label { justify-self: start; }
-  .editorial-shell.six-nav .nav button { font-size: 8.5px; }
+  .editorial-shell.app-nav-shell .nav button { font-size: 8.5px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -882,3 +882,214 @@
   .jk-page *::before,
   .jk-page *::after { scroll-behavior: auto !important; transition: none !important; }
 }
+
+/* ───────────────────────────────────────────────────────────────
+ * 족보 카드형 개편 — 키워드 카드, 시대·나라 칩, 시대 스와이프 페이저.
+ * 기존 Rev.7 토큰(흰 배경·네이비 글자·코랄 #E9513B 강조)만 사용한다.
+ * ─────────────────────────────────────────────────────────────── */
+html body .jk-page { --jk-card-radius: 12px; --jk-card-pad: 16px; }
+
+/* 제목줄: 홈으로 돌아가는 화살표 + 족보 + 검색 */
+html body .jk-heading.r7-menu-heading { justify-content: flex-start; gap: 4px; }
+html body .jk-heading.r7-menu-heading h1 { flex: 1; min-width: 0; }
+html body .jk-heading-back {
+  display: grid; place-items: center; width: 44px; height: 44px; margin-left: -12px; padding: 0;
+  border: 0; border-radius: 6px; background: transparent; color: var(--jk-ink);
+}
+html body .jk-heading-back:active { background: var(--jk-sunken); }
+html body .jk-heading-back svg { width: 26px; height: 26px; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+html body .jk-search-button { margin-right: -10px; }
+html body .jk-heading-subtitle { margin: -4px 0 12px; }
+
+/* 상단 필터: 보기 탭 + 시대 칩 + 나라 칩, 스크롤해도 위에 남는다 */
+html body .jk-filterbar {
+  position: sticky; top: 0; z-index: 6;
+  margin: 0 -20px; padding: 4px 20px 4px;
+  background: #fff;
+  border-bottom: 1px solid var(--jk-line);
+}
+html body .capacitor-native .jk-filterbar, html.capacitor-native body .jk-filterbar { top: env(safe-area-inset-top, 0px); }
+html body .jk-filterbar .jk-segment { margin: 0 0 10px; gap: 22px; }
+html body .jk-chiprow { display: flex; align-items: center; gap: 8px; min-width: 0; margin: 0 0 6px; }
+html body .jk-chiprow-label {
+  flex: none; width: 30px; color: var(--jk-faint);
+  font-size: 12px; line-height: 18px; font-weight: 700; letter-spacing: 0;
+}
+html body .jk-chips {
+  display: flex; gap: 6px; flex: 1; min-width: 0; margin: 0; padding: 0 24px 0 0;
+  overflow-x: auto; overflow-y: hidden; scroll-snap-type: x proximity; scrollbar-width: none;
+  overscroll-behavior-inline: contain; touch-action: pan-x; -webkit-overflow-scrolling: touch;
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent);
+          mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent);
+}
+html body .jk-chips::-webkit-scrollbar { display: none; }
+html body .jk-chips button {
+  flex: 0 0 auto; display: inline-flex; align-items: center; min-height: 44px; padding: 0;
+  border: 0; border-radius: 0; background: transparent; scroll-snap-align: start;
+}
+html body .jk-chips button > span {
+  display: inline-flex; align-items: center; min-height: 34px; padding: 0 14px;
+  border: 1px solid var(--jk-line-strong); border-radius: 999px; background: #fff;
+  color: var(--jk-sub); font-size: 14px; line-height: 20px; font-weight: 500; white-space: nowrap;
+}
+html body .jk-chips button[aria-selected=true] > span { border-color: var(--jk-coral); background: var(--jk-coral); color: #fff; font-weight: 700; }
+html body .jk-chips button[aria-selected=true]:active > span { background: var(--jk-coral-press); }
+html body .jk-country-chips button[aria-selected=true] > span { border-color: var(--jk-coral); background: var(--jk-coral-soft); color: var(--jk-coral-ink); }
+
+/* 시대 페이저: 이전/다음 시대 버튼, 위치(2/9), 점 표시, 스와이프 안내 */
+html body .jk-era-content { position: relative; padding-top: 10px; touch-action: pan-y; will-change: transform; }
+html body .jk-era-content.is-dragging { transition: none; }
+html body .jk-era-pager {
+  display: grid; grid-template-columns: 44px minmax(0,1fr) 44px; align-items: center; gap: 6px;
+  margin: 0; padding: 4px 0 6px; border: 0;
+}
+html body .jk-pager-title { min-width: 0; text-align: center; }
+html body .jk-pager-count {
+  display: inline-block; margin-bottom: 2px; padding: 1px 8px; border-radius: 999px;
+  background: var(--jk-sunken); color: var(--jk-sub); font-size: 11px; line-height: 16px; font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+html body .jk-era-pager h2 { font-size: 21px; line-height: 29px; font-weight: 800; letter-spacing: -.035em; word-break: keep-all; }
+html body .jk-era-pager p { margin-top: 1px; color: var(--jk-sub); font-size: 13px; line-height: 19px; word-break: keep-all; }
+html body .jk-pager-step {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px;
+  width: 44px; height: 44px; min-width: 0; padding: 0; border: 1px solid var(--jk-line-strong); border-radius: 999px; background: #fff;
+  color: var(--jk-sub);
+}
+html body .jk-pager-step:active { background: var(--jk-coral-soft); }
+html body .jk-pager-step.is-empty { border-color: transparent; background: transparent; }
+html body .jk-pager-step svg { width: 22px; height: 22px; stroke: var(--jk-coral); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+html body .jk-pager-step span { display: none; }
+html body .jk-pager-dots { display: flex; justify-content: center; gap: 5px; margin: 2px 0 4px; }
+html body .jk-pager-dots i { width: 6px; height: 6px; border-radius: 3px; background: var(--jk-line-strong); transition: width .18s ease, background .18s ease; }
+html body .jk-pager-dots i.is-active { width: 18px; background: var(--jk-coral); }
+html body .jk-swipe-hint { margin: 0 0 12px; color: var(--jk-faint); font-size: 12px; line-height: 18px; text-align: center; }
+@media (hover: hover) and (pointer: fine) { html body .jk-swipe-hint { display: none; } }
+html body .jk-saved-head { padding: 2px 0 12px; text-align: center; }
+html body .jk-saved-head h2 { font-size: 21px; line-height: 29px; font-weight: 800; }
+html body .jk-saved-head p { color: var(--jk-sub); font-size: 13px; line-height: 19px; }
+
+/* 카드 */
+html body .jk-page .jk-card {
+  display: block; margin: 0; padding: var(--jk-card-pad);
+  border: 1px solid var(--jk-line); border-radius: var(--jk-card-radius); background: #fff;
+  box-shadow: 0 1px 2px rgba(36,50,66,.04), 0 4px 14px rgba(36,50,66,.04);
+}
+html body .jk-groups { display: grid; gap: 12px; border-top: 0; }
+html body .jk-groups > .jk-group { padding: 0; border-bottom: 1px solid var(--jk-line); overflow: hidden; }
+html body .jk-card-head { display: flex; align-items: center; gap: 8px; min-height: 30px; margin: 0 0 8px; }
+html body .jk-card-head .jk-group-number {
+  display: inline-grid; place-items: center; flex: none; min-width: 28px; height: 24px; padding: 0 6px;
+  border-radius: 6px; background: var(--jk-coral-soft); color: var(--jk-coral-ink);
+  font-size: 12px; line-height: 1; font-weight: 800;
+}
+html body .jk-card-head h3 { flex: 1; min-width: 0; font-size: 18px; line-height: 26px; font-weight: 800; letter-spacing: -.035em; word-break: keep-all; }
+html body .jk-card-head .jk-group-era { margin: 0; }
+html body .jk-group > .jk-card-head, html body .jk-group > .jk-keywords, html body .jk-group > .jk-group-subtitle { padding-inline: var(--jk-card-pad); }
+html body .jk-group > .jk-card-head { padding-top: 14px; }
+html body .jk-group-subtitle { margin: -4px 0 6px; }
+
+/* 키워드 행: 이름 칩 + 굵은 키워드. 이름이 길면 위로 올려 줄바꿈 없이 읽힌다 */
+html body .jk-keywords { display: block; }
+html body .jk-keyword {
+  display: block; width: 100%; min-height: 44px; margin: 0; padding: 0;
+  border: 0; border-top: 1px solid var(--jk-line); border-radius: 0; background: none; text-align: left; color: var(--jk-ink);
+}
+html body .jk-keywords > .jk-keyword:first-child { border-top: 0; }
+html body .jk-keyword:active { background: var(--jk-sunken); }
+html body .jk-fact {
+  display: flex; align-items: flex-start; gap: 10px; min-height: 0; padding: 10px 0;
+}
+html body .jk-keyword.is-split .jk-fact { padding-block: 7px; }
+html body .jk-keyword.is-split .jk-fact:first-child { padding-top: 11px; }
+html body .jk-keyword.is-split .jk-fact:last-child { padding-bottom: 11px; }
+html body .jk-fact-label {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: auto; min-width: 58px; max-width: none; min-height: 24px; margin-top: 1px; padding: 2px 9px;
+  border-radius: 6px; background: var(--jk-sunken); color: var(--jk-sub);
+  font-size: 12.5px; line-height: 18px; font-weight: 600; text-align: center; white-space: nowrap; word-break: keep-all;
+}
+html body .jk-fact.is-long-label { flex-direction: column; gap: 4px; }
+html body .jk-fact.is-long-label .jk-fact-label { min-width: 0; }
+html body .jk-fact-value {
+  display: flex; flex-wrap: wrap; flex: 1; min-width: 0; column-gap: .3em; row-gap: 1px;
+  color: var(--jk-ink); font-size: 16px; line-height: 25px; font-weight: 650; letter-spacing: -.03em;
+  word-break: keep-all; overflow-wrap: normal; white-space: normal;
+}
+html body .jk-fact-value .jk-keyword-phrase { overflow-wrap: anywhere; }
+html body .jk-fact-value .jk-keyword-separator { color: var(--jk-coral); font-weight: 700; }
+
+/* 카드 하단 자세히 보기 */
+html body .jk-card-more {
+  display: flex; align-items: center; gap: 8px; width: 100%; min-height: 48px; margin: 0; padding: 0 var(--jk-card-pad);
+  border: 0; border-top: 1px solid var(--jk-line); border-radius: 0; background: #fbfcfc;
+  color: var(--jk-coral-ink); font-size: 14px; line-height: 20px; font-weight: 700; text-align: left;
+}
+html body .jk-card-more small { flex: 1; color: var(--jk-faint); font-size: 12px; line-height: 18px; font-weight: 500; text-align: right; }
+html body .jk-card-more i { display: grid; place-items: center; width: 20px; height: 20px; color: var(--jk-coral); }
+html body .jk-card-more svg, html body .jk-group-concept svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+html body .jk-card-more:active { background: var(--jk-coral-soft); }
+
+/* 저장한 키워드 카드 */
+html body .jk-saved-list { display: grid; gap: 12px; border: 0; }
+html body .jk-saved-card { padding: 12px var(--jk-card-pad) 14px; }
+html body .jk-saved-card > .jk-card-head { justify-content: space-between; margin-bottom: 2px; }
+html body .jk-saved-card .jk-unsave { width: 44px; height: 44px; margin: -8px -12px -8px 0; padding: 0; border: 0; background: none; display: grid; place-items: center; }
+html body .jk-saved-definition { margin: 4px 0 0; color: var(--jk-sub); font-size: 13px; line-height: 20px; word-break: keep-all; }
+html body .jk-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+html body .jk-tags em { padding: 2px 8px; border-radius: 999px; background: var(--jk-sunken); color: var(--jk-sub); font-size: 12px; line-height: 18px; font-style: normal; font-weight: 600; }
+
+/* 자세히 보기(그룹 전체) */
+html body .jk-group-overview { padding: 16px 0 14px; border: 0; }
+html body .jk-group-overview h2 { margin-top: 8px; font-size: 22px; line-height: 30px; font-weight: 800; letter-spacing: -.035em; word-break: keep-all; }
+html body .jk-group-overview p { margin-top: 4px; color: var(--jk-sub); font-size: 13px; line-height: 20px; word-break: keep-all; }
+html body .jk-group-overview p b { color: var(--jk-coral-ink); font-weight: 800; }
+html body .jk-group-keyword-list { display: grid; gap: 12px; border: 0; }
+html body .jk-group-keyword-card { padding: 6px var(--jk-card-pad) 6px; border-bottom: 1px solid var(--jk-line); }
+html body .jk-group-keyword-facts { display: block; margin: 0; }
+html body .jk-group-keyword-facts .jk-fact + .jk-fact { border-top: 1px solid var(--jk-line); }
+html body .jk-group-keyword-fact { display: block; padding: 0; border-top: 1px solid var(--jk-line); }
+html body .jk-group-keyword-fact:first-child { border-top: 0; }
+html body .jk-group-keyword-description { margin: 4px 0 10px; color: var(--jk-sub); font-size: 14px; line-height: 21px; word-break: keep-all; }
+html body .jk-group-keyword-point { margin: 0 0 4px; padding: 10px 12px; border: 0; border-radius: 8px; background: var(--jk-coral-soft); }
+html body .jk-group-keyword-point small { color: var(--jk-coral-ink); font-size: 12px; line-height: 18px; font-weight: 800; }
+html body .jk-group-keyword-point p { margin-top: 2px; color: var(--jk-ink); font-size: 14px; line-height: 21px; word-break: keep-all; }
+html body .jk-group-keyword-actions { display: flex; align-items: center; justify-content: space-between; min-height: 48px; border-top: 0; }
+html body .jk-group-concept i { display: grid; place-items: center; font-style: normal; }
+
+/* 개념 상세: 요약 카드 키워드 전부 */
+html body .jk-detail-facts h2 small { margin-left: 4px; color: var(--jk-faint); font-size: 13px; font-weight: 600; }
+html body .jk-detail-facts .jk-card { padding-block: 2px; }
+html body .jk-detail-facts .jk-fact + .jk-fact { border-top: 1px solid var(--jk-line); }
+
+/* 홈 진입점: 실전 학습 줄 + 하단 플로팅 버튼 (하단 메뉴는 그대로) */
+html body .hv-row-jokbo .hv-ico svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+html body .hv-row-jokbo .hv-chev svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+html body .jk-home-dock {
+  position: fixed; z-index: 40; left: 0; right: 0; bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+  padding: 8px 20px; background: rgba(255,255,255,.96); border-top: 1px solid var(--jk-line);
+}
+html body .jk-home-fab {
+  display: flex; align-items: center; gap: 10px; width: 100%; max-width: 560px; min-height: 48px; margin: 0 auto; padding: 0 12px 0 14px;
+  border: 1px solid #f8d3cb; border-radius: 10px; background: var(--jk-coral-soft); color: var(--jk-coral-ink); text-align: left;
+}
+html body .jk-home-fab:active { background: #fbe0d9; }
+html body .jk-home-fab > svg { flex: none; width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+html body .jk-home-fab > span { display: flex; align-items: baseline; gap: 8px; flex: 1; min-width: 0; }
+html body .jk-home-fab b { font: 800 15px/20px var(--jk-ui); color: var(--jk-coral-ink); white-space: nowrap; }
+html body .jk-home-fab small { overflow: hidden; color: var(--jk-sub); font: 500 13px/18px var(--jk-ui); white-space: nowrap; text-overflow: ellipsis; }
+html body .jk-home-fab > i { display: grid; place-items: center; color: var(--jk-coral); }
+html body .jk-home-fab > i svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+html body.hv-locked .jk-home-dock { display: none; }
+html body .main.ed-home { padding-bottom: calc(150px + env(safe-area-inset-bottom, 0px)); }
+@media (min-width: 701px) { html body .jk-home-dock { left: auto; right: 28px; bottom: 28px; width: 340px; padding: 0; border: 0; background: none; } html body .main.ed-home { padding-bottom: 96px; } }
+
+@media (min-width: 701px) {
+  html body .jk-filterbar { margin: 0; padding-inline: 0; }
+}
+@media (max-width: 370px) {
+  html body .jk-page { --jk-card-pad: 14px; }
+  html body .jk-fact-value { font-size: 15px; line-height: 23px; }
+  html body .jk-fact-label { min-width: 52px; padding-inline: 7px; }
+}
+@media (prefers-reduced-motion: reduce) { html body .jk-pager-dots i { transition: none; } }
