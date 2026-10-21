@@ -1104,7 +1104,7 @@ html body .jk-era-pager p, html body .jk-saved-head p, html body .jk-swipe-hint 
 html body .jk-swipe-hint { font-size: 13px; }
 html body .jk-card-head h3 { font-size: 17px; line-height: 24px; font-weight: 700; letter-spacing: -.02em; }
 html body .jk-fact-label { font-size: 13px; }
-html body .jk-fact-value { font-size: 16px; line-height: 24px; font-weight: 600; letter-spacing: -.02em; }
+html body .jk-fact-value { font-size: 16px; line-height: 24px; font-weight: 400; letter-spacing: -.02em; }
 html body .jk-card-more { font-size: 14px; }
 html body .jk-card-more small { font-size: 13px; }
 html body .jk-links h2, html body .jk-exam-cta h2, html body .jk-empty h2 { font-size: 16px; line-height: 24px; font-weight: 700; }
