@@ -64,11 +64,12 @@ html body .r7-ox-card {
   --r7-ox-o: 0; --r7-ox-x: 0;
   position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; min-height: 340px; margin: 0;
   padding: 18px 20px 20px; border: 1.5px solid var(--r7-line-strong); border-radius: 16px; background: #fff;
-  box-shadow: 0 6px 22px rgba(36,50,66,.08); touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: grab;
+  box-shadow: 0 6px 22px rgba(36,50,66,.08); touch-action: pan-y pinch-zoom; user-select: none; -webkit-user-select: none; cursor: grab;
   transition: transform .18s ease, border-color .18s ease;
 }
 html body .r7-ox-card.is-dragging { transition: none; cursor: grabbing; border-color: color-mix(in srgb, var(--r7-teal) calc(var(--r7-ox-o) * 100%), color-mix(in srgb, var(--r7-coral) calc(var(--r7-ox-x) * 100%), var(--r7-line-strong))); }
-html body .r7-ox-card.is-answered { cursor: default; user-select: text; -webkit-user-select: text; overflow: auto; }
+html body .r7-ox-card:focus-visible { outline: 3px solid color-mix(in srgb, var(--r7-coral) 35%, transparent); outline-offset: 3px; }
+html body .r7-ox-card.is-answered { cursor: default; touch-action: auto; user-select: text; -webkit-user-select: text; overflow: auto; }
 html body .r7-ox-card.is-correct { border-color: var(--r7-teal); }
 html body .r7-ox-card.is-wrong { border-color: var(--r7-coral); }
 html body .r7-ox-card .r7-ox-card-top { margin: 0; flex-wrap: nowrap; display: flex; align-items: center; gap: 8px; min-height: 24px; }
