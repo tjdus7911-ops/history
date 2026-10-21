@@ -1,0 +1,152 @@
+/* UI refresh — 차분한 글자 크기 체계 + OX 스와이프 카드.
+ * 기준: 본문·주요 키워드 16px, 설명·버튼·필터·보조 14px, 화면 제목 20px 이하,
+ * 카드 제목·문제 문장 18px 이하, 24px 이상 사용 안 함. 위계는 굵기·색·여백으로 만든다.
+ * 이 파일은 다른 스타일시트 뒤에 로드되며 표현만 바꾼다(데이터·마크업 계약 불변). */
+:root {
+  --r7-page-title-size: 20px;
+  --r7-page-title-line: 28px;
+  --r7-tab-size: 15px;
+  --r7-chip-size: 14px;
+  --r7-button-size: 15px;
+  --ui-title: 20px;
+  --ui-card-title: 18px;
+  --ui-body: 16px;
+  --ui-small: 14px;
+  --ui-caption: 12px;
+}
+
+/* 공통 화면 제목 (기출문제 · OX · 오답노트 · 내 기록 · 족보) */
+html body:not(#ui-type) .r7-menu-heading.r7-heading h1,
+html body:not(#ui-type) .r7-menu-heading.jk-heading h1,
+html body:not(#ui-type) .r7-menu-heading h1 { font: 700 var(--ui-title)/28px var(--r7-serif); letter-spacing: 0; }
+html body:not(#ui-type) .r7-page .r7-appbar h1, html body:not(#ui-type) .jk-appbar h1 { font: 700 17px/24px var(--r7-ui); }
+
+/* 홈 */
+html body:not(#ui-type) .hv-brand { font: 700 var(--ui-title)/28px var(--r7-serif); letter-spacing: -.02em; }
+html body:not(#ui-type) .hv-era-title { font-size: var(--ui-title); line-height: 28px; }
+html body:not(#ui-type) .hv-h { font-size: 17px; line-height: 24px; font-weight: 700; }
+html body:not(#ui-type) .hv-row-text b { font-size: var(--ui-body); line-height: 22px; }
+html body:not(#ui-type) .hv-row-text small { font-size: 13px; line-height: 18px; }
+html body:not(#ui-type) .hv-metrics b, html body:not(#ui-type) .hv-stat b, html body:not(#ui-type) .hv-metric b { font-size: 20px; line-height: 26px; }
+
+/* 기출문제 목록·취약점 */
+html body:not(#ui-type) .r7-page .r7-exam-round { font-size: 20px; line-height: 26px; font-weight: 800; }
+html body:not(#ui-type) .official-weakness-chevron { font-size: 18px; }
+
+/* 오답노트·내 기록 빈 상태 제목 */
+html body:not(#ui-type) .r7-page .r7-empty h2, html body:not(#ui-type) .r7-empty-state h2 { font-size: 17px; line-height: 24px; }
+
+/* ─────────── OX 스와이프 카드 ─────────── */
+html body .r7-ox-swipe { background: #f6f8f8; }
+html body .r7-ox-swipe .r7-quiz-head { background: #fff; height: 52px; }
+html body .r7-ox-swipe .r7-quiz-head p { font-size: var(--ui-small); line-height: 20px; margin-bottom: 6px; }
+html body .r7-ox-swipe .r7-quiz-head b { font-weight: 700; color: var(--r7-ink); }
+html body .r7-ox-count { color: var(--r7-faint); font-variant-numeric: tabular-nums; }
+html body .r7-ox-count em { color: var(--r7-coral-ink); font-style: normal; font-weight: 700; }
+html body .r7-ox-tally {
+  display: flex; align-items: center; gap: 8px; padding: 10px 20px 0; background: #fff;
+  font-size: 13px; line-height: 18px; color: var(--r7-sub);
+}
+html body .r7-ox-tally { padding-bottom: 10px; border-bottom: 1px solid var(--r7-line); }
+html body .r7-ox-tally > span { display: inline-flex; align-items: center; gap: 4px; min-height: 26px; padding: 0 10px; border-radius: 999px; font-weight: 500; }
+html body .r7-ox-tally b { font-weight: 700; font-variant-numeric: tabular-nums; }
+html body .r7-ox-tally .is-right { background: var(--r7-teal-soft); color: var(--r7-teal-ink); }
+html body .r7-ox-tally .is-wrong { background: var(--r7-coral-soft); color: var(--r7-coral-ink); }
+html body .r7-ox-tally .r7-ox-left { margin-left: auto; padding: 0; color: var(--r7-faint); }
+html body .r7-ox-tally svg, html body .r7-ox-choices svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; }
+
+html body .r7-ox-deck { position: relative; flex: 1; display: flex; flex-direction: column; padding: 22px 24px 16px; min-height: 0; }
+html body .r7-ox-card-back {
+  position: absolute; left: 34px; right: 34px; top: 30px; bottom: 6px; border-radius: 16px;
+  background: #fff; border: 1px solid var(--r7-line); box-shadow: 0 2px 8px rgba(36,50,66,.05); transform: rotate(-2.2deg);
+}
+html body .r7-ox-card {
+  --r7-ox-o: 0; --r7-ox-x: 0;
+  position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; min-height: 340px; margin: 0;
+  padding: 18px 20px 20px; border: 1.5px solid var(--r7-line-strong); border-radius: 16px; background: #fff;
+  box-shadow: 0 6px 22px rgba(36,50,66,.08); touch-action: pan-y pinch-zoom; user-select: none; -webkit-user-select: none; cursor: grab;
+  transition: transform .18s ease, border-color .18s ease;
+}
+html body .r7-ox-card.is-dragging { transition: none; cursor: grabbing; border-color: color-mix(in srgb, var(--r7-teal) calc(var(--r7-ox-o) * 100%), color-mix(in srgb, var(--r7-coral) calc(var(--r7-ox-x) * 100%), var(--r7-line-strong))); }
+html body .r7-ox-card:focus-visible { outline: 3px solid color-mix(in srgb, var(--r7-coral) 35%, transparent); outline-offset: 3px; }
+html body .r7-ox-card.is-answered { cursor: default; touch-action: auto; user-select: text; -webkit-user-select: text; overflow: auto; }
+html body .r7-ox-card.is-correct { border-color: var(--r7-teal); }
+html body .r7-ox-card.is-wrong { border-color: var(--r7-coral); }
+html body .r7-ox-card .r7-ox-card-top { margin: 0; flex-wrap: nowrap; display: flex; align-items: center; gap: 8px; min-height: 24px; }
+html body .r7-ox-card .r7-ox-qno { padding: 0; background: none; border-radius: 0; font-size: 13px; line-height: 18px; font-weight: 800; color: var(--r7-coral-ink); }
+html body .r7-ox-card .r7-ox-tag { min-width: 0; overflow: hidden; padding: 2px 8px; border-radius: 999px; background: var(--r7-sunken); color: var(--r7-sub); font-size: 12px; line-height: 18px; white-space: nowrap; text-overflow: ellipsis; }
+html body .r7-ox-statement {
+  margin: auto 0; padding: 18px 2px; color: var(--r7-ink); text-align: center;
+  font: 600 17px/1.65 var(--r7-ui); letter-spacing: -.02em; word-break: keep-all; overflow-wrap: anywhere;
+}
+html body .r7-ox-card.is-answered .r7-ox-statement { margin: 10px 0 0; padding: 0; text-align: left; font-size: var(--ui-body); line-height: 1.6; font-weight: 600; }
+html body .r7-ox-hint { margin: 0; text-align: center; color: var(--r7-faint); font-size: 13px; line-height: 18px; }
+html body .r7-ox-stamp {
+  position: absolute; top: 18px; padding: 4px 12px; border: 2px solid currentColor; border-radius: 8px;
+  font: 800 15px/20px var(--r7-ui); letter-spacing: .02em; background: #fff; pointer-events: none;
+}
+html body .r7-ox-stamp.is-o { left: 18px; color: var(--r7-teal); opacity: var(--r7-ox-o); transform: rotate(-8deg); }
+html body .r7-ox-stamp.is-x { right: 18px; color: var(--r7-coral); opacity: var(--r7-ox-x); transform: rotate(8deg); }
+html body .r7-ox-swipe .r7-ox-verdict { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 10px; margin: 12px 0 0; padding: 10px 12px; border-radius: 10px; }
+html body .r7-ox-swipe .r7-ox-verdict strong { font-size: var(--ui-body); line-height: 22px; font-weight: 800; }
+html body .r7-ox-swipe .r7-ox-verdict span { font-size: 13px; line-height: 18px; color: var(--r7-sub); font-weight: 600; }
+html body .r7-ox-swipe .r7-ox-feedback.incorrect { background: var(--r7-coral-soft); }
+html body .r7-ox-swipe .r7-ox-feedback.incorrect strong { color: var(--r7-coral-ink); }
+html body .r7-ox-explain { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--r7-line); }
+html body .r7-ox-explain small { display: block; margin-bottom: 4px; color: var(--r7-faint); font-size: 12px; line-height: 16px; font-weight: 700; }
+html body .r7-ox-explain p { margin: 0; color: var(--r7-sub); font-size: var(--ui-small); line-height: 1.65; white-space: pre-line; word-break: keep-all; overflow-wrap: anywhere; }
+
+html body .r7-ox-swipe .r7-ox-answerbar { background: #fff; padding-top: 12px; }
+html body .r7-ox-swipe .r7-ox-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+html body .r7-ox-swipe .r7-ox-choices button {
+  display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 8px; height: 52px;
+  border-radius: 999px; border: 1px solid transparent; font: 700 var(--ui-body)/22px var(--r7-ui);
+}
+html body .r7-ox-swipe .r7-ox-choices button span { font-size: var(--ui-body); line-height: 22px; color: inherit; }
+html body .r7-ox-swipe .r7-ox-choices svg { width: 18px; height: 18px; stroke-width: 2.6; }
+html body .r7-ox-swipe .r7-ox-choices .r7-ox-x { background: var(--r7-coral-soft); border-color: #f8d3cb; color: var(--r7-coral-ink); }
+html body .r7-ox-swipe .r7-ox-choices .r7-ox-o { background: var(--r7-teal-soft); border-color: #bfe5e0; color: var(--r7-teal-ink); }
+html body .r7-ox-swipe .r7-ox-choices .r7-ox-x:active { background: #fbe0d9; }
+html body .r7-ox-swipe .r7-ox-choices .r7-ox-o:active { background: #cfeee9; }
+html body .r7-ox-swipe .r7-ox-answerbar .r7-primary { height: 52px; font-size: var(--ui-body); border-radius: 999px; }
+@media (max-width: 370px) {
+  html body .r7-ox-deck { padding-inline: 18px; }
+  html body .r7-ox-statement { font-size: 16px; }
+  html body .r7-ox-card { min-height: 300px; }
+}
+@media (min-width: 701px) {
+  html body .r7-ox-swipe .r7-ox-deck, html body .r7-ox-swipe .r7-ox-answerbar, html body .r7-ox-tally { width: min(100%, 520px); margin-inline: auto; }
+}
+@media (prefers-reduced-motion: reduce) { html body .r7-ox-card { transition: none; } }
+
+/* 레거시 영역·기록 숫자 */
+html body:not(#ui-type) .ed-header h1, html body:not(#ui-type) .official-home-header h1 { font-size: var(--ui-title); line-height: 28px; }
+html body:not(#ui-type) .official-weakness h2 { font-size: 17px; line-height: 24px; }
+html body:not(#ui-type) .official-weakness-rate b { font-size: 18px; line-height: 24px; }
+
+/* 결과·표지·시대·기록의 숫자와 제목: 24px 이상 쓰지 않는다 */
+html body:not(#ui-type) .ox-result-score strong { font-size: 18px; line-height: 26px; }
+html body:not(#ui-type) .ox-result-score > div, html body:not(#ui-type) .ox-result-score div { font-size: 20px; line-height: 28px; }
+html body:not(#ui-type) .ox-top button { font-size: 22px; }
+html body:not(#ui-type) .r7-cover-title h2, html body:not(#ui-type) .r7-cover-title { font-size: 20px; line-height: 28px; }
+html body:not(#ui-type) .r7-cover strong, html body:not(#ui-type) .r7-cover-meta strong, html body:not(#ui-type) .r7-tile strong, html body:not(#ui-type) .r7-era-stats strong, html body:not(#ui-type) .r7-stat strong { font-size: 20px; line-height: 26px; }
+html body:not(#ui-type) .r7-chapter-number { font-size: 18px; line-height: 24px; }
+html body:not(#ui-type) .era-hero-copy h2 { font-size: 20px; line-height: 28px; }
+html body:not(#ui-type) .era-hero-copy span { font-size: 15px; }
+html body:not(#ui-type) .era-back { font-size: 22px; }
+html body:not(#ui-type) .era-resume .resume-symbol, html body:not(#ui-type) .era-resume span, html body:not(#ui-type) .ed-chapter-status, html body:not(#ui-type) .r7-era-play { font-size: 18px; }
+html body:not(#ui-type) .era-resume b { font-size: 16px; }
+html body:not(#ui-type) .ox-home .ox-top h1, html body:not(#ui-type) .ox-home .ed-header h1 { font: 700 var(--ui-title)/28px var(--r7-ui); }
+html body:not(#ui-type) .era-hero[data-era-slide] .era-hero-copy h2 { font-size: 20px; }
+html body:not(#ui-type) .era-hero-copy h2 span { font-size: 15px; }
+html body:not(#ui-type) .ed-chapter-status.current { font-size: 18px; }
+html body:not(#ui-type) .r7-page .r7-era-head h1, html body:not(#ui-type) .r7-page > header h1 { font-size: var(--ui-title); line-height: 28px; }
+html body:not(#ui-type) .r7-metrics strong { font-size: 20px; line-height: 26px; }
+html body:not(#ui-type) .r7-era-hero h1 { font-size: var(--ui-title); line-height: 28px; }
+html body:not(#ui-type) .era-back, html body:not(#ui-type) .ox-top button { font-size: 20px; }
+html body:not(#ui-type) .r7-story-play .scene-title h2, html body:not(#ui-type) .game .scene-title h2 { font-size: var(--ui-title); line-height: 28px; }
+html body .r7-ox-deck { justify-content: center; }
+html body .r7-ox-stack { position: relative; flex: 1 1 auto; width: 100%; min-height: 300px; max-height: 460px; }
+html body .r7-ox-stack.is-answered { max-height: none; }
+html body .r7-ox-stack > .r7-ox-card { position: absolute; inset: 0; min-height: 0; }
+html body .r7-ox-stack > .r7-ox-card-back { left: 10px; right: 10px; top: 8px; bottom: -8px; }
