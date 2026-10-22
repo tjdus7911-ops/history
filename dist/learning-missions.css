@@ -22,6 +22,10 @@
 .lm-row { display: grid; grid-template-columns: 38px minmax(0,1fr) 24px; align-items: center; gap: 10px; width: 100%; min-width: 0; min-height: 62px; padding: 9px 10px; border: 1px solid #edf0f2; border-radius: 12px; background: #fff; color: inherit; text-align: left; }
 .lm-row:active { background: #fafbfc; }
 .lm-icon { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: #f7f8f9; color: #687482; }
+.lm-icon-exam { background: #fff0ed; color: #b94e3e; }
+.lm-icon-story { background: #eef3ff; color: #5974ad; }
+.lm-icon-ox { background: #eaf6f1; color: #347d68; }
+.lm-icon-jokbo { background: #f3eff9; color: #786298; }
 .lm-icon svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; }
 .lm-icon svg .lm-accent { stroke: #e9513b; }
 .lm-row-copy { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
