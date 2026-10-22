@@ -885,8 +885,12 @@ html body .capacitor-native .jk-search-appbar, html.capacitor-native body .jk-se
   .main.ed-jokbo-group,
   .main.ed-jokbo-detail,
   .main.ed-jokbo-compare { padding: 0; }
+  .main.ed-jokbo-search { padding: 18px 20px 0; }
   .jk-page { padding: 7px 20px calc(108px + env(safe-area-inset-bottom, 0px)); }
   .jk-fullscreen-shell .jk-page { padding-bottom: calc(40px + env(safe-area-inset-bottom, 0px)); }
+  .jk-fullscreen-shell .jk-search-page { padding: 0 0 calc(40px + env(safe-area-inset-bottom, 0px)); }
+  .jk-search-appbar { min-height: 52px; margin: 0; padding: 4px 0 3px; }
+  .jk-search-appbar .jk-appbar-back { margin-left: -12px; }
   .jk-heading { min-height: 58px; padding-top: 2px; }
   .jk-heading h1 { font-size: 29px; line-height: 35px; }
   .jk-search-button .jk-icon,
