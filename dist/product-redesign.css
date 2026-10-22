@@ -193,6 +193,8 @@ button:focus-visible, select:focus-visible, [tabindex]:focus-visible { outline-c
 
 @media (max-width: 370px) {
   .main.ed-screen:not(.ed-game) { padding-inline: 15px; }
+  .hv-rail-wrap { margin-inline: -15px; }
+  .hv-rail { padding-inline: 15px; }
   .hv-rail-item { flex-basis: 100%; }
   .hv-metrics { gap: 5px; }
   .hv-metric { min-height: 84px; padding-inline: 2px; }
