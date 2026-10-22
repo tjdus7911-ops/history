@@ -47,6 +47,19 @@ const server = http.createServer((request, response) => {
       assert.equal(await page.locator('[data-mission-expand]').innerText(), '접기');
       await page.locator('[data-mission-expand]').click();
       assert.equal(await page.locator('.lm-row').count(), 2, '접기 restores the compact list');
+      await page.evaluate(() => {
+        const card = document.querySelector('.lm-card').getBoundingClientRect();
+        const fabTop = document.querySelector('.jk-fab')?.getBoundingClientRect().top ?? Infinity;
+        const navTop = document.querySelector('nav.app-navigation')?.getBoundingClientRect().top ?? Infinity;
+        window.scrollTo(0, Math.max(0, card.bottom + window.scrollY - Math.min(fabTop, navTop)));
+      });
+      const cardClearance = await page.evaluate(() => ({
+        cardBottom: document.querySelector('.lm-card').getBoundingClientRect().bottom,
+        fabTop: document.querySelector('.jk-fab')?.getBoundingClientRect().top ?? Infinity,
+        navTop: document.querySelector('nav.app-navigation')?.getBoundingClientRect().top ?? Infinity,
+      }));
+      assert(cardClearance.cardBottom <= cardClearance.fabTop + 1 && cardClearance.cardBottom <= cardClearance.navTop + 1, 'mission card can be fully brought above the fixed FAB and bottom navigation');
+      await page.evaluate(() => window.scrollTo(0, 0));
 
       await page.locator('.lm-settings-link').click();
       await page.locator('.lm-settings').waitFor();
@@ -74,6 +87,15 @@ const server = http.createServer((request, response) => {
       assert.equal(settingsGeometry.fab, null, 'the existing Jokbo FAB is not shown over the settings action');
       assert.equal(await page.locator('nav.app-navigation [data-nav="home"]').getAttribute('aria-current'), 'page', 'home navigation remains selected');
       assert(settingsGeometry.save.right <= width && settingsGeometry.save.left >= 0, 'save button fits ' + width + 'px');
+      await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+      const saveClearance = await page.evaluate(() => ({
+        saveBottom: document.querySelector('.lm-save').getBoundingClientRect().bottom,
+        navTop: document.querySelector('nav.app-navigation').getBoundingClientRect().top,
+        fab: Boolean(document.querySelector('.jk-fab')),
+      }));
+      assert(saveClearance.saveBottom <= saveClearance.navTop + 1, 'goal save action remains above the bottom navigation');
+      assert.equal(saveClearance.fab, false, 'goal settings remain clear of the Jokbo FAB');
+      await page.evaluate(() => window.scrollTo(0, 0));
 
       await page.locator('[data-mission-save]').click();
       await page.locator('.lm-row').waitFor();
