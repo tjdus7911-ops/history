@@ -366,6 +366,33 @@ document.addEventListener('click',event=>{
  if(data.oxRetryWrong){event.stopImmediatePropagation();const last=oxMeta().lastSession,ids=last.questionIds.filter(id=>last.results[id]===false);newOXSession('review',ids.length,last.eraId,ids);return;}
  if(data.oxReviewOne){event.stopImmediatePropagation();newOXSession('review',1,OX_BY_ID.get(data.oxReviewOne)?.eraId||null,[data.oxReviewOne]);return;}
 },true);
+// 정답·해설 화면의 짧은 탭만 기존 다음 문제 동작으로 연결한다. 스크롤·길게 누르기·기능 버튼은 진행시키지 않는다.
+const OX_TAP_EXCLUDED='button,a,input,select,textarea,label,summary,details,[role="button"],[contenteditable="true"],[data-jk-open]';
+let oxTapCandidate=null,oxTapAdvancedKey='';
+function oxAnsweredTapKey(){
+ const session=activeOXSession(),question=activeOXQuestion();
+ return screen==='ox'&&oxView==='quiz'&&session&&question&&Object.hasOwn(session.answers,question.id)?`${session.id}:${session.index}:${question.id}`:'';
+}
+function oxTapBlocked(target){return Boolean(target?.closest?.(OX_TAP_EXCLUDED));}
+document.addEventListener('pointerdown',event=>{
+ oxTapCandidate=null;
+ if(event.isPrimary===false||event.button>0||oxTapBlocked(event.target)||!event.target.closest?.('.ox-play,.r7-ox-play'))return;
+ const key=oxAnsweredTapKey();if(!key||key===oxTapAdvancedKey)return;
+ oxTapCandidate={id:event.pointerId,x:event.clientX,y:event.clientY,scrollX:Number(window.scrollX)||0,scrollY:Number(window.scrollY)||0,started:Date.now(),key,moved:false};
+},true);
+document.addEventListener('pointermove',event=>{
+ const tap=oxTapCandidate;if(!tap||event.pointerId!==tap.id)return;
+ if(Math.hypot(event.clientX-tap.x,event.clientY-tap.y)>12)tap.moved=true;
+},true);
+document.addEventListener('pointerup',event=>{
+ const tap=oxTapCandidate;oxTapCandidate=null;
+ if(!tap||event.pointerId!==tap.id||tap.moved||Date.now()-tap.started>500||tap.key!==oxAnsweredTapKey()||oxTapBlocked(event.target))return;
+ if(Math.abs((Number(window.scrollX)||0)-tap.scrollX)>1||Math.abs((Number(window.scrollY)||0)-tap.scrollY)>1)return;
+ const selection=globalThis.getSelection?.();if(selection&&selection.isCollapsed===false)return;
+ oxTapAdvancedKey=tap.key;nextOXQuestion();
+},true);
+document.addEventListener('pointercancel',()=>{oxTapCandidate=null;},true);
+document.addEventListener('contextmenu',()=>{oxTapCandidate=null;},true);
 document.addEventListener('change',event=>{
  if(event.target.matches('[data-ox-home-review-era]')){oxHomeReviewEra=event.target.value;render();return;}
  if(event.target.matches('[data-ox-analysis-review-era]')){oxAnalysisReviewEra=event.target.value;render();return;}

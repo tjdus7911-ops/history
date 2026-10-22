@@ -28,7 +28,7 @@
    +'<div class="r7-ox-deck"><div class="r7-ox-stack'+(answered?' is-answered':'')+'"><div class="r7-ox-card-back" aria-hidden="true"></div>'+card+'</div></div>'
    +'<footer class="r7-ox-answerbar">'+(answered?'<button class="r7-primary" data-ox-next="true">'+(last?'결과 확인':'다음 문제')+'</button>':'<div class="r7-ox-choices"><button class="r7-ox-x" data-ox-answer="false" aria-label="X, 틀려요">'+xIcon+'<span>틀려요</span></button><button class="r7-ox-o" data-ox-answer="true" aria-label="O, 맞아요"><span>맞아요</span>'+oIcon+'</button></div>')+'</footer></section>';
  });
- // 스와이프: 답변 전 카드의 가로 이동만 반영한다. 해설 화면은 명시적인 다음 버튼으로만 진행한다.
+ // 스와이프: 답변 전 카드의 가로 이동만 O/X 선택으로 반영한다.
  let drag=null;
  const reduced=()=>globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
  function setCard(card,dx){card.style.transform='translateX('+dx.toFixed(1)+'px) rotate('+(dx*.05).toFixed(2)+'deg)';const k=Math.min(1,Math.abs(dx)/90);card.style.setProperty('--r7-ox-o',dx>0?k:0);card.style.setProperty('--r7-ox-x',dx<0?k:0);}
