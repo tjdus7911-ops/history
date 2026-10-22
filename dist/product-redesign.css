@@ -88,13 +88,13 @@ button:focus-visible, select:focus-visible, [tabindex]:focus-visible { outline-c
 .hv-rail-foot { min-height: 35px; }
 .hv-status { margin-top: 12px; }
 .hv-h { font-size: 17px; color: #253142; }
-.hv-metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 9px; }
+.hv-metrics { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-top: 9px; }
 .hv-metric { min-height: 88px; padding: 9px 5px; border-color: #e9edf0; border-radius: 16px; background: #fff; }
 .hv-metric-art { color: #748394; }
 .hv-metric small { color: #87919b; font-size: 10px; }
 .hv-metric b { color: #253142; font-size: 16px; }
-.hv-metric-exam b, .hv-metric-pass-rate b { color: #e9513b; font-size: 14px; }
-.hv-metrics-detail { display: flex; align-items: center; justify-content: center; gap: 13px; min-height: 35px; margin-top: 2px; color: #87919b; font-size: 11px; }
+.hv-metric-exam b { color: #e9513b; font-size: 14px; }
+.hv-metrics-detail { display: flex; align-items: center; justify-content: center; min-height: 27px; margin-top: 1px; color: #87919b; font-size: 11px; }
 .hv-metrics-detail span { display: inline-flex; gap: 5px; align-items: baseline; }
 .hv-metrics-detail b { color: #253142; font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; }
 .hv-metrics-detail i { width: 1px; height: 13px; background: #e5e8eb; }
@@ -106,9 +106,9 @@ button:focus-visible, select:focus-visible, [tabindex]:focus-visible { outline-c
 .lm-row-copy strong { color: #253142; }
 .lm-status-done { background: #eaf5ed; color: #478d5d; }
 .lm-expand { color: #657282; }
-.hv-cheer-banner { min-height: 98px; margin-top: 12px; padding: 8px 12px 8px 16px; overflow: hidden; border: 1px solid #f0e9e3; border-radius: 20px; background: linear-gradient(110deg, #fff9f4, #fff 72%); }
+.hv-cheer-banner { min-height: 78px; margin-top: 12px; padding: 6px 12px 6px 16px; overflow: hidden; border: 1px solid #f0e9e3; border-radius: 20px; background: linear-gradient(110deg, #fff9f4, #fff 72%); }
 .hv-cheer-banner p { flex: 1; color: #253142; font-size: 15px; line-height: 1.55; }
-.hv-cheer-avatar { width: 104px; height: 92px; overflow: hidden; border: 0; border-radius: 0; background: transparent; }
+.hv-cheer-avatar { width: 82px; height: 64px; overflow: hidden; border: 0; border-radius: 0; background: transparent; }
 .hv-cheer-avatar img { object-fit: contain; object-position: center 48%; }
 .hv-section { margin-top: 19px; }
 .hv-section-head { min-height: 29px; margin-bottom: 9px; }

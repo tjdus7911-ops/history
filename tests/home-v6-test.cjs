@@ -43,7 +43,7 @@ run('render()');
 assert(html.includes('<span>눈떠보니</span><em>한국사</em>'),'header uses the split brand wordmark');
 assert(!html.includes('요일'),'the old date header is removed');
 assert(html.includes('학습 현황')&&html.includes('남은 시험일')&&html.includes('D-14'),'D-day renders from the saved target date');
-assert(html.includes('실전 합격률')&&html.includes('50<em>%</em>'),'official result pass rate is shown from actual exam records');
+assert(html.includes('실전 합격률')&&html.includes('<b>50%</b>'),'official result pass rate is shown from actual exam records');
 assert(html.includes('data-hv-exam-open')&&!html.includes('data-hv-exam-date'),'exam card opens the in-app calendar instead of an unreliable transparent native input');
 assert(html.includes('연속 학습')&&html.includes('오늘 푼 문제')&&html.includes('최근 정답률'),'all four status items render');
 assert(html.includes('<p>오늘도 화이팅! 한 장면, 한 문제씩 이어가요.</p>'),'compact encouragement copy is exact');

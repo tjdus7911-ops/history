@@ -228,8 +228,8 @@
     const dateValue = d.date ? toKey(d.date) : '';
     const cell = (kind, icon, label, value, unit = '', hint = '') => '<article class="hv-metric hv-metric-' + kind + '"' + (hint ? ' title="' + hint + '"' : '') + '><span class="hv-metric-art">' + icon + '</span><small>' + label + '</small><b>' + value + (unit ? '<em>' + unit + '</em>' : '') + '</b></article>';
     const exam = '<button type="button" class="hv-metric hv-metric-exam" data-hv-exam-open title="시험일 설정 또는 변경" aria-label="시험일 ' + (dateValue ? '변경' : '설정') + '"><span class="hv-metric-art">' + illustrations.calendar + '</span><small>남은 시험일</small><b>' + dday + '</b></button>';
-    const primary = '<div class="hv-metrics">' + exam + cell('streak', illustrations.fire, '연속 학습', s.streak, '일') + cell('pass-rate', illustrations.target, '실전 합격률', passRate == null ? '—' : passRate, passRate == null ? '' : '%', '완료한 공식 회차 시험에서 기존 합격 기준으로 계산') + '</div>';
-    const detail = '<div class="hv-metrics-detail"><span>오늘 푼 문제 <b>' + s.todayCount + '문항</b></span><i aria-hidden="true"></i><span title="최근 완료한 문제 풀이 최대 20문항 기준">최근 정답률 <b>' + (s.accuracy == null ? '—' : s.accuracy + '%') + '</b></span></div>';
+    const primary = '<div class="hv-metrics">' + exam + cell('streak', illustrations.fire, '연속 학습', s.streak, '일') + cell('today', illustrations.paper, '오늘 푼 문제', s.todayCount, '문항') + cell('accuracy', illustrations.target, '최근 정답률', s.accuracy == null ? '—' : s.accuracy, s.accuracy == null ? '' : '%', '최근 완료한 문제 풀이 최대 20문항 기준') + '</div>';
+    const detail = '<div class="hv-metrics-detail"><span title="완료한 공식 회차 시험에서 기존 합격 기준으로 계산">실전 합격률 <b>' + (passRate == null ? '—' : passRate + '%') + '</b></span></div>';
     return '<section class="hv-status" aria-labelledby="hv-status-title"><h2 class="hv-h" id="hv-status-title">학습 현황</h2>' + primary + detail + '</section>';
   }
 
