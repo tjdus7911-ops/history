@@ -89,12 +89,12 @@
   };
 
   const illustrations = {
-    calendar: '<svg class="hv-mini-art" viewBox="0 0 48 48" aria-hidden="true"><rect class="icon-surface-coral" x="4" y="4" width="40" height="40" rx="14"/><rect class="icon-sheet" x="12" y="13" width="24" height="23" rx="5"/><path class="icon-accent" d="M12 20h24"/><path class="icon-line" d="M18 10v6m12-6v6"/><path class="icon-accent" d="m18 28 3 3 8-8"/></svg>',
-    fire: '<svg class="hv-mini-art" viewBox="0 0 48 48" aria-hidden="true"><circle class="icon-surface-amber" cx="24" cy="24" r="20"/><path class="icon-accent" d="M27 11c1 7-4 8-2 14 3-1 5-4 6-7 6 7 5 18-3 21-8 3-16-2-16-11 0-6 3-9 7-13-1 6 3 9 5 10-1-8 7-10 5-15Z"/><path class="icon-line" d="M24 37c-4-1-5-5-2-8 0 2 2 3 2 3 0-3 3-4 3-7 4 5 3 10-3 12Z"/></svg>',
-    paper: '<svg class="hv-mini-art" viewBox="0 0 48 48" aria-hidden="true"><rect class="icon-surface-blue" x="4" y="4" width="40" height="40" rx="14"/><path class="icon-sheet" d="M13 10h16l7 7v21H13Z"/><path class="icon-line" d="M29 10v8h7M18 23h12m-12 6h8"/><path class="icon-accent" d="m27 34 2.5 2.5L35 31"/></svg>',
-    target: '<svg class="hv-mini-art" viewBox="0 0 48 48" aria-hidden="true"><circle class="icon-surface-mint" cx="24" cy="24" r="20"/><circle class="icon-sheet" cx="22" cy="26" r="12"/><circle class="icon-line" cx="22" cy="26" r="6"/><circle class="icon-accent-fill" cx="22" cy="26" r="2.5"/><path class="icon-line" d="m22 26 14-14m-4 0h4v4"/></svg>',
-    ox: '<svg class="hv-mini-art" viewBox="0 0 48 48" aria-hidden="true"><rect class="icon-surface-mint" x="4" y="4" width="40" height="40" rx="14"/><circle class="icon-sheet" cx="17" cy="24" r="7"/><path class="icon-accent" d="m29 18 10 12m0-12L29 30"/></svg>',
-    review: '<svg class="hv-mini-art" viewBox="0 0 48 48" aria-hidden="true"><rect class="icon-surface-amber" x="4" y="4" width="40" height="40" rx="14"/><path class="icon-sheet" d="M13 11h23v25H17a4 4 0 0 0-4 4Z"/><path class="icon-line" d="M19 18h11m-11 6h8"/><path class="icon-accent" d="M10 29a9 9 0 0 0 8 9m-8-9v6m0-6h6"/></svg>'
+    calendar: '<svg class="hv-mini-art" viewBox="0 0 24 24" aria-hidden="true"><rect class="icon-line" x="3.5" y="5.5" width="17" height="15" rx="3"/><path class="icon-accent" d="M7.5 3.5v4m9-4v4M3.5 9.5h17"/><path class="icon-line" d="m8.5 15 2 2 5-5"/></svg>',
+    fire: '<svg class="hv-mini-art" viewBox="0 0 24 24" aria-hidden="true"><path class="icon-line" d="M13.2 2.8c.4 3-2.2 4.3-1.2 7.1 1.7-.6 2.8-2.1 3.2-4 3.4 3.1 4.8 6 3.8 9.4a7.2 7.2 0 0 1-13.8-1.1c-.6-3.3 1-6.3 3.5-8.5-.3 2.7.7 4.3 2 5.1"/><path class="icon-accent" d="M12 19.8c-2.3-.5-3.2-2.8-1.7-4.7.2 1.1 1.2 1.6 1.8 1.7-.2-1.8 1.6-2.5 1.6-4.1 2.1 2.1 1.9 5.8-1.7 7.1Z"/></svg>',
+    paper: '<svg class="hv-mini-art" viewBox="0 0 24 24" aria-hidden="true"><path class="icon-line" d="M6 3.5h8.5l3.5 3.6v13.4H6Z"/><path class="icon-line" d="M14.5 3.5v4H18M9 11.5h6m-6 3.5h4"/><path class="icon-accent" d="m14.8 18 1.5 1.5 3.2-3.5"/></svg>',
+    target: '<svg class="hv-mini-art" viewBox="0 0 24 24" aria-hidden="true"><circle class="icon-line" cx="10.5" cy="13.5" r="7"/><circle class="icon-line" cx="10.5" cy="13.5" r="3"/><path class="icon-accent" d="m10.5 13.5 8-8m-3 0h3v3"/></svg>',
+    ox: '<svg class="hv-mini-art" viewBox="0 0 24 24" aria-hidden="true"><circle class="icon-line" cx="7.5" cy="12" r="4.5"/><path class="icon-accent" d="m14.5 7.5 6 9m0-9-6 9"/></svg>',
+    review: '<svg class="hv-mini-art" viewBox="0 0 24 24" aria-hidden="true"><path class="icon-line" d="M7 3.5h11v16H9.5A2.5 2.5 0 0 0 7 22Z"/><path class="icon-line" d="M10 8h5m-5 3h4"/><path class="icon-accent" d="M4 13.5a5.5 5.5 0 0 0 5.5 5.5M4 13.5v3.2m0-3.2h3.2"/></svg>'
   };
 
   /* General questions and OX keep separate histories. Merge them for the home

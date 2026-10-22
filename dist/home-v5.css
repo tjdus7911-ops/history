@@ -97,32 +97,17 @@ body.hv-locked { overflow: hidden; }
 .hv-status { margin-top: 18px; }
 .hv-h { margin: 0; font-size: 17px; line-height: 24px; font-weight: 750; letter-spacing: -.025em; }
 .hv-metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px; margin-top: 10px; }
-.hv-metric { position: relative; min-width: 0; min-height: 100px; margin: 0; padding: 9px 3px 8px; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 3px; border: 1px solid #eef1f3; border-radius: 13px; background: #f7f8f9; text-align: center; color: var(--r7-ink); }
+.hv-metric { position: relative; min-width: 0; min-height: 92px; margin: 0; padding: 10px 3px 8px; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 2px; border: 1px solid #eceff2; border-radius: 13px; background: #fafbfc; text-align: center; color: var(--r7-ink); }
 .hv-metric-exam { cursor: pointer; }
-.hv-metric-art { display: grid; place-items: center; width: 28px; height: 28px; flex: none; }
-.hv-mini-art { width: 28px; height: 28px; overflow: visible; stroke-linecap: round; stroke-linejoin: round; }
-.hv-mini-art .icon-surface-coral { fill: #fcece8; }
-.hv-mini-art .icon-surface-amber { fill: #fff3dc; }
-.hv-mini-art .icon-surface-blue { fill: #edf3fb; }
-.hv-mini-art .icon-surface-mint { fill: #e8f5f2; }
-.hv-mini-art .icon-sheet { fill: #fff; stroke: #415469; stroke-width: 1.8; }
-.hv-mini-art .icon-line { fill: none; stroke: #415469; stroke-width: 2; }
-.hv-mini-art .icon-accent { fill: none; stroke: #e9513b; stroke-width: 2.1; }
+.hv-metric-art { display: grid; place-items: center; width: 25px; height: 25px; margin-bottom: 2px; flex: none; color: #687482; }
+.hv-mini-art { width: 24px; height: 24px; overflow: visible; stroke-linecap: round; stroke-linejoin: round; }
+.hv-mini-art .icon-line { fill: none; stroke: #687482; stroke-width: 1.65; }
+.hv-mini-art .icon-accent { fill: none; stroke: #e9513b; stroke-width: 1.75; }
 .hv-mini-art .icon-accent-fill { fill: #e9513b; stroke: none; }
-.hv-mini-art .paper { fill: #fff; stroke: none; }
-.hv-mini-art .coral { fill: #ef6a55; stroke: none; }
-.hv-mini-art .orange { fill: #f08334; stroke: none; }
-.hv-mini-art .sun { fill: #ffd45e; stroke: none; }
-.hv-mini-art .blue { fill: #76a6e8; stroke: none; }
-.hv-mini-art .mint { fill: #76c9b8; stroke: none; }
-.hv-mini-art .navy { fill: #263a50; stroke: none; }
-.hv-mini-art .navy-stroke { fill: none; stroke: #263a50; stroke-width: 2.3; }
-.hv-mini-art .coral-stroke { fill: none; stroke: #e9513b; stroke-width: 2.5; }
-.hv-mini-art .blue-stroke { fill: none; stroke: #5685c2; stroke-width: 2.1; }
 .hv-metric small { display: block; max-width: 100%; color: var(--r7-sub); font-size: 9.5px; line-height: 13px; font-weight: 600; white-space: nowrap; }
-.hv-metric b { display: block; max-width: 100%; margin-top: 1px; color: var(--r7-coral); font-size: 15px; line-height: 20px; font-weight: 750; letter-spacing: -.025em; white-space: nowrap; font-variant-numeric: tabular-nums; }
-.hv-metric-exam b { font-size: 12px; line-height: 18px; }
-.hv-metric em { margin-left: 1px; color: inherit; font-size: 10px; font-style: normal; font-weight: 700; }
+.hv-metric b { display: block; max-width: 100%; margin-top: 1px; color: var(--r7-coral); font-size: 14px; line-height: 19px; font-weight: 700; letter-spacing: -.02em; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.hv-metric-exam b { font-size: 11px; line-height: 17px; }
+.hv-metric em { margin-left: 1px; color: inherit; font-size: 9.5px; font-style: normal; font-weight: 650; }
 
 /* ---------- encouragement banner ---------- */
 .hv-cheer-banner { display: flex; align-items: center; gap: 11px; min-height: 62px; margin-top: 18px; padding: 8px 14px; border: 1px solid #eef1f3; border-radius: 15px; background: #f7f8f9; }
@@ -134,10 +119,10 @@ body.hv-locked { overflow: hidden; }
 .hv-section { margin-top: 24px; }
 .hv-section-head { display: flex; align-items: center; justify-content: space-between; min-height: 32px; margin-bottom: 7px; }
 .hv-list { display: flex; flex-direction: column; gap: 9px; }
-.hv-row { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 76px; padding: 12px; border: 1px solid var(--r7-line); border-radius: 13px; background: #fff; color: inherit; text-align: left; }
+.hv-row { display: flex; align-items: center; gap: 11px; width: 100%; min-height: 76px; padding: 12px; border: 1px solid var(--r7-line); border-radius: 13px; background: #fff; color: inherit; text-align: left; }
 button.hv-row:active { background: var(--r7-sunken); }
-.hv-ico { display: grid; place-items: center; width: 44px; height: 44px; flex: none; border: 1px solid #eef1f3; border-radius: 12px; background: #fafbfc; }
-.hv-ico .hv-mini-art { width: 34px; height: 34px; }
+.hv-ico { display: grid; place-items: center; width: 38px; height: 38px; flex: none; border: 0; border-radius: 11px; background: #f4f6f7; }
+.hv-ico .hv-mini-art { width: 22px; height: 22px; }
 .hv-row-text { display: flex; flex: 1; min-width: 0; flex-direction: column; gap: 2px; }
 .hv-row-text b { color: var(--r7-ink); font-size: 15px; line-height: 21px; font-weight: 750; }
 .hv-row-text small { color: var(--r7-sub); font-size: 12px; line-height: 17px; word-break: keep-all; overflow-wrap: anywhere; }
@@ -196,14 +181,15 @@ button.hv-row:active { background: var(--r7-sunken); }
   .hv-rail-item { flex-basis: 78vw; }
   .hv-era { height: 320px; }
   .hv-metrics { gap: 5px; }
-  .hv-metric { min-height: 100px; padding-inline: 1px; }
-  .hv-metric-art, .hv-mini-art { width: 27px; height: 27px; }
+  .hv-metric { min-height: 92px; padding-inline: 1px; }
+  .hv-metric-art { width: 24px; height: 24px; }
+  .hv-mini-art { width: 23px; height: 23px; }
   .hv-metric small { font-size: 9px; }
-  .hv-metric b { font-size: 14px; }
-  .hv-metric-exam b { font-size: 11.5px; }
+  .hv-metric b { font-size: 13.5px; }
+  .hv-metric-exam b { font-size: 10.5px; }
   .hv-row { gap: 10px; padding: 11px 10px; }
-  .hv-ico { width: 43px; height: 43px; }
-  .hv-ico .hv-mini-art { width: 33px; height: 33px; }
+  .hv-ico { width: 37px; height: 37px; }
+  .hv-ico .hv-mini-art { width: 21px; height: 21px; }
   .hv-pill { padding-inline: 7px; }
 }
 
