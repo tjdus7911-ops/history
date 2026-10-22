@@ -15,6 +15,13 @@ assert.equal(g.run('JOKBO_API.linkedExamIds().length'),472,'검증 연결 보강
 assert.deepEqual(g.copy('JOKBO_DATA.keywords.filter(k=>!k.examIds.length).map(k=>k.id)'),['sataek','goryeo-status','goryeo-women'],'직접 연결 문항이 없는 항목만 비활성');
 assert(g.run("JOKBO_API.search('서옥제').some(k=>k.id==='seookje')"));
 assert(g.run("JOKBO_API.search('박종철').some(k=>k.id==='june-flow')"));
+assert.equal(g.run("JOKBO_API.searchResults('영고')[0].id"),'buyeo-festival','정확한 키워드를 관련도 최상단에 표시');
+assert.equal(g.run("JOKBO_API.searchResults('노비 안검법')[0].id"),'gwangjong-goryeo','띄어쓰기 차이를 허용하는 부분 검색');
+assert.deepEqual(g.copy("JOKBO_API.searchResults('과거제').map(row=>row.id).slice(0,2)"),['gwangjong-goryeo','joseon-education'],'전 시대의 같은 검색어 결과를 관련도순 표시');
+assert.equal(g.run("JOKBO_API.searchResults('책화')[0].id"),'dongye-customs','동예 상세 키워드 검색');
+assert.equal(g.run("JOKBO_API.searchResults('박종철')[0].id"),'june-flow','상세 설명에 포함된 용어 검색');
+assert.equal(g.run("JOKBO_API.searchResults('   ').length"),0,'빈 검색어에서 전체 결과를 노출하지 않음');
+assert.equal(g.run("(()=>{const rows=JOKBO_API.searchResults('과거제');return new Set(rows.map(row=>row.id)).size===rows.length})()"),true,'같은 족보 키워드 중복 결과 없음');
 for(const id of ['okjeo-products','samhan-festival','unification-flow','aristocratic-conflicts','goryeo-history-books','sejong-science','new-religions','sovereignty-loss','heroic-struggle','national-culture','coalition-negotiation']){
   assert(g.run(`JOKBO_DATA.keywords.some(k=>k.id==='${id}')`),id+' PDF 범위 보강');
 }
@@ -174,6 +181,37 @@ for(const hidden of ['records','era','game','quiz','complete','jokbo']){fab.run(
 fab.run("globalThis.location=undefined;screen='study';window.scrollY=284;window.scrollTo=(x,y)=>{window.scrollY=Number(y)||0;window.lastScrollY=window.scrollY}");fab.click({jkOpen:''});assert.equal(fab.run('screen'),'jokbo','오답노트에서 족보 진입');fab.click({jkBack:'origin'});fab.tick();assert.equal(fab.run('screen'),'study','족보 뒤로가기 시 직전 오답노트 복귀');assert.equal(fab.run('window.lastScrollY'),284,'직전 화면 스크롤 복원');
 assert.equal(fab.run("localStorage.getItem('history-jokbo:saved:v1')"),null,'FAB 이동은 저장 키워드 데이터를 초기화하지 않음');
 
+// 전 시대 통합 검색: 전용 화면·상세 이동·검색 상태와 원래 카드 위치 복원.
+const searchGame=load();
+searchGame.run("globalThis.location=undefined;screen='home';window.scrollY=0;window.scrollTo=(x,y)=>{window.scrollY=Number(y)||0;window.lastScrollY=window.scrollY}");
+searchGame.click({jkOpen:''});searchGame.click({jkEra:'three'});searchGame.click({jkCountry:'백제'});
+searchGame.run('window.scrollY=412');searchGame.click({jkSearch:''});
+assert.equal(searchGame.run('screen'),'jokbo-search','돋보기로 전용 검색 화면 진입');
+assert(searchGame.run("renderContent().includes('placeholder=\"왕, 사건, 제도, 키워드 검색\"')"),'검색창 플레이스홀더');
+assert(searchGame.run("renderContent().includes('족보 전체에서 찾아보세요')"),'빈 검색어 안내');
+assert.equal(searchGame.run("renderContent().includes('data-jk-search-result')"),false,'빈 검색어는 전체 결과 미노출');
+searchGame.input({jkQuery:''},'노비 안검법');searchGame.run('window.scrollY=233');
+assert(searchGame.run("renderContent().includes('검색 결과 <b>1</b>개')"),'실시간 검색 결과 개수');
+assert(searchGame.run("renderContent().includes('data-jk-search-result=\"gwangjong-goryeo\"')"),'현재 시대와 무관한 고려 결과 표시');
+assert(searchGame.run("renderContent().includes('<mark>노비안검법</mark>')"),'띄어쓰기 차이가 있는 일치 부분 강조');
+searchGame.click({jkSearchResult:'gwangjong-goryeo'});
+assert.equal(searchGame.run('screen'),'jokbo-detail','검색 결과에서 해당 키워드 상세로 이동');
+assert.equal(searchGame.run('JOKBO_API.state().activeEra'),'goryeo','검색 결과의 정확한 시대로 이동');
+assert(searchGame.run("renderContent().includes('data-jk-back=\"search\"')"),'상세에서 검색 결과로 돌아가는 경로');
+assert(searchGame.run("renderContent().includes('<mark>노비안검법</mark>')"),'상세 화면의 검색 위치 강조');
+searchGame.click({jkSave:'gwangjong-goryeo'});
+assert.deepEqual(searchGame.copy('JOKBO_API.saved()'),['gwangjong-goryeo'],'검색 결과 상세에서도 키워드 저장');
+searchGame.click({jkBack:'search'});searchGame.tick();
+assert.equal(searchGame.run('screen'),'jokbo-search','상세 뒤로가기 시 검색 결과 복귀');
+assert.equal(searchGame.run('JOKBO_API.state().query'),'노비 안검법','검색어 유지');
+assert.equal(searchGame.run('window.lastScrollY'),233,'검색 결과 스크롤 위치 복원');
+searchGame.click({jkBack:'search-exit'});searchGame.tick();
+assert.equal(searchGame.run('screen'),'jokbo','검색 종료 시 기존 족보 복귀');
+assert.equal(searchGame.run('JOKBO_API.state().activeEra'),'three','검색 전 시대 복원');
+assert.equal(searchGame.run('JOKBO_API.state().country'),'백제','검색 전 나라 칩 복원');
+assert.equal(searchGame.run('JOKBO_API.state().query'),'','검색 종료 시 검색어 정리');
+assert.equal(searchGame.run('window.lastScrollY'),412,'검색 전 카드 스크롤 위치 복원');
+
 const index=fs.readFileSync('dist/index.html','utf8'),worker=fs.readFileSync('dist/sw.js','utf8'),css=fs.readFileSync('dist/jokbo.css','utf8'),uiCss=fs.readFileSync('dist/ui-refresh.css','utf8'),baseCss=fs.readFileSync('dist/style.css','utf8');
 for(const file of ['jokbo.css','jokbo-data.js','jokbo-ui.js','story-release-policy.js'])assert(index.includes(file),file+' index 연결');
 for(const file of ['/jokbo.css','/jokbo-data.js','/jokbo-ui.js','/story-release-policy.js'])assert(worker.includes(file),file+' 오프라인 캐시');
@@ -189,6 +227,8 @@ assert(css.includes('.jk-keyword-phrase'),'의미 묶음 줄바꿈 스타일');
 assert(css.includes('.jk-appbar-chevron')&&css.includes('stroke-width: 1.75'),'앱바 전용 얇은 chevron');
 assert(css.includes('min-height: calc(56px + env(safe-area-inset-top, 0px))'),'Android 상태 표시줄 안전 영역');
 assert(css.includes('.jk-group-keyword-card'),'그룹 전체 핵심 정리 전용 범위 스타일');
+assert(css.includes('.jk-search-page')&&css.includes('.jk-search-result'),'전 시대 검색 전용 화면·리스트 스타일');
+assert(css.includes('.jk-search-page mark, .jk-detail-search-hit mark'),'검색 결과와 상세 일치 부분 강조');
 assert(css.includes('grid-template-columns: 72px minmax(0, 1fr)'),'왕 이름·키워드 2열 정렬');
 assert(css.includes('html body .jk-fact-value { font-size: 15px'),'카드 키워드 크기 축소');
 assert(css.includes('.jk-fab-dock')&&css.includes('bottom: calc(84px + env(safe-area-inset-bottom, 0px))'),'공통 FAB 바텀 메뉴·Safe Area 간격');

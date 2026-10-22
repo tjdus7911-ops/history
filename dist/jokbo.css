@@ -16,6 +16,7 @@
 }
 
 .main.ed-jokbo,
+.main.ed-jokbo-search,
 .main.ed-jokbo-group,
 .main.ed-jokbo-detail,
 .main.ed-jokbo-compare {
@@ -131,6 +132,49 @@
   color: var(--jk-faint);
   font-size: 22px;
 }
+
+/* Dedicated all-era search. The summary cards remain unchanged behind this route. */
+.jk-search-page { min-height: 100dvh; padding-top: 7px; padding-bottom: calc(48px + env(safe-area-inset-bottom, 0px)); }
+.jk-search-appbar {
+  position: sticky; top: 0; z-index: 12;
+  display: grid; grid-template-columns: 44px minmax(0, 1fr); align-items: center; gap: 4px;
+  min-height: 58px; margin: -7px -4px 0; padding: 7px 4px;
+  border-bottom: 1px solid var(--jk-line); background: rgba(255,255,255,.98);
+}
+.jk-search-appbar .jk-appbar-back { margin-left: -8px; }
+.jk-search-field {
+  display: flex; align-items: center; gap: 7px; min-width: 0; min-height: 44px; padding: 0 5px 0 11px;
+  border: 1px solid transparent; border-radius: 12px; background: var(--jk-sunken);
+}
+.jk-search-field:focus-within { border-color: var(--jk-coral); background: #fff; }
+.jk-search-field > span, .jk-search-field > span img { width: 20px; height: 20px; }
+.jk-search-field input {
+  width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--jk-ink);
+  font: 500 15px/22px var(--jk-ui); letter-spacing: -.015em;
+}
+.jk-search-field input::placeholder { color: var(--jk-faint); }
+.jk-search-field button { width: 36px; height: 36px; flex: none; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--jk-faint); font-size: 21px; }
+.jk-search-field button:active { background: #e9eeee; }
+.jk-search-field button:disabled { visibility: hidden; }
+.jk-search-content { padding-top: 14px; }
+.jk-search-count { margin: 0 0 7px; color: var(--jk-sub); font-size: 13px; line-height: 20px; }
+.jk-search-count b { color: var(--jk-coral); font-weight: 800; }
+.jk-search-results { border-top: 1px solid var(--jk-line); }
+.jk-search-result {
+  position: relative; display: grid; gap: 4px; width: 100%; min-height: 106px; padding: 15px 38px 15px 2px;
+  border: 0; border-bottom: 1px solid var(--jk-line); border-radius: 0; background: #fff; color: var(--jk-ink); text-align: left;
+}
+.jk-search-result:active { background: var(--jk-sunken); }
+.jk-search-result-context { color: var(--jk-faint); font-size: 12px; line-height: 18px; font-weight: 650; }
+.jk-search-result strong { font-size: 16px; line-height: 23px; font-weight: 750; letter-spacing: -.02em; }
+.jk-search-result p { display: -webkit-box; margin: 0; overflow: hidden; color: var(--jk-sub); font-size: 13px; line-height: 20px; font-weight: 450; word-break: keep-all; overflow-wrap: anywhere; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.jk-search-result > i { position: absolute; top: 50%; right: 3px; width: 20px; height: 20px; color: var(--jk-faint); transform: translateY(-50%); }
+.jk-search-result > i svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.jk-search-page mark, .jk-detail-search-hit mark { padding: 0; background: transparent; color: var(--jk-coral); font: inherit; font-weight: 800; }
+.jk-search-guide, .jk-search-empty { margin-top: 12px; padding: 22px 18px; border-radius: 12px; background: var(--jk-sunken); }
+.jk-search-guide h2, .jk-search-empty h2 { font-size: 16px; line-height: 24px; font-weight: 750; }
+.jk-search-guide p, .jk-search-empty p { margin-top: 4px; color: var(--jk-sub); font-size: 13px; line-height: 20px; word-break: keep-all; }
+html body .capacitor-native .jk-search-appbar, html.capacitor-native body .jk-search-appbar { top: env(safe-area-inset-top, 0px); }
 
 /* View tabs stay quiet; eras use independent horizontally scrolling chips. */
 .jk-era-tabs {
