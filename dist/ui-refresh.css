@@ -37,8 +37,8 @@ html body:not(#ui-type) .hv-era-title { font-size: var(--ui-title); line-height:
 html body:not(#ui-type) .hv-h { font-size: 17px; line-height: 24px; font-weight: 700; }
 html body:not(#ui-type) .hv-row-text b { font-size: var(--ui-body); line-height: 22px; }
 html body:not(#ui-type) .hv-row-text small { font-size: 13px; line-height: 18px; }
-html body:not(#ui-type) .hv-metrics b, html body:not(#ui-type) .hv-stat b, html body:not(#ui-type) .hv-metric b { font-size: 17px; line-height: 22px; }
-html body:not(#ui-type) .hv-metric-exam b { font-size: 14px; line-height: 22px; }
+html body:not(#ui-type) .hv-metrics b, html body:not(#ui-type) .hv-stat b, html body:not(#ui-type) .hv-metric b { font-size: 15px; line-height: 20px; }
+html body:not(#ui-type) .hv-metric-exam b { font-size: 12px; line-height: 18px; }
 
 /* 기출문제 목록·취약점 */
 html body:not(#ui-type) .r7-page .r7-exam-round { font-size: 20px; line-height: 26px; font-weight: 800; }
