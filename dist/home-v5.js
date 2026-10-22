@@ -271,6 +271,7 @@
       + '<button class="hv-icon-btn" data-action="status" aria-label="내 상태 보기">' + ico.user + '</button></header>'
       + railHTML(e)
       + metricsHTML(now)
+      + (globalThis.LEARNING_MISSIONS?.cardHTML?.(now) || '')
       + cheerHTML()
       + practiceHTML()
       + weakHTML()

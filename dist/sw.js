@@ -1,5 +1,5 @@
 const CACHE_PREFIX='lived-history-shell-';
-const CACHE_VERSION='2026-10-22-jokbo-search-width-1';
+const CACHE_VERSION='2026-10-22-learning-missions-1';
 const CACHE_NAME=CACHE_PREFIX+CACHE_VERSION;
 const APP_SHELL=[
   '/',
@@ -28,7 +28,7 @@ const APP_SHELL=[
   '/three-season-data.js','/three-save-data.js','/three-story-ui.js',
   '/three-era-isolation.js','/three-service-ui.js','/three-learning-boundary.js','/three-service.css',
   '/three-staging.js','/three-staging.css',
-  '/home-v5.js','/home-v5.css','/rev7-theme.css','/rev7-auto.css','/rev7-screens.css',
+  '/home-v5.js','/home-v5.css','/learning-missions.js','/learning-missions.css','/rev7-theme.css','/rev7-auto.css','/rev7-screens.css',
   '/rev7-layouts.css','/rev7-layouts.js','/rev7-ox-layouts.js','/rev7-story-layouts.js','/rev7-story-player.js','/rev7-exam-layouts.js',
   '/story-mobile-qa.css',
   '/app-navigation.css','/ui-refresh.css',
