@@ -1,5 +1,5 @@
 const CACHE_PREFIX='lived-history-shell-';
-const CACHE_VERSION='2026-10-22-learning-missions-1';
+const CACHE_VERSION='2026-10-22-product-redesign-1';
 const CACHE_NAME=CACHE_PREFIX+CACHE_VERSION;
 const APP_SHELL=[
   '/',
@@ -31,7 +31,7 @@ const APP_SHELL=[
   '/home-v5.js','/home-v5.css','/learning-missions.js','/learning-missions.css','/rev7-theme.css','/rev7-auto.css','/rev7-screens.css',
   '/rev7-layouts.css','/rev7-layouts.js','/rev7-ox-layouts.js','/rev7-story-layouts.js','/rev7-story-player.js','/rev7-exam-layouts.js',
   '/story-mobile-qa.css',
-  '/app-navigation.css','/ui-refresh.css',
+  '/app-navigation.css','/ui-refresh.css','/product-redesign.css',
   '/jokbo.css','/jokbo-data.js','/jokbo-ui.js','/story-release-policy.js',
   '/rev7-resource-states.js',
   '/media/rev7/user.svg','/media/rev7/chevron.svg','/media/rev7/chart.svg','/media/rev7/back.svg','/media/rev7/check.svg','/media/rev7/down.svg','/media/rev7/empty-wrong.svg','/media/rev7/close.svg',

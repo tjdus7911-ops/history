@@ -89,6 +89,7 @@
   };
 
   const illustrations = {
+    scroll: '<svg class="hv-mini-art" viewBox="0 0 24 24" aria-hidden="true"><path class="icon-line" d="M7 4.5h11a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H7a3 3 0 0 1 0-6h10"/><path class="icon-line" d="M7 4.5a3 3 0 0 0 0 6h10v4H7a3 3 0 0 0 0 6"/><path class="icon-accent" d="m15.5 9 1.5 1.5 3-3"/></svg>',
     calendar: '<svg class="hv-mini-art" viewBox="0 0 24 24" aria-hidden="true"><rect class="icon-line" x="3.5" y="5.5" width="17" height="15" rx="3"/><path class="icon-accent" d="M7.5 3.5v4m9-4v4M3.5 9.5h17"/><path class="icon-line" d="m8.5 15 2 2 5-5"/></svg>',
     fire: '<svg class="hv-mini-art" viewBox="0 0 24 24" aria-hidden="true"><path class="icon-line" d="M13.2 2.8c.4 3-2.2 4.3-1.2 7.1 1.7-.6 2.8-2.1 3.2-4 3.4 3.1 4.8 6 3.8 9.4a7.2 7.2 0 0 1-13.8-1.1c-.6-3.3 1-6.3 3.5-8.5-.3 2.7.7 4.3 2 5.1"/><path class="icon-accent" d="M12 19.8c-2.3-.5-3.2-2.8-1.7-4.7.2 1.1 1.2 1.6 1.8 1.7-.2-1.8 1.6-2.5 1.6-4.1 2.1 2.1 1.9 5.8-1.7 7.1Z"/></svg>',
     paper: '<svg class="hv-mini-art" viewBox="0 0 24 24" aria-hidden="true"><path class="icon-line" d="M6 3.5h8.5l3.5 3.6v13.4H6Z"/><path class="icon-line" d="M14.5 3.5v4H18M9 11.5h6m-6 3.5h4"/><path class="icon-accent" d="m14.8 18 1.5 1.5 3.2-3.5"/></svg>',
@@ -131,6 +132,25 @@
   function examHistoryCount() {
     const r = meta().officialExamResults;
     return Array.isArray(r) ? r.length : r && typeof r === 'object' ? Object.keys(r).length : 0;
+  }
+
+  function examPassRate() {
+    const raw = meta().officialExamResults;
+    const records = Array.isArray(raw) ? raw : raw && typeof raw === 'object' ? Object.values(raw) : [];
+    const certify = globalThis.OFFICIAL_CERTIFICATION;
+    if (typeof certify !== 'function') return null;
+    const official = records.filter((record) => record && record.mode !== 'learn'
+      && record.examRound != null && Number.isFinite(Number(record.examRound))
+      && ['심화', '기본'].includes(record.examLevel));
+    const outcomes = official.map((record) => {
+      const stored = record.summary || {};
+      const summary = {
+        score: stored.score ?? record.score,
+        maxScore: stored.maxScore ?? record.maxScore
+      };
+      return certify(summary, record.examLevel, true);
+    }).filter((result) => result?.eligible);
+    return outcomes.length ? Math.round(outcomes.filter((result) => result.passed).length / outcomes.length * 100) : null;
   }
 
   function oxState() {
@@ -179,46 +199,42 @@
 
   /* practice rows: pill = action in the row, chevron = plain link */
   const row = (kind, icon, title, sub, attrs, pill) =>
-    '<button class="hv-row hv-row-' + kind + '" ' + attrs + '><span class="hv-ico">' + icon + '</span>'
+    '<button class="hv-row hv-row-' + kind + ' hv-shortcut" ' + attrs + '><span class="hv-ico">' + icon + '</span>'
     + '<span class="hv-row-text"><b>' + title + '</b><small>' + sub + '</small></span>'
     + (pill ? '<span class="hv-pill">' + pill + '</span>' : '<span class="hv-chev">' + ico.chevron + '</span>') + '</button>';
 
-  function practiceHTML() {
+  function practiceHTML(currentEra) {
     const a = activeExam(), pool = wrongPool(), ox = oxState();
+    const storyStarted = Boolean(seasonRun(currentEra)?.started);
     let exam;
-    if (a) {
-      exam = row('exam', illustrations.paper, '기출문제 이어 풀기',
-        esc(a.title) + ' · ' + a.answered + '/' + a.total + '문항' + (a.remaining != null ? ' · 남은 ' + (a.paused ? '시간 정지' : Math.ceil(a.remaining / 60000) + '분') : ''),
-        'data-r7-exam-open', '이어 풀기');
-    } else if (examHistoryCount() > 0) {
-      exam = row('exam', illustrations.paper, '기출문제', '회차별·시대별 실제 기출로 실전 감각을 길러요', 'data-nav="exam-library"', '');
-    } else {
-      exam = row('exam', illustrations.paper, '기출문제', '실제 기출로 시험 감각을 차근차근 길러요', 'data-nav="exam-library"', '시작하기');
-    }
+    if (a) exam = row('exam', illustrations.paper, '기출문제 이어 풀기', esc(a.title) + ' · ' + a.answered + '/' + a.total + '문항' + (a.remaining != null ? ' · 남은 ' + (a.paused ? '시간 정지' : Math.ceil(a.remaining / 60000) + '분') : ''), 'data-r7-exam-open', '이어 풀기');
+    else if (examHistoryCount() > 0) exam = row('exam', illustrations.paper, '기출문제', '회차별·시대별 실제 기출로 실전 감각을 길러요', 'data-nav="exam-library"', '');
+    else exam = row('exam', illustrations.paper, '기출문제', '실제 기출로 시험 감각을 차근차근 길러요', 'data-nav="exam-library"', '시작하기');
     let oxRow;
     if (ox.kind === 'active') oxRow = row('ox', illustrations.ox, 'OX 퀴즈 이어 풀기', esc(ox.text), 'data-nav="ox"', '이어 풀기');
     else if (ox.kind === 'done') oxRow = row('ox', illustrations.ox, 'OX 퀴즈', '핵심 개념을 빠르게 확인해요', 'data-nav="ox"', '');
     else oxRow = row('ox', illustrations.ox, 'OX 퀴즈', '핵심 개념을 OX로 빠르게 확인해요', 'data-nav="ox"', 'OX 풀기');
     let wrong;
     if (pool.length) wrong = row('wrong', illustrations.review, '오답노트', '복습할 문제 ' + pool.length + '개 · 최근에 틀린 것부터', 'data-review="' + esc(pool[0]) + '"', '복습하기');
-    else {
-      const hadAny = (meta().wrongQuestionIds || []).length > 0;
-      wrong = row('wrong', illustrations.review, '오답노트', hadAny ? '오답을 모두 복습했어요' : '틀린 문제는 여기에 모여요', 'data-nav="study"', '');
-    }
-    return '<section class="hv-section" aria-label="실전 학습"><div class="hv-section-head"><h2 class="hv-h">실전 학습</h2><button class="hv-textbtn" data-nav="exam-library">목록 보기</button></div><div class="hv-list">' + exam + oxRow + wrong + '</div></section>';
+    else wrong = row('wrong', illustrations.review, '오답노트', (meta().wrongQuestionIds || []).length ? '오답을 모두 복습했어요' : '틀린 문제는 여기에 모여요', 'data-nav="study"', '');
+    const story = '<button class="hv-shortcut hv-shortcut-story" data-era-open="' + esc(currentEra.id) + '"><span class="hv-ico">' + illustrations.scroll + '</span><span class="hv-shortcut-copy"><b>스토리</b><small>시대별 이야기</small></span><span class="hv-shortcut-action">' + (storyStarted ? '이어보기' : '시작하기') + '</span></button>';
+    return '<section class="hv-section hv-shortcuts-section" aria-label="실전 학습"><div class="hv-section-head"><h2 class="hv-h">학습 바로가기</h2></div><div class="hv-shortcuts">'
+      + story + exam + oxRow + wrong + '</div></section>';
   }
 
   function metricsHTML(now = new Date()) {
-    const s = studyStats(now), d = ddayState(now);
+    const s = studyStats(now), d = ddayState(now), passRate = examPassRate();
     const dday = d.kind === 'today' ? 'D-DAY' : d.kind === 'set' ? 'D-' + d.days : d.kind === 'past' ? '다시 설정' : '설정하기';
     const dateValue = d.date ? toKey(d.date) : '';
     const cell = (kind, icon, label, value, unit = '', hint = '') => '<article class="hv-metric hv-metric-' + kind + '"' + (hint ? ' title="' + hint + '"' : '') + '><span class="hv-metric-art">' + icon + '</span><small>' + label + '</small><b>' + value + (unit ? '<em>' + unit + '</em>' : '') + '</b></article>';
     const exam = '<button type="button" class="hv-metric hv-metric-exam" data-hv-exam-open title="시험일 설정 또는 변경" aria-label="시험일 ' + (dateValue ? '변경' : '설정') + '"><span class="hv-metric-art">' + illustrations.calendar + '</span><small>남은 시험일</small><b>' + dday + '</b></button>';
-    return '<section class="hv-status" aria-labelledby="hv-status-title"><h2 class="hv-h" id="hv-status-title">학습 현황</h2><div class="hv-metrics">' + exam + cell('streak', illustrations.fire, '연속 학습', s.streak, '일') + cell('today', illustrations.paper, '오늘 푼 문제', s.todayCount, '문항') + cell('accuracy', illustrations.target, '최근 정답률', s.accuracy == null ? '-' : s.accuracy, s.accuracy == null ? '' : '%', '최근 완료한 문제 풀이 최대 20문항 기준') + '</div></section>';
+    const primary = '<div class="hv-metrics">' + exam + cell('streak', illustrations.fire, '연속 학습', s.streak, '일') + cell('pass-rate', illustrations.target, '실전 합격률', passRate == null ? '—' : passRate, passRate == null ? '' : '%', '완료한 공식 회차 시험에서 기존 합격 기준으로 계산') + '</div>';
+    const detail = '<div class="hv-metrics-detail"><span>오늘 푼 문제 <b>' + s.todayCount + '문항</b></span><i aria-hidden="true"></i><span title="최근 완료한 문제 풀이 최대 20문항 기준">최근 정답률 <b>' + (s.accuracy == null ? '—' : s.accuracy + '%') + '</b></span></div>';
+    return '<section class="hv-status" aria-labelledby="hv-status-title"><h2 class="hv-h" id="hv-status-title">학습 현황</h2>' + primary + detail + '</section>';
   }
 
   function cheerHTML() {
-    return '<section class="hv-cheer-banner" aria-label="학습 응원"><span class="hv-cheer-avatar"><img src="icons/icon-192.png" alt="" aria-hidden="true"></span><p>오늘도 화이팅! 한 장면, 한 문제씩 이어가요.</p></section>';
+    return '<section class="hv-cheer-banner" aria-label="학습 응원"><p>오늘도 화이팅! 한 장면, 한 문제씩 이어가요.</p><span class="hv-cheer-avatar"><img src="icons/icon-192.png" alt="" aria-hidden="true"></span></section>';
   }
   function weakHTML() {
     const weak=globalThis.OFFICIAL_LEARNING_ANALYSIS?.rows?.().find(row=>row.weak);
@@ -267,13 +283,13 @@
   home = function () {
     const e = heroEra(), now = new Date();
     return '<div class="hv">'
-      + '<header class="hv-top"><h1 class="hv-brand" aria-label="눈떠보니 한국사"><span>눈떠보니</span><em>한국사</em></h1>'
+      + '<header class="hv-top"><h1 class="hv-brand" aria-label="눈떠보니 한국사"><span>눈떠보니</span><em>한국사</em><i class="hv-brand-mark">' + illustrations.scroll + '</i></h1>'
       + '<button class="hv-icon-btn" data-action="status" aria-label="내 상태 보기">' + ico.user + '</button></header>'
       + railHTML(e)
       + metricsHTML(now)
       + (globalThis.LEARNING_MISSIONS?.cardHTML?.(now) || '')
       + cheerHTML()
-      + practiceHTML()
+      + practiceHTML(e)
       + weakHTML()
       + sheetHTML() + '</div>';
   };
@@ -349,7 +365,7 @@
     if (sheet && screen === 'home') document.querySelector?.('.hv-sheet button')?.focus?.({ preventScroll: true });
   };
 
-  globalThis.HOME_V6_API = Object.freeze({ stats: studyStats, dday: ddayState, events: learningEvents });
+  globalThis.HOME_V6_API = Object.freeze({ stats: studyStats, dday: ddayState, events: learningEvents, passRate: examPassRate });
 
   render();
 })();

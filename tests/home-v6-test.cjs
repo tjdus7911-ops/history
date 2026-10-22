@@ -15,6 +15,13 @@ vm.runInContext(scripts.map(name=>fs.readFileSync('dist/'+name,'utf8')).join('\n
 const run=code=>vm.runInContext(code,context),copy=code=>JSON.parse(run('JSON.stringify('+code+')'));
 
 assert.equal(run('typeof HOME_V6_API'),'object','home metrics API is available');
+assert.equal(run('HOME_V6_API.passRate()'),null,'official pass rate stays empty until official exam results exist');
+run(`meta().officialExamResults=[
+ {mode:'exam',examRound:79,examLevel:'심화',summary:{score:80,maxScore:100}},
+ {mode:'exam',examRound:79,examLevel:'심화',summary:{score:59,maxScore:100}},
+ {mode:'learn',examRound:79,examLevel:'심화',summary:{score:100,maxScore:100}}
+];`);
+assert.equal(run('HOME_V6_API.passRate()'),50,'home pass rate uses only completed official exams and the existing certification threshold');
 const protectedBefore=run('JSON.stringify({run:state.run,mainRun:state.mainRun,records:meta().questionRecords,wrong:meta().wrongQuestionIds,results:meta().officialExamResults})');
 run(`meta().learningEvents=[
  {questionId:'regular-today',answer:0,correct:true,answeredAt:'2026-10-22T09:00:00+09:00'},
@@ -36,6 +43,7 @@ run('render()');
 assert(html.includes('<span>눈떠보니</span><em>한국사</em>'),'header uses the split brand wordmark');
 assert(!html.includes('요일'),'the old date header is removed');
 assert(html.includes('학습 현황')&&html.includes('남은 시험일')&&html.includes('D-14'),'D-day renders from the saved target date');
+assert(html.includes('실전 합격률')&&html.includes('50<em>%</em>'),'official result pass rate is shown from actual exam records');
 assert(html.includes('data-hv-exam-open')&&!html.includes('data-hv-exam-date'),'exam card opens the in-app calendar instead of an unreliable transparent native input');
 assert(html.includes('연속 학습')&&html.includes('오늘 푼 문제')&&html.includes('최근 정답률'),'all four status items render');
 assert(html.includes('<p>오늘도 화이팅! 한 장면, 한 문제씩 이어가요.</p>'),'compact encouragement copy is exact');

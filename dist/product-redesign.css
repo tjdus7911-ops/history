@@ -1,0 +1,220 @@
+/* October product redesign. This is the final, app-only theme layer; story
+   scenes keep their own historical art and cinematic dialogue surfaces. */
+:root {
+  --r7-bg: #f6f7f9;
+  --r7-sunken: #f1f3f5;
+  --r7-ink: #253142;
+  --r7-sub: #697684;
+  --r7-faint: #87919b;
+  --r7-line: #e9edf0;
+  --r7-line-strong: #e5e8eb;
+  --r7-coral: #e9513b;
+  --r7-coral-press: #d64430;
+  --r7-coral-soft: #fff0ed;
+  --r7-coral-ink: #c94432;
+  --r7-teal: #4b9a71;
+  --r7-teal-soft: #eaf5ed;
+  --r7-teal-ink: #347a50;
+  --r7-r-sm: 8px;
+  --r7-r-md: 12px;
+  --r7-r-lg: 16px;
+  --r7-r-xl: 22px;
+  --ed-paper: #f6f7f9;
+  --ed-ink: #253142;
+  --ed-muted: #87919b;
+  --ed-line: #e9edf0;
+  --ed-gold: #e9513b;
+  --ed-display: var(--r7-ui);
+  --ed-ui: var(--r7-ui);
+  --jk-bg: #f6f7f9;
+  --jk-sunken: #f1f3f5;
+  --jk-ink: #253142;
+  --jk-sub: #697684;
+  --jk-faint: #87919b;
+  --jk-line: #e9edf0;
+  --jk-coral: #e9513b;
+  --jk-coral-press: #d64430;
+}
+
+html, body { background: #f6f7f9; color: #253142; }
+body { font-family: var(--r7-ui); }
+button, input, select { font-family: var(--r7-ui); }
+button:focus-visible, select:focus-visible, [tabindex]:focus-visible { outline-color: #e9513b; }
+
+/* Shared app frame and five-item navigation. */
+.editorial-shell.app-nav-shell { background: #f6f7f9; }
+.editorial-shell.app-nav-shell .sidebar { background: #fff; border-color: #e9edf0; box-shadow: 0 -4px 18px #25314208; }
+.editorial-shell.app-nav-shell .app-navigation button { color: #87919b; }
+.editorial-shell.app-nav-shell .app-navigation button.active { color: #e9513b; }
+.editorial-shell.app-nav-shell .app-navigation button.active > svg { stroke-width: 1.9; }
+.main.ed-screen:not(.ed-game) { max-width: 760px; margin-inline: auto; padding: 20px 20px calc(116px + env(safe-area-inset-bottom, 0px)); }
+.main.ed-screen:not(.ed-game) { color: #253142; }
+.ed-screen:not(.ed-game) h1, .ed-screen:not(.ed-game) h2, .ed-screen:not(.ed-game) h3, .ed-screen:not(.ed-game) h4 { font-family: var(--r7-ui); color: #253142; letter-spacing: -.025em; }
+.ed-section, .v2-section, .readiness, .official-record-overview, .official-record-exams,
+.official-record-empty, .official-record-learning-empty, .official-exam-history-row,
+.official-result-analysis, .official-result-summary, .official-top-weak, .official-era-detail-section {
+  border-color: #e5e8eb;
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow: 0 5px 20px #25314208;
+}
+.ed-screen:not(.ed-game) .ed-link, .ed-screen:not(.ed-game) .text-btn { color: #657282; }
+.ed-tabs button[aria-selected="true"], .ed-tabs button[aria-pressed="true"] { color: #e9513b; border-bottom-color: #e9513b; }
+.ed-metrics { border: 1px solid #e9edf0; border-radius: 18px; box-shadow: none; }
+.ed-activity { border: 1px solid #e9edf0; border-radius: 18px; box-shadow: none; }
+.ed-activity em { color: #e9513b; }
+
+/* Home layout: full-width swipe card, compact status summary, mission card,
+   then a 2 x 2 grid of the same existing learning routes. */
+.hv { max-width: 620px; }
+.hv-top { padding-bottom: 13px; }
+.hv-brand { align-items: center; gap: 3px; font-size: 22px; }
+.hv-brand span { color: #253142; }
+.hv-brand em { color: #e9513b; }
+.hv-brand-mark { display: grid; place-items: center; width: 29px; height: 29px; margin-left: 4px; border-radius: 9px; background: #fff0e7; color: #e9513b; transform: rotate(-4deg); }
+.hv-brand-mark .hv-mini-art { width: 21px; height: 21px; }
+.hv-rail-wrap { margin-inline: -20px; }
+.hv-rail { gap: 10px; padding-inline: 20px; }
+.hv-rail-item { flex: 0 0 100%; }
+.hv-era { height: clamp(310px, 88vw, 370px); border-radius: 20px; }
+.hv-era-shade { background: linear-gradient(180deg, #17253605 2%, #17253612 38%, #172536cf 100%); }
+.hv-era-body { padding: 17px; gap: 7px; }
+.hv-era-title { font-size: 23px; line-height: 1.25; }
+.hv-era-sub { font-size: 13px; }
+.hv-progress { height: 5px; }
+.hv-era-btn { min-height: 46px; border-radius: 999px; font-size: 14px; }
+.hv-tag.is-on { background: #e9513b; }
+.hv-season-tag { background: #ffffffed; color: #253142; }
+.hv-rail-foot { min-height: 35px; }
+.hv-status { margin-top: 12px; }
+.hv-h { font-size: 17px; color: #253142; }
+.hv-metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 9px; }
+.hv-metric { min-height: 88px; padding: 9px 5px; border-color: #e9edf0; border-radius: 16px; background: #fff; }
+.hv-metric-art { color: #748394; }
+.hv-metric small { color: #87919b; font-size: 10px; }
+.hv-metric b { color: #253142; font-size: 16px; }
+.hv-metric-exam b, .hv-metric-pass-rate b { color: #e9513b; font-size: 14px; }
+.hv-metrics-detail { display: flex; align-items: center; justify-content: center; gap: 13px; min-height: 35px; margin-top: 2px; color: #87919b; font-size: 11px; }
+.hv-metrics-detail span { display: inline-flex; gap: 5px; align-items: baseline; }
+.hv-metrics-detail b { color: #253142; font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.hv-metrics-detail i { width: 1px; height: 13px; background: #e5e8eb; }
+.lm-card { margin-top: 11px; padding: 17px; border-color: #e5e8eb; border-radius: 20px; box-shadow: 0 5px 20px #25314208; }
+.lm-card-head h2 { color: #253142; font-size: 17px; }
+.lm-card-head p { color: #87919b; }
+.lm-settings-link { min-height: 38px; border-color: transparent; border-radius: 999px; background: #fff0ed; color: #d94732; }
+.lm-row { border-color: #edf0f2; border-radius: 14px; }
+.lm-row-copy strong { color: #253142; }
+.lm-status-done { background: #eaf5ed; color: #478d5d; }
+.lm-expand { color: #657282; }
+.hv-cheer-banner { min-height: 98px; margin-top: 12px; padding: 8px 12px 8px 16px; overflow: hidden; border: 1px solid #f0e9e3; border-radius: 20px; background: linear-gradient(110deg, #fff9f4, #fff 72%); }
+.hv-cheer-banner p { flex: 1; color: #253142; font-size: 15px; line-height: 1.55; }
+.hv-cheer-avatar { width: 104px; height: 92px; overflow: hidden; border: 0; border-radius: 0; background: transparent; }
+.hv-cheer-avatar img { object-fit: contain; object-position: center 48%; }
+.hv-section { margin-top: 19px; }
+.hv-section-head { min-height: 29px; margin-bottom: 9px; }
+.hv-shortcuts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+.hv-shortcut { display: grid; grid-template-columns: 40px minmax(0, 1fr); grid-template-rows: 1fr auto; align-items: center; gap: 5px 10px; min-width: 0; min-height: 88px; padding: 12px; border: 1px solid #e9edf0; border-radius: 18px; background: #fff; color: #253142; text-align: left; }
+.hv-shortcuts .hv-row { display: grid; grid-template-columns: 40px minmax(0, 1fr); grid-template-rows: 1fr auto; align-items: center; gap: 5px 10px; min-width: 0; min-height: 88px; padding: 12px; border-color: #e9edf0; border-radius: 18px; background: #fff; }
+.hv-shortcuts .hv-row-text { display: flex; grid-column: 2; grid-row: 1; min-width: 0; flex-direction: column; gap: 2px; }
+.hv-shortcuts .hv-row-text b { overflow-wrap: anywhere; color: #253142; font-size: 13px; line-height: 18px; }
+.hv-shortcuts .hv-row-text small { overflow-wrap: anywhere; color: #87919b; font-size: 10px; line-height: 14px; }
+.hv-shortcuts .hv-row .hv-ico { grid-column: 1; grid-row: 1 / 3; }
+.hv-shortcuts .hv-row .hv-pill { grid-column: 2; grid-row: 2; justify-self: start; padding: 0; background: none; color: #e9513b; font-size: 10px; line-height: 14px; }
+.hv-shortcuts .hv-row .hv-chev { display: none; }
+.hv-shortcut:active { background: #f9fafb; }
+.hv-shortcut .hv-ico { grid-row: 1 / 3; width: 40px; height: 40px; border-radius: 13px; }
+.hv-shortcut-story .hv-ico { background: #fff2dd; color: #b87925; }
+.hv-shortcut-exam .hv-ico { background: #fff0ed; color: #d94b37; }
+.hv-shortcut-ox .hv-ico { background: #edf5f1; color: #377965; }
+.hv-shortcut-wrong .hv-ico { background: #f3eff9; color: #766092; }
+.hv-shortcut-copy { display: flex; min-width: 0; flex-direction: column; gap: 2px; }
+.hv-shortcut-copy b { overflow-wrap: anywhere; color: #253142; font-size: 14px; line-height: 19px; }
+.hv-shortcut-copy small { overflow-wrap: anywhere; color: #87919b; font-size: 10px; line-height: 15px; }
+.hv-shortcut-action { grid-column: 2; color: #e9513b; font-size: 10px; line-height: 14px; font-weight: 750; }
+.hv-weak-card { border-color: #e5e8eb; border-radius: 18px; }
+
+/* Goal setup and common learning controls. */
+.lm-settings { max-width: 680px; }
+.lm-settings-header h1 { color: #253142; }
+.lm-back { border-radius: 50%; }
+.lm-goal, .lm-setting-row, .lm-option-card { border-radius: 18px; }
+.lm-save { border-radius: 999px; background: #e9513b; }
+.lm-stepper button, .lm-quantity button { min-width: 44px; min-height: 44px; border-radius: 50%; }
+.official-tabs button[aria-selected="true"] { color: #e9513b; border-bottom-color: #e9513b; }
+.official-round-levels button[aria-selected="true"] { background: #e9513b; border-color: #e9513b; }
+.official-round-row, .official-exam-card, .official-exam-history-row { border-color: #e9edf0; border-radius: 18px; box-shadow: none; }
+.official-round-action, .official-result-actions button, .official-review-actions button { border-radius: 999px; }
+.official-result-analysis { border-color: #e5e8eb; border-radius: 20px; background: #fff; }
+.official-analysis-status.focus, .official-analysis-status.weak { background: #fff0ed; color: #b94e3e; }
+.official-era-detail-meter i { background: #e9513b; }
+.official-era-detail-row.focus .official-era-detail-meter i, .official-era-detail-row.weak .official-era-detail-meter i { background: #e9513b; }
+.jk-page { background: #f6f7f9; }
+.jk-era-tabs button[aria-selected="true"] > span, .jk-segment button[aria-selected="true"] { background: #e9513b; color: #fff; }
+.jk-search-result, .jk-keyword { border-radius: 14px; }
+
+/* Result page uses the existing in-app mascot artwork; score and certification
+   still come from the submitted result and the official threshold logic. */
+.ed-exam-library .official-results .official-result-head { margin-bottom: 12px; }
+.ed-exam-library .official-results .official-result-hero {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 0;
+  margin: 0 0 10px;
+  padding: 16px 18px 18px;
+  border: 1px solid #e5e8eb;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 5px 20px #25314208;
+  text-align: center;
+}
+.ed-exam-library .official-results .official-result-mascot { display: block; width: min(52vw, 192px); height: auto; aspect-ratio: 1; object-fit: contain; border-radius: 20px; }
+.ed-exam-library .official-results .official-result-score { width: 100%; padding: 0 0 2px !important; text-align: center; }
+.ed-exam-library .official-results .official-result-score > small { color: #87919b; font-size: 12px; }
+.ed-exam-library .official-results .official-result-score h1 { margin: 0; color: #253142; font: 800 clamp(52px, 15vw, 70px)/1.05 var(--r7-ui); letter-spacing: -.06em; }
+.ed-exam-library .official-results .result-pass .official-result-score h1 { color: #e9513b; }
+.ed-exam-library .official-results .official-result-score h1 span { margin-left: 3px; font-size: .42em; letter-spacing: -.03em; }
+.ed-exam-library .official-results .official-result-score p { margin: 3px 0 0; color: #87919b; font-size: 11px; }
+.ed-exam-library .official-results .official-certification { width: 100%; min-height: 0; height: auto; padding: 8px 0 0; background: transparent; }
+.ed-exam-library .official-results .official-certification span { display: inline-flex; align-items: center; min-height: 30px; padding: 4px 13px; border-radius: 999px; background: #fff0ed; color: #d94632; font-size: 14px; }
+.ed-exam-library .official-results .official-certification b { margin-top: 5px; color: #253142; font-size: 16px; }
+.ed-exam-library .official-results .official-certification small { max-width: 270px; margin-top: 5px; color: #697684; font-size: 11px; }
+.ed-exam-library .official-results .official-certification.pass span { background: #fff0ed; color: #d94632; }
+.ed-exam-library .official-results .official-certification.fail span { background: #f1f3f5; color: #687482; }
+.ed-exam-library .official-results .official-certification.learning span { background: #f1f3f5; color: #687482; }
+.ed-exam-library .official-results .official-result-summary { margin: 10px 0 13px; border-color: #e5e8eb; border-radius: 18px; box-shadow: none; }
+.ed-exam-library .official-results .official-result-summary > div { border-color: #e9edf0; }
+.ed-exam-library .official-results .official-result-summary small { color: #87919b; }
+.ed-exam-library .official-results .official-result-summary b { color: #253142; }
+.ed-exam-library .official-results .official-result-actions { bottom: calc(72px + env(safe-area-inset-bottom, 0px)); gap: 9px; background: linear-gradient(180deg, #f6f7f900, #f6f7f9 24%); }
+.ed-exam-library .official-results .official-result-actions .official-result-retake { border-color: #e9513b; background: #e9513b; box-shadow: none; }
+.ed-exam-library .official-results .official-result-actions .secondary { border-color: #e5e8eb; background: #fff; color: #253142; }
+.ed-exam-library .official-results .official-grade-criteria { color: #697684; }
+
+@media (max-width: 370px) {
+  .main.ed-screen:not(.ed-game) { padding-inline: 15px; }
+  .hv-rail-item { flex-basis: 100%; }
+  .hv-metrics { gap: 5px; }
+  .hv-metric { min-height: 84px; padding-inline: 2px; }
+  .hv-metric small { font-size: 9px; }
+  .hv-metric b { font-size: 14px; }
+  .hv-shortcuts { gap: 7px; }
+  .hv-shortcut { grid-template-columns: 35px minmax(0, 1fr); min-height: 84px; gap: 5px 8px; padding: 10px; }
+  .hv-shortcuts .hv-row { grid-template-columns: 35px minmax(0, 1fr); min-height: 84px; gap: 5px 8px; padding: 10px; }
+  .hv-shortcut .hv-ico { width: 35px; height: 35px; }
+  .hv-shortcut-copy b { font-size: 13px; }
+  .hv-shortcut-copy small, .hv-shortcut-action { font-size: 9px; }
+  .hv-cheer-avatar { width: 86px; }
+  .ed-exam-library .official-results .official-result-hero { padding: 13px 12px 15px; }
+}
+
+@media (min-width: 701px) {
+  .main.ed-screen:not(.ed-game) { padding: 28px 28px 80px; }
+  .hv-rail-item { flex-basis: 100%; }
+  .hv-status { margin-top: 16px; }
+  .hv-shortcut { min-height: 96px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hv-era-btn, .hv-progress i, .hv-dots i, .lm-progress-track i { transition: none; }
+}
