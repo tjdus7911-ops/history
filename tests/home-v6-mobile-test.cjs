@@ -8,7 +8,7 @@ const server=http.createServer((req,res)=>{
 });
 
 (async()=>{let browser;try{
-  fs.mkdirSync(output,{recursive:true});await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));browser=await chromium.launch();
+  fs.mkdirSync(output,{recursive:true});await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));browser=await chromium.launch({executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE||undefined});
   for(const width of [360,390,430]){
     const context=await browser.newContext({viewport:{width,height:844},isMobile:true,hasTouch:true,serviceWorkers:'block'}),page=await context.newPage(),errors=[];
     page.on('pageerror',error=>errors.push(error.message));
@@ -31,9 +31,10 @@ const server=http.createServer((req,res)=>{
     assert.equal(await page.locator('.hv-metric-exam b').innerText(),'D-14');assert.equal(await page.locator('.hv-metric-streak b').innerText(),'2일');assert.equal(await page.locator('.hv-metric-today b').innerText(),'2문항');assert.equal(await page.locator('.hv-metric-accuracy b').innerText(),'67%');
     const nextDate=await page.evaluate(()=>{const d=new Date();d.setDate(d.getDate()+15);return[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')});
     await page.locator('[data-hv-exam-date]').fill(nextDate);await page.waitForFunction(value=>meta().examTargetDate===value,nextDate);assert.equal(await page.locator('.hv-metric-exam b').innerText(),'D-15');await page.locator('.toast').waitFor({state:'detached'});
-    const banner=page.locator('.hv-cheer-banner');assert.equal(await banner.locator('b').innerText(),'오늘도 한 장면,\n한 문제씩 이어가요.');assert((await banner.boundingBox()).height<=130);assert(await banner.locator('img').evaluate(image=>image.complete&&image.naturalWidth>0));
+    const banner=page.locator('.hv-cheer-banner');assert.equal(await banner.locator('p').innerText(),'오늘도 한 장면, 한 문제씩 이어가요.');assert((await banner.boundingBox()).height<=80);assert.equal(await banner.locator('img').count(),0,'encouragement banner is text-only');
+    const metricIcon=await page.locator('.hv-metric-art').first().boundingBox();assert(metricIcon.width<=30&&metricIcon.height<=30,`status icons stay compact at ${width}`);
     assert.equal(await page.locator('.hv-list .hv-row').count(),3,'three practical learning cards');assert.equal(await page.locator('.hv-list .hv-row-text b').allInnerTexts().then(rows=>rows.join('|')),'기출문제|OX 퀴즈|오답노트');
-    const clipped=await page.locator('.hv-brand,.hv-metric,.hv-row-text,.hv-cheer-copy').evaluateAll(nodes=>nodes.filter(node=>node.scrollWidth>node.clientWidth+1).map(node=>node.textContent.trim()));assert.deepEqual(clipped,[],`home text is not horizontally clipped at ${width}`);
+    const clipped=await page.locator('.hv-brand,.hv-metric,.hv-row-text,.hv-cheer-banner p').evaluateAll(nodes=>nodes.filter(node=>node.scrollWidth>node.clientWidth+1).map(node=>node.textContent.trim()));assert.deepEqual(clipped,[],`home text is not horizontally clipped at ${width}`);
     const nav=page.locator('nav.app-navigation');assert.equal(await nav.locator('button').count(),5);const fab=page.locator('.jk-fab');await fab.waitFor();const fabGeometry=await page.evaluate(()=>{const fab=document.querySelector('.jk-fab').getBoundingClientRect(),nav=document.querySelector('nav.app-navigation').getBoundingClientRect();return{right:innerWidth-fab.right,bottom:innerHeight-fab.bottom,clearance:nav.top-fab.bottom}});assert(fabGeometry.right>=15&&fabGeometry.clearance>=8,`FAB clears bottom nav ${width}`);
     assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`no document overflow ${width}`);
     await page.screenshot({path:path.join(output,`home-${width}.png`),fullPage:true,animations:'disabled'});

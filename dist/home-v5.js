@@ -215,7 +215,7 @@
   }
 
   function cheerHTML() {
-    return '<section class="hv-cheer-banner" aria-label="학습 응원"><span class="hv-cheer-copy"><small>오늘의 한 걸음</small><b>오늘도 한 장면,<br>한 문제씩 이어가요.</b></span><img src="media/proto-v4/player.webp" alt="눈떠보니 한국사 남자 주인공" loading="lazy" decoding="async"></section>';
+    return '<section class="hv-cheer-banner" aria-label="학습 응원"><p>오늘도 한 장면, 한 문제씩 이어가요.</p></section>';
   }
   function weakHTML() {
     const weak=globalThis.OFFICIAL_LEARNING_ANALYSIS?.rows?.().find(row=>row.weak);

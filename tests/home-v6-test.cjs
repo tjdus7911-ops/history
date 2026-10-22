@@ -34,7 +34,8 @@ assert(html.includes('<span>눈떠보니</span><em>한국사</em>'),'header uses
 assert(!html.includes('요일'),'the old date header is removed');
 assert(html.includes('학습 현황')&&html.includes('남은 시험일')&&html.includes('D-14'),'D-day renders from the saved target date');
 assert(html.includes('연속 학습')&&html.includes('오늘 푼 문제')&&html.includes('최근 정답률'),'all four status items render');
-assert(html.includes('오늘도 한 장면,<br>한 문제씩 이어가요.'),'encouragement copy is exact');
+assert(html.includes('<p>오늘도 한 장면, 한 문제씩 이어가요.</p>'),'encouragement banner is text-only');
+assert(!html.includes('눈떠보니 한국사 남자 주인공'),'encouragement banner has no character image');
 assert.equal((html.match(/class="hv-row hv-row-/g)||[]).length,3,'three practical-learning cards render');
 assert(html.includes('data-era-open="proto-kingdoms" aria-label="원삼국 스토리 목록 보기"'),'story artwork opens the existing era list');
 assert.equal(run('JSON.stringify({run:state.run,mainRun:state.mainRun,records:meta().questionRecords,wrong:meta().wrongQuestionIds,results:meta().officialExamResults})'),protectedBefore,'rendering home does not mutate protected learning data');
