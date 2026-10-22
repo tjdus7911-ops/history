@@ -30,7 +30,7 @@ assert.equal(run("HOME_V6_API.events(new Date('2026-10-22T12:00:00+09:00')).leng
 const dday=copy("HOME_V6_API.dday(new Date('2026-10-22T12:00:00+09:00'))");
 assert.equal(dday.kind,'set');assert.equal(dday.days,14);
 run("meta().examTargetDate='2026-10-21'");
-assert.equal(copy("HOME_V6_API.dday(new Date('2026-10-22T00:05:00+09:00'))").kind,'past','past exam dates consistently require resetting');
+assert.equal(copy("HOME_V6_API.dday(new Date(2026,9,22,0,5))").kind,'past','past exam dates consistently require resetting from the device-local calendar day');
 run("meta().examTargetDate='2026-11-05'");
 run('render()');
 assert(html.includes('<span>눈떠보니</span><em>한국사</em>'),'header uses the split brand wordmark');
