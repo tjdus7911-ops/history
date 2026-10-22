@@ -8,10 +8,13 @@
   if (typeof document === 'undefined' || typeof window === 'undefined' || typeof setInterval !== 'function') return;
   if (typeof home !== 'function' || typeof render !== 'function' || typeof LEARNING_ERAS === 'undefined') return;
 
-  let sheet = null; // null | 'seasons'
+  let sheet = null; // null | 'seasons' | 'calendar'
+  let calendarMonth = null;
+  let calendarSelectedKey = null;
 
   const DAY = 86400000;
   const startOfDay = (d) => new Date(d.getFullYear(), d.getMonth(), d.getDate());
+  const localDayNumber = (d) => Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / DAY);
   const toKey = (d) => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
   const parseKey = (key) => {
     const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(key || '');
@@ -24,7 +27,7 @@
   function ddayState(now = new Date()) {
     const target = parseKey(meta().examTargetDate);
     if (!target) return { kind: 'unset' };
-    const days = Math.round((target - startOfDay(now)) / DAY);
+    const days = localDayNumber(target) - localDayNumber(now);
     if (days < 0) return { kind: 'past', date: target };
     return { kind: days === 0 ? 'today' : 'set', days, date: target };
   }
@@ -210,12 +213,12 @@
     const dday = d.kind === 'today' ? 'D-DAY' : d.kind === 'set' ? 'D-' + d.days : d.kind === 'past' ? '다시 설정' : '설정하기';
     const dateValue = d.date ? toKey(d.date) : '';
     const cell = (kind, icon, label, value, unit = '', hint = '') => '<article class="hv-metric hv-metric-' + kind + '"' + (hint ? ' title="' + hint + '"' : '') + '><span class="hv-metric-art">' + icon + '</span><small>' + label + '</small><b>' + value + (unit ? '<em>' + unit + '</em>' : '') + '</b></article>';
-    const exam = '<label class="hv-metric hv-metric-exam" title="시험일 설정 또는 변경"><input class="hv-date-input" data-hv-exam-date type="date" min="' + toKey(now) + '" value="' + dateValue + '" aria-label="시험일 설정"><span class="hv-metric-art">' + illustrations.calendar + '</span><small>남은 시험일</small><b>' + dday + '</b></label>';
+    const exam = '<button type="button" class="hv-metric hv-metric-exam" data-hv-exam-open title="시험일 설정 또는 변경" aria-label="시험일 ' + (dateValue ? '변경' : '설정') + '"><span class="hv-metric-art">' + illustrations.calendar + '</span><small>남은 시험일</small><b>' + dday + '</b></button>';
     return '<section class="hv-status" aria-labelledby="hv-status-title"><h2 class="hv-h" id="hv-status-title">학습 현황</h2><div class="hv-metrics">' + exam + cell('streak', illustrations.fire, '연속 학습', s.streak, '일') + cell('today', illustrations.paper, '오늘 푼 문제', s.todayCount, '문항') + cell('accuracy', illustrations.target, '최근 정답률', s.accuracy == null ? '-' : s.accuracy, s.accuracy == null ? '' : '%', '최근 완료한 문제 풀이 최대 20문항 기준') + '</div></section>';
   }
 
   function cheerHTML() {
-    return '<section class="hv-cheer-banner" aria-label="학습 응원"><p>오늘도 한 장면, 한 문제씩 이어가요.</p></section>';
+    return '<section class="hv-cheer-banner" aria-label="학습 응원"><span class="hv-cheer-avatar"><img src="icons/icon-192.png" alt="" aria-hidden="true"></span><p>오늘도 화이팅! 한 장면, 한 문제씩 이어가요.</p></section>';
   }
   function weakHTML() {
     const weak=globalThis.OFFICIAL_LEARNING_ANALYSIS?.rows?.().find(row=>row.weak);
@@ -223,7 +226,31 @@
     return '<section class="hv-section hv-weak-section"><div class="hv-weak-heading"><h2 class="hv-h">보완이 필요한 시대</h2><button class="hv-textbtn" data-official-weak-era="'+esc(weak.id)+'">분석 보기</button></div><button class="hv-weak-card" data-official-weak-era="'+esc(weak.id)+'"><span><b>'+weak.accuracy+'</b><small>정답률 %</small></span><span><b>'+esc(weak.name)+'</b><small>최근 오답 '+weak.wrong+'문항 · 반복 오답 '+weak.repeatedWrong+'문항</small></span><em>풀기</em></button></section>';
   }
 
+  function calendarHTML(now = new Date()) {
+    const month = calendarMonth || new Date(now.getFullYear(), now.getMonth(), 1);
+    const year = month.getFullYear(), monthIndex = month.getMonth();
+    const firstWeekday = new Date(year, monthIndex, 1).getDay();
+    const lastDay = new Date(year, monthIndex + 1, 0).getDate();
+    const todayKey = toKey(now), todayNumber = localDayNumber(now);
+    const days = Array.from({ length: 42 }, (_, index) => {
+      const day = index - firstWeekday + 1;
+      if (day < 1 || day > lastDay) return '<span class="hv-calendar-blank" aria-hidden="true"></span>';
+      const date = new Date(year, monthIndex, day), key = toKey(date), past = localDayNumber(date) < todayNumber;
+      const classes = ['hv-calendar-day', key === todayKey ? 'is-today' : '', key === calendarSelectedKey ? 'is-selected' : ''].filter(Boolean).join(' ');
+      return '<button type="button" class="' + classes + '" data-hv-calendar-day="' + key + '" ' + (past ? 'disabled aria-disabled="true"' : '') + (key === todayKey ? ' aria-current="date"' : '') + ' aria-label="' + year + '년 ' + (monthIndex + 1) + '월 ' + day + '일">' + day + '</button>';
+    }).join('');
+    const selected = parseKey(calendarSelectedKey);
+    const selectedText = selected ? selected.getFullYear() + '. ' + (selected.getMonth() + 1) + '. ' + selected.getDate() + '.' : '날짜를 선택해 주세요.';
+    return '<div class="hv-scrim" data-hv-close="1"></div><section class="hv-sheet hv-calendar-sheet" role="dialog" aria-modal="true" aria-labelledby="hv-calendar-title">'
+      + '<div class="hv-sheet-grip" aria-hidden="true"></div><div class="hv-sheet-head"><h2 id="hv-calendar-title">시험일 선택</h2><button class="hv-x" data-hv-close="1" aria-label="닫기">' + ico.close + '</button></div>'
+      + '<div class="hv-calendar-month"><button type="button" data-hv-calendar-move="-1" aria-label="이전 달">‹</button><b>' + year + '년 ' + (monthIndex + 1) + '월</b><button type="button" data-hv-calendar-move="1" aria-label="다음 달">›</button></div>'
+      + '<div class="hv-calendar-week" aria-hidden="true">' + ['일','월','화','수','목','금','토'].map((day) => '<span>' + day + '</span>').join('') + '</div>'
+      + '<div class="hv-calendar-grid">' + days + '</div><p class="hv-calendar-selection">' + selectedText + '</p>'
+      + '<div class="hv-calendar-actions"><button type="button" class="hv-calendar-cancel" data-hv-close="1">취소</button><button type="button" class="hv-calendar-save" data-hv-calendar-save ' + (selected ? '' : 'disabled') + '>설정 완료</button></div></section>';
+  }
+
   function sheetHTML() {
+    if (sheet === 'calendar') return calendarHTML();
     if (sheet !== 'seasons') return '';
     return '<div class="hv-scrim" data-hv-close="1"></div><section class="hv-sheet" role="dialog" aria-modal="true" aria-labelledby="hv-sheet-title">'
       + '<div class="hv-sheet-grip" aria-hidden="true"></div>'
@@ -252,12 +279,46 @@
 
   /* ---------- interactions ---------- */
   document.addEventListener('click', (ev) => {
+    const examOpen = ev.target?.closest?.('[data-hv-exam-open]');
+    if (examOpen) {
+      ev.stopImmediatePropagation();
+      const now = new Date(), saved = parseKey(meta().examTargetDate);
+      const validSaved = saved && localDayNumber(saved) >= localDayNumber(now);
+      calendarSelectedKey = validSaved ? toKey(saved) : null;
+      const focusDate = validSaved ? saved : now;
+      calendarMonth = new Date(focusDate.getFullYear(), focusDate.getMonth(), 1);
+      sheet = 'calendar'; render(); return;
+    }
+    const monthMove = ev.target?.closest?.('[data-hv-calendar-move]');
+    if (monthMove && sheet === 'calendar') {
+      ev.stopImmediatePropagation();
+      const delta = Number(monthMove.dataset.hvCalendarMove) || 0;
+      calendarMonth = new Date(calendarMonth.getFullYear(), calendarMonth.getMonth() + delta, 1);
+      render(); return;
+    }
+    const calendarDay = ev.target?.closest?.('[data-hv-calendar-day]');
+    if (calendarDay && sheet === 'calendar' && !calendarDay.disabled) {
+      ev.stopImmediatePropagation();
+      calendarSelectedKey = calendarDay.dataset.hvCalendarDay;
+      render(); return;
+    }
+    const calendarSave = ev.target?.closest?.('[data-hv-calendar-save]');
+    if (calendarSave && sheet === 'calendar' && calendarSelectedKey) {
+      ev.stopImmediatePropagation();
+      const target = parseKey(calendarSelectedKey), now = new Date();
+      if (!target || localDayNumber(target) < localDayNumber(now)) return;
+      meta().examTargetDate = toKey(target); save();
+      sheet = null; calendarMonth = null; calendarSelectedKey = null;
+      render(); toast('시험일을 저장했어요.'); return;
+    }
     const t = ev.target?.closest?.('[data-hv-sheet],[data-hv-close]');
     const d = t?.dataset || {};
     if (d.hvSheet || d.hvClose) {
       ev.stopImmediatePropagation();
       if(d.hvSheet==='seasons' && globalThis.REV7_STORY_VIEWS_READY){sheet=null;navigate('seasons');globalThis.APP_ROUTE?.push('seasons');return;}
-      sheet = d.hvSheet || null; render(); return;
+      sheet = d.hvSheet || null;
+      if (!sheet) { calendarMonth = null; calendarSelectedKey = null; }
+      render(); return;
     }
     // leaving through a sheet row (data-era-open) must close the sheet; other handlers still run
     if (sheet && ev.target?.closest?.('.hv-sheet [data-era-open]')) sheet = null;
@@ -265,17 +326,6 @@
 
   document.addEventListener('keydown', (ev) => {
     if (ev.key === 'Escape' && sheet) { sheet = null; render(); }
-  });
-
-  document.addEventListener('change', (ev) => {
-    const input = ev.target?.closest?.('[data-hv-exam-date]');
-    if (!input) return;
-    const target = parseKey(input.value);
-    if (!target) return;
-    meta().examTargetDate = toKey(target);
-    save();
-    render();
-    toast('시험일을 저장했어요.');
   });
 
   /* dots follow the rail's scroll position */
