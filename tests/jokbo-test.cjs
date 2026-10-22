@@ -157,7 +157,7 @@ card.run("REV7_OX_VIEWS.applyRoute('jokbo')");card.click({jkMode:'saved'});card.
 card.click({jkSave:'geunchogo'});
 assert(card.run("(()=>{const h=renderContent();return h.includes('data-jk-fact-name>근초고왕</span>')&&h.includes('data-jk-fact-name>고흥</span>')})()"),'저장 카드도 요약 행 전부');
 
-const index=fs.readFileSync('dist/index.html','utf8'),worker=fs.readFileSync('dist/sw.js','utf8'),css=fs.readFileSync('dist/jokbo.css','utf8');
+const index=fs.readFileSync('dist/index.html','utf8'),worker=fs.readFileSync('dist/sw.js','utf8'),css=fs.readFileSync('dist/jokbo.css','utf8'),uiCss=fs.readFileSync('dist/ui-refresh.css','utf8'),baseCss=fs.readFileSync('dist/style.css','utf8');
 for(const file of ['jokbo.css','jokbo-data.js','jokbo-ui.js','story-release-policy.js'])assert(index.includes(file),file+' index 연결');
 for(const file of ['/jokbo.css','/jokbo-data.js','/jokbo-ui.js','/story-release-policy.js'])assert(worker.includes(file),file+' 오프라인 캐시');
 assert(css.includes('repeat(5,minmax(0,1fr))'),'5개 하단 메뉴');
@@ -172,4 +172,10 @@ assert(css.includes('.jk-keyword-phrase'),'의미 묶음 줄바꿈 스타일');
 assert(css.includes('.jk-appbar-chevron')&&css.includes('stroke-width: 1.75'),'앱바 전용 얇은 chevron');
 assert(css.includes('min-height: calc(56px + env(safe-area-inset-top, 0px))'),'Android 상태 표시줄 안전 영역');
 assert(css.includes('.jk-group-keyword-card'),'그룹 전체 핵심 정리 전용 범위 스타일');
+assert(css.includes('grid-template-columns: 72px minmax(0, 1fr)'),'왕 이름·키워드 2열 정렬');
+assert(css.includes('html body .jk-fact-value { font-size: 15px'),'카드 키워드 크기 축소');
+assert(!g.run("renderContent().includes('카드를 좌우로 밀면 시대가 바뀌어요')"),'반복 스와이프 안내 제거');
+assert(baseCss.includes("fonts/PretendardVariable.woff2"),'로컬 Pretendard 연결');
+assert(uiCss.includes("--app-font: 'Pretendard Variable'")&&uiCss.includes('html body #app *'),'앱 전체 Pretendard 통일');
+assert(worker.includes('/fonts/PretendardVariable.woff2'),'Pretendard 오프라인 캐시');
 console.log('PASS: 족보 49그룹·156항목, 전체 상세 누락 0, 실제 기출 472개 연결, 저장·복원·검색·상세·비교 및 원삼국 전용 스토리 공개 정책 검증');

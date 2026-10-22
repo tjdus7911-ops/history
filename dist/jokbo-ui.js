@@ -143,7 +143,7 @@
  function eraPager(era,index){
   const prev=D.eras[index-1],next=D.eras[index+1];
   const step=(item,dir)=>item?'<button class="jk-pager-step" data-jk-era="'+item.id+'" data-jk-pager="'+dir+'" aria-label="'+(dir<0?'이전':'다음')+' 시대: '+esc(item.label)+'">'+(dir<0?chevronLeft:chevron)+'<span>'+esc(item.label)+'</span></button>':'<span class="jk-pager-step is-empty" aria-hidden="true"></span>';
-  return '<section class="jk-summary-head jk-era-pager">'+step(prev,-1)+'<div class="jk-pager-title"><small class="jk-pager-count">'+(index+1)+' / '+D.eras.length+'</small><h2>'+esc(era.title)+'</h2><p>'+esc(era.subtitle)+'</p></div>'+step(next,1)+'</section><div class="jk-pager-dots" aria-hidden="true">'+D.eras.map((e,i)=>'<i class="'+(i===index?'is-active':'')+'"></i>').join('')+'</div><p class="jk-swipe-hint" aria-hidden="true">카드를 좌우로 밀면 시대가 바뀌어요</p>';
+  return '<section class="jk-summary-head jk-era-pager">'+step(prev,-1)+'<div class="jk-pager-title"><small class="jk-pager-count">'+(index+1)+' / '+D.eras.length+'</small><h2>'+esc(era.title)+'</h2><p>'+esc(era.subtitle)+'</p></div>'+step(next,1)+'</section><div class="jk-pager-dots" aria-hidden="true">'+D.eras.map((e,i)=>'<i class="'+(i===index?'is-active':'')+'"></i>').join('')+'</div>';
  }
  function mainPage(){
   const searching=Boolean(query.trim()),era=eraById.get(activeEra),eraIndex=D.eras.findIndex(e=>e.id===activeEra);

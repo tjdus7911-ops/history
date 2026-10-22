@@ -899,18 +899,19 @@ html body .jk-heading-back {
 html body .jk-heading-back:active { background: var(--jk-sunken); }
 html body .jk-heading-back svg { width: 26px; height: 26px; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
 html body .jk-search-button { margin-right: -10px; }
-html body .jk-heading-subtitle { margin: -4px 0 12px; }
+html body .jk-page .jk-heading { height: 52px; min-height: 52px; padding: 0; }
+html body .jk-heading-subtitle { margin: -2px 0 6px; }
 
 /* 상단 필터: 보기 탭 + 시대 칩 + 나라 칩, 스크롤해도 위에 남는다 */
 html body .jk-filterbar {
   position: sticky; top: 0; z-index: 6;
-  margin: 0 -20px; padding: 4px 20px 4px;
+  margin: 0 -20px; padding: 0 20px 2px;
   background: #fff;
   border-bottom: 1px solid var(--jk-line);
 }
 html body .capacitor-native .jk-filterbar, html.capacitor-native body .jk-filterbar { top: env(safe-area-inset-top, 0px); }
-html body .jk-filterbar .jk-segment { margin: 0 0 10px; gap: 22px; }
-html body .jk-chiprow { display: flex; align-items: center; gap: 8px; min-width: 0; margin: 0 0 6px; }
+html body .jk-filterbar .jk-segment { min-height: 40px; margin: 0 0 4px; gap: 22px; }
+html body .jk-chiprow { display: flex; align-items: center; gap: 8px; min-width: 0; margin: 0 0 2px; }
 html body .jk-chiprow-label {
   flex: none; width: 30px; color: var(--jk-faint);
   font-size: 12px; line-height: 18px; font-weight: 700; letter-spacing: 0;
@@ -924,11 +925,11 @@ html body .jk-chips {
 }
 html body .jk-chips::-webkit-scrollbar { display: none; }
 html body .jk-chips button {
-  flex: 0 0 auto; display: inline-flex; align-items: center; min-height: 44px; padding: 0;
+  flex: 0 0 auto; display: inline-flex; align-items: center; min-height: 40px; padding: 0;
   border: 0; border-radius: 0; background: transparent; scroll-snap-align: start;
 }
 html body .jk-chips button > span {
-  display: inline-flex; align-items: center; min-height: 34px; padding: 0 14px;
+  display: inline-flex; align-items: center; min-height: 32px; padding: 0 13px;
   border: 1px solid var(--jk-line-strong); border-radius: 999px; background: #fff;
   color: var(--jk-sub); font-size: 14px; line-height: 20px; font-weight: 500; white-space: nowrap;
 }
@@ -936,17 +937,17 @@ html body .jk-chips button[aria-selected=true] > span { border-color: var(--jk-c
 html body .jk-chips button[aria-selected=true]:active > span { background: var(--jk-coral-press); }
 html body .jk-country-chips button[aria-selected=true] > span { border-color: var(--jk-coral); background: var(--jk-coral-soft); color: var(--jk-coral-ink); }
 
-/* 시대 페이저: 이전/다음 시대 버튼, 위치(2/9), 점 표시, 스와이프 안내 */
-html body .jk-era-content { position: relative; padding-top: 10px; touch-action: pan-y; will-change: transform; }
+/* 시대 페이저: 이전/다음 시대 버튼, 위치(2/9), 점 표시 */
+html body .jk-era-content { position: relative; padding-top: 6px; touch-action: pan-y; will-change: transform; }
 html body .jk-era-content.is-dragging { transition: none; }
 html body .jk-era-pager {
   display: grid; grid-template-columns: 44px minmax(0,1fr) 44px; align-items: center; gap: 6px;
-  margin: 0; padding: 4px 0 6px; border: 0;
+  margin: 0; padding: 2px 0 4px; border: 0;
 }
 html body .jk-pager-title { min-width: 0; text-align: center; }
 html body .jk-pager-count {
-  display: inline-block; margin-bottom: 2px; padding: 1px 8px; border-radius: 999px;
-  background: var(--jk-sunken); color: var(--jk-sub); font-size: 11px; line-height: 16px; font-weight: 700;
+  display: inline-block; margin-bottom: 1px; padding: 0 7px; border-radius: 999px;
+  background: var(--jk-sunken); color: var(--jk-sub); font-size: 11px; line-height: 17px; font-weight: 700;
   font-variant-numeric: tabular-nums;
 }
 html body .jk-era-pager h2 { font-size: 21px; line-height: 29px; font-weight: 800; letter-spacing: -.035em; word-break: keep-all; }
@@ -960,11 +961,9 @@ html body .jk-pager-step:active { background: var(--jk-coral-soft); }
 html body .jk-pager-step.is-empty { border-color: transparent; background: transparent; }
 html body .jk-pager-step svg { width: 22px; height: 22px; stroke: var(--jk-coral); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 html body .jk-pager-step span { display: none; }
-html body .jk-pager-dots { display: flex; justify-content: center; gap: 5px; margin: 2px 0 4px; }
-html body .jk-pager-dots i { width: 6px; height: 6px; border-radius: 3px; background: var(--jk-line-strong); transition: width .18s ease, background .18s ease; }
-html body .jk-pager-dots i.is-active { width: 18px; background: var(--jk-coral); }
-html body .jk-swipe-hint { margin: 0 0 12px; color: var(--jk-faint); font-size: 12px; line-height: 18px; text-align: center; }
-@media (hover: hover) and (pointer: fine) { html body .jk-swipe-hint { display: none; } }
+html body .jk-pager-dots { display: flex; justify-content: center; gap: 4px; margin: 1px 0 8px; }
+html body .jk-pager-dots i { width: 5px; height: 5px; border-radius: 3px; background: var(--jk-line-strong); transition: width .18s ease, background .18s ease; }
+html body .jk-pager-dots i.is-active { width: 15px; background: var(--jk-coral); }
 html body .jk-saved-head { padding: 2px 0 12px; text-align: center; }
 html body .jk-saved-head h2 { font-size: 21px; line-height: 29px; font-weight: 800; }
 html body .jk-saved-head p { color: var(--jk-sub); font-size: 13px; line-height: 19px; }
@@ -977,7 +976,7 @@ html body .jk-page .jk-card {
 }
 html body .jk-groups { display: grid; gap: 12px; border-top: 0; }
 html body .jk-groups > .jk-group { padding: 0; border-bottom: 1px solid var(--jk-line); overflow: hidden; }
-html body .jk-card-head { display: flex; align-items: center; gap: 8px; min-height: 30px; margin: 0 0 8px; }
+html body .jk-card-head { display: flex; align-items: center; gap: 8px; min-height: 28px; margin: 0 0 6px; }
 html body .jk-card-head .jk-group-number {
   display: inline-grid; place-items: center; flex: none; min-width: 28px; height: 24px; padding: 0 6px;
   border-radius: 6px; background: var(--jk-coral-soft); color: var(--jk-coral-ink);
@@ -986,7 +985,7 @@ html body .jk-card-head .jk-group-number {
 html body .jk-card-head h3 { flex: 1; min-width: 0; font-size: 18px; line-height: 26px; font-weight: 800; letter-spacing: -.035em; word-break: keep-all; }
 html body .jk-card-head .jk-group-era { margin: 0; }
 html body .jk-group > .jk-card-head, html body .jk-group > .jk-keywords, html body .jk-group > .jk-group-subtitle { padding-inline: var(--jk-card-pad); }
-html body .jk-group > .jk-card-head { padding-top: 14px; }
+html body .jk-group > .jk-card-head { padding-top: 12px; }
 html body .jk-group-subtitle { margin: -4px 0 6px; }
 
 /* 키워드 행: 이름 칩 + 굵은 키워드. 이름이 길면 위로 올려 줄바꿈 없이 읽힌다 */
@@ -998,23 +997,22 @@ html body .jk-keyword {
 html body .jk-keywords > .jk-keyword:first-child { border-top: 0; }
 html body .jk-keyword:active { background: var(--jk-sunken); }
 html body .jk-fact {
-  display: flex; align-items: flex-start; gap: 10px; min-height: 0; padding: 10px 0;
+  display: grid; grid-template-columns: 72px minmax(0, 1fr); align-items: start; gap: 10px; min-height: 0; padding: 8px 0;
 }
-html body .jk-keyword.is-split .jk-fact { padding-block: 7px; }
-html body .jk-keyword.is-split .jk-fact:first-child { padding-top: 11px; }
-html body .jk-keyword.is-split .jk-fact:last-child { padding-bottom: 11px; }
+html body .jk-keyword.is-split .jk-fact { padding-block: 6px; }
+html body .jk-keyword.is-split .jk-fact:first-child { padding-top: 8px; }
+html body .jk-keyword.is-split .jk-fact:last-child { padding-bottom: 8px; }
 html body .jk-fact-label {
-  display: inline-flex; align-items: center; justify-content: center; flex: none;
-  width: auto; min-width: 58px; max-width: none; min-height: 24px; margin-top: 1px; padding: 2px 9px;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 100%; min-width: 0; max-width: 100%; min-height: 24px; margin-top: 0; padding: 2px 6px;
   border-radius: 6px; background: var(--jk-sunken); color: var(--jk-sub);
-  font-size: 12.5px; line-height: 18px; font-weight: 600; text-align: center; white-space: nowrap; word-break: keep-all;
+  font-size: 12.5px; line-height: 18px; font-weight: 600; text-align: center; white-space: normal; word-break: keep-all; overflow-wrap: anywhere;
 }
-html body .jk-fact.is-long-label { flex-direction: column; gap: 4px; }
-html body .jk-fact.is-long-label .jk-fact-label { min-width: 0; }
+html body .jk-fact.is-long-label { grid-template-columns: 72px minmax(0, 1fr); gap: 10px; }
 html body .jk-fact-value {
   display: flex; flex-wrap: wrap; flex: 1; min-width: 0; column-gap: .3em; row-gap: 1px;
-  color: var(--jk-ink); font-size: 16px; line-height: 25px; font-weight: 650; letter-spacing: -.03em;
-  word-break: keep-all; overflow-wrap: normal; white-space: normal;
+  color: var(--jk-ink); font-size: 15px; line-height: 23px; font-weight: 600; letter-spacing: -.025em;
+  word-break: keep-all; overflow-wrap: anywhere; white-space: normal;
 }
 html body .jk-fact-value .jk-keyword-phrase { overflow-wrap: anywhere; }
 html body .jk-fact-value .jk-keyword-separator { color: var(--jk-coral); font-weight: 700; }
@@ -1089,7 +1087,8 @@ html body .main.ed-home { padding-bottom: calc(150px + env(safe-area-inset-botto
 }
 @media (max-width: 370px) {
   html body .jk-page { --jk-card-pad: 14px; }
-  html body .jk-fact-label { min-width: 52px; padding-inline: 7px; }
+  html body .jk-fact, html body .jk-fact.is-long-label { grid-template-columns: 66px minmax(0, 1fr); gap: 8px; }
+  html body .jk-fact-label { padding-inline: 5px; }
 }
 @media (prefers-reduced-motion: reduce) { html body .jk-pager-dots i { transition: none; } }
 
@@ -1100,11 +1099,10 @@ html body .jk-filterbar .jk-segment button[aria-selected=false] { font-weight: 5
 html body .jk-chiprow-label { font-size: 13px; }
 html body .jk-chips button > span { font-size: 14px; min-height: 32px; padding-inline: 13px; }
 html body .jk-era-pager h2, html body .jk-saved-head h2 { font-size: 18px; line-height: 26px; font-weight: 700; letter-spacing: -.02em; }
-html body .jk-era-pager p, html body .jk-saved-head p, html body .jk-swipe-hint { font-size: 14px; line-height: 20px; }
-html body .jk-swipe-hint { font-size: 13px; }
-html body .jk-card-head h3 { font-size: 17px; line-height: 24px; font-weight: 700; letter-spacing: -.02em; }
-html body .jk-fact-label { font-size: 13px; }
-html body .jk-fact-value { font-size: 16px; line-height: 24px; font-weight: 400; letter-spacing: -.02em; }
+html body .jk-era-pager p, html body .jk-saved-head p { font-size: 13px; line-height: 19px; }
+html body .jk-card-head h3 { font-size: 16px; line-height: 23px; font-weight: 700; letter-spacing: -.02em; }
+html body .jk-fact-label { font-size: 12.5px; }
+html body .jk-fact-value { font-size: 15px; line-height: 23px; font-weight: 500; letter-spacing: -.015em; }
 html body .jk-card-more { font-size: 14px; }
 html body .jk-card-more small { font-size: 13px; }
 html body .jk-links h2, html body .jk-exam-cta h2, html body .jk-empty h2 { font-size: 16px; line-height: 24px; font-weight: 700; }

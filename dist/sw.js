@@ -1,5 +1,5 @@
 const CACHE_PREFIX='lived-history-shell-';
-const CACHE_VERSION='2026-10-21-jokbo-ox-type-1';
+const CACHE_VERSION='2026-10-22-jokbo-pretendard-ui-1';
 const CACHE_NAME=CACHE_PREFIX+CACHE_VERSION;
 const APP_SHELL=[
   '/',
@@ -9,6 +9,7 @@ const APP_SHELL=[
   '/story-exam-runtime.js',
   '/story-exam-ui.js',
   '/style.css',
+  '/fonts/PretendardVariable.woff2',
   '/v2.css',
   '/dialogue.css',
   '/pwa.css',
