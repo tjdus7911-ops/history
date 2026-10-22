@@ -1,8 +1,8 @@
-/* Home v5 / Rev.7 — mobile-first home.
+/* Home v6 — mobile-first home.
  * Loaded after every other UI layer so it only replaces home().
- * Story, scoring, exam sessions and saves are untouched: every button below
- * reuses an existing data-* action (data-era-resume, data-era-open, data-nav, data-review).
- * D-day: reads meta().examTargetDate ("YYYY-MM-DD") when the data provides it; there is no in-app date setting. */
+ * Story, scoring, exam sessions and saves are untouched: every action below
+ * reuses the existing data-* routes. Home statistics are derived from dated
+ * question events and de-duplicated before display. */
 (function () {
   'use strict';
   if (typeof document === 'undefined' || typeof window === 'undefined' || typeof setInterval !== 'function') return;
@@ -21,21 +21,12 @@
   };
 
   /* ---------- derived state ---------- */
-  function ddayState() {
+  function ddayState(now = new Date()) {
     const target = parseKey(meta().examTargetDate);
     if (!target) return { kind: 'unset' };
-    const days = Math.round((target - startOfDay(new Date())) / DAY);
+    const days = Math.round((target - startOfDay(now)) / DAY);
     if (days < 0) return { kind: 'past', date: target };
     return { kind: days === 0 ? 'today' : 'set', days, date: target };
-  }
-
-  function cheerLine(d, hasActivity) {
-    if (d.kind === 'today') return '오늘이 시험일이에요. 지금까지 쌓은 만큼이면 충분해요.';
-    if (d.kind === 'set' && d.days <= 7) return '마지막 한 주, 기출로 감각만 지켜요.';
-    if (d.kind === 'set' && d.days <= 30) return '시험이 한 달 안으로 다가왔어요. 기출로 감각을 가볍게 이어가요.';
-    if (d.kind === 'set') return '차근차근, 오늘 몫만큼 쌓아가요.';
-    if (d.kind === 'past') return '시험 보느라 수고했어요. 오늘도 한 문제씩 이어가요.';
-    return hasActivity ? '오늘도 한 장면, 한 문제씩 이어가요.' : '오늘 한 장면이면 충분히 시작이에요.';
   }
 
   function heroEra() {
@@ -94,18 +85,43 @@
     close: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>',
   };
 
-  /* ---------- Rev.7 derived numbers (all computed from saved learning events) ---------- */
-  function studyStats() {
-    const events = (meta().learningEvents || []).filter((e) => e && e.answeredAt);
-    const days = new Set(events.map((e) => toKey(new Date(e.answeredAt))));
-    const today = toKey(new Date());
-    const todayCount = events.filter((e) => toKey(new Date(e.answeredAt)) === today).length;
+  const illustrations = {
+    calendar: '<svg class="hv-mini-art" viewBox="0 0 48 48" aria-hidden="true"><rect class="paper" x="7" y="10" width="29" height="29" rx="7"/><path class="coral" d="M7 18h29v-3a5 5 0 0 0-5-5H12a5 5 0 0 0-5 5Z"/><path class="navy-stroke" d="M15 7v7m14-7v7"/><circle class="sun" cx="34" cy="34" r="9"/><path class="navy-stroke" d="M34 29v5l3 2"/><path class="coral-stroke" d="M13 24h6m-6 6h5"/></svg>',
+    fire: '<svg class="hv-mini-art" viewBox="0 0 48 48" aria-hidden="true"><path class="orange" d="M27 5c2 10-4 11 1 18 4-2 5-7 5-7 9 11 5 27-9 27C10 43 7 29 16 20c0 7 5 9 5 9-3-11 7-13 6-24Z"/><path class="sun" d="M24 40c-6 0-8-6-4-11 0 4 3 4 3 4-1-5 4-6 4-10 5 6 5 17-3 17Z"/></svg>',
+    paper: '<svg class="hv-mini-art" viewBox="0 0 48 48" aria-hidden="true"><path class="blue" d="M9 6h22l7 7v28H9Z"/><path class="paper" d="M12 9h17l6 6v23H12Z"/><path class="blue-stroke" d="M29 9v7h6M17 22h13m-13 6h10"/><path class="coral" d="m27 37 10-10 4 4-10 10-6 1Z"/></svg>',
+    target: '<svg class="hv-mini-art" viewBox="0 0 48 48" aria-hidden="true"><circle class="mint" cx="23" cy="25" r="17"/><circle class="paper" cx="23" cy="25" r="11"/><circle class="coral" cx="23" cy="25" r="5"/><path class="navy-stroke" d="m23 25 15-15m-5 0h5v5"/><path class="navy" d="m38 10 5-5v7l-5 3Z"/></svg>',
+    ox: '<svg class="hv-mini-art" viewBox="0 0 48 48" aria-hidden="true"><rect class="mint" x="5" y="8" width="38" height="32" rx="10"/><circle class="paper" cx="17" cy="23" r="7"/><path class="coral-stroke" d="m28 17 10 12m0-12L28 29"/></svg>',
+    review: '<svg class="hv-mini-art" viewBox="0 0 48 48" aria-hidden="true"><path class="sun" d="M9 9h27a5 5 0 0 1 5 5v25H14a5 5 0 0 1-5-5Z"/><path class="paper" d="M13 13h23v22H16a3 3 0 0 0-3 3Z"/><path class="coral-stroke" d="M19 20h11m-11 6h8"/><path class="navy-stroke" d="M8 29a9 9 0 0 0 8 9m-8-9v6m0-6h6"/></svg>'
+  };
+
+  /* General questions and OX keep separate histories. Merge them for the home
+   * snapshot, reject invalid/future dates, and drop only exact duplicate events. */
+  function learningEvents(now = new Date()) {
+    const regular = (meta().learningEvents || []).map((event) => ({ ...event, source: 'question' }));
+    const ox = (globalThis.REV7_OX_VIEWS?.meta?.().history || meta().oxQuiz?.history || [])
+      .map((event) => ({ ...event, source: 'ox', correct: typeof event.isCorrect === 'boolean' ? event.isCorrect : event.correct }));
+    const seen = new Set();
+    return regular.concat(ox).filter((event) => {
+      const time = Date.parse(event?.answeredAt || '');
+      if (!Number.isFinite(time) || time > now.getTime()) return false;
+      const identity = [event.source, event.eventId || event.sessionId || '', event.questionId || '', event.attemptNumber || '', event.answeredAt, String(event.answer ?? event.selectedAnswer ?? ''), String(Boolean(event.correct))].join('|');
+      if (seen.has(identity)) return false;
+      seen.add(identity);
+      return true;
+    }).sort((a, b) => Date.parse(a.answeredAt) - Date.parse(b.answeredAt));
+  }
+
+  function studyStats(now = new Date()) {
+    const events = learningEvents(now);
+    const days = new Set(events.map((event) => toKey(new Date(event.answeredAt))));
+    const today = toKey(now);
+    const todayCount = events.filter((event) => toKey(new Date(event.answeredAt)) === today).length;
     let streak = 0;
-    const cursor = startOfDay(new Date());
+    const cursor = startOfDay(now);
     if (!days.has(toKey(cursor))) cursor.setDate(cursor.getDate() - 1);
     while (days.has(toKey(cursor))) { streak += 1; cursor.setDate(cursor.getDate() - 1); }
-    const recent = events.slice(-50);
-    const accuracy = recent.length >= 5 ? Math.round((recent.filter((e) => e.correct).length / recent.length) * 100) : null;
+    const recent = events.slice(-20);
+    const accuracy = recent.length ? Math.round((recent.filter((event) => event.correct).length / recent.length) * 100) : null;
     return { streak, todayCount, accuracy, any: events.length > 0 };
   }
 
@@ -115,7 +131,7 @@
   }
 
   function oxState() {
-    const ox = meta().ox || {};
+    const ox = globalThis.REV7_OX_VIEWS?.meta?.() || meta().oxQuiz || {};
     const a = ox.activeSession;
     if (a && Array.isArray(a.questionIds) && a.questionIds.length) {
       const idx = Math.min(a.questionIds.length, Number(a.index || 0) + 1);
@@ -123,14 +139,6 @@
     }
     const any = (ox.history && ox.history.length) || ox.lastSession || (ox.completedSessions && (Array.isArray(ox.completedSessions) ? ox.completedSessions.length : Number(ox.completedSessions)));
     return { kind: any ? 'done' : 'none' };
-  }
-
-  function ddayRow(d, cheerHtml) {
-    const label = d.kind === 'today' ? 'D-DAY' : d.kind === 'set' ? 'D-' + d.days : '';
-    const dateText = d.date ? (d.date.getMonth() + 1) + '월 ' + d.date.getDate() + '일 (' + '일월화수목금토'[d.date.getDay()] + ')' : '';
-    return '<section class="hv-count" aria-label="시험 일정과 응원">'
-      + (label ? '<div class="hv-count-row"><span class="hv-count-name">한능검</span><b class="hv-count-d">' + label + '</b><span class="hv-count-date">' + dateText + '</span></div>' : '')
-      + '<p class="hv-cheer">' + cheerHtml + '</p></section>';
   }
 
   /* hero rail: one portrait card per era, ~1.5 cards visible */
@@ -149,6 +157,7 @@
     const art = e.bannerAsset ? '<img class="hv-card-art" src="' + esc(e.bannerAsset) + '" alt="" ' + (current ? 'fetchpriority="high" ' : 'loading="lazy" ') + 'decoding="async" onerror="this.remove()">' : '';
     return '<article class="hv-era' + (e.available ? '' : ' is-soon') + (current ? ' is-current' : '') + '" style="--era-accent:' + esc(e.accent || '#169B8D') + '" aria-label="눈떠보니 ' + esc(e.name) + '">'
       + art + '<div class="hv-era-shade"></div>'
+      + (e.available ? '<button class="hv-era-hit" data-era-open="' + e.id + '" aria-label="' + esc(e.name) + ' 스토리 목록 보기"></button>' : '')
       + '<div class="hv-era-body"><div class="hv-era-tags"><span class="hv-tag' + (started && !done ? ' is-on' : '') + '">' + tag + '</span><span class="hv-season-tag">SEASON ' + String(e.order).padStart(2,'0') + ' · ' + esc(e.name) + '</span></div>'
       + '<h2 class="hv-era-title">눈떠보니 ' + esc(e.name) + '</h2>'
       + '<p class="hv-era-sub">' + sub + '</p>'
@@ -162,12 +171,12 @@
     return '<section class="hv-rail-wrap" aria-label="시대별 이야기">'
       + '<div class="hv-rail" role="list" tabindex="0">' + ordered.map((e) => '<div role="listitem" class="hv-rail-item">' + eraCard(e, e.id === current.id) + '</div>').join('') + '</div>'
       + '<div class="hv-rail-foot"><div class="hv-dots" aria-hidden="true">' + ordered.map((_, i) => '<i class="' + (i === 0 ? 'on' : '') + '"></i>').join('') + '</div>'
-      + '<button class="hv-textbtn" data-hv-sheet="seasons">시대 전체</button></div></section>';
+      + '<button class="hv-textbtn" data-hv-sheet="seasons">시대 전체 보기</button></div></section>';
   }
 
   /* practice rows: pill = action in the row, chevron = plain link */
-  const row = (kind, iconClass, icon, title, sub, attrs, pill) =>
-    '<button class="hv-row hv-row-' + kind + '" ' + attrs + '><span class="hv-ico ' + iconClass + '">' + icon + '</span>'
+  const row = (kind, icon, title, sub, attrs, pill) =>
+    '<button class="hv-row hv-row-' + kind + '" ' + attrs + '><span class="hv-ico">' + icon + '</span>'
     + '<span class="hv-row-text"><b>' + title + '</b><small>' + sub + '</small></span>'
     + (pill ? '<span class="hv-pill">' + pill + '</span>' : '<span class="hv-chev">' + ico.chevron + '</span>') + '</button>';
 
@@ -175,31 +184,38 @@
     const a = activeExam(), pool = wrongPool(), ox = oxState();
     let exam;
     if (a) {
-      exam = row('exam', 'coral', ico.paper, '기출문제',
+      exam = row('exam', illustrations.paper, '기출문제 이어 풀기',
         esc(a.title) + ' · ' + a.answered + '/' + a.total + '문항' + (a.remaining != null ? ' · 남은 ' + (a.paused ? '시간 정지' : Math.ceil(a.remaining / 60000) + '분') : ''),
-        'data-nav="exam-library"', '목록 보기');
+        'data-r7-exam-open', '이어 풀기');
     } else if (examHistoryCount() > 0) {
-      exam = row('exam', 'coral', ico.paper, '기출문제', '회차별·시대별 실제 기출로 실전 감각을 길러요', 'data-nav="exam-library"', '');
+      exam = row('exam', illustrations.paper, '기출문제', '회차별·시대별 실제 기출로 실전 감각을 길러요', 'data-nav="exam-library"', '');
     } else {
-      exam = row('exam', 'coral', ico.paper, '기출문제', '아직 기출 문제를 풀지 않았어요 : (', 'data-nav="exam-library"', '시작하기');
+      exam = row('exam', illustrations.paper, '기출문제', '실제 기출로 시험 감각을 차근차근 길러요', 'data-nav="exam-library"', '시작하기');
     }
     let oxRow;
-    if (ox.kind === 'active') oxRow = row('ox', 'teal', ico.ox, 'OX 퀴즈 이어 풀기', esc(ox.text), 'data-nav="ox"', '이어 풀기');
-    else if (ox.kind === 'done') oxRow = row('ox', 'teal', ico.ox, 'OX 퀴즈', '핵심 개념을 빠르게 확인해요', 'data-nav="ox"', '');
-    else oxRow = row('ox', 'teal', ico.ox, 'OX 퀴즈', '아직 푼 OX 퀴즈가 없어요 : (', 'data-nav="ox"', 'OX 풀기');
+    if (ox.kind === 'active') oxRow = row('ox', illustrations.ox, 'OX 퀴즈 이어 풀기', esc(ox.text), 'data-nav="ox"', '이어 풀기');
+    else if (ox.kind === 'done') oxRow = row('ox', illustrations.ox, 'OX 퀴즈', '핵심 개념을 빠르게 확인해요', 'data-nav="ox"', '');
+    else oxRow = row('ox', illustrations.ox, 'OX 퀴즈', '핵심 개념을 OX로 빠르게 확인해요', 'data-nav="ox"', 'OX 풀기');
     let wrong;
-    if (pool.length) wrong = row('wrong', 'amber', ico.redo, '오답 복습', '틀린 문제 ' + pool.length + '개 · 최근에 틀린 것부터', 'data-review="' + esc(pool[0]) + '"', '');
+    if (pool.length) wrong = row('wrong', illustrations.review, '오답노트', '복습할 문제 ' + pool.length + '개 · 최근에 틀린 것부터', 'data-review="' + esc(pool[0]) + '"', '복습하기');
     else {
       const hadAny = (meta().wrongQuestionIds || []).length > 0;
-      wrong = '<div class="hv-row hv-row-wrong is-quiet" role="group" aria-label="오답 복습"><span class="hv-ico amber">' + ico.check + '</span><span class="hv-row-text"><b>' + (hadAny ? '오답을 모두 복습했어요' : '복습할 오답이 없어요') + '</b><small>' + (hadAny ? '새로 틀린 문제가 생기면 여기에 모여요' : '틀린 문제는 여기에 모여요') + '</small></span></div>';
+      wrong = row('wrong', illustrations.review, '오답노트', hadAny ? '오답을 모두 복습했어요' : '틀린 문제는 여기에 모여요', 'data-nav="study"', '');
     }
-    return '<section class="hv-section" aria-label="실전 학습"><h2 class="hv-h">실전 학습</h2><div class="hv-list">' + exam + oxRow + wrong + '</div></section>';
+    return '<section class="hv-section" aria-label="실전 학습"><div class="hv-section-head"><h2 class="hv-h">실전 학습</h2><button class="hv-textbtn" data-nav="exam-library">목록 보기</button></div><div class="hv-list">' + exam + oxRow + wrong + '</div></section>';
   }
 
-  function metricsHTML() {
-    const s = studyStats();
-    const cell = (l, v, u) => '<div class="hv-metric"><small>' + l + '</small><b>' + v + (u ? '<em>' + u + '</em>' : '') + '</b></div>';
-    return '<section class="hv-metrics" aria-label="학습 현황">' + cell('연속 학습', s.streak, '일') + cell('오늘 푼 문제', s.todayCount, '문항') + cell('최근 정답률', s.accuracy == null ? '-' : s.accuracy, s.accuracy == null ? '' : '%') + '</section>';
+  function metricsHTML(now = new Date()) {
+    const s = studyStats(now), d = ddayState(now);
+    const dday = d.kind === 'today' ? 'D-DAY' : d.kind === 'set' ? 'D-' + d.days : d.kind === 'past' ? '다시 설정' : '설정하기';
+    const dateValue = d.date ? toKey(d.date) : '';
+    const cell = (kind, icon, label, value, unit = '', hint = '') => '<article class="hv-metric hv-metric-' + kind + '"' + (hint ? ' title="' + hint + '"' : '') + '><span class="hv-metric-art">' + icon + '</span><small>' + label + '</small><b>' + value + (unit ? '<em>' + unit + '</em>' : '') + '</b></article>';
+    const exam = '<label class="hv-metric hv-metric-exam" title="시험일 설정 또는 변경"><input class="hv-date-input" data-hv-exam-date type="date" min="' + toKey(now) + '" value="' + dateValue + '" aria-label="시험일 설정"><span class="hv-metric-art">' + illustrations.calendar + '</span><small>남은 시험일</small><b>' + dday + '</b></label>';
+    return '<section class="hv-status" aria-labelledby="hv-status-title"><h2 class="hv-h" id="hv-status-title">학습 현황</h2><div class="hv-metrics">' + exam + cell('streak', illustrations.fire, '연속 학습', s.streak, '일') + cell('today', illustrations.paper, '오늘 푼 문제', s.todayCount, '문항') + cell('accuracy', illustrations.target, '최근 정답률', s.accuracy == null ? '-' : s.accuracy, s.accuracy == null ? '' : '%', '최근 완료한 문제 풀이 최대 20문항 기준') + '</div></section>';
+  }
+
+  function cheerHTML() {
+    return '<section class="hv-cheer-banner" aria-label="학습 응원"><span class="hv-cheer-copy"><small>오늘의 한 걸음</small><b>오늘도 한 장면,<br>한 문제씩 이어가요.</b></span><img src="media/proto-v4/player.webp" alt="눈떠보니 한국사 남자 주인공" loading="lazy" decoding="async"></section>';
   }
   function weakHTML() {
     const weak=globalThis.OFFICIAL_LEARNING_ANALYSIS?.rows?.().find(row=>row.weak);
@@ -221,18 +237,15 @@
   }
 
   /* ---------- home() ---------- */
-  const WEEK = '일월화수목금토';
   home = function () {
-    const e = heroEra(), d = ddayState();
-    const hasActivity = Boolean(seasonRun(e)?.started) || (meta().learningEvents || []).length > 0;
-    const now = new Date();
+    const e = heroEra(), now = new Date();
     return '<div class="hv">'
-      + '<header class="hv-top"><div><p class="hv-date">' + (now.getMonth() + 1) + '월 ' + now.getDate() + '일 ' + WEEK[now.getDay()] + '요일</p><h1 class="hv-brand">눈떠보니 한국사</h1></div>'
+      + '<header class="hv-top"><h1 class="hv-brand" aria-label="눈떠보니 한국사"><span>눈떠보니</span><em>한국사</em></h1>'
       + '<button class="hv-icon-btn" data-action="status" aria-label="내 상태 보기">' + ico.user + '</button></header>'
       + railHTML(e)
-      + ddayRow(d, cheerLine(d, hasActivity))
+      + metricsHTML(now)
+      + cheerHTML()
       + practiceHTML()
-      + metricsHTML()
       + weakHTML()
       + sheetHTML() + '</div>';
   };
@@ -254,6 +267,17 @@
     if (ev.key === 'Escape' && sheet) { sheet = null; render(); }
   });
 
+  document.addEventListener('change', (ev) => {
+    const input = ev.target?.closest?.('[data-hv-exam-date]');
+    if (!input) return;
+    const target = parseKey(input.value);
+    if (!target) return;
+    meta().examTargetDate = toKey(target);
+    save();
+    render();
+    toast('시험일을 저장했어요.');
+  });
+
   /* dots follow the rail's scroll position */
   document.addEventListener('scroll', (ev) => {
     const rail = ev.target;
@@ -273,6 +297,8 @@
     document.body?.classList?.toggle?.('hv-locked', Boolean(sheet) && screen === 'home');
     if (sheet && screen === 'home') document.querySelector?.('.hv-sheet button')?.focus?.({ preventScroll: true });
   };
+
+  globalThis.HOME_V6_API = Object.freeze({ stats: studyStats, dday: ddayState, events: learningEvents });
 
   render();
 })();

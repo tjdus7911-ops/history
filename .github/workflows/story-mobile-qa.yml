@@ -28,6 +28,7 @@ jobs:
           git fetch --depth=1 origin 914bbf90590cb8ae1bf26d219d04a651e76689a0
       - name: Story and preserved learning regressions
         run: |
+          node tests/home-v6-test.cjs
           node tests/story-mobile-qa-test.cjs
           node tests/rev7-layouts-test.cjs
           node tests/proto-v4-test.cjs
@@ -41,7 +42,9 @@ jobs:
           node tests/service-worker-cache-test.cjs
           node tests/jokbo-test.cjs
       - name: Actual mobile flows
-        run: node tests/story-mobile-qa-browser.cjs
+        run: |
+          node tests/home-v6-mobile-test.cjs
+          node tests/story-mobile-qa-browser.cjs
       - name: Capture baseline UI before changes
         run: node tests/menu-design-qa-browser.cjs --before
       - name: Verify navigation, shared FAB and jokbo fullscreen after changes
@@ -54,6 +57,7 @@ jobs:
           path: artifacts/story-mobile-qa
           retention-days: 14
   android:
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
