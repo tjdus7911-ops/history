@@ -67,6 +67,8 @@ async function runMenuFlow(page,{width,native=false,before=false,screenshot,swip
   await click('[data-jk-era="three"]');await click('[data-jk-country="백제"]');const searchOrigin=await page.evaluate(()=>JOKBO_API.state());
   await click('[data-jk-search]');await page.locator('.jk-search-page').waitFor();assert.equal(await page.evaluate(()=>APP_ROUTE.current()),'jokbo/search');
   await page.waitForFunction(()=>document.activeElement?.matches('[data-jk-query]'));assert.equal(await page.locator('[data-jk-query]').getAttribute('placeholder'),'왕, 사건, 제도, 키워드 검색');
+  const searchBack=await page.locator('[data-jk-back="search-exit"]').evaluate(button=>{const rect=button.getBoundingClientRect(),style=getComputedStyle(button);return {label:button.getAttribute('aria-label'),width:rect.width,height:rect.height,background:style.backgroundColor,border:style.borderTopWidth,shadow:style.boxShadow};});
+  assert.deepEqual(searchBack,{label:'족보로 돌아가기',width:44,height:44,background:'rgba(0, 0, 0, 0)',border:'0px',shadow:'none'},'검색 뒤로가기는 공통 44px 투명 버튼');
   await page.locator('[data-jk-query]').fill('노비 안검법');await page.locator('[data-jk-search-result="gwangjong-goryeo"]').waitFor();
   assert.equal(await page.locator('.jk-search-count').textContent(),'검색 결과 1개');assert.equal(await page.locator('.jk-search-result').count(),1,'검색 결과 중복 없음');
   assert(await page.locator('.jk-search-result mark').filter({hasText:'노비안검법'}).count()>0,'띄어쓰기 차이 일치 부분 강조');await page.evaluate(()=>document.activeElement?.blur());await capture('jokbo-search');

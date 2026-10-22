@@ -141,7 +141,13 @@
   min-height: 58px; margin: -7px -4px 0; padding: 7px 4px;
   border-bottom: 1px solid var(--jk-line); background: rgba(255,255,255,.98);
 }
-.jk-search-appbar .jk-appbar-back { margin-left: -8px; }
+.jk-search-appbar .jk-appbar-back {
+  display: grid; place-items: center;
+  width: 44px; height: 44px; margin-left: -8px; padding: 0;
+  border: 0; border-radius: 6px; box-shadow: none;
+  background: transparent; color: var(--jk-ink);
+}
+.jk-search-appbar .jk-appbar-back:active { background: var(--jk-sunken); }
 .jk-search-field {
   display: flex; align-items: center; gap: 7px; min-width: 0; min-height: 44px; padding: 0 5px 0 11px;
   border: 1px solid transparent; border-radius: 12px; background: var(--jk-sunken);
