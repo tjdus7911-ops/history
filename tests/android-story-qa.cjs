@@ -29,12 +29,12 @@ const launch=()=>adb('shell','am','start','-W','-n',app+'/.MainActivity');
  result.checks.push('Android hardware Back routes and cancels restart');fs.writeFileSync(path.join(output,'android-back.png'),execFileSync('adb',['exec-out','screencap','-p'],{maxBuffer:20*1024*1024}));
  fs.writeFileSync(path.join(output,'android-results.json'),JSON.stringify({...result,buildInfo:info},null,2));
  const {runMenuFlow}=require('./menu-design-qa-browser.cjs'),menuResults=[];
- for(const cssWidth of [360,390,412]){
+ for(const cssWidth of [360,390,430]){
   console.log('Android menu QA width',cssWidth);adb('shell','wm','size',String(cssWidth*2)+'x1688');await finalPage.waitForFunction(w=>innerWidth===w,cssWidth);
   adb('shell','uiautomator','dump','/sdcard/menu-qa-window.xml');const tree=adb('shell','cat','/sdcard/menu-qa-window.xml');fs.writeFileSync(path.join(output,'android-'+cssWidth+'-window.xml'),tree);
   const webView=tree.match(/<node\b[^>]*class="android.webkit.WebView"[^>]*>/)?.[0],bounds=webView?.match(/bounds="\[(\d+),(\d+)\]\[(\d+),(\d+)\]"/);assert(bounds,'native WebView bounds available for physical touch input');
   const origin={x:Number(bounds[1]),y:Number(bounds[2])},scale=(Number(bounds[3])-origin.x)/cssWidth;console.log('Native touch origin/scale',origin,scale);
   menuResults.push(await runMenuFlow(finalPage,{width:cssWidth,native:true,swipe:async({x,y,toX,toY})=>{adb('shell','input','swipe',String(Math.round(origin.x+x*scale)),String(Math.round(origin.y+y*scale)),String(Math.round(origin.x+toX*scale)),String(Math.round(origin.y+toY*scale)),'180');await delay(80);},screenshot:async file=>fs.writeFileSync(file,execFileSync('adb',['exec-out','screencap','-p'],{maxBuffer:20*1024*1024}))}));
  }
- fs.writeFileSync(path.join(output,'android-menu-results.json'),JSON.stringify({results:menuResults,buildInfo:info,actualHashes,serviceWorkers:0},null,2));console.log('PASS real Android emulator WebView, story and menu QA 360/390/412');process.exit(0);
+ fs.writeFileSync(path.join(output,'android-menu-results.json'),JSON.stringify({results:menuResults,buildInfo:info,actualHashes,serviceWorkers:0},null,2));console.log('PASS real Android emulator WebView, story and menu QA 360/390/430');process.exit(0);
 })().catch(e=>{try{fs.writeFileSync(path.join(output,'android-failure.png'),execFileSync('adb',['exec-out','screencap','-p'],{maxBuffer:20*1024*1024}));fs.writeFileSync(path.join(output,'android-logcat.txt'),adb('logcat','-d','-t','500'));}catch{}console.error(e);process.exit(1);});

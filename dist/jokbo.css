@@ -24,6 +24,20 @@
   padding-top: 0;
 }
 
+.jk-fullscreen-shell {
+  width: 100%;
+  max-width: none;
+  min-height: 100dvh;
+  background: #fff;
+}
+.jk-fullscreen-shell > .main {
+  width: 100%;
+  max-width: none;
+  min-height: 100dvh;
+  margin-left: 0;
+}
+.jk-fullscreen-shell .jk-page { padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px)); }
+
 .jk-page {
   width: min(100%, 620px);
   margin: 0 auto;
@@ -822,6 +836,7 @@
   .main.ed-jokbo-detail,
   .main.ed-jokbo-compare { padding: 0; }
   .jk-page { padding: 7px 20px calc(108px + env(safe-area-inset-bottom, 0px)); }
+  .jk-fullscreen-shell .jk-page { padding-bottom: calc(40px + env(safe-area-inset-bottom, 0px)); }
   .jk-heading { min-height: 58px; padding-top: 2px; }
   .jk-heading h1 { font-size: 29px; line-height: 35px; }
   .jk-search-button .jk-icon,
@@ -910,6 +925,7 @@ html body .jk-filterbar {
   border-bottom: 1px solid var(--jk-line);
 }
 html body .capacitor-native .jk-filterbar, html.capacitor-native body .jk-filterbar { top: env(safe-area-inset-top, 0px); }
+html body .capacitor-native .jk-fullscreen-shell .jk-main, html.capacitor-native body .jk-fullscreen-shell .jk-main { padding-top: calc(7px + env(safe-area-inset-top, 0px)); }
 html body .jk-filterbar .jk-segment { min-height: 40px; margin: 0 0 4px; gap: 22px; }
 html body .jk-chiprow { display: flex; align-items: center; gap: 8px; min-width: 0; margin: 0 0 2px; }
 html body .jk-chiprow-label {
@@ -1060,27 +1076,34 @@ html body .jk-detail-facts h2 small { margin-left: 4px; color: var(--jk-faint); 
 html body .jk-detail-facts .jk-card { padding-block: 2px; }
 html body .jk-detail-facts .jk-fact + .jk-fact { border-top: 1px solid var(--jk-line); }
 
-/* 홈 진입점: 실전 학습 줄 + 하단 플로팅 버튼 (하단 메뉴는 그대로) */
+/* 학습 화면 공통 진입점: 우측 하단 캡슐 FAB (하단 메뉴는 그대로) */
 html body .hv-row-jokbo .hv-ico svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 html body .hv-row-jokbo .hv-chev svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-html body .jk-home-dock {
-  position: fixed; z-index: 40; left: 0; right: 0; bottom: calc(72px + env(safe-area-inset-bottom, 0px));
-  padding: 8px 20px; background: rgba(255,255,255,.96); border-top: 1px solid var(--jk-line);
+html body .jk-fab-dock {
+  position: fixed; z-index: 45; right: 16px; bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+  pointer-events: none;
 }
-html body .jk-home-fab {
-  display: flex; align-items: center; gap: 10px; width: 100%; max-width: 560px; min-height: 48px; margin: 0 auto; padding: 0 12px 0 14px;
-  border: 1px solid #f8d3cb; border-radius: 10px; background: var(--jk-coral-soft); color: var(--jk-coral-ink); text-align: left;
+html body .jk-fab {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-width: 92px; min-height: 48px; padding: 0 17px 0 15px;
+  border: 0; border-radius: 999px; background: #e9513b; color: #fff; box-shadow: 0 6px 18px rgba(116,42,31,.24);
+  font: 700 14px/20px var(--jk-ui); letter-spacing: -.01em; pointer-events: auto;
 }
-html body .jk-home-fab:active { background: #fbe0d9; }
-html body .jk-home-fab > svg { flex: none; width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-html body .jk-home-fab > span { display: flex; align-items: baseline; gap: 8px; flex: 1; min-width: 0; }
-html body .jk-home-fab b { font: 800 15px/20px var(--jk-ui); color: var(--jk-coral-ink); white-space: nowrap; }
-html body .jk-home-fab small { overflow: hidden; color: var(--jk-sub); font: 500 13px/18px var(--jk-ui); white-space: nowrap; text-overflow: ellipsis; }
-html body .jk-home-fab > i { display: grid; place-items: center; color: var(--jk-coral); }
-html body .jk-home-fab > i svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-html body.hv-locked .jk-home-dock { display: none; }
-html body .main.ed-home { padding-bottom: calc(150px + env(safe-area-inset-bottom, 0px)); }
-@media (min-width: 701px) { html body .jk-home-dock { left: auto; right: 28px; bottom: 28px; width: 340px; padding: 0; border: 0; background: none; } html body .main.ed-home { padding-bottom: 96px; } }
+html body .jk-fab:active { background: var(--jk-coral-press); transform: translateY(1px); }
+html body .jk-fab:focus-visible { outline: 2px solid #fff; outline-offset: -4px; box-shadow: 0 0 0 2px var(--jk-coral), 0 6px 18px rgba(116,42,31,.24); }
+html body .jk-fab > svg { flex: none; width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+html body .jk-fab > span { white-space: nowrap; }
+html body.hv-locked .jk-fab-dock,
+html body.r7-filter-locked .jk-fab-dock,
+html body.r7-ox-sheet-locked .jk-fab-dock { display: none; }
+html body .app-nav-shell.has-jk-fab .main { padding-bottom: calc(154px + env(safe-area-inset-bottom, 0px)); }
+html body .app-nav-shell.has-jk-fab .r7-page.r7-wrong .r7-bottom { bottom: calc(140px + env(safe-area-inset-bottom, 0px)); }
+html body .app-nav-shell.has-jk-fab .r7-page.r7-wrong { padding-bottom: 156px; }
+@media (min-width: 701px) {
+  html body .jk-fab-dock { right: 28px; bottom: 28px; }
+  html body .app-nav-shell.has-jk-fab .main { padding-bottom: 96px; }
+  html body .app-nav-shell.has-jk-fab .r7-page.r7-wrong .r7-bottom { bottom: 0; }
+  html body .app-nav-shell.has-jk-fab .r7-page.r7-wrong { padding-bottom: 0; }
+}
 
 @media (min-width: 701px) {
   html body .jk-filterbar { margin: 0; padding-inline: 0; }
@@ -1114,5 +1137,4 @@ html body .jk-group-overview p, html body .jk-detail-description, html body .jk-
 html body .jk-detail-section h2, html body .jk-related > div h2 { font-size: 16px; line-height: 24px; font-weight: 700; }
 html body .jk-detail-section li p, html body .jk-clue p { font-size: 15px; line-height: 23px; }
 html body .jk-compare-keyword { font-size: 16px; line-height: 24px; }
-html body .jk-home-fab b { font-size: 15px; }
-html body .jk-home-fab small { font-size: 14px; }
+html body .jk-fab { font-size: 14px; }

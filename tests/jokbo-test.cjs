@@ -80,10 +80,10 @@ assert(g.run('renderContent()').includes('원삼국 한 장 정리'));
 assert(g.run("(()=>{const html=renderContent();return html.indexOf('jk-heading')<html.indexOf('jk-segment')&&html.indexOf('jk-segment')<html.indexOf('jk-era-tabs')&&html.indexOf('jk-era-tabs')<html.indexOf('jk-summary-head')})()"),'제목·보기 탭·시대 칩·학습 내용 순서');
 assert(g.run("renderContent().includes('<span class=\"jk-segment-count is-empty\">0</span>')"),'선택 시대 저장 0 중립 배지 마크업');
 assert(g.run("renderContent().includes('data-jk-era=\"proto\" aria-selected=\"true\"><span>원삼국</span>')"),'시대 선택 독립 칩 마크업');
-assert(g.run("shell(renderContent()).includes('data-icon=\"answer-sheet\"')"),'OX 답안지 아이콘');
+assert(g.run("(()=>{const before=screen;screen='home';const html=shell(renderContent());screen=before;return html.includes('data-icon=\"answer-sheet\"')})()"),'일반 화면 하단 메뉴 OX 답안지 아이콘');
 assert.equal(g.run("shell(renderContent()).includes('data-nav=\"jokbo\"')"),false,'족보는 하단 메뉴에 추가하지 않음');
-assert.deepEqual(g.copy("[...shell(renderContent()).matchAll(/data-nav=\"([^\"]+)\"/g)].map(m=>m[1])"),['home','exam-library','ox','study','records'],'하단 메뉴 5개 유지');
-assert(g.run("shell(renderContent()).includes('<button data-nav=\"home\" aria-current=\"page\"')"),'족보 화면은 홈 하위로 표시');
+assert.deepEqual(g.copy("[...shell(renderContent()).matchAll(/data-nav=\"([^\"]+)\"/g)].map(m=>m[1])"),[],'족보 전용 전체 화면에서는 하단 메뉴 숨김');
+assert(g.run("shell(renderContent()).includes('class=\"shell editorial-shell jk-fullscreen-shell\"')"),'족보 전용 전체 화면 셸');
 assert.equal(g.run("shell(renderContent()).includes('<b>OX</b>')"),false,'OX 텍스트 중복 제거');
 g.click({jkMode:'saved'});
 assert(g.run("renderContent().includes('원삼국 저장 키워드')"),'저장 보기 선택 시대 제목');
@@ -132,11 +132,12 @@ assert(g.run('renderContent()').includes('스토리 준비 중'));
 // 카드형 개편: 홈 진입점, 시대·나라 칩, 요약 행 전체 노출
 const card=load();
 card.run("screen='home'");
-assert.equal(card.run("renderContent().includes('data-jk-open=\"home\"')"),false,'홈 본문에는 족보 줄을 넣지 않음');
-assert(card.run("shell(renderContent()).includes('class=\"jk-home-dock\"')"),'홈 하단 족보 버튼');
-card.click({jkOpen:'home'});
+assert.equal(card.run("renderContent().includes('data-jk-open')"),false,'홈 본문에는 족보 줄을 넣지 않음');
+assert(card.run("shell(renderContent()).includes('class=\"jk-fab-dock\"')"),'홈 공통 족보 FAB');
+assert.deepEqual(card.copy("[...(shell(renderContent()).match(/<nav class=\"nav app-navigation\"[\\s\\S]*?<\\/nav>/)||[''])[0].matchAll(/data-nav=\"([^\"]+)\"/g)].map(m=>m[1])"),['home','exam-library','ox','study','records'],'일반 화면의 하단 메뉴 5개 유지');
+card.click({jkOpen:''});
 assert.equal(card.run('screen'),'jokbo','홈에서 족보 진입');
-assert(card.run("renderContent().includes('data-jk-back=\"home\"')"),'족보 첫 화면에서 홈으로 돌아가기');
+assert(card.run("renderContent().includes('data-jk-back=\"origin\"')"),'족보 첫 화면에서 직전 화면으로 돌아가기');
 assert(card.run("renderContent().includes('2 / 9')"),'시대 위치 표시');
 assert.deepEqual(card.copy("JOKBO_API.countries('proto')"),['부여','고구려','옥저','동예','삼한'],'원삼국 나라 칩');
 assert.deepEqual(card.copy("JOKBO_API.countries('three')"),['고구려','백제','신라','가야'],'삼국 나라 칩');
@@ -157,6 +158,22 @@ card.run("REV7_OX_VIEWS.applyRoute('jokbo')");card.click({jkMode:'saved'});card.
 card.click({jkSave:'geunchogo'});
 assert(card.run("(()=>{const h=renderContent();return h.includes('data-jk-fact-name>근초고왕</span>')&&h.includes('data-jk-fact-name>고흥</span>')})()"),'저장 카드도 요약 행 전부');
 
+// 공통 FAB 노출 정책과 직전 화면 복귀. 학습 콘텐츠·저장 키는 건드리지 않는다.
+const fab=load();
+const hasFab=()=>fab.run("shell(renderContent()).includes('class=\"jk-fab-dock\"')");
+fab.run("screen='home'");assert.equal(hasFab(),true,'홈 FAB');
+fab.run("screen='exam-library';globalThis.__examState=REV7_EXAM_VIEWS.state;REV7_EXAM_VIEWS.state=()=>({view:'home'})");assert.equal(hasFab(),true,'기출 홈 FAB');
+fab.run("REV7_EXAM_VIEWS.state=()=>({view:'list'})");assert.equal(hasFab(),true,'기출 목록 FAB');
+for(const view of ['cover','practice','result','review','history']){fab.run(`REV7_EXAM_VIEWS.state=()=>({view:'${view}'})`);assert.equal(hasFab(),false,'기출 '+view+' FAB 미노출');}
+fab.run("REV7_EXAM_VIEWS.state=globalThis.__examState");
+fab.run("globalThis.location={hash:'#ox',pathname:'',search:'',href:'#ox'};screen='ox';oxView='home'");assert.equal(hasFab(),true,'OX 목록 FAB');
+fab.run("globalThis.location.hash='#ox/quiz';globalThis.location.href='#ox/quiz';oxView='quiz'");assert.equal(hasFab(),false,'OX 실제 풀이 FAB 미노출');
+fab.run("globalThis.location.hash='#ox';globalThis.location.href='#ox';globalThis.__oxApi=OX_QUIZ_API;globalThis.OX_QUIZ_API={snapshot:()=>({view:'result'})}");assert.equal(hasFab(),false,'OX 결과 FAB 미노출');fab.run("globalThis.OX_QUIZ_API=globalThis.__oxApi");
+fab.run("screen='study'");assert.equal(hasFab(),true,'오답노트 목록·상세 FAB');
+for(const hidden of ['records','era','game','quiz','complete','jokbo']){fab.run(`screen='${hidden}'`);assert.equal(hasFab(),false,hidden+' FAB 미노출');}
+fab.run("globalThis.location=undefined;screen='study';window.scrollY=284;window.scrollTo=(x,y)=>{window.scrollY=Number(y)||0;window.lastScrollY=window.scrollY}");fab.click({jkOpen:''});assert.equal(fab.run('screen'),'jokbo','오답노트에서 족보 진입');fab.click({jkBack:'origin'});fab.tick();assert.equal(fab.run('screen'),'study','족보 뒤로가기 시 직전 오답노트 복귀');assert.equal(fab.run('window.lastScrollY'),284,'직전 화면 스크롤 복원');
+assert.equal(fab.run("localStorage.getItem('history-jokbo:saved:v1')"),null,'FAB 이동은 저장 키워드 데이터를 초기화하지 않음');
+
 const index=fs.readFileSync('dist/index.html','utf8'),worker=fs.readFileSync('dist/sw.js','utf8'),css=fs.readFileSync('dist/jokbo.css','utf8'),uiCss=fs.readFileSync('dist/ui-refresh.css','utf8'),baseCss=fs.readFileSync('dist/style.css','utf8');
 for(const file of ['jokbo.css','jokbo-data.js','jokbo-ui.js','story-release-policy.js'])assert(index.includes(file),file+' index 연결');
 for(const file of ['/jokbo.css','/jokbo-data.js','/jokbo-ui.js','/story-release-policy.js'])assert(worker.includes(file),file+' 오프라인 캐시');
@@ -174,6 +191,8 @@ assert(css.includes('min-height: calc(56px + env(safe-area-inset-top, 0px))'),'A
 assert(css.includes('.jk-group-keyword-card'),'그룹 전체 핵심 정리 전용 범위 스타일');
 assert(css.includes('grid-template-columns: 72px minmax(0, 1fr)'),'왕 이름·키워드 2열 정렬');
 assert(css.includes('html body .jk-fact-value { font-size: 15px'),'카드 키워드 크기 축소');
+assert(css.includes('.jk-fab-dock')&&css.includes('bottom: calc(84px + env(safe-area-inset-bottom, 0px))'),'공통 FAB 바텀 메뉴·Safe Area 간격');
+assert(css.includes('.jk-fullscreen-shell > .main')&&css.includes('margin-left: 0'),'족보 전용 전체 화면 셸');
 assert(!g.run("renderContent().includes('카드를 좌우로 밀면 시대가 바뀌어요')"),'반복 스와이프 안내 제거');
 assert(baseCss.includes("fonts/PretendardVariable.woff2"),'로컬 Pretendard 연결');
 assert(uiCss.includes("--app-font: 'Pretendard Variable'")&&uiCss.includes('html body #app *'),'앱 전체 Pretendard 통일');
