@@ -205,7 +205,9 @@
         + '<div class="lm-list">' + shown.map(missionRow).join('') + '</div>'
         + (model.selected.length > 2 ? '<button type="button" class="lm-expand" data-mission-expand aria-expanded="' + expanded + '">' + (expanded ? '접기' : '전체 보기') + '</button>' : '')
       : '<div class="lm-empty">' + mascot + '<p>오늘 실천할 미션을 선택해 주세요.</p><button type="button" data-mission-settings>목표 설정하기</button></div>';
-    return '<section class="lm-card" aria-labelledby="lm-card-title"><header class="lm-card-head"><div><h2 id="lm-card-title">오늘의 학습 미션</h2><p>하루에 조금씩, 꾸준히 공부해요.</p></div><button type="button" class="lm-settings-link" data-mission-settings>목표 설정</button></header><div class="lm-panel">' + body + '</div></section>';
+    /* options.ddayHTML: the exam D-day row (with 시험일 설정/변경) shown at the top of the goal card. */
+    const dday = options.ddayHTML ? '<div class="lm-dday">' + options.ddayHTML + '</div>' : '';
+    return '<section class="lm-card" aria-labelledby="lm-card-title"><header class="lm-card-head"><div><h2 id="lm-card-title">오늘의 학습 미션</h2><p>하루에 조금씩, 꾸준히 공부해요.</p></div><button type="button" class="lm-settings-link" data-mission-settings>목표 설정</button></header><div class="lm-panel">' + dday + body + '</div></section>';
   }
 
   function settingsHTML() {

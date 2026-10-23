@@ -260,6 +260,18 @@
     return '<section class="hv-status" aria-labelledby="hv-status-title"><h2 class="hv-h" id="hv-status-title">학습 현황</h2><div class="hv-status-card">' + exam + '<hr class="hv-divider">' + metrics + '</div></section>';
   }
 
+  /* Fix pass: the 학습 현황 section is removed from home; only the exam D-day moves into the goal card.
+   * Statistics data is untouched (still used by 내 기록 and HOME_V6_API). */
+  function ddayHTML(now = new Date()) {
+    const d = ddayState(now), dday = d.kind === 'today' ? 'D-DAY' : d.kind === 'set' ? 'D-' + d.days : d.kind === 'past' ? '다시 설정' : '설정하기';
+    const label = d.kind === 'unset' ? '시험일을 정해 보세요' : d.kind === 'past' ? '설정한 시험일이 지났어요' : '한능검 시험일까지';
+    const value = d.kind === 'unset' ? 'D-day 미설정' : d.kind === 'past' ? '다시 설정해 주세요' : dday;
+    const set = d.kind === 'set' || d.kind === 'today';
+    return '<div class="hv-dday hv-metric-exam' + (set ? ' is-set' : '') + '"><span class="hv-dday-art">' + illustrations.calendar + '</span>'
+      + '<span class="hv-dday-copy"><small>' + label + '</small><b>' + value + '</b></span>'
+      + '<button type="button" class="hv-dday-action" data-hv-exam-open title="시험일 설정 또는 변경" aria-label="시험일 ' + (d.date ? '변경' : '설정') + ' · 남은 시험일 ' + dday + '">' + (set ? '시험일 변경' : '설정하기') + '</button></div>';
+  }
+
   function cheerHTML() {
     return '<section class="hv-cheer-banner" aria-label="학습 응원"><p>오늘도 화이팅! 한 장면, 한 문제씩 이어가요.</p><span class="hv-cheer-avatar"><img src="icons/icon-192.png" alt="" aria-hidden="true"></span></section>';
   }
@@ -313,9 +325,8 @@
       + '<header class="hv-top"><h1 class="hv-brand" aria-label="눈떠보니 한국사"><i class="hv-brand-mark">' + illustrations.scroll + '</i><span>눈떠보니</span><em>한국사</em></h1>'
       + '<button class="hv-icon-btn" data-action="status" aria-label="내 상태 보기">' + ico.user + '</button></header>'
       + railHTML(e)
-      + metricsHTML(now)
-      + (globalThis.LEARNING_MISSIONS?.cardHTML?.(now, { fresh: freshLearner(), mascot: 'icons/icon-192.png' }) || cheerHTML())
       + practiceHTML(e)
+      + (globalThis.LEARNING_MISSIONS?.cardHTML?.(now, { fresh: freshLearner(), mascot: 'icons/icon-192.png', ddayHTML: ddayHTML(now) }) || '<section class="hv-status">' + ddayHTML(now) + '</section>' + cheerHTML())
       + jokboPromoHTML()
       + weakHTML()
       + sheetHTML() + '</div>';
