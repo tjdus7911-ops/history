@@ -1102,13 +1102,33 @@ html body .jk-related .jk-related-item:active { background: var(--rv8-subtle, #f
   html body:not(#rv8) #app .jk-card-head { margin-bottom: 8px; }
   html body:not(#rv8) #app .jk-card-more { margin-top: 8px; padding-top: 8px; min-height: 40px; }
   html body:not(#rv8) #app .jk-groups { gap: 12px; }
-  /* Jokbo '자세히 보기' keyword cards */
-  html body:not(#rv8) #app .jk-group-keyword-card { padding: 16px; }
-  html body:not(#rv8) #app .jk-group-keyword-card > * + * { margin-top: 6px; }
-  html body:not(#rv8) #app .jk-group-keyword-point { margin-top: 10px !important; padding: 10px 12px; }
-  html body:not(#rv8) #app .jk-group-keyword-point > * { margin: 0; }
-  html body:not(#rv8) #app .jk-group-keyword-point > * + * { margin-top: 2px; }
-  html body:not(#rv8) #app .jk-group-keyword-point p { line-height: 21px; }
-  html body:not(#rv8) #app .jk-group-keyword-actions { min-height: 40px; margin-top: 2px; margin-bottom: -8px; }
-  html body:not(#rv8) #app .jk-group-keyword-actions button { min-height: 40px; }
+}
+
+/* Fix pass 4 (2026-10-24) */
+@media (max-width: 700px) {
+  /* Home story cards: portrait layout, picture area fixed at 160px (centre-cropped) so the card stays ~285px tall */
+  html body:not(#rv8) #app .hv .hv-rail-item { flex: 0 0 min(232px, calc(100vw - 120px)); width: min(232px, calc(100vw - 120px)); }
+  html body:not(#rv8) #app .hv .hv-era .hv-card-art { height: 160px; aspect-ratio: auto; object-fit: cover; object-position: center 30%; }
+
+  /* Jokbo main (전체 요약): keyword line spacing unchanged; tighten the gaps between filter rows, the pager and the cards */
+  html body:not(#rv8) #app .jk-main .jk-heading-subtitle { margin-bottom: 4px; }
+  html body:not(#rv8) #app .jk-main .jk-filterbar { gap: 0; margin-bottom: 0; padding-bottom: 0; }
+  html body:not(#rv8) #app .jk-main .jk-filterbar .jk-segment { margin-bottom: 8px; }
+  html body:not(#rv8) #app .jk-main .jk-chiprow { min-height: 0; margin: 0; padding: 0; }
+  html body:not(#rv8) #app .jk-main .jk-chiprow + .jk-chiprow { margin-top: 0; }
+  html body:not(#rv8) #app .jk-main .jk-chips button { min-height: 40px; height: 40px; }
+  html body:not(#rv8) #app .jk-main .jk-era-content { margin-top: 8px; padding-top: 0; }
+  html body:not(#rv8) #app .jk-main .jk-summary-head { min-height: 0; margin: 0; padding: 4px 0 0; }
+  html body:not(#rv8) #app .jk-main .jk-pager-dots { margin: 6px 0 12px; }
+  html body:not(#rv8) #app .jk-main .jk-groups { gap: 10px; margin-top: 0; }
+  html body:not(#rv8) #app .jk-main .jk-card { padding: 14px 16px; }
+  html body:not(#rv8) #app .jk-main .jk-card-head { margin-bottom: 6px; }
+  html body:not(#rv8) #app .jk-main .jk-card-more { margin: 6px 0 -6px; padding-top: 6px; }
+}
+@media (max-width: 700px) {
+  /* Jokbo main cards: one 16px card padding only (header, keyword list and footer had their own 16px on top) */
+  html body:not(#rv8) #app .jk-main .jk-card > .jk-card-head,
+  html body:not(#rv8) #app .jk-main .jk-card > .jk-keywords,
+  html body:not(#rv8) #app .jk-main .jk-card > .jk-card-more { padding-left: 0; padding-right: 0; }
+  html body:not(#rv8) #app .jk-main .jk-card > .jk-card-head { padding-top: 0; }
 }
