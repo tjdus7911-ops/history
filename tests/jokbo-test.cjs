@@ -94,7 +94,9 @@ assert(g.run("shell(renderContent()).includes('class=\"shell editorial-shell jk-
 assert.equal(g.run("shell(renderContent()).includes('<b>OX</b>')"),false,'OX 텍스트 중복 제거');
 g.click({jkMode:'saved'});
 assert(g.run("renderContent().includes('원삼국 저장 키워드')"),'저장 보기 선택 시대 제목');
-assert(g.run("renderContent().includes('원삼국에 저장한 키워드가 없어요')"),'선택 시대 저장 빈 상태');
+assert(g.run("renderContent().includes('아직 저장한 키워드가 없어요')"),'선택 시대 저장 빈 상태 문구');
+assert(g.run("renderContent().includes('중요한 키워드를 저장하면')"),'저장 빈 상태 설명 문구');
+assert(g.run("renderContent().includes('M7.25 4.75h9.5')"),'저장 빈 상태 책갈피 아이콘');
 g.click({jkMode:'all'});
 g.click({jkEra:'joseon'});
 assert(g.run('renderContent()').includes('조선 한 장 정리'));
@@ -115,7 +117,7 @@ assert(g.run("renderContent().includes('영업전')"),'선택 시대 저장 키�
 assert(g.run("renderContent().includes('<span class=\"jk-segment-count\">1</span>')"),'선택 시대 저장 개수');
 g.click({jkEra:'proto'});
 assert.equal(g.run("renderContent().includes('영업전')"),false,'다른 시대 저장 키워드 제외');
-assert(g.run("renderContent().includes('원삼국에 저장한 키워드가 없어요')"),'다른 시대 저장 존재 시에도 시대별 빈 상태');
+assert(g.run("renderContent().includes('아직 저장한 키워드가 없어요')"),'다른 시대 저장 존재 시에도 저장 빈 상태');
 assert.equal(g.run("renderContent().includes('검색 결과가 없어요')"),false,'저장 빈 상태와 검색 빈 상태 구분');
 g.click({jkEra:'joseon'});
 g.run("REV7_OX_VIEWS.applyRoute('jokbo/detail/yiik')");
@@ -139,7 +141,7 @@ assert(g.run('renderContent()').includes('스토리 준비 중'));
 // 카드형 개편: 홈 진입점, 시대·나라 칩, 요약 행 전체 노출
 const card=load();
 card.run("screen='home'");
-assert.equal(card.run("renderContent().includes('data-jk-open')"),false,'홈 본문에는 족보 줄을 넣지 않음');
+assert(card.run("renderContent().includes('data-jk-open')&&renderContent().includes('족보로 한 번에 정리!')"),'홈 족보 소개 배너에서 전체 화면 진입');
 assert(card.run("shell(renderContent()).includes('class=\"jk-fab-dock\"')"),'홈 공통 족보 FAB');
 assert.deepEqual(card.copy("[...(shell(renderContent()).match(/<nav class=\"nav app-navigation\"[\\s\\S]*?<\\/nav>/)||[''])[0].matchAll(/data-nav=\"([^\"]+)\"/g)].map(m=>m[1])"),['home','exam-library','ox','study','records'],'일반 화면의 하단 메뉴 5개 유지');
 card.click({jkOpen:''});

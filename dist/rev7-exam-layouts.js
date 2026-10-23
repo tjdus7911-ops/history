@@ -23,7 +23,9 @@
    const status=activity.activeForEdition?'풀이 중':activity.latest?summary?.score+'점'+(cert?.grade?' · '+cert.grade+'급':''):'시작 전';
    return '<button class="r7-exam-row" data-r7-exam-round="'+source.examRound+'" data-r7-exam-level-value="'+source.examLevel+'"><span class="r7-exam-round">'+source.examRound+'<small>회</small></span><span class="r7-exam-name"><b>한국사능력검정시험</b><small>'+source.examLevel+' · '+entries.length+'문항 · '+(practiceMode==='learn'?'시간 제한 없음':'80분')+'</small>'+views.statistic(source,'card')+'</span><em class="'+(activity.latest?'complete':'')+'">'+esc(status)+'</em>'+icon('chevron')+'</button>';
   }).join('');
-  return '<section class="r7-page r7-exam-home" data-figma-frame="E-01">'+heading()+tabs('round')+modeTabs()+(active?'<button class="r7-resume" data-r7-exam-open><span><small>풀던 시험 이어 풀기</small><b>'+esc(examLabel(active))+' · '+Object.keys(active.answers||{}).length+'/'+active.questionIds.length+'문항</b></span>'+icon('chevron')+'</button>':'')+'<div class="r7-exam-filter">'+chips()+'<small>최신 회차순</small></div>'+rows+'<details class="r7-legacy"><summary>누적 취약점 보기</summary>'+views.weakness()+'</details></section>';
+  const answered=active?Object.keys(active.answers||{}).length:0,total=active?.questionIds?.length||0,progress=total?Math.min(100,Math.round(answered/total*100)):0;
+  const resume=active?'<button class="r7-resume" data-r7-exam-open aria-label="'+esc(examLabel(active))+' 이어 풀기, '+answered+' / '+total+'문항"><span class="r7-resume-copy"><small>이어서 풀기</small><b>'+esc(examLabel(active))+'</b><span class="r7-resume-count">'+answered+' / '+total+'문항</span><span class="r7-resume-progress" role="img" aria-label="진행률 '+progress+'%"><i style="width:'+progress+'%"></i></span></span>'+icon('chevron')+'</button>':'';
+  return '<section class="r7-page r7-exam-home" data-figma-frame="E-01">'+heading()+tabs('round')+modeTabs()+resume+'<div class="r7-exam-filter">'+chips()+'<small>최신 회차순</small></div>'+rows+'<details class="r7-legacy"><summary>누적 취약점 보기</summary>'+views.weakness()+'</details></section>';
  });
  views.setCover(function(){
   const cover=views.state().cover;if(!cover)return views.home()();

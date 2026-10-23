@@ -197,29 +197,40 @@
       + '<button class="hv-textbtn" data-hv-sheet="seasons">시대 전체 보기</button></div></section>';
   }
 
-  /* practice rows: pill = action in the row, chevron = plain link */
-  const row = (kind, icon, title, sub, attrs, pill) =>
-    '<button class="hv-row hv-row-' + kind + ' hv-shortcut" ' + attrs + '><span class="hv-ico">' + icon + '</span>'
-    + '<span class="hv-row-text"><b>' + title + '</b><small>' + sub + '</small></span>'
-    + (pill ? '<span class="hv-pill">' + pill + '</span>' : '<span class="hv-chev">' + ico.chevron + '</span>') + '</button>';
+  /* Shortcut cards keep the established full-card routes and use one shared layout. */
+  const row = (kind, icon, title, sub, attrs) =>
+    '<button type="button" class="hv-shortcut hv-shortcut-' + kind + '" ' + attrs + '><span class="hv-ico">' + icon + '</span>'
+    + '<span class="hv-shortcut-copy"><b>' + title + '</b><small>' + sub + '</small></span></button>';
 
   function practiceHTML(currentEra) {
     const a = activeExam(), pool = wrongPool(), ox = oxState();
     const storyStarted = Boolean(seasonRun(currentEra)?.started);
-    let exam;
-    if (a) exam = row('exam', illustrations.paper, '기출문제', esc(a.title) + ' · ' + a.answered + '/' + a.total + '문항' + (a.remaining != null ? ' · 남은 ' + (a.paused ? '시간 정지' : Math.ceil(a.remaining / 60000) + '분') : ''), 'data-r7-exam-open', '이어하기');
-    else if (examHistoryCount() > 0) exam = row('exam', illustrations.paper, '기출문제', '회차별·시대별 실제 기출로 실전 감각을 길러요', 'data-nav="exam-library"', '시작하기');
-    else exam = row('exam', illustrations.paper, '기출문제', '실제 기출로 시험 감각을 차근차근 길러요', 'data-nav="exam-library"', '시작하기');
-    let oxRow;
-    if (ox.kind === 'active') oxRow = row('ox', illustrations.ox, 'OX 퀴즈', esc(ox.text), 'data-nav="ox"', '이어하기');
-    else if (ox.kind === 'done') oxRow = row('ox', illustrations.ox, 'OX 퀴즈', '핵심 개념을 빠르게 확인해요', 'data-nav="ox"', '시작하기');
-    else oxRow = row('ox', illustrations.ox, 'OX 퀴즈', '핵심 개념을 OX로 빠르게 확인해요', 'data-nav="ox"', '시작하기');
-    let wrong;
-    if (pool.length) wrong = row('wrong', illustrations.review, '오답노트', '복습할 문제 ' + pool.length + '개 · 최근에 틀린 것부터', 'data-review="' + esc(pool[0]) + '"', '시작하기');
-    else wrong = row('wrong', illustrations.review, '오답노트', (meta().wrongQuestionIds || []).length ? '오답을 모두 복습했어요' : '틀린 문제는 여기에 모여요', 'data-nav="study"', '시작하기');
-    const story = '<button class="hv-shortcut hv-shortcut-story" data-era-open="' + esc(currentEra.id) + '"><span class="hv-ico">' + illustrations.scroll + '</span><span class="hv-shortcut-copy"><b>스토리</b><small>시대별 이야기</small></span><span class="hv-shortcut-action">' + (storyStarted ? '이어하기' : '시작하기') + '</span></button>';
+    const exam = row('exam', illustrations.paper, '기출문제', '실전 시험 대비', a ? 'data-r7-exam-open' : 'data-nav="exam-library"');
+    const oxRow = row('ox', illustrations.ox, 'OX 퀴즈', '핵심 개념 점검', 'data-nav="ox"');
+    const wrong = row('wrong', illustrations.review, '오답노트', '틀린 문제 복습', pool.length ? 'data-review="' + esc(pool[0]) + '"' : 'data-nav="study"');
+    const storyAction = storyStarted ? 'data-r7-story-resume="' + esc(currentEra.id) + '"' : 'data-era-open="' + esc(currentEra.id) + '"';
+    const story = row('story', illustrations.scroll, '스토리', '시대별 이야기', storyAction);
     return '<section class="hv-section hv-shortcuts-section" aria-label="실전 학습"><div class="hv-section-head"><h2 class="hv-h">학습 바로가기</h2></div><div class="hv-shortcuts">'
       + story + exam + oxRow + wrong + '</div></section>';
+  }
+
+  function jokboPromoHTML() {
+    const bookArt = '<svg class="hv-jokbo-art" viewBox="0 0 132 92" role="img" aria-label="색색의 책이 쌓인 그림">'
+      + '<path d="m12 69 75-7 32 10-76 10z" fill="#e9a24d" stroke="#a95d36" stroke-width="2"/>'
+      + '<path d="m12 69 1 9 30 10 76-8v-8l-76 8z" fill="#fff1d7" stroke="#a95d36" stroke-width="2"/>'
+      + '<path d="m25 57 70-8 24 8-72 9z" fill="#4b9a9a" stroke="#2d7279" stroke-width="2"/>'
+      + '<path d="m25 57 1 8 21 8 72-7v-9l-72 8z" fill="#d8eee8" stroke="#2d7279" stroke-width="2"/>'
+      + '<path d="m39 43 58-7 24 8-60 8z" fill="#6e9c68" stroke="#4d714b" stroke-width="2"/>'
+      + '<path d="m39 43 1 8 21 8 60-7v-8l-60 8z" fill="#f0e9c9" stroke="#4d714b" stroke-width="2"/>'
+      + '<path d="m47 29 49-8 26 8-52 9z" fill="#ed6443" stroke="#ad4835" stroke-width="2"/>'
+      + '<path d="m47 29 1 8 22 8 52-8v-8l-52 8z" fill="#ffdfbe" stroke="#ad4835" stroke-width="2"/>'
+      + '<path d="m63 35 1 7m20-10 1 7m-56 25 1 7m20-10 1 7" stroke="#fff8eb" stroke-width="2" stroke-linecap="round"/>'
+      + '<path d="m20 31 2 5 5 1-5 2-2 5-2-5-5-2 5-1zM111 15l2 4 4 1-4 2-2 4-2-4-4-2 4-1z" fill="#e98b42"/>'
+      + '</svg>';
+    return '<button type="button" class="hv-jokbo-banner" data-jk-open aria-label="족보 열기: 헷갈리는 개념은 족보로 한 번에 정리">'
+      + '<span class="hv-jokbo-copy"><b>헷갈리는 개념은</b><strong>족보로 한 번에 정리!</strong></span>'
+      + '<span class="hv-jokbo-illustration">' + bookArt + '</span>'
+      + '<span class="hv-jokbo-arrow" aria-hidden="true">' + ico.chevron + '</span></button>';
   }
 
   function metricsHTML(now = new Date()) {
@@ -288,8 +299,9 @@
       + railHTML(e)
       + metricsHTML(now)
       + (globalThis.LEARNING_MISSIONS?.cardHTML?.(now) || '')
-      + cheerHTML()
       + practiceHTML(e)
+      + jokboPromoHTML()
+      + cheerHTML()
       + weakHTML()
       + sheetHTML() + '</div>';
   };

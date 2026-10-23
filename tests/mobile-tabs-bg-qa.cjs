@@ -90,7 +90,7 @@ const check = (condition, message) => { if (!baseline) assert(condition, message
       await page.locator('nav [data-nav="ox"]').click(); await waitReady(page);
       await page.locator('.r7-ox-row[data-ox-start="all"]').click(); await waitReady(page);
       const oxSurfaces = await page.locator('.r7-ox-swipe').evaluate(element => ({ page: getComputedStyle(element).backgroundColor, head: getComputedStyle(element.querySelector('.r7-quiz-head')).backgroundColor, tally: getComputedStyle(element.querySelector('.r7-ox-tally')).backgroundColor, card: getComputedStyle(element.querySelector('.r7-ox-card')).backgroundColor }));
-      check(oxSurfaces.page === 'rgb(250, 250, 251)', `page background at ${width}px`);
+      check(oxSurfaces.page === 'rgb(250, 251, 252)', `page background at ${width}px`);
       check(oxSurfaces.head === oxSurfaces.page, `OX header joins page at ${width}px`);
       check(oxSurfaces.tally === oxSurfaces.page, `OX score tally joins page at ${width}px`);
       check(oxSurfaces.card === 'rgb(255, 255, 255)', `OX question remains a white card at ${width}px`);

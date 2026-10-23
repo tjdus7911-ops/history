@@ -1,7 +1,7 @@
 /* Shared mobile app surfaces and docking geometry. Story scenes retain their
    own art and full-screen dialogue treatment. */
 :root {
-  --app-bg: #fafafb;
+  --app-bg: #fafbfc;
   --app-surface: #fff;
   --app-ink: #253142;
   --app-muted: #87919b;
@@ -583,16 +583,150 @@ button, input, select { font-family: inherit; }
   html body .hv-shortcuts .hv-shortcut .hv-ico .hv-mini-art { width: 24px; height: 24px; }
 }
 
+/* Home shortcuts and the record-book introduction follow the supplied 2×2 card reference. */
+@media (max-width: 700px) {
+  html body .hv-shortcuts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: minmax(106px, 1fr);
+    align-items: stretch;
+    gap: 10px;
+  }
+  html body .hv-shortcuts .hv-shortcut {
+    display: grid !important;
+    box-sizing: border-box;
+    grid-template-columns: 44px minmax(0, 1fr) !important;
+    grid-template-rows: 1fr !important;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 106px;
+    padding: 12px;
+    border: 1px solid #e9edf0;
+    border-radius: 20px;
+    background: #fff;
+    color: #253142;
+    text-align: left;
+  }
+  html body .hv-shortcuts .hv-shortcut .hv-ico {
+    grid-column: 1;
+    grid-row: 1;
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+  }
+  html body .hv-shortcuts .hv-shortcut .hv-ico svg,
+  html body .hv-shortcuts .hv-shortcut .hv-ico .hv-mini-art {
+    width: 25px;
+    height: 25px;
+  }
+  html body .hv-shortcuts .hv-shortcut-copy {
+    display: flex;
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+    flex-direction: column;
+    align-self: center;
+    gap: 4px;
+    text-align: left;
+  }
+  html body .hv-shortcuts .hv-shortcut-copy b {
+    display: block;
+    overflow: visible;
+    color: #253142;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 21px;
+    text-overflow: clip;
+    white-space: normal;
+  }
+  html body .hv-shortcuts .hv-shortcut-copy small {
+    display: block;
+    overflow: visible;
+    color: #87919b;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 17px;
+    overflow-wrap: anywhere;
+    white-space: normal;
+    -webkit-line-clamp: unset;
+  }
+  html body .hv-jokbo-banner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(72px, 24vw, 100px) 34px;
+    align-items: center;
+    gap: 6px;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 116px;
+    margin-top: 12px;
+    padding: 12px 10px 12px 16px;
+    overflow: hidden;
+    border: 1px solid #f3e5dc;
+    border-radius: 20px;
+    background: #fff5ef;
+    color: #253142;
+    text-align: left;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  html body .hv-jokbo-banner:active { background: #fff0e8; }
+  html body .hv-jokbo-copy {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 2px;
+  }
+  html body .hv-jokbo-copy b,
+  html body .hv-jokbo-copy strong {
+    display: block;
+    color: #253142;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: -.04em;
+    overflow-wrap: anywhere;
+  }
+  html body .hv-jokbo-illustration {
+    display: grid;
+    place-items: center;
+    min-width: 0;
+    height: 88px;
+  }
+  html body .hv-jokbo-art { display: block; width: 100%; height: 88px; overflow: visible; }
+  html body .hv-jokbo-arrow {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid #f0e5dd;
+    border-radius: 50%;
+    background: #fff;
+    color: #253142;
+  }
+  html body .hv-jokbo-arrow svg { width: 18px; height: 18px; stroke-width: 2.2; }
+}
+
+@media (max-width: 370px) {
+  html body .hv-shortcuts { gap: 8px; }
+  html body .hv-shortcuts .hv-shortcut { gap: 8px; padding: 10px; }
+  html body .hv-jokbo-banner { grid-template-columns: minmax(0, 1fr) 76px 32px; gap: 5px; padding-right: 8px; padding-left: 13px; }
+  html body .hv-jokbo-copy b,
+  html body .hv-jokbo-copy strong { font-size: 14px; line-height: 21px; }
+  html body .hv-jokbo-arrow { width: 32px; height: 32px; }
+}
+
 /* Shared page palette, navigation tabs, filter chips, and list cards. */
 :root {
-  --r7-bg: #fafafb;
+  --r7-bg: #fafbfc;
   --r7-line: #e9edf0;
   --r7-line-strong: #e5e8ec;
   --r7-coral: #e9513b;
   --r7-coral-ink: #e9513b;
 }
 
-html, body, #app { background: #fafafb; }
+html, body, #app { background: #fafbfc; }
 body { color: #253142; }
 
 @media (max-width: 700px) {
@@ -606,7 +740,7 @@ body { color: #253142; }
   html body .main.ed-jokbo-group,
   html body .main.ed-jokbo-detail,
   html body .main.ed-jokbo-compare {
-    background-color: #fafafb !important;
+    background-color: #fafbfc !important;
   }
 
   /* Story-card text stays legible above its existing dark gradient. */
@@ -726,7 +860,7 @@ body { color: #253142; }
 
   /* OX header and answer tally share one continuous page background. */
   html body .r7-ox-swipe {
-    background: #fafafb !important;
+    background: #fafbfc !important;
     color: #253142;
   }
   html body .r7-ox-swipe .r7-quiz-head {
@@ -734,7 +868,7 @@ body { color: #253142; }
     height: auto;
     min-height: 52px;
     padding: 4px 16px 8px 8px;
-    background: #fafafb !important;
+    background: #fafbfc !important;
   }
   html body .r7-ox-swipe .r7-quiz-head > button {
     width: 44px;
@@ -749,11 +883,231 @@ body { color: #253142; }
     width: 100%;
     padding: 8px 20px 10px;
     border-bottom: 1px solid #e9edf0;
-    background: #fafafb !important;
+    background: #fafbfc !important;
   }
   html body .r7-ox-swipe .r7-ox-answerbar {
-    background: #fafafb !important;
+    background: #fafbfc !important;
   }
   html body .r7-ox-swipe .r7-ox-card,
   html body .r7-ox-swipe .r7-ox-card-back { background: #fff; }
+
+  /* The app shell and its page canvas share one light surface. The dock remains white. */
+  html body .editorial-shell.app-nav-shell,
+  html body .editorial-shell.five-nav,
+  html body .editorial-shell.app-nav-shell .main:not(.ed-game),
+  html body .editorial-shell.five-nav .main:not(.ed-game) {
+    background: var(--app-bg) !important;
+  }
+
+  /* Exam mode buttons are equal-width pill selectors. */
+  html body .r7-page .r7-exam-modes > button {
+    box-sizing: border-box;
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 44px;
+    height: 44px;
+    padding: 0 8px;
+    border: 1px solid #e5e8ec;
+    border-radius: 999px;
+    background: #fff;
+    color: #66717d;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+  }
+  html body .r7-page .r7-exam-modes > button[aria-pressed="true"] {
+    border-color: #e9513b;
+    background: #e9513b;
+    color: #fff;
+  }
+  html body .r7-page .r7-exam-modes > button[aria-pressed="false"] {
+    border-color: #e5e8ec;
+    background: #fff;
+    color: #66717d;
+  }
+
+  /* Resume remains a single full-card action and exposes saved exam progress. */
+  html body .r7-page.r7-exam-home > .r7-resume {
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    min-height: 0;
+    margin: 12px 0 4px;
+    padding: 16px;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid #e9edf0;
+    border-radius: 16px;
+    background: #fff;
+    color: #253142;
+  }
+  html body .r7-page.r7-exam-home .r7-resume-copy {
+    display: flex;
+    min-width: 0;
+    flex: 1 1 auto;
+    flex-direction: column;
+    gap: 4px;
+  }
+  html body .r7-page.r7-exam-home .r7-resume-copy > small {
+    margin: 0;
+    color: #87919b;
+    font-size: 12px;
+    line-height: 18px;
+  }
+  html body .r7-page.r7-exam-home .r7-resume-copy > b {
+    overflow-wrap: anywhere;
+    color: #253142;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+  }
+  html body .r7-page.r7-exam-home .r7-resume-count {
+    color: #66717d;
+    font-size: 12px;
+    line-height: 18px;
+  }
+  html body .r7-page.r7-exam-home .r7-resume-progress {
+    display: block;
+    height: 6px;
+    margin-top: 4px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: #e9edf0;
+  }
+  html body .r7-page.r7-exam-home .r7-resume-progress > i {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: #e9513b;
+  }
+  html body .r7-page.r7-exam-home > .r7-resume > .r7-icon { flex: none; }
+
+  /* Rev.7 OX rows use the same independent white-card rhythm as exam editions. */
+  html body .r7-page.r7-ox-home > .r7-ox-row {
+    box-sizing: border-box;
+    min-height: 92px;
+    margin: 10px 0;
+    padding: 16px;
+    gap: 10px;
+    border: 1px solid #e9edf0;
+    border-radius: 16px;
+    background: #fff;
+  }
+  html body .r7-page.r7-ox-home > .r7-ox-row > span:first-child {
+    display: flex;
+    min-width: 0;
+    flex: 1 1 auto;
+    flex-direction: column;
+    gap: 4px;
+  }
+  html body .r7-page.r7-ox-home > .r7-ox-row b {
+    color: #253142;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+    overflow-wrap: anywhere;
+  }
+  html body .r7-page.r7-ox-home > .r7-ox-row small {
+    margin: 0;
+    color: #66717d;
+    font-size: 13px;
+    line-height: 19px;
+    overflow-wrap: anywhere;
+  }
+  html body .r7-page.r7-ox-home > .r7-ox-row small + small {
+    color: #87919b;
+    font-size: 12px;
+    line-height: 18px;
+  }
+  html body .r7-page.r7-ox-home > .r7-ox-row > em {
+    max-width: 92px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    line-height: 15px;
+    text-align: center;
+    white-space: normal;
+  }
+  html body .r7-page.r7-ox-home > .r7-ox-row > .r7-icon { flex: none; }
+
+  /* Jokbo filters stay in document flow, below the page header. */
+  html body .jk-page .jk-filterbar {
+    position: static;
+    top: auto;
+    z-index: auto;
+    margin: 0;
+    padding: 0 0 4px;
+    border: 0;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  html body .jk-page .jk-filterbar .jk-segment { margin-bottom: 6px; }
+  html body .jk-page .jk-filterbar > .jk-chiprow {
+    position: static;
+    min-width: 0;
+    margin: 0 0 4px;
+  }
+
+  /* Keep long group descriptions readable inside separate, padded cards. */
+  html body .jk-page.jk-group-page .jk-group-overview h2 { margin-top: 8px; }
+  html body .jk-page.jk-group-page .jk-group-overview p { margin-top: 8px; line-height: 1.5; }
+  html body .jk-page.jk-group-page .jk-group-keyword-list {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    border: 0;
+  }
+  html body .jk-page.jk-group-page .jk-group-keyword-card {
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid #e9edf0;
+    border-radius: 16px;
+    background: #fff;
+  }
+  html body .jk-page.jk-group-page .jk-group-keyword-facts {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+  }
+  html body .jk-page.jk-group-page .jk-group-keyword-facts .jk-fact {
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    line-height: 1.5;
+  }
+  html body .jk-page.jk-group-page .jk-group-keyword-facts .jk-fact-value {
+    min-width: 0;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+  html body .jk-page.jk-group-page .jk-group-keyword-description {
+    margin: 8px 0 0;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+  html body .jk-page.jk-group-page .jk-group-keyword-point {
+    margin-top: 12px;
+    padding: 12px;
+    border-radius: 12px;
+  }
+  html body .jk-page.jk-group-page .jk-group-keyword-point p { line-height: 1.5; overflow-wrap: anywhere; }
+  html body .jk-page.jk-group-page .jk-group-keyword-actions { margin-top: 8px; gap: 8px; }
+
+  /* Bookmark empty state, with the user-facing copy kept independent of era filters. */
+  html body .jk-page .jk-saved-empty > span {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: #fff1ee;
+    color: #e9513b;
+  }
+  html body .jk-page .jk-saved-empty > span svg { width: 30px; height: 30px; stroke-width: 1.8; }
+  html body .jk-page .jk-saved-empty h2 { max-width: 100%; font-size: 16px; line-height: 24px; }
+  html body .jk-page .jk-saved-empty p { max-width: 270px; white-space: pre-line; line-height: 1.5; }
+  html body .jk-page .jk-saved-empty button {
+    border-color: #e5e8ec;
+    border-radius: 10px;
+    background: #fff;
+  }
 }
