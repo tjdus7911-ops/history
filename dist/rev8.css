@@ -1032,3 +1032,103 @@ html body .toast { border-radius: var(--rv8-r-md); background: var(--rv8-inverse
   html body:not(#rv8) #app .hv .hv-rail-item { display: flex; }
   html body:not(#rv8) #app .hv .hv-rail-item > .hv-era { flex: 1 1 auto; }
 }
+
+/* Fix pass 2 (2026-10-24) */
+@media (max-width: 700px) {
+  /* Home story thumbnails: the era illustrations are portrait 3:4 — show the whole picture, never crop it */
+  html body:not(#rv8) #app .hv .hv-rail-item { flex: 0 0 min(240px, calc(100vw - 120px)); width: min(240px, calc(100vw - 120px)); }
+  html body:not(#rv8) #app .hv .hv-era .hv-card-art { aspect-ratio: 3 / 4; object-fit: contain; object-position: center; }
+}
+/* Jokbo › 관련 실제 기출: each row opens that question */
+html body .jk-related .jk-related-item {
+  display: flex; width: 100%; min-height: 56px; margin: 0; padding: 12px 0; align-items: center; gap: 12px;
+  border: 0; border-bottom: 1px solid var(--rv8-line, #e9edf0); border-radius: 0; background: none; box-shadow: none;
+  color: inherit; font: inherit; text-align: left; cursor: pointer;
+}
+html body .jk-related .jk-related-item > span { min-width: 0; flex: 1 1 auto; }
+html body .jk-related .jk-related-item small { display: block; color: var(--rv8-accent-text, #c93a25); font-size: 11px; line-height: 17px; font-weight: 650; }
+html body .jk-related .jk-related-item b { display: block; margin-top: 3px; color: var(--rv8-ink, #253142); font-size: 13px; line-height: 21px; font-weight: 500; word-break: keep-all; overflow-wrap: break-word; }
+html body .jk-related .jk-related-item > i { flex: none; color: var(--rv8-muted, #6b7684); font-size: 20px; font-style: normal; line-height: 1; }
+html body .jk-related .jk-related-item:active { background: var(--rv8-subtle, #f4f6f8); }
+@media (max-width: 700px) {
+  /* learning-mode questions (e.g. opened from 족보 관련 기출) get the same clean-up as exam mode:
+   * no development caption, no stray dot, question number in brand text, instructions kept for screen readers only */
+  html body:not(#rv8) #app .official-practice .official-question-kicker { min-height: 28px; margin: 0 0 12px; }
+  html body:not(#rv8) #app .official-practice .official-question-kicker span {
+    width: auto; height: auto; min-width: 0; padding: 0; border: 0; border-radius: 0; background: none;
+    color: var(--rv8-accent-text); font-size: 20px; font-weight: 700; line-height: 28px;
+  }
+  html body:not(#rv8) #app .official-practice .official-paper figcaption > span,
+  html body:not(#rv8) #app .official-practice .official-paper figcaption > em,
+  html body:not(#rv8) #app .official-practice .official-choice-indicator { display: none !important; }
+  html body:not(#rv8) #app .official-practice .official-paper figcaption { display: block; padding: 8px 12px; border-top: 1px solid var(--rv8-line); background: var(--rv8-surface); }
+  html body:not(#rv8) #app .official-practice .official-paper figcaption small { color: var(--rv8-faint); font-size: 12px; line-height: 18px; }
+  html body:not(#rv8) #app .official-practice .official-choice-panel { margin: 0; padding: 0; border: 0; background: none; box-shadow: none; }
+  html body:not(#rv8) #app .official-practice .official-choice-panel > header { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  html body:not(#rv8) #app .official-practice .official-paper { overflow: hidden; border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-md); box-shadow: none; }
+  html body:not(#rv8) #app .official-practice .quiz-progress .progress { height: 4px; border-radius: var(--rv8-r-full); background: var(--rv8-disabled); }
+  html body:not(#rv8) #app .official-practice .quiz-progress .progress span { border-radius: var(--rv8-r-full); background: var(--rv8-accent); }
+}
+
+/* Fix pass 3 (2026-10-24): compact home story cards, crisp exam header icons, tighter Jokbo rhythm */
+@media (max-width: 700px) {
+  /* Home story cards: whole 3:4 illustration kept, card height ~385px so 학습 바로가기 stays in the first screen */
+  html body:not(#rv8) #app .hv .hv-rail-item { flex: 0 0 min(184px, calc(50vw - 16px)); width: min(184px, calc(50vw - 16px)); }
+  html body:not(#rv8) #app .hv .hv-era { border-radius: var(--rv8-r-lg); }
+  html body:not(#rv8) #app .hv .hv-era .hv-era-body { gap: 2px; padding: 10px 12px 12px; }
+  html body:not(#rv8) #app .hv .hv-era .hv-season-tag { padding: 2px 6px; font-size: 11px; line-height: 16px; }
+  html body:not(#rv8) #app .hv .hv-era .hv-era-tags { margin: 0 0 2px; }
+  html body:not(#rv8) #app .hv .hv-era .hv-era-title { font-size: 16px; line-height: 24px; }
+  html body:not(#rv8) #app .hv .hv-era .hv-era-sub { font-size: 12px; line-height: 18px; }
+  html body:not(#rv8) #app .hv .hv-era .hv-progress-row { padding-top: 4px; }
+  html body:not(#rv8) #app .hv .hv-era .hv-era-body > :nth-last-child(2) { margin-bottom: 8px; }
+  html body:not(#rv8) #app .hv .hv-era .hv-era-btn { height: 40px; min-height: 40px; font-size: 14px; }
+  html body:not(#rv8) #app .hv .hv-rail-wrap { gap: 10px; }
+
+  /* Exam header icons: draw each icon at its own size so the strokes stay thin (no stretched, bold X) */
+  html body:not(#rv8) #app .rv8-exam-head > button:first-child .r7-icon,
+  html body:not(#rv8) #app .rv8-exam-head > button:first-child .r7-icon img { width: 16px; height: 16px; }
+  html body:not(#rv8) #app .rv8-exam-head > button:last-child .r7-icon,
+  html body:not(#rv8) #app .rv8-exam-head > button:last-child .r7-icon img { width: 20px; height: 20px; }
+  html body:not(#rv8) #app .rv8-exam-head .official-timer-inline-action .r7-icon,
+  html body:not(#rv8) #app .rv8-exam-head .official-timer-inline-action .r7-icon img { width: 14px; height: 14px; }
+  html body:not(#rv8) #app .rv8-exam-head > button:first-child:active,
+  html body:not(#rv8) #app .rv8-exam-head > button:last-child:active { background: var(--rv8-subtle); }
+
+  /* Jokbo summary cards: keyword rows 36px apart instead of 48px */
+  html body:not(#rv8) #app .jk-keywords { gap: 0; }
+  html body:not(#rv8) #app .jk-keyword { min-height: 36px; padding: 4px 0; }
+  html body:not(#rv8) #app .jk-keyword-line { align-items: center; }
+  html body:not(#rv8) #app .jk-card-head { margin-bottom: 8px; }
+  html body:not(#rv8) #app .jk-card-more { margin-top: 8px; padding-top: 8px; min-height: 40px; }
+  html body:not(#rv8) #app .jk-groups { gap: 12px; }
+}
+
+/* Fix pass 4 (2026-10-24) */
+@media (max-width: 700px) {
+  /* Home story cards: portrait layout, picture area fixed at 160px (centre-cropped) so the card stays ~285px tall */
+  html body:not(#rv8) #app .hv .hv-rail-item { flex: 0 0 min(232px, calc(100vw - 120px)); width: min(232px, calc(100vw - 120px)); }
+  html body:not(#rv8) #app .hv .hv-era .hv-card-art { height: 160px; aspect-ratio: auto; object-fit: cover; object-position: center 30%; }
+
+  /* Jokbo main (전체 요약): keyword line spacing unchanged; tighten the gaps between filter rows, the pager and the cards */
+  html body:not(#rv8) #app .jk-main .jk-heading-subtitle { margin-bottom: 4px; }
+  html body:not(#rv8) #app .jk-main .jk-filterbar { gap: 0; margin-bottom: 0; padding-bottom: 0; }
+  html body:not(#rv8) #app .jk-main .jk-filterbar .jk-segment { margin-bottom: 8px; }
+  html body:not(#rv8) #app .jk-main .jk-chiprow { min-height: 0; margin: 0; padding: 0; }
+  html body:not(#rv8) #app .jk-main .jk-chiprow + .jk-chiprow { margin-top: 0; }
+  html body:not(#rv8) #app .jk-main .jk-chips button { min-height: 40px; height: 40px; }
+  html body:not(#rv8) #app .jk-main .jk-era-content { margin-top: 8px; padding-top: 0; }
+  html body:not(#rv8) #app .jk-main .jk-summary-head { min-height: 0; margin: 0; padding: 4px 0 0; }
+  html body:not(#rv8) #app .jk-main .jk-pager-dots { margin: 6px 0 12px; }
+  html body:not(#rv8) #app .jk-main .jk-groups { gap: 10px; margin-top: 0; }
+  html body:not(#rv8) #app .jk-main .jk-card { padding: 14px 16px; }
+  html body:not(#rv8) #app .jk-main .jk-card-head { margin-bottom: 6px; }
+  html body:not(#rv8) #app .jk-main .jk-card-more { margin: 6px 0 -6px; padding-top: 6px; }
+}
+@media (max-width: 700px) {
+  /* Jokbo main cards: one 16px card padding only (header, keyword list and footer had their own 16px on top) */
+  html body:not(#rv8) #app .jk-main .jk-card > .jk-card-head,
+  html body:not(#rv8) #app .jk-main .jk-card > .jk-keywords,
+  html body:not(#rv8) #app .jk-main .jk-card > .jk-card-more { padding-left: 0; padding-right: 0; }
+  html body:not(#rv8) #app .jk-main .jk-card > .jk-card-head { padding-top: 0; }
+}

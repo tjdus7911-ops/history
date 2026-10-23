@@ -57,11 +57,10 @@
    /* Rev.8 E-03 header: close · edition + question count · timer chip (pause kept inside) · question list. */
    const top='<header class="r7-exam-head rv8-exam-head"><button data-r7-exam-pause-exit aria-label="시험 중지">'+icon('exam-close')+'</button><span class="rv8-exam-title"><small>'+esc(examLabel(session))+' · 시험처럼</small><b>'+(session.index+1)+'<em> / '+session.entries.length+'</em></b></span>'+time+'<button data-official-question-list="true" aria-label="문제 목록">'+icon('exam-list')+'<span class="rv8-sr">문제 목록</span></button></header><div class="r7-exam-progress"><span class="rv8-sr">'+(session.index+1)+' / '+session.entries.length+'</span><div><i style="width:'+((session.index+1)/session.entries.length*100)+'%"></i></div></div>';
    html=html.replace(/<header class="official-exam-intro"[\s\S]*?<\/header>/,top).replace('class="official-practice ','data-figma-frame="'+(session.timed&&OFFICIAL_EXAM_TIMER.remainingMs()<=300000?'E-20':'E-03')+'" class="official-practice r7-exam-practice ');
-   /* Rev.8 bottom action bar: 이전 1 : 다음 문제 2 in the thumb zone; the last question turns the primary into 시험 제출.
-    * Early submission stays available from the question-list sheet. */
+   /* Bottom action bar keeps the original three actions: 이전 · 다음 · 시험 제출 (submit is always available). */
    const last=session.index>=session.entries.length-1;
-   const previous='<button class="secondary" data-official-previous="true" '+(session.index===0?'disabled':'')+'>이전</button>',next=last?'<button class="primary" data-official-request-submit="true">시험 제출</button>':'<button class="primary rv8-next" data-official-forward="true">다음 문제</button>';
-   html=html.replace(/<div class="official-exam-bottom-actions">[\s\S]*?<\/div>/,'<div class="official-exam-bottom-actions rv8-action-bar">'+previous+next+'</div>');
+   const previous='<button class="secondary" data-official-previous="true" '+(session.index===0?'disabled':'')+'>이전</button>',next=last?'':'<button class="secondary rv8-next" data-official-forward="true">다음</button>';
+   html=html.replace(/<div class="official-exam-bottom-actions">[\s\S]*?<\/div>/,'<div class="official-exam-bottom-actions rv8-action-bar">'+previous+next+'<button class="primary" data-official-request-submit="true">시험 제출</button></div>');
   }else if(session.scope==='wrong-only'){
    const current=session.entries[session.index],done=Object.hasOwn(session.feedback,current.canonicalQuestionId),right=session.feedback[current.canonicalQuestionId];
    html=html.replace('class="official-practice ','data-figma-frame="'+(done?right?'W-05':'W-06':'W-04')+'" class="official-practice r7-page r7-wrong-practice ')

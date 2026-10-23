@@ -68,8 +68,10 @@
   return ids;
  }
  function examLabel(id){const s=sourceById.get(id),e=explanationById.get(id);return s&&e?{meta:'제 '+s.examRound+'회 '+s.examLevel+' · '+s.questionNumber+'번',title:e.question||e.clue||'실제 기출문제'}:null;}
+ let jokboReturnRoute=null; // 족보에서 시작한 기출 풀이를 닫으면 돌아갈 족보 화면
  function startExamIds(ids,eraId){
   const entries=ids.map(id=>exams.entry(id)).filter(Boolean);if(!entries.length)return toast('연결된 기출을 준비하고 있어요.');
+  jokboReturnRoute=routes.readRoute?.()||'jokbo';if(!String(jokboReturnRoute).startsWith('jokbo'))jokboReturnRoute='jokbo';
   saveView({returnFromExam:true});
   exams.start(entries,'learn',{examTab:'era',examEra:eraSource[eraId]||'ancient',examLevel:'all',scope:'jokbo'});
   routes.writeRoute('exam-library');
@@ -194,7 +196,7 @@
  }
  function groupPage(){
   const group=groupById.get(groupId);if(!group)return mainPage();const era=eraById.get(group.eraId),title=group.title.replace(/^\d+\s*/,''),keywords=groupKeywords(group),ids=groupExamIds(group),total=keywords.reduce((sum,k)=>sum+factRows(k).length,0);
-  return '<section class="jk-page jk-group-page" data-page="jokbo-group">'+appbar('자세히 보기')+'<header class="jk-group-overview"><span class="jk-tags"><em>'+esc(era.label)+'</em>'+(GROUP_COUNTRY[group.id]&&GROUP_COUNTRY[group.id]!==title?'<em>'+esc(GROUP_COUNTRY[group.id])+'</em>':'')+'</span><h2>'+esc(title)+' 핵심 정리</h2><p>요약 카드의 키워드 <b>'+total+'개</b>를 모두 펼쳐 의미와 시험 단서까지 확인해요.</p></header><div class="jk-group-keyword-list">'+keywords.map(k=>groupKeywordMarkup(group,k)).join('')+'</div><section class="jk-detail-section jk-related jk-group-related"><div><h2>관련 실제 기출</h2><small>이 그룹의 키워드와 직접 연결된 문제 · 중복 제외</small></div>'+(ids.length?ids.map(id=>{const row=examLabel(id);return row?'<article><span><small>'+esc(row.meta)+'</small><b>'+esc(row.title)+'</b></span></article>':'';}).join(''):'<div class="jk-empty-inline">연결된 기출을 준비하고 있어요</div>')+'<button class="jk-primary" data-jk-group-exams="'+group.id+'" '+(ids.length?'':'disabled')+'>'+(ids.length?'관련 기출 '+ids.length+'문제 풀기':'연결된 기출을 준비하고 있어요')+'</button></section></section>';
+  return '<section class="jk-page jk-group-page" data-page="jokbo-group">'+appbar('자세히 보기')+'<header class="jk-group-overview"><span class="jk-tags"><em>'+esc(era.label)+'</em>'+(GROUP_COUNTRY[group.id]&&GROUP_COUNTRY[group.id]!==title?'<em>'+esc(GROUP_COUNTRY[group.id])+'</em>':'')+'</span><h2>'+esc(title)+' 핵심 정리</h2><p>요약 카드의 키워드 <b>'+total+'개</b>를 모두 펼쳐 의미와 시험 단서까지 확인해요.</p></header><div class="jk-group-keyword-list">'+keywords.map(k=>groupKeywordMarkup(group,k)).join('')+'</div><section class="jk-detail-section jk-related jk-group-related"><div><h2>관련 실제 기출</h2><small>이 그룹의 키워드와 직접 연결된 문제 · 중복 제외</small></div>'+(ids.length?ids.map(id=>{const row=examLabel(id);return row?'<button type="button" class="jk-related-item" data-jk-exam-one="'+esc(id)+'" data-jk-exam-era="'+esc(group.eraId)+'" aria-label="'+esc(row.meta)+' 문제 풀기"><span><small>'+esc(row.meta)+'</small><b>'+esc(row.title)+'</b></span><i aria-hidden="true">›</i></button>':'';}).join(''):'<div class="jk-empty-inline">연결된 기출을 준비하고 있어요</div>')+'<button class="jk-primary" data-jk-group-exams="'+group.id+'" '+(ids.length?'':'disabled')+'>'+(ids.length?'관련 기출 '+ids.length+'문제 풀기':'연결된 기출을 준비하고 있어요')+'</button></section></section>';
  }
  function detailPage(){
   const k=keywordById.get(detailId);if(!k)return mainPage();const era=eraById.get(k.eraId),ids=directExamMatches(k),comparison=comparisonById.get(k.comparisonId),rows=factRows(k);
@@ -205,12 +207,21 @@
    +'<section class="jk-clue"><small>대표 단서</small><p>'+show((k.examTerms||[]).join(' · ')||k.value)+'</p></section>'
    +(comparison?'<section class="jk-detail-section"><h2>함께 구분할 개념</h2><button class="jk-compare-link" data-jk-compare="'+comparison.id+'"><span><b>'+esc(comparison.title)+'</b><small>비슷한 개념의 차이를 나란히 확인해요.</small></span><i>›</i></button></section>':'')
    +(k.source?'<p class="jk-source">사실 확인: <a href="'+esc(k.source.url)+'" target="_blank" rel="noreferrer">'+esc(k.source.label)+' ↗</a></p>':'')
-   +'<section class="jk-detail-section jk-related"><div><h2>관련 실제 기출</h2><small>키워드를 직접 묻는 문제 우선 · 중복 제외</small></div>'+(ids.length?ids.map(id=>{const row=examLabel(id);return row?'<article><span><small>'+esc(row.meta)+'</small><b>'+esc(row.title)+'</b></span></article>':'';}).join(''):'<div class="jk-empty-inline">연결된 기출을 준비하고 있어요</div>')+'<button class="jk-primary" data-jk-keyword-exams="'+k.id+'" '+(ids.length?'':'disabled')+'>'+(ids.length?'관련 기출 '+ids.length+'문제 풀기':'연결된 기출을 준비하고 있어요')+'</button></section></section>';
+   +'<section class="jk-detail-section jk-related"><div><h2>관련 실제 기출</h2><small>키워드를 직접 묻는 문제 우선 · 중복 제외</small></div>'+(ids.length?ids.map(id=>{const row=examLabel(id);return row?'<button type="button" class="jk-related-item" data-jk-exam-one="'+esc(id)+'" data-jk-exam-era="'+esc(k.eraId)+'" aria-label="'+esc(row.meta)+' 문제 풀기"><span><small>'+esc(row.meta)+'</small><b>'+esc(row.title)+'</b></span><i aria-hidden="true">›</i></button>':'';}).join(''):'<div class="jk-empty-inline">연결된 기출을 준비하고 있어요</div>')+'<button class="jk-primary" data-jk-keyword-exams="'+k.id+'" '+(ids.length?'':'disabled')+'>'+(ids.length?'관련 기출 '+ids.length+'문제 풀기':'연결된 기출을 준비하고 있어요')+'</button></section></section>';
  }
  function comparePage(){
   const c=comparisonById.get(compareId);if(!c)return mainPage();const topic=c.topics[Math.max(0,Math.min(compareTopic,c.topics.length-1))];
   return '<section class="jk-page jk-compare" data-page="jokbo-compare">'+appbar('개념 비교')+(c.topics.length>1?'<div class="jk-compare-tabs" role="tablist" aria-label="비교 주제">'+c.topics.map((t,i)=>'<button role="tab" data-jk-compare-topic="'+i+'" aria-selected="'+(i===compareTopic)+'">'+esc(t.label)+'</button>').join('')+'</div>':'')+'<header class="jk-compare-head"><h2>'+esc(c.title)+'</h2><p>시험에서 구분되는 단서만 짧게 비교해요.</p></header><div class="jk-compare-list">'+topic.entries.map(row=>'<article class="jk-compare-entry"><div><small class="jk-compare-heading">'+esc(row.heading)+'</small><h3 class="jk-compare-keyword">'+esc(row.keyword)+'</h3><p class="jk-compare-description">'+esc(row.description)+'</p></div></article>').join('')+'</div><section class="jk-test-point"><small class="jk-test-point-label">시험 포인트</small><p class="jk-test-point-text">'+esc(topic.point)+'</p></section></section>';
  }
+ // 족보에서 연 기출: 문제 화면 ‹ 또는 결과 화면 ‹ 를 누르면 원래 족보 화면으로 돌아간다. 다른 메뉴로 이동하면 복귀 대상을 지운다.
+ (typeof window!=='undefined'&&typeof window.addEventListener==='function'?window:document).addEventListener('click',event=>{
+  if(!jokboReturnRoute)return;
+  const b=event.target?.closest?.('button');if(!b)return;const d=b.dataset;
+  if(d.nav){jokboReturnRoute=null;return;}
+  if(d.officialExit===undefined&&d.officialResultHome===undefined)return;
+  const target=jokboReturnRoute;jokboReturnRoute=null;
+  setTimeout(()=>{routes.writeRoute(target);routes.applyRoute(target);},0);
+ },true);
  // 공통 진입점: 학습 목록 하단에만 고정하는 작은 캡슐 FAB. 하단 메뉴 5개는 그대로 둔다.
  const jokboFab='<div class="jk-fab-dock"><button type="button" class="jk-fab" data-jk-open aria-label="족보 열기">'+jokboIcon+'<span>족보</span></button></div>';
  function showJokboFab(){
@@ -311,6 +322,8 @@
    if(d.jkBack.startsWith('group:')){const id=d.jkBack.slice('group:'.length);if(popToParent('jokbo/group/'+id))return;groupId=id;detailId=null;detailParentGroupId=null;screen='jokbo-group';routes.writeRoute('jokbo/group/'+encodeURIComponent(groupId),true);render();restorePageScroll(groupScrollY);return;}
    if(screen==='jokbo-compare'&&detailId&&popToParent('jokbo/detail/'+detailId))return;
    if(d.jkBack==='jokbo'){if(popToParent('jokbo'))return;restoringScroll=true;screen='jokbo';groupId=null;detailId=null;detailParentGroupId=null;compareId=null;routes.writeRoute('jokbo',true);render();revealActiveEraTab();restoreListScroll();}return;}
+  // 관련 실제 기출 한 문항을 누르면 그 문제를 바로 연다(풀이 후 족보로 복귀).
+  if(d.jkExamOne){event.stopImmediatePropagation();startExamIds([d.jkExamOne],d.jkExamEra);return;}
   if(d.jkKeywordExams){event.stopImmediatePropagation();const k=keywordById.get(d.jkKeywordExams);if(k)startExamIds(directExamMatches(k),k.eraId);return;}
   if(d.jkGroupExams){event.stopImmediatePropagation();const group=groupById.get(d.jkGroupExams);if(group)startExamIds(groupExamIds(group),group.eraId);return;}
   if(d.jkEraExams){event.stopImmediatePropagation();startExamIds(eraExamIds(d.jkEraExams).slice(0,20),d.jkEraExams);return;}
