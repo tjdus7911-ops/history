@@ -141,7 +141,7 @@ assert(g.run('renderContent()').includes('스토리 준비 중'));
 // 카드형 개편: 홈 진입점, 시대·나라 칩, 요약 행 전체 노출
 const card=load();
 card.run("screen='home'");
-assert(card.run("renderContent().includes('data-jk-open')&&renderContent().includes('족보로 한 번에 정리!')"),'홈 족보 소개 배너에서 전체 화면 진입');
+assert(card.run("renderContent().includes('data-jk-open')&&renderContent().includes('헷갈리는 개념은 족보로 한 번에')"),'홈 족보 소개 배너에서 전체 화면 진입');
 assert(card.run("shell(renderContent()).includes('class=\"jk-fab-dock\"')"),'홈 공통 족보 FAB');
 assert.deepEqual(card.copy("[...(shell(renderContent()).match(/<nav class=\"nav app-navigation\"[\\s\\S]*?<\\/nav>/)||[''])[0].matchAll(/data-nav=\"([^\"]+)\"/g)].map(m=>m[1])"),['home','exam-library','ox','study','records'],'일반 화면의 하단 메뉴 5개 유지');
 card.click({jkOpen:''});

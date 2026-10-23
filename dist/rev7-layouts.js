@@ -53,8 +53,24 @@
     const any = summary.attempts > 0 || oxStats().attempts > 0 || events.length > 0 || seen.length > 0 || officialExamResults().length > 0;
     if (!any) return '<section class="r7-page r7-my" data-figma-frame="M-09">' + header('내 기록', true) + '<div class="r7-empty"><span class="r7-empty-icon">' + asset('chart') + '</span><h2>아직 학습 기록이 없어요</h2><p>이야기를 읽거나 문제를 풀면 오늘의 학습이 여기에 쌓여요.</p></div><button class="r7-primary" data-nav="home">첫 이야기 시작하기</button><button class="r7-secondary" data-r7-record-learning>학습 기록 보기</button></section>';
     const wrong = wrongEntries().filter(row => row.record.lastCorrect === false).length + oxCurrentWrongIds('all').length;
+    /* Rev.8 M-01: this-week bar chart + streak badge, one 2×2 stats card, recent exam results.
+     * Built only from existing dated events and saved results; nothing is estimated (no study-time data exists). */
+    const now = new Date(), monday = new Date(now.getFullYear(), now.getMonth(), now.getDate() - ((now.getDay() + 6) % 7));
+    const week = Array.from({ length: 7 }, (_, i) => { const d = new Date(monday.getFullYear(), monday.getMonth(), monday.getDate() + i); return { key: day(d.toISOString()) || day(d), label: '월화수목금토일'[i], future: d > now }; });
+    const perDay = new Map(); events.forEach(e => { const k = day(e.answeredAt); perDay.set(k, (perDay.get(k) || 0) + 1); });
+    const weekCounts = week.map(w => perDay.get(w.key) || 0), weekTotal = weekCounts.reduce((a, b) => a + b, 0), weekMax = Math.max(1, ...weekCounts), todayKey = day(now.toISOString()) || day(now);
+    const run7 = streak(events), ox = oxStats();
+    const chart = '<section class="rv8-rec-section"><div class="rv8-rec-head"><h2>이번 주 학습</h2></div><div class="rv8-rec-card rv8-week"><div class="rv8-week-top"><div><small>이번 주 푼 문제</small><strong>' + weekTotal + '<em>문항</em></strong></div>' + (run7 ? '<span class="rv8-badge rv8-streak">' + run7 + '일 연속</span>' : '') + '</div>'
+      + '<ol class="rv8-week-bars" aria-label="요일별 푼 문제 수">' + week.map((w, i) => '<li class="' + (w.key === todayKey ? 'is-today' : '') + '" aria-label="' + w.label + '요일 ' + weekCounts[i] + '문항"><span class="rv8-bar"><i style="height:' + Math.round(weekCounts[i] / weekMax * 100) + '%"></i></span><small>' + w.label + '</small></li>').join('') + '</ol></div></section>';
+    const stat = (label, value, unit) => '<div><small>' + label + '</small><strong>' + value + (unit ? '<em>' + unit + '</em>' : '') + '</strong></div>';
+    const stats = '<section class="rv8-rec-section"><div class="rv8-rec-head"><h2>학습 통계</h2></div><div class="rv8-rec-card rv8-stats">' + stat('푼 기출', summary.attempts, '문항') + stat('평균 정답률', summary.accuracy == null ? '—' : summary.accuracy, summary.accuracy == null ? '' : '%') + stat('푼 OX', ox.attempts, '문제') + stat('읽은 스토리', seen.length, '장면') + '</div></section>';
+    const results = officialExamResults().slice().sort((a, b) => String(b.completedAt).localeCompare(String(a.completedAt))).slice(0, 3);
+    const resultRows = results.map(r => { const edition = officialResultEdition(r), entries = (r.questionIds || []).map(id => officialEntry(id)).filter(Boolean), sum = examViews.summary(r, entries, r.graded || {}, r.answers || {}), cert = examViews.certification(sum, edition?.examLevel, Boolean(edition)), title = edition ? '제' + edition.examRound + '회 ' + edition.examLevel : r.examEra ? officialEraInfo(r.examEra).name : '기출 시험';
+      return '<button class="rv8-rec-row" data-official-result-open="' + esc(r.attemptId) + '"><span><b>' + esc(title) + '</b><small>' + esc(examViews.date(r.completedAt)) + ' · ' + (r.mode === 'learn' ? '학습처럼' : '시험처럼') + '</small></span><strong>' + (sum.score == null ? '—' : sum.score + '점') + '</strong>' + (cert.eligible ? '<em class="rv8-badge rv8-badge-' + (cert.passed ? 'success' : 'danger') + '">' + (cert.passed ? '합격' : '불합격') + '</em>' : '') + chevron() + '</button>'; }).join('');
+    const exams = results.length ? '<section class="rv8-rec-section"><div class="rv8-rec-head"><h2>시험 결과 기록</h2><button class="rv8-rec-more" data-official-results-list="true">전체 보기</button></div><div class="rv8-rec-card rv8-rec-list">' + resultRows + '</div></section>' : '';
     return '<section class="r7-page r7-my" data-figma-frame="M-01">' + header('내 기록', true)
-      + '<div class="r7-tiles">' + tile('오늘 학습', '—', '학습 시간 기록 없음 · 문제 ' + today.length) + tile('연속 학습', streak(events) + '일', '문제 풀이 기록 기준') + '</div>'
+      + '<div class="r7-tiles rv8-sr">' + tile('오늘 학습', '—', '학습 시간 기록 없음 · 문제 ' + today.length) + tile('연속 학습', run7 + '일', '문제 풀이 기록 기준') + '</div>'
+      + chart + stats + exams
       + '<div class="r7-my-links">'
       + '<button data-r7-record-learning><span><b>학습 기록</b><small>오늘 · 이번 주 · 시대별</small></span>' + chevron() + '</button>'
       + '<button data-official-results-list="true"><span><b>기출 기록</b><small>푼 시험과 점수 추이</small></span>' + chevron() + '</button>'
@@ -157,7 +173,7 @@
     const labels = ['①','②','③','④','⑤'];
     const list = rows.map(({entry,question:q,record}) => {
       const selected = meta().questionRecords[entry.canonicalQuestionId]?.lastAnswer;
-      return '<button class="r7-wrong-row" data-r7-wrong-detail="' + esc(entry.canonicalQuestionId) + '"><span class="r7-wrong-copy"><span class="r7-wrong-title"><small>' + esc(officialEraInfo(entry.primaryEra).name) + '</small><b>' + esc('제 ' + q.examRound + '회 ' + q.examLevel + ' · ' + q.questionNumber + '번') + '</b></span><span>내 답 ' + (Number.isInteger(selected) ? labels[selected] : '기록 없음') + ' · 정답 ' + (labels[q.answer] || esc(q.answerLabel || '')) + '</span><small class="' + (record.wrongCount > 1 ? 'repeated' : '') + '">' + record.wrongCount + '회 틀림 · ' + (record.lastCorrect ? '복습 완료' : record.wrongCount > 1 ? '반복 오답' : '최근 풀이 오답') + '</small></span>' + chevron() + '</button>';
+      return '<button class="r7-wrong-row" data-r7-wrong-detail="' + esc(entry.canonicalQuestionId) + '"><span class="r7-wrong-copy"><span class="r7-wrong-title"><small>' + esc(officialEraInfo(entry.primaryEra).name) + '</small><b>' + esc('제 ' + q.examRound + '회 ' + q.examLevel + ' · ' + q.questionNumber + '번') + '</b></span><span class="rv8-answer-pair"><span class="rv8-mine">내 답 ' + (Number.isInteger(selected) ? labels[selected] : '기록 없음') + '</span><span class="rv8-sep"> · </span><span class="rv8-correct">정답 ' + (labels[q.answer] || esc(q.answerLabel || '')) + '</span></span><small class="' + (record.wrongCount > 1 ? 'repeated' : '') + '">' + record.wrongCount + '회 틀림 · ' + (record.lastCorrect ? '복습 완료' : record.wrongCount > 1 ? '반복 오답' : '최근 풀이 오답') + '</small></span>' + chevron() + '</button>';
     }).join('');
     const metric = (label, count) => '<div><small>' + label + '</small><strong>' + count + '<em>개</em></strong></div>';
     const eraName = OFFICIAL_ERA_TAXONOMY.find(e => e.id === wrongEra)?.name || '시대 전체';
