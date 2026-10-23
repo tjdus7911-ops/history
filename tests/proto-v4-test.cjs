@@ -39,8 +39,10 @@ const beforePrologueReplay=opening.copy('[run().storyId,run().dialogueCursor]');
 until(opening,g=>g.run("screen!=='game'"));assert.equal(opening.run('screen'),'era');assert.deepEqual(opening.copy('[run().storyId,run().dialogueCursor]'),beforePrologueReplay);assert.equal(opening.run('state.mainRun'),null,'prologue replay did not restore the main run');
 
 const legacyOpeningLineIds=topology.copy("STORIES['proto_ch01_s1'].dialogues.slice(0,9).map(line=>line.lineId)");
-const assertFirstMainRestart=(game,label)=>{
- assert.deepEqual(game.copy('[run().storyId,run().dialogueCursor]'),['proto_ch01_s1',10],label+' did not enter the first historical line');
+const assertChapterOneRestartIncludesPrologue=(game,label)=>{
+ assert.deepEqual(game.copy('[run().storyId,run().dialogueCursor]'),['proto_prologue_museum',1],label+' did not restart at the museum prologue');
+ until(game,g=>g.run("run().storyId==='proto_ch01_s1'"));
+ assert.deepEqual(game.copy('[run().storyId,run().dialogueCursor]'),['proto_ch01_s1',10],label+' did not continue into the first historical line after the prologue');
  assert(game.copy('STORIES["proto_ch01_s1"].dialogues.slice(0,9).every(line=>PROTO_REVISION_ACTIONS.book().readLineIds.includes(line.lineId))'),label+' did not preserve save validation for the skipped legacy lines');
  assert(game.run('PROTO_SAVE_V3.validLearningCursor(run(),PROTO_REVISION_ACTIONS.book())'),label+' produced an invalid learning cursor');
 };
@@ -50,8 +52,9 @@ for(const [label,operation] of [
  ['restartChapter','restartChapter(state)'],
  ['beginReplay',"beginReplay(state,'proto-ch01')"]
 ]){
- const restarted=load();restarted.run("resumeEra('proto-kingdoms')");until(restarted,g=>g.run("run().storyId==='proto_ch01_s1'"));restarted.run(operation);assertFirstMainRestart(restarted,label);
+ const restarted=load();restarted.run("resumeEra('proto-kingdoms')");until(restarted,g=>g.run("run().storyId==='proto_ch01_s1'"));restarted.run(operation);
  if(label==='beginReplay'){assert.equal(restarted.run('run().mode'),'replay');assert.equal(restarted.run('state.mainRun.storyId'),'proto_ch01_s1');assert.equal(restarted.run('state.mainRun.dialogueCursor'),10);}
+ assertChapterOneRestartIncludesPrologue(restarted,label);
 }
 for(const [label,operation] of [['startChapter',"startChapter(state,'proto-ch01')"],['resetRun',"resetRun(state,'proto-ch01')"]]){
  const unread=load();unread.run(operation);assert.deepEqual(unread.copy('[run().storyId,run().dialogueCursor]'),['proto_prologue_museum',1],label+' skipped an unread prologue');assert(!unread.copy('PROTO_REVISION_ACTIONS.book().readLineIds').some(id=>legacyOpeningLineIds.includes(id)),label+' marked the hidden CH.01 lines before the prologue finished');
