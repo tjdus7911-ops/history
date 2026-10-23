@@ -47,7 +47,7 @@
   --r7-coral: var(--rv8-accent); --r7-coral-press: var(--rv8-accent-press); --r7-coral-soft: var(--rv8-accent-soft);
   --r7-coral-ink: var(--rv8-accent-text); --r7-teal: var(--rv8-success); --r7-teal-soft: var(--rv8-success-soft);
   --r7-teal-ink: var(--rv8-success); --r7-danger: var(--rv8-danger); --r7-danger-soft: var(--rv8-danger-soft);
-  --r7-r-sm: var(--rv8-r-xs); --r7-r-md: var(--rv8-r-sm); --r7-r-lg: var(--rv8-r-md); --r7-r-xl: var(--rv8-r-lg);
+  --r7-r-sm: var(--rv8-r-sm); --r7-r-md: var(--rv8-r-md); --r7-r-lg: var(--rv8-r-lg); --r7-r-xl: var(--rv8-r-xl);
   --ed-ink: var(--rv8-ink); --ed-muted: var(--rv8-muted); --ed-line: var(--rv8-line); --ed-gold: var(--rv8-accent);
 }
 
@@ -69,91 +69,91 @@ html body:not(#rv8) #app .rv8-badge-idle { width: 0; padding: 0; background: non
   html body:not(#rv8) #app { color: var(--rv8-ink); }
 
   /* Buttons: every CTA is a pill. L 52 (bottom bar) · M 44 (card/sheet) · S 36 (inline). */
-  html body:not(#rv8) #app .r7-primary,
-  html body:not(#rv8) #app .r7-secondary,
-  html body:not(#rv8) #app button.primary,
-  html body:not(#rv8) #app button.secondary,
-  html body:not(#rv8) #app .jk-primary,
-  html body:not(#rv8) #app .jk-secondary,
-  html body:not(#rv8) #app .lm-save,
-  html body:not(#rv8) #app .hv-calendar-save,
-  html body:not(#rv8) #app .hv-calendar-cancel {
+  html body:not(#rv8) #app .main:not(.ed-game) .r7-primary,
+  html body:not(#rv8) #app .main:not(.ed-game) .r7-secondary,
+  html body:not(#rv8) #app .main:not(.ed-game) button.primary,
+  html body:not(#rv8) #app .main:not(.ed-game) button.secondary,
+  html body:not(#rv8) #app .main:not(.ed-game) .jk-primary,
+  html body:not(#rv8) #app .main:not(.ed-game) .jk-secondary,
+  html body:not(#rv8) #app .main:not(.ed-game) .lm-save,
+  html body:not(#rv8) #app .main:not(.ed-game) .hv-calendar-save,
+  html body:not(#rv8) #app .main:not(.ed-game) .hv-calendar-cancel {
     min-height: 44px; border-radius: var(--rv8-r-full); font-size: 14px; font-weight: 700; line-height: 20px; box-shadow: none;
   }
-  html body:not(#rv8) #app .r7-primary,
-  html body:not(#rv8) #app button.primary,
-  html body:not(#rv8) #app .jk-primary,
-  html body:not(#rv8) #app .lm-save,
-  html body:not(#rv8) #app .hv-calendar-save { border: 0; background: var(--rv8-accent); color: #fff; }
-  html body:not(#rv8) #app .r7-primary:disabled,
-  html body:not(#rv8) #app button.primary:disabled,
-  html body:not(#rv8) #app .jk-primary:disabled,
-  html body:not(#rv8) #app .hv-calendar-save:disabled { background: var(--rv8-disabled); color: var(--rv8-icon-faint); }
-  html body:not(#rv8) #app .r7-secondary,
-  html body:not(#rv8) #app button.secondary,
-  html body:not(#rv8) #app .jk-secondary,
-  html body:not(#rv8) #app .hv-calendar-cancel { border: 1px solid var(--rv8-line-strong); background: var(--rv8-surface); color: var(--rv8-ink); }
+  html body:not(#rv8) #app .main:not(.ed-game) .r7-primary,
+  html body:not(#rv8) #app .main:not(.ed-game) button.primary,
+  html body:not(#rv8) #app .main:not(.ed-game) .jk-primary,
+  html body:not(#rv8) #app .main:not(.ed-game) .lm-save,
+  html body:not(#rv8) #app .main:not(.ed-game) .hv-calendar-save { border: 0; background: var(--rv8-accent); color: #fff; }
+  html body:not(#rv8) #app .main:not(.ed-game) .r7-primary:disabled,
+  html body:not(#rv8) #app .main:not(.ed-game) button.primary:disabled,
+  html body:not(#rv8) #app .main:not(.ed-game) .jk-primary:disabled,
+  html body:not(#rv8) #app .main:not(.ed-game) .hv-calendar-save:disabled { background: var(--rv8-disabled); color: var(--rv8-icon-faint); }
+  html body:not(#rv8) #app .main:not(.ed-game) .r7-secondary,
+  html body:not(#rv8) #app .main:not(.ed-game) button.secondary,
+  html body:not(#rv8) #app .main:not(.ed-game) .jk-secondary,
+  html body:not(#rv8) #app .main:not(.ed-game) .hv-calendar-cancel { border: 1px solid var(--rv8-line-strong); background: var(--rv8-surface); color: var(--rv8-ink); }
 
   /* Icon Button: round 44 touch target in every header */
-  html body:not(#rv8) #app .hv-icon-btn,
-  html body:not(#rv8) #app .r7-appbar > button,
-  html body:not(#rv8) #app .r7-heading > button,
-  html body:not(#rv8) #app .jk-appbar > button,
-  html body:not(#rv8) #app .jk-heading > button,
-  html body:not(#rv8) #app .hv-x {
+  html body:not(#rv8) #app .main:not(.ed-game) .hv-icon-btn,
+  html body:not(#rv8) #app .main:not(.ed-game) .r7-appbar > button,
+  html body:not(#rv8) #app .main:not(.ed-game) .r7-heading > button,
+  html body:not(#rv8) #app .main:not(.ed-game) .jk-appbar > button,
+  html body:not(#rv8) #app .main:not(.ed-game) .jk-heading > button,
+  html body:not(#rv8) #app .main:not(.ed-game) .hv-x {
     display: inline-flex; width: 44px; min-width: 44px; height: 44px; min-height: 44px; padding: 0;
     align-items: center; justify-content: center; border: 0; border-radius: var(--rv8-r-full);
     background: transparent; box-shadow: none; color: var(--rv8-ink);
   }
-  html body:not(#rv8) #app .hv-icon-btn:active,
-  html body:not(#rv8) #app .r7-appbar > button:active,
-  html body:not(#rv8) #app .jk-appbar > button:active { background: var(--rv8-subtle); }
+  html body:not(#rv8) #app .main:not(.ed-game) .hv-icon-btn:active,
+  html body:not(#rv8) #app .main:not(.ed-game) .r7-appbar > button:active,
+  html body:not(#rv8) #app .main:not(.ed-game) .jk-appbar > button:active { background: var(--rv8-subtle); }
 
   /* Underline Tab: 48 high, 1px rail, active = 2px brand bar + bold ink text */
-  html body:not(#rv8) #app .r7-page .r7-tabs,
-  html body:not(#rv8) #app .jk-filterbar .jk-segment { border-bottom: 1px solid var(--rv8-line); }
-  html body:not(#rv8) #app .r7-page .r7-tabs button,
-  html body:not(#rv8) #app .jk-filterbar .jk-segment button {
+  html body:not(#rv8) #app .main:not(.ed-game) .r7-page .r7-tabs,
+  html body:not(#rv8) #app .main:not(.ed-game) .jk-filterbar .jk-segment { border-bottom: 1px solid var(--rv8-line); }
+  html body:not(#rv8) #app .main:not(.ed-game) .r7-page .r7-tabs button,
+  html body:not(#rv8) #app .main:not(.ed-game) .jk-filterbar .jk-segment button {
     color: var(--rv8-muted) !important; font-size: 14px; font-weight: 500; line-height: 22px;
   }
-  html body:not(#rv8) #app .r7-page .r7-tabs button[aria-selected="true"],
-  html body:not(#rv8) #app .jk-filterbar .jk-segment button[aria-selected="true"] {
+  html body:not(#rv8) #app .main:not(.ed-game) .r7-page .r7-tabs button[aria-selected="true"],
+  html body:not(#rv8) #app .main:not(.ed-game) .jk-filterbar .jk-segment button[aria-selected="true"] {
     border-bottom-color: var(--rv8-accent); color: var(--rv8-ink) !important; font-size: 16px; font-weight: 700; line-height: 24px;
   }
 
   /* Filter Chip: 36 pill; selected = brand-soft + brand border (never the CTA fill) */
-  html body:not(#rv8) #app .r7-chips button,
-  html body:not(#rv8) #app .r7-page .r7-exam-levels button,
-  html body:not(#rv8) #app .v2-wrong-tabs button,
-  html body:not(#rv8) #app .period-tabs button {
+  html body:not(#rv8) #app .main:not(.ed-game) .r7-chips button,
+  html body:not(#rv8) #app .main:not(.ed-game) .r7-page .r7-exam-levels button,
+  html body:not(#rv8) #app .main:not(.ed-game) .v2-wrong-tabs button,
+  html body:not(#rv8) #app .main:not(.ed-game) .period-tabs button {
     min-height: 36px; height: 36px; padding: 0 16px; border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-full);
     background: var(--rv8-surface); box-shadow: none; color: var(--rv8-muted); font-size: 13px; font-weight: 500; line-height: 18px;
   }
-  html body:not(#rv8) #app .r7-chips button[aria-pressed="true"],
-  html body:not(#rv8) #app .r7-page .r7-exam-levels button[aria-pressed="true"],
-  html body:not(#rv8) #app .v2-wrong-tabs button.selected,
-  html body:not(#rv8) #app .period-tabs button[aria-pressed="true"] {
+  html body:not(#rv8) #app .main:not(.ed-game) .r7-chips button[aria-pressed="true"],
+  html body:not(#rv8) #app .main:not(.ed-game) .r7-page .r7-exam-levels button[aria-pressed="true"],
+  html body:not(#rv8) #app .main:not(.ed-game) .v2-wrong-tabs button.selected,
+  html body:not(#rv8) #app .main:not(.ed-game) .period-tabs button[aria-pressed="true"] {
     border-color: var(--rv8-accent); background: var(--rv8-accent-soft); color: var(--rv8-accent-text);
   }
 
   /* Segmented Control: subtle track + white thumb (mode switches) */
-  html body:not(#rv8) #app .r7-exam-modes {
+  html body:not(#rv8) #app .main:not(.ed-game) .r7-exam-modes {
     display: flex; gap: 0; height: 44px; margin: 16px 0 8px; padding: 4px; border: 0; border-radius: var(--rv8-r-full); background: var(--rv8-subtle);
   }
-  html body:not(#rv8) #app .r7-exam-modes button {
+  html body:not(#rv8) #app .main:not(.ed-game) .r7-exam-modes button {
     flex: 1 1 0; min-width: 0; min-height: 36px; height: 36px; padding: 0 8px; border: 0; border-radius: var(--rv8-r-full);
     background: transparent; box-shadow: none; color: var(--rv8-muted); font-size: 13px; font-weight: 500; line-height: 18px;
   }
-  html body:not(#rv8) #app .r7-exam-modes button[aria-pressed="true"] {
+  html body:not(#rv8) #app .main:not(.ed-game) .r7-exam-modes button[aria-pressed="true"] {
     background: var(--rv8-surface); box-shadow: 0 1px 3px rgba(37, 49, 66, .08); color: var(--rv8-ink);
   }
 
   /* Page headings */
-  html body:not(#rv8) #app .r7-menu-heading h1,
-  html body:not(#rv8) #app .jk-heading h1 { color: var(--rv8-ink); font-size: 22px; font-weight: 700; line-height: 30px; letter-spacing: -.01em; }
-  html body:not(#rv8) #app .r7-page .r7-appbar h1,
-  html body:not(#rv8) #app .jk-appbar h1 { color: var(--rv8-ink); font-size: 18px; font-weight: 700; line-height: 26px; }
-  html body:not(#rv8) #app .r7-note { color: var(--rv8-muted); font-size: 13px; line-height: 20px; }
+  html body:not(#rv8) #app .main:not(.ed-game) .r7-menu-heading h1,
+  html body:not(#rv8) #app .main:not(.ed-game) .jk-heading h1 { color: var(--rv8-ink); font-size: 22px; font-weight: 700; line-height: 30px; letter-spacing: -.01em; }
+  html body:not(#rv8) #app .main:not(.ed-game) .r7-page .r7-appbar h1,
+  html body:not(#rv8) #app .main:not(.ed-game) .jk-appbar h1 { color: var(--rv8-ink); font-size: 18px; font-weight: 700; line-height: 26px; }
+  html body:not(#rv8) #app .main:not(.ed-game) .r7-note { color: var(--rv8-muted); font-size: 13px; line-height: 20px; }
 
   /* Bottom Navigation: 5 items, 64 + safe area, active = brand icon + accent text */
   html body:not(#rv8) #app .editorial-shell.app-nav-shell .app-navigation {
@@ -703,7 +703,7 @@ html body:not(#rv8) #app .rv8-badge-idle { width: 0; padding: 0; background: non
   html body:not(#rv8) #app .r7-ox-home .r7-ox-row > span:first-child { display: flex; min-width: 0; flex: 1 1 auto; flex-direction: column; gap: 2px; }
   html body:not(#rv8) #app .r7-ox-home .r7-ox-row b { overflow: hidden; color: var(--rv8-ink); font-size: 15px; font-weight: 700; line-height: 22px; text-overflow: ellipsis; white-space: nowrap; }
   html body:not(#rv8) #app .r7-ox-home .r7-ox-row small { color: var(--rv8-muted); font-size: 12px; line-height: 18px; }
-  html body:not(#rv8) #app .r7-ox-home .r7-ox-row small + small { display: none; }
+  html body:not(#rv8) #app .r7-ox-home .r7-ox-row small + small { color: var(--rv8-faint); }
   html body:not(#rv8) #app .r7-ox-home .r7-ox-row em {
     flex: none; height: 22px; padding: 0 8px; border-radius: var(--rv8-r-xs); background: var(--rv8-subtle);
     color: var(--rv8-muted); font-size: 12px; font-style: normal; font-weight: 500; line-height: 22px;
@@ -932,4 +932,20 @@ html body .toast { border-radius: var(--rv8-r-md); background: var(--rv8-inverse
 @media (max-width: 370px) { :root { --rv8-gutter: 15px; } }
 @media (max-width: 700px) {
   html body:not(#rv8) #app .r7-page .r7-tabs { margin-left: calc(-1 * var(--rv8-gutter)); margin-right: calc(-1 * var(--rv8-gutter)); padding-left: var(--rv8-gutter); padding-right: var(--rv8-gutter); }
+}
+
+/* Story play (S-04 대사 · S-05 대사 선택지) is out of Rev.8 scope: while a story scene is on screen,
+ * the previous token values are restored so its dialogue, nameplates and choices render exactly as before. */
+#app:has(.main.ed-game) { --app-bg: #fafbfc; --app-surface: #fff; --app-ink: #253142; --app-muted: #87919b; --app-accent: #e9513b; --app-line: #e9edf0; --app-success: #4b9a71; --app-success-soft: #eaf5ed; --app-danger-soft: #fff0ed; --app-radius-card: 16px; --app-nav-height: 72px; --app-dock-gap: 12px; --r7-bg: #fafbfc; --r7-sunken: #f1f3f5; --r7-ink: #253142; --r7-sub: #697684; --r7-faint: #87919b; --r7-line: #e9edf0; --r7-line-strong: #e5e8ec; --r7-coral: #e9513b; --r7-coral-press: #d64430; --r7-coral-soft: #fff0ed; --r7-coral-ink: #e9513b; --r7-teal: #4b9a71; --r7-teal-soft: #eaf5ed; --r7-teal-ink: #347a50; --r7-danger: #c62d4b; --r7-danger-soft: #fce8ed; --r7-r-sm: 8px; --r7-r-md: 12px; --r7-r-lg: 16px; --r7-r-xl: 22px; --ed-ink: #253142; --ed-muted: #87919b; --ed-line: #e9edf0; --ed-gold: #e9513b; }
+/* Sheets and dialogs outside the story player keep the pill CTA rule. */
+@media (max-width: 700px) {
+  html body:not(#rv8) #app:not(:has(.main.ed-game)) .modal button.primary,
+  html body:not(#rv8) #app:not(:has(.main.ed-game)) .modal button.secondary { min-height: 44px; border-radius: var(--rv8-r-full); font-size: 14px; font-weight: 700; box-shadow: none; }
+  html body:not(#rv8) #app:not(:has(.main.ed-game)) .modal button.primary { border: 0; background: var(--rv8-accent); color: #fff; }
+  html body:not(#rv8) #app:not(:has(.main.ed-game)) .modal button.secondary { border: 1px solid var(--rv8-line-strong); background: var(--rv8-surface); color: var(--rv8-ink); }
+}
+@media (max-width: 380px) {
+  /* narrow phones: shortcut captions shrink a step and wrap between words instead of being cut */
+  html body:not(#rv8) #app .hv .hv-shortcuts .hv-shortcut { padding-left: 2px; padding-right: 2px; }
+  html body:not(#rv8) #app .hv .hv-shortcuts .hv-shortcut-copy small { font-size: 11px; line-height: 16px; white-space: normal; word-break: keep-all; text-overflow: clip; }
 }

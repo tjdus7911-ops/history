@@ -218,8 +218,6 @@
   if(screen==='home'||screen==='study'||screen==='exam-era')return true;
   if(screen==='exam-library')return ['home','list'].includes(exams.state?.().view);
   if(screen==='ox')return routes.readRoute?.()==='ox'&&globalThis.OX_QUIZ_API?.snapshot?.().view!=='result';
-  // Rev.8: the records overview (M-01) also carries the FAB; nested record pages do not.
-  if(screen==='records')return !String(routes.readRoute?.()||'').startsWith('records/');
   return false;
  }
 

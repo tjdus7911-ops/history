@@ -50,17 +50,19 @@ const noOverflow = async (page, width, screen) => {
         return { title: title?.textContent.trim(), copy: copy?.textContent.trim(), height: rect.height, width: rect.width, iconWidth: iconRect.width, iconHeight: iconRect.height, textFits: title.scrollWidth <= title.clientWidth && copy.scrollWidth <= copy.clientWidth, textActionCount: item.querySelectorAll('.hv-pill,.hv-chev,.hv-shortcut-action').length };
       }));
       assert.deepEqual(shortcutCards.map(({ title, copy }) => [title, copy]), [
-        ['스토리', '시대별 이야기'], ['기출문제', '실전 시험 대비'], ['OX 퀴즈', '핵심 개념 점검'], ['오답노트', '틀린 문제 복습']
+        ['스토리', '시대별 이야기'], ['기출문제', '실전 대비'], ['OX 퀴즈', '개념 점검'], ['오답노트', '틀린 문제']
       ]);
-      assert(shortcutCards.every(card => card.height >= 100 && card.iconWidth === 44 && card.iconHeight === 44 && card.textFits && card.textActionCount === 0));
+      // Rev.8 approved change: one compact 1×4 row of tiles with a 40px icon well.
+      assert(shortcutCards.every(card => card.height >= 88 && card.iconWidth === 40 && card.iconHeight === 40 && card.textFits && card.textActionCount === 0));
+      assert(shortcutCards.every(card => Math.abs(card.width - shortcutCards[0].width) < 1));
       assert(shortcutCards.every(card => Math.abs(card.height - shortcutCards[0].height) < 1));
       const banner = page.locator('.hv-jokbo-banner');
       const bannerStyle = await banner.evaluate(el => {
         const rect = el.getBoundingClientRect(), copy = el.querySelector('.hv-jokbo-copy');
         return { height: rect.height, width: rect.width, radius: getComputedStyle(el).borderRadius, text: copy.innerText.trim(), art: !!el.querySelector('.hv-jokbo-art'), arrow: !!el.querySelector('.hv-jokbo-arrow') };
       });
-      assert(bannerStyle.height >= 110 && bannerStyle.height <= 124 && bannerStyle.width <= width && bannerStyle.radius === '20px' && bannerStyle.art && bannerStyle.arrow);
-      assert.equal(bannerStyle.text, '헷갈리는 개념은\n족보로 한 번에 정리!');
+      assert(bannerStyle.height >= 64 && bannerStyle.height <= 96 && bannerStyle.width <= width && bannerStyle.radius === '16px' && bannerStyle.art && bannerStyle.arrow);
+      assert.equal(bannerStyle.text, '헷갈리는 개념은 족보로 한 번에\n시대별 한 장 정리 · 키워드 저장');
       assert.equal(await page.locator('.hv-shortcut-story').getAttribute('data-era-open') !== null || await page.locator('.hv-shortcut-story').getAttribute('data-r7-story-resume') !== null, true);
       assert.equal(await page.locator('.hv-shortcut-exam').getAttribute('data-nav') === 'exam-library' || await page.locator('.hv-shortcut-exam').getAttribute('data-r7-exam-open') !== null, true);
       assert.equal(await page.locator('.hv-shortcut-ox').getAttribute('data-nav'), 'ox');
@@ -99,12 +101,13 @@ const noOverflow = async (page, width, screen) => {
         return { selected: item.getAttribute('aria-pressed'), height: rect.height, width: rect.width, radius: style.borderRadius, color: style.color, background: style.backgroundColor };
       }));
       assert.equal(modeStyles.length, 2);
-      assert(modeStyles.every(item => item.height === 44 && item.radius === '999px'));
+      // Rev.8 Segmented Control: subtle track, white selected thumb (36), muted unselected label.
+      assert(modeStyles.every(item => item.height === 36 && item.radius === '999px'));
       assert(Math.abs(modeStyles[0].width - modeStyles[1].width) < 1);
-      assert.equal(modeStyles[0].background, 'rgb(233, 81, 59)');
-      assert.equal(modeStyles[0].color, 'rgb(255, 255, 255)');
-      assert.equal(modeStyles[1].background, 'rgb(255, 255, 255)');
-      assert.equal(modeStyles[1].color, 'rgb(102, 113, 125)');
+      assert.equal(modeStyles[0].background, 'rgb(255, 255, 255)');
+      assert.equal(modeStyles[0].color, 'rgb(37, 49, 66)');
+      assert.equal(modeStyles[1].background, 'rgba(0, 0, 0, 0)');
+      assert.equal(modeStyles[1].color, 'rgb(107, 118, 132)');
       await page.locator('[data-r7-exam-mode="learn"]').click();
       assert.equal(await page.locator('[data-r7-exam-mode="learn"]').getAttribute('aria-pressed'), 'true');
       await page.locator('[data-r7-exam-mode="exam"]').click();
@@ -138,7 +141,9 @@ const noOverflow = async (page, width, screen) => {
         return { height: rect.height, bg: style.backgroundColor, radius: style.borderRadius, count: /전체\s+\d+문제/.test(card.innerText), status: !!label, arrow: !!icon, statusRight: label && icon && label.getBoundingClientRect().right <= icon.getBoundingClientRect().left };
       }));
       assert(oxCards.length >= 5);
-      assert(oxCards.every(card => card.bg === 'rgb(255, 255, 255)' && card.radius === '16px' && card.height >= 92 && card.count && card.status && card.arrow && card.statusRight));
+      // Rev.8: era rows are grouped into one list card (rounded ends only).
+      assert(oxCards.every(card => card.bg === 'rgb(255, 255, 255)' && card.height >= 64 && card.count && card.status && card.arrow && card.statusRight));
+      assert(oxCards[0].radius.startsWith('16px 16px') && oxCards.at(-1).radius.endsWith('16px 16px') && oxCards.slice(1, -1).every(card => card.radius === '0px'));
       assert.equal(await page.locator('.main.ed-ox').evaluate(el => getComputedStyle(el).backgroundColor), 'rgb(250, 251, 252)');
       await capture('ox-list');
       await page.locator('.r7-page.r7-ox-home > .r7-ox-row').first().click();
