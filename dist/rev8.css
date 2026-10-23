@@ -167,25 +167,19 @@ html body:not(#rv8) #app .rv8-badge-idle { width: 0; padding: 0; background: non
   html body:not(#rv8) #app .editorial-shell.app-nav-shell .app-navigation button.active { color: var(--rv8-accent-text); }
   html body:not(#rv8) #app .editorial-shell.app-nav-shell .app-navigation button.active svg { color: var(--rv8-accent); }
 
-  /* Floating Jokbo Button — kept in the brand colour (product decision), Elevation/2,
-   * right 16 / 16 above the bottom navigation; compact (48 circle) above a bottom action bar or after scrolling down.
+  /* Floating Jokbo Button — kept in the brand colour and horizontal pill shape (product decision), Elevation/2,
+   * right 16 / 16 above the bottom navigation (or 16 above a bottom action bar).
    * Hidden while solving an exam or playing a story (existing showJokboFab rules). */
   html body:not(#rv8) #app .jk-fab-dock {
     right: 16px; bottom: calc(var(--rv8-nav-h) + env(safe-area-inset-bottom, 0px) + 16px);
   }
   html body:not(#rv8) #app .jk-fab {
-    min-width: 0; height: 48px; min-height: 48px; padding: 0 20px 0 16px; gap: 6px; border-radius: var(--rv8-r-full);
+    min-width: 92px; height: 48px; min-height: 48px; padding: 0 20px 0 16px; gap: 6px; border-radius: var(--rv8-r-full);
     background: var(--rv8-accent); color: #fff; box-shadow: var(--rv8-elev-2); font-size: 14px; font-weight: 700; line-height: 20px;
     transition: padding .18s ease, width .18s ease;
   }
   html body:not(#rv8) #app .jk-fab:active { background: var(--rv8-accent-press); }
   html body:not(#rv8) #app .jk-fab > svg { width: 22px; height: 22px; }
-  html body.rv8-fab-compact:not(#rv8) #app .jk-fab,
-  html body:not(#rv8) #app .app-nav-shell.has-jk-fab:has(.r7-page.r7-wrong .r7-bottom) .jk-fab { width: 48px; padding: 0; }
-  html body.rv8-fab-compact:not(#rv8) #app .jk-fab > span,
-  html body:not(#rv8) #app .app-nav-shell.has-jk-fab:has(.r7-page.r7-wrong .r7-bottom) .jk-fab > span {
-    position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
-  }
   /* scroll-end clearance so the FAB never covers the last row or button */
   html body:not(#rv8) #app .app-nav-shell.has-jk-fab .main { padding-bottom: calc(180px + env(safe-area-inset-bottom, 0px)); }
   html body:not(#rv8) #app .app-nav-shell:not(.has-jk-fab) .main.ed-records { padding-bottom: calc(var(--rv8-nav-h) + 48px + env(safe-area-inset-bottom, 0px)); }
@@ -802,7 +796,7 @@ html body:not(#rv8) #app .rv8-badge-idle { width: 0; padding: 0; background: non
   /* bottom CTA bar: pill L */
   html body:not(#rv8) #app .r7-page.r7-wrong .r7-bottom { padding: 8px var(--rv8-screen-x); border-top: 1px solid var(--rv8-line); background: var(--rv8-surface); }
   html body:not(#rv8) #app .r7-page.r7-wrong .r7-bottom .r7-primary { height: 48px; min-height: 48px; border-radius: var(--rv8-r-full); font-size: 15px; font-weight: 700; }
-  /* FAB stays clear of the wrong-note action bar (compact, 16 above it) and is hidden on the detail view */
+  /* FAB stays clear of the wrong-note action bar (16 above it) and is hidden on the detail view */
   html body:not(#rv8) #app .app-nav-shell.has-jk-fab:has(.r7-page.r7-wrong .r7-bottom) .jk-fab-dock {
     bottom: calc(var(--rv8-nav-h) + env(safe-area-inset-bottom, 0px) + var(--app-cta-height) + 16px);
   }
@@ -950,4 +944,91 @@ html body .toast { border-radius: var(--rv8-r-md); background: var(--rv8-inverse
   /* narrow phones: shortcut captions shrink a step and wrap between words instead of being cut */
   html body:not(#rv8) #app .hv .hv-shortcuts .hv-shortcut { padding-left: 2px; padding-right: 2px; }
   html body:not(#rv8) #app .hv .hv-shortcuts .hv-shortcut-copy small { font-size: 11px; line-height: 16px; white-space: normal; word-break: keep-all; text-overflow: clip; }
+}
+
+
+/* ======================================================================
+ * Fix pass (2026-10-23 APK review): home card, home order, records, learning filters, Jokbo width
+ * ==================================================================== */
+@media (max-width: 700px) {
+  /* 1. Story thumbnail card: image on top at a fixed ratio, copy + CTA below — nothing overlaps or leaves the card */
+  html body:not(#rv8) #app .hv .hv-rail-item { flex: 0 0 min(280px, calc(100vw - 80px)); width: min(280px, calc(100vw - 80px)); }
+  html body:not(#rv8) #app .hv .hv-era {
+    position: relative; display: flex; height: auto; min-height: 0; flex-direction: column; overflow: hidden;
+    border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-xl); background: var(--rv8-surface); box-shadow: none;
+  }
+  html body:not(#rv8) #app .hv .hv-era .hv-card-art {
+    position: relative; inset: auto; display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; flex: none;
+    object-fit: cover; border-radius: 0; background: var(--rv8-subtle);
+  }
+  html body:not(#rv8) #app .hv .hv-era .hv-era-shade { display: none; }
+  html body:not(#rv8) #app .hv .hv-era .hv-era-hit { position: absolute; inset: 0; z-index: 1; }
+  html body:not(#rv8) #app .hv .hv-era .hv-era-body {
+    position: relative; z-index: 2; inset: auto; display: flex; width: auto; min-width: 0; flex: 1 1 auto; flex-direction: column; gap: 4px;
+    margin: 0; padding: 14px 16px 16px; box-sizing: border-box; background: var(--rv8-surface); pointer-events: none;
+  }
+  html body:not(#rv8) #app .hv .hv-era .hv-era-body > * { min-width: 0; max-width: 100%; }
+  html body:not(#rv8) #app .hv .hv-era .hv-era-btn { pointer-events: auto; }
+  html body:not(#rv8) #app .hv .hv-era .hv-season-tag { background: var(--rv8-subtle); color: var(--rv8-muted) !important; }
+  html body:not(#rv8) #app .hv .hv-era .hv-era-title { overflow: hidden; color: var(--rv8-ink) !important; font-size: 18px; line-height: 26px; text-overflow: ellipsis; white-space: nowrap; }
+  html body:not(#rv8) #app .hv .hv-era .hv-era-sub { color: var(--rv8-muted) !important; }
+  html body:not(#rv8) #app .hv .hv-era .hv-progress { background: var(--rv8-disabled); }
+  html body:not(#rv8) #app .hv .hv-era .hv-progress i { background: var(--rv8-accent); }
+  html body:not(#rv8) #app .hv .hv-era .hv-progress-label { color: var(--rv8-muted); }
+  html body:not(#rv8) #app .hv .hv-era .hv-progress-row { padding-top: 6px; }
+  html body:not(#rv8) #app .hv .hv-era .hv-era-btn {
+    display: flex; width: 100%; max-width: 100%; box-sizing: border-box; margin: auto 0 0; padding: 0 16px; align-items: center; justify-content: center;
+    background: var(--rv8-accent); color: #fff; white-space: nowrap;
+  }
+  html body:not(#rv8) #app .hv .hv-era .hv-era-tags + .hv-era-title { margin-top: 2px; }
+  html body:not(#rv8) #app .hv .hv-era .hv-era-body > :nth-last-child(2) { margin-bottom: 10px; }
+  html body:not(#rv8) #app .hv .hv-era.is-soon .hv-era-btn { background: var(--rv8-disabled); color: var(--rv8-muted); }
+  html body:not(#rv8) #app .hv .hv-era.is-soon .hv-card-art { filter: grayscale(.35); opacity: .8; }
+
+  /* 3. D-day lives at the top of the goal card */
+  html body:not(#rv8) #app .hv .lm-dday { padding-bottom: 16px; border-bottom: 1px solid var(--rv8-line); }
+  html body:not(#rv8) #app .hv .lm-panel > .lm-dday + * { margin-top: 0; }
+  html body:not(#rv8) #app .hv .hv-status { padding: var(--rv8-card-pad); border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-lg); background: var(--rv8-surface); }
+
+  /* 내 기록 > 시험 결과 기록: title / date-time / mode on three lines; score never wraps */
+  html body:not(#rv8) #app .rv8-rec-row { align-items: center; gap: 10px; }
+  html body:not(#rv8) #app .rv8-rec-row .rv8-rec-copy { display: flex; min-width: 0; flex: 1 1 auto; flex-direction: column; gap: 2px; }
+  html body:not(#rv8) #app .rv8-rec-row .rv8-rec-copy b,
+  html body:not(#rv8) #app .rv8-rec-row .rv8-rec-copy small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  html body:not(#rv8) #app .rv8-rec-row .rv8-rec-mode { color: var(--rv8-faint); }
+  html body:not(#rv8) #app .rv8-rec-row .rv8-rec-score { display: flex; flex: none; align-items: center; justify-content: flex-end; gap: 6px; flex-wrap: wrap; max-width: 46%; }
+  html body:not(#rv8) #app .rv8-rec-row .rv8-rec-score strong { flex: none; white-space: nowrap; word-break: keep-all; }
+  html body:not(#rv8) #app .rv8-rec-row > .r7-icon { flex: none; }
+
+  /* 내 기록 > 학습 기록 filters: one chip per button (no ring around a square), horizontal scroll rows */
+  html body:not(#rv8) #app .main:not(.ed-game) .r7-learning > .r7-chips {
+    display: flex; flex-wrap: nowrap; gap: 8px; margin: 0 calc(-1 * var(--rv8-gutter)) 8px; padding: 0 var(--rv8-gutter);
+    overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  html body:not(#rv8) #app .main:not(.ed-game) .r7-learning > .r7-chips::-webkit-scrollbar { display: none; }
+  html body:not(#rv8) #app .main:not(.ed-game) .r7-learning > .r7-chips button {
+    flex: none; min-height: 44px; height: 44px; padding: 0; border: 0 !important; border-radius: 0; background: transparent !important; box-shadow: none !important;
+  }
+  html body:not(#rv8) #app .main:not(.ed-game) .r7-learning > .r7-chips button > span {
+    display: inline-flex; min-width: 0; height: 36px; min-height: 36px; padding: 0 16px; align-items: center; justify-content: center; box-sizing: border-box;
+    border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-full); background: var(--rv8-surface); color: var(--rv8-muted);
+    font-size: 13px; font-weight: 500; line-height: 18px; white-space: nowrap;
+  }
+  html body:not(#rv8) #app .main:not(.ed-game) .r7-learning > .r7-chips button[aria-pressed="true"] > span { border-color: var(--rv8-accent); background: var(--rv8-accent); color: #fff; font-weight: 700; }
+
+  /* 족보: one common gutter (main 20px), no extra inner page padding, full-width cards and tabs */
+  html body:not(#rv8) #app .jk-fullscreen-shell .main { padding-left: var(--rv8-gutter); padding-right: var(--rv8-gutter); }
+  html body:not(#rv8) #app .jk-fullscreen-shell .jk-page { width: auto; max-width: none; margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; box-sizing: border-box; }
+  html body:not(#rv8) #app .jk-page .jk-filterbar,
+  html body:not(#rv8) #app .jk-page .jk-era-content,
+  html body:not(#rv8) #app .jk-page .jk-groups { width: auto; max-width: none; }
+  html body:not(#rv8) #app .jk-page .jk-filterbar .jk-segment { margin-left: calc(-1 * var(--rv8-gutter)); margin-right: calc(-1 * var(--rv8-gutter)); padding-left: var(--rv8-gutter); padding-right: var(--rv8-gutter); }
+  html body:not(#rv8) #app .jk-page .jk-chiprow { margin-right: calc(-1 * var(--rv8-gutter)); }
+  html body:not(#rv8) #app .jk-page .jk-keyword-value { word-break: keep-all; overflow-wrap: anywhere; }
+}
+@media (max-width: 700px) {
+  /* every story card in the rail shares one height; the CTA sits on the card's bottom edge */
+  html body:not(#rv8) #app .hv .hv-rail { align-items: stretch; }
+  html body:not(#rv8) #app .hv .hv-rail-item { display: flex; }
+  html body:not(#rv8) #app .hv .hv-rail-item > .hv-era { flex: 1 1 auto; }
 }

@@ -35,11 +35,12 @@ const server = http.createServer((request, response) => {
       await page.locator('.lm-card').waitFor();
 
       const placement = await page.evaluate(() => {
-        const status = document.querySelector('.hv-status').getBoundingClientRect();
+        // Home order: story rail → 학습 바로가기 → 오늘의 학습 미션 (with the exam D-day inside); 학습 현황 is removed.
+        const shortcuts = document.querySelector('.hv-shortcuts-section').getBoundingClientRect();
         const card = document.querySelector('.lm-card').getBoundingClientRect();
-        return { afterStatus: card.top >= status.bottom, right: card.right, pageWidth: document.documentElement.scrollWidth };
+        return { afterStatus: card.top >= shortcuts.bottom && !document.querySelector('.hv-status') && Boolean(document.querySelector('.lm-card .hv-dday [data-hv-exam-open]')), right: card.right, pageWidth: document.documentElement.scrollWidth };
       });
-      assert(placement.afterStatus, 'mission card follows study status at ' + width + 'px');
+      assert(placement.afterStatus, 'mission card (with D-day) follows the shortcuts at ' + width + 'px');
       assert(placement.right <= width + 1 && placement.pageWidth <= width + 1, 'home card does not overflow ' + width + 'px');
       assert.equal(await page.locator('.lm-row').count(), 2, 'home shows only two missions initially');
       await page.locator('[data-mission-expand]').click();

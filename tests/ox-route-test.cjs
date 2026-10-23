@@ -109,7 +109,8 @@ for(const [hash,expected] of [['#home','home'],['#exam-library','exam-library'],
 app=boot('#ox',cloneStorage(activeStorage));
 assert.equal(app.run('screen'),'ox','#ox must restore the OX screen');
 assert.equal(app.run('OX_QUIZ_API.snapshot().view'),'home','#ox must restore the OX main, not force the active quiz');
-assert(app.html().includes('진행 중인 퀴즈 이어하기'),'OX main must offer the saved session as an explicit resume action');
+assert(/class="r7-ox-row" data-(?:ox-resume="true"|r7-ox-open-resume)[\s\S]*?풀던 중 \d+\/\d+/.test(app.html()),'OX main must offer the saved session as an explicit resume action (in-progress era row)');
+assert(!app.html().includes('진행 중인 퀴즈 이어하기'),'the duplicate top resume banner is removed');
 assert(!app.html().includes('class="ox-page ox-play"'),'OX main reload unexpectedly entered the quiz');
 app.click({oxAnalysis:'true'});
 assert.equal(app.run('OX_QUIZ_API.snapshot().view'),'home');
@@ -119,7 +120,7 @@ assert.equal(app.run('OX_QUIZ_API.snapshot().view'),'home','analysis keeps the s
 assert.equal(app.browser.location.hash,'#ox/analysis');
 assert(app.html().includes('data-figma-frame="O-06"'),'Rev.7 analysis route must render its confirmed design');
 app.click({r7OxAnalysisBack:''});assert.equal(app.browser.location.hash,'#ox');
-assert(app.html().includes('진행 중인 퀴즈 이어하기'),'analysis navigation must preserve resume');
+assert(/class="r7-ox-row" data-(?:ox-resume="true"|r7-ox-open-resume)/.test(app.html()),'analysis navigation must preserve resume');
 
 /* Main-nav changes must write navigable history. Back/forward and an external hash
    change then apply the URL without resurrecting the active OX quiz. */
