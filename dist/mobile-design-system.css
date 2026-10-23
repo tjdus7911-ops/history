@@ -220,6 +220,13 @@ button, input, select { font-family: inherit; }
     background: var(--app-bg);
     color: var(--app-ink);
   }
+  html body .app-nav-shell:has(.r7-page.r7-wrong-detail) .main.ed-screen:not(.ed-game) {
+    height: calc(100dvh - var(--app-nav-height) - 60px - env(safe-area-inset-bottom, 0px));
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-bottom: 24px;
+  }
   html body .ox-page.ox-play {
     min-height: 100dvh;
     padding: 0 0 calc(20px + env(safe-area-inset-bottom, 0px));
@@ -429,7 +436,11 @@ button, input, select { font-family: inherit; }
     white-space: nowrap;
   }
   html body .jk-filterbar .jk-segment button[aria-selected="false"] { color: var(--app-muted); }
-  html body .jk-filterbar .jk-segment button[aria-selected="true"] { color: var(--app-accent); }
+  html body .jk-filterbar .jk-segment button[aria-selected="true"] {
+    background: transparent;
+    box-shadow: none;
+    color: var(--app-accent);
+  }
   html body .jk-chips button > span {
     min-height: 34px;
     border-color: var(--app-line);
