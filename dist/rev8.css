@@ -1032,3 +1032,40 @@ html body .toast { border-radius: var(--rv8-r-md); background: var(--rv8-inverse
   html body:not(#rv8) #app .hv .hv-rail-item { display: flex; }
   html body:not(#rv8) #app .hv .hv-rail-item > .hv-era { flex: 1 1 auto; }
 }
+
+/* Fix pass 2 (2026-10-24) */
+@media (max-width: 700px) {
+  /* Home story thumbnails: the era illustrations are portrait 3:4 — show the whole picture, never crop it */
+  html body:not(#rv8) #app .hv .hv-rail-item { flex: 0 0 min(240px, calc(100vw - 120px)); width: min(240px, calc(100vw - 120px)); }
+  html body:not(#rv8) #app .hv .hv-era .hv-card-art { aspect-ratio: 3 / 4; object-fit: contain; object-position: center; }
+}
+/* Jokbo › 관련 실제 기출: each row opens that question */
+html body .jk-related .jk-related-item {
+  display: flex; width: 100%; min-height: 56px; margin: 0; padding: 12px 0; align-items: center; gap: 12px;
+  border: 0; border-bottom: 1px solid var(--rv8-line, #e9edf0); border-radius: 0; background: none; box-shadow: none;
+  color: inherit; font: inherit; text-align: left; cursor: pointer;
+}
+html body .jk-related .jk-related-item > span { min-width: 0; flex: 1 1 auto; }
+html body .jk-related .jk-related-item small { display: block; color: var(--rv8-accent-text, #c93a25); font-size: 11px; line-height: 17px; font-weight: 650; }
+html body .jk-related .jk-related-item b { display: block; margin-top: 3px; color: var(--rv8-ink, #253142); font-size: 13px; line-height: 21px; font-weight: 500; word-break: keep-all; overflow-wrap: break-word; }
+html body .jk-related .jk-related-item > i { flex: none; color: var(--rv8-muted, #6b7684); font-size: 20px; font-style: normal; line-height: 1; }
+html body .jk-related .jk-related-item:active { background: var(--rv8-subtle, #f4f6f8); }
+@media (max-width: 700px) {
+  /* learning-mode questions (e.g. opened from 족보 관련 기출) get the same clean-up as exam mode:
+   * no development caption, no stray dot, question number in brand text, instructions kept for screen readers only */
+  html body:not(#rv8) #app .official-practice .official-question-kicker { min-height: 28px; margin: 0 0 12px; }
+  html body:not(#rv8) #app .official-practice .official-question-kicker span {
+    width: auto; height: auto; min-width: 0; padding: 0; border: 0; border-radius: 0; background: none;
+    color: var(--rv8-accent-text); font-size: 20px; font-weight: 700; line-height: 28px;
+  }
+  html body:not(#rv8) #app .official-practice .official-paper figcaption > span,
+  html body:not(#rv8) #app .official-practice .official-paper figcaption > em,
+  html body:not(#rv8) #app .official-practice .official-choice-indicator { display: none !important; }
+  html body:not(#rv8) #app .official-practice .official-paper figcaption { display: block; padding: 8px 12px; border-top: 1px solid var(--rv8-line); background: var(--rv8-surface); }
+  html body:not(#rv8) #app .official-practice .official-paper figcaption small { color: var(--rv8-faint); font-size: 12px; line-height: 18px; }
+  html body:not(#rv8) #app .official-practice .official-choice-panel { margin: 0; padding: 0; border: 0; background: none; box-shadow: none; }
+  html body:not(#rv8) #app .official-practice .official-choice-panel > header { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  html body:not(#rv8) #app .official-practice .official-paper { overflow: hidden; border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-md); box-shadow: none; }
+  html body:not(#rv8) #app .official-practice .quiz-progress .progress { height: 4px; border-radius: var(--rv8-r-full); background: var(--rv8-disabled); }
+  html body:not(#rv8) #app .official-practice .quiz-progress .progress span { border-radius: var(--rv8-r-full); background: var(--rv8-accent); }
+}
