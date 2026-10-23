@@ -174,17 +174,18 @@
     const done = pct >= 100;
     const sub = !e.available ? esc(e.years) + ' · 준비 중'
       : started && ch ? (inPrologue ? '원삼국 프롤로그' : 'CH.' + ch.number + ' ' + esc(ch.title)) + (currentSceneIds.length ? ' · 장면 ' + Math.max(1, currentSceneIds.indexOf(r.storyId) + 1) + ' / ' + currentSceneIds.length : '') : esc(e.years);
-    const tag = !e.available ? '준비 중' : started ? (done ? '완료' : '이어서 학습') : '시작하기';
+    const tag = !e.available ? '준비 중' : started ? (done ? '완료' : '이어서 학습') : '시작 전';
     const action = !e.available ? 'disabled aria-disabled="true"' : started && !done ? 'data-r7-story-resume="' + e.id + '"' : 'data-era-open="' + e.id + '"';
-    const label = !e.available ? '준비 중' : done ? '다시 보기' : started ? '이어하기' : '시작하기';
+    const label = !e.available ? '준비 중' : done ? '다시 보기' : started ? '이어서 보기' : '시작하기';
     const art = e.bannerAsset ? '<img class="hv-card-art" src="' + esc(e.bannerAsset) + '" alt="" ' + (current ? 'fetchpriority="high" ' : 'loading="lazy" ') + 'decoding="async" onerror="this.remove()">' : '';
-    return '<article class="hv-era' + (e.available ? '' : ' is-soon') + (current ? ' is-current' : '') + '" style="--era-accent:' + esc(e.accent || '#169B8D') + '" aria-label="눈떠보니 ' + esc(e.name) + '">'
+    /* Rev.8: one readable season label (ink 55%), progress row only once the era is started. */
+    return '<article class="hv-era' + (e.available ? '' : ' is-soon') + (current ? ' is-current' : '') + (started ? ' is-started' : '') + '" style="--era-accent:' + esc(e.accent || '#169B8D') + '" aria-label="눈떠보니 ' + esc(e.name) + ' · ' + tag + '">'
       + art + '<div class="hv-era-shade"></div>'
       + (e.available ? '<button class="hv-era-hit" data-era-open="' + e.id + '" aria-label="' + esc(e.name) + ' 스토리 목록 보기"></button>' : '')
-      + '<div class="hv-era-body"><div class="hv-era-tags"><span class="hv-tag' + (started && !done ? ' is-on' : '') + '">' + tag + '</span><span class="hv-season-tag">SEASON ' + String(e.order).padStart(2,'0') + ' · ' + esc(e.name) + '</span></div>'
+      + '<div class="hv-era-body"><div class="hv-era-tags"><span class="hv-season-tag">SEASON ' + String(e.order).padStart(2,'0') + ' · ' + esc(e.name) + '</span></div>'
       + '<h2 class="hv-era-title">눈떠보니 ' + esc(e.name) + '</h2>'
       + '<p class="hv-era-sub">' + sub + '</p>'
-      + (e.available ? '<div class="hv-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '" aria-label="' + esc(e.name) + ' 진행률"><i style="width:' + pct + '%"></i></div>' : '')
+      + (e.available && started ? '<div class="hv-progress-row"><div class="hv-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '" aria-label="' + esc(e.name) + ' 진행률"><i style="width:' + pct + '%"></i></div><span class="hv-progress-label">' + pct + '%</span></div>' : '')
       + '<button class="hv-era-btn" ' + action + '>' + label + '</button></div></article>';
   }
 
@@ -205,9 +206,10 @@
   function practiceHTML(currentEra) {
     const a = activeExam(), pool = wrongPool(), ox = oxState();
     const storyStarted = Boolean(seasonRun(currentEra)?.started);
-    const exam = row('exam', illustrations.paper, '기출문제', '실전 시험 대비', a ? 'data-r7-exam-open' : 'data-nav="exam-library"');
-    const oxRow = row('ox', illustrations.ox, 'OX 퀴즈', '핵심 개념 점검', 'data-nav="ox"');
-    const wrong = row('wrong', illustrations.review, '오답노트', '틀린 문제 복습', pool.length ? 'data-review="' + esc(pool[0]) + '"' : 'data-nav="study"');
+    /* Rev.8 approved change: 2×2 large cards → one compact 1×4 row; every route is unchanged. */
+    const exam = row('exam', illustrations.paper, '기출문제', '실전 대비', a ? 'data-r7-exam-open' : 'data-nav="exam-library"');
+    const oxRow = row('ox', illustrations.ox, 'OX 퀴즈', '개념 점검', 'data-nav="ox"');
+    const wrong = row('wrong', illustrations.review, '오답노트', '틀린 문제', pool.length ? 'data-review="' + esc(pool[0]) + '"' : 'data-nav="study"');
     const storyAction = storyStarted ? 'data-r7-story-resume="' + esc(currentEra.id) + '"' : 'data-era-open="' + esc(currentEra.id) + '"';
     const story = row('story', illustrations.scroll, '스토리', '시대별 이야기', storyAction);
     return '<section class="hv-section hv-shortcuts-section" aria-label="실전 학습"><div class="hv-section-head"><h2 class="hv-h">학습 바로가기</h2></div><div class="hv-shortcuts">'
@@ -228,20 +230,34 @@
       + '<path d="m20 31 2 5 5 1-5 2-2 5-2-5-5-2 5-1zM111 15l2 4 4 1-4 2-2 4-2-4-4-2 4-1z" fill="#e98b42"/>'
       + '</svg>';
     return '<button type="button" class="hv-jokbo-banner" data-jk-open aria-label="족보 열기: 헷갈리는 개념은 족보로 한 번에 정리">'
-      + '<span class="hv-jokbo-copy"><b>헷갈리는 개념은</b><strong>족보로 한 번에 정리!</strong></span>'
       + '<span class="hv-jokbo-illustration">' + bookArt + '</span>'
+      + '<span class="hv-jokbo-copy"><strong>헷갈리는 개념은 족보로 한 번에</strong><b>시대별 한 장 정리 · 키워드 저장</b></span>'
       + '<span class="hv-jokbo-arrow" aria-hidden="true">' + ico.chevron + '</span></button>';
+  }
+
+  /* Rev.8 approved change: the mascot cheer card moves into the mission card header. */
+  function freshLearner() {
+    const anyStory = LEARNING_ERAS.some((e) => e.available && seasonRun(e)?.started);
+    return !anyStory && !studyStats().any && !examHistoryCount();
   }
 
   function metricsHTML(now = new Date()) {
     const s = studyStats(now), d = ddayState(now), passRate = examPassRate();
     const dday = d.kind === 'today' ? 'D-DAY' : d.kind === 'set' ? 'D-' + d.days : d.kind === 'past' ? '다시 설정' : '설정하기';
     const dateValue = d.date ? toKey(d.date) : '';
-    const cell = (kind, icon, label, value, unit = '', hint = '') => '<article class="hv-metric hv-metric-' + kind + '"' + (hint ? ' title="' + hint + '"' : '') + '><span class="hv-metric-art">' + icon + '</span><small>' + label + '</small><b>' + value + (unit ? '<em>' + unit + '</em>' : '') + '</b></article>';
-    const exam = '<button type="button" class="hv-metric hv-metric-exam" data-hv-exam-open title="시험일 설정 또는 변경" aria-label="시험일 ' + (dateValue ? '변경' : '설정') + '"><span class="hv-metric-art">' + illustrations.calendar + '</span><small>남은 시험일</small><b>' + dday + '</b></button>';
-    const primary = '<div class="hv-metrics">' + exam + cell('streak', illustrations.fire, '연속 학습', s.streak, '일') + cell('today', illustrations.paper, '오늘 푼 문제', s.todayCount, '문항') + cell('accuracy', illustrations.target, '최근 정답률', s.accuracy == null ? '—' : s.accuracy, s.accuracy == null ? '' : '%', '최근 완료한 문제 풀이 최대 20문항 기준') + '</div>';
-    const detail = '<div class="hv-metrics-detail"><span title="완료한 공식 회차 시험에서 기존 합격 기준으로 계산">실전 합격률 <b>' + (passRate == null ? '—' : passRate + '%') + '</b></span></div>';
-    return '<section class="hv-status" aria-labelledby="hv-status-title"><h2 class="hv-h" id="hv-status-title">학습 현황</h2>' + primary + detail + '</section>';
+    /* Rev.8 approved change: D-day gets its own top row; the four metrics share one row in the same card.
+     * Every metric (streak, today, accuracy, real-exam pass rate) is kept. */
+    const cell = (kind, label, value, unit = '', hint = '') => '<article class="hv-metric hv-metric-' + kind + '"' + (hint ? ' title="' + hint + '"' : '') + '><small>' + label + '</small><b>' + value + (unit ? '<em>' + unit + '</em>' : '') + '</b></article>';
+    const ddayLabel = d.kind === 'unset' ? '시험일을 정해 보세요' : d.kind === 'past' ? '설정한 시험일이 지났어요' : '한능검 시험일까지';
+    const ddayValue = d.kind === 'unset' ? 'D-day 미설정' : d.kind === 'past' ? '다시 설정해 주세요' : dday;
+    const ddayAction = d.kind === 'set' || d.kind === 'today' ? '시험일 변경' : '설정하기';
+    const exam = '<div class="hv-dday hv-metric-exam' + (d.kind === 'set' || d.kind === 'today' ? ' is-set' : '') + '"><span class="hv-dday-art">' + illustrations.calendar + '</span>'
+      + '<span class="hv-dday-copy"><small>' + ddayLabel + '</small><b>' + ddayValue + '</b></span>'
+      + '<button type="button" class="hv-dday-action" data-hv-exam-open title="시험일 설정 또는 변경" aria-label="시험일 ' + (dateValue ? '변경' : '설정') + ' · 남은 시험일 ' + dday + '">' + ddayAction + '</button></div>';
+    const metrics = '<div class="hv-metrics">' + cell('streak', '연속 학습', s.streak, '일') + cell('today', '오늘 푼 문제', s.todayCount, '문항')
+      + cell('accuracy', '최근 정답률', s.accuracy == null ? '—' : s.accuracy, '%', '최근 완료한 문제 풀이 최대 20문항 기준')
+      + cell('pass', '합격률', passRate == null ? '—' : passRate, '%', '실전 합격률 · 완료한 공식 회차 시험에서 기존 합격 기준으로 계산') + '</div>';
+    return '<section class="hv-status" aria-labelledby="hv-status-title"><h2 class="hv-h" id="hv-status-title">학습 현황</h2><div class="hv-status-card">' + exam + '<hr class="hv-divider">' + metrics + '</div></section>';
   }
 
   function cheerHTML() {
@@ -294,14 +310,13 @@
   home = function () {
     const e = heroEra(), now = new Date();
     return '<div class="hv">'
-      + '<header class="hv-top"><h1 class="hv-brand" aria-label="눈떠보니 한국사"><span>눈떠보니</span><em>한국사</em><i class="hv-brand-mark">' + illustrations.scroll + '</i></h1>'
+      + '<header class="hv-top"><h1 class="hv-brand" aria-label="눈떠보니 한국사"><i class="hv-brand-mark">' + illustrations.scroll + '</i><span>눈떠보니</span><em>한국사</em></h1>'
       + '<button class="hv-icon-btn" data-action="status" aria-label="내 상태 보기">' + ico.user + '</button></header>'
       + railHTML(e)
       + metricsHTML(now)
-      + (globalThis.LEARNING_MISSIONS?.cardHTML?.(now) || '')
+      + (globalThis.LEARNING_MISSIONS?.cardHTML?.(now, { fresh: freshLearner(), mascot: 'icons/icon-192.png' }) || cheerHTML())
       + practiceHTML(e)
       + jokboPromoHTML()
-      + cheerHTML()
       + weakHTML()
       + sheetHTML() + '</div>';
   };

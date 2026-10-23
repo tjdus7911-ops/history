@@ -1,0 +1,935 @@
+/* Rev.8 UI layer (Figma "Rev.8 · 03 화면 리디자인").
+ * Loaded after every other stylesheet. Presentation only: no data, save or route contracts change.
+ * 1) Remaps the existing --app-*, --r7-*, --jk-* token sets to one Rev.8 set.
+ * 2) Applies the shared Rev.8 components (pill CTA, round icon button, bordered card, underline tab,
+ *    segmented control, filter chip, status badge, bottom navigation, Jokbo FAB).
+ * 3) Screen rules for home, story list, exam, OX, wrong-note, Jokbo, records and common states.
+ * Story play screens (S-04/S-05 dialogue) are intentionally untouched.
+ * Selectors use `html body:not(#rv8) #app` so this layer wins over earlier `:not(#ui-type)` overrides. */
+
+:root {
+  /* colour — primitive + semantic (Rev.8 / 01 디자인 시스템) */
+  --rv8-bg: #fafbfc;
+  --rv8-surface: #ffffff;
+  --rv8-subtle: #f4f6f8;
+  --rv8-ink: #253142;
+  --rv8-muted: #6b7684;        /* secondary text, 4.6:1 on white (was #87919b, 3.2:1) */
+  --rv8-faint: #87919b;        /* tertiary text only: captions on finished rows */
+  --rv8-line: #e9edf0;
+  --rv8-line-strong: #d8dee4;
+  --rv8-disabled: #e9edf0;
+  --rv8-accent: #e9513b;       /* large surfaces only: CTA, FAB, progress fill */
+  --rv8-accent-press: #d3432e;
+  --rv8-accent-text: #c93a25;  /* small brand text, 5.1:1 */
+  --rv8-accent-soft: #fdf1ee;
+  --rv8-success: #2f7d55;
+  --rv8-success-soft: #eaf5ee;
+  --rv8-danger: #d93b3b;
+  --rv8-danger-soft: #fff1f1;
+  --rv8-warning-soft: #fff6e5;
+  --rv8-inverse: #151b24;
+  --rv8-icon-faint: #9aa3ad;
+  /* radius 6종 · spacing · elevation */
+  --rv8-r-xs: 6px; --rv8-r-sm: 8px; --rv8-r-md: 12px; --rv8-r-lg: 16px; --rv8-r-xl: 20px; --rv8-r-full: 999px;
+  --rv8-screen-x: 20px; --rv8-gutter: 20px; --rv8-section-gap: 32px; --rv8-card-gap: 12px; --rv8-card-pad: 20px;
+  --rv8-elev-1: 0 1px 3px rgba(37, 49, 66, .08);
+  --rv8-elev-2: 0 4px 12px rgba(37, 49, 66, .12);
+  --rv8-elev-3: 0 12px 32px rgba(37, 49, 66, .16);
+  --rv8-nav-h: 64px;
+
+  /* existing token sets now resolve to Rev.8 values */
+  --app-bg: var(--rv8-bg); --app-surface: var(--rv8-surface); --app-ink: var(--rv8-ink); --app-muted: var(--rv8-muted);
+  --app-accent: var(--rv8-accent); --app-line: var(--rv8-line); --app-success: var(--rv8-success);
+  --app-success-soft: var(--rv8-success-soft); --app-danger-soft: var(--rv8-danger-soft);
+  --app-radius-card: var(--rv8-r-lg); --app-nav-height: var(--rv8-nav-h); --app-dock-gap: 16px;
+  --r7-bg: var(--rv8-bg); --r7-sunken: var(--rv8-subtle); --r7-ink: var(--rv8-ink); --r7-sub: var(--rv8-muted);
+  --r7-faint: var(--rv8-muted); --r7-line: var(--rv8-line); --r7-line-strong: var(--rv8-line-strong);
+  --r7-coral: var(--rv8-accent); --r7-coral-press: var(--rv8-accent-press); --r7-coral-soft: var(--rv8-accent-soft);
+  --r7-coral-ink: var(--rv8-accent-text); --r7-teal: var(--rv8-success); --r7-teal-soft: var(--rv8-success-soft);
+  --r7-teal-ink: var(--rv8-success); --r7-danger: var(--rv8-danger); --r7-danger-soft: var(--rv8-danger-soft);
+  --r7-r-sm: var(--rv8-r-xs); --r7-r-md: var(--rv8-r-sm); --r7-r-lg: var(--rv8-r-md); --r7-r-xl: var(--rv8-r-lg);
+  --ed-ink: var(--rv8-ink); --ed-muted: var(--rv8-muted); --ed-line: var(--rv8-line); --ed-gold: var(--rv8-accent);
+}
+
+/* visually hidden text kept for screen readers and existing text contracts */
+html body .rv8-sr { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* ---------- shared components ---------- */
+/* Status Badge: 22 high, radius 6, soft background + strong text */
+html body:not(#rv8) #app .rv8-badge {
+  display: inline-flex; flex: none; align-items: center; justify-content: center; height: 22px; padding: 0 8px;
+  border-radius: var(--rv8-r-xs); background: var(--rv8-accent-soft); color: var(--rv8-accent-text);
+  font-size: 12px; font-weight: 500; font-style: normal; line-height: 16px; white-space: nowrap;
+}
+html body:not(#rv8) #app .rv8-badge-success { background: var(--rv8-success-soft); color: var(--rv8-success); }
+html body:not(#rv8) #app .rv8-badge-danger { background: var(--rv8-danger-soft); color: var(--rv8-danger); }
+html body:not(#rv8) #app .rv8-badge-idle { width: 0; padding: 0; background: none; }
+
+@media (max-width: 700px) {
+  html body:not(#rv8) #app { color: var(--rv8-ink); }
+
+  /* Buttons: every CTA is a pill. L 52 (bottom bar) · M 44 (card/sheet) · S 36 (inline). */
+  html body:not(#rv8) #app .r7-primary,
+  html body:not(#rv8) #app .r7-secondary,
+  html body:not(#rv8) #app button.primary,
+  html body:not(#rv8) #app button.secondary,
+  html body:not(#rv8) #app .jk-primary,
+  html body:not(#rv8) #app .jk-secondary,
+  html body:not(#rv8) #app .lm-save,
+  html body:not(#rv8) #app .hv-calendar-save,
+  html body:not(#rv8) #app .hv-calendar-cancel {
+    min-height: 44px; border-radius: var(--rv8-r-full); font-size: 14px; font-weight: 700; line-height: 20px; box-shadow: none;
+  }
+  html body:not(#rv8) #app .r7-primary,
+  html body:not(#rv8) #app button.primary,
+  html body:not(#rv8) #app .jk-primary,
+  html body:not(#rv8) #app .lm-save,
+  html body:not(#rv8) #app .hv-calendar-save { border: 0; background: var(--rv8-accent); color: #fff; }
+  html body:not(#rv8) #app .r7-primary:disabled,
+  html body:not(#rv8) #app button.primary:disabled,
+  html body:not(#rv8) #app .jk-primary:disabled,
+  html body:not(#rv8) #app .hv-calendar-save:disabled { background: var(--rv8-disabled); color: var(--rv8-icon-faint); }
+  html body:not(#rv8) #app .r7-secondary,
+  html body:not(#rv8) #app button.secondary,
+  html body:not(#rv8) #app .jk-secondary,
+  html body:not(#rv8) #app .hv-calendar-cancel { border: 1px solid var(--rv8-line-strong); background: var(--rv8-surface); color: var(--rv8-ink); }
+
+  /* Icon Button: round 44 touch target in every header */
+  html body:not(#rv8) #app .hv-icon-btn,
+  html body:not(#rv8) #app .r7-appbar > button,
+  html body:not(#rv8) #app .r7-heading > button,
+  html body:not(#rv8) #app .jk-appbar > button,
+  html body:not(#rv8) #app .jk-heading > button,
+  html body:not(#rv8) #app .hv-x {
+    display: inline-flex; width: 44px; min-width: 44px; height: 44px; min-height: 44px; padding: 0;
+    align-items: center; justify-content: center; border: 0; border-radius: var(--rv8-r-full);
+    background: transparent; box-shadow: none; color: var(--rv8-ink);
+  }
+  html body:not(#rv8) #app .hv-icon-btn:active,
+  html body:not(#rv8) #app .r7-appbar > button:active,
+  html body:not(#rv8) #app .jk-appbar > button:active { background: var(--rv8-subtle); }
+
+  /* Underline Tab: 48 high, 1px rail, active = 2px brand bar + bold ink text */
+  html body:not(#rv8) #app .r7-page .r7-tabs,
+  html body:not(#rv8) #app .jk-filterbar .jk-segment { border-bottom: 1px solid var(--rv8-line); }
+  html body:not(#rv8) #app .r7-page .r7-tabs button,
+  html body:not(#rv8) #app .jk-filterbar .jk-segment button {
+    color: var(--rv8-muted) !important; font-size: 14px; font-weight: 500; line-height: 22px;
+  }
+  html body:not(#rv8) #app .r7-page .r7-tabs button[aria-selected="true"],
+  html body:not(#rv8) #app .jk-filterbar .jk-segment button[aria-selected="true"] {
+    border-bottom-color: var(--rv8-accent); color: var(--rv8-ink) !important; font-size: 16px; font-weight: 700; line-height: 24px;
+  }
+
+  /* Filter Chip: 36 pill; selected = brand-soft + brand border (never the CTA fill) */
+  html body:not(#rv8) #app .r7-chips button,
+  html body:not(#rv8) #app .r7-page .r7-exam-levels button,
+  html body:not(#rv8) #app .v2-wrong-tabs button,
+  html body:not(#rv8) #app .period-tabs button {
+    min-height: 36px; height: 36px; padding: 0 16px; border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-full);
+    background: var(--rv8-surface); box-shadow: none; color: var(--rv8-muted); font-size: 13px; font-weight: 500; line-height: 18px;
+  }
+  html body:not(#rv8) #app .r7-chips button[aria-pressed="true"],
+  html body:not(#rv8) #app .r7-page .r7-exam-levels button[aria-pressed="true"],
+  html body:not(#rv8) #app .v2-wrong-tabs button.selected,
+  html body:not(#rv8) #app .period-tabs button[aria-pressed="true"] {
+    border-color: var(--rv8-accent); background: var(--rv8-accent-soft); color: var(--rv8-accent-text);
+  }
+
+  /* Segmented Control: subtle track + white thumb (mode switches) */
+  html body:not(#rv8) #app .r7-exam-modes {
+    display: flex; gap: 0; height: 44px; margin: 16px 0 8px; padding: 4px; border: 0; border-radius: var(--rv8-r-full); background: var(--rv8-subtle);
+  }
+  html body:not(#rv8) #app .r7-exam-modes button {
+    flex: 1 1 0; min-width: 0; min-height: 36px; height: 36px; padding: 0 8px; border: 0; border-radius: var(--rv8-r-full);
+    background: transparent; box-shadow: none; color: var(--rv8-muted); font-size: 13px; font-weight: 500; line-height: 18px;
+  }
+  html body:not(#rv8) #app .r7-exam-modes button[aria-pressed="true"] {
+    background: var(--rv8-surface); box-shadow: 0 1px 3px rgba(37, 49, 66, .08); color: var(--rv8-ink);
+  }
+
+  /* Page headings */
+  html body:not(#rv8) #app .r7-menu-heading h1,
+  html body:not(#rv8) #app .jk-heading h1 { color: var(--rv8-ink); font-size: 22px; font-weight: 700; line-height: 30px; letter-spacing: -.01em; }
+  html body:not(#rv8) #app .r7-page .r7-appbar h1,
+  html body:not(#rv8) #app .jk-appbar h1 { color: var(--rv8-ink); font-size: 18px; font-weight: 700; line-height: 26px; }
+  html body:not(#rv8) #app .r7-note { color: var(--rv8-muted); font-size: 13px; line-height: 20px; }
+
+  /* Bottom Navigation: 5 items, 64 + safe area, active = brand icon + accent text */
+  html body:not(#rv8) #app .editorial-shell.app-nav-shell .app-navigation {
+    height: calc(var(--rv8-nav-h) + env(safe-area-inset-bottom, 0px)); min-height: 0;
+    padding-bottom: env(safe-area-inset-bottom, 0px); border-top: 1px solid var(--rv8-line); background: var(--rv8-surface); box-shadow: none;
+  }
+  html body:not(#rv8) #app .editorial-shell.app-nav-shell .app-navigation button {
+    gap: 4px; color: var(--rv8-muted); font-size: 11px; font-weight: 500; line-height: 14px;
+  }
+  html body:not(#rv8) #app .editorial-shell.app-nav-shell .app-navigation button span { color: inherit; font-size: 11px; line-height: 14px; }
+  html body:not(#rv8) #app .editorial-shell.app-nav-shell .app-navigation button.active { color: var(--rv8-accent-text); }
+  html body:not(#rv8) #app .editorial-shell.app-nav-shell .app-navigation button.active svg { color: var(--rv8-accent); }
+
+  /* Floating Jokbo Button — kept in the brand colour (product decision), Elevation/2,
+   * right 16 / 16 above the bottom navigation; compact (48 circle) above a bottom action bar or after scrolling down.
+   * Hidden while solving an exam or playing a story (existing showJokboFab rules). */
+  html body:not(#rv8) #app .jk-fab-dock {
+    right: 16px; bottom: calc(var(--rv8-nav-h) + env(safe-area-inset-bottom, 0px) + 16px);
+  }
+  html body:not(#rv8) #app .jk-fab {
+    min-width: 0; height: 48px; min-height: 48px; padding: 0 20px 0 16px; gap: 6px; border-radius: var(--rv8-r-full);
+    background: var(--rv8-accent); color: #fff; box-shadow: var(--rv8-elev-2); font-size: 14px; font-weight: 700; line-height: 20px;
+    transition: padding .18s ease, width .18s ease;
+  }
+  html body:not(#rv8) #app .jk-fab:active { background: var(--rv8-accent-press); }
+  html body:not(#rv8) #app .jk-fab > svg { width: 22px; height: 22px; }
+  html body.rv8-fab-compact:not(#rv8) #app .jk-fab,
+  html body:not(#rv8) #app .app-nav-shell.has-jk-fab:has(.r7-page.r7-wrong .r7-bottom) .jk-fab { width: 48px; padding: 0; }
+  html body.rv8-fab-compact:not(#rv8) #app .jk-fab > span,
+  html body:not(#rv8) #app .app-nav-shell.has-jk-fab:has(.r7-page.r7-wrong .r7-bottom) .jk-fab > span {
+    position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+  }
+  /* scroll-end clearance so the FAB never covers the last row or button */
+  html body:not(#rv8) #app .app-nav-shell.has-jk-fab .main { padding-bottom: calc(180px + env(safe-area-inset-bottom, 0px)); }
+  html body:not(#rv8) #app .app-nav-shell:not(.has-jk-fab) .main.ed-records { padding-bottom: calc(var(--rv8-nav-h) + 48px + env(safe-area-inset-bottom, 0px)); }
+}
+
+@media (prefers-reduced-motion: reduce) { html body #app .jk-fab { transition: none; } }
+
+/* ======================================================================
+ * 01 · 홈 (H-01 학습 중 / H-02 처음 시작)
+ * ==================================================================== */
+@media (max-width: 700px) {
+  html body:not(#rv8) #app .main.ed-home { padding-left: var(--rv8-screen-x); padding-right: var(--rv8-screen-x); }
+  html body:not(#rv8) #app .hv { display: flex; flex-direction: column; gap: var(--rv8-section-gap); padding: 0; background: var(--rv8-bg); }
+  html body:not(#rv8) #app .hv > * { margin-top: 0; margin-bottom: 0; }
+
+  /* header: brand mark + wordmark, round user button */
+  html body:not(#rv8) #app .hv .hv-top { display: flex; height: 56px; margin: 0 -8px calc(4px - var(--rv8-section-gap)) 0; padding: 0; align-items: center; justify-content: space-between; }
+  html body:not(#rv8) #app .hv .hv-brand { display: inline-flex; align-items: center; gap: 6px; margin: 0; color: var(--rv8-ink); font-size: 18px; font-weight: 700; line-height: 26px; letter-spacing: -.01em; }
+  html body:not(#rv8) #app .hv .hv-brand span { color: var(--rv8-ink); }
+  html body:not(#rv8) #app .hv .hv-brand em { margin-left: -2px; color: var(--rv8-accent); font-style: normal; }
+  html body:not(#rv8) #app .hv .hv-brand-mark { display: inline-flex; order: -1; width: 22px; height: 22px; margin: 0; padding: 0; border-radius: 0; background: none; }
+  html body:not(#rv8) #app .hv .hv-brand-mark svg { width: 22px; height: 22px; }
+  html body:not(#rv8) #app .hv .hv-brand-mark .icon-line,
+  html body:not(#rv8) #app .hv .hv-brand-mark .icon-accent { stroke: var(--rv8-accent); }
+  html body:not(#rv8) #app .hv .hv-icon-btn svg { width: 24px; height: 24px; fill: none; stroke: var(--rv8-ink); stroke-width: 1.7; }
+
+  /* era banner carousel: 300 × 320 cards, single scrim, ink-55% season label */
+  html body:not(#rv8) #app .hv .hv-rail-wrap { display: flex; flex-direction: column; gap: 12px; margin: 0 calc(-1 * var(--rv8-screen-x)); }
+  html body:not(#rv8) #app .hv .hv-rail { display: flex; gap: 12px; padding: 0 var(--rv8-screen-x); scroll-padding-inline: var(--rv8-screen-x); }
+  html body:not(#rv8) #app .hv .hv-rail-item { flex: 0 0 min(300px, calc(100vw - 90px)); width: min(300px, calc(100vw - 90px)); }
+  html body:not(#rv8) #app .hv .hv-era { height: 320px; min-height: 320px; border-radius: var(--rv8-r-xl); box-shadow: none; }
+  html body:not(#rv8) #app .hv .hv-era .hv-card-art { border-radius: var(--rv8-r-xl); }
+  html body:not(#rv8) #app .hv .hv-era .hv-era-shade { background: linear-gradient(180deg, rgba(20, 27, 36, 0) 35%, rgba(20, 27, 36, .86) 100%); }
+  html body:not(#rv8) #app .hv .hv-era .hv-era-body { left: 20px; right: 20px; bottom: 20px; gap: 4px; padding: 0; }
+  html body:not(#rv8) #app .hv .hv-era .hv-era-tags { display: flex; margin: 0 0 4px; gap: 0; }
+  html body:not(#rv8) #app .hv .hv-era .hv-season-tag {
+    display: inline-flex; height: auto; padding: 4px 8px; border: 0; border-radius: var(--rv8-r-xs);
+    background: rgba(20, 27, 36, .55); color: #fff !important; font-size: 12px; font-weight: 500; line-height: 16px; letter-spacing: 0; text-transform: none;
+  }
+  html body:not(#rv8) #app .hv .hv-era .hv-era-title { margin: 0; font-size: 22px; font-weight: 700; line-height: 30px; letter-spacing: -.01em; }
+  html body:not(#rv8) #app .hv .hv-era .hv-era-sub { overflow: hidden; margin: 0; color: rgba(255, 255, 255, .8) !important; font-size: 13px; line-height: 20px; text-overflow: ellipsis; white-space: nowrap; }
+  html body:not(#rv8) #app .hv .hv-era .hv-progress-row { display: flex; align-items: center; gap: 8px; padding-top: 10px; }
+  html body:not(#rv8) #app .hv .hv-era .hv-progress { flex: 1 1 auto; height: 4px; margin: 0; border-radius: 2px; background: rgba(255, 255, 255, .28); }
+  html body:not(#rv8) #app .hv .hv-era .hv-progress i { border-radius: 2px; background: #fff; }
+  html body:not(#rv8) #app .hv .hv-era .hv-progress-label { color: #fff; font-size: 12px; font-weight: 500; line-height: 16px; }
+  html body:not(#rv8) #app .hv .hv-era .hv-era-btn {
+    width: 100%; height: 44px; min-height: 44px; margin-top: 8px; border: 0; border-radius: var(--rv8-r-full);
+    background: var(--rv8-surface); color: var(--rv8-ink); font-size: 14px; font-weight: 700; line-height: 20px; box-shadow: none;
+  }
+  html body:not(#rv8) #app .hv .hv-era.is-soon .hv-era-btn { background: rgba(255, 255, 255, .7); color: var(--rv8-muted); }
+  html body:not(#rv8) #app .hv .hv-rail-foot { display: flex; align-items: center; justify-content: space-between; margin: 0; padding: 0 var(--rv8-screen-x); }
+  html body:not(#rv8) #app .hv .hv-dots { display: flex; gap: 4px; }
+  html body:not(#rv8) #app .hv .hv-dots i { width: 6px; height: 6px; border-radius: var(--rv8-r-full); background: var(--rv8-line-strong); }
+  html body:not(#rv8) #app .hv .hv-dots i.on { width: 16px; background: var(--rv8-accent); }
+  html body:not(#rv8) #app .hv .hv-textbtn { min-height: 32px; padding: 0 0 0 8px; border: 0; background: none; color: var(--rv8-muted); font-size: 13px; font-weight: 500; line-height: 18px; }
+  html body:not(#rv8) #app .hv .hv-textbtn::after { content: ''; display: inline-block; width: 6px; height: 6px; margin-left: 6px; border: solid currentColor; border-width: 1.5px 1.5px 0 0; transform: translateY(-1px) rotate(45deg); }
+
+  /* section header: 18 bold, 12 to content */
+  html body:not(#rv8) #app .hv .hv-h,
+  html body:not(#rv8) #app .hv .lm-card-head h2 { margin: 0; color: var(--rv8-ink); font-size: 18px; font-weight: 700; line-height: 26px; letter-spacing: -.01em; }
+  html body:not(#rv8) #app .hv .hv-status,
+  html body:not(#rv8) #app .hv .hv-shortcuts-section { display: flex; flex-direction: column; gap: 12px; margin: 0; padding: 0; border: 0; background: none; box-shadow: none; }
+  html body:not(#rv8) #app .hv .hv-section-head { margin: 0; }
+
+  /* 학습 현황: one card — D-day row, divider, 4 metrics in one row */
+  html body:not(#rv8) #app .hv .hv-status-card {
+    display: flex; flex-direction: column; gap: 16px; padding: var(--rv8-card-pad);
+    border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-lg); background: var(--rv8-surface); box-shadow: none;
+  }
+  html body:not(#rv8) #app .hv .hv-dday { display: flex; align-items: center; gap: 12px; min-width: 0; }
+  html body:not(#rv8) #app .hv .hv-dday-art { display: inline-flex; flex: none; width: 44px; height: 44px; align-items: center; justify-content: center; border-radius: var(--rv8-r-md); background: var(--rv8-accent-soft); }
+  html body:not(#rv8) #app .hv .hv-dday-art svg { width: 22px; height: 22px; }
+  html body:not(#rv8) #app .hv .hv-dday-art .icon-line,
+  html body:not(#rv8) #app .hv .hv-dday-art .icon-accent { stroke: var(--rv8-accent); }
+  html body:not(#rv8) #app .hv .hv-dday-copy { display: flex; min-width: 0; flex: 1 1 auto; flex-direction: column; gap: 2px; }
+  html body:not(#rv8) #app .hv .hv-dday-copy small { overflow: hidden; color: var(--rv8-muted); font-size: 13px; line-height: 20px; text-overflow: ellipsis; white-space: nowrap; }
+  html body:not(#rv8) #app .hv .hv-dday-copy b { overflow: hidden; color: var(--rv8-ink); font-size: 18px; font-weight: 700; line-height: 26px; text-overflow: ellipsis; white-space: nowrap; }
+  html body:not(#rv8) #app .hv .hv-dday.is-set .hv-dday-copy b { font-size: 24px; line-height: 32px; letter-spacing: -.01em; }
+  html body:not(#rv8) #app .hv .hv-dday-action {
+    flex: none; min-height: 36px; padding: 0 12px; border: 0; border-radius: var(--rv8-r-full); background: none;
+    color: var(--rv8-accent-text); font-size: 14px; font-weight: 700; line-height: 20px; white-space: nowrap;
+  }
+  html body:not(#rv8) #app .hv .hv-dday-action:active { background: var(--rv8-accent-soft); }
+  html body:not(#rv8) #app .hv .hv-divider { width: 100%; height: 1px; margin: 0; border: 0; background: var(--rv8-line); }
+  html body:not(#rv8) #app .hv .hv-metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; margin: 0; padding: 0; border: 0; background: none; box-shadow: none; }
+  html body:not(#rv8) #app .hv .hv-metric {
+    display: flex; min-width: 0; min-height: 0; flex-direction: column; align-items: flex-start; gap: 4px;
+    padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; text-align: left;
+  }
+  html body:not(#rv8) #app .hv .hv-metric small { overflow: hidden; max-width: 100%; color: var(--rv8-muted); font-size: 12px; font-weight: 400; line-height: 18px; text-overflow: ellipsis; white-space: nowrap; }
+  html body:not(#rv8) #app .hv .hv-metric b { display: inline-flex; align-items: baseline; gap: 2px; color: var(--rv8-ink); font-size: 20px; font-weight: 700; line-height: 28px; letter-spacing: -.01em; white-space: nowrap; }
+  html body:not(#rv8) #app .hv .hv-metric b em { color: var(--rv8-muted); font-size: 13px; font-style: normal; font-weight: 400; line-height: 20px; letter-spacing: 0; }
+
+  /* 오늘의 학습 미션: header outside, card with mascot intro + checklist */
+  html body:not(#rv8) #app .hv .lm-card { display: flex; flex-direction: column; gap: 12px; margin: 0; padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; }
+  html body:not(#rv8) #app .hv .lm-card-head { display: flex; min-height: 26px; margin: 0; padding: 0; align-items: center; justify-content: space-between; }
+  html body:not(#rv8) #app .hv .lm-card-head p { display: none; }
+  html body:not(#rv8) #app .hv .lm-settings-link {
+    display: inline-flex; min-height: 32px; padding: 0; align-items: center; gap: 2px; border: 0; border-radius: 0; background: none;
+    color: var(--rv8-muted); font-size: 13px; font-weight: 500; line-height: 18px;
+  }
+  html body:not(#rv8) #app .hv .lm-settings-link::after { content: ''; display: inline-block; width: 6px; height: 6px; margin: 0 4px 0 4px; border: solid currentColor; border-width: 1.5px 1.5px 0 0; transform: rotate(45deg); }
+  html body:not(#rv8) #app .hv .lm-panel {
+    display: flex; flex-direction: column; gap: 16px; padding: var(--rv8-card-pad);
+    border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-lg); background: var(--rv8-surface);
+  }
+  html body:not(#rv8) #app .hv .lm-intro { display: flex; align-items: center; gap: 12px; min-width: 0; margin: 0; padding: 0; border: 0; background: none; }
+  html body:not(#rv8) #app .hv .lm-mascot { flex: none; width: 48px; height: 48px; overflow: hidden; border-radius: 24px; background: var(--rv8-accent-soft); }
+  html body:not(#rv8) #app .hv .lm-mascot img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  html body:not(#rv8) #app .hv .lm-intro > div { display: flex; min-width: 0; flex-direction: column; gap: 2px; }
+  html body:not(#rv8) #app .hv .lm-intro strong { color: var(--rv8-ink); font-size: 16px; font-weight: 700; line-height: 24px; }
+  html body:not(#rv8) #app .hv .lm-intro small { color: var(--rv8-muted); font-size: 13px; line-height: 20px; }
+  html body:not(#rv8) #app .hv .lm-progress-summary { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  html body:not(#rv8) #app .hv .lm-progress-track { height: 6px; margin: 0; border-radius: var(--rv8-r-full); background: var(--rv8-disabled); }
+  html body:not(#rv8) #app .hv .lm-progress-track i { border-radius: var(--rv8-r-full); background: var(--rv8-accent); }
+  html body:not(#rv8) #app .hv .lm-list { display: flex; flex-direction: column; gap: 0; margin: -8px 0; }
+  html body:not(#rv8) #app .hv .lm-row {
+    display: flex; width: 100%; min-height: 56px; padding: 8px 0; align-items: center; gap: 12px;
+    border: 0; border-bottom: 1px solid var(--rv8-line); border-radius: 0; background: none; box-shadow: none; text-align: left;
+  }
+  html body:not(#rv8) #app .hv .lm-row:last-child { border-bottom: 0; }
+  html body:not(#rv8) #app .hv .lm-row .lm-status { order: 0; display: inline-flex; flex: none; width: 24px; height: 24px; align-items: center; justify-content: center; border-radius: 12px; }
+  html body:not(#rv8) #app .hv .lm-row .lm-status-done { background: var(--rv8-accent); color: #fff; }
+  html body:not(#rv8) #app .hv .lm-row .lm-status-done svg { width: 16px; height: 16px; fill: none; stroke: #fff; stroke-width: 2.4; }
+  html body:not(#rv8) #app .hv .lm-row .lm-status-pending { border: 1.5px solid var(--rv8-line-strong); background: none; }
+  html body:not(#rv8) #app .hv .lm-row .lm-status-pending i { display: none; }
+  html body:not(#rv8) #app .hv .lm-row-copy { display: flex; min-width: 0; flex: 1 1 auto; flex-direction: column; gap: 2px; }
+  html body:not(#rv8) #app .hv .lm-row-copy strong { overflow: hidden; color: var(--rv8-ink); font-size: 14px; font-weight: 500; line-height: 22px; text-overflow: ellipsis; white-space: nowrap; }
+  html body:not(#rv8) #app .hv .lm-row-copy small { color: var(--rv8-faint); font-size: 12px; line-height: 18px; }
+  html body:not(#rv8) #app .hv .lm-row.is-complete .lm-row-copy strong { color: var(--rv8-faint); }
+  html body:not(#rv8) #app .hv .lm-row-action { display: inline-flex; flex: none; align-items: center; gap: 2px; color: var(--rv8-accent-text); font-size: 13px; font-weight: 500; line-height: 18px; white-space: nowrap; }
+  html body:not(#rv8) #app .hv .lm-row-action.is-done { color: var(--rv8-faint); }
+  html body:not(#rv8) #app .hv .lm-row-action svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  html body:not(#rv8) #app .hv .lm-expand { min-height: 36px; margin: 0; padding: 0; border: 0; background: none; color: var(--rv8-muted); font-size: 13px; font-weight: 500; }
+  html body:not(#rv8) #app .hv .lm-empty { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 4px 0; text-align: center; }
+  html body:not(#rv8) #app .hv .lm-empty p { margin: 0; color: var(--rv8-muted); font-size: 14px; line-height: 22px; }
+  html body:not(#rv8) #app .hv .lm-empty button { min-height: 44px; padding: 0 20px; border: 1px solid var(--rv8-line-strong); border-radius: var(--rv8-r-full); background: var(--rv8-surface); color: var(--rv8-ink); font-size: 14px; font-weight: 700; }
+
+  /* 학습 바로가기: 1 × 4 compact tiles */
+  html body:not(#rv8) #app .hv .hv-shortcuts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: auto; gap: 8px; }
+  html body:not(#rv8) #app .hv .hv-shortcuts .hv-shortcut {
+    display: flex !important; grid-template-columns: none !important; grid-template-rows: none !important;
+    height: auto; min-height: 0; min-width: 0; flex-direction: column; align-items: center; justify-content: flex-start; gap: 8px;
+    padding: 16px 4px 14px; border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-lg); background: var(--rv8-surface); box-shadow: none; text-align: center;
+  }
+  html body:not(#rv8) #app .hv .hv-shortcuts .hv-shortcut .hv-ico { display: inline-flex; width: 40px; height: 40px; align-items: center; justify-content: center; border-radius: var(--rv8-r-md); background: var(--rv8-subtle); }
+  html body:not(#rv8) #app .hv .hv-shortcuts .hv-shortcut .hv-ico svg,
+  html body:not(#rv8) #app .hv .hv-shortcuts .hv-shortcut .hv-ico .hv-mini-art { width: 22px; height: 22px; }
+  html body:not(#rv8) #app .hv .hv-shortcuts .hv-shortcut .hv-ico .icon-line { stroke: var(--rv8-ink); }
+  html body:not(#rv8) #app .hv .hv-shortcuts .hv-shortcut .hv-ico .icon-accent { stroke: var(--rv8-accent); }
+  html body:not(#rv8) #app .hv .hv-shortcuts .hv-shortcut-copy { display: flex; min-width: 0; max-width: 100%; flex-direction: column; align-items: center; gap: 0; text-align: center; }
+  html body:not(#rv8) #app .hv .hv-shortcuts .hv-shortcut-copy b { overflow: hidden; max-width: 100%; color: var(--rv8-ink); font-size: 13px; font-weight: 500; line-height: 18px; text-overflow: ellipsis; white-space: nowrap; }
+  html body:not(#rv8) #app .hv .hv-shortcuts .hv-shortcut-copy small { overflow: hidden; max-width: 100%; color: var(--rv8-faint); font-size: 12px; line-height: 18px; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* 족보 소개 배너 */
+  html body:not(#rv8) #app .hv .hv-jokbo-banner {
+    display: flex; width: 100%; min-height: 74px; margin: 0; padding: 14px 16px 14px 20px; align-items: center; gap: 12px;
+    border: 0; border-radius: var(--rv8-r-lg); background: var(--rv8-warning-soft); box-shadow: none; text-align: left;
+  }
+  html body:not(#rv8) #app .hv .hv-jokbo-illustration { position: static; display: inline-flex; flex: none; width: 66px; height: 46px; margin: 0; transform: none; }
+  html body:not(#rv8) #app .hv .hv-jokbo-illustration svg { width: 66px; height: 46px; }
+  html body:not(#rv8) #app .hv .hv-jokbo-copy { display: flex; min-width: 0; flex: 1 1 auto; flex-direction: column; gap: 2px; }
+  html body:not(#rv8) #app .hv .hv-jokbo-copy strong { overflow: hidden; color: var(--rv8-ink); font-size: 16px; font-weight: 700; line-height: 24px; text-overflow: ellipsis; white-space: nowrap; }
+  html body:not(#rv8) #app .hv .hv-jokbo-copy b { overflow: hidden; color: var(--rv8-muted); font-size: 13px; font-weight: 400; line-height: 20px; text-overflow: ellipsis; white-space: nowrap; }
+  html body:not(#rv8) #app .hv .hv-jokbo-arrow { display: inline-flex; flex: none; width: 20px; height: 20px; border: 0; border-radius: 0; background: none; box-shadow: none; }
+  html body:not(#rv8) #app .hv .hv-jokbo-arrow svg { width: 20px; height: 20px; fill: none; stroke: var(--rv8-muted); stroke-width: 2; }
+
+  /* weak-era card (shown only with real analysis data) follows the list-card rule */
+  html body:not(#rv8) #app .hv .hv-weak-section { margin: 0; }
+  html body:not(#rv8) #app .hv .hv-weak-card { border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-lg); background: var(--rv8-surface); box-shadow: none; }
+
+  /* home sheets (season list, calendar) */
+  html body:not(#rv8) #app .hv-sheet { border-radius: var(--rv8-r-xl) var(--rv8-r-xl) 0 0; box-shadow: var(--rv8-elev-3); }
+  html body:not(#rv8) #app .hv-calendar-day.is-selected { background: var(--rv8-accent); color: #fff; }
+}
+
+/* ======================================================================
+ * 03 · 기출문제 — E-01 회차별
+ * ==================================================================== */
+@media (max-width: 700px) {
+  html body:not(#rv8) #app .r7-exam-home .r7-exam-filter { display: flex; align-items: center; gap: 8px; margin: 8px 0 16px; }
+  html body:not(#rv8) #app .r7-exam-home .r7-exam-filter > small { margin-left: auto; color: var(--rv8-muted); font-size: 13px; font-weight: 500; }
+  html body:not(#rv8) #app .r7-exam-home .r7-exam-levels { margin: 0; gap: 8px; }
+
+  /* 이어서 풀기 card above the list */
+  html body:not(#rv8) #app .r7-exam-home .r7-resume {
+    display: grid; grid-template-columns: minmax(0, 1fr) auto; width: 100%; margin: 0 0 24px; padding: var(--rv8-card-pad); gap: 12px;
+    align-items: center; border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-lg); background: var(--rv8-surface); box-shadow: none; text-align: left;
+  }
+  html body:not(#rv8) #app .r7-exam-home .r7-resume > .r7-icon { display: none; }
+  html body:not(#rv8) #app .r7-exam-home .r7-resume-copy { display: contents; }
+  html body:not(#rv8) #app .r7-exam-home .r7-resume-copy small { grid-column: 1 / -1; display: flex; margin: 0; }
+  html body:not(#rv8) #app .r7-exam-home .r7-resume-copy b { grid-column: 1; overflow: hidden; color: var(--rv8-ink); font-size: 16px; font-weight: 700; line-height: 24px; text-overflow: ellipsis; white-space: nowrap; }
+  html body:not(#rv8) #app .r7-exam-home .r7-resume-count { grid-column: 1; margin-top: -12px; color: var(--rv8-muted); font-size: 13px; line-height: 20px; }
+  html body:not(#rv8) #app .r7-exam-home .rv8-resume-cta {
+    grid-column: 2; grid-row: 2 / span 2; display: inline-flex; height: 36px; padding: 0 16px; align-items: center;
+    border-radius: var(--rv8-r-full); background: var(--rv8-accent); color: #fff; font-size: 14px; font-weight: 700; white-space: nowrap;
+  }
+  html body:not(#rv8) #app .r7-exam-home .r7-resume-progress { grid-column: 1 / -1; display: block; height: 6px; overflow: hidden; border-radius: var(--rv8-r-full); background: var(--rv8-disabled); }
+  html body:not(#rv8) #app .r7-exam-home .r7-resume-progress i { display: block; height: 100%; border-radius: var(--rv8-r-full); background: var(--rv8-accent); }
+
+  /* list header + grouped list card */
+  html body:not(#rv8) #app .rv8-list-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 8px 0 12px; }
+  html body:not(#rv8) #app .rv8-list-head h2 { margin: 0; color: var(--rv8-ink); font-size: 18px; font-weight: 700; line-height: 26px; }
+  html body:not(#rv8) #app .rv8-list-head small { color: var(--rv8-faint); font-size: 13px; line-height: 20px; }
+  html body:not(#rv8) #app .rv8-exam-list { display: flex; flex-direction: column; overflow: hidden; padding: 4px 0; border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-lg); background: var(--rv8-surface); }
+  html body:not(#rv8) #app .rv8-exam-list .r7-exam-row {
+    display: flex; width: 100%; min-height: 76px; margin: 0; padding: 14px 12px 14px 16px; align-items: center; gap: 14px;
+    border: 0; border-bottom: 1px solid var(--rv8-line); border-radius: 0; background: none; box-shadow: none; text-align: left;
+  }
+  html body:not(#rv8) #app .rv8-exam-list .r7-exam-row:last-child { border-bottom: 0; }
+  html body:not(#rv8) #app .rv8-exam-list .r7-exam-round {
+    display: inline-flex; flex: none; width: 48px; height: 48px; flex-direction: column; align-items: center; justify-content: center;
+    border-radius: var(--rv8-r-md); background: var(--rv8-subtle); color: var(--rv8-ink); font-size: 15px; font-weight: 700; line-height: 18px;
+  }
+  html body:not(#rv8) #app .rv8-exam-list .r7-exam-round small { color: var(--rv8-muted); font-size: 12px; font-weight: 400; line-height: 16px; }
+  html body:not(#rv8) #app .rv8-exam-list .r7-exam-name { display: flex; min-width: 0; flex: 1 1 auto; flex-direction: column; gap: 4px; }
+  html body:not(#rv8) #app .rv8-exam-list .r7-exam-name b { color: var(--rv8-ink); font-size: 16px; font-weight: 700; line-height: 24px; }
+  html body:not(#rv8) #app .rv8-exam-list .rv8-exam-meta { overflow: hidden; color: var(--rv8-muted); font-size: 12px; line-height: 18px; text-overflow: ellipsis; white-space: nowrap; }
+  html body:not(#rv8) #app .rv8-exam-list .rv8-exam-meta .official-pass-rate-badge { padding: 0; border-radius: 0; background: none; color: inherit; font: inherit; }
+  html body:not(#rv8) #app .rv8-exam-list .r7-exam-row > .r7-icon { flex: none; width: 20px; height: 20px; opacity: .7; }
+  html body:not(#rv8) #app .rv8-more {
+    display: flex; width: 100%; min-height: 44px; margin: 16px 0 0; align-items: center; justify-content: center;
+    border: 1px solid var(--rv8-line-strong); border-radius: var(--rv8-r-full); background: var(--rv8-surface); color: var(--rv8-ink); font-size: 14px; font-weight: 700;
+  }
+}
+
+/* ======================================================================
+ * 03 · 기출문제 — E-03 문제 풀이 · E-04 제출 확인
+ * ==================================================================== */
+@media (max-width: 700px) {
+  /* header: close · edition/count · timer chip · list */
+  html body:not(#rv8) #app .r7-exam-practice .rv8-exam-head {
+    display: flex; height: 56px; min-height: 56px; margin: 0 calc(-1 * var(--rv8-gutter)); padding: 0 8px; align-items: center; gap: 4px;
+    border: 0; background: var(--rv8-surface); box-shadow: none;
+  }
+  html body:not(#rv8) #app .rv8-exam-head > button {
+    display: inline-flex; flex: none; width: 44px; height: 44px; min-height: 44px; padding: 0; align-items: center; justify-content: center;
+    border: 0; border-radius: var(--rv8-r-full); background: transparent; box-shadow: none; color: var(--rv8-ink); font-size: 0;
+  }
+  html body:not(#rv8) #app .rv8-exam-head > button .r7-icon,
+  html body:not(#rv8) #app .rv8-exam-head > button .r7-icon img { width: 24px; height: 24px; }
+  html body:not(#rv8) #app .rv8-exam-title { display: flex; min-width: 0; flex: 1 1 auto; flex-direction: column; }
+  html body:not(#rv8) #app .rv8-exam-title small { overflow: hidden; color: var(--rv8-muted); font-size: 12px; line-height: 18px; text-overflow: ellipsis; white-space: nowrap; }
+  html body:not(#rv8) #app .rv8-exam-title b { color: var(--rv8-ink); font-size: 15px; font-weight: 700; line-height: 20px; }
+  html body:not(#rv8) #app .rv8-exam-title b em { color: var(--rv8-faint); font-size: 13px; font-style: normal; font-weight: 400; }
+  html body:not(#rv8) #app .rv8-exam-head .official-exam-timer-inline {
+    display: inline-flex; flex: none; height: 32px; padding: 0 12px 0 10px; align-items: center; gap: 4px;
+    border: 0; border-radius: var(--rv8-r-full); background: var(--rv8-subtle); color: var(--rv8-ink);
+  }
+  html body:not(#rv8) #app .rv8-exam-head .official-exam-timer-inline .r7-icon,
+  html body:not(#rv8) #app .rv8-exam-head .official-exam-timer-inline .r7-icon img { width: 16px; height: 16px; }
+  html body:not(#rv8) #app .rv8-exam-head .official-exam-timer-inline b { color: var(--rv8-ink); font-size: 15px; font-weight: 700; line-height: 20px; font-variant-numeric: tabular-nums; }
+  html body:not(#rv8) #app .rv8-exam-head .official-exam-timer-inline.warning b,
+  html body:not(#rv8) #app .rv8-exam-head .official-exam-timer-inline.danger b,
+  html body:not(#rv8) #app .rv8-exam-head .official-exam-timer-inline.critical b { color: var(--rv8-danger); }
+  /* pause stays reachable as a round icon beside the timer chip */
+  html body:not(#rv8) #app .rv8-exam-head .official-timer-inline-action {
+    display: inline-flex; flex: none; width: 36px; height: 36px; min-height: 36px; padding: 0; align-items: center; justify-content: center;
+    border: 0; border-radius: var(--rv8-r-full); background: transparent; box-shadow: none; color: transparent; font-size: 0;
+  }
+  html body:not(#rv8) #app .rv8-exam-head .official-timer-inline-action .r7-icon,
+  html body:not(#rv8) #app .rv8-exam-head .official-timer-inline-action .r7-icon img { width: 18px; height: 18px; }
+  html body:not(#rv8) #app .r7-exam-practice .r7-exam-progress { display: block; height: 3px; margin: 0 calc(-1 * var(--rv8-gutter)); padding: 0; background: var(--rv8-disabled); }
+  html body:not(#rv8) #app .r7-exam-practice .r7-exam-progress > div { height: 3px; margin: 0; border-radius: 0; background: transparent; }
+  html body:not(#rv8) #app .r7-exam-practice .r7-exam-progress i { display: block; height: 3px; border-radius: 0 var(--rv8-r-full) var(--rv8-r-full) 0; background: var(--rv8-accent); }
+
+  /* question meta + source image */
+  html body:not(#rv8) #app .r7-exam-practice .official-question-stage { padding-top: 20px; }
+  html body:not(#rv8) #app .r7-exam-practice .official-question-kicker { min-height: 28px; margin: 0 0 12px; }
+  html body:not(#rv8) #app .r7-exam-practice .official-question-kicker span { padding: 0; border: 0; background: none; color: var(--rv8-accent-text); font-size: 20px; font-weight: 700; line-height: 28px; }
+  html body:not(#rv8) #app .r7-exam-practice .official-paper { position: relative; margin: 0 0 16px; overflow: hidden; border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-md); background: var(--rv8-surface); box-shadow: none; }
+  html body:not(#rv8) #app .r7-exam-practice .official-paper-open { position: relative; display: block; width: 100%; padding: 0; border: 0; border-radius: 0; background: none; }
+  /* zoom affordance pinned to the image's bottom-right corner */
+  html body:not(#rv8) #app .r7-exam-practice .official-paper-open::after {
+    content: ''; position: absolute; right: 12px; bottom: 12px; width: 44px; height: 44px; border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-full);
+    background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23253142' stroke-width='1.8' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6'/%3E%3Cpath d='m15 15 5 5M10.5 8v5M8 10.5h5'/%3E%3C/svg%3E") center / 22px no-repeat;
+    box-shadow: var(--rv8-elev-1); pointer-events: none;
+  }
+  /* development-only caption and the meaningless indicator dots are removed (diagnosis P0) */
+  html body:not(#rv8) #app .r7-exam-practice .official-paper figcaption > span,
+  html body:not(#rv8) #app .r7-exam-practice .official-paper figcaption > em,
+  html body:not(#rv8) #app .r7-exam-practice .official-choice-indicator { display: none !important; }
+  html body:not(#rv8) #app .r7-exam-practice .official-paper figcaption { display: block; padding: 8px 12px; border-top: 1px solid var(--rv8-line); background: var(--rv8-surface); }
+  html body:not(#rv8) #app .r7-exam-practice .official-paper figcaption small { color: var(--rv8-faint); font-size: 12px; line-height: 18px; }
+  html body:not(#rv8) #app .r7-exam-practice .official-choice-panel { margin: 0; padding: 0; border: 0; background: none; box-shadow: none; }
+  html body:not(#rv8) #app .r7-exam-practice .official-choice-panel > header { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+  /* Exam Choice: min 56, radius 12, number circle; selected = brand 1.5px + filled circle */
+  html body:not(#rv8) #app .official-choice-grid { display: flex; flex-direction: column; gap: 8px; }
+  html body:not(#rv8) #app .official-choice-grid > button {
+    display: flex; width: 100%; min-height: 56px; margin: 0; padding: 12px 16px; align-items: center; gap: 12px;
+    border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-md); background: var(--rv8-surface); box-shadow: none; color: var(--rv8-ink); text-align: left;
+  }
+  html body:not(#rv8) #app .official-choice-grid > button .official-choice-number {
+    display: inline-flex; flex: none; width: 28px; height: 28px; align-items: center; justify-content: center; border: 0; border-radius: var(--rv8-r-full);
+    background: var(--rv8-subtle); color: var(--rv8-muted); font-size: 13px; font-weight: 500; line-height: 18px;
+  }
+  html body:not(#rv8) #app .official-choice-grid > button .official-choice-label { flex: 1 1 auto; min-width: 0; color: var(--rv8-ink); font-size: 14px; font-weight: 500; line-height: 22px; }
+  html body:not(#rv8) #app .official-choice-grid > button.picked { padding: 11.5px 15.5px; border: 1.5px solid var(--rv8-accent); background: var(--rv8-accent-soft); }
+  html body:not(#rv8) #app .official-choice-grid > button.picked .official-choice-number { background: var(--rv8-accent); color: #fff; }
+  html body:not(#rv8) #app .official-choice-grid > button.correct { border: 1.5px solid var(--rv8-success); background: var(--rv8-success-soft); }
+  html body:not(#rv8) #app .official-choice-grid > button.correct .official-choice-number { background: var(--rv8-success); color: #fff; }
+  html body:not(#rv8) #app .official-choice-grid > button.wrong { border: 1.5px solid var(--rv8-danger); background: var(--rv8-danger-soft); }
+  html body:not(#rv8) #app .official-choice-grid > button.wrong .official-choice-number { background: var(--rv8-danger); color: #fff; }
+  html body:not(#rv8) #app .r7-exam-practice .official-exam-forward-row { display: none; }
+
+  /* Bottom Action Bar: 1px top line, no shadow, 1:2 pill buttons */
+  html body:not(#rv8) #app .r7-exam-practice .official-practice-actions {
+    position: fixed; z-index: 40; right: 0; bottom: 0; left: 0; margin: 0 auto; width: min(100%, 560px); box-sizing: border-box;
+    padding: 12px var(--rv8-screen-x) calc(12px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--rv8-line); background: var(--rv8-surface); box-shadow: none;
+  }
+  html body:not(#rv8) #app .rv8-action-bar { display: flex; gap: 8px; margin: 0; padding: 0; }
+  html body:not(#rv8) #app .rv8-action-bar > button { min-width: 0; height: 52px; min-height: 52px; margin: 0; padding: 0 16px; font-size: 16px; font-weight: 700; line-height: 24px; }
+  html body:not(#rv8) #app .rv8-action-bar > .secondary { flex: 1 1 0; }
+  html body:not(#rv8) #app .rv8-action-bar > .primary { flex: 2 1 0; }
+  html body:not(#rv8) #app .r7-exam-practice { padding-bottom: calc(110px + env(safe-area-inset-bottom, 0px)); }
+
+  /* question sheet + confirm modal */
+  html body:not(#rv8) #app .rv8-sheet-submit { padding: 12px 0 4px; }
+  html body:not(#rv8) #app .rv8-sheet-submit button { width: 100%; }
+  html body:not(#rv8) #app .r7-confirm-overlay .modal {
+    width: min(320px, calc(100vw - 40px)); padding: 24px 20px 20px; border: 0; border-radius: var(--rv8-r-xl); background: var(--rv8-surface); box-shadow: var(--rv8-elev-3);
+  }
+  html body:not(#rv8) #app .r7-confirm-overlay .modal h2 { margin: 0 0 8px; color: var(--rv8-ink); font-size: 18px; font-weight: 700; line-height: 26px; }
+  html body:not(#rv8) #app .r7-confirm-overlay .modal p { margin: 0 0 20px; color: var(--rv8-muted); font-size: 14px; line-height: 22px; }
+  html body:not(#rv8) #app .r7-confirm-overlay .modal button { min-height: 44px; border-radius: var(--rv8-r-full); font-size: 14px; font-weight: 700; }
+}
+@media (max-width: 700px) {
+  /* ①–⑤ glyphs → plain digits inside the 28px circle */
+  html body:not(#rv8) #app .official-choice-grid { counter-reset: rv8-choice; }
+  html body:not(#rv8) #app .official-choice-grid > button { counter-increment: rv8-choice; }
+  html body:not(#rv8) #app .official-choice-grid > button .official-choice-number { font-size: 0; }
+  html body:not(#rv8) #app .official-choice-grid > button .official-choice-number::before { content: counter(rv8-choice); font-size: 13px; line-height: 18px; }
+  html body:not(#rv8) #app .official-question-sheet { display: flex; flex-direction: column; }
+  html body:not(#rv8) #app .official-question-sheet .rv8-sheet-submit { order: 99; }
+}
+
+/* ======================================================================
+ * 02 · 스토리 — S-01 시대 선택 · S-02 시대 메인 · S-03 챕터 상세 시트
+ * (S-04/S-05 플레이·대사 화면은 이번 범위에서 제외)
+ * ==================================================================== */
+@media (max-width: 700px) {
+  /* app bar: back + left-aligned title */
+  html body:not(#rv8) #app .r7-page .r7-appbar { display: flex; height: 56px; min-height: 56px; margin: 0 -12px; padding: 0 4px; align-items: center; gap: 4px; border: 0; background: transparent; }
+  html body:not(#rv8) #app .r7-page .r7-appbar h1 { flex: 1 1 auto; min-width: 0; margin: 0; overflow: hidden; text-align: left; text-overflow: ellipsis; white-space: nowrap; }
+  html body:not(#rv8) #app .r7-page .r7-appbar > span:empty { display: none; }
+
+  /* S-01 */
+  html body:not(#rv8) #app .r7-season-select .r7-timeline-heading { margin: 4px 0 16px; padding: 0; }
+  html body:not(#rv8) #app .r7-season-select .r7-timeline-heading p { margin: 0; color: var(--rv8-muted); font-size: 13px; line-height: 20px; }
+  html body:not(#rv8) #app .r7-season-select .r7-timeline { display: flex; flex-direction: column; overflow: hidden; padding: 4px 0; border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-lg); background: var(--rv8-surface); }
+  html body:not(#rv8) #app .r7-season-select .r7-timeline::before { display: none; }
+  html body:not(#rv8) #app .r7-season-select .r7-season-row {
+    display: flex; width: 100%; min-height: 80px; margin: 0; padding: 14px 16px 14px 12px; align-items: center; gap: 12px;
+    border: 0; border-bottom: 1px solid var(--rv8-line); border-radius: 0; background: none; box-shadow: none; text-align: left;
+  }
+  html body:not(#rv8) #app .r7-season-select .r7-season-row:last-child { border-bottom: 0; }
+  html body:not(#rv8) #app .r7-season-select .r7-season-row::before,
+  html body:not(#rv8) #app .r7-season-select .r7-season-row::after { display: none; }
+  html body:not(#rv8) #app .r7-season-select .r7-season-thumb {
+    position: static; flex: none; order: 0; width: 48px; height: 56px; margin: 0; object-fit: cover; border-radius: var(--rv8-r-sm); background: var(--rv8-subtle); box-shadow: none;
+  }
+  html body:not(#rv8) #app .r7-season-select .r7-season-row.is-soon .r7-season-thumb { opacity: .55; }
+  html body:not(#rv8) #app .r7-season-select .r7-season-copy { display: flex; min-width: 0; flex: 1 1 auto; flex-direction: column; gap: 2px; margin: 0; padding: 0; }
+  html body:not(#rv8) #app .r7-season-select .rv8-season-kicker small { color: var(--rv8-muted); font-size: 11px; font-weight: 500; line-height: 14px; letter-spacing: 0; }
+  html body:not(#rv8) #app .r7-season-select .rv8-season-name { overflow: hidden; color: var(--rv8-ink); font-size: 16px; font-weight: 700; line-height: 24px; text-overflow: ellipsis; white-space: nowrap; }
+  html body:not(#rv8) #app .r7-season-select .rv8-season-name b { font: inherit; color: inherit; }
+  html body:not(#rv8) #app .r7-season-select .r7-season-row.is-soon .rv8-season-name { color: var(--rv8-muted); }
+  html body:not(#rv8) #app .r7-season-select .rv8-season-meta { overflow: hidden; color: var(--rv8-muted); font-size: 12px; line-height: 18px; text-overflow: ellipsis; white-space: nowrap; }
+  html body:not(#rv8) #app .r7-season-select .rv8-season-progress { display: block; width: 100%; max-width: 160px; height: 3px; margin-top: 6px; overflow: hidden; border-radius: var(--rv8-r-full); background: var(--rv8-disabled); }
+  html body:not(#rv8) #app .r7-season-select .rv8-season-progress i { display: block; height: 100%; border-radius: inherit; background: var(--rv8-accent); }
+  html body:not(#rv8) #app .rv8-badge-neutral,
+  html body:not(#rv8) #app .rv8-badge-idle-soft { background: var(--rv8-subtle); color: var(--rv8-muted); }
+
+  /* S-02 hero + metrics + chapter list */
+  html body:not(#rv8) #app .r7-era-view .r7-era-hero { width: calc(100% + 2 * var(--rv8-gutter)); margin: -20px calc(-1 * var(--rv8-gutter)) 0; border-radius: 0; }
+  html body:not(#rv8) #app .r7-era-view .r7-era-hero .r7-era-shade { background: linear-gradient(180deg, rgba(20, 27, 36, .1) 20%, rgba(20, 27, 36, .82) 100%); }
+  html body:not(#rv8) #app .r7-era-view .r7-era-back { width: 44px; height: 44px; border: 0; border-radius: var(--rv8-r-full); background: rgba(20, 27, 36, .35); color: #fff; }
+  html body:not(#rv8) #app .r7-era-view .r7-era-back img { filter: brightness(0) invert(1); }
+  html body:not(#rv8) #app .r7-era-view .r7-era-hero h1 { color: #fff; font-size: 22px; font-weight: 700; line-height: 30px; }
+  html body:not(#rv8) #app .r7-era-view .r7-era-hero small { display: inline-flex; width: fit-content; padding: 4px 8px; border-radius: var(--rv8-r-xs); background: rgba(20, 27, 36, .55); color: #fff; font-size: 12px; font-weight: 500; line-height: 16px; }
+  html body:not(#rv8) #app .r7-era-view .r7-era-hero p { color: rgba(255, 255, 255, .85); font-size: 13px; line-height: 20px; }
+  html body:not(#rv8) #app .r7-era-view .r7-era-metrics,
+  html body:not(#rv8) #app .r7-chapter-sheet .r7-chapter-stats {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; padding: 16px 0; border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-lg); background: var(--rv8-surface); box-shadow: none;
+  }
+  html body:not(#rv8) #app .r7-era-view .r7-era-metrics { margin: 16px 0; }
+  html body:not(#rv8) #app .r7-era-view .r7-era-metrics > div,
+  html body:not(#rv8) #app .r7-chapter-sheet .r7-chapter-stats > div { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 0; border: 0; background: none; }
+  html body:not(#rv8) #app .r7-era-view .r7-era-metrics small,
+  html body:not(#rv8) #app .r7-chapter-sheet .r7-chapter-stats small { color: var(--rv8-muted); font-size: 12px; line-height: 18px; }
+  html body:not(#rv8) #app .r7-era-view .r7-era-metrics strong { color: var(--rv8-ink); font-size: 20px; font-weight: 700; line-height: 28px; }
+  html body:not(#rv8) #app .r7-era-view .r7-era-metrics strong em { color: var(--rv8-muted); font-size: 13px; font-style: normal; font-weight: 400; }
+  /* resume becomes the screen's one primary pill CTA */
+  html body:not(#rv8) #app .r7-era-view .r7-era-resume {
+    display: flex; width: 100%; min-height: 52px; margin: 0 0 16px; padding: 0 20px; align-items: center; justify-content: center; gap: 8px;
+    border: 0; border-radius: var(--rv8-r-full); background: var(--rv8-accent); box-shadow: none; color: #fff;
+  }
+  html body:not(#rv8) #app .r7-era-view .r7-era-resume > span:first-child { display: flex; flex-direction: row; align-items: baseline; gap: 6px; }
+  html body:not(#rv8) #app .r7-era-view .r7-era-resume small { color: rgba(255, 255, 255, .85); font-size: 13px; font-weight: 500; }
+  html body:not(#rv8) #app .r7-era-view .r7-era-resume b { color: #fff; font-size: 16px; font-weight: 700; line-height: 24px; }
+  html body:not(#rv8) #app .r7-era-view .r7-era-resume .r7-era-play { display: none; }
+  html body:not(#rv8) #app .r7-era-view .r7-chapter-list { display: flex; flex-direction: column; margin-top: 4px; }
+  html body:not(#rv8) #app .r7-chapter-list .r7-chapter-row {
+    display: flex; width: 100%; min-height: 72px; margin: 0; padding: 12px 0; align-items: center; gap: 12px;
+    border: 0; border-bottom: 1px solid var(--rv8-line); border-radius: 0; background: none; box-shadow: none; text-align: left;
+  }
+  html body:not(#rv8) #app .r7-chapter-list .r7-chapter-number {
+    display: inline-flex; flex: none; width: 36px; height: 36px; align-items: center; justify-content: center; border-radius: var(--rv8-r-full);
+    background: var(--rv8-subtle); color: var(--rv8-muted); font-size: 13px; font-weight: 700;
+  }
+  html body:not(#rv8) #app .r7-chapter-list .r7-chapter-row.current .r7-chapter-number,
+  html body:not(#rv8) #app .r7-chapter-list .r7-chapter-row[aria-current] .r7-chapter-number { background: var(--rv8-accent-soft); color: var(--rv8-accent-text); }
+  html body:not(#rv8) #app .r7-chapter-list .r7-chapter-row > span:not(.r7-chapter-number) { display: flex; min-width: 0; flex: 1 1 auto; flex-direction: column; gap: 2px; }
+  html body:not(#rv8) #app .r7-chapter-list .r7-chapter-row b { overflow: hidden; color: var(--rv8-ink); font-size: 15px; font-weight: 700; line-height: 22px; text-overflow: ellipsis; white-space: nowrap; }
+  html body:not(#rv8) #app .r7-chapter-list .r7-chapter-row small { color: var(--rv8-muted); font-size: 12px; line-height: 18px; }
+  html body:not(#rv8) #app .r7-chapter-list .r7-chapter-row em {
+    flex: none; height: 22px; padding: 0 8px; border-radius: var(--rv8-r-xs); background: var(--rv8-subtle);
+    color: var(--rv8-muted); font-size: 12px; font-style: normal; font-weight: 500; line-height: 22px;
+  }
+
+  /* S-03 chapter bottom sheet */
+  html body:not(#rv8) #app .r7-chapter-overlay { background: rgba(20, 27, 36, .45); }
+  html body:not(#rv8) #app .r7-chapter-sheet { padding: 8px 20px calc(20px + env(safe-area-inset-bottom, 0px)); border: 0; border-radius: var(--rv8-r-xl) var(--rv8-r-xl) 0 0; background: var(--rv8-surface); box-shadow: var(--rv8-elev-3); }
+  html body:not(#rv8) #app .r7-chapter-sheet .sheet-handle { width: 36px; height: 4px; margin: 0 auto 12px; border-radius: 2px; background: var(--rv8-line-strong); }
+  html body:not(#rv8) #app .r7-chapter-sheet > header { display: flex; align-items: center; gap: 8px; }
+  html body:not(#rv8) #app .r7-chapter-sheet > header small { color: var(--rv8-muted); font-size: 12px; font-weight: 500; }
+  html body:not(#rv8) #app .r7-chapter-sheet > header span { height: 22px; padding: 0 8px; border-radius: var(--rv8-r-xs); background: var(--rv8-subtle); color: var(--rv8-muted); font-size: 12px; font-weight: 500; line-height: 22px; }
+  html body:not(#rv8) #app .r7-chapter-sheet > header .close { width: 44px; height: 44px; margin-left: auto; border: 0; border-radius: var(--rv8-r-full); background: none; color: var(--rv8-muted); font-size: 22px; }
+  html body:not(#rv8) #app .r7-chapter-sheet h2 { margin: 4px 0 4px; color: var(--rv8-ink); font-size: 18px; font-weight: 700; line-height: 26px; }
+  html body:not(#rv8) #app .r7-chapter-sheet > p { margin: 0 0 16px; color: var(--rv8-muted); font-size: 13px; line-height: 20px; }
+  html body:not(#rv8) #app .r7-chapter-sheet .r7-chapter-stats { padding: 12px 16px; border: 0; border-radius: var(--rv8-r-md); background: var(--rv8-subtle); }
+  html body:not(#rv8) #app .r7-chapter-sheet .r7-chapter-stats > div { align-items: flex-start; }
+  html body:not(#rv8) #app .r7-chapter-sheet .r7-chapter-stats b { color: var(--rv8-ink); font-size: 15px; font-weight: 700; line-height: 20px; }
+  html body:not(#rv8) #app .r7-chapter-sheet .r7-scene-link { display: flex; width: 100%; min-height: 48px; margin: 8px 0; padding: 0; align-items: center; justify-content: space-between; border: 0; background: none; color: var(--rv8-ink); font-size: 14px; font-weight: 500; }
+  html body:not(#rv8) #app .r7-chapter-sheet .r7-chapter-actions { display: flex; flex-direction: column; gap: 8px; }
+  html body:not(#rv8) #app .r7-chapter-sheet .r7-chapter-actions .primary { height: 52px; min-height: 52px; font-size: 16px; }
+  html body:not(#rv8) #app .r7-chapter-sheet .r7-chapter-actions .secondary,
+  html body:not(#rv8) #app .r7-chapter-sheet .r7-chapter-actions .text-btn { min-height: 44px; border: 0; background: none; color: var(--rv8-accent-text); font-size: 14px; font-weight: 700; }
+}
+
+/* ======================================================================
+ * 03 · 기출문제 — E-05 채점 결과 · E-06 문항별 분석 · 시대별 탭 · 기록
+ * ==================================================================== */
+@media (max-width: 700px) {
+  /* score · pass line · facts read as one card */
+  html body:not(#rv8) #app .r7-exam-result .r7-result-score,
+  html body:not(#rv8) #app .r7-exam-result .r7-pass-line,
+  html body:not(#rv8) #app .r7-exam-result .r7-result-facts {
+    margin: 0; padding: 0 var(--rv8-card-pad); border: 1px solid var(--rv8-line); border-top: 0; border-bottom: 0; border-radius: 0; background: var(--rv8-surface); box-shadow: none;
+  }
+  html body:not(#rv8) #app .r7-exam-result .r7-result-score { margin-top: 16px; padding-top: var(--rv8-card-pad); border-top: 1px solid var(--rv8-line); border-radius: var(--rv8-r-lg) var(--rv8-r-lg) 0 0; text-align: left; }
+  html body:not(#rv8) #app .r7-exam-result .r7-result-facts { padding-bottom: var(--rv8-card-pad); border-bottom: 1px solid var(--rv8-line); border-radius: 0 0 var(--rv8-r-lg) var(--rv8-r-lg); }
+  html body:not(#rv8) #app .r7-exam-result .r7-result-score p { margin: 0; color: var(--rv8-muted); font-size: 12px; line-height: 18px; }
+  html body:not(#rv8) #app .r7-exam-result .r7-result-score strong { display: inline-flex; align-items: baseline; gap: 4px; margin: 8px 0 4px; color: var(--rv8-ink); font-size: 32px; font-weight: 700; line-height: 40px; }
+  html body:not(#rv8) #app .r7-exam-result .r7-result-score strong small { color: var(--rv8-muted); font-size: 13px; font-weight: 400; }
+  html body:not(#rv8) #app .r7-exam-result .r7-result-score > span { display: inline-flex; height: 22px; margin-left: 8px; padding: 0 8px; align-items: center; border-radius: var(--rv8-r-xs); background: var(--rv8-success-soft); color: var(--rv8-success); font-size: 12px; font-weight: 500; vertical-align: 6px; }
+  html body:not(#rv8) #app .r7-exam-result .r7-result-score > span.fail { background: var(--rv8-danger-soft); color: var(--rv8-danger); }
+  html body:not(#rv8) #app .r7-exam-result .r7-pass-line { padding-top: 12px; padding-bottom: 16px; }
+  html body:not(#rv8) #app .r7-exam-result .r7-pass-line > div:first-child { display: flex; justify-content: space-between; color: var(--rv8-muted); font-size: 12px; line-height: 18px; }
+  html body:not(#rv8) #app .r7-exam-result .r7-pass-line b { color: var(--rv8-ink); font-size: 12px; font-weight: 500; }
+  html body:not(#rv8) #app .r7-exam-result .r7-pass-track { height: 6px; margin-top: 8px; border-radius: var(--rv8-r-full); background: var(--rv8-disabled); }
+  html body:not(#rv8) #app .r7-exam-result .r7-pass-track i { border-radius: var(--rv8-r-full); background: var(--rv8-success); }
+  html body:not(#rv8) #app .r7-exam-result .r7-result-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding-top: 16px; border-top: 0; }
+  html body:not(#rv8) #app .r7-exam-result .r7-result-facts::before { content: ''; grid-column: 1 / -1; height: 1px; margin: -16px 0 4px; background: var(--rv8-line); }
+  html body:not(#rv8) #app .r7-exam-result .r7-result-facts small { display: block; color: var(--rv8-muted); font-size: 12px; line-height: 18px; }
+  html body:not(#rv8) #app .r7-exam-result .r7-result-facts b { color: var(--rv8-ink); font-size: 18px; font-weight: 700; line-height: 26px; }
+  html body:not(#rv8) #app .r7-exam-result .r7-result-weak { margin: 32px 0 0; padding: 4px var(--rv8-card-pad); border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-lg); background: var(--rv8-surface); }
+  html body:not(#rv8) #app .r7-exam-result .r7-result-weak h2 { margin: 12px 0 4px; color: var(--rv8-ink); font-size: 18px; font-weight: 700; line-height: 26px; }
+  html body:not(#rv8) #app .r7-exam-result .r7-result-weak > div { padding: 12px 0; border-bottom: 1px solid var(--rv8-line); }
+  html body:not(#rv8) #app .r7-exam-result .r7-result-weak > div:last-child { border-bottom: 0; }
+  html body:not(#rv8) #app .r7-exam-result .r7-result-weak small { background: var(--rv8-danger-soft); color: var(--rv8-danger); border-radius: var(--rv8-r-xs); }
+  html body:not(#rv8) #app .r7-exam-result .r7-result-weak strong { color: var(--rv8-danger); }
+  html body:not(#rv8) #app .r7-exam-result .r7-weak-track { height: 6px; border-radius: var(--rv8-r-full); background: var(--rv8-disabled); }
+  html body:not(#rv8) #app .r7-exam-result .r7-weak-track i { border-radius: var(--rv8-r-full); background: var(--rv8-danger); }
+  html body:not(#rv8) #app .r7-exam-result .r7-result-actions { margin-top: 24px; }
+  html body:not(#rv8) #app .r7-exam-result .r7-result-actions .r7-primary { height: 52px; font-size: 16px; }
+  /* 문항별 grid: correct = neutral, wrong = danger soft */
+  html body:not(#rv8) #app .r7-result-map { gap: 8px; }
+  html body:not(#rv8) #app .r7-result-map button { min-width: 0; height: 36px; min-height: 36px; border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-sm); background: var(--rv8-surface); color: var(--rv8-ink); font-size: 13px; font-weight: 500; box-shadow: none; }
+  html body:not(#rv8) #app .r7-result-map button.wrong { border-color: transparent; background: var(--rv8-danger-soft); color: var(--rv8-danger); }
+  html body:not(#rv8) #app .r7-result-map button.correct { color: var(--rv8-muted); }
+
+  /* 시대별 누적 정답률 (E-02 / E-22) */
+  html body:not(#rv8) #app .r7-cumulative-eras { display: flex; flex-direction: column; overflow: hidden; padding: 4px 0; border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-lg); background: var(--rv8-surface); }
+  html body:not(#rv8) #app .r7-cumulative-eras > button { margin: 0; padding: 14px 16px; border: 0; border-bottom: 1px solid var(--rv8-line); border-radius: 0; background: none; box-shadow: none; }
+  html body:not(#rv8) #app .r7-cumulative-eras > button:last-child { border-bottom: 0; }
+  html body:not(#rv8) #app .r7-cumulative-eras b { color: var(--rv8-ink); font-size: 15px; font-weight: 700; }
+  html body:not(#rv8) #app .r7-cumulative-eras em { height: 22px; padding: 0 8px; border-radius: var(--rv8-r-xs); background: var(--rv8-subtle); color: var(--rv8-muted); font-size: 12px; font-style: normal; font-weight: 500; line-height: 22px; }
+  html body:not(#rv8) #app .r7-cumulative-eras strong { color: var(--rv8-ink); font-size: 14px; font-weight: 700; }
+  html body:not(#rv8) #app .r7-cumulative-track { height: 4px; border-radius: var(--rv8-r-full); background: var(--rv8-disabled); }
+  html body:not(#rv8) #app .r7-cumulative-track i { border-radius: var(--rv8-r-full); background: var(--rv8-muted); }
+
+  /* submit confirm: unanswered jump as a secondary pill */
+  html body:not(#rv8) #app .r7-confirm-overlay .official-unanswered-jump { width: 100%; justify-content: center; border: 1px solid var(--rv8-accent); background: var(--rv8-accent-soft); color: var(--rv8-accent-text); text-align: center; }
+  html body:not(#rv8) #app .r7-confirm-overlay .modal > div:last-child { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+}
+
+/* ======================================================================
+ * 04 · OX 퀴즈 — O-01 시대 선택 · O-02/03 카드 · O-04 정답 확인 · O-05 결과
+ * ==================================================================== */
+@media (max-width: 700px) {
+  html body:not(#rv8) #app .r7-ox-home .r7-intro { margin: 4px 0 24px; color: var(--rv8-muted); font-size: 13px; line-height: 20px; }
+  html body:not(#rv8) #app .r7-ox-home .r7-section-title { display: flex; align-items: center; justify-content: space-between; margin: 0 0 12px; }
+  html body:not(#rv8) #app .r7-ox-home .r7-section-title h2 { margin: 0; color: var(--rv8-ink); font-size: 18px; font-weight: 700; line-height: 26px; }
+  html body:not(#rv8) #app .r7-ox-home .r7-section-title small { color: var(--rv8-faint); font-size: 13px; }
+  /* era rows: one card, dividers between rows (first/last rows carry the radius) */
+  html body:not(#rv8) #app .r7-ox-home .r7-ox-row {
+    display: flex; width: 100%; min-height: 64px; margin: 0; padding: 12px 12px 12px 16px; align-items: center; gap: 8px;
+    border: 1px solid var(--rv8-line); border-top: 0; border-radius: 0; background: var(--rv8-surface); box-shadow: none; text-align: left;
+  }
+  html body:not(#rv8) #app .r7-ox-home .r7-section-title + .r7-ox-row { border-top: 1px solid var(--rv8-line); border-radius: var(--rv8-r-lg) var(--rv8-r-lg) 0 0; }
+  html body:not(#rv8) #app .r7-ox-home .r7-ox-row:has(+ :not(.r7-ox-row)) { border-radius: 0 0 var(--rv8-r-lg) var(--rv8-r-lg); }
+  html body:not(#rv8) #app .r7-ox-home .r7-ox-row > span:first-child { display: flex; min-width: 0; flex: 1 1 auto; flex-direction: column; gap: 2px; }
+  html body:not(#rv8) #app .r7-ox-home .r7-ox-row b { overflow: hidden; color: var(--rv8-ink); font-size: 15px; font-weight: 700; line-height: 22px; text-overflow: ellipsis; white-space: nowrap; }
+  html body:not(#rv8) #app .r7-ox-home .r7-ox-row small { color: var(--rv8-muted); font-size: 12px; line-height: 18px; }
+  html body:not(#rv8) #app .r7-ox-home .r7-ox-row small + small { display: none; }
+  html body:not(#rv8) #app .r7-ox-home .r7-ox-row em {
+    flex: none; height: 22px; padding: 0 8px; border-radius: var(--rv8-r-xs); background: var(--rv8-subtle);
+    color: var(--rv8-muted); font-size: 12px; font-style: normal; font-weight: 500; line-height: 22px;
+  }
+  html body:not(#rv8) #app .r7-ox-home .r7-ox-row > .r7-icon { flex: none; width: 20px; height: 20px; opacity: .7; }
+  html body:not(#rv8) #app .r7-ox-home .r7-analysis-link,
+  html body:not(#rv8) #app .r7-page .r7-analysis-link { margin-top: 16px; border: 0; border-radius: 0; background: none; color: var(--rv8-muted); font-size: 13px; font-weight: 500; }
+
+  /* play header: close · progress · count */
+  html body:not(#rv8) #app .r7-ox-play .r7-quiz-head { min-height: 56px; }
+  html body:not(#rv8) #app .r7-ox-play .r7-quiz-head > button { width: 44px; height: 44px; border: 0; border-radius: var(--rv8-r-full); background: none; }
+  html body:not(#rv8) #app .r7-ox-play .r7-quiz-progress { height: 4px; border-radius: var(--rv8-r-full); background: var(--rv8-disabled); }
+  html body:not(#rv8) #app .r7-ox-play .r7-quiz-progress i { border-radius: var(--rv8-r-full); background: var(--rv8-accent); }
+  html body:not(#rv8) #app .r7-ox-play .r7-ox-count { color: var(--rv8-muted); font-size: 13px; }
+  html body:not(#rv8) #app .r7-ox-play .r7-ox-count em { color: var(--rv8-ink); font-style: normal; font-weight: 700; }
+  /* correct / wrong counters as badges */
+  html body:not(#rv8) #app .r7-ox-tally > span.is-right,
+  html body:not(#rv8) #app .r7-ox-tally > span.is-wrong { height: 22px; padding: 0 8px; border: 0; border-radius: var(--rv8-r-xs); font-size: 12px; font-weight: 500; line-height: 22px; }
+  html body:not(#rv8) #app .r7-ox-tally > span.is-right { background: var(--rv8-success-soft); color: var(--rv8-success); }
+  html body:not(#rv8) #app .r7-ox-tally > span.is-wrong { background: var(--rv8-danger-soft); color: var(--rv8-danger); }
+  html body:not(#rv8) #app .r7-ox-tally .r7-ox-left { color: var(--rv8-muted); font-size: 13px; }
+  /* card + 2-card stack */
+  html body:not(#rv8) #app .r7-ox-card { border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-xl); background: var(--rv8-surface); box-shadow: var(--rv8-elev-1); }
+  html body:not(#rv8) #app .r7-ox-card-back { border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-xl); background: var(--rv8-surface); box-shadow: none; }
+  html body:not(#rv8) #app .r7-ox-qno { color: var(--rv8-accent-text); font-size: 13px; font-weight: 700; }
+  html body:not(#rv8) #app .r7-ox-tag { color: var(--rv8-muted); font-size: 12px; }
+  html body:not(#rv8) #app .r7-ox-statement { color: var(--rv8-ink); font-size: 17px; font-weight: 500; line-height: 28px; }
+  html body:not(#rv8) #app .r7-ox-hint { color: var(--rv8-faint); font-size: 12px; line-height: 18px; }
+  html body:not(#rv8) #app .r7-ox-stamp.is-o { border-color: var(--rv8-success); color: var(--rv8-success); }
+  html body:not(#rv8) #app .r7-ox-stamp.is-x { border-color: var(--rv8-danger); color: var(--rv8-danger); }
+  /* O / X buttons: only the symbol carries the semantic colour; labels stay body ink */
+  html body:not(#rv8) #app .r7-ox-choices button {
+    height: 52px; min-height: 52px; border: 1px solid var(--rv8-line-strong); border-radius: var(--rv8-r-full);
+    background: var(--rv8-surface); box-shadow: none; color: var(--rv8-ink); font-size: 16px; font-weight: 700;
+  }
+  html body:not(#rv8) #app .r7-ox-choices .r7-ox-o { flex-direction: row-reverse; }
+  html body:not(#rv8) #app .r7-ox-choices .r7-ox-x svg { color: var(--rv8-danger); stroke: var(--rv8-danger); }
+  html body:not(#rv8) #app .r7-ox-choices .r7-ox-o svg { color: var(--rv8-success); stroke: var(--rv8-success); }
+  html body:not(#rv8) #app .r7-ox-choices .r7-ox-o:active,
+  html body:not(#rv8) #app .r7-ox-choices .r7-ox-o[aria-pressed="true"] { border-color: var(--rv8-success); background: var(--rv8-success-soft); }
+  html body:not(#rv8) #app .r7-ox-choices .r7-ox-x:active,
+  html body:not(#rv8) #app .r7-ox-choices .r7-ox-x[aria-pressed="true"] { border-color: var(--rv8-danger); background: var(--rv8-danger-soft); }
+  html body:not(#rv8) #app .r7-ox-answerbar { border-top: 0; background: transparent; box-shadow: none; }
+  /* feedback card */
+  html body:not(#rv8) #app .r7-ox-card[data-answered="true"] { border: 1.5px solid var(--rv8-success); }
+  html body:not(#rv8) #app .r7-ox-card[data-answered="true"]:has(.r7-ox-verdict.is-wrong),
+  html body:not(#rv8) #app .r7-ox-card.is-wrong[data-answered="true"] { border-color: var(--rv8-danger); }
+  html body:not(#rv8) #app .r7-ox-verdict { border-radius: var(--rv8-r-md); }
+  html body:not(#rv8) #app .r7-ox-explain { color: var(--rv8-ink); font-size: 14px; line-height: 22px; }
+  html body:not(#rv8) #app .r7-ox-continue,
+  html body:not(#rv8) #app .r7-ox-feedback .r7-primary { height: 52px; min-height: 52px; border-radius: var(--rv8-r-full); font-size: 16px; }
+  /* result */
+  html body:not(#rv8) #app .ox-result-score { border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-lg); background: var(--rv8-surface); box-shadow: none; }
+  html body:not(#rv8) #app .ox-result-wrongs { overflow: hidden; border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-lg); background: var(--rv8-surface); }
+  html body:not(#rv8) #app .ox-result-actions button { border-radius: var(--rv8-r-full); }
+}
+
+/* ======================================================================
+ * 05 · 오답노트 — W-01 기출 오답 · W-02 상세 · W-03 OX 빈 상태
+ * ==================================================================== */
+@media (max-width: 700px) {
+  /* summary metrics read as one card */
+  html body:not(#rv8) #app .r7-wrong .r7-metrics {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 16px 0 12px; padding: 16px 0;
+    border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-lg); background: var(--rv8-surface); box-shadow: none;
+  }
+  html body:not(#rv8) #app .r7-wrong .r7-metrics > div { padding: 0 16px; border: 0; border-left: 1px solid var(--rv8-line); background: none; }
+  html body:not(#rv8) #app .r7-wrong .r7-metrics > div:first-child { border-left: 0; }
+  html body:not(#rv8) #app .r7-wrong .r7-metrics small { color: var(--rv8-muted); font-size: 12px; }
+  html body:not(#rv8) #app .r7-wrong .r7-metrics strong { color: var(--rv8-ink); font-size: 20px; font-weight: 700; }
+  html body:not(#rv8) #app .r7-wrong .r7-metrics strong em { color: var(--rv8-muted); font-size: 13px; font-style: normal; font-weight: 400; }
+  html body:not(#rv8) #app .r7-wrong .r7-wrong-controls { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 0 0 12px; }
+  html body:not(#rv8) #app .r7-wrong .r7-filter-button { min-height: 36px; padding: 0 4px; border: 0; background: none; color: var(--rv8-muted); font-size: 13px; font-weight: 500; }
+  /* one list card, rows separated by dividers */
+  html body:not(#rv8) #app .r7-wrong .r7-wrong-list { display: flex; flex-direction: column; overflow: hidden; padding: 4px 0; border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-lg); background: var(--rv8-surface); }
+  html body:not(#rv8) #app .r7-wrong .r7-wrong-row {
+    display: flex; width: 100%; min-height: 76px; margin: 0; padding: 14px 12px 14px 16px; align-items: center; gap: 8px;
+    border: 0; border-bottom: 1px solid var(--rv8-line); border-radius: 0; background: none; box-shadow: none; text-align: left;
+  }
+  html body:not(#rv8) #app .r7-wrong .r7-wrong-row:last-child { border-bottom: 0; }
+  html body:not(#rv8) #app .r7-wrong .r7-wrong-copy { display: flex; min-width: 0; flex: 1 1 auto; flex-direction: column; gap: 4px; }
+  html body:not(#rv8) #app .r7-wrong .r7-wrong-title { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  html body:not(#rv8) #app .r7-wrong .r7-wrong-title small { flex: none; height: 22px; padding: 0 8px; border-radius: var(--rv8-r-xs); background: var(--rv8-subtle); color: var(--rv8-muted); font-size: 12px; font-weight: 500; line-height: 22px; }
+  html body:not(#rv8) #app .r7-wrong .r7-wrong-title b { overflow: hidden; color: var(--rv8-ink); font-size: 15px; font-weight: 700; line-height: 22px; text-overflow: ellipsis; white-space: nowrap; }
+  html body:not(#rv8) #app .r7-wrong .rv8-answer-pair { display: flex; gap: 0; font-size: 13px; font-weight: 500; line-height: 20px; }
+  html body:not(#rv8) #app .r7-wrong .rv8-mine { color: var(--rv8-danger); }
+  html body:not(#rv8) #app .r7-wrong .rv8-sep { color: var(--rv8-faint); white-space: pre; }
+  html body:not(#rv8) #app .r7-wrong .rv8-correct { color: var(--rv8-success); }
+  html body:not(#rv8) #app .r7-wrong .r7-wrong-copy > small { color: var(--rv8-faint); font-size: 12px; line-height: 18px; }
+  html body:not(#rv8) #app .r7-wrong .r7-wrong-copy > small.repeated { color: var(--rv8-accent-text); }
+  html body:not(#rv8) #app .r7-wrong .r7-wrong-row > .r7-icon { flex: none; width: 20px; height: 20px; opacity: .7; }
+  /* reviewed entries fade to 72% (status filter = 복습 완료) */
+  html body:not(#rv8) #app .r7-wrong:has([data-r7-wrong-status="completed"][aria-pressed="true"]) .r7-wrong-row { opacity: .72; }
+  /* bottom CTA bar: pill L */
+  html body:not(#rv8) #app .r7-page.r7-wrong .r7-bottom { padding: 8px var(--rv8-screen-x); border-top: 1px solid var(--rv8-line); background: var(--rv8-surface); }
+  html body:not(#rv8) #app .r7-page.r7-wrong .r7-bottom .r7-primary { height: 48px; min-height: 48px; border-radius: var(--rv8-r-full); font-size: 15px; font-weight: 700; }
+  /* FAB stays clear of the wrong-note action bar (compact, 16 above it) and is hidden on the detail view */
+  html body:not(#rv8) #app .app-nav-shell.has-jk-fab:has(.r7-page.r7-wrong .r7-bottom) .jk-fab-dock {
+    bottom: calc(var(--rv8-nav-h) + env(safe-area-inset-bottom, 0px) + var(--app-cta-height) + 16px);
+  }
+  html body:not(#rv8) #app .app-nav-shell:has(.r7-wrong-detail) .jk-fab-dock,
+  html body:not(#rv8) #app .app-nav-shell:has(.wrong-answer-detail) .jk-fab-dock { display: none; }
+  /* W-02 detail: my answer vs answer boxes + choice explanations */
+  html body:not(#rv8) #app .r7-wrong-detail .r7-answer-compare > div,
+  html body:not(#rv8) #app .r7-wrong-detail .r7-answer-pair > div { border: 0; border-radius: var(--rv8-r-md); }
+  /* empty states (W-03, J-04, C-01): soft icon circle, title, caption, secondary pill */
+  html body:not(#rv8) #app .r7-empty { padding: 48px 0 20px; text-align: center; }
+  html body:not(#rv8) #app .r7-empty .r7-empty-icon { display: inline-flex; width: 56px; height: 56px; align-items: center; justify-content: center; border-radius: var(--rv8-r-full); background: var(--rv8-subtle); }
+  html body:not(#rv8) #app .r7-empty .r7-empty-icon img { width: 24px; height: 24px; }
+  html body:not(#rv8) #app .r7-empty h2 { margin: 16px 0 6px; color: var(--rv8-ink); font-size: 16px; font-weight: 700; line-height: 24px; }
+  html body:not(#rv8) #app .r7-empty p { margin: 0 auto; max-width: 280px; color: var(--rv8-muted); font-size: 13px; line-height: 20px; }
+  html body:not(#rv8) #app .r7-empty ~ .r7-primary,
+  html body:not(#rv8) #app .r7-empty ~ .r7-secondary { display: flex; width: fit-content; min-width: 160px; margin: 16px auto 0; padding: 0 20px; align-items: center; justify-content: center; }
+  html body:not(#rv8) #app .r7-empty ~ .r7-primary { border: 1px solid var(--rv8-line-strong); background: var(--rv8-surface); color: var(--rv8-ink); }
+  html body:not(#rv8) #app .r7-empty ~ .r7-secondary { margin-top: 8px; border: 0; background: none; color: var(--rv8-muted); }
+}
+
+/* ======================================================================
+ * 06 · 족보 — J-01 전체 요약 · J-02 상세 시트 · J-03 검색 · J-04 빈 상태
+ * ==================================================================== */
+@media (max-width: 700px) {
+  html body:not(#rv8) #app .jk-page .jk-heading-subtitle { color: var(--rv8-muted); font-size: 13px; line-height: 20px; }
+  html body:not(#rv8) #app .jk-chiprow-label { color: var(--rv8-muted); font-size: 12px; font-weight: 500; }
+  html body:not(#rv8) #app .jk-pager-step { width: 44px; height: 44px; border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-full); background: var(--rv8-surface); box-shadow: none; }
+  html body:not(#rv8) #app .jk-pager-title h2 { color: var(--rv8-ink); font-size: 18px; font-weight: 700; line-height: 26px; }
+  html body:not(#rv8) #app .jk-pager-title p,
+  html body:not(#rv8) #app .jk-pager-count { color: var(--rv8-muted); font-size: 12px; }
+  html body:not(#rv8) #app .jk-pager-dots i.is-active { background: var(--rv8-accent); }
+  /* cards: white + 1px border, no shadow */
+  html body:not(#rv8) #app .jk-card { padding: 16px; border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-lg); background: var(--rv8-surface); box-shadow: none; }
+  html body:not(#rv8) #app .jk-card-head { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+  html body:not(#rv8) #app .jk-group-number { display: inline-flex; height: 22px; padding: 0 8px; align-items: center; border-radius: var(--rv8-r-xs); background: var(--rv8-accent-soft); color: var(--rv8-accent-text); font-size: 12px; font-weight: 700; }
+  html body:not(#rv8) #app .jk-card-head h3 { margin: 0; color: var(--rv8-ink); font-size: 16px; font-weight: 700; line-height: 24px; }
+  /* keyword rows: fixed 56px label chip, no irregular dividers or grey row fills */
+  html body:not(#rv8) #app .jk-keywords { display: flex; flex-direction: column; gap: 4px; }
+  html body:not(#rv8) #app .jk-keyword { width: 100%; margin: 0; padding: 4px 0; border: 0; border-radius: 0; background: none !important; box-shadow: none; text-align: left; }
+  html body:not(#rv8) #app .jk-keyword-line { display: flex; align-items: flex-start; gap: 12px; padding: 0; border: 0; background: none; }
+  html body:not(#rv8) #app .jk-keyword-badge {
+    display: inline-flex; flex: 0 0 56px; width: 56px; min-height: 22px; padding: 0 4px; align-items: center; justify-content: center;
+    border: 0; border-radius: var(--rv8-r-xs); background: var(--rv8-subtle); color: var(--rv8-muted); font-size: 11px; font-weight: 500; line-height: 14px; text-align: center; word-break: keep-all;
+  }
+  html body:not(#rv8) #app .jk-keyword-value { min-width: 0; color: var(--rv8-ink); font-size: 14px; font-weight: 500; line-height: 22px; }
+  /* "자세히 보기" — one line at the card bottom */
+  html body:not(#rv8) #app .jk-card-more { display: flex; width: 100%; min-height: 44px; margin: 12px 0 -8px; padding: 12px 0 0; align-items: center; gap: 8px; border: 0; border-top: 1px solid var(--rv8-line); border-radius: 0; background: none; }
+  html body:not(#rv8) #app .jk-card-more span { color: var(--rv8-accent-text); font-size: 13px; font-weight: 700; }
+  html body:not(#rv8) #app .jk-card-more small { margin-left: auto; color: var(--rv8-faint); font-size: 12px; }
+  /* related exam CTA as its own card */
+  html body:not(#rv8) #app .jk-related-exams,
+  html body:not(#rv8) #app .jk-era-exams { padding: 16px; border: 0; border-radius: var(--rv8-r-lg); background: var(--rv8-subtle); }
+  html body:not(#rv8) #app .jk-primary { width: 100%; height: 44px; }
+  html body:not(#rv8) #app .jk-save { min-height: 36px; border-radius: var(--rv8-r-full); }
+  /* search */
+  html body:not(#rv8) #app .jk-search-field,
+  html body:not(#rv8) #app .jk-search input { border-radius: var(--rv8-r-full); }
+  html body:not(#rv8) #app .jk-search mark,
+  html body:not(#rv8) #app .jk-page mark { background: none; color: var(--rv8-accent-text); font-weight: 700; }
+}
+
+/* ======================================================================
+ * 07 · 내 기록 — M-01 학습 통계 · M-02 시험 결과 기록
+ * ==================================================================== */
+@media (max-width: 700px) {
+  html body:not(#rv8) #app .r7-my .r7-profile { width: 44px; height: 44px; border: 0; border-radius: var(--rv8-r-full); background: none; box-shadow: none; }
+  html body:not(#rv8) #app .rv8-rec-section { margin: 24px 0 0; }
+  html body:not(#rv8) #app .rv8-rec-head { display: flex; min-height: 26px; margin: 0 0 12px; align-items: center; justify-content: space-between; }
+  html body:not(#rv8) #app .rv8-rec-head h2 { margin: 0; color: var(--rv8-ink); font-size: 18px; font-weight: 700; line-height: 26px; }
+  html body:not(#rv8) #app .rv8-rec-more { min-height: 32px; padding: 0; border: 0; background: none; color: var(--rv8-muted); font-size: 13px; font-weight: 500; }
+  html body:not(#rv8) #app .rv8-rec-more::after { content: ''; display: inline-block; width: 6px; height: 6px; margin-left: 6px; border: solid currentColor; border-width: 1.5px 1.5px 0 0; transform: translateY(-1px) rotate(45deg); }
+  html body:not(#rv8) #app .rv8-rec-card { padding: var(--rv8-card-pad); border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-lg); background: var(--rv8-surface); }
+  html body:not(#rv8) #app .rv8-week-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+  html body:not(#rv8) #app .rv8-week-top small { display: block; color: var(--rv8-muted); font-size: 12px; line-height: 18px; }
+  html body:not(#rv8) #app .rv8-week-top strong { color: var(--rv8-ink); font-size: 24px; font-weight: 700; line-height: 32px; }
+  html body:not(#rv8) #app .rv8-week-top strong em { margin-left: 2px; color: var(--rv8-muted); font-size: 13px; font-style: normal; font-weight: 400; }
+  html body:not(#rv8) #app .rv8-streak::before { content: ''; width: 12px; height: 12px; margin-right: 4px; background: currentColor; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M13 2c.5 3.5-2.5 5-1.2 8.3 2-.7 3.2-2.4 3.6-4.6 3.8 3.5 5.4 6.8 4.2 10.6A7.9 7.9 0 0 1 4.5 15c-.6-3.7 1.2-7 4-9.5-.3 3 .8 4.8 2.3 5.7'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M13 2c.5 3.5-2.5 5-1.2 8.3 2-.7 3.2-2.4 3.6-4.6 3.8 3.5 5.4 6.8 4.2 10.6A7.9 7.9 0 0 1 4.5 15c-.6-3.7 1.2-7 4-9.5-.3 3 .8 4.8 2.3 5.7'/%3E%3C/svg%3E") center / contain no-repeat; }
+  html body:not(#rv8) #app .rv8-week-bars { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; margin: 16px 0 0; padding: 0; list-style: none; }
+  html body:not(#rv8) #app .rv8-week-bars li { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  html body:not(#rv8) #app .rv8-week-bars .rv8-bar { position: relative; display: block; width: 20px; height: 72px; }
+  html body:not(#rv8) #app .rv8-week-bars .rv8-bar i { position: absolute; right: 0; bottom: 0; left: 0; min-height: 3px; border-radius: 4px 4px 2px 2px; background: var(--rv8-accent-soft); }
+  html body:not(#rv8) #app .rv8-week-bars .rv8-bar i[style="height:0%"] { background: var(--rv8-disabled); }
+  html body:not(#rv8) #app .rv8-week-bars li.is-today .rv8-bar i { background: var(--rv8-accent); }
+  html body:not(#rv8) #app .rv8-week-bars small { color: var(--rv8-muted); font-size: 12px; line-height: 16px; }
+  html body:not(#rv8) #app .rv8-week-bars li.is-today small { color: var(--rv8-ink); font-weight: 700; }
+  html body:not(#rv8) #app .rv8-stats { display: grid; grid-template-columns: 1fr 1fr; padding: 0; }
+  html body:not(#rv8) #app .rv8-stats > div { padding: 16px var(--rv8-card-pad); }
+  html body:not(#rv8) #app .rv8-stats > div:nth-child(even) { border-left: 1px solid var(--rv8-line); }
+  html body:not(#rv8) #app .rv8-stats > div:nth-child(n+3) { border-top: 1px solid var(--rv8-line); }
+  html body:not(#rv8) #app .rv8-stats small { display: block; color: var(--rv8-muted); font-size: 12px; line-height: 18px; }
+  html body:not(#rv8) #app .rv8-stats strong { color: var(--rv8-ink); font-size: 20px; font-weight: 700; line-height: 28px; }
+  html body:not(#rv8) #app .rv8-stats strong em { margin-left: 2px; color: var(--rv8-muted); font-size: 13px; font-style: normal; font-weight: 400; }
+  html body:not(#rv8) #app .rv8-rec-list { padding: 4px 0; }
+  html body:not(#rv8) #app .rv8-rec-row { display: flex; width: 100%; min-height: 64px; margin: 0; padding: 12px 12px 12px 16px; align-items: center; gap: 8px; border: 0; border-bottom: 1px solid var(--rv8-line); border-radius: 0; background: none; text-align: left; }
+  html body:not(#rv8) #app .rv8-rec-row:last-child { border-bottom: 0; }
+  html body:not(#rv8) #app .rv8-rec-row > span:first-child { display: flex; min-width: 0; flex: 1 1 auto; flex-direction: column; gap: 2px; }
+  html body:not(#rv8) #app .rv8-rec-row b { color: var(--rv8-ink); font-size: 15px; font-weight: 700; line-height: 22px; }
+  html body:not(#rv8) #app .rv8-rec-row small { color: var(--rv8-muted); font-size: 12px; line-height: 18px; }
+  html body:not(#rv8) #app .rv8-rec-row strong { color: var(--rv8-ink); font-size: 15px; font-weight: 700; }
+  html body:not(#rv8) #app .rv8-rec-row .r7-icon { width: 20px; height: 20px; opacity: .7; }
+  html body:not(#rv8) #app .r7-my .r7-my-links { margin-top: 24px; overflow: hidden; border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-lg); background: var(--rv8-surface); }
+  html body:not(#rv8) #app .r7-my .r7-my-links button { margin: 0; border: 0; border-bottom: 1px solid var(--rv8-line); border-radius: 0; background: none; box-shadow: none; }
+  html body:not(#rv8) #app .r7-my .r7-my-links button:last-child { border-bottom: 0; }
+}
+
+/* ======================================================================
+ * 08 · 공통 상태 — C-01 오프라인 · C-02 스켈레톤 + 토스트
+ * ==================================================================== */
+@media (max-width: 700px) {
+  html body:not(#rv8) #app .r7-offline .r7-secondary,
+  html body:not(#rv8) #app .r7-offline .r7-primary { width: fit-content; min-width: 120px; margin: 16px auto 0; padding: 0 20px; border: 1px solid var(--rv8-line-strong); background: var(--rv8-surface); color: var(--rv8-ink); }
+  html body:not(#rv8) #app .r7-skeleton-row { border-radius: var(--rv8-r-md); background: var(--rv8-disabled); }
+}
+html body .toast { border-radius: var(--rv8-r-md); background: var(--rv8-inverse); box-shadow: var(--rv8-elev-2); color: #fff; font-size: 13px; line-height: 20px; }
+
+@media (max-width: 700px) {
+  /* Jokbo chips draw on the inner span: same Filter Chip spec */
+  html body:not(#rv8) #app .jk-chips button { min-height: 44px; padding: 0; border: 0; background: none; box-shadow: none; }
+  html body:not(#rv8) #app .jk-chips button > span {
+    display: inline-flex; height: 36px; min-height: 36px; padding: 0 16px; align-items: center; border: 1px solid var(--rv8-line); border-radius: var(--rv8-r-full);
+    background: var(--rv8-surface); box-shadow: none; color: var(--rv8-muted); font-size: 13px; font-weight: 500; line-height: 18px; white-space: nowrap;
+  }
+  html body:not(#rv8) #app .jk-chips button[aria-selected="true"] > span,
+  html body:not(#rv8) #app .jk-chips button[aria-pressed="true"] > span { border-color: var(--rv8-accent); background: var(--rv8-accent-soft); color: var(--rv8-accent-text); font-weight: 500; }
+  html body:not(#rv8) #app .jk-chips button[aria-selected="true"]:active > span { background: var(--rv8-accent-soft); }
+}
+
+/* Page gutter follows the existing narrow-phone rule (15px at ≤370px), so full-bleed rails stay flush. */
+@media (max-width: 370px) { :root { --rv8-gutter: 15px; } }
+@media (max-width: 700px) {
+  html body:not(#rv8) #app .r7-page .r7-tabs { margin-left: calc(-1 * var(--rv8-gutter)); margin-right: calc(-1 * var(--rv8-gutter)); padding-left: var(--rv8-gutter); padding-right: var(--rv8-gutter); }
+}

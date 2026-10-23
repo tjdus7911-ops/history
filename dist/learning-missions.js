@@ -176,26 +176,36 @@
     return Math.min(mission.progress, mission.target) + ' / ' + mission.target + mission.unit;
   }
 
+  /* Rev.8 checklist row: status circle on the left, progress as the caption, "완료" or "하러 가기" on the right. */
   function missionRow(mission) {
     return '<button type="button" class="lm-row' + (mission.completed ? ' is-complete' : '') + '" data-mission-go="' + mission.id + '">'
-      + '<span class="lm-icon lm-icon-' + mission.icon + '">' + icons[mission.icon] + '</span>'
+      + statusIcon(mission)
       + '<span class="lm-row-copy"><strong>' + escapeHtml(mission.title) + '</strong><small>' + escapeHtml(progressLabel(mission)) + '</small></span>'
-      + statusIcon(mission) + '</button>';
+      + (mission.completed
+        ? '<span class="lm-row-action is-done">완료</span>'
+        : '<span class="lm-row-action">하러 가기<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span>')
+      + '</button>';
   }
 
-  function cardHTML(now = new Date()) {
+  /* options.mascot: image shown in the card header (Rev.8 merges the home cheer card here).
+   * options.fresh: true when the learner has no study history yet. */
+  function cardHTML(now = new Date(), options = {}) {
     const model = snapshot(now), shown = expanded ? model.selected : model.selected.slice(0, 2);
-    const achievement = model.allComplete
-      ? '<div class="lm-achievement"><span aria-hidden="true">✦</span><div><strong>오늘의 목표 달성!</strong><small>정말 잘했어요. 내일도 함께 이어가요.</small></div></div>'
-      : '';
+    const headline = model.allComplete ? '오늘의 목표 달성!'
+      : options.fresh ? '첫 이야기를 시작해 볼까요?' : '오늘도 한 장면, 한 문제씩!';
+    const caption = model.allComplete ? '정말 잘했어요. 내일도 함께 이어가요.'
+      : options.fresh ? '오늘의 미션 ' + model.total + '개 · 하루 15분이면 충분해요'
+      : model.total + '개 중 ' + model.completed + '개 완료 · ' + (model.completed ? '조금만 더 하면 끝나요' : '하나씩 시작해 볼까요?');
+    const mascot = options.mascot ? '<span class="lm-mascot"><img src="' + escapeHtml(options.mascot) + '" alt="" aria-hidden="true"></span>' : '';
+    const intro = '<div class="lm-intro' + (model.allComplete ? ' lm-achievement' : '') + '">' + mascot + '<div><strong>' + headline + '</strong><small>' + escapeHtml(caption) + '</small></div></div>';
     const body = model.total
-      ? achievement
+      ? intro
         + '<div class="lm-progress-summary"><strong>' + model.completed + ' / ' + model.total + ' 완료</strong><span>' + model.percent + '%</span></div>'
         + '<div class="lm-progress-track" role="progressbar" aria-label="오늘의 미션 달성률" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + model.percent + '"><i style="width:' + model.percent + '%"></i></div>'
         + '<div class="lm-list">' + shown.map(missionRow).join('') + '</div>'
         + (model.selected.length > 2 ? '<button type="button" class="lm-expand" data-mission-expand aria-expanded="' + expanded + '">' + (expanded ? '접기' : '전체 보기') + '</button>' : '')
-      : '<div class="lm-empty"><p>오늘 실천할 미션을 선택해 주세요.</p><button type="button" data-mission-settings>목표 설정하기</button></div>';
-    return '<section class="lm-card" aria-labelledby="lm-card-title"><header class="lm-card-head"><div><h2 id="lm-card-title">오늘의 학습 미션</h2><p>하루에 조금씩, 꾸준히 공부해요.</p></div><button type="button" class="lm-settings-link" data-mission-settings>목표 설정</button></header>' + body + '</section>';
+      : '<div class="lm-empty">' + mascot + '<p>오늘 실천할 미션을 선택해 주세요.</p><button type="button" data-mission-settings>목표 설정하기</button></div>';
+    return '<section class="lm-card" aria-labelledby="lm-card-title"><header class="lm-card-head"><div><h2 id="lm-card-title">오늘의 학습 미션</h2><p>하루에 조금씩, 꾸준히 공부해요.</p></div><button type="button" class="lm-settings-link" data-mission-settings>목표 설정</button></header><div class="lm-panel">' + body + '</div></section>';
   }
 
   function settingsHTML() {
