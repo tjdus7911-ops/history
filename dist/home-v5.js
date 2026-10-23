@@ -207,17 +207,17 @@
     const a = activeExam(), pool = wrongPool(), ox = oxState();
     const storyStarted = Boolean(seasonRun(currentEra)?.started);
     let exam;
-    if (a) exam = row('exam', illustrations.paper, '기출문제 이어 풀기', esc(a.title) + ' · ' + a.answered + '/' + a.total + '문항' + (a.remaining != null ? ' · 남은 ' + (a.paused ? '시간 정지' : Math.ceil(a.remaining / 60000) + '분') : ''), 'data-r7-exam-open', '이어 풀기');
-    else if (examHistoryCount() > 0) exam = row('exam', illustrations.paper, '기출문제', '회차별·시대별 실제 기출로 실전 감각을 길러요', 'data-nav="exam-library"', '');
+    if (a) exam = row('exam', illustrations.paper, '기출문제', esc(a.title) + ' · ' + a.answered + '/' + a.total + '문항' + (a.remaining != null ? ' · 남은 ' + (a.paused ? '시간 정지' : Math.ceil(a.remaining / 60000) + '분') : ''), 'data-r7-exam-open', '이어하기');
+    else if (examHistoryCount() > 0) exam = row('exam', illustrations.paper, '기출문제', '회차별·시대별 실제 기출로 실전 감각을 길러요', 'data-nav="exam-library"', '시작하기');
     else exam = row('exam', illustrations.paper, '기출문제', '실제 기출로 시험 감각을 차근차근 길러요', 'data-nav="exam-library"', '시작하기');
     let oxRow;
-    if (ox.kind === 'active') oxRow = row('ox', illustrations.ox, 'OX 퀴즈 이어 풀기', esc(ox.text), 'data-nav="ox"', '이어 풀기');
-    else if (ox.kind === 'done') oxRow = row('ox', illustrations.ox, 'OX 퀴즈', '핵심 개념을 빠르게 확인해요', 'data-nav="ox"', '');
-    else oxRow = row('ox', illustrations.ox, 'OX 퀴즈', '핵심 개념을 OX로 빠르게 확인해요', 'data-nav="ox"', 'OX 풀기');
+    if (ox.kind === 'active') oxRow = row('ox', illustrations.ox, 'OX 퀴즈', esc(ox.text), 'data-nav="ox"', '이어하기');
+    else if (ox.kind === 'done') oxRow = row('ox', illustrations.ox, 'OX 퀴즈', '핵심 개념을 빠르게 확인해요', 'data-nav="ox"', '시작하기');
+    else oxRow = row('ox', illustrations.ox, 'OX 퀴즈', '핵심 개념을 OX로 빠르게 확인해요', 'data-nav="ox"', '시작하기');
     let wrong;
-    if (pool.length) wrong = row('wrong', illustrations.review, '오답노트', '복습할 문제 ' + pool.length + '개 · 최근에 틀린 것부터', 'data-review="' + esc(pool[0]) + '"', '복습하기');
-    else wrong = row('wrong', illustrations.review, '오답노트', (meta().wrongQuestionIds || []).length ? '오답을 모두 복습했어요' : '틀린 문제는 여기에 모여요', 'data-nav="study"', '');
-    const story = '<button class="hv-shortcut hv-shortcut-story" data-era-open="' + esc(currentEra.id) + '"><span class="hv-ico">' + illustrations.scroll + '</span><span class="hv-shortcut-copy"><b>스토리</b><small>시대별 이야기</small></span><span class="hv-shortcut-action">' + (storyStarted ? '이어보기' : '시작하기') + '</span></button>';
+    if (pool.length) wrong = row('wrong', illustrations.review, '오답노트', '복습할 문제 ' + pool.length + '개 · 최근에 틀린 것부터', 'data-review="' + esc(pool[0]) + '"', '시작하기');
+    else wrong = row('wrong', illustrations.review, '오답노트', (meta().wrongQuestionIds || []).length ? '오답을 모두 복습했어요' : '틀린 문제는 여기에 모여요', 'data-nav="study"', '시작하기');
+    const story = '<button class="hv-shortcut hv-shortcut-story" data-era-open="' + esc(currentEra.id) + '"><span class="hv-ico">' + illustrations.scroll + '</span><span class="hv-shortcut-copy"><b>스토리</b><small>시대별 이야기</small></span><span class="hv-shortcut-action">' + (storyStarted ? '이어하기' : '시작하기') + '</span></button>';
     return '<section class="hv-section hv-shortcuts-section" aria-label="실전 학습"><div class="hv-section-head"><h2 class="hv-h">학습 바로가기</h2></div><div class="hv-shortcuts">'
       + story + exam + oxRow + wrong + '</div></section>';
   }

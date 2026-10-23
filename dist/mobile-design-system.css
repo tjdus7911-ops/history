@@ -1,0 +1,573 @@
+/* Shared mobile app surfaces and docking geometry. Story scenes retain their
+   own art and full-screen dialogue treatment. */
+:root {
+  --app-bg: #f6f7f9;
+  --app-surface: #fff;
+  --app-ink: #253142;
+  --app-muted: #87919b;
+  --app-accent: #e9513b;
+  --app-line: #e9edf0;
+  --app-success: #4b9a71;
+  --app-success-soft: #eaf5ed;
+  --app-danger-soft: #fff0ed;
+  --app-radius-card: 16px;
+  --app-nav-height: 72px;
+  --app-cta-height: 64px;
+  --app-dock-gap: 12px;
+}
+
+html, body, #app { min-height: 100%; background: var(--app-bg); }
+body { color: var(--app-ink); font-family: var(--r7-ui, system-ui, sans-serif); }
+button, input, select { font-family: inherit; }
+
+@media (max-width: 700px) {
+  html, body { min-height: 100dvh; overflow-x: clip; }
+  #app { min-height: 100dvh; }
+
+  /* Home shortcuts share one card grid, regardless of active study state. */
+  html body .hv-shortcuts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: minmax(112px, 1fr);
+    align-items: stretch;
+    gap: 9px;
+  }
+  html body .hv-shortcuts .hv-shortcut {
+    box-sizing: border-box;
+    height: 100%;
+    min-height: 112px;
+    min-width: 0;
+    grid-template-columns: 40px minmax(0, 1fr);
+    grid-template-rows: minmax(44px, 1fr) auto;
+    align-content: stretch;
+    align-items: center;
+    gap: 6px 9px;
+    padding: 12px;
+    border: 1px solid var(--app-line);
+    border-radius: var(--app-radius-card);
+    background: var(--app-surface);
+    color: var(--app-ink);
+  }
+  html body .hv-shortcuts .hv-shortcut .hv-ico {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+  }
+  html body .hv-shortcuts .hv-shortcut .hv-ico svg,
+  html body .hv-shortcuts .hv-shortcut .hv-ico .hv-mini-art {
+    width: 24px;
+    height: 24px;
+  }
+  html body .hv-shortcuts .hv-row-text,
+  html body .hv-shortcuts .hv-shortcut-copy {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-self: end;
+    gap: 3px;
+    text-align: left;
+  }
+  html body .hv-shortcuts .hv-row-text b,
+  html body .hv-shortcuts .hv-shortcut-copy b {
+    overflow: hidden;
+    color: var(--app-ink);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 21px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  html body .hv-shortcuts .hv-row-text small,
+  html body .hv-shortcuts .hv-shortcut-copy small {
+    display: -webkit-box;
+    overflow: hidden;
+    color: var(--app-muted);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 17px;
+    overflow-wrap: anywhere;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  html body .hv-shortcuts .hv-row .hv-pill,
+  html body .hv-shortcuts .hv-shortcut-action {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: start;
+    align-self: start;
+    min-height: 18px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--app-accent);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 18px;
+    white-space: nowrap;
+  }
+
+  /* Both app-shell variants use the same five-item mobile dock. */
+  html body .editorial-shell.app-nav-shell .sidebar,
+  html body .editorial-shell.five-nav .sidebar {
+    box-sizing: border-box;
+    height: calc(var(--app-nav-height) + env(safe-area-inset-bottom, 0px));
+    padding: 0 4px env(safe-area-inset-bottom, 0px);
+    border-top: 1px solid var(--app-line);
+    background: var(--app-surface);
+    box-shadow: 0 -4px 18px #25314208;
+  }
+  html body .editorial-shell.app-nav-shell .app-navigation,
+  html body .editorial-shell.five-nav .nav {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 0;
+    height: var(--app-nav-height);
+    min-height: var(--app-nav-height);
+    margin: 0;
+    padding: 0;
+  }
+  html body .editorial-shell.app-nav-shell .app-navigation button,
+  html body .editorial-shell.five-nav .nav button {
+    display: flex;
+    min-width: 0;
+    min-height: var(--app-nav-height);
+    padding: 8px 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    border-radius: 0;
+    background: transparent;
+    color: var(--app-muted);
+    font: 600 10px/14px var(--r7-ui, system-ui, sans-serif);
+    letter-spacing: 0;
+  }
+  html body .editorial-shell.app-nav-shell .app-navigation button > span,
+  html body .editorial-shell.five-nav .nav button > span {
+    margin: 0;
+    font: 600 10px/14px var(--r7-ui, system-ui, sans-serif);
+    white-space: nowrap;
+  }
+  html body .editorial-shell.app-nav-shell .app-navigation button > svg,
+  html body .editorial-shell.five-nav .nav button > svg,
+  html body .editorial-shell.app-nav-shell .app-navigation button > svg.ed-icon,
+  html body .editorial-shell.five-nav .nav button > svg.ed-icon {
+    width: 22px;
+    height: 22px;
+    flex: none;
+    stroke-width: 1.6;
+  }
+  html body .editorial-shell.app-nav-shell .app-navigation button.active,
+  html body .editorial-shell.five-nav .nav button.active {
+    background: transparent;
+    color: var(--app-accent);
+  }
+
+  /* Navigation, bottom action bar and Jokbo FAB share one vertical dock. */
+  html body .jk-fab-dock {
+    right: 16px;
+    bottom: calc(var(--app-nav-height) + env(safe-area-inset-bottom, 0px) + var(--app-dock-gap));
+  }
+  html body .app-nav-shell.has-jk-fab .main {
+    padding-bottom: calc(154px + env(safe-area-inset-bottom, 0px));
+  }
+  html body .app-nav-shell.has-jk-fab:has(.r7-page.r7-wrong .r7-bottom) .main {
+    padding-bottom: calc(var(--app-nav-height) + env(safe-area-inset-bottom, 0px) + var(--app-cta-height) + 60px);
+  }
+  html body .app-nav-shell.has-jk-fab:has(.r7-page.r7-wrong .r7-bottom) .jk-fab-dock {
+    bottom: calc(var(--app-nav-height) + env(safe-area-inset-bottom, 0px) + var(--app-cta-height) + var(--app-dock-gap));
+  }
+  html body .r7-page.r7-wrong .r7-bottom {
+    position: fixed;
+    z-index: 39;
+    right: 0;
+    bottom: calc(var(--app-nav-height) + env(safe-area-inset-bottom, 0px));
+    left: 0;
+    box-sizing: border-box;
+    display: grid;
+    width: min(100%, 560px);
+    height: var(--app-cta-height);
+    margin: 0 auto;
+    padding: 8px 16px;
+    align-items: center;
+    border-top: 1px solid var(--app-line);
+    background: var(--app-surface);
+  }
+  html body .app-nav-shell.has-jk-fab:has(.r7-page.r7-wrong .r7-bottom) .r7-page.r7-wrong .r7-bottom {
+    bottom: calc(var(--app-nav-height) + env(safe-area-inset-bottom, 0px));
+  }
+  html body .r7-page.r7-wrong .r7-bottom .r7-primary {
+    width: 100%;
+    min-height: 48px;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  html body .app-nav-shell.has-jk-fab:has(.r7-page.r7-wrong .r7-bottom) .r7-page.r7-wrong {
+    padding-bottom: calc(var(--app-nav-height) + var(--app-cta-height) + 88px);
+  }
+
+  /* Shared surfaces for OX, official exam, Jokbo and wrong-note routes. */
+  html body .main.ed-screen:not(.ed-game),
+  html body .main.ed-ox,
+  html body .main.ed-exam-library {
+    min-height: 100dvh;
+    background: var(--app-bg);
+    color: var(--app-ink);
+  }
+  html body .ox-page.ox-play {
+    min-height: 100dvh;
+    padding: 0 0 calc(20px + env(safe-area-inset-bottom, 0px));
+    background: transparent;
+    color: var(--app-ink);
+  }
+  html body .ox-question-card {
+    margin-top: 12px;
+    padding: 18px 16px;
+    border: 1px solid var(--app-line);
+    border-radius: 20px;
+    background: var(--app-surface);
+    box-shadow: 0 3px 12px #25314208;
+  }
+  html body .ox-question-meta { align-items: center; }
+  html body .ox-question-card > h2 {
+    display: flex;
+    min-height: 88px;
+    margin: 20px 2px 16px;
+    align-items: center;
+    justify-content: center;
+    color: var(--app-ink);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.55;
+    text-align: center;
+  }
+  html body .ox-answer-grid { gap: 10px; }
+  html body .ox-answer {
+    box-sizing: border-box;
+    min-height: 54px;
+    padding: 7px 10px;
+    flex-direction: row;
+    gap: 9px;
+    border-width: 1px;
+    border-radius: 999px;
+    background: var(--app-surface);
+    box-shadow: none;
+  }
+  html body .ox-answer b { font-size: 30px; line-height: 1; }
+  html body .ox-answer span { font-size: 14px; font-weight: 600; }
+  html body .ox-answer.o { border-color: #d4e6eb; background: #f3f9fa; }
+  html body .ox-answer.o b { color: #367f91; }
+  html body .ox-answer.x { border-color: #f0d7d1; background: #fff6f4; }
+  html body .ox-answer.x b { color: var(--app-accent); }
+  html body .ox-answer.right { border-color: var(--app-success); background: var(--app-success-soft); }
+  html body .ox-answer.right b { color: #347a50; }
+  html body .ox-answer.wrong { border-color: var(--app-accent); background: var(--app-danger-soft); }
+  html body .ox-answer.wrong b { color: #a7483d; }
+  html body .ox-feedback { border-radius: 14px; }
+  html body .ox-next { min-height: 52px; border-radius: 14px; }
+
+  /* The active OX flow uses the Rev.7 swipe card wrapper. Keep its swipe
+     behavior and buttons, while bringing its surfaces into the same system. */
+  html body .r7-ox-swipe {
+    min-height: 100dvh;
+    background: var(--app-bg);
+    color: var(--app-ink);
+  }
+  html body .r7-ox-swipe .r7-quiz-head,
+  html body .r7-ox-swipe .r7-ox-answerbar { background: var(--app-bg); }
+  html body .r7-ox-swipe .r7-ox-card {
+    border: 1px solid var(--app-line);
+    border-radius: 20px;
+    background: var(--app-surface);
+    box-shadow: 0 3px 12px #25314208;
+  }
+  html body .r7-ox-swipe .r7-ox-statement {
+    color: var(--app-ink);
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  html body .r7-ox-swipe .r7-ox-choices { gap: 10px; }
+  html body .r7-ox-swipe .r7-ox-choices button {
+    box-sizing: border-box;
+    height: 54px;
+    min-height: 54px;
+    border-radius: 999px;
+    font-size: 14px;
+  }
+  html body .r7-ox-swipe .r7-ox-choices .r7-ox-x {
+    border-color: #f2d2cc;
+    background: var(--app-danger-soft);
+    color: #a7483d;
+  }
+  html body .r7-ox-swipe .r7-ox-choices .r7-ox-o {
+    border-color: #cce5d4;
+    background: var(--app-success-soft);
+    color: #347a50;
+  }
+
+  html body .r7-exam-practice .official-question-kicker {
+    display: flex !important;
+    min-height: 34px;
+    margin: 0 0 8px;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  html body .r7-exam-practice .official-question-kicker span {
+    padding: 5px 10px;
+    border: 1px solid var(--app-line);
+    border-radius: 999px;
+    background: var(--app-surface);
+    color: var(--app-ink);
+    font-size: 13px;
+    font-weight: 600;
+  }
+  html body .r7-exam-practice .official-paper,
+  html body .r7-wrong-practice .official-paper {
+    overflow: hidden;
+    border: 1px solid var(--app-line);
+    border-radius: var(--app-radius-card);
+    background: var(--app-surface);
+    box-shadow: none;
+  }
+  html body .r7-exam-practice .official-paper img,
+  html body .r7-wrong-practice .official-paper img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+    background: transparent;
+  }
+  html body .r7-exam-practice .official-choice-panel,
+  html body .r7-wrong-practice .official-choice-panel {
+    box-sizing: border-box;
+    margin-top: 12px;
+    padding: 14px;
+    border: 1px solid var(--app-line);
+    border-radius: var(--app-radius-card);
+    background: var(--app-surface);
+    box-shadow: none;
+  }
+  html body .r7-exam-practice .official-choice-grid,
+  html body .r7-wrong-practice .official-choice-grid { gap: 8px; margin: 0; }
+  html body .r7-exam-practice .official-choice-grid button:not(.has-media),
+  html body .r7-wrong-practice .official-choice-grid button:not(.has-media) {
+    min-height: 64px;
+    border: 1px solid var(--app-line);
+    border-radius: 12px;
+    background: var(--app-surface);
+    box-shadow: none;
+  }
+  html body .r7-exam-practice .official-choice-grid button.picked:not(.correct),
+  html body .r7-wrong-practice .official-choice-grid button.picked:not(.correct) {
+    border-color: var(--app-accent);
+    outline: 0;
+    background: var(--app-danger-soft);
+  }
+  html body .r7-exam-practice .official-choice-grid button.correct,
+  html body .r7-wrong-practice .official-choice-grid button.correct {
+    border-color: var(--app-success);
+    outline: 0;
+    background: var(--app-success-soft);
+  }
+  html body .r7-exam-practice .official-choice-grid button.wrong,
+  html body .r7-wrong-practice .official-choice-grid button.wrong {
+    border-color: var(--app-accent);
+    outline: 0;
+    background: var(--app-danger-soft);
+  }
+  html body .r7-exam-practice .official-practice-actions,
+  html body .r7-wrong-practice .official-practice-actions {
+    background: var(--app-bg);
+  }
+  html body .r7-exam-practice .official-practice-actions button,
+  html body .r7-wrong-practice .official-practice-actions button { min-height: 48px; border-radius: 14px; }
+
+  html body .main.ed-jokbo,
+  html body .main.ed-jokbo-search,
+  html body .main.ed-jokbo-group,
+  html body .main.ed-jokbo-detail,
+  html body .main.ed-jokbo-compare,
+  html body .jk-fullscreen-shell,
+  html body .jk-fullscreen-shell > .main {
+    min-height: 100dvh;
+    background: var(--app-bg) !important;
+    color: var(--app-ink);
+  }
+  html body .jk-page {
+    box-sizing: border-box;
+    min-height: 100dvh;
+    padding: 8px 16px calc(128px + env(safe-area-inset-bottom, 0px));
+    background: transparent;
+    color: var(--app-ink);
+  }
+  html body .jk-filterbar { margin-inline: -16px; padding-inline: 16px; }
+  html body .jk-filterbar .jk-segment {
+    display: grid;
+    width: 100%;
+    min-height: 44px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    margin: 0 0 4px;
+  }
+  html body .jk-filterbar .jk-segment button {
+    display: flex;
+    min-width: 0;
+    min-height: 44px;
+    padding: 0 4px;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    white-space: nowrap;
+  }
+  html body .jk-filterbar .jk-segment button[aria-selected="false"] { color: var(--app-muted); }
+  html body .jk-filterbar .jk-segment button[aria-selected="true"] { color: var(--app-accent); }
+  html body .jk-chips button > span {
+    min-height: 34px;
+    border-color: var(--app-line);
+    background: var(--app-surface);
+    font-size: 13px;
+  }
+  html body .jk-page .jk-card,
+  html body .jk-page .jk-saved-card,
+  html body .jk-page .jk-search-result {
+    border-color: var(--app-line);
+    border-radius: var(--app-radius-card);
+    background: var(--app-surface);
+    box-shadow: none;
+  }
+  html body .jk-card-head h3 { font-size: 16px; font-weight: 600; line-height: 23px; }
+  html body .jk-keyword { border-radius: 12px; }
+  html body .jk-card-more { min-height: 48px; }
+
+  html body .r7-page.r7-wrong-detail .r7-answer-summary {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+    padding: 8px;
+    overflow: hidden;
+    border: 1px solid var(--app-line);
+    border-radius: 16px;
+    background: var(--app-surface);
+  }
+  html body .r7-page.r7-wrong-detail .r7-answer-side {
+    display: flex;
+    min-width: 0;
+    min-height: 92px;
+    padding: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    border: 0;
+    border-radius: 12px;
+  }
+  html body .r7-page.r7-wrong-detail .r7-answer-side.is-wrong { background: var(--app-danger-soft); }
+  html body .r7-page.r7-wrong-detail .r7-answer-side.is-correct { background: var(--app-success-soft); }
+  html body .r7-page.r7-wrong-detail .r7-answer-side.is-unanswered { background: #f5f6f7; }
+  html body .r7-page.r7-wrong-detail .r7-answer-side small { color: var(--app-muted); font-size: 12px; line-height: 18px; }
+  html body .r7-page.r7-wrong-detail .r7-answer-side b { color: var(--app-ink); font-size: 18px; font-weight: 700; line-height: 26px; overflow-wrap: anywhere; }
+  html body .r7-page.r7-wrong-detail .r7-answer-state { color: #a7483d; font-size: 12px; font-weight: 600; line-height: 17px; }
+  html body .r7-page.r7-wrong-detail .r7-answer-side.is-correct .r7-answer-state { color: #347a50; }
+  html body .r7-page.r7-wrong-detail .r7-answer-side.is-unanswered .r7-answer-state { color: var(--app-muted); }
+
+  html body .r7-page.r7-wrong-detail .official-choice-explanations {
+    margin: 12px 0 0;
+    padding: 14px;
+    border: 1px solid var(--app-line);
+    border-radius: var(--app-radius-card);
+    background: var(--app-surface);
+    box-shadow: none;
+  }
+  html body .r7-page.r7-wrong-detail .official-choice-explanations > h3 {
+    margin: 0 0 6px;
+    color: var(--app-ink);
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 22px;
+  }
+  html body .r7-page.r7-wrong-detail .official-choice-explanations ol {
+    display: grid;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+  }
+  html body .r7-page.r7-wrong-detail .official-choice-explanations li {
+    min-width: 0;
+    margin: 0;
+    padding: 12px 4px;
+    list-style: none;
+    border: 0;
+    border-bottom: 1px solid var(--app-line);
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    color: var(--app-ink);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  html body .r7-page.r7-wrong-detail .official-choice-explanations li:last-child { border-bottom: 0; }
+  html body .r7-page.r7-wrong-detail .official-choice-explanations li.answer,
+  html body .r7-page.r7-wrong-detail .official-choice-explanations li.selected:not(.answer) {
+    margin: 4px -4px;
+    padding-inline: 8px;
+    border: 0;
+    border-radius: 10px;
+  }
+  html body .r7-page.r7-wrong-detail .official-choice-explanations li.answer { background: var(--app-success-soft); }
+  html body .r7-page.r7-wrong-detail .official-choice-explanations li.selected:not(.answer) { background: var(--app-danger-soft); }
+  html body .r7-page.r7-wrong-detail .official-choice-heading { align-items: flex-start; gap: 8px; }
+  html body .r7-page.r7-wrong-detail .official-choice-heading > b {
+    display: grid;
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    place-items: center;
+    border: 0;
+    border-radius: 50%;
+    background: #f1f3f5;
+    color: #697684;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  html body .r7-page.r7-wrong-detail .official-choice-explanations li.answer .official-choice-heading > b { background: #cfe8d7; color: #347a50; }
+  html body .r7-page.r7-wrong-detail .official-choice-explanations li.selected:not(.answer) .official-choice-heading > b { background: #f5d7d1; color: #a7483d; }
+  html body .r7-page.r7-wrong-detail .official-choice-text { min-width: 0; font-size: 13px; line-height: 1.5; overflow-wrap: anywhere; }
+  html body .r7-page.r7-wrong-detail .official-choice-badges { display: inline-flex; flex: 0 0 auto; flex-wrap: wrap; gap: 4px; }
+  html body .r7-page.r7-wrong-detail .official-choice-badge { padding: 2px 7px; border-radius: 999px; background: #f1f3f5; color: #697684; font-size: 10px; font-weight: 600; line-height: 16px; white-space: nowrap; }
+  html body .r7-page.r7-wrong-detail .official-choice-badge.answer { background: #d9eddf; color: #347a50; }
+  html body .r7-page.r7-wrong-detail .official-choice-badge.selected { background: #f8ddd8; color: #a7483d; }
+  html body .r7-page.r7-wrong-detail .official-choice-meaning,
+  html body .r7-page.r7-wrong-detail .official-choice-reason,
+  html body .r7-page.r7-wrong-detail .official-choice-pending {
+    margin: 7px 0 0;
+    color: #526071;
+    font-size: 13px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+  html body .r7-page.r7-wrong-detail .official-choice-meaning small { display: block; margin-bottom: 2px; color: var(--app-muted); font-size: 11px; }
+
+  html body .r7-page .r7-wrong-row,
+  html body .r7-page .r7-review-core,
+  html body .r7-page .r7-chart,
+  html body .r7-page .r7-detail-history {
+    border-radius: var(--app-radius-card);
+  }
+}
+
+@media (max-width: 370px) {
+  html body .hv-shortcuts { gap: 7px; }
+  html body .hv-shortcuts .hv-shortcut { grid-template-columns: 40px minmax(0, 1fr); gap: 5px 7px; padding: 10px; }
+  html body .hv-shortcuts .hv-shortcut .hv-ico { width: 40px; height: 40px; }
+  html body .hv-shortcuts .hv-shortcut .hv-ico svg,
+  html body .hv-shortcuts .hv-shortcut .hv-ico .hv-mini-art { width: 24px; height: 24px; }
+}

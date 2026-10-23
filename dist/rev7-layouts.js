@@ -136,12 +136,13 @@
   function wrongDetailPage() {
     const q=officialQuestion(wrongDetailId),entry=officialEntry(wrongDetailId);if(!q||!entry){wrongDetailId=null;return study();}
     const record=officialLearningRecord(wrongDetailId),selected=meta().questionRecords[wrongDetailId]?.lastAnswer,labels=['①','②','③','④','⑤'];
+    const hasSelected=Number.isInteger(selected),selectedCorrect=hasSelected&&typeof officialAnswerAccepted==='function'&&officialAnswerAccepted(q,selected);
     const history=(meta().learningEvents||[]).filter(e=>e.questionId===wrongDetailId).slice().reverse();
     const explanation=globalThis.OFFICIAL_EXAM_UI?.visibleExplanation?.(q)||q.explanation||'';
     const image=typeof v2OfficialQuestionImage==='function'?v2OfficialQuestionImage(q):'';
     return '<section class="r7-page r7-wrong-detail" data-figma-frame="W-08"><header class="r7-appbar"><button data-r7-wrong-back aria-label="오답노트로 돌아가기">'+asset('back')+'</button><h1>오답 상세</h1><span></span></header>'
       +'<div class="r7-detail-meta"><small>'+esc(officialEraInfo(entry.primaryEra).name)+'</small><span>'+esc('제 '+q.examRound+'회 '+q.examLevel+' · '+q.questionNumber+'번')+'</span><em>'+record.wrongCount+'회 틀림</em></div><h2>'+esc(q.sourceQuestionText||q.question)+'</h2>'+image
-      +'<div class="r7-answer-summary"><div><small>내가 고른 답</small><b>'+(Number.isInteger(selected)?labels[selected]:'기록 없음')+'</b></div><div><small>정답</small><b>'+(labels[q.answer]||esc(q.answerLabel||''))+'</b></div></div>'
+      +'<div class="r7-answer-summary" aria-label="내 답과 정답 비교"><div class="r7-answer-side '+(hasSelected?(selectedCorrect?'is-correct':'is-wrong'):'is-unanswered')+'"><small>내가 고른 답</small><b>'+(hasSelected?(labels[selected]||'선택 답안'):'선택하지 않음')+'</b><span class="r7-answer-state">'+(hasSelected?(selectedCorrect?'정답':'오답'):'미응답')+'</span></div><div class="r7-answer-side is-correct"><small>정답</small><b>'+(labels[q.answer]||esc(q.answerLabel||''))+'</b><span class="r7-answer-state">정답</span></div></div>'
       +'<section class="r7-detail-explanation"><h2>해설</h2><p>'+esc(explanation)+'</p>'+(globalThis.OFFICIAL_EXAM_UI?.choiceExplanations(q,selected)||'')+'</section>'
       +'<section class="r7-detail-history"><h2>풀이 기록</h2>'+(history.length?history.map(e=>'<p><time>'+esc(new Date(e.answeredAt).toLocaleDateString('ko-KR'))+'</time><span>'+(labels[e.answer]||'답안 기록 없음')+' 선택 · '+(e.correct?'정답':'오답')+'</span></p>').join(''):'<p>날짜별 풀이 기록이 없어요.</p>')+'</section><button class="r7-primary" data-r7-wrong-single="'+esc(q.questionId)+'">이 문제 다시 풀기</button></section>';
   }
