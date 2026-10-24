@@ -12,7 +12,7 @@ const androidGradleRunner = fs.readFileSync(path.join(root, 'scripts', 'run-andr
 const secureReleaseRunner = fs.readFileSync(path.join(root, 'scripts', 'build-android-release.ps1'), 'utf8');
 const signingSetupRunner = fs.readFileSync(path.join(root, 'scripts', 'setup-android-release-signing.ps1'), 'utf8');
 
-assert.equal(config.appId, 'com.nuntteoboni.history');
+assert.equal(config.appId, 'korea.history_app');
 assert.equal(config.appName, '눈떠보니 한국사');
 assert.equal(config.webDir, 'android-web');
 assert(!Object.hasOwn(config, 'server'), 'Production config must not contain a development server URL.');
@@ -42,7 +42,7 @@ assert(signingSetupRunner.includes('Protect-DpapiSecureString'));
 assert(signingSetupRunner.includes('Add-Type -AssemblyName System.Security'));
 assert(signingSetupRunner.includes('[System.Security.Cryptography.ProtectedData]::Protect'));
 assert(signingSetupRunner.includes('must be stored outside the Git repository'));
-assert(signingSetupRunner.includes("applicationId = 'com.nuntteoboni.history'"));
+assert(signingSetupRunner.includes("applicationId = 'korea.history_app'"));
 assert(androidGradleRunner.includes('JDK 21 was not found'));
 assert(androidGradleRunner.includes("'platforms', 'android-36'"));
 assert(androidGradleRunner.includes("'AppData', 'Local', 'Android', 'Sdk'"));
@@ -135,7 +135,7 @@ assert(androidManifest.includes('android:windowSoftInputMode="adjustResize"'));
 assert(androidManifest.includes('android:icon="@mipmap/ic_launcher"'));
 assert(androidManifest.includes('android:roundIcon="@mipmap/ic_launcher_round"'));
 assert(androidStrings.includes('<string name="app_name">눈떠보니 한국사</string>'));
-assert(androidStrings.includes('<string name="package_name">com.nuntteoboni.history</string>'));
+assert(androidStrings.includes('<string name="package_name">korea.history_app</string>'));
 assert(androidVariables.includes('minSdkVersion = 24'));
 assert(androidVariables.includes('compileSdkVersion = 36'));
 assert(androidVariables.includes('targetSdkVersion = 36'));
@@ -157,7 +157,7 @@ assert(/^\*\.jks$/m.test(androidGitignore));
 assert(/^\*\.keystore$/m.test(androidGitignore));
 assert(/^keystore\.properties$/m.test(androidGitignore));
 assert(mainActivity.includes('EdgeToEdge.enable(this)'));
-assert(instrumentedTest.includes('assertEquals("com.nuntteoboni.history", appContext.getPackageName())'));
+assert(instrumentedTest.includes('assertEquals("korea.history_app", appContext.getPackageName())'));
 assert.deepEqual(
   fs.readFileSync(path.join(root, 'android', 'app', 'src', 'main', 'res', 'drawable-nodpi', 'app_icon.png')),
   fs.readFileSync(path.join(root, 'dist', 'icons', 'icon-maskable-512.png'))

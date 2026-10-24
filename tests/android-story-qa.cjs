@@ -1,6 +1,6 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),{execFileSync}=require('node:child_process'),{_android:android}=require('playwright');
 const {runFlow,output}=require('./story-mobile-qa-browser.cjs');
-const app='com.nuntteoboni.history',adb=(...args)=>execFileSync('adb',args,{encoding:'utf8',timeout:30000});
+const app='korea.history_app',adb=(...args)=>execFileSync('adb',args,{encoding:'utf8',timeout:30000});
 const delay=ms=>new Promise(r=>setTimeout(r,ms));
 let device;
 async function connect(){let lastError;device||=(await android.devices({omitDriverInstall:true}))[0];assert(device,'Android emulator must be connected');for(let i=0;i<10;i++){try{const view=await device.webView({pkg:app,timeout:10000}),page=await view.page();await page.waitForFunction(()=>globalThis.CORE_APP_READY&&globalThis.HISTORY_NATIVE_RUNTIME?.isNative,null,{timeout:10000});return page;}catch(e){lastError=e;if(i===0)console.log('Waiting for native WebView:',e.message);await delay(1000);}}throw Error('Android WebView unavailable: '+lastError?.message);}
