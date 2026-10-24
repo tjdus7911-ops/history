@@ -1,5 +1,5 @@
 const CACHE_PREFIX='lived-history-shell-';
-const CACHE_VERSION='2026-10-24-rev8-ui-3';
+const CACHE_VERSION='2026-10-25-app-icon-1';
 const CACHE_NAME=CACHE_PREFIX+CACHE_VERSION;
 const APP_SHELL=[
   '/',
@@ -43,6 +43,7 @@ const APP_SHELL=[
   '/manifest.webmanifest',
   '/goryeo.png',
   '/icons/icon-192.png',
+  '/icons/mascot-192.png',
   '/icons/icon-512.png',
   '/icons/icon-maskable-512.png',
   '/icons/apple-touch-icon.png'

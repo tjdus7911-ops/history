@@ -273,7 +273,7 @@
   }
 
   function cheerHTML() {
-    return '<section class="hv-cheer-banner" aria-label="학습 응원"><p>오늘도 화이팅! 한 장면, 한 문제씩 이어가요.</p><span class="hv-cheer-avatar"><img src="icons/icon-192.png" alt="" aria-hidden="true"></span></section>';
+    return '<section class="hv-cheer-banner" aria-label="학습 응원"><p>오늘도 화이팅! 한 장면, 한 문제씩 이어가요.</p><span class="hv-cheer-avatar"><img src="icons/mascot-192.png" alt="" aria-hidden="true"></span></section>';
   }
   function weakHTML() {
     const weak=globalThis.OFFICIAL_LEARNING_ANALYSIS?.rows?.().find(row=>row.weak);
@@ -326,7 +326,7 @@
       + '<button class="hv-icon-btn" data-action="status" aria-label="내 상태 보기">' + ico.user + '</button></header>'
       + railHTML(e)
       + practiceHTML(e)
-      + (globalThis.LEARNING_MISSIONS?.cardHTML?.(now, { fresh: freshLearner(), mascot: 'icons/icon-192.png', ddayHTML: ddayHTML(now) }) || '<section class="hv-status">' + ddayHTML(now) + '</section>' + cheerHTML())
+      + (globalThis.LEARNING_MISSIONS?.cardHTML?.(now, { fresh: freshLearner(), mascot: 'icons/mascot-192.png', ddayHTML: ddayHTML(now) }) || '<section class="hv-status">' + ddayHTML(now) + '</section>' + cheerHTML())
       + jokboPromoHTML()
       + weakHTML()
       + sheetHTML() + '</div>';
