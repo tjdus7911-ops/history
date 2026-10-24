@@ -1132,3 +1132,11 @@ html body .jk-related .jk-related-item:active { background: var(--rv8-subtle, #f
   html body:not(#rv8) #app .jk-main .jk-card > .jk-card-more { padding-left: 0; padding-right: 0; }
   html body:not(#rv8) #app .jk-main .jk-card > .jk-card-head { padding-top: 0; }
 }
+
+/* Home spacing: slightly tighter rhythm between story cards, 학습 바로가기 and 오늘의 학습 미션 */
+@media (max-width: 700px) {
+  html body:not(#rv8) #app .hv { gap: 22px; }
+  html body:not(#rv8) #app .hv .hv-top { margin-bottom: calc(4px - 22px); }
+  html body:not(#rv8) #app .hv .hv-shortcuts-section,
+  html body:not(#rv8) #app .hv .lm-card { gap: 10px; }
+}
