@@ -3,15 +3,15 @@ const fs=require('node:fs');
 const {load}=require('./proto-revision-harness.cjs');
 
 const g=load();
-assert.equal(g.run('JOKBO_API.count()'),156,'전 시대 학습 항목 수');
+assert.equal(g.run('JOKBO_API.count()'),196,'전 시대 학습 항목 수');
 assert.deepEqual(g.copy('JOKBO_API.countsByEra()'),{
-  prehistoric:10,proto:18,three:17,'north-south':15,goryeo:21,joseon:28,opening:17,colonial:16,modern:14
+  prehistoric:10,proto:18,three:20,'north-south':19,goryeo:28,joseon:38,opening:21,colonial:21,modern:21
 });
-assert.equal(g.run('new Set(JOKBO_DATA.keywords.map(k=>k.id)).size'),156,'키워드 ID 중복 없음');
+assert.equal(g.run('new Set(JOKBO_DATA.keywords.map(k=>k.id)).size'),196,'키워드 ID 중복 없음');
 assert.equal(g.run('JOKBO_DATA.keywords.filter(k=>k.bullets.length<2||k.bullets.length>4).length'),0,'상세 핵심 학습 내용 2~4개');
 assert.equal(g.run('JOKBO_DATA.eras.length'),9,'9개 시대 탭');
 assert.equal(g.run('JOKBO_DATA.comparisons.length'),7,'비교 화면');
-assert.equal(g.run('JOKBO_API.linkedExamIds().length'),472,'검증 연결 보강 뒤 실제 기출 중복 제거 연결 수');
+assert.equal(g.run('JOKBO_API.linkedExamIds().length'),581,'검증 연결 보강 뒤 실제 기출 중복 제거 연결 수');
 assert.deepEqual(g.copy('JOKBO_DATA.keywords.filter(k=>!k.examIds.length).map(k=>k.id)'),['sataek','goryeo-status','goryeo-women'],'직접 연결 문항이 없는 항목만 비활성');
 assert(g.run("JOKBO_API.search('서옥제').some(k=>k.id==='seookje')"));
 assert(g.run("JOKBO_API.search('박종철').some(k=>k.id==='june-flow')"));
@@ -22,7 +22,7 @@ assert.equal(g.run("JOKBO_API.searchResults('책화')[0].id"),'dongye-customs','
 assert.equal(g.run("JOKBO_API.searchResults('박종철')[0].id"),'june-flow','상세 설명에 포함된 용어 검색');
 assert.equal(g.run("JOKBO_API.searchResults('   ').length"),0,'빈 검색어에서 전체 결과를 노출하지 않음');
 assert.equal(g.run("(()=>{const rows=JOKBO_API.searchResults('과거제');return new Set(rows.map(row=>row.id)).size===rows.length})()"),true,'같은 족보 키워드 중복 결과 없음');
-for(const id of ['okjeo-products','samhan-festival','unification-flow','aristocratic-conflicts','goryeo-history-books','sejong-science','new-religions','sovereignty-loss','heroic-struggle','national-culture','coalition-negotiation']){
+for(const id of ['salsu','baekje-revival','yuan-control','goryeo-money','late-merchants','hague-dokdo','secret-societies','wartime-labor','park-gov','kim-dj-gov','okjeo-products','samhan-festival','unification-flow','aristocratic-conflicts','goryeo-history-books','sejong-science','new-religions','sovereignty-loss','heroic-struggle','national-culture','coalition-negotiation']){
   assert(g.run(`JOKBO_DATA.keywords.some(k=>k.id==='${id}')`),id+' PDF 범위 보강');
 }
 assert.deepEqual(g.copy("JOKBO_DATA.comparisons.find(c=>c.id==='early-customs').topics.map(t=>t.label)"),['혼인','법률','제천 행사']);
@@ -35,8 +35,8 @@ assert.deepEqual(g.copy("JOKBO_DATA.keywords.find(k=>k.id==='taejo-jeongdojeon')
 ],'태조·정도전 인물별 요약 행');
 assert.deepEqual(g.copy("JOKBO_DATA.keywords.find(k=>k.id==='true-view-landscape').summaryRows.map(row=>row.label)"),['정선','김홍도','신윤복','김정희'],'조선 후기 회화 인물별 요약 행');
 assert.equal(g.run("JOKBO_DATA.keywords.filter(k=>k.summaryRows).every(k=>k.summaryRows.every(row=>row.label&&row.value))"),true,'전 시대 표시 행 이름·설명');
-assert.equal(g.run('JOKBO_DATA.groups.length'),49,'전 시대 국가·왕·주제 그룹 수');
-assert.equal(g.run('new Set(JOKBO_DATA.groups.map(group=>group.id)).size'),49,'그룹 ID 중복 없음');
+assert.equal(g.run('JOKBO_DATA.groups.length'),59,'전 시대 국가·왕·주제 그룹 수');
+assert.equal(g.run('new Set(JOKBO_DATA.groups.map(group=>group.id)).size'),59,'그룹 ID 중복 없음');
 assert.equal(g.run('JOKBO_DATA.groups.filter(group=>!group.keywords.length||group.keywords.some(keyword=>keyword.eraId&&keyword.eraId!==group.eraId)).length'),0,'빈 그룹·시대 불일치 없음');
 
 const groupGame=load(),groupIds=groupGame.copy('JOKBO_DATA.groups.map(group=>group.id)');
@@ -239,4 +239,4 @@ assert(!g.run("renderContent().includes('카드를 좌우로 밀면 시대가 �
 assert(baseCss.includes("fonts/PretendardVariable.woff2"),'로컬 Pretendard 연결');
 assert(uiCss.includes("--app-font: 'Pretendard Variable'")&&uiCss.includes('html body #app *'),'앱 전체 Pretendard 통일');
 assert(worker.includes('/fonts/PretendardVariable.woff2'),'Pretendard 오프라인 캐시');
-console.log('PASS: 족보 49그룹·156항목, 전체 상세 누락 0, 실제 기출 472개 연결, 저장·복원·검색·상세·비교 및 원삼국 전용 스토리 공개 정책 검증');
+console.log('PASS: 족보 59그룹·196항목, 전체 상세 누락 0, 실제 기출 581개 연결, 저장·복원·검색·상세·비교 및 원삼국 전용 스토리 공개 정책 검증');
