@@ -76,7 +76,7 @@ $signing = Get-Content -LiteralPath $SecretFile -Raw -Encoding UTF8 | ConvertFro
 if ($signing.schemaVersion -ne 1) {
     throw "Unsupported release signing secret schema: $($signing.schemaVersion)"
 }
-if ($signing.applicationId -ne 'com.nuntteoboni.history') {
+if ($signing.applicationId -ne 'korea.history_app') {
     throw "Release signing secret belongs to a different applicationId: $($signing.applicationId)"
 }
 if (-not (Test-Path -LiteralPath $signing.storeFile -PathType Leaf)) {

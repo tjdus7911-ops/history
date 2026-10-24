@@ -87,7 +87,7 @@ try {
 
     $payload = [ordered]@{
         schemaVersion = 1
-        applicationId = 'com.nuntteoboni.history'
+        applicationId = 'korea.history_app'
         storeFile = $resolvedStoreFile
         keyAlias = $KeyAlias
         storePasswordDpapi = Protect-DpapiSecureString $storePassword

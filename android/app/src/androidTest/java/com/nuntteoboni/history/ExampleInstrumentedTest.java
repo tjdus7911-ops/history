@@ -15,6 +15,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.nuntteoboni.history", appContext.getPackageName());
+        assertEquals("korea.history_app", appContext.getPackageName());
     }
 }

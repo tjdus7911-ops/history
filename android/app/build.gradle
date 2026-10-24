@@ -24,7 +24,7 @@ android {
     namespace = "com.nuntteoboni.history"
     compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.nuntteoboni.history"
+        applicationId "korea.history_app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode configuredVersionCode

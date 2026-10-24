@@ -2,6 +2,6 @@
 <resources>
     <string name="app_name">눈떠보니 한국사</string>
     <string name="title_activity_main">눈떠보니 한국사</string>
-    <string name="package_name">com.nuntteoboni.history</string>
-    <string name="custom_url_scheme">com.nuntteoboni.history</string>
+    <string name="package_name">korea.history_app</string>
+    <string name="custom_url_scheme">korea.history_app</string>
 </resources>
