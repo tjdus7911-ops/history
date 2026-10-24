@@ -323,7 +323,7 @@
     const e = heroEra(), now = new Date();
     return '<div class="hv">'
       + '<header class="hv-top"><h1 class="hv-brand" aria-label="눈떠보니 한국사"><i class="hv-brand-mark">' + illustrations.scroll + '</i><span>눈떠보니</span><em>한국사</em></h1>'
-      + '<button class="hv-icon-btn" data-action="status" aria-label="내 상태 보기">' + ico.user + '</button></header>'
+      + '</header>'
       + railHTML(e)
       + practiceHTML(e)
       + (globalThis.LEARNING_MISSIONS?.cardHTML?.(now, { fresh: freshLearner(), mascot: 'icons/mascot-192.png', ddayHTML: ddayHTML(now) }) || '<section class="hv-status">' + ddayHTML(now) + '</section>' + cheerHTML())
