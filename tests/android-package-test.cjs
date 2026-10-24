@@ -132,7 +132,8 @@ const instrumentedTest = fs.readFileSync(path.join(root, 'android', 'app', 'src'
 const permissions = [...androidManifest.matchAll(/<uses-permission android:name="([^"]+)"/g)].map((match) => match[1]);
 assert.deepEqual(permissions, ['android.permission.INTERNET']);
 assert(androidManifest.includes('android:windowSoftInputMode="adjustResize"'));
-assert(androidManifest.includes('android:icon="@drawable/app_icon"'));
+assert(androidManifest.includes('android:icon="@mipmap/ic_launcher"'));
+assert(androidManifest.includes('android:roundIcon="@mipmap/ic_launcher_round"'));
 assert(androidStrings.includes('<string name="app_name">눈떠보니 한국사</string>'));
 assert(androidStrings.includes('<string name="package_name">com.nuntteoboni.history</string>'));
 assert(androidVariables.includes('minSdkVersion = 24'));

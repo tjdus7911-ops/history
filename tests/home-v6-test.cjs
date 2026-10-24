@@ -47,7 +47,7 @@ assert(html.includes('실전 합격률')&&html.includes('<b>50%</b>'),'official 
 assert(html.includes('data-hv-exam-open')&&!html.includes('data-hv-exam-date'),'exam card opens the in-app calendar instead of an unreliable transparent native input');
 assert(html.includes('연속 학습')&&html.includes('오늘 푼 문제')&&html.includes('최근 정답률'),'all four status items render');
 assert(html.includes('<p>오늘도 화이팅! 한 장면, 한 문제씩 이어가요.</p>'),'compact encouragement copy is exact');
-assert(html.includes('class="hv-cheer-avatar"')&&html.includes('icons/icon-192.png'),'encouragement card uses the requested app-icon character art');
+assert(html.includes('class="hv-cheer-avatar"')&&html.includes('icons/mascot-192.png'),'encouragement card uses the requested app-icon character art');
 assert.equal((html.match(/class="hv-row hv-row-/g)||[]).length,3,'three practical-learning cards render');
 assert(html.includes('data-era-open="proto-kingdoms" aria-label="원삼국 스토리 목록 보기"'),'story artwork opens the existing era list');
 assert.equal(run('JSON.stringify({run:state.run,mainRun:state.mainRun,records:meta().questionRecords,wrong:meta().wrongQuestionIds,results:meta().officialExamResults})'),protectedBefore,'rendering home does not mutate protected learning data');
