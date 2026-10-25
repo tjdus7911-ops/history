@@ -23,9 +23,9 @@
   return eras.map(e=>{
    const st=views.stats(e.id==='all'?null:e.id),inProgress=session&&(e.id==='all'?!session.eraId&&session.mode!=='daily':session.eraId===e.id&&session.mode!=='review');
    const pct=st.total?Math.round(st.learned/st.total*100):0;
-   const action=inProgress?'data-ox-resume="true"':e.id==='all'?'data-ox-start="all"':'data-ox-era="'+e.id+'"';
+   const action=inProgress?'data-r7-ox-open-resume':e.id==='all'?'data-ox-start="all"':'data-ox-era="'+e.id+'"';
    const meta=st.learned?'<b>'+st.learned+'</b>/'+st.total+'문제 · 정답률 <b class="'+(st.accuracy<70?'is-low':'is-good')+'">'+st.accuracy+'%</b>':'전체 '+st.total+'문제 · 아직 안 풀었어요';
-   return '<button class="r7-ox-row ox-era-row" '+action+' aria-label="'+esc(e.name+', '+(st.learned?st.learned+'/'+st.total+'문제 학습, 정답률 '+st.accuracy+'%':'아직 안 풀었어요')+(inProgress?', 풀던 중':''))+'"><span><b>'+esc(e.name)+(inProgress?' <em class="ox-row-live">풀던 중 '+(session.index+1)+'/'+session.questionIds.length+'</em>':'')+'</b><small>'+esc(e.description)+'</small><span class="ox-row-progress" aria-hidden="true"><i style="width:'+pct+'%"></i></span><small class="ox-row-meta">'+meta+'</small></span>'+chevron+'</button>';
+   return '<button class="r7-ox-row" '+action+' data-ox-row aria-label="'+esc(e.name+', '+(st.learned?st.learned+'/'+st.total+'문제 학습, 정답률 '+st.accuracy+'%':'아직 안 풀었어요')+(inProgress?', 풀던 중':''))+'"><span><b>'+esc(e.name)+(inProgress?' <em class="ox-row-live">풀던 중 '+(session.index+1)+'/'+session.questionIds.length+'</em>':'')+'</b><small>'+esc(e.description)+'</small><span class="ox-row-progress" aria-hidden="true"><i style="width:'+pct+'%"></i></span><small class="ox-row-meta">'+meta+'</small></span>'+chevron+'</button>';
   }).join('');
  }
  const homeBefore=views.home();
@@ -33,7 +33,7 @@
   let html=homeBefore();
   html=html.replace(/(<p class="r7-intro">[\s\S]*?<\/p>)/,'$1'+todayCard());
   const start=html.indexOf('<div class="r7-section-title"><h2>시대 골라 풀기</h2>'),end=Math.min(...['<button class="r7-analysis-link"','<details class="r7-legacy">'].map(m=>{const i=html.indexOf(m,start);return i<0?Infinity:i;}));
-  if(start>=0&&Number.isFinite(end))html=html.slice(0,start)+'<div class="r7-section-title"><h2>시대 골라 풀기</h2><button type="button" class="ox-speed-toggle" data-ox-speed aria-pressed="'+speed+'"><span class="ox-speed-dot" aria-hidden="true"></span>스피드 모드 '+SPEED_SECONDS+'초</button></div>'+eraRows()+html.slice(end);
+  if(start>=0&&Number.isFinite(end))html=html.slice(0,start)+'<div class="r7-section-title"><h2>시대 골라 풀기</h2><small>최대 20문제</small></div><div class="ox-speed-row"><span>문제마다 '+SPEED_SECONDS+'초 안에 답하는 연습</span><button type="button" class="ox-speed-toggle" data-ox-speed aria-pressed="'+speed+'"><span class="ox-speed-dot" aria-hidden="true"></span>스피드 모드 '+(speed?'켬':'끔')+'</button></div>'+eraRows()+html.slice(end);
   return html;
  });
 
@@ -58,9 +58,11 @@
    return html;
   }
   const mark=v=>v?'O':'X',late=timedOut.has(session.id+':'+question.id);
-  html=html.replace(/<div class="r7-ox-verdict[^"]*">[\s\S]*?<\/div>/,'<div class="r7-ox-verdict ox-verdict '+(correct?'correct':'incorrect')+'"><span class="ox-big-stamp is-'+(question.answer?'o':'x')+'" aria-hidden="true">'+mark(question.answer)+'</span><span class="ox-verdict-copy"><strong>'+(late?'시간 초과':correct?'맞혔어요':'틀렸어요')+'</strong><span>정답은 <b>'+mark(question.answer)+'</b>'+(late?'':' · 내 선택 '+mark(picked))+'</span></span></div>');
+  html=html.replace(/<div class="r7-ox-verdict[^"]*">[\s\S]*?<\/div>/,'<div class="r7-ox-verdict r7-ox-feedback ox-verdict '+(correct?'correct':'incorrect')+'"><i class="ox-big-stamp is-'+(question.answer?'o':'x')+'" aria-hidden="true">'+mark(question.answer)+'</i><strong>'+(late?'시간 초과':correct?'맞혔어요':'틀렸어요')+'</strong><span>정답 '+mark(question.answer)+(late?' · '+SPEED_SECONDS+'초 지남':' · 내 선택 '+mark(picked))+'</span></div>');
   const [key,rest]=firstSentence(question.explanation);
-  html=html.replace(/<div class="r7-ox-explain"><small>해설<\/small><p>[\s\S]*?<\/p><\/div>/,'<div class="r7-ox-explain"><small>해설</small><p class="ox-key">'+esc(key)+'</p>'+(rest?'<p>'+esc(rest)+'</p>':'')+'</div>'+jokboLink(question));
+  html=html.replace(/<div class="r7-ox-explain"><small>해설<\/small><p>[\s\S]*?<\/p><\/div>/,'<div class="r7-ox-explain"><small>해설</small><p><strong class="ox-key">'+esc(key)+'</strong>'+(rest?' '+esc(rest):'')+'</p></div>');
+  // 카드 가운데를 눌러 다음 문제로 넘어가는 동작과 겹치지 않게, 족보 연결은 아래 버튼 영역에 둔다.
+  html=html.replace('<footer class="r7-ox-answerbar">','<footer class="r7-ox-answerbar has-jokbo-link">'+jokboLink(question));
   return html;
  }
  globalThis.__OX_ENHANCE_QUIZ__=enhanceQuiz;
