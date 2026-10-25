@@ -215,8 +215,8 @@ assert.equal(searchGame.run('JOKBO_API.state().query'),'','검색 종료 시 검
 assert.equal(searchGame.run('window.lastScrollY'),412,'검색 전 카드 스크롤 위치 복원');
 
 const index=fs.readFileSync('dist/index.html','utf8'),worker=fs.readFileSync('dist/sw.js','utf8'),css=fs.readFileSync('dist/jokbo.css','utf8'),uiCss=fs.readFileSync('dist/ui-refresh.css','utf8'),baseCss=fs.readFileSync('dist/style.css','utf8');
-for(const file of ['jokbo.css','jokbo-data.js','jokbo-ui.js','story-release-policy.js'])assert(index.includes(file),file+' index 연결');
-for(const file of ['/jokbo.css','/jokbo-data.js','/jokbo-ui.js','/story-release-policy.js'])assert(worker.includes(file),file+' 오프라인 캐시');
+for(const file of ['jokbo.css','jokbo-data.js','jokbo-people.js','jokbo-people-stats.js','jokbo-people-photos.js','jokbo-ui.js','story-release-policy.js'])assert(index.includes(file),file+' index 연결');
+for(const file of ['/jokbo.css','/jokbo-data.js','/jokbo-people.js','/jokbo-people-stats.js','/jokbo-people-photos.js','/jokbo-ui.js','/story-release-policy.js'])assert(worker.includes(file),file+' 오프라인 캐시');
 assert(css.includes('repeat(5,minmax(0,1fr))'),'5개 하단 메뉴');
 assert(!css.includes('repeat(6,minmax(0,1fr))'),'6칸 하단 메뉴 제거');
 assert(css.includes('@media(max-width:370px)'),'360px 대응');

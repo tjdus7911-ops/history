@@ -1194,3 +1194,76 @@ html body .jk-detail-section h2, html body .jk-related > div h2 { font-size: 16p
 html body .jk-detail-section li p, html body .jk-clue p { font-size: 15px; line-height: 23px; }
 html body .jk-compare-keyword { font-size: 16px; line-height: 24px; }
 html body .jk-fab { font-size: 14px; }
+
+/* 인물 모아보기(왕·인물 / 인물 / 정부별): 별점과 출제 회차 막대로 많이 나온 인물을 먼저 보여 준다. */
+.jk-stars { display: inline-flex; gap: 1px; font-size: 12px; line-height: 1; letter-spacing: 0; }
+.jk-stars i { font-style: normal; color: #dfe4e6; }
+.jk-stars i.is-on { color: #f5a524; }
+.jk-people-tools { display: flex; flex-direction: column; gap: 10px; margin: 4px 0 8px; }
+.jk-people-cats { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+.jk-people-cats::-webkit-scrollbar { display: none; }
+.jk-people-cats button { flex: none; min-height: 32px; padding: 0 12px; border: 1px solid var(--jk-line-strong); border-radius: 999px; background: #fff; color: var(--jk-sub); font: 600 13px/18px var(--jk-ui); }
+.jk-people-cats button[aria-selected="true"] { border-color: var(--jk-ink); background: var(--jk-ink); color: #fff; }
+.jk-people-sort { display: inline-flex; align-self: flex-start; padding: 3px; border-radius: 10px; background: var(--jk-sunken); }
+.jk-people-sort button { min-height: 30px; padding: 0 12px; border: 0; border-radius: 8px; background: transparent; color: var(--jk-sub); font: 600 12.5px/18px var(--jk-ui); }
+.jk-people-sort button[aria-pressed="true"] { background: #fff; color: var(--jk-ink); box-shadow: 0 1px 2px rgba(36,50,66,.12); }
+.jk-people-legend { display: flex; flex-wrap: wrap; gap: 4px 12px; margin: 0 0 10px; color: var(--jk-faint); font-size: 11.5px; line-height: 18px; }
+.jk-people-legend span { display: inline-flex; align-items: center; gap: 4px; }
+.jk-people-legend .jk-stars { font-size: 10px; }
+.jk-people-list { display: flex; flex-direction: column; gap: 10px; }
+.jk-person-card { display: flex; align-items: center; gap: 12px; width: 100%; padding: 14px 12px 14px 14px; border: 1px solid var(--jk-line); border-radius: 16px; background: #fff; color: var(--jk-ink); text-align: left; font-family: var(--jk-ui); }
+.jk-person-card:active { background: var(--jk-sunken); }
+.jk-person-avatar { display: grid; place-items: center; flex: none; width: 46px; height: 46px; border-radius: 50%; background: var(--jk-coral-soft); color: var(--jk-coral-ink); font: 800 19px/1 var(--jk-ui); }
+.jk-person-main { display: flex; flex-direction: column; gap: 3px; flex: 1; min-width: 0; }
+.jk-person-top { display: flex; align-items: center; gap: 6px; min-width: 0; }
+.jk-person-name { overflow: hidden; color: var(--jk-ink); font-size: 16px; font-weight: 800; line-height: 22px; letter-spacing: -.02em; white-space: nowrap; text-overflow: ellipsis; }
+.jk-person-tag { flex: none; margin-left: auto; padding: 2px 7px; border-radius: 6px; background: var(--jk-sunken); color: var(--jk-sub); font-size: 11px; font-style: normal; font-weight: 600; line-height: 16px; }
+.jk-person-years { color: var(--jk-faint); font-size: 12px; line-height: 17px; }
+.jk-person-chips { overflow: hidden; color: var(--jk-sub); font-size: 13px; line-height: 19px; white-space: nowrap; text-overflow: ellipsis; }
+.jk-person-freq { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
+.jk-person-bar { position: relative; flex: 1; height: 6px; overflow: hidden; border-radius: 99px; background: var(--jk-sunken); }
+.jk-person-bar i { position: absolute; inset: 0 auto 0 0; border-radius: 99px; background: var(--jk-coral); }
+.jk-person-count { flex: none; color: var(--jk-faint); font-size: 12px; line-height: 16px; }
+.jk-person-count b { color: var(--jk-coral-ink); font-weight: 800; }
+.jk-person-chevron { display: grid; flex: none; width: 18px; color: var(--jk-faint); }
+.jk-person-chevron svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2; }
+
+.jk-person-page { padding-bottom: 32px; }
+.jk-person-hero { display: flex; align-items: center; gap: 16px; padding: 20px 0 16px; }
+.jk-person-hero .jk-person-avatar { width: 72px; height: 72px; font-size: 30px; }
+.jk-person-hero h2 { margin: 6px 0 2px; color: var(--jk-ink); font: 800 24px/32px var(--jk-ui); letter-spacing: -.03em; }
+.jk-person-hero .jk-person-years { margin: 0 0 6px; font-size: 13px; }
+.jk-person-hero .jk-stars { font-size: 16px; }
+.jk-person-stats { display: grid; grid-template-columns: repeat(3, 1fr); margin: 0 0 14px; border: 1px solid var(--jk-line); border-radius: 16px; background: #fff; }
+.jk-person-stats div { padding: 12px 6px; text-align: center; }
+.jk-person-stats div + div { border-left: 1px solid var(--jk-line); }
+.jk-person-stats dt { color: var(--jk-faint); font-size: 12px; line-height: 17px; }
+.jk-person-stats dd { margin: 4px 0 0; color: var(--jk-sub); font-size: 13px; line-height: 22px; }
+.jk-person-stats dd b { color: var(--jk-coral-ink); font-size: 20px; font-weight: 800; }
+.jk-person-keywords { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 4px; }
+.jk-person-keywords span { padding: 5px 10px; border-radius: 999px; background: var(--jk-coral-soft); color: var(--jk-coral-ink); font-size: 13px; font-weight: 700; line-height: 18px; }
+.jk-person-timeline ol { position: relative; margin: 0; padding: 0 0 0 18px; list-style: none; }
+.jk-person-timeline ol::before { content: ""; position: absolute; top: 6px; bottom: 6px; left: 4px; width: 2px; background: var(--jk-line); }
+.jk-person-timeline li { position: relative; padding: 0 0 14px; }
+.jk-person-timeline li:last-child { padding-bottom: 0; }
+.jk-person-timeline li::before { content: ""; position: absolute; top: 4px; left: -20px; width: 10px; height: 10px; border: 2px solid var(--jk-coral); border-radius: 50%; background: #fff; box-sizing: border-box; }
+.jk-person-timeline small { display: block; color: var(--jk-coral-ink); font-size: 12.5px; font-weight: 800; line-height: 18px; }
+.jk-person-timeline p { margin: 2px 0 0; color: var(--jk-ink); font-size: 14.5px; line-height: 22px; }
+.jk-person-tip { margin: 18px 0 4px; padding: 14px 16px; border: 1px solid #f6d9a8; border-radius: 14px; background: #fff8ea; }
+.jk-person-tip small { display: block; margin-bottom: 4px; color: #b26b00; font-size: 12.5px; font-weight: 800; line-height: 18px; }
+.jk-person-tip small::before { content: "⚠ "; }
+.jk-person-tip p { margin: 0; color: var(--jk-ink); font-size: 14px; line-height: 22px; }
+/* 공통 버튼·상세 목록 규칙보다 우선 */
+html body:not(#rv8) #app .jk-page .jk-person-card { display: flex; flex-direction: row; align-items: center; gap: 12px; width: 100%; min-height: 0; padding: 14px 12px 14px 14px; text-align: left; }
+html body:not(#rv8) #app .jk-person-timeline ol { display: block; margin: 12px 0 0; padding: 0 0 0 20px; }
+html body:not(#rv8) #app .jk-person-timeline li { display: block; padding: 0 0 14px; }
+html body:not(#rv8) #app .jk-person-timeline li:last-child { padding-bottom: 0; }
+html body:not(#rv8) #app .jk-person-timeline li p { margin: 2px 0 0; font-size: 14.5px; line-height: 22px; }
+/* 인물 사진: 사진이 없거나 못 불러오면 이름 첫 글자가 그대로 보인다. */
+.jk-person-avatar { position: relative; overflow: hidden; }
+.jk-person-avatar b { font: inherit; }
+.jk-person-avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 50%; background: var(--jk-sunken); }
+.jk-person-avatar.has-photo { background: var(--jk-sunken); box-shadow: inset 0 0 0 1px rgba(36,50,66,.08); }
+.jk-person-avatar.has-photo b { visibility: hidden; }
+.jk-person-credit { margin: 18px 0 0; color: var(--jk-faint); font-size: 11.5px; line-height: 17px; word-break: keep-all; }
+.jk-person-credit a { color: inherit; text-decoration: underline; }
