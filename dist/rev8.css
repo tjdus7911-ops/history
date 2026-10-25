@@ -1168,11 +1168,11 @@ html body:not(#rv8) #app .ox-row-meta b { color: #1a1f24; font-weight: 700; }
 html body:not(#rv8) #app .ox-row-meta b.is-low { color: #b26b00; }
 html body:not(#rv8) #app .ox-row-meta b.is-good { color: #128474; }
 html body:not(#rv8) #app .app-nav-shell.has-jk-fab .r7-ox-home { padding-bottom: 88px; }
-/* 문제 카드: 답하기 전에는 낮게, 문장은 크게 */
-html body:not(#rv8) #app .r7-ox-play.ox-compact .r7-ox-deck { flex: 0 0 auto; justify-content: flex-start; padding-top: 14px; }
-html body:not(#rv8) #app .r7-ox-play.ox-compact .r7-ox-stack { flex: 0 0 auto; min-height: 236px; max-height: 300px; height: 38vh; }
+/* 문제 카드: 문장은 크게 */
+/* 문제 카드는 정답 확인 카드와 같은 크기로 */
+html body:not(#rv8) #app .r7-ox-play.ox-compact .r7-ox-stack { max-height: none; }
+html body:not(#rv8) #app .r7-ox-play .r7-ox-answerbar > [data-ox-next] { margin-top: 0; }
 html body:not(#rv8) #app .r7-ox-play.ox-compact .r7-ox-statement { font-size: 19px; font-weight: 600; line-height: 30px; letter-spacing: -.02em; }
-html body:not(#rv8) #app .r7-ox-play.ox-compact .r7-ox-answerbar { margin-top: 8px; }
 html body:not(#rv8) #app .ox-streak { height: 22px; padding: 0 8px; border-radius: 6px; background: #fff3dc; color: #9a5b00; font-size: 12px; font-weight: 800; line-height: 22px; }
 html body:not(#rv8) #app .ox-timer { height: 6px; margin: 8px 24px 0; overflow: hidden; border-radius: 99px; background: #eef1f2; }
 html body:not(#rv8) #app .ox-timer i { display: block; height: 100%; border-radius: 99px; background: #e9513b; transform-origin: left center; animation-name: ox-timer; animation-timing-function: linear; animation-fill-mode: forwards; }
@@ -1191,7 +1191,8 @@ html body:not(#rv8) #app .ox-verdict span { align-self: start; color: #5b6a75; f
 html body:not(#rv8) #app .r7-ox-explain strong.ox-key { color: #1a1f24; font-weight: 700; }
 html body:not(#rv8) #app .r7-ox-answerbar.has-jokbo-link { display: flex; flex-direction: column; gap: 8px; }
 html body:not(#rv8) #app .ox-speed-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: -4px 0 10px; color: #849098; font-size: 12.5px; }
-html body:not(#rv8) #app .ox-jokbo-link { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; margin-top: 0; padding: 12px 14px; border: 1px solid #e8edee; border-radius: 12px; background: #f7f9f9; color: #1a1f24; text-align: left; }
+html body:not(#rv8) #app .r7-ox-card .ox-jokbo-link { margin-top: auto; }
+html body:not(#rv8) #app .ox-jokbo-link { display: flex; flex: none; align-items: center; justify-content: space-between; gap: 10px; width: 100%; margin-top: 12px; padding: 12px 14px; border: 1px solid #e8edee; border-radius: 12px; background: #f7f9f9; color: #1a1f24; text-align: left; }
 html body:not(#rv8) #app .ox-jokbo-link span { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 html body:not(#rv8) #app .ox-jokbo-link small { color: #d7402a; font-size: 12px; font-weight: 800; }
 html body:not(#rv8) #app .ox-jokbo-link b { overflow: hidden; font-size: 14px; font-weight: 700; line-height: 20px; text-overflow: ellipsis; white-space: nowrap; }

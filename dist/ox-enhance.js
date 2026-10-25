@@ -61,8 +61,8 @@
   html=html.replace(/<div class="r7-ox-verdict[^"]*">[\s\S]*?<\/div>/,'<div class="r7-ox-verdict r7-ox-feedback ox-verdict '+(correct?'correct':'incorrect')+'"><i class="ox-big-stamp is-'+(question.answer?'o':'x')+'" aria-hidden="true">'+mark(question.answer)+'</i><strong>'+(late?'시간 초과':correct?'맞혔어요':'틀렸어요')+'</strong><span>정답 '+mark(question.answer)+(late?' · '+SPEED_SECONDS+'초 지남':' · 내 선택 '+mark(picked))+'</span></div>');
   const [key,rest]=firstSentence(question.explanation);
   html=html.replace(/<div class="r7-ox-explain"><small>해설<\/small><p>[\s\S]*?<\/p><\/div>/,'<div class="r7-ox-explain"><small>해설</small><p><strong class="ox-key">'+esc(key)+'</strong>'+(rest?' '+esc(rest):'')+'</p></div>');
-  // 카드 가운데를 눌러 다음 문제로 넘어가는 동작과 겹치지 않게, 족보 연결은 아래 버튼 영역에 둔다.
-  html=html.replace('<footer class="r7-ox-answerbar">','<footer class="r7-ox-answerbar has-jokbo-link">'+jokboLink(question));
+  // 족보 연결은 카드 맨 아래에 붙여, 문제 카드와 정답 카드의 크기를 같게 하고 카드 가운데 탭(다음 문제)과도 겹치지 않게 한다.
+  html=html.replace(/(<div class="r7-ox-explain">[\s\S]*?<\/div>)(<\/article>)/,'$1'+jokboLink(question)+'$2');
   return html;
  }
  globalThis.__OX_ENHANCE_QUIZ__=enhanceQuiz;
