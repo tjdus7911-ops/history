@@ -99,7 +99,7 @@
  function personCard(p){
   const st=personStats(p),pct=st.total?Math.round(st.count/st.total*100):0;
   return '<button type="button" class="jk-person-card jk-card" data-jk-person="'+p.id+'" aria-label="'+esc(p.name+', '+st.total+'회 중 '+st.count+'회 출제, 관련 기출 '+st.questions+'문제, 인물 상세 보기')+'">'+avatar(p)
-   +'<span class="jk-person-main"><span class="jk-person-top"><b class="jk-person-name">'+esc(p.name)+'</b>'+starsMarkup(st.stars)+'<em class="jk-person-tag">'+esc(p.category)+'</em></span><small class="jk-person-years">'+esc(p.years)+'</small><span class="jk-person-chips">'+esc(p.chips.join(' · '))+'</span>'
+   +'<span class="jk-person-main"><span class="jk-person-top"><b class="jk-person-name">'+esc(p.name)+'</b>'+starsMarkup(st.stars)+((PEOPLE.categories[p.eraId]||[]).length>1?'<em class="jk-person-tag">'+esc(p.category)+'</em>':'')+'</span><small class="jk-person-years">'+esc(p.years)+'</small><span class="jk-person-chips">'+esc(p.chips.join(' · '))+'</span>'
    +'<span class="jk-person-freq"><span class="jk-person-bar" aria-hidden="true"><i style="width:'+pct+'%"></i></span><span class="jk-person-count"><b>'+st.count+'회</b> / '+st.total+'회</span></span></span><i class="jk-person-chevron" aria-hidden="true">'+chevron+'</i></button>';
  }
  function peopleList(){
