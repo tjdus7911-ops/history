@@ -1,5 +1,5 @@
 const CACHE_PREFIX='lived-history-shell-';
-const CACHE_VERSION='2026-10-26-jokbo-people-2';
+const CACHE_VERSION='2026-10-26-jokbo-facts-1';
 const CACHE_NAME=CACHE_PREFIX+CACHE_VERSION;
 const APP_SHELL=[
   '/',
@@ -32,7 +32,7 @@ const APP_SHELL=[
   '/rev7-layouts.css','/rev7-layouts.js','/rev7-ox-layouts.js','/rev7-story-layouts.js','/rev7-story-player.js','/rev7-exam-layouts.js',
   '/story-mobile-qa.css',
   '/app-navigation.css','/ui-refresh.css','/product-redesign.css','/mobile-design-system.css','/rev8.css',
-  '/jokbo.css','/jokbo-data.js','/jokbo-people.js','/jokbo-people-stats.js','/jokbo-people-photos.js','/jokbo-ui.js','/story-release-policy.js',
+  '/jokbo.css','/jokbo-data.js','/jokbo-people.js','/jokbo-people-stats.js','/jokbo-people-photos.js','/jokbo-choice-facts.js','/jokbo-ui.js','/story-release-policy.js',
   '/rev7-resource-states.js',
   '/media/rev7/user.svg','/media/rev7/chevron.svg','/media/rev7/chart.svg','/media/rev7/back.svg','/media/rev7/check.svg','/media/rev7/down.svg','/media/rev7/empty-wrong.svg','/media/rev7/close.svg',
   '/media/rev7/timeline-rail.svg','/media/rev7/timeline-rail-next.svg','/media/rev7/story-back.svg','/media/rev7/story-more.svg','/media/rev7/exam-close.svg','/media/rev7/exam-paused-clock.svg', '/media/rev7/exam-empty-chart.svg', '/media/rev7/exam-clock.svg','/media/rev7/exam-pause.svg','/media/rev7/exam-list.svg',

@@ -115,6 +115,36 @@
    +'<p class="jk-people-legend"><span>'+starsMarkup(3)+' 16회 이상</span><span>'+starsMarkup(2)+' 8~15회</span><span>'+starsMarkup(1)+' 7회 이하</span></p>'
    +'<div class="jk-people-list">'+list.map(personCard).join('')+'</div></div>';
  }
+ // 기출 선지로 보는 활동: 실제 기출에서 그 인물·단체의 활동으로 나온 선지와, 같은 문제에 함께 나온 '헷갈리는 선지'.
+ const CHOICE_FACTS=globalThis.JOKBO_CHOICE_FACTS||{};
+ const factScopes=eraId=>eraId==='opening'||eraId==='colonial'?['empire','occupation']:eraId==='modern'?['republic']:[eraSource[eraId]];
+ let factEntity=null;
+ function factEntries(names,eraId){
+  const list=[],seen=new Set();
+  for(const raw of names){
+   const name=String(raw||'').trim(),base=name.replace(/\s+/g,'');if(!base)continue;
+   const parts=factScopes(eraId).map(scope=>CHOICE_FACTS[base+'|'+scope]).filter(Boolean);if(!parts.length)continue;
+   const label=parts[0].name;if(seen.has(label.replace(/\s+/g,'')))continue;seen.add(label.replace(/\s+/g,''));
+   const facts=[],confusers=[];
+   const same=t=>t.replace(/\s+/g,'').replace(/(을|를|이|가|의|은|는|으로|로|활동|하였다|되었다|\.)/g,'');
+   const add=(list,f)=>{const hit=list.find(x=>same(x.t)===same(f.t)&&x.o===f.o);if(hit){for(const id of f.q)if(!hit.q.includes(id))hit.q.push(id);}else list.push({...f,q:[...f.q]});};
+   for(const part of parts){for(const f of part.facts)add(facts,f);for(const c of part.confusers)add(confusers,c);}
+   const rank=id=>{const x=sourceById.get(id);return x?Number(x.examRound)*2+(x.examLevel==='advanced'?1:0):0;};
+   for(const f of [...facts,...confusers])f.q.sort((a,b)=>rank(b)-rank(a));
+   facts.sort((a,b)=>b.q.length-a.q.length);list.push({name:label,facts,confusers});
+  }
+  return list;
+ }
+ function roundLabel(id){const s=sourceById.get(id);return s?s.examRound+'회 '+s.examLevel:'';}
+ function choiceFactsSection(entries,eraId,lead){
+  if(!entries.length)return '';
+  const active=entries.find(e=>e.name===factEntity)||entries[0];
+  const tabs=entries.length>1?'<div class="jk-chips jk-fact-tabs" role="tablist" aria-label="대상 선택">'+entries.map(e=>'<button role="tab" data-jk-fact-entity="'+esc(e.name)+'" aria-selected="'+(e===active)+'"><span>'+esc(e.name)+'</span></button>').join('')+'</div>':'';
+  const item=(f,owner)=>'<li><button type="button" class="jk-fact" data-jk-fact-exams="'+esc(f.q.join(','))+'" data-jk-exam-era="'+esc(eraId)+'" aria-label="'+esc(f.t+(owner?', 실제로는 '+owner:'')+', 출제 '+f.q.length+'회, 문제 풀기')+'"><span class="jk-fact-text">'+esc(f.t)+'</span>'+(owner?'<em class="jk-fact-owner">'+esc(owner)+'</em>':'')+'<small class="jk-fact-meta">'+(f.q.length>1?'<b>'+f.q.length+'회 출제</b> · ':'')+'최근 '+esc(roundLabel(f.q[0]))+'</small></button></li>';
+  return '<section class="jk-detail-section jk-facts"><div class="jk-facts-head"><h2>기출 선지로 보는 활동</h2><small>'+esc(lead)+'</small></div>'+tabs
+   +'<p class="jk-facts-lead"><b>'+esc(active.name)+'</b>의 활동으로 실제 시험에 나온 선지예요. 누르면 그 문제를 풀어요.</p><ol class="jk-fact-list">'+active.facts.map(f=>item(f)).join('')+'</ol>'
+   +(active.confusers.length?'<div class="jk-confusers"><h3>헷갈리는 선지</h3><p>'+esc(active.name)+' 문제에 함께 나온 <b>다른 주인공</b>의 활동이에요.</p><ol class="jk-fact-list is-confuser">'+active.confusers.map(c=>item(c,c.o)).join('')+'</ol></div>':'')+'</section>';
+ }
  function personPage(){
   const p=personById.get(personId);if(!p)return mainPage();const era=eraById.get(p.eraId),st=personStats(p),isGov=p.eraId==='modern';
   const shown=st.ids.slice(0,8);
@@ -123,6 +153,7 @@
    +'<div class="jk-person-keywords">'+p.chips.map(c=>'<span>'+esc(c)+'</span>').join('')+'</div>'
    +'<section class="jk-detail-section jk-person-timeline"><h2>'+(isGov?'주요 사건':'핵심 활동')+'</h2><ol>'+p.timeline.map(row=>'<li><small>'+esc(row.year)+'</small><p>'+esc(row.text)+'</p></li>').join('')+'</ol></section>'
    +(p.tip?'<section class="jk-person-tip"><small>헷갈림 주의</small><p>'+esc(p.tip)+'</p></section>':'')
+   +choiceFactsSection(factEntries([p.name.replace(/ (정부|내각)$/,''),p.name,...p.chips],p.eraId),p.eraId,'인물과 관련 단체 · 많이 나온 순')
    +'<section class="jk-detail-section jk-related"><div><h2>관련 실제 기출</h2><small>최근 회차부터 · '+(st.questions>shown.length?'최근 '+shown.length+'문제 표시':'전체 '+st.questions+'문제')+'</small></div>'+(shown.length?shown.map(id=>{const row=examLabel(id);return row?'<button type="button" class="jk-related-item" data-jk-exam-one="'+esc(id)+'" data-jk-exam-era="'+esc(p.eraId)+'" aria-label="'+esc(row.meta)+' 문제 풀기"><span><small>'+esc(row.meta)+'</small><b>'+esc(row.title)+'</b></span><i aria-hidden="true">›</i></button>':'';}).join(''):'<div class="jk-empty-inline">연결된 기출을 준비하고 있어요</div>')
    +'<button class="jk-primary" data-jk-person-exams="'+p.id+'" '+(st.questions?'':'disabled')+'>'+(st.questions?'관련 기출 '+st.questions+'문제 풀기':'연결된 기출을 준비하고 있어요')+'</button></section>'+photoCredit(p)+'</section>';
  }
@@ -255,6 +286,7 @@
    +'<section class="jk-detail-section jk-detail-facts"><h2>요약 카드 키워드 <small>'+rows.length+'개</small></h2><div class="jk-card jk-keywords">'+rows.map((row,index)=>factLine(row,index,mark)).join('')+'</div></section>'
    +'<section class="jk-detail-section"><h2>핵심 학습 내용</h2><ol>'+k.bullets.map((b,i)=>'<li><span>'+String(i+1).padStart(2,'0')+'</span><p>'+show(b)+'</p></li>').join('')+'</ol></section>'
    +'<section class="jk-clue"><small>대표 단서</small><p>'+show((k.examTerms||[]).join(' · ')||k.value)+'</p></section>'
+   +choiceFactsSection(factEntries([...String(k.value).split(/\s*[·→]\s*/),...(k.examTerms||[]),k.label,...rows.flatMap(r=>[r.label,...String(r.value).split(/\s*[·→]\s*/)])],k.eraId),k.eraId,'키워드의 인물·단체 · 많이 나온 순')
    +(comparison?'<section class="jk-detail-section"><h2>함께 구분할 개념</h2><button class="jk-compare-link" data-jk-compare="'+comparison.id+'"><span><b>'+esc(comparison.title)+'</b><small>비슷한 개념의 차이를 나란히 확인해요.</small></span><i>›</i></button></section>':'')
    +(k.source?'<p class="jk-source">사실 확인: <a href="'+esc(k.source.url)+'" target="_blank" rel="noreferrer">'+esc(k.source.label)+' ↗</a></p>':'')
    +'<section class="jk-detail-section jk-related"><div><h2>관련 실제 기출</h2><small>키워드를 직접 묻는 문제 우선 · 중복 제외</small></div>'+(ids.length?ids.map(id=>{const row=examLabel(id);return row?'<button type="button" class="jk-related-item" data-jk-exam-one="'+esc(id)+'" data-jk-exam-era="'+esc(k.eraId)+'" aria-label="'+esc(row.meta)+' 문제 풀기"><span><small>'+esc(row.meta)+'</small><b>'+esc(row.title)+'</b></span><i aria-hidden="true">›</i></button>':'';}).join(''):'<div class="jk-empty-inline">연결된 기출을 준비하고 있어요</div>')+'<button class="jk-primary" data-jk-keyword-exams="'+k.id+'" '+(ids.length?'':'disabled')+'>'+(ids.length?'관련 기출 '+ids.length+'문제 풀기':'연결된 기출을 준비하고 있어요')+'</button></section></section>';
@@ -362,14 +394,16 @@
   if(d.jkEra){event.stopImmediatePropagation();const from=D.eras.findIndex(e=>e.id===activeEra),to=D.eras.findIndex(e=>e.id===d.jkEra);selectEra(d.jkEra,d.jkPager!==undefined?Math.sign(to-from):0);return;}
   if(d.jkCountry){event.stopImmediatePropagation();country=d.jkCountry;saveView({scrollY:0});render();revealActiveEraTab();const bar=document.querySelector('.jk-era-content');if(bar&&bar.getBoundingClientRect().top<0)window.scrollTo(0,Math.max(0,bar.getBoundingClientRect().top+pageScrollY()-(document.querySelector('.jk-filterbar')?.offsetHeight||0)));return;}
   if(d.jkMode){event.stopImmediatePropagation();mode=d.jkMode;saveView({scrollY:0});render();revealActiveEraTab();window.scrollTo(0,0);return;}
-  if(d.jkDetail){event.stopImmediatePropagation();const from=screen==='jokbo'?'jokbo':screen==='jokbo-group'?'jokbo/group/'+groupId:screen==='jokbo-compare'?'jokbo/compare/'+compareId:'jokbo';if(screen==='jokbo')saveView({scrollY:pageScrollY()});detailParentGroupId=d.jkDetailParent||null;detailReturnSearch=false;if(detailParentGroupId)groupScrollY=pageScrollY();detailId=d.jkDetail;screen='jokbo-detail';pushRoute('jokbo/detail/'+encodeURIComponent(detailId),from);render();window.scrollTo(0,0);return;}
+  if(d.jkDetail){event.stopImmediatePropagation();const from=screen==='jokbo'?'jokbo':screen==='jokbo-group'?'jokbo/group/'+groupId:screen==='jokbo-compare'?'jokbo/compare/'+compareId:'jokbo';if(screen==='jokbo')saveView({scrollY:pageScrollY()});detailParentGroupId=d.jkDetailParent||null;detailReturnSearch=false;if(detailParentGroupId)groupScrollY=pageScrollY();detailId=d.jkDetail;factEntity=null;screen='jokbo-detail';pushRoute('jokbo/detail/'+encodeURIComponent(detailId),from);render();window.scrollTo(0,0);return;}
   if(d.jkGroup){event.stopImmediatePropagation();const group=groupById.get(d.jkGroup);if(group){saveView({scrollY:pageScrollY()});groupId=group.id;groupScrollY=0;detailId=null;detailParentGroupId=null;detailReturnSearch=false;screen='jokbo-group';pushRoute('jokbo/group/'+encodeURIComponent(groupId),'jokbo');render();window.scrollTo(0,0);}return;}
   if(d.jkSave){event.stopImmediatePropagation();const y=pageScrollY();saved.has(d.jkSave)?saved.delete(d.jkSave):saved.add(d.jkSave);saveKeywords();render();if(screen==='jokbo')revealActiveEraTab();scrollPage(y);return;}
   if(d.jkCompare){event.stopImmediatePropagation();const from=screen==='jokbo-detail'?'jokbo/detail/'+detailId:'jokbo';saveView();compareId=d.jkCompare;compareTopic=0;screen='jokbo-compare';pushRoute('jokbo/compare/'+compareId,from);render();window.scrollTo(0,0);return;}
-  if(d.jkPerson){event.stopImmediatePropagation();const p=personById.get(d.jkPerson);if(p){saveView({scrollY:pageScrollY()});personId=p.id;screen='jokbo-person';pushRoute('jokbo/person/'+encodeURIComponent(p.id),'jokbo');render();window.scrollTo(0,0);}return;}
+  if(d.jkPerson){event.stopImmediatePropagation();const p=personById.get(d.jkPerson);if(p){saveView({scrollY:pageScrollY()});personId=p.id;factEntity=null;screen='jokbo-person';pushRoute('jokbo/person/'+encodeURIComponent(p.id),'jokbo');render();window.scrollTo(0,0);}return;}
   if(d.jkPeopleCat){event.stopImmediatePropagation();peopleCategory=d.jkPeopleCat;const y=pageScrollY();render();revealActiveEraTab();scrollPage(y);return;}
   if(d.jkPeopleSort){event.stopImmediatePropagation();peopleSort=d.jkPeopleSort==='order'?'order':'freq';saveView();const y=pageScrollY();render();revealActiveEraTab();scrollPage(y);return;}
   if(d.jkPersonExams){event.stopImmediatePropagation();const p=personById.get(d.jkPersonExams);if(p)startExamIds(personStats(p).ids,p.eraId);return;}
+  if(d.jkFactEntity){event.stopImmediatePropagation();factEntity=d.jkFactEntity;const y=pageScrollY();render();scrollPage(y);return;}
+  if(d.jkFactExams){event.stopImmediatePropagation();startExamIds(d.jkFactExams.split(',').filter(Boolean),d.jkExamEra);return;}
   if(d.jkCompareTopic!==undefined){event.stopImmediatePropagation();compareTopic=Number(d.jkCompareTopic)||0;render();return;}
   if(d.jkBack){event.stopImmediatePropagation();
    if(d.jkBack==='origin'){leaveJokbo();return;}
