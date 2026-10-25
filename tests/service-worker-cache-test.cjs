@@ -35,7 +35,7 @@ vm.runInContext(fs.readFileSync('dist/sw.js','utf8'),context);
   assert.equal(skipWaitingCalled,true,'new service worker skips the waiting phase');
   assert(shellFiles.includes('/index.html')&&shellFiles.includes('/app.js')&&shellFiles.includes('/proto-story-data.js')&&shellFiles.includes('/learning-missions.js')&&shellFiles.includes('/learning-missions.css'),'install preloads the current app shell');
   assert(shellFiles.includes('/product-redesign.css'),'install preloads the redesign theme');
-  const activeVersion=vm.runInContext('CACHE_VERSION',context);assert.equal(activeVersion,'2026-10-26-jokbo-people-2');
+  const activeVersion=vm.runInContext('CACHE_VERSION',context);assert.equal(activeVersion,'2026-10-26-jokbo-facts-1');
   let activatePromise;listeners.activate({waitUntil(promise){activatePromise=promise}});await activatePromise;
   assert(deletedCaches.includes('lived-history-shell-2026-10-14-mobile-exam-actions-v5'),'activation removes the installed app’s stale shell');
   assert(!deletedCaches.includes('unrelated-cache'),'activation keeps caches owned by other apps');

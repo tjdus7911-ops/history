@@ -1267,3 +1267,27 @@ html body:not(#rv8) #app .jk-person-timeline li p { margin: 2px 0 0; font-size: 
 .jk-person-avatar.has-photo b { visibility: hidden; }
 .jk-person-credit { margin: 18px 0 0; color: var(--jk-faint); font-size: 11.5px; line-height: 17px; word-break: keep-all; }
 .jk-person-credit a { color: inherit; text-decoration: underline; }
+
+/* 기출 선지로 보는 활동 · 헷갈리는 선지 */
+.jk-facts-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.jk-facts-head small { color: var(--jk-faint); font-size: 12px; }
+.jk-fact-tabs { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; margin: 10px 0 2px; padding-bottom: 2px; }
+.jk-fact-tabs::-webkit-scrollbar { display: none; }
+.jk-fact-tabs button { flex: none; min-height: 32px; padding: 0 12px; border: 1px solid var(--jk-line-strong); border-radius: 999px; background: #fff; color: var(--jk-sub); font: 600 13px/18px var(--jk-ui); }
+.jk-fact-tabs button[aria-selected="true"] { border-color: var(--jk-ink); background: var(--jk-ink); color: #fff; }
+.jk-facts-lead { margin: 10px 0 8px; color: var(--jk-sub); font-size: 13px; line-height: 20px; }
+.jk-facts-lead b, .jk-confusers p b { color: var(--jk-ink); }
+html body:not(#rv8) #app .jk-page ol.jk-fact-list { display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0; list-style: none; }
+html body:not(#rv8) #app .jk-page ol.jk-fact-list li { display: block; padding: 0; }
+html body:not(#rv8) #app .jk-page .jk-fact { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 4px 8px; align-items: start; width: 100%; min-height: 0; padding: 12px 14px; border: 1px solid var(--jk-line); border-radius: 14px; background: #fff; color: var(--jk-ink); text-align: left; font-family: var(--jk-ui); }
+.jk-fact:active { background: var(--jk-sunken); }
+.jk-fact-text { grid-column: 1 / -1; font-size: 14.5px; font-weight: 600; line-height: 22px; letter-spacing: -.01em; word-break: keep-all; }
+.jk-fact-meta { grid-column: 1; color: var(--jk-faint); font-size: 12px; line-height: 17px; }
+.jk-fact-meta b { color: var(--jk-coral-ink); font-weight: 800; }
+.jk-fact-owner { grid-column: 2; grid-row: 2; justify-self: end; padding: 2px 8px; border-radius: 6px; background: #fff3dc; color: #9a5b00; font-size: 12px; font-style: normal; font-weight: 800; line-height: 17px; white-space: nowrap; }
+.jk-fact-owner::before { content: "→ "; }
+.jk-confusers { margin-top: 18px; }
+.jk-confusers h3 { margin: 0; color: var(--jk-ink); font-size: 15px; font-weight: 800; line-height: 22px; }
+.jk-confusers h3::before { content: "⚠ "; color: #b26b00; }
+.jk-confusers p { margin: 2px 0 8px; color: var(--jk-sub); font-size: 13px; line-height: 20px; }
+.jk-fact-list.is-confuser .jk-fact { background: #fffdf8; }

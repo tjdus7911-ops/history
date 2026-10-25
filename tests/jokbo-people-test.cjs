@@ -37,3 +37,16 @@ for(const [id,photo] of Object.entries(photos)){
 }
 assert(Object.keys(photos).length>=60,'사진 수');
 console.log('jokbo-people-test ok',P.people.length,'people,',Object.keys(photos).length,'photos');
+// 기출 선지로 보는 활동: 생성 파일이 최신이고, 모든 선지가 실제 기출 문항을 가리키며, 대표 사례가 맞는 주인에게 간다.
+execFileSync(process.execPath,[path.join(root,'scripts/build-jokbo-choice-facts.cjs'),'--check'],{stdio:'inherit'});
+require(path.join(root,'dist/official-exam-catalog.js'));require(path.join(root,'dist/jokbo-choice-facts.js'));
+const facts=globalThis.JOKBO_CHOICE_FACTS,qids=new Set(globalThis.OFFICIAL_EXAM_SOURCE_RECORDS.map(r=>r.officialQuestionId));
+for(const [key,e] of Object.entries(facts)){assert(/\|(ancient|goryeo|joseon|empire|occupation|republic)$/.test(key),key);for(const f of [...e.facts,...e.confusers]){assert(f.t&&f.q.length&&f.q.every(id=>qids.has(id)),key+' '+f.t);}}
+const has=(key,text)=>facts[key]&&facts[key].facts.some(f=>f.t.includes(text));
+assert(has('의열단|occupation','조선 혁명 선언'),'의열단 조선 혁명 선언');
+assert(has('한인애국단|occupation','훙커우'),'한인 애국단 훙커우');
+assert(has('신민회|occupation','105인')||has('신민회|empire','105인'),'신민회 105인');
+assert(has('영조|joseon','탕평비')&&!has('영조|joseon','양재역'),'영조 탕평비, 양재역 벽서 제외');
+assert(facts['한인애국단|occupation'].confusers.some(c=>c.t.includes('조선 혁명 간부 학교')&&c.o==='의열단'),'헷갈리는 선지 → 의열단');
+const ui2=fs.readFileSync(path.join(root,'dist/jokbo-ui.js'),'utf8');assert(ui2.includes('기출 선지로 보는 활동')&&ui2.includes('data-jk-fact-exams'),'UI 선지 활동');
+console.log('jokbo-choice-facts ok',Object.keys(facts).length,'entities');
