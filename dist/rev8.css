@@ -1202,3 +1202,11 @@ html body:not(#rv8) #app .ox-result-links { display: flex; flex-wrap: wrap; gap:
 html body:not(#rv8) #app .ox-mini { min-height: 32px; padding: 0 12px; border: 1px solid #d3dbdd; border-radius: 999px; background: #fff; color: #33424d; font-size: 12.5px; font-weight: 700; }
 html body:not(#rv8) #app .ox-mini[aria-pressed="true"] { border-color: #e9513b; background: #fdeeea; color: #d7402a; }
 html body:not(#rv8) #app .ox-daily-done { margin: 6px 0 0; color: #128474; font-weight: 800; }
+
+/* 족보: 한 키워드에 여러 줄(불국사·석굴암·성덕대왕신종 등)이 있어도 줄 간격을 다른 카드와 같게(8px) */
+html body:not(#rv8) #app .jk-keyword.is-split .jk-keyword-line + .jk-keyword-line,
+html body:not(#rv8) #app .jk-detail-facts .jk-keyword-line + .jk-keyword-line { margin-top: 8px; }
+
+/* 확인 팝업: 낱말 중간에서 줄이 바뀌지 않게, 줄 길이를 고르게 */
+html body:not(#rv8) #app .modal h2, html body:not(#rv8) #app .modal h3, html body:not(#rv8) #app .modal p,
+html body:not(#rv8) #app .r7-sheet h2, html body:not(#rv8) #app .r7-sheet p { word-break: keep-all; overflow-wrap: break-word; text-wrap: balance; }
