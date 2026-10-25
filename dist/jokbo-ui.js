@@ -188,7 +188,7 @@
   return '<section class="jk-page jk-main" data-page="jokbo"><header class="jk-heading r7-menu-heading"><button type="button" class="jk-heading-back" data-jk-back="origin" aria-label="이전 화면으로 돌아가기">'+backIcon+'</button><h1>족보</h1>'+searchButton()+'</header><p class="jk-heading-subtitle">시험 전에 필요한 키워드만 카드로</p>'+filters
    +(mode==='saved'?'<div class="jk-era-content" data-jk-swipe="true"><section class="jk-summary-head jk-saved-head"><small class="jk-pager-count">'+(eraIndex+1)+' / '+D.eras.length+'</small><h2>'+esc(era.label)+' 저장 키워드</h2><p>이 시대에서 저장한 핵심 개념만 모았어요.</p></section>'+savedList()+'</div>'
    :'<div class="jk-era-content" data-jk-swipe="true">'+eraPager(era,eraIndex)+'<div class="jk-groups">'+(rows.length?rows.map((row,i)=>groupMarkup(row.group,row.items,i,false)).join(''):emptyMarkup())+'</div>'+compareLinks(activeEra)
-   +'<section class="jk-exam-cta"><div><small>RELATED QUESTIONS</small><h2>이 시대 관련 기출 풀기</h2><p>'+related.length+'개의 검증된 실제 기출이 핵심 키워드와 연결되어 있어요.</p></div><button data-jk-era-exams="'+activeEra+'" '+(related.length?'':'disabled')+'>'+(related.length?'기출 '+Math.min(20,related.length)+'문제 풀기':'연결된 기출을 준비하고 있어요')+'</button></section></div>')+'</section>';
+   +'<section class="jk-exam-cta"><div><small>RELATED QUESTIONS</small><h2>이 시대 관련 기출</h2><p>'+related.length+'개의 검증된 실제 기출이 핵심 키워드와 연결되어 있어요. 버튼을 누르면 모두 이어서 풀 수 있어요.</p></div><button data-jk-era-exams="'+activeEra+'" '+(related.length?'':'disabled')+'>'+(related.length?'이 시대 관련 기출 풀기 · '+related.length+'문제':'연결된 기출을 준비하고 있어요')+'</button></section></div>')+'</section>';
  }
  function groupKeywordMarkup(group,k){
   const rows=factRows(k),point=k.groupPoint||k.bullets?.[0]||k.definition;
@@ -326,7 +326,7 @@
   if(d.jkExamOne){event.stopImmediatePropagation();startExamIds([d.jkExamOne],d.jkExamEra);return;}
   if(d.jkKeywordExams){event.stopImmediatePropagation();const k=keywordById.get(d.jkKeywordExams);if(k)startExamIds(directExamMatches(k),k.eraId);return;}
   if(d.jkGroupExams){event.stopImmediatePropagation();const group=groupById.get(d.jkGroupExams);if(group)startExamIds(groupExamIds(group),group.eraId);return;}
-  if(d.jkEraExams){event.stopImmediatePropagation();startExamIds(eraExamIds(d.jkEraExams).slice(0,20),d.jkEraExams);return;}
+  if(d.jkEraExams){event.stopImmediatePropagation();startExamIds(eraExamIds(d.jkEraExams),d.jkEraExams);return;}
  },true);
  // 시대 스와이프: 처음 움직인 방향으로 축을 고정하고, 가로일 때만 카드가 손가락을 따라 움직인다. 세로 스크롤은 시대를 바꾸지 않는다.
  let eraGesture=null,suppressSwipeClickUntil=0;
