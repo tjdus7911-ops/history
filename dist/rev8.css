@@ -1140,3 +1140,64 @@ html body .jk-related .jk-related-item:active { background: var(--rv8-subtle, #f
   html body:not(#rv8) #app .hv .hv-shortcuts-section,
   html body:not(#rv8) #app .hv .lm-card { gap: 10px; }
 }
+
+/* ======================================================================
+ * OX 개선 — 오늘의 10문제 · 시대별 진행 막대 · 스피드 모드 · 결과 도장 · 족보 연결 (ox-enhance.js)
+ * ==================================================================== */
+html body:not(#rv8) #app .ox-today { display: flex; flex-direction: column; gap: 12px; margin: 0 0 24px; padding: 18px; border: 1px solid #f6cfc6; border-radius: 16px; background: linear-gradient(135deg, #fff5f2, #fff); }
+html body:not(#rv8) #app .ox-today.is-done { border-color: #cfe9e3; background: linear-gradient(135deg, #effaf7, #fff); }
+html body:not(#rv8) #app .ox-today small { color: #d7402a; font-size: 12px; font-weight: 800; letter-spacing: .02em; }
+html body:not(#rv8) #app .ox-today.is-done small { color: #128474; }
+html body:not(#rv8) #app .ox-today h2 { margin: 2px 0 4px; color: #1a1f24; font-size: 18px; font-weight: 800; line-height: 26px; }
+html body:not(#rv8) #app .ox-today p { margin: 0; color: #5b6a75; font-size: 13px; line-height: 20px; }
+html body:not(#rv8) #app .ox-today p b { color: #1a1f24; }
+html body:not(#rv8) #app .ox-today .r7-primary { width: 100%; height: 48px; min-height: 48px; border-radius: 999px; font-size: 15px; font-weight: 700; }
+html body:not(#rv8) #app .r7-ox-home .ox-speed-toggle { display: inline-flex; align-items: center; gap: 6px; min-height: 32px; padding: 0 10px; border: 1px solid #d3dbdd; border-radius: 999px; background: #fff; color: #5b6a75; font-size: 12.5px; font-weight: 700; }
+html body:not(#rv8) #app .r7-ox-home .ox-speed-toggle[aria-pressed="true"] { border-color: #e9513b; background: #fdeeea; color: #d7402a; }
+html body:not(#rv8) #app .ox-speed-dot { width: 8px; height: 8px; border-radius: 50%; background: #c4ccd0; }
+html body:not(#rv8) #app .ox-speed-toggle[aria-pressed="true"] .ox-speed-dot { background: #e9513b; }
+/* 시대 행: 상태 문구 대신 진행 막대와 정답률, 오른쪽은 화살표만(족보 버튼이 가리지 않게) */
+html body:not(#rv8) #app .r7-ox-home .ox-era-row { min-height: 84px; align-items: center; }
+html body:not(#rv8) #app .r7-ox-home .ox-era-row > span:first-child { gap: 3px; }
+html body:not(#rv8) #app .r7-ox-home .ox-era-row b { display: flex; align-items: center; gap: 6px; }
+html body:not(#rv8) #app .r7-ox-home .ox-era-row .ox-row-live { flex: none; height: 20px; padding: 0 7px; border-radius: 6px; background: #fdeeea; color: #d7402a; font-size: 11.5px; font-style: normal; font-weight: 700; line-height: 20px; }
+html body:not(#rv8) #app .ox-row-progress { position: relative; display: block; height: 5px; margin: 4px 0 1px; overflow: hidden; border-radius: 99px; background: #eef1f2; }
+html body:not(#rv8) #app .ox-row-progress i { position: absolute; inset: 0 auto 0 0; border-radius: 99px; background: #e9513b; }
+html body:not(#rv8) #app .r7-ox-home .ox-era-row small.ox-row-meta { color: #849098; }
+html body:not(#rv8) #app .ox-row-meta b { color: #1a1f24; font-weight: 700; }
+html body:not(#rv8) #app .ox-row-meta b.is-low { color: #b26b00; }
+html body:not(#rv8) #app .ox-row-meta b.is-good { color: #128474; }
+html body:not(#rv8) #app .app-nav-shell.has-jk-fab .r7-ox-home { padding-bottom: 88px; }
+/* 문제 카드: 답하기 전에는 낮게, 문장은 크게 */
+html body:not(#rv8) #app .r7-ox-play.ox-compact .r7-ox-deck { flex: 0 0 auto; justify-content: flex-start; padding-top: 14px; }
+html body:not(#rv8) #app .r7-ox-play.ox-compact .r7-ox-stack { flex: 0 0 auto; min-height: 236px; max-height: 300px; height: 38vh; }
+html body:not(#rv8) #app .r7-ox-play.ox-compact .r7-ox-statement { font-size: 19px; font-weight: 600; line-height: 30px; letter-spacing: -.02em; }
+html body:not(#rv8) #app .r7-ox-play.ox-compact .r7-ox-answerbar { margin-top: 8px; }
+html body:not(#rv8) #app .ox-streak { height: 22px; padding: 0 8px; border-radius: 6px; background: #fff3dc; color: #9a5b00; font-size: 12px; font-weight: 800; line-height: 22px; }
+html body:not(#rv8) #app .ox-timer { height: 6px; margin: 8px 24px 0; overflow: hidden; border-radius: 99px; background: #eef1f2; }
+html body:not(#rv8) #app .ox-timer i { display: block; height: 100%; border-radius: 99px; background: #e9513b; transform-origin: left center; animation-name: ox-timer; animation-timing-function: linear; animation-fill-mode: forwards; }
+@keyframes ox-timer { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+/* 정답 확인: 큰 O/X 도장과 결과 */
+html body:not(#rv8) #app .ox-verdict { display: flex; align-items: center; gap: 14px; padding: 12px 14px; }
+html body:not(#rv8) #app .ox-verdict.correct { background: #e9f7f3; }
+html body:not(#rv8) #app .ox-verdict.incorrect { background: #fdeeea; }
+html body:not(#rv8) #app .ox-big-stamp { display: grid; flex: none; place-items: center; width: 52px; height: 52px; border: 3px solid currentColor; border-radius: 50%; font-size: 28px; font-weight: 900; line-height: 1; }
+html body:not(#rv8) #app .ox-big-stamp.is-o { color: #128474; }
+html body:not(#rv8) #app .ox-big-stamp.is-x { color: #d7402a; }
+html body:not(#rv8) #app .ox-verdict-copy { display: flex; flex-direction: column; gap: 2px; }
+html body:not(#rv8) #app .ox-verdict-copy strong { color: #1a1f24; font-size: 18px; font-weight: 800; line-height: 24px; }
+html body:not(#rv8) #app .ox-verdict.correct .ox-verdict-copy strong { color: #128474; }
+html body:not(#rv8) #app .ox-verdict.incorrect .ox-verdict-copy strong { color: #d7402a; }
+html body:not(#rv8) #app .ox-verdict-copy span { color: #5b6a75; font-size: 13px; line-height: 18px; }
+html body:not(#rv8) #app .ox-verdict-copy b { color: #1a1f24; font-weight: 800; }
+html body:not(#rv8) #app .r7-ox-explain p.ox-key { margin: 0 0 6px; color: #1a1f24; font-weight: 700; }
+html body:not(#rv8) #app .ox-jokbo-link { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; margin-top: 12px; padding: 12px 14px; border: 1px solid #e8edee; border-radius: 12px; background: #f7f9f9; color: #1a1f24; text-align: left; }
+html body:not(#rv8) #app .ox-jokbo-link span { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+html body:not(#rv8) #app .ox-jokbo-link small { color: #d7402a; font-size: 12px; font-weight: 800; }
+html body:not(#rv8) #app .ox-jokbo-link b { overflow: hidden; font-size: 14px; font-weight: 700; line-height: 20px; text-overflow: ellipsis; white-space: nowrap; }
+html body:not(#rv8) #app .ox-jokbo-link i { color: #849098; font-size: 20px; font-style: normal; }
+/* 결과: 틀린 문제마다 족보 저장·보기 */
+html body:not(#rv8) #app .ox-result-links { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 4px; }
+html body:not(#rv8) #app .ox-mini { min-height: 32px; padding: 0 12px; border: 1px solid #d3dbdd; border-radius: 999px; background: #fff; color: #33424d; font-size: 12.5px; font-weight: 700; }
+html body:not(#rv8) #app .ox-mini[aria-pressed="true"] { border-color: #e9513b; background: #fdeeea; color: #d7402a; }
+html body:not(#rv8) #app .ox-daily-done { margin: 6px 0 0; color: #128474; font-weight: 800; }

@@ -79,6 +79,7 @@
  // 인물 모아보기: 인물·정부별 출제 회차(36회 중 몇 회), 관련 기출 수, 최근 출제 회차와 별점.
  const PEOPLE=globalThis.JOKBO_PEOPLE||{labels:{},categories:{},people:[]},PEOPLE_STATS=globalThis.JOKBO_PEOPLE_STATS||{examTotal:0,people:{}};
  const personById=new Map(PEOPLE.people.map(p=>[p.id,p]));
+ let detailExternal=false; // 다른 메뉴(OX 등)에서 바로 연 개념 상세: 뒤로가기는 그 메뉴로
  let personId=null,peopleCategory='all',peopleSort=initial.peopleSort==='order'?'order':'freq';
  const peopleLabel=eraId=>PEOPLE.labels[eraId]||'';
  const viewMode=()=>mode==='people'&&!peopleLabel(activeEra)?'all':mode;
@@ -282,7 +283,7 @@
  function detailPage(){
   const k=keywordById.get(detailId);if(!k)return mainPage();const era=eraById.get(k.eraId),ids=directExamMatches(k),comparison=comparisonById.get(k.comparisonId),rows=factRows(k);
   const mark=detailReturnSearch&&query.trim(),show=value=>mark?highlightText(value):esc(value);
-  return '<section class="jk-page jk-detail'+(mark?' jk-detail-search-hit':'')+'" data-page="jokbo-detail">'+appbar('개념 상세',detailReturnSearch?'search':detailParentGroupId?'group:'+detailParentGroupId:'jokbo')+'<header class="jk-detail-head"><div class="jk-detail-context jk-tags"><em>'+show(era.label)+'</em><em>'+show(k.groupTitle.replace(/^\d+\s*/,''))+'</em><em>'+show(k.label)+'</em></div><h2 class="jk-detail-title">'+show(k.value)+'</h2><p class="jk-detail-description">'+show(k.definition)+'</p><button class="jk-save '+(saved.has(k.id)?'is-saved':'')+'" data-jk-save="'+k.id+'">'+icon(saved.has(k.id)?'bookmark-filled':'bookmark')+' '+(saved.has(k.id)?'저장됨':'키워드 저장')+'</button></header>'
+  return '<section class="jk-page jk-detail'+(mark?' jk-detail-search-hit':'')+'" data-page="jokbo-detail">'+appbar('개념 상세',detailExternal?'origin':detailReturnSearch?'search':detailParentGroupId?'group:'+detailParentGroupId:'jokbo')+'<header class="jk-detail-head"><div class="jk-detail-context jk-tags"><em>'+show(era.label)+'</em><em>'+show(k.groupTitle.replace(/^\d+\s*/,''))+'</em><em>'+show(k.label)+'</em></div><h2 class="jk-detail-title">'+show(k.value)+'</h2><p class="jk-detail-description">'+show(k.definition)+'</p><button class="jk-save '+(saved.has(k.id)?'is-saved':'')+'" data-jk-save="'+k.id+'">'+icon(saved.has(k.id)?'bookmark-filled':'bookmark')+' '+(saved.has(k.id)?'저장됨':'키워드 저장')+'</button></header>'
    +'<section class="jk-detail-section jk-detail-facts"><h2>요약 카드 키워드 <small>'+rows.length+'개</small></h2><div class="jk-card jk-keywords">'+rows.map((row,index)=>factLine(row,index,mark)).join('')+'</div></section>'
    +'<section class="jk-detail-section"><h2>핵심 학습 내용</h2><ol>'+k.bullets.map((b,i)=>'<li><span>'+String(i+1).padStart(2,'0')+'</span><p>'+show(b)+'</p></li>').join('')+'</ol></section>'
    +'<section class="jk-clue"><small>대표 단서</small><p>'+show((k.examTerms||[]).join(' · ')||k.value)+'</p></section>'
@@ -366,6 +367,7 @@
  }
  const applyBefore=routes.applyRoute;
  routes.setApplyRoute(function(route=routes.readRoute()){
+  if(route==='jokbo'||route==='jokbo/search'||route?.startsWith('jokbo/group/')||route?.startsWith('jokbo/person/'))detailExternal=false;
   if(route==='jokbo'){const parent=historyObject()?.state?.jkParent;if(parent&&!parent.startsWith('jokbo'))returnRoute=parent;if(screen==='jokbo-search')restoreSearchOrigin();else query='';restoringScroll=true;screen='jokbo';groupId=null;detailId=null;detailParentGroupId=null;detailReturnSearch=false;compareId=null;personId=null;modal=null;render();revealActiveEraTab();restoreListScroll();return route;}
   if(route==='jokbo/search'){if(!searchOrigin)searchOrigin={activeEra,country:activeCountry(),mode,scrollY:listScrollY};screen='jokbo-search';groupId=null;detailId=null;detailParentGroupId=null;detailReturnSearch=false;compareId=null;modal=null;render();restorePageScroll(searchScrollY);return route;}
   if(route?.startsWith('jokbo/group/')){const id=decodeURIComponent(route.slice('jokbo/group/'.length)),group=groupById.get(id);if(!group)return applyBefore('jokbo');const returning=screen==='jokbo-detail'&&detailParentGroupId===id;groupId=id;activeEra=group.eraId;detailId=null;detailParentGroupId=null;detailReturnSearch=false;compareId=null;screen='jokbo-group';modal=null;render();if(returning)restorePageScroll(groupScrollY);else window.scrollTo(0,0);return route;}
@@ -394,7 +396,7 @@
   if(d.jkEra){event.stopImmediatePropagation();const from=D.eras.findIndex(e=>e.id===activeEra),to=D.eras.findIndex(e=>e.id===d.jkEra);selectEra(d.jkEra,d.jkPager!==undefined?Math.sign(to-from):0);return;}
   if(d.jkCountry){event.stopImmediatePropagation();country=d.jkCountry;saveView({scrollY:0});render();revealActiveEraTab();const bar=document.querySelector('.jk-era-content');if(bar&&bar.getBoundingClientRect().top<0)window.scrollTo(0,Math.max(0,bar.getBoundingClientRect().top+pageScrollY()-(document.querySelector('.jk-filterbar')?.offsetHeight||0)));return;}
   if(d.jkMode){event.stopImmediatePropagation();mode=d.jkMode;saveView({scrollY:0});render();revealActiveEraTab();window.scrollTo(0,0);return;}
-  if(d.jkDetail){event.stopImmediatePropagation();const from=screen==='jokbo'?'jokbo':screen==='jokbo-group'?'jokbo/group/'+groupId:screen==='jokbo-compare'?'jokbo/compare/'+compareId:'jokbo';if(screen==='jokbo')saveView({scrollY:pageScrollY()});detailParentGroupId=d.jkDetailParent||null;detailReturnSearch=false;if(detailParentGroupId)groupScrollY=pageScrollY();detailId=d.jkDetail;factEntity=null;screen='jokbo-detail';pushRoute('jokbo/detail/'+encodeURIComponent(detailId),from);render();window.scrollTo(0,0);return;}
+  if(d.jkDetail){event.stopImmediatePropagation();const from=screen==='jokbo'?'jokbo':screen==='jokbo-group'?'jokbo/group/'+groupId:screen==='jokbo-compare'?'jokbo/compare/'+compareId:'jokbo';if(screen==='jokbo')saveView({scrollY:pageScrollY()});detailParentGroupId=d.jkDetailParent||null;detailReturnSearch=false;if(detailParentGroupId)groupScrollY=pageScrollY();detailId=d.jkDetail;factEntity=null;detailExternal=false;screen='jokbo-detail';pushRoute('jokbo/detail/'+encodeURIComponent(detailId),from);render();window.scrollTo(0,0);return;}
   if(d.jkGroup){event.stopImmediatePropagation();const group=groupById.get(d.jkGroup);if(group){saveView({scrollY:pageScrollY()});groupId=group.id;groupScrollY=0;detailId=null;detailParentGroupId=null;detailReturnSearch=false;screen='jokbo-group';pushRoute('jokbo/group/'+encodeURIComponent(groupId),'jokbo');render();window.scrollTo(0,0);}return;}
   if(d.jkSave){event.stopImmediatePropagation();const y=pageScrollY();saved.has(d.jkSave)?saved.delete(d.jkSave):saved.add(d.jkSave);saveKeywords();render();if(screen==='jokbo')revealActiveEraTab();scrollPage(y);return;}
   if(d.jkCompare){event.stopImmediatePropagation();const from=screen==='jokbo-detail'?'jokbo/detail/'+detailId:'jokbo';saveView();compareId=d.jkCompare;compareTopic=0;screen='jokbo-compare';pushRoute('jokbo/compare/'+compareId,from);render();window.scrollTo(0,0);return;}
@@ -468,6 +470,11 @@
   state:()=>({screen,personId,peopleCategory,peopleSort,activeEra,country:activeCountry(),mode,query,listScrollY,searchScrollY,groupId,groupScrollY,detailId,detailParentGroupId,detailReturnSearch}),
   view:()=>({...readJSON(sessionStore,VIEW_KEY,{})}),
   saved:()=>[...saved],
+  isSaved:id=>saved.has(id),
+  toggleSave:id=>{if(!keywordById.has(id))return false;saved.has(id)?saved.delete(id):saved.add(id);saveKeywords();return saved.has(id);},
+  keyword:id=>{const k=keywordById.get(id);return k?{id:k.id,label:k.label,value:k.value,definition:k.definition,eraId:k.eraId,group:String(k.groupTitle||'').replace(/^\d+\s*/,'')}:null;},
+  // 다른 메뉴에서 개념 상세를 바로 열고, 상세의 ‹ 는 원래 메뉴로 돌아간다.
+  openDetail:(id,origin)=>{const k=keywordById.get(id);if(!k)return false;returnRoute=origin||originForScreen();returnScrollY=pageScrollY();detailExternal=true;activeEra=k.eraId;country='all';mode='all';detailId=k.id;detailParentGroupId=null;detailReturnSearch=false;factEntity=null;groupId=null;compareId=null;modal=null;screen='jokbo-detail';pushRoute('jokbo/detail/'+encodeURIComponent(k.id),returnRoute);render();window.scrollTo(0,0);return true;},
   people:eraId=>PEOPLE.people.filter(p=>!eraId||p.eraId===eraId).map(p=>({id:p.id,eraId:p.eraId,name:p.name,...personStats(p),ids:undefined})),
   peopleLabel,
   search:value=>searchResults(value).map(result=>result.keyword),
