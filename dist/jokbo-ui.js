@@ -95,7 +95,10 @@
   const list=PEOPLE.people.filter(p=>p.eraId===eraId&&(peopleCategory==='all'||p.category===peopleCategory));
   return list.sort(peopleSort==='order'?(a,b)=>a.order-b.order:(a,b)=>personStats(b).count-personStats(a).count||personStats(b).questions-personStats(a).questions||a.order-b.order);
  }
- const avatar=p=>'<span class="jk-person-avatar" aria-hidden="true">'+esc([...p.name.replace(/ (정부|내각)$/,'')][0])+'</span>';
+ const PHOTOS=globalThis.JOKBO_PEOPLE_PHOTOS||{};
+ // 사진이 있으면 얼굴 사진, 없거나 불러오지 못하면 이름 첫 글자를 보여 준다.
+ const avatar=p=>{const photo=PHOTOS[p.id];return '<span class="jk-person-avatar'+(photo?' has-photo':'')+'" aria-hidden="true"><b>'+esc([...p.name.replace(/ (정부|내각)$/,'')][0])+'</b>'+(photo?'<img src="'+esc(photo.src)+'" alt="" loading="lazy" decoding="async" onerror="this.parentNode.classList.remove(\'has-photo\');this.remove()">':'')+'</span>';};
+ function photoCredit(p){const photo=PHOTOS[p.id];if(!photo)return '';return '<p class="jk-person-credit">사진: '+esc(photo.by)+' · '+esc(photo.license)+' · <a href="'+esc(photo.url)+'" target="_blank" rel="noreferrer">위키미디어 공용 ↗</a> (얼굴 부분만 잘라 사용)</p>';}
  function personCard(p){
   const st=personStats(p),pct=st.total?Math.round(st.count/st.total*100):0;
   return '<button type="button" class="jk-person-card jk-card" data-jk-person="'+p.id+'" aria-label="'+esc(p.name+', '+st.total+'회 중 '+st.count+'회 출제, 관련 기출 '+st.questions+'문제, 인물 상세 보기')+'">'+avatar(p)
@@ -121,7 +124,7 @@
    +'<section class="jk-detail-section jk-person-timeline"><h2>'+(isGov?'주요 사건':'핵심 활동')+'</h2><ol>'+p.timeline.map(row=>'<li><small>'+esc(row.year)+'</small><p>'+esc(row.text)+'</p></li>').join('')+'</ol></section>'
    +(p.tip?'<section class="jk-person-tip"><small>헷갈림 주의</small><p>'+esc(p.tip)+'</p></section>':'')
    +'<section class="jk-detail-section jk-related"><div><h2>관련 실제 기출</h2><small>최근 회차부터 · '+(st.questions>shown.length?'최근 '+shown.length+'문제 표시':'전체 '+st.questions+'문제')+'</small></div>'+(shown.length?shown.map(id=>{const row=examLabel(id);return row?'<button type="button" class="jk-related-item" data-jk-exam-one="'+esc(id)+'" data-jk-exam-era="'+esc(p.eraId)+'" aria-label="'+esc(row.meta)+' 문제 풀기"><span><small>'+esc(row.meta)+'</small><b>'+esc(row.title)+'</b></span><i aria-hidden="true">›</i></button>':'';}).join(''):'<div class="jk-empty-inline">연결된 기출을 준비하고 있어요</div>')
-   +'<button class="jk-primary" data-jk-person-exams="'+p.id+'" '+(st.questions?'':'disabled')+'>'+(st.questions?'관련 기출 '+st.questions+'문제 풀기':'연결된 기출을 준비하고 있어요')+'</button></section></section>';
+   +'<button class="jk-primary" data-jk-person-exams="'+p.id+'" '+(st.questions?'':'disabled')+'>'+(st.questions?'관련 기출 '+st.questions+'문제 풀기':'연결된 기출을 준비하고 있어요')+'</button></section>'+photoCredit(p)+'</section>';
  }
  // 나라 칩: 그룹(국가·왕 묶음)과 행 이름(삼국 문화 비교 등)에서만 도출한다. 데이터는 바꾸지 않는다.
  const GROUP_COUNTRY={gojoseon:'고조선',buyeo:'부여','early-goguryeo':'고구려',okjeo:'옥저',dongye:'동예',samhan:'삼한','goguryeo-kings':'고구려','baekje-kings':'백제','silla-kings':'신라',gaya:'가야','unification-war':'신라','unified-silla':'신라','unified-culture':'신라',balhae:'발해','later-three':'후삼국'};

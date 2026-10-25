@@ -1259,3 +1259,11 @@ html body:not(#rv8) #app .jk-person-timeline ol { display: block; margin: 12px 0
 html body:not(#rv8) #app .jk-person-timeline li { display: block; padding: 0 0 14px; }
 html body:not(#rv8) #app .jk-person-timeline li:last-child { padding-bottom: 0; }
 html body:not(#rv8) #app .jk-person-timeline li p { margin: 2px 0 0; font-size: 14.5px; line-height: 22px; }
+/* 인물 사진: 사진이 없거나 못 불러오면 이름 첫 글자가 그대로 보인다. */
+.jk-person-avatar { position: relative; overflow: hidden; }
+.jk-person-avatar b { font: inherit; }
+.jk-person-avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 50%; background: var(--jk-sunken); }
+.jk-person-avatar.has-photo { background: var(--jk-sunken); box-shadow: inset 0 0 0 1px rgba(36,50,66,.08); }
+.jk-person-avatar.has-photo b { visibility: hidden; }
+.jk-person-credit { margin: 18px 0 0; color: var(--jk-faint); font-size: 11.5px; line-height: 17px; word-break: keep-all; }
+.jk-person-credit a { color: inherit; text-decoration: underline; }

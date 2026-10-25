@@ -25,4 +25,15 @@ assert(overlap('seongjong-goryeo','seongjong-joseon')===0,'고려·조선 성종
 assert(S.people['gyebaek'].every(id=>id),'계백');
 const ui=fs.readFileSync(path.join(root,'dist/jokbo-ui.js'),'utf8');
 for(const t of ["routes.addRoute('jokbo/person/'","data-jk-mode=\"people\"","data-jk-person-exams","screen==='jokbo-person'"])assert(ui.includes(t),'UI '+t);
-console.log('jokbo-people-test ok',P.people.length,'people');
+// 인물 사진: 자유 이용 자료만, 파일이 실제로 있고 출처 링크가 있어야 한다.
+require(path.join(root,'dist/jokbo-people-photos.js'));
+const photos=globalThis.JOKBO_PEOPLE_PHOTOS,allowed=new Set(['퍼블릭 도메인','공공누리 제1유형','저작권 제한 없음','CC0','CC BY-SA 2.0','CC BY-SA 3.0','CC BY 3.0']);
+for(const [id,photo] of Object.entries(photos)){
+ assert(ids.has(id),'사진 대상 인물 없음 '+id);
+ assert(allowed.has(photo.license),id+' 라이선스 '+photo.license);
+ assert(/^https:\/\/commons\.wikimedia\.org\/wiki\/File:/.test(photo.url),id+' 출처');
+ assert(photo.by,id+' 작성자');
+ const file=path.join(root,'dist',photo.src);assert(fs.existsSync(file)&&fs.statSync(file).size<20000,id+' 사진 파일');
+}
+assert(Object.keys(photos).length>=60,'사진 수');
+console.log('jokbo-people-test ok',P.people.length,'people,',Object.keys(photos).length,'photos');
