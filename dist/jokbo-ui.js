@@ -17,7 +17,7 @@
  let activeEra=D.eras.some(e=>e.id===initial.activeEra)?initial.activeEra:'proto';
  let listScrollY=Number(initial.scrollY)||0;
  let country=String(initial.country||'all');
- let mode=initial.mode==='saved'?'saved':'all',query=String(initial.query||''),groupId=null,groupScrollY=0,detailId=null,detailParentGroupId=null,detailReturnSearch=false,compareId=null,compareTopic=0,searchOrigin=null,searchScrollY=0,restoringScroll=false,scrollRestoreToken=0,returnRoute='home',returnScrollY=0,pendingOriginScroll=null;
+ let mode=['saved','people'].includes(initial.mode)?initial.mode:'all',query=String(initial.query||''),groupId=null,groupScrollY=0,detailId=null,detailParentGroupId=null,detailReturnSearch=false,compareId=null,compareTopic=0,searchOrigin=null,searchScrollY=0,restoringScroll=false,scrollRestoreToken=0,returnRoute='home',returnScrollY=0,pendingOriginScroll=null;
  const norm=value=>String(value||'').toLocaleLowerCase('ko-KR').replace(/\s+/g,'');
  const eraSource={prehistoric:'ancient',proto:'ancient',three:'ancient','north-south':'ancient',goryeo:'goryeo',joseon:'joseon',opening:'empire',colonial:'occupation',modern:'republic'};
  const sourceById=new Map((globalThis.OFFICIAL_EXAM_SOURCE_RECORDS||[]).map(row=>[row.officialQuestionId,row]));
@@ -39,7 +39,7 @@
   const previous=readJSON(sessionStore,VIEW_KEY,{});
   if(screen==='jokbo'&&!restoringScroll)listScrollY=pageScrollY();
   if(Object.hasOwn(extra,'scrollY'))listScrollY=Number(extra.scrollY)||0;
-  const payload={...previous,activeEra,country,mode,query,searchOpen:screen==='jokbo-search',...extra,scrollY:listScrollY};
+  const payload={...previous,activeEra,country,mode,peopleSort,query,searchOpen:screen==='jokbo-search',...extra,scrollY:listScrollY};
   try{sessionStore.setItem(VIEW_KEY,JSON.stringify(payload))}catch{}
  }
  function restoreListScroll(){restorePageScroll(listScrollY);}
@@ -75,6 +75,53 @@
   saveView({returnFromExam:true});
   exams.start(entries,'learn',{examTab:'era',examEra:eraSource[eraId]||'ancient',examLevel:'all',scope:'jokbo'});
   routes.writeRoute('exam-library');
+ }
+ // 인물 모아보기: 인물·정부별 출제 회차(36회 중 몇 회), 관련 기출 수, 최근 출제 회차와 별점.
+ const PEOPLE=globalThis.JOKBO_PEOPLE||{labels:{},categories:{},people:[]},PEOPLE_STATS=globalThis.JOKBO_PEOPLE_STATS||{examTotal:0,people:{}};
+ const personById=new Map(PEOPLE.people.map(p=>[p.id,p]));
+ let personId=null,peopleCategory='all',peopleSort=initial.peopleSort==='order'?'order':'freq';
+ const peopleLabel=eraId=>PEOPLE.labels[eraId]||'';
+ const viewMode=()=>mode==='people'&&!peopleLabel(activeEra)?'all':mode;
+ const statsCache=new Map();
+ function personStats(p){
+  if(statsCache.has(p.id))return statsCache.get(p.id);
+  const ids=(PEOPLE_STATS.people[p.id]||[]).filter(id=>sourceById.has(id)),exams=new Set(),rounds=[];
+  for(const id of ids){const s=sourceById.get(id);exams.add(s.examRound+'-'+s.examLevel);rounds.push(Number(s.examRound)||0);}
+  const count=exams.size,total=PEOPLE_STATS.examTotal||36,stars=count>=16?3:count>=8?2:1;
+  const result={ids,count,total,questions:ids.length,latest:rounds.length?Math.max(...rounds):0,stars};statsCache.set(p.id,result);return result;
+ }
+ function starsMarkup(n){return '<span class="jk-stars" aria-label="출제 빈도 별 '+n+'개">'+[1,2,3].map(i=>'<i class="'+(i<=n?'is-on':'')+'" aria-hidden="true">★</i>').join('')+'</span>';}
+ function eraPeople(eraId){
+  const list=PEOPLE.people.filter(p=>p.eraId===eraId&&(peopleCategory==='all'||p.category===peopleCategory));
+  return list.sort(peopleSort==='order'?(a,b)=>a.order-b.order:(a,b)=>personStats(b).count-personStats(a).count||personStats(b).questions-personStats(a).questions||a.order-b.order);
+ }
+ const avatar=p=>'<span class="jk-person-avatar" aria-hidden="true">'+esc([...p.name.replace(/ (정부|내각)$/,'')][0])+'</span>';
+ function personCard(p){
+  const st=personStats(p),pct=st.total?Math.round(st.count/st.total*100):0;
+  return '<button type="button" class="jk-person-card jk-card" data-jk-person="'+p.id+'" aria-label="'+esc(p.name+', '+st.total+'회 중 '+st.count+'회 출제, 관련 기출 '+st.questions+'문제, 인물 상세 보기')+'">'+avatar(p)
+   +'<span class="jk-person-main"><span class="jk-person-top"><b class="jk-person-name">'+esc(p.name)+'</b>'+starsMarkup(st.stars)+'<em class="jk-person-tag">'+esc(p.category)+'</em></span><small class="jk-person-years">'+esc(p.years)+'</small><span class="jk-person-chips">'+esc(p.chips.join(' · '))+'</span>'
+   +'<span class="jk-person-freq"><span class="jk-person-bar" aria-hidden="true"><i style="width:'+pct+'%"></i></span><span class="jk-person-count"><b>'+st.count+'회</b> / '+st.total+'회</span></span></span><i class="jk-person-chevron" aria-hidden="true">'+chevron+'</i></button>';
+ }
+ function peopleList(){
+  const era=eraById.get(activeEra),eraIndex=D.eras.findIndex(e=>e.id===activeEra),label=peopleLabel(activeEra),cats=PEOPLE.categories[activeEra]||[];
+  if(!cats.includes(peopleCategory))peopleCategory='all';
+  const list=eraPeople(activeEra),total=PEOPLE_STATS.examTotal||36;
+  return '<div class="jk-era-content" data-jk-swipe="true"><section class="jk-summary-head jk-people-head"><small class="jk-pager-count">'+(eraIndex+1)+' / '+D.eras.length+'</small><h2>'+esc(era.label)+' '+esc(label)+'</h2><p>최근 기출 '+total+'회(57~79회 기본·심화)에 몇 번 나왔는지 별점으로 보여 줘요.</p></section>'
+   +'<div class="jk-people-tools">'+(cats.length>1?'<div class="jk-chips jk-people-cats" role="tablist" aria-label="분류 선택">'+['all',...cats].map(c=>'<button role="tab" data-jk-people-cat="'+esc(c)+'" aria-selected="'+(peopleCategory===c)+'"><span>'+esc(c==='all'?'전체':c)+'</span></button>').join('')+'</div>':'')
+   +'<div class="jk-people-sort" role="group" aria-label="정렬"><button type="button" data-jk-people-sort="freq" aria-pressed="'+(peopleSort==='freq')+'">출제 많은 순</button><button type="button" data-jk-people-sort="order" aria-pressed="'+(peopleSort==='order')+'">'+(activeEra==='modern'?'시간 순':'시대 순')+'</button></div></div>'
+   +'<p class="jk-people-legend"><span>'+starsMarkup(3)+' 16회 이상</span><span>'+starsMarkup(2)+' 8~15회</span><span>'+starsMarkup(1)+' 7회 이하</span></p>'
+   +'<div class="jk-people-list">'+list.map(personCard).join('')+'</div></div>';
+ }
+ function personPage(){
+  const p=personById.get(personId);if(!p)return mainPage();const era=eraById.get(p.eraId),st=personStats(p),isGov=p.eraId==='modern';
+  const shown=st.ids.slice(0,8);
+  return '<section class="jk-page jk-person-page" data-page="jokbo-person">'+appbar(isGov?'정부 상세':'인물 상세')+'<header class="jk-person-hero">'+avatar(p)+'<div><span class="jk-tags"><em>'+esc(era.label)+'</em><em>'+esc(p.category)+'</em></span><h2>'+esc(p.name)+'</h2><p class="jk-person-years">'+esc(p.years)+'</p>'+starsMarkup(st.stars)+'</div></header>'
+   +'<dl class="jk-person-stats"><div><dt>출제 회차</dt><dd><b>'+st.count+'</b>/'+st.total+'회</dd></div><div><dt>최근 출제</dt><dd>'+(st.latest?'<b>'+st.latest+'</b>회':'-')+'</dd></div><div><dt>관련 기출</dt><dd><b>'+st.questions+'</b>문제</dd></div></dl>'
+   +'<div class="jk-person-keywords">'+p.chips.map(c=>'<span>'+esc(c)+'</span>').join('')+'</div>'
+   +'<section class="jk-detail-section jk-person-timeline"><h2>'+(isGov?'주요 사건':'핵심 활동')+'</h2><ol>'+p.timeline.map(row=>'<li><small>'+esc(row.year)+'</small><p>'+esc(row.text)+'</p></li>').join('')+'</ol></section>'
+   +(p.tip?'<section class="jk-person-tip"><small>헷갈림 주의</small><p>'+esc(p.tip)+'</p></section>':'')
+   +'<section class="jk-detail-section jk-related"><div><h2>관련 실제 기출</h2><small>최근 회차부터 · '+(st.questions>shown.length?'최근 '+shown.length+'문제 표시':'전체 '+st.questions+'문제')+'</small></div>'+(shown.length?shown.map(id=>{const row=examLabel(id);return row?'<button type="button" class="jk-related-item" data-jk-exam-one="'+esc(id)+'" data-jk-exam-era="'+esc(p.eraId)+'" aria-label="'+esc(row.meta)+' 문제 풀기"><span><small>'+esc(row.meta)+'</small><b>'+esc(row.title)+'</b></span><i aria-hidden="true">›</i></button>':'';}).join(''):'<div class="jk-empty-inline">연결된 기출을 준비하고 있어요</div>')
+   +'<button class="jk-primary" data-jk-person-exams="'+p.id+'" '+(st.questions?'':'disabled')+'>'+(st.questions?'관련 기출 '+st.questions+'문제 풀기':'연결된 기출을 준비하고 있어요')+'</button></section></section>';
  }
  // 나라 칩: 그룹(국가·왕 묶음)과 행 이름(삼국 문화 비교 등)에서만 도출한다. 데이터는 바꾸지 않는다.
  const GROUP_COUNTRY={gojoseon:'고조선',buyeo:'부여','early-goguryeo':'고구려',okjeo:'옥저',dongye:'동예',samhan:'삼한','goguryeo-kings':'고구려','baekje-kings':'백제','silla-kings':'신라',gaya:'가야','unification-war':'신라','unified-silla':'신라','unified-culture':'신라',balhae:'발해','later-three':'후삼국'};
@@ -183,10 +230,10 @@
   const era=eraById.get(activeEra),eraIndex=D.eras.findIndex(e=>e.id===activeEra);
   const eraSavedCount=D.keywords.filter(k=>k.eraId===activeEra&&saved.has(k.id)).length;
   const rows=[];for(const group of D.groups.filter(g=>g.eraId===activeEra)){const items=group.keywords.filter(k=>factRows(k).some(row=>countryMatch(group,k,row)));if(items.length)rows.push({group,items});}
-  const related=eraExamIds(activeEra);
-  const filters='<div class="jk-filterbar"><div class="jk-segment" role="tablist" aria-label="족보 보기"><button role="tab" data-jk-mode="all" aria-selected="'+(mode==='all')+'">전체 요약</button><button role="tab" data-jk-mode="saved" aria-selected="'+(mode==='saved')+'">저장한 키워드 <span class="jk-segment-count'+(eraSavedCount?'':' is-empty')+'">'+eraSavedCount+'</span></button></div>'+eraTabs()+countryChips()+'</div>';
+  const related=eraExamIds(activeEra),view=viewMode();
+  const filters='<div class="jk-filterbar"><div class="jk-segment" role="tablist" aria-label="족보 보기"><button role="tab" data-jk-mode="all" aria-selected="'+(view==='all')+'">전체 요약</button>'+(peopleLabel(activeEra)?'<button role="tab" data-jk-mode="people" aria-selected="'+(view==='people')+'">'+esc(peopleLabel(activeEra))+'</button>':'')+'<button role="tab" data-jk-mode="saved" aria-selected="'+(view==='saved')+'">저장한 키워드 <span class="jk-segment-count'+(eraSavedCount?'':' is-empty')+'">'+eraSavedCount+'</span></button></div>'+eraTabs()+(view==='people'?'':countryChips())+'</div>';
   return '<section class="jk-page jk-main" data-page="jokbo"><header class="jk-heading r7-menu-heading"><button type="button" class="jk-heading-back" data-jk-back="origin" aria-label="이전 화면으로 돌아가기">'+backIcon+'</button><h1>족보</h1>'+searchButton()+'</header><p class="jk-heading-subtitle">시험 전에 필요한 키워드만 카드로</p>'+filters
-   +(mode==='saved'?'<div class="jk-era-content" data-jk-swipe="true"><section class="jk-summary-head jk-saved-head"><small class="jk-pager-count">'+(eraIndex+1)+' / '+D.eras.length+'</small><h2>'+esc(era.label)+' 저장 키워드</h2><p>이 시대에서 저장한 핵심 개념만 모았어요.</p></section>'+savedList()+'</div>'
+   +(view==='people'?peopleList():view==='saved'?'<div class="jk-era-content" data-jk-swipe="true"><section class="jk-summary-head jk-saved-head"><small class="jk-pager-count">'+(eraIndex+1)+' / '+D.eras.length+'</small><h2>'+esc(era.label)+' 저장 키워드</h2><p>이 시대에서 저장한 핵심 개념만 모았어요.</p></section>'+savedList()+'</div>'
    :'<div class="jk-era-content" data-jk-swipe="true">'+eraPager(era,eraIndex)+'<div class="jk-groups">'+(rows.length?rows.map((row,i)=>groupMarkup(row.group,row.items,i,false)).join(''):emptyMarkup())+'</div>'+compareLinks(activeEra)
    +'<section class="jk-exam-cta"><div><small>RELATED QUESTIONS</small><h2>이 시대 관련 기출</h2><p>'+related.length+'개의 검증된 실제 기출이 핵심 키워드와 연결되어 있어요. 버튼을 누르면 모두 이어서 풀 수 있어요.</p></div><button data-jk-era-exams="'+activeEra+'" '+(related.length?'':'disabled')+'>'+(related.length?'이 시대 관련 기출 풀기 · '+related.length+'문제':'연결된 기출을 준비하고 있어요')+'</button></section></div>')+'</section>';
  }
@@ -242,12 +289,13 @@
   return '<div class="shell editorial-shell app-nav-shell'+(fab?' has-jk-fab':'')+'"><aside class="sidebar"><div class="brand">눈떠보니 한국사<small>역사를 살고, 기출로 기억하다</small></div><nav class="nav app-navigation" aria-label="주 메뉴">'+nav.map(([id,label,image])=>'<button data-nav="'+id+'" '+(current===id?'aria-current="page"':'')+' class="'+(current===id?'active':'')+'">'+image+'<span>'+label+'</span></button>').join('')+'</nav></aside><main class="main ed-screen ed-'+screen+'">'+content+'</main>'+(fab?jokboFab:'')+'</div>'+(modal?modalHTML():'');
  };
  const contentBefore=renderContent;
- renderContent=function(){if(screen==='jokbo')return mainPage();if(screen==='jokbo-search')return searchPage();if(screen==='jokbo-group')return groupPage();if(screen==='jokbo-detail')return detailPage();if(screen==='jokbo-compare')return comparePage();return contentBefore();};
+ renderContent=function(){if(screen==='jokbo')return mainPage();if(screen==='jokbo-search')return searchPage();if(screen==='jokbo-group')return groupPage();if(screen==='jokbo-detail')return detailPage();if(screen==='jokbo-compare')return comparePage();if(screen==='jokbo-person')return personPage();return contentBefore();};
  routes.addRoute('jokbo');
  routes.addRoute('jokbo/search');
  for(const g of D.groups)routes.addRoute('jokbo/group/'+g.id);
  for(const k of D.keywords)routes.addRoute('jokbo/detail/'+k.id);
  for(const c of D.comparisons)routes.addRoute('jokbo/compare/'+c.id);
+ for(const p of PEOPLE.people)routes.addRoute('jokbo/person/'+p.id);
  // 앞으로 이동할 때만 기록을 쌓고 부모 경로를 남긴다. 화면 안 뒤로가기는 그 기록을 되돌려 시스템 뒤로가기와 같은 결과가 된다.
  const historyObject=()=>typeof globalThis.history==='object'?globalThis.history:null;
  function pushRoute(route,parent){
@@ -283,10 +331,11 @@
  }
  const applyBefore=routes.applyRoute;
  routes.setApplyRoute(function(route=routes.readRoute()){
-  if(route==='jokbo'){const parent=historyObject()?.state?.jkParent;if(parent&&!parent.startsWith('jokbo'))returnRoute=parent;if(screen==='jokbo-search')restoreSearchOrigin();else query='';restoringScroll=true;screen='jokbo';groupId=null;detailId=null;detailParentGroupId=null;detailReturnSearch=false;compareId=null;modal=null;render();revealActiveEraTab();restoreListScroll();return route;}
+  if(route==='jokbo'){const parent=historyObject()?.state?.jkParent;if(parent&&!parent.startsWith('jokbo'))returnRoute=parent;if(screen==='jokbo-search')restoreSearchOrigin();else query='';restoringScroll=true;screen='jokbo';groupId=null;detailId=null;detailParentGroupId=null;detailReturnSearch=false;compareId=null;personId=null;modal=null;render();revealActiveEraTab();restoreListScroll();return route;}
   if(route==='jokbo/search'){if(!searchOrigin)searchOrigin={activeEra,country:activeCountry(),mode,scrollY:listScrollY};screen='jokbo-search';groupId=null;detailId=null;detailParentGroupId=null;detailReturnSearch=false;compareId=null;modal=null;render();restorePageScroll(searchScrollY);return route;}
   if(route?.startsWith('jokbo/group/')){const id=decodeURIComponent(route.slice('jokbo/group/'.length)),group=groupById.get(id);if(!group)return applyBefore('jokbo');const returning=screen==='jokbo-detail'&&detailParentGroupId===id;groupId=id;activeEra=group.eraId;detailId=null;detailParentGroupId=null;detailReturnSearch=false;compareId=null;screen='jokbo-group';modal=null;render();if(returning)restorePageScroll(groupScrollY);else window.scrollTo(0,0);return route;}
   if(route?.startsWith('jokbo/detail/')){detailId=decodeURIComponent(route.slice('jokbo/detail/'.length));const parent=groupId&&groupById.get(groupId)?.keywords.some(k=>k.id===detailId)?groupId:null;detailParentGroupId=parent;detailReturnSearch=historyObject()?.state?.jkParent==='jokbo/search';screen='jokbo-detail';modal=null;render();window.scrollTo(0,0);return route;}
+  if(route?.startsWith('jokbo/person/')){const id=decodeURIComponent(route.slice('jokbo/person/'.length)),p=personById.get(id);if(!p)return applyBefore('jokbo');personId=id;activeEra=p.eraId;mode='people';groupId=null;detailId=null;detailParentGroupId=null;detailReturnSearch=false;compareId=null;screen='jokbo-person';modal=null;render();window.scrollTo(0,0);return route;}
   if(route?.startsWith('jokbo/compare/')){compareId=decodeURIComponent(route.slice('jokbo/compare/'.length));compareTopic=0;detailReturnSearch=false;screen='jokbo-compare';modal=null;render();window.scrollTo(0,0);return route;}
   const result=applyBefore(route);restoreOriginScroll();return result;
  });
@@ -294,7 +343,7 @@
  const navigateBefore=navigate;
  navigate=function(to){if(to==='jokbo'){openJokbo(false);return;}return navigateBefore(to);};
  function selectEra(id,direction=0){
-  if(!eraById.has(id))return;activeEra=id;country='all';saveView({scrollY:0});render();revealActiveEraTab();window.scrollTo(0,0);
+  if(!eraById.has(id))return;activeEra=id;country='all';peopleCategory='all';saveView({scrollY:0});render();revealActiveEraTab();window.scrollTo(0,0);
   const content=document.querySelector('[data-jk-swipe="true"]');
   if(direction&&!globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches)content?.animate?.([{opacity:.4,transform:'translateX('+(direction>0?36:-36)+'px)'},{opacity:1,transform:'translateX(0)'}],{duration:200,easing:'ease-out'});
  }
@@ -314,6 +363,10 @@
   if(d.jkGroup){event.stopImmediatePropagation();const group=groupById.get(d.jkGroup);if(group){saveView({scrollY:pageScrollY()});groupId=group.id;groupScrollY=0;detailId=null;detailParentGroupId=null;detailReturnSearch=false;screen='jokbo-group';pushRoute('jokbo/group/'+encodeURIComponent(groupId),'jokbo');render();window.scrollTo(0,0);}return;}
   if(d.jkSave){event.stopImmediatePropagation();const y=pageScrollY();saved.has(d.jkSave)?saved.delete(d.jkSave):saved.add(d.jkSave);saveKeywords();render();if(screen==='jokbo')revealActiveEraTab();scrollPage(y);return;}
   if(d.jkCompare){event.stopImmediatePropagation();const from=screen==='jokbo-detail'?'jokbo/detail/'+detailId:'jokbo';saveView();compareId=d.jkCompare;compareTopic=0;screen='jokbo-compare';pushRoute('jokbo/compare/'+compareId,from);render();window.scrollTo(0,0);return;}
+  if(d.jkPerson){event.stopImmediatePropagation();const p=personById.get(d.jkPerson);if(p){saveView({scrollY:pageScrollY()});personId=p.id;screen='jokbo-person';pushRoute('jokbo/person/'+encodeURIComponent(p.id),'jokbo');render();window.scrollTo(0,0);}return;}
+  if(d.jkPeopleCat){event.stopImmediatePropagation();peopleCategory=d.jkPeopleCat;const y=pageScrollY();render();revealActiveEraTab();scrollPage(y);return;}
+  if(d.jkPeopleSort){event.stopImmediatePropagation();peopleSort=d.jkPeopleSort==='order'?'order':'freq';saveView();const y=pageScrollY();render();revealActiveEraTab();scrollPage(y);return;}
+  if(d.jkPersonExams){event.stopImmediatePropagation();const p=personById.get(d.jkPersonExams);if(p)startExamIds(personStats(p).ids,p.eraId);return;}
   if(d.jkCompareTopic!==undefined){event.stopImmediatePropagation();compareTopic=Number(d.jkCompareTopic)||0;render();return;}
   if(d.jkBack){event.stopImmediatePropagation();
    if(d.jkBack==='origin'){leaveJokbo();return;}
@@ -358,7 +411,7 @@
   const index=D.eras.findIndex(e=>e.id===activeEra),next=index+(dx<0?1:-1);
   if(next<0||next>=D.eras.length){resetDrag(swipeContent(),true);return;}
   const previousY=pageScrollY(),oldContent=swipeContent(),filterHeight=document.querySelector('.jk-filterbar')?.offsetHeight||0,contentTop=Math.max(0,oldContent.getBoundingClientRect().top+previousY-filterHeight);
-  activeEra=D.eras[next].id;country='all';saveView({scrollY:Math.min(previousY,contentTop)});render();revealActiveEraTab();
+  activeEra=D.eras[next].id;country='all';peopleCategory='all';saveView({scrollY:Math.min(previousY,contentTop)});render();revealActiveEraTab();
   // 이미 내려 본 상태라면 새 시대 카드의 처음이 필터 바로 아래에 오도록 맞춘다.
   restorePageScroll(Math.min(previousY,contentTop));
   const content=swipeContent();
@@ -375,9 +428,11 @@
   groupKeywordIds:id=>groupKeywords(groupById.get(id)).map(k=>k.id),
   groupExamIds:id=>groupExamIds(groupById.get(id)),
   countries:eraId=>eraCountries(eraId||activeEra),
-  state:()=>({screen,activeEra,country:activeCountry(),mode,query,listScrollY,searchScrollY,groupId,groupScrollY,detailId,detailParentGroupId,detailReturnSearch}),
+  state:()=>({screen,personId,peopleCategory,peopleSort,activeEra,country:activeCountry(),mode,query,listScrollY,searchScrollY,groupId,groupScrollY,detailId,detailParentGroupId,detailReturnSearch}),
   view:()=>({...readJSON(sessionStore,VIEW_KEY,{})}),
   saved:()=>[...saved],
+  people:eraId=>PEOPLE.people.filter(p=>!eraId||p.eraId===eraId).map(p=>({id:p.id,eraId:p.eraId,name:p.name,...personStats(p),ids:undefined})),
+  peopleLabel,
   search:value=>searchResults(value).map(result=>result.keyword),
   searchResults:value=>searchResults(value).map(result=>({id:result.keyword.id,eraId:result.keyword.eraId,groupId:result.keyword.groupId,score:result.score,context:result.context,snippet:result.snippet}))
  });
