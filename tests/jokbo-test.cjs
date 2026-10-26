@@ -11,7 +11,7 @@ assert.equal(g.run('new Set(JOKBO_DATA.keywords.map(k=>k.id)).size'),196,'키워
 assert.equal(g.run('JOKBO_DATA.keywords.filter(k=>k.bullets.length<2||k.bullets.length>4).length'),0,'상세 핵심 학습 내용 2~4개');
 assert.equal(g.run('JOKBO_DATA.eras.length'),9,'9개 시대 탭');
 assert.equal(g.run('JOKBO_DATA.comparisons.length'),7,'비교 화면');
-assert.equal(g.run('JOKBO_API.linkedExamIds().length'),589,'검증 연결 보강 뒤 실제 기출 중복 제거 연결 수');
+assert.equal(g.run('JOKBO_API.linkedExamIds().length'),596,'검증 연결 보강 뒤 실제 기출 중복 제거 연결 수');
 assert.deepEqual(g.copy('JOKBO_DATA.keywords.filter(k=>!k.examIds.length).map(k=>k.id)'),['sataek','goryeo-status'],'직접 연결 문항이 없는 항목만 비활성');
 assert(g.run("JOKBO_API.search('서옥제').some(k=>k.id==='seookje')"));
 assert(g.run("JOKBO_API.search('박종철').some(k=>k.id==='june-flow')"));
@@ -239,4 +239,4 @@ assert(!g.run("renderContent().includes('카드를 좌우로 밀면 시대가 �
 assert(baseCss.includes("fonts/PretendardVariable.woff2"),'로컬 Pretendard 연결');
 assert(uiCss.includes("--app-font: 'Pretendard Variable'")&&uiCss.includes('html body #app *'),'앱 전체 Pretendard 통일');
 assert(worker.includes('/fonts/PretendardVariable.woff2'),'Pretendard 오프라인 캐시');
-console.log('PASS: 족보 59그룹·196항목, 전체 상세 누락 0, 실제 기출 589개 연결, 저장·복원·검색·상세·비교 및 원삼국 전용 스토리 공개 정책 검증');
+console.log('PASS: 족보 59그룹·196항목, 전체 상세 누락 0, 실제 기출 596개 연결, 저장·복원·검색·상세·비교 및 원삼국 전용 스토리 공개 정책 검증');
