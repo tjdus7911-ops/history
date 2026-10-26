@@ -1303,3 +1303,7 @@ html body:not(#rv8) #app .wea-policy { margin: 12px 0 0; font-size: 11px; color:
 html body:not(#rv8) #app .wea-list-head { margin: 4px 0 10px; font-size: 16px; font-weight: 800; color: #1F2329; }
 html body:not(#rv8) #app .wea-nw { white-space: nowrap; }
 html body:not(#rv8) #app .wea-nw { white-space: nowrap; }
+
+/* '실제 한능검 기출' 배지: 빨간 배경 위 초록 글자(자동 테마 충돌)를 브랜드 색 배지로 통일 */
+html body:not(#rv8) #app .official-pill { background: #FFF1EE; color: var(--rv8-accent, #E9513B); border: 1px solid #F8D3CB; font-weight: 700; }
+html body:not(#rv8) #app .practice-pill { background: #F2F4F6; color: #4A515C; border: 1px solid #E4E7EB; font-weight: 700; }
