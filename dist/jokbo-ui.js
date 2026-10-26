@@ -46,6 +46,8 @@
  function saveKeywords(){try{localStore.setItem(SAVE_KEY,JSON.stringify([...saved]))}catch{toast('저장 공간을 사용할 수 없어요.')}}
  // 해설 끝의 '따라서 ②가 정답이며, ○○은 △△ 시대…'처럼 오답 선지를 다른 시대로 짚는 부분은 연결 근거에서 뺀다.
  function coreExplanation(text){const value=String(text||'');const cut=value.search(/따라서\s*[①②③④⑤]?\s*[이가]?\s*정답/);return cut>0?value.slice(0,cut):value;}
+ // 수록된 공식 기출 회차 범위(예: 57~80회) — 새 회차가 들어오면 자동으로 바뀐다.
+ function roundRange(){const rounds=(globalThis.OFFICIAL_EXAM_CATALOG||[]).map(e=>Number(e.sourceRecord?.examRound)).filter(Number.isFinite);return rounds.length?Math.min(...rounds)+'~'+Math.max(...rounds)+'회':'57~80회';}
  function directExamMatches(keyword){
   if(keyword.examIds?.length)return keyword.examIds;
   const terms=(keyword.examTerms||[]).map(norm).filter(Boolean),primaryEra=eraSource[keyword.eraId];
@@ -112,7 +114,7 @@
   const era=eraById.get(activeEra),eraIndex=D.eras.findIndex(e=>e.id===activeEra),label=peopleLabel(activeEra),cats=PEOPLE.categories[activeEra]||[];
   if(!cats.includes(peopleCategory))peopleCategory='all';
   const list=eraPeople(activeEra),total=PEOPLE_STATS.examTotal||36;
-  return '<div class="jk-era-content" data-jk-swipe="true"><section class="jk-summary-head jk-people-head"><small class="jk-pager-count">'+(eraIndex+1)+' / '+D.eras.length+'</small><h2>'+esc(era.label)+' '+esc(label)+'</h2><p>최근 기출 '+total+'회(57~79회 기본·심화)에 몇 번 나왔는지 별점으로 보여 줘요.</p></section>'
+  return '<div class="jk-era-content" data-jk-swipe="true"><section class="jk-summary-head jk-people-head"><small class="jk-pager-count">'+(eraIndex+1)+' / '+D.eras.length+'</small><h2>'+esc(era.label)+' '+esc(label)+'</h2><p>최근 기출 '+total+'회('+roundRange()+' 기본·심화)에 몇 번 나왔는지 별점으로 보여 줘요.</p></section>'
    +'<div class="jk-people-tools">'+(cats.length>1?'<div class="jk-chips jk-people-cats" role="tablist" aria-label="분류 선택">'+['all',...cats].map(c=>'<button role="tab" data-jk-people-cat="'+esc(c)+'" aria-selected="'+(peopleCategory===c)+'"><span>'+esc(c==='all'?'전체':c)+'</span></button>').join('')+'</div>':'')
    +'<div class="jk-people-sort" role="group" aria-label="정렬"><button type="button" data-jk-people-sort="freq" aria-pressed="'+(peopleSort==='freq')+'">출제 많은 순</button><button type="button" data-jk-people-sort="order" aria-pressed="'+(peopleSort==='order')+'">'+(activeEra==='modern'?'시간 순':'시대 순')+'</button></div></div>'
    +'<p class="jk-people-legend"><span>'+starsMarkup(3)+' 16회 이상</span><span>'+starsMarkup(2)+' 8~15회</span><span>'+starsMarkup(1)+' 7회 이하</span></p>'
