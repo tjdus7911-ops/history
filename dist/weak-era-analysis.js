@@ -38,7 +38,8 @@
     const r = coreRecord(id);
     let best = null;
     if (r) {
-      const text = norm([r.question, r.clue, r.correctChoice, r.explanation].join(' '));
+      const exp = String(r.explanation || ''), cut = exp.search(/따라서\s*[①②③④⑤]?\s*[이가]?\s*정답/);
+      const text = norm([r.question, r.clue, r.correctChoice, cut > 0 ? exp.slice(0, cut) : exp].join(' '));
       for (const k of eraKeywords(entry.primaryEra)) {
         let score = 0;
         for (const t of k.terms) if (text.includes(t)) score += 10 + t.length;
