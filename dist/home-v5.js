@@ -24,13 +24,37 @@
   };
 
   /* ---------- derived state ---------- */
+  /* 한국사능력검정시험 공식 시행 일정(historyexam.go.kr 공고 기준). 새 일정이 공고되면 여기에 추가한다.
+   * 사용자가 직접 정한 시험일이 없거나 지났으면 오늘 이후 가장 가까운 공식 시험일로 D-day를 자동 계산한다. */
+  const OFFICIAL_EXAM_SCHEDULE = Object.freeze([
+    { round: 77, date: '2026-02-07', levels: '기본·심화' },
+    { round: 78, date: '2026-05-23', levels: '심화' },
+    { round: 79, date: '2026-08-09', levels: '기본·심화' },
+    { round: 80, date: '2026-10-17', levels: '심화' },
+    { round: 81, date: '2026-11-28', levels: '심화' }
+  ]);
+  function nextOfficialExam(now = new Date()) {
+    const today = localDayNumber(now);
+    return OFFICIAL_EXAM_SCHEDULE.map((e) => ({ ...e, target: parseKey(e.date) })).find((e) => e.target && localDayNumber(e.target) >= today) || null;
+  }
   function ddayState(now = new Date()) {
     const target = parseKey(meta().examTargetDate);
-    if (!target) return { kind: 'unset' };
-    const days = localDayNumber(target) - localDayNumber(now);
-    if (days < 0) return { kind: 'past', date: target };
-    return { kind: days === 0 ? 'today' : 'set', days, date: target };
+    if (target) {
+      const days = localDayNumber(target) - localDayNumber(now);
+      if (days >= 0) return { kind: days === 0 ? 'today' : 'set', days, date: target, custom: true };
+    }
+    const next = nextOfficialExam(now);
+    if (!next) return target ? { kind: 'past', date: target } : { kind: 'unset' };
+    const days = localDayNumber(next.target) - localDayNumber(now);
+    return { kind: days === 0 ? 'today' : 'set', days, date: next.target, auto: true, round: next.round, levels: next.levels };
   }
+  const ddayLabelOf = (d) => {
+    if (d.kind === 'unset') return '다음 시험 일정 공고 전이에요';
+    if (d.kind === 'past') return '설정한 시험일이 지났어요';
+    if (d.kind === 'today') return '수험생 여러분, 시험 잘 보세요!';
+    if (d.auto) return '제' + d.round + '회 한능검(' + (d.date.getMonth() + 1) + '.' + d.date.getDate() + ')까지';
+    return '한능검 시험일까지';
+  };
 
   function heroEra() {
     // eraInfo() falls back to Goryeo for unknown ids, so look the era up directly.
@@ -248,10 +272,10 @@
     /* Rev.8 approved change: D-day gets its own top row; the four metrics share one row in the same card.
      * Every metric (streak, today, accuracy, real-exam pass rate) is kept. */
     const cell = (kind, label, value, unit = '', hint = '') => '<article class="hv-metric hv-metric-' + kind + '"' + (hint ? ' title="' + hint + '"' : '') + '><small>' + label + '</small><b>' + value + (unit ? '<em>' + unit + '</em>' : '') + '</b></article>';
-    const ddayLabel = d.kind === 'unset' ? '시험일을 정해 보세요' : d.kind === 'past' ? '설정한 시험일이 지났어요' : '한능검 시험일까지';
-    const ddayValue = d.kind === 'unset' ? 'D-day 미설정' : d.kind === 'past' ? '다시 설정해 주세요' : dday;
+    const ddayLabel = ddayLabelOf(d);
+    const ddayValue = d.kind === 'unset' ? '직접 정해 보세요' : d.kind === 'past' ? '다시 설정해 주세요' : dday;
     const ddayAction = d.kind === 'set' || d.kind === 'today' ? '시험일 변경' : '설정하기';
-    const exam = '<div class="hv-dday hv-metric-exam' + (d.kind === 'set' || d.kind === 'today' ? ' is-set' : '') + '"><span class="hv-dday-art">' + illustrations.calendar + '</span>'
+    const exam = '<div class="hv-dday hv-metric-exam' + (d.kind === 'set' || d.kind === 'today' ? ' is-set' : '') + (d.kind === 'today' ? ' is-today' : '') + '"><span class="hv-dday-art">' + illustrations.calendar + '</span>'
       + '<span class="hv-dday-copy"><small>' + ddayLabel + '</small><b>' + ddayValue + '</b></span>'
       + '<button type="button" class="hv-dday-action" data-hv-exam-open title="시험일 설정 또는 변경" aria-label="시험일 ' + (dateValue ? '변경' : '설정') + ' · 남은 시험일 ' + dday + '">' + ddayAction + '</button></div>';
     const metrics = '<div class="hv-metrics">' + cell('streak', '연속 학습', s.streak, '일') + cell('today', '오늘 푼 문제', s.todayCount, '문항')
@@ -264,10 +288,10 @@
    * Statistics data is untouched (still used by 내 기록 and HOME_V6_API). */
   function ddayHTML(now = new Date()) {
     const d = ddayState(now), dday = d.kind === 'today' ? 'D-DAY' : d.kind === 'set' ? 'D-' + d.days : d.kind === 'past' ? '다시 설정' : '설정하기';
-    const label = d.kind === 'unset' ? '시험일을 정해 보세요' : d.kind === 'past' ? '설정한 시험일이 지났어요' : '한능검 시험일까지';
-    const value = d.kind === 'unset' ? 'D-day 미설정' : d.kind === 'past' ? '다시 설정해 주세요' : dday;
+    const label = ddayLabelOf(d);
+    const value = d.kind === 'unset' ? '직접 정해 보세요' : d.kind === 'past' ? '다시 설정해 주세요' : dday;
     const set = d.kind === 'set' || d.kind === 'today';
-    return '<div class="hv-dday hv-metric-exam' + (set ? ' is-set' : '') + '"><span class="hv-dday-art">' + illustrations.calendar + '</span>'
+    return '<div class="hv-dday hv-metric-exam' + (set ? ' is-set' : '') + (d.kind === 'today' ? ' is-today' : '') + '"><span class="hv-dday-art">' + illustrations.calendar + '</span>'
       + '<span class="hv-dday-copy"><small>' + label + '</small><b>' + value + '</b></span>'
       + '<button type="button" class="hv-dday-action" data-hv-exam-open title="시험일 설정 또는 변경" aria-label="시험일 ' + (d.date ? '변경' : '설정') + ' · 남은 시험일 ' + dday + '">' + (set ? '시험일 변경' : '설정하기') + '</button></div>';
   }
@@ -403,7 +427,7 @@
     if (sheet && screen === 'home') document.querySelector?.('.hv-sheet button')?.focus?.({ preventScroll: true });
   };
 
-  globalThis.HOME_V6_API = Object.freeze({ stats: studyStats, dday: ddayState, events: learningEvents, passRate: examPassRate });
+  globalThis.HOME_V6_API = Object.freeze({ stats: studyStats, dday: ddayState, examSchedule: () => OFFICIAL_EXAM_SCHEDULE.slice(), nextExam: nextOfficialExam, events: learningEvents, passRate: examPassRate });
 
   render();
 })();
