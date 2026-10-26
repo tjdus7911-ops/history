@@ -65,7 +65,7 @@ async function assertAsyncLoaderContract(){
     const harness=createLoaderHarness(),calls=[];let resolveFetch;
     harness.context.fetch=(url,options)=>{calls.push({url,options});return new Promise(resolve=>{resolveFetch=resolve})};
     const wrongId=harness.run(`(()=>{const question=QUESTIONS.find(item=>item.isOfficial&&(globalThis.THREE_LEARNING_BOUNDARY?.canPractice(item)??true)&&(globalThis.PROTO_LEARNING_BOUNDARY?.canPractice(item)??true));if(!question)throw new Error('official wrong-answer fixture missing');const data=meta();data.wrongQuestionIds=[question.questionId];data.wrongAnswers=[{questionId:question.questionId,userAnswer:0,answeredAt:'2026-10-12T00:00:00.000Z'}];data.questionRecords[question.questionId]={attempts:1,correctCount:0,lastAnswer:0,lastCorrect:false};screen='home';render();return question.questionId})()`);
-    assert(harness.markup().includes(`data-review="${wrongId}"`)&&!harness.markup().includes('official-choice-load'),'home recent-wrong preview must not render hidden choice explanations');
+    assert(harness.markup().includes('hv-shortcut-wrong" data-nav="study"')&&!harness.markup().includes('official-choice-load'),'home wrong-note shortcut opens the list and must not render hidden choice explanations');
     assert.equal(calls.length,0,'closed home wrong-answer detail eagerly fetched choice explanations');
     harness.run(`studyTab='review';screen='study';render()`);
     assert(harness.markup().includes(`data-wrong-detail-open="${wrongId}"`)&&!harness.markup().includes(`data-wrong-detail="${wrongId}" open`),'review list must render wrong-answer detail closed');
