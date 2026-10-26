@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "reviewMethod": "1,800 canonical detail images were automatically screened by marker layout; 251 grid, horizontal, long-gap, and manual-boundary candidates were rendered as contact sheets and visually reviewed against the original question images.",
-  "canonicalQuestionCount": 1800,
+  "reviewMethod": "1,800 canonical detail images were automatically screened by marker layout; 251 grid, horizontal, long-gap, and manual-boundary candidates were rendered as contact sheets and visually reviewed against the original question images. The 50 questions of the 80th advanced edition were reviewed directly against the official PDF on 2026-10-26 (photo choices: questions 3 and 13).",
+  "canonicalQuestionCount": 1850,
   "visualCandidateCount": 251,
-  "textChoiceCount": 1687,
-  "mediaChoiceCount": 113,
+  "textChoiceCount": 1735,
+  "mediaChoiceCount": 115,
   "imageQuestionIds": [
     "official-57-basic-08", "official-57-basic-18", "official-57-basic-20", "official-57-basic-22", "official-57-basic-27", "official-57-basic-40", "official-57-basic-47",
     "official-57-advanced-04", "official-57-advanced-15", "official-57-advanced-20",
@@ -28,7 +28,8 @@
     "official-76-advanced-04", "official-76-advanced-17", "official-76-advanced-27",
     "official-77-basic-05", "official-77-basic-15", "official-77-basic-38", "official-77-advanced-04", "official-77-advanced-13",
     "official-78-advanced-09", "official-78-advanced-14", "official-78-advanced-26",
-    "official-79-basic-03", "official-79-basic-05", "official-79-basic-07", "official-79-basic-09", "official-79-basic-14", "official-79-basic-40", "official-79-basic-43", "official-79-advanced-06", "official-79-advanced-11"
+    "official-79-basic-03", "official-79-basic-05", "official-79-basic-07", "official-79-basic-09", "official-79-basic-14", "official-79-basic-40", "official-79-basic-43", "official-79-advanced-06", "official-79-advanced-11",
+    "official-80-advanced-03", "official-80-advanced-13"
   ],
   "mixedQuestionIds": [
     "official-57-basic-13", "official-58-basic-16", "official-63-basic-13", "official-64-basic-25",

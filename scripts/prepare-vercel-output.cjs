@@ -141,7 +141,7 @@ function validateDeploymentContract(repoRoot) {
   assert(cacheRule?.headers?.some((header) => header.key.toLowerCase() === 'x-vercel-enable-rewrite-caching' && header.value === '1'), 'external asset rewrite caching is not enabled');
 
   const catalog = loadJson(path.join(root, 'dist', 'official-exam-catalog.json'));
-  assert.equal(catalog.length, 1800, 'official exam catalog count changed');
+  assert.equal(catalog.length, 1850, 'official exam catalog count changed');
   for (const record of catalog) {
     for (const [assetPath, expectedBytes] of [[record.detailImage, record.detailImageBytes], [record.thumbnailImage, record.thumbnailImageBytes]]) {
       const entry = assets.index.get(assetPath);
@@ -193,7 +193,7 @@ function validatePinnedSnapshot(repoRoot) {
 
 function runtimeChoicePayload(payload, summaries = {}) {
   assert.equal(payload.schemaVersion, 3);
-  assert.equal(payload.records.length, 1800);
+  assert.equal(payload.records.length, 1850);
   const records = payload.records.map(record => ({
     officialQuestionId: record.officialQuestionId,
     explanation: record.explanation,

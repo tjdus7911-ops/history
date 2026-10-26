@@ -8,13 +8,13 @@ run(scripts.map(name=>fs.readFileSync('dist/'+name,'utf8')).join('\n'));
 function click(dataset){run('inputLockedUntil=0');let stopped=false;const button={dataset,disabled:false};for(const item of (handlers.click||[]).slice().sort((a,b)=>Number(Boolean(b.capture))-Number(Boolean(a.capture)))){item.handler({target:{closest:()=>button},stopImmediatePropagation(){stopped=true}});if(stopped)break}}
 
 const inventory=JSON.parse(fs.readFileSync('dist/official-exam-inventory.json','utf8'));
-assert.equal(inventory.examEditionCount,36);assert.equal(inventory.advancedEditionCount,23);assert.equal(inventory.basicEditionCount,13);
-assert.equal(inventory.canonicalQuestionCount,1800);assert.equal(inventory.processedFileCount,72);assert.equal(inventory.duplicateFiles.length,7);assert.equal(inventory.deferredFiles.length,1);
-assert.equal(new Set(inventory.exams.map(exam=>exam.examRound+':'+exam.examLevel)).size,36);
+assert.equal(inventory.examEditionCount,37);assert.equal(inventory.advancedEditionCount,24);assert.equal(inventory.basicEditionCount,13);
+assert.equal(inventory.canonicalQuestionCount,1850);assert.equal(inventory.processedFileCount,74);assert.equal(inventory.duplicateFiles.length,7);assert.equal(inventory.deferredFiles.length,1);
+assert.equal(new Set(inventory.exams.map(exam=>exam.examRound+':'+exam.examLevel)).size,37);
 for(const exam of inventory.exams){assert.equal(exam.questionCount,50);assert.equal(exam.answerCount,50);assert(/^[a-f0-9]{64}$/.test(exam.questionPdfSha256));assert(/^[a-f0-9]{64}$/.test(exam.answerPdfSha256))}
 
 const entries=copy('globalThis.OFFICIAL_EXAM_CATALOG'),sources=copy('globalThis.OFFICIAL_EXAM_SOURCE_RECORDS');
-assert.equal(entries.length,1800);assert.equal(sources.length,1800);assert.equal(new Set(entries.map(entry=>entry.key)).size,1800);assert.equal(new Set(entries.map(entry=>entry.canonicalQuestionId)).size,1800);
+assert.equal(entries.length,1850);assert.equal(sources.length,1850);assert.equal(new Set(entries.map(entry=>entry.key)).size,1850);assert.equal(new Set(entries.map(entry=>entry.canonicalQuestionId)).size,1850);
 assert.equal(copy('globalThis.OFFICIAL_ERA_TAXONOMY').length,6);for(const era of ['ancient','goryeo','joseon','empire','occupation','republic'])assert.equal(run(`libraryStatus('${era}')`),'UNLOCKED');
 for(const entry of entries){const question=copy(`QUESTIONS.find(question=>question.questionId===${JSON.stringify(entry.canonicalQuestionId)})`);assert(question);assert.equal(question.officialQuestionId,entry.canonicalQuestionId);assert.equal(question.sourceStatus,'verified');assert.equal(question.needsVerification,false);assert(assetExists(path.join('dist',entry.libraryImage)),entry.libraryImage)}
 const fixed=copy("QUESTIONS.find(question=>question.examRound===70&&question.examLevel==='심화'&&question.questionNumber===13)");assert.equal(fixed.answer,0);assert.equal(fixed.answerLabel,'①');assert.equal(fixed.needsVerification,false);assert(!/missing_pdf/i.test(JSON.stringify(fixed)));
@@ -87,6 +87,6 @@ const associationCss=fs.readFileSync('dist/exam-memory.css','utf8');assert(assoc
 click({nav:'records'});assert(html.includes('data-figma-frame="M-01"'));assert(html.includes('학습 기록'));assert(html.includes('기출 기록')&&html.includes('푼 시험과 점수 추이'));assert(html.includes('오답 복습'));assert(!html.includes('학습 캘린더')&&!html.includes('이야기와 수집 기록'));assert(run('Object.keys(meta().questionRecords).length')>=50);
 click({nav:'study'});assert(html.includes('오답노트'));
 assert.equal(run('globalThis.EXAM_MEMORY_UI_READY'),true);
-console.log('PASS: 1,800 canonical official questions, 36 editions, reusable mnemonic accordions, hint-free stable Recall Test choices, post-answer mnemonic review, preserved official grading and shared records.');
+console.log('PASS: 1,850 canonical official questions, 37 editions, reusable mnemonic accordions, hint-free stable Recall Test choices, post-answer mnemonic review, preserved official grading and shared records.');
 
 

@@ -6,8 +6,8 @@ const seen=new Set();
 let contentCount=0,choiceCount=0;
 
 assert.equal(ledger.schemaVersion,1);
-assert.equal(ledger.canonicalQuestionCount,1800);
-assert.deepEqual(ledger.presentationCounts,{text:1687,image:105,mixed:8});
+assert.equal(ledger.canonicalQuestionCount,1850);
+assert.deepEqual(ledger.presentationCounts,{text:1735,image:107,mixed:8});
 for(const record of ledger.records){
   assert(!seen.has(record.officialQuestionId),`duplicate record: ${record.officialQuestionId}`);seen.add(record.officialQuestionId);
   assert(['text','image','mixed'].includes(record.presentation),`unknown presentation: ${record.officialQuestionId}`);
@@ -39,4 +39,4 @@ assert.equal(ledger.records.find(item=>item.officialQuestionId==='official-79-ba
 assert.equal(ledger.records.find(item=>item.officialQuestionId==='official-79-basic-03').choiceMedia.length,4);
 assert.equal(ledger.records.find(item=>item.officialQuestionId==='official-79-basic-07').choiceMedia.length,4);
 
-console.log('PASS: 1,800 physical question images and 498 ordered choice images match their source hashes.');
+console.log('PASS: 1,850 physical question images and 508 ordered choice images match their source hashes.');

@@ -1211,36 +1211,83 @@ html body:not(#rv8) #app .jk-detail-facts .jk-keyword-line + .jk-keyword-line { 
 html body:not(#rv8) #app .modal h2, html body:not(#rv8) #app .modal h3, html body:not(#rv8) #app .modal p,
 html body:not(#rv8) #app .r7-sheet h2, html body:not(#rv8) #app .r7-sheet p { word-break: keep-all; overflow-wrap: break-word; text-wrap: balance; }
 
-/* Fix pass 5 (2026-10-26): 홈 스토리 카드 — 썸네일을 카드 배경으로(6:7, 위아래만 조금 잘림), 글·진행률·버튼은 그림 위 아래쪽에 겹쳐 놓는다 */
-@media (max-width: 700px) {
-  html body:not(#rv8) #app .hv .hv-rail-item { flex: 0 0 min(264px, calc(100vw - 110px)); width: min(264px, calc(100vw - 110px)); }
-  html body:not(#rv8) #app .hv .hv-era {
-    position: relative; display: flex; flex-direction: column; justify-content: flex-end; height: auto; min-height: 0; aspect-ratio: 6 / 7;
-    overflow: hidden; border: 0; border-radius: var(--rv8-r-xl); background: #2b3440; box-shadow: 0 6px 18px rgba(20, 27, 36, .12);
-  }
-  html body:not(#rv8) #app .hv .hv-era .hv-card-art {
-    position: absolute; inset: 0; z-index: 0; display: block; width: 100%; height: 100%; aspect-ratio: auto;
-    object-fit: cover; object-position: center 40%; border-radius: 0; background: #2b3440;
-  }
-  html body:not(#rv8) #app .hv .hv-era .hv-era-shade {
-    position: absolute; inset: 0; z-index: 0; display: block; pointer-events: none;
-    background: linear-gradient(180deg, rgba(14, 20, 28, 0) 38%, rgba(14, 20, 28, .55) 62%, rgba(14, 20, 28, .9) 100%);
-  }
-  html body:not(#rv8) #app .hv .hv-era .hv-era-body { position: relative; z-index: 2; flex: none; gap: 2px; padding: 16px 16px 16px; background: none; }
-  html body:not(#rv8) #app .hv .hv-era .hv-season-tag { padding: 3px 8px; border-radius: 6px; background: rgba(14, 20, 28, .5); color: #fff !important; font-size: 11.5px; line-height: 16px; backdrop-filter: blur(2px); }
-  html body:not(#rv8) #app .hv .hv-era .hv-era-tags { margin: 0 0 4px; }
-  html body:not(#rv8) #app .hv .hv-era .hv-era-title { color: #fff !important; font-size: 20px; line-height: 28px; text-shadow: 0 1px 8px rgba(0, 0, 0, .3); }
-  html body:not(#rv8) #app .hv .hv-era .hv-era-sub { color: rgba(255, 255, 255, .85) !important; font-size: 12.5px; line-height: 18px; }
-  html body:not(#rv8) #app .hv .hv-era .hv-progress-row { padding-top: 8px; }
-  html body:not(#rv8) #app .hv .hv-era .hv-progress { background: rgba(255, 255, 255, .3); }
-  html body:not(#rv8) #app .hv .hv-era .hv-progress i { background: #fff; }
-  html body:not(#rv8) #app .hv .hv-era .hv-progress-label { color: #fff; }
-  html body:not(#rv8) #app .hv .hv-era .hv-era-body > :nth-last-child(2) { margin-bottom: 10px; }
-  html body:not(#rv8) #app .hv .hv-era .hv-era-btn { height: 42px; min-height: 42px; margin: 0; border-radius: var(--rv8-r-full); background: #fff; color: var(--rv8-accent); font-size: 14px; font-weight: 800; box-shadow: 0 6px 16px rgba(14, 20, 28, .18); }
-  html body:not(#rv8) #app .hv .hv-era.is-soon .hv-era-btn { background: rgba(255, 255, 255, .72); color: var(--rv8-muted); box-shadow: none; }
-  html body:not(#rv8) #app .hv .hv-era.is-soon .hv-card-art { filter: grayscale(.25); opacity: 1; }
-}
 
 /* 시험 당일 D-day 응원 문구 */
 html body:not(#rv8) #app .hv-dday.is-today .hv-dday-copy small { color: var(--rv8-accent, #E9513B); font-weight: 800; }
 html body:not(#rv8) #app .hv-dday.is-today .hv-dday-copy small { white-space: normal; overflow: visible; text-overflow: clip; word-break: keep-all; text-wrap: balance; line-height: 1.35; }
+
+/* 오답노트 · 시대별 취약점 분석 (weak-era-analysis.js) */
+html body:not(#rv8) #app .wea-card { margin: 0 0 12px; padding: 16px; border-radius: 20px; background: #fff; box-shadow: 0 2px 12px rgba(31,35,41,.06); }
+html body:not(#rv8) #app .wea-card > h2 { margin: 0 0 10px; font-size: 16px; font-weight: 800; color: #1F2329; }
+html body:not(#rv8) #app .wea-actions { display: grid; gap: 8px; margin-top: 12px; }
+html body:not(#rv8) #app .wea-actions .r7-primary, html body:not(#rv8) #app .wea-actions .r7-secondary { width: 100%; margin: 0; }
+html body:not(#rv8) #app .wea-rank-name { flex-direction: column; align-items: flex-start !important; gap: 1px !important; }
+html body:not(#rv8) #app .wea-rank-name b { font-size: 14px; font-weight: 800; }
+html body:not(#rv8) #app .wea-title { margin: 0 0 12px; font-size: 16px; font-weight: 800; color: #1F2329; }
+html body:not(#rv8) #app .wea-hero { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border-radius: 16px; background: #F5F7F9; }
+html body:not(#rv8) #app .wea-hero.is-weak { background: #FFF1EE; }
+html body:not(#rv8) #app .wea-hero.is-good { background: #EEF8F2; }
+html body:not(#rv8) #app .wea-hero-copy { display: grid; gap: 3px; min-width: 0; }
+html body:not(#rv8) #app .wea-hero-copy small { font-size: 12px; font-weight: 600; color: #6B7280; }
+html body:not(#rv8) #app .wea-hero-copy strong { font-size: 22px; line-height: 1.25; font-weight: 800; color: #1F2329; word-break: keep-all; }
+html body:not(#rv8) #app .wea-hero-copy span { font-size: 13px; color: #4A515C; }
+html body:not(#rv8) #app .wea-hero-copy em { font-style: normal; font-weight: 700; color: #6B7280; }
+html body:not(#rv8) #app .wea-hero.is-weak .wea-hero-copy em { color: var(--rv8-accent, #E9513B); }
+html body:not(#rv8) #app .wea-hero.is-good .wea-hero-copy em { color: #2E9E6A; }
+html body:not(#rv8) #app .wea-gauge { --wea-color: #9AA0A9; flex: 0 0 auto; display: grid; place-content: center; justify-items: center; width: 76px; height: 76px; border-radius: 50%; background: radial-gradient(closest-side, #fff 78%, transparent 80% 100%), conic-gradient(var(--wea-color) calc(var(--wea-acc) * 1%), #E4E7EB 0); }
+html body:not(#rv8) #app .wea-hero.is-weak .wea-gauge { --wea-color: var(--rv8-accent, #E9513B); }
+html body:not(#rv8) #app .wea-hero.is-good .wea-gauge { --wea-color: #2E9E6A; }
+html body:not(#rv8) #app .wea-gauge b { font-size: 19px; line-height: 1; font-weight: 800; color: #1F2329; }
+html body:not(#rv8) #app .wea-gauge b i { font-style: normal; font-size: 12px; margin-left: 1px; }
+html body:not(#rv8) #app .wea-gauge small { margin-top: 3px; font-size: 10px; color: #7A818C; }
+html body:not(#rv8) #app .wea-chips { display: flex; gap: 8px; margin: 0 -16px 12px; padding: 2px 16px 4px; overflow-x: auto; scrollbar-width: none; }
+html body:not(#rv8) #app .wea-chips::-webkit-scrollbar { display: none; }
+html body:not(#rv8) #app .wea-chip { flex: 0 0 auto; display: inline-flex; align-items: baseline; gap: 5px; min-height: 36px; padding: 7px 12px; border: 1px solid #E4E7EB; border-radius: 999px; background: #fff; text-align: left; color: #1F2329; }
+html body:not(#rv8) #app .wea-chip b { font-size: 13px; font-weight: 800; white-space: nowrap; }
+html body:not(#rv8) #app .wea-chip small { font-size: 11px; color: #7A818C; white-space: nowrap; }
+html body:not(#rv8) #app .wea-chip.is-weak small { color: var(--rv8-accent, #E9513B); font-weight: 700; }
+html body:not(#rv8) #app .wea-chip.is-selected { border-color: #1F2329; background: #1F2329; color: #fff; }
+html body:not(#rv8) #app .wea-chip.is-selected small { color: rgba(255,255,255,.8); }
+html body:not(#rv8) #app .wea-hero-copy span b { color: #1F2329; }
+html body:not(#rv8) #app .wea-hero-copy > em { justify-self: start; margin-top: 4px; padding: 2px 8px; border-radius: 999px; background: #fff; font-size: 11px; }
+html body:not(#rv8) #app .wea-topics { display: grid; gap: 6px; }
+html body:not(#rv8) #app .wea-topic { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; padding: 10px 12px; border: 1px solid #ECEEF1; border-radius: 12px; background: #fff; text-align: left; color: #1F2329; }
+html body:not(#rv8) #app .wea-topic-name { display: grid; gap: 2px; min-width: 0; }
+html body:not(#rv8) #app .wea-topic-name b { font-size: 14px; font-weight: 800; word-break: keep-all; }
+html body:not(#rv8) #app .wea-topic-name small { font-size: 11px; color: #7A818C; }
+html body:not(#rv8) #app .wea-topic-rate { flex: 0 0 auto; display: grid; justify-items: end; gap: 5px; }
+html body:not(#rv8) #app .wea-topic-rate b { font-size: 12px; font-weight: 700; color: var(--rv8-accent, #E9513B); white-space: nowrap; }
+html body:not(#rv8) #app .wea-topic-rate i { display: block; width: 72px; height: 5px; border-radius: 3px; background: linear-gradient(90deg, var(--rv8-accent, #E9513B) calc(var(--wea-err) * 1%), #EEF0F2 0); }
+html body:not(#rv8) #app .wea-hint { margin: 6px 0 0; font-size: 12px; color: #7A818C; }
+html body:not(#rv8) #app .wea-rank { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
+html body:not(#rv8) #app .wea-rank-row { display: grid; grid-template-columns: 22px minmax(0, 1fr) 72px 38px; align-items: center; gap: 8px; width: 100%; min-height: 40px; padding: 6px 8px; border: 0; border-radius: 10px; background: none; text-align: left; color: #1F2329; }
+html body:not(#rv8) #app .wea-rank-row.is-selected { background: #F5F7F9; }
+html body:not(#rv8) #app .wea-rank-no { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: #EEF0F2; font-size: 12px; font-weight: 800; }
+html body:not(#rv8) #app .wea-rank li:first-child .wea-rank-no { background: var(--rv8-accent, #E9513B); color: #fff; }
+html body:not(#rv8) #app .wea-rank-name { display: flex; align-items: baseline; gap: 6px; min-width: 0; font-size: 14px; font-weight: 700; word-break: keep-all; }
+html body:not(#rv8) #app .wea-rank-name small { font-size: 11px; font-weight: 600; color: #9AA0A9; white-space: nowrap; }
+html body:not(#rv8) #app .wea-rank-bar { height: 6px; border-radius: 3px; background: #EEF0F2; overflow: hidden; }
+html body:not(#rv8) #app .wea-rank-bar i { display: block; height: 100%; border-radius: 3px; background: #2E9E6A; }
+html body:not(#rv8) #app .wea-rank li:first-child .wea-rank-bar i { background: var(--rv8-accent, #E9513B); }
+html body:not(#rv8) #app .wea-rank-row > b { font-size: 13px; font-weight: 800; text-align: right; }
+html body:not(#rv8) #app .wea-policy { margin: 12px 0 0; font-size: 11px; color: #9AA0A9; }
+html body:not(#rv8) #app .wea-list-head { margin: 4px 0 10px; font-size: 16px; font-weight: 800; color: #1F2329; }
+html body:not(#rv8) #app .wea-nw { white-space: nowrap; }
+html body:not(#rv8) #app .wea-nw { white-space: nowrap; }
+
+/* '실제 한능검 기출' 배지: 빨간 배경 위 초록 글자(자동 테마 충돌)를 브랜드 색 배지로 통일 */
+html body:not(#rv8) #app .official-pill { background: #FFF1EE; color: var(--rv8-accent, #E9513B); border: 1px solid #F8D3CB; font-weight: 700; }
+html body:not(#rv8) #app .practice-pill { background: #F2F4F6; color: #4A515C; border: 1px solid #E4E7EB; font-weight: 700; }
+/* 홈 배너 두 개(취약점·족보): 좁은 화면에서도 제목이 말줄임 없이 보이게, 취약점 배너는 연한 브랜드색 */
+@media (max-width: 700px) {
+  html body:not(#rv8) #app .hv .hv-jokbo-copy strong, html body:not(#rv8) #app .hv .hv-jokbo-copy b { white-space: normal; overflow: visible; text-overflow: clip; word-break: keep-all; text-wrap: balance; }
+  html body:not(#rv8) #app .hv .hv-weak-banner { background: #FFF1EE; }
+  html body:not(#rv8) #app .hv .hv-weak-banner:active { background: #FFE6E0; }
+}
+/* D-day 라벨(예: 제81회 한능검(11.28)까지)이 좁은 화면에서 말줄임으로 잘리지 않게 두 줄까지 허용 */
+html body:not(#rv8) #app .hv-dday .hv-dday-copy small { white-space: normal; overflow: visible; text-overflow: clip; word-break: keep-all; text-wrap: balance; line-height: 1.35; }
+/* OX 오답: 기출 오답과 같은 머리말·탭, 복습 카드 안쪽 여백 */
+html body:not(#rv8) #app .r7-wrong-ox .ox-review-section { margin: 4px 0 16px; padding: 18px 16px 16px; border: 0; border-radius: 20px; background: #fff; box-shadow: 0 2px 12px rgba(31,35,41,.06); }
+html body:not(#rv8) #app .r7-wrong-ox .ox-review-heading h2 { margin: 0 0 4px; font-size: 17px; font-weight: 800; }
+html body:not(#rv8) #app .r7-wrong-ox .ox-review-heading p { margin: 0 0 12px; font-size: 12px; color: #7A818C; word-break: keep-all; }
+html body:not(#rv8) #app .r7-wrong-ox .ox-review-section :is(b, strong, h3, p, span) { word-break: keep-all; overflow-wrap: break-word; }

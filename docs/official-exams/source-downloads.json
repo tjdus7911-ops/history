@@ -40,6 +40,7 @@
     {"key":"77-advanced","postId":"1000030110","questionFileId":"B_202602071228075140","answerFileId":"B_202602071050519721"},
     {"key":"78-advanced","postId":"1000030119","questionFileId":"B_202605230140467170","answerFileId":"B_202605230140467941"},
     {"key":"79-basic","postId":"1000030130","questionFileId":"B_202608090109264420","answerFileId":"B_202608090109265381"},
-    {"key":"79-advanced","postId":"1000030131","questionFileId":"B_202608090227540820","answerFileId":"B_202608090111475331"}
+    {"key":"79-advanced","postId":"1000030131","questionFileId":"B_202608090227540820","answerFileId":"B_202608090111475331"},
+    {"key":"80-advanced","source":"user-supplied","questionPdf":"80회 한국사_문제지(심화).pdf","answerPdf":"80회 한국사_답지(심화).pdf","questionPdfSha256":"e4666c9c95db6bd9f3e90eaf480ab7b761afb9b9bd2f15b25ffe989a7f439140","answerPdfSha256":"71eefccb4ad91ffeec53630bcb6df622a540e65c04fa028db9230c9bf4230f4c","note":"사용자가 2026-10-26에 첨부한 공식 PDF. 자료실 게시물·파일 ID는 확인되면 추가한다."}
   ]
 }

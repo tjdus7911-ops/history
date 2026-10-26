@@ -5,9 +5,10 @@ const published=JSON.parse(fs.readFileSync('dist/official-exam-statistics.json',
 const catalog=JSON.parse(fs.readFileSync('dist/official-exam-catalog.json','utf8'));
 const editionKeys=new Set(catalog.map(row=>`${row.examRound}-${row.examLevel==='심화'?'advanced':'basic'}`));
 
-assert.equal(editionKeys.size,36);
+assert.equal(editionKeys.size,37);
 assert.equal(source.records.length,34);
-assert.equal(source.unavailableEditions.length,2);
+assert.equal(source.unavailableEditions.length,3);
+assert(source.unavailableEditions.some(row=>row.key==='80-advanced'&&row.verificationStatus==='RESULT_NOT_ANNOUNCED'),'80th results are pending, not invented');
 assert.deepEqual(new Set([...Object.keys(published.byEdition),...published.unavailableEditions.map(row=>row.key)]),editionKeys);
 assert.equal(published.byEdition['79-advanced'].passRateRaw,'63.60');
 assert.equal(published.byEdition['79-advanced'].examinees,125510);
@@ -32,4 +33,4 @@ for(const row of Object.values(published.byEdition)){
 const context={};vm.createContext(context);
 vm.runInContext(fs.readFileSync('dist/official-exam-statistics.js','utf8'),context);
 assert.deepEqual(JSON.parse(JSON.stringify(context.OFFICIAL_EXAM_STATISTICS)),published);
-console.log('PASS: 34 official edition pass rates are sourced and 2 unavailable 63rd-edition rates remain explicitly unreported.');
+console.log('PASS: 34 official edition pass rates are sourced and 2 unavailable 63rd-edition rates and the pending 80th advanced result remain explicitly unreported.');

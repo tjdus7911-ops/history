@@ -94,16 +94,16 @@ const jsContext = { globalThis: {} };
 vm.runInNewContext(fs.readFileSync(path.join(DIST, 'official-exam-catalog.js'), 'utf8'), jsContext);
 const jsCatalog = jsContext.globalThis.OFFICIAL_EXAM_SOURCE_RECORDS;
 
-assert.equal(catalog.length, 1800, 'canonical question count');
-assert.equal(inventory.canonicalQuestionCount, 1800, 'inventory question count');
-assert.equal(inventory.examEditionCount, 36, 'inventory edition count');
+assert.equal(catalog.length, 1850, 'canonical question count');
+assert.equal(inventory.canonicalQuestionCount, 1850, 'inventory question count');
+assert.equal(inventory.examEditionCount, 37, 'inventory edition count');
 assert.equal(jsCatalog.length, catalog.length, 'JS/JSON catalog count');
 assert.deepEqual(
   JSON.parse(JSON.stringify(jsCatalog)),
   catalog,
   'JS/JSON catalogs must contain the same records',
 );
-assert.equal(new Set(catalog.map(item => item.officialQuestionId)).size, 1800, 'question IDs must be unique');
+assert.equal(new Set(catalog.map(item => item.officialQuestionId)).size, 1850, 'question IDs must be unique');
 assert.equal(
   (generator.match(/synchronize_explanation_image_hashes\(/g) || []).length,
   3,
@@ -113,8 +113,8 @@ assert.equal(
 const detailFiles = listFiles(DETAIL_ROOT, name => name.endsWith('.webp'));
 const thumbnailFiles = listFiles(THUMBNAIL_ROOT, name => name.endsWith('.webp'));
 const flatFiles = listFiles(IMAGE_ROOT, name => /^\d+-(?:advanced|basic)-\d{2}\.webp$/.test(name));
-assert.equal(detailFiles.length, 1800, 'detail file count');
-assert.equal(thumbnailFiles.length, 1800, 'thumbnail file count');
+assert.equal(detailFiles.length, 1850, 'detail file count');
+assert.equal(thumbnailFiles.length, 1850, 'thumbnail file count');
 assert.equal(flatFiles.length, 130, 'live compatibility flat file count');
 
 let detailBytes = 0;
@@ -155,8 +155,8 @@ for (const item of catalog) {
   assert(item.thumbnailImageHeight < item.detailImageHeight,
     `${item.officialQuestionId} thumbnail must be downscaled`);
 }
-assert.equal(catalogDetailPaths.size, 1800, 'unique detail image paths');
-assert.equal(catalogThumbnailPaths.size, 1800, 'unique thumbnail image paths');
+assert.equal(catalogDetailPaths.size, 1850, 'unique detail image paths');
+assert.equal(catalogThumbnailPaths.size, 1850, 'unique thumbnail image paths');
 
 assert.deepEqual(inventory.imagePipeline, {
   revision: REVISION,
@@ -166,11 +166,11 @@ assert.deepEqual(inventory.imagePipeline, {
   detailQuality: 80,
   thumbnailWidth: 320,
   thumbnailQuality: 68,
-  detailImageCount: 1800,
-  thumbnailImageCount: 1800,
+  detailImageCount: 1850,
+  thumbnailImageCount: 1850,
   detailImageBytes: detailBytes,
   thumbnailImageBytes: thumbnailBytes,
-  cropValidationPassedCount: 1800,
+  cropValidationPassedCount: 1850,
 }, 'inventory pipeline summary');
 
 for (const id of [

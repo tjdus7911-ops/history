@@ -112,7 +112,8 @@ let officialChoicePayloadState=OFFICIAL_EXPLANATION_BY_SOURCE_ID.size===OFFICIAL
 function hydrateOfficialChoiceExplanations(payload){
  const records=(Array.isArray(payload?.records)?payload.records:[]).map(record=>globalThis.OFFICIAL_EXAM_REPAIRS?.[record.officialQuestionId]?{...record,...globalThis.OFFICIAL_EXAM_REPAIRS[record.officialQuestionId]}:record);
  if(Number(payload?.schemaVersion)!==3)throw new Error(`Unsupported official explanation schema: ${payload?.schemaVersion??'missing'}`);
- if(Number(payload?.canonicalChoiceCount)!==8350)throw new Error(`Expected 8350 official choices, received ${payload?.canonicalChoiceCount??'missing'}`);
+ const expectedChoiceCount=OFFICIAL_EXAM_CATALOG.reduce((sum,entry)=>sum+(entry.sourceRecord.examLevel==='기본'?4:5),0);
+ if(Number(payload?.canonicalChoiceCount)!==expectedChoiceCount)throw new Error(`Expected ${expectedChoiceCount} official choices, received ${payload?.canonicalChoiceCount??'missing'}`);
  if(records.length!==OFFICIAL_EXAM_CATALOG.length)throw new Error(`Expected ${OFFICIAL_EXAM_CATALOG.length} official explanation records, received ${records.length}`);
  const byId=new Map();for(const record of records){if(byId.has(record.officialQuestionId))throw new Error(`Duplicate official explanation ID: ${record.officialQuestionId}`);byId.set(record.officialQuestionId,record)}
  for(const entry of OFFICIAL_EXAM_CATALOG){const record=byId.get(entry.sourceRecord.officialQuestionId),expected=entry.sourceRecord.examLevel==='기본'?4:5;if(!record)throw new Error(`Unknown or missing official explanation ID: ${entry.sourceRecord.officialQuestionId}`);if(record.choices?.length!==expected||record.choiceExplanations?.length!==expected)throw new Error(`Invalid choice payload: ${entry.sourceRecord.officialQuestionId}`);if(record.choiceExplanations.some((choice,index)=>choice?.choiceIndex!==index))throw new Error(`Invalid choice order: ${entry.sourceRecord.officialQuestionId}`)}

@@ -42,16 +42,16 @@ const expectedNewEditions=new Set([
 const labels=['①','②','③','④','⑤'];
 const generic=/핵심 개념을 판별|핵심 단서|자료의 조건과 일치|다른 선택지는 구분해야|확인해야 합니다|자료의 사료·사진·지도 자체가|원문 문제는/;
 
-assert.equal(catalog.length,1800);
-assert.equal(inventory.canonicalQuestionCount,1800);
-assert.equal(inventory.examEditionCount,36);
-assert.deepEqual(inventory.lastImport,{editionCount:10,questionCount:500,existingCanonicalMatchCount:0,duplicateCanonicalKeyCount:0});
-assert.equal(explanations.length,1800);
-assert.equal(bootstrapExplanations.length,1800);
+assert.equal(catalog.length,1850);
+assert.equal(inventory.canonicalQuestionCount,1850);
+assert.equal(inventory.examEditionCount,37);
+assert.deepEqual(inventory.lastImport,{editionCount:1,questionCount:50,existingCanonicalMatchCount:0,duplicateCanonicalKeyCount:0});
+assert.equal(explanations.length,1850);
+assert.equal(bootstrapExplanations.length,1850);
 assert(bootstrapMeta,'core bootstrap metadata missing; regenerate official explanations');
 assert.equal(bootstrapMeta.schemaVersion,explanationPayload.schemaVersion);
-assert.equal(bootstrapMeta.canonicalQuestionCount,1800);
-assert.equal(bootstrapMeta.canonicalChoiceCount,8350);
+assert.equal(bootstrapMeta.canonicalQuestionCount,1850);
+assert.equal(bootstrapMeta.canonicalChoiceCount,8600);
 const bootstrapFields=[
   'officialQuestionId','question','clue','correctChoice','explanation','curated',
   'qualityTier','coreVerificationStatus','coreEvidenceSources',
@@ -71,9 +71,9 @@ assert.equal(
   Buffer.byteLength(JSON.stringify(explanations)),
 );
 assert(explanationPayload.qa.initialCoreRecordJsonBytes<explanationPayload.qa.fullRecordJsonBytes);
-assert.equal(new Set(catalog.map(item=>`${item.examRound}:${item.examLevel}:${item.questionNumber}`)).size,1800,'duplicate exam key');
-assert.equal(new Set(catalog.map(item=>item.officialQuestionId)).size,1800,'duplicate officialQuestionId');
-assert.equal(new Set(explanations.map(item=>item.officialQuestionId)).size,1800,'duplicate explanation ID');
+assert.equal(new Set(catalog.map(item=>`${item.examRound}:${item.examLevel}:${item.questionNumber}`)).size,1850,'duplicate exam key');
+assert.equal(new Set(catalog.map(item=>item.officialQuestionId)).size,1850,'duplicate officialQuestionId');
+assert.equal(new Set(explanations.map(item=>item.officialQuestionId)).size,1850,'duplicate explanation ID');
 
 const editionGroups=new Map;
 for(const item of catalog){
@@ -168,17 +168,17 @@ for(const item of catalog){
   }
   canonicalChoiceCount+=choiceCount;
 }
-assert.equal(canonicalChoiceCount,8350);
+assert.equal(canonicalChoiceCount,8600);
 assert.equal(explanationPayload.schemaVersion,3);
-assert.equal(explanationPayload.canonicalChoiceCount,8350);
+assert.equal(explanationPayload.canonicalChoiceCount,8600);
 assert.equal(explanationPayload.qa.forbiddenGenericCount,0);
 assert.equal(explanationPayload.qa.newExplanationCount,500);
 assert.equal(explanationPayload.qa.modifiedExistingCount,1300);
 assert.equal(explanationPayload.qa.metadataMismatchFixedCount,32);
 assert.equal(explanationPayload.qa.knowledgeRuleCount,explanations.filter(item=>['curated','knowledge'].includes(item.qualityTier)).length);
 assert.equal(explanationPayload.qa.evidenceFallbackCount,explanations.filter(item=>item.qualityTier==='evidence').length);
-assert.equal(explanationPayload.qa.choiceCount,8350);
-assert.equal(explanationPayload.qa.choiceExplanationCount,8350);
+assert.equal(explanationPayload.qa.choiceCount,8600);
+assert.equal(explanationPayload.qa.choiceExplanationCount,8600);
 const curatedChoiceCount=curatedChoiceCorrections.reduce((sum,item)=>sum+item.choiceExplanations.length,0);
 const allChoiceExplanations=explanations.flatMap(item=>item.choiceExplanations);
 const computedChoiceOrderMismatchCount=explanations.filter(row=>
@@ -196,19 +196,19 @@ const computedCorrectChoiceIndexMismatchCount=catalog.filter(item=>{
   const indexed=row.choices[accepted[0]];
   return indexed!=='[원문 이미지 선택지 — OCR 전사 필요]'&&indexed!==row.correctChoice;
 }).length;
-assert.equal(explanationPayload.qa.curatedChoiceExplanationCount,8350);
-assert.equal(explanationPayload.qa.curatedChoiceQuestionCount,1800);
+assert.equal(explanationPayload.qa.curatedChoiceExplanationCount,8600);
+assert.equal(explanationPayload.qa.curatedChoiceQuestionCount,1850);
 assert.equal(explanationPayload.qa.sourceVerifiedChoiceExplanationCount,24);
 assert.equal(explanationPayload.qa.sourceVerifiedChoiceQuestionCount,5);
-assert.equal(explanationPayload.qa.editorialReviewedChoiceExplanationCount,8326);
-assert.equal(explanationPayload.qa.editorialReviewedChoiceQuestionCount,1795);
-assert.equal(explanationPayload.qa.curatedRegistryChoiceExplanationCount,8406);
-assert.equal(explanationPayload.qa.curatedRegistryQuestionCount,1814);
+assert.equal(explanationPayload.qa.editorialReviewedChoiceExplanationCount,8576);
+assert.equal(explanationPayload.qa.editorialReviewedChoiceQuestionCount,1845);
+assert.equal(explanationPayload.qa.curatedRegistryChoiceExplanationCount,8656);
+assert.equal(explanationPayload.qa.curatedRegistryQuestionCount,1864);
 assert.equal(explanationPayload.qa.skippedNonCanonicalCuratedChoiceExplanationCount,56);
 assert.equal(explanationPayload.qa.skippedNonCanonicalCuratedQuestionCount,14);
-assert.equal(explanationPayload.qa.curatedSourceChoiceTextCount,8350);
-assert.equal(explanationPayload.qa.imageVisuallyReviewedQuestionCount,1779);
-assert.equal(explanationPayload.qa.imageVisuallyReviewedChoiceCount,8248);
+assert.equal(explanationPayload.qa.curatedSourceChoiceTextCount,8600);
+assert.equal(explanationPayload.qa.imageVisuallyReviewedQuestionCount,1829);
+assert.equal(explanationPayload.qa.imageVisuallyReviewedChoiceCount,8498);
 const schoolRename=explanationById.get('official-79-advanced-40');
 assert(schoolRename.explanation.includes('1941년')&&schoolRename.explanation.includes('소학교')&&schoolRename.explanation.includes('국민학교'));
 assert(!schoolRename.explanation.includes('1996년')&&!schoolRename.explanation.includes("'국민학교' 명칭이 '초등학교'"));
@@ -243,9 +243,9 @@ assert.equal(explanationPayload.qa.choiceJudgmentAnswerTablePhraseCount,0);
 assert.equal(explanationPayload.qa.choiceSummaryJudgmentDuplicateCount,0);
 assert.equal(explanationPayload.qa.allAcceptedChoiceQuestionCount,1);
 assert.equal(explanationPayload.qa.qaDeferredCount,explanationPayload.qa.dataReviewRequiredQuestionCount);
-assert.equal(Object.values(explanationPayload.qa.choiceVerificationStatusCounts).reduce((sum,count)=>sum+count,0),8350);
+assert.equal(Object.values(explanationPayload.qa.choiceVerificationStatusCounts).reduce((sum,count)=>sum+count,0),8600);
 assert.equal(explanationPayload.qa.choiceVerificationStatusCounts.CURATED_VERIFIED,curatedChoiceCount);
-assert.equal(explanationPayload.qa.choiceVerificationStatusCounts.CURATED_REVIEWED,8326);
+assert.equal(explanationPayload.qa.choiceVerificationStatusCounts.CURATED_REVIEWED,8576);
 assert(curatedChoiceCorrections.length>=3);
 assert(curatedChoiceCount>=14);
 for(const correction of curatedChoiceCorrections){
@@ -288,10 +288,10 @@ assert.equal(inventory.schemaVersion,2);
 assert.deepEqual(inventory.imagePipeline,{
   revision:'official-exam-hq-v3-240dpi-q80',format:'webp',detectionDpi:120,detailDpi:240,
   detailQuality:80,thumbnailWidth:320,thumbnailQuality:68,
-  detailImageCount:1800,thumbnailImageCount:1800,
+  detailImageCount:1850,thumbnailImageCount:1850,
   detailImageBytes:catalog.reduce((sum,item)=>sum+item.detailImageBytes,0),
   thumbnailImageBytes:catalog.reduce((sum,item)=>sum+item.thumbnailImageBytes,0),
-  cropValidationPassedCount:1800,
+  cropValidationPassedCount:1850,
 });
 for(const id of ['official-57-advanced-06','official-57-advanced-07','official-71-basic-04','official-71-basic-05']){
   const item=catalog.find(record=>record.officialQuestionId===id);
@@ -346,4 +346,4 @@ for(const entry of copy('globalThis.OFFICIAL_EXAM_CATALOG')){
 const runtimeFixed=copy("globalThis.OFFICIAL_EXAM_CATALOG.find(entry=>entry.sourceRecord.officialQuestionId==='official-57-basic-20')");
 assert.equal(runtimeFixed.primaryEra,'goryeo');
 
-console.log('PASS: 1,800 canonical questions; 500 attached imports; no duplicate/missing keys; official answers, images, explanations, newest-first era order, round order, stable solved/wrong order, Story preservation, shared canonical explanations, and 57-basic-20 correction verified.');
+console.log('PASS: 1,850 canonical questions; 500 attached imports; no duplicate/missing keys; official answers, images, explanations, newest-first era order, round order, stable solved/wrong order, Story preservation, shared canonical explanations, and 57-basic-20 correction verified.');

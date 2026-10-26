@@ -11,7 +11,7 @@ const answerDisplay=question=>question.answerLabel==='없음'?'모든 선택지'
 const visibleExplanation=question=>/OCR 전사|추가 검수|추가 대조|검수 전까지|확정 사실로 사용하지/.test(question.explanation)?'원문 확인 중':question.explanation;
 
 const coverage=copy('globalThis.OFFICIAL_EXPLANATION_COVERAGE');
-assert.deepEqual(coverage,{total:1800,preexisting:0,restoredMappings:0,supplemented:1800,covered:1800,missing:0});
+assert.deepEqual(coverage,{total:1850,preexisting:0,restoredMappings:0,supplemented:1850,covered:1850,missing:0});
 const entries=copy('globalThis.OFFICIAL_EXAM_CATALOG');
 for(const entry of entries){
   const question=entryQuestion(entry.canonicalQuestionId);

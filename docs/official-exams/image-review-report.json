@@ -1630,9 +1630,9 @@
     "questions": []
   },
   "canonicalCoverage": {
-    "questionCount": 1800,
-    "choiceCount": 8350,
-    "fullyReviewedQuestionCount": 1800,
+    "questionCount": 1850,
+    "choiceCount": 8600,
+    "fullyReviewedQuestionCount": 1850,
     "remainingReviewQuestionCount": 0,
     "remainingReviewQuestionIds": []
   },

@@ -210,7 +210,7 @@ def write_asset(directory: Path, stem: str, image: np.ndarray) -> dict:
 
 
 def verify_payload(payload: dict) -> None:
-    if payload.get("schemaVersion") != 1 or len(payload.get("records", [])) != 1800:
+    if payload.get("schemaVersion") != 1 or len(payload.get("records", [])) != 1850:
         raise ValueError("choice media ledger is incomplete")
     for row in payload["records"]:
         assets = [row["contentImage"], *row.get("choiceMedia", [])]
@@ -312,7 +312,7 @@ def main() -> None:
             print(f"built {index}/{len(catalog)}; choice media {total_choice_assets}", flush=True)
 
     counts = {kind: sum(row["presentation"] == kind for row in records) for kind in ("text", "image", "mixed")}
-    if counts != {"text": 1687, "image": 105, "mixed": 8}:
+    if counts != {"text": 1735, "image": 107, "mixed": 8}:
         raise ValueError(f"review classification changed: {counts}")
     payload = {
         "schemaVersion": 1,

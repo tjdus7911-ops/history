@@ -1,19 +1,19 @@
 {
-  "generatedAt": "2026-10-13T09:18:33.038Z",
+  "generatedAt": "2026-10-26T04:59:18.385Z",
   "sourceFiles": [
     "dist/official-exam-catalog.json",
     "dist/official-exam-explanations.json"
   ],
   "totals": {
-    "catalogRows": 1800,
-    "uniqueOfficialQuestionIds": 1800,
+    "catalogRows": 1850,
+    "uniqueOfficialQuestionIds": 1850,
     "duplicateRows": 0,
-    "explanationRecords": 1800,
-    "ancientPrimaryEra": 362,
-    "ancientRelatedUnique": 488,
+    "explanationRecords": 1850,
+    "ancientPrimaryEra": 372,
+    "ancientRelatedUnique": 502,
     "basicRelated": 179,
-    "advancedRelated": 309,
-    "distinctRounds": 23
+    "advancedRelated": 323,
+    "distinctRounds": 24
   },
   "byTopic": {
     "proto-buyeo": {
@@ -52,10 +52,10 @@
     "proto-early-goguryeo": {
       "label": "초기 고구려",
       "season": "원삼국",
-      "count": 9,
+      "count": 10,
       "basic": 2,
-      "advanced": 7,
-      "rounds": 7,
+      "advanced": 8,
+      "rounds": 8,
       "ids": [
         "official-57-basic-05",
         "official-57-basic-06",
@@ -65,7 +65,8 @@
         "official-70-advanced-02",
         "official-71-advanced-03",
         "official-73-advanced-04",
-        "official-76-advanced-02"
+        "official-76-advanced-02",
+        "official-80-advanced-02"
       ]
     },
     "proto-okjeo": {
@@ -93,10 +94,10 @@
     "proto-dongye": {
       "label": "동예",
       "season": "원삼국",
-      "count": 20,
+      "count": 21,
       "basic": 5,
-      "advanced": 15,
-      "rounds": 16,
+      "advanced": 16,
+      "rounds": 17,
       "ids": [
         "official-57-basic-02",
         "official-57-advanced-03",
@@ -117,16 +118,17 @@
         "official-76-advanced-02",
         "official-77-advanced-03",
         "official-78-advanced-05",
-        "official-79-advanced-02"
+        "official-79-advanced-02",
+        "official-80-advanced-02"
       ]
     },
     "proto-samhan": {
       "label": "삼한",
       "season": "원삼국",
-      "count": 65,
+      "count": 69,
       "basic": 24,
-      "advanced": 41,
-      "rounds": 21,
+      "advanced": 45,
+      "rounds": 22,
       "ids": [
         "official-57-basic-17",
         "official-57-basic-23",
@@ -192,16 +194,20 @@
         "official-79-basic-39",
         "official-79-advanced-12",
         "official-79-advanced-19",
-        "official-79-advanced-30"
+        "official-79-advanced-30",
+        "official-80-advanced-02",
+        "official-80-advanced-07",
+        "official-80-advanced-08",
+        "official-80-advanced-25"
       ]
     },
     "three-goguryeo": {
       "label": "고구려",
       "season": "삼국",
-      "count": 147,
+      "count": 153,
       "basic": 49,
-      "advanced": 98,
-      "rounds": 23,
+      "advanced": 104,
+      "rounds": 24,
       "ids": [
         "official-57-basic-04",
         "official-57-basic-05",
@@ -349,16 +355,22 @@
         "official-79-basic-05",
         "official-79-basic-09",
         "official-79-advanced-03",
-        "official-79-advanced-07"
+        "official-79-advanced-07",
+        "official-80-advanced-02",
+        "official-80-advanced-05",
+        "official-80-advanced-07",
+        "official-80-advanced-09",
+        "official-80-advanced-13",
+        "official-80-advanced-26"
       ]
     },
     "three-baekje": {
       "label": "백제",
       "season": "삼국",
-      "count": 130,
+      "count": 136,
       "basic": 41,
-      "advanced": 89,
-      "rounds": 23,
+      "advanced": 95,
+      "rounds": 24,
       "ids": [
         "official-57-basic-05",
         "official-57-basic-09",
@@ -489,16 +501,22 @@
         "official-79-basic-08",
         "official-79-basic-18",
         "official-79-advanced-03",
-        "official-79-advanced-06"
+        "official-79-advanced-06",
+        "official-80-advanced-03",
+        "official-80-advanced-05",
+        "official-80-advanced-06",
+        "official-80-advanced-08",
+        "official-80-advanced-10",
+        "official-80-advanced-13"
       ]
     },
     "three-silla": {
       "label": "신라",
       "season": "삼국",
-      "count": 217,
+      "count": 227,
       "basic": 83,
-      "advanced": 134,
-      "rounds": 23,
+      "advanced": 144,
+      "rounds": 24,
       "ids": [
         "official-57-basic-04",
         "official-57-basic-05",
@@ -716,16 +734,26 @@
         "official-79-advanced-05",
         "official-79-advanced-08",
         "official-79-advanced-15",
-        "official-79-advanced-18"
+        "official-79-advanced-18",
+        "official-80-advanced-02",
+        "official-80-advanced-03",
+        "official-80-advanced-04",
+        "official-80-advanced-06",
+        "official-80-advanced-07",
+        "official-80-advanced-08",
+        "official-80-advanced-09",
+        "official-80-advanced-10",
+        "official-80-advanced-14",
+        "official-80-advanced-26"
       ]
     },
     "three-gaya": {
       "label": "가야",
       "season": "삼국",
-      "count": 58,
+      "count": 59,
       "basic": 25,
-      "advanced": 33,
-      "rounds": 21,
+      "advanced": 34,
+      "rounds": 22,
       "ids": [
         "official-57-basic-40",
         "official-58-basic-06",
@@ -784,16 +812,17 @@
         "official-79-basic-09",
         "official-79-basic-11",
         "official-79-advanced-04",
-        "official-79-advanced-22"
+        "official-79-advanced-22",
+        "official-80-advanced-25"
       ]
     },
     "unified-silla": {
       "label": "통일 신라",
       "season": "삼국",
-      "count": 80,
+      "count": 82,
       "basic": 26,
-      "advanced": 54,
-      "rounds": 22,
+      "advanced": 56,
+      "rounds": 23,
       "ids": [
         "official-57-basic-08",
         "official-57-advanced-08",
@@ -874,16 +903,18 @@
         "official-77-basic-11",
         "official-78-advanced-12",
         "official-79-basic-18",
-        "official-79-advanced-08"
+        "official-79-advanced-08",
+        "official-80-advanced-06",
+        "official-80-advanced-07"
       ]
     },
     "balhae": {
       "label": "발해",
       "season": "삼국",
-      "count": 131,
+      "count": 138,
       "basic": 41,
-      "advanced": 90,
-      "rounds": 23,
+      "advanced": 97,
+      "rounds": 24,
       "ids": [
         "official-57-basic-07",
         "official-57-basic-08",
@@ -1015,16 +1046,23 @@
         "official-79-basic-20",
         "official-79-advanced-07",
         "official-79-advanced-08",
-        "official-79-advanced-33"
+        "official-79-advanced-33",
+        "official-80-advanced-03",
+        "official-80-advanced-06",
+        "official-80-advanced-08",
+        "official-80-advanced-10",
+        "official-80-advanced-14",
+        "official-80-advanced-17",
+        "official-80-advanced-25"
       ]
     },
     "jang-bogo": {
       "label": "장보고·청해진",
       "season": "삼국",
-      "count": 20,
+      "count": 21,
       "basic": 5,
-      "advanced": 15,
-      "rounds": 16,
+      "advanced": 16,
+      "rounds": 17,
       "ids": [
         "official-58-basic-16",
         "official-59-advanced-08",
@@ -1045,22 +1083,23 @@
         "official-77-basic-48",
         "official-77-advanced-10",
         "official-78-advanced-12",
-        "official-79-advanced-10"
+        "official-79-advanced-10",
+        "official-80-advanced-07"
       ]
     }
   },
   "byType": {
-    "기타 사실 판단형": 62,
-    "문화유산·이미지형": 71,
-    "사료·자료형": 72,
-    "연표·순서형": 65,
-    "인물·업적형": 120,
-    "지도·지역형": 98
+    "기타 사실 판단형": 65,
+    "문화유산·이미지형": 73,
+    "사료·자료형": 76,
+    "연표·순서형": 66,
+    "인물·업적형": 123,
+    "지도·지역형": 99
   },
   "byDifficulty": {
     "기본": 179,
-    "심화-개념": 270,
-    "심화-복합": 39
+    "심화-개념": 283,
+    "심화-복합": 40
   },
   "namedFigures": {
     "주몽": 1,
@@ -1069,13 +1108,13 @@
     "광개토 대왕": 18,
     "장수왕": 14,
     "근초고왕": 11,
-    "무령왕": 16,
+    "무령왕": 17,
     "백제 성왕": 20,
     "의자왕": 6,
-    "계백": 12,
-    "지증왕": 11,
+    "계백": 13,
+    "지증왕": 12,
     "법흥왕": 11,
-    "진흥왕": 22,
+    "진흥왕": 23,
     "선덕 여왕": 6,
     "김춘추": 12,
     "김유신": 2,
@@ -1084,25 +1123,25 @@
     "대조영": 8,
     "발해 무왕": 6,
     "발해 문왕": 13,
-    "발해 선왕": 8,
+    "발해 선왕": 9,
     "원효": 5,
     "의상": 6,
     "혜초": 4,
-    "장보고": 15
+    "장보고": 16
   },
   "countries": {
     "부여": 23,
-    "초기 고구려": 9,
+    "초기 고구려": 10,
     "옥저": 12,
-    "동예": 20,
-    "삼한": 65,
-    "고구려": 147,
-    "백제": 130,
-    "신라": 217,
-    "가야": 58,
-    "통일 신라": 80,
-    "발해": 131,
-    "장보고·청해진": 20
+    "동예": 21,
+    "삼한": 69,
+    "고구려": 153,
+    "백제": 136,
+    "신라": 227,
+    "가야": 59,
+    "통일 신라": 82,
+    "발해": 138,
+    "장보고·청해진": 21
   },
   "classified": [
     {
@@ -7384,6 +7423,199 @@
       ],
       "questionType": "연표·순서형",
       "difficulty": "심화-복합"
+    },
+    {
+      "officialQuestionId": "official-80-advanced-02",
+      "examRound": 80,
+      "examLevel": "심화",
+      "questionNumber": 2,
+      "primaryEra": "ancient",
+      "topics": [
+        "proto-early-goguryeo",
+        "proto-dongye",
+        "proto-samhan",
+        "three-goguryeo",
+        "three-silla"
+      ],
+      "questionType": "인물·업적형",
+      "difficulty": "심화-개념"
+    },
+    {
+      "officialQuestionId": "official-80-advanced-03",
+      "examRound": 80,
+      "examLevel": "심화",
+      "questionNumber": 3,
+      "primaryEra": "ancient",
+      "topics": [
+        "three-baekje",
+        "three-silla",
+        "balhae"
+      ],
+      "questionType": "문화유산·이미지형",
+      "difficulty": "심화-개념"
+    },
+    {
+      "officialQuestionId": "official-80-advanced-04",
+      "examRound": 80,
+      "examLevel": "심화",
+      "questionNumber": 4,
+      "primaryEra": "ancient",
+      "topics": [
+        "three-silla"
+      ],
+      "questionType": "문화유산·이미지형",
+      "difficulty": "심화-개념"
+    },
+    {
+      "officialQuestionId": "official-80-advanced-05",
+      "examRound": 80,
+      "examLevel": "심화",
+      "questionNumber": 5,
+      "primaryEra": "ancient",
+      "topics": [
+        "three-goguryeo",
+        "three-baekje"
+      ],
+      "questionType": "사료·자료형",
+      "difficulty": "심화-개념"
+    },
+    {
+      "officialQuestionId": "official-80-advanced-06",
+      "examRound": 80,
+      "examLevel": "심화",
+      "questionNumber": 6,
+      "primaryEra": "ancient",
+      "topics": [
+        "three-baekje",
+        "three-silla",
+        "unified-silla",
+        "balhae"
+      ],
+      "questionType": "인물·업적형",
+      "difficulty": "심화-개념"
+    },
+    {
+      "officialQuestionId": "official-80-advanced-07",
+      "examRound": 80,
+      "examLevel": "심화",
+      "questionNumber": 7,
+      "primaryEra": "ancient",
+      "topics": [
+        "proto-samhan",
+        "three-goguryeo",
+        "three-silla",
+        "unified-silla",
+        "jang-bogo"
+      ],
+      "questionType": "기타 사실 판단형",
+      "difficulty": "심화-개념"
+    },
+    {
+      "officialQuestionId": "official-80-advanced-08",
+      "examRound": 80,
+      "examLevel": "심화",
+      "questionNumber": 8,
+      "primaryEra": "ancient",
+      "topics": [
+        "proto-samhan",
+        "three-baekje",
+        "three-silla",
+        "balhae"
+      ],
+      "questionType": "연표·순서형",
+      "difficulty": "심화-복합"
+    },
+    {
+      "officialQuestionId": "official-80-advanced-09",
+      "examRound": 80,
+      "examLevel": "심화",
+      "questionNumber": 9,
+      "primaryEra": "ancient",
+      "topics": [
+        "three-goguryeo",
+        "three-silla"
+      ],
+      "questionType": "사료·자료형",
+      "difficulty": "심화-개념"
+    },
+    {
+      "officialQuestionId": "official-80-advanced-10",
+      "examRound": 80,
+      "examLevel": "심화",
+      "questionNumber": 10,
+      "primaryEra": "ancient",
+      "topics": [
+        "three-baekje",
+        "three-silla",
+        "balhae"
+      ],
+      "questionType": "인물·업적형",
+      "difficulty": "심화-개념"
+    },
+    {
+      "officialQuestionId": "official-80-advanced-13",
+      "examRound": 80,
+      "examLevel": "심화",
+      "questionNumber": 13,
+      "primaryEra": "goryeo",
+      "topics": [
+        "three-goguryeo",
+        "three-baekje"
+      ],
+      "questionType": "지도·지역형",
+      "difficulty": "심화-개념"
+    },
+    {
+      "officialQuestionId": "official-80-advanced-14",
+      "examRound": 80,
+      "examLevel": "심화",
+      "questionNumber": 14,
+      "primaryEra": "goryeo",
+      "topics": [
+        "three-silla",
+        "balhae"
+      ],
+      "questionType": "기타 사실 판단형",
+      "difficulty": "심화-개념"
+    },
+    {
+      "officialQuestionId": "official-80-advanced-17",
+      "examRound": 80,
+      "examLevel": "심화",
+      "questionNumber": 17,
+      "primaryEra": "goryeo",
+      "topics": [
+        "balhae"
+      ],
+      "questionType": "사료·자료형",
+      "difficulty": "심화-개념"
+    },
+    {
+      "officialQuestionId": "official-80-advanced-25",
+      "examRound": 80,
+      "examLevel": "심화",
+      "questionNumber": 25,
+      "primaryEra": "joseon",
+      "topics": [
+        "proto-samhan",
+        "three-gaya",
+        "balhae"
+      ],
+      "questionType": "사료·자료형",
+      "difficulty": "심화-개념"
+    },
+    {
+      "officialQuestionId": "official-80-advanced-26",
+      "examRound": 80,
+      "examLevel": "심화",
+      "questionNumber": 26,
+      "primaryEra": "joseon",
+      "topics": [
+        "three-goguryeo",
+        "three-silla"
+      ],
+      "questionType": "기타 사실 판단형",
+      "difficulty": "심화-개념"
     }
   ]
 }

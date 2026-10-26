@@ -44,13 +44,15 @@
  }
  function restoreListScroll(){restorePageScroll(listScrollY);}
  function saveKeywords(){try{localStore.setItem(SAVE_KEY,JSON.stringify([...saved]))}catch{toast('저장 공간을 사용할 수 없어요.')}}
+ // 해설 끝의 '따라서 ②가 정답이며, ○○은 △△ 시대…'처럼 오답 선지를 다른 시대로 짚는 부분은 연결 근거에서 뺀다.
+ function coreExplanation(text){const value=String(text||'');const cut=value.search(/따라서\s*[①②③④⑤]?\s*[이가]?\s*정답/);return cut>0?value.slice(0,cut):value;}
  function directExamMatches(keyword){
   if(keyword.examIds?.length)return keyword.examIds;
   const terms=(keyword.examTerms||[]).map(norm).filter(Boolean),primaryEra=eraSource[keyword.eraId];
   const rows=[];
   for(const [id,record] of explanationById){
    const source=sourceById.get(id);if(!source||source.primaryEra!==primaryEra)continue;
-   const direct=norm([record.question,record.clue,record.correctChoice,record.explanation].join(' '));
+   const direct=norm([record.question,record.clue,record.correctChoice,coreExplanation(record.explanation)].join(' '));
    const hit=terms.reduce((score,term)=>score+(direct.includes(term)?1:0),0);if(!hit)continue;
    const specificity=Math.max(...terms.filter(term=>direct.includes(term)).map(term=>term.length),0);
    rows.push({id,score:hit*20+specificity+(record.curated?5:0),round:Number(source.examRound)||0,number:Number(source.questionNumber)||0});

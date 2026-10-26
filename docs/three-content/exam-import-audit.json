@@ -6,9 +6,9 @@
     "manuscript": "docs/three-content/complete-manuscript.md",
     "manuscriptSha256": "98b14d913fbf7cc19cc178bf0174ac1750cbebf3e3b29d72a196c6ef814cf3c3",
     "evidence": "docs/three-content/exam-source-evidence.json",
-    "evidenceSha256": "35233b31bb44e7b54d920b94d8d7ccd56b2db96053d59978b32065db970cdaa3",
+    "evidenceSha256": "48bc7aae80a3966949780fed881877d74405bcf30771cad25de4dab91396a9b6",
     "catalog": "dist/official-exam-catalog.json",
-    "catalogSha256": "8a9054219b3ecfd2db42a24e705b6470886abaea97a1284a10522ca13d36fbd7"
+    "catalogSha256": "bf97d9b0fc0e172fa2372e854176873cf9e7d867e87af79cc829566070a4299d"
   },
   "stats": {
     "mainScenes": 215,

@@ -165,7 +165,13 @@
   const wrongTabs=selected=>'<div class="r7-tabs" role="tablist" aria-label="오답 유형"><button role="tab" aria-selected="'+(selected==='official')+'" data-wrong-filter="official">기출 오답</button><button role="tab" aria-selected="'+(selected==='ox')+'" data-wrong-filter="ox">OX 오답</button></div>';
   study = function () {
     if(studyTab==='review'&&wrongFilter==='ox'&&!oxCurrentWrongIds('all').length)return '<section class="r7-page" data-figma-frame="O-09">'+header('오답노트')+wrongTabs('ox')+'<div class="r7-empty"><span class="r7-empty-icon">'+asset('empty-wrong')+'</span><h2>OX 오답이 없습니다</h2><p>퀴즈를 풀다 틀린 문제가 생기면 여기에 모여요.</p></div><button class="r7-primary" data-nav="ox">시대 골라 풀기</button><details class="r7-legacy"><summary>OX 복습 완료 이력</summary>'+studyBefore()+'</details></section>';
-    if (studyTab !== 'review' || wrongFilter === 'ox') return studyBefore(); // Populated O-07 intentionally unchanged.
+    if (studyTab === 'review' && wrongFilter === 'ox') {
+      // OX 오답도 기출 오답과 같은 머리말·탭을 쓰고, 기존 OX 복습 목록(O-07)은 그대로 둔다.
+      const legacy = studyBefore();
+      const body = legacy.replace(/^\s*<header class="ed-header">[\s\S]*?<\/header>\s*<div class="tabs v2-wrong-tabs">[\s\S]*?<\/div>/, '');
+      return body === legacy ? legacy : '<section class="r7-page r7-wrong r7-wrong-ox" data-figma-frame="O-07">' + header('오답노트') + wrongTabs('ox') + body + '</section>';
+    }
+    if (studyTab !== 'review') return studyBefore();
     if (!wrongEntries().length) return '<section class="r7-page r7-wrong" data-figma-frame="W-03">'+header('오답노트')+wrongTabs('official')+'<div class="r7-empty"><span class="r7-empty-icon">'+asset('empty-wrong')+'</span><h2>복습할 오답이 아직 없어요</h2><p>기출문제나 이야기 속 문제에서 틀린 문제가 여기에 모여요.</p></div><button class="r7-primary" data-nav="exam-library">기출문제 풀러 가기</button><button class="r7-secondary" data-nav="home">이야기 읽으러 가기</button><details class="r7-legacy"><summary>OX 오답과 학습 이력</summary>'+studyBefore()+'</details></section>';
     const all = wrongEntries().filter(row => wrongEra === 'all' || row.entry.primaryEra === wrongEra);
     const needed = all.filter(row => row.record.lastCorrect === false), completed = all.filter(row => row.record.lastCorrect === true);

@@ -5,7 +5,7 @@ const root=path.resolve(__dirname,'..');
 execFileSync(process.execPath,[path.join(root,'scripts/build-jokbo-people-stats.cjs'),'--check'],{stdio:'inherit'});
 require(path.join(root,'dist/jokbo-data.js'));require(path.join(root,'dist/jokbo-people.js'));require(path.join(root,'dist/jokbo-people-stats.js'));
 const P=globalThis.JOKBO_PEOPLE,S=globalThis.JOKBO_PEOPLE_STATS,eras=globalThis.JOKBO_DATA.eras.map(e=>e.id);
-assert.equal(S.examTotal,36,'기출 36회');
+assert.equal(S.examTotal,37,'기출 37회');
 assert.deepEqual(P.labels,{prehistoric:'인물',three:'왕·인물','north-south':'왕·인물',goryeo:'왕·인물',joseon:'왕·인물',opening:'인물',colonial:'인물',modern:'정부별'});
 assert(!P.labels.proto,'원삼국은 인물 탭 없음');
 const ids=new Set();
