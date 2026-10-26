@@ -1246,35 +1246,38 @@ html body:not(#rv8) #app .hv-dday.is-today .hv-dday-copy small { color: var(--rv
 html body:not(#rv8) #app .hv-dday.is-today .hv-dday-copy small { white-space: normal; overflow: visible; text-overflow: clip; word-break: keep-all; text-wrap: balance; line-height: 1.35; }
 
 /* 오답노트 · 시대별 취약점 분석 (weak-era-analysis.js) */
-html body:not(#rv8) #app .wea-panel { margin: 0 0 16px; padding: 16px; border: 1px solid #ECEEF1; border-radius: 16px; background: #fff; }
-html body:not(#rv8) #app .wea-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-html body:not(#rv8) #app .wea-head h2 { margin: 0; font-size: 17px; font-weight: 800; color: #1F2329; }
-html body:not(#rv8) #app .wea-all { border: 0; background: none; padding: 4px 0; font-size: 13px; font-weight: 700; color: var(--rv8-accent, #E9513B); }
-html body:not(#rv8) #app .wea-summary { margin: 8px 0 12px; font-size: 14px; line-height: 1.55; color: #4A515C; word-break: keep-all; }
-html body:not(#rv8) #app .wea-summary b { color: #1F2329; }
-html body:not(#rv8) #app .wea-legend { display: flex; gap: 14px; margin-bottom: 8px; font-size: 12px; color: #7A818C; }
-html body:not(#rv8) #app .wea-legend span { display: inline-flex; align-items: center; gap: 5px; }
-html body:not(#rv8) #app .wea-legend i { display: inline-block; width: 10px; height: 6px; border-radius: 3px; }
-html body:not(#rv8) #app .wea-acc { background: #2E9E6A; }
-html body:not(#rv8) #app .wea-wrong { background: var(--rv8-accent, #E9513B); }
-html body:not(#rv8) #app .wea-list { display: grid; gap: 6px; }
-html body:not(#rv8) #app .wea-row { display: grid; grid-template-columns: minmax(84px, 1fr) minmax(70px, 1.4fr) auto; align-items: center; gap: 10px; width: 100%; min-height: 52px; padding: 8px 10px; border: 1px solid #ECEEF1; border-radius: 12px; background: #FAFBFC; text-align: left; color: inherit; }
-html body:not(#rv8) #app .wea-row.is-selected { border-color: var(--rv8-accent, #E9513B); background: #FFF4F2; }
-html body:not(#rv8) #app .wea-row:disabled { opacity: .5; }
-html body:not(#rv8) #app .wea-name { display: grid; gap: 2px; min-width: 0; }
-html body:not(#rv8) #app .wea-name b { font-size: 14px; font-weight: 800; color: #1F2329; word-break: keep-all; }
-html body:not(#rv8) #app .wea-name em { font-style: normal; font-size: 11px; font-weight: 700; color: #7A818C; }
-html body:not(#rv8) #app .wea-row.is-weak .wea-name em { color: var(--rv8-accent, #E9513B); }
-html body:not(#rv8) #app .wea-row.is-good .wea-name em { color: #2E9E6A; }
-html body:not(#rv8) #app .wea-bars { display: grid; gap: 4px; }
-html body:not(#rv8) #app .wea-bars i { display: block; height: 6px; border-radius: 3px; }
-html body:not(#rv8) #app .wea-num { display: grid; justify-items: end; gap: 1px; }
-html body:not(#rv8) #app .wea-num b { font-size: 15px; font-weight: 800; color: #1F2329; }
-html body:not(#rv8) #app .wea-num small { font-size: 11px; color: #7A818C; white-space: nowrap; }
-html body:not(#rv8) #app .wea-focus { margin-top: 14px; padding-top: 12px; border-top: 1px solid #ECEEF1; }
-html body:not(#rv8) #app .wea-focus h3 { margin: 0 0 8px; font-size: 14px; font-weight: 800; color: #1F2329; }
+html body:not(#rv8) #app .wea-panel { margin: 4px 0 20px; padding: 18px 16px 14px; border-radius: 20px; background: #fff; box-shadow: 0 2px 12px rgba(31,35,41,.06); }
+html body:not(#rv8) #app .wea-title { margin: 0 0 12px; font-size: 16px; font-weight: 800; color: #1F2329; }
+html body:not(#rv8) #app .wea-hero { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border-radius: 16px; background: #F5F7F9; }
+html body:not(#rv8) #app .wea-hero.is-weak { background: #FFF1EE; }
+html body:not(#rv8) #app .wea-hero.is-good { background: #EEF8F2; }
+html body:not(#rv8) #app .wea-hero-copy { display: grid; gap: 3px; min-width: 0; }
+html body:not(#rv8) #app .wea-hero-copy small { font-size: 12px; font-weight: 600; color: #6B7280; }
+html body:not(#rv8) #app .wea-hero-copy strong { font-size: 22px; line-height: 1.25; font-weight: 800; color: #1F2329; word-break: keep-all; }
+html body:not(#rv8) #app .wea-hero-copy span { font-size: 13px; color: #4A515C; }
+html body:not(#rv8) #app .wea-hero-copy em { font-style: normal; font-weight: 700; color: #6B7280; }
+html body:not(#rv8) #app .wea-hero.is-weak .wea-hero-copy em { color: var(--rv8-accent, #E9513B); }
+html body:not(#rv8) #app .wea-hero.is-good .wea-hero-copy em { color: #2E9E6A; }
+html body:not(#rv8) #app .wea-gauge { --wea-color: #9AA0A9; flex: 0 0 auto; display: grid; place-content: center; justify-items: center; width: 76px; height: 76px; border-radius: 50%; background: radial-gradient(closest-side, #fff 78%, transparent 80% 100%), conic-gradient(var(--wea-color) calc(var(--wea-acc) * 1%), #E4E7EB 0); }
+html body:not(#rv8) #app .wea-hero.is-weak .wea-gauge { --wea-color: var(--rv8-accent, #E9513B); }
+html body:not(#rv8) #app .wea-hero.is-good .wea-gauge { --wea-color: #2E9E6A; }
+html body:not(#rv8) #app .wea-gauge b { font-size: 19px; line-height: 1; font-weight: 800; color: #1F2329; }
+html body:not(#rv8) #app .wea-gauge b i { font-style: normal; font-size: 12px; margin-left: 1px; }
+html body:not(#rv8) #app .wea-gauge small { margin-top: 3px; font-size: 10px; color: #7A818C; }
+html body:not(#rv8) #app .wea-chips { display: flex; gap: 8px; margin: 14px -16px 0; padding: 2px 16px 4px; overflow-x: auto; scrollbar-width: none; }
+html body:not(#rv8) #app .wea-chips::-webkit-scrollbar { display: none; }
+html body:not(#rv8) #app .wea-chip { flex: 0 0 auto; display: grid; gap: 2px; min-width: 76px; padding: 9px 12px; border: 1px solid #E4E7EB; border-radius: 14px; background: #fff; text-align: left; color: #1F2329; }
+html body:not(#rv8) #app .wea-chip b { font-size: 13px; font-weight: 800; white-space: nowrap; }
+html body:not(#rv8) #app .wea-chip small { font-size: 11px; color: #7A818C; white-space: nowrap; }
+html body:not(#rv8) #app .wea-chip.is-weak small { color: var(--rv8-accent, #E9513B); font-weight: 700; }
+html body:not(#rv8) #app .wea-chip.is-selected { border-color: #1F2329; background: #1F2329; color: #fff; }
+html body:not(#rv8) #app .wea-chip.is-selected small { color: rgba(255,255,255,.8); }
+html body:not(#rv8) #app .wea-focus { display: flex; align-items: center; gap: 8px; margin-top: 12px; }
+html body:not(#rv8) #app .wea-focus h3 { flex: 0 0 auto; margin: 0; font-size: 12px; font-weight: 700; color: #6B7280; }
 html body:not(#rv8) #app .wea-topics { display: flex; flex-wrap: wrap; gap: 6px; }
-html body:not(#rv8) #app .wea-topic { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 6px 12px; border: 1px solid #F3C9C1; border-radius: 999px; background: #FFF4F2; font-size: 13px; font-weight: 700; color: #1F2329; word-break: keep-all; }
-html body:not(#rv8) #app .wea-topic em { font-style: normal; font-size: 12px; color: var(--rv8-accent, #E9513B); }
-html body:not(#rv8) #app .wea-hint { margin: 8px 0 0; font-size: 12px; color: #7A818C; }
-html body:not(#rv8) #app .wea-policy { display: block; margin-top: 10px; font-size: 11px; line-height: 1.5; color: #9AA0A9; word-break: keep-all; }
+html body:not(#rv8) #app .wea-topic { display: inline-flex; align-items: center; gap: 4px; min-height: 36px; padding: 7px 12px; border: 1px solid #F3C9C1; border-radius: 999px; background: #FFF6F4; color: #1F2329; }
+html body:not(#rv8) #app .wea-topic span { font-size: 13px; font-weight: 700; white-space: nowrap; }
+html body:not(#rv8) #app .wea-topic small { display: none; }
+html body:not(#rv8) #app .wea-topic span::after { content: ' ›'; color: var(--rv8-accent, #E9513B); }
+html body:not(#rv8) #app .wea-policy { margin: 12px 0 0; font-size: 11px; color: #9AA0A9; }
+html body:not(#rv8) #app .wea-list-head { margin: 4px 0 10px; font-size: 16px; font-weight: 800; color: #1F2329; }

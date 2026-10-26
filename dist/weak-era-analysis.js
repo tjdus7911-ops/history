@@ -8,6 +8,7 @@
   const A = globalThis.OFFICIAL_LEARNING_ANALYSIS;
   const JOKBO_ERA = { prehistoric: 'ancient', proto: 'ancient', three: 'ancient', 'north-south': 'ancient', goryeo: 'goryeo', joseon: 'joseon', opening: 'empire', colonial: 'occupation', modern: 'republic' };
   const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+  const GENERIC = new Set(['정치', '경제', '사회', '문화', '생활', '도구', '풍습', '제도', '특징', '대외', '건국', '통치']);
   const norm = (value) => String(value || '').normalize('NFKC').replace(/\s+/g, '').toLowerCase();
 
   let coreById = null;
@@ -71,52 +72,38 @@
     const policy = A.policy;
     const weakest = rows.find((r) => r.weak) || rows.filter((r) => r.eligible && r.accuracy !== null).sort((a, b) => a.accuracy - b.accuracy)[0];
     const mostWrong = solvedRows.slice().sort((a, b) => b.wrong - a.wrong || b.wrongCount - a.wrongCount)[0];
-    let summary;
-    if (weakest && weakest.weak) summary = '가장 보완이 필요한 시대는 <b>' + escapeHtml(weakest.name) + '</b>예요. 최근 정답률 ' + weakest.accuracy + '%로 목표 ' + policy.targetAccuracy + '%보다 낮아요.';
-    else if (weakest) summary = '모든 시대가 목표 정답률 ' + policy.targetAccuracy + '% 이상이에요. 상대적으로 낮은 시대는 <b>' + escapeHtml(weakest.name) + '</b>(' + weakest.accuracy + '%)예요.';
-    else summary = '시대마다 ' + policy.minimumUniqueQuestions + '문항 이상 풀면 취약한 시대를 정확히 알려 드려요.';
-    if (mostWrong && mostWrong.wrong) summary += '<br>오답이 가장 많은 시대: <b>' + escapeHtml(mostWrong.name) + '</b> ' + mostWrong.wrong + '문항';
+    const ordered = solvedRows.slice().sort((a, b) => Number(b.weak) - Number(a.weak) || (a.accuracy ?? 101) - (b.accuracy ?? 101) || a.index - b.index);
+    const focusRow = (wrongEra !== 'all' && rows.find((r) => r.id === wrongEra && r.solved)) || weakest || mostWrong || ordered[0];
+    const [focusLabel, focusTone] = badge(focusRow);
+    const acc = focusRow.accuracy;
+    const caption = weakest && weakest.weak && focusRow.id === weakest.id ? '가장 보완이 필요한 시대' : wrongEra !== 'all' ? '선택한 시대' : weakest && weakest.weak ? '가장 보완이 필요한 시대' : weakest ? '정답률이 가장 낮은 시대' : '가장 많이 틀린 시대';
+    const hero = '<div class="wea-hero ' + focusTone + '">'
+      + '<div class="wea-hero-copy"><small>' + caption + '</small><strong>' + escapeHtml(focusRow.name) + '</strong>'
+      + '<span>오답 ' + focusRow.wrong + '문항' + (focusRow.repeatedWrong ? ' · 반복 ' + focusRow.repeatedWrong + '회' : '') + ' · <em>' + focusLabel + '</em></span></div>'
+      + '<div class="wea-gauge" style="--wea-acc:' + (acc || 0) + '" role="img" aria-label="최근 정답률 ' + (acc === null ? '기록 없음' : acc + '%') + '"><b>' + (acc === null ? '—' : acc + '<i>%</i>') + '</b><small>정답률</small></div></div>';
 
-    const ordered = rows.slice().sort((a, b) => Number(!!b.solved) - Number(!!a.solved) || Number(b.weak) - Number(a.weak) || (a.accuracy ?? 101) - (b.accuracy ?? 101) || a.index - b.index);
-    const maxWrong = Math.max(1, ...rows.map((r) => r.wrong));
-    const list = ordered.map((r) => {
-      const [label, tone] = badge(r);
-      const selected = wrongEra === r.id;
-      return '<button type="button" class="wea-row ' + tone + (selected ? ' is-selected' : '') + '" data-wea-era="' + r.id + '" aria-pressed="' + selected + '"' + (r.solved ? '' : ' disabled') + '>'
-        + '<span class="wea-name"><b>' + escapeHtml(r.name) + '</b><em>' + label + '</em></span>'
-        + '<span class="wea-bars" aria-hidden="true"><i class="wea-acc" style="width:' + (r.accuracy || 0) + '%"></i><i class="wea-wrong" style="width:' + Math.round((r.wrong / maxWrong) * 100) + '%"></i></span>'
-        + '<span class="wea-num"><b>' + (r.accuracy === null ? '—' : r.accuracy + '%') + '</b><small>오답 ' + r.wrong + (r.repeatedWrong ? ' · 반복 ' + r.repeatedWrong : '') + '</small></span>'
-        + '</button>';
-    }).join('');
+    const chip = (id, name, sub, tone, selected) => '<button type="button" class="wea-chip ' + tone + (selected ? ' is-selected' : '') + '" data-wea-era="' + id + '" aria-pressed="' + selected + '"><b>' + escapeHtml(name) + '</b><small>' + sub + '</small></button>';
+    const chips = chip('all', '전체', '오답 ' + rows.reduce((n, r) => n + r.wrong, 0), 'is-all', wrongEra === 'all')
+      + ordered.map((r) => chip(r.id, r.name, (r.accuracy === null ? '—' : r.accuracy + '%') + ' · 오답 ' + r.wrong, badge(r)[1], wrongEra === r.id)).join('');
 
-    // 자주 틀린 개념: 선택한 시대, 없으면 가장 약한(또는 오답이 많은) 시대
-    const focusId = wrongEra !== 'all' ? wrongEra : (weakest && weakest.wrong ? weakest.id : mostWrong?.wrong ? mostWrong.id : null);
-    let focus = '';
-    if (focusId) {
-      const focusRow = rows.find((r) => r.id === focusId);
-      const counts = new Map();
-      for (const { entry, record } of wrongEntries()) {
-        if (entry.primaryEra !== focusId) continue;
-        const topic = topicOf(entry);
-        if (!topic) continue;
-        const item = counts.get(topic.id) || { topic, questions: 0, misses: 0 };
-        item.questions += 1; item.misses += record.wrongCount;
-        counts.set(topic.id, item);
-      }
-      const top = [...counts.values()].sort((a, b) => b.questions - a.questions || b.misses - a.misses).slice(0, 4);
-      focus = '<div class="wea-focus"><h3>' + escapeHtml(focusRow?.name || '') + '에서 자주 틀린 개념</h3>'
-        + (top.length
-          ? '<div class="wea-topics">' + top.map((t) => '<button type="button" class="wea-topic" data-wea-jokbo="' + escapeHtml(t.topic.id) + '"><span>' + escapeHtml(t.topic.group ? t.topic.group + ' · ' + t.topic.label : t.topic.label) + '</span><em>' + t.questions + '문항</em></button>').join('') + '</div><p class="wea-hint">개념을 누르면 족보에서 핵심 내용을 바로 볼 수 있어요.</p>'
-          : '<p class="wea-hint">이 시대에서 아직 틀린 문제가 없어요.</p>')
-        + '</div>';
+    const counts = new Map();
+    for (const { entry, record } of wrongEntries()) {
+      if (entry.primaryEra !== focusRow.id) continue;
+      const topic = topicOf(entry);
+      if (!topic) continue;
+      const item = counts.get(topic.id) || { topic, questions: 0, misses: 0 };
+      item.questions += 1; item.misses += record.wrongCount;
+      counts.set(topic.id, item);
     }
+    const top = [...counts.values()].sort((a, b) => b.questions - a.questions || b.misses - a.misses).slice(0, 3);
+    const topics = top.length
+      ? '<div class="wea-focus"><h3>자주 틀린<br>개념</h3><div class="wea-topics">' + top.map((t) => '<button type="button" class="wea-topic" data-wea-jokbo="' + escapeHtml(t.topic.id) + '"><span>' + escapeHtml(GENERIC.has(t.topic.label) && t.topic.group ? t.topic.group.replace(/\s*시대$/, '') + ' ' + t.topic.label : t.topic.label) + '</span><small>' + escapeHtml(t.topic.group) + '</small></button>').join('') + '</div></div>'
+      : '';
 
-    return '<section class="wea-panel" aria-labelledby="wea-title"><div class="wea-head"><h2 id="wea-title">시대별 취약점 분석</h2>'
-      + (wrongEra !== 'all' ? '<button type="button" class="wea-all" data-wea-era="all">전체 시대 보기</button>' : '') + '</div>'
-      + '<p class="wea-summary">' + summary + '</p>'
-      + '<div class="wea-legend" aria-hidden="true"><span><i class="wea-acc"></i>최근 정답률</span><span><i class="wea-wrong"></i>복습할 오답 수</span></div>'
-      + '<div class="wea-list">' + list + '</div>' + focus
-      + '<small class="wea-policy">시대별 ' + policy.minimumUniqueQuestions + '문항 이상 풀고 정답률이 ' + policy.targetAccuracy + '% 미만이면 집중 복습으로 표시해요. 시대를 누르면 아래 오답 목록이 그 시대만 보여요.</small></section>';
+    return '<section class="wea-panel" aria-labelledby="wea-title"><h2 id="wea-title" class="wea-title">시대별 취약점</h2>' + hero
+      + '<div class="wea-chips" role="group" aria-label="시대 선택">' + chips + '</div>' + topics
+      + '<p class="wea-policy">시대별 ' + policy.minimumUniqueQuestions + '문항 이상 · 정답률 ' + policy.targetAccuracy + '% 미만이면 집중 복습</p></section>'
+      + '<h2 class="wea-list-head">' + (wrongEra === 'all' ? '전체' : escapeHtml(rows.find((r) => r.id === wrongEra)?.name || '')) + ' 오답 목록</h2>';
   }
 
   const previousStudy = study;
