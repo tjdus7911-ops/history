@@ -1244,3 +1244,37 @@ html body:not(#rv8) #app .r7-sheet h2, html body:not(#rv8) #app .r7-sheet p { wo
 /* 시험 당일 D-day 응원 문구 */
 html body:not(#rv8) #app .hv-dday.is-today .hv-dday-copy small { color: var(--rv8-accent, #E9513B); font-weight: 800; }
 html body:not(#rv8) #app .hv-dday.is-today .hv-dday-copy small { white-space: normal; overflow: visible; text-overflow: clip; word-break: keep-all; text-wrap: balance; line-height: 1.35; }
+
+/* 오답노트 · 시대별 취약점 분석 (weak-era-analysis.js) */
+html body:not(#rv8) #app .wea-panel { margin: 0 0 16px; padding: 16px; border: 1px solid #ECEEF1; border-radius: 16px; background: #fff; }
+html body:not(#rv8) #app .wea-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+html body:not(#rv8) #app .wea-head h2 { margin: 0; font-size: 17px; font-weight: 800; color: #1F2329; }
+html body:not(#rv8) #app .wea-all { border: 0; background: none; padding: 4px 0; font-size: 13px; font-weight: 700; color: var(--rv8-accent, #E9513B); }
+html body:not(#rv8) #app .wea-summary { margin: 8px 0 12px; font-size: 14px; line-height: 1.55; color: #4A515C; word-break: keep-all; }
+html body:not(#rv8) #app .wea-summary b { color: #1F2329; }
+html body:not(#rv8) #app .wea-legend { display: flex; gap: 14px; margin-bottom: 8px; font-size: 12px; color: #7A818C; }
+html body:not(#rv8) #app .wea-legend span { display: inline-flex; align-items: center; gap: 5px; }
+html body:not(#rv8) #app .wea-legend i { display: inline-block; width: 10px; height: 6px; border-radius: 3px; }
+html body:not(#rv8) #app .wea-acc { background: #2E9E6A; }
+html body:not(#rv8) #app .wea-wrong { background: var(--rv8-accent, #E9513B); }
+html body:not(#rv8) #app .wea-list { display: grid; gap: 6px; }
+html body:not(#rv8) #app .wea-row { display: grid; grid-template-columns: minmax(84px, 1fr) minmax(70px, 1.4fr) auto; align-items: center; gap: 10px; width: 100%; min-height: 52px; padding: 8px 10px; border: 1px solid #ECEEF1; border-radius: 12px; background: #FAFBFC; text-align: left; color: inherit; }
+html body:not(#rv8) #app .wea-row.is-selected { border-color: var(--rv8-accent, #E9513B); background: #FFF4F2; }
+html body:not(#rv8) #app .wea-row:disabled { opacity: .5; }
+html body:not(#rv8) #app .wea-name { display: grid; gap: 2px; min-width: 0; }
+html body:not(#rv8) #app .wea-name b { font-size: 14px; font-weight: 800; color: #1F2329; word-break: keep-all; }
+html body:not(#rv8) #app .wea-name em { font-style: normal; font-size: 11px; font-weight: 700; color: #7A818C; }
+html body:not(#rv8) #app .wea-row.is-weak .wea-name em { color: var(--rv8-accent, #E9513B); }
+html body:not(#rv8) #app .wea-row.is-good .wea-name em { color: #2E9E6A; }
+html body:not(#rv8) #app .wea-bars { display: grid; gap: 4px; }
+html body:not(#rv8) #app .wea-bars i { display: block; height: 6px; border-radius: 3px; }
+html body:not(#rv8) #app .wea-num { display: grid; justify-items: end; gap: 1px; }
+html body:not(#rv8) #app .wea-num b { font-size: 15px; font-weight: 800; color: #1F2329; }
+html body:not(#rv8) #app .wea-num small { font-size: 11px; color: #7A818C; white-space: nowrap; }
+html body:not(#rv8) #app .wea-focus { margin-top: 14px; padding-top: 12px; border-top: 1px solid #ECEEF1; }
+html body:not(#rv8) #app .wea-focus h3 { margin: 0 0 8px; font-size: 14px; font-weight: 800; color: #1F2329; }
+html body:not(#rv8) #app .wea-topics { display: flex; flex-wrap: wrap; gap: 6px; }
+html body:not(#rv8) #app .wea-topic { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 6px 12px; border: 1px solid #F3C9C1; border-radius: 999px; background: #FFF4F2; font-size: 13px; font-weight: 700; color: #1F2329; word-break: keep-all; }
+html body:not(#rv8) #app .wea-topic em { font-style: normal; font-size: 12px; color: var(--rv8-accent, #E9513B); }
+html body:not(#rv8) #app .wea-hint { margin: 8px 0 0; font-size: 12px; color: #7A818C; }
+html body:not(#rv8) #app .wea-policy { display: block; margin-top: 10px; font-size: 11px; line-height: 1.5; color: #9AA0A9; word-break: keep-all; }
