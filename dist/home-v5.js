@@ -51,6 +51,7 @@
   const ddayLabelOf = (d) => {
     if (d.kind === 'unset') return '다음 시험 일정 공고 전이에요';
     if (d.kind === 'past') return '설정한 시험일이 지났어요';
+    if (d.kind === 'today') return '수험생 여러분, 시험 잘 보세요!';
     if (d.auto) return '제' + d.round + '회 한능검(' + (d.date.getMonth() + 1) + '.' + d.date.getDate() + ')까지';
     return '한능검 시험일까지';
   };
@@ -274,7 +275,7 @@
     const ddayLabel = ddayLabelOf(d);
     const ddayValue = d.kind === 'unset' ? '직접 정해 보세요' : d.kind === 'past' ? '다시 설정해 주세요' : dday;
     const ddayAction = d.kind === 'set' || d.kind === 'today' ? '시험일 변경' : '설정하기';
-    const exam = '<div class="hv-dday hv-metric-exam' + (d.kind === 'set' || d.kind === 'today' ? ' is-set' : '') + '"><span class="hv-dday-art">' + illustrations.calendar + '</span>'
+    const exam = '<div class="hv-dday hv-metric-exam' + (d.kind === 'set' || d.kind === 'today' ? ' is-set' : '') + (d.kind === 'today' ? ' is-today' : '') + '"><span class="hv-dday-art">' + illustrations.calendar + '</span>'
       + '<span class="hv-dday-copy"><small>' + ddayLabel + '</small><b>' + ddayValue + '</b></span>'
       + '<button type="button" class="hv-dday-action" data-hv-exam-open title="시험일 설정 또는 변경" aria-label="시험일 ' + (dateValue ? '변경' : '설정') + ' · 남은 시험일 ' + dday + '">' + ddayAction + '</button></div>';
     const metrics = '<div class="hv-metrics">' + cell('streak', '연속 학습', s.streak, '일') + cell('today', '오늘 푼 문제', s.todayCount, '문항')
@@ -290,7 +291,7 @@
     const label = ddayLabelOf(d);
     const value = d.kind === 'unset' ? '직접 정해 보세요' : d.kind === 'past' ? '다시 설정해 주세요' : dday;
     const set = d.kind === 'set' || d.kind === 'today';
-    return '<div class="hv-dday hv-metric-exam' + (set ? ' is-set' : '') + '"><span class="hv-dday-art">' + illustrations.calendar + '</span>'
+    return '<div class="hv-dday hv-metric-exam' + (set ? ' is-set' : '') + (d.kind === 'today' ? ' is-today' : '') + '"><span class="hv-dday-art">' + illustrations.calendar + '</span>'
       + '<span class="hv-dday-copy"><small>' + label + '</small><b>' + value + '</b></span>'
       + '<button type="button" class="hv-dday-action" data-hv-exam-open title="시험일 설정 또는 변경" aria-label="시험일 ' + (d.date ? '변경' : '설정') + ' · 남은 시험일 ' + dday + '">' + (set ? '시험일 변경' : '설정하기') + '</button></div>';
   }

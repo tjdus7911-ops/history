@@ -1240,3 +1240,7 @@ html body:not(#rv8) #app .r7-sheet h2, html body:not(#rv8) #app .r7-sheet p { wo
   html body:not(#rv8) #app .hv .hv-era.is-soon .hv-era-btn { background: rgba(255, 255, 255, .72); color: var(--rv8-muted); box-shadow: none; }
   html body:not(#rv8) #app .hv .hv-era.is-soon .hv-card-art { filter: grayscale(.25); opacity: 1; }
 }
+
+/* 시험 당일 D-day 응원 문구 */
+html body:not(#rv8) #app .hv-dday.is-today .hv-dday-copy small { color: var(--rv8-accent, #E9513B); font-weight: 800; }
+html body:not(#rv8) #app .hv-dday.is-today .hv-dday-copy small { white-space: normal; overflow: visible; text-overflow: clip; word-break: keep-all; text-wrap: balance; line-height: 1.35; }
