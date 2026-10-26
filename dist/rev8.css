@@ -1236,7 +1236,7 @@ html body:not(#rv8) #app .r7-sheet h2, html body:not(#rv8) #app .r7-sheet p { wo
   html body:not(#rv8) #app .hv .hv-era .hv-progress i { background: #fff; }
   html body:not(#rv8) #app .hv .hv-era .hv-progress-label { color: #fff; }
   html body:not(#rv8) #app .hv .hv-era .hv-era-body > :nth-last-child(2) { margin-bottom: 10px; }
-  html body:not(#rv8) #app .hv .hv-era .hv-era-btn { height: 42px; min-height: 42px; margin: 0; border-radius: var(--rv8-r-full); background: var(--rv8-accent); color: #fff; font-size: 14px; font-weight: 700; box-shadow: 0 6px 16px rgba(233, 81, 59, .35); }
+  html body:not(#rv8) #app .hv .hv-era .hv-era-btn { height: 42px; min-height: 42px; margin: 0; border-radius: var(--rv8-r-full); background: #fff; color: var(--rv8-accent); font-size: 14px; font-weight: 800; box-shadow: 0 6px 16px rgba(14, 20, 28, .18); }
   html body:not(#rv8) #app .hv .hv-era.is-soon .hv-era-btn { background: rgba(255, 255, 255, .72); color: var(--rv8-muted); box-shadow: none; }
   html body:not(#rv8) #app .hv .hv-era.is-soon .hv-card-art { filter: grayscale(.25); opacity: 1; }
 }
