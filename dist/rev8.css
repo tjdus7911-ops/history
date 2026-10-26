@@ -1286,3 +1286,8 @@ html body:not(#rv8) #app .practice-pill { background: #F2F4F6; color: #4A515C; b
 }
 /* D-day 라벨(예: 제81회 한능검(11.28)까지)이 좁은 화면에서 말줄임으로 잘리지 않게 두 줄까지 허용 */
 html body:not(#rv8) #app .hv-dday .hv-dday-copy small { white-space: normal; overflow: visible; text-overflow: clip; word-break: keep-all; text-wrap: balance; line-height: 1.35; }
+/* OX 오답: 기출 오답과 같은 머리말·탭, 복습 카드 안쪽 여백 */
+html body:not(#rv8) #app .r7-wrong-ox .ox-review-section { margin: 4px 0 16px; padding: 18px 16px 16px; border: 0; border-radius: 20px; background: #fff; box-shadow: 0 2px 12px rgba(31,35,41,.06); }
+html body:not(#rv8) #app .r7-wrong-ox .ox-review-heading h2 { margin: 0 0 4px; font-size: 17px; font-weight: 800; }
+html body:not(#rv8) #app .r7-wrong-ox .ox-review-heading p { margin: 0 0 12px; font-size: 12px; color: #7A818C; word-break: keep-all; }
+html body:not(#rv8) #app .r7-wrong-ox .ox-review-section :is(b, strong, h3, p, span) { word-break: keep-all; overflow-wrap: break-word; }
