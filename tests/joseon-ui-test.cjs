@@ -33,7 +33,7 @@ assert.equal(run("libraryStatus('joseon')"),'UNLOCKED');
 const joseonOfficialCount=run("OFFICIAL_EXAM_CATALOG.filter(entry=>entry.primaryEra==='joseon').length");
 assert(joseonOfficialCount>=260);
 assert.equal(run("libraryEntries('joseon').length"),joseonOfficialCount);
-assert.equal(run('EXAM_LIBRARY_ENTRIES.length'),1800);
+assert.equal(run('EXAM_LIBRARY_ENTRIES.length'),1850);
 
 const originalRun=run('JSON.stringify(state.run)');
 click({eraOpen:'joseon'});

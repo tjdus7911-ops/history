@@ -460,6 +460,13 @@
       "examLevel": "기본",
       "reason": "공식 회차별 결과 보도자료 원문을 확보하지 못해 수치를 표시하지 않음",
       "verificationStatus": "SOURCE_NOT_FOUND"
+    },
+    {
+      "key": "80-advanced",
+      "examRound": 80,
+      "examLevel": "심화",
+      "reason": "2026-10-17 시행 회차로 공식 결과 보도자료가 아직 발표되지 않아 수치를 표시하지 않음",
+      "verificationStatus": "RESULT_NOT_ANNOUNCED"
     }
   ]
 }

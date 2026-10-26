@@ -50,6 +50,11 @@ HEADING_LAYOUT_HINTS = {
     (57, "심화", 7): (2, "right"),
     (71, "기본", 5): (2, "left"),
 }
+# 80회 심화 21번은 20번 지문 안의 '[해설]' 줄이 문항 번호로 잘못 잡혀 20번 선지가 21번에
+# 붙었다. 19번과 같은 높이(같은 페이지 왼쪽 단)에 인쇄된 실제 번호 위치로 고정한다.
+MANUAL_HEADING_TOP_RATIOS = {
+    (80, "심화", 21): 0.5738,
+}
 KNOWN_CROP_REGRESSIONS = {
     "official-57-advanced-06",
     "official-57-advanced-07",
@@ -96,6 +101,7 @@ EXAMS = [
     (78, 2026, "심화", "78회 한국사_문제지(심화).pdf", "78회 한국사_답지(심화).pdf"),
     (79, 2026, "기본", "79회 한국사_문제지(기본).pdf", "79회 한국사_답지(기본).pdf"),
     (79, 2026, "심화", "79회 한국사_문제지(심화).pdf", "79회 한국사_답지(심화).pdf"),
+    (80, 2026, "심화", "80회 한국사_문제지(심화).pdf", "80회 한국사_답지(심화).pdf"),
 ]
 
 DUPLICATE_FILES = [
@@ -582,6 +588,12 @@ def validate_crop(crop: Image.Image, page: Image.Image, question_id: str, locati
     }
 
 
+# 번호 구간 기본값과 실제 출제 시대가 다른 문항(문항 내용 검토로 확정).
+SOURCE_ERA_OVERRIDES = {
+    (80, "심화"): {18: "goryeo", 19: "goryeo", 35: "occupation", 44: "republic", 45: "republic"},
+}
+
+
 def source_era(question_number: int) -> str:
     if question_number <= 10:
         return "ancient"
@@ -856,6 +868,13 @@ def build_exam(source_dir: Path, poppler_bin: Path, item: tuple, output_images: 
         for entry in located:
             per_page.setdefault(entry["pageIndex"] + 1, []).append((entry["column"], entry["top"]))
         raise ValueError(f"{question_name}: detected {len(located)} question headings, expected 50: {per_page}")
+    for location in located:
+        ratio = MANUAL_HEADING_TOP_RATIOS.get((round_no, level, location["questionNumber"]))
+        if ratio is not None:
+            span = location["bottom"] - location["top"]
+            location["top"] = round(location["page"].height * ratio)
+            location["bottom"] = location["top"] + span
+            location["headingVerification"] = "manual_layout_review"
     validate_question_locations(located, question_name)
 
     detail_pages = []
@@ -938,7 +957,7 @@ def build_exam(source_dir: Path, poppler_bin: Path, item: tuple, output_images: 
                 "cropValidation": crop_validation,
             }
         answer = answers[number]
-        era = source_era(number)
+        era = SOURCE_ERA_OVERRIDES.get((round_no, level), {}).get(number) or source_era(number)
         record = {
             "officialQuestionId": question_id,
             "examRound": round_no,

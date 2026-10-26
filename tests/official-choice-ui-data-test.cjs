@@ -12,17 +12,17 @@ const correctionById=new Map(corrections.records.map(record=>[record.officialQue
 
 assert.equal(choices.schemaVersion,3);
 assert.equal(choices.answerDataIncluded,false);
-assert.equal(choices.canonicalQuestionCount,1800);
-assert.equal(choices.canonicalChoiceCount,8350);
+assert.equal(choices.canonicalQuestionCount,1850);
+assert.equal(choices.canonicalChoiceCount,8600);
 assert.equal(choices.records.length,catalog.length);
-assert.equal(media.canonicalQuestionCount,1800);
-assert.equal(media.contentImageAssetCount,1800);
-assert.equal(media.choiceMediaAssetCount,498);
-assert.deepEqual(media.presentationCounts,{text:1687,image:105,mixed:8});
-assert.equal(media.records.length,1800);
-assert.equal(audit.auditedQuestionCount,1800);
-assert.equal(audit.sourceHashMatchedQuestionCount,1800);
-assert.equal(audit.freshOcrQuestionCount,1800);
+assert.equal(media.canonicalQuestionCount,1850);
+assert.equal(media.contentImageAssetCount,1850);
+assert.equal(media.choiceMediaAssetCount,508);
+assert.deepEqual(media.presentationCounts,{text:1735,image:107,mixed:8});
+assert.equal(media.records.length,1850);
+assert.equal(audit.auditedQuestionCount,1850);
+assert.equal(audit.sourceHashMatchedQuestionCount,1850);
+assert.equal(audit.freshOcrQuestionCount+(audit.pdfTextLayerQuestionCount||0),1850);
 assert.equal(audit.unverifiedQuestionCount,0);
 assert.equal(audit.sourceTextCorrectionQuestionCount,corrections.records.length);
 assert.equal(audit.imageChoiceProseSuppressedQuestionCount,media.presentationCounts.image);
@@ -51,7 +51,7 @@ for(const [index,record] of choices.records.entries()){
  assert.equal(visual.sourceDetailSha256,source.detailImageSha256);
  choiceCount+=record.choices.length;
 }
-assert.equal(choiceCount,8350);
+assert.equal(choiceCount,8600);
 assert.deepEqual(choices.records.find(record=>record.officialQuestionId==='official-79-advanced-17').choices,['(가)','(나)','(다)','(라)','(마)']);
 assert(choices.records.filter(record=>record.choicePresentation==='image').every(record=>record.choices.every(choice=>choice==='')),'pure image choices must not leak explanatory identity prose before grading');
 
@@ -68,4 +68,4 @@ assert(ui.includes('const sourceChoices=OFFICIAL_CHOICE_UI_BY_SOURCE_ID.get(reco
 assert(v2.includes('v2OfficialQuestionImage')&&v2.includes("OFFICIAL_EXAM_UI?.imageOpen?.(q"),'wrong-note detail must reuse the question-only crop');
 for(const contract of ['min-height:64px','overflow-wrap:anywhere','.official-choice-label','.official-content-image'])assert(css.includes(contract),`missing choice UI CSS contract: ${contract}`);
 
-console.log('PASS: 1,800 answer-free choice records, 1,800 physical content images, 498 choice images, and shared radio interaction contracts.');
+console.log('PASS: 1,850 answer-free choice records, 1,850 physical content images, 508 choice images, and shared radio interaction contracts.');

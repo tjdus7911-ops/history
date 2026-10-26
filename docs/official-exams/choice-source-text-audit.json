@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "풀이 전 선지는 원본 시험지의 텍스트·이미지만 노출하고 역사적 의미 설명은 채점 후 해설로 분리",
-  "source": "국사편찬위원회 원본 PDF에서 생성한 카탈로그 detailImage와 전체 재실행 OCR",
-  "auditedQuestionCount": 1800,
-  "auditedChoiceCount": 8350,
-  "sourceHashMatchedQuestionCount": 1800,
+  "source": "국사편찬위원회 원본 PDF에서 생성한 카탈로그 detailImage와 전체 재실행 OCR(텍스트 레이어가 있는 신규 회차는 PDF 원문 텍스트)",
+  "auditedQuestionCount": 1850,
+  "auditedChoiceCount": 8600,
+  "sourceHashMatchedQuestionCount": 1850,
   "freshOcrQuestionCount": 1800,
-  "completeOcrChoiceQuestionCount": 897,
-  "normalizedExactOcrQuestionCount": 683,
-  "visualReviewBaselineQuestionCount": 1800,
-  "originalMismatchQuestionCount": 131,
-  "fixedQuestionCount": 131,
+  "completeOcrChoiceQuestionCount": 945,
+  "normalizedExactOcrQuestionCount": 730,
+  "visualReviewBaselineQuestionCount": 1850,
+  "originalMismatchQuestionCount": 133,
+  "fixedQuestionCount": 133,
   "sourceTextCorrectionQuestionCount": 26,
-  "imageChoiceProseSuppressedQuestionCount": 105,
+  "imageChoiceProseSuppressedQuestionCount": 107,
   "unverifiedQuestionCount": 0,
   "unverifiedQuestionIds": [],
   "potentialUncorrectedHintQuestionIds": [],
@@ -692,5 +692,6 @@
       ],
       "sourceDetailSha256": "9a6e455ebfa4330f9f656e71256c5b7afda6a916d741effef299d6933985dce8"
     }
-  ]
+  ],
+  "pdfTextLayerQuestionCount": 50
 }

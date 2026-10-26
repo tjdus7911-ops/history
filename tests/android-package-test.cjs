@@ -92,7 +92,7 @@ assert.equal(buildInfo.assetSnapshot.commit, origin.commit);
 assert(buildInfo.rewrittenFiles >= 35);
 assert(buildInfo.rewrittenReferences > 1000);
 assert.equal(nativeExplanations.schemaVersion, 3);
-assert.equal(nativeExplanations.records.length, 1800);
+assert.equal(nativeExplanations.records.length, 1850);
 assert.deepEqual(Object.keys(nativeExplanations).sort(), ['canonicalChoiceCount', 'records', 'schemaVersion']);
 assert(buildInfo.officialExplanations.packagedBytes < 4_000_000);
 assert(buildInfo.officialExplanations.sourceBytes > buildInfo.officialExplanations.packagedBytes * 5);

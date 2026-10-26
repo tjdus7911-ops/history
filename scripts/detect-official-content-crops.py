@@ -35,6 +35,10 @@ MANUAL_FIRST_CHOICE_MARKERS = {
     "official-67-basic-05": {"y": 1080.0, "radius": 18.0},
     "official-73-basic-11": {"y": 800.0, "radius": 18.0},
     "official-73-basic-14": {"y": 1065.0, "radius": 18.0},
+    # 80회 심화 21번은 태블릿 화면 속 붉은 표시를, 47번은 겹친 종이 그림의
+    # 가로선을 선지로 오인했다. 원본에서 확인한 ①의 위치로 고정한다.
+    "official-80-advanced-21": {"y": 935.0, "radius": 16.0},
+    "official-80-advanced-47": {"y": 1076.0, "radius": 16.0},
     # The portrait options are a single image row and one printed marker is
     # partially merged with its photo edge, so Hough detection sees only three.
     # This reviewed boundary preserves the full classroom illustration.

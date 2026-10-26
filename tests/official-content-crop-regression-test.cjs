@@ -12,11 +12,11 @@ const crops = readJson('docs/official-exams/question-content-crops.json');
 const media = readJson('docs/official-exams/question-choice-media.json');
 const audit = readJson('docs/official-exams/content-crop-audit-2026-10-14.json');
 
-assert.equal(crops.canonicalQuestionCount, 1800);
-assert.equal(crops.detectedQuestionCount, 1800);
+assert.equal(crops.canonicalQuestionCount, 1850);
+assert.equal(crops.detectedQuestionCount, 1850);
 assert.equal(crops.failureCount, 0);
-assert.equal(crops.records.length, 1800);
-assert.equal(media.records.length, 1800);
+assert.equal(crops.records.length, 1850);
+assert.equal(media.records.length, 1850);
 assert.equal(audit.changedCandidateVisualReview.reviewedQuestionCount, 105);
 assert.equal(audit.changedCandidateVisualReview.remainingIssueCount, 0);
 

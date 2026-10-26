@@ -2,13 +2,13 @@
   "schemaVersion": 1,
   "provider": "github-raw",
   "repository": "tjdus7911-ops/history",
-  "commit": "fbee9785c1656af06623a3da9fbe45ad466a9cce",
-  "tree": "c9e8609e410479d971d2a0fd049e7d2c9eeb1c3a",
+  "commit": "f07c8ea702962b7a4be67d1ddd614e2c7889b2e9",
+  "tree": "0f2db25c9fe380f1e9887410aa0e28fc040e697e",
   "sourcePath": "dist/assets",
   "publicPath": "/assets",
-  "assetCount": 8647,
-  "totalBytes": 1228771974,
-  "assetSetSha256": "fb3e1bf72d32c1db577b89fcc9ee7ea7250406de57cf7f6a203e95c432ade5b9",
+  "assetCount": 8807,
+  "totalBytes": 1240489904,
+  "assetSetSha256": "a533cec6543805bb6e17b337efea22051df835bf5bc44b60d7da43aac2216d94",
   "legacySnapshots": [
     {
       "commit": "dc036fb4f4b3007120e42b73723a2b6d02c3bec7",
@@ -18,9 +18,9 @@
     }
   ],
   "previousSnapshot": {
-    "commit": "19520aa1e10781c276989cebf8d6ac0b15f0ac26",
-    "tree": "c618886e21b1b0be212d387aee71f18fb5e27c23",
-    "assetCount": 4494,
-    "totalBytes": 918201788
+    "commit": "fbee9785c1656af06623a3da9fbe45ad466a9cce",
+    "tree": "c9e8609e410479d971d2a0fd049e7d2c9eeb1c3a",
+    "assetCount": 8647,
+    "totalBytes": 1228771974
   }
 }

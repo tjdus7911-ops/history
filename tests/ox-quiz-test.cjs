@@ -58,7 +58,7 @@ const actualCounts=Object.fromEntries(eraIds.map(eraId=>[eraId,questions.filter(
 assert.equal(eras.length,7,'seven OX eras must be exported');
 assert(questions.length>0,'the reviewed OX bank must not be empty');
 assert.equal(questions.length,curatedRows.length,'runtime questions must map one-to-one from reviewed source rows');
-assert.equal(report.roundCount,23);assert.equal(report.questionCount,1150,'all advanced official questions must remain the analysis basis');
+assert.equal(report.roundCount,24);assert.equal(report.questionCount,1200,'all advanced official questions must remain the analysis basis');
 for(const eraId of eraIds){
  assert(actualCounts[eraId]>0,`${eraId} must retain at least one reviewed question`);
  assert.equal(report.eraCounts[eraId],actualCounts[eraId],`${eraId} report count must match the actual bank`);

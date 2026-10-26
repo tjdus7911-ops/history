@@ -46,6 +46,11 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--ocr-json", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument(
+        "--merge-existing",
+        action="store_true",
+        help="Audit only the editions present in --ocr-json and add them to the existing --output report",
+    )
     args = parser.parse_args()
 
     catalog_rows = read_json(ROOT / "dist" / "official-exam-catalog.json")
@@ -54,6 +59,14 @@ def main() -> None:
     corrections = read_json(ROOT / "config" / "official-choice-source-corrections.json")["records"]
     visual_baseline = read_json(ROOT / "docs" / "official-exams" / "image-review-report.json")
     ocr_rows = read_json(args.ocr_json)
+    all_catalog_rows = catalog_rows
+    existing_report = read_json(args.output) if args.merge_existing else None
+    if args.merge_existing:
+        audited_ids = {row["officialQuestionId"] for row in ocr_rows}
+        catalog_rows = [row for row in catalog_rows if row["officialQuestionId"] in audited_ids]
+        previous_ids = {row["officialQuestionId"] for row in existing_report.get("correctionOcrEvidence", [])}
+        if audited_ids & previous_ids:
+            raise ValueError("merge rows overlap existing correction evidence")
     extractor = load_ocr_extractor()
     missing = extractor.MISSING_CHOICE_TEXT
 
@@ -119,10 +132,11 @@ def main() -> None:
 
     if source_hash_matches != len(catalog_rows):
         raise ValueError(f"OCR source hash mismatch: {source_hash_matches}/{len(catalog_rows)}")
+    pdf_text_rows = sum(row.get("textSource") == "pdf-text-layer" for row in ocr_rows)
     if potential_uncorrected:
         raise ValueError(f"uncorrected source-label hints: {potential_uncorrected}")
     baseline = visual_baseline["canonicalCoverage"]
-    if baseline["fullyReviewedQuestionCount"] != len(catalog_rows) or baseline["remainingReviewQuestionCount"]:
+    if baseline["fullyReviewedQuestionCount"] != len(all_catalog_rows) or baseline["remainingReviewQuestionCount"]:
         raise ValueError("visual source-review baseline is incomplete")
 
     image_ids = [question_id for question_id, row in media.items() if row["presentation"] == "image"]
@@ -147,6 +161,21 @@ def main() -> None:
         "potentialUncorrectedHintQuestionIds": [],
         "correctionOcrEvidence": ocr_review_rows,
     }
+    if args.merge_existing:
+        merged = dict(existing_report)
+        for key in ("sourceHashMatchedQuestionCount", "completeOcrChoiceQuestionCount", "normalizedExactOcrQuestionCount"):
+            merged[key] = existing_report[key] + report[key]
+        fresh_ocr = len(ocr_rows) - pdf_text_rows
+        merged["freshOcrQuestionCount"] = existing_report["freshOcrQuestionCount"] + fresh_ocr
+        merged["pdfTextLayerQuestionCount"] = existing_report.get("pdfTextLayerQuestionCount", 0) + pdf_text_rows
+        merged["source"] = "국사편찬위원회 원본 PDF에서 생성한 카탈로그 detailImage와 전체 재실행 OCR(텍스트 레이어가 있는 신규 회차는 PDF 원문 텍스트)"
+        for key in ("auditedQuestionCount", "auditedChoiceCount", "visualReviewBaselineQuestionCount", "originalMismatchQuestionCount",
+                    "fixedQuestionCount", "sourceTextCorrectionQuestionCount", "imageChoiceProseSuppressedQuestionCount"):
+            merged[key] = report[key]
+        merged["auditedQuestionCount"] = len(all_catalog_rows)
+        merged["auditedChoiceCount"] = sum(4 if row["examLevel"] == "기본" else 5 for row in all_catalog_rows)
+        merged["correctionOcrEvidence"] = existing_report["correctionOcrEvidence"] + report["correctionOcrEvidence"]
+        report = merged
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({key: value for key, value in report.items() if not isinstance(value, list)}, ensure_ascii=False, indent=2))

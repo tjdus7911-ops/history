@@ -8,7 +8,7 @@ function click(dataset){run('inputLockedUntil=0');let stopped=false;const button
 
 const eras=copy('globalThis.OFFICIAL_ANALYSIS_ERAS'),entries=copy('globalThis.OFFICIAL_EXAM_CATALOG'),eraIds=new Set(eras.map(era=>era.id));
 assert.deepEqual(eras.map(era=>era.name),['선사·고조선','여러 나라의 성장(원삼국 포함)','삼국·가야','남북국','고려','조선 전기','조선 후기','개항기·대한제국','일제강점기','현대']);
-assert.equal(entries.length,1800);assert(entries.every(entry=>eraIds.has(entry.analysisEra)),'every official question needs exactly one analysis era');
+assert.equal(entries.length,1850);assert(entries.every(entry=>eraIds.has(entry.analysisEra)),'every official question needs exactly one analysis era');
 assert.equal(entries.find(entry=>entry.sourceRecord.officialQuestionId==='official-57-basic-01').analysisEra,'prehistoric-gogojoseon');
 assert.equal(entries.find(entry=>entry.sourceRecord.officialQuestionId==='official-57-basic-02').analysisEra,'early-states');
 assert.equal(entries.find(entry=>entry.sourceRecord.officialQuestionId==='official-60-advanced-03').analysisEra,'three-gaya');
