@@ -300,10 +300,26 @@
     return '<section class="hv-cheer-banner" aria-label="학습 응원"><p>오늘도 화이팅! 한 장면, 한 문제씩 이어가요.</p><span class="hv-cheer-avatar"><img src="icons/mascot-192.png" alt="" aria-hidden="true"></span></section>';
   }
   function weakHTML() {
-    const weak=globalThis.OFFICIAL_LEARNING_ANALYSIS?.rows?.().find(row=>row.weak);
-    if(!weak)return '';
-    return '<section class="hv-section hv-weak-section"><div class="hv-weak-heading"><h2 class="hv-h">보완이 필요한 시대</h2><button class="hv-textbtn" data-weak-open="'+esc(weak.id)+'">분석 보기</button></div><button class="hv-weak-card" data-official-weak-era="'+esc(weak.id)+'"><span><b>'+weak.accuracy+'</b><small>정답률 %</small></span><span><b>'+esc(weak.name)+'</b><small>최근 오답 '+weak.wrong+'문항 · 반복 오답 '+weak.repeatedWrong+'문항</small></span><em>풀기</em></button></section>';
+    /* 취약점 분석 배너: 기록이 없어도 항상 보이고, 누르면 내 기록 › 취약점 분석으로 간다. */
+    const s = globalThis.WEAK_ERA_ANALYSIS?.summary?.();
+    const art = '<svg class="hv-weak-art" viewBox="0 0 132 92" role="img" aria-label="과녁과 막대그래프 그림">'
+      + '<rect x="14" y="52" width="16" height="28" rx="3" fill="#ffd3c9" stroke="#ad4835" stroke-width="2"/>'
+      + '<rect x="36" y="38" width="16" height="42" rx="3" fill="#ffb4a3" stroke="#ad4835" stroke-width="2"/>'
+      + '<rect x="58" y="60" width="16" height="20" rx="3" fill="#e9513b" stroke="#ad4835" stroke-width="2"/>'
+      + '<circle cx="100" cy="40" r="24" fill="#fff8eb" stroke="#ad4835" stroke-width="2"/><circle cx="100" cy="40" r="15" fill="#ffd3c9" stroke="#ad4835" stroke-width="2"/><circle cx="100" cy="40" r="6" fill="#e9513b"/>'
+      + '<path d="m100 40 22-20m-6 0h6v6" stroke="#ad4835" stroke-width="2.5" stroke-linecap="round" fill="none"/>'
+      + '<path d="M10 82h112" stroke="#ad4835" stroke-width="2" stroke-linecap="round"/></svg>';
+    let title = '나의 취약점 분석', sub = '기출을 풀면 약한 시대를 알려 드려요';
+    if (s) {
+      title = '취약한 시대: ' + s.name + ' ' + s.accuracy + '%';
+      sub = s.topic ? '자주 틀린 개념 ' + s.topic + (s.topicCount > 1 ? ' 외 ' + (s.topicCount - 1) + '개' : '') : '틀린 문제 ' + s.wrong + '개 · 시대별 분석 보기';
+    }
+    return '<button type="button" class="hv-jokbo-banner hv-weak-banner' + (s?.weak ? ' is-weak' : '') + '" data-weak-open="' + esc(s?.id || '') + '" aria-label="취약점 분석 열기: ' + esc(title) + '">'
+      + '<span class="hv-jokbo-illustration">' + art + '</span>'
+      + '<span class="hv-jokbo-copy"><strong>' + esc(title) + '</strong><b>' + esc(sub) + '</b></span>'
+      + '<span class="hv-jokbo-arrow" aria-hidden="true">' + ico.chevron + '</span></button>';
   }
+
 
   function calendarHTML(now = new Date()) {
     const month = calendarMonth || new Date(now.getFullYear(), now.getMonth(), 1);
@@ -351,8 +367,8 @@
       + railHTML(e)
       + practiceHTML(e)
       + (globalThis.LEARNING_MISSIONS?.cardHTML?.(now, { fresh: freshLearner(), mascot: 'icons/mascot-192.png', ddayHTML: ddayHTML(now) }) || '<section class="hv-status">' + ddayHTML(now) + '</section>' + cheerHTML())
-      + jokboPromoHTML()
       + weakHTML()
+      + jokboPromoHTML()
       + sheetHTML() + '</div>';
   };
 

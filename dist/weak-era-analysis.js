@@ -178,5 +178,14 @@
     if (d.weakNotes) { event.stopImmediatePropagation(); weakView = false; wrongEra = d.weakNotes; wrongChapter = 'all'; wrongConcept = 'all'; wrongFilter = 'official'; studyTab = 'review'; navigate('study'); }
   }, true);
 
-  globalThis.WEAK_ERA_ANALYSIS = Object.freeze({ open, pageHTML, topicOf });
+  // 홈 배너용 요약: 가장 취약한 시대와 그 시대의 대표 취약 개념
+  function summary() {
+    const known = A.rows().filter((r) => r.known);
+    if (!known.length) return null;
+    const weakest = known.slice().sort((a, b) => Number(b.eligible) - Number(a.eligible) || a.accuracy - b.accuracy || b.wrong - a.wrong || a.index - b.index)[0];
+    const topics = topicStats(weakest.id);
+    return { id: weakest.id, name: weakest.name, accuracy: weakest.accuracy, wrong: weakest.wrong, known: weakest.known, eligible: weakest.eligible, weak: weakest.weak, topic: topics[0] ? topicName(topics[0].topic) : '', topicCount: topics.length };
+  }
+
+  globalThis.WEAK_ERA_ANALYSIS = Object.freeze({ open, pageHTML, topicOf, summary });
 })();

@@ -1307,3 +1307,9 @@ html body:not(#rv8) #app .wea-nw { white-space: nowrap; }
 /* '실제 한능검 기출' 배지: 빨간 배경 위 초록 글자(자동 테마 충돌)를 브랜드 색 배지로 통일 */
 html body:not(#rv8) #app .official-pill { background: #FFF1EE; color: var(--rv8-accent, #E9513B); border: 1px solid #F8D3CB; font-weight: 700; }
 html body:not(#rv8) #app .practice-pill { background: #F2F4F6; color: #4A515C; border: 1px solid #E4E7EB; font-weight: 700; }
+/* 홈 배너 두 개(취약점·족보): 좁은 화면에서도 제목이 말줄임 없이 보이게, 취약점 배너는 연한 브랜드색 */
+@media (max-width: 700px) {
+  html body:not(#rv8) #app .hv .hv-jokbo-copy strong, html body:not(#rv8) #app .hv .hv-jokbo-copy b { white-space: normal; overflow: visible; text-overflow: clip; word-break: keep-all; text-wrap: balance; }
+  html body:not(#rv8) #app .hv .hv-weak-banner { background: #FFF1EE; }
+  html body:not(#rv8) #app .hv .hv-weak-banner:active { background: #FFE6E0; }
+}
