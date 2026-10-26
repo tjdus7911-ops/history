@@ -233,7 +233,7 @@
     /* Rev.8 approved change: 2×2 large cards → one compact 1×4 row; every route is unchanged. */
     const exam = row('exam', illustrations.paper, '기출문제', '실전 대비', a ? 'data-r7-exam-open' : 'data-nav="exam-library"');
     const oxRow = row('ox', illustrations.ox, 'OX 퀴즈', '개념 점검', 'data-nav="ox"');
-    const wrong = row('wrong', illustrations.review, '오답노트', '틀린 문제', pool.length ? 'data-review="' + esc(pool[0]) + '"' : 'data-nav="study"');
+    const wrong = row('wrong', illustrations.review, '오답노트', pool.length ? '틀린 문제 ' + pool.length + '개' : '틀린 문제', 'data-nav="study"');
     const storyAction = storyStarted ? 'data-r7-story-resume="' + esc(currentEra.id) + '"' : 'data-era-open="' + esc(currentEra.id) + '"';
     const story = row('story', illustrations.scroll, '스토리', '시대별 이야기', storyAction);
     return '<section class="hv-section hv-shortcuts-section" aria-label="실전 학습"><div class="hv-section-head"><h2 class="hv-h">학습 바로가기</h2></div><div class="hv-shortcuts">'
