@@ -276,7 +276,7 @@ function officialPassRateDisplay(record){
 function officialStatisticMarkup(source,context='detail'){
  const record=officialStatisticForEdition(source?.examRound,source?.examLevel);
  const key=`${Number(source?.examRound)}-${officialSlug(source?.examLevel)}`,unavailable=(globalThis.OFFICIAL_EXAM_STATISTICS?.unavailableEditions||[]).find(item=>item.key===key||(Number(item.examRound)===Number(source?.examRound)&&item.examLevel===source?.examLevel));
- if(context==='card')return record?`<span class="official-pass-rate-badge" data-official-pass-rate="${esc(record.key||key)}">합격률 ${esc(officialPassRateDisplay(record))}%</span>`:'';
+ if(context==='card')return record?`<span class="official-pass-rate-badge" data-official-pass-rate="${esc(record.key||key)}">합격률 ${esc(officialPassRateDisplay(record))}%</span>`:unavailable?.verificationStatus==='RESULT_NOT_ANNOUNCED'?'<span class="official-pass-rate-badge pending">합격률 발표 전</span>':'';
  if(!record&&unavailable)return `<section class="official-pass-rate unavailable ${context}" aria-label="공식 합격률 정보 없음"><strong>공식 합격률 정보 없음</strong>${unavailable.reason?`<span>${esc(unavailable.reason)}</span>`:''}</section>`;
  if(!record)return `<section class="official-pass-rate pending ${context}" aria-label="공식 합격률 확인 중"><strong>공식 합격률 확인 중</strong><span>공식 발표 자료가 확인된 회차만 수치를 제공합니다.</span></section>`;
  const rate=officialPassRateDisplay(record),announced=record.announcedAt?`발표일 ${esc(record.announcedAt)}`:'',sourceLabel=record.sourceLabel||globalThis.OFFICIAL_EXAM_STATISTICS?.sourceLabel||'공식 발표 자료',sourceUrl=/^https?:\/\//.test(String(record.sourceUrl||''))?record.sourceUrl:'';
