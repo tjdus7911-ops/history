@@ -2,7 +2,8 @@
 # 준비(한 번만):
 #   1) Codemagic 팀 설정 > Integrations > Developer Portal 에 App Store Connect API 키 연결
 #      (이름을 아래 integrations.app_store_connect 값과 같게: "눈떠보니 한국사")
-#   2) Codemagic 앱 설정 > Code signing identities 는 자동 생성(fetch)을 쓰므로 비워 둬도 된다.
+#   2) Codemagic > Signing identities 에 Apple Distribution 인증서(생성)와
+#      App Store 프로비저닝 프로필(korea.history-app, 가져오기)을 등록해 둔다.
 # 비밀값(API 키, 인증서)은 이 파일이나 GitHub에 넣지 않는다.
 workflows:
   ios-testflight:
@@ -30,12 +31,8 @@ workflows:
         script: npm run ios:web
       - name: iOS 프로젝트에 웹 번들 반영
         script: npx cap sync ios
-      - name: 서명 설정 (App Store 배포 인증서·프로필 자동 생성)
-        script: |
-          app-store-connect fetch-signing-files "$BUNDLE_ID" --type IOS_APP_STORE --create
-          keychain initialize
-          keychain add-certificates
-          xcode-project use-profiles
+      - name: 서명 설정 (Codemagic에 등록한 배포 인증서·프로필 사용)
+        script: xcode-project use-profiles
       - name: 빌드 번호 올리기 (Codemagic 빌드 번호 사용)
         script: |
           sed -i '' -E "s/CURRENT_PROJECT_VERSION = [0-9]+;/CURRENT_PROJECT_VERSION = ${BUILD_NUMBER:-1};/g" ios/App/App.xcodeproj/project.pbxproj
