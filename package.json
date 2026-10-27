@@ -44,12 +44,16 @@
     "import:story-policy": "node scripts/build-story-exam-policy.cjs",
     "check:story-policy": "node scripts/build-story-exam-policy.cjs --check",
     "test:chapter-access": "node tests/story-access-policy-test.cjs && node tests/three-support-npc-test.cjs",
-    "test:proto:browser": "node tests/proto-character-layout-mobile-test.cjs && node tests/proto-v4-browser-test.cjs && node tests/proto-exam-repair-browser-test.cjs"
+    "test:proto:browser": "node tests/proto-character-layout-mobile-test.cjs && node tests/proto-v4-browser-test.cjs && node tests/proto-exam-repair-browser-test.cjs",
+    "ios:web": "npm run android:web",
+    "ios:sync": "npm run ios:web && cap sync ios",
+    "ios:open": "cap open ios"
   },
   "dependencies": {
     "@capacitor/android": "8.5.3",
     "@capacitor/app": "8.1.2",
-    "@capacitor/core": "8.5.3"
+    "@capacitor/core": "8.5.3",
+    "@capacitor/ios": "^8.5.3"
   },
   "devDependencies": {
     "@capacitor/cli": "8.5.3",
