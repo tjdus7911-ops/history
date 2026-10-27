@@ -1,7 +1,7 @@
 # Codemagic: iOS 앱을 빌드해 App Store Connect(TestFlight)에 올린다.
 # 준비(한 번만):
 #   1) Codemagic 팀 설정 > Integrations > Developer Portal 에 App Store Connect API 키 연결
-#      (이름을 아래 integrations.app_store_connect 값과 같게: "history-asc-key")
+#      (이름을 아래 integrations.app_store_connect 값과 같게: "눈떠보니 한국사")
 #   2) Codemagic 앱 설정 > Code signing identities 는 자동 생성(fetch)을 쓰므로 비워 둬도 된다.
 # 비밀값(API 키, 인증서)은 이 파일이나 GitHub에 넣지 않는다.
 workflows:
@@ -10,7 +10,7 @@ workflows:
     instance_type: mac_mini_m2
     max_build_duration: 60
     integrations:
-      app_store_connect: history-asc-key
+      app_store_connect: "눈떠보니 한국사"
     environment:
       ios_signing:
         distribution_type: app_store
