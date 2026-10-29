@@ -1,7 +1,7 @@
 /* 족보 단톡방 (route: chat, chat/<roomId>)
  * - 홈의 족보 FAB 위에 '단톡방' FAB를 하나 더 쌓는다(홈에서만).
  * - 목록: 시대 칩(전체·시대별·유물)으로 거르고, 안 읽은 방에는 점을 찍는다.
- * - 방: 처음 들어가면 메시지가 읽는 속도에 맞춰 자동으로 올라온다(탭하면 바로 다음, '전체 보기'로 한 번에).
+ * - 방: 처음 들어가면 메시지가 읽는 속도에 맞춰 자동으로 올라온다('전체 보기'로 한 번에).
  *        한 번 끝까지 본 방은 다음부터 전부 펼친 상태로 열린다('다시 재생' 가능). */
 (function () {
   'use strict';
@@ -85,7 +85,7 @@
       + '<div class="jkc-thread" data-chat-thread aria-live="polite">' + all + '</div>'
       + '<div class="jkc-end" data-chat-end' + (done ? '' : ' hidden') + '><p>' + esc(plain(room.subtitle)) + '</p><div class="jkc-end-actions"><button type="button" class="jkc-secondary" data-chat-replay>다시 재생</button>'
       + (next ? '<button type="button" class="jkc-primary" data-chat-room="' + esc(next.id) + '">다음 방 · ' + esc(next.title) + '</button>' : '<button type="button" class="jkc-primary" data-chat-back>목록으로</button>') + '</div></div>'
-      + '<p class="jkc-tap-hint" data-chat-hint' + (done ? ' hidden' : '') + '>화면을 누르면 다음 메시지가 바로 나와요</p></section>';
+      + '</section>';
   }
 
   // ---------- 재생 ----------
@@ -98,9 +98,8 @@
     for (let i = 0; i < nodes.length; i += 1) nodes[i].classList.toggle('is-shown', i < n);
     shown = n;
     const room = byId.get(roomId), done = room && n >= room.msgs.length;
-    const end = document.querySelector('[data-chat-end]'), hint = document.querySelector('[data-chat-hint]'), skip = document.querySelector('[data-chat-skip]');
+    const end = document.querySelector('[data-chat-end]'), skip = document.querySelector('[data-chat-skip]');
     if (end) end.hidden = !done;
-    if (hint) hint.hidden = done;
     if (skip) skip.hidden = done;
     if (done && room && !readSet.has(room.id)) { readSet.add(room.id); saveRead(); }
     const last = n > 0 ? nodes[n - 1] : null;
@@ -138,7 +137,7 @@
     if (screen !== 'home' || typeof html !== 'string' || !html.includes('class="jk-fab-dock"')) return html;
     const badge = unreadCount() ? '<i class="jkc-fab-dot" aria-hidden="true"></i>' : '';
     return html.replace('app-nav-shell has-jk-fab', 'app-nav-shell has-jk-fab has-chat-fab')
-      .replace('<div class="jk-fab-dock">', '<div class="jk-fab-dock" data-has-chat><button type="button" class="jk-fab jkc-fab" data-chat-open aria-label="단톡방 열기">' + chatIcon + '<span>단톡방</span>' + badge + '</button>');
+      .replace('<div class="jk-fab-dock">', '<div class="jk-fab-dock" data-has-chat><button type="button" class="jkc-fab" data-chat-open aria-label="단톡방 열기">' + chatIcon + badge + '</button>');
   };
 
   views.addRoute('chat');
@@ -186,8 +185,6 @@
       if ('chatReplay' in d) { event.stopImmediatePropagation(); play(true); return; }
       return;
     }
-    // 방 안에서 빈 곳을 누르면 바로 다음 메시지
-    if (screen === 'jokbo-chat-room' && playing && event.target.closest('.jkc-room')) { clearTimeout(timer); step(); }
   }, true);
 
   globalThis.JOKBO_CHAT_API = Object.freeze({ rooms: () => ROOMS.map((r) => ({ id: r.id, era: r.era, kind: r.kind, title: r.title, read: readSet.has(r.id) })), open: openList, openRoom: (id) => openRoom(id, true), unread: unreadCount });
