@@ -245,10 +245,13 @@
  function searchResultMarkup(result){
   return '<button type="button" class="jk-search-result" data-jk-search-result="'+result.keyword.id+'" aria-label="'+esc(result.context+' '+result.keyword.value+' 관련 족보로 이동')+'"><span class="jk-search-result-context">'+highlightText(result.context)+'</span><strong>'+highlightText(result.keyword.value)+'</strong><p>'+highlightText(result.snippet)+'</p><i aria-hidden="true">'+chevron+'</i></button>';
  }
+ function searchContent(term){
+  const results=searchResults(term);
+  return (term?'<p class="jk-search-count" role="status">검색 결과 <b>'+results.length+'</b>개</p>'+(results.length?'<div class="jk-search-results">'+results.map(searchResultMarkup).join('')+'</div>':'<div class="jk-search-empty"><h2>검색 결과가 없어요.</h2><p>띄어쓰기를 바꾸거나 더 짧은 단어로 검색해 보세요.</p></div>'):'<div class="jk-search-guide"><h2>족보 전체에서 찾아보세요</h2><p>시대·국가·왕·사건·제도와 상세 학습 내용까지 검색할 수 있어요.</p></div>');
+ }
  function searchPage(){
-  const term=query.trim(),results=searchResults(term);
-  return '<section class="jk-page jk-search-page" data-page="jokbo-search"><header class="jk-search-appbar"><button type="button" class="jk-appbar-back" data-jk-back="search-exit" aria-label="족보로 돌아가기">'+backIcon+'</button><label class="jk-search-field"><span>'+icon('search')+'</span><input data-jk-query type="search" inputmode="search" autocomplete="off" value="'+esc(query)+'" placeholder="왕, 사건, 제도, 키워드 검색" aria-label="족보 통합 검색어"><button type="button" data-jk-search-clear aria-label="검색어 삭제" '+(term?'':'disabled')+'>×</button></label></header><div class="jk-search-content">'
-   +(term?'<p class="jk-search-count" role="status">검색 결과 <b>'+results.length+'</b>개</p>'+(results.length?'<div class="jk-search-results">'+results.map(searchResultMarkup).join('')+'</div>':'<div class="jk-search-empty"><h2>검색 결과가 없어요.</h2><p>띄어쓰기를 바꾸거나 더 짧은 단어로 검색해 보세요.</p></div>'):'<div class="jk-search-guide"><h2>족보 전체에서 찾아보세요</h2><p>시대·국가·왕·사건·제도와 상세 학습 내용까지 검색할 수 있어요.</p></div>')+'</div></section>';
+  const term=query.trim();
+  return '<section class="jk-page jk-search-page" data-page="jokbo-search"><header class="jk-search-appbar"><button type="button" class="jk-appbar-back" data-jk-back="search-exit" aria-label="족보로 돌아가기">'+backIcon+'</button><label class="jk-search-field"><span>'+icon('search')+'</span><input data-jk-query type="search" inputmode="search" autocomplete="off" value="'+esc(query)+'" placeholder="왕, 사건, 제도, 키워드 검색" aria-label="족보 통합 검색어"><button type="button" data-jk-search-clear aria-label="검색어 삭제" '+(term?'':'disabled')+'>×</button></label></header><div class="jk-search-content">'+searchContent(term)+'</div></section>';
  }
  function savedEmptyMarkup(){return '<div class="jk-empty jk-saved-empty"><span>'+savedEmptyBookmarkIcon+'</span><h2>아직 저장한 키워드가 없어요</h2><p>중요한 키워드를 저장하면\n이곳에서 모아볼 수 있어요.</p><button data-jk-mode="all">전체 요약 보기</button></div>';}
  function compareLinks(eraId){
@@ -460,7 +463,15 @@
   const content=swipeContent();
   if(!globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches)content?.animate?.([{opacity:.45,transform:'translateX('+(dx<0?48:-48)+'px)'},{opacity:1,transform:'translateX(0)'}],{duration:210,easing:'ease-out'});
  },{passive:false});
- document.addEventListener('input',event=>{if(screen==='jokbo-search'&&event.target.matches('[data-jk-query]')){query=event.target.value;searchScrollY=pageScrollY();saveView();render();scrollPage(searchScrollY);focusSearch();}},true);
+ // 검색 입력창은 다시 그리지 않고 결과 영역만 바꾼다. 입력창을 다시 만들면 한글 조합이 끊기고(자음만 입력)
+ // 모바일 키보드가 닫혔다 열리기를 반복한다.
+ function updateSearchResults(input){
+  query=input.value;saveView();
+  const term=query.trim(),content=document.querySelector('.jk-search-content'),clear=document.querySelector('[data-jk-search-clear]');
+  if(!content){render();focusSearch();return;}
+  content.innerHTML=searchContent(term);if(clear)clear.disabled=!term;
+ }
+ document.addEventListener('input',event=>{if(screen==='jokbo-search'&&event.target.matches('[data-jk-query]'))updateSearchResults(event.target);},true);
  let scrollTimer=0;if(typeof window?.addEventListener==='function')window.addEventListener('scroll',()=>{if(!['jokbo','jokbo-search'].includes(screen)||restoringScroll)return;clearTimeout(scrollTimer);scrollTimer=setTimeout(()=>{if(screen==='jokbo'&&!restoringScroll)saveView({scrollY:pageScrollY()});else if(screen==='jokbo-search'&&!restoringScroll)searchScrollY=pageScrollY();},80)},{passive:true});
  const rawRoute=(globalThis.location?.hash||'').replace(/^#/,'');if(rawRoute==='jokbo'||rawRoute.startsWith('jokbo/'))routes.applyRoute(rawRoute);else render();
  globalThis.JOKBO_API=Object.freeze({
