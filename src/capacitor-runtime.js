@@ -77,7 +77,33 @@ async function handleBackButton() {
 
   // iOS는 앱을 스스로 종료하면 안 된다(App Store 심사 기준). 홈에서는 아무것도 하지 않는다.
   if (Capacitor.getPlatform() === 'ios') return;
+
+  // Android: 홈에서 뒤로 버튼을 한 번 누르면 안내만 하고, 2초 안에 한 번 더 누르면 종료한다.
+  const now = Date.now();
+  if (now - lastHomeBackAt > EXIT_CONFIRM_MS) {
+    lastHomeBackAt = now;
+    showExitToast();
+    return;
+  }
+  lastHomeBackAt = 0;
   await App.exitApp();
+}
+
+const EXIT_CONFIRM_MS = 2000;
+let lastHomeBackAt = 0;
+function showExitToast() {
+  const message = '‘뒤로’ 버튼을 한 번 더 누르면 앱이 종료됩니다.';
+  if (typeof globalThis.toast === 'function') {
+    globalThis.toast(message);
+    return;
+  }
+  document.querySelector('.toast')?.remove();
+  const el = document.createElement('div');
+  el.className = 'toast';
+  el.setAttribute('role', 'status');
+  el.textContent = message;
+  document.body.append(el);
+  setTimeout(() => el.remove(), EXIT_CONFIRM_MS);
 }
 
 // iOS에는 뒤로 버튼이 없으니, 화면 왼쪽 끝에서 오른쪽으로 미는 동작을 뒤로 가기로 쓴다.
