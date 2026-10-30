@@ -28,7 +28,7 @@
    +'<div class="r7-ox-deck"><div class="r7-ox-stack'+(answered?' is-answered':'')+'"><div class="r7-ox-card-back" aria-hidden="true"></div>'+card+'</div></div>'
    +'<footer class="r7-ox-answerbar">'+(answered?'<button class="r7-primary" data-ox-next="true">'+(last?'결과 확인':'다음 문제')+'</button>':'<div class="r7-ox-choices"><button class="r7-ox-x" data-ox-answer="false" aria-label="X, 틀려요">'+xIcon+'<span>틀려요</span></button><button class="r7-ox-o" data-ox-answer="true" aria-label="O, 맞아요"><span>맞아요</span>'+oIcon+'</button></div>')+'</footer></section>';
  });
- // 스와이프: 답변 전 카드의 가로 이동만 O/X 선택으로 반영한다.
+ // 스와이프: 답변 전 카드의 가로 이동만 O/X 선택으로 반영한다(답변 후 해설은 건너뛰지 않는다).
  let drag=null;
  const reduced=()=>globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
  function setCard(card,dx){card.style.transform='translateX('+dx.toFixed(1)+'px) rotate('+(dx*.05).toFixed(2)+'deg)';const k=Math.min(1,Math.abs(dx)/90);card.style.setProperty('--r7-ox-o',dx>0?k:0);card.style.setProperty('--r7-ox-x',dx<0?k:0);}
@@ -41,17 +41,22 @@
   card.animate([{transform:card.style.transform||'none'},{transform:'translateX('+out+'px) rotate('+(Math.sign(dx)*14)+'deg)'}],{duration:180,easing:'ease-in',fill:'forwards'}).onfinish=()=>target.click();
  }
  document.addEventListener('pointerdown',event=>{
-  const card=event.target.closest?.('[data-r7-ox-card]');if(!card||card.dataset.answered==='true'||event.button>0||event.clientX<=24||event.clientX>=innerWidth-24||event.target.closest('a,button'))return;
-  drag={card,id:event.pointerId,x:event.clientX,y:event.clientY,axis:null,dx:0};
+  const card=event.target.closest?.('[data-r7-ox-card]');if(!card||card.dataset.answered==='true'||event.isPrimary===false||event.button>0||event.clientX<=24||event.clientX>=innerWidth-24||event.target.closest('a,button'))return;
+  drag={card,id:event.pointerId,x:event.clientX,y:event.clientY,axis:null,dx:0,t:event.timeStamp,vx:0,lx:event.clientX,lt:event.timeStamp};
  });
  document.addEventListener('pointermove',event=>{
   if(!drag||event.pointerId!==drag.id)return;const dx=event.clientX-drag.x,dy=event.clientY-drag.y;
-  if(!drag.axis&&Math.max(Math.abs(dx),Math.abs(dy))>8){drag.axis=Math.abs(dx)>Math.abs(dy)*1.2?'x':'y';if(drag.axis==='x'){drag.card.classList.add('is-dragging');try{drag.card.setPointerCapture(event.pointerId)}catch{}}}
-  if(drag.axis!=='x')return;drag.dx=dx;setCard(drag.card,dx);
+  // iOS 터치는 흔들림이 있어 가로가 세로보다 조금만 커도 가로 스와이프로 본다.
+  if(!drag.axis&&Math.max(Math.abs(dx),Math.abs(dy))>6){drag.axis=Math.abs(dx)>=Math.abs(dy)*.9?'x':'y';if(drag.axis==='x'){drag.card.classList.add('is-dragging');try{drag.card.setPointerCapture(event.pointerId)}catch{}}}
+  if(drag.axis!=='x')return;const dt=event.timeStamp-drag.lt;if(dt>0)drag.vx=(event.clientX-drag.lx)/dt;drag.lx=event.clientX;drag.lt=event.timeStamp;drag.dx=dx;setCard(drag.card,dx);
  });
+ // 가로로 미는 중에는 화면 스크롤을 막아 iOS가 포인터를 취소(pointercancel)하지 않게 한다.
+ document.addEventListener('touchmove',event=>{if(drag&&drag.axis==='x'&&event.cancelable)event.preventDefault();},{passive:false});
  const endDrag=event=>{
-  if(!drag||event.pointerId!==drag.id)return;const {card,axis,dx}=drag;drag=null;
-  if(axis!=='x')return;const threshold=Math.max(64,Math.min(96,card.getBoundingClientRect().width*.22));if(event.type==='pointerup'&&Math.abs(dx)>=threshold){commit(card,dx);return;}
+  if(!drag||event.pointerId!==drag.id)return;const {card,axis,dx,vx,t}=drag;drag=null;const avg=Math.abs(dx)/Math.max(1,event.timeStamp-t);
+  if(axis!=='x')return;const threshold=Math.max(56,Math.min(80,card.getBoundingClientRect().width*.2));
+  const flick=Math.abs(dx)>=32&&(Math.abs(vx)>=.4&&Math.sign(vx)===Math.sign(dx)||avg>=.3);
+  if(event.type==='pointerup'&&(Math.abs(dx)>=threshold||flick)){commit(card,dx);return;}
   if(card.animate&&!reduced())card.animate([{transform:card.style.transform||'none'},{transform:'none'}],{duration:160,easing:'ease-out'});resetCard(card);
  };
  document.addEventListener('pointerup',endDrag);document.addEventListener('pointercancel',endDrag);

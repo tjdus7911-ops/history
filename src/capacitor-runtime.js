@@ -75,7 +75,63 @@ async function handleBackButton() {
     return;
   }
 
+  // iOS는 앱을 스스로 종료하면 안 된다(App Store 심사 기준). 홈에서는 아무것도 하지 않는다.
+  if (Capacitor.getPlatform() === 'ios') return;
   await App.exitApp();
+}
+
+// iOS에는 뒤로 버튼이 없으니, 화면 왼쪽 끝에서 오른쪽으로 미는 동작을 뒤로 가기로 쓴다.
+function installEdgeSwipeBack() {
+  const EDGE = 24;
+  let swipe = null;
+  const indicator = document.createElement('div');
+  indicator.className = 'native-edge-back';
+  indicator.setAttribute('aria-hidden', 'true');
+  indicator.innerHTML = '<svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>';
+  const show = (dx) => {
+    if (!indicator.isConnected) document.body.appendChild(indicator);
+    const k = Math.min(1, dx / 90);
+    indicator.style.opacity = String(k);
+    indicator.style.transform = `translate(${Math.round(-44 + 56 * k)}px, -50%)`;
+    indicator.classList.toggle('is-ready', dx >= 72);
+  };
+  const hide = () => {
+    indicator.style.opacity = '0';
+    indicator.style.transform = 'translate(-44px, -50%)';
+    indicator.classList.remove('is-ready');
+  };
+
+  document.addEventListener('touchstart', (event) => {
+    swipe = null;
+    if (event.touches.length !== 1) return;
+    const touch = event.touches[0];
+    if (touch.clientX > EDGE) return;
+    swipe = { x: touch.clientX, y: touch.clientY, dx: 0, t: event.timeStamp, active: false };
+  }, { passive: true, capture: true });
+
+  document.addEventListener('touchmove', (event) => {
+    if (!swipe || event.touches.length !== 1) return;
+    const touch = event.touches[0];
+    const dx = touch.clientX - swipe.x;
+    const dy = touch.clientY - swipe.y;
+    if (!swipe.active) {
+      if (Math.abs(dy) > 14 && Math.abs(dy) > dx) { swipe = null; hide(); return; }
+      if (dx > 10 && dx > Math.abs(dy)) swipe.active = true;
+    }
+    if (!swipe.active) return;
+    swipe.dx = dx;
+    if (event.cancelable) event.preventDefault();
+    show(dx);
+  }, { passive: false, capture: true });
+
+  const finish = (cancelled) => {
+    const done = swipe && swipe.active && !cancelled && swipe.dx >= 72;
+    swipe = null;
+    hide();
+    if (done) handleBackButton();
+  };
+  document.addEventListener('touchend', () => finish(false), { capture: true });
+  document.addEventListener('touchcancel', () => finish(true), { capture: true });
 }
 
 if (isNative) {
@@ -83,6 +139,7 @@ if (isNative) {
   document.documentElement.dataset.nativePlatform = Capacitor.getPlatform();
 
   App.addListener('backButton', handleBackButton);
+  if (Capacitor.getPlatform() === 'ios') installEdgeSwipeBack();
   const saveProgress = () => {
     try {
       globalThis.save?.();
