@@ -1,0 +1,29 @@
+/* 앱(iOS·Android)에서 상태 표시줄·노치·다이내믹 아일랜드 아래로 콘텐츠를 내린다.
+   각 화면의 padding-top 값은 그대로 두고, 투명한 위쪽 테두리로 안전 영역만큼 더한다. */
+html.capacitor-native { --native-safe-top: env(safe-area-inset-top, 0px); }
+
+/* 일반 화면(홈·기출·OX·오답노트·내 기록·시험 안내 등) */
+html.capacitor-native body #app .shell:not(.jk-fullscreen-shell) > .main:not(.ed-game) {
+  border-top: var(--native-safe-top) solid transparent;
+}
+/* 위에 붙는 시험 상단 바도 안전 영역 아래에 붙는다 */
+html.capacitor-native body #app .official-exam-sticky { top: var(--native-safe-top); }
+
+/* 스토리: 배경 그림은 화면 끝까지, 상단 바(나가기·진행률)만 아래로 */
+html.capacitor-native body #app .r7-story-stage .game.r7-story-play {
+  padding-top: calc(8px + var(--native-safe-top));
+}
+
+/* 상태 표시줄 영역: 스크롤해서 올라간 내용이 시계·배터리 뒤로 비치지 않게 가린다 */
+html.capacitor-native body #app .shell:not(.jk-fullscreen-shell):not(:has(.ed-game))::before {
+  content: ""; position: fixed; z-index: 40; top: 0; left: 0; right: 0; height: var(--native-safe-top);
+  background: var(--native-statusbar-bg, #fafbfc); pointer-events: none;
+}
+
+/* iOS: 왼쪽 끝에서 밀어 뒤로 가기 표시 */
+.native-edge-back {
+  position: fixed; z-index: 10000; top: 50%; left: 0; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(20,33,61,.82); color: #fff; opacity: 0; transform: translate(-44px, -50%); pointer-events: none; transition: background .12s;
+}
+.native-edge-back.is-ready { background: #e9513b; }
+.native-edge-back svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
