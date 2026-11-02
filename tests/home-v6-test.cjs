@@ -10,7 +10,10 @@ const document={
   createElement:()=>({setAttribute(){},remove(){}}),
   body:{append(){},classList:{toggle(){}}}
 };
-const context=vm.createContext({Date,console,document,localStorage:{getItem:()=>saved,setItem:(key,value)=>{saved=value}},window:{scrollTo(){},addEventListener(){}},navigator:{},setTimeout:()=>0,clearTimeout(){},setInterval:()=>1,clearInterval(){}});
+// 실행하는 날짜와 상관없이 같은 결과가 나오도록 '오늘'을 2026-10-22 12:00(KST)로 고정한다.
+const FIXED_NOW=new Date(2026,9,22,12,0).getTime();
+class FixedDate extends Date{constructor(...args){super(...(args.length?args:[FIXED_NOW]))}static now(){return FIXED_NOW}}
+const context=vm.createContext({Date:FixedDate,console,document,localStorage:{getItem:()=>saved,setItem:(key,value)=>{saved=value}},window:{scrollTo(){},addEventListener(){}},navigator:{},setTimeout:()=>0,clearTimeout(){},setInterval:()=>1,clearInterval(){}});
 vm.runInContext(scripts.map(name=>fs.readFileSync('dist/'+name,'utf8')).join('\n'),context);
 const run=code=>vm.runInContext(code,context),copy=code=>JSON.parse(run('JSON.stringify('+code+')'));
 
@@ -37,18 +40,23 @@ assert.equal(run("HOME_V6_API.events(new Date('2026-10-22T12:00:00+09:00')).leng
 const dday=copy("HOME_V6_API.dday(new Date('2026-10-22T12:00:00+09:00'))");
 assert.equal(dday.kind,'set');assert.equal(dday.days,14);
 run("meta().examTargetDate='2026-10-21'");
-assert.equal(copy("HOME_V6_API.dday(new Date(2026,9,22,0,5))").kind,'past','past exam dates consistently require resetting from the device-local calendar day');
+// 직접 정한 시험일이 지나면 다음 공식 시험일(제81회 11/28)로 자동 전환한다(기기 현지 날짜 기준).
+const fallback=copy("HOME_V6_API.dday(new Date(2026,9,22,0,5))");
+assert.deepEqual({kind:fallback.kind,auto:fallback.auto,round:fallback.round,days:fallback.days},{kind:'set',auto:true,round:81,days:37},'a past custom exam date falls back to the next official exam from the device-local calendar day');
+// 남은 공식 시험 일정도 없으면 다시 설정하도록 안내한다.
+assert.equal(copy("HOME_V6_API.dday(new Date(2026,11,1,0,5))").kind,'past','past exam dates require resetting when no official exam is scheduled');
 run("meta().examTargetDate='2026-11-05'");
 run('render()');
 assert(html.includes('<span>눈떠보니</span><em>한국사</em>'),'header uses the split brand wordmark');
 assert(!html.includes('요일'),'the old date header is removed');
-assert(html.includes('학습 현황')&&html.includes('남은 시험일')&&html.includes('D-14'),'D-day renders from the saved target date');
-assert(html.includes('실전 합격률')&&html.includes('<b>50%</b>'),'official result pass rate is shown from actual exam records');
+assert(html.includes('한능검 시험일까지')&&html.includes('<b>D-14</b>'),'D-day renders from the saved target date');
+// 홈 개편(학습 미션) 이후 합격률은 홈에 표시하지 않고 HOME_V6_API.passRate()로만 제공한다(위에서 검증).
+assert(!html.includes('실전 합격률'),'home no longer repeats the pass-rate tile after the learning-mission redesign');
 assert(html.includes('data-hv-exam-open')&&!html.includes('data-hv-exam-date'),'exam card opens the in-app calendar instead of an unreliable transparent native input');
-assert(html.includes('연속 학습')&&html.includes('오늘 푼 문제')&&html.includes('최근 정답률'),'all four status items render');
-assert(html.includes('<p>오늘도 화이팅! 한 장면, 한 문제씩 이어가요.</p>'),'compact encouragement copy is exact');
-assert(html.includes('class="hv-cheer-avatar"')&&html.includes('icons/mascot-192.png'),'encouragement card uses the requested app-icon character art');
-assert.equal((html.match(/class="hv-row hv-row-/g)||[]).length,3,'three practical-learning cards render');
+assert(html.includes('class="lm-card"')&&html.includes('오늘의 학습 미션')&&html.includes('0 / 4 완료'),'today\'s learning mission card renders with its four missions');
+assert(html.includes('<strong>오늘도 한 장면, 한 문제씩!</strong>'),'compact encouragement copy is exact');
+assert(html.includes('<span class="lm-mascot"><img src="icons/mascot-192.png"'),'encouragement card uses the requested app-icon character art');
+assert.equal((html.match(/class="hv-shortcut hv-shortcut-/g)||[]).length,4,'four learning shortcuts (story, exam, OX, wrong notes) render');
 assert(html.includes('data-era-open="proto-kingdoms" aria-label="원삼국 스토리 목록 보기"'),'story artwork opens the existing era list');
 assert.equal(run('JSON.stringify({run:state.run,mainRun:state.mainRun,records:meta().questionRecords,wrong:meta().wrongQuestionIds,results:meta().officialExamResults})'),protectedBefore,'rendering home does not mutate protected learning data');
 console.log('PASS: home v6 wordmark, de-duplicated real learning metrics, D-day, banner, practical cards and protected data.');
