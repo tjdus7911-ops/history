@@ -4,7 +4,8 @@ const app='korea.history_app',adb=(...args)=>execFileSync('adb',args,{encoding:'
 const delay=ms=>new Promise(r=>setTimeout(r,ms));
 let device;
 async function connect(){let lastError;device||=(await android.devices({omitDriverInstall:true}))[0];assert(device,'Android emulator must be connected');for(let i=0;i<10;i++){try{const view=await device.webView({pkg:app,timeout:10000}),page=await view.page();await page.waitForFunction(()=>globalThis.CORE_APP_READY&&globalThis.HISTORY_NATIVE_RUNTIME?.isNative,null,{timeout:10000});return page;}catch(e){lastError=e;if(i===0)console.log('Waiting for native WebView:',e.message);await delay(1000);}}throw Error('Android WebView unavailable: '+lastError?.message);}
-const launch=()=>adb('shell','am','start','-W','-n',app+'/.MainActivity');
+// applicationId(korea.history_app)와 Java 패키지(namespace)가 달라 Activity는 전체 클래스명으로 지정해야 한다.
+const launch=()=>adb('shell','am','start','-W','-n',app+'/com.nuntteoboni.history.MainActivity');
 (async()=>{
  fs.mkdirSync(output,{recursive:true});adb('shell','wm','size','780x1688');adb('shell','wm','density','320');adb('install','-r','android/app/build/outputs/apk/debug/app-debug.apk');adb('shell','pm','clear',app);launch();const page=await connect();assert(await page.evaluate(()=>HISTORY_NATIVE_RUNTIME.isNative));
  fs.writeFileSync(path.join(output,'android-home.png'),execFileSync('adb',['exec-out','screencap','-p'],{maxBuffer:20*1024*1024}));adb('shell','uiautomator','dump','/sdcard/story-qa-window.xml');const nativeTree=adb('shell','cat','/sdcard/story-qa-window.xml');assert(!nativeTree.includes('action_bar_container'),'native title bar must not overlap the Rev.7 header');
