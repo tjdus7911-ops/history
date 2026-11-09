@@ -8,7 +8,8 @@
   const MIN = 1, MAX = 3, STEP = 0.25;
   const clamp = (v) => Math.min(MAX, Math.max(MIN, Math.round(v * 100) / 100));
   const pct = (s) => Math.round(s * 100) + '%';
-  const current = () => clamp(Number(modal?.scale) || 1);
+  // 배율 값이 없고 기존 '크게 보기' 토글(zoomed)만 켜진 경우는 200%로 본다.
+  const current = () => clamp(Number(modal?.scale) || (modal?.zoomed ? 2 : 1));
 
   function toolsHTML(scale) {
     return '<div class="official-image-tools iz-tools" role="group" aria-label="이미지 배율">'
@@ -17,7 +18,7 @@
       + '<button type="button" class="iz-btn" data-official-image-zoom="true" data-iz-step="1" aria-label="확대"' + (scale >= MAX ? ' disabled' : '') + '>+</button>'
       + '<output class="iz-value" data-iz-value>' + pct(scale) + '</output>'
       + '<button type="button" class="iz-reset" data-iz-reset' + (scale === 1 ? ' disabled' : '') + '>원래 크기</button>'
-      + '<span class="iz-hint">두 손가락으로 벌리거나 오므려서 크기를 바꾸고, 확대한 뒤에는 끌어서 움직여요.</span></div>';
+      + '<span class="iz-hint">두 손가락으로 벌리거나 오므려서 크기를 바꾸고, 확대한 뒤에는 끌어서 움직여요. 원본 PDF에서 분리한 문제 본문과 자료입니다. 선지는 문제 화면의 선택 카드에서 확인합니다.</span></div>';
   }
 
   const before = modalHTML;
@@ -27,7 +28,7 @@
     const scale = current();
     return html
       .replace(/<div class="official-image-tools">[\s\S]*?<\/div>/, toolsHTML(scale))
-      .replace(/class="official-image-scroll[^"]*"/, 'class="official-image-scroll iz-scroll' + (scale > 1 ? ' zoomed' : '') + '"')
+      .replace(/class="official-image-scroll[^"]*"/, 'class="official-image-scroll' + (scale > 1 ? ' zoomed' : '') + ' iz-scroll"')
       .replace('<div class="official-modal-content-crop">', '<div class="official-modal-content-crop" style="width:' + scale * 100 + '%">');
   };
 
@@ -56,7 +57,9 @@
   }
 
   // 기존 '글자 크게 보기' 토글보다 먼저 받아서 단계 확대로 바꾼다.
-  window.addEventListener('click', (event) => {
+  // 창 단위 캡처(문서 캡처보다 먼저). 테스트용 가짜 window에는 없을 수 있어 문서로 대신한다.
+  const early = typeof window !== 'undefined' && typeof window.addEventListener === 'function' ? window : document;
+  early.addEventListener('click', (event) => {
     const button = event.target.closest?.('.iz-tools button');
     if (!button || modal?.type !== 'official-image') return;
     event.stopImmediatePropagation(); event.preventDefault();

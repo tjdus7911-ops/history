@@ -30,7 +30,7 @@
     if (done) markSeen();
     index = -1; layer?.remove(); layer = null;
     document.body.classList.remove('coach-open');
-    window.removeEventListener('resize', place);
+    globalThis.removeEventListener?.('resize', place);
   }
   function place() {
     if (index < 0 || !layer) return;
@@ -68,7 +68,7 @@
     layer.setAttribute('role', 'dialog'); layer.setAttribute('aria-modal', 'true'); layer.setAttribute('aria-labelledby', 'coach-title');
     layer.innerHTML = '<div class="coach-spot" aria-hidden="true"></div><section class="coach-bubble"></section>';
     document.body.appendChild(layer); document.body.classList.add('coach-open');
-    window.addEventListener('resize', place);
+    globalThis.addEventListener?.('resize', place);
     index = -1; next();
     return true;
   }
