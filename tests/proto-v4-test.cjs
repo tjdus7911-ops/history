@@ -2,8 +2,8 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),crypto=require(
 const {load,until}=require('./proto-revision-harness.cjs');
 const source=JSON.parse(fs.readFileSync('dist/proto-story-script.json'));const scenes=source.chapters.flatMap(c=>c.scenes);
 assert.equal(scenes.length,17);assert.equal(source.examPlan.questions.length,41);assert.equal(source.examPlan.queues.reduce((n,q)=>n+q.missingQuestionCount,0),10);
-assert.equal(crypto.createHash('sha256').update(JSON.stringify(scenes)).digest('hex'),'291fffcafce23583abaa63197f6d7d1c1aa37a37e04e309037bc0c438f1a29fe','the 17 historical scenes changed while adding the prologue');
-assert.equal(crypto.createHash('sha256').update(JSON.stringify(source.examPlan.questions)).digest('hex'),'1654388115b42bf5da413fd3b6443ac0cf7b54d66160bafbbb2f995a8333b4f1','official question IDs or authored question content changed');
+assert.equal(crypto.createHash('sha256').update(JSON.stringify(scenes)).digest('hex'),'13700eeddda50ece830432ba3a4cd82b6277e7a95342963f12095b2041ebcad3','the 17 historical scenes changed while adding the prologue' /* 2026-11 사용자 피드백 11: 2-4 창고지기 대사에 고구려 '부경' 보강(라인 ID·키워드 ID 유지) */);
+assert.equal(crypto.createHash('sha256').update(JSON.stringify(source.examPlan.questions)).digest('hex'),'0766d3590d5bdb5130b00f07efaa900695a1764880fc731f8135eff134464e0a','official question IDs or authored question content changed');
 // Independently count every authored utterance, including both replies and the post-exam ending.
 const manuscript=fs.readFileSync('docs/proto-v4/manuscript.md','utf8').split('## 실제 기출 배치 검토 결과')[0];
 const authored=[...manuscript.matchAll(/^(?:→ )?([^:\n]+): “(.+)”$/gm)].map(m=>[m[1],m[2].replace(/\*\*/g,'')]);

@@ -1,11 +1,11 @@
 /* Generated from docs/proto-v4/manuscript.md; do not edit. */
-const PROTO_REVISION_SOURCE_SHA256="75040852690b19b951939c6ce62e2b43602f42526e22170deb1bed827ade057a";
+const PROTO_REVISION_SOURCE_SHA256="3ba86aeae218afe1a71191caa8ac953912d1f654a9118dfa239fe1d2ba596ca5";
 const PROTO_REVISION_SOURCE={
   "schemaVersion": 2,
   "contentVersion": "proto-five-countries-17-scenes-v4",
   "title": "눈떠보니 원삼국 — 동생이 남긴 길",
   "sourcePath": "docs/proto-v4/manuscript.md",
-  "sourceSha256": "75040852690b19b951939c6ce62e2b43602f42526e22170deb1bed827ade057a",
+  "sourceSha256": "3ba86aeae218afe1a71191caa8ac953912d1f654a9118dfa239fe1d2ba596ca5",
   "saveCompatibility": {
     "previousContentVersion": "proto-compact-5-scenes-v2",
     "previousSceneCounts": {},
@@ -2012,13 +2012,15 @@ const PROTO_REVISION_SOURCE={
           "join": [
             {
               "speaker": "창고지기",
-              "text": "그 소금 자루는 옥저에서 왔소. 아이가 따라간 일행도 그쪽으로 돌아갔지.",
+              "text": "그 소금 자루는 옥저에서 왔소. 아이가 따라간 일행도 그쪽으로 돌아갔지. 곡식은 집집마다 두는 작은 창고, 부경에 나눠 넣고 말이오.",
               "emphasis": [
+                "부경",
                 "옥저"
               ],
               "lineId": "proto_ch02_s4-l015",
               "learningKeywordIds": [
-                "proto_ch02_s4-k3"
+                "proto_ch02_s4-k3",
+                "proto_ch02_s4-k4"
               ],
               "stageDirection": "합류",
               "blackout": false,
@@ -2088,7 +2090,23 @@ const PROTO_REVISION_SOURCE={
                 "proto_ch02_s4"
               ],
               "facts": [
-                "그 소금 자루는 옥저에서 왔소. 아이가 따라간 일행도 그쪽으로 돌아갔지."
+                "그 소금 자루는 옥저에서 왔소. 아이가 따라간 일행도 그쪽으로 돌아갔지. 곡식은 집집마다 두는 작은 창고, 부경에 나눠 넣고 말이오."
+              ],
+              "questionIds": [
+                "official-48-advanced-02",
+                "official-41-high-03"
+              ]
+            },
+            {
+              "id": "proto_ch02_s4-k4",
+              "title": "부경",
+              "keyword": "부경",
+              "firstSceneId": "proto_ch02_s4",
+              "sceneIds": [
+                "proto_ch02_s4"
+              ],
+              "facts": [
+                "그 소금 자루는 옥저에서 왔소. 아이가 따라간 일행도 그쪽으로 돌아갔지. 곡식은 집집마다 두는 작은 창고, 부경에 나눠 넣고 말이오."
               ],
               "questionIds": [
                 "official-48-advanced-02",
@@ -6143,7 +6161,23 @@ const PROTO_REVISION_SOURCE={
         "proto_ch02_s4"
       ],
       "facts": [
-        "그 소금 자루는 옥저에서 왔소. 아이가 따라간 일행도 그쪽으로 돌아갔지."
+        "그 소금 자루는 옥저에서 왔소. 아이가 따라간 일행도 그쪽으로 돌아갔지. 곡식은 집집마다 두는 작은 창고, 부경에 나눠 넣고 말이오."
+      ],
+      "questionIds": [
+        "official-48-advanced-02",
+        "official-41-high-03"
+      ]
+    },
+    {
+      "id": "proto_ch02_s4-k4",
+      "title": "부경",
+      "keyword": "부경",
+      "firstSceneId": "proto_ch02_s4",
+      "sceneIds": [
+        "proto_ch02_s4"
+      ],
+      "facts": [
+        "그 소금 자루는 옥저에서 왔소. 아이가 따라간 일행도 그쪽으로 돌아갔지. 곡식은 집집마다 두는 작은 창고, 부경에 나눠 넣고 말이오."
       ],
       "questionIds": [
         "official-48-advanced-02",
@@ -9439,7 +9473,8 @@ const PROTO_REVISION_SOURCE={
         "learningKeywordIds": [
           "proto_ch02_s4-k1",
           "proto_ch02_s4-k2",
-          "proto_ch02_s4-k3"
+          "proto_ch02_s4-k3",
+          "proto_ch02_s4-k4"
         ],
         "sourceEvidence": {
           "questionPdf": "48회 한국사_문제지(심화).pdf",
@@ -9505,7 +9540,8 @@ const PROTO_REVISION_SOURCE={
         "learningKeywordIds": [
           "proto_ch02_s4-k1",
           "proto_ch02_s4-k2",
-          "proto_ch02_s4-k3"
+          "proto_ch02_s4-k3",
+          "proto_ch02_s4-k4"
         ],
         "sourceEvidence": {
           "questionPdf": "41회 한국사_문제지(고급).pdf",
@@ -10475,7 +10511,7 @@ const PROTO_REVISION_SOURCE={
     "choiceAlternatives": 34,
     "officialQuestions": 41,
     "authoredUtterances": 296,
-    "learningTopicCount": 85
+    "learningTopicCount": 86
   }
 };
 const PROTO_STORY_SCRIPT=PROTO_REVISION_SOURCE.chapters;

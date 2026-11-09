@@ -34,6 +34,14 @@
   html=html.replace(/<div class="quiz-progress">[\s\S]*?<\/small><\/div>/,'');
   if(isVerifiedOfficialQuestion(q))html=html.replace(/<div class="exam-source-row">[\s\S]*?<\/div>/,'<div class="r7-story-source"><span>연결 기출</span><p>제 '+q.examRound+'회 '+esc(q.examLevel)+' · '+q.questionNumber+'번'+(points?' · '+points+'점':'')+'</p></div>');
   html=html.replace('>Q. ','>');
+  // 학습 범위 안내: 아직 배우지 않은 개념이 선지에 섞인 기출. 답하기 전에는 어떤 선지인지 알려 주지 않는다.
+  const coverage=(globalThis.STORY_QUESTION_COVERAGE?.questions||[]).find(c=>c.questionId===(entry?.sourceRecord?.officialQuestionId||q.officialQuestionId||q.questionId));
+  if(coverage&&coverage.learningCoverageStatus!=='covered'){
+   const later=(coverage.aheadTerms||[]).map(t=>t.term+'('+t.chapterNumber+'장 '+t.chapterTitle+')'),outside=(coverage.outsideTerms||[]).map(t=>t.term);
+   const detail=done?(later.length?'<p>뒤 챕터에서 배울 개념: '+esc(later.join(', '))+'</p>':'')+(outside.length?'<p>이야기에서 다루지 않는 개념: '+esc(outside.join(', '))+' (족보에서 확인할 수 있어요)</p>':''):'<p>모르는 선지는 건너뛰고, 지금까지 배운 내용으로 답을 골라 보세요.</p>';
+   const note='<div class="r7-scope-note" role="note"><b>아직 학습하지 않은 개념이 포함되어 있어요</b>'+detail+'</div>';
+   html=html.includes('<div class="r7-story-source">')?html.replace(/(<div class="r7-story-source">[\s\S]*?<\/div>)/,'$1'+note):html.replace(/(<\/header>)/,'$1'+note);
+  }
   html=html.replace(/<\/section>$/,'<details class="r7-legacy"><summary>내 상태 보기</summary><button class="r7-secondary" data-action="status">내 상태 열기</button></details></section>');
   return html;
  };
