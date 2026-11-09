@@ -1,0 +1,19 @@
+/* 해설: 핵심 키워드·암기법 (Rev.8 토큰 사용, 브랜드 #E9513B) */
+html body #app .xs-section { margin: 10px 0; padding: 14px; border: 1px solid var(--rv8-line, #e9edf0); border-radius: var(--rv8-r-md, 12px); background: var(--rv8-surface, #fff); color: var(--rv8-ink, #253142); font-size: 14px; line-height: 22px; text-align: left; }
+html body #app .xs-section h2 { margin: 0 0 8px; font-size: 14px; line-height: 20px; font-weight: 700; }
+html body #app .xs-chip { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; max-width: 100%; padding: 0 14px; border: 1px solid var(--rv8-line-strong, #d8dee4); border-radius: var(--rv8-r-full, 999px); background: var(--rv8-subtle, #f4f6f8); color: var(--rv8-ink, #253142); font: inherit; }
+html body #app .xs-chip b { overflow: hidden; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
+html body #app .xs-chip small { flex: none; color: var(--rv8-accent-text, #c93a25); font-size: 12px; font-weight: 600; }
+html body #app .xs-clue { margin: 10px 0 0; color: var(--rv8-muted, #6b7684); word-break: keep-all; }
+html body #app .xs-clue span { display: inline-block; margin-right: 6px; padding: 0 6px; border-radius: 4px; background: var(--rv8-subtle, #f4f6f8); color: var(--rv8-ink, #253142); font-size: 12px; font-weight: 700; }
+html body #app .xs-mnemonic { border-color: #f6c9bf; background: var(--rv8-accent-soft, #fdf1ee); }
+html body #app .xs-card + .xs-card { margin-top: 12px; padding-top: 12px; border-top: 1px dashed #f0b6a9; }
+html body #app .xs-card header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px; }
+html body #app .xs-card header small { color: var(--rv8-accent-text, #c93a25); font-size: 12px; font-weight: 700; }
+html body #app .xs-card header b { font-size: 14px; }
+html body #app .xs-quote { margin: 6px 0 0; padding: 10px 12px; border-radius: var(--rv8-r-sm, 8px); background: #fff; font-weight: 700; word-break: keep-all; }
+html body #app .xs-steps { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 0; padding: 0; list-style: none; }
+html body #app .xs-steps li { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px 2px 2px; border-radius: var(--rv8-r-full, 999px); background: #fff; font-size: 13px; }
+html body #app .xs-steps i { display: inline-grid; place-items: center; min-width: 22px; height: 22px; padding: 0 4px; border-radius: var(--rv8-r-full, 999px); background: var(--rv8-accent, #e9513b); color: #fff; font-size: 12px; font-style: normal; font-weight: 700; }
+html body #app .xs-tip { margin: 8px 0 0; color: var(--rv8-muted, #6b7684); word-break: keep-all; }
+html body #app .xs-more { margin-top: 8px; min-height: 36px; padding: 0; border: 0; background: none; color: var(--rv8-accent-text, #c93a25); font: inherit; font-weight: 700; }

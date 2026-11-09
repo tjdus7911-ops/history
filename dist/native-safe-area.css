@@ -10,8 +10,16 @@ html.capacitor-native body #app .shell:not(.jk-fullscreen-shell) > .main:not(.ed
 html.capacitor-native body #app .official-exam-sticky { top: var(--native-safe-top); }
 
 /* 스토리: 배경 그림은 화면 끝까지, 상단 바(나가기·진행률)만 아래로 */
+html.capacitor-native { --native-safe-bottom: env(safe-area-inset-bottom, 0px); }
 html.capacitor-native body #app .r7-story-stage .game.r7-story-play {
   padding-top: calc(8px + var(--native-safe-top));
+  /* 대화창·선택지·'탭하여 계속'이 홈 인디케이터·시스템 내비게이션 위로 올라오게 한다 */
+  padding-bottom: calc(24px + var(--native-safe-bottom));
+}
+/* 스토리 배경이 밝은 장면에서도 시계·배터리가 보이도록 상태 표시줄 뒤에 옅은 그림자를 깐다 */
+html.capacitor-native body #app .r7-story-stage .game.r7-story-play::before {
+  content: ""; position: absolute; z-index: 9; top: 0; left: 0; right: 0; height: calc(var(--native-safe-top) + 12px);
+  background: linear-gradient(rgba(5,10,16,.55), rgba(5,10,16,0)); pointer-events: none;
 }
 
 /* 상태 표시줄 영역: 스크롤해서 올라간 내용이 시계·배터리 뒤로 비치지 않게 가린다 */

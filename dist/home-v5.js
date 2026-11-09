@@ -310,7 +310,10 @@
       + '<path d="m100 40 22-20m-6 0h6v6" stroke="#ad4835" stroke-width="2.5" stroke-linecap="round" fill="none"/>'
       + '<path d="M10 82h112" stroke="#ad4835" stroke-width="2" stroke-linecap="round"/></svg>';
     let title = '나의 취약점 분석', sub = '기출을 풀면 약한 시대를 알려 드려요';
-    if (s) {
+    if (s && s.status !== 'weak') {
+      title = s.status === 'perfect' ? '대단해요! 취약한 시대가 없어요' : '나의 취약점 분석';
+      sub = s.status === 'perfect' ? '학습한 시대를 모두 맞혔어요' : s.message + ' · ' + s.studied + '/' + s.minEras + '개 시대';
+    } else if (s) {
       title = '취약한 시대: ' + s.name + ' ' + s.accuracy + '%';
       sub = s.topic ? '자주 틀린 개념 ' + s.topic + (s.topicCount > 1 ? ' 외 ' + (s.topicCount - 1) + '개' : '') : '틀린 문제 ' + s.wrong + '개 · 시대별 분석 보기';
     }
