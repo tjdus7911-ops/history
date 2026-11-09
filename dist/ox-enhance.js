@@ -5,7 +5,9 @@
  'use strict';
  const views=globalThis.REV7_OX_VIEWS,api=globalThis.OX_QUIZ_API;if(!views||!api)return;
  const LINKS=globalThis.OX_JOKBO_LINKS||{},jokbo=()=>globalThis.JOKBO_API;
- const SPEED_KEY='history-ox:speed:v1',SPEED_SECONDS=10;
+ const SPEED_KEY='history-ox:speed:v1',SPEED_SECONDS=10,SPEED_WARN=3;
+ const deadlines=new Map();let ticker=null;
+ const clock=ms=>{const t=Math.ceil(ms/1000);return String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0');};
  const store=(()=>{try{return globalThis.localStorage||null}catch{return null}})();
  let speed=false;try{speed=store?.getItem(SPEED_KEY)==='1'}catch{}
  const timedOut=new Set();
@@ -54,7 +56,13 @@
   if(streak>=2)html=html.replace('<span class="r7-ox-left">','<span class="ox-streak" aria-label="'+streak+'연속 정답">'+streak+'연속 정답</span><span class="r7-ox-left">');
   if(!answered){
    html=html.replace('class="r7-page r7-ox-play','class="r7-page ox-compact r7-ox-play');
-   if(speed)html=html.replace('<div class="r7-ox-deck">','<div class="ox-timer" role="timer" aria-label="문제당 '+SPEED_SECONDS+'초"><i data-ox-timer="'+esc(question.id)+'" style="animation-duration:'+SPEED_SECONDS+'s"></i></div><div class="r7-ox-deck">');
+   if(speed){
+    // 문제마다 마감 시각을 한 번만 정해 두고, 다시 그려도 남은 시간에서 이어지게 한다.
+    const key=session.id+':'+question.id;if(!deadlines.has(key))deadlines.set(key,Date.now()+SPEED_SECONDS*1000);
+    const left=Math.max(0,deadlines.get(key)-Date.now()),elapsed=(SPEED_SECONDS*1000-left)/1000;
+    html=html.replace('<div class="r7-ox-deck">','<div class="ox-timer-wrap'+(left<=SPEED_WARN*1000?' is-warn':'')+'" data-ox-timer-wrap><p class="ox-timer-label"><span>남은 시간</span><b data-ox-timer-text aria-live="off">'+clock(left)+'</b></p><div class="ox-timer" role="timer" aria-label="문제당 '+SPEED_SECONDS+'초"><i data-ox-timer="'+esc(question.id)+'" data-ox-deadline="'+deadlines.get(key)+'" style="animation-duration:'+SPEED_SECONDS+'s;animation-delay:-'+elapsed.toFixed(2)+'s"></i></div></div><div class="r7-ox-deck">');
+    tick();
+   }
    return html;
   }
   const mark=v=>v?'O':'X',late=timedOut.has(session.id+':'+question.id);
@@ -107,13 +115,26 @@
   if(d.oxJokbo){event.stopImmediatePropagation();const route=views.readRoute()||'ox';if(!jokbo()?.openDetail(d.oxJokbo,route))toast('족보를 열 수 없어요.');return;}
   if(d.oxSaveJokbo){event.stopImmediatePropagation();const on=jokbo()?.toggleSave(d.oxSaveJokbo);b.setAttribute('aria-pressed',String(Boolean(on)));b.textContent=on?'족보에 저장됨':'족보에 저장';toast(on?'족보의 저장한 키워드에 담았어요.':'저장을 해제했어요.');return;}
  },true);
- // 스피드 모드: 막대가 다 줄어들면(10초) 아직 답하지 않은 문제는 시간 초과로 오답 처리한다.
- document.addEventListener('animationend',event=>{
-  const bar=event.target;if(!bar?.matches?.('[data-ox-timer]'))return;
-  const session=views.active(),question=views.question();if(!session||!question||question.id!==bar.dataset.oxTimer||Object.hasOwn(session.answers,question.id))return;
-  timedOut.add(session.id+':'+question.id);
+ // 스피드 모드: 남은 시간을 실제 마감 시각과 맞춰 표시하고, 0초가 되면 아직 답하지 않은 문제는 시간 초과로 오답 처리한다.
+ function expire(){
+  const session=views.active(),question=views.question();if(!session||!question||Object.hasOwn(session.answers,question.id))return;
+  const key=session.id+':'+question.id;if(!deadlines.has(key)||Date.now()<deadlines.get(key)||timedOut.has(key))return;
+  timedOut.add(key);
   document.querySelector('[data-ox-answer="'+(!question.answer)+'"]')?.click();
- });
+ }
+ function tick(){
+  if(ticker)return;
+  ticker=setInterval(()=>{
+   const bar=document.querySelector('[data-ox-timer]');
+   // 문제 화면을 벗어나면(답했거나 다른 화면) 마감 시각을 지운다. 다시 들어오면 10초부터 다시 센다.
+   if(!bar){clearInterval(ticker);ticker=null;deadlines.clear();return;}
+   const left=Math.max(0,Number(bar.dataset.oxDeadline)-Date.now()),text=document.querySelector('[data-ox-timer-text]');
+   if(text)text.textContent=clock(left);
+   document.querySelector('[data-ox-timer-wrap]')?.classList.toggle('is-warn',left<=SPEED_WARN*1000);
+   if(left<=0)expire();
+  },200);
+ }
+ document.addEventListener('animationend',event=>{if(event.target?.matches?.('[data-ox-timer]'))expire();});
  globalThis.OX_ENHANCE_API=Object.freeze({speed:()=>speed,setSpeed:v=>{speed=Boolean(v);try{store?.setItem(SPEED_KEY,speed?'1':'0')}catch{}},startToday,links:()=>LINKS});
  if(screen==='ox')render();
 })();

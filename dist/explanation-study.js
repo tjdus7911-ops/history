@@ -99,7 +99,7 @@
     const { topic, clue } = keywordsFor(value);
     if (!topic && !clue) return '';
     return '<section class="xs-section xs-keywords" aria-label="핵심 키워드"><h2>핵심 키워드</h2>'
-      + (topic ? '<button type="button" class="xs-chip" data-xs-jokbo="' + esc(topic.id) + '"><b>' + esc(topic.label) + '</b><small>족보에서 보기 ›</small></button>' : '')
+      + (topic ? '<button type="button" class="xs-chip" data-xs-jokbo="' + esc(topic.id) + '"><b>' + esc(topic.group && !String(topic.label).includes(topic.group) ? topic.group.replace(/\s*시대$/, '') + ' · ' + topic.label : topic.label) + '</b><small>족보에서 보기 ›</small></button>' : '')
       + (clue ? '<p class="xs-clue"><span>문제 단서</span>' + esc(clue) + '</p>' : '')
       + '</section>';
   }
