@@ -84,6 +84,24 @@
   }
   const topicName = (t) => GENERIC.has(t.label) && t.group ? t.group.replace(/\s*시대$/, '') + ' ' + t.label : t.label;
 
+  // 취약 시대 판정(내 기록·홈 배너 공통)
+  // - 시대별 최근 풀이 기준 정답률을 쓰고, 표본(policy.minimumUniqueQuestions문항)을 채운 시대만 '학습 완료'로 본다.
+  // - 학습 완료한 서로 다른 시대가 2곳 이상일 때만 분석을 켠다(같은 시대 반복은 1곳).
+  // - 정답률 100%인 시대와 표본이 부족한 시대는 취약한 시대로 고르지 않는다.
+  // - 정답률이 낮은 순, 같으면 오답 수가 많은 순, 그다음 푼 문항이 많은 순.
+  const MIN_STUDIED_ERAS = 2;
+  const byWeakness = (a, b) => a.accuracy - b.accuracy || b.wrong - a.wrong || b.known - a.known || a.index - b.index;
+  function assess() {
+    const rows = A.rows();
+    const known = rows.filter((r) => r.known);
+    const studied = known.filter((r) => r.eligible);
+    const candidates = studied.filter((r) => r.accuracy < 100).sort(byWeakness);
+    const status = !known.length ? 'empty' : studied.length < MIN_STUDIED_ERAS ? 'insufficient' : candidates.length ? 'weak' : 'perfect';
+    return { status, rows, known, studied, candidates, weakest: status === 'weak' ? candidates[0] : null, minEras: MIN_STUDIED_ERAS, minQuestions: A.policy.minimumUniqueQuestions };
+  }
+  const MSG_INSUFFICIENT = '아직 분석할 학습 데이터가 부족해요';
+  const MSG_PERFECT = '대단해요! 현재 분석된 취약한 시대가 없어요.';
+
   const icon = (name) => '<span class="r7-icon" aria-hidden="true"><img src="media/rev7/' + name + '.svg" alt=""></span>';
   let weakView = false;
 
@@ -95,12 +113,26 @@
     if (!known.length) {
       return top + '<div class="r7-empty"><span class="r7-empty-icon">' + icon('empty-wrong') + '</span><h2>아직 분석할 풀이 기록이 없어요</h2><p>기출문제를 풀면 어떤 시대와 개념이 약한지 알려 드려요.</p></div><button class="r7-primary" data-nav="exam-library">기출문제 풀러 가기</button></section>';
     }
-    // 취약 순위: 표본이 충분한 시대 먼저(정답률 낮은 순), 그다음 표본이 적은 시대
-    const ranked = known.slice().sort((a, b) => Number(b.eligible) - Number(a.eligible) || a.accuracy - b.accuracy || b.wrong - a.wrong || a.index - b.index);
-    const weakest = ranked[0];
+    const result = assess();
+    // 순위: 학습 완료(표본 충족) 시대를 취약한 순으로, 그다음 표본이 부족한 시대
+    const ranked = result.studied.slice().sort(byWeakness).concat(known.filter((r) => !r.eligible).sort((a, b) => b.known - a.known || a.index - b.index));
+    const listBlock = (title) => '<section class="wea-card"><h2>' + title + '</h2><ol class="wea-rank">' + ranked.map((r, i) => '<li><button type="button" class="wea-rank-row' + (r.id === focusEra ? ' is-selected' : '') + '" data-wea-focus="' + r.id + '" aria-pressed="' + (r.id === focusEra) + '">'
+      + '<span class="wea-rank-no">' + (i + 1) + '</span><span class="wea-rank-name"><b>' + escapeHtml(r.name) + '</b><small>' + (r.eligible ? '오답 ' + r.wrong + ' / ' + r.known + '문제' : '표본 부족 · ' + r.known + '/' + policy.minimumUniqueQuestions + '문제') + '</small></span>'
+      + '<span class="wea-rank-bar" aria-hidden="true"><i style="width:' + r.accuracy + '%"></i></span><b>' + r.accuracy + '%</b></button></li>').join('') + '</ol>'
+      + '<p class="wea-policy">최근 풀이 기준 정답률이에요. 시대별 ' + policy.minimumUniqueQuestions + '문항 이상 푼 시대가 ' + MIN_STUDIED_ERAS + '곳 이상이면 취약한 시대를 분석해요. 정답률 100%인 시대는 취약한 시대로 고르지 않아요.</p></section>';
+    if (!focusEra && result.status !== 'weak') {
+      const insufficient = result.status === 'insufficient';
+      const notice = '<section class="wea-card wea-notice' + (insufficient ? '' : ' is-perfect') + '" role="status"><h2>' + (insufficient ? MSG_INSUFFICIENT : MSG_PERFECT) + '</h2>'
+        + '<p class="wea-hint">' + (insufficient
+          ? '서로 다른 시대 ' + MIN_STUDIED_ERAS + '곳 이상에서 시대별 ' + policy.minimumUniqueQuestions + '문항 이상 풀면 분석해 드려요. 지금까지 ' + result.studied.length + '곳을 채웠어요.'
+          : '학습을 마친 ' + result.studied.length + '개 시대의 최근 풀이를 모두 맞혔어요.') + '</p>'
+        + (insufficient ? '<div class="wea-actions"><button class="r7-primary" data-nav="exam-library">기출문제 풀러 가기</button></div>' : '') + '</section>';
+      return top + notice + listBlock('시대별 정답률') + '</section>';
+    }
+    const weakest = result.weakest;
     const focus = (focusEra && known.find((r) => r.id === focusEra)) || weakest;
     const [label, tone] = badge(focus);
-    const caption = focus.id === weakest.id ? '가장 취약한 시대' : '선택한 시대';
+    const caption = weakest && focus.id === weakest.id ? '가장 취약한 시대' : '선택한 시대';
     const hero = '<section class="wea-card"><div class="wea-hero ' + tone + '">'
       + '<div class="wea-hero-copy"><small>' + caption + '</small><strong>' + escapeHtml(focus.name) + '</strong>'
       + '<span><span class="wea-nw">푼 ' + focus.known + '문제 중 <b>' + focus.wrong + '문제</b> 틀림</span>' + (focus.repeatedWrong ? ' <span class="wea-nw">· 반복 ' + focus.repeatedWrong + '회</span>' : '') + '</span>'
@@ -120,12 +152,7 @@
         : '<p class="wea-hint">이 시대에서 최근에 틀린 문제가 없어요.</p>')
       + '</section>';
 
-    const rankBlock = '<section class="wea-card"><h2>시대별 취약 순위</h2><ol class="wea-rank">' + ranked.map((r, i) => '<li><button type="button" class="wea-rank-row' + (r.id === focus.id ? ' is-selected' : '') + '" data-wea-focus="' + r.id + '" aria-pressed="' + (r.id === focus.id) + '">'
-      + '<span class="wea-rank-no">' + (i + 1) + '</span><span class="wea-rank-name"><b>' + escapeHtml(r.name) + '</b><small>' + (r.eligible ? '오답 ' + r.wrong + ' / ' + r.known + '문제' : '표본 부족 · ' + r.known + '문제') + '</small></span>'
-      + '<span class="wea-rank-bar" aria-hidden="true"><i style="width:' + r.accuracy + '%"></i></span><b>' + r.accuracy + '%</b></button></li>').join('') + '</ol>'
-      + '<p class="wea-policy">최근 풀이 기준 정답률이에요. 시대별 ' + policy.minimumUniqueQuestions + '문항 이상 풀고 정답률이 ' + policy.targetAccuracy + '% 미만이면 집중 복습으로 표시해요.</p></section>';
-
-    return top + hero + topicBlock + rankBlock + '</section>';
+    return top + hero + topicBlock + listBlock(result.status === 'weak' ? '시대별 취약 순위' : '시대별 정답률') + '</section>';
   }
 
   const renderBefore = renderContent;
@@ -181,12 +208,13 @@
 
   // 홈 배너용 요약: 가장 취약한 시대와 그 시대의 대표 취약 개념
   function summary() {
-    const known = A.rows().filter((r) => r.known);
-    if (!known.length) return null;
-    const weakest = known.slice().sort((a, b) => Number(b.eligible) - Number(a.eligible) || a.accuracy - b.accuracy || b.wrong - a.wrong || a.index - b.index)[0];
+    const result = assess();
+    if (result.status === 'empty') return null;
+    if (result.status !== 'weak') return { status: result.status, message: result.status === 'perfect' ? MSG_PERFECT : MSG_INSUFFICIENT, studied: result.studied.length, minEras: MIN_STUDIED_ERAS };
+    const weakest = result.weakest;
     const topics = topicStats(weakest.id);
-    return { id: weakest.id, name: weakest.name, accuracy: weakest.accuracy, wrong: weakest.wrong, known: weakest.known, eligible: weakest.eligible, weak: weakest.weak, topic: topics[0] ? topicName(topics[0].topic) : '', topicCount: topics.length };
+    return { status: 'weak', id: weakest.id, name: weakest.name, accuracy: weakest.accuracy, wrong: weakest.wrong, known: weakest.known, eligible: weakest.eligible, weak: weakest.weak, topic: topics[0] ? topicName(topics[0].topic) : '', topicCount: topics.length };
   }
 
-  globalThis.WEAK_ERA_ANALYSIS = Object.freeze({ open, pageHTML, topicOf, summary });
+  globalThis.WEAK_ERA_ANALYSIS = Object.freeze({ open, pageHTML, topicOf, summary, assess });
 })();

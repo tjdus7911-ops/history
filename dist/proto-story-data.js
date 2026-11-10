@@ -42,11 +42,11 @@ const PROTO_PROLOGUE_MUSEUM_ASSET='proto-v4-modern-museum';
 ASSETS[PROTO_PROLOGUE_MUSEUM_ASSET]={id:PROTO_PROLOGUE_MUSEUM_ASSET,label:'현대 박물관 고대관',src:'media/proto-v4/ancient-modern-museum.jpg',imageKind:'story-background',embeddedCharacters:false,status:'ready'};
 const PROTO_PROLOGUE_DEFINITIONS=[
  {sceneId:'proto_prologue_museum',title:'마지막 전시실',year:2026,location:'현대 · 박물관 고대관',country:'프롤로그',place:'박물관 고대관',illustrationId:PROTO_PROLOGUE_MUSEUM_ASSET,nextStoryId:'proto_prologue_separation',lines:[
-  {speaker:'동생',text:'잠깐만, 저쪽 전시도 보고 가자!',lineId:'proto_prologue_museum-l001',expression:'smile'},
-  {speaker:'주인공',text:'그래. 마지막 전시실까지만 같이 보고 가자.',lineId:'proto_prologue_museum-l002',expression:'smile'},
-  {speaker:'나레이션',text:'두 사람은 나란히 유리 진열장과 벽면 지도를 천천히 둘러보았다.',lineId:'proto_prologue_museum-l003'},
-  {speaker:'동생',text:'여기 빛나는 지도가 있어. 이것도 같이 보자.',lineId:'proto_prologue_museum-l004',expression:'smile'},
-  {speaker:'주인공',text:'손 놓치지 말고, 천천히 보자.',lineId:'proto_prologue_museum-l005',expression:'smile'}
+  {speaker:'동생',text:'나도 같이 가! 저쪽 전시도 보고 싶어!',lineId:'proto_prologue_museum-l001',expression:'smile'},
+  {speaker:'주인공',text:'알았어. 사람 많으니까 손 꼭 잡아. 마지막 전시실까지만 보는 거다.',lineId:'proto_prologue_museum-l002',expression:'smile'},
+  {speaker:'나레이션',text:'키가 아직 가슴께에도 닿지 않는 어린 동생은 형의 손을 꼭 잡고, 유리 진열장과 벽면 지도를 신기한 듯 올려다보았다.',lineId:'proto_prologue_museum-l003'},
+  {speaker:'동생',text:'우와, 지도가 반짝반짝해! 이것도 보자, 응?',lineId:'proto_prologue_museum-l004',expression:'smile'},
+  {speaker:'주인공',text:'그래. 대신 손 놓으면 안 돼. 여기서 헤어지면 금방 길 잃어.',lineId:'proto_prologue_museum-l005',expression:'smile'}
  ]},
  {sceneId:'proto_prologue_separation',title:'놓쳐 버린 손',year:2026,location:'현대 · 박물관 전시실',country:'프롤로그',place:'박물관 전시실',illustrationId:PROTO_PROLOGUE_MUSEUM_ASSET,nextStoryId:'proto_prologue_timeslip',lines:[
   {speaker:'나레이션',text:'다른 관람객들이 두 사람 사이를 지나가는 순간, 맞잡은 손이 풀렸다.',lineId:'proto_prologue_separation-l001'},

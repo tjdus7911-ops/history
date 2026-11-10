@@ -1,4 +1,4 @@
-import { Capacitor } from '@capacitor/core';
+import { Capacitor, SystemBars, SystemBarsStyle } from '@capacitor/core';
 import { App } from '@capacitor/app';
 
 const isNative = Capacitor.isNativePlatform();
@@ -160,12 +160,35 @@ function installEdgeSwipeBack() {
   document.addEventListener('touchcancel', () => finish(true), { capture: true });
 }
 
+// 상태 표시줄 글자색을 화면 배경에 맞춘다. 앱은 밝은 화면이 기본이라 기기가 다크 모드여도
+// 흰 글자(시계·배터리)가 밝은 배경에 묻히지 않게 하고, 어두운 스토리·이미지 확대 화면에서는 흰 글자를 쓴다.
+const DARK_SURFACES = '.r7-story-play, .official-image-modal-overlay, .r7-image-viewer';
+function installStatusBarStyleSync() {
+  let current = '';
+  let queued = false;
+  const apply = () => {
+    queued = false;
+    const style = document.querySelector(DARK_SURFACES) ? SystemBarsStyle.Dark : SystemBarsStyle.Light;
+    if (style === current) return;
+    current = style;
+    SystemBars.setStyle({ style }).catch(() => { current = ''; });
+  };
+  const schedule = () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(apply);
+  };
+  new MutationObserver(schedule).observe(document.body, { childList: true, subtree: true });
+  schedule();
+}
+
 if (isNative) {
   document.documentElement.classList.add('capacitor-native');
   document.documentElement.dataset.nativePlatform = Capacitor.getPlatform();
 
   App.addListener('backButton', handleBackButton);
   if (Capacitor.getPlatform() === 'ios') installEdgeSwipeBack();
+  installStatusBarStyleSync();
   const saveProgress = () => {
     try {
       globalThis.save?.();

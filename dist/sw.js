@@ -1,5 +1,5 @@
 const CACHE_PREFIX='lived-history-shell-';
-const CACHE_VERSION='2026-10-30-ios-safe-area-2';
+const CACHE_VERSION='2026-11-09-feedback-1';
 const CACHE_NAME=CACHE_PREFIX+CACHE_VERSION;
 const APP_SHELL=[
   '/',
@@ -21,7 +21,7 @@ const APP_SHELL=[
   '/official-exam-images.js','/ch05-refinement.js','/ch06-backgrounds.js','/ch06-quiz-refinement.js',
   '/v2-exam-restoration.js', '/v2-exam-additions.js', '/v2-art.js','/v2-backgrounds.js', '/renewal.css',
   '/editorial.css', '/exam-library.css', '/exam-memory.css', '/exam-memory-results.css', '/exam-memory-nav.css', '/exam-mobile.css', '/ox-quiz.css',
-  '/editorial-ui.js', '/era-visuals.js', '/joseon-data.js', '/ancient-data.js', '/proto-story-script.js', '/proto-story-data.js', '/proto-save-data.js', '/proto-revision.css', '/proto-story-ui.js', '/season-data.js', '/official-exam-catalog.js', '/official-exam-choices.js', '/official-exam-explanations.js', '/official-exam-statistics.js', '/ox-quiz-curation.js', '/ox-quiz-data.js', '/v2-learning.js', '/v2-app.js',
+  '/editorial-ui.js', '/era-visuals.js', '/joseon-data.js', '/ancient-data.js', '/story-question-coverage.js','/proto-story-script.js', '/proto-story-data.js', '/proto-save-data.js', '/proto-revision.css', '/proto-story-ui.js', '/season-data.js', '/official-exam-catalog.js', '/official-exam-choices.js', '/official-exam-explanations.js', '/official-exam-statistics.js', '/ox-quiz-curation.js', '/ox-quiz-data.js', '/v2-learning.js', '/v2-app.js',
   '/joseon-ui.js', '/ancient-ui.js', '/mnemonic-data.js', '/exam-memory-ui.js', '/ox-quiz-ui.js',
   '/app.js',
   '/three-content-config.js','/three-story-script.js','/three-complete-art.js','/three-exam-data.js','/three-story-data.js',
@@ -29,10 +29,10 @@ const APP_SHELL=[
   '/three-era-isolation.js','/three-service-ui.js','/three-learning-boundary.js','/three-service.css',
   '/three-staging.js','/three-staging.css',
   '/home-v5.js','/home-v5.css','/learning-missions.js','/learning-missions.css','/rev7-theme.css','/rev7-auto.css','/rev7-screens.css',
-  '/rev7-layouts.css','/rev7-layouts.js','/rev7-ox-layouts.js','/rev7-story-layouts.js','/rev7-story-player.js','/rev7-exam-layouts.js',
+  '/rev7-layouts.css','/rev7-layouts.js','/rev7-ox-layouts.js','/rev7-story-layouts.js','/rev7-story-player.js','/story-scene-review.js','/image-zoom.js','/coach-tour.js','/rev7-exam-layouts.js',
   '/story-mobile-qa.css',
-  '/app-navigation.css','/ui-refresh.css','/product-redesign.css','/mobile-design-system.css','/rev8.css','/native-safe-area.css',
-  '/jokbo.css','/jokbo-data.js','/jokbo-people.js','/jokbo-people-stats.js','/jokbo-people-photos.js','/jokbo-choice-facts.js','/jokbo-ui.js','/ox-jokbo-links.js','/ox-enhance.js','/weak-era-analysis.js','/story-release-policy.js',
+  '/app-navigation.css','/ui-refresh.css','/product-redesign.css','/mobile-design-system.css','/rev8.css','/explanation-study.css','/story-refinements.css','/native-safe-area.css',
+  '/jokbo.css','/jokbo-data.js','/jokbo-people.js','/jokbo-people-stats.js','/jokbo-people-photos.js','/jokbo-choice-facts.js','/jokbo-ui.js','/ox-jokbo-links.js','/ox-enhance.js','/weak-era-analysis.js','/explanation-study.js','/story-release-policy.js',
   '/rev7-resource-states.js',
   '/media/rev7/user.svg','/media/rev7/chevron.svg','/media/rev7/chart.svg','/media/rev7/back.svg','/media/rev7/check.svg','/media/rev7/down.svg','/media/rev7/empty-wrong.svg','/media/rev7/close.svg',
   '/media/rev7/timeline-rail.svg','/media/rev7/timeline-rail-next.svg','/media/rev7/story-back.svg','/media/rev7/story-more.svg','/media/rev7/exam-close.svg','/media/rev7/exam-paused-clock.svg', '/media/rev7/exam-empty-chart.svg', '/media/rev7/exam-clock.svg','/media/rev7/exam-pause.svg','/media/rev7/exam-list.svg',
