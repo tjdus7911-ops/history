@@ -1,5 +1,5 @@
 const CACHE_PREFIX='lived-history-shell-';
-const CACHE_VERSION='2026-11-09-feedback-1';
+const CACHE_VERSION='2026-11-16-exam-pause-1';
 const CACHE_NAME=CACHE_PREFIX+CACHE_VERSION;
 const APP_SHELL=[
   '/',

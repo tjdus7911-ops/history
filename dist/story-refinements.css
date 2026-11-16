@@ -61,3 +61,12 @@ html body .coach-next { border: 0; background: #e9513b; color: #fff; }
 html body .ssr-btn { min-height: 48px; border: 1px solid #d8dee4; border-radius: 12px; background: #fff; color: #253142; font: inherit; font-size: 14px; font-weight: 700; }
 html body .ssr-btn:disabled { color: #b5bdc5; background: #f4f6f8; }
 html body .ssr-return { display: block; min-height: 52px; border: 0; border-radius: 12px; background: #e9513b; color: #fff; font: inherit; font-size: 15px; font-weight: 700; }
+
+/* 시험 일시정지: 나가기·이어서 풀기를 항상 화면 안에 (상단 X로도 나가기) */
+html body .r7-page.r7-exam-paused { min-height: calc(100dvh - 40px - var(--native-safe-top, 0px)); }
+html body .r7-pause-top { display: flex; align-items: center; min-height: 48px; }
+html body .r7-pause-close { display: grid; place-items: center; width: 44px; height: 44px; margin-left: -6px; padding: 0; border: 0; border-radius: 12px; background: transparent; color: var(--rv8-ink, #253142); }
+html body .r7-pause-close .r7-icon, html body .r7-pause-close img { width: 24px; height: 24px; }
+html body .r7-pause-body { padding-top: 0; }
+html body .r7-pause-actions { position: sticky; bottom: 0; z-index: 5; padding: 12px 0 calc(12px + env(safe-area-inset-bottom, 0px)); background: linear-gradient(rgba(250,251,252,0), var(--rv8-bg, #fafbfc) 24%); }
+@media (max-height: 700px) { html body .r7-pause-body .r7-pause-mark { width: 72px; height: 72px; } html body .r7-pause-body { gap: 10px; } }
